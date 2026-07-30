@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!--
+  HANAM KOREAN BARBECUE 하남 — The Original · Quarteira · Pacheco Studios (demo)
+  MEDIA (opcional, pasta media/ — ver LEIA-ME.txt para sacar as fotos do perfil Google/Instagram):
+    hero.jpg       16:9  fachada ou mesa com grelha acesa
+    grelha.jpg     4:5   carne na grelha da mesa
+    prato-01.jpg   4:5   bulgogi
+    prato-02.jpg   4:5   porco preto ibérico
+    prato-03.jpg   4:5   camarão kimchi
+    prato-04.jpg   4:5   banchan / acompanhamentos
+    soju.jpg       3:4   cocktail de soju de pêssego
+    sala.jpg       3:2   sala / ambiente
+  O site funciona sem qualquer media (placeholders SVG).
+-->
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hanam Korean Barbecue 하남 — The Original · Quarteira</title>
+<meta name="description" content="Hanam Korean Barbecue, Quarteira: churrasco coreano grelhado na mesa, 4,9★ em 497 avaliações. Bulgogi, porco preto ibérico, soju de pêssego. Reservas no TheFork.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"Restaurant",
+  "name":"Hanam Korean Barbecue 하남 - The Original",
+  "servesCuisine":["Coreana","Churrasco coreano"],
+  "priceRange":"15-35 €",
+  "address":{"@type":"PostalAddress","streetAddress":"Rua Vasco da Gama 70","addressLocality":"Quarteira","postalCode":"8125-256","addressCountry":"PT"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"497"},
+  "sameAs":["https://www.instagram.com/hanam_korean_barbecue/","https://www.thefork.pt/restaurante/hanam-korean-barbecue-r848687"]
+}
+</script>
+<style>
+:root{
+  --carvao:#15110E; --carvao-2:#1E1813; --papel:#F5EDE2; --papel-dim:rgba(245,237,226,.62);
+  --gochu:#C3392B; --gochu-hi:#D64A3B; --latao:#C9973B;
+  --line:rgba(201,151,59,.22);
+  --ease:cubic-bezier(.22,.61,.2,1); --pad:clamp(1.25rem,4.5vw,4rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--carvao);color:var(--papel);font:300 1.04rem/1.7 "Outfit",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:"Bungee",sans-serif;font-weight:400;line-height:1.12;letter-spacing:.01em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gochu-hi);outline-offset:3px;border-radius:2px}
+::selection{background:var(--gochu);color:var(--papel)}
+.pv-banner{background:var(--latao);color:var(--carvao);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:.45rem var(--pad)}
+
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.4rem;padding:1rem var(--pad);background:var(--carvao);transition:box-shadow .4s,padding .4s var(--ease)}
+.nav.scrolled{box-shadow:0 1px 0 var(--line),0 10px 30px rgba(0,0,0,.45);padding:.6rem var(--pad)}
+.brand{font-family:"Bungee",sans-serif;font-size:1.05rem;display:flex;align-items:center;gap:.5rem}
+.brand .kr{font-family:"Outfit",sans-serif;font-weight:600;font-size:.85rem;color:var(--latao)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto;align-items:center}
+.nav-links a{font-size:.76rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--papel-dim);transition:color .3s}
+.nav-links a:hover{color:var(--papel)}
+.lang{display:flex;gap:.15rem;border:1px solid var(--line);border-radius:99px;padding:.15rem}
+.lang button{font-size:.68rem;font-weight:600;letter-spacing:.06em;padding:.25rem .55rem;border-radius:99px;color:var(--papel-dim);transition:.3s}
+.lang button[aria-pressed="true"]{background:var(--latao);color:var(--carvao)}
+.cta{display:inline-block;background:var(--gochu);color:var(--papel);font-weight:600;font-size:.85rem;letter-spacing:.05em;padding:.8rem 1.6rem;border-radius:2px;transition:background .3s,transform .3s}
+.cta:hover{background:var(--gochu-hi);transform:translateY(-1px)}
+.cta.ghost{background:transparent;color:var(--papel);border:1px solid var(--line)}
+.cta.ghost:hover{background:rgba(201,151,59,.1);border-color:var(--latao)}
+.nav .cta{padding:.55rem 1.1rem}
+.burger{display:none;margin-left:auto;width:42px;height:42px;position:relative;z-index:55}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--papel);transition:.35s var(--ease)}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.burger[aria-expanded="true"] span:nth-child(1){top:21px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){top:21px;transform:rotate(-45deg)}
+@media(max-width:940px){
+  .burger{display:block}
+  .nav-links{position:fixed;inset:0;background:rgba(21,17,14,.98);flex-direction:column;justify-content:center;gap:2rem;transform:translateY(-102%);transition:transform .5s var(--ease)}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.05rem}
+  .nav .cta{display:none}
+}
+
+/* ---------- hero: mesa vista de cima ---------- */
+.hero{position:relative;overflow:hidden;padding:clamp(3rem,7vw,6rem) var(--pad) clamp(3rem,6vw,5rem)}
+.hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--latao);margin-bottom:1.2rem}
+.hero h1{font-size:clamp(2.1rem,5.6vw,4.2rem);max-width:13ch}
+.hero h1 .kr{display:block;font-size:.5em;color:var(--gochu-hi);margin-top:.2em}
+.hero .sub{margin:1.4rem 0 2.2rem;max-width:50ch;color:var(--papel-dim);font-size:clamp(1rem,1.6vw,1.15rem)}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;letter-spacing:.04em;color:var(--papel-dim);border:1px solid var(--line);border-radius:99px;padding:.45rem .95rem}
+.chip b{color:var(--latao);font-weight:600}
+.h-seq{opacity:0;transform:translateY(22px);animation:rise .9s var(--ease) forwards}
+.h-seq.s2{animation-delay:.15s}.h-seq.s3{animation-delay:.3s}.h-seq.s4{animation-delay:.45s}.h-seq.s5{animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* assinatura: grelha concêntrica + banchan a pousar */
+.table-top{position:relative;aspect-ratio:1;max-width:520px;margin:0 auto;width:100%}
+.table-top .grill{position:absolute;inset:12%;border-radius:50%;background:
+  radial-gradient(circle at 50% 45%,#2A211A, #191410 65%);
+  box-shadow:0 0 0 1px var(--line),0 0 80px rgba(195,57,43,.18) inset,0 30px 60px rgba(0,0,0,.5)}
+.table-top .grill::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 50% 55%,rgba(214,74,59,.28),transparent 60%);animation:ember 5s ease-in-out infinite}
+@keyframes ember{0%,100%{opacity:.5}50%{opacity:1}}
+.table-top .grill svg{position:absolute;inset:0;width:100%;height:100%}
+.table-top .grill svg circle{fill:none;stroke:var(--latao);opacity:.4}
+.table-top .grill svg line{stroke:var(--latao);opacity:.28}
+.table-top .grill .meat{position:absolute;width:26%;height:16%;left:24%;top:36%;border-radius:46% 54% 52% 48%;background:linear-gradient(120deg,#8E3B2B,#C3392B 60%,#7A2E22);box-shadow:0 4px 14px rgba(0,0,0,.4);animation:sizzle 3.2s ease-in-out infinite}
+.table-top .grill .meat.m2{left:52%;top:52%;width:22%;height:14%;border-radius:52% 48% 46% 54%;animation-delay:1.4s}
+@keyframes sizzle{0%,100%{transform:none}50%{transform:translateY(-2px) rotate(1.5deg)}}
+.banchan{position:absolute;width:17%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 42% 38%,#3A2E22,#241C15 70%);box-shadow:0 0 0 1px var(--line),0 10px 24px rgba(0,0,0,.45);opacity:0;transform:scale(.6);animation:land .7s var(--ease) forwards}
+.banchan::after{content:"";position:absolute;inset:22%;border-radius:50%}
+.banchan.b1{top:0;left:12%;animation-delay:.9s}.banchan.b1::after{background:radial-gradient(circle at 45% 40%,#D64A3B,#8E2F22)}
+.banchan.b2{top:4%;right:6%;animation-delay:1.15s}.banchan.b2::after{background:radial-gradient(circle at 45% 40%,#7C8C3F,#4E5A26)}
+.banchan.b3{bottom:6%;right:0;animation-delay:1.4s}.banchan.b3::after{background:radial-gradient(circle at 45% 40%,#E8D9A0,#B09B55)}
+.banchan.b4{bottom:0;left:8%;animation-delay:1.65s}.banchan.b4::after{background:radial-gradient(circle at 45% 40%,#C9973B,#8A6423)}
+.banchan.b5{top:42%;left:-4%;animation-delay:1.9s}.banchan.b5::after{background:radial-gradient(circle at 45% 40%,#B44B67,#7A2C41)}
+@keyframes land{60%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
+.chops{position:absolute;right:8%;top:30%;width:34%;height:3px;background:var(--latao);border-radius:2px;transform:rotate(24deg);box-shadow:0 10px 0 -1px var(--latao);opacity:.85}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.table-top{max-width:380px}}
+
+.marquee{border-block:1px solid var(--line);padding:.9rem 0;overflow:hidden;background:var(--carvao-2)}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:mq 32s linear infinite;font-family:"Bungee",sans-serif;font-size:.9rem;letter-spacing:.12em;color:var(--papel-dim);white-space:nowrap}
+.marquee-track .dot{color:var(--gochu-hi)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:clamp(4rem,8vw,7rem) var(--pad)}
+.wrap{max-width:1150px;margin:0 auto}
+.sec-head{margin-bottom:3rem;max-width:760px}
+h2{font-size:clamp(1.6rem,4.2vw,2.8rem);margin:.6rem 0 1rem}
+h2 .r{color:var(--gochu-hi)}
+.lead{color:var(--papel-dim);max-width:58ch}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+.rv.on{opacity:1;transform:none}
+
+/* ritual */
+.ritual{background:var(--carvao-2);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.step{border:1px solid var(--line);border-radius:4px;padding:1.8rem;background:var(--carvao)}
+.step .n{font-family:"Bungee",sans-serif;font-size:2rem;color:var(--latao)}
+.step h3{font-size:1.05rem;margin:.8rem 0 .5rem}
+.step p{font-size:.92rem;color:var(--papel-dim)}
+
+.dishes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.dish{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--carvao-2)}
+.dish-media{position:relative;aspect-ratio:4/5;overflow:hidden;background:
+  radial-gradient(65% 50% at 50% 80%,rgba(195,57,43,.25),transparent 70%),
+  linear-gradient(195deg,#2A211A,#171310)}
+.dish-media svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.dish-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.dish:hover .dish-media img{transform:scale(1.03)}
+.dish-body{padding:1.2rem 1.3rem 1.4rem}
+.dish h3{font-size:1rem;margin-bottom:.35rem}
+.dish p{font-size:.9rem;color:var(--papel-dim)}
+.dish .tag{display:inline-block;font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--latao);margin-bottom:.5rem}
+.menu-note{margin-top:2.2rem;color:var(--papel-dim);font-size:.9rem}
+.menu-note b{color:var(--latao)}
+
+/* soju */
+.soju{background:linear-gradient(160deg,#241A20,#15110E 70%);border-block:1px solid var(--line);text-align:center;position:relative;overflow:hidden}
+.soju .glowp{position:absolute;left:50%;top:-20%;width:60vw;height:70%;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(228,140,120,.12),transparent 70%);pointer-events:none}
+.soju h2{font-size:clamp(2rem,6.5vw,4.4rem)}
+.soju h2 .p{color:#E8907C}
+.soju p.txt{margin:1.4rem auto 0;max-width:46ch;color:var(--papel-dim)}
+.soju .src{margin-top:1.2rem;font-size:.76rem;color:var(--papel-dim);opacity:.8}
+
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;margin-bottom:2rem}
+.review{border:1px solid var(--line);border-radius:4px;padding:1.7rem;background:var(--carvao-2)}
+.review .stars{color:var(--latao);letter-spacing:.2em;font-size:.85rem;margin-bottom:.9rem}
+.review p{font-size:1.05rem;line-height:1.5;font-weight:400}
+.review-src{font-size:.78rem;color:var(--papel-dim)}
+.badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;margin-top:2rem}
+.badge{display:flex;align-items:center;gap:1.1rem;border:1px solid var(--latao);border-radius:4px;padding:1.2rem 1.5rem;background:rgba(201,151,59,.06)}
+.badge .big{font-family:"Bungee",sans-serif;font-size:1.7rem;color:var(--latao)}
+.badge .txt{font-size:.85rem;color:var(--papel-dim)}
+
+.contact{background:var(--carvao-2);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.addr-big{font-family:"Bungee",sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);margin:.4rem 0 1.4rem;line-height:1.3}
+.info-list{display:grid;gap:1.1rem;margin-top:1.6rem;font-size:.95rem}
+.info-list b{display:block;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--latao);margin-bottom:.2rem}
+.info-list .muted{color:var(--papel-dim)}
+.map{aspect-ratio:4/3;border:1px solid var(--line);border-radius:4px;overflow:hidden;filter:grayscale(1) brightness(.85)}
+.map iframe{width:100%;height:100%;border:0}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+footer{padding:2rem var(--pad);border-top:1px solid var(--line);font-size:.8rem;color:var(--papel-dim)}
+footer .wrap{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer a{text-decoration:underline;text-underline-offset:3px}
+footer a:hover{color:var(--papel)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.h-seq,.banchan{opacity:1!important;transform:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="pv-banner" data-i18n="banner">APRESENTAÇÃO PACHECO STUDIOS · Proposta de demonstração para o Hanam Korean Barbecue · telefone, horário de abertura e carta a confirmar</div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Hanam Korean Barbecue — início">HANAM <span class="kr">하남</span></a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="navlinks" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="navlinks" aria-label="Navegação principal">
+    <a href="#ritual" data-i18n="nav.ritual">O ritual</a>
+    <a href="#grelha" data-i18n="nav.grill">Da grelha</a>
+    <a href="#soju" data-i18n="nav.soju">Soju</a>
+    <a href="#avaliacoes" data-i18n="nav.reviews">Avaliações</a>
+    <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button data-lang="pt" aria-pressed="true">PT</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </nav>
+  <a class="cta" href="https://www.thefork.pt/restaurante/hanam-korean-barbecue-r848687" target="_blank" rel="noopener" data-i18n="cta.book">Reservar mesa</a>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow h-seq" data-i18n="hero.eyebrow">Churrasco coreano · R. Vasco da Gama · Quarteira</p>
+        <h1 class="h-seq s2"><span data-i18n="hero.h1">A brasa é na mesa.</span><span class="kr">하남 · THE ORIGINAL</span></h1>
+        <p class="sub h-seq s3" data-i18n="hero.sub">Churrasco coreano a sério: a grelha acesa no meio da mesa, carne a estalar à tua frente e banchan a perder de vista. O original, em Quarteira.</p>
+        <div class="hero-ctas h-seq s4">
+          <a class="cta" href="https://www.thefork.pt/restaurante/hanam-korean-barbecue-r848687" target="_blank" rel="noopener" data-i18n="cta.fork">Reservar no TheFork</a>
+          <a class="cta ghost" href="#grelha" data-i18n="cta.menu">Ver a grelha</a>
+        </div>
+        <div class="chips h-seq s5">
+          <span class="chip"><b>4,9★</b>&nbsp;<span data-i18n="chip.rev">497 avaliações no Google</span></span>
+          <span class="chip"><b>15–35 €</b></span>
+          <span class="chip"><b>23:00</b>&nbsp;<span data-i18n="chip.late">aberto até tarde</span></span>
+        </div>
+      </div>
+      <div class="table-top h-seq s3" aria-hidden="true">
+        <div class="grill">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" stroke-width=".6"/>
+            <circle cx="50" cy="50" r="34" stroke-width=".5"/>
+            <circle cx="50" cy="50" r="22" stroke-width=".5"/>
+            <circle cx="50" cy="50" r="10" stroke-width=".4"/>
+            <line x1="50" y1="4" x2="50" y2="96" stroke-width=".4"/>
+            <line x1="4" y1="50" x2="96" y2="50" stroke-width=".4"/>
+            <line x1="17" y1="17" x2="83" y2="83" stroke-width=".4"/>
+            <line x1="83" y1="17" x2="17" y2="83" stroke-width=".4"/>
+          </svg>
+          <div class="meat"></div>
+          <div class="meat m2"></div>
+        </div>
+        <div class="banchan b1"></div>
+        <div class="banchan b2"></div>
+        <div class="banchan b3"></div>
+        <div class="banchan b4"></div>
+        <div class="banchan b5"></div>
+        <div class="chops"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="mq">
+      <span>Bulgogi <span class="dot">·</span> <span data-i18n="mq.pork">Porco preto ibérico</span> <span class="dot">·</span> <span data-i18n="mq.shrimp">Camarão kimchi</span> <span class="dot">·</span> Banchan <span class="dot">·</span> Soju <span class="dot">·</span> 하남 <span class="dot">·</span>&nbsp;</span>
+    </div>
+  </div>
+
+  <section class="ritual" id="ritual">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow" data-i18n="rit.eyebrow">Primeira vez? É assim</p>
+        <h2 data-i18n-html="rit.h2">O ritual <span class="r">coreano</span></h2>
+        <p class="lead" data-i18n="rit.lead">No churrasco coreano não há pressa nem empratamento: a mesa é a cozinha e o jantar é o espetáculo.</p>
+      </div>
+      <div class="steps">
+        <div class="step rv"><div class="n">1</div><h3 data-i18n="rit.s1.t">A grelha acende</h3><p data-i18n="rit.s1">A carne chega crua e marinada — e grelha-se ali, no centro da mesa, ao teu ritmo.</p></div>
+        <div class="step rv d1"><div class="n">2</div><h3 data-i18n="rit.s2.t">Embrulha</h3><p data-i18n="rit.s2">Folha de alface na mão, carne, molho, banchan — cada bocado é feito por ti.</p></div>
+        <div class="step rv d2"><div class="n">3</div><h3 data-i18n="rit.s3.t">Partilha</h3><p data-i18n="rit.s3">Tudo vem para o meio e todos comem de tudo. É a mesa mais social do Algarve.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="grelha">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow" data-i18n="gr.eyebrow">Da grelha</p>
+        <h2 data-i18n-html="gr.h2">O que vai ao <span class="r">fogo</span></h2>
+        <p class="lead" data-i18n="gr.lead">Cortes marinados à coreana — com um pé no Algarve: do bulgogi clássico ao porco preto ibérico. Há opções vegetarianas a sério.</p>
+      </div>
+      <div class="dishes">
+        <article class="dish rv"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M110 330c40-40 140-40 180 0m-160 30c35-28 105-28 140 0" fill="none" stroke="#C9973B" stroke-width="1.2"/></svg>
+          <img src="media/prato-01.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><span class="tag" data-i18n="d1.tag">O clássico</span><h3>Bulgogi</h3><p data-i18n="d1.p">Novilho marinado, doce e fumado, a caramelizar na grelha.</p></div>
+        </article>
+        <article class="dish rv d1"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M120 360c20-50 60-80 80-80s60 30 80 80" fill="none" stroke="#C9973B" stroke-width="1.2"/><path d="M150 330h100" stroke="#C9973B" stroke-width="1.2" opacity=".6"/></svg>
+          <img src="media/prato-02.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><span class="tag" data-i18n="d2.tag">Coreia × Algarve</span><h3 data-i18n="d2.t">Porco preto ibérico</h3><p data-i18n="d2.p">O corte da casa: ibérico português, tratado à coreana.</p></div>
+        </article>
+        <article class="dish rv d2"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M150 380c-25-30-20-85 18-105s85-8 100 25-8 78-45 88" fill="none" stroke="#C9973B" stroke-width="1.2"/></svg>
+          <img src="media/prato-03.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><span class="tag" data-i18n="d3.tag">Com picante</span><h3 data-i18n="d3.t">Camarão kimchi</h3><p data-i18n="d3.p">Camarão e kimchi da casa — ácido, picante, viciante.</p></div>
+        </article>
+        <article class="dish rv"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><circle cx="150" cy="330" r="34" fill="none" stroke="#C9973B" stroke-width="1.2"/><circle cx="238" cy="316" r="26" fill="none" stroke="#C9973B" stroke-width="1.2" opacity=".7"/><circle cx="212" cy="392" r="30" fill="none" stroke="#C9973B" stroke-width="1.2" opacity=".5"/></svg>
+          <img src="media/prato-04.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><span class="tag" data-i18n="d4.tag">A perder de vista</span><h3>Banchan</h3><p data-i18n="d4.p">Os acompanhamentos coreanos que enchem a mesa — kimchi, lulas, cogumelos e mais.</p></div>
+        </article>
+      </div>
+      <p class="menu-note rv"><b data-i18n="gr.note.b">CARTA COMPLETA NA CASA</b> <span data-i18n="gr.note">— pratos e preços a confirmar com o cliente. Opções vegetarianas disponíveis.</span></p>
+    </div>
+  </section>
+
+  <section class="soju" id="soju">
+    <div class="glowp" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow rv" data-i18n="so.eyebrow">Para acompanhar</p>
+      <h2 class="rv d1" data-i18n-html="so.h2">Soju de <span class="p">pêssego</span></h2>
+      <p class="txt rv d2" data-i18n="so.txt">É o copo mais falado da casa: o cocktail de soju de pêssego que os visitantes descrevem como imperdível. Doce, fresco e perigosamente fácil.</p>
+      <p class="src rv d2" data-i18n="so.src">Destaque das avaliações públicas no Google.</p>
+    </div>
+  </section>
+
+  <section id="avaliacoes">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow" data-i18n="rev.eyebrow">Quem cá comeu</p>
+        <h2 data-i18n-html="rev.h2">4,9 estrelas. <span class="r">Quase perfeito.</span></h2>
+      </div>
+      <div class="reviews">
+        <blockquote class="review rv"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p data-i18n="rev.1">"Churrasco coreano autêntico — a grelha na mesa muda tudo."</p>
+        </blockquote>
+        <blockquote class="review rv d1"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p data-i18n="rev.2">"O cocktail de soju de pêssego é imperdível."</p>
+        </blockquote>
+        <blockquote class="review rv d2"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p data-i18n="rev.3">"Qualidade acima do preço — voltamos sempre."</p>
+        </blockquote>
+      </div>
+      <p class="review-src rv" data-i18n="rev.src">Sentido geral das avaliações públicas — não são citações literais.</p>
+      <div class="badges">
+        <div class="badge rv"><span class="big">4,9★</span><span class="txt" data-i18n="b1">497 avaliações no Google</span></div>
+        <div class="badge rv d1"><span class="big">9,5</span><span class="txt" data-i18n="b2">/10 no TheFork</span></div>
+        <div class="badge rv d2"><span class="big">5,0★</span><span class="txt" data-i18n="b3">no Tripadvisor</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow" data-i18n="con.eyebrow">Reservas e direções</p>
+        <h2 data-i18n-html="con.h2">A grelha está <span class="r">acesa</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="rv">
+          <p class="addr-big">R. Vasco da Gama 70<br>Quarteira</p>
+          <div class="hero-ctas">
+            <a class="cta" href="https://www.thefork.pt/restaurante/hanam-korean-barbecue-r848687" target="_blank" rel="noopener" data-i18n="cta.fork">Reservar no TheFork</a>
+            <a class="cta ghost" href="https://www.google.com/maps?q=Hanam%20Korean%20Barbecue%2C%20R.%20Vasco%20da%20Gama%2070%2C%20Quarteira" target="_blank" rel="noopener" data-i18n="cta.dir">Como chegar</a>
+          </div>
+          <div class="info-list">
+            <div><b data-i18n="con.hours.b">Horário</b><span data-i18n="con.hours">Até às 23:00 · abertura e dias de descanso a confirmar</span></div>
+            <div><b data-i18n="con.price.b">Preço médio</b>15–35 €</div>
+            <div><b data-i18n="con.tel.b">Telefone</b><span class="muted" data-i18n="con.tel">a confirmar</span></div>
+            <div><b>Instagram</b><a href="https://www.instagram.com/hanam_korean_barbecue/" target="_blank" rel="noopener">@hanam_korean_barbecue</a></div>
+          </div>
+        </div>
+        <div class="map rv d1">
+          <iframe src="https://www.google.com/maps?q=Hanam%20Korean%20Barbecue%2C%20R.%20Vasco%20da%20Gama%2070%2C%20Quarteira&output=embed" title="Mapa — Hanam Korean Barbecue, Quarteira" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yy">2026</span> Hanam Korean Barbecue 하남 — The Original</span>
+    <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener" data-i18n="foot.book">Livro de Reclamações</a>
+    <span data-i18n="foot.by">Website: Pacheco Studios</span>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  pt: {
+    "banner":"APRESENTAÇÃO PACHECO STUDIOS · Proposta de demonstração para o Hanam Korean Barbecue · telefone, horário de abertura e carta a confirmar",
+    "nav.ritual":"O ritual","nav.grill":"Da grelha","nav.soju":"Soju","nav.reviews":"Avaliações","nav.contact":"Contacto",
+    "cta.book":"Reservar mesa","cta.fork":"Reservar no TheFork","cta.menu":"Ver a grelha","cta.dir":"Como chegar",
+    "hero.eyebrow":"Churrasco coreano · R. Vasco da Gama · Quarteira",
+    "hero.h1":"A brasa é na mesa.",
+    "hero.sub":"Churrasco coreano a sério: a grelha acesa no meio da mesa, carne a estalar à tua frente e banchan a perder de vista. O original, em Quarteira.",
+    "chip.rev":"497 avaliações no Google","chip.late":"aberto até tarde",
+    "mq.pork":"Porco preto ibérico","mq.shrimp":"Camarão kimchi",
+    "rit.eyebrow":"Primeira vez? É assim","rit.h2":"O ritual <span class=\"r\">coreano</span>",
+    "rit.lead":"No churrasco coreano não há pressa nem empratamento: a mesa é a cozinha e o jantar é o espetáculo.",
+    "rit.s1.t":"A grelha acende","rit.s1":"A carne chega crua e marinada — e grelha-se ali, no centro da mesa, ao teu ritmo.",
+    "rit.s2.t":"Embrulha","rit.s2":"Folha de alface na mão, carne, molho, banchan — cada bocado é feito por ti.",
+    "rit.s3.t":"Partilha","rit.s3":"Tudo vem para o meio e todos comem de tudo. É a mesa mais social do Algarve.",
+    "gr.eyebrow":"Da grelha","gr.h2":"O que vai ao <span class=\"r\">fogo</span>",
+    "gr.lead":"Cortes marinados à coreana — com um pé no Algarve: do bulgogi clássico ao porco preto ibérico. Há opções vegetarianas a sério.",
+    "d1.tag":"O clássico","d1.p":"Novilho marinado, doce e fumado, a caramelizar na grelha.",
+    "d2.tag":"Coreia × Algarve","d2.t":"Porco preto ibérico","d2.p":"O corte da casa: ibérico português, tratado à coreana.",
+    "d3.tag":"Com picante","d3.t":"Camarão kimchi","d3.p":"Camarão e kimchi da casa — ácido, picante, viciante.",
+    "d4.tag":"A perder de vista","d4.p":"Os acompanhamentos coreanos que enchem a mesa — kimchi, lulas, cogumelos e mais.",
+    "gr.note.b":"CARTA COMPLETA NA CASA","gr.note":"— pratos e preços a confirmar com o cliente. Opções vegetarianas disponíveis.",
+    "so.eyebrow":"Para acompanhar","so.h2":"Soju de <span class=\"p\">pêssego</span>",
+    "so.txt":"É o copo mais falado da casa: o cocktail de soju de pêssego que os visitantes descrevem como imperdível. Doce, fresco e perigosamente fácil.",
+    "so.src":"Destaque das avaliações públicas no Google.",
+    "rev.eyebrow":"Quem cá comeu","rev.h2":"4,9 estrelas. <span class=\"r\">Quase perfeito.</span>",
+    "rev.1":"“Churrasco coreano autêntico — a grelha na mesa muda tudo.”",
+    "rev.2":"“O cocktail de soju de pêssego é imperdível.”",
+    "rev.3":"“Qualidade acima do preço — voltamos sempre.”",
+    "rev.src":"Sentido geral das avaliações públicas — não são citações literais.",
+    "b1":"497 avaliações no Google","b2":"/10 no TheFork","b3":"no Tripadvisor",
+    "con.eyebrow":"Reservas e direções","con.h2":"A grelha está <span class=\"r\">acesa</span>",
+    "con.hours.b":"Horário","con.hours":"Até às 23:00 · abertura e dias de descanso a confirmar",
+    "con.price.b":"Preço médio","con.tel.b":"Telefone","con.tel":"a confirmar",
+    "foot.book":"Livro de Reclamações","foot.by":"Website: Pacheco Studios"
+  },
+  en: {
+    "banner":"PACHECO STUDIOS PRESENTATION · Demo proposal for Hanam Korean Barbecue · phone, opening hours and menu to be confirmed",
+    "nav.ritual":"The ritual","nav.grill":"The grill","nav.soju":"Soju","nav.reviews":"Reviews","nav.contact":"Contact",
+    "cta.book":"Book a table","cta.fork":"Book on TheFork","cta.menu":"See the grill","cta.dir":"Directions",
+    "hero.eyebrow":"Korean barbecue · R. Vasco da Gama · Quarteira",
+    "hero.h1":"The fire is on your table.",
+    "hero.sub":"Real Korean barbecue: a live grill in the middle of your table, meat sizzling in front of you and banchan as far as the eye can see. The original, in Quarteira.",
+    "chip.rev":"497 Google reviews","chip.late":"open late",
+    "mq.pork":"Iberian black pork","mq.shrimp":"Kimchi shrimp",
+    "rit.eyebrow":"First time? Here's how","rit.h2":"The Korean <span class=\"r\">ritual</span>",
+    "rit.lead":"Korean barbecue has no hurry and no plating: the table is the kitchen and dinner is the show.",
+    "rit.s1.t":"The grill lights up","rit.s1":"Meat arrives raw and marinated — and grills right there, at the centre of the table, at your pace.",
+    "rit.s2.t":"Wrap it","rit.s2":"Lettuce leaf in hand, meat, sauce, banchan — every bite is built by you.",
+    "rit.s3.t":"Share it","rit.s3":"Everything lands in the middle and everyone eats everything. The most social table in the Algarve.",
+    "gr.eyebrow":"From the grill","gr.h2":"What goes on the <span class=\"r\">fire</span>",
+    "gr.lead":"Korean-marinated cuts — with one foot in the Algarve: from classic bulgogi to Iberian black pork. Real vegetarian options too.",
+    "d1.tag":"The classic","d1.p":"Marinated beef, sweet and smoky, caramelising on the grill.",
+    "d2.tag":"Korea × Algarve","d2.t":"Iberian black pork","d2.p":"The house cut: Portuguese ibérico, treated the Korean way.",
+    "d3.tag":"Bring the heat","d3.t":"Kimchi shrimp","d3.p":"Shrimp and house kimchi — sour, spicy, addictive.",
+    "d4.tag":"Endless","d4.p":"The Korean side dishes that fill the table — kimchi, squid, mushrooms and more.",
+    "gr.note.b":"FULL MENU AT THE RESTAURANT","gr.note":"— dishes and prices to be confirmed with the owner. Vegetarian options available.",
+    "so.eyebrow":"To go with it","so.h2":"Peach <span class=\"p\">soju</span>",
+    "so.txt":"The most talked-about glass in the house: the peach soju cocktail visitors call unmissable. Sweet, fresh and dangerously easy.",
+    "so.src":"Highlighted in public Google reviews.",
+    "rev.eyebrow":"From our guests","rev.h2":"4.9 stars. <span class=\"r\">Almost perfect.</span>",
+    "rev.1":"“Authentic Korean barbecue — the grill at the table changes everything.”",
+    "rev.2":"“The peach soju cocktail is unmissable.”",
+    "rev.3":"“Quality above the price — we always come back.”",
+    "rev.src":"General sense of public reviews — not literal quotes.",
+    "b1":"497 Google reviews","b2":"/10 on TheFork","b3":"on Tripadvisor",
+    "con.eyebrow":"Bookings & directions","con.h2":"The grill is <span class=\"r\">lit</span>",
+    "con.hours.b":"Opening hours","con.hours":"Until 23:00 · opening time and rest days to be confirmed",
+    "con.price.b":"Average price","con.tel.b":"Phone","con.tel":"to be confirmed",
+    "foot.book":"Complaints Book","foot.by":"Website: Pacheco Studios"
+  }
+};
+function setLang(l){
+  const d=I18N[l]||I18N.pt;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(d[k]!==undefined)el.textContent=d[k]});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(d[k]!==undefined)el.innerHTML=d[k]});
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===l)));
+  document.documentElement.lang=l==='pt'?'pt-PT':l;
+  try{localStorage.setItem('hn-lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+let saved='pt';try{saved=localStorage.getItem('hn-lang')||'pt'}catch(e){}
+if(saved!=='pt')setLang(saved);
+
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24),{passive:true});
+const burger=document.getElementById('burger'),links=document.getElementById('navlinks');
+burger.addEventListener('click',()=>{const o=burger.getAttribute('aria-expanded')==='true';burger.setAttribute('aria-expanded',String(!o));links.classList.toggle('open',!o)});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.setAttribute('aria-expanded','false');links.classList.remove('open')}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const mq=document.getElementById('mq');mq.innerHTML+=mq.innerHTML;
+document.getElementById('yy').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
