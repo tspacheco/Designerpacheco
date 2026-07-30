@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<!--
+  MR. BUFFALO STEAKHOUSE & TAPAS — Monte Gordo/Altura · Pacheco Studios (demo)
+  MEDIA A PRODUZIR (colocar na pasta media/ com estes nomes exatos):
+    media/hero.mp4         16:9  — corte a ser fatiado ou a grelhar sobre brasa (loop 8-15s, sem som)
+    media/hero-poster.jpg  16:9  — frame do vídeo (fallback)
+    media/corte-01.jpg     4:5   — wagyu
+    media/corte-02.jpg     4:5   — picanha
+    media/corte-03.jpg     4:5   — filé mignon
+    media/corte-04.jpg     4:5   — tábua para partilhar
+    media/corte-05.jpg     4:5   — camarões ao alho
+    media/corte-06.jpg     4:5   — burger da casa
+    media/tapas.jpg        3:2   — mesa de tapas
+  O site funciona sem qualquer media (placeholders SVG) e nunca parte.
+-->
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mr. Buffalo Steakhouse &amp; Tapas — carnes premium em Monte Gordo/Altura</title>
+<meta name="description" content="Steakhouse & tapas no sotavento algarvio. Wagyu, picanha e filé mignon na brasa, 4,8★ no Tripadvisor, cozinha aberta todos os dias até à meia-noite. Reservas por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@300;400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Mr. Buffalo Steakhouse & Tapas",
+  "servesCuisine": ["Steakhouse", "Churrascaria", "Tapas"],
+  "telephone": "+351913619433",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Tristão Vaz Teixeira 3",
+    "addressLocality": "Monte Gordo",
+    "postalCode": "8900-470",
+    "addressCountry": "PT"
+  },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "80" },
+  "award": "Tripadvisor Travelers' Choice",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "12:30", "closes": "15:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "18:30", "closes": "00:00" }
+  ],
+  "sameAs": ["https://www.instagram.com/mr.buffalo2024"]
+}
+</script>
+<style>
+:root{
+  --char:#1C1815; --char-2:#241E19; --char-3:#2C241D;
+  --ivory:#F3EDE3; --ivory-dim:rgba(243,237,227,.62);
+  --ember:#C97B33; --ember-hi:#DE9048;
+  --brass:#B99A5B;
+  --blood:#8E2F1E;
+  --line:rgba(185,154,91,.22);
+  --ease:cubic-bezier(.22,.61,.2,1);
+  --pad:clamp(1.25rem,4.5vw,4rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--char);color:var(--ivory);font:300 1.04rem/1.7 "Figtree",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:"Instrument Serif",serif;font-weight:400;line-height:1.04;letter-spacing:.01em}
+em,.it{font-style:italic;color:var(--ember)}
+a{color:inherit;text-decoration:none}
+img,video{max-width:100%;display:block}
+button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:2px}
+::selection{background:var(--ember);color:var(--char)}
+
+/* ---------- banner de apresentação (remover na versão de produção) ---------- */
+.pv-banner{background:var(--brass);color:var(--char);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:.45rem var(--pad);position:relative;z-index:60}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.5rem;padding:1.1rem var(--pad);transition:background .5s var(--ease),padding .5s var(--ease),box-shadow .5s}
+.nav.scrolled{background:rgba(28,24,21,.92);backdrop-filter:blur(12px);padding:.65rem var(--pad);box-shadow:0 1px 0 var(--line)}
+.brand{font-family:"Instrument Serif",serif;font-size:1.35rem;letter-spacing:.02em;white-space:nowrap;display:flex;align-items:baseline;gap:.45rem}
+.brand .star{color:var(--brass);font-size:.8em}
+.nav-links{display:flex;gap:1.6rem;margin-left:auto;align-items:center}
+.nav-links a{font-size:.8rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ivory-dim);transition:color .3s}
+.nav-links a:hover{color:var(--ivory)}
+.lang{display:flex;gap:.15rem;border:1px solid var(--line);border-radius:99px;padding:.15rem}
+.lang button{font-size:.68rem;font-weight:600;letter-spacing:.06em;padding:.25rem .55rem;border-radius:99px;color:var(--ivory-dim);transition:.3s}
+.lang button[aria-pressed="true"]{background:var(--brass);color:var(--char)}
+.cta{display:inline-block;background:var(--ember);color:var(--char);font-weight:600;font-size:.85rem;letter-spacing:.05em;padding:.8rem 1.6rem;border-radius:2px;transition:background .3s,transform .3s}
+.cta:hover{background:var(--ember-hi);transform:translateY(-1px)}
+.cta.ghost{background:transparent;color:var(--ivory);border:1px solid var(--line)}
+.cta.ghost:hover{background:rgba(185,154,91,.1);border-color:var(--brass)}
+.nav .cta{padding:.55rem 1.15rem}
+.burger{display:none;margin-left:auto;width:42px;height:42px;position:relative;z-index:55}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--ivory);transition:.35s var(--ease)}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.burger[aria-expanded="true"] span:nth-child(1){top:21px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){top:21px;transform:rotate(-45deg)}
+@media(max-width:900px){
+  .burger{display:block}
+  .nav-links{position:fixed;inset:0;background:rgba(28,24,21,.98);flex-direction:column;justify-content:center;gap:2rem;transform:translateY(-102%);transition:transform .5s var(--ease)}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.05rem}
+  .nav .cta{display:none}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(60% 45% at 72% 68%,rgba(201,123,51,.28),transparent 70%),
+  radial-gradient(45% 35% at 25% 85%,rgba(142,47,30,.22),transparent 70%),
+  linear-gradient(180deg,#151210,#1C1815 55%,#191512)}
+.hero-bg svg{position:absolute;inset:0;width:100%;height:100%}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,18,16,.55),rgba(21,18,16,.35) 40%,rgba(21,18,16,.82))}
+.hero-in{position:relative;z-index:2;width:100%;padding:9rem var(--pad) 4.5rem;max-width:1200px;margin:0 auto}
+.eyebrow{font-size:.74rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--brass);margin-bottom:1.2rem}
+.hero h1{font-size:clamp(3rem,9.5vw,7.5rem);max-width:12ch}
+.hero .sub{margin:1.4rem 0 2.2rem;max-width:52ch;color:var(--ivory-dim);font-size:clamp(1rem,1.6vw,1.15rem)}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:400;letter-spacing:.05em;color:var(--ivory-dim);border:1px solid var(--line);border-radius:99px;padding:.45rem .95rem}
+.chip b{color:var(--brass);font-weight:600}
+@media(max-width:680px){
+  .hero-shade{background:linear-gradient(180deg,rgba(21,18,16,.6),rgba(21,18,16,.45) 35%,rgba(16,13,11,.93))}
+  .hero-in{padding-bottom:5.5rem}
+}
+
+/* marbling line-art (assinatura) */
+.marble path{fill:none;stroke:var(--brass);stroke-width:1.1;opacity:.32;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 4.5s var(--ease) .6s forwards}
+.marble path.m2{animation-delay:1.1s;opacity:.2}
+.marble path.m3{animation-delay:1.6s;opacity:.14}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* entrada do hero */
+.h-seq{opacity:0;transform:translateY(24px);animation:rise .9s var(--ease) forwards}
+.h-seq.s2{animation-delay:.18s}.h-seq.s3{animation-delay:.36s}.h-seq.s4{animation-delay:.54s}.h-seq.s5{animation-delay:.72s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* ---------- marquee ---------- */
+.marquee{border-block:1px solid var(--line);padding:.9rem 0;overflow:hidden;background:var(--char-2)}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:mq 34s linear infinite;font-family:"Instrument Serif",serif;font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-dim);white-space:nowrap}
+.marquee-track .dot{color:var(--ember)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- secções ---------- */
+section{padding:clamp(4.5rem,9vw,8rem) var(--pad)}
+.wrap{max-width:1200px;margin:0 auto}
+.sec-head{margin-bottom:3.2rem;max-width:720px}
+h2{font-size:clamp(2.2rem,5.5vw,4rem);margin:.6rem 0 1rem}
+.lead{color:var(--ivory-dim);max-width:56ch}
+
+/* reveal no scroll */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+.rv.on{opacity:1;transform:none}
+
+/* ---------- cortes ---------- */
+.cuts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.cut{position:relative;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--char-2)}
+.cut-media{position:relative;aspect-ratio:4/5;overflow:hidden;background:
+  radial-gradient(70% 55% at 50% 80%,rgba(201,123,51,.3),transparent 72%),
+  linear-gradient(200deg,#2C241D,#1A1613)}
+.cut-media svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.cut-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.cut:hover .cut-media img{transform:scale(1.03)}
+.cut-body{padding:1.3rem 1.4rem 1.5rem}
+.cut h3{font-size:1.7rem;margin-bottom:.35rem}
+.cut p{font-size:.92rem;color:var(--ivory-dim)}
+.menu-note{margin-top:2.4rem;display:flex;align-items:center;gap:.8rem;color:var(--ivory-dim);font-size:.9rem}
+.menu-note b{color:var(--brass);font-weight:600;letter-spacing:.08em}
+
+/* ---------- ponto exato ---------- */
+.ponto{background:var(--char-2);border-block:1px solid var(--line)}
+.scale{margin:3rem 0 1rem;position:relative}
+.scale-bar{height:10px;border-radius:99px;background:linear-gradient(90deg,var(--blood),#A6512A 35%,var(--ember) 62%,#7A5230 85%,#4A3A28)}
+.scale-stops{display:flex;justify-content:space-between;margin-top:1.1rem}
+.stop{text-align:center;flex:1}
+.stop i{display:block;width:1px;height:14px;background:var(--line);margin:0 auto .5rem}
+.stop span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ivory-dim)}
+.promise{font-family:"Instrument Serif",serif;font-size:clamp(1.5rem,3.4vw,2.3rem);margin-top:2.6rem;max-width:26ch}
+@media(max-width:600px){.stop:nth-child(2) span,.stop:nth-child(4) span{visibility:hidden}}
+
+/* ---------- tapas ---------- */
+.tapas-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
+.tapas-media{position:relative;aspect-ratio:3/2;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:
+  radial-gradient(60% 60% at 30% 70%,rgba(185,154,91,.25),transparent 70%),
+  linear-gradient(160deg,#2C241D,#191512)}
+.tapas-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.tapas-media:hover img{transform:scale(1.03)}
+@media(max-width:860px){.tapas-grid{grid-template-columns:1fr}}
+
+/* ---------- meia-noite ---------- */
+.midnight{background:#100D0B;text-align:center;position:relative;overflow:hidden}
+.midnight .clock{font-family:"Instrument Serif",serif;font-size:clamp(6rem,22vw,17rem);line-height:.9;color:var(--ivory);letter-spacing:.02em}
+.midnight .clock em{color:var(--ember)}
+.midnight p{margin:1.8rem auto 0;max-width:44ch;color:var(--ivory-dim);font-size:1.08rem}
+.midnight .glow{position:absolute;left:50%;bottom:-30%;width:70vw;height:60%;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(201,123,51,.16),transparent 70%);pointer-events:none}
+
+/* ---------- avaliações ---------- */
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-bottom:2.6rem}
+.review{border:1px solid var(--line);border-radius:4px;padding:1.8rem;background:var(--char-2)}
+.review .stars{color:var(--brass);letter-spacing:.2em;font-size:.85rem;margin-bottom:1rem}
+.review p{font-family:"Instrument Serif",serif;font-size:1.25rem;line-height:1.35}
+.review-src{font-size:.78rem;color:var(--ivory-dim);letter-spacing:.04em}
+.ta-card{display:flex;align-items:center;gap:1.4rem;border:1px solid var(--brass);border-radius:4px;padding:1.4rem 1.8rem;background:linear-gradient(120deg,rgba(185,154,91,.1),transparent);flex-wrap:wrap;transition:background .3s}
+.ta-card:hover{background:linear-gradient(120deg,rgba(185,154,91,.18),transparent)}
+.ta-card .big{font-family:"Instrument Serif",serif;font-size:2.6rem;color:var(--brass)}
+.ta-card .txt{font-size:.9rem;color:var(--ivory-dim)}
+.ta-card .arrow{margin-left:auto;color:var(--brass)}
+
+/* ---------- contacto ---------- */
+.contact{background:var(--char-2);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.tel-big{font-family:"Instrument Serif",serif;font-size:clamp(2rem,5vw,3.4rem);display:inline-block;margin:.4rem 0 1.4rem;transition:color .3s}
+.tel-big:hover{color:var(--ember)}
+.info-list{display:grid;gap:1.1rem;margin-top:2rem;font-size:.95rem}
+.info-list b{display:block;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:.2rem}
+.info-list .muted{color:var(--ivory-dim)}
+.map{aspect-ratio:4/3;border:1px solid var(--line);border-radius:4px;overflow:hidden;filter:grayscale(1) contrast(1.05) brightness(.85)}
+.map iframe{width:100%;height:100%;border:0}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer{padding:2.2rem var(--pad);border-top:1px solid var(--line);font-size:.8rem;color:var(--ivory-dim)}
+footer .wrap{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer a{text-decoration:underline;text-underline-offset:3px}
+footer a:hover{color:var(--ivory)}
+
+/* ---------- whatsapp flutuante ---------- */
+.wa-fab{position:fixed;right:1.1rem;bottom:1.1rem;z-index:45;display:none;width:56px;height:56px;border-radius:50%;background:var(--ember);align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.45);transition:transform .3s,background .3s}
+.wa-fab:hover{transform:scale(1.06);background:var(--ember-hi)}
+.wa-fab svg{width:28px;height:28px;fill:var(--char)}
+@media(max-width:900px){.wa-fab{display:flex}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.h-seq{opacity:1!important;transform:none!important}
+  .marble path{stroke-dashoffset:0!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="pv-banner" data-i18n="banner">APRESENTAÇÃO PACHECO STUDIOS · Proposta de demonstração para o Mr. Buffalo · morada, carta e preços a confirmar</div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Mr. Buffalo Steakhouse e Tapas — início">MR.&nbsp;BUFFALO <span class="star" aria-hidden="true">★</span></a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="navlinks" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="navlinks" aria-label="Navegação principal">
+    <a href="#cortes" data-i18n="nav.cuts">Os cortes</a>
+    <a href="#ponto" data-i18n="nav.point">O ponto</a>
+    <a href="#tapas" data-i18n="nav.tapas">Tapas</a>
+    <a href="#avaliacoes" data-i18n="nav.reviews">Avaliações</a>
+    <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+    <div class="lang" role="group" aria-label="Idioma">
+      <button data-lang="pt" aria-pressed="true">PT</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+      <button data-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </nav>
+  <a class="cta wa-link" href="https://wa.me/351913619433?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Mr.%20Buffalo." data-i18n="cta.reserve">Reservar por WhatsApp</a>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" style="padding:0">
+    <div class="hero-bg" aria-hidden="true">
+      <svg class="marble" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+        <path d="M-40 620 C 220 540, 380 700, 640 610 S 1100 480, 1480 590"/>
+        <path class="m2" d="M-40 700 C 260 640, 460 780, 760 690 S 1180 570, 1480 680"/>
+        <path class="m3" d="M-40 540 C 180 470, 420 610, 700 530 S 1140 400, 1480 500"/>
+      </svg>
+    </div>
+    <video muted playsinline autoplay loop preload="metadata" poster="media/hero-poster.jpg"
+      onerror="this.remove()" aria-hidden="true">
+      <source src="media/hero.mp4" type="video/mp4" onerror="this.parentElement.remove()">
+    </video>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-in">
+      <p class="eyebrow h-seq" data-i18n="hero.eyebrow">Steakhouse &amp; Tapas · Monte Gordo — Altura</p>
+      <h1 class="h-seq s2" data-i18n-html="hero.h1">A <em>carne</em> como ela deve ser.</h1>
+      <p class="sub h-seq s3" data-i18n="hero.sub">Cortes premium, brasa a sério e cozinha aberta até à meia-noite, no sotavento algarvio.</p>
+      <div class="hero-ctas h-seq s4">
+        <a class="cta wa-link" href="https://wa.me/351913619433?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Mr.%20Buffalo." data-i18n="cta.reserve">Reservar por WhatsApp</a>
+        <a class="cta ghost" href="#cortes" data-i18n="cta.cuts">Ver os cortes</a>
+      </div>
+      <div class="chips h-seq s5">
+        <span class="chip"><b>4,8★</b>&nbsp;<span data-i18n="chip.reviews">80 avaliações</span></span>
+        <span class="chip"><b aria-hidden="true">◆</b>&nbsp;Travelers' Choice</span>
+        <span class="chip"><b>00:00</b>&nbsp;<span data-i18n="chip.open">todos os dias até à meia-noite</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="mq">
+      <span>Wagyu <span class="dot">·</span> Picanha <span class="dot">·</span> Filé Mignon <span class="dot">·</span> <span data-i18n="mq.board">Tábuas para partilhar</span> <span class="dot">·</span> <span data-i18n="mq.shrimp">Camarões ao alho</span> <span class="dot">·</span> <span data-i18n="mq.ember">Brasa</span> <span class="dot">·</span> <span data-i18n="mq.midnight">Até à meia-noite</span> <span class="dot">·</span>&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ============ OS CORTES ============ -->
+  <section id="cortes">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow" data-i18n="cuts.eyebrow">A carta da brasa</p>
+        <h2 data-i18n-html="cuts.h2">Os cortes que fazem a <em>casa</em></h2>
+        <p class="lead" data-i18n="cuts.lead">Carne de qualidade excecional, escolhida e assada com o respeito que merece. Isto é o que nos trouxe ao topo de Monte Gordo.</p>
+      </div>
+      <div class="cuts">
+        <article class="cut rv"><div class="cut-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M-20 380 C 90 330, 180 420, 300 360 S 420 300, 440 340" fill="none" stroke="#B99A5B" stroke-width="1" opacity=".5"/><path d="M-20 430 C 110 390, 220 470, 340 410" fill="none" stroke="#B99A5B" stroke-width="1" opacity=".3"/></svg>
+          <img src="media/corte-01.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="cut-body"><h3>Wagyu</h3><p data-i18n="cut.wagyu">Marmoreio que derrete antes de chegar ao garfo.</p></div>
+        </article>
+        <article class="cut rv d1"><div class="cut-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M-20 360 C 100 310, 200 400, 320 340 S 430 290, 440 320" fill="none" stroke="#B99A5B" stroke-width="1" opacity=".5"/></svg>
+          <img src="media/corte-02.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="cut-body"><h3>Picanha</h3><p data-i18n="cut.picanha">A capa dourada a estalar, fatiada à mesa.</p></div>
+        </article>
+        <article class="cut rv d2"><div class="cut-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M-20 400 C 120 350, 220 440, 350 380" fill="none" stroke="#B99A5B" stroke-width="1" opacity=".5"/></svg>
+          <img src="media/corte-03.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="cut-body"><h3>Filé Mignon</h3><p data-i18n="cut.mignon">Tão tenro que a faca é quase decorativa.</p></div>
+        </article>
+        <article class="cut rv"><div class="cut-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M-20 370 C 90 330, 190 410, 310 350 S 420 310, 440 330" fill="none" stroke="#B99A5B" stroke-width="1" opacity=".5"/></svg>
+          <img src="media/corte-04.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="cut-body"><h3 data-i18n="cut.board.t">Tábua para partilhar</h3><p data-i18n="cut.board">Vários cortes, uma mesa, zero pressa.</p></div>
+        </article>
+        <article class="cut rv d1"><div class="cut-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M-20 390 C 110 340, 210 430, 340 370" fill="none" stroke="#B99A5B" stroke-width="1" opacity=".5"/></svg>
+          <img src="media/corte-05.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="cut-body"><h3 data-i18n="cut.shrimp.t">Camarões ao alho</h3><p data-i18n="cut.shrimp">O alho a cantar no azeite antes da carne.</p></div>
+        </article>
+        <article class="cut rv d2"><div class="cut-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M-20 380 C 100 340, 200 420, 330 360" fill="none" stroke="#B99A5B" stroke-width="1" opacity=".5"/></svg>
+          <img src="media/corte-06.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="cut-body"><h3 data-i18n="cut.burger.t">Burger da casa</h3><p data-i18n="cut.burger">Artesanal, alto e sem vergonha de pingar.</p></div>
+        </article>
+      </div>
+      <p class="menu-note rv"><b data-i18n="cuts.note.b">CARTA EM PT · EN · ES</b> <span data-i18n="cuts.note">— preços na casa e na carta. Pergunte-nos pelo prato do dia.</span></p>
+    </div>
+  </section>
+
+  <!-- ============ O PONTO EXATO ============ -->
+  <section class="ponto" id="ponto">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow" data-i18n="point.eyebrow">A assinatura da casa</p>
+        <h2 data-i18n-html="point.h2">O ponto <em>exato</em></h2>
+        <p class="lead" data-i18n="point.lead">É o elogio que mais se repete nas avaliações: a carne chega como foi pedida. Sem interpretações, sem surpresas.</p>
+      </div>
+      <div class="scale rv d1" role="img" aria-label="Escala de pontos de cozedura, do em sangue ao bem passado">
+        <div class="scale-bar"></div>
+        <div class="scale-stops">
+          <div class="stop"><i></i><span data-i18n="point.s1">Em sangue</span></div>
+          <div class="stop"><i></i><span data-i18n="point.s2">Mal passado</span></div>
+          <div class="stop"><i></i><span data-i18n="point.s3">Médio</span></div>
+          <div class="stop"><i></i><span data-i18n="point.s4">Médio bem</span></div>
+          <div class="stop"><i></i><span data-i18n="point.s5">Bem passado</span></div>
+        </div>
+      </div>
+      <p class="promise rv d2" data-i18n-html="point.promise">"Pede o teu ponto. Chega <em>exato</em>. Sempre."</p>
+    </div>
+  </section>
+
+  <!-- ============ TAPAS & PARTILHA ============ -->
+  <section id="tapas">
+    <div class="wrap tapas-grid">
+      <div class="tapas-media rv">
+        <img src="media/tapas.jpg" alt="" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="rv d1">
+        <p class="eyebrow" data-i18n="tapas.eyebrow">Antes da carne</p>
+        <h2 data-i18n-html="tapas.h2">Tapas &amp; <em>partilha</em></h2>
+        <p class="lead" data-i18n="tapas.lead">A mesa começa descontraída: tapas para ir picando, conversa a aquecer, o grupo todo servido. Famílias e mesas grandes são a nossa especialidade — e o serviço acompanha, atento e sem pressas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ATÉ À MEIA-NOITE ============ -->
+  <section class="midnight" id="meianoite">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow rv" data-i18n="mid.eyebrow">Cozinha aberta todos os dias · 18:30 — 00:00</p>
+      <div class="clock rv d1" aria-hidden="true">0<em>0</em>:00</div>
+      <p class="rv d2" data-i18n="mid.text">Quando os outros fecham, a nossa brasa ainda canta. Jantar tardio, à vontade — a cozinha só fecha à meia-noite.</p>
+    </div>
+  </section>
+
+  <!-- ============ QUEM CÁ COMEU ============ -->
+  <section id="avaliacoes">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow" data-i18n="rev.eyebrow">Quem cá comeu</p>
+        <h2 data-i18n-html="rev.h2">4,8 estrelas não é <em>sorte</em></h2>
+      </div>
+      <div class="reviews">
+        <blockquote class="review rv"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p data-i18n="rev.1">"Pontos de cozedura exatos, sem falhar uma única vez."</p>
+        </blockquote>
+        <blockquote class="review rv d1"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p data-i18n="rev.2">"Serviço atento e personalizado, do início ao fim."</p>
+        </blockquote>
+        <blockquote class="review rv d2"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p data-i18n="rev.3">"Qualidade de topo a preços justos."</p>
+        </blockquote>
+      </div>
+      <p class="review-src rv" data-i18n="rev.src">Sentido geral das avaliações públicas no Tripadvisor — não são citações literais.</p>
+      <a class="ta-card rv d1" href="https://www.tripadvisor.pt/Search?q=Mr%20Buffalo%20Monte%20Gordo" target="_blank" rel="noopener">
+        <span class="big">4,8★</span>
+        <span class="txt" data-i18n="rev.ta">80 avaliações · nº 7 de 125 restaurantes em Monte Gordo · prémio Travelers' Choice. Ver no Tripadvisor.</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow" data-i18n="con.eyebrow">Reservas e direções</p>
+        <h2 data-i18n-html="con.h2">A brasa está <em>acesa</em></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="rv">
+          <a class="tel-big" href="tel:+351913619433">+351 913 619 433</a>
+          <div class="hero-ctas">
+            <a class="cta wa-link" href="https://wa.me/351913619433?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Mr.%20Buffalo." data-i18n="cta.reserve">Reservar por WhatsApp</a>
+            <a class="cta ghost" href="tel:+351913619433" data-i18n="cta.call">Ligar</a>
+          </div>
+          <div class="info-list">
+            <div><b data-i18n="con.addr.b">Morada</b>Rua Tristão Vaz Teixeira 3, 8900-470 Monte Gordo <span class="muted" data-i18n="con.addr.note">(a confirmar — possível nova morada em Altura)</span></div>
+            <div><b data-i18n="con.hours.b">Horário</b><span data-i18n="con.hours">Todos os dias · 12:30–15:30 e 18:30–00:00 — cozinha até à meia-noite</span></div>
+            <div><b data-i18n="con.pay.b">Pagamento</b><span data-i18n="con.pay">Numerário (cartão: a confirmar)</span></div>
+            <div><b>Instagram</b><a href="https://www.instagram.com/mr.buffalo2024" target="_blank" rel="noopener">@mr.buffalo2024</a></div>
+          </div>
+        </div>
+        <div class="map rv d1">
+          <iframe src="https://www.google.com/maps?q=Rua%20Trist%C3%A3o%20Vaz%20Teixeira%203%2C%20Monte%20Gordo&output=embed" title="Mapa — Mr. Buffalo, Monte Gordo" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yy">2026</span> Mr. Buffalo Steakhouse &amp; Tapas</span>
+    <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener" data-i18n="foot.book">Livro de Reclamações</a>
+    <span data-i18n="foot.by">Website: Pacheco Studios</span>
+  </div>
+</footer>
+
+<a class="wa-fab wa-link" href="https://wa.me/351913619433?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Mr.%20Buffalo." aria-label="Reservar por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+</a>
+
+<script>
+/* ---------- traduções ---------- */
+const I18N = {
+  pt: {
+    "banner":"APRESENTAÇÃO PACHECO STUDIOS · Proposta de demonstração para o Mr. Buffalo · morada, carta e preços a confirmar",
+    "nav.cuts":"Os cortes","nav.point":"O ponto","nav.tapas":"Tapas","nav.reviews":"Avaliações","nav.contact":"Contacto",
+    "cta.reserve":"Reservar por WhatsApp","cta.cuts":"Ver os cortes","cta.call":"Ligar",
+    "hero.eyebrow":"Steakhouse & Tapas · Monte Gordo — Altura",
+    "hero.h1":"A <em>carne</em> como ela deve ser.",
+    "hero.sub":"Cortes premium, brasa a sério e cozinha aberta até à meia-noite, no sotavento algarvio.",
+    "chip.reviews":"80 avaliações","chip.open":"todos os dias até à meia-noite",
+    "mq.board":"Tábuas para partilhar","mq.shrimp":"Camarões ao alho","mq.ember":"Brasa","mq.midnight":"Até à meia-noite",
+    "cuts.eyebrow":"A carta da brasa","cuts.h2":"Os cortes que fazem a <em>casa</em>",
+    "cuts.lead":"Carne de qualidade excecional, escolhida e assada com o respeito que merece. Isto é o que nos trouxe ao topo de Monte Gordo.",
+    "cut.wagyu":"Marmoreio que derrete antes de chegar ao garfo.",
+    "cut.picanha":"A capa dourada a estalar, fatiada à mesa.",
+    "cut.mignon":"Tão tenro que a faca é quase decorativa.",
+    "cut.board.t":"Tábua para partilhar","cut.board":"Vários cortes, uma mesa, zero pressa.",
+    "cut.shrimp.t":"Camarões ao alho","cut.shrimp":"O alho a cantar no azeite antes da carne.",
+    "cut.burger.t":"Burger da casa","cut.burger":"Artesanal, alto e sem vergonha de pingar.",
+    "cuts.note.b":"CARTA EM PT · EN · ES","cuts.note":"— preços na casa e na carta. Pergunte-nos pelo prato do dia.",
+    "point.eyebrow":"A assinatura da casa","point.h2":"O ponto <em>exato</em>",
+    "point.lead":"É o elogio que mais se repete nas avaliações: a carne chega como foi pedida. Sem interpretações, sem surpresas.",
+    "point.s1":"Em sangue","point.s2":"Mal passado","point.s3":"Médio","point.s4":"Médio bem","point.s5":"Bem passado",
+    "point.promise":"“Pede o teu ponto. Chega <em>exato</em>. Sempre.”",
+    "tapas.eyebrow":"Antes da carne","tapas.h2":"Tapas & <em>partilha</em>",
+    "tapas.lead":"A mesa começa descontraída: tapas para ir picando, conversa a aquecer, o grupo todo servido. Famílias e mesas grandes são a nossa especialidade — e o serviço acompanha, atento e sem pressas.",
+    "mid.eyebrow":"Cozinha aberta todos os dias · 18:30 — 00:00",
+    "mid.text":"Quando os outros fecham, a nossa brasa ainda canta. Jantar tardio, à vontade — a cozinha só fecha à meia-noite.",
+    "rev.eyebrow":"Quem cá comeu","rev.h2":"4,8 estrelas não é <em>sorte</em>",
+    "rev.1":"“Pontos de cozedura exatos, sem falhar uma única vez.”",
+    "rev.2":"“Serviço atento e personalizado, do início ao fim.”",
+    "rev.3":"“Qualidade de topo a preços justos.”",
+    "rev.src":"Sentido geral das avaliações públicas no Tripadvisor — não são citações literais.",
+    "rev.ta":"80 avaliações · nº 7 de 125 restaurantes em Monte Gordo · prémio Travelers' Choice. Ver no Tripadvisor.",
+    "con.eyebrow":"Reservas e direções","con.h2":"A brasa está <em>acesa</em>",
+    "con.addr.b":"Morada","con.addr.note":"(a confirmar — possível nova morada em Altura)",
+    "con.hours.b":"Horário","con.hours":"Todos os dias · 12:30–15:30 e 18:30–00:00 — cozinha até à meia-noite",
+    "con.pay.b":"Pagamento","con.pay":"Numerário (cartão: a confirmar)",
+    "foot.book":"Livro de Reclamações","foot.by":"Website: Pacheco Studios",
+    "wa":"Olá! Gostaria de reservar uma mesa no Mr. Buffalo."
+  },
+  en: {
+    "banner":"PACHECO STUDIOS PRESENTATION · Demo proposal for Mr. Buffalo · address, menu and prices to be confirmed",
+    "nav.cuts":"The cuts","nav.point":"The doneness","nav.tapas":"Tapas","nav.reviews":"Reviews","nav.contact":"Contact",
+    "cta.reserve":"Book on WhatsApp","cta.cuts":"See the cuts","cta.call":"Call us",
+    "hero.eyebrow":"Steakhouse & Tapas · Monte Gordo — Altura",
+    "hero.h1":"Meat, the way it <em>should</em> be.",
+    "hero.sub":"Premium cuts, real charcoal fire and a kitchen open until midnight, in the eastern Algarve.",
+    "chip.reviews":"80 reviews","chip.open":"every day until midnight",
+    "mq.board":"Sharing boards","mq.shrimp":"Garlic prawns","mq.ember":"Charcoal","mq.midnight":"Until midnight",
+    "cuts.eyebrow":"From the fire","cuts.h2":"The cuts that made the <em>house</em>",
+    "cuts.lead":"Exceptional meat, chosen and grilled with the respect it deserves. This is what took us to the top of Monte Gordo.",
+    "cut.wagyu":"Marbling that melts before it reaches the fork.",
+    "cut.picanha":"Golden crust crackling, sliced at the table.",
+    "cut.mignon":"So tender the knife is almost decorative.",
+    "cut.board.t":"Sharing board","cut.board":"Several cuts, one table, zero hurry.",
+    "cut.shrimp.t":"Garlic prawns","cut.shrimp":"Garlic singing in olive oil before the meat.",
+    "cut.burger.t":"House burger","cut.burger":"Handmade, tall, and proud to drip.",
+    "cuts.note.b":"MENU IN PT · EN · ES","cuts.note":"— prices at the restaurant and on the menu. Ask us about the dish of the day.",
+    "point.eyebrow":"The house signature","point.h2":"The <em>exact</em> doneness",
+    "point.lead":"It's the most repeated compliment in our reviews: the meat arrives the way you asked. No interpretations, no surprises.",
+    "point.s1":"Blue rare","point.s2":"Rare","point.s3":"Medium","point.s4":"Medium well","point.s5":"Well done",
+    "point.promise":"“Order your doneness. It arrives <em>exact</em>. Every time.”",
+    "tapas.eyebrow":"Before the meat","tapas.h2":"Tapas & <em>sharing</em>",
+    "tapas.lead":"The table starts relaxed: tapas to pick at, conversation warming up, the whole group served. Families and big tables are our specialty — with attentive, unhurried service.",
+    "mid.eyebrow":"Kitchen open every day · 6:30pm — midnight",
+    "mid.text":"When the others close, our fire still sings. Late dinner, at your own pace — the kitchen only closes at midnight.",
+    "rev.eyebrow":"From our guests","rev.h2":"4.8 stars is not <em>luck</em>",
+    "rev.1":"“Exact doneness, never missed once.”",
+    "rev.2":"“Attentive, personal service from start to finish.”",
+    "rev.3":"“Top quality at fair prices.”",
+    "rev.src":"General sense of public Tripadvisor reviews — not literal quotes.",
+    "rev.ta":"80 reviews · #7 of 125 restaurants in Monte Gordo · Travelers' Choice award. See on Tripadvisor.",
+    "con.eyebrow":"Bookings & directions","con.h2":"The fire is <em>lit</em>",
+    "con.addr.b":"Address","con.addr.note":"(to be confirmed — possible new address in Altura)",
+    "con.hours.b":"Opening hours","con.hours":"Every day · 12:30–15:30 and 18:30–00:00 — kitchen until midnight",
+    "con.pay.b":"Payment","con.pay":"Cash (card: to be confirmed)",
+    "foot.book":"Complaints Book","foot.by":"Website: Pacheco Studios",
+    "wa":"Hello! I'd like to book a table at Mr. Buffalo."
+  },
+  es: {
+    "banner":"PRESENTACIÓN PACHECO STUDIOS · Propuesta de demostración para Mr. Buffalo · dirección, carta y precios por confirmar",
+    "nav.cuts":"Los cortes","nav.point":"El punto","nav.tapas":"Tapas","nav.reviews":"Reseñas","nav.contact":"Contacto",
+    "cta.reserve":"Reservar por WhatsApp","cta.cuts":"Ver los cortes","cta.call":"Llamar",
+    "hero.eyebrow":"Steakhouse & Tapas · Monte Gordo — Altura",
+    "hero.h1":"La <em>carne</em> como debe ser.",
+    "hero.sub":"Cortes premium, brasa de verdad y cocina abierta hasta medianoche, a 15 minutos de Ayamonte.",
+    "chip.reviews":"80 reseñas","chip.open":"todos los días hasta medianoche",
+    "mq.board":"Tablas para compartir","mq.shrimp":"Gambas al ajillo","mq.ember":"Brasa","mq.midnight":"Hasta medianoche",
+    "cuts.eyebrow":"La carta de la brasa","cuts.h2":"Los cortes que hacen la <em>casa</em>",
+    "cuts.lead":"Carne de calidad excepcional, elegida y asada con el respeto que merece. Esto es lo que nos llevó a lo más alto de Monte Gordo.",
+    "cut.wagyu":"Un marmoleo que se deshace antes de llegar al tenedor.",
+    "cut.picanha":"La capa dorada crujiente, fileteada en la mesa.",
+    "cut.mignon":"Tan tierno que el cuchillo es casi decorativo.",
+    "cut.board.t":"Tabla para compartir","cut.board":"Varios cortes, una mesa, cero prisa.",
+    "cut.shrimp.t":"Gambas al ajillo","cut.shrimp":"El ajo cantando en el aceite antes de la carne.",
+    "cut.burger.t":"Burger de la casa","cut.burger":"Artesanal, alta y sin miedo a gotear.",
+    "cuts.note.b":"CARTA EN PT · EN · ES","cuts.note":"— precios en el local y en la carta. Pregúntanos por el plato del día.",
+    "point.eyebrow":"La firma de la casa","point.h2":"El punto <em>exacto</em>",
+    "point.lead":"Es el elogio que más se repite en las reseñas: la carne llega como la pediste. Sin interpretaciones, sin sorpresas.",
+    "point.s1":"Vuelta y vuelta","point.s2":"Poco hecha","point.s3":"Al punto","point.s4":"Punto pasado","point.s5":"Muy hecha",
+    "point.promise":"“Pide tu punto. Llega <em>exacto</em>. Siempre.”",
+    "tapas.eyebrow":"Antes de la carne","tapas.h2":"Tapas & <em>compartir</em>",
+    "tapas.lead":"La mesa empieza relajada: tapas para picar, la conversación calentando, todo el grupo servido. Familias y mesas grandes son nuestra especialidad — con un servicio atento y sin prisas.",
+    "mid.eyebrow":"Cocina abierta todos los días · 18:30 — 00:00",
+    "mid.text":"Cuando los demás cierran, nuestra brasa sigue cantando. Cena tardía, como en España — la cocina solo cierra a medianoche.",
+    "rev.eyebrow":"Quien ya comió aquí","rev.h2":"4,8 estrellas no es <em>suerte</em>",
+    "rev.1":"“Puntos de cocción exactos, sin fallar ni una vez.”",
+    "rev.2":"“Servicio atento y personalizado, de principio a fin.”",
+    "rev.3":"“Calidad de primera a precios justos.”",
+    "rev.src":"Sentido general de las reseñas públicas en Tripadvisor — no son citas literales.",
+    "rev.ta":"80 reseñas · nº 7 de 125 restaurantes en Monte Gordo · premio Travelers' Choice. Ver en Tripadvisor.",
+    "con.eyebrow":"Reservas y cómo llegar","con.h2":"La brasa está <em>encendida</em>",
+    "con.addr.b":"Dirección","con.addr.note":"(por confirmar — posible nueva dirección en Altura)",
+    "con.hours.b":"Horario","con.hours":"Todos los días · 12:30–15:30 y 18:30–00:00 — cocina hasta medianoche",
+    "con.pay.b":"Pago","con.pay":"Efectivo (tarjeta: por confirmar)",
+    "foot.book":"Libro de Reclamaciones","foot.by":"Web: Pacheco Studios",
+    "wa":"¡Hola! Me gustaría reservar una mesa en Mr. Buffalo."
+  }
+};
+
+function setLang(l){
+  const d = I18N[l] || I18N.pt;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.getAttribute('data-i18n'); if(d[k]!==undefined) el.textContent=d[k]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{ const k=el.getAttribute('data-i18n-html'); if(d[k]!==undefined) el.innerHTML=d[k]; });
+  document.querySelectorAll('.wa-link').forEach(a=>{ a.href='https://wa.me/351913619433?text='+encodeURIComponent(d.wa); });
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.lang===l)));
+  document.documentElement.lang = l==='pt' ? 'pt-PT' : l;
+  try{ localStorage.setItem('mb-lang', l); }catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+let saved='pt'; try{ saved=localStorage.getItem('mb-lang')||'pt'; }catch(e){}
+if(saved!=='pt') setLang(saved);
+
+/* ---------- nav ---------- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24),{passive:true});
+const burger=document.getElementById('burger'), links=document.getElementById('navlinks');
+burger.addEventListener('click',()=>{
+  const open=burger.getAttribute('aria-expanded')==='true';
+  burger.setAttribute('aria-expanded',String(!open));
+  links.classList.toggle('open',!open);
+});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  burger.setAttribute('aria-expanded','false'); links.classList.remove('open');
+}));
+
+/* ---------- reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} }),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ---------- marquee: duplicar faixa ---------- */
+const mq=document.getElementById('mq'); mq.innerHTML+=mq.innerHTML;
+
+document.getElementById('yy').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
