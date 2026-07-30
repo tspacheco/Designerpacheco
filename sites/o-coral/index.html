@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!--
+  RESTAURANTE O CORAL — Fuzeta · Pacheco Studios (demo)
+  MEDIA (opcional, pasta media/): hero.jpg 16:9 (peixe fresco / sala / fachada),
+  prato-01.jpg..03.jpg 4:5 (peixe do dia, fritos, marisco), sala.jpg 3:2.
+  O site funciona sem qualquer media.
+-->
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Restaurante O Coral — sabores do mar na Fuzeta</title>
+<meta name="description" content="Restaurante O Coral, Fuzeta: cozinha tradicional portuguesa, peixe fresco do mar algarvio, bons fritos e menu do dia. Rua da Liberdade 33.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"Restaurant",
+  "name":"Restaurante O Coral",
+  "servesCuisine":["Cozinha portuguesa","Peixe","Marisco"],
+  "telephone":"+351967418194",
+  "address":{"@type":"PostalAddress","streetAddress":"Rua da Liberdade 33","addressLocality":"Fuseta","addressCountry":"PT"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"162"}
+}
+</script>
+<style>
+:root{
+  --fundo:#0E1D26; --fundo-2:#132630; --areia:#EBDFC9; --areia-dim:rgba(235,223,201,.6);
+  --coral:#E4604E; --coral-hi:#F07260; --rosa:#EFC4B8;
+  --line:rgba(239,196,184,.2);
+  --ease:cubic-bezier(.22,.61,.2,1); --pad:clamp(1.25rem,4.5vw,4rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--fundo);color:var(--areia);font:300 1.04rem/1.7 "Nunito Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:"Lilita One",sans-serif;font-weight:400;line-height:1.08;letter-spacing:.012em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:2px}
+::selection{background:var(--coral);color:var(--fundo)}
+.pv-banner{background:var(--rosa);color:var(--fundo);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:.45rem var(--pad)}
+
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.5rem;padding:1rem var(--pad);background:var(--fundo);transition:box-shadow .4s,padding .4s var(--ease)}
+.nav.scrolled{box-shadow:0 1px 0 var(--line),0 10px 30px rgba(0,0,0,.4);padding:.6rem var(--pad)}
+.brand{font-family:"Lilita One",sans-serif;font-size:1.25rem;letter-spacing:.03em;display:flex;align-items:center;gap:.5rem}
+.brand svg{width:22px;height:22px;stroke:var(--coral);fill:none;stroke-width:2;stroke-linecap:round}
+.nav-links{display:flex;gap:1.6rem;margin-left:auto;align-items:center}
+.nav-links a{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--areia-dim);transition:color .3s}
+.nav-links a:hover{color:var(--areia)}
+.cta{display:inline-block;background:var(--coral);color:var(--fundo);font-weight:700;font-size:.85rem;letter-spacing:.04em;padding:.8rem 1.6rem;border-radius:99px;transition:background .3s,transform .3s}
+.cta:hover{background:var(--coral-hi);transform:translateY(-1px)}
+.cta.ghost{background:transparent;color:var(--areia);border:1px solid var(--line)}
+.cta.ghost:hover{background:rgba(239,196,184,.08);border-color:var(--rosa)}
+.nav .cta{padding:.55rem 1.15rem}
+.burger{display:none;margin-left:auto;width:42px;height:42px;position:relative;z-index:55}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--areia);transition:.35s var(--ease)}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.burger[aria-expanded="true"] span:nth-child(1){top:21px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){top:21px;transform:rotate(-45deg)}
+@media(max-width:900px){
+  .burger{display:block}
+  .nav-links{position:fixed;inset:0;background:rgba(14,29,38,.98);flex-direction:column;justify-content:center;gap:2rem;transform:translateY(-102%);transition:transform .5s var(--ease)}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.05rem}
+  .nav .cta{display:none}
+}
+
+.hero{position:relative;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden;padding:0}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(55% 45% at 78% 25%,rgba(239,196,184,.1),transparent 70%),
+  radial-gradient(50% 45% at 15% 90%,rgba(228,96,78,.18),transparent 70%),
+  linear-gradient(180deg,#0A161D,#0E1D26 60%,#0B1820)}
+/* coral a ramificar-se — assinatura */
+.reef{position:absolute;right:clamp(-40px,2vw,80px);bottom:-8px;width:clamp(220px,32vw,460px);height:auto}
+.reef path{fill:none;stroke:var(--coral);stroke-width:2;stroke-linecap:round;opacity:.55;stroke-dasharray:900;stroke-dashoffset:900;animation:grow 4s var(--ease) .5s forwards}
+.reef path.r2{animation-delay:1.2s;opacity:.35;stroke:var(--rosa)}
+.reef path.r3{animation-delay:1.9s;opacity:.25}
+@keyframes grow{to{stroke-dashoffset:0}}
+.hero img.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,29,.5),rgba(10,22,29,.28) 40%,rgba(10,22,29,.85))}
+.hero-in{position:relative;z-index:2;width:100%;padding:8rem var(--pad) 4.5rem;max-width:1200px;margin:0 auto}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--rosa);margin-bottom:1.2rem}
+.hero h1{font-size:clamp(2.6rem,8vw,6.4rem);max-width:13ch}
+.hero h1 .c{color:var(--coral-hi)}
+.hero .sub{margin:1.4rem 0 2.2rem;max-width:52ch;color:var(--areia-dim);font-size:clamp(1rem,1.6vw,1.15rem)}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;letter-spacing:.04em;color:var(--areia-dim);border:1px solid var(--line);border-radius:99px;padding:.45rem .95rem}
+.chip b{color:var(--rosa);font-weight:700}
+.h-seq{opacity:0;transform:translateY(22px);animation:rise .9s var(--ease) forwards}
+.h-seq.s2{animation-delay:.15s}.h-seq.s3{animation-delay:.3s}.h-seq.s4{animation-delay:.45s}.h-seq.s5{animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(max-width:680px){.hero-shade{background:linear-gradient(180deg,rgba(10,22,29,.55),rgba(10,22,29,.4) 35%,rgba(7,16,22,.94))}}
+
+.marquee{border-block:1px solid var(--line);padding:.9rem 0;overflow:hidden;background:var(--fundo-2)}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:mq 30s linear infinite;font-family:"Lilita One",sans-serif;font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--areia-dim);white-space:nowrap}
+.marquee-track .dot{color:var(--coral-hi)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:clamp(4rem,8vw,7rem) var(--pad)}
+.wrap{max-width:1150px;margin:0 auto}
+.sec-head{margin-bottom:3rem;max-width:720px}
+h2{font-size:clamp(1.9rem,4.8vw,3.4rem);margin:.6rem 0 1rem}
+h2 .c{color:var(--coral-hi)}
+.lead{color:var(--areia-dim);max-width:56ch}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+.rv.on{opacity:1;transform:none}
+
+.dishes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.dish{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--fundo-2)}
+.dish-media{position:relative;aspect-ratio:4/5;overflow:hidden;background:
+  radial-gradient(65% 50% at 50% 80%,rgba(228,96,78,.2),transparent 70%),
+  linear-gradient(195deg,#16303C,#0C1B23)}
+.dish-media svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.dish-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.dish:hover .dish-media img{transform:scale(1.03)}
+.dish-body{padding:1.2rem 1.3rem 1.4rem}
+.dish h3{font-size:1.25rem;margin-bottom:.35rem}
+.dish p{font-size:.92rem;color:var(--areia-dim)}
+
+.menu-dia{background:var(--coral);color:var(--fundo);text-align:center}
+.menu-dia .eyebrow{color:rgba(14,29,38,.65)}
+.menu-dia h2{color:var(--fundo);font-size:clamp(2.6rem,8vw,5.5rem)}
+.menu-dia p{margin:1.4rem auto 0;max-width:46ch;color:rgba(14,29,38,.8);font-size:1.05rem;font-weight:400}
+
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;margin-bottom:2rem}
+.review{border:1px solid var(--line);border-radius:8px;padding:1.7rem;background:var(--fundo-2)}
+.review .stars{color:var(--coral-hi);letter-spacing:.2em;font-size:.85rem;margin-bottom:.9rem}
+.review p{font-family:"Lilita One",sans-serif;font-size:1.1rem;line-height:1.45;letter-spacing:.01em}
+.review-src{font-size:.78rem;color:var(--areia-dim)}
+.rate-card{display:flex;align-items:center;gap:1.4rem;border:1px solid var(--rosa);border-radius:8px;padding:1.3rem 1.7rem;background:rgba(239,196,184,.06);flex-wrap:wrap;margin-top:2rem}
+.rate-card .big{font-family:"Lilita One",sans-serif;font-size:2.2rem;color:var(--rosa)}
+.rate-card .txt{font-size:.9rem;color:var(--areia-dim)}
+
+.contact{background:var(--fundo-2);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.tel-big{font-family:"Lilita One",sans-serif;font-size:clamp(1.8rem,4.5vw,3rem);display:inline-block;margin:.4rem 0 1.4rem;transition:color .3s}
+.tel-big:hover{color:var(--coral-hi)}
+.info-list{display:grid;gap:1.1rem;margin-top:1.6rem;font-size:.95rem}
+.info-list b{display:block;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rosa);margin-bottom:.2rem}
+.info-list .muted{color:var(--areia-dim)}
+.map{aspect-ratio:4/3;border:1px solid var(--line);border-radius:8px;overflow:hidden;filter:grayscale(1) brightness(.85)}
+.map iframe{width:100%;height:100%;border:0}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+footer{padding:2rem var(--pad);border-top:1px solid var(--line);font-size:.8rem;color:var(--areia-dim)}
+footer .wrap{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer a{text-decoration:underline;text-underline-offset:3px}
+footer a:hover{color:var(--areia)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.h-seq{opacity:1!important;transform:none!important}
+  .reef path{stroke-dashoffset:0!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="pv-banner">APRESENTAÇÃO PACHECO STUDIOS · Proposta de demonstração para o Restaurante O Coral · horário a confirmar</div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Restaurante O Coral — início">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V11m0 0C12 7 9 5 6 5m6 6c0-4 3-6 6-6M12 15c-2 0-4-1-5-3m5 3c2 0 4-1 5-3"/></svg>
+    O CORAL
+  </a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="navlinks" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="navlinks" aria-label="Navegação principal">
+    <a href="#mesa">A mesa</a>
+    <a href="#menudia">Menu do dia</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <a class="cta" href="tel:+351967418194">Ligar · 967 418 194</a>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <img class="photo" src="media/hero.jpg" alt="" onerror="this.remove()">
+    <div class="hero-shade" aria-hidden="true"></div>
+    <svg class="reef" viewBox="0 0 460 420" aria-hidden="true">
+      <path d="M230 420V300m0 0c0-50-30-70-60-80m60 80c0-60 25-85 55-95m-55 35c-25-5-45-25-50-55m50 55c20-10 40-35 42-70m-102 15c-15-5-25-20-28-40m145 60c15-12 22-30 22-52"/>
+      <path class="r2" d="M120 420v-80m0 0c0-30-18-45-38-52m38 52c0-35 15-52 35-60m-35 25c-12-4-22-15-26-32"/>
+      <path class="r3" d="M350 420v-70m0 0c0-28 14-42 32-50m-32 50c-2-30-16-45-34-50"/>
+    </svg>
+    <div class="hero-in">
+      <p class="eyebrow h-seq">Cozinha tradicional · Rua da Liberdade · Fuzeta</p>
+      <h1 class="h-seq s2">O mar cá de <span class="c">casa</span>.</h1>
+      <p class="sub h-seq s3">Peixe fresco do mar algarvio, fritos como antigamente e um menu do dia que faz a vila voltar — servidos com a simpatia de sempre.</p>
+      <div class="hero-ctas h-seq s4">
+        <a class="cta" href="tel:+351967418194">Ligar para reservar</a>
+        <a class="cta ghost" href="#mesa">Ver a mesa</a>
+      </div>
+      <div class="chips h-seq s5">
+        <span class="chip"><b>4,5★</b> 162 avaliações (Restaurant Guru)</span>
+        <span class="chip"><b>Menu do dia</b> elogiado</span>
+        <span class="chip"><b>Fuzeta</b> Rua da Liberdade 33</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="mq">
+      <span>Peixe fresco <span class="dot">·</span> Bons fritos <span class="dot">·</span> Menu do dia <span class="dot">·</span> Mar algarvio <span class="dot">·</span> Cozinha tradicional <span class="dot">·</span>&nbsp;</span>
+    </div>
+  </div>
+
+  <section id="mesa">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">O que se come</p>
+        <h2>Tradição sem <span class="c">truques</span></h2>
+        <p class="lead">Sabores portugueses de sempre, com o mar do Algarve a mandar na cozinha. Carta e preços na casa — pergunte o que há hoje.</p>
+      </div>
+      <div class="dishes">
+        <article class="dish rv"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M85 330c50-55 165-55 225-8-55 48-170 48-225 8Zm225-8 38-24-10 32 10 28-38-26" fill="none" stroke="#EFC4B8" stroke-width="1.3"/></svg>
+          <img src="media/prato-01.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Peixe fresco do dia</h3><p>Do mar algarvio para a grelha, escolhido de manhã.</p></div>
+        </article>
+        <article class="dish rv d1"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M110 380c30-15 60-15 90 0m-70-40c25-12 55-12 80 0m-95-38c30-14 75-14 105 0" fill="none" stroke="#EFC4B8" stroke-width="1.3"/></svg>
+          <img src="media/prato-02.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Os bons fritos</h3><p>Dourados e leves — a fama que as avaliações confirmam.</p></div>
+        </article>
+        <article class="dish rv d2"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M140 350c15-40 45-65 60-70 15 5 45 30 60 70-40 18-80 18-120 0Z" fill="none" stroke="#EFC4B8" stroke-width="1.3"/></svg>
+          <img src="media/prato-03.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Tesouros do mar</h3><p>Marisco e petiscos da costa, conforme a época.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-dia" id="menudia">
+    <div class="wrap">
+      <p class="eyebrow rv">De segunda a domingo, exceto terça</p>
+      <h2 class="rv d1">O menu do dia</h2>
+      <p class="rv d2">É a razão de tanta gente da vila almoçar aqui: comida honesta, bem servida, a preço certo. Muda todos os dias — o melhor é perguntar o de hoje.</p>
+    </div>
+  </section>
+
+  <section id="avaliacoes">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Quem cá comeu</p>
+        <h2>A vila dá <span class="c">nota alta</span></h2>
+      </div>
+      <div class="reviews">
+        <blockquote class="review rv"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p>"Peixe fresco e fritos como deve ser."</p>
+        </blockquote>
+        <blockquote class="review rv d1"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p>"Menu do dia excelente, preço justo."</p>
+        </blockquote>
+        <blockquote class="review rv d2"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p>"Serviço simpático, casa de confiança."</p>
+        </blockquote>
+      </div>
+      <p class="review-src rv">Sentido geral das avaliações públicas — não são citações literais.</p>
+      <div class="rate-card rv d1">
+        <span class="big">4,5★</span>
+        <span class="txt">162 avaliações no Restaurant Guru · ~4,6★ no Tripadvisor.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Reservas e direções</p>
+        <h2>Rua da Liberdade, <span class="c">33</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="rv">
+          <a class="tel-big" href="tel:+351967418194">+351 967 418 194</a>
+          <div class="hero-ctas">
+            <a class="cta" href="tel:+351967418194">Ligar para reservar</a>
+            <a class="cta ghost" href="https://www.google.com/maps?q=Restaurante%20O%20Coral%2C%20Rua%20da%20Liberdade%2033%2C%20Fuseta" target="_blank" rel="noopener">Como chegar</a>
+          </div>
+          <div class="info-list">
+            <div><b>Morada</b>Rua da Liberdade 33, Fuzeta</div>
+            <div><b>Horário</b><span class="muted">Almoço e jantar (pausa 15:00–18:30) · fecha à terça — a confirmar</span></div>
+          </div>
+        </div>
+        <div class="map rv d1">
+          <iframe src="https://www.google.com/maps?q=Restaurante%20O%20Coral%2C%20Rua%20da%20Liberdade%2033%2C%20Fuseta&output=embed" title="Mapa — Restaurante O Coral, Fuzeta" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yy">2026</span> Restaurante O Coral</span>
+    <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">Livro de Reclamações</a>
+    <span>Website: Pacheco Studios</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24),{passive:true});
+const burger=document.getElementById('burger'),links=document.getElementById('navlinks');
+burger.addEventListener('click',()=>{const o=burger.getAttribute('aria-expanded')==='true';burger.setAttribute('aria-expanded',String(!o));links.classList.toggle('open',!o)});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.setAttribute('aria-expanded','false');links.classList.remove('open')}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const mq=document.getElementById('mq');mq.innerHTML+=mq.innerHTML;
+document.getElementById('yy').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

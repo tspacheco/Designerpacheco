@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!--
+  IGUARIAS DA VILA — Fuzeta · Pacheco Studios (demo de redesign — "elevar, não substituir")
+  MEDIA (opcional, pasta media/): hero.jpg 16:9 (esplanada na praça / prato de assinatura),
+  prato-01.jpg..03.jpg 4:5, esplanada.jpg 3:2, musica.jpg 3:2.
+  O site funciona sem qualquer media.
+-->
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Iguarias da Vila — cozinha portuguesa na praça da Fuzeta</title>
+<meta name="description" content="Iguarias da Vila, Fuzeta: cozinha portuguesa com toque de hoje, esplanada soalheira na Praça da República, música ao vivo nos fins de semana de verão. Reservas no TheFork.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Mulish:wght@300;400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"Restaurant",
+  "name":"Iguarias da Vila",
+  "servesCuisine":["Cozinha portuguesa","Mediterrânica"],
+  "telephone":"+351289033909",
+  "email":"iguariasdavila@hotmail.com",
+  "foundingDate":"2018-07-10",
+  "address":{"@type":"PostalAddress","streetAddress":"Praça da República 8","addressLocality":"Fuseta","postalCode":"8700-035","addressCountry":"PT"},
+  "sameAs":["https://www.instagram.com/iguariasdavila","https://www.thefork.pt/restaurante/iguarias-da-vila-fuzeta-r606453"]
+}
+</script>
+<style>
+:root{
+  --creme:#F5EFE3; --creme-2:#EDE4D2; --tinta:#22301F;
+  --garrafa:#1F4A38; --garrafa-dim:rgba(31,74,56,.75);
+  --terra:#C0603A; --terra-hi:#D06F47; --dim:rgba(34,48,31,.62);
+  --line:rgba(34,48,31,.16);
+  --ease:cubic-bezier(.22,.61,.2,1); --pad:clamp(1.25rem,4.5vw,4rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--creme);color:var(--tinta);font:300 1.05rem/1.7 "Mulish",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:"Newsreader",serif;font-weight:400;line-height:1.06;letter-spacing:.005em}
+em{font-style:italic;color:var(--terra)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px;border-radius:2px}
+::selection{background:var(--garrafa);color:var(--creme)}
+.pv-banner{background:var(--garrafa);color:var(--creme);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:.45rem var(--pad)}
+
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.5rem;padding:1rem var(--pad);background:var(--creme);transition:box-shadow .4s,padding .4s var(--ease)}
+.nav.scrolled{box-shadow:0 1px 0 var(--line),0 8px 24px rgba(34,48,31,.07);padding:.6rem var(--pad)}
+.brand{font-family:"Newsreader",serif;font-size:1.35rem;font-style:italic}
+.nav-links{display:flex;gap:1.6rem;margin-left:auto;align-items:center}
+.nav-links a{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);transition:color .3s}
+.nav-links a:hover{color:var(--tinta)}
+.cta{display:inline-block;background:var(--terra);color:var(--creme);font-weight:700;font-size:.85rem;letter-spacing:.04em;padding:.8rem 1.6rem;border-radius:2px;transition:background .3s,transform .3s}
+.cta:hover{background:var(--terra-hi);transform:translateY(-1px)}
+.cta.ghost{background:transparent;color:var(--tinta);border:1px solid var(--line)}
+.cta.ghost:hover{background:rgba(31,74,56,.07);border-color:var(--garrafa)}
+.nav .cta{padding:.55rem 1.1rem}
+.burger{display:none;margin-left:auto;width:42px;height:42px;position:relative;z-index:55}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--tinta);transition:.35s var(--ease)}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.burger[aria-expanded="true"] span:nth-child(1){top:21px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){top:21px;transform:rotate(-45deg)}
+@media(max-width:900px){
+  .burger{display:block}
+  .nav-links{position:fixed;inset:0;background:var(--creme);flex-direction:column;justify-content:center;gap:2rem;transform:translateY(-102%);transition:transform .5s var(--ease)}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.05rem}
+  .nav .cta{display:none}
+}
+
+/* azulejo — assinatura: padrão a compor-se */
+.tiles{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.5}
+.tiles svg{position:absolute;width:72px;height:72px;stroke:var(--garrafa);fill:none;stroke-width:1;opacity:0;animation:tilein 1.2s var(--ease) forwards}
+@keyframes tilein{to{opacity:.35}}
+
+.hero{position:relative;padding:clamp(3.5rem,8vw,6.5rem) var(--pad) clamp(3rem,6vw,5rem);overflow:hidden}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--garrafa);margin-bottom:1.1rem}
+.hero h1{font-size:clamp(2.8rem,8vw,6.2rem);max-width:14ch}
+.hero .sub{margin:1.4rem 0 2.2rem;max-width:54ch;color:var(--dim);font-size:clamp(1rem,1.6vw,1.15rem)}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;letter-spacing:.04em;color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:.45rem .95rem;background:rgba(255,255,255,.45)}
+.chip b{color:var(--garrafa);font-weight:700}
+.h-seq{opacity:0;transform:translateY(22px);animation:rise .9s var(--ease) forwards}
+.h-seq.s2{animation-delay:.15s}.h-seq.s3{animation-delay:.3s}.h-seq.s4{animation-delay:.45s}.h-seq.s5{animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+.marquee{border-block:1px solid var(--line);padding:.85rem 0;overflow:hidden;background:var(--creme-2)}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:mq 32s linear infinite;font-family:"Newsreader",serif;font-style:italic;font-size:1.05rem;letter-spacing:.1em;color:var(--dim);white-space:nowrap}
+.marquee-track .dot{color:var(--terra)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:clamp(4rem,8vw,7rem) var(--pad)}
+.wrap{max-width:1150px;margin:0 auto}
+.sec-head{margin-bottom:3rem;max-width:720px}
+h2{font-size:clamp(2rem,5vw,3.6rem);margin:.6rem 0 1rem}
+.lead{color:var(--dim);max-width:58ch}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+.rv.on{opacity:1;transform:none}
+
+.dishes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.dish{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#FBF7EE}
+.dish-media{position:relative;aspect-ratio:4/5;overflow:hidden;background:
+  radial-gradient(65% 50% at 50% 78%,rgba(192,96,58,.2),transparent 70%),
+  linear-gradient(195deg,#E6DCC6,#F0E9D8)}
+.dish-media svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.dish-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.dish:hover .dish-media img{transform:scale(1.03)}
+.dish-body{padding:1.2rem 1.3rem 1.4rem}
+.dish h3{font-size:1.5rem;margin-bottom:.35rem}
+.dish p{font-size:.92rem;color:var(--dim)}
+
+.vila{background:var(--garrafa);color:var(--creme);position:relative;overflow:hidden}
+.vila .eyebrow{color:#D8C08B}
+.vila h2{color:var(--creme)}
+.vila .lead{color:rgba(245,239,227,.72)}
+.vila-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;position:relative;z-index:2}
+.vila-media{position:relative;aspect-ratio:3/2;border-radius:4px;overflow:hidden;border:1px solid rgba(245,239,227,.25);background:
+  radial-gradient(60% 60% at 35% 65%,rgba(216,192,139,.22),transparent 70%),
+  linear-gradient(160deg,#2A5D47,#173A2C)}
+.vila-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.vila-media:hover img{transform:scale(1.03)}
+.vila-facts{display:grid;gap:1rem;margin-top:1.8rem}
+.vila-facts div{border-left:2px solid #D8C08B;padding-left:1rem;font-size:.95rem;color:rgba(245,239,227,.85)}
+.vila-facts b{color:var(--creme)}
+@media(max-width:860px){.vila-grid{grid-template-columns:1fr}}
+
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;margin-bottom:2rem}
+.review{border:1px solid var(--line);border-radius:4px;padding:1.7rem;background:#FBF7EE}
+.review .stars{color:var(--terra);letter-spacing:.2em;font-size:.85rem;margin-bottom:.9rem}
+.review p{font-family:"Newsreader",serif;font-size:1.2rem;line-height:1.4}
+.review-src{font-size:.78rem;color:var(--dim)}
+.rate-card{display:flex;align-items:center;gap:1.4rem;border:1px solid var(--garrafa);border-radius:4px;padding:1.3rem 1.7rem;background:rgba(31,74,56,.06);flex-wrap:wrap;margin-top:2rem}
+.rate-card .big{font-family:"Newsreader",serif;font-size:2.4rem;color:var(--garrafa)}
+.rate-card .txt{font-size:.9rem;color:var(--dim)}
+
+.contact{background:var(--creme-2);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.tel-big{font-family:"Newsreader",serif;font-size:clamp(1.8rem,4.5vw,3rem);display:inline-block;margin:.4rem 0 1.4rem;transition:color .3s}
+.tel-big:hover{color:var(--terra)}
+.info-list{display:grid;gap:1.1rem;margin-top:1.6rem;font-size:.95rem}
+.info-list b{display:block;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--garrafa);margin-bottom:.2rem}
+.info-list .muted{color:var(--dim)}
+.map{aspect-ratio:4/3;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.map iframe{width:100%;height:100%;border:0}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+footer{padding:2rem var(--pad);border-top:1px solid var(--line);font-size:.8rem;color:var(--dim)}
+footer .wrap{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer a{text-decoration:underline;text-underline-offset:3px}
+footer a:hover{color:var(--tinta)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.h-seq{opacity:1!important;transform:none!important}
+  .tiles svg{opacity:.35!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="pv-banner">APRESENTAÇÃO PACHECO STUDIOS · Proposta de demonstração para o Iguarias da Vila · carta e horário a confirmar</div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Iguarias da Vila — início">Iguarias da Vila</a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="navlinks" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="navlinks" aria-label="Navegação principal">
+    <a href="#iguarias">As iguarias</a>
+    <a href="#vila">A vila</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <a class="cta" href="https://www.thefork.pt/restaurante/iguarias-da-vila-fuzeta-r606453" target="_blank" rel="noopener">Reservar mesa</a>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="tiles" aria-hidden="true" id="tiles"></div>
+    <div class="wrap">
+      <p class="eyebrow h-seq">Cozinha portuguesa · Praça da República · Fuzeta</p>
+      <h1 class="h-seq s2">A vila à mesa, <em>devagarinho</em>.</h1>
+      <p class="sub h-seq s3">Iguarias tradicionais com um toque de hoje, uma esplanada soalheira no coração da praça — e música ao vivo nos fins de semana de verão. Desde 2018, a poucos metros do cais da ilha.</p>
+      <div class="hero-ctas h-seq s4">
+        <a class="cta" href="https://www.thefork.pt/restaurante/iguarias-da-vila-fuzeta-r606453" target="_blank" rel="noopener">Reservar no TheFork</a>
+        <a class="cta ghost" href="tel:+351289033909">Ligar</a>
+      </div>
+      <div class="chips h-seq s5">
+        <span class="chip"><b>4,5★</b> Tripadvisor · nº 5 de 32 na Fuzeta</span>
+        <span class="chip"><b>Esplanada</b> na praça</span>
+        <span class="chip"><b>Música ao vivo</b> verão, fins de semana</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="mq">
+      <span>Iguarias tradicionais <span class="dot">·</span> Sugestões do dia <span class="dot">·</span> Petiscos <span class="dot">·</span> Opções vegetarianas <span class="dot">·</span> Esplanada <span class="dot">·</span> Música ao vivo <span class="dot">·</span>&nbsp;</span>
+    </div>
+  </div>
+
+  <section id="iguarias">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">A carta</p>
+        <h2>Iguarias, no plural <em>certo</em></h2>
+        <p class="lead">Pratos pequenos para picar, sugestões que mudam com o dia e clássicos portugueses bem feitos — com opções vegetarianas a sério, não de enfeite. Preço médio à volta de 19 €.</p>
+      </div>
+      <div class="dishes">
+        <article class="dish rv"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><circle cx="200" cy="330" r="85" fill="none" stroke="#1F4A38" stroke-width="1.3"/><circle cx="200" cy="330" r="60" fill="none" stroke="#1F4A38" stroke-width="1" opacity=".6"/></svg>
+          <img src="media/prato-01.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Petiscos da vila</h3><p>Para o meio da mesa: o começo certo de qualquer conversa.</p></div>
+        </article>
+        <article class="dish rv d1"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M120 300h160m-150 30h140m-130 30h120" stroke="#1F4A38" stroke-width="1.3" fill="none"/></svg>
+          <img src="media/prato-02.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Sugestões do dia</h3><p>O que o mercado e a maré mandarem — pergunte antes de escolher.</p></div>
+        </article>
+        <article class="dish rv d2"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M150 390c0-60 30-100 50-110 20 10 50 50 50 110m-100-40h100" stroke="#1F4A38" stroke-width="1.3" fill="none"/></svg>
+          <img src="media/prato-03.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Clássicos portugueses</h3><p>A tradição respeitada, empratada com cuidado de hoje.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="vila" id="vila">
+    <div class="wrap vila-grid">
+      <div class="rv">
+        <p class="eyebrow">O sítio</p>
+        <h2>Na praça, ao lado do cais</h2>
+        <p class="lead">A Fuzeta acontece na Praça da República — e nós estamos no meio dela desde julho de 2018. Sol na esplanada, o barco da ilha a partir ali ao lado, e nos fins de semana de verão, música ao vivo a acompanhar o jantar.</p>
+        <div class="vila-facts">
+          <div><b>Desde 2018</b> — abrimos a 10 de julho, para dar à Fuzeta uma casa nova de comer bem.</div>
+          <div><b>Esplanada soalheira</b> — refeições ao ar livre a qualquer hora do dia.</div>
+          <div><b>Falamos a sua língua</b> — equipa atenta, fluente em inglês.</div>
+        </div>
+      </div>
+      <div class="vila-media rv d1">
+        <img src="media/esplanada.jpg" alt="" loading="lazy" onerror="this.remove()">
+      </div>
+    </div>
+  </section>
+
+  <section id="avaliacoes">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Quem cá comeu</p>
+        <h2>Entre os primeiros da <em>Fuzeta</em></h2>
+      </div>
+      <div class="reviews">
+        <blockquote class="review rv"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p>"Serviço simpático, atento e que conhece a carta."</p>
+        </blockquote>
+        <blockquote class="review rv d1"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p>"Tradicional com toque moderno — e opções para todos."</p>
+        </blockquote>
+        <blockquote class="review rv d2"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p>"A esplanada na praça é o sítio certo da vila."</p>
+        </blockquote>
+      </div>
+      <p class="review-src rv">Sentido geral das avaliações públicas — não são citações literais.</p>
+      <div class="rate-card rv d1">
+        <span class="big">4,5★</span>
+        <span class="txt">Tripadvisor — nº 5 de 32 restaurantes na Fuzeta. Reservas online no TheFork.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Reservas e direções</p>
+        <h2>Apareça pela <em>praça</em></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="rv">
+          <a class="tel-big" href="tel:+351289033909">+351 289 033 909</a>
+          <div class="hero-ctas">
+            <a class="cta" href="https://www.thefork.pt/restaurante/iguarias-da-vila-fuzeta-r606453" target="_blank" rel="noopener">Reservar no TheFork</a>
+            <a class="cta ghost" href="tel:+351289033909">Ligar</a>
+          </div>
+          <div class="info-list">
+            <div><b>Morada</b>Praça da República 8, 8700-035 Fuzeta</div>
+            <div><b>Horário</b><span class="muted">a confirmar</span></div>
+            <div><b>Email</b><a href="mailto:iguariasdavila@hotmail.com">iguariasdavila@hotmail.com</a></div>
+            <div><b>Instagram</b><a href="https://www.instagram.com/iguariasdavila" target="_blank" rel="noopener">@iguariasdavila</a></div>
+          </div>
+        </div>
+        <div class="map rv d1">
+          <iframe src="https://www.google.com/maps?q=Iguarias%20da%20Vila%2C%20Pra%C3%A7a%20da%20Rep%C3%BAblica%208%2C%20Fuseta&output=embed" title="Mapa — Iguarias da Vila, Fuzeta" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yy">2026</span> Iguarias da Vila</span>
+    <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">Livro de Reclamações</a>
+    <span>Website: Pacheco Studios</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24),{passive:true});
+const burger=document.getElementById('burger'),links=document.getElementById('navlinks');
+burger.addEventListener('click',()=>{const o=burger.getAttribute('aria-expanded')==='true';burger.setAttribute('aria-expanded',String(!o));links.classList.toggle('open',!o)});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.setAttribute('aria-expanded','false');links.classList.remove('open')}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const mq=document.getElementById('mq');mq.innerHTML+=mq.innerHTML;
+
+/* azulejo: grelha do canto superior direito a compor-se, atrasos determinísticos */
+const tiles=document.getElementById('tiles');
+const TILE='<svg viewBox="0 0 72 72" style="right:Rpx;top:Tpx;animation-delay:Ds"><path d="M36 4 68 36 36 68 4 36Z"/><circle cx="36" cy="36" r="12"/></svg>';
+for(let r=0;r<3;r++)for(let c=0;c<5;c++){
+  tiles.insertAdjacentHTML('beforeend',TILE.replace('R',c*76).replace('T',r*76).replace('D',(0.4+(r*5+c)*0.12).toFixed(2)));
+}
+document.getElementById('yy').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

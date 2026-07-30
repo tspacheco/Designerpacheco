@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!--
+  PAULO MOLINA PEIXE E MARISCO — Fuzeta · Pacheco Studios (demo)
+  MEDIA (opcional, pasta media/): hero.jpg 16:9 (grelha com peixe / banca de marisco),
+  prato-01.jpg..04.jpg 4:5 (peixe grelhado, mariscada, camarão, lulas), mestre.jpg 3:4 (mestre Rui na grelha).
+  O site funciona sem qualquer media.
+-->
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paulo Molina Peixe e Marisco — grelha de mestre na Fuzeta</title>
+<meta name="description" content="Paulo Molina Peixe e Marisco, Fuzeta: peixe fresco grelhado sempre no ponto pelo mestre Rui, marisco da Ria Formosa. 4,5★.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Albert+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"Restaurant",
+  "name":"Paulo Molina Peixe e Marisco",
+  "servesCuisine":["Peixe","Marisco","Cozinha portuguesa"],
+  "address":{"@type":"PostalAddress","addressLocality":"Fuseta","addressCountry":"PT"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"55"}
+}
+</script>
+<style>
+:root{
+  --mar:#0C2733; --mar-2:#10303E; --gelo:#EAF3F5; --gelo-dim:rgba(234,243,245,.62);
+  --lagosta:#CE4B2E; --lagosta-hi:#E05C3D; --prata:#9FB6BE;
+  --line:rgba(159,182,190,.22);
+  --ease:cubic-bezier(.22,.61,.2,1); --pad:clamp(1.25rem,4.5vw,4rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--mar);color:var(--gelo);font:300 1.04rem/1.7 "Albert Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:"Chonburi",serif;font-weight:400;line-height:1.12;letter-spacing:.01em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--lagosta);outline-offset:3px;border-radius:2px}
+::selection{background:var(--lagosta);color:var(--gelo)}
+.pv-banner{background:var(--prata);color:var(--mar);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:.45rem var(--pad)}
+
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.5rem;padding:1rem var(--pad);background:var(--mar);transition:box-shadow .4s,padding .4s var(--ease)}
+.nav.scrolled{box-shadow:0 1px 0 var(--line),0 10px 30px rgba(0,0,0,.35);padding:.6rem var(--pad)}
+.brand{font-family:"Chonburi",serif;font-size:1.1rem;line-height:1.1}
+.brand small{display:block;font-family:"Albert Sans",sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--prata)}
+.nav-links{display:flex;gap:1.6rem;margin-left:auto;align-items:center}
+.nav-links a{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gelo-dim);transition:color .3s}
+.nav-links a:hover{color:var(--gelo)}
+.cta{display:inline-block;background:var(--lagosta);color:var(--gelo);font-weight:600;font-size:.85rem;letter-spacing:.04em;padding:.8rem 1.6rem;border-radius:2px;transition:background .3s,transform .3s}
+.cta:hover{background:var(--lagosta-hi);transform:translateY(-1px)}
+.cta.ghost{background:transparent;color:var(--gelo);border:1px solid var(--line)}
+.cta.ghost:hover{background:rgba(159,182,190,.1);border-color:var(--prata)}
+.nav .cta{padding:.55rem 1.1rem}
+.burger{display:none;margin-left:auto;width:42px;height:42px;position:relative;z-index:55}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--gelo);transition:.35s var(--ease)}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.burger[aria-expanded="true"] span:nth-child(1){top:21px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){top:21px;transform:rotate(-45deg)}
+@media(max-width:900px){
+  .burger{display:block}
+  .nav-links{position:fixed;inset:0;background:rgba(12,39,51,.98);flex-direction:column;justify-content:center;gap:2rem;transform:translateY(-102%);transition:transform .5s var(--ease)}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.05rem}
+  .nav .cta{display:none}
+}
+
+.hero{position:relative;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden;padding:0}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(55% 45% at 75% 30%,rgba(159,182,190,.14),transparent 70%),
+  radial-gradient(50% 40% at 20% 85%,rgba(206,75,46,.16),transparent 70%),
+  linear-gradient(180deg,#0A2029,#0C2733 60%,#0A222D)}
+.hero img.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,32,41,.5),rgba(10,32,41,.3) 40%,rgba(10,32,41,.85))}
+.hero-in{position:relative;z-index:2;width:100%;padding:8rem var(--pad) 4.5rem;max-width:1200px;margin:0 auto}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--prata);margin-bottom:1.2rem}
+.hero h1{font-size:clamp(2.4rem,7vw,5.6rem);max-width:14ch}
+.hero h1 .fire{color:var(--lagosta-hi)}
+.hero .sub{margin:1.4rem 0 2.2rem;max-width:52ch;color:var(--gelo-dim);font-size:clamp(1rem,1.6vw,1.15rem)}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;letter-spacing:.04em;color:var(--gelo-dim);border:1px solid var(--line);border-radius:99px;padding:.45rem .95rem}
+.chip b{color:var(--prata);font-weight:600}
+.h-seq{opacity:0;transform:translateY(22px);animation:rise .9s var(--ease) forwards}
+.h-seq.s2{animation-delay:.15s}.h-seq.s3{animation-delay:.3s}.h-seq.s4{animation-delay:.45s}.h-seq.s5{animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(max-width:680px){.hero-shade{background:linear-gradient(180deg,rgba(10,32,41,.55),rgba(10,32,41,.4) 35%,rgba(7,22,29,.94))}}
+
+/* cardume — assinatura: peixes a atravessar */
+.school{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.school svg{position:absolute;width:36px;height:16px;fill:none;stroke:var(--prata);stroke-width:1.2;opacity:.4;animation:swim linear infinite}
+@keyframes swim{from{transform:translateX(-60px)}to{transform:translateX(110vw)}}
+
+.marquee{border-block:1px solid var(--line);padding:.9rem 0;overflow:hidden;background:var(--mar-2)}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:mq 32s linear infinite;font-family:"Chonburi",serif;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gelo-dim);white-space:nowrap}
+.marquee-track .dot{color:var(--lagosta-hi)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:clamp(4rem,8vw,7rem) var(--pad)}
+.wrap{max-width:1150px;margin:0 auto}
+.sec-head{margin-bottom:3rem;max-width:720px}
+h2{font-size:clamp(1.9rem,4.6vw,3.3rem);margin:.6rem 0 1rem}
+h2 .fire{color:var(--lagosta-hi)}
+.lead{color:var(--gelo-dim);max-width:56ch}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+.rv.on{opacity:1;transform:none}
+
+.dishes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.dish{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--mar-2)}
+.dish-media{position:relative;aspect-ratio:4/5;overflow:hidden;background:
+  radial-gradient(65% 50% at 50% 80%,rgba(206,75,46,.22),transparent 70%),
+  linear-gradient(195deg,#12394A,#0B222C)}
+.dish-media svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.dish-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.dish:hover .dish-media img{transform:scale(1.03)}
+.dish-body{padding:1.2rem 1.3rem 1.4rem}
+.dish h3{font-size:1.2rem;margin-bottom:.35rem}
+.dish p{font-size:.92rem;color:var(--gelo-dim)}
+
+.mestre{background:var(--mar-2);border-block:1px solid var(--line)}
+.mestre-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;align-items:center}
+.mestre-media{position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:
+  radial-gradient(60% 50% at 50% 30%,rgba(159,182,190,.16),transparent 70%),
+  linear-gradient(180deg,#12394A,#0B222C)}
+.mestre-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.press{border-left:3px solid var(--lagosta);padding:1.2rem 1.6rem;margin-top:2rem;background:rgba(206,75,46,.07)}
+.press p{font-family:"Chonburi",serif;font-size:clamp(1.2rem,2.6vw,1.7rem);line-height:1.35}
+.press cite{display:block;font-style:normal;font-family:"Albert Sans",sans-serif;font-size:.78rem;letter-spacing:.06em;color:var(--gelo-dim);margin-top:.8rem}
+.press a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:860px){.mestre-grid{grid-template-columns:1fr}}
+
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;margin-bottom:2rem}
+.review{border:1px solid var(--line);border-radius:4px;padding:1.7rem;background:var(--mar-2)}
+.review .stars{color:var(--lagosta-hi);letter-spacing:.2em;font-size:.85rem;margin-bottom:.9rem}
+.review p{font-family:"Chonburi",serif;font-size:1.1rem;line-height:1.45}
+.review-src{font-size:.78rem;color:var(--gelo-dim)}
+.rate-card{display:flex;align-items:center;gap:1.4rem;border:1px solid var(--prata);border-radius:4px;padding:1.3rem 1.7rem;background:rgba(159,182,190,.06);flex-wrap:wrap;margin-top:2rem}
+.rate-card .big{font-family:"Chonburi",serif;font-size:2.2rem;color:var(--prata)}
+.rate-card .txt{font-size:.9rem;color:var(--gelo-dim)}
+
+.contact{background:var(--mar-2);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.info-list{display:grid;gap:1.1rem;margin-top:1.6rem;font-size:.95rem}
+.info-list b{display:block;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--prata);margin-bottom:.2rem}
+.info-list .muted{color:var(--gelo-dim)}
+.map{aspect-ratio:4/3;border:1px solid var(--line);border-radius:4px;overflow:hidden;filter:grayscale(1) brightness(.85)}
+.map iframe{width:100%;height:100%;border:0}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+footer{padding:2rem var(--pad);border-top:1px solid var(--line);font-size:.8rem;color:var(--gelo-dim)}
+footer .wrap{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer a{text-decoration:underline;text-underline-offset:3px}
+footer a:hover{color:var(--gelo)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.h-seq{opacity:1!important;transform:none!important}
+  .school{display:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="pv-banner">APRESENTAÇÃO PACHECO STUDIOS · Proposta de demonstração para o Paulo Molina Peixe e Marisco · morada, contactos e horário a confirmar</div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Paulo Molina Peixe e Marisco — início">PAULO MOLINA<small>Peixe e Marisco</small></a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="navlinks" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="navlinks" aria-label="Navegação principal">
+    <a href="#mar">Do mar</a>
+    <a href="#mestre">O mestre</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <a class="cta" href="https://www.facebook.com/p/Paulo-Molina-Peixe-e-Marisco-100094618812849/" target="_blank" rel="noopener">Falar connosco</a>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="school" aria-hidden="true" id="school"></div>
+    <img class="photo" src="media/hero.jpg" alt="" onerror="this.remove()">
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-in">
+      <p class="eyebrow h-seq">Peixe &amp; marisco · Fuzeta · Ria Formosa</p>
+      <h1 class="h-seq s2">Do mar para a <span class="fire">grelha</span>, sem desvios.</h1>
+      <p class="sub h-seq s3">Peixe fresco escolhido ao dia e grelhado no ponto pelo mestre Rui. Marisco da Ria. Uma casa de bairro que a imprensa já pôs no mapa.</p>
+      <div class="hero-ctas h-seq s4">
+        <a class="cta" href="https://www.facebook.com/p/Paulo-Molina-Peixe-e-Marisco-100094618812849/" target="_blank" rel="noopener">Falar connosco no Facebook</a>
+        <a class="cta ghost" href="#mar">Ver o que temos</a>
+      </div>
+      <div class="chips h-seq s5">
+        <span class="chip"><b>4,5★</b> Restaurant Guru</span>
+        <span class="chip"><b>Imprensa</b> VERSA · maio 2026</span>
+        <span class="chip"><b>Fuzeta</b> junto à Ria</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="mq">
+      <span>Peixe grelhado <span class="dot">·</span> Marisco <span class="dot">·</span> Ria Formosa <span class="dot">·</span> Grelha de mestre <span class="dot">·</span> Fuzeta <span class="dot">·</span>&nbsp;</span>
+    </div>
+  </div>
+
+  <section id="mar">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Do mar para a mesa</p>
+        <h2>O que a maré <span class="fire">trouxe</span></h2>
+        <p class="lead">A carta muda com o dia e com a lota — e é assim que deve ser. Estes são os clássicos que raramente faltam. Preços e carta completa na casa (a confirmar).</p>
+      </div>
+      <div class="dishes">
+        <article class="dish rv"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M80 330c50-55 150-55 210-8-55 48-160 48-210 8Zm210-8 40-26-12 34 12 30-40-28" fill="none" stroke="#9FB6BE" stroke-width="1.3"/></svg>
+          <img src="media/prato-01.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Peixe do dia na grelha</h3><p>O que a lota mandar — dourada, robalo, sargo — no ponto do mestre.</p></div>
+        </article>
+        <article class="dish rv d1"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M110 360c20-40 60-60 90-60s70 20 90 60m-150-70 10-30m50 24V250m60 40 -10-30" fill="none" stroke="#9FB6BE" stroke-width="1.3"/></svg>
+          <img src="media/prato-02.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Mariscada</h3><p>Da Ria e do Atlântico, ao peso e à vontade da mesa.</p></div>
+        </article>
+        <article class="dish rv d2"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M140 380c-20-30-15-80 20-100s80-10 95 20-5 75-40 85m-40-95c-10 25-5 60 15 80" fill="none" stroke="#9FB6BE" stroke-width="1.3"/></svg>
+          <img src="media/prato-03.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Camarão ao alho</h3><p>A entrada que nunca chega a ir embora da mesa.</p></div>
+        </article>
+        <article class="dish rv"><div class="dish-media">
+          <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M150 280h100v90c0 30-22 50-50 50s-50-20-50-50v-90Zm20-20 10-24m40 24 10-24" fill="none" stroke="#9FB6BE" stroke-width="1.3"/></svg>
+          <img src="media/prato-04.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="dish-body"><h3>Lulas grelhadas</h3><p>Tenras, com alho, limão e pouco mais — não precisam.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="mestre" id="mestre">
+    <div class="wrap mestre-grid">
+      <div class="mestre-media rv">
+        <img src="media/mestre.jpg" alt="" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="rv d1">
+        <p class="eyebrow">A grelha tem dono</p>
+        <h2>O ponto do mestre <span class="fire">Rui</span></h2>
+        <p class="lead">Uma grelha não perdoa distrações. O mestre Rui sabe o tempo de cada peixe de cor — e é essa mão certa que fez a imprensa parar na Fuzeta.</p>
+        <blockquote class="press">
+          <p>"Peixe sempre no ponto, grelhado pelo mestre Rui."</p>
+          <cite>— título do artigo da <a href="https://versa.iol.pt/restaurantes/fuzeta/na-fuseta-e-obrigatorio-provar-o-peixe-sempre-no-ponto-grelhado-pelo-mestre-rui/20260520/6a0c5b94d34e28842c8434a6" target="_blank" rel="noopener">VERSA/IOL</a>, 20 de maio de 2026</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="avaliacoes">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Quem cá comeu</p>
+        <h2>Casa de <span class="fire">habitués</span></h2>
+      </div>
+      <div class="reviews">
+        <blockquote class="review rv"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p>"Ambiente calmo — vimos cá parar e ficámos clientes."</p>
+        </blockquote>
+        <blockquote class="review rv d1"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p>"Equipa com energia e vontade de bem servir."</p>
+        </blockquote>
+        <blockquote class="review rv d2"><div class="stars" aria-hidden="true">★★★★★</div>
+          <p>"Marisco e peixe com a frescura da Fuzeta."</p>
+        </blockquote>
+      </div>
+      <p class="review-src rv">Sentido geral das avaliações públicas — não são citações literais.</p>
+      <div class="rate-card rv d1">
+        <span class="big">4,5★</span>
+        <span class="txt">55 avaliações no Restaurant Guru — e um artigo de imprensa nacional em 2026.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Onde estamos</p>
+        <h2>Na Fuzeta, junto à <span class="fire">Ria</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="rv">
+          <div class="hero-ctas">
+            <a class="cta" href="https://www.facebook.com/p/Paulo-Molina-Peixe-e-Marisco-100094618812849/" target="_blank" rel="noopener">Falar connosco no Facebook</a>
+            <a class="cta ghost" href="https://www.google.com/maps?q=Paulo%20Molina%20Peixe%20e%20Marisco%2C%20Fuseta" target="_blank" rel="noopener">Como chegar</a>
+          </div>
+          <div class="info-list">
+            <div><b>Morada</b><span class="muted">Fuzeta — morada exata a confirmar</span></div>
+            <div><b>Telefone</b><span class="muted">a confirmar</span></div>
+            <div><b>Horário</b><span class="muted">a confirmar</span></div>
+          </div>
+        </div>
+        <div class="map rv d1">
+          <iframe src="https://www.google.com/maps?q=Paulo%20Molina%20Peixe%20e%20Marisco%2C%20Fuseta&output=embed" title="Mapa — Paulo Molina Peixe e Marisco, Fuzeta" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yy">2026</span> Paulo Molina Peixe e Marisco</span>
+    <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">Livro de Reclamações</a>
+    <span>Website: Pacheco Studios</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24),{passive:true});
+const burger=document.getElementById('burger'),links=document.getElementById('navlinks');
+burger.addEventListener('click',()=>{const o=burger.getAttribute('aria-expanded')==='true';burger.setAttribute('aria-expanded',String(!o));links.classList.toggle('open',!o)});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.setAttribute('aria-expanded','false');links.classList.remove('open')}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const mq=document.getElementById('mq');mq.innerHTML+=mq.innerHTML;
+
+/* cardume: peixes gerados com posições/velocidades determinísticas */
+const school=document.getElementById('school');
+const FISH='<svg viewBox="0 0 36 16" style="top:TOP%;animation-duration:DURs;animation-delay:DELs"><path d="M2 8c8-7 20-7 28 0-8 7-20 7-28 0Zm28 0 5-4-2 4 2 4-5-4"/></svg>';
+[[12,26,0],[18,31,4],[24,22,9],[30,35,2],[36,27,12],[44,24,6],[52,33,15],[60,26,3]].forEach(([top,dur,del])=>{
+  school.insertAdjacentHTML('beforeend',FISH.replace('TOP',top).replace('DUR',dur).replace('DEL',del));
+});
+document.getElementById('yy').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
