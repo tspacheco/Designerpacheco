@@ -85,6 +85,17 @@ O que separa um site de 500 € de um de 10 000 €, e que passa a ser obrigató
 
 Tudo isto **dentro** das regras do engine (single-file, HONEST-DATA, acessibilidade) — o nível 10K é execução, não complexidade técnica.
 
+## 3-B. SITES COM 3D / REACT (novo — 30/08/2026)
+
+Quando um site precisa de React, Three.js ou outra biblioteca, a regra do ficheiro único **mantém-se** — muda só a forma:
+
+- **Embutir as bibliotecas no próprio HTML**, não carregá-las por CDN. Obtêm-se pelo registo npm (`npm i react react-dom three`) e copiam-se os builds UMD (`umd/*.production.min.js`, `build/three.min.js`) para dentro de `<script>` no ficheiro. Escapar `</script>` para `<\/script>`.
+- **Fontes também embutidas** em base64 (`data:font/woff2;base64,...`), extraídas do CSS do Google Fonts. Isto resolve de vez o problema de a fonte display não carregar.
+- Resultado: um `index.html` de ~1 MB (≈450 KB no zip) que **abre sem rede nenhuma** — decisivo para apresentar ao telemóvel à porta do cliente, com má rede. O único pedido externo que resta é o iframe do mapa.
+- **`<noscript>` obrigatório** com nome, morada, telefone, horário e link do Livro de Reclamações: o conteúdo é renderizado por JS e os motores de busca não podem ficar sem o essencial.
+- Cena 3D: respeitar `prefers-reduced-motion` (renderizar um só fotograma), reduzir partículas e pixel ratio abaixo dos 820px, e `try/catch` no `WebGLRenderer` a esconder o canvas se não houver WebGL.
+- Cuidado conhecido: `backdrop-filter` numa nav cria um bloco de contenção e parte qualquer menu `position:fixed` lá dentro. Usar fundo sólido.
+
 ## 4. BASH DE VALIDAÇÃO + EMPACOTAMENTO
 
 ```bash
@@ -139,13 +150,13 @@ grep -o 'stop-color="[^"]*"' FICHEIRO.html | sort -u
 
 ## 5. ASSINATURAS VISUAIS JÁ USADAS (não repetir — inventar nova em cada site)
 
-ensō japonês · mandala · tagliatelle a cair · brasas a subir · rubrica manuscrita · ondas de açúcar + canela · folha line-art a desenhar-se · anéis de fumo + selo rotativo · bandeirolas náuticas a balançar · pincelada a pintar-se + blobs · pedra com heat-haze · pizza a girar + textura de tijolo · grelha com sardinhas + fumo · riscas de toalha + cataplana · notas musicais a flutuar · cena de praia em SVG (céu/mar/areia) · veios de marmoreio a desenharem-se + barra de pontos de cozedura + "00:00" monumental (Mr. Buffalo) · corvo a pousar no título + espinha de peixe divisora (Casa Corvo) · cardume SVG a atravessar a página (Paulo Molina) · padrão de azulejo a compor-se (Iguarias da Vila) · coral a ramificar-se em stroke-draw (O Coral) · mesa KBBQ vista de cima — grelha concêntrica + banchan a pousar (Hanam) · ecrã dividido diagonal "Forno & Mar" com mouse-follow + palavras gigantes de fundo (Catarina)
+ensō japonês · mandala · tagliatelle a cair · brasas a subir · rubrica manuscrita · ondas de açúcar + canela · folha line-art a desenhar-se · anéis de fumo + selo rotativo · bandeirolas náuticas a balançar · pincelada a pintar-se + blobs · pedra com heat-haze · pizza a girar + textura de tijolo · grelha com sardinhas + fumo · riscas de toalha + cataplana · notas musicais a flutuar · cena de praia em SVG (céu/mar/areia) · veios de marmoreio a desenharem-se + barra de pontos de cozedura + "00:00" monumental (Mr. Buffalo) · corvo a pousar no título + espinha de peixe divisora (Casa Corvo) · cardume SVG a atravessar a página (Paulo Molina) · padrão de azulejo a compor-se (Iguarias da Vila) · coral a ramificar-se em stroke-draw (O Coral) · mesa KBBQ vista de cima — grelha concêntrica + banchan a pousar (Hanam) · ecrã dividido diagonal "Forno & Mar" com mouse-follow + palavras gigantes de fundo (Catarina) · espeto 3D a girar sobre a grelha de água da ria, brasas e fagulhas em WebGL (Frango da Ria)
 
 ## 6. TRACKER DE FONTES DISPLAY (já usadas — escolher sempre uma nova)
 
-Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab One · Zilla Slab · Fraunces · Playfair · Rozha One · Cinzel · Anton · Yeseva One · DM Serif Display · Bricolage Grotesque · Cormorant Garamond · Marcellus · Bitter · Bodoni Moda · Big Shoulders Display · Yatra One · Libre Caslon Display · Shippori Mincho · Eczar · Bebas Neue · Spectral · Prata · Syne · Ultra · Sora · Unbounded · Staatliches · Crete Round · Averia Serif Libre · Passion One · Gloock · Instrument Serif (→ Mr. Buffalo) · Young Serif (→ Casa Corvo; repetida no Catarina por pedido explícito do brief V2 — zonas diferentes) · Chonburi (→ Paulo Molina) · Newsreader (→ Iguarias da Vila) · Lilita One (→ O Coral) · Bungee (→ Hanam KBBQ)
+Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab One · Zilla Slab · Fraunces · Playfair · Rozha One · Cinzel · Anton · Yeseva One · DM Serif Display · Bricolage Grotesque · Cormorant Garamond · Marcellus · Bitter · Bodoni Moda · Big Shoulders Display · Yatra One · Libre Caslon Display · Shippori Mincho · Eczar · Bebas Neue · Spectral · Prata · Syne · Ultra · Sora · Unbounded · Staatliches · Crete Round · Averia Serif Libre · Passion One · Gloock · Instrument Serif (→ Mr. Buffalo) · Young Serif (→ Casa Corvo; repetida no Catarina por pedido explícito do brief V2 — zonas diferentes) · Chonburi (→ Paulo Molina) · Newsreader (→ Iguarias da Vila) · Lilita One (→ O Coral) · Bungee (→ Hanam KBBQ) · Erica One (→ Frango da Ria)
 
-**Livres/planeadas:** Bevan (→ Sítio dos Presuntos) · Rye · Kufam · Erica One.
+**Livres/planeadas:** Bevan (→ Sítio dos Presuntos) · Rye · Kufam.
 
 *(Caveat e Kalam são fontes de acento manuscrito — podem repetir.)*
 
@@ -174,6 +185,7 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 - **Quarteira:** hanam-kbbq (`sites/hanam-kbbq/`) — Hanam Korean Barbecue "The Original", R. Vasco da Gama 70. 4,9★/497 Google, TheFork 9,5 (CTA de reserva real), TA 5,0, 15–35 €, fecha 23:00, IG @hanam_korean_barbecue. Bilingue PT/EN, Bungee, assinatura "mesa KBBQ vista de cima". Tel/horário abertura/carta a confirmar; fotos do cliente por obter (slots media/ prontos).
 - **Altura:** pizzaria-catarina (`sites/pizzaria-catarina/`) — "Forno & Mar" V2 vibrante, TA 3,9★/238 nº5/37, trilingue PT/EN/ES, Young Serif + Schibsted Grotesk, proposta dupla site + sessão fotográfica (shot list no HTML), tel 281 957 492, todos os dias 12–15/19–23. Validado com `impeccable detect`.
 - **Quarteira:** hanam-kbbq (`sites/hanam-kbbq/`) — ver acima.
+- **Moncarapacho / Olhão:** frango-da-ria (`sites/frango-da-ria/`) — churrasqueira, 4,3★/1.586 (Restaurant Guru), EN125 Alfândega-Bias do Sul, fecha à terça. Direção "Entre a brasa e a ria": **React + Three.js**, espeto 3D a girar sobre brasas e sobre a ria. Erica One + Manrope, PT/EN. Passa `impeccable detect` sem findings. Telefone e Tripadvisor a confirmar (fontes divergem).
 - **Fuzeta** (pesquisa em `research/fuzeta.md`): casa-corvo (4,6★ RG/2.091, peixe frito, sem reservas — Young Serif, corvo + espinha) · paulo-molina (4,5★ RG/55, artigo VERSA "mestre Rui" — Chonburi, cardume; contactos a confirmar) · iguarias-da-vila (4,5★ TA nº5/32, TheFork, música ao vivo — Newsreader, azulejos; **já tem site → ângulo "elevar, não substituir"**) · o-coral (4,5★ RG/162, menu do dia — Lilita One, coral a ramificar)
 
 ### Propostas PDF (reportlab)
