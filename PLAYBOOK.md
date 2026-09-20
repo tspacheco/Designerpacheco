@@ -237,3 +237,14 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - Pesquisa profunda (research) só uma vez por zona — guardar o relatório neste repo (`research/`) e reutilizá-lo.
 - Não repetir contexto que já está neste ficheiro.
 - Evitar "continua" e ajustes em cadeia: juntar os ajustes num só pedido.
+
+## 13. CLIENTES DE E-COMMERCE (novo — 20/09/2026)
+
+Primeiro cliente de loja online: **Toda Chic** (`sites/toda-chic/`). Regras aprendidas:
+
+- Investigação de base reutilizável em `research/loja-online-pt.md` — legal, pagamentos, plataformas e impacto no preço. **Ler antes de orçamentar qualquer loja.**
+- **MB WAY decide a plataforma.** Sem ele perdem-se vendas em Portugal. Elimina o "estático + Stripe" e obriga a app de parceiro no Shopify. Por defeito: **WooCommerce + ifthenpay**.
+- **Faturação certificada pela AT** (ATCUD + QR Code) não é opcional e a loja não a faz sozinha: tem de ligar ao software que o contabilista do cliente usa. **Perguntar na primeira reunião.**
+- Uma loja **não é um site de 500 €** nem de 50 €/mês. Orçamentar à parte: carregamento do catálogo (por nº de referências), integração de pagamentos e faturação, páginas legais, formação do cliente. A mensalidade cobre alojamento, segurança, backups e suporte de encomendas.
+- **Quando o cliente exige algo ilegal** (ex.: "não aceito trocas nem devoluções", que é nulo em venda à distância): avisar por escrito, propor a alternativa legal, e se insistir — construir, mas deixar **registo assinado** do aviso e da decisão. Modelo em `sites/toda-chic/REGISTO-devolucoes.md`, com anexo pronto a reencaminhar ao cliente. Protege a Pacheco Studios.
+- Fluxo do impeccable para cliente novo: `impeccable context` → `reference/init.md` → **PRODUCT.md por cliente** (`sites/<cliente>/PRODUCT.md`, não na raiz) → `new-work` para o mundo visual → `detect` antes de entregar.
