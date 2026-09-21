@@ -172,7 +172,7 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 
 | Cliente | Notas |
 |---|---|
-| Toda Chic (roupa feminina online, IG @_toda.chiic) | `sites/toda-chic/` — **mundo Mostruário escolhido** (21/09). `index.html` gerado por `ferramentas/build.py` a partir de `index.src.html` + `catalogo.json` (72 peças transcritas das fichas da dona) + fotos limpas por `ferramentas/fotos.py` → `media/`. Loja de demonstração completa: catálogo por categoria, ficha por peça (cor → foto, tamanho, unidades), favoritos e saco a funcionar (localStorage), páginas legais com o que falta marcado. WhatsApp 933 668 148, MB WAY. Plataforma final: WooCommerce + ifthenpay. Registo da política de devoluções imposta em `REGISTO-devolucoes.md`. |
+| Toda Chic (roupa feminina online, IG @_toda.chiic) | `sites/toda-chic/` — **mundo Mostruário escolhido** (21/09). `index.html` gerado por `ferramentas/build.py` a partir de `index.src.html` + `catalogo.json` (72 peças transcritas das fichas da dona) + fotos limpas por `ferramentas/fotos.py` → `media/`. Loja de demonstração completa com a **estrutura ditada pela dona** (5 categorias com os nomes dela + Bijuteria/Cosméticos/Casa/Promoções + estações Nova coleção/Inverno/Meia-estação/Verão): vitrine de categorias como destaque da página inicial, ficha por peça (cor → foto, tamanho, unidades, guia de tamanhos), favoritos e saco a funcionar (localStorage), páginas legais com o que falta marcado. Peças fora das categorias dela em "Por arrumar" e estações provisórias — ajustar com ela no fim. WhatsApp 933 668 148, MB WAY. Plataforma final: WooCommerce + ifthenpay. Registo da política de devoluções imposta em `REGISTO-devolucoes.md`. |
 
 ### Clientes com site próprio já entregue (edições)
 

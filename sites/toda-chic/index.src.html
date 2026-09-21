@@ -55,7 +55,7 @@ img,svg{display:block;max-width:100%}
 .topo{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.4rem;padding:.95rem var(--pad);
   background:var(--fundo);border-bottom:1px solid var(--linha)}
 .marca .lockup{height:38px;width:auto;display:block}
-.menu{display:flex;gap:1.35rem;margin-left:.6rem;font-size:15px;font-weight:500}
+.menu{display:flex;gap:1.15rem;margin-left:.4rem;font-size:14.5px;font-weight:500;flex-wrap:nowrap;white-space:nowrap}
 .menu a{position:relative;padding:.3rem 0;color:var(--secundario);transition:color .3s}
 .menu a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--rosa);
   transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
@@ -107,6 +107,61 @@ img,svg{display:block;max-width:100%}
   display:flex;gap:.6rem 2.4rem;flex-wrap:wrap;justify-content:center;font-size:14px;letter-spacing:.02em}
 .promessas li{display:flex;align-items:center;gap:.55rem}
 .promessas svg{width:18px;height:18px;fill:none;stroke:#E8A3B4;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ============================ vitrine de categorias (o destaque da página) ============================ */
+.vitrine{padding:clamp(2.6rem,6vw,4.6rem) var(--pad) clamp(1.4rem,3vw,2.2rem)}
+.vitrine .dentro{max-width:1220px;margin:0 auto}
+.vitrine .cabeca{margin-bottom:1.6rem}
+.montras{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(.8rem,1.6vw,1.2rem)}
+.montra{position:relative;display:block;aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:var(--papel);
+  border:1px solid var(--linha);box-shadow:0 1px 0 rgba(43,29,33,.03);
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s}
+.montra:hover{transform:translateY(-5px);box-shadow:0 22px 40px -18px rgba(142,58,82,.35);border-color:rgba(194,92,119,.5)}
+.montra img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.montra:hover img{transform:scale(1.05)}
+.montra .veu-suave{position:absolute;inset:0;background:linear-gradient(180deg,rgba(248,239,234,0) 45%,rgba(248,239,234,.72) 74%,rgba(248,239,234,.97) 100%)}
+.montra .rotulo-montra{position:absolute;left:0;right:0;bottom:0;padding:1rem 1.05rem 1.05rem;display:flex;flex-direction:column;gap:.15rem}
+.montra h3{font-family:"Italiana",serif;font-size:clamp(1.35rem,1.9vw,1.75rem);line-height:1.05;color:var(--tinta)}
+.montra .qt{font-family:"Courier Prime",monospace;font-size:12.5px;letter-spacing:.06em;color:var(--rosae)}
+.montra .seta{position:absolute;right:.9rem;bottom:1.05rem;width:34px;height:34px;border-radius:99px;background:var(--papel);
+  display:grid;place-items:center;border:1px solid var(--linha);opacity:0;transform:translateX(-6px);transition:opacity .4s,transform .5s var(--ease)}
+.montra .seta svg{width:16px;height:16px;fill:none;stroke:var(--rosae);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.montra:hover .seta{opacity:1;transform:none}
+.montra.breve{background:linear-gradient(170deg,#FBF4EF,#F1E1DA)}
+.montra.breve .traco{position:absolute;inset:0;display:grid;place-items:center;padding-bottom:22%}
+.montra.breve .traco svg{width:44%;height:auto;color:var(--rosae);opacity:.7;transition:transform .7s var(--ease)}
+.montra.breve:hover .traco svg{transform:translateY(-4px) scale(1.04)}
+.montra.breve .qt{color:var(--secundario)}
+.montra.promo{background:var(--rosa-acao);border-color:var(--rosa-acao)}
+.montra.promo .traco svg{color:#fff;opacity:.9}
+.montra.promo h3,.montra.promo .qt{color:#fff}
+.montra.promo .veu-suave{background:linear-gradient(180deg,rgba(173,69,95,0) 50%,rgba(142,58,82,.9) 100%)}
+.montra.promo:hover{box-shadow:0 22px 40px -18px rgba(142,58,82,.6)}
+.divisorias{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(.8rem,1.6vw,1.2rem)}
+.divisorias .montra{aspect-ratio:16/9}
+.divisorias .montra.breve .traco{padding-bottom:18%}
+.divisorias .montra.breve .traco svg{width:22%}
+.estacoes{margin-top:clamp(1.6rem,3vw,2.4rem);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.6rem,1.4vw,1rem)}
+.estacao{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.95rem 1.1rem;border-radius:99px;
+  background:var(--papel);border:1px solid var(--linha);font-weight:500;font-size:15px;transition:border-color .3s,transform .4s var(--ease),background .3s}
+.estacao .qt{font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--rosae)}
+.estacao:hover{border-color:var(--rosa);transform:translateY(-2px);background:#fff}
+.estacao.nova{background:linear-gradient(90deg,#FDECF1,#FFF);border-color:rgba(194,92,119,.5)}
+.estacao .nome::before{content:"";display:inline-block;width:9px;height:9px;border-radius:99px;margin-right:.6rem;vertical-align:1px;background:var(--rosa)}
+.estacao.inverno .nome::before{background:#8FA5C4}
+.estacao.meia .nome::before{background:#C9A57E}
+.estacao.verao .nome::before{background:#EFC46A}
+.fila-chips{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:.8rem}
+#fila-est{margin-bottom:1.8rem}
+.fila-chips .etiqueta-fila{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--secundario);margin-right:.3rem}
+.patilha.provisorio{border-style:dashed;color:var(--secundario)}
+.patilha.provisorio[aria-pressed="true"]{color:#fff;border-style:solid}
+.patilha.est[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta)}
+.medidas{margin-top:.8rem;width:100%;table-layout:fixed;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:13.5px}
+.medidas caption{text-align:left;font-family:"Jost",sans-serif;font-size:13px;color:var(--secundario);margin-bottom:.5rem}
+.medidas th,.medidas td{text-align:left;padding:.42rem .3rem;border-bottom:1px dotted var(--linha);font-variant-numeric:tabular-nums}
+.medidas th{font-weight:700;color:var(--rosae)}
+.texto .medidas{margin:1rem 0 .5rem;font-size:14px}
 
 /* ============================ patilhas / categorias ============================ */
 .seccao{padding:clamp(2.4rem,5vw,4rem) var(--pad)}
@@ -317,11 +372,14 @@ img,svg{display:block;max-width:100%}
 .revela{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .revela.visto{opacity:1;transform:none}
 
-@media(max-width:1180px){
+@media(max-width:1260px){
   .menu{display:none}
   .acoes .burger{display:grid}
 }
 @media(max-width:960px){
+  .montras{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .divisorias{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .estacoes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .abertura .dentro{grid-template-columns:1fr}
   .abertura .texto-heroi{grid-column:1}
   .abertura .veu{background:linear-gradient(180deg,rgba(42,28,31,.25) 0%,rgba(42,28,31,0) 28%,rgba(42,28,31,.5) 58%,rgba(42,28,31,.93) 100%)}
@@ -350,6 +408,9 @@ img,svg{display:block;max-width:100%}
   .barra-movel .btn{flex:1;padding:.85rem 1rem}
 }
 @media(max-width:520px){
+  .montras{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .montra h3{font-size:1.25rem}
+  .estacao{padding:.8rem .9rem;font-size:14px}
   .topo{gap:.55rem;padding:.8rem var(--pad)}
   .marca .lockup{height:30px}
   .acoes{gap:.1rem}
@@ -413,7 +474,7 @@ img,svg{display:block;max-width:100%}
       <h1 class="entra" data-i="1">Embeleza<span class="hif">-</span>te <em>connosco</em>.</h1>
       <p class="frase entra" data-i="2">Peças escolhidas uma a uma, com o preço à vista, o tamanho explicado e quantas ficam. Entregas em todo o país.</p>
       <div class="cta entra" data-i="3">
-        <a class="btn" href="#/c/todas">Ver as peças</a>
+        <a class="btn" href="#categorias">Ver por categoria</a>
         <a class="btn linha" href="#/c/promocoes">Promoções</a>
       </div>
     </div></div>
@@ -428,13 +489,23 @@ img,svg{display:block;max-width:100%}
     </ul>
   </div>
 
+  <section class="vitrine" id="categorias" aria-labelledby="titulo-vitrine">
+    <div class="dentro">
+      <div class="cabeca"><h2 id="titulo-vitrine">Escolhe por categoria</h2><span class="info" id="info-vitrine"></span></div>
+      <div class="montras" id="montras-roupa"></div>
+      <div class="montras divisorias" id="montras-divisorias"></div>
+      <div class="estacoes" id="estacoes" aria-label="Por estação"></div>
+    </div>
+  </section>
+
   <section class="seccao" id="montra">
     <div class="dentro">
       <div class="cabeca">
         <h2 id="titulo-grelha">Todas as peças</h2>
         <span class="info" id="info-grelha"></span>
       </div>
-      <div class="patilhas" id="patilhas" role="group" aria-label="Filtrar por categoria"></div>
+      <div class="fila-chips"><span class="etiqueta-fila">Categoria</span><div class="patilhas" id="patilhas" role="group" aria-label="Filtrar por categoria" style="margin:0"></div></div>
+      <div class="fila-chips" id="fila-est"><span class="etiqueta-fila">Estação</span><div class="patilhas" id="patilhas-est" role="group" aria-label="Filtrar por estação" style="margin:0"></div></div>
       <div class="grelha" id="grelha"></div>
     </div>
   </section>
@@ -528,7 +599,8 @@ img,svg{display:block;max-width:100%}
 
 <script>
 var DADOS = __CATALOGO__;
-var PECAS = DADOS.pecas, CATS = DADOS.categorias;
+var PECAS = DADOS.pecas, CATS = DADOS.categorias, ESTS = DADOS.estacoes;
+var EST_NOME = {}; ESTS.forEach(function(e){ EST_NOME[e.id] = e.nome; });
 var porId = {}; PECAS.forEach(function(p){ porId[p.id] = p; });
 var CAT_NOME = {}; CATS.forEach(function(c){ CAT_NOME[c.id] = c.nome; });
 var WA = 'https://wa.me/351933668148';
@@ -626,43 +698,86 @@ function cartao(p, i){
     botaoFav(p.id) +
     '<div class="corpo">' +
       '<h3><a href="#/p/' + p.id + '">' + esc(p.nome) + '</a></h3>' +
-      '<span class="ref">' + esc(tamTxt) + '</span>' +
+      '<span class="ref">' + esc(p.sub ? p.sub + ' · ' + tamTxt : tamTxt) + '</span>' +
       '<div class="chips" aria-label="Cores: ' + esc(p.cores.map(function(c){ return c.nome; }).join(', ')) + '">' + chips + '</div>' +
       '<div class="preco"><b>' + euro(p.preco) + '</b>' + (p.promo ? '<span class="promo-tag">PROMOÇÃO</span>' : '') + '</div>' +
     '</div></article>';
 }
 
 /* ---------- início: patilhas + grelha ---------- */
-var filtro = 'todas';
-function pecasDe(cat){
-  if (cat === 'todas') return PECAS;
-  if (cat === 'promocoes') return PECAS.filter(function(p){ return p.promo; });
-  return PECAS.filter(function(p){ return p.cat === cat; });
+var filtro = 'todas', filtroEst = 'todas';
+function pecasDe(cat, est){
+  var l = PECAS;
+  if (cat === 'promocoes') l = l.filter(function(p){ return p.promo; });
+  else if (cat && cat !== 'todas') l = l.filter(function(p){ return p.cat === cat; });
+  if (est === 'nova') l = l.filter(function(p){ return p.nova; });
+  else if (est && est !== 'todas') l = l.filter(function(p){ return p.estacao === est; });
+  return l;
+}
+var TRACOS = {
+  bijuteria:'<svg viewBox="0 0 200 240"><circle cx="72" cy="140" r="42" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="132" cy="140" r="42" fill="none" stroke="currentColor" stroke-width="4"/><path d="M72 84 v-18M132 84 v-18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg>',
+  cosmeticos:'<svg viewBox="0 0 200 240"><rect x="76" y="118" width="48" height="96" rx="5" fill="none" stroke="currentColor" stroke-width="3.4"/><path d="M84 118 v-46 q0-12 16-12 t16 12 v46" fill="none" stroke="currentColor" stroke-width="3.4"/><path d="M76 146 h48" stroke="currentColor" stroke-width="3" fill="none"/></svg>',
+  casa:'<svg viewBox="0 0 200 240"><path d="M48 78 q52-12 104 0 q12 52 0 104 q-52 12 -104 0 q-12 -52 0 -104 Z" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><path d="M70 100 q30-8 60 0M70 130 q30-8 60 0" stroke="currentColor" stroke-width="2.2" fill="none"/></svg>',
+  promocoes:'<svg viewBox="0 0 200 240"><path d="M60 60 h50 l50 50 -60 60 -50 -50 Z" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><circle cx="86" cy="86" r="8" fill="none" stroke="currentColor" stroke-width="3"/></svg>'
+};
+function desenhaVitrine(){
+  var roupa = CATS.filter(function(c){ return c.foto; });
+  document.getElementById('montras-roupa').innerHTML = roupa.map(function(c, i){
+    var n = pecasDe(c.id).length;
+    return '<a class="montra revela" href="#/c/' + c.id + '" style="transition-delay:' + i * 50 + 'ms">' +
+      '<img src="media/produtos/' + c.foto + '" alt="" loading="lazy"><span class="veu-suave" aria-hidden="true"></span>' +
+      '<span class="rotulo-montra"><h3>' + esc(c.nome) + '</h3><span class="qt">' + n + (n === 1 ? ' peça' : ' peças') + '</span></span>' +
+      '<span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>';
+  }).join('');
+  var divis = CATS.filter(function(c){ return c.brevemente; }).map(function(c, i){
+    return '<a class="montra breve revela" href="#/c/' + c.id + '" style="transition-delay:' + (i + 5) * 50 + 'ms">' +
+      '<span class="traco" aria-hidden="true">' + TRACOS[c.id] + '</span>' +
+      '<span class="rotulo-montra"><h3>' + esc(c.nome) + '</h3><span class="qt">brevemente</span></span></a>';
+  }).join('');
+  var np = pecasDe('promocoes').length;
+  divis += '<a class="montra promo breve revela" href="#/c/promocoes" style="transition-delay:400ms">' +
+    '<span class="traco" aria-hidden="true">' + TRACOS.promocoes + '</span><span class="veu-suave" aria-hidden="true"></span>' +
+    '<span class="rotulo-montra"><h3>Promoções</h3><span class="qt">' + np + (np === 1 ? ' peça' : ' peças') + '</span></span></a>';
+  document.getElementById('montras-divisorias').innerHTML = divis;
+  document.getElementById('estacoes').innerHTML = ESTS.map(function(e){
+    var n = pecasDe('todas', e.id).length;
+    return '<a class="estacao ' + e.id + ' revela" href="#/e/' + e.id + '"><span class="nome">' + esc(e.nome) + '</span><span class="qt">' + n + '</span></a>';
+  }).join('');
+  document.getElementById('info-vitrine').textContent = PECAS.length + ' peças em loja · por categoria ou por estação';
 }
 function desenhaPatilhas(){
-  var h = '<button type="button" class="patilha" data-cat="todas" aria-pressed="' + (filtro === 'todas') + '">Todas <span class="qt">' + PECAS.length + '</span></button>';
+  var h = '<button type="button" class="patilha" data-cat="todas" aria-pressed="' + (filtro === 'todas') + '">Todas <span class="qt">' + pecasDe('todas', filtroEst).length + '</span></button>';
   CATS.forEach(function(c){
-    var n = pecasDe(c.id).length;
-    h += '<button type="button" class="patilha' + (c.brevemente ? ' breve' : '') + '" data-cat="' + c.id + '" aria-pressed="' + (filtro === c.id) + '">' +
+    var n = pecasDe(c.id, filtroEst).length;
+    h += '<button type="button" class="patilha' + (c.brevemente ? ' breve' : '') + (c.provisorio ? ' provisorio' : '') + '" data-cat="' + c.id + '" aria-pressed="' + (filtro === c.id) + '">' +
       esc(c.nome) + (c.brevemente ? ' <span class="qt">breve</span>' : ' <span class="qt">' + n + '</span>') + '</button>';
   });
-  h += '<button type="button" class="patilha promo" data-cat="promocoes" aria-pressed="' + (filtro === 'promocoes') + '">Promoções <span class="qt">' + pecasDe('promocoes').length + '</span></button>';
+  h += '<button type="button" class="patilha promo" data-cat="promocoes" aria-pressed="' + (filtro === 'promocoes') + '">Promoções <span class="qt">' + pecasDe('promocoes', filtroEst).length + '</span></button>';
   document.getElementById('patilhas').innerHTML = h;
+  var e = '<button type="button" class="patilha est" data-est="todas" aria-pressed="' + (filtroEst === 'todas') + '">Todas</button>';
+  ESTS.forEach(function(es){
+    e += '<button type="button" class="patilha est" data-est="' + es.id + '" aria-pressed="' + (filtroEst === es.id) + '">' + esc(es.nome) + ' <span class="qt">' + pecasDe(filtro, es.id).length + '</span></button>';
+  });
+  document.getElementById('patilhas-est').innerHTML = e;
 }
 function desenhaGrelha(){
-  var lista = pecasDe(filtro), g = document.getElementById('grelha');
+  var lista = pecasDe(filtro, filtroEst), g = document.getElementById('grelha');
   var nome = filtro === 'todas' ? 'Todas as peças' : filtro === 'promocoes' ? 'Promoções' : CAT_NOME[filtro];
+  if (filtroEst !== 'todas') nome = (filtro === 'todas' ? '' : nome + ' · ') + EST_NOME[filtroEst];
   document.getElementById('titulo-grelha').textContent = nome;
   document.getElementById('info-grelha').textContent = lista.length ? lista.length + (lista.length === 1 ? ' peça' : ' peças') + ' · preços com IVA' : '';
+  var breve = CATS.some(function(c){ return c.id === filtro && c.brevemente; });
   if (!lista.length) {
-    g.innerHTML = '<div class="vazio" style="grid-column:1/-1"><strong>' + esc(nome) + ' em preparação</strong>As peças entram assim que as fotografias estiverem prontas. Entretanto, <a href="#/c/todas" style="text-decoration:underline">vê as novidades em roupa</a>.</div>';
+    g.innerHTML = breve ?
+      '<div class="vazio" style="grid-column:1/-1"><strong>' + esc(CAT_NOME[filtro]) + ' em preparação</strong>As peças entram assim que as fotografias estiverem prontas. Entretanto, <a href="#/c/todas" style="text-decoration:underline">vê as novidades em roupa</a>.</div>' :
+      '<div class="vazio" style="grid-column:1/-1"><strong>Nada por aqui, para já</strong>Experimenta outra estação ou <a href="#/c/todas" style="text-decoration:underline">vê todas as peças</a>.</div>';
     return;
   }
   g.innerHTML = lista.map(cartao).join('');
   observa();
 }
-function aplicaFiltro(cat, rolar){
-  filtro = cat;
+function aplicaFiltro(cat, est, rolar){
+  filtro = cat; filtroEst = est;
   desenhaPatilhas(); desenhaGrelha();
   document.querySelectorAll('#menu a, #menu-movel-lista a').forEach(function(a){
     a.setAttribute('aria-current', a.getAttribute('data-cat') === cat ? 'true' : 'false');
@@ -671,22 +786,28 @@ function aplicaFiltro(cat, rolar){
 }
 document.getElementById('patilhas').addEventListener('click', function(e){
   var b = e.target.closest('.patilha'); if (!b) return;
-  location.hash = '#/c/' + b.getAttribute('data-cat');
+  location.hash = '#/c/' + b.getAttribute('data-cat') + (filtroEst !== 'todas' ? '/' + filtroEst : '');
+});
+document.getElementById('patilhas-est').addEventListener('click', function(e){
+  var b = e.target.closest('.patilha'); if (!b) return;
+  var est = b.getAttribute('data-est');
+  location.hash = '#/c/' + filtro + (est !== 'todas' ? '/' + est : '');
 });
 
 /* ---------- menus ---------- */
 function desenhaMenus(){
-  var principais = ['blusas', 'calcas', 'vestidos', 'conjuntos', 'casacos', 'acessorios'];
-  document.getElementById('menu').innerHTML = principais.map(function(id){
-    return '<a href="#/c/' + id + '" data-cat="' + id + '">' + esc(CAT_NOME[id]) + '</a>';
+  var visiveis = CATS.filter(function(c){ return !c.provisorio; });
+  document.getElementById('menu').innerHTML = visiveis.map(function(c){
+    return '<a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a>';
   }).join('') + '<a href="#/c/promocoes" data-cat="promocoes" class="promo">Promoções</a>';
-  var todas = CATS.filter(function(c){ return !c.brevemente; });
   document.getElementById('menu-movel-lista').innerHTML = '<li><a href="#/c/todas" data-cat="todas">Todas as peças</a></li>' +
-    todas.map(function(c){ return '<li><a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a></li>'; }).join('') +
-    '<li><a href="#/c/promocoes" data-cat="promocoes">Promoções</a></li><li><a href="#/favoritos">Favoritos</a></li><li><a href="#/pagina/contactos">Contactos</a></li>';
-  document.getElementById('rodape-cats').innerHTML = todas.map(function(c){
+    visiveis.map(function(c){ return '<li><a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a></li>'; }).join('') +
+    '<li><a href="#/c/promocoes" data-cat="promocoes">Promoções</a></li>' +
+    ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">' + esc(e.nome) + '</a></li>'; }).join('') +
+    '<li><a href="#/favoritos">Favoritos</a></li><li><a href="#/pagina/contactos">Contactos</a></li>';
+  document.getElementById('rodape-cats').innerHTML = visiveis.map(function(c){
     return '<li><a href="#/c/' + c.id + '">' + esc(c.nome) + '</a></li>';
-  }).join('') + '<li><a href="#/c/promocoes">Promoções</a></li>';
+  }).join('') + '<li><a href="#/c/promocoes">Promoções</a></li>' + ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">' + esc(e.nome) + '</a></li>'; }).join('');
 }
 var burger = document.getElementById('burger'), menuMovel = document.getElementById('menu-movel');
 function fechaMenu(){ menuMovel.classList.remove('aberto'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
@@ -715,7 +836,7 @@ function desenhaProduto(id){
   document.getElementById('produto-dentro').innerHTML =
     '<div class="galeria"><div class="visual"><img id="foto-grande" src="' + atual + '" alt="' + esc(p.nome) + '">' + botaoFav(p.id) + '</div>' + miniaturas + '</div>' +
     '<div>' +
-      '<nav class="migalhas" aria-label="Caminho"><a href="#/">Início</a><span>›</span><a href="#/c/' + p.cat + '">' + esc(CAT_NOME[p.cat]) + '</a></nav>' +
+      '<nav class="migalhas" aria-label="Caminho"><a href="#/">Início</a><span>›</span><a href="#/c/' + p.cat + '">' + esc(p.sub || CAT_NOME[p.cat]) + '</a><span>›</span><a href="#/e/' + p.estacao + '">' + esc(EST_NOME[p.estacao]) + '</a></nav>' +
       '<h1>' + esc(p.nome) + '</h1>' +
       '<p class="preco-grande">' + euro(p.preco) + (p.promo ? '<span class="promo-tag">PROMOÇÃO</span>' : '') + '</p>' +
       '<p class="desc">' + esc(p.desc || '') + '</p>' +
@@ -726,8 +847,8 @@ function desenhaProduto(id){
       '<button type="button" class="btn linha" id="fav-grande">' + (eFav(p.id) ? 'Nos favoritos' : 'Guardar nos favoritos') + '</button></div>' +
       '<p class="duvida">Dúvidas no tamanho ou na cor? <a href="' + WA + '?text=' + msg + '" target="_blank" rel="noopener">Fala com a Toda Chic no WhatsApp</a> antes de comprares.</p>' +
       '<div class="dobras">' +
-        '<details><summary>Tamanho e medidas</summary><div><p>' + esc(p.tam || 'Tamanho a confirmar com a loja.') + '</p>' +
-          (p.stockNota ? '<p>' + esc(p.stockNota) + '.</p>' : '') + '<p>Medidas da peça em centímetros: a confirmar.</p></div></details>' +
+        '<details><summary>Guia de tamanhos</summary><div><p>' + esc(p.tam || 'Tamanho a confirmar com a loja.') + '</p>' +
+          (p.stockNota ? '<p>' + esc(p.stockNota) + '.</p>' : '') + GUIA + '<p><a href="#/pagina/guia-tamanhos" style="color:var(--rosae);text-decoration:underline;text-underline-offset:3px">Ver o guia completo e como medir</a></p></div></details>' +
         '<details><summary>Envio e pagamento</summary><div><p>Pagamento antecipado por MB WAY. Entregas em todo o país.</p><p>Portes e prazo de entrega: a confirmar antes do lançamento da loja.</p></div></details>' +
         '<details><summary>Trocas e devoluções</summary><div><p>Não aceitamos trocas nem devoluções. Se tiveres dúvidas no tamanho ou na cor, fala connosco antes de comprares.</p></div></details>' +
       '</div>' +
@@ -771,9 +892,9 @@ function desenhaProduto(id){
     alternaFav(p.id, document.querySelector('.galeria .favorita'));
     this.textContent = eFav(p.id) ? 'Nos favoritos' : 'Guardar nos favoritos';
   });
-  var outras = pecasDe(p.cat).filter(function(o){ return o.id !== p.id; }).slice(0, 4);
+  var outras = pecasDe(p.cat).filter(function(o){ return o.id !== p.id && (!p.sub || o.sub === p.sub); }).slice(0, 4);
   document.getElementById('relacionadas').innerHTML = outras.length ?
-    '<div class="cabeca"><h2>Também em ' + esc(CAT_NOME[p.cat]) + '</h2></div><div class="grelha">' + outras.map(cartao).join('') + '</div>' : '';
+    '<div class="cabeca"><h2>Também em ' + esc(p.sub || CAT_NOME[p.cat]) + '</h2></div><div class="grelha">' + outras.map(cartao).join('') + '</div>' : '';
   observa();
   document.title = p.nome + ' — Toda Chic';
 }
@@ -824,7 +945,13 @@ function desenhaLista(){
 }
 
 /* ---------- páginas de texto ---------- */
+var GUIA = '<table class="medidas"><caption>Equivalência de tamanhos (medidas em cm a confirmar pela loja)</caption>' +
+  '<tr><th>Tam.</th><th>PT</th><th>Peito</th><th>Cintura</th><th>Anca</th></tr>' +
+  [['XS','34'],['S','36'],['M','38'],['L','40'],['XL','42']].map(function(l){ return '<tr><td>' + l[0] + '</td><td>' + l[1] + '</td><td>—</td><td>—</td><td>—</td></tr>'; }).join('') + '</table>';
 var PAGINAS = {
+  'guia-tamanhos': {t: 'Guia de tamanhos', h: '<p>Quase todas as nossas peças são de <strong>tamanho único com elasticidade</strong>: em cada uma dizemos até que tamanho veste (por exemplo, “veste do S ao L”). Nas calças de ganga e no calçado usamos a numeração.</p>' + GUIA +
+    '<h2>Como medir</h2><ul><li><strong>Peito:</strong> à volta da parte mais larga, com a fita horizontal.</li><li><strong>Cintura:</strong> na parte mais estreita do tronco.</li><li><strong>Anca:</strong> à volta da parte mais larga.</li></ul>' +
+    '<p>Com dúvidas, manda-nos as tuas medidas por <a href="https://wa.me/351933668148" target="_blank" rel="noopener">WhatsApp</a> e dizemos-te se a peça te serve.</p><p class="aviso">As medidas em centímetros de cada tamanho são preenchidas pela dona antes do lançamento.</p>'},
   sobre: {t: 'Sobre nós', h: '<p>A Toda Chic vende roupa feminina online, a partir de Portugal e com entregas em todo o país. Cada peça é escolhida à mão e fotografada pela dona, que responde pessoalmente a cada mensagem.</p><p>Moda que realça a tua beleza. Obrigada por fazeres parte da nossa história.</p><p class="aviso">Texto de apresentação a completar com a história da dona (quando começou, porquê, o que a move).</p>'},
   contactos: {t: 'Contactos', h: '<p>A forma mais rápida é o WhatsApp. Respondemos antes e depois da compra.</p><div class="contactos-grelha">' +
     '<a href="https://wa.me/351933668148" target="_blank" rel="noopener"><small>WhatsApp</small>933 668 148</a>' +
@@ -852,7 +979,8 @@ function rota(){
   var h = location.hash.replace(/^#\/?/, '');
   var partes = h.split('/');
   if (partes[0] === 'p' && partes[1]) return {vista: 'produto', id: partes[1]};
-  if (partes[0] === 'c' && partes[1]) return {vista: 'inicio', cat: partes[1]};
+  if (partes[0] === 'c' && partes[1]) return {vista: 'inicio', cat: partes[1], est: partes[2] || 'todas'};
+  if (partes[0] === 'e' && partes[1]) return {vista: 'inicio', cat: 'todas', est: partes[1], rolar: true};
   if (partes[0] === 'favoritos') return {vista: 'favoritos'};
   if (partes[0] === 'saco') return {vista: 'saco'};
   if (partes[0] === 'pagina' && partes[1]) return {vista: 'texto', slug: partes[1]};
@@ -865,9 +993,10 @@ function navega(){
   Object.keys(vistas).forEach(function(k){ document.getElementById(vistas[k]).hidden = vistas[k] !== vistas[r.vista]; });
   document.getElementById('barra-movel').classList.toggle('mostra', r.vista === 'produto');
   if (r.vista === 'inicio') {
-    var cat = r.cat || 'todas';
+    var cat = r.cat || 'todas', est = r.est || 'todas';
     if (cat !== 'todas' && cat !== 'promocoes' && !CAT_NOME[cat]) cat = 'todas';
-    aplicaFiltro(cat, !!r.cat);
+    if (est !== 'todas' && !EST_NOME[est]) est = 'todas';
+    aplicaFiltro(cat, est, !!(r.cat || r.rolar) && !(cat === 'todas' && est === 'todas'));
     if (!r.cat && ultimaVista !== 'inicio') window.scrollTo(0, 0);
     document.title = 'Toda Chic — Roupa feminina online';
   } else {
@@ -897,7 +1026,7 @@ function observa(){
   document.querySelectorAll('.revela:not(.visto)').forEach(function(el){ if (obs) obs.observe(el); else el.classList.add('visto'); });
 }
 
-desenhaMenus(); atualizaContas(); navega(); observa();
+desenhaMenus(); desenhaVitrine(); atualizaContas(); navega(); observa();
 requestAnimationFrame(function(){ setTimeout(function(){ document.body.classList.add('pronto'); }, 60); });
 </script>
 </body>
