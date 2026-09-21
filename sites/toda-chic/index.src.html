@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<!--
+  TODA CHIC — loja online · demonstração Pacheco Studios · 21/09/2026
+  Mundo escolhido: O Mostruário (cartões de amostra, chips de cor, notas em monoespaçada).
+  Catálogo, preços, tamanhos e unidades transcritos das fichas da dona; o que ela não disse fica "a confirmar".
+  Ficheiro gerado por ferramentas/build.py a partir de index.src.html — editar o .src.
+-->
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Toda Chic — Roupa feminina online</title>
+<meta name="description" content="Toda Chic: roupa feminina online com entregas em todo o país. Blusas, calças, vestidos, conjuntos e casacos, com o preço à vista e o tamanho explicado. Pagamento por MB WAY.">
+<meta name="theme-color" content="#F8EFEA">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 46 C 40 27, 13 25, 9 38 C 6 49, 30 57, 50 46 Z M50 46 C 60 27, 87 25, 91 38 C 94 49, 70 57, 50 46 Z" fill="none" stroke="%23C25C77" stroke-width="7"/><path d="M44 52 C 41 63, 37 70, 32 77 M56 52 C 59 63, 63 70, 68 77" fill="none" stroke="%23C25C77" stroke-width="7" stroke-linecap="round"/><circle cx="50" cy="47" r="8" fill="%238E3A52"/></svg>'>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"OnlineStore","name":"Toda Chic","description":"Roupa feminina online com entregas em todo o país.","telephone":"+351933668148","sameAs":["https://www.instagram.com/_toda.chiic"],"areaServed":"PT","paymentAccepted":"MB WAY","slogan":"Embeleza-te connosco"}
+</script>
+<style>/*__FONTES__*/</style>
+<style>
+:root{
+  --tinta:#2B1D21; --rosa:#C25C77; --rosae:#8E3A52; --blush:#F8EFEA;
+  --rosa-acao:#AD455F;   /* 5.54:1 com branco — para superfícies com texto branco */
+  --papel:#FFFFFF; --linha:rgba(43,29,33,.16);
+  --texto:#2B1D21; --secundario:#6B5158; --fundo:var(--blush);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --pad:clamp(1.15rem,4vw,3.5rem);
+  --raio:3px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-color:var(--rosa) var(--fundo)}
+body{background:var(--fundo);color:var(--texto);
+  font:400 17px/1.65 "Jost",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.display{font-family:"Italiana",serif;font-weight:400;line-height:1.05;letter-spacing:.01em}
+p{max-width:68ch}
+a{color:inherit;text-decoration:none}
+button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
+img,svg{display:block;max-width:100%}
+[hidden]{display:none!important}
+::selection{background:var(--rosa);color:#fff}
+:focus-visible{outline:2px solid var(--rosa);outline-offset:3px;border-radius:2px}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--fundo)}
+::-webkit-scrollbar-thumb{background:var(--rosa);border-radius:99px;border:3px solid var(--fundo)}
+.mono{font-family:"Courier Prime",monospace}
+.so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ============ faixa de apresentação (ferramenta de venda, sai na loja real) ============ */
+.apresentacao{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;
+  background:#241A1D;color:#F3E9E4;padding:.6rem var(--pad);font-size:13.5px;line-height:1.35}
+.apresentacao strong{font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+.apresentacao span{color:rgba(243,233,228,.78)}
+
+/* ============================ cabeçalho ============================ */
+.topo{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.4rem;padding:.95rem var(--pad);
+  background:var(--fundo);border-bottom:1px solid var(--linha)}
+.marca .lockup{height:38px;width:auto;display:block}
+.menu{display:flex;gap:1.35rem;margin-left:.6rem;font-size:15px;font-weight:500}
+.menu a{position:relative;padding:.3rem 0;color:var(--secundario);transition:color .3s}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--rosa);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.menu a:hover,.menu a[aria-current="true"]{color:var(--texto)}
+.menu a:hover::after,.menu a[aria-current="true"]::after{transform:scaleX(1)}
+.menu a.promo{color:var(--rosae)}
+.acoes{margin-left:auto;display:flex;align-items:center;gap:.6rem}
+.acoes a,.acoes button{display:grid;place-items:center;width:42px;height:42px;position:relative;border-radius:99px;
+  transition:background .3s}
+.acoes a:hover,.acoes button:hover{background:rgba(194,92,119,.1)}
+.acoes svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.conta{position:absolute;top:3px;right:1px;min-width:17px;height:17px;border-radius:99px;
+  background:var(--rosa-acao);color:#fff;font-size:11px;font-weight:600;display:grid;place-items:center;padding:0 4px;
+  transform:scale(0);transition:transform .35s var(--ease)}
+.conta.tem{transform:scale(1)}
+.conta.salta{animation:salta .5s var(--ease)}
+@keyframes salta{0%{transform:scale(1)}40%{transform:scale(1.45)}100%{transform:scale(1)}}
+.acoes .fav[aria-pressed="true"] svg{fill:var(--rosa);stroke:var(--rosa)}
+.acoes .burger{display:none}
+.menu-movel{display:none}
+
+/* ============================ herói cinematográfico ============================ */
+.abertura{position:relative;min-height:min(88svh,780px);display:flex;align-items:flex-end;overflow:hidden;background:#2A1C1F}
+.abertura .cena{position:absolute;inset:0}
+.abertura .cena img{width:100%;height:100%;object-fit:cover;object-position:62% 28%;
+  transform-origin:40% 40%;animation:aproxima 26s ease-out both}
+@keyframes aproxima{from{transform:scale(1.03)}to{transform:scale(1.12)}}
+.abertura .veu{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(42,28,31,.22) 0%,rgba(42,28,31,0) 26%,rgba(42,28,31,.45) 58%,rgba(42,28,31,.92) 100%),
+             linear-gradient(270deg,rgba(42,28,31,.5) 0%,rgba(42,28,31,.1) 50%,transparent 75%)}
+.abertura .dentro{position:relative;z-index:3;max-width:1220px;margin:0 auto;width:100%;
+  padding:clamp(6rem,16vw,10rem) var(--pad) clamp(2.2rem,5vw,3.4rem);color:#FBF3F0;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,600px)}
+.abertura .texto-heroi{grid-column:2}
+.abertura .sobre{font-family:"Courier Prime",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  color:#F3B6C6;margin-bottom:1rem}
+.abertura h1{font-size:clamp(2.8rem,8vw,5.8rem);max-width:12ch;color:#FBF3F0;text-shadow:0 8px 40px rgba(12,7,9,.7)}
+.abertura h1 em{font-style:normal;color:#F3B6C6}
+.hif{font-family:"Jost",sans-serif;font-size:.58em;vertical-align:.18em;letter-spacing:0;margin:0 .04em;display:inline-block}
+.abertura .frase{margin-top:1.2rem;color:rgba(251,243,240,.9);font-size:clamp(16px,1.7vw,19px);max-width:44ch;
+  text-shadow:0 4px 22px rgba(12,7,9,.65)}
+.abertura .cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.8rem}
+.abertura .btn.linha{color:#FBF3F0;border-color:rgba(251,243,240,.45);background:rgba(22,15,17,.35)}
+.abertura .btn.linha:hover{background:rgba(251,243,240,.14);border-color:#F3B6C6;color:#fff}
+
+/* a faixa de confiança: as promessas da própria dona */
+.promessas{background:var(--tinta);color:#F5EAE6}
+.promessas ul{list-style:none;max-width:1220px;margin:0 auto;padding:.9rem var(--pad);
+  display:flex;gap:.6rem 2.4rem;flex-wrap:wrap;justify-content:center;font-size:14px;letter-spacing:.02em}
+.promessas li{display:flex;align-items:center;gap:.55rem}
+.promessas svg{width:18px;height:18px;fill:none;stroke:#E8A3B4;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ============================ patilhas / categorias ============================ */
+.seccao{padding:clamp(2.4rem,5vw,4rem) var(--pad)}
+.seccao .dentro{max-width:1220px;margin:0 auto}
+.cabeca{display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.cabeca h2{font-size:clamp(1.8rem,4vw,2.8rem)}
+.cabeca .info{font-family:"Courier Prime",monospace;font-size:14px;color:var(--secundario)}
+.patilhas{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.patilha{display:inline-flex;align-items:center;gap:.5rem;padding:.66rem 1.15rem;
+  border:1px solid var(--linha);border-radius:var(--raio);font-size:15px;font-weight:500;
+  background:var(--papel);transition:background .3s,color .3s,border-color .3s,transform .3s}
+.patilha:hover{transform:translateY(-2px);border-color:var(--rosa)}
+.patilha[aria-pressed="true"]{background:var(--rosa-acao);border-color:var(--rosa-acao);color:#fff}
+.patilha .qt{font-family:"Courier Prime",monospace;font-size:13px;opacity:.85}
+.patilha.promo{color:var(--rosae);border-color:var(--rosa)}
+.patilha.promo[aria-pressed="true"]{color:#fff}
+.patilha.breve{color:var(--secundario);border-style:dashed}
+.patilha.breve[aria-pressed="true"]{color:#fff;border-style:solid}
+
+/* ============================ grelha de peças ============================ */
+.grelha{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:clamp(.9rem,2vw,1.5rem)}
+.peca{background:var(--papel);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;
+  display:flex;flex-direction:column;position:relative;
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s}
+.peca:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(43,29,33,.13);border-color:rgba(194,92,119,.5)}
+.figura{position:relative;aspect-ratio:4/5;background:linear-gradient(170deg,#FBF4EF,#F2E4DC);overflow:hidden;display:block}
+.figura img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.peca:hover .figura img{transform:scale(1.04)}
+.selo{position:absolute;left:.7rem;top:.7rem;font-family:"Courier Prime",monospace;font-size:12px;
+  letter-spacing:.06em;background:var(--papel);color:var(--rosae);padding:.3rem .55rem;
+  border:1px solid rgba(194,92,119,.45);border-radius:2px;z-index:2}
+.selo.escasso{background:var(--rosa-acao);color:#fff;border-color:var(--rosa-acao)}
+.favorita{position:absolute;right:.6rem;top:.6rem;width:38px;height:38px;border-radius:99px;z-index:2;
+  display:grid;place-items:center;background:rgba(255,255,255,.92);transition:background .3s,transform .3s}
+.favorita svg{width:19px;height:19px;fill:none;stroke:var(--rosae);stroke-width:1.6;transition:fill .25s,transform .25s}
+.favorita:hover{transform:scale(1.08)}
+.favorita[aria-pressed="true"] svg{fill:var(--rosa);stroke:var(--rosa)}
+.favorita.pop svg{animation:pop .45s var(--ease)}
+@keyframes pop{0%{transform:scale(1)}35%{transform:scale(1.5)}100%{transform:scale(1)}}
+.corpo{padding:.95rem 1rem 1.1rem;display:flex;flex-direction:column;gap:.45rem;flex:1}
+.corpo h3{font-family:"Jost",sans-serif;font-size:16px;font-weight:500;letter-spacing:0;line-height:1.3}
+.corpo h3 a::after{content:"";position:absolute;inset:0}
+.ref{font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--secundario);letter-spacing:.02em}
+.chips{display:flex;gap:.35rem;margin-top:.1rem;flex-wrap:wrap}
+.chip{width:19px;height:19px;border-radius:99px;border:1px solid rgba(43,29,33,.22);transition:transform .25s,box-shadow .25s;
+  position:relative;z-index:1}
+.chip:hover{transform:scale(1.16)}
+.chip[aria-pressed="true"]{box-shadow:0 0 0 2px var(--papel),0 0 0 3.5px var(--rosa)}
+.preco{margin-top:auto;display:flex;align-items:baseline;gap:.55rem;padding-top:.3rem}
+.preco b{font-size:19px;font-weight:600}
+.preco .promo-tag{font-family:"Courier Prime",monospace;font-size:12px;color:var(--rosae);letter-spacing:.06em}
+.vazio{padding:3rem var(--pad);text-align:center;color:var(--secundario);border:1px dashed var(--linha);border-radius:var(--raio)}
+.vazio strong{display:block;font-family:"Italiana",serif;font-weight:400;font-size:1.8rem;color:var(--texto);margin-bottom:.4rem}
+
+/* ============================ ficha de produto ============================ */
+.migalhas{font-family:"Courier Prime",monospace;font-size:13px;color:var(--secundario);margin-bottom:1.4rem;
+  display:flex;gap:.5rem;flex-wrap:wrap}
+.migalhas a:hover{color:var(--rosae);text-decoration:underline;text-underline-offset:3px}
+.ficha .produto{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(1.6rem,4vw,3.5rem);align-items:start}
+.ficha .produto>*{min-width:0}
+.galeria{position:sticky;top:84px}
+.galeria .visual{position:relative;aspect-ratio:4/5;border-radius:var(--raio);overflow:hidden;
+  background:linear-gradient(170deg,#FBF4EF,#EFE0D8);border:1px solid var(--linha)}
+.galeria .visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:revela .6s var(--ease)}
+@keyframes revela{from{opacity:0;transform:scale(1.02)}to{opacity:1;transform:none}}
+.galeria .visual .favorita{width:44px;height:44px;right:.8rem;top:.8rem}
+.miniaturas{display:flex;gap:.5rem;margin-top:.6rem}
+.miniaturas button{width:64px;aspect-ratio:4/5;border-radius:2px;overflow:hidden;border:1px solid var(--linha);
+  padding:0;opacity:.7;transition:opacity .3s,border-color .3s}
+.miniaturas button img{width:100%;height:100%;object-fit:cover}
+.miniaturas button:hover,.miniaturas button[aria-pressed="true"]{opacity:1;border-color:var(--rosa)}
+.ficha h1{font-size:clamp(2rem,4.2vw,3.1rem)}
+.ficha .preco-grande{margin-top:.6rem;font-size:27px;font-weight:600;display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap}
+.ficha .preco-grande .promo-tag{font-family:"Courier Prime",monospace;font-size:13px;color:var(--rosae);letter-spacing:.06em}
+.ficha .desc{margin-top:.9rem;color:var(--secundario)}
+.rotulo{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--rosae);margin-bottom:.7rem;
+  display:flex;gap:.6rem;align-items:baseline}
+.rotulo span{font-weight:400;letter-spacing:0;text-transform:none;color:var(--secundario);font-family:"Courier Prime",monospace;font-size:13px}
+.bloco{margin-top:1.7rem}
+.cores{display:flex;gap:.5rem;flex-wrap:wrap}
+.cor{display:inline-flex;align-items:center;gap:.5rem;padding:.42rem .8rem .42rem .45rem;border:1px solid var(--linha);
+  border-radius:99px;font-size:14px;transition:border-color .25s,background .25s}
+.cor i{width:20px;height:20px;border-radius:99px;border:1px solid rgba(43,29,33,.2);display:block}
+.cor:hover{border-color:var(--rosa)}
+.cor[aria-pressed="true"]{border-color:var(--tinta);background:var(--papel);box-shadow:inset 0 0 0 1px var(--tinta)}
+.tamanhos{display:flex;gap:.45rem;flex-wrap:wrap;align-items:center}
+.tam{min-width:54px;padding:.62rem .85rem;border:1px solid var(--linha);border-radius:var(--raio);
+  font-size:15px;font-weight:500;text-align:center;transition:.25s;background:var(--papel)}
+.tam:hover{border-color:var(--rosa)}
+.tam[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.tam-nota{font-size:14px;color:var(--secundario)}
+.stock{margin-top:1.2rem;font-family:"Courier Prime",monospace;font-size:14px;display:flex;align-items:center;gap:.5rem}
+.stock::before{content:"";width:9px;height:9px;border-radius:99px;background:#5B9A63}
+.stock.escasso::before{background:var(--rosa-acao)}
+.stock.escasso{color:var(--rosae)}
+.comprar{display:flex;gap:.7rem;margin-top:1.6rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  background:var(--rosa-acao);color:#fff;font-weight:600;font-size:16px;padding:1rem 2rem;
+  border-radius:var(--raio);transition:background .3s,transform .3s,box-shadow .3s}
+.btn:hover{background:var(--rosae);transform:translateY(-2px)}
+.btn.linha{background:transparent;color:var(--texto);border:1px solid var(--linha)}
+.btn.linha:hover{background:rgba(194,92,119,.08);border-color:var(--rosa);color:var(--texto)}
+.btn.feito{background:#3F7A47}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.duvida{margin-top:1.1rem;font-size:15px;color:var(--secundario)}
+.duvida a{color:var(--rosae);text-decoration:underline;text-underline-offset:3px}
+.dobras{margin-top:2rem;border-top:1px solid var(--linha)}
+.dobras details{border-bottom:1px solid var(--linha)}
+.dobras summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 0;font-weight:500;font-size:16px}
+.dobras summary::-webkit-details-marker{display:none}
+.dobras summary::after{content:"+";font-family:"Courier Prime",monospace;font-size:20px;color:var(--rosae);transition:transform .3s}
+.dobras details[open] summary::after{transform:rotate(45deg)}
+.dobras details>div{padding:0 0 1.1rem;color:var(--secundario);font-size:15px}
+.dobras details>div p+p{margin-top:.5rem}
+.relacionadas{margin-top:clamp(2.5rem,6vw,4.5rem)}
+.barra-movel{display:none}
+
+/* ============================ favoritos / saco ============================ */
+.lista{display:grid;gap:.9rem}
+.linha-saco{display:grid;grid-template-columns:88px 1fr auto;gap:1rem;align-items:center;background:var(--papel);
+  border:1px solid var(--linha);border-radius:var(--raio);padding:.8rem}
+.linha-saco img{width:88px;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+.linha-saco h3{font-family:"Jost",sans-serif;font-size:16px;font-weight:500;letter-spacing:0}
+.linha-saco .meta{font-family:"Courier Prime",monospace;font-size:13px;color:var(--secundario)}
+.linha-saco .qt{display:inline-flex;align-items:center;border:1px solid var(--linha);border-radius:99px;margin-top:.4rem}
+.linha-saco .qt button{width:30px;height:30px;font-size:17px;line-height:1}
+.linha-saco .qt span{min-width:26px;text-align:center;font-size:14px}
+.linha-saco .tirar{font-size:13px;color:var(--secundario);text-decoration:underline;text-underline-offset:3px;margin-top:.3rem}
+.linha-saco b{font-size:17px;white-space:nowrap}
+.resumo{margin-top:1.4rem;background:var(--papel);border:1px solid var(--linha);border-radius:var(--raio);padding:1.4rem;max-width:520px}
+.resumo dl{display:grid;grid-template-columns:1fr auto;gap:.45rem 1rem;font-size:15px}
+.resumo dt{color:var(--secundario)}
+.resumo dd{text-align:right;font-variant-numeric:tabular-nums}
+.resumo .total{font-size:20px;font-weight:600;border-top:1px solid var(--linha);padding-top:.6rem;margin-top:.3rem}
+.resumo .btn{width:100%;margin-top:1.1rem}
+.resumo .nota{font-size:13px;color:var(--secundario);margin-top:.8rem}
+.mbway{display:inline-grid;place-items:center;height:22px;padding:0 .5rem;border-radius:3px;background:#fff;color:#D0103A;
+  font-weight:700;font-size:11px;letter-spacing:.04em;border:1px solid rgba(0,0,0,.08)}
+
+/* ============================ confiança ============================ */
+.confianca{background:var(--tinta);color:#F5EAE6}
+.confianca h2{color:#FBF3F0;font-size:clamp(1.8rem,4vw,2.7rem);margin-bottom:.9rem}
+.confianca > .dentro > p{color:rgba(245,234,230,.78);margin-bottom:2.2rem}
+.garantias{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.6rem 2rem}
+.garantia{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
+.garantia svg{width:26px;height:26px;flex:none;fill:none;stroke:#E8A3B4;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.garantia h3{font-family:"Jost",sans-serif;font-size:16px;font-weight:600;letter-spacing:0;color:#FBF3F0}
+.garantia p{font-size:15px;color:rgba(245,234,230,.72);margin-top:.22rem}
+
+/* ============================ a dona / instagram ============================ */
+.dona .dentro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(1.6rem,5vw,4rem);align-items:center}
+.dona .retrato{aspect-ratio:1;border-radius:var(--raio);overflow:hidden;border:1px solid var(--linha);position:relative}
+.dona .retrato img{width:100%;height:100%;object-fit:cover}
+.dona .retrato .etiqueta{position:absolute;left:1rem;bottom:1rem;background:var(--papel);padding:.5rem .8rem;
+  font-family:"Courier Prime",monospace;font-size:12.5px;letter-spacing:.06em;color:var(--rosae);border:1px solid rgba(194,92,119,.45)}
+.dona h2{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:1rem}
+.dona h2 em{font-style:normal;color:var(--rosae)}
+.dona p{color:var(--secundario)}
+.dona p+p{margin-top:.8rem}
+.dona .assinatura{margin-top:1.4rem;font-family:"Italiana",serif;font-size:1.5rem;color:var(--texto)}
+.insta{background:var(--papel);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.insta .dentro{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.insta h2{font-size:clamp(1.6rem,3.5vw,2.3rem)}
+.insta p{color:var(--secundario);margin-top:.3rem}
+
+/* ============================ páginas de texto ============================ */
+.texto .dentro{max-width:760px}
+.texto h1{font-size:clamp(2.1rem,5vw,3.4rem);margin-bottom:1.2rem}
+.texto h2{font-size:1.5rem;margin:2rem 0 .6rem}
+.texto p,.texto li{color:var(--secundario)}
+.texto p+p{margin-top:.8rem}
+.texto ul{padding-left:1.2rem;margin-top:.5rem}
+.texto .aviso{margin-top:1.6rem;padding:1rem 1.2rem;border-left:3px solid var(--rosa);background:var(--papel);
+  font-family:"Courier Prime",monospace;font-size:14px;color:var(--texto)}
+.texto a{color:var(--rosae);text-decoration:underline;text-underline-offset:3px}
+.contactos-grelha{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.4rem}
+.contactos-grelha a,.contactos-grelha div{display:block;background:var(--papel);border:1px solid var(--linha);border-radius:var(--raio);
+  padding:1.1rem;text-decoration:none;color:var(--texto);transition:border-color .3s,transform .3s}
+.contactos-grelha a:hover{border-color:var(--rosa);transform:translateY(-2px)}
+.contactos-grelha small{display:block;font-family:"Courier Prime",monospace;font-size:12px;color:var(--secundario);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem}
+
+/* ============================ rodapé ============================ */
+.rodape{padding:2.6rem var(--pad) 2rem;font-size:14px;color:var(--secundario);border-top:1px solid var(--linha)}
+.rodape .dentro{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:2rem}
+.rodape h3{font-family:"Jost",sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--texto);margin-bottom:.7rem}
+.rodape ul{list-style:none;display:grid;gap:.35rem}
+.rodape a:hover{color:var(--rosae);text-decoration:underline;text-underline-offset:3px}
+.rodape .fim{max-width:1220px;margin:2rem auto 0;padding-top:1.2rem;border-top:1px solid var(--linha);
+  display:flex;gap:1rem 2rem;flex-wrap:wrap;justify-content:space-between;font-size:13px}
+.rodape .lockup{height:30px;width:auto;margin-bottom:.8rem}
+
+/* ============================ saco lateral ============================ */
+.aviso-saco{position:fixed;left:50%;bottom:1.2rem;transform:translate(-50%,120%);z-index:80;background:var(--tinta);color:#FBF3F0;
+  padding:.85rem 1.3rem;border-radius:99px;font-size:15px;display:flex;gap:1rem;align-items:center;box-shadow:0 12px 30px rgba(43,29,33,.3);
+  transition:transform .5s var(--ease);max-width:calc(100vw - 2rem)}
+.aviso-saco{opacity:0;pointer-events:none;transition:transform .5s var(--ease),opacity .4s}
+.aviso-saco.mostra{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+.aviso-saco a{color:#F3B6C6;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+
+/* ============================ momento autoral ============================ */
+.entra{opacity:0;transform:translateY(18px)}
+.pronto .entra{opacity:1;transform:none;transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.pronto .entra[data-i="1"]{transition-delay:.08s}
+.pronto .entra[data-i="2"]{transition-delay:.16s}
+.pronto .entra[data-i="3"]{transition-delay:.24s}
+.pronto .entra[data-i="4"]{transition-delay:.32s}
+.revela{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.revela.visto{opacity:1;transform:none}
+
+@media(max-width:1180px){
+  .menu{display:none}
+  .acoes .burger{display:grid}
+}
+@media(max-width:960px){
+  .abertura .dentro{grid-template-columns:1fr}
+  .abertura .texto-heroi{grid-column:1}
+  .abertura .veu{background:linear-gradient(180deg,rgba(42,28,31,.25) 0%,rgba(42,28,31,0) 28%,rgba(42,28,31,.5) 58%,rgba(42,28,31,.93) 100%)}
+  .menu-movel{display:block;position:fixed;inset:0;z-index:60;background:var(--fundo);padding:1.2rem var(--pad);
+    transform:translateX(100%);transition:transform .45s var(--ease)}
+  .menu-movel.aberto{transform:none}
+  .menu-movel ul{list-style:none;display:grid;gap:.2rem;margin-top:1.4rem}
+  .menu-movel a{display:block;padding:.75rem 0;font-family:"Italiana",serif;font-size:1.9rem;border-bottom:1px solid var(--linha)}
+  .menu-movel .fechar{margin-left:auto;display:grid;place-items:center;width:42px;height:42px}
+  .menu-movel .fechar svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .menu-movel .topo-movel{display:flex;align-items:center}
+  .rodape .dentro{grid-template-columns:1fr 1fr}
+  .dona .dentro{grid-template-columns:1fr}
+}
+@media(max-width:860px){
+  .ficha .produto{grid-template-columns:1fr}
+  .galeria{position:static}
+  #vista-produto{padding-bottom:6.5rem}
+  .grelha{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .corpo h3{font-size:15px}
+  .barra-movel{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--papel);border-top:1px solid var(--linha);
+    padding:.7rem var(--pad) calc(.7rem + env(safe-area-inset-bottom));gap:.8rem;align-items:center;
+    transform:translateY(110%);transition:transform .4s var(--ease)}
+  .barra-movel.mostra{transform:none}
+  .barra-movel b{font-size:18px;white-space:nowrap}
+  .barra-movel .btn{flex:1;padding:.85rem 1rem}
+}
+@media(max-width:520px){
+  .topo{gap:.55rem;padding:.8rem var(--pad)}
+  .marca .lockup{height:30px}
+  .acoes{gap:.1rem}
+  .acoes a,.acoes button{width:38px;height:38px}
+  .abertura .cena img{object-position:40% 30%}
+  .linha-saco{grid-template-columns:72px 1fr;grid-template-rows:auto auto}
+  .linha-saco img{width:72px}
+  .linha-saco b{grid-column:2}
+  .rodape .dentro{grid-template-columns:1fr}
+  .apresentacao{font-size:12.5px}
+  .apresentacao span{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .entra,.revela{opacity:1!important;transform:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="apresentacao" role="note">
+  <strong>Apresentação Pacheco Studios</strong>
+  <span>Demonstração da loja Toda Chic · catálogo transcrito das fichas de 21/09 · “a confirmar” = a dona ainda não indicou.</span>
+</div>
+
+<header class="topo">
+  <a class="marca" href="#/" aria-label="Toda Chic, início">
+    <svg class="lockup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 562.432 96" role="img" aria-label="Toda Chic"><g transform="translate(10.00 9.00) scale(0.7800)"><path d="M50 46 C 40 27, 13 25, 9 38 C 6 49, 30 57, 50 46 Z" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linejoin="round"/><path d="M50 46 C 60 27, 87 25, 91 38 C 94 49, 70 57, 50 46 Z" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linejoin="round"/><path d="M44 52 C 41 63, 37 70, 32 77" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linecap="round"/><path d="M56 52 C 59 63, 63 70, 68 77" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linecap="round"/><circle cx="50" cy="47" r="6.4" fill="var(--rosae)"/></g><path d="M17.732 0.0H12.586V-42.78H1.8599999999999999V-43.4H28.52V-42.78H17.732Z M50.84 -20.646Q50.84 -31.93 56.327 -37.789Q61.814 -43.647999999999996 70.432 -43.647999999999996Q79.05 -43.647999999999996 84.16499999999999 -38.56399999999999Q89.28 -33.48 89.28 -22.32Q89.28 -11.16 83.824 -5.456Q78.368 0.248 69.254 0.248Q61.38 0.248 56.358000000000004 -4.278Q53.754000000000005 -6.634 52.297000000000004 -10.818999999999999Q50.84 -15.004 50.84 -20.646ZM70.24600000000001 -43.028Q63.984 -43.028 59.985 -37.448Q55.986000000000004 -31.868 55.986000000000004 -21.08Q55.986000000000004 -10.292 59.768 -5.332Q63.550000000000004 -0.372 69.843 -0.372Q76.136 -0.372 80.13499999999999 -5.983Q84.134 -11.594 84.134 -22.289Q84.134 -32.984 80.321 -38.006Q76.50800000000001 -43.028 70.24600000000001 -43.028Z M119.04 -43.338Q121.76800000000001 -43.461999999999996 124.40300000000002 -43.461999999999996Q127.03800000000001 -43.461999999999996 129.983 -42.903999999999996Q132.928 -42.346 135.811 -40.827Q138.69400000000002 -39.308 140.709 -36.921Q142.72400000000002 -34.534 143.964 -30.628Q145.204 -26.722 145.204 -21.142Q145.204 -15.562 143.375 -11.129Q141.54600000000002 -6.696 138.38400000000001 -4.34Q132.246 0.248 123.566 0.248Q120.528 0.248 117.18 0.0H114.08000000000001V-43.338ZM119.22600000000001 -0.496Q120.528 -0.372 122.512 -0.372Q124.49600000000001 -0.372 125.488 -0.434Q126.48 -0.496 128.216 -0.961Q129.952 -1.426 131.44 -2.2319999999999998Q132.928 -3.038 134.571 -4.619Q136.214 -6.2 137.392 -8.37Q140.05800000000002 -13.454 140.05800000000002 -21.637999999999998Q140.05800000000002 -27.466 138.632 -31.713Q137.20600000000002 -35.96 135.377 -38.006Q133.548 -40.052 130.94400000000002 -41.260999999999996Q128.34 -42.47 126.79 -42.656Q125.24000000000001 -42.842 123.19400000000002 -42.842Q121.14800000000001 -42.842 119.22600000000001 -42.656Z M168.26800000000003 0.0H167.52400000000003L186.062 -43.4L186.74400000000003 -43.71L202.36800000000002 0.0H197.098L192.262 -13.64H174.15800000000002ZM184.14000000000001 -36.704 174.406 -14.26H192.07600000000002Z M282.22400000000005 0.248Q270.63000000000005 0.248 265.05000000000007 -6.324Q263.06600000000003 -8.68 261.826 -12.586Q260.58600000000007 -16.492 260.58600000000007 -22.072000000000003Q260.58600000000007 -27.652 262.4150000000001 -32.085Q264.244 -36.518 267.40600000000006 -38.936Q273.54400000000004 -43.461999999999996 282.22400000000005 -43.461999999999996Q284.70400000000006 -43.461999999999996 287.06000000000006 -43.059Q289.41600000000005 -42.656 290.59400000000005 -42.222L291.71000000000004 -41.788L291.52400000000006 -41.168Q287.30800000000005 -42.842 282.22400000000005 -42.842Q275.65200000000004 -42.842 271.25000000000006 -38.564Q267.90200000000004 -35.402 266.53800000000007 -29.264Q265.732 -25.792 265.732 -20.77Q265.732 -15.748 267.158 -11.501Q268.58400000000006 -7.254 270.41300000000007 -5.208Q272.2420000000001 -3.162 274.84600000000006 -1.9529999999999998Q277.45000000000005 -0.744 279.00000000000006 -0.558Q280.55000000000007 -0.372 282.7510000000001 -0.372Q284.95200000000006 -0.372 287.7420000000001 -0.806Q290.53200000000004 -1.24 291.958 -1.612L293.38400000000007 -2.046L293.57000000000005 -1.426Q288.85800000000006 0.248 282.22400000000005 0.248Z M321.346 0.0H316.20000000000005V-43.4H321.346V-23.436H341.49600000000004V-43.4H346.64200000000005V0.0H341.49600000000004V-22.816H321.346Z M371.442 -42.78V-43.4H382.478V-42.78H379.44000000000005V-0.62H382.478V0.0H371.442V-0.62H374.29400000000004V-42.78Z M428.91600000000005 0.248Q417.32200000000006 0.248 411.7420000000001 -6.324Q409.75800000000004 -8.68 408.51800000000003 -12.586Q407.2780000000001 -16.492 407.2780000000001 -22.072000000000003Q407.2780000000001 -27.652 409.1070000000001 -32.085Q410.93600000000004 -36.518 414.09800000000007 -38.936Q420.23600000000005 -43.461999999999996 428.91600000000005 -43.461999999999996Q431.3960000000001 -43.461999999999996 433.75200000000007 -43.059Q436.10800000000006 -42.656 437.28600000000006 -42.222L438.40200000000004 -41.788L438.21600000000007 -41.168Q434.00000000000006 -42.842 428.91600000000005 -42.842Q422.34400000000005 -42.842 417.94200000000006 -38.564Q414.59400000000005 -35.402 413.2300000000001 -29.264Q412.42400000000004 -25.792 412.42400000000004 -20.77Q412.42400000000004 -15.748 413.85 -11.501Q415.27600000000007 -7.254 417.1050000000001 -5.208Q418.9340000000001 -3.162 421.53800000000007 -1.9529999999999998Q424.14200000000005 -0.744 425.69200000000006 -0.558Q427.2420000000001 -0.372 429.4430000000001 -0.372Q431.64400000000006 -0.372 434.4340000000001 -0.806Q437.22400000000005 -1.24 438.65000000000003 -1.612L440.0760000000001 -2.046L440.26200000000006 -1.426Q435.55000000000007 0.248 428.91600000000005 0.248Z" fill="var(--texto)" transform="translate(110.00 66.00)"/></svg>
+  </a>
+  <nav class="menu" aria-label="Categorias" id="menu"></nav>
+  <div class="acoes">
+    <a href="#/favoritos" class="fav" aria-label="Favoritos" aria-pressed="false">
+      <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9Z"/></svg>
+      <span class="conta" id="conta-fav">0</span>
+    </a>
+    <a href="#/saco" aria-label="Saco de compras">
+      <svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span class="conta" id="conta-saco">0</span>
+    </a>
+    <button type="button" class="burger" aria-label="Abrir menu" aria-expanded="false" id="burger">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+<div class="menu-movel" id="menu-movel" aria-label="Menu">
+  <div class="topo-movel"><span class="mono" style="font-size:13px;letter-spacing:.1em">TODA CHIC</span>
+    <button type="button" class="fechar" aria-label="Fechar menu" id="fechar-menu"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <ul id="menu-movel-lista"></ul>
+</div>
+
+<main id="principal">
+
+<!-- ============================ INÍCIO ============================ -->
+<div id="vista-inicio">
+  <section class="abertura">
+    <div class="cena" aria-hidden="true"><img src="media/heroi.jpg" alt="" fetchpriority="high"></div>
+    <div class="veu" aria-hidden="true"></div>
+    <div class="dentro"><div class="texto-heroi">
+      <p class="sobre entra">Roupa feminina online · Portugal</p>
+      <h1 class="entra" data-i="1">Embeleza<span class="hif">-</span>te <em>connosco</em>.</h1>
+      <p class="frase entra" data-i="2">Peças escolhidas uma a uma, com o preço à vista, o tamanho explicado e quantas ficam. Entregas em todo o país.</p>
+      <div class="cta entra" data-i="3">
+        <a class="btn" href="#/c/todas">Ver as peças</a>
+        <a class="btn linha" href="#/c/promocoes">Promoções</a>
+      </div>
+    </div></div>
+  </section>
+
+  <div class="promessas" aria-label="Promessas da loja">
+    <ul>
+      <li><svg viewBox="0 0 24 24"><path d="M4 8h10v8H4zM14 11h4l2 3v2h-6z"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>Entregas em todo o país</li>
+      <li><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>Pagamento antecipado por MB WAY</li>
+      <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9Z"/></svg>Moda que realça a tua beleza</li>
+      <li><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>Dúvidas por WhatsApp: 933 668 148</li>
+    </ul>
+  </div>
+
+  <section class="seccao" id="montra">
+    <div class="dentro">
+      <div class="cabeca">
+        <h2 id="titulo-grelha">Todas as peças</h2>
+        <span class="info" id="info-grelha"></span>
+      </div>
+      <div class="patilhas" id="patilhas" role="group" aria-label="Filtrar por categoria"></div>
+      <div class="grelha" id="grelha"></div>
+    </div>
+  </section>
+
+  <section class="seccao confianca">
+    <div class="dentro">
+      <h2>Comprar aqui é simples</h2>
+      <p>Somos uma loja pequena e portuguesa. Preferimos dizer-te tudo antes de comprares a explicar depois.</p>
+      <div class="garantias">
+        <div class="garantia">
+          <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+          <div><h3>MB WAY</h3><p>Pagas como já estás habituada, pelo telemóvel. O pagamento é feito antes do envio.</p></div>
+        </div>
+        <div class="garantia">
+          <svg viewBox="0 0 24 24"><path d="M4 8h10v8H4zM14 11h4l2 3v2h-6z"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
+          <div><h3>Entregas em todo o país</h3><p>Enviamos para qualquer ponto de Portugal. Portes e prazo: a confirmar antes do lançamento.</p></div>
+        </div>
+        <div class="garantia">
+          <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-4-7.5"/><path d="M9 12l2.5 2.5L21 5"/></svg>
+          <div><h3>O tamanho explicado</h3><p>Em cada peça dizemos até que tamanho veste e quantas unidades existem. Sem surpresas.</p></div>
+        </div>
+        <div class="garantia">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+          <div><h3>Falamos contigo</h3><p>933 668 148, a mesma pessoa que escolhe as peças. Responde antes e depois da compra.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccao dona">
+    <div class="dentro">
+      <div class="retrato revela"><img src="media/heroi.jpg" alt="A dona da Toda Chic na loja, à frente do letreiro" loading="lazy"><span class="etiqueta">A DONA · TODA CHIC</span></div>
+      <div class="revela">
+        <h2>Moda que <em>realça</em> a tua beleza.</h2>
+        <p>A Toda Chic vende roupa feminina online, a partir de Portugal e para todo o país. Cada peça é escolhida à mão e fotografada pela dona, que responde pessoalmente a cada mensagem.</p>
+        <p>Os tamanhos são explicados como ela os explica ao balcão: “tamanho único, veste do S ao L”. E quando resta uma unidade, dizemos.</p>
+        <p class="assinatura">Obrigada por fazeres parte da nossa história.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccao insta">
+    <div class="dentro">
+      <div><h2>Segue-nos no Instagram</h2><p>As novidades entram primeiro em <span class="mono">@_toda.chiic</span>.</p></div>
+      <a class="btn" href="https://www.instagram.com/_toda.chiic" target="_blank" rel="noopener">Abrir o Instagram</a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ PRODUTO ============================ -->
+<section class="seccao ficha" id="vista-produto" hidden>
+  <div class="dentro produto" id="produto-dentro"></div>
+  <div class="dentro relacionadas" id="relacionadas"></div>
+</section>
+<div class="barra-movel" id="barra-movel"></div>
+
+<!-- ============================ FAVORITOS / SACO / PÁGINAS ============================ -->
+<section class="seccao" id="vista-lista" hidden><div class="dentro" id="lista-dentro"></div></section>
+<section class="seccao texto" id="vista-texto" hidden><div class="dentro" id="texto-dentro"></div></section>
+
+</main>
+
+<footer class="rodape">
+  <div class="dentro">
+    <div>
+      <svg class="lockup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 562.432 96" aria-hidden="true"><g transform="translate(10.00 9.00) scale(0.7800)"><path d="M50 46 C 40 27, 13 25, 9 38 C 6 49, 30 57, 50 46 Z" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linejoin="round"/><path d="M50 46 C 60 27, 87 25, 91 38 C 94 49, 70 57, 50 46 Z" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linejoin="round"/><path d="M44 52 C 41 63, 37 70, 32 77" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linecap="round"/><path d="M56 52 C 59 63, 63 70, 68 77" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linecap="round"/><circle cx="50" cy="47" r="6.4" fill="var(--rosae)"/></g><path d="M17.732 0.0H12.586V-42.78H1.8599999999999999V-43.4H28.52V-42.78H17.732Z M50.84 -20.646Q50.84 -31.93 56.327 -37.789Q61.814 -43.647999999999996 70.432 -43.647999999999996Q79.05 -43.647999999999996 84.16499999999999 -38.56399999999999Q89.28 -33.48 89.28 -22.32Q89.28 -11.16 83.824 -5.456Q78.368 0.248 69.254 0.248Q61.38 0.248 56.358000000000004 -4.278Q53.754000000000005 -6.634 52.297000000000004 -10.818999999999999Q50.84 -15.004 50.84 -20.646ZM70.24600000000001 -43.028Q63.984 -43.028 59.985 -37.448Q55.986000000000004 -31.868 55.986000000000004 -21.08Q55.986000000000004 -10.292 59.768 -5.332Q63.550000000000004 -0.372 69.843 -0.372Q76.136 -0.372 80.13499999999999 -5.983Q84.134 -11.594 84.134 -22.289Q84.134 -32.984 80.321 -38.006Q76.50800000000001 -43.028 70.24600000000001 -43.028Z M119.04 -43.338Q121.76800000000001 -43.461999999999996 124.40300000000002 -43.461999999999996Q127.03800000000001 -43.461999999999996 129.983 -42.903999999999996Q132.928 -42.346 135.811 -40.827Q138.69400000000002 -39.308 140.709 -36.921Q142.72400000000002 -34.534 143.964 -30.628Q145.204 -26.722 145.204 -21.142Q145.204 -15.562 143.375 -11.129Q141.54600000000002 -6.696 138.38400000000001 -4.34Q132.246 0.248 123.566 0.248Q120.528 0.248 117.18 0.0H114.08000000000001V-43.338ZM119.22600000000001 -0.496Q120.528 -0.372 122.512 -0.372Q124.49600000000001 -0.372 125.488 -0.434Q126.48 -0.496 128.216 -0.961Q129.952 -1.426 131.44 -2.2319999999999998Q132.928 -3.038 134.571 -4.619Q136.214 -6.2 137.392 -8.37Q140.05800000000002 -13.454 140.05800000000002 -21.637999999999998Q140.05800000000002 -27.466 138.632 -31.713Q137.20600000000002 -35.96 135.377 -38.006Q133.548 -40.052 130.94400000000002 -41.260999999999996Q128.34 -42.47 126.79 -42.656Q125.24000000000001 -42.842 123.19400000000002 -42.842Q121.14800000000001 -42.842 119.22600000000001 -42.656Z M168.26800000000003 0.0H167.52400000000003L186.062 -43.4L186.74400000000003 -43.71L202.36800000000002 0.0H197.098L192.262 -13.64H174.15800000000002ZM184.14000000000001 -36.704 174.406 -14.26H192.07600000000002Z M282.22400000000005 0.248Q270.63000000000005 0.248 265.05000000000007 -6.324Q263.06600000000003 -8.68 261.826 -12.586Q260.58600000000007 -16.492 260.58600000000007 -22.072000000000003Q260.58600000000007 -27.652 262.4150000000001 -32.085Q264.244 -36.518 267.40600000000006 -38.936Q273.54400000000004 -43.461999999999996 282.22400000000005 -43.461999999999996Q284.70400000000006 -43.461999999999996 287.06000000000006 -43.059Q289.41600000000005 -42.656 290.59400000000005 -42.222L291.71000000000004 -41.788L291.52400000000006 -41.168Q287.30800000000005 -42.842 282.22400000000005 -42.842Q275.65200000000004 -42.842 271.25000000000006 -38.564Q267.90200000000004 -35.402 266.53800000000007 -29.264Q265.732 -25.792 265.732 -20.77Q265.732 -15.748 267.158 -11.501Q268.58400000000006 -7.254 270.41300000000007 -5.208Q272.2420000000001 -3.162 274.84600000000006 -1.9529999999999998Q277.45000000000005 -0.744 279.00000000000006 -0.558Q280.55000000000007 -0.372 282.7510000000001 -0.372Q284.95200000000006 -0.372 287.7420000000001 -0.806Q290.53200000000004 -1.24 291.958 -1.612L293.38400000000007 -2.046L293.57000000000005 -1.426Q288.85800000000006 0.248 282.22400000000005 0.248Z M321.346 0.0H316.20000000000005V-43.4H321.346V-23.436H341.49600000000004V-43.4H346.64200000000005V0.0H341.49600000000004V-22.816H321.346Z M371.442 -42.78V-43.4H382.478V-42.78H379.44000000000005V-0.62H382.478V0.0H371.442V-0.62H374.29400000000004V-42.78Z M428.91600000000005 0.248Q417.32200000000006 0.248 411.7420000000001 -6.324Q409.75800000000004 -8.68 408.51800000000003 -12.586Q407.2780000000001 -16.492 407.2780000000001 -22.072000000000003Q407.2780000000001 -27.652 409.1070000000001 -32.085Q410.93600000000004 -36.518 414.09800000000007 -38.936Q420.23600000000005 -43.461999999999996 428.91600000000005 -43.461999999999996Q431.3960000000001 -43.461999999999996 433.75200000000007 -43.059Q436.10800000000006 -42.656 437.28600000000006 -42.222L438.40200000000004 -41.788L438.21600000000007 -41.168Q434.00000000000006 -42.842 428.91600000000005 -42.842Q422.34400000000005 -42.842 417.94200000000006 -38.564Q414.59400000000005 -35.402 413.2300000000001 -29.264Q412.42400000000004 -25.792 412.42400000000004 -20.77Q412.42400000000004 -15.748 413.85 -11.501Q415.27600000000007 -7.254 417.1050000000001 -5.208Q418.9340000000001 -3.162 421.53800000000007 -1.9529999999999998Q424.14200000000005 -0.744 425.69200000000006 -0.558Q427.2420000000001 -0.372 429.4430000000001 -0.372Q431.64400000000006 -0.372 434.4340000000001 -0.806Q437.22400000000005 -1.24 438.65000000000003 -1.612L440.0760000000001 -2.046L440.26200000000006 -1.426Q435.55000000000007 0.248 428.91600000000005 0.248Z" fill="var(--texto)" transform="translate(110.00 66.00)"/></svg>
+      <p>Roupa feminina online. Entregas em todo o país.<br>Instagram <a href="https://www.instagram.com/_toda.chiic" target="_blank" rel="noopener">@_toda.chiic</a></p>
+    </div>
+    <div><h3>Loja</h3><ul id="rodape-cats"></ul></div>
+    <div><h3>Ajuda</h3><ul>
+      <li><a href="#/pagina/faq">Perguntas frequentes</a></li>
+      <li><a href="#/pagina/pagamentos">Métodos de pagamento</a></li>
+      <li><a href="#/pagina/trocas">Trocas e devoluções</a></li>
+      <li><a href="#/pagina/contactos">Contactos</a></li>
+    </ul></div>
+    <div><h3>Legal</h3><ul>
+      <li><a href="#/pagina/sobre">Sobre nós</a></li>
+      <li><a href="#/pagina/privacidade">Política de privacidade</a></li>
+      <li><a href="#/pagina/termos">Termos e condições</a></li>
+      <li><a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">Livro de Reclamações</a></li>
+    </ul></div>
+  </div>
+  <div class="fim">
+    <span>© 2026 Toda Chic · Identificação da empresa (nome, NIF, morada): a confirmar</span>
+    <span>Website: Pacheco Studios</span>
+  </div>
+</footer>
+
+<div class="aviso-saco" id="aviso-saco" role="status" aria-live="polite"></div>
+
+
+<script>
+var DADOS = __CATALOGO__;
+var PECAS = DADOS.pecas, CATS = DADOS.categorias;
+var porId = {}; PECAS.forEach(function(p){ porId[p.id] = p; });
+var CAT_NOME = {}; CATS.forEach(function(c){ CAT_NOME[c.id] = c.nome; });
+var WA = 'https://wa.me/351933668148';
+var CORACAO = '<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9Z"/></svg>';
+
+/* ---------- utilidades ---------- */
+function euro(v){ return v == null ? 'Preço a confirmar' : v.toFixed(2).replace('.', ',') + ' €'; }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function fotoDe(p, cor){
+  var c = cor != null ? p.cores[cor] : null;
+  if (c && c.foto) return 'media/produtos/' + c.foto;
+  for (var i = 0; i < p.cores.length; i++) if (p.cores[i].foto) return 'media/produtos/' + p.cores[i].foto;
+  return p.fotos && p.fotos.length ? 'media/produtos/' + p.fotos[0] : '';
+}
+function fotosDe(p){
+  var lista = [], vistas = {};
+  p.cores.forEach(function(c){ if (c.foto && !vistas[c.foto]) { vistas[c.foto] = 1; lista.push(c.foto); } });
+  (p.fotos || []).forEach(function(f){ if (!vistas[f]) { vistas[f] = 1; lista.push(f); } });
+  return lista;
+}
+function stockTotal(p){
+  var t = 0, sabe = false;
+  p.cores.forEach(function(c){ if (typeof c.stock === 'number') { t += c.stock; sabe = true; } });
+  return sabe ? t : null;
+}
+function seloDe(p){
+  var s = stockTotal(p);
+  if (p.promo) return '<span class="selo escasso">PROMOÇÃO</span>';
+  if (s === 1) return '<span class="selo escasso">ÚLTIMA UNIDADE</span>';
+  if (s != null && s <= 3) return '<span class="selo">RESTAM ' + s + '</span>';
+  return '';
+}
+function guarda(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+function le(k, def){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? def : v; } catch (e) { return def; } }
+
+/* ---------- favoritos ---------- */
+var favoritos = le('tc.favoritos', []);
+function eFav(id){ return favoritos.indexOf(id) >= 0; }
+function alternaFav(id, botao){
+  var i = favoritos.indexOf(id);
+  if (i >= 0) favoritos.splice(i, 1); else favoritos.push(id);
+  guarda('tc.favoritos', favoritos);
+  document.querySelectorAll('.favorita[data-id="' + id + '"]').forEach(function(b){
+    b.setAttribute('aria-pressed', eFav(id) ? 'true' : 'false');
+    b.setAttribute('aria-label', (eFav(id) ? 'Tirar ' : 'Guardar ') + porId[id].nome + (eFav(id) ? ' dos favoritos' : ' nos favoritos'));
+  });
+  if (botao) { botao.classList.remove('pop'); void botao.offsetWidth; botao.classList.add('pop'); }
+  atualizaContas(eFav(id) ? 'fav' : null);
+  if (rota().vista === 'favoritos') desenhaLista();
+}
+function botaoFav(id, extra){
+  var on = eFav(id);
+  return '<button type="button" class="favorita ' + (extra || '') + '" data-id="' + id + '" aria-pressed="' + on + '" aria-label="' +
+    (on ? 'Tirar ' : 'Guardar ') + esc(porId[id].nome) + (on ? ' dos favoritos' : ' nos favoritos') + '">' + CORACAO + '</button>';
+}
+
+/* ---------- saco ---------- */
+var saco = le('tc.saco', []);
+function chaveSaco(l){ return l.id + '|' + l.cor + '|' + l.tam; }
+function juntaAoSaco(id, cor, tam){
+  var chave = id + '|' + cor + '|' + tam, achou = null;
+  saco.forEach(function(l){ if (chaveSaco(l) === chave) achou = l; });
+  if (achou) achou.qt += 1; else saco.push({id: id, cor: cor, tam: tam, qt: 1});
+  guarda('tc.saco', saco);
+  atualizaContas('saco');
+  var p = porId[id];
+  avisa('<span>' + esc(p.nome) + ' está no saco.</span><a href="#/saco">Ver o saco</a>');
+}
+function totalSaco(){ var t = 0; saco.forEach(function(l){ var p = porId[l.id]; if (p && p.preco != null) t += p.preco * l.qt; }); return t; }
+function unidadesSaco(){ var t = 0; saco.forEach(function(l){ t += l.qt; }); return t; }
+var avisoTimer;
+function avisa(html){
+  var a = document.getElementById('aviso-saco');
+  a.innerHTML = html; a.classList.add('mostra');
+  clearTimeout(avisoTimer); avisoTimer = setTimeout(function(){ a.classList.remove('mostra'); }, 3200);
+}
+function atualizaContas(salta){
+  var f = document.getElementById('conta-fav'), s = document.getElementById('conta-saco');
+  f.textContent = favoritos.length; f.classList.toggle('tem', favoritos.length > 0);
+  s.textContent = unidadesSaco(); s.classList.toggle('tem', saco.length > 0);
+  document.querySelector('.acoes .fav').setAttribute('aria-pressed', favoritos.length > 0 ? 'true' : 'false');
+  var alvo = salta === 'fav' ? f : salta === 'saco' ? s : null;
+  if (alvo) { alvo.classList.remove('salta'); void alvo.offsetWidth; alvo.classList.add('salta'); }
+}
+
+/* ---------- cartão de peça ---------- */
+function cartao(p, i){
+  var chips = p.cores.map(function(c, j){
+    return '<span class="chip" style="background:' + c.hex + '" title="' + esc(c.nome) + '" aria-hidden="true"></span>';
+  }).join('');
+  var tamTxt = (p.tam || 'Tamanho a confirmar').replace(/^Tamanho único · /, 'Único · ');
+  return '<article class="peca revela" style="transition-delay:' + Math.min(i, 8) * 45 + 'ms">' +
+    '<a class="figura" href="#/p/' + p.id + '" tabindex="-1" aria-hidden="true">' +
+      '<img src="' + fotoDe(p) + '" alt="" loading="lazy" width="880" height="1100">' + seloDe(p) + '</a>' +
+    botaoFav(p.id) +
+    '<div class="corpo">' +
+      '<h3><a href="#/p/' + p.id + '">' + esc(p.nome) + '</a></h3>' +
+      '<span class="ref">' + esc(tamTxt) + '</span>' +
+      '<div class="chips" aria-label="Cores: ' + esc(p.cores.map(function(c){ return c.nome; }).join(', ')) + '">' + chips + '</div>' +
+      '<div class="preco"><b>' + euro(p.preco) + '</b>' + (p.promo ? '<span class="promo-tag">PROMOÇÃO</span>' : '') + '</div>' +
+    '</div></article>';
+}
+
+/* ---------- início: patilhas + grelha ---------- */
+var filtro = 'todas';
+function pecasDe(cat){
+  if (cat === 'todas') return PECAS;
+  if (cat === 'promocoes') return PECAS.filter(function(p){ return p.promo; });
+  return PECAS.filter(function(p){ return p.cat === cat; });
+}
+function desenhaPatilhas(){
+  var h = '<button type="button" class="patilha" data-cat="todas" aria-pressed="' + (filtro === 'todas') + '">Todas <span class="qt">' + PECAS.length + '</span></button>';
+  CATS.forEach(function(c){
+    var n = pecasDe(c.id).length;
+    h += '<button type="button" class="patilha' + (c.brevemente ? ' breve' : '') + '" data-cat="' + c.id + '" aria-pressed="' + (filtro === c.id) + '">' +
+      esc(c.nome) + (c.brevemente ? ' <span class="qt">breve</span>' : ' <span class="qt">' + n + '</span>') + '</button>';
+  });
+  h += '<button type="button" class="patilha promo" data-cat="promocoes" aria-pressed="' + (filtro === 'promocoes') + '">Promoções <span class="qt">' + pecasDe('promocoes').length + '</span></button>';
+  document.getElementById('patilhas').innerHTML = h;
+}
+function desenhaGrelha(){
+  var lista = pecasDe(filtro), g = document.getElementById('grelha');
+  var nome = filtro === 'todas' ? 'Todas as peças' : filtro === 'promocoes' ? 'Promoções' : CAT_NOME[filtro];
+  document.getElementById('titulo-grelha').textContent = nome;
+  document.getElementById('info-grelha').textContent = lista.length ? lista.length + (lista.length === 1 ? ' peça' : ' peças') + ' · preços com IVA' : '';
+  if (!lista.length) {
+    g.innerHTML = '<div class="vazio" style="grid-column:1/-1"><strong>' + esc(nome) + ' em preparação</strong>As peças entram assim que as fotografias estiverem prontas. Entretanto, <a href="#/c/todas" style="text-decoration:underline">vê as novidades em roupa</a>.</div>';
+    return;
+  }
+  g.innerHTML = lista.map(cartao).join('');
+  observa();
+}
+function aplicaFiltro(cat, rolar){
+  filtro = cat;
+  desenhaPatilhas(); desenhaGrelha();
+  document.querySelectorAll('#menu a, #menu-movel-lista a').forEach(function(a){
+    a.setAttribute('aria-current', a.getAttribute('data-cat') === cat ? 'true' : 'false');
+  });
+  if (rolar) document.getElementById('montra').scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+document.getElementById('patilhas').addEventListener('click', function(e){
+  var b = e.target.closest('.patilha'); if (!b) return;
+  location.hash = '#/c/' + b.getAttribute('data-cat');
+});
+
+/* ---------- menus ---------- */
+function desenhaMenus(){
+  var principais = ['blusas', 'calcas', 'vestidos', 'conjuntos', 'casacos', 'acessorios'];
+  document.getElementById('menu').innerHTML = principais.map(function(id){
+    return '<a href="#/c/' + id + '" data-cat="' + id + '">' + esc(CAT_NOME[id]) + '</a>';
+  }).join('') + '<a href="#/c/promocoes" data-cat="promocoes" class="promo">Promoções</a>';
+  var todas = CATS.filter(function(c){ return !c.brevemente; });
+  document.getElementById('menu-movel-lista').innerHTML = '<li><a href="#/c/todas" data-cat="todas">Todas as peças</a></li>' +
+    todas.map(function(c){ return '<li><a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a></li>'; }).join('') +
+    '<li><a href="#/c/promocoes" data-cat="promocoes">Promoções</a></li><li><a href="#/favoritos">Favoritos</a></li><li><a href="#/pagina/contactos">Contactos</a></li>';
+  document.getElementById('rodape-cats').innerHTML = todas.map(function(c){
+    return '<li><a href="#/c/' + c.id + '">' + esc(c.nome) + '</a></li>';
+  }).join('') + '<li><a href="#/c/promocoes">Promoções</a></li>';
+}
+var burger = document.getElementById('burger'), menuMovel = document.getElementById('menu-movel');
+function fechaMenu(){ menuMovel.classList.remove('aberto'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+burger.addEventListener('click', function(){ menuMovel.classList.add('aberto'); burger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; });
+document.getElementById('fechar-menu').addEventListener('click', fechaMenu);
+menuMovel.addEventListener('click', function(e){ if (e.target.closest('a')) fechaMenu(); });
+
+/* ---------- ficha de produto ---------- */
+var escolha = {cor: 0, tam: 0};
+function desenhaProduto(id){
+  var p = porId[id]; if (!p) { location.hash = '#/'; return; }
+  escolha = {cor: 0, tam: 0};
+  var fotos = fotosDe(p), atual = fotoDe(p, 0);
+  var cores = p.cores.map(function(c, j){
+    return '<button type="button" class="cor" data-j="' + j + '" aria-pressed="' + (j === 0) + '"><i style="background:' + c.hex + '"></i>' + esc(c.nome) +
+      (c.stock === 1 ? ' <span class="mono" style="font-size:12px;color:var(--rosae)">· 1</span>' : '') + '</button>';
+  }).join('');
+  var tams = p.tamanhos.length ? p.tamanhos.map(function(t, j){
+      return '<button type="button" class="tam" data-j="' + j + '" aria-pressed="' + (j === 0) + '">' + esc(t) + '</button>';
+    }).join('') + (p.tam ? '<span class="tam-nota">' + esc(p.tam.replace(/^Tamanho único · /, '')) + '</span>' : '')
+    : '<span class="tam-nota">Tamanho a confirmar com a loja</span>';
+  var miniaturas = fotos.length > 1 ? '<div class="miniaturas">' + fotos.map(function(f, j){
+      return '<button type="button" data-f="' + f + '" aria-pressed="' + (j === 0) + '" aria-label="Fotografia ' + (j + 1) + '"><img src="media/produtos/' + f + '" alt=""></button>';
+    }).join('') + '</div>' : '';
+  var msg = encodeURIComponent('Olá! Tenho uma dúvida sobre "' + p.nome + '" (' + euro(p.preco) + ').');
+  document.getElementById('produto-dentro').innerHTML =
+    '<div class="galeria"><div class="visual"><img id="foto-grande" src="' + atual + '" alt="' + esc(p.nome) + '">' + botaoFav(p.id) + '</div>' + miniaturas + '</div>' +
+    '<div>' +
+      '<nav class="migalhas" aria-label="Caminho"><a href="#/">Início</a><span>›</span><a href="#/c/' + p.cat + '">' + esc(CAT_NOME[p.cat]) + '</a></nav>' +
+      '<h1>' + esc(p.nome) + '</h1>' +
+      '<p class="preco-grande">' + euro(p.preco) + (p.promo ? '<span class="promo-tag">PROMOÇÃO</span>' : '') + '</p>' +
+      '<p class="desc">' + esc(p.desc || '') + '</p>' +
+      '<div class="bloco"><p class="rotulo">Cor <span id="cor-nome">' + esc(p.cores[0].nome) + '</span></p><div class="cores" id="cores">' + cores + '</div></div>' +
+      '<div class="bloco"><p class="rotulo">Tamanho</p><div class="tamanhos" id="tamanhos">' + tams + '</div></div>' +
+      '<p class="stock" id="stock"></p>' +
+      '<div class="comprar"><button type="button" class="btn" id="juntar"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Juntar ao saco</button>' +
+      '<button type="button" class="btn linha" id="fav-grande">' + (eFav(p.id) ? 'Nos favoritos' : 'Guardar nos favoritos') + '</button></div>' +
+      '<p class="duvida">Dúvidas no tamanho ou na cor? <a href="' + WA + '?text=' + msg + '" target="_blank" rel="noopener">Fala com a Toda Chic no WhatsApp</a> antes de comprares.</p>' +
+      '<div class="dobras">' +
+        '<details><summary>Tamanho e medidas</summary><div><p>' + esc(p.tam || 'Tamanho a confirmar com a loja.') + '</p>' +
+          (p.stockNota ? '<p>' + esc(p.stockNota) + '.</p>' : '') + '<p>Medidas da peça em centímetros: a confirmar.</p></div></details>' +
+        '<details><summary>Envio e pagamento</summary><div><p>Pagamento antecipado por MB WAY. Entregas em todo o país.</p><p>Portes e prazo de entrega: a confirmar antes do lançamento da loja.</p></div></details>' +
+        '<details><summary>Trocas e devoluções</summary><div><p>Não aceitamos trocas nem devoluções. Se tiveres dúvidas no tamanho ou na cor, fala connosco antes de comprares.</p></div></details>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('barra-movel').innerHTML = '<b>' + euro(p.preco) + '</b><button type="button" class="btn" id="juntar-movel">Juntar ao saco</button>';
+  atualizaStock(p);
+  var grande = document.getElementById('foto-grande');
+  document.getElementById('cores').addEventListener('click', function(e){
+    var b = e.target.closest('.cor'); if (!b) return;
+    escolha.cor = +b.getAttribute('data-j');
+    b.parentElement.querySelectorAll('.cor').forEach(function(o){ o.setAttribute('aria-pressed', 'false'); });
+    b.setAttribute('aria-pressed', 'true');
+    document.getElementById('cor-nome').textContent = p.cores[escolha.cor].nome;
+    var f = fotoDe(p, escolha.cor);
+    if (f && grande.getAttribute('src') !== f) { grande.style.animation = 'none'; void grande.offsetWidth; grande.style.animation = ''; grande.src = f; }
+    document.querySelectorAll('.miniaturas button').forEach(function(m){ m.setAttribute('aria-pressed', ('media/produtos/' + m.getAttribute('data-f')) === f ? 'true' : 'false'); });
+    atualizaStock(p);
+  });
+  document.getElementById('tamanhos').addEventListener('click', function(e){
+    var b = e.target.closest('.tam'); if (!b) return;
+    escolha.tam = +b.getAttribute('data-j');
+    b.parentElement.querySelectorAll('.tam').forEach(function(o){ o.setAttribute('aria-pressed', 'false'); });
+    b.setAttribute('aria-pressed', 'true');
+  });
+  document.querySelectorAll('.miniaturas button').forEach(function(m){
+    m.addEventListener('click', function(){
+      document.querySelectorAll('.miniaturas button').forEach(function(o){ o.setAttribute('aria-pressed', 'false'); });
+      m.setAttribute('aria-pressed', 'true');
+      grande.style.animation = 'none'; void grande.offsetWidth; grande.style.animation = '';
+      grande.src = 'media/produtos/' + m.getAttribute('data-f');
+    });
+  });
+  function juntar(botao){
+    juntaAoSaco(p.id, escolha.cor, p.tamanhos.length ? escolha.tam : -1);
+    var txt = botao.innerHTML; botao.classList.add('feito'); botao.innerHTML = 'No saco ✓';
+    setTimeout(function(){ botao.classList.remove('feito'); botao.innerHTML = txt; }, 1600);
+  }
+  document.getElementById('juntar').addEventListener('click', function(){ juntar(this); });
+  document.getElementById('juntar-movel').addEventListener('click', function(){ juntar(this); });
+  document.getElementById('fav-grande').addEventListener('click', function(){
+    alternaFav(p.id, document.querySelector('.galeria .favorita'));
+    this.textContent = eFav(p.id) ? 'Nos favoritos' : 'Guardar nos favoritos';
+  });
+  var outras = pecasDe(p.cat).filter(function(o){ return o.id !== p.id; }).slice(0, 4);
+  document.getElementById('relacionadas').innerHTML = outras.length ?
+    '<div class="cabeca"><h2>Também em ' + esc(CAT_NOME[p.cat]) + '</h2></div><div class="grelha">' + outras.map(cartao).join('') + '</div>' : '';
+  observa();
+  document.title = p.nome + ' — Toda Chic';
+}
+function atualizaStock(p){
+  var c = p.cores[escolha.cor], el = document.getElementById('stock');
+  if (typeof c.stock !== 'number') { el.textContent = 'Disponibilidade: a confirmar'; el.className = 'stock'; return; }
+  if (c.stock === 1) { el.textContent = 'Só 1 unidade em ' + c.nome.toLowerCase(); el.className = 'stock escasso'; }
+  else { el.textContent = c.stock + ' unidades em ' + c.nome.toLowerCase() + (p.stockNota ? ' · ' + p.stockNota.toLowerCase() : ''); el.className = 'stock'; }
+}
+
+/* ---------- favoritos e saco ---------- */
+function desenhaLista(){
+  var r = rota(), d = document.getElementById('lista-dentro');
+  if (r.vista === 'favoritos') {
+    var lista = favoritos.map(function(id){ return porId[id]; }).filter(Boolean);
+    d.innerHTML = '<div class="cabeca"><h2>Favoritos</h2><span class="info">' + (lista.length ? lista.length + (lista.length === 1 ? ' peça guardada' : ' peças guardadas') + ' neste telemóvel' : '') + '</span></div>' +
+      (lista.length ? '<div class="grelha">' + lista.map(cartao).join('') + '</div>' :
+        '<div class="vazio"><strong>Ainda sem favoritos</strong>Toca no coração de uma peça para a guardares aqui. <a href="#/c/todas" style="text-decoration:underline">Ver as peças</a></div>');
+    observa();
+    document.title = 'Favoritos — Toda Chic';
+    return;
+  }
+  var linhas = saco.map(function(l, i){
+    var p = porId[l.id]; if (!p) return '';
+    var cor = p.cores[l.cor] || p.cores[0], tam = l.tam >= 0 && p.tamanhos[l.tam] ? p.tamanhos[l.tam] : 'tamanho a confirmar';
+    return '<div class="linha-saco"><img src="' + fotoDe(p, l.cor) + '" alt="">' +
+      '<div><h3><a href="#/p/' + p.id + '">' + esc(p.nome) + '</a></h3><p class="meta">' + esc(cor.nome) + ' · ' + esc(tam) + '</p>' +
+      '<div class="qt"><button type="button" data-i="' + i + '" data-d="-1" aria-label="Menos uma">−</button><span>' + l.qt + '</span><button type="button" data-i="' + i + '" data-d="1" aria-label="Mais uma">+</button></div> ' +
+      '<button type="button" class="tirar" data-i="' + i + '" data-d="0">tirar</button></div>' +
+      '<b>' + (p.preco == null ? 'a confirmar' : euro(p.preco * l.qt)) + '</b></div>';
+  }).join('');
+  d.innerHTML = '<div class="cabeca"><h2>O teu saco</h2><span class="info">' + (saco.length ? unidadesSaco() + (unidadesSaco() === 1 ? ' peça' : ' peças') : '') + '</span></div>' +
+    (saco.length ? '<div class="lista" id="linhas-saco">' + linhas + '</div>' +
+      '<div class="resumo"><dl><dt>Peças</dt><dd>' + euro(totalSaco()) + '</dd><dt>Portes</dt><dd>a confirmar</dd><dt class="total">Total</dt><dd class="total">' + euro(totalSaco()) + '</dd></dl>' +
+      '<button type="button" class="btn" id="pagar">Pagar com <span class="mbway">MB WAY</span></button>' +
+      '<p class="nota">Nesta demonstração o pagamento não é processado. Na loja final, o MB WAY pede o número de telemóvel e confirma na app.</p></div>' :
+      '<div class="vazio"><strong>O saco está vazio</strong><a href="#/c/todas" style="text-decoration:underline">Ver as peças</a></div>');
+  var ls = document.getElementById('linhas-saco');
+  if (ls) ls.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-i]'); if (!b) return;
+    var i = +b.getAttribute('data-i'), dd = +b.getAttribute('data-d');
+    if (dd === 0 || saco[i].qt + dd <= 0) saco.splice(i, 1); else saco[i].qt += dd;
+    guarda('tc.saco', saco); atualizaContas(); desenhaLista();
+  });
+  var pg = document.getElementById('pagar');
+  if (pg) pg.addEventListener('click', function(){ avisa('<span>Demonstração: aqui abre o pagamento MB WAY da loja real.</span>'); });
+  document.title = 'Saco — Toda Chic';
+}
+
+/* ---------- páginas de texto ---------- */
+var PAGINAS = {
+  sobre: {t: 'Sobre nós', h: '<p>A Toda Chic vende roupa feminina online, a partir de Portugal e com entregas em todo o país. Cada peça é escolhida à mão e fotografada pela dona, que responde pessoalmente a cada mensagem.</p><p>Moda que realça a tua beleza. Obrigada por fazeres parte da nossa história.</p><p class="aviso">Texto de apresentação a completar com a história da dona (quando começou, porquê, o que a move).</p>'},
+  contactos: {t: 'Contactos', h: '<p>A forma mais rápida é o WhatsApp. Respondemos antes e depois da compra.</p><div class="contactos-grelha">' +
+    '<a href="https://wa.me/351933668148" target="_blank" rel="noopener"><small>WhatsApp</small>933 668 148</a>' +
+    '<a href="tel:+351933668148"><small>Telefone</small>933 668 148</a>' +
+    '<a href="https://www.instagram.com/_toda.chiic" target="_blank" rel="noopener"><small>Instagram</small>@_toda.chiic</a>' +
+    '<div><small>E-mail</small>a confirmar</div></div>'},
+  faq: {t: 'Perguntas frequentes', h: '<h2>Como pago?</h2><p>Por MB WAY, antes do envio. Na loja final, o pagamento pede o número de telemóvel e confirma-se na app.</p>' +
+    '<h2>Entregam onde?</h2><p>Em todo o país. Portes e prazo de entrega: a confirmar antes do lançamento.</p>' +
+    '<h2>O que quer dizer “tamanho único, veste do S ao L”?</h2><p>É uma peça com elasticidade, feita para vestir bem em corpos do S ao L. Se tiveres dúvidas, manda-nos as tuas medidas por WhatsApp e ajudamos a decidir.</p>' +
+    '<h2>Posso trocar ou devolver?</h2><p>Não aceitamos trocas nem devoluções. Por isso, fala connosco antes de comprares: respondemos a todas as dúvidas de tamanho e cor.</p>' +
+    '<h2>Como sei se ainda há stock?</h2><p>Em cada peça dizemos quantas unidades existem por cor. Quando resta uma, aparece “última unidade”.</p>'},
+  pagamentos: {t: 'Métodos de pagamento', h: '<p>Aceitamos <strong>MB WAY</strong>. O pagamento é feito antes do envio.</p><p>Outros métodos (Multibanco, cartão): a confirmar com a dona antes do lançamento.</p>'},
+  trocas: {t: 'Trocas e devoluções', h: '<p>Não aceitamos trocas nem devoluções.</p><p>Se tiveres dúvidas no tamanho ou na cor, fala connosco por WhatsApp antes de comprares: ajudamos a escolher.</p>'},
+  privacidade: {t: 'Política de privacidade', h: '<p>Os dados que nos dás (nome, morada, telemóvel) servem apenas para processar e entregar a tua encomenda e para responder às tuas mensagens. Não são vendidos nem cedidos a terceiros fora do necessário à entrega e ao pagamento.</p><p class="aviso">Página a completar com a identificação da responsável pelo tratamento (nome, NIF, morada), o prazo de conservação dos dados e o contacto para exercer os direitos RGPD.</p>'},
+  termos: {t: 'Termos e condições', h: '<p>Os preços apresentados incluem IVA. As encomendas são pagas antecipadamente por MB WAY e enviadas depois de confirmado o pagamento. Entregamos em todo o país.</p><p class="aviso">Página a completar com: identificação da empresa (nome, NIF, morada, registo), portes e prazos de entrega, e a entidade de Resolução Alternativa de Litígios competente.</p><p>Livro de Reclamações eletrónico: <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">livroreclamacoes.pt</a>.</p>'}
+};
+function desenhaTexto(slug){
+  var pg = PAGINAS[slug]; if (!pg) { location.hash = '#/'; return; }
+  document.getElementById('texto-dentro').innerHTML = '<h1>' + pg.t + '</h1>' + pg.h;
+  document.title = pg.t + ' — Toda Chic';
+}
+
+/* ---------- router ---------- */
+function rota(){
+  var h = location.hash.replace(/^#\/?/, '');
+  var partes = h.split('/');
+  if (partes[0] === 'p' && partes[1]) return {vista: 'produto', id: partes[1]};
+  if (partes[0] === 'c' && partes[1]) return {vista: 'inicio', cat: partes[1]};
+  if (partes[0] === 'favoritos') return {vista: 'favoritos'};
+  if (partes[0] === 'saco') return {vista: 'saco'};
+  if (partes[0] === 'pagina' && partes[1]) return {vista: 'texto', slug: partes[1]};
+  return {vista: 'inicio'};
+}
+var vistas = {inicio: 'vista-inicio', produto: 'vista-produto', favoritos: 'vista-lista', saco: 'vista-lista', texto: 'vista-texto'};
+var ultimaVista = null;
+function navega(){
+  var r = rota();
+  Object.keys(vistas).forEach(function(k){ document.getElementById(vistas[k]).hidden = vistas[k] !== vistas[r.vista]; });
+  document.getElementById('barra-movel').classList.toggle('mostra', r.vista === 'produto');
+  if (r.vista === 'inicio') {
+    var cat = r.cat || 'todas';
+    if (cat !== 'todas' && cat !== 'promocoes' && !CAT_NOME[cat]) cat = 'todas';
+    aplicaFiltro(cat, !!r.cat);
+    if (!r.cat && ultimaVista !== 'inicio') window.scrollTo(0, 0);
+    document.title = 'Toda Chic — Roupa feminina online';
+  } else {
+    window.scrollTo(0, 0);
+    if (r.vista === 'produto') desenhaProduto(r.id);
+    else if (r.vista === 'texto') desenhaTexto(r.slug);
+    else desenhaLista();
+  }
+  ultimaVista = r.vista;
+  fechaMenu();
+}
+window.addEventListener('hashchange', navega);
+
+/* corações em qualquer vista */
+document.addEventListener('click', function(e){
+  var b = e.target.closest('.favorita'); if (!b) return;
+  e.preventDefault(); alternaFav(b.getAttribute('data-id'), b);
+  var g = document.getElementById('fav-grande');
+  if (g && !document.getElementById('vista-produto').hidden) g.textContent = eFav(b.getAttribute('data-id')) ? 'Nos favoritos' : 'Guardar nos favoritos';
+});
+
+/* aparecer ao rolar */
+var obs = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+  es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('visto'); obs.unobserve(en.target); } });
+}, {rootMargin: '0px 0px -8% 0px'}) : null;
+function observa(){
+  document.querySelectorAll('.revela:not(.visto)').forEach(function(el){ if (obs) obs.observe(el); else el.classList.add('visto'); });
+}
+
+desenhaMenus(); atualizaContas(); navega(); observa();
+requestAnimationFrame(function(){ setTimeout(function(){ document.body.classList.add('pronto'); }, 60); });
+</script>
+</body>
+</html>
