@@ -529,7 +529,9 @@ img,svg{display:block;max-width:100%}
   .menu-movel{display:block;position:fixed;inset:0;z-index:60;background:var(--fundo);padding:1.2rem var(--pad);
     transform:translateX(100%);transition:transform .45s var(--ease)}
   .menu-movel.aberto{transform:none}
-  .menu-movel ul{list-style:none;display:grid;gap:.2rem;margin-top:1.4rem}
+  .menu-movel ul{list-style:none;display:grid;gap:.2rem;margin-top:.4rem}
+  .menu-movel .nota-menu{margin-top:1.6rem;font-size:14px;color:var(--secundario);line-height:1.6}
+  .menu-movel .nota-menu a{color:var(--rosae);text-decoration:underline;text-underline-offset:3px}
   .menu-movel a{display:block;padding:.75rem 0;font-family:"Italiana",serif;font-size:1.9rem;border-bottom:1px solid var(--linha)}
   .menu-movel .fechar{margin-left:auto;display:grid;place-items:center;width:42px;height:42px}
   .menu-movel .fechar svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6}
@@ -609,7 +611,9 @@ img,svg{display:block;max-width:100%}
 <div class="menu-movel" id="menu-movel" aria-label="Menu">
   <div class="topo-movel"><span class="mono" style="font-size:13px;letter-spacing:.1em">TODA CHIC</span>
     <button type="button" class="fechar" aria-label="Fechar menu" id="fechar-menu"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <p class="mono" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--rosae);margin-top:1.6rem">Coleções</p>
   <ul id="menu-movel-lista"></ul>
+  <p class="nota-menu" id="menu-movel-nota"></p>
 </div>
 
 <main id="principal">
@@ -644,7 +648,7 @@ img,svg{display:block;max-width:100%}
       <div class="cabeca"><h2 id="titulo-vitrine">Escolhe por categoria</h2><span class="info" id="info-vitrine"></span></div>
       <div class="montras" id="montras-roupa"></div>
       <div class="montras divisorias" id="montras-divisorias"></div>
-      <div class="sub-cabeca"><h3>Coleções</h3><span class="info">cada estação tem a sua página</span></div>
+      <div class="sub-cabeca"><h3>Coleções</h3><span class="info">entrega em 2 a 3 dias úteis · pagamento por MB WAY</span></div>
       <div class="estacoes" id="estacoes" aria-label="Coleções por estação"></div>
     </div>
   </section>
@@ -945,7 +949,7 @@ function desenhaVitrine(){
     '<span class="rotulo-montra"><h3>Promoções</h3><span class="qt">' + np + (np === 1 ? ' peça' : ' peças') + '</span></span></a>';
   document.getElementById('montras-divisorias').innerHTML = divis;
   document.getElementById('estacoes').innerHTML = cartoesEstacao(ESTS, 0);
-  document.getElementById('info-vitrine').textContent = PECAS.length + ' peças em loja · por categoria ou por estação';
+  document.getElementById('info-vitrine').textContent = PECAS.length + ' peças · entrega em 2 a 3 dias úteis';
 }
 function desenhaGrelha(){
   var lista = pecasDe(filtro, filtroEst), g = document.getElementById('grelha');
@@ -978,11 +982,10 @@ function desenhaMenus(){
   document.getElementById('menu').innerHTML = roupa.map(function(c){
     return '<a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a>';
   }).join('') + '<a href="#/c/promocoes" data-cat="promocoes" class="promo">Promoções</a>';
-  document.getElementById('menu-movel-lista').innerHTML = '<li><a href="#/c/todas" data-cat="todas">Todas as peças</a></li>' +
-    roupa.map(function(c){ return '<li><a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a></li>'; }).join('') +
-    '<li><a href="#/c/promocoes" data-cat="promocoes">Promoções</a></li>' +
-    ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">Coleção ' + esc(e.nome) + '</a></li>'; }).join('') +
-    '<li><a href="#/favoritos">Favoritos</a></li><li><a href="#/pagina/contactos">Contactos</a></li>';
+  document.getElementById('menu-movel-lista').innerHTML =
+    ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">' + esc(e.nome) + '</a></li>'; }).join('') +
+    '<li><a href="#/pagina/faq">Perguntas frequentes</a></li>';
+  document.getElementById('menu-movel-nota').innerHTML = 'Entrega em 2 a 3 dias úteis · Pagamento por MB WAY · Dúvidas: <a href="https://wa.me/351933668148" target="_blank" rel="noopener">933 668 148</a>';
   document.getElementById('rodape-cats').innerHTML = visiveis.map(function(c){
     return '<li><a href="#/c/' + c.id + '">' + esc(c.nome) + '</a></li>';
   }).join('') + '<li><a href="#/c/promocoes">Promoções</a></li>' + ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">Coleção ' + esc(e.nome) + '</a></li>'; }).join('');
@@ -1140,7 +1143,9 @@ var PAGINAS = {
     '<h2>Entregam onde e em quanto tempo?</h2><p>Em todo o país, em 2 a 3 dias úteis depois de confirmado o pagamento. Portes: a confirmar antes do lançamento.</p>' +
     '<h2>O que quer dizer “tamanho único, veste do S ao L”?</h2><p>É uma peça com elasticidade, feita para vestir bem em corpos do S ao L. Se tiveres dúvidas, manda-nos as tuas medidas por WhatsApp e ajudamos a decidir.</p>' +
     '<h2>Posso trocar ou devolver?</h2><p>Não aceitamos trocas nem devoluções. Por isso, fala connosco antes de comprares: respondemos a todas as dúvidas de tamanho e cor.</p>' +
-    '<h2>Como sei se ainda há stock?</h2><p>Em cada peça dizemos quantas unidades existem por cor. Quando resta uma, aparece “última unidade”.</p>'},
+    '<h2>Como sei se ainda há stock?</h2><p>Em cada peça dizemos quantas unidades existem por cor. Quando resta uma, aparece “última unidade”.</p>' +
+    '<h2>Que garantias tenho ao comprar?</h2><p>Pagas por MB WAY, confirmando na tua própria app. Falas diretamente com a dona pelo 933 668 148, antes e depois da compra. E tens sempre o <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">Livro de Reclamações</a> eletrónico.</p>' +
+    '<h2>Como acompanho a encomenda?</h2><p>Depois do pagamento confirmado, a encomenda segue em 2 a 3 dias úteis. Se precisares de saber onde está, manda mensagem por WhatsApp e dizemos-te.</p>'},
   pagamentos: {t: 'Métodos de pagamento', h: '<p>Aceitamos <strong>MB WAY</strong>. O pagamento é feito antes do envio.</p><p>Outros métodos (Multibanco, cartão): a confirmar com a dona antes do lançamento.</p>'},
   trocas: {t: 'Trocas e devoluções', h: '<p>Não aceitamos trocas nem devoluções.</p><p>Se tiveres dúvidas no tamanho ou na cor, fala connosco por WhatsApp antes de comprares: ajudamos a escolher.</p>'},
   privacidade: {t: 'Política de privacidade', h: '<p>Os dados que nos dás (nome, morada, telemóvel) servem apenas para processar e entregar a tua encomenda e para responder às tuas mensagens. Não são vendidos nem cedidos a terceiros fora do necessário à entrega e ao pagamento.</p><p class="aviso">Página a completar com a identificação da responsável pelo tratamento (nome, NIF, morada), o prazo de conservação dos dados e o contacto para exercer os direitos RGPD.</p>'},
