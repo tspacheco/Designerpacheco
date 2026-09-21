@@ -142,16 +142,31 @@ img,svg{display:block;max-width:100%}
 .divisorias .montra{aspect-ratio:16/9}
 .divisorias .montra.breve .traco{padding-bottom:18%}
 .divisorias .montra.breve .traco svg{width:22%}
-.estacoes{margin-top:clamp(1.6rem,3vw,2.4rem);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.6rem,1.4vw,1rem)}
-.estacao{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.95rem 1.1rem;border-radius:99px;
-  background:var(--papel);border:1px solid var(--linha);font-weight:500;font-size:15px;transition:border-color .3s,transform .4s var(--ease),background .3s}
-.estacao .qt{font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--rosae)}
-.estacao:hover{border-color:var(--rosa);transform:translateY(-2px);background:#fff}
-.estacao.nova{background:linear-gradient(90deg,#FDECF1,#FFF);border-color:rgba(194,92,119,.5)}
-.estacao .nome::before{content:"";display:inline-block;width:9px;height:9px;border-radius:99px;margin-right:.6rem;vertical-align:1px;background:var(--rosa)}
-.estacao.inverno .nome::before{background:#8FA5C4}
-.estacao.meia .nome::before{background:#C9A57E}
-.estacao.verao .nome::before{background:#EFC46A}
+.estacoes{margin-top:clamp(1.6rem,3vw,2.4rem);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.8rem,1.6vw,1.2rem)}
+.estacoes .montra{aspect-ratio:16/10}
+.estacoes .montra .kicker{font-family:"Courier Prime",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rosae)}
+.estacoes .montra h3{color:var(--tinta)}
+.estacoes .montra .veu-suave{background:linear-gradient(180deg,rgba(248,239,234,0) 35%,rgba(248,239,234,.78) 68%,rgba(248,239,234,.98) 100%)}
+.vitrine .sub-cabeca{margin-top:clamp(1.8rem,4vw,2.8rem);margin-bottom:.9rem;display:flex;gap:1rem;align-items:baseline}
+.vitrine .sub-cabeca h3{font-family:"Italiana",serif;font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:400}
+.vitrine .sub-cabeca .info{font-family:"Courier Prime",monospace;font-size:13px;color:var(--secundario)}
+/* página de coleção: herói de ambiente, sem cara, e as peças agrupadas por categoria */
+.colecao-heroi{position:relative;min-height:min(64svh,580px);display:flex;align-items:flex-end;overflow:hidden;background:#3A2A2E}
+.colecao-heroi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 60%;animation:aproxima 26s ease-out both}
+.colecao-heroi .veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,28,31,.12) 0%,rgba(42,28,31,0) 32%,rgba(42,28,31,.5) 70%,rgba(42,28,31,.9) 100%),linear-gradient(90deg,rgba(42,28,31,.62) 0%,rgba(42,28,31,.3) 38%,rgba(42,28,31,0) 60%)}
+.colecao-heroi .dentro{position:relative;z-index:2;max-width:1220px;margin:0 auto;width:100%;padding:clamp(5rem,12vw,8rem) var(--pad) clamp(2rem,4vw,3rem);color:#FBF3F0}
+.colecao-heroi .sobre{font-family:"Courier Prime",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#F3B6C6;margin-bottom:.8rem}
+.colecao-heroi h1{font-size:clamp(3rem,8vw,5.8rem);color:#FBF3F0;text-shadow:0 8px 40px rgba(12,7,9,.6);max-width:11ch}
+.colecao-heroi h1 em{font-style:normal;color:#F3B6C6}
+.colecao-heroi .frase{margin-top:1rem;max-width:52ch;color:rgba(251,243,240,.9);font-size:clamp(16px,1.6vw,19px);text-shadow:0 4px 22px rgba(12,7,9,.6)}
+.colecao-heroi .meta{margin-top:1.2rem;font-family:"Courier Prime",monospace;font-size:13px;letter-spacing:.06em;color:rgba(251,243,240,.8)}
+.grupo{margin-top:clamp(2rem,4vw,3.2rem)}
+.grupo:first-child{margin-top:0}
+.grupo .cabeca{margin-bottom:1rem}
+.grupo .cabeca h2{font-size:clamp(1.5rem,3vw,2.2rem)}
+.outras{margin-top:clamp(2.6rem,6vw,4.4rem);padding-top:clamp(1.6rem,3vw,2.4rem);border-top:1px solid var(--linha)}
+.outras .cabeca{margin-bottom:1rem}
+.outras .estacoes{margin-top:0;grid-template-columns:repeat(3,minmax(0,1fr))}
 .fila-chips{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:.8rem}
 #fila-est{margin-bottom:1.8rem}
 .fila-chips .etiqueta-fila{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--secundario);margin-right:.3rem}
@@ -384,7 +399,7 @@ img,svg{display:block;max-width:100%}
 @media(max-width:960px){
   .montras{grid-template-columns:repeat(3,minmax(0,1fr))}
   .divisorias{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .estacoes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .estacoes,.outras .estacoes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .abertura .dentro{grid-template-columns:1fr}
   .abertura .texto-heroi{grid-column:1}
   .abertura .veu{background:linear-gradient(180deg,rgba(42,28,31,.25) 0%,rgba(42,28,31,0) 28%,rgba(42,28,31,.5) 58%,rgba(42,28,31,.93) 100%)}
@@ -419,7 +434,10 @@ img,svg{display:block;max-width:100%}
   .divisorias .montra{aspect-ratio:3/2}
   .divisorias .montra.breve .traco{padding-bottom:36%}
   .divisorias .montra.breve .traco svg{width:20%}
-  .estacao{padding:.8rem .9rem;font-size:14px}
+  .estacoes .montra{aspect-ratio:16/11}
+  .colecao-heroi{min-height:min(70svh,560px)}
+  .colecao-heroi img{object-position:72% 50%}
+  .colecao-heroi .veu{background:linear-gradient(180deg,rgba(42,28,31,.1) 0%,rgba(42,28,31,0) 30%,rgba(42,28,31,.55) 62%,rgba(42,28,31,.92) 100%)}
   .topo{gap:.55rem;padding:.8rem var(--pad)}
   .marca .lockup{height:30px}
   .acoes{gap:.1rem}
@@ -503,7 +521,8 @@ img,svg{display:block;max-width:100%}
       <div class="cabeca"><h2 id="titulo-vitrine">Escolhe por categoria</h2><span class="info" id="info-vitrine"></span></div>
       <div class="montras" id="montras-roupa"></div>
       <div class="montras divisorias" id="montras-divisorias"></div>
-      <div class="estacoes" id="estacoes" aria-label="Por estação"></div>
+      <div class="sub-cabeca"><h3>Coleções</h3><span class="info">cada estação tem a sua página</span></div>
+      <div class="estacoes" id="estacoes" aria-label="Coleções por estação"></div>
     </div>
   </section>
 
@@ -571,6 +590,10 @@ img,svg{display:block;max-width:100%}
 <div class="barra-movel" id="barra-movel"></div>
 
 <!-- ============================ FAVORITOS / SACO / PÁGINAS ============================ -->
+<section id="vista-colecao" hidden>
+  <div class="colecao-heroi" id="colecao-heroi"></div>
+  <div class="seccao"><div class="dentro" id="colecao-dentro"></div></div>
+</section>
 <section class="seccao" id="vista-lista" hidden><div class="dentro" id="lista-dentro"></div></section>
 <section class="seccao texto" id="vista-texto" hidden><div class="dentro" id="texto-dentro"></div></section>
 
@@ -736,6 +759,49 @@ var TRACOS = {
   casa:'<svg viewBox="0 0 200 240"><path d="M48 78 q52-12 104 0 q12 52 0 104 q-52 12 -104 0 q-12 -52 0 -104 Z" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><path d="M70 100 q30-8 60 0M70 130 q30-8 60 0" stroke="currentColor" stroke-width="2.2" fill="none"/></svg>',
   promocoes:'<svg viewBox="0 0 200 240"><path d="M60 60 h50 l50 50 -60 60 -50 -50 Z" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><circle cx="86" cy="86" r="8" fill="none" stroke="currentColor" stroke-width="3"/></svg>'
 };
+function cartoesEstacao(lista, atraso){
+  return lista.map(function(e, i){
+    var n = pecasDe('todas', e.id).length;
+    return '<a class="montra revela" href="#/e/' + e.id + '" style="transition-delay:' + (atraso + i * 60) + 'ms">' +
+      '<img src="media/' + e.foto + '" alt="" loading="lazy"><span class="veu-suave" aria-hidden="true"></span>' +
+      '<span class="rotulo-montra"><span class="kicker">Coleção</span><h3>' + esc(e.nome) + '</h3><span class="qt">' + n + (n === 1 ? ' peça' : ' peças') + '</span></span>' +
+      '<span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>';
+  }).join('');
+}
+function desenhaColecao(id){
+  var e = null; ESTS.forEach(function(x){ if (x.id === id) e = x; });
+  if (!e) { location.hash = '#/'; return; }
+  var lista = pecasDe('todas', e.id);
+  var partes = e.titulo.split(' ');
+  var ultima = partes.pop();
+  document.getElementById('colecao-heroi').innerHTML =
+    '<img src="media/' + e.foto + '" alt="" fetchpriority="high"><div class="veu" aria-hidden="true"></div>' +
+    '<div class="dentro"><p class="sobre entra">Coleção · ' + esc(e.nome) + '</p>' +
+    '<h1 class="entra" data-i="1">' + esc(partes.join(' ')) + ' <em>' + esc(ultima) + '</em></h1>' +
+    '<p class="frase entra" data-i="2">' + esc(e.frase) + '</p>' +
+    '<p class="meta entra" data-i="3">' + lista.length + (lista.length === 1 ? ' peça' : ' peças') + ' · entrega em 2 a 3 dias úteis</p></div>';
+  /* agrupar por categoria (e por sub-grupo nas peças por arrumar) para mostrar a variedade */
+  var grupos = [], porNome = {};
+  lista.forEach(function(p){
+    var nome = p.sub || CAT_NOME[p.cat];
+    if (!porNome[nome]) { porNome[nome] = {nome: nome, cat: p.cat, pecas: []}; grupos.push(porNome[nome]); }
+    porNome[nome].pecas.push(p);
+  });
+  var ordem = {}; CATS.forEach(function(c, i){ ordem[c.id] = i; });
+  grupos.sort(function(a, b){ return (ordem[a.cat] - ordem[b.cat]) || a.nome.localeCompare(b.nome); });
+  var html = grupos.map(function(g){
+    return '<div class="grupo"><div class="cabeca"><h2>' + esc(g.nome) + '</h2><span class="info">' + g.pecas.length + (g.pecas.length === 1 ? ' peça' : ' peças') + '</span></div>' +
+      '<div class="grelha">' + g.pecas.map(cartao).join('') + '</div></div>';
+  }).join('');
+  if (!lista.length) html = '<div class="vazio"><strong>Ainda sem peças nesta coleção</strong><a href="#/c/todas" style="text-decoration:underline">Ver todas as peças</a></div>';
+  var outras = ESTS.filter(function(x){ return x.id !== e.id; });
+  html += '<div class="outras"><div class="cabeca"><h2>Outras coleções</h2></div><div class="estacoes">' + cartoesEstacao(outras, 0) + '</div></div>';
+  document.getElementById('colecao-dentro').innerHTML = html;
+  observa();
+  document.title = 'Coleção ' + e.nome + ' — Toda Chic';
+  document.body.classList.remove('pronto'); void document.body.offsetWidth;
+  requestAnimationFrame(function(){ setTimeout(function(){ document.body.classList.add('pronto'); }, 60); });
+}
 function desenhaVitrine(){
   var roupa = CATS.filter(function(c){ return c.foto; });
   document.getElementById('montras-roupa').innerHTML = roupa.map(function(c, i){
@@ -755,10 +821,7 @@ function desenhaVitrine(){
     '<span class="traco" aria-hidden="true">' + TRACOS.promocoes + '</span><span class="veu-suave" aria-hidden="true"></span>' +
     '<span class="rotulo-montra"><h3>Promoções</h3><span class="qt">' + np + (np === 1 ? ' peça' : ' peças') + '</span></span></a>';
   document.getElementById('montras-divisorias').innerHTML = divis;
-  document.getElementById('estacoes').innerHTML = ESTS.map(function(e){
-    var n = pecasDe('todas', e.id).length;
-    return '<a class="estacao ' + e.id + ' revela" href="#/e/' + e.id + '"><span class="nome">' + esc(e.nome) + '</span><span class="qt">' + n + '</span></a>';
-  }).join('');
+  document.getElementById('estacoes').innerHTML = cartoesEstacao(ESTS, 0);
   document.getElementById('info-vitrine').textContent = PECAS.length + ' peças em loja · por categoria ou por estação';
 }
 function desenhaGrelha(){
@@ -794,10 +857,12 @@ function desenhaMenus(){
   }).join('') + '<a href="#/c/promocoes" data-cat="promocoes" class="promo">Promoções</a>';
   document.getElementById('menu-movel-lista').innerHTML = '<li><a href="#/c/todas" data-cat="todas">Todas as peças</a></li>' +
     roupa.map(function(c){ return '<li><a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a></li>'; }).join('') +
-    '<li><a href="#/c/promocoes" data-cat="promocoes">Promoções</a></li><li><a href="#/favoritos">Favoritos</a></li><li><a href="#/pagina/contactos">Contactos</a></li>';
+    '<li><a href="#/c/promocoes" data-cat="promocoes">Promoções</a></li>' +
+    ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">Coleção ' + esc(e.nome) + '</a></li>'; }).join('') +
+    '<li><a href="#/favoritos">Favoritos</a></li><li><a href="#/pagina/contactos">Contactos</a></li>';
   document.getElementById('rodape-cats').innerHTML = visiveis.map(function(c){
     return '<li><a href="#/c/' + c.id + '">' + esc(c.nome) + '</a></li>';
-  }).join('') + '<li><a href="#/c/promocoes">Promoções</a></li>' + ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">' + esc(e.nome) + '</a></li>'; }).join('');
+  }).join('') + '<li><a href="#/c/promocoes">Promoções</a></li>' + ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">Coleção ' + esc(e.nome) + '</a></li>'; }).join('');
 }
 var burger = document.getElementById('burger'), menuMovel = document.getElementById('menu-movel');
 function fechaMenu(){ menuMovel.classList.remove('aberto'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
@@ -970,13 +1035,13 @@ function rota(){
   var partes = h.split('/');
   if (partes[0] === 'p' && partes[1]) return {vista: 'produto', id: partes[1]};
   if (partes[0] === 'c' && partes[1]) return {vista: 'inicio', cat: partes[1], est: partes[2] || 'todas'};
-  if (partes[0] === 'e' && partes[1]) return {vista: 'inicio', cat: 'todas', est: partes[1], rolar: true};
+  if (partes[0] === 'e' && partes[1]) return {vista: 'colecao', id: partes[1]};
   if (partes[0] === 'favoritos') return {vista: 'favoritos'};
   if (partes[0] === 'saco') return {vista: 'saco'};
   if (partes[0] === 'pagina' && partes[1]) return {vista: 'texto', slug: partes[1]};
   return {vista: 'inicio'};
 }
-var vistas = {inicio: 'vista-inicio', produto: 'vista-produto', favoritos: 'vista-lista', saco: 'vista-lista', texto: 'vista-texto'};
+var vistas = {inicio: 'vista-inicio', produto: 'vista-produto', colecao: 'vista-colecao', favoritos: 'vista-lista', saco: 'vista-lista', texto: 'vista-texto'};
 var ultimaVista = null;
 function navega(){
   var r = rota();
@@ -986,12 +1051,13 @@ function navega(){
     var cat = r.cat || 'todas', est = r.est || 'todas';
     if (cat !== 'todas' && cat !== 'promocoes' && !CAT_NOME[cat]) cat = 'todas';
     if (est !== 'todas' && !EST_NOME[est]) est = 'todas';
-    aplicaFiltro(cat, est, !!(r.cat || r.rolar) && !(cat === 'todas' && est === 'todas'));
+    aplicaFiltro(cat, est, !!r.cat && !(cat === 'todas' && est === 'todas'));
     if (!r.cat && ultimaVista !== 'inicio') window.scrollTo(0, 0);
     document.title = 'Toda Chic — Roupa feminina online';
   } else {
     window.scrollTo(0, 0);
     if (r.vista === 'produto') desenhaProduto(r.id);
+    else if (r.vista === 'colecao') desenhaColecao(r.id);
     else if (r.vista === 'texto') desenhaTexto(r.slug);
     else desenhaLista();
   }
