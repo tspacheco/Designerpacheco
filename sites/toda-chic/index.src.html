@@ -128,25 +128,38 @@ img,svg{display:block;max-width:100%}
   display:grid;place-items:center;border:1px solid var(--linha);opacity:0;transform:translateX(-6px);transition:opacity .4s,transform .5s var(--ease)}
 .montra .seta svg{width:16px;height:16px;fill:none;stroke:var(--rosae);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .montra:hover .seta{opacity:1;transform:none}
-.montra.breve{background:linear-gradient(170deg,#FBF4EF,#F1E1DA)}
-.montra.breve .traco{position:absolute;inset:0;display:grid;place-items:center;padding-bottom:22%}
-.montra.breve .traco svg{width:44%;height:auto;color:var(--rosae);opacity:.7;transition:transform .7s var(--ease)}
-.montra.breve:hover .traco svg{transform:translateY(-4px) scale(1.04)}
-.montra.breve .qt{color:var(--secundario)}
-.montra.promo{background:var(--rosa-acao);border-color:var(--rosa-acao)}
-.montra.promo .traco svg{color:#fff;opacity:.9}
-.montra.promo h3,.montra.promo .qt{color:#fff}
-.montra.promo .veu-suave{background:linear-gradient(180deg,rgba(173,69,95,0) 50%,rgba(142,58,82,.9) 100%)}
-.montra.promo:hover{box-shadow:0 22px 40px -18px rgba(142,58,82,.6)}
-.divisorias{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(.8rem,1.6vw,1.2rem)}
-.divisorias .montra{aspect-ratio:16/9}
-.divisorias .montra.breve .traco{padding-bottom:18%}
-.divisorias .montra.breve .traco svg{width:22%}
 .estacoes{margin-top:clamp(1.6rem,3vw,2.4rem);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.8rem,1.6vw,1.2rem)}
 .estacoes .montra{aspect-ratio:16/10}
 .estacoes .montra .kicker{font-family:"Courier Prime",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rosae)}
 .estacoes .montra h3{color:var(--tinta)}
 .estacoes .montra .veu-suave{background:linear-gradient(180deg,rgba(248,239,234,0) 35%,rgba(248,239,234,.78) 68%,rgba(248,239,234,.98) 100%)}
+/* faixa de promoções esticada */
+.faixa-promo{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1.5rem;margin-top:clamp(1.8rem,4vw,2.8rem);
+  padding:clamp(1.4rem,3vw,2.2rem) clamp(1.4rem,3.5vw,2.8rem);border-radius:8px;position:relative;overflow:hidden;color:#fff;
+  background:linear-gradient(100deg,var(--rosa-acao) 0%,var(--rosae) 100%);border:1px solid var(--rosa-acao);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.faixa-promo:hover{transform:translateY(-3px);box-shadow:0 24px 44px -20px rgba(142,58,82,.6)}
+.faixa-promo .kicker{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#F3B6C6}
+.faixa-promo h2{font-size:clamp(1.9rem,4vw,3rem);color:#fff;margin-top:.2rem;max-width:18ch}
+.faixa-promo p{color:rgba(255,255,255,.88);margin-top:.5rem;font-size:15.5px;max-width:48ch}
+.faixa-promo .fotos{display:flex;gap:0;align-items:center}
+.faixa-promo .fotos img{width:clamp(72px,9vw,118px);aspect-ratio:4/5;object-fit:cover;border:4px solid #fff;border-radius:2px;
+  box-shadow:0 12px 24px rgba(60,20,30,.35);transition:transform .5s var(--ease)}
+.faixa-promo .fotos img:nth-child(1){transform:rotate(-7deg) translateX(12px)}
+.faixa-promo .fotos img:nth-child(2){transform:rotate(2deg);z-index:1}
+.faixa-promo .fotos img:nth-child(3){transform:rotate(8deg) translateX(-12px)}
+.faixa-promo:hover .fotos img:nth-child(1){transform:rotate(-10deg) translateX(6px)}
+.faixa-promo:hover .fotos img:nth-child(3){transform:rotate(11deg) translateX(-6px)}
+.faixa-promo .seta-promo{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;font-weight:600;font-size:15px;color:#fff}
+.faixa-promo .seta-promo svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s var(--ease)}
+.faixa-promo:hover .seta-promo svg{transform:translateX(5px)}
+/* lema por baixo de "Todas as peças" */
+.lema{font-family:"Italiana",serif;font-size:clamp(1.25rem,2.4vw,1.7rem);color:var(--rosae);margin:-.6rem 0 1.4rem;width:100%}
+/* perguntas na página inicial */
+.faq-home .dentro{max-width:820px}
+.faq-home h2{font-size:clamp(1.8rem,4vw,2.7rem);margin-bottom:.4rem}
+.faq-home .sub{color:var(--secundario);margin-bottom:1.4rem}
+.faq-home .ver-todas{display:inline-block;margin-top:1.2rem;color:var(--rosae);text-decoration:underline;text-underline-offset:3px}
 .vitrine .sub-cabeca{margin-top:clamp(1.8rem,4vw,2.8rem);margin-bottom:.9rem;display:flex;gap:1rem;align-items:baseline}
 .vitrine .sub-cabeca h3{font-family:"Italiana",serif;font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:400}
 .vitrine .sub-cabeca .info{font-family:"Courier Prime",monospace;font-size:13px;color:var(--secundario)}
@@ -398,8 +411,9 @@ img,svg{display:block;max-width:100%}
 }
 @media(max-width:960px){
   .montras{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .divisorias{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .estacoes,.outras .estacoes{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .estacoes,.outras .estacoes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .faixa-promo{grid-template-columns:1fr}
+  .faixa-promo .fotos{justify-content:flex-start;margin-left:8px}
   .abertura .dentro{grid-template-columns:1fr}
   .abertura .texto-heroi{grid-column:1}
   .abertura .veu{background:linear-gradient(180deg,rgba(42,28,31,.25) 0%,rgba(42,28,31,0) 28%,rgba(42,28,31,.5) 58%,rgba(42,28,31,.93) 100%)}
@@ -433,11 +447,7 @@ img,svg{display:block;max-width:100%}
   .montras{grid-template-columns:repeat(2,minmax(0,1fr))}
   .montra h3{font-size:1.25rem}
   #montras-roupa .montra:nth-child(5):last-child{grid-column:1/-1;aspect-ratio:16/9}
-  .divisorias .montra{aspect-ratio:3/2}
-  .divisorias .montra.breve .traco{padding-bottom:36%}
-  .divisorias .montra.breve .traco svg{width:20%}
-  .estacoes .montra{aspect-ratio:16/11}
-  .colecao-heroi{min-height:min(70svh,560px)}
+      .colecao-heroi{min-height:min(70svh,560px)}
   .colecao-heroi img{object-position:72% 50%}
   .colecao-heroi .veu{background:linear-gradient(180deg,rgba(42,28,31,.1) 0%,rgba(42,28,31,0) 30%,rgba(42,28,31,.55) 62%,rgba(42,28,31,.92) 100%)}
   .topo{gap:.55rem;padding:.8rem var(--pad)}
@@ -505,7 +515,7 @@ img,svg{display:block;max-width:100%}
       <h1 class="entra" data-i="1">Embeleza<span class="hif">-</span>te <em>connosco</em>.</h1>
       <p class="frase entra" data-i="2">Peças escolhidas uma a uma, com o preço à vista, o tamanho explicado e quantas ficam. Entrega em 2 a 3 dias úteis.</p>
       <div class="cta entra" data-i="3">
-        <a class="btn" href="#categorias">Ver por categoria</a>
+        <a class="btn" href="#/c/todas">Ver todas as peças</a>
         <a class="btn linha" href="#/c/promocoes">Promoções</a>
       </div>
     </div></div>
@@ -524,20 +534,9 @@ img,svg{display:block;max-width:100%}
     <div class="dentro">
       <div class="cabeca"><h2 id="titulo-vitrine">Escolhe por categoria</h2><span class="info" id="info-vitrine"></span></div>
       <div class="montras" id="montras-roupa"></div>
-      <div class="montras divisorias" id="montras-divisorias"></div>
-      <div class="sub-cabeca"><h3>Coleções</h3><span class="info">entrega em 2 a 3 dias úteis · pagamento por MB WAY</span></div>
+      <div class="sub-cabeca"><h3>Coleções</h3><span class="info">Pagamento por MB WAY</span></div>
       <div class="estacoes" id="estacoes" aria-label="Coleções por estação"></div>
-    </div>
-  </section>
-
-  <section class="seccao" id="montra">
-    <div class="dentro">
-      <div class="cabeca">
-        <h2 id="titulo-grelha">Todas as peças</h2>
-        <span class="info" id="info-grelha"></span>
-        <a class="voltar" id="voltar-todas" href="#/c/todas" hidden>Ver todas as peças</a>
-      </div>
-      <div class="grelha" id="grelha"></div>
+      <a class="faixa-promo revela" id="faixa-promo" href="#/c/promocoes"></a>
     </div>
   </section>
 
@@ -563,6 +562,20 @@ img,svg{display:block;max-width:100%}
           <div><h3>Falamos contigo</h3><p>933 668 148, a mesma pessoa que escolhe as peças. Responde antes e depois da compra.</p></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="seccao faq-home">
+    <div class="dentro">
+      <h2>Perguntas frequentes</h2>
+      <p class="sub">O que as clientes perguntam antes de comprar.</p>
+      <div class="dobras">
+        <details><summary>Como pago?</summary><div><p>Por MB WAY, antes do envio. Na loja final, o pagamento pede o número de telemóvel e confirma-se na app.</p></div></details>
+        <details><summary>Entregam onde e em quanto tempo?</summary><div><p>Em todo o país, em 2 a 3 dias úteis depois de confirmado o pagamento. Portes: a confirmar antes do lançamento.</p></div></details>
+        <details><summary>O que quer dizer “tamanho único, veste do S ao L”?</summary><div><p>É uma peça com elasticidade, feita para vestir bem em corpos do S ao L. Com dúvidas, manda-nos as tuas medidas por WhatsApp e ajudamos a decidir.</p></div></details>
+        <details><summary>Posso trocar ou devolver?</summary><div><p>Não aceitamos trocas nem devoluções. Por isso, fala connosco antes de comprares: respondemos a todas as dúvidas de tamanho e cor.</p></div></details>
+      </div>
+      <a class="ver-todas" href="#/pagina/faq">Ver todas as perguntas</a>
     </div>
   </section>
 
@@ -594,6 +607,17 @@ img,svg{display:block;max-width:100%}
 <div class="barra-movel" id="barra-movel"></div>
 
 <!-- ============================ FAVORITOS / SACO / PÁGINAS ============================ -->
+<section class="seccao" id="vista-catalogo" hidden>
+  <div class="dentro">
+    <div class="cabeca">
+      <h2 id="titulo-grelha">Todas as peças</h2>
+      <span class="info" id="info-grelha"></span>
+      <a class="voltar" id="voltar-todas" href="#/c/todas" hidden>Ver todas as peças</a>
+      <p class="lema" id="lema-grelha">Embeleza-te com a nossa variedade de roupa.</p>
+    </div>
+    <div class="grelha" id="grelha"></div>
+  </div>
+</section>
 <section id="vista-colecao" hidden>
   <div class="colecao-heroi" id="colecao-heroi"></div>
   <div class="seccao"><div class="dentro" id="colecao-dentro"></div></div>
@@ -757,12 +781,6 @@ function pecasDe(cat, est){
   else if (est && est !== 'todas') l = l.filter(function(p){ return p.estacao === est; });
   return l;
 }
-var TRACOS = {
-  bijuteria:'<svg viewBox="0 0 200 240"><circle cx="72" cy="140" r="42" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="132" cy="140" r="42" fill="none" stroke="currentColor" stroke-width="4"/><path d="M72 84 v-18M132 84 v-18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg>',
-  cosmeticos:'<svg viewBox="0 0 200 240"><rect x="76" y="118" width="48" height="96" rx="5" fill="none" stroke="currentColor" stroke-width="3.4"/><path d="M84 118 v-46 q0-12 16-12 t16 12 v46" fill="none" stroke="currentColor" stroke-width="3.4"/><path d="M76 146 h48" stroke="currentColor" stroke-width="3" fill="none"/></svg>',
-  casa:'<svg viewBox="0 0 200 240"><path d="M48 78 q52-12 104 0 q12 52 0 104 q-52 12 -104 0 q-12 -52 0 -104 Z" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><path d="M70 100 q30-8 60 0M70 130 q30-8 60 0" stroke="currentColor" stroke-width="2.2" fill="none"/></svg>',
-  promocoes:'<svg viewBox="0 0 200 240"><path d="M60 60 h50 l50 50 -60 60 -50 -50 Z" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><circle cx="86" cy="86" r="8" fill="none" stroke="currentColor" stroke-width="3"/></svg>'
-};
 function cartoesEstacao(lista, atraso){
   return lista.map(function(e, i){
     var n = pecasDe('todas', e.id).length;
@@ -815,18 +833,14 @@ function desenhaVitrine(){
       '<span class="rotulo-montra"><h3>' + esc(c.nome) + '</h3><span class="qt">' + n + (n === 1 ? ' peça' : ' peças') + '</span></span>' +
       '<span class="seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>';
   }).join('');
-  var divis = CATS.filter(function(c){ return c.brevemente; }).map(function(c, i){
-    return '<a class="montra breve revela" href="#/c/' + c.id + '" style="transition-delay:' + (i + 5) * 50 + 'ms">' +
-      '<span class="traco" aria-hidden="true">' + TRACOS[c.id] + '</span>' +
-      '<span class="rotulo-montra"><h3>' + esc(c.nome) + '</h3><span class="qt">brevemente</span></span></a>';
-  }).join('');
-  var np = pecasDe('promocoes').length;
-  divis += '<a class="montra promo breve revela" href="#/c/promocoes" style="transition-delay:400ms">' +
-    '<span class="traco" aria-hidden="true">' + TRACOS.promocoes + '</span><span class="veu-suave" aria-hidden="true"></span>' +
-    '<span class="rotulo-montra"><h3>Promoções</h3><span class="qt">' + np + (np === 1 ? ' peça' : ' peças') + '</span></span></a>';
-  document.getElementById('montras-divisorias').innerHTML = divis;
   document.getElementById('estacoes').innerHTML = cartoesEstacao(ESTS, 0);
-  document.getElementById('info-vitrine').textContent = PECAS.length + ' peças · entrega em 2 a 3 dias úteis';
+  var promos = pecasDe('promocoes');
+  document.getElementById('faixa-promo').innerHTML =
+    '<div><span class="kicker">Promoções</span><h2>Preço antigo riscado, preço novo à vista.</h2>' +
+    '<p>' + promos.length + (promos.length === 1 ? ' peça' : ' peças') + ' com desconto. Quase tudo em unidade única: quando sai, sai.</p>' +
+    '<span class="seta-promo">Ver promoções <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>' +
+    '<div class="fotos" aria-hidden="true">' + promos.slice(0, 3).map(function(p){ return '<img src="' + fotoDe(p) + '" alt="" loading="lazy">'; }).join('') + '</div>';
+  document.getElementById('info-vitrine').textContent = '';
 }
 function desenhaGrelha(){
   var lista = pecasDe(filtro, filtroEst), g = document.getElementById('grelha');
@@ -834,7 +848,7 @@ function desenhaGrelha(){
   if (filtroEst !== 'todas') nome = (filtro === 'todas' ? '' : nome + ' · ') + EST_NOME[filtroEst];
   document.getElementById('titulo-grelha').textContent = nome;
   document.getElementById('info-grelha').textContent = lista.length ? lista.length + (lista.length === 1 ? ' peça' : ' peças') + ' · entrega em 2 a 3 dias úteis' : '';
-  var breve = CATS.some(function(c){ return c.id === filtro && c.brevemente; });
+  var breve = false;
   if (!lista.length) {
     g.innerHTML = breve ?
       '<div class="vazio" style="grid-column:1/-1"><strong>' + esc(CAT_NOME[filtro]) + ' em preparação</strong>As peças entram assim que as fotografias estiverem prontas. Entretanto, <a href="#/c/todas" style="text-decoration:underline">vê as novidades em roupa</a>.</div>' :
@@ -848,10 +862,10 @@ function aplicaFiltro(cat, est, rolar){
   filtro = cat; filtroEst = est;
   desenhaGrelha();
   var v = document.getElementById('voltar-todas'); v.hidden = (cat === 'todas' && est === 'todas');
+  document.getElementById('lema-grelha').hidden = !(cat === 'todas' && est === 'todas');
   document.querySelectorAll('#menu a, #menu-movel-lista a').forEach(function(a){
     a.setAttribute('aria-current', a.getAttribute('data-cat') === cat ? 'true' : 'false');
   });
-  if (rolar) document.getElementById('montra').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 /* ---------- menus ---------- */
 function desenhaMenus(){
@@ -1039,26 +1053,30 @@ function rota(){
   var h = location.hash.replace(/^#\/?/, '');
   var partes = h.split('/');
   if (partes[0] === 'p' && partes[1]) return {vista: 'produto', id: partes[1]};
-  if (partes[0] === 'c' && partes[1]) return {vista: 'inicio', cat: partes[1], est: partes[2] || 'todas'};
+  if (partes[0] === 'c' && partes[1]) return {vista: 'catalogo', cat: partes[1], est: partes[2] || 'todas'};
   if (partes[0] === 'e' && partes[1]) return {vista: 'colecao', id: partes[1]};
   if (partes[0] === 'favoritos') return {vista: 'favoritos'};
   if (partes[0] === 'saco') return {vista: 'saco'};
   if (partes[0] === 'pagina' && partes[1]) return {vista: 'texto', slug: partes[1]};
   return {vista: 'inicio'};
 }
-var vistas = {inicio: 'vista-inicio', produto: 'vista-produto', colecao: 'vista-colecao', favoritos: 'vista-lista', saco: 'vista-lista', texto: 'vista-texto'};
+var vistas = {inicio: 'vista-inicio', catalogo: 'vista-catalogo', produto: 'vista-produto', colecao: 'vista-colecao', favoritos: 'vista-lista', saco: 'vista-lista', texto: 'vista-texto'};
 var ultimaVista = null;
 function navega(){
   var r = rota();
   Object.keys(vistas).forEach(function(k){ document.getElementById(vistas[k]).hidden = vistas[k] !== vistas[r.vista]; });
   document.getElementById('barra-movel').classList.toggle('mostra', r.vista === 'produto');
   if (r.vista === 'inicio') {
+    document.querySelectorAll('#menu a').forEach(function(a){ a.setAttribute('aria-current', 'false'); });
+    if (ultimaVista !== 'inicio') window.scrollTo(0, 0);
+    document.title = 'Toda Chic — Roupa feminina online';
+  } else if (r.vista === 'catalogo') {
     var cat = r.cat || 'todas', est = r.est || 'todas';
     if (cat !== 'todas' && cat !== 'promocoes' && !CAT_NOME[cat]) cat = 'todas';
     if (est !== 'todas' && !EST_NOME[est]) est = 'todas';
-    aplicaFiltro(cat, est, !!r.cat && !(cat === 'todas' && est === 'todas'));
-    if (!r.cat && ultimaVista !== 'inicio') window.scrollTo(0, 0);
-    document.title = 'Toda Chic — Roupa feminina online';
+    aplicaFiltro(cat, est, false);
+    window.scrollTo(0, 0);
+    document.title = (cat === 'todas' ? 'Todas as peças' : cat === 'promocoes' ? 'Promoções' : CAT_NOME[cat]) + ' — Toda Chic';
   } else {
     window.scrollTo(0, 0);
     if (r.vista === 'produto') desenhaProduto(r.id);
