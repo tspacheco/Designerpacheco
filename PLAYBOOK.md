@@ -245,6 +245,14 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - Não repetir contexto que já está neste ficheiro.
 - Evitar "continua" e ajustes em cadeia: juntar os ajustes num só pedido.
 
+## 14. SISTEMAS INTERNOS (novo — 21/09/2026)
+
+Investigação em `research/sistemas-pacheco-studios.md` — ler antes de pagar qualquer ferramenta.
+
+- **Regra:** só entra ferramenta que suporte "secção por cliente". HighLevel (sub-conta + snapshot) e Notion (página por cliente + convidados) passam; Make passa com prefixo `[CLIENTE]` nos cenários; **Brevo só tem sub-contas no Enterprise** (~449 $/mês) → uma conta por cliente ou e-mail no HighLevel; **Slack** só interno e só com equipa (Free não partilha canais com clientes).
+- **Caminho:** Notion + Make Core já; trial de 14 dias do HighLevel com um só objetivo — o snapshot "Restaurante PT" (pipeline, reservas, formulário, review 2 h depois, template WhatsApp). Starter (97 $) quando 3 clientes pagarem mensalidade; Unlimited (297 $) a partir do 4.º.
+- **O que o HighLevel não faz em PT:** fatura certificada AT (Make → Vendus/InvoiceXpress), MB WAY (Stripe diz ter MB WAY em 2026 — **a confirmar** em contas PT; se sim, rever a secção 13), WhatsApp a custo fixo (add-on por conversa, orçamentar 20–150 $/mês).
+
 ## 13. CLIENTES DE E-COMMERCE (novo — 20/09/2026)
 
 Primeiro cliente de loja online: **Toda Chic** (`sites/toda-chic/`). Regras aprendidas:
