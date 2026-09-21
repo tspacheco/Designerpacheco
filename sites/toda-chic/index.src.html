@@ -21,6 +21,7 @@
 :root{
   --tinta:#2B1D21; --rosa:#C25C77; --rosae:#8E3A52; --blush:#F8EFEA;
   --rosa-acao:#AD455F;   /* 5.54:1 com branco — para superfícies com texto branco */
+  --saldo:#B3122B;       /* vermelho de desconto: 6.4:1 sobre branco; lê-se "promoção" antes do número */
   --papel:#FFFFFF; --linha:rgba(43,29,33,.16);
   --texto:#2B1D21; --secundario:#6B5158; --fundo:var(--blush);
   --ease:cubic-bezier(.16,1,.3,1);
@@ -169,6 +170,7 @@ img,svg{display:block;max-width:100%}
 .cabeca{display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.4rem}
 .cabeca h2{font-size:clamp(1.8rem,4vw,2.8rem)}
 .cabeca .info{font-family:"Courier Prime",monospace;font-size:14px;color:var(--secundario)}
+.cabeca .voltar{margin-left:auto;font-size:14px;color:var(--rosae);text-decoration:underline;text-underline-offset:3px}
 .patilhas{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem}
 .patilha{display:inline-flex;align-items:center;gap:.5rem;padding:.66rem 1.15rem;
   border:1px solid var(--linha);border-radius:var(--raio);font-size:15px;font-weight:500;
@@ -212,7 +214,10 @@ img,svg{display:block;max-width:100%}
 .chip[aria-pressed="true"]{box-shadow:0 0 0 2px var(--papel),0 0 0 3.5px var(--rosa)}
 .preco{margin-top:auto;display:flex;align-items:baseline;gap:.55rem;padding-top:.3rem}
 .preco b{font-size:19px;font-weight:600}
-.preco .promo-tag{font-family:"Courier Prime",monospace;font-size:12px;color:var(--rosae);letter-spacing:.06em}
+.preco s{color:var(--secundario);font-size:14.5px;text-decoration:line-through;text-decoration-color:rgba(107,81,88,.7)}
+.preco b.saldo,.preco-grande b.saldo{color:var(--saldo)}
+.selo.saldo{background:var(--saldo);color:#fff;border-color:var(--saldo);font-weight:700}
+.poupa{font-family:"Courier Prime",monospace;font-size:13px;color:var(--saldo)}
 .vazio{padding:3rem var(--pad);text-align:center;color:var(--secundario);border:1px dashed var(--linha);border-radius:var(--raio)}
 .vazio strong{display:block;font-family:"Italiana",serif;font-weight:400;font-size:1.8rem;color:var(--texto);margin-bottom:.4rem}
 
@@ -372,7 +377,7 @@ img,svg{display:block;max-width:100%}
 .revela{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .revela.visto{opacity:1;transform:none}
 
-@media(max-width:1260px){
+@media(max-width:1000px){
   .menu{display:none}
   .acoes .burger{display:grid}
 }
@@ -476,7 +481,7 @@ img,svg{display:block;max-width:100%}
     <div class="dentro"><div class="texto-heroi">
       <p class="sobre entra">Roupa feminina online · Portugal</p>
       <h1 class="entra" data-i="1">Embeleza<span class="hif">-</span>te <em>connosco</em>.</h1>
-      <p class="frase entra" data-i="2">Peças escolhidas uma a uma, com o preço à vista, o tamanho explicado e quantas ficam. Entregas em todo o país.</p>
+      <p class="frase entra" data-i="2">Peças escolhidas uma a uma, com o preço à vista, o tamanho explicado e quantas ficam. Entrega em 2 a 3 dias úteis.</p>
       <div class="cta entra" data-i="3">
         <a class="btn" href="#categorias">Ver por categoria</a>
         <a class="btn linha" href="#/c/promocoes">Promoções</a>
@@ -486,7 +491,7 @@ img,svg{display:block;max-width:100%}
 
   <div class="promessas" aria-label="Promessas da loja">
     <ul>
-      <li><svg viewBox="0 0 24 24"><path d="M4 8h10v8H4zM14 11h4l2 3v2h-6z"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>Entregas em todo o país</li>
+      <li><svg viewBox="0 0 24 24"><path d="M4 8h10v8H4zM14 11h4l2 3v2h-6z"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>Entrega em 2 a 3 dias úteis, em todo o país</li>
       <li><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>Pagamento antecipado por MB WAY</li>
       <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9Z"/></svg>Moda que realça a tua beleza</li>
       <li><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>Dúvidas por WhatsApp: 933 668 148</li>
@@ -507,9 +512,8 @@ img,svg{display:block;max-width:100%}
       <div class="cabeca">
         <h2 id="titulo-grelha">Todas as peças</h2>
         <span class="info" id="info-grelha"></span>
+        <a class="voltar" id="voltar-todas" href="#/c/todas" hidden>Ver todas as peças</a>
       </div>
-      <div class="fila-chips"><span class="etiqueta-fila">Categoria</span><div class="patilhas" id="patilhas" role="group" aria-label="Filtrar por categoria" style="margin:0"></div></div>
-      <div class="fila-chips" id="fila-est"><span class="etiqueta-fila">Estação</span><div class="patilhas" id="patilhas-est" role="group" aria-label="Filtrar por estação" style="margin:0"></div></div>
       <div class="grelha" id="grelha"></div>
     </div>
   </section>
@@ -525,7 +529,7 @@ img,svg{display:block;max-width:100%}
         </div>
         <div class="garantia">
           <svg viewBox="0 0 24 24"><path d="M4 8h10v8H4zM14 11h4l2 3v2h-6z"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
-          <div><h3>Entregas em todo o país</h3><p>Enviamos para qualquer ponto de Portugal. Portes e prazo: a confirmar antes do lançamento.</p></div>
+          <div><h3>Entrega em 2 a 3 dias úteis</h3><p>Enviamos para qualquer ponto de Portugal depois de confirmado o pagamento. Portes: a confirmar.</p></div>
         </div>
         <div class="garantia">
           <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-4-7.5"/><path d="M9 12l2.5 2.5L21 5"/></svg>
@@ -576,7 +580,7 @@ img,svg{display:block;max-width:100%}
   <div class="dentro">
     <div>
       <svg class="lockup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 562.432 96" aria-hidden="true"><g transform="translate(10.00 9.00) scale(0.7800)"><path d="M50 46 C 40 27, 13 25, 9 38 C 6 49, 30 57, 50 46 Z" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linejoin="round"/><path d="M50 46 C 60 27, 87 25, 91 38 C 94 49, 70 57, 50 46 Z" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linejoin="round"/><path d="M44 52 C 41 63, 37 70, 32 77" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linecap="round"/><path d="M56 52 C 59 63, 63 70, 68 77" fill="none" stroke="var(--rosa)" stroke-width="5.4" stroke-linecap="round"/><circle cx="50" cy="47" r="6.4" fill="var(--rosae)"/></g><path d="M17.732 0.0H12.586V-42.78H1.8599999999999999V-43.4H28.52V-42.78H17.732Z M50.84 -20.646Q50.84 -31.93 56.327 -37.789Q61.814 -43.647999999999996 70.432 -43.647999999999996Q79.05 -43.647999999999996 84.16499999999999 -38.56399999999999Q89.28 -33.48 89.28 -22.32Q89.28 -11.16 83.824 -5.456Q78.368 0.248 69.254 0.248Q61.38 0.248 56.358000000000004 -4.278Q53.754000000000005 -6.634 52.297000000000004 -10.818999999999999Q50.84 -15.004 50.84 -20.646ZM70.24600000000001 -43.028Q63.984 -43.028 59.985 -37.448Q55.986000000000004 -31.868 55.986000000000004 -21.08Q55.986000000000004 -10.292 59.768 -5.332Q63.550000000000004 -0.372 69.843 -0.372Q76.136 -0.372 80.13499999999999 -5.983Q84.134 -11.594 84.134 -22.289Q84.134 -32.984 80.321 -38.006Q76.50800000000001 -43.028 70.24600000000001 -43.028Z M119.04 -43.338Q121.76800000000001 -43.461999999999996 124.40300000000002 -43.461999999999996Q127.03800000000001 -43.461999999999996 129.983 -42.903999999999996Q132.928 -42.346 135.811 -40.827Q138.69400000000002 -39.308 140.709 -36.921Q142.72400000000002 -34.534 143.964 -30.628Q145.204 -26.722 145.204 -21.142Q145.204 -15.562 143.375 -11.129Q141.54600000000002 -6.696 138.38400000000001 -4.34Q132.246 0.248 123.566 0.248Q120.528 0.248 117.18 0.0H114.08000000000001V-43.338ZM119.22600000000001 -0.496Q120.528 -0.372 122.512 -0.372Q124.49600000000001 -0.372 125.488 -0.434Q126.48 -0.496 128.216 -0.961Q129.952 -1.426 131.44 -2.2319999999999998Q132.928 -3.038 134.571 -4.619Q136.214 -6.2 137.392 -8.37Q140.05800000000002 -13.454 140.05800000000002 -21.637999999999998Q140.05800000000002 -27.466 138.632 -31.713Q137.20600000000002 -35.96 135.377 -38.006Q133.548 -40.052 130.94400000000002 -41.260999999999996Q128.34 -42.47 126.79 -42.656Q125.24000000000001 -42.842 123.19400000000002 -42.842Q121.14800000000001 -42.842 119.22600000000001 -42.656Z M168.26800000000003 0.0H167.52400000000003L186.062 -43.4L186.74400000000003 -43.71L202.36800000000002 0.0H197.098L192.262 -13.64H174.15800000000002ZM184.14000000000001 -36.704 174.406 -14.26H192.07600000000002Z M282.22400000000005 0.248Q270.63000000000005 0.248 265.05000000000007 -6.324Q263.06600000000003 -8.68 261.826 -12.586Q260.58600000000007 -16.492 260.58600000000007 -22.072000000000003Q260.58600000000007 -27.652 262.4150000000001 -32.085Q264.244 -36.518 267.40600000000006 -38.936Q273.54400000000004 -43.461999999999996 282.22400000000005 -43.461999999999996Q284.70400000000006 -43.461999999999996 287.06000000000006 -43.059Q289.41600000000005 -42.656 290.59400000000005 -42.222L291.71000000000004 -41.788L291.52400000000006 -41.168Q287.30800000000005 -42.842 282.22400000000005 -42.842Q275.65200000000004 -42.842 271.25000000000006 -38.564Q267.90200000000004 -35.402 266.53800000000007 -29.264Q265.732 -25.792 265.732 -20.77Q265.732 -15.748 267.158 -11.501Q268.58400000000006 -7.254 270.41300000000007 -5.208Q272.2420000000001 -3.162 274.84600000000006 -1.9529999999999998Q277.45000000000005 -0.744 279.00000000000006 -0.558Q280.55000000000007 -0.372 282.7510000000001 -0.372Q284.95200000000006 -0.372 287.7420000000001 -0.806Q290.53200000000004 -1.24 291.958 -1.612L293.38400000000007 -2.046L293.57000000000005 -1.426Q288.85800000000006 0.248 282.22400000000005 0.248Z M321.346 0.0H316.20000000000005V-43.4H321.346V-23.436H341.49600000000004V-43.4H346.64200000000005V0.0H341.49600000000004V-22.816H321.346Z M371.442 -42.78V-43.4H382.478V-42.78H379.44000000000005V-0.62H382.478V0.0H371.442V-0.62H374.29400000000004V-42.78Z M428.91600000000005 0.248Q417.32200000000006 0.248 411.7420000000001 -6.324Q409.75800000000004 -8.68 408.51800000000003 -12.586Q407.2780000000001 -16.492 407.2780000000001 -22.072000000000003Q407.2780000000001 -27.652 409.1070000000001 -32.085Q410.93600000000004 -36.518 414.09800000000007 -38.936Q420.23600000000005 -43.461999999999996 428.91600000000005 -43.461999999999996Q431.3960000000001 -43.461999999999996 433.75200000000007 -43.059Q436.10800000000006 -42.656 437.28600000000006 -42.222L438.40200000000004 -41.788L438.21600000000007 -41.168Q434.00000000000006 -42.842 428.91600000000005 -42.842Q422.34400000000005 -42.842 417.94200000000006 -38.564Q414.59400000000005 -35.402 413.2300000000001 -29.264Q412.42400000000004 -25.792 412.42400000000004 -20.77Q412.42400000000004 -15.748 413.85 -11.501Q415.27600000000007 -7.254 417.1050000000001 -5.208Q418.9340000000001 -3.162 421.53800000000007 -1.9529999999999998Q424.14200000000005 -0.744 425.69200000000006 -0.558Q427.2420000000001 -0.372 429.4430000000001 -0.372Q431.64400000000006 -0.372 434.4340000000001 -0.806Q437.22400000000005 -1.24 438.65000000000003 -1.612L440.0760000000001 -2.046L440.26200000000006 -1.426Q435.55000000000007 0.248 428.91600000000005 0.248Z" fill="var(--texto)" transform="translate(110.00 66.00)"/></svg>
-      <p>Roupa feminina online. Entregas em todo o país.<br>Instagram <a href="https://www.instagram.com/_toda.chiic" target="_blank" rel="noopener">@_toda.chiic</a></p>
+      <p>Roupa feminina online. Entrega em 2 a 3 dias úteis.<br>Instagram <a href="https://www.instagram.com/_toda.chiic" target="_blank" rel="noopener">@_toda.chiic</a></p>
     </div>
     <div><h3>Loja</h3><ul id="rodape-cats"></ul></div>
     <div><h3>Ajuda</h3><ul>
@@ -630,9 +634,17 @@ function stockTotal(p){
   p.cores.forEach(function(c){ if (typeof c.stock === 'number') { t += c.stock; sabe = true; } });
   return sabe ? t : null;
 }
+function desconto(p){
+  if (p.precoAntigo && p.preco != null) return '−' + Math.round((1 - p.preco / p.precoAntigo) * 100) + '%';
+  return 'PROMOÇÃO';
+}
+function precoHtml(p){
+  if (p.promo && p.precoAntigo) return '<s>' + euro(p.precoAntigo) + '</s><b class="saldo">' + euro(p.preco) + '</b>';
+  return '<b>' + euro(p.preco) + '</b>';
+}
 function seloDe(p){
   var s = stockTotal(p);
-  if (p.promo) return '<span class="selo escasso">PROMOÇÃO</span>';
+  if (p.promo) return '<span class="selo saldo">' + desconto(p) + '</span>';
   if (s === 1) return '<span class="selo escasso">ÚLTIMA UNIDADE</span>';
   if (s != null && s <= 3) return '<span class="selo">RESTAM ' + s + '</span>';
   return '';
@@ -704,7 +716,7 @@ function cartao(p, i){
       '<h3><a href="#/p/' + p.id + '">' + esc(p.nome) + '</a></h3>' +
       '<span class="ref">' + esc(p.sub ? p.sub + ' · ' + tamTxt : tamTxt) + '</span>' +
       '<div class="chips" aria-label="Cores: ' + esc(p.cores.map(function(c){ return c.nome; }).join(', ')) + '">' + chips + '</div>' +
-      '<div class="preco"><b>' + euro(p.preco) + '</b>' + (p.promo ? '<span class="promo-tag">PROMOÇÃO</span>' : '') + '</div>' +
+      '<div class="preco">' + precoHtml(p) + '</div>' +
     '</div></article>';
 }
 
@@ -749,27 +761,12 @@ function desenhaVitrine(){
   }).join('');
   document.getElementById('info-vitrine').textContent = PECAS.length + ' peças em loja · por categoria ou por estação';
 }
-function desenhaPatilhas(){
-  var h = '<button type="button" class="patilha" data-cat="todas" aria-pressed="' + (filtro === 'todas') + '">Todas <span class="qt">' + pecasDe('todas', filtroEst).length + '</span></button>';
-  CATS.forEach(function(c){
-    var n = pecasDe(c.id, filtroEst).length;
-    h += '<button type="button" class="patilha' + (c.brevemente ? ' breve' : '') + (c.provisorio ? ' provisorio' : '') + '" data-cat="' + c.id + '" aria-pressed="' + (filtro === c.id) + '">' +
-      esc(c.nome) + (c.brevemente ? ' <span class="qt">breve</span>' : ' <span class="qt">' + n + '</span>') + '</button>';
-  });
-  h += '<button type="button" class="patilha promo" data-cat="promocoes" aria-pressed="' + (filtro === 'promocoes') + '">Promoções <span class="qt">' + pecasDe('promocoes', filtroEst).length + '</span></button>';
-  document.getElementById('patilhas').innerHTML = h;
-  var e = '<button type="button" class="patilha est" data-est="todas" aria-pressed="' + (filtroEst === 'todas') + '">Todas</button>';
-  ESTS.forEach(function(es){
-    e += '<button type="button" class="patilha est" data-est="' + es.id + '" aria-pressed="' + (filtroEst === es.id) + '">' + esc(es.nome) + ' <span class="qt">' + pecasDe(filtro, es.id).length + '</span></button>';
-  });
-  document.getElementById('patilhas-est').innerHTML = e;
-}
 function desenhaGrelha(){
   var lista = pecasDe(filtro, filtroEst), g = document.getElementById('grelha');
   var nome = filtro === 'todas' ? 'Todas as peças' : filtro === 'promocoes' ? 'Promoções' : CAT_NOME[filtro];
   if (filtroEst !== 'todas') nome = (filtro === 'todas' ? '' : nome + ' · ') + EST_NOME[filtroEst];
   document.getElementById('titulo-grelha').textContent = nome;
-  document.getElementById('info-grelha').textContent = lista.length ? lista.length + (lista.length === 1 ? ' peça' : ' peças') + ' · preços com IVA' : '';
+  document.getElementById('info-grelha').textContent = lista.length ? lista.length + (lista.length === 1 ? ' peça' : ' peças') + ' · entrega em 2 a 3 dias úteis' : '';
   var breve = CATS.some(function(c){ return c.id === filtro && c.brevemente; });
   if (!lista.length) {
     g.innerHTML = breve ?
@@ -782,33 +779,22 @@ function desenhaGrelha(){
 }
 function aplicaFiltro(cat, est, rolar){
   filtro = cat; filtroEst = est;
-  desenhaPatilhas(); desenhaGrelha();
+  desenhaGrelha();
+  var v = document.getElementById('voltar-todas'); v.hidden = (cat === 'todas' && est === 'todas');
   document.querySelectorAll('#menu a, #menu-movel-lista a').forEach(function(a){
     a.setAttribute('aria-current', a.getAttribute('data-cat') === cat ? 'true' : 'false');
   });
   if (rolar) document.getElementById('montra').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
-document.getElementById('patilhas').addEventListener('click', function(e){
-  var b = e.target.closest('.patilha'); if (!b) return;
-  location.hash = '#/c/' + b.getAttribute('data-cat') + (filtroEst !== 'todas' ? '/' + filtroEst : '');
-});
-document.getElementById('patilhas-est').addEventListener('click', function(e){
-  var b = e.target.closest('.patilha'); if (!b) return;
-  var est = b.getAttribute('data-est');
-  location.hash = '#/c/' + filtro + (est !== 'todas' ? '/' + est : '');
-});
-
 /* ---------- menus ---------- */
 function desenhaMenus(){
-  var visiveis = CATS.filter(function(c){ return !c.provisorio; });
-  document.getElementById('menu').innerHTML = visiveis.map(function(c){
+  var visiveis = CATS.filter(function(c){ return !c.provisorio; }), roupa = CATS.filter(function(c){ return c.foto; });
+  document.getElementById('menu').innerHTML = roupa.map(function(c){
     return '<a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a>';
   }).join('') + '<a href="#/c/promocoes" data-cat="promocoes" class="promo">Promoções</a>';
   document.getElementById('menu-movel-lista').innerHTML = '<li><a href="#/c/todas" data-cat="todas">Todas as peças</a></li>' +
-    visiveis.map(function(c){ return '<li><a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a></li>'; }).join('') +
-    '<li><a href="#/c/promocoes" data-cat="promocoes">Promoções</a></li>' +
-    ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">' + esc(e.nome) + '</a></li>'; }).join('') +
-    '<li><a href="#/favoritos">Favoritos</a></li><li><a href="#/pagina/contactos">Contactos</a></li>';
+    roupa.map(function(c){ return '<li><a href="#/c/' + c.id + '" data-cat="' + c.id + '">' + esc(c.nome) + '</a></li>'; }).join('') +
+    '<li><a href="#/c/promocoes" data-cat="promocoes">Promoções</a></li><li><a href="#/favoritos">Favoritos</a></li><li><a href="#/pagina/contactos">Contactos</a></li>';
   document.getElementById('rodape-cats').innerHTML = visiveis.map(function(c){
     return '<li><a href="#/c/' + c.id + '">' + esc(c.nome) + '</a></li>';
   }).join('') + '<li><a href="#/c/promocoes">Promoções</a></li>' + ESTS.map(function(e){ return '<li><a href="#/e/' + e.id + '">' + esc(e.nome) + '</a></li>'; }).join('');
@@ -842,7 +828,7 @@ function desenhaProduto(id){
     '<div>' +
       '<nav class="migalhas" aria-label="Caminho"><a href="#/">Início</a><span>›</span><a href="#/c/' + p.cat + '">' + esc(p.sub || CAT_NOME[p.cat]) + '</a><span>›</span><a href="#/e/' + p.estacao + '">' + esc(EST_NOME[p.estacao]) + '</a></nav>' +
       '<h1>' + esc(p.nome) + '</h1>' +
-      '<p class="preco-grande">' + euro(p.preco) + (p.promo ? '<span class="promo-tag">PROMOÇÃO</span>' : '') + '</p>' +
+      '<p class="preco-grande">' + (p.promo && p.precoAntigo ? '<s style="color:var(--secundario);font-weight:400;font-size:19px">' + euro(p.precoAntigo) + '</s><b class="saldo">' + euro(p.preco) + '</b><span class="poupa">' + desconto(p) + ' · poupas ' + euro(p.precoAntigo - p.preco) + '</span>' : euro(p.preco)) + '</p>' +
       '<p class="desc">' + esc(p.desc || '') + '</p>' +
       '<div class="bloco"><p class="rotulo">Cor <span id="cor-nome">' + esc(p.cores[0].nome) + '</span></p><div class="cores" id="cores">' + cores + '</div></div>' +
       '<div class="bloco"><p class="rotulo">Tamanho</p><div class="tamanhos" id="tamanhos">' + tams + '</div></div>' +
@@ -853,11 +839,11 @@ function desenhaProduto(id){
       '<div class="dobras">' +
         '<details><summary>Guia de tamanhos</summary><div><p>' + esc(p.tam || 'Tamanho a confirmar com a loja.') + '</p>' +
           (p.stockNota ? '<p>' + esc(p.stockNota) + '.</p>' : '') + GUIA + '<p><a href="#/pagina/guia-tamanhos" style="color:var(--rosae);text-decoration:underline;text-underline-offset:3px">Ver o guia completo e como medir</a></p></div></details>' +
-        '<details><summary>Envio e pagamento</summary><div><p>Pagamento antecipado por MB WAY. Entregas em todo o país.</p><p>Portes e prazo de entrega: a confirmar antes do lançamento da loja.</p></div></details>' +
+        '<details><summary>Envio e pagamento</summary><div><p>Pagamento antecipado por MB WAY. Entrega em 2 a 3 dias úteis, em todo o país.</p><p>Portes: a confirmar antes do lançamento da loja.</p></div></details>' +
         '<details><summary>Trocas e devoluções</summary><div><p>Não aceitamos trocas nem devoluções. Se tiveres dúvidas no tamanho ou na cor, fala connosco antes de comprares.</p></div></details>' +
       '</div>' +
     '</div>';
-  document.getElementById('barra-movel').innerHTML = '<b>' + euro(p.preco) + '</b><button type="button" class="btn" id="juntar-movel">Juntar ao saco</button>';
+  document.getElementById('barra-movel').innerHTML = '<b' + (p.promo ? ' style="color:var(--saldo)"' : '') + '>' + euro(p.preco) + '</b><button type="button" class="btn" id="juntar-movel">Juntar ao saco</button>';
   atualizaStock(p);
   var grande = document.getElementById('foto-grande');
   document.getElementById('cores').addEventListener('click', function(e){
@@ -963,14 +949,14 @@ var PAGINAS = {
     '<a href="https://www.instagram.com/_toda.chiic" target="_blank" rel="noopener"><small>Instagram</small>@_toda.chiic</a>' +
     '<div><small>E-mail</small>a confirmar</div></div>'},
   faq: {t: 'Perguntas frequentes', h: '<h2>Como pago?</h2><p>Por MB WAY, antes do envio. Na loja final, o pagamento pede o número de telemóvel e confirma-se na app.</p>' +
-    '<h2>Entregam onde?</h2><p>Em todo o país. Portes e prazo de entrega: a confirmar antes do lançamento.</p>' +
+    '<h2>Entregam onde e em quanto tempo?</h2><p>Em todo o país, em 2 a 3 dias úteis depois de confirmado o pagamento. Portes: a confirmar antes do lançamento.</p>' +
     '<h2>O que quer dizer “tamanho único, veste do S ao L”?</h2><p>É uma peça com elasticidade, feita para vestir bem em corpos do S ao L. Se tiveres dúvidas, manda-nos as tuas medidas por WhatsApp e ajudamos a decidir.</p>' +
     '<h2>Posso trocar ou devolver?</h2><p>Não aceitamos trocas nem devoluções. Por isso, fala connosco antes de comprares: respondemos a todas as dúvidas de tamanho e cor.</p>' +
     '<h2>Como sei se ainda há stock?</h2><p>Em cada peça dizemos quantas unidades existem por cor. Quando resta uma, aparece “última unidade”.</p>'},
   pagamentos: {t: 'Métodos de pagamento', h: '<p>Aceitamos <strong>MB WAY</strong>. O pagamento é feito antes do envio.</p><p>Outros métodos (Multibanco, cartão): a confirmar com a dona antes do lançamento.</p>'},
   trocas: {t: 'Trocas e devoluções', h: '<p>Não aceitamos trocas nem devoluções.</p><p>Se tiveres dúvidas no tamanho ou na cor, fala connosco por WhatsApp antes de comprares: ajudamos a escolher.</p>'},
   privacidade: {t: 'Política de privacidade', h: '<p>Os dados que nos dás (nome, morada, telemóvel) servem apenas para processar e entregar a tua encomenda e para responder às tuas mensagens. Não são vendidos nem cedidos a terceiros fora do necessário à entrega e ao pagamento.</p><p class="aviso">Página a completar com a identificação da responsável pelo tratamento (nome, NIF, morada), o prazo de conservação dos dados e o contacto para exercer os direitos RGPD.</p>'},
-  termos: {t: 'Termos e condições', h: '<p>Os preços apresentados incluem IVA. As encomendas são pagas antecipadamente por MB WAY e enviadas depois de confirmado o pagamento. Entregamos em todo o país.</p><p class="aviso">Página a completar com: identificação da empresa (nome, NIF, morada, registo), portes e prazos de entrega, e a entidade de Resolução Alternativa de Litígios competente.</p><p>Livro de Reclamações eletrónico: <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">livroreclamacoes.pt</a>.</p>'}
+  termos: {t: 'Termos e condições', h: '<p>Os preços apresentados incluem IVA. As encomendas são pagas antecipadamente por MB WAY e enviadas depois de confirmado o pagamento, com entrega em 2 a 3 dias úteis em todo o país.</p><p class="aviso">Página a completar com: identificação da empresa (nome, NIF, morada, registo), portes e prazos de entrega, e a entidade de Resolução Alternativa de Litígios competente.</p><p>Livro de Reclamações eletrónico: <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">livroreclamacoes.pt</a>.</p>'}
 };
 function desenhaTexto(slug){
   var pg = PAGINAS[slug]; if (!pg) { location.hash = '#/'; return; }
