@@ -270,7 +270,7 @@ pages.append(page("", h("Investimento e escolha", "Um sistema para todos os Lege
 <div class="sign"><div><span class="mono">nome</span><i></i></div><div><span class="mono">data</span><i></i></div><div><span class="mono">assinatura</span><i></i></div></div>
 <div class="callout final">
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span><br><span class="pres">Assistência presencial: um subdiretor da Pacheco Studios desloca-se ao ginásio sempre que for necessário.</span></div>
-  <div class="r"><span class="mono">{esc(C["email"])}</span></div>
+  <div class="r"><span class="mono">{esc(C["tel"])}</span><br><span class="mono">{esc(C["email"])}</span></div>
 </div>
 <p class="fine">O esquema completo está no documento “Follow-up &amp; Recuperação de Clientes” que acompanha este resumo.</p>
 ''', 6))

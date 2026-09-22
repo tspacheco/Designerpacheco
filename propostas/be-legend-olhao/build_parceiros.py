@@ -56,10 +56,16 @@ pages.append(page("", f'''
 <div class="topbar"><span class="brand">{esc(C["marca"])}</span><span class="mono">{esc(C["data"])}</span></div>
 <p class="kicker">{esc(C["cliente"])} · programa de parceiros</p>
 <h2 class="big">Um mês grátis por cada cliente que nos apresentem.</h2>
-<p class="lead">O Be Legend conhece donos de negócios em Olhão, Faro e Lisboa. Cada apresentação que se transforme em cliente da Pacheco Studios devolve ao Be Legend um mês inteiro da mensalidade do sistema. Sem limite, sem letras pequenas.</p>
+<p class="lead">O Be Legend conhece donos de negócios em Olhão, Faro e Lisboa. Cada apresentação que se transforme em cliente da Pacheco Studios devolve ao Be Legend um mês inteiro da mensalidade do sistema, e quem chega pela vossa recomendação paga menos 10 %. Ganham os dois lados.</p>
+<div class="two">
 <div class="rule">
-  <span class="mono">a regra, numa frase</span>
+  <span class="mono">para o Be Legend</span>
   <p>Por cada negócio fechado a partir de uma recomendação do Be Legend, <b>a mensalidade do sistema fica grátis um mês</b>, com dois meses de intervalo: fecho em setembro, dezembro grátis. Dois negócios, dois meses. E assim sucessivamente.</p>
+</div>
+<div class="rule alt">
+  <span class="mono">para quem o Be Legend apresenta</span>
+  <p><b>10 % de desconto</b> na montagem, só por vir pela recomendação do Be Legend. Basta dizer que vem da vossa parte.</p>
+</div>
 </div>
 <h3 class="mt">Como fica no calendário</h3>
 {strip({0: 1}, "Um negócio fechado em setembro → dezembro grátis.")}
@@ -71,9 +77,9 @@ pages.append(page("", f'''
 
 pages.append(page("", h("Como funciona", "Três passos. O trabalho é nosso.") + f'''
 <ol class="ol big">
-  <li><b>Apresentar.</b> O Be Legend envia a mensagem abaixo a um dono de negócio que conhece, ou dá-nos o contacto com autorização para o abordarmos em nome do ginásio. Uma frase chega.</li>
+  <li><b>Apresentar.</b> Numa conversa de café, por mensagem, como calhar: o Be Legend fala de nós a um dono de negócio que conhece e diz-lhe para nos contactar da vossa parte. Ou dá-nos o contacto com autorização para o abordarmos em nome do ginásio. Uma frase chega.</li>
   <li><b>Nós tratamos do resto.</b> Demonstração feita à medida desse negócio, proposta, reunião, montagem. O Be Legend não tem de acompanhar nada.</li>
-  <li><b>Fecho.</b> Quando o cliente apresentado assina e paga a montagem, conta. Passam dois meses e, no terceiro, a mensalidade do Be Legend é zero. Aparece na fatura como “mês de parceiro”.</li>
+  <li><b>Fecho.</b> Quando o cliente apresentado assina e paga a montagem (já com os 10 % de desconto), conta. Passam dois meses e, no terceiro, a mensalidade do Be Legend é zero. Aparece na fatura como “mês de parceiro”.</li>
 </ol>
 <div class="cols2 mt">
   <div>
@@ -89,18 +95,19 @@ pages.append(page("", h("Como funciona", "Três passos. O trabalho é nosso.") +
     <ul class="ul">
       <li>O mês grátis é um desconto na mensalidade; não é convertível em dinheiro.</li>
       <li>Vale enquanto o contrato do sistema estiver ativo.</li>
-      <li>Conta a partir do pagamento da montagem pelo cliente apresentado, não da assinatura.</li>
+      <li>Conta a partir do pagamento da montagem pelo cliente apresentado, não da assinatura. Basta que a pessoa diga que vem da parte do Be Legend.</li>
       <li>O Be Legend recebe uma confirmação por escrito de cada fecho, com o mês grátis marcado.</li>
     </ul>
   </div>
 </div>
-<h3 class="mt">A mensagem pronta a enviar</h3>
+<h3 class="mt">Exemplo de mensagem</h3>
+<p class="exnote">Não é obrigatório enviar nada por escrito. Muitas vezes a recomendação acontece numa conversa de café e a pessoa contacta-nos depois. Se quiserem mandar uma mensagem, pode ser assim:</p>
 <div class="phone">
-  <div class="bub"><p>Olá [nome do dono], é o [o seu nome] do Be Legend. Estamos a usar um sistema da Pacheco Studios que trata do acompanhamento dos nossos clientes por WhatsApp e que nos poupou as chamadas todas. Achei que fazia sentido para o teu negócio. Se quiseres ver como funciona, fala com o Tomás: {esc(C["email"])}. Diz que vais da minha parte.</p><span class="mono">modelo · os [campos] preenchem-se na hora · o Be Legend adapta à sua maneira</span></div>
+  <div class="bub"><p>Olá [nome do dono], é o [o seu nome] do Be Legend. Estamos a usar um sistema da Pacheco Studios que trata do acompanhamento dos nossos clientes por WhatsApp e que nos poupou as chamadas todas. Achei que fazia sentido para o teu negócio. Se quiseres ver como funciona, fala com o Tomás: {esc(C["tel"])}. Diz que vais da minha parte, que tens 10 % de desconto.</p><span class="mono">exemplo · os [campos] preenchem-se na hora · cada um adapta à sua maneira</span></div>
 </div>
 <div class="callout final">
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span></div>
-  <div class="r"><span class="mono">{esc(C["email"])}</span></div>
+  <div class="r"><span class="mono">{esc(C["tel"])}</span><br><span class="mono">{esc(C["email"])}</span></div>
 </div>
 ''', 2))
 
@@ -109,9 +116,14 @@ EXTRA = f"""
 .topbar .brand{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13pt;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}}
 h2.big{{font-size:40pt;margin-bottom:10px}}
 .lead{{max-width:160mm}}
-.rule{{background:var(--navy);color:#fff;border-radius:12px;padding:16px 20px;margin-top:8px}}
+.two{{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;margin-top:8px}}
+.rule{{background:var(--navy);color:#fff;border-radius:12px;padding:16px 20px}}
+.rule.alt{{background:var(--teal)}}
+.rule.alt .mono{{color:#fff;opacity:.85}}
+.rule.alt b{{color:#fff}}
+.exnote{{font-size:9.8pt;color:#3A3F4B;margin:-2px 0 8px}}
 .rule .mono{{display:block;color:var(--gold);margin-bottom:6px}}
-.rule p{{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:17pt;line-height:1.25;color:#fff}}
+.rule p{{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:16pt;line-height:1.25;color:#fff}}
 .rule b{{color:var(--gold);font-weight:800}}
 .ex{{margin-top:6px}}
 .ex svg{{width:100%;height:auto}}

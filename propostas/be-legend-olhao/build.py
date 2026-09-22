@@ -19,6 +19,7 @@ CFG = dict(
     mensalidade_ginasio=40,     # € por mensalidade de sócio, em média (dado do Tomás)
     piloto_dias="30",
     email="tspacheco26@gmail.com",
+    tel="967 117 357",
     marca="Pacheco Studios",
 )
 
@@ -441,7 +442,7 @@ pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legen
 </div>
 <div class="callout final">
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span><br><span class="pres">Assistência presencial: um subdiretor da Pacheco Studios desloca-se ao ginásio sempre que for necessário.</span></div>
-  <div class="r"><span class="mono">{esc(C["email"])}</span></div>
+  <div class="r"><span class="mono">{esc(C["tel"])}</span><br><span class="mono">{esc(C["email"])}</span></div>
 </div>
 ''', 9))
 
@@ -529,6 +530,7 @@ h3{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15.5pt;c
 .callout.final span{{color:#C9CFDA;font-size:9.5pt}}
 .callout.final .pres{{color:#fff;display:inline-block;margin-top:4px}}
 .callout.final .mono{{color:var(--gold);font-size:9.5pt}}
+.callout.final .r{{text-align:right;white-space:nowrap}}
 .tbl.cmp td{{padding:8px 6px;font-size:9.8pt}}
 .tbl.cmp td:last-child{{white-space:nowrap;color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:9pt}}
 .fine.next{{margin:8px 0 0;color:var(--navy)}}
