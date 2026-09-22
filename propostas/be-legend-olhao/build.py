@@ -14,8 +14,8 @@ CFG = dict(
     min_por_tentativa=2,          # estimativa, assinalada no documento
     setup="2700 €",
     setup_nota="IVA incluído",
-    mensal="400 €",
-    mensal_nota="+ IVA (92 €) = 492 €",
+    mensal="500 €",
+    mensal_nota="+ IVA (115 €) = 615 €",
     mensalidade_ginasio=40,     # € por mensalidade de sócio, em média (dado do Tomás)
     piloto_dias="30",
     email="tspacheco26@gmail.com",

@@ -72,7 +72,7 @@ def calc(variante, r=None):
 H, A, Bv = calc("hoje"), calc("A"), calc("B")
 def f0(x): return f"{x:.0f}".replace("-","−")
 MG = B.CFG["mensalidade_ginasio"]
-MENSAL_IVA = 400 * 1.23
+MENSAL_IVA = 500 * 1.23
 def eur(x, sign=False, neg=False):
     v = f"{abs(x):,.0f}".replace(",", " ")
     if neg: return f"− {v} €"
@@ -230,7 +230,7 @@ pages.append(page("", h("Números previstos", "100 chamadas por dia, em cada var
     <tr class="sep"><td class="lab">Resultados por hora de receção</td><td>{f1(H["por_hora"])}</td><td>{f1(A["por_hora"])}</td><td class="hl">{f1(Bv["por_hora"])}</td></tr>
     <tr class="gain"><td class="lab">Mensalidades ganhas por mês, a {MG} € cada</td><td>{eur(H["mes"]*MG)}</td><td>{eur(A["mes"]*MG)}</td><td class="hl">{eur(Bv["mes"]*MG)}</td></tr>
     <tr class="gain"><td class="lab">Ganho face a hoje, por mês</td><td>—</td><td>{eur((A["mes"]-H["mes"])*MG, sign=True)}</td><td class="hl">{eur((Bv["mes"]-H["mes"])*MG, sign=True)}</td></tr>
-    <tr class="gain"><td class="lab">Mensalidade do sistema (400 € + 92 € IVA = 492 €)</td><td>—</td><td>{eur(MENSAL_IVA, sign=False, neg=True)}</td><td class="hl">{eur(MENSAL_IVA, sign=False, neg=True)}</td></tr>
+    <tr class="gain"><td class="lab">Mensalidade do sistema (500 € + 115 € IVA = 615 €)</td><td>—</td><td>{eur(MENSAL_IVA, sign=False, neg=True)}</td><td class="hl">{eur(MENSAL_IVA, sign=False, neg=True)}</td></tr>
     <tr class="gain sep"><td class="lab">Ganho líquido por mês, num ginásio</td><td>—</td><td>{eur((A["mes"]-H["mes"])*MG-MENSAL_IVA, sign=True)}</td><td class="hl">{eur((Bv["mes"]-H["mes"])*MG-MENSAL_IVA, sign=True)}</td></tr>
   </tbody>
 </table>
