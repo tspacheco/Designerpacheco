@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- TODA CHIC — painel da dona · encomendas, stock, peças novas · funciona no telemóvel · Pacheco Studios -->
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Painel — Toda Chic</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2B1D21">
+<style>/*__FONTES__*/</style>
+<style>
+:root{--tinta:#2B1D21;--rosa:#C25C77;--rosae:#8E3A52;--rosa-acao:#AD455F;--blush:#F8EFEA;--papel:#fff;--linha:rgba(43,29,33,.16);--texto:#2B1D21;--secundario:#6B5158;--verde:#3F7A47;--saldo:#B3122B;--ease:cubic-bezier(.16,1,.3,1);--pad:clamp(1rem,4vw,2.4rem)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--blush);color:var(--texto);font:400 16px/1.55 "Jost",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:"Italiana",serif;font-weight:400;line-height:1.05}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font:inherit;color:inherit;width:100%;padding:.7rem .8rem;border:1px solid var(--linha);border-radius:3px;background:#fff}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid var(--rosa);outline-offset:2px}
+label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--rosae);margin-bottom:.35rem}
+.campo{margin-bottom:.9rem}
+.mono{font-family:"Courier Prime",monospace}
+.topo{position:sticky;top:0;z-index:10;background:var(--tinta);color:#FBF3F0;padding:.8rem var(--pad);display:flex;align-items:center;gap:1rem}
+.topo h1{font-size:1.4rem;letter-spacing:.14em}
+.topo small{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#E8A3B4;display:block;font-family:"Jost",sans-serif}
+.topo .sair{margin-left:auto;font-size:13px;text-decoration:underline;text-underline-offset:3px;color:#E8A3B4}
+.abas{display:flex;gap:.3rem;padding:.8rem var(--pad) 0;border-bottom:1px solid var(--linha);background:var(--blush);position:sticky;top:60px;z-index:9;overflow-x:auto}
+.aba{padding:.7rem 1rem;border-radius:3px 3px 0 0;font-weight:500;white-space:nowrap;position:relative;color:var(--secundario)}
+.aba[aria-selected="true"]{color:var(--texto);background:var(--papel);border:1px solid var(--linha);border-bottom-color:var(--papel);margin-bottom:-1px}
+.aba .n{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:99px;background:var(--rosa-acao);color:#fff;font-size:12px;font-weight:600;margin-left:.4rem;padding:0 5px}
+main{padding:1.4rem var(--pad) 4rem;max-width:1100px;margin:0 auto}
+.painel[hidden]{display:none}
+.vazio{padding:2.4rem;text-align:center;color:var(--secundario);border:1px dashed var(--linha);border-radius:3px}
+.lista{display:grid;gap:.8rem}
+.enc{background:var(--papel);border:1px solid var(--linha);border-radius:3px;padding:1rem;display:grid;grid-template-columns:1fr auto;gap:.6rem 1rem}
+.enc h2{font-family:"Jost",sans-serif;font-size:17px;font-weight:600;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.estado{display:inline-block;font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .5rem;border-radius:2px;border:1px solid}
+.estado.pendente{color:#8A5A00;border-color:#E3A72F;background:#FFF4D6}
+.estado.paga{color:var(--verde);border-color:var(--verde);background:#E9F5EA}
+.estado.enviada{color:#1E4E8A;border-color:#1E4E8A;background:#E6EFFA}
+.estado.falhada,.estado.cancelada,.estado.expirada{color:var(--saldo);border-color:var(--saldo);background:#FBE9EC}
+.enc .meta{font-size:14px;color:var(--secundario)}
+.enc .linhas{grid-column:1/-1;list-style:none;display:grid;gap:.3rem;font-size:15px;border-top:1px dotted var(--linha);padding-top:.6rem}
+.enc .linhas li{display:flex;gap:.6rem;align-items:center}
+.enc .linhas img{width:38px;height:48px;object-fit:cover;border-radius:2px;border:1px solid var(--linha)}
+.enc .total{font-size:20px;font-weight:600;text-align:right}
+.enc .acoes{grid-column:1/-1;display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.1rem;border-radius:3px;font-weight:600;font-size:15px;background:var(--rosa-acao);color:#fff;transition:background .3s,transform .3s}
+.btn:hover{background:var(--rosae);transform:translateY(-1px)}
+.btn.linha{background:transparent;color:var(--texto);border:1px solid var(--linha)}
+.btn.linha:hover{background:rgba(194,92,119,.08);border-color:var(--rosa)}
+.btn.verde{background:var(--verde)}.btn.verde:hover{background:#2F6136}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+.alerta{font-size:14px;color:var(--saldo)}
+.aviso{font-size:14px;color:var(--secundario)}
+.aviso-verde{font-size:14px;color:var(--verde)}
+.filtros{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.filtro{padding:.5rem .9rem;border:1px solid var(--linha);border-radius:99px;font-size:14px;background:var(--papel)}
+.filtro[aria-pressed="true"]{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+/* stock */
+.procura{margin-bottom:1rem}
+.peca{background:var(--papel);border:1px solid var(--linha);border-radius:3px;padding:.9rem 1rem;display:grid;grid-template-columns:56px 1fr;gap:.9rem;align-items:start}
+.peca img{width:56px;height:70px;object-fit:cover;border-radius:2px;border:1px solid var(--linha);background:#F2E4DC}
+.peca h2{font-family:"Jost",sans-serif;font-size:16px;font-weight:600}
+.peca .sub{font-size:13.5px;color:var(--secundario)}
+.cores{display:grid;gap:.4rem;margin-top:.6rem}
+.cor{display:grid;grid-template-columns:18px 1fr 96px auto;gap:.6rem;align-items:center;font-size:15px}
+.cor i{width:16px;height:16px;border-radius:99px;border:1px solid var(--linha);display:block}
+.cor input{padding:.45rem .6rem;text-align:center;font-variant-numeric:tabular-nums}
+.cor .guardar{font-size:13px;color:var(--rosae);text-decoration:underline;text-underline-offset:3px;visibility:hidden}
+.cor.mudou .guardar{visibility:visible}
+.cor .res{font-size:12px;color:var(--secundario)}
+.zero input{border-color:var(--saldo);color:var(--saldo)}
+/* nova peça */
+.form{background:var(--papel);border:1px solid var(--linha);border-radius:3px;padding:1.2rem;max-width:720px}
+.grelha2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.corform{border-top:1px dashed var(--linha);padding-top:.8rem;margin-top:.4rem;display:grid;grid-template-columns:1fr 70px 80px 1fr auto;gap:.6rem;align-items:end}
+.corform .prev{width:60px;height:74px;object-fit:cover;border-radius:2px;border:1px solid var(--linha);background:#F2E4DC}
+.corform input[type=file]{padding:.35rem;font-size:13px}
+.corform input[type=color]{height:42px;padding:.2rem}
+.tirar{font-size:13px;color:var(--secundario);text-decoration:underline}
+.entrar{min-height:100svh;display:grid;place-items:center;padding:var(--pad)}
+.entrar .form{width:min(420px,100%);text-align:center}
+.entrar h1{font-size:2.2rem;letter-spacing:.14em;margin-bottom:.2rem}
+.entrar p{color:var(--secundario);margin-bottom:1.2rem}
+.toast{position:fixed;left:50%;bottom:1.2rem;transform:translate(-50%,120%);background:var(--tinta);color:#FBF3F0;padding:.8rem 1.2rem;border-radius:99px;font-size:15px;transition:transform .5s var(--ease);z-index:20;max-width:calc(100vw - 2rem)}
+.toast.mostra{transform:translate(-50%,0)}
+@media(max-width:640px){.grelha2{grid-template-columns:1fr}.corform{grid-template-columns:1fr 1fr;}.cor{grid-template-columns:18px 1fr 80px auto}.abas{top:56px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="entrar" id="entrar">
+  <form class="form" id="form-entrar">
+    <h1>TODA CHIC</h1>
+    <p>Painel da loja. Só para ti.</p>
+    <div class="campo" style="text-align:left"><label for="senha">Palavra-passe</label><input id="senha" type="password" autocomplete="current-password" required></div>
+    <button class="btn" type="submit" style="width:100%;justify-content:center">Entrar</button>
+    <p class="alerta" id="erro-entrar" style="margin-top:.8rem"></p>
+  </form>
+</div>
+
+<div id="app" hidden>
+<header class="topo"><div><h1>TODA CHIC</h1><small>Painel da loja</small></div><button type="button" class="sair" id="sair">Sair</button></header>
+<nav class="abas" role="tablist">
+  <button class="aba" role="tab" aria-selected="true" data-aba="encomendas">Encomendas<span class="n" id="n-novas" hidden>0</span></button>
+  <button class="aba" role="tab" aria-selected="false" data-aba="stock">Stock</button>
+  <button class="aba" role="tab" aria-selected="false" data-aba="nova">Peça nova</button>
+</nav>
+<main>
+  <section class="painel" id="painel-encomendas">
+    <div class="filtros" id="filtros">
+      <button class="filtro" aria-pressed="true" data-f="ativas">A tratar</button>
+      <button class="filtro" aria-pressed="false" data-f="paga">Por enviar</button>
+      <button class="filtro" aria-pressed="false" data-f="enviada">Enviadas</button>
+      <button class="filtro" aria-pressed="false" data-f="todas">Todas</button>
+    </div>
+    <div class="lista" id="lista-enc"></div>
+  </section>
+  <section class="painel" id="painel-stock" hidden>
+    <p class="aviso" style="margin-bottom:.8rem">Muda o número e toca em <b>guardar</b>. O site atualiza-se no mesmo instante. Se venderes uma peça pelo Instagram, baixa aqui o stock na mesma hora.</p>
+    <input class="procura" id="procura" type="search" placeholder="Procurar peça…" aria-label="Procurar peça">
+    <div class="lista" id="lista-stock"></div>
+  </section>
+  <section class="painel" id="painel-nova" hidden>
+    <form class="form" id="form-nova">
+      <div class="campo"><label for="n-nome">Nome da peça</label><input id="n-nome" required placeholder="Ex.: Top efeito barco"></div>
+      <div class="grelha2">
+        <div class="campo"><label for="n-preco">Preço (€, com IVA)</label><input id="n-preco" type="number" step="0.01" min="0" required inputmode="decimal"></div>
+        <div class="campo"><label for="n-antigo">Preço antigo (só se for promoção)</label><input id="n-antigo" type="number" step="0.01" min="0" inputmode="decimal"></div>
+        <div class="campo"><label for="n-cat">Categoria</label><select id="n-cat"></select></div>
+        <div class="campo"><label for="n-est">Coleção</label><select id="n-est"></select></div>
+        <div class="campo"><label for="n-tam">Tamanho (como dizes ao balcão)</label><input id="n-tam" placeholder="Tamanho único · veste do S ao L"></div>
+        <div class="campo"><label for="n-tams">Tamanhos com numeração (opcional)</label><input id="n-tams" placeholder="36, 38, 40 — deixa vazio se for único"></div>
+      </div>
+      <div class="campo"><label for="n-desc">Descrição (1 ou 2 linhas)</label><textarea id="n-desc" rows="2" placeholder="Malha canelada com pala a cair sobre os ombros."></textarea></div>
+      <label>Cores e fotos</label>
+      <div id="cores-nova"></div>
+      <button type="button" class="btn linha" id="mais-cor" style="margin:.8rem 0">+ outra cor</button>
+      <p class="aviso" style="margin-bottom:.9rem">Fotos ao alto, luz natural, sem preço escrito por cima.</p>
+      <button class="btn" type="submit">Pôr à venda</button>
+      <p class="alerta" id="erro-nova" style="margin-top:.6rem"></p>
+    </form>
+  </section>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+var API = window.LOJA_API || '/api';
+var senha = null; try { senha = localStorage.getItem('tc.painel'); } catch (e) {}
+var toastT;
+function toast(m){ var t = document.getElementById('toast'); t.textContent = m; t.classList.add('mostra'); clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove('mostra'); }, 2800); }
+function euro(v){ return v == null ? '—' : v.toFixed(2).replace('.', ',') + ' €'; }
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function data(iso){ var d = new Date(iso); return d.toLocaleDateString('pt-PT') + ' ' + d.toLocaleTimeString('pt-PT', {hour: '2-digit', minute: '2-digit'}); }
+function foto(f){ return f ? (/^https?:/.test(f) ? f : 'media/produtos/' + f) : ''; }
+function pede(metodo, rota, corpo){
+  return fetch(API + rota, { method: metodo, headers: { 'Content-Type': 'application/json', 'X-Painel': senha || '' }, body: corpo ? JSON.stringify(corpo) : undefined })
+    .then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.erro || ('Erro ' + r.status)); return j; }); });
+}
+
+/* ---------- entrar ---------- */
+document.getElementById('form-entrar').addEventListener('submit', function(e){
+  e.preventDefault(); senha = document.getElementById('senha').value;
+  pede('GET', '/painel/encomendas').then(function(){ try { localStorage.setItem('tc.painel', senha); } catch (x) {} arranca(); })
+    .catch(function(er){ document.getElementById('erro-entrar').textContent = er.message; });
+});
+document.getElementById('sair').addEventListener('click', function(){ try { localStorage.removeItem('tc.painel'); } catch (e) {} location.reload(); });
+function arranca(){ document.getElementById('entrar').hidden = true; document.getElementById('app').hidden = false; carregaEncomendas(); carregaStock(); setInterval(carregaEncomendas, 15000); }
+if (senha) pede('GET', '/painel/encomendas').then(arranca).catch(function(){ senha = null; });
+
+/* ---------- abas ---------- */
+document.querySelectorAll('.aba').forEach(function(a){ a.addEventListener('click', function(){
+  document.querySelectorAll('.aba').forEach(function(o){ o.setAttribute('aria-selected', 'false'); }); a.setAttribute('aria-selected', 'true');
+  document.querySelectorAll('.painel').forEach(function(p){ p.hidden = p.id !== 'painel-' + a.dataset.aba; });
+}); });
+
+/* ---------- encomendas ---------- */
+var encomendas = [], filtro = 'ativas';
+document.getElementById('filtros').addEventListener('click', function(e){ var b = e.target.closest('.filtro'); if (!b) return; filtro = b.dataset.f; document.querySelectorAll('.filtro').forEach(function(o){ o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); }); desenhaEncomendas(); });
+function carregaEncomendas(){ pede('GET', '/painel/encomendas').then(function(l){ encomendas = l; desenhaEncomendas(); }).catch(function(er){ toast(er.message); }); }
+function desenhaEncomendas(){
+  var l = encomendas.filter(function(e){ return filtro === 'todas' || (filtro === 'ativas' ? (e.estado === 'paga' || e.estado === 'pendente') : e.estado === filtro); });
+  var porEnviar = encomendas.filter(function(e){ return e.estado === 'paga'; }).length;
+  var n = document.getElementById('n-novas'); n.textContent = porEnviar; n.hidden = !porEnviar;
+  document.title = (porEnviar ? '(' + porEnviar + ') ' : '') + 'Painel — Toda Chic';
+  var d = document.getElementById('lista-enc');
+  if (!l.length) { d.innerHTML = '<div class="vazio">Nada por aqui. ' + (filtro === 'ativas' ? 'Quando entrar uma encomenda paga, aparece aqui e recebes o aviso.' : '') + '</div>'; return; }
+  d.innerHTML = l.map(function(e){
+    var txt = { pendente: 'A aguardar MB WAY — não envies', paga: 'Paga — embalar e enviar', enviada: 'Enviada', falhada: 'Pagamento falhou', cancelada: 'Cancelada', expirada: 'Expirou sem pagar' }[e.estado] || e.estado;
+    return '<article class="enc"><div><h2>#' + e.id + ' · ' + esc(e.cliente.nome) + ' <span class="estado ' + e.estado + '">' + txt + '</span></h2>' +
+      '<p class="meta">' + data(e.criada) + ' · <a href="tel:+351' + esc(e.cliente.telemovel) + '">' + esc(e.cliente.telemovel) + '</a>' + (e.cliente.email ? ' · ' + esc(e.cliente.email) : '') + '</p>' +
+      '<p class="meta">' + esc(e.cliente.morada) + ', ' + esc(e.cliente.cp) + ' ' + esc(e.cliente.localidade) + (e.cliente.nif ? ' · NIF ' + esc(e.cliente.nif) : '') + '</p>' + (e.motivo ? '<p class="alerta">' + esc(e.motivo) + '</p>' : '') + '</div>' +
+      '<div class="total">' + euro(e.total) + '</div>' +
+      '<ul class="linhas">' + e.linhas.map(function(li){ return '<li><img src="' + foto(li.foto) + '" alt=""><span>' + li.qt + ' × ' + esc(li.nome) + ' · ' + esc(li.corNome) + ' · ' + esc(li.tamNome) + '</span></li>'; }).join('') + '</ul>' +
+      '<div class="acoes">' + (e.estado === 'paga' ? '<button class="btn verde" data-id="' + e.id + '" data-estado="enviada">Marcar como enviada</button>' : '') +
+      (e.estado === 'paga' || e.estado === 'pendente' ? '<button class="btn linha" data-id="' + e.id + '" data-estado="cancelada">Cancelar</button>' : '') +
+      '<a class="btn linha" href="https://wa.me/351' + esc(e.cliente.telemovel) + '?text=' + encodeURIComponent('Olá ' + e.cliente.nome.split(' ')[0] + '! A sua encomenda Toda Chic #' + e.id + ' ') + '" target="_blank" rel="noopener">WhatsApp à cliente</a></div></article>';
+  }).join('');
+}
+document.getElementById('lista-enc').addEventListener('click', function(e){
+  var b = e.target.closest('button[data-estado]'); if (!b) return;
+  if (b.dataset.estado === 'cancelada' && !confirm('Cancelar a encomenda #' + b.dataset.id + '? Se estava paga, tens de devolver o dinheiro à cliente.')) return;
+  pede('PATCH', '/painel/encomendas/' + b.dataset.id, { estado: b.dataset.estado }).then(function(){ toast('Encomenda #' + b.dataset.id + ' ' + b.dataset.estado); carregaEncomendas(); }).catch(function(er){ toast(er.message); });
+});
+
+/* ---------- stock ---------- */
+var pecas = [], cats = [], ests = [];
+function carregaStock(){ pede('GET', '/painel/pecas').then(function(j){ pecas = j.pecas; cats = j.categorias.filter(function(c){ return !c.provisorio; }); ests = j.estacoes; desenhaStock(); preencheSelects(); }).catch(function(er){ toast(er.message); }); }
+document.getElementById('procura').addEventListener('input', desenhaStock);
+function desenhaStock(){
+  var q = document.getElementById('procura').value.trim().toLowerCase();
+  var l = pecas.filter(function(p){ return !q || (p.nome + ' ' + p.id + ' ' + p.cores.map(function(c){ return c.nome; }).join(' ')).toLowerCase().indexOf(q) >= 0; });
+  document.getElementById('lista-stock').innerHTML = l.map(function(p){
+    var f = (p.cores.find(function(c){ return c.foto; }) || {}).foto;
+    return '<article class="peca"><img src="' + foto(f) + '" alt=""><div><h2>' + esc(p.nome) + (p.ativo === false ? ' <span class="estado cancelada">retirada</span>' : '') + '</h2><p class="sub">' + euro(p.preco) + ' · ' + esc(p.tam || 'Tamanho único') + '</p>' +
+      '<div class="cores">' + p.cores.map(function(c, i){
+        var disp = Math.max(0, (c.stock || 0) - (c.reservado || 0));
+        return '<div class="cor' + (c.stock === 0 ? ' zero' : '') + '" data-peca="' + p.id + '" data-cor="' + i + '"><i style="background:' + esc(c.hex) + '"></i><span>' + esc(c.nome) + (c.reservado ? ' <span class="res">(' + c.reservado + ' reservada' + (c.reservado > 1 ? 's' : '') + ' a aguardar pagamento)</span>' : '') + '</span>' +
+          '<input type="number" min="0" step="1" value="' + (c.stock || 0) + '" aria-label="Stock de ' + esc(p.nome) + ' em ' + esc(c.nome) + '" inputmode="numeric"><button type="button" class="guardar">guardar</button></div>';
+      }).join('') + '</div></div></article>';
+  }).join('') || '<div class="vazio">Nenhuma peça com esse nome.</div>';
+}
+document.getElementById('lista-stock').addEventListener('input', function(e){ var c = e.target.closest('.cor'); if (c) c.classList.add('mudou'); });
+document.getElementById('lista-stock').addEventListener('keydown', function(e){ if (e.key === 'Enter' && e.target.tagName === 'INPUT') { e.preventDefault(); guardaStock(e.target.closest('.cor')); } });
+document.getElementById('lista-stock').addEventListener('click', function(e){ var b = e.target.closest('.guardar'); if (b) guardaStock(b.closest('.cor')); });
+function guardaStock(c){
+  var v = +c.querySelector('input').value;
+  pede('PATCH', '/painel/stock', { peca: c.dataset.peca, cor: +c.dataset.cor, stock: v }).then(function(r){ c.classList.remove('mudou'); c.classList.toggle('zero', r.stock === 0); toast('Stock guardado: ' + r.stock + (r.stock === 0 ? ' — a peça aparece esgotada no site' : '')); }).catch(function(er){ toast(er.message); });
+}
+
+/* ---------- peça nova ---------- */
+function preencheSelects(){
+  document.getElementById('n-cat').innerHTML = cats.map(function(c){ return '<option value="' + c.id + '">' + esc(c.nome) + '</option>'; }).join('');
+  document.getElementById('n-est').innerHTML = ests.map(function(e){ return '<option value="' + e.id + '"' + (e.id === 'nova' ? ' selected' : '') + '>' + esc(e.nome) + '</option>'; }).join('');
+}
+function linhaCor(){
+  var d = document.createElement('div'); d.className = 'corform';
+  d.innerHTML = '<div><label>Cor</label><input class="c-nome" placeholder="Rosa" required></div><div><label>Tom</label><input class="c-hex" type="color" value="#C25C77"></div><div><label>Stock</label><input class="c-stock" type="number" min="0" value="1" inputmode="numeric"></div><div><label>Foto</label><input class="c-foto" type="file" accept="image/*"></div><div><img class="prev" alt=""><button type="button" class="tirar">tirar</button></div>';
+  d.querySelector('.c-foto').addEventListener('change', function(){ var f = this.files[0]; if (!f) return; redimensiona(f, function(b64){ d.dataset.b64 = b64; d.querySelector('.prev').src = b64; }); });
+  d.querySelector('.tirar').addEventListener('click', function(){ if (document.querySelectorAll('.corform').length > 1) d.remove(); });
+  document.getElementById('cores-nova').appendChild(d);
+}
+function redimensiona(f, cb){ var img = new Image(); img.onload = function(){ var w = 880, h = Math.round(img.height * w / img.width); if (img.width < w) { w = img.width; h = img.height; } var c = document.createElement('canvas'); c.width = w; c.height = h; c.getContext('2d').drawImage(img, 0, 0, w, h); cb(c.toDataURL('image/jpeg', .82)); URL.revokeObjectURL(img.src); }; img.src = URL.createObjectURL(f); }
+linhaCor();
+document.getElementById('mais-cor').addEventListener('click', linhaCor);
+document.getElementById('form-nova').addEventListener('submit', function(e){
+  e.preventDefault(); var er = document.getElementById('erro-nova'); er.textContent = '';
+  var cores = [].map.call(document.querySelectorAll('.corform'), function(d){ return { nome: d.querySelector('.c-nome').value.trim(), hex: d.querySelector('.c-hex').value, stock: +d.querySelector('.c-stock').value, fotoBase64: d.dataset.b64 || null }; });
+  var tams = document.getElementById('n-tams').value.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+  var corpo = { nome: document.getElementById('n-nome').value.trim(), preco: +document.getElementById('n-preco').value, precoAntigo: document.getElementById('n-antigo').value ? +document.getElementById('n-antigo').value : null, cat: document.getElementById('n-cat').value, estacao: document.getElementById('n-est').value, tam: document.getElementById('n-tam').value.trim() || 'Tamanho único', tamanhos: tams, desc: document.getElementById('n-desc').value.trim(), cores: cores };
+  var b = e.target.querySelector('button[type=submit]'); b.disabled = true; b.textContent = 'A guardar…';
+  pede('POST', '/painel/pecas', corpo).then(function(p){ toast('"' + p.nome + '" está à venda'); e.target.reset(); document.getElementById('cores-nova').innerHTML = ''; linhaCor(); preencheSelects(); carregaStock(); })
+    .catch(function(x){ er.textContent = x.message; }).finally(function(){ b.disabled = false; b.textContent = 'Pôr à venda'; });
+});
+</script>
+</body>
+</html>

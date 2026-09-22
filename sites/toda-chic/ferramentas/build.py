@@ -31,5 +31,7 @@ dados = json.dumps(cat, ensure_ascii=False, separators=(',', ':'))
 out = src.replace('/*__FONTES__*/', fontes).replace('__CATALOGO__', dados)
 assert '__CATALOGO__' not in out and '/*__FONTES__*/' not in out
 open('index.html', 'w', encoding='utf-8').write(out)
+painel = open('painel.src.html', encoding='utf-8').read().replace('/*__FONTES__*/', fontes)
+open('painel.html', 'w', encoding='utf-8').write(painel)
 print('index.html: %.0f KB · %d peças · %d fotos' % (len(out.encode()) / 1024, len(cat['pecas']),
       len(os.listdir('media/produtos'))))

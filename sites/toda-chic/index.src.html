@@ -372,6 +372,34 @@ img,svg{display:block;max-width:100%}
 .contactos-grelha small{display:block;font-family:"Courier Prime",monospace;font-size:12px;color:var(--secundario);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem}
 
 /* ============================ rodapé ============================ */
+/* ---------- pagar ---------- */
+.pagar{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(1.6rem,4vw,3rem);align-items:start}
+.pagar>*{min-width:0}
+.form{background:var(--papel);border:1px solid var(--linha);border-radius:var(--raio);padding:clamp(1.1rem,3vw,1.8rem)}
+.form label{display:block;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--rosae);margin-bottom:.35rem}
+.form input{font:inherit;color:inherit;width:100%;padding:.75rem .85rem;border:1px solid var(--linha);border-radius:var(--raio);background:#fff}
+.form input:focus-visible{outline:2px solid var(--rosa);outline-offset:2px}
+.form .campo{margin-bottom:.95rem}
+.form .campo small{display:block;font-size:13px;color:var(--secundario);margin-top:.3rem}
+.form .duplo{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.form .erro{color:var(--saldo);font-size:14.5px;margin-top:.6rem}
+.form .btn{width:100%;margin-top:.4rem}
+.form .btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.resumo-pagar{position:sticky;top:84px}
+.resumo-pagar ul{list-style:none;display:grid;gap:.5rem;margin-bottom:.8rem}
+.resumo-pagar li{display:flex;gap:.6rem;align-items:center;font-size:15px}
+.resumo-pagar li img{width:40px;height:50px;object-fit:cover;border-radius:2px}
+.resumo-pagar li b{margin-left:auto;white-space:nowrap}
+.estado-enc{max-width:640px;margin:0 auto;text-align:center;padding:clamp(1rem,4vw,2rem) 0}
+.estado-enc .anel{width:84px;height:84px;margin:0 auto 1.2rem;border-radius:99px;border:3px solid var(--linha);border-top-color:var(--rosa);animation:roda 1.1s linear infinite}
+@keyframes roda{to{transform:rotate(360deg)}}
+.estado-enc .ok{width:84px;height:84px;margin:0 auto 1.2rem;border-radius:99px;background:#3F7A47;display:grid;place-items:center}
+.estado-enc .ok svg{width:42px;height:42px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.estado-enc .nao{width:84px;height:84px;margin:0 auto 1.2rem;border-radius:99px;background:var(--saldo);display:grid;place-items:center;color:#fff;font-size:40px;font-weight:600}
+.estado-enc h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.estado-enc p{margin:.8rem auto 0;color:var(--secundario)}
+.estado-enc .num{font-family:"Courier Prime",monospace;font-size:14px;letter-spacing:.06em;color:var(--rosae);margin-top:1rem}
+.estado-enc .acoes{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem}
 .rodape{padding:2.6rem var(--pad) 2rem;font-size:14px;color:var(--secundario);border-top:1px solid var(--linha)}
 .rodape .dentro{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:2rem}
 .rodape h3{font-family:"Jost",sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--texto);margin-bottom:.7rem}
@@ -453,6 +481,9 @@ img,svg{display:block;max-width:100%}
   .linha-saco img{width:72px}
   .linha-saco b{grid-column:2}
   .rodape .dentro{grid-template-columns:1fr}
+  .pagar{grid-template-columns:1fr}
+  .resumo-pagar{position:static}
+  .form .duplo{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -611,6 +642,8 @@ img,svg{display:block;max-width:100%}
 </section>
 <section class="seccao" id="vista-lista" hidden><div class="dentro" id="lista-dentro"></div></section>
 <section class="seccao texto" id="vista-texto" hidden><div class="dentro" id="texto-dentro"></div></section>
+<section class="seccao" id="vista-pagar" hidden><div class="dentro" id="pagar-dentro"></div></section>
+<section class="seccao" id="vista-encomenda" hidden><div class="dentro" id="encomenda-dentro"></div></section>
 
 </main>
 
@@ -644,10 +677,22 @@ img,svg{display:block;max-width:100%}
 
 
 <script>
+/* LOJA: com servidor (teste local ou Supabase+Stripe) o catálogo e o stock vêm de lá; sem servidor, usa o catálogo embutido. */
+var LOJA = { api: window.LOJA_API || '' };
 var DADOS = __CATALOGO__;
 var PECAS = DADOS.pecas, CATS = DADOS.categorias, ESTS = DADOS.estacoes;
 var EST_NOME = {}; ESTS.forEach(function(e){ EST_NOME[e.id] = e.nome; });
 var porId = {}; PECAS.forEach(function(p){ porId[p.id] = p; });
+function adotaCatalogo(d){
+  DADOS = d; PECAS = d.pecas; CATS = d.categorias; ESTS = d.estacoes;
+  porId = {}; PECAS.forEach(function(p){ porId[p.id] = p; });
+  CAT_NOME = {}; CATS.forEach(function(c){ CAT_NOME[c.id] = c.nome; });
+  EST_NOME = {}; ESTS.forEach(function(e){ EST_NOME[e.id] = e.nome; });
+}
+function pedeLoja(metodo, rota, corpo){
+  return fetch(LOJA.api + rota, { method: metodo, headers: { 'Content-Type': 'application/json' }, body: corpo ? JSON.stringify(corpo) : undefined })
+    .then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.erro || ('Erro ' + r.status)); return j; }); });
+}
 var CAT_NOME = {}; CATS.forEach(function(c){ CAT_NOME[c.id] = c.nome; });
 var WA = 'https://wa.me/351933668148';
 var CORACAO = '<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9Z"/></svg>';
@@ -655,11 +700,12 @@ var CORACAO = '<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2
 /* ---------- utilidades ---------- */
 function euro(v){ return v == null ? 'Preço a confirmar' : v.toFixed(2).replace('.', ',') + ' €'; }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function urlFoto(f){ return /^https?:/.test(f) ? f : 'media/produtos/' + f; }
 function fotoDe(p, cor){
   var c = cor != null ? p.cores[cor] : null;
-  if (c && c.foto) return 'media/produtos/' + c.foto;
-  for (var i = 0; i < p.cores.length; i++) if (p.cores[i].foto) return 'media/produtos/' + p.cores[i].foto;
-  return p.fotos && p.fotos.length ? 'media/produtos/' + p.fotos[0] : '';
+  if (c && c.foto) return urlFoto(c.foto);
+  for (var i = 0; i < p.cores.length; i++) if (p.cores[i].foto) return urlFoto(p.cores[i].foto);
+  return p.fotos && p.fotos.length ? urlFoto(p.fotos[0]) : '';
 }
 function fotosDe(p){
   var lista = [], vistas = {};
@@ -889,7 +935,7 @@ function desenhaProduto(id){
     }).join('') + (p.tam ? '<span class="tam-nota">' + esc(p.tam.replace(/^Tamanho único · /, '')) + '</span>' : '')
     : '<span class="tam-nota">Tamanho a confirmar com a loja</span>';
   var miniaturas = fotos.length > 1 ? '<div class="miniaturas">' + fotos.map(function(f, j){
-      return '<button type="button" data-f="' + f + '" aria-pressed="' + (j === 0) + '" aria-label="Fotografia ' + (j + 1) + '"><img src="media/produtos/' + f + '" alt=""></button>';
+      return '<button type="button" data-f="' + f + '" aria-pressed="' + (j === 0) + '" aria-label="Fotografia ' + (j + 1) + '"><img src="' + urlFoto(f) + '" alt=""></button>';
     }).join('') + '</div>' : '';
   var msg = encodeURIComponent('Olá! Tenho uma dúvida sobre "' + p.nome + '" (' + euro(p.preco) + ').');
   document.getElementById('produto-dentro').innerHTML =
@@ -923,7 +969,7 @@ function desenhaProduto(id){
     document.getElementById('cor-nome').textContent = p.cores[escolha.cor].nome;
     var f = fotoDe(p, escolha.cor);
     if (f && grande.getAttribute('src') !== f) { grande.style.animation = 'none'; void grande.offsetWidth; grande.style.animation = ''; grande.src = f; }
-    document.querySelectorAll('.miniaturas button').forEach(function(m){ m.setAttribute('aria-pressed', ('media/produtos/' + m.getAttribute('data-f')) === f ? 'true' : 'false'); });
+    document.querySelectorAll('.miniaturas button').forEach(function(m){ m.setAttribute('aria-pressed', urlFoto(m.getAttribute('data-f')) === f ? 'true' : 'false'); });
     atualizaStock(p);
   });
   document.getElementById('tamanhos').addEventListener('click', function(e){
@@ -937,7 +983,7 @@ function desenhaProduto(id){
       document.querySelectorAll('.miniaturas button').forEach(function(o){ o.setAttribute('aria-pressed', 'false'); });
       m.setAttribute('aria-pressed', 'true');
       grande.style.animation = 'none'; void grande.offsetWidth; grande.style.animation = '';
-      grande.src = 'media/produtos/' + m.getAttribute('data-f');
+      grande.src = urlFoto(m.getAttribute('data-f'));
     });
   });
   function juntar(botao){
@@ -988,7 +1034,7 @@ function desenhaLista(){
   d.innerHTML = '<div class="cabeca"><h2>O teu saco</h2><span class="info">' + (saco.length ? unidadesSaco() + (unidadesSaco() === 1 ? ' peça' : ' peças') : '') + '</span></div>' +
     (saco.length ? '<div class="lista" id="linhas-saco">' + linhas + '</div>' +
       '<div class="resumo"><dl><dt>Peças</dt><dd>' + euro(totalSaco()) + '</dd><dt>Portes</dt><dd>a confirmar</dd><dt class="total">Total</dt><dd class="total">' + euro(totalSaco()) + '</dd></dl>' +
-      '<button type="button" class="btn" id="pagar">Pagar com <span class="mbway">MB WAY</span></button>' +
+      (LOJA.api ? '<a class="btn" id="pagar" href="#/pagar">Pagar com <span class="mbway">MB WAY</span></a>' : '<button type="button" class="btn" id="pagar">Pagar com <span class="mbway">MB WAY</span></button>') +
       '<p class="nota">O MB WAY pede o teu número de telemóvel e confirmas o pagamento na app, em segundos.</p></div>' :
       '<div class="vazio"><strong>O saco está vazio</strong><a href="#/c/todas" style="text-decoration:underline">Ver as peças</a></div>');
   var ls = document.getElementById('linhas-saco');
@@ -999,7 +1045,7 @@ function desenhaLista(){
     guarda('tc.saco', saco); atualizaContas(); desenhaLista();
   });
   var pg = document.getElementById('pagar');
-  if (pg) pg.addEventListener('click', function(){ avisa('<span>Pré-visualização: o pagamento MB WAY entra com a loja WooCommerce.</span>'); });
+  if (pg && !LOJA.api) pg.addEventListener('click', function(){ avisa('<span>Pré-visualização: liga a loja ao servidor para pagar (ver loja/README.md).</span>'); });
   document.title = 'Saco — Toda Chic';
 }
 
@@ -1045,9 +1091,11 @@ function rota(){
   if (partes[0] === 'favoritos') return {vista: 'favoritos'};
   if (partes[0] === 'saco') return {vista: 'saco'};
   if (partes[0] === 'pagina' && partes[1]) return {vista: 'texto', slug: partes[1]};
+  if (partes[0] === 'pagar') return {vista: 'pagar'};
+  if (partes[0] === 'encomenda' && partes[1]) return {vista: 'encomenda', token: partes[1]};
   return {vista: 'inicio'};
 }
-var vistas = {inicio: 'vista-inicio', catalogo: 'vista-catalogo', produto: 'vista-produto', colecao: 'vista-colecao', favoritos: 'vista-lista', saco: 'vista-lista', texto: 'vista-texto'};
+var vistas = {inicio: 'vista-inicio', catalogo: 'vista-catalogo', produto: 'vista-produto', colecao: 'vista-colecao', favoritos: 'vista-lista', saco: 'vista-lista', texto: 'vista-texto', pagar: 'vista-pagar', encomenda: 'vista-encomenda'};
 var ultimaVista = null;
 function navega(){
   var r = rota();
@@ -1069,6 +1117,8 @@ function navega(){
     if (r.vista === 'produto') desenhaProduto(r.id);
     else if (r.vista === 'colecao') desenhaColecao(r.id);
     else if (r.vista === 'texto') desenhaTexto(r.slug);
+    else if (r.vista === 'pagar') desenhaPagar();
+    else if (r.vista === 'encomenda') desenhaEncomenda(r.token);
     else desenhaLista();
   }
   ultimaVista = r.vista;
@@ -1092,7 +1142,67 @@ function observa(){
   document.querySelectorAll('.revela:not(.visto)').forEach(function(el){ if (obs) obs.observe(el); else el.classList.add('visto'); });
 }
 
+/* ---------- pagar ---------- */
+var dadosCliente = le('tc.cliente', {});
+function desenhaPagar(){
+  var d = document.getElementById('pagar-dentro');
+  if (!LOJA.api) { location.hash = '#/saco'; return; }
+  if (!saco.length) { d.innerHTML = '<div class="vazio"><strong>O saco está vazio</strong><a href="#/c/todas" style="text-decoration:underline">Ver as peças</a></div>'; return; }
+  var c = dadosCliente;
+  var resumo = saco.map(function(l){ var p = porId[l.id]; if (!p) return ''; var cor = p.cores[l.cor] || p.cores[0]; return '<li><img src="' + fotoDe(p, l.cor) + '" alt=""><span>' + l.qt + ' × ' + esc(p.nome) + '<br><span style="color:var(--secundario);font-size:13px">' + esc(cor.nome) + '</span></span><b>' + euro(p.preco * l.qt) + '</b></li>'; }).join('');
+  d.innerHTML = '<div class="cabeca"><h2>Pagar com MB WAY</h2><span class="info">entrega em 2 a 3 dias úteis</span></div>' +
+    '<div class="pagar"><form class="form" id="form-pagar" novalidate>' +
+      '<div class="campo"><label for="c-nome">Nome</label><input id="c-nome" autocomplete="name" required value="' + esc(c.nome || '') + '"></div>' +
+      '<div class="campo"><label for="c-tel">Telemóvel</label><input id="c-tel" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="9XX XXX XXX" required value="' + esc(c.telemovel || '') + '"><small>Para o MB WAY e para te avisarmos do envio.</small></div>' +
+      '<div class="campo"><label for="c-email">E-mail (para a confirmação)</label><input id="c-email" type="email" autocomplete="email" value="' + esc(c.email || '') + '"></div>' +
+      '<div class="campo"><label for="c-morada">Morada de entrega</label><input id="c-morada" autocomplete="street-address" required value="' + esc(c.morada || '') + '"></div>' +
+      '<div class="duplo"><div class="campo"><label for="c-cp">Código postal</label><input id="c-cp" autocomplete="postal-code" placeholder="0000-000" required value="' + esc(c.cp || '') + '"></div><div class="campo"><label for="c-loc">Localidade</label><input id="c-loc" autocomplete="address-level2" required value="' + esc(c.localidade || '') + '"></div></div>' +
+      '<div class="campo"><label for="c-nif">NIF na fatura (opcional)</label><input id="c-nif" inputmode="numeric" value="' + esc(c.nif || '') + '"></div>' +
+      '<button type="submit" class="btn">Pagar ' + euro(totalSaco()) + ' com MB WAY</button><p class="erro" id="erro-pagar"></p>' +
+      '<p class="duvida" style="margin-top:1rem">Ao pagar, aceitas os <a href="#/pagina/termos">termos e condições</a> e a <a href="#/pagina/trocas">política de trocas</a>.</p></form>' +
+    '<aside class="resumo-pagar"><div class="resumo" style="margin:0;max-width:none"><ul>' + resumo + '</ul><dl><dt>Peças</dt><dd>' + euro(totalSaco()) + '</dd><dt>Portes</dt><dd>a confirmar</dd><dt class="total">Total</dt><dd class="total">' + euro(totalSaco()) + '</dd></dl><p class="nota">O stock fica reservado durante 60 minutos enquanto pagas.</p></div></aside></div>';
+  document.getElementById('form-pagar').addEventListener('submit', function(e){
+    e.preventDefault(); var er = document.getElementById('erro-pagar'); er.textContent = '';
+    var cl = { nome: v('c-nome'), telemovel: v('c-tel').replace(/\s/g, ''), email: v('c-email'), morada: v('c-morada'), cp: v('c-cp'), localidade: v('c-loc'), nif: v('c-nif') };
+    if (!cl.nome || !cl.morada || !cl.cp || !cl.localidade) { er.textContent = 'Falta preencher a morada completa.'; return; }
+    if (!/^9\d{8}$/.test(cl.telemovel)) { er.textContent = 'O telemóvel tem de ter 9 dígitos e começar por 9.'; return; }
+    guarda('tc.cliente', cl); dadosCliente = cl;
+    var b = e.target.querySelector('button'); b.disabled = true; b.textContent = 'A preparar o pagamento…';
+    pedeLoja('POST', '/encomendas', { linhas: saco.map(function(l){ return { peca: l.id, cor: l.cor, tam: l.tam, qt: l.qt }; }), cliente: cl, retorno: location.href.split('#')[0] })
+      .then(function(r){ if (r.checkoutUrl) location.href = r.checkoutUrl; else location.hash = '#/encomenda/' + r.token; })
+      .catch(function(x){ er.textContent = x.message; b.disabled = false; b.textContent = 'Pagar ' + euro(totalSaco()) + ' com MB WAY'; recarregaCatalogo(); });
+  });
+  function v(id){ return document.getElementById(id).value.trim(); }
+  document.title = 'Pagar — Toda Chic';
+}
+var pollEnc = null;
+function desenhaEncomenda(token){
+  var d = document.getElementById('encomenda-dentro'); clearInterval(pollEnc);
+  d.innerHTML = '<div class="estado-enc"><div class="anel"></div><h2>A confirmar o pagamento</h2><p>Se ainda não confirmaste na app MB WAY, faz isso agora. Esta página atualiza-se sozinha.</p></div>';
+  function ve(){
+    pedeLoja('GET', '/encomendas/' + token).then(function(e){
+      if (e.estado === 'pendente') return;
+      clearInterval(pollEnc);
+      if (e.estado === 'paga' || e.estado === 'enviada') {
+        saco = []; guarda('tc.saco', saco); atualizaContas();
+        d.innerHTML = '<div class="estado-enc"><div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></div><h2>Pagamento recebido. Obrigada!</h2><p>A tua encomenda segue em 2 a 3 dias úteis. Se tiveres dúvidas, fala connosco pelo WhatsApp.</p><p class="num">ENCOMENDA #' + e.id + ' · ' + euro(e.total) + '</p><div class="acoes"><a class="btn" href="#/c/todas">Continuar a ver peças</a><a class="btn linha" href="' + WA + '?text=' + encodeURIComponent('Olá! Sou a cliente da encomenda #' + e.id + '.') + '" target="_blank" rel="noopener">WhatsApp</a></div></div>';
+      } else {
+        d.innerHTML = '<div class="estado-enc"><div class="nao">×</div><h2>O pagamento não foi concluído</h2><p>' + esc(e.motivo || 'O pagamento não foi confirmado a tempo.') + ' As peças voltaram ao stock — podes tentar outra vez.</p><p class="num">ENCOMENDA #' + e.id + '</p><div class="acoes"><a class="btn" href="#/pagar">Tentar de novo</a><a class="btn linha" href="#/saco">Ver o saco</a></div></div>';
+        recarregaCatalogo();
+      }
+    }).catch(function(x){ clearInterval(pollEnc); d.innerHTML = '<div class="estado-enc"><div class="nao">!</div><h2>Não encontrámos a encomenda</h2><p>' + esc(x.message) + '</p><div class="acoes"><a class="btn" href="#/saco">Ver o saco</a></div></div>'; });
+  }
+  ve(); pollEnc = setInterval(ve, 3000);
+  document.title = 'Encomenda — Toda Chic';
+}
+function recarregaCatalogo(){
+  if (!LOJA.api) return Promise.resolve();
+  return pedeLoja('GET', '/catalogo').then(function(d){ adotaCatalogo(d); desenhaMenus(); desenhaVitrine(); var v = rota().vista; if (v !== 'encomenda' && v !== 'pagar') navega(); }).catch(function(){});
+}
+window.addEventListener('hashchange', function(){ if (rota().vista !== 'encomenda') clearInterval(pollEnc); });
+
 desenhaMenus(); desenhaVitrine(); atualizaContas(); navega(); observa();
+if (LOJA.api) recarregaCatalogo();
 requestAnimationFrame(function(){ setTimeout(function(){ document.body.classList.add('pronto'); }, 60); });
 </script>
 </body>

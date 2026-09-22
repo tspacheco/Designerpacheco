@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-WooCommerce (WordPress) + ifthenpay como gateway de pagamentos. Decisão do Tomás em 20/09/2026, com base em `research/loja-online-pt.md`: MB WAY nativo, ligação a software de faturação certificado pela AT, custo mensal baixo e controlo total do design.
+**Mudou a 22/09/2026:** o site de ficheiro único É a loja. Backend em **Supabase** (Postgres + Edge Functions + Storage), pagamentos por **Stripe Checkout com MB WAY**, painel da dona em `painel.html`. Tudo em `loja/` com servidor de teste local (`loja/servidor-teste.js`) que simula a API e o MB WAY. Faturação AT (Vendus/InvoiceXpress) por ligar. O WooCommerce+ifthenpay de 20/09 fica como alternativa se a Stripe não aceitar a conta dela.
 
 ## Users
 
