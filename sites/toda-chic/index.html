@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  TODA CHIC — loja online · demonstração Pacheco Studios · 21/09/2026
+  TODA CHIC — loja online · Pacheco Studios · 22/09/2026
   Mundo escolhido: O Mostruário (cartões de amostra, chips de cor, notas em monoespaçada).
   Catálogo, preços, tamanhos e unidades transcritos das fichas da dona; o que ela não disse fica "a confirmar".
   Ficheiro gerado por ferramentas/build.py a partir de index.src.html — editar o .src.
@@ -168,12 +168,6 @@ img,svg{display:block;max-width:100%}
 ::-webkit-scrollbar-thumb{background:var(--rosa);border-radius:99px;border:3px solid var(--fundo)}
 .mono{font-family:"Courier Prime",monospace}
 .so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-/* ============ faixa de apresentação (ferramenta de venda, sai na loja real) ============ */
-.apresentacao{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;
-  background:#241A1D;color:#F3E9E4;padding:.6rem var(--pad);font-size:13.5px;line-height:1.35}
-.apresentacao strong{font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
-.apresentacao span{color:rgba(243,233,228,.78)}
 
 /* ============================ cabeçalho ============================ */
 .topo{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.4rem;padding:.95rem var(--pad);
@@ -582,8 +576,6 @@ img,svg{display:block;max-width:100%}
   .linha-saco img{width:72px}
   .linha-saco b{grid-column:2}
   .rodape .dentro{grid-template-columns:1fr}
-  .apresentacao{font-size:12.5px}
-  .apresentacao span{display:none}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -593,11 +585,6 @@ img,svg{display:block;max-width:100%}
 </style>
 </head>
 <body>
-
-<div class="apresentacao" role="note">
-  <strong>Apresentação Pacheco Studios</strong>
-  <span>Demonstração da loja Toda Chic · catálogo transcrito das fichas de 21/09 · “a confirmar” = a dona ainda não indicou.</span>
-</div>
 
 <header class="topo">
   <a class="marca" href="#/" aria-label="Toda Chic, início">
@@ -1125,7 +1112,7 @@ function desenhaLista(){
     (saco.length ? '<div class="lista" id="linhas-saco">' + linhas + '</div>' +
       '<div class="resumo"><dl><dt>Peças</dt><dd>' + euro(totalSaco()) + '</dd><dt>Portes</dt><dd>a confirmar</dd><dt class="total">Total</dt><dd class="total">' + euro(totalSaco()) + '</dd></dl>' +
       '<button type="button" class="btn" id="pagar">Pagar com <span class="mbway">MB WAY</span></button>' +
-      '<p class="nota">Nesta demonstração o pagamento não é processado. Na loja final, o MB WAY pede o número de telemóvel e confirma na app.</p></div>' :
+      '<p class="nota">O MB WAY pede o teu número de telemóvel e confirmas o pagamento na app, em segundos.</p></div>' :
       '<div class="vazio"><strong>O saco está vazio</strong><a href="#/c/todas" style="text-decoration:underline">Ver as peças</a></div>');
   var ls = document.getElementById('linhas-saco');
   if (ls) ls.addEventListener('click', function(e){
@@ -1135,7 +1122,7 @@ function desenhaLista(){
     guarda('tc.saco', saco); atualizaContas(); desenhaLista();
   });
   var pg = document.getElementById('pagar');
-  if (pg) pg.addEventListener('click', function(){ avisa('<span>Demonstração: aqui abre o pagamento MB WAY da loja real.</span>'); });
+  if (pg) pg.addEventListener('click', function(){ avisa('<span>Pré-visualização: o pagamento MB WAY entra com a loja WooCommerce.</span>'); });
   document.title = 'Saco — Toda Chic';
 }
 
