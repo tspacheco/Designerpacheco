@@ -151,7 +151,7 @@ label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-tra
 .aba[aria-selected="true"]{color:var(--texto);background:var(--papel);border:1px solid var(--linha);border-bottom-color:var(--papel);margin-bottom:-1px}
 .aba .n{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:99px;background:var(--rosa-acao);color:#fff;font-size:12px;font-weight:600;margin-left:.4rem;padding:0 5px}
 main{padding:1.4rem var(--pad) 4rem;max-width:1100px;margin:0 auto}
-.painel[hidden]{display:none}
+.painel[hidden],.entrar[hidden]{display:none}
 .vazio{padding:2.4rem;text-align:center;color:var(--secundario);border:1px dashed var(--linha);border-radius:3px}
 .lista{display:grid;gap:.8rem}
 .enc{background:var(--papel);border:1px solid var(--linha);border-radius:3px;padding:1rem;display:grid;grid-template-columns:1fr auto;gap:.6rem 1rem}
@@ -277,7 +277,7 @@ function toast(m){ var t = document.getElementById('toast'); t.textContent = m; 
 function euro(v){ return v == null ? '—' : v.toFixed(2).replace('.', ',') + ' €'; }
 function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 function data(iso){ var d = new Date(iso); return d.toLocaleDateString('pt-PT') + ' ' + d.toLocaleTimeString('pt-PT', {hour: '2-digit', minute: '2-digit'}); }
-function foto(f){ return f ? (/^https?:/.test(f) ? f : 'media/produtos/' + f) : ''; }
+function foto(f){ return f ? (/^(https?:|data:)/.test(f) ? f : 'media/produtos/' + f) : ''; }
 function pede(metodo, rota, corpo){
   return fetch(API + rota, { method: metodo, headers: { 'Content-Type': 'application/json', 'X-Painel': senha || '' }, body: corpo ? JSON.stringify(corpo) : undefined })
     .then(function(r){ return r.json().catch(function(){ throw new Error(SEM_SERVIDOR); }).then(function(j){ if (!r.ok) throw new Error(j.erro || ('Erro ' + r.status)); return j; }); }, function(){ throw new Error(SEM_SERVIDOR); });

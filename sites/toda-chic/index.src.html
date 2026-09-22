@@ -399,7 +399,7 @@ img,svg{display:block;max-width:100%}
 .estado-enc h2{font-size:clamp(1.8rem,4vw,2.6rem)}
 .estado-enc p{margin:.8rem auto 0;color:var(--secundario)}
 .estado-enc .num{font-family:"Courier Prime",monospace;font-size:14px;letter-spacing:.06em;color:var(--rosae);margin-top:1rem}
-.estado-enc .acoes{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem}
+.estado-enc .acoes-enc{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem}
 .rodape{padding:2.6rem var(--pad) 2rem;font-size:14px;color:var(--secundario);border-top:1px solid var(--linha)}
 .rodape .dentro{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:2rem}
 .rodape h3{font-family:"Jost",sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--texto);margin-bottom:.7rem}
@@ -700,7 +700,7 @@ var CORACAO = '<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2
 /* ---------- utilidades ---------- */
 function euro(v){ return v == null ? 'Preço a confirmar' : v.toFixed(2).replace('.', ',') + ' €'; }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-function urlFoto(f){ return /^https?:/.test(f) ? f : 'media/produtos/' + f; }
+function urlFoto(f){ return /^(https?:|data:)/.test(f) ? f : 'media/produtos/' + f; }
 function fotoDe(p, cor){
   var c = cor != null ? p.cores[cor] : null;
   if (c && c.foto) return urlFoto(c.foto);
@@ -1185,12 +1185,12 @@ function desenhaEncomenda(token){
       clearInterval(pollEnc);
       if (e.estado === 'paga' || e.estado === 'enviada') {
         saco = []; guarda('tc.saco', saco); atualizaContas();
-        d.innerHTML = '<div class="estado-enc"><div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></div><h2>Pagamento recebido. Obrigada!</h2><p>A tua encomenda segue em 2 a 3 dias úteis. Se tiveres dúvidas, fala connosco pelo WhatsApp.</p><p class="num">ENCOMENDA #' + e.id + ' · ' + euro(e.total) + '</p><div class="acoes"><a class="btn" href="#/c/todas">Continuar a ver peças</a><a class="btn linha" href="' + WA + '?text=' + encodeURIComponent('Olá! Sou a cliente da encomenda #' + e.id + '.') + '" target="_blank" rel="noopener">WhatsApp</a></div></div>';
+        d.innerHTML = '<div class="estado-enc"><div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></div><h2>Pagamento recebido. Obrigada!</h2><p>A tua encomenda segue em 2 a 3 dias úteis. Se tiveres dúvidas, fala connosco pelo WhatsApp.</p><p class="num">ENCOMENDA #' + e.id + ' · ' + euro(e.total) + '</p><div class="acoes-enc"><a class="btn" href="#/c/todas">Continuar a ver peças</a><a class="btn linha" href="' + WA + '?text=' + encodeURIComponent('Olá! Sou a cliente da encomenda #' + e.id + '.') + '" target="_blank" rel="noopener">WhatsApp</a></div></div>';
       } else {
-        d.innerHTML = '<div class="estado-enc"><div class="nao">×</div><h2>O pagamento não foi concluído</h2><p>' + esc(e.motivo || 'O pagamento não foi confirmado a tempo.') + ' As peças voltaram ao stock — podes tentar outra vez.</p><p class="num">ENCOMENDA #' + e.id + '</p><div class="acoes"><a class="btn" href="#/pagar">Tentar de novo</a><a class="btn linha" href="#/saco">Ver o saco</a></div></div>';
+        d.innerHTML = '<div class="estado-enc"><div class="nao">×</div><h2>O pagamento não foi concluído</h2><p>' + esc(e.motivo || 'O pagamento não foi confirmado a tempo.') + ' As peças voltaram ao stock — podes tentar outra vez.</p><p class="num">ENCOMENDA #' + e.id + '</p><div class="acoes-enc"><a class="btn" href="#/pagar">Tentar de novo</a><a class="btn linha" href="#/saco">Ver o saco</a></div></div>';
         recarregaCatalogo();
       }
-    }).catch(function(x){ clearInterval(pollEnc); d.innerHTML = '<div class="estado-enc"><div class="nao">!</div><h2>Não encontrámos a encomenda</h2><p>' + esc(x.message) + '</p><div class="acoes"><a class="btn" href="#/saco">Ver o saco</a></div></div>'; });
+    }).catch(function(x){ clearInterval(pollEnc); d.innerHTML = '<div class="estado-enc"><div class="nao">!</div><h2>Não encontrámos a encomenda</h2><p>' + esc(x.message) + '</p><div class="acoes-enc"><a class="btn" href="#/saco">Ver o saco</a></div></div>'; });
   }
   ve(); pollEnc = setInterval(ve, 3000);
   document.title = 'Encomenda — Toda Chic';
