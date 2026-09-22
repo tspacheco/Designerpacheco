@@ -14,8 +14,8 @@ CFG = dict(
     min_por_tentativa=2,          # estimativa, assinalada no documento
     setup="2700 €",
     setup_nota="IVA incluído",
-    mensal="500 €",
-    mensal_nota="+ IVA (115 €) = 615 €",
+    mensal="400 €",
+    mensal_nota="+ IVA (92 €) = 492 €",
     mensalidade_ginasio=40,     # € por mensalidade de sócio, em média (dado do Tomás)
     piloto_dias="30",
     email="tspacheco26@gmail.com",
@@ -433,11 +433,11 @@ pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legen
 </ol>
 <h3 class="mt">Perguntas que costumam surgir</h3>
 <div class="faq">
-  <div><b>E quem não tem WhatsApp?</b><p>Fica na lista de chamadas como hoje. O sistema marca-o para a receção não perder tempo a perceber porque não respondeu.</p></div>
-  <div><b>Isto não parece spam?</b><p>Não: sai do número verificado do ginásio, com modelos aprovados pela Meta, com nome próprio, e com saída num só toque. Três mensagens em sete dias, depois silêncio.</p></div>
-  <div><b>Quem escreve as mensagens?</b><p>Nós, com a equipa do ginásio. Nada entra no sistema sem ser lido e aprovado pela casa.</p></div>
-  <div><b>E se o software do ginásio não exportar dados?</b><p>Arranca-se com leads e aulas experimentais numa folha simples que a receção já preenche. Os fluxos de inativos e pagamentos entram quando houver exportação.</p></div>
+  <div><b>E quem não tem WhatsApp?</b><p>Fica na lista de chamadas como hoje, já marcado, para a receção não perder tempo.</p></div>
+  <div><b>Isto não parece spam?</b><p>Não: número verificado do ginásio, modelos aprovados pela Meta, nome próprio, saída num só toque. Três mensagens em sete dias, depois silêncio.</p></div>
+  <div><b>E se o software do ginásio não exportar dados?</b><p>Arranca-se com leads e aulas experimentais numa folha simples. Inativos e pagamentos entram quando houver exportação.</p></div>
 </div>
+<p class="fine next">Mais tarde, o mesmo motor pode receber um segundo fluxo: aquisição de novos clientes. Depois do piloto.</p>
 <div class="callout final">
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span><br><span class="pres">Assistência presencial: um subdiretor da Pacheco Studios desloca-se ao ginásio sempre que for necessário.</span></div>
   <div class="r"><span class="mono">{esc(C["email"])}</span></div>
@@ -530,10 +530,11 @@ h3{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15.5pt;c
 .callout.final .mono{{color:var(--gold);font-size:9.5pt}}
 .tbl.cmp td{{padding:8px 6px;font-size:9.8pt}}
 .tbl.cmp td:last-child{{white-space:nowrap;color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:9pt}}
+.fine.next{{margin:8px 0 0;color:var(--navy)}}
 .faq{{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:2px}}
 .faq b{{display:block;font-size:10.4pt;color:var(--navy);margin-bottom:2px}}
 .faq p{{font-size:9.5pt;color:#3A3F4B;line-height:1.4}}
-.callout.final{{margin-top:12px;padding:11px 16px}}
+.callout.final{{margin-top:8px;padding:11px 16px}}
 /* capa */
 .cover{{background:var(--navy);color:#fff;padding:18mm 18mm 16mm;display:flex;flex-direction:column}}
 .cover-top{{display:flex;justify-content:space-between;align-items:baseline}}

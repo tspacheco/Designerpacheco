@@ -72,7 +72,7 @@ def calc(variante, r=None):
 H, A, Bv = calc("hoje"), calc("A"), calc("B")
 def f0(x): return f"{x:.0f}".replace("-","−")
 MG = B.CFG["mensalidade_ginasio"]
-MENSAL_IVA = 500 * 1.23
+MENSAL_IVA = 400 * 1.23
 def eur(x, sign=False, neg=False):
     v = f"{abs(x):,.0f}".replace(",", " ")
     if neg: return f"− {v} €"
@@ -230,7 +230,7 @@ pages.append(page("", h("Números previstos", "100 chamadas por dia, em cada var
     <tr class="sep"><td class="lab">Resultados por hora de receção</td><td>{f1(H["por_hora"])}</td><td>{f1(A["por_hora"])}</td><td class="hl">{f1(Bv["por_hora"])}</td></tr>
     <tr class="gain"><td class="lab">Mensalidades ganhas por mês, a {MG} € cada</td><td>{eur(H["mes"]*MG)}</td><td>{eur(A["mes"]*MG)}</td><td class="hl">{eur(Bv["mes"]*MG)}</td></tr>
     <tr class="gain"><td class="lab">Ganho face a hoje, por mês</td><td>—</td><td>{eur((A["mes"]-H["mes"])*MG, sign=True)}</td><td class="hl">{eur((Bv["mes"]-H["mes"])*MG, sign=True)}</td></tr>
-    <tr class="gain"><td class="lab">Mensalidade do sistema (500 € + 115 € IVA = 615 €)</td><td>—</td><td>{eur(MENSAL_IVA, sign=False, neg=True)}</td><td class="hl">{eur(MENSAL_IVA, sign=False, neg=True)}</td></tr>
+    <tr class="gain"><td class="lab">Mensalidade do sistema (400 € + 92 € IVA = 492 €)</td><td>—</td><td>{eur(MENSAL_IVA, sign=False, neg=True)}</td><td class="hl">{eur(MENSAL_IVA, sign=False, neg=True)}</td></tr>
     <tr class="gain sep"><td class="lab">Ganho líquido por mês, num ginásio</td><td>—</td><td>{eur((A["mes"]-H["mes"])*MG-MENSAL_IVA, sign=True)}</td><td class="hl">{eur((Bv["mes"]-H["mes"])*MG-MENSAL_IVA, sign=True)}</td></tr>
   </tbody>
 </table>
@@ -266,12 +266,13 @@ pages.append(page("", h("Investimento e escolha", "Um sistema para todos os Lege
   <div class="opt"><span class="cb"></span><div><b>Variante B</b><span>Mensagem primeiro. A receção liga só a quem respondeu.</span></div></div>
   <div class="opt wide"><span class="cb"></span><div><b>Aplicável em todos os Be Legend Portugal</b><span>Olhão, Faro e Lisboa, com a mesma variante e a mesma mensalidade.</span></div></div>
 </div>
+<p class="fine next">Mais tarde, o mesmo motor pode receber um segundo fluxo: aquisição de novos clientes. Depois do piloto.</p>
 <div class="sign"><div><span class="mono">nome</span><i></i></div><div><span class="mono">data</span><i></i></div><div><span class="mono">assinatura</span><i></i></div></div>
 <div class="callout final">
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span><br><span class="pres">Assistência presencial: um subdiretor da Pacheco Studios desloca-se ao ginásio sempre que for necessário.</span></div>
   <div class="r"><span class="mono">{esc(C["email"])}</span></div>
 </div>
-<p class="fine">O esquema completo, com o diagrama do fluxo, as mensagens exemplo e a lista da receção, está no documento “Follow-up &amp; Recuperação de Clientes” que acompanha este resumo.</p>
+<p class="fine">O esquema completo está no documento “Follow-up &amp; Recuperação de Clientes” que acompanha este resumo.</p>
 ''', 6))
 
 EXTRA = f"""
@@ -347,6 +348,7 @@ h2.big{{font-size:44pt;margin-bottom:10px}}
 .sens b{{color:var(--navy);margin-right:4px}}
 .sens span{{font-family:'JetBrains Mono',monospace;font-size:8.8pt;color:var(--navy);white-space:nowrap}}
 .sens i{{font-style:normal;color:var(--gold)}}
+.fine.next{{margin:10px 0 0;color:var(--navy)}}
 .choice{{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}}
 .opt{{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--navy);border-radius:10px;padding:10px 12px}}
 .opt.wide{{grid-column:1/3;background:var(--paper)}}
