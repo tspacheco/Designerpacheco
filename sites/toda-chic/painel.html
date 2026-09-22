@@ -280,8 +280,10 @@ function data(iso){ var d = new Date(iso); return d.toLocaleDateString('pt-PT') 
 function foto(f){ return f ? (/^https?:/.test(f) ? f : 'media/produtos/' + f) : ''; }
 function pede(metodo, rota, corpo){
   return fetch(API + rota, { method: metodo, headers: { 'Content-Type': 'application/json', 'X-Painel': senha || '' }, body: corpo ? JSON.stringify(corpo) : undefined })
-    .then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.erro || ('Erro ' + r.status)); return j; }); });
+    .then(function(r){ return r.json().catch(function(){ throw new Error(SEM_SERVIDOR); }).then(function(j){ if (!r.ok) throw new Error(j.erro || ('Erro ' + r.status)); return j; }); }, function(){ throw new Error(SEM_SERVIDOR); });
 }
+var SEM_SERVIDOR = 'O painel não está ligado a nenhum servidor. Para testar no PC: node loja/servidor-teste.js e abrir localhost:8080/painel.html. Em produção: a linha window.LOJA_API no ficheiro (ver loja/README.md).';
+fetch(API + '/catalogo').then(function(r){ return r.json(); }).catch(function(){ var p = document.getElementById('erro-entrar'); if (!p.textContent) p.textContent = SEM_SERVIDOR; });
 
 /* ---------- entrar ---------- */
 document.getElementById('form-entrar').addEventListener('submit', function(e){
