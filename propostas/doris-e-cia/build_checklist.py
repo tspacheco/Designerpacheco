@@ -231,8 +231,9 @@ EXTRA = f"""
 .callout.final .r{{text-align:right;white-space:nowrap}}
 h1{{font-size:60pt}}
 """
-doc = f"""<!DOCTYPE html>
+if __name__ == "__main__":
+  doc = f"""<!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="utf-8"><title>Plano de impulso · {esc(C["cliente"])}</title>
 <style>{B.CSS}{EXTRA}</style></head><body>{''.join(pages)}</body></html>"""
-(HERE / "checklist.html").write_text(doc, encoding="utf-8")
-print("checklist.html", len(doc)//1024, "KB")
+  (HERE / "checklist.html").write_text(doc, encoding="utf-8")
+  print("checklist.html", len(doc)//1024, "KB")
