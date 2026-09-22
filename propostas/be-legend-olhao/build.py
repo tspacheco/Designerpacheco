@@ -289,7 +289,7 @@ pages.append(page("", h("02 · O princípio", "Ligar só a quem responde.") + f'
 ''', 3))
 
 # 4 — diagrama
-pages.append(page("diagram", h("03 · O esquema", "Como o fluxo corre, passo a passo.", "Desenho do fluxo tal como fica montado no n8n. Cada caixa é um passo automático; as caixas verdes são os únicos momentos em que uma pessoa entra.") + f'<div class="dg">{diagram()}</div>', 4))
+pages.append(page("diagram", h("03 · O esquema", "Como o fluxo corre, passo a passo.", "Desenho do fluxo tal como fica montado no motor de fluxo da Pacheco Studios. Cada caixa é um passo automático; as caixas verdes são os únicos momentos em que uma pessoa entra.") + f'<div class="dg">{diagram()}</div>', 4))
 
 # 5 — os 5 fluxos
 flows = [
@@ -369,7 +369,7 @@ pages.append(page("", h("07 · Tecnologia e custos de funcionamento", "Peças co
 <table class="tbl stack">
   <thead><tr><th>Peça</th><th>O que faz</th><th>Porquê esta</th></tr></thead>
   <tbody>
-    <tr><td><b>n8n</b><br><span class="small">motor do fluxo</span></td><td>Corre o esquema da página 4: lê contactos, decide, envia, espera, interpreta, regista.</td><td>Custo fixo por mês, não cresce com o número de contactos. Alojado na Europa. Tudo fica visível num só ecrã, como no desenho.</td></tr>
+    <tr><td><b>Motor de fluxo</b><br><span class="small">construído e gerido pela Pacheco Studios</span></td><td>Corre o esquema da página 4: lê contactos, decide, envia, espera, interpreta, regista.</td><td>Custo fixo por mês, não cresce com o número de contactos. Alojado na Europa, em servidores nossos. O ginásio não tem de instalar nem gerir nada.</td></tr>
     <tr><td><b>WhatsApp Business API</b><br><span class="small">canal oficial da Meta</span></td><td>Envia as mensagens a partir do número do ginásio, com selo de conta verificada.</td><td>É a via legal e estável. Sem apps de terceiros nem números pessoais, que a Meta bloqueia.</td></tr>
     <tr><td><b>Software do ginásio</b><br><span class="small">a confirmar</span></td><td>Origem das entradas, pagamentos e datas de plano.</td><td>Liga-se por exportação ou API. Se não exportar, uma folha partilhada faz o papel para os leads e aulas experimentais.</td></tr>
     <tr><td><b>Folha / painel</b><br><span class="small">Google Sheets ou Notion</span></td><td>A lista do dia da receção e o painel semanal.</td><td>Não obriga a aprender nada. Abre no telemóvel.</td></tr>
@@ -379,7 +379,7 @@ pages.append(page("", h("07 · Tecnologia e custos de funcionamento", "Peças co
   <div>
     <h3>Custos de funcionamento</h3>
     <table class="tbl mini">
-      <tr><td>n8n (servidor, alojado na UE)</td><td class="r">incluído na mensalidade</td></tr>
+      <tr><td>Motor de fluxo (servidor, alojado na UE)</td><td class="r">incluído na mensalidade</td></tr>
       <tr><td>WhatsApp (Meta cobra por conversa)</td><td class="r">cêntimos por conversa; a orçamentar com o volume real</td></tr>
       <tr><td>Folha / painel</td><td class="r">incluído</td></tr>
     </table>
@@ -395,7 +395,7 @@ pages.append(page("", h("07 · Tecnologia e custos de funcionamento", "Peças co
     </ul>
   </div>
 </div>
-<div class="note alt"><b>E o Make?</b> O mesmo esquema monta-se em Make. Recomendo n8n porque o Make cobra por operação e, com {esc(C["chamadas_dia"])} contactos por dia, o custo dispara. No n8n o preço é o mesmo com 50 ou com 500 contactos.</div>
+<div class="note alt"><b>O motor de fluxo é trabalho nosso.</b> É montado, alojado e vigiado pela Pacheco Studios; o ginásio só vê o resultado: a lista da receção e o painel. Com {esc(C["chamadas_dia"])} contactos por dia, o custo não muda: é o mesmo com 50 ou com 500.</div>
 ''', 8))
 
 # 9 — investimento e próximos passos
@@ -405,7 +405,7 @@ pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legen
     <span class="mono">montagem · pagamento único</span>
     <b>{esc(C["setup"])} <small>{esc(C["setup_nota"])}</small></b>
     <ul class="ul tight">
-      <li>Desenho e construção dos 5 fluxos no n8n, preparados para os três ginásios</li>
+      <li>Desenho e construção dos 5 fluxos no motor de fluxo, preparados para os três ginásios</li>
       <li>Escrita das mensagens com a equipa e registo dos modelos na Meta</li>
       <li>Ligação ao software do ginásio ou folha de contactos</li>
       <li>Lista da receção e painel semanal</li>
