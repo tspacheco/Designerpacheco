@@ -38,7 +38,7 @@ node loja/servidor-teste.js
 
 Abre:
 - **Loja:** http://localhost:8080 — escolhe uma peça → saco → *Pagar com MB WAY* → preenche → *Pagar*. Ao fim de 6 segundos aparece "Pagamento recebido" e o stock dessa cor desceu.
-- **Painel:** http://localhost:8080/painel.html — palavra-passe `todachic`. A encomenda está em "A tratar"; marca *enviada*; muda um stock; põe uma peça nova com foto e vê-a aparecer na loja.
+- **Painel:** http://localhost:8080/painel.html — palavra-passe `123` (só no teste; em produção é o segredo `PAINEL_SENHA`). A encomenda está em "A tratar"; marca *enviada*; muda um stock; põe uma peça nova com foto e vê-a aparecer na loja.
 - Para testar um pagamento **falhado**, usa um telemóvel terminado em `0` (ex.: 912345670): a encomenda fica "falhada" e o stock volta.
 
 Os dados ficam em `loja/dados/loja.json`; apaga-o para voltar ao catálogo inicial. Isto é exatamente o comportamento que a produção vai ter — só troca a simulação pela Stripe.

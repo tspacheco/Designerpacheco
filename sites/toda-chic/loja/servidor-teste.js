@@ -11,7 +11,7 @@ const http = require('http'), fs = require('fs'), path = require('path'), crypto
 const RAIZ = path.resolve(__dirname, '..');
 const DADOS = path.join(__dirname, 'dados', 'loja.json');
 const PORTA = +process.env.PORTA || 8080;
-const SENHA_PAINEL = process.env.PAINEL_SENHA || 'todachic';          // troca em produção
+const SENHA_PAINEL = process.env.PAINEL_SENHA || '123';          // troca em produção
 const RESERVA_MIN = 60;                                              // minutos que uma encomenda pendente segura o stock
 const MIME = {'.html':'text/html; charset=utf-8','.js':'text/javascript','.json':'application/json','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.txt':'text/plain; charset=utf-8','.mp4':'video/mp4','.css':'text/css'};
 
