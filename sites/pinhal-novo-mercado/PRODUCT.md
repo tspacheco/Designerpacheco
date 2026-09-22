@@ -31,7 +31,8 @@ Não é "mais um mini-mercado". É o único sítio de Pinhal Novo onde se compra
 
 ## Capabilities and Constraints
 
-- Uma página, duas "portas" (mercado / restaurante) com navegação cruzada entre elas e uma secção de ligação "do prato à prateleira".
+- **Decisão do Tomás (22/09, tarde): dois sites separados.** Este é o do mercado; o do restaurante está em `sites/pinhal-novo-restaurant/`. Cada um aponta para o outro ("a porta ao lado").
+- Mercado: herói em vídeo generativo ("Nuvens de especiarias", canvas determinístico, exportado em MP4 em `media/video/`) e uma secção por família — Mercearia, Drogaria, Telemóvel, Bebidas e snacks, Ao balcão — cada uma com o seu mundo de cor e a sua animação.
 - PT-PT com alternância EN.
 - Sem encomendas online: o restaurante já vende pela Glovo; o site aponta para lá e para o telefone.
 - **HONEST-DATA:** telefone, horário, morada exata, rating, preços e carta → **a confirmar** (Google Maps bloqueado nesta sessão; restaurante sem ficha). Os exemplos de produtos nas prateleiras (arroz basmati, lentilhas, farinha atta, especiarias, capas e cabos) são **típicos de uma mercearia indiana, a confirmar com o dono** antes de vender.

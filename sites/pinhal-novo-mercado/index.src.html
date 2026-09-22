@@ -1,38 +1,30 @@
 <!DOCTYPE html>
 <!--
-  PINHAL NOVO MERCADO AND RIA + PINHAL NOVO RESTAURANT — demo Pacheco Studios · 22/09/2026
-  Uma fachada, duas portas: o mercado e o restaurante do mesmo dono, lado a lado.
-  Assinatura: as portas abrem-se ao carregar; a ligação "do prato à prateleira" atravessa a parede.
-  Dados não confirmados estão marcados "a confirmar" (regra HONEST-DATA).
-  Gerado por build.py a partir de index.src.html — editar o .src.
+  PINHAL NOVO MERCADO AND RIA — demo Pacheco Studios · 22/09/2026
+  Mercearia · Drogaria · Telemóvel · Bebidas e snacks · Pinhal Novo (Palmela)
+  Herói: "Nuvens de especiarias" — vídeo generativo em canvas (açafrão, pimentão, cardamomo, grãos de basmati),
+  determinístico: a mesma cena exporta-se em MP4 com video.js. Cada secção tem o seu mundo e a sua animação.
+  Dados não confirmados estão marcados "a confirmar" (HONEST-DATA). Gerado por build.py a partir de index.src.html.
 -->
 <html lang="pt-PT" data-lang="pt">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pinhal Novo Mercado and Ria · Pinhal Novo Restaurant</title>
-<meta name="description" content="Mercearia, drogaria e acessórios de telemóvel numa porta; comida indiana, kebab e pizza na porta ao lado. Pinhal Novo Mercado and Ria e Pinhal Novo Restaurant, do mesmo dono, em Pinhal Novo.">
-<meta name="theme-color" content="#F4EBDD">
-<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="4" y="12" width="25" height="44" rx="2" fill="%23A65A0A"/><rect x="35" y="12" width="25" height="44" rx="2" fill="%23C4202B"/><rect x="4" y="4" width="56" height="6" fill="%232B1B14"/></svg>'>
+<title>Pinhal Novo Mercado and Ria — Mercearia, drogaria e telemóvel em Pinhal Novo</title>
+<meta name="description" content="Pinhal Novo Mercado and Ria: mercearia indiana e do dia a dia, drogaria, acessórios de telemóvel, bebidas e snacks. Quase tudo o que uma casa precisa, em Pinhal Novo. Ao lado do Pinhal Novo Restaurant.">
+<meta name="theme-color" content="#1A120E">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="%238A4A06"/><path d="M12 24h40M12 36h40M12 48h40" stroke="%23F4EBDD" stroke-width="4"/><rect x="18" y="14" width="8" height="10" rx="2" fill="%23F4EBDD"/><rect x="36" y="26" width="10" height="10" rx="2" fill="%23F4EBDD"/><rect x="22" y="38" width="12" height="10" rx="2" fill="%23F4EBDD"/></svg>'>
 <script type="application/ld+json">
-[{"@context":"https://schema.org","@type":"GroceryStore","name":"Pinhal Novo Mercado and Ria","address":{"@type":"PostalAddress","addressLocality":"Pinhal Novo","addressCountry":"PT"},"geo":{"@type":"GeoCoordinates","latitude":38.632305,"longitude":-8.9147957},"hasMap":"https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y"},
- {"@context":"https://schema.org","@type":"Restaurant","name":"Pinhal Novo Restaurant","servesCuisine":["Indian","Kebab","Pizza"],"address":{"@type":"PostalAddress","addressLocality":"Pinhal Novo","addressCountry":"PT"}}]
+{"@context":"https://schema.org","@type":"GroceryStore","name":"Pinhal Novo Mercado and Ria","address":{"@type":"PostalAddress","addressLocality":"Pinhal Novo","addressRegion":"Setúbal","addressCountry":"PT"},"geo":{"@type":"GeoCoordinates","latitude":38.632305,"longitude":-8.9147957},"hasMap":"https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y"}
 </script>
 <style>/*__FONTES__*/</style>
 <style>
 :root{
-  --parede:#F4EBDD;          /* reboco creme da fachada */
-  --parede-2:#EADDC7;
-  --pedra:#D6C7AD;           /* molduras de pedra */
-  --tinta:#2B1B14;
-  --tinta-2:#5E4A3C;         /* texto secundário: 6.9:1 sobre a parede */
-  --vermelho:#C4202B;        /* o letreiro do restaurante — 5.9:1 com branco */
-  --vermelho-2:#8F1720;
-  --acafrao:#8A4A06;         /* o mercado — 5.0:1 sobre a parede, 6.4:1 com branco */
-  --acafrao-2:#D98A1F;
-  --cardamomo:#3F6B3A;       /* 6.2:1 com branco */
-  --noite:#2A1414;
-  --luz:#FBF5EA;
+  --parede:#F4EBDD; --parede-2:#EADDC7; --pedra:#D6C7AD;
+  --tinta:#2B1B14; --tinta-2:#5E4A3C;
+  --acafrao:#8A4A06; --acafrao-2:#D98A1F; --acafrao-3:#F3C64A;
+  --vermelho:#C4202B; --cardamomo:#3F6B3A;
+  --noite:#1A120E; --luz:#FBF5EA;
   --ease:cubic-bezier(.16,1,.3,1);
   --pad:clamp(1.15rem,4vw,3.6rem);
 }
@@ -44,179 +36,148 @@ p{max-width:62ch}
 a{color:inherit;text-decoration:none}
 button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
 img,svg{display:block;max-width:100%}
-[hidden]{display:none!important}
-::selection{background:var(--acafrao-2);color:var(--tinta)}
+::selection{background:var(--acafrao-3);color:var(--tinta)}
 :focus-visible{outline:2px solid var(--vermelho);outline-offset:3px;border-radius:2px}
 ::-webkit-scrollbar{width:11px}::-webkit-scrollbar-track{background:var(--parede)}
 ::-webkit-scrollbar-thumb{background:var(--acafrao);border-radius:99px;border:3px solid var(--parede)}
 html[data-lang="pt"] [lang="en"]{display:none}
 html[data-lang="en"] [lang="pt"]{display:none}
-html[data-lang="en"] .frase-pt{display:none}
-.mono{font-variant-numeric:tabular-nums}
 
-/* ---------- barra de demonstração (sai na venda) ---------- */
-.demo{background:var(--tinta);color:#EFE4D2;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:.55rem var(--pad);display:flex;gap:1rem;flex-wrap:wrap}
-.demo span{opacity:.75;text-transform:none;letter-spacing:0}
+.demo{background:var(--tinta);color:#EFE4D2;font-size:13px;letter-spacing:.06em;padding:.55rem var(--pad);display:flex;gap:1rem;flex-wrap:wrap}
+.demo strong{text-transform:uppercase}.demo span{opacity:.75}
 
 /* ---------- topo ---------- */
-.topo{position:sticky;top:0;z-index:40;background:var(--parede);border-bottom:1px solid var(--pedra);display:flex;align-items:center;gap:1.2rem;padding:.8rem var(--pad)}
-.marca{display:flex;align-items:center;gap:.7rem;font-weight:700;letter-spacing:.02em;font-size:15px;line-height:1.15}
+.topo{position:sticky;top:0;z-index:40;background:var(--parede);border-bottom:1px solid var(--pedra);display:flex;align-items:center;gap:1.2rem;padding:.75rem var(--pad)}
+.marca{display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:15px;line-height:1.2}
 .marca svg{width:34px;height:34px;flex:none}
-.marca small{line-height:1.4}
-.marca small{display:block;font-weight:400;color:var(--tinta-2);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
-.nav{margin-left:auto;display:flex;gap:1.3rem;font-weight:500;font-size:15px}
+.marca small{display:block;font-weight:400;color:var(--tinta-2);font-size:12.5px;line-height:1.4}
+.nav{margin-left:auto;display:flex;gap:1.2rem;font-weight:500;font-size:15px}
 .nav a{position:relative;padding:.2rem 0}
-.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--acafrao);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
 .nav a:hover::after{transform:scaleX(1)}
-.nav a.m{color:var(--acafrao)}.nav a.r{color:var(--vermelho)}
-.lingua{display:inline-flex;border:1px solid var(--pedra);border-radius:99px;padding:2px;margin-left:.4rem}
+.lingua{display:inline-flex;border:1px solid var(--pedra);border-radius:99px;padding:2px}
 .lingua button{padding:.3rem .7rem;border-radius:99px;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--tinta-2);min-width:42px}
 .lingua button[aria-pressed="true"]{background:var(--tinta);color:var(--luz)}
 .burger{display:none;width:44px;height:44px;place-items:center;margin-left:auto}
 .burger svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round}
+.menu-movel{display:none}
 
-/* ---------- a fachada (herói) ---------- */
-.fachada{padding:clamp(2rem,5vw,4rem) var(--pad) 0;max-width:1240px;margin:0 auto}
-.fachada h1{font-size:clamp(1.9rem,4.6vw,3.6rem);max-width:22ch}
-.fachada h1 b{font-weight:900}
-.fachada h1 .m{color:var(--acafrao)}.fachada h1 .r{color:var(--vermelho)}
-.fachada .frase{margin-top:.9rem;font-size:clamp(17px,1.5vw,20px);color:var(--tinta-2);max-width:52ch}
-/* as duas portas */
-.portas{display:grid;grid-template-columns:1fr 34px 1fr;align-items:end;margin-top:clamp(1.8rem,4vw,2.8rem);
-  border-bottom:14px solid var(--pedra);position:relative}
-.portas::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:14px;
-  background:repeating-linear-gradient(90deg,#CDBEA3 0 22px,#DACFB8 22px 44px)}
-.porta{display:block;position:relative;padding:0 0 2rem;color:inherit;transition:transform .5s var(--ease)}
-.porta:hover{transform:translateY(-4px)}
-.placa{display:block;color:#fff;font-weight:700;line-height:1.3;
-  font-size:clamp(15px,2.05vw,26px);padding:clamp(.7rem,1.6vw,1.1rem) clamp(.8rem,2vw,1.4rem);
-  box-shadow:0 10px 24px -12px rgba(43,27,20,.45)}
-.placa .nome{display:block;text-transform:uppercase;letter-spacing:.06em;line-height:1.2}
-.placa small{display:block;letter-spacing:.01em;font-weight:500;font-size:clamp(13px,1.1vw,15px);line-height:1.4;margin-top:.3em;opacity:.92}
-.porta.m .placa{background:var(--acafrao)}
-.porta.r .placa{background:var(--vermelho)}
-.moldura{margin:0 clamp(.6rem,2vw,1.6rem);border:10px solid var(--pedra);border-bottom:0;border-radius:3px 3px 0 0;
-  background:var(--parede-2);aspect-ratio:5/4;position:relative;overflow:hidden}
-.folha{position:absolute;top:0;bottom:0;width:50%;background:linear-gradient(180deg,rgba(43,27,20,.86),rgba(43,27,20,.96));
-  transition:transform 1.4s var(--ease);will-change:transform}
-.folha.e{left:0;transform-origin:left;border-right:2px solid rgba(255,255,255,.22)}
-.folha.d{right:0;transform-origin:right;border-left:2px solid rgba(255,255,255,.22)}
-.folha::after{content:"";position:absolute;top:50%;width:6px;height:44px;background:#D9C9A9;border-radius:3px;transform:translateY(-50%)}
-.folha.e::after{right:10px}.folha.d::after{left:10px}
-.aberto .folha.e{transform:perspective(900px) rotateY(84deg)}
-.aberto .folha.d{transform:perspective(900px) rotateY(-84deg)}
-.interior{position:absolute;inset:0;padding:clamp(.9rem,2.4vw,1.6rem) 13%;display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem}
-.porta.m .interior{background:linear-gradient(180deg,#F1E4CD,#E4D2B3)}
-.porta.r .interior{background:linear-gradient(180deg,#3A1A1A,#2A1414);color:#F5E8D8}
-.interior svg{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
-.interior p{position:relative;font-weight:500;font-size:clamp(14px,1.4vw,17px);line-height:1.45;max-width:26ch}
-.interior .entrar{position:relative;display:inline-flex;align-items:center;gap:.4rem;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
-.interior .entrar svg{position:static;width:18px;height:18px;opacity:1;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.parede{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
-.parede span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:12.5px;line-height:1.4;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2);white-space:nowrap}
-@media (prefers-reduced-motion:no-preference){
-  .porta{opacity:0;transform:translateY(14px)}
-  .aberto .porta{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
-  .aberto .porta.r{transition-delay:.12s}
-}
-
-/* ---------- secções ---------- */
-.seccao{padding:clamp(3rem,7vw,5.5rem) var(--pad)}
-.dentro{max-width:1240px;margin:0 auto}
-.seccao h2{font-size:clamp(1.7rem,3.6vw,2.7rem);max-width:20ch}
-.seccao .lead{margin-top:.8rem;color:var(--tinta-2);font-size:clamp(16px,1.35vw,18px)}
-.sub{margin-top:1.8rem;font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
-.sub.m{color:var(--acafrao)}.sub.r{color:var(--vermelho)}
-
-/* ---------- o mercado: estantes ---------- */
-#mercado{background:linear-gradient(180deg,var(--parede),#F0E3CD)}
-.estante{list-style:none;margin-top:2rem;display:grid;gap:.4rem}
-.prateleira{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:1.2rem;align-items:end;padding:1.1rem 0 0;position:relative}
-.prateleira::after{content:"";grid-column:1/-1;height:10px;border-radius:2px;background:linear-gradient(180deg,#B0854E,#8C6535);box-shadow:0 6px 10px -6px rgba(43,27,20,.5)}
-.prateleira h3{font-family:"Mukta",sans-serif;font-weight:700;font-size:17px;letter-spacing:.02em;padding-bottom:.5rem}
-.prateleira h3 span{display:block;font-weight:400;font-size:13.5px;color:var(--tinta-2);letter-spacing:0}
-.artigos{display:flex;gap:clamp(.5rem,1.4vw,1rem);flex-wrap:wrap;align-items:flex-end;padding-bottom:.35rem}
-.artigo{display:flex;flex-direction:column;align-items:center;gap:.3rem;font-size:12.5px;line-height:1.4;color:var(--tinta-2);text-align:center;width:72px;
-  opacity:0;transform:translateY(10px)}
-.cheia .artigo{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.cheia .artigo:nth-child(2){transition-delay:.06s}.cheia .artigo:nth-child(3){transition-delay:.12s}
-.cheia .artigo:nth-child(4){transition-delay:.18s}.cheia .artigo:nth-child(5){transition-delay:.24s}
-.artigo svg{width:44px;height:52px;fill:none;stroke:var(--tinta);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
-.artigo svg .cor{fill:var(--acafrao-2);stroke:none;opacity:.55}
-.artigo svg .cor2{fill:var(--cardamomo);stroke:none;opacity:.45}
-.artigo svg .cor3{fill:var(--vermelho);stroke:none;opacity:.5}
-.nota-honesta{margin-top:1.4rem;font-size:14px;color:var(--tinta-2);border-top:1px dashed var(--pedra);padding-top:.8rem}
-
-/* ---------- a ligação: do prato à prateleira ---------- */
-#ligacao{background:var(--tinta);color:var(--luz)}
-#ligacao h2{color:var(--luz)}
-#ligacao .lead{color:#D9C9B4}
-.pares{margin-top:2.2rem;display:grid;gap:0;position:relative}
-.pares::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;
-  background:repeating-linear-gradient(180deg,var(--pedra) 0 10px,transparent 10px 20px);opacity:.55}
-.par{display:grid;grid-template-columns:1fr 64px 1fr;align-items:center;gap:.6rem;padding:1.1rem 0;border-bottom:1px solid rgba(214,199,173,.18)}
-.par:last-child{border-bottom:0}
-.prato,.compra{display:flex;flex-direction:column;gap:.2rem}
-.prato{text-align:right;align-items:flex-end}
-.prato b{font-family:"Martel",serif;font-weight:900;font-size:clamp(1.15rem,2.2vw,1.55rem);color:#F6C6C0}
-.compra b{font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--acafrao-2)}
-.prato span,.compra span{font-size:15px;color:#D9C9B4;max-width:28ch}
-.par .seta{width:64px;height:64px;display:grid;place-items:center;position:relative;z-index:1}
-.par .seta svg{width:44px;height:44px;fill:none;stroke:var(--luz);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
-  background:var(--tinta);border-radius:99px;padding:8px;box-shadow:0 0 0 1px rgba(214,199,173,.35)}
-.pares .par{opacity:0;transform:translateY(12px)}
-.pares.visto .par{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.pares.visto .par:nth-child(2){transition-delay:.08s}.pares.visto .par:nth-child(3){transition-delay:.16s}.pares.visto .par:nth-child(4){transition-delay:.24s}
-.balcao{margin-top:2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;font-size:15px;color:#D9C9B4}
-.balcao .etiqueta{display:inline-flex;align-items:center;gap:.5rem;background:var(--acafrao);color:#fff;font-weight:700;padding:.55rem .95rem;border-radius:3px;letter-spacing:.03em}
-.balcao .etiqueta svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-/* ---------- o restaurante ---------- */
-#restaurante{background:var(--noite);color:#F5E8D8}
-#restaurante h2{color:#fff}
-#restaurante .lead{color:#E3CFC3}
-.rest{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(1.6rem,4vw,3.4rem);align-items:start}
-.rest>*{min-width:0}
-.foto{position:relative;border:10px solid #3B2020;border-radius:3px;overflow:hidden;background:#1E0F0F;aspect-ratio:4/3}
-.foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-.foto figcaption{position:absolute;left:0;right:0;bottom:0;padding:.7rem .9rem;font-size:14px;line-height:1.4;background:linear-gradient(0deg,rgba(30,15,15,.9),transparent);color:#E3CFC3}
-.carta{list-style:none;margin-top:1.4rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem 1.4rem}
-.carta li{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;padding:.55rem 0;border-bottom:1px dotted rgba(245,232,216,.28);font-size:16px}
-.carta li b{font-weight:500}
-.carta li i{font-style:normal;font-size:13px;color:#C9AEA3;white-space:nowrap}
+/* ---------- herói: nuvens de especiarias ---------- */
+.heroi{position:relative;min-height:min(92svh,820px);display:flex;align-items:flex-end;overflow:hidden;background:var(--noite);color:var(--luz)}
+.heroi canvas{position:absolute;inset:0;width:100%;height:100%}
+.heroi .veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,18,14,.2) 0%,rgba(26,18,14,0) 35%,rgba(26,18,14,.55) 75%,rgba(26,18,14,.95) 100%)}
+.heroi .dentro{position:relative;z-index:2;max-width:1240px;margin:0 auto;width:100%;padding:clamp(7rem,18vw,11rem) var(--pad) clamp(2rem,4vw,3rem)}
+.heroi h1{font-size:clamp(2.6rem,7.4vw,5.6rem);max-width:14ch;color:#fff;text-shadow:0 8px 40px rgba(0,0,0,.6)}
+.heroi h1 em{font-style:normal;color:var(--acafrao-3)}
+.heroi .frase{margin-top:.8rem;font-size:clamp(16px,1.6vw,19px);color:rgba(251,245,234,.9);max-width:46ch}
 .acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.4rem;border-radius:3px;font-weight:700;letter-spacing:.02em;font-size:15.5px;transition:transform .3s var(--ease),background .3s}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.4rem;border-radius:3px;font-weight:700;font-size:15.5px;transition:transform .3s var(--ease),background .3s}
 .btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .btn:hover{transform:translateY(-2px)}
-.btn.r{background:var(--vermelho);color:#fff}.btn.r:hover{background:#D62A36}
-.btn.m{background:var(--acafrao);color:#fff}.btn.m:hover{background:#B8670F}
-.btn.linha{border:1px solid rgba(245,232,216,.45);color:#F5E8D8}
-.btn.linha:hover{background:rgba(245,232,216,.08)}
-.glovo{display:inline-flex;align-items:center;gap:.5rem;font-size:14px;line-height:1.4;color:#E3CFC3}
-.glovo i{display:inline-block;width:10px;height:10px;border-radius:99px;background:#F6C343}
-.ao-lado{margin-top:1.6rem;padding:1rem 1.1rem;border:1px solid rgba(245,232,216,.22);border-radius:3px;font-size:15px;color:#E3CFC3;display:flex;gap:.8rem;align-items:flex-start}
-.ao-lado svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--acafrao-2);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
-.ao-lado a{color:var(--acafrao-2);text-decoration:underline;text-underline-offset:3px}
+.btn.acafrao{background:var(--acafrao-2);color:var(--tinta)}.btn.acafrao:hover{background:#E69A2E}
+.btn.linha{border:1px solid rgba(251,245,234,.55);color:var(--luz)}.btn.linha:hover{background:rgba(251,245,234,.1)}
+.btn.escuro{background:var(--tinta);color:var(--luz)}.btn.escuro:hover{background:#3D2A1F}
+.entra{opacity:0;transform:translateY(16px)}
+.pronto .entra{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.pronto .entra[data-i="1"]{transition-delay:.12s}.pronto .entra[data-i="2"]{transition-delay:.24s}
 
-/* ---------- onde ---------- */
-.onde{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(1.6rem,4vw,3rem);align-items:start}
-.onde>*{min-width:0}
-.dados{display:grid;gap:1.2rem;margin-top:1.4rem}
+/* ---------- índice das secções ---------- */
+.indice{background:var(--tinta);color:#EFE4D2}
+.indice ul{list-style:none;max-width:1240px;margin:0 auto;padding:.5rem var(--pad);display:flex;gap:0 .2rem;flex-wrap:wrap;justify-content:center}
+.indice a{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;font-size:14.5px;font-weight:500;border-radius:3px;transition:background .3s}
+.indice a:hover{background:rgba(255,255,255,.08)}
+.indice i{width:10px;height:10px;border-radius:99px;display:inline-block}
+
+/* ---------- secções: cada uma com o seu mundo ---------- */
+.seccao{padding:clamp(3rem,7vw,5.5rem) var(--pad);position:relative;overflow:hidden}
+.dentro{max-width:1240px;margin:0 auto;position:relative}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.6rem,4vw,3.4rem);align-items:center}
+.duas>*{min-width:0}
+.seccao h2{font-size:clamp(1.9rem,4vw,3rem);max-width:16ch}
+.lead{margin-top:.7rem;font-size:clamp(16px,1.35vw,18px)}
+.lista{list-style:none;margin-top:1.4rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem 1.2rem;font-size:15.5px}
+.lista li{display:flex;gap:.55rem;align-items:baseline}
+.lista li::before{content:"";width:8px;height:8px;border-radius:99px;flex:none;position:relative;top:-1px;background:currentColor;opacity:.6}
+.cena{position:relative;aspect-ratio:1;max-width:520px;margin:0 auto;width:100%}
+.cena svg{width:100%;height:100%;overflow:visible}
+.nota{margin-top:1.2rem;font-size:14px;border-top:1px dashed currentColor;padding-top:.7rem;opacity:.75}
+
+/* 1 · Mercearia — açafrão: os frascos enchem-se */
+#mercearia{background:linear-gradient(180deg,#F7E7B8,#F3D98E);color:var(--tinta)}
+#mercearia .lead{color:#5A3F12}
+#mercearia .frasco .po{transform:scaleY(0);transform-origin:50% 100%;transition:transform 1.4s var(--ease)}
+#mercearia.visto .frasco .po{transform:scaleY(1)}
+#mercearia.visto .frasco:nth-child(2) .po{transition-delay:.15s}#mercearia.visto .frasco:nth-child(3) .po{transition-delay:.3s}#mercearia.visto .frasco:nth-child(4) .po{transition-delay:.45s}#mercearia.visto .frasco:nth-child(5) .po{transition-delay:.6s}
+#mercearia .grao{opacity:0}
+#mercearia.visto .grao{animation:cai 2.6s linear infinite}
+@keyframes cai{0%{transform:translateY(-40px);opacity:0}15%{opacity:1}100%{transform:translateY(60px);opacity:0}}
+
+/* 2 · Drogaria — limpo: bolhas a subir */
+#drogaria{background:linear-gradient(180deg,#E8F3EE,#D3E8DF);color:#173A2E}
+#drogaria .lead{color:#2E5A4A}
+#drogaria .bolha{opacity:0;transform-origin:50% 50%}
+#drogaria.visto .bolha{animation:sobe 5s ease-in-out infinite}
+@keyframes sobe{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:.85}100%{transform:translateY(-220px) scale(1.15);opacity:0}}
+#drogaria .brilho{transform:translateX(-140px);opacity:0}
+#drogaria.visto .brilho{animation:varre 3.2s var(--ease) 1s infinite}
+@keyframes varre{0%{transform:translateX(-140px);opacity:0}30%{opacity:.9}60%{transform:translateX(160px);opacity:0}100%{transform:translateX(160px);opacity:0}}
+
+/* 3 · Telemóvel — carvão e elétrico: o cabo desenha-se e a bateria enche */
+#telemovel{background:#1C1C22;color:#EEF0F6}
+#telemovel .lead{color:#B9C0D0}
+#telemovel .lista li::before{background:#4FC3F7}
+#telemovel .cabo{stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 2.2s var(--ease)}
+#telemovel.visto .cabo{stroke-dashoffset:0}
+#telemovel .bateria{transform:scaleX(0);transform-origin:0 50%;transition:transform 1.6s var(--ease) 1.2s}
+#telemovel.visto .bateria{transform:scaleX(1)}
+#telemovel .raio{opacity:0}
+#telemovel.visto .raio{animation:pisca 1.6s ease-in-out 2.4s infinite}
+@keyframes pisca{0%,100%{opacity:.35}50%{opacity:1}}
+
+/* 4 · Bebidas e snacks — pimentão: as latas balançam */
+#bebidas{background:linear-gradient(180deg,#F6C7A6,#F0A879);color:#4A1A0A}
+#bebidas .lead{color:#6E2E18}
+#bebidas .lata{transform-origin:50% 100%}
+#bebidas.visto .lata{animation:balanca 3.4s ease-in-out infinite}
+#bebidas.visto .lata:nth-child(2){animation-delay:.5s}#bebidas.visto .lata:nth-child(3){animation-delay:1s}#bebidas.visto .lata:nth-child(4){animation-delay:1.5s}
+@keyframes balanca{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+#bebidas .fresco{opacity:0}
+#bebidas.visto .fresco{animation:frio 2.8s ease-in-out infinite}
+@keyframes frio{0%{transform:translateY(0);opacity:0}30%{opacity:.7}100%{transform:translateY(-60px);opacity:0}}
+
+/* 5 · Ao balcão */
+#balcao{background:var(--parede-2);color:var(--tinta)}
+#balcao .lead{color:var(--tinta-2)}
+#balcao .sino{transform-origin:50% 12%;display:inline-block}
+#balcao .cena:hover .sino,#balcao.visto .sino.toca{animation:toca .9s var(--ease)}
+@keyframes toca{0%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+.contactos{margin-top:1.4rem;display:grid;gap:.9rem}
 .dado{display:grid;grid-template-columns:26px 1fr;gap:.8rem;align-items:start}
 .dado svg{width:24px;height:24px;fill:none;stroke:var(--acafrao);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
 .dado b{display:block;font-weight:700;font-size:15px;line-height:1.4}
 .dado span{color:var(--tinta-2)}
-.confirmar{display:inline-block;font-size:13px;line-height:1.4;color:var(--vermelho-2);border:1px dashed var(--vermelho);padding:.25rem .55rem;border-radius:2px}
+.confirmar{display:inline-block;font-size:13px;line-height:1.4;color:#8F1720;border:1px dashed var(--vermelho);padding:.2rem .5rem;border-radius:2px}
+
+/* 6 · O restaurante ao lado */
+#restaurante{background:var(--vermelho);color:#fff}
+#restaurante h2{color:#fff}
+#restaurante .lead{color:#F6D9D3}
+.montra{border:10px solid #8F1720;border-radius:3px;overflow:hidden;aspect-ratio:4/3;background:#5E0E14}
+.montra img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.montra:hover img{transform:scale(1.04)}
+
+/* ---------- onde ---------- */
+.onde{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(1.6rem,4vw,3rem);align-items:start}
+.onde>*{min-width:0}
 .mapa{border:10px solid var(--pedra);border-radius:3px;overflow:hidden;background:var(--parede-2);aspect-ratio:4/3}
 .mapa iframe{width:100%;height:100%;border:0;display:block}
-
-/* ---------- rodapé ---------- */
 .rodape{padding:2rem var(--pad) 2.4rem;border-top:1px solid var(--pedra);font-size:14px;color:var(--tinta-2)}
 .rodape .dentro{display:flex;gap:1rem 2rem;flex-wrap:wrap;justify-content:space-between}
 .rodape a{text-decoration:underline;text-underline-offset:3px}
 
-/* ---------- menu móvel ---------- */
-.menu-movel{display:none}
+.sobe-svg{opacity:0;transform:translateY(14px)}
+.visto .sobe-svg{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+
 @media(max-width:900px){
   .nav,.lingua.topo-so{display:none}
   .burger{display:grid}
@@ -224,267 +185,363 @@ html[data-lang="en"] .frase-pt{display:none}
   .menu-movel.aberto{transform:none}
   .menu-movel .cabeca{display:flex;align-items:center;justify-content:space-between}
   .menu-movel ul{list-style:none;margin-top:1.4rem}
-  .menu-movel a{display:block;padding:.85rem 0;border-bottom:1px solid var(--pedra);font-family:"Martel",serif;font-weight:900;font-size:1.6rem}
-  .menu-movel a.m{color:var(--acafrao)}.menu-movel a.r{color:var(--vermelho)}
-  .menu-movel .lingua{margin:1.4rem 0 0}
-  .rest,.onde{grid-template-columns:1fr}
-  .carta{grid-template-columns:1fr}
+  .menu-movel a{display:block;padding:.85rem 0;border-bottom:1px solid var(--pedra);font-family:"Martel",serif;font-weight:900;font-size:1.5rem}
+  .menu-movel .lingua{margin-top:1.4rem}
+  .duas,.onde{grid-template-columns:1fr}
+  .cena{max-width:380px}
+  .indice ul{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+  .indice a{white-space:nowrap}
 }
-@media(max-width:640px){
-  .portas{grid-template-columns:1fr;gap:1.6rem;align-items:stretch}
-  .parede{height:auto;padding:0}
-  .parede span{writing-mode:horizontal-tb;transform:none}
-  .porta{padding-bottom:0}
-  .porta.m .moldura{margin-bottom:0}
-  .moldura{aspect-ratio:4/3}
-  .prateleira{grid-template-columns:1fr;gap:.4rem}
-  .prateleira h3{padding-bottom:.1rem}
-  .par{grid-template-columns:1fr;gap:.35rem;text-align:left;padding:1.2rem 0}
-  .prato{text-align:left;align-items:flex-start}
-  .par .seta{width:auto;height:auto;justify-content:start}
-  .par .seta svg{transform:rotate(90deg);width:36px;height:36px}
-  .pares::before{display:none}
+@media(max-width:520px){
+  .lista{grid-template-columns:1fr}
+  .marca{font-size:14px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .porta,.artigo,.pares .par{opacity:1!important;transform:none!important}
-  .folha{display:none}
+  .entra,.sobe-svg{opacity:1!important;transform:none!important}
+  #mercearia .frasco .po,#telemovel .bateria{transform:none!important}
+  #telemovel .cabo{stroke-dashoffset:0!important}
+  #mercearia .grao,#drogaria .bolha,#bebidas .fresco{display:none}
   html{scroll-behavior:auto}
 }
 </style>
 </head>
 <body>
 
-<div class="demo">APRESENTAÇÃO PACHECO STUDIOS <span>· demonstração · dados assinalados "a confirmar" ainda não foram validados com o dono</span></div>
+<div class="demo"><strong>Apresentação Pacheco Studios</strong><span>· demonstração · "a confirmar" = ainda não validado com o dono · artigos são exemplos</span></div>
 
 <header class="topo">
   <a class="marca" href="#" aria-label="Início">
-    <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="14" width="25" height="44" rx="2" fill="#A65A0A"/><rect x="35" y="14" width="25" height="44" rx="2" fill="#C4202B"/><rect x="2" y="6" width="60" height="6" fill="#2B1B14"/><rect x="21" y="34" width="3" height="8" rx="1.5" fill="#F4EBDD"/><rect x="40" y="34" width="3" height="8" rx="1.5" fill="#F4EBDD"/></svg>
-    <span>Mercado &amp; Restaurant<small>Pinhal Novo</small></span>
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="8" fill="#8A4A06"/><path d="M12 24h40M12 36h40M12 48h40" stroke="#F4EBDD" stroke-width="4"/><rect x="18" y="14" width="8" height="10" rx="2" fill="#F4EBDD"/><rect x="36" y="26" width="10" height="10" rx="2" fill="#F4EBDD"/><rect x="22" y="38" width="12" height="10" rx="2" fill="#F4EBDD"/></svg>
+    <span>Pinhal Novo Mercado and Ria<small><span lang="pt">Mercearia · Drogaria · Telemóvel</span><span lang="en">Grocery · Household · Phone</span></small></span>
   </a>
   <nav class="nav" aria-label="Secções">
-    <a class="m" href="#mercado"><span lang="pt">Mercado</span><span lang="en">Market</span></a>
-    <a href="#ligacao"><span lang="pt">Do prato à prateleira</span><span lang="en">Plate to shelf</span></a>
-    <a class="r" href="#restaurante"><span lang="pt">Restaurante</span><span lang="en">Restaurant</span></a>
-    <a href="#onde"><span lang="pt">Onde estamos</span><span lang="en">Find us</span></a>
+    <a href="#mercearia"><span lang="pt">Mercearia</span><span lang="en">Grocery</span></a>
+    <a href="#drogaria"><span lang="pt">Drogaria</span><span lang="en">Household</span></a>
+    <a href="#telemovel"><span lang="pt">Telemóvel</span><span lang="en">Phone</span></a>
+    <a href="#bebidas"><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></a>
+    <a href="#restaurante"><span lang="pt">Restaurante ao lado</span><span lang="en">Restaurant next door</span></a>
   </nav>
-  <div class="lingua topo-so" role="group" aria-label="Idioma">
-    <button type="button" data-lang="pt" aria-pressed="true">PT</button>
-    <button type="button" data-lang="en" aria-pressed="false">EN</button>
-  </div>
+  <div class="lingua topo-so" role="group" aria-label="Idioma"><button type="button" data-lang="pt" aria-pressed="true">PT</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
   <button type="button" class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </header>
 <div class="menu-movel" id="menu-movel">
-  <div class="cabeca"><strong>Pinhal Novo</strong><button type="button" class="burger" id="fechar" aria-label="Fechar menu" style="display:grid"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="cabeca"><strong>Mercado and Ria</strong><button type="button" class="burger" id="fechar" aria-label="Fechar menu" style="display:grid"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
   <ul>
-    <li><a class="m" href="#mercado"><span lang="pt">Mercado</span><span lang="en">Market</span></a></li>
-    <li><a href="#ligacao"><span lang="pt">Do prato à prateleira</span><span lang="en">Plate to shelf</span></a></li>
-    <li><a class="r" href="#restaurante"><span lang="pt">Restaurante</span><span lang="en">Restaurant</span></a></li>
+    <li><a href="#mercearia"><span lang="pt">Mercearia</span><span lang="en">Grocery</span></a></li>
+    <li><a href="#drogaria"><span lang="pt">Drogaria</span><span lang="en">Household</span></a></li>
+    <li><a href="#telemovel"><span lang="pt">Telemóvel</span><span lang="en">Phone accessories</span></a></li>
+    <li><a href="#bebidas"><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></a></li>
+    <li><a href="#balcao"><span lang="pt">Ao balcão</span><span lang="en">At the counter</span></a></li>
+    <li><a href="#restaurante"><span lang="pt">Restaurante ao lado</span><span lang="en">Restaurant next door</span></a></li>
     <li><a href="#onde"><span lang="pt">Onde estamos</span><span lang="en">Find us</span></a></li>
   </ul>
   <div class="lingua" role="group" aria-label="Idioma"><button type="button" data-lang="pt" aria-pressed="true">PT</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
 </div>
 
 <main>
-<section class="fachada" id="fachada">
-  <h1><span lang="pt"><b class="m">Pinhal Novo Mercado and Ria</b> numa porta. <b class="r">Pinhal Novo Restaurant</b> na porta ao lado.</span><span lang="en"><b class="m">Pinhal Novo Mercado and Ria</b> through one door. <b class="r">Pinhal Novo Restaurant</b> through the next.</span></h1>
-  <p class="frase"><span lang="pt">Duas portas, um dono. Compra os ingredientes numa, prova o prato na outra — a dez metros, em Pinhal Novo.</span><span lang="en">Two doors, one owner. Buy the ingredients in one, taste the dish in the other — ten metres apart, in Pinhal Novo.</span></p>
-
-  <div class="portas" id="portas">
-    <a class="porta m" href="#mercado">
-      <span class="placa"><span class="nome">Pinhal Novo Mercado and Ria</span><small><span lang="pt">Mercearia · Drogaria · Telemóvel</span><span lang="en">Grocery · Household · Phone accessories</span></small></span>
-      <div class="moldura">
-        <div class="interior">
-          <svg viewBox="0 0 300 240" preserveAspectRatio="none" aria-hidden="true"><g stroke="#8C6535" stroke-width="6"><path d="M20 70h260M20 130h260M20 190h260"/></g><g fill="#A65A0A" opacity=".6"><rect x="34" y="40" width="22" height="30" rx="3"/><rect x="66" y="46" width="30" height="24" rx="3"/><rect x="108" y="36" width="18" height="34" rx="3"/><rect x="150" y="44" width="34" height="26" rx="3"/><rect x="200" y="38" width="20" height="32" rx="3"/><rect x="236" y="48" width="36" height="22" rx="3"/><rect x="30" y="100" width="40" height="30" rx="3"/><rect x="82" y="96" width="22" height="34" rx="3"/><rect x="120" y="104" width="30" height="26" rx="3"/><rect x="170" y="98" width="18" height="32" rx="3"/><rect x="204" y="102" width="34" height="28" rx="3"/><rect x="250" y="94" width="22" height="36" rx="3"/><rect x="36" y="160" width="26" height="30" rx="3"/><rect x="74" y="156" width="36" height="34" rx="3"/><rect x="124" y="164" width="20" height="26" rx="3"/><rect x="160" y="158" width="30" height="32" rx="3"/><rect x="206" y="166" width="24" height="24" rx="3"/><rect x="244" y="154" width="30" height="36" rx="3"/></g></svg>
-          <p><span lang="pt">Quase tudo o que uma casa precisa, ao virar da esquina.</span><span lang="en">Almost everything a home needs, round the corner.</span></p>
-          <span class="entrar"><span lang="pt">Entrar no mercado</span><span lang="en">Enter the market</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-        <div class="folha e" aria-hidden="true"></div><div class="folha d" aria-hidden="true"></div>
-      </div>
-    </a>
-    <div class="parede" aria-hidden="true"><span><span lang="pt">ao lado</span><span lang="en">next door</span></span></div>
-    <a class="porta r" href="#restaurante">
-      <span class="placa"><span class="nome">Pinhal Novo Restaurant</span><small><span lang="pt">Comida Kebab, Pizza · Cozinha indiana</span><span lang="en">Kebab, Pizza · Indian kitchen</span></small></span>
-      <div class="moldura">
-        <div class="interior">
-          <svg viewBox="0 0 300 240" preserveAspectRatio="none" aria-hidden="true"><g fill="#C4202B" opacity=".55"><circle cx="70" cy="90" r="34"/><circle cx="150" cy="70" r="26"/><circle cx="230" cy="96" r="38"/><circle cx="110" cy="170" r="30"/><circle cx="200" cy="176" r="24"/></g><g fill="none" stroke="#F5E8D8" stroke-width="3" opacity=".5"><circle cx="70" cy="90" r="22"/><circle cx="230" cy="96" r="26"/><circle cx="110" cy="170" r="18"/></g></svg>
-          <p><span lang="pt">Caris, biryani, kebab roll e pizza. Também na Glovo.</span><span lang="en">Curries, biryani, kebab rolls and pizza. Also on Glovo.</span></p>
-          <span class="entrar"><span lang="pt">Entrar no restaurante</span><span lang="en">Enter the restaurant</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-        <div class="folha e" aria-hidden="true"></div><div class="folha d" aria-hidden="true"></div>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- ================= MERCADO ================= -->
-<section class="seccao" id="mercado">
+<section class="heroi" id="heroi">
+  <canvas id="especiarias" aria-hidden="true"></canvas>
+  <div class="veu" aria-hidden="true"></div>
   <div class="dentro">
-    <h2><span lang="pt">Quase tudo o que uma casa precisa</span><span lang="en">Almost everything a home needs</span></h2>
-    <p class="lead"><span lang="pt">Mercearia, drogaria, acessórios de telemóvel e o que faltar. Se não vir na prateleira, pergunte ao balcão — muitas vezes está lá atrás.</span><span lang="en">Groceries, household goods, phone accessories and whatever else is missing. If it's not on the shelf, ask at the counter — it's often out back.</span></p>
-    <p class="sub m"><span lang="pt">As prateleiras</span><span lang="en">The shelves</span></p>
-    <ul class="estante" id="estante">
-      <li class="prateleira">
-        <h3><span lang="pt">Mercearia</span><span lang="en">Grocery</span><span><span lang="pt">arroz, leguminosas, farinhas, especiarias</span><span lang="en">rice, pulses, flours, spices</span></span></h3>
-        <div class="artigos">
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor" d="M8 14h28l3 32H5z"/><path d="M8 14h28l3 32H5zM12 14V8a10 10 0 0 1 20 0v6"/></svg><span lang="pt">Arroz basmati</span><span lang="en">Basmati rice</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor2" d="M10 20h24v26H10z"/><path d="M10 20h24v26H10zM10 20l4-8h16l4 8M16 28v10M22 28v10M28 28v10"/></svg><span lang="pt">Lentilhas e grão</span><span lang="en">Lentils, chickpeas</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor" d="M9 12h26v34H9z"/><path d="M9 12h26v34H9zM9 12l3-6h20l3 6M14 22h16"/></svg><span lang="pt">Farinha atta</span><span lang="en">Atta flour</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><ellipse class="cor3" cx="22" cy="30" rx="13" ry="16"/><path d="M12 18a10 8 0 0 1 20 0M9 30a13 16 0 0 0 26 0M9 30a13 12 0 0 1 26 0"/></svg><span lang="pt">Especiarias</span><span lang="en">Spices</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor" d="M14 20h16v26H14z"/><path d="M14 20h16v26H14zM18 20v-8h8v8M14 30h16"/></svg><span lang="pt">Óleo e ghee</span><span lang="en">Oil and ghee</span></div>
-        </div>
-      </li>
-      <li class="prateleira">
-        <h3><span lang="pt">Drogaria</span><span lang="en">Household</span><span><span lang="pt">limpeza, higiene, papel</span><span lang="en">cleaning, hygiene, paper goods</span></span></h3>
-        <div class="artigos">
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor2" d="M13 18h18v28H13z"/><path d="M13 18h18v28H13zM17 18v-6h10v6M13 26h18"/></svg><span lang="pt">Detergentes</span><span lang="en">Detergents</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor" d="M12 22h20v22H12z"/><path d="M12 22h20v22H12zM12 22c0-6 20-6 20 0M16 32h12"/></svg><span lang="pt">Sabonetes</span><span lang="en">Soap</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><rect class="cor3" x="10" y="14" width="24" height="32" rx="12"/><path d="M10 26a12 12 0 0 1 24 0v8a12 12 0 0 1-24 0zM22 10v4"/></svg><span lang="pt">Papel higiénico</span><span lang="en">Toilet paper</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor2" d="M18 6h8v20h-8z"/><path d="M18 6h8v20h-8zM12 26h20l-2 20H14zM16 34h12"/></svg><span lang="pt">Champô</span><span lang="en">Shampoo</span></div>
-        </div>
-      </li>
-      <li class="prateleira">
-        <h3><span lang="pt">Telemóvel</span><span lang="en">Phone accessories</span><span><span lang="pt">capas, cabos, carregadores, cartões</span><span lang="en">cases, cables, chargers, SIM cards</span></span></h3>
-        <div class="artigos">
-          <div class="artigo"><svg viewBox="0 0 44 52"><rect class="cor" x="12" y="6" width="20" height="40" rx="4"/><rect x="12" y="6" width="20" height="40" rx="4"/><path d="M19 42h6"/></svg><span lang="pt">Capas</span><span lang="en">Cases</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><path d="M10 10v14a12 12 0 0 0 24 0V10M14 10h6M24 10h6M22 36v10"/><path class="cor2" d="M10 24a12 12 0 0 0 24 0z"/></svg><span lang="pt">Cabos</span><span lang="en">Cables</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><rect class="cor3" x="10" y="16" width="24" height="26" rx="4"/><rect x="10" y="16" width="24" height="26" rx="4"/><path d="M16 16v-6M28 16v-6M22 24v8"/></svg><span lang="pt">Carregadores</span><span lang="en">Chargers</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor" d="M10 12h18l6 6v28H10z"/><path d="M10 12h18l6 6v28H10zM16 24h12M16 32h12"/></svg><span lang="pt">Cartões e carregamentos</span><span lang="en">SIM and top-ups</span></div>
-        </div>
-      </li>
-      <li class="prateleira">
-        <h3><span lang="pt">E o resto</span><span lang="en">And the rest</span><span><span lang="pt">bebidas, snacks, o que faltar em casa</span><span lang="en">drinks, snacks, whatever the house is missing</span></span></h3>
-        <div class="artigos">
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor2" d="M16 18h12v28H16z"/><path d="M16 18h12v28H16zM19 18v-8h6v8M16 30h12"/></svg><span lang="pt">Bebidas</span><span lang="en">Drinks</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><path class="cor" d="M8 16h28v28H8z"/><path d="M8 16h28v28H8zM8 16l4-8h20l4 8M14 24l16 12M30 24 14 36"/></svg><span lang="pt">Snacks</span><span lang="en">Snacks</span></div>
-          <div class="artigo"><svg viewBox="0 0 44 52"><path d="M22 8v36M12 14l10-6 10 6M12 30l10 6 10-6"/><circle class="cor3" cx="22" cy="26" r="7"/></svg><span lang="pt">Pergunte ao balcão</span><span lang="en">Ask at the counter</span></div>
-        </div>
-      </li>
-    </ul>
-    <p class="nota-honesta"><span lang="pt">Os artigos são exemplos do que uma mercearia assim costuma ter; a lista definitiva e os horários confirmam-se com o dono.</span><span lang="en">Items are examples of what a grocery like this usually stocks; the final list and opening hours are confirmed with the owner.</span></p>
-  </div>
-</section>
-
-<!-- ================= LIGAÇÃO ================= -->
-<section class="seccao" id="ligacao">
-  <div class="dentro">
-    <h2><span lang="pt">Do prato à prateleira</span><span lang="en">From the plate to the shelf</span></h2>
-    <p class="lead"><span lang="pt">O que sai da cozinha do restaurante faz-se com o que está nas prateleiras do mercado. Gostou do prato? Leve os ingredientes para casa — são ali ao lado.</span><span lang="en">What comes out of the restaurant kitchen is made with what sits on the market shelves. Liked the dish? Take the ingredients home — they're next door.</span></p>
-    <div class="pares" id="pares">
-      <div class="par">
-        <div class="prato"><b>Biryani</b><span lang="pt">arroz de longo grão, carne, especiarias inteiras</span><span lang="en">long-grain rice, meat, whole spices</span></div>
-        <div class="seta"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
-        <div class="compra"><b><span lang="pt">No mercado</span><span lang="en">In the market</span></b><span lang="pt">arroz basmati · cardamomo, cravinho, canela · açafrão</span><span lang="en">basmati rice · cardamom, cloves, cinnamon · saffron</span></div>
-      </div>
-      <div class="par">
-        <div class="prato"><b>Kebab roll</b><span lang="pt">pão fino, carne grelhada, molhos</span><span lang="en">flatbread, grilled meat, sauces</span></div>
-        <div class="seta"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
-        <div class="compra"><b><span lang="pt">No mercado</span><span lang="en">In the market</span></b><span lang="pt">farinha atta para o pão · mistura de especiarias · molhos</span><span lang="en">atta flour for the bread · spice mixes · sauces</span></div>
-      </div>
-      <div class="par">
-        <div class="prato"><b>Samosas</b><span lang="pt">massa estaladiça, batata, ervilha</span><span lang="en">crisp pastry, potato, peas</span></div>
-        <div class="seta"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
-        <div class="compra"><b><span lang="pt">No mercado</span><span lang="en">In the market</span></b><span lang="pt">farinha · cominhos e coentros em grão · óleo para fritar</span><span lang="en">flour · cumin and coriander seeds · frying oil</span></div>
-      </div>
-      <div class="par">
-        <div class="prato"><b><span lang="pt">Lassi de manga</span><span lang="en">Mango lassi</span></b><span lang="pt">iogurte, manga, cardamomo</span><span lang="en">yoghurt, mango, cardamom</span></div>
-        <div class="seta"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
-        <div class="compra"><b><span lang="pt">No mercado</span><span lang="en">In the market</span></b><span lang="pt">polpa de manga · iogurte · cardamomo verde</span><span lang="en">mango pulp · yoghurt · green cardamom</span></div>
-      </div>
-    </div>
-    <div class="balcao">
-      <span class="etiqueta"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span lang="pt">Peça a lista ao balcão</span><span lang="en">Ask for the list at the counter</span></span>
-      <span lang="pt">Quem serve o prato sabe o que levar da prateleira.</span><span lang="en">Whoever serves the dish knows what to take from the shelf.</span>
+    <h1 class="entra"><span lang="pt">Quase tudo o que uma casa precisa, <em>ao virar da esquina.</em></span><span lang="en">Almost everything a home needs, <em>round the corner.</em></span></h1>
+    <p class="frase entra" data-i="1"><span lang="pt">Mercearia indiana e do dia a dia, drogaria, acessórios de telemóvel, bebidas e snacks. Em Pinhal Novo, ao lado do Pinhal Novo Restaurant.</span><span lang="en">Indian and everyday groceries, household goods, phone accessories, drinks and snacks. In Pinhal Novo, next to Pinhal Novo Restaurant.</span></p>
+    <div class="acoes entra" data-i="2">
+      <a class="btn acafrao" href="#mercearia"><span lang="pt">Ver as secções</span><span lang="en">See the sections</span></a>
+      <a class="btn linha" href="https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><span lang="pt">Como chegar</span><span lang="en">Directions</span></a>
     </div>
   </div>
 </section>
 
-<!-- ================= RESTAURANTE ================= -->
-<section class="seccao" id="restaurante">
-  <div class="dentro rest">
-    <figure class="foto">
-      <img src="__FOTO_FACHADA__" alt="Fachada do Pinhal Novo Restaurant: letreiro vermelho, montra com caris, samosas, lassi de manga e pizza" loading="lazy">
-      <figcaption><span lang="pt">A porta do restaurante · Pinhal Novo</span><span lang="en">The restaurant door · Pinhal Novo</span></figcaption>
-    </figure>
+<nav class="indice" aria-label="Secções da loja"><ul>
+  <li><a href="#mercearia"><i style="background:#F3C64A"></i><span lang="pt">Mercearia</span><span lang="en">Grocery</span></a></li>
+  <li><a href="#drogaria"><i style="background:#8FD3B8"></i><span lang="pt">Drogaria</span><span lang="en">Household</span></a></li>
+  <li><a href="#telemovel"><i style="background:#4FC3F7"></i><span lang="pt">Telemóvel</span><span lang="en">Phone</span></a></li>
+  <li><a href="#bebidas"><i style="background:#F08A2E"></i><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></a></li>
+  <li><a href="#balcao"><i style="background:#D6C7AD"></i><span lang="pt">Ao balcão</span><span lang="en">Counter</span></a></li>
+  <li><a href="#restaurante"><i style="background:#C4202B"></i><span lang="pt">Restaurante</span><span lang="en">Restaurant</span></a></li>
+</ul></nav>
+
+<!-- ===== 1 · MERCEARIA ===== -->
+<section class="seccao" id="mercearia">
+  <div class="dentro duas">
     <div>
-      <h2><span lang="pt">Comida indiana, kebab e pizza</span><span lang="en">Indian food, kebab and pizza</span></h2>
-      <p class="lead"><span lang="pt">Caril feito na hora, biryani, samosas e lassi de manga — e, para quem prefere, kebab roll e pizza. Para comer aqui, levar, ou pedir pela Glovo.</span><span lang="en">Curry made to order, biryani, samosas and mango lassi — and, for those who prefer it, kebab rolls and pizza. Eat in, take away, or order on Glovo.</span></p>
-      <p class="sub r"><span lang="pt">O que se come aqui</span><span lang="en">What's cooking</span></p>
-      <ul class="carta">
-        <li><b><span lang="pt">Caris de carne e vegetarianos</span><span lang="en">Meat and vegetarian curries</span></b><i><span lang="pt">preço a confirmar</span><span lang="en">price tbc</span></i></li>
-        <li><b>Biryani</b><i><span lang="pt">preço a confirmar</span><span lang="en">price tbc</span></i></li>
-        <li><b>Samosas</b><i><span lang="pt">preço a confirmar</span><span lang="en">price tbc</span></i></li>
-        <li><b>Kebab roll</b><i><span lang="pt">preço a confirmar</span><span lang="en">price tbc</span></i></li>
-        <li><b>Pizza</b><i><span lang="pt">preço a confirmar</span><span lang="en">price tbc</span></i></li>
-        <li><b><span lang="pt">Lassi de manga · café</span><span lang="en">Mango lassi · coffee</span></b><i><span lang="pt">preço a confirmar</span><span lang="en">price tbc</span></i></li>
+      <h2><span lang="pt">Mercearia</span><span lang="en">Grocery</span></h2>
+      <p class="lead"><span lang="pt">O arroz, as leguminosas, as farinhas e as especiarias que faltam nos supermercados grandes — e o básico de todos os dias.</span><span lang="en">The rice, pulses, flours and spices the big supermarkets don't carry — and the everyday basics.</span></p>
+      <ul class="lista">
+        <li><span lang="pt">Arroz basmati e sona masoori</span><span lang="en">Basmati and sona masoori rice</span></li>
+        <li><span lang="pt">Lentilhas, grão, feijão</span><span lang="en">Lentils, chickpeas, beans</span></li>
+        <li><span lang="pt">Farinha atta, besan, semolina</span><span lang="en">Atta, besan, semolina flours</span></li>
+        <li><span lang="pt">Especiarias inteiras e moídas</span><span lang="en">Whole and ground spices</span></li>
+        <li><span lang="pt">Óleo, ghee, leite de coco</span><span lang="en">Oil, ghee, coconut milk</span></li>
+        <li><span lang="pt">Chá, açúcar, conservas</span><span lang="en">Tea, sugar, tinned goods</span></li>
       </ul>
-      <div class="acoes">
-        <a class="btn r" href="https://www.google.com/maps/search/?api=1&query=38.632305,-8.9147957" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><span lang="pt">Como chegar</span><span lang="en">Directions</span></a>
-        <span class="glovo"><i></i><span lang="pt">Também na Glovo</span><span lang="en">Also on Glovo</span></span>
-      </div>
-      <div class="ao-lado">
-        <svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12M9 21v-8h6v8"/></svg>
-        <p><span lang="pt">Ficou com fome de cozinhar? O <a href="#mercado">mercado ao lado</a> tem o arroz, as especiarias e as farinhas destes pratos.</span><span lang="en">Hungry to cook? The <a href="#mercado">market next door</a> has the rice, spices and flours behind these dishes.</span></p>
-      </div>
+      <p class="nota"><span lang="pt">Exemplos do que uma mercearia assim costuma ter — a lista confirma-se com o dono.</span><span lang="en">Examples of what a grocery like this usually stocks — the list is confirmed with the owner.</span></p>
+    </div>
+    <div class="cena" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <defs><clipPath id="f1"><rect x="0" y="0" width="400" height="400"/></clipPath></defs>
+        <g class="sobe-svg" transform="translate(0,20)">
+          <rect x="30" y="300" width="340" height="10" rx="2" fill="#8C6535"/>
+          <g class="frasco"><rect x="50" y="200" width="56" height="100" rx="8" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="54" y="230" width="48" height="66" rx="5" fill="#E8A825"/><rect x="58" y="188" width="40" height="14" rx="3" fill="#5A3F12"/></g>
+          <g class="frasco"><rect x="122" y="180" width="56" height="120" rx="8" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="126" y="210" width="48" height="86" rx="5" fill="#C4202B"/><rect x="130" y="168" width="40" height="14" rx="3" fill="#5A3F12"/></g>
+          <g class="frasco"><rect x="194" y="215" width="56" height="85" rx="8" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="198" y="240" width="48" height="56" rx="5" fill="#5E8A4A"/><rect x="202" y="203" width="40" height="14" rx="3" fill="#5A3F12"/></g>
+          <g class="frasco"><rect x="266" y="190" width="56" height="110" rx="8" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="270" y="222" width="48" height="74" rx="5" fill="#8C4A1E"/><rect x="274" y="178" width="40" height="14" rx="3" fill="#5A3F12"/></g>
+          <g class="frasco"><path d="M330 300v-80q0-16 16-16h8q16 0 16 16v80z" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="334" y="236" width="32" height="60" rx="4" fill="#3F2A1A"/></g>
+          <g fill="#FFFDF5" stroke="#B8955A" stroke-width="1"><ellipse class="grao" cx="150" cy="130" rx="3" ry="8" transform="rotate(20 150 130)"/><ellipse class="grao" cx="170" cy="110" rx="3" ry="8" transform="rotate(-30 170 110)" style="animation-delay:.6s"/><ellipse class="grao" cx="135" cy="105" rx="3" ry="8" transform="rotate(50 135 105)" style="animation-delay:1.2s"/><ellipse class="grao" cx="160" cy="145" rx="3" ry="8" transform="rotate(-10 160 145)" style="animation-delay:1.8s"/><ellipse class="grao" cx="185" cy="135" rx="3" ry="8" transform="rotate(35 185 135)" style="animation-delay:2.2s"/></g>
+          <path d="M120 96q30-40 60 0" fill="none" stroke="#5A3F12" stroke-width="3"/><path d="M116 96h68l-10 30h-48z" fill="#E8DCC8" stroke="#5A3F12" stroke-width="3"/>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
 
-<!-- ================= ONDE ================= -->
+<!-- ===== 2 · DROGARIA ===== -->
+<section class="seccao" id="drogaria">
+  <div class="dentro duas">
+    <div class="cena" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <g class="sobe-svg">
+          <rect x="60" y="330" width="280" height="10" rx="2" fill="#7FA898"/>
+          <path d="M120 330v-150q0-14 14-14h32q14 0 14 14v150z" fill="#FFFFFF" stroke="#173A2E" stroke-width="3"/><rect x="134" y="146" width="32" height="22" rx="3" fill="#173A2E"/><rect x="138" y="132" width="24" height="16" rx="3" fill="#8FD3B8"/><rect x="132" y="210" width="36" height="70" rx="4" fill="#8FD3B8" opacity=".55"/>
+          <path d="M210 330v-120q0-14 14-14h40q14 0 14 14v120z" fill="#FFFFFF" stroke="#173A2E" stroke-width="3"/><rect x="230" y="176" width="28" height="22" rx="3" fill="#173A2E"/><rect x="222" y="230" width="44" height="60" rx="4" fill="#5FB08F" opacity=".5"/>
+          <rect x="60" y="270" width="48" height="60" rx="6" fill="#FFFFFF" stroke="#173A2E" stroke-width="3"/><rect x="68" y="280" width="32" height="12" rx="2" fill="#8FD3B8"/>
+          <rect class="brilho" x="128" y="178" width="18" height="140" fill="#fff" opacity=".7" transform="skewX(-12)"/>
+          <g fill="none" stroke="#173A2E" stroke-width="2"><circle class="bolha" cx="150" cy="150" r="10"/><circle class="bolha" cx="185" cy="170" r="6" style="animation-delay:.8s"/><circle class="bolha" cx="240" cy="160" r="12" style="animation-delay:1.6s"/><circle class="bolha" cx="275" cy="180" r="7" style="animation-delay:2.4s"/><circle class="bolha" cx="120" cy="180" r="8" style="animation-delay:3.2s"/><circle class="bolha" cx="210" cy="140" r="5" style="animation-delay:4s"/></g>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <h2><span lang="pt">Drogaria</span><span lang="en">Household</span></h2>
+      <p class="lead"><span lang="pt">Limpeza, higiene e o papel que acaba sempre no domingo. Marcas conhecidas e formatos grandes.</span><span lang="en">Cleaning, hygiene and the paper that always runs out on a Sunday. Known brands and family sizes.</span></p>
+      <ul class="lista">
+        <li><span lang="pt">Detergentes da roupa e da loiça</span><span lang="en">Laundry and dish detergents</span></li>
+        <li><span lang="pt">Lixívia, multiusos, esfregões</span><span lang="en">Bleach, all-purpose, sponges</span></li>
+        <li><span lang="pt">Papel higiénico e de cozinha</span><span lang="en">Toilet and kitchen paper</span></li>
+        <li><span lang="pt">Champô, sabonete, pasta de dentes</span><span lang="en">Shampoo, soap, toothpaste</span></li>
+        <li><span lang="pt">Fraldas e toalhitas</span><span lang="en">Nappies and wipes</span></li>
+        <li><span lang="pt">Sacos do lixo, velas, pilhas</span><span lang="en">Bin bags, candles, batteries</span></li>
+      </ul>
+      <p class="nota"><span lang="pt">Exemplos — a lista confirma-se com o dono.</span><span lang="en">Examples — the list is confirmed with the owner.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3 · TELEMÓVEL ===== -->
+<section class="seccao" id="telemovel">
+  <div class="dentro duas">
+    <div>
+      <h2><span lang="pt">Telemóvel</span><span lang="en">Phone accessories</span></h2>
+      <p class="lead"><span lang="pt">Ficou sem carregador, partiu a capa ou precisa de carregar o cartão? É aqui, sem ir à cidade.</span><span lang="en">Lost your charger, broke your case or need a top-up? It's here, no trip to town.</span></p>
+      <ul class="lista">
+        <li><span lang="pt">Capas e películas</span><span lang="en">Cases and screen protectors</span></li>
+        <li><span lang="pt">Cabos USB-C, Lightning, micro-USB</span><span lang="en">USB-C, Lightning, micro-USB cables</span></li>
+        <li><span lang="pt">Carregadores de parede e de carro</span><span lang="en">Wall and car chargers</span></li>
+        <li><span lang="pt">Auriculares e colunas</span><span lang="en">Earphones and speakers</span></li>
+        <li><span lang="pt">Cartões SIM e carregamentos</span><span lang="en">SIM cards and top-ups</span></li>
+        <li><span lang="pt">Powerbanks e suportes</span><span lang="en">Power banks and holders</span></li>
+      </ul>
+      <p class="nota"><span lang="pt">Exemplos — a lista e as operadoras confirmam-se com o dono.</span><span lang="en">Examples — the list and carriers are confirmed with the owner.</span></p>
+    </div>
+    <div class="cena" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <g class="sobe-svg">
+          <rect x="150" y="70" width="120" height="240" rx="18" fill="#2A2B33" stroke="#4FC3F7" stroke-width="3"/><rect x="160" y="86" width="100" height="208" rx="8" fill="#12131A"/>
+          <rect x="190" y="150" width="40" height="80" rx="6" fill="none" stroke="#EEF0F6" stroke-width="3"/><rect x="204" y="142" width="12" height="8" rx="2" fill="#EEF0F6"/>
+          <rect class="bateria" x="195" y="155" width="30" height="70" rx="3" fill="#4FC3F7"/>
+          <path class="raio" d="M214 165l-14 26h12l-6 22 16-30h-12z" fill="#EEF0F6"/>
+          <path class="cabo" d="M210 310v20q0 20-20 20h-90q-30 0-30 30v20" fill="none" stroke="#4FC3F7" stroke-width="5" stroke-linecap="round"/>
+          <rect x="196" y="300" width="28" height="18" rx="4" fill="#4FC3F7"/>
+          <rect x="40" y="380" width="60" height="20" rx="4" fill="#4FC3F7"/><rect x="52" y="360" width="10" height="20" fill="#EEF0F6"/><rect x="78" y="360" width="10" height="20" fill="#EEF0F6"/>
+          <g stroke="#4FC3F7" stroke-width="2" fill="none" opacity=".5"><path d="M300 100c20 0 30 10 30 30M300 120c8 0 12 4 12 12"/></g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4 · BEBIDAS E SNACKS ===== -->
+<section class="seccao" id="bebidas">
+  <div class="dentro duas">
+    <div class="cena" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <g class="sobe-svg">
+          <rect x="40" y="320" width="320" height="10" rx="2" fill="#8C3A18"/>
+          <g class="lata"><rect x="70" y="200" width="60" height="120" rx="10" fill="#C4202B" stroke="#4A1A0A" stroke-width="3"/><rect x="78" y="240" width="44" height="30" rx="4" fill="#fff" opacity=".85"/></g>
+          <g class="lata"><rect x="150" y="200" width="60" height="120" rx="10" fill="#F08A2E" stroke="#4A1A0A" stroke-width="3"/><rect x="158" y="240" width="44" height="30" rx="4" fill="#fff" opacity=".85"/></g>
+          <g class="lata"><rect x="230" y="200" width="60" height="120" rx="10" fill="#3F6B3A" stroke="#4A1A0A" stroke-width="3"/><rect x="238" y="240" width="44" height="30" rx="4" fill="#fff" opacity=".85"/></g>
+          <g class="lata"><path d="M312 320l-6-90q0-10 10-10h28q10 0 10 10l-6 90z" fill="#F3C64A" stroke="#4A1A0A" stroke-width="3"/><path d="M322 236l-4-14h26l-4 14z" fill="#4A1A0A"/></g>
+          <g fill="none" stroke="#FFFFFF" stroke-width="2"><path class="fresco" d="M100 190q6-8 0-16" /><path class="fresco" d="M180 190q6-8 0-16" style="animation-delay:.7s"/><path class="fresco" d="M260 190q6-8 0-16" style="animation-delay:1.4s"/></g>
+          <rect x="60" y="120" width="90" height="50" rx="6" fill="#FFF3D6" stroke="#4A1A0A" stroke-width="3"/><path d="M60 128h90" stroke="#4A1A0A" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <h2><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></h2>
+      <p class="lead"><span lang="pt">Frescos no frigorífico, snacks para o caminho e os doces que se procuram e não se encontram noutro lado.</span><span lang="en">Cold drinks in the fridge, snacks for the road, and the sweets you look for and can't find elsewhere.</span></p>
+      <ul class="lista">
+        <li><span lang="pt">Refrigerantes, água, sumos</span><span lang="en">Soft drinks, water, juices</span></li>
+        <li><span lang="pt">Lassi e bebidas de manga</span><span lang="en">Lassi and mango drinks</span></li>
+        <li><span lang="pt">Batatas fritas, namkeen, bolachas</span><span lang="en">Crisps, namkeen, biscuits</span></li>
+        <li><span lang="pt">Chocolates e doces indianos</span><span lang="en">Chocolates and Indian sweets</span></li>
+        <li><span lang="pt">Café, chá masala</span><span lang="en">Coffee, masala chai</span></li>
+        <li><span lang="pt">Gelados no verão</span><span lang="en">Ice cream in summer</span></li>
+      </ul>
+      <p class="nota"><span lang="pt">Exemplos — a lista confirma-se com o dono.</span><span lang="en">Examples — the list is confirmed with the owner.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5 · AO BALCÃO ===== -->
+<section class="seccao" id="balcao">
+  <div class="dentro duas">
+    <div>
+      <h2><span lang="pt">Não vê na prateleira? Pergunte ao balcão.</span><span lang="en">Not on the shelf? Ask at the counter.</span></h2>
+      <p class="lead"><span lang="pt">Muita coisa está lá atrás, e o que não há encomenda-se. É assim que uma loja de bairro funciona.</span><span lang="en">A lot is kept out back, and what's missing can be ordered. That's how a neighbourhood shop works.</span></p>
+      <div class="contactos">
+        <div class="dado"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><div><b><span lang="pt">Telefone</span><span lang="en">Phone</span></b><span class="confirmar"><span lang="pt">a confirmar</span><span lang="en">tbc</span></span></div></div>
+        <div class="dado"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b><span lang="pt">Horário</span><span lang="en">Opening hours</span></b><span class="confirmar"><span lang="pt">a confirmar com o dono</span><span lang="en">to be confirmed with the owner</span></span></div></div>
+        <div class="dado"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><div><b><span lang="pt">Pagamento</span><span lang="en">Payment</span></b><span><span lang="pt">Dinheiro e multibanco · MB WAY </span><span lang="en">Cash and card · MB WAY </span><span class="confirmar"><span lang="pt">a confirmar</span><span lang="en">tbc</span></span></span></div></div>
+      </div>
+    </div>
+    <div class="cena" aria-hidden="true" style="max-width:360px">
+      <svg viewBox="0 0 400 400">
+        <g class="sobe-svg">
+          <rect x="40" y="300" width="320" height="14" rx="3" fill="#8C6535"/><rect x="60" y="314" width="280" height="60" fill="#B0854E"/>
+          <g class="sino"><path d="M140 292q0-70 60-80v-14h0v14q60 10 60 80z" fill="#D98A1F" stroke="#2B1B14" stroke-width="3"/><rect x="128" y="290" width="144" height="12" rx="4" fill="#2B1B14"/><circle cx="200" cy="192" r="8" fill="#2B1B14"/></g>
+          <path d="M300 250h50v50h-50z" fill="#F4EBDD" stroke="#2B1B14" stroke-width="3"/><path d="M310 262h30M310 274h30M310 286h18" stroke="#2B1B14" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 · O RESTAURANTE AO LADO ===== -->
+<section class="seccao" id="restaurante">
+  <div class="dentro duas">
+    <div>
+      <h2><span lang="pt">Ao lado, o Pinhal Novo Restaurant</span><span lang="en">Next door, Pinhal Novo Restaurant</span></h2>
+      <p class="lead"><span lang="pt">Do mesmo dono. Caris, biryani, samosas, kebab roll e pizza — feitos com o que está nestas prateleiras. Para comer lá, levar, ou pedir pela Glovo.</span><span lang="en">Same owner. Curries, biryani, samosas, kebab rolls and pizza — made with what's on these shelves. Eat in, take away, or order on Glovo.</span></p>
+      <div class="acoes"><a class="btn escuro" href="https://www.google.com/maps/search/?api=1&query=38.632305,-8.9147957" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span lang="pt">É a porta seguinte</span><span lang="en">It's the next door</span></a></div>
+    </div>
+    <figure class="montra"><img src="__MONTRA__" alt="Montra do Pinhal Novo Restaurant com caris, samosas, lassi de manga e pizza" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ===== ONDE ===== -->
 <section class="seccao" id="onde">
   <div class="dentro onde">
     <div>
-      <h2><span lang="pt">Ao lado uma da outra, em Pinhal Novo</span><span lang="en">Side by side, in Pinhal Novo</span></h2>
-      <div class="dados">
+      <h2><span lang="pt">Onde estamos</span><span lang="en">Find us</span></h2>
+      <div class="contactos">
         <div class="dado"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><div><b><span lang="pt">Morada</span><span lang="en">Address</span></b><span>Pinhal Novo, Palmela · <span class="confirmar"><span lang="pt">rua e número a confirmar</span><span lang="en">street and number tbc</span></span></span></div></div>
-        <div class="dado"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b><span lang="pt">Horário</span><span lang="en">Opening hours</span></b><span class="confirmar"><span lang="pt">a confirmar com o dono</span><span lang="en">to be confirmed with the owner</span></span></div></div>
-        <div class="dado"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><div><b><span lang="pt">Telefone</span><span lang="en">Phone</span></b><span class="confirmar"><span lang="pt">a confirmar</span><span lang="en">tbc</span></span></div></div>
       </div>
-      <div class="acoes" style="margin-top:1.8rem">
-        <a class="btn m" href="https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span lang="pt">Abrir o mercado no Google Maps</span><span lang="en">Open the market on Google Maps</span></a>
-      </div>
-      <p class="lead" style="margin-top:1.2rem;font-size:15px"><span lang="pt">O restaurante ainda não tem ficha no Google Maps — fica à mesma porta, mesmo ao lado.</span><span lang="en">The restaurant isn't on Google Maps yet — it's the very next door.</span></p>
+      <div class="acoes"><a class="btn escuro" href="https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span lang="pt">Abrir no Google Maps</span><span lang="en">Open in Google Maps</span></a></div>
     </div>
     <div class="mapa"><iframe title="Mapa: Pinhal Novo Mercado and Ria" src="https://www.google.com/maps?q=38.632305,-8.9147957&z=18&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
   </div>
 </section>
 </main>
 
-<footer class="rodape">
-  <div class="dentro">
-    <span>© 2026 Pinhal Novo Mercado and Ria · Pinhal Novo Restaurant</span>
-    <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener"><span lang="pt">Livro de Reclamações</span><span lang="en">Complaints book</span></a>
-    <span>Website: Pacheco Studios</span>
-  </div>
-</footer>
+<footer class="rodape"><div class="dentro">
+  <span>© 2026 Pinhal Novo Mercado and Ria</span>
+  <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener"><span lang="pt">Livro de Reclamações</span><span lang="en">Complaints book</span></a>
+  <span>Website: Pacheco Studios</span>
+</div></footer>
 
 <script>
-/* idioma */
+/* ===== Nuvens de especiarias — cena determinística: render(t) desenha o instante t em segundos ===== */
+(function(){
+  var cv = document.getElementById('especiarias'), ctx = cv.getContext('2d');
+  var W = 0, H = 0, DPR = 1, sprites = {};
+  function seed(i){ var x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+  function sprite(cor){
+    var s = document.createElement('canvas'); s.width = s.height = 128; var c = s.getContext('2d');
+    var g = c.createRadialGradient(64, 64, 0, 64, 64, 64);
+    g.addColorStop(0, 'rgba(' + cor + ',1)'); g.addColorStop(.35, 'rgba(' + cor + ',.55)'); g.addColorStop(1, 'rgba(' + cor + ',0)');
+    c.fillStyle = g; c.fillRect(0, 0, 128, 128); return s;
+  }
+  var CORES = [{c:'232,168,37', x:.24, tom:'acafrao'}, {c:'196,32,43', x:.55, tom:'pimentao'}, {c:'94,138,74', x:.80, tom:'cardamomo'}];
+  var PLUMAS = 3, POR_PLUMA = 110, VIDA = 9, GRAOS = 70;
+  function tamanho(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    CORES.forEach(function(k){ sprites[k.tom] = sprite(k.c); });
+  }
+  function render(t){
+    ctx.globalCompositeOperation = 'source-over';
+    var fundo = ctx.createLinearGradient(0, 0, 0, H); fundo.addColorStop(0, '#22170F'); fundo.addColorStop(1, '#120B08');
+    ctx.fillStyle = fundo; ctx.fillRect(0, 0, W, H);
+    /* feixes de luz */
+    ctx.save(); ctx.globalAlpha = .18;
+    for (var f = 0; f < 2; f++) {
+      var fx = W * (0.3 + f * 0.35) + Math.sin(t * .08 + f) * W * .06;
+      var lg = ctx.createLinearGradient(fx - W * .12, 0, fx + W * .12, 0);
+      lg.addColorStop(0, 'rgba(243,198,74,0)'); lg.addColorStop(.5, 'rgba(243,198,74,.9)'); lg.addColorStop(1, 'rgba(243,198,74,0)');
+      ctx.fillStyle = lg; ctx.beginPath(); ctx.moveTo(fx - W * .25, 0); ctx.lineTo(fx + W * .25, 0); ctx.lineTo(fx + W * .05, H); ctx.lineTo(fx - W * .05, H); ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
+    /* plumas */
+    ctx.globalCompositeOperation = 'lighter';
+    var base = Math.min(W, H);
+    for (var p = 0; p < PLUMAS; p++) {
+      var k = CORES[p], sp = sprites[k.tom], ox = W * k.x, oy = H * 1.02;
+      for (var i = 0; i < POR_PLUMA; i++) {
+        var id = p * 1000 + i, ph = seed(id) * VIDA, idade = (t + ph) % VIDA, u = idade / VIDA;
+        var sway = Math.sin(idade * .9 + seed(id + 7) * 6.28) * base * .10 + Math.sin(idade * .31 + seed(id + 3) * 6.28) * base * .16;
+        var x = ox + (seed(id + 1) - .5) * base * .28 + sway * (u + .2);
+        var y = oy - u * H * (0.85 + seed(id + 2) * .3);
+        var r = base * (0.05 + seed(id + 4) * 0.13) * (0.5 + u * 1.3);
+        var a = Math.sin(u * Math.PI) * (0.22 + seed(id + 5) * 0.18) * (1 - u * .45);
+        ctx.globalAlpha = a; ctx.drawImage(sp, x - r, y - r, r * 2, r * 2);
+      }
+    }
+    /* grãos de basmati */
+    ctx.globalCompositeOperation = 'source-over';
+    for (var g = 0; g < GRAOS; g++) {
+      var gid = 9000 + g, gph = seed(gid) * 7, gt = (t * (0.5 + seed(gid + 1) * .6) + gph) % 7, gu = gt / 7;
+      var gx = W * seed(gid + 2) + Math.sin(gt * 1.3 + seed(gid + 3) * 6.28) * base * .03;
+      var gy = -H * .05 + gu * H * 1.1;
+      var prof = seed(gid + 4), len = base * (0.006 + prof * 0.012), esp = len * .36;
+      ctx.save(); ctx.translate(gx, gy); ctx.rotate(gt * (0.6 + prof) + seed(gid + 5) * 6.28);
+      ctx.globalAlpha = 0.55 + prof * .4; ctx.fillStyle = prof > .6 ? '#FFF6E6' : '#E9D9C2';
+      if (prof < .35) { ctx.filter = 'blur(1.5px)'; }
+      ctx.beginPath(); ctx.ellipse(0, 0, esp, len, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+    }
+    /* vinheta */
+    ctx.globalAlpha = 1;
+    var v = ctx.createRadialGradient(W * .5, H * .45, base * .3, W * .5, H * .5, base * 1.05);
+    v.addColorStop(0, 'rgba(18,11,8,0)'); v.addColorStop(1, 'rgba(18,11,8,.75)');
+    ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+  }
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches, t0 = performance.now(), parado = false;
+  function ciclo(now){ if (!parado) { render((now - t0) / 1000); requestAnimationFrame(ciclo); } }
+  window.addEventListener('resize', function(){ tamanho(); if (reduz) render(3); });
+  document.addEventListener('visibilitychange', function(){ parado = document.hidden; if (!parado && !reduz) { t0 = performance.now() - 3000; requestAnimationFrame(ciclo); } });
+  tamanho();
+  if (reduz) render(3); else requestAnimationFrame(ciclo);
+  /* exportação de vídeo: pára o ciclo e desenha o instante pedido */
+  window.__especiarias = { parar: function(){ parado = true; }, render: render, tamanho: tamanho };
+})();
+
 function poeLingua(l){
   document.documentElement.setAttribute('data-lang', l);
   document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'pt-PT');
   document.querySelectorAll('.lingua button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.lang === l ? 'true' : 'false'); });
-  try { localStorage.setItem('pn.lang', l); } catch (e) {}
+  try { localStorage.setItem('pnm.lang', l); } catch (e) {}
 }
 document.querySelectorAll('.lingua button').forEach(function(b){ b.addEventListener('click', function(){ poeLingua(b.dataset.lang); }); });
-try { var g = localStorage.getItem('pn.lang'); if (g === 'en') poeLingua('en'); } catch (e) {}
-
-/* menu móvel */
+try { if (localStorage.getItem('pnm.lang') === 'en') poeLingua('en'); } catch (e) {}
 var burger = document.getElementById('burger'), menu = document.getElementById('menu-movel');
 function fecha(){ menu.classList.remove('aberto'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
 burger.addEventListener('click', function(){ menu.classList.add('aberto'); burger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; });
 document.getElementById('fechar').addEventListener('click', fecha);
 menu.addEventListener('click', function(e){ if (e.target.closest('a')) fecha(); });
-
-/* as portas abrem-se */
-requestAnimationFrame(function(){ setTimeout(function(){ document.getElementById('portas').classList.add('aberto'); }, 120); });
-
-/* as prateleiras enchem-se; os pares aparecem */
-var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
-  es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add(en.target.classList.contains('prateleira') ? 'cheia' : 'visto'); io.unobserve(en.target); } });
-}, {rootMargin: '0px 0px -10% 0px'}) : null;
-document.querySelectorAll('.prateleira, .pares').forEach(function(el){ if (io) io.observe(el); else el.classList.add('cheia', 'visto'); });
-setTimeout(function(){ document.querySelectorAll('.prateleira, .pares').forEach(function(el){ el.classList.add(el.classList.contains('prateleira') ? 'cheia' : 'visto'); }); }, 4000);
+requestAnimationFrame(function(){ setTimeout(function(){ document.body.classList.add('pronto'); }, 80); });
+var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('visto'); var s = en.target.querySelector('.sino'); if (s) s.classList.add('toca'); io.unobserve(en.target); } }); }, {rootMargin: '0px 0px -12% 0px'}) : null;
+document.querySelectorAll('.seccao').forEach(function(el){ if (io) io.observe(el); else el.classList.add('visto'); });
 </script>
 </body>
 </html>
