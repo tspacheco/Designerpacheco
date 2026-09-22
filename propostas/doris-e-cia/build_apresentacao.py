@@ -5,7 +5,7 @@ HERE = pathlib.Path(__file__).parent
 sys.path.insert(0, str(HERE.parent / "be-legend-olhao"))
 import build as B
 from build import esc, NAVY, GOLD, TEAL, LINE, MUTED, INK, PAPER
-from build_checklist import diag, C, page as _page, cb
+from build_checklist import diag, C, page as _page, cb, S, r, CPC, AGENDA, TICKET, RECOR
 
 def page(cls, inner, num=None, footer=True):
     ft = f'<footer class="ft"><span>{esc(C["marca"])} · Proposta · {esc(C["cliente"])}</span><span>{num or ""}</span></footer>' if footer else ""
@@ -51,25 +51,58 @@ pages.append(page("cover", f'''
   <p class="cover-kicker">Proposta · {esc(C["cliente"])}</p>
   <h1>O que vimos.<br>O que propomos.</h1>
   <p class="cover-client">{esc(C["bairro"])} · {esc(C["cidade"])}</p>
-  <p class="cover-sub">Oito coisas que hoje afastam clientes da Doris &amp; Cia sem ninguém perceber, e três pacotes para resolver, do essencial ao completo.</p>
+  <p class="cover-sub">O que R$ 400, R$ 800 ou R$ 1.500 por mês em anúncios podem trazer para a loja, oito coisas que hoje afastam clientes sem ninguém perceber, e três pacotes para resolver.</p>
 </div>
 <div class="cover-bot">
-  <div class="cover-stat"><b>8</b><span>pontos encontrados na ficha do Google e no Instagram</span></div>
-  <div class="cover-stat"><b>1</b><span>fluxo automático no WhatsApp, em todos</span></div>
+  <div class="cover-stat"><b>R$ 800</b><span>por mês em anúncios: cerca de 35 clientes novos por mês</span></div>
+  <div class="cover-stat"><b>8</b><span>pontos a corrigir no Google e no Instagram</span></div>
   <div class="cover-stat"><b>3</b><span>pacotes com fluxo automático e site incluídos</span></div>
 </div>
 <div class="cover-rule"></div>
-<p class="cover-foot">Documento de apresentação · leitura em 4 minutos</p>
+<p class="cover-foot">Documento de apresentação · leitura em 5 minutos</p>
 ''', footer=False))
 
+def bars():
+    W,H=1000,230; ks=[400,800,1500]; mx=max(S[k]["m6"] for k in ks)
+    o=[f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">']
+    gw=W/3
+    for i,k in enumerate(ks):
+        x0=i*gw+40; s_=S[k]
+        hf=(s_["m6"]/mx)*150; hi=(s_["custo6"]/mx)*150
+        o.append(f'<rect x="{x0}" y="{170-hi}" width="90" height="{hi}" rx="6" fill="#D6D0C2"/>')
+        o.append(f'<text x="{x0+45}" y="{162-hi}" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="{MUTED}">{r(s_["custo6"])}</text>')
+        o.append(f'<rect x="{x0+110}" y="{170-hf}" width="90" height="{hf}" rx="6" fill="{TEAL}"/>')
+        o.append(f'<text x="{x0+155}" y="{162-hf}" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="16" fill="{TEAL}">{r(s_["m6"])}</text>')
+        o.append(f'<text x="{x0+100}" y="196" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="17" fill="{NAVY}">Nível {i+1} · {r(k)}/mês</text>')
+        o.append(f'<text x="{x0+100}" y="216" text-anchor="middle" font-family="Inter" font-size="11" fill="{MUTED}">investimento em 6 meses vs faturamento em 6 meses</text>')
+    o.append("</svg>"); return "".join(o)
+
+def trow(i,k):
+    s_=S[k]; roi=s_["m6"]/s_["custo6"]
+    return f'<tr><td class="lab">Nível {i}</td><td>{r(k)}</td><td>{s_["conv"]:.0f}</td><td>{s_["novos"]:.0f}</td><td>{r(s_["cpa"])}</td><td>{r(s_["m1"])}</td><td class="hl">{r(s_["m6"])}</td><td>{roi:.0f}×</td></tr>'
+pages.append(page("", h("01 · O potencial", "O que cada nível de anúncio pode trazer para a loja.", "Anúncios no Instagram e no Facebook, num raio de 3 km em volta da loja, para tutores de cães e gatos. Cada conversa chega no WhatsApp da Doris & Cia. Os números abaixo são uma projeção com premissas à vista; o piloto de 45 dias troca-os por números reais.") + f'''
+<table class="tbl num2">
+  <thead><tr><th></th><th>Investimento por mês</th><th>Conversas</th><th>Clientes novos</th><th>Custo por cliente</th><th>Faturamento 1.º mês</th><th class="hl">Faturamento em 6 meses</th><th>Retorno</th></tr></thead>
+  <tbody>{trow(1,400)}{trow(2,800)}{trow(3,1500)}</tbody>
+</table>
+<div class="bars">{bars()}</div>
+<div class="grid3 prem">
+  <div class="tile sm"><b>{AGENDA*100:.0f} %</b><span>taxa de conversão média final<br><em>de cada 100 conversas no WhatsApp, {AGENDA*100:.0f} viram atendimento pago; já desconta quem agenda e não aparece</em></span></div>
+  <div class="tile sm"><b>R$ {TICKET:.0f}</b><span>faturamento médio por atendimento<br><em>banho e tosa, misto de portes; tabelas de 2026 da Grande São Paulo</em></span></div>
+  <div class="tile sm"><b>{RECOR*100:.0f} %</b><span>dos clientes novos voltam todo mês<br><em>com o lembrete automático de banho, incluído em todos os pacotes</em></span></div>
+</div>
+<p class="fine">Custo por conversa iniciada de R$ {CPC:.0f} (faixa de R$ 5 a R$ 12 em serviços locais). “Faturamento em 6 meses” soma cada mês de clientes novos com os que continuam voltando. “Retorno” é faturamento dividido pelo investimento em anúncios no período. Não inclui venda de ração e acessórios, que costuma vir junto com o banho.</p>
+<div class="callout"><b>O que isto quer dizer:</b> com R$ 800 por mês em anúncios, a loja pode ganhar cerca de {S[800]["novos"]:.0f} clientes novos por mês e faturar perto de {r(S[800]["m6"])} em seis meses, gastando {r(S[800]["custo6"])}. Isso só acontece se a ficha do Google, o Instagram e o WhatsApp estiverem prontos para receber essa gente. É o que a página seguinte mostra.</div>
+''', 2))
+
 rows = "".join(f'<tr><td><span class="sev {s}">{s}</span></td><td><b>{esc(a)}</b><br><span class="small">{esc(b)}</span></td><td>{esc(c)}</td></tr>' for a, b, c, s in diag)
-pages.append(page("", h("01 · O que encontramos", "Oito pontos que afastam clientes hoje.", "Levantamento feito só com o que está público: a ficha do Google e o Instagram. A boa notícia: os mais graves são os mais rápidos de resolver.") + f'''
+pages.append(page("", h("02 · O que encontramos", "Oito pontos que afastam clientes hoje.", "Levantamento feito só com o que está público: a ficha do Google e o Instagram. A boa notícia: os mais graves são os mais rápidos de resolver.") + f'''
 <table class="tbl diag">
   <thead><tr><th>Peso</th><th>O que encontramos</th><th>O que fazer</th></tr></thead>
   <tbody>{rows}</tbody>
 </table>
 <div class="callout"><b>Em uma frase:</b> a Doris &amp; Cia faz um bom trabalho, mas quem procura “banho e tosa em Vila Barros” não a encontra, e quem encontra não tem como agendar sozinho. Os pacotes a seguir resolvem exatamente isso.</div>
-''', 2))
+''', 3))
 
 def pcard(p):
     d = ' destaque' if p.get("destaque") else ''
@@ -84,10 +117,10 @@ def pcard(p):
   <h4>Montagem inclui</h4><ul class="ul tight">{inc}</ul>
   <h4>A mensalidade cobre</h4><ul class="ul tight">{mes}</ul>
 </div>'''
-pages.append(page("", h("02 · Três pacotes", "Do essencial ao completo. A Doris escolhe.", "Todos incluem o fluxo automático no WhatsApp e o site de uma página. Cada pacote contém o anterior. O que muda é até onde o fluxo vai e se há anúncios geridos.") + f'''
+pages.append(page("", h("03 · Três pacotes", "Do essencial ao completo. A Doris escolhe.", "Todos incluem o fluxo automático no WhatsApp e o site de uma página. Cada pacote contém o anterior. O que muda é até onde o fluxo vai e se há anúncios geridos.") + f'''
 <div class="pks">{"".join(pcard(p) for p in PK)}</div>
 <p class="fine">A verba dos anúncios (de R$ 400 a R$ 1.500 por mês, paga diretamente à Meta) não está incluída em nenhum pacote: é da loja e fica na conta da loja. As mensagens automáticas pelo WhatsApp têm um custo por conversa cobrado pela Meta, de centavos, também à parte.</p>
-''', 3))
+''', 4))
 
 cmp_rows = [
  ("Ficha do Google corrigida e com avaliações", 1,1,1),
@@ -108,7 +141,7 @@ cmp_rows = [
 ]
 def mk(v): return '<td class="y">✓</td>' if v else '<td class="n">—</td>'
 crows = "".join(f'<tr><td class="lab">{esc(a)}</td>{mk(b)}{mk(c)}{mk(d)}</tr>' for a,b,c,d in cmp_rows)
-pages.append(page("", h("03 · Lado a lado", "O que entra em cada pacote.") + f'''
+pages.append(page("", h("04 · Lado a lado", "O que entra em cada pacote.") + f'''
 <table class="tbl cmp2">
   <thead><tr><th></th><th>Base<br><span class="mono">R$ 3.000 · R$ 200/mês</span></th><th class="hl">Crescimento<br><span class="mono">R$ 5.000 · R$ 400/mês</span></th><th>Completo<br><span class="mono">R$ 8.000 · R$ 900/mês</span></th></tr></thead>
   <tbody>{crows}</tbody>
@@ -126,9 +159,17 @@ pages.append(page("", h("03 · Lado a lado", "O que entra em cada pacote.") + f'
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais</span></div>
   <div class="r"><span class="mono">{esc(C["tel"])}</span><br><span class="mono">{esc(C["email"])}</span></div>
 </div>
-''', 4))
+''', 5))
 
 EXTRA = f"""
+.tbl.num2 td,.tbl.num2 th{{text-align:right;padding:6px 7px;font-size:9.2pt}}
+.tbl.num2 td.lab,.tbl.num2 th:first-child{{text-align:left}}
+.tbl.num2 td{{font-family:'JetBrains Mono',monospace}}
+.tbl.num2 td.lab{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12pt;color:var(--navy);white-space:nowrap}}
+.tbl.num2 th.hl,.tbl.num2 td.hl{{background:#F2F8F7;color:var(--teal);font-weight:700}}
+.bars{{margin:10px 0 4px}} .bars svg{{width:100%;height:auto}}
+.prem .tile.sm b{{font-size:20pt;color:var(--navy)}} .prem .tile.sm span{{font-size:9pt}} .prem .tile.sm em{{font-size:7.4pt}}
+.prem{{margin-top:6px}}
 .tbl.diag td{{padding:6px 8px;font-size:9.1pt;vertical-align:top;line-height:1.35}}
 .tbl.diag td:first-child{{width:16mm}} .tbl.diag td:nth-child(2){{width:76mm}}
 .sev{{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8pt;padding:2px 7px;border-radius:10px;text-transform:uppercase;letter-spacing:.04em}}
