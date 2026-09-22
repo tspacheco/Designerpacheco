@@ -170,26 +170,44 @@ pages.append(page("", h("04 · Checklist · Fase 3 · Fidelização", "Cliente q
 </ol>
 ''', 5))
 
-# 6 — perguntas + próximos passos
-pages.append(page("", h("05 · Para a reunião", "Perguntas que decidem o plano, e os próximos passos.") + f'''
+# 6 — as sete perguntas
+PERG = [
+ ("o teto", "Quantos banhos e tosas fazem por semana hoje, e quantos caberiam sem contratar ninguém?",
+  "A diferença entre os dois é crescimento que não custa nada. Se cabem mais, os anúncios enchem a loja sem contratar ninguém. Se já está no limite, anunciar só cria fila e clientes chateados."),
+ ("o teto", "Qual é o preço de banho e de tosa, por porte?",
+  "Multiplica tudo o que está neste plano. A R$ 55 o retorno cai de 7× para 5×. A R$ 110 sobe, e o nível 3 passa a fazer sentido logo no primeiro mês."),
+ ("o teto", "Quanto custa uma segunda pessoa no banho e tosa, e em quanto tempo se paga?",
+  "Transforma um teto num degrau. Decide se o plano dos próximos seis meses é encher a agenda que já existe ou duplicar a operação."),
+ ("o sistema", "Quem responde ao WhatsApp, e em quanto tempo quando a loja está cheia?",
+  "É o degrau onde mais se perde. Responder em 10 minutos dobra a conversão. Se a resposta for “eu, quando dá”, o agendamento automático passa a ser a peça central, não um extra."),
+ ("o sistema", "Têm guardado nome, telefone e o pet de quem já veio? Quantos?",
+  "Com lista, a recuperação de clientes dá dinheiro na primeira semana, sem gastar em anúncio. Sem lista, a ficha de cliente é o primeiro trabalho e o retorno chega um mês mais tarde."),
+ ("o sistema", "Usam algum software de gestão, ou é caderno e WhatsApp?",
+  "Decide se os lembretes saem sozinhos ou à mão, e se os fluxos de inativos e pagamentos entram já ou ficam para depois."),
+ ("a vontade", "Onde é que ela quer estar daqui a um ano?",
+  "Mais movimento na mesma loja, mais uma pessoa, ou mais uma loja são três planos diferentes. Se a resposta for “está bom assim”, o pacote certo é o Base e não vale insistir."),
+]
+qs = "".join(f'<div class="q"><span class="mono">{esc(g)}</span><b>{i}. {esc(t)}</b><p>{esc(p)}</p></div>'
+             for i, (g, t, p) in enumerate(PERG, 1))
+pages.append(page("", h("05 · Para a reunião", "Sete perguntas que dizem até onde dá para crescer.",
+  "O teto deste negócio é uma multiplicação simples. Tudo o resto é o caminho até lá. Estas sete perguntas dão os dois números e dizem se o caminho existe.") + f'''
+<div class="teto">
+  <div class="tf">
+    <span class="mono">o cálculo, à frente dela</span>
+    <code>teto mensal = atendimentos que cabem × preço médio</code>
+    <code>folga = teto − faturamento de hoje</code>
+  </div>
+  <p>Se a folga der R$ 8.000 por mês de capacidade parada, está aí o argumento inteiro: os anúncios vão buscar dinheiro que já está pago em renda, luz e salários.</p>
+</div>
+<div class="qs">{qs}</div>
+<div class="callout"><b>A ordem importa.</b> Não comeces pelo orçamento. Se perguntares primeiro quanto ela quer gastar, ela diz um número pequeno por instinto e ficas preso a ele. Pergunta a capacidade, mostra a folga, e só depois fala de verba.</div>
+''', 6))
+
+# 7 — próximos passos
+pages.append(page("", h("06 · Os próximos passos", "Do sim até ao primeiro relatório.") + f'''
 <div class="cols2">
   <div>
-    <h3>Perguntas para a Doris</h3>
-    <ol class="ol tight">
-      <li>Quantos banhos e tosas por semana, hoje? E quantos caberiam na agenda?</li>
-      <li>Qual serviço dá mais margem: banho, tosa ou a loja?</li>
-      <li>Preço de banho e tosa por porte (pequeno, médio, grande)?</li>
-      <li>Quem responde ao WhatsApp e quanto tempo demora fora do balcão?</li>
-      <li>Já pagou anúncio no Instagram? O que aconteceu?</li>
-      <li>Quantos clientes do ano passado não voltaram? Existe lista?</li>
-      <li>De onde vêm os clientes: rua, Instagram, indicação, Google?</li>
-      <li>Tem leva e traz? Dá para ter?</li>
-      <li>Os dois Instagrams: qual fica como principal?</li>
-      <li>Orçamento confortável para anúncios: R$ 400, R$ 800 ou R$ 1.500?</li>
-    </ol>
-  </div>
-  <div>
-    <h3>Próximos passos</h3>
+    <h3>Calendário</h3>
     <ol class="ol tight">
       <li><b>Hoje:</b> este plano, o site de demonstração (extra) e a escolha do nível de anúncio.</li>
       <li><b>Semana 1:</b> Fase 0 completa: Google arrumado, um Instagram, WhatsApp Business montado.</li>
@@ -197,14 +215,26 @@ pages.append(page("", h("05 · Para a reunião", "Perguntas que decidem o plano,
       <li><b>Semana 3:</b> anúncios no ar. Relatório toda segunda-feira: conversas, agendados, custo por cliente.</li>
       <li><b>Dia 45:</b> revisão com números reais. Ajustar oferta e orçamento. Ligar o lembrete de 15 dias e a recuperação de quem sumiu.</li>
     </ol>
-    <div class="note"><b>O que a Pacheco Studios faz:</b> <b>trazer clientes</b> (ficha do Google arrumada e com avaliações, um Instagram que converte, anúncios geridos com relatório semanal) e <b>infraestrutura</b> (WhatsApp Business com catálogo, agendamento online, ficha de cliente, lembretes e recuperação automáticos). <b>O site de uma página vai incluído como extra.</b> Valores apresentados na reunião, conforme o que for escolhido.</div>
+  </div>
+  <div>
+    <h3>O que medir desde o primeiro dia</h3>
+    <ul class="ul tight">
+      <li>Conversas que chegaram, e de que anúncio</li>
+      <li>Quantas viraram agendamento</li>
+      <li>Quantas apareceram mesmo</li>
+      <li>Quantas voltaram no mês seguinte</li>
+      <li>Custo por cliente novo</li>
+      <li>Atendimentos por semana contra a capacidade</li>
+    </ul>
+    <div class="note"><b>O que a Pacheco Studios faz:</b> <b>trazer clientes</b> (ficha do Google arrumada e com avaliações, um Instagram que converte, anúncios geridos com relatório semanal) e <b>infraestrutura</b> (WhatsApp Business com catálogo, agendamento online, ficha de cliente, lembretes e recuperação automáticos). <b>O site de uma página vai incluído como extra.</b></div>
+    <div class="note alt"><b>A parede a vigiar.</b> Com reinvestimento de parte do lucro, a agenda de uma tosadora esgota por volta do sexto mês. A partir do quarto, o problema deixa de ser trazer clientes e passa a ser ter quem os atenda.</div>
   </div>
 </div>
 <div class="callout final">
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais</span></div>
   <div class="r"><span class="mono">{esc(C["tel"])}</span><br><span class="mono">{esc(C["email"])}</span></div>
 </div>
-''', 6))
+''', 7))
 
 EXTRA = f"""
 .ck{{list-style:none;margin-top:4px}}
@@ -227,6 +257,14 @@ EXTRA = f"""
 .tbl.num2 th.hl,.tbl.num2 td.hl{{background:#F2F8F7;color:var(--teal);font-weight:700}}
 .cols2 .ck li{{font-size:9.6pt}}
 .ol.tight li{{font-size:9.8pt;margin-bottom:6px}}
+.teto{{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:center;background:var(--navy);color:#fff;border-radius:12px;padding:14px 18px;margin:4px 0 12px}}
+.teto .mono{{display:block;color:var(--gold);margin-bottom:6px}}
+.teto code{{display:block;font-family:'JetBrains Mono',monospace;font-size:10pt;color:#fff;background:rgba(255,255,255,.08);border-radius:6px;padding:6px 10px;margin-bottom:5px}}
+.teto p{{font-size:9.8pt;color:#C9CFDA}}
+.qs{{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px}}
+.q .mono{{display:block;color:var(--gold);font-size:8.2pt;margin-bottom:1px}}
+.q b{{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13pt;color:var(--navy);line-height:1.15;margin-bottom:2px}}
+.q p{{font-size:9pt;color:#3A3F4B;line-height:1.35}}
 .callout.final{{margin-top:14px}}
 .callout.final .r{{text-align:right;white-space:nowrap}}
 h1{{font-size:60pt}}
