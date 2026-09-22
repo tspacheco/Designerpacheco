@@ -18,7 +18,7 @@ C = dict(
 # ---------- modelo de anúncios (premissas explícitas) ----------
 CPC = 8.0        # R$ por conversa iniciada no WhatsApp (faixa 5–12 em serviços locais)
 AGENDA = 0.40    # conversas que viram agendamento
-TICKET = 55.0    # R$ ticket médio de um banho (a confirmar)
+TICKET = 80.0     # R$ ticket médio (banho + tosa, misto de portes; tabelas 2026 da Grande SP)
 RECOR = 0.40     # clientes novos que voltam todo mês
 def cen(budget, eff=1.0):
     conv = budget / CPC * eff
@@ -124,7 +124,7 @@ pages.append(page("", h("03 · Checklist · Fase 2 · Anúncios", "De R$ 400 a R
     <tr><td class="lab">Nível 3</td>{col(1500)}</tr>
   </tbody>
 </table>
-<p class="fine">Premissas, todas a confirmar nas duas primeiras semanas: R$ {CPC:.0f} por conversa iniciada (faixa de R$ 5 a R$ 12 em serviços locais), {AGENDA*100:.0f} % das conversas viram agendamento, ticket médio de R$ {TICKET:.0f} por banho, {RECOR*100:.0f} % dos clientes novos voltam todo mês. “Receita em 6 meses” soma cada mês de clientes novos com os que continuam voltando; não desconta o custo dos anúncios ({r(400*6)}, {r(800*6)} e {r(1500*6)} no período). Não inclui venda de ração e acessórios, que costuma vir junto.</p>
+<p class="fine">Premissas, todas a confirmar nas duas primeiras semanas: R$ {CPC:.0f} por conversa iniciada (faixa de R$ 5 a R$ 12 em serviços locais), {AGENDA*100:.0f} % das conversas viram agendamento, ticket médio de R$ {TICKET:.0f} por atendimento (banho e tosa, misto de portes, tabelas de 2026 da Grande São Paulo), {RECOR*100:.0f} % dos clientes novos voltam todo mês. “Receita em 6 meses” soma cada mês de clientes novos com os que continuam voltando; não desconta o custo dos anúncios ({r(400*6)}, {r(800*6)} e {r(1500*6)} no período). Não inclui venda de ração e acessórios, que costuma vir junto.</p>
 <div class="cols2">
   <div>
     <h3>O que montar</h3>
