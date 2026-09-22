@@ -12,8 +12,11 @@ CFG = dict(
     data="Setembro 2026",
     chamadas_dia="100+",
     min_por_tentativa=2,          # estimativa, assinalada no documento
-    setup="2200 €",
-    mensal="600 €/mês",
+    setup="2700 €",
+    setup_nota="IVA incluído",
+    mensal="400 €",
+    mensal_nota="+ IVA (92 €) = 492 €",
+    mensalidade_ginasio=40,     # € por mensalidade de sócio, em média (dado do Tomás)
     piloto_dias="30",
     email="tspacheco26@gmail.com",
     marca="Pacheco Studios",
@@ -217,7 +220,7 @@ pages.append(page("cover", f'''
   <p class="cover-kicker">Esquema de funcionamento · proposta</p>
   <h1>Follow-up &amp;<br>Recuperação<br>de Clientes</h1>
   <p class="cover-client">{esc(C["cliente"])} · {esc(C["local"])}</p>
-  <p class="cover-sub">Como transformar {esc(C["chamadas_dia"])} chamadas por dia, quase todas sem resposta, num sistema que faz o primeiro contacto sozinho e só entrega à receção quem já respondeu.</p>
+  <p class="cover-sub">Como transformar {esc(C["chamadas_dia"])} chamadas por dia num sistema que faz o primeiro contacto sozinho, insiste por si, e só entrega à receção quem já respondeu.</p>
 </div>
 <div class="cover-bot">
   <div class="cover-stat"><b>{esc(C["chamadas_dia"])}</b><span>chamadas por dia, hoje</span></div>
@@ -229,10 +232,10 @@ pages.append(page("cover", f'''
 ''', footer=False))
 
 # 2 — ponto de partida
-pages.append(page("", h("01 · O ponto de partida", "Hoje, a receção liga. Quase ninguém atende.", None) + f'''
+pages.append(page("", h("01 · O ponto de partida", "100 chamadas por dia. E depois?", None) + f'''
 <div class="grid3">
-  <div class="tile"><b>{esc(C["chamadas_dia"])}</b><span>chamadas por dia, no mínimo<br><em>dado da equipa do ginásio</em></span></div>
-  <div class="tile"><b>“ninguém atende”</b><span>o relato de quem faz as chamadas<br><em>receção {esc(C["cliente"])} {esc(C["local"])}</em></span></div>
+  <div class="tile"><b>{esc(C["chamadas_dia"])}</b><span>chamadas por dia, no mínimo<br><em>base de cálculo deste documento</em></span></div>
+  <div class="tile"><b>7 dias</b><span>de insistência automática por contacto<br><em>três toques, sem ocupar a receção</em></span></div>
   <div class="tile"><b>~{horas_dia:.0f} h</b><span>de trabalho por dia só em tentativas<br><em>estimativa: {C["min_por_tentativa"]} min por tentativa, incluindo marcar e anotar</em></span></div>
 </div>
 <div class="cols2">
@@ -240,7 +243,7 @@ pages.append(page("", h("01 · O ponto de partida", "Hoje, a receção liga. Qua
     <h3>O que se perde</h3>
     <ul class="ul">
       <li><b>A chamada não deixa rasto.</b> Um número desconhecido que toca uma vez é ignorado. Não fica nada no telemóvel da pessoa para ela voltar.</li>
-      <li><b>O tempo vai para quem não responde.</b> A receção gasta a manhã a marcar números em vez de falar com quem quer falar.</li>
+      <li><b>O tempo vai para as tentativas.</b> A receção gasta a manhã a marcar números em vez de falar com quem quer falar.</li>
       <li><b>Não há segunda tentativa organizada.</b> Quem não atendeu hoje fica dependente de alguém se lembrar de voltar a ligar.</li>
       <li><b>Não se mede.</b> Sem registo, não se sabe quantos leads viraram inscrição nem quantos membros saíram sem uma única conversa.</li>
     </ul>
@@ -249,7 +252,7 @@ pages.append(page("", h("01 · O ponto de partida", "Hoje, a receção liga. Qua
     <h3>O que muda com o sistema</h3>
     <ul class="ul ok">
       <li><b>A mensagem fica lá.</b> Um WhatsApp com o nome da pessoa e o assunto certo fica no telemóvel até ser lido.</li>
-      <li><b>O sistema insiste, a pessoa não.</b> Três toques em sete dias, cada um diferente, sem ninguém ter de se lembrar.</li>
+      <li><b>O sistema insiste, a pessoa não.</b> Três toques em sete dias, cada um diferente e cada um com uma oferta, sem ninguém ter de se lembrar.</li>
       <li><b>A receção só liga a quem respondeu.</b> Todos os dias recebe uma lista curta: nome, situação, o que a pessoa disse.</li>
       <li><b>Tudo fica registado.</b> Enviados, respostas, chamadas feitas, inscrições recuperadas. Em números, todas as semanas.</li>
     </ul>
@@ -330,6 +333,7 @@ pages.append(page("", h("05 · As mensagens", "Curtas, com nome, com a voz do Be
       <li><b>Horário decente.</b> Nada sai antes das 09:00 nem depois das 20:00, nem ao domingo.</li>
     </ul>
     <div class="note"><b>Nomes e horários deste exemplo são fictícios.</b> O texto final é escrito com a equipa do ginásio, na voz da casa.</div>
+    <div class="note alt"><b>Cada toque pode levar uma oferta.</b> O ginásio já tem o que é preciso para abrir portas: batidos de proteína, águas, massagista, personal trainer. Três ofertas ativas de cada vez, uma por situação, renovadas de 3 em 3 meses para as mensagens nunca ficarem gastas. As combinações definem-se convosco; o sistema mede qual converte melhor.</div>
   </div>
 </div>
 ''', 6))
@@ -373,13 +377,13 @@ pages.append(page("", h("07 · Tecnologia e custos de funcionamento", "Peças co
 </table>
 <div class="cols2">
   <div>
-    <h3>Custos de funcionamento (estimativa)</h3>
+    <h3>Custos de funcionamento</h3>
     <table class="tbl mini">
-      <tr><td>n8n (alojamento)</td><td class="r">20–50 €/mês</td></tr>
+      <tr><td>n8n (servidor, alojado na UE)</td><td class="r">incluído na mensalidade</td></tr>
       <tr><td>WhatsApp (Meta cobra por conversa)</td><td class="r">cêntimos por conversa; a orçamentar com o volume real</td></tr>
-      <tr><td>Folha / painel</td><td class="r">0 €</td></tr>
+      <tr><td>Folha / painel</td><td class="r">incluído</td></tr>
     </table>
-    <p class="fine">Valores indicativos de setembro de 2026, a confirmar nas tabelas oficiais antes de arrancar. Os custos de plataforma e mensagens são pagos ao custo, sem margem, e ficam em nome do ginásio.</p>
+    <p class="fine">O servidor, a vigilância e a reparação prioritária estão dentro da mensalidade. Só as mensagens WhatsApp são pagas à Meta ao custo, em nome do ginásio; o valor por conversa confirma-se na tabela oficial antes de arrancar.</p>
   </div>
   <div>
     <h3>Dados e RGPD</h3>
@@ -399,7 +403,7 @@ pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legen
 <div class="cols2 price">
   <div class="pbox">
     <span class="mono">montagem · pagamento único</span>
-    <b>{esc(C["setup"])}</b>
+    <b>{esc(C["setup"])} <small>{esc(C["setup_nota"])}</small></b>
     <ul class="ul tight">
       <li>Desenho e construção dos 5 fluxos no n8n, preparados para os três ginásios</li>
       <li>Escrita das mensagens com a equipa e registo dos modelos na Meta</li>
@@ -410,14 +414,13 @@ pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legen
   </div>
   <div class="pbox">
     <span class="mono">por mês · Olhão, Faro e Lisboa</span>
-    <b>{esc(C["mensal"])}</b>
+    <b>{esc(C["mensal"])} <small>{esc(C["mensal_nota"])}</small></b>
     <ul class="ul tight">
       <li>Um só valor para os três ginásios</li>
-      <li>Sistema sempre a correr e vigiado</li>
-      <li>Ajustes às mensagens e aos ritmos, sem limite</li>
+      <li>Todos os servidores a funcionar, vigiados 24/7, com reparação prioritária</li>
+      <li>Ajustes sem limite e suporte direto por WhatsApp</li>
       <li>Relatório mensal por ginásio com os números e o que mudar</li>
-      <li>Suporte direto por WhatsApp</li>
-      <li>Custos de plataforma e mensagens à parte, ao custo</li>
+      <li>Mensagens WhatsApp à parte, ao custo da Meta</li>
     </ul>
   </div>
 </div>
@@ -436,7 +439,7 @@ pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legen
   <div><b>E se o software do ginásio não exportar dados?</b><p>Arranca-se com leads e aulas experimentais numa folha simples que a receção já preenche. Os fluxos de inativos e pagamentos entram quando houver exportação.</p></div>
 </div>
 <div class="callout final">
-  <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span></div>
+  <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span><br><span class="pres">Assistência presencial: um subdiretor da Pacheco Studios desloca-se ao ginásio sempre que for necessário.</span></div>
   <div class="r"><span class="mono">{esc(C["email"])}</span></div>
 </div>
 ''', 9))
@@ -516,13 +519,14 @@ h3{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15.5pt;c
 .btns i{{display:inline-block;width:20px;height:20px;border-radius:6px;border:1px solid #D6D0C2;font-style:normal;text-align:center;line-height:18px;font-size:9pt;color:var(--muted);margin-right:3px}}
 .kpi{{margin-top:12px}}
 .price .pbox{{background:var(--paper);border:1px solid #EAE5DA;border-radius:12px;padding:14px 18px}}
-.pbox b.inc{{font-size:26pt;color:var(--teal);padding-top:8px}}
+.pbox b small{{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:9pt;color:var(--muted);margin-left:4px;letter-spacing:0}}
 .pbox b{{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:32pt;line-height:1;color:var(--navy);margin:4px 0 8px}}
 .ol{{padding-left:0;list-style:none;counter-reset:n}}
 .ol li{{counter-increment:n;position:relative;padding-left:30px;margin-bottom:9px;font-size:10.4pt}}
 .ol li::before{{content:counter(n);position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:12pt;text-align:center;line-height:22px}}
 .callout.final{{display:flex;justify-content:space-between;align-items:center;margin-top:18px}}
 .callout.final span{{color:#C9CFDA;font-size:9.5pt}}
+.callout.final .pres{{color:#fff;display:inline-block;margin-top:4px}}
 .callout.final .mono{{color:var(--gold);font-size:9.5pt}}
 .tbl.cmp td{{padding:8px 6px;font-size:9.8pt}}
 .tbl.cmp td:last-child{{white-space:nowrap;color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:9pt}}

@@ -71,6 +71,12 @@ def calc(variante, r=None):
                 mes=res*P["dias"], por_hora=(res/(minutos/60)) if minutos else 0, perdidos=N-conv-conv_q)
 H, A, Bv = calc("hoje"), calc("A"), calc("B")
 def f0(x): return f"{x:.0f}".replace("-","−")
+MG = B.CFG["mensalidade_ginasio"]
+MENSAL_IVA = 400 * 1.23
+def eur(x, sign=False, neg=False):
+    v = f"{abs(x):,.0f}".replace(",", " ")
+    if neg: return f"− {v} €"
+    return (("+ " if x >= 0 else "− ") if sign else "") + f"{v} €"
 def f1(x): return f"{x:.1f}".replace(".",",")
 def pct(x): return f"{x*100:.0f} %"
 
@@ -89,13 +95,13 @@ pages.append(page("", f'''
 <div class="topbar"><span class="brand">{esc(C["marca"])}</span><span class="mono">{esc(C["data"])}</span></div>
 <p class="kicker">{esc(C["cliente"])} · {esc(C["local"])} · resumo em 2 minutos</p>
 <h2 class="big">O que vai mudar.</h2>
-<p class="lead">Hoje a receção faz mais de 100 chamadas por dia e quase ninguém atende. O sistema que propomos faz o primeiro contacto por WhatsApp, insiste por si, e entrega à receção só quem já respondeu. Em cinco linhas, é isto que muda:</p>
+<p class="lead">Hoje a receção faz mais de 100 chamadas por dia. O sistema que propomos faz o primeiro contacto por WhatsApp, insiste por si, e entrega à receção só quem já respondeu. Em cinco linhas, é isto que muda:</p>
 <table class="tbl ba">
   <thead><tr><th></th><th>Hoje</th><th>Com o sistema</th></tr></thead>
   <tbody>{rows}</tbody>
 </table>
 <div class="callout"><b>A chamada passa a ser o último passo, não o primeiro.</b> A receção deixa de gastar a manhã a marcar números e passa a falar com quem quer falar.</div>
-<p class="fine">A coluna “com o sistema” descreve a variante B. Se preferir manter a chamada em primeiro (variante A), o sistema entra a seguir a cada chamada não atendida. As duas variantes estão na página 3, com números na página 4.</p>
+<p class="fine">A coluna “com o sistema” descreve a variante B. Se preferir manter a chamada em primeiro (variante A), o sistema entra a seguir a cada chamada não atendida. As duas variantes estão na página 3, as ofertas na página 4 e os números na página 5.</p>
 ''', 1))
 
 # 2 — o fluxo em 6 passos + o que o dono decide em cada um
@@ -163,7 +169,7 @@ pages.append(page("", h("Duas formas de arrancar", "A escolha é do dono. O sist
   <p class="vdesc">A receção continua a ligar como hoje. Cada chamada não atendida entra automaticamente no WhatsApp: três toques em sete dias. Quem responde volta à lista da receção, já quente. A segunda chamada nunca mais é desperdiçada.</p>
   <div class="pc">
     <div class="pro"><b>Vantagem</b><p>Mantém a metodologia atual, sem mudar hábitos da equipa. A chamada fria continua a apanhar quem atende à primeira, e o sistema trata dos outros 80 %. Mais resultados no total.</p></div>
-    <div class="con"><b>Desvantagem</b><p>Continua a gastar o tempo útil da receção nas 100 tentativas diárias, na maioria sem resposta. Esse tempo podia estar na sala, a vender e a acompanhar membros. Com as chamadas quentes por cima, o dia ainda fica mais cheio.</p></div>
+    <div class="con"><b>Desvantagem</b><p>Continua a gastar o tempo útil da receção nas 100 tentativas diárias. Esse tempo podia estar na sala, a vender e a acompanhar membros. Com as chamadas quentes por cima, o dia ainda fica mais cheio.</p></div>
   </div>
 </div>
 <div class="var">
@@ -177,6 +183,25 @@ pages.append(page("", h("Duas formas de arrancar", "A escolha é do dono. O sist
 </div>
 ''', 3))
 
+# 4 — ofertas rotativas
+ing = [
+    ("Batido de proteína", "Custa cêntimos, sabe a recompensa. Serve para trazer alguém à porta."),
+    ("Água do ginásio", "O gesto mais simples. Funciona como lembrete físico de que a casa está à espera."),
+    ("Sessão com o massagista", "Vale muito para quem está parado ou cansado. Ideal para quem já foi sócio."),
+    ("1 hora com personal trainer", f"A oferta que fecha contratos: uma hora de treino a quem assina mensalidade. A {MG} €/mês com contrato, paga-se no primeiro mês."),
+]
+ings = "".join(f'<div class="ing"><b>{esc(a)}</b><p>{esc(b)}</p></div>' for a, b in ing)
+pages.append(page("", h("Ofertas que abrem portas", "Três ofertas ativas, renovadas de 3 em 3 meses.", "Uma mensagem com uma oferta concreta converte melhor do que um convite vazio. O ginásio já tem os ingredientes; o sistema tem os lugares certos para os pôr.") + f'''
+<div class="mech">
+  <div><span class="num">1</span><b>Cada toque leva uma oferta</b><p>O terceiro toque de cada sequência, o da última mensagem, passa a ter sempre uma oferta concreta. Nas situações mais valiosas, também o primeiro.</p></div>
+  <div><span class="num">3</span><b>Três ofertas ativas de cada vez</b><p>Uma por situação: uma para quem nunca entrou, uma para quem parou, uma para quem vai renovar. Poucas, para a receção e os sócios as reconhecerem.</p></div>
+  <div><span class="num">90</span><b>Renovadas de 3 em 3 meses</b><p>Ao fim de um trimestre trocam-se. As mensagens nunca ficam gastas, e o painel mostra qual das três converteu melhor antes de decidir as próximas.</p></div>
+</div>
+<h3 class="mt">O que o ginásio já tem para oferecer</h3>
+<div class="ings">{ings}</div>
+<div class="callout"><b>Nada disto é um pacote fechado.</b> São opções. As combinações, os limites e o que cada oferta custa à casa definem-se convosco na primeira reunião. O que fica claro desde já: há espaço para criar ofertas para qualquer perfil, e um sistema capaz de as pôr à frente da pessoa certa, no dia certo.</div>
+''', 4))
+
 # 4 — números previstos
 def row(lab, key, fmt=f0, unit=""):
     return f'<tr><td class="lab">{esc(lab)}</td><td>{fmt(H[key])}{unit}</td><td>{fmt(A[key])}{unit}</td><td class="hl">{fmt(Bv[key])}{unit}</td></tr>'
@@ -184,7 +209,7 @@ sens = "".join(f'<tr><td class="lab">Resposta ao WhatsApp de {pct(r)}</td><td>{f
 pages.append(page("", h("Números previstos", "100 chamadas por dia, em cada variante.", "Projeção para um só ginásio. Não são resultados medidos: são contas feitas a partir dos pressupostos abaixo, que o piloto de 30 dias vai substituir por números reais.") + f'''
 <h3>Pressupostos usados</h3>
 <div class="assump">
-  <div><b>{pct(P["atende_fria"])}</b><span>atendem a chamada fria<br><em>o relato da receção é “quase ninguém”; 20 % é prudente</em></span></div>
+  <div><b>{pct(P["atende_fria"])}</b><span>atendem a chamada fria<br><em>valor prudente para chamadas frias; a validar</em></span></div>
   <div><b>{pct(P["resp_wa"])}</b><span>respondem ao WhatsApp em 3 toques<br><em>a validar no piloto; ver tabela em baixo</em></span></div>
   <div><b>{pct(P["atende_quente"])}</b><span>atendem a chamada depois de responderem<br><em>já disseram “sim”, a chamada é esperada</em></span></div>
   <div><b>{pct(P["conv_fria"])} · {pct(P["conv_quente"])}</b><span>conversa fria · quente que dá resultado<br><em>inscrição, regresso ou pagamento</em></span></div>
@@ -203,34 +228,36 @@ pages.append(page("", h("Números previstos", "100 chamadas por dia, em cada var
     <tr><td class="lab">Resultados por mês ({P["dias"]} dias)</td><td>{f0(H["mes"])}</td><td>{f0(A["mes"])}</td><td class="hl">{f0(Bv["mes"])}</td></tr>
     <tr><td class="lab">Horas da receção ao telefone, por dia</td><td>{f1(H["horas"])} h</td><td>{f1(A["horas"])} h</td><td class="hl">{f1(Bv["horas"])} h</td></tr>
     <tr class="sep"><td class="lab">Resultados por hora de receção</td><td>{f1(H["por_hora"])}</td><td>{f1(A["por_hora"])}</td><td class="hl">{f1(Bv["por_hora"])}</td></tr>
+    <tr class="gain"><td class="lab">Mensalidades ganhas por mês, a {MG} € cada</td><td>{eur(H["mes"]*MG)}</td><td>{eur(A["mes"]*MG)}</td><td class="hl">{eur(Bv["mes"]*MG)}</td></tr>
+    <tr class="gain"><td class="lab">Ganho face a hoje, por mês</td><td>—</td><td>{eur((A["mes"]-H["mes"])*MG, sign=True)}</td><td class="hl">{eur((Bv["mes"]-H["mes"])*MG, sign=True)}</td></tr>
+    <tr class="gain"><td class="lab">Mensalidade do sistema (400 € + 92 € IVA = 492 €)</td><td>—</td><td>{eur(MENSAL_IVA, sign=False, neg=True)}</td><td class="hl">{eur(MENSAL_IVA, sign=False, neg=True)}</td></tr>
+    <tr class="gain sep"><td class="lab">Ganho líquido por mês, num ginásio</td><td>—</td><td>{eur((A["mes"]-H["mes"])*MG-MENSAL_IVA, sign=True)}</td><td class="hl">{eur((Bv["mes"]-H["mes"])*MG-MENSAL_IVA, sign=True)}</td></tr>
   </tbody>
 </table>
-<h3 class="mt2">E se a taxa de resposta for outra? Resultados por dia</h3>
-<table class="tbl num small">
-  <thead><tr><th></th><th>Hoje</th><th>Variante A</th><th class="hl">Variante B</th></tr></thead>
-  <tbody>{sens}</tbody>
-</table>
-<div class="note"><b>Como ler.</b> A variante A dá mais resultados porque soma a chamada fria ao sistema, mas custa mais horas. A variante B dá menos resultados brutos e devolve à receção cerca de {f1(H["horas"]-Bv["horas"])} h por dia, com o melhor resultado por hora. Em três ginásios, multiplica-se por três. O piloto serve exatamente para trocar estes pressupostos por números medidos.</div>
-''', 4))
+<p class="fine">Um “resultado” vale uma mensalidade de {MG} € (inscrição nova, sócio que volta ou pagamento regularizado). Com contrato, cada mês acrescenta às anteriores: o ganho acumula. A mensalidade do sistema cobre os três ginásios; aqui está contada por inteiro contra um só.</p>
+<div class="sens"><b>E se a taxa de resposta ao WhatsApp for outra?</b> resultados por dia · {" · ".join(f'<span><i>{pct(r)}</i> A {f0(calc("A", r)["res"])} · B {f0(calc("B", r)["res"])}</span>' for r in (0.25, 0.35, 0.45))} · hoje {f0(H["res"])} em qualquer caso</div>
+<div class="note"><b>Como ler.</b> A variante A dá mais resultados porque soma a chamada fria ao sistema, mas custa mais horas. A variante B devolve à receção cerca de {f1(H["horas"]-Bv["horas"])} h por dia, com o melhor resultado por hora. Em três ginásios, multiplica-se por três. O piloto troca estes pressupostos por números medidos.</div>
+''', 5))
 
 # 5 — investimento + escolha
 pages.append(page("", h("Investimento e escolha", "Um sistema para todos os Legends de Portugal.") + f'''
 <div class="pricebox">
   <div class="pl">
     <span class="mono">montagem · pagamento único</span>
-    <b>{esc(C["setup"])}</b>
+    <b>{esc(C["setup"])} <small>{esc(C["setup_nota"])}</small></b>
     <span class="mono">acompanhamento · por mês</span>
-    <b class="m">{esc(C["mensal"])}</b>
-    <p>A mensalidade cobre <b class="t">todos os ginásios Be Legend em Portugal</b>. Custos de plataforma (n8n e mensagens WhatsApp, cêntimos por conversa) pagos ao custo, em nome do ginásio.</p>
+    <b class="m">{esc(C["mensal"])} <small>{esc(C["mensal_nota"])}</small></b>
+    <p>A mensalidade cobre <b class="t">todos os ginásios Be Legend em Portugal</b>, com todos os servidores a funcionar e reparação prioritária. Só as mensagens WhatsApp são pagas à Meta ao custo, em nome do ginásio.</p>
   </div>
   <ul class="ul tight pr">
     <li>Construção dos 5 fluxos: leads, aulas experimentais, inativos, pagamentos, renovações</li>
     <li>Variante A ou B à escolha; pode mudar-se de uma para a outra durante o piloto</li>
+    <li>Três ofertas rotativas por trimestre, definidas convosco e medidas no painel</li>
     <li>Um sistema, replicado por ginásio: Olhão primeiro, Faro e Lisboa a seguir, sem nova montagem</li>
     <li>Mensagens escritas com a equipa, na voz do Be Legend, e registadas na Meta</li>
     <li>Ligação ao software do ginásio ou à folha de contactos</li>
     <li>Lista diária da receção e painel por ginásio, no telemóvel</li>
-    <li>Mensalidade: sistema vigiado, ajustes sem limite, relatório mensal, suporte direto</li>
+    <li>Mensalidade: servidores a funcionar e vigiados, reparação prioritária, ajustes sem limite, relatório mensal, suporte direto</li>
   </ul>
 </div>
 <h3 class="mt">A decisão do dono</h3>
@@ -241,11 +268,11 @@ pages.append(page("", h("Investimento e escolha", "Um sistema para todos os Lege
 </div>
 <div class="sign"><div><span class="mono">nome</span><i></i></div><div><span class="mono">data</span><i></i></div><div><span class="mono">assinatura</span><i></i></div></div>
 <div class="callout final">
-  <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span></div>
+  <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span><br><span class="pres">Assistência presencial: um subdiretor da Pacheco Studios desloca-se ao ginásio sempre que for necessário.</span></div>
   <div class="r"><span class="mono">{esc(C["email"])}</span></div>
 </div>
 <p class="fine">O esquema completo, com o diagrama do fluxo, as mensagens exemplo e a lista da receção, está no documento “Follow-up &amp; Recuperação de Clientes” que acompanha este resumo.</p>
-''', 5))
+''', 6))
 
 EXTRA = f"""
 .topbar{{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px}}
@@ -290,12 +317,12 @@ h2.big{{font-size:44pt;margin-bottom:10px}}
 .con{{background:#FBF3E1;border-left:3px solid var(--gold)}}
 .pro b,.con b{{display:block;font-family:'JetBrains Mono',monospace;font-size:8pt;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}}
 .pro b{{color:var(--teal)}} .con b{{color:#8A6414}}
-.assump{{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:2px 0 10px}}
+.assump{{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:2px 0 8px}}
 .assump div{{background:var(--paper);border:1px solid #EAE5DA;border-radius:8px;padding:7px 10px}}
 .assump b{{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15.5pt;color:var(--navy);line-height:1;margin-bottom:3px}}
 .assump span{{font-size:8.6pt;color:#3A3F4B;line-height:1.3}}
 .assump em{{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:7.4pt;color:var(--muted);margin-top:3px}}
-.tbl.num td,.tbl.num th{{text-align:right;padding:4.5px 10px}}
+.tbl.num td,.tbl.num th{{text-align:right;padding:4px 10px}}
 .tbl.num td.lab,.tbl.num th:first-child{{text-align:left}}
 .tbl.num td{{font-family:'JetBrains Mono',monospace;font-size:9.6pt}}
 .tbl.num td.lab{{font-family:Inter;font-size:9.6pt}}
@@ -303,6 +330,23 @@ h2.big{{font-size:44pt;margin-bottom:10px}}
 .tbl.num tr.sep td{{border-top:1.5px solid var(--navy);font-weight:700;color:var(--navy)}}
 .tbl.num.small td{{padding:3.5px 10px;font-size:9pt}}
 .mt2{{margin-top:8px}}
+.pricebox .pl b small{{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:9pt;color:var(--muted);letter-spacing:0;margin-left:2px}}
+.mech{{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}}
+.mech div{{background:var(--paper);border:1px solid #EAE5DA;border-radius:10px;padding:14px 14px 12px}}
+.mech .num{{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:24pt;color:var(--gold);line-height:1;margin-bottom:6px}}
+.mech b{{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14pt;color:var(--navy);line-height:1.1;margin-bottom:4px}}
+.mech p{{font-size:9.6pt;color:#3A3F4B}}
+.ings{{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}}
+.ing{{border:1.5px dashed var(--teal);border-radius:10px;padding:12px 14px;background:#fff}}
+.ing b{{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14pt;color:var(--teal);line-height:1.1;margin-bottom:3px}}
+.ing p{{font-size:9.8pt;color:#3A3F4B}}
+.tbl.num tr.gain td{{background:#FBF3E1}}
+.tbl.num tr.gain td.hl{{background:#EEF3E4}}
+.tbl.num tr.gain.sep td{{color:var(--navy);font-weight:700}}
+.sens{{margin-top:10px;background:var(--paper);border:1px solid #EAE5DA;border-radius:8px;padding:8px 12px;font-size:9.2pt;color:#3A3F4B}}
+.sens b{{color:var(--navy);margin-right:4px}}
+.sens span{{font-family:'JetBrains Mono',monospace;font-size:8.8pt;color:var(--navy);white-space:nowrap}}
+.sens i{{font-style:normal;color:var(--gold)}}
 .choice{{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}}
 .opt{{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--navy);border-radius:10px;padding:10px 12px}}
 .opt.wide{{grid-column:1/3;background:var(--paper)}}
