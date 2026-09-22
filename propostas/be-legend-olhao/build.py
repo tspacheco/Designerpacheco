@@ -158,7 +158,7 @@ def diagram():
     s.append(node("N", cx, 994, "Respondeu?", None, "decision", "q", w=240))
     s.append(edge([(620, 1024), (660, 1024), (660, 748)], "sim", arrow=False))
     s.append(edge([(500, 1054), (500, 1086)], "não", lab_dx=18, lab_dy=4))
-    s.append(node("O", cx, 1086, "Pausa 30 dias", "volta à lista mais tarde, sem insistir", "end", "pause", w=260))
+    s.append(node("O", cx, 1086, "Pausa 3 semanas", "depois, novo toque com oferta", "end", "pause", w=260))
 
     # ----- coluna direita: receção
     rx = 700
@@ -274,7 +274,7 @@ pages.append(page("", h("01 · O ponto de partida", "100 chamadas por dia. E dep
 pages.append(page("", h("02 · O princípio", "Ligar só a quem responde.") + f'''
 <div class="grid3 rules">
   <div class="rule"><span class="num">1</span><h3>O primeiro contacto é automático</h3><p>Todos os dias às 09:00 o sistema lê a lista de contactos, percebe em que situação está cada pessoa e envia a mensagem certa. Ninguém carrega em nada.</p></div>
-  <div class="rule"><span class="num">2</span><h3>Três toques, depois pára</h3><p>Dia 0, dia 3 e dia 7. Cada mensagem é diferente e mais curta que a anterior. Quem não responde em sete dias fica em pausa 30 dias. Sem perseguir.</p></div>
+  <div class="rule"><span class="num">2</span><h3>Três toques, depois pára</h3><p>Dia 0, dia 3 e dia 7. Cada mensagem é diferente e mais curta que a anterior. Quem não responde em sete dias fica em pausa três semanas e recebe depois um novo toque, com uma oferta. Ninguém se perde.</p></div>
   <div class="rule"><span class="num">3</span><h3>A pessoa é o passo final</h3><p>A receção liga só a quem respondeu, com o contexto à frente. Uma chamada a quem disse “sim” vale mais do que cinquenta a quem não atende.</p></div>
 </div>
 <h3 class="mt">Um dia com o sistema a funcionar</h3>
@@ -399,17 +399,17 @@ pages.append(page("", h("07 · Tecnologia e custos de funcionamento", "Peças co
 ''', 8))
 
 # 9 — investimento e próximos passos
-pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legends, a arrancar em Olhão.", "Monta-se uma vez, replica-se por ginásio: cada casa com o seu número, lista e painel, a mesma lógica. Faro e Lisboa entram depois do piloto de Olhão, sem nova montagem.") + f'''
+pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legends, a arrancar em Olhão.", "Monta-se uma vez, replica-se por ginásio. Faro e Lisboa entram depois do piloto de Olhão, sem nova montagem.") + f'''
 <div class="cols2 price">
   <div class="pbox">
     <span class="mono">montagem · pagamento único</span>
     <b>{esc(C["setup"])} <small>{esc(C["setup_nota"])}</small></b>
     <ul class="ul tight">
-      <li>Desenho e construção dos 5 fluxos no motor de fluxo, preparados para os três ginásios</li>
-      <li>Escrita das mensagens com a equipa e registo dos modelos na Meta</li>
+      <li>Construção dos 5 fluxos, preparados para os três ginásios</li>
+      <li>Mensagens escritas com a equipa e registadas na Meta</li>
       <li>Ligação ao software do ginásio ou folha de contactos</li>
       <li>Lista da receção e painel semanal</li>
-      <li>Formação das receções e piloto de 30 dias acompanhado</li>
+      <li>Formação das receções e piloto acompanhado</li>
     </ul>
   </div>
   <div class="pbox">
@@ -417,27 +417,28 @@ pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legen
     <b>{esc(C["mensal"])} <small>{esc(C["mensal_nota"])}</small></b>
     <ul class="ul tight">
       <li>Um só valor para os três ginásios</li>
-      <li>Todos os servidores a funcionar, vigiados 24/7, com reparação prioritária</li>
+      <li>Servidores a funcionar, vigiados 24/7, reparação prioritária</li>
       <li>Ajustes sem limite e suporte direto por WhatsApp</li>
-      <li>Relatório mensal por ginásio com os números e o que mudar</li>
+      <li>Relatório mensal por ginásio</li>
       <li>Mensagens WhatsApp à parte, ao custo da Meta</li>
     </ul>
   </div>
 </div>
 <h3 class="mt">Como arrancamos</h3>
 <ol class="ol">
-  <li><b>Reunião de 30 minutos</b> com o dono e a receção: confirmar o software, a voz das mensagens, o número de WhatsApp e a exportação de contactos.</li>
+  <li><b>Reunião de 30 minutos</b> com o dono e a receção: software, voz das mensagens, número de WhatsApp, exportação de contactos.</li>
   <li><b>Aprovação das mensagens</b> pelo ginásio. Nada sai sem ser lido pela casa.</li>
   <li><b>Arranque com um fluxo</b>, o dos membros inativos, em modo piloto de {esc(C["piloto_dias"])} dias.</li>
-  <li><b>Revisão aos {esc(C["piloto_dias"])} dias</b> com o número que interessa: quantos membros voltaram e quantas chamadas a receção deixou de fazer. Só depois se ligam os outros quatro fluxos.</li>
+  <li><b>Revisão aos {esc(C["piloto_dias"])} dias</b> com o número que interessa: quantos membros voltaram. Só depois se ligam os outros quatro fluxos.</li>
 </ol>
 <h3 class="mt">Perguntas que costumam surgir</h3>
 <div class="faq">
   <div><b>E quem não tem WhatsApp?</b><p>Fica na lista de chamadas como hoje, já marcado, para a receção não perder tempo.</p></div>
   <div><b>Isto não parece spam?</b><p>Não: número verificado do ginásio, modelos aprovados pela Meta, nome próprio, saída num só toque. Três mensagens em sete dias, depois silêncio.</p></div>
+  <div><b>E quem não responde nos sete dias? Perde-se?</b><p>Não. Fica em pausa três semanas e recebe depois um novo toque com uma oferta só para essa pessoa, por exemplo um desconto na mensalidade. Só sai da lista quem responder PARA.</p></div>
   <div><b>E se o software do ginásio não exportar dados?</b><p>Arranca-se com leads e aulas experimentais numa folha simples. Inativos e pagamentos entram quando houver exportação.</p></div>
+  <div><b>E depois?</b><p>Mais tarde, o mesmo motor pode receber um segundo fluxo: aquisição de novos clientes.</p></div>
 </div>
-<p class="fine next">Mais tarde, o mesmo motor pode receber um segundo fluxo: aquisição de novos clientes. Depois do piloto.</p>
 <div class="callout final">
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span><br><span class="pres">Assistência presencial: um subdiretor da Pacheco Studios desloca-se ao ginásio sempre que for necessário.</span></div>
   <div class="r"><span class="mono">{esc(C["email"])}</span></div>
@@ -531,7 +532,7 @@ h3{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15.5pt;c
 .tbl.cmp td{{padding:8px 6px;font-size:9.8pt}}
 .tbl.cmp td:last-child{{white-space:nowrap;color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:9pt}}
 .fine.next{{margin:8px 0 0;color:var(--navy)}}
-.faq{{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:2px}}
+.faq{{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;margin-top:2px}}
 .faq b{{display:block;font-size:10.4pt;color:var(--navy);margin-bottom:2px}}
 .faq p{{font-size:9.5pt;color:#3A3F4B;line-height:1.4}}
 .callout.final{{margin-top:8px;padding:11px 16px}}

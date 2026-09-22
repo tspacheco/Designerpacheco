@@ -158,7 +158,7 @@ def mini(variante):
         arrow([(400, 34), (410, 34)])
         box(410, 14, 100, "Resultado", "end", "check")
         arrow([(60, 54), (60, 84)], "não respondeu", "right")
-        box(0, 84, 150, "Pausa 30 dias", "end", "pause")
+        box(0, 84, 150, "Pausa 3 semanas", "end", "pause")
     o.append("</svg>")
     return "".join(o)
 
@@ -175,7 +175,7 @@ pages.append(page("", h("Duas formas de arrancar", "A escolha é do dono. O sist
 <div class="var">
   <div class="var-head"><span class="vtag b">Variante B</span><h3>Mensagem primeiro. A receção liga só a quem respondeu.</h3></div>
   <div class="mini">{mini("B")}</div>
-  <p class="vdesc">O sistema faz o primeiro contacto por WhatsApp a todos. A receção recebe uma lista curta e liga só a quem disse “sim” ou “depois”. Quem não responde em sete dias fica em pausa e volta a entrar um mês depois.</p>
+  <p class="vdesc">O sistema faz o primeiro contacto por WhatsApp a todos. A receção recebe uma lista curta e liga só a quem disse “sim” ou “depois”. Quem não responde em sete dias fica em pausa três semanas e recebe depois um novo toque, com uma oferta. Ninguém se perde.</p>
   <div class="pc">
     <div class="pro"><b>Vantagem</b><p>Liberta a maior parte do tempo da receção para trabalho que gera vendas. Cada chamada feita é uma conversa com quem já quis falar. Melhor resultado por hora de trabalho, de longe.</p></div>
     <div class="con"><b>Desvantagem</b><p>Muda a metodologia: quem só reage a uma chamada e nunca lê mensagens deixa de ser apanhado à primeira. Menos resultados no total do que a variante A, embora com muito menos horas.</p></div>
