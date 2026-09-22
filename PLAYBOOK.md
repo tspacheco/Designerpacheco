@@ -1,7 +1,7 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 30/07/2026 (integrado no repositório + padrão NÍVEL 10K)
+> Última atualização: 22/09/2026 (proposta Be Legend Olhão + pipeline HTML→PDF)
 
 ## 0. COMO USAR
 
@@ -195,9 +195,11 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 - **Pinhal Novo (Palmela):** pinhal-novo-mercado (`sites/pinhal-novo-mercado/`) — **Pinhal Novo Mercado and Ria** (mercearia, drogaria, acessórios de telemóvel; ficha Google `g/11l2h1fz7y`, 38.632305/−8.914796) + **Pinhal Novo Restaurant** (comida kebab, pizza, cozinha indiana; sem ficha no Google) do mesmo dono, lado a lado. Um site com duas portas e a ligação "do prato à prateleira". PT/EN. Martel + Mukta. Foto real da fachada do restaurante. **Tudo a confirmar:** morada, horário, telefone, carta e preços, lista de artigos (a Google bloqueada nesta sessão). Ângulo de venda: o restaurante ainda não aparece no Maps — criar a ficha e ligar os dois é parte do serviço.
 - **Fuzeta** (pesquisa em `research/fuzeta.md`): casa-corvo (4,6★ RG/2.091, peixe frito, sem reservas — Young Serif, corvo + espinha) · paulo-molina (4,5★ RG/55, artigo VERSA "mestre Rui" — Chonburi, cardume; contactos a confirmar) · iguarias-da-vila (4,5★ TA nº5/32, TheFork, música ao vivo — Newsreader, azulejos; **já tem site → ângulo "elevar, não substituir"**) · o-coral (4,5★ RG/162, menu do dia — Lilita One, coral a ramificar)
 
-### Propostas PDF (reportlab)
+### Propostas PDF
 
-- Layout navy `#142238` + dourado `#C59A3E`. Script-tipo: `/home/claude/proposta_shalom.py` (dicionário T com pt/en).
+- Layout navy `#142238` + dourado `#C59A3E`. Script-tipo antigo (reportlab): `/home/claude/proposta_shalom.py` (dicionário T com pt/en).
+- **Pipeline novo (22/09/2026): HTML → PDF com Playwright/Chromium**, em `propostas/<cliente>/` — `build.py` gera `proposta.html` (fontes Google embutidas em base64, diagrama SVG desenhado em código) e `render.js` imprime o PDF A4. Muito mais controlo de design do que o reportlab. Fontes do documento: Barlow Condensed + Inter + JetBrains Mono.
+- **Be Legend Olhão (ginásio, belegend.pt)** — `propostas/be-legend-olhao/Be-Legend-Olhao-Follow-up-e-Recuperacao.pdf`, 9 páginas: sistema de *follow-up e recuperação de clientes* em n8n + WhatsApp Business API. Contexto dado pelo Tomás: a receção faz 100+ chamadas/dia e quase ninguém atende. Princípio do sistema: "ligar só a quem responde" (3 toques WhatsApp em 7 dias → lista diária para a receção). 5 fluxos: lead novo, aula experimental, inativo 14 dias, pagamento em atraso, renovação. Preço proposto no PDF: **900 € montagem + 89 €/mês** (editável em `CFG` no `build.py`). Escolha n8n em vez de Make: custo fixo, não cresce com o volume de contactos.
 - Royal Food — 600 € tudo incluído, âncora 500 € riscada.
 - Grupo Shalom / Ido — 500 € + 50 €/mês, caixa dourada "PARA O GRUPO −20%" → 400 € + 40 €/mês. Nunca dizer "família Shalom" nem o número de restaurantes — usar "o seu grupo de restaurantes". Versões PT + EN.
 
@@ -218,6 +220,8 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - Concorrente direto: Robot de Arquivo do TOConline. **Diferenciador: zero app, só WhatsApp.**
 
 ## 10. PENDENTES
+
+- [ ] **Be Legend Olhão** — enviar o PDF por e-mail ao dono; se houver interesse: reunião de 30 min (confirmar o software de gestão do ginásio e o que exporta; número de WhatsApp Business; voz das mensagens), piloto de 30 dias só com o fluxo de inativos. Preços do PDF são proposta do Tomás, não confirmados com o cliente.
 
 - [ ] **Sítio dos Presuntos** (Gambelas/Montenegro) — site por criar. Tasca beirã, donos de Viseu, R. Aquilino Ribeiro (nº 122 vs 212 a confirmar), tel 917 823 784 (TA) / 919 869 212 (booktables), Google 4,3/~1.220, até às 23:00. Pratos: presunto, leitão, tamboril, lula grelhada, sopa de feijão verde. Identidade planeada: Bevan, presuntos pendurados a balançar.
 - [ ] **O Caseiro2** (ex-"O Bandeira", Montenegro) — 4,6★/438, menu de almoço ~12 €, fecha 2.ª feira. Site se houver interesse.
