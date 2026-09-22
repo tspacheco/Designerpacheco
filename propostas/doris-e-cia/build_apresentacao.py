@@ -6,6 +6,7 @@ sys.path.insert(0, str(HERE.parent / "be-legend-olhao"))
 import build as B
 from build import esc, NAVY, GOLD, TEAL, LINE, MUTED, INK, PAPER
 from build_checklist import diag, C, page as _page, cb, S, r, CPC, AGENDA, TICKET, RECOR
+import funil as FN
 
 def page(cls, inner, num=None, footer=True):
     ft = f'<footer class="ft"><span>{esc(C["marca"])} · Proposta · {esc(C["cliente"])}</span><span>{num or ""}</span></footer>' if footer else ""
@@ -62,6 +63,8 @@ pages.append(page("cover", f'''
 <p class="cover-foot">Documento de apresentação · leitura em 5 minutos</p>
 ''', footer=False))
 
+pages.append(FN.pagina(page, h, C))
+
 def bars():
     W,H=1000,230; ks=[400,800,1500]; mx=max(S[k]["m6"] for k in ks)
     o=[f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">']
@@ -80,7 +83,7 @@ def bars():
 def trow(i,k):
     s_=S[k]; roi=s_["m6"]/s_["custo6"]
     return f'<tr><td class="lab">Nível {i}</td><td>{r(k)}</td><td>{s_["conv"]:.0f}</td><td>{s_["novos"]:.0f}</td><td>{r(s_["cpa"])}</td><td>{r(s_["m1"])}</td><td class="hl">{r(s_["m6"])}</td><td>{roi:.0f}×</td></tr>'
-pages.append(page("", h("01 · O potencial", "O que cada nível de anúncio pode trazer para a loja.", "Anúncios no Instagram e no Facebook, num raio de 3 km em volta da loja, para tutores de cães e gatos. Cada conversa chega no WhatsApp da Doris & Cia. Os números abaixo são uma projeção com premissas à vista; o piloto de 45 dias troca-os por números reais.") + f'''
+pages.append(page("", h("02 · O potencial", "O que cada nível de anúncio pode trazer para a loja.", "Anúncios no Instagram e no Facebook, num raio de 3 km em volta da loja, para tutores de cães e gatos. Cada conversa chega no WhatsApp da Doris & Cia. Os números abaixo são uma projeção com premissas à vista; o piloto de 45 dias troca-os por números reais.") + f'''
 <table class="tbl num2">
   <thead><tr><th></th><th>Investimento por mês</th><th>Conversas</th><th>Clientes novos</th><th>Custo por cliente</th><th>Faturamento 1.º mês</th><th class="hl">Faturamento em 6 meses</th><th>Retorno</th></tr></thead>
   <tbody>{trow(1,400)}{trow(2,800)}{trow(3,1500)}</tbody>
@@ -93,16 +96,16 @@ pages.append(page("", h("01 · O potencial", "O que cada nível de anúncio pode
 </div>
 <p class="fine">Custo por conversa iniciada de R$ {CPC:.0f} (faixa de R$ 5 a R$ 12 em serviços locais). “Faturamento em 6 meses” soma cada mês de clientes novos com os que continuam voltando. “Retorno” é faturamento dividido pelo investimento em anúncios no período. Não inclui venda de ração e acessórios, que costuma vir junto com o banho.</p>
 <div class="callout"><b>O que isto quer dizer:</b> com R$ 800 por mês em anúncios, a loja pode ganhar cerca de {S[800]["novos"]:.0f} clientes novos por mês e faturar perto de {r(S[800]["m6"])} em seis meses, gastando {r(S[800]["custo6"])}. Isso só acontece se a ficha do Google, o Instagram e o WhatsApp estiverem prontos para receber essa gente. É o que a página seguinte mostra.</div>
-''', 2))
+''', 3))
 
 rows = "".join(f'<tr><td><span class="sev {s}">{s}</span></td><td><b>{esc(a)}</b><br><span class="small">{esc(b)}</span></td><td>{esc(c)}</td></tr>' for a, b, c, s in diag)
-pages.append(page("", h("02 · O que encontramos", "Oito pontos que afastam clientes hoje.", "Levantamento feito só com o que está público: a ficha do Google e o Instagram. A boa notícia: os mais graves são os mais rápidos de resolver.") + f'''
+pages.append(page("", h("03 · O que encontramos", "Oito pontos que afastam clientes hoje.", "Levantamento feito só com o que está público: a ficha do Google e o Instagram. A boa notícia: os mais graves são os mais rápidos de resolver.") + f'''
 <table class="tbl diag">
   <thead><tr><th>Peso</th><th>O que encontramos</th><th>O que fazer</th></tr></thead>
   <tbody>{rows}</tbody>
 </table>
 <div class="callout"><b>Em uma frase:</b> a Doris &amp; Cia faz um bom trabalho, mas quem procura “banho e tosa em Vila Barros” não a encontra, e quem encontra não tem como agendar sozinho. Os pacotes a seguir resolvem exatamente isso.</div>
-''', 3))
+''', 4))
 
 def pcard(p):
     d = ' destaque' if p.get("destaque") else ''
@@ -117,10 +120,10 @@ def pcard(p):
   <h4>Montagem inclui</h4><ul class="ul tight">{inc}</ul>
   <h4>A mensalidade cobre</h4><ul class="ul tight">{mes}</ul>
 </div>'''
-pages.append(page("", h("03 · Três pacotes", "Do essencial ao completo. A Doris escolhe.", "Todos incluem o fluxo automático no WhatsApp e o site de uma página. Cada pacote contém o anterior. O que muda é até onde o fluxo vai e se há anúncios geridos.") + f'''
+pages.append(page("", h("04 · Três pacotes", "Do essencial ao completo. A Doris escolhe.", "Todos incluem o fluxo automático no WhatsApp e o site de uma página. Cada pacote contém o anterior. O que muda é até onde o fluxo vai e se há anúncios geridos.") + f'''
 <div class="pks">{"".join(pcard(p) for p in PK)}</div>
 <p class="fine">A verba dos anúncios (de R$ 400 a R$ 1.500 por mês, paga diretamente à Meta) não está incluída em nenhum pacote: é da loja e fica na conta da loja. As mensagens automáticas pelo WhatsApp têm um custo por conversa cobrado pela Meta, de centavos, também à parte.</p>
-''', 4))
+''', 5))
 
 cmp_rows = [
  ("Ficha do Google corrigida e com avaliações", 1,1,1),
@@ -141,7 +144,7 @@ cmp_rows = [
 ]
 def mk(v): return '<td class="y">✓</td>' if v else '<td class="n">—</td>'
 crows = "".join(f'<tr><td class="lab">{esc(a)}</td>{mk(b)}{mk(c)}{mk(d)}</tr>' for a,b,c,d in cmp_rows)
-pages.append(page("", h("04 · Lado a lado", "O que entra em cada pacote.") + f'''
+pages.append(page("", h("05 · Lado a lado", "O que entra em cada pacote.") + f'''
 <table class="tbl cmp2">
   <thead><tr><th></th><th>Base<br><span class="mono">R$ 3.000 · R$ 200/mês</span></th><th class="hl">Crescimento<br><span class="mono">R$ 5.000 · R$ 400/mês</span></th><th>Completo<br><span class="mono">R$ 8.000 · R$ 900/mês</span></th></tr></thead>
   <tbody>{crows}</tbody>
@@ -159,7 +162,7 @@ pages.append(page("", h("04 · Lado a lado", "O que entra em cada pacote.") + f'
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais</span></div>
   <div class="r"><span class="mono">{esc(C["tel"])}</span><br><span class="mono">{esc(C["email"])}</span></div>
 </div>
-''', 5))
+''', 6))
 
 EXTRA = f"""
 .tbl.num2 td,.tbl.num2 th{{text-align:right;padding:6px 7px;font-size:9.2pt}}
@@ -202,6 +205,8 @@ EXTRA = f"""
 .note{{margin-top:8px}}
 h1{{font-size:64pt}}
 """
+EXTRA = EXTRA + FN.EXTRA
+
 doc = f"""<!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="utf-8"><title>Proposta · {esc(C["cliente"])}</title>
 <style>{B.CSS}{EXTRA}</style></head><body>{''.join(pages)}</body></html>"""
