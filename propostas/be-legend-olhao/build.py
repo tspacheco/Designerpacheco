@@ -282,6 +282,7 @@ pages.append(page("", h("02 · O princípio", "Ligar só a quem responde.") + f'
   <div class="tl"><span class="mono">receção</span><p>Abre a lista do dia e liga. Vê o nome, a situação e a resposta exata. Marca o resultado com um toque: inscreveu, reagendou, não quer.</p></div>
   <div class="tl"><span class="mono">2.ª feira</span><p>Chega o painel da semana: mensagens enviadas, taxa de resposta, chamadas feitas, membros recuperados e leads inscritos.</p></div>
 </div>
+<div class="note alt"><b>Duas formas de arrancar, à escolha do dono.</b> <b>Variante A:</b> a receção continua a ligar primeiro e o sistema recupera por WhatsApp quem não atendeu, para a segunda chamada já ser quente. <b>Variante B:</b> a mensagem vai primeiro e a receção liga só a quem respondeu. A lógica e as mensagens são as mesmas; muda a ordem. Comparação com números no documento-resumo.</div>
 ''', 3))
 
 # 4 — diagrama
