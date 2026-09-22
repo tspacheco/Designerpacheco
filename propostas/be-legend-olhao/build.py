@@ -12,8 +12,8 @@ CFG = dict(
     data="Setembro 2026",
     chamadas_dia="100+",
     min_por_tentativa=2,          # estimativa, assinalada no documento
-    setup="900 €",
-    mensal="89 €/mês",
+    setup="2200 €",
+    mensal="600 €/mês",
     piloto_dias="30",
     email="tspacheco26@gmail.com",
     marca="Pacheco Studios",
@@ -394,26 +394,27 @@ pages.append(page("", h("07 · Tecnologia e custos de funcionamento", "Peças co
 ''', 8))
 
 # 9 — investimento e próximos passos
-pages.append(page("", h("08 · Investimento e próximos passos", "Um piloto de 30 dias, com um número para decidir.") + f'''
+pages.append(page("", h("08 · Investimento e próximos passos", "Todos os Legends, a arrancar em Olhão.", "Monta-se uma vez, replica-se por ginásio: cada casa com o seu número, lista e painel, a mesma lógica. Faro e Lisboa entram depois do piloto de Olhão, sem nova montagem.") + f'''
 <div class="cols2 price">
   <div class="pbox">
-    <span class="mono">montagem · uma vez</span>
+    <span class="mono">montagem · pagamento único</span>
     <b>{esc(C["setup"])}</b>
     <ul class="ul tight">
-      <li>Desenho e construção dos 5 fluxos no n8n</li>
+      <li>Desenho e construção dos 5 fluxos no n8n, preparados para os três ginásios</li>
       <li>Escrita das mensagens com a equipa e registo dos modelos na Meta</li>
       <li>Ligação ao software do ginásio ou folha de contactos</li>
       <li>Lista da receção e painel semanal</li>
-      <li>Formação da receção (1 h) e acompanhamento nas primeiras 2 semanas</li>
+      <li>Formação das receções e piloto de 30 dias acompanhado</li>
     </ul>
   </div>
   <div class="pbox">
-    <span class="mono">acompanhamento · por mês</span>
+    <span class="mono">por mês · Olhão, Faro e Lisboa</span>
     <b>{esc(C["mensal"])}</b>
     <ul class="ul tight">
+      <li>Um só valor para os três ginásios</li>
       <li>Sistema sempre a correr e vigiado</li>
       <li>Ajustes às mensagens e aos ritmos, sem limite</li>
-      <li>Relatório mensal com os números e o que mudar</li>
+      <li>Relatório mensal por ginásio com os números e o que mudar</li>
       <li>Suporte direto por WhatsApp</li>
       <li>Custos de plataforma e mensagens à parte, ao custo</li>
     </ul>
@@ -421,8 +422,7 @@ pages.append(page("", h("08 · Investimento e próximos passos", "Um piloto de 3
 </div>
 <h3 class="mt">Como arrancamos</h3>
 <ol class="ol">
-  <li><b>Reunião de 30 minutos</b> com o dono e a receção: confirmar o software, as situações que mais doem e a voz das mensagens.</li>
-  <li><b>Acesso</b> ao número de WhatsApp do ginásio (ou criação de um novo) e à exportação de contactos.</li>
+  <li><b>Reunião de 30 minutos</b> com o dono e a receção: confirmar o software, a voz das mensagens, o número de WhatsApp e a exportação de contactos.</li>
   <li><b>Aprovação das mensagens</b> pelo ginásio. Nada sai sem ser lido pela casa.</li>
   <li><b>Arranque com um fluxo</b>, o dos membros inativos, em modo piloto de {esc(C["piloto_dias"])} dias.</li>
   <li><b>Revisão aos {esc(C["piloto_dias"])} dias</b> com o número que interessa: quantos membros voltaram e quantas chamadas a receção deixou de fazer. Só depois se ligam os outros quatro fluxos.</li>
@@ -514,8 +514,9 @@ h3{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15.5pt;c
 .ans.para{{background:#F7E0E0;color:#8A2B2B}}
 .btns i{{display:inline-block;width:20px;height:20px;border-radius:6px;border:1px solid #D6D0C2;font-style:normal;text-align:center;line-height:18px;font-size:9pt;color:var(--muted);margin-right:3px}}
 .kpi{{margin-top:12px}}
-.price .pbox{{background:var(--paper);border:1px solid #EAE5DA;border-radius:12px;padding:18px 20px}}
-.pbox b{{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:34pt;line-height:1;color:var(--navy);margin:4px 0 10px}}
+.price .pbox{{background:var(--paper);border:1px solid #EAE5DA;border-radius:12px;padding:14px 18px}}
+.pbox b.inc{{font-size:26pt;color:var(--teal);padding-top:8px}}
+.pbox b{{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:32pt;line-height:1;color:var(--navy);margin:4px 0 8px}}
 .ol{{padding-left:0;list-style:none;counter-reset:n}}
 .ol li{{counter-increment:n;position:relative;padding-left:30px;margin-bottom:9px;font-size:10.4pt}}
 .ol li::before{{content:counter(n);position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:12pt;text-align:center;line-height:22px}}
@@ -524,10 +525,10 @@ h3{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15.5pt;c
 .callout.final .mono{{color:var(--gold);font-size:9.5pt}}
 .tbl.cmp td{{padding:8px 6px;font-size:9.8pt}}
 .tbl.cmp td:last-child{{white-space:nowrap;color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:9pt}}
-.faq{{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:4px}}
+.faq{{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:2px}}
 .faq b{{display:block;font-size:10.4pt;color:var(--navy);margin-bottom:2px}}
-.faq p{{font-size:9.8pt;color:#3A3F4B}}
-.callout.final{{margin-top:16px}}
+.faq p{{font-size:9.5pt;color:#3A3F4B;line-height:1.4}}
+.callout.final{{margin-top:12px;padding:11px 16px}}
 /* capa */
 .cover{{background:var(--navy);color:#fff;padding:18mm 18mm 16mm;display:flex;flex-direction:column}}
 .cover-top{{display:flex;justify-content:space-between;align-items:baseline}}
@@ -545,8 +546,9 @@ h1{{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:66pt;lin
 .cover-foot{{font-family:'JetBrains Mono',monospace;font-size:8pt;color:#8F97A8}}
 """
 
-doc = f"""<!DOCTYPE html>
+if __name__ == "__main__":
+  doc = f"""<!DOCTYPE html>
 <html lang="pt-PT"><head><meta charset="utf-8"><title>Follow-up &amp; Recuperação de Clientes · {esc(C["cliente"])} {esc(C["local"])}</title>
 <style>{CSS}</style></head><body>{''.join(pages)}</body></html>"""
-(HERE / "proposta.html").write_text(doc, encoding="utf-8")
-print("proposta.html", len(doc) // 1024, "KB")
+  (HERE / "proposta.html").write_text(doc, encoding="utf-8")
+  print("proposta.html", len(doc) // 1024, "KB")
