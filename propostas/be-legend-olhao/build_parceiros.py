@@ -96,7 +96,7 @@ pages.append(page("", h("Como funciona", "Três passos. O trabalho é nosso.") +
 </div>
 <h3 class="mt">A mensagem pronta a enviar</h3>
 <div class="phone">
-  <div class="bub"><p>Olá [nome], é o [nome] do Be Legend. Estamos a usar um sistema da Pacheco Studios que trata do acompanhamento dos nossos clientes por WhatsApp e que nos poupou as chamadas todas. Achei que fazia sentido para o teu negócio. Se quiseres ver como funciona, fala com o Tomás: {esc(C["email"])}. Diz que vais da minha parte.</p><span class="mono">modelo · o Be Legend adapta à sua maneira</span></div>
+  <div class="bub"><p>Olá [nome do dono], é o [o seu nome] do Be Legend. Estamos a usar um sistema da Pacheco Studios que trata do acompanhamento dos nossos clientes por WhatsApp e que nos poupou as chamadas todas. Achei que fazia sentido para o teu negócio. Se quiseres ver como funciona, fala com o Tomás: {esc(C["email"])}. Diz que vais da minha parte.</p><span class="mono">modelo · os [campos] preenchem-se na hora · o Be Legend adapta à sua maneira</span></div>
 </div>
 <div class="callout final">
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais · Algarve</span></div>

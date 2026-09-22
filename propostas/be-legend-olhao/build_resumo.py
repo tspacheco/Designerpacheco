@@ -85,7 +85,7 @@ pages = []
 # 1 — capa curta + antes/depois na mesma página
 before_after = [
     ("Quem faz o primeiro contacto", "A receção, ao telefone, 100+ vezes por dia.", "O sistema, por WhatsApp, todos os dias às 09:00. Sem ninguém carregar em nada."),
-    ("Quantas tentativas", "Uma chamada. Se não atende, fica dependente de alguém se lembrar.", "Três mensagens em sete dias, cada uma diferente. Depois pára sozinho."),
+    ("Quantas tentativas", "Uma chamada. Se não atende, fica dependente de alguém se lembrar.", "Três mensagens em sete dias, cada uma diferente. Depois pausa, e volta mais tarde com uma oferta."),
     ("A quem a receção liga", "A toda a gente, incluindo quem nunca atende.", "Só a quem respondeu “sim” ou “depois”. Lista curta, com o motivo e a resposta."),
     ("O que fica registado", "Nada, ou notas soltas.", "Cada envio, cada resposta, cada chamada e o resultado. Automático."),
     ("O que o dono vê", "Não sabe quantos leads viraram inscrição nem quantos membros saíram.", "Um painel à 2.ª feira: enviadas, respostas, chamadas, recuperados."),
