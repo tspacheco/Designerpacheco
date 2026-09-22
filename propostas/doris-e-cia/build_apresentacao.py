@@ -7,6 +7,7 @@ import build as B
 from build import esc, NAVY, GOLD, TEAL, LINE, MUTED, INK, PAPER
 from build_checklist import diag, C, page as _page, cb, S, r, CPC, AGENDA, TICKET, RECOR
 import funil as FN
+import mesames as MM
 
 def page(cls, inner, num=None, footer=True):
     ft = f'<footer class="ft"><span>{esc(C["marca"])} · Proposta · {esc(C["cliente"])}</span><span>{num or ""}</span></footer>' if footer else ""
@@ -89,12 +90,8 @@ pages.append(page("", h("02 · O potencial", "O que cada nível de anúncio pode
   <tbody>{trow(1,400)}{trow(2,800)}{trow(3,1500)}</tbody>
 </table>
 <div class="bars">{bars()}</div>
-<div class="grid3 prem">
-  <div class="tile sm"><b>{AGENDA*100:.0f} %</b><span>taxa de conversão média final<br><em>de cada 100 conversas no WhatsApp, {AGENDA*100:.0f} viram atendimento pago; já desconta quem agenda e não aparece</em></span></div>
-  <div class="tile sm"><b>R$ {TICKET:.0f}</b><span>faturamento médio por atendimento<br><em>banho e tosa, misto de portes; tabelas de 2026 da Grande São Paulo</em></span></div>
-  <div class="tile sm"><b>{RECOR*100:.0f} %</b><span>dos clientes novos voltam todo mês<br><em>com o lembrete automático de banho, incluído em todos os pacotes</em></span></div>
-</div>
-<p class="fine">Custo por conversa iniciada de R$ {CPC:.0f} (faixa de R$ 5 a R$ 12 em serviços locais). “Faturamento em 6 meses” soma cada mês de clientes novos com os que continuam voltando. “Retorno” é faturamento dividido pelo investimento em anúncios no período. Não inclui venda de ração e acessórios, que costuma vir junto com o banho.</p>
+{MM.bloco()}
+<p class="fine">Custo por conversa iniciada de R$ {CPC:.0f}. “Retorno” é o faturamento dividido pelo investimento em anúncios no período. Não inclui venda de ração e acessórios, que costuma vir junto com o banho.</p>
 <div class="callout"><b>O que isto quer dizer:</b> com R$ 800 por mês em anúncios, a loja pode ganhar cerca de {S[800]["novos"]:.0f} clientes novos por mês e faturar perto de {r(S[800]["m6"])} em seis meses, gastando {r(S[800]["custo6"])}. Isso só acontece se a ficha do Google, o Instagram e o WhatsApp estiverem prontos para receber essa gente. É o que a página seguinte mostra.</div>
 ''', 3))
 
@@ -171,6 +168,7 @@ EXTRA = f"""
 .tbl.num2 td.lab{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12pt;color:var(--navy);white-space:nowrap}}
 .tbl.num2 th.hl,.tbl.num2 td.hl{{background:#F2F8F7;color:var(--teal);font-weight:700}}
 .bars{{margin:10px 0 4px}} .bars svg{{width:100%;height:auto}}
+@media print{{.bars{{display:none}}}}   /* no PDF a tabela mes a mes substitui as barras */
 .prem .tile.sm b{{font-size:20pt;color:var(--navy)}} .prem .tile.sm span{{font-size:9pt}} .prem .tile.sm em{{font-size:7.4pt}}
 .prem{{margin-top:6px}}
 .tbl.diag td{{padding:6px 8px;font-size:9.1pt;vertical-align:top;line-height:1.35}}
@@ -205,10 +203,10 @@ EXTRA = f"""
 .note{{margin-top:8px}}
 h1{{font-size:64pt}}
 """
-EXTRA = EXTRA + FN.EXTRA
+EXTRA = EXTRA + FN.EXTRA + MM.CSS
 
 doc = f"""<!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="utf-8"><title>Proposta · {esc(C["cliente"])}</title>
-<style>{B.CSS}{EXTRA}</style></head><body>{''.join(pages)}</body></html>"""
+<style>{B.CSS}{EXTRA}</style></head><body>{''.join(pages)}<script>{MM.JS}</script></body></html>"""
 (HERE / "apresentacao.html").write_text(doc, encoding="utf-8")
 print("apresentacao.html", len(doc)//1024, "KB")

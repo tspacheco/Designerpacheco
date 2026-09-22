@@ -121,6 +121,7 @@ h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:66pt;line
 .tbl.num2 td.lab{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12pt;color:var(--navy);white-space:nowrap}
 .tbl.num2 th.hl,.tbl.num2 td.hl{background:#F2F8F7;color:var(--teal);font-weight:700}
 .bars{margin:10px 0 4px} .bars svg{width:100%;height:auto}
+@media print{.bars{display:none}}   /* no PDF a tabela mes a mes substitui as barras */
 .prem .tile.sm b{font-size:20pt;color:var(--navy)} .prem .tile.sm span{font-size:9pt} .prem .tile.sm em{font-size:7.4pt}
 .prem{margin-top:6px}
 .tbl.diag td{padding:6px 8px;font-size:9.1pt;vertical-align:top;line-height:1.35}
@@ -164,6 +165,27 @@ h1{font-size:64pt}
 .dec p{font-size:9pt;color:#3A3F4B;line-height:1.3}
 .fn + .fine{margin-top:2px}
 .decs + .callout{margin-top:10px}
+
+.mmb{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 16px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12.5pt;cursor:pointer}
+.mmb .ico{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:var(--gold);color:var(--navy);font-size:11pt;line-height:1}
+.mm{display:none;margin-top:8px;border:1px solid #EAE5DA;border-radius:12px;padding:12px 14px;background:var(--paper)}
+.mm.on{display:block}
+.mmchips{display:flex;gap:6px;margin-bottom:8px}
+.mmc{border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:999px;padding:4px 12px;font-family:'JetBrains Mono',monospace;font-size:8.5pt;cursor:pointer}
+.mmc.on{background:var(--navy);color:#fff}
+.mmw{display:none}.mmw.on{display:block}
+.tbl.mmt{margin:0}
+.tbl.mmt td,.tbl.mmt th{padding:4.5px 8px;font-size:9.2pt}
+.tbl.mmt tfoot td{border-top:1.5px solid var(--navy);border-bottom:0;font-weight:700;color:var(--navy);padding-top:6px}
+.mm .fine{margin-top:6px}
+@media print{
+  .mmb{display:none}
+  .tbl.mmt td,.tbl.mmt th{padding:3px 8px;font-size:8.8pt}
+  .mm .fine{margin-top:4px}
+  .mm{display:block;border:0;padding:0;background:transparent;margin-top:4px}
+  .mmchips{display:none}
+  .mmw{display:none}.mmw[data-n="800"]{display:block}
+}
 </style></head><body><section class="page cover">
 <div class="cover-top"><span class="brand">Pacheco Studios</span><span class="mono">Setembro 2026</span></div>
 <div class="cover-mid">
@@ -197,12 +219,16 @@ h1{font-size:64pt}
   <tbody><tr><td class="lab">Nível 1</td><td>R$ 400</td><td>50</td><td>18</td><td>R$ 23</td><td>R$ 1.400</td><td class="hl">R$ 16.800</td><td>7×</td></tr><tr><td class="lab">Nível 2</td><td>R$ 800</td><td>100</td><td>35</td><td>R$ 23</td><td>R$ 2.800</td><td class="hl">R$ 33.600</td><td>7×</td></tr><tr><td class="lab">Nível 3</td><td>R$ 1.500</td><td>172</td><td>60</td><td>R$ 25</td><td>R$ 4.830</td><td class="hl">R$ 57.960</td><td>6×</td></tr></tbody>
 </table>
 <div class="bars"><svg viewBox="0 0 1000 230" xmlns="http://www.w3.org/2000/svg"><rect x="40.0" y="163.7888198757764" width="90" height="6.2111801242236035" rx="6" fill="#D6D0C2"/><text x="85.0" y="155.7888198757764" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#6B7280">R$ 2.400</text><rect x="150.0" y="126.52173913043478" width="90" height="43.47826086956522" rx="6" fill="#1F7A6D"/><text x="195.0" y="118.52173913043478" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="16" fill="#1F7A6D">R$ 16.800</text><text x="140.0" y="196" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="17" fill="#142238">Nível 1 · R$ 400/mês</text><text x="140.0" y="216" text-anchor="middle" font-family="Inter" font-size="11" fill="#6B7280">investimento em 6 meses vs faturamento em 6 meses</text><rect x="373.3333333333333" y="157.5776397515528" width="90" height="12.422360248447207" rx="6" fill="#D6D0C2"/><text x="418.3333333333333" y="149.5776397515528" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#6B7280">R$ 4.800</text><rect x="483.3333333333333" y="83.04347826086956" width="90" height="86.95652173913044" rx="6" fill="#1F7A6D"/><text x="528.3333333333333" y="75.04347826086956" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="16" fill="#1F7A6D">R$ 33.600</text><text x="473.3333333333333" y="196" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="17" fill="#142238">Nível 2 · R$ 800/mês</text><text x="473.3333333333333" y="216" text-anchor="middle" font-family="Inter" font-size="11" fill="#6B7280">investimento em 6 meses vs faturamento em 6 meses</text><rect x="706.6666666666666" y="146.70807453416148" width="90" height="23.29192546583851" rx="6" fill="#D6D0C2"/><text x="751.6666666666666" y="138.70807453416148" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#6B7280">R$ 9.000</text><rect x="816.6666666666666" y="20.0" width="90" height="150.0" rx="6" fill="#1F7A6D"/><text x="861.6666666666666" y="12.0" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="16" fill="#1F7A6D">R$ 57.960</text><text x="806.6666666666666" y="196" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="17" fill="#142238">Nível 3 · R$ 1.500/mês</text><text x="806.6666666666666" y="216" text-anchor="middle" font-family="Inter" font-size="11" fill="#6B7280">investimento em 6 meses vs faturamento em 6 meses</text></svg></div>
-<div class="grid3 prem">
-  <div class="tile sm"><b>35 %</b><span>taxa de conversão média final<br><em>de cada 100 conversas no WhatsApp, 35 viram atendimento pago; já desconta quem agenda e não aparece</em></span></div>
-  <div class="tile sm"><b>R$ 80</b><span>faturamento médio por atendimento<br><em>banho e tosa, misto de portes; tabelas de 2026 da Grande São Paulo</em></span></div>
-  <div class="tile sm"><b>40 %</b><span>dos clientes novos voltam todo mês<br><em>com o lembrete automático de banho, incluído em todos os pacotes</em></span></div>
+
+<button type="button" class="mmb" id="mmb" aria-expanded="false" aria-controls="mm">
+  <span class="ico" aria-hidden="true">+</span><span class="tx">Ver mês a mês</span>
+</button>
+<div class="mm" id="mm">
+  <div class="mmchips" role="group" aria-label="Nível de investimento"><button type="button" class="mmc" data-n="400">R$ 400/mês</button><button type="button" class="mmc on" data-n="800">R$ 800/mês</button><button type="button" class="mmc" data-n="1500">R$ 1.500/mês</button></div>
+  <div class="mmw" data-n="400"><table class="tbl num2 mmt" data-n="400"><thead><tr><th></th><th>Clientes novos</th><th>Que voltam</th><th>Atendimentos</th><th class="hl">Faturamento</th></tr></thead><tbody><tr><td class="lab">Mês 1</td><td>18</td><td>0</td><td>18</td><td class="hl">R$ 1.400</td></tr><tr><td class="lab">Mês 2</td><td>18</td><td>7</td><td>24</td><td class="hl">R$ 1.960</td></tr><tr><td class="lab">Mês 3</td><td>18</td><td>14</td><td>32</td><td class="hl">R$ 2.520</td></tr><tr><td class="lab">Mês 4</td><td>18</td><td>21</td><td>38</td><td class="hl">R$ 3.080</td></tr><tr><td class="lab">Mês 5</td><td>18</td><td>28</td><td>46</td><td class="hl">R$ 3.640</td></tr><tr><td class="lab">Mês 6</td><td>18</td><td>35</td><td>52</td><td class="hl">R$ 4.200</td></tr></tbody><tfoot><tr><td class="lab">6 meses</td><td colspan="3"></td><td class="hl">R$ 16.800</td></tr></tfoot></table></div><div class="mmw on" data-n="800"><table class="tbl num2 mmt" data-n="800"><thead><tr><th></th><th>Clientes novos</th><th>Que voltam</th><th>Atendimentos</th><th class="hl">Faturamento</th></tr></thead><tbody><tr><td class="lab">Mês 1</td><td>35</td><td>0</td><td>35</td><td class="hl">R$ 2.800</td></tr><tr><td class="lab">Mês 2</td><td>35</td><td>14</td><td>49</td><td class="hl">R$ 3.920</td></tr><tr><td class="lab">Mês 3</td><td>35</td><td>28</td><td>63</td><td class="hl">R$ 5.040</td></tr><tr><td class="lab">Mês 4</td><td>35</td><td>42</td><td>77</td><td class="hl">R$ 6.160</td></tr><tr><td class="lab">Mês 5</td><td>35</td><td>56</td><td>91</td><td class="hl">R$ 7.280</td></tr><tr><td class="lab">Mês 6</td><td>35</td><td>70</td><td>105</td><td class="hl">R$ 8.400</td></tr></tbody><tfoot><tr><td class="lab">6 meses</td><td colspan="3"></td><td class="hl">R$ 33.600</td></tr></tfoot></table></div><div class="mmw" data-n="1500"><table class="tbl num2 mmt" data-n="1500"><thead><tr><th></th><th>Clientes novos</th><th>Que voltam</th><th>Atendimentos</th><th class="hl">Faturamento</th></tr></thead><tbody><tr><td class="lab">Mês 1</td><td>60</td><td>0</td><td>60</td><td class="hl">R$ 4.830</td></tr><tr><td class="lab">Mês 2</td><td>60</td><td>24</td><td>85</td><td class="hl">R$ 6.762</td></tr><tr><td class="lab">Mês 3</td><td>60</td><td>48</td><td>109</td><td class="hl">R$ 8.694</td></tr><tr><td class="lab">Mês 4</td><td>60</td><td>72</td><td>133</td><td class="hl">R$ 10.626</td></tr><tr><td class="lab">Mês 5</td><td>60</td><td>97</td><td>157</td><td class="hl">R$ 12.558</td></tr><tr><td class="lab">Mês 6</td><td>60</td><td>121</td><td>181</td><td class="hl">R$ 14.490</td></tr></tbody><tfoot><tr><td class="lab">6 meses</td><td colspan="3"></td><td class="hl">R$ 57.960</td></tr></tfoot></table></div>
+  <p class="fine">O investimento fica igual todos os meses: o que cresce é a camada de clientes que voltam. Se 15 % dos fidelizados deixarem de vir a cada mês, o total de seis meses cai cerca de 15 %.</p>
 </div>
-<p class="fine">Custo por conversa iniciada de R$ 8 (faixa de R$ 5 a R$ 12 em serviços locais). “Faturamento em 6 meses” soma cada mês de clientes novos com os que continuam voltando. “Retorno” é faturamento dividido pelo investimento em anúncios no período. Não inclui venda de ração e acessórios, que costuma vir junto com o banho.</p>
+<p class="fine">Custo por conversa iniciada de R$ 8. “Retorno” é o faturamento dividido pelo investimento em anúncios no período. Não inclui venda de ração e acessórios, que costuma vir junto com o banho.</p>
 <div class="callout"><b>O que isto quer dizer:</b> com R$ 800 por mês em anúncios, a loja pode ganhar cerca de 35 clientes novos por mês e faturar perto de R$ 33.600 em seis meses, gastando R$ 4.800. Isso só acontece se a ficha do Google, o Instagram e o WhatsApp estiverem prontos para receber essa gente. É o que a página seguinte mostra.</div>
 <footer class="ft"><span>Pacheco Studios · Proposta · Doris &amp; Cia Pet Shop</span><span>3</span></footer></section><section class="page "><p class="kicker">03 · O que encontramos</p><h2>Oito pontos que afastam clientes hoje.</h2><p class="lead">Levantamento feito só com o que está público: a ficha do Google e o Instagram. A boa notícia: os mais graves são os mais rápidos de resolver.</p>
 <table class="tbl diag">
@@ -255,4 +281,23 @@ h1{font-size:64pt}
   <div><b>Pacheco Studios</b><br><span>Web design e sistemas para negócios locais</span></div>
   <div class="r"><span class="mono">+351 967 117 357</span><br><span class="mono">tspacheco26@gmail.com</span></div>
 </div>
-<footer class="ft"><span>Pacheco Studios · Proposta · Doris &amp; Cia Pet Shop</span><span>6</span></footer></section></body></html>
+<footer class="ft"><span>Pacheco Studios · Proposta · Doris &amp; Cia Pet Shop</span><span>6</span></footer></section><script>
+(function(){
+  var b=document.getElementById('mmb'), m=document.getElementById('mm');
+  if(!b||!m) return;
+  b.addEventListener('click',function(){
+    var o=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded',!o);
+    m.classList.toggle('on',!o);
+    b.querySelector('.ico').textContent=o?'+':'\u2212';
+    b.querySelector('.tx').textContent=o?'Ver mês a mês':'Esconder';
+  });
+  document.querySelectorAll('.mmc').forEach(function(c){
+    c.addEventListener('click',function(){
+      var n=c.dataset.n;
+      document.querySelectorAll('.mmc').forEach(function(x){x.classList.toggle('on',x===c)});
+      document.querySelectorAll('.mmw').forEach(function(w){w.classList.toggle('on',w.dataset.n===n)});
+    });
+  });
+})();
+</script></body></html>

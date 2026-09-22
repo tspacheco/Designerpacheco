@@ -8,7 +8,8 @@ const path = require('path');
   await p.goto('file://' + path.resolve(__dirname, htmlName), { waitUntil: 'load' });
   await p.evaluate(() => document.fonts.ready);
   await p.pdf({ path: path.resolve(__dirname, pdfName), format: 'A4', printBackground: true, preferCSSPageSize: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
-    if (out) {
+  if (out) {
+    await p.emulateMedia({ media: 'print' });   // previews = o que sai no PDF
     const n = await p.$$eval('.page', els => els.length);
     for (let i = 0; i < n; i++) {
       const el = (await p.$$('.page'))[i];
