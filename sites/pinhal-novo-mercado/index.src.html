@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  PINHAL NOVO MERCADO AND RIA — demo Pacheco Studios · 22/09/2026
+  PINHAL NOVO MERCADO AND RIA — Pacheco Studios · 23/09/2026
   Mercearia · Drogaria · Telemóvel · Bebidas e snacks · Pinhal Novo (Palmela)
   Herói: montagem em vídeo das fotografias da loja (entrada → corredores → parede dos telemóveis), gerada por video-montagem.js.
   Cada secção tem o seu mundo, a sua cor e a sua fotografia animada (revelação, varrimento de luz, etiquetas).
@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#1A120E">
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="%238A4A06"/><path d="M12 24h40M12 36h40M12 48h40" stroke="%23F4EBDD" stroke-width="4"/><rect x="18" y="14" width="8" height="10" rx="2" fill="%23F4EBDD"/><rect x="36" y="26" width="10" height="10" rx="2" fill="%23F4EBDD"/><rect x="22" y="38" width="12" height="10" rx="2" fill="%23F4EBDD"/></svg>'>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"GroceryStore","name":"Pinhal Novo Mercado and Ria","address":{"@type":"PostalAddress","addressLocality":"Pinhal Novo","addressRegion":"Setúbal","addressCountry":"PT"},"geo":{"@type":"GeoCoordinates","latitude":38.632305,"longitude":-8.9147957},"hasMap":"https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y"}
+{"@context":"https://schema.org","@type":"GroceryStore","name":"Pinhal Novo Mercado and Ria","address":{"@type":"PostalAddress","addressLocality":"Pinhal Novo","addressRegion":"Setúbal","addressCountry":"PT"},"telephone":"+351939227678","openingHours":"Mo-Su 08:00-23:00","image":"media/fachada.jpg","geo":{"@type":"GeoCoordinates","latitude":38.632305,"longitude":-8.9147957},"hasMap":"https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y"}
 </script>
 <style>/*__FONTES__*/</style>
 <style>
@@ -184,13 +184,14 @@ html[data-lang="en"] [lang="pt"]{display:none}
 .visto .etiqueta{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .visto .etiqueta.e1{transition-delay:1s}.visto .etiqueta.e2{transition-delay:1.2s}.visto .etiqueta.e3{transition-delay:1.4s}
 .foto-cena figcaption{margin-top:.9rem;font-size:13.5px;opacity:.72}
-#peixe{background:linear-gradient(180deg,#DCEFF3,#BDDDE6);color:#0F3A46}
-#peixe .lead{color:#1F5563}
-#peixe .foto-cena{--placa:#8FC9D8}
-#peixe .foto-cena .moldura{aspect-ratio:1220/640}
-#peixe.visto .foto-cena img{animation:flutua 7s ease-in-out 2.6s infinite}
-@keyframes flutua{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.035) translateY(-5px)}}
+.extra{background:var(--tinta);color:#EFE4D2;padding:1.4rem var(--pad)}
+.extra .dentro{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:1.4rem}
+.extra img{width:132px;height:88px;object-fit:cover;border-radius:12px;flex:none;box-shadow:0 14px 30px -14px rgba(0,0,0,.7);transform:rotate(-2deg) scale(.9);opacity:0;transition:transform .9s var(--ease),opacity .9s}
+.extra.visto img{transform:rotate(-2deg) scale(1);opacity:1}
+.extra b{font-family:"Martel",serif;font-size:1.25rem;color:#fff}
+.extra p{margin-top:.2rem;font-size:15px;color:#D9C9B4;max-width:60ch}
 #drogaria .foto-cena{--placa:#8FD3B8}
+#bebidas .foto-cena{--placa:#F08A2E}
 #mercearia .foto-cena{--placa:#E8A825}
 #telemovel .foto-cena{--placa:#4FC3F7}
 #balcao .foto-cena{--placa:var(--acafrao-2)}
@@ -240,7 +241,6 @@ html[data-lang="en"] [lang="pt"]{display:none}
 </head>
 <body>
 
-<div class="demo"><strong>Apresentação Pacheco Studios</strong><span>· demonstração · "a confirmar" = ainda não validado com o dono · artigos são exemplos</span></div>
 
 <header class="topo">
   <a class="marca" href="#" aria-label="Início">
@@ -249,7 +249,7 @@ html[data-lang="en"] [lang="pt"]{display:none}
   </a>
   <nav class="nav" aria-label="Secções">
     <a href="#mercearia"><span lang="pt">Mercearia</span><span lang="en">Grocery</span></a>
-    <a href="#peixe"><span lang="pt">Peixe</span><span lang="en">Fish</span></a><a href="#drogaria"><span lang="pt">Drogaria</span><span lang="en">Household</span></a>
+    <a href="#drogaria"><span lang="pt">Drogaria</span><span lang="en">Household</span></a>
     <a href="#telemovel"><span lang="pt">Telemóvel</span><span lang="en">Phone</span></a>
     <a href="#bebidas"><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></a>
     <a href="#restaurante"><span lang="pt">Restaurante ao lado</span><span lang="en">Restaurant next door</span></a>
@@ -261,7 +261,6 @@ html[data-lang="en"] [lang="pt"]{display:none}
   <div class="cabeca"><strong>Mercado and Ria</strong><button type="button" class="burger" id="fechar" aria-label="Fechar menu" style="display:grid"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
   <ul>
     <li><a href="#mercearia"><span lang="pt">Mercearia</span><span lang="en">Grocery</span></a></li>
-    <li><a href="#peixe"><span lang="pt">Peixe</span><span lang="en">Fish</span></a></li>
     <li><a href="#drogaria"><span lang="pt">Drogaria</span><span lang="en">Household</span></a></li>
     <li><a href="#telemovel"><span lang="pt">Telemóvel</span><span lang="en">Phone accessories</span></a></li>
     <li><a href="#bebidas"><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></a></li>
@@ -278,7 +277,7 @@ html[data-lang="en"] [lang="pt"]{display:none}
   <div class="veu" aria-hidden="true"></div>
   <div class="dentro">
     <h1 class="entra"><span lang="pt">Quase tudo o que uma casa precisa, <em>ao virar da esquina.</em></span><span lang="en">Almost everything a home needs, <em>round the corner.</em></span></h1>
-    <p class="frase entra" data-i="1"><span lang="pt">Mercearia, cosméticos, limpeza, fruta e legumes, bebidas, tabacaria, acessórios de telemóvel e Ria Money Transfer. Em Pinhal Novo, ao lado do Pinhal Novo Restaurant.</span><span lang="en">Groceries, cosmetics, cleaning, fruit and veg, drinks, tobacco, phone accessories and Ria Money Transfer. In Pinhal Novo, next to Pinhal Novo Restaurant.</span></p>
+    <p class="frase entra" data-i="1"><span lang="pt">Mercearia, cosméticos, limpeza, fruta e legumes, bebidas, tabacaria, acessórios de telemóvel e Ria Money Transfer. Aberto todos os dias, das 8h às 23h, ao lado do Pinhal Novo Restaurant.</span><span lang="en">Groceries, cosmetics, cleaning, fruit and veg, drinks, tobacco, phone accessories and Ria Money Transfer. Open every day, 8am to 11pm, next to Pinhal Novo Restaurant.</span></p>
     <div class="acoes entra" data-i="2">
       <a class="btn acafrao" href="#mercearia"><span lang="pt">Ver as secções</span><span lang="en">See the sections</span></a>
       <a class="btn linha" href="https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><span lang="pt">Como chegar</span><span lang="en">Directions</span></a>
@@ -288,7 +287,6 @@ html[data-lang="en"] [lang="pt"]{display:none}
 
 <nav class="indice" aria-label="Secções da loja"><ul>
   <li><a href="#mercearia"><i style="background:#F3C64A"></i><span lang="pt">Mercearia</span><span lang="en">Grocery</span></a></li>
-  <li><a href="#peixe"><i style="background:#7FC4D6"></i><span lang="pt">Peixe</span><span lang="en">Fish</span></a></li>
   <li><a href="#drogaria"><i style="background:#8FD3B8"></i><span lang="pt">Drogaria</span><span lang="en">Household</span></a></li>
   <li><a href="#telemovel"><i style="background:#4FC3F7"></i><span lang="pt">Telemóvel</span><span lang="en">Phone</span></a></li>
   <li><a href="#bebidas"><i style="background:#F08A2E"></i><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></a></li>
@@ -322,29 +320,16 @@ html[data-lang="en"] [lang="pt"]{display:none}
   </div>
 </section>
 
-<!-- ===== 1b · PEIXE ===== -->
-<section class="seccao" id="peixe">
-  <div class="dentro duas">
-    <figure class="foto-cena">
-      <div class="moldura"><img src="media/peixe.jpg" alt="Tilápia inteira numa folha de bananeira, com gengibre, alho, chalotas, malaguetas secas, tomate e erva-príncipe" width="1220" height="640" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
-      <span class="etiqueta e1" style="left:6%;top:8%"><i></i><span lang="pt">Tilápia inteira</span><span lang="en">Whole tilapia</span></span>
-      <span class="etiqueta e2" style="right:5%;top:22%"><i style="background:#C4202B"></i><span lang="pt">Malaguetas e especiarias</span><span lang="en">Chillies and spices</span></span>
-      <span class="etiqueta e3" style="left:14%;bottom:10%"><i style="background:#5E8A4A"></i><span lang="pt">Pergunte o que há hoje</span><span lang="en">Ask what's in today</span></span>
-      <figcaption><span lang="pt">Fotografia de apresentação — a foto do peixe da loja substitui-a.</span><span lang="en">Presentation photo — to be replaced by the shop's own.</span></figcaption>
-    </figure>
+<!-- ===== extra · CONGELADOS ===== -->
+<aside class="extra" id="congelados" aria-label="Congelados">
+  <div class="dentro">
+    <img src="media/peixe.jpg" alt="Peixe inteiro com especiarias" width="1220" height="640" loading="lazy" decoding="async">
     <div>
-      <h2><span lang="pt">Peixe</span><span lang="en">Fish</span></h2>
-      <p class="lead"><span lang="pt">Tilápia inteira e o peixe que vai chegando durante a semana, com as especiarias e as malaguetas para o cozinhar como em casa.</span><span lang="en">Whole tilapia and the fish that arrives through the week, with the spices and chillies to cook it the way you do at home.</span></p>
-      <ul class="lista">
-        <li><span lang="pt">Tilápia inteira</span><span lang="en">Whole tilapia</span></li>
-        <li><span lang="pt">Outros peixes conforme a semana</span><span lang="en">Other fish depending on the week</span></li>
-        <li><span lang="pt">Gengibre, alho, chalotas</span><span lang="en">Ginger, garlic, shallots</span></li>
-        <li><span lang="pt">Malaguetas secas e masalas</span><span lang="en">Dried chillies and masalas</span></li>
-      </ul>
-      <p class="nota"><span lang="pt">Variedade, fresco ou congelado e dias de chegada: a confirmar com o dono.</span><span lang="en">Variety, fresh or frozen and delivery days: to be confirmed with the owner.</span></p>
+      <b><span lang="pt">Também temos congelados</span><span lang="en">We also stock frozen food</span></b>
+      <p><span lang="pt">Peixe, legumes e refeições rápidas nas arcas ao fundo da mercearia. Pergunte o que há esta semana.</span><span lang="en">Fish, vegetables and quick meals in the freezers at the back of the shop. Ask what's in this week.</span></p>
     </div>
   </div>
-</section>
+</aside>
 
 <!-- ===== 2 · DROGARIA ===== -->
 <section class="seccao" id="drogaria">
@@ -399,19 +384,11 @@ html[data-lang="en"] [lang="pt"]{display:none}
 <!-- ===== 4 · BEBIDAS E SNACKS ===== -->
 <section class="seccao" id="bebidas">
   <div class="dentro duas">
-    <div class="cena" aria-hidden="true">
-      <svg viewBox="0 0 400 400">
-        <g class="sobe-svg">
-          <rect x="40" y="320" width="320" height="10" rx="2" fill="#8C3A18"/>
-          <g class="lata"><rect x="70" y="200" width="60" height="120" rx="10" fill="#C4202B" stroke="#4A1A0A" stroke-width="3"/><rect x="78" y="240" width="44" height="30" rx="4" fill="#fff" opacity=".85"/></g>
-          <g class="lata"><rect x="150" y="200" width="60" height="120" rx="10" fill="#F08A2E" stroke="#4A1A0A" stroke-width="3"/><rect x="158" y="240" width="44" height="30" rx="4" fill="#fff" opacity=".85"/></g>
-          <g class="lata"><rect x="230" y="200" width="60" height="120" rx="10" fill="#3F6B3A" stroke="#4A1A0A" stroke-width="3"/><rect x="238" y="240" width="44" height="30" rx="4" fill="#fff" opacity=".85"/></g>
-          <g class="lata"><path d="M312 320l-6-90q0-10 10-10h28q10 0 10 10l-6 90z" fill="#F3C64A" stroke="#4A1A0A" stroke-width="3"/><path d="M322 236l-4-14h26l-4 14z" fill="#4A1A0A"/></g>
-          <g fill="none" stroke="#FFFFFF" stroke-width="2"><path class="fresco" d="M100 190q6-8 0-16" /><path class="fresco" d="M180 190q6-8 0-16" style="animation-delay:.7s"/><path class="fresco" d="M260 190q6-8 0-16" style="animation-delay:1.4s"/></g>
-          <rect x="60" y="120" width="90" height="50" rx="6" fill="#FFF3D6" stroke="#4A1A0A" stroke-width="3"/><path d="M60 128h90" stroke="#4A1A0A" stroke-width="2"/>
-        </g>
-      </svg>
-    </div>
+    <figure class="foto-cena">
+      <div class="moldura"><img src="media/bebidas.jpg" alt="As prateleiras das bebidas: refrigerantes, sumos, água em garrafão e energéticas" width="1200" height="1435" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
+      <span class="etiqueta e1" style="left:5%;top:9%"><i style="background:#F08A2E"></i><span lang="pt">Refrigerantes e sumos</span><span lang="en">Soft drinks and juices</span></span><span class="etiqueta e2" style="right:6%;top:32%"><i style="background:#4FC3F7"></i><span lang="pt">Água em garrafão</span><span lang="en">Bottled water</span></span><span class="etiqueta e3" style="left:10%;bottom:12%"><i style="background:#5E8A4A"></i><span lang="pt">Energéticas e cerveja</span><span lang="en">Energy drinks and beer</span></span>
+      <figcaption><span lang="pt">As prateleiras das bebidas.</span><span lang="en">The drinks shelves.</span></figcaption>
+    </figure>
     <div>
       <h2><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></h2>
       <p class="lead"><span lang="pt">Frescos no frigorífico, snacks para o caminho e os doces que se procuram e não se encontram noutro lado.</span><span lang="en">Cold drinks in the fridge, snacks for the road, and the sweets you look for and can't find elsewhere.</span></p>
@@ -441,8 +418,8 @@ html[data-lang="en"] [lang="pt"]{display:none}
         <li><span lang="pt">Doces, pastilhas e snacks</span><span lang="en">Sweets, gum and snacks</span></li>
       </ul>
       <div class="contactos">
-        <div class="dado"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><div><b><span lang="pt">Telefone</span><span lang="en">Phone</span></b><span class="confirmar"><span lang="pt">a confirmar</span><span lang="en">tbc</span></span></div></div>
-        <div class="dado"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b><span lang="pt">Horário</span><span lang="en">Opening hours</span></b><span class="confirmar"><span lang="pt">a confirmar com o dono</span><span lang="en">to be confirmed with the owner</span></span></div></div>
+        <div class="dado"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><div><b><span lang="pt">Telefone</span><span lang="en">Phone</span></b><span><a href="tel:+351939227678">939 227 678</a></span></div></div>
+        <div class="dado"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b><span lang="pt">Horário</span><span lang="en">Opening hours</span></b><span><span lang="pt">Todos os dias, das 8h às 23h</span><span lang="en">Every day, 8am to 11pm</span></span></div></div>
         <div class="dado"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><div><b><span lang="pt">Pagamento</span><span lang="en">Payment</span></b><span><span lang="pt">Dinheiro e multibanco · MB WAY </span><span lang="en">Cash and card · MB WAY </span><span class="confirmar"><span lang="pt">a confirmar</span><span lang="en">tbc</span></span></span></div></div>
       </div>
     </div>
@@ -520,7 +497,7 @@ document.getElementById('fechar').addEventListener('click', fecha);
 menu.addEventListener('click', function(e){ if (e.target.closest('a')) fecha(); });
 requestAnimationFrame(function(){ setTimeout(function(){ document.body.classList.add('pronto'); }, 80); });
 var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('visto'); var s = en.target.querySelector('.sino'); if (s) s.classList.add('toca'); io.unobserve(en.target); } }); }, {rootMargin: '0px 0px -12% 0px'}) : null;
-document.querySelectorAll('.seccao').forEach(function(el){ if (io) io.observe(el); else el.classList.add('visto'); });
+document.querySelectorAll('.seccao,.extra').forEach(function(el){ if (io) io.observe(el); else el.classList.add('visto'); });
 </script>
 </body>
 </html>

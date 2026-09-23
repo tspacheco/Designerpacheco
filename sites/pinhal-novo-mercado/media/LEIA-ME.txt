@@ -4,12 +4,14 @@ fachada.jpg                 a entrada (letreiro, porta 17, Ria, Olá) — poster
 corredor-mercearia.jpg      corredor da mercearia (fruta, pão, arcas) — secção Mercearia
 corredor-drogaria.jpg       corredor dos champôs e da limpeza — secção Drogaria
 telemovel.jpg               parede dos acessórios de telemóvel — secção Telemóvel
+bebidas.jpg                 prateleiras das bebidas — secção Bebidas e snacks
 interior.jpg                o balcão à entrada — secção "Ao balcão"
-peixe.jpg                   tilápia com especiarias — FOTO DE APRESENTAÇÃO (Google Imagens): substituir pela do dono
+peixe.jpg                   peixe com especiarias — ilustra a faixa "Também temos congelados" (foto de apresentação, Google Imagens)
 restaurante-montra.jpg      recorte da montra do restaurante (embutido no index.html, secção "Ao lado")
 video/heroi-1280x720.mp4    o herói: montagem entrada → corredor → telemóveis → drogaria, 15 s em loop (MP4 + WebM)
 video/heroi-720x1280.*      o mesmo em vertical (o site escolhe conforme o ecrã; serve para stories/reels)
 
-As fotografias vieram da ficha Google Maps em 580 px de largura: ficam bem no site, mas para o vídeo do herói
-uma versão original do telemóvel do dono (3000 px) fica bastante mais nítida — basta substituir os ficheiros e correr:
+As fotografias vieram da ficha Google Maps em 580 px de largura. As versões melhoradas no Higgsfield (upscale 2K,
+23/09) estão na conta Higgsfield do Tomás: descarregar e gravar aqui com os MESMOS nomes (fachada.jpg,
+corredor-mercearia.jpg, corredor-drogaria.jpg, telemovel.jpg, bebidas.jpg, interior.jpg), depois regenerar o vídeo:
   NODE_PATH=$(npm root -g) node video-montagem.js media/video/heroi-1280x720.mp4 1280 720 <plano.jpg:seg:x,y,zoom:x,y,zoom> ...
