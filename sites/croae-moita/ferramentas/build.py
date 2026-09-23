@@ -18,7 +18,7 @@ ICO_PASSEIO = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="c
 ICO_CASA = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>'
 PATA_ICO = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><ellipse cx="12" cy="15.5" rx="4.2" ry="3.4"/><circle cx="6.5" cy="10.5" r="2"/><circle cx="10" cy="7.5" r="2"/><circle cx="14" cy="7.5" r="2"/><circle cx="17.5" cy="10.5" r="2"/></svg>'
 # ranhuras fixas: o cliente grava media/galeria/01.jpg … 30.jpg e media/parceiros/01.png … 12.png; as que faltam desaparecem
-GALERIA = ''.join(f'<figure class="foto"><img src="media/galeria/{i:02d}.jpg" alt="Fotografia {i} do CROAE Moita" loading="lazy" onerror="this.parentElement.remove()"></figure>' for i in range(1,31))
+GALERIA = ''.join(f'<figure class="foto"><img src="media/galeria/{i:02d}.jpg" alt="Fotografia {i} do CROAE Moita" loading="lazy" onerror="this.parentElement.remove()"></figure>' for i in range(1,41))
 LOGOS = ''.join(f'<div class="logo-slot"><img src="media/parceiros/{i:02d}.png" alt="Logótipo de parceiro {i}" loading="lazy" onerror="this.parentElement.remove()"></div>' for i in range(1,13))
 ICO_SACO = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 12H5z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M9.5 14.5c.5-1.5 4.5-1.5 5 0"/></svg>'
 def svg_fundo(cor1, cor2, forma):
