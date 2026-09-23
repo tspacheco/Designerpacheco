@@ -94,6 +94,7 @@ Quando o cliente compra o site avulso e ninguém vai atualizar nada, a direção
 - O que o cliente possa querer acrescentar entra **por ficheiros de nome fixo** (`media/galeria/01…30.jpg`, `media/parceiros/01…12.png`, `media/video/x.mp4`) com `onerror` a esconder o que falta e um `LEIA-ME.txt` por pasta. Zero edição de HTML.
 - Nada "a confirmar" pode ir para produção: ou se confirma ou se corta antes de entregar.
 - Assinatura visual assente em algo permanente do cliente (um objeto, um gesto, um slogan), nunca num número que envelhece.
+- **Capturas de carrossel do Instagram em lote** (23/09): `sites/croae-moita/ferramentas/limpa-lote.py` — corta a faixa cinzenta à esquerda, apaga os botões ‹ › por correspondência de padrão (`tpl_botao.npy`; aceitar ≥0,5 se estiver na margem a meio da altura, ≥0,85 noutro sítio) e **corta os últimos 40 px** em vez de tentar apagar os pontos (a deteção dos pontos falha em fundos claros; o corte nunca falha). Verificar sempre com a folha `verificacao_*.png` que o script gera.
 
 ## 3-B. SITES COM 3D / REACT (novo — 30/08/2026)
 
@@ -232,7 +233,7 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 
 ## 10. PENDENTES
 
-- [ ] **CROAE Moita** — demo multi-página v2 feita ("A trela", sem manutenção). Falta: vídeos e fotos que o Tomás tentou carregar no GitHub (não chegaram — limite de 25 MB no upload web; pedir zip ou ficheiros < 25 MB), fichas dos animais (nome, idade, porte), morada/horário, parceiros com logótipo, validar níveis de parceria e apadrinhamento de box com o Gabinete Veterinário, saber se o site é da Câmara ou de voluntários. Quando houver fotos novas: limpar com `sites/croae-moita/ferramentas/limpa-instagram.py`, copiar para `sites/croae-moita/media/`, correr `build.py`.
+- [ ] **CROAE Moita** — demo multi-página v2 feita ("A trela", sem manutenção). Fotos (19 capturas do Instagram limpas em lote com `ferramentas/limpa-lote.py` → `media/galeria/01–22.jpg`) e 2 vídeos (`media/video/akira.mp4`, `gatinhos.mp4`, recodificados 720p faststart) já no site. Falta: logótipos de parceiros; ficha de voluntário (link/idade) e condições da FAT ainda "a confirmar" na página Ajudar; saber se o site é da Câmara ou de voluntários. Quando houver fotos novas: `limpa-lote.py PASTA media/galeria 23`, correr `build.py`.
 - [ ] **Sítio dos Presuntos** (Gambelas/Montenegro) — site por criar. Tasca beirã, donos de Viseu, R. Aquilino Ribeiro (nº 122 vs 212 a confirmar), tel 917 823 784 (TA) / 919 869 212 (booktables), Google 4,3/~1.220, até às 23:00. Pratos: presunto, leitão, tamboril, lula grelhada, sopa de feijão verde. Identidade planeada: Bevan, presuntos pendurados a balançar.
 - [ ] **O Caseiro2** (ex-"O Bandeira", Montenegro) — 4,6★/438, menu de almoço ~12 €, fecha 2.ª feira. Site se houver interesse.
 - [ ] **2.º lote VNC/Manta Rota:** Casa da Igreja (Cacela Velha, 289 952 126, 4,3★/329, ostras) · Pizzadela (963 350 428, 4,7★/254) · Bela Vista (4,4★/107, porco preto) · O Ligério (281 951 372) · Casa Velha (281 952 297) · Restaurante Manta Rota · O Finalmente. *(Chá com Água Salgada já tem site — excluir.)*
