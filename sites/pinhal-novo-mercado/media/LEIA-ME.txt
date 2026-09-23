@@ -1,8 +1,11 @@
 PINHAL NOVO MERCADO AND RIA — media/
 
+interior.jpg                fotografia do balcão e da entrada (drogaria) — também é o poster do herói
+peixe.jpg                   tilápia com especiarias — fotografia de apresentação (secção "Peixe");
+                            substituir pela foto do peixe da loja quando o dono a enviar
 restaurante-montra.jpg      recorte da montra do restaurante (embutido no index.html, secção "Ao lado")
-video/heroi-mercado-1280x720.mp4   o herói "Nuvens de especiarias" em vídeo, 8 s, 30 fps (para Instagram/Facebook, capa)
-video/heroi-mercado-720x1280.mp4   o mesmo em vertical (stories/reels)
+video/heroi-1280x720.mp4    o herói: a fotografia do interior com zoom lento + nuvens de especiarias, 10 s em loop
+video/heroi-720x1280.mp4    o mesmo em vertical (o site escolhe conforme a orientação do ecrã; serve para stories/reels)
 
-O herói do site não usa o MP4: é a mesma cena a correr ao vivo em canvas (0 bytes, sem rede).
-Para regenerar o vídeo: NODE_PATH=$(npm root -g) node video.js <url do index.html> <pasta> 1280 720 8 30
+Para regenerar o vídeo a partir de outra fotografia (16:9 para horizontal, 9:16 para vertical):
+  NODE_PATH=$(npm root -g) node video-foto.js foto.jpg media/video/heroi-1280x720.mp4 1280 720 10 24

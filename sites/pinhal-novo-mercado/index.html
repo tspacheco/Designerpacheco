@@ -2,8 +2,8 @@
 <!--
   PINHAL NOVO MERCADO AND RIA — demo Pacheco Studios · 22/09/2026
   Mercearia · Drogaria · Telemóvel · Bebidas e snacks · Pinhal Novo (Palmela)
-  Herói: "Nuvens de especiarias" — vídeo generativo em canvas (açafrão, pimentão, cardamomo, grãos de basmati),
-  determinístico: a mesma cena exporta-se em MP4 com video.js. Cada secção tem o seu mundo e a sua animação.
+  Herói: vídeo feito da fotografia do interior (zoom lento em loop + nuvens de especiarias: açafrão, pimentão, cardamomo, grãos
+  de basmati), gerado por video-foto.js. Cada secção tem o seu mundo e a sua animação; Peixe e Drogaria com fotografia animada.
   Dados não confirmados estão marcados "a confirmar" (HONEST-DATA). Gerado por build.py a partir de index.src.html.
 -->
 <html lang="pt-PT" data-lang="pt">
@@ -69,7 +69,7 @@ html[data-lang="en"] [lang="pt"]{display:none}
 
 /* ---------- herói: nuvens de especiarias ---------- */
 .heroi{position:relative;min-height:min(92svh,820px);display:flex;align-items:flex-end;overflow:hidden;background:var(--noite);color:var(--luz)}
-.heroi canvas{position:absolute;inset:0;width:100%;height:100%}
+.heroi .fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--noite) url(media/interior.jpg) center/cover}
 .heroi .veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,18,14,.2) 0%,rgba(26,18,14,0) 35%,rgba(26,18,14,.55) 75%,rgba(26,18,14,.95) 100%)}
 .heroi .dentro{position:relative;z-index:2;max-width:1240px;margin:0 auto;width:100%;padding:clamp(7rem,18vw,11rem) var(--pad) clamp(2rem,4vw,3rem)}
 .heroi h1{font-size:clamp(2.6rem,7.4vw,5.6rem);max-width:14ch;color:#fff;text-shadow:0 8px 40px rgba(0,0,0,.6)}
@@ -171,6 +171,32 @@ html[data-lang="en"] [lang="pt"]{display:none}
 .montra img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .montra:hover img{transform:scale(1.04)}
 
+
+/* ---------- fotografias animadas ---------- */
+.foto-cena{position:relative;margin:0 auto;max-width:560px;width:100%;--placa:rgba(0,0,0,.12)}
+.foto-cena::before{content:"";position:absolute;inset:8% -3% -5% 5%;border-radius:26px;background:var(--placa);transform:rotate(-2.5deg) scale(.94);opacity:0;transition:transform 1.4s var(--ease) .2s,opacity 1s .2s}
+.visto .foto-cena::before{transform:rotate(-2.5deg);opacity:1}
+.foto-cena .moldura{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:#DDD;clip-path:inset(0 100% 0 0 round 22px);box-shadow:0 34px 60px -30px rgba(0,0,0,.5)}
+.visto .foto-cena .moldura{clip-path:inset(0 0 0 0 round 22px);transition:clip-path 1.2s var(--ease) .1s}
+.foto-cena img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.14);transition:transform 2.4s var(--ease) .1s}
+.visto .foto-cena img{transform:scale(1)}
+.foto-cena .luz{position:absolute;inset:-25%;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.32) 50%,transparent 58%);transform:translateX(-80%);pointer-events:none}
+.visto .foto-cena .luz{animation:varreLuz 2.4s var(--ease) 1.1s 1 both}
+.foto-cena:hover .luz{animation:varreLuz 1.5s var(--ease) 1 both}
+@keyframes varreLuz{from{transform:translateX(-80%)}to{transform:translateX(80%)}}
+.etiqueta{position:absolute;z-index:2;display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .85rem;border-radius:99px;background:#fff;color:var(--tinta);font-weight:700;font-size:13.5px;line-height:1.2;box-shadow:0 12px 26px -12px rgba(0,0,0,.5);opacity:0;transform:translateY(12px) scale(.9)}
+.etiqueta i{width:8px;height:8px;border-radius:99px;background:var(--acafrao-2);flex:none}
+.visto .etiqueta{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.visto .etiqueta.e1{transition-delay:1s}.visto .etiqueta.e2{transition-delay:1.2s}.visto .etiqueta.e3{transition-delay:1.4s}
+.foto-cena figcaption{margin-top:.9rem;font-size:13.5px;opacity:.72}
+#peixe{background:linear-gradient(180deg,#DCEFF3,#BDDDE6);color:#0F3A46}
+#peixe .lead{color:#1F5563}
+#peixe .foto-cena{--placa:#8FC9D8}
+#peixe .foto-cena .moldura{aspect-ratio:1220/640}
+#peixe.visto .foto-cena img{animation:flutua 7s ease-in-out 2.6s infinite}
+@keyframes flutua{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.035) translateY(-5px)}}
+#drogaria .foto-cena{--placa:#8FD3B8}
+
 /* ---------- onde ---------- */
 .onde{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(1.6rem,4vw,3rem);align-items:start}
 .onde>*{min-width:0}
@@ -203,7 +229,8 @@ html[data-lang="en"] [lang="pt"]{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .entra,.sobe-svg{opacity:1!important;transform:none!important}
+  .entra,.sobe-svg,.etiqueta,.foto-cena::before,.foto-cena img{opacity:1!important;transform:none!important}
+  .foto-cena .moldura{clip-path:none!important}.foto-cena .luz{display:none}
   #mercearia .frasco .po,#telemovel .bateria{transform:none!important}
   #telemovel .cabo{stroke-dashoffset:0!important}
   #mercearia .grao,#drogaria .bolha,#bebidas .fresco{display:none}
@@ -222,7 +249,7 @@ html[data-lang="en"] [lang="pt"]{display:none}
   </a>
   <nav class="nav" aria-label="Secções">
     <a href="#mercearia"><span lang="pt">Mercearia</span><span lang="en">Grocery</span></a>
-    <a href="#drogaria"><span lang="pt">Drogaria</span><span lang="en">Household</span></a>
+    <a href="#peixe"><span lang="pt">Peixe</span><span lang="en">Fish</span></a><a href="#drogaria"><span lang="pt">Drogaria</span><span lang="en">Household</span></a>
     <a href="#telemovel"><span lang="pt">Telemóvel</span><span lang="en">Phone</span></a>
     <a href="#bebidas"><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></a>
     <a href="#restaurante"><span lang="pt">Restaurante ao lado</span><span lang="en">Restaurant next door</span></a>
@@ -234,6 +261,7 @@ html[data-lang="en"] [lang="pt"]{display:none}
   <div class="cabeca"><strong>Mercado and Ria</strong><button type="button" class="burger" id="fechar" aria-label="Fechar menu" style="display:grid"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
   <ul>
     <li><a href="#mercearia"><span lang="pt">Mercearia</span><span lang="en">Grocery</span></a></li>
+    <li><a href="#peixe"><span lang="pt">Peixe</span><span lang="en">Fish</span></a></li>
     <li><a href="#drogaria"><span lang="pt">Drogaria</span><span lang="en">Household</span></a></li>
     <li><a href="#telemovel"><span lang="pt">Telemóvel</span><span lang="en">Phone accessories</span></a></li>
     <li><a href="#bebidas"><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></a></li>
@@ -246,7 +274,7 @@ html[data-lang="en"] [lang="pt"]{display:none}
 
 <main>
 <section class="heroi" id="heroi">
-  <canvas id="especiarias" aria-hidden="true"></canvas>
+  <video class="fundo" id="heroi-video" muted loop playsinline autoplay preload="auto" poster="media/interior.jpg" aria-hidden="true"></video>
   <div class="veu" aria-hidden="true"></div>
   <div class="dentro">
     <h1 class="entra"><span lang="pt">Quase tudo o que uma casa precisa, <em>ao virar da esquina.</em></span><span lang="en">Almost everything a home needs, <em>round the corner.</em></span></h1>
@@ -260,6 +288,7 @@ html[data-lang="en"] [lang="pt"]{display:none}
 
 <nav class="indice" aria-label="Secções da loja"><ul>
   <li><a href="#mercearia"><i style="background:#F3C64A"></i><span lang="pt">Mercearia</span><span lang="en">Grocery</span></a></li>
+  <li><a href="#peixe"><i style="background:#7FC4D6"></i><span lang="pt">Peixe</span><span lang="en">Fish</span></a></li>
   <li><a href="#drogaria"><i style="background:#8FD3B8"></i><span lang="pt">Drogaria</span><span lang="en">Household</span></a></li>
   <li><a href="#telemovel"><i style="background:#4FC3F7"></i><span lang="pt">Telemóvel</span><span lang="en">Phone</span></a></li>
   <li><a href="#bebidas"><i style="background:#F08A2E"></i><span lang="pt">Bebidas e snacks</span><span lang="en">Drinks and snacks</span></a></li>
@@ -301,21 +330,40 @@ html[data-lang="en"] [lang="pt"]{display:none}
   </div>
 </section>
 
+<!-- ===== 1b · PEIXE ===== -->
+<section class="seccao" id="peixe">
+  <div class="dentro duas">
+    <figure class="foto-cena">
+      <div class="moldura"><img src="media/peixe.jpg" alt="Tilápia inteira numa folha de bananeira, com gengibre, alho, chalotas, malaguetas secas, tomate e erva-príncipe" width="1220" height="640" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
+      <span class="etiqueta e1" style="left:6%;top:8%"><i></i><span lang="pt">Tilápia inteira</span><span lang="en">Whole tilapia</span></span>
+      <span class="etiqueta e2" style="right:5%;top:22%"><i style="background:#C4202B"></i><span lang="pt">Malaguetas e especiarias</span><span lang="en">Chillies and spices</span></span>
+      <span class="etiqueta e3" style="left:14%;bottom:10%"><i style="background:#5E8A4A"></i><span lang="pt">Pergunte o que há hoje</span><span lang="en">Ask what's in today</span></span>
+      <figcaption><span lang="pt">Fotografia de apresentação — a foto do peixe da loja substitui-a.</span><span lang="en">Presentation photo — to be replaced by the shop's own.</span></figcaption>
+    </figure>
+    <div>
+      <h2><span lang="pt">Peixe</span><span lang="en">Fish</span></h2>
+      <p class="lead"><span lang="pt">Tilápia inteira e o peixe que vai chegando durante a semana, com as especiarias e as malaguetas para o cozinhar como em casa.</span><span lang="en">Whole tilapia and the fish that arrives through the week, with the spices and chillies to cook it the way you do at home.</span></p>
+      <ul class="lista">
+        <li><span lang="pt">Tilápia inteira</span><span lang="en">Whole tilapia</span></li>
+        <li><span lang="pt">Outros peixes conforme a semana</span><span lang="en">Other fish depending on the week</span></li>
+        <li><span lang="pt">Gengibre, alho, chalotas</span><span lang="en">Ginger, garlic, shallots</span></li>
+        <li><span lang="pt">Malaguetas secas e masalas</span><span lang="en">Dried chillies and masalas</span></li>
+      </ul>
+      <p class="nota"><span lang="pt">Variedade, fresco ou congelado e dias de chegada: a confirmar com o dono.</span><span lang="en">Variety, fresh or frozen and delivery days: to be confirmed with the owner.</span></p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== 2 · DROGARIA ===== -->
 <section class="seccao" id="drogaria">
   <div class="dentro duas">
-    <div class="cena" aria-hidden="true">
-      <svg viewBox="0 0 400 400">
-        <g class="sobe-svg">
-          <rect x="60" y="330" width="280" height="10" rx="2" fill="#7FA898"/>
-          <path d="M120 330v-150q0-14 14-14h32q14 0 14 14v150z" fill="#FFFFFF" stroke="#173A2E" stroke-width="3"/><rect x="134" y="146" width="32" height="22" rx="3" fill="#173A2E"/><rect x="138" y="132" width="24" height="16" rx="3" fill="#8FD3B8"/><rect x="132" y="210" width="36" height="70" rx="4" fill="#8FD3B8" opacity=".55"/>
-          <path d="M210 330v-120q0-14 14-14h40q14 0 14 14v120z" fill="#FFFFFF" stroke="#173A2E" stroke-width="3"/><rect x="230" y="176" width="28" height="22" rx="3" fill="#173A2E"/><rect x="222" y="230" width="44" height="60" rx="4" fill="#5FB08F" opacity=".5"/>
-          <rect x="60" y="270" width="48" height="60" rx="6" fill="#FFFFFF" stroke="#173A2E" stroke-width="3"/><rect x="68" y="280" width="32" height="12" rx="2" fill="#8FD3B8"/>
-          <rect class="brilho" x="128" y="178" width="18" height="140" fill="#fff" opacity=".7" transform="skewX(-12)"/>
-          <g fill="none" stroke="#173A2E" stroke-width="2"><circle class="bolha" cx="150" cy="150" r="10"/><circle class="bolha" cx="185" cy="170" r="6" style="animation-delay:.8s"/><circle class="bolha" cx="240" cy="160" r="12" style="animation-delay:1.6s"/><circle class="bolha" cx="275" cy="180" r="7" style="animation-delay:2.4s"/><circle class="bolha" cx="120" cy="180" r="8" style="animation-delay:3.2s"/><circle class="bolha" cx="210" cy="140" r="5" style="animation-delay:4s"/></g>
-        </g>
-      </svg>
-    </div>
+    <figure class="foto-cena">
+      <div class="moldura"><img src="media/interior.jpg" alt="Interior da loja: o balcão com doces, a prateleira das bebidas espirituosas e a estante dos produtos de cabelo e higiene" width="1220" height="919" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
+      <span class="etiqueta e1" style="left:5%;top:10%"><i style="background:#8FD3B8"></i><span lang="pt">Cabelo e higiene</span><span lang="en">Hair and hygiene</span></span>
+      <span class="etiqueta e2" style="right:6%;top:30%"><i style="background:#F3C64A"></i><span lang="pt">Doces ao balcão</span><span lang="en">Sweets at the counter</span></span>
+      <span class="etiqueta e3" style="left:10%;bottom:12%"><i style="background:#173A2E"></i><span lang="pt">Limpeza da casa</span><span lang="en">Home cleaning</span></span>
+      <figcaption><span lang="pt">O balcão e a entrada da loja.</span><span lang="en">The counter and the shop entrance.</span></figcaption>
+    </figure>
     <div>
       <h2><span lang="pt">Drogaria</span><span lang="en">Household</span></h2>
       <p class="lead"><span lang="pt">Limpeza, higiene e o papel que acaba sempre no domingo. Marcas conhecidas e formatos grandes.</span><span lang="en">Cleaning, hygiene and the paper that always runs out on a Sunday. Known brands and family sizes.</span></p>
@@ -455,80 +503,16 @@ html[data-lang="en"] [lang="pt"]{display:none}
 </div></footer>
 
 <script>
-/* ===== Nuvens de especiarias — cena determinística: render(t) desenha o instante t em segundos ===== */
+/* ===== herói ===== */
 (function(){
-  var cv = document.getElementById('especiarias'), ctx = cv.getContext('2d');
-  var W = 0, H = 0, DPR = 1, sprites = {};
-  function seed(i){ var x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
-  function sprite(cor){
-    var s = document.createElement('canvas'); s.width = s.height = 128; var c = s.getContext('2d');
-    var g = c.createRadialGradient(64, 64, 0, 64, 64, 64);
-    g.addColorStop(0, 'rgba(' + cor + ',1)'); g.addColorStop(.35, 'rgba(' + cor + ',.55)'); g.addColorStop(1, 'rgba(' + cor + ',0)');
-    c.fillStyle = g; c.fillRect(0, 0, 128, 128); return s;
-  }
-  var CORES = [{c:'232,168,37', x:.24, tom:'acafrao'}, {c:'196,32,43', x:.55, tom:'pimentao'}, {c:'94,138,74', x:.80, tom:'cardamomo'}];
-  var PLUMAS = 3, POR_PLUMA = 110, VIDA = 9, GRAOS = 70;
-  function tamanho(){
-    DPR = Math.min(window.devicePixelRatio || 1, 2);
-    W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    CORES.forEach(function(k){ sprites[k.tom] = sprite(k.c); });
-  }
-  function render(t){
-    ctx.globalCompositeOperation = 'source-over';
-    var fundo = ctx.createLinearGradient(0, 0, 0, H); fundo.addColorStop(0, '#22170F'); fundo.addColorStop(1, '#120B08');
-    ctx.fillStyle = fundo; ctx.fillRect(0, 0, W, H);
-    /* feixes de luz */
-    ctx.save(); ctx.globalAlpha = .18;
-    for (var f = 0; f < 2; f++) {
-      var fx = W * (0.3 + f * 0.35) + Math.sin(t * .08 + f) * W * .06;
-      var lg = ctx.createLinearGradient(fx - W * .12, 0, fx + W * .12, 0);
-      lg.addColorStop(0, 'rgba(243,198,74,0)'); lg.addColorStop(.5, 'rgba(243,198,74,.9)'); lg.addColorStop(1, 'rgba(243,198,74,0)');
-      ctx.fillStyle = lg; ctx.beginPath(); ctx.moveTo(fx - W * .25, 0); ctx.lineTo(fx + W * .25, 0); ctx.lineTo(fx + W * .05, H); ctx.lineTo(fx - W * .05, H); ctx.closePath(); ctx.fill();
-    }
-    ctx.restore();
-    /* plumas */
-    ctx.globalCompositeOperation = 'lighter';
-    var base = Math.min(W, H);
-    for (var p = 0; p < PLUMAS; p++) {
-      var k = CORES[p], sp = sprites[k.tom], ox = W * k.x, oy = H * 1.02;
-      for (var i = 0; i < POR_PLUMA; i++) {
-        var id = p * 1000 + i, ph = seed(id) * VIDA, idade = (t + ph) % VIDA, u = idade / VIDA;
-        var sway = Math.sin(idade * .9 + seed(id + 7) * 6.28) * base * .10 + Math.sin(idade * .31 + seed(id + 3) * 6.28) * base * .16;
-        var x = ox + (seed(id + 1) - .5) * base * .28 + sway * (u + .2);
-        var y = oy - u * H * (0.85 + seed(id + 2) * .3);
-        var r = base * (0.05 + seed(id + 4) * 0.13) * (0.5 + u * 1.3);
-        var a = Math.sin(u * Math.PI) * (0.22 + seed(id + 5) * 0.18) * (1 - u * .45);
-        ctx.globalAlpha = a; ctx.drawImage(sp, x - r, y - r, r * 2, r * 2);
-      }
-    }
-    /* grãos de basmati */
-    ctx.globalCompositeOperation = 'source-over';
-    for (var g = 0; g < GRAOS; g++) {
-      var gid = 9000 + g, gph = seed(gid) * 7, gt = (t * (0.5 + seed(gid + 1) * .6) + gph) % 7, gu = gt / 7;
-      var gx = W * seed(gid + 2) + Math.sin(gt * 1.3 + seed(gid + 3) * 6.28) * base * .03;
-      var gy = -H * .05 + gu * H * 1.1;
-      var prof = seed(gid + 4), len = base * (0.006 + prof * 0.012), esp = len * .36;
-      ctx.save(); ctx.translate(gx, gy); ctx.rotate(gt * (0.6 + prof) + seed(gid + 5) * 6.28);
-      ctx.globalAlpha = 0.55 + prof * .4; ctx.fillStyle = prof > .6 ? '#FFF6E6' : '#E9D9C2';
-      if (prof < .35) { ctx.filter = 'blur(1.5px)'; }
-      ctx.beginPath(); ctx.ellipse(0, 0, esp, len, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-    }
-    /* vinheta */
-    ctx.globalAlpha = 1;
-    var v = ctx.createRadialGradient(W * .5, H * .45, base * .3, W * .5, H * .5, base * 1.05);
-    v.addColorStop(0, 'rgba(18,11,8,0)'); v.addColorStop(1, 'rgba(18,11,8,.75)');
-    ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
-  }
-  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches, t0 = performance.now(), parado = false;
-  function ciclo(now){ if (!parado) { render((now - t0) / 1000); requestAnimationFrame(ciclo); } }
-  window.addEventListener('resize', function(){ tamanho(); if (reduz) render(3); });
-  document.addEventListener('visibilitychange', function(){ parado = document.hidden; if (!parado && !reduz) { t0 = performance.now() - 3000; requestAnimationFrame(ciclo); } });
-  tamanho();
-  if (reduz) render(3); else requestAnimationFrame(ciclo);
-  /* exportação de vídeo: pára o ciclo e desenha o instante pedido */
-  window.__especiarias = { parar: function(){ parado = true; }, render: render, tamanho: tamanho };
+  /* herói: vídeo feito da fotografia do interior (video-foto.js); horizontal ou vertical conforme o ecrã; sem movimento → só a fotografia */
+  var v = document.getElementById('heroi-video'); if (!v) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); return; }
+  var port = window.matchMedia('(orientation: portrait)').matches;
+  var base = 'media/video/heroi-' + (port ? '720x1280' : '1280x720');
+  [['mp4', 'video/mp4'], ['webm', 'video/webm']].forEach(function(f){ var s = document.createElement('source'); s.src = base + '.' + f[0]; s.type = f[1]; v.appendChild(s); });
+  v.load();
+  var p = v.play(); if (p && p.catch) p.catch(function(){});
 })();
 
 function poeLingua(l){
