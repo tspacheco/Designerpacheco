@@ -97,8 +97,9 @@ pages.append(page("", h("02 · Checklist · Fase 0 e Fase 1", "Antes de gastar u
  ("Responder à avaliação existente", "e a todas as próximas, em 24 h, assinado pelo nome."),
  ("Um Instagram principal:", "decidir entre @doriseciapetshop e @thaispetcare; o outro aponta para ele."),
  ("Bio nova:", "o que faz, o bairro, a oferta de entrada, botão de WhatsApp. Destaques: Banho e Tosa · Preços · Antes e Depois · Onde estamos · Pacotes."),
- ("WhatsApp Business:", "catálogo com serviços e preços, mensagem de boas-vindas, mensagem fora do horário, etiquetas (novo · agendado · voltou · sumiu)."),
+ ("WhatsApp Business (a loja já tem):", "não é preciso criar conta nem número novo. Organizar o que já está lá: catálogo com serviços e preços, mensagem de boas-vindas, mensagem fora do horário, etiquetas (novo · agendado · voltou · sumiu)."),
 ])}
+<div class="note alt"><b>A loja já usa WhatsApp Business.</b> Isso poupa uma semana: não há conta a criar nem número a divulgar de novo. <b>Confirmar na reunião:</b> é o aplicativo gratuito ou já a API. Os lembretes e a recuperação automáticos precisam da API (Cloud API da Meta), e migrar o número para lá tira o aplicativo do celular. Se ela quiser manter o aplicativo, os primeiros envios ficam semiautomáticos, com a lista pronta e um toque para enviar.</div>
 <h3 class="mt">Fase 1 · Semana 2 · a oferta e o lugar para onde mandar as pessoas</h3>
 {cb([
  ("Oferta de entrada com nome:", "por exemplo “Primeiro banho com 20 % off” ou “Pacote 4 banhos, o 5.º é por nossa conta”. Uma só, clara, com validade."),
@@ -165,7 +166,7 @@ pages.append(page("", h("04 · Checklist · Fase 3 · Fidelização", "Cliente q
 <h3 class="mt">Ordem de prioridade, se só der para fazer três coisas</h3>
 <ol class="ol">
   <li><b>Categoria + fotos + avaliações no Google.</b> Grátis, e é onde a maioria dos clientes de bairro procura.</li>
-  <li><b>Um Instagram, uma oferta, agendamento online e WhatsApp Business montado.</b> É o que transforma visita em agendamento, mesmo fora do horário.</li>
+  <li><b>Um Instagram, uma oferta, agendamento online e o sistema ligado ao WhatsApp da loja.</b> É o que transforma visita em agendamento, mesmo fora do horário.</li>
   <li><b>Anúncio de R$ 400 a R$ 800 com vídeo de antes e depois</b>, medido por semana, e o lembrete de 15 dias para quem já veio.</li>
 </ol>
 ''', 5))
@@ -210,7 +211,7 @@ pages.append(page("", h("06 · Os próximos passos", "Do sim até ao primeiro re
     <h3>Calendário</h3>
     <ol class="ol tight">
       <li><b>Hoje:</b> este plano, o site de demonstração (extra) e a escolha do nível de anúncio.</li>
-      <li><b>Semana 1:</b> Fase 0 completa: Google arrumado, um Instagram, WhatsApp Business montado.</li>
+      <li><b>Semana 1:</b> Fase 0 completa: Google arrumado, um Instagram, WhatsApp da loja organizado e ligado ao sistema.</li>
       <li><b>Semana 2:</b> oferta definida, agendamento online e catálogo no WhatsApp, site no ar, 3 vídeos gravados, ficha de cliente criada.</li>
       <li><b>Semana 3:</b> anúncios no ar. Relatório toda segunda-feira: conversas, agendados, custo por cliente.</li>
       <li><b>Dia 45:</b> revisão com números reais. Ajustar oferta e orçamento. Ligar o lembrete de 15 dias e a recuperação de quem sumiu.</li>
@@ -226,7 +227,7 @@ pages.append(page("", h("06 · Os próximos passos", "Do sim até ao primeiro re
       <li>Custo do anúncio por cliente novo</li>
       <li>Atendimentos por semana contra a capacidade</li>
     </ul>
-    <div class="note"><b>O que a Pacheco Studios faz:</b> <b>trazer clientes</b> (ficha do Google arrumada e com avaliações, um Instagram que converte, anúncios geridos com relatório semanal) e <b>infraestrutura</b> (WhatsApp Business com catálogo, agendamento online, ficha de cliente, lembretes e recuperação automáticos). <b>O site de uma página vai incluído como extra.</b></div>
+    <div class="note"><b>O que a Pacheco Studios faz:</b> <b>trazer clientes</b> (ficha do Google arrumada e com avaliações, um Instagram que converte, anúncios geridos com relatório semanal) e <b>infraestrutura</b> (o sistema ligado ao WhatsApp Business que a loja já usa, agendamento online, ficha de cliente, lembretes e recuperação automáticos). <b>O site de uma página vai incluído como extra.</b></div>
     <div class="note alt"><b>A parede a vigiar.</b> Com reinvestimento de parte do lucro, a agenda de uma tosadora esgota por volta do sexto mês. A partir do quarto, o problema deixa de ser trazer clientes e passa a ser ter quem os atenda.</div>
   </div>
 </div>

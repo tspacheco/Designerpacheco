@@ -23,7 +23,7 @@ PK = [
       inc=["Ficha do Google corrigida: categoria, descrição, horário, serviços, 20 fotos e vídeo",
            "Pedido de avaliação com mensagem pronta e link direto (meta: 30 em 60 dias)",
            "Um Instagram principal: bio nova, destaques, botão de WhatsApp",
-           "WhatsApp Business montado: catálogo de serviços, boas-vindas, fora do horário, etiquetas",
+           "O sistema ligado ao WhatsApp Business que a loja já usa, com catálogo, boas-vindas, fora do horário e etiquetas organizados",
            "Oferta de entrada definida com a Doris",
            "Fluxo automático no WhatsApp: pedido de avaliação 2 h depois do banho e lembrete de banho aos 15 dias",
            "Site de uma página com botão de WhatsApp (extra, já pronto)"],
@@ -125,7 +125,7 @@ pages.append(page("", h("04 · Três pacotes", "Do essencial ao completo. A Dori
 cmp_rows = [
  ("Ficha do Google corrigida e com avaliações", 1,1,1),
  ("Um Instagram, bio e destaques", 1,1,1),
- ("WhatsApp Business montado", 1,1,1),
+ ("Sistema ligado ao WhatsApp da loja", 1,1,1),
  ("Site de uma página (extra)", 1,1,1),
  ("Fluxo automático: avaliação 2 h depois + lembrete aos 15 dias", 1,1,1),
  ("Agendamento online com confirmação e lembrete", 0,1,1),
@@ -149,12 +149,12 @@ pages.append(page("", h("05 · Lado a lado", "O que entra em cada pacote.") + f'
 <h3 class="mt">Como começamos</h3>
 <ol class="ol tight">
   <li><b>Escolha do pacote</b> e do nível de anúncios (R$ 400, R$ 800 ou R$ 1.500 por mês).</li>
-  <li><b>Semana 1:</b> Google corrigido, um Instagram, WhatsApp Business montado. Já dá para sentir a diferença.</li>
+  <li><b>Semana 1:</b> Google corrigido, um Instagram, e o sistema ligado ao WhatsApp que a loja já usa. Já dá para sentir a diferença.</li>
   <li><b>Semana 2:</b> oferta definida, site no ar, agendamento e automações ligados, vídeos gravados.</li>
   <li><b>Semana 3:</b> anúncios no ar. Relatório toda segunda-feira.</li>
   <li><b>Dia 45:</b> revisão com números reais e ajustes.</li>
 </ol>
-<div class="note"><b>Em qualquer pacote:</b> nada sai sem a Doris aprovar. Mensagens, fotos, ofertas e anúncios passam por ela antes. E se alguma parte tiver de funcionar de outro jeito, ajustamos.</div>
+<div class="note alt"><b>O WhatsApp da loja continua o mesmo.</b> A Doris &amp; Cia já usa WhatsApp Business: o sistema liga-se ao que já existe, sem conta nova nem número novo. E nada sai sem a Doris aprovar, nem mensagem, nem foto, nem anúncio. Se alguma parte tiver de funcionar de outro jeito, ajustamos.</div>
 <div class="callout final">
   <div><b>{esc(C["marca"])}</b><br><span>Web design e sistemas para negócios locais</span></div>
   <div class="r"><span class="mono">{esc(C["tel"])}</span><br><span class="mono">{esc(C["email"])}</span></div>
