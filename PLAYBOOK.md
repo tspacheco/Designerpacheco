@@ -224,6 +224,7 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - [ ] **2.º lote VNC/Manta Rota:** Casa da Igreja (Cacela Velha, 289 952 126, 4,3★/329, ostras) · Pizzadela (963 350 428, 4,7★/254) · Bela Vista (4,4★/107, porco preto) · O Ligério (281 951 372) · Casa Velha (281 952 297) · Restaurante Manta Rota · O Finalmente. *(Chá com Água Salgada já tem site — excluir.)*
 - [ ] **Restaurante Avenida** (Tavira) — site completo com cores, logótipo e ementa reais.
 - [ ] **Instituto dos Ferroviários** — logótipo oficial, detalhes da festa, cartaz para Instagram.
+- [ ] **Dra. Angélica Lauermann (dentista, Lista B)** — análise em `research/dra-angelica-lauermann.md`; Maps e Instagram bloqueados nesta sessão → o Tomás envia capturas; pacote de entrada = site + marcação online, depois ficha Google/avaliações e chamada perdida → SMS.
 - [ ] Acrescentar telefone do Tomás às propostas PDF.
 - [ ] Registar taxas de fecho por tipo de negócio (Albufeira, Gambelas, VNC).
 - [ ] **Toda Chic** — pedir à dona: (1) fotos individuais sem preço nem faixa das 6 peças que só existem em fichas (calções de linho, saia, blusas sem alça, vestido preto/branco, pantalona, conjunto vermelho); (2) preço das calças clássicas em 4 cores e das sandálias com laços; (3) tamanhos das ~20 peças sem indicação; (4) identificação da empresa (nome, NIF, morada), e-mail, portes/transportadora, software de faturação. Depois: mostrar a demo, fechar orçamento por referências, montar WooCommerce + ifthenpay.
