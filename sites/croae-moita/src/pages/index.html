@@ -1,0 +1,126 @@
+<!--META
+titulo: CROAE Moita — Hoje é dia de fazer um novo amigo
+desc: Centro de Recolha Oficial de Animais Errantes da Moita. Adotar, passear, apadrinhar uma box ou ser parceiro. 40 boxes, até 120 cães e gatos.
+pagina: inicio
+-->
+<!--CSS-->
+.hero{position:relative;overflow:hidden;background:var(--noite);color:#fff;padding:clamp(56px,8vw,110px) 0 clamp(48px,6vw,80px)}
+.hero .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{max-width:12ch}
+.hero h1 em{font-style:normal;color:var(--amarelo)}
+.hero .sub{color:rgba(255,255,255,.85)}
+.hero-shade{display:none}
+/* as 40 boxes */
+.boxes{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(5,1fr);gap:clamp(6px,1vw,12px);aspect-ratio:8/5}
+.box{position:relative;border-radius:22%;background:var(--amarelo);opacity:0;transform:scale(.6);animation:acende 520ms cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*28ms + 120ms);overflow:hidden;box-shadow:inset 0 -3px 0 rgba(0,0,0,.12)}
+.box.vazia{background:rgba(242,183,5,.16);box-shadow:inset 0 0 0 2px rgba(242,183,5,.35)}
+.box.foto{background:var(--noite-2)}
+.box.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:aparece 700ms ease forwards;animation-delay:calc(var(--i)*28ms + 900ms);opacity:0}
+.box.foto::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 3px var(--amarelo);border-radius:inherit}
+.box:hover{transform:scale(1.06)}
+.box{transition:transform var(--t)}
+@keyframes acende{to{opacity:1;transform:none}}
+@keyframes aparece{to{opacity:1}}
+.boxes-leg{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:.85rem;opacity:.85}
+.boxes-leg span{display:flex;align-items:center;gap:8px}
+.boxes-leg i{width:14px;height:14px;border-radius:30%;background:var(--amarelo);display:inline-block}
+.boxes-leg i.v{background:rgba(242,183,5,.16);box-shadow:inset 0 0 0 2px rgba(242,183,5,.5)}
+.hero-in>*{opacity:0;transform:translateY(14px);animation:sobe 600ms cubic-bezier(.2,.7,.2,1) forwards}
+.hero-in>*:nth-child(1){animation-delay:.9s}.hero-in>*:nth-child(2){animation-delay:1.05s}.hero-in>*:nth-child(3){animation-delay:1.2s}.hero-in>*:nth-child(4){animation-delay:1.35s}
+@keyframes sobe{to{opacity:1;transform:none}}
+@media(max-width:860px){
+  .hero .hero-grid{grid-template-columns:1fr}
+  .hero .boxes{grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(4,1fr);aspect-ratio:10/4}
+  .hero .hero-grid>div:last-child{order:-1}
+}
+/* vias */
+.via{display:grid;grid-template-rows:auto 1fr;gap:18px;text-decoration:none;color:inherit}
+.via .foto{aspect-ratio:4/3}
+.via h3{display:flex;align-items:center;gap:10px}
+.via h3 svg{width:22px;height:22px;transition:transform var(--t)}
+.via:hover h3 svg{transform:translateX(4px)}
+/* teaser centro */
+.teaser{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+@media(max-width:860px){.teaser{grid-template-columns:1fr}}
+.numeros{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.numeros div{background:var(--branco);border-radius:var(--raio-s);padding:16px 18px}
+.numeros b{font-family:var(--fd);font-weight:900;font-size:2rem;display:block;line-height:1;color:var(--noite)}
+.numeros span{font-size:.85rem;color:var(--tinta-2)}
+<!--/CSS-->
+<main id="conteudo">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div class="hero-in">
+      <p class="eyebrow">Centro de Recolha Oficial de Animais Errantes · Moita</p>
+      <h1 id="h1">Hoje é dia de fazer um <em>novo amigo.</em></h1>
+      <p class="sub">40 boxes, até 120 cães e gatos, uma equipa que os passeia todos os fins de semana. Cada box vazia é um animal que foi para casa. Ajuda-nos a esvaziar as outras.</p>
+      <div class="acoes">
+        <a class="btn" href="adotar.html">{{BANDANA}} Quero adotar</a>
+        <a class="btn sec-btn" href="ajudar.html">Quero ajudar</a>
+      </div>
+    </div>
+    <div>
+      <div class="boxes" role="img" aria-label="Grelha com as 40 boxes do centro; algumas mostram fotografias de animais">{{BOXES}}</div>
+      <div class="boxes-leg" aria-hidden="true"><span><i></i>Box ocupada</span><span><i class="v"></i>Box vazia — alguém foi para casa</span></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="factos rv">
+      <div><b>40</b><span>boxes</span></div>
+      <div><b>120</b><span>lugares para cães e gatos</span></div>
+      <div><b>5</b><span>edifícios + recreio comum</span></div>
+      <div><b>2024</b><span>inaugurado a 12 de março</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="faixa"><span>Adota</span><span>Passeia</span><span>Apadrinha uma box</span><span>Doa ração</span><span>Partilha</span><span>Sê parceiro</span></div></div>
+
+<section class="sec" aria-labelledby="h-vias">
+  <div class="wrap">
+    <p class="eyebrow rv">Três formas de entrar</p>
+    <h2 id="h-vias" class="rv">Escolhe a tua.</h2>
+    <div class="grid g3" style="margin-top:36px">
+      <a class="via rv" href="adotar.html">
+        <figure class="foto p43">{{SVG_CAO}}<img src="media/cao-preto-julius-k9.webp" alt="Cão preto de arnês azul sentado na calçada, língua de fora" loading="lazy" onerror="this.remove()"><figcaption>Nos passeios das Festas da Moita</figcaption></figure>
+        <div><h3>Adotar {{SETA}}</h3><p>Visita, conversa com a equipa, leva-o para casa com vacinas, microchip, desparasitação e esterilização tratadas.</p></div>
+      </a>
+      <a class="via rv d1" href="ajudar.html">
+        <figure class="foto p43">{{SVG_CAO}}<img src="media/cao-branco-festas.webp" alt="Cão branco e castanho deitado de barriga para cima a receber festas" loading="lazy" onerror="this.remove()"><figcaption>Festas, passeios, família de acolhimento</figcaption></figure>
+        <div><h3>Ajudar {{SETA}}</h3><p>Passeios ao sábado e domingo das 10h às 12h, acolhimento temporário, ração, mantas. Uma hora por semana já muda um dia inteiro.</p></div>
+      </a>
+      <a class="via rv d2" href="parceiros.html">
+        <figure class="foto p43">{{SVG_STAND}}<img src="media/evento-stand-festas-moita.webp" alt="Stand do CROAE nas Festas da Moita, com o mural de animais para adoção e a roleta" loading="lazy" onerror="this.remove()"><figcaption>Stand nas Festas da Moita</figcaption></figure>
+        <div><h3>Ser parceiro {{SETA}}</h3><p>Para empresas e associações do concelho: apadrinhar uma box, apoiar em espécie ou estar connosco nos eventos de adoção.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec claro-2" aria-labelledby="h-centro">
+  <div class="wrap teaser">
+    <figure class="foto p43 rv">{{SVG_EQUIPA}}<img src="media/equipa-baloico-moita.webp" alt="Equipa de voluntários e técnicos do CROAE no baloiço 'Moita, uma janela para o Tejo', com dois cães" loading="lazy" onerror="this.remove()"><figcaption>A equipa nas Festas da Moita</figcaption></figure>
+    <div>
+      <p class="eyebrow rv">O centro</p>
+      <h2 class="rv">Novo, municipal, aberto a quem quiser adotar.</h2>
+      <p class="sub rv d1">O CROAE abriu a 12 de março de 2024 depois de um primeiro concurso deserto e de um projeto refeito pelos técnicos da Câmara. É gerido pelo Gabinete Veterinário Municipal, que trata dos animais e acompanha cada adoção.</p>
+      <div class="numeros rv d2">
+        <div><b>≈750 mil €</b><span>de investimento, 100 mil do Orçamento do Estado</span></div>
+        <div><b>Sáb · Dom</b><span>passeios com voluntários, 10h–12h</span></div>
+      </div>
+      <div class="acoes rv d3"><a class="btn escuro-btn" href="centro.html">Conhecer o centro</a><a class="btn sec-btn" href="centro.html#contactos">Contactos</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec escuro cta-final" aria-labelledby="h-cta">
+  <div class="wrap">
+    <p class="eyebrow rv">Eles nunca te deixariam para trás.</p>
+    <h2 id="h-cta" class="rv">Vem conhecê-los ao fim de semana.</h2>
+    <p class="sub rv d1" style="margin-inline:auto">Passeios com marcação prévia. Liga ou escreve — a equipa combina o dia contigo.</p>
+    <div class="acoes rv d2"><a class="btn" href="tel:+351962049674">{{BANDANA}} 962 049 674</a><a class="btn sec-btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Quero%20conhecer%20o%20CROAE">gab.vetmun@cm-moita.pt</a></div>
+  </div>
+</section>
+</main>
+<!--JS-->
+<!--/JS-->

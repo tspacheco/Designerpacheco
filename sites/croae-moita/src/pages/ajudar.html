@@ -1,0 +1,92 @@
+<!--META
+titulo: Ajudar — CROAE Moita
+desc: Voluntariado no CROAE Moita: passeios aos sábados e domingos das 10h às 12h, família de acolhimento temporário, donativos em espécie e apadrinhamento de box.
+pagina: ajudar
+-->
+<!--CSS-->
+.topo{background:var(--noite);color:#fff;padding:clamp(48px,7vw,96px) 0 clamp(40px,5vw,64px)}
+.topo h1{max-width:14ch}
+.topo .sub{color:rgba(255,255,255,.85)}
+.vias-aj{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+.via-aj{background:var(--branco);border-radius:var(--raio);padding:28px;display:grid;gap:12px;align-content:start;scroll-margin-top:90px}
+.via-aj .ico{width:52px;height:52px;border-radius:16px;background:var(--amarelo-claro);display:grid;place-items:center}
+.via-aj .ico svg{width:28px;height:28px;color:var(--noite)}
+.via-aj ul{margin:0;padding-left:18px;color:var(--tinta-2)}
+.via-aj .btn{justify-self:start;margin-top:6px}
+.horario{display:inline-grid;grid-template-columns:auto auto;gap:6px 16px;background:var(--areia);border-radius:var(--raio-s);padding:14px 18px;font-weight:700}
+.horario small{font-weight:400;color:var(--tinta-2)}
+.lista-doar{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px;list-style:none;padding:0;margin:24px 0 0}
+.lista-doar li{background:var(--branco);border-radius:var(--raio-s);padding:16px;font-weight:700;display:flex;gap:10px;align-items:center}
+.lista-doar svg{width:22px;height:22px;color:var(--amarelo-esc);flex:none}
+.apadrinhar{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+@media(max-width:860px){.apadrinhar{grid-template-columns:1fr}}
+.mini-boxes{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.mini-boxes i{aspect-ratio:1;border-radius:22%;background:rgba(242,183,5,.18);box-shadow:inset 0 0 0 2px rgba(242,183,5,.4);display:block;transition:background var(--t)}
+.mini-boxes i.on{background:var(--amarelo);box-shadow:inset 0 -3px 0 rgba(0,0,0,.12)}
+<!--/CSS-->
+<main id="conteudo">
+<section class="topo" aria-labelledby="h1">
+  <div class="wrap">
+    <p class="eyebrow">Ajudar</p>
+    <h1 id="h1">Eles nunca te deixariam para trás.</h1>
+    <p class="sub">Não precisas de adotar para fazer diferença. Uma hora ao fim de semana, um quarto vazio por umas semanas ou um saco de ração já mudam o dia de um animal — e o trabalho da equipa.</p>
+    <div class="acoes"><a class="btn" href="#voluntariado">{{BANDANA}} Ser voluntário</a><a class="btn sec-btn" href="#doar">Doar</a></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-vias">
+  <div class="wrap">
+    <p class="eyebrow rv">Três formas de ajudar</p>
+    <h2 id="h-vias" class="rv">Escolhe a que cabe na tua semana.</h2>
+    <div class="vias-aj" style="margin-top:32px">
+      <article class="via-aj rv" id="voluntariado">
+        <div class="ico">{{ICO_PASSEIO}}</div>
+        <h3>Passear os cães</h3>
+        <div class="horario"><span>Sábado</span><span>10h – 12h</span><span>Domingo</span><span>10h – 12h</span><small style="grid-column:1/-1">Com marcação prévia</small></div>
+        <p>O programa de voluntariado da Câmara. Preenches a ficha de inscrição, envias por e-mail, e a equipa marca contigo o primeiro fim de semana.</p>
+        <ul><li>Ficha de inscrição de voluntário do CROAE Moita <span class="a-confirmar">link a confirmar</span></li><li>Idade mínima e seguro <span class="a-confirmar">a confirmar</span></li></ul>
+        <a class="btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Inscri%C3%A7%C3%A3o%20como%20volunt%C3%A1rio%20no%20CROAE">Pedir a ficha de inscrição</a>
+      </article>
+      <article class="via-aj rv d1" id="fat">
+        <div class="ico">{{ICO_CASA}}</div>
+        <h3>Família de acolhimento temporário</h3>
+        <p>Recebes em casa um animal por um período limitado — cachorros, animais em recuperação ou os que sofrem mais no canil. O centro acompanha e trata da parte veterinária.</p>
+        <ul><li>Duração, condições e apoio em ração <span class="a-confirmar">a confirmar</span></li><li>Passo intermédio natural para quem pensa adotar</li></ul>
+        <a class="btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Quero%20ser%20fam%C3%ADlia%20de%20acolhimento%20tempor%C3%A1rio">Candidatar-me a FAT</a>
+      </article>
+      <article class="via-aj rv d2" id="doar">
+        <div class="ico">{{ICO_SACO}}</div>
+        <h3>Doar em espécie</h3>
+        <p>O que o centro gasta todos os dias. Entrega no CROAE em horário de atendimento <span class="a-confirmar">a confirmar</span> ou combina por telefone.</p>
+        <ul class="lista-doar" style="margin-top:4px">
+          <li>{{CHECK}} Ração seca cão</li><li>{{CHECK}} Ração seca gato</li><li>{{CHECK}} Mantas e toalhas</li><li>{{CHECK}} Areia para gato</li><li>{{CHECK}} Trelas e coleiras</li><li>{{CHECK}} Lista completa <span class="a-confirmar">a confirmar</span></li>
+        </ul>
+        <a class="btn" href="tel:+351212806816">Combinar entrega · 212 806 816</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec claro-2" id="apadrinhar" aria-labelledby="h-apad">
+  <div class="wrap apadrinhar">
+    <div>
+      <p class="eyebrow rv">Apadrinhar uma box</p>
+      <h2 id="h-apad" class="rv">Uma das 40 boxes com o teu nome.</h2>
+      <p class="sub rv d1">Para quem não pode ter um animal em casa mas pode pagar a alimentação e os cuidados de um por mês. A box apadrinhada fica identificada no centro e neste site. Valor mensal e forma de pagamento <span class="a-confirmar">a confirmar</span> — proposta desta demonstração, a validar com o Gabinete Veterinário Municipal.</p>
+      <div class="acoes rv d2"><a class="btn escuro-btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Quero%20apadrinhar%20uma%20box">Quero apadrinhar</a></div>
+    </div>
+    <div class="mini-boxes rv d1" aria-hidden="true">{{MINI}}</div>
+  </div>
+</section>
+
+<section class="sec escuro cta-final" aria-labelledby="h-cta">
+  <div class="wrap">
+    <h2 id="h-cta" class="rv">Partilhar também ajuda.</h2>
+    <p class="sub rv d1" style="margin-inline:auto">Cada animal partilhado no Instagram encontra família mais depressa. Segue e partilha o <a href="https://www.instagram.com/croaemoita/" rel="noopener">@croaemoita</a>.</p>
+    <div class="acoes rv d2"><a class="btn" href="https://www.instagram.com/croaemoita/" rel="noopener">{{BANDANA}} Seguir no Instagram</a><a class="btn sec-btn" href="https://www.facebook.com/croaemoita/" rel="noopener">Facebook</a></div>
+  </div>
+</section>
+</main>
+<!--JS-->
+(function(){var m=document.querySelector('.mini-boxes');if(!m)return;var on=[3,7,12,18,21,27,30,35];on.forEach(function(i,k){setTimeout(function(){m.children[i].classList.add('on')},400+k*160)});})();
+<!--/JS-->
