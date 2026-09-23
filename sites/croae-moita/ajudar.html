@@ -15,7 +15,7 @@
 :root{
   --amarelo:#F2B705; --amarelo-esc:#9A6E00; --amarelo-claro:#FFE38A;
   --noite:#1B2A41; --noite-2:#24364F; --areia:#FBF7EE; --areia-2:#F3EBD8;
-  --terra:#6B4E2E; --branco:#fff; --tinta:#1B2A41; --tinta-2:#4A5568;
+  --terra:#6B4E2E; --trela:#1FA58A; --trela-esc:#12735F; --branco:#fff; --tinta:#1B2A41; --tinta-2:#4A5568;
   --raio:18px; --raio-s:10px;
   --fd:"Gabarito",system-ui,sans-serif; --fc:"Atkinson Hyperlegible",system-ui,sans-serif;
   --larg:1160px; --gut:clamp(16px,4vw,40px);
@@ -149,9 +149,23 @@ p{margin:0 0 1em}
   .rv{opacity:1;transform:none}
 }
 
+/* ===== a trela (assinatura) ===== */
+body{position:relative}
+.trela{position:absolute;left:0;top:0;width:100%;pointer-events:none;z-index:4;overflow:visible}
+.trela path{fill:none;stroke:var(--trela);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len,1) var(--len,1);stroke-dashoffset:var(--off,1);filter:drop-shadow(0 2px 0 rgba(0,0,0,.18))}
+.trela .mosq{fill:var(--trela-esc)}
+main{position:relative;z-index:2}
+.rodape,.banner{position:relative;z-index:5}
+.chegada{display:inline-flex;align-items:center;gap:12px;background:var(--trela);color:#fff;font-family:var(--fd);font-weight:800;font-size:1.05rem;padding:10px 18px 10px 14px;border-radius:999px;margin-bottom:18px}
+.chegada svg{width:22px;height:22px}
+@media(prefers-reduced-motion:reduce){.trela path{stroke-dashoffset:0!important}}
+@media(max-width:860px){.trela path{stroke-width:4}}
+
 /* --- página --- */
 .topo{background:var(--noite);color:#fff;padding:clamp(48px,7vw,96px) 0 clamp(40px,5vw,64px)}
 .topo h1{max-width:14ch}
+.topo-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media(max-width:860px){.topo-grid{grid-template-columns:1fr}}
 .topo .sub{color:rgba(255,255,255,.85)}
 .vias-aj{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
 .via-aj{background:var(--branco);border-radius:var(--raio);padding:28px;display:grid;gap:12px;align-content:start;scroll-margin-top:90px}
@@ -164,15 +178,10 @@ p{margin:0 0 1em}
 .lista-doar{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px;list-style:none;padding:0;margin:24px 0 0}
 .lista-doar li{background:var(--branco);border-radius:var(--raio-s);padding:16px;font-weight:700;display:flex;gap:10px;align-items:center}
 .lista-doar svg{width:22px;height:22px;color:var(--amarelo-esc);flex:none}
-.apadrinhar{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
-@media(max-width:860px){.apadrinhar{grid-template-columns:1fr}}
-.mini-boxes{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
-.mini-boxes i{aspect-ratio:1;border-radius:22%;background:rgba(242,183,5,.18);box-shadow:inset 0 0 0 2px rgba(242,183,5,.4);display:block;transition:background var(--t)}
-.mini-boxes i.on{background:var(--amarelo);box-shadow:inset 0 -3px 0 rgba(0,0,0,.12)}
 </style>
 </head>
 <body>
-<div class="banner">APRESENTAÇÃO PACHECO STUDIOS · demonstração para o CROAE Moita · dados marcados "a confirmar" ainda não foram validados</div>
+<div class="banner">APRESENTAÇÃO PACHECO STUDIOS · demonstração para o CROAE Moita</div>
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="index.html" aria-label="CROAE Moita — início">
@@ -184,6 +193,7 @@ p{margin:0 0 1em}
       <li><a href="adotar.html" data-p="adotar">Adotar</a></li>
       <li><a href="ajudar.html" data-p="ajudar" aria-current="page">Ajudar</a></li>
       <li><a href="parceiros.html" data-p="parceiros">Parceiros</a></li>
+      <li><a href="galeria.html" data-p="galeria">Galeria</a></li>
       <li><a href="centro.html" data-p="centro">O centro</a></li>
       <li><a href="centro.html#contactos" data-p="contactos">Contactos</a></li>
     </ul></nav>
@@ -192,11 +202,14 @@ p{margin:0 0 1em}
 
 <main id="conteudo">
 <section class="topo" aria-labelledby="h1">
-  <div class="wrap">
-    <p class="eyebrow">Ajudar</p>
-    <h1 id="h1">Eles nunca te deixariam para trás.</h1>
-    <p class="sub">Não precisas de adotar para fazer diferença. Uma hora ao fim de semana, um quarto vazio por umas semanas ou um saco de ração já mudam o dia de um animal — e o trabalho da equipa.</p>
-    <div class="acoes"><a class="btn" href="#voluntariado"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M3 6h18l-9 13z" fill="currentColor" opacity=".9"/><circle cx="12" cy="6" r="2.6" fill="currentColor"/><path d="M8.5 4.5 12 6l3.5-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Ser voluntário</a><a class="btn sec-btn" href="#doar">Doar</a></div>
+  <div class="wrap topo-grid">
+    <div>
+      <p class="eyebrow">Ajudar</p>
+      <h1 id="h1">Eles nunca te deixariam para trás.</h1>
+      <p class="sub">Não precisas de adotar para fazer diferença. Uma hora ao fim de semana, um quarto vazio por umas semanas ou um saco de ração já mudam o dia de um animal — e o trabalho da equipa.</p>
+      <div class="acoes"><a class="btn" href="#voluntariado"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M3 6h18l-9 13z" fill="currentColor" opacity=".9"/><circle cx="12" cy="6" r="2.6" fill="currentColor"/><path d="M8.5 4.5 12 6l3.5-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Ser voluntário</a><a class="btn sec-btn" href="#doar">Doar</a></div>
+    </div>
+    <figure class="foto" data-trela-inicio><svg class="fundo" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#24364F"/><stop offset="1" stop-color="#1B2A41"/></linearGradient></defs><rect width="400" height="500" fill="url(#g)"/><g fill="#F2B705" opacity=".55"><ellipse cx="200" cy="290" rx="52" ry="44"/><circle cx="135" cy="225" r="26"/><circle cx="178" cy="185" r="26"/><circle cx="222" cy="185" r="26"/><circle cx="265" cy="225" r="26"/></g></svg><img src="media/cao-branco-card.webp" alt="Cão branco e castanho deitado de barriga para cima a receber festas de um visitante" onerror="this.remove()"><figcaption>Festas para quem as pede</figcaption></figure>
   </div>
 </section>
 
@@ -204,6 +217,7 @@ p{margin:0 0 1em}
   <div class="wrap">
     <p class="eyebrow rv">Três formas de ajudar</p>
     <h2 id="h-vias" class="rv">Escolhe a que cabe na tua semana.</h2>
+    <p class="sub rv d1">Tudo passa pelo Gabinete Veterinário Municipal: um e-mail ou um telefonema e a equipa diz-te o que falta nesse momento.</p>
     <div class="vias-aj" style="margin-top:32px">
       <article class="via-aj rv" id="voluntariado">
         <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c2-6 5-9 9-9 3 0 5 2 7 5"/><path d="M13 11c0-3 2-6 5-7"/><circle cx="17" cy="4" r="1.4" fill="currentColor"/><path d="M6 20l3-4"/></svg></div>
@@ -233,20 +247,10 @@ p{margin:0 0 1em}
   </div>
 </section>
 
-<section class="sec claro-2" id="apadrinhar" aria-labelledby="h-apad">
-  <div class="wrap apadrinhar">
-    <div>
-      <p class="eyebrow rv">Apadrinhar uma box</p>
-      <h2 id="h-apad" class="rv">Uma das 40 boxes com o teu nome.</h2>
-      <p class="sub rv d1">Para quem não pode ter um animal em casa mas pode pagar a alimentação e os cuidados de um por mês. A box apadrinhada fica identificada no centro e neste site. Valor mensal e forma de pagamento <span class="a-confirmar">a confirmar</span> — proposta desta demonstração, a validar com o Gabinete Veterinário Municipal.</p>
-      <div class="acoes rv d2"><a class="btn escuro-btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Quero%20apadrinhar%20uma%20box">Quero apadrinhar</a></div>
-    </div>
-    <div class="mini-boxes rv d1" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  </div>
-</section>
 
 <section class="sec escuro cta-final" aria-labelledby="h-cta">
   <div class="wrap">
+    <div class="chegada rv" data-trela-fim style="margin-inline:auto"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><ellipse cx="12" cy="15.5" rx="4.2" ry="3.4"/><circle cx="6.5" cy="10.5" r="2"/><circle cx="10" cy="7.5" r="2"/><circle cx="14" cy="7.5" r="2"/><circle cx="17.5" cy="10.5" r="2"/></svg> Chegaste.</div>
     <h2 id="h-cta" class="rv">Partilhar também ajuda.</h2>
     <p class="sub rv d1" style="margin-inline:auto">Cada animal partilhado no Instagram encontra família mais depressa. Segue e partilha o <a href="https://www.instagram.com/croaemoita/" rel="noopener">@croaemoita</a>.</p>
     <div class="acoes rv d2"><a class="btn" href="https://www.instagram.com/croaemoita/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M3 6h18l-9 13z" fill="currentColor" opacity=".9"/><circle cx="12" cy="6" r="2.6" fill="currentColor"/><path d="M8.5 4.5 12 6l3.5-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Seguir no Instagram</a><a class="btn sec-btn" href="https://www.facebook.com/croaemoita/" rel="noopener">Facebook</a></div>
@@ -275,6 +279,7 @@ p{margin:0 0 1em}
           <li><a href="adotar.html">Adotar</a></li>
           <li><a href="ajudar.html">Ajudar</a></li>
           <li><a href="parceiros.html">Parceiros</a></li>
+          <li><a href="galeria.html">Galeria</a></li>
           <li><a href="centro.html">O centro</a></li>
         </ul>
       </div>
@@ -305,9 +310,39 @@ p{margin:0 0 1em}
     document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}
   else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('on');});}
   var mq=document.querySelector('.marquee .faixa');if(mq){mq.innerHTML+=mq.innerHTML;}
+  /* a trela: uma linha continua do herói até à chegada, desenhada com o scroll */
+  var ini=document.querySelector('[data-trela-inicio]'),fim=document.querySelector('[data-trela-fim]');
+  if(ini&&fim&&window.matchMedia('(min-width:1220px)').matches){
+    var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','trela');svg.setAttribute('aria-hidden','true');
+    var path=document.createElementNS('http://www.w3.org/2000/svg','path');var mosq=document.createElementNS('http://www.w3.org/2000/svg','circle');mosq.setAttribute('class','mosq');mosq.setAttribute('r','9');
+    svg.appendChild(path);svg.appendChild(mosq);document.body.appendChild(svg);
+    var len=1,total=1,y0=0,y1=0;
+    function medir(){
+      var H=document.documentElement.scrollHeight,W=document.documentElement.clientWidth;
+      svg.setAttribute('height',H);svg.setAttribute('viewBox','0 0 '+W+' '+H);
+      var a=ini.getBoundingClientRect(),b=fim.getBoundingClientRect(),sy=window.scrollY;
+      var x0=a.left+a.width*0.42,ya=a.bottom+sy-40; var x1=b.left+18,yb=b.top+sy+18;
+      y0=ya;y1=yb;
+      var cont=(W-Math.min(W,1160))/2+40; var gut=Math.round(cont*0.42),bulge2=Math.round(cont*0.78); // corre pela margem esquerda, nunca sobre o texto
+      var d='M'+x0+' '+ya+' C '+x0+' '+(ya+180)+', '+gut+' '+(ya+120)+', '+gut+' '+(ya+320);
+      var y=ya+320,k=0; while(y<yb-260){var s=Math.min(520,yb-260-y);var bul=(k%2?bulge2:gut+10);d+=' S '+bul+' '+(y+s*0.55)+', '+gut+' '+(y+s);y+=s;k++;}
+      d+=' S '+(gut)+' '+(yb-80)+', '+x1+' '+yb;
+      path.setAttribute('d',d);len=path.getTotalLength();total=len;
+      path.style.setProperty('--len',len);mosq.setAttribute('cx',x0);mosq.setAttribute('cy',ya);
+      desenhar();
+    }
+    function desenhar(){
+      var sy=window.scrollY+window.innerHeight*0.72;var p=(sy-y0)/(y1-y0);p=Math.max(0,Math.min(1,p));
+      path.style.setProperty('--off',total*(1-p));
+    }
+    var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(medir,120)});
+    window.addEventListener('scroll',desenhar,{passive:true});
+    if(document.fonts&&document.fonts.ready){document.fonts.ready.then(medir)}else{medir()}
+    window.addEventListener('load',function(){setTimeout(medir,300)});
+    if('ResizeObserver' in window){var ro=new ResizeObserver(function(){clearTimeout(t);t=setTimeout(medir,80)});ro.observe(document.body);}
+  }
 })();
 
-(function(){var m=document.querySelector('.mini-boxes');if(!m)return;var on=[3,7,12,18,21,27,30,35];on.forEach(function(i,k){setTimeout(function(){m.children[i].classList.add('on')},400+k*160)});})();
 </script>
 </body>
 </html>

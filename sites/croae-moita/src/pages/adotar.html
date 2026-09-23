@@ -1,10 +1,12 @@
 <!--META
 titulo: Adotar — CROAE Moita
-desc: Como adotar um cão ou gato no CROAE Moita: visita, conversa com a equipa e o animal entregue com vacinas, microchip, desparasitação e esterilização.
+desc: Como adotar um cão ou gato no CROAE Moita: passeio ao fim de semana, conversa com a equipa e o animal entregue com vacinas, microchip, desparasitação e esterilização.
 pagina: adotar
 -->
 <!--CSS-->
 .topo{background:var(--noite);color:#fff;padding:clamp(48px,7vw,96px) 0 clamp(40px,5vw,64px)}
+.topo .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media(max-width:860px){.topo .wrap{grid-template-columns:1fr}}
 .topo h1{max-width:14ch}
 .topo .sub{color:rgba(255,255,255,.85)}
 .passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;counter-reset:p}
@@ -13,16 +15,11 @@ pagina: adotar
 .entrega{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px;list-style:none;padding:0;margin:24px 0 0}
 .entrega li{background:var(--branco);border-radius:var(--raio-s);padding:18px;display:flex;gap:12px;align-items:flex-start;font-weight:700}
 .entrega svg{flex:none;width:24px;height:24px;color:var(--amarelo-esc)}
-.animais{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:20px}
-.animal{background:var(--branco);border-radius:var(--raio);overflow:hidden;box-shadow:0 12px 30px -18px rgba(27,42,65,.25);transition:transform var(--t),box-shadow var(--t)}
-.animal:hover{transform:translateY(-4px)}
-.animal .foto{border-radius:0}
-.animal .info{padding:16px 18px 20px}
-.animal h3{margin:0 0 4px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.animal .tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
-.animal .tags span{font-size:.78rem;font-weight:700;background:var(--areia-2);color:var(--terra);padding:4px 10px;border-radius:999px}
-.animal .btn{padding:10px 18px;font-size:.9rem;min-height:40px}
-.vazio{border:2px dashed rgba(27,42,65,.25);border-radius:var(--raio);display:grid;place-items:center;text-align:center;padding:28px;color:var(--tinta-2);min-height:100%}
+.onde{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+@media(max-width:860px){.onde{grid-template-columns:1fr}}
+.ig{background:var(--noite);color:#fff;border-radius:var(--raio);padding:clamp(24px,3vw,36px);display:grid;gap:14px}
+.ig b{font-family:var(--fd);font-weight:900;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1}
+.ig p{margin:0;color:rgba(255,255,255,.85)}
 .faq details{background:var(--branco);border-radius:var(--raio-s);padding:0 20px;margin-bottom:10px}
 .faq summary{cursor:pointer;padding:16px 0;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .faq summary::after{content:"+";font-family:var(--fd);font-size:1.5rem;color:var(--amarelo-esc);transition:transform var(--t)}
@@ -32,21 +29,24 @@ pagina: adotar
 <main id="conteudo">
 <section class="topo" aria-labelledby="h1">
   <div class="wrap">
-    <p class="eyebrow">Adotar</p>
-    <h1 id="h1">Sai daqui com tudo tratado. Menos o nome — esse escolhes tu.</h1>
-    <p class="sub">Cada animal do CROAE é entregue à nova família com vacinas em dia, desparasitação interna e externa, microchip em nome de quem adota, esterilização ou castração e um saco de ração para começar.</p>
-    <div class="acoes"><a class="btn" href="#animais">{{BANDANA}} Ver quem espera</a><a class="btn sec-btn" href="tel:+351212806816">212 806 816</a></div>
+    <div>
+      <p class="eyebrow">Adotar</p>
+      <h1 id="h1">Sai daqui com tudo tratado. Menos o nome — esse escolhes tu.</h1>
+      <p class="sub">Cada animal do CROAE é entregue à nova família com vacinas em dia, desparasitação interna e externa, microchip em nome de quem adota, esterilização ou castração e um saco de ração para começar.</p>
+      <div class="acoes"><a class="btn" href="tel:+351962049674">{{BANDANA}} Marcar uma visita</a><a class="btn sec-btn" href="#como">Como funciona</a></div>
+    </div>
+    <figure class="foto" data-trela-inicio>{{SVG_CAO}}<img src="media/cao-preto-card.webp" alt="Cão preto de arnês azul sentado na calçada, a olhar para a câmara" onerror="this.remove()"><figcaption>Nos passeios das Festas da Moita</figcaption></figure>
   </div>
 </section>
 
-<section class="sec" aria-labelledby="h-como">
+<section class="sec" id="como" aria-labelledby="h-como">
   <div class="wrap">
     <p class="eyebrow rv">Como funciona</p>
     <h2 id="h-como" class="rv">Três passos, sem pressa.</h2>
     <div class="passos" style="margin-top:32px">
-      <div class="passo rv"><h3>Vem conhecê-lo</h3><p>Liga ou escreve para marcar. Podes começar por um passeio de fim de semana — é a melhor forma de perceber se há química.</p></div>
-      <div class="passo rv d1"><h3>Conversa com a equipa</h3><p>O Gabinete Veterinário Municipal quer saber como vives: casa, rotina, outros animais. Não é um exame, é para o encaixe correr bem. <span class="a-confirmar">documentos a confirmar</span></p></div>
-      <div class="passo rv d2"><h3>Vai para casa</h3><p>Com o boletim de vacinas, o microchip já no teu nome e a esterilização feita ou marcada. Ficamos por perto para as dúvidas dos primeiros dias.</p></div>
+      <div class="passo rv"><h3>Vem passear com ele</h3><p>Liga ou escreve para marcar. Sábados e domingos das 10h às 12h os cães saem com voluntários — é a melhor forma de perceber se há química.</p></div>
+      <div class="passo rv d1"><h3>Conversa com a equipa</h3><p>O Gabinete Veterinário Municipal quer saber como vives: casa, rotina, outros animais. Não é um exame; é para o encaixe correr bem.</p></div>
+      <div class="passo rv d2"><h3>Vai para casa</h3><p>Com o boletim de vacinas, o microchip já no teu nome e a esterilização feita ou marcada. A equipa fica por perto para as dúvidas dos primeiros dias.</p></div>
     </div>
     <h3 class="rv" style="margin-top:48px">Entregue à nova família com</h3>
     <ul class="entrega rv d1">
@@ -59,31 +59,18 @@ pagina: adotar
   </div>
 </section>
 
-<section class="sec claro-2" id="animais" aria-labelledby="h-animais">
-  <div class="wrap">
-    <p class="eyebrow rv">Quem espera</p>
-    <h2 id="h-animais" class="rv">Estes já estiveram na rua connosco.</h2>
-    <p class="sub rv d1">Fotografados nas Festas da Moita. A lista completa e atualizada está no Instagram <a href="https://www.instagram.com/croaemoita/" rel="noopener">@croaemoita</a> — e passa a viver aqui assim que o centro nos enviar as fichas.</p>
-    <div class="animais" style="margin-top:32px">
-      <article class="animal rv">
-        <figure class="foto">{{SVG_CAO}}<img src="media/cao-preto-card.webp" alt="Cão preto de porte médio, arnês azul, sentado e a sorrir" loading="lazy" onerror="this.remove()"></figure>
-        <div class="info"><h3><span>Nome <span class="a-confirmar">a confirmar</span></span></h3>
-          <div class="tags"><span>Cão</span><span>Porte médio</span><span>Idade a confirmar</span></div>
-          <a class="btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Quero%20conhecer%20o%20c%C3%A3o%20preto%20das%20Festas">Quero conhecê-lo</a></div>
-      </article>
-      <article class="animal rv d1">
-        <figure class="foto">{{SVG_CAO}}<img src="media/cao-branco-card.webp" alt="Cão branco com manchas castanhas, deitado, a receber festas" loading="lazy" onerror="this.remove()"></figure>
-        <div class="info"><h3><span>Nome <span class="a-confirmar">a confirmar</span></span></h3>
-          <div class="tags"><span>Cão</span><span>Porte médio</span><span>Idade a confirmar</span></div>
-          <a class="btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Quero%20conhecer%20o%20c%C3%A3o%20branco%20das%20Festas">Quero conhecê-lo</a></div>
-      </article>
-      <article class="animal rv d2">
-        <figure class="foto">{{SVG_CAO}}<img src="media/cao-bandana-card.webp" alt="Cão preto com bandana amarela ao colo da equipa" loading="lazy" onerror="this.remove()"></figure>
-        <div class="info"><h3><span>Nome <span class="a-confirmar">a confirmar</span></span></h3>
-          <div class="tags"><span>Cão</span><span>Bandana amarela</span></div>
-          <a class="btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Quero%20conhecer%20o%20c%C3%A3o%20da%20bandana">Quero conhecê-lo</a></div>
-      </article>
-      <div class="vazio rv d3"><div><p style="font-family:var(--fd);font-weight:800;font-size:1.3rem;margin:0 0 6px">Mais 37 boxes</p><p style="margin:0">As fichas dos restantes animais entram aqui — nome, idade, porte, feitio e tempo no centro.</p></div></div>
+<section class="sec claro-2" aria-labelledby="h-onde">
+  <div class="wrap onde">
+    <div>
+      <p class="eyebrow rv">Quem espera</p>
+      <h2 id="h-onde" class="rv">Cães e gatos. Os de hoje estão no Instagram.</h2>
+      <p class="sub rv d1">O centro recebe até 120 animais e a lista muda todas as semanas, por isso vive nas redes e não aqui. Vê quem chegou, guarda a publicação e traz o nome quando ligares.</p>
+      <div class="acoes rv d2"><a class="btn escuro-btn" href="https://www.instagram.com/croaemoita/" rel="noopener">Instagram @croaemoita</a><a class="btn sec-btn" href="https://www.facebook.com/croaemoita/" rel="noopener">Facebook</a></div>
+    </div>
+    <div class="ig rv d1">
+      <b>Não tens Instagram?</b>
+      <p>Liga para o <a href="tel:+351212806816" style="color:var(--amarelo)">212 806 816</a> e diz o que procuras — porte, idade, cão ou gato. A equipa sabe quem está à espera de quê.</p>
+      <p>Ou aparece num evento de adoção: o CROAE leva animais às Festas da Moita e ao mercado mensal.</p>
     </div>
   </div>
 </section>
@@ -93,17 +80,18 @@ pagina: adotar
     <p class="eyebrow rv">Dúvidas frequentes</p>
     <h2 id="h-faq" class="rv">Antes de perguntares.</h2>
     <div class="rv d1" style="margin-top:24px">
-      <details><summary>A adoção tem custos?</summary><p><span class="a-confirmar">a confirmar</span> com o Gabinete Veterinário Municipal. O que sabemos: vacinas, microchip, desparasitação e esterilização vão incluídos.</p></details>
-      <details><summary>Posso adotar se não viver na Moita?</summary><p><span class="a-confirmar">a confirmar</span>. Liga para o 212 806 816 e pergunta — a equipa responde no próprio dia.</p></details>
+      <details><summary>A adoção tem custos?</summary><p>Vacinas, microchip, desparasitação e esterilização vão incluídos. Se existe alguma taxa <span class="a-confirmar">a confirmar</span> com o Gabinete Veterinário Municipal — 212 806 816.</p></details>
+      <details><summary>Posso adotar se não viver na Moita?</summary><p><span class="a-confirmar">a confirmar</span>. Liga e pergunta — a equipa responde no próprio dia.</p></details>
       <details><summary>Tenho de ir ao centro ou posso conhecer o animal noutro sítio?</summary><p>O CROAE leva animais aos eventos de adoção do concelho (Festas da Moita, mercado mensal). Segue o <a href="https://www.instagram.com/croaemoita/" rel="noopener">Instagram</a> para saber o próximo. Fora disso, é no centro, com marcação.</p></details>
-      <details><summary>E se não correr bem?</summary><p>Fala com a equipa antes de decidir qualquer coisa. Há acompanhamento depois da adoção e há sempre a hipótese de família de acolhimento temporário como passo intermédio — ver <a href="ajudar.html#fat">Ajudar</a>.</p></details>
-      <details><summary>Adotar um gato é igual?</summary><p>Sim: o centro recebe cães e gatos e o processo é o mesmo. As fichas dos gatos entram nesta página com as dos cães.</p></details>
+      <details><summary>E se não correr bem?</summary><p>Fala com a equipa antes de decidir qualquer coisa. Há acompanhamento depois da adoção e há a hipótese de família de acolhimento temporário como passo intermédio — ver <a href="ajudar.html#fat">Ajudar</a>.</p></details>
+      <details><summary>Adotar um gato é igual?</summary><p>Sim: o centro recebe cães e gatos e o processo é o mesmo.</p></details>
     </div>
   </div>
 </section>
 
 <section class="sec escuro cta-final" aria-labelledby="h-cta">
   <div class="wrap">
+    <div class="chegada rv" data-trela-fim style="margin-inline:auto">{{PATA_ICO}} Chegaste.</div>
     <h2 id="h-cta" class="rv">Marca o primeiro passeio.</h2>
     <p class="sub rv d1" style="margin-inline:auto">Sábados e domingos, das 10h às 12h, com marcação prévia.</p>
     <div class="acoes rv d2"><a class="btn" href="tel:+351962049674">{{BANDANA}} 962 049 674</a><a class="btn sec-btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Marcar%20passeio%20no%20CROAE">Escrever e-mail</a></div>

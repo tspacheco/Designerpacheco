@@ -16,6 +16,10 @@ SETA = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentC
 CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 7"/></svg>'
 ICO_PASSEIO = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c2-6 5-9 9-9 3 0 5 2 7 5"/><path d="M13 11c0-3 2-6 5-7"/><circle cx="17" cy="4" r="1.4" fill="currentColor"/><path d="M6 20l3-4"/></svg>'
 ICO_CASA = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>'
+PATA_ICO = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><ellipse cx="12" cy="15.5" rx="4.2" ry="3.4"/><circle cx="6.5" cy="10.5" r="2"/><circle cx="10" cy="7.5" r="2"/><circle cx="14" cy="7.5" r="2"/><circle cx="17.5" cy="10.5" r="2"/></svg>'
+# ranhuras fixas: o cliente grava media/galeria/01.jpg … 30.jpg e media/parceiros/01.png … 12.png; as que faltam desaparecem
+GALERIA = ''.join(f'<figure class="foto"><img src="media/galeria/{i:02d}.jpg" alt="Fotografia {i} do CROAE Moita" loading="lazy"></figure>' for i in range(1,31))
+LOGOS = ''.join(f'<div class="logo-slot"><img src="media/parceiros/{i:02d}.png" alt="Logótipo de parceiro {i}" loading="lazy" onerror="this.parentElement.remove()"></div>' for i in range(1,13))
 ICO_SACO = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 12H5z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M9.5 14.5c.5-1.5 4.5-1.5 5 0"/></svg>'
 def svg_fundo(cor1, cor2, forma):
     return f'<svg class="fundo" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{cor1}"/><stop offset="1" stop-color="{cor2}"/></linearGradient></defs><rect width="400" height="500" fill="url(#g)"/>{forma}</svg>'
@@ -24,19 +28,8 @@ SVG_CAO = svg_fundo('#24364F','#1B2A41', PATA)
 SVG_STAND = svg_fundo('#2E4468','#1B2A41', '<g fill="#F2B705" opacity=".5"><rect x="80" y="150" width="240" height="180" rx="14"/><rect x="60" y="120" width="280" height="30" rx="8"/></g>')
 SVG_EQUIPA = svg_fundo('#6B4E2E','#1B2A41', '<g fill="#F2B705" opacity=".45"><circle cx="140" cy="220" r="34"/><circle cx="200" cy="200" r="34"/><circle cx="260" cy="220" r="34"/><rect x="90" y="270" width="220" height="90" rx="30"/></g>')
 
-# grelha das 40 boxes do herói: fotos em posições fixas, vazias marcadas
-FOTOS = {5:('media/cao-preto-julius-k9.webp','Cão preto de arnês azul'), 18:('media/cao-branco-festas.webp','Cão branco com manchas castanhas'), 27:('media/cao-bandana-card.webp','Cão preto com bandana amarela'), 34:('media/equipa-baloico-moita.webp','Equipa do CROAE')}
-VAZIAS = {2,9,14,22,31,37}
-boxes=[]
-for i in range(40):
-    if i in FOTOS:
-        src,alt=FOTOS[i]; boxes.append(f'<div class="box foto" style="--i:{i}"><img src="{src}" alt="{alt}" onerror="this.remove()"></div>')
-    elif i in VAZIAS: boxes.append(f'<div class="box vazia" style="--i:{i}"></div>')
-    else: boxes.append(f'<div class="box" style="--i:{i}"></div>')
-BOXES=''.join(boxes)
-MINI=''.join('<i></i>' for _ in range(40))
 
-FRAG = dict(BANDANA=BANDANA, SETA=SETA, CHECK=CHECK, ICO_PASSEIO=ICO_PASSEIO, ICO_CASA=ICO_CASA, ICO_SACO=ICO_SACO, SVG_CAO=SVG_CAO, SVG_STAND=SVG_STAND, SVG_EQUIPA=SVG_EQUIPA, BOXES=BOXES, MINI=MINI)
+FRAG = dict(BANDANA=BANDANA, SETA=SETA, CHECK=CHECK, ICO_PASSEIO=ICO_PASSEIO, ICO_CASA=ICO_CASA, ICO_SACO=ICO_SACO, SVG_CAO=SVG_CAO, SVG_STAND=SVG_STAND, SVG_EQUIPA=SVG_EQUIPA, PATA_ICO=PATA_ICO, GALERIA=GALERIA, LOGOS=LOGOS)
 
 JSONLD = {
   "@context":"https://schema.org","@type":"AnimalShelter","name":"CROAE Moita — Centro de Recolha Oficial de Animais Errantes",

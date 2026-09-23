@@ -1,106 +1,46 @@
-# CROAE Moita — arquitetura do site (v1, 23/09/2026)
+# CROAE Moita — arquitetura do site (v2, 23/09/2026)
 
-**Objetivos (do brief):** mostrar o centro · atrair mais apoio (voluntários, donativos, parceiros) · notoriedade.
-**Audiência:** famílias do concelho da Moita e arredores (Barreiro, Montijo, Alcochete) a pensar adotar; pessoas com tempo ao fim de semana (voluntariado); empresas locais (parcerias).
-**Uma tarefa por página:** levar a pessoa a **um** de três botões — *Quero adotar* · *Quero ajudar* · *Ser parceiro*.
+**Objetivos (do brief):** mostrar o centro · levar as pessoas até lá (ou pelo menos a ajudar) · mais apoio e notoriedade.
+**Condição decisiva (v2):** o site é entregue **uma vez, sem manutenção**. Nada na página pode depender de dados que mudam: sem lista de animais, sem ocupação de boxes, sem programas inventados com valores. Os animais atuais vivem no Instagram; o site aponta para lá e para o telefone.
+**Uma tarefa por página:** levar a pessoa a **um** de três gestos — *Marcar um passeio* · *Ajudar* · *Ser parceiro*.
 
-## 1. Direção de arte — "As 40 boxes"
+## 1. Direção de arte — "A trela"
 
-Ponto de partida no mundo real do CROAE, não num template de ONG:
+- **Assinatura visual:** a trela verde-água que aparece nas fotos dos passeios vira **uma linha contínua** que sai da fotografia do herói, corre pela margem esquerda da página e termina numa etiqueta **"Chegaste."** nos contactos. Desenha-se com o scroll (`stroke-dashoffset` calculado em JS a partir de dois marcadores `data-trela-inicio` / `data-trela-fim`). A metáfora é literal: a trela leva-te até ao centro. Só aparece a partir de 1220 px (abaixo disso não há margem livre); em `prefers-reduced-motion` aparece já desenhada.
+- **Gesto de marca:** a bandana amarela dos cães — ícone nos botões primários.
+- **Voz:** os slogans dos placares. H1 = *"Hoje é dia de fazer um novo amigo."*; Ajudar abre com *"Eles nunca te deixariam para trás."*
+- **Risco justificado:** herói e rodapés em azul-escuro (dos placares) num setor onde tudo é branco-e-pastel; interior claro para leitura no telemóvel.
 
-- **Assinatura visual:** o centro tem **40 boxes** (facto confirmado). O herói é uma **grelha de 40 células arredondadas**, em amarelo sobre azul-escuro, que se acende célula a célula na entrada (motion coreografado ≈ 1,2 s). Algumas células abrem com a foto de um animal para adoção; ao fazer scroll a grelha desagrega-se e as fotos "saem das boxes" para a secção de adoção. A metáfora é literal: cada box vazia é um animal que foi para casa. Nunca usada no catálogo (secção 5 do playbook).
-- **Gesto de marca:** a **bandana amarela** dos cães no evento. Usada como forma (triângulo com nó) nos botões primários e como divisor de secção — em SVG inline, uma só vez por página, sem virar decoração.
-- **Voz:** a deles. Os slogans já existem nos placares — *"Hoje é dia de fazer um novo amigo."* é o H1. *"Eles nunca te deixariam para trás."* abre a secção de voluntariado. Sem "paixão pelos animais" nem "amigos de quatro patas".
-- **Risco estético justificado:** fundo azul-escuro no herói e nos rodapés (herdado dos placares) num setor onde tudo é branco-e-pastel. Resto da página claro e arejado para contraste AA e leitura no telemóvel.
+Paleta: `--amarelo #F2B705` · `--noite #1B2A41` · `--areia #FBF7EE` · `--areia-2 #F3EBD8` · `--terra #6B4E2E` · `--trela #1FA58A` (só linha/etiqueta, nunca texto sobre claro).
+Tipografia: **Gabarito** 800/900 (display) + **Atkinson Hyperlegible** (corpo) — legibilidade para serviço público.
 
-### Paleta (tokens `:root`)
+## 2. Páginas (cada uma um HTML auto-contido, geradas por `ferramentas/build.py` a partir de `src/`)
 
-| Token | Hex | Uso |
+| Página | Conteúdo | Gesto |
 |---|---|---|
-| `--amarelo` | `#F2B705` | bandana, CTA primário, células da grelha |
-| `--amarelo-escuro` | `#B8860B` | texto amarelo sobre claro (AA), hover |
-| `--noite` | `#1B2A41` | herói, rodapé, texto principal |
-| `--areia` | `#FBF7EE` | fundo das secções claras (não é o creme-padrão #F4F1EA: mais quente, puxa ao amarelo) |
-| `--terra` | `#6B4E2E` | legendas, patas do padrão, texto secundário |
-| `--branco` | `#FFFFFF` | cartões |
+| `index` | herói com foto do passeio · marquee · "Porque vale a pena ir lá" (2024 · 120 · 0 € · Sáb/Dom) · três vias · "Os animais estão no Instagram, os passeios são aqui" · equipa · **Como chegar** (contactos + mapa, fim da trela) | Marcar um passeio |
+| `adotar` | 3 passos (passeio → conversa → casa) · o que é entregue (placar) · onde ver os animais (Instagram / telefone / eventos) · FAQ | Marcar uma visita |
+| `ajudar` | passeios sáb/dom 10–12h · família de acolhimento temporário · doar em espécie · partilhar | Pedir a ficha / Combinar entrega |
+| `parceiros` | 3 formas (em espécie · eventos · divulgação — sem valores nem nomes de programa) · logótipos por ranhuras · contrapartidas | Ser parceiro (mailto) |
+| `galeria` | mosaico das Festas da Moita · "O centro por dentro" com **30 ranhuras** `media/galeria/01.jpg…30.jpg` | Vem ver ao vivo |
+| `centro` | vídeo (`media/video/centro.mp4|webm`, cai para a foto) · números · cronologia · Gabinete Veterinário · contactos + horários + mapa | Ligar agora |
 
-Contraste verificado: `--noite` sobre `--areia` 13,5:1 · branco sobre `--noite` 14:1 · `--noite` sobre `--amarelo` 8,9:1 · `--amarelo-escuro` sobre `--areia` 4,6:1.
+## 3. Mecanismo "sem manutenção"
 
-### Tipografia (novas no tracker)
+Tudo o que o cliente pode querer acrescentar depois entra **por ficheiros com nomes fixos**, sem tocar no HTML:
+- `media/galeria/01.jpg … 30.jpg` → galeria (as que faltam desaparecem; se não houver nenhuma, a secção fecha-se com uma frase).
+- `media/parceiros/01.png … 12.png` → logótipos.
+- `media/video/centro.mp4` (+ `.webm`) → vídeo do centro.
+- Cada pasta tem `LEIA-ME.txt`. O zip entregue é o produto final.
 
-- **Display:** `Gabarito` 800/900 — geométrica, calorosa, próxima do lettering dos placares sem o copiar. Só em H1/H2 e nos números.
-- **Corpo:** `Atkinson Hyperlegible` 400/700 — desenhada para legibilidade (serviço público, leitura por pessoas mais velhas no telemóvel). Justifica-se por si.
-- **Utilitária:** `Atkinson Hyperlegible` 700 em maiúsculas pequenas para eyebrows e etiquetas (uma família a menos a carregar).
+## 4. Dados "a confirmar" que ainda aparecem
 
-Rejeitado do `ui-ux-pro-max` (output cru: roxo de comunidade + Fredoka/Nunito + "vibrante e block-based") — é a resposta genérica para "comunidade"; a cor do cliente é amarelo/azul-escuro e a fonte redonda infantil não serve um serviço municipal. Mantido do output: secções largas (≥ 48 px), tipo grande, hover com mudança de cor, 200–300 ms.
+Morada exata · horário de atendimento · custos de adoção (se existirem) · link da ficha de voluntário · idade mínima/seguro · condições da FAT · lista completa de doações. Ficam com a etiqueta até o Tomás confirmar com o Gabinete Veterinário; depois é substituir texto em `src/pages/` e correr `build.py`.
 
-## 2. Estrutura da página (single-file, `#/` sem router — âncoras)
+## 5. Fotos
 
-```
-┌──────────────────────────────────────────────────────┐
-│ banner APRESENTAÇÃO PACHECO STUDIOS (remover na venda) │
-│ nav: Adotar · Ajudar · Parceiros · O centro · Contactos│
-├──────────────────────────────────────────────────────┤
-│ HERÓI (--noite)                                        │
-│  grelha 40 boxes ●●●●●●●●●●  H1 "Hoje é dia de fazer   │
-│  (acende-se em seq.)         um novo amigo."           │
-│                              [Quero adotar] [Ajudar]   │
-│  faixa de factos: 40 boxes · até 120 animais · GVM     │
-├──────────────────────────────────────────────────────┤
-│ marquee: ADOTA · PASSEIA · APADRINHA · DOA · PARTILHA  │
-├──────────────────────────────────────────────────────┤
-│ ADOTAR (--areia)                                       │
-│  cartões por animal (foto, nome, idade, porte, tempo   │
-│  no centro) — dados vêm do cliente; sem dados → "a     │
-│  confirmar". "Entregue com: vacinas, desparasitação,   │
-│  microchip, esterilização, ração" (placar, confirmado) │
-│  passos: 1 visita · 2 conversa · 3 vai para casa       │
-├──────────────────────────────────────────────────────┤
-│ AJUDAR (branco)                                        │
-│  "Eles nunca te deixariam para trás."                  │
-│  3 vias: Voluntariado (sáb/dom 10–12h, marcação) ·     │
-│  FAT · Doar (lista do que precisam — a confirmar)      │
-│  CTA: e-mail gab.vetmun@cm-moita.pt / tel              │
-├──────────────────────────────────────────────────────┤
-│ PARCEIROS (--noite) — secção pedida no brief           │
-│  "O CROAE saiu à rua nas Festas da Moita. Quem esteve  │
-│  connosco:" mural de logótipos (a confirmar) + galeria │
-│  do evento (5 fotos limpas) + "A sua empresa aqui":    │
-│  3 formatos de parceria (ração/material · patrocínio   │
-│  de evento · apadrinhamento de box) + CTA "Ser parceiro"│
-├──────────────────────────────────────────────────────┤
-│ O CENTRO (--areia)                                     │
-│  inaugurado 12/03/2024 · 5 edifícios · recreio comum · │
-│  gerido pelo Gabinete Veterinário Municipal · cheque-  │
-│  veterinário · fotos do espaço (por obter)             │
-├──────────────────────────────────────────────────────┤
-│ CONTACTOS + mapa (morada a confirmar) · horário a conf.│
-│ rodapé: Moita Município · Livro de Reclamações · IG/FB │
-└──────────────────────────────────────────────────────┘
-```
+Prints do Instagram limpos com `ferramentas/limpa-instagram.py` (corte de bordas + botões). Resolução ~730 px: chega para cartões e galeria; o herói usa a foto do cão preto a 4:5 dentro de um cartão, nunca full-width.
 
-**Móvel:** herói com a grelha reduzida a 4×10 atrás do texto, `.hero-shade` reforçado; CTAs em coluna; secções em 1 coluna; nav com burger acessível.
+## 6. Crítica final
 
-## 3. Secção "Parcerias" — porquê e como
-
-O stand nas Festas já expunha logótipos de negócios locais: a relação existe, só não está formalizada. O site dá-lhe forma:
-
-1. **Prova:** "Estivemos nas Festas da Moita com X parceiros" (número a confirmar) + galeria do evento.
-2. **Oferta clara, três níveis** (nomes a validar com o cliente): *Amigo* (ração/material em espécie) · *Padrinho de box* (apoio mensal a uma das 40 boxes — liga-se à assinatura visual: a box "apadrinhada" fica marcada na grelha) · *Parceiro de evento* (presença em ações de adoção).
-3. **Contrapartida:** logótipo no site e nos placares, menção nas redes do CROAE.
-4. **Um só CTA:** "Ser parceiro" → mailto com assunto pré-preenchido (sem formulário — sem backend).
-
-## 4. Motion
-
-- Entrada do herói: grelha acende em varrimento diagonal (transform/opacity, 40 × 25 ms), depois H1 e CTAs (fade-up 400 ms). Total < 1,5 s.
-- Scroll: `.rv` com `IntersectionObserver`, `.d1/.d2`.
-- Micro: cartão de animal levanta 4 px e a bandana do botão "roda" 6° no hover.
-- `prefers-reduced-motion`: grelha já acesa, zero transições.
-
-## 5. Conteúdo que falta (bloqueia a construção final, não a demo)
-
-Ver lista "A confirmar" em `research/croae-moita.md`. Para a **demo** avança-se com o que está confirmado e "a confirmar" no resto. Fotos de animais e placares (a enviar pelo Tomás) entram em `media/croae-moita/`, limpas de UI do Instagram com o método desta sessão (corte de bordas + inpainting dos botões).
-
-## 6. Crítica final prevista
-
-"Isto podia ser um template?" — A grelha das 40 boxes só faz sentido neste centro; a bandana só faz sentido porque os cães a usam; os slogans são deles. Se a demo for apresentada sem fotos reais dos animais, a grelha tem de aguentar sozinha — por isso é a assinatura, não decoração.
+"Isto podia ser um template?" — A trela só faz sentido porque está nas fotos deles e porque o site existe para levar pessoas ao centro; os slogans são deles; a estrutura "não há lista aqui, há passeios ao fim de semana" é a verdade do cliente, não uma secção de ONG genérica. O que ficou de fora ficou por uma razão: não pode ficar desatualizado.

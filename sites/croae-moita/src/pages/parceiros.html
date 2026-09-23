@@ -1,87 +1,77 @@
 <!--META
 titulo: Parceiros — CROAE Moita
-desc: Empresas e associações que apoiam o CROAE Moita. Três formas de parceria: apoio em espécie, padrinho de box e parceiro de evento. Galeria das Festas da Moita.
+desc: Empresas e associações do concelho da Moita que apoiam o CROAE. Como a sua empresa pode ajudar: apoio em espécie, presença nos eventos de adoção, divulgação.
 pagina: parceiros
 -->
 <!--CSS-->
 .topo{background:var(--noite);color:#fff;padding:clamp(48px,7vw,96px) 0 clamp(40px,5vw,64px)}
+.topo-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media(max-width:860px){.topo-grid{grid-template-columns:1fr}}
 .topo h1{max-width:14ch}
 .topo .sub{color:rgba(255,255,255,.85)}
-.galeria{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(160px,auto);gap:12px}
-.galeria .foto{aspect-ratio:auto;height:100%;min-height:200px}
-.galeria .g-a{grid-column:span 3;grid-row:span 2}.galeria .g-b{grid-column:span 3}.galeria .g-c{grid-column:span 2}.galeria .g-d{grid-column:span 2}.galeria .g-e{grid-column:span 2}
-@media(max-width:860px){.galeria{grid-template-columns:1fr 1fr}.galeria .g-a{grid-column:span 2}.galeria .g-b,.galeria .g-c,.galeria .g-d,.galeria .g-e{grid-column:span 1}}
-.niveis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px}
-.nivel{background:var(--branco);border-radius:var(--raio);padding:30px;display:grid;gap:10px;align-content:start;border-top:6px solid var(--amarelo);position:relative}
-.nivel.destaque{background:var(--noite);color:#fff;border-top-color:var(--amarelo)}
-.nivel.destaque p,.nivel.destaque li{color:rgba(255,255,255,.85)}
-.nivel .tag{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amarelo-esc)}
-.nivel.destaque .tag{color:var(--amarelo)}
-.nivel ul{margin:0;padding-left:18px;color:var(--tinta-2)}
-.nivel .btn{justify-self:start;margin-top:8px}
-.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:28px}
-.logos div{background:var(--branco);border:1px dashed rgba(27,42,65,.25);border-radius:var(--raio-s);min-height:90px;display:grid;place-items:center;text-align:center;padding:14px;font-weight:700;color:var(--tinta-2);font-size:.9rem}
+.formas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px}
+.forma{background:var(--branco);border-radius:var(--raio);padding:30px;display:grid;gap:10px;align-content:start;border-top:6px solid var(--amarelo)}
+.forma .ico{width:52px;height:52px;border-radius:16px;background:var(--amarelo-claro);display:grid;place-items:center}
+.forma .ico svg{width:28px;height:28px;color:var(--noite)}
+.forma ul{margin:0;padding-left:18px;color:var(--tinta-2)}
+.forma .btn{justify-self:start;margin-top:8px}
+.prova{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+@media(max-width:860px){.prova{grid-template-columns:1fr}}
 .contra{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px;list-style:none;padding:0;margin:24px 0 0}
 .contra li{background:var(--noite-2);border-radius:var(--raio-s);padding:18px;display:flex;gap:12px;align-items:flex-start;font-weight:700}
 .contra svg{flex:none;width:24px;height:24px;color:var(--amarelo)}
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:28px}
+.logos .logo-slot{background:var(--branco);border-radius:var(--raio-s);min-height:90px;display:grid;place-items:center;padding:14px;overflow:hidden}
+.logos .logo-slot img{max-height:60px;width:auto;object-fit:contain}
+.logos .logo-slot:empty{display:none}
 <!--/CSS-->
 <main id="conteudo">
 <section class="topo" aria-labelledby="h1">
-  <div class="wrap">
-    <p class="eyebrow">Parceiros</p>
-    <h1 id="h1">O CROAE saiu à rua. Quem esteve connosco?</h1>
-    <p class="sub">Nas Festas da Moita montámos stand, mural de adoção e roleta, e os cães passearam pelo recinto de bandana amarela. Já lá estavam logótipos de negócios do concelho. Esta página é para dar forma a isso — e para abrir a porta a quem quiser entrar.</p>
-    <div class="acoes"><a class="btn" href="#ser-parceiro">{{BANDANA}} Ser parceiro</a><a class="btn sec-btn" href="#galeria">Ver as Festas</a></div>
+  <div class="wrap topo-grid">
+    <div>
+      <p class="eyebrow">Parceiros</p>
+      <h1 id="h1">O CROAE saiu à rua. Vem connosco da próxima vez.</h1>
+      <p class="sub">Nas Festas da Moita montámos stand, mural de adoção e roleta, e os cães passearam pelo recinto de bandana amarela. Ao lado, os logótipos de negócios do concelho que ajudaram. Há lugar para mais.</p>
+      <div class="acoes"><a class="btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Quero%20ser%20parceiro%20do%20CROAE%20Moita">{{BANDANA}} Ser parceiro</a><a class="btn sec-btn" href="galeria.html">Ver as Festas</a></div>
+    </div>
+    <figure class="foto" data-trela-inicio>{{SVG_STAND}}<img src="media/evento-stand-festas-moita.webp" alt="Stand do CROAE nas Festas da Moita: mural com fotografias dos animais para adoção, roleta e visitantes" onerror="this.remove()"><figcaption>O stand nas Festas da Moita</figcaption></figure>
   </div>
 </section>
 
-<section class="sec" id="galeria" aria-labelledby="h-gal">
+<section class="sec" aria-labelledby="h-formas">
   <div class="wrap">
-    <p class="eyebrow rv">Festas da Moita</p>
-    <h2 id="h-gal" class="rv">Uma noite no recinto.</h2>
-    <div class="galeria rv d1" style="margin-top:32px">
-      <figure class="foto g-a">{{SVG_STAND}}<img src="media/evento-stand-festas-moita.webp" alt="Stand do CROAE nas Festas da Moita: mural com fotografias dos animais para adoção, roleta e visitantes" loading="lazy" onerror="this.remove()"><figcaption>O stand — mural de adoção, roleta e o placar "Eles nunca te deixariam para trás"</figcaption></figure>
-      <figure class="foto g-b p43">{{SVG_CAO}}<img src="media/evento-placar-hoje-e-dia.webp" alt="Placar do CROAE com um cão recortado e a frase 'Hoje é dia de fazer um novo amigo'" loading="lazy" onerror="this.remove()"><figcaption>"Hoje é dia de fazer um novo amigo!"</figcaption></figure>
-      <figure class="foto g-c">{{SVG_CAO}}<img src="media/cao-preto-julius-k9.webp" alt="Cão preto sentado na calçada durante o passeio" loading="lazy" onerror="this.remove()"><figcaption>Passeio no recinto</figcaption></figure>
-      <figure class="foto g-d">{{SVG_CAO}}<img src="media/cao-branco-festas.webp" alt="Cão branco a receber festas de um visitante" loading="lazy" onerror="this.remove()"><figcaption>Festas para quem as pede</figcaption></figure>
-      <figure class="foto g-e">{{SVG_EQUIPA}}<img src="media/equipa-baloico-moita.webp" alt="Equipa do CROAE com dois cães no baloiço do município" loading="lazy" onerror="this.remove()"><figcaption>A equipa</figcaption></figure>
+    <p class="eyebrow rv">Como a sua empresa pode ajudar</p>
+    <h2 id="h-formas" class="rv">Três formas de entrar. Nenhuma exige muito.</h2>
+    <div class="formas" style="margin-top:32px">
+      <article class="forma rv"><div class="ico">{{ICO_SACO}}</div><h3>Apoio em espécie</h3><p>Ração, mantas, areia, material de limpeza ou serviços — transporte, gráfica, pequenas obras. Uma vez ou todos os meses.</p><ul><li>O que faz mais falta muda com a época: a equipa diz-lhe</li></ul><a class="btn escuro-btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Parceria%20CROAE%20%E2%80%94%20apoio%20em%20esp%C3%A9cie">Oferecer apoio</a></article>
+      <article class="forma rv d1"><div class="ico">{{ICO_PASSEIO}}</div><h3>Eventos de adoção</h3><p>Esteja connosco nas ações do concelho — Festas da Moita, mercado mensal, escolas. Com o seu stand ao lado, brindes ou a logística do dia.</p><ul><li>Presença nas fotografias e publicações do evento</li></ul><a class="btn escuro-btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Parceria%20CROAE%20%E2%80%94%20eventos%20de%20ado%C3%A7%C3%A3o">Apoiar um evento</a></article>
+      <article class="forma rv d2"><div class="ico">{{ICO_CASA}}</div><h3>Divulgação</h3><p>Um cartaz na montra, o site do CROAE no rodapé do seu, uma partilha por mês no Instagram. Custa zero e é o que faz os animais saírem mais depressa.</p><ul><li>Material de divulgação fornecido pelo centro</li></ul><a class="btn escuro-btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Parceria%20CROAE%20%E2%80%94%20divulga%C3%A7%C3%A3o">Pedir material</a></article>
     </div>
   </div>
 </section>
 
-<section class="sec claro-2" aria-labelledby="h-atuais">
-  <div class="wrap">
-    <p class="eyebrow rv">Quem já apoia</p>
-    <h2 id="h-atuais" class="rv">Os logótipos do stand, aqui.</h2>
-    <p class="sub rv d1">Estavam afixados no stand das Festas. Nomes e logótipos oficiais <span class="a-confirmar">a confirmar</span> com o centro antes de publicar — os espaços estão reservados.</p>
-    <div class="logos rv d2">
-      <div>Parceiro 1<br><span class="a-confirmar">a confirmar</span></div><div>Parceiro 2<br><span class="a-confirmar">a confirmar</span></div><div>Parceiro 3<br><span class="a-confirmar">a confirmar</span></div><div>Parceiro 4<br><span class="a-confirmar">a confirmar</span></div><div>Parceiro 5<br><span class="a-confirmar">a confirmar</span></div><div>A sua empresa</div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="ser-parceiro" aria-labelledby="h-niv">
-  <div class="wrap">
-    <p class="eyebrow rv">Ser parceiro</p>
-    <h2 id="h-niv" class="rv">Três formas de entrar. Nenhuma exige muito.</h2>
-    <p class="sub rv d1">Proposta desta demonstração — nomes, valores e contrapartidas a validar com o Gabinete Veterinário Municipal.</p>
-    <div class="niveis" style="margin-top:32px">
-      <article class="nivel rv"><span class="tag">Em espécie</span><h3>Amigo do CROAE</h3><p>Ração, mantas, areia, material de limpeza ou serviços (transporte, gráfica, obras pequenas). Uma vez ou todos os meses.</p><ul><li>Logótipo nesta página</li><li>Menção nas redes do CROAE</li></ul><a class="btn escuro-btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Parceria%20CROAE%20%E2%80%94%20Amigo%20(apoio%20em%20esp%C3%A9cie)">Quero ser Amigo</a></article>
-      <article class="nivel destaque rv d1"><span class="tag">Mensal</span><h3>Padrinho de box</h3><p>A tua empresa paga os cuidados de uma das 40 boxes por mês. A box fica com o teu nome no centro e acesa na grelha da página inicial.</p><ul><li>Placa na box e logótipo no site</li><li>Relatório trimestral com os animais que passaram pela box</li><li>Valor <span class="a-confirmar">a confirmar</span></li></ul><a class="btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Parceria%20CROAE%20%E2%80%94%20Padrinho%20de%20box">Apadrinhar uma box</a></article>
-      <article class="nivel rv d2"><span class="tag">Eventos</span><h3>Parceiro de evento</h3><p>Estás connosco nas ações de adoção — Festas da Moita, mercado mensal, escolas. Com o teu stand ao lado, brindes ou patrocínio da logística.</p><ul><li>Logótipo nos placares e no site</li><li>Presença nas fotografias e publicações do evento</li></ul><a class="btn escuro-btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Parceria%20CROAE%20%E2%80%94%20Parceiro%20de%20evento">Apoiar um evento</a></article>
+<section class="sec claro-2" aria-labelledby="h-prova">
+  <div class="wrap prova">
+    <figure class="foto p43 rv">{{SVG_CAO}}<img src="media/evento-placar-hoje-e-dia.webp" alt="Placar do CROAE nas Festas da Moita com um cão recortado e a frase 'Hoje é dia de fazer um novo amigo'" loading="lazy" onerror="this.remove()"><figcaption>"Hoje é dia de fazer um novo amigo!"</figcaption></figure>
+    <div>
+      <p class="eyebrow rv">Quem já apoia</p>
+      <h2 id="h-prova" class="rv">Os logótipos do stand, aqui.</h2>
+      <p class="sub rv d1">Os parceiros atuais estavam afixados no stand das Festas. Para os ver nesta página, basta gravar os logótipos em <code>media/parceiros/01.png</code>, <code>02.png</code>… — aparecem sozinhos.</p>
+      <div class="logos rv d2">{{LOGOS}}</div>
     </div>
   </div>
 </section>
 
 <section class="sec escuro" aria-labelledby="h-contra">
   <div class="wrap">
-    <p class="eyebrow rv">O que a tua marca ganha</p>
+    <div class="chegada rv" data-trela-fim>{{PATA_ICO}} Chegaste.</div>
+    <p class="eyebrow rv">O que a sua marca ganha</p>
     <h2 id="h-contra" class="rv">Visibilidade onde a Moita está a olhar.</h2>
     <ul class="contra rv d1">
-      <li>{{CHECK}} Logótipo neste site, na página de parceiros e no rodapé</li>
+      <li>{{CHECK}} Logótipo nesta página</li>
       <li>{{CHECK}} Publicação de boas-vindas no Instagram e Facebook do CROAE</li>
       <li>{{CHECK}} Presença nos placares dos eventos de adoção</li>
-      <li>{{CHECK}} Uma causa municipal, transparente e com resultados que se veem: boxes vazias</li>
+      <li>{{CHECK}} Uma causa municipal, transparente, com resultados que se veem</li>
     </ul>
     <div class="acoes rv d2"><a class="btn" href="mailto:gab.vetmun@cm-moita.pt?subject=Quero%20ser%20parceiro%20do%20CROAE%20Moita">{{BANDANA}} Falar connosco</a><a class="btn sec-btn" href="tel:+351212806816">212 806 816</a></div>
   </div>

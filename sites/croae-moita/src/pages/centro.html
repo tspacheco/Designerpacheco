@@ -15,9 +15,9 @@ pagina: centro
 .linha b{position:relative;width:24px;height:24px;border-radius:50%;background:var(--amarelo);box-shadow:0 0 0 4px var(--areia);margin-top:2px}
 .linha div{padding-bottom:20px}
 .linha div span{display:block;font-family:var(--fd);font-weight:800;font-size:1.2rem}
-.numeros{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px}
+.numeros{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px}
 .numeros div{background:var(--branco);border-radius:var(--raio-s);padding:20px 22px;border-left:6px solid var(--amarelo)}
-.numeros b{font-family:var(--fd);font-weight:900;font-size:clamp(1.5rem,2.2vw,2rem);display:block;line-height:1;color:var(--noite)}
+.numeros b{white-space:nowrap;font-family:var(--fd);font-weight:900;font-size:clamp(1.5rem,2.2vw,2rem);display:block;line-height:1;color:var(--noite)}
 .numeros span{font-size:.9rem;color:var(--tinta-2)}
 .dois{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:start}
 @media(max-width:860px){.dois{grid-template-columns:1fr}}
@@ -32,11 +32,11 @@ pagina: centro
     <p class="eyebrow">O centro</p>
     <h1 id="h1">Cinco edifícios, um recreio e 40 boxes que queremos ver vazias.</h1>
     <p class="sub">O CROAE é o centro oficial do concelho da Moita. Recebe animais errantes, trata deles e devolve-os a uma família. É gerido pelo Gabinete Veterinário Municipal da Câmara Municipal da Moita.</p>
-    <div class="video-slot rv">
-      <video playsinline muted loop autoplay preload="metadata" poster="media/equipa-baloico-moita.webp" aria-label="Vídeo do centro" onerror="this.parentElement.querySelector('.leg').textContent='Vídeo do centro — ficheiro a colocar em media/video/'">
+    <div class="video-slot rv" data-trela-inicio>
+      <video playsinline muted loop autoplay preload="metadata" poster="media/equipa-baloico-moita.webp" aria-label="Vídeo do centro">
         <source src="media/video/centro.webm" type="video/webm"><source src="media/video/centro.mp4" type="video/mp4">
       </video>
-      <div class="leg">Vídeo do centro <span class="a-confirmar">ficheiro a colocar em media/video/</span></div>
+      <div class="leg">O centro</div>
     </div>
   </div>
 </section>
@@ -81,6 +81,7 @@ pagina: centro
 <section class="sec contactos" id="contactos" aria-labelledby="h-cont">
   <div class="wrap dois">
     <div>
+      <div class="chegada rv" data-trela-fim>{{PATA_ICO}} Chegaste.</div>
       <p class="eyebrow rv">Contactos</p>
       <h2 id="h-cont" class="rv">Liga, escreve ou aparece.</h2>
       <dl class="rv d1" style="margin-top:24px">
