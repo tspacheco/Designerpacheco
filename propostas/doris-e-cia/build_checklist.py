@@ -117,7 +117,7 @@ def col(b):
     return f'<td>{r(b)}</td><td>{s["conv"]:.0f}</td><td>{s["novos"]:.0f}</td><td>{r(s["cpa"])}</td><td>{r(s["m1"])}</td><td class="hl">{r(s["m6"])}</td>'
 pages.append(page("", h("03 · Checklist · Fase 2 · Anúncios", "De R$ 400 a R$ 1.500 por mês. O que cada nível compra.", "Meta Ads (Instagram e Facebook), objetivo “mensagens no WhatsApp”, raio de 3 km em volta da loja, tutores de cães e gatos. Google Ads só depois de a ficha estar arrumada e com avaliações.") + f'''
 <table class="tbl num2">
-  <thead><tr><th>Por mês</th><th>Conversas no WhatsApp</th><th>Clientes novos</th><th>Custo por cliente</th><th>Receita no 1.º mês</th><th class="hl">Receita em 6 meses</th></tr></thead>
+  <thead><tr><th>Por mês</th><th>Conversas no WhatsApp</th><th>Clientes novos</th><th>Custo do anúncio por cliente</th><th>Receita no 1.º mês</th><th class="hl">Receita em 6 meses</th></tr></thead>
   <tbody>
     <tr><td class="lab">Nível 1</td>{col(400)}</tr>
     <tr><td class="lab">Nível 2</td>{col(800)}</tr>
@@ -142,7 +142,7 @@ pages.append(page("", h("03 · Checklist · Fase 2 · Anúncios", "De R$ 400 a R
       ("Nada de arte genérica.", "Vídeo cru do celular, pet real, gente real. Antes e depois vence tudo neste setor."),
       ("Uma oferta por vez.", "Trocar só depois de 14 dias com dados."),
       ("Responder em 10 minutos.", "Anúncio que gera conversa sem resposta é dinheiro jogado fora."),
-      ("Medir toda semana:", "conversas, agendados, compareceram, voltaram. Custo por cliente novo."),
+      ("Medir toda semana:", "conversas, agendados, compareceram, voltaram. Custo do anúncio por cliente novo."),
       ("Começar no nível 1 ou 2.", "Subir para o 3 só quando o custo por cliente estiver confirmado."),
     ])}
   </div>
@@ -223,7 +223,7 @@ pages.append(page("", h("06 · Os próximos passos", "Do sim até ao primeiro re
       <li>Quantas viraram agendamento</li>
       <li>Quantas apareceram mesmo</li>
       <li>Quantas voltaram no mês seguinte</li>
-      <li>Custo por cliente novo</li>
+      <li>Custo do anúncio por cliente novo</li>
       <li>Atendimentos por semana contra a capacidade</li>
     </ul>
     <div class="note"><b>O que a Pacheco Studios faz:</b> <b>trazer clientes</b> (ficha do Google arrumada e com avaliações, um Instagram que converte, anúncios geridos com relatório semanal) e <b>infraestrutura</b> (WhatsApp Business com catálogo, agendamento online, ficha de cliente, lembretes e recuperação automáticos). <b>O site de uma página vai incluído como extra.</b></div>

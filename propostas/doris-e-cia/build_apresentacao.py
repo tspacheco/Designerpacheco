@@ -86,13 +86,13 @@ def trow(i,k):
     return f'<tr><td class="lab">Nível {i}</td><td>{r(k)}</td><td>{s_["conv"]:.0f}</td><td>{s_["novos"]:.0f}</td><td>{r(s_["cpa"])}</td><td>{r(s_["m1"])}</td><td class="hl">{r(s_["m6"])}</td><td>{roi:.0f}×</td></tr>'
 pages.append(page("", h("02 · O potencial", "O que cada nível de anúncio pode trazer para a loja.", "Anúncios no Instagram e no Facebook, num raio de 3 km em volta da loja, para tutores de cães e gatos. Cada conversa chega no WhatsApp da Doris & Cia. Os números abaixo são uma projeção com premissas à vista; o piloto de 45 dias troca-os por números reais.") + f'''
 <table class="tbl num2">
-  <thead><tr><th></th><th>Investimento por mês</th><th>Conversas</th><th>Clientes novos</th><th>Custo por cliente</th><th>Faturamento 1.º mês</th><th class="hl">Faturamento em 6 meses</th><th>Retorno</th></tr></thead>
+  <thead><tr><th></th><th>Investimento por mês</th><th>Conversas</th><th>Clientes novos</th><th>Custo do anúncio por cliente</th><th>Faturamento 1.º mês</th><th class="hl">Faturamento em 6 meses</th><th>Retorno</th></tr></thead>
   <tbody>{trow(1,400)}{trow(2,800)}{trow(3,1500)}</tbody>
 </table>
 <div class="bars">{bars()}</div>
 {MM.bloco()}
 <p class="fine">Custo por conversa iniciada de R$ {CPC:.0f}. “Retorno” é o faturamento dividido pelo investimento em anúncios no período. Não inclui venda de ração e acessórios, que costuma vir junto com o banho.</p>
-<div class="callout"><b>O que isto quer dizer:</b> com R$ 800 por mês em anúncios, a loja pode ganhar cerca de {S[800]["novos"]:.0f} clientes novos por mês e faturar perto de {r(S[800]["m6"])} em seis meses, gastando {r(S[800]["custo6"])}. Isso só acontece se a ficha do Google, o Instagram e o WhatsApp estiverem prontos para receber essa gente. É o que a página seguinte mostra.</div>
+<div class="callout"><b>O que isto quer dizer:</b> cada cliente novo custa cerca de {r(S[800]["cpa"])} em anúncio e deixa R$ {TICKET:.0f} logo no primeiro banho, e depois volta. Com R$ 800 por mês, são {S[800]["novos"]:.0f} clientes novos por mês e perto de {r(S[800]["m6"])} em seis meses, gastando {r(S[800]["custo6"])}. Isso só acontece se a ficha do Google, o Instagram e o WhatsApp estiverem prontos para receber essa gente.</div>
 ''', 3))
 
 rows = "".join(f'<tr><td><span class="sev {s}">{s}</span></td><td><b>{esc(a)}</b><br><span class="small">{esc(b)}</span></td><td>{esc(c)}</td></tr>' for a, b, c, s in diag)

@@ -46,7 +46,7 @@ def desenho(d):
         ("Impressões",  d["imp"],  "o anúncio aparece na tela de quem mora perto", None,          NAVY,  "eye"),
         ("Cliques",     d["cli"],  "tocam no botão e o WhatsApp abre",             d["cpc"],      NAVY,  "tap"),
         ("Conversas",   d["conv"], "escrevem mesmo a primeira mensagem",           d["cpconv"],   TEAL,  "msg"),
-        ("Clientes",    d["cls"],  "agendam, aparecem e pagam",                    d["cpa"],      TEAL,  "check"),
+        ("Clientes",    d["cls"],  "agendam, aparecem e pagam R$ 80",                    d["cpa"],      TEAL,  "check"),
         ("Recorrentes", d["vol"],  "voltam no mês seguinte",                       None,          GOLD,  "repeat"),
     ]
     perdas = ["1,2 % tocam", "25 % escrevem", "35 % fecham", "40 % voltam"]
@@ -67,7 +67,7 @@ def desenho(d):
         o.append(f'<text x="{x+56}" y="{y+44}" font-family="Inter" font-size="10.5" fill="{MUTED}">{esc(sub)}</text>')
         o.append(f'<text x="{x+w-18}" y="{y+32}" text-anchor="end" font-family="Barlow Condensed" font-weight="800" font-size="28" fill="{col}">{n(val)}</text>')
         if custo:
-            o.append(f'<text x="{x+w-18}" y="{y+47}" text-anchor="end" font-family="JetBrains Mono" font-size="9.5" fill="{MUTED}">{r(custo)} cada</text>')
+            o.append(f'<text x="{x+w-18}" y="{y+47}" text-anchor="end" font-family="JetBrains Mono" font-size="9.5" fill="{MUTED}">{r(custo)} de anúncio</text>')
         if i < len(rows) - 1:
             ay = y + h
             o.append(f'<path d="M{W/2},{ay+5} L{W/2},{ay+23}" stroke="{LINE}" stroke-width="1.6" marker-end="url(#dn)"/>')
@@ -107,7 +107,7 @@ def pagina(page, h, C):
     inner2 = f'''
 <h3 class="mt">O mesmo funil, nos três níveis de investimento</h3>
 <table class="tbl num2 fnl">
-  <thead><tr><th>Por mês</th><th>Impressões</th><th>Cliques</th><th>Conversas</th><th class="hl">Clientes novos</th><th>Custo por cliente</th></tr></thead>
+  <thead><tr><th>Por mês</th><th>Impressões</th><th>Cliques</th><th>Conversas</th><th class="hl">Clientes novos</th><th>Custo do anúncio por cliente</th></tr></thead>
   <tbody>{trs}</tbody>
 </table>
 <h3 class="mt">O que decide cada degrau</h3>
