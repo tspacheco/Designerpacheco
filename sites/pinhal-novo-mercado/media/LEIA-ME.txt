@@ -1,11 +1,15 @@
 PINHAL NOVO MERCADO AND RIA — media/
 
-interior.jpg                fotografia do balcão e da entrada (drogaria) — também é o poster do herói
-peixe.jpg                   tilápia com especiarias — fotografia de apresentação (secção "Peixe");
-                            substituir pela foto do peixe da loja quando o dono a enviar
+fachada.jpg                 a entrada (letreiro, porta 17, Ria, Olá) — poster do herói e secção "Onde estamos"
+corredor-mercearia.jpg      corredor da mercearia (fruta, pão, arcas) — secção Mercearia
+corredor-drogaria.jpg       corredor dos champôs e da limpeza — secção Drogaria
+telemovel.jpg               parede dos acessórios de telemóvel — secção Telemóvel
+interior.jpg                o balcão à entrada — secção "Ao balcão"
+peixe.jpg                   tilápia com especiarias — FOTO DE APRESENTAÇÃO (Google Imagens): substituir pela do dono
 restaurante-montra.jpg      recorte da montra do restaurante (embutido no index.html, secção "Ao lado")
-video/heroi-1280x720.mp4    o herói: a fotografia do interior com zoom lento + nuvens de especiarias, 10 s em loop
-video/heroi-720x1280.mp4    o mesmo em vertical (o site escolhe conforme a orientação do ecrã; serve para stories/reels)
+video/heroi-1280x720.mp4    o herói: montagem entrada → corredor → telemóveis → drogaria, 15 s em loop (MP4 + WebM)
+video/heroi-720x1280.*      o mesmo em vertical (o site escolhe conforme o ecrã; serve para stories/reels)
 
-Para regenerar o vídeo a partir de outra fotografia (16:9 para horizontal, 9:16 para vertical):
-  NODE_PATH=$(npm root -g) node video-foto.js foto.jpg media/video/heroi-1280x720.mp4 1280 720 10 24
+As fotografias vieram da ficha Google Maps em 580 px de largura: ficam bem no site, mas para o vídeo do herói
+uma versão original do telemóvel do dono (3000 px) fica bastante mais nítida — basta substituir os ficheiros e correr:
+  NODE_PATH=$(npm root -g) node video-montagem.js media/video/heroi-1280x720.mp4 1280 720 <plano.jpg:seg:x,y,zoom:x,y,zoom> ...

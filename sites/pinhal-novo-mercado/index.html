@@ -2,8 +2,8 @@
 <!--
   PINHAL NOVO MERCADO AND RIA — demo Pacheco Studios · 22/09/2026
   Mercearia · Drogaria · Telemóvel · Bebidas e snacks · Pinhal Novo (Palmela)
-  Herói: vídeo feito da fotografia do interior (zoom lento em loop + nuvens de especiarias: açafrão, pimentão, cardamomo, grãos
-  de basmati), gerado por video-foto.js. Cada secção tem o seu mundo e a sua animação; Peixe e Drogaria com fotografia animada.
+  Herói: montagem em vídeo das fotografias da loja (entrada → corredores → parede dos telemóveis), gerada por video-montagem.js.
+  Cada secção tem o seu mundo, a sua cor e a sua fotografia animada (revelação, varrimento de luz, etiquetas).
   Dados não confirmados estão marcados "a confirmar" (HONEST-DATA). Gerado por build.py a partir de index.src.html.
 -->
 <html lang="pt-PT" data-lang="pt">
@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pinhal Novo Mercado and Ria — Mercearia, drogaria e telemóvel em Pinhal Novo</title>
-<meta name="description" content="Pinhal Novo Mercado and Ria: mercearia indiana e do dia a dia, drogaria, acessórios de telemóvel, bebidas e snacks. Quase tudo o que uma casa precisa, em Pinhal Novo. Ao lado do Pinhal Novo Restaurant.">
+<meta name="description" content="Pinhal Novo Mercado and Ria: mercearia, cosméticos, limpeza, fruta e legumes, bebidas, tabacaria, acessórios de telemóvel e Ria Money Transfer. Quase tudo o que uma casa precisa, em Pinhal Novo. Ao lado do Pinhal Novo Restaurant.">
 <meta name="theme-color" content="#1A120E">
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="%238A4A06"/><path d="M12 24h40M12 36h40M12 48h40" stroke="%23F4EBDD" stroke-width="4"/><rect x="18" y="14" width="8" height="10" rx="2" fill="%23F4EBDD"/><rect x="36" y="26" width="10" height="10" rx="2" fill="%23F4EBDD"/><rect x="22" y="38" width="12" height="10" rx="2" fill="%23F4EBDD"/></svg>'>
 <script type="application/ld+json">
@@ -69,7 +69,7 @@ html[data-lang="en"] [lang="pt"]{display:none}
 
 /* ---------- herói: nuvens de especiarias ---------- */
 .heroi{position:relative;min-height:min(92svh,820px);display:flex;align-items:flex-end;overflow:hidden;background:var(--noite);color:var(--luz)}
-.heroi .fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--noite) url(media/interior.jpg) center/cover}
+.heroi .fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--noite) url(media/fachada.jpg) center/cover}
 .heroi .veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,18,14,.2) 0%,rgba(26,18,14,0) 35%,rgba(26,18,14,.55) 75%,rgba(26,18,14,.95) 100%)}
 .heroi .dentro{position:relative;z-index:2;max-width:1240px;margin:0 auto;width:100%;padding:clamp(7rem,18vw,11rem) var(--pad) clamp(2rem,4vw,3rem)}
 .heroi h1{font-size:clamp(2.6rem,7.4vw,5.6rem);max-width:14ch;color:#fff;text-shadow:0 8px 40px rgba(0,0,0,.6)}
@@ -196,6 +196,11 @@ html[data-lang="en"] [lang="pt"]{display:none}
 #peixe.visto .foto-cena img{animation:flutua 7s ease-in-out 2.6s infinite}
 @keyframes flutua{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.035) translateY(-5px)}}
 #drogaria .foto-cena{--placa:#8FD3B8}
+#mercearia .foto-cena{--placa:#E8A825}
+#telemovel .foto-cena{--placa:#4FC3F7}
+#balcao .foto-cena{--placa:var(--acafrao-2)}
+#onde .foto-cena.fachada{margin:1.6rem 0 0;max-width:520px}
+#onde .foto-cena{--placa:#C4202B}
 
 /* ---------- onde ---------- */
 .onde{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(1.6rem,4vw,3rem);align-items:start}
@@ -274,11 +279,11 @@ html[data-lang="en"] [lang="pt"]{display:none}
 
 <main>
 <section class="heroi" id="heroi">
-  <video class="fundo" id="heroi-video" muted loop playsinline autoplay preload="auto" poster="media/interior.jpg" aria-hidden="true"></video>
+  <video class="fundo" id="heroi-video" muted loop playsinline autoplay preload="auto" poster="media/fachada.jpg" aria-hidden="true"></video>
   <div class="veu" aria-hidden="true"></div>
   <div class="dentro">
     <h1 class="entra"><span lang="pt">Quase tudo o que uma casa precisa, <em>ao virar da esquina.</em></span><span lang="en">Almost everything a home needs, <em>round the corner.</em></span></h1>
-    <p class="frase entra" data-i="1"><span lang="pt">Mercearia indiana e do dia a dia, drogaria, acessórios de telemóvel, bebidas e snacks. Em Pinhal Novo, ao lado do Pinhal Novo Restaurant.</span><span lang="en">Indian and everyday groceries, household goods, phone accessories, drinks and snacks. In Pinhal Novo, next to Pinhal Novo Restaurant.</span></p>
+    <p class="frase entra" data-i="1"><span lang="pt">Mercearia, cosméticos, limpeza, fruta e legumes, bebidas, tabacaria, acessórios de telemóvel e Ria Money Transfer. Em Pinhal Novo, ao lado do Pinhal Novo Restaurant.</span><span lang="en">Groceries, cosmetics, cleaning, fruit and veg, drinks, tobacco, phone accessories and Ria Money Transfer. In Pinhal Novo, next to Pinhal Novo Restaurant.</span></p>
     <div class="acoes entra" data-i="2">
       <a class="btn acafrao" href="#mercearia"><span lang="pt">Ver as secções</span><span lang="en">See the sections</span></a>
       <a class="btn linha" href="https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><span lang="pt">Como chegar</span><span lang="en">Directions</span></a>
@@ -309,24 +314,16 @@ html[data-lang="en"] [lang="pt"]{display:none}
         <li><span lang="pt">Especiarias inteiras e moídas</span><span lang="en">Whole and ground spices</span></li>
         <li><span lang="pt">Óleo, ghee, leite de coco</span><span lang="en">Oil, ghee, coconut milk</span></li>
         <li><span lang="pt">Chá, açúcar, conservas</span><span lang="en">Tea, sugar, tinned goods</span></li>
+        <li><span lang="pt">Fruta e legumes frescos</span><span lang="en">Fresh fruit and vegetables</span></li>
+        <li><span lang="pt">Pão, bolos e bolachas</span><span lang="en">Bread, cakes and biscuits</span></li>
       </ul>
       <p class="nota"><span lang="pt">Exemplos do que uma mercearia assim costuma ter — a lista confirma-se com o dono.</span><span lang="en">Examples of what a grocery like this usually stocks — the list is confirmed with the owner.</span></p>
     </div>
-    <div class="cena" aria-hidden="true">
-      <svg viewBox="0 0 400 400">
-        <defs><clipPath id="f1"><rect x="0" y="0" width="400" height="400"/></clipPath></defs>
-        <g class="sobe-svg" transform="translate(0,20)">
-          <rect x="30" y="300" width="340" height="10" rx="2" fill="#8C6535"/>
-          <g class="frasco"><rect x="50" y="200" width="56" height="100" rx="8" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="54" y="230" width="48" height="66" rx="5" fill="#E8A825"/><rect x="58" y="188" width="40" height="14" rx="3" fill="#5A3F12"/></g>
-          <g class="frasco"><rect x="122" y="180" width="56" height="120" rx="8" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="126" y="210" width="48" height="86" rx="5" fill="#C4202B"/><rect x="130" y="168" width="40" height="14" rx="3" fill="#5A3F12"/></g>
-          <g class="frasco"><rect x="194" y="215" width="56" height="85" rx="8" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="198" y="240" width="48" height="56" rx="5" fill="#5E8A4A"/><rect x="202" y="203" width="40" height="14" rx="3" fill="#5A3F12"/></g>
-          <g class="frasco"><rect x="266" y="190" width="56" height="110" rx="8" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="270" y="222" width="48" height="74" rx="5" fill="#8C4A1E"/><rect x="274" y="178" width="40" height="14" rx="3" fill="#5A3F12"/></g>
-          <g class="frasco"><path d="M330 300v-80q0-16 16-16h8q16 0 16 16v80z" fill="#FFF7E0" stroke="#5A3F12" stroke-width="3"/><rect class="po" x="334" y="236" width="32" height="60" rx="4" fill="#3F2A1A"/></g>
-          <g fill="#FFFDF5" stroke="#B8955A" stroke-width="1"><ellipse class="grao" cx="150" cy="130" rx="3" ry="8" transform="rotate(20 150 130)"/><ellipse class="grao" cx="170" cy="110" rx="3" ry="8" transform="rotate(-30 170 110)" style="animation-delay:.6s"/><ellipse class="grao" cx="135" cy="105" rx="3" ry="8" transform="rotate(50 135 105)" style="animation-delay:1.2s"/><ellipse class="grao" cx="160" cy="145" rx="3" ry="8" transform="rotate(-10 160 145)" style="animation-delay:1.8s"/><ellipse class="grao" cx="185" cy="135" rx="3" ry="8" transform="rotate(35 185 135)" style="animation-delay:2.2s"/></g>
-          <path d="M120 96q30-40 60 0" fill="none" stroke="#5A3F12" stroke-width="3"/><path d="M116 96h68l-10 30h-48z" fill="#E8DCC8" stroke="#5A3F12" stroke-width="3"/>
-        </g>
-      </svg>
-    </div>
+    <figure class="foto-cena">
+      <div class="moldura"><img src="media/corredor-mercearia.jpg" alt="Corredor da mercearia: fruta, caixas de eletrodomésticos, pão e bolos Dulcesol e as arcas ao fundo" width="1200" height="876" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
+      <span class="etiqueta e1" style="left:5%;top:9%"><i style="background:#5E8A4A"></i><span lang="pt">Fruta e legumes</span><span lang="en">Fruit and veg</span></span><span class="etiqueta e2" style="right:6%;top:26%"><i style="background:#E8A825"></i><span lang="pt">Arroz, farinhas e especiarias</span><span lang="en">Rice, flours and spices</span></span><span class="etiqueta e3" style="left:12%;bottom:11%"><i style="background:#C4202B"></i><span lang="pt">Pão e bolos</span><span lang="en">Bread and cakes</span></span>
+      <figcaption><span lang="pt">O corredor da mercearia, com a fruta à entrada.</span><span lang="en">The grocery aisle, with the fruit by the entrance.</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -358,11 +355,11 @@ html[data-lang="en"] [lang="pt"]{display:none}
 <section class="seccao" id="drogaria">
   <div class="dentro duas">
     <figure class="foto-cena">
-      <div class="moldura"><img src="media/interior.jpg" alt="Interior da loja: o balcão com doces, a prateleira das bebidas espirituosas e a estante dos produtos de cabelo e higiene" width="1220" height="919" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
+      <div class="moldura"><img src="media/corredor-drogaria.jpg" alt="Corredor da drogaria: champôs e cremes à esquerda, detergentes e produtos de limpeza à direita, a parede das bebidas ao fundo" width="1200" height="1474" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
       <span class="etiqueta e1" style="left:5%;top:10%"><i style="background:#8FD3B8"></i><span lang="pt">Cabelo e higiene</span><span lang="en">Hair and hygiene</span></span>
-      <span class="etiqueta e2" style="right:6%;top:30%"><i style="background:#F3C64A"></i><span lang="pt">Doces ao balcão</span><span lang="en">Sweets at the counter</span></span>
+      <span class="etiqueta e2" style="right:6%;top:30%"><i style="background:#F3C64A"></i><span lang="pt">Cosméticos</span><span lang="en">Cosmetics</span></span>
       <span class="etiqueta e3" style="left:10%;bottom:12%"><i style="background:#173A2E"></i><span lang="pt">Limpeza da casa</span><span lang="en">Home cleaning</span></span>
-      <figcaption><span lang="pt">O balcão e a entrada da loja.</span><span lang="en">The counter and the shop entrance.</span></figcaption>
+      <figcaption><span lang="pt">O corredor da drogaria e dos cosméticos.</span><span lang="en">The household and cosmetics aisle.</span></figcaption>
     </figure>
     <div>
       <h2><span lang="pt">Drogaria</span><span lang="en">Household</span></h2>
@@ -392,24 +389,15 @@ html[data-lang="en"] [lang="pt"]{display:none}
         <li><span lang="pt">Carregadores de parede e de carro</span><span lang="en">Wall and car chargers</span></li>
         <li><span lang="pt">Auriculares e colunas</span><span lang="en">Earphones and speakers</span></li>
         <li><span lang="pt">Cartões SIM e carregamentos</span><span lang="en">SIM cards and top-ups</span></li>
-        <li><span lang="pt">Powerbanks e suportes</span><span lang="en">Power banks and holders</span></li>
+        <li><span lang="pt">Pilhas e powerbanks</span><span lang="en">Batteries and power banks</span></li>
       </ul>
       <p class="nota"><span lang="pt">Exemplos — a lista e as operadoras confirmam-se com o dono.</span><span lang="en">Examples — the list and carriers are confirmed with the owner.</span></p>
     </div>
-    <div class="cena" aria-hidden="true">
-      <svg viewBox="0 0 400 400">
-        <g class="sobe-svg">
-          <rect x="150" y="70" width="120" height="240" rx="18" fill="#2A2B33" stroke="#4FC3F7" stroke-width="3"/><rect x="160" y="86" width="100" height="208" rx="8" fill="#12131A"/>
-          <rect x="190" y="150" width="40" height="80" rx="6" fill="none" stroke="#EEF0F6" stroke-width="3"/><rect x="204" y="142" width="12" height="8" rx="2" fill="#EEF0F6"/>
-          <rect class="bateria" x="195" y="155" width="30" height="70" rx="3" fill="#4FC3F7"/>
-          <path class="raio" d="M214 165l-14 26h12l-6 22 16-30h-12z" fill="#EEF0F6"/>
-          <path class="cabo" d="M210 310v20q0 20-20 20h-90q-30 0-30 30v20" fill="none" stroke="#4FC3F7" stroke-width="5" stroke-linecap="round"/>
-          <rect x="196" y="300" width="28" height="18" rx="4" fill="#4FC3F7"/>
-          <rect x="40" y="380" width="60" height="20" rx="4" fill="#4FC3F7"/><rect x="52" y="360" width="10" height="20" fill="#EEF0F6"/><rect x="78" y="360" width="10" height="20" fill="#EEF0F6"/>
-          <g stroke="#4FC3F7" stroke-width="2" fill="none" opacity=".5"><path d="M300 100c20 0 30 10 30 30M300 120c8 0 12 4 12 12"/></g>
-        </g>
-      </svg>
-    </div>
+    <figure class="foto-cena">
+      <div class="moldura"><img src="media/telemovel.jpg" alt="Parede dos acessórios de telemóvel: capas, cabos, carregadores, auriculares, pilhas e pastilhas" width="1200" height="883" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
+      <span class="etiqueta e1" style="left:5%;top:9%"><i style="background:#4FC3F7"></i><span lang="pt">Capas e cabos</span><span lang="en">Cases and cables</span></span><span class="etiqueta e2" style="right:6%;bottom:30%"><i style="background:#F3C64A"></i><span lang="pt">Pilhas</span><span lang="en">Batteries</span></span><span class="etiqueta e3" style="left:10%;bottom:12%"><i style="background:#C4202B"></i><span lang="pt">Carregadores e auriculares</span><span lang="en">Chargers and earphones</span></span>
+      <figcaption><span lang="pt">A parede dos acessórios, ao pé do balcão.</span><span lang="en">The accessories wall, by the counter.</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -451,21 +439,23 @@ html[data-lang="en"] [lang="pt"]{display:none}
     <div>
       <h2><span lang="pt">Não vê na prateleira? Pergunte ao balcão.</span><span lang="en">Not on the shelf? Ask at the counter.</span></h2>
       <p class="lead"><span lang="pt">Muita coisa está lá atrás, e o que não há encomenda-se. É assim que uma loja de bairro funciona.</span><span lang="en">A lot is kept out back, and what's missing can be ordered. That's how a neighbourhood shop works.</span></p>
+      <ul class="lista">
+        <li><span lang="pt">Ria Money Transfer — envio de dinheiro</span><span lang="en">Ria Money Transfer — send money abroad</span></li>
+        <li><span lang="pt">Tabacaria</span><span lang="en">Tobacco</span></li>
+        <li><span lang="pt">Gelados Olá</span><span lang="en">Olá ice cream</span></li>
+        <li><span lang="pt">Doces, pastilhas e snacks</span><span lang="en">Sweets, gum and snacks</span></li>
+      </ul>
       <div class="contactos">
         <div class="dado"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><div><b><span lang="pt">Telefone</span><span lang="en">Phone</span></b><span class="confirmar"><span lang="pt">a confirmar</span><span lang="en">tbc</span></span></div></div>
         <div class="dado"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b><span lang="pt">Horário</span><span lang="en">Opening hours</span></b><span class="confirmar"><span lang="pt">a confirmar com o dono</span><span lang="en">to be confirmed with the owner</span></span></div></div>
         <div class="dado"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><div><b><span lang="pt">Pagamento</span><span lang="en">Payment</span></b><span><span lang="pt">Dinheiro e multibanco · MB WAY </span><span lang="en">Cash and card · MB WAY </span><span class="confirmar"><span lang="pt">a confirmar</span><span lang="en">tbc</span></span></span></div></div>
       </div>
     </div>
-    <div class="cena" aria-hidden="true" style="max-width:360px">
-      <svg viewBox="0 0 400 400">
-        <g class="sobe-svg">
-          <rect x="40" y="300" width="320" height="14" rx="3" fill="#8C6535"/><rect x="60" y="314" width="280" height="60" fill="#B0854E"/>
-          <g class="sino"><path d="M140 292q0-70 60-80v-14h0v14q60 10 60 80z" fill="#D98A1F" stroke="#2B1B14" stroke-width="3"/><rect x="128" y="290" width="144" height="12" rx="4" fill="#2B1B14"/><circle cx="200" cy="192" r="8" fill="#2B1B14"/></g>
-          <path d="M300 250h50v50h-50z" fill="#F4EBDD" stroke="#2B1B14" stroke-width="3"/><path d="M310 262h30M310 274h30M310 286h18" stroke="#2B1B14" stroke-width="2"/>
-        </g>
-      </svg>
-    </div>
+    <figure class="foto-cena">
+      <div class="moldura"><img src="media/interior.jpg" alt="O balcão da loja: doces e pastilhas, a prateleira das bebidas espirituosas e a estante dos cosméticos" width="1220" height="919" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
+      <span class="etiqueta e1" style="left:5%;top:9%"><i style="background:#F3C64A"></i><span lang="pt">Doces e pastilhas</span><span lang="en">Sweets and gum</span></span><span class="etiqueta e2" style="right:6%;top:28%"><i style="background:#8A4A06"></i><span lang="pt">Bebidas espirituosas</span><span lang="en">Spirits</span></span><span class="etiqueta e3" style="left:10%;bottom:12%"><i style="background:#F26522"></i><span lang="pt">Ria Money Transfer</span><span lang="en">Ria Money Transfer</span></span>
+      <figcaption><span lang="pt">O balcão, logo à entrada.</span><span lang="en">The counter, right by the door.</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -487,9 +477,14 @@ html[data-lang="en"] [lang="pt"]{display:none}
     <div>
       <h2><span lang="pt">Onde estamos</span><span lang="en">Find us</span></h2>
       <div class="contactos">
-        <div class="dado"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><div><b><span lang="pt">Morada</span><span lang="en">Address</span></b><span>Pinhal Novo, Palmela · <span class="confirmar"><span lang="pt">rua e número a confirmar</span><span lang="en">street and number tbc</span></span></span></div></div>
+        <div class="dado"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><div><b><span lang="pt">Morada</span><span lang="en">Address</span></b><span><span lang="pt">Porta 17 · Pinhal Novo, Palmela · </span><span lang="en">Door 17 · Pinhal Novo, Palmela · </span><span class="confirmar"><span lang="pt">rua a confirmar</span><span lang="en">street tbc</span></span></span></div></div>
       </div>
       <div class="acoes"><a class="btn escuro" href="https://www.google.com/maps/place/Pinhal+novo+mercado+and+ria/@38.6324437,-8.9149693,19.68z/data=!4m6!3m5!1s0xd194198f5d6f8d9:0xf65179fe5d9db1ec!8m2!3d38.632305!4d-8.9147957!16s%2Fg%2F11l2h1fz7y" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span lang="pt">Abrir no Google Maps</span><span lang="en">Open in Google Maps</span></a></div>
+    <figure class="foto-cena fachada">
+      <div class="moldura"><img src="media/fachada.jpg" alt="A fachada da loja: letreiro Pinhal Novo Mercado, porta 17, Ria Money Transfer e gelados Olá" width="1200" height="869" loading="lazy" decoding="async"><span class="luz" aria-hidden="true"></span></div>
+      <span class="etiqueta e1" style="left:5%;top:9%"><i style="background:#C4202B"></i><span lang="pt">É esta a porta</span><span lang="en">This is the door</span></span><span class="etiqueta e2" style="right:6%;top:40%"><i style="background:#F26522"></i><span lang="pt">Ria Money Transfer</span><span lang="en">Ria Money Transfer</span></span>
+      <figcaption><span lang="pt">A entrada, na esquina. O restaurante é mesmo ao lado.</span><span lang="en">The entrance, on the corner. The restaurant is right next door.</span></figcaption>
+    </figure>
     </div>
     <div class="mapa"><iframe title="Mapa: Pinhal Novo Mercado and Ria" src="https://www.google.com/maps?q=38.632305,-8.9147957&z=18&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
   </div>
