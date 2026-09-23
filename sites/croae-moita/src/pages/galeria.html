@@ -19,31 +19,21 @@ pagina: galeria
 <section class="topo" aria-labelledby="h1">
   <div class="wrap">
     <p class="eyebrow">Galeria</p>
-    <h1 id="h1">Uma noite no recinto, e o que vem depois.</h1>
-    <p class="sub">As Festas da Moita, os passeios de fim de semana, a equipa. Os animais atuais estão no <a href="https://www.instagram.com/croaemoita/" rel="noopener" style="color:var(--amarelo)">Instagram</a>; aqui fica o que o centro é.</p>
+    <h1 id="h1">Os nossos.</h1>
+    <p class="sub">Os animais atuais estão no <a href="https://www.instagram.com/croaemoita/" rel="noopener" style="color:var(--amarelo)">Instagram</a>. Aqui ficam os que já passaram por nós.</p>
   </div>
 </section>
 
-<section class="sec" aria-labelledby="h-festas">
+<section class="sec extra" aria-label="Fotografias">
   <div class="wrap">
-    <p class="eyebrow rv">Festas da Moita</p>
-    <h2 id="h-festas" class="rv">O stand, a roleta, a bandana amarela.</h2>
-    <div class="mosaico rv d1" style="margin-top:28px">
-      <figure class="foto"><img src="media/evento-stand-festas-moita.webp" alt="Stand do CROAE nas Festas da Moita: mural com fotografias dos animais para adoção, roleta e visitantes" loading="lazy" onerror="this.parentElement.remove()"><figcaption>O stand — mural de adoção, roleta e o placar "Eles nunca te deixariam para trás"</figcaption></figure>
-      <figure class="foto"><img src="media/cao-preto-julius-k9.webp" alt="Cão preto de arnês azul e trela verde sentado na calçada" loading="lazy" onerror="this.parentElement.remove()"><figcaption>Passeio no recinto</figcaption></figure>
-      <figure class="foto"><img src="media/evento-placar-hoje-e-dia.webp" alt="Placar do CROAE com um cão recortado e a frase 'Hoje é dia de fazer um novo amigo'" loading="lazy" onerror="this.parentElement.remove()"><figcaption>"Hoje é dia de fazer um novo amigo!"</figcaption></figure>
-      <figure class="foto"><img src="media/equipa-baloico-moita.webp" alt="Equipa do CROAE com dois cães no baloiço 'Moita, uma janela para o Tejo'" loading="lazy" onerror="this.parentElement.remove()"><figcaption>A equipa</figcaption></figure>
-      <figure class="foto"><img src="media/cao-branco-festas.webp" alt="Cão branco com manchas castanhas deitado a receber festas" loading="lazy" onerror="this.parentElement.remove()"><figcaption>Festas para quem as pede</figcaption></figure>
+    <div class="mosaico rv" data-galeria-extra>
+      <figure class="foto"><img src="media/cao-preto-julius-k9.webp" alt="Cão preto de arnês azul sentado na calçada" loading="lazy" onerror="this.parentElement.remove()"></figure>
+      <figure class="foto"><img src="media/evento-placar-hoje-e-dia.webp" alt="Placar do CROAE com um cão recortado" loading="lazy" onerror="this.parentElement.remove()"></figure>
+      <figure class="foto"><img src="media/cao-branco-festas.webp" alt="Cão branco com manchas castanhas a receber festas" loading="lazy" onerror="this.parentElement.remove()"></figure>
+      <figure class="foto"><img src="media/equipa-baloico-moita.webp" alt="Equipa do CROAE com dois cães" loading="lazy" onerror="this.parentElement.remove()"></figure>
+      <figure class="foto"><img src="media/evento-stand-festas-moita.webp" alt="Stand do CROAE com o mural de adoção" loading="lazy" onerror="this.parentElement.remove()"></figure>
+      {{GALERIA}}
     </div>
-  </div>
-</section>
-
-<section class="sec claro-2 extra" aria-labelledby="h-mais">
-  <div class="wrap">
-    <p class="eyebrow rv">Mais fotografias</p>
-    <h2 id="h-mais" class="rv">O centro por dentro.</h2>
-    <p class="sub rv d1" data-vazio>Esta secção enche-se sozinha com as fotografias gravadas em <code>media/galeria/</code> — ver o ficheiro LEIA-ME.txt dessa pasta.</p>
-    <div class="mosaico rv d1" style="margin-top:28px" data-galeria-extra>{{GALERIA}}</div>
   </div>
 </section>
 
@@ -56,9 +46,4 @@ pagina: galeria
 </section>
 </main>
 <!--JS-->
-(function(){var g=document.querySelector('[data-galeria-extra]'),aviso=document.querySelector('[data-vazio]');if(!g)return;
-  var imgs=g.querySelectorAll('img'),pend=imgs.length;
-  function fim(){if(--pend>0)return;var n=g.querySelectorAll('figure').length;if(n){aviso.remove();}else{g.remove();aviso.textContent='Em breve: as fotografias do centro por dentro. Até lá, vem vê-lo ao vivo ao fim de semana.';}}
-  imgs.forEach(function(im){im.addEventListener('load',fim);im.addEventListener('error',function(){im.parentElement.remove();fim();});if(im.complete&&im.naturalWidth){fim();}});
-})();
 <!--/JS-->

@@ -4,10 +4,11 @@ desc: O Centro de Recolha Oficial de Animais Errantes da Moita: inaugurado a 12 
 pagina: centro
 -->
 <!--CSS-->
-.topo{background:var(--noite);color:#fff;padding:clamp(48px,7vw,96px) 0 0;overflow:hidden}
+.topo{background:var(--noite);color:#fff;padding:clamp(48px,7vw,96px) 0 clamp(40px,5vw,64px)}
 .topo h1{max-width:14ch}
 .topo .sub{color:rgba(255,255,255,.85)}
-.video-slot{margin-top:clamp(32px,5vw,56px);border-radius:var(--raio) var(--raio) 0 0;overflow:hidden;background:var(--noite-2);aspect-ratio:16/9;position:relative}
+.video-sec{display:none}.video-sec.on{display:block}
+.video-slot{border-radius:var(--raio);overflow:hidden;background:var(--noite-2);aspect-ratio:16/9;position:relative}
 .video-slot video{width:100%;height:100%;object-fit:cover}
 .video-slot .leg{position:absolute;left:0;right:0;bottom:0;padding:14px 18px;background:linear-gradient(to top,rgba(27,42,65,.85),transparent);font-size:.9rem;font-weight:700}
 .linha{display:grid;grid-template-columns:auto 1fr;gap:18px 24px;position:relative}
@@ -28,17 +29,15 @@ pagina: centro
 <!--/CSS-->
 <main id="conteudo">
 <section class="topo" aria-labelledby="h1">
-  <div class="wrap">
+  <div class="wrap" data-trela-inicio>
     <p class="eyebrow">O centro</p>
     <h1 id="h1">Cinco edifícios, um recreio e 40 boxes que queremos ver vazias.</h1>
     <p class="sub">O CROAE é o centro oficial do concelho da Moita. Recebe animais errantes, trata deles e devolve-os a uma família. É gerido pelo Gabinete Veterinário Municipal da Câmara Municipal da Moita.</p>
-    <div class="video-slot rv" data-trela-inicio>
-      <video playsinline muted loop autoplay preload="metadata" poster="media/equipa-baloico-moita.webp" aria-label="Vídeo do centro">
-        <source src="media/video/centro.webm" type="video/webm"><source src="media/video/centro.mp4" type="video/mp4">
-      </video>
-      <div class="leg">O centro</div>
-    </div>
   </div>
+</section>
+
+<section class="sec video-sec" aria-label="Vídeo do centro">
+  <div class="wrap"><div class="video-slot"><video playsinline muted loop autoplay preload="metadata" aria-label="Vídeo do centro"><source src="media/video/centro.webm" type="video/webm"><source src="media/video/centro.mp4" type="video/mp4"></video></div></div>
 </section>
 
 <section class="sec" aria-labelledby="h-num">
@@ -65,15 +64,14 @@ pagina: centro
         <b aria-hidden="true"></b><div><span>Julho de 2021</span>Primeiro concurso público, 780 287 €. Não aparece nenhuma proposta.</div>
         <b aria-hidden="true"></b><div><span>Projeto reformulado</span>Os técnicos da Câmara mudam materiais e métodos de construção, alargam a área e aumentam o tamanho das boxes.</div>
         <b aria-hidden="true"></b><div><span>12 de março de 2024</span>Inauguração. Descerramento da placa por Carlos Albino, presidente da Câmara, com o bispo de Setúbal, Cardeal D. Américo Aguiar, e a vereadora Anabela Rosa.</div>
-        <b aria-hidden="true"></b><div><span>Hoje</span>Adoções, voluntariado ao fim de semana, presença nas Festas da Moita e no mercado mensal.</div>
+        <b aria-hidden="true"></b><div><span>Hoje</span>Adoções, voluntariado ao fim de semana e ações de adoção no concelho.</div>
       </div>
     </div>
     <div>
       <p class="eyebrow rv">Gabinete Veterinário Municipal</p>
       <h2 class="rv">Quem trata deles.</h2>
       <p class="sub rv d1">O Gabinete aplica no concelho as competências do médico veterinário municipal e gere o CROAE: cuidados veterinários, esterilização, microchip e o acompanhamento de cada adoção. Trabalha em parceria com associações de proteção animal.</p>
-      <p class="rv d2"><strong>Cheque-veterinário.</strong> A Câmara lançou um apoio para famílias carenciadas com animais, também pensado para incentivar a adoção. Condições <span class="a-confirmar">a confirmar</span> junto do Gabinete.</p>
-      <figure class="foto p43 rv d2">{{SVG_CAO}}<img src="media/evento-placar-hoje-e-dia.webp" alt="Placar do CROAE nas Festas da Moita com a lista do que é entregue na adoção" loading="lazy" onerror="this.remove()"><figcaption>O placar das Festas: o que cada animal leva consigo</figcaption></figure>
+      <p class="rv d2"><strong>Cheque-veterinário.</strong> A Câmara lançou um apoio para famílias carenciadas com animais, também pensado para incentivar a adoção. Condições junto do Gabinete: 962 049 674.</p>
     </div>
   </div>
 </section>
@@ -88,22 +86,23 @@ pagina: centro
         <dt>Telefone</dt><dd><a href="tel:+351212806816">212 806 816</a></dd>
         <dt>Telemóvel</dt><dd><a href="tel:+351962049674">962 049 674</a></dd>
         <dt>E-mail</dt><dd><a href="mailto:gab.vetmun@cm-moita.pt">gab.vetmun@cm-moita.pt</a></dd>
-        <dt>Morada</dt><dd>Concelho da Moita, Setúbal · rua e número <span class="a-confirmar">a confirmar</span></dd>
+        <dt>Morada</dt><dd>Estrada Municipal do Pinhal do Forno, em frente ao Cemitério do Pinhal do Forno · Moita</dd>
         <dt>Instagram</dt><dd><a href="https://www.instagram.com/croaemoita/" rel="noopener">@croaemoita</a></dd>
       </dl>
       <div class="horario-box rv d2">
         <p style="font-weight:700;margin:0 0 10px">Horários</p>
         <dl>
           <dt>Passeios com voluntários</dt><dd>Sábado e domingo, 10h–12h, com marcação</dd>
-          <dt>Atendimento ao público</dt><dd><span class="a-confirmar">a confirmar</span></dd>
-          <dt>Visitas para adoção</dt><dd>Com marcação · <span class="a-confirmar">horário a confirmar</span></dd>
+          <dt>Atendimento ao público</dt><dd>Ligar antes: <a href="tel:+351962049674">962 049 674</a></dd>
+          <dt>Visitas para adoção</dt><dd>Com marcação · <a href="tel:+351962049674">962 049 674</a></dd>
         </dl>
       </div>
       <div class="acoes rv d3"><a class="btn" href="tel:+351962049674">{{BANDANA}} Ligar agora</a><a class="btn sec-btn" href="mailto:gab.vetmun@cm-moita.pt">Enviar e-mail</a></div>
     </div>
-    <div class="mapa rv d1"><iframe title="Mapa do concelho da Moita — localização exata do CROAE a confirmar" src="https://www.google.com/maps?q=Moita,+Set%C3%BAbal,+Portugal&z=13&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    <div class="mapa rv d1"><iframe title="Mapa: CROAE Moita, em frente ao Cemitério do Pinhal do Forno" src="https://www.google.com/maps?q=Cemit%C3%A9rio+Municipal+do+Pinhal+do+Forno,+Moita&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
   </div>
 </section>
 </main>
 <!--JS-->
+(function(){var v=document.querySelector(".video-sec video");if(!v)return;v.addEventListener("loadedmetadata",function(){v.closest(".video-sec").classList.add("on");});})();
 <!--/JS-->

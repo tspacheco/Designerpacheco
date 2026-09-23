@@ -34,7 +34,7 @@ FRAG = dict(BANDANA=BANDANA, SETA=SETA, CHECK=CHECK, ICO_PASSEIO=ICO_PASSEIO, IC
 JSONLD = {
   "@context":"https://schema.org","@type":"AnimalShelter","name":"CROAE Moita — Centro de Recolha Oficial de Animais Errantes",
   "telephone":["+351212806816","+351962049674"],"email":"gab.vetmun@cm-moita.pt",
-  "address":{"@type":"PostalAddress","addressLocality":"Moita","addressRegion":"Setúbal","addressCountry":"PT"},
+  "address":{"@type":"PostalAddress","streetAddress":"Estrada Municipal do Pinhal do Forno, em frente ao Cemitério do Pinhal do Forno","addressLocality":"Moita","addressRegion":"Setúbal","addressCountry":"PT"},
   "parentOrganization":{"@type":"GovernmentOrganization","name":"Câmara Municipal da Moita","url":"https://www.cm-moita.pt/"},
   "sameAs":["https://www.instagram.com/croaemoita/","https://www.facebook.com/croaemoita/"],
   "foundingDate":"2024-03-12"
