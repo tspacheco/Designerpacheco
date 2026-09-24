@@ -170,7 +170,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
   <div class="pagina">
     <p class="eyebrow">Pacheco Studios · proposta de automação · prospeção</p>
     <h1>Workflows Dra. Angélica</h1>
-    <p class="lead">Três automações para o consultório da Dra. Angélica Lauermann Gomes, montadas com o que já tens: Brevo, Notion e Make (ou n8n). A agenda online é o Cal.com, grátis. Cada passo indica o módulo do Make e o nó equivalente no n8n.</p>
+    <p class="lead">Três automações para o consultório da Dra. Angélica Lauermann Gomes, montadas com o que já tens: Brevo, Notion e Make (ou n8n). A agenda é a da clínica, a escolher: tem de avisar o Make a cada marcação (webhook ou API). Cada passo indica o módulo do Make e o nó equivalente no n8n.</p>
     <dl class="ficha">
       <div><dt>Cliente</dt><dd>Cirurgiã-dentista · CRO-SP 139651</dd></div>
       <div><dt>Local</dt><dd>Mogi das Cruzes – SP · fuso America/Sao_Paulo</dd></div>
@@ -191,7 +191,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
     <p>O Make é o motor e não guarda nada. Os dados vivem no Notion da clínica, que é o que a Dra. abre no telemóvel. A Brevo é a única peça que fala com o paciente.</p>
   </div>
   <div class="geral">
-    <div class="diagrama" role="img" aria-label="Paciente marca no Cal.com; o Cal.com avisa o Make; o Make lê e escreve no Notion e manda mensagens pela Brevo; a Brevo chega ao paciente por WhatsApp e e-mail; a Dra. vê e marca no Notion.">
+    <div class="diagrama" role="img" aria-label="Paciente marca na agenda da clínica; a agenda avisa o Make; o Make lê e escreve no Notion e manda mensagens pela Brevo; a Brevo chega ao paciente por WhatsApp e e-mail; a Dra. vê e marca no Notion.">
       <svg viewBox="0 0 640 250" aria-hidden="true">
         <defs><marker id="cab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="cab-seta" d="M0 0L10 5L0 10z"/></marker></defs>
         <path class="seta" d="M132 118 L188 70" marker-end="url(#cab)"/>
@@ -207,7 +207,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
         <path class="seta" d="M555 184 L555 78" marker-start="url(#cab)" marker-end="url(#cab)"/>
         <text class="rot" x="563" y="134">vê e marca</text>
         <g class="no"><rect x="20" y="108" width="112" height="46" rx="10"/><text x="76" y="129" text-anchor="middle">Paciente</text><text class="sub" x="76" y="145" text-anchor="middle">telemóvel</text></g>
-        <g class="no"><rect x="190" y="30" width="110" height="46" rx="10"/><text x="245" y="51" text-anchor="middle">Cal.com</text><text class="sub" x="245" y="67" text-anchor="middle">agenda online</text></g>
+        <g class="no"><rect x="190" y="30" width="110" height="46" rx="10"/><text x="245" y="51" text-anchor="middle">Agenda</text><text class="sub" x="245" y="67" text-anchor="middle">da clínica</text></g>
         <g class="no central"><rect x="332" y="106" width="122" height="50" rx="10"/><text x="393" y="128" text-anchor="middle">Make / n8n</text><text class="sub" x="393" y="145" text-anchor="middle">o motor</text></g>
         <g class="no"><rect x="500" y="30" width="112" height="46" rx="10"/><text x="556" y="51" text-anchor="middle">Notion</text><text class="sub" x="556" y="67" text-anchor="middle">ficha da clínica</text></g>
         <g class="no"><rect x="190" y="186" width="110" height="46" rx="10"/><text x="245" y="207" text-anchor="middle">Brevo</text><text class="sub" x="245" y="223" text-anchor="middle">WhatsApp · e-mail</text></g>
@@ -215,7 +215,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
       </svg>
     </div>
     <ul class="papeis">
-      <li data-tool="cal"><span class="ferr">Cal.com</span><b>Onde o paciente marca</b><span class="txt">Link na bio, na ficha Google e no site. Avisa o Make a cada marcação, reagendamento ou cancelamento.</span></li>
+      <li data-tool="cal"><span class="ferr">Agenda</span><b>Onde o paciente marca</b><span class="txt">A agenda da clínica, a escolher. Link na bio, na ficha Google e no site. Tem de avisar o Make a cada marcação, reagendamento ou cancelamento.</span></li>
       <li data-tool="make"><span class="ferr">Make</span><b>O motor</b><span class="txt">Três cenários principais, mais as verificações de hora a hora e diárias.</span></li>
       <li data-tool="notion"><span class="ferr">Notion</span><b>A ficha da clínica</b><span class="txt">Pacientes, consultas e orçamentos, no workspace dela. Tu entras como convidado.</span></li>
       <li data-tool="wa"><span class="ferr">Brevo</span><b>Quem fala com o paciente</b><span class="txt">WhatsApp com modelos aprovados pela Meta e e-mail como reserva.</span></li>
@@ -254,7 +254,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
     <table>
       <thead><tr><th scope="col">Peça</th><th scope="col">Plano</th><th scope="col">Custo</th><th scope="col">Nota</th></tr></thead>
       <tbody>
-        <tr><td>Cal.com</td><td>Free</td><td class="num">0</td><td>Tipos de consulta, webhooks e links de reagendamento.</td></tr>
+        <tr><td>Agenda da clínica</td><td>A escolher</td><td class="num">a orçamentar</td><td>Requisitos: tipos de consulta, webhook ou API, link de reagendamento por marcação. Sem webhook, o Make lê a agenda de 15 em 15 minutos (mais créditos).</td></tr>
         <tr><td>Notion</td><td>Free, workspace dela</td><td class="num">0</td><td>A API funciona no plano gratuito.</td></tr>
         <tr><td>Make</td><td>Core</td><td class="num">≈ 16 $/mês</td><td>Estimativa de 3 a 4 mil créditos/mês. O Free, com 1 000, não chega.</td></tr>
         <tr><td>n8n (alternativa)</td><td>Self-hosted</td><td class="num">≈ 5 €/mês</td><td>Servidor VPS, execuções ilimitadas. Exige manter o servidor.</td></tr>
@@ -268,7 +268,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 <section id="avisos">
   <div class="sec-cab"><h2>Decisões e cuidados</h2></div>
   <div class="avisos">
-    <div class="aviso"><h3>Botões com links, não respostas</h3><p>"Confirmar" abre um link do Make que atualiza o Notion e mostra "Consulta confirmada". "Reagendar" abre o link do Cal.com. Assim nada depende de ler mensagens recebidas, que é a parte mais frágil sem HighLevel.</p></div>
+    <div class="aviso"><h3>Botões com links, não respostas</h3><p>"Confirmar" abre um link do Make que atualiza o Notion e mostra "Consulta confirmada". "Reagendar" abre o link de reagendamento da agenda. Assim nada depende de ler mensagens recebidas, que é a parte mais frágil sem HighLevel.</p></div>
     <div class="aviso"><h3>O número de WhatsApp</h3><p>A API precisa de um número registado na Meta. Ou o número atual dela fica na app e na API ao mesmo tempo (coexistência, confirmar com a Brevo), ou usa-se um segundo número só para as mensagens automáticas. As respostas a mensagens da API chegam à caixa Conversas da Brevo, que tem app de telemóvel.</p></div>
     <div class="aviso"><h3>LGPD</h3><p>Dados de saúde são dados sensíveis. No Notion ficam só nome, contacto, marcações e o tipo genérico de consulta ou tratamento. O formulário de marcação pede consentimento explícito e guarda a data. A clínica é a controladora dos dados, por isso o Notion fica no workspace dela.</p></div>
     <div class="aviso"><h3>Regras do CFO</h3><p>As mensagens não falam de preços, descontos nem promoções. O resumo do orçamento é comunicação privada com o paciente, não publicidade. Nome e CRO aparecem no site e no rodapé dos e-mails.</p></div>
@@ -282,10 +282,10 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
   </div>
   <ol class="montagem">
     <li><div><b>Notion no workspace dela</b><span>Criar as três bases, as relações e as cinco vistas. Convidar-te como membro.</span></div></li>
-    <li><div><b>Cal.com</b><span>Tipos: Avaliação 30 min, Limpeza 45, Revisão 30, Urgência 30, Tratamento 60. Segunda a sexta até às 18h30, fuso America/Sao_Paulo. Campos obrigatórios: WhatsApp e consentimento.</span></div></li>
+    <li><div><b>Agenda da clínica</b><span>Escolher uma com webhook ou API. Tipos: Avaliação 30 min, Limpeza 45, Revisão 30, Urgência 30, Tratamento 60. Segunda a sexta até às 18h30, fuso America/Sao_Paulo. Campos obrigatórios: WhatsApp e consentimento.</span></div></li>
     <li><div><b>Google Perfil da Empresa</b><span>Copiar o link "Pedir avaliações" para o modelo avaliacao_google.</span></div></li>
     <li><div><b>Brevo</b><span>Remetente de e-mail verificado. WhatsApp ligado a uma conta Meta Business verificada. Submeter os sete modelos, a aprovação pode levar alguns dias.</span></div></li>
-    <li><div><b>Make</b><span>Fuso da organização em America/Sao_Paulo. Ligações ao Notion e à Brevo (chave API). Webhook registado no Cal.com.</span></div></li>
+    <li><div><b>Make</b><span>Fuso da organização em America/Sao_Paulo. Ligações ao Notion e à Brevo (chave API). Webhook registado na agenda.</span></div></li>
     <li><div><b>Workflow 1, uma semana em teste</b><span>Marcações com o teu número antes de abrir o link aos pacientes. Depois o 2 e, por fim, o 3.</span></div></li>
     <li><div><b>WhatsApp Business do telemóvel dela</b><span>Mensagem de ausência e de saudação com o link de marcação. Resolve as mensagens durante as consultas sem automação nenhuma.</span></div></li>
   </ol>
@@ -295,7 +295,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 </main>
 
 <script>
-var FERR = {cal:'Cal.com', make:'Make', notion:'Notion', brevo:'Brevo · e-mail', wa:'Brevo · WhatsApp', dra:'Dra. Angélica', web:'Paciente'};
+var FERR = {cal:'Agenda', make:'Make', notion:'Notion', brevo:'Brevo · e-mail', wa:'Brevo · WhatsApp', dra:'Dra. Angélica', web:'Paciente'};
 var GAT = {inst:['g-inst','Instantâneo'], hora:['g-hora','De hora a hora'], dia:['g-dia','Agendado'], man:['g-man','Manual']};
 
 var WF = [
@@ -304,22 +304,22 @@ var WF = [
   metrica:'Faltas ÷ consultas do mês (vista "Faltas do mês").',
   ganho:'No setor falta cerca de 30 %. Lembretes cortam até 40 % dessas faltas: ≈ 10 consultas recuperadas por mês.',
   lanes:[
-  { g:'inst', nome:'Nova marcação', quando:'Cal.com → BOOKING_CREATED', passos:[
-    {tool:'cal', t:'O paciente marca no Cal.com', d:'Formulário: nome, WhatsApp, e-mail opcional, caixa de consentimento.'},
+  { g:'inst', nome:'Nova marcação', quando:'agenda → marcação criada', passos:[
+    {tool:'cal', t:'O paciente marca na agenda', d:'Formulário: nome, WhatsApp, e-mail opcional, caixa de consentimento.'},
     {tool:'make', t:'Recebe a marcação', d:'Normaliza o número para +55 11 9XXXX-XXXX.', make:'Webhooks › Custom webhook · Tools › Set variable', n8n:'Webhook · Set'},
     {tool:'notion', t:'Procura o paciente pelo telefone', make:'Notion › Search Objects (Pacientes)', n8n:'Notion › Database Page: Get Many', ramo:[
       {se:'Não existe', passos:[{tool:'notion', t:'Cria o paciente', d:'Origem = Agenda online · consentimento e data.'}]},
       {se:'Já existe', passos:[{tool:'notion', t:'Usa o registo', d:'Atualiza o e-mail se vier novo.'}]} ]},
-    {tool:'notion', t:'Cria a consulta', d:'Estado = Marcada · tipo · início · UID e link de reagendar do Cal.com · código aleatório para o botão Confirmar.', make:'Notion › Create a Database Item', n8n:'Notion › Database Page: Create'},
+    {tool:'notion', t:'Cria a consulta', d:'Estado = Marcada · tipo · início · ID e link de reagendar da agenda · código aleatório para o botão Confirmar.', make:'Notion › Create a Database Item', n8n:'Notion › Database Page: Create'},
     {tool:'notion', t:'Se o tipo for Tratamento', d:'Orçamento do paciente em seguimento passa a Aceite (liga ao workflow 3).', make:'Router + Notion › Update a Database Item', n8n:'IF · Notion › Update'},
     {tool:'wa', t:'WhatsApp: marcação recebida', d:'Modelo marcacao_recebida, com morada e botão Reagendar.', make:'HTTP › Make a request (Brevo /v3/whatsapp/sendMessage)', n8n:'HTTP Request'},
     {tool:'brevo', t:'Contacto na Brevo', d:'Cria ou atualiza com NOME e WHATSAPP, lista Pacientes.', make:'Brevo › Create or Update a Contact', n8n:'Brevo › Contact: Upsert'} ]},
-  { g:'inst', nome:'Reagendou ou cancelou', quando:'Cal.com → BOOKING_RESCHEDULED · BOOKING_CANCELLED', passos:[
-    {tool:'make', t:'Encontra a consulta pelo UID', make:'Webhooks › Custom webhook · Notion › Search Objects', n8n:'Webhook · Notion › Get Many'},
+  { g:'inst', nome:'Reagendou ou cancelou', quando:'agenda → marcação reagendada · cancelada', passos:[
+    {tool:'make', t:'Encontra a consulta pelo ID da agenda', make:'Webhooks › Custom webhook · Notion › Search Objects', n8n:'Webhook · Notion › Get Many'},
     {tool:'notion', t:'Atualiza a consulta', d:'Nova data e lembretes limpos, ou Estado = Cancelada.', make:'Notion › Update a Database Item', n8n:'Notion › Database Page: Update'} ]},
   { g:'hora', nome:'Lembretes', quando:'de hora a hora, 7h–20h (Brasília)', passos:[
     {tool:'notion', t:'Consultas de amanhã por lembrar', d:'Estado = Marcada · começa daqui a 23–25 h · Lembrete 24h vazio.', make:'Notion › Search Objects · Flow Control › Iterator', n8n:'Schedule Trigger · Notion › Get Many · Loop'},
-    {tool:'wa', t:'WhatsApp: confirmar consulta', d:'Botões Confirmar (link com ID e código) e Reagendar (link do Cal.com).'},
+    {tool:'wa', t:'WhatsApp: confirmar consulta', d:'Botões Confirmar (link com ID e código) e Reagendar (link da agenda).'},
     {tool:'notion', t:'Marca "Lembrete 24h" com a data'},
     {tool:'notion', t:'Consultas de hoje ainda sem confirmação', d:'Estado = Marcada · começa daqui a 2–4 h · Lembrete hoje vazio.'},
     {tool:'wa', t:'WhatsApp: lembrete de hoje', d:'Com botão Reagendar.'},
@@ -345,7 +345,7 @@ var WF = [
     {tool:'notion', t:'Atualiza paciente e consulta', d:'Última visita = data da consulta · Próxima revisão = +6 meses · Pedido avaliação = hoje.', make:'Notion › Update a Database Item', n8n:'Notion › Database Page: Update'} ]},
   { g:'dia', nome:'Hora da revisão', quando:'todos os dias, 9h', passos:[
     {tool:'notion', t:'Pacientes com revisão daqui a 7 dias', d:'Sem consulta futura · Retorno enviado vazio.', make:'Notion › Search Objects · Iterator', n8n:'Schedule Trigger · Notion › Get Many · Loop'},
-    {tool:'wa', t:'WhatsApp: hora da revisão', d:'Botão Agendar, que abre o tipo Revisão no Cal.com.'},
+    {tool:'wa', t:'WhatsApp: hora da revisão', d:'Botão Agendar, que abre o tipo Revisão na agenda.'},
     {tool:'notion', t:'Retorno enviado = 1'},
     {tool:'notion', t:'14 dias depois, ainda sem marcação', d:'Retorno enviado = 1 · sem consulta futura.'},
     {tool:'brevo', t:'E-mail de segundo toque', d:'Modelo Brevo com botão Agendar. Depois disso, para.', make:'Brevo › Send a Transactional Email', n8n:'Brevo › Email: Send'} ]},
@@ -389,7 +389,7 @@ var MSG = [
 
 var TAB = [
   {nome:'Pacientes', campos:[['Nome','título'],['Telefone','telefone +55'],['E-mail','e-mail'],['Consentimento','caixa + data'],['Origem','seleção'],['Última visita','data'],['Próxima revisão','data'],['Avaliou Google','caixa'],['Pedido avaliação','data'],['Retorno enviado','número'],['Consultas · Orçamentos','relações']]},
-  {nome:'Consultas', campos:[['Título','"Paciente · data"'],['Paciente','relação'],['Início','data e hora'],['Tipo','seleção'],['Estado','estado'],['Lembrete 24h','data'],['Lembrete hoje','data'],['Pedido avaliação','data'],['Cal UID','texto'],['Link reagendar','URL'],['Código','texto']]},
+  {nome:'Consultas', campos:[['Título','"Paciente · data"'],['Paciente','relação'],['Início','data e hora'],['Tipo','seleção'],['Estado','estado'],['Lembrete 24h','data'],['Lembrete hoje','data'],['Pedido avaliação','data'],['ID na agenda','texto'],['Link reagendar','URL'],['Código','texto']]},
   {nome:'Orçamentos', campos:[['Título','"Paciente · tratamento"'],['Paciente','relação'],['Tratamento','seleção'],['Valor','número R$'],['Sessões','número'],['Entregue em','data'],['Estado','estado'],['Passo','número'],['Próximo contacto','data'],['Motivo recusa','seleção']]}
 ];
 
