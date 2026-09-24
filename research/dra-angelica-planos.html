@@ -1,0 +1,294 @@
+<title>Planos Dra. Angélica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;800&family=Funnel+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --floresta:#1D3024;--floresta-2:#284234;--latao:#B08A4A;--latao-texto:#7A5A26;--latao-claro:#E4CB93;
+  --papel:#F7F9F3;--folha:#F1F4EC;--cartao:#FFFFFF;--tinta:#16211A;--tinta-2:#485546;--tinta-3:#667264;
+  --linha:#D3DBC9;--aviso:#F2EAD4;--aviso-texto:#5B4520;--bom:#1F5E3D;--mau:#9A3B2A;--barra:#E2E8D8;
+  --destaque-fundo:var(--floresta);--destaque-texto:#F1F4EC;
+  --display:"Funnel Display",ui-sans-serif,system-ui,sans-serif;
+  --texto:"Funnel Sans",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--papel:#121A15;--folha:#18231C;--cartao:#1B271F;--tinta:#E9EEE4;--tinta-2:#BAC5B4;--tinta-3:#95A290;
+  --linha:#2E3D33;--aviso:#2C2618;--aviso-texto:#E7D3A6;--bom:#7CC39A;--mau:#E59A86;--barra:#26352B;--latao-texto:#D6B774;
+  --destaque-fundo:#233A2C;--destaque-texto:#F1F4EC;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--papel:#121A15;--folha:#18231C;--cartao:#1B271F;--tinta:#E9EEE4;--tinta-2:#BAC5B4;--tinta-3:#95A290;
+  --linha:#2E3D33;--aviso:#2C2618;--aviso-texto:#E7D3A6;--bom:#7CC39A;--mau:#E59A86;--barra:#26352B;--latao-texto:#D6B774;
+  --destaque-fundo:#233A2C;--destaque-texto:#F1F4EC;
+}
+*{box-sizing:border-box}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.55 var(--texto);padding-inline:16px;padding-block:0 64px}
+.pagina{max-width:1120px;margin:0 auto;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-weight:800;font-size:clamp(34px,6vw,54px);line-height:1.02}
+h2{font-weight:800;font-size:clamp(25px,3.6vw,32px);line-height:1.1}
+h3{font-weight:600;font-size:22px;line-height:1.15}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+a{color:var(--bom)}
+:focus-visible{outline:3px solid var(--latao);outline-offset:2px;border-radius:6px}
+
+/* topo */
+.topo{padding-top:36px;display:grid;gap:18px}
+.selo{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;color:var(--tinta-3);font-size:14px}
+.selo b{color:var(--latao-texto);font-weight:600}
+.lead{max-width:62ch;font-size:19px;color:var(--tinta-2)}
+.aviso{background:var(--aviso);color:var(--aviso-texto);border-radius:12px;padding:12px 16px;font-size:15px;max-width:74ch}
+
+/* cenários */
+.controlo{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.controlo span{font-size:15px;color:var(--tinta-2)}
+.segmentos{display:inline-flex;background:var(--folha);border:1px solid var(--linha);border-radius:999px;padding:4px;gap:2px}
+.segmentos button{font:600 15px var(--texto);color:var(--tinta-2);background:none;border:0;border-radius:999px;padding:9px 16px;cursor:pointer;min-height:40px}
+.segmentos button[aria-pressed="true"]{background:var(--floresta);color:#F1F4EC}
+
+/* planos */
+.planos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+@media (max-width:900px){.planos{grid-template-columns:1fr}}
+.plano{background:var(--cartao);border:1px solid var(--linha);border-radius:18px;padding:24px 22px;display:grid;gap:18px}
+.plano.meio{background:var(--destaque-fundo);color:var(--destaque-texto);border-color:transparent}
+.plano.meio .suave,.plano.meio .inclui li,.plano.meio .degrau .rot{color:#BCC9B5}
+.plano.meio .verba small,.plano.meio .etq{color:var(--latao-claro)}
+.plano.meio .degrau .fundo{background:#355440}
+.plano.meio .resultado{border-color:#355440}
+.plano.meio .bom{color:#9FD8B4}.plano.meio .mau{color:#F0AE9B}
+.plano.meio .agenda .trilho{background:#355440}
+.cab{display:grid;gap:6px}
+.etq{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--latao-texto)}
+.verba{font-family:var(--display);font-weight:800;font-size:40px;line-height:1}
+.verba small{display:block;margin-top:6px;font:500 15px var(--texto);color:var(--tinta-3)}
+.suave{color:var(--tinta-3);font-size:15px}
+.inclui{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:15px}
+.inclui li{color:var(--tinta-2);padding-left:20px;position:relative}
+.inclui li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:2px;background:var(--latao);transform:rotate(45deg)}
+.inclui li.novo{font-weight:600}
+
+/* funil */
+.funil{display:grid;gap:8px;margin:0}
+.degrau{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline}
+.degrau .rot{font-size:14px;color:var(--tinta-2)}
+.degrau strong{font-weight:600;font-size:16px}
+.degrau .fundo{grid-column:1/-1;height:6px;border-radius:3px;background:var(--barra);overflow:hidden}
+.degrau .fundo i{display:block;height:100%;background:var(--latao);border-radius:3px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.resultado{border-top:1px solid var(--linha);padding-top:16px;display:grid;gap:10px}
+.linha-r{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:15px}
+.lucro{font-family:var(--display);font-weight:800;font-size:34px;line-height:1}
+.bom{color:var(--bom)}.mau{color:var(--mau)}
+.agenda{display:grid;gap:6px;font-size:14px}
+.agenda .linha-r{font-size:14px}.agenda .linha-r span{white-space:nowrap}
+.agenda .trilho{height:10px;border-radius:5px;background:var(--barra);overflow:hidden}
+.agenda .trilho i{display:block;height:100%;background:var(--bom);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.agenda.cheia .trilho i{background:var(--mau)}
+@media (prefers-reduced-motion:reduce){.degrau .fundo i,.agenda .trilho i{transition:none}}
+
+/* tabelas */
+.bloco{display:grid;gap:18px}
+.bloco > p{max-width:66ch;color:var(--tinta-2)}
+.rolar{overflow-x:auto;border:1px solid var(--linha);border-radius:14px;background:var(--cartao)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--linha);vertical-align:top}
+th{font-weight:600;color:var(--tinta-3);font-size:13px;letter-spacing:.04em;text-transform:uppercase;background:var(--folha)}
+tr:last-child td{border-bottom:0}
+td.v{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.tag{display:inline-block;font-size:12.5px;font-weight:600;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag.ela{background:var(--floresta);color:#F1F4EC}
+.tag.conf{background:var(--aviso);color:var(--aviso-texto)}
+.grupo td{background:var(--folha);font-weight:600;color:var(--tinta-2);font-size:14px}
+
+/* casos */
+.casos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:800px){.casos{grid-template-columns:1fr}}
+.caso{border-left:3px solid var(--latao);padding:4px 0 4px 16px;display:grid;gap:6px}
+.caso strong{font-family:var(--display);font-size:26px;font-weight:800}
+.caso p{color:var(--tinta-2);font-size:15px}
+
+/* ajuste */
+details{border:1px solid var(--linha);border-radius:14px;background:var(--cartao)}
+summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:inside}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px 20px;padding:4px 18px 20px}
+.campo{display:grid;gap:6px;font-size:14px;color:var(--tinta-2)}
+.campo input{font:600 17px var(--texto);color:var(--tinta);background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:10px 12px;width:100%;font-variant-numeric:tabular-nums}
+.notas{display:grid;gap:12px;max-width:74ch;padding-left:20px;margin:0;color:var(--tinta-2);font-size:16px}
+.fontes{font-size:14px;color:var(--tinta-3);display:grid;gap:4px}
+.fontes a{color:var(--tinta-3)}
+</style>
+
+<main class="pagina">
+  <header class="topo">
+    <p class="selo"><b>Pacheco Studios</b><span>Proposta para a Dra. Angélica Lauermann Gomes · CRO-SP 139651</span><span>Rascunho · 24/09/2026</span></p>
+    <h1>Três caminhos para trazer novos pacientes ao consultório</h1>
+    <p class="lead">Quanto pode render investir R$ 500, R$ 1.000 ou R$ 1.500 por mês em anúncios, com o sistema da Pacheco Studios atendendo e acompanhando cada novo contato.</p>
+    <p class="aviso">São estimativas feitas com médias de mercado, não promessa de resultado. Os números reais aparecem no relatório depois dos primeiros 60 dias. O valor do sistema Pacheco Studios não está descontado do lucro abaixo.</p>
+  </header>
+
+  <section class="bloco" aria-labelledby="t-planos">
+    <div class="controlo">
+      <h2 id="t-planos">Os três planos</h2>
+      <div class="segmentos" role="group" aria-label="Cenário">
+        <button type="button" data-cen="conservador" aria-pressed="false">Conservador</button>
+        <button type="button" data-cen="provavel" aria-pressed="true">Provável</button>
+        <button type="button" data-cen="otimista" aria-pressed="false">Otimista</button>
+      </div>
+    </div>
+    <div class="planos" id="planos"></div>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-precos">
+    <h2 id="t-precos">Quanto vale cada tratamento</h2>
+    <p>Faixas de preço particular no Brasil em 2026, reunidas de tabelas públicas. Em Mogi das Cruzes o valor tende a ficar no meio da faixa. Para o sistema e para os anúncios, o que importa é que <strong>um único paciente de prótese, aparelho ou implante paga vários meses de anúncio</strong>.</p>
+    <div class="rolar">
+      <table>
+        <thead><tr><th>Tratamento</th><th>Faixa de preço</th><th>No consultório</th></tr></thead>
+        <tbody>
+          <tr class="grupo"><td colspan="3">Porta de entrada</td></tr>
+          <tr><td>Limpeza (profilaxia)</td><td class="v">R$ 150 – 500</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr><td>Restauração em resina, por dente</td><td class="v">R$ 100 – 600</td><td><span class="tag ela">faz</span></td></tr>
+          <tr><td>Extração simples</td><td class="v">R$ 99 – 250</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr class="grupo"><td colspan="3">Ticket médio</td></tr>
+          <tr><td>Tratamento de canal (especialista cobra 20–40% a mais)</td><td class="v">R$ 120 – 800</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr><td>Extração de siso (simples a complexa)</td><td class="v">R$ 600 – 1.500</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr><td>Clareamento caseiro com moldeira</td><td class="v">R$ 600 – 1.500</td><td><span class="tag ela">faz</span></td></tr>
+          <tr><td>Clareamento em consultório</td><td class="v">R$ 1.000 – 3.000</td><td><span class="tag ela">faz</span></td></tr>
+          <tr><td>Coroa (resina ou porcelana)</td><td class="v">R$ 1.000 – 4.500</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr class="grupo"><td colspan="3">Ticket alto</td></tr>
+          <tr><td>Prótese removível (dentadura, PPR)</td><td class="v">R$ 800 – 3.000</td><td><span class="tag ela">faz</span></td></tr>
+          <tr><td>Prótese fixa</td><td class="v">R$ 2.000 – 8.000</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr><td>Faceta de porcelana, por dente</td><td class="v">R$ 1.500 – 3.000</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr><td>Aparelho fixo metálico, tratamento completo (18–30 meses)</td><td class="v">R$ 2.500 – 9.000</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr><td>Manutenção do aparelho, por mês</td><td class="v">R$ 80 – 250</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr><td>Alinhadores transparentes</td><td class="v">R$ 8.000 – 35.000</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr><td>Implante unitário com coroa</td><td class="v">R$ 2.500 – 7.000</td><td><span class="tag conf">a confirmar</span></td></tr>
+          <tr><td>Protocolo (arcada inteira sobre implantes)</td><td class="v">R$ 18.000 – 40.000</td><td><span class="tag conf">a confirmar</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="casos">
+      <div class="caso"><strong class="num">1 prótese</strong><p>Uma prótese removível no meio da faixa (≈ R$ 1.900) deixa cerca de R$ 1.000 de margem: paga dois meses do plano de R$ 500.</p></div>
+      <div class="caso"><strong class="num">1 aparelho</strong><p>Um aparelho fixo traz o valor do tratamento e ainda uma visita por mês durante um ano e meio a dois anos e meio. É o paciente que mais tempo fica na agenda.</p></div>
+      <div class="caso"><strong class="num">1 implante</strong><p>Um implante no meio da faixa (≈ R$ 4.750) cobre sozinho três meses do plano de R$ 1.500. Se não for feito no consultório, pode ser feito com um especialista parceiro.</p></div>
+    </div>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-conta">
+    <h2 id="t-conta">Como a conta é feita</h2>
+    <ol class="notas">
+      <li><strong>Anúncio → conversa no WhatsApp.</strong> Anúncios no Instagram e no Facebook abrem uma conversa. Quanto maior a verba numa mesma cidade, mais cara fica cada conversa: usamos +10% no plano de R$ 1.000 e +20% no de R$ 1.500.</li>
+      <li><strong>Conversa → consulta marcada → paciente que vem → paciente que fecha tratamento.</strong> As taxas de cada etapa mudam com o cenário escolhido acima.</li>
+      <li><strong>Faturamento</strong> = pacientes que fecham × valor médio do tratamento. A mistura é de muitos tratamentos pequenos e alguns grandes (prótese, clareamento, aparelho).</li>
+      <li><strong>Lucro</strong> = faturamento × margem (sobra depois de material, laboratório, taxas de cartão e impostos) − verba dos anúncios. O aluguel e os custos fixos já estão pagos, por isso cada paciente novo entra quase só com custos variáveis.</li>
+      <li><strong>Agenda:</strong> cada paciente novo ocupa em média algumas sessões. A barra mostra quanto dos horários livres do mês o plano ocuparia.</li>
+    </ol>
+    <details>
+      <summary>Ajustar os números da conta</summary>
+      <div class="campos" id="campos">
+        <label class="campo" for="f-cpc">Custo por conversa no WhatsApp (R$)<input id="f-cpc" type="number" min="1" step="1" inputmode="decimal"></label>
+        <label class="campo" for="f-marc">Conversas que marcam consulta (%)<input id="f-marc" type="number" min="0" max="100" step="1"></label>
+        <label class="campo" for="f-comp">Marcados que comparecem (%)<input id="f-comp" type="number" min="0" max="100" step="1"></label>
+        <label class="campo" for="f-fecho">Avaliados que fecham tratamento (%)<input id="f-fecho" type="number" min="0" max="100" step="1"></label>
+        <label class="campo" for="f-ticket">Valor médio por paciente novo (R$)<input id="f-ticket" type="number" min="0" step="50"></label>
+        <label class="campo" for="f-margem">Margem depois dos custos variáveis (%)<input id="f-margem" type="number" min="0" max="100" step="1"></label>
+        <label class="campo" for="f-sessoes">Sessões por paciente novo<input id="f-sessoes" type="number" min="1" step="0.5"></label>
+        <label class="campo" for="f-livres">Horários livres por mês na agenda<input id="f-livres" type="number" min="1" step="1"></label>
+      </div>
+    </details>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-antes">
+    <h2 id="t-antes">Antes de decidir</h2>
+    <ol class="notas">
+      <li><strong>Primeiro mês é de aprendizado.</strong> O Instagram leva 2 a 4 semanas para achar o público certo. Os números do mês 1 costumam ficar abaixo dos do mês 2.</li>
+      <li><strong>Regras do CFO nos anúncios:</strong> nome e CRO em todas as peças, sem preço, sem desconto, sem promoção e sem antes e depois sem autorização escrita do paciente.</li>
+      <li><strong>Tratamento parcelado</strong> entra no caixa aos poucos, mas o lucro é o mesmo.</li>
+      <li><strong>Pacientes novos voltam.</strong> Retornos a cada 6 meses e indicações não estão na conta: são ganho extra.</li>
+      <li><strong>O que pode mudar a conta:</strong> ela confirmar os tratamentos marcados "a confirmar", os horários livres de verdade e o valor médio dos tratamentos dela.</li>
+    </ol>
+    <div class="fontes">
+      <span>Fontes consultadas em 24/09/2026:</span>
+      <a href="https://odontologia.blog/quanto-custa-dentista-brasil/" target="_blank" rel="noopener">Odontologia Blog, tabela de preços 2026</a>
+      <a href="https://sabertecnologias.com.br/conteudo/tabela-de-precos-odontologia-particular-2026-guia-completo" target="_blank" rel="noopener">Tabela de preços odontologia particular 2026</a>
+      <a href="https://floriodontologia.com.br/dentista-especialista-em-protese-dentaria/protese-dentaria-preco-2026-9-tipos-e-custos-detalhados-em-sp/" target="_blank" rel="noopener">Prótese dentária, preços em SP 2026</a>
+      <a href="https://catracalivre.com.br/saude-bem-estar/quanto-custa-fazer-clareamento-dental-em-2026/" target="_blank" rel="noopener">Clareamento dental, preços 2026</a>
+      <a href="https://risataodonto.com.br/quanto-custa-implante-dentario-sao-paulo/" target="_blank" rel="noopener">Implante dentário em São Paulo</a>
+      <a href="https://www.simplesdental.com/blog/ticket-medio-na-odontologia/" target="_blank" rel="noopener">Simples Dental, ticket médio</a>
+      <a href="https://blog.odontoresults.com.br/post/agencia-de-marketing-odontologico-2026-guia-custos-estrategias-roi" target="_blank" rel="noopener">Odonto Results, custos de marketing odontológico 2026</a>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var CEN={
+    conservador:{cpc:25,marc:25,comp:65,fecho:40,ticket:700,margem:55,sessoes:3,livres:60},
+    provavel:{cpc:15,marc:35,comp:70,fecho:50,ticket:1000,margem:55,sessoes:3,livres:60},
+    otimista:{cpc:10,marc:45,comp:80,fecho:55,ticket:1200,margem:55,sessoes:3,livres:60}
+  };
+  var PLANOS=[
+    {nome:"Essencial",verba:500,mult:1.0,inclui:[
+      "Site do consultório com marcação online",
+      "Confirmação e lembretes automáticos no WhatsApp",
+      "1 campanha no Instagram e Facebook: primeira consulta e check-up"]},
+    {nome:"Crescimento",verba:1000,mult:1.1,meio:true,inclui:[
+      "Tudo do Essencial",
+      {t:"Recepcionista com IA no WhatsApp, 24 horas: responde, marca e remarca",n:1},
+      {t:"2 campanhas: check-up + prótese e clareamento",n:1}]},
+    {nome:"Completo",verba:1500,mult:1.2,inclui:[
+      "Tudo do Crescimento",
+      {t:"Google Ads: quem procura “dentista em Mogi”",n:1},
+      {t:"Avaliações no Google, acompanhamento de orçamentos, retornos e reativação",n:1},
+      {t:"Relatório mensal com os números do consultório",n:1}]}
+  ];
+  var campos=["cpc","marc","comp","fecho","ticket","margem","sessoes","livres"];
+  var v=Object.assign({},CEN.provavel);
+  var brl=function(n){return "R$ "+Math.round(n).toLocaleString("pt-BR")};
+  var arred=function(n,p){return Math.round(n/p)*p};
+  var qtd=function(n){return n<10?n.toLocaleString("pt-BR",{maximumFractionDigits:1}):Math.round(n).toLocaleString("pt-BR")};
+
+  function calc(p){
+    var conv=p.verba/(v.cpc*p.mult), marc=conv*v.marc/100, aval=marc*v.comp/100, pac=aval*v.fecho/100;
+    var fat=pac*v.ticket, lucro=fat*v.margem/100-p.verba, sess=pac*v.sessoes;
+    return {conv:conv,marc:marc,aval:aval,pac:pac,fat:fat,lucro:lucro,sess:sess};
+  }
+  function desenha(){
+    var r=PLANOS.map(calc), max=Math.max.apply(null,r.map(function(x){return x.conv}))||1;
+    document.getElementById("planos").innerHTML=PLANOS.map(function(p,i){
+      var x=r[i], cheia=x.sess>v.livres, pct=Math.min(100,x.sess/v.livres*100);
+      var lucroTxt=x.lucro>=0?brl(arred(x.lucro,50)):"−"+brl(arred(-x.lucro,10));
+      var ret=x.lucro/p.verba;
+      var degraus=[["Conversas no WhatsApp",x.conv],["Consultas marcadas",x.marc],["Pacientes que vêm",x.aval],["Fecham tratamento",x.pac]]
+        .map(function(d){return '<div class="degrau"><span class="rot">'+d[0]+'</span><strong class="num">'+qtd(d[1])+'</strong><div class="fundo" aria-hidden="true"><i style="width:'+Math.max(2,d[1]/max*100)+'%"></i></div></div>'}).join("");
+      var inc=p.inclui.map(function(t){return typeof t==="string"?"<li>"+t+"</li>":'<li class="novo">'+t.t+"</li>"}).join("");
+      return '<article class="plano'+(p.meio?" meio":"")+'" aria-label="Plano '+p.nome+'">'+
+        '<div class="cab"><span class="etq">'+p.nome+'</span><p class="verba num">'+brl(p.verba)+'<small>/mês em anúncios</small></p></div>'+
+        '<ul class="inclui">'+inc+'</ul>'+
+        '<div class="funil">'+degraus+'</div>'+
+        '<div class="resultado">'+
+          '<div class="linha-r"><span class="suave">Faturamento a mais por mês</span><strong class="num">'+brl(arred(x.fat,100))+'</strong></div>'+
+          '<div class="linha-r"><span class="suave">Lucro depois dos anúncios</span><span class="lucro num '+(x.lucro>=0?"bom":"mau")+'">'+lucroTxt+'</span></div>'+
+          '<p class="suave num">'+(x.lucro>=0?"Cada R$ 1 em anúncio traz R$ "+ret.toLocaleString("pt-BR",{maximumFractionDigits:1})+" de lucro.":"Neste cenário os anúncios ainda não se pagam.")+'</p>'+
+          '<div class="agenda'+(cheia?" cheia":"")+'"><div class="linha-r"><span class="suave">Agenda ocupada</span><span class="num">'+Math.round(x.sess)+' de '+Math.round(v.livres)+' horários livres</span></div>'+
+          '<div class="trilho" aria-hidden="true"><i style="width:'+pct+'%"></i></div>'+
+          (cheia?'<span class="mau">Mais pacientes do que horários livres: seria preciso abrir mais horários.</span>':"")+'</div>'+
+        '</div></article>';
+    }).join("");
+  }
+  function preencheCampos(){campos.forEach(function(k){document.getElementById("f-"+k).value=v[k]})}
+  document.querySelectorAll(".segmentos button").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".segmentos button").forEach(function(o){o.setAttribute("aria-pressed",o===b?"true":"false")});
+      v=Object.assign({},CEN[b.dataset.cen]); preencheCampos(); desenha();
+    });
+  });
+  campos.forEach(function(k){
+    document.getElementById("f-"+k).addEventListener("input",function(e){
+      var n=parseFloat(e.target.value); if(!isFinite(n)||n<=0&&(k==="cpc"||k==="livres"||k==="sessoes"))return;
+      v[k]=n; document.querySelectorAll(".segmentos button").forEach(function(o){o.setAttribute("aria-pressed","false")}); desenha();
+    });
+  });
+  preencheCampos(); desenha();
+})();
+</script>
