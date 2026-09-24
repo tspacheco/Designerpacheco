@@ -157,6 +157,8 @@ Verificação extra depois de escrever SVG: confirmar que todos os `stop-color` 
 grep -o 'stop-color="[^"]*"' FICHEIRO.html | sort -u
 ```
 
+**Cuidado com o `zip -x`:** o padrão `media/*.jpg` também apanha `media/galeria/*.jpg` e `media/video/*.jpg` (o `*` atravessa barras). Aprendido a 24/09 no CROAE: os zips foram sem as fotos da galeria. Confirmar sempre com `unzip -l zip | grep -c media/` antes de enviar.
+
 **Variante Hostinger:** o mesmo zip **sem** `netlify.toml`. Instruções ao cliente: hPanel → Gestor de Ficheiros → `public_html` → Upload → Extrair → apagar `default.php`. (O `index.html` tem de ficar na raiz de `public_html`.)
 
 ## 5. ASSINATURAS VISUAIS JÁ USADAS (não repetir — inventar nova em cada site)
