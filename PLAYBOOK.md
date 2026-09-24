@@ -1,7 +1,7 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 22/09/2026 (proposta Be Legend Olhão + pipeline HTML→PDF)
+> Última atualização: 24/09/2026 (Bom Paladar: carrossel de outono da série dos azulejos + dados corrigidos)
 
 ## 0. COMO USAR
 
@@ -178,7 +178,7 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 
 | Cliente | Notas |
 |---|---|
-| Simona's O Bom Paladar (Loulé) | Rebrand + ementa real completa (preços das fotos) + secção Garrafeira & Bar. Zips Netlify e Hostinger entregues. Canonical aponta bompaladarloule.pt — atualizar. |
+| Simona's O Bom Paladar (**Almancil**, concelho de Loulé) | Rebrand + ementa real completa (preços das fotos) + secção Garrafeira & Bar. Zips Netlify e Hostinger entregues. Domínio real **bompaladar.pt** — o canonical ainda aponta bompaladarloule.pt, atualizar. R. do Comércio 367A · WhatsApp 918 958 233 · jantar seg–sáb 19h–22h30 · almoço seg–sex 12h–15h (prato do dia 12,50 €, menu 16 €) · IG @obompaladars · facebook.com/bompaladaralmancil. Matéria-prima em `media/bom-paladar/` (fotos, vídeos, `ementa.md` com a carta de 13/07 transcrita e a correspondência foto → prato). **Instagram — série dos azulejos:** setembro azul e branco ("Obrigado, Almancil.", feito fora deste repo); outubro azul e ocre ("Tempo de tacho.", `social/bom-paladar/2026-10-outono/`, `build.py`). Regra da série: cada estação muda a cor do azulejo, o resto fica — Caladea 700/400i (é a Cambria do original) + Open Sans 600, títulos 85 px, faixa creme a 90 % com filetes azuis de 9 px, pílula azul no topo. Outono acrescenta itálico cor de barro #9A4222 e filete/pontos ocre #C9922E. |
 | ProBuilders (construção, Algarve) | H1 do herói removido (mantido sr-only para SEO), hero limpo para vídeo, nav móvel em 2 linhas sem burger. |
 
 ### Demos criadas (por zona)
@@ -213,6 +213,7 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 - Slogans e texto entram em pós-produção, nunca no prompt.
 - Negative padrão: `static camera, still pose, standing still, text, watermark, logos, real human faces, distorted hands, extra limbs, blurry, style change` (+ `raw meat, burnt black meat, plastic-looking food` para comida; + `building deformation, façade changing shape` para arquitetura/time-lapse).
 - Prompts já entregues: Shalom Ribs (brasa → queda → time-lapse de ossos) · Restaurante Avenida (time-lapse da fachada, "Várias gerações por aqui passaram").
+- **Imagem (Higgsfield):** prato real sobre mesa de azulejo = GPT Image 2.5 Flare, `high`, `2k`, 4:5 (2,75 créditos por imagem). No prompt: manter a comida igual, trocar só a bancada. Os resultados ficam em `d8j0ntlcm91z4.cloudfront.net`, que o proxy das sessões cloud bloqueia: adicionar o domínio às permitidas no ambiente, ou descarregar no Higgsfield e carregar em `media/`.
 
 ## 9. SISTEMA DE FATURAS WHATSAPP (blueprint entregue)
 
@@ -233,6 +234,7 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - [ ] **2.º lote VNC/Manta Rota:** Casa da Igreja (Cacela Velha, 289 952 126, 4,3★/329, ostras) · Pizzadela (963 350 428, 4,7★/254) · Bela Vista (4,4★/107, porco preto) · O Ligério (281 951 372) · Casa Velha (281 952 297) · Restaurante Manta Rota · O Finalmente. *(Chá com Água Salgada já tem site — excluir.)*
 - [ ] **Restaurante Avenida** (Tavira) — site completo com cores, logótipo e ementa reais.
 - [ ] **Instituto dos Ferroviários** — logótipo oficial, detalhes da festa, cartaz para Instagram.
+- [ ] **Bom Paladar — carrossel de outono** — rascunho feito com fotos reais. Falta: (1) autorizar `d8j0ntlcm91z4.cloudfront.net` e correr `python3 build.py --baixar` para a versão final com azulejo ocre (imagens já geradas no Higgsfield a 24/09); (2) a Simona confirmar os três tintos e a tábua "para dois"; (3) apagar do histórico o comprovativo bancário que veio no upload (commit 659b4c4, **repo público**) — já saiu da pasta; (4) nas capturas do site de 23/07 havia 3 cartões com imagem partida ("Signature desserts", "Caramel nest", "Flambé board, live") — verificar; (5) apagar o ficheiro vazio `sites/Bom Paladar Marketing` no ramo principal.
 - [x] Telefone do Tomás (967 117 357) nas propostas PDF — feito nos PDFs do Be Legend, replicar nos outros.
 - [ ] Registar taxas de fecho por tipo de negócio (Albufeira, Gambelas, VNC).
 - [ ] **Toda Chic** — pedir à dona: (1) fotos individuais sem preço nem faixa das 6 peças que só existem em fichas (calções de linho, saia, blusas sem alça, vestido preto/branco, pantalona, conjunto vermelho); (2) preço das calças clássicas em 4 cores e das sandálias com laços; (3) tamanhos das ~20 peças sem indicação; (4) identificação da empresa (nome, NIF, morada), e-mail, portes/transportadora, software de faturação. Depois: mostrar a demo, fechar orçamento por referências, montar WooCommerce + ifthenpay.
