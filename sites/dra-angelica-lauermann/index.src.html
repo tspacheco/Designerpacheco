@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#1D3024">
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%231D3024"/><path d="M21 13c-6 0-10 4.6-10 10.6 0 5 2 8.4 3.3 12.9 1.6 5.8 1.6 17.5 7.4 17.5 4.1 0 3.6-11.2 8.4-11.2h3.8c4.8 0 4.3 11.2 8.4 11.2 5.8 0 5.8-11.7 7.4-17.5C51 32 53 28.6 53 23.6 53 17.6 49 13 43 13c-4.8 0-7.6 2.6-11 2.6S25.8 13 21 13z" fill="none" stroke="%23C9A565" stroke-width="3"/></svg>'>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Dentist","name":"Dra. Angélica Lauermann Gomes — Cirurgiã-Dentista","description":"Consultório odontológico da Dra. Angélica Lauermann Gomes, CRO-SP 139651.","telephone":"+55 11 99263-4670","image":"media/fachada.jpg","address":{"@type":"PostalAddress","streetAddress":"R. Frei Bonifácio Harink, 426","addressLocality":"Mogi das Cruzes","addressRegion":"SP","postalCode":"08840-180","addressCountry":"BR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"30","bestRating":"5"},"hasMap":"https://maps.app.goo.gl/bAHQ47hZ5U6DDTRY9","sameAs":["https://www.instagram.com/dra.angelicalauermann/"],"employee":{"@type":"Person","name":"Angélica Lauermann Gomes","jobTitle":"Cirurgiã-Dentista","identifier":"CRO-SP 139651"}}
+{"@context":"https://schema.org","@type":"Dentist","name":"Dra. Angélica Lauermann Gomes — Cirurgiã-Dentista","description":"Consultório odontológico da Dra. Angélica Lauermann Gomes, CRO-SP 139651.","telephone":"+55 11 99263-4670","image":"media/fachada.jpg","address":{"@type":"PostalAddress","streetAddress":"R. Frei Bonifácio Harink, 426","addressLocality":"Mogi das Cruzes","addressRegion":"SP","postalCode":"08840-180","addressCountry":"BR"},"hasMap":"https://maps.app.goo.gl/bAHQ47hZ5U6DDTRY9","sameAs":["https://www.instagram.com/dra.angelicalauermann/"],"employee":{"@type":"Person","name":"Angélica Lauermann Gomes","jobTitle":"Cirurgiã-Dentista","identifier":"CRO-SP 139651"}}
 </script>
 <style>
 /*__FONTES__*/
@@ -68,19 +68,13 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 
 .fio{flex:1;width:100%;max-width:820px;margin:0 auto;padding:1.2rem clamp(.8rem,3vw,2rem) calc(var(--compositor) + 2.2rem);display:grid;gap:.35rem;align-content:start}
 
-/* perfil no início da conversa */
-.perfil{justify-self:center;text-align:center;display:grid;justify-items:center;gap:.35rem;background:var(--bolha);border-radius:18px;padding:1.4rem 1.2rem 1.2rem;margin:.2rem 0 .9rem;max-width:460px;width:100%;box-shadow:0 1px 1px rgba(22,33,26,.08)}
-.perfil .foto{width:112px;height:112px;border-radius:50%;overflow:hidden;background:var(--floresta);box-shadow:0 0 0 4px var(--bolha),0 0 0 5.5px var(--latao)}
-.perfil .foto img{width:100%;height:100%;object-fit:cover}
-.perfil h1{margin:.55rem 0 0;font:800 clamp(1.8rem,7.4vw,2.35rem)/1.02 var(--display);letter-spacing:-.025em;color:var(--floresta);text-wrap:balance}
-.perfil .oficio{font-size:15.5px;color:var(--tinta-2)}
-.perfil .cro{display:inline-flex;align-items:center;gap:.4rem;font-size:13.5px;font-weight:600;letter-spacing:.06em;color:var(--latao-texto);border:1px solid #DCCBA8;border-radius:99px;padding:.2rem .7rem;background:#FBF7EE}
-.perfil .cro svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* perfil no início da conversa: aviso de conta comercial */
+.perfil{justify-self:center;text-align:center;display:grid;justify-items:center;gap:.2rem;background:#F7F9F3;border-radius:14px;padding:.8rem 1.1rem .75rem;margin:.1rem 0 .5rem;max-width:480px;width:100%;box-shadow:0 1px 1px rgba(22,33,26,.08)}
+.perfil h1{margin:0;font:800 clamp(1.45rem,5.6vw,1.9rem)/1.05 var(--display);letter-spacing:-.02em;color:var(--floresta);text-wrap:balance}
+.perfil .oficio{margin:0;font-size:14.5px;color:var(--tinta-2);text-wrap:balance}
+.perfil .cro{font-weight:600;color:var(--latao-texto)}
 .estrelas{display:inline-flex;gap:2px;color:var(--latao)}
 .estrelas svg{width:16px;height:16px;fill:currentColor}
-.perfil .nota{display:flex;align-items:center;gap:.5rem;margin-top:.35rem;font-size:15px;color:var(--tinta-2);text-decoration:none}
-.perfil .nota b{color:var(--tinta);font-weight:600}
-.perfil .nota:hover span{text-decoration:underline}
 
 /* avisos de sistema e data */
 .pilula{justify-self:center;font-size:12.5px;font-weight:500;letter-spacing:.03em;background:#F7F9F3;color:var(--tinta-2);border-radius:8px;padding:.3rem .75rem;margin:.5rem 0;box-shadow:0 1px 1px rgba(22,33,26,.06)}
@@ -109,11 +103,11 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 .msg ul li::marker{color:#D6B774}
 
 /* bolha com foto */
-.foto-msg{padding:4px;max-width:min(78%,360px)}
+.foto-msg{padding:4px;margin:0;max-width:min(78%,360px)}
 .foto-msg img{border-radius:11px;width:100%;height:auto;background:var(--floresta-3)}
 .foto-msg figcaption{padding:.45rem .5rem .25rem;font-size:15.5px}
 .foto-msg.dela{border-top-left-radius:4px}
-.album{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px;max-width:min(92%,520px)}
+.album{margin:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px;max-width:min(92%,520px)}
 .album figure{margin:0;position:relative;border-radius:10px;overflow:hidden;aspect-ratio:1;background:var(--floresta-3)}
 .album img{width:100%;height:100%;object-fit:cover}
 .album figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.4rem .5rem .4rem;font-size:13px;font-weight:600;color:#fff;background:linear-gradient(180deg,rgba(10,20,13,0),rgba(10,20,13,.75))}
@@ -121,7 +115,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 /* cartão de link (Google, mapa) */
 .cartao{display:block;text-decoration:none;color:inherit;background:var(--floresta-2);border-radius:10px;overflow:hidden;margin:-.1rem -.35rem .35rem;border-left:0}
 .cartao .corpo{padding:.6rem .75rem .65rem;display:grid;gap:.15rem}
-.cartao small{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--folha-2)}
+.cartao small{font-size:13px;color:var(--folha-2)}
 .cartao b{font-weight:600;color:var(--folha)}
 .cartao .linha{display:flex;align-items:center;gap:.45rem;font-size:14.5px;color:#DCE4D5}
 .cartao img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:50% 40%}
@@ -139,15 +133,14 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 .lista-msg .topo-lista{padding:.7rem .9rem .55rem;background:var(--floresta);color:var(--folha);font-size:15.5px}
 .lista-msg ul{list-style:none;margin:0;padding:0;display:block}
 .lista-msg li + li{border-top:1px solid var(--linha)}
-.trat{width:100%;display:grid;grid-template-columns:40px 1fr 18px;gap:.75rem;align-items:center;text-align:left;background:none;border:0;padding:.7rem .9rem;cursor:pointer;transition:background .2s}
+.trat{width:100%;display:grid;grid-template-columns:1fr 18px;gap:.75rem;align-items:center;text-align:left;background:none;border:0;padding:.7rem .9rem;cursor:pointer;transition:background .2s}
 .trat:hover{background:#F4F7EF}
-.trat .ic{width:40px;height:40px;border-radius:12px;background:#EEF2E7;display:grid;place-items:center;color:var(--floresta)}
-.trat .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
 .trat b{display:block;font-weight:600;font-size:16.5px;color:var(--tinta)}
 .trat span{display:block;font-size:14.5px;color:var(--tinta-2);line-height:1.4}
 .trat .seta{width:18px;height:18px;fill:none;stroke:var(--latao-texto);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .trat.escolhido{background:#EEF3E8}
-.trat.escolhido .ic{background:var(--floresta);color:var(--folha)}
+.trat.escolhido b{color:var(--floresta)}
+.trat.escolhido{box-shadow:inset 3px 0 0 var(--latao)}
 
 /* indicador a escrever */
 .digitando{justify-self:start;display:none;gap:4px;align-items:center;background:var(--floresta);border-radius:var(--r-bolha);border-top-left-radius:4px;padding:.8rem .95rem}
@@ -186,7 +179,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 .retrato-contato{border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--floresta)}
 .retrato-contato img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
 .recado{border-left:0;background:#F6F8F2;border-radius:12px;padding:.8rem .95rem}
-.recado small{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3);margin-bottom:.2rem}
+.recado small{display:block;font-size:12.5px;color:var(--tinta-3);letter-spacing:.02em;margin-bottom:.2rem}
 .dados{list-style:none;margin:0;padding:0;display:grid}
 .dados li{display:grid;grid-template-columns:28px 1fr;gap:.75rem;align-items:start;padding:.75rem 0;border-top:1px solid var(--linha)}
 .dados li:last-child{border-bottom:1px solid var(--linha)}
@@ -212,11 +205,9 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 }
 @media (min-width:1440px){ .app{margin-top:18px} }
 @media (max-width:640px){
-  .perfil{padding:1.1rem 1rem 1rem;gap:.25rem;margin-bottom:.5rem}
-  .perfil .foto{width:88px;height:88px}
-  .perfil h1{margin-top:.4rem}
-  .perfil .oficio{font-size:14.5px}
   .pilula{margin:.3rem 0}
+  .perfil .local{display:block}
+  .perfil .sep{display:none}
 }
 @media (max-width:420px){
   .msg{max-width:88%}
@@ -232,7 +223,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 </style>
 </head>
 <body>
-<div class="demo" role="note"><strong>Apresentação Pacheco Studios</strong><span class="longo">demonstração para a Dra. Angélica · textos a validar antes de publicar</span><span class="curto">demonstração</span></div>
+<div class="demo" role="note"><strong>Apresentação Pacheco Studios</strong><span class="longo">demonstração para a Dra. Angélica · textos a validar antes de publicar</span><span class="curto">demonstração · textos a validar</span></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -246,7 +237,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 <main class="conversa" id="conversa">
   <header class="cab">
     <a class="avatar" href="#contato" aria-label="Ver dados do contato"><img src="media/avatar.jpg" alt="" width="42" height="42"></a>
-    <a class="cab-nome" href="#contato"><b>Dra. Angélica Lauermann Gomes</b><span>Cirurgiã-Dentista · CRO-SP 139651</span></a>
+    <a class="cab-nome" href="#contato"><b>Dra. Angélica Lauermann Gomes</b><span id="estado">Cirurgiã-Dentista · CRO-SP 139651</span></a>
     <div class="cab-acoes">
       <a class="icone-btn" href="https://maps.app.goo.gl/bAHQ47hZ5U6DDTRY9" target="_blank" rel="noopener" aria-label="Ver o consultório no Google Maps"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.7-6.5-11.3a6.5 6.5 0 0 1 13 0C18.5 15.3 12 21 12 21z"/><circle cx="12" cy="9.7" r="2.3"/></svg></a>
       <a class="icone-btn contato-link" href="#contato" aria-label="Dados do contato"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.2"/></svg></a>
@@ -255,11 +246,8 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 
   <div class="fio" id="fio">
     <section class="perfil" aria-label="Apresentação">
-      <div class="foto"><img src="media/avatar.jpg" alt="Retrato da Dra. Angélica Lauermann Gomes" width="112" height="112"></div>
       <h1>Dra. Angélica Lauermann Gomes</h1>
-      <p class="oficio">Cirurgiã-Dentista · Vila São Paulo, Mogi das Cruzes</p>
-      <p class="cro"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.4-3 8-7 9.5-4-1.5-7-5.1-7-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.3-4.4"/></svg>CRO-SP 139651</p>
-      <a class="nota" href="https://maps.app.goo.gl/bAHQ47hZ5U6DDTRY9" target="_blank" rel="noopener"><span class="estrelas" aria-hidden="true"><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg></span><span><b>5,0</b> no Google · 30 avaliações</span></a>
+      <p class="oficio">Cirurgiã-Dentista · <span class="cro">CRO-SP 139651</span><span class="local"><span class="sep"> · </span>Vila São Paulo, Mogi das Cruzes</span></p>
     </section>
 
     <p class="pilula">Hoje</p>
@@ -270,12 +258,12 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
     <figure class="msg dela foto-msg entrada"><img src="media/retrato.jpg" alt="A Dra. Angélica sorrindo, apoiada na cadeira odontológica do consultório" width="700" height="519"><figcaption>Este é o meu consultório. Quem te atende sou eu.</figcaption></figure>
     <div class="msg dela entrada">
       <a class="cartao" href="https://maps.app.goo.gl/bAHQ47hZ5U6DDTRY9" target="_blank" rel="noopener">
-        <span class="corpo"><small>Google Maps</small><b>Cirurgiã Dentista dra. Angélica Lauermann Gomes</b><span class="linha"><span class="estrelas" aria-hidden="true"><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg></span>5,0 · 30 avaliações</span></span>
+        <span class="corpo"><b>Cirurgiã Dentista dra. Angélica Lauermann Gomes</b><span class="linha"><span class="estrelas" aria-hidden="true"><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg></span>5,0 · 30 avaliações no Google</span><small>maps.app.goo.gl</small></span>
       </a>
       <p>Me conta: o que você precisa?</p>
     </div>
     <nav class="rapidas entrada" aria-label="Perguntas frequentes">
-      <a href="#tratamentos" data-texto="Olá, Dra. Angélica! Gostaria de saber mais sobre os tratamentos."><svg viewBox="0 0 24 24"><use href="#i-dente"/></svg>Quais tratamentos você faz?</a>
+      <a href="#tratamentos" data-texto="Olá, Dra. Angélica! Gostaria de saber mais sobre os tratamentos.">Quais tratamentos você faz?</a>
       <a href="#primeira-consulta" data-texto="Olá, Dra. Angélica! Gostaria de marcar minha primeira consulta.">Como é a primeira consulta?</a>
       <a href="#medo" data-texto="Olá, Dra. Angélica! Tenho um pouco de medo de dentista e gostaria de conversar antes de marcar.">Tenho medo de dentista</a>
       <a href="#dor" data-texto="Olá, Dra. Angélica! Estou com dor de dente e gostaria de ser atendido(a) o quanto antes.">Estou com dor</a>
@@ -291,14 +279,14 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
       <div class="msg lista-msg">
         <p class="topo-lista">Tratamentos no consultório</p>
         <ul>
-          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Gostaria de marcar uma avaliação com limpeza."><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 19l6.2-6.2"/><circle cx="14.5" cy="9.5" r="4.4"/><path d="M12.6 7.6a2.6 2.6 0 0 1 3.6 0"/></svg></span><span><b>Avaliação e limpeza</b><span>Check-up completo, remoção de tártaro e orientação de escovação.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
-          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Acho que tenho uma cárie e gostaria de marcar uma avaliação."><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-dente"/><path d="M10 8.6h4v3h-4z"/></svg></span><span><b>Restaurações</b><span>Cárie tratada e dente reconstruído em resina da cor do dente.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
-          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Gostaria de saber mais sobre clareamento dental."><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-dente"/><path d="M19.5 2.5l.7 1.6 1.6.7-1.6.7-.7 1.6-.7-1.6-1.6-.7 1.6-.7z"/></svg></span><span><b>Clareamento dental</b><span>No consultório, com proteção da gengiva, ou caseiro com moldeira.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
-          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Gostaria de uma avaliação para estética em resina."><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20c2.5-.4 4-1.6 4.6-3.6l7.9-9.2a2.1 2.1 0 0 1 3 3L11.3 18c-1.9.8-4.2 1.6-7.3 2z"/><path d="M14.6 9.3l1.9 1.9"/></svg></span><span><b>Estética em resina</b><span>Correções de forma, cor e pequenos espaços entre os dentes.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
-          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Gostaria de uma avaliação para prótese dentária."><span class="ic"><svg viewBox="0 0 24 24"><path d="M3.5 9.5c2.4-3 5.3-4.5 8.5-4.5s6.1 1.5 8.5 4.5"/><path d="M5.5 12.5c1.9-2.1 4-3.2 6.5-3.2s4.6 1.1 6.5 3.2"/><path d="M7.5 15.8v2.4M10.5 14.9v3.3M13.5 14.9v3.3M16.5 15.8v2.4M6 15.5c1.8-1.2 3.8-1.8 6-1.8s4.2.6 6 1.8"/></svg></span><span><b>Próteses dentárias</b><span>Dentaduras e próteses parciais, planejadas e ajustadas no consultório.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
-          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Me indicaram tratamento de canal e gostaria de marcar uma avaliação."><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-dente"/><path d="M12 7.2v3.4M10.4 13.5l.9 3.2M13.6 13.5l-.9 3.2"/></svg></span><span><b>Tratamento de canal</b><span>Para salvar o dente quando a cárie chega ao nervo.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
-          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Preciso avaliar uma extração."><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 11.5c-1.4 0-2.5 1.1-2.5 2.5 0 1.1.4 1.9.7 2.9.4 1.3.4 4.9 1.7 4.9.9 0 .8-2.6 1.8-2.6h1.2c1 0 .9 2.6 1.8 2.6 1.3 0 1.3-3.6 1.7-4.9.3-1 .7-1.8.7-2.9 0-1.4-1.1-2.5-2.5-2.5-1.1 0-1.7.6-2.3.6s-1.2-.6-2.3-.6z"/><path d="M18 9V3m-2.5 2.5L18 3l2.5 2.5"/></svg></span><span><b>Extrações</b><span>Quando o dente não pode ser mantido, com anestesia e cuidado.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
-          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Estou com dor de dente e gostaria de ser atendido(a) o quanto antes."><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-dente"/><path d="M13 6.5l-2 3h3l-2 3"/></svg></span><span><b>Dor e urgências</b><span>Dor, dente quebrado ou inchaço: me mande mensagem agora.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Gostaria de marcar uma avaliação com limpeza."><span><b>Avaliação e limpeza</b><span>Check-up completo, remoção de tártaro e orientação de escovação.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Acho que tenho uma cárie e gostaria de marcar uma avaliação."><span><b>Restaurações</b><span>Cárie tratada e dente reconstruído em resina da cor do dente.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Gostaria de saber mais sobre clareamento dental."><span><b>Clareamento dental</b><span>No consultório, com proteção da gengiva, ou caseiro com moldeira.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Gostaria de uma avaliação para estética em resina."><span><b>Estética em resina</b><span>Correções de forma, cor e pequenos espaços entre os dentes.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Gostaria de uma avaliação para prótese dentária."><span><b>Próteses dentárias</b><span>Dentaduras e próteses parciais, planejadas e ajustadas no consultório.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Me indicaram tratamento de canal e gostaria de marcar uma avaliação."><span><b>Tratamento de canal</b><span>Para salvar o dente quando a cárie chega ao nervo.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Preciso avaliar uma extração."><span><b>Extrações</b><span>Quando o dente não pode ser mantido, com anestesia e cuidado.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Estou com dor de dente e gostaria de ser atendido(a) o quanto antes."><span><b>Dor e urgências</b><span>Dor, dente quebrado ou inchaço: me mande mensagem agora.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
         </ul>
       </div>
       <div class="msg dela album" role="group" aria-label="Fotos de trabalhos da Dra. Angélica">
@@ -342,7 +330,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
       <div class="msg dela primeira" style="padding-top:.45rem">
         <a class="cartao" href="https://maps.app.goo.gl/bAHQ47hZ5U6DDTRY9" target="_blank" rel="noopener">
           <img src="media/fachada.jpg" alt="Fachada verde do consultório com a placa Cirurgiã Dentista, Dra. Angélica Lauermann Gomes, CRO-SP 139651" width="760" height="734">
-          <span class="corpo"><small>Localização</small><b>R. Frei Bonifácio Harink, 426</b><span class="linha">Vila São Paulo · Mogi das Cruzes – SP · 08840-180</span></span>
+          <span class="corpo"><b>R. Frei Bonifácio Harink, 426</b><span class="linha">Vila São Paulo · Mogi das Cruzes – SP · 08840-180</span><small>maps.app.goo.gl</small></span>
         </a>
         <p>É a fachada verde com a placa do dente. Toque na foto para abrir o caminho no Google Maps.</p>
       </div>
@@ -364,7 +352,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
         <li>Troque a escova a cada 3 meses, ou antes se as cerdas abrirem.</li>
         <li>Quem usa prótese: tire para dormir e limpe com uma escova só para ela.</li>
       </ul></div>
-      <figure class="msg dela foto-msg"><img src="media/sorriso.jpg" alt="Sorriso de paciente com dentes claros e alinhados" width="640" height="363"><figcaption>E faça revisão e limpeza a cada 6 meses.</figcaption></figure>
+      <div class="msg dela"><p>E faça revisão e limpeza a cada 6 meses.</p></div>
       <div class="msg dela"><p>Pode me chamar quando quiser. Vai ser um prazer cuidar do seu sorriso.</p></div>
     </section>
 
@@ -399,7 +387,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
       <li><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7v.1"/></svg><div><small>Instagram</small><a class="val" href="https://www.instagram.com/dra.angelicalauermann/" target="_blank" rel="noopener">@dra.angelicalauermann</a></div></li>
       <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><div><small>Horário</small><span class="val">Consulte os horários livres pelo WhatsApp</span></div></li>
     </ul>
-    <a class="btn-wa" href="https://wa.me/5511992634670?text=Ol%C3%A1%2C%20Dra.%20Ang%C3%A9lica!%20Vi%20seu%20site%20e%20gostaria%20de%20marcar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 19z"/><path d="M9 9.5c.3 2.4 2.1 4.3 4.6 4.9l1.1-1.2 1.8.8-.4 1.6c-3.8.3-7.4-3-7.6-6.9l1.5-.5.8 1.7z"/></svg>Conversar no WhatsApp</a>
+    <a class="btn-wa" href="https://wa.me/5511992634670?text=Ol%C3%A1%2C%20Dra.%20Ang%C3%A9lica!%20Vi%20seu%20site%20e%20gostaria%20de%20marcar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4 12L20 4l-5 16-3.2-6.8z"/><path d="M11.8 13.2L20 4"/></svg>Conversar no WhatsApp</a>
     <div class="legal">
       <p>Responsável técnica: Dra. Angélica Lauermann Gomes · CRO-SP 139651.</p>
       <p>Privacidade (LGPD): este site não coleta dados nem usa cookies. A conversa acontece no seu próprio WhatsApp.</p>
@@ -452,7 +440,8 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
   if (!reduz) {
     var fio = document.getElementById('fio'), dig = document.getElementById('digitando');
     var itens = Array.prototype.slice.call(document.querySelectorAll('.entrada'));
-    fio.classList.add('ensaio');
+    var est = document.getElementById('estado'), estTxt = est.textContent;
+    fio.classList.add('ensaio'); est.textContent = 'digitando…';
     var t = 700;
     itens.forEach(function(el, k){
       setTimeout(function(){
@@ -462,7 +451,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
       }, t);
       t += k === 0 ? 900 : 650;
     });
-    setTimeout(function(){ dig.style.display = 'none'; fio.classList.remove('ensaio'); itens.forEach(function(el){ el.classList.remove('entrada', 'chegou'); }); }, t + 600);
+    setTimeout(function(){ dig.style.display = 'none'; est.textContent = estTxt; fio.classList.remove('ensaio'); itens.forEach(function(el){ el.classList.remove('entrada', 'chegou'); }); }, t + 600);
   }
 })();
 </script>

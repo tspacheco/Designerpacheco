@@ -36,7 +36,7 @@ A solo dentist who treats every patient herself, in her own new street-front pra
 
 ## Capabilities and Constraints
 
-- Services to show: general dentistry, full list, every item marked "a confirmar" until she validates it. Seen in her own posts: próteses (dentures), clareamento (in-office whitening), estética em resina / restaurações. Other general-practice items (limpeza/profilaxia, restaurações, tratamento de canal, extrações) are plausible for a clínica geral but unconfirmed.
+- Services to show: general dentistry, full list, written as complete content by Pacheco Studios (decision by Tomás, 24/09/2026: "fazer já um bom trabalho e com conteúdo, sem depender da Doutora"); the demo banner says texts are to be validated. Facts stay uninventable: unknown hours, convênios, payment and prices point to "pergunte pelo WhatsApp", never to a guess. Seen in her own posts: próteses (dentures), clareamento (in-office whitening), estética em resina / restaurações. Other general-practice items (limpeza/profilaxia, restaurações, tratamento de canal, extrações) are plausible for a clínica geral but unconfirmed.
 - Unconfirmed and not to be invented: weekly hours, convênios/planos accepted, payment methods, specialisations/post-graduate titles, university, prices.
 - Brazilian dental advertising rules (Código de Ética Odontológica / CFO): name and CRO number on every piece of publicity; no prices, discounts or promotions; no promises of results; before/after images only with written patient authorisation and within CFO rules. The demo shows none of these.
 - Privacy: LGPD (not GDPR). No Livro de Reclamações (Portuguese law, not applicable in Brazil).
