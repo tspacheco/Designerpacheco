@@ -71,6 +71,7 @@ a{color:var(--bom)}
 .precos dd{margin:0;font-weight:600;text-align:right}
 .precos dd span{font-weight:400;color:var(--tinta-3);font-size:13px}
 .plano.meio .precos{border-color:#355440}.plano.meio .precos dt,.plano.meio .precos dd span{color:#BCC9B5}
+.porque{font-size:15px;line-height:1.5;background:#284234;color:#F1F4EC;border-radius:12px;padding:12px 14px}
 .inclui{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:15px}
 .inclui li{color:var(--tinta-2);padding-left:20px;position:relative}
 .inclui li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:2px;background:var(--latao);transform:rotate(45deg)}
@@ -239,15 +240,21 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
     {nome:"Essencial",verba:500,impl:4000,mens:500,mult:1.0,inclui:[
       "Site do consultório com marcação online",
       "Confirmação e lembretes automáticos no WhatsApp",
+      "Perfil do Google otimizado, com resposta a todas as avaliações",
+      "Pedido de avaliação no Google enviado depois de cada consulta",
       "1 campanha no Instagram e Facebook: primeira consulta e check-up"]},
-    {nome:"Crescimento",verba:1000,impl:6000,mens:750,mult:1.1,meio:true,inclui:[
+    {nome:"Crescimento",verba:1000,impl:6000,mens:750,mult:1.1,meio:true,
+      porque:"Com o dobro de conversas chegando, ninguém fica sem resposta: a recepcionista atende na hora, de noite e no fim de semana, e a Dra. só entra quando precisa.",
+      inclui:[
       "Tudo do Essencial",
-      {t:"Recepcionista com IA no WhatsApp, 24 horas: responde, marca e remarca",n:1},
+      {t:"Recepcionista com IA no WhatsApp, 24 horas: tira dúvidas, marca e remarca",n:1},
+      {t:"Casos de dor ou urgência passados na hora para a Dra.",n:1},
       {t:"2 campanhas: check-up + prótese e clareamento",n:1}]},
     {nome:"Completo",verba:1500,impl:10000,mens:1100,mult:1.2,inclui:[
       "Tudo do Crescimento",
+      {t:"Follow-up automático para quem conversou e sumiu, e para orçamentos sem resposta",n:1},
       {t:"Google Ads: quem procura “dentista em Mogi”",n:1},
-      {t:"Avaliações no Google, acompanhamento de orçamentos, retornos e reativação",n:1},
+      {t:"Retornos a cada 6 meses e reativação de pacientes antigos",n:1},
       {t:"Relatório mensal com os números do consultório",n:1}]}
   ];
   var campos=["cpc","marc","comp","fecho","ticket","margem","sessoes","livres"];
@@ -272,7 +279,7 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
       return '<article class="plano'+(p.meio?" meio":"")+'" aria-label="Plano '+p.nome+'">'+
         '<div class="cab"><div class="topo-plano"><span class="etq">'+p.nome+'</span>'+(p.meio?'<span class="recom">Recomendado</span>':'')+'</div><p class="verba num">'+brl(p.verba)+'<small>/mês em anúncios</small></p></div>'+
         '<dl class="precos num"><div><dt>Implementação</dt><dd>'+brl(p.impl)+' <span>uma vez</span></dd></div><div><dt>Mensalidade</dt><dd><span>a partir de</span> '+brl(p.mens)+'</dd></div><div><dt>Total por mês</dt><dd>'+brl(p.verba+p.mens)+'</dd></div></dl>'+
-        '<ul class="inclui">'+inc+'</ul>'+
+        '<ul class="inclui">'+inc+'</ul>'+(p.porque?'<p class="porque">'+p.porque+'</p>':'')+
         '<div class="funil">'+degraus+'</div>'+
         '<div class="resultado">'+
           '<div class="linha-r"><span class="suave">Faturamento a mais por mês</span><strong class="num">'+brl(arred(x.fat,100))+'</strong></div>'+
