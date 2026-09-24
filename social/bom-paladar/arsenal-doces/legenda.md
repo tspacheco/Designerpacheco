@@ -2,7 +2,7 @@
 
 Carrossel intemporal, fora da série dos azulejos. Pode sair em qualquer semana. Fica bem numa semana calma, ou para puxar reservas de sexta e sábado.
 
-**Sistema:** rosa de açúcar #F2E1D8, chocolate #3A1E14, caramelo #B8651F. Letra Noto Serif Display itálico + Work Sans. As fotos ficam recortadas em arco. Um fio de caramelo contínuo atravessa os 5 slides: ao deslizar, a linha continua de um slide para o outro.
+**Sistema:** rosa de açúcar #F2E1D8, chocolate #3A1E14, caramelo #B8651F. Letra Noto Serif Display itálico + Work Sans. As fotos ocupam o post inteiro, com o texto numa sombra de chocolate em baixo. Um fio de caramelo contínuo atravessa os 5 slides na faixa de baixo, sem tocar na comida: ao deslizar, a linha continua de um slide para o outro.
 
 ## Ordem
 
