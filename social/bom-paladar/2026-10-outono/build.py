@@ -30,7 +30,8 @@ REAIS = {
     "tachos":  "WhatsApp Image 2026-08-07 at 13.05.57.jpeg",      # arroz em tachos de barro
     "grelha":  "WhatsApp Image 2026-08-07 at 13.03.42 (1).jpeg",  # bifes na grelha com chama
     "tabua":   "WhatsApp Image 2026-08-07 at 12.42.05 (1).jpeg",  # tábua de queijos e enchidos
-    "entrada": "WhatsApp Image 2026-07-03 at 15.06.12 (2).jpeg",  # a porta, à noite
+    "bife":    "WhatsApp Image 2026-07-03 at 14.38.42 (5).jpeg",  # bife do lombo sobre espinafres
+    "caril":   "WhatsApp Image 2026-07-03 at 14.56.41 (2).jpeg",  # caril de camarão em pappadum
     "set-03":  "WhatsApp Image 2026-09-16 at 17.29.23 (1).jpeg",  # slide 03 de setembro (azulejo azul)
 }
 
@@ -94,7 +95,13 @@ def preparar():
             cobrir(FOTOS / REAIS[real], **ajuste).save(IMG / f"{chave}.jpg", quality=92)
             modo[chave] = "real"
     cobrir(FOTOS / REAIS["grelha"], zoom=1.15, px=0.35, py=0.7).save(IMG / "02.jpg", quality=92)
-    cobrir(FOTOS / REAIS["entrada"]).save(IMG / "05.jpg", quality=92)
+    cobrir(FOTOS / REAIS["caril"], zoom=1.0, px=0.5, py=0.5).save(IMG / "05.jpg", quality=92)
+    # 03: foto em baixo (1080×592), texto em cima — estrutura nova, não repete setembro
+    b = Image.open(FOTOS / REAIS["bife"]).convert("RGB")
+    s = 1080 / b.width
+    b = b.resize((1080, round(b.height * s)), Image.LANCZOS)
+    y = round((b.height - 592) * 0.62)
+    b.crop((0, y, 1080, y + 592)).save(IMG / "03.jpg", quality=92)
 
     # azulejo do slide 03: faixas de cima e de baixo + o azulejo emoldurado
     if (IMG / "ia-painel.png").exists():
@@ -153,17 +160,22 @@ body{background:#1b1b1b;display:flex;flex-direction:column;align-items:center;ga
 .azul.baixo{bottom:0;border-top:9px solid var(--filete);height:209px}
 .azul.cima::after,.azul.baixo::after{content:"";position:absolute;left:0;right:0;height:3px;background:var(--ocre)}
 .azul.cima::after{bottom:-17px}.azul.baixo::after{top:-17px}
-.miolo{position:absolute;left:0;right:0;top:209px;bottom:209px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tira{position:absolute;left:0;right:0;top:0;height:29px;background-size:1080px auto;background-position:center 40%;border-bottom:9px solid var(--filete)}
+.tira::after{content:"";position:absolute;left:0;right:0;bottom:-17px;height:3px;background:var(--ocre)}
+.foto3{position:absolute;left:0;right:0;bottom:0;height:601px;border-top:9px solid var(--filete)}
+.foto3::before{content:"";position:absolute;left:0;right:0;top:5px;height:3px;background:var(--ocre);z-index:1}
+.foto3 img{display:block;width:1080px;height:592px}
+.miolo{position:absolute;left:0;right:0;top:29px;bottom:601px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .moldura{width:236px;height:236px;padding:13px;background:#FBF8F1;border-radius:10px;
   box-shadow:0 16px 30px rgba(40,30,10,.20),0 2px 6px rgba(40,30,10,.12)}
 .moldura img{display:block;width:210px;height:210px;border:1.5px solid var(--navy)}
-.miolo .it{font-size:72px;margin-top:46px}
+.miolo .it{font-size:66px;margin-top:0}
 .miolo .t{font-size:85px;margin-top:4px}
-.risca{width:120px;height:5px;background:var(--navy);margin:34px 0 34px}
-.vinhos{display:flex;flex-direction:column;gap:16px}
+.risca{width:120px;height:5px;background:var(--navy);margin:26px 0 26px}
+.vinhos{display:flex;flex-direction:column;gap:12px}
 .vinho{font-weight:700;font-size:34px;line-height:1.1}
 .vinho span{display:block;font:600 16px/1 'Open Sans',sans-serif;letter-spacing:.3em;color:var(--cinza);text-transform:uppercase;margin-top:8px}
-.miolo .caps{margin-bottom:26px}
+.miolo .caps{margin-bottom:20px}
 
 /* 05 — reservar */
 .faixa.alta{top:828px;height:503px;padding:0;justify-content:center}
@@ -211,16 +223,15 @@ def slides():
     vinhos = "".join(f'<p class="vinho">{e(n)}<span>{e(r)}</span></p>' for n, r in TINTOS)
     out.append(f'''
 <section class="slide" id="03-outubro">
-  <div class="azul cima" style="background-image:url(img/03-cima.jpg)"></div>
+  <div class="tira" style="background-image:url(img/03-cima.jpg)"></div>
   <div class="miolo">
-    <div class="moldura"><img src="img/03-azulejo.jpg" alt=""></div>
     <p class="it">O verão pediu branco.</p>
     <p class="t">Outubro pede tinto.</p>
     <div class="risca"></div>
     <p class="caps">Três tintos da nossa carta</p>
     <div class="vinhos">{vinhos}</div>
   </div>
-  <div class="azul baixo" style="background-image:url(img/03-baixo.jpg)"></div>
+  <div class="foto3"><img src="img/03.jpg" alt=""></div>
 </section>''')
     # 04 — a tábua
     out.append(f'''
