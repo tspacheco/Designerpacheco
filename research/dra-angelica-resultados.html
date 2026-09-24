@@ -1,0 +1,175 @@
+<title>Resultados Dra. Angélica</title>
+<style>
+:root{
+  --floresta:#1D3024;--floresta-2:#284234;--latao:#B08A4A;--latao-texto:#7A5A26;--latao-claro:#E4CB93;
+  --papel:#F7F9F3;--folha:#F1F4EC;--cartao:#FFFFFF;--tinta:#16211A;--tinta-2:#485546;--tinta-3:#667264;
+  --linha:#D3DBC9;--aviso:#F2EAD4;--aviso-texto:#5B4520;--bom:#1F5E3D;--mau:#9A3B2A;--barra:#E2E8D8;
+  --destaque-fundo:var(--floresta);--destaque-texto:#F1F4EC;
+  --display:"Funnel Display",ui-sans-serif,system-ui,sans-serif;
+  --texto:"Funnel Sans",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--papel:#121A15;--folha:#18231C;--cartao:#1B271F;--tinta:#E9EEE4;--tinta-2:#BAC5B4;--tinta-3:#95A290;
+  --linha:#2E3D33;--aviso:#2C2618;--aviso-texto:#E7D3A6;--bom:#7CC39A;--mau:#E59A86;--barra:#26352B;--latao-texto:#D6B774;
+  --destaque-fundo:#233A2C;--destaque-texto:#F1F4EC;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--papel:#121A15;--folha:#18231C;--cartao:#1B271F;--tinta:#E9EEE4;--tinta-2:#BAC5B4;--tinta-3:#95A290;
+  --linha:#2E3D33;--aviso:#2C2618;--aviso-texto:#E7D3A6;--bom:#7CC39A;--mau:#E59A86;--barra:#26352B;--latao-texto:#D6B774;
+  --destaque-fundo:#233A2C;--destaque-texto:#F1F4EC;
+}
+*{box-sizing:border-box}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.55 var(--texto);padding-inline:16px;padding-block:0 64px}
+.pagina{max-width:1120px;margin:0 auto;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-weight:800;font-size:clamp(34px,6vw,54px);line-height:1.02}
+h2{font-weight:800;font-size:clamp(25px,3.6vw,32px);line-height:1.1}
+h3{font-weight:600;font-size:22px;line-height:1.15}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+a{color:var(--bom)}
+:focus-visible{outline:3px solid var(--latao);outline-offset:2px;border-radius:6px}
+
+/* topo */
+.topo{padding-top:36px;display:grid;gap:18px}
+.selo{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;color:var(--tinta-3);font-size:14px}
+.selo b{color:var(--latao-texto);font-weight:600}
+.lead{max-width:62ch;font-size:19px;color:var(--tinta-2)}
+.aviso{background:var(--aviso);color:var(--aviso-texto);border-radius:12px;padding:12px 16px;font-size:15px;max-width:74ch}
+
+/* cenários */
+.controlo{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.controlo span{font-size:15px;color:var(--tinta-2)}
+.segmentos{display:inline-flex;background:var(--folha);border:1px solid var(--linha);border-radius:999px;padding:4px;gap:2px}
+.segmentos button{font:600 15px var(--texto);color:var(--tinta-2);background:none;border:0;border-radius:999px;padding:9px 16px;cursor:pointer;min-height:40px}
+.segmentos button[aria-pressed="true"]{background:var(--floresta);color:#F1F4EC}
+
+/* planos */
+.planos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+@media (max-width:900px){.planos{grid-template-columns:1fr}}
+.plano{background:var(--cartao);border:1px solid var(--linha);border-radius:18px;padding:24px 22px;display:grid;gap:18px}
+.plano.meio{background:var(--destaque-fundo);color:var(--destaque-texto);border-color:transparent}
+.plano.meio .suave,.plano.meio .inclui li,.plano.meio .degrau .rot{color:#BCC9B5}
+.plano.meio .verba small,.plano.meio .etq{color:var(--latao-claro)}
+.plano.meio .degrau .fundo{background:#355440}
+.plano.meio .resultado{border-color:#355440}
+.plano.meio .bom{color:#9FD8B4}.plano.meio .mau{color:#F0AE9B}
+.plano.meio .agenda .trilho{background:#355440}
+.cab{display:grid;gap:6px}
+.topo-plano{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.recom{font-size:13px;font-weight:600;background:var(--latao-claro);color:#1D3024;border-radius:999px;padding:4px 11px}
+.etq{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--latao-texto)}
+.verba{font-family:var(--display);font-weight:800;font-size:40px;line-height:1}
+.verba small{display:block;margin-top:6px;font:500 15px var(--texto);color:var(--tinta-3)}
+.suave{color:var(--tinta-3);font-size:15px}
+.precos{margin:0;display:grid;gap:6px;font-size:15px;border-block:1px solid var(--linha);padding-block:12px}
+.precos div{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.precos dt{color:var(--tinta-3);white-space:nowrap}
+.precos dd{margin:0;font-weight:600;text-align:right}
+.precos dd span{font-weight:400;color:var(--tinta-3);font-size:13px}
+.plano.meio .precos{border-color:#355440}.plano.meio .precos dt,.plano.meio .precos dd span{color:#BCC9B5}
+.porque{font-size:15px;line-height:1.5;background:#284234;color:#F1F4EC;border-radius:12px;padding:12px 14px}
+.inclui{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:15px}
+.inclui li{color:var(--tinta-2);padding-left:20px;position:relative}
+.inclui li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:2px;background:var(--latao);transform:rotate(45deg)}
+.inclui li.novo{font-weight:600}
+
+/* funil */
+.funil{display:grid;gap:8px;margin:0}
+.degrau{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline}
+.degrau .rot{font-size:14px;color:var(--tinta-2)}
+.degrau strong{font-weight:600;font-size:16px}
+.degrau .fundo{grid-column:1/-1;height:6px;border-radius:3px;background:var(--barra);overflow:hidden}
+.degrau .fundo i{display:block;height:100%;background:var(--latao);border-radius:3px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.resultado{border-top:1px solid var(--linha);padding-top:16px;display:grid;gap:10px}
+.linha-r{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:15px}
+.lucro{font-family:var(--display);font-weight:800;font-size:34px;line-height:1}
+.bom{color:var(--bom)}.mau{color:var(--mau)}
+.agenda{display:grid;gap:6px;font-size:14px}
+.agenda .linha-r{font-size:14px}.agenda .linha-r span{white-space:nowrap}
+.agenda .trilho{height:10px;border-radius:5px;background:var(--barra);overflow:hidden}
+.agenda .trilho i{display:block;height:100%;background:var(--bom);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.agenda.cheia .trilho i{background:var(--mau)}
+@media (prefers-reduced-motion:reduce){.degrau .fundo i,.agenda .trilho i{transition:none}}
+
+/* tabelas */
+.bloco{display:grid;gap:18px}
+.bloco > p{max-width:66ch;color:var(--tinta-2)}
+.rolar{overflow-x:auto;border:1px solid var(--linha);border-radius:14px;background:var(--cartao)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--linha);vertical-align:top}
+th{font-weight:600;color:var(--tinta-3);font-size:13px;letter-spacing:.04em;text-transform:uppercase;background:var(--folha)}
+tr:last-child td{border-bottom:0}
+td.v{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.tag{display:inline-block;font-size:12.5px;font-weight:600;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag.ela{background:var(--floresta);color:#F1F4EC}
+.tag.conf{background:var(--aviso);color:var(--aviso-texto)}
+.resumo th.dest,.resumo td.dest{background:var(--floresta);color:#F1F4EC}
+.resumo thead th.dest{color:var(--latao-claro)}
+.resumo td:first-child{color:var(--tinta-2)}
+.grupo td{background:var(--folha);font-weight:600;color:var(--tinta-2);font-size:14px}
+
+/* casos */
+.casos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:800px){.casos{grid-template-columns:1fr}}
+.caso{border-left:3px solid var(--latao);padding:4px 0 4px 16px;display:grid;gap:6px}
+.caso strong{font-family:var(--display);font-size:26px;font-weight:800}
+.caso p{color:var(--tinta-2);font-size:15px}
+
+/* ajuste */
+details{border:1px solid var(--linha);border-radius:14px;background:var(--cartao)}
+summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:inside}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px 20px;padding:4px 18px 20px}
+.campo{display:grid;gap:6px;font-size:14px;color:var(--tinta-2)}
+.campo input{font:600 17px var(--texto);color:var(--tinta);background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:10px 12px;width:100%;font-variant-numeric:tabular-nums}
+.notas{display:grid;gap:12px;max-width:74ch;padding-left:20px;margin:0;color:var(--tinta-2);font-size:16px}
+.fontes{font-size:14px;color:var(--tinta-3);display:grid;gap:4px}
+.fontes a{color:var(--tinta-3)}
+
+.resumo th,.resumo td{font-size:15px}
+.resumo td.v{text-align:right}
+.resumo th:not(:first-child){text-align:right}
+.meta-cab{display:grid;gap:10px}
+</style>
+<main class="pagina">
+  <header class="topo">
+    <p class="selo"><b>Pacheco Studios</b><span>Proposta para a Dra. Angélica Lauermann Gomes · CRO-SP 139651</span><span>24/09/2026</span></p>
+    <h1>Resultados de cada plano</h1>
+    <p class="lead">Metas mensais de cada plano no cenário provável, a partir do 3.º mês. O 1.º mês é de aprendizado dos anúncios e costuma ficar abaixo da meta.</p>
+  </header>
+  <section class="bloco">
+    <div class="rolar">
+      <table class="resumo">
+        <thead><tr><th>Meta por mês</th><th>Essencial</th><th class="dest">Crescimento · recomendado</th><th>Completo</th></tr></thead>
+        <tbody>
+          <tr><td>Investimento em anúncios</td><td class="v">R$ 500</td><td class="v dest">R$ 1.000</td><td class="v">R$ 1.500</td></tr>
+          <tr><td>Implementação (uma vez)</td><td class="v">R$ 4.000</td><td class="v dest">R$ 6.000</td><td class="v">R$ 10.000</td></tr>
+          <tr><td>Mensalidade (a partir de)</td><td class="v">R$ 500</td><td class="v dest">R$ 750</td><td class="v">R$ 1.100</td></tr>
+          <tr class="grupo"><td colspan="4">Novos pacientes</td></tr>
+          <tr><td>Conversas no WhatsApp vindas dos anúncios</td><td class="v">33</td><td class="v dest">61</td><td class="v">83</td></tr>
+          <tr><td>Consultas marcadas</td><td class="v">12</td><td class="v dest">21</td><td class="v">29</td></tr>
+          <tr><td>Pacientes que comparecem</td><td class="v">8</td><td class="v dest">15</td><td class="v">20</td></tr>
+          <tr><td>Pacientes que fecham tratamento</td><td class="v">4</td><td class="v dest">7</td><td class="v">10</td></tr>
+          <tr class="grupo"><td colspan="4">Financeiro</td></tr>
+          <tr><td>Faturamento a mais</td><td class="v">R$ 4.100</td><td class="v dest">R$ 7.400</td><td class="v">R$ 10.200</td></tr>
+          <tr><td>Lucro líquido (depois de anúncios e mensalidade)</td><td class="v"><b>R$ 1.250</b></td><td class="v dest"><b>R$ 2.350</b></td><td class="v"><b>R$ 3.000</b></td></tr>
+          <tr><td>Implementação paga em</td><td class="v">≈ 4 meses</td><td class="v dest">≈ 3 meses</td><td class="v">≈ 4 meses</td></tr>
+          <tr><td>Faixa do lucro líquido (conservador → otimista)</td><td class="v">−R$ 500 → R$ 5.550</td><td class="v dest">−R$ 850 → R$ 10.150</td><td class="v">−R$ 1.350 → R$ 13.750</td></tr>
+          <tr class="grupo"><td colspan="4">Rotina do consultório</td></tr>
+          <tr><td>Tempo poupado por dia</td><td class="v">≈ 25 min</td><td class="v dest">≈ 55 min</td><td class="v">≈ 1 h 25</td></tr>
+          <tr><td>Horas poupadas por mês</td><td class="v">≈ 9 h</td><td class="v dest">≈ 20 h</td><td class="v">≈ 31 h</td></tr>
+          <tr><td>Faltas evitadas com lembretes</td><td class="v">≈ 11</td><td class="v dest">≈ 11</td><td class="v">≈ 11</td></tr>
+          <tr><td>Avaliações novas no Google</td><td class="v">10 – 15</td><td class="v dest">10 – 15</td><td class="v">10 – 15</td></tr>
+          <tr><td>Mensagens respondidas fora do horário</td><td class="v">—</td><td class="v dest">todas</td><td class="v">todas</td></tr>
+          <tr><td>Conversas e orçamentos parados com follow-up</td><td class="v">—</td><td class="v dest">—</td><td class="v">todos</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol class="notas">
+      <li><strong>Como medimos:</strong> o relatório mensal compara cada linha desta tabela com o resultado real do mês.</li>
+      <li><strong>Base da conta:</strong> R$ 15 por conversa no WhatsApp (+10% e +20% nos planos maiores), 35% marcam, 70% comparecem, 50% fecham tratamento, R$ 1.000 por paciente novo e 55% de margem depois de material, laboratório, taxas e impostos.</li>
+      <li><strong>Faltas:</strong> de cerca de 3 em 10 marcações para 2 em 10, ≈ R$ 2.200 por mês com R$ 200 por atendimento. Não está somado ao lucro acima.</li>
+      <li>São metas estimadas com médias de mercado, não promessa de resultado. Os anúncios seguem as regras do CFO: nome e CRO em todas as peças, sem preços nem promoções.</li>
+    </ol>
+  </section>
+</main>
