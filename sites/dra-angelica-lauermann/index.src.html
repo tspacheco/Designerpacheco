@@ -107,7 +107,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 .foto-msg img{border-radius:11px;width:100%;height:auto;background:var(--floresta-3)}
 .foto-msg figcaption{padding:.45rem .5rem .25rem;font-size:15.5px}
 .foto-msg.dela{border-top-left-radius:4px}
-.album{margin:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px;max-width:min(92%,520px)}
+.album{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;max-width:min(86%,420px)}
 .album figure{margin:0;position:relative;border-radius:10px;overflow:hidden;aspect-ratio:1;background:var(--floresta-3)}
 .album img{width:100%;height:100%;object-fit:cover}
 .album figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.4rem .5rem .4rem;font-size:13px;font-weight:600;color:#fff;background:linear-gradient(180deg,rgba(10,20,13,0),rgba(10,20,13,.75))}
@@ -140,7 +140,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 .trat .seta{width:18px;height:18px;fill:none;stroke:var(--latao-texto);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .trat.escolhido{background:#EEF3E8}
 .trat.escolhido b{color:var(--floresta)}
-.trat.escolhido{box-shadow:inset 3px 0 0 var(--latao)}
+.trat.escolhido .seta{stroke:var(--latao);stroke-width:2.4}
 
 /* indicador a escrever */
 .digitando{justify-self:start;display:none;gap:4px;align-items:center;background:var(--floresta);border-radius:var(--r-bolha);border-top-left-radius:4px;padding:.8rem .95rem}
@@ -211,8 +211,6 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 }
 @media (max-width:420px){
   .msg{max-width:88%}
-  .album{grid-template-columns:1fr 1fr}
-  .album figure:nth-child(3){grid-column:1/-1;aspect-ratio:2/1}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -291,7 +289,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
       </div>
       <div class="msg dela album" role="group" aria-label="Fotos de trabalhos da Dra. Angélica">
         <figure><img src="media/proteses.jpg" alt="Prótese total superior e inferior segurada por mão enluvada" width="640" height="684"><figcaption>Próteses</figcaption></figure>
-        <figure><img src="media/clareamento.jpg" alt="Clareamento no consultório, com barreira de proteção azul sobre a gengiva" width="640" height="684"><figcaption>Clareamento</figcaption></figure>
+        
         <figure><img src="media/fotopolimerizador.jpg" alt="A Dra. Angélica segurando o fotopolimerizador usado nas restaurações em resina" width="640" height="588"><figcaption>Resina</figcaption></figure>
       </div>
     </section>
@@ -430,7 +428,9 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
   document.querySelectorAll('.trat').forEach(function(b){
     b.addEventListener('click', function(){
       document.querySelectorAll('.trat.escolhido').forEach(function(o){ o.classList.remove('escolhido'); o.removeAttribute('aria-pressed'); });
+      document.querySelectorAll('.trat .seta path').forEach(function(pt){ pt.setAttribute('d', 'M9 6l6 6-6 6'); });
       b.classList.add('escolhido'); b.setAttribute('aria-pressed', 'true');
+      b.querySelector('.seta path').setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5');
       escreve(b.dataset.texto);
     });
   });
