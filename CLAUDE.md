@@ -24,4 +24,5 @@ Cada site entregue tem de ter qualidade percebida de 10 000 €, mesmo vendido a
 - `PLAYBOOK.md` — playbook mestre (atualizar aqui, não em PDFs soltos).
 - `sites/<nome-do-cliente>/index.html` — cada site num diretório próprio.
 - `research/` — relatórios de pesquisa por zona (fazer uma vez, reutilizar).
+- `prospecao/` — rotina de terreno: `checklist-diario.md`, `tracker.csv` + `stats.py` (funil e follow-ups), `qr/gerar_qr.py` (QR, cartões-demo e packs de mesa em PDF).
 - Atualizar o PLAYBOOK.md (catálogo, pendentes, trackers de fontes/assinaturas) sempre que um site é criado ou vendido, no mesmo commit.

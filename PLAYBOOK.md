@@ -1,7 +1,7 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 30/07/2026 (integrado no repositório + padrão NÍVEL 10K)
+> Última atualização: 24/09/2026 (rotina diária 10X em `prospecao/` + plano Roménia)
 
 ## 0. COMO USAR
 
@@ -226,7 +226,9 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - [ ] **Restaurante Avenida** (Tavira) — site completo com cores, logótipo e ementa reais.
 - [ ] **Instituto dos Ferroviários** — logótipo oficial, detalhes da festa, cartaz para Instagram.
 - [ ] **Dra. Angélica Lauermann Gomes (dentista, Mogi das Cruzes – SP, Brasil)** — análise em `research/dra-angelica-lauermann.md`: faturação provável R$ 20–25 mil/mês; 3 focos = marcação + anti-falta por WhatsApp, Google (site pt-BR + avaliações), orçamentos + retorno. Primeiro cliente fora de Portugal: site pt-BR, LGPD, regras de publicidade do CFO. Esquema dos 3 workflows (Cal.com + Make/n8n + Notion + Brevo, sem HighLevel) em `research/dra-angelica-workflows.html`. **24/09:** demo do site feita (`sites/dra-angelica-lauermann/`); o Tomás decidiu que a agenda não será o Cal.com (volume de uma clínica); o esquema dos workflows passou a "agenda da clínica, a escolher" (requisitos: webhook ou API e link de reagendamento). **Depois:** o Tomás decidiu não usar a Clinicorp (custos em `research/agenda-clinica-odontologica-br.md`) e construir um sistema à medida: Supabase + painel PWA + WhatsApp Cloud API + n8n + IA (Claude) + Brevo, sem o prontuário (legal). Arquitetura e fases em `research/dra-angelica-sistema.md`. Checklist de execução (60 passos) em `research/dra-angelica-checklist.md`. Planos de anúncios R$ 500/1.000/1.500 com lucro estimado e preços médios dos tratamentos em `research/dra-angelica-planos.html` (artifact PPcYDCpasuT83ksvfcvKuG); preços Pacheco Studios: Essencial R$ 4.000 + R$ 500/mês, Crescimento R$ 6.000 + R$ 750/mês, Completo R$ 10.000 + R$ 1.100/mês (mensalidades "a partir de").
-- [ ] Acrescentar telefone do Tomás às propostas PDF.
+- [ ] Acrescentar telefone do Tomás às propostas PDF e à constante `TELEFONE` em `prospecao/qr/gerar_qr.py` (até lá os cartões saem só com e-mail).
+- [ ] **Roménia — semana 0** (`research/romenia.md`, secção 8): escolher cidade e rua · 30 negócios pesquisados · 5 orçamentos de concorrentes locais → tabela em lei · contabilista (VIES/autoliquidação, retenção, convenção PT–RO) · 5 demos RO num só chat · script romeno validado com um nativo · cartões e packs QR impressos (`gerar_qr.py --lang ro`) · Google Business + Facebook + OLX.
+- [ ] Registar no tracker as 4 primeiras semanas de rotina e substituir a hipótese de funil (2 % de fecho) pelas taxas reais em `research/metodo-10x-cardone.md`.
 - [ ] Registar taxas de fecho por tipo de negócio (Albufeira, Gambelas, VNC).
 - [ ] **Toda Chic** — pedir à dona: (1) fotos individuais sem preço nem faixa das 6 peças que só existem em fichas (calções de linho, saia, blusas sem alça, vestido preto/branco, pantalona, conjunto vermelho); (2) preço das calças clássicas em 4 cores e das sandálias com laços; (3) tamanhos das ~20 peças sem indicação; (4) identificação da empresa (nome, NIF, morada), e-mail, portes/transportadora, software de faturação. Depois: mostrar a demo, fechar orçamento por referências, montar WooCommerce + ifthenpay.
 
@@ -239,6 +241,8 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 5. Evitar cadeias e franchisings (decisão não é local). Verificar sempre se já têm site antes de investir tempo.
 6. Ângulo que fecha: **"tem 4,5 estrelas e centenas de avaliações — e está invisível fora do Google Maps."**
 7. Quem já tem site (Tavont, Ita Trattoria): **"elevar, não substituir"** — mostrar 3 falhas concretas do site atual.
+8. **Rotina diária (24/09/2026):** `prospecao/checklist-diario.md` — mínimo 10 portas · 5 follow-ups · 1 reunião marcada com hora, **nunca um dia a zero**; dia 10X = 25 portas. Cada contacto é uma linha em `prospecao/tracker.csv`; `python3 prospecao/stats.py` dá o funil e as taxas de fecho, `--hoje` lista os follow-ups vencidos. Base: método 10X de Grant Cardone, analisado (o que serve, o que se adapta, o que se ignora) em `research/metodo-10x-cardone.md`.
+9. **QR como produto de entrada:** autocolante "Avalie-nos no Google" grátis → pack de mesa 39 € (a entrega **é** a reunião) → site. Cartões-demo (nome do negócio + QR para a demo dele) para deixar quando o dono não está. Tudo gerado por `prospecao/qr/gerar_qr.py` (SVG + PDF A4 para a copiadora, PT/RO). Follow-up: 7 contactos, `nao` só ao 5.º.
 
 ## 12. ECONOMIA DE CRÉDITOS
 
@@ -255,6 +259,10 @@ Investigação em `research/sistemas-pacheco-studios.md` — ler antes de pagar 
 - **Regra:** só entra ferramenta que suporte "secção por cliente". HighLevel (sub-conta + snapshot) e Notion (página por cliente + convidados) passam; Make passa com prefixo `[CLIENTE]` nos cenários; **Brevo só tem sub-contas no Enterprise** (~449 $/mês) → uma conta por cliente ou e-mail no HighLevel; **Slack** só interno e só com equipa (Free não partilha canais com clientes).
 - **Caminho:** Notion + Make Core já; trial de 14 dias do HighLevel com um só objetivo — o snapshot "Restaurante PT" (pipeline, reservas, formulário, review 2 h depois, template WhatsApp). Starter (97 $) quando 3 clientes pagarem mensalidade; Unlimited (297 $) a partir do 4.º.
 - **O que o HighLevel não faz em PT:** fatura certificada AT (Make → Vendus/InvoiceXpress), MB WAY (Stripe diz ter MB WAY em 2026 — **a confirmar** em contas PT; se sim, rever a secção 13), WhatsApp a custo fixo (add-on por conversa, orçamentar 20–150 $/mês).
+
+## 15. EXPANSÃO — ROMÉNIA (novo — 24/09/2026)
+
+Plano inicial em `research/romenia.md`: porquê (PME menos digitalizadas da UE, Facebook como "site", língua latina), onde começar (Brașov como 1.ª escolha, ou a cidade do Erasmus; **uma rua**, não uma cidade), tipos de negócio por ordem, **preços em lei** (2.490 lei · +249 lei/mês · pack QR 149 lei — a confirmar com 5 orçamentos locais), script de abordagem em romeno com tradução, fiscal (faturar de Portugal; VIES/autoliquidação — contabilista antes da 1.ª fatura; sem empresa lá) e adaptação do engine (`lang="ro"`, diacríticos com vírgula, fonte com `latin-ext`, ANPC–SAL no rodapé em vez do Livro de Reclamações, "de confirmat"). Rotina: a mesma do `prospecao/checklist-diario.md`, com o script romeno. Meses 2–3: comissionista local à percentagem + contabilistas e tipografias como parceiros. Meta 10X a 90 dias: 15 mensalidades; normal: 5.
 
 ## 13. CLIENTES DE E-COMMERCE (novo — 20/09/2026)
 
