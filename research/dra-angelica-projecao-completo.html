@@ -1,0 +1,220 @@
+<title>Projeção Completo Dra. Angélica</title>
+<style>
+:root{
+  --floresta:#1D3024;--floresta-2:#284234;--latao:#B08A4A;--latao-texto:#7A5A26;--latao-claro:#E4CB93;
+  --papel:#F7F9F3;--folha:#F1F4EC;--cartao:#FFFFFF;--tinta:#16211A;--tinta-2:#485546;--tinta-3:#667264;
+  --linha:#D3DBC9;--aviso:#F2EAD4;--aviso-texto:#5B4520;--bom:#1F5E3D;--mau:#9A3B2A;--barra:#E2E8D8;
+  --destaque-fundo:var(--floresta);--destaque-texto:#F1F4EC;
+  --display:"Funnel Display",ui-sans-serif,system-ui,sans-serif;
+  --texto:"Funnel Sans",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--papel:#121A15;--folha:#18231C;--cartao:#1B271F;--tinta:#E9EEE4;--tinta-2:#BAC5B4;--tinta-3:#95A290;
+  --linha:#2E3D33;--aviso:#2C2618;--aviso-texto:#E7D3A6;--bom:#7CC39A;--mau:#E59A86;--barra:#26352B;--latao-texto:#D6B774;
+  --destaque-fundo:#233A2C;--destaque-texto:#F1F4EC;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--papel:#121A15;--folha:#18231C;--cartao:#1B271F;--tinta:#E9EEE4;--tinta-2:#BAC5B4;--tinta-3:#95A290;
+  --linha:#2E3D33;--aviso:#2C2618;--aviso-texto:#E7D3A6;--bom:#7CC39A;--mau:#E59A86;--barra:#26352B;--latao-texto:#D6B774;
+  --destaque-fundo:#233A2C;--destaque-texto:#F1F4EC;
+}
+*{box-sizing:border-box}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.55 var(--texto);padding-inline:16px;padding-block:0 64px}
+.pagina{max-width:1120px;margin:0 auto;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-weight:800;font-size:clamp(34px,6vw,54px);line-height:1.02}
+h2{font-weight:800;font-size:clamp(25px,3.6vw,32px);line-height:1.1}
+h3{font-weight:600;font-size:22px;line-height:1.15}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+a{color:var(--bom)}
+:focus-visible{outline:3px solid var(--latao);outline-offset:2px;border-radius:6px}
+
+/* topo */
+.topo{padding-top:36px;display:grid;gap:18px}
+.selo{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;color:var(--tinta-3);font-size:14px}
+.selo b{color:var(--latao-texto);font-weight:600}
+.lead{max-width:62ch;font-size:19px;color:var(--tinta-2)}
+.aviso{background:var(--aviso);color:var(--aviso-texto);border-radius:12px;padding:12px 16px;font-size:15px;max-width:74ch}
+
+/* cenários */
+.controlo{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.controlo span{font-size:15px;color:var(--tinta-2)}
+.segmentos{display:inline-flex;background:var(--folha);border:1px solid var(--linha);border-radius:999px;padding:4px;gap:2px}
+.segmentos button{font:600 15px var(--texto);color:var(--tinta-2);background:none;border:0;border-radius:999px;padding:9px 16px;cursor:pointer;min-height:40px}
+.segmentos button[aria-pressed="true"]{background:var(--floresta);color:#F1F4EC}
+
+/* planos */
+.planos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+@media (max-width:900px){.planos{grid-template-columns:1fr}}
+.plano{background:var(--cartao);border:1px solid var(--linha);border-radius:18px;padding:24px 22px;display:grid;gap:18px}
+.plano.meio{background:var(--destaque-fundo);color:var(--destaque-texto);border-color:transparent}
+.plano.meio .suave,.plano.meio .inclui li,.plano.meio .degrau .rot{color:#BCC9B5}
+.plano.meio .verba small,.plano.meio .etq{color:var(--latao-claro)}
+.plano.meio .degrau .fundo{background:#355440}
+.plano.meio .resultado{border-color:#355440}
+.plano.meio .bom{color:#9FD8B4}.plano.meio .mau{color:#F0AE9B}
+.plano.meio .agenda .trilho{background:#355440}
+.cab{display:grid;gap:6px}
+.topo-plano{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.recom{font-size:13px;font-weight:600;background:var(--latao-claro);color:#1D3024;border-radius:999px;padding:4px 11px}
+.etq{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--latao-texto)}
+.verba{font-family:var(--display);font-weight:800;font-size:40px;line-height:1}
+.verba small{display:block;margin-top:6px;font:500 15px var(--texto);color:var(--tinta-3)}
+.suave{color:var(--tinta-3);font-size:15px}
+.precos{margin:0;display:grid;gap:6px;font-size:15px;border-block:1px solid var(--linha);padding-block:12px}
+.precos div{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.precos dt{color:var(--tinta-3);white-space:nowrap}
+.precos dd{margin:0;font-weight:600;text-align:right}
+.precos dd span{font-weight:400;color:var(--tinta-3);font-size:13px}
+.plano.meio .precos{border-color:#355440}.plano.meio .precos dt,.plano.meio .precos dd span{color:#BCC9B5}
+.porque{font-size:15px;line-height:1.5;background:#284234;color:#F1F4EC;border-radius:12px;padding:12px 14px}
+.inclui{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:15px}
+.inclui li{color:var(--tinta-2);padding-left:20px;position:relative}
+.inclui li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:2px;background:var(--latao);transform:rotate(45deg)}
+.inclui li.novo{font-weight:600}
+
+/* funil */
+.funil{display:grid;gap:8px;margin:0}
+.degrau{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline}
+.degrau .rot{font-size:14px;color:var(--tinta-2)}
+.degrau strong{font-weight:600;font-size:16px}
+.degrau .fundo{grid-column:1/-1;height:6px;border-radius:3px;background:var(--barra);overflow:hidden}
+.degrau .fundo i{display:block;height:100%;background:var(--latao);border-radius:3px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.resultado{border-top:1px solid var(--linha);padding-top:16px;display:grid;gap:10px}
+.linha-r{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:15px}
+.lucro{font-family:var(--display);font-weight:800;font-size:34px;line-height:1}
+.bom{color:var(--bom)}.mau{color:var(--mau)}
+.agenda{display:grid;gap:6px;font-size:14px}
+.agenda .linha-r{font-size:14px}.agenda .linha-r span{white-space:nowrap}
+.agenda .trilho{height:10px;border-radius:5px;background:var(--barra);overflow:hidden}
+.agenda .trilho i{display:block;height:100%;background:var(--bom);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.agenda.cheia .trilho i{background:var(--mau)}
+@media (prefers-reduced-motion:reduce){.degrau .fundo i,.agenda .trilho i{transition:none}}
+
+/* tabelas */
+.bloco{display:grid;gap:18px}
+.bloco > p{max-width:66ch;color:var(--tinta-2)}
+.rolar{overflow-x:auto;border:1px solid var(--linha);border-radius:14px;background:var(--cartao)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--linha);vertical-align:top}
+th{font-weight:600;color:var(--tinta-3);font-size:13px;letter-spacing:.04em;text-transform:uppercase;background:var(--folha)}
+tr:last-child td{border-bottom:0}
+td.v{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.tag{display:inline-block;font-size:12.5px;font-weight:600;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag.ela{background:var(--floresta);color:#F1F4EC}
+.tag.conf{background:var(--aviso);color:var(--aviso-texto)}
+.resumo th.dest,.resumo td.dest{background:var(--floresta);color:#F1F4EC}
+.resumo thead th.dest{color:var(--latao-claro)}
+.resumo td:first-child{color:var(--tinta-2)}
+.grupo td{background:var(--folha);font-weight:600;color:var(--tinta-2);font-size:14px}
+
+/* casos */
+.casos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:800px){.casos{grid-template-columns:1fr}}
+.caso{border-left:3px solid var(--latao);padding:4px 0 4px 16px;display:grid;gap:6px}
+.caso strong{font-family:var(--display);font-size:26px;font-weight:800}
+.caso p{color:var(--tinta-2);font-size:15px}
+
+/* ajuste */
+details{border:1px solid var(--linha);border-radius:14px;background:var(--cartao)}
+summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:inside}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px 20px;padding:4px 18px 20px}
+.campo{display:grid;gap:6px;font-size:14px;color:var(--tinta-2)}
+.campo input{font:600 17px var(--texto);color:var(--tinta);background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:10px 12px;width:100%;font-variant-numeric:tabular-nums}
+.notas{display:grid;gap:12px;max-width:74ch;padding-left:20px;margin:0;color:var(--tinta-2);font-size:16px}
+.fontes{font-size:14px;color:var(--tinta-3);display:grid;gap:4px}
+.fontes a{color:var(--tinta-3)}
+
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:800px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--cartao);border:1px solid var(--linha);border-radius:14px;padding:16px;display:grid;gap:6px;align-content:start}
+.kpi strong{font-family:var(--display);font-weight:800;font-size:28px;line-height:1.05}
+.kpi span{font-size:14px;color:var(--tinta-2)}
+.kpi.escuro{background:var(--floresta);border-color:transparent}
+.kpi.escuro strong{color:#F1F4EC}.kpi.escuro span{color:#BCC9B5}
+.proj td.v,.proj th{text-align:right}
+.proj td:first-child,.proj th:first-child{text-align:left}
+.proj td:last-child{display:flex;gap:8px;align-items:center;justify-content:flex-end}
+.mini{width:70px;height:8px;border-radius:4px;background:var(--barra);overflow:hidden}
+.mini i{display:block;height:100%;background:var(--bom)}
+.camp td:first-child{white-space:nowrap;font-weight:600}
+.comparar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:700px){.comparar{grid-template-columns:1fr}}
+</style>
+<main class="pagina">
+  <header class="topo">
+    <p class="selo"><b>Pacheco Studios</b><span>Proposta para a Dra. Angélica Lauermann Gomes · CRO-SP 139651</span><span>24/09/2026</span></p>
+    <h1>Plano Completo com anúncios em bola de neve</h1>
+    <p class="lead">Todo mês, 30% do lucro líquido do mês anterior volta para os anúncios. No 3.º mês já há 5 campanhas ativas, incluindo os tratamentos de valor mais alto, e em todas a Dra. aparece como quem cuida do paciente do começo ao fim.</p>
+    <p class="aviso">Projeção feita com médias de mercado (cenário provável), não promessa de resultado. O relatório mensal mostra os números reais e a verba só cresce se houver lucro de verdade.</p>
+  </header>
+
+  <section class="bloco" aria-label="Resumo">
+    <div class="kpis">
+      <div class="kpi escuro"><strong>3.º mês</strong><span>implementação de R$ 10.000 paga</span></div>
+      <div class="kpi"><strong>R$ 71.800</strong><span>lucro líquido no 1.º ano, já descontada a implementação</span></div>
+      <div class="kpi"><strong>≈ R$ 3.900</strong><span>verba mensal onde a bola de neve se estabiliza (a partir do 6.º mês)</span></div>
+      <div class="kpi"><strong>4.º – 5.º mês</strong><span>agenda praticamente cheia com pacientes novos</span></div>
+    </div>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-mes">
+    <h2 id="t-mes">Mês a mês</h2>
+    <div class="rolar">
+      <table class="proj">
+        <thead><tr><th>Mês</th><th>Campanhas</th><th>Anúncios</th><th>Conversas</th><th>Pacientes novos</th><th>Faturamento a mais</th><th>Lucro líquido</th><th>Saldo depois da implementação</th><th>Agenda (sessões)</th></tr></thead>
+        <tbody><tr><td class="v">1</td><td class="v">2</td><td class="v">R$ 1,500</td><td class="v">50</td><td class="v">6,1</td><td class="v">R$ 6.100</td><td class="v"><b>R$ 750</b></td><td class="v mau">−R$ 9.250</td><td><div class="mini"><i style="width:31%"></i></div><span class="v">18/60</span></td></tr><tr><td class="v">2</td><td class="v">4</td><td class="v">R$ 1,730</td><td class="v">79</td><td class="v">9,6</td><td class="v">R$ 10.600</td><td class="v"><b>R$ 3.000</b></td><td class="v mau">−R$ 6.250</td><td><div class="mini"><i style="width:48%"></i></div><span class="v">29/60</span></td></tr><tr><td class="v">3</td><td class="v">5</td><td class="v">R$ 2,400</td><td class="v">116</td><td class="v">14,2</td><td class="v">R$ 17.800</td><td class="v"><b>R$ 6.250</b></td><td class="v bom">R$ 50</td><td><div class="mini"><i style="width:71%"></i></div><span class="v">43/60</span></td></tr><tr><td class="v">4</td><td class="v">6</td><td class="v">R$ 3,380</td><td class="v">143</td><td class="v">17,5</td><td class="v">R$ 21.900</td><td class="v"><b>R$ 7.550</b></td><td class="v bom">R$ 7.600</td><td><div class="mini"><i style="width:88%"></i></div><span class="v">53/60</span></td></tr><tr><td class="v">5</td><td class="v">6</td><td class="v">R$ 3,770</td><td class="v">152</td><td class="v">18,6</td><td class="v">R$ 23.300</td><td class="v"><b>R$ 7.950</b></td><td class="v bom">R$ 15.500</td><td><div class="mini"><i style="width:93%"></i></div><span class="v">56/60</span></td></tr><tr><td class="v">6</td><td class="v">6</td><td class="v">R$ 3,880</td><td class="v">154</td><td class="v">18,9</td><td class="v">R$ 23.600</td><td class="v"><b>R$ 8.000</b></td><td class="v bom">R$ 23.550</td><td><div class="mini"><i style="width:95%"></i></div><span class="v">57/60</span></td></tr><tr><td class="v">7</td><td class="v">6</td><td class="v">R$ 3,900</td><td class="v">155</td><td class="v">19,0</td><td class="v">R$ 23.700</td><td class="v"><b>R$ 8.050</b></td><td class="v bom">R$ 31.600</td><td><div class="mini"><i style="width:95%"></i></div><span class="v">57/60</span></td></tr><tr><td class="v">8</td><td class="v">6</td><td class="v">R$ 3,910</td><td class="v">155</td><td class="v">19,0</td><td class="v">R$ 23.700</td><td class="v"><b>R$ 8.050</b></td><td class="v bom">R$ 39.600</td><td><div class="mini"><i style="width:95%"></i></div><span class="v">57/60</span></td></tr><tr><td class="v">9</td><td class="v">6</td><td class="v">R$ 3,910</td><td class="v">155</td><td class="v">19,0</td><td class="v">R$ 23.700</td><td class="v"><b>R$ 8.050</b></td><td class="v bom">R$ 47.650</td><td><div class="mini"><i style="width:95%"></i></div><span class="v">57/60</span></td></tr><tr><td class="v">10</td><td class="v">6</td><td class="v">R$ 3,910</td><td class="v">155</td><td class="v">19,0</td><td class="v">R$ 23.700</td><td class="v"><b>R$ 8.050</b></td><td class="v bom">R$ 55.700</td><td><div class="mini"><i style="width:95%"></i></div><span class="v">57/60</span></td></tr><tr><td class="v">11</td><td class="v">6</td><td class="v">R$ 3,910</td><td class="v">155</td><td class="v">19,0</td><td class="v">R$ 23.700</td><td class="v"><b>R$ 8.050</b></td><td class="v bom">R$ 63.750</td><td><div class="mini"><i style="width:95%"></i></div><span class="v">57/60</span></td></tr><tr><td class="v">12</td><td class="v">6</td><td class="v">R$ 3,910</td><td class="v">155</td><td class="v">19,0</td><td class="v">R$ 23.700</td><td class="v"><b>R$ 8.050</b></td><td class="v bom">R$ 71.800</td><td><div class="mini"><i style="width:95%"></i></div><span class="v">57/60</span></td></tr></tbody>
+      </table>
+    </div>
+    <p>A verba de cada mês = R$ 1.500 + 30% do lucro líquido do mês anterior. A bola de neve para de crescer sozinha por volta de R$ 3.900: com mais verba, cada conversa fica mais cara e a agenda chega ao limite. Para crescer além disso, a Dra. precisa abrir mais horários (sábado de manhã ou um fim de tarde) ou contar com uma auxiliar.</p>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-camp">
+    <h2 id="t-camp">As campanhas</h2>
+    <div class="rolar">
+      <table class="camp">
+        <thead><tr><th>Início</th><th>Campanha</th><th>Para quem</th><th>O que mostra</th></tr></thead>
+        <tbody>
+          <tr><td>Mês 1</td><td>Primeira consulta e check-up</td><td>Adultos a até 5 km do consultório</td><td>A Dra. apresenta o consultório e explica como é a primeira consulta.</td></tr>
+          <tr><td>Mês 1</td><td>Google: “dentista em Mogi das Cruzes”</td><td>Quem já está procurando dentista</td><td>Perfil do Google com as avaliações, site e marcação online.</td></tr>
+          <tr><td>Mês 2</td><td>Prótese (dentadura e PPR)</td><td>Pessoas com 50 anos ou mais e filhos que cuidam dos pais</td><td>A Dra. mostra em vídeo cada etapa, do molde à entrega, e explica que faz cada ajuste pessoalmente.</td></tr>
+          <tr><td>Mês 2</td><td>Clareamento</td><td>Adultos de 20 a 45 anos</td><td>Por que avaliar antes de clarear, e o clareamento feito por ela no consultório.</td></tr>
+          <tr><td>Mês 3</td><td>Reabilitação do sorriso: coroas, facetas e restaurações estéticas</td><td>Adultos com dentes desgastados, quebrados ou escurecidos</td><td>O planejamento feito com a própria Dra.: o que muda, em quantas sessões, com quais materiais.</td></tr>
+          <tr><td>Mês 4</td><td>Remarketing</td><td>Quem viu os vídeos, visitou o site ou conversou e não marcou</td><td>Lembrete com a agenda aberta, ligado ao follow-up automático do WhatsApp.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>A Dra. como a pessoa indicada:</strong> cada campanha mostra a própria Dra. explicando o tratamento, os 6 anos de clínica e o consultório próprio na Vila São Paulo, onde quem atende é sempre ela. Pelas regras do CFO não se usa “a melhor”, preço, desconto, promessa de resultado nem o título de especialista sem registro no CRO. Implante e aparelho só entram numa campanha se ela fizer esses tratamentos ou tiver um especialista parceiro.</p>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-comp">
+    <h2 id="t-comp">Com e sem bola de neve (1.º ano, antes da implementação)</h2>
+    <div class="comparar">
+      <div class="kpi"><strong>R$ 47.600</strong><span>lucro líquido com verba fixa de R$ 1.500 por mês</span></div>
+      <div class="kpi escuro"><strong>R$ 81.800</strong><span>lucro líquido reinvestindo 30% do lucro todo mês</span></div>
+    </div>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-regras">
+    <h2 id="t-regras">Regras de segurança</h2>
+    <ol class="notas">
+      <li><strong>Só se reinveste lucro.</strong> Mês sem lucro = a verba volta a R$ 1.500.</li>
+      <li><strong>Revisão aos 60 dias.</strong> Se cada conversa custar mais de R$ 25 ou menos de 4 em cada 10 avaliações fecharem tratamento, a campanha é pausada e refeita antes de subir a verba.</li>
+      <li><strong>Agenda primeiro.</strong> Quando a agenda chega perto do limite (a partir do 5.º mês na projeção), a verba para de subir até haver novos horários.</li>
+      <li><strong>Campanha nova só entra</strong> quando a anterior já tem pelo menos 2 semanas de dados.</li>
+    </ol>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-prem">
+    <h2 id="t-prem">Premissas</h2>
+    <ol class="notas">
+      <li>R$ 15 por conversa no WhatsApp com R$ 500 de verba, subindo 20% a cada R$ 1.000 a mais.</li>
+      <li>Aprendizado dos anúncios: o mês 1 rende 60% e o mês 2 rende 85% do normal.</li>
+      <li>35% das conversas marcam, 70% comparecem, 50% fecham tratamento.</li>
+      <li>Valor médio por paciente novo: R$ 1.000 no mês 1, R$ 1.100 no mês 2 e R$ 1.250 a partir do mês 3, com as campanhas de prótese, clareamento e reabilitação.</li>
+      <li>Margem de 55% depois de material, laboratório, taxas e impostos. Mensalidade de R$ 1.100 descontada todo mês.</li>
+      <li>Cerca de 60 horários livres por mês e 3 sessões por paciente novo, no máximo 20 pacientes novos por mês.</li>
+    </ol>
+  </section>
+</main>
