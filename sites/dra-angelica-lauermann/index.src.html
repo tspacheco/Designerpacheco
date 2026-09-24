@@ -142,6 +142,23 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
 .trat.escolhido b{color:var(--floresta)}
 .trat.escolhido .seta{stroke:var(--latao);stroke-width:2.4}
 
+/* catálogo (WhatsApp Business) */
+.catalogo{padding:0;overflow:hidden;max-width:min(96%,640px);width:100%;background:var(--bolha);color:var(--tinta);border-top-left-radius:4px}
+.catalogo .topo-lista{padding:.6rem .9rem .5rem;background:var(--floresta);color:var(--folha);font-size:14.5px}
+.catalogo ul{list-style:none;margin:0;padding:.7rem;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(168px,44%);gap:.6rem;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain}
+.catalogo li{scroll-snap-align:start}
+.cat-card{width:100%;height:100%;display:grid;grid-template-rows:auto 1fr;text-align:left;padding:0;border:1px solid var(--linha);border-radius:12px;background:#F7F9F3;overflow:hidden;cursor:pointer;transition:transform .3s var(--ease),border-color .25s}
+.cat-card:hover{border-color:#B7C4AA;transform:translateY(-2px)}
+.cat-img{position:relative;display:block;aspect-ratio:1;background:radial-gradient(120% 90% at 30% 20%,var(--floresta-3),var(--floresta))}
+.cat-img svg{position:absolute;inset:26%;width:48%;height:48%;fill:none;stroke:#C9A565;stroke-width:1.4;opacity:.8}
+.cat-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cat-txt{display:grid;gap:.15rem;padding:.6rem .7rem .7rem}
+.cat-txt b{font-weight:600;font-size:15.5px;color:var(--tinta)}
+.cat-txt span{font-size:13.5px;color:var(--tinta-2);line-height:1.35}
+.cat-txt small{margin-top:.25rem;font-size:11.5px;color:var(--tinta-3)}
+.cat-card.escolhido{border-color:var(--latao);background:#F4F1E6}
+.album figure:only-child{aspect-ratio:auto}
+
 /* indicador a escrever */
 .digitando{justify-self:start;display:none;gap:4px;align-items:center;background:var(--floresta);border-radius:var(--r-bolha);border-top-left-radius:4px;padding:.8rem .95rem}
 .digitando i{width:7px;height:7px;border-radius:50%;background:var(--folha-2);animation:ponto 1.1s infinite ease-in-out}
@@ -262,6 +279,7 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
     </div>
     <nav class="rapidas entrada" aria-label="Perguntas frequentes">
       <a href="#tratamentos" data-texto="Olá, Dra. Angélica! Gostaria de saber mais sobre os tratamentos.">Quais tratamentos você faz?</a>
+      <a href="#trabalhos" data-texto="Olá, Dra. Angélica! Vi seus trabalhos no site e gostaria de marcar uma avaliação.">Ver trabalhos</a>
       <a href="#primeira-consulta" data-texto="Olá, Dra. Angélica! Gostaria de marcar minha primeira consulta.">Como é a primeira consulta?</a>
       <a href="#medo" data-texto="Olá, Dra. Angélica! Tenho um pouco de medo de dentista e gostaria de conversar antes de marcar.">Tenho medo de dentista</a>
       <a href="#dor" data-texto="Olá, Dra. Angélica! Estou com dor de dente e gostaria de ser atendido(a) o quanto antes.">Estou com dor</a>
@@ -287,11 +305,31 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
           <li><button type="button" class="trat" data-texto="Olá, Dra. Angélica! Estou com dor de dente e gostaria de ser atendido(a) o quanto antes."><span><b>Dor e urgências</b><span>Dor, dente quebrado ou inchaço: me mande mensagem agora.</span></span><svg class="seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>
         </ul>
       </div>
+      <div class="msg catalogo" role="group" aria-label="Catálogo de tratamentos">
+        <p class="topo-lista">Catálogo · deslize para o lado</p>
+        <ul>
+          <li><button type="button" class="cat-card" data-texto="Olá, Dra. Angélica! Gostaria de saber mais sobre clareamento dental."><span class="cat-img"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M21 13c-6 0-10 4.6-10 10.6 0 5 2 8.4 3.3 12.9 1.6 5.8 1.6 17.5 7.4 17.5 4.1 0 3.6-11.2 8.4-11.2h3.8c4.8 0 4.3 11.2 8.4 11.2 5.8 0 5.8-11.7 7.4-17.5C51 32 53 28.6 53 23.6 53 17.6 49 13 43 13c-4.8 0-7.6 2.6-11 2.6S25.8 13 21 13z"/></svg><img src="media/exemplo-clareamento.jpg" data-reserva="https://d8j0ntlcm91z4.cloudfront.net/user_3Etg0s14W0GAU3lX2MY49HlxGwO/hf_20260924_112626_61fad6ca-3be9-444f-bea1-0b4842f5c986.png" alt="" width="600" height="600" loading="lazy" onerror="if(this.dataset.reserva){this.src=this.dataset.reserva;this.removeAttribute('data-reserva')}else{this.remove()}"></span><span class="cat-txt"><b>Clareamento dental</b><span>Dentes mais claros, com proteção da gengiva.</span><small>Imagem ilustrativa</small></span></button></li>
+          <li><button type="button" class="cat-card" data-texto="Olá, Dra. Angélica! Gostaria de uma avaliação para estética em resina."><span class="cat-img"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M21 13c-6 0-10 4.6-10 10.6 0 5 2 8.4 3.3 12.9 1.6 5.8 1.6 17.5 7.4 17.5 4.1 0 3.6-11.2 8.4-11.2h3.8c4.8 0 4.3 11.2 8.4 11.2 5.8 0 5.8-11.7 7.4-17.5C51 32 53 28.6 53 23.6 53 17.6 49 13 43 13c-4.8 0-7.6 2.6-11 2.6S25.8 13 21 13z"/></svg><img src="media/exemplo-estetica.jpg" data-reserva="https://d8j0ntlcm91z4.cloudfront.net/user_3Etg0s14W0GAU3lX2MY49HlxGwO/hf_20260924_112626_1edaf47f-7fcb-4337-ba23-a2f1b85e419b.png" alt="" width="600" height="600" loading="lazy" onerror="if(this.dataset.reserva){this.src=this.dataset.reserva;this.removeAttribute('data-reserva')}else{this.remove()}"></span><span class="cat-txt"><b>Estética em resina</b><span>Forma e cor do sorriso ajustadas em resina.</span><small>Imagem ilustrativa</small></span></button></li>
+          <li><button type="button" class="cat-card" data-texto="Olá, Dra. Angélica! Acho que tenho uma cárie e gostaria de marcar uma avaliação."><span class="cat-img"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M21 13c-6 0-10 4.6-10 10.6 0 5 2 8.4 3.3 12.9 1.6 5.8 1.6 17.5 7.4 17.5 4.1 0 3.6-11.2 8.4-11.2h3.8c4.8 0 4.3 11.2 8.4 11.2 5.8 0 5.8-11.7 7.4-17.5C51 32 53 28.6 53 23.6 53 17.6 49 13 43 13c-4.8 0-7.6 2.6-11 2.6S25.8 13 21 13z"/></svg><img src="media/exemplo-resina.jpg" data-reserva="https://d8j0ntlcm91z4.cloudfront.net/user_3Etg0s14W0GAU3lX2MY49HlxGwO/hf_20260924_112625_cf800e70-b0aa-4e9a-84ef-6d8ba0473bb0.png" alt="" width="600" height="600" loading="lazy" onerror="if(this.dataset.reserva){this.src=this.dataset.reserva;this.removeAttribute('data-reserva')}else{this.remove()}"></span><span class="cat-txt"><b>Restaurações</b><span>Cárie tratada, dente na cor natural.</span><small>Imagem ilustrativa</small></span></button></li>
+          <li><button type="button" class="cat-card" data-texto="Olá, Dra. Angélica! Gostaria de uma avaliação para prótese dentária."><span class="cat-img"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M21 13c-6 0-10 4.6-10 10.6 0 5 2 8.4 3.3 12.9 1.6 5.8 1.6 17.5 7.4 17.5 4.1 0 3.6-11.2 8.4-11.2h3.8c4.8 0 4.3 11.2 8.4 11.2 5.8 0 5.8-11.7 7.4-17.5C51 32 53 28.6 53 23.6 53 17.6 49 13 43 13c-4.8 0-7.6 2.6-11 2.6S25.8 13 21 13z"/></svg><img src="media/exemplo-protese.jpg" data-reserva="https://d8j0ntlcm91z4.cloudfront.net/user_3Etg0s14W0GAU3lX2MY49HlxGwO/hf_20260924_112625_3c8692e9-62ca-42e0-8002-ad431784a260.png" alt="" width="600" height="600" loading="lazy" onerror="if(this.dataset.reserva){this.src=this.dataset.reserva;this.removeAttribute('data-reserva')}else{this.remove()}"></span><span class="cat-txt"><b>Próteses dentárias</b><span>Dentaduras planejadas e ajustadas.</span><small>Imagem ilustrativa</small></span></button></li>
+          <li><button type="button" class="cat-card" data-texto="Olá, Dra. Angélica! Gostaria de marcar uma avaliação com limpeza."><span class="cat-img"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M21 13c-6 0-10 4.6-10 10.6 0 5 2 8.4 3.3 12.9 1.6 5.8 1.6 17.5 7.4 17.5 4.1 0 3.6-11.2 8.4-11.2h3.8c4.8 0 4.3 11.2 8.4 11.2 5.8 0 5.8-11.7 7.4-17.5C51 32 53 28.6 53 23.6 53 17.6 49 13 43 13c-4.8 0-7.6 2.6-11 2.6S25.8 13 21 13z"/></svg><img src="media/exemplo-limpeza.jpg" data-reserva="https://d8j0ntlcm91z4.cloudfront.net/user_3Etg0s14W0GAU3lX2MY49HlxGwO/hf_20260924_112626_b7488eb2-7c91-4007-936e-c80ef769f669.png" alt="" width="600" height="600" loading="lazy" onerror="if(this.dataset.reserva){this.src=this.dataset.reserva;this.removeAttribute('data-reserva')}else{this.remove()}"></span><span class="cat-txt"><b>Avaliação e limpeza</b><span>Check-up e remoção de tártaro.</span><small>Imagem ilustrativa</small></span></button></li>
+          <li><button type="button" class="cat-card" data-texto="Olá, Dra. Angélica! Gostaria de marcar uma avaliação."><span class="cat-img"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M21 13c-6 0-10 4.6-10 10.6 0 5 2 8.4 3.3 12.9 1.6 5.8 1.6 17.5 7.4 17.5 4.1 0 3.6-11.2 8.4-11.2h3.8c4.8 0 4.3 11.2 8.4 11.2 5.8 0 5.8-11.7 7.4-17.5C51 32 53 28.6 53 23.6 53 17.6 49 13 43 13c-4.8 0-7.6 2.6-11 2.6S25.8 13 21 13z"/></svg><img src="media/exemplo-radiografia.jpg" data-reserva="https://d8j0ntlcm91z4.cloudfront.net/user_3Etg0s14W0GAU3lX2MY49HlxGwO/hf_20260924_112625_f69961db-21c8-46fc-848a-a80057151aca.png" alt="" width="600" height="600" loading="lazy" onerror="if(this.dataset.reserva){this.src=this.dataset.reserva;this.removeAttribute('data-reserva')}else{this.remove()}"></span><span class="cat-txt"><b>Diagnóstico</b><span>Exame com calma, radiografia se preciso.</span><small>Imagem ilustrativa</small></span></button></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- trabalhos -->
+    <section class="segmento" id="trabalhos" aria-labelledby="q-trab">
+      <div class="msg paciente"><h2 id="q-trab">Posso ver alguns trabalhos?</h2><span class="hora" aria-hidden="true"><svg class="tique"><use href="#i-tique"/></svg></span></div>
+      <div class="msg dela primeira"><p>Claro! Alguns dos meus trabalhos:</p></div>
       <div class="msg dela album" role="group" aria-label="Fotos de trabalhos da Dra. Angélica">
+        <figure><img src="media/clareamento.jpg" alt="Clareamento no consultório, com barreira de proteção azul sobre a gengiva" width="640" height="684"><figcaption>Clareamento</figcaption></figure>
+        <figure><img src="media/sorriso.jpg" alt="Sorriso de paciente com dentes claros e alinhados" width="640" height="363"><figcaption>Sorriso</figcaption></figure>
         <figure><img src="media/proteses.jpg" alt="Prótese total superior e inferior segurada por mão enluvada" width="640" height="684"><figcaption>Próteses</figcaption></figure>
-        
         <figure><img src="media/fotopolimerizador.jpg" alt="A Dra. Angélica segurando o fotopolimerizador usado nas restaurações em resina" width="640" height="588"><figcaption>Resina</figcaption></figure>
       </div>
+      <div class="msg dela"><p>Cada sorriso é planejado para o rosto de quem está na cadeira.</p></div>
+      <p class="aviso"><svg viewBox="0 0 24 24"><path d="M12 3v11M12 18.5v.5"/></svg>Exemplo para a apresentação: fotos dos posts da Dra. No site final entram só trabalhos com autorização dos pacientes.</p>
     </section>
 
     <!-- primeira consulta -->
@@ -423,6 +461,12 @@ html{scrollbar-color:var(--floresta-3) var(--parede)}
       escreve(a.dataset.texto);
       var alvo = document.querySelector(a.getAttribute('href'));
       if (alvo) { alvo.classList.remove('aceso'); void alvo.offsetWidth; alvo.classList.add('aceso'); }
+    });
+  });
+  document.querySelectorAll('.cat-card').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.cat-card.escolhido').forEach(function(o){ o.classList.remove('escolhido'); });
+      b.classList.add('escolhido'); escreve(b.dataset.texto);
     });
   });
   document.querySelectorAll('.trat').forEach(function(b){
