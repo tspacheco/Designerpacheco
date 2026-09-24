@@ -1,0 +1,430 @@
+<title>Workflows Dra. Angélica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --papel:#F2F4EE; --superficie:#FFFFFF; --superficie-2:#F7F8F4;
+  --tinta:#1A2118; --tinta-2:#4B5547; --tinta-3:#6B7466; --linha:#D8DCD1;
+  --floresta:#22301F; --floresta-texto:#EEF1E8; --floresta-2:#B9C3AE;
+  --acento:#4F6130; --dourado:#A8864A;
+  --t-cal:#56606B; --t-make:#7340D8; --t-notion:#1A2118; --t-brevo:#0B8A62; --t-wa:#178F45; --t-dra:#A07A3A; --t-web:#3567AE;
+  --g-inst:#E6EFE1; --g-inst-t:#2E4A1F; --g-hora:#EEE8F9; --g-hora-t:#4A2C8F; --g-dia:#F6EEDF; --g-dia-t:#6E4E17; --g-man:#E8EDF5; --g-man-t:#274C7F;
+  --fonte:"Schibsted Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --papel:#111510; --superficie:#191F17; --superficie-2:#151A14;
+    --tinta:#E7EBE1; --tinta-2:#B2BBAA; --tinta-3:#8C9685; --linha:#2E372B;
+    --floresta:#0B0F0A; --floresta-texto:#E7EBE1; --floresta-2:#9DA893;
+    --acento:#A9BE7C; --dourado:#CDAA68;
+    --t-cal:#A3ADB8; --t-make:#A98BFF; --t-notion:#E7EBE1; --t-brevo:#3FC596; --t-wa:#4AD27E; --t-dra:#D6B06C; --t-web:#7FA8E8;
+    --g-inst:#1F2C19; --g-inst-t:#B7D59C; --g-hora:#261D3B; --g-hora-t:#C8B4FF; --g-dia:#2E2415; --g-dia-t:#E5C78B; --g-man:#18233A; --g-man-t:#A9C4F0;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --papel:#111510; --superficie:#191F17; --superficie-2:#151A14;
+  --tinta:#E7EBE1; --tinta-2:#B2BBAA; --tinta-3:#8C9685; --linha:#2E372B;
+  --floresta:#0B0F0A; --floresta-texto:#E7EBE1; --floresta-2:#9DA893;
+  --acento:#A9BE7C; --dourado:#CDAA68;
+  --t-cal:#A3ADB8; --t-make:#A98BFF; --t-notion:#E7EBE1; --t-brevo:#3FC596; --t-wa:#4AD27E; --t-dra:#D6B06C; --t-web:#7FA8E8;
+  --g-inst:#1F2C19; --g-inst-t:#B7D59C; --g-hora:#261D3B; --g-hora-t:#C8B4FF; --g-dia:#2E2415; --g-dia-t:#E5C78B; --g-man:#18233A; --g-man-t:#A9C4F0;
+}
+*{box-sizing:border-box}
+body{background:var(--papel);color:var(--tinta);font-family:var(--fonte);font-size:16px;line-height:1.55;margin:0}
+.pagina{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 4rem}
+h1,h2,h3,h4{margin:0;line-height:1.15;text-wrap:balance}
+p{margin:0}
+a{color:var(--acento)}
+:focus-visible{outline:2px solid var(--dourado);outline-offset:2px;border-radius:3px}
+
+/* cabeçalho */
+.topo{background:var(--floresta);color:var(--floresta-texto);padding-block:2.4rem 2rem}
+.topo .pagina{padding-block:0}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--floresta-2)}
+.topo h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:800;letter-spacing:-.02em;margin-top:.5rem}
+.topo .lead{margin-top:.8rem;max-width:64ch;color:var(--floresta-2);font-size:17px}
+.ficha{display:flex;flex-wrap:wrap;gap:.6rem 2rem;margin-top:1.4rem;font-size:14px}
+.ficha div{display:grid;gap:.1rem}
+.ficha dt{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--floresta-2)}
+.ficha dd{margin:0;font-weight:600}
+.nav{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.6rem}
+.nav a{color:var(--floresta-texto);text-decoration:none;font-size:14px;font-weight:500;border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:.35rem .8rem}
+.nav a:hover{background:rgba(255,255,255,.08)}
+
+section{margin-top:3.2rem}
+.sec-cab{display:grid;gap:.4rem;margin-bottom:1.2rem}
+.sec-cab h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-.01em}
+.sec-cab p{color:var(--tinta-2);max-width:68ch}
+
+/* visão geral */
+.geral{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:1.6rem;align-items:start}
+.diagrama{background:var(--superficie);border:1px solid var(--linha);border-radius:14px;padding:1rem;overflow-x:auto}
+.diagrama svg{display:block;width:100%;min-width:520px;height:auto;color:var(--tinta)}
+.diagrama .no rect{fill:var(--superficie-2);stroke:var(--linha);stroke-width:1.5}
+.diagrama .no.central rect{fill:var(--floresta);stroke:var(--floresta)}
+.diagrama .no text{fill:var(--tinta);font:600 14px var(--fonte)}
+.diagrama .no.central text{fill:var(--floresta-texto)}
+.diagrama .no .sub{fill:var(--tinta-3);font:400 11px var(--fonte)}
+.diagrama .no.central .sub{fill:var(--floresta-2)}
+.diagrama .seta{stroke:var(--tinta-3);stroke-width:1.6;fill:none}
+.diagrama .rot{fill:var(--tinta-2);font:500 11.5px var(--mono)}
+.diagrama .cab-seta{fill:var(--tinta-3)}
+.papeis{display:grid;gap:.7rem;margin:0;padding:0;list-style:none}
+.papeis li{display:grid;grid-template-columns:auto 1fr;gap:.2rem .7rem;align-items:baseline}
+.papeis b{font-weight:700}
+.papeis span.txt{grid-column:2;color:var(--tinta-2);font-size:15px}
+
+/* chips de ferramenta */
+.ferr{display:inline-flex;align-items:center;gap:.4rem;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--tinta-2);white-space:nowrap}
+.ferr::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--cor,var(--tinta-3))}
+[data-tool="cal"]{--cor:var(--t-cal)} [data-tool="make"]{--cor:var(--t-make)} [data-tool="notion"]{--cor:var(--t-notion)}
+[data-tool="brevo"]{--cor:var(--t-brevo)} [data-tool="wa"]{--cor:var(--t-wa)} [data-tool="dra"]{--cor:var(--t-dra)} [data-tool="web"]{--cor:var(--t-web)}
+
+/* workflows */
+.wf{background:var(--superficie);border:1px solid var(--linha);border-radius:18px;padding:clamp(1.1rem,3vw,2rem)}
+.wf + .wf{margin-top:1.6rem}
+.wf-cab{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.2rem 1rem;align-items:start}
+.wf-num{grid-row:span 2;font:800 clamp(2.4rem,6vw,3.4rem)/1 var(--fonte);color:var(--dourado);letter-spacing:-.04em}
+.wf-foco{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--acento)}
+.wf-cab h3{font-size:clamp(1.4rem,3vw,1.85rem);font-weight:800;letter-spacing:-.01em}
+.wf-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid var(--linha)}
+.wf-meta dt{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-3)}
+.wf-meta dd{margin:.25rem 0 0;font-size:15px;color:var(--tinta)}
+.lanes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.4rem}
+.lane{border:1px solid var(--linha);border-radius:14px;background:var(--superficie-2);padding:1rem 1rem .6rem}
+.lane.larga{grid-column:1/-1}
+.lane-cab{display:grid;gap:.35rem;margin-bottom:.8rem}
+.gatilho{justify-self:start;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:5px}
+.g-inst{background:var(--g-inst);color:var(--g-inst-t)} .g-hora{background:var(--g-hora);color:var(--g-hora-t)}
+.g-dia{background:var(--g-dia);color:var(--g-dia-t)} .g-man{background:var(--g-man);color:var(--g-man-t)}
+.lane-cab h4{font-size:1.1rem;font-weight:700}
+.lane-cab .quando{font:400 12.5px var(--mono);color:var(--tinta-3)}
+.passos{list-style:none;margin:0;padding:0}
+.passo{position:relative;padding:0 0 .9rem 1.4rem}
+.passo::before{content:"";position:absolute;left:4px;top:.55rem;bottom:-.1rem;width:1.5px;background:var(--linha)}
+.passo:last-child::before{display:none}
+.passo::after{content:"";position:absolute;left:0;top:.35rem;width:10px;height:10px;border-radius:3px;background:var(--cor,var(--tinta-3));box-shadow:0 0 0 3px var(--superficie-2)}
+.passo .ferr::before{display:none}
+.passo .ferr{color:var(--cor)}
+.passo strong{display:block;font-weight:600;font-size:15.5px;margin-top:.1rem}
+.passo .det{color:var(--tinta-2);font-size:14.5px;margin-top:.15rem}
+.passo .mod{display:grid;grid-template-columns:auto 1fr;gap:.1rem .5rem;margin-top:.4rem;font:400 12px/1.45 var(--mono);color:var(--tinta-3)}
+.passo .mod b{font-weight:500;color:var(--tinta-2)}
+.passo.ramo::after{transform:rotate(45deg);border-radius:1px;background:var(--dourado)}
+.ramos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin-top:.55rem}
+.ramo-b{border:1px dashed var(--linha);border-radius:10px;padding:.6rem .7rem .1rem;background:var(--superficie)}
+.ramo-b .se{display:block;font-size:12.5px;font-weight:700;color:var(--dourado);margin-bottom:.45rem}
+.ramo-b .passo::after{box-shadow:0 0 0 3px var(--superficie)}
+.nota-wf{margin-top:1rem;padding:.8rem 1rem;border-left:3px solid var(--dourado);background:var(--superficie-2);border-radius:0 10px 10px 0;font-size:14.5px;color:var(--tinta-2)}
+
+/* mensagens */
+.msgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.msg{background:var(--superficie);border:1px solid var(--linha);border-radius:14px;padding:1rem;display:grid;gap:.6rem;align-content:start}
+.msg-cab{display:flex;justify-content:space-between;gap:.6rem;align-items:baseline;flex-wrap:wrap}
+.msg-cab code{font:500 13px var(--mono);color:var(--tinta)}
+.cat{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3)}
+.bolha{background:var(--g-inst);color:var(--tinta);border-radius:4px 14px 14px 14px;padding:.7rem .85rem;font-size:14.5px;white-space:pre-line}
+.botoes{display:flex;flex-wrap:wrap;gap:.4rem}
+.botoes span{font-size:13px;font-weight:600;color:var(--t-web);border:1px solid var(--linha);border-radius:8px;padding:.25rem .6rem;background:var(--superficie-2)}
+.msg-rod{display:flex;justify-content:space-between;align-items:center;gap:.6rem;font-size:12.5px;color:var(--tinta-3)}
+.copiar{font:600 12.5px var(--fonte);color:var(--tinta);background:var(--superficie-2);border:1px solid var(--linha);border-radius:8px;padding:.3rem .7rem;cursor:pointer}
+.copiar:hover{border-color:var(--tinta-3)}
+
+/* tabelas */
+.tabs-notion{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.tbl-wrap{overflow-x:auto;background:var(--superficie);border:1px solid var(--linha);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+caption{text-align:left;font-weight:800;font-size:1.05rem;padding:.9rem 1rem .5rem}
+th,td{text-align:left;padding:.45rem 1rem;border-top:1px solid var(--linha);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-3);font-weight:600}
+td.tipo{font:400 12.5px var(--mono);color:var(--tinta-3);white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.vistas{margin-top:1rem;font-size:14.5px;color:var(--tinta-2)}
+.vistas b{color:var(--tinta)}
+
+/* avisos e montagem */
+.avisos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.aviso{background:var(--superficie);border:1px solid var(--linha);border-radius:14px;padding:1rem 1.1rem}
+.aviso h3{font-size:1.05rem;font-weight:700;margin-bottom:.35rem}
+.aviso p{color:var(--tinta-2);font-size:14.5px}
+.montagem{counter-reset:m;list-style:none;margin:0;padding:0;display:grid;gap:.7rem}
+.montagem li{counter-increment:m;display:grid;grid-template-columns:2.2rem 1fr;gap:.8rem;align-items:start;background:var(--superficie);border:1px solid var(--linha);border-radius:12px;padding:.8rem 1rem}
+.montagem li::before{content:counter(m);font:800 1.4rem/1 var(--fonte);color:var(--dourado);text-align:right}
+.montagem b{display:block}
+.montagem span{color:var(--tinta-2);font-size:14.5px}
+.rodape{margin-top:3rem;font-size:13px;color:var(--tinta-3)}
+
+@media (max-width:820px){
+  .geral,.lanes,.tabs-notion,.avisos{grid-template-columns:1fr}
+  .wf-meta{grid-template-columns:1fr}
+}
+@media (max-width:520px){ .ramos{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important} }
+</style>
+
+<div class="topo">
+  <div class="pagina">
+    <p class="eyebrow">Pacheco Studios · proposta de automação · prospeção</p>
+    <h1>Workflows Dra. Angélica</h1>
+    <p class="lead">Três automações para o consultório da Dra. Angélica Lauermann Gomes, montadas com o que já tens: Brevo, Notion e Make (ou n8n). A agenda online é o Cal.com, grátis. Cada passo indica o módulo do Make e o nó equivalente no n8n.</p>
+    <dl class="ficha">
+      <div><dt>Cliente</dt><dd>Cirurgiã-dentista · CRO-SP 139651</dd></div>
+      <div><dt>Local</dt><dd>Mogi das Cruzes – SP · fuso America/Sao_Paulo</dd></div>
+      <div><dt>Hoje</dt><dd>5,0 ★ (30) · sem site · marcação só por WhatsApp</dd></div>
+      <div><dt>Ordem</dt><dd>1 → 2 → 3</dd></div>
+    </dl>
+    <nav class="nav" aria-label="Secções">
+      <a href="#geral">Visão geral</a><a href="#w1">1 · Marcar e confirmar</a><a href="#w2">2 · Depois da consulta</a><a href="#w3">3 · Orçamentos</a><a href="#mensagens">Mensagens</a><a href="#notion">Notion</a><a href="#custos">Custos</a><a href="#montagem">Montagem</a>
+    </nav>
+  </div>
+</div>
+
+<main class="pagina">
+
+<section id="geral">
+  <div class="sec-cab">
+    <h2>Como as peças encaixam</h2>
+    <p>O Make é o motor e não guarda nada. Os dados vivem no Notion da clínica, que é o que a Dra. abre no telemóvel. A Brevo é a única peça que fala com o paciente.</p>
+  </div>
+  <div class="geral">
+    <div class="diagrama" role="img" aria-label="Paciente marca no Cal.com; o Cal.com avisa o Make; o Make lê e escreve no Notion e manda mensagens pela Brevo; a Brevo chega ao paciente por WhatsApp e e-mail; a Dra. vê e marca no Notion.">
+      <svg viewBox="0 0 640 250" aria-hidden="true">
+        <defs><marker id="cab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="cab-seta" d="M0 0L10 5L0 10z"/></marker></defs>
+        <path class="seta" d="M132 118 L188 70" marker-end="url(#cab)"/>
+        <text class="rot" x="120" y="86">marca</text>
+        <path class="seta" d="M300 74 L352 106" marker-end="url(#cab)"/>
+        <text class="rot" x="334" y="80">webhook</text>
+        <path class="seta" d="M452 106 L500 74" marker-start="url(#cab)" marker-end="url(#cab)"/>
+        <text class="rot" x="470" y="104">lê/escreve</text>
+        <path class="seta" d="M352 154 L302 186" marker-end="url(#cab)"/>
+        <text class="rot" x="334" y="186">envia</text>
+        <path class="seta" d="M188 198 L134 146" marker-end="url(#cab)"/>
+        <text class="rot" x="36" y="196">WhatsApp · e-mail</text>
+        <path class="seta" d="M555 184 L555 78" marker-start="url(#cab)" marker-end="url(#cab)"/>
+        <text class="rot" x="563" y="134">vê e marca</text>
+        <g class="no"><rect x="20" y="108" width="112" height="46" rx="10"/><text x="76" y="129" text-anchor="middle">Paciente</text><text class="sub" x="76" y="145" text-anchor="middle">telemóvel</text></g>
+        <g class="no"><rect x="190" y="30" width="110" height="46" rx="10"/><text x="245" y="51" text-anchor="middle">Cal.com</text><text class="sub" x="245" y="67" text-anchor="middle">agenda online</text></g>
+        <g class="no central"><rect x="332" y="106" width="122" height="50" rx="10"/><text x="393" y="128" text-anchor="middle">Make / n8n</text><text class="sub" x="393" y="145" text-anchor="middle">o motor</text></g>
+        <g class="no"><rect x="500" y="30" width="112" height="46" rx="10"/><text x="556" y="51" text-anchor="middle">Notion</text><text class="sub" x="556" y="67" text-anchor="middle">ficha da clínica</text></g>
+        <g class="no"><rect x="190" y="186" width="110" height="46" rx="10"/><text x="245" y="207" text-anchor="middle">Brevo</text><text class="sub" x="245" y="223" text-anchor="middle">WhatsApp · e-mail</text></g>
+        <g class="no"><rect x="500" y="186" width="112" height="46" rx="10"/><text x="556" y="207" text-anchor="middle">Dra. Angélica</text><text class="sub" x="556" y="223" text-anchor="middle">1 min por dia</text></g>
+      </svg>
+    </div>
+    <ul class="papeis">
+      <li data-tool="cal"><span class="ferr">Cal.com</span><b>Onde o paciente marca</b><span class="txt">Link na bio, na ficha Google e no site. Avisa o Make a cada marcação, reagendamento ou cancelamento.</span></li>
+      <li data-tool="make"><span class="ferr">Make</span><b>O motor</b><span class="txt">Três cenários principais, mais as verificações de hora a hora e diárias.</span></li>
+      <li data-tool="notion"><span class="ferr">Notion</span><b>A ficha da clínica</b><span class="txt">Pacientes, consultas e orçamentos, no workspace dela. Tu entras como convidado.</span></li>
+      <li data-tool="wa"><span class="ferr">Brevo</span><b>Quem fala com o paciente</b><span class="txt">WhatsApp com modelos aprovados pela Meta e e-mail como reserva.</span></li>
+      <li data-tool="dra"><span class="ferr">Dra.</span><b>O único trabalho manual</b><span class="txt">Marcar "Compareceu" ou "Faltou" ao fim do dia e registar cada orçamento entregue.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="workflows" aria-label="Workflows">
+  <div id="wf-lista"></div>
+</section>
+
+<section id="mensagens">
+  <div class="sec-cab">
+    <h2>Mensagens de WhatsApp</h2>
+    <p>Sete modelos em português do Brasil, para submeter à Meta pela Brevo. As variáveis {{1}}, {{2}}… vêm do Notion. A categoria final é decidida pela Meta na aprovação. Os de Marketing só vão para quem deu consentimento.</p>
+  </div>
+  <div class="msgs" id="msgs"></div>
+</section>
+
+<section id="notion">
+  <div class="sec-cab">
+    <h2>Estrutura do Notion</h2>
+    <p>Três bases ligadas por relações. Só dados administrativos: nada de prontuário, diagnóstico ou fotos clínicas.</p>
+  </div>
+  <div class="tabs-notion" id="tabelas"></div>
+  <p class="vistas"><b>Vistas para a Dra.:</b> Hoje (consultas do dia, para marcar Compareceu ou Faltou) · Por confirmar · Faltas do mês · Orçamentos abertos (quadro por estado) · Revisões do mês.</p>
+</section>
+
+<section id="custos">
+  <div class="sec-cab">
+    <h2>Custos e limites</h2>
+    <p>Com cerca de 110 consultas por mês, as verificações de hora a hora pesam mais do que as próprias mensagens.</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th scope="col">Peça</th><th scope="col">Plano</th><th scope="col">Custo</th><th scope="col">Nota</th></tr></thead>
+      <tbody>
+        <tr><td>Cal.com</td><td>Free</td><td class="num">0</td><td>Tipos de consulta, webhooks e links de reagendamento.</td></tr>
+        <tr><td>Notion</td><td>Free, workspace dela</td><td class="num">0</td><td>A API funciona no plano gratuito.</td></tr>
+        <tr><td>Make</td><td>Core</td><td class="num">≈ 16 $/mês</td><td>Estimativa de 3 a 4 mil créditos/mês. O Free, com 1 000, não chega.</td></tr>
+        <tr><td>n8n (alternativa)</td><td>Self-hosted</td><td class="num">≈ 5 €/mês</td><td>Servidor VPS, execuções ilimitadas. Exige manter o servidor.</td></tr>
+        <tr><td>Brevo e-mail</td><td>Free</td><td class="num">0</td><td>300 e-mails por dia, chega com folga.</td></tr>
+        <tr><td>Brevo WhatsApp</td><td>Créditos</td><td class="num">por mensagem</td><td>Tarifa da Meta para o Brasil. Confirmar na página de preços da Brevo antes de orçamentar.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="avisos">
+  <div class="sec-cab"><h2>Decisões e cuidados</h2></div>
+  <div class="avisos">
+    <div class="aviso"><h3>Botões com links, não respostas</h3><p>"Confirmar" abre um link do Make que atualiza o Notion e mostra "Consulta confirmada". "Reagendar" abre o link do Cal.com. Assim nada depende de ler mensagens recebidas, que é a parte mais frágil sem HighLevel.</p></div>
+    <div class="aviso"><h3>O número de WhatsApp</h3><p>A API precisa de um número registado na Meta. Ou o número atual dela fica na app e na API ao mesmo tempo (coexistência, confirmar com a Brevo), ou usa-se um segundo número só para as mensagens automáticas. As respostas a mensagens da API chegam à caixa Conversas da Brevo, que tem app de telemóvel.</p></div>
+    <div class="aviso"><h3>LGPD</h3><p>Dados de saúde são dados sensíveis. No Notion ficam só nome, contacto, marcações e o tipo genérico de consulta ou tratamento. O formulário de marcação pede consentimento explícito e guarda a data. A clínica é a controladora dos dados, por isso o Notion fica no workspace dela.</p></div>
+    <div class="aviso"><h3>Regras do CFO</h3><p>As mensagens não falam de preços, descontos nem promoções. O resumo do orçamento é comunicação privada com o paciente, não publicidade. Nome e CRO aparecem no site e no rodapé dos e-mails.</p></div>
+  </div>
+</section>
+
+<section id="montagem">
+  <div class="sec-cab">
+    <h2>Ordem de montagem</h2>
+    <p>Cada passo depende do anterior.</p>
+  </div>
+  <ol class="montagem">
+    <li><div><b>Notion no workspace dela</b><span>Criar as três bases, as relações e as cinco vistas. Convidar-te como membro.</span></div></li>
+    <li><div><b>Cal.com</b><span>Tipos: Avaliação 30 min, Limpeza 45, Revisão 30, Urgência 30, Tratamento 60. Segunda a sexta até às 18h30, fuso America/Sao_Paulo. Campos obrigatórios: WhatsApp e consentimento.</span></div></li>
+    <li><div><b>Google Perfil da Empresa</b><span>Copiar o link "Pedir avaliações" para o modelo avaliacao_google.</span></div></li>
+    <li><div><b>Brevo</b><span>Remetente de e-mail verificado. WhatsApp ligado a uma conta Meta Business verificada. Submeter os sete modelos, a aprovação pode levar alguns dias.</span></div></li>
+    <li><div><b>Make</b><span>Fuso da organização em America/Sao_Paulo. Ligações ao Notion e à Brevo (chave API). Webhook registado no Cal.com.</span></div></li>
+    <li><div><b>Workflow 1, uma semana em teste</b><span>Marcações com o teu número antes de abrir o link aos pacientes. Depois o 2 e, por fim, o 3.</span></div></li>
+    <li><div><b>WhatsApp Business do telemóvel dela</b><span>Mensagem de ausência e de saudação com o link de marcação. Resolve as mensagens durante as consultas sem automação nenhuma.</span></div></li>
+  </ol>
+</section>
+
+<p class="rodape">Pacheco Studios · 24/09/2026 · estimativas de custo e de créditos a confirmar nas páginas de preços antes de fechar orçamento com a cliente.</p>
+</main>
+
+<script>
+var FERR = {cal:'Cal.com', make:'Make', notion:'Notion', brevo:'Brevo · e-mail', wa:'Brevo · WhatsApp', dra:'Dra. Angélica', web:'Paciente'};
+var GAT = {inst:['g-inst','Instantâneo'], hora:['g-hora','De hora a hora'], dia:['g-dia','Agendado'], man:['g-man','Manual']};
+
+var WF = [
+{ id:'w1', foco:'Foco 1 · menos faltas', nome:'Marcar e confirmar',
+  objetivo:'O paciente marca sozinho e confirma com um toque. A Dra. só liga a quem não confirmou.',
+  metrica:'Faltas ÷ consultas do mês (vista "Faltas do mês").',
+  ganho:'No setor falta cerca de 30 %. Lembretes cortam até 40 % dessas faltas: ≈ 10 consultas recuperadas por mês.',
+  lanes:[
+  { g:'inst', nome:'Nova marcação', quando:'Cal.com → BOOKING_CREATED', passos:[
+    {tool:'cal', t:'O paciente marca no Cal.com', d:'Formulário: nome, WhatsApp, e-mail opcional, caixa de consentimento.'},
+    {tool:'make', t:'Recebe a marcação', d:'Normaliza o número para +55 11 9XXXX-XXXX.', make:'Webhooks › Custom webhook · Tools › Set variable', n8n:'Webhook · Set'},
+    {tool:'notion', t:'Procura o paciente pelo telefone', make:'Notion › Search Objects (Pacientes)', n8n:'Notion › Database Page: Get Many', ramo:[
+      {se:'Não existe', passos:[{tool:'notion', t:'Cria o paciente', d:'Origem = Agenda online · consentimento e data.'}]},
+      {se:'Já existe', passos:[{tool:'notion', t:'Usa o registo', d:'Atualiza o e-mail se vier novo.'}]} ]},
+    {tool:'notion', t:'Cria a consulta', d:'Estado = Marcada · tipo · início · UID e link de reagendar do Cal.com · código aleatório para o botão Confirmar.', make:'Notion › Create a Database Item', n8n:'Notion › Database Page: Create'},
+    {tool:'notion', t:'Se o tipo for Tratamento', d:'Orçamento do paciente em seguimento passa a Aceite (liga ao workflow 3).', make:'Router + Notion › Update a Database Item', n8n:'IF · Notion › Update'},
+    {tool:'wa', t:'WhatsApp: marcação recebida', d:'Modelo marcacao_recebida, com morada e botão Reagendar.', make:'HTTP › Make a request (Brevo /v3/whatsapp/sendMessage)', n8n:'HTTP Request'},
+    {tool:'brevo', t:'Contacto na Brevo', d:'Cria ou atualiza com NOME e WHATSAPP, lista Pacientes.', make:'Brevo › Create or Update a Contact', n8n:'Brevo › Contact: Upsert'} ]},
+  { g:'inst', nome:'Reagendou ou cancelou', quando:'Cal.com → BOOKING_RESCHEDULED · BOOKING_CANCELLED', passos:[
+    {tool:'make', t:'Encontra a consulta pelo UID', make:'Webhooks › Custom webhook · Notion › Search Objects', n8n:'Webhook · Notion › Get Many'},
+    {tool:'notion', t:'Atualiza a consulta', d:'Nova data e lembretes limpos, ou Estado = Cancelada.', make:'Notion › Update a Database Item', n8n:'Notion › Database Page: Update'} ]},
+  { g:'hora', nome:'Lembretes', quando:'de hora a hora, 7h–20h (Brasília)', passos:[
+    {tool:'notion', t:'Consultas de amanhã por lembrar', d:'Estado = Marcada · começa daqui a 23–25 h · Lembrete 24h vazio.', make:'Notion › Search Objects · Flow Control › Iterator', n8n:'Schedule Trigger · Notion › Get Many · Loop'},
+    {tool:'wa', t:'WhatsApp: confirmar consulta', d:'Botões Confirmar (link com ID e código) e Reagendar (link do Cal.com).'},
+    {tool:'notion', t:'Marca "Lembrete 24h" com a data'},
+    {tool:'notion', t:'Consultas de hoje ainda sem confirmação', d:'Estado = Marcada · começa daqui a 2–4 h · Lembrete hoje vazio.'},
+    {tool:'wa', t:'WhatsApp: lembrete de hoje', d:'Com botão Reagendar.'},
+    {tool:'dra', t:'Aviso à Dra.', d:'E-mail com a lista de quem não confirmou, para ligar.', make:'Brevo › Send a Transactional Email', n8n:'Brevo › Email: Send'} ]},
+  { g:'inst', nome:'O paciente toca em Confirmar', quando:'…/confirmar?c=ID&t=código', passos:[
+    {tool:'web', t:'Abre o link no telemóvel'},
+    {tool:'make', t:'Compara o código com o da consulta', d:'Impede que alguém confirme consultas alheias.', make:'Webhooks › Custom webhook · Notion › Get a Database Item', n8n:'Webhook · Notion › Get'},
+    {tool:'notion', t:'Estado = Confirmada'},
+    {tool:'web', t:'Mostra "Consulta confirmada"', d:'Página simples com a data e a morada.', make:'Webhooks › Webhook response (HTML)', n8n:'Respond to Webhook'} ]},
+  { g:'man', nome:'Fim do dia', quando:'1 minuto, na vista "Hoje"', larga:true, passos:[
+    {tool:'dra', t:'Marca Compareceu ou Faltou', d:'É o que alimenta o workflow 2 e a métrica de faltas.'} ]}
+  ]},
+{ id:'w2', foco:'Foco 2 · Google e retorno', nome:'Depois da consulta',
+  objetivo:'Cada paciente satisfeito vira avaliação no Google, e cada paciente volta passados seis meses.',
+  metrica:'Avaliações no Google (30 → 100 em 6 meses) · % de revisões marcadas.',
+  ganho:'Mais avaliações recentes sobem a ficha nas pesquisas "dentista Mogi". As revisões enchem a agenda sem publicidade.',
+  lanes:[
+  { g:'hora', nome:'Pedido de avaliação', quando:'de hora a hora, 9h–20h (Brasília)', passos:[
+    {tool:'notion', t:'Consultas terminadas há 2 h ou mais', d:'Estado = Compareceu · Pedido avaliação vazio · tipo diferente de "Tratamento em curso".', make:'Notion › Search Objects · Iterator', n8n:'Schedule Trigger · Notion › Get Many · Loop'},
+    {tool:'notion', t:'Lê o paciente', make:'Notion › Get a Database Item', n8n:'Notion › Database Page: Get', ramo:[
+      {se:'Já avaliou, ou pedido há menos de 6 meses', passos:[{tool:'make', t:'Não envia', d:'Só atualiza as datas.'}]},
+      {se:'Ainda não', passos:[{tool:'wa', t:'WhatsApp: avaliação Google', d:'Botão com o link direto para escrever a avaliação.'}]} ]},
+    {tool:'notion', t:'Atualiza paciente e consulta', d:'Última visita = data da consulta · Próxima revisão = +6 meses · Pedido avaliação = hoje.', make:'Notion › Update a Database Item', n8n:'Notion › Database Page: Update'} ]},
+  { g:'dia', nome:'Hora da revisão', quando:'todos os dias, 9h', passos:[
+    {tool:'notion', t:'Pacientes com revisão daqui a 7 dias', d:'Sem consulta futura · Retorno enviado vazio.', make:'Notion › Search Objects · Iterator', n8n:'Schedule Trigger · Notion › Get Many · Loop'},
+    {tool:'wa', t:'WhatsApp: hora da revisão', d:'Botão Agendar, que abre o tipo Revisão no Cal.com.'},
+    {tool:'notion', t:'Retorno enviado = 1'},
+    {tool:'notion', t:'14 dias depois, ainda sem marcação', d:'Retorno enviado = 1 · sem consulta futura.'},
+    {tool:'brevo', t:'E-mail de segundo toque', d:'Modelo Brevo com botão Agendar. Depois disso, para.', make:'Brevo › Send a Transactional Email', n8n:'Brevo › Email: Send'} ]},
+  { g:'dia', nome:'Resumo da semana', quando:'segunda-feira, 8h', larga:true, passos:[
+    {tool:'dra', t:'E-mail para a Dra.', d:'Avaliações pedidas, revisões enviadas, marcações vindas das revisões e faltas da semana.', make:'Notion › Search Objects · Tools › Text aggregator · Brevo › Send a Transactional Email', n8n:'Notion › Get Many · Aggregate · Brevo › Email: Send'} ]}
+  ],
+  nota:'Quando o paciente marca a revisão, a consulta nova entra pelo workflow 1. Os dois partilham a base Consultas.'},
+{ id:'w3', foco:'Foco 3 · ticket alto', nome:'Orçamentos que fecham',
+  objetivo:'Nenhum orçamento de prótese, clareamento ou estética fica esquecido "a pensar".',
+  metrica:'Taxa de aceitação e valor aceite por mês (vista "Orçamentos abertos").',
+  ganho:'Um fecho extra de prótese ou clareamento por mês vale R$ 1 000–3 000.',
+  lanes:[
+  { g:'man', nome:'Novo orçamento', quando:'quando a Dra. regista', passos:[
+    {tool:'dra', t:'Regista o orçamento', d:'Formulário do Notion no telemóvel: paciente, tratamento, valor e número de sessões.'},
+    {tool:'make', t:'Deteta o orçamento novo', make:'Notion › Watch Database Items', n8n:'Notion Trigger › Page added to database'},
+    {tool:'notion', t:'Prepara o seguimento', d:'Estado = Em seguimento · Passo = 1 · Próximo contacto = +2 dias.', make:'Notion › Update a Database Item', n8n:'Notion › Database Page: Update'},
+    {tool:'brevo', t:'E-mail: resumo do plano', d:'Tratamento, sessões, formas de pagamento aceites e contacto da clínica.', make:'Brevo › Send a Transactional Email', n8n:'Brevo › Email: Send'} ]},
+  { g:'dia', nome:'Seguimento', quando:'todos os dias, 10h', passos:[
+    {tool:'notion', t:'Orçamentos com contacto para hoje', d:'Estado = Em seguimento · Próximo contacto até hoje.', make:'Notion › Search Objects · Iterator', n8n:'Schedule Trigger · Notion › Get Many · Loop'},
+    {tool:'make', t:'Decide pelo passo', make:'Flow Control › Router (filtro por Passo)', n8n:'Switch', ramo:[
+      {se:'Passo 1 · dia 2', passos:[{tool:'wa', t:'WhatsApp: "Ficou alguma dúvida?"', d:'Passo = 2 · próximo contacto +5 dias.'}]},
+      {se:'Passo 2 · dia 7', passos:[{tool:'wa', t:'WhatsApp: "Quando quiser começar"', d:'Link da 1.ª sessão · Passo = 3 · próximo +14 dias.'}]},
+      {se:'Passo 3 · dia 21', passos:[{tool:'dra', t:'Tarefa: ligar', d:'Estado = Ligar · e-mail para a Dra.'}]} ]} ]},
+  { g:'inst', nome:'Fecho', quando:'marcação de Tratamento, ou à mão', passos:[
+    {tool:'cal', t:'O paciente marca uma sessão de Tratamento', d:'O workflow 1 muda o orçamento para Aceite.'},
+    {tool:'dra', t:'Ou marca Aceite ou Recusado à mão', d:'Com o motivo: preço, medo, tempo ou foi a outro dentista.'} ]},
+  { g:'dia', nome:'Resumo do mês', quando:'dia 1, 8h', passos:[
+    {tool:'dra', t:'E-mail para a Dra.', d:'Entregues, aceites, taxa de aceitação, valor aceite e motivos de recusa.', make:'Notion › Search Objects · Tools › Numeric aggregator · Brevo › Send a Transactional Email', n8n:'Notion › Get Many · Aggregate · Brevo › Email: Send'} ]}
+  ]}
+];
+
+var MSG = [
+  {n:'marcacao_recebida', c:'Utilidade', w:'1', txt:'Olá, {{1}}! Sua consulta com a Dra. Angélica Lauermann está marcada para {{2}}, às {{3}}.\nEndereço: R. Frei Bonifácio Harink, 426 – Vila São Paulo, Mogi das Cruzes.\nSe precisar mudar o horário, é só tocar em Reagendar.', b:['Reagendar']},
+  {n:'confirmar_consulta', c:'Utilidade', w:'1', txt:'Olá, {{1}}! Passando para lembrar da sua consulta amanhã, {{2}}, às {{3}}, com a Dra. Angélica. Você confirma sua presença?', b:['Confirmar','Reagendar']},
+  {n:'lembrete_hoje', c:'Utilidade', w:'1', txt:'{{1}}, sua consulta é hoje às {{2}}. Estamos te esperando! Se não puder vir, toque em Reagendar para escolher outro horário.', b:['Reagendar']},
+  {n:'avaliacao_google', c:'Utilidade ou Marketing', w:'2', txt:'Obrigada pela visita, {{1}}! Se você gostou do atendimento, sua avaliação no Google ajuda outras pessoas a encontrarem a clínica. Leva menos de um minuto.', b:['Avaliar no Google']},
+  {n:'hora_da_revisao', c:'Marketing', w:'2', txt:'Oi, {{1}}! Já faz seis meses da sua última visita. Que tal agendar sua revisão? Escolha o melhor horário pelo botão abaixo.', b:['Agendar revisão']},
+  {n:'orcamento_duvidas', c:'Utilidade', w:'3', txt:'Oi, {{1}}! Aqui é da clínica da Dra. Angélica. Ficou alguma dúvida sobre o seu plano de {{2}}? Podemos explicar as etapas e as formas de pagamento, é só responder esta mensagem.', b:[]},
+  {n:'orcamento_agendar', c:'Utilidade', w:'3', txt:'{{1}}, quando quiser começar seu tratamento de {{2}}, já pode escolher o horário da primeira sessão por aqui.', b:['Agendar primeira sessão']}
+];
+
+var TAB = [
+  {nome:'Pacientes', campos:[['Nome','título'],['Telefone','telefone +55'],['E-mail','e-mail'],['Consentimento','caixa + data'],['Origem','seleção'],['Última visita','data'],['Próxima revisão','data'],['Avaliou Google','caixa'],['Pedido avaliação','data'],['Retorno enviado','número'],['Consultas · Orçamentos','relações']]},
+  {nome:'Consultas', campos:[['Título','"Paciente · data"'],['Paciente','relação'],['Início','data e hora'],['Tipo','seleção'],['Estado','estado'],['Lembrete 24h','data'],['Lembrete hoje','data'],['Pedido avaliação','data'],['Cal UID','texto'],['Link reagendar','URL'],['Código','texto']]},
+  {nome:'Orçamentos', campos:[['Título','"Paciente · tratamento"'],['Paciente','relação'],['Tratamento','seleção'],['Valor','número R$'],['Sessões','número'],['Entregue em','data'],['Estado','estado'],['Passo','número'],['Próximo contacto','data'],['Motivo recusa','seleção']]}
+];
+
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function passoHtml(p){
+  var h = '<li class="passo' + (p.ramo ? ' ramo' : '') + '" data-tool="' + p.tool + '"><span class="ferr">' + FERR[p.tool] + '</span><strong>' + esc(p.t) + '</strong>';
+  if (p.d) h += '<p class="det">' + esc(p.d) + '</p>';
+  if (p.make || p.n8n) h += '<p class="mod">' + (p.make ? '<b>Make</b><span>' + esc(p.make) + '</span>' : '') + (p.n8n ? '<b>n8n</b><span>' + esc(p.n8n) + '</span>' : '') + '</p>';
+  if (p.ramo) h += '<div class="ramos">' + p.ramo.map(function(r){ return '<div class="ramo-b"><span class="se">Se: ' + esc(r.se) + '</span><ol class="passos">' + r.passos.map(passoHtml).join('') + '</ol></div>'; }).join('') + '</div>';
+  return h + '</li>';
+}
+document.getElementById('wf-lista').innerHTML = WF.map(function(w, i){
+  return '<article class="wf" id="' + w.id + '"><header class="wf-cab"><span class="wf-num">' + (i + 1) + '</span><span class="wf-foco">' + esc(w.foco) + '</span><h3>' + esc(w.nome) + '</h3></header>' +
+    '<dl class="wf-meta"><div><dt>Objetivo</dt><dd>' + esc(w.objetivo) + '</dd></div><div><dt>Métrica</dt><dd>' + esc(w.metrica) + '</dd></div><div><dt>Ganho esperado</dt><dd>' + esc(w.ganho) + '</dd></div></dl>' +
+    '<div class="lanes">' + w.lanes.map(function(l){
+      return '<div class="lane' + (l.larga ? ' larga' : '') + '"><div class="lane-cab"><span class="gatilho ' + GAT[l.g][0] + '">' + GAT[l.g][1] + '</span><h4>' + esc(l.nome) + '</h4><p class="quando">' + esc(l.quando) + '</p></div><ol class="passos">' + l.passos.map(passoHtml).join('') + '</ol></div>';
+    }).join('') + '</div>' + (w.nota ? '<p class="nota-wf">' + esc(w.nota) + '</p>' : '') + '</article>';
+}).join('');
+
+document.getElementById('msgs').innerHTML = MSG.map(function(m, i){
+  return '<div class="msg"><div class="msg-cab"><code>' + m.n + '</code><span class="cat">' + m.c + '</span></div><p class="bolha" lang="pt-BR" id="msg-' + i + '">' + esc(m.txt) + '</p>' +
+    (m.b.length ? '<div class="botoes">' + m.b.map(function(b){ return '<span>' + esc(b) + '</span>'; }).join('') + '</div>' : '') +
+    '<div class="msg-rod"><span>Workflow ' + m.w + '</span><button type="button" class="copiar" data-alvo="msg-' + i + '">Copiar texto</button></div></div>';
+}).join('');
+
+document.getElementById('tabelas').innerHTML = TAB.map(function(t){
+  return '<div class="tbl-wrap"><table><caption>' + t.nome + '</caption><thead><tr><th scope="col">Campo</th><th scope="col">Tipo</th></tr></thead><tbody>' +
+    t.campos.map(function(c){ return '<tr><td>' + esc(c[0]) + '</td><td class="tipo">' + esc(c[1]) + '</td></tr>'; }).join('') + '</tbody></table></div>';
+}).join('');
+
+document.addEventListener('click', function(e){
+  var b = e.target.closest('.copiar'); if (!b) return;
+  var el = document.getElementById(b.dataset.alvo), txt = el.textContent;
+  function feito(){ b.textContent = 'Copiado'; setTimeout(function(){ b.textContent = 'Copiar texto'; }, 1600); }
+  function manual(){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selecionado'; }
+  try { navigator.clipboard.writeText(txt).then(feito, manual); } catch (x) { manual(); }
+});
+</script>
