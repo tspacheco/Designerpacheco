@@ -63,6 +63,12 @@ a{color:var(--bom)}
 .verba{font-family:var(--display);font-weight:800;font-size:40px;line-height:1}
 .verba small{display:block;margin-top:6px;font:500 15px var(--texto);color:var(--tinta-3)}
 .suave{color:var(--tinta-3);font-size:15px}
+.precos{margin:0;display:grid;gap:6px;font-size:15px;border-block:1px solid var(--linha);padding-block:12px}
+.precos div{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.precos dt{color:var(--tinta-3);white-space:nowrap}
+.precos dd{margin:0;font-weight:600;text-align:right}
+.precos dd span{font-weight:400;color:var(--tinta-3);font-size:13px}
+.plano.meio .precos{border-color:#355440}.plano.meio .precos dt,.plano.meio .precos dd span{color:#BCC9B5}
 .inclui{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:15px}
 .inclui li{color:var(--tinta-2);padding-left:20px;position:relative}
 .inclui li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:2px;background:var(--latao);transform:rotate(45deg)}
@@ -123,7 +129,7 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
     <p class="selo"><b>Pacheco Studios</b><span>Proposta para a Dra. Angélica Lauermann Gomes · CRO-SP 139651</span><span>Rascunho · 24/09/2026</span></p>
     <h1>Três caminhos para trazer novos pacientes ao consultório</h1>
     <p class="lead">Quanto pode render investir R$ 500, R$ 1.000 ou R$ 1.500 por mês em anúncios, com o sistema da Pacheco Studios atendendo e acompanhando cada novo contato.</p>
-    <p class="aviso">São estimativas feitas com médias de mercado, não promessa de resultado. Os números reais aparecem no relatório depois dos primeiros 60 dias. O valor do sistema Pacheco Studios não está descontado do lucro abaixo.</p>
+    <p class="aviso">São estimativas feitas com médias de mercado, não promessa de resultado. Os números reais aparecem no relatório depois dos primeiros 60 dias. O lucro abaixo já desconta os anúncios e a mensalidade da Pacheco Studios.</p>
   </header>
 
   <section class="bloco" aria-labelledby="t-planos">
@@ -180,7 +186,7 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
       <li><strong>Anúncio → conversa no WhatsApp.</strong> Anúncios no Instagram e no Facebook abrem uma conversa. Quanto maior a verba numa mesma cidade, mais cara fica cada conversa: usamos +10% no plano de R$ 1.000 e +20% no de R$ 1.500.</li>
       <li><strong>Conversa → consulta marcada → paciente que vem → paciente que fecha tratamento.</strong> As taxas de cada etapa mudam com o cenário escolhido acima.</li>
       <li><strong>Faturamento</strong> = pacientes que fecham × valor médio do tratamento. A mistura é de muitos tratamentos pequenos e alguns grandes (prótese, clareamento, aparelho).</li>
-      <li><strong>Lucro</strong> = faturamento × margem (sobra depois de material, laboratório, taxas de cartão e impostos) − verba dos anúncios. O aluguel e os custos fixos já estão pagos, por isso cada paciente novo entra quase só com custos variáveis.</li>
+      <li><strong>Lucro</strong> = faturamento × margem (sobra depois de material, laboratório, taxas de cartão e impostos) − verba dos anúncios − mensalidade da Pacheco Studios. O aluguel e os custos fixos já estão pagos, por isso cada paciente novo entra quase só com custos variáveis.</li>
       <li><strong>Agenda:</strong> cada paciente novo ocupa em média algumas sessões. A barra mostra quanto dos horários livres do mês o plano ocuparia.</li>
     </ol>
     <details>
@@ -228,15 +234,15 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
     otimista:{cpc:10,marc:45,comp:80,fecho:55,ticket:1200,margem:55,sessoes:3,livres:60}
   };
   var PLANOS=[
-    {nome:"Essencial",verba:500,mult:1.0,inclui:[
+    {nome:"Essencial",verba:500,impl:4000,mens:500,mult:1.0,inclui:[
       "Site do consultório com marcação online",
       "Confirmação e lembretes automáticos no WhatsApp",
       "1 campanha no Instagram e Facebook: primeira consulta e check-up"]},
-    {nome:"Crescimento",verba:1000,mult:1.1,meio:true,inclui:[
+    {nome:"Crescimento",verba:1000,impl:6000,mens:750,mult:1.1,meio:true,inclui:[
       "Tudo do Essencial",
       {t:"Recepcionista com IA no WhatsApp, 24 horas: responde, marca e remarca",n:1},
       {t:"2 campanhas: check-up + prótese e clareamento",n:1}]},
-    {nome:"Completo",verba:1500,mult:1.2,inclui:[
+    {nome:"Completo",verba:1500,impl:10000,mens:1100,mult:1.2,inclui:[
       "Tudo do Crescimento",
       {t:"Google Ads: quem procura “dentista em Mogi”",n:1},
       {t:"Avaliações no Google, acompanhamento de orçamentos, retornos e reativação",n:1},
@@ -250,7 +256,7 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
 
   function calc(p){
     var conv=p.verba/(v.cpc*p.mult), marc=conv*v.marc/100, aval=marc*v.comp/100, pac=aval*v.fecho/100;
-    var fat=pac*v.ticket, lucro=fat*v.margem/100-p.verba, sess=pac*v.sessoes;
+    var fat=pac*v.ticket, lucro=fat*v.margem/100-p.verba-p.mens, sess=pac*v.sessoes;
     return {conv:conv,marc:marc,aval:aval,pac:pac,fat:fat,lucro:lucro,sess:sess};
   }
   function desenha(){
@@ -258,18 +264,18 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
     document.getElementById("planos").innerHTML=PLANOS.map(function(p,i){
       var x=r[i], cheia=x.sess>v.livres, pct=Math.min(100,x.sess/v.livres*100);
       var lucroTxt=x.lucro>=0?brl(arred(x.lucro,50)):"−"+brl(arred(-x.lucro,10));
-      var ret=x.lucro/p.verba;
       var degraus=[["Conversas no WhatsApp",x.conv],["Consultas marcadas",x.marc],["Pacientes que vêm",x.aval],["Fecham tratamento",x.pac]]
         .map(function(d){return '<div class="degrau"><span class="rot">'+d[0]+'</span><strong class="num">'+qtd(d[1])+'</strong><div class="fundo" aria-hidden="true"><i style="width:'+Math.max(2,d[1]/max*100)+'%"></i></div></div>'}).join("");
       var inc=p.inclui.map(function(t){return typeof t==="string"?"<li>"+t+"</li>":'<li class="novo">'+t.t+"</li>"}).join("");
       return '<article class="plano'+(p.meio?" meio":"")+'" aria-label="Plano '+p.nome+'">'+
         '<div class="cab"><span class="etq">'+p.nome+'</span><p class="verba num">'+brl(p.verba)+'<small>/mês em anúncios</small></p></div>'+
+        '<dl class="precos num"><div><dt>Implementação</dt><dd>'+brl(p.impl)+' <span>uma vez</span></dd></div><div><dt>Mensalidade</dt><dd><span>a partir de</span> '+brl(p.mens)+'</dd></div><div><dt>Total por mês</dt><dd>'+brl(p.verba+p.mens)+'</dd></div></dl>'+
         '<ul class="inclui">'+inc+'</ul>'+
         '<div class="funil">'+degraus+'</div>'+
         '<div class="resultado">'+
           '<div class="linha-r"><span class="suave">Faturamento a mais por mês</span><strong class="num">'+brl(arred(x.fat,100))+'</strong></div>'+
-          '<div class="linha-r"><span class="suave">Lucro depois dos anúncios</span><span class="lucro num '+(x.lucro>=0?"bom":"mau")+'">'+lucroTxt+'</span></div>'+
-          '<p class="suave num">'+(x.lucro>=0?"Cada R$ 1 em anúncio traz R$ "+ret.toLocaleString("pt-BR",{maximumFractionDigits:1})+" de lucro.":"Neste cenário os anúncios ainda não se pagam.")+'</p>'+
+          '<div class="linha-r"><span class="suave">Lucro líquido por mês</span><span class="lucro num '+(x.lucro>=0?"bom":"mau")+'">'+lucroTxt+'</span></div>'+
+          '<p class="suave num">'+(x.lucro>0?"A implementação se paga em cerca de "+Math.ceil(p.impl/x.lucro)+(Math.ceil(p.impl/x.lucro)>1?" meses":" mês")+".":"Neste cenário o plano ainda não se paga.")+'</p>'+
           '<div class="agenda'+(cheia?" cheia":"")+'"><div class="linha-r"><span class="suave">Agenda ocupada</span><span class="num">'+Math.round(x.sess)+' de '+Math.round(v.livres)+' horários livres</span></div>'+
           '<div class="trilho" aria-hidden="true"><i style="width:'+pct+'%"></i></div>'+
           (cheia?'<span class="mau">Mais pacientes do que horários livres: seria preciso abrir mais horários.</span>':"")+'</div>'+
