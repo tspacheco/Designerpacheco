@@ -30,7 +30,7 @@ CASA = {
 # (id, numeral, legenda, foto, zoom, foco x, foco y)
 DOCES = [
     ("01-capa", "I", "Num ninho de caramelo.", "WhatsApp Image 2026-07-03 at 14.59.40.jpeg", 1.0, 0.5, 0.3),
-    ("02-fios", "II", "Com fios de açúcar e mirtilos.", "WhatsApp Image 2026-07-03 at 14.59.08 (2).jpeg", 1.0, 0.5, 0.35),
+    ("02-canela", "II", "Com canela e lascas de caramelo.", "WhatsApp Image 2026-08-07 at 13.05.21.jpeg", 1.0, 0.5, 0.45),
     ("03-chocolate", "III", "Chocolate, gelado e framboesa.", "WhatsApp Image 2026-07-03 at 14.38.42 (4).jpeg", 1.0, 0.5, 0.6),
     ("04-colher", "IV", "Com a colher desenhada a cacau.", "WhatsApp Image 2026-08-07 at 12.57.48.jpeg", 1.0, 0.4, 0.5),
     ("05-reservar", "V", "Numa nuvem de açúcar.", "WhatsApp Image 2026-07-03 at 14.59.08.jpeg", 1.0, 0.5, 0.1),

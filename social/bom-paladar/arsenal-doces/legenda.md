@@ -9,7 +9,7 @@ Carrossel intemporal, fora da série dos azulejos. Pode sair em qualquer semana.
 | # | Ficheiro | Texto |
 |---|---|---|
 | 1 | `01-capa.png` | **Cinco maneiras de acabar um jantar.** — I. Num ninho de caramelo. |
-| 2 | `02-fios.png` | II. Com fios de açúcar e mirtilos. |
+| 2 | `02-canela.png` | II. Com canela e lascas de caramelo. |
 | 3 | `03-chocolate.png` | III. Chocolate, gelado e framboesa. |
 | 4 | `04-colher.png` | IV. Com a colher desenhada a cacau. |
 | 5 | `05-reservar.png` | V. Numa nuvem de açúcar. — **Qual vai ser a sua?** Reserve a sua mesa · WhatsApp · horário · morada |
@@ -28,7 +28,7 @@ Carrossel intemporal, fora da série dos azulejos. Pode sair em qualquer semana.
 ## Texto alternativo
 
 1. Sobremesa com gelado, maracujá e amora dentro de um ninho de fios de caramelo, com pau de canela. Texto: Cinco maneiras de acabar um jantar. Num ninho de caramelo.
-2. Fatia de pudim num prato azul, com fios de açúcar, mirtilos e morango em flor. Texto: Com fios de açúcar e mirtilos.
+2. Sobremesa com base crocante, gelado, lascas de caramelo e um pau de canela, com molho de caramelo no prato. Texto: Com canela e lascas de caramelo.
 3. Bolo de chocolate com gelado, framboesas e molho de chocolate. Texto: Chocolate, gelado e framboesa.
 4. Fatia de bolo em camadas, com uma colher desenhada a cacau no prato. Texto: Com a colher desenhada a cacau.
 5. Sobremesa coberta por uma nuvem de fios de açúcar, com morango em flor, canela e anis-estrelado. Texto: Numa nuvem de açúcar. Qual vai ser a sua? Reserve a sua mesa. WhatsApp 918 958 233.
