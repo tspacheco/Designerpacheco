@@ -59,6 +59,8 @@ a{color:var(--bom)}
 .plano.meio .bom{color:#9FD8B4}.plano.meio .mau{color:#F0AE9B}
 .plano.meio .agenda .trilho{background:#355440}
 .cab{display:grid;gap:6px}
+.topo-plano{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.recom{font-size:13px;font-weight:600;background:var(--latao-claro);color:#1D3024;border-radius:999px;padding:4px 11px}
 .etq{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--latao-texto)}
 .verba{font-family:var(--display);font-weight:800;font-size:40px;line-height:1}
 .verba small{display:block;margin-top:6px;font:500 15px var(--texto);color:var(--tinta-3)}
@@ -268,7 +270,7 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
         .map(function(d){return '<div class="degrau"><span class="rot">'+d[0]+'</span><strong class="num">'+qtd(d[1])+'</strong><div class="fundo" aria-hidden="true"><i style="width:'+Math.max(2,d[1]/max*100)+'%"></i></div></div>'}).join("");
       var inc=p.inclui.map(function(t){return typeof t==="string"?"<li>"+t+"</li>":'<li class="novo">'+t.t+"</li>"}).join("");
       return '<article class="plano'+(p.meio?" meio":"")+'" aria-label="Plano '+p.nome+'">'+
-        '<div class="cab"><span class="etq">'+p.nome+'</span><p class="verba num">'+brl(p.verba)+'<small>/mês em anúncios</small></p></div>'+
+        '<div class="cab"><div class="topo-plano"><span class="etq">'+p.nome+'</span>'+(p.meio?'<span class="recom">Recomendado</span>':'')+'</div><p class="verba num">'+brl(p.verba)+'<small>/mês em anúncios</small></p></div>'+
         '<dl class="precos num"><div><dt>Implementação</dt><dd>'+brl(p.impl)+' <span>uma vez</span></dd></div><div><dt>Mensalidade</dt><dd><span>a partir de</span> '+brl(p.mens)+'</dd></div><div><dt>Total por mês</dt><dd>'+brl(p.verba+p.mens)+'</dd></div></dl>'+
         '<ul class="inclui">'+inc+'</ul>'+
         '<div class="funil">'+degraus+'</div>'+
