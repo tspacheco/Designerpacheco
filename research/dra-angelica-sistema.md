@@ -21,6 +21,13 @@ Decisão do Tomás: não usar a Clinicorp nem outro software de clínica. A Pach
 | E-mail | Brevo | Lembretes por e-mail, relatório mensal e campanhas com consentimento. |
 | Documentação | Notion | Manual da dona e painel interno da Pacheco Studios. Sem dados de pacientes. |
 
+## Onde construir (decisão 24/09/2026)
+
+- **Recepcionista IA:** n8n num **VPS Hostinger KVM 2, datacenter São Paulo** (≈ R$ 39/mês, instalação do n8n em 1 clique). Webhook do WhatsApp Cloud API → nó AI Agent com a API do Claude. As ferramentas do agente são consultas ao Supabase: horários livres, criar, remarcar e cancelar marcação, e passar a conversa à dona. A memória da conversa fica no Postgres do Supabase.
+- **Painel da dona:** Lovable ligado ao mesmo Supabase (rápido de fazer e de mostrar), com o código exportado para o GitHub. Alternativa: fazê-lo à mão, como o painel da Toda Chic.
+- **Não usar** plataformas prontas de recepcionista (Cloudia, Blip, Botpress…): é software de terceiros, com custo por conversa, e tira valor ao nosso trabalho.
+- **Depois**, se o volume crescer: passar o núcleo do agente do n8n para código (Supabase Edge Functions), com versões no Git e testes.
+
 ## A força da IA (o que mostra valor)
 
 1. **Recepcionista no WhatsApp 24 h:** responde a dúvidas (tratamentos, localização, primeira consulta), consulta horários livres, marca e remarca, e percebe áudios. Regras fixas: nunca diagnostica, nunca dá preços, e em dor ou urgência passa logo à dona com alerta.
