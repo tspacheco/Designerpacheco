@@ -269,6 +269,8 @@ Pesquisa completa em `research/romenia.md` (fiscal, Revolut, economia, preços, 
 - **Fiscal:** ficar ≤ 182 dias/ano na Roménia (planear 170–175) e faturar a partir de Portugal com recibos verdes + formulário A1. Acima de 183 dias → PFA romena (grátis, 1–3 dias, e-Factura obrigatória). Nunca receber de clientes na Revolut pessoal — usar Revolut Pro.
 - **Preço:** 2 490 RON o site + 249 RON/mês. **Mercado:** 59% dos perfis Google sem site, 55% não reivindicados. Alvos: Cluj, Bucareste, Brașov, Sibiu; cafés de especialidade, padarias, pensiuni, restaurantes premium. Evitar restauração média (a fechar).
 - **Site romeno:** tudo em romeno; CUI + Reg. Com. no rodapé; pictograma **ANPC-SAL** (substitui o Livro de Reclamações); cookies com Recusar visível. Lojas: ramburs + easybox obrigatórios.
+- **Modelo romeno:** `sites/_modelo-ro/` (camada legal pronta: CUI/Reg. Com., ANPC-SAL, cookies Accept/Refuz com mapa só após consentimento, políticas em romeno, encomenda direta). Ler o `LEIA-ME.md` — validação diferente: `lang="ro"` e `anpc.ro` em vez de `pt-PT` e livroreclamacoes. Etiqueta HONEST-DATA em romeno: **`de confirmat`**; banner: **"Prezentare Pacheco Studios"**.
+- **Guião de venda em romeno:** `research/romenia-guiao-venda.md` (abertura, demo, preço, objeções, fecho, WhatsApp D0/D3/D7, email, vocabulário). Revisão por nativo antes da 1.ª visita.
 
 ## 14. SISTEMAS INTERNOS (novo — 21/09/2026)
 
