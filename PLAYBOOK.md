@@ -237,13 +237,14 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 
 1. Pesquisa prévia da zona → lista de negócios sem site com rating ≥4,2 e dezenas/centenas de avaliações.
 2. Dividir em **Lista A (visitar)** — montra aberta, porta-a-porta — e **Lista B (ligar)** — negócios de marcação.
-3. Criar as demos antes de ir. Apresentar no telemóvel.
+3. **Demos (regra de 25/09/2026):** à porta mostra-se o **mostruário** (trabalhos já feitos, por tipo de negócio). Demo personalizada só para os **3 de maior potencial do dia** (escolhidos na mini-análise de 1 min no Maps) e para quem marcou reunião. Abertura: *"fiz uma pequena análise do vosso negócio"* — só se for verdade. O próximo passo fica sempre do nosso lado (WhatsApp do dono ou dia e hora), nunca "contacte-me".
 4. Horários: cafés/padarias 7h30-9h ou 15h-16h30 · restaurantes 15h-18h (fora do serviço) · cabeleireiros 2.ª/3.ª feira · clínicas a meio da tarde.
 5. Evitar cadeias e franchisings (decisão não é local). Verificar sempre se já têm site antes de investir tempo.
 6. Ângulo que fecha: **"tem 4,5 estrelas e centenas de avaliações — e está invisível fora do Google Maps."**
 7. Quem já tem site (Tavont, Ita Trattoria): **"elevar, não substituir"** — mostrar 3 falhas concretas do site atual.
 8. **Rotina diária (24/09/2026):** `prospecao/checklist-diario.md` — mínimo 10 portas · 5 follow-ups · 1 reunião marcada com hora, **nunca um dia a zero**; dia 10X = 25 portas. Cada contacto é uma linha em `prospecao/tracker.csv`; `python3 prospecao/stats.py` dá o funil e as taxas de fecho, `--hoje` lista os follow-ups vencidos. Base: método 10X de Grant Cardone, analisado (o que serve, o que se adapta, o que se ignora) em `research/metodo-10x-cardone.md`. **PDF para o telemóvel:** `prospecao/prospecao-10x.pdf` (checklist + 10X + Roménia, índice clicável) — gerado dos .md por `python3 prospecao/exportar_pdf.py`; editar os .md e voltar a gerar, nunca o PDF.
 9. **QR como produto de entrada:** autocolante "Avalie-nos no Google" grátis → pack de mesa 39 € (a entrega **é** a reunião) → site. Cartões-demo (nome do negócio + QR para a demo dele) para deixar quando o dono não está. Tudo gerado por `prospecao/qr/gerar_qr.py` (SVG + PDF A4 para a copiadora, PT/RO). Follow-up: 7 contactos, `nao` só ao 5.º.
+10. **Negócios que já têm site → sistemas:** agendamento, encomendas, stock — orçamento à parte (setup + mensalidade). Reunião para perceber a operação antes de prometer; a demo é um protótipo clicável; o sistema ajuda quem lá trabalha, não o substitui; um sistema em construção de cada vez.
 
 ## 12. ECONOMIA DE CRÉDITOS
 

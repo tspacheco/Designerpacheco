@@ -9,8 +9,11 @@
 | | Mínimo | Dia 10X |
 |---|---|---|
 | Portas abertas | 10 | 25 |
+| Mini-análises feitas (1 min no Maps, na véspera) | 10 | 25 |
 | Conversas com o dono (ou nome + hora em que está) | 4 | 10 |
-| Demos mostradas no telemóvel | 2 | 6 |
+| Trabalhos mostrados no telemóvel (mostruário) | 2 | 6 |
+| WhatsApp do dono obtido | 2 | 5 |
+| Demos personalizadas (só os escolhidos) | 1 | 3 |
 | Cartões deixados | 10 | 25 |
 | Packs QR entregues (vendidos ou oferecidos) | 2 | 5 |
 | Follow-ups (WhatsApp / chamada / 2.ª visita) | 5 | 15 |
@@ -23,28 +26,34 @@ Tempo: ~3 h/dia (2 h de rua + 30 min de follow-up + 20 min de preparação/fecho
 ## 1. Preparação (10 min — na véspera à noite ou de manhã)
 
 - [ ] **Uma rua, não uma cidade.** Escolher 1 rua/bairro com ≥10 negócios da Lista A (sem site, ≥4,2★, dezenas/centenas de avaliações). Marcar os 10 no mapa por ordem de percurso — zero tempo a andar.
-- [ ] **Demos no telemóvel**, uma por separador, **testadas em modo avião** (são ficheiro único — têm de abrir sem rede). Brilho no máximo. Bateria > 80 % + powerbank.
-- [ ] **Kit:** 30 cartões pessoais · folha de **cartões-demo do dia** (10 por A4, um por negócio — `prospecao/qr/gerar_qr.py`) · 5 packs QR de mesa "Avalie-nos no Google" · 10 autocolantes QR · caneta e bloco · MB WAY pronto para receber.
+- [ ] **Mini-análise (1 min por negócio) no Google Maps:** rating e nº de avaliações · tem site? · nome, horário e fotos certos? · responde às avaliações? · entregas (Glovo/Wolt/Bolt)? · como marcam ou encomendam? Anotar **3 factos verdadeiros** por negócio — são a abertura e o WhatsApp de follow-up.
+- [ ] **Escolher os 3 de maior potencial** (muitas avaliações e sem site, ou uma dor clara: marcações em papel, encomendas só por telefone, stock num caderno) → demo personalizada **antes** de ir, pedida ao Claude num só lote. Os outros não levam demo: veem o mostruário.
+- [ ] **Mostruário no telemóvel:** os trabalhos já feitos, um por separador e por tipo de negócio (padaria → Arina; restaurante; salão…), **testados em modo avião** (ficheiro único — abrem sem rede). As demos dos 3 escolhidos também. Brilho no máximo, bateria > 80 % + powerbank.
+- [ ] **Kit:** 30 cartões com QR para os trabalhos · **cartões-demo só para os 3 escolhidos** (`prospecao/qr/gerar_qr.py`) · 5 packs QR de mesa "Avalie-nos no Google" · 10 autocolantes QR · caneta e bloco · MB WAY (PT) / Revolut (RO) pronto para receber.
 - [ ] **Janela certa por tipo de negócio:** cafés/padarias 7h30–9h ou 15h–16h30 · restaurantes 15h–18h (fora do serviço) · cabeleireiros 2.ª/3.ª feira · clínicas a meio da tarde. Não entrar em serviço — só se for para deixar cartão.
 - [ ] **Escrever à mão** as metas do dia (os números da tabela de cima) e a meta grande (secção 4). É o gesto Cardone: escrever de manhã e à noite.
 
 ## 2. Na rua (2 h) — sequência de 3 minutos por porta
 
-1. **Entrar com o telemóvel na mão, demo já aberta.** Olhar para quem manda, não para quem está mais perto.
-2. **Abertura (10 s):** "Boa tarde, chamo-me Tomás, faço sites para restaurantes aqui na zona. O dono está?"
-3. **Dono está (30 s):** "Vocês têm 4,6 estrelas e 300 avaliações no Google e não têm site — fora do Maps estão invisíveis. Fiz-vos uma demonstração. Posso mostrar? São 40 segundos." → mostrar → **não vender à porta**: pedir 10 minutos noutro dia (ou agora, se ele puxar). Fechar com dia e hora: "Terça às 16h?"
-4. **Dono não está:** nome do dono + a que horas costuma estar → deixar o **cartão-demo** ("diga-lhe que o site dele já existe — é só ler o código") → oferecer o autocolante QR das avaliações → marcar 2.ª visita à hora dita.
+1. **Entrar com o telemóvel na mão e o mostruário aberto** (a demo dele, se for um dos 3 escolhidos). Olhar para quem manda, não para quem está mais perto.
+2. **Abertura (10 s):** "Boa tarde, chamo-me Tomás, faço sites e sistemas para negócios aqui da zona. Fiz uma pequena análise do vosso negócio no Google. O dono está?" · RO: *"Bună ziua! Mă numesc Tomás, fac site-uri și sisteme pentru afaceri din zonă. Am făcut o mică analiză a afacerii dumneavoastră pe Google. Patronul este aici?"*
+3. **Dono está (30 s):** dizer **um facto da análise**, o mais forte ("têm 4,6★ e 300 avaliações e não têm site" · "no Google aparecem com outro nome" · "as marcações estão num caderno") → mostrar o mostruário, 40 s: "é isto que fiz para outros" (se for um dos 3: a demo dele) → **pedir o WhatsApp**: "Mando-lhe a análise completa?" → propor dia e hora para lhe trazer a solução dele: "Terça às 16h, 10 minutos?" **Não vender à porta.**
+4. **Dono não está:** nome do dono + a que horas costuma estar → deixar o **cartão com os trabalhos** ("diga-lhe que lhe fiz uma análise do negócio") → oferecer o autocolante QR das avaliações → marcar 2.ª visita à hora dita.
 5. **Pack QR (a ponte para a reunião):** "Independentemente do site: isto é um pack de mesa com QR para as avaliações do Google — o cliente lê, deixa 5 estrelas, e vocês sobem no Maps. 39 €, entrego na terça já plastificado e mostro-vos o site em 10 minutos." → vendeu = reunião marcada com data. Não vendeu = deixar o autocolante grátis e voltar na mesma.
 6. **Objeção** → resposta de uma frase (secção 5) → deixar sempre algo → sair. Máximo 3 minutos, salvo se o dono prolongar.
 7. **Registar no tracker antes da próxima porta** (30 s): `prospecao/tracker.csv`, uma linha por contacto.
 8. **Não sair da rua antes das 10 portas.** Medo de entrar = entrar já. É o único sinal fiável de que é a porta certa.
 
-Regras que não se quebram: nunca discutir · um só pedido por visita (a reunião) · nunca prometer o que o engine não faz · dados do negócio só os do Google/ementa (HONEST-DATA) · nunca falar mal do site que já têm — "elevar, não substituir".
+**Nunca "contacte-me" e mais nada.** Quase ninguém liga. O próximo passo fica sempre do teu lado: o WhatsApp do dono ou um dia e hora.
+
+**Negócios que já têm site:** a análise procura o que dói na operação — marcações em papel, encomendas só por telefone, stock num caderno, clientes que faltam. A venda passa a ser um **sistema** (agendamento, encomendas, stock), com orçamento à parte (setup + mensalidade). Primeiro uma reunião para perceber o dia a dia deles; a demo é um protótipo clicável, nunca o sistema inteiro. O sistema trabalha para quem lá está (a rececionista, o dono), não o substitui. **Um sistema em construção de cada vez.**
+
+Regras que não se quebram: **só dizer "fiz uma análise" se a fizeste** (1 min no Maps chega; os factos têm de ser verdadeiros) · nunca discutir · um só pedido por visita (a reunião) · nunca prometer o que o engine não faz · dados do negócio só os do Google/ementa (HONEST-DATA) · nunca falar mal do site que já têm — "elevar, não substituir".
 
 ## 3. Follow-up (30 min — ao fim do dia ou às 9h30 do dia seguinte)
 
 - [ ] `python3 prospecao/stats.py --hoje` → lista dos próximos passos vencidos e de hoje.
-- [ ] 5 mensagens WhatsApp a contactos de ontem/anteontem: nome do dono + link da demo + uma frase. Enviar **até 2 h depois** de obter o número.
+- [ ] WhatsApp com a **análise** a cada dono que deu o número, **até 2 h depois** (modelo abaixo). Mais 5 mensagens a contactos de ontem/anteontem.
 - [ ] 2 chamadas/2.ªs visitas a "o dono está às X".
 - [ ] Confirmar por mensagem as reuniões de amanhã (dia, hora, "levo o pack").
 - [ ] Responder a tudo o que entrou hoje (WhatsApp, Instagram, e-mail).
@@ -53,8 +62,8 @@ Regras que não se quebram: nunca discutir · um só pedido por visita (a reuni�
 
 | Quando | O quê |
 |---|---|
-| D0 | Visita + cartão-demo (+ autocolante QR) |
-| D0 + 2 h | WhatsApp com o link da demo, se houver número |
+| D0 | Visita + cartão com os trabalhos (+ autocolante QR) |
+| D0 + 2 h | WhatsApp com a análise (3 factos) e uma proposta de dia e hora, se houver número |
 | D+2 | 2.ª visita à hora em que o dono está |
 | D+4 | Mensagem curta com prova (site de outro cliente, print do Maps) |
 | D+7 | Chamada |
@@ -62,6 +71,11 @@ Regras que não se quebram: nunca discutir · um só pedido por visita (a reuni�
 | D+60 | Novo contacto com uma novidade (época nova, ementa nova, pack QR) |
 
 Mínimo **5 contactos** antes de marcar `nao` no tracker.
+
+**Modelo de WhatsApp com a análise** (trocar os … pelos 3 factos da mini-análise):
+
+> RO: *"Bună ziua, domnule/doamnă …! Sunt Tomás, de la Pacheco Studios — am trecut azi pe la …. Cum v-am spus, am analizat prezența voastră pe Google: 1) … 2) … 3) …. Vă pot arăta în 10 minute cum se rezolvă. Ce zi vă convine, marți sau miercuri?"*
+> PT: *"Bom dia, Sr./Sra. …! Sou o Tomás, da Pacheco Studios — passei hoje pelo/a …. Como lhe disse, analisei a vossa presença no Google: 1) … 2) … 3) …. Mostro-lhe em 10 minutos como se resolve. Que dia dá jeito, terça ou quarta?"*
 
 ## 4. Fecho do dia (10 min)
 
@@ -96,7 +110,8 @@ O QR não é o negócio — é a **razão para voltar com hora marcada**. Ordem 
 | **Pack de mesa "5 estrelas"** | 5 cavaletes A6 plastificados + 1 autocolante + 1 cartão de balcão | 39 € (custo ~6–8 € de impressão) | Primeiro "sim" pago. A entrega **é** a reunião. |
 | **Pack mesa completo** | Avaliações + Wi-Fi (liga sozinho) + WhatsApp reservas + Instagram | 59 € | Negócios com esplanada/turistas. |
 | **QR Ementa / Reservas** | Aponta para a secção da ementa e para o WhatsApp do site | Incluído no site | Argumento de venda do site: "a ementa em QR vem incluída". |
-| **Cartão-demo** | Cartão 85×55 com o nome do negócio e QR para a demo dele | Custo nosso | Deixar quando o dono não está. |
+| **Cartão com os trabalhos** | Cartão 85×55 com QR para a página dos trabalhos já feitos (página por publicar) | Custo nosso | Todas as portas. |
+| **Cartão-demo** | Cartão 85×55 com o nome do negócio e QR para a demo dele | Custo nosso | Só os 3 escolhidos do dia e quem marcou reunião. |
 
 Todos gerados por `prospecao/qr/gerar_qr.py` (SVG + PDF A4 pronto para a copiadora). Link das avaliações: `https://search.google.com/local/writereview?placeid=<PLACE_ID>` (Place ID Finder da Google — funciona sem ser dono). Testar cada QR com 2 telemóveis antes de imprimir. QR com ≥ 3 cm nos cavaletes, ≥ 2 cm nos cartões, correção de erro H.
 
@@ -114,6 +129,7 @@ Preços em lei para a Roménia: `research/romenia.md`, secção 4 (a confirmar n
 
 - **Densidade:** uma rua por dia; a porta seguinte é a do lado. Andar é tempo morto.
 - **Lote:** demos 5–6 por chat, cartões-demo 10 por folha, packs feitos ao domingo, follow-ups todos em 30 min.
+- **Produção só onde há potencial:** 25 portas, 3 demos. O mostruário faz o trabalho nas outras 22 — e cada demo feita passa a ser o mostruário da sua categoria.
 - **Script decorado:** zero improviso na abertura; a energia vai para ouvir o dono.
 - **Sem pausa entre portas:** decidir "entro" é uma decisão que se toma uma vez por dia, não 10.
 - **Deixar sempre algo:** cada porta rende pelo menos um cartão na caixa — a rua começa a conhecer o nome.
