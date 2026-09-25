@@ -1,7 +1,7 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 30/07/2026 (integrado no repositório + padrão NÍVEL 10K)
+> Última atualização: 25/09/2026 (marca própria: cartão de visita + página do QR — secção 15)
 
 ## 0. COMO USAR
 
@@ -107,7 +107,7 @@ publish = "."
 for = "/*"
 [headers.values]
 X-Content-Type-Options = "nosniff"
-Referrer-Policy = "strict-origin-when-crossorigin"
+Referrer-Policy = "strict-origin-when-cross-origin"
 TOML
 for f in NOME1 NOME2 NOME3; do
 python3 -c "
@@ -150,7 +150,7 @@ grep -o 'stop-color="[^"]*"' FICHEIRO.html | sort -u
 
 ## 5. ASSINATURAS VISUAIS JÁ USADAS (não repetir — inventar nova em cada site)
 
-ensō japonês · mandala · tagliatelle a cair · brasas a subir · rubrica manuscrita · ondas de açúcar + canela · folha line-art a desenhar-se · anéis de fumo + selo rotativo · bandeirolas náuticas a balançar · pincelada a pintar-se + blobs · pedra com heat-haze · pizza a girar + textura de tijolo · grelha com sardinhas + fumo · riscas de toalha + cataplana · notas musicais a flutuar · cena de praia em SVG (céu/mar/areia) · veios de marmoreio a desenharem-se + barra de pontos de cozedura + "00:00" monumental (Mr. Buffalo) · corvo a pousar no título + espinha de peixe divisora (Casa Corvo) · cardume SVG a atravessar a página (Paulo Molina) · padrão de azulejo a compor-se (Iguarias da Vila) · coral a ramificar-se em stroke-draw (O Coral) · mesa KBBQ vista de cima — grelha concêntrica + banchan a pousar (Hanam) · ecrã dividido diagonal "Forno & Mar" com mouse-follow + palavras gigantes de fundo (Catarina) · espeto 3D a girar sobre a grelha de água da ria, brasas e fagulhas em WebGL (Frango da Ria) · **"O Mostruário"** — cartões de amostra sobre blush, chips de cor reais, notas de tamanho/stock em monoespaçada como etiquetas de costureira, herói cinematográfico com a dona na loja (Toda Chic) · **"Nuvens de especiarias"** — herói-vídeo generativo em canvas determinístico (açafrão, pimentão, cardamomo, grãos de basmati), exportável em MP4 com o mesmo código (Pinhal Novo Mercado and Ria) · **carta escrita como o letreiro** — placas vermelhas em Khand que se acendem, sobre a foto real da fachada (Pinhal Novo Restaurant) · **"A conversa com a Dra."** — o site é a conversa de WhatsApp com a dentista, nas cores dela: cartão de contacto com CRO e 5,0 no Google, bolhas que respondem às perguntas dos pacientes, papel de parede com doodles de dentes, e a barra de escrever como CTA que reescreve a mensagem conforme o tema tocado (Dra. Angélica Lauermann Gomes)
+ensō japonês · mandala · tagliatelle a cair · brasas a subir · rubrica manuscrita · ondas de açúcar + canela · folha line-art a desenhar-se · anéis de fumo + selo rotativo · bandeirolas náuticas a balançar · pincelada a pintar-se + blobs · pedra com heat-haze · pizza a girar + textura de tijolo · grelha com sardinhas + fumo · riscas de toalha + cataplana · notas musicais a flutuar · cena de praia em SVG (céu/mar/areia) · veios de marmoreio a desenharem-se + barra de pontos de cozedura + "00:00" monumental (Mr. Buffalo) · corvo a pousar no título + espinha de peixe divisora (Casa Corvo) · cardume SVG a atravessar a página (Paulo Molina) · padrão de azulejo a compor-se (Iguarias da Vila) · coral a ramificar-se em stroke-draw (O Coral) · mesa KBBQ vista de cima — grelha concêntrica + banchan a pousar (Hanam) · ecrã dividido diagonal "Forno & Mar" com mouse-follow + palavras gigantes de fundo (Catarina) · espeto 3D a girar sobre a grelha de água da ria, brasas e fagulhas em WebGL (Frango da Ria) · **"O Mostruário"** — cartões de amostra sobre blush, chips de cor reais, notas de tamanho/stock em monoespaçada como etiquetas de costureira, herói cinematográfico com a dona na loja (Toda Chic) · **"Nuvens de especiarias"** — herói-vídeo generativo em canvas determinístico (açafrão, pimentão, cardamomo, grãos de basmati), exportável em MP4 com o mesmo código (Pinhal Novo Mercado and Ria) · **carta escrita como o letreiro** — placas vermelhas em Khand que se acendem, sobre a foto real da fachada (Pinhal Novo Restaurant) · **"A conversa com a Dra."** — o site é a conversa de WhatsApp com a dentista, nas cores dela: cartão de contacto com CRO e 5,0 no Google, bolhas que respondem às perguntas dos pacientes, papel de parede com doodles de dentes, e a barra de escrever como CTA que reescreve a mensagem conforme o tema tocado (Dra. Angélica Lauermann Gomes) · **espaço tracejado "O SEU SITE: pachecostudios.pt/____"** para escrever à mão o endereço da demo, que reaparece na página como campo para o escrever; ponto final do slogan = ponto laranja da marca (Pacheco Studios, marca própria)
 
 ## 6. TRACKER DE FONTES DISPLAY (já usadas — escolher sempre uma nova)
 
@@ -159,6 +159,8 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 **Livres/planeadas:** Bevan (→ Sítio dos Presuntos) · Rye · Kufam.
 
 *(Caveat e Kalam são fontes de acento manuscrito — podem repetir.)*
+
+*Marca própria (Pacheco Studios): Archivo Black + Space Mono + Inter, fixas em tudo o que é nosso (Instagram, cartão, pachecostudios.pt). Não contam para esta rotação.*
 
 ## 7. CATÁLOGO — SITES JÁ CRIADOS
 
@@ -196,6 +198,11 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 - **Mogi das Cruzes – SP (Brasil):** dra-angelica-lauermann (`sites/dra-angelica-lauermann/`) — **Dra. Angélica Lauermann Gomes**, cirurgiã-dentista CRO-SP 139651, 5,0★/30 Google. Demo pt-BR "A conversa com a Dra." (WhatsApp como gramática, Funnel Display + Funnel Sans), só WhatsApp como marcação, clínica geral completa escrita por nós; nada de preços/promoções (CFO). Fotos = recortes de capturas (baixa resolução, trocar pelos originais). Primeiro site feito com o fluxo completo do impeccable (PRODUCT.md, contrato de direção, revisor final).
 - **Fuzeta** (pesquisa em `research/fuzeta.md`): casa-corvo (4,6★ RG/2.091, peixe frito, sem reservas — Young Serif, corvo + espinha) · paulo-molina (4,5★ RG/55, artigo VERSA "mestre Rui" — Chonburi, cardume; contactos a confirmar) · iguarias-da-vila (4,5★ TA nº5/32, TheFork, música ao vivo — Newsreader, azulejos; **já tem site → ângulo "elevar, não substituir"**) · o-coral (4,5★ RG/162, menu do dia — Lilita One, coral a ramificar)
 
+### Marca própria
+
+- **pachecostudios.pt** (`sites/pacheco-studios/`): página para onde aponta o QR do cartão. Inclui o slogan, os trabalhos (capturas do Grupo Naval e do Hanam + parceiros do Instagram), preços da tabela, como funciona, o campo para abrir o endereço escrito no cartão e o contacto. Tem `404.html` com o mesmo campo. Por publicar (ver secção 15).
+- **Cartão de visita** (`marca/cartao/`): PDF de impressão + pré-visualização. Os dados são os mesmos da página (`marca/dados.json`).
+
 ### Propostas PDF (reportlab)
 
 - Layout navy `#142238` + dourado `#C59A3E`. Script-tipo: `/home/claude/proposta_shalom.py` (dicionário T com pt/en).
@@ -227,6 +234,7 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - [ ] **Instituto dos Ferroviários** — logótipo oficial, detalhes da festa, cartaz para Instagram.
 - [ ] **Dra. Angélica Lauermann Gomes (dentista, Mogi das Cruzes – SP, Brasil)** — análise em `research/dra-angelica-lauermann.md`: faturação provável R$ 20–25 mil/mês; 3 focos = marcação + anti-falta por WhatsApp, Google (site pt-BR + avaliações), orçamentos + retorno. Primeiro cliente fora de Portugal: site pt-BR, LGPD, regras de publicidade do CFO. Esquema dos 3 workflows (Cal.com + Make/n8n + Notion + Brevo, sem HighLevel) em `research/dra-angelica-workflows.html`. **24/09:** demo do site feita (`sites/dra-angelica-lauermann/`); o Tomás decidiu que a agenda não será o Cal.com (volume de uma clínica); o esquema dos workflows passou a "agenda da clínica, a escolher" (requisitos: webhook ou API e link de reagendamento). **Depois:** o Tomás decidiu não usar a Clinicorp (custos em `research/agenda-clinica-odontologica-br.md`) e construir um sistema à medida: Supabase + painel PWA + WhatsApp Cloud API + n8n + IA (Claude) + Brevo, sem o prontuário (legal). Arquitetura e fases em `research/dra-angelica-sistema.md`.
 - [ ] Acrescentar telefone do Tomás às propostas PDF.
+- [ ] **Cartões e pachecostudios.pt** (secção 15), por esta ordem: (1) telefone em `marca/dados.json`; (2) confirmar e comprar `pachecostudios.pt` (o `.com` é de outra pessoa); (3) `python3 sites/pacheco-studios/gerar.py` → arrastar o zip para o Netlify → ligar o domínio → testar `/c`; (4) `dominio_confirmado: true` → `python3 marca/cartao/gerar.py` → imprimir 1 em casa e ler o QR com 2 telemóveis → gráfica (especificações em `marca/cartao/LEIA-ME.md`). Decidir se os preços ficam públicos na página.
 - [ ] Registar taxas de fecho por tipo de negócio (Albufeira, Gambelas, VNC).
 - [ ] **Toda Chic** — pedir à dona: (1) fotos individuais sem preço nem faixa das 6 peças que só existem em fichas (calções de linho, saia, blusas sem alça, vestido preto/branco, pantalona, conjunto vermelho); (2) preço das calças clássicas em 4 cores e das sandálias com laços; (3) tamanhos das ~20 peças sem indicação; (4) identificação da empresa (nome, NIF, morada), e-mail, portes/transportadora, software de faturação. Depois: mostrar a demo, fechar orçamento por referências, montar WooCommerce + ifthenpay.
 
@@ -271,3 +279,17 @@ Primeiro cliente de loja online: **Toda Chic** (`sites/toda-chic/`). Regras apre
 - **Vídeo de herói sem CDN** (aprendido a 22/09): o CDN do Higgsfield está bloqueado nesta sessão, mas `pip install imageio-ffmpeg` traz um ffmpeg com libx264. Receita: cena generativa em canvas escrita como `render(t)` determinístico (sem estado, partículas calculadas a partir de `t` e de uma seed) → corre ao vivo no site a 0 bytes → `video.js` captura os fotogramas com Playwright e codifica MP4 16:9 e 9:16 para redes sociais. Modelo em `sites/pinhal-novo-mercado/`. **Variante com fotografias** (23/09): `video-montagem.js` — lista de planos `foto:segundos:x,y,zoom→x,y,zoom` (ponto de interesse ao centro, cobre o ecrã), Ken Burns com easing, fusões de 0,7 s entre planos e do último para o primeiro (loop perfeito sem pós-processamento), graduação quente + vinheta, MP4 (libx264) e WebM (libvpx-vp9). O cliente pediu para tirar as partículas por cima de fotografia ("arco-íris com confetis") — em fotografia real, nada por cima. **Higgsfield nesta sessão:** o upload (S3 presigned) e o `upscale_image` (2 créditos/foto, 2K, bytedance) funcionam; o CDN de resultados (`*.cloudfront.net`) está bloqueado pelo proxy — os ficheiros ficam na conta Higgsfield e o Tomás descarrega-os à mão. O site usa `<video>` com as duas fontes, poster = a própria foto, vertical em ecrãs ao alto, e sem vídeo em `prefers-reduced-motion`. Atenção: o Chromium headless não descodifica H.264 — testar com o WebM. Plumas por cima de fotografia: alpha ≈ metade da versão sobre fundo escuro, senão tapam a imagem.
 - **Fotos de Instagram como matéria-prima** (aprendido a 21/09): as donas de lojas pequenas têm o catálogo inteiro em stories, com faixa da marca, preço e rótulos queimados na imagem. Não pedir "fotos limpas" à cabeça — transcrever primeiro as fichas manuscritas (preço, tamanho, cor, unidades — são a única fonte de verdade) e limpar as fotos com `sites/toda-chic/ferramentas/fotos.py` (corte da faixa por transições de texto, inpainting dos rótulos com OpenCV, recorte 4:5). Só depois pedir fotos novas do que ficou fraco. Uma peça em várias cores = um produto com fotos por cor.
 - **Demo de loja = ficheiro único com router por `#/`** (início, `#/c/categoria`, `#/p/peça`, favoritos, saco, páginas). Catálogo em JSON dentro do HTML, imagens em `media/` (não em base64: 80 fotos seriam 5 MB de HTML). Favoritos e saco em `localStorage` para que o cliente sinta a loja a funcionar na apresentação. Publicar como artefacto multi-ficheiro (`files`) e como zip Netlify com a pasta `media/`.
+
+## 15. MARCA PACHECO STUDIOS (novo — 25/09/2026)
+
+Identidade já usada no Instagram (@pachecostudiospt), agora também no cartão e em pachecostudios.pt. **Tudo o que é nosso usa isto; os clientes nunca.**
+
+- **Cores:** carvão `#141210` · osso `#EFEAE3` · laranja `#E8622C`. Derivadas com contraste medido: `#A5A19B` (texto secundário sobre carvão, 7,3:1) · `#4D4A47` (secundário sobre osso, 7,4:1) · `#A64923` (laranja para texto sobre osso, 4,9:1) · `#D35A29` (traços sobre osso, 3,3:1). O laranja puro sobre osso dá só 2,8:1: nunca em texto sobre fundo claro.
+- **Fontes:** Archivo Black (títulos em maiúsculas) · Space Mono (etiquetas, contactos, preços) · Inter (texto corrido). Os ficheiros estão em `marca/fontes/`. O Inter vem como fonte variável (um só ficheiro).
+- **Voz:** o Instagram usa "tu" ("O teu negócio?"). O cartão e a página usam "o seu", porque são lidos por donos de negócio.
+- **Slogan:** "Onde o trabalho **ganha vida** online." O ponto final é o ponto laranja da marca.
+- **Dados de contacto num só sítio:** `marca/dados.json` alimenta o cartão e a página. Muda-se lá e corre-se `gerar.py` nos dois.
+- **Regra do QR:** o QR impresso aponta **sempre para o nosso domínio** (`pachecostudios.pt/C`), nunca direto para o Instagram ou para outro serviço. Assim o destino muda em `destino_qr` sem reimprimir nada. Instagram vs site: o site ganha para quem lê o QR à porta (abre sem app nem login, mostra sites reais e tem o WhatsApp à mão). O Instagram fica ligado a partir da página.
+- **Espaço tracejado do cartão:** escreve-se à mão o endereço curto da demo daquele negócio (ex.: `tasca-ria`). Cada demo publicada ganha uma linha em `enderecos_curtos`. Quem escreve o endereço no campo da página ou no browser vai parar à demo. Um endereço errado dá uma página 404 com o mesmo campo.
+- **Impressão:** 85 × 55 mm, papel mate 350–400 g sem plastificação no verso (para se poder escrever). O gerador recusa-se a fazer o PDF final enquanto faltar o telefone ou o domínio, e faz só a versão com faixa "PROVA".
+- **Capturas de sites para mostrar trabalhos:** Playwright com `reducedMotion: 'reduce'` (estado final sem animações), esconder `.pv-banner` e pedir as fontes do Google pelo lado Node (`route.fetch()`). O Chromium desta sessão não confia no proxy e sem isto as capturas saem com fontes de sistema.

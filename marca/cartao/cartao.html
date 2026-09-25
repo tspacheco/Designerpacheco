@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- Pacheco Studios — cartão de visita 85×55 mm (+3 mm de sangria = 91×61 mm por face).
+     NÃO editar cartao.html: é gerado por gerar.py a partir deste ficheiro e de dados.json. -->
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>Pacheco Studios — cartão de visita</title>
+<style>
+@font-face{font-family:"Archivo Black";font-weight:400;src:url("../fontes/archivo-black.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-weight:400;src:url("../fontes/space-mono-400.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-weight:700;src:url("../fontes/space-mono-700.woff2") format("woff2")}
+
+:root{
+  /* marca (Instagram) */
+  --carvao:#141210; --osso:#EFEAE3; --laranja:#E8622C;
+  /* derivadas com contraste medido (WCAG) */
+  --osso-2:#A5A19B;        /* texto secundário sobre carvão — 7,3:1 */
+  --tinta-2:#4D4A47;       /* texto secundário sobre osso — 7,4:1 */
+  --laranja-tinta:#A64923; /* texto laranja pequeno sobre osso — 4,9:1 */
+  --laranja-traco:#D35A29; /* traço tracejado sobre osso — 3,3:1 */
+}
+@page{size:91mm 61mm;margin:0}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#fff}
+body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:"Space Mono",monospace;
+  font-kerning:normal;text-rendering:geometricPrecision}
+
+/* ——— face = página com sangria ——— */
+.corte{display:contents}
+.face{position:relative;width:91mm;height:61mm;overflow:hidden;break-after:page}
+.corte:last-child .face{break-after:auto}
+.frente{background:var(--carvao);color:var(--osso)}
+.verso{background:var(--osso);color:var(--carvao)}
+.safe{position:absolute}
+.frente .safe{inset:8.5mm 8.5mm 8mm}   /* 5,5 mm do corte */
+.verso .safe{inset:7mm}                /* 4 mm do corte (zona segura) */
+
+/* ——— FRENTE ——— */
+.marca{position:absolute;left:0;top:0;display:flex;align-items:center;gap:1.7mm;
+  font-weight:700;font-size:7.5pt;letter-spacing:.24em;line-height:1}
+.ponto{width:1.9mm;height:1.9mm;border-radius:50%;background:var(--laranja);flex:none}
+.regiao{position:absolute;right:0;top:0;font-size:7.5pt;letter-spacing:.24em;line-height:1;color:var(--osso-2)}
+.slogan{position:absolute;left:-.35mm;top:6.9mm;font-family:"Archivo Black",sans-serif;font-weight:400;
+  font-size:21pt;line-height:.97;letter-spacing:.004em;text-transform:uppercase}
+.slogan > span{display:block}
+.slogan .o{color:var(--laranja)}
+/* o ponto final do slogan é o ponto laranja da marca */
+.pf{display:inline-block;width:.21em;height:.21em;border-radius:50%;background:var(--laranja);margin-left:.07em}
+.so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.servicos{position:absolute;left:0;bottom:0;font-size:7.5pt;letter-spacing:.1em;line-height:1;color:var(--osso-2)}
+
+/* ——— VERSO ——— */
+.nome{position:absolute;left:0;top:0;font-family:"Archivo Black",sans-serif;font-size:11.5pt;
+  line-height:1;letter-spacing:.01em}
+.funcao{position:absolute;left:0;top:5.6mm;font-size:7.5pt;line-height:1;color:var(--tinta-2)}
+.contactos{position:absolute;left:0;top:13.2mm;list-style:none;display:grid;row-gap:2.1mm}
+.contactos li{display:flex;align-items:center;gap:1.8mm;line-height:1;white-space:nowrap}
+.contactos svg{width:2.9mm;height:2.9mm;flex:none;fill:none;stroke:var(--tinta-2);stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+.contactos .v{font-size:8.5pt;font-weight:400;letter-spacing:.01em}
+.contactos .tel .v{font-size:10pt;font-weight:700;letter-spacing:.03em}
+.contactos .r{font-size:7.5pt;letter-spacing:.08em;color:var(--tinta-2);text-transform:uppercase}
+
+.qr{position:absolute;right:0;top:0;width:21mm;display:flex;flex-direction:column;align-items:flex-end}
+.qr svg{display:block;width:21mm;height:21mm;shape-rendering:crispEdges}
+/* legenda fora da zona de silêncio do QR (4 módulos ≈ 3,4 mm) */
+.qr figcaption{margin-top:3.6mm;text-align:right;line-height:1.25;white-space:nowrap}
+.qr b{display:block;font-size:7.5pt;letter-spacing:.05em}
+.qr span{display:block;font-size:7.5pt;color:var(--tinta-2)}
+
+.slot{position:absolute;left:0;right:0;bottom:0;height:13.4mm}
+.slot-rotulo{position:absolute;left:3.2mm;top:0;font-size:7.5pt;font-weight:700;letter-spacing:.16em;
+  line-height:1;color:var(--laranja-tinta)}
+.slot-campo{position:absolute;left:0;right:0;bottom:0;height:9mm}
+.slot-campo svg{position:absolute;inset:0;width:100%;height:100%}
+.slot-campo span{position:absolute;left:3.6mm;top:50%;transform:translateY(-46%);font-size:8.5pt;
+  font-weight:700;letter-spacing:.01em;line-height:1}
+
+/* ——— PROVA: impede imprimir dados por confirmar ——— */
+.prova .face::after{content:attr(data-prova);position:absolute;left:50%;top:50%;width:120mm;
+  transform:translate(-50%,-50%) rotate(-16deg);text-align:center;font:700 7.5pt/1.3 "Space Mono",monospace;
+  letter-spacing:.12em;color:#fff;background:#C8102E;padding:1.4mm 0}
+
+/* no ecrã (capturas PNG) afastar as faces para o recorte não apanhar a vizinha; na impressão não se aplica */
+@media screen{body:not(.preview) .folha{display:grid;gap:6mm;justify-content:start}}
+
+/* ——— pré-visualização (sem sangria, lado a lado) ——— */
+.preview{background:#D8D2C9;padding:14mm 12mm}
+.preview .folha{display:flex;gap:10mm;align-items:flex-start}
+.preview .corte{display:block;width:85mm;height:55mm;overflow:hidden;position:relative;
+  box-shadow:0 .6mm 1.2mm rgba(20,18,16,.18),0 3mm 7mm rgba(20,18,16,.16)}
+.preview .corte .face{position:absolute;left:-3mm;top:-3mm}
+.legenda{display:none}
+.preview .legenda{margin-top:5mm;font-size:7.5pt;letter-spacing:.14em;color:#4D4A47;display:flex;gap:10mm}
+.preview .legenda span{width:85mm}
+.guias .face::before{content:"";position:absolute;inset:3mm;outline:.1mm solid #00B4D8;z-index:5}
+.guias .safe{outline:.1mm dashed #00B4D8}
+</style>
+</head>
+<body>
+<div class="folha">
+
+<div class="corte">
+<section class="face frente" aria-label="Frente" data-prova="PROVA · FALTA: TELEFONE E DOMÍNIO">
+  <div class="safe">
+    <p class="marca"><span class="ponto"></span>PACHECO STUDIOS</p>
+    <p class="regiao">ALGARVE</p>
+    <h1 class="slogan"><span>Onde o</span><span>trabalho</span><span class="o">ganha vida</span><span>online<span class="pf" aria-hidden="true"></span><span class="so-leitor">.</span></span></h1>
+    <p class="servicos">SITES · LOJAS ONLINE · AUTOMAÇÕES</p>
+  </div>
+</section>
+</div>
+
+<div class="corte">
+<section class="face verso" aria-label="Verso" data-prova="PROVA · FALTA: TELEFONE E DOMÍNIO">
+  <div class="safe">
+    <p class="nome">TOMÁS PACHECO</p>
+    <p class="funcao">Web design e marketing digital</p>
+    <ul class="contactos">
+      <li class="tel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="v">9XX XXX XXX</span><span class="r">WhatsApp</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg><span class="v">tspacheco26@gmail.com</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg><span class="v">@pachecostudiospt</span></li>
+    </ul>
+    <figure class="qr">
+      <svg viewBox="0 0 25 25" role="img" aria-label="Código QR para https://pachecostudios.pt/c"><path fill="var(--carvao)" d="M0 0h7v1h-7zM9 0h1v1h-1zM11 0h4v1h-4zM16 0h1v1h-1zM18 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h2v1h-2zM12 1h2v1h-2zM16 1h1v1h-1zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h3v1h-3zM15 2h1v1h-1zM18 2h1v1h-1zM20 2h3v1h-3zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h1v1h-1zM12 3h2v1h-2zM18 3h1v1h-1zM20 3h3v1h-3zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h2v1h-2zM11 4h1v1h-1zM13 4h1v1h-1zM16 4h1v1h-1zM18 4h1v1h-1zM20 4h3v1h-3zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h2v1h-2zM13 5h4v1h-4zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h7v1h-7zM9 7h1v1h-1zM11 7h2v1h-2zM16 7h1v1h-1zM1 8h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM8 8h4v1h-4zM13 8h5v1h-5zM19 8h2v1h-2zM22 8h1v1h-1zM3 9h3v1h-3zM7 9h2v1h-2zM14 9h2v1h-2zM18 9h4v1h-4zM1 10h1v1h-1zM5 10h2v1h-2zM13 10h3v1h-3zM17 10h2v1h-2zM20 10h1v1h-1zM22 10h1v1h-1zM1 11h2v1h-2zM4 11h2v1h-2zM7 11h2v1h-2zM11 11h3v1h-3zM15 11h1v1h-1zM17 11h2v1h-2zM20 11h1v1h-1zM22 11h3v1h-3zM2 12h1v1h-1zM6 12h3v1h-3zM10 12h4v1h-4zM16 12h1v1h-1zM18 12h2v1h-2zM0 13h3v1h-3zM4 13h1v1h-1zM7 13h2v1h-2zM13 13h2v1h-2zM19 13h1v1h-1zM21 13h1v1h-1zM2 14h1v1h-1zM4 14h1v1h-1zM6 14h2v1h-2zM9 14h3v1h-3zM15 14h1v1h-1zM17 14h3v1h-3zM21 14h1v1h-1zM23 14h2v1h-2zM2 15h3v1h-3zM7 15h2v1h-2zM10 15h2v1h-2zM14 15h1v1h-1zM17 15h3v1h-3zM21 15h2v1h-2zM0 16h3v1h-3zM6 16h3v1h-3zM11 16h1v1h-1zM13 16h2v1h-2zM16 16h7v1h-7zM24 16h1v1h-1zM8 17h3v1h-3zM13 17h4v1h-4zM20 17h4v1h-4zM0 18h7v1h-7zM10 18h2v1h-2zM13 18h1v1h-1zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM22 18h3v1h-3zM0 19h1v1h-1zM6 19h1v1h-1zM11 19h2v1h-2zM15 19h2v1h-2zM20 19h1v1h-1zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h1v1h-1zM8 20h1v1h-1zM12 20h2v1h-2zM15 20h7v1h-7zM23 20h1v1h-1zM0 21h1v1h-1zM2 21h3v1h-3zM6 21h1v1h-1zM10 21h2v1h-2zM17 21h5v1h-5zM24 21h1v1h-1zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM11 22h3v1h-3zM16 22h1v1h-1zM19 22h1v1h-1zM21 22h3v1h-3zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h4v1h-4zM13 23h2v1h-2zM17 23h1v1h-1zM19 23h2v1h-2zM22 23h3v1h-3zM0 24h7v1h-7zM9 24h4v1h-4zM15 24h1v1h-1zM17 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1z"/></svg>
+      <figcaption><b>VER TRABALHOS</b><span>aponte a câmara</span></figcaption>
+    </figure>
+    <div class="slot">
+      <span class="slot-rotulo">O SEU SITE</span>
+      <div class="slot-campo">
+        <svg viewBox="0 0 77 9" preserveAspectRatio="none" aria-hidden="true"><rect x=".2" y=".2" width="76.6" height="8.6" rx="4.3" fill="none" stroke="var(--laranja-traco)" stroke-width=".35" stroke-dasharray="1.15 .85"/></svg>
+        <span>pachecostudios.pt/</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+</div>
+<div class="legenda"><span>FRENTE</span><span>VERSO</span></div>
+</body>
+</html>
