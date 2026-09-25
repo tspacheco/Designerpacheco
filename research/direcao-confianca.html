@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>Mostrar a máquina — a direção da Pacheco Studios</title>
+<style>
+@font-face{font-family:"Archivo Black";src:url("../marca/fontes/archivo-black-ro.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-weight:700;src:url("../marca/fontes/space-mono-700-ro.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-weight:400;src:url("../marca/fontes/inter-400-ro.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-weight:600;src:url("../marca/fontes/inter-600-ro.woff2") format("woff2")}
+:root{--carvao:#141210;--osso:#EFEAE3;--osso-2:#A5A19B;--tinta-2:#4D4A47;--laranja:#E8622C;--laranja-tinta:#A64923;--linha:rgba(20,18,16,.16);--verde:#2F6B4F;--verde-claro:#DCE9E0;--amarelo:#B7811A;--amarelo-claro:#F4E7C9}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#D8D2C9}
+body{font:400 10.5pt/1.5 "Inter",system-ui,sans-serif;color:var(--carvao)}
+.pagina{position:relative;width:210mm;height:297mm;padding:18mm 17mm 20mm;background:var(--osso);margin:0 auto 8mm;overflow:hidden;page-break-after:always;break-after:page}
+.pagina:last-child{page-break-after:auto;break-after:auto}
+@media print{html,body{background:var(--osso)}.pagina{margin:0}}
+.escura{background:var(--carvao);color:var(--osso)}
+.rodape{position:absolute;left:17mm;right:17mm;bottom:10mm;display:flex;justify-content:space-between;font:700 7.5pt/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
+.escura .rodape{color:var(--osso-2)}
+.eyebrow{font:700 8pt/1 "Space Mono",monospace;letter-spacing:.3em;text-transform:uppercase;color:var(--laranja-tinta);margin:0 0 4mm}
+.escura .eyebrow{color:var(--laranja)}
+h1,h2,h3,h4,p,ul,ol{margin:0}
+h1{font:400 34pt/1 "Archivo Black",sans-serif;text-transform:uppercase}
+h2{font:400 19pt/1.05 "Archivo Black",sans-serif;text-transform:uppercase;margin-bottom:5mm;max-width:24ch}
+h3{font:600 11.5pt/1.3 "Inter",sans-serif;margin-bottom:1.5mm}
+h4{font:700 7.5pt/1.3 "Space Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:2mm}
+p{margin-bottom:3mm;max-width:72ch}
+.lead{font-size:12pt;line-height:1.5;max-width:62ch}
+.o{color:var(--laranja)}
+.pf{display:inline-block;width:.2em;height:.2em;border-radius:50%;background:var(--laranja);margin-left:.06em}
+.capa h1{font-size:44pt;margin:22mm 0 8mm}
+.capa .lead{color:var(--osso-2)}
+.marca{display:flex;align-items:center;gap:3mm;font:700 8.5pt/1 "Space Mono",monospace;letter-spacing:.24em;text-transform:uppercase}
+.ponto{width:2.6mm;height:2.6mm;border-radius:50%;background:var(--laranja)}
+.grelha2{display:grid;grid-template-columns:1fr 1fr;gap:5mm 8mm}
+.grelha3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
+.caixa{border:1px solid var(--linha);border-radius:3mm;padding:4mm 5mm;background:rgba(255,255,255,.35)}
+.escura .caixa{border-color:rgba(239,234,227,.18);background:#1D1A17}
+.caixa h4{margin-bottom:2mm}
+.caixa p{margin-bottom:1.5mm;font-size:9.8pt}
+.caixa p:last-child{margin-bottom:0}
+.citacao{font:400 15pt/1.25 "Archivo Black",sans-serif;text-transform:uppercase;border-left:3px solid var(--laranja);padding-left:5mm;margin:5mm 0 6mm;max-width:30ch}
+.escura .citacao{color:var(--osso)}
+.num{display:grid;grid-template-columns:auto 1fr;gap:2mm 4mm;margin-bottom:3.5mm}
+.num b{font:400 15pt/1 "Archivo Black",sans-serif;color:var(--laranja-tinta)}
+.escura .num b{color:var(--laranja)}
+.num p{margin-bottom:1mm}
+.antes-depois{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:4mm}
+.antes-depois .caixa h4{color:var(--laranja-tinta)}
+.risco{color:var(--tinta-2);font-size:9.5pt}
+ul.lista{padding-left:4mm}
+ul.lista li{margin-bottom:1.6mm}
+figure{margin:0 0 4mm}
+figure img{display:block;border-radius:2mm;border:1px solid var(--linha)}
+figcaption{font:400 8.5pt/1.4 "Inter",sans-serif;color:var(--tinta-2);margin-top:1.5mm;max-width:70ch}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th,td{text-align:left;padding:2mm 2.5mm;border-bottom:1px solid var(--linha);vertical-align:top}
+th{font:700 7.5pt/1.3 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-2)}
+
+/* ——— o desenho: um fluxo como fica montado ——— */
+.desenho{display:grid;grid-template-columns:1fr 62mm;gap:6mm;margin-top:2mm}
+.legenda{display:flex;gap:4mm;flex-wrap:wrap;font:700 7pt/1 "Space Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:3mm}
+.legenda span{display:inline-flex;align-items:center;gap:1.5mm}
+.legenda i{width:3.2mm;height:3.2mm;border-radius:1mm;display:inline-block;border:1.5px solid var(--carvao)}
+.fluxo{list-style:none;padding:0;margin:0;position:relative}
+.fluxo li{position:relative;padding:0 0 3.2mm 9mm}
+.fluxo li::before{content:"";position:absolute;left:2.9mm;top:0;bottom:0;border-left:2px dotted var(--laranja)}
+.fluxo li:first-child::before{top:3mm}
+.fluxo li:last-child::before{bottom:auto;height:3mm}
+.fluxo li::after{content:"";position:absolute;left:1.6mm;top:2.2mm;width:2.8mm;height:2.8mm;border-radius:50%;background:var(--laranja)}
+.no{border:1.5px solid var(--carvao);border-radius:2mm;padding:2.4mm 3mm;background:#fff;font-size:9.2pt;line-height:1.35}
+.no b{display:block;font-weight:600;margin-bottom:.4mm}
+.no small{display:block;color:var(--tinta-2);font-size:8.2pt}
+.gatilho .no{background:var(--amarelo-claro);border-color:var(--amarelo)}
+.pessoa .no{background:var(--verde-claro);border-color:var(--verde)}
+.decisao .no{border-style:dashed}
+.ramos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2mm;margin-top:2mm}
+.ramos .no{font-size:8.4pt}
+.lado .caixa{margin-bottom:2.6mm;padding:3mm 3.5mm}
+.lado .caixa p{font-size:8.6pt;margin-bottom:1mm}
+.lado .caixa h4{margin-bottom:1.4mm}
+.msg{background:#fff;border:1px solid var(--linha);border-radius:3mm;padding:2.4mm 3mm;font-size:8.6pt;line-height:1.35;margin-bottom:1.6mm}
+.msg.ia{background:#E7F1EA;margin-right:6mm}
+.msg.cli{background:#F2E9DF;margin-left:6mm}
+.msg small{display:block;font:700 6.5pt/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:1mm}
+</style>
+</head>
+<body>
+
+<section class="pagina escura capa">
+  <div class="marca"><span class="ponto"></span>Pacheco Studios</div>
+  <p class="eyebrow" style="margin-top:30mm">Direção de mercado · 26/09/2026</p>
+  <h1>Mostrar<br>a máquina<span class="pf"></span></h1>
+  <p class="lead">Como a Pacheco Studios ganha a confiança de quem não entende a IA e desconfia dela: não pela dor, não pela promessa, mas por mostrar como as coisas são feitas. A visão do Tomás, desenvolvida e posta em prática.</p>
+  <div class="rodape"><span>Mostrar a máquina</span><span>1</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">1 · O diagnóstico</p>
+  <h2>O obstáculo não é a dor. É a confiança.</h2>
+  <p class="lead">O dono de um restaurante já sabe que perde chamadas ao almoço. Já sabe que a cadeira das quatro ficou vazia. A página das automatizações mostra-lhe isso e ele concorda com a cabeça. E depois não liga. Porquê?</p>
+  <div class="grelha3" style="margin:6mm 0">
+    <div class="caixa"><h4>Não sabe o que é</h4><p>«IA» é uma palavra de televisão. Não sabe de onde vem, onde corre, quem manda nela. O que não se entende, teme-se.</p></div>
+    <div class="caixa"><h4>Não tem provas</h4><p>Nós ainda não temos sistemas a correr para mostrar. Sem provas, o que resta é a nossa palavra. E a nossa palavra é a de quem quer vender.</p></div>
+    <div class="caixa"><h4>Tem de dar um ato de fé</h4><p>Ligar é assumir um risco no escuro: dinheiro, tempo, e o medo de fazer figura de parvo com os clientes dele.</p></div>
+  </div>
+  <p class="citacao">Vender pela dor pede fé.<br>Vender pela transparência pede lógica.</p>
+  <p>Identificar a dor continua a ser o gancho: é o que faz o dono parar de ler. Mas depois do gancho tem de vir a razão para confiar. E a razão não pode ser um resultado que não podemos provar; tem de ser algo que ele consiga <b>ver e julgar sozinho</b>: como a coisa funciona, que regras segue, quem decide o quê, o que ele vai ver na primeira semana.</p>
+  <p>É exatamente o que a proposta para o ginásio Be Legend faz (página 5): o fluxo desenhado, caixa a caixa, com os momentos em que entra uma pessoa a verde. Quem lê aquilo não precisa de acreditar em IA. Percebe que é lógica: se aconteceu X, faz-se Y; se ninguém responde em 24 horas, segundo toque. Isso qualquer dono de negócio entende, porque é assim que ele próprio pensa.</p>
+  <div class="caixa" style="margin-top:4mm"><h4>Três coisas que a confiança precisa</h4>
+    <div class="num"><b>1</b><p><b>Competência:</b> «este tipo sabe fazer isto». Prova-se com o desenho do sistema, não com adjetivos.</p></div>
+    <div class="num"><b>2</b><p><b>Transparência:</b> «vejo como funciona e o que não faz». Prova-se com as regras em linguagem simples e com o registo de tudo o que a máquina faz.</p></div>
+    <div class="num" style="margin-bottom:0"><b>3</b><p><b>Controlo:</b> «mando eu». Prova-se com o dono a aprovar cada texto, a poder parar tudo com uma palavra, e a ver os números todas as semanas.</p></div>
+  </div>
+  <div class="rodape"><span>Mostrar a máquina</span><span>2</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">2 · A explicação</p>
+  <h2>O que é a IA, dito a um dono de negócio.</h2>
+  <p class="lead">Uma explicação só, sempre a mesma, no site, na página romena, no cartão e à mesa. Sem «modelos», «tokens» ou «agentes». Cinco frases.</p>
+  <div class="caixa" style="margin:5mm 0">
+    <div class="num"><b>1</b><p><b>Lê e escreve texto</b>, como uma pessoa muito rápida que nunca se cansa. É só isso que faz. Não «pensa» por ti, não decide nada sozinha.</p></div>
+    <div class="num"><b>2</b><p><b>As regras são nossas e tuas.</b> Nós desenhamos o que acontece em cada situação («se não responde em 24 h, segundo toque»). Tu aprovas cada texto que ela pode enviar. Ela escolhe entre respostas aprovadas; não inventa preços nem promessas.</p></div>
+    <div class="num"><b>3</b><p><b>Corre nas tuas contas.</b> O WhatsApp é o teu, a agenda é a tua, o Google é o teu. Os dados dos teus clientes ficam onde já estavam.</p></div>
+    <div class="num"><b>4</b><p><b>Tudo fica registado.</b> Cada mensagem que enviou, a que horas, a quem, e o que respondeu. Podes ler tudo, quando quiseres.</p></div>
+    <div class="num" style="margin-bottom:0"><b>5</b><p><b>Quando sai da rotina, entra uma pessoa.</b> Uma pergunta que não sabe, um cliente zangado, uma reserva estranha: passa para ti ou para nós, com a conversa inteira. A máquina trata do repetitivo; as pessoas tratam do resto.</p></div>
+  </div>
+  <p>Repara que nenhuma destas frases promete um resultado. Todas descrevem um mecanismo. É por isso que se pode dizê-las a um estranho sem corar, hoje, sem um único cliente a correr.</p>
+  <h3 style="margin-top:6mm">As objeções, e o que se responde</h3>
+  <table>
+    <thead><tr><th style="width:38%">O dono diz</th><th>Nós respondemos (com o desenho na mão)</th></tr></thead>
+    <tbody>
+      <tr><td>«E se a IA responder uma asneira ao meu cliente?»</td><td>Só responde com textos que tu aprovaste. O que não sabe, não responde: passa-te a conversa. E fica tudo gravado para ler.</td></tr>
+      <tr><td>«Os meus clientes não gostam de falar com robôs.»</td><td>Ela trata do que é rotina: horário, morada, «têm mesa para quatro?». Em tudo o resto entra uma pessoa. E não se faz passar por ti: se perguntarem, diz o que é.</td></tr>
+      <tr><td>«Isto é caro e complicado.»</td><td>O desenho tem seis caixas. Montamos uma automatização de cada vez, na tua conta de WhatsApp, e tu vês o painel semanal. O preço combina-se pelo desenho, não pela palavra «IA».</td></tr>
+      <tr><td>«E se não resultar?»</td><td>Combinamos antes o que vamos medir (chamadas respondidas, faltas, avaliações). Vês os números todas as semanas. Se não te servir, desliga-se com uma mensagem.</td></tr>
+      <tr><td>«Já vi disto na televisão, é para as grandes.»</td><td>As grandes usam exatamente isto: lembretes de marcação, pedidos de avaliação, resposta automática. A diferença é que aqui é montado para o teu balcão e tem o meu número ao lado.</td></tr>
+    </tbody>
+  </table>
+  <div class="rodape"><span>Mostrar a máquina</span><span>3</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">3 · O princípio</p>
+  <h2>Vender o plano, não a promessa.</h2>
+  <p class="lead">O produto que se mostra deixa de ser «uma automatização» e passa a ser <b>o plano de uma automatização</b>: desenhado, com regras, com os pontos de entrada de uma pessoa e com o que se vai medir. O dono compra um plano que percebeu, não uma tecnologia que teme.</p>
+  <div class="antes-depois">
+    <div class="caixa"><h4>Hoje (página romena, versão 1)</h4>
+      <p><b>Gancho:</b> a dor, na voz do dono. ✓</p>
+      <p><b>Depois:</b> «como funciona» em quatro frases, «o que obténs», «o que precisas».</p>
+      <p><b>O que falta:</b> ver a máquina. As quatro frases pedem que se acredite. Não há desenho, não há regras, não há «quem decide», não há nada para experimentar.</p>
+      <p class="risco">Resultado: o dono concorda com a dor e adia a decisão.</p>
+    </div>
+    <div class="caixa"><h4>Com a direção nova (versão 2)</h4>
+      <p><b>Gancho:</b> a mesma dor. ✓</p>
+      <p><b>O desenho:</b> o fluxo como fica montado, caixa a caixa, cores por tipo (gatilho, automático, pessoa, decisão).</p>
+      <p><b>As regras:</b> três ou quatro frases «se… então…» em linguagem de balcão.</p>
+      <p><b>Quem decide o quê:</b> o dono aprova os textos, a máquina escolhe entre eles, a pessoa entra no resto.</p>
+      <p><b>O que vais ver:</b> a mensagem real que o cliente recebe e o painel da primeira semana.</p>
+      <p><b>Experimenta agora:</b> um número de WhatsApp onde a recepcionista responde em dois minutos.</p>
+    </div>
+  </div>
+  <h3 style="margin-top:6mm">Porque é que funciona</h3>
+  <ul class="lista">
+    <li><b>Torna o invisível visível.</b> A IA deixa de ser uma nuvem e passa a ser seis caixas com setas. O medo vive no que não se vê.</li>
+    <li><b>Mostra lógica, não magia.</b> «Se não respondeu em 24 h, segundo toque» é o mesmo raciocínio que o dono usa quando manda o empregado ligar a quem reservou e não apareceu.</li>
+    <li><b>Dá-lhe o lápis.</b> Quando o dono olha para o desenho, corrige: «às segundas estamos fechados», «o toque 3 é agressivo demais». Nesse momento o plano passa a ser dele. Ninguém adia o que já é seu.</li>
+    <li><b>Muda quem tu és na conversa.</b> Quem mostra o desenho é o engenheiro que sabe fazer. Quem só fala da dor é o vendedor que quer o sim.</li>
+    <li><b>Não precisa de resultados que ainda não temos.</b> Um plano honesto e completo é uma prova de competência por si. É o que se pode mostrar hoje, sem inventar nada.</li>
+  </ul>
+  <div class="rodape"><span>Mostrar a máquina</span><span>4</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">4 · O modelo</p>
+  <h2>A proposta Be Legend é o padrão.</h2>
+  <div style="display:grid;grid-template-columns:78mm 1fr;gap:7mm;align-items:start">
+    <figure><img src="img/proposta-be-legend.jpg" style="width:78mm" alt="Página 4 da proposta de follow-up e recuperação de clientes para o Be Legend Olhão: o fluxo desenhado com caixas, setas e cores por tipo de passo."><figcaption>Proposta «Follow-up & Recuperação de Clientes · Be Legend Olhão», página 4: «Como o fluxo corre, passo a passo». Cada caixa é um passo automático; as verdes são os únicos momentos em que uma pessoa entra.</figcaption></figure>
+    <div>
+      <p>Esta página vale mais do que qualquer texto sobre IA, e é ela que define o padrão de tudo o que se mostra daqui para a frente:</p>
+      <ul class="lista">
+        <li><b>Um gatilho claro</b> (todos os dias às 9:00) com cor própria.</li>
+        <li><b>Decisões visíveis</b> («respondeu?») a tracejado, com o sim e o não.</li>
+        <li><b>Esperas explícitas</b> (24 h, 4 dias, 3 dias): o dono vê o ritmo e pode discordar dele.</li>
+        <li><b>A pessoa a verde:</b> «lista da receção», «resultado registado». Fica claro quando é a máquina e quando é gente.</li>
+        <li><b>O paralelo</b> («resposta recebida, a qualquer hora») separado, para não confundir o fio principal.</li>
+        <li><b>Um fim:</b> painel semanal e pausa de três semanas. Não é infinito nem agressivo.</li>
+      </ul>
+      <p style="margin-top:3mm">É a diferença entre «temos um sistema de follow-up com IA» e «é isto que acontece com cada contacto do teu ginásio». O segundo não pede fé.</p>
+    </div>
+  </div>
+  <h3 style="margin-top:4mm">Formato-padrão de qualquer proposta a partir de agora</h3>
+  <table>
+    <thead><tr><th style="width:26%">Página</th><th>O que tem</th></tr></thead>
+    <tbody>
+      <tr><td>Capa</td><td>Nome do negócio, o que se propõe numa frase, data.</td></tr>
+      <tr><td>A dor</td><td>Nas palavras do dono, tal como as disse na conversa. Duas ou três frases, sem números inventados.</td></tr>
+      <tr><td>O fluxo desenhado</td><td>Como o da Be Legend. Gatilho, passos, decisões, esperas, pessoa a verde, fim.</td></tr>
+      <tr><td>As regras</td><td>As frases «se… então…» que a máquina segue. O que nunca faz.</td></tr>
+      <tr><td>O que medimos</td><td>Três números, combinados com o dono, vistos no painel semanal.</td></tr>
+      <tr><td>O que precisa do dono</td><td>Contas, acessos, os textos para aprovar, uma hora da sua parte.</td></tr>
+      <tr><td>Preço e arranque</td><td>Pelo desenho, não pela palavra «IA». Como se desliga.</td></tr>
+    </tbody>
+  </table>
+  <div class="rodape"><span>Mostrar a máquina</span><span>5</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">5 · Como fica na página</p>
+  <h2>Uma automatização, mostrada como deve ser.</h2>
+  <div class="legenda"><span><i style="background:var(--amarelo-claro);border-color:var(--amarelo)"></i>gatilho</span><span><i style="background:#fff"></i>automático</span><span><i style="background:var(--verde-claro);border-color:var(--verde)"></i>pessoa</span><span><i style="background:#fff;border-style:dashed"></i>decisão</span></div>
+  <div class="desenho">
+    <div>
+      <h4>Recepcionista no WhatsApp · o fluxo como fica montado</h4>
+      <ol class="fluxo">
+        <li class="gatilho"><div class="no"><b>Chamada perdida ou mensagem no WhatsApp</b><small>a qualquer hora, incluindo fora do horário</small></div></li>
+        <li><div class="no"><b>Responde em 5 segundos com o texto aprovado pelo dono</b><small>«Olá! Aqui é o Restaurantul X. Em que posso ajudar?»</small></div></li>
+        <li class="decisao"><div class="no"><b>Percebe o que a pessoa quer</b><small>horário · morada · ementa · reserva · outra coisa</small>
+          <div class="ramos">
+            <div class="no"><b>Rotina</b><small>responde da lista de respostas aprovadas</small></div>
+            <div class="no"><b>Reserva</b><small>pergunta pessoas e hora, escreve na agenda, confirma</small></div>
+            <div class="no" style="background:var(--verde-claro);border-color:var(--verde)"><b>Outra coisa</b><small>passa a conversa inteira ao dono, num toque</small></div>
+          </div></div></li>
+        <li><div class="no"><b>Regista o cliente na lista</b><small>nome, telefone, o que pediu, data</small></div></li>
+        <li class="pessoa"><div class="no"><b>Painel de segunda-feira</b><small>chamadas respondidas · reservas feitas · o que a máquina não soube (para acrescentar à lista)</small></div></li>
+      </ol>
+    </div>
+    <div class="lado">
+      <div class="caixa"><h4>As regras (em linguagem de balcão)</h4>
+        <p>• Nunca inventa preços: só diz o que está na lista aprovada.</p>
+        <p>• Não sabe? Não responde. Passa a uma pessoa.</p>
+        <p>• Fora de horas diz quando abre e regista o pedido.</p>
+        <p>• Se perguntarem, diz que é um assistente automático.</p>
+        <p>• Cada mensagem fica gravada. O dono lê quando quiser.</p>
+      </div>
+      <div class="caixa"><h4>Quem decide o quê</h4>
+        <p><b>Dono:</b> aprova os textos, a agenda, o horário. Pode parar tudo com uma palavra.</p>
+        <p><b>Máquina:</b> escolhe entre respostas aprovadas, escreve na agenda, regista.</p>
+        <p><b>Pacheco Studios:</b> desenha, monta, afina com o painel.</p>
+      </div>
+      <div class="caixa"><h4>O que o cliente vê</h4>
+        <div class="msg cli"><small>Cliente · 13:42</small>Têm mesa para 4 hoje às 20h?</div>
+        <div class="msg ia"><small>Restaurantul X · 13:42</small>Temos, sim. Fica em nome de quem? Confirmo já a reserva das 20:00 para 4 pessoas.</div>
+      </div>
+      <div class="caixa" style="background:var(--carvao);color:var(--osso);border-color:var(--carvao)"><h4 style="color:var(--laranja)">Experimenta agora</h4><p style="color:var(--osso)">Escreve «olá» para o número da demo e fala com a recepcionista de um restaurante que não existe. Dois minutos.</p></div>
+    </div>
+  </div>
+  <div class="rodape"><span>Mostrar a máquina</span><span>6</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">6 · As provas possíveis hoje</p>
+  <h2>Sem clientes a correr, com provas a sério.</h2>
+  <p class="lead">Não precisamos de resultados de clientes para dar confiança. Precisamos de coisas que o dono possa ver, tocar e julgar. Estas existem ou fazem-se em dias, e nenhuma mente.</p>
+  <div class="num"><b>1</b><p><b>A demo que responde.</b> Um número de WhatsApp com a recepcionista de um restaurante fictício («Restaurantul Demo»). O dono escreve à mesa, à frente de nós, e vê a máquina responder, marcar, e passar-nos a conversa quando não sabe. É a prova mais forte que existe e monta-se com o que já temos (WhatsApp Cloud API + n8n + Claude, o mesmo desenho do sistema da Dra. Angélica). Uma demo por automatização, a começar pela recepcionista.</p></div>
+  <div class="num"><b>2</b><p><b>Os planos desenhados, publicados.</b> A proposta Be Legend e mais duas ou três (uma por tipo de negócio) na página, como «planos que já desenhámos». Um dono que lê um plano feito para um ginásio percebe o que receberia para o restaurante dele.</p></div>
+  <div class="num"><b>3</b><p><b>O diário de construção.</b> Por cada automatização, três capturas de bastidores: o fluxo no n8n, a tabela onde ficam os registos, a mensagem real a chegar a um telemóvel. Com uma legenda de uma linha. Mostra que é trabalho, não truque.</p></div>
+  <div class="num"><b>4</b><p><b>O piloto com números combinados.</b> Uma automatização, trinta dias, três números escolhidos com o dono antes de começar. Painel semanal. Se não servir, desliga-se. (As condições de preço do piloto são decisão tua; o formato é este.)</p></div>
+  <div class="num"><b>5</b><p><b>A cara.</b> Já está no site: «dou a cara por isso», resposta no próprio dia. Reforça-se com a foto e com o telefone em todo o lado. Confia-se em pessoas, não em estúdios.</p></div>
+  <div class="caixa" style="margin-top:5mm;border-color:var(--laranja)"><h4 style="color:var(--laranja-tinta)">O que nunca se faz</h4>
+    <p>Percentagens de resultados que não medimos. Testemunhos que não existem. «Casos de sucesso» de demos. Logótipos de quem não é cliente. Dizer que a máquina «entende» ou «pensa». Esconder que é um assistente automático quando o cliente pergunta. Uma só destas deita abaixo tudo o que a transparência construiu.</p>
+  </div>
+  <div class="rodape"><span>Mostrar a máquina</span><span>7</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">7 · A conversa</p>
+  <h2>Como se vende com o desenho na mão.</h2>
+  <div class="grelha2">
+    <div class="caixa"><h4>1 · Ouvir a dor (5 min)</h4><p>Perguntas, não apresentação. «Quantas chamadas perdes ao almoço?» «Quem responde ao Instagram?» «Quando é que soubeste que a mesa das oito não vinha?» Escrever as frases dele tal como as diz.</p></div>
+    <div class="caixa"><h4>2 · Desenhar o fluxo à frente dele (10 min)</h4><p>Numa folha ou no tablet: o gatilho, três passos, onde entra ele. Perguntar «e aqui, o que querias que acontecesse?». Deixar que corrija. O plano passa a ser dele.</p></div>
+    <div class="caixa"><h4>3 · Mostrar a demo no telemóvel dele (2 min)</h4><p>«Escreve para este número.» Vê a resposta em cinco segundos. Pede uma reserva. Faz uma pergunta difícil e vê a conversa chegar ao nosso telemóvel.</p></div>
+    <div class="caixa"><h4>4 · Combinar o piloto (5 min)</h4><p>Uma automatização, os três números que vamos medir, o que precisamos dele (contas, textos para aprovar, uma hora). A proposta em PDF no formato-padrão chega no mesmo dia.</p></div>
+  </div>
+  <p class="citacao" style="margin-top:7mm">«Nu promitem. Arătăm.»<br>já é esta direção.</p>
+  <p>O cartão diz «não prometemos, mostramos». A página tem de cumprir o que o cartão diz: quem aponta a câmara vê sites reais e, nas automatizações, vê a máquina. Se a página só descrevesse, o cartão estaria a mentir.</p>
+  <div class="rodape"><span>Mostrar a máquina</span><span>8</span></div>
+</section>
+
+<section class="pagina escura">
+  <p class="eyebrow">8 · O que muda, e quando</p>
+  <h2 style="color:var(--osso)">Três fases. A primeira começa já.</h2>
+  <div class="num"><b>1</b><p><b>Esta semana — a página mostra a máquina.</b> As oito automatizações da página romena ganham o desenho do fluxo, as regras, «quem decide o quê» e a mensagem que o cliente vê. Publicam-se os planos desenhados (Be Legend e mais dois). Versão portuguesa para rever.</p></div>
+  <div class="num"><b>2</b><p><b>Duas semanas — a demo que responde.</b> A recepcionista do «Restaurantul Demo» num número de WhatsApp: WhatsApp Cloud API + n8n + Claude, lista de respostas aprovadas, agenda de teste, passagem a pessoa. Depois, a segunda demo (marcações e lembretes). A página ganha «Experimenta agora».</p></div>
+  <div class="num"><b>3</b><p><b>Primeiro piloto — e o diário.</b> Um negócio, uma automatização, trinta dias, três números. Publicam-se as capturas dos bastidores e o painel (com autorização e sem dados dos clientes dele). A partir daqui, as provas passam a ser reais e acumulam.</p></div>
+  <div class="caixa" style="margin-top:6mm"><h4 style="color:var(--laranja)">O que fica escrito no playbook (secção 16)</h4>
+    <p style="color:var(--osso)">O obstáculo é a confiança, não a dor · vendemos o plano, não a promessa · toda a automatização mostra-se com o fluxo desenhado, as regras e quem decide o quê · a explicação da IA é sempre a mesma, em cinco frases · provas: demo viva, planos publicados, diário de construção, piloto medido · nunca números inventados, testemunhos falsos ou casos que não existem · formato-padrão das propostas: o da Be Legend.</p>
+  </div>
+  <p style="margin-top:8mm;color:var(--osso-2);max-width:66ch">Nada disto exige clientes a correr para começar. Exige desenhar bem, explicar simples e deixar o dono ver. É trabalho, e é lógica pura. O resto vem atrás.</p>
+  <div class="rodape"><span>Mostrar a máquina</span><span>9</span></div>
+</section>
+
+</body>
+</html>

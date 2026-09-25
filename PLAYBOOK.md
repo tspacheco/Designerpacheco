@@ -1,7 +1,7 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 25/09/2026 (marca própria: cartão em romeno + ro.pachecost.com, a página do QR — secção 15)
+> Última atualização: 26/09/2026 (direção de mercado «mostrar a máquina» — secção 16; marca própria — secção 15)
 
 ## 0. COMO USAR
 
@@ -296,3 +296,14 @@ Identidade já usada no Instagram (@pachecostudiospt), agora também no cartão 
 - **Impressão:** 85 × 55 mm, papel mate 350–400 g (sem brilho: o QR não reflete).
 - **Página do QR (ro.pachecost.com):** os sites do portefólio são copiados para `/p/<slug>/` no zip (com `noindex` e o botão «Înapoi» injetados pelo gerador) — não dependem de outros Netlify. Os quadrados são só CSS: nome no tipo de letra do site (Google Fonts) sobre as cores dele; nada de capturas. As 8 automatizações estão em `conteudo/ro.json` com a dor, 4 passos, o que ganha, o que precisa e com quais combina; as ligações entre elas abrem o cartão apontado sem sair da vista. Os separadores funcionam sem JavaScript (`:target` + `:has()`). Fontes da marca embutidas em subconjunto latin + romeno (`marca/fontes/*-ro.woff2`, feitas com fontTools a partir do TTF do Google Fonts — pedir o CSS com um User-Agent de Android 2.2 para vir TTF). O gerador recusa-se a fazer o PDF final enquanto faltar o telefone ou o domínio, e faz só a versão com faixa "PROVA".
 - **Capturas de sites para mostrar trabalhos:** Playwright com `reducedMotion: 'reduce'` (estado final sem animações), esconder `.pv-banner` e pedir as fontes do Google pelo lado Node (`route.fetch()`). O Chromium desta sessão não confia no proxy e sem isto as capturas saem com fontes de sistema.
+
+## 16. DIREÇÃO DE MERCADO: MOSTRAR A MÁQUINA (novo — 26/09/2026)
+
+Decisão do Tomás, a aplicar em tudo o que a Pacheco Studios faz daqui para a frente. Documento completo em `research/direcao-confianca.pdf`.
+
+- **O obstáculo não é a dor, é a confiança.** O dono já sente a dor. O que o trava é não saber o que a IA é, não ter provas e ter de dar um «ato de fé». Vender só pela dor pede fé; vender pela transparência pede lógica.
+- **Vendemos o plano, não a promessa.** Cada automatização mostra-se com o **fluxo desenhado** (como a proposta Be Legend: cada caixa um passo, gatilho, decisões, e os momentos em que entra uma pessoa), as **regras em linguagem simples** («se não responde em 24 h → toque 2»), **quem decide o quê** (o dono aprova os textos, a IA só escolhe entre respostas aprovadas, o que não sabe vai para uma pessoa) e **o que se vai medir** na primeira semana.
+- **Prova sem clientes a correr:** (1) demo viva no WhatsApp — o dono escreve para um número e a recepcionista de um restaurante fictício responde; (2) propostas-desenho publicadas como exemplos; (3) diário de construção (capturas dos bastidores: n8n, tabela, mensagem real); (4) piloto de 30 dias com métricas combinadas. **Nunca** números de resultados inventados, testemunhos falsos ou «casos» que não existem.
+- **A explicação da IA a um dono de negócio** (usar sempre a mesma): lê e escreve texto como uma pessoa muito rápida; não decide sozinha — as regras são nossas e do dono; corre nas contas dele (WhatsApp, agenda, Google); cada mensagem fica registada e pode ser lida; entra uma pessoa em tudo o que sai da rotina.
+- **Formato-padrão das propostas:** capa · a dor nas palavras do dono · o fluxo desenhado · as regras · o que medimos · o que precisa do dono · preço. É o formato de `research/img/proposta-be-legend.jpg`.
+- **Onde se aplica:** página RO (`sites/pacheco-studios/`, cada automatização ganha o bloco «Cum e construit» + «Cine decide ce» + «Încearcă acum»), pachecost.com (secção «como é feito», ver `research/pachecost-fraquezas.pdf`), cartão (a frase «Nu promitem. Arătăm.» já está nesta linha), conversas de venda (ouvir a dor → desenhar o fluxo à frente do dono → demo no telemóvel dele → piloto).

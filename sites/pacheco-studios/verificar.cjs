@@ -116,6 +116,8 @@ const fs = require('fs');
 
   // quadrados: cada ligação tem de existir em dist/ (ou ser externa)
   const hrefs = await p.$$eval('.grelha .q', as => as.map(a => a.getAttribute('href')));
+  const externosSemNovoSep = await p.$$eval('.grelha .q[href^=http]', as => as.filter(a => a.target !== '_blank').length);
+  if (externosSemNovoSep) mal(`${externosSemNovoSep} ligações externas sem target=_blank`);
   let faltam = 0;
   for (const h of hrefs) {
     if (h.startsWith('#')) continue;
@@ -126,7 +128,7 @@ const fs = require('fs');
   if (!faltam) bem(`${hrefs.length} quadrados, todas as ligações existem`);
 
   // botão «Înapoi» dentro de um site copiado
-  await p.click('.grelha .q');
+  await p.click('.grelha .q[href^="/p/"]');
   await p.waitForLoadState('load');
   const url1 = p.url();
   const temPilula = await p.$('#ps-inapoi');

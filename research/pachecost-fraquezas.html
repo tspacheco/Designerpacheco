@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>pachecost.com — fraquezas atuais</title>
+<style>
+@font-face{font-family:"Archivo Black";src:url("../marca/fontes/archivo-black-ro.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-weight:700;src:url("../marca/fontes/space-mono-700-ro.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-weight:400;src:url("../marca/fontes/inter-400-ro.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-weight:600;src:url("../marca/fontes/inter-600-ro.woff2") format("woff2")}
+:root{--carvao:#141210;--osso:#EFEAE3;--osso-2:#A5A19B;--tinta-2:#4D4A47;--laranja:#E8622C;--laranja-tinta:#A64923;--linha:rgba(20,18,16,.16);--verde:#2F6B4F;--amarelo:#B7811A}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#D8D2C9}
+body{font:400 10.5pt/1.5 "Inter",system-ui,sans-serif;color:var(--carvao)}
+.pagina{position:relative;width:210mm;height:297mm;padding:18mm 17mm 20mm;background:var(--osso);margin:0 auto 8mm;overflow:hidden;page-break-after:always;break-after:page}
+.pagina:last-child{page-break-after:auto;break-after:auto}
+@media print{html,body{background:var(--osso)}.pagina{margin:0}}
+.escura{background:var(--carvao);color:var(--osso)}
+.rodape{position:absolute;left:17mm;right:17mm;bottom:10mm;display:flex;justify-content:space-between;font:700 7.5pt/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
+.escura .rodape{color:var(--osso-2)}
+.eyebrow{font:700 8pt/1 "Space Mono",monospace;letter-spacing:.3em;text-transform:uppercase;color:var(--laranja-tinta);margin:0 0 4mm}
+.escura .eyebrow{color:var(--laranja)}
+h1,h2,h3,p,ul,ol{margin:0}
+h1{font:400 34pt/1 "Archivo Black",sans-serif;text-transform:uppercase;letter-spacing:.003em}
+h2{font:400 19pt/1.05 "Archivo Black",sans-serif;text-transform:uppercase;margin-bottom:5mm;max-width:22ch}
+h3{font:600 11.5pt/1.3 "Inter",sans-serif;margin-bottom:1.5mm}
+p{margin-bottom:3mm}
+.lead{font-size:11.2pt;line-height:1.5;max-width:64ch}
+.mono{font:700 8pt/1.4 "Space Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.o{color:var(--laranja)} .escura .o{color:var(--laranja)}
+.pf{display:inline-block;width:.2em;height:.2em;border-radius:50%;background:var(--laranja);margin-left:.06em}
+.capa h1{font-size:44pt;margin:22mm 0 8mm}
+.capa .lead{color:var(--osso-2)}
+.marca{display:flex;align-items:center;gap:3mm;font:700 8.5pt/1 "Space Mono",monospace;letter-spacing:.24em;text-transform:uppercase}
+.ponto{width:2.6mm;height:2.6mm;border-radius:50%;background:var(--laranja)}
+.grelha2{display:grid;grid-template-columns:1fr 1fr;gap:5mm 8mm}
+.caixa{border:1px solid var(--linha);border-radius:3mm;padding:4mm 5mm;background:rgba(255,255,255,.35)}
+.caixa .mono{color:var(--tinta-2);margin-bottom:2mm;display:block}
+.num{display:grid;grid-template-columns:auto 1fr;gap:2mm 4mm;margin-bottom:4mm}
+.num b{font:400 15pt/1 "Archivo Black",sans-serif;color:var(--laranja-tinta)}
+.num p{margin-bottom:1.5mm}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th,td{text-align:left;padding:1.6mm 2.5mm;border-bottom:1px solid var(--linha);vertical-align:top}
+th{font:700 7.5pt/1.3 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-2)}
+td.p{white-space:nowrap;font:700 7.5pt/1.3 "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.alta{color:#B3261E}.media{color:var(--amarelo)}.baixa{color:var(--verde)}
+.item{display:grid;grid-template-columns:14mm 1fr;gap:4mm;padding:3.5mm 0;border-top:1px solid var(--linha)}
+.item:first-of-type{border-top:2px solid var(--carvao)}
+.item .n{font:400 20pt/1 "Archivo Black",sans-serif;color:var(--laranja-tinta)}
+.item h3{margin-bottom:1mm}
+.item .tag{display:inline-block;margin-left:2mm;vertical-align:middle;font:700 7pt/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;padding:1.2mm 2mm 1mm;border-radius:99px;border:1.5px solid currentColor}
+.item p{margin-bottom:1.5mm;max-width:70ch}
+.item .prova{font-size:9pt;color:var(--tinta-2)}
+.item .prova b{color:var(--carvao);font-weight:600}
+figure{margin:0 0 4mm}
+figure img{width:100%;display:block;border-radius:2mm;border:1px solid var(--linha)}
+figcaption{font:400 8.5pt/1.4 "Inter",sans-serif;color:var(--tinta-2);margin-top:1.5mm}
+.bem li,.lista li{margin-bottom:1mm}
+.caixa ul{font-size:9.6pt}
+ul.lista,ul.bem{padding-left:4mm}
+.nota{border-left:3px solid var(--laranja);padding-left:4mm;margin:4mm 0;max-width:70ch}
+.nota p{margin:0}
+</style>
+</head>
+<body>
+
+<section class="pagina escura capa">
+  <div class="marca"><span class="ponto"></span>Pacheco Studios</div>
+  <p class="eyebrow" style="margin-top:30mm">Análise interna · 26/09/2026</p>
+  <h1>pachecost.com<br>as fraquezas<br>de hoje<span class="pf"></span></h1>
+  <p class="lead">O que trava o site principal antes da direção nova. Só análise: nada foi alterado. Cada ponto tem a prova, a prioridade e o que ganharias ao corrigir.</p>
+  <div class="rodape"><span>pachecost.com · fraquezas</span><span>1</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">Em resumo</p>
+  <h2>A casa está bem construída. Falta o que convence quem entra.</h2>
+  <p class="lead">Tecnicamente, o site está acima da média: leve, rápido, com SEO de base e RGPD tratados. O problema é de conversão e de confiança: promete «inteligência artificial» e «sites de nível cinematográfico», mas não mostra nem um agente a funcionar, nem uma captura de um site, nem um número, nem uma cara. Para um dono de restaurante, o site descreve um estúdio; não lhe diz o que acontece se ligar.</p>
+  <div class="grelha2" style="margin-top:6mm">
+    <div class="caixa"><span class="mono">O que está bem — não mexer</span>
+      <ul class="bem">
+        <li><b>Leve e rápido:</b> 327 KB e 10 pedidos no total; primeiro conteúdo grande aos 0,6 s; quase sem saltos de layout (CLS 0,03).</li>
+        <li><b>Resiste sem JavaScript</b> (95 % do texto visível) e <b>respeita «movimento reduzido»</b> (98 % visível, zero animações).</li>
+        <li><b>SEO de base:</b> título, descrição, Open Graph, JSON-LD ProfessionalService, sitemap, robots, 404 real, política de privacidade.</li>
+        <li><b>Identidade forte e coerente:</b> Cossette Titre + Space Mono + Inter Tight, preto e âmbar. Vale a pena manter.</li>
+        <li><b>PT/EN</b> a funcionar no essencial; contactos diretos (WhatsApp, telefone, email) sempre à mão.</li>
+      </ul>
+    </div>
+    <div class="caixa"><span class="mono">Onde perde clientes</span>
+      <ul class="lista">
+        <li><b>Promessa sem prova:</b> nenhum exemplo visível de IA ou automação, nenhuma imagem de site, nenhum resultado.</li>
+        <li><b>Posicionamento demasiado largo:</b> cinco frentes e «qualquer setor». O dono de um café não se vê ali.</li>
+        <li><b>Primeiro ecrã no telemóvel:</b> o aviso de cookies (de um pixel que ainda nem está ligado) tapa o botão principal; o H1 aparece ao fim de 1 s; letras a 9–11 px.</li>
+        <li><b>Partilha no WhatsApp sem imagem:</b> não há <code>og:image</code>. Num negócio que vive do WhatsApp, é o cartão de visita que falta.</li>
+        <li><b>O método real não está no site:</b> «fazemos primeiro, pagas se gostares» é o que fecha vendas à porta e não aparece em lado nenhum.</li>
+      </ul>
+    </div>
+  </div>
+  <table style="margin-top:6mm">
+    <thead><tr><th>Prioridade</th><th>Quantas</th><th>O que são</th></tr></thead>
+    <tbody>
+      <tr><td class="p alta">Alta</td><td>6</td><td>Mudam a conversão: prova, foco, herói, og:image, cookies sobre o CTA, pixel da Meta desligado.</td></tr>
+      <tr><td class="p media">Média</td><td>5</td><td>Corrigem confiança e acessibilidade: EN incompleto, contraste, alvos de toque, canonical, «Em breve» em primeiro.</td></tr>
+      <tr><td class="p baixa">Baixa</td><td>3</td><td>Polimento: voz do texto, preloader, jargão.</td></tr>
+    </tbody>
+  </table>
+  <div class="rodape"><span>pachecost.com · fraquezas</span><span>2</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">Prioridade alta</p>
+  <h2>O que mudaria a conversão.</h2>
+  <div class="item"><div class="n">1</div><div>
+    <h3>Promete IA, não mostra IA <span class="tag alta">Alta</span></h3>
+    <p>O herói diz «estúdio de inteligência artificial»; o Laboratório descreve «agentes que atendem» e «automação de rotinas» em quatro parágrafos. Não há um fluxo desenhado, uma conversa de exemplo, uma captura de ecrã, um vídeo, um número. A pessoa tem de acreditar.</p>
+    <p class="prova"><b>Prova:</b> na página inteira há 0 imagens de trabalho (as 3 imagens são o logótipo), 0 testemunhos, 0 casos com resultado. A palavra «IA» aparece 24 vezes.<br><b>Ganho:</b> é a fraqueza que a direção nova resolve — ver «Mostrar a máquina».</p>
+  </div></div>
+  <div class="item"><div class="n">2</div><div>
+    <h3>Cinco frentes e «qualquer setor» <span class="tag alta">Alta</span></h3>
+    <p>Serviços: IA & Automação, Web Design, Software & Apps, Marketing, Estratégia. Público: «qualquer setor». Quem chega de um cartão ou de um anúncio não percebe em três segundos se isto é para o negócio dele. A página romena (ro.pachecost.com) já resolve isto: restaurantes, lojas, salões; site + automatizações.</p>
+    <p class="prova"><b>Prova:</b> secção «Para quem»: «Trabalho com negócios de qualquer área». <b>Ganho:</b> um site que fala a um tipo de cliente converte mais do que um que fala a todos.</p>
+  </div></div>
+  <div class="item"><div class="n">3</div><div>
+    <h3>Herói abstrato e CTA sem destino claro <span class="tag alta">Alta</span></h3>
+    <p>«Um estúdio de inteligência artificial. Pensamos. Construímos. Escalamos.» não diz o que a pessoa ganha. O botão «Pedir análise gratuita» leva a #contacto, onde não há formulário nem explicação: o que é a análise, o que recebe, em quanto tempo.</p>
+    <p class="prova"><b>Prova:</b> 0 formulários na página; o CTA é uma âncora interna. <b>Ganho:</b> um herói com resultado concreto («site feito antes de pagares», «recepcionista que atende no WhatsApp») + um CTA que diz o que acontece a seguir.</p>
+  </div></div>
+  <div class="rodape"><span>pachecost.com · fraquezas</span><span>3</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">Prioridade alta (continuação)</p>
+  <h2>O que mudaria a conversão.</h2>
+  <div class="item"><div class="n">4</div><div>
+    <h3>O aviso de cookies tapa o botão principal no telemóvel <span class="tag alta">Alta</span></h3>
+    <p>Na primeira dobra de um telemóvel de 390 px, o banner da Meta cobre o «Pedir análise gratuita» e o «Ver o laboratório». O primeiro gesto do visitante é fechar um aviso.</p>
+    <p class="prova"><b>Prova:</b> imagem na página 7 (ecrã 1). <b>Ganho:</b> banner mais baixo e mais pequeno, ou só quando o pixel for mesmo usado.</p>
+  </div></div>
+  <div class="item"><div class="n">5</div><div>
+    <h3>Partilhas no WhatsApp e no Instagram sem imagem <span class="tag alta">Alta</span></h3>
+    <p>As etiquetas Open Graph têm título e descrição mas não têm <code>og:image</code>. Quando alguém envia o link por WhatsApp, aparece só texto. Também não há <code>canonical</code>.</p>
+    <p class="prova"><b>Prova:</b> og:title, og:description, og:type, og:locale presentes; og:image ausente. <b>Ganho:</b> uma imagem 1200×630 com o slogan (já existe a da página romena).</p>
+  </div></div>
+  <div class="item"><div class="n">6</div><div>
+    <h3>Um aviso de cookies para um pixel que não está ligado <span class="tag alta">Alta</span></h3>
+    <p>O código está bem feito: o pixel da Meta só arranca depois de «Aceitar» e recusa-se a arrancar enquanto o identificador for o valor de exemplo «COLA_AQUI». Ou seja, hoje o pixel não existe, os anúncios não são medidos, e mesmo assim todos os visitantes veem o aviso (que tapa o botão principal no telemóvel, ponto 4).</p>
+    <p class="prova"><b>Prova:</b> <code>if (!PIXEL || PIXEL.indexOf("COLA") === 0) return;</code> e <code>&lt;meta name="facebook-domain-verification" content="COLA_AQUI"&gt;</code>. <b>Ganho:</b> ou se liga o pixel a sério (identificador + verificação), ou se tira o aviso até lá. As estatísticas do GoatCounter não precisam dele.</p>
+  </div></div>
+  <div class="rodape"><span>pachecost.com · fraquezas</span><span>4</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">Prioridade média</p>
+  <h2>Confiança e acessibilidade.</h2>
+  <div class="item"><div class="n">7</div><div>
+    <h3>«Quem já confiou» sem rostos, sem imagens, e a começar por «Em breve» <span class="tag media">Média</span></h3>
+    <p>Nove clientes reais são a melhor prova que o site tem, e estão em cartões de texto. O primeiro cartão é a ProBuilders, «Em breve»: a primeira coisa que se vê na prova social é o que ainda não existe.</p>
+    <p class="prova"><b>Ganho:</b> capturas dos sites (ou os quadrados com a fonte e as cores de cada um, como na página romena), o cliente mais forte primeiro, «Em breve» no fim ou fora.</p>
+  </div></div>
+  <div class="item"><div class="n">8</div><div>
+    <h3>Inglês a meio <span class="tag media">Média</span></h3>
+    <p>105 blocos com tradução para 230 blocos de texto. A lista de clientes, a política de privacidade e a 404 ficam em português. A língua muda por JavaScript na mesma URL, sem <code>hreflang</code>, por isso o Google só vê a versão portuguesa.</p>
+    <p class="prova"><b>Ganho:</b> ou EN completo em /en/ com hreflang, ou tirar o botão e assumir PT (e RO na página romena).</p>
+  </div></div>
+  <div class="item"><div class="n">9</div><div>
+    <h3>Contraste abaixo do mínimo em 13 elementos <span class="tag media">Média</span></h3>
+    <p>O cinza «ash» (#7A756A) sobre o preto dá 4,3:1 e o branco sobre o âmbar dos botões dá 4,0:1; o mínimo para texto pequeno é 4,5:1. São as cores das etiquetas em Space Mono (secções, «Estúdio de IA · Portugal», rodapé) e do texto dos botões.</p>
+    <p class="prova"><b>Prova:</b> axe-core, regra color-contrast, 13 ocorrências (390 px). <b>Ganho:</b> um cinza um pouco mais claro (#A5A19B dá 7:1 sobre preto) e o texto dos botões em preto sobre âmbar (5:1) resolvem tudo sem mudar o desenho.</p>
+  </div></div>
+  <div class="item"><div class="n">10</div><div>
+    <h3>Letras e alvos pequenos no telemóvel <span class="tag media">Média</span></h3>
+    <p>«PT / EN» a 9 px; «Estúdio de IA», «Disponível para novos projetos», «[ Scroll ]» a 11,5 px; os links do topo e do rodapé (WhatsApp, telefone, email, serviços) com 18–19 px de altura, quando o mínimo para o dedo é 44 px.</p>
+    <p class="prova"><b>Prova:</b> 12 alvos abaixo de 44 px; 10 textos abaixo de 12 px. <b>Ganho:</b> mais gente a acertar no WhatsApp à primeira, sobretudo donos de 50+ anos.</p>
+  </div></div>
+  <div class="rodape"><span>pachecost.com · fraquezas</span><span>5</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">Prioridade média e baixa</p>
+  <h2>O que falta dizer, e o polimento.</h2>
+  <div class="item"><div class="n">11</div><div>
+    <h3>O método que fecha vendas não está escrito <span class="tag media">Média</span></h3>
+    <p>«Três passos. Zero ruído. Descobrir · Construir · Escalar» é o processo de uma agência. O processo real que funciona à porta (site feito antes, mostrado no telemóvel, pagamento só se gostar) não aparece. É a frase que tira o medo.</p>
+  </div></div>
+  <div class="item"><div class="n">12</div><div>
+    <h3>Voz misturada e jargão <span class="tag baixa">Baixa</span></h3>
+    <p>Alterna entre «eu» («dou a cara», «o que construo») e «nós» («pensamos», «usamos IA»). «Escalar», «fluxos», «agentes», «sem ruído» são palavras de agência. O dono de um café entende «atende», «marca», «lembra», «cobra».</p>
+  </div></div>
+  <div class="item"><div class="n">13</div><div>
+    <h3>Preloader «00 %» e um segundo até ao título <span class="tag baixa">Baixa</span></h3>
+    <p>O contador de carregamento existe por estética; a página está pronta muito antes. Em rede móvel fraca, é um segundo a olhar para números.</p>
+  </div></div>
+  <div class="item"><div class="n">14</div><div>
+    <h3>Rodapé com «Serviços digitais, feitos à mão» e cinco serviços <span class="tag baixa">Baixa</span></h3>
+    <p>Repete a dispersão do ponto 2. Quando o foco mudar, o rodapé muda com ele.</p>
+  </div></div>
+  <div class="rodape"><span>pachecost.com · fraquezas</span><span>6</span></div>
+</section>
+
+<section class="pagina">
+  <p class="eyebrow">Provas</p>
+  <h2>O que o visitante vê.</h2>
+  <figure><img src="img/pachecost-telemovel.jpg" alt="Quatro ecrãs de telemóvel do pachecost.com: herói com o aviso de cookies sobre o botão, lista de clientes em cartões de texto a começar por «Em breve», laboratório em parágrafos, menu.">
+    <figcaption>Telemóvel de 390 px, da esquerda para a direita: (1) o primeiro ecrã, com o aviso de cookies sobre o botão principal; (2) «Quem já confiou», cartões de texto e «Em breve» em primeiro; (3) o Laboratório: a IA descrita em parágrafos, sem um único exemplo; (4) o menu, correto e legível.</figcaption></figure>
+  <figure><img src="img/pachecost-computador.jpg" alt="Dois ecrãs de computador: o herói escuro com o aviso de cookies e a fila de clientes em cartões de texto.">
+    <figcaption>Computador de 1280 px: o herói é um fundo escuro com um brilho e o aviso de cookies; a fila de clientes é texto com «Ver site», sem imagens dos sites.</figcaption></figure>
+  <div class="nota"><p><b>Medições</b> feitas em 26/09/2026 sobre o zip de deploy, com Chromium: peso e pedidos, LCP e CLS (PerformanceObserver), axe-core 4 (WCAG 2.1 AA), tamanhos de letra e de alvo calculados no DOM, testes com JavaScript desligado e com «prefers-reduced-motion». Os sites dos clientes não foram avaliados.</p></div>
+  <div class="rodape"><span>pachecost.com · fraquezas</span><span>7</span></div>
+</section>
+
+<section class="pagina escura">
+  <p class="eyebrow">Ordem de trabalho — quando decidires avançar</p>
+  <h2 style="color:var(--osso)">Duas horas resolvem metade.</h2>
+  <div class="num"><b>1</b><p><b>Meia hora:</b> og:image + canonical; identificador e verificação do pixel da Meta preenchidos (ou aviso de cookies retirado até lá); aviso mais pequeno e abaixo do CTA.</p></div>
+  <div class="num"><b>2</b><p><b>Uma hora:</b> cinza das etiquetas para #A5A19B; PT/EN, links do topo e do rodapé com 44 px; «Em breve» para o fim; método real («site feito antes de pagares») na secção Processo.</p></div>
+  <div class="num"><b>3</b><p><b>Um dia:</b> os nove clientes com os quadrados da página romena (fonte e cores de cada um) em vez de cartões de texto; herói com uma promessa concreta e um CTA que diz o que acontece a seguir.</p></div>
+  <div class="num"><b>4</b><p><b>Com a direção nova:</b> secção «Como é feito» com um fluxo desenhado por automatização e a demo do WhatsApp. Ver o documento «Mostrar a máquina».</p></div>
+  <p style="margin-top:8mm;color:var(--osso-2);max-width:66ch">Tudo o que está bem (velocidade, SEO de base, identidade, resiliência sem JavaScript) mantém-se. Nenhuma destas alterações exige refazer o site.</p>
+  <div class="rodape"><span>pachecost.com · fraquezas</span><span>8</span></div>
+</section>
+
+</body>
+</html>

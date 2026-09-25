@@ -77,12 +77,25 @@ def textos_de(obj):
 
 
 # ——— vistas ———
+def contraste(a, b):
+    def lum(h):
+        h = h.lstrip("#")
+        r, g, bl = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+        f = lambda c: c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+        return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(bl)
+    la, lb = sorted((lum(a), lum(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+
 def quadrado(item, rot, i):
     nome = item["nome"]
+    # texto da etiqueta «Client»: a cor do quadrado (fundo ou tinta) com mais contraste sobre a cor de destaque
+    tag_ink = max((item["bg"], item["ink"]), key=lambda c: contraste(c, item["accent"]))
     fs = 1 if len(nome) <= 10 else 0.86 if len(nome) <= 16 else 0.72
-    href = f"/p/{item['slug']}/" if item.get("pasta") else item["url"]
-    externo = ' rel="noopener"' if href.startswith("http") else ""
-    estilo = (f"--bg:{item['bg']};--ink:{item['ink']};--ac:{item['accent']};--f:'{item['fonte']}';--w:{item['peso']};--fs:{fs}"
+    # site real do cliente → separador novo (a página fica aberta por baixo); demo do repositório → cópia em /p/ com «Înapoi»
+    href = item["url"] if item.get("url") else f"/p/{item['slug']}/"
+    externo = ' target="_blank" rel="noopener"' if href.startswith("http") else ""
+    estilo = (f"--bg:{item['bg']};--ink:{item['ink']};--ac:{item['accent']};--tag:{tag_ink};--f:'{item['fonte']}';--w:{item['peso']};--fs:{fs}"
               + (";font-style:italic" if item.get("italico") else ""))
     tag = f'<span class="q-tag">{e(rot["cliente"])}</span>' if item.get("cliente") else ""
     meta = " · ".join(x for x in (rot["itens"].get(item["slug"], {}).get("tip", ""), rot["itens"].get(item["slug"], {}).get("oras", "")) if x)
@@ -176,12 +189,13 @@ def vista_automatizari(c):
 
 def vista_servicii(c, portfolio):
     s = c["servicii"]
-    ativos = {x["slug"] for x in portfolio["itens"] if x.get("ativo") and x.get("pasta")}
+    ligacao = {x["slug"]: (x["url"] if x.get("url") else f"/p/{x['slug']}/") for x in portfolio["itens"] if x.get("ativo") and (x.get("pasta") or x.get("url"))}
     cards = []
     for i, x in enumerate(s["itens"]):
         ex = ""
-        if x.get("exemplu") in ativos:
-            ex = f'<a class="link-ex" href="/p/{e(x["exemplu"])}/">{e(s["exemplu"])}{I["seta"]}</a>'
+        if x.get("exemplu") in ligacao:
+            u = ligacao[x["exemplu"]]
+            ex = f'<a class="link-ex" href="{e(u)}"{" target=_blank rel=noopener" if u.startswith("http") else ""}>{e(s["exemplu"])}{I["seta"]}</a>'
         cards.append(f'<li class="svc rv" style="--i:{i}"><h3>{e(x["titlu"])}</h3><p>{e(x["ce"])}</p><p class="de-ce">{e(x["de_ce"])}</p>{ex}</li>')
     return f"""<section id="servicii" class="vista claro" aria-labelledby="t-servicii">
   <div class="envolver seccao">
@@ -290,8 +304,8 @@ def pilula(texto):
 def copiar_sites(portfolio, texto_inapoi):
     n = 0
     for it in portfolio["itens"]:
-        if not (it.get("ativo") and it.get("pasta")):
-            continue
+        if not (it.get("ativo") and it.get("pasta")) or it.get("url"):
+            continue  # com site real publicado, a cópia não é precisa
         origem = os.path.join(SITES, it["pasta"])
         destino = os.path.join(DIST, "p", it["slug"])
         os.makedirs(destino, exist_ok=True)
