@@ -1,0 +1,472 @@
+<title>Prospeção 10X</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap">
+<!--
+  Visualizador do PDF de prospeção (prospecao-10x.pdf) para o telemóvel.
+  Precisa, na mesma pasta: prospecao-10x.pdf, pdf.min.js e pdf.worker.min.js (pdfjs-dist 3.11.174:
+  `npm pack pdfjs-dist@3.11.174` → package/build/). Sem esses dois .js, carrega o PDF.js do cdnjs.
+-->
+<style>
+  :root {
+    --chao: #E9E3DA;
+    --barra: #FBF9F6;
+    --tinta: #141210;
+    --suave: #6B645C;
+    --linha: #DCD4C9;
+    --laranja: #E8622C;
+    --laranja-texto: #B8441A;
+    --chip: #F2ECE4;
+    --chip-ativo: #141210;
+    --chip-ativo-texto: #FBF9F6;
+    --sombra: 0 1px 2px rgba(20, 18, 16, .08), 0 10px 28px rgba(20, 18, 16, .12);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --chao: #0E0C0B;
+      --barra: #191614;
+      --tinta: #EFEAE3;
+      --suave: #A39A90;
+      --linha: #2E2925;
+      --laranja: #F07A48;
+      --laranja-texto: #F59B73;
+      --chip: #25201D;
+      --chip-ativo: #EFEAE3;
+      --chip-ativo-texto: #141210;
+      --sombra: 0 1px 2px rgba(0, 0, 0, .5), 0 10px 28px rgba(0, 0, 0, .5);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --chao: #0E0C0B;
+    --barra: #191614;
+    --tinta: #EFEAE3;
+    --suave: #A39A90;
+    --linha: #2E2925;
+    --laranja: #F07A48;
+    --laranja-texto: #F59B73;
+    --chip: #25201D;
+    --chip-ativo: #EFEAE3;
+    --chip-ativo-texto: #141210;
+    --sombra: 0 1px 2px rgba(0, 0, 0, .5), 0 10px 28px rgba(0, 0, 0, .5);
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--chao);
+    color: var(--tinta);
+    font: 15px/1.45 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  .topo {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--barra);
+    border-bottom: 1px solid var(--linha);
+  }
+  .barra {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .nome {
+    font-family: "Archivo Black", "Arial Black", Impact, sans-serif;
+    font-size: 17px;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .nome span { color: var(--laranja); }
+  .pagina {
+    margin-left: auto;
+    font: 700 12px/1 "Space Mono", ui-monospace, monospace;
+    color: var(--suave);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .botao {
+    appearance: none;
+    border: 1px solid var(--linha);
+    background: var(--chip);
+    color: var(--tinta);
+    font: 600 13px/1 "Inter", system-ui, sans-serif;
+    padding: 9px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .botao:hover { border-color: var(--suave); }
+
+  .partes {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 0 16px 10px;
+    max-width: 640px;
+    margin: 0 auto;
+    scrollbar-width: none;
+  }
+  .partes::-webkit-scrollbar { display: none; }
+  .parte {
+    flex: none;
+    appearance: none;
+    border: 0;
+    background: var(--chip);
+    color: var(--tinta);
+    font: 600 13px/1 "Inter", system-ui, sans-serif;
+    padding: 8px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .parte[aria-current="true"] {
+    background: var(--chip-ativo);
+    color: var(--chip-ativo-texto);
+  }
+  .parte small {
+    font: 700 11px/1 "Space Mono", ui-monospace, monospace;
+    color: var(--laranja-texto);
+    margin-right: 6px;
+  }
+  .parte[aria-current="true"] small { color: var(--laranja); }
+
+  .folhas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding-inline: 16px;
+    padding-block: 16px 24px;
+  }
+  .folha {
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: var(--proporcao, 100 / 178);
+    background: #FFFFFF;
+    box-shadow: var(--sombra);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    scroll-margin-top: 110px;
+  }
+  .folha canvas { display: block; width: 100%; height: 100%; }
+  .folha:not(.pronta)::after {
+    content: attr(data-n);
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font: 700 13px/1 "Space Mono", ui-monospace, monospace;
+    color: #B5ADA3;
+  }
+
+  .estado {
+    max-width: 38ch;
+    margin: 18vh auto 0;
+    text-align: center;
+    color: var(--suave);
+  }
+  .rodape {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 16px 32px;
+    color: var(--suave);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  [hidden] { display: none !important; }
+  .indice {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(14, 12, 11, .45);
+  }
+  .indice-painel {
+    width: min(380px, 100%);
+    height: 100%;
+    overflow-y: auto;
+    background: var(--barra);
+    padding: calc(env(safe-area-inset-top, 0px) + 14px) 16px calc(env(safe-area-inset-bottom, 0px) + 24px);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .indice-topo { display: flex; align-items: center; justify-content: space-between; }
+  .indice-topo h2 {
+    margin: 0;
+    font: 400 18px/1 "Archivo Black", "Arial Black", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+  }
+  .grupo h3 {
+    margin: 0 0 6px;
+    font: 700 11px/1.2 "Space Mono", ui-monospace, monospace;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--laranja-texto);
+  }
+  .grupo ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .grupo button {
+    appearance: none;
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    justify-content: space-between;
+    text-align: left;
+    border: 0;
+    border-bottom: 1px solid var(--linha);
+    background: transparent;
+    color: var(--tinta);
+    font: 400 14px/1.35 "Inter", system-ui, sans-serif;
+    padding: 10px 2px;
+    cursor: pointer;
+  }
+  .grupo button span:last-child {
+    flex: none;
+    font: 700 12px/1 "Space Mono", ui-monospace, monospace;
+    color: var(--suave);
+    font-variant-numeric: tabular-nums;
+  }
+  .grupo button:hover span:first-child { color: var(--laranja-texto); }
+
+  :focus-visible { outline: 2px solid var(--laranja); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+
+<header class="topo">
+  <div class="barra">
+    <div class="nome">Prospeção <span>10X</span></div>
+    <div class="pagina" id="pagina" aria-live="polite">—</div>
+    <button class="botao" id="abrir-indice" type="button" aria-expanded="false" aria-controls="indice">Índice</button>
+  </div>
+  <nav class="partes" id="partes" aria-label="Partes do PDF"></nav>
+</header>
+
+<main class="folhas" id="folhas">
+  <p class="estado" id="estado">A abrir o PDF…</p>
+</main>
+<p class="rodape">Gerado dos ficheiros do repositório. Para mudar alguma coisa, pede ao Claude e o PDF é regenerado.</p>
+
+<div class="indice" id="indice" hidden>
+  <div class="indice-painel" role="dialog" aria-modal="true" aria-labelledby="titulo-indice">
+    <div class="indice-topo">
+      <h2 id="titulo-indice">Índice</h2>
+      <button class="botao" id="fechar-indice" type="button">Fechar</button>
+    </div>
+    <div id="lista-indice"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var VERSAO = "3.11.174";
+  var CDN = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/" + VERSAO + "/";
+  var FICHEIRO = "prospecao-10x.pdf";
+  var CHAVE = "prospecao10x:pagina";
+
+  var estado = document.getElementById("estado");
+  var folhas = document.getElementById("folhas");
+  var indicador = document.getElementById("pagina");
+  var partesNav = document.getElementById("partes");
+  var indice = document.getElementById("indice");
+  var listaIndice = document.getElementById("lista-indice");
+  var abrir = document.getElementById("abrir-indice");
+  var fechar = document.getElementById("fechar-indice");
+
+  var pdf = null;
+  var total = 0;
+  var paginas = [];      // {div, canvas, pronta, tarefa}
+  var partes = [];       // {titulo, pagina, botao}
+  var atual = 1;
+
+  function carregar(src) {
+    return new Promise(function (ok, erro) {
+      var s = document.createElement("script");
+      s.src = src;
+      s.onload = function () { ok(src); };
+      s.onerror = erro;
+      document.head.appendChild(s);
+    });
+  }
+
+  function ler(chave) { try { return localStorage.getItem(chave); } catch (e) { return null; } }
+  function guardar(chave, valor) { try { localStorage.setItem(chave, valor); } catch (e) { /* sem armazenamento */ } }
+
+  function irPara(n) {
+    var p = paginas[n - 1];
+    if (p) p.div.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  }
+
+  function desenhar(n) {
+    var p = paginas[n - 1];
+    if (!p || p.pronta || p.tarefa) return;
+    p.tarefa = pdf.getPage(n).then(function (pagina) {
+      var base = pagina.getViewport({ scale: 1 });
+      var largura = p.div.clientWidth || 360;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var vista = pagina.getViewport({ scale: (largura / base.width) * dpr });
+      p.canvas.width = Math.floor(vista.width);
+      p.canvas.height = Math.floor(vista.height);
+      return pagina.render({ canvasContext: p.canvas.getContext("2d"), viewport: vista }).promise;
+    }).then(function () {
+      p.pronta = true;
+      p.div.classList.add("pronta");
+    }).catch(function (e) {
+      console.error("Página " + n, e);
+    }).then(function () { p.tarefa = null; });
+  }
+
+  function libertar(n) {
+    var p = paginas[n - 1];
+    if (!p || !p.pronta) return;
+    p.canvas.width = 0;   // liberta a memória das páginas longe do ecrã
+    p.canvas.height = 0;
+    p.pronta = false;
+    p.div.classList.remove("pronta");
+  }
+
+  function atualizarAtual() {
+    var limite = window.innerHeight * 0.35;
+    for (var i = 0; i < paginas.length; i++) {
+      if (paginas[i].div.getBoundingClientRect().bottom > limite) { atual = i + 1; break; }
+    }
+    indicador.textContent = "p. " + atual + "/" + total;
+    var ativa = null;
+    partes.forEach(function (parte) { if (parte.pagina <= atual) ativa = parte; });
+    partes.forEach(function (parte) { parte.botao.setAttribute("aria-current", parte === ativa ? "true" : "false"); });
+  }
+
+  var agendado = false;
+  var guardarTempo = null;
+  window.addEventListener("scroll", function () {
+    if (agendado) return;
+    agendado = true;
+    requestAnimationFrame(function () {
+      agendado = false;
+      atualizarAtual();
+      clearTimeout(guardarTempo);
+      guardarTempo = setTimeout(function () { guardar(CHAVE, String(atual)); }, 400);
+    });
+  }, { passive: true });
+
+  function paginaDe(dest) {
+    var pedido = typeof dest === "string" ? pdf.getDestination(dest) : Promise.resolve(dest);
+    return pedido.then(function (d) {
+      if (!d) return null;
+      var ref = d[0];
+      if (typeof ref === "number") return ref + 1;
+      return pdf.getPageIndex(ref).then(function (i) { return i + 1; });
+    }).catch(function () { return null; });
+  }
+
+  function limparTitulo(t) { return t.replace(/^\d+\.\s*/, ""); }
+
+  function montarIndice(outline) {
+    if (!outline || !outline.length) return;
+    var tarefas = outline.map(function (item) {
+      return Promise.all([paginaDe(item.dest), Promise.all((item.items || []).map(function (sub) {
+        return paginaDe(sub.dest).then(function (pg) { return { titulo: sub.title, pagina: pg }; });
+      }))]).then(function (r) { return { titulo: item.title, pagina: r[0], secoes: r[1] }; });
+    });
+    Promise.all(tarefas).then(function (grupos) {
+      grupos.forEach(function (g, k) {
+        if (!g.pagina) return;
+        var chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "parte";
+        chip.innerHTML = "<small>" + String(k + 1).padStart(2, "0") + "</small>";
+        chip.appendChild(document.createTextNode(limparTitulo(g.titulo)));
+        chip.addEventListener("click", function () { irPara(g.pagina); });
+        partesNav.appendChild(chip);
+        partes.push({ titulo: g.titulo, pagina: g.pagina, botao: chip });
+
+        var bloco = document.createElement("section");
+        bloco.className = "grupo";
+        var h = document.createElement("h3");
+        h.textContent = "Parte " + (k + 1) + " · " + limparTitulo(g.titulo);
+        bloco.appendChild(h);
+        var ul = document.createElement("ul");
+        [{ titulo: "Início da parte", pagina: g.pagina }].concat(g.secoes).forEach(function (s) {
+          if (!s.pagina) return;
+          var li = document.createElement("li");
+          var b = document.createElement("button");
+          b.type = "button";
+          var a = document.createElement("span"); a.textContent = s.titulo;
+          var c = document.createElement("span"); c.textContent = "p. " + s.pagina;
+          b.appendChild(a); b.appendChild(c);
+          b.addEventListener("click", function () { fecharIndice(); irPara(s.pagina); });
+          li.appendChild(b); ul.appendChild(li);
+        });
+        bloco.appendChild(ul);
+        listaIndice.appendChild(bloco);
+      });
+      atualizarAtual();
+    });
+  }
+
+  function abrirIndice() { indice.hidden = false; abrir.setAttribute("aria-expanded", "true"); fechar.focus(); }
+  function fecharIndice() { indice.hidden = true; abrir.setAttribute("aria-expanded", "false"); abrir.focus(); }
+  abrir.addEventListener("click", abrirIndice);
+  fechar.addEventListener("click", fecharIndice);
+  indice.addEventListener("click", function (e) { if (e.target === indice) fecharIndice(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !indice.hidden) fecharIndice(); });
+
+  function iniciar(documento) {
+    pdf = documento;
+    total = pdf.numPages;
+    return pdf.getPage(1).then(function (primeira) {
+      var v = primeira.getViewport({ scale: 1 });
+      document.documentElement.style.setProperty("--proporcao", v.width + " / " + v.height);
+      estado.remove();
+      for (var n = 1; n <= total; n++) {
+        var div = document.createElement("div");
+        div.className = "folha";
+        div.id = "p" + n;
+        div.dataset.n = n;
+        div.setAttribute("role", "img");
+        div.setAttribute("aria-label", "Página " + n + " de " + total);
+        var canvas = document.createElement("canvas");
+        div.appendChild(canvas);
+        folhas.appendChild(div);
+        paginas.push({ div: div, canvas: canvas, pronta: false, tarefa: null });
+      }
+      var observador = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) {
+          var n = Number(e.target.dataset.n);
+          if (e.isIntersecting) desenhar(n); else libertar(n);
+        });
+      }, { rootMargin: "1400px 0px" });
+      paginas.forEach(function (p) { observador.observe(p.div); });
+
+      var guardada = Number(ler(CHAVE));
+      if (guardada > 1 && guardada <= total) irPara(guardada);
+      atualizarAtual();
+      return pdf.getOutline().then(montarIndice);
+    });
+  }
+
+  carregar("pdf.min.js").then(function () { return "pdf.worker.min.js"; })
+    .catch(function () { return carregar(CDN + "pdf.min.js").then(function () { return CDN + "pdf.worker.min.js"; }); })
+    .then(function (worker) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = worker;
+      return window.pdfjsLib.getDocument({ url: FICHEIRO }).promise;
+    })
+    .then(iniciar)
+    .catch(function (e) {
+      console.error(e);
+      estado.textContent = "Não foi possível abrir o PDF. Recarrega a página; o ficheiro também está na conversa com o Claude.";
+    });
+})();
+</script>

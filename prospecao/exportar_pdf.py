@@ -36,13 +36,14 @@ CACHE = AQUI / ".fontes"
 # (ficheiro, etiqueta, título da parte, subtítulo, nome curto para o rodapé)
 PARTES = [
     ("prospecao/checklist-diario.md", "Todos os dias", "Checklist diário",
-     "10 portas, 5 follow-ups, 1 reunião com hora marcada. Nunca um dia a zero.", "Checklist"),
-    ("research/metodo-10x-cardone.md", "O método", "Método 10X",
-     "Grant Cardone: o que serve, o que se adapta e o que se ignora.", "Método 10X"),
-    ("research/romenia.md", "Expansão", "Roménia",
-     "Plano inicial e primeiras tarefas rotineiras para espalhar a Pacheco Studios.", "Roménia"),
+     "Mínimo 10 portas, objetivo 25. Em cada porta: um facto, o WhatsApp do dono e o cartão "
+     "— e, se der, a reunião marcada.", "Checklist"),
     ("research/iasi.md", "Onde estás", "Iași",
      "Zonas, primeiros alvos sem site e a primeira semana na rua.", "Iași"),
+    ("research/romenia.md", "Expansão", "Roménia",
+     "Plano, preços em lei, script em romeno, legal e engine RO.", "Roménia"),
+    ("research/metodo-10x-cardone.md", "O método", "Método 10X",
+     "Grant Cardone: o que serve, o que se adapta e o que se ignora.", "Método 10X"),
 ]
 
 PW, PH = 100 * mm, 178 * mm          # formato de telemóvel
@@ -551,8 +552,8 @@ class Doc(BaseDocTemplate):
             indice.append((n, titulo, desc, desc.wrap(largura - 22 - 26, 60)[1]))
         topo_indice = 40 + sum(26 + hd for *_, hd in indice)
 
-        sub = Paragraph("Rotina diária de terreno, o método de Grant Cardone aplicado à Pacheco Studios "
-                        "e o plano para a Roménia — a começar em Iași.",
+        sub = Paragraph("O dia porta a porta, com o mínimo e o objetivo de cada passo. Depois: Iași, "
+                        "o plano para a Roménia e o método 10X por trás.",
                         ParagraphStyle("capa_s", fontName="Corpo", fontSize=9.6, leading=13.6,
                                        textColor=CREME_DIM))
         h = sub.wrap(largura, 200)[1]
