@@ -10,6 +10,11 @@
 
 **Não podes vender de forma regular sem atividade aberta.** O fisco (AT em Portugal, ANAF na Roménia) não olha para o banco, olha para a **fatura**. Cada venda tem de ter fatura emitida por alguém registado. A única exceção em Portugal é o **ato isolado** (uma venda pontual, faturada no Portal das Finanças sem abrir atividade) — serve para um cliente, não para uma campanha.
 
+**Coimas por vender sem atividade:**
+- **Portugal:** 300 € a 7 500 € por falta da declaração de início de atividade (art. 117.º, n.º 2, RGIT), mais IRS e IVA em falta com juros.
+- **Roménia:** 2 000 a 15 000 lei para pessoa singular que exerce atividade económica sem estar registada (Lei 296/2023), com possível confiscação dos rendimentos.
+- **Na prática:** o negócio romeno só pode lançar a despesa com fatura. Sem fatura, ou não paga, ou paga "por fora" e o risco é todo teu.
+
 **Revolut: sim, mas não na conta pessoal.**
 - Os termos da conta **pessoal** não permitem uso comercial (receber de clientes, divulgar a Revtag para vendas). Risco: bloqueio ou fecho da conta.
 - **Revolut Pro** — subconta de trabalhador independente dentro da app pessoal, IBAN próprio, links de pagamento e QR. Existe em PT e na RO. Comissões para PT/RO **A CONFIRMAR**.
@@ -28,7 +33,8 @@
 | IVA — cliente romeno **com** nº de IVA válido no VIES | Fatura **sem IVA**, menção **"IVA – autoliquidação"**; o cliente paga os 21% na Roménia. Declarar na **declaração recapitulativa**, mesmo estando isento |
 | IVA — cliente **sem** nº de IVA (a maioria dos restaurantes pequenos) | Na RO, o cliente devia pedir o **código especial do art. 317** antes de comprar serviços a um fornecedor da UE. Pedir-lho e validar no VIES. Se não tiver, faturar como operação portuguesa (isento art. 53.º ou 23%) — zona cinzenta, confirmar com contabilista |
 | Isenção art. 53.º | Até **15 000 €/ano** (≈ 30 sites a 500 €). **A CONFIRMAR** se as vendas com autoliquidação contam para o limite |
-| Segurança Social | Pedir o **formulário A1** (destacamento de independente) na Segurança Social Direta antes de ir — sem ele a Roménia pode exigir contribuições locais. Primeiro ano de atividade em PT: isento de contribuições |
+| Segurança Social | Pedir o **formulário A1** (destacamento de independente) na Segurança Social Direta antes de ir — sem ele a Roménia pode exigir contribuições locais. Primeiros 12 meses de atividade em PT: isento de contribuições (se não tiveste atividade nos últimos 3 anos) |
+| À distância | 100% online, também pela app no telemóvel |
 | e-Factura romana | Não se aplica (só a quem está estabelecido na RO) |
 | Cuidados | Não arrendar escritório nem criar "base fixa" na RO (convenção PT–RO, art. 14). Guardar provas dos dias fora da Roménia (bilhetes, cartões de embarque) |
 | Estudante | Rendimentos de categoria B podem afetar o IRS dos pais se fores dependente **A CONFIRMAR** |
@@ -46,6 +52,7 @@
 | Faturas | **e-Factura obrigatória** em B2B (desde 2024) e B2C (desde 2025): XML enviado pelo SPV da ANAF em 5 dias úteis. Faturar em **RON** |
 | Conta bancária | Obrigatória desde 1/1/2026 (Lei 239/2025). Revolut Business/Pro com IBAN RO serve |
 | Contabilista | 99–300 lei/mês (~20–60 €) |
+| À distância | Só em parte: o IGI é presencial; o registo online no ONRC exige assinatura eletrónica qualificada (se a Chave Móvel Digital portuguesa serve **A CONFIRMAR**); a e-Factura passa pelo SPV da ANAF |
 | Pagamentos | Desde 1/1/2026 todas as empresas têm de aceitar pagamento eletrónico. Numerário entre empresas: máx. 5 000 lei/dia. Receber dinheiro vivo de particulares obriga a **casa de marcat** (caixa fiscal) |
 
 **SRL microempresa: não compensa agora.** 1% sobre a faturação até 100 000 €, mas obriga a **1 empregado a tempo inteiro** (salário mínimo 4 325 lei brutos desde 1/7/2026) e dividendos pagam 16%.
@@ -56,6 +63,12 @@
 |---|---|---|
 | **≤ 182** e vida (casa, família, universidade) em PT | Portugal | Via A. Faturar de PT, A1, sem base fixa na RO |
 | **≥ 184**, ou casa/centro de interesses na RO | Provavelmente Roménia (com possível dupla residência → desempate no art. 4.º da convenção) | Via B. Comunicar à AT a mudança de residência para não pagar nos dois países |
+
+- O limite romeno é **mais de 183 dias em quaisquer 12 meses seguidos**. Com 182–183 não és residente pelos dias (mas continua o risco do "centro de interesses vitais" se a vida estiver lá).
+- **Com 184 dias, passas a residente romeno com efeito retroativo ao dia da chegada.** Há um questionário a entregar à ANAF em 30 dias e a Roménia pode tributar o rendimento mundial desde que chegaste.
+- Havendo dupla residência, desempata o art. 4.º da convenção: primeiro a habitação permanente, depois o centro de interesses vitais. Mantendo casa em PT, é provável que PT ganhe, mas é preciso prová-lo com um **certificado de residência da AT**.
+- Como a Roménia conta os dias de chegada e de partida: **A CONFIRMAR**.
+- **Independente do fisco:** acima de 3 meses de estadia, o **registo de residência no IGI** é obrigatório (regra de imigração). Não te torna residente fiscal.
 
 Com 6 meses estás em cima do limite. **Planear a estadia para 170–175 dias** dá margem.
 
@@ -152,9 +165,9 @@ Com 6 meses estás em cima do limite. **Planear a estadia para 170–175 dias** 
 
 **Revolut e pagamentos:** revolut.com/ro-RO/news/revolut_bank_updates_its_local_ibans_for_over_4_million_romanian_clients · revolut.com/en-RO/legal/terms · revolut.com/ro-RO/legal/pro · revistabiz.ro (Revolut Pro) · wise.com/ro/blog/revolut-business-romania · news.ro (Revolut 4,8 M RO) · bzst.de (CESOP) · stripe.com/en-ro/resources/more/payments-in-romania · webghid.ro/articole/plata-online-romania · arb.ro/en/proiecte/ropay
 
-**Fiscal PT:** info.portaldasfinancas.gov.pt (art. 53.º CIVA; art. 63.º-C LGT) · occ.pt Guia Prático IVA 2025 · sme-vat-rules.ec.europa.eu · eur-lex Reg. 282/2011 · ministeriopublico.pt (convenção PT–RO) · gov.pt (destacamento/A1)
+**Fiscal PT:** info.portaldasfinancas.gov.pt (art. 53.º CIVA; art. 63.º-C LGT; art. 117.º RGIT) · occ.pt Guia Prático início de atividade · vendus.pt (ato isolado) · gov.pt/servicos/abrir-atividade-nas-financas · cgd.pt (isenção SS) · informador.pt (art. 16.º CIRS) · occ.pt Guia Prático IVA 2025 · sme-vat-rules.ec.europa.eu · eur-lex Reg. 282/2011 · ministeriopublico.pt (convenção PT–RO) · gov.pt (destacamento/A1)
 
-**Fiscal RO:** contapp.ro (taxe PFA 2026; plafoane; TVA servicii UE; e-Factura) · folositor.ro (CAS/CASS 2026; rezidență fiscală) · taxravens.com (micro 2026) · startupcafe.ro · legislatie.just.ro · avocatnet.ro (Lei 239/2025) · fiscalitatea.ro · romania-insider.com (IVA isenção 395 000) · avalara.com (IVA 21%) · noulcodfiscal.ro (art. 317) · mfinante.gov.ro · igi.mai.gov.ro · regnet.ro / blogcontabilitate.ro (contabilista)
+**Fiscal RO:** ey.com/ro_ro (Lei 296/2023) · firmata.ro · static.anaf.ro · paris.mae.ro (guia rezidență) · alfasign.ro · contapp.ro (taxe PFA 2026; plafoane; TVA servicii UE; e-Factura) · folositor.ro (CAS/CASS 2026; rezidență fiscală) · taxravens.com (micro 2026) · startupcafe.ro · legislatie.just.ro · avocatnet.ro (Lei 239/2025) · fiscalitatea.ro · romania-insider.com (IVA isenção 395 000) · avalara.com (IVA 21%) · noulcodfiscal.ro (art. 317) · mfinante.gov.ro · igi.mai.gov.ro · regnet.ro / blogcontabilitate.ro (contabilista)
 
 **Economia:** think.ing.com · romania-insider.com (PIB T2 2026, consumo serviços, défice, BNR) · romaniajournal.ro · business-review.eu (inflação) · economica.net (salário médio) · startupcafe.ro (salário mínimo) · agerpres.ro (ONRC) · seenews.com (retalho) · money.ro (turismo, micro) · aljazeera.com (queda do governo) · zfenglish.com (PIB regional)
 
