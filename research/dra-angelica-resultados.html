@@ -1,4 +1,7 @@
 <title>Resultados Dra. Angélica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;800&family=Funnel+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
 :root{
   --floresta:#1D3024;--floresta-2:#284234;--latao:#B08A4A;--latao-texto:#7A5A26;--latao-claro:#E4CB93;
@@ -126,50 +129,152 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
 .fontes{font-size:14px;color:var(--tinta-3);display:grid;gap:4px}
 .fontes a{color:var(--tinta-3)}
 
-.resumo th,.resumo td{font-size:15px}
-.resumo td.v{text-align:right}
-.resumo th:not(:first-child){text-align:right}
-.meta-cab{display:grid;gap:10px}
+.escolha{display:grid;gap:12px}
+.planos-bt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.planos-bt button{font:inherit;text-align:left;background:var(--cartao);color:var(--tinta);border:1px solid var(--linha);border-radius:14px;padding:14px 16px;cursor:pointer;display:grid;gap:2px;min-height:64px}
+.planos-bt button b{font-family:var(--display);font-weight:800;font-size:20px}
+.planos-bt button span{font-size:14px;color:var(--tinta-3)}
+.planos-bt button[aria-pressed="true"]{background:var(--floresta);border-color:var(--floresta);color:#F1F4EC}
+.planos-bt button[aria-pressed="true"] span{color:var(--latao-claro)}
+@media (max-width:620px){.planos-bt{grid-template-columns:1fr}}
+.plano-res{display:grid;gap:28px}
+.plano-res + .plano-res{margin-top:24px}
+.res-cab{display:grid;gap:8px}
+.res-cab .precos-linha{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--tinta-2);font-size:15px}
+.res-cab .precos-linha b{color:var(--tinta)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:800px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--cartao);border:1px solid var(--linha);border-radius:14px;padding:16px;display:grid;gap:6px;align-content:start}
+.kpi strong{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.05}
+.kpi span{font-size:14px;color:var(--tinta-2)}
+.kpi.escuro{background:var(--floresta);border-color:transparent}
+.kpi.escuro strong{color:#F1F4EC}.kpi.escuro span{color:#BCC9B5}
+.proj td.v,.proj th{text-align:right}
+.proj td:first-child,.proj th:first-child{text-align:left}
+.agenda-c{display:flex;gap:8px;align-items:center;justify-content:flex-end}
+.mini{width:64px;height:8px;border-radius:4px;background:var(--barra);overflow:hidden}
+.mini i{display:block;height:100%;background:var(--bom)}
+.duas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:760px){.duas{grid-template-columns:1fr}}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px}
+.lista li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;color:var(--tinta-2)}
+.lista .q{font-weight:600;color:var(--tinta);font-variant-numeric:tabular-nums;white-space:nowrap}
+.caixa{background:var(--cartao);border:1px solid var(--linha);border-radius:14px;padding:18px;display:grid;gap:14px;align-content:start}
+.caixa h3{font-size:19px}
+.pdf .controlo,.pdf .escolha{display:none}
 </style>
+
 <main class="pagina">
   <header class="topo">
-    <p class="selo"><b>Pacheco Studios</b><span>Proposta para a Dra. Angélica Lauermann Gomes · CRO-SP 139651</span><span>24/09/2026</span></p>
+    <p class="selo"><b>Pacheco Studios</b><span>Proposta para a Dra. Angélica Lauermann Gomes · CRO-SP 139651</span><span>Setembro de 2026</span></p>
     <h1>Resultados de cada plano</h1>
-    <p class="lead">Metas mensais de cada plano no cenário provável, a partir do 3.º mês. O 1.º mês é de aprendizado dos anúncios e costuma ficar abaixo da meta.</p>
+    <p class="lead">Projeção dos primeiros 12 meses de cada plano: pacientes novos, lucro, quando a implementação se paga e o tempo que o sistema tira da rotina.</p>
+    <p class="aviso">Projeção feita com médias de mercado, não promessa de resultado. O relatório mensal compara cada linha com o resultado real.</p>
   </header>
-  <section class="bloco">
-    <div class="rolar">
-      <table class="resumo">
-        <thead><tr><th>Meta por mês</th><th>Essencial</th><th class="dest">Crescimento · recomendado</th><th>Completo</th></tr></thead>
-        <tbody>
-          <tr><td>Investimento em anúncios</td><td class="v">R$ 500</td><td class="v dest">R$ 1.000</td><td class="v">R$ 1.500</td></tr>
-          <tr><td>Implementação (uma vez)</td><td class="v">R$ 4.000</td><td class="v dest">R$ 6.000</td><td class="v">R$ 10.000</td></tr>
-          <tr><td>Mensalidade (a partir de)</td><td class="v">R$ 500</td><td class="v dest">R$ 750</td><td class="v">R$ 1.100</td></tr>
-          <tr class="grupo"><td colspan="4">Novos pacientes</td></tr>
-          <tr><td>Conversas no WhatsApp vindas dos anúncios</td><td class="v">33</td><td class="v dest">61</td><td class="v">83</td></tr>
-          <tr><td>Consultas marcadas</td><td class="v">12</td><td class="v dest">21</td><td class="v">29</td></tr>
-          <tr><td>Pacientes que comparecem</td><td class="v">8</td><td class="v dest">15</td><td class="v">20</td></tr>
-          <tr><td>Pacientes que fecham tratamento</td><td class="v">4</td><td class="v dest">7</td><td class="v">10</td></tr>
-          <tr class="grupo"><td colspan="4">Financeiro</td></tr>
-          <tr><td>Faturamento a mais</td><td class="v">R$ 4.100</td><td class="v dest">R$ 7.400</td><td class="v">R$ 10.200</td></tr>
-          <tr><td>Lucro líquido (depois de anúncios e mensalidade)</td><td class="v"><b>R$ 1.250</b></td><td class="v dest"><b>R$ 2.350</b></td><td class="v"><b>R$ 3.000</b></td></tr>
-          <tr><td>Implementação paga em</td><td class="v">≈ 4 meses</td><td class="v dest">≈ 3 meses</td><td class="v">≈ 4 meses</td></tr>
-          <tr><td>Faixa do lucro líquido (conservador → otimista)</td><td class="v">−R$ 500 → R$ 5.550</td><td class="v dest">−R$ 850 → R$ 10.150</td><td class="v">−R$ 1.350 → R$ 13.750</td></tr>
-          <tr class="grupo"><td colspan="4">Rotina do consultório</td></tr>
-          <tr><td>Tempo poupado por dia</td><td class="v">≈ 25 min</td><td class="v dest">≈ 55 min</td><td class="v">≈ 1 h 25</td></tr>
-          <tr><td>Horas poupadas por mês</td><td class="v">≈ 9 h</td><td class="v dest">≈ 20 h</td><td class="v">≈ 31 h</td></tr>
-          <tr><td>Faltas evitadas com lembretes</td><td class="v">≈ 11</td><td class="v dest">≈ 11</td><td class="v">≈ 11</td></tr>
-          <tr><td>Avaliações novas no Google</td><td class="v">10 – 15</td><td class="v dest">10 – 15</td><td class="v">10 – 15</td></tr>
-          <tr><td>Mensagens respondidas fora do horário</td><td class="v">—</td><td class="v dest">todas</td><td class="v">todas</td></tr>
-          <tr><td>Conversas e orçamentos parados com follow-up</td><td class="v">—</td><td class="v dest">—</td><td class="v">todos</td></tr>
-        </tbody>
-      </table>
+
+  <section class="escolha" aria-label="Escolher plano e cenário">
+    <div class="planos-bt" role="group" aria-label="Plano">
+      <button type="button" data-plano="essencial" aria-pressed="false"><b>Essencial</b><span>R$ 4.000 + R$ 500/mês</span></button>
+      <button type="button" data-plano="crescimento" aria-pressed="true"><b>Crescimento</b><span>Recomendado · R$ 6.000 + R$ 750/mês</span></button>
+      <button type="button" data-plano="completo" aria-pressed="false"><b>Completo</b><span>R$ 10.000 + R$ 1.100/mês</span></button>
     </div>
+    <div class="controlo">
+      <span>Cenário</span>
+      <div class="segmentos" role="group" aria-label="Cenário">
+        <button type="button" data-cen="conservador" aria-pressed="false">Conservador</button>
+        <button type="button" data-cen="provavel" aria-pressed="true">Provável</button>
+        <button type="button" data-cen="otimista" aria-pressed="false">Otimista</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="saida" aria-live="polite"></div>
+
+  <section class="bloco" aria-labelledby="t-prem">
+    <h2 id="t-prem">Como a conta é feita</h2>
     <ol class="notas">
-      <li><strong>Como medimos:</strong> o relatório mensal compara cada linha desta tabela com o resultado real do mês.</li>
-      <li><strong>Base da conta:</strong> R$ 15 por conversa no WhatsApp (+10% e +20% nos planos maiores), 35% marcam, 70% comparecem, 50% fecham tratamento, R$ 1.000 por paciente novo e 55% de margem depois de material, laboratório, taxas e impostos.</li>
-      <li><strong>Faltas:</strong> de cerca de 3 em 10 marcações para 2 em 10, ≈ R$ 2.200 por mês com R$ 200 por atendimento. Não está somado ao lucro acima.</li>
-      <li>São metas estimadas com médias de mercado, não promessa de resultado. Os anúncios seguem as regras do CFO: nome e CRO em todas as peças, sem preços nem promoções.</li>
+      <li><strong>Anúncio → conversa no WhatsApp:</strong> conservador R$ 25, provável R$ 15, otimista R$ 10 por conversa com R$ 500 de verba; cada R$ 1.000 a mais encarece a conversa em 20%.</li>
+      <li><strong>Aprendizado dos anúncios:</strong> o mês 1 rende 60% e o mês 2 rende 85% do normal.</li>
+      <li><strong>Etapas:</strong> conversas que marcam, que comparecem e que fecham tratamento (provável: 35%, 70% e 50%).</li>
+      <li><strong>Valor médio por paciente novo</strong> (provável R$ 1.000). No Completo sobe 10% no mês 2 e 25% a partir do mês 3, com as campanhas de prótese, clareamento e reabilitação do sorriso.</li>
+      <li><strong>Lucro líquido</strong> = faturamento × 55% (depois de material, laboratório, taxas e impostos) − anúncios − mensalidade.</li>
+      <li><strong>Bola de neve (só no Completo):</strong> a verba de cada mês é R$ 1.500 + 30% do lucro líquido do mês anterior, e só sobe se houver lucro.</li>
+      <li><strong>Agenda:</strong> cerca de 60 horários livres por mês e 3 sessões por paciente novo, no máximo 20 pacientes novos por mês.</li>
+      <li><strong>Regras do CFO nos anúncios:</strong> nome e CRO em todas as peças, sem preço, promoção, promessa de resultado, ou título de especialista sem registro.</li>
     </ol>
   </section>
 </main>
+
+<script>
+(function(){
+  var CEN={
+    conservador:{nome:"conservador",cpc:25,marc:.25,comp:.65,fecho:.40,ticket:700},
+    provavel:{nome:"provável",cpc:15,marc:.35,comp:.70,fecho:.50,ticket:1000},
+    otimista:{nome:"otimista",cpc:10,marc:.45,comp:.80,fecho:.55,ticket:1200}
+  };
+  var PL={
+    essencial:{nome:"Essencial",verba:500,impl:4000,mens:500,bola:0,tick:[1,1,1],camp:[1,1,1],
+      campanhas:[["Mês 1","Primeira consulta e check-up no Instagram e Facebook"]],
+      rotina:[["≈ 25 min","poupados por dia (≈ 9 h por mês)"],["≈ 11","faltas evitadas por mês com confirmação e lembretes"],["10 – 15","avaliações novas no Google por mês"],["todas","avaliações do Google respondidas"]]},
+    crescimento:{nome:"Crescimento",verba:1000,impl:6000,mens:750,bola:0,tick:[1,1,1],camp:[2,2,2],
+      campanhas:[["Mês 1","Primeira consulta e check-up"],["Mês 1","Prótese e clareamento"]],
+      rotina:[["≈ 55 min","poupados por dia (≈ 20 h por mês)"],["≈ 11","faltas evitadas por mês"],["10 – 15","avaliações novas no Google por mês"],["24 h","recepcionista com IA respondendo, marcando e remarcando"],["na hora","casos de dor ou urgência passados para a Dra."]]},
+    completo:{nome:"Completo",verba:1500,impl:10000,mens:1100,bola:.30,tick:[1,1.1,1.25],camp:[2,4,5,6],
+      campanhas:[["Mês 1","Primeira consulta e check-up"],["Mês 1","Google: “dentista em Mogi das Cruzes”"],["Mês 2","Prótese (dentadura e PPR)"],["Mês 2","Clareamento"],["Mês 3","Reabilitação do sorriso: coroas, facetas e restaurações estéticas"],["Mês 4","Remarketing de quem viu, visitou ou conversou e não marcou"]],
+      rotina:[["≈ 1 h 25","poupados por dia (≈ 31 h por mês)"],["≈ 11","faltas evitadas por mês"],["10 – 15","avaliações novas no Google por mês"],["24 h","recepcionista com IA"],["todos","contatos e orçamentos parados recebem follow-up"],["mensal","relatório com os números do consultório"]]}
+  };
+  var brl=function(n,p){p=p||1;var r=Math.round(Math.abs(n)/p)*p;return (n<0&&r>0?"−":"")+"R$\u00a0"+r.toLocaleString("pt-BR")};
+  var dec=function(n){return n.toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})};
+  function projeta(p,c){
+    var out=[],prev=null,saldo=-p.impl,paga=0;
+    for(var m=1;m<=12;m++){
+      var verba=p.verba+(p.bola&&prev>0?prev*p.bola:0);
+      var cpc=c.cpc*(1+0.2*(verba-500)/1000);
+      var conv=verba/cpc*[.6,.85,1][Math.min(m,3)-1];
+      var pac=Math.min(conv*c.marc*c.comp*c.fecho,20);
+      var fat=pac*c.ticket*p.tick[Math.min(m,3)-1];
+      var lucro=fat*.55-verba-p.mens;
+      saldo+=lucro; if(!paga&&saldo>=0)paga=m;
+      out.push({m:m,camp:p.camp[Math.min(m,p.camp.length)-1],verba:verba,conv:conv,pac:pac,fat:fat,lucro:lucro,saldo:saldo,sess:pac*3});
+      prev=lucro;
+    }
+    return {meses:out,paga:paga,saldo:saldo,ano:out.reduce(function(a,r){return a+r.lucro},0)};
+  }
+  function bloco(chave,cen){
+    var p=PL[chave],c=CEN[cen],r=projeta(p,c),u=r.meses[11];
+    var linhas=r.meses.map(function(x){
+      return "<tr><td>"+x.m+"</td><td class='v'>"+x.camp+"</td><td class='v'>"+brl(x.verba,10)+"</td><td class='v'>"+Math.round(x.conv)+"</td><td class='v'>"+dec(x.pac)+"</td><td class='v'>"+brl(x.fat,100)+"</td><td class='v'><b>"+brl(x.lucro,50)+"</b></td><td class='v "+(x.saldo<0?"mau":"bom")+"'>"+brl(x.saldo,50)+"</td><td><div class='agenda-c'><div class='mini'><i style='width:"+Math.min(100,x.sess/60*100).toFixed(0)+"%'></i></div><span class='num'>"+Math.round(x.sess)+"/60</span></div></td></tr>";
+    }).join("");
+    var camp=p.campanhas.map(function(k){return "<li><span class='q'>"+k[0]+"</span><span>"+k[1]+"</span></li>"}).join("");
+    var rot=p.rotina.map(function(k){return "<li><span class='q'>"+k[0]+"</span><span>"+k[1]+"</span></li>"}).join("");
+    return "<section class='plano-res bloco' aria-label='Plano "+p.nome+"'>"+
+      "<div class='res-cab'><h2>"+p.nome+(chave==="crescimento"?" · recomendado":"")+"</h2>"+
+      "<p class='precos-linha num'><span>Implementação <b>"+brl(p.impl)+"</b></span><span>Mensalidade a partir de <b>"+brl(p.mens)+"</b></span><span>Anúncios <b>"+brl(p.verba)+"/mês</b>"+(p.bola?" + 30% do lucro":"")+"</span><span>Cenário <b>"+c.nome+"</b></span></p></div>"+
+      "<div class='kpis'>"+
+        "<div class='kpi escuro'><strong>"+(r.paga?r.paga+".º mês":"Não se paga")+"</strong><span>"+(r.paga?"implementação de "+brl(p.impl)+" paga":"em 12 meses, neste cenário")+"</span></div>"+
+        "<div class='kpi'><strong class='num "+(r.saldo<0?"mau":"")+"'>"+brl(r.saldo,100)+"</strong><span>saldo do 1.º ano, já descontada a implementação</span></div>"+
+        "<div class='kpi'><strong class='num "+(u.lucro<0?"mau":"")+"'>"+brl(u.lucro,50)+"</strong><span>lucro líquido por mês no 12.º mês</span></div>"+
+        "<div class='kpi'><strong class='num'>"+dec(u.pac)+"</strong><span>pacientes novos em tratamento por mês no 12.º mês</span></div>"+
+      "</div>"+
+      "<div class='rolar'><table class='proj'><thead><tr><th>Mês</th><th>Campanhas</th><th>Anúncios</th><th>Conversas</th><th>Pacientes novos</th><th>Faturamento a mais</th><th>Lucro líquido</th><th>Saldo</th><th>Agenda</th></tr></thead><tbody>"+linhas+"</tbody></table></div>"+
+      "<div class='duas'><div class='caixa'><h3>Campanhas</h3><ul class='lista'>"+camp+"</ul></div><div class='caixa'><h3>O que muda na rotina</h3><ul class='lista'>"+rot+"</ul></div></div>"+
+    "</section>";
+  }
+  var estado={plano:"crescimento",cen:"provavel"};
+  function desenha(){
+    var s=document.getElementById("saida");
+    if(window.__PDF){document.body.classList.add("pdf");s.innerHTML=["essencial","crescimento","completo"].map(function(k){return bloco(k,"provavel")}).join("");return}
+    s.innerHTML=bloco(estado.plano,estado.cen);
+  }
+  function liga(sel,campo){
+    document.querySelectorAll(sel).forEach(function(b){
+      b.addEventListener("click",function(){
+        document.querySelectorAll(sel).forEach(function(o){o.setAttribute("aria-pressed",o===b?"true":"false")});
+        estado[campo]=b.dataset[campo==="plano"?"plano":"cen"]; desenha();
+      });
+    });
+  }
+  liga(".planos-bt button","plano"); liga(".segmentos button","cen");
+  desenha();
+})();
+</script>

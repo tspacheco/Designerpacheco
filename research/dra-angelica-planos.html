@@ -298,7 +298,7 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
       {t:"Recepcionista com IA no WhatsApp, 24 horas: tira dúvidas, marca e remarca",n:1},
       {t:"Casos de dor ou urgência passados na hora para a Dra.",n:1},
       {t:"2 campanhas: check-up + prótese e clareamento",n:1}]},
-    {nome:"Completo",verba:1500,impl:10000,mens:1100,mult:1.2,inclui:[
+    {nome:"Completo",verba:1500,impl:10000,mens:1100,mult:1.2,nota:"Valor com a verba fixa em R$ 1.500. Com a bola de neve o lucro cresce mês a mês: ver Resultados de cada plano.",inclui:[
       "Tudo do Crescimento",
       {t:"Follow-up automático para quem conversou e sumiu, e para orçamentos sem resposta",n:1},
       {t:"Google Ads: quem procura “dentista em Mogi”",n:1},
@@ -333,7 +333,7 @@ summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style-position:ins
         '<div class="resultado">'+
           '<div class="linha-r"><span class="suave">Faturamento a mais por mês</span><strong class="num">'+brl(arred(x.fat,100))+'</strong></div>'+
           '<div class="linha-r"><span class="suave">Lucro líquido por mês</span><span class="lucro num '+(x.lucro>=0?"bom":"mau")+'">'+lucroTxt+'</span></div>'+
-          '<p class="suave num">'+(x.lucro>0?"A implementação se paga em cerca de "+Math.ceil(p.impl/x.lucro)+(Math.ceil(p.impl/x.lucro)>1?" meses":" mês")+".":"Neste cenário o plano ainda não se paga.")+'</p>'+
+          '<p class="suave num">'+(x.lucro>0?(p.nota||"Mês a mês, com o aprendizado dos anúncios: ver Resultados de cada plano."):"Neste cenário o plano ainda não se paga.")+'</p>'+
           '<div class="agenda'+(cheia?" cheia":"")+'"><div class="linha-r"><span class="suave">Agenda ocupada</span><span class="num">'+Math.round(x.sess)+' de '+Math.round(v.livres)+' horários livres</span></div>'+
           '<div class="trilho" aria-hidden="true"><i style="width:'+pct+'%"></i></div>'+
           (cheia?'<span class="mau">Mais pacientes do que horários livres: seria preciso abrir mais horários.</span>':"")+'</div>'+
