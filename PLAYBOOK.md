@@ -1,7 +1,7 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 25/09/2026 (marca própria: cartão em romeno para a Roménia + página do QR — secção 15)
+> Última atualização: 25/09/2026 (marca própria: cartão em romeno + ro.pachecost.com, a página do QR — secção 15)
 
 ## 0. COMO USAR
 
@@ -160,7 +160,7 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 
 *(Caveat e Kalam são fontes de acento manuscrito — podem repetir.)*
 
-*Marca própria (Pacheco Studios): Archivo Black + Space Mono + Inter, fixas em tudo o que é nosso (Instagram, cartão, pachecostudios.pt). Não contam para esta rotação.*
+*Marca própria (Pacheco Studios): Archivo Black + Space Mono + Inter, fixas em tudo o que é nosso (Instagram, cartão, pachecost.com, ro.pachecost.com). Não contam para esta rotação.*
 
 ## 7. CATÁLOGO — SITES JÁ CRIADOS
 
@@ -200,7 +200,7 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 
 ### Marca própria
 
-- **pachecostudios.pt** (`sites/pacheco-studios/`): página para onde aponta o QR do cartão. Inclui o slogan, os trabalhos (capturas do Grupo Naval e do Hanam + parceiros do Instagram), preços da tabela, como funciona, o campo para abrir o endereço escrito no cartão e o contacto. Tem `404.html` com o mesmo campo. Por publicar (ver secção 15).
+- **ro.pachecost.com** (`sites/pacheco-studios/`): página romena para onde aponta o QR do cartão. Três separadores: **Proiecte** (um quadrado por site feito, com a fonte e as cores do próprio site; abre o site com um botão «Înapoi» fixo; quadrado tracejado «Afacerea ta?» no fim), **Automatizări** (8, cada uma com a dor na voz do dono e o fluxo em 4 passos; três «caminhos» por tipo de negócio para não confundir), **Ce mai facem** (7 serviços com exemplos). Contacto com WhatsApp, email, Instagram e pachecost.com. Sem preços. Versão portuguesa para rever em `/pt/`. Por publicar (ver secção 15).
 - **Cartão de visita** (`marca/cartao/`): **em romeno** (mercado: Roménia), igual para todos os negócios. Propósito: *Web design · implementare sisteme AI*; telefone +351 967 117 357 (WhatsApp); frase do verso escolhida entre 5 (`frases-opcoes.png`). PDF de impressão + pré-visualização. Contactos em `marca/dados.json`, partilhados com a página.
 
 ### Propostas PDF (reportlab)
@@ -234,7 +234,7 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - [ ] **Instituto dos Ferroviários** — logótipo oficial, detalhes da festa, cartaz para Instagram.
 - [ ] **Dra. Angélica Lauermann Gomes (dentista, Mogi das Cruzes – SP, Brasil)** — análise em `research/dra-angelica-lauermann.md`: faturação provável R$ 20–25 mil/mês; 3 focos = marcação + anti-falta por WhatsApp, Google (site pt-BR + avaliações), orçamentos + retorno. Primeiro cliente fora de Portugal: site pt-BR, LGPD, regras de publicidade do CFO. Esquema dos 3 workflows (Cal.com + Make/n8n + Notion + Brevo, sem HighLevel) em `research/dra-angelica-workflows.html`. **24/09:** demo do site feita (`sites/dra-angelica-lauermann/`); o Tomás decidiu que a agenda não será o Cal.com (volume de uma clínica); o esquema dos workflows passou a "agenda da clínica, a escolher" (requisitos: webhook ou API e link de reagendamento). **Depois:** o Tomás decidiu não usar a Clinicorp (custos em `research/agenda-clinica-odontologica-br.md`) e construir um sistema à medida: Supabase + painel PWA + WhatsApp Cloud API + n8n + IA (Claude) + Brevo, sem o prontuário (legal). Arquitetura e fases em `research/dra-angelica-sistema.md`.
 - [ ] Acrescentar telefone do Tomás às propostas PDF: **+351 967 117 357**.
-- [ ] **Cartões para a Roménia + pachecostudios.pt** (secção 15), por esta ordem: (1) escolher a frase do verso (`marca/cartao/frases-opcoes.png` → `"frase"` em `marca/dados.json`); (2) **página do QR em romeno**: hoje está em português, com preços e serviços de Portugal (MB WAY, faturação AT, Algarve). Definir preços/serviços para a Roménia e traduzir, tirando a secção "Tem um endereço escrito no cartão?"; (3) confirmar e comprar o domínio (`pachecostudios.pt` não respondia no DNS; o `.com` é de outra pessoa; `.ro` também não respondia); (4) `python3 sites/pacheco-studios/gerar.py` → arrastar o zip para o Netlify → testar `/c`; (5) `dominio_confirmado: true` → `python3 marca/cartao/gerar.py` → um romeno lê o cartão → imprimir 1 em casa e ler o QR com 2 telemóveis → gráfica.
+- [ ] **Cartões para a Roménia + ro.pachecost.com** (secção 15), por esta ordem: (1) escolher a frase do verso (`marca/cartao/frases-opcoes.png` → `"frase"` em `marca/dados.json`); (2) rever a página romena (`/pt/` tem a versão portuguesa) e pedir a um romeno que leia cartão e página; (3) ligar os parceiros que só existem em pachecost.com (Simona's, ProBuilders, Barbearia do Cão, Gelataria Muxagata): pôr o `url` em `portfolio.json` e `ativo: true` — o site estava bloqueado pela rede nesta sessão; (4) DNS de pachecost.com: `CNAME ro → <site>.netlify.app`; `python3 sites/pacheco-studios/gerar.py` → arrastar o zip (~18 MB) para o Netlify → ligar `ro.pachecost.com` → testar `/c`, um quadrado, o «Înapoi» e a 404; (5) `dominio_confirmado: true` → `python3 marca/cartao/gerar.py` → um romeno lê o cartão → imprimir 1 em casa e ler o QR com 2 telemóveis → gráfica.
 - [ ] Registar taxas de fecho por tipo de negócio (Albufeira, Gambelas, VNC).
 - [ ] **Toda Chic** — pedir à dona: (1) fotos individuais sem preço nem faixa das 6 peças que só existem em fichas (calções de linho, saia, blusas sem alça, vestido preto/branco, pantalona, conjunto vermelho); (2) preço das calças clássicas em 4 cores e das sandálias com laços; (3) tamanhos das ~20 peças sem indicação; (4) identificação da empresa (nome, NIF, morada), e-mail, portes/transportadora, software de faturação. Depois: mostrar a demo, fechar orçamento por referências, montar WooCommerce + ifthenpay.
 
@@ -282,7 +282,7 @@ Primeiro cliente de loja online: **Toda Chic** (`sites/toda-chic/`). Regras apre
 
 ## 15. MARCA PACHECO STUDIOS (novo — 25/09/2026)
 
-Identidade já usada no Instagram (@pachecostudiospt), agora também no cartão e em pachecostudios.pt. **Tudo o que é nosso usa isto; os clientes nunca.** Mercado do cartão: **Roménia** (desde 25/09/2026).
+Identidade já usada no Instagram (@pachecostudiospt), agora também no cartão e em ro.pachecost.com. O site principal é **pachecost.com**. **Tudo o que é nosso usa isto; os clientes nunca.** Mercado do cartão: **Roménia** (desde 25/09/2026).
 
 - **Cores:** carvão `#141210` · osso `#EFEAE3` · laranja `#E8622C`. Derivadas com contraste medido: `#A5A19B` (texto secundário sobre carvão, 7,3:1) · `#4D4A47` (secundário sobre osso, 7,4:1) · `#A64923` (laranja para texto sobre osso, 4,9:1) · `#D35A29` (traços sobre osso, 3,3:1). O laranja puro sobre osso dá só 2,8:1: nunca em texto sobre fundo claro.
 - **Fontes:** Archivo Black (títulos em maiúsculas) · Space Mono (etiquetas, contactos, preços) · Inter (texto corrido). Os ficheiros estão em `marca/fontes/`. O Inter vem como fonte variável (um só ficheiro).
@@ -290,8 +290,9 @@ Identidade já usada no Instagram (@pachecostudiospt), agora também no cartão 
 - **Romeno nas fontes:** os ficheiros base (latin) não têm Ă, Ș nem Ț. Usar sempre também os `*-latin-ext.woff2` de `marca/fontes/` (`@font-face` com `unicode-range`). O gerador do cartão verifica se cada letra existe na fonte.
 - **Slogan:** "Onde o trabalho **ganha vida** online." O ponto final é o ponto laranja da marca.
 - **Dados de contacto num só sítio:** `marca/dados.json` alimenta o cartão e a página. Muda-se lá e corre-se `gerar.py` nos dois.
-- **Regra do QR:** o QR impresso aponta **sempre para o nosso domínio** (`pachecostudios.pt/C`), nunca direto para o Instagram ou para outro serviço. Assim o destino muda em `destino_qr` sem reimprimir nada. Instagram vs site: o site ganha para quem lê o QR à porta (abre sem app nem login, mostra sites reais e tem o WhatsApp à mão). O Instagram fica ligado a partir da página.
-- **Endereços curtos** (`enderecos_curtos`): `pachecostudios.pt/tasca-ria` → demo publicada. O cartão já não tem o espaço para escrever à mão (é igual para todos), mas continuam úteis para mandar a demo por WhatsApp.
+- **Regra do QR:** o QR impresso aponta **sempre para o nosso domínio** (`ro.pachecost.com/C` — subdomínio do site real, um CNAME no DNS de pachecost.com para o Netlify), nunca direto para o Instagram ou para outro serviço. Assim o destino muda em `destino_qr` sem reimprimir nada. Instagram vs site: o site ganha para quem lê o QR à porta (abre sem app nem login, mostra sites reais e tem o WhatsApp à mão). O Instagram fica ligado a partir da página.
+- **Endereços curtos** (`enderecos_curtos`): `ro.pachecost.com/tasca-ria` → demo publicada. O cartão já não tem o espaço para escrever à mão (é igual para todos), mas continuam úteis para mandar a demo por WhatsApp.
 - **Frase do verso:** a razão para apontar a câmara. As 5 opções estão em `dados.json` (`frases` + `frases_pt`) e desenhadas em `marca/cartao/frases-opcoes.png`. Recomendada: "Nu promitem. **Arătăm.**" (Não prometemos. Mostramos.)
-- **Impressão:** 85 × 55 mm, papel mate 350–400 g (sem brilho: o QR não reflete). O gerador recusa-se a fazer o PDF final enquanto faltar o telefone ou o domínio, e faz só a versão com faixa "PROVA".
+- **Impressão:** 85 × 55 mm, papel mate 350–400 g (sem brilho: o QR não reflete).
+- **Página do QR (ro.pachecost.com):** os sites do portefólio são copiados para `/p/<slug>/` no zip (com `noindex` e o botão «Înapoi» injetados pelo gerador) — não dependem de outros Netlify. Os quadrados são só CSS: nome no tipo de letra do site (Google Fonts) sobre as cores dele; nada de capturas. As 8 automatizações estão em `conteudo/ro.json` com a dor, 4 passos, o que ganha, o que precisa e com quais combina; as ligações entre elas abrem o cartão apontado sem sair da vista. Os separadores funcionam sem JavaScript (`:target` + `:has()`). Fontes da marca embutidas em subconjunto latin + romeno (`marca/fontes/*-ro.woff2`, feitas com fontTools a partir do TTF do Google Fonts — pedir o CSS com um User-Agent de Android 2.2 para vir TTF). O gerador recusa-se a fazer o PDF final enquanto faltar o telefone ou o domínio, e faz só a versão com faixa "PROVA".
 - **Capturas de sites para mostrar trabalhos:** Playwright com `reducedMotion: 'reduce'` (estado final sem animações), esconder `.pv-banner` e pedir as fontes do Google pelo lado Node (`route.fetch()`). O Chromium desta sessão não confia no proxy e sem isto as capturas saem com fontes de sistema.
