@@ -41,6 +41,8 @@ PARTES = [
      "Grant Cardone: o que serve, o que se adapta e o que se ignora.", "Método 10X"),
     ("research/romenia.md", "Expansão", "Roménia",
      "Plano inicial e primeiras tarefas rotineiras para espalhar a Pacheco Studios.", "Roménia"),
+    ("research/iasi.md", "Onde estás", "Iași",
+     "Zonas, primeiros alvos sem site e a primeira semana na rua.", "Iași"),
 ]
 
 PW, PH = 100 * mm, 178 * mm          # formato de telemóvel
@@ -540,44 +542,49 @@ class Doc(BaseDocTemplate):
         c.drawRightString(PW - 22, y, f"{hoje:%d/%m/%Y}")
 
         largura = PW - 44
-        tam = min(40, largura / pdfmetrics.stringWidth("PROSPEÇÃO", "Titulo", 1))
-        c.setFont("Titulo", tam)
-        c.setFillColor(CREME)
-        y = PH - 128
-        c.drawString(x - 1, y, "PROSPEÇÃO")
-        c.setFont("Titulo", tam * 2.35)
-        c.setFillColor(LARANJA)
-        y -= tam * 2.2
-        c.drawString(x - 3, y, "10X")
+        # índice ancorado em baixo (por cima do rodapé); o "10X" encolhe se houver muitas partes
+        estilo_d = ParagraphStyle("capa_d", fontName="Corpo", fontSize=7.4, leading=9.6, textColor=CREME_DIM)
+        indice = []
+        for n, (_, _, titulo, subt, _) in enumerate(PARTES, 1):
+            desc = Paragraph(escape(subt), estilo_d)
+            indice.append((n, titulo, desc, desc.wrap(largura - 22 - 26, 60)[1]))
+        topo_indice = 40 + sum(26 + hd for *_, hd in indice)
 
         sub = Paragraph("Rotina diária de terreno, o método de Grant Cardone aplicado à Pacheco Studios "
-                        "e o plano inicial para a Roménia.",
+                        "e o plano para a Roménia — a começar em Iași.",
                         ParagraphStyle("capa_s", fontName="Corpo", fontSize=9.6, leading=13.6,
                                        textColor=CREME_DIM))
         h = sub.wrap(largura, 200)[1]
-        y -= 22 + h
+        tam = min(40, largura / pdfmetrics.stringWidth("PROSPEÇÃO", "Titulo", 1))
+        y = PH - 116
+        k = max(1.3, min(2.2, (y - topo_indice - 26 - 20 - h) / tam))
+        c.setFont("Titulo", tam)
+        c.setFillColor(CREME)
+        c.drawString(x - 1, y, "PROSPEÇÃO")
+        c.setFont("Titulo", tam * k * 1.07)
+        c.setFillColor(LARANJA)
+        y -= tam * k
+        c.drawString(x - 3, y, "10X")
+        y -= 20 + h
         sub.drawOn(c, x, y)
 
-        y = y - 30
-        for n, (_, _, titulo, subt, _) in enumerate(PARTES, 1):
-            c.setStrokeColor(REGRA_ESCURA)
-            c.setLineWidth(0.6)
+        y = topo_indice
+        c.setStrokeColor(REGRA_ESCURA)
+        c.setLineWidth(0.6)
+        for n, titulo, desc, hd in indice:
             c.line(x, y, PW - 22, y)
             c.setFont("Mono-B", 7)
             c.setFillColor(LARANJA)
-            c.drawString(x, y - 16, f"{n:02d}")
-            c.setFont("Corpo-B", 11.5)
+            c.drawString(x, y - 15, f"{n:02d}")
+            c.setFont("Corpo-B", 11)
             c.setFillColor(CREME)
-            c.drawString(x + 22, y - 16.5, titulo)
+            c.drawString(x + 22, y - 15.5, titulo)
             pagina = self.paginas_capa.get(f"parte{n}")
             c.setFont("Mono", 6.6)
             c.setFillColor(CREME_DIM)
-            c.drawRightString(PW - 22, y - 16, f"p. {pagina}" if pagina else "")
-            desc = Paragraph(escape(subt), ParagraphStyle("capa_d", fontName="Corpo", fontSize=7.6,
-                                                          leading=10, textColor=CREME_DIM))
-            hd = desc.wrap(largura - 22 - 26, 60)[1]
-            desc.drawOn(c, x + 22, y - 22 - hd)
-            fundo = y - 28 - hd
+            c.drawRightString(PW - 22, y - 15, f"p. {pagina}" if pagina else "")
+            desc.drawOn(c, x + 22, y - 20 - hd)
+            fundo = y - 26 - hd
             c.linkRect("", f"parte{n}", (x, fundo, PW - 22, y), relative=0, thickness=0)
             y = fundo
         c.line(x, y, PW - 22, y)
@@ -590,6 +597,13 @@ class Doc(BaseDocTemplate):
 
 
 def main():
+    global SAIDA
+    if len(sys.argv) > 1:  # destino alternativo (testes): python3 prospecao/exportar_pdf.py /tmp/x.pdf
+        SAIDA = Path(sys.argv[1]).resolve()
+    em_falta = [p[0] for p in PARTES if not (RAIZ / p[0]).exists()]
+    if em_falta:
+        print(f"AVISO: a saltar partes sem ficheiro: {', '.join(em_falta)}")
+        PARTES[:] = [p for p in PARTES if (RAIZ / p[0]).exists()]
     registar_fontes()
     E = estilos()
     for caminho, *_ in PARTES:
@@ -602,7 +616,7 @@ def main():
     ensaio.build(historia(E))
     doc = Doc(str(SAIDA), ensaio.paginas, ensaio.page)
     doc.build(historia(E))
-    print(f"{SAIDA.relative_to(RAIZ)}: {doc.page} páginas "
+    print(f"{SAIDA}: {doc.page} páginas "
           f"({', '.join(f'parte {k[-1]} → p. {v}' for k, v in doc.paginas.items())})")
 
 
