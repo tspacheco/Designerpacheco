@@ -1,7 +1,7 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 26/09/2026 (direção de mercado «mostrar a máquina» — secção 16; marca própria — secção 15)
+> Última atualização: 26/09/2026 (direção «mostrar a máquina»: análise completa em research/ — secção 16)
 
 ## 0. COMO USAR
 
@@ -299,7 +299,16 @@ Identidade já usada no Instagram (@pachecostudiospt), agora também no cartão 
 
 ## 16. DIREÇÃO DE MERCADO: MOSTRAR A MÁQUINA (novo — 26/09/2026)
 
-Decisão do Tomás, a aplicar em tudo o que a Pacheco Studios faz daqui para a frente. Documento completo em `research/direcao-confianca.pdf`.
+Decisão do Tomás, a aplicar em tudo o que a Pacheco Studios faz daqui para a frente. Para apresentar: `research/direcao-confianca.pdf`. O raciocínio inteiro (fundamentos, riscos, Roménia, demo, métricas, plano a 90 dias, decisões pendentes): `research/mostrar-a-maquina-analise.md` (também em PDF). **Reler antes de mexer em posicionamento, propostas ou na página das automatizações.**
+
+- **A regra-mãe: construir a prova antes de pedir o sim.** Os sites já se vendem assim (demo antes da abordagem). Para cada produto, escolher a prova mais barata que ainda convence e fazê-la antes de vender: site → a demo; automatização → o fluxo desenhado + regras + demo genérica que responde + diário; loja → a demo Toda Chic; sistema à medida → o desenho + painel de exemplo.
+- **Funil:** os sites são a porta, as automatizações o segundo passo (vendem-se a quem já comprou o site, com o desenho na mão). A frio, só com a demo que responde.
+- **A IA é ingrediente, não título.** «Estúdio de inteligência artificial» pede fé; «sistemas que atendem, marcam e lembram, desenhados à tua frente» descreve. Verbos do balcão (atende, marca, lembra, cobra), nunca de agência.
+- **Oferta por ordem:** o Plano (20 min à mesa, PDF no mesmo dia) → o Piloto (1 automatização, 30 dias, 3 números combinados, saída com uma mensagem) → o Sistema → a Manutenção. Preço pelo desenho (caixas, contas ligadas, texto a aprovar), nunca pela palavra «IA». **Se uma proposta não tem desenho, não sai.**
+- **O assistente identifica-se sempre** (não só se perguntarem): o Regulamento da IA da UE obriga a partir de agosto de 2026 e a Roménia é UE. Mensagens de retorno e postări são marketing → consentimento + «STOP»; lembretes e confirmações são transacionais.
+- **Demo «Restaurantul Demo»** (WhatsApp Cloud API + n8n + Claude + Supabase): guião de 4 mensagens — olá (identifica-se) · mesa para 4 (marca) · pergunta fora da lista (passa a pessoa, o telemóvel do Tomás toca) · STOP (obedece). A passagem a pessoa é a prova, não a falha.
+- **Medir por mês:** conversas · desenhos à mesa (e quantos donos corrigiram o desenho) · demos experimentadas · pilotos · pilotos que viraram manutenção.
+- **Conteúdo:** um desenho por semana no Instagram («é isto que acontece quando…»), bastidores reais com autorização.
 
 - **O obstáculo não é a dor, é a confiança.** O dono já sente a dor. O que o trava é não saber o que a IA é, não ter provas e ter de dar um «ato de fé». Vender só pela dor pede fé; vender pela transparência pede lógica.
 - **Vendemos o plano, não a promessa.** Cada automatização mostra-se com o **fluxo desenhado** (como a proposta Be Legend: cada caixa um passo, gatilho, decisões, e os momentos em que entra uma pessoa), as **regras em linguagem simples** («se não responde em 24 h → toque 2»), **quem decide o quê** (o dono aprova os textos, a IA só escolhe entre respostas aprovadas, o que não sabe vai para uma pessoa) e **o que se vai medir** na primeira semana.
