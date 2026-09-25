@@ -95,6 +95,7 @@ def validar(nome, h):
 
 def main():
     d = json.load(open(os.path.join(MARCA, "dados.json"), encoding="utf-8"))
+    s = d["site"]  # textos da página (em português); contactos no topo de dados.json, partilhados com o cartão
     dominio = d["dominio"].strip().lower()
     url_site = f"https://{dominio}/"
     email, ig = d["email"].strip(), d["instagram"].lstrip("@")
@@ -102,7 +103,7 @@ def main():
     if digitos.startswith("351") and len(digitos) == 12:
         digitos = digitos[3:]
     tel_ok = len(digitos) == 9
-    tel_legivel = f"{digitos[:3]} {digitos[3:6]} {digitos[6:]}" if tel_ok else ""
+    tel_legivel = f"+351 {digitos[:3]} {digitos[3:6]} {digitos[6:]}" if tel_ok else ""  # sempre com o indicativo
     whatsapp = tel_ok and d.get("telefone_tem_whatsapp", True)
 
     if whatsapp:
@@ -131,17 +132,17 @@ def main():
     jsonld = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Pacheco Studios",
               "url": url_site, "image": url_site + "media/og.png",
               "description": "Sites, lojas online e automações para restaurantes, lojas e negócios do Algarve.",
-              "areaServed": {"@type": "AdministrativeArea", "name": d["regiao"]},
+              "areaServed": {"@type": "AdministrativeArea", "name": s["regiao"]},
               "email": email, "sameAs": [f"https://www.instagram.com/{ig}/"],
               "founder": {"@type": "Person", "name": d["nome"]}}
     if tel_ok:
-        jsonld["telephone"] = f"+351 {tel_legivel}"
+        jsonld["telephone"] = tel_legivel
 
     valores = {
         "FONTES": fontes_css(), "URL_SITE": url_site, "DOMINIO": html.escape(dominio),
         "JSONLD": json.dumps(jsonld, ensure_ascii=False).replace("</", "<\\/"),
-        "SLOGAN": slogan_html(d["slogan"]), "REGIAO": html.escape(d["regiao"].upper()),
-        "REGIAO_TEXTO": html.escape(d["regiao"]), "NOME": html.escape(d["nome"]),
+        "SLOGAN": slogan_html(s["slogan"]), "REGIAO": html.escape(s["regiao"].upper()),
+        "REGIAO_TEXTO": html.escape(s["regiao"]), "NOME": html.escape(d["nome"]),
         "CTA_URL": html.escape(cta_url), "CTA_URL_NEGOCIO": html.escape(cta_neg), "CTA_TEXTO": cta_txt,
         "CTA_ICONE": cta_ico, "CTA_NOTA": cta_nota, "CONTACTOS": contactos_html,
     }
@@ -247,7 +248,7 @@ def main():
     .so-leitor{{display:none}}
     .s{{position:absolute;left:84px;bottom:60px;font:400 24px/1 "Space Mono";letter-spacing:.12em;color:#A5A19B;text-transform:uppercase}}
     </style></head><body><p class="m"><i></i>PACHECO STUDIOS</p><p class="r">{valores['REGIAO']}</p>
-    <h1>{slogan_html(d['slogan'])}</h1><p class="s">{html.escape(d['servicos'])}</p></body></html>"""
+    <h1>{slogan_html(s['slogan'])}</h1><p class="s">{html.escape(s['servicos'])}</p></body></html>"""
     tmp_og = os.path.join(AQUI, ".og.html")
     open(tmp_og, "w", encoding="utf-8").write(og)
     subprocess.run(["node", "-e", """

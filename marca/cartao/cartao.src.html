@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <!-- Pacheco Studios — cartão de visita 85×55 mm (+3 mm de sangria = 91×61 mm por face).
-     NÃO editar cartao.html: é gerado por gerar.py a partir deste ficheiro e de dados.json. -->
-<html lang="pt-PT">
+     NÃO editar cartao.html: é gerado por gerar.py a partir deste ficheiro e de ../dados.json (bloco "cartao"). -->
+<html lang="{{LINGUA}}">
 <head>
 <meta charset="utf-8">
 <title>Pacheco Studios — cartão de visita</title>
 <style>
+/* base (latin) + latin-ext com os glifos romenos Ă Ș Ț */
 @font-face{font-family:"Archivo Black";font-weight:400;src:url("../fontes/archivo-black.woff2") format("woff2")}
+@font-face{font-family:"Archivo Black";font-weight:400;src:url("../fontes/archivo-black-latin-ext.woff2") format("woff2");unicode-range:{{LATIN_EXT}}}
 @font-face{font-family:"Space Mono";font-weight:400;src:url("../fontes/space-mono-400.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-weight:400;src:url("../fontes/space-mono-400-latin-ext.woff2") format("woff2");unicode-range:{{LATIN_EXT}}}
 @font-face{font-family:"Space Mono";font-weight:700;src:url("../fontes/space-mono-700.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-weight:700;src:url("../fontes/space-mono-700-latin-ext.woff2") format("woff2");unicode-range:{{LATIN_EXT}}}
 
 :root{
   /* marca (Instagram) */
@@ -16,8 +20,7 @@
   /* derivadas com contraste medido (WCAG) */
   --osso-2:#A5A19B;        /* texto secundário sobre carvão — 7,3:1 */
   --tinta-2:#4D4A47;       /* texto secundário sobre osso — 7,4:1 */
-  --laranja-tinta:#A64923; /* texto laranja pequeno sobre osso — 4,9:1 */
-  --laranja-traco:#D35A29; /* traço tracejado sobre osso — 3,3:1 */
+  --laranja-tinta:#A64923; /* texto laranja sobre osso — 4,9:1 */
 }
 @page{size:91mm 61mm;margin:0}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -40,41 +43,39 @@ body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:"Spac
   font-weight:700;font-size:7.5pt;letter-spacing:.24em;line-height:1}
 .ponto{width:1.9mm;height:1.9mm;border-radius:50%;background:var(--laranja);flex:none}
 .regiao{position:absolute;right:0;top:0;font-size:7.5pt;letter-spacing:.24em;line-height:1;color:var(--osso-2)}
-.slogan{position:absolute;left:-.35mm;top:6.9mm;font-family:"Archivo Black",sans-serif;font-weight:400;
-  font-size:21pt;line-height:.97;letter-spacing:.004em;text-transform:uppercase}
+.slogan{position:absolute;left:-.35mm;top:6.6mm;font-family:"Archivo Black",sans-serif;font-weight:400;
+  font-size:20pt;line-height:1.02;letter-spacing:.004em;text-transform:uppercase}
 .slogan > span{display:block}
-.slogan .o{color:var(--laranja)}
-/* o ponto final do slogan é o ponto laranja da marca */
+.o{color:var(--laranja)}
+/* o ponto final das frases é o ponto laranja da marca */
 .pf{display:inline-block;width:.21em;height:.21em;border-radius:50%;background:var(--laranja);margin-left:.07em}
 .so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.servicos{position:absolute;left:0;bottom:0;font-size:7.5pt;letter-spacing:.1em;line-height:1;color:var(--osso-2)}
+.proposito{position:absolute;left:0;bottom:0;font-size:7.5pt;letter-spacing:.1em;line-height:1;color:var(--osso-2)}
 
 /* ——— VERSO ——— */
-.nome{position:absolute;left:0;top:0;font-family:"Archivo Black",sans-serif;font-size:11.5pt;
+.nome{position:absolute;left:0;top:.7mm;font-family:"Archivo Black",sans-serif;font-size:11.5pt;
   line-height:1;letter-spacing:.01em}
-.funcao{position:absolute;left:0;top:5.6mm;font-size:7.5pt;line-height:1;color:var(--tinta-2)}
-.contactos{position:absolute;left:0;top:13.2mm;list-style:none;display:grid;row-gap:2.1mm}
-.contactos li{display:flex;align-items:center;gap:1.8mm;line-height:1;white-space:nowrap}
+.funcao{position:absolute;left:0;top:6.3mm;font-size:7.5pt;line-height:1;color:var(--tinta-2)}
+.contactos{position:absolute;left:0;top:13.1mm;list-style:none;display:grid;row-gap:2.1mm}
+.contactos li{display:flex;align-items:center;gap:1.7mm;line-height:1;white-space:nowrap}
 .contactos svg{width:2.9mm;height:2.9mm;flex:none;fill:none;stroke:var(--tinta-2);stroke-width:2;
   stroke-linecap:round;stroke-linejoin:round}
 .contactos .v{font-size:8.5pt;font-weight:400;letter-spacing:.01em}
-.contactos .tel .v{font-size:10pt;font-weight:700;letter-spacing:.03em}
-.contactos .r{font-size:7.5pt;letter-spacing:.08em;color:var(--tinta-2);text-transform:uppercase}
+.contactos .tel .v{font-size:9pt;font-weight:700;letter-spacing:0}
+.contactos .r{font-size:7.5pt;letter-spacing:.02em;color:var(--tinta-2);text-transform:uppercase}
 
 .qr{position:absolute;right:0;top:0;width:21mm;display:flex;flex-direction:column;align-items:flex-end}
 .qr svg{display:block;width:21mm;height:21mm;shape-rendering:crispEdges}
 /* legenda fora da zona de silêncio do QR (4 módulos ≈ 3,4 mm) */
 .qr figcaption{margin-top:3.6mm;text-align:right;line-height:1.25;white-space:nowrap}
-.qr b{display:block;font-size:7.5pt;letter-spacing:.05em}
+.qr b{display:block;font-size:7.5pt;letter-spacing:.05em;text-transform:uppercase}
 .qr span{display:block;font-size:7.5pt;color:var(--tinta-2)}
 
-.slot{position:absolute;left:0;right:0;bottom:0;height:13.4mm}
-.slot-rotulo{position:absolute;left:3.2mm;top:0;font-size:7.5pt;font-weight:700;letter-spacing:.16em;
-  line-height:1;color:var(--laranja-tinta)}
-.slot-campo{position:absolute;left:0;right:0;bottom:0;height:9mm}
-.slot-campo svg{position:absolute;inset:0;width:100%;height:100%}
-.slot-campo span{position:absolute;left:3.6mm;top:50%;transform:translateY(-46%);font-size:8.5pt;
-  font-weight:700;letter-spacing:.01em;line-height:1}
+/* frase: a razão para apontar a câmara */
+.frase{position:absolute;left:0;right:0;bottom:0;font-family:"Archivo Black",sans-serif;font-size:13pt;
+  line-height:1.08;letter-spacing:.005em;text-transform:uppercase;text-wrap:balance}
+.verso .o{color:var(--laranja-tinta)}
+.verso .pf{background:var(--laranja-tinta)}
 
 /* ——— PROVA: impede imprimir dados por confirmar ——— */
 .prova .face::after{content:attr(data-prova);position:absolute;left:50%;top:50%;width:120mm;
@@ -106,7 +107,7 @@ body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:"Spac
     <p class="marca"><span class="ponto"></span>PACHECO STUDIOS</p>
     <p class="regiao">{{REGIAO}}</p>
     <h1 class="slogan">{{SLOGAN}}</h1>
-    <p class="servicos">{{SERVICOS}}</p>
+    <p class="proposito">{{PROPOSITO}}</p>
   </div>
 </section>
 </div>
@@ -123,20 +124,14 @@ body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:"Spac
     </ul>
     <figure class="qr">
       {{QR_SVG}}
-      <figcaption><b>VER TRABALHOS</b><span>aponte a câmara</span></figcaption>
+      <figcaption><b>{{LEGENDA_QR}}</b><span>{{DOMINIO}}</span></figcaption>
     </figure>
-    <div class="slot">
-      <span class="slot-rotulo">O SEU SITE</span>
-      <div class="slot-campo">
-        <svg viewBox="0 0 77 9" preserveAspectRatio="none" aria-hidden="true"><rect x=".2" y=".2" width="76.6" height="8.6" rx="4.3" fill="none" stroke="var(--laranja-traco)" stroke-width=".35" stroke-dasharray="1.15 .85"/></svg>
-        <span>{{DOMINIO}}/</span>
-      </div>
-    </div>
+    <p class="frase">{{FRASE}}</p>
   </div>
 </section>
 </div>
 
 </div>
-<div class="legenda"><span>FRENTE</span><span>VERSO</span></div>
+<div class="legenda"><span>{{ROTULO_FRENTE}}</span><span>{{ROTULO_VERSO}}</span></div>
 </body>
 </html>
