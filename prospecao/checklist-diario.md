@@ -70,7 +70,7 @@ Mínimo **5 contactos** antes de marcar `nao` no tracker.
 - [ ] Demos em falta → **um só pedido ao Claude, em lote** (5–6 sites por chat, secção 12 do playbook). Nunca uma a uma.
 - [ ] Escrever as metas outra vez (as do dia e a grande). Uma frase: o que funcionou / o que mudo amanhã.
 
-**Meta grande (escrever todos os dias):** _"__ clientes em mensalidade até __/__/____."_ Meta normal × 10 = meta 10X. Nunca baixar a meta — subir a ação.
+**Meta grande (escrever todos os dias):** *"N clientes em mensalidade até DD/MM/AAAA."* Meta normal × 10 = meta 10X. Nunca baixar a meta — subir a ação.
 
 ## 5. Objeções — uma frase cada
 
