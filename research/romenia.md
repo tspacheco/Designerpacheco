@@ -2,6 +2,7 @@
 
 > 24/09/2026. Pressuposto: o Tomás vai estar fisicamente numa cidade romena (Erasmus ou temporada) e usa o mesmo método — demos antes, apresentação no telemóvel, porta-a-porta. Se for só à distância, a secção 8 (comissionistas) passa a ser o plano principal.
 > HONEST-DATA aplica-se ao mercado: o que está marcado **(a confirmar)** valida-se na semana 0/1, não se assume. Atualizar este ficheiro com o que se confirmar.
+> **25/09/2026: o Tomás está em Iași.** A cidade está escolhida; zonas, alvos, calendário e a primeira semana com datas estão em `research/iasi.md`.
 
 ## 1. Porque a Roménia — e onde a ideia pode falhar
 
@@ -28,7 +29,7 @@
 | **Sibiu** (~130 k, turismo, património) | Centro compacto, muito turismo alemão/austríaco, escala humana | Pequena: esgota-se em 2 meses | Boa 2.ª zona depois de Brașov |
 | **Constanța / Mamaia** (~260 k, litoral) | O "Algarve" romeno — o playbook transfere-se quase igual | Época de junho a setembro; fora dela ninguém compra | Só de abril a junho (vender antes da época) |
 | **Timișoara** (~250 k, oeste) | Cidade rica, cultura de negócios, muitos cafés e restaurantes, menos saturada | Menos turismo → menos urgência | Boa base se for a cidade do Erasmus |
-| **Iași** (~270 k, universitária) | Muitos estudantes, preços baixos, pouca concorrência | Poder de compra menor | Aceitável |
+| **Iași** (271.692 hab., censo 2021; ~50–60 mil estudantes) | Cidade universitária; ~3.000 estudantes estrangeiros na UMF (França, Marrocos, Moldávia, Israel, Grécia) → sites RO/EN/FR; ~8.600 trabalhadores IT; Sf. Parascheva traz ~300 mil peregrinos em outubro | Freelancers no OLX a 400–750 lei; salário médio líquido do județ 5.497 lei (abaixo da média nacional) | **Base atual — o Tomás está cá.** Ver `research/iasi.md` |
 | **Cluj-Napoca** (~290 k) | Hub tecnológico, dinheiro | Saturada de agências; restaurantes já têm site; rendas altas | Evitar para começar |
 | **București** (~1,8 M) | Maior número absoluto de negócios sem site | Demasiado grande, agências, deslocações | Só um bairro (Floreasca, Dorobanți, Centrul Vechi) e só depois de 1 mês noutra cidade |
 
@@ -36,7 +37,7 @@ Regra: a cidade é onde vais estar; dentro dela, **1 rua comercial com ≥15 neg
 
 ## 3. Tipos de negócio por ordem de facilidade
 
-1. **Restaurant / pizzerie / terasă** (esplanada) — igual a PT: ementa fotografada = preços em lei; CTA de reservas por WhatsApp/telefone; ligar aos apps de entrega que já usam (Glovo, Tazz, Bolt Food — **a confirmar** quais operam na cidade).
+1. **Restaurant / pizzerie / terasă** (esplanada) — igual a PT: ementa fotografada = preços em lei; CTA de reservas por WhatsApp/telefone; ligar aos apps de entrega que já usam (Glovo, Wolt — que absorveu o Tazz em 2025 — e Bolt Food; em Iași operam os três). Reservas: ialoc e Bookingham.
 2. **Pensiune / vilă / cabană** (alojamento local) — o cliente mais lucrativo: RO+EN+DE, botão de reserva direta (poupa a comissão do Booking), mapa, fotos. Abundantes em Brașov, Sibiu e Vale do Prahova.
 3. **Cofetărie / patiserie / cafenea / brutărie** (pastelaria, padaria, café) — manhã cedo; ticket baixo mas volume; ideais para packs QR.
 4. **Frizerie / salon de înfrumusețare** (barbearia, salão) — 2.ª/3.ª feira; a marcação por WhatsApp é o argumento.
@@ -59,6 +60,8 @@ Câmbio de referência ~5 lei por euro **(a confirmar no dia)**. Falar sempre em
 | Pack de mesa completo (recenzii + Wi-Fi + WhatsApp + Instagram) | 59 € | 249 lei |
 
 Semana 0: pedir orçamento, como cliente-mistério, a 5 freelancers/agências locais (OLX → *Servicii*, grupos de Facebook, Google "creare site restaurant <cidade>") e ajustar. Se o mercado andar nos 800–1.500 lei, **não descer abaixo dos 1.990 lei**: baixar o preço mata a mensalidade, e a mensalidade é o negócio.
+
+**Iași (pesquisa de 25/09/2026):** o mercado tem dois andares — freelancers no OLX a **400–750 lei** por site de prezentare e agências locais a partir de **~500 €** (Webris desde 499 €, Web Expert Iași desde 500 €). Os 2.490 lei ficam no preço de entrada das agências, não no dos freelancers: a venda é "já está feito, veja" e a qualidade, nunca o preço. Detalhe e recomendação em `research/iasi.md`, secção 6.
 
 Pagamento: transferência bancária (o dono paga por *ordin de plată* para um IBAN) ou Revolut, muito usado na Roménia. Abrir conta que receba lei sem custos de câmbio (Revolut Business / Wise — **a confirmar**). Cartão na hora para os packs QR (Revolut Pro / SumUp — **a confirmar**). MB WAY não existe lá.
 
@@ -86,7 +89,7 @@ Formalidade: sempre *dumneavoastră* com donos; *domnule* / *doamnă* + apelido.
 - **Faturar de Portugal.** Serviço B2B a cliente noutro Estado-membro: sem IVA português se o cliente tiver NIF-IVA válido no VIES (autoliquidação / *reverse charge*, com a menção na fatura). Muitos pequenos negócios romenos estão isentos de IVA e **não aparecem no VIES** → o contabilista decide (provavelmente IVA PT a 23 %, ou o cliente faz um registo especial de IVA para serviços intracomunitários). Pedir sempre o **CUI** (NIF romeno) e verificar no VIES antes de fechar o preço.
 - **Retenção na fonte** romena sobre certos serviços pagos a não residentes, e a convenção de dupla tributação PT–RO — **a confirmar** com o contabilista se se aplica a web design. Se sim, o cliente vai precisar do teu certificado de residência fiscal.
 - **Não abrir empresa lá** (SRL/PFA) enquanto não houver ≥10 mensalidades: custo, contabilista local, obrigações mensais.
-- **Estadia > 90 dias:** registo como cidadão da UE no IGI (Inspectoratul General pentru Imigrări) — *certificat de înregistrare*. O Erasmus faz o mesmo.
+- **Estadia > 90 dias:** registo como cidadão da UE no IGI (Inspectoratul General pentru Imigrări) — *certificat de înregistrare*. Em Iași: Serviciul pentru Imigrări al județului Iași (morada e horário **a confirmar**); formulário do IGI, CC ou passaporte, prova do motivo (matrícula Erasmus) e prova de morada.
 - **RGPD** igual ao nosso; autoridade local ANSPDCP. Cookies: só Google Fonts + iframe do mapa, como em PT.
 - **Contratos:** proposta em RO+EN; aceitação por WhatsApp/e-mail com nome, CUI e morada; 50 % na adjudicação, 50 % na entrega.
 
@@ -95,17 +98,19 @@ Formalidade: sempre *dumneavoastră* com donos; *domnule* / *doamnă* + apelido.
 - `<html lang="ro">`; versão EN sempre (DE em Brașov/Sibiu; HU em Harghita, Covasna e Cluj).
 - **Diacríticos com vírgula:** ș (U+0219), ț (U+021B), Ș, Ț — nunca cedilha (ş/ţ, U+015F/U+0163). Validar: `grep -c $'ş\|ţ\|Ş\|Ţ' index.html` tem de dar 0.
 - **Fonte display com `latin-ext`:** confirmar em fonts.google.com que a fonte lista "Romanian". Sem isso, ș/ț caem na fonte de fallback e o site fica "estrangeiro". O tracker da secção 6 do playbook continua a valer — fonte nova por site.
-- **Rodapé legal:** em vez do Livro de Reclamações, link **ANPC – SAL** (`https://anpc.ro/ce-este-sal/` — confirmar URL atual) e dados da firma (denumire SRL/PFA, CUI, Nr. Reg. Com.) — pedir ao cliente; até lá "de confirmat". A plataforma europeia ODR/SOL foi descontinuada em 2025 **(a confirmar)** — não pôr o link antigo.
+- **Rodapé legal:** em vez do Livro de Reclamações, link **ANPC – SAL** (`https://anpc.ro/ce-este-sal/` — confirmar URL atual) e dados da firma (denumire SRL/PFA, CUI, Nr. Reg. Com.) — pedir ao cliente; até lá "de confirmat". A plataforma europeia ODR/SOL acabou: o Reg. (UE) 2024/3228 revogou-a com efeitos a 20/07/2025 — não pôr o link antigo.
 - Banner de demo: `PREZENTARE PACHECO STUDIOS · site demonstrativ` (remover na venda).
 - Telefone `+40 7xx xxx xxx`; WhatsApp `wa.me/407…`; moeda "45 lei" (número antes, sem símbolo); morada "Str. …, nr. …, Oraș, Județ"; JSON-LD `addressCountry: "RO"`, `priceRange: "40–80 lei"`.
-- Botões de entrega/reserva reais quando existirem (Glovo, Tazz, Bolt Food, ialoc — **a confirmar** por cidade). Link para a página de Facebook em destaque: é onde o dono vive.
+- Botões de entrega/reserva reais quando existirem (Glovo, Wolt — ex-Tazz —, Bolt Food; reservas ialoc ou Bookingham). Link para a página de Facebook em destaque: é onde o dono vive.
 - Domínio `.ro` (anual, registadores acreditados pela ROTLD — **a confirmar** preço) ou `.com`; alojamento igual (Netlify/Hostinger).
 - HONEST-DATA em romeno: "de confirmat" no lugar de "a confirmar".
 - Assinatura visual nova por site, a partir do mundo real romeno (mici na grelha, sarmale, ceaun, cozonac, țuică, floresta, montanha, mar) — nunca folclore genérico.
 
 ## 8. As primeiras tarefas rotineiras (90 dias)
 
-### Semana 0 — ainda em Portugal (preparar, não improvisar)
+### Semana 0 — preparar, não improvisar
+
+> Escrita para quem ainda não tinha chegado. Em Iași, a semana 0 real (com datas e o calendário das aulas) está em `research/iasi.md`, secção 7.
 
 - [ ] Escolher cidade + primeira rua (secção 2). Registar em `research/romenia-<cidade>.md`.
 - [ ] Pesquisa da rua: 30 negócios sem site, ≥4,2★, ≥50 avaliações → Lista A (visitar) / Lista B (ligar: pensões fora da cidade). Guardar no mesmo ficheiro.
@@ -138,6 +143,6 @@ Formalidade: sempre *dumneavoastră* com donos; *domnule* / *doamnă* + apelido.
 
 - Taxa de resposta real ao porta-a-porta numa cidade romena (hipótese: igual a PT).
 - Preço aceitável vs. orçamentos locais.
-- Que apps de entrega/reserva dominam na cidade escolhida.
+- ~~Que apps de entrega/reserva dominam na cidade escolhida.~~ Iași: Glovo, Wolt (ex-Tazz), Bolt Food; reservas ialoc e Bookingham (25/09).
 - Se o VIES/IVA obriga a preço com IVA para os pequenos negócios.
 - Se o autocolante "recenzii" é bem aceite nas portas (norma social) — testar em 10 negócios.

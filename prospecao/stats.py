@@ -15,6 +15,7 @@ O estado de cada negócio é o mais avançado que alguma vez atingiu.
 """
 import csv
 import sys
+import unicodedata
 from collections import Counter, defaultdict
 from datetime import date, datetime
 from pathlib import Path
@@ -36,6 +37,11 @@ def ler():
             for r in csv.DictReader(f, delimiter=sep)
         ]
     return [l for l in linhas if l.get("negocio")]
+
+
+def chave(s):
+    """'Iași' e 'Iasi' são a mesma cidade: sem acentos, minúsculas."""
+    return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower().strip()
 
 
 def semana(d):
@@ -133,8 +139,8 @@ def hoje(linhas):
 def main(argv):
     linhas = ler()
     if "--cidade" in argv:
-        cid = argv[argv.index("--cidade") + 1].lower()
-        linhas = [l for l in linhas if l.get("cidade", "").lower() == cid]
+        cid = chave(argv[argv.index("--cidade") + 1])
+        linhas = [l for l in linhas if chave(l.get("cidade", "")) == cid]
     if "--hoje" in argv:
         hoje(linhas)
         return
