@@ -263,6 +263,13 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - Não repetir contexto que já está neste ficheiro.
 - Evitar "continua" e ajustes em cadeia: juntar os ajustes num só pedido.
 
+## 15. ROMÉNIA (novo — 25/09/2026)
+
+Pesquisa completa em `research/romenia.md` (fiscal, Revolut, economia, preços, Google Maps, e-commerce, legal do site). Resumo:
+- **Fiscal:** ficar ≤ 182 dias/ano na Roménia (planear 170–175) e faturar a partir de Portugal com recibos verdes + formulário A1. Acima de 183 dias → PFA romena (grátis, 1–3 dias, e-Factura obrigatória). Nunca receber de clientes na Revolut pessoal — usar Revolut Pro.
+- **Preço:** 2 490 RON o site + 249 RON/mês. **Mercado:** 59% dos perfis Google sem site, 55% não reivindicados. Alvos: Cluj, Bucareste, Brașov, Sibiu; cafés de especialidade, padarias, pensiuni, restaurantes premium. Evitar restauração média (a fechar).
+- **Site romeno:** tudo em romeno; CUI + Reg. Com. no rodapé; pictograma **ANPC-SAL** (substitui o Livro de Reclamações); cookies com Recusar visível. Lojas: ramburs + easybox obrigatórios.
+
 ## 14. SISTEMAS INTERNOS (novo — 21/09/2026)
 
 Investigação em `research/sistemas-pacheco-studios.md` — ler antes de pagar qualquer ferramenta.
