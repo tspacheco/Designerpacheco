@@ -2,9 +2,12 @@
 
 Uma página só, em romeno, com três separadores e o contacto no fim:
 
-1. **Proiecte** — um quadrado por site já feito, com a fonte e as cores do próprio site. Ao tocar, abre o site;
-   lá dentro há um botão fixo «Înapoi la proiecte». No fim da grelha, o quadrado tracejado «Afacerea ta?» leva ao
-   contacto. Por baixo, «Cum lucrăm»: fazemos o site antes de pagares, mostramos no telemóvel, só pagas se gostares.
+1. **Proiecte** — um quadrado por cliente real, com a fonte e as cores do próprio site: os clientes de pachecost.com,
+   mais o Jasmim 2 e a Toda Chic. As apresentações a negócios que não compraram ficam de fora (decisão de 26/09).
+   Primeira fila, em qualquer ecrã: **Jasmim 2, Hanam e Toda Chic**. Ao tocar, abre o site do cliente num separador
+   novo. A Toda Chic ainda não tem loja publicada: abre a cópia em `/p/toda-chic/`, com o botão fixo
+   «Înapoi la proiecte». No fim da grelha, o quadrado tracejado «Afacerea ta?» leva ao contacto. Por baixo,
+   «Cum lucrăm»: fazemos o site antes de pagares, mostramos no telemóvel, só pagas se gostares.
 2. **Automatizări** — segue a direção «mostrar a máquina» (PLAYBOOK, secção 16). No topo, «Ce e, de fapt, AI-ul din
    spate?»: cinco frases sobre o que a AI faz e não faz. Depois, 8 automatizações. Cada cartão mostra o título e a
    dor na voz do dono («Îți sună cunoscut?»). Ao tocar, abre a máquina por dentro: o fluxo desenhado (declanșator,
@@ -19,15 +22,17 @@ Sem preços: combinam-se com cada negócio. A versão portuguesa, para rever, fi
 ## Editar
 
 - Textos: `conteudo/ro.json` (romeno) e `conteudo/pt.json` (português). A estrutura é igual nos dois.
-- Quadrados: `portfolio.json` — `ativo`, `nome`, `fonte`/`peso`/`bg`/`ink`/`accent` (as do site), `pasta` (site do
-  repositório, copiado para `/p/<slug>/`) ou `url` (site externo, abre noutro separador). Só a ProBuilders está
-  desligada, até haver o `url` certo.
+- Quadrados: `portfolio.json`, pela ordem do ficheiro — `ativo`, `destaque` (os três da primeira fila), `nome`,
+  `fonte`/`peso`/`bg`/`ink`/`accent` (as do site), `url` (site do cliente, abre noutro separador) ou `pasta` (site do
+  repositório, copiado para `/p/<slug>/`, só para clientes sem site publicado). `demo: true` marca as apresentações:
+  nunca entram. A ProBuilders está desligada até o site sair. O Jasmim 2 está em `neutro` (estilo da marca) até
+  termos a fonte e as cores do site dele.
 - Contactos e domínio: `marca/dados.json` (os mesmos do cartão).
 - Desenho: `index.src.html`. `index.html`, `pt/index.html`, `404.html`, `_redirects`, `_headers` e `netlify.toml`
   são gerados: não editar à mão.
 
 Depois de qualquer alteração: `python3 gerar.py`. Gera `dist/`, corre os testes e faz `pacheco-studios-netlify.zip`
-(~18 MB, com as cópias dos 11 sites do repositório; não vai para o git).
+(~6 MB, com a cópia da Toda Chic; não vai para o git).
 
 ## Publicar (uma vez; depois, só arrastar o zip novo)
 

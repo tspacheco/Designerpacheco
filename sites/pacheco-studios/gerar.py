@@ -90,23 +90,49 @@ def contraste(a, b):
 
 def quadrado(item, rot, i):
     nome = item["nome"]
-    # texto da etiqueta «Client»: a cor do quadrado (fundo ou tinta) com mais contraste sobre a cor de destaque
-    tag_ink = max((item["bg"], item["ink"]), key=lambda c: contraste(c, item["accent"]))
     fs = 1 if len(nome) <= 10 else 0.86 if len(nome) <= 16 else 0.72
-    # site real do cliente → separador novo (a página fica aberta por baixo); demo do repositório → cópia em /p/ com «Înapoi»
+    # site real do cliente → separador novo (a página fica aberta por baixo); cliente sem site publicado → cópia em /p/ com «Înapoi»
     href = item["url"] if item.get("url") else f"/p/{item['slug']}/"
     externo = ' target="_blank" rel="noopener"' if href.startswith("http") else ""
-    estilo = (f"--bg:{item['bg']};--ink:{item['ink']};--ac:{item['accent']};--tag:{tag_ink};--f:'{item['fonte']}';--w:{item['peso']};--fs:{fs}"
+    estilo = (f"--bg:{item['bg']};--ink:{item['ink']};--ac:{item['accent']};--f:'{item['fonte']}';--w:{item['peso']};--fs:{fs}"
               + (";font-style:italic" if item.get("italico") else ""))
-    tag = f'<span class="q-tag">{e(rot["cliente"])}</span>' if item.get("cliente") else ""
-    meta = " · ".join(x for x in (rot["itens"].get(item["slug"], {}).get("tip", ""), rot["itens"].get(item["slug"], {}).get("oras", "")) if x)
-    return (f'<li class="rv" style="--i:{i}"><a class="q" href="{e(href)}" style="{estilo}"{externo}>{tag}'
-            f'<span class="q-nome">{e(nome)}</span><span class="q-meta">{e(meta)}</span></a></li>')
+    info = rot["itens"].get(item["slug"], {})
+    tip, oras = info.get("tip", ""), info.get("oras", "")
+    # tipo e cidade em partes: na fila de destaque, no telemóvel, só cabe a cidade
+    meta = "".join((f'<span class="q-tip">{e(tip)}</span>' if tip else "",
+                    '<span class="q-sep">&nbsp;· </span>' if tip and oras else "",  # o ponto fica com o tipo; a cidade é que muda de linha
+                    f'<span class="q-oras">{e(oras)}</span>' if oras else ""))
+    return (f'<li class="rv{" dest" if item.get("destaque") else ""}" style="--i:{i}"><a class="q{" neutro" if item.get("neutro") else ""}" href="{e(href)}" style="{estilo}"{externo}>'
+            f'<span class="q-nome">{e(nome)}</span><span class="q-meta">{meta}</span></a></li>')
+
+
+def ativos(portfolio):
+    """Os quadrados, por ordem: primeiro os três em destaque (primeira fila), depois os outros pela ordem do ficheiro."""
+    itens = [x for x in portfolio["itens"] if x.get("ativo") and not x.get("demo") and (x.get("pasta") or x.get("url"))]
+    return sorted(itens, key=lambda x: not x.get("destaque"))
+
+
+def fontes_google(portfolio):
+    """Pedido ao Google Fonts só com as fontes dos quadrados que aparecem (as da marca vão embutidas)."""
+    marca = {"Space Mono", "Archivo Black", "Inter"}
+    fam = []
+    for x in ativos(portfolio):
+        if x["fonte"] in marca:
+            continue
+        nome = x["fonte"].replace(" ", "+")
+        peso = int(x.get("peso", 400))
+        spec = f"{nome}:ital,wght@1,{peso}" if x.get("italico") else (f"{nome}:wght@{peso}" if peso != 400 else nome)
+        if spec not in fam:
+            fam.append(spec)
+    return "&".join(f"family={f}" for f in fam)
 
 
 def vista_proiecte(c, portfolio, teu):
     p = c["proiecte"]
-    itens = [x for x in portfolio["itens"] if x.get("ativo") and (x.get("pasta") or x.get("url"))]
+    itens = ativos(portfolio)
+    dest = [x["slug"] for x in itens if x.get("destaque")]
+    if len(dest) != 3:
+        raise SystemExit(f"portfolio.json: a primeira fila leva 3 quadrados em destaque, há {len(dest)}: {dest}")
     lis = "\n".join(quadrado(x, p, i) for i, x in enumerate(itens))
     lis += (f'\n<li class="rv" style="--i:{len(itens)}"><a class="q teu" href="#contact" style="--fs:.8">'
             f'<span class="q-nome">{e(teu)}</span></a></li>')
@@ -219,10 +245,12 @@ def vista_automatizari(c, digitos):
 
 def vista_servicii(c, portfolio):
     s = c["servicii"]
-    ligacao = {x["slug"]: (x["url"] if x.get("url") else f"/p/{x['slug']}/") for x in portfolio["itens"] if x.get("ativo") and (x.get("pasta") or x.get("url"))}
+    ligacao = {x["slug"]: (x["url"] if x.get("url") else f"/p/{x['slug']}/") for x in ativos(portfolio)}
     cards = []
     for i, x in enumerate(s["itens"]):
         ex = ""
+        if x.get("exemplu") and x["exemplu"] not in ligacao:
+            raise SystemExit(f"servicii «{x['id']}»: o exemplo «{x['exemplu']}» não está nos quadrados (só clientes reais)")
         if x.get("exemplu") in ligacao:
             u = ligacao[x["exemplu"]]
             ex = f'<a class="link-ex" href="{e(u)}"{" target=_blank rel=noopener" if u.startswith("http") else ""}>{e(s["exemplu"])}{I["seta"]}</a>'
@@ -334,8 +362,8 @@ def pilula(texto):
 def copiar_sites(portfolio, texto_inapoi):
     n = 0
     for it in portfolio["itens"]:
-        if not (it.get("ativo") and it.get("pasta")) or it.get("url"):
-            continue  # com site real publicado, a cópia não é precisa
+        if not (it.get("ativo") and it.get("pasta")) or it.get("url") or it.get("demo"):
+            continue  # com site real publicado, a cópia não é precisa; apresentações nunca vão
         origem = os.path.join(SITES, it["pasta"])
         destino = os.path.join(DIST, "p", it["slug"])
         os.makedirs(destino, exist_ok=True)
@@ -417,7 +445,7 @@ def main():
         valores = {
             "LINGUA": c["lingua"], "TITLE": e(c["meta"]["title"]), "DESCRIPTION": e(c["meta"]["description"]),
             "OG_TITLE": e(c["meta"]["og_title"]), "OG_LOCALE": "ro_RO" if lang == "ro" else "pt_PT",
-            "URL_SITE": url_site, "URL_PAGINA": url_pagina, "FONTES": fontes, "FONTES_GOOGLE": "family=" + portfolio["fontes_google"].replace("|", "&family="),
+            "URL_SITE": url_site, "URL_PAGINA": url_pagina, "FONTES": fontes, "FONTES_GOOGLE": fontes_google(portfolio),
             "JSONLD": json.dumps(jsonld, ensure_ascii=False).replace("</", "<\\/"),
             "SALTAR": "Sari la conținut" if lang == "ro" else "Saltar para o conteúdo",
             "NAV_LABEL": "Secțiuni" if lang == "ro" else "Secções",

@@ -72,21 +72,34 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
 .lead{margin-top:1rem;max-width:44ch;color:var(--osso-2);font-size:1.0625rem}
 .claro .lead{color:var(--tinta-2)}
 
-/* ═══ quadrados: cada um com a fonte e as cores do próprio site ═══ */
-.grelha{margin-top:1.75rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+/* ═══ quadrados: cada um com a fonte e as cores do próprio site ═══
+   Primeira fila = os 3 em destaque, em qualquer ecrã. Telemóvel: grelha de 6 colunas, destaque ocupa 2 (três por fila,
+   cartões altos), os outros 3 (dois por fila). Tablet: 3 colunas iguais. Computador: 12 colunas, destaque 4 (mais
+   largos, 4:3) e os outros 3 (quadrados) — as duas filas ficam com a mesma altura. */
+.grelha{margin-top:1.75rem;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
+.grelha > li{grid-column:span 3}
+.grelha > li.dest{grid-column:span 2}
 .q{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;padding:.9rem;
   border-radius:1rem;background:var(--bg);color:var(--ink);text-decoration:none;overflow:hidden;
-  box-shadow:0 .1rem 0 rgba(0,0,0,.25),0 1rem 2rem -1.5rem rgba(0,0,0,.9);
+  /* contorno fino por dentro: os sites de fundo escuro não se perdem no carvão da página */
+  box-shadow:inset 0 0 0 1px rgba(239,234,227,.1),0 .1rem 0 rgba(0,0,0,.25),0 1rem 2rem -1.5rem rgba(0,0,0,.9);
   transition:transform .25s var(--sair),box-shadow .25s}
-.q:hover,.q:focus-visible{transform:translateY(-.2rem);box-shadow:0 .1rem 0 rgba(0,0,0,.25),0 1.4rem 2.4rem -1.4rem rgba(0,0,0,.9)}
+.q:hover,.q:focus-visible{transform:translateY(-.2rem);
+  box-shadow:inset 0 0 0 1px rgba(239,234,227,.2),0 .1rem 0 rgba(0,0,0,.25),0 1.4rem 2.4rem -1.4rem rgba(0,0,0,.9)}
+/* sites de clientes cuja fonte e cores ainda não foram tiradas do site: estilo da marca, numa superfície um pouco acima da página */
+.q.neutro{background:var(--carvao-2)}
 .q:focus-visible{outline-offset:2px}
 .q-nome{font-family:var(--f),var(--display);font-weight:var(--w);font-size:calc(clamp(1.35rem,6.6vw,2.1rem) * var(--fs,1));
   line-height:1;text-wrap:balance;overflow-wrap:anywhere;letter-spacing:-.005em}
 .q-meta{margin-top:.6rem;padding-top:.5rem;border-top:2px solid var(--ac);font:700 .75rem/1.3 var(--mono);
   letter-spacing:.1em;text-transform:uppercase;opacity:.82}
-.q-tag{position:absolute;left:.9rem;top:.8rem;font:700 .75rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;
-  color:var(--tag,var(--bg));background:var(--ac);padding:.35rem .5rem .3rem;border-radius:999px}
 .q[style*="--f:'Space Mono'"] .q-nome{font-size:calc(clamp(1.1rem,5.4vw,1.6rem) * var(--fs,1));letter-spacing:.02em;text-transform:uppercase;line-height:1.15}
+.dest .q{aspect-ratio:2/3;padding:.7rem}
+.grelha .dest .q-nome{font-size:calc(clamp(.95rem,4.3vw,1.35rem) * var(--fs,1))}
+.grelha .dest .q[style*="--f:'Space Mono'"] .q-nome{font-size:calc(clamp(.85rem,3.9vw,1.2rem) * var(--fs,1))}
+/* a linha do tipo/cidade reserva 2 linhas: os três nomes da primeira fila ficam à mesma altura */
+.dest .q-meta{margin-top:.5rem;padding-top:.4rem;min-height:calc(2.6em + .4rem + 2px)}
+.dest .q-tip,.dest .q-sep{display:none}
 .q.teu{background:transparent;color:var(--laranja);border:3px dashed var(--laranja);box-shadow:none;justify-content:center;align-items:center;text-align:center}
 .q.teu .q-nome{font-family:var(--display);font-weight:400;text-transform:uppercase}
 .q.teu:hover,.q.teu:focus-visible{background:var(--laranja);color:var(--carvao);border-style:solid}
@@ -237,8 +250,13 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
 @media (min-width:40rem){
   .ramuri{grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))}
   .grelha{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-  .q{padding:1.1rem}
-  .q-nome{font-size:calc(clamp(1.35rem,3vw,2rem) * var(--fs,1))}
+  .grelha > li,.grelha > li.dest{grid-column:auto}
+  .q,.dest .q{padding:1.1rem}
+  .dest .q{aspect-ratio:1}
+  .q-nome,.grelha .dest .q-nome{font-size:calc(clamp(1.35rem,3vw,2rem) * var(--fs,1))}
+  .grelha .dest .q[style*="--f:'Space Mono'"] .q-nome{font-size:calc(clamp(1.1rem,2.4vw,1.6rem) * var(--fs,1))}
+  .dest .q-meta{margin-top:.6rem;padding-top:.5rem;min-height:calc(2.6em + .5rem + 2px)}
+  .dest .q-tip,.dest .q-sep{display:inline}
   .svcs{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
   .passos{grid-template-columns:repeat(3,1fr);gap:2rem}
 }
@@ -249,8 +267,13 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
   .auto h3{font-size:1.5rem}
 }
 @media (min-width:64rem){
-  .grelha{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.1rem}
+  .grelha{grid-template-columns:repeat(12,minmax(0,1fr));gap:1.1rem}
+  .grelha > li{grid-column:span 3}
+  .grelha > li.dest{grid-column:span 4}
+  .dest .q{aspect-ratio:4/3}
   .q-nome{font-size:calc(2rem * var(--fs,1))}
+  .grelha .dest .q-nome{font-size:calc(2.5rem * var(--fs,1))}
+  .grelha .dest .q[style*="--f:'Space Mono'"] .q-nome{font-size:calc(1.9rem * var(--fs,1))}
   .autos-grelha{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:clamp(3rem,6vw,5rem);align-items:start}
   .autos-grelha .cab{position:sticky;top:calc(var(--tabs) + 2rem)}
   .autos-grelha .cab .afirmacao{font-size:clamp(1.75rem,2.7vw,2.6rem)}
