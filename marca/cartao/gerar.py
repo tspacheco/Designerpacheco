@@ -7,6 +7,8 @@ Saídas (nesta pasta):
   cartao.html                    fonte renderizável (não editar — editar cartao.src.html)
   cartao-impressao.pdf           PDF para a gráfica: 2 páginas (frente, verso), 91×61 mm com 3 mm de sangria
   cartao-impressao-PROVA.pdf     o mesmo com faixa "PROVA" enquanto faltar telefone ou domínio confirmado
+  cartao-folha-a4.pdf            10 cartões numa folha A4 (frente e verso), encostados, com marcas de corte:
+                                 para imprimir em casa ou numa reprografia (-PROVA.pdf enquanto faltar algo)
   cartao-preview.png             frente e verso lado a lado, já cortados (85×55 mm)
   frases-opcoes.png              o verso com cada uma das frases de dados.json, para escolher
   face-frente/verso-600ppp.png   cada face a 600 ppp, com sangria
@@ -15,7 +17,9 @@ Saídas (nesta pasta):
 Testes que correm sempre: letra ≥ 7,5 pt; contraste ≥ 4,5:1; nenhum texto fora da margem segura, sobreposto
 a outro ou dentro da zona de silêncio do QR; todas as letras existem na fonte (Ă, Ș, Ț do romeno incluídos); e o QR
 tem de ser lido a partir da imagem renderizada — em alta resolução, ao tamanho de uma câmara de telemóvel e desfocado.
-Requer: pip install segno opencv-python-headless fonttools brotli ; Playwright global (/opt/node22/lib/node_modules).
+A folha A4 é renderizada outra vez (pdfium): cada um dos 10 cartões tem de ser igual ao do PDF da gráfica, os 10 QR
+têm de ser lidos e não pode haver tinta nas margens além das marcas de corte.
+Requer: pip install segno opencv-python-headless fonttools brotli pypdfium2 ; Playwright global (/opt/node22/lib/node_modules).
 """
 import html
 import json
@@ -28,6 +32,7 @@ import tempfile
 
 import cv2
 import numpy as np
+import pypdfium2 as pdfium
 import segno
 from fontTools.ttLib import TTFont
 
@@ -100,6 +105,49 @@ def montar(src, valores):
     return re.sub(r"\{\{([A-Z_]+)\}\}", lambda m: valores[m.group(1)], src)
 
 
+# ——— folha A4: 2 colunas × 5 filas de cartões encostados (85 × 55 mm), grelha centrada ———
+A4_COLS = [20, 105, 190]                  # cortes verticais (mm)
+A4_FILAS = [11, 66, 121, 176, 231, 286]   # cortes horizontais (mm)
+A4_SANGRIA = 1.5   # fundo do cartão à volta da grelha: um corte exterior torto não deixa fio branco
+
+
+def marcas_corte():
+    """Marcas de corte nas margens, a 2 mm da grelha (fora da sangria) — nunca por cima dos cartões."""
+    l = []
+    for x in A4_COLS:
+        l += [f'<path d="M{x} {A4_FILAS[0] - 6.5}V{A4_FILAS[0] - 2}"/>', f'<path d="M{x} {A4_FILAS[-1] + 2}V{A4_FILAS[-1] + 6.5}"/>']
+    for y in A4_FILAS:
+        l += [f'<path d="M{A4_COLS[0] - 10} {y}H{A4_COLS[0] - 2}"/>', f'<path d="M{A4_COLS[-1] + 2} {y}H{A4_COLS[-1] + 10}"/>']
+    return ('<svg class="marcas" viewBox="0 0 210 297" aria-hidden="true">'
+            f'<g stroke="#000" stroke-width=".15" fill="none">{"".join(l)}</g></svg>')
+
+
+def folha_a4(gerado, prova):
+    """10 cartões por folha A4, frente (página 1) e verso (página 2), a partir do cartao.html já gerado.
+    Os cartões são todos iguais e a grelha é simétrica: frente e verso alinham ao virar pela margem comprida."""
+    estilo = re.search(r"<style>.*?</style>", gerado, re.S).group(0)
+    frente, verso = re.findall(r'<section class="face .*?</section>', gerado, re.S)
+    celulas = lambda face: "".join(
+        f'<div class="celula" style="left:{A4_COLS[i % 2]}mm;top:{A4_FILAS[i // 2]}mm">{face}</div>' for i in range(10))
+    g = (A4_COLS[0] - A4_SANGRIA, A4_FILAS[0] - A4_SANGRIA, A4_COLS[-1] - A4_COLS[0] + 2 * A4_SANGRIA,
+         A4_FILAS[-1] - A4_FILAS[0] + 2 * A4_SANGRIA)
+    sangria = lambda cor: (f'<div class="sangria" style="left:{g[0]}mm;top:{g[1]}mm;width:{g[2]}mm;height:{g[3]}mm;'
+                           f'background:var({cor})"></div>')
+    extra = """<style>
+@page{size:210mm 297mm;margin:0}
+.pagina{position:relative;width:210mm;height:297mm;overflow:hidden;background:#fff;break-after:page}
+.pagina:last-child{break-after:auto}
+.celula{position:absolute;width:85mm;height:55mm;overflow:hidden}
+.celula .face{position:absolute;left:-3mm;top:-3mm;break-after:auto}
+.sangria{position:absolute}
+.marcas{position:absolute;left:0;top:0;width:210mm;height:297mm}
+</style>"""
+    return (f'<!DOCTYPE html>\n<html lang="ro">\n<head>\n<meta charset="utf-8">\n<title>Pacheco Studios — cartões, folha A4</title>\n'
+            f'{estilo}\n{extra}\n</head>\n<body{" class=prova" if prova else ""}>\n'
+            f'<div class="pagina">{sangria("--carvao")}{celulas(frente)}{marcas_corte()}</div>\n'
+            f'<div class="pagina">{sangria("--osso")}{celulas(verso)}{marcas_corte()}</div>\n</body>\n</html>\n')
+
+
 def main():
     d = json.load(open(os.path.join(AQUI, "..", "dados.json"), encoding="utf-8"))
     c = d["cartao"]
@@ -136,16 +184,22 @@ def main():
     src = open(os.path.join(AQUI, "cartao.src.html"), encoding="utf-8").read()
     open(os.path.join(AQUI, "cartao.html"), "w", encoding="utf-8").write(montar(src, valores))
 
-    for antigo in ("cartao-impressao.pdf", "cartao-impressao-PROVA.pdf"):
+    for antigo in ("cartao-impressao.pdf", "cartao-impressao-PROVA.pdf", "cartao-folha-a4.pdf", "cartao-folha-a4-PROVA.pdf"):
         p = os.path.join(AQUI, antigo)
         if os.path.exists(p):
             os.remove(p)
     subprocess.run(["node", os.path.join(AQUI, "render.cjs"), os.path.join(AQUI, "cartao.html"), AQUI,
                     "1" if falta else "0"], check=True, env=NODE_ENV)
 
-    # ——— folha com as frases todas, para escolher ———
+    # ——— folha com as frases todas, para escolher (e a folha A4 com 10 cartões) ———
     tmp = tempfile.mkdtemp(dir=AQUI, prefix=".opcoes-")
+    nome_a4 = "cartao-folha-a4-PROVA.pdf" if falta else "cartao-folha-a4.pdf"
     try:
+        gerado = open(os.path.join(AQUI, "cartao.html"), encoding="utf-8").read()
+        pa4 = os.path.join(tmp, "folha-a4.html")
+        open(pa4, "w", encoding="utf-8").write(folha_a4(gerado, bool(falta)).replace('url("../fontes/', 'url("../../fontes/'))
+        subprocess.run(["node", os.path.join(AQUI, "render.cjs"), "--pdf", pa4, os.path.join(AQUI, nome_a4)],
+                       check=True, env=NODE_ENV)
         ficheiros = []
         for i, f in enumerate(frases, 1):
             p = os.path.join(tmp, f"opcao-{i}.html")
@@ -251,6 +305,75 @@ const { chromium } = require('playwright');
         passou = txt.upper() == url_qr
         ok &= passou
         print(f"  {'✓' if passou else '✗'} {nome}: {txt or '(não leu)'}")
+
+    # ——— folha A4 renderizada outra vez (pdfium, 300 ppp) ———
+    ppp = 300
+    pxmm = ppp / 25.4
+
+    def residuo(a, b, k=4):
+        """O que sobra da diferença quando cada píxel pode procurar o melhor vizinho até k px (±0,34 mm): o Chromium
+        arredonda posições ao píxel CSS (0,26 mm) de maneira diferente numa folha A4. Fonte trocada, letra ou elemento
+        em falta deixam resíduo forte; arredondamentos não."""
+        h, w = a.shape
+        ac, m = a[k:h - k, k:w - k], np.full((h - 2 * k, w - 2 * k), 255, np.int16)
+        for dy in range(-k, k + 1):
+            for dx in range(-k, k + 1):
+                m = np.minimum(m, np.abs(ac - b[k + dy:h - k + dy, k + dx:w - k + dx]))
+        return m
+
+    a4 = pdfium.PdfDocument(os.path.join(AQUI, nome_a4))
+    ref = pdfium.PdfDocument(os.path.join(AQUI, "cartao-impressao-PROVA.pdf" if falta else "cartao-impressao.pdf"))
+    try:
+        tamanhos = [tuple(round(v * 25.4 / 72) for v in pg.get_size()) for pg in a4]
+        passou = tamanhos == [(210, 297), (210, 297)]
+        ok &= passou
+        print(f"\nFOLHA A4 ({nome_a4})\n  {'✓' if passou else '✗'} {len(tamanhos)} páginas A4 (frente, verso): {tamanhos}")
+        pior, lidos = 0.0, 0
+        for i, nome in enumerate(("frente", "verso")):
+            pag = np.array(a4[i].render(scale=ppp / 72).to_pil().convert("L")).astype(np.int16)
+            face = np.array(ref[i].render(scale=ppp / 72).to_pil().convert("L")).astype(np.int16)
+            c0 = round(3 * pxmm)
+            cartao = face[c0:c0 + round(55 * pxmm), c0:c0 + round(85 * pxmm)]
+            for k in range(10):
+                cx, cy = round(A4_COLS[k % 2] * pxmm), round(A4_FILAS[k // 2] * pxmm)
+                cel = pag[cy:cy + cartao.shape[0], cx:cx + cartao.shape[1]]
+                pior = max(pior, float((residuo(cel, cartao) > 100).mean()))
+                if nome == "verso":
+                    txt, _, _ = cv2.QRCodeDetector().detectAndDecode(cel.astype(np.uint8))
+                    lidos += txt.upper() == url_qr
+            # nada nas margens além das marcas de corte
+            tinta = pag < 245                         # também apanha o osso (235) fora do sítio
+            livre = np.ones_like(tinta)
+            g = [round(v * pxmm) for v in (A4_COLS[0] - A4_SANGRIA, A4_FILAS[0] - A4_SANGRIA,
+                                           A4_COLS[-1] + A4_SANGRIA, A4_FILAS[-1] + A4_SANGRIA)]
+            t = round(.4 * pxmm)
+            livre[g[1] - t:g[3] + t, g[0] - t:g[2] + t] = False   # ± o antialiasing da borda
+            for x in A4_COLS:
+                livre[:, round(x * pxmm) - t:round(x * pxmm) + t] = False
+            for y in A4_FILAS:
+                livre[round(y * pxmm) - t:round(y * pxmm) + t, :] = False
+            marcas = [tinta[round((A4_FILAS[0] - 4) * pxmm), round(x * pxmm) - t:round(x * pxmm) + t].any() for x in A4_COLS]
+            marcas += [tinta[round(y * pxmm) - t:round(y * pxmm) + t, round((A4_COLS[0] - 5) * pxmm)].any() for y in A4_FILAS]
+            margens_ok = not (tinta & livre).any() and all(marcas)
+            # a sangria à volta da grelha tem a cor do fundo do cartão
+            cor = int(np.median(cartao[5:15, 5:15]))
+            anel = pag[g[1]:g[3], g[0]:g[2]]
+            b = round(A4_SANGRIA * pxmm) - 1
+            faixa = np.concatenate([anel[:b].ravel(), anel[-b:].ravel(), anel[:, :b].ravel(), anel[:, -b:].ravel()])
+            margens_ok &= bool(np.abs(faixa - cor).max() < 12)
+            ok &= margens_ok
+            print(f"  {'✓' if margens_ok else '✗'} {nome}: sangria de {A4_SANGRIA} mm à volta, margens limpas e as "
+                  f"{len(marcas)} marcas de corte no sítio")
+        passou = pior < 1e-4
+        ok &= passou
+        print(f"  {'✓' if passou else '✗'} os 20 cartões são iguais aos do PDF da gráfica "
+              f"(píxeis diferentes: {100 * pior:.3f} %, tolerância de 0,3 mm para arredondamentos)")
+        passou = lidos == 10
+        ok &= passou
+        print(f"  {'✓' if passou else '✗'} QR lido em {lidos} de 10 versos")
+    finally:
+        a4.close()
+        ref.close()
 
     print(f"\nFrase no cartão: {escolha} — {frases[escolha - 1].replace('*', '')}")
     if falta:

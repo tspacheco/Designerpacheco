@@ -1,6 +1,7 @@
 // Renderiza o cartão com o Chromium do Playwright e mede-o. Chamado por gerar.py.
 //   node render.cjs cartao.html <pasta> <prova:0|1>        → PDF, PNG 600 ppp por face, pré-visualização, acessibilidade.json
 //   node render.cjs --verso <saida-pasta> a.html b.html …  → verso de cada ficheiro, cortado (para comparar frases)
+//   node render.cjs --pdf <folha.html> <saida.pdf>          → PDF com o tamanho do @page (folha A4 com 10 cartões)
 // NODE_PATH=/opt/node22/lib/node_modules
 const { chromium } = require('playwright');
 const path = require('path');
@@ -66,6 +67,14 @@ function medir() {
   const browser = await chromium.launch();
   if (process.argv[2] === '--verso') {
     await versos(browser, process.argv[3], process.argv.slice(4));
+    await browser.close();
+    return;
+  }
+  if (process.argv[2] === '--pdf') {           // node render.cjs --pdf folha.html saida.pdf  (tamanho do @page)
+    const p = await browser.newPage();
+    await p.goto('file://' + path.resolve(process.argv[3]));
+    await p.evaluate(() => document.fonts.ready);
+    await p.pdf({ path: process.argv[4], printBackground: true, preferCSSPageSize: true });
     await browser.close();
     return;
   }

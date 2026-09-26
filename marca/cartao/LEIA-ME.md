@@ -29,12 +29,25 @@ Tudo o que o cartão diz está em `marca/dados.json`, no bloco `"cartao"`:
 voltar a pô-lo a `false` até o novo endereço abrir: o gerador passa a fazer só `cartao-impressao-PROVA.pdf`, com uma
 faixa vermelha.
 
+## Imprimir em casa ou numa reprografia
+
+`cartao-folha-a4.pdf`: 10 cartões numa folha A4, com a frente na página 1 e o verso na página 2, e marcas de corte.
+
+1. Papel: cartolina A4 mate, 250–300 g. Ver primeiro o peso máximo que a impressora aceita.
+2. Imprimir a 100 % («Tamanho real», sem «Ajustar à página»), frente e verso, **virar pela margem comprida**.
+   Testar antes numa folha normal: contra a luz, as marcas da frente e do verso têm de coincidir.
+3. Cortar pelas marcas, com x-ato e régua de metal ou com guilhotina: 3 cortes ao alto e 6 ao comprido. Os cartões
+   estão encostados, por isso cada corte separa dois. À volta da grelha há 1,5 mm de fundo a mais: um corte exterior
+   ligeiramente torto não deixa fio branco.
+4. A frente é quase toda preta: numa impressora de jato de tinta gasta muita tinta e o papel pode ondular. Para 100
+   ou mais cartões, é melhor a gráfica.
+
 ## Especificações para a gráfica
 
 | | |
 |---|---|
 | Formato final | 85 × 55 mm, cantos retos |
-| Ficheiro | `cartao-impressao.pdf`: 2 páginas (frente, verso), 91 × 61 mm com 3 mm de sangria, fontes incorporadas (com Ă, Â, Î, Ș, Ț), sem marcas de corte |
+| Ficheiro | `cartao-impressao.pdf`: 2 páginas (frente, verso), 91 × 61 mm com 3 mm de sangria, fontes incorporadas (com Ă, Â, Î, Ș, Ț), sem marcas de corte. Se a gráfica pedir imagens: `face-frente-600ppp.png` e `face-verso-600ppp.png`, também com sangria |
 | Cor | PDF em RGB; a gráfica converte para CMYK. Pedir prova, sobretudo do preto da frente |
 | Papel | 350–400 g, mate ou não revestido. Sem brilho: lê-se melhor ao sol e o QR não reflete |
 | Acabamento | Opcional: plastificação mate *soft-touch* na frente (protege o preto) |
