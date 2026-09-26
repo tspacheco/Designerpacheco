@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bistro Copou · Terasă și livrare, lângă Parcul Copou, Iași</title>
+<meta name="description" content="Bistro Copou: bistro cu terasă pe Strada Oastei 48, peste drum de Parcul Copou, Iași. Shaorma, clătite sărate, mici, salate, sandvișuri și cafea. La masă, la pachet sau cu livrare. Tel. 0748 631 607.">
+<meta name="theme-color" content="#1F3B2C">
+<meta property="og:title" content="Bistro Copou · Iași">
+<meta property="og:description" content="Terasă lângă Parcul Copou. La masă, la pachet sau cu livrare.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('bc.lang');if(l==='en'||l==='ro'){document.documentElement.dataset.lang=l;document.documentElement.lang=l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --lumina:#EEF0DC; --lumina-2:#E4E8CC; --frunza:#1F3B2C; --frunza-2:#2C4E3B; --miere:#E1B13A; --miere-inchis:#8A6414;
+  --text:#18261E; --text-2:#4B5A4F; --linie:#C9CFB2; --alb:#F6F7EE; --alb-2:#BFCBB9;
+  --f-disp:"Brygada 1918",Georgia,"Times New Roman",serif;
+  --f-text:"Albert Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --lat:min(1180px, 100% - 40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--lumina);color:var(--text);font:400 17px/1.6 var(--f-text);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3{margin:0;font-weight:500}
+html[data-lang="ro"] [lang="en"]{display:none!important}
+html[data-lang="en"] [lang="ro"]{display:none!important}
+.lat{width:var(--lat);margin-inline:auto}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--miere-inchis);outline-offset:3px}
+.sari{position:absolute;left:12px;top:-60px;z-index:100;background:var(--frunza);color:var(--alb);padding:10px 14px;text-decoration:none;font-weight:600}
+.sari:focus{top:12px}
+
+.demo{background:var(--frunza);color:var(--alb);font:500 12.5px/1.45 var(--f-text);letter-spacing:.03em;text-align:center;padding:8px 16px}
+.demo b{color:var(--miere);font-weight:600}
+.demo .lung{display:none}
+@media (min-width:760px){.demo .lung{display:inline}}
+
+.bara{position:sticky;top:0;z-index:50;background:var(--lumina);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.bara.scrolled{border-color:var(--linie);box-shadow:0 10px 26px -18px rgba(24,38,30,.45)}
+.bara-in{width:var(--lat);margin-inline:auto;display:flex;align-items:center;gap:18px;min-height:64px}
+.marca{font:600 24px/1 var(--f-disp);text-decoration:none;letter-spacing:-.01em;min-height:44px;display:flex;align-items:center}
+.marca i{font-style:italic;font-weight:500;color:var(--frunza-2)}
+.nav{display:none;margin-left:auto;gap:2px}
+.nav a{font-size:15px;text-decoration:none;color:var(--text-2);padding:12px 10px}
+.nav a:hover{color:var(--text)}
+.limba{display:flex;gap:2px;margin-left:auto}
+.limba button{font:600 12.5px/1 var(--f-text);letter-spacing:.06em;background:none;border:1px solid transparent;color:var(--text-2);min-width:44px;min-height:44px;cursor:pointer;border-radius:999px}
+.limba button[aria-pressed="true"]{color:var(--text);border-color:var(--linie)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;font:600 16px/1.2 var(--f-text);text-decoration:none;border-radius:999px;cursor:pointer;border:1.5px solid transparent;transition:background .2s,color .2s,border-color .2s,transform .2s var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.btn-plin{background:var(--frunza);color:var(--alb)}
+.btn-plin:hover{background:var(--frunza-2)}
+.btn-linie{border-color:var(--frunza);color:var(--frunza);background:transparent}
+.btn-linie:hover{background:var(--frunza);color:var(--alb)}
+.btn-miere{background:var(--miere);color:var(--text)}
+.btn-miere:hover{background:#EAC25B}
+.bara .cta{display:none;min-height:44px;padding:10px 18px;font-size:15px}
+.burger{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;background:none;border:0;color:var(--text);cursor:pointer}
+.burger svg{width:24px;height:24px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round}
+.meniu{position:fixed;inset:0;z-index:60;background:var(--frunza);color:var(--alb);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 14px) 24px calc(env(safe-area-inset-bottom,0px) + 28px);visibility:hidden;opacity:0;transition:opacity .25s var(--ease),visibility 0s .25s}
+.meniu.deschis{visibility:visible;opacity:1;transition:opacity .25s var(--ease)}
+.meniu-sus{display:flex;justify-content:space-between;align-items:center;min-height:48px}
+.meniu .marca i{color:var(--miere)}
+.meniu .burger{color:var(--alb)}
+.meniu ul{margin-top:28px;display:grid;gap:4px}
+.meniu li a{display:block;font:500 40px/1.15 var(--f-disp);text-decoration:none;padding:8px 0;border-bottom:1px solid #35573F}
+.meniu .btn{margin-top:auto}
+@media (min-width:980px){.nav{display:flex}.limba{margin-left:6px}.bara .cta{display:inline-flex}.burger{display:none}}
+
+/* erou: a sombra das tílias do Copou */
+.erou{position:relative;overflow:hidden;isolation:isolate;padding-block:clamp(56px,9vw,120px) clamp(64px,9vw,120px)}
+.umbra{position:absolute;inset:0;z-index:-1;width:100%;height:100%;display:block}
+.erou-in{display:grid;gap:26px}
+.loc{display:flex;flex-wrap:wrap;gap:6px 14px;font:600 13px/1.3 var(--f-text);letter-spacing:.08em;text-transform:uppercase;color:var(--frunza-2)}
+.loc span+span::before{content:"·";margin-right:14px;color:var(--miere-inchis)}
+.titlu-mare{font:600 clamp(72px,17vw,212px)/.86 var(--f-disp);letter-spacing:-.025em;color:var(--frunza)}
+.titlu-mare i{display:block;font-style:italic;font-weight:500;padding-left:.36em;color:var(--frunza-2)}
+.sub{font-size:clamp(18px,1.9vw,22px);line-height:1.5;max-width:36ch}
+.actiuni{display:flex;flex-wrap:wrap;gap:12px}
+.fapte{display:flex;flex-wrap:wrap;gap:10px}
+.fapt{display:inline-flex;align-items:center;gap:8px;background:rgba(246,247,238,.78);border:1px solid var(--linie);border-radius:999px;padding:8px 14px;font-size:14.5px;color:var(--text)}
+.fapt b{font-weight:600}
+.fapt .punct{width:8px;height:8px;border-radius:50%;background:#3F8A4F;box-shadow:0 0 0 3px rgba(63,138,79,.18)}
+.fapt .punct.inchis{background:#A33A2B;box-shadow:0 0 0 3px rgba(163,58,43,.16)}
+@media (min-width:980px){.erou-in{grid-template-columns:1.25fr .75fr;align-items:end;column-gap:56px}.erou-in .titlu-mare{grid-column:1/-1}.erou-in .dreapta{display:grid;gap:20px;justify-items:start}}
+
+@keyframes sobe{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+html.js .erou .loc{animation:sobe .6s var(--ease) .1s both}
+html.js .titlu-mare .r1{display:inline-block;animation:sobe .9s var(--ease) .2s both}
+html.js .titlu-mare i{animation:sobe .9s var(--ease) .38s both}
+html.js .erou .sub{animation:sobe .7s var(--ease) .6s both}
+html.js .erou .dreapta{animation:sobe .7s var(--ease) .75s both}
+
+.banda{background:var(--frunza);color:var(--alb);overflow:hidden}
+.banda-pista{display:flex;width:max-content;animation:ruleaza 50s linear infinite}
+.banda-grup{display:flex;align-items:center;gap:26px;padding:16px 13px;font:500 clamp(22px,2.6vw,30px)/1 var(--f-disp);font-style:italic;white-space:nowrap}
+.banda-grup svg{width:18px;height:18px;fill:var(--miere);flex:none}
+@keyframes ruleaza{to{transform:translateX(-50%)}}
+
+.sectiune{padding-block:clamp(72px,10vw,128px)}
+.sectiune+.sectiune{border-top:1px solid var(--linie)}
+.eticheta{font:600 13px/1.3 var(--f-text);letter-spacing:.1em;text-transform:uppercase;color:var(--miere-inchis)}
+.titlu{font:600 clamp(40px,6vw,72px)/1 var(--f-disp);letter-spacing:-.02em;text-wrap:balance;color:var(--frunza)}
+.titlu i{font-weight:500}
+.intro{font-size:18px;color:var(--text-2);max-width:48ch}
+html.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+html.js .rv.vis{opacity:1;transform:none}
+html.js .rv.d1{transition-delay:.08s}
+html.js .rv.d2{transition-delay:.16s}
+
+/* meniu */
+.meniu-sec{display:grid;gap:44px}
+.cap{display:grid;gap:18px;align-content:start}
+.feluri{display:grid;gap:0;border-top:1px solid var(--linie)}
+.feluri li{display:flex;align-items:baseline;gap:14px;padding-block:18px;border-bottom:1px solid var(--linie)}
+.feluri .nume{font:500 clamp(26px,3vw,34px)/1.1 var(--f-disp);color:var(--frunza)}
+.feluri .cat{margin-left:auto;font-size:14px;color:var(--text-2);white-space:nowrap}
+.feluri li::before{content:"";flex:none;width:12px;height:12px;align-self:center;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23C99A22' d='M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z'/%3E%3C/svg%3E")}
+.categorii{display:flex;flex-wrap:wrap;gap:8px}
+.categorii li{border:1px solid var(--linie);border-radius:999px;padding:6px 14px;font-size:15px;background:rgba(246,247,238,.6)}
+.nota-pret{border-left:3px solid var(--miere);padding:4px 0 4px 16px;color:var(--text-2);max-width:44ch}
+.nota-pret strong{color:var(--text)}
+@media (min-width:900px){.meniu-sec{grid-template-columns:5fr 7fr;gap:72px}.cap{position:sticky;top:100px}}
+
+/* trei feluri */
+.trei{margin-top:44px;display:grid;gap:16px}
+.fel{background:var(--alb);border:1px solid var(--linie);border-radius:22px;padding:26px 24px 28px;display:grid;gap:12px;align-content:start}
+.fel svg.ic{width:34px;height:34px;fill:none;stroke:var(--frunza);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fel h3{font:600 30px/1.05 var(--f-disp);color:var(--frunza)}
+.fel p{color:var(--text-2)}
+.fel .linkuri{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.fel .linkuri a{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border-radius:999px;border:1px solid var(--linie);text-decoration:none;font-weight:600;font-size:15px;background:var(--lumina)}
+.fel .linkuri a:hover{border-color:var(--frunza)}
+@media (min-width:860px){.trei{grid-template-columns:repeat(3,1fr)}}
+
+/* terasa */
+.terasa{background:var(--frunza);color:var(--alb)}
+.sectiune.terasa{border-top:0}
+.terasa .titlu{color:var(--alb)}
+.terasa .eticheta{color:var(--miere)}
+.terasa .intro{color:var(--alb-2)}
+.ter{display:grid;gap:40px;align-items:center}
+.foto{position:relative;margin:0;border-radius:26px;overflow:hidden;aspect-ratio:4/5;background:#2A4A37}
+.foto svg.fallback{position:absolute;inset:0;width:100%;height:100%}
+.foto img{position:relative;width:100%;height:100%;object-fit:cover}
+.foto figcaption{position:absolute;left:14px;bottom:14px;background:rgba(24,38,30,.78);color:var(--alb);font-size:13px;padding:6px 12px;border-radius:999px}
+.lista-ter{display:grid;gap:14px;margin-top:26px}
+.lista-ter li{display:grid;grid-template-columns:22px 1fr;gap:12px;font-size:18px}
+.lista-ter li::before{content:"";width:14px;height:14px;margin-top:.4em;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23E1B13A' d='M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z'/%3E%3C/svg%3E")}
+@media (min-width:900px){.ter{grid-template-columns:5fr 6fr;gap:80px}}
+
+/* program + contact */
+.info{display:grid;gap:40px;margin-top:40px}
+.orar{width:100%;border-collapse:collapse;font-size:17px}
+.orar th,.orar td{padding:12px 0;border-bottom:1px solid var(--linie);text-align:left;font-weight:400}
+.orar td{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.orar tr.azi th,.orar tr.azi td{color:var(--frunza);font-weight:700}
+.orar tr.azi th::after{content:" · azi";font-weight:500;color:var(--miere-inchis)}
+html[data-lang="en"] .orar tr.azi th::after{content:" · today"}
+.de-confirmat{font-size:13.5px;font-weight:600;color:var(--miere-inchis);background:rgba(225,177,58,.18);padding:3px 10px;border-radius:999px}
+.contacte{display:grid;gap:18px}
+.contacte .rand{display:grid;gap:4px;padding-bottom:16px;border-bottom:1px solid var(--linie)}
+.contacte .et{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2)}
+.contacte .val{font:500 26px/1.2 var(--f-disp);color:var(--frunza);text-decoration:none}
+.contacte a.val:hover{text-decoration:underline;text-underline-offset:4px}
+.harta{margin-top:18px;border-radius:18px;overflow:hidden;border:1px dashed var(--linie)}
+.harta iframe{display:block;width:100%;height:340px;border:0}
+.social{display:flex;flex-wrap:wrap;gap:8px 18px}
+.social a{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;text-decoration:none}
+.social svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@media (min-width:900px){.info{grid-template-columns:1fr 1fr;gap:72px}}
+
+.rodape{background:var(--text);color:var(--alb-2);padding-block:60px calc(env(safe-area-inset-bottom,0px) + 36px);font-size:15px}
+.rodape .marca{font-size:clamp(44px,7vw,80px);color:var(--alb)}
+.rodape .marca i{color:var(--miere)}
+.rodape a{color:var(--alb);text-underline-offset:3px}
+.rod-grila{margin-top:32px;display:grid;gap:24px}
+.rodape h3{font:600 12.5px/1.3 var(--f-text);letter-spacing:.12em;text-transform:uppercase;color:#8FA095;margin-bottom:6px}
+.rod-legal{margin-top:40px;padding-top:20px;border-top:1px solid #2F3E34;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:13.5px}
+@media (min-width:820px){.rod-grila{grid-template-columns:repeat(3,1fr)}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html.js .rv{opacity:1;transform:none}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Bistro Copou","description":"Bistro cu terasă peste drum de Parcul Copou: shaorma, clătite sărate, mici, salate, sandvișuri și cafea. La masă, la pachet și livrare.","address":{"@type":"PostalAddress","streetAddress":"Strada Oastei 48","addressLocality":"Iași","postalCode":"700478","addressCountry":"RO"},"telephone":"+40748631607","email":"bistrocopou@gmail.com","priceRange":"40–60 lei","servesCuisine":["Internațional","Românesc"],"acceptsReservations":true,"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"22:00"}],"sameAs":["https://www.facebook.com/BistroCopou/","https://www.instagram.com/bistrocopou.iasi/","https://iasi-delivery.ro/restaurants/bistro-copou"]}
+</script>
+</head>
+<body>
+<a class="sari" href="#continut"><span lang="ro">Sari la conținut</span><span lang="en">Skip to content</span></a>
+<div class="demo" role="note">
+  <span lang="ro">PREZENTARE PACHECO STUDIOS · site demonstrativ<span class="lung"> · ce e marcat <b>de confirmat</b> completăm împreună</span></span>
+  <span lang="en">PACHECO STUDIOS PRESENTATION · demo site<span class="lung"> · anything marked <b>to confirm</b> we fill in together</span></span>
+</div>
+
+<header class="bara" id="bara">
+  <div class="bara-in">
+    <a class="marca" href="#sus">Bistro&nbsp;<i>Copou</i></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#meniu-bistro"><span lang="ro">Meniu</span><span lang="en">Menu</span></a>
+      <a href="#comanda"><span lang="ro">Comandă</span><span lang="en">Order</span></a>
+      <a href="#terasa"><span lang="ro">Terasa</span><span lang="en">Terrace</span></a>
+      <a href="#program"><span lang="ro">Program și contact</span><span lang="en">Hours and contact</span></a>
+    </nav>
+    <div class="limba" role="group" aria-label="Limba / Language">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-plin cta" href="https://iasi-delivery.ro/restaurants/bistro-copou" target="_blank" rel="noopener"><span lang="ro">Comandă online</span><span lang="en">Order online</span></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="Meniu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+  </div>
+</header>
+
+<div class="meniu" id="meniu" role="dialog" aria-modal="true" aria-label="Meniu">
+  <div class="meniu-sus"><span class="marca" aria-hidden="true">Bistro&nbsp;<i>Copou</i></span><button class="burger inchide" type="button" aria-label="Închide meniul"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <ul>
+    <li><a href="#meniu-bistro"><span lang="ro">Meniu</span><span lang="en">Menu</span></a></li>
+    <li><a href="#comanda"><span lang="ro">Comandă</span><span lang="en">Order</span></a></li>
+    <li><a href="#terasa"><span lang="ro">Terasa</span><span lang="en">Terrace</span></a></li>
+    <li><a href="#program"><span lang="ro">Program și contact</span><span lang="en">Hours and contact</span></a></li>
+  </ul>
+  <a class="btn btn-miere" href="tel:+40748631607"><span lang="ro">Sună: 0748 631 607</span><span lang="en">Call: +40 748 631 607</span></a>
+</div>
+
+<main id="continut">
+  <section class="erou" id="sus">
+    <canvas class="umbra" id="umbra" aria-hidden="true"></canvas>
+    <div class="lat erou-in">
+      <p class="loc"><span>Strada Oastei 48</span><span lang="ro">Peste drum de Parcul Copou</span><span lang="en">Across from Copou Park</span></p>
+      <h1 class="titlu-mare"><span class="r1">Bistro</span> <i>Copou</i><span class="sr-only"><span lang="ro"> — bistro cu terasă și livrare în Iași</span><span lang="en"> — bistro with a terrace and delivery in Iași</span></span></h1>
+      <p class="sub"><span lang="ro">Terasă la umbra copacilor, peste drum de parc. Shaorma, clătite sărate, mici și cafea: la masă, la pachet sau livrate acasă.</span><span lang="en">A terrace in the shade, across the road from the park. Shawarma, savoury crêpes, mici and coffee: eat in, take away or get it delivered.</span></p>
+      <div class="dreapta">
+        <div class="actiuni">
+          <a class="btn btn-plin" href="https://iasi-delivery.ro/restaurants/bistro-copou" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h2l2.2 10h10.6L20 9H7"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="16.5" cy="19.5" r="1.3"/></svg><span lang="ro">Comandă online</span><span lang="en">Order online</span></a>
+          <a class="btn btn-linie" href="tel:+40748631607"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>0748 631 607</a>
+        </div>
+        <div class="fapte">
+          <span class="fapt" id="stare"><span class="punct" aria-hidden="true"></span><span lang="ro"><b>Luni–Sâmbătă</b> 09:00–22:00</span><span lang="en"><b>Mon–Sat</b> 9 am–10 pm</span></span>
+          <span class="fapt"><span lang="ro"><b>677</b> de recenzii pe Google · 4,2</span><span lang="en"><b>677</b> Google reviews · 4.2</span></span>
+          <span class="fapt"><span lang="ro">40–60 lei de persoană</span><span lang="en">40–60 lei per person</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="banda" aria-hidden="true"><div class="banda-pista">
+    <div class="banda-grup"><span>Shaorma</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span lang="ro">Clătite sărate</span><span lang="en">Savoury crêpes</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span>Mici</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span lang="ro">Salată grecească</span><span lang="en">Greek salad</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span>Cuban sandwich</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span lang="ro">Cafea pe terasă</span><span lang="en">Coffee on the terrace</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg></div>
+    <div class="banda-grup"><span>Shaorma</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span lang="ro">Clătite sărate</span><span lang="en">Savoury crêpes</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span>Mici</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span lang="ro">Salată grecească</span><span lang="en">Greek salad</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span>Cuban sandwich</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg><span lang="ro">Cafea pe terasă</span><span lang="en">Coffee on the terrace</span><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-9-6.6-9-11.2C3 6.3 5.5 4 8.3 4c1.6 0 2.9.8 3.7 2 .8-1.2 2.1-2 3.7-2C18.5 4 21 6.3 21 9.8 21 14.4 17 18 12 21z"/></svg></div>
+  </div></div>
+
+  <section class="sectiune" id="meniu-bistro" aria-labelledby="t-meniu">
+    <div class="lat meniu-sec">
+      <div class="cap">
+        <p class="eticheta rv"><span lang="ro">Din meniu</span><span lang="en">From the menu</span></p>
+        <h2 class="titlu rv d1" id="t-meniu"><span lang="ro">Ce se <i>comandă</i> des</span><span lang="en">What people <i>order</i></span></h2>
+        <p class="nota-pret rv d2"><span lang="ro"><strong>Meniul complet și prețurile</strong> sunt pe iasi-delivery.ro, Wolt și Bolt Food. În medie, 40–60 de lei de persoană (Google).</span><span lang="en"><strong>The full menu and prices</strong> are on iasi-delivery.ro, Wolt and Bolt Food. Around 40–60 lei per person on average (Google).</span></p>
+        <div class="rv d2"><a class="btn btn-plin" href="https://iasi-delivery.ro/restaurants/bistro-copou" target="_blank" rel="noopener"><span lang="ro">Vezi meniul complet</span><span lang="en">See the full menu</span></a></div>
+      </div>
+      <div>
+        <ul class="feluri">
+          <li class="rv"><span class="nume"><span lang="ro">Shaorma la farfurie</span><span lang="en">Shawarma plate</span></span><span class="cat"><span lang="ro">meniuri</span><span lang="en">meals</span></span></li>
+          <li class="rv"><span class="nume"><span lang="ro">Shaorma în lipie</span><span lang="en">Shawarma wrap</span></span><span class="cat"><span lang="ro">sandvișuri</span><span lang="en">sandwiches</span></span></li>
+          <li class="rv"><span class="nume"><span lang="ro">Meniu mici</span><span lang="en">Mici plate</span></span><span class="cat"><span lang="ro">meniuri</span><span lang="en">meals</span></span></li>
+          <li class="rv"><span class="nume"><span lang="ro">Clătita casei</span><span lang="en">House crêpe</span></span><span class="cat"><span lang="ro">clătite sărate</span><span lang="en">savoury crêpes</span></span></li>
+          <li class="rv"><span class="nume"><span lang="ro">Salată grecească</span><span lang="en">Greek salad</span></span><span class="cat"><span lang="ro">salate</span><span lang="en">salads</span></span></li>
+          <li class="rv"><span class="nume">Cuban sandwich</span><span class="cat"><span lang="ro">sandvișuri</span><span lang="en">sandwiches</span></span></li>
+        </ul>
+        <p class="eticheta rv" style="margin-top:34px"><span lang="ro">Și în meniu</span><span lang="en">Also on the menu</span></p>
+        <ul class="categorii rv" style="margin-top:12px">
+          <li><span lang="ro">Cafea și ceai</span><span lang="en">Coffee and tea</span></li>
+          <li><span lang="ro">Supe</span><span lang="en">Soups</span></li>
+          <li><span lang="ro">Burgeri</span><span lang="en">Burgers</span></li>
+          <li><span lang="ro">Deserturi</span><span lang="en">Desserts</span></li>
+          <li><span lang="ro">Patiserie</span><span lang="en">Bakery</span></li>
+          <li><span lang="ro">Vegetarian și vegan</span><span lang="en">Vegetarian and vegan</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectiune" id="comanda" aria-labelledby="t-comanda">
+    <div class="lat">
+      <p class="eticheta rv"><span lang="ro">La masă, la pachet, acasă</span><span lang="en">Eat in, take away, delivered</span></p>
+      <h2 class="titlu rv d1" id="t-comanda"><span lang="ro">Cum vrei <i>azi</i>?</span><span lang="en">How would you like it <i>today</i>?</span></h2>
+      <div class="trei">
+        <article class="fel rv">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16M6 10v9M18 10v9M8 6h8l2 4H6z"/></svg>
+          <h3><span lang="ro">La masă</span><span lang="en">Eat in</span></h3>
+          <p><span lang="ro">Pe terasă, peste drum de Parcul Copou. Pentru grupuri, rezervă din timp.</span><span lang="en">On the terrace, across from Copou Park. For groups, book ahead.</span></p>
+          <div class="linkuri"><a href="https://bookingham.ro/iasi/restaurante/bistro-copou/2837" target="_blank" rel="noopener"><span lang="ro">Rezervă pe Bookingham</span><span lang="en">Book on Bookingham</span></a><a href="tel:+40748631607"><span lang="ro">Sună</span><span lang="en">Call</span></a></div>
+        </article>
+        <article class="fel rv d1">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <h3><span lang="ro">La pachet</span><span lang="en">Take away</span></h3>
+          <p><span lang="ro">Sună înainte și treci să iei comanda pe Strada Oastei 48.</span><span lang="en">Call ahead and pick up your order at 48 Oastei Street.</span></p>
+          <div class="linkuri"><a href="tel:+40748631607">0748 631 607</a></div>
+        </article>
+        <article class="fel rv d2">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="17" r="2.5"/><circle cx="17.5" cy="17" r="2.5"/><path d="M9 17h6l-2-7h-3M13 10h3l1.5 7M4 10h5"/></svg>
+          <h3><span lang="ro">Livrare</span><span lang="en">Delivery</span></h3>
+          <p><span lang="ro">Comanzi pe platforma pe care o folosești deja. Suntem și pe Glovo.</span><span lang="en">Order on the app you already use. We're on Glovo too.</span></p>
+          <div class="linkuri"><a href="https://iasi-delivery.ro/restaurants/bistro-copou" target="_blank" rel="noopener">Iasi Delivery</a><a href="https://wolt.com/en/rou/iasi/restaurant/bistro-copou-67dac5f221070572d8f7ae3e" target="_blank" rel="noopener">Wolt</a><a href="https://food.bolt.eu/ro-ro/463-iasi/p/162388-bistro-copou/" target="_blank" rel="noopener">Bolt Food</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectiune terasa" id="terasa" aria-labelledby="t-terasa">
+    <div class="lat ter">
+      <figure class="foto rv">
+        <svg class="fallback" viewBox="0 0 400 500" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#2A4A37"/><g fill="#355C44"><path d="M80 120c-40-24-72-54-72-91C8 1 28-17 50-17c13 0 23 6 30 16 6-10 17-16 30-16 22 0 42 18 42 46 0 37-32 67-72 91z"/><path d="M300 260c-50-30-90-68-90-114 0-35 25-58 53-58 16 0 29 8 37 20 8-12 21-20 37-20 28 0 53 23 53 58 0 46-40 84-90 114z"/><path d="M150 480c-34-20-61-46-61-77 0-24 17-39 36-39 11 0 20 5 25 14 5-9 14-14 25-14 19 0 36 15 36 39 0 31-27 57-61 77z"/></g><path d="M40 430h320M70 430v50M330 430v50M120 400h160l20 30H100z" stroke="#E1B13A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <img src="media/terasa.jpg" width="800" height="1000" alt="Terasa Bistro Copou" onerror="this.remove()">
+        <figcaption><span lang="ro">Terasa · fotografie de adăugat</span><span lang="en">The terrace · photo to add</span></figcaption>
+      </figure>
+      <div>
+        <p class="eticheta rv"><span lang="ro">Terasa</span><span lang="en">The terrace</span></p>
+        <h2 class="titlu rv d1" id="t-terasa"><span lang="ro">Cea mai verde <i>adresă</i> din Iași</span><span lang="en">The <i>greenest</i> address in Iași</span></h2>
+        <p class="intro rv d2" style="margin-top:18px"><span lang="ro">Terasa e peste drum de Parcul Copou, parcul cu teiul lui Eminescu. Vii la o cafea dimineața, la prânz sau după o plimbare prin parc.</span><span lang="en">The terrace is across the road from Copou Park, home of Eminescu's linden tree. Come for a morning coffee, for lunch or after a walk in the park.</span></p>
+        <ul class="lista-ter">
+          <li class="rv"><span lang="ro">Deschis de la 9 dimineața</span><span lang="en">Open from 9 in the morning</span></li>
+          <li class="rv d1"><span lang="ro">Opțiuni vegetariene și vegane</span><span lang="en">Vegetarian and vegan options</span></li>
+          <li class="rv d2"><span lang="ro">Tot meniul se poate lua și la pachet</span><span lang="en">The whole menu is also available to take away</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectiune" id="program" aria-labelledby="t-program">
+    <div class="lat">
+      <p class="eticheta rv"><span lang="ro">Program și contact</span><span lang="en">Hours and contact</span></p>
+      <h2 class="titlu rv d1" id="t-program"><span lang="ro">Te așteptăm <i>pe terasă</i></span><span lang="en">See you <i>on the terrace</i></span></h2>
+      <div class="info">
+        <div class="rv">
+          <table class="orar" id="orar">
+            <caption class="sr-only">Program</caption>
+            <tbody>
+              <tr data-zi="1"><th scope="row"><span lang="ro">Luni</span><span lang="en">Monday</span></th><td>09:00–22:00</td></tr>
+              <tr data-zi="2"><th scope="row"><span lang="ro">Marți</span><span lang="en">Tuesday</span></th><td>09:00–22:00</td></tr>
+              <tr data-zi="3"><th scope="row"><span lang="ro">Miercuri</span><span lang="en">Wednesday</span></th><td>09:00–22:00</td></tr>
+              <tr data-zi="4"><th scope="row"><span lang="ro">Joi</span><span lang="en">Thursday</span></th><td>09:00–22:00</td></tr>
+              <tr data-zi="5"><th scope="row"><span lang="ro">Vineri</span><span lang="en">Friday</span></th><td>09:00–22:00</td></tr>
+              <tr data-zi="6"><th scope="row"><span lang="ro">Sâmbătă</span><span lang="en">Saturday</span></th><td>09:00–22:00</td></tr>
+              <tr data-zi="0"><th scope="row"><span lang="ro">Duminică</span><span lang="en">Sunday</span></th><td><span class="de-confirmat"><span lang="ro">de confirmat</span><span lang="en">to confirm</span></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="contacte rv d1">
+          <div class="rand"><span class="et"><span lang="ro">Telefon</span><span lang="en">Phone</span></span><a class="val" href="tel:+40748631607">0748 631 607</a></div>
+          <div class="rand"><span class="et">E-mail</span><a class="val" href="mailto:bistrocopou@gmail.com">bistrocopou@gmail.com</a></div>
+          <div class="rand"><span class="et"><span lang="ro">Adresa</span><span lang="en">Address</span></span><span class="val">Strada Oastei 48, Iași</span>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px">
+              <a class="btn btn-linie" href="https://www.google.com/maps/search/?api=1&amp;query=Bistro%20Copou%2C%20Strada%20Oastei%2048%2C%20Ia%C8%99i" target="_blank" rel="noopener"><span lang="ro">Deschide în Google Maps</span><span lang="en">Open in Google Maps</span></a>
+              <button class="btn btn-linie" type="button" id="arata-harta"><span lang="ro">Arată harta aici</span><span lang="en">Show the map here</span></button>
+            </div>
+            <div class="harta" id="harta" hidden></div>
+          </div>
+          <div class="social">
+            <a href="https://www.instagram.com/bistrocopou.iasi/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6"/></svg>@bistrocopou.iasi</a>
+            <a href="https://www.facebook.com/BistroCopou/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5h2.5V5H14a3.5 3.5 0 0 0-3.5 3.5V11H8v3.5h2.5V21H14v-6.5h2.5L17 11h-3V9a.5.5 0 0 1 .5-.5Z"/></svg>Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="lat">
+    <p class="marca" aria-hidden="true">Bistro&nbsp;<i>Copou</i></p>
+    <div class="rod-grila">
+      <div><h3><span lang="ro">Adresa</span><span lang="en">Address</span></h3><p>Strada Oastei 48<br>700478 Iași, România</p></div>
+      <div><h3><span lang="ro">Contact</span><span lang="en">Contact</span></h3><p><a href="tel:+40748631607">0748 631 607</a><br><a href="mailto:bistrocopou@gmail.com">bistrocopou@gmail.com</a></p></div>
+      <div><h3><span lang="ro">Comenzi</span><span lang="en">Orders</span></h3><p><a href="https://iasi-delivery.ro/restaurants/bistro-copou" target="_blank" rel="noopener">Iasi Delivery</a> · <a href="https://wolt.com/en/rou/iasi/restaurant/bistro-copou-67dac5f221070572d8f7ae3e" target="_blank" rel="noopener">Wolt</a> · <a href="https://food.bolt.eu/ro-ro/463-iasi/p/162388-bistro-copou/" target="_blank" rel="noopener">Bolt Food</a></p></div>
+    </div>
+    <div class="rod-legal">
+      <span>© 2026 Bistro Copou</span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener"><span lang="ro">ANPC · Soluționarea alternativă a litigiilor</span><span lang="en">ANPC · Alternative dispute resolution</span></a>
+      <span><span lang="ro">Site fără cookie-uri. Harta Google se încarcă doar dacă o ceri.</span><span lang="en">No cookies on this site. The Google map only loads if you ask for it.</span></span>
+      <a href="https://www.instagram.com/pachecostudiospt" target="_blank" rel="noopener">Website: Pacheco Studios</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var html=document.documentElement;
+  function seteaza(l){
+    html.dataset.lang=l; html.lang=l;
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
+    document.title=l==='en'?'Bistro Copou · Terrace and delivery by Copou Park, Iași':'Bistro Copou · Terasă și livrare, lângă Parcul Copou, Iași';
+    try{localStorage.setItem('bc.lang',l)}catch(e){}
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+  seteaza(html.dataset.lang==='en'?'en':'ro');
+
+  var bara=document.getElementById('bara');
+  function sc(){bara.classList.toggle('scrolled',window.scrollY>8)}
+  window.addEventListener('scroll',sc,{passive:true}); sc();
+
+  var burger=document.querySelector('.bara .burger'), meniu=document.getElementById('meniu'), inchide=meniu.querySelector('.inchide');
+  function deschide(d){meniu.classList.toggle('deschis',d);burger.setAttribute('aria-expanded',d?'true':'false');document.body.style.overflow=d?'hidden':'';(d?inchide:burger).focus()}
+  burger.addEventListener('click',function(){deschide(true)});
+  inchide.addEventListener('click',function(){deschide(false)});
+  meniu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){deschide(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&meniu.classList.contains('deschis'))deschide(false)});
+
+  var rv=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});rv.forEach(function(el){io.observe(el)})}
+  else rv.forEach(function(el){el.classList.add('vis')});
+
+  // ziua de azi no horário + estado (aberto/fechado) pela hora de Iași
+  try{
+    var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Bucharest',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    var g=function(t){return (p.find(function(x){return x.type===t})||{}).value};
+    var zi={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[g('weekday')], min=(+g('hour'))*60+(+g('minute'));
+    var tr=document.querySelector('#orar tr[data-zi="'+zi+'"]'); if(tr)tr.classList.add('azi');
+    if(zi>=1&&zi<=6){
+      var deschis=min>=540&&min<1320, pt=document.querySelector('#stare .punct');
+      if(!deschis)pt.classList.add('inchis');
+    } else document.querySelector('#stare .punct').remove();
+  }catch(e){}
+
+  var bt=document.getElementById('arata-harta'), h=document.getElementById('harta');
+  bt.addEventListener('click',function(){
+    if(!h.firstChild){var f=document.createElement('iframe');f.src='https://www.google.com/maps?q=Bistro%20Copou%2C%20Strada%20Oastei%2048%2C%20Ia%C8%99i&output=embed';f.title='Bistro Copou';f.loading='lazy';h.appendChild(f)}
+    h.hidden=false; bt.hidden=true;
+  });
+
+  // assinatura: sombra de folhas de tília (coração com ponta) a balançar sobre a luz da manhã
+  var cv=document.getElementById('umbra'); if(!cv||!cv.getContext)return;
+  var cx=cv.getContext('2d'), reduz=matchMedia('(prefers-reduced-motion: reduce)').matches, W=0,H=0,dpr=1,frunze=[],sprite=null,vizibil=true;
+  function rnd(s){var x=Math.sin(s*127.1)*43758.5453;return x-Math.floor(x)}
+  function faFrunza(){
+    var s=document.createElement('canvas'), n=160; s.width=s.height=n; var c=s.getContext('2d');
+    c.filter='blur(5px)'; c.fillStyle='rgba(31,59,44,1)'; c.translate(n/2,n/2+6);
+    c.beginPath(); c.moveTo(0,52); c.bezierCurveTo(-50,20,-58,-22,-36,-40); c.bezierCurveTo(-20,-52,-4,-44,0,-30);
+    c.bezierCurveTo(4,-44,20,-52,36,-40); c.bezierCurveTo(58,-22,50,20,0,52); c.closePath(); c.fill();
+    c.fillRect(-2,-62,4,36);
+    return s;
+  }
+  function pregateste(){
+    var r=cv.getBoundingClientRect(); dpr=Math.min(window.devicePixelRatio||1,1.5); W=r.width; H=r.height;
+    cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); cx.setTransform(dpr,0,0,dpr,0,0);
+    var n=W<700?16:30; frunze=[];
+    for(var i=0;i<n;i++){
+      var ramura=i%3; // três ramos a entrar pela direita e por cima
+      var bx=[.78,.55,.95][ramura]*W, by=[.05,.28,.52][ramura]*H;
+      frunze.push({x:bx+(rnd(i+1)-.5)*W*.42, y:by+(rnd(i+7)-.5)*H*.34, s:(W<700?.42:.62)+rnd(i+3)*.45, r:rnd(i+5)*6.28, f:.5+rnd(i+9)*.7, a:.10+rnd(i+11)*.10, ph:rnd(i+13)*6.28});
+    }
+  }
+  function deseneaza(t){
+    cx.clearRect(0,0,W,H);
+    var g=cx.createRadialGradient(W*.72,H*.2,0,W*.72,H*.2,Math.max(W,H)*.9);
+    g.addColorStop(0,'rgba(255,248,214,.55)'); g.addColorStop(1,'rgba(255,248,214,0)');
+    cx.fillStyle=g; cx.fillRect(0,0,W,H);
+    for(var i=0;i<frunze.length;i++){
+      var f=frunze[i], vant=Math.sin(t*.00045*f.f+f.ph), vant2=Math.sin(t*.0011*f.f+f.ph*1.7);
+      cx.save(); cx.globalAlpha=f.a; cx.translate(f.x+vant*14+vant2*4, f.y+vant2*6); cx.rotate(f.r+vant*.12);
+      var d=160*f.s; cx.drawImage(sprite,-d/2,-d/2,d,d); cx.restore();
+    }
+  }
+  var raf=0;
+  function bucla(t){deseneaza(t); if(!reduz&&vizibil)raf=requestAnimationFrame(bucla)}
+  sprite=faFrunza(); pregateste(); deseneaza(0);
+  if(!reduz){raf=requestAnimationFrame(bucla);
+    if('IntersectionObserver' in window)new IntersectionObserver(function(e){vizibil=e[0].isIntersecting;cancelAnimationFrame(raf);if(vizibil)raf=requestAnimationFrame(bucla)}).observe(cv);
+    document.addEventListener('visibilitychange',function(){vizibil=!document.hidden;cancelAnimationFrame(raf);if(vizibil)raf=requestAnimationFrame(bucla)});
+  }
+  var tmo; window.addEventListener('resize',function(){clearTimeout(tmo);tmo=setTimeout(function(){pregateste();deseneaza(performance.now())},150)});
+})();
+</script>
+</body>
+</html>
