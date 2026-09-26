@@ -152,6 +152,55 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
   transition:background-color .2s,color .2s,border-color .2s}
 .chip:hover,.chip:focus-visible{background:var(--osso);color:var(--carvao);border-color:var(--osso)}
 
+/* ═══ mostrar a máquina: o fluxo como fica montado, as regras, quem decide, a mensagem ═══ */
+.intro-2{margin-top:.8rem}
+.ai{margin-top:1.25rem;border:1px solid var(--linha-e);border-radius:1rem;background:var(--carvao-2)}
+.ai summary{list-style:none;cursor:pointer;padding:.9rem 1.1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;font:600 1rem/1.3 var(--texto);min-height:3rem}
+.ai summary::-webkit-details-marker{display:none}
+.ai summary>span{display:grid;gap:.35rem}
+.ai .ai-e{font-size:.75rem;letter-spacing:.2em}
+.ai summary svg{width:1rem;height:1rem;stroke:var(--laranja);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--sair)}
+.ai[open] summary svg{transform:rotate(180deg)}
+.ai ol{padding:.25rem 1.1rem 1.1rem;display:grid;gap:.7rem;counter-reset:frase}
+.ai li{position:relative;padding-left:2rem;counter-increment:frase;font-size:.9375rem;line-height:1.5}
+.ai li::before{content:counter(frase);position:absolute;left:0;top:-.15rem;font:400 1.25rem/1.5 var(--display);color:var(--laranja)}
+.legenda{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin:-.2rem 0 .85rem;font:700 .75rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--osso-2)}
+.legenda span{display:inline-flex;align-items:center;gap:.4rem}
+.legenda i{width:.8rem;height:.8rem;border-radius:.2rem;border:1.5px solid rgba(239,234,227,.55);display:inline-block;background:var(--carvao-2)}
+.legenda .l-gatilho{background:#F4E7C9;border-color:#B7811A}
+.legenda .l-pessoa{background:#DCE9E0;border-color:#2F6B4F}
+.legenda .l-decizie{border-style:dashed}
+.bp{display:grid;gap:.6rem}
+.bp>li{position:relative;padding-left:1.9rem}
+.bp>li::before{content:"";position:absolute;left:.6rem;top:.5rem;bottom:-.95rem;border-left:2px dotted var(--laranja)}
+.bp>li:last-child::before{display:none}
+.bp>li::after{content:"";position:absolute;left:.2rem;top:.65rem;width:.85rem;height:.85rem;border-radius:50%;background:var(--laranja)}
+.no{border:1.5px solid rgba(239,234,227,.35);border-radius:.75rem;padding:.7rem .85rem;background:var(--carvao-2);font-size:.9375rem;line-height:1.35}
+.no b{display:block;font-weight:600}
+.no small{display:block;color:var(--osso-2);font-size:.8125rem;line-height:1.4;margin-top:.15rem}
+.no.gatilho{background:#F4E7C9;color:#141210;border-color:#B7811A}
+.no.gatilho small{color:#5B4520}
+.no.pessoa{background:#DCE9E0;color:#141210;border-color:#2F6B4F}
+.no.pessoa small{color:#2C4A3A}
+.no.decizie{border-style:dashed}
+.ramuri{display:grid;gap:.45rem;margin-top:.6rem}
+.ramuri .no{padding:.55rem .65rem;font-size:.875rem}
+.reguli{display:grid;gap:.45rem}
+.reguli li{position:relative;padding-left:1.3rem;font-size:.9375rem}
+.reguli li::before{content:"";position:absolute;left:0;top:.5rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--laranja)}
+.decide{display:grid;gap:.55rem}
+.decide div{display:grid;grid-template-columns:5.5rem 1fr;gap:.6rem;font-size:.9375rem;align-items:baseline}
+.decide b{font:700 .75rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--laranja)}
+.chat{display:grid;gap:.45rem;max-width:28rem}
+.msg{padding:.65rem .85rem;border-radius:1rem;font-size:.9375rem;line-height:1.4;color:#141210}
+.msg small{display:block;font:700 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem;color:#4D4A47}
+.msg.client,.msg.tu{background:#F2E9DF;margin-right:2rem;border-bottom-left-radius:.3rem}
+.msg.asistent{background:#E7F1EA;margin-left:2rem;border-bottom-right-radius:.3rem}
+.demo{display:grid;gap:.6rem;justify-items:start;padding-top:1rem;border-top:1px solid var(--linha-e)}
+.demo p{font-weight:600}
+.secundario{border-color:var(--contorno);color:var(--osso)}
+.secundario:hover{background:rgba(239,234,227,.08)}
+
 /* ligam-se entre si: três caminhos, nada mais */
 .combos{margin-top:clamp(3rem,10vw,5rem);max-width:48rem}
 .drumuri{margin-top:1.5rem;display:grid;gap:1.1rem}
@@ -205,6 +254,7 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
 .js .rv.vis{opacity:1;transform:none}
 
 @media (min-width:40rem){
+  .ramuri{grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))}
   .grelha{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
   .q{padding:1.1rem}
   .q-nome{font-size:calc(clamp(1.35rem,3vw,2rem) * var(--fs,1))}
@@ -256,6 +306,11 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
         <p class="eyebrow">Automatizări</p>
         <h2 id="t-automatizari" class="afirmacao">Site-ul aduce clienți. Automatizările îi păstrează.</h2>
         <p class="lead">Opt lucruri pe care le faci acum de mână sau nu le mai faci deloc, pentru că nu ai timp. Fiecare merge singură, pe WhatsApp, cu ce ai deja.</p>
+        <p class="lead intro-2">Fiecare e desenată aici așa cum se montează: pas cu pas, cu regulile ei și cu momentele în care intră un om. Nu promitem. Arătăm.</p>
+        <details class="ai">
+          <summary><span><span class="eyebrow ai-e">Pe scurt, în cinci fraze</span>Ce e, de fapt, AI-ul din spate?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <ol><li>Citește și scrie text, ca un om foarte rapid care nu obosește. Atât face. Nu „gândește” în locul tău și nu decide nimic singur.</li><li>Regulile sunt ale noastre și ale tale. Noi desenăm ce se întâmplă în fiecare situație. Tu aprobi fiecare text pe care îl poate trimite. El alege dintre răspunsuri aprobate: nu inventează prețuri sau promisiuni.</li><li>Rulează în conturile tale. WhatsApp-ul e al tău, agenda e a ta, Google-ul e al tău. Datele clienților rămân unde erau.</li><li>Totul rămâne înregistrat: fiecare mesaj trimis, la ce oră, cui și ce a răspuns. Poți citi tot, oricând.</li><li>Când iese din rutină, intră un om. O întrebare pe care n-o știe, un client supărat, o cerere ciudată: ajunge la tine sau la noi, cu toată conversația.</li></ol>
+        </details>
       </div>
       <div class="autos">
 <details class="auto rv" name="auto" id="a-receptionist" style="--i:0">
@@ -265,15 +320,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Vezi cum funcționează</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Cum funcționează</h4><ol class="fluxo">
-<li>Clientul scrie pe WhatsApp sau sună. Un apel pierdut primește automat un mesaj în câteva secunde.</li>
-<li>Asistentul răspunde imediat: program, meniu sau prețuri, adresă, rezervări. În cuvintele afacerii tale.</li>
-<li>Ce nu știe, îți trimite ție, cu toată conversația, ca să răspunzi dintr-un tap.</li>
-<li>Fiecare client rămâne în lista ta, cu ce a întrebat.</li>
+    <div><h4 class="rotulo">Cum e montată</h4><div class="legenda"><span><i class="l-gatilho"></i>declanșator</span><span><i class="l-auto"></i>automat</span><span><i class="l-pessoa"></i>persoană</span><span><i class="l-decizie"></i>decizie</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Apel pierdut sau mesaj pe WhatsApp</b><small>la orice oră, inclusiv în afara programului</small></div></li>
+<li><div class="no auto"><b>Răspunde în 5 secunde, cu textul aprobat de tine</b><small>„Bună! Sunt asistentul automat al restaurantului X. Cu ce te pot ajuta?”</small></div></li>
+<li><div class="no decizie"><b>Înțelege ce vrea clientul</b><small>program · adresă · meniu · rezervare · altceva</small><div class="ramuri"><div class="no ramo"><b>Rutină</b><small>răspunde din lista de răspunsuri aprobate</small></div><div class="no ramo"><b>Rezervare</b><small>întreabă persoane și ora, scrie în agendă, confirmă</small></div><div class="no pessoa"><b>Altceva</b><small>îți trimite toată conversația; răspunzi dintr-un tap</small></div></div></div></li>
+<li><div class="no auto"><b>Trece clientul în lista ta</b><small>nume, telefon, ce a cerut, data</small></div></li>
+<li><div class="no pessoa"><b>Panoul de luni dimineața</b><small>apeluri preluate · rezervări făcute · ce n-a știut (ca să adaugi la listă)</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Nici un client fără răspuns, zi și noapte. Tu intri doar când e nevoie de un om.</div>
+    <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
+<li>Nu inventează prețuri: spune doar ce e în lista aprobată.</li>
+<li>Nu știe? Nu răspunde. Trece la o persoană.</li>
+<li>În afara programului spune când deschizi și notează cererea.</li>
+<li>Se prezintă ca asistent automat de la primul mesaj.</li>
+<li>Fiecare mesaj rămâne înregistrat. Îl citești când vrei.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Cine decide ce</h4><div class="decide"><div><b>Tu</b><span>aprobi textele, agenda și programul; poți opri totul cu un cuvânt</span></div><div><b>Sistemul</b><span>alege dintre răspunsurile aprobate, scrie în agendă, notează</span></div><div><b>Noi</b><span>desenăm, montăm, reglăm după panou</span></div></div></div>
+    <div><h4 class="rotulo">Ce vede clientul</h4><div class="chat"><div class="msg client"><small>Client</small>Aveți masă pentru 4 diseară la 20?</div><div class="msg asistent"><small>Asistent</small>Da, avem. Pe ce nume o trec? Confirm imediat rezervarea de la 20:00 pentru 4 persoane.</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Ai nevoie de</h4><p>WhatsApp Business și lista întrebărilor pe care le auzi cel mai des.</p></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-programari">Programări</a> <a class="chip" href="#a-lead">Răspuns rapid</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum răspunde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20v%C4%83d%20cum%20r%C4%83spunde%3A%20Recep%C8%9Bionist%20AI%20pe%20WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere o demonstrație pe WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-programari" style="--i:1">
@@ -283,15 +349,27 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Vezi cum funcționează</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Cum funcționează</h4><ol class="fluxo">
-<li>Clientul alege ziua și ora pe WhatsApp sau pe site. Intră direct în calendarul tău.</li>
-<li>Cu o zi înainte primește un mesaj cu două butoane: „Confirm” sau „Mut”.</li>
-<li>Dacă mută sau anulează, locul se eliberează și e oferit celor de pe lista de așteptare.</li>
-<li>Cu două ore înainte, un ultim reminder, cu adresa.</li>
+    <div><h4 class="rotulo">Cum e montată</h4><div class="legenda"><span><i class="l-gatilho"></i>declanșator</span><span><i class="l-auto"></i>automat</span><span><i class="l-pessoa"></i>persoană</span><span><i class="l-decizie"></i>decizie</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Clientul cere o programare</b><small>pe WhatsApp, pe site sau la telefon (o notezi tu)</small></div></li>
+<li><div class="no auto"><b>Propune ore libere din calendarul tău</b><small>trei variante, ca să aleagă dintr-un tap</small></div></li>
+<li><div class="no auto"><b>Scrie programarea și trimite confirmarea</b><small>cu adresa și, dacă e cazul, ce să aducă</small></div></li>
+<li><div class="no auto"><b>Cu o zi înainte: mesaj cu două butoane</b><small>„Confirm” sau „Mut”</small></div></li>
+<li><div class="no decizie"><b>A răspuns?</b><div class="ramuri"><div class="no ramo"><b>Confirm</b><small>rămâne; ultimul reminder cu 2 ore înainte</small></div><div class="no ramo"><b>Mut sau anulez</b><small>locul se eliberează și e oferit listei de așteptare</small></div><div class="no pessoa"><b>Nimic</b><small>vezi lista celor care n-au confirmat; un telefon scurt, dacă vrei</small></div></div></div></li>
+<li><div class="no pessoa"><b>Panoul săptămânal</b><small>programări · confirmate · mutate · neprezentări</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Calendarul se umple singur, iar locurile eliberate nu rămân goale.</div>
+    <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
+<li>Nu mută și nu anulează nimic fără ca clientul să apese butonul.</li>
+<li>Nu promite ore care nu sunt libere în calendarul tău.</li>
+<li>Cel mult trei mesaje pentru o programare: confirmarea și cele două remindere.</li>
+<li>Se prezintă ca asistent automat.</li>
+<li>Clientul iese oricând cu «STOP».</li>
+    </ul></div>
+    <div><h4 class="rotulo">Cine decide ce</h4><div class="decide"><div><b>Tu</b><span>programul, durata fiecărui serviciu, textele, ce se întâmplă cu locurile eliberate</span></div><div><b>Sistemul</b><span>propune ore, scrie în calendar, trimite reminderele</span></div><div><b>Noi</b><span>desenăm, montăm, reglăm</span></div></div></div>
+    <div><h4 class="rotulo">Ce vede clientul</h4><div class="chat"><div class="msg client"><small>Client</small>Pot veni joi după-amiază?</div><div class="msg asistent"><small>Asistent</small>Joi am liber la 15:00, 16:30 și 18:00. Care îți convine?</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Ai nevoie de</h4><p>Calendarul pe care îl folosești deja (Google Calendar sau altul) și WhatsApp Business.</p></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-receptionist">Recepționist AI</a> <a class="chip" href="#a-recenzii">Recenzii Google</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum răspunde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20v%C4%83d%20cum%20r%C4%83spunde%3A%20Program%C4%83ri%20confirmate%2C%20f%C4%83r%C4%83%20neprezent%C4%83ri"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere o demonstrație pe WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-recenzii" style="--i:2">
@@ -301,15 +379,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Vezi cum funcționează</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Cum funcționează</h4><ol class="fluxo">
-<li>La două ore după vizită, clientul primește un mesaj scurt de mulțumire.</li>
-<li>O singură întrebare: „Cum a fost?”. Cei mulțumiți ajung cu un tap la butonul de recenzie Google.</li>
-<li>Cei nemulțumiți ajung la tine, în privat, înainte să scrie ceva public.</li>
-<li>La fiecare recenzie nouă primești un răspuns propus, gata de trimis.</li>
+    <div><h4 class="rotulo">Cum e montată</h4><div class="legenda"><span><i class="l-gatilho"></i>declanșator</span><span><i class="l-auto"></i>automat</span><span><i class="l-pessoa"></i>persoană</span><span><i class="l-decizie"></i>decizie</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Clientul a fost la tine</b><small>din agendă, din rezervare sau dintr-un tap al tău la casă</small></div></li>
+<li><div class="no auto"><b>După două ore: o mulțumire scurtă</b><small>un singur mesaj, în numele tău</small></div></li>
+<li><div class="no decizie"><b>„Cum a fost?”</b><div class="ramuri"><div class="no ramo"><b>Bine</b><small>un tap și ajunge la butonul de recenzie Google</small></div><div class="no pessoa"><b>Nu prea</b><small>îți scrie ție, în privat; răspunzi înainte să apară ceva public</small></div><div class="no ramo"><b>Fără răspuns</b><small>nimic. Nu insistă.</small></div></div></div></li>
+<li><div class="no auto"><b>Recenzie nouă pe Google? Îți propune un răspuns</b><small>tu apeși „trimite” sau schimbi un cuvânt</small></div></li>
+<li><div class="no pessoa"><b>Panoul lunar</b><small>recenzii noi · nota · ce spun oamenii cel mai des</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Recenzii constante, probleme rezolvate în privat și un profil Google care urcă.</div>
+    <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
+<li>Un singur mesaj după vizită. Fără insistențe.</li>
+<li>Nu cere recenzii bune: întreabă cum a fost.</li>
+<li>Nu răspunde public la recenzii fără să apeși tu.</li>
+<li>Se prezintă ca asistent automat.</li>
+<li>Clientul iese oricând cu «STOP».</li>
+    </ul></div>
+    <div><h4 class="rotulo">Cine decide ce</h4><div class="decide"><div><b>Tu</b><span>textul mulțumirii, la câte ore se trimite, cine primește nemulțumirile</span></div><div><b>Sistemul</b><span>trimite, întreabă, sortează, propune răspunsuri</span></div><div><b>Noi</b><span>desenăm, montăm, reglăm</span></div></div></div>
+    <div><h4 class="rotulo">Ce vede clientul</h4><div class="chat"><div class="msg asistent"><small>Asistent</small>Mulțumim că ai fost azi la noi! Cum a fost?</div><div class="msg client"><small>Client</small>Foarte bine, mâncarea excelentă.</div><div class="msg asistent"><small>Asistent</small>Ne bucurăm! Dacă ai un minut, o recenzie pe Google ne ajută enorm: [link]</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Ai nevoie de</h4><p>Profilul Google al afacerii și numerele de telefon ale clienților (de la rezervări sau de la casă).</p></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-programari">Programări</a> <a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum răspunde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20v%C4%83d%20cum%20r%C4%83spunde%3A%20Recenzii%20Google%2C%20automat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere o demonstrație pe WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-lead" style="--i:3">
@@ -319,15 +408,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Vezi cum funcționează</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Cum funcționează</h4><ol class="fluxo">
-<li>Orice cerere (formular pe site, mesaj pe Instagram sau Facebook, apel pierdut) ajunge într-un singur loc.</li>
-<li>În mai puțin de un minut, clientul primește răspuns pe WhatsApp, cu următoarea întrebare.</li>
-<li>Dacă nu răspunde, primește încă două mesaje: a doua zi și peste trei zile.</li>
-<li>Tu vezi toate cererile într-o listă: cine a răspuns, cine așteaptă, cine a devenit client.</li>
+    <div><h4 class="rotulo">Cum e montată</h4><div class="legenda"><span><i class="l-gatilho"></i>declanșator</span><span><i class="l-auto"></i>automat</span><span><i class="l-pessoa"></i>persoană</span><span><i class="l-decizie"></i>decizie</span></div><ol class="bp">
+<li><div class="no gatilho"><b>O cerere nouă</b><small>formular pe site, mesaj pe Instagram sau Facebook, apel pierdut</small></div></li>
+<li><div class="no auto"><b>În sub un minut: răspuns pe WhatsApp</b><small>cu textul aprobat de tine și întrebarea următoare (ce, când, câte persoane)</small></div></li>
+<li><div class="no decizie"><b>A răspuns?</b><div class="ramuri"><div class="no pessoa"><b>Da</b><small>conversația ajunge la tine, cu tot ce a spus deja</small></div><div class="no ramo"><b>Nu, după o zi</b><small>al doilea mesaj, scurt</small></div><div class="no ramo"><b>Nu, după trei zile</b><small>al treilea și ultimul</small></div></div></div></li>
+<li><div class="no auto"><b>Fiecare cerere într-o listă</b><small>de unde a venit · ce voia · ce s-a răspuns · stare</small></div></li>
+<li><div class="no pessoa"><b>Panoul săptămânal</b><small>cereri · răspunse · devenite clienți · pierdute</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Nici o cerere uitată. Cine răspunde primul câștigă clientul.</div>
+    <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
+<li>Trei mesaje, maximum. Apoi tace.</li>
+<li>Nu promite prețuri sau termene: le spui tu.</li>
+<li>Nu scrie de două ori aceluiași om în aceeași zi.</li>
+<li>Se prezintă ca asistent automat.</li>
+<li>«STOP» oprește totul.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Cine decide ce</h4><div class="decide"><div><b>Tu</b><span>textele celor trei mesaje, ce se întreabă, când preiei tu</span></div><div><b>Sistemul</b><span>adună cererile, răspunde, urmărește, notează</span></div><div><b>Noi</b><span>desenăm, montăm, reglăm</span></div></div></div>
+    <div><h4 class="rotulo">Ce vede clientul</h4><div class="chat"><div class="msg client"><small>Client</small>Faceți și evenimente private?</div><div class="msg asistent"><small>Asistent</small>Bună! Da, organizăm. Pentru câte persoane și în ce dată? Îți răspunde cineva din echipă cât de curând.</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Ai nevoie de</h4><p>Paginile de Instagram și Facebook ale afacerii și WhatsApp Business.</p></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-receptionist">Recepționist AI</a> <a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum răspunde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20v%C4%83d%20cum%20r%C4%83spunde%3A%20R%C4%83spuns%20%C3%AEn%2060%20de%20secunde%20la%20orice%20cerere"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere o demonstrație pe WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-documente" style="--i:4">
@@ -337,15 +437,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Vezi cum funcționează</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Cum funcționează</h4><ol class="fluxo">
-<li>Fotografiezi bonul sau factura și o trimiți pe WhatsApp, pe loc.</li>
-<li>AI-ul citește furnizorul, data, suma și TVA-ul și le pune într-un tabel.</li>
-<li>Primești confirmarea imediat. Dacă lipsește ceva, te întreabă.</li>
-<li>În ultima zi a lunii, contabilul primește automat arhiva completă, ordonată pe zile.</li>
+    <div><h4 class="rotulo">Cum e montată</h4><div class="legenda"><span><i class="l-gatilho"></i>declanșator</span><span><i class="l-auto"></i>automat</span><span><i class="l-pessoa"></i>persoană</span><span><i class="l-decizie"></i>decizie</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Fotografiezi bonul sau factura</b><small>și o trimiți pe WhatsApp, pe loc</small></div></li>
+<li><div class="no auto"><b>Citește furnizorul, data, suma și TVA-ul</b><small>și le pune într-un tabel</small></div></li>
+<li><div class="no decizie"><b>Se citește tot?</b><div class="ramuri"><div class="no ramo"><b>Da</b><small>confirmare pe loc, cu ce a notat</small></div><div class="no pessoa"><b>Lipsește ceva</b><small>te întreabă: „suma e 148 sau 143?”</small></div></div></div></li>
+<li><div class="no auto"><b>Arhivă ordonată pe zile</b><small>poza și datele, într-un dosar al tău</small></div></li>
+<li><div class="no auto"><b>În ultima zi a lunii: pachetul către contabil</b><small>tabelul și arhiva, prin email</small></div></li>
+<li><div class="no pessoa"><b>Contabilul confirmă</b><small>sau întreabă direct, în același loc</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Zero hârtii pierdute. Contabilul are totul fără să te sune.</div>
+    <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
+<li>Nu aruncă nimic: fiecare poză rămâne.</li>
+<li>Nu trimite contabilului decât în ziua stabilită.</li>
+<li>Dacă nu e sigur de o cifră, întreabă. Nu ghicește.</li>
+<li>Datele rămân în contul tău.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Cine decide ce</h4><div class="decide"><div><b>Tu</b><span>ce se fotografiază, ziua trimiterii, adresa contabilului</span></div><div><b>Sistemul</b><span>citește, notează, întreabă, trimite</span></div><div><b>Noi</b><span>desenăm, montăm, reglăm</span></div></div></div>
+    <div><h4 class="rotulo">Ce vede clientul</h4><div class="chat"><div class="msg tu"><small>Tu</small>[poza bonului]</div><div class="msg asistent"><small>Asistent</small>Am notat: Furnizor SRL, 12 mai, 148,20 lei, TVA 19 %. Corect?</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Ai nevoie de</h4><p>Doar telefonul tău și adresa de email a contabilului.</p></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-raport">Raportul de dimineață</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum răspunde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20v%C4%83d%20cum%20r%C4%83spunde%3A%20Bonuri%20%C8%99i%20facturi%20c%C4%83tre%20contabil%2C%20de%20pe%20telefon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere o demonstrație pe WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-revenire" style="--i:5">
@@ -355,15 +466,27 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Vezi cum funcționează</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Cum funcționează</h4><ol class="fluxo">
-<li>Fiecare client cu care ai vorbit sau care a rezervat rămâne în lista ta, cu data ultimei vizite.</li>
-<li>După 60 de zile fără vizită, primește un mesaj personal, de la tine. Nu o reclamă.</li>
-<li>De ziua lui, o atenție: un desert, o reducere sau un simplu „la mulți ani”.</li>
-<li>Cine revine e marcat. Cine nu mai vrea mesaje iese din listă cu un singur cuvânt.</li>
+    <div><h4 class="rotulo">Cum e montată</h4><div class="legenda"><span><i class="l-gatilho"></i>declanșator</span><span><i class="l-auto"></i>automat</span><span><i class="l-pessoa"></i>persoană</span><span><i class="l-decizie"></i>decizie</span></div><ol class="bp">
+<li><div class="no gatilho"><b>60 de zile fără vizită</b><small>din lista ta de clienți (o umplu celelalte automatizări sau o aduci tu)</small></div></li>
+<li><div class="no decizie"><b>Are consimțământ pentru mesaje?</b><div class="ramuri"><div class="no ramo"><b>Da</b><small>merge mai departe</small></div><div class="no ramo"><b>Nu</b><small>nu primește nimic; îl întrebăm la următoarea vizită</small></div></div></div></li>
+<li><div class="no auto"><b>Un mesaj personal, în numele tău</b><small>nu o reclamă: „Nu te-am mai văzut de ceva vreme…”</small></div></li>
+<li><div class="no auto"><b>De ziua lui: o atenție</b><small>un desert, o reducere sau un simplu „la mulți ani”</small></div></li>
+<li><div class="no decizie"><b>A revenit?</b><div class="ramuri"><div class="no ramo"><b>Da</b><small>marcat; ciclul pornește din nou</small></div><div class="no ramo"><b>Nu</b><small>pauză de trei luni; apoi cel mult încă o încercare</small></div><div class="no ramo"><b>«STOP»</b><small>iese din listă imediat</small></div></div></div></li>
+<li><div class="no pessoa"><b>Panoul lunar</b><small>mesaje trimise · reveniri · dezabonări</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Clienții vechi revin fără să plătești reclame ca să-i aduci înapoi.</div>
+    <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
+<li>Doar cu consimțământ. Fără, nu trimite.</li>
+<li>Un mesaj la 60 de zile, nu mai des.</li>
+<li>«STOP» înseamnă stop, definitiv.</li>
+<li>Nu inventează oferte: trimite doar ce ai aprobat tu.</li>
+<li>Spune că e un mesaj automat, din partea ta.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Cine decide ce</h4><div class="decide"><div><b>Tu</b><span>textele, oferta (dacă e), cine intră în listă</span></div><div><b>Sistemul</b><span>numără zilele, trimite, marchează</span></div><div><b>Noi</b><span>desenăm, montăm, reglăm</span></div></div></div>
+    <div><h4 class="rotulo">Ce vede clientul</h4><div class="chat"><div class="msg asistent"><small>Asistent</small>Bună, Ana! Nu te-am mai văzut de la începutul verii. Sâmbătă avem din nou peștele pe care îl luai mereu. Te așteptăm.</div><div class="msg client"><small>Client</small>Venim sâmbătă seara, 2 persoane.</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Ai nevoie de</h4><p>Lista de clienți (o construiesc celelalte automatizări) și WhatsApp Business.</p></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-recenzii">Recenzii Google</a> <a class="chip" href="#a-social">Postări</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum răspunde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20v%C4%83d%20cum%20r%C4%83spunde%3A%20Clien%C8%9Bii%20care%20nu%20s-au%20mai%20%C3%AEntors"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere o demonstrație pe WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-raport" style="--i:6">
@@ -373,15 +496,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Vezi cum funcționează</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Cum funcționează</h4><ol class="fluxo">
-<li>În fiecare noapte, automatizarea adună cifrele din sistemele pe care le ai deja: casă, rezervări, recenzii, mesaje.</li>
-<li>La 8:00 primești un mesaj de zece rânduri: încasările de ieri, rezervările de azi, recenziile noi, cererile fără răspuns.</li>
-<li>Lunar, un tabel simplu: zilele bune, produsele care merg, ce a scăzut.</li>
-<li>Poți întreba „cum a fost joi?” și primești răspunsul pe loc.</li>
+    <div><h4 class="rotulo">Cum e montată</h4><div class="legenda"><span><i class="l-gatilho"></i>declanșator</span><span><i class="l-auto"></i>automat</span><span><i class="l-pessoa"></i>persoană</span><span><i class="l-decizie"></i>decizie</span></div><ol class="bp">
+<li><div class="no gatilho"><b>În fiecare noapte, la 3:00</b><small>pornește singură</small></div></li>
+<li><div class="no auto"><b>Adună cifrele din sistemele tale</b><small>casă sau program de vânzări · rezervări · recenzii · mesaje fără răspuns</small></div></li>
+<li><div class="no decizie"><b>Au răspuns toate sursele?</b><div class="ramuri"><div class="no ramo"><b>Da</b><small>raportul se scrie</small></div><div class="no pessoa"><b>Una lipsește</b><small>raportul iese oricum, cu „casa nu a răspuns azi”; noi verificăm</small></div></div></div></li>
+<li><div class="no auto"><b>La 8:00: zece rânduri pe WhatsApp</b><small>încasările de ieri · rezervările de azi · recenziile noi · cererile fără răspuns</small></div></li>
+<li><div class="no pessoa"><b>Întrebi când vrei</b><small>„cum a fost joi?”, „câte rezervări avem sâmbătă?”</small></div></li>
+<li><div class="no auto"><b>Lunar: tabelul cu tendințele</b><small>zilele bune, produsele care merg, ce a scăzut</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Afacerea la tine în buzunar, în fiecare dimineață, fără să deschizi nimic.</div>
+    <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
+<li>Citește, nu scrie: nu modifică nimic în casă sau în agendă.</li>
+<li>Cifrele vin din sistemele tale; nu sunt estimări.</li>
+<li>Când o sursă lipsește, o spune. Nu completează.</li>
+<li>Raportul îl vezi doar tu (și cine spui tu).</li>
+    </ul></div>
+    <div><h4 class="rotulo">Cine decide ce</h4><div class="decide"><div><b>Tu</b><span>ce intră în raport, ora, cine îl primește</span></div><div><b>Sistemul</b><span>adună, calculează, scrie, răspunde la întrebări</span></div><div><b>Noi</b><span>legăm sursele (depinde de sistemul tău: verificăm împreună), montăm, reglăm</span></div></div></div>
+    <div><h4 class="rotulo">Ce vede clientul</h4><div class="chat"><div class="msg asistent"><small>Asistent</small>Bună dimineața. Ieri: 42 de mese, 3 rezervări noi pentru azi, o recenzie nouă (5 stele), 2 mesaje fără răspuns pe Instagram.</div><div class="msg client"><small>Client</small>Cum a fost sâmbăta trecută?</div><div class="msg asistent"><small>Asistent</small>Sâmbătă, 20 septembrie: 61 de mese. Cea mai bună zi a lunii.</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Ai nevoie de</h4><p>Acces la casa de marcat sau la programul de vânzări. Depinde de sistemul tău: verificăm împreună.</p></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-documente">Bonuri și facturi</a> <a class="chip" href="#a-lead">Răspuns rapid</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum răspunde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20v%C4%83d%20cum%20r%C4%83spunde%3A%20Raportul%20de%20diminea%C8%9B%C4%83%2C%20pe%20WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere o demonstrație pe WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-social" style="--i:7">
@@ -391,15 +525,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Vezi cum funcționează</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Cum funcționează</h4><ol class="fluxo">
-<li>Trimiți o poză pe WhatsApp, cu două cuvinte despre ce e.</li>
-<li>AI-ul îți scrie trei variante de text, în tonul afacerii tale. Alegi una cu un tap.</li>
-<li>Postarea se programează pe Instagram, Facebook și profilul Google, la ora la care clienții tăi sunt online.</li>
-<li>Săptămânal vezi ce a mers mai bine.</li>
+    <div><h4 class="rotulo">Cum e montată</h4><div class="legenda"><span><i class="l-gatilho"></i>declanșator</span><span><i class="l-auto"></i>automat</span><span><i class="l-pessoa"></i>persoană</span><span><i class="l-decizie"></i>decizie</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Trimiți o poză pe WhatsApp</b><small>cu două cuvinte: „tortul nou de mâine”</small></div></li>
+<li><div class="no auto"><b>Scrie trei variante de text</b><small>în tonul afacerii tale, fără cuvinte pe care nu le-ai folosi</small></div></li>
+<li><div class="no pessoa"><b>Alegi una cu un tap</b><small>sau schimbi un cuvânt și o trimiți înapoi</small></div></li>
+<li><div class="no auto"><b>Programează postarea</b><small>Instagram, Facebook și profilul Google, la ora la care clienții tăi sunt online</small></div></li>
+<li><div class="no decizie"><b>Cineva a comentat sau a scris?</b><div class="ramuri"><div class="no ramo"><b>Întrebare simplă</b><small>răspuns din lista aprobată</small></div><div class="no pessoa"><b>Altceva</b><small>la tine, cu tot contextul</small></div></div></div></li>
+<li><div class="no pessoa"><b>Săptămânal: ce a mers</b><small>postări · vizualizări · mesaje primite</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>O pagină vie, cu două minute pe zi.</div>
+    <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
+<li>Nu postează nimic fără tap-ul tău.</li>
+<li>Nu folosește poze care nu sunt ale tale.</li>
+<li>Nu inventează promoții sau prețuri.</li>
+<li>Nu răspunde în numele tău la ce nu e în listă.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Cine decide ce</h4><div class="decide"><div><b>Tu</b><span>poza, varianta, ziua; ce răspunsuri sunt în listă</span></div><div><b>Sistemul</b><span>scrie variantele, programează, răspunde la întrebările simple</span></div><div><b>Noi</b><span>desenăm, montăm, reglăm; tonul și lista, la început</span></div></div></div>
+    <div><h4 class="rotulo">Ce vede clientul</h4><div class="chat"><div class="msg tu"><small>Tu</small>[poză] tortul nou de mâine</div><div class="msg asistent"><small>Asistent</small>1: „De mâine, tort de fistic și zmeură. Doar 12 felii pe zi.” 2: „Fistic, zmeură, mâine. Cine vine primul?” 3: „Tortul nou e gata. Mâine, de la 9.” Care?</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Ai nevoie de</h4><p>Paginile de Instagram și Facebook și profilul Google al afacerii.</p></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-recenzii">Recenzii Google</a> <a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum răspunde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20v%C4%83d%20cum%20r%C4%83spunde%3A%20Post%C4%83ri%20din%20pozele%20tale%2C%20pe%20Instagram%2C%20Facebook%20%C8%99i%20Google"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere o demonstrație pe WhatsApp</a></div>
   </div>
 </details>
       </div>

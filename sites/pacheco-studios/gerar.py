@@ -7,10 +7,11 @@ Lê: index.src.html · conteudo/ro.json · conteudo/pt.json · portfolio.json ·
 Escreve em dist/ (não vai para o git):
   index.html            página em romeno (3 vistas: proiecte / automatizari / servicii + contacto)
   pt/index.html         a mesma página em português, para rever (ligação discreta no rodapé)
-  404.html · _redirects · netlify.toml · media/og.png
+  404.html · _redirects (QR /c) · _headers · netlify.toml · media/og.png
   p/<slug>/             cópia de cada site do portefólio, com <meta noindex> e o botão «Înapoi la proiecte» injetados
   ../pacheco-studios-netlify.zip   tudo isto, pronto a arrastar para o Netlify
-Copia ainda index.html, pt/index.html e 404.html para esta pasta, para se abrirem na app.
+Copia ainda index.html, pt/index.html, 404.html, _redirects, _headers e netlify.toml para esta pasta
+(para se abrirem na app e para o git ter sempre a versão atual).
 Depois corre verificar.cjs (HTML, acessibilidade, separadores, ligações dos quadrados, botão «Înapoi», 404).
 """
 import base64
@@ -133,14 +134,31 @@ def vista_proiecte(c, portfolio, teu):
 </section>"""
 
 
-def vista_automatizari(c):
+def no_html(n):
+    """Um passo do fluxo: declanșator (âmbar), automático (escuro), pessoa (verde) ou decisão (tracejado) com ramos."""
+    cls = n.get("tip", "auto") if n.get("tip") in ("gatilho", "pessoa", "decizie") else "auto"
+    inner = f"<b>{e(n['t'])}</b>" + (f"<small>{e(n['d'])}</small>" if n.get("d") else "")
+    if n.get("ramuri"):
+        inner += '<div class="ramuri">' + "".join(
+            f'<div class="no {"pessoa" if r.get("tip") == "pessoa" else "ramo"}"><b>{e(r["t"])}</b><small>{e(r["d"])}</small></div>'
+            for r in n["ramuri"]) + "</div>"
+    return f'<li><div class="no {cls}">{inner}</div></li>'
+
+
+def vista_automatizari(c, digitos):
     a = c["automatizari"]
     lab = a["labels"]
     por_id = {x["id"]: x for x in a["itens"]}
+    legenda = ('<div class="legenda">' + "".join(f'<span><i class="l-{k}"></i>{e(v)}</span>' for k, v in lab["legenda"].items()) + "</div>")
     cards = []
     for i, x in enumerate(a["itens"]):
-        passos = "\n".join(f"<li>{e(s)}</li>" for s in x["pasi"])
+        fluxo = "\n".join(no_html(n) for n in x["fluxo"])
+        reguli = "\n".join(f"<li>{e(r)}</li>" for r in x["reguli"])
+        decide = "".join(f'<div><b>{e(lab[k])}</b><span>{e(x["decide"][k])}</span></div>' for k in ("tu", "masina", "noi"))
+        chat = "".join(f'<div class="msg {e(m["cine"])}"><small>{e(lab["client"] if m["cine"] == "client" else lab["asistent"] if m["cine"] == "asistent" else lab["tu_msg"])}</small>{e(m["t"])}</div>'
+                       for m in x["exemplu"])
         chips = " ".join(f'<a class="chip" href="#a-{e(k)}">{e(por_id[k]["scurt"])}</a>' for k in x["leaga"] if k in por_id)
+        wa_demo = f"https://wa.me/351{digitos}?text={quote(lab['demo_msg'] + x['titlu'])}"
         cards.append(f"""<details class="auto rv" name="auto" id="a-{e(x["id"])}" style="--i:{i}">
   <summary>
     <h3>{e(x["titlu"])}</h3>
@@ -148,12 +166,18 @@ def vista_automatizari(c):
     <span class="vezi" aria-hidden="true"><span class="abre">{e(lab["vezi"])}</span><span class="fecha">{e(lab["inchide"])}</span>{I["baixo"]}</span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">{e(lab["cum"])}</h4><ol class="fluxo">
-{passos}
+    <div><h4 class="rotulo">{e(lab["montata"])}</h4>{legenda}<ol class="bp">
+{fluxo}
     </ol></div>
     <div class="obtii"><h4 class="rotulo">{e(lab["obtii"])}</h4>{e(x["obtii"])}</div>
+    <div><h4 class="rotulo">{e(lab["reguli"])}</h4><ul class="reguli">
+{reguli}
+    </ul></div>
+    <div><h4 class="rotulo">{e(lab["decide"])}</h4><div class="decide">{decide}</div></div>
+    <div><h4 class="rotulo">{e(lab["vede"])}</h4><div class="chat">{chat}</div></div>
     <div class="nevoie"><h4 class="rotulo">{e(lab["nevoie"])}</h4><p>{e(x["nevoie"])}</p></div>
     <div><h4 class="rotulo">{e(lab["leaga"])}</h4><div class="chips">{chips}</div></div>
+    <div class="demo"><p>{e(lab["demo_t"])}</p><a class="botao secundario" href="{e(wa_demo)}">{I["chat"]}{e(lab["demo_cta"])}</a></div>
   </div>
 </details>""")
     cb = a["combos"]
@@ -163,6 +187,7 @@ def vista_automatizari(c):
         # seta + chip seguintes ficam juntos: a seta nunca fica sozinha no fim de uma linha
         cadeia = elos[0] + "".join(f'<span class="dc">{I["seta"]}{x}</span>' for x in elos[1:])
         drumuri.append(f'<li class="drum"><span class="drum-t">{e(d["t"])}</span><span class="drum-c">{cadeia}</span></li>')
+    ai = "".join(f"<li>{e(f)}</li>" for f in lab["ai"])
     return f"""<section id="automatizari" class="vista" aria-labelledby="t-automatizari">
   <div class="envolver seccao">
     <div class="autos-grelha">
@@ -170,6 +195,11 @@ def vista_automatizari(c):
         <p class="eyebrow">{e(a["eyebrow"])}</p>
         <h2 id="t-automatizari" class="afirmacao">{e(a["titlu"])}</h2>
         <p class="lead">{e(a["intro"])}</p>
+        <p class="lead intro-2">{e(a["intro_extra"])}</p>
+        <details class="ai">
+          <summary><span><span class="eyebrow ai-e">{e(lab["ai_e"])}</span>{e(lab["ai_t"])}</span>{I["baixo"]}</summary>
+          <ol>{ai}</ol>
+        </details>
       </div>
       <div class="autos">
 {chr(10).join(cards)}
@@ -393,7 +423,7 @@ def main():
             "NAV_LABEL": "Secțiuni" if lang == "ro" else "Secções",
             "REGIAO": e(c["topo"]["regiao"].upper()), "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]),
             "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]), "TAB_SERVICII": e(c["topo"]["tabs"]["servicii"]),
-            "VISTA_AUTOMATIZARI": vista_automatizari(c), "VISTA_SERVICII": vista_servicii(c, portfolio),
+            "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos), "VISTA_SERVICII": vista_servicii(c, portfolio),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, "Afacerea ta?" if lang == "ro" else "O teu negócio?"),
             "CONTACT": contacto(c, d, wa, tel_legivel, digitos), "RODAPE": rodape(c, d, outra),
             "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
@@ -449,15 +479,19 @@ def main():
     for slug, dest in sorted(curtos.items()):
         red.append(f"/{re.sub(r'[^a-z0-9-]', '', slug.lower())}    {dest}    302")
     open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8").write("\n".join(red) + "\n")
+    # Cabeçalhos em _headers (e não no netlify.toml): o Netlify lê _headers e _redirects também quando o zip é
+    # arrastado à mão; o netlify.toml só é garantido em builds. Um sítio só, para não se duplicarem.
+    open(os.path.join(DIST, "_headers"), "w", encoding="utf-8").write(
+        "# Gerado por gerar.py — não editar à mão.\n/*\n  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n/p/*\n  X-Robots-Tag: noindex, nofollow\n"
+        "/media/*\n  Cache-Control: public, max-age=604800\n")
     open(os.path.join(DIST, "netlify.toml"), "w", encoding="utf-8").write(
-        '[build]\npublish = "."\n\n[[headers]]\nfor = "/*"\n[headers.values]\nX-Content-Type-Options = "nosniff"\n'
-        'Referrer-Policy = "strict-origin-when-cross-origin"\n\n[[headers]]\nfor = "/p/*"\n[headers.values]\n'
-        'X-Robots-Tag = "noindex, nofollow"\n\n[[headers]]\nfor = "/media/*"\n[headers.values]\nCache-Control = "public, max-age=604800"\n')
+        '# Gerado por gerar.py. Redirecionamentos em _redirects e cabeçalhos em _headers.\n[build]\npublish = "."\n')
 
     n = copiar_sites(portfolio, ro["inapoi"])
     og_png(fontes, d["cartao"]["slogan"], d["cartao"]["proposito"], ro["topo"]["regiao"])
 
-    for f in ("index.html", "404.html"):
+    for f in ("index.html", "404.html", "_redirects", "_headers", "netlify.toml"):
         shutil.copy(os.path.join(DIST, f), os.path.join(AQUI, f))
     os.makedirs(os.path.join(AQUI, "pt"), exist_ok=True)
     shutil.copy(os.path.join(DIST, "pt", "index.html"), os.path.join(AQUI, "pt", "index.html"))
@@ -465,6 +499,13 @@ def main():
     print("\nVALIDAÇÃO")
     ok &= validar("index.html (ro)", paginas["ro"]) & validar("pt/index.html", paginas["pt"]) & validar("404.html", p404)
     print(f"  index.html: {len(paginas['ro'].encode()) / 1024:.0f} KB · {n} sites copiados para /p/")
+    regras = open(os.path.join(DIST, "_redirects"), encoding="utf-8").read().splitlines()
+    qr_ok = all(any(r.split()[:3] == [f"/{c}", destino_qr, "302"] for r in regras if not r.startswith("#"))
+                for c in (caminho, caminho.upper()))
+    cab_ok = "X-Robots-Tag: noindex" in open(os.path.join(DIST, "_headers"), encoding="utf-8").read()
+    ok &= qr_ok and cab_ok
+    print(f"  {'✓' if qr_ok else '✗'} _redirects: /{caminho} e /{caminho.upper()} → {destino_qr} (o QR impresso)"
+          f" · {'✓' if cab_ok else '✗'} _headers: /p/* com noindex")
 
     zipp = os.path.join(AQUI, "pacheco-studios-netlify.zip")
     with zipfile.ZipFile(zipp, "w", zipfile.ZIP_DEFLATED) as z:

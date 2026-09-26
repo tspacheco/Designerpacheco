@@ -133,7 +133,35 @@
       "nevoie": "Ai nevoie de",
       "leaga": "Merge bine cu",
       "vezi": "Vezi cum funcționează",
-      "inchide": "Închide"
+      "inchide": "Închide",
+      "montata": "Cum e montată",
+      "legenda": {
+        "gatilho": "declanșator",
+        "auto": "automat",
+        "pessoa": "persoană",
+        "decizie": "decizie"
+      },
+      "reguli": "Regulile ei",
+      "decide": "Cine decide ce",
+      "tu": "Tu",
+      "masina": "Sistemul",
+      "noi": "Noi",
+      "vede": "Ce vede clientul",
+      "demo_t": "Vrei să vezi cum răspunde?",
+      "demo_cta": "Cere o demonstrație pe WhatsApp",
+      "demo_msg": "Bună, Tomás! Vreau să văd cum răspunde: ",
+      "client": "Client",
+      "asistent": "Asistent",
+      "tu_msg": "Tu",
+      "ai_t": "Ce e, de fapt, AI-ul din spate?",
+      "ai_e": "Pe scurt, în cinci fraze",
+      "ai": [
+        "Citește și scrie text, ca un om foarte rapid care nu obosește. Atât face. Nu „gândește” în locul tău și nu decide nimic singur.",
+        "Regulile sunt ale noastre și ale tale. Noi desenăm ce se întâmplă în fiecare situație. Tu aprobi fiecare text pe care îl poate trimite. El alege dintre răspunsuri aprobate: nu inventează prețuri sau promisiuni.",
+        "Rulează în conturile tale. WhatsApp-ul e al tău, agenda e a ta, Google-ul e al tău. Datele clienților rămân unde erau.",
+        "Totul rămâne înregistrat: fiecare mesaj trimis, la ce oră, cui și ce a răspuns. Poți citi tot, oricând.",
+        "Când iese din rutină, intră un om. O întrebare pe care n-o știe, un client supărat, o cerere ciudată: ajunge la tine sau la noi, cu toată conversația."
+      ]
     },
     "itens": [
       {
@@ -152,7 +180,71 @@
           "programari",
           "lead"
         ],
-        "scurt": "Recepționist AI"
+        "scurt": "Recepționist AI",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Apel pierdut sau mesaj pe WhatsApp",
+            "d": "la orice oră, inclusiv în afara programului"
+          },
+          {
+            "tip": "auto",
+            "t": "Răspunde în 5 secunde, cu textul aprobat de tine",
+            "d": "„Bună! Sunt asistentul automat al restaurantului X. Cu ce te pot ajuta?”"
+          },
+          {
+            "tip": "decizie",
+            "t": "Înțelege ce vrea clientul",
+            "d": "program · adresă · meniu · rezervare · altceva",
+            "ramuri": [
+              {
+                "t": "Rutină",
+                "d": "răspunde din lista de răspunsuri aprobate"
+              },
+              {
+                "t": "Rezervare",
+                "d": "întreabă persoane și ora, scrie în agendă, confirmă"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Altceva",
+                "d": "îți trimite toată conversația; răspunzi dintr-un tap"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Trece clientul în lista ta",
+            "d": "nume, telefon, ce a cerut, data"
+          },
+          {
+            "tip": "pessoa",
+            "t": "Panoul de luni dimineața",
+            "d": "apeluri preluate · rezervări făcute · ce n-a știut (ca să adaugi la listă)"
+          }
+        ],
+        "reguli": [
+          "Nu inventează prețuri: spune doar ce e în lista aprobată.",
+          "Nu știe? Nu răspunde. Trece la o persoană.",
+          "În afara programului spune când deschizi și notează cererea.",
+          "Se prezintă ca asistent automat de la primul mesaj.",
+          "Fiecare mesaj rămâne înregistrat. Îl citești când vrei."
+        ],
+        "decide": {
+          "tu": "aprobi textele, agenda și programul; poți opri totul cu un cuvânt",
+          "masina": "alege dintre răspunsurile aprobate, scrie în agendă, notează",
+          "noi": "desenăm, montăm, reglăm după panou"
+        },
+        "exemplu": [
+          {
+            "cine": "client",
+            "t": "Aveți masă pentru 4 diseară la 20?"
+          },
+          {
+            "cine": "asistent",
+            "t": "Da, avem. Pe ce nume o trec? Confirm imediat rezervarea de la 20:00 pentru 4 persoane."
+          }
+        ]
       },
       {
         "id": "programari",
@@ -170,7 +262,76 @@
           "receptionist",
           "recenzii"
         ],
-        "scurt": "Programări"
+        "scurt": "Programări",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Clientul cere o programare",
+            "d": "pe WhatsApp, pe site sau la telefon (o notezi tu)"
+          },
+          {
+            "tip": "auto",
+            "t": "Propune ore libere din calendarul tău",
+            "d": "trei variante, ca să aleagă dintr-un tap"
+          },
+          {
+            "tip": "auto",
+            "t": "Scrie programarea și trimite confirmarea",
+            "d": "cu adresa și, dacă e cazul, ce să aducă"
+          },
+          {
+            "tip": "auto",
+            "t": "Cu o zi înainte: mesaj cu două butoane",
+            "d": "„Confirm” sau „Mut”"
+          },
+          {
+            "tip": "decizie",
+            "t": "A răspuns?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Confirm",
+                "d": "rămâne; ultimul reminder cu 2 ore înainte"
+              },
+              {
+                "t": "Mut sau anulez",
+                "d": "locul se eliberează și e oferit listei de așteptare"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Nimic",
+                "d": "vezi lista celor care n-au confirmat; un telefon scurt, dacă vrei"
+              }
+            ]
+          },
+          {
+            "tip": "pessoa",
+            "t": "Panoul săptămânal",
+            "d": "programări · confirmate · mutate · neprezentări"
+          }
+        ],
+        "reguli": [
+          "Nu mută și nu anulează nimic fără ca clientul să apese butonul.",
+          "Nu promite ore care nu sunt libere în calendarul tău.",
+          "Cel mult trei mesaje pentru o programare: confirmarea și cele două remindere.",
+          "Se prezintă ca asistent automat.",
+          "Clientul iese oricând cu «STOP»."
+        ],
+        "decide": {
+          "tu": "programul, durata fiecărui serviciu, textele, ce se întâmplă cu locurile eliberate",
+          "masina": "propune ore, scrie în calendar, trimite reminderele",
+          "noi": "desenăm, montăm, reglăm"
+        },
+        "exemplu": [
+          {
+            "cine": "client",
+            "t": "Pot veni joi după-amiază?"
+          },
+          {
+            "cine": "asistent",
+            "t": "Joi am liber la 15:00, 16:30 și 18:00. Care îți convine?"
+          }
+        ]
       },
       {
         "id": "recenzii",
@@ -188,7 +349,75 @@
           "programari",
           "revenire"
         ],
-        "scurt": "Recenzii Google"
+        "scurt": "Recenzii Google",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Clientul a fost la tine",
+            "d": "din agendă, din rezervare sau dintr-un tap al tău la casă"
+          },
+          {
+            "tip": "auto",
+            "t": "După două ore: o mulțumire scurtă",
+            "d": "un singur mesaj, în numele tău"
+          },
+          {
+            "tip": "decizie",
+            "t": "„Cum a fost?”",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Bine",
+                "d": "un tap și ajunge la butonul de recenzie Google"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Nu prea",
+                "d": "îți scrie ție, în privat; răspunzi înainte să apară ceva public"
+              },
+              {
+                "t": "Fără răspuns",
+                "d": "nimic. Nu insistă."
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Recenzie nouă pe Google? Îți propune un răspuns",
+            "d": "tu apeși „trimite” sau schimbi un cuvânt"
+          },
+          {
+            "tip": "pessoa",
+            "t": "Panoul lunar",
+            "d": "recenzii noi · nota · ce spun oamenii cel mai des"
+          }
+        ],
+        "reguli": [
+          "Un singur mesaj după vizită. Fără insistențe.",
+          "Nu cere recenzii bune: întreabă cum a fost.",
+          "Nu răspunde public la recenzii fără să apeși tu.",
+          "Se prezintă ca asistent automat.",
+          "Clientul iese oricând cu «STOP»."
+        ],
+        "decide": {
+          "tu": "textul mulțumirii, la câte ore se trimite, cine primește nemulțumirile",
+          "masina": "trimite, întreabă, sortează, propune răspunsuri",
+          "noi": "desenăm, montăm, reglăm"
+        },
+        "exemplu": [
+          {
+            "cine": "asistent",
+            "t": "Mulțumim că ai fost azi la noi! Cum a fost?"
+          },
+          {
+            "cine": "client",
+            "t": "Foarte bine, mâncarea excelentă."
+          },
+          {
+            "cine": "asistent",
+            "t": "Ne bucurăm! Dacă ai un minut, o recenzie pe Google ne ajută enorm: [link]"
+          }
+        ]
       },
       {
         "id": "lead",
@@ -206,7 +435,71 @@
           "receptionist",
           "revenire"
         ],
-        "scurt": "Răspuns rapid"
+        "scurt": "Răspuns rapid",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "O cerere nouă",
+            "d": "formular pe site, mesaj pe Instagram sau Facebook, apel pierdut"
+          },
+          {
+            "tip": "auto",
+            "t": "În sub un minut: răspuns pe WhatsApp",
+            "d": "cu textul aprobat de tine și întrebarea următoare (ce, când, câte persoane)"
+          },
+          {
+            "tip": "decizie",
+            "t": "A răspuns?",
+            "d": "",
+            "ramuri": [
+              {
+                "tip": "pessoa",
+                "t": "Da",
+                "d": "conversația ajunge la tine, cu tot ce a spus deja"
+              },
+              {
+                "t": "Nu, după o zi",
+                "d": "al doilea mesaj, scurt"
+              },
+              {
+                "t": "Nu, după trei zile",
+                "d": "al treilea și ultimul"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Fiecare cerere într-o listă",
+            "d": "de unde a venit · ce voia · ce s-a răspuns · stare"
+          },
+          {
+            "tip": "pessoa",
+            "t": "Panoul săptămânal",
+            "d": "cereri · răspunse · devenite clienți · pierdute"
+          }
+        ],
+        "reguli": [
+          "Trei mesaje, maximum. Apoi tace.",
+          "Nu promite prețuri sau termene: le spui tu.",
+          "Nu scrie de două ori aceluiași om în aceeași zi.",
+          "Se prezintă ca asistent automat.",
+          "«STOP» oprește totul."
+        ],
+        "decide": {
+          "tu": "textele celor trei mesaje, ce se întreabă, când preiei tu",
+          "masina": "adună cererile, răspunde, urmărește, notează",
+          "noi": "desenăm, montăm, reglăm"
+        },
+        "exemplu": [
+          {
+            "cine": "client",
+            "t": "Faceți și evenimente private?"
+          },
+          {
+            "cine": "asistent",
+            "t": "Bună! Da, organizăm. Pentru câte persoane și în ce dată? Îți răspunde cineva din echipă cât de curând."
+          }
+        ]
       },
       {
         "id": "documente",
@@ -223,7 +516,71 @@
         "leaga": [
           "raport"
         ],
-        "scurt": "Bonuri și facturi"
+        "scurt": "Bonuri și facturi",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Fotografiezi bonul sau factura",
+            "d": "și o trimiți pe WhatsApp, pe loc"
+          },
+          {
+            "tip": "auto",
+            "t": "Citește furnizorul, data, suma și TVA-ul",
+            "d": "și le pune într-un tabel"
+          },
+          {
+            "tip": "decizie",
+            "t": "Se citește tot?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Da",
+                "d": "confirmare pe loc, cu ce a notat"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Lipsește ceva",
+                "d": "te întreabă: „suma e 148 sau 143?”"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Arhivă ordonată pe zile",
+            "d": "poza și datele, într-un dosar al tău"
+          },
+          {
+            "tip": "auto",
+            "t": "În ultima zi a lunii: pachetul către contabil",
+            "d": "tabelul și arhiva, prin email"
+          },
+          {
+            "tip": "pessoa",
+            "t": "Contabilul confirmă",
+            "d": "sau întreabă direct, în același loc"
+          }
+        ],
+        "reguli": [
+          "Nu aruncă nimic: fiecare poză rămâne.",
+          "Nu trimite contabilului decât în ziua stabilită.",
+          "Dacă nu e sigur de o cifră, întreabă. Nu ghicește.",
+          "Datele rămân în contul tău."
+        ],
+        "decide": {
+          "tu": "ce se fotografiază, ziua trimiterii, adresa contabilului",
+          "masina": "citește, notează, întreabă, trimite",
+          "noi": "desenăm, montăm, reglăm"
+        },
+        "exemplu": [
+          {
+            "cine": "tu",
+            "t": "[poza bonului]"
+          },
+          {
+            "cine": "asistent",
+            "t": "Am notat: Furnizor SRL, 12 mai, 148,20 lei, TVA 19 %. Corect?"
+          }
+        ]
       },
       {
         "id": "revenire",
@@ -241,7 +598,85 @@
           "recenzii",
           "social"
         ],
-        "scurt": "Clienți care revin"
+        "scurt": "Clienți care revin",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "60 de zile fără vizită",
+            "d": "din lista ta de clienți (o umplu celelalte automatizări sau o aduci tu)"
+          },
+          {
+            "tip": "decizie",
+            "t": "Are consimțământ pentru mesaje?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Da",
+                "d": "merge mai departe"
+              },
+              {
+                "t": "Nu",
+                "d": "nu primește nimic; îl întrebăm la următoarea vizită"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Un mesaj personal, în numele tău",
+            "d": "nu o reclamă: „Nu te-am mai văzut de ceva vreme…”"
+          },
+          {
+            "tip": "auto",
+            "t": "De ziua lui: o atenție",
+            "d": "un desert, o reducere sau un simplu „la mulți ani”"
+          },
+          {
+            "tip": "decizie",
+            "t": "A revenit?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Da",
+                "d": "marcat; ciclul pornește din nou"
+              },
+              {
+                "t": "Nu",
+                "d": "pauză de trei luni; apoi cel mult încă o încercare"
+              },
+              {
+                "t": "«STOP»",
+                "d": "iese din listă imediat"
+              }
+            ]
+          },
+          {
+            "tip": "pessoa",
+            "t": "Panoul lunar",
+            "d": "mesaje trimise · reveniri · dezabonări"
+          }
+        ],
+        "reguli": [
+          "Doar cu consimțământ. Fără, nu trimite.",
+          "Un mesaj la 60 de zile, nu mai des.",
+          "«STOP» înseamnă stop, definitiv.",
+          "Nu inventează oferte: trimite doar ce ai aprobat tu.",
+          "Spune că e un mesaj automat, din partea ta."
+        ],
+        "decide": {
+          "tu": "textele, oferta (dacă e), cine intră în listă",
+          "masina": "numără zilele, trimite, marchează",
+          "noi": "desenăm, montăm, reglăm"
+        },
+        "exemplu": [
+          {
+            "cine": "asistent",
+            "t": "Bună, Ana! Nu te-am mai văzut de la începutul verii. Sâmbătă avem din nou peștele pe care îl luai mereu. Te așteptăm."
+          },
+          {
+            "cine": "client",
+            "t": "Venim sâmbătă seara, 2 persoane."
+          }
+        ]
       },
       {
         "id": "raport",
@@ -259,7 +694,75 @@
           "documente",
           "lead"
         ],
-        "scurt": "Raportul de dimineață"
+        "scurt": "Raportul de dimineață",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "În fiecare noapte, la 3:00",
+            "d": "pornește singură"
+          },
+          {
+            "tip": "auto",
+            "t": "Adună cifrele din sistemele tale",
+            "d": "casă sau program de vânzări · rezervări · recenzii · mesaje fără răspuns"
+          },
+          {
+            "tip": "decizie",
+            "t": "Au răspuns toate sursele?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Da",
+                "d": "raportul se scrie"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Una lipsește",
+                "d": "raportul iese oricum, cu „casa nu a răspuns azi”; noi verificăm"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "La 8:00: zece rânduri pe WhatsApp",
+            "d": "încasările de ieri · rezervările de azi · recenziile noi · cererile fără răspuns"
+          },
+          {
+            "tip": "pessoa",
+            "t": "Întrebi când vrei",
+            "d": "„cum a fost joi?”, „câte rezervări avem sâmbătă?”"
+          },
+          {
+            "tip": "auto",
+            "t": "Lunar: tabelul cu tendințele",
+            "d": "zilele bune, produsele care merg, ce a scăzut"
+          }
+        ],
+        "reguli": [
+          "Citește, nu scrie: nu modifică nimic în casă sau în agendă.",
+          "Cifrele vin din sistemele tale; nu sunt estimări.",
+          "Când o sursă lipsește, o spune. Nu completează.",
+          "Raportul îl vezi doar tu (și cine spui tu)."
+        ],
+        "decide": {
+          "tu": "ce intră în raport, ora, cine îl primește",
+          "masina": "adună, calculează, scrie, răspunde la întrebări",
+          "noi": "legăm sursele (depinde de sistemul tău: verificăm împreună), montăm, reglăm"
+        },
+        "exemplu": [
+          {
+            "cine": "asistent",
+            "t": "Bună dimineața. Ieri: 42 de mese, 3 rezervări noi pentru azi, o recenzie nouă (5 stele), 2 mesaje fără răspuns pe Instagram."
+          },
+          {
+            "cine": "client",
+            "t": "Cum a fost sâmbăta trecută?"
+          },
+          {
+            "cine": "asistent",
+            "t": "Sâmbătă, 20 septembrie: 61 de mese. Cea mai bună zi a lunii."
+          }
+        ]
       },
       {
         "id": "social",
@@ -277,7 +780,71 @@
           "recenzii",
           "revenire"
         ],
-        "scurt": "Postări"
+        "scurt": "Postări",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Trimiți o poză pe WhatsApp",
+            "d": "cu două cuvinte: „tortul nou de mâine”"
+          },
+          {
+            "tip": "auto",
+            "t": "Scrie trei variante de text",
+            "d": "în tonul afacerii tale, fără cuvinte pe care nu le-ai folosi"
+          },
+          {
+            "tip": "pessoa",
+            "t": "Alegi una cu un tap",
+            "d": "sau schimbi un cuvânt și o trimiți înapoi"
+          },
+          {
+            "tip": "auto",
+            "t": "Programează postarea",
+            "d": "Instagram, Facebook și profilul Google, la ora la care clienții tăi sunt online"
+          },
+          {
+            "tip": "decizie",
+            "t": "Cineva a comentat sau a scris?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Întrebare simplă",
+                "d": "răspuns din lista aprobată"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Altceva",
+                "d": "la tine, cu tot contextul"
+              }
+            ]
+          },
+          {
+            "tip": "pessoa",
+            "t": "Săptămânal: ce a mers",
+            "d": "postări · vizualizări · mesaje primite"
+          }
+        ],
+        "reguli": [
+          "Nu postează nimic fără tap-ul tău.",
+          "Nu folosește poze care nu sunt ale tale.",
+          "Nu inventează promoții sau prețuri.",
+          "Nu răspunde în numele tău la ce nu e în listă."
+        ],
+        "decide": {
+          "tu": "poza, varianta, ziua; ce răspunsuri sunt în listă",
+          "masina": "scrie variantele, programează, răspunde la întrebările simple",
+          "noi": "desenăm, montăm, reglăm; tonul și lista, la început"
+        },
+        "exemplu": [
+          {
+            "cine": "tu",
+            "t": "[poză] tortul nou de mâine"
+          },
+          {
+            "cine": "asistent",
+            "t": "1: „De mâine, tort de fistic și zmeură. Doar 12 felii pe zi.” 2: „Fistic, zmeură, mâine. Cine vine primul?” 3: „Tortul nou e gata. Mâine, de la 9.” Care?"
+          }
+        ]
       }
     ],
     "combos": {
@@ -310,7 +877,8 @@
           ]
         }
       ]
-    }
+    },
+    "intro_extra": "Fiecare e desenată aici așa cum se montează: pas cu pas, cu regulile ei și cu momentele în care intră un om. Nu promitem. Arătăm."
   },
   "servicii": {
     "eyebrow": "Ce mai facem",

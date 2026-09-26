@@ -133,7 +133,35 @@
       "nevoie": "Precisas de",
       "leaga": "Combina bem com",
       "vezi": "Ver como funciona",
-      "inchide": "Fechar"
+      "inchide": "Fechar",
+      "montata": "Como é montada",
+      "legenda": {
+        "gatilho": "gatilho",
+        "auto": "automático",
+        "pessoa": "pessoa",
+        "decizie": "decisão"
+      },
+      "reguli": "As regras dela",
+      "decide": "Quem decide o quê",
+      "tu": "Tu",
+      "masina": "O sistema",
+      "noi": "Nós",
+      "vede": "O que o cliente vê",
+      "demo_t": "Queres ver como responde?",
+      "demo_cta": "Pede uma demonstração no WhatsApp",
+      "demo_msg": "Olá Tomás! Quero ver como responde: ",
+      "client": "Cliente",
+      "asistent": "Assistente",
+      "tu_msg": "Tu",
+      "ai_t": "O que é, afinal, a IA por trás?",
+      "ai_e": "Em cinco frases",
+      "ai": [
+        "Lê e escreve texto, como uma pessoa muito rápida que nunca se cansa. É só isso que faz. Não «pensa» por ti nem decide nada sozinha.",
+        "As regras são nossas e tuas. Nós desenhamos o que acontece em cada situação. Tu aprovas cada texto que ela pode enviar. Ela escolhe entre respostas aprovadas: não inventa preços nem promessas.",
+        "Corre nas tuas contas. O WhatsApp é o teu, a agenda é a tua, o Google é o teu. Os dados dos clientes ficam onde já estavam.",
+        "Tudo fica registado: cada mensagem enviada, a que horas, a quem e o que respondeu. Podes ler tudo, quando quiseres.",
+        "Quando sai da rotina, entra uma pessoa. Uma pergunta que não sabe, um cliente zangado, um pedido estranho: chega a ti ou a nós, com a conversa inteira."
+      ]
     },
     "itens": [
       {
@@ -152,7 +180,71 @@
           "programari",
           "lead"
         ],
-        "scurt": "Rececionista IA"
+        "scurt": "Rececionista IA",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Chamada perdida ou mensagem no WhatsApp",
+            "d": "a qualquer hora, incluindo fora do horário"
+          },
+          {
+            "tip": "auto",
+            "t": "Responde em 5 segundos, com o texto aprovado por ti",
+            "d": "«Olá! Sou o assistente automático do restaurante X. Em que posso ajudar?»"
+          },
+          {
+            "tip": "decizie",
+            "t": "Percebe o que o cliente quer",
+            "d": "horário · morada · ementa · reserva · outra coisa",
+            "ramuri": [
+              {
+                "t": "Rotina",
+                "d": "responde da lista de respostas aprovadas"
+              },
+              {
+                "t": "Reserva",
+                "d": "pergunta pessoas e hora, escreve na agenda, confirma"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Outra coisa",
+                "d": "manda-te a conversa inteira; respondes num toque"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Põe o cliente na tua lista",
+            "d": "nome, telefone, o que pediu, data"
+          },
+          {
+            "tip": "pessoa",
+            "t": "O painel de segunda de manhã",
+            "d": "chamadas atendidas · reservas feitas · o que não soube (para juntar à lista)"
+          }
+        ],
+        "reguli": [
+          "Não inventa preços: só diz o que está na lista aprovada.",
+          "Não sabe? Não responde. Passa a uma pessoa.",
+          "Fora de horas diz quando abres e regista o pedido.",
+          "Apresenta-se como assistente automático desde a primeira mensagem.",
+          "Cada mensagem fica registada. Lês quando quiseres."
+        ],
+        "decide": {
+          "tu": "aprovas os textos, a agenda e o horário; podes parar tudo com uma palavra",
+          "masina": "escolhe entre as respostas aprovadas, escreve na agenda, regista",
+          "noi": "desenhamos, montamos, afinamos com o painel"
+        },
+        "exemplu": [
+          {
+            "cine": "client",
+            "t": "Têm mesa para 4 hoje às 20h?"
+          },
+          {
+            "cine": "asistent",
+            "t": "Temos, sim. Em nome de quem fica? Confirmo já a reserva das 20:00 para 4 pessoas."
+          }
+        ]
       },
       {
         "id": "programari",
@@ -170,7 +262,76 @@
           "receptionist",
           "recenzii"
         ],
-        "scurt": "Marcações"
+        "scurt": "Marcações",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "O cliente pede uma marcação",
+            "d": "no WhatsApp, no site ou ao telefone (anotas tu)"
+          },
+          {
+            "tip": "auto",
+            "t": "Propõe horas livres da tua agenda",
+            "d": "três opções, para escolher num toque"
+          },
+          {
+            "tip": "auto",
+            "t": "Escreve a marcação e envia a confirmação",
+            "d": "com a morada e, se for o caso, o que trazer"
+          },
+          {
+            "tip": "auto",
+            "t": "Um dia antes: mensagem com dois botões",
+            "d": "«Confirmo» ou «Mudar»"
+          },
+          {
+            "tip": "decizie",
+            "t": "Respondeu?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Confirmo",
+                "d": "fica; último lembrete 2 horas antes"
+              },
+              {
+                "t": "Mudar ou cancelar",
+                "d": "o lugar liberta-se e é oferecido à lista de espera"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Nada",
+                "d": "vês a lista de quem não confirmou; uma chamada curta, se quiseres"
+              }
+            ]
+          },
+          {
+            "tip": "pessoa",
+            "t": "O painel semanal",
+            "d": "marcações · confirmadas · mudadas · faltas"
+          }
+        ],
+        "reguli": [
+          "Não muda nem cancela nada sem o cliente carregar no botão.",
+          "Não promete horas que não estão livres na tua agenda.",
+          "No máximo três mensagens por marcação: a confirmação e os dois lembretes.",
+          "Apresenta-se como assistente automático.",
+          "O cliente sai a qualquer momento com «STOP»."
+        ],
+        "decide": {
+          "tu": "o horário, a duração de cada serviço, os textos, o que acontece aos lugares libertados",
+          "masina": "propõe horas, escreve na agenda, envia os lembretes",
+          "noi": "desenhamos, montamos, afinamos"
+        },
+        "exemplu": [
+          {
+            "cine": "client",
+            "t": "Posso ir quinta à tarde?"
+          },
+          {
+            "cine": "asistent",
+            "t": "Quinta tenho livre às 15:00, 16:30 e 18:00. Qual te dá jeito?"
+          }
+        ]
       },
       {
         "id": "recenzii",
@@ -188,7 +349,75 @@
           "programari",
           "revenire"
         ],
-        "scurt": "Avaliações Google"
+        "scurt": "Avaliações Google",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "O cliente esteve contigo",
+            "d": "pela agenda, pela reserva ou por um toque teu na caixa"
+          },
+          {
+            "tip": "auto",
+            "t": "Duas horas depois: um agradecimento curto",
+            "d": "uma só mensagem, em teu nome"
+          },
+          {
+            "tip": "decizie",
+            "t": "«Como foi?»",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Bem",
+                "d": "um toque e chega ao botão de avaliação Google"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Nem por isso",
+                "d": "escreve-te a ti, em privado; respondes antes de aparecer algo público"
+              },
+              {
+                "t": "Sem resposta",
+                "d": "nada. Não insiste."
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Avaliação nova no Google? Propõe-te uma resposta",
+            "d": "tu carregas em «enviar» ou mudas uma palavra"
+          },
+          {
+            "tip": "pessoa",
+            "t": "O painel mensal",
+            "d": "avaliações novas · nota · o que as pessoas mais dizem"
+          }
+        ],
+        "reguli": [
+          "Uma só mensagem depois da visita. Sem insistências.",
+          "Não pede avaliações boas: pergunta como foi.",
+          "Não responde publicamente a avaliações sem tu carregares.",
+          "Apresenta-se como assistente automático.",
+          "O cliente sai a qualquer momento com «STOP»."
+        ],
+        "decide": {
+          "tu": "o texto do agradecimento, quantas horas depois, quem recebe as queixas",
+          "masina": "envia, pergunta, separa, propõe respostas",
+          "noi": "desenhamos, montamos, afinamos"
+        },
+        "exemplu": [
+          {
+            "cine": "asistent",
+            "t": "Obrigado por teres vindo hoje! Como foi?"
+          },
+          {
+            "cine": "client",
+            "t": "Muito bem, a comida excelente."
+          },
+          {
+            "cine": "asistent",
+            "t": "Ficamos contentes! Se tiveres um minuto, uma avaliação no Google ajuda-nos imenso: [link]"
+          }
+        ]
       },
       {
         "id": "lead",
@@ -206,7 +435,71 @@
           "receptionist",
           "revenire"
         ],
-        "scurt": "Resposta rápida"
+        "scurt": "Resposta rápida",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Um pedido novo",
+            "d": "formulário no site, mensagem no Instagram ou Facebook, chamada perdida"
+          },
+          {
+            "tip": "auto",
+            "t": "Em menos de um minuto: resposta no WhatsApp",
+            "d": "com o texto aprovado por ti e a pergunta seguinte (o quê, quando, quantas pessoas)"
+          },
+          {
+            "tip": "decizie",
+            "t": "Respondeu?",
+            "d": "",
+            "ramuri": [
+              {
+                "tip": "pessoa",
+                "t": "Sim",
+                "d": "a conversa chega a ti, com tudo o que já disse"
+              },
+              {
+                "t": "Não, ao fim de um dia",
+                "d": "segunda mensagem, curta"
+              },
+              {
+                "t": "Não, ao fim de três dias",
+                "d": "terceira e última"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Cada pedido numa lista",
+            "d": "de onde veio · o que queria · o que se respondeu · estado"
+          },
+          {
+            "tip": "pessoa",
+            "t": "O painel semanal",
+            "d": "pedidos · respondidos · passaram a clientes · perdidos"
+          }
+        ],
+        "reguli": [
+          "Três mensagens, no máximo. Depois cala-se.",
+          "Não promete preços nem prazos: dizes tu.",
+          "Não escreve duas vezes à mesma pessoa no mesmo dia.",
+          "Apresenta-se como assistente automático.",
+          "«STOP» pára tudo."
+        ],
+        "decide": {
+          "tu": "os textos das três mensagens, o que se pergunta, quando entras tu",
+          "masina": "junta os pedidos, responde, acompanha, regista",
+          "noi": "desenhamos, montamos, afinamos"
+        },
+        "exemplu": [
+          {
+            "cine": "client",
+            "t": "Também fazem eventos privados?"
+          },
+          {
+            "cine": "asistent",
+            "t": "Olá! Fazemos, sim. Para quantas pessoas e em que data? Alguém da equipa responde-te o mais depressa possível."
+          }
+        ]
       },
       {
         "id": "documente",
@@ -223,7 +516,71 @@
         "leaga": [
           "raport"
         ],
-        "scurt": "Talões e faturas"
+        "scurt": "Talões e faturas",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Fotografas o talão ou a fatura",
+            "d": "e envias pelo WhatsApp, na hora"
+          },
+          {
+            "tip": "auto",
+            "t": "Lê o fornecedor, a data, o valor e o IVA",
+            "d": "e põe tudo numa tabela"
+          },
+          {
+            "tip": "decizie",
+            "t": "Leu tudo?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Sim",
+                "d": "confirmação na hora, com o que anotou"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Falta algo",
+                "d": "pergunta-te: «o valor é 148 ou 143?»"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Arquivo ordenado por dias",
+            "d": "a foto e os dados, numa pasta tua"
+          },
+          {
+            "tip": "auto",
+            "t": "No último dia do mês: o pacote para o contabilista",
+            "d": "a tabela e o arquivo, por email"
+          },
+          {
+            "tip": "pessoa",
+            "t": "O contabilista confirma",
+            "d": "ou pergunta diretamente, no mesmo sítio"
+          }
+        ],
+        "reguli": [
+          "Não deita nada fora: cada foto fica.",
+          "Só envia ao contabilista no dia combinado.",
+          "Se não tiver a certeza de um número, pergunta. Não adivinha.",
+          "Os dados ficam na tua conta."
+        ],
+        "decide": {
+          "tu": "o que se fotografa, o dia do envio, o email do contabilista",
+          "masina": "lê, anota, pergunta, envia",
+          "noi": "desenhamos, montamos, afinamos"
+        },
+        "exemplu": [
+          {
+            "cine": "tu",
+            "t": "[foto do talão]"
+          },
+          {
+            "cine": "asistent",
+            "t": "Anotei: Fornecedor Lda, 12 de maio, 148,20 €, IVA 23 %. Certo?"
+          }
+        ]
       },
       {
         "id": "revenire",
@@ -241,7 +598,85 @@
           "recenzii",
           "social"
         ],
-        "scurt": "Clientes que voltam"
+        "scurt": "Clientes que voltam",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "60 dias sem visita",
+            "d": "da tua lista de clientes (as outras automações enchem-na, ou trazes tu)"
+          },
+          {
+            "tip": "decizie",
+            "t": "Deu consentimento para mensagens?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Sim",
+                "d": "segue"
+              },
+              {
+                "t": "Não",
+                "d": "não recebe nada; perguntamos na próxima visita"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Uma mensagem pessoal, em teu nome",
+            "d": "não uma publicidade: «Há algum tempo que não te vemos…»"
+          },
+          {
+            "tip": "auto",
+            "t": "No aniversário: uma atenção",
+            "d": "uma sobremesa, um desconto ou um simples «parabéns»"
+          },
+          {
+            "tip": "decizie",
+            "t": "Voltou?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Sim",
+                "d": "marcado; o ciclo recomeça"
+              },
+              {
+                "t": "Não",
+                "d": "pausa de três meses; depois, no máximo, mais uma tentativa"
+              },
+              {
+                "t": "«STOP»",
+                "d": "sai da lista de imediato"
+              }
+            ]
+          },
+          {
+            "tip": "pessoa",
+            "t": "O painel mensal",
+            "d": "mensagens enviadas · regressos · saídas"
+          }
+        ],
+        "reguli": [
+          "Só com consentimento. Sem ele, não envia.",
+          "Uma mensagem aos 60 dias, não mais vezes.",
+          "«STOP» quer dizer stop, de vez.",
+          "Não inventa ofertas: envia só o que aprovaste.",
+          "Diz que é uma mensagem automática, da tua parte."
+        ],
+        "decide": {
+          "tu": "os textos, a oferta (se houver), quem entra na lista",
+          "masina": "conta os dias, envia, marca",
+          "noi": "desenhamos, montamos, afinamos"
+        },
+        "exemplu": [
+          {
+            "cine": "asistent",
+            "t": "Olá, Ana! Não te vemos desde o início do verão. Sábado temos outra vez o peixe que pedias sempre. Esperamos por ti."
+          },
+          {
+            "cine": "client",
+            "t": "Vamos sábado à noite, 2 pessoas."
+          }
+        ]
       },
       {
         "id": "raport",
@@ -259,7 +694,75 @@
           "documente",
           "lead"
         ],
-        "scurt": "Relatório da manhã"
+        "scurt": "Relatório da manhã",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Todas as noites, às 3:00",
+            "d": "arranca sozinha"
+          },
+          {
+            "tip": "auto",
+            "t": "Junta os números dos teus sistemas",
+            "d": "caixa ou programa de vendas · reservas · avaliações · mensagens sem resposta"
+          },
+          {
+            "tip": "decizie",
+            "t": "Todas as fontes responderam?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Sim",
+                "d": "o relatório escreve-se"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Falta uma",
+                "d": "o relatório sai na mesma, com «a caixa não respondeu hoje»; nós verificamos"
+              }
+            ]
+          },
+          {
+            "tip": "auto",
+            "t": "Às 8:00: dez linhas no WhatsApp",
+            "d": "faturação de ontem · reservas de hoje · avaliações novas · pedidos sem resposta"
+          },
+          {
+            "tip": "pessoa",
+            "t": "Perguntas quando quiseres",
+            "d": "«como foi quinta?», «quantas reservas temos sábado?»"
+          },
+          {
+            "tip": "auto",
+            "t": "Todos os meses: a tabela das tendências",
+            "d": "os dias bons, os produtos que vendem, o que caiu"
+          }
+        ],
+        "reguli": [
+          "Lê, não escreve: não muda nada na caixa nem na agenda.",
+          "Os números vêm dos teus sistemas; não são estimativas.",
+          "Quando falta uma fonte, diz. Não inventa.",
+          "O relatório só o vês tu (e quem tu disseres)."
+        ],
+        "decide": {
+          "tu": "o que entra no relatório, a hora, quem o recebe",
+          "masina": "junta, calcula, escreve, responde a perguntas",
+          "noi": "ligamos as fontes (depende do teu sistema: vemos juntos), montamos, afinamos"
+        },
+        "exemplu": [
+          {
+            "cine": "asistent",
+            "t": "Bom dia. Ontem: 42 mesas, 3 reservas novas para hoje, uma avaliação nova (5 estrelas), 2 mensagens sem resposta no Instagram."
+          },
+          {
+            "cine": "client",
+            "t": "Como foi o sábado passado?"
+          },
+          {
+            "cine": "asistent",
+            "t": "Sábado, 20 de setembro: 61 mesas. O melhor dia do mês."
+          }
+        ]
       },
       {
         "id": "social",
@@ -277,7 +780,71 @@
           "recenzii",
           "revenire"
         ],
-        "scurt": "Publicações"
+        "scurt": "Publicações",
+        "fluxo": [
+          {
+            "tip": "gatilho",
+            "t": "Envias uma foto pelo WhatsApp",
+            "d": "com duas palavras: «o bolo novo de amanhã»"
+          },
+          {
+            "tip": "auto",
+            "t": "Escreve três versões de texto",
+            "d": "no tom do teu negócio, sem palavras que não usarias"
+          },
+          {
+            "tip": "pessoa",
+            "t": "Escolhes uma num toque",
+            "d": "ou mudas uma palavra e devolves"
+          },
+          {
+            "tip": "auto",
+            "t": "Agenda a publicação",
+            "d": "Instagram, Facebook e perfil Google, à hora a que os teus clientes estão online"
+          },
+          {
+            "tip": "decizie",
+            "t": "Alguém comentou ou escreveu?",
+            "d": "",
+            "ramuri": [
+              {
+                "t": "Pergunta simples",
+                "d": "resposta da lista aprovada"
+              },
+              {
+                "tip": "pessoa",
+                "t": "Outra coisa",
+                "d": "para ti, com o contexto todo"
+              }
+            ]
+          },
+          {
+            "tip": "pessoa",
+            "t": "Todas as semanas: o que correu bem",
+            "d": "publicações · visualizações · mensagens recebidas"
+          }
+        ],
+        "reguli": [
+          "Não publica nada sem o teu toque.",
+          "Não usa fotos que não sejam tuas.",
+          "Não inventa promoções nem preços.",
+          "Não responde em teu nome ao que não está na lista."
+        ],
+        "decide": {
+          "tu": "a foto, a versão, o dia; que respostas estão na lista",
+          "masina": "escreve as versões, agenda, responde às perguntas simples",
+          "noi": "desenhamos, montamos, afinamos; o tom e a lista, no início"
+        },
+        "exemplu": [
+          {
+            "cine": "tu",
+            "t": "[foto] o bolo novo de amanhã"
+          },
+          {
+            "cine": "asistent",
+            "t": "1: «A partir de amanhã, bolo de pistácio e framboesa. Só 12 fatias por dia.» 2: «Pistácio, framboesa, amanhã. Quem chega primeiro?» 3: «O bolo novo está pronto. Amanhã, a partir das 9.» Qual?"
+          }
+        ]
       }
     ],
     "combos": {
@@ -310,7 +877,8 @@
           ]
         }
       ]
-    }
+    },
+    "intro_extra": "Cada uma está desenhada aqui tal como se monta: passo a passo, com as regras dela e com os momentos em que entra uma pessoa. Não prometemos. Mostramos."
   },
   "servicii": {
     "eyebrow": "O que mais fazemos",

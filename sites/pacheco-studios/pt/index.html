@@ -152,6 +152,55 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
   transition:background-color .2s,color .2s,border-color .2s}
 .chip:hover,.chip:focus-visible{background:var(--osso);color:var(--carvao);border-color:var(--osso)}
 
+/* ═══ mostrar a máquina: o fluxo como fica montado, as regras, quem decide, a mensagem ═══ */
+.intro-2{margin-top:.8rem}
+.ai{margin-top:1.25rem;border:1px solid var(--linha-e);border-radius:1rem;background:var(--carvao-2)}
+.ai summary{list-style:none;cursor:pointer;padding:.9rem 1.1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;font:600 1rem/1.3 var(--texto);min-height:3rem}
+.ai summary::-webkit-details-marker{display:none}
+.ai summary>span{display:grid;gap:.35rem}
+.ai .ai-e{font-size:.75rem;letter-spacing:.2em}
+.ai summary svg{width:1rem;height:1rem;stroke:var(--laranja);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--sair)}
+.ai[open] summary svg{transform:rotate(180deg)}
+.ai ol{padding:.25rem 1.1rem 1.1rem;display:grid;gap:.7rem;counter-reset:frase}
+.ai li{position:relative;padding-left:2rem;counter-increment:frase;font-size:.9375rem;line-height:1.5}
+.ai li::before{content:counter(frase);position:absolute;left:0;top:-.15rem;font:400 1.25rem/1.5 var(--display);color:var(--laranja)}
+.legenda{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin:-.2rem 0 .85rem;font:700 .75rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--osso-2)}
+.legenda span{display:inline-flex;align-items:center;gap:.4rem}
+.legenda i{width:.8rem;height:.8rem;border-radius:.2rem;border:1.5px solid rgba(239,234,227,.55);display:inline-block;background:var(--carvao-2)}
+.legenda .l-gatilho{background:#F4E7C9;border-color:#B7811A}
+.legenda .l-pessoa{background:#DCE9E0;border-color:#2F6B4F}
+.legenda .l-decizie{border-style:dashed}
+.bp{display:grid;gap:.6rem}
+.bp>li{position:relative;padding-left:1.9rem}
+.bp>li::before{content:"";position:absolute;left:.6rem;top:.5rem;bottom:-.95rem;border-left:2px dotted var(--laranja)}
+.bp>li:last-child::before{display:none}
+.bp>li::after{content:"";position:absolute;left:.2rem;top:.65rem;width:.85rem;height:.85rem;border-radius:50%;background:var(--laranja)}
+.no{border:1.5px solid rgba(239,234,227,.35);border-radius:.75rem;padding:.7rem .85rem;background:var(--carvao-2);font-size:.9375rem;line-height:1.35}
+.no b{display:block;font-weight:600}
+.no small{display:block;color:var(--osso-2);font-size:.8125rem;line-height:1.4;margin-top:.15rem}
+.no.gatilho{background:#F4E7C9;color:#141210;border-color:#B7811A}
+.no.gatilho small{color:#5B4520}
+.no.pessoa{background:#DCE9E0;color:#141210;border-color:#2F6B4F}
+.no.pessoa small{color:#2C4A3A}
+.no.decizie{border-style:dashed}
+.ramuri{display:grid;gap:.45rem;margin-top:.6rem}
+.ramuri .no{padding:.55rem .65rem;font-size:.875rem}
+.reguli{display:grid;gap:.45rem}
+.reguli li{position:relative;padding-left:1.3rem;font-size:.9375rem}
+.reguli li::before{content:"";position:absolute;left:0;top:.5rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--laranja)}
+.decide{display:grid;gap:.55rem}
+.decide div{display:grid;grid-template-columns:5.5rem 1fr;gap:.6rem;font-size:.9375rem;align-items:baseline}
+.decide b{font:700 .75rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--laranja)}
+.chat{display:grid;gap:.45rem;max-width:28rem}
+.msg{padding:.65rem .85rem;border-radius:1rem;font-size:.9375rem;line-height:1.4;color:#141210}
+.msg small{display:block;font:700 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem;color:#4D4A47}
+.msg.client,.msg.tu{background:#F2E9DF;margin-right:2rem;border-bottom-left-radius:.3rem}
+.msg.asistent{background:#E7F1EA;margin-left:2rem;border-bottom-right-radius:.3rem}
+.demo{display:grid;gap:.6rem;justify-items:start;padding-top:1rem;border-top:1px solid var(--linha-e)}
+.demo p{font-weight:600}
+.secundario{border-color:var(--contorno);color:var(--osso)}
+.secundario:hover{background:rgba(239,234,227,.08)}
+
 /* ligam-se entre si: três caminhos, nada mais */
 .combos{margin-top:clamp(3rem,10vw,5rem);max-width:48rem}
 .drumuri{margin-top:1.5rem;display:grid;gap:1.1rem}
@@ -205,6 +254,7 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
 .js .rv.vis{opacity:1;transform:none}
 
 @media (min-width:40rem){
+  .ramuri{grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))}
   .grelha{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
   .q{padding:1.1rem}
   .q-nome{font-size:calc(clamp(1.35rem,3vw,2rem) * var(--fs,1))}
@@ -256,6 +306,11 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
         <p class="eyebrow">Automações</p>
         <h2 id="t-automatizari" class="afirmacao">O site traz clientes. As automações mantêm-nos.</h2>
         <p class="lead">Oito coisas que hoje fazes à mão ou já nem fazes, porque não tens tempo. Cada uma anda sozinha, no WhatsApp, com o que já tens.</p>
+        <p class="lead intro-2">Cada uma está desenhada aqui tal como se monta: passo a passo, com as regras dela e com os momentos em que entra uma pessoa. Não prometemos. Mostramos.</p>
+        <details class="ai">
+          <summary><span><span class="eyebrow ai-e">Em cinco frases</span>O que é, afinal, a IA por trás?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <ol><li>Lê e escreve texto, como uma pessoa muito rápida que nunca se cansa. É só isso que faz. Não «pensa» por ti nem decide nada sozinha.</li><li>As regras são nossas e tuas. Nós desenhamos o que acontece em cada situação. Tu aprovas cada texto que ela pode enviar. Ela escolhe entre respostas aprovadas: não inventa preços nem promessas.</li><li>Corre nas tuas contas. O WhatsApp é o teu, a agenda é a tua, o Google é o teu. Os dados dos clientes ficam onde já estavam.</li><li>Tudo fica registado: cada mensagem enviada, a que horas, a quem e o que respondeu. Podes ler tudo, quando quiseres.</li><li>Quando sai da rotina, entra uma pessoa. Uma pergunta que não sabe, um cliente zangado, um pedido estranho: chega a ti ou a nós, com a conversa inteira.</li></ol>
+        </details>
       </div>
       <div class="autos">
 <details class="auto rv" name="auto" id="a-receptionist" style="--i:0">
@@ -265,15 +320,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como funciona</h4><ol class="fluxo">
-<li>O cliente escreve no WhatsApp ou liga. Uma chamada perdida recebe automaticamente uma mensagem em segundos.</li>
-<li>O assistente responde logo: horário, ementa ou preços, morada, reservas. Com a voz do teu negócio.</li>
-<li>O que não sabe, manda-te a ti, com a conversa toda, para responderes num toque.</li>
-<li>Cada cliente fica na tua lista, com o que perguntou.</li>
+    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Chamada perdida ou mensagem no WhatsApp</b><small>a qualquer hora, incluindo fora do horário</small></div></li>
+<li><div class="no auto"><b>Responde em 5 segundos, com o texto aprovado por ti</b><small>«Olá! Sou o assistente automático do restaurante X. Em que posso ajudar?»</small></div></li>
+<li><div class="no decizie"><b>Percebe o que o cliente quer</b><small>horário · morada · ementa · reserva · outra coisa</small><div class="ramuri"><div class="no ramo"><b>Rotina</b><small>responde da lista de respostas aprovadas</small></div><div class="no ramo"><b>Reserva</b><small>pergunta pessoas e hora, escreve na agenda, confirma</small></div><div class="no pessoa"><b>Outra coisa</b><small>manda-te a conversa inteira; respondes num toque</small></div></div></div></li>
+<li><div class="no auto"><b>Põe o cliente na tua lista</b><small>nome, telefone, o que pediu, data</small></div></li>
+<li><div class="no pessoa"><b>O painel de segunda de manhã</b><small>chamadas atendidas · reservas feitas · o que não soube (para juntar à lista)</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Nenhum cliente sem resposta, dia e noite. Tu só entras quando é preciso uma pessoa.</div>
+    <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
+<li>Não inventa preços: só diz o que está na lista aprovada.</li>
+<li>Não sabe? Não responde. Passa a uma pessoa.</li>
+<li>Fora de horas diz quando abres e regista o pedido.</li>
+<li>Apresenta-se como assistente automático desde a primeira mensagem.</li>
+<li>Cada mensagem fica registada. Lês quando quiseres.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Quem decide o quê</h4><div class="decide"><div><b>Tu</b><span>aprovas os textos, a agenda e o horário; podes parar tudo com uma palavra</span></div><div><b>O sistema</b><span>escolhe entre as respostas aprovadas, escreve na agenda, regista</span></div><div><b>Nós</b><span>desenhamos, montamos, afinamos com o painel</span></div></div></div>
+    <div><h4 class="rotulo">O que o cliente vê</h4><div class="chat"><div class="msg client"><small>Cliente</small>Têm mesa para 4 hoje às 20h?</div><div class="msg asistent"><small>Assistente</small>Temos, sim. Em nome de quem fica? Confirmo já a reserva das 20:00 para 4 pessoas.</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Precisas de</h4><p>WhatsApp Business e a lista das perguntas que mais ouves.</p></div>
     <div><h4 class="rotulo">Combina bem com</h4><div class="chips"><a class="chip" href="#a-programari">Marcações</a> <a class="chip" href="#a-lead">Resposta rápida</a></div></div>
+    <div class="demo"><p>Queres ver como responde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20ver%20como%20responde%3A%20Rececionista%20com%20IA%20no%20WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pede uma demonstração no WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-programari" style="--i:1">
@@ -283,15 +349,27 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como funciona</h4><ol class="fluxo">
-<li>O cliente escolhe o dia e a hora no WhatsApp ou no site. Entra direto na tua agenda.</li>
-<li>Um dia antes recebe uma mensagem com dois botões: «Confirmo» ou «Mudar».</li>
-<li>Se mudar ou cancelar, o lugar liberta-se e é oferecido a quem está na lista de espera.</li>
-<li>Duas horas antes, um último lembrete, com a morada.</li>
+    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
+<li><div class="no gatilho"><b>O cliente pede uma marcação</b><small>no WhatsApp, no site ou ao telefone (anotas tu)</small></div></li>
+<li><div class="no auto"><b>Propõe horas livres da tua agenda</b><small>três opções, para escolher num toque</small></div></li>
+<li><div class="no auto"><b>Escreve a marcação e envia a confirmação</b><small>com a morada e, se for o caso, o que trazer</small></div></li>
+<li><div class="no auto"><b>Um dia antes: mensagem com dois botões</b><small>«Confirmo» ou «Mudar»</small></div></li>
+<li><div class="no decizie"><b>Respondeu?</b><div class="ramuri"><div class="no ramo"><b>Confirmo</b><small>fica; último lembrete 2 horas antes</small></div><div class="no ramo"><b>Mudar ou cancelar</b><small>o lugar liberta-se e é oferecido à lista de espera</small></div><div class="no pessoa"><b>Nada</b><small>vês a lista de quem não confirmou; uma chamada curta, se quiseres</small></div></div></div></li>
+<li><div class="no pessoa"><b>O painel semanal</b><small>marcações · confirmadas · mudadas · faltas</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>A agenda enche-se sozinha e os lugares libertados não ficam vazios.</div>
+    <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
+<li>Não muda nem cancela nada sem o cliente carregar no botão.</li>
+<li>Não promete horas que não estão livres na tua agenda.</li>
+<li>No máximo três mensagens por marcação: a confirmação e os dois lembretes.</li>
+<li>Apresenta-se como assistente automático.</li>
+<li>O cliente sai a qualquer momento com «STOP».</li>
+    </ul></div>
+    <div><h4 class="rotulo">Quem decide o quê</h4><div class="decide"><div><b>Tu</b><span>o horário, a duração de cada serviço, os textos, o que acontece aos lugares libertados</span></div><div><b>O sistema</b><span>propõe horas, escreve na agenda, envia os lembretes</span></div><div><b>Nós</b><span>desenhamos, montamos, afinamos</span></div></div></div>
+    <div><h4 class="rotulo">O que o cliente vê</h4><div class="chat"><div class="msg client"><small>Cliente</small>Posso ir quinta à tarde?</div><div class="msg asistent"><small>Assistente</small>Quinta tenho livre às 15:00, 16:30 e 18:00. Qual te dá jeito?</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Precisas de</h4><p>A agenda que já usas (Google Calendar ou outra) e WhatsApp Business.</p></div>
     <div><h4 class="rotulo">Combina bem com</h4><div class="chips"><a class="chip" href="#a-receptionist">Rececionista IA</a> <a class="chip" href="#a-recenzii">Avaliações Google</a></div></div>
+    <div class="demo"><p>Queres ver como responde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20ver%20como%20responde%3A%20Marca%C3%A7%C3%B5es%20confirmadas%2C%20sem%20faltas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pede uma demonstração no WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-recenzii" style="--i:2">
@@ -301,15 +379,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como funciona</h4><ol class="fluxo">
-<li>Duas horas depois da visita, o cliente recebe uma mensagem curta de agradecimento.</li>
-<li>Uma só pergunta: «Como foi?». Os satisfeitos chegam num toque ao botão de avaliação Google.</li>
-<li>Os insatisfeitos chegam a ti, em privado, antes de escreverem algo público.</li>
-<li>A cada avaliação nova recebes uma resposta proposta, pronta a enviar.</li>
+    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
+<li><div class="no gatilho"><b>O cliente esteve contigo</b><small>pela agenda, pela reserva ou por um toque teu na caixa</small></div></li>
+<li><div class="no auto"><b>Duas horas depois: um agradecimento curto</b><small>uma só mensagem, em teu nome</small></div></li>
+<li><div class="no decizie"><b>«Como foi?»</b><div class="ramuri"><div class="no ramo"><b>Bem</b><small>um toque e chega ao botão de avaliação Google</small></div><div class="no pessoa"><b>Nem por isso</b><small>escreve-te a ti, em privado; respondes antes de aparecer algo público</small></div><div class="no ramo"><b>Sem resposta</b><small>nada. Não insiste.</small></div></div></div></li>
+<li><div class="no auto"><b>Avaliação nova no Google? Propõe-te uma resposta</b><small>tu carregas em «enviar» ou mudas uma palavra</small></div></li>
+<li><div class="no pessoa"><b>O painel mensal</b><small>avaliações novas · nota · o que as pessoas mais dizem</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Avaliações constantes, problemas resolvidos em privado e um perfil Google a subir.</div>
+    <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
+<li>Uma só mensagem depois da visita. Sem insistências.</li>
+<li>Não pede avaliações boas: pergunta como foi.</li>
+<li>Não responde publicamente a avaliações sem tu carregares.</li>
+<li>Apresenta-se como assistente automático.</li>
+<li>O cliente sai a qualquer momento com «STOP».</li>
+    </ul></div>
+    <div><h4 class="rotulo">Quem decide o quê</h4><div class="decide"><div><b>Tu</b><span>o texto do agradecimento, quantas horas depois, quem recebe as queixas</span></div><div><b>O sistema</b><span>envia, pergunta, separa, propõe respostas</span></div><div><b>Nós</b><span>desenhamos, montamos, afinamos</span></div></div></div>
+    <div><h4 class="rotulo">O que o cliente vê</h4><div class="chat"><div class="msg asistent"><small>Assistente</small>Obrigado por teres vindo hoje! Como foi?</div><div class="msg client"><small>Cliente</small>Muito bem, a comida excelente.</div><div class="msg asistent"><small>Assistente</small>Ficamos contentes! Se tiveres um minuto, uma avaliação no Google ajuda-nos imenso: [link]</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Precisas de</h4><p>O perfil Google do negócio e os telefones dos clientes (das reservas ou da caixa).</p></div>
     <div><h4 class="rotulo">Combina bem com</h4><div class="chips"><a class="chip" href="#a-programari">Marcações</a> <a class="chip" href="#a-revenire">Clientes que voltam</a></div></div>
+    <div class="demo"><p>Queres ver como responde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20ver%20como%20responde%3A%20Avalia%C3%A7%C3%B5es%20Google%2C%20autom%C3%A1ticas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pede uma demonstração no WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-lead" style="--i:3">
@@ -319,15 +408,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como funciona</h4><ol class="fluxo">
-<li>Qualquer pedido (formulário no site, mensagem no Instagram ou Facebook, chamada perdida) chega a um só sítio.</li>
-<li>Em menos de um minuto, o cliente recebe resposta no WhatsApp, com a pergunta seguinte.</li>
-<li>Se não responder, recebe mais duas mensagens: no dia seguinte e três dias depois.</li>
-<li>Tu vês todos os pedidos numa lista: quem respondeu, quem espera, quem passou a cliente.</li>
+    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Um pedido novo</b><small>formulário no site, mensagem no Instagram ou Facebook, chamada perdida</small></div></li>
+<li><div class="no auto"><b>Em menos de um minuto: resposta no WhatsApp</b><small>com o texto aprovado por ti e a pergunta seguinte (o quê, quando, quantas pessoas)</small></div></li>
+<li><div class="no decizie"><b>Respondeu?</b><div class="ramuri"><div class="no pessoa"><b>Sim</b><small>a conversa chega a ti, com tudo o que já disse</small></div><div class="no ramo"><b>Não, ao fim de um dia</b><small>segunda mensagem, curta</small></div><div class="no ramo"><b>Não, ao fim de três dias</b><small>terceira e última</small></div></div></div></li>
+<li><div class="no auto"><b>Cada pedido numa lista</b><small>de onde veio · o que queria · o que se respondeu · estado</small></div></li>
+<li><div class="no pessoa"><b>O painel semanal</b><small>pedidos · respondidos · passaram a clientes · perdidos</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Nenhum pedido esquecido. Quem responde primeiro ganha o cliente.</div>
+    <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
+<li>Três mensagens, no máximo. Depois cala-se.</li>
+<li>Não promete preços nem prazos: dizes tu.</li>
+<li>Não escreve duas vezes à mesma pessoa no mesmo dia.</li>
+<li>Apresenta-se como assistente automático.</li>
+<li>«STOP» pára tudo.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Quem decide o quê</h4><div class="decide"><div><b>Tu</b><span>os textos das três mensagens, o que se pergunta, quando entras tu</span></div><div><b>O sistema</b><span>junta os pedidos, responde, acompanha, regista</span></div><div><b>Nós</b><span>desenhamos, montamos, afinamos</span></div></div></div>
+    <div><h4 class="rotulo">O que o cliente vê</h4><div class="chat"><div class="msg client"><small>Cliente</small>Também fazem eventos privados?</div><div class="msg asistent"><small>Assistente</small>Olá! Fazemos, sim. Para quantas pessoas e em que data? Alguém da equipa responde-te o mais depressa possível.</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Precisas de</h4><p>As páginas de Instagram e Facebook do negócio e WhatsApp Business.</p></div>
     <div><h4 class="rotulo">Combina bem com</h4><div class="chips"><a class="chip" href="#a-receptionist">Rececionista IA</a> <a class="chip" href="#a-revenire">Clientes que voltam</a></div></div>
+    <div class="demo"><p>Queres ver como responde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20ver%20como%20responde%3A%20Resposta%20em%2060%20segundos%20a%20qualquer%20pedido"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pede uma demonstração no WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-documente" style="--i:4">
@@ -337,15 +437,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como funciona</h4><ol class="fluxo">
-<li>Fotografas o talão ou a fatura e envias pelo WhatsApp, na hora.</li>
-<li>A IA lê o fornecedor, a data, o valor e o IVA e põe tudo numa tabela.</li>
-<li>Recebes a confirmação logo. Se faltar algo, pergunta-te.</li>
-<li>No último dia do mês, o contabilista recebe automaticamente o arquivo completo, ordenado por dias.</li>
+    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Fotografas o talão ou a fatura</b><small>e envias pelo WhatsApp, na hora</small></div></li>
+<li><div class="no auto"><b>Lê o fornecedor, a data, o valor e o IVA</b><small>e põe tudo numa tabela</small></div></li>
+<li><div class="no decizie"><b>Leu tudo?</b><div class="ramuri"><div class="no ramo"><b>Sim</b><small>confirmação na hora, com o que anotou</small></div><div class="no pessoa"><b>Falta algo</b><small>pergunta-te: «o valor é 148 ou 143?»</small></div></div></div></li>
+<li><div class="no auto"><b>Arquivo ordenado por dias</b><small>a foto e os dados, numa pasta tua</small></div></li>
+<li><div class="no auto"><b>No último dia do mês: o pacote para o contabilista</b><small>a tabela e o arquivo, por email</small></div></li>
+<li><div class="no pessoa"><b>O contabilista confirma</b><small>ou pergunta diretamente, no mesmo sítio</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Zero papéis perdidos. O contabilista tem tudo sem te ligar.</div>
+    <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
+<li>Não deita nada fora: cada foto fica.</li>
+<li>Só envia ao contabilista no dia combinado.</li>
+<li>Se não tiver a certeza de um número, pergunta. Não adivinha.</li>
+<li>Os dados ficam na tua conta.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Quem decide o quê</h4><div class="decide"><div><b>Tu</b><span>o que se fotografa, o dia do envio, o email do contabilista</span></div><div><b>O sistema</b><span>lê, anota, pergunta, envia</span></div><div><b>Nós</b><span>desenhamos, montamos, afinamos</span></div></div></div>
+    <div><h4 class="rotulo">O que o cliente vê</h4><div class="chat"><div class="msg tu"><small>Tu</small>[foto do talão]</div><div class="msg asistent"><small>Assistente</small>Anotei: Fornecedor Lda, 12 de maio, 148,20 €, IVA 23 %. Certo?</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Precisas de</h4><p>Só o teu telemóvel e o email do contabilista.</p></div>
     <div><h4 class="rotulo">Combina bem com</h4><div class="chips"><a class="chip" href="#a-raport">Relatório da manhã</a></div></div>
+    <div class="demo"><p>Queres ver como responde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20ver%20como%20responde%3A%20Tal%C3%B5es%20e%20faturas%20para%20o%20contabilista%2C%20pelo%20telem%C3%B3vel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pede uma demonstração no WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-revenire" style="--i:5">
@@ -355,15 +466,27 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como funciona</h4><ol class="fluxo">
-<li>Cada cliente com quem falaste ou que reservou fica na tua lista, com a data da última visita.</li>
-<li>Ao fim de 60 dias sem visita, recebe uma mensagem pessoal, tua. Não uma publicidade.</li>
-<li>No aniversário, uma atenção: uma sobremesa, um desconto ou um simples «parabéns».</li>
-<li>Quem volta fica marcado. Quem não quer mais mensagens sai da lista com uma só palavra.</li>
+    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
+<li><div class="no gatilho"><b>60 dias sem visita</b><small>da tua lista de clientes (as outras automações enchem-na, ou trazes tu)</small></div></li>
+<li><div class="no decizie"><b>Deu consentimento para mensagens?</b><div class="ramuri"><div class="no ramo"><b>Sim</b><small>segue</small></div><div class="no ramo"><b>Não</b><small>não recebe nada; perguntamos na próxima visita</small></div></div></div></li>
+<li><div class="no auto"><b>Uma mensagem pessoal, em teu nome</b><small>não uma publicidade: «Há algum tempo que não te vemos…»</small></div></li>
+<li><div class="no auto"><b>No aniversário: uma atenção</b><small>uma sobremesa, um desconto ou um simples «parabéns»</small></div></li>
+<li><div class="no decizie"><b>Voltou?</b><div class="ramuri"><div class="no ramo"><b>Sim</b><small>marcado; o ciclo recomeça</small></div><div class="no ramo"><b>Não</b><small>pausa de três meses; depois, no máximo, mais uma tentativa</small></div><div class="no ramo"><b>«STOP»</b><small>sai da lista de imediato</small></div></div></div></li>
+<li><div class="no pessoa"><b>O painel mensal</b><small>mensagens enviadas · regressos · saídas</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Os clientes antigos voltam sem pagares anúncios para os trazer de volta.</div>
+    <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
+<li>Só com consentimento. Sem ele, não envia.</li>
+<li>Uma mensagem aos 60 dias, não mais vezes.</li>
+<li>«STOP» quer dizer stop, de vez.</li>
+<li>Não inventa ofertas: envia só o que aprovaste.</li>
+<li>Diz que é uma mensagem automática, da tua parte.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Quem decide o quê</h4><div class="decide"><div><b>Tu</b><span>os textos, a oferta (se houver), quem entra na lista</span></div><div><b>O sistema</b><span>conta os dias, envia, marca</span></div><div><b>Nós</b><span>desenhamos, montamos, afinamos</span></div></div></div>
+    <div><h4 class="rotulo">O que o cliente vê</h4><div class="chat"><div class="msg asistent"><small>Assistente</small>Olá, Ana! Não te vemos desde o início do verão. Sábado temos outra vez o peixe que pedias sempre. Esperamos por ti.</div><div class="msg client"><small>Cliente</small>Vamos sábado à noite, 2 pessoas.</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Precisas de</h4><p>A lista de clientes (as outras automações constroem-na) e WhatsApp Business.</p></div>
     <div><h4 class="rotulo">Combina bem com</h4><div class="chips"><a class="chip" href="#a-recenzii">Avaliações Google</a> <a class="chip" href="#a-social">Publicações</a></div></div>
+    <div class="demo"><p>Queres ver como responde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20ver%20como%20responde%3A%20Os%20clientes%20que%20n%C3%A3o%20voltaram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pede uma demonstração no WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-raport" style="--i:6">
@@ -373,15 +496,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como funciona</h4><ol class="fluxo">
-<li>Todas as noites, a automação junta os números dos sistemas que já tens: caixa, reservas, avaliações, mensagens.</li>
-<li>Às 8:00 recebes uma mensagem de dez linhas: faturação de ontem, reservas de hoje, avaliações novas, pedidos sem resposta.</li>
-<li>Todos os meses, uma tabela simples: os dias bons, os produtos que vendem, o que caiu.</li>
-<li>Podes perguntar «como foi quinta?» e recebes a resposta na hora.</li>
+    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Todas as noites, às 3:00</b><small>arranca sozinha</small></div></li>
+<li><div class="no auto"><b>Junta os números dos teus sistemas</b><small>caixa ou programa de vendas · reservas · avaliações · mensagens sem resposta</small></div></li>
+<li><div class="no decizie"><b>Todas as fontes responderam?</b><div class="ramuri"><div class="no ramo"><b>Sim</b><small>o relatório escreve-se</small></div><div class="no pessoa"><b>Falta uma</b><small>o relatório sai na mesma, com «a caixa não respondeu hoje»; nós verificamos</small></div></div></div></li>
+<li><div class="no auto"><b>Às 8:00: dez linhas no WhatsApp</b><small>faturação de ontem · reservas de hoje · avaliações novas · pedidos sem resposta</small></div></li>
+<li><div class="no pessoa"><b>Perguntas quando quiseres</b><small>«como foi quinta?», «quantas reservas temos sábado?»</small></div></li>
+<li><div class="no auto"><b>Todos os meses: a tabela das tendências</b><small>os dias bons, os produtos que vendem, o que caiu</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>O negócio no teu bolso, todas as manhãs, sem abrires nada.</div>
+    <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
+<li>Lê, não escreve: não muda nada na caixa nem na agenda.</li>
+<li>Os números vêm dos teus sistemas; não são estimativas.</li>
+<li>Quando falta uma fonte, diz. Não inventa.</li>
+<li>O relatório só o vês tu (e quem tu disseres).</li>
+    </ul></div>
+    <div><h4 class="rotulo">Quem decide o quê</h4><div class="decide"><div><b>Tu</b><span>o que entra no relatório, a hora, quem o recebe</span></div><div><b>O sistema</b><span>junta, calcula, escreve, responde a perguntas</span></div><div><b>Nós</b><span>ligamos as fontes (depende do teu sistema: vemos juntos), montamos, afinamos</span></div></div></div>
+    <div><h4 class="rotulo">O que o cliente vê</h4><div class="chat"><div class="msg asistent"><small>Assistente</small>Bom dia. Ontem: 42 mesas, 3 reservas novas para hoje, uma avaliação nova (5 estrelas), 2 mensagens sem resposta no Instagram.</div><div class="msg client"><small>Cliente</small>Como foi o sábado passado?</div><div class="msg asistent"><small>Assistente</small>Sábado, 20 de setembro: 61 mesas. O melhor dia do mês.</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Precisas de</h4><p>Acesso à caixa ou ao programa de vendas. Depende do teu sistema: vemos juntos.</p></div>
     <div><h4 class="rotulo">Combina bem com</h4><div class="chips"><a class="chip" href="#a-documente">Talões e faturas</a> <a class="chip" href="#a-lead">Resposta rápida</a></div></div>
+    <div class="demo"><p>Queres ver como responde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20ver%20como%20responde%3A%20O%20relat%C3%B3rio%20da%20manh%C3%A3%2C%20no%20WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pede uma demonstração no WhatsApp</a></div>
   </div>
 </details>
 <details class="auto rv" name="auto" id="a-social" style="--i:7">
@@ -391,15 +525,26 @@ h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 var(--display)
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como funciona</h4><ol class="fluxo">
-<li>Envias uma foto pelo WhatsApp, com duas palavras sobre o que é.</li>
-<li>A IA escreve-te três versões de texto, no tom do teu negócio. Escolhes uma num toque.</li>
-<li>A publicação fica agendada no Instagram, no Facebook e no perfil Google, à hora a que os teus clientes estão online.</li>
-<li>Todas as semanas vês o que correu melhor.</li>
+    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
+<li><div class="no gatilho"><b>Envias uma foto pelo WhatsApp</b><small>com duas palavras: «o bolo novo de amanhã»</small></div></li>
+<li><div class="no auto"><b>Escreve três versões de texto</b><small>no tom do teu negócio, sem palavras que não usarias</small></div></li>
+<li><div class="no pessoa"><b>Escolhes uma num toque</b><small>ou mudas uma palavra e devolves</small></div></li>
+<li><div class="no auto"><b>Agenda a publicação</b><small>Instagram, Facebook e perfil Google, à hora a que os teus clientes estão online</small></div></li>
+<li><div class="no decizie"><b>Alguém comentou ou escreveu?</b><div class="ramuri"><div class="no ramo"><b>Pergunta simples</b><small>resposta da lista aprovada</small></div><div class="no pessoa"><b>Outra coisa</b><small>para ti, com o contexto todo</small></div></div></div></li>
+<li><div class="no pessoa"><b>Todas as semanas: o que correu bem</b><small>publicações · visualizações · mensagens recebidas</small></div></li>
     </ol></div>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Uma página viva, com dois minutos por dia.</div>
+    <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
+<li>Não publica nada sem o teu toque.</li>
+<li>Não usa fotos que não sejam tuas.</li>
+<li>Não inventa promoções nem preços.</li>
+<li>Não responde em teu nome ao que não está na lista.</li>
+    </ul></div>
+    <div><h4 class="rotulo">Quem decide o quê</h4><div class="decide"><div><b>Tu</b><span>a foto, a versão, o dia; que respostas estão na lista</span></div><div><b>O sistema</b><span>escreve as versões, agenda, responde às perguntas simples</span></div><div><b>Nós</b><span>desenhamos, montamos, afinamos; o tom e a lista, no início</span></div></div></div>
+    <div><h4 class="rotulo">O que o cliente vê</h4><div class="chat"><div class="msg tu"><small>Tu</small>[foto] o bolo novo de amanhã</div><div class="msg asistent"><small>Assistente</small>1: «A partir de amanhã, bolo de pistácio e framboesa. Só 12 fatias por dia.» 2: «Pistácio, framboesa, amanhã. Quem chega primeiro?» 3: «O bolo novo está pronto. Amanhã, a partir das 9.» Qual?</div></div></div>
     <div class="nevoie"><h4 class="rotulo">Precisas de</h4><p>As páginas de Instagram e Facebook e o perfil Google do negócio.</p></div>
     <div><h4 class="rotulo">Combina bem com</h4><div class="chips"><a class="chip" href="#a-recenzii">Avaliações Google</a> <a class="chip" href="#a-revenire">Clientes que voltam</a></div></div>
+    <div class="demo"><p>Queres ver como responde?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20ver%20como%20responde%3A%20Publica%C3%A7%C3%B5es%20a%20partir%20das%20tuas%20fotos%2C%20no%20Instagram%2C%20Facebook%20e%20Google"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pede uma demonstração no WhatsApp</a></div>
   </div>
 </details>
       </div>

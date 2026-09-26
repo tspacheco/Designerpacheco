@@ -16,16 +16,18 @@ Tudo o que o cartão diz está em `marca/dados.json`, no bloco `"cartao"`:
 - Depois de mudar: `python3 marca/cartao/gerar.py`. Isto refaz o PDF, a pré-visualização e a folha
   `frases-opcoes.png`, que mostra o verso com as 5 frases lado a lado.
 
-Antes de imprimir, pedir a um romeno que leia o cartão.
-
 ## Antes de imprimir
 
-1. Comprar o domínio, publicar o site e confirmar que `pachecostudios.pt/c` abre. Depois pôr
-   `dominio_confirmado: true` em `marca/dados.json`. Enquanto isso não estiver feito, o gerador só faz
-   `cartao-impressao-PROVA.pdf`, com uma faixa vermelha.
-2. A página para onde o QR aponta ainda está em português. Tem de estar em romeno antes de os cartões chegarem
-   aos negócios.
-3. Imprimir 1 em casa a 100 % e ler o QR com 2 telemóveis (um deles Android antigo).
+1. Publicar a página no Netlify com o domínio `ro.pachecost.com` (passos em `sites/pacheco-studios/LEIA-ME.md`) e
+   confirmar no telemóvel que `ro.pachecost.com/c` abre. **Sem isto, o QR lê-se mas não abre nada.**
+2. Pedir a um romeno que leia o cartão e a página.
+3. Imprimir `marca/qr/qr-teste-a4.pdf` em casa, a 100 %, e ler os QR com 2 telemóveis (um iPhone e um Android).
+   O de 21 mm é o do cartão.
+4. Mandar `cartao-impressao.pdf` à gráfica.
+
+`dominio_confirmado` já está a `true` em `marca/dados.json`, por isso o gerador faz o PDF final. Se o domínio mudar,
+voltar a pô-lo a `false` até o novo endereço abrir: o gerador passa a fazer só `cartao-impressao-PROVA.pdf`, com uma
+faixa vermelha.
 
 ## Especificações para a gráfica
 
@@ -48,12 +50,13 @@ Antes de imprimir, pedir a um romeno que leia o cartão.
   não em caixas.
 - QR de 21 mm (versão 2-Q, módulos de 0,84 mm) com a zona de silêncio livre (3,4 mm à volta). É lido na imagem a
   600 ppp, no tamanho que uma câmara de telemóvel vê e desfocado.
-- Quem não usa QR tem o endereço impresso por baixo: `pachecostudios.pt`.
+- Quem não usa QR tem o endereço impresso por baixo: `ro.pachecost.com`.
 
 ## O QR
 
-Abre `https://pachecostudios.pt/C`, um redirecionamento que controlamos. Para mudar o destino (por exemplo, para o
-Instagram ou para uma versão romena da página), troca-se `destino_qr` em `marca/dados.json` e publica-se o site de
-novo, **sem reimprimir cartões**.
+Abre `https://ro.pachecost.com/C`, um redirecionamento que controlamos (ficheiro `_redirects` do Netlify). Para mudar
+o destino (por exemplo, para o Instagram), troca-se `destino_qr` em `marca/dados.json` e publica-se o site de novo,
+**sem reimprimir cartões**. O mesmo QR, sozinho e noutros tamanhos (autocolante, gráfica, folha de teste), está em
+`marca/qr/`.
 
 Editar `cartao.src.html` (desenho) e `marca/dados.json` (textos e dados). O `cartao.html` é gerado.
