@@ -1,5 +1,18 @@
 # Gerado por gerar.py a partir de marca/dados.json — não editar à mão.
-# QR do cartão (https://ro.pachecost.com/C) → marca/dados.json: destino_qr.
+# 1) QR do cartão (impresso: HTTPS://RO.PACHECOST.COM/C). Fica SEMPRE em primeiro lugar.
 /c    /?origem=cartao    302
 /C    /?origem=cartao    302
-# Endereços curtos (marca/dados.json → enderecos_curtos)
+# 2) ro.pachecost.com abre a versão romena, guardada em /ro/. O resto dos ficheiros é partilhado.
+https://ro.pachecost.com/              /ro/index.html    200!
+https://ro.pachecost.com/index.html    /ro/index.html    200!
+# 3) cada língua no seu endereço
+/ro        https://ro.pachecost.com/    301!
+/ro/*      https://ro.pachecost.com/    301!
+https://ro.pachecost.com/en      https://pachecost.com/en/    301!
+https://ro.pachecost.com/en/*    https://pachecost.com/en/:splat    301!
+/pt        https://pachecost.com/    301!
+/pt/*      https://pachecost.com/    301!
+# 4) endereços curtos (marca/dados.json → enderecos_curtos)
+# 5) página 404 na língua de cada endereço (a portuguesa é a 404.html da raiz)
+https://ro.pachecost.com/*    /ro/404.html    404
+/en/*    /en/404.html    404

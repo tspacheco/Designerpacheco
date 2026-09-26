@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
-"""Monta a página do QR do cartão (ro.pachecost.com) em romeno, mais a versão portuguesa para revisão.
+"""Monta o site da Pacheco Studios em três línguas, para um só projeto Netlify com dois domínios.
 
-    python3 gerar.py
+    python3 gerar.py [pasta-para-capturas]
 
-Lê: index.src.html · conteudo/ro.json · conteudo/pt.json · portfolio.json · ../../marca/dados.json (contactos)
+    pachecost.com         português (a página principal)
+    pachecost.com/en/     inglês
+    ro.pachecost.com      romeno: é para onde aponta o QR do cartão (HTTPS://RO.PACHECOST.COM/C → /?origem=cartao)
+
+Lê: index.src.html · conteudo/{pt,en,ro}.json · portfolio.json · ../../marca/dados.json (contactos, domínios, medição)
 Escreve em dist/ (não vai para o git):
-  index.html            página em romeno (3 vistas: proiecte / automatizari / servicii + contacto)
-  pt/index.html         a mesma página em português, para rever (ligação discreta no rodapé)
-  404.html · _redirects (QR /c) · _headers · netlify.toml · media/og.png
-  p/<slug>/             cópia de cada site do portefólio, com <meta noindex> e o botão «Înapoi la proiecte» injetados
-  ../pacheco-studios-netlify.zip   tudo isto, pronto a arrastar para o Netlify
-Copia ainda index.html, pt/index.html, 404.html, _redirects, _headers e netlify.toml para esta pasta
-(para se abrirem na app e para o git ter sempre a versão atual).
-Depois corre verificar.cjs (HTML, acessibilidade, separadores, ligações dos quadrados, botão «Înapoi», 404).
+  index.html · en/index.html · ro/index.html      as três versões (proiecte / automatizari / servicii + contacto)
+  404.html · en/404.html · ro/404.html            404 em cada língua
+  privacidade.html · privacy.html · confidentialitate.html
+  _redirects (QR /c primeiro, ro.pachecost.com → /ro/) · _headers · netlify.toml · robots.txt · sitemap.xml
+  media/og-{pt,en,ro}.png · p/<slug>/ (clientes sem site publicado: index.html romeno, pt.html, en.html)
+  ../pacheco-studios-netlify.zip   tudo isto, pronto a arrastar para o projeto Netlify do pachecost.com
+Copia ainda as páginas e os ficheiros do Netlify para esta pasta (para o git ter sempre a versão atual).
+Depois corre verificar.cjs, que serve dist/ como o Netlify serviria os dois domínios (lê o _redirects).
 """
 import base64
 import html
@@ -34,6 +38,7 @@ MARCA = os.path.join(RAIZ, "marca")
 SITES = os.path.join(RAIZ, "sites")
 DIST = os.path.join(AQUI, "dist")
 NODE_ENV = dict(os.environ, NODE_PATH="/opt/node22/lib/node_modules")
+LINGUAS = {}  # preenchido por configurar_linguas() a partir de marca/dados.json
 FONTES = [("Archivo Black", 400, "archivo-black-ro.woff2"), ("Space Mono", 700, "space-mono-700-ro.woff2"),
           ("Inter", 400, "inter-400-ro.woff2"), ("Inter", 600, "inter-600-ro.woff2")]
 
@@ -88,11 +93,18 @@ def contraste(a, b):
     return (la + 0.05) / (lb + 0.05)
 
 
-def quadrado(item, rot, i):
+def href_projeto(item, lang):
+    """Site do cliente → o endereço dele. Cliente sem site publicado → a cópia em /p/<slug>/, com o «voltar» na língua certa."""
+    if item.get("url"):
+        return item["url"]
+    return f"/p/{item['slug']}/" + ("" if lang == "ro" else f"{lang}.html")
+
+
+def quadrado(item, rot, i, lang):
     nome = item["nome"]
     fs = 1 if len(nome) <= 10 else 0.86 if len(nome) <= 16 else 0.72
-    # site real do cliente → separador novo (a página fica aberta por baixo); cliente sem site publicado → cópia em /p/ com «Înapoi»
-    href = item["url"] if item.get("url") else f"/p/{item['slug']}/"
+    # site real do cliente → separador novo (a página fica aberta por baixo); cliente sem site publicado → cópia em /p/ com «voltar»
+    href = href_projeto(item, lang)
     externo = ' target="_blank" rel="noopener"' if href.startswith("http") else ""
     estilo = (f"--bg:{item['bg']};--ink:{item['ink']};--ac:{item['accent']};--f:'{item['fonte']}';--w:{item['peso']};--fs:{fs}"
               + (";font-style:italic" if item.get("italico") else ""))
@@ -127,15 +139,15 @@ def fontes_google(portfolio):
     return "&".join(f"family={f}" for f in fam)
 
 
-def vista_proiecte(c, portfolio, teu):
+def vista_proiecte(c, portfolio, lang):
     p = c["proiecte"]
     itens = ativos(portfolio)
     dest = [x["slug"] for x in itens if x.get("destaque")]
     if len(dest) != 3:
         raise SystemExit(f"portfolio.json: a primeira fila leva 3 quadrados em destaque, há {len(dest)}: {dest}")
-    lis = "\n".join(quadrado(x, p, i) for i, x in enumerate(itens))
+    lis = "\n".join(quadrado(x, p, i, lang) for i, x in enumerate(itens))
     lis += (f'\n<li class="rv" style="--i:{len(itens)}"><a class="q teu" href="#contact" style="--fs:.8">'
-            f'<span class="q-nome">{e(teu)}</span></a></li>')
+            f'<span class="q-nome">{e(p["teu"])}</span></a></li>')
     m = c["metoda"]
     passos = "\n".join(f'<li class="passo rv" style="--i:{i}"><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p></li>' for i, s in enumerate(m["pasi"]))
     return f"""<section id="proiecte" class="vista" aria-labelledby="t-proiecte">
@@ -243,9 +255,9 @@ def vista_automatizari(c, digitos):
 </section>"""
 
 
-def vista_servicii(c, portfolio):
+def vista_servicii(c, portfolio, lang):
     s = c["servicii"]
-    ligacao = {x["slug"]: (x["url"] if x.get("url") else f"/p/{x['slug']}/") for x in ativos(portfolio)}
+    ligacao = {x["slug"]: href_projeto(x, lang) for x in ativos(portfolio)}
     cards = []
     for i, x in enumerate(s["itens"]):
         ex = ""
@@ -267,15 +279,16 @@ def vista_servicii(c, portfolio):
 </section>"""
 
 
-def contacto(c, d, wa, tel_legivel, digitos):
+def contacto(c, d, wa, tel_legivel, digitos, com_site):
     k = c["contact"]
     lab = k["labels"]
     ig = d["instagram"].lstrip("@")
     site = d["site_principal"]
     linhas = [(lab["whatsapp"], tel_legivel, wa, "chat"), (lab["telefon"], tel_legivel, f"tel:+351{digitos}", "telefone"),
               (lab["email"], d["email"], f"mailto:{d['email']}", "email"),
-              (lab["instagram"], f"@{ig}", f"https://www.instagram.com/{ig}/", "instagram"),
-              (lab["site"], site, f"https://{site}/", "site")]
+              (lab["instagram"], f"@{ig}", f"https://www.instagram.com/{ig}/", "instagram")]
+    if com_site:  # na página romena, o site principal; em pachecost.com seria uma ligação para a própria página
+        linhas.append((lab["site"], site, f"https://{site}/", "site"))
     lis = "\n".join(f'<li><a href="{e(u)}"{" rel=noopener" if u.startswith("http") else ""}>{I[i]}'
                     f'<span class="txt"><span class="qual">{e(q)}</span><span class="valor">{e(v)}</span></span></a></li>'
                     for q, v, u, i in linhas)
@@ -292,16 +305,38 @@ def contacto(c, d, wa, tel_legivel, digitos):
 </section>"""
 
 
-def rodape(c, d, outra_lingua):
+def rodape(c, lang):
     r = c["rodape"]
-    extra = f'\n    <p><a href="{e(outra_lingua[1])}">{e(outra_lingua[0])}</a></p>' if outra_lingua else ""
     return f"""<footer class="rodape">
   <div class="envolver">
     <p>{e(r["linha"])}</p>
     <p><a href="https://www.livroreclamacoes.pt/inicio" rel="noopener">{e(r["legal"])}</a></p>
-    <p>{e(r["nota"])}</p>{extra}
+    <p><a href="{e(LINGUAS[lang]["privacidade"])}">{e(r["privacidade"])}</a></p>
+    <p>{e(r["nota"])}</p>
   </div>
 </footer>"""
+
+
+def caminho_para(de, para):
+    """Mesmo domínio → caminho relativo à raiz; outro domínio → endereço completo."""
+    a, b = LINGUAS[de], LINGUAS[para]
+    return b["caminho"] if a["host"] == b["host"] else b["url"]
+
+
+def seletor(c, lang):
+    lab = c["linguas"]
+    out = []
+    for k, v in LINGUAS.items():
+        atual = ' aria-current="true"' if k == lang else ""
+        out.append(f'<a href="{e(caminho_para(lang, k))}" hreflang="{v["hreflang"]}" lang="{v["hreflang"]}"{atual}>'
+                   f'<span aria-hidden="true">{k.upper()}</span><span class="so-leitor">{e(lab[k])}</span></a>')
+    return f'<nav class="linguas" aria-label="{e(lab["rotulo"])}">{"".join(out)}</nav>'
+
+
+def hreflang():
+    linhas = [f'<link rel="alternate" hreflang="{v["hreflang"]}" href="{v["url"]}">' for v in LINGUAS.values()]
+    linhas.append(f'<link rel="alternate" hreflang="x-default" href="{LINGUAS["pt"]["url"]}">')
+    return "\n".join(linhas)
 
 
 def montar(src, valores):
@@ -347,8 +382,8 @@ def validar(nome, h):
 
 
 # ——— cópias dos sites com o botão «Înapoi» ———
-def pilula(texto):
-    return (f'\n<a id="ps-inapoi" href="/#proiecte" lang="ro" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom));'
+def pilula(texto, lang, voltar):
+    return (f'\n<a id="ps-inapoi" href="{voltar}" lang="{lang}" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom));'
             'z-index:2147483647;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px 10px 12px;border-radius:999px;'
             'background:#141210;color:#EFEAE3;border:2px solid #E8622C;font:700 14px/1 system-ui,-apple-system,\'Segoe UI\',Roboto,sans-serif;'
             'letter-spacing:.02em;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.35)">'
@@ -359,7 +394,9 @@ def pilula(texto):
             "}catch(e){}});})();</script>\n")
 
 
-def copiar_sites(portfolio, texto_inapoi):
+def copiar_sites(portfolio, linguas):
+    """Clientes sem site publicado: uma cópia em /p/<slug>/ com os media partilhados e uma página por língua
+    (index.html romeno, pt.html, en.html), cada uma com o «voltar» na língua e para a página certa."""
     n = 0
     for it in portfolio["itens"]:
         if not (it.get("ativo") and it.get("pasta")) or it.get("url") or it.get("demo"):
@@ -371,8 +408,11 @@ def copiar_sites(portfolio, texto_inapoi):
         if "</body>" not in h:
             raise SystemExit(f"{it['pasta']}/index.html sem </body>")
         h = re.sub(r"(<meta charset=[^>]*>)", r'\1\n<meta name="robots" content="noindex,nofollow">', h, count=1)
-        h = h.replace("</body>", pilula(texto_inapoi) + "</body>", 1)
-        open(os.path.join(destino, "index.html"), "w", encoding="utf-8").write(h)
+        for lang, c in linguas.items():
+            nome = "index.html" if lang == "ro" else f"{lang}.html"
+            voltar = LINGUAS[lang]["caminho"] + "#proiecte"
+            open(os.path.join(destino, nome), "w", encoding="utf-8").write(
+                h.replace("</body>", pilula(c["inapoi"], LINGUAS[lang]["hreflang"], voltar) + "</body>", 1))
         media = os.path.join(origem, "media")
         if os.path.isdir(media):
             shutil.copytree(media, os.path.join(destino, "media"), dirs_exist_ok=True)
@@ -380,13 +420,13 @@ def copiar_sites(portfolio, texto_inapoi):
     return n
 
 
-def og_png(fontes, slogan, proposito, regiao):
+def og_png(fontes, og, destino):
     def frase(l):
         t = e(l.strip("*"))
         if t.endswith("."):
             t = t[:-1] + '<span class="pf"></span>'
         return f'<span{" class=o" if l.startswith("*") else ""}>{t}</span>'
-    og = f"""<!DOCTYPE html><html><head><meta charset="utf-8"><style>{fontes}
+    pagina = f"""<!DOCTYPE html><html><head><meta charset="utf-8"><style>{fontes}
     body{{margin:0;width:1200px;height:630px;background:#141210;color:#EFEAE3;position:relative;overflow:hidden}}
     .m{{position:absolute;left:84px;top:72px;display:flex;align-items:center;gap:18px;font:700 24px/1 "Space Mono";letter-spacing:.24em}}
     .m i{{width:18px;height:18px;border-radius:50%;background:#E8622C}}
@@ -395,26 +435,111 @@ def og_png(fontes, slogan, proposito, regiao):
     h1 span{{display:block}} .o{{color:#E8622C}}
     .pf{{display:inline-block;width:.2em;height:.2em;border-radius:50%;background:#E8622C;margin-left:.06em}}
     .s{{position:absolute;left:84px;bottom:60px;font:700 24px/1 "Space Mono";letter-spacing:.12em;color:#A5A19B;text-transform:uppercase}}
-    </style></head><body><p class="m"><i></i>PACHECO STUDIOS</p><p class="r">{e(regiao.upper())}</p>
-    <h1>{"".join(frase(l) for l in slogan)}</h1><p class="s">{e(proposito)}</p></body></html>"""
+    </style></head><body><p class="m"><i></i>PACHECO STUDIOS</p><p class="r">{e(og["regiao"].upper())}</p>
+    <h1>{"".join(frase(l) for l in og["slogan"])}</h1><p class="s">{e(og["proposito"])}</p></body></html>"""
     tmp = os.path.join(AQUI, ".og.html")
-    open(tmp, "w", encoding="utf-8").write(og)
-    os.makedirs(os.path.join(DIST, "media"), exist_ok=True)
+    open(tmp, "w", encoding="utf-8").write(pagina)
+    os.makedirs(os.path.dirname(destino), exist_ok=True)
     subprocess.run(["node", "-e", """
 const { chromium } = require('playwright');
 (async () => { const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1200, height: 630 } });
   await p.goto('file://' + process.argv[1]); await p.evaluate(() => document.fonts.ready);
   await p.screenshot({ path: process.argv[2] }); await b.close(); })();
-""", tmp, os.path.join(DIST, "media", "og.png")], check=True, env=NODE_ENV)
+""", tmp, destino], check=True, env=NODE_ENV)
     os.remove(tmp)
+
+
+def cabeca_simples(lang, titulo, estilo, extra=""):
+    return f"""<!DOCTYPE html>
+<html lang="{LINGUAS[lang]["hreflang"]}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{e(titulo)} — Pacheco Studios</title>
+<meta name="theme-color" content="#141210">
+{extra}{estilo}
+</head>"""
+
+
+def pagina_404(c, estilo, lang):
+    t = c["p404"]
+    casa = LINGUAS[lang]["caminho"]
+    return cabeca_simples(lang, t["titlu"], estilo, '<meta name="robots" content="noindex">\n') + f"""
+<body>
+<header class="envolver topo">
+  <a class="marca" href="{casa}"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</a>
+</header>
+<main id="conteudo" class="envolver seccao">
+  <p class="eyebrow">404</p>
+  <h1 class="afirmacao">{e(t["titlu"])}</h1>
+  <p class="lead">{e(t["text"])}</p>
+  <a class="botao primario grande" href="{casa}#proiecte">{I["seta"]}{e(t["cta"])}</a>
+</main>
+{rodape(c, lang)}
+</body>
+</html>
+"""
+
+
+def pagina_privacidade(c, estilo, lang, email):
+    t = c["privacidade"]
+    casa = LINGUAS[lang]["caminho"]
+    url = f"https://{LINGUAS[lang]['host']}{LINGUAS[lang]['privacidade']}"
+    def par(s):
+        txt = e(s["p"]).replace(e(email), f'<a href="mailto:{e(email)}">{e(email)}</a>')
+        lig = f' <a href="{e(s["link"]["href"])}" rel="noopener">{e(s["link"]["t"])}</a>' if s.get("link") else ""
+        return f'<h2>{e(s["t"])}</h2>\n<p>{txt}{lig}</p>'
+    secoes = "\n".join(par(s) for s in t["secoes"])
+    extra = (f'<meta name="description" content="{e(t["intro"])}">\n<link rel="canonical" href="{url}">\n'
+             '<style>.legal h2{margin-top:2.2rem;font:700 .8125rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso)}'
+             '.legal h2+p{max-width:62ch;margin-top:.6rem;color:var(--osso-2)}.legal h2+p a{color:var(--osso);text-underline-offset:.2em}'
+             '.legal .nota{margin-top:2.4rem;font:400 .8125rem/1.5 var(--mono)}.legal .botao{margin-top:1.6rem}</style>\n')
+    return cabeca_simples(lang, t["titulo"], estilo, extra) + f"""
+<body>
+<a class="saltar" href="#conteudo">{e(LINGUAS[lang]["saltar"])}</a>
+<header class="envolver topo">
+  <a class="marca" href="{casa}"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</a>
+</header>
+<main id="conteudo" class="envolver seccao legal">
+  <p class="eyebrow">Legal</p>
+  <h1 class="afirmacao">{e(t["titulo"])}</h1>
+  <p class="lead">{e(t["intro"])}</p>
+{secoes}
+  <p class="nota">{e(t["atualizado"])}</p>
+  <a class="botao secundario" href="{casa}">{e(t["voltar"])}</a>
+</main>
+{rodape(c, lang)}
+</body>
+</html>
+"""
+
+
+def configurar_linguas(d):
+    """Onde vive cada língua. PT abre pachecost.com; EN em /en/; RO em ro.pachecost.com (o QR do cartão)."""
+    principal, dominio = d["site_principal"].strip().lower(), d["dominio"].strip().lower()
+    LINGUAS.clear()
+    LINGUAS.update({
+        "pt": {"host": principal, "caminho": "/", "pasta": "", "hreflang": "pt-PT", "og_locale": "pt_PT",
+               "privacidade": "/privacidade.html", "areas": ["Portugal", "Romania"], "saltar": "Saltar para o conteúdo",
+               "nav": "Secções", "com_site": False},
+        "en": {"host": principal, "caminho": "/en/", "pasta": "en", "hreflang": "en", "og_locale": "en_GB",
+               "privacidade": "/privacy.html", "areas": ["Portugal", "Romania"], "saltar": "Skip to content",
+               "nav": "Sections", "com_site": False},
+        "ro": {"host": dominio, "caminho": "/", "pasta": "ro", "hreflang": "ro", "og_locale": "ro_RO",
+               "privacidade": "/confidentialitate.html", "areas": ["Romania"], "saltar": "Sari la conținut",
+               "nav": "Secțiuni", "com_site": True},
+    })
+    for v in LINGUAS.values():
+        v["url"] = f"https://{v['host']}{v['caminho']}"
+    return principal, dominio
 
 
 def main():
     d = json.load(open(os.path.join(MARCA, "dados.json"), encoding="utf-8"))
     portfolio = json.load(open(os.path.join(AQUI, "portfolio.json"), encoding="utf-8"))
-    linguas = {k: json.load(open(os.path.join(AQUI, "conteudo", f"{k}.json"), encoding="utf-8")) for k in ("ro", "pt")}
-    dominio = d["dominio"].strip().lower()
-    url_site = f"https://{dominio}/"
+    principal, dominio = configurar_linguas(d)
+    linguas = {k: json.load(open(os.path.join(AQUI, "conteudo", f"{k}.json"), encoding="utf-8")) for k in LINGUAS}
+    medicao = d.get("medicao", {})
     digitos = re.sub(r"\D", "", d["telefone"])
     digitos = digitos[3:] if digitos.startswith("351") and len(digitos) == 12 else digitos
     if len(digitos) != 9:
@@ -425,115 +550,134 @@ def main():
 
     if os.path.isdir(DIST):
         shutil.rmtree(DIST)
-    os.makedirs(os.path.join(DIST, "pt"))
+    os.makedirs(DIST)
 
     ok = True
     print("CONTEÚDO")
-    paginas = {}
+    paginas, extras = {}, {}
     for lang, c in linguas.items():
+        cfg = LINGUAS[lang]
         falta = glifos_em_falta(textos_de(c))
         print(f"  {lang}: {'todas as letras existem nas fontes' if not falta else '✗ letras sem glifo: ' + ''.join(falta)}")
         ok &= not falta
         wa = f"https://wa.me/351{digitos}?text={quote(c['contact']['mensagem_wa'])}"
-        outra = ("Versiunea în română →", "/") if lang == "pt" else None
-        url_pagina = url_site if lang == "ro" else url_site + "pt/"
-        jsonld = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Pacheco Studios", "url": url_pagina,
-                  "image": url_site + "media/og.png", "description": c["meta"]["description"], "telephone": tel_legivel,
-                  "email": d["email"], "areaServed": {"@type": "Country", "name": "Romania"},
-                  "sameAs": [f"https://www.instagram.com/{d['instagram'].lstrip('@')}/", f"https://{d['site_principal']}/"],
+        og_img = f"https://{cfg['host']}/media/og-{lang}.png"
+        jsonld = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Pacheco Studios", "url": cfg["url"],
+                  "image": og_img, "description": c["meta"]["description"], "telephone": tel_legivel, "email": d["email"],
+                  "areaServed": [{"@type": "Country", "name": n} for n in cfg["areas"]],
+                  "sameAs": [f"https://www.instagram.com/{d['instagram'].lstrip('@')}/"],
                   "founder": {"@type": "Person", "name": d["nome"]}}
+        k = c["consent"]
         valores = {
-            "LINGUA": c["lingua"], "TITLE": e(c["meta"]["title"]), "DESCRIPTION": e(c["meta"]["description"]),
-            "OG_TITLE": e(c["meta"]["og_title"]), "OG_LOCALE": "ro_RO" if lang == "ro" else "pt_PT",
-            "URL_SITE": url_site, "URL_PAGINA": url_pagina, "FONTES": fontes, "FONTES_GOOGLE": fontes_google(portfolio),
+            "LINGUA": cfg["hreflang"], "TITLE": e(c["meta"]["title"]), "DESCRIPTION": e(c["meta"]["description"]),
+            "OG_TITLE": e(c["meta"]["og_title"]), "OG_LOCALE": cfg["og_locale"], "OG_IMAGE": og_img,
+            "URL_PAGINA": cfg["url"], "HREFLANG": hreflang(), "FONTES": fontes, "FONTES_GOOGLE": fontes_google(portfolio),
             "JSONLD": json.dumps(jsonld, ensure_ascii=False).replace("</", "<\\/"),
-            "SALTAR": "Sari la conținut" if lang == "ro" else "Saltar para o conteúdo",
-            "NAV_LABEL": "Secțiuni" if lang == "ro" else "Secções",
-            "REGIAO": e(c["topo"]["regiao"].upper()), "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]),
-            "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]), "TAB_SERVICII": e(c["topo"]["tabs"]["servicii"]),
-            "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos), "VISTA_SERVICII": vista_servicii(c, portfolio),
-            "VISTA_PROIECTE": vista_proiecte(c, portfolio, "Afacerea ta?" if lang == "ro" else "O teu negócio?"),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos), "RODAPE": rodape(c, d, outra),
+            "GOATCOUNTER": e(medicao.get("goatcounter", "")), "PIXEL": re.sub(r"\D", "", medicao.get("pixel_meta", "")) if lang in medicao.get("pixel_linguas", ["pt", "en"]) else "",
+            "SALTAR": e(cfg["saltar"]), "NAV_LABEL": e(cfg["nav"]), "LINGUAS": seletor(c, lang),
+            "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
+            "TAB_SERVICII": e(c["topo"]["tabs"]["servicii"]),
+            "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos), "VISTA_SERVICII": vista_servicii(c, portfolio, lang),
+            "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang),
+            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "RODAPE": rodape(c, lang),
             "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
+            "CONSENT_ROTULO": e(k["rotulo"]), "CONSENT_TEXTO": e(k["texto"]), "CONSENT_SIM": e(k["sim"]),
+            "CONSENT_NAO": e(k["nao"]), "CONSENT_LINK": e(k["link"]), "URL_PRIVACIDADE": e(cfg["privacidade"]),
         }
         pagina = montar(src, valores)
         paginas[lang] = pagina
-        destino = os.path.join(DIST, "index.html") if lang == "ro" else os.path.join(DIST, "pt", "index.html")
-        open(destino, "w", encoding="utf-8").write(pagina)
+        pasta = os.path.join(DIST, cfg["pasta"])
+        os.makedirs(pasta, exist_ok=True)
+        open(os.path.join(pasta, "index.html"), "w", encoding="utf-8").write(pagina)
 
-    # 404 em romeno, com o mesmo estilo
-    ro = linguas["ro"]
-    estilo = re.search(r"<style>.*?</style>", paginas["ro"], re.S).group(0)
-    p404 = f"""<!DOCTYPE html>
-<html lang="ro">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{e(ro["p404"]["titlu"])} — Pacheco Studios</title>
-<meta name="robots" content="noindex">
-<meta name="theme-color" content="#141210">
-{estilo}
-</head>
-<body>
-<header class="envolver topo">
-  <h1 class="marca"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</h1>
-  <span class="regiao">{e(ro["topo"]["regiao"].upper())}</span>
-</header>
-<main id="conteudo" class="envolver seccao">
-  <p class="eyebrow">404</p>
-  <h2 class="afirmacao">{e(ro["p404"]["titlu"])}</h2>
-  <p class="lead">{e(ro["p404"]["text"])}</p>
-  <a class="botao primario grande" href="/#proiecte">{I["seta"]}{e(ro["p404"]["cta"])}</a>
-</main>
-<footer class="rodape">
-  <div class="envolver">
-    <p>{e(ro["rodape"]["linha"])}</p>
-    <p><a href="https://www.livroreclamacoes.pt/inicio" rel="noopener">{e(ro["rodape"]["legal"])}</a></p>
-  </div>
-</footer>
-</body>
-</html>
-"""
-    open(os.path.join(DIST, "404.html"), "w", encoding="utf-8").write(p404)
+    # 404 e privacidade em cada língua, com o estilo da página
+    estilo = re.search(r"<style>.*?</style>", paginas["pt"], re.S).group(0)
+    for lang, c in linguas.items():
+        cfg = LINGUAS[lang]
+        extras[f"{cfg['pasta'] + '/' if cfg['pasta'] else ''}404.html"] = pagina_404(c, estilo, lang)
+        extras[cfg["privacidade"].lstrip("/")] = pagina_privacidade(c, estilo, lang, d["email"])
+    for nome, h in extras.items():
+        open(os.path.join(DIST, nome), "w", encoding="utf-8").write(h)
 
-    # Netlify: o QR aponta para /c — o destino muda em marca/dados.json, sem reimprimir cartões
+    # Netlify. Um só projeto com os dois domínios: pachecost.com (principal) e ro.pachecost.com (alias).
     caminho = d.get("caminho_qr", "c").strip("/").lower()
     destino_qr = d.get("destino_qr", "/?origem=cartao").strip()
     curtos = {k: v for k, v in d.get("enderecos_curtos", {}).items() if not k.startswith("_") and v}
     red = ["# Gerado por gerar.py a partir de marca/dados.json — não editar à mão.",
-           f"# QR do cartão (https://{dominio}/{caminho.upper()}) → marca/dados.json: destino_qr.",
+           f"# 1) QR do cartão (impresso: HTTPS://{dominio.upper()}/{caminho.upper()}). Fica SEMPRE em primeiro lugar.",
            f"/{caminho}    {destino_qr}    302", f"/{caminho.upper()}    {destino_qr}    302",
-           "# Endereços curtos (marca/dados.json → enderecos_curtos)"]
+           f"# 2) {dominio} abre a versão romena, guardada em /ro/. O resto dos ficheiros é partilhado.",
+           f"https://{dominio}/              /ro/index.html    200!",
+           f"https://{dominio}/index.html    /ro/index.html    200!",
+           "# 3) cada língua no seu endereço",
+           f"/ro        https://{dominio}/    301!", f"/ro/*      https://{dominio}/    301!",
+           f"https://{dominio}/en      https://{principal}/en/    301!",
+           f"https://{dominio}/en/*    https://{principal}/en/:splat    301!",
+           f"/pt        https://{principal}/    301!", f"/pt/*      https://{principal}/    301!",
+           "# 4) endereços curtos (marca/dados.json → enderecos_curtos)"]
     for slug, dest in sorted(curtos.items()):
         red.append(f"/{re.sub(r'[^a-z0-9-]', '', slug.lower())}    {dest}    302")
+    red += ["# 5) página 404 na língua de cada endereço (a portuguesa é a 404.html da raiz)",
+            f"https://{dominio}/*    /ro/404.html    404", "/en/*    /en/404.html    404"]
     open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8").write("\n".join(red) + "\n")
     # Cabeçalhos em _headers (e não no netlify.toml): o Netlify lê _headers e _redirects também quando o zip é
     # arrastado à mão; o netlify.toml só é garantido em builds. Um sítio só, para não se duplicarem.
     open(os.path.join(DIST, "_headers"), "w", encoding="utf-8").write(
         "# Gerado por gerar.py — não editar à mão.\n/*\n  X-Content-Type-Options: nosniff\n"
-        "  Referrer-Policy: strict-origin-when-cross-origin\n/p/*\n  X-Robots-Tag: noindex, nofollow\n"
-        "/media/*\n  Cache-Control: public, max-age=604800\n")
+        "  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: SAMEORIGIN\n"
+        "  Permissions-Policy: geolocation=(), microphone=(), camera=()\n"
+        "/p/*\n  X-Robots-Tag: noindex, nofollow\n/media/*\n  Cache-Control: public, max-age=604800\n")
     open(os.path.join(DIST, "netlify.toml"), "w", encoding="utf-8").write(
         '# Gerado por gerar.py. Redirecionamentos em _redirects e cabeçalhos em _headers.\n[build]\npublish = "."\n')
+    open(os.path.join(DIST, "robots.txt"), "w", encoding="utf-8").write(
+        f"# {principal} e {dominio}\nUser-agent: *\nAllow: /\nDisallow: /p/\n\n"
+        "# ferramentas de SEO que só servem para inflacionar estatísticas\n"
+        + "".join(f"User-agent: {b}\nDisallow: /\n" for b in ("AhrefsBot", "SemrushBot", "MJ12bot", "DotBot", "BLEXBot",
+                                                              "DataForSeoBot", "PetalBot", "Bytespider"))
+        + f"\nSitemap: https://{principal}/sitemap.xml\n")
+    urls = [(f"https://{principal}/", "1.0"), (f"https://{principal}/en/", "0.8"),
+            (f"https://{principal}/privacidade.html", "0.2"), (f"https://{principal}/privacy.html", "0.2")]
+    open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "".join(f"  <url><loc>{u}</loc><priority>{pr}</priority></url>\n" for u, pr in urls) + "</urlset>\n")
+    # ficheiros do site anterior que podem estar ligados de fora (partilhas, pesquisas)
+    for f in ("favicon.svg", "logo.svg"):
+        antigo = os.path.join(SITES, "pachecost-com", f)
+        if os.path.exists(antigo):
+            shutil.copy(antigo, os.path.join(DIST, f))
 
-    n = copiar_sites(portfolio, ro["inapoi"])
-    og_png(fontes, d["cartao"]["slogan"], d["cartao"]["proposito"], ro["topo"]["regiao"])
+    n = copiar_sites(portfolio, linguas)
+    for lang, c in linguas.items():
+        og_png(fontes, c["og"], os.path.join(DIST, "media", f"og-{lang}.png"))
 
-    for f in ("index.html", "404.html", "_redirects", "_headers", "netlify.toml"):
-        shutil.copy(os.path.join(DIST, f), os.path.join(AQUI, f))
-    os.makedirs(os.path.join(AQUI, "pt"), exist_ok=True)
-    shutil.copy(os.path.join(DIST, "pt", "index.html"), os.path.join(AQUI, "pt", "index.html"))
+    # cópia para o git (e para abrir na app): tudo menos as cópias dos sites e os media
+    antiga_pt = os.path.join(AQUI, "pt")
+    if os.path.isdir(antiga_pt):
+        shutil.rmtree(antiga_pt)  # a versão portuguesa passou para a raiz
+    for raiz, _, fichs in os.walk(DIST):
+        rel = os.path.relpath(raiz, DIST)
+        if rel.split(os.sep)[0] in ("p", "media"):
+            continue
+        for f in fichs:
+            os.makedirs(os.path.join(AQUI, rel), exist_ok=True)
+            shutil.copy(os.path.join(raiz, f), os.path.join(AQUI, rel, f))
 
     print("\nVALIDAÇÃO")
-    ok &= validar("index.html (ro)", paginas["ro"]) & validar("pt/index.html", paginas["pt"]) & validar("404.html", p404)
-    print(f"  index.html: {len(paginas['ro'].encode()) / 1024:.0f} KB · {n} sites copiados para /p/")
+    for lang in LINGUAS:
+        nome = (LINGUAS[lang]["pasta"] + "/" if LINGUAS[lang]["pasta"] else "") + "index.html"
+        ok &= validar(f"{nome} ({lang})", paginas[lang])
+    for nome, h in extras.items():
+        ok &= validar(nome, h)
+    print(f"  páginas: {len(paginas['pt'].encode()) / 1024:.0f} KB cada · {n} site(s) copiado(s) para /p/ (uma página por língua)")
     regras = open(os.path.join(DIST, "_redirects"), encoding="utf-8").read().splitlines()
-    qr_ok = all(any(r.split()[:3] == [f"/{c}", destino_qr, "302"] for r in regras if not r.startswith("#"))
-                for c in (caminho, caminho.upper()))
+    ativas = [r.split() for r in regras if r.strip() and not r.startswith("#")]
+    qr_ok = all(any(r[:3] == [f"/{x}", destino_qr, "302"] for r in ativas) for x in (caminho, caminho.upper()))
+    qr_primeiro = [r[0].lower() for r in ativas[:2]] == [f"/{caminho}", f"/{caminho}"]
+    ro_ok = [f"https://{dominio}/", "/ro/index.html", "200!"] in ativas
     cab_ok = "X-Robots-Tag: noindex" in open(os.path.join(DIST, "_headers"), encoding="utf-8").read()
-    ok &= qr_ok and cab_ok
-    print(f"  {'✓' if qr_ok else '✗'} _redirects: /{caminho} e /{caminho.upper()} → {destino_qr} (o QR impresso)"
-          f" · {'✓' if cab_ok else '✗'} _headers: /p/* com noindex")
+    ok &= qr_ok and qr_primeiro and ro_ok and cab_ok
+    print(f"  {'✓' if qr_ok and qr_primeiro else '✗'} _redirects: /{caminho} e /{caminho.upper()} → {destino_qr} (o QR impresso), em primeiro"
+          f" · {'✓' if ro_ok else '✗'} {dominio} → versão romena · {'✓' if cab_ok else '✗'} _headers: /p/* com noindex")
 
     zipp = os.path.join(AQUI, "pacheco-studios-netlify.zip")
     with zipfile.ZipFile(zipp, "w", zipfile.ZIP_DEFLATED) as z:
