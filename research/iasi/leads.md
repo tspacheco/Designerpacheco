@@ -22,6 +22,11 @@
 
 **Decisor:** não é quem está ao balcão. Pedir o responsável de marketing / gerente e o contacto direto. Nome da fundadora **a confirmar** (pesquisa dá só "Cristina H.").
 
+**Teste técnico (27/09/2026):**
+- **friscot-comanda.ro não existe no DNS** ("Name or service not known", confirmado por dois resolvedores). A loja de encomendas está em baixo para toda a gente — domínio expirado ou DNS apagado. Causa exata **a confirmar** (o WHOIS romeno não respondeu).
+- **friscot.ro** responde no DNS e está alojado na **Wix** (185.230.63.x; www → wixdns.net). O conteúdo não pôde ser lido daqui (bloqueio do proxy); o Tomás reporta que também não funciona para ele.
+- **Argumento principal da visita:** o canal de encomendas online está morto e o site principal não abre.
+
 **Auditar antes da visita (sites bloqueados nesta sessão):** friscot.ro e friscot-comanda.ro no telemóvel — velocidade, se a Brasserie aparece, fluxo de encomenda de um bolo, pictograma ANPC-SAL e CUI no rodapé, se há fotos reais do espaço.
 
 **Fontes:** ziaruldeiasi.ro (Frișcot Brasserie; "cinci cartiere") · tiktok.com/@cofetaria.friscot.iasi (lançamento 20 de maio) · friscot-comanda.ro · paginiaurii.ro · mihaelaanghel.com (2012)
