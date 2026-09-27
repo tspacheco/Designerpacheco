@@ -249,6 +249,7 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 5. Evitar cadeias e franchisings (decisão não é local). Verificar sempre se já têm site antes de investir tempo.
 6. Ângulo que fecha: **"tem 4,5 estrelas e centenas de avaliações — e está invisível fora do Google Maps."**
 7. Quem já tem site (Tavont, Ita Trattoria): **"elevar, não substituir"** — mostrar 3 falhas concretas do site atual.
+8. **Cold email (plano de 27/09/2026):** 4 contas pagas (2 Google Workspace + 2 Microsoft 365), 12 caixas, Smartlead + AI Ark + MillionVerifier + Claude em lote: **187 €/mês sem IVA** para ~2 000 negócios por mês. Plano, tabela de preços, regras e calendário em `research/plano-cold-emails.pdf` (fonte: `plano-cold-emails.html`). Atenção: o AI Ark e o Apollo quase não têm negócios sem site; testar no plano grátis antes de pagar.
 
 ## 12. ECONOMIA DE CRÉDITOS
 

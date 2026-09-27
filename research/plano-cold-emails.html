@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>Plano de cold emails · Pacheco Studios</title>
+<style>
+@font-face{font-family:"Archivo Black";src:url("../marca/fontes/archivo-black-ro.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-weight:700;src:url("../marca/fontes/space-mono-700-ro.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-weight:400;src:url("../marca/fontes/inter-400-ro.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-weight:600;src:url("../marca/fontes/inter-600-ro.woff2") format("woff2")}
+:root{--carvao:#141210;--carvao-2:#1D1A17;--osso:#EFEAE3;--osso-2:#A5A19B;--tinta-2:#4D4A47;--laranja:#E8622C;
+  --laranja-tinta:#A64923;--linha:rgba(20,18,16,.16);--linha-e:rgba(239,234,227,.16);--realce:#EEDED3}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#D8D2C9}
+body{font:400 10pt/1.5 "Inter",system-ui,sans-serif;color:var(--carvao)}
+.pagina{position:relative;width:210mm;height:297mm;padding:17mm 17mm 22mm;background:var(--osso);margin:0 auto 8mm;overflow:hidden;
+  page-break-after:always;break-after:page}
+.pagina:last-child{page-break-after:auto;break-after:auto}
+@media print{html,body{background:var(--osso)}.pagina{margin:0}}
+.escura{background:var(--carvao);color:var(--osso)}
+h1,h2,h3,h4,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+.rodape{position:absolute;left:17mm;right:17mm;bottom:10mm;display:flex;justify-content:space-between;
+  font:700 7pt/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
+.escura .rodape{color:var(--osso-2)}
+.eyebrow{font:700 7.5pt/1 "Space Mono",monospace;letter-spacing:.3em;text-transform:uppercase;color:var(--laranja-tinta);margin-bottom:4mm}
+.escura .eyebrow{color:var(--laranja)}
+h1{font:400 40pt/.98 "Archivo Black",sans-serif;text-transform:uppercase;letter-spacing:-.005em}
+h2{font:400 19pt/1.04 "Archivo Black",sans-serif;text-transform:uppercase;margin-bottom:4mm;max-width:26ch}
+h3{font:400 10pt/1.15 "Archivo Black",sans-serif;text-transform:uppercase;letter-spacing:.01em}
+h4{font:700 7pt/1.3 "Space Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:2mm}
+.escura h4{color:var(--osso-2)}
+p{max-width:74ch}
+.lead{font-size:11.5pt;line-height:1.5;max-width:60ch}
+.pf{display:inline-block;width:.2em;height:.2em;border-radius:50%;background:var(--laranja);margin-left:.08em}
+.mono{font-family:"Space Mono",monospace;font-weight:700}
+.nota{font-size:8.3pt;line-height:1.45;color:var(--tinta-2)}
+.escura .nota{color:var(--osso-2)}
+
+/* ——— capa ——— */
+.marca{display:flex;align-items:center;gap:3mm;font:700 8pt/1 "Space Mono",monospace;letter-spacing:.24em;text-transform:uppercase}
+.ponto{width:2.6mm;height:2.6mm;border-radius:50%;background:var(--laranja)}
+.capa .eyebrow{margin-top:30mm}
+.capa h1{margin-bottom:7mm;font-size:44pt}
+.capa .lead{color:var(--osso-2)}
+.capa-base{position:absolute;left:17mm;right:17mm;bottom:24mm}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:3.5mm}
+.kpis>div{grid-column:span 2;border:1px solid var(--linha-e);border-radius:3mm;padding:4.5mm 4.5mm 4mm;background:var(--carvao-2)}
+.kpis>div.largo{grid-column:span 3}
+.kpis b{display:block;font:400 22pt/1 "Archivo Black",sans-serif;letter-spacing:-.01em}
+.kpis span{display:block;margin-top:2.2mm;font:700 7pt/1.35 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--osso-2)}
+.kpis .destaque{background:var(--laranja);border-color:var(--laranja);color:var(--carvao)}
+.kpis .destaque span{color:var(--carvao)}
+.apps{display:flex;flex-wrap:wrap;gap:2mm;margin-top:7mm}
+.apps li{font:700 7.5pt/1 "Space Mono",monospace;letter-spacing:.08em;padding:2.2mm 3.2mm;border-radius:99px;border:1px solid var(--linha-e);color:var(--osso)}
+
+/* ——— o sistema: cinco passos ——— */
+.pipeline{position:relative;margin:2mm 0 7mm}
+.pipeline::before{content:"";position:absolute;left:4.4mm;top:6mm;bottom:6mm;border-left:2px dotted var(--laranja)}
+.pipeline li{position:relative;display:grid;grid-template-columns:9mm 50mm 1fr 36mm;gap:0 4mm;align-items:start;padding:3.2mm 0;border-bottom:1px solid var(--linha)}
+.pipeline li:last-child{border-bottom:0}
+.pipeline .n{position:relative;z-index:1;width:9mm;height:9mm;border-radius:50%;background:var(--carvao);color:var(--osso);display:grid;place-items:center;font:400 10pt/1 "Archivo Black",sans-serif}
+.pipeline li:last-child .n{background:var(--laranja);color:var(--carvao)}
+.pipeline h3{margin-top:.6mm}
+.tags{display:flex;flex-wrap:wrap;gap:1.2mm;margin-top:1.8mm}
+.tag{font:700 7pt/1 "Space Mono",monospace;letter-spacing:.06em;padding:1.5mm 2.2mm;border-radius:99px;background:var(--carvao);color:var(--osso)}
+.tag.alt{background:transparent;color:var(--tinta-2);box-shadow:inset 0 0 0 1px var(--linha)}
+.pipeline p{font-size:9.3pt;line-height:1.45;margin-top:.5mm}
+.sai{font:700 7pt/1.4 "Space Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--laranja-tinta);margin-top:1mm}
+.sai b{display:block;font:600 9pt/1.35 "Inter",sans-serif;letter-spacing:0;text-transform:none;color:var(--carvao);margin-top:.8mm}
+.grelha2{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.caixa{border:1px solid var(--linha);border-radius:3mm;padding:4.5mm 5mm;background:rgba(255,255,255,.4)}
+.caixa p{font-size:9.2pt;line-height:1.45}
+.caixa p+p{margin-top:1.8mm}
+.formula{font:400 13pt/1.2 "Archivo Black",sans-serif;text-transform:uppercase;margin:1mm 0 2.5mm}
+.formula .o{color:var(--laranja-tinta)}
+
+/* ——— tabelas ——— */
+table{width:100%;border-collapse:collapse;font-size:8.9pt;line-height:1.38}
+th,td{text-align:left;padding:2.1mm 2mm;border-bottom:1px solid #CCC7C1;vertical-align:top}
+th{font:700 6.8pt/1.3 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-2);padding-top:0}
+td.v,th.v{text-align:right;white-space:nowrap}
+td.v{font:600 9.2pt/1.38 "Inter",sans-serif}
+td b{font-weight:600}
+td small{display:block;font-size:7.8pt;line-height:1.35;color:var(--tinta-2);margin-top:.4mm}
+tr.escolha td{background:var(--realce);box-shadow:1.5px 0 0 var(--realce)}
+tr.escolha td:first-child{box-shadow:inset 2px 0 0 var(--laranja),1.5px 0 0 var(--realce)}
+tr.total td{border-bottom:0;border-top:2px solid var(--carvao);padding-top:3mm}
+tr.total td:first-child{font:400 12pt/1 "Archivo Black",sans-serif;text-transform:uppercase}
+tr.total td.v{font:400 16pt/1 "Archivo Black",sans-serif}
+.precos td:first-child{width:30mm}
+.precos td:nth-child(2){width:27mm}
+
+/* ——— cartões de números ——— */
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin:6mm 0 5mm}
+.tres>div{border-radius:3mm;padding:4mm 4.5mm;background:var(--carvao);color:var(--osso)}
+.tres b{display:block;font:400 17pt/1 "Archivo Black",sans-serif}
+.tres span{display:block;margin-top:2mm;font-size:8.3pt;line-height:1.4;color:var(--osso-2)}
+.tres h4{color:var(--laranja);margin-bottom:2.5mm}
+.notas li{position:relative;padding-left:4mm;margin-bottom:1.4mm}
+.notas li::before{content:"";position:absolute;left:0;top:.62em;width:1.5mm;height:1.5mm;border-radius:50%;background:var(--laranja)}
+
+/* ——— atenção ——— */
+.atencao{margin-top:6mm;border-radius:3mm;background:var(--carvao);color:var(--osso);padding:5mm 6mm}
+.atencao h3{font-size:12pt;color:var(--laranja);margin-bottom:2mm}
+.atencao p{font-size:9.3pt;line-height:1.5;color:var(--osso)}
+.atencao p+p{margin-top:2mm}
+.atencao b{color:var(--osso);font-weight:600}
+.atencao .nota{margin-top:2mm}
+.decidir{margin-top:7mm}
+.decidir ul{display:grid;grid-template-columns:1fr 1fr;gap:3mm 6mm;margin-top:1mm}
+.decidir li{font-size:9pt;line-height:1.45;color:var(--osso-2)}
+.decidir li b{display:block;color:var(--osso);font-weight:600;margin-bottom:.5mm}
+
+/* ——— regras e arranque ——— */
+.regras{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.regras .caixa h3{font-size:10pt;margin-bottom:1.8mm}
+.regras .caixa p{font-size:8.9pt}
+.tempo{margin-top:6mm;display:grid;gap:0}
+.tempo li{display:grid;grid-template-columns:36mm 1fr;gap:5mm;padding:2.8mm 0;border-top:1px solid var(--linha)}
+.tempo li:last-child{border-bottom:1px solid var(--linha)}
+.tempo .q{font:700 7pt/1.35 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--laranja-tinta)}
+.tempo .q b{display:block;font:400 10.5pt/1.15 "Archivo Black",sans-serif;letter-spacing:0;color:var(--carvao);margin-top:1mm}
+.tempo p{font-size:9.1pt;line-height:1.45}
+
+/* ——— fontes de cada página ——— */
+.fontes{position:absolute;left:17mm;right:17mm;bottom:15.5mm;max-width:none;font-size:7pt;line-height:1.45;color:var(--tinta-2)}
+.fontes b{font:700 6.5pt/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;margin-right:1.5mm;color:var(--carvao)}
+.fontes a{border-bottom:1px solid var(--linha)}
+.escura .fontes{color:var(--osso-2)}
+</style>
+</head>
+<body>
+
+<!-- 1 · CAPA -->
+<section class="pagina escura capa">
+  <div class="marca"><span class="ponto"></span>Pacheco Studios</div>
+  <p class="eyebrow">Plano · Cold emails · Portugal</p>
+  <h1>Cold emails:<br>o sistema e<br>o que custa<span class="pf"></span></h1>
+  <p class="lead">Quatro contas de email, doze caixas a enviar e cinco aplicações, da lista de negócios até à resposta. Com a tabela de preços, mês a mês.</p>
+  <div class="capa-base">
+  <div class="kpis">
+    <div><b>12</b><span>caixas a enviar</span></div>
+    <div><b>6&nbsp;000</b><span>emails por mês</span></div>
+    <div><b>~2&nbsp;000</b><span>negócios novos por mês</span></div>
+    <div class="largo destaque"><b>187&nbsp;€</b><span>por mês, sem IVA</span></div>
+    <div class="largo"><b>0,09&nbsp;€</b><span>por negócio contactado</span></div>
+  </div>
+  <ul class="apps">
+    <li>Google Workspace</li><li>Microsoft 365</li><li>Smartlead</li><li>AI Ark</li><li>MillionVerifier</li><li>Claude</li>
+  </ul>
+  </div>
+  <div class="rodape"><span>Preços de 24/09/2026 · confirmar no checkout</span><span>1 / 5</span></div>
+</section>
+
+<!-- 2 · O SISTEMA -->
+<section class="pagina">
+  <p class="eyebrow">1 · O sistema</p>
+  <h2>Cinco passos, uma aplicação em cada<span class="pf"></span></h2>
+  <ol class="pipeline">
+    <li><span class="n">1</span>
+      <div><h3>Prospeção</h3><div class="tags"><span class="tag">AI Ark</span><span class="tag alt">ou Apollo</span></div></div>
+      <p>Procura negócios por setor e zona e devolve o email de quem decide.</p>
+      <p class="sai">Sai<b>a lista, em CSV</b></p></li>
+    <li><span class="n">2</span>
+      <div><h3>Verificação</h3><div class="tags"><span class="tag">MillionVerifier</span></div></div>
+      <p>Tira os emails inválidos e os arriscados. Cada email que volta para trás estraga a reputação das caixas.</p>
+      <p class="sai">Sai<b>só emails válidos</b></p></li>
+    <li><span class="n">3</span>
+      <div><h3>Personalização</h3><div class="tags"><span class="tag">Claude</span><span class="tag alt">script em lote</span></div></div>
+      <p>Escreve a primeira frase de cada email com os dados do negócio. Tu aprovas o modelo antes de correr.</p>
+      <p class="sai">Sai<b>uma coluna pronta a importar</b></p></li>
+    <li><span class="n">4</span>
+      <div><h3>Envio</h3><div class="tags"><span class="tag">Smartlead</span><span class="tag alt">12&nbsp;caixas</span></div></div>
+      <p>Aquece as caixas, reparte os envios por elas e manda a sequência de 3&nbsp;emails.</p>
+      <p class="sai">Sai<b>6&nbsp;000&nbsp;emails por mês</b></p></li>
+    <li><span class="n">5</span>
+      <div><h3>Resposta</h3><div class="tags"><span class="tag">Tu</span></div></div>
+      <p>Quem responde passa para ti: conversa, demo no telemóvel e proposta.</p>
+      <p class="sai">Sai<b>sites vendidos</b></p></li>
+  </ol>
+
+  <div class="grelha2">
+    <div class="caixa">
+      <h4>As caixas</h4>
+      <p class="formula">Contas × domínios × 3 <span class="o">= caixas</span></p>
+      <p><b>4&nbsp;contas × 1&nbsp;domínio × 3 = 12&nbsp;caixas.</b> 2&nbsp;contas Google Workspace e 2 Microsoft 365, cada uma com o seu domínio.</p>
+      <p>As contas não enviam sozinhas: quem envia são as caixas, e cada caixa é uma licença paga.</p>
+    </div>
+    <div class="caixa">
+      <h4>O volume</h4>
+      <p class="formula">12 × 25 × 20 <span class="o">= 6&nbsp;000</span></p>
+      <p><b>12&nbsp;caixas, 25&nbsp;emails por dia, 20&nbsp;dias úteis: 6&nbsp;000&nbsp;emails por mês.</b> É o limite do Smartlead Basic.</p>
+      <p>Com sequências de 3&nbsp;emails, dá para cerca de 2&nbsp;000&nbsp;negócios novos por mês.</p>
+    </div>
+  </div>
+
+  <h4 style="margin-top:7mm">Para crescer: mais domínios por conta</h4>
+  <table>
+    <thead><tr><th>Domínios por conta</th><th class="v">Domínios</th><th class="v">Caixas</th><th class="v">Emails por dia*</th><th class="v">Caixas, euros por mês</th></tr></thead>
+    <tbody>
+      <tr class="escolha"><td><b>1, o plano</b></td><td class="v">4</td><td class="v">12</td><td class="v">360</td><td class="v">83&nbsp;€</td></tr>
+      <tr><td>2</td><td class="v">8</td><td class="v">24</td><td class="v">720</td><td class="v">166&nbsp;€</td></tr>
+      <tr><td>3</td><td class="v">12</td><td class="v">36</td><td class="v">1&nbsp;080</td><td class="v">248&nbsp;€</td></tr>
+    </tbody>
+  </table>
+  <p class="nota" style="margin-top:2mm">* 30 por caixa, só depois do aquecimento. Acima de 6&nbsp;000&nbsp;emails por mês, o Smartlead passa ao Pro: 94&nbsp;$, cerca de 83&nbsp;€ por mês, para 150&nbsp;000&nbsp;emails.</p>
+
+  <p class="fontes"><b>Fontes</b><a href="https://puzzleinbox.com/blog/how-many-inboxes-do-you-need-cold-email/">caixas por domínio, Puzzle Inbox</a> · <a href="https://leadhaste.com/blog/google-workspace-cold-email-limits-2026">limites por caixa, LeadHaste</a> · <a href="https://emelia.io/hub/smartlead-pricing">Smartlead, Emelia</a></p>
+  <div class="rodape"><span>Pacheco Studios · Plano de cold emails</span><span>2 / 5</span></div>
+</section>
+
+<!-- 3 · PREÇOS -->
+<section class="pagina">
+  <p class="eyebrow">2 · Quanto custa</p>
+  <h2>187&nbsp;€ por mês, sem IVA<span class="pf"></span></h2>
+  <table class="precos">
+    <thead><tr><th>Aplicação</th><th>Para quê</th><th>Plano</th><th class="v">Preço</th><th class="v">Euros por mês</th></tr></thead>
+    <tbody>
+      <tr><td><b>Google Workspace</b></td><td>6&nbsp;caixas, em 2&nbsp;contas</td><td>Business Starter, compromisso anual</td><td class="v">6,80&nbsp;€ por caixa</td><td class="v">41&nbsp;€</td></tr>
+      <tr><td><b>Microsoft 365</b></td><td>6&nbsp;caixas, em 2&nbsp;contas</td><td>Business Basic, conta paga<small>Preço em euros a confirmar no checkout</small></td><td class="v">~7&nbsp;€ por caixa</td><td class="v">42&nbsp;€</td></tr>
+      <tr><td><b>Domínios</b></td><td>4, um por conta</td><td>Parecidos com a marca, nunca o pachecost.com<small>Estimativa: depende do registo</small></td><td class="v">~12&nbsp;€ por ano</td><td class="v">4&nbsp;€</td></tr>
+      <tr class="escolha"><td><b>Smartlead</b></td><td>Envio e aquecimento</td><td>Basic: 6&nbsp;000&nbsp;emails e 2&nbsp;000&nbsp;leads ativos por mês, caixas ilimitadas</td><td class="v">39&nbsp;$</td><td class="v">34&nbsp;€</td></tr>
+      <tr><td><b>AI Ark</b></td><td>Prospeção</td><td>Base: 5&nbsp;000&nbsp;créditos por mês<small>1 contacto com email verificado = 1 crédito</small></td><td class="v">49&nbsp;$</td><td class="v">43&nbsp;€</td></tr>
+      <tr><td><b>MillionVerifier</b></td><td>Verificação</td><td>10&nbsp;000&nbsp;créditos que não expiram<small>Dão para cerca de 4&nbsp;meses</small></td><td class="v">37&nbsp;$</td><td class="v">8&nbsp;€</td></tr>
+      <tr><td><b>Claude</b></td><td>Personalização</td><td>API em lote, com o Opus 5<small>Cerca de 2&nbsp;000&nbsp;leads por mês</small></td><td class="v">~17,50&nbsp;$</td><td class="v">15&nbsp;€</td></tr>
+      <tr class="total"><td colspan="4">Total por mês</td><td class="v">187&nbsp;€</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tres">
+    <div><h4>Mês 1: só aquecimento</h4><b>117&nbsp;€</b><span>Caixas e Smartlead. Mais 48&nbsp;€ de domínios, pagos uma vez por ano.</span></div>
+    <div><h4>Por negócio</h4><b>0,09&nbsp;€</b><span>187&nbsp;€ a dividir por cerca de 2&nbsp;000&nbsp;negócios contactados.</span></div>
+    <div><h4>Um site vendido paga</h4><b>2,7&nbsp;meses</b><span>500&nbsp;€ a dividir por 187&nbsp;€.</span></div>
+  </div>
+
+  <h4>Notas aos preços</h4>
+  <ul class="notas nota">
+    <li>Valores sem IVA, arredondados ao euro. Os dólares estão convertidos a 1&nbsp;€ = 1,1379&nbsp;$, o câmbio de 24/09/2026.</li>
+    <li>Google: no plano flexível, sem compromisso, a caixa custa 8,10&nbsp;€, mais 8&nbsp;€ por mês nas 6. Um revendedor português indica 6,90&nbsp;€. Confirmar no checkout.</li>
+    <li>Microsoft: o Business Basic subiu para 7&nbsp;$ a 1 de julho de 2026. O preço em euros só se vê no checkout.</li>
+    <li>AI Ark: os créditos que sobram passam para o mês seguinte, até ao dobro do plano.</li>
+    <li>Claude: conta com cerca de 1&nbsp;500&nbsp;tokens de entrada e 400 de saída por lead, a 2,50&nbsp;$ e 12,50&nbsp;$ por milhão de tokens em lote, metade do preço normal. A API paga-se à parte da subscrição, com saldo pré-pago na consola da Anthropic.</li>
+  </ul>
+
+  <p class="fontes"><b>Fontes</b><a href="https://www.eesel.ai/blog/google-workspace-pricing">Google, eesel</a> · <a href="https://www.stmicro.net/blog/microsoft-365-price-increase-2026/">Microsoft, Strategic Micro</a> · <a href="https://emelia.io/hub/smartlead-pricing">Smartlead, Emelia</a> · <a href="https://coldiq.com/tools/ai-ark">AI Ark, ColdIQ</a> · <a href="https://puzzleinbox.com/blog/millionverifier-pricing-guide/">MillionVerifier, Puzzle Inbox</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Claude, Anthropic</a> · <a href="https://tradingeconomics.com/euro-area/currency">câmbio, Trading Economics</a></p>
+  <div class="rodape"><span>Pacheco Studios · Plano de cold emails</span><span>3 / 5</span></div>
+</section>
+
+<!-- 4 · PORQUÊ ESTAS -->
+<section class="pagina">
+  <p class="eyebrow">3 · Porquê estas</p>
+  <h2 style="max-width:none">Smartlead e não Instantly:<br>menos 51&nbsp;€ por mês<span class="pf"></span></h2>
+  <table>
+    <thead><tr><th>Sequenciador</th><th>Plano que chega</th><th class="v">Emails por mês</th><th class="v">Contactos</th><th class="v">Preço</th><th class="v">Euros por mês</th></tr></thead>
+    <tbody>
+      <tr class="escolha"><td><b>Smartlead</b></td><td>Basic</td><td class="v">6&nbsp;000</td><td class="v">2&nbsp;000</td><td class="v">39&nbsp;$</td><td class="v">34&nbsp;€</td></tr>
+      <tr><td><b>Saleshandy</b></td><td>Outreach Starter<small>25&nbsp;$ no pagamento anual</small></td><td class="v">6&nbsp;000</td><td class="v">2&nbsp;000</td><td class="v">36&nbsp;$</td><td class="v">32&nbsp;€</td></tr>
+      <tr><td><b>Instantly</b></td><td>Hypergrowth<small>O Growth, a 47&nbsp;$, só dá 5&nbsp;000&nbsp;emails e 1&nbsp;000 contactos</small></td><td class="v">100&nbsp;000</td><td class="v">25&nbsp;000</td><td class="v">97&nbsp;$</td><td class="v">85&nbsp;€</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:3.5mm;font-size:9.3pt">Os três aceitam caixas ilimitadas e fazem o aquecimento. Abaixo de 10&nbsp;000&nbsp;emails por mês, a diferença na chegada à caixa de entrada é pequena. O Instantly tem a interface mais simples, mas neste volume custa mais 51&nbsp;€ por mês. O Smartlead fica à frente do Saleshandy para crescer: acima de 15&nbsp;000 a 20&nbsp;000&nbsp;emails por mês, guarda melhor a chegada à caixa de entrada.</p>
+
+  <h4 style="margin-top:7mm">Outras trocas possíveis</h4>
+  <table>
+    <thead><tr><th>Troca</th><th class="v">Por mês</th><th>O que muda</th></tr></thead>
+    <tbody>
+      <tr><td><b>Apollo em vez do AI Ark</b></td><td class="v">+9&nbsp;€</td><td>Basic a 59&nbsp;$: cerca de 2&nbsp;500&nbsp;créditos por mês, metade dos contactos.</td></tr>
+      <tr><td><b>Sonnet 5 em vez do Opus 5</b></td><td class="v">−9&nbsp;€</td><td>O Claude fica em cerca de 6&nbsp;€ por mês.</td></tr>
+      <tr><td><b>Saleshandy em vez do Smartlead</b></td><td class="v">−2&nbsp;€</td><td>−12&nbsp;€ com pagamento anual.</td></tr>
+      <tr><td><b>Google no plano flexível</b></td><td class="v">+8&nbsp;€</td><td>Sem compromisso de um ano.</td></tr>
+      <tr><td><b>Instantly em vez do Smartlead</b></td><td class="v">+51&nbsp;€</td><td>Interface mais simples.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="atencao">
+    <h3>Atenção à prospeção</h3>
+    <p>O AI Ark e o Apollo montam as bases de dados a partir de domínios e do LinkedIn. Por isso, <b>os negócios sem site, o alvo da secção 11 do playbook, quase não aparecem</b>: sem domínio não há email.</p>
+    <p><b>Testar antes de pagar.</b> No plano grátis de cada um, procurar 50&nbsp;restaurantes de Faro e Olhão e contar quantos trazem email.</p>
+    <p><b>Negócios com site fraco</b>, o ângulo «elevar, não substituir»: o Outscraper tira as fichas do Google Maps com rating e número de avaliações, a 3&nbsp;$ por 1&nbsp;000 resultados, pré-pago. O email vem do próprio site, por isso só serve para quem já tem site.</p>
+  </div>
+
+  <p class="fontes"><b>Fontes</b><a href="https://puzzleinbox.com/compare/smartlead-vs-instantly-vs-saleshandy/">comparação, Puzzle Inbox</a> · <a href="https://puzzleinbox.com/blog/instantly-pricing-guide/">Instantly, Puzzle Inbox</a> · <a href="https://www.saleshandy.com/pricing">Saleshandy</a> · <a href="https://www.landbase.com/blog/apollo-pricing">Apollo, Landbase</a> · <a href="https://outscraper.com/pricing/">Outscraper</a></p>
+  <div class="rodape"><span>Pacheco Studios · Plano de cold emails</span><span>4 / 5</span></div>
+</section>
+
+<!-- 5 · REGRAS E ARRANQUE -->
+<section class="pagina">
+  <p class="eyebrow">4 · Regras e arranque</p>
+  <h2>Antes do primeiro email<span class="pf"></span></h2>
+  <div class="regras">
+    <div class="caixa"><h3>Caixas</h3><p>No máximo 3&nbsp;caixas por domínio. Entre 25 e 30&nbsp;emails por caixa por dia, e só depois de 2 a 3 semanas de aquecimento. Os aliases não são caixas novas: usam o limite e a reputação da caixa a que pertencem.</p></div>
+    <div class="caixa"><h3>Domínios</h3><p>Nunca o pachecost.com. Domínios parecidos com a marca, a redirecionar para o site, cada um com SPF, DKIM e DMARC.</p></div>
+    <div class="caixa"><h3>Microsoft</h3><p>Nunca aquecer numa conta de teste: desde 14/09/2026, estas só enviam para 500 destinatários externos por dia, no total. As contas pagas novas também têm a quota cortada nos primeiros 60&nbsp;dias. Com 3&nbsp;caixas por conta não se chega a esse limite.</p></div>
+    <div class="caixa"><h3>A lei, em Portugal</h3><p>Email frio só para empresas: Lda, SA, Unipessoal. Cada email identifica quem envia e dá forma de deixar de receber. Antes de enviar, cruzar a lista com a lista de oposição da DGC. Empresários em nome individual e emails pessoais precisam de consentimento prévio, pela Lei 41/2004, art. 13.º-A. Muitos restaurantes são empresários em nome individual.</p></div>
+  </div>
+
+  <ol class="tempo">
+    <li><p class="q">Semana 0<b>Montar</b></p><p>Comprar os 4&nbsp;domínios e apontá-los para o site. Abrir 2&nbsp;contas Google Workspace e 2 Microsoft 365, pagas. Criar 3&nbsp;caixas por domínio, com SPF, DKIM e DMARC. Ligar as 12&nbsp;caixas ao Smartlead e começar o aquecimento.</p></li>
+    <li><p class="q">Semanas 1 a 3<b>Aquecer e preparar</b></p><p>Só aquecimento, nenhum email frio. Testar o AI Ark e o Apollo no plano grátis. Montar a lista, cruzá-la com a oposição da DGC e passá-la no MillionVerifier. Escrever a sequência de 3&nbsp;emails e o script de personalização.</p></li>
+    <li><p class="q">Semana 4<b>Arrancar</b></p><p>Começar abaixo do limite e subir aos poucos até 25&nbsp;emails por caixa por dia.</p></li>
+    <li><p class="q">Todos os meses<b>Medir</b></p><p>Respostas, demos mostradas e sites vendidos. Quem pede para sair, sai da lista de imediato.</p></li>
+  </ol>
+
+  <div class="atencao decidir">
+    <h3>Decidir antes de comprar</h3>
+    <ul>
+      <li><b>Google, anual ou flexível?</b> 41&nbsp;€ por mês com um ano de compromisso, 49&nbsp;€ sem compromisso.</li>
+      <li><b>AI Ark ou Apollo?</b> Decide o teste dos 50&nbsp;restaurantes, no plano grátis de cada um.</li>
+      <li><b>Opus 5 ou Sonnet 5?</b> 15&nbsp;€ ou 6&nbsp;€ por mês. Pôr os dois a escrever para as mesmas empresas e escolher pelo texto.</li>
+      <li><b>Mercado.</b> Este plano é para Portugal. Para a Roménia, rever a lei de lá antes do primeiro envio.</li>
+    </ul>
+  </div>
+
+  <p class="fontes"><b>Fontes</b><a href="https://lazyadmin.nl/office-365/exchange-online-tightens-outbound-limits-for-new-trial-and-edu-tenants/">limites Microsoft, LazyAdmin</a> · <a href="https://www.consumidor.gov.pt/informacao-publicidade/publicidade-nao-solicitada-pessoas-coletivas">pessoas coletivas, DGC</a> · <a href="https://www.consumidor.gov.pt/formularios/lista-de-pessoas-coletivas-para-nao-rececao-de-comunicacao-nao-solicitadas-marketing-direto">lista de oposição, DGC</a> · <a href="https://www.anacom.pt/render.jsp?contentId=944401&amp;languageId=0">Lei 41/2004, ANACOM</a></p>
+  <div class="rodape"><span>Pacheco Studios · Plano de cold emails</span><span>5 / 5</span></div>
+</section>
+
+</body>
+</html>
