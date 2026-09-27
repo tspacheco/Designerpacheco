@@ -8,7 +8,16 @@
   var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var movel = window.matchMedia("(max-width: 820px)").matches;
 
-  function fallback() { sec.classList.add("bolta--fallback"); caps.forEach(function (c) { c.classList.add("on"); }); }
+  var alvo = 0;
+  function legendas() {                       // a legenda muda com o scroll, com ou sem WebGL
+    var r = sec.getBoundingClientRect(), total = r.height - window.innerHeight;
+    alvo = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+    var idx = Math.min(caps.length - 1, Math.floor(alvo * caps.length));
+    caps.forEach(function (c, i) { c.classList.toggle("on", reduzido || i === idx); });
+  }
+  window.addEventListener("scroll", legendas, { passive: true });
+  legendas();
+  function fallback() { sec.classList.add("bolta--fallback"); if (reduzido) caps.forEach(function (c) { c.classList.add("on"); }); }
   if (typeof THREE === "undefined") { fallback(); return; }
 
   var renderer;
@@ -95,18 +104,11 @@
   }
   var lanterna = new THREE.PointLight(0xe7b86a, 1.1, 9, 2); scene.add(lanterna);
 
-  var progresso = 0, alvo = 0, tempo = 0, visivel = false, ultimo = 0;
+  var progresso = 0, tempo = 0, visivel = false, ultimo = 0;
   function medir() {
     var w = stage.clientWidth, h = stage.clientHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h; camera.updateProjectionMatrix();
-  }
-  function lerScroll() {
-    var r = sec.getBoundingClientRect();
-    var total = r.height - window.innerHeight;
-    alvo = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
-    var idx = Math.min(caps.length - 1, Math.floor(alvo * caps.length));
-    caps.forEach(function (c, i) { c.classList.toggle("on", i === idx); });
   }
   function desenhar(t) {
     var dt = Math.min(0.05, (t - ultimo) / 1000 || 0.016); ultimo = t; tempo += dt;
@@ -128,8 +130,7 @@
   }, { rootMargin: "20% 0px" });
   obs.observe(sec);
 
-  window.addEventListener("scroll", lerScroll, { passive: true });
   window.addEventListener("resize", function () { medir(); if (reduzido) desenhar(performance.now()); });
-  medir(); lerScroll();
+  medir();
   if (reduzido) { alvo = progresso = 0.4; desenhar(performance.now()); caps.forEach(function (c) { c.classList.add("on"); }); }
 })();
