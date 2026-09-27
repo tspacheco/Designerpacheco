@@ -28,18 +28,45 @@
 | 0–2 | Abertura | Apresenta-te, elogia o espaço da Brasserie (é verdade e é pessoal) |
 | 2–4 | **O problema** | No teu telemóvel: abrir friscot-comanda.ro → "site inexistente". *"Cine intră azi să comande un tort nu mai poate."* Deixa-os ver com os próprios olhos |
 | 4–9 | **A demo** | A demo das 5 fatias. Deixa o dono tocar no bolo e ir parar à loja dele. Mostra a Brasserie, o WhatsApp, a campanha de aniversário |
-| 9–12 | **O caminho** | As 3 fases (secção 3). Fase 1 é o que decidem hoje; fase 2 é a loja que já tinham |
+| 9–12 | **O caminho** | As prioridades (secção 3). A Prioridade 1 é o que decidem hoje; a 2 é a loja que já tinham |
 | 12–15 | **Fecho** | Não pedir o "sim" à loja. Pedir: (1) quem decide, (2) 2.ª reunião com essa pessoa, (3) as respostas da secção 5 |
 
-## 3. Proposta em 3 fases
+## 3. O que propomos — só o que conseguimos executar, por prioridade
 
-| Fase | O que é | Sugestão de preço | Porque primeiro |
-|---|---|---|---|
-| **1 — Um site para as 5 lojas** | A demo, com cores e fotos reais: lojas, horários, Brasserie, campanha, WhatsApp de encomendas. Substitui o Wix | **2 990 lei** + manutenção **349 lei/mês** | É rápido (1–2 semanas), resolve já o "não nos encontram" e fica a base para a loja |
-| **2 — Loja online** (a que tinham) | Catálogo por categorias (torturi ao kg, prăjituri, patiserie, sezoniere), escolher loja para levantar, data de entrega, pagamento com cartão, campanha de aniversário no checkout, calculadora de kg por convidados | **a partir de 6 500 lei**, conforme n.º de produtos e plataforma | É a venda grande. Sobe em cima da fase 1 sem refazer nada |
-| **3 — Google e avaliações** | 5 perfis Google afinados (a Brasserie como bistro/cafenea), QR para avaliações nas 5 lojas, resposta às críticas | **1 490 lei** (único) | Barato, resultado visível em semanas, fácil de dizer que sim |
+**Como está a Frișcot:** pastelaria com 5 lojas e laboratório central; os bolos são **feitos por encomenda** (ao kg, com data), não há stock a sincronizar; já recebem encomendas por telefone/WhatsApp das 07:30 às 15:30; têm quem trate de Instagram/TikTok; a loja online caiu e o Wix não mostra a Brasserie. **O que lhes falta é visibilidade e um canal de encomenda que funcione — não uma operação nova.**
 
-**Regra:** na 1.ª reunião só se fala de preço da fase 1 e da fase 3. A fase 2 fica "para a próxima reunião, quando soubermos o que tinham".
+**Critério de prioridade:** impacto nas vendas × rapidez × esforço que exige deles × se nós já fizemos isto antes.
+
+### Prioridade 1 — fazer já (1–2 semanas, esforço deles quase zero, nós já fizemos)
+
+| O quê | Porquê primeiro | Esforço deles | Nós | Sugestão de preço |
+|---|---|---|---|---|
+| **Site das 5 lojas** (a demo, com cores e fotos reais; substitui o Wix) | Resolve "não nos encontram" e é a base de tudo o resto | Fotos + validar horários | Feito várias vezes (Toda Chic, Pinhal Novo, CROAE) | **2 990 lei** + 349 lei/mês |
+| **Tapar o buraco do friscot-comanda.ro** | Hoje quem clica num link antigo (Instagram, Google) vê "site inexistente". Renovar o domínio e apontá-lo para a página de encomendas do site novo | Dizer quem tem acesso ao domínio | Configuração simples | incluído na P1 |
+| **5 perfis Google + Brasserie** | A Brasserie como bistro/cafenea, fotos, horários, menu; QR de avaliações nas 5 lojas para subir de 4,2★ | Dar acesso aos perfis | Simples, resultado visível em semanas | **1 490 lei** |
+
+### Prioridade 2 — a seguir (3–5 semanas, precisa de decisões deles)
+
+| O quê | Porquê | Esforço deles | Nós | Sugestão de preço |
+|---|---|---|---|---|
+| **Encomenda online de bolos** (a loja que já tinham): catálogo por categoria, calculadora de kg por convidados (100 g/pessoa), escolher loja e data de levantamento, campanha de aniversário no checkout, pagamento online | Encaixa no negócio: é só **pré-encomenda com levantamento**, sem stock e sem estafetas. O laboratório já atende estas encomendas por telefone — passam a chegar por escrito, pagas | Catálogo e fotos (o antigo serve de base); alguém a ver as encomendas no horário que já têm | Já fizemos loja com painel e pagamento online (modelo Toda Chic). **Novo para nós:** ligar à faturação romena (e-Factura via SmartBill/Oblio) e o processador de pagamento na Roménia (Netopia ou Stripe — **a confirmar**) | **a partir de 6 500 lei** |
+
+### Prioridade 3 — só se a P1 e a P2 correrem bem
+
+| O quê | Porquê depois |
+|---|---|
+| Página própria da Brasserie com vídeo das fotos do espaço e eventos | Podemos fazer (vídeo de fotografias já feito no Pinhal Novo), mas só compensa com fotos boas e eventos regulares |
+| Entregas ao domicílio | Exige estafetas ou integração com Glovo/Wolt/Bolt, que já usam. Operação deles, não nossa — **fora do plano por agora** |
+
+### O que NÃO propomos
+- App própria, programa de fidelização, integração com a caixa (POS): não fazemos e não precisam agora.
+- Gerir as redes sociais: já têm quem o faça.
+
+### Limites a dizer com honestidade
+- O texto romeno é revisto por um nativo antes de publicar.
+- A ligação ao e-Factura e o pagamento na Roménia vão ser a primeira vez — orçamentar com margem e testar antes de ligar ao público.
+
+**Regra:** na 1.ª reunião só se fala da **Prioridade 1**. A 2 fica "para a próxima reunião, quando soubermos como era a loja antiga".
 
 ## 4. Guião (romeno / português)
 
@@ -65,8 +92,9 @@
 1. Quem geria friscot-comanda.ro? Porque parou? (domínio expirado, empresa externa, custo?)
 2. Que plataforma era? Ainda têm o catálogo e as fotos dos produtos?
 3. Que programa de faturação usam (SmartBill, Oblio, outro)? — obrigatório ligar a loja ao e-Factura
-4. Entregas: têm estafeta próprio, Glovo/Wolt/Bolt, ou só levantamento na loja?
+4. Entregas: têm estafeta próprio, Glovo/Wolt/Bolt, ou só levantamento na loja? (confirma que a loja nova começa só com levantamento)
 5. Quantas encomendas online recebiam por semana quando funcionava?
+5b. Quanto tempo de antecedência precisa o laboratório para um bolo? (define a data mínima na loja)
 6. As 5 lojas são a mesma empresa (mesmo CUI) ou empresas diferentes?
 7. Quem trata do Instagram/TikTok? (é quem vai alimentar o site)
 
