@@ -1,0 +1,59 @@
+<!-- Intro de carregamento: só na primeira intrare no site (o media/intro.mp4 vem do Higgsfield; sem ele, o intro não aparece) -->
+<style>
+  #cb-intro{position:fixed;inset:0;z-index:2147483000;background:#14100D;display:grid;place-items:center;opacity:1;transition:opacity .9s ease}
+  #cb-intro.cb-intro--out{opacity:0;pointer-events:none}
+  #cb-intro video{width:100%;height:100%;object-fit:cover;display:block;background:#14100D}
+  #cb-intro .cb-intro__skip{position:absolute;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));appearance:none;border:1px solid rgba(244,238,226,.45);background:rgba(20,16,13,.55);color:#F4EEE2;font:600 12px/1 "Albert Sans",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:13px 18px;border-radius:999px;cursor:pointer;opacity:0;transition:opacity .4s ease .9s;backdrop-filter:blur(6px)}
+  #cb-intro.cb-intro--ready .cb-intro__skip{opacity:1}
+  html.cb-intro-lock{overflow:hidden}
+  @media (prefers-reduced-motion:reduce){#cb-intro{display:none}}
+</style>
+<div id="cb-intro" aria-hidden="true">
+  <video id="cb-intro-video" muted playsinline preload="auto" disablepictureinpicture>
+    <source src="media/intro.webm" type="video/webm">
+    <source src="media/intro.mp4" type="video/mp4">
+  </video>
+  <button type="button" class="cb-intro__skip" id="cb-intro-skip" aria-label="Sari peste intro">Sari</button>
+</div>
+<script>
+(function () {
+  "use strict";
+  var intro = document.getElementById("cb-intro");
+  if (!intro) return;
+  var video = document.getElementById("cb-intro-video");
+  var skip = document.getElementById("cb-intro-skip");
+  var CHAVE = "cb-intro-visto", CORTE = 4.6, ESPERA_MAX = 2500, TEMPO_MAX = 6500;
+  var reduzido = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var jaVisto = false;
+  try { jaVisto = sessionStorage.getItem(CHAVE) === "1"; } catch (e) {}
+  function fechar(imediato) {
+    if (intro.classList.contains("cb-intro--out")) return;
+    intro.classList.add("cb-intro--out");
+    document.documentElement.classList.remove("cb-intro-lock");
+    try { sessionStorage.setItem(CHAVE, "1"); } catch (e) {}
+    window.dispatchEvent(new CustomEvent("cb-intro:done"));
+    var tirar = function () { if (intro.parentNode) intro.parentNode.removeChild(intro); };
+    if (imediato) tirar(); else setTimeout(tirar, 1000);
+  }
+  if (reduzido || jaVisto || !video || !video.canPlayType) { fechar(true); return; }
+  document.documentElement.classList.add("cb-intro-lock");
+  var comecou = false;
+  var guarda = setTimeout(function () { if (!comecou) fechar(true); }, ESPERA_MAX);
+  setTimeout(fechar, TEMPO_MAX);
+  function arrancar() {
+    if (comecou) return;
+    comecou = true; clearTimeout(guarda);
+    intro.classList.add("cb-intro--ready");
+    var p = video.play();
+    if (p && p.catch) p.catch(function () { fechar(true); });
+  }
+  video.addEventListener("canplay", arrancar);
+  video.addEventListener("loadeddata", arrancar);
+  video.addEventListener("timeupdate", function () { if (video.currentTime >= CORTE) fechar(); });
+  video.addEventListener("ended", function () { fechar(); });
+  video.addEventListener("error", function () { fechar(true); });
+  skip.addEventListener("click", function () { fechar(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") fechar(); });
+  if (video.readyState >= 2) arrancar();
+})();
+</script>
