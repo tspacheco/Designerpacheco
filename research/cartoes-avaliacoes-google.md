@@ -19,6 +19,21 @@ de avaliação do negócio.
 | eMAG | a confirmar | Vários vendedores, branco e preto, placas de balcão ([exemplo](https://www.emag.ro/card-nfc-pentru-recenzii-google-g-01/pd/DX5997YBM/)). Easybox, devolução em 30 dias |
 | Outras lojas online | a confirmar | [RecenziiSmart](https://www.recenziismart.ro/), [SmartTap](https://www.smarttap.ro/card-recenzii/cardul-nfc-pentru-recenzii-google-model-negru/), [ReviewMe](https://reviewme.ro/products/card-cu-nfc-pentru-recenzii-google), [Creative Reviews](https://creative-reviews.ro/product/card-nfc-pentru-recenzii-google/), [AcmeLabs](https://acmelabs.ro/magazin/solutii-nfc/card-nfc-recenzii-google-reviews/), [CarduriNFC](https://cardurinfc.ro/magazin.html), [Review Magnet](https://reviewmagnet.ro/card-recenzii-google-review-magnet/), [e-locks](https://www.e-locks.ro/card-recenzii-google-e-locks-nfc-ntag215-540-bytes-pvc-negru.html), [Vivre](https://ro.vivre.eu/p-7298601/card-pentru-recenzii-google-nfc-alb) |
 
+### Iași (pesquisa de 27/09/2026)
+
+Não aparece nenhuma loja física em Iași a vender os cartões já prontos. O mais rápido é encomendar online às lojas
+acima: chegam em 1–3 dias úteis, ou ao easybox pelo eMAG. Em Iași há gráficas que fazem cartões PVC personalizados;
+falta perguntar se põem chip NFC.
+
+| Gráfica | Morada | Contacto | Notas |
+|---|---|---|---|
+| [Royal Print](https://www.royalprint.ro/carduri-personalizate-iasi/) | Str. Bradului 5 | +40 726 666 690 · office@royalprint.ro | Cartões PVC personalizados (hotel, pensão, cartão-oferta). Seg–sex 8:30–17:30. Chip NFC a confirmar |
+| [Flyerprint](https://www.flyerprint.ro/carduri-fidelizare/) | Str. Lascăr Catargi 61 | 0732 359 359 | Cartões de fidelização. Chip NFC a confirmar |
+
+Se não puserem chip: imprimir o cartão com o QR e colar por trás um autocolante NFC NTAG213, programado com a app
+NFC Tools. Moradas e contactos vêm dos resultados de pesquisa, cruzados em duas fontes cada (royalprint.ro e
+flyerprint.ro estavam bloqueados pela rede da sessão). **Confirmar por telefone antes de ir.**
+
 ## Fazer os nossos, com a marca de cada cliente
 
 Um cartão pronto custa entre 149 e 225 lei nas lojas acima. Para os incluir na oferta das automatizações (Recenzii), com o logótipo do
