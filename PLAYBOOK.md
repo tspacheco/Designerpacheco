@@ -180,6 +180,7 @@ Saira Condensed · Abril Fatface · Gilda Display · Archivo Black · Alfa Slab 
 |---|---|
 | Simona's O Bom Paladar (Loulé) | Rebrand + ementa real completa (preços das fotos) + secção Garrafeira & Bar. Zips Netlify e Hostinger entregues. Canonical aponta bompaladarloule.pt — atualizar. |
 | ProBuilders (construção, Algarve) | H1 do herói removido (mantido sr-only para SEO), hero limpo para vídeo, nav móvel em 2 linhas sem burger. |
+| Carmangeria Boierilor (Iași — "gustul tradiției, servit la Bolta Rece"; já tem site) | **Intro de carregamento em vídeo** (27/09/2026): herói sem texto (Higgsfield Nano Banana Pro) → push-in até à moldura (Kling 3.0 pro, 5 s, sem som) → funde para o site. Snippet pronto a colar + LEIA-ME em `sites/carmangeria-boierilor/intro/`. Regra aprendida: o CDN do Higgsfield está bloqueado nas sessões — gerar, e o Tomás descarrega e verifica na conta. Custo: 2 + 8,75 créditos. |
 
 ### Demos criadas (por zona)
 

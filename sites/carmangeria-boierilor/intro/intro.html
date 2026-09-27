@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carmangeria Boierilor — intro (demonstração)</title>
+<!--
+  PACHECO STUDIOS · intro de carregamento para o site da Carmangeria Boierilor.
+  Esta página é só a demonstração. O que se cola no site do cliente é o bloco
+  entre "INÍCIO DO INTRO" e "FIM DO INTRO", logo a seguir a <body>.
+  Ficheiros esperados na mesma pasta: intro.mp4 (+ intro.webm opcional) e intro-poster.jpg.
+-->
+<style>
+  /* Só para a demonstração: um "site" por baixo do intro. */
+  body { margin: 0; background: #2a1d14; color: #f3e9d8; font-family: Georgia, "Times New Roman", serif; }
+  .site-demo { min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 24px; }
+  .site-demo h1 { font-weight: 400; font-size: clamp(28px, 5vw, 56px); margin: 0 0 12px; letter-spacing: .02em; }
+  .site-demo p { opacity: .75; max-width: 46ch; margin: 0 auto; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- ===================== INÍCIO DO INTRO (colar logo a seguir a <body>) ===================== -->
+<style>
+  #cb-intro {
+    position: fixed; inset: 0; z-index: 2147483000;
+    background: #2a1d14;                 /* a cor da madeira: nada branco pisca antes do vídeo */
+    display: grid; place-items: center;
+    opacity: 1; transition: opacity .9s ease;
+  }
+  #cb-intro.cb-intro--out { opacity: 0; pointer-events: none; }
+  #cb-intro video {
+    width: 100%; height: 100%; object-fit: cover;   /* 16:9 a cobrir o ecrã, também em telemóvel */
+    display: block; background: #2a1d14;
+  }
+  #cb-intro .cb-intro__skip {
+    position: absolute; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
+    appearance: none; border: 1px solid rgba(243, 233, 216, .45); background: rgba(42, 29, 20, .55);
+    color: #f3e9d8; font: 500 13px/1 system-ui, -apple-system, "Segoe UI", sans-serif; letter-spacing: .08em;
+    text-transform: uppercase; padding: 12px 16px; border-radius: 999px; cursor: pointer;
+    opacity: 0; transition: opacity .4s ease .9s;   /* aparece só passado ~1 s */
+    backdrop-filter: blur(6px);
+  }
+  #cb-intro.cb-intro--ready .cb-intro__skip { opacity: 1; }
+  #cb-intro .cb-intro__skip:hover, #cb-intro .cb-intro__skip:focus-visible { border-color: #f3e9d8; outline: none; }
+  html.cb-intro-lock { overflow: hidden; }
+  @media (prefers-reduced-motion: reduce) { #cb-intro { display: none; } }
+</style>
+
+<div id="cb-intro" aria-hidden="true">
+  <video id="cb-intro-video" muted playsinline preload="auto" poster="intro-poster.jpg" disablepictureinpicture>
+    <source src="intro.webm" type="video/webm">
+    <source src="intro.mp4" type="video/mp4">
+  </video>
+  <button type="button" class="cb-intro__skip" id="cb-intro-skip" aria-label="Sari peste intro">Sari</button>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var intro = document.getElementById("cb-intro");
+  if (!intro) return;
+  var video = document.getElementById("cb-intro-video");
+  var skip = document.getElementById("cb-intro-skip");
+  var CHAVE = "cb-intro-visto";          // uma vez por sessão do browser
+  var CORTE = 4.6;                        // s de vídeo antes de fundir para o site
+  var ESPERA_MAX = 2500;                  // ms à espera do vídeo antes de desistir (rede lenta)
+  var TEMPO_MAX = 6500;                   // ms totais: o intro nunca prende o site mais do que isto
+  var reduzido = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var jaVisto = false;
+  try { jaVisto = sessionStorage.getItem(CHAVE) === "1"; } catch (e) {}
+
+  function fechar() {
+    if (intro.classList.contains("cb-intro--out")) return;
+    intro.classList.add("cb-intro--out");
+    document.documentElement.classList.remove("cb-intro-lock");
+    try { sessionStorage.setItem(CHAVE, "1"); } catch (e) {}
+    setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 1000);
+  }
+
+  if (reduzido || jaVisto || !video || !video.canPlayType) { fechar(); return; }
+
+  document.documentElement.classList.add("cb-intro-lock");
+  var comecou = false;
+  var guarda = setTimeout(function () { if (!comecou) fechar(); }, ESPERA_MAX);
+  setTimeout(fechar, TEMPO_MAX);
+
+  function arrancar() {
+    if (comecou) return;
+    comecou = true;
+    clearTimeout(guarda);
+    intro.classList.add("cb-intro--ready");
+    var p = video.play();
+    if (p && p.catch) p.catch(fechar);   // autoplay bloqueado → não prender o site
+  }
+  video.addEventListener("canplay", arrancar);
+  video.addEventListener("loadeddata", arrancar);
+  video.addEventListener("timeupdate", function () { if (video.currentTime >= CORTE) fechar(); });
+  video.addEventListener("ended", fechar);
+  video.addEventListener("error", fechar);
+  skip.addEventListener("click", fechar);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") fechar(); });
+  if (video.readyState >= 2) arrancar();
+})();
+</script>
+<!-- ===================== FIM DO INTRO ===================== -->
+
+<main class="site-demo">
+  <h1>Carmangeria Boierilor</h1>
+  <p>Aqui ficaria o site. O intro por cima funde-se para esta página ao segundo 4,6, ou quando o cliente carrega em «Sari».</p>
+</main>
+</body>
+</html>
