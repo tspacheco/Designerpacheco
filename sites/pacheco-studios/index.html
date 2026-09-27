@@ -154,7 +154,8 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .auto h3{font:400 1.25rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance;padding-right:2rem}
 .durere{display:grid;gap:.35rem;padding-left:.9rem;border-left:3px solid var(--laranja)}
 .durere .eyebrow{font-size:.75rem;letter-spacing:.2em}
-.durere q{font-size:1.0625rem;line-height:1.5;color:var(--osso);quotes:"„" "”"}
+.durere q{font-size:1.0625rem;line-height:1.5;color:var(--osso);quotes:"«" "»"}
+.durere q:lang(en){quotes:"“" "”"} .durere q:lang(ro){quotes:"„" "”"}
 .vezi{display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;font:700 .75rem/1 var(--mono);letter-spacing:.12em;
   text-transform:uppercase;color:var(--laranja)}
 .vezi svg{width:1rem;height:1rem;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--sair)}
@@ -163,13 +164,6 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .auto:not([open]) .vezi .fecha{display:none}
 .corpo{padding:.25rem 1.1rem 1.35rem;display:grid;gap:1.35rem;border-top:1px solid var(--linha-e);padding-top:1.15rem;margin-inline:0}
 .rotulo{font:700 .75rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--osso-2);margin:0 0 .7rem}
-.fluxo{display:grid;gap:0}
-.fluxo li{position:relative;padding:0 0 1.1rem 2.35rem;counter-increment:etapa}
-.fluxo li:last-child{padding-bottom:0}
-.fluxo li::before{content:counter(etapa);position:absolute;left:0;top:-.05rem;width:1.6rem;height:1.6rem;border-radius:50%;
-  background:var(--laranja);color:var(--carvao);font:700 .75rem/1.6rem var(--mono);text-align:center}
-.fluxo li:not(:last-child)::after{content:"";position:absolute;left:.72rem;top:1.7rem;bottom:.15rem;border-left:2px dotted var(--laranja);opacity:.7}
-.fluxo{counter-reset:etapa}
 .obtii{padding:1rem 1.1rem;border-radius:.75rem;background:var(--osso);color:var(--carvao);font-weight:600;line-height:1.45}
 .obtii .rotulo{color:var(--laranja-tinta);margin-bottom:.45rem}
 .nevoie p{color:var(--osso-2)}
@@ -191,27 +185,101 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .ai ol{padding:.25rem 1.1rem 1.1rem;display:grid;gap:.7rem;counter-reset:frase}
 .ai li{position:relative;padding-left:2rem;counter-increment:frase;font-size:.9375rem;line-height:1.5}
 .ai li::before{content:counter(frase);position:absolute;left:0;top:-.15rem;font:400 1.25rem/1.5 var(--display);color:var(--laranja)}
-.legenda{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin:-.2rem 0 .85rem;font:700 .75rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--osso-2)}
-.legenda span{display:inline-flex;align-items:center;gap:.4rem}
-.legenda i{width:.8rem;height:.8rem;border-radius:.2rem;border:1.5px solid rgba(239,234,227,.55);display:inline-block;background:var(--carvao-2)}
-.legenda .l-gatilho{background:#F4E7C9;border-color:#B7811A}
-.legenda .l-pessoa{background:#DCE9E0;border-color:#2F6B4F}
-.legenda .l-decizie{border-style:dashed}
-.bp{display:grid;gap:.6rem}
-.bp>li{position:relative;padding-left:1.9rem}
-.bp>li::before{content:"";position:absolute;left:.6rem;top:.5rem;bottom:-.95rem;border-left:2px dotted var(--laranja)}
-.bp>li:last-child::before{display:none}
-.bp>li::after{content:"";position:absolute;left:.2rem;top:.65rem;width:.85rem;height:.85rem;border-radius:50%;background:var(--laranja)}
-.no{border:1.5px solid rgba(239,234,227,.35);border-radius:.75rem;padding:.7rem .85rem;background:var(--carvao-2);font-size:.9375rem;line-height:1.35}
-.no b{display:block;font-weight:600}
-.no small{display:block;color:var(--osso-2);font-size:.8125rem;line-height:1.4;margin-top:.15rem}
-.no.gatilho{background:#F4E7C9;color:#141210;border-color:#B7811A}
-.no.gatilho small{color:#5B4520}
-.no.pessoa{background:#DCE9E0;color:#141210;border-color:#2F6B4F}
-.no.pessoa small{color:#2C4A3A}
-.no.decizie{border-style:dashed}
-.ramuri{display:grid;gap:.45rem;margin-top:.6rem}
-.ramuri .no{padding:.55rem .65rem;font-size:.875rem}
+/* botão «Ver o esquema»: uma miniatura da tela do esquema */
+.ver-esquema{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.9rem;min-height:4.75rem;
+  padding:.7rem 1rem .7rem .7rem;border-radius:.9rem;background:#FAF8F4;color:#1D2330;text-decoration:none;
+  box-shadow:0 0 0 1px rgba(239,234,227,.25);transition:transform .2s var(--sair),box-shadow .2s}
+.ver-esquema:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(239,234,227,.5),0 .9rem 1.8rem -1rem rgba(0,0,0,.85)}
+.ver-esquema .mini{position:relative;width:4rem;height:3.4rem;border-radius:.5rem;border:1px solid #E2DCD2;display:grid;
+  justify-items:center;align-content:center;gap:.3rem;background:#FAF8F4 radial-gradient(rgba(20,18,16,.18) 1px,transparent 1.2px) 0 0/8px 8px}
+.ver-esquema .mini::before{content:"";position:absolute;left:50%;top:.55rem;bottom:.55rem;border-left:1px solid #B5AEA2}
+.ver-esquema .mini i{position:relative;display:block;width:2.3rem;height:.55rem;border-radius:.18rem;background:#fff;border:1px solid #CFC8BC}
+.ver-esquema .mini i:first-child{background:#FBF0D9;border-color:#D2A94E}
+.ver-esquema .mini i:last-child{background:#E6F2EC;border-color:#3E8B6C}
+.ver-esquema .txt b{display:block;font:400 1.0625rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.ver-esquema .txt small{display:block;margin-top:.3rem;font-size:.8125rem;line-height:1.35;color:#5F5A52}
+.ver-esquema svg{width:1.3rem;height:1.3rem;fill:none;stroke:#A64923;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ═══ esquema de cada automação: cartão no meio do ecrã, desenhado como a proposta Be Legend ═══ */
+dialog.esquema{--e-fundo:#FAF8F4;--e-ponto:rgba(20,18,16,.14);--e-linha:#B5AEA2;--e-borda:#CFC8BC;--e-tinta:#1D2330;
+  --e-tinta-2:#5F5A52;--e-ambar:#FBF0D9;--e-ambar-b:#D2A94E;--e-verde:#E6F2EC;--e-verde-b:#3E8B6C;--e-bege:#EFEBE3;
+  --e-marinho:#1B2334;
+  width:min(46rem,calc(100% - 1.5rem));max-width:none;max-height:calc(100dvh - 1.5rem);margin:auto;padding:0;border:0;
+  border-radius:1.1rem;background:#fff;color:var(--e-tinta);overflow:auto;overscroll-behavior:contain;
+  box-shadow:0 2rem 5rem rgba(0,0,0,.55)}
+dialog.esquema[open]{animation:esq-surge .3s var(--sair)}
+dialog.esquema::backdrop{background:rgba(12,11,10,.74);backdrop-filter:blur(3px)}
+@keyframes esq-surge{from{opacity:0;transform:translateY(.8rem) scale(.985)}}
+html:has(dialog.esquema[open]){overflow:hidden}
+/* sem JavaScript: o endereço #esquema-… mostra o cartão na mesma */
+html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-index:80;box-shadow:0 0 0 100vmax rgba(12,11,10,.74)}
+.folha{padding:1.25rem 1.1rem 1rem}
+.folha-cab{position:relative;padding-right:3.25rem}
+.folha-cab .eyebrow{color:var(--laranja-tinta);letter-spacing:.2em;line-height:1.45}
+.folha-cab h2{margin-top:.6rem;font:400 clamp(1.45rem,5.6vw,2.2rem)/1.02 var(--display);text-transform:uppercase;letter-spacing:.005em;color:var(--e-tinta);text-wrap:balance}
+.folha-cab>p:last-of-type{margin-top:.6rem;max-width:54ch;font-size:.9375rem;line-height:1.5;color:var(--e-tinta-2)}
+.fechar{position:absolute;right:0;top:-.2rem;width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--e-borda);background:#fff;color:var(--e-tinta);text-decoration:none}
+.fechar:hover{background:var(--e-fundo)}
+.fechar svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.tela{container-type:inline-size;margin-top:1.1rem;padding:1.4rem .8rem;border:1px solid #E7E2D9;border-radius:.9rem;
+  background-color:var(--e-fundo);background-image:radial-gradient(var(--e-ponto) 1px,transparent 1.25px);background-size:16px 16px}
+.fluxo{display:grid;justify-items:center}
+.fluxo>li{position:relative;width:100%;display:grid;justify-items:center;padding-top:1.85rem}
+.fluxo>li:first-child{padding-top:0}
+/* seta entre passos */
+.fluxo>li+li::before{content:"";position:absolute;top:.2rem;left:50%;height:1.3rem;border-left:1.5px solid var(--e-linha)}
+.fluxo>li+li::after{content:"";position:absolute;top:1.35rem;left:calc(50% - 4.25px);border-style:solid;border-width:6px 5px 0;
+  border-color:var(--e-linha) transparent transparent}
+.n{position:relative;width:min(100%,22rem);display:grid;grid-template-columns:auto 1fr;align-items:center;gap:.65rem;
+  padding:.6rem .8rem .6rem .6rem;background:#fff;border:1px solid var(--e-borda);border-radius:.55rem;
+  box-shadow:0 1px 0 rgba(20,18,16,.05)}
+/* portas do motor de fluxo, como no desenho da proposta */
+.n::before,.n::after{content:"";position:absolute;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;
+  background:#fff;border:1.5px solid var(--e-linha)}
+.n::before{left:-4.5px} .n::after{right:-4.5px}
+.n .ic{width:1.8rem;height:1.8rem;display:grid;place-items:center;border-radius:.4rem;background:#F1EEE8}
+.n .ic svg{width:1rem;height:1rem;fill:none;stroke:var(--e-tinta);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.n b{display:block;font-weight:600;font-size:.875rem;line-height:1.25}
+.n small{display:block;margin-top:.15rem;font-size:.75rem;line-height:1.35;color:var(--e-tinta-2)}
+.n .so{display:block;font-size:.8125rem;line-height:1.35}
+.n.gatilho{background:var(--e-ambar);border-color:var(--e-ambar-b)} .n.gatilho .ic{background:#F3DFAE}
+.n.gatilho .ic svg{stroke:#7A5712}
+.n.pessoa{background:var(--e-verde);border-color:var(--e-verde-b)} .n.pessoa .ic{background:#CDE5D8}
+.n.pessoa .ic svg{stroke:#2C6A51}
+.n.espera{width:min(100%,16rem);background:var(--e-bege);border-color:#DCD4C7;box-shadow:none}
+.n.espera .ic{background:transparent} .n.espera b{color:var(--e-tinta-2)}
+.n.decisao{border:1.5px dashed var(--e-tinta)} .n.decisao .ic{background:transparent}
+/* ramos da decisão: em árvore no telemóvel… */
+.ramos{position:relative;width:min(100%,22rem);margin-top:.9rem;padding-left:1.3rem;display:grid;gap:.75rem}
+.ramos>li{position:relative;display:grid;grid-template-rows:auto 1fr;justify-items:start;gap:.45rem}
+/* a linha da árvore faz-se aos bocados, um por ramo, e acaba no último */
+.ramos>li::before{content:"";position:absolute;left:-.85rem;top:.95rem;width:.85rem;border-top:1.5px solid var(--e-linha)}
+.ramos>li::after{content:"";position:absolute;left:-.85rem;top:-.75rem;height:1.7rem;border-left:1.5px solid var(--e-linha)}
+.ramos>li:first-child::after{top:-.9rem;height:1.85rem}
+.ramos .n{width:100%;height:100%}
+.ramos .pilula{align-self:start}
+.pilula{display:inline-block;padding:.5rem .85rem;border-radius:999px;background:var(--e-marinho);color:#fff;
+  font:600 .75rem/1.1 var(--texto);letter-spacing:.01em}
+/* …e em linha quando há largura, com a barra de ligação por cima (como as situações da proposta) */
+@container (min-width:34rem){
+  .ramos{width:100%;margin-top:0;padding:1.45rem 0 0;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:.8rem}
+  .ramos::before{content:"";position:absolute;left:calc(100% / var(--n) / 2);right:calc(100% / var(--n) / 2);top:.7rem;
+    border-top:1.5px solid var(--e-linha)}
+  .ramos::after{content:"";position:absolute;left:50%;top:0;height:.7rem;border-left:1.5px solid var(--e-linha)}
+  .ramos>li{justify-items:center}
+  .ramos>li::before{left:50%;top:-.75rem;width:0;height:.75rem;border-top:0;border-left:1.5px solid var(--e-linha)}
+  .ramos>li::after{content:none}
+}
+.folha-pe{margin-top:.9rem;display:grid;gap:.7rem}
+.legenda-e{display:flex;flex-wrap:wrap;gap:.45rem 1rem;font-size:.75rem;color:var(--e-tinta-2)}
+.legenda-e li{display:inline-flex;align-items:center;gap:.4rem}
+.legenda-e .l{width:.8rem;height:.8rem;border-radius:.2rem;border:1px solid var(--e-borda);background:#fff}
+.legenda-e .l.gatilho{background:var(--e-ambar);border-color:var(--e-ambar-b)}
+.legenda-e .l.pessoa{background:var(--e-verde);border-color:var(--e-verde-b)}
+.legenda-e .l.decisao{border:1.5px dashed var(--e-tinta)}
+.legenda-e .l.espera{background:var(--e-bege);border-color:#DCD4C7}
+.folha-pe>p{padding-top:.7rem;border-top:1px solid #E7E2D9;font:400 .75rem/1.4 var(--mono);color:var(--e-tinta-2)}
 .reguli{display:grid;gap:.45rem}
 .reguli li{position:relative;padding-left:1.3rem;font-size:.9375rem}
 .reguli li::before{content:"";position:absolute;left:0;top:.5rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--laranja)}
@@ -296,7 +364,6 @@ body.rgpd-aberto .barra{display:none}
 .js .rv.vis{opacity:1;transform:none}
 
 @media (min-width:40rem){
-  .ramuri{grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))}
   .grelha{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
   .grelha > li,.grelha > li.dest{grid-column:auto}
   .q,.dest .q{padding:1.1rem}
@@ -330,7 +397,8 @@ body.rgpd-aberto .barra{display:none}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1!important;transform:none!important;transition:none!important}
-  .barra,.botao,.q,.vezi svg{transition:none}
+  .barra,.botao,.q,.vezi svg,.ver-esquema{transition:none}
+  dialog.esquema[open]{animation:none}
 }
 </style>
 </head>
@@ -372,13 +440,7 @@ body.rgpd-aberto .barra{display:none}
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
-<li><div class="no gatilho"><b>Chamada perdida ou mensagem no WhatsApp</b><small>a qualquer hora, incluindo fora do horário</small></div></li>
-<li><div class="no auto"><b>Responde em 5 segundos, com o texto aprovado por ti</b><small>«Olá! Sou o assistente automático do restaurante X. Em que posso ajudar?»</small></div></li>
-<li><div class="no decizie"><b>Percebe o que o cliente quer</b><small>horário · morada · ementa · reserva · outra coisa</small><div class="ramuri"><div class="no ramo"><b>Rotina</b><small>responde da lista de respostas aprovadas</small></div><div class="no ramo"><b>Reserva</b><small>pergunta pessoas e hora, escreve na agenda, confirma</small></div><div class="no pessoa"><b>Outra coisa</b><small>manda-te a conversa inteira; respondes num toque</small></div></div></div></li>
-<li><div class="no auto"><b>Põe o cliente na tua lista</b><small>nome, telefone, o que pediu, data</small></div></li>
-<li><div class="no pessoa"><b>O painel de segunda de manhã</b><small>chamadas atendidas · reservas feitas · o que não soube (para juntar à lista)</small></div></li>
-    </ol></div>
+    <a class="ver-esquema" href="#esquema-receptionist" data-esquema="esquema-receptionist"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Nenhum cliente sem resposta, dia e noite. Tu só entras quando é preciso uma pessoa.</div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Não inventa preços: só diz o que está na lista aprovada.</li>
@@ -401,14 +463,7 @@ body.rgpd-aberto .barra{display:none}
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
-<li><div class="no gatilho"><b>O cliente pede uma marcação</b><small>no WhatsApp, no site ou ao telefone (anotas tu)</small></div></li>
-<li><div class="no auto"><b>Propõe horas livres da tua agenda</b><small>três opções, para escolher num toque</small></div></li>
-<li><div class="no auto"><b>Escreve a marcação e envia a confirmação</b><small>com a morada e, se for o caso, o que trazer</small></div></li>
-<li><div class="no auto"><b>Um dia antes: mensagem com dois botões</b><small>«Confirmo» ou «Mudar»</small></div></li>
-<li><div class="no decizie"><b>Respondeu?</b><div class="ramuri"><div class="no ramo"><b>Confirmo</b><small>fica; último lembrete 2 horas antes</small></div><div class="no ramo"><b>Mudar ou cancelar</b><small>o lugar liberta-se e é oferecido à lista de espera</small></div><div class="no pessoa"><b>Nada</b><small>vês a lista de quem não confirmou; uma chamada curta, se quiseres</small></div></div></div></li>
-<li><div class="no pessoa"><b>O painel semanal</b><small>marcações · confirmadas · mudadas · faltas</small></div></li>
-    </ol></div>
+    <a class="ver-esquema" href="#esquema-programari" data-esquema="esquema-programari"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>A agenda enche-se sozinha e os lugares libertados não ficam vazios.</div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Não muda nem cancela nada sem o cliente carregar no botão.</li>
@@ -431,13 +486,7 @@ body.rgpd-aberto .barra{display:none}
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
-<li><div class="no gatilho"><b>O cliente esteve contigo</b><small>pela agenda, pela reserva ou por um toque teu na caixa</small></div></li>
-<li><div class="no auto"><b>Duas horas depois: um agradecimento curto</b><small>uma só mensagem, em teu nome</small></div></li>
-<li><div class="no decizie"><b>«Como foi?»</b><div class="ramuri"><div class="no ramo"><b>Bem</b><small>um toque e chega ao botão de avaliação Google</small></div><div class="no pessoa"><b>Nem por isso</b><small>escreve-te a ti, em privado; respondes antes de aparecer algo público</small></div><div class="no ramo"><b>Sem resposta</b><small>nada. Não insiste.</small></div></div></div></li>
-<li><div class="no auto"><b>Avaliação nova no Google? Propõe-te uma resposta</b><small>tu carregas em «enviar» ou mudas uma palavra</small></div></li>
-<li><div class="no pessoa"><b>O painel mensal</b><small>avaliações novas · nota · o que as pessoas mais dizem</small></div></li>
-    </ol></div>
+    <a class="ver-esquema" href="#esquema-recenzii" data-esquema="esquema-recenzii"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Avaliações constantes, problemas resolvidos em privado e um perfil Google a subir.</div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Uma só mensagem depois da visita. Sem insistências.</li>
@@ -460,13 +509,7 @@ body.rgpd-aberto .barra{display:none}
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
-<li><div class="no gatilho"><b>Um pedido novo</b><small>formulário no site, mensagem no Instagram ou Facebook, chamada perdida</small></div></li>
-<li><div class="no auto"><b>Em menos de um minuto: resposta no WhatsApp</b><small>com o texto aprovado por ti e a pergunta seguinte (o quê, quando, quantas pessoas)</small></div></li>
-<li><div class="no decizie"><b>Respondeu?</b><div class="ramuri"><div class="no pessoa"><b>Sim</b><small>a conversa chega a ti, com tudo o que já disse</small></div><div class="no ramo"><b>Não, ao fim de um dia</b><small>segunda mensagem, curta</small></div><div class="no ramo"><b>Não, ao fim de três dias</b><small>terceira e última</small></div></div></div></li>
-<li><div class="no auto"><b>Cada pedido numa lista</b><small>de onde veio · o que queria · o que se respondeu · estado</small></div></li>
-<li><div class="no pessoa"><b>O painel semanal</b><small>pedidos · respondidos · passaram a clientes · perdidos</small></div></li>
-    </ol></div>
+    <a class="ver-esquema" href="#esquema-lead" data-esquema="esquema-lead"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Nenhum pedido esquecido. Quem responde primeiro ganha o cliente.</div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Três mensagens, no máximo. Depois cala-se.</li>
@@ -489,14 +532,7 @@ body.rgpd-aberto .barra{display:none}
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
-<li><div class="no gatilho"><b>Fotografas o talão ou a fatura</b><small>e envias pelo WhatsApp, na hora</small></div></li>
-<li><div class="no auto"><b>Lê o fornecedor, a data, o valor e o IVA</b><small>e põe tudo numa tabela</small></div></li>
-<li><div class="no decizie"><b>Leu tudo?</b><div class="ramuri"><div class="no ramo"><b>Sim</b><small>confirmação na hora, com o que anotou</small></div><div class="no pessoa"><b>Falta algo</b><small>pergunta-te: «o valor é 148 ou 143?»</small></div></div></div></li>
-<li><div class="no auto"><b>Arquivo ordenado por dias</b><small>a foto e os dados, numa pasta tua</small></div></li>
-<li><div class="no auto"><b>No último dia do mês: o pacote para o contabilista</b><small>a tabela e o arquivo, por email</small></div></li>
-<li><div class="no pessoa"><b>O contabilista confirma</b><small>ou pergunta diretamente, no mesmo sítio</small></div></li>
-    </ol></div>
+    <a class="ver-esquema" href="#esquema-documente" data-esquema="esquema-documente"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Zero papéis perdidos. O contabilista tem tudo sem te ligar.</div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Não deita nada fora: cada foto fica.</li>
@@ -518,14 +554,7 @@ body.rgpd-aberto .barra{display:none}
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
-<li><div class="no gatilho"><b>60 dias sem visita</b><small>da tua lista de clientes (as outras automações enchem-na, ou trazes tu)</small></div></li>
-<li><div class="no decizie"><b>Deu consentimento para mensagens?</b><div class="ramuri"><div class="no ramo"><b>Sim</b><small>segue</small></div><div class="no ramo"><b>Não</b><small>não recebe nada; perguntamos na próxima visita</small></div></div></div></li>
-<li><div class="no auto"><b>Uma mensagem pessoal, em teu nome</b><small>não uma publicidade: «Há algum tempo que não te vemos…»</small></div></li>
-<li><div class="no auto"><b>No aniversário: uma atenção</b><small>uma sobremesa, um desconto ou um simples «parabéns»</small></div></li>
-<li><div class="no decizie"><b>Voltou?</b><div class="ramuri"><div class="no ramo"><b>Sim</b><small>marcado; o ciclo recomeça</small></div><div class="no ramo"><b>Não</b><small>pausa de três meses; depois, no máximo, mais uma tentativa</small></div><div class="no ramo"><b>«STOP»</b><small>sai da lista de imediato</small></div></div></div></li>
-<li><div class="no pessoa"><b>O painel mensal</b><small>mensagens enviadas · regressos · saídas</small></div></li>
-    </ol></div>
+    <a class="ver-esquema" href="#esquema-revenire" data-esquema="esquema-revenire"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Os clientes antigos voltam sem pagares anúncios para os trazer de volta.</div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Só com consentimento. Sem ele, não envia.</li>
@@ -548,14 +577,7 @@ body.rgpd-aberto .barra{display:none}
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
-<li><div class="no gatilho"><b>Todas as noites, às 3:00</b><small>arranca sozinha</small></div></li>
-<li><div class="no auto"><b>Junta os números dos teus sistemas</b><small>caixa ou programa de vendas · reservas · avaliações · mensagens sem resposta</small></div></li>
-<li><div class="no decizie"><b>Todas as fontes responderam?</b><div class="ramuri"><div class="no ramo"><b>Sim</b><small>o relatório escreve-se</small></div><div class="no pessoa"><b>Falta uma</b><small>o relatório sai na mesma, com «a caixa não respondeu hoje»; nós verificamos</small></div></div></div></li>
-<li><div class="no auto"><b>Às 8:00: dez linhas no WhatsApp</b><small>faturação de ontem · reservas de hoje · avaliações novas · pedidos sem resposta</small></div></li>
-<li><div class="no pessoa"><b>Perguntas quando quiseres</b><small>«como foi quinta?», «quantas reservas temos sábado?»</small></div></li>
-<li><div class="no auto"><b>Todos os meses: a tabela das tendências</b><small>os dias bons, os produtos que vendem, o que caiu</small></div></li>
-    </ol></div>
+    <a class="ver-esquema" href="#esquema-raport" data-esquema="esquema-raport"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>O negócio no teu bolso, todas as manhãs, sem abrires nada.</div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Lê, não escreve: não muda nada na caixa nem na agenda.</li>
@@ -577,14 +599,7 @@ body.rgpd-aberto .barra{display:none}
     <span class="vezi" aria-hidden="true"><span class="abre">Ver como funciona</span><span class="fecha">Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">Como é montada</h4><div class="legenda"><span><i class="l-gatilho"></i>gatilho</span><span><i class="l-auto"></i>automático</span><span><i class="l-pessoa"></i>pessoa</span><span><i class="l-decizie"></i>decisão</span></div><ol class="bp">
-<li><div class="no gatilho"><b>Envias uma foto pelo WhatsApp</b><small>com duas palavras: «o bolo novo de amanhã»</small></div></li>
-<li><div class="no auto"><b>Escreve três versões de texto</b><small>no tom do teu negócio, sem palavras que não usarias</small></div></li>
-<li><div class="no pessoa"><b>Escolhes uma num toque</b><small>ou mudas uma palavra e devolves</small></div></li>
-<li><div class="no auto"><b>Agenda a publicação</b><small>Instagram, Facebook e perfil Google, à hora a que os teus clientes estão online</small></div></li>
-<li><div class="no decizie"><b>Alguém comentou ou escreveu?</b><div class="ramuri"><div class="no ramo"><b>Pergunta simples</b><small>resposta da lista aprovada</small></div><div class="no pessoa"><b>Outra coisa</b><small>para ti, com o contexto todo</small></div></div></div></li>
-<li><div class="no pessoa"><b>Todas as semanas: o que correu bem</b><small>publicações · visualizações · mensagens recebidas</small></div></li>
-    </ol></div>
+    <a class="ver-esquema" href="#esquema-social" data-esquema="esquema-social"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Uma página viva, com dois minutos por dia.</div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Não publica nada sem o teu toque.</li>
@@ -600,6 +615,187 @@ body.rgpd-aberto .barra{display:none}
   </div>
 </details>
       </div>
+    </div>
+    <div class="esquemas">
+<dialog class="esquema" id="esquema-receptionist" aria-labelledby="esquema-receptionist-t">
+  <div class="folha">
+    <header class="folha-cab">
+      <p class="eyebrow">Esquema · Rececionista IA</p>
+      <h2 id="esquema-receptionist-t">Como corre, passo a passo.</h2>
+      <p>O fluxo desenhado tal como fica montado. Cada caixa é um passo; as caixas verdes são os momentos em que entra uma pessoa.</p>
+      <a class="fechar" href="#a-receptionist" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+    </header>
+    <div class="tela"><ol class="fluxo">
+<li><div class="n gatilho"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="tx"><b>Chamada perdida ou mensagem no WhatsApp</b><small>a qualquer hora, incluindo fora do horário</small></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><b>Responde em 5 segundos, com o texto aprovado por ti</b><small>«Olá! Sou o assistente automático do restaurante X. Em que posso ajudar?»</small></span></div></li>
+<li><div class="n decisao"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span class="tx"><b>Percebe o que o cliente quer</b><small>horário · morada · ementa · reserva · outra coisa</small></span></div><ul class="ramos" style="--n:3"><li><span class="pilula">Rotina</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span><span class="tx"><span class="so">responde da lista de respostas aprovadas</span></span></div></li><li><span class="pilula">Reserva</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="tx"><span class="so">pergunta pessoas e hora, escreve na agenda, confirma</span></span></div></li><li><span class="pilula">Outra coisa</span><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="tx"><span class="so">manda-te a conversa inteira; respondes num toque</span></span></div></li></ul></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="tx"><b>Põe o cliente na tua lista</b><small>nome, telefone, o que pediu, data</small></span></div></li>
+<li><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6M3 20h18"/></svg></span><span class="tx"><b>O painel de segunda de manhã</b><small>chamadas atendidas · reservas feitas · o que não soube (para juntar à lista)</small></span></div></li>
+    </ol></div>
+    <footer class="folha-pe">
+      <ul class="legenda-e"><li><i class="l gatilho"></i>gatilho</li><li><i class="l auto"></i>automático</li><li><i class="l pessoa"></i>pessoa</li><li><i class="l decisao"></i>decisão</li><li><i class="l espera"></i>espera</li></ul>
+      <p>Pacheco Studios · Rececionista com IA no WhatsApp</p>
+    </footer>
+  </div>
+</dialog>
+<dialog class="esquema" id="esquema-programari" aria-labelledby="esquema-programari-t">
+  <div class="folha">
+    <header class="folha-cab">
+      <p class="eyebrow">Esquema · Marcações</p>
+      <h2 id="esquema-programari-t">Como corre, passo a passo.</h2>
+      <p>O fluxo desenhado tal como fica montado. Cada caixa é um passo; as caixas verdes são os momentos em que entra uma pessoa.</p>
+      <a class="fechar" href="#a-programari" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+    </header>
+    <div class="tela"><ol class="fluxo">
+<li><div class="n gatilho"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="tx"><b>O cliente pede uma marcação</b><small>no WhatsApp, no site ou ao telefone (anotas tu)</small></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="tx"><b>Propõe horas livres da tua agenda</b><small>três opções, para escolher num toque</small></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg></span><span class="tx"><b>Escreve a marcação e envia a confirmação</b><small>com a morada e, se for o caso, o que trazer</small></span></div></li>
+<li><div class="n espera"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12M6 22h12"/><path d="M7 2c0 5 5 6 5 10s-5 5-5 10M17 2c0 5-5 6-5 10s5 5 5 10"/></svg></span><span class="tx"><b>Espera até 1 dia antes</b></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><b>Mensagem com dois botões</b><small>«Confirmo» ou «Mudar»</small></span></div></li>
+<li><div class="n decisao"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span class="tx"><b>Respondeu?</b></span></div><ul class="ramos" style="--n:3"><li><span class="pilula">Confirmo</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><span class="tx"><span class="so">fica; último lembrete 2 horas antes</span></span></div></li><li><span class="pilula">Mudar ou cancelar</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span><span class="tx"><span class="so">o lugar liberta-se e é oferecido à lista de espera</span></span></div></li><li><span class="pilula">Nada</span><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="tx"><span class="so">vês a lista de quem não confirmou; uma chamada curta, se quiseres</span></span></div></li></ul></li>
+<li><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6M3 20h18"/></svg></span><span class="tx"><b>O painel semanal</b><small>marcações · confirmadas · mudadas · faltas</small></span></div></li>
+    </ol></div>
+    <footer class="folha-pe">
+      <ul class="legenda-e"><li><i class="l gatilho"></i>gatilho</li><li><i class="l auto"></i>automático</li><li><i class="l pessoa"></i>pessoa</li><li><i class="l decisao"></i>decisão</li><li><i class="l espera"></i>espera</li></ul>
+      <p>Pacheco Studios · Marcações confirmadas, sem faltas</p>
+    </footer>
+  </div>
+</dialog>
+<dialog class="esquema" id="esquema-recenzii" aria-labelledby="esquema-recenzii-t">
+  <div class="folha">
+    <header class="folha-cab">
+      <p class="eyebrow">Esquema · Avaliações Google</p>
+      <h2 id="esquema-recenzii-t">Como corre, passo a passo.</h2>
+      <p>O fluxo desenhado tal como fica montado. Cada caixa é um passo; as caixas verdes são os momentos em que entra uma pessoa.</p>
+      <a class="fechar" href="#a-recenzii" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+    </header>
+    <div class="tela"><ol class="fluxo">
+<li><div class="n gatilho"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="tx"><b>O cliente esteve contigo</b><small>pela agenda, pela reserva ou por um toque teu na caixa</small></span></div></li>
+<li><div class="n espera"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12M6 22h12"/><path d="M7 2c0 5 5 6 5 10s-5 5-5 10M17 2c0 5-5 6-5 10s5 5 5 10"/></svg></span><span class="tx"><b>Espera 2 horas</b></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><b>Um agradecimento curto</b><small>uma só mensagem, em teu nome</small></span></div></li>
+<li><div class="n decisao"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span class="tx"><b>«Como foi?»</b></span></div><ul class="ramos" style="--n:3"><li><span class="pilula">Bem</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span><span class="tx"><span class="so">um toque e chega ao botão de avaliação Google</span></span></div></li><li><span class="pilula">Nem por isso</span><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="tx"><span class="so">escreve-te a ti, em privado; respondes antes de aparecer algo público</span></span></div></li><li><span class="pilula">Sem resposta</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></span><span class="tx"><span class="so">nada. Não insiste.</span></span></div></li></ul></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span><span class="tx"><b>Avaliação nova no Google? Propõe-te uma resposta</b><small>tu carregas em «enviar» ou mudas uma palavra</small></span></div></li>
+<li><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6M3 20h18"/></svg></span><span class="tx"><b>O painel mensal</b><small>avaliações novas · nota · o que as pessoas mais dizem</small></span></div></li>
+    </ol></div>
+    <footer class="folha-pe">
+      <ul class="legenda-e"><li><i class="l gatilho"></i>gatilho</li><li><i class="l auto"></i>automático</li><li><i class="l pessoa"></i>pessoa</li><li><i class="l decisao"></i>decisão</li><li><i class="l espera"></i>espera</li></ul>
+      <p>Pacheco Studios · Avaliações Google, automáticas</p>
+    </footer>
+  </div>
+</dialog>
+<dialog class="esquema" id="esquema-lead" aria-labelledby="esquema-lead-t">
+  <div class="folha">
+    <header class="folha-cab">
+      <p class="eyebrow">Esquema · Resposta rápida</p>
+      <h2 id="esquema-lead-t">Como corre, passo a passo.</h2>
+      <p>O fluxo desenhado tal como fica montado. Cada caixa é um passo; as caixas verdes são os momentos em que entra uma pessoa.</p>
+      <a class="fechar" href="#a-lead" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+    </header>
+    <div class="tela"><ol class="fluxo">
+<li><div class="n gatilho"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span><span class="tx"><b>Um pedido novo</b><small>formulário no site, mensagem no Instagram ou Facebook, chamada perdida</small></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><b>Em menos de um minuto: resposta no WhatsApp</b><small>com o texto aprovado por ti e a pergunta seguinte (o quê, quando, quantas pessoas)</small></span></div></li>
+<li><div class="n decisao"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span class="tx"><b>Respondeu?</b></span></div><ul class="ramos" style="--n:3"><li><span class="pilula">Sim</span><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="tx"><span class="so">a conversa chega a ti, com tudo o que já disse</span></span></div></li><li><span class="pilula">Não, ao fim de um dia</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><span class="so">segunda mensagem, curta</span></span></div></li><li><span class="pilula">Não, ao fim de três dias</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><span class="so">terceira e última</span></span></div></li></ul></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span><span class="tx"><b>Cada pedido numa lista</b><small>de onde veio · o que queria · o que se respondeu · estado</small></span></div></li>
+<li><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6M3 20h18"/></svg></span><span class="tx"><b>O painel semanal</b><small>pedidos · respondidos · passaram a clientes · perdidos</small></span></div></li>
+    </ol></div>
+    <footer class="folha-pe">
+      <ul class="legenda-e"><li><i class="l gatilho"></i>gatilho</li><li><i class="l auto"></i>automático</li><li><i class="l pessoa"></i>pessoa</li><li><i class="l decisao"></i>decisão</li><li><i class="l espera"></i>espera</li></ul>
+      <p>Pacheco Studios · Resposta em 60 segundos a qualquer pedido</p>
+    </footer>
+  </div>
+</dialog>
+<dialog class="esquema" id="esquema-documente" aria-labelledby="esquema-documente-t">
+  <div class="folha">
+    <header class="folha-cab">
+      <p class="eyebrow">Esquema · Talões e faturas</p>
+      <h2 id="esquema-documente-t">Como corre, passo a passo.</h2>
+      <p>O fluxo desenhado tal como fica montado. Cada caixa é um passo; as caixas verdes são os momentos em que entra uma pessoa.</p>
+      <a class="fechar" href="#a-documente" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+    </header>
+    <div class="tela"><ol class="fluxo">
+<li><div class="n gatilho"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span><span class="tx"><b>Fotografas o talão ou a fatura</b><small>e envias pelo WhatsApp, na hora</small></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></span><span class="tx"><b>Lê o fornecedor, a data, o valor e o IVA</b><small>e põe tudo numa tabela</small></span></div></li>
+<li><div class="n decisao"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span class="tx"><b>Leu tudo?</b></span></div><ul class="ramos" style="--n:2"><li><span class="pilula">Sim</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><span class="tx"><span class="so">confirmação na hora, com o que anotou</span></span></div></li><li><span class="pilula">Falta algo</span><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><span class="so">pergunta-te: «o valor é 148 ou 143?»</span></span></div></li></ul></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span><span class="tx"><b>Arquivo ordenado por dias</b><small>a foto e os dados, numa pasta tua</small></span></div></li>
+<li><div class="n espera"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12M6 22h12"/><path d="M7 2c0 5 5 6 5 10s-5 5-5 10M17 2c0 5-5 6-5 10s5 5 5 10"/></svg></span><span class="tx"><b>Espera pelo último dia do mês</b></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></span><span class="tx"><b>O pacote para o contabilista</b><small>a tabela e o arquivo, por email</small></span></div></li>
+<li><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><span class="tx"><b>O contabilista confirma</b><small>ou pergunta diretamente, no mesmo sítio</small></span></div></li>
+    </ol></div>
+    <footer class="folha-pe">
+      <ul class="legenda-e"><li><i class="l gatilho"></i>gatilho</li><li><i class="l auto"></i>automático</li><li><i class="l pessoa"></i>pessoa</li><li><i class="l decisao"></i>decisão</li><li><i class="l espera"></i>espera</li></ul>
+      <p>Pacheco Studios · Talões e faturas para o contabilista, pelo telemóvel</p>
+    </footer>
+  </div>
+</dialog>
+<dialog class="esquema" id="esquema-revenire" aria-labelledby="esquema-revenire-t">
+  <div class="folha">
+    <header class="folha-cab">
+      <p class="eyebrow">Esquema · Clientes que voltam</p>
+      <h2 id="esquema-revenire-t">Como corre, passo a passo.</h2>
+      <p>O fluxo desenhado tal como fica montado. Cada caixa é um passo; as caixas verdes são os momentos em que entra uma pessoa.</p>
+      <a class="fechar" href="#a-revenire" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+    </header>
+    <div class="tela"><ol class="fluxo">
+<li><div class="n gatilho"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="tx"><b>60 dias sem visita</b><small>da tua lista de clientes (as outras automações enchem-na, ou trazes tu)</small></span></div></li>
+<li><div class="n decisao"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span class="tx"><b>Deu consentimento para mensagens?</b></span></div><ul class="ramos" style="--n:2"><li><span class="pilula">Sim</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><span class="tx"><span class="so">segue</span></span></div></li><li><span class="pilula">Não</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></span><span class="tx"><span class="so">não recebe nada; perguntamos na próxima visita</span></span></div></li></ul></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><b>Uma mensagem pessoal, em teu nome</b><small>não uma publicidade: «Há algum tempo que não te vemos…»</small></span></div></li>
+<li><div class="n espera"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12M6 22h12"/><path d="M7 2c0 5 5 6 5 10s-5 5-5 10M17 2c0 5-5 6-5 10s5 5 5 10"/></svg></span><span class="tx"><b>Espera pelo aniversário</b></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span><span class="tx"><b>Uma atenção</b><small>uma sobremesa, um desconto ou um simples «parabéns»</small></span></div></li>
+<li><div class="n decisao"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span class="tx"><b>Voltou?</b></span></div><ul class="ramos" style="--n:3"><li><span class="pilula">Sim</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><span class="tx"><span class="so">marcado; o ciclo recomeça</span></span></div></li><li><span class="pilula">Não</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></span><span class="tx"><span class="so">pausa de três meses; depois, no máximo, mais uma tentativa</span></span></div></li><li><span class="pilula">«STOP»</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86z"/><path d="m15 9-6 6M9 9l6 6"/></svg></span><span class="tx"><span class="so">sai da lista de imediato</span></span></div></li></ul></li>
+<li><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6M3 20h18"/></svg></span><span class="tx"><b>O painel mensal</b><small>mensagens enviadas · regressos · saídas</small></span></div></li>
+    </ol></div>
+    <footer class="folha-pe">
+      <ul class="legenda-e"><li><i class="l gatilho"></i>gatilho</li><li><i class="l auto"></i>automático</li><li><i class="l pessoa"></i>pessoa</li><li><i class="l decisao"></i>decisão</li><li><i class="l espera"></i>espera</li></ul>
+      <p>Pacheco Studios · Os clientes que não voltaram</p>
+    </footer>
+  </div>
+</dialog>
+<dialog class="esquema" id="esquema-raport" aria-labelledby="esquema-raport-t">
+  <div class="folha">
+    <header class="folha-cab">
+      <p class="eyebrow">Esquema · Relatório da manhã</p>
+      <h2 id="esquema-raport-t">Como corre, passo a passo.</h2>
+      <p>O fluxo desenhado tal como fica montado. Cada caixa é um passo; as caixas verdes são os momentos em que entra uma pessoa.</p>
+      <a class="fechar" href="#a-raport" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+    </header>
+    <div class="tela"><ol class="fluxo">
+<li><div class="n gatilho"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="tx"><b>Todas as noites, às 3:00</b><small>arranca sozinha</small></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><span class="tx"><b>Junta os números dos teus sistemas</b><small>caixa ou programa de vendas · reservas · avaliações · mensagens sem resposta</small></span></div></li>
+<li><div class="n decisao"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span class="tx"><b>Todas as fontes responderam?</b></span></div><ul class="ramos" style="--n:2"><li><span class="pilula">Sim</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><span class="tx"><span class="so">o relatório escreve-se</span></span></div></li><li><span class="pilula">Falta uma</span><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></span><span class="tx"><span class="so">o relatório sai na mesma, com «a caixa não respondeu hoje»; nós verificamos</span></span></div></li></ul></li>
+<li><div class="n espera"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12M6 22h12"/><path d="M7 2c0 5 5 6 5 10s-5 5-5 10M17 2c0 5-5 6-5 10s5 5 5 10"/></svg></span><span class="tx"><b>Espera até às 8:00</b></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><b>Dez linhas no WhatsApp</b><small>faturação de ontem · reservas de hoje · avaliações novas · pedidos sem resposta</small></span></div></li>
+<li><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="tx"><b>Perguntas quando quiseres</b><small>«como foi quinta?», «quantas reservas temos sábado?»</small></span></div></li>
+<li><div class="n espera"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12M6 22h12"/><path d="M7 2c0 5 5 6 5 10s-5 5-5 10M17 2c0 5-5 6-5 10s5 5 5 10"/></svg></span><span class="tx"><b>Uma vez por mês</b></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6M3 20h18"/></svg></span><span class="tx"><b>A tabela das tendências</b><small>os dias bons, os produtos que vendem, o que caiu</small></span></div></li>
+    </ol></div>
+    <footer class="folha-pe">
+      <ul class="legenda-e"><li><i class="l gatilho"></i>gatilho</li><li><i class="l auto"></i>automático</li><li><i class="l pessoa"></i>pessoa</li><li><i class="l decisao"></i>decisão</li><li><i class="l espera"></i>espera</li></ul>
+      <p>Pacheco Studios · O relatório da manhã, no WhatsApp</p>
+    </footer>
+  </div>
+</dialog>
+<dialog class="esquema" id="esquema-social" aria-labelledby="esquema-social-t">
+  <div class="folha">
+    <header class="folha-cab">
+      <p class="eyebrow">Esquema · Publicações</p>
+      <h2 id="esquema-social-t">Como corre, passo a passo.</h2>
+      <p>O fluxo desenhado tal como fica montado. Cada caixa é um passo; as caixas verdes são os momentos em que entra uma pessoa.</p>
+      <a class="fechar" href="#a-social" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+    </header>
+    <div class="tela"><ol class="fluxo">
+<li><div class="n gatilho"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span><span class="tx"><b>Envias uma foto pelo WhatsApp</b><small>com duas palavras: «o bolo novo de amanhã»</small></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="tx"><b>Escreve três versões de texto</b><small>no tom do teu negócio, sem palavras que não usarias</small></span></div></li>
+<li><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><span class="tx"><b>Escolhes uma num toque</b><small>ou mudas uma palavra e devolves</small></span></div></li>
+<li><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="tx"><b>Agenda a publicação</b><small>Instagram, Facebook e perfil Google, à hora a que os teus clientes estão online</small></span></div></li>
+<li><div class="n decisao"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span class="tx"><b>Alguém comentou ou escreveu?</b></span></div><ul class="ramos" style="--n:2"><li><span class="pilula">Pergunta simples</span><div class="n auto"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="tx"><span class="so">resposta da lista aprovada</span></span></div></li><li><span class="pilula">Outra coisa</span><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="tx"><span class="so">para ti, com o contexto todo</span></span></div></li></ul></li>
+<li><div class="n pessoa"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6M3 20h18"/></svg></span><span class="tx"><b>Todas as semanas: o que correu bem</b><small>publicações · visualizações · mensagens recebidas</small></span></div></li>
+    </ol></div>
+    <footer class="folha-pe">
+      <ul class="legenda-e"><li><i class="l gatilho"></i>gatilho</li><li><i class="l auto"></i>automático</li><li><i class="l pessoa"></i>pessoa</li><li><i class="l decisao"></i>decisão</li><li><i class="l espera"></i>espera</li></ul>
+      <p>Pacheco Studios · Publicações a partir das tuas fotos, no Instagram, Facebook e Google</p>
+    </footer>
+  </div>
+</dialog>
     </div>
     <div class="combos">
       <p class="eyebrow">Ligam-se entre si</p>
@@ -714,11 +910,40 @@ body.rgpd-aberto .barra{display:none}
       var sec = alvo.closest('.vista');
       if (sec) v = sec.id;
       if (alvo.tagName === 'DETAILS') alvo.open = true;
+      if (alvo.tagName === 'DIALOG') abrirEsquema(alvo); // endereço partilhado: #esquema-lead abre o esquema
     }
     tabs.forEach(function (a) {
       if (a.dataset.vista === v) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
   }
+  // esquemas: «Ver o esquema» abre o cartão no meio do ecrã (sem JavaScript, o :target mostra-o na mesma)
+  function abrirEsquema(d) {
+    if (!d.showModal || d.open) return;
+    d.showModal();
+    d.scrollTop = 0;
+    try {
+      if (window.goatcounter && window.goatcounter.count)
+        window.goatcounter.count({ path: 'esquema/' + d.id.slice(8), title: 'esquema: ' + d.id.slice(8), event: true });
+    } catch (e) {}
+  }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('[data-esquema]');
+    if (a) {
+      var d = document.getElementById(a.getAttribute('data-esquema'));
+      if (d && d.showModal) { ev.preventDefault(); abrirEsquema(d); }
+      return;
+    }
+    var f = ev.target.closest && ev.target.closest('dialog.esquema [data-fechar]');
+    if (f) { ev.preventDefault(); f.closest('dialog').close(); }
+  });
+  document.querySelectorAll('dialog.esquema').forEach(function (d) {
+    d.addEventListener('click', function (ev) { if (ev.target === d) d.close(); }); // tocar fora do cartão fecha
+    // aberto por um endereço partilhado: ao fechar, fica-se na automação dele, aberta
+    d.addEventListener('close', function () {
+      if (location.hash === '#' + d.id) location.replace('#a-' + d.id.slice(8));
+    });
+  });
+
   window.addEventListener('hashchange', vista);
   vista();
 

@@ -7,6 +7,8 @@
 //     alvos ≥ 44 px, títulos por ordem.
 //  3. Seletor PT · EN · RO, canonical e hreflang; separadores (com e sem JavaScript), automatizações, quadrados,
 //     cópia da Toda Chic com «voltar» em cada língua, 404 em cada língua, privacidade, barra fixa, faixa de cookies.
+//  4. Esquemas: «Ver o esquema» abre cada um dos 8 num cartão no meio do ecrã (Esc, X e tocar fora fecham), o
+//     endereço #esquema-… abre-o direto, e sem JavaScript mostra-o na mesma.
 const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
@@ -81,7 +83,9 @@ const fs = require('fs');
     return ctx;
   }
 
-  const medir = () => {
+  // raiz: só dentro deste elemento (um esquema aberto); sem raiz, a página toda
+  const medir = (raiz) => {
+    const base = raiz ? document.querySelector(raiz) : document.body;
     const lin = c => { c /= 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
     const lum = ([r, g, b]) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
     const rgb = s => (s.match(/[\d.]+/g) || []).map(Number);
@@ -95,7 +99,7 @@ const fs = require('fs');
     const visivel = el => { const b = el.getBoundingClientRect(); const cs = getComputedStyle(el);
       return b.width > 1 && b.height > 1 && cs.visibility !== 'hidden' && !el.closest('[inert],.so-leitor,.saltar'); };
     const textos = [], vistos = new Set();
-    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const w = document.createTreeWalker(base, NodeFilter.SHOW_TEXT);
     while (w.nextNode()) {
       const el = w.currentNode.parentElement, t = w.currentNode.textContent.trim();
       if (!t || vistos.has(el) || !visivel(el) || el.closest('script,style')) continue;
@@ -107,13 +111,14 @@ const fs = require('fs');
     // exceção da WCAG 2.5.8: uma ligação dentro de uma frase (o email a meio de um parágrafo) tem a altura da linha
     const emFrase = e => getComputedStyle(e).display === 'inline' && e.parentElement.tagName === 'P' &&
       e.parentElement.textContent.trim().length > e.textContent.trim().length + 10;
-    const alvos = [...document.querySelectorAll('a,button,summary')].filter(visivel).filter(e => !emFrase(e)).map(e => {
+    const alvos = [...base.querySelectorAll('a,button,summary')].filter(visivel).filter(e => !emFrase(e)).map(e => {
       const b = e.getBoundingClientRect(); return { t: (e.textContent || '').trim().slice(0, 30), h: Math.round(b.height) };
     });
-    const titulos = [...document.querySelectorAll('h1,h2,h3,h4')].filter(visivel).map(h => +h.tagName[1]);
+    const titulos = [...base.querySelectorAll('h1,h2,h3,h4')].filter(visivel).map(h => +h.tagName[1]);
     return { textos, alvos, titulos, largura: document.documentElement.scrollWidth, janela: innerWidth };
   };
-  const avaliar = (r, rotulo) => {
+  // nivel: o título acima da raiz medida (1 para um esquema: o h1 da página)
+  const avaliar = (r, rotulo, nivel = 0) => {
     if (r.largura > r.janela) mal(`${rotulo}: scroll horizontal ${r.largura} > ${r.janela}`);
     for (const t of r.textos) {
       const grande = t.px >= 24 || (t.px >= 18.66 && t.peso >= 700);
@@ -121,7 +126,7 @@ const fs = require('fs');
       if (t.c < (grande ? 3 : 4.5)) mal(`${rotulo}: contraste ${t.c}:1 (${t.px}px) «${t.t}»`);
     }
     for (const a of r.alvos) if (a.h < 44) mal(`${rotulo}: alvo de toque com ${a.h}px «${a.t}»`);
-    let ant = 0; for (const h of r.titulos) { if (h > ant + 1) mal(`${rotulo}: título salta de h${ant} para h${h}`); ant = h; }
+    let ant = nivel; for (const h of r.titulos) { if (h > ant + 1) mal(`${rotulo}: título salta de h${ant} para h${h}`); ant = h; }
   };
 
   // os saltos de um endereço, pelas regras: [[302, '/?origem=cartao'], ..., [200]]
@@ -304,7 +309,100 @@ const fs = require('fs');
   if (antes || !depois || fim) mal(`barra fixa: no topo=${antes}, a meio=${depois}, no contacto=${fim}`); else bem('barra fixa: escondida no topo, visível a meio, escondida no contacto');
   await ctx.close();
 
-  // ——— 4. faixa de cookies (primeira visita) ———
+  // ——— 4. esquemas: «Ver o esquema» abre o cartão no meio do ecrã ———
+  console.log('\nESQUEMAS');
+  for (const [k, v] of Object.entries(LINGUAS)) {
+    const linhas = [];
+    for (const [nome, vp] of [['360', { width: 360, height: 780 }], ['1280', { width: 1280, height: 800 }]]) {
+      const c = await contexto({ viewport: vp, deviceScaleFactor: 2, reducedMotion: 'reduce' });
+      const q = await c.newPage();
+      const erros = [];
+      q.on('pageerror', e => erros.push(e.message));
+      await q.goto(v.url + '#automatizari');
+      const falhasAntes = falhas;
+      const ids = await q.$$eval('details.auto', ds => ds.map(d => d.id.slice(2)));
+      const botoes = await q.$$eval('details.auto .corpo > .ver-esquema:first-child', as => as.length);
+      const dialogos = await q.$$eval('dialog.esquema', ds => ds.length);
+      if (ids.length !== 8 || botoes !== 8 || dialogos !== 8)
+        mal(`${k} ${nome}px: ${ids.length} automatizações, ${botoes} botões «ver o esquema» no início do cartão, ${dialogos} esquemas`);
+      // o GoatCounter real não carrega aqui: regista-se o que lhe seria enviado
+      await q.evaluate(() => { window.__ev = []; if (window.goatcounter) window.goatcounter.count = o => window.__ev.push(o.path); });
+      let caixas = 0, contraste = Infinity, letra = Infinity;
+      for (const id of ids) {
+        const rot = `${k} esquema ${id} ${nome}px`;
+        await q.click(`#a-${id} summary`);
+        await q.click(`#a-${id} .ver-esquema`);
+        const e = await q.evaluate(id => {
+          const d = document.getElementById('esquema-' + id), b = d.getBoundingClientRect();
+          const tela = d.querySelector('.tela').getBoundingClientRect();
+          // as portas (::before e ::after) saem da caixa de propósito: mede-se a caixa na tela e o texto na caixa
+          const fora = [...d.querySelectorAll('.n, .pilula')].filter(n => {
+            const r = n.getBoundingClientRect(), t = (n.querySelector('.tx') || n).getBoundingClientRect();
+            return r.left < tela.left - 1 || r.right > tela.right + 1 || t.left < r.left - 1 || t.right > r.right + 1;
+          }).length;
+          const titulo = document.getElementById(d.getAttribute('aria-labelledby'));
+          return { modal: d.open && d.matches(':modal'), abertos: document.querySelectorAll('dialog[open]').length,
+            dentro: b.left >= 0 && b.top >= 0 && b.right <= innerWidth && b.bottom <= innerHeight,
+            foco: d.contains(document.activeElement), nome: !!(titulo && d.contains(titulo) && titulo.textContent.trim()),
+            caixas: d.querySelectorAll('.n').length, fora, lado: d.scrollWidth > d.clientWidth + 1, hash: location.hash };
+        }, id);
+        if (!e.modal || e.abertos !== 1) mal(`${rot}: não abriu como cartão (modal=${e.modal}, abertos=${e.abertos})`);
+        if (!e.dentro) mal(`${rot}: o cartão sai do ecrã`);
+        if (!e.foco) mal(`${rot}: o foco não entrou no cartão`);
+        if (!e.nome) mal(`${rot}: o cartão não tem nome acessível`);
+        if (e.fora || e.lado) mal(`${rot}: ${e.fora} caixa(s) a sair da tela${e.lado ? ', scroll horizontal no cartão' : ''}`);
+        if (e.hash !== '#automatizari') mal(`${rot}: o botão mudou o endereço para ${e.hash}`);
+        const r = await q.evaluate(medir, `#esquema-${id}`);
+        avaliar(r, rot, 1);
+        caixas += e.caixas;
+        contraste = Math.min(contraste, ...r.textos.map(t => t.c));
+        letra = Math.min(letra, ...r.textos.map(t => t.px));
+        if (capturas && id === 'lead') await q.screenshot({ path: path.join(capturas, `esquema-${k}-${nome}.png`) });
+        await q.keyboard.press('Escape');
+        if (await q.$eval(`#esquema-${id}`, d => d.open)) mal(`${rot}: Esc não fechou o cartão`);
+      }
+      // fechar com o X e tocando fora; pelo teclado, Enter abre e Esc devolve o foco ao botão
+      const id0 = ids[0], d0 = `#esquema-${id0}`;
+      await q.click(`#a-${id0} summary`);
+      await q.click(`#a-${id0} .ver-esquema`);
+      await q.click(`${d0} .fechar`);
+      const x = await q.$eval(d0, d => !d.open && location.hash === '#automatizari');
+      await q.click(`#a-${id0} .ver-esquema`);
+      await q.mouse.click(4, 4);
+      const fora = await q.$eval(d0, d => !d.open);
+      await q.focus(`#a-${id0} .ver-esquema`);
+      await q.keyboard.press('Enter');
+      const teclado = await q.$eval(d0, d => d.open);
+      await q.keyboard.press('Escape');
+      const focoVolta = await q.evaluate(() => !!document.activeElement && document.activeElement.matches('.ver-esquema'));
+      const ev = await q.evaluate(() => window.__ev);
+      if (!x) mal(`${k} ${nome}px: o X não fechou o cartão (ou mudou o endereço)`);
+      if (!fora) mal(`${k} ${nome}px: tocar fora não fechou o cartão`);
+      if (!teclado || !focoVolta) mal(`${k} ${nome}px: teclado: Enter abriu=${teclado}, foco voltou ao botão=${focoVolta}`);
+      if (!ids.every(id => ev.includes('esquema/' + id))) mal(`${k} ${nome}px: eventos do GoatCounter ${JSON.stringify(ev)}`);
+      // endereço partilhado: #esquema-… abre o cartão; ao fechar, fica-se na automação dele, aberta
+      const q2 = await c.newPage();
+      q2.on('pageerror', e => erros.push(e.message));
+      const id2 = ids[3];
+      await q2.goto(`${v.url}#esquema-${id2}`);
+      const dl = await q2.evaluate(id => ({ aberto: document.getElementById('esquema-' + id).open,
+        vista: getComputedStyle(document.getElementById('automatizari')).display !== 'none' }), id2);
+      await q2.keyboard.press('Escape');
+      await q2.waitForTimeout(200);
+      const dl2 = await q2.evaluate(id => ({ hash: location.hash, aberta: document.getElementById('a-' + id).open,
+        fechado: !document.getElementById('esquema-' + id).open,
+        vista: getComputedStyle(document.getElementById('automatizari')).display !== 'none' }), id2);
+      if (!dl.aberto || !dl.vista) mal(`${k} ${nome}px: #esquema-${id2} não abriu o cartão (aberto=${dl.aberto}, vista=${dl.vista})`);
+      if (!dl2.fechado || dl2.hash !== `#a-${id2}` || !dl2.aberta || !dl2.vista)
+        mal(`${k} ${nome}px: depois de fechar #esquema-${id2}: ${JSON.stringify(dl2)}`);
+      if (erros.length) mal(`${k} ${nome}px: erros de JavaScript: ${erros.join(' | ')}`);
+      if (falhas === falhasAntes) linhas.push(`${nome}px: 8 esquemas, ${caixas} caixas, contraste ≥ ${contraste}:1, letra ≥ ${letra}px`);
+      await c.close();
+    }
+    if (linhas.length === 2) bem(`${k}: ${linhas.join(' · ')}; Esc, X e tocar fora fecham; teclado e endereço direto`);
+  }
+
+  // ——— 5. faixa de cookies (primeira visita) ———
   console.log('\nCOOKIES');
   {
     // ro.pachecost.com (quem lê o QR): sem pixel, logo sem faixa
@@ -336,12 +434,30 @@ const fs = require('fs');
     await c.close();
   }
 
-  // ——— 5. sem JavaScript: os separadores continuam a trocar a vista (:target) ———
-  const ctx2 = await contexto({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
+  // ——— 6. sem JavaScript: os separadores e os esquemas continuam a funcionar (:target) ———
+  // movimento reduzido: sem o scroll suave, o Playwright não toca a meio do deslizar
+  const ctx2 = await contexto({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false, reducedMotion: 'reduce' });
   const p2 = await ctx2.newPage();
   await p2.goto(LINGUAS.pt.url + '#servicii');
   const semJs = await p2.evaluate(() => [getComputedStyle(document.getElementById('servicii')).display, getComputedStyle(document.getElementById('proiecte')).display, document.getElementById('rgpd').hidden]);
   if (semJs[0] === 'none' || semJs[1] !== 'none' || !semJs[2]) mal('sem JavaScript: vistas ou faixa de cookies erradas'); else bem('sem JavaScript: separadores funcionam (:target) e a faixa de cookies não aparece');
+  // o esquema: abre-se a automação (<details> nativo), «Ver o esquema» mostra o cartão e o X volta à automação
+  await p2.goto(LINGUAS.pt.url + '#automatizari');
+  await p2.click('#a-lead summary');
+  await p2.click('#a-lead .ver-esquema');
+  const nj = await p2.evaluate(() => {
+    const d = document.getElementById('esquema-lead'), cs = getComputedStyle(d), b = d.getBoundingClientRect();
+    return { hash: location.hash, mostra: cs.display !== 'none' && cs.position === 'fixed',
+      dentro: b.left >= 0 && b.top >= 0 && b.right <= innerWidth && b.bottom <= innerHeight,
+      outros: [...document.querySelectorAll('dialog.esquema')].filter(x => x !== d && getComputedStyle(x).display !== 'none').length,
+      vista: getComputedStyle(document.getElementById('automatizari')).display !== 'none' };
+  });
+  await p2.click('#esquema-lead .fechar');
+  const nj2 = await p2.evaluate(() => ({ hash: location.hash, escondido: getComputedStyle(document.getElementById('esquema-lead')).display === 'none',
+    aberta: document.getElementById('a-lead').open }));
+  if (nj.hash !== '#esquema-lead' || !nj.mostra || !nj.dentro || nj.outros || !nj.vista || nj2.hash !== '#a-lead' || !nj2.escondido || !nj2.aberta)
+    mal(`sem JavaScript, esquema: ${JSON.stringify(nj)} → ${JSON.stringify(nj2)}`);
+  else bem('sem JavaScript: «Ver o esquema» mostra o cartão (:target) e o X volta à automação');
   await ctx2.close();
 
   await browser.close();

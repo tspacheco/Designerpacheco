@@ -52,6 +52,36 @@ I = {
     "baixo": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
 }
 
+# ícones das caixas do esquema (traço, 24×24), no estilo dos Feather Icons (MIT)
+ICONES_ESQUEMA = {
+    "telefone": '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+    "mensagem": '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>',
+    "lista": '<path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/>',
+    "agenda": '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+    "agenda-ok": '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/>',
+    "contactos": '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+    "grafico": '<path d="M18 20V10M12 20V4M6 20v-6M3 20h18"/>',
+    "relogio": '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+    "ok": '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/>',
+    "repetir": '<path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>',
+    "pessoa": '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    "estrela": '<path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>',
+    "pausa": '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>',
+    "entrada": '<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+    "camara": '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
+    "documento": '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>',
+    "pasta": '<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>',
+    "email": '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/>',
+    "presente": '<path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>',
+    "stop": '<path d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86z"/><path d="m15 9-6 6M9 9l6 6"/>',
+    "dados": '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>',
+    "alerta": '<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/>',
+    "caneta": '<path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+    "toque": '<path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+    "decisao": '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/>',
+    "espera": '<path d="M6 2h12M6 22h12"/><path d="M7 2c0 5 5 6 5 10s-5 5-5 10M17 2c0 5-5 6-5 10s5 5 5 10"/>',
+}
+
 
 def e(s):
     return html.escape(str(s), quote=True)
@@ -172,25 +202,74 @@ def vista_proiecte(c, portfolio, lang):
 </section>"""
 
 
-def no_html(n):
-    """Um passo do fluxo: declanșator (âmbar), automático (escuro), pessoa (verde) ou decisão (tracejado) com ramos."""
-    cls = n.get("tip", "auto") if n.get("tip") in ("gatilho", "pessoa", "decizie") else "auto"
-    inner = f"<b>{e(n['t'])}</b>" + (f"<small>{e(n['d'])}</small>" if n.get("d") else "")
-    if n.get("ramuri"):
-        inner += '<div class="ramuri">' + "".join(
-            f'<div class="no {"pessoa" if r.get("tip") == "pessoa" else "ramo"}"><b>{e(r["t"])}</b><small>{e(r["d"])}</small></div>'
-            for r in n["ramuri"]) + "</div>"
-    return f'<li><div class="no {cls}">{inner}</div></li>'
+def svg_ic(nome):
+    if nome not in ICONES_ESQUEMA:
+        raise SystemExit(f"conteudo/esquemas.json: ícone «{nome}» não existe em ICONES_ESQUEMA")
+    return f'<svg viewBox="0 0 24 24" aria-hidden="true">{ICONES_ESQUEMA[nome]}</svg>'
 
 
-def vista_automatizari(c, digitos):
+def caixa(tipo, titulo, texto, icone):
+    """Uma caixa do esquema: ícone + título + linha pequena, com as portas do motor de fluxo."""
+    cls = {"gatilho": "gatilho", "pessoa": "pessoa", "decizie": "decisao", "espera": "espera"}.get(tipo, "auto")
+    tx = (f"<b>{e(titulo)}</b>" if titulo else "") + (f"<small>{e(texto)}</small>" if texto and titulo else "")
+    if texto and not titulo:  # ramo: só a frase do que acontece
+        tx = f'<span class="so">{e(texto)}</span>'
+    return f'<div class="n {cls}"><span class="ic">{svg_ic(icone)}</span><span class="tx">{tx}</span></div>'
+
+
+def esquema(x, lab, icones):
+    """O esquema de uma automação, desenhado como o da proposta Be Legend, dentro de um <dialog> (cartão no meio do ecrã)."""
+    passos = []
+    for n, ic in zip(x["fluxo"], icones):
+        if n.get("espera"):
+            passos.append(f'<li>{caixa("espera", n["espera"], "", "espera")}</li>')
+        if n.get("ramuri"):
+            ramos = "".join(
+                f'<li><span class="pilula">{e(r["t"])}</span>{caixa("pessoa" if r.get("tip") == "pessoa" else "auto", "", r["d"], ric)}</li>'
+                for r, ric in zip(n["ramuri"], ic["ramos"]))
+            passos.append(f'<li>{caixa("decizie", n["t"], n.get("d", ""), "decisao")}'
+                          f'<ul class="ramos" style="--n:{len(n["ramuri"])}">{ramos}</ul></li>')
+        else:
+            passos.append(f'<li>{caixa(n["tip"], n["t"], n.get("d", ""), ic)}</li>')
+    leg = lab["legenda"]
+    legenda = "".join(f'<li><i class="l {k}"></i>{e(leg[c])}</li>' for k, c in
+                      (("gatilho", "gatilho"), ("auto", "auto"), ("pessoa", "pessoa"), ("decisao", "decizie"), ("espera", "espera")))
+    ide = f"esquema-{x['id']}"
+    return f"""<dialog class="esquema" id="{ide}" aria-labelledby="{ide}-t">
+  <div class="folha">
+    <header class="folha-cab">
+      <p class="eyebrow">{e(lab["esquema_eyebrow"])} · {e(x["scurt"])}</p>
+      <h2 id="{ide}-t">{e(lab["esquema_titulo"])}</h2>
+      <p>{e(lab["esquema_intro"])}</p>
+      <a class="fechar" href="#a-{e(x["id"])}" data-fechar aria-label="{e(lab["inchide"])}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+    </header>
+    <div class="tela"><ol class="fluxo">
+{chr(10).join(passos)}
+    </ol></div>
+    <footer class="folha-pe">
+      <ul class="legenda-e">{legenda}</ul>
+      <p>Pacheco Studios · {e(x["titlu"])}</p>
+    </footer>
+  </div>
+</dialog>"""
+
+
+def botao_esquema(x, lab):
+    ide = f"esquema-{x['id']}"
+    return (f'<a class="ver-esquema" href="#{ide}" data-esquema="{ide}">'
+            '<span class="mini" aria-hidden="true"><i></i><i></i><i></i></span>'
+            f'<span class="txt"><b>{e(lab["esquema_cta"])}</b><small>{e(lab["esquema_nota"])}</small></span>{I["seta"]}</a>')
+
+
+def vista_automatizari(c, digitos, icones):
     a = c["automatizari"]
     lab = a["labels"]
     por_id = {x["id"]: x for x in a["itens"]}
-    legenda = ('<div class="legenda">' + "".join(f'<span><i class="l-{k}"></i>{e(v)}</span>' for k, v in lab["legenda"].items()) + "</div>")
-    cards = []
+    cards, dialogos = [], []
     for i, x in enumerate(a["itens"]):
-        fluxo = "\n".join(no_html(n) for n in x["fluxo"])
+        if x["id"] not in icones or len(icones[x["id"]]) != len(x["fluxo"]):
+            raise SystemExit(f"conteudo/esquemas.json: «{x['id']}» tem de ter um ícone por passo do fluxo")
+        dialogos.append(esquema(x, lab, icones[x["id"]]))
         reguli = "\n".join(f"<li>{e(r)}</li>" for r in x["reguli"])
         decide = "".join(f'<div><b>{e(lab[k])}</b><span>{e(x["decide"][k])}</span></div>' for k in ("tu", "masina", "noi"))
         chat = "".join(f'<div class="msg {e(m["cine"])}"><small>{e(lab["client"] if m["cine"] == "client" else lab["asistent"] if m["cine"] == "asistent" else lab["tu_msg"])}</small>{e(m["t"])}</div>'
@@ -204,9 +283,7 @@ def vista_automatizari(c, digitos):
     <span class="vezi" aria-hidden="true"><span class="abre">{e(lab["vezi"])}</span><span class="fecha">{e(lab["inchide"])}</span>{I["baixo"]}</span>
   </summary>
   <div class="corpo">
-    <div><h4 class="rotulo">{e(lab["montata"])}</h4>{legenda}<ol class="bp">
-{fluxo}
-    </ol></div>
+    {botao_esquema(x, lab)}
     <div class="obtii"><h4 class="rotulo">{e(lab["obtii"])}</h4>{e(x["obtii"])}</div>
     <div><h4 class="rotulo">{e(lab["reguli"])}</h4><ul class="reguli">
 {reguli}
@@ -242,6 +319,9 @@ def vista_automatizari(c, digitos):
       <div class="autos">
 {chr(10).join(cards)}
       </div>
+    </div>
+    <div class="esquemas">
+{chr(10).join(dialogos)}
     </div>
     <div class="combos">
       <p class="eyebrow">{e(cb["eyebrow"])}</p>
@@ -540,6 +620,8 @@ def main():
     principal, dominio = configurar_linguas(d)
     linguas = {k: json.load(open(os.path.join(AQUI, "conteudo", f"{k}.json"), encoding="utf-8")) for k in LINGUAS}
     medicao = d.get("medicao", {})
+    icones = {k: v for k, v in json.load(open(os.path.join(AQUI, "conteudo", "esquemas.json"), encoding="utf-8")).items()
+              if not k.startswith("_")}
     digitos = re.sub(r"\D", "", d["telefone"])
     digitos = digitos[3:] if digitos.startswith("351") and len(digitos) == 12 else digitos
     if len(digitos) != 9:
@@ -577,7 +659,7 @@ def main():
             "SALTAR": e(cfg["saltar"]), "NAV_LABEL": e(cfg["nav"]), "LINGUAS": seletor(c, lang),
             "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
             "TAB_SERVICII": e(c["topo"]["tabs"]["servicii"]),
-            "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos), "VISTA_SERVICII": vista_servicii(c, portfolio, lang),
+            "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones), "VISTA_SERVICII": vista_servicii(c, portfolio, lang),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang),
             "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "RODAPE": rodape(c, lang),
             "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),

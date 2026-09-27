@@ -19,9 +19,12 @@ No topo de cada página há o seletor **PT · EN · RO**. O RO leva a `ro.pachec
    «Como trabalhamos»: fazemos o site antes de pagares, mostramos no telemóvel, só pagas se gostares.
 2. **Automações** — segue a direção «mostrar a máquina» (PLAYBOOK, secção 16). No topo, «O que é, afinal, a IA
    por trás?»: cinco frases sobre o que a IA faz e não faz. Depois, 8 automações. Cada cartão mostra o título e a
-   dor na voz do dono. Ao tocar, abre a máquina por dentro: o fluxo desenhado (gatilho, automático, pessoa,
-   decisão), o que ganha, as regras, quem decide o quê, uma conversa de exemplo, o que é preciso, com quais combina
-   e o pedido de demonstração no WhatsApp. No fim, três caminhos (restaurante · salão/clínica · loja).
+   dor na voz do dono. Ao tocar, abre a máquina por dentro. Primeiro vem o botão **«Ver o esquema»** (EN «See the
+   diagram», RO «Vezi schema»): abre um cartão no meio do ecrã com o fluxo desenhado como a proposta da Be Legend.
+   Tela pontilhada, uma caixa por passo com o seu ícone, gatilho a âmbar, pessoa a verde, decisão tracejada com os
+   ramos em pílulas, esperas a bege e a legenda no fim. Fecha com o X, com Esc ou tocando fora. Depois do botão: o
+   que ganha, as regras, quem decide o quê, uma conversa de exemplo, o que é preciso, com quais combina e o pedido
+   de demonstração no WhatsApp. No fim, três caminhos (restaurante · salão/clínica · loja).
 3. **O que mais fazemos** — 7 serviços, com «Ver um exemplo» quando há um cliente que o mostra.
 
 Sem preços: combinam-se com cada negócio.
@@ -35,6 +38,10 @@ Sem preços: combinam-se com cada negócio.
   repositório, copiado para `/p/<slug>/`, só para clientes sem site publicado). `demo: true` marca as apresentações:
   nunca entram. A ProBuilders está desligada até o site sair. O Jasmim 2 está em `neutro` (estilo da marca) até
   termos a fonte e as cores do site dele.
+- Esquemas: os passos são o `fluxo` de cada automação nos três JSON (`tip`, `t`, `d`; `espera` junta uma caixa de
+  espera antes do passo; `ramuri` faz a decisão e os ramos). Os ícones estão em `conteudo/esquemas.json`, um por
+  passo e um por ramo, iguais nas três línguas. Os desenhos dos ícones estão em `ICONES_ESQUEMA`, no `gerar.py`. Se
+  faltar um ícone, o gerador para e diz qual.
 - Contactos, domínios e medição: `marca/dados.json` (os mesmos do cartão). `medicao` tem o GoatCounter e o pixel da
   Meta do site anterior; o pixel só existe nas línguas de `pixel_linguas` (PT e EN).
 - Desenho: `index.src.html`. As páginas (`index.html`, `en/`, `ro/`, 404, privacidade) e os ficheiros do Netlify
@@ -61,6 +68,10 @@ Depois de qualquer alteração: `python3 gerar.py`. Gera `dist/`, corre os teste
 
 Para atualizar: `python3 gerar.py` → *Deploys* → arrastar o zip novo. O QR não muda.
 
+**Mandar um esquema a alguém** (no WhatsApp, depois de uma conversa): `pachecost.com/#esquema-programari` abre o
+desenho direto; ao fechar, fica-se na automação dele. Em romeno: `ro.pachecost.com/#esquema-programari`. Os oito:
+`receptionist` · `programari` · `recenzii` · `lead` · `documente` · `revenire` · `raport` · `social`.
+
 ### Como os dois domínios funcionam (o `_redirects`)
 
 1. `/c` e `/C` → `/?origem=cartao` (302). Ficam **sempre em primeiro lugar**: é o QR impresso.
@@ -77,7 +88,8 @@ cabeçalho), para não competirem no Google com os sites dos próprios negócios
 
 - **GoatCounter**, sem cookies e sem pedir autorização, nos dois domínios. O domínio entra no caminho
   (`pachecost.com/`, `ro.pachecost.com/`). As leituras do QR contam à parte, como o evento `qr/cartao`, e os
-  cliques para o WhatsApp e o telefone como `ir/whatsapp` e `ir/telefone`.
+  cliques para o WhatsApp e o telefone como `ir/whatsapp` e `ir/telefone`. Cada esquema aberto conta como
+  `esquema/<id>` (`esquema/programari`, por exemplo): dá para ver quais automações interessam mais.
 - **Pixel da Meta** só em `pachecost.com` (PT e EN), só depois de «Aceitar» na faixa. A escolha fica guardada.
   Em `ro.pachecost.com` não há pixel nem faixa: quem lê o QR entra direto nos projetos.
 - Privacidade em cada língua: `/privacidade.html`, `/privacy.html`, `/confidentialitate.html`.
@@ -94,6 +106,9 @@ O site anterior do pachecost.com (o «Estúdio de IA») está guardado em `sites
   navega PT → RO → EN → PT entre os dois domínios.
 - Em 360, 390 e 1280 px, nas 3 línguas e nas 3 vistas: sem scroll horizontal, letra ≥ 12 px, contraste ≥ 4,5:1,
   alvos de toque ≥ 44 px e títulos por ordem.
+- Os 8 esquemas nas 3 línguas, a 360 e a 1280 px: cada um abre num cartão no meio do ecrã, com o foco lá dentro, e
+  nenhuma caixa sai da tela. Letra, contraste e títulos também dentro do cartão. Esc, o X e tocar fora fecham; pelo
+  teclado, o foco volta ao botão. O endereço `#esquema-…` abre-o direto e, sem JavaScript, mostra-o na mesma.
 - Separadores com e sem JavaScript, as 8 automatizações e as ligações entre elas. Cada quadrado e cada exemplo tem
   de existir. A primeira fila tem de ter os três em destaque. A Toda Chic tem de voltar à página certa.
 - A 404 e a privacidade em cada língua, e a barra fixa do WhatsApp.
