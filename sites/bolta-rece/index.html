@@ -142,7 +142,8 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 html,body{overflow-x:clip}
 body{margin:0;background:var(--var);color:var(--text);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
+figure{margin:0}
 a{color:inherit}
 h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.005em}
 p{margin:0}
@@ -175,6 +176,8 @@ button{font:inherit;color:inherit}
 .btn--lumina{background:var(--lumina);color:var(--noapte)}
 .btn--lumina:hover{background:var(--lumina-2);box-shadow:0 12px 30px rgba(231,184,106,.28);transform:translateY(-1px)}
 .btn svg{width:18px;height:18px;flex:none}
+.acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.conf{display:inline-block;font:600 11px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--caramida);border:1.5px solid currentColor;border-radius:999px;padding:6px 10px;vertical-align:middle;white-space:nowrap}
 .stripe{height:6px;background:repeating-linear-gradient(90deg,var(--rosu) 0 18px,var(--var) 18px 24px,var(--rosu) 24px 30px,var(--var) 30px 44px)}
 
 /* ---- revelação no scroll ---- */
@@ -301,9 +304,49 @@ button{font:inherit;color:inherit}
 .fel:nth-child(2) .fel__leader{transition-delay:.08s}.fel:nth-child(3) .fel__leader{transition-delay:.16s}.fel:nth-child(4) .fel__leader{transition-delay:.24s}.fel:nth-child(5) .fel__leader{transition-delay:.32s}.fel:nth-child(6) .fel__leader{transition-delay:.4s}.fel:nth-child(7) .fel__leader{transition-delay:.48s}
 .fel__nota{font:600 11px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--caramida);white-space:nowrap}
 .condica__nota{margin-top:26px;color:var(--text-2);font-size:15px}
-.condica__foto{position:sticky;top:calc(var(--banner) + var(--nav) + 24px)}
-.condica__foto img{border-radius:999px 999px var(--r) var(--r);aspect-ratio:4/5;object-fit:cover;box-shadow:var(--sombra)}
-.condica__foto figcaption{margin-top:14px;font-family:var(--f-quote);font-style:italic;font-size:17px;color:var(--text-2);text-align:center}
+.condica__lado{display:grid;gap:18px;align-content:start}
+.condica__foto img{border-radius:var(--r);aspect-ratio:4/3;object-fit:cover;box-shadow:var(--sombra)}
+.condica__lado .fel-casa + .fel-casa{margin-top:0}
+
+/* ---- o seară la Bolta Rece (poveste orizontală comandată de scroll) ---- */
+.poveste{position:relative;height:360vh;background:var(--noapte);color:var(--var)}
+.poveste__stage{position:sticky;top:0;height:100vh;overflow:hidden;overflow:clip;background:var(--noapte)}
+.poveste__track{display:flex;height:100%;will-change:transform}
+.poveste__panel{position:relative;flex:none;width:100%;height:100%;overflow:hidden;background:var(--noapte)}
+.poveste__panel + .poveste__panel{margin-left:-16%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 16%);mask-image:linear-gradient(90deg,transparent,#000 16%)}
+.poveste__img{position:absolute;inset:0}
+.poveste__img img{width:100%;height:100%;object-fit:cover;object-position:var(--op,50% 50%);transform:translate3d(var(--px,0%),0,0) scale(1.1);will-change:transform}
+.poveste__panel:nth-child(1) img{--op:40% 50%}
+.poveste__panel:nth-child(2) img{--op:28% 50%}
+.poveste__panel:nth-child(3) img{--op:10% 50%}
+.poveste__panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,13,.42) 0%,rgba(20,16,13,0) 30%,rgba(20,16,13,0) 44%,rgba(20,16,13,.5) 66%,rgba(20,16,13,.92) 100%);pointer-events:none}
+.poveste__cap{position:absolute;z-index:1;left:var(--pad);bottom:clamp(96px,14vh,150px);max-width:min(100% - 2*var(--pad),560px);opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.poveste__cap::before{content:"";position:absolute;z-index:-1;inset:-48px -80px -56px -90px;background:radial-gradient(ellipse at 42% 58%,rgba(20,16,13,.78),rgba(20,16,13,.35) 45%,transparent 72%);pointer-events:none}
+.poveste__panel.on .poveste__cap{opacity:1;transform:none}
+.poveste__cap .eyebrow{color:var(--lumina);gap:14px}
+.poveste__cap .eyebrow b{font:700 15px/1 var(--f-display);letter-spacing:.12em;padding:7px 10px;border:1.5px solid var(--lumina);border-radius:999px}
+.poveste__cap h3{font-size:clamp(38px,5.4vw,78px);margin-top:16px;text-shadow:0 4px 30px rgba(0,0,0,.55)}
+.poveste__cap h3 em{font-style:italic;font-weight:400;color:var(--lumina-2)}
+.poveste__text{margin-top:16px;font-family:var(--f-quote);font-style:italic;font-size:clamp(18px,1.7vw,23px);line-height:1.5;color:var(--var-2);text-shadow:0 2px 18px rgba(0,0,0,.6);max-width:46ch}
+.poveste__act{margin-top:24px}
+.poveste__nav{--p:0;list-style:none;margin:0;padding:18px 0 0;position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:26px;display:flex;justify-content:space-between;gap:16px;font:600 11px/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--text-inv-2);border-top:1px solid rgba(244,238,226,.22)}
+.poveste__nav::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:calc(var(--p) * 100%);background:var(--lumina);transition:width .15s linear}
+.poveste__nav li{display:inline-flex;align-items:center;gap:10px;opacity:.55;transition:opacity .5s,color .5s}
+.poveste__nav li b{font:700 13px/1 var(--f-display);letter-spacing:.1em}
+.poveste__nav li.on{opacity:1;color:var(--lumina-2)}
+@media (max-width:820px){
+  .poveste{height:320vh}
+  .poveste__panel + .poveste__panel{margin-left:-10%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%);mask-image:linear-gradient(90deg,transparent,#000 10%)}
+  .poveste__img{inset:0 0 auto 0;height:56%}
+  .poveste__panel:nth-child(n) img{--op:50% 50%}
+  .poveste__panel::after{inset:0 0 auto 0;height:56%;background:linear-gradient(180deg,rgba(20,16,13,.45),rgba(20,16,13,0) 40%,rgba(20,16,13,0) 70%,var(--noapte) 100%)}
+  .poveste__cap{top:52%;bottom:auto;left:var(--pad);right:var(--pad);max-width:none}
+  .poveste__cap::before{display:none}
+  .poveste__cap h3{font-size:clamp(34px,10vw,44px);text-shadow:none}
+  .poveste__text{font-size:17px;text-shadow:none;color:var(--text-inv-2)}
+  .poveste__nav{bottom:18px}
+  .poveste__nav li{gap:6px}
+}
 
 /* ---- istoric (teaser) ---- */
 .istoric{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,90px);align-items:center}
@@ -321,10 +364,9 @@ button{font:inherit;color:inherit}
 /* ---- cartea de oaspeți (poezii) ---- */
 .oaspeti{position:relative;overflow:hidden}
 .oaspeti::before{content:"";position:absolute;inset:auto -10% -40% -10%;height:80%;background:radial-gradient(ellipse at 50% 100%,rgba(231,184,106,.16),transparent 60%);pointer-events:none}
-.oaspeti__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:center;margin-top:40px}
-@media (max-width:880px){.oaspeti__grid{grid-template-columns:1fr}}
-.oaspeti__placa img{border-radius:var(--r);box-shadow:0 30px 70px rgba(0,0,0,.5)}
-.versuri{display:grid;gap:26px}
+.oaspeti__grid{margin-top:44px}
+.versuri{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+@media (max-width:880px){.versuri{grid-template-columns:1fr;gap:18px}}
 .poezie{padding:26px 28px;border:1px solid rgba(244,238,226,.12);border-radius:var(--r);background:rgba(244,238,226,.03);position:relative}
 .poezie::before{content:"„";position:absolute;left:18px;top:-2px;font:700 64px/1 var(--f-display);color:var(--lumina);opacity:.5}
 .poezie p{font-family:var(--f-quote);font-style:italic;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--var-2);padding-left:14px}
@@ -337,8 +379,9 @@ button{font:inherit;color:inherit}
 .carmangeria{background:var(--caramida);color:#fff;position:relative;overflow:hidden}
 .carmangeria::after{content:"";position:absolute;right:-8%;top:-40%;width:52%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 62%);pointer-events:none}
 .carmangeria .eyebrow{color:var(--lumina-2)}
-.carmangeria__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(30px,5vw,70px);align-items:center}
-@media (max-width:820px){.carmangeria__grid{grid-template-columns:1fr}}
+.carmangeria__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,70px);align-items:end}
+.carmangeria__grid .lead{margin-top:0}
+@media (max-width:820px){.carmangeria__grid{grid-template-columns:1fr;align-items:start}.carmangeria__grid .lead{margin-top:18px}}
 .carmangeria .lead{color:rgba(255,255,255,.86)}
 .carmangeria .btn--ghost{color:#fff}
 .carmangeria .btn--ghost:hover{background:rgba(255,255,255,.12)}
@@ -347,6 +390,11 @@ button{font:inherit;color:inherit}
 /* ---- rezervări / contact ---- */
 .rez{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);margin-top:40px}
 @media (max-width:880px){.rez{grid-template-columns:1fr}}
+.rez>*{min-width:0}
+.dl dd{min-width:0;overflow-wrap:anywhere}
+.dl dd small{display:block;margin-top:5px;font-size:14px;color:var(--text-2)}
+.dl dd .sep{color:var(--var-3);padding:0 6px}
+@media (max-width:520px){.dl div{grid-template-columns:1fr;gap:6px}}
 .program{font:700 clamp(30px,3.6vw,46px)/1.1 var(--f-display)}
 .program small{display:block;font:600 12px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--caramida);margin-bottom:12px}
 .dl{margin:28px 0 0;display:grid;gap:16px}
@@ -439,6 +487,15 @@ button{font:inherit;color:inherit}
   .bolta__caps{position:relative;inset:auto;display:grid;gap:40px;grid-auto-rows:auto;place-items:center}
   .bolta__cap{grid-area:auto;opacity:1;transform:none}
   .bolta__hint{display:none}
+  .poveste{height:auto}
+  .poveste__stage{position:relative;height:auto;overflow:visible}
+  .poveste__track{display:grid;transform:none!important}
+  .poveste__panel{width:auto;height:auto;min-height:78vh;margin:0;-webkit-mask-image:none;mask-image:none}
+  .poveste__panel::after{inset:0;height:auto}
+  .poveste__img{inset:0;height:auto}
+  .poveste__img img{transform:none}
+  .poveste__cap{opacity:1;transform:none;top:auto;bottom:clamp(48px,8vh,96px)}
+  .poveste__nav{display:none}
 }
 
 </style>
@@ -615,16 +672,6 @@ button{font:inherit;color:inherit}
         <p class="eyebrow rv">Meniu tradițional</p>
         <h2 class="h2 rv d1" id="t-meniu">Bucătărie moldovenească, <em>fără grabă</em></h2>
         <p class="lead rv d2">Preparate din bucătăria de altădată a Moldovei, gătite ca acasă și servite ca la Bolta Rece.</p>
-        <div class="fel-casa rv d2">
-          <p class="eyebrow">Specialitatea casei</p>
-          <h3>Platoul lui Eminescu și Veronicăi</h3>
-          <p>Platoul de împărțit la două, pentru o seară lungă sub boltă.</p>
-        </div>
-        <div class="fel-casa rv d3">
-          <p class="eyebrow">Specialitatea bucătarului</p>
-          <h3>Zamă de găină cu tăieței de casă</h3>
-          <p>Tăiețeii se fac în casă, zama se lasă să fiarbă încet.</p>
-        </div>
         <ul class="feluri">
           <li class="fel"><span class="fel__nume">Pastramă de oaie cu mămăligă și caș</span><span class="fel__leader"></span><span class="fel__nota">tradițional</span></li>
           <li class="fel"><span class="fel__nume">Tochitură moldovenească</span><span class="fel__leader"></span><span class="fel__nota">tradițional</span></li>
@@ -637,11 +684,58 @@ button{font:inherit;color:inherit}
         <p class="condica__nota rv">Meniul complet, cu prețuri, îl găsiți la restaurant și pe pagina <a href="meniu.html">Meniu</a>.</p>
         <p class="rv" style="margin-top:22px"><a class="btn btn--primary" href="meniu.html">Vezi meniul</a></p>
       </div>
-      <figure class="condica__foto rv d2">
-        <img src="media/detaliu-farfurie.jpg" alt="Farfurie de lut pe un ștergar cu dungi roșii" loading="lazy" width="1800" height="1200">
-        <figcaption>„Mâncarea-i fudulie, băutura temelie” — deviza junimiștilor de la Bolta Rece</figcaption>
-      </figure>
+      <div class="condica__lado">
+        <figure class="condica__foto rv d2">
+          <img src="media/sala-rustica-3.jpg" alt="Masă pusă în sala rustică: ștergar roșu, farfurii și pahare" loading="lazy" width="1800" height="1200">
+        </figure>
+        <div class="fel-casa rv d3">
+          <p class="eyebrow">Specialitatea casei</p>
+          <h3>Platoul lui Eminescu și Veronicăi</h3>
+          <p>Platoul de împărțit la două, pentru o seară lungă sub boltă.</p>
+        </div>
+        <div class="fel-casa rv d4">
+          <p class="eyebrow">Specialitatea bucătarului</p>
+          <h3>Zamă de găină cu tăieței de casă</h3>
+          <p>Tăiețeii se fac în casă, zama se lasă să fiarbă încet.</p>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="poveste" aria-labelledby="t-poveste">
+  <h2 class="sr-only" id="t-poveste">O seară la Bolta Rece: masa, vinul, versul</h2>
+  <div class="poveste__stage">
+    <div class="poveste__track">
+      <article class="poveste__panel on">
+        <div class="poveste__img"><img src="media/detaliu-farfurie.jpg" alt="Farfurie de lut pe un ștergar cu dungi roșii, sub boltă" loading="lazy" width="1800" height="1200"></div>
+        <div class="poveste__cap">
+          <p class="eyebrow"><span>O seară la Bolta Rece</span><b>I</b></p>
+          <h3>Întâi, <em>masa</em></h3>
+          <p class="poveste__text">Farfuria de lut, ștergarul roșu și bucatele Moldovei, aduse fără grabă la masa de sub boltă.</p>
+        </div>
+      </article>
+      <article class="poveste__panel">
+        <div class="poveste__img"><img src="media/vinuri.jpg" alt="Sticle de vin pe un ștergar roșu, lângă zidul de piatră al pivniței" loading="lazy" width="1800" height="1200"></div>
+        <div class="poveste__cap">
+          <p class="eyebrow"><span>O seară la Bolta Rece</span><b>II</b></p>
+          <h3>Apoi, <em>vinul</em></h3>
+          <p class="poveste__text">„Mâncarea-i fudulie, băutura temelie” — deviza junimiștilor care își încheiau aici agapele, în „Universitas Vinorum”. Vinul urcă din pivnițele de piatră de dedesubt.</p>
+        </div>
+      </article>
+      <article class="poveste__panel">
+        <div class="poveste__img"><img src="media/placa-poezie.jpg" alt="Placă de lemn cu versurile „Drăgălașe păhărele, dinainte-mi să se pună, să se toarne vin în ele, poftă bună”" loading="lazy" width="1800" height="1200"></div>
+        <div class="poveste__cap">
+          <p class="eyebrow"><span>O seară la Bolta Rece</span><b>III</b></p>
+          <h3>La urmă, <em>versul</em></h3>
+          <p class="poveste__text">Pe pereți, versurile lăsate de oaspeți: „Drăgălașe păhărele, dinainte-mi să se pună, să se toarne vin în ele — poftă bună.” Aici s-au cunoscut Eminescu și Creangă.</p>
+          <p class="poveste__act"><a class="btn btn--lumina" href="istoric.html">Citește istoricul</a></p>
+        </div>
+      </article>
+    </div>
+    <ol class="poveste__nav" aria-hidden="true">
+      <li class="on"><b>I</b>Masa</li><li><b>II</b>Vinul</li><li><b>III</b>Versul</li>
+    </ol>
   </div>
 </section>
 
@@ -673,10 +767,8 @@ button{font:inherit;color:inherit}
   <div class="wrap">
     <p class="eyebrow rv">Cartea de oaspeți</p>
     <h2 class="h2 rv d1" id="t-oaspeti">Versuri lăsate <em>la masă</em></h2>
+    <p class="lead rv d2">Junimiștii, și după ei mulți alți oaspeți, au lăsat pe pereți și în cartea casei versuri scrise la masă.</p>
     <div class="oaspeti__grid">
-      <figure class="oaspeti__placa rv d2">
-        <img src="media/placa-poezie.jpg" alt="Placă de lemn cu versurile „Drăgălașe păhărele, dinainte-mi să se pună, să se toarne vin în ele, poftă bună”" loading="lazy" width="1800" height="1200">
-      </figure>
       <div class="versuri">
         <blockquote class="poezie">
           <p><span>Ah! garafa pântecoasă doar de sfeșnic mai e bună!</span><span>Și mucoasa lumânare sfârâind saul și-l arde.</span><span>Și-n această sărăcie, te inspiră, cântă, barde —</span><span>Bani n-am mai văzut de-un secol, vin n-am mai băut de-o lună.</span></p>
@@ -700,13 +792,14 @@ button{font:inherit;color:inherit}
     <div>
       <p class="eyebrow rv">Carmangeria Boierilor</p>
       <h2 class="h2 rv d1" id="t-carmangeria">Aceleași gusturi, <em>și acasă</em></h2>
+    </div>
+    <div>
       <p class="lead rv d2">Dacă vrei să te bucuri de aceleași gusturi și acasă, găsești magazinul fizic al Carmangeriei Boierilor în cartierul Dacia, Iași.</p>
       <div class="carmangeria__acts rv d3">
         <a class="btn btn--lumina" href="https://www.google.com/maps/place/Carmangeria+Boierilor+-+Dacia/@47.1664785,27.5518302,17z" rel="noopener">Magazinul din Dacia</a>
         <a class="btn btn--ghost" href="carmangeria.html">Carmangeria noastră</a>
       </div>
     </div>
-    <figure class="rv d2"><img src="media/vinuri.jpg" alt="Sticle de vin pe un ștergar roșu, în pivniță" loading="lazy" width="1800" height="1200" style="border-radius:var(--r);box-shadow:var(--sombra)"></figure>
   </div>
 </section>
 
@@ -848,6 +941,68 @@ button{font:inherit;color:inherit}
         if (!agendado) { agendado = true; requestAnimationFrame(parallax); }
       }, { passive: true });
     }
+  }
+
+  /* poveste: percurso horizontal comandado pelo scroll vertical (masa → vin → vers) */
+  var pov = document.querySelector(".poveste");
+  if (pov && !reduzido) {
+    var stage = pov.querySelector(".poveste__stage"), track = pov.querySelector(".poveste__track");
+    var paineis = Array.prototype.slice.call(pov.querySelectorAll(".poveste__panel"));
+    var imagens = paineis.map(function (p) { return p.querySelector("img"); });
+    var passos = Array.prototype.slice.call(pov.querySelectorAll(".poveste__nav li"));
+    var navP = pov.querySelector(".poveste__nav");
+    var n = paineis.length, PAUSA = 0.15, DESLIZE = (1 - n * PAUSA) / (n - 1);
+    var alvo = 0, pos = 0, maxX = 0, visivel = false, ultimo = 0, idxAtual = -1;
+    var suave = function (x) { return x * x * (3 - 2 * x); };
+    var curva = function (p) {                       // 0..1 → posição 0..n-1, com paragem em cada capítulo
+      for (var k = 0; k < n - 1; k++) {
+        var ini = PAUSA * (k + 1) + DESLIZE * k, fim = ini + DESLIZE;
+        if (p < ini) return k;
+        if (p < fim) return k + suave((p - ini) / DESLIZE);
+      }
+      return n - 1;
+    };
+    var medir = function () { maxX = track.scrollWidth - stage.clientWidth; };
+    var aoScroll = function () {
+      var r = pov.getBoundingClientRect(), total = r.height - window.innerHeight;
+      alvo = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+    };
+    var aplicar = function () {
+      track.style.transform = "translate3d(" + (-pos / (n - 1) * maxX).toFixed(2) + "px,0,0)";
+      imagens.forEach(function (img, i) { img.style.setProperty("--px", ((i - pos) * 4.5).toFixed(2) + "%"); });
+      var idx = Math.round(pos);
+      if (idx !== idxAtual) {
+        idxAtual = idx;
+        paineis.forEach(function (p, i) { p.classList.toggle("on", i === idx); });
+        passos.forEach(function (li, i) { li.classList.toggle("on", i === idx); });
+      }
+      if (navP) navP.style.setProperty("--p", (pos / (n - 1)).toFixed(3));
+    };
+    var ciclo = function (t) {
+      if (!visivel) return;
+      var dt = Math.min(0.05, (t - ultimo) / 1000 || 0.016); ultimo = t;
+      var destino = curva(alvo);
+      pos += (destino - pos) * Math.min(1, dt * 7);
+      if (Math.abs(destino - pos) < 0.0005) pos = destino;
+      aplicar();
+      requestAnimationFrame(ciclo);
+    };
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var antes = visivel; visivel = e.isIntersecting;
+        if (visivel && !antes) { medir(); aoScroll(); ultimo = performance.now(); requestAnimationFrame(ciclo); }
+      });
+    }, { rootMargin: "10% 0px" }).observe(pov);
+    window.addEventListener("scroll", aoScroll, { passive: true });
+    window.addEventListener("resize", function () { medir(); aoScroll(); aplicar(); });
+    /* foco por teclado: leva o scroll até ao capítulo com a ligação, para não ficar fora do ecrã */
+    pov.addEventListener("focusin", function (e) {
+      var i = paineis.indexOf(e.target.closest(".poveste__panel"));
+      if (i < 0) return;
+      var meio = PAUSA * (i + 0.5) + DESLIZE * i;
+      window.scrollTo({ top: pov.offsetTop + meio * (pov.offsetHeight - window.innerHeight), behavior: "auto" });
+    });
+    medir(); aoScroll(); pos = curva(alvo); aplicar();
   }
 
   /* cards: inclinação 3D e felinar que segue o cursor */

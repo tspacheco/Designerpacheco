@@ -15,7 +15,7 @@ Restaurante histórico em Iași (Str. Rece nr. 10, desde 1786). O cliente tem um
 
 ## Assinatura visual
 
-**"Sub boltă"**: a pivniță de cărămidă em 3D (Three.js) pela qual a câmara avança conforme o scroll, com felinare a tremeluzir e a luz ao fundo do túnel; as fotografias entram em arcos (cards com inclinação 3D que segue o cursor); a lista do menu desenha as linhas pontilhadas ao aparecer; as poesias da carte de oaspeți revelam-se verso a verso. Fontes: Bona Nova (títulos), Albert Sans (corpo), EB Garamond itálico (citações e versos).
+**"Sub boltă"**: a pivniță de cărămidă em 3D (Three.js) pela qual a câmara avança conforme o scroll, com felinare a tremeluzir e a luz ao fundo do túnel; as fotografias entram em arcos (cards com inclinação 3D que segue o cursor); **"O seară la Bolta Rece"** — uma faixa horizontal comandada pelo scroll vertical, em três capítulos (I masa: o prato · II vinul: as garrafas · III versul: a placă de lemn), com paragem em cada capítulo, fusão suave entre fotografias, parallax leve e barra de progresso; a lista do menu desenha as linhas pontilhadas ao aparecer; as poesias da carte de oaspeți revelam-se verso a verso. Sem WebGL a boltă cai para fotografia; com movimento reduzido a faixa empilha-se na vertical e a boltă mostra um só fotograma. Fontes: Bona Nova (títulos), Albert Sans (corpo), EB Garamond itálico (citações e versos).
 
 ## Intro em vídeo (só na primeira entrada)
 
@@ -34,4 +34,4 @@ De confirmat: denumire firmă/CUI/Reg. Com. (rodapé), preços (não há nenhum 
 
 ## Vídeo "Antes vs Depois"
 
-Gravar a página inicial: intro em vídeo → herói → scroll pela boltă 3D → cards → menu → história → poesias → reservas. Para o intro aparecer em cada take, abrir numa janela anónima nova (o intro só se mostra uma vez por sessão).
+Gravar a página inicial: intro em vídeo → herói → scroll pela boltă 3D → cards → menu → faixa horizontal "O seară la Bolta Rece" (deixar o scroll parar em cada capítulo) → história → poesias → reservas. Para o intro aparecer em cada take, abrir numa janela anónima nova (o intro só se mostra uma vez por sessão).
