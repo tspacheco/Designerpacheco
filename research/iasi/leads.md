@@ -31,6 +31,15 @@
 
 **As 5 lojas (fonte: legenda do próprio TikTok da Frișcot, 2023):** Copou — Str. Codrescu 6 · Nicolina — Șos. Nicolina 1 (Belvedere, aberta jan/2020) · Păcurari — Era Shopping Park, hoje Mall Moldova, Șos. Păcurari 121 · Tătărași — Kaufland · Alexandru — Piața Voievozilor. Horário só confirmado para Codrescu por um diretório (seg–sáb 07–20, dom 08–19) e diverge do Google ("abre às 08:00 de segunda") → **de confirmat**. Telefone Codrescu 0746 010 830 (diretório iasi365) → de confirmat. Encomendas 0766 719 077, seg–sex 07:30–15:30, comenzi@friscot.ro (fonte: publicações deles). Campanha "tortul de ziua ta −50%" (Instagram/jornal; um diretório diz 40%) → percentagem de confirmat.
 
+**Google Maps das 5 lojas (links de pesquisa — confirmar que abre a loja certa):**
+- Copou / Brasserie: https://www.google.com/maps/search/?api=1&query=Fri%C8%99cot+Str.+Codrescu+6+Ia%C8%99i
+- Nicolina: https://www.google.com/maps/search/?api=1&query=Fri%C8%99cot+%C8%98os.+Nicolina+1+Ia%C8%99i
+- Păcurari (Mall Moldova): https://www.google.com/maps/search/?api=1&query=Fri%C8%99cot+Mall+Moldova+Ia%C8%99i
+- Tătărași (Kaufland): https://www.google.com/maps/search/?api=1&query=Fri%C8%99cot+Kaufland+T%C4%83t%C4%83ra%C8%99i+Ia%C8%99i
+- Alexandru cel Bun (Piața Voievozilor): https://www.google.com/maps/search/?api=1&query=Fri%C8%99cot+Pia%C8%9Ba+Voievozilor+Ia%C8%99i
+
+**Proposta comercial (Prioridade 1):** `sites/friscot/proposta/proposta-friscot-ro.pdf` (cliente) e `-pt.pdf` (tradução). Pacote 3 990 lei (site 2 990 + Google 1 490, redirecionamento incluído) + manutenção opcional 349 lei/mês; 50/50; 10 dias úteis. Gerar outra vez: `python3 gerar.py`.
+
 **Demo:** `sites/friscot/index.html` — "Iașiul, în cinci felii": o mapa das 5 lojas desenhado como um bolo visto de cima; cada fatia leva ao cartão da loja. Insight de franchise na primeira secção, Brasserie em destaque, encomenda por WhatsApp (o site de encomendas está morto), Instagram único.
 
 **Auditar antes da visita (sites bloqueados nesta sessão):** friscot.ro e friscot-comanda.ro no telemóvel — velocidade, se a Brasserie aparece, fluxo de encomenda de um bolo, pictograma ANPC-SAL e CUI no rodapé, se há fotos reais do espaço.
