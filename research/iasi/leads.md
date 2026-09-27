@@ -27,6 +27,12 @@
 - **friscot.ro** responde no DNS e está alojado na **Wix** (185.230.63.x; www → wixdns.net). O conteúdo não pôde ser lido daqui (bloqueio do proxy); o Tomás reporta que também não funciona para ele.
 - **Argumento principal da visita:** o canal de encomendas online está morto e o site principal não abre.
 
+**Instagram — verificado (27/09):** só existe **uma** conta para toda a marca, **@friscot.ro** (3 780 seguidores, 1 102 publicações; a bio lista as lojas). Não há contas por loja. TikTok @cofetaria.friscot.iasi; Facebook Friscotiasi. Consequência no site: um único cartão Instagram para a marca; os cartões por loja apontam para o **Google Maps de cada loja** ("Cum ajung") e para o WhatsApp de encomendas.
+
+**As 5 lojas (fonte: legenda do próprio TikTok da Frișcot, 2023):** Copou — Str. Codrescu 6 · Nicolina — Șos. Nicolina 1 (Belvedere, aberta jan/2020) · Păcurari — Era Shopping Park, hoje Mall Moldova, Șos. Păcurari 121 · Tătărași — Kaufland · Alexandru — Piața Voievozilor. Horário só confirmado para Codrescu por um diretório (seg–sáb 07–20, dom 08–19) e diverge do Google ("abre às 08:00 de segunda") → **de confirmat**. Telefone Codrescu 0746 010 830 (diretório iasi365) → de confirmat. Encomendas 0766 719 077, seg–sex 07:30–15:30, comenzi@friscot.ro (fonte: publicações deles). Campanha "tortul de ziua ta −50%" (Instagram/jornal; um diretório diz 40%) → percentagem de confirmat.
+
+**Demo:** `sites/friscot/index.html` — "Iașiul, în cinci felii": o mapa das 5 lojas desenhado como um bolo visto de cima; cada fatia leva ao cartão da loja. Insight de franchise na primeira secção, Brasserie em destaque, encomenda por WhatsApp (o site de encomendas está morto), Instagram único.
+
 **Auditar antes da visita (sites bloqueados nesta sessão):** friscot.ro e friscot-comanda.ro no telemóvel — velocidade, se a Brasserie aparece, fluxo de encomenda de um bolo, pictograma ANPC-SAL e CUI no rodapé, se há fotos reais do espaço.
 
 **Fontes:** ziaruldeiasi.ro (Frișcot Brasserie; "cinci cartiere") · tiktok.com/@cofetaria.friscot.iasi (lançamento 20 de maio) · friscot-comanda.ro · paginiaurii.ro · mihaelaanghel.com (2012)
