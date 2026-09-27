@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Iași — semana 1 de prospeção</title>
+<meta name="theme-color" content="#14181f">
+<style>
+/*LEAFLET_CSS*/
+:root{--fundo:#f4f3ef;--tinta:#14181f;--tinta-2:#555c66;--linha:#dedbd2;--branco:#fff;--acento:#E4572E}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--tinta);background:var(--fundo)}
+header{background:var(--tinta);color:#fff;padding:14px 16px 12px}
+header h1{margin:0;font-size:1.15rem;letter-spacing:.01em}
+header p{margin:2px 0 0;font-size:.85rem;opacity:.75}
+#mapa{height:min(58svh,560px);background:#e8e6df}
+.dias{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;background:var(--branco);border-bottom:1px solid var(--linha);scrollbar-width:none;position:sticky;top:0;z-index:500}
+.dias::-webkit-scrollbar{display:none}
+.dias button{flex:none;min-height:44px;padding:8px 14px;border-radius:999px;border:2px solid var(--c);background:var(--branco);color:var(--tinta);font:700 .9rem system-ui,sans-serif;cursor:pointer}
+.dias button[aria-pressed=true]{background:var(--c);color:#fff}
+.dias button.todos{--c:var(--tinta)}
+main{max-width:760px;margin:0 auto;padding:16px}
+.cartao{background:var(--branco);border-radius:16px;padding:18px;border-top:6px solid var(--c);box-shadow:0 8px 24px -16px rgba(0,0,0,.3)}
+.cartao h2{margin:0 0 4px;font-size:1.35rem}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.9rem;color:var(--tinta-2);margin-bottom:12px}
+.cartao h3{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-2);margin:16px 0 6px}
+.cartao ul{margin:0;padding-left:18px}
+.nota{background:#fbf6e9;border-left:4px solid var(--c);padding:10px 12px;border-radius:8px;margin-top:14px;font-size:.95rem}
+.acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.acoes a{display:inline-flex;align-items:center;min-height:44px;padding:10px 14px;border-radius:999px;background:var(--tinta);color:#fff;text-decoration:none;font-weight:700;font-size:.9rem}
+.acoes a.leve{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 2px var(--linha)}
+.contadores{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.cont{background:var(--fundo);border-radius:12px;padding:10px;text-align:center}
+.cont b{display:block;font-size:1.6rem;font-variant-numeric:tabular-nums}
+.cont span{font-size:.75rem;color:var(--tinta-2)}
+.cont div{display:flex;gap:6px;justify-content:center;margin-top:6px}
+.cont button{width:44px;height:36px;border-radius:10px;border:1px solid var(--linha);background:var(--branco);font:700 1.1rem system-ui;cursor:pointer}
+textarea{width:100%;min-height:80px;margin-top:8px;border:1px solid var(--linha);border-radius:10px;padding:10px;font:inherit}
+.semana{margin-top:22px}
+.semana table{width:100%;border-collapse:collapse;background:var(--branco);border-radius:12px;overflow:hidden;font-size:.9rem}
+.semana th,.semana td{padding:9px 10px;border-bottom:1px solid var(--linha);text-align:left}
+.semana td:not(:first-child),.semana th:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+.semana i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:6px}
+.regras{margin-top:22px;background:var(--branco);border-radius:16px;padding:16px 18px;font-size:.95rem}
+.regras h3{margin:0 0 8px;font-size:1rem}
+.regras ol{margin:0;padding-left:20px}
+.aviso{font-size:.8rem;color:var(--tinta-2);margin-top:18px}
+.rotulo{background:none;border:none;box-shadow:none;font:800 13px system-ui,sans-serif;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap}
+.sem-mapa{display:none;padding:14px 16px;background:#fff3cd;font-size:.9rem}
+:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Iași · semana 1 de prospeção a pé</h1>
+  <p>Segunda a sábado · uma zona por dia · base: UAIC</p>
+</header>
+<div class="sem-mapa" id="sem-mapa">O mapa de fundo não carregou (sem rede). As zonas e os links do Google Maps continuam a funcionar.</div>
+<div id="mapa" role="img" aria-label="Mapa de Iași com as seis zonas da semana"></div>
+<nav class="dias" id="dias" aria-label="Escolher dia"></nav>
+<main>
+  <section id="detalhe"></section>
+  <section class="semana" aria-label="Resumo da semana">
+    <table><thead><tr><th>Dia</th><th>Cartões</th><th>Conversas</th><th>Demos</th></tr></thead><tbody id="resumo"></tbody></table>
+  </section>
+  <section class="regras">
+    <h3>Rotina de cada dia</h3>
+    <ol>
+      <li><b>Na noite anterior:</b> abre o link "Procurar" da zona, filtra ≥ 4,3★ e ≥ 50 avaliações, e anota os que <b>não têm site</b>. São os teus alvos A.</li>
+      <li><b>Leva:</b> 40 cartões, telemóvel carregado com a demo modelo, powerbank.</li>
+      <li><b>Alvos A:</b> pede para falar com o dono (<i>proprietarul</i>) e mostra a demo. <b>Resto:</b> cartão + uma frase + pedir o WhatsApp.</li>
+      <li><b>Evita:</b> cadeias, lojas de centro comercial, horas de refeição (12h–14h30, 19h–21h).</li>
+      <li><b>Depois de cada negócio:</b> +1 no contador; nota com nome, dono presente?, interesse 1–3.</li>
+      <li><b>Ao fim do dia:</b> WhatsApp a quem deu o número (mensagem D0 do guião).</li>
+    </ol>
+  </section>
+  <p class="aviso">Círculos com coordenadas aproximadas — confirma no mapa. O ficheiro semana-1.kml importa as mesmas zonas no Google My Maps (vês os círculos por cima dos negócios do Google, no telemóvel). Os contadores e as notas ficam guardados só neste telemóvel.</p>
+</main>
+<script>
+/*LEAFLET_JS*/
+</script>
+<script>
+/*DADOS*/
+(function(){
+  function ler(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
+  function gravar(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+  var estado=ler('iasi-s1')||{};
+  var hojeIdx=(function(){var d=new Date().getDay();return d>=1&&d<=6?d-1:0})();
+  var escolhido=ler('iasi-s1-dia');if(escolhido===null)escolhido=hojeIdx;
+
+  var mapa=L.map('mapa',{zoomControl:true,attributionControl:true}).setView([BASE.lat,BASE.lon],13);
+  /* CARTO primeiro (funciona aberto como ficheiro, sem "referer"); se falhar, tenta o OpenStreetMap */
+  var fontes=[['https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png','&copy; OpenStreetMap &copy; CARTO'],['https://tile.openstreetmap.org/{z}/{x}/{y}.png','&copy; OpenStreetMap']];
+  var fi=0,falhas=0,tiles;
+  function poeFundo(){if(tiles)mapa.removeLayer(tiles);falhas=0;tiles=L.tileLayer(fontes[fi][0],{maxZoom:19,subdomains:'abcd',attribution:fontes[fi][1]}).addTo(mapa);
+    tiles.on('tileerror',function(){if(++falhas>6){if(fi<fontes.length-1){fi++;poeFundo()}else document.getElementById('sem-mapa').style.display='block'}});}
+  poeFundo();
+  L.circleMarker([BASE.lat,BASE.lon],{radius:8,color:'#14181f',weight:3,fillColor:'#fff',fillOpacity:1}).addTo(mapa).bindPopup('<b>Base</b><br>'+BASE.nome);
+
+  var camadas=ZONAS.map(function(z,i){
+    var c=L.circle([z.lat,z.lon],{radius:z.r,color:z.cor,weight:3,fillColor:z.cor,fillOpacity:.18}).addTo(mapa);
+    var r=L.marker([z.lat,z.lon],{icon:L.divIcon({className:'rotulo',html:z.curto,iconSize:[40,16],iconAnchor:[20,8]}),interactive:false}).addTo(mapa);
+    c.on('click',function(){mostrar(i,true)});
+    return c;
+  });
+
+  var nav=document.getElementById('dias');
+  var bt=document.createElement('button');bt.className='todos';bt.textContent='Semana';bt.setAttribute('aria-pressed','false');bt.onclick=function(){mostrar(-1,true)};nav.appendChild(bt);
+  ZONAS.forEach(function(z,i){var b=document.createElement('button');b.style.setProperty('--c',z.cor);b.textContent=z.dia;b.setAttribute('aria-pressed','false');b.onclick=function(){mostrar(i,true)};nav.appendChild(b);});
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function cont(i,k){return ((estado[i]||{})[k])||0}
+  function mostrar(i,voar){
+    escolhido=i;gravar('iasi-s1-dia',i);
+    [].forEach.call(nav.children,function(b,k){b.setAttribute('aria-pressed',String(k===i+1))});
+    camadas.forEach(function(c,k){c.setStyle({fillOpacity:(i===-1||k===i)?.22:.05,opacity:(i===-1||k===i)?1:.35})});
+    var d=document.getElementById('detalhe');
+    if(i===-1){
+      var g=L.featureGroup(camadas);if(voar)mapa.flyToBounds(g.getBounds().pad(.1),{duration:.6});
+      d.innerHTML='<div class="cartao" style="--c:#14181f"><h2>A semana</h2><div class="meta"><span>6 zonas</span><span>≈ 3–4 km a pé por zona</span><span>meta: 30 cartões/dia</span></div><ul>'+ZONAS.map(function(z){return '<li><b style="color:'+z.cor+'">'+z.dia+'</b> — '+esc(z.nome)+' · '+z.dist+' km da UAIC · '+z.hora+'</li>'}).join('')+'</ul></div>';
+      return;
+    }
+    var z=ZONAS[i];
+    if(voar)mapa.flyToBounds(camadas[i].getBounds().pad(.35),{duration:.6});
+    d.innerHTML='<article class="cartao" style="--c:'+z.cor+'">'+
+      '<h2>'+z.dia+' · '+esc(z.nome)+'</h2>'+
+      '<div class="meta"><span>🕒 '+z.hora+'</span><span>📍 '+z.dist+' km da UAIC</span><span>🚶 '+z.km+' dentro da zona</span></div>'+
+      '<h3>Como chegar</h3><p style="margin:0">'+esc(z.chegar)+'</p>'+
+      '<h3>Ruas a percorrer</h3><ul>'+z.ruas.map(function(r){return '<li>'+esc(r)+'</li>'}).join('')+'</ul>'+
+      '<h3>Alvos</h3><ul>'+z.alvos.map(function(r){return '<li>'+esc(r)+'</li>'}).join('')+'</ul>'+
+      '<div class="nota">'+esc(z.nota)+'</div>'+
+      '<div class="acoes"><a href="'+z.dir+'" target="_blank" rel="noopener">Como chegar (Google Maps)</a>'+z.links.map(function(l){return '<a class="leve" href="'+l[1]+'" target="_blank" rel="noopener">Procurar: '+esc(l[0])+'</a>'}).join('')+'</div>'+
+      '<h3>Hoje</h3><div class="contadores">'+[['c','Cartões'],['v','Conversas'],['d','Demos']].map(function(p){return '<div class="cont"><b id="n-'+p[0]+'">'+cont(i,p[0])+'</b><span>'+p[1]+'</span><div><button type="button" aria-label="Menos '+p[1]+'" data-k="'+p[0]+'" data-d="-1">−</button><button type="button" aria-label="Mais '+p[1]+'" data-k="'+p[0]+'" data-d="1">+</button></div></div>'}).join('')+'</div>'+
+      '<label for="notas" style="display:block;margin-top:12px;font-weight:700;font-size:.9rem">Notas (nome · dono? · interesse 1–3 · WhatsApp)</label><textarea id="notas">'+esc((estado[i]||{}).notas||'')+'</textarea>'+
+    '</article>';
+    d.querySelectorAll('[data-k]').forEach(function(b){b.onclick=function(){var k=b.dataset.k;estado[i]=estado[i]||{};estado[i][k]=Math.max(0,(estado[i][k]||0)+(+b.dataset.d));gravar('iasi-s1',estado);document.getElementById('n-'+k).textContent=estado[i][k];resumo();}});
+    document.getElementById('notas').oninput=function(e){estado[i]=estado[i]||{};estado[i].notas=e.target.value;gravar('iasi-s1',estado)};
+  }
+  function resumo(){
+    var t=[0,0,0];
+    document.getElementById('resumo').innerHTML=ZONAS.map(function(z,i){var a=[cont(i,'c'),cont(i,'v'),cont(i,'d')];a.forEach(function(v,k){t[k]+=v});return '<tr><td style="--c:'+z.cor+'"><i></i>'+z.dia+'</td><td>'+a[0]+'</td><td>'+a[1]+'</td><td>'+a[2]+'</td></tr>'}).join('')+'<tr><th>Total</th><th>'+t[0]+'</th><th>'+t[1]+'</th><th>'+t[2]+'</th></tr>';
+  }
+  resumo();
+  mapa.whenReady(function(){mostrar(escolhido,true)});
+
+  // "Onde estou": só se o browser deixar
+  if(navigator.geolocation){
+    var eu=null;var ctl=L.control({position:'topright'});
+    ctl.onAdd=function(){var b=L.DomUtil.create('button');b.textContent='📍 Onde estou';b.style.cssText='min-height:40px;padding:6px 12px;border-radius:10px;border:0;font:700 13px system-ui;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer';L.DomEvent.on(b,'click',function(e){L.DomEvent.stop(e);navigator.geolocation.getCurrentPosition(function(p){var ll=[p.coords.latitude,p.coords.longitude];if(eu)eu.setLatLng(ll);else eu=L.circleMarker(ll,{radius:8,color:'#fff',weight:3,fillColor:'#1a73e8',fillOpacity:1}).addTo(mapa);mapa.flyTo(ll,16,{duration:.6})},function(){b.textContent='Sem localização'},{enableHighAccuracy:true,timeout:10000})});return b};
+    ctl.addTo(mapa);
+  }
+})();
+</script>
+</body>
+</html>
