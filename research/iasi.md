@@ -79,7 +79,7 @@ Portas extra na mesma rua (rating e site a confirmar): Ego Hair Studio (Vasile L
 | **Trend Barbershop** (Marius C. Arbore; nome da loja a confirmar) | barbearia | Str. Nicolina 4A, bl. F4¹ | 4,99 (MERO)¹ | 1.541 (MERO)¹ | a confirmar; MERO | [MERO](https://mero.ro/p/marius-constantin-ff72) |
 | **Brutăria Rondul Vechi** | padaria | Rond Vechi, CUG¹ | 5 (map24)¹ | a confirmar | não encontrado; FB | [map24](https://map24.ro/brutarie/iasi/30648) · [FB](https://www.facebook.com/rondulvechi.iasi/) |
 
-Portas extra: CAPSULA X Nicolina (4,2 map24, 17 opiniões citymaps; FB), Frizerie Katy (Șos. Nicolina 79).
+Portas extra: CAPSULA X Nicolina (4,2 map24, 17 opiniões citymaps; FB), Frizerie Katy (Șos. Nicolina 79), Atractiv Barber shop (Șos. Nicolina 88, [deschis.ro](https://deschis.ro/iasi/atractiv-barber-shop-137117)). Em Tudor Vladimirescu, sem dados além da morada: Salon Sei Bella (nº 46) e Salon MONNE (nº 83) ([frizerie123](https://frizerie123.ro/cat/frizerie-iasi-iasi-romania/)). ⚠ Fat Cat: a pesquisa de 28/09 devolveu **fatcat.ro** — confirmar se é o site deles antes de qualquer demo.
 
 ### Canta, Păcurari e resto (ver primeiro no mapa)
 
@@ -140,7 +140,7 @@ Portas extra: CAPSULA X Nicolina (4,2 map24, 17 opiniões citymaps; FB), Frizeri
 - [ ] **6.ª 25/09 (hoje):** confirmar no Maps as 5 primeiras demos — proposta: **Pizza Nico, Berăria Veche, Bistro La Noi, Cafeneaua Piața Unirii, Fat Cat Coffee** — e pedi-las ao Claude num só chat: *"Cria demos para: … (Iași). Segue o engine RO, RO/EN/FR."*
 - [ ] **Sáb. 26/09:** imprimir 100 cartões RO/EN e 30 autocolantes QR (as reprografias Stef, Carol I 8, e Adi Center, Carol I 25, servem como fornecedores). Validar o script romeno com um colega romeno. Percorrer a pé a rota de 3.ª (Nicolina/Tudor): horários e quem é o dono.
 - [ ] **Dom. 27/09:** metas 10X escritas; demos testadas em modo avião. Em `prospecao/qr/iasi.csv` (já tem os 28 alvos), preencher `demo` (link da demo) e `place` (Place ID do Google) dos alvos da semana e gerar cartões-demo e packs: `python3 prospecao/qr/gerar_qr.py --lista prospecao/qr/iasi.csv --lang ro`.
-- [ ] **2.ª 28/09 — 1.º dia de aulas:** barbearias e salões (a 2.ª é o dia deles): Bd. Tudor Vladimirescu 46 e 93 (Moft Concept, abre 9h–18h; Barber Shop 93) → Str. Nicolina 2A–4A (SALON 11, Trend Barbershop) → Podu Roș (Barberland). Pack QR primeiro; o site vem com o botão MERO que já usam.
+- [ ] **2.ª 28/09 — 1.º dia de aulas:** rota preparada em `prospecao/rotas/2026-09-28-podu-ros-nicolina-tudor.md` (13 portas com nome: Tudor Vladimirescu 46–111 → Podu Roș → Nicolina 2–24; horários de Moft, Trend e Pizza Nico confirmados). Pack QR primeiro; o site vem com o botão MERO que já usam.
 - [ ] **3.ª 29/09:** Șos. Nicolina 2–24 + Bd. Tudor Vladimirescu 46–111, entre as 15h e as 17h: Pizza Nico, Fat Cat, Krantz, CeBuun!, Odeon, Class (elevar).
 - [ ] **4.ª 30/09:** Piața Unirii + Ștefan cel Mare 8–12: Cafeneaua Piața Unirii, Tiki (elevar), Fika, La Noi, Mamma Mia — **ângulo Sf. Parascheva**.
 - [ ] **5.ª 01/10:** Cuza Vodă + Lăpușneanu + Sf. Lazăr + Str. Gării: Cafeneaua Noastră e Bisou (de manhã), Stop Coffee, Urban Pizza (elevar), Cafeneaua Lăpușneanu (se estiver aberta), Beauty.Que. Packs QR.
