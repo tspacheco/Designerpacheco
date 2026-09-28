@@ -63,11 +63,12 @@
   if (pov && !reduzido) {
     var stage = pov.querySelector(".poveste__stage"), track = pov.querySelector(".poveste__track");
     var paineis = Array.prototype.slice.call(pov.querySelectorAll(".poveste__panel"));
-    var imagens = paineis.map(function (p) { return p.querySelector("img"); });
+    var imagens = paineis.map(function (p) { return p.querySelector(".poveste__img"); });
+    var caps = Array.prototype.slice.call(pov.querySelectorAll(".poveste__cap"));
     var passos = Array.prototype.slice.call(pov.querySelectorAll(".poveste__nav li"));
     var navP = pov.querySelector(".poveste__nav");
     var n = paineis.length, PAUSA = 0.15, DESLIZE = (1 - n * PAUSA) / (n - 1);
-    var alvo = 0, pos = 0, maxX = 0, visivel = false, ultimo = 0, idxAtual = -1;
+    var alvo = 0, pos = 0, maxX = 0, visivel = false, aCorrer = false, ultimo = 0, idxAtual = -1;
     var suave = function (x) { return x * x * (3 - 2 * x); };
     var curva = function (p) {                       // 0..1 → posição 0..n-1, com paragem em cada capítulo
       for (var k = 0; k < n - 1; k++) {
@@ -77,45 +78,50 @@
       }
       return n - 1;
     };
-    var medir = function () { maxX = track.scrollWidth - stage.clientWidth; };
-    var aoScroll = function () {
-      var r = pov.getBoundingClientRect(), total = r.height - window.innerHeight;
-      alvo = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
-    };
+    var medir = function () { maxX = track.clientWidth * (n - 1); };
     var aplicar = function () {
       track.style.transform = "translate3d(" + (-pos / (n - 1) * maxX).toFixed(2) + "px,0,0)";
-      imagens.forEach(function (img, i) { img.style.setProperty("--px", ((i - pos) * 4.5).toFixed(2) + "%"); });
+      imagens.forEach(function (img, i) { img.style.setProperty("--px", ((pos - i) * 8).toFixed(2) + "%"); });   // a foto anda mais devagar do que a moldura
       var idx = Math.round(pos);
       if (idx !== idxAtual) {
         idxAtual = idx;
-        paineis.forEach(function (p, i) { p.classList.toggle("on", i === idx); });
+        caps.forEach(function (c, i) { c.classList.toggle("on", i === idx); });
         passos.forEach(function (li, i) { li.classList.toggle("on", i === idx); });
       }
-      if (navP) navP.style.setProperty("--p", (pos / (n - 1)).toFixed(3));
     };
     var ciclo = function (t) {
-      if (!visivel) return;
+      if (!visivel) { aCorrer = false; return; }
       var dt = Math.min(0.05, (t - ultimo) / 1000 || 0.016); ultimo = t;
       var destino = curva(alvo);
       pos += (destino - pos) * Math.min(1, dt * 7);
       if (Math.abs(destino - pos) < 0.0005) pos = destino;
       aplicar();
+      if (pos === destino) { aCorrer = false; return; }   // parado: nada a animar até ao próximo scroll
       requestAnimationFrame(ciclo);
+    };
+    var acordar = function () {
+      if (visivel && !aCorrer) { aCorrer = true; ultimo = performance.now(); requestAnimationFrame(ciclo); }
+    };
+    var aoScroll = function () {
+      var r = pov.getBoundingClientRect(), total = r.height - stage.offsetHeight;
+      alvo = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+      if (navP) navP.style.setProperty("--p", alvo.toFixed(3));   // a linha segue o scroll; os painéis têm as pausas
+      acordar();
     };
     new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         var antes = visivel; visivel = e.isIntersecting;
-        if (visivel && !antes) { medir(); aoScroll(); ultimo = performance.now(); requestAnimationFrame(ciclo); }
+        if (visivel && !antes) { medir(); aoScroll(); pos = curva(alvo); aplicar(); acordar(); }   // entra já no sítio certo
       });
     }, { rootMargin: "10% 0px" }).observe(pov);
     window.addEventListener("scroll", aoScroll, { passive: true });
     window.addEventListener("resize", function () { medir(); aoScroll(); aplicar(); });
-    /* foco por teclado: leva o scroll até ao capítulo com a ligação, para não ficar fora do ecrã */
+    /* foco por teclado numa legenda escondida: leva o scroll até ao capítulo dela */
     pov.addEventListener("focusin", function (e) {
-      var i = paineis.indexOf(e.target.closest(".poveste__panel"));
-      if (i < 0) return;
+      var i = caps.indexOf(e.target.closest(".poveste__cap"));
+      if (i < 0 || i === idxAtual) return;
       var meio = PAUSA * (i + 0.5) + DESLIZE * i;
-      window.scrollTo({ top: pov.offsetTop + meio * (pov.offsetHeight - window.innerHeight), behavior: "auto" });
+      window.scrollTo({ top: pov.offsetTop + meio * (pov.offsetHeight - stage.offsetHeight), behavior: "instant" });
     });
     medir(); aoScroll(); pos = curva(alvo); aplicar();
   }

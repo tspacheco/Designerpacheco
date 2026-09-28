@@ -10,7 +10,7 @@
 
   var alvo = 0;
   function legendas() {                       // a legenda muda com o scroll, com ou sem WebGL
-    var r = sec.getBoundingClientRect(), total = r.height - window.innerHeight;
+    var r = sec.getBoundingClientRect(), total = r.height - stage.offsetHeight;
     alvo = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
     var idx = Math.min(caps.length - 1, Math.floor(alvo * caps.length));
     caps.forEach(function (c, i) { c.classList.toggle("on", reduzido || i === idx); });

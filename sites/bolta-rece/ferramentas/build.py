@@ -28,7 +28,8 @@ three = ler(three_path).replace("</script>", "<\\/script>") if three_path.exists
 if not three:
     print("AVISO: ferramentas/three.min.js em falta — a bolta 3D cai para a fotografia.")
 
-head = f"<style>\n{fontes}\n</style>\n<style>\n{css}\n</style>"
+estado = "<script>(function(d){d.className=d.className.replace('no-js','js');if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)d.className+=' rm'})(document.documentElement)</script>"
+head = f"{estado}\n<style>\n{fontes}\n</style>\n<style>\n{css}\n</style>"
 scripts = f"<script>\n{js}\n</script>"
 
 for pagina in sorted((SRC / "pages").glob("*.html")):

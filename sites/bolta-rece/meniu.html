@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="ro" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -10,6 +10,7 @@
 <meta property="og:image" content="media/detaliu-farfurie.jpg">
 <meta name="theme-color" content="#14100D">
 <link rel="icon" href="media/emblema.png">
+<script>(function(d){d.className=d.className.replace('no-js','js');if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)d.className+=' rm'})(document.documentElement)</script>
 <style>
 /* Bona Nova latin-ext */
 @font-face {
@@ -255,10 +256,10 @@ button{font:inherit;color:inherit}
 
 /* ---- sub boltă (3D) ---- */
 .bolta{position:relative;height:340vh;background:var(--noapte);color:var(--var)}
-.bolta__stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--noapte)}
+.bolta__stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--noapte)}
 .bolta__stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.bolta--fallback .bolta__stage{background:url(media/crama-bolta.jpg) center/cover}
-.bolta--fallback .bolta__stage::before{content:"";position:absolute;inset:0;background:rgba(20,16,13,.45)}
+.bolta--fallback .bolta__stage,.no-js .bolta__stage{background:url(media/crama-bolta.jpg) center/cover}
+.bolta--fallback .bolta__stage::before,.no-js .bolta__stage::before{content:"";position:absolute;inset:0;background:rgba(20,16,13,.45)}
 .bolta__caps{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 var(--pad);pointer-events:none}
 .bolta__cap{grid-area:1/1;max-width:min(92vw,880px);opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
 .bolta__cap.on{opacity:1;transform:none}
@@ -299,7 +300,7 @@ button{font:inherit;color:inherit}
 .feluri{list-style:none;margin:28px 0 0;padding:0}
 .fel{display:flex;align-items:baseline;gap:12px;padding:12px 0;font-size:18px}
 .fel__nume{font-family:var(--f-display);font-size:22px;font-weight:400}
-.fel__leader{flex:1;border-bottom:2px dotted var(--var-3);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease-out)}
+.fel__leader{flex:1 0 40px;min-width:40px;border-bottom:2px dotted var(--var-3);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease-out)}
 .is-in .fel__leader{transform:scaleX(1)}
 .fel:nth-child(2) .fel__leader{transition-delay:.08s}.fel:nth-child(3) .fel__leader{transition-delay:.16s}.fel:nth-child(4) .fel__leader{transition-delay:.24s}.fel:nth-child(5) .fel__leader{transition-delay:.32s}.fel:nth-child(6) .fel__leader{transition-delay:.4s}.fel:nth-child(7) .fel__leader{transition-delay:.48s}
 .fel__nota{font:600 11px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--caramida);white-space:nowrap}
@@ -308,21 +309,26 @@ button{font:inherit;color:inherit}
 .condica__foto img{border-radius:var(--r);aspect-ratio:4/3;object-fit:cover;box-shadow:var(--sombra)}
 .condica__lado .fel-casa + .fel-casa{margin-top:0}
 
-/* ---- o seară la Bolta Rece (poveste orizontală comandată de scroll) ---- */
+/* ---- o seară la Bolta Rece (poveste orizontală comandată de scroll) ----
+   A faixa desliza; as legendas fazem cross-fade no mesmo sítio. Cada painel prolonga a
+   fotografia para a direita (espelhada) para que o painel seguinte entre com uma margem
+   esbatida sem nunca se ver em repouso. Sem JS (.no-js) ou com movimento reduzido (.rm):
+   fotografias e legendas empilhadas. */
 .poveste{position:relative;height:360vh;background:var(--noapte);color:var(--var)}
-.poveste__stage{position:sticky;top:0;height:100vh;overflow:hidden;overflow:clip;background:var(--noapte)}
+.poveste__stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;overflow:clip;background:var(--noapte)}
 .poveste__track{display:flex;height:100%;will-change:transform}
-.poveste__panel{position:relative;flex:none;width:100%;height:100%;overflow:hidden;background:var(--noapte)}
-.poveste__panel + .poveste__panel{margin-left:-16%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 16%);mask-image:linear-gradient(90deg,transparent,#000 16%)}
-.poveste__img{position:absolute;inset:0}
-.poveste__img img{width:100%;height:100%;object-fit:cover;object-position:var(--op,50% 50%);transform:translate3d(var(--px,0%),0,0) scale(1.1);will-change:transform}
-.poveste__panel:nth-child(1) img{--op:40% 50%}
-.poveste__panel:nth-child(2) img{--op:28% 50%}
-.poveste__panel:nth-child(3) img{--op:10% 50%}
-.poveste__panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,13,.42) 0%,rgba(20,16,13,0) 30%,rgba(20,16,13,0) 44%,rgba(20,16,13,.5) 66%,rgba(20,16,13,.92) 100%);pointer-events:none}
-.poveste__cap{position:absolute;z-index:1;left:var(--pad);bottom:clamp(96px,14vh,150px);max-width:min(100% - 2*var(--pad),560px);opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.poveste__panel{position:relative;flex:none;width:100%;height:100%;background:var(--noapte)}
+.poveste__img{position:absolute;inset:0;transform:translate3d(var(--px,0%),0,0);will-change:transform}
+.poveste__img > img{width:100%;height:100%;object-fit:cover}
+.poveste__ext{position:absolute;top:0;bottom:0;left:100%;width:28%;overflow:hidden;display:block}
+.poveste__ext img{position:absolute;left:0;top:0;width:calc(100% / .28);height:100%;object-fit:cover;transform:scaleX(-1)}
+.poveste__ext::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,13,.42) 0%,rgba(20,16,13,0) 30%,rgba(20,16,13,0) 44%,rgba(20,16,13,.5) 66%,rgba(20,16,13,.92) 100%)}
+.poveste__panel + .poveste__panel .poveste__img,.poveste__panel + .poveste__panel::after{-webkit-mask-image:linear-gradient(90deg,transparent,#000 28%);mask-image:linear-gradient(90deg,transparent,#000 28%)}
+.poveste__panel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(20,16,13,.55) 0%,rgba(20,16,13,.22) 34%,transparent 58%),linear-gradient(180deg,rgba(20,16,13,.42) 0%,rgba(20,16,13,0) 30%,rgba(20,16,13,0) 44%,rgba(20,16,13,.5) 66%,rgba(20,16,13,.92) 100%)}
+.poveste__caps{position:absolute;z-index:1;left:var(--pad);bottom:clamp(96px,14vh,150px);max-width:min(100% - 2*var(--pad),560px);display:grid;pointer-events:none}
+.poveste__cap{grid-area:1/1;position:relative;opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
 .poveste__cap::before{content:"";position:absolute;z-index:-1;inset:-48px -80px -56px -90px;background:radial-gradient(ellipse at 42% 58%,rgba(20,16,13,.78),rgba(20,16,13,.35) 45%,transparent 72%);pointer-events:none}
-.poveste__panel.on .poveste__cap{opacity:1;transform:none}
+.poveste__cap.on{opacity:1;transform:none;pointer-events:auto}
 .poveste__cap .eyebrow{color:var(--lumina);gap:14px}
 .poveste__cap .eyebrow b{font:700 15px/1 var(--f-display);letter-spacing:.12em;padding:7px 10px;border:1.5px solid var(--lumina);border-radius:999px}
 .poveste__cap h3{font-size:clamp(38px,5.4vw,78px);margin-top:16px;text-shadow:0 4px 30px rgba(0,0,0,.55)}
@@ -331,52 +337,77 @@ button{font:inherit;color:inherit}
 .poveste__act{margin-top:24px}
 .poveste__nav{--p:0;list-style:none;margin:0;padding:18px 0 0;position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:26px;display:flex;justify-content:space-between;gap:16px;font:600 11px/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--text-inv-2);border-top:1px solid rgba(244,238,226,.22)}
 .poveste__nav::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:calc(var(--p) * 100%);background:var(--lumina);transition:width .15s linear}
-.poveste__nav li{display:inline-flex;align-items:center;gap:10px;opacity:.55;transition:opacity .5s,color .5s}
+.poveste__nav li{display:inline-flex;align-items:center;gap:10px;opacity:.72;transition:opacity .5s,color .5s}
 .poveste__nav li b{font:700 13px/1 var(--f-display);letter-spacing:.1em}
 .poveste__nav li.on{opacity:1;color:var(--lumina-2)}
+@media (min-width:821px) and (max-height:560px){
+  .poveste__caps{bottom:72px}
+  .poveste__cap h3{font-size:clamp(28px,7vh,44px);margin-top:10px}
+  .poveste__text{font-size:16px;margin-top:10px}
+  .poveste__act{margin-top:14px}
+}
 @media (max-width:820px){
   .poveste{height:320vh}
-  .poveste__panel + .poveste__panel{margin-left:-10%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%);mask-image:linear-gradient(90deg,transparent,#000 10%)}
-  .poveste__img{inset:0 0 auto 0;height:56%}
-  .poveste__panel:nth-child(n) img{--op:50% 50%}
-  .poveste__panel::after{inset:0 0 auto 0;height:56%;background:linear-gradient(180deg,rgba(20,16,13,.45),rgba(20,16,13,0) 40%,rgba(20,16,13,0) 70%,var(--noapte) 100%)}
-  .poveste__cap{top:52%;bottom:auto;left:var(--pad);right:var(--pad);max-width:none}
+  .poveste__stage{display:grid;grid-template-rows:minmax(0,1fr) auto 64px}
+  .poveste__track{grid-row:1;min-height:0}
+  .poveste__ext{width:18%}
+  .poveste__ext img{width:calc(100% / .18)}
+  .poveste__panel + .poveste__panel .poveste__img,.poveste__panel + .poveste__panel::after{-webkit-mask-image:linear-gradient(90deg,transparent,#000 18%);mask-image:linear-gradient(90deg,transparent,#000 18%)}
+  .poveste__panel::after,.poveste__ext::after{background:linear-gradient(180deg,rgba(20,16,13,.45),rgba(20,16,13,0) 38%,rgba(20,16,13,0) 66%,var(--noapte) 100%)}
+  .poveste__caps{grid-row:2;position:relative;left:auto;bottom:auto;max-width:none;padding:14px var(--pad) 10px}
   .poveste__cap::before{display:none}
-  .poveste__cap h3{font-size:clamp(34px,10vw,44px);text-shadow:none}
-  .poveste__text{font-size:17px;text-shadow:none;color:var(--text-inv-2)}
-  .poveste__nav{bottom:18px}
+  .poveste__cap h3{font-size:clamp(32px,9vw,42px);text-shadow:none;margin-top:12px}
+  .poveste__text{font-size:17px;text-shadow:none;color:var(--text-inv-2);margin-top:12px}
+  .poveste__act{margin-top:18px}
+  .poveste__nav{grid-row:3;position:relative;left:auto;right:auto;bottom:auto;margin:0 var(--pad);align-self:start;padding-top:14px}
   .poveste__nav li{gap:6px}
 }
-
-/* ---- istoric (teaser) ---- */
-.istoric{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,90px);align-items:center}
-@media (max-width:880px){.istoric{grid-template-columns:1fr}}
-.istoric__foto{position:relative}
-.istoric__foto img{border-radius:var(--r);box-shadow:var(--sombra);aspect-ratio:4/3;object-fit:cover}
-.istoric__foto figcaption{position:absolute;left:18px;bottom:18px;background:rgba(20,16,13,.8);color:var(--var);padding:10px 14px;border-radius:8px;font-size:13px;letter-spacing:.04em}
-.quote{font-family:var(--f-quote);font-style:italic;font-size:clamp(21px,2.2vw,28px);line-height:1.45;color:var(--nuc);margin-top:26px;padding-left:22px;border-left:3px solid var(--caramida)}
-.quote cite{display:block;font:600 12px/1 var(--f-body);letter-spacing:.18em;text-transform:uppercase;font-style:normal;color:var(--caramida);margin-top:14px}
-.timp{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:14px}
-.timp li{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:baseline;padding:14px 0;border-top:1px solid var(--var-3)}
-.timp b{font:700 28px/1 var(--f-display);color:var(--caramida)}
-.timp span{color:var(--text-2)}
+@media (max-width:820px) and (max-height:500px){
+  .poveste__stage{grid-template-columns:42% 1fr;grid-template-rows:minmax(0,1fr) 52px}
+  .poveste__track{grid-row:1;grid-column:1}
+  .poveste__caps{grid-row:1;grid-column:2;align-self:center;padding:calc(var(--banner) + var(--nav) + 8px) var(--pad) 8px 18px}
+  .poveste__cap h3{font-size:clamp(24px,6vh,32px);margin-top:8px}
+  .poveste__text{font-size:14px;margin-top:8px}
+  .poveste__act{margin-top:10px}
+  .poveste__nav{grid-row:2;grid-column:1/-1;padding-top:10px}
+}
+/* sem JS ou com movimento reduzido: empilhado */
+.no-js .poveste,.rm .poveste{height:auto}
+.no-js .poveste__stage,.rm .poveste__stage{position:relative;height:auto;overflow:visible;display:grid;grid-template-columns:1fr;grid-template-rows:none}
+.no-js .poveste__track,.rm .poveste__track,.no-js .poveste__caps,.rm .poveste__caps{display:contents}
+.no-js .poveste__panel,.rm .poveste__panel{width:100%;height:min(72vh,66.7vw);overflow:hidden}
+.no-js .poveste__panel .poveste__img,.rm .poveste__panel .poveste__img,.no-js .poveste__panel::after,.rm .poveste__panel::after{-webkit-mask-image:none;mask-image:none;transform:none}
+.no-js .poveste__panel::after,.rm .poveste__panel::after{background:linear-gradient(180deg,rgba(20,16,13,.35),transparent 40%)}
+.no-js .poveste__ext,.rm .poveste__ext{display:none}
+.no-js .poveste__cap,.rm .poveste__cap{grid-area:auto;opacity:1;transform:none;pointer-events:auto;padding:26px var(--pad) 56px;max-width:none}
+.no-js .poveste__cap::before,.rm .poveste__cap::before{display:none}
+.no-js .poveste__cap h3,.rm .poveste__cap h3,.no-js .poveste__text,.rm .poveste__text{text-shadow:none}
+.no-js .poveste__text,.rm .poveste__text{max-width:60ch;color:var(--text-inv-2)}
+.no-js .poveste__panel:nth-child(1),.rm .poveste__panel:nth-child(1){order:1}
+.no-js .poveste__cap:nth-child(1),.rm .poveste__cap:nth-child(1){order:2}
+.no-js .poveste__panel:nth-child(2),.rm .poveste__panel:nth-child(2){order:3}
+.no-js .poveste__cap:nth-child(2),.rm .poveste__cap:nth-child(2){order:4}
+.no-js .poveste__panel:nth-child(3),.rm .poveste__panel:nth-child(3){order:5}
+.no-js .poveste__cap:nth-child(3),.rm .poveste__cap:nth-child(3){order:6}
+.no-js .poveste__nav,.rm .poveste__nav{display:none}
 
 /* ---- cartea de oaspeți (poezii) ---- */
 .oaspeti{position:relative;overflow:hidden}
 .oaspeti::before{content:"";position:absolute;inset:auto -10% -40% -10%;height:80%;background:radial-gradient(ellipse at 50% 100%,rgba(231,184,106,.16),transparent 60%);pointer-events:none}
 .oaspeti__grid{margin-top:44px}
-.versuri{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+.versuri{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
 @media (max-width:880px){.versuri{grid-template-columns:1fr;gap:18px}}
-.poezie{padding:26px 28px;border:1px solid rgba(244,238,226,.12);border-radius:var(--r);background:rgba(244,238,226,.03);position:relative}
+.poezie{display:flex;flex-direction:column;padding:26px 28px;border:1px solid rgba(244,238,226,.12);border-radius:var(--r);background:rgba(244,238,226,.03);position:relative}
 .poezie::before{content:"„";position:absolute;left:18px;top:-2px;font:700 64px/1 var(--f-display);color:var(--lumina);opacity:.5}
 .poezie p{font-family:var(--f-quote);font-style:italic;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--var-2);padding-left:14px}
 .poezie p span{display:block;opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
 .poezie.is-in p span{opacity:1;transform:none}
 .poezie.is-in p span:nth-child(2){transition-delay:.18s}.poezie.is-in p span:nth-child(3){transition-delay:.36s}.poezie.is-in p span:nth-child(4){transition-delay:.54s}
-.poezie cite{display:block;margin-top:14px;padding-left:14px;font:600 11px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;font-style:normal;color:var(--lumina)}
+.poezie cite{display:block;margin-top:auto;padding:14px 0 0 14px;font:600 11px/1.5 var(--f-body);letter-spacing:.2em;text-transform:uppercase;font-style:normal;color:var(--lumina)}
 
 /* ---- carmangeria ---- */
 .carmangeria{background:var(--caramida);color:#fff;position:relative;overflow:hidden}
+.carmangeria::before{content:"";position:absolute;left:-4%;bottom:-46%;width:min(46vw,520px);aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(255,255,255,.14);pointer-events:none}
 .carmangeria::after{content:"";position:absolute;right:-8%;top:-40%;width:52%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 62%);pointer-events:none}
 .carmangeria .eyebrow{color:var(--lumina-2)}
 .carmangeria__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,70px);align-items:end}
@@ -481,22 +512,20 @@ button{font:inherit;color:inherit}
   .hero__photo img{filter:saturate(1) brightness(.9);transform:none}
   .card{transform:none!important}
   .marquee__track{animation:none}
-  .bolta{height:auto}
-  .bolta__stage{position:relative;height:auto;min-height:88vh;padding:calc(var(--banner) + var(--nav) + 48px) 0 64px}
-  .bolta__stage canvas{position:absolute}
-  .bolta__caps{position:relative;inset:auto;display:grid;gap:40px;grid-auto-rows:auto;place-items:center}
-  .bolta__cap{grid-area:auto;opacity:1;transform:none}
-  .bolta__hint{display:none}
-  .poveste{height:auto}
-  .poveste__stage{position:relative;height:auto;overflow:visible}
-  .poveste__track{display:grid;transform:none!important}
-  .poveste__panel{width:auto;height:auto;min-height:78vh;margin:0;-webkit-mask-image:none;mask-image:none}
-  .poveste__panel::after{inset:0;height:auto}
-  .poveste__img{inset:0;height:auto}
-  .poveste__img img{transform:none}
-  .poveste__cap{opacity:1;transform:none;top:auto;bottom:clamp(48px,8vh,96px)}
-  .poveste__nav{display:none}
 }
+/* sem JS: tudo visível; boltă e poveste estáticas (a classe .rm vem do script do head com movimento reduzido) */
+.no-js #cb-intro{display:none}
+.no-js .nav{background:rgba(20,16,13,.94)}
+.no-js .rv,.no-js .hero .hero__seal,.no-js .hero h1 .l,.no-js .hero__lead,.no-js .hero__cta,.no-js .hero__strip,.no-js .poezie p span{opacity:1;transform:none}
+.no-js .fel__leader{transform:scaleX(1)}
+.no-js .hero__photo img{filter:saturate(1) brightness(.9);transform:none}
+.no-js .marquee__track{animation:none}
+.no-js .bolta,.rm .bolta{height:auto}
+.no-js .bolta__stage,.rm .bolta__stage{position:relative;height:auto;min-height:88vh;padding:calc(var(--banner) + var(--nav) + 48px) 0 64px}
+.no-js .bolta__stage canvas,.rm .bolta__stage canvas{position:absolute}
+.no-js .bolta__caps,.rm .bolta__caps{position:relative;inset:auto;display:grid;gap:40px;grid-auto-rows:auto;place-items:center}
+.no-js .bolta__cap,.rm .bolta__cap{grid-area:auto;opacity:1;transform:none}
+.no-js .bolta__hint,.rm .bolta__hint{display:none}
 
 </style>
 <style>
@@ -739,11 +768,12 @@ button{font:inherit;color:inherit}
   if (pov && !reduzido) {
     var stage = pov.querySelector(".poveste__stage"), track = pov.querySelector(".poveste__track");
     var paineis = Array.prototype.slice.call(pov.querySelectorAll(".poveste__panel"));
-    var imagens = paineis.map(function (p) { return p.querySelector("img"); });
+    var imagens = paineis.map(function (p) { return p.querySelector(".poveste__img"); });
+    var caps = Array.prototype.slice.call(pov.querySelectorAll(".poveste__cap"));
     var passos = Array.prototype.slice.call(pov.querySelectorAll(".poveste__nav li"));
     var navP = pov.querySelector(".poveste__nav");
     var n = paineis.length, PAUSA = 0.15, DESLIZE = (1 - n * PAUSA) / (n - 1);
-    var alvo = 0, pos = 0, maxX = 0, visivel = false, ultimo = 0, idxAtual = -1;
+    var alvo = 0, pos = 0, maxX = 0, visivel = false, aCorrer = false, ultimo = 0, idxAtual = -1;
     var suave = function (x) { return x * x * (3 - 2 * x); };
     var curva = function (p) {                       // 0..1 → posição 0..n-1, com paragem em cada capítulo
       for (var k = 0; k < n - 1; k++) {
@@ -753,45 +783,50 @@ button{font:inherit;color:inherit}
       }
       return n - 1;
     };
-    var medir = function () { maxX = track.scrollWidth - stage.clientWidth; };
-    var aoScroll = function () {
-      var r = pov.getBoundingClientRect(), total = r.height - window.innerHeight;
-      alvo = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
-    };
+    var medir = function () { maxX = track.clientWidth * (n - 1); };
     var aplicar = function () {
       track.style.transform = "translate3d(" + (-pos / (n - 1) * maxX).toFixed(2) + "px,0,0)";
-      imagens.forEach(function (img, i) { img.style.setProperty("--px", ((i - pos) * 4.5).toFixed(2) + "%"); });
+      imagens.forEach(function (img, i) { img.style.setProperty("--px", ((pos - i) * 8).toFixed(2) + "%"); });   // a foto anda mais devagar do que a moldura
       var idx = Math.round(pos);
       if (idx !== idxAtual) {
         idxAtual = idx;
-        paineis.forEach(function (p, i) { p.classList.toggle("on", i === idx); });
+        caps.forEach(function (c, i) { c.classList.toggle("on", i === idx); });
         passos.forEach(function (li, i) { li.classList.toggle("on", i === idx); });
       }
-      if (navP) navP.style.setProperty("--p", (pos / (n - 1)).toFixed(3));
     };
     var ciclo = function (t) {
-      if (!visivel) return;
+      if (!visivel) { aCorrer = false; return; }
       var dt = Math.min(0.05, (t - ultimo) / 1000 || 0.016); ultimo = t;
       var destino = curva(alvo);
       pos += (destino - pos) * Math.min(1, dt * 7);
       if (Math.abs(destino - pos) < 0.0005) pos = destino;
       aplicar();
+      if (pos === destino) { aCorrer = false; return; }   // parado: nada a animar até ao próximo scroll
       requestAnimationFrame(ciclo);
+    };
+    var acordar = function () {
+      if (visivel && !aCorrer) { aCorrer = true; ultimo = performance.now(); requestAnimationFrame(ciclo); }
+    };
+    var aoScroll = function () {
+      var r = pov.getBoundingClientRect(), total = r.height - stage.offsetHeight;
+      alvo = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+      if (navP) navP.style.setProperty("--p", alvo.toFixed(3));   // a linha segue o scroll; os painéis têm as pausas
+      acordar();
     };
     new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         var antes = visivel; visivel = e.isIntersecting;
-        if (visivel && !antes) { medir(); aoScroll(); ultimo = performance.now(); requestAnimationFrame(ciclo); }
+        if (visivel && !antes) { medir(); aoScroll(); pos = curva(alvo); aplicar(); acordar(); }   // entra já no sítio certo
       });
     }, { rootMargin: "10% 0px" }).observe(pov);
     window.addEventListener("scroll", aoScroll, { passive: true });
     window.addEventListener("resize", function () { medir(); aoScroll(); aplicar(); });
-    /* foco por teclado: leva o scroll até ao capítulo com a ligação, para não ficar fora do ecrã */
+    /* foco por teclado numa legenda escondida: leva o scroll até ao capítulo dela */
     pov.addEventListener("focusin", function (e) {
-      var i = paineis.indexOf(e.target.closest(".poveste__panel"));
-      if (i < 0) return;
+      var i = caps.indexOf(e.target.closest(".poveste__cap"));
+      if (i < 0 || i === idxAtual) return;
       var meio = PAUSA * (i + 0.5) + DESLIZE * i;
-      window.scrollTo({ top: pov.offsetTop + meio * (pov.offsetHeight - window.innerHeight), behavior: "auto" });
+      window.scrollTo({ top: pov.offsetTop + meio * (pov.offsetHeight - stage.offsetHeight), behavior: "instant" });
     });
     medir(); aoScroll(); pos = curva(alvo); aplicar();
   }
