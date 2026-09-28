@@ -81,6 +81,21 @@ Portas extra na mesma rua (rating e site a confirmar): Ego Hair Studio (Vasile L
 
 Portas extra: CAPSULA X Nicolina (4,2 map24, 17 opiniões citymaps; FB), Frizerie Katy (Șos. Nicolina 79), Atractiv Barber shop (Șos. Nicolina 88, [deschis.ro](https://deschis.ro/iasi/atractiv-barber-shop-137117)). Em Tudor Vladimirescu, sem dados além da morada: Salon Sei Bella (nº 46) e Salon MONNE (nº 83) ([frizerie123](https://frizerie123.ro/cat/frizerie-iasi-iasi-romania/)). ⚠ Fat Cat: a pesquisa de 28/09 devolveu **fatcat.ro** — confirmar se é o site deles antes de qualquer demo.
 
+### Copou de baixo — Toma Cozma / Lascăr Catargi (pesquisa de 28/09, a partir do Liceul de Informatică, Str. Petre Andrei 9)
+
+| Negócio | Tipo | Morada | O que se sabe | Site | Fontes |
+|---|---|---|---|---|---|
+| **The Paper Cup** | café de especialidade / coffee to go | Str. Toma Cozma 5 (entre a Fac. de Sport da UAIC e a reprografia Duplex, em frente ao Liceul Negruzzi) | tel. 0745 469 554; uma listagem da mesma morada dá 4,92 com 74 opiniões e 2.ª–6.ª 7:30–18:30, sáb. 9–16, dom. fechado — confirmar que é este | não encontrado; FB | [cafenea123](https://cafenea123.ro/the-paper-cup-strada-toma-cozma-5-iasi-700554/) · [polomap](https://ro.polomap.com/ia%C8%99i/3320) · [FB](https://www.facebook.com/thepapercupiasi/) · [Yably](https://yably.ro/cafenele-si-ceainarii/iasi-municipiul-iasi) |
+| **Red Pipes** | bistrô (café, sumos, almoço) | Str. Toma Cozma 5 | reservas pelo ialoc | a confirmar | [ialoc](https://ialoc.ro/restaurante-iasi/red-pipes-rezervari-3414) |
+| **Hills Specialty Coffee** | café de especialidade | Str. Lascăr Catargi 16 | no TripAdvisor e no destinationiasi (top 5 specialty) | a confirmar | [TA](https://www.tripadvisor.com/Restaurant_Review-g304060-d15582289-Reviews-Hills_Specialty_Coffee-Iasi_Iasi_County_Northeast_Romania.html) · [destinationiasi](https://destinationiasi.ro/top-five-specialty-coffee-shops-in-the-city/) |
+| **Phenicie** | cozinha libanesa | Str. Lascăr Catargi 16 (ao lado do Oscar) | 9:00–24:00 (fonte única) | a confirmar | [iasi365](https://iasi365.com/cafenele-puburi-si-baruri/8056-baruri-si-cafenele-iasi) |
+| **Restaurant Oscar** | restaurante, piano ao vivo | Str. Lascăr Catargi 12-16 | 10:30–24:00; Bookingham, Findatable | **já tem** (restaurant-oscar.ro) — só "elevar" | [site](https://restaurant-oscar.ro/) · [Bookingham](https://bookingham.ro/iasi/restaurante/restaurant-oscar/1565) |
+| **Retro Cafe** | café | Str. Lascăr Catargi 50 | 4,66 com 1.659 opiniões (Firmania/Yably); tel. 0771 324 806 | **já tem** (retrocafe.ro) — 3 falhas ao vivo ou pack QR | [Firmania](https://firmania.ro/iasi/retro-cafe-145154) · [Yably](https://yably.ro/recenzii/iasi/retro-cafe-strada-lascar-catargi-nr-50) |
+| Voilà Caffè · café no nº 37 (tel. 0755 037 235) | cafés | Str. Lascăr Catargi | sem dados | a confirmar | [iasi365](https://iasi365.com/cafenele-puburi-si-baruri/8056-baruri-si-cafenele-iasi) |
+| **Teo's Cafe** | café | Aleea Veronica Micle 4, Copou | sem dados | a confirmar | [2pos](https://2pos.tips/134058/1218) |
+
+Na mesma zona já listados: Harmony Cafe (Carol I 27, **fecha dom. e 2.ª**), MUSE/Caucaz/Boulevard (Carol I, já têm site), reprografias Stef (Carol I 8) e Adi Center (Carol I 25).
+
 ### Canta, Păcurari e resto (ver primeiro no mapa)
 
 | Negócio | Tipo | Morada | Rating (plataforma) | Avaliações | Site e redes | Fontes |
