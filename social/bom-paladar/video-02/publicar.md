@@ -8,7 +8,7 @@ Reel 9:16, 1080×1920, 24,5 s, sem som (escolher música no Instagram, ver abaix
 |---|---|---|
 | 0–2 | Grelha de 9 pratos a acender + "Ainda não jantou aqui?" + ALMANCIL · ALGARVE | Parar o scroll de quem é de cá. A pergunta faz a pessoa responder na cabeça. |
 | 2–5 | **Vídeo real** do Bacalhau Bom Paladar | Prova: comida a mexer, não é banco de imagens. |
-| 5–13 | 8 pratos em cortes de ~1 s: arroz de tamboril, salmão, **vídeo real** do caril, carré, Bife Pop's, tábua, espetada, ninho de caramelo | Variedade. Do mar, da terra, para partilhar, para acabar. |
+| 5–13,6 | **Montra:** duas filas de cards em perspetiva a deslizar em sentidos opostos, com 12 pratos e o **vídeo real** do caril a correr dentro de um card. Texto: Do mar. · Da terra. · Para partilhar. · Para acabar. | Variedade num só olhar, sem ficar preso a um prato. |
 | 13–17 | A porta à noite + "Chegue." + morada e horário | Onde é e quando está aberto, sem ter de procurar. |
 | 17–21 | Ecrã de WhatsApp: a mensagem "Olá! Mesa para 2, sexta às 20h?" a ser escrita e enviada | Tira o atrito da reserva: é uma mensagem, e o vídeo até dá o texto. |
 | 21–24,5 | "Sente-se." + botão RESERVE PELO WHATSAPP + **918 958 233** grande + morada, site, horário | Fecho. O número fica no ecrã 3,5 s, tempo de o ler e decorar. |
@@ -47,4 +47,4 @@ Os dois últimos hashtags são de propósito: quem está no Quinta do Lago e em 
 - Tudo é foto e vídeo real da casa; nada foi gerado.
 - A conversa de WhatsApp mostra só a mensagem do cliente a ser enviada. Não inventámos resposta da casa.
 - Sem preços (a carta que temos é de 13/07).
-- Confirmar com a Simona que os 9 pratos do vídeo continuam na carta.
+- Confirmar com a Simona que os 12 pratos da montra continuam na carta.

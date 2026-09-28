@@ -21,6 +21,13 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 .t3 b{color:var(--caramelo);margin:0 .45em}
 .pill{display:inline-block;background:var(--creme);color:var(--choc);border-radius:999px;padding:0 44px;height:96px;font:600 34px/96px 'Work Sans',sans-serif;letter-spacing:.14em}
 .num{font:600 92px/1 'Work Sans',sans-serif;letter-spacing:.02em;color:var(--creme)}
+/* montra de cards */
+.montra{position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 40%,#5a3324 0,#2E160E 70%);perspective:1600px;overflow:hidden}
+.fila{position:absolute;left:0;height:640px;display:flex;gap:34px;transform-style:preserve-3d;will-change:transform}
+.card{flex:none;width:480px;height:640px;border-radius:28px;overflow:hidden;box-shadow:0 40px 70px -24px rgba(0,0,0,.7),0 0 0 2px rgba(255,255,255,.08);background:#000}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.montra .sombra{background:linear-gradient(0deg,rgba(46,22,14,.98) 0,rgba(46,22,14,.9) 14%,rgba(46,22,14,0) 24%),linear-gradient(180deg,rgba(46,22,14,.7) 0,rgba(46,22,14,0) 12%)}
+.montra .txt{opacity:0}
 /* WhatsApp */
 .wa{position:absolute;inset:0;background:#ECE5DD}
 .wa .cab{position:absolute;top:0;left:0;right:0;height:210px;background:#075E54;display:flex;align-items:flex-end;padding:0 40px 30px;gap:24px;color:#fff}
@@ -51,14 +58,16 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
   <p class="txt t3" style="top:1670px">assinatura da casa</p>
 </section>
 
-<section class="shot" id="s-mar"><img class="foto" src="img/arroz.jpg"><div class="sombra"></div><p class="txt t1" style="top:1520px">Do mar.</p></section>
-<section class="shot" id="s-salmao"><img class="foto" src="img/salmao.jpg"><div class="sombra"></div><p class="txt t1" style="top:1520px">Do mar.</p></section>
-<section class="shot" id="s-caril"><img class="foto" id="v2"><div class="sombra"></div><p class="txt t1" style="top:1520px">Do mar.</p></section>
-<section class="shot" id="s-carre"><img class="foto" src="img/carre.jpg"><div class="sombra"></div><p class="txt t1" style="top:1520px">Da terra.</p></section>
-<section class="shot" id="s-pops"><img class="foto" src="img/pops.jpg"><div class="sombra"></div><p class="txt t1" style="top:1520px">Da terra.</p></section>
-<section class="shot" id="s-tabua"><img class="foto" src="img/tabua.jpg"><div class="sombra"></div><p class="txt t1" style="top:1520px">Para partilhar.</p></section>
-<section class="shot" id="s-espetada"><img class="foto" src="img/espetada.jpg"><div class="sombra"></div><p class="txt t1" style="top:1520px">Para partilhar.</p></section>
-<section class="shot" id="s-ninho"><img class="foto" src="img/ninho.jpg"><div class="sombra"></div><p class="txt t1" style="top:1520px">Para acabar.</p></section>
+<section class="shot" id="s-montra"><div class="montra">
+  <div class="fila" id="fila1" style="top:230px"><div class="card"><img src="img/arroz-c.jpg"></div><div class="card"><img src="img/salmao-c.jpg"></div><div class="card"><img id="v2"></div><div class="card"><img src="img/camarao-c.jpg"></div><div class="card"><img src="img/tachos-c.jpg"></div><div class="card"><img src="img/arroz-c.jpg"></div><div class="card"><img src="img/salmao-c.jpg"></div><div class="card"><img src="img/camarao-c.jpg"></div></div>
+  <div class="fila" id="fila2" style="top:900px"><div class="card"><img src="img/pops-c.jpg"></div><div class="card"><img src="img/carre-c.jpg"></div><div class="card"><img src="img/tabua-c.jpg"></div><div class="card"><img src="img/espetada-c.jpg"></div><div class="card"><img src="img/ninho-c.jpg"></div><div class="card"><img src="img/carpaccio-c.jpg"></div><div class="card"><img src="img/pops-c.jpg"></div><div class="card"><img src="img/carre-c.jpg"></div><div class="card"><img src="img/tabua-c.jpg"></div></div>
+  <div class="sombra"></div>
+  <p class="tag">A carta<b>·</b>Simona’s O Bom Paladar</p>
+  <p class="txt t1" style="top:1610px">Do mar.</p>
+  <p class="txt t1" style="top:1610px">Da terra.</p>
+  <p class="txt t1" style="top:1610px">Para partilhar.</p>
+  <p class="txt t1" style="top:1610px">Para acabar.</p>
+</div></section>
 
 <section class="shot" id="s-porta"><img class="foto" src="img/porta.jpg"><div class="sombra topo"></div>
   <p class="tag">Simona’s<b>·</b>O Bom Paladar</p>
@@ -93,9 +102,8 @@ const MSG="Olá! Mesa para 2, sexta às 20h?";
 // timeline (segundos)
 const T=[
  ["s-gancho",0,2.2],["s-bacalhau",2.2,5.0],
- ["s-mar",5.0,6.0],["s-salmao",6.0,6.9],["s-caril",6.9,8.2],["s-carre",8.2,9.1],["s-pops",9.1,10.1],
- ["s-tabua",10.1,11.1],["s-espetada",11.1,12.0],["s-ninho",12.0,13.2],
- ["s-porta",13.2,17.0],["s-wa",17.0,21.0],["s-fim",21.0,24.5]];
+ ["s-montra",5.0,13.6],
+ ["s-porta",13.6,17.0],["s-wa",17.0,21.0],["s-fim",21.0,24.5]];
 const DUR=24.5;
 function kb(el,tl,dur,from,to,ox,oy){const p=ease(clamp(tl/dur,0,1));const s=from+(to-from)*p;el.style.transformOrigin=ox+"% "+oy+"%";el.style.transform="scale("+s.toFixed(4)+")";}
 function rise(el,tl,t0,d=.35,dy=40){const p=ease(clamp((tl-t0)/d,0,1));el.style.opacity=p;el.style.transform="translateY("+((1-p)*dy).toFixed(1)+"px)";}
@@ -108,6 +116,13 @@ function render(t){
         const z=ease(clamp((tl-1.9)/.3,0,1));el.querySelector(".grelha").style.transform="scale("+(1+z*2.2).toFixed(3)+")";el.querySelector(".grelha").style.transformOrigin="50% 50%";break;}
       case "s-bacalhau":{const i=clamp(Math.round(tl*FPS)+1,1,N1);foto.src="img/v1/"+String(i).padStart(3,"0")+".jpg";foto.style.transform="scale(1.06)";rise(txts[0],tl,.25);rise(txts[1],tl,.45);break;}
       case "s-caril":{const i=clamp(Math.round(tl*FPS)+1,1,N2);foto.src="img/v2/"+String(i).padStart(3,"0")+".jpg";foto.style.transform="scale(1.06)";rise(txts[0],tl,0,.2,20);break;}
+      case "s-montra":{const f1=$("fila1"),f2=$("fila2");
+        const x1=-(tl*250)%(8*514), x2=-1600+(tl*190)%(9*514);
+        f1.style.transform="translateX("+x1.toFixed(1)+"px) rotateY(-14deg) translateZ(-120px)";
+        f2.style.transform="translateX("+x2.toFixed(1)+"px) rotateY(14deg) translateZ(-120px)";
+        const vi=clamp(Math.round(((tl*FPS)%(N2+20)))+1,1,N2);$("v2").src="img/v2/"+String(vi).padStart(3,"0")+".jpg";
+        const seg=2.15;txts.forEach((el,i)=>{const a=i*seg,b=a+seg;const p=Math.min(ease(clamp((tl-a)/.3,0,1)),1-ease(clamp((tl-b+.25)/.25,0,1)));el.style.opacity=p;el.style.transform="translateY("+((1-p)*30).toFixed(1)+"px)";});
+        el.querySelector(".tag").style.opacity=clamp(tl/.4,0,1);break;}
       case "s-porta":{kb(foto,tl,dur,1.0,1.18,50,42);rise(txts[0],tl,.3,.5,50);rise(txts[1],tl,.9,.5,30);break;}
       case "s-wa":{const n=clamp(Math.floor((tl-.5)/1.6*MSG.length),0,MSG.length);$("digita").textContent=MSG.slice(0,n);$("cur").style.opacity=(tl<2.2&&Math.floor(tl*3)%2===0)?1:0;
         const sent=tl>=2.35;$("digita").textContent=sent?"":MSG.slice(0,n);const p=ease(clamp((tl-2.35)/.3,0,1));const bal=$("balao");bal.style.opacity=sent?1:0;bal.style.transform="scale("+(0.6+0.4*p).toFixed(3)+")";
