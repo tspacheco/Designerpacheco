@@ -272,8 +272,8 @@ const fs = require('fs');
     await p.click('.tabs a[href="#proiecte"]');
     if (!(await vis('proiecte'))) mal(`${k}: voltar aos projetos falhou`);
     // sites em destaque, sites dentro de cada tipo de negócio e exemplos: cada ligação interna tem de existir
-    const hrefs = await p.$$eval('.grelha .q, .exemplos a, .link-ex', as => as.map(a => a.getAttribute('href')));
-    const semSep = await p.$$eval('.grelha .q[href^=http], .exemplos a[href^=http]', as => as.filter(a => a.target !== '_blank').length);
+    const hrefs = await p.$$eval('.grelha .q, .grelha-mais .q, .exemplos a, .link-ex', as => as.map(a => a.getAttribute('href')));
+    const semSep = await p.$$eval('.grelha .q[href^=http], .grelha-mais .q[href^=http], .exemplos a[href^=http]', as => as.filter(a => a.target !== '_blank').length);
     // sem grelha com todos, sem «O teu negócio?»: cada site ativo aparece uma vez num tipo de negócio
     const setores = await p.$$eval('details.setor', ds => ds.map(d => ({ id: d.id, n: d.querySelectorAll('.exemplos a').length,
       qa: d.querySelectorAll('.perguntas dt').length, combina: d.querySelectorAll('.chips a').length })));
@@ -283,6 +283,9 @@ const fs = require('fs');
     if (setores.length !== 4 || setores.some(x => !x.qa || !x.combina)) mal(`${k}: tipos de negócio ${JSON.stringify(setores)}`);
     if (emFalta.length || nosSetores.length !== ativos.length) mal(`${k}: sites fora dos tipos de negócio: ${emFalta.join(', ')} (${nosSetores.length}/${ativos.length})`);
     if (await p.$('.q.teu, .grelha > li:not(.dest)')) mal(`${k}: a grelha ainda tem mais do que os três em destaque`);
+    // «Mais sites»: todos os outros sites ativos, sem o quadrado de contacto
+    const mais = await p.$$eval('.grelha-mais .q', as => as.map(a => a.getAttribute('href')));
+    if (mais.length !== ativos.length - 3 || await p.$('.grelha-mais .teu')) mal(`${k}: «Mais sites» com ${mais.length} sites (esperava ${ativos.length - 3})`);
     // «Combina com» leva à automação e abre-a
     await p.click('.tabs a[href="#proiecte"]');
     await p.click('#s-restauracao summary');

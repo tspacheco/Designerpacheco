@@ -264,6 +264,9 @@ def vista_proiecte(c, portfolio, lang, digitos):
             raise SystemExit(f"conteudo/{lang}.json: o tipo «{s['id']}» combina com automações que não existem")
     selecao = "\n".join(quadrado(x, p, i, lang) for i, x in enumerate(dest))
     cartoes = "\n".join(cartao_setor(s, i, itens, p, lang, autos, digitos) for i, s in enumerate(p["setores"]))
+    # os outros sites, em grelha, para mostrar mais variações: sem quadrado de contacto nem «+» (decisão de 29/09)
+    resto = [x for x in itens if not x.get("destaque")]
+    mais = "\n".join(quadrado(x, p, i, lang) for i, x in enumerate(resto))
     cu = p["cuidado"]
     compromissos = "\n".join(f'<li class="rv" style="--i:{i}"><h3>{e(x["t"])}</h3><p>{e(x["d"])}</p></li>'
                              for i, x in enumerate(cu["itens"]))
@@ -286,6 +289,13 @@ def vista_proiecte(c, portfolio, lang, digitos):
       <div class="setores">
 {cartoes}
       </div>
+    </div>
+    <div class="mais">
+      <p class="eyebrow">{e(p["mais_e"])}</p>
+      <p class="lead">{e(p["mais_intro"])}</p>
+      <ul class="grelha-mais">
+{mais}
+      </ul>
     </div>
     <div class="cuidado">
       <p class="eyebrow">{e(cu["eyebrow"])}</p>
