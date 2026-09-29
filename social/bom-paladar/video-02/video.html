@@ -21,12 +21,14 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 .t3 b{color:var(--caramelo);margin:0 .45em}
 .pill{display:inline-block;background:var(--creme);color:var(--choc);border-radius:999px;padding:0 44px;height:96px;font:600 34px/96px 'Work Sans',sans-serif;letter-spacing:.14em}
 .num{font:600 92px/1 'Work Sans',sans-serif;letter-spacing:.02em;color:var(--creme)}
-/* montra de cards */
-.montra{position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 40%,#5a3324 0,#2E160E 70%);perspective:1600px;overflow:hidden}
-.fila{position:absolute;left:0;height:640px;display:flex;gap:34px;transform-style:preserve-3d;will-change:transform}
-.card{flex:none;width:480px;height:640px;border-radius:28px;overflow:hidden;box-shadow:0 40px 70px -24px rgba(0,0,0,.7),0 0 0 2px rgba(255,255,255,.08);background:#000}
+/* montra de cards sobre a sala */
+.montra{position:absolute;inset:0;overflow:hidden;background:#2E160E}
+.montra .sala{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;transform-origin:50% 40%;will-change:transform,filter}
+.montra .veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,22,14,.55) 0,rgba(46,22,14,.15) 30%,rgba(46,22,14,.2) 60%,rgba(46,22,14,.95) 100%)}
+.palco3d{position:absolute;inset:0;perspective:1400px;perspective-origin:50% 42%}
+.card{position:absolute;top:470px;left:0;width:620px;height:827px;border-radius:26px;overflow:hidden;transform-origin:50% 50%;
+  box-shadow:0 50px 80px -30px rgba(0,0,0,.75),0 0 0 1.5px rgba(255,255,255,.10);background:#000;will-change:transform}
 .card img{width:100%;height:100%;object-fit:cover;display:block}
-.montra .sombra{background:linear-gradient(0deg,rgba(46,22,14,.98) 0,rgba(46,22,14,.9) 14%,rgba(46,22,14,0) 24%),linear-gradient(180deg,rgba(46,22,14,.7) 0,rgba(46,22,14,0) 12%)}
 .montra .txt{opacity:0}
 /* WhatsApp */
 .wa{position:absolute;inset:0;background:#ECE5DD}
@@ -59,14 +61,14 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 </section>
 
 <section class="shot" id="s-montra"><div class="montra">
-  <div class="fila" id="fila1" style="top:230px"><div class="card"><img src="img/arroz-c.jpg"></div><div class="card"><img src="img/salmao-c.jpg"></div><div class="card"><img id="v2"></div><div class="card"><img src="img/camarao-c.jpg"></div><div class="card"><img src="img/tachos-c.jpg"></div><div class="card"><img src="img/arroz-c.jpg"></div><div class="card"><img src="img/salmao-c.jpg"></div><div class="card"><img src="img/camarao-c.jpg"></div></div>
-  <div class="fila" id="fila2" style="top:900px"><div class="card"><img src="img/pops-c.jpg"></div><div class="card"><img src="img/carre-c.jpg"></div><div class="card"><img src="img/tabua-c.jpg"></div><div class="card"><img src="img/espetada-c.jpg"></div><div class="card"><img src="img/ninho-c.jpg"></div><div class="card"><img src="img/carpaccio-c.jpg"></div><div class="card"><img src="img/pops-c.jpg"></div><div class="card"><img src="img/carre-c.jpg"></div><div class="card"><img src="img/tabua-c.jpg"></div></div>
-  <div class="sombra"></div>
+  <img class="sala" id="sala" src="img/porta.jpg">
+  <div class="veu"></div>
+  <div class="palco3d" id="palco3d"><div class="card"><img src="img/arroz-c.jpg"></div><div class="card"><img src="img/salmao-c.jpg"></div><div class="card"><img id="v2"></div><div class="card"><img src="img/camarao-c.jpg"></div><div class="card"><img src="img/carre-c.jpg"></div><div class="card"><img src="img/pops-c.jpg"></div><div class="card"><img src="img/espetada-c.jpg"></div><div class="card"><img src="img/tabua-c.jpg"></div><div class="card"><img src="img/carpaccio-c.jpg"></div><div class="card"><img src="img/ninho-c.jpg"></div><div class="card"><img src="img/tachos-c.jpg"></div></div>
   <p class="tag">A carta<b>·</b>Simona’s O Bom Paladar</p>
-  <p class="txt t1" style="top:1610px">Do mar.</p>
-  <p class="txt t1" style="top:1610px">Da terra.</p>
-  <p class="txt t1" style="top:1610px">Para partilhar.</p>
-  <p class="txt t1" style="top:1610px">Para acabar.</p>
+  <p class="txt t1" style="top:1440px">Do mar.</p>
+  <p class="txt t1" style="top:1440px">Da terra.</p>
+  <p class="txt t1" style="top:1440px">Para partilhar.</p>
+  <p class="txt t1" style="top:1440px">Para acabar.</p>
 </div></section>
 
 <section class="shot" id="s-porta"><img class="foto" src="img/porta.jpg"><div class="sombra topo"></div>
@@ -116,14 +118,20 @@ function render(t){
         const z=ease(clamp((tl-1.9)/.3,0,1));el.querySelector(".grelha").style.transform="scale("+(1+z*2.2).toFixed(3)+")";el.querySelector(".grelha").style.transformOrigin="50% 50%";break;}
       case "s-bacalhau":{const i=clamp(Math.round(tl*FPS)+1,1,N1);foto.src="img/v1/"+String(i).padStart(3,"0")+".jpg";foto.style.transform="scale(1.06)";rise(txts[0],tl,.25);rise(txts[1],tl,.45);break;}
       case "s-caril":{const i=clamp(Math.round(tl*FPS)+1,1,N2);foto.src="img/v2/"+String(i).padStart(3,"0")+".jpg";foto.style.transform="scale(1.06)";rise(txts[0],tl,0,.2,20);break;}
-      case "s-montra":{const f1=$("fila1"),f2=$("fila2");
-        const x1=-(tl*250)%(8*514), x2=-1600+(tl*190)%(9*514);
-        f1.style.transform="translateX("+x1.toFixed(1)+"px) rotateY(-14deg) translateZ(-120px)";
-        f2.style.transform="translateX("+x2.toFixed(1)+"px) rotateY(14deg) translateZ(-120px)";
+      case "s-montra":{
+        const sair=ease(clamp((tl-dur+.55)/.55,0,1));            // último meio segundo: os cards saem, a sala fica nítida
+        const sala=$("sala");const sc=1.30-0.10*(tl/dur);sala.style.transform="scale("+sc.toFixed(4)+")";
+        sala.style.filter="blur("+(14*(1-sair)).toFixed(1)+"px) brightness("+(0.62+0.28*sair).toFixed(2)+")";
+        const off=tl*520+sair*1600, cards=$("palco3d").children, PITCH=640;
+        for(let i=0;i<cards.length;i++){const x=230+i*PITCH-off;const cx=x+310;const d=(cx-540)/540;
+          const on=x>-700&&x<1800;cards[i].style.display=on?"block":"none";if(!on)continue;
+          const ad=Math.min(Math.abs(d),2);const s=1.04-0.17*ad;const ry=clamp(-d*14,-28,28);const z=-ad*120;
+          cards[i].style.transform="translateX("+x.toFixed(1)+"px) translateZ("+z.toFixed(0)+"px) rotateY("+ry.toFixed(1)+"deg) scale("+s.toFixed(3)+")";
+          cards[i].style.zIndex=String(100-Math.round(ad*30));cards[i].style.opacity=1-sair*0.2;}
         const vi=clamp(Math.round(((tl*FPS)%(N2+20)))+1,1,N2);$("v2").src="img/v2/"+String(vi).padStart(3,"0")+".jpg";
-        const seg=2.15;txts.forEach((el,i)=>{const a=i*seg,b=a+seg;const p=Math.min(ease(clamp((tl-a)/.3,0,1)),1-ease(clamp((tl-b+.25)/.25,0,1)));el.style.opacity=p;el.style.transform="translateY("+((1-p)*30).toFixed(1)+"px)";});
-        el.querySelector(".tag").style.opacity=clamp(tl/.4,0,1);break;}
-      case "s-porta":{kb(foto,tl,dur,1.0,1.18,50,42);rise(txts[0],tl,.3,.5,50);rise(txts[1],tl,.9,.5,30);break;}
+        const seg=2.0;txts.forEach((el,i)=>{const a=.2+i*seg,b=a+seg;const p=Math.min(ease(clamp((tl-a)/.3,0,1)),1-ease(clamp((tl-b+.25)/.25,0,1)))*(1-sair);el.style.opacity=p;el.style.transform="translateY("+((1-p)*30).toFixed(1)+"px)";});
+        el.querySelector(".tag").style.opacity=clamp(tl/.4,0,1)*(1-sair);break;}
+      case "s-porta":{kb(foto,tl,dur,1.20,1.32,50,40);rise(txts[0],tl,.3,.5,50);rise(txts[1],tl,.9,.5,30);break;}
       case "s-wa":{const n=clamp(Math.floor((tl-.5)/1.6*MSG.length),0,MSG.length);$("digita").textContent=MSG.slice(0,n);$("cur").style.opacity=(tl<2.2&&Math.floor(tl*3)%2===0)?1:0;
         const sent=tl>=2.35;$("digita").textContent=sent?"":MSG.slice(0,n);const p=ease(clamp((tl-2.35)/.3,0,1));const bal=$("balao");bal.style.opacity=sent?1:0;bal.style.transform="scale("+(0.6+0.4*p).toFixed(3)+")";
         const tp=el.querySelector(".topo");tp.style.opacity=ease(clamp((tl-.15)/.35,0,1));break;}
