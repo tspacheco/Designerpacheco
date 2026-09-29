@@ -85,14 +85,16 @@ Regras: não mudar público nem texto durante o teste (reinicia a aprendizagem);
 
 Música: só da Coleção de Sons da Meta / biblioteca do editor do anúncio (músicas do Instagram não podem ir em anúncios). A: piano/cinemático calmo. B: eletrónica minimal / lo-fi com ritmo. Volume baixo; o vídeo tem de funcionar sem som.
 
-## Texto final — Variação A (Bolta Rece)
+## Texto final — Variação A (Bolta Rece) · alinhado com o guião do vídeo
 
-> Bolta Rece — o casă cu poveste din 1786, unul dintre cele mai iubite restaurante din Iași.
+> Am refăcut site-ul unuia dintre cele mai cunoscute restaurante din Iași. 🍷
 >
-> Ne-am întrebat: cum ar arăta site-ul unui loc ca acesta, dacă ar fi făcut azi?
-> Așa că l-am construit. (Concept neoficial, creat de Pacheco Studios.)
+> Bolta Rece, din 1786: rama de pe prima pagină se deschide, intri pe prispă, cobori în salon și ajungi în bolta cu vinuri — exact ca în casa adevărată.
 >
-> Dacă afacerea ta are o poveste, merită un site care o spune la fel de bine.
-> Vezi proiectele noastre și scrie-ne.
+> Concept neoficial, creat de Pacheco Studios.
+>
+> Facem la fel și pentru afacerea ta. Vezi proiectele noastre și scrie-ne.
 
-Título: «Site-uri care vând înainte să intri pe ușă» · Descrição: «Concept neoficial · Pacheco Studios» · Botão: Saber mais.
+Título: «Facem la fel și pentru afacerea ta» · Descrição: «Concept neoficial · Pacheco Studios» · Botão: Saber mais.
+
+PT: «Refizemos o site de um dos restaurantes mais conhecidos de Iași. Bolta Rece, desde 1786: a moldura da página inicial abre-se, entras no alpendre, desces ao salão e chegas à bolta dos vinhos — tal como na casa verdadeira. Conceito não oficial, criado pela Pacheco Studios. Fazemos o mesmo pelo teu negócio. Vê os nossos projetos e escreve-nos.»
