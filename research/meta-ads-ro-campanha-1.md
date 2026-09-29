@@ -93,8 +93,8 @@ Música: só da Coleção de Sons da Meta / biblioteca do editor do anúncio (m�
 >
 > Concept neoficial, creat de Pacheco Studios.
 >
-> Facem la fel și pentru afacerea ta. Vezi proiectele noastre și scrie-ne.
+> Facem la fel și pentru afacerea ta. Cere o ofertă și descoperă de ce avem unul dintre cele mai bune raporturi calitate-preț.
 
 Título: «Facem la fel și pentru afacerea ta» · Descrição: «Concept neoficial · Pacheco Studios» · Botão: Saber mais.
 
-PT: «Refizemos o site de um dos restaurantes mais conhecidos de Iași. Bolta Rece, desde 1786: a moldura da página inicial abre-se, entras no alpendre, desces ao salão e chegas à bolta dos vinhos — tal como na casa verdadeira. Conceito não oficial, criado pela Pacheco Studios. Fazemos o mesmo pelo teu negócio. Vê os nossos projetos e escreve-nos.»
+PT: «Refizemos o site de um dos restaurantes mais conhecidos de Iași. Bolta Rece, desde 1786: a moldura da página inicial abre-se, entras no alpendre, desces ao salão e chegas à bolta dos vinhos — tal como na casa verdadeira. Conceito não oficial, criado pela Pacheco Studios. Fazemos o mesmo pelo teu negócio. Pede o teu orçamento e descobre porque temos uma das melhores relações qualidade-preço.»
