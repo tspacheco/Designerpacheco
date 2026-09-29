@@ -27,7 +27,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141210'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23E8622C'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Italiana&family=Sora:wght@800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Italiana&display=swap">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Pacheco Studios", "url": "https://pachecost.com/en/", "image": "https://pachecost.com/media/og-en.png", "description": "Websites built for real businesses and WhatsApp automations that bring customers back. We build your site before you pay.", "telephone": "+351 967 117 357", "email": "tomas@pachecost.com", "areaServed": [{"@type": "Country", "name": "Portugal"}, {"@type": "Country", "name": "Romania"}], "sameAs": ["https://www.instagram.com/pachecostudiospt/"], "founder": {"@type": "Person", "name": "Tomás Pacheco"}}</script>
 <!-- estatísticas sem cookies (GoatCounter): o domínio entra no caminho, para separar pachecost.com de ro.pachecost.com -->
 <script>window.goatcounter = { path: function (p) { return location.host + p; } };</script>
@@ -112,6 +112,9 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .grelha{margin-top:1.75rem;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
 .grelha > li{grid-column:span 3}
 .grelha > li.dest{grid-column:span 2}
+/* «O teu negócio?» ocupa o que sobra da última fila, em cada ecrã (o gerador calcula --s*, --a* e --h*) */
+.grelha > li.teu{grid-column:span var(--sm)}
+.grelha > li.teu .q{aspect-ratio:var(--am);height:var(--hm)}
 .q{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;padding:.9rem;
   border-radius:1rem;background:var(--bg);color:var(--ink);text-decoration:none;overflow:hidden;
   /* contorno fino por dentro: os sites de fundo escuro não se perdem no carvão da página */
@@ -366,6 +369,8 @@ body.rgpd-aberto .barra{display:none}
 @media (min-width:40rem){
   .grelha{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
   .grelha > li,.grelha > li.dest{grid-column:auto}
+  .grelha > li.teu{grid-column:span var(--st)}
+  .grelha > li.teu .q{aspect-ratio:var(--at);height:var(--ht)}
   .q,.dest .q{padding:1.1rem}
   .dest .q{aspect-ratio:1}
   .q-nome,.grelha .dest .q-nome{font-size:calc(clamp(1.35rem,3vw,2rem) * var(--fs,1))}
@@ -385,6 +390,8 @@ body.rgpd-aberto .barra{display:none}
   .grelha{grid-template-columns:repeat(12,minmax(0,1fr));gap:1.1rem}
   .grelha > li{grid-column:span 3}
   .grelha > li.dest{grid-column:span 4}
+  .grelha > li.teu{grid-column:span var(--sd)}
+  .grelha > li.teu .q{aspect-ratio:var(--ad);height:var(--hd)}
   .dest .q{aspect-ratio:4/3}
   .q-nome{font-size:calc(2rem * var(--fs,1))}
   .grelha .dest .q-nome{font-size:calc(2.5rem * var(--fs,1))}
@@ -835,13 +842,12 @@ body.rgpd-aberto .barra{display:none}
 <li class="rv dest" style="--i:1"><a class="q" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400;--fs:1" target="_blank" rel="noopener"><span class="q-nome">HANAM</span><span class="q-meta"><span class="q-tip">Korean barbecue</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Quarteira</span></span></a></li>
 <li class="rv dest" style="--i:2"><a class="q" href="/p/toda-chic/en.html" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400;--fs:1"><span class="q-nome">Toda Chic</span><span class="q-meta"><span class="q-tip">Online clothing store</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Portugal</span></span></a></li>
 <li class="rv" style="--i:3"><a class="q neutro" href="https://barbeariadocao.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">Barbearia do Cão</span><span class="q-meta"><span class="q-tip">Dog grooming and pet shop</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Loulé</span></span></a></li>
-<li class="rv" style="--i:4"><a class="q" href="https://restaurantegruponaval.com" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">Grupo Naval</span><span class="q-meta"><span class="q-tip">Restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Olhão</span></span></a></li>
-<li class="rv" style="--i:5"><a class="q neutro" href="https://gelatariamuxagata.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Gelataria Muxagata</span><span class="q-meta"><span class="q-tip">Artisan gelato</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Tavira</span></span></a></li>
-<li class="rv" style="--i:6"><a class="q neutro" href="https://bompaladar.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Simona&#x27;s O Bom Paladar</span><span class="q-meta"><span class="q-tip">Restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Almancil</span></span></a></li>
-<li class="rv" style="--i:7"><a class="q neutro" href="https://ginasioclubetavira.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Ginásio Clube Tavira</span><span class="q-meta"><span class="q-tip">Club restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Tavira</span></span></a></li>
-<li class="rv" style="--i:8"><a class="q neutro" href="https://olakathmandu.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">Ola Kathmandu</span><span class="q-meta"><span class="q-tip">Nepalese restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Grândola</span></span></a></li>
-<li class="rv" style="--i:9"><a class="q neutro" href="https://sao-martinho.com/" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">São Martinho</span><span class="q-meta"><span class="q-tip">Seafood restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Guia</span></span></a></li>
-<li class="rv" style="--i:10"><a class="q teu" href="#contact" style="--fs:.8"><span class="q-nome">Your business?</span></a></li>
+<li class="rv" style="--i:4"><a class="q neutro" href="https://gelatariamuxagata.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Gelataria Muxagata</span><span class="q-meta"><span class="q-tip">Artisan gelato</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Tavira</span></span></a></li>
+<li class="rv" style="--i:5"><a class="q neutro" href="https://bompaladar.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Simona&#x27;s O Bom Paladar</span><span class="q-meta"><span class="q-tip">Restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Almancil</span></span></a></li>
+<li class="rv" style="--i:6"><a class="q neutro" href="https://ginasioclubetavira.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Ginásio Clube Tavira</span><span class="q-meta"><span class="q-tip">Club restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Tavira</span></span></a></li>
+<li class="rv" style="--i:7"><a class="q neutro" href="https://olakathmandu.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">Ola Kathmandu</span><span class="q-meta"><span class="q-tip">Nepalese restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Grândola</span></span></a></li>
+<li class="rv" style="--i:8"><a class="q neutro" href="https://sao-martinho.com/" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">São Martinho</span><span class="q-meta"><span class="q-tip">Seafood restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Guia</span></span></a></li>
+<li class="rv teu" style="--i:9;--sm:6;--am:2;--hm:auto;--st:3;--at:3;--ht:auto;--sd:6;--ad:auto;--hd:100%"><a class="q teu" href="#contact" style="--fs:.8"><span class="q-nome">Your business?</span></a></li>
     </ul>
     <p class="nota-grelha">Made in Portugal. The next one: yours.</p>
   </div>
@@ -876,7 +882,7 @@ body.rgpd-aberto .barra{display:none}
 <footer class="rodape">
   <div class="envolver">
     <p>Pacheco Studios · Tomás Pacheco · Portugal</p>
-    <p><a href="https://www.livroreclamacoes.pt/inicio" rel="noopener">Livro de Reclamações (complaints book)</a></p>
+    <p><a href="https://www.livroreclamacoes.pt/inicio/" rel="noopener">Livro de Reclamações (complaints book)</a></p>
     <p><a href="/privacy.html">Privacy</a></p>
     <p>This page is an example of what we do: a single file, fast on any phone.</p>
   </div>

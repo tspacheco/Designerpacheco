@@ -86,6 +86,9 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .grelha{margin-top:1.75rem;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
 .grelha > li{grid-column:span 3}
 .grelha > li.dest{grid-column:span 2}
+/* «O teu negócio?» ocupa o que sobra da última fila, em cada ecrã (o gerador calcula --s*, --a* e --h*) */
+.grelha > li.teu{grid-column:span var(--sm)}
+.grelha > li.teu .q{aspect-ratio:var(--am);height:var(--hm)}
 .q{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;padding:.9rem;
   border-radius:1rem;background:var(--bg);color:var(--ink);text-decoration:none;overflow:hidden;
   /* contorno fino por dentro: os sites de fundo escuro não se perdem no carvão da página */
@@ -340,6 +343,8 @@ body.rgpd-aberto .barra{display:none}
 @media (min-width:40rem){
   .grelha{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
   .grelha > li,.grelha > li.dest{grid-column:auto}
+  .grelha > li.teu{grid-column:span var(--st)}
+  .grelha > li.teu .q{aspect-ratio:var(--at);height:var(--ht)}
   .q,.dest .q{padding:1.1rem}
   .dest .q{aspect-ratio:1}
   .q-nome,.grelha .dest .q-nome{font-size:calc(clamp(1.35rem,3vw,2rem) * var(--fs,1))}
@@ -359,6 +364,8 @@ body.rgpd-aberto .barra{display:none}
   .grelha{grid-template-columns:repeat(12,minmax(0,1fr));gap:1.1rem}
   .grelha > li{grid-column:span 3}
   .grelha > li.dest{grid-column:span 4}
+  .grelha > li.teu{grid-column:span var(--sd)}
+  .grelha > li.teu .q{aspect-ratio:var(--ad);height:var(--hd)}
   .dest .q{aspect-ratio:4/3}
   .q-nome{font-size:calc(2rem * var(--fs,1))}
   .grelha .dest .q-nome{font-size:calc(2.5rem * var(--fs,1))}
@@ -389,7 +396,7 @@ body.rgpd-aberto .barra{display:none}
 <footer class="rodape">
   <div class="envolver">
     <p>Pacheco Studios · Tomás Pacheco · Portugal</p>
-    <p><a href="https://www.livroreclamacoes.pt/inicio" rel="noopener">Livro de Reclamações</a></p>
+    <p><a href="https://www.livroreclamacoes.pt/inicio/" rel="noopener">Livro de Reclamações</a></p>
     <p><a href="/privacidade.html">Privacidade</a></p>
     <p>Esta página é um exemplo do que fazemos: um só ficheiro, rápido em qualquer telemóvel.</p>
   </div>

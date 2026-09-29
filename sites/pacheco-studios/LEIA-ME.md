@@ -36,8 +36,10 @@ Sem preços: combinam-se com cada negócio.
 - Quadrados: `portfolio.json`, pela ordem do ficheiro — `ativo`, `destaque` (os três da primeira fila), `nome`,
   `fonte`/`peso`/`bg`/`ink`/`accent` (as do site), `url` (site do cliente, abre noutro separador) ou `pasta` (site do
   repositório, copiado para `/p/<slug>/`, só para clientes sem site publicado). `demo: true` marca as apresentações:
-  nunca entram. A ProBuilders está desligada até o site sair. O Jasmim 2 está em `neutro` (estilo da marca) até
-  termos a fonte e as cores do site dele.
+  nunca entram. A ProBuilders está desligada até o site sair. O Grupo Naval está desligado desde 29/09: o
+  `restaurantegruponaval.com` não existe. O Jasmim 2 está em `neutro` (estilo da marca) até termos a fonte e as cores
+  do site dele. O quadrado tracejado «O teu negócio?» ocupa sempre o que sobra da última fila: com qualquer número
+  de quadrados, a grelha não fica com buracos.
 - Esquemas: os passos são o `fluxo` de cada automação nos três JSON (`tip`, `t`, `d`; `espera` junta uma caixa de
   espera antes do passo; `ramuri` faz a decisão e os ramos). Os ícones estão em `conteudo/esquemas.json`, um por
   passo e um por ramo, iguais nas três línguas. Os desenhos dos ícones estão em `ICONES_ESQUEMA`, no `gerar.py`. Se
@@ -97,6 +99,10 @@ cabeçalho), para não competirem no Google com os sites dos próprios negócios
 O site anterior do pachecost.com (o «Estúdio de IA») está guardado em `sites/pachecost-com/`.
 
 ## O que o gerador verifica
+
+Antes de gerar, o `gerar.py` confirma no DNS que o domínio de cada quadrado existe. Um link morto trava a publicação e
+diz qual é: experimentar o mesmo nome em .pt e .online e, se também não existirem, pôr `ativo: false`. Sem rede, só
+avisa.
 
 `verificar.cjs` serve `dist/` como o Netlify serviria os dois domínios: lê o `_redirects` e aplica-o.
 

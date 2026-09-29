@@ -154,6 +154,38 @@ def ativos(portfolio):
     return sorted(itens, key=lambda x: not x.get("destaque"))
 
 
+def sites_que_existem(portfolio, controlo):
+    """Cada quadrado com site próprio tem de apontar para um domínio que existe. Um link morto trava a publicação
+    (foi assim que o restaurantegruponaval.com ficou partido, a 29/09/2026). Sem rede, avisa e segue."""
+    import socket
+    from urllib.parse import urlsplit
+
+    def estado(host):
+        try:
+            socket.getaddrinfo(host, 443)
+            return "ok"
+        except socket.gaierror as err:
+            return "não existe" if err.errno in (socket.EAI_NONAME, getattr(socket, "EAI_NODATA", -5)) else "sem resposta"
+
+    externos = [x for x in ativos(portfolio) if x.get("url")]
+    if estado(controlo) != "ok":
+        print(f"  ! sem DNS aqui: os {len(externos)} sites dos clientes ficam por confirmar")
+        return
+    mortos, duvidas = [], []
+    for x in externos:
+        r = estado(urlsplit(x["url"]).hostname)
+        if r == "não existe":
+            mortos.append(f'{x["nome"]}: {x["url"]}')
+        elif r != "ok":
+            duvidas.append(x["url"])
+    if mortos:
+        raise SystemExit("portfolio.json: estes sites não existem (o domínio não responde no DNS). Experimentar o mesmo "
+                         "nome em .pt e .online; se também não existirem, pôr ativo: false.\n  " + "\n  ".join(mortos))
+    for u in duvidas:
+        print(f"  ! {u}: o DNS não respondeu agora; confirmar")
+    print(f"  ✓ os {len(externos) - len(duvidas)} sites de clientes existem (DNS)")
+
+
 def fontes_google(portfolio):
     """Pedido ao Google Fonts só com as fontes dos quadrados que aparecem (as da marca vão embutidas)."""
     marca = {"Space Mono", "Archivo Black", "Inter"}
@@ -176,7 +208,15 @@ def vista_proiecte(c, portfolio, lang):
     if len(dest) != 3:
         raise SystemExit(f"portfolio.json: a primeira fila leva 3 quadrados em destaque, há {len(dest)}: {dest}")
     lis = "\n".join(quadrado(x, p, i, lang) for i, x in enumerate(itens))
-    lis += (f'\n<li class="rv" style="--i:{len(itens)}"><a class="q teu" href="#contact" style="--fs:.8">'
+    # «O teu negócio?» fica com o que sobra da última fila em cada ecrã (2, 3 e 4 quadrados por fila): nunca um buraco.
+    # Sozinho numa fila, faz uma faixa da altura de um quadrado; com outros, estica até à altura deles.
+    n = len(itens) - len(dest)
+    estilo = f"--i:{len(itens)}"
+    for bp, por, cols in (("m", 2, 3), ("t", 3, 1), ("d", 4, 3)):  # quadrados por fila e colunas de cada um
+        sobra = por - n % por
+        sozinho = n % por == 0
+        estilo += f";--s{bp}:{sobra * cols};--a{bp}:{sobra if sozinho else 'auto'};--h{bp}:{'auto' if sozinho else '100%'}"
+    lis += (f'\n<li class="rv teu" style="{estilo}"><a class="q teu" href="#contact" style="--fs:.8">'
             f'<span class="q-nome">{e(p["teu"])}</span></a></li>')
     m = c["metoda"]
     passos = "\n".join(f'<li class="passo rv" style="--i:{i}"><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p></li>' for i, s in enumerate(m["pasi"]))
@@ -390,7 +430,7 @@ def rodape(c, lang):
     return f"""<footer class="rodape">
   <div class="envolver">
     <p>{e(r["linha"])}</p>
-    <p><a href="https://www.livroreclamacoes.pt/inicio" rel="noopener">{e(r["legal"])}</a></p>
+    <p><a href="https://www.livroreclamacoes.pt/inicio/" rel="noopener">{e(r["legal"])}</a></p>
     <p><a href="{e(LINGUAS[lang]["privacidade"])}">{e(r["privacidade"])}</a></p>
     <p>{e(r["nota"])}</p>
   </div>
@@ -634,8 +674,11 @@ def main():
         shutil.rmtree(DIST)
     os.makedirs(DIST)
 
+    print("LINKS DOS CLIENTES")
+    sites_que_existem(portfolio, principal)
+
     ok = True
-    print("CONTEÚDO")
+    print("\nCONTEÚDO")
     paginas, extras = {}, {}
     for lang, c in linguas.items():
         cfg = LINGUAS[lang]
