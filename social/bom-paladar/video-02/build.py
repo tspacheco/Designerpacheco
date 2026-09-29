@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
-"""Vídeo 2 do Bom Paladar — "Ainda não jantou aqui?" (reel 9:16, 1080×1920, 30 fps, ~23 s).
+"""Vídeo 2 do Bom Paladar — "Ainda não jantou aqui?" (reel 9:16, 1080×1920, 30 fps, 25 s).
 
-Estratégia de conversão, por ordem:
-  1. gancho local em 1 s (pergunta + ALMANCIL) para parar quem é de cá;
-  2. prova: comida real a mexer (vídeo do bacalhau e do caril) e 8 pratos em cortes rápidos;
-  3. atrito zero: a reserva é uma mensagem de WhatsApp, mostrada a ser escrita e enviada;
-  4. o mesmo número três vezes (WhatsApp, cartão final, legenda) e a morada com horário.
+Estrutura:
+  0–2,2 s   gancho: grelha de 9 pratos a acender + "Ainda não jantou aqui?" + ALMANCIL · ALGARVE
+  2,2–9,4 s a câmara mergulha em 5 fotos da grelha (zoom in, pausa, zoom out); no quadrado do
+            meio corre o vídeo real do bacalhau
+  9,4–14,6  a carta em 3 filas de cards — Mar · Grelha · Especialidades — sobre a sala do
+            restaurante desfocada; o vídeo real do caril corre num card; no fim a sala fica nítida
+  14,6–17,8 "Chegue." com a porta, morada e horário
+  17,8–21,6 WhatsApp: a mensagem do cliente a ser escrita e enviada (sem resposta inventada)
+  21,6–25   "Sente-se." + botão + 918 958 233 grande
 
-Não repete o vídeo 1 (flambé e scroll do site). Tudo é foto/vídeo real da casa; a conversa
-de WhatsApp mostra só a mensagem do cliente a ser enviada, sem resposta inventada.
+Tudo é foto/vídeo real da casa. Sem preços. Não repete o vídeo 1 (flambé e scroll do site).
 
 Uso:
   python3 build.py            prepara img/, escreve video.html, renderiza frames/ e monta video.mp4
-  python3 build.py --so-html  só prepara e escreve video.html (para abrir no browser com ?t=segundos)
+  python3 build.py --so-html  só prepara e escreve video.html (abrir no browser com ?t=segundos)
 """
 import base64, html, os, pathlib, subprocess, sys
 from PIL import Image, ImageDraw, ImageFont
@@ -29,22 +32,33 @@ FF = "/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-lin
 CASA = dict(whatsapp="918 958 233", morada="R. do Comércio 367A", terra="Almancil",
             site="bompaladar.pt", jantar="Jantar seg–sáb · 19h–22h30")
 
-# fotos reais → nome curto, foco (x, y) para o corte 9:16
+# fotos reais → nome curto, foco (x, y) para o corte
 FOTO = {
-    "salmao":   ("WhatsApp Image 2026-07-03 at 14.56.41.jpeg", 0.5, 0.5),
-    "carpaccio":("WhatsApp Image 2026-07-03 at 14.56.41 (1).jpeg", 0.5, 0.5),
-    "carre":    ("WhatsApp Image 2026-07-03 at 15.06.12.jpeg", 0.5, 0.55),
-    "arroz":    ("WhatsApp Image 2026-07-03 at 15.06.44.jpeg", 0.5, 0.5),
-    "pops":     ("WhatsApp Image 2026-07-03 at 14.38.42 (6).jpeg", 0.5, 0.45),
-    "espetada": ("WhatsApp Image 2026-07-03 at 14.56.04.jpeg", 0.55, 0.5),
-    "tabua":    ("WhatsApp Image 2026-07-03 at 15.04.11 (2).jpeg", 0.5, 0.5),
-    "ninho":    ("WhatsApp Image 2026-07-03 at 14.59.40.jpeg", 0.5, 0.45),
-    "camarao":  ("WhatsApp Image 2026-07-03 at 15.15.31.jpeg", 0.5, 0.5),
-    "tachos":   ("WhatsApp Image 2026-08-07 at 13.05.57.jpeg", 0.5, 0.75),
-    "porta":    ("WhatsApp Image 2026-07-03 at 15.06.12 (1).jpeg", 0.5, 0.35),
-    "fim":      ("WhatsApp Image 2026-07-03 at 14.38.42 (5).jpeg", 0.5, 0.5),
+    "salmao":    ("WhatsApp Image 2026-07-03 at 14.56.41.jpeg", 0.5, 0.5),
+    "carpaccio": ("WhatsApp Image 2026-07-03 at 14.56.41 (1).jpeg", 0.5, 0.5),
+    "carre":     ("WhatsApp Image 2026-07-03 at 15.06.12.jpeg", 0.5, 0.55),
+    "arroz":     ("WhatsApp Image 2026-07-03 at 15.06.44.jpeg", 0.5, 0.5),
+    "pops":      ("WhatsApp Image 2026-07-03 at 14.38.42 (6).jpeg", 0.5, 0.45),
+    "bife":      ("WhatsApp Image 2026-07-03 at 14.38.42 (5).jpeg", 0.5, 0.5),
+    "espetada":  ("WhatsApp Image 2026-07-03 at 14.56.04.jpeg", 0.55, 0.5),
+    "tabua":     ("WhatsApp Image 2026-07-03 at 15.04.11 (2).jpeg", 0.5, 0.5),
+    "ninho":     ("WhatsApp Image 2026-07-03 at 14.59.40.jpeg", 0.5, 0.45),
+    "camarao":   ("WhatsApp Image 2026-07-03 at 15.15.31.jpeg", 0.5, 0.5),
+    "tachos":    ("WhatsApp Image 2026-08-07 at 13.05.57.jpeg", 0.5, 0.75),
+    "canela":    ("WhatsApp Image 2026-08-07 at 13.05.21.jpeg", 0.5, 0.45),
+    "chocolate": ("WhatsApp Image 2026-07-03 at 14.38.42 (4).jpeg", 0.5, 0.6),
+    "colher":    ("WhatsApp Image 2026-08-07 at 12.57.48.jpeg", 0.4, 0.5),
+    "porta":     ("WhatsApp Image 2026-07-03 at 15.06.12 (1).jpeg", 0.5, 0.35),
 }
-GRELHA = ["salmao", "carpaccio", "carre", "arroz", "pops", "espetada", "tabua", "ninho", "camarao"]
+# grelha 3×3 do gancho (o do meio é o vídeo do bacalhau)
+GRELHA = ["salmao", "carpaccio", "carre", "arroz", "BACALHAU", "espetada", "tabua", "ninho", "camarao"]
+# mergulhos: (índice na grelha, legenda, duração)
+MERGULHOS = [(4, "Bacalhau Bom Paladar", 2.6), (3, "Arroz de tamboril", 1.15), (2, "Carré de borrego", 1.15),
+             (6, "Tábua para partilhar", 1.15), (7, "Ninho de caramelo", 1.15)]
+# a carta em 3 filas
+FILAS = [("Mar", ["arroz", "salmao", "CARIL", "camarao", "tachos"]),
+         ("Grelha", ["carre", "pops", "espetada", "bife"]),
+         ("Especialidades", ["tabua", "ninho", "carpaccio", "canela", "chocolate", "colher"])]
 
 
 def cobrir(src, w, h, fx, fy):
@@ -58,9 +72,8 @@ def cobrir(src, w, h, fx, fy):
 def preparar():
     IMG.mkdir(exist_ok=True)
     for k, (f, fx, fy) in FOTO.items():
-        cobrir(FOTOS / f, W, H, fx, fy).save(IMG / f"{k}.jpg", quality=90)
-        cobrir(FOTOS / f, 360, 640, fx, fy).save(IMG / f"{k}-t.jpg", quality=88)   # quadrado da grelha
-        cobrir(FOTOS / f, 600, 800, fx, fy).save(IMG / f"{k}-c.jpg", quality=90)   # card da montra
+        cobrir(FOTOS / f, W, H, fx, fy).save(IMG / f"{k}.jpg", quality=90)          # ecrã inteiro (também serve de tile)
+        cobrir(FOTOS / f, 600, 800, fx, fy).save(IMG / f"{k}-c.jpg", quality=90)   # card 3:4
 
 
 def fonte(familia, estilo, peso, ficheiro):
@@ -70,44 +83,45 @@ def fonte(familia, estilo, peso, ficheiro):
 
 
 CSS = """
-:root{--creme:#FBF1EA;--choc:#2E160E;--caramelo:#D38A3E;--verde:#25D366}
+:root{--creme:#FBF1EA;--choc:#2E160E;--caramelo:#D38A3E}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 #palco{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--choc);color:var(--creme);
   font-family:'Noto Serif Display',serif;-webkit-font-smoothing:antialiased}
 .shot{position:absolute;inset:0;display:none}
 .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%}
-.grelha{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:6px;padding:6px;background:#000}
+.grelha{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:6px;padding:6px;background:#000;will-change:transform}
 .grelha img{width:100%;height:100%;object-fit:cover;display:block;transform-origin:50% 50%}
-.sombra{position:absolute;inset:0;background:linear-gradient(0deg,rgba(46,22,14,.96) 0,rgba(46,22,14,.75) 18%,rgba(46,22,14,0) 40%)}
-.sombra.topo{background:linear-gradient(180deg,rgba(46,22,14,.55) 0,rgba(46,22,14,0) 14%),linear-gradient(0deg,rgba(46,22,14,.96) 0,rgba(46,22,14,.75) 18%,rgba(46,22,14,0) 40%)}
+.sombra{position:absolute;inset:0;background:linear-gradient(0deg,rgba(46,22,14,.96) 0,rgba(46,22,14,.85) 16%,rgba(46,22,14,.35) 27%,rgba(46,22,14,0) 36%)}
+.sombra.topo{background:linear-gradient(180deg,rgba(46,22,14,.55) 0,rgba(46,22,14,0) 13%),linear-gradient(0deg,rgba(46,22,14,.96) 0,rgba(46,22,14,.75) 18%,rgba(46,22,14,0) 40%)}
+.sombra.leve{background:linear-gradient(0deg,rgba(46,22,14,.9) 0,rgba(46,22,14,.55) 12%,rgba(46,22,14,0) 26%)}
 .tag{position:absolute;top:96px;left:0;right:0;text-align:center;font:600 26px/1 'Work Sans',sans-serif;letter-spacing:.34em;padding-left:.34em;text-transform:uppercase;color:var(--creme);text-shadow:0 2px 12px rgba(0,0,0,.5)}
 .tag b{color:var(--caramelo);letter-spacing:0;display:inline-block;width:1.5em;margin-left:-.34em}
 .txt{position:absolute;left:70px;right:70px;text-align:center;will-change:transform,opacity}
 .t1{font:italic 300 132px/1.02 'Noto Serif Display',serif;letter-spacing:-.015em}
 .t1 em{color:var(--caramelo)}
-.t2{font:italic 400 76px/1.1 'Noto Serif Display',serif}
+.t2{font:italic 400 76px/1.1 'Noto Serif Display',serif;text-shadow:0 2px 14px rgba(0,0,0,.45)}
 .t3{font:500 34px/1.4 'Work Sans',sans-serif;color:#E9D3C6}
 .t3 b{color:var(--caramelo);margin:0 .45em}
 .pill{display:inline-block;background:var(--creme);color:var(--choc);border-radius:999px;padding:0 44px;height:96px;font:600 34px/96px 'Work Sans',sans-serif;letter-spacing:.14em}
 .num{font:600 92px/1 'Work Sans',sans-serif;letter-spacing:.02em;color:var(--creme)}
-/* montra de cards sobre a sala */
-.montra{position:absolute;inset:0;overflow:hidden;background:#2E160E}
-.montra .sala{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;transform-origin:50% 40%;will-change:transform,filter}
-.montra .veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,22,14,.55) 0,rgba(46,22,14,.15) 30%,rgba(46,22,14,.2) 60%,rgba(46,22,14,.95) 100%)}
-.palco3d{position:absolute;inset:0;perspective:1400px;perspective-origin:50% 42%}
-.card{position:absolute;top:470px;left:0;width:620px;height:827px;border-radius:26px;overflow:hidden;transform-origin:50% 50%;
-  box-shadow:0 50px 80px -30px rgba(0,0,0,.75),0 0 0 1.5px rgba(255,255,255,.10);background:#000;will-change:transform}
+/* a carta em filas, sobre a sala */
+.carta{position:absolute;inset:0;overflow:hidden;background:#2E160E}
+.carta .sala{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;transform-origin:50% 40%;will-change:transform,filter}
+.carta .veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,22,14,.6) 0,rgba(46,22,14,.35) 25%,rgba(46,22,14,.35) 75%,rgba(46,22,14,.95) 100%)}
+.fila{position:absolute;left:0;right:0;height:470px;will-change:transform,opacity}
+.fila .rot{position:absolute;left:60px;top:0;font:600 26px/1 'Work Sans',sans-serif;letter-spacing:.34em;text-transform:uppercase;color:var(--caramelo)}
+.fila .rot i{font:italic 400 44px/1 'Noto Serif Display',serif;color:var(--creme);letter-spacing:0;text-transform:none;margin-left:22px}
+.fila .tira{position:absolute;left:0;top:64px;height:390px;display:flex;gap:22px;will-change:transform}
+.card{flex:none;width:292px;height:390px;border-radius:20px;overflow:hidden;box-shadow:0 30px 50px -20px rgba(0,0,0,.7),0 0 0 1.5px rgba(255,255,255,.10);background:#000}
 .card img{width:100%;height:100%;object-fit:cover;display:block}
-.montra .txt{opacity:0}
 /* WhatsApp */
 .wa{position:absolute;inset:0;background:#ECE5DD}
 .wa .cab{position:absolute;top:0;left:0;right:0;height:210px;background:#075E54;display:flex;align-items:flex-end;padding:0 40px 30px;gap:24px;color:#fff}
 .wa .cab .av{width:92px;height:92px;border-radius:50%;background:#fff;color:#075E54;font:italic 400 52px/92px 'Noto Serif Display',serif;text-align:center}
 .wa .cab .nome{font:600 38px/1.15 'Work Sans',sans-serif}
 .wa .cab .nome small{display:block;font:500 26px/1.3 'Work Sans',sans-serif;opacity:.85}
-.wa .fundo{position:absolute;top:210px;left:0;right:0;bottom:0;background:#E5DDD5;
-  background-image:radial-gradient(rgba(0,0,0,.035) 2px,transparent 2px);background-size:46px 46px}
+.wa .fundo{position:absolute;top:210px;left:0;right:0;bottom:0;background:#E5DDD5;background-image:radial-gradient(rgba(0,0,0,.035) 2px,transparent 2px);background-size:46px 46px}
 .wa .balao{position:absolute;right:40px;top:1180px;max-width:760px;background:#DCF8C6;border-radius:26px 6px 26px 26px;padding:26px 34px 22px;font:400 40px/1.3 'Work Sans',sans-serif;color:#111;box-shadow:0 2px 4px rgba(0,0,0,.12);transform-origin:100% 0}
 .wa .balao .meta{display:block;text-align:right;font:500 24px/1 'Work Sans',sans-serif;color:#7d8b80;margin-top:12px}
 .wa .barra{position:absolute;left:0;right:0;bottom:0;height:150px;background:#F0F0F0;display:flex;align-items:center;gap:20px;padding:0 30px}
@@ -128,35 +142,33 @@ def e(t):
 def pagina():
     fontes = (fonte("Noto Serif Display", "italic", "300 400", "noto-serif-display-italic-variable.woff2")
               + fonte("Work Sans", "normal", "300 700", "work-sans-variable.woff2"))
-    grelha = "".join(f'<img src="img/{k}-t.jpg">' for k in GRELHA)
-    ordem = ["arroz", "salmao", "CARIL", "camarao", "carre", "pops", "espetada", "tabua", "carpaccio", "ninho", "tachos"]
-    cards = "".join('<div class="card"><img id="v2"></div>' if k == "CARIL" else f'<div class="card"><img src="img/{k}-c.jpg"></div>' for k in ordem)
+    grelha = "".join('<img id="v1">' if k == "BACALHAU" else f'<img src="img/{k}.jpg">' for k in GRELHA)
+    legendas = "".join(f'<p class="txt t2" style="top:1660px">{e(l)}</p>' for _, l, _ in MERGULHOS)
+    filas = ""
+    for i, (nome, pratos) in enumerate(FILAS):
+        cards = "".join('<div class="card"><img class="v2"></div>' if k == "CARIL" else f'<div class="card"><img src="img/{k}-c.jpg"></div>' for k in pratos)
+        cards = cards + cards   # repete para deslizar sem fim
+        filas += f'<div class="fila" style="top:{250 + i * 470}px"><p class="rot">{e(nome)}</p><div class="tira">{cards}</div></div>'
     c = CASA
     n1 = len(list((IMG / "v1").glob("*.jpg"))); n2 = len(list((IMG / "v2").glob("*.jpg")))
+    merg = str([[g, d] for g, _, d in MERGULHOS])
     return f'''<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><title>Bom Paladar — vídeo 2</title>
 <style>{fontes}{CSS}</style></head><body><div id="palco">
 
-<section class="shot" id="s-gancho">
-  <div class="grelha">{grelha}</div>
-  <div class="sombra" style="background:linear-gradient(0deg,rgba(46,22,14,.96) 0,rgba(46,22,14,.85) 16%,rgba(46,22,14,.35) 27%,rgba(46,22,14,0) 36%)"></div>
-  <p class="tag">Almancil{PONTO}Algarve</p>
-  <p class="txt t1" style="top:1500px">Ainda não<br>jantou <em>aqui?</em></p>
+<section class="shot" id="s-grelha">
+  <div class="grelha" id="grelha">{grelha}</div>
+  <div class="sombra" id="g-sombra"></div>
+  <p class="tag" id="g-tag">Almancil{PONTO}Algarve</p>
+  <p class="txt t1" id="g-pergunta" style="top:1500px">Ainda não<br>jantou <em>aqui?</em></p>
+  <div class="sombra leve" id="g-sombra2"></div>
+  {legendas}
 </section>
 
-<section class="shot" id="s-bacalhau"><img class="foto" id="v1"><div class="sombra"></div>
-  <p class="txt t2" style="top:1560px">Bacalhau Bom Paladar</p>
-  <p class="txt t3" style="top:1670px">assinatura da casa</p>
-</section>
-
-<section class="shot" id="s-montra"><div class="montra">
+<section class="shot" id="s-carta"><div class="carta">
   <img class="sala" id="sala" src="img/porta.jpg">
   <div class="veu"></div>
-  <div class="palco3d" id="palco3d">{cards}</div>
   <p class="tag">A carta{PONTO}Simona’s O Bom Paladar</p>
-  <p class="txt t1" style="top:1440px">Do mar.</p>
-  <p class="txt t1" style="top:1440px">Da terra.</p>
-  <p class="txt t1" style="top:1440px">Para partilhar.</p>
-  <p class="txt t1" style="top:1440px">Para acabar.</p>
+  {filas}
 </div></section>
 
 <section class="shot" id="s-porta"><img class="foto" src="img/porta.jpg"><div class="sombra topo"></div>
@@ -184,48 +196,58 @@ def pagina():
 
 </div>
 <script>
-const FPS={FPS}, N1={n1}, N2={n2};
+const FPS={FPS}, N1={n1}, N2={n2}, MERG={merg};
 const $=id=>document.getElementById(id);
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const ease=x=>1-Math.pow(1-x,3);
+const easeIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
 const MSG="Olá! Mesa para 2, sexta às 20h?";
-// timeline (segundos)
-const T=[
- ["s-gancho",0,2.2],["s-bacalhau",2.2,5.0],
- ["s-montra",5.0,13.6],
- ["s-porta",13.6,17.0],["s-wa",17.0,21.0],["s-fim",21.0,24.5]];
-const DUR=24.5;
+const G0=2.2;                                             // início dos mergulhos
+let GFIM=G0; for(const [,d] of MERG) GFIM+=d;             // fim dos mergulhos (9,4 s)
+const T=[["s-grelha",0,GFIM],["s-carta",GFIM,GFIM+5.2],["s-porta",GFIM+5.2,GFIM+8.4],["s-wa",GFIM+8.4,GFIM+12.2],["s-fim",GFIM+12.2,25.0]];
+const DUR=25.0;
 function kb(el,tl,dur,from,to,ox,oy){{const p=ease(clamp(tl/dur,0,1));const s=from+(to-from)*p;el.style.transformOrigin=ox+"% "+oy+"%";el.style.transform="scale("+s.toFixed(4)+")";}}
 function rise(el,tl,t0,d=.35,dy=40){{const p=ease(clamp((tl-t0)/d,0,1));el.style.opacity=p;el.style.transform="translateY("+((1-p)*dy).toFixed(1)+"px)";}}
+function frame(el,i,n,pasta){{el.src=pasta+String(clamp(i,1,n)).padStart(3,"0")+".jpg";}}
 function render(t){{
   for(const [id,a,b] of T){{const el=$(id);const on=t>=a&&t<b;el.style.display=on?"block":"none";if(!on)continue;const tl=t-a,dur=b-a;
     const foto=el.querySelector(".foto"),txts=el.querySelectorAll(".txt");
     switch(id){{
-      case "s-gancho":{{const imgs=el.querySelectorAll(".grelha img");imgs.forEach((im,i)=>{{const p=ease(clamp((tl-i*.09)/.22,0,1));im.style.opacity=p;im.style.transform="scale("+(0.72+0.28*p).toFixed(3)+")";}});
-        rise(txts[0],tl,1.0,.4,60);el.querySelector(".tag").style.opacity=clamp((tl-.5)/.3,0,1);
-        const z=ease(clamp((tl-1.9)/.3,0,1));el.querySelector(".grelha").style.transform="scale("+(1+z*2.2).toFixed(3)+")";el.querySelector(".grelha").style.transformOrigin="50% 50%";break;}}
-      case "s-bacalhau":{{const i=clamp(Math.round(tl*FPS)+1,1,N1);foto.src="img/v1/"+String(i).padStart(3,"0")+".jpg";foto.style.transform="scale(1.06)";rise(txts[0],tl,.25);rise(txts[1],tl,.45);break;}}
-      case "s-caril":{{const i=clamp(Math.round(tl*FPS)+1,1,N2);foto.src="img/v2/"+String(i).padStart(3,"0")+".jpg";foto.style.transform="scale(1.06)";rise(txts[0],tl,0,.2,20);break;}}
-      case "s-montra":{{
-        const sair=ease(clamp((tl-dur+.55)/.55,0,1));            // último meio segundo: os cards saem, a sala fica nítida
-        const sala=$("sala");const sc=1.30-0.10*(tl/dur);sala.style.transform="scale("+sc.toFixed(4)+")";
-        sala.style.filter="blur("+(14*(1-sair)).toFixed(1)+"px) brightness("+(0.62+0.28*sair).toFixed(2)+")";
-        const off=tl*520+sair*1600, cards=$("palco3d").children, PITCH=640;
-        for(let i=0;i<cards.length;i++){{const x=230+i*PITCH-off;const cx=x+310;const d=(cx-540)/540;
-          const on=x>-700&&x<1800;cards[i].style.display=on?"block":"none";if(!on)continue;
-          const ad=Math.min(Math.abs(d),2);const s=1.04-0.17*ad;const ry=clamp(-d*14,-28,28);const z=-ad*120;
-          cards[i].style.transform="translateX("+x.toFixed(1)+"px) translateZ("+z.toFixed(0)+"px) rotateY("+ry.toFixed(1)+"deg) scale("+s.toFixed(3)+")";
-          cards[i].style.zIndex=String(100-Math.round(ad*30));cards[i].style.opacity=1-sair*0.2;}}
-        const vi=clamp(Math.round(((tl*FPS)%(N2+20)))+1,1,N2);$("v2").src="img/v2/"+String(vi).padStart(3,"0")+".jpg";
-        const seg=2.0;txts.forEach((el,i)=>{{const a=.2+i*seg,b=a+seg;const p=Math.min(ease(clamp((tl-a)/.3,0,1)),1-ease(clamp((tl-b+.25)/.25,0,1)))*(1-sair);el.style.opacity=p;el.style.transform="translateY("+((1-p)*30).toFixed(1)+"px)";}});
-        el.querySelector(".tag").style.opacity=clamp(tl/.4,0,1)*(1-sair);break;}}
+      case "s-grelha":{{
+        const g=$("grelha"),imgs=g.querySelectorAll("img");
+        // 0–2,2: os 9 quadrados acendem, pergunta e etiqueta
+        imgs.forEach((im,i)=>{{const p=ease(clamp((tl-i*.09)/.22,0,1));im.style.opacity=p;im.style.transform="scale("+(0.72+0.28*p).toFixed(3)+")";}});
+        const pre=tl<G0;const fade=1-ease(clamp((tl-G0+.35)/.35,0,1));
+        $("g-sombra").style.opacity=fade;$("g-tag").style.opacity=clamp((tl-.5)/.3,0,1)*fade;
+        rise($("g-pergunta"),tl,1.0,.4,60);$("g-pergunta").style.opacity=Math.min(ease(clamp((tl-1.0)/.4,0,1)),fade);
+        // mergulhos: escala 3× com origem no centro do quadrado
+        let s=1,ox=50,oy=50,k=G0,ativo=-1,legs=el.querySelectorAll(".t2");
+        for(let m=0;m<MERG.length;m++){{const [gi,d]=MERG[m];const l=tl-k;
+          if(l>=0&&l<d){{const zin=.42,zout=.38;const p=l<zin?easeIO(l/zin):(l>d-zout?1-easeIO((l-(d-zout))/zout):1);
+            s=1+2*p;ox=[16.7,50,83.3][gi%3];oy=[16.7,50,83.3][Math.floor(gi/3)];ativo=m;
+            legs[m].style.opacity=clamp((l-.3)/.25,0,1)*(1-ease(clamp((l-d+.3)/.25,0,1)));legs[m].style.transform="translateY("+((1-clamp((l-.3)/.25,0,1))*24).toFixed(1)+"px)";
+            if(gi===4)frame($("v1"),Math.round(l*FPS)+1,N1,"img/v1/");}}
+          else legs[m].style.opacity=0;
+          k+=d;}}
+        if(ativo<0||MERG[ativo][0]!==4)frame($("v1"),1,N1,"img/v1/");
+        g.style.transformOrigin=ox+"% "+oy+"%";g.style.transform="scale("+s.toFixed(4)+")";
+        $("g-sombra2").style.opacity=ativo>=0?clamp((s-1.6)/1.2,0,1):0;break;}}
+      case "s-carta":{{
+        const sair=ease(clamp((tl-dur+.55)/.55,0,1));
+        const sala=$("sala");sala.style.transform="scale("+(1.30-0.10*(tl/dur)).toFixed(4)+")";
+        sala.style.filter="blur("+(14*(1-sair)).toFixed(1)+"px) brightness("+(0.6+0.3*sair).toFixed(2)+")";
+        el.querySelector(".tag").style.opacity=clamp(tl/.4,0,1)*(1-sair);
+        el.querySelectorAll(".fila").forEach((f,i)=>{{const p=ease(clamp((tl-.15-i*.45)/.5,0,1))*(1-sair);f.style.opacity=p;f.style.transform="translateY("+((1-p)*60).toFixed(1)+"px)";
+          const tira=f.querySelector(".tira"),n=tira.children.length/2,largura=n*314;const v=[62,-48,55][i];let x=(tl*v)%largura;if(x>0)x-=largura;x+=[60,-260,20][i];
+          tira.style.transform="translateX("+x.toFixed(1)+"px)";}});
+        el.querySelectorAll(".v2").forEach(v=>frame(v,Math.round((tl*FPS)%(N2+15))+1,N2,"img/v2/"));break;}}
       case "s-porta":{{kb(foto,tl,dur,1.20,1.32,50,40);rise(txts[0],tl,.3,.5,50);rise(txts[1],tl,.9,.5,30);break;}}
-      case "s-wa":{{const n=clamp(Math.floor((tl-.5)/1.6*MSG.length),0,MSG.length);$("digita").textContent=MSG.slice(0,n);$("cur").style.opacity=(tl<2.2&&Math.floor(tl*3)%2===0)?1:0;
-        const sent=tl>=2.35;$("digita").textContent=sent?"":MSG.slice(0,n);const p=ease(clamp((tl-2.35)/.3,0,1));const bal=$("balao");bal.style.opacity=sent?1:0;bal.style.transform="scale("+(0.6+0.4*p).toFixed(3)+")";
-        const tp=el.querySelector(".topo");tp.style.opacity=ease(clamp((tl-.15)/.35,0,1));break;}}
+      case "s-wa":{{const n=clamp(Math.floor((tl-.5)/1.6*MSG.length),0,MSG.length);const sent=tl>=2.35;
+        $("digita").textContent=sent?"":MSG.slice(0,n);$("cur").style.opacity=(tl<2.2&&Math.floor(tl*3)%2===0)?1:0;
+        const p=ease(clamp((tl-2.35)/.3,0,1));const bal=$("balao");bal.style.opacity=sent?1:0;bal.style.transform="scale("+(0.6+0.4*p).toFixed(3)+")";
+        el.querySelector(".topo").style.opacity=ease(clamp((tl-.15)/.35,0,1));break;}}
       case "s-fim":{{kb(foto,tl,dur,1.02,1.12,50,80);rise(txts[0],tl,.2,.45,50);rise(txts[1],tl,.6,.4,30);rise(txts[2],tl,.8,.4,30);rise(txts[3],tl,1.0,.4,20);
-        const p=$("s-fim").querySelector(".pill");p.style.transform="scale("+(1+0.03*Math.sin(tl*4)).toFixed(3)+")";break;}}
-      default:{{const [ox,oy]=[[40,50],[60,45],[50,60],[45,50],[55,55],[50,40]][Math.abs(id.length*7)%6];kb(foto,tl,dur,1.0,1.10,ox,oy);rise(txts[0],tl,0,.25,30);}}
+        el.querySelector(".pill").style.transform="scale("+(1+0.03*Math.sin(tl*4)).toFixed(3)+")";break;}}
     }}
   }}
 }}
@@ -243,7 +265,6 @@ const path = require('path');
   const p = await b.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   await p.goto('file://' + path.resolve(html));
   await p.evaluate(() => document.fonts.ready);
-  // pré-carregar as sequências de vídeo e as fotos
   await p.evaluate(async () => {
     const urls = [...document.querySelectorAll('img')].map(i => i.getAttribute('src')).filter(Boolean);
     for (let k = 1; k <= 76; k++) urls.push('img/v1/' + String(k).padStart(3, '0') + '.jpg');
@@ -263,8 +284,7 @@ const path = require('path');
 
 
 def folha():
-    """Folha de revisão: 8 frames-chave lado a lado."""
-    ts = [0.6, 1.6, 3.5, 6.5, 10.5, 15.0, 19.6, 23.0]
+    ts = [0.6, 1.6, 3.4, 5.0, 7.5, 11.5, 16.0, 20.5, 23.5]
     th = 640; tw = 360
     f = Image.new("RGB", (len(ts) * (tw + 12) + 12, th + 70), (27, 27, 27))
     d = ImageDraw.Draw(f); fnt = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)

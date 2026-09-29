@@ -1,17 +1,17 @@
 # Bom Paladar — vídeo 2 "Ainda não jantou aqui?" · como publicar para converter
 
-Reel 9:16, 1080×1920, 24,5 s, sem som (escolher música no Instagram, ver abaixo). Ficheiro: `Bom-Paladar-video-2.mp4`.
+Reel 9:16, 1080×1920, 25 s, sem som (escolher música no Instagram, ver abaixo). Ficheiro: `Bom-Paladar-video-2.mp4`.
 
 ## Por que está montado assim
 
 | Segundos | O que aparece | Para quê |
 |---|---|---|
 | 0–2 | Grelha de 9 pratos a acender + "Ainda não jantou aqui?" + ALMANCIL · ALGARVE | Parar o scroll de quem é de cá. A pergunta faz a pessoa responder na cabeça. |
-| 2–5 | **Vídeo real** do Bacalhau Bom Paladar | Prova: comida a mexer, não é banco de imagens. |
-| 5–13,6 | **Montra sobre a sala:** a sala do restaurante, desfocada e em movimento lento, serve de fundo; 11 pratos passam em cards que crescem ao chegar ao centro, com o **vídeo real** do caril dentro de um deles. No fim os cards saem e a sala fica nítida: é a porta do "Chegue." Texto: Do mar. · Da terra. · Para partilhar. · Para acabar. | Variedade num só olhar, com o restaurante sempre presente. |
-| 13–17 | A porta à noite + "Chegue." + morada e horário | Onde é e quando está aberto, sem ter de procurar. |
-| 17–21 | Ecrã de WhatsApp: a mensagem "Olá! Mesa para 2, sexta às 20h?" a ser escrita e enviada | Tira o atrito da reserva: é uma mensagem, e o vídeo até dá o texto. |
-| 21–24,5 | "Sente-se." + botão RESERVE PELO WHATSAPP + **918 958 233** grande + morada, site, horário | Fecho. O número fica no ecrã 3,5 s, tempo de o ler e decorar. |
+| 2,2–9,4 | A câmara mergulha em 5 fotos da grelha, uma de cada vez (zoom in, pausa, zoom out); no quadrado do meio corre o **vídeo real** do Bacalhau Bom Paladar. Legendas: Bacalhau Bom Paladar · Arroz de tamboril · Carré de borrego · Tábua para partilhar · Ninho de caramelo | Prova e variedade sem cortar: é sempre a mesma grelha, vista de perto. |
+| 9,4–14,6 | **A carta em 3 filas** — Mar · Grelha · Especialidades — cards a deslizar sobre a sala do restaurante desfocada, com o **vídeo real** do caril num card. No fim a sala fica nítida: é a porta do "Chegue." | Arruma a carta em 3 ideias simples. |
+| 14,6–17,8 | A porta à noite + "Chegue." + morada e horário | Onde é e quando está aberto, sem ter de procurar. |
+| 17,8–21,6 | Ecrã de WhatsApp: a mensagem "Olá! Mesa para 2, sexta às 20h?" a ser escrita e enviada | Tira o atrito da reserva: é uma mensagem, e o vídeo até dá o texto. |
+| 21,6–25 | "Sente-se." + botão RESERVE PELO WHATSAPP + **918 958 233** grande + morada, site, horário | Fecho. O número fica no ecrã 3,5 s, tempo de o ler e decorar. |
 
 O número aparece três vezes: no cabeçalho do WhatsApp, no cartão final e na legenda.
 
@@ -47,4 +47,4 @@ Os dois últimos hashtags são de propósito: quem está no Quinta do Lago e em 
 - Tudo é foto e vídeo real da casa; nada foi gerado.
 - A conversa de WhatsApp mostra só a mensagem do cliente a ser enviada. Não inventámos resposta da casa.
 - Sem preços (a carta que temos é de 13/07).
-- Confirmar com a Simona que os 11 pratos da montra continuam na carta.
+- Confirmar com a Simona que os 15 pratos do vídeo continuam na carta, e que a divisão Mar / Grelha / Especialidades lhe faz sentido.
