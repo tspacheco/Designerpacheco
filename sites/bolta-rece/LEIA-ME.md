@@ -25,6 +25,10 @@ As legendas ficam em baixo à esquerda, com os textos do istoric do cliente. O n
 
 **"O seară la Bolta Rece"**: uma faixa horizontal comandada pelo scroll vertical, em três capítulos (I masa: o prato · II vinul: as garrafas · III versul: a placă de lemn), com paragem em cada capítulo, fusão suave entre fotografias, parallax leve e barra de progresso. A lista do menu desenha as linhas pontilhadas ao aparecer e as poesias da carte de oaspeți revelam-se verso a verso.
 
+**Fim da descida (29/09, para a gravação do vídeo):** a câmara trava devagar na mesa sob a boltă e a imagem fica no ecrã até a secção seguinte subir por cima. Já não há o clarão claro que fazia a passagem para o menu.
+
+**Site escuro (29/09):** o site inteiro passou a fundo `--noapte`, sem secções claras, para a gravação de ecrã e a campanha de Facebook não terem flashes de luz. Os tokens `--text`/`--text-2` são agora claros, os painéis usam `--panou` (branco a 4,5 %), as linhas `--linie`, e há `--verde-2`/`--rosu-2` para texto sobre escuro. O widget, o formulário simples, a lista do menu, a galeria e o mapa (invertido) seguem o mesmo tom. A fotografia do salão no istoric leva sombra. Para voltar ao fundo claro: repor os tokens antigos (`--text:#2B1A12; --text-2:#5A4536`, `body{background:var(--var)}`) e os fundos `#fff9f0`/`#fff` dos painéis; está tudo no histórico do git (commit anterior a 29/09, "versão final sem marca").
+
 **Estados:** sem WebGL, a descida faz-se com as mesmas fotografias em 2D (zoom para o fundo e fusão). O `<html>` nasce com `class="no-js"` e um script no head troca para `js` (e junta `rm` com movimento reduzido). Sem JavaScript ou com movimento reduzido, o percurso e a faixa ficam empilhados na vertical, fotografia a fotografia, com todas as legendas. Fontes: Bona Nova (títulos), Albert Sans (corpo), EB Garamond itálico (citações e versos).
 
 **Afinar o percurso** (em `src/pages/index.html`, em cada `<figure class="cadru">`):

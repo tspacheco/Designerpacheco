@@ -8,7 +8,7 @@
  *    Cada foto tem um mapa de profundidade (media/profundidade-*.png): a malha é deslocada por ele e a
  *    câmara entra na foto com paralaxe verdadeira. A paragem seguinte nasce no ponto de fuga da anterior
  *    enquanto o que está perto passa por nós. Os candeeiros das fotos tremeluzem; há pó no ar.
- *    No fim, a luz do fundo da boltă enche o ecrã e dá lugar à secção seguinte.
+ *    No fim, a câmara assenta devagar na mesa sob a boltă e a imagem fica até a secção seguinte subir.
  * Sem WebGL, a descida faz-se com as mesmas fotografias em 2D. Sem JS ou com movimento reduzido,
  * o CSS empilha tudo (fotografias e legendas) e este script não corre.
  */
@@ -25,9 +25,6 @@
   var hint = sec.querySelector(".bolta__hint");
   var ancora = sec.querySelector(".bolta__ancora");
   var movel = window.matchMedia("(max-width: 820px)").matches;
-  var luzFim = document.createElement("div");
-  luzFim.className = "bolta__fim"; luzFim.setAttribute("aria-hidden", "true");
-  stage.appendChild(luzFim);
 
   function nums(s) { return String(s || "").trim().split(/[\s,]+/).filter(Boolean).map(Number); }
   function clamp(x, a, b) { return x < a ? a : x > b ? b : x; }
@@ -91,7 +88,7 @@
   }
 
   /* ---------- medidas (lidas só no resize: o scroll não lê o layout) ---------- */
-  var W = 1, H = 1, topo = 0, curso = 1, diag = 1;
+  var W = 1, H = 1, topo = 0, curso = 1;
   function M(p, u, v) { return [p.L + u * p.w, p.T + v * p.h]; }
   function dentro(pt, poli) {
     var x = pt[0], y = pt[1], d = false;
@@ -115,7 +112,6 @@
   }
   function medir() {
     W = stage.clientWidth || window.innerWidth; H = stage.clientHeight || window.innerHeight;
-    diag = Math.sqrt(W * W + H * H);
     topo = sec.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
     curso = Math.max(1, sec.offsetHeight - H);
     pasi.forEach(function (p) {
@@ -390,7 +386,7 @@
     function desenhar(k, t, tempo) {
       var A = pasi[k], B = pasi[k + 1];
       renderer.clear(true, true, true);
-      var jA = janela(A), dA = A.avanco * Math.pow(t, k === ultimo ? 1.25 : 1.6);
+      var jA = janela(A), dA = A.avanco * (k === ultimo ? 1 - Math.pow(1 - t, 2.4) : Math.pow(t, 1.6));   // na última, trava devagar
       var tr = B && B.tip === "bolta" ? clamp((t - 0.55) / 0.45, 0, 1) : 0;
       if (tr > 0 && B.pronto) {
         /* a paragem seguinte nasce no ponto de fuga desta e cresce até encher o ecrã */
@@ -401,7 +397,7 @@
       }
       /* o que está longe desaparece primeiro; o que está perto passa por nós */
       var corte = tr > 0 ? A.longe * 1.15 * Math.pow(1 - tr, 1.5) + 0.02 : 1e4;
-      estacao(A, jA, dA, corte, clamp(dA / 1.2, 0, 1), tempo);
+      estacao(A, jA, dA, corte, k === ultimo ? 0 : clamp(dA / 1.2, 0, 1), tempo);   // a mesa fica iluminada
       camPo.projectionMatrix.copy(cam.projectionMatrix);
       camPo.projectionMatrixInverse.copy(cam.projectionMatrixInverse);
       poMat.uniforms.viagem.value = andado[k] + dA;
@@ -421,7 +417,7 @@
   }
 
   /* ---------- um quadro ---------- */
-  var capAtual = -2, nomeAtual = null, fimAtual = -1, pAtual = -1;
+  var capAtual = -2, nomeAtual = null, pAtual = -1;
   function aplicar(a) {
     var o = onde(a), k = o.k, t = o.t, p = pasi[k], q = pasi[k + 1], vis = {}, em3D = false;
     vis[k] = true;
@@ -436,8 +432,7 @@
 
     var ci = k;
     if (q && (p.tip === "prag" ? t > REPOUSO + (1 - REPOUSO) * 0.55 : t > 0.78)) ci = k + 1;
-    var fim = k === ultimo ? suave((t - 0.6) / 0.36) : 0;
-    var cap = fim > 0.4 ? -1 : capDe[ci];
+    var cap = capDe[ci];
     if (cap !== capAtual) {
       if (capAtual >= 0) pasi[capAtual].cap.classList.remove("on");
       capAtual = cap;
@@ -447,19 +442,6 @@
     var pv = Math.round(a * 1000) / 1000;
     if (pv !== pAtual) { pAtual = pv; bara.style.setProperty("--p", String(pv)); }
     hint.classList.toggle("fora", a > 0.012);
-    locEl.classList.toggle("fora", fim > 0.3);
-    /* no fim, a luz do fundo da boltă enche o ecrã */
-    var fr = Math.round(fim * 500) / 500;
-    if (fr !== fimAtual) {
-      fimAtual = fr;
-      stage.style.setProperty("--fim", String(fr));
-      if (fr <= 0) luzFim.style.background = "none";
-      else {
-        var V = pasi[ultimo].V, r1 = diag * (0.12 + 1.5 * fr), r0 = r1 * (0.15 + 0.85 * fr * fr), al = Math.min(1, fr * 1.6);
-        luzFim.style.background = "radial-gradient(circle at " + V[0].toFixed(1) + "px " + V[1].toFixed(1) + "px,rgba(252,240,214," + al.toFixed(3) + ") 0," +
-          "rgba(244,238,226," + al.toFixed(3) + ") " + r0.toFixed(1) + "px,rgba(244,238,226,0) " + r1.toFixed(1) + "px)";
-      }
-    }
   }
 
   /* ---------- ciclo: só corre com a secção à vista ---------- */
