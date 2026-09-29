@@ -1,6 +1,6 @@
 # Meta Ads Roménia — Campanha 1: web design (2 variações)
 
-Orçamento: **75 €** (50 % de 150 €) · **10 dias** · 2 conjuntos × 3,75 €/dia · teste A/B limpo.
+Orçamento: **75 €** (50 % de 150 €) · **7 dias** · 2 anúncios × 5 €/dia (35 € cada) · ao dia 4 pausar o que perde e passar o resto para o vencedor. (Plano inicial era 10 dias × 3,75 €.)
 Os outros 75 € ficam para a campanha de Mensagens (vídeo da automação).
 
 ## 0. Antes de abrir o Gestor de Anúncios
@@ -66,3 +66,21 @@ Os outros 75 € ficam para a campanha de Mensagens (vídeo da automação).
 | 10 | Mensagens recebidas, visitas por UTM, perguntas de preço | O vídeo vencedor entra no retargeting / campanha de Mensagens |
 
 Regras: não mudar público nem texto durante o teste (reinicia a aprendizagem); não usar «garanție», «2x» nem superlativos sem prova.
+
+## Ficha de preenchimento (modo «Criar novo anúncio»)
+
+| Campo | A · Bolta Rece | B · Portfólio |
+|---|---|---|
+| Meta | Aumente o número de visitantes do seu site | igual |
+| Mídia | vídeo A 9:16 (+ 4:5 se pedir) | vídeo B 9:16 (+ 4:5) |
+| Texto do anúncio | Am luat cel mai cunoscut restaurant din Iași și i-am imaginat un site nou. Concept neoficial, făcut de noi. ⏎ Dacă și afacerea ta merită să arate așa online, uită-te la ce facem — și scrie-ne. | Afacerea ta merită un site de acest nivel. ⏎ Facem site-uri pentru restaurante, saloane și magazine — rapide, pe telefon, cu rezervare și meniu. Vezi proiectele noastre. |
+| Título | Site-uri care vând înainte să intri pe ușă | Afacerea ta merită un site de acest nivel |
+| Descrição | Concept neoficial · Pacheco Studios | Restaurante · saloane · magazine |
+| Botão | Saiba mais | Saiba mais |
+| URL | https://pachecost.com/?utm_source=meta&utm_medium=paid-video&utm_campaign=ps-prospecao-out26-ro&utm_content=web-bolta | …&utm_content=web-portofoliu |
+| Público | `RO-Donos-28-60` (guardar) | o mesmo público guardado |
+| Orçamento | 5 €/dia · 7 dias (35 €) | igual, mesmo dia de início |
+| Posicionamentos | sem Audience Network nem Messenger (se der) | igual |
+| Pixel | ligado | ligado |
+
+Música: só da Coleção de Sons da Meta / biblioteca do editor do anúncio (músicas do Instagram não podem ir em anúncios). A: piano/cinemático calmo. B: eletrónica minimal / lo-fi com ritmo. Volume baixo; o vídeo tem de funcionar sem som.
