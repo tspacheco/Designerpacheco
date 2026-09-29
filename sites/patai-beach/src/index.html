@@ -477,7 +477,7 @@ button{font:inherit;color:inherit}
         <path d="M112 800V560c0-92 62-156 146-176M488 800V560c0-92-62-156-146-176" fill="none" stroke="#E3A233" stroke-opacity=".35" stroke-width="2"/>
       </svg>
       <img src="media/chef.jpg" alt="Ariel Patai, chef de Patai Beach, con los brazos cruzados" width="900" height="1200" onerror="this.remove()">
-      <video class="hero__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4" onerror="this.parentNode.remove()"></video>
+      <video class="hero__video" muted loop playsinline preload="auto" poster="media/chef.jpg" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4" onerror="this.parentNode.remove()"></video>
       <figcaption class="hero__cap"><b>Ariel Patai</b>Chef cubano, maestro paellero. Foto del chef: por incorporar.</figcaption>
     </figure>
   </div>
@@ -801,7 +801,18 @@ button{font:inherit;color:inherit}
 
   /* ---------- héroe ---------- */
   var hero = document.querySelector(".hero");
-  var entrarHero = function () { hero.classList.add("is-in"); };
+  var heroVideo = hero.querySelector(".hero__video");
+  var entrarHero = function () {
+    hero.classList.add("is-in");
+    if (heroVideo && !reducido && heroVideo.isConnected) { var pr = heroVideo.play(); if (pr && pr.catch) pr.catch(function () {}); }
+  };
+  if (heroVideo) {
+    heroVideo.autoplay = false;                                   // arranca con el héroe, no antes del intro
+    if (reducido) { heroVideo.removeAttribute("autoplay"); heroVideo.pause(); }
+    new IntersectionObserver(function (es) {                      // en pausa cuando el héroe no se ve
+      es.forEach(function (e) { if (!heroVideo.isConnected) return; if (e.isIntersecting) { if (hero.classList.contains("is-in") && !reducido) { var pr = heroVideo.play(); if (pr && pr.catch) pr.catch(function () {}); } } else heroVideo.pause(); });
+    }, { threshold: 0.05 }).observe(hero);
+  }
   var chef = document.querySelector(".hero__chef");
   if (chef && !reducido) {                     // parallax al rodar
     var pendiente = false;
