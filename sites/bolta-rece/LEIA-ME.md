@@ -44,11 +44,25 @@ As legendas ficam em baixo à esquerda, com os textos do istoric do cliente. O n
 Reais: nome, morada, telefones (+40 752 589 881 · +40 232 212 255), e-mail, horário (Luni–Duminică 08:00–22:00), Facebook/Instagram, textos do istoric e da página inicial, nomes dos pratos, poesias, a ligação ao magazin Carmangeria Boierilor (Dacia).
 De confirmat: denumire firmă/CUI/Reg. Com. (rodapé), preços (não há nenhum no site), PDF do menu, alergénios, link de encomenda online da Carmangeria, morada/horário do magazin.
 
+## Rezervări (widget, 29/09/2026)
+
+No início (`#rezervari`) e no contacto (`contact.html#rezervare`) há um widget com o mesmo percurso do do Patai Beach, em romeno: 1 ziua (21 dias, com "azi" e "mâine") · 2 ora (prânz 12:00–15:30, seara 18:00–21:00, de meia em meia hora) · 3 persoane · 4 locul (oriunde, cramă, salon, sala rustică, terasă, como preferência) · os dados · a confirmação. Todos os botões "Rezervă o masă" levam ao widget; o telefone continua ao lado.
+
+- **Hora de Iași:** o "hoje" e as horas já passadas contam-se em Europe/Bucharest, seja qual for o fuso de quem reserva. Hoje só aceita horas com pelo menos uma hora de antecedência; se já não houver, pede para ligar.
+- **Sem ocupação inventada:** ao contrário da demo do Patai, o widget não mostra "liber / puține mese / complet" enquanto não houver um sistema a dizê-lo. As horas são pedidos; o texto diz que o restaurante confirma.
+- **Para onde vai o pedido:**
+  1. se `window.BOLTA.endpoint` estiver preenchido: `POST` JSON `{data, ora, interval, persoane, zona, nume, telefon, email, observatii, lista_asteptare, limba, sursa}`; resposta 2xx = recebido;
+  2. senão, no Netlify: vai para o painel **Forms → rezervare** (sem configurar nada). Para receber cada pedido por e-mail: Netlify → Site configuration → Forms → Form notifications → Email notification → casaboltareceiasi@gmail.com;
+  3. se não houver nenhum dos dois, ou o envio falhar, o ecrã final diz isso e oferece "Trimiteți pe e-mail" (já preenchido), "Sunați" e "Copiați cererea".
+- **Ligar a um sistema de reservas** (em `src/rezervare.html`, depois build): `window.BOLTA = { endpoint: "https://…/rezervari", disponibilitate: "https://…/disponibilitate", whatsapp: "" }`. A disponibilidade é `GET …?data=AAAA-LL-ZZ` → `{"19:30": 0, "20:00": 2}` (mesas livres por hora); com ela aparecem os estados e a lista de espera. Também se podem mudar `pranz`, `seara`, `zile`, `telefon`, `email`; `netlify: false` para alojamentos sem Netlify Forms.
+- **Sem JavaScript:** aparece um formulário simples com os mesmos campos (é também a definição que o Netlify Forms regista).
+
 ## Publicar
 
-- **Netlify:** arrastar `dist/bolta-rece-netlify.zip` (as 6 páginas, `netlify.toml` e só as fotos que as páginas usam, com `media/LEIA-ME.txt`). Para voltar a gerá-lo: build e depois o zip com os mesmos ficheiros. O formulário de reserva funciona lá (Netlify Forms, `data-netlify`); noutro alojamento, ligar o `action` a um serviço de formulários ou deixar só o telefone.
-- **Hostinger:** o mesmo, sem `netlify.toml`, em `public_html`.
-- Na venda: retirar o `.banner` de `src/nav.html`, preencher os dados da firma no `src/footer.html`, voltar a correr o build.
+- **Netlify:** arrastar `dist/bolta-rece-netlify.zip` (as 6 páginas, `netlify.toml` e só as fotos que as páginas usam, com `media/LEIA-ME.txt`). Para voltar a gerá-lo: build e depois o zip com os mesmos ficheiros.
+- **Hostinger:** o mesmo, sem `netlify.toml`, em `public_html`, e com `netlify: false` em `window.BOLTA` (os pedidos passam a sair por e-mail ou telefone).
+- **Sem marca:** `python3 ferramentas/build.py` gera a versão final, sem a faixa nem o crédito da Pacheco Studios. `python3 ferramentas/build.py --demo` gera a versão de apresentação, com a faixa "Prezentare Pacheco Studios"; é essa que vai para a demo no claude.ai.
+- **Antes de entregar ao cliente:** preencher denumire firmă, CUI e Nr. Reg. Com. no `src/footer.html` (ainda "de confirmat") e voltar a correr o build.
 
 ## Vídeo "Antes vs Depois"
 

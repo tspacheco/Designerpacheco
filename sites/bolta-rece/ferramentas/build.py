@@ -8,7 +8,8 @@ src/site.css       → CSS partilhado.   src/site.js → JS partilhado (nav, rev
 src/nav.html, src/footer.html, src/intro.html (só index)   src/bolta.js (só index; precisa do three.min.js).
 _fontes/fontes.css → fontes em base64 (gerado por ferramentas/fontes.py).
 ferramentas/three.min.js → Three.js UMD (npm pack three@0.152.2 → package/build/three.min.js).
-Marcadores nas páginas: <!--@head-->  <!--@nav-->  <!--@footer-->  <!--@scripts-->  e, no index, <!--@intro--> <!--@bolta-->.
+Marcadores nas páginas: <!--@head-->  <!--@nav-->  <!--@footer-->  <!--@scripts-->  <!--@rezervare--> (widget, index e contact)
+e, no index, <!--@intro--> <!--@bolta-->. Sem argumentos: versão final, sem marca. Com --demo: com a faixa de apresentação.
 """
 import pathlib, re, sys
 
@@ -23,6 +24,11 @@ nav = ler(SRC / "nav.html")
 footer = ler(SRC / "footer.html")
 intro = ler(SRC / "intro.html")
 bolta = ler(SRC / "bolta.js")
+rezervare = ler(SRC / "rezervare.html")
+# versão de demonstração (python3 ferramentas/build.py --demo): com a faixa "Prezentare Pacheco Studios"
+DEMO = "--demo" in sys.argv
+faixa = ('<div class="banner" role="note">Prezentare Pacheco Studios · propunere de site · date de confirmat</div>'
+         '<style>:root{--banner:30px}</style>') if DEMO else ""
 # o vídeo de entrada (Higgsfield) só entra se o ficheiro existir: sem ele, nenhum pedido 404
 tem_intro = (RAIZ / "media" / "intro.mp4").exists() or (RAIZ / "media" / "intro.webm").exists()
 if not tem_intro:
@@ -40,7 +46,11 @@ for pagina in sorted((SRC / "pages").glob("*.html")):
     html = ler(pagina)
     atual = pagina.stem
     nav_p = re.sub(r'href="(%s)\.html"' % atual, r'href="\1.html" aria-current="page"', nav)
+    if atual == "index":
+        nav_p = nav_p.replace('nav__cta" href="contact.html#rezervare"', 'nav__cta" href="#rezervari"')
+    nav_p = nav_p.replace("<!--@faixa-->", faixa)
     html = html.replace("<!--@head-->", head).replace("<!--@nav-->", nav_p).replace("<!--@footer-->", footer)
+    html = html.replace("<!--@rezervare-->", rezervare)
     if atual == "index":
         html = html.replace("<!--@intro-->", intro if tem_intro else "")
         bloco = (f"<script>\n{three}\n</script>\n" if three else "") + f"<script>\n{bolta}\n</script>"

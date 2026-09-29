@@ -1,0 +1,89 @@
+<!-- Rezervări: widget (com JavaScript) + formulário simples (sem JavaScript; é também a definição que o Netlify Forms regista).
+     Ligar a um sistema de rezervări: preencher window.BOLTA (ver LEIA-ME.md). Sem sistema, no Netlify, as cereri chegam ao painel Forms. -->
+<script>window.BOLTA = window.BOLTA || { endpoint: null, disponibilitate: null, whatsapp: "" };</script>
+<div class="rw" id="rw" hidden>
+  <div class="rw__head">
+    <b>Rezervă o masă</b>
+    <span class="rw__program">Luni – Duminică · 08:00 – 22:00</span>
+    <div class="rw__legenda" id="rw-legenda" hidden><span><i></i>Liber</span><span><i class="putine"></i>Puține mese</span><span><i class="plin"></i>Complet · listă de așteptare</span></div>
+  </div>
+
+  <div class="rw__pas">
+    <p class="rw__t"><small>1 · Ziua</small>Ce zi vă convine?</p>
+    <div class="rw__zile" id="rw-zile" role="group" aria-label="Alegeți ziua"></div>
+  </div>
+
+  <div class="rw__pas">
+    <p class="rw__t"><small>2 · Ora</small>La ce oră?</p>
+    <p class="rw__nota" id="rw-nota-ora">Orele sunt orientative: restaurantul confirmă ora exactă.</p>
+    <div class="rw__intervale">
+      <div><p class="rw__int">Prânz</p><div class="rw__ore" id="rw-pranz" role="group" aria-label="Ore la prânz"></div></div>
+      <div><p class="rw__int">Seara</p><div class="rw__ore" id="rw-seara" role="group" aria-label="Ore seara"></div></div>
+    </div>
+  </div>
+
+  <div class="rw__pas">
+    <p class="rw__t"><small>3 · Persoane</small>Câte persoane?</p>
+    <div class="rw__persoane">
+      <div class="rw__stepper" role="group" aria-label="Numărul de persoane">
+        <button type="button" id="rw-minus" aria-label="O persoană mai puțin">−</button>
+        <output id="rw-n" aria-live="polite">2</output>
+        <button type="button" id="rw-plus" aria-label="O persoană în plus">+</button>
+      </div>
+      <p id="rw-nota-pers">Pentru grupuri mari, stabilim masa împreună la confirmare.</p>
+    </div>
+  </div>
+
+  <div class="rw__pas">
+    <p class="rw__t"><small>4 · Locul</small>Unde ați vrea să stați?</p>
+    <div class="rw__locuri" id="rw-locuri" role="group" aria-label="Preferința de loc">
+      <button type="button" data-loc="oriunde" aria-pressed="true">Oriunde</button>
+      <button type="button" data-loc="crama" aria-pressed="false">În cramă</button>
+      <button type="button" data-loc="salon" aria-pressed="false">În salon</button>
+      <button type="button" data-loc="sala-rustica" aria-pressed="false">În sala rustică</button>
+      <button type="button" data-loc="terasa" aria-pressed="false">Pe terasă</button>
+    </div>
+    <p class="rw__nota">Ținem cont de preferință, în funcție de locurile libere.</p>
+  </div>
+
+  <p class="rw__rezumat" id="rw-rezumat" aria-live="polite">Alegeți ziua și ora.</p>
+
+  <form class="rw__date" id="rw-form" novalidate>
+    <div><label for="rw-nume">Nume</label><input id="rw-nume" name="nume" type="text" autocomplete="name" required></div>
+    <div><label for="rw-tel">Telefon</label><input id="rw-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" required></div>
+    <div class="rw__plin"><label for="rw-email">E-mail (opțional)</label><input id="rw-email" name="email" type="email" autocomplete="email"></div>
+    <div class="rw__plin"><label for="rw-obs">Observații</label><textarea id="rw-obs" name="observatii" placeholder="Aniversare, scaun pentru copil, alergii…"></textarea></div>
+    <label class="rw__acord rw__plin"><input type="checkbox" id="rw-acord" required><span>Am citit <a href="https://www.casaboltarece.ro/privacy-policy/" rel="noopener">politica de confidențialitate</a> și sunt de acord ca restaurantul să folosească aceste date doar pentru rezervare.</span></label>
+    <p class="rw__eroare rw__plin" id="rw-eroare" role="alert" hidden></p>
+    <div class="rw__acts rw__plin">
+      <button class="btn btn--primary" type="submit" id="rw-trimite">Trimite cererea</button>
+      <span class="rw__hint">Fără plată și fără card. Masa e rezervată după confirmarea restaurantului, prin telefon sau e-mail.</span>
+    </div>
+  </form>
+
+  <div class="rw__ok" id="rw-ok" tabindex="-1">
+    <h3 id="rw-ok-t">Cererea a fost trimisă</h3>
+    <p id="rw-ok-p"></p>
+    <dl id="rw-ok-date"></dl>
+    <div class="rw__acts" id="rw-ok-acts"></div>
+  </div>
+</div>
+
+<form class="form rw-simplu" name="rezervare" method="post" data-netlify="true" netlify-honeypot="adresa-web" action="contact.html#multumim">
+  <input type="hidden" name="form-name" value="rezervare">
+  <p class="sr-only"><label>Nu completați: <input name="adresa-web"></label></p>
+  <h3>Rezervare online</h3>
+  <p>Spuneți-ne ziua, ora și câte persoane sunteți. Masa e rezervată după confirmarea restaurantului.</p>
+  <label for="s-data">Ziua</label><input id="s-data" name="data" type="date" required>
+  <label for="s-ora">Ora</label><input id="s-ora" name="ora" type="time" min="08:00" max="21:30" required>
+  <label for="s-pers">Persoane</label><input id="s-pers" name="persoane" type="number" min="1" max="60" value="2" required>
+  <label for="s-loc">Unde ați vrea să stați</label>
+  <select id="s-loc" name="zona"><option value="oriunde">Oriunde</option><option value="crama">În cramă</option><option value="salon">În salon</option><option value="sala-rustica">În sala rustică</option><option value="terasa">Pe terasă</option></select>
+  <label for="s-nume">Nume</label><input id="s-nume" name="nume" type="text" autocomplete="name" required>
+  <label for="s-tel">Telefon</label><input id="s-tel" name="telefon" type="tel" autocomplete="tel" required>
+  <label for="s-email">E-mail</label><input id="s-email" name="email" type="email" autocomplete="email">
+  <label for="s-obs">Observații</label><textarea id="s-obs" name="observatii" placeholder="Aniversare, scaun pentru copil, alergii…"></textarea>
+  <input type="hidden" name="interval" value=""><input type="hidden" name="lista_asteptare" value="nu"><input type="hidden" name="limba" value="ro"><input type="hidden" name="sursa" value="web">
+  <button class="btn btn--primary" type="submit">Trimite cererea</button>
+  <p class="form__hint">Pentru o masă chiar azi, sunați: <a href="tel:+40752589881">+40 752 589 881</a>.</p>
+</form>

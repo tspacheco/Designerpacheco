@@ -123,7 +123,7 @@
 </style>
 <style>
 /* ============================================================
-   CASA BOLTA RECE — sistema de design (Pacheco Studios, 2026)
+   CASA BOLTA RECE — sistema de design (2026)
    Lumea: pivnițe de cărămidă, var, nuc, ștergare roșii, felinare.
    ============================================================ */
 :root{
@@ -136,7 +136,7 @@
   --f-body:"Albert Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-quote:"EB Garamond",Georgia,serif;
   --ease-out:cubic-bezier(.2,.7,.2,1); --ease-in-out:cubic-bezier(.65,0,.35,1);
-  --w:1200px; --pad:clamp(20px,5vw,72px); --banner:30px; --nav:76px;
+  --w:1200px; --pad:clamp(20px,5vw,72px); --banner:0px; --nav:76px;
   --r:14px; --sombra:0 24px 60px rgba(20,16,13,.28);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -186,7 +186,7 @@ button{font:inherit;color:inherit}
 .rv.is-in{opacity:1;transform:none}
 .rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}
 
-/* ---- banner de apresentação (retirar na venda) ---- */
+/* ---- faixa de apresentação: só nas versões de demonstração (build.py --demo) ---- */
 .banner{position:fixed;top:0;left:0;right:0;z-index:70;height:var(--banner);display:flex;align-items:center;justify-content:center;background:var(--caramida-3);color:#fff;font:600 10.5px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;padding-inline:12px;text-align:center}
 
 /* ---- navegação ---- */
@@ -425,8 +425,7 @@ button{font:inherit;color:inherit}
 .carmangeria__acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
 
 /* ---- rezervări / contact ---- */
-.rez{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);margin-top:40px}
-@media (max-width:880px){.rez{grid-template-columns:1fr}}
+.rez{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);margin-top:40px;align-items:start}
 .rez>*{min-width:0}
 .dl dd{min-width:0;overflow-wrap:anywhere}
 .dl dd small{display:block;margin-top:5px;font-size:14px;color:var(--text-2)}
@@ -444,11 +443,92 @@ button{font:inherit;color:inherit}
 .form h3{font-size:28px}
 .form p{color:var(--text-2);margin-top:8px;font-size:15px}
 .form label{display:block;margin-top:18px;font:600 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}
-.form input,.form textarea{width:100%;margin-top:8px;padding:14px 16px;border:1.5px solid var(--var-3);border-radius:10px;background:#fff;font:400 16px/1.4 var(--f-body);color:var(--nuc);transition:border-color .2s,box-shadow .2s}
-.form input:focus,.form textarea:focus{outline:none;border-color:var(--caramida);box-shadow:0 0 0 4px rgba(142,59,38,.12)}
+.form input,.form textarea,.form select{width:100%;margin-top:8px;padding:14px 16px;border:1.5px solid var(--var-3);border-radius:10px;background:#fff;font:400 16px/1.4 var(--f-body);color:var(--nuc);transition:border-color .2s,box-shadow .2s}
+.form input:focus,.form textarea:focus,.form select:focus{outline:none;border-color:var(--caramida);box-shadow:0 0 0 4px rgba(142,59,38,.12)}
 .form textarea{min-height:110px;resize:vertical}
 .form .btn{margin-top:22px;width:100%}
 .form__hint{margin-top:14px;font-size:13.5px;color:var(--text-2)}
+/* ---- rezervări: widget (ziua · ora · persoane · locul · date) ---- */
+.rez__info .program{margin-top:4px}
+.rez__info .btn{margin-top:26px}
+.rw-simplu[hidden],.rw[hidden]{display:none}
+.rw{background:#fffaf2;border:1.5px solid var(--var-3);border-radius:var(--r);box-shadow:var(--sombra);overflow:hidden;scroll-margin-top:calc(var(--banner) + var(--nav) + 16px)}
+.rw__head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 22px;padding:18px clamp(18px,3vw,28px);background:var(--noapte);color:var(--var)}
+.rw__head b{font:700 21px/1 var(--f-display)}
+.rw__program{font:600 11px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--lumina-2)}
+.rw__legenda{flex-basis:100%;display:flex;flex-wrap:wrap;gap:14px;font:600 10.5px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--text-inv-2)}
+.rw__legenda[hidden]{display:none}
+.rw__legenda span{display:inline-flex;align-items:center;gap:7px}
+.rw__legenda i{width:10px;height:10px;border-radius:50%;background:var(--verde)}
+.rw__legenda i.putine{background:var(--lumina)}
+.rw__legenda i.plin{background:transparent;border:1.5px solid var(--text-inv-2)}
+.rw__pas{padding:24px clamp(18px,3vw,28px) 8px;border-top:1px solid var(--var-3)}
+.rw__head + .rw__pas{border-top:0}
+.rw__t{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;font:700 20px/1.2 var(--f-display);color:var(--nuc)}
+.rw__t small{font:600 11px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--caramida)}
+.rw__nota{margin-top:6px;font-size:13.5px;color:var(--text-2)}
+.rw__nota a{color:var(--caramida);font-weight:600}
+.rw__zile{display:flex;gap:10px;overflow-x:auto;padding:16px 2px 18px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.rw__zi{flex:none;scroll-snap-align:start;width:70px;padding:15px 6px 10px;border:1.5px solid var(--var-3);border-radius:36px 36px 12px 12px;background:#fff;color:var(--nuc);cursor:pointer;text-align:center;font:inherit;transition:border-color .2s,background-color .2s,color .2s}
+.rw__zi small{display:block;font:600 10.5px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}
+.rw__zi b{display:block;font:700 24px/1.1 var(--f-display);margin-top:6px}
+.rw .rw__zi b,.rw .rw__ora b,.rw .rw__stepper output,.rw .rw__rezumat{font-variant-numeric:lining-nums tabular-nums}
+.rw__zi em{display:block;font:500 11px/1 var(--f-body);font-style:normal;color:var(--text-2);margin-top:5px}
+.rw__zi:hover{border-color:var(--caramida)}
+.rw__zi[aria-pressed="true"]{background:var(--noapte);border-color:var(--noapte);color:var(--var)}
+.rw__zi[aria-pressed="true"] small,.rw__zi[aria-pressed="true"] em{color:var(--lumina-2)}
+.rw__intervale{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;padding:14px 0 20px}
+.rw__int{font:600 11.5px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--text-2);margin-bottom:10px}
+.rw__ore{display:flex;flex-wrap:wrap;gap:8px}
+.rw__ora{min-width:76px;min-height:48px;padding:10px 12px;border:1.5px solid var(--var-3);border-radius:10px;background:#fff;color:var(--nuc);cursor:pointer;text-align:left;font:inherit;transition:border-color .2s,background-color .2s,color .2s}
+.rw__ora b{display:block;font:700 17px/1 var(--f-display)}
+.rw__ora span{display:block;margin-top:5px;font:600 10px/1.25 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--verde)}
+.rw__ora[data-stare="putine"] span{color:var(--caramida)}
+.rw__ora[data-stare="plin"]{background:var(--var-2)}
+.rw__ora[data-stare="plin"] span,.rw__ora[data-stare="trecut"] span{color:var(--text-2)}
+.rw__ora:hover:not(:disabled){border-color:var(--caramida)}
+.rw__ora:disabled{opacity:.42;cursor:not-allowed}
+.rw__ora[aria-pressed="true"]{background:var(--noapte);border-color:var(--noapte);color:var(--var)}
+.rw__ora[aria-pressed="true"] span{color:var(--lumina-2)}
+.rw__persoane{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;padding:14px 0 20px}
+.rw__stepper{display:inline-flex;align-items:center;border:1.5px solid var(--var-3);border-radius:999px;overflow:hidden;background:#fff}
+.rw__stepper button{width:48px;height:48px;border:0;background:#fff;cursor:pointer;font:700 22px/1 var(--f-display);color:var(--nuc);transition:background-color .2s}
+.rw__stepper button:hover{background:var(--var-2)}
+.rw__stepper output{min-width:56px;text-align:center;font:700 22px/1 var(--f-display);color:var(--nuc)}
+.rw__persoane p{font-size:14px;color:var(--text-2);max-width:40ch}
+.rw__locuri{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 4px}
+.rw__locuri button{min-height:44px;padding:0 16px;border:1.5px solid var(--var-3);border-radius:999px;background:#fff;color:var(--nuc);cursor:pointer;font:600 14px/1 var(--f-body);transition:border-color .2s,background-color .2s,color .2s}
+.rw__locuri button:hover{border-color:var(--caramida)}
+.rw__locuri button[aria-pressed="true"]{background:var(--caramida);border-color:var(--caramida);color:#fff}
+.rw__locuri + .rw__nota{padding-bottom:16px}
+.rw__rezumat{margin:18px clamp(18px,3vw,28px) 0;padding:14px 18px;border-radius:10px;background:var(--var-2);font-size:14.5px;color:var(--text-2)}
+.rw__rezumat b{color:var(--nuc)}
+.rw__date{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;padding:20px clamp(18px,3vw,28px) 26px}
+.rw__date label{display:block;font:600 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);margin-bottom:8px}
+.rw__date input,.rw__date textarea{width:100%;padding:13px 14px;border:1.5px solid var(--var-3);border-radius:10px;background:#fff;font:400 16px/1.4 var(--f-body);color:var(--nuc);transition:border-color .2s,box-shadow .2s}
+.rw__date input:focus,.rw__date textarea:focus{outline:none;border-color:var(--caramida);box-shadow:0 0 0 4px rgba(142,59,38,.12)}
+.rw__date textarea{min-height:92px;resize:vertical}
+.rw__plin{grid-column:1/-1}
+.rw__date .rw__acord{display:flex;gap:12px;align-items:flex-start;margin:0;font:400 14px/1.5 var(--f-body);letter-spacing:0;text-transform:none;color:var(--text-2)}
+.rw__acord input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--caramida)}
+.rw__acord a{color:var(--caramida)}
+.rw__eroare{color:var(--rosu);font-weight:600;font-size:14.5px}
+.rw__eroare[hidden]{display:none}
+.rw__acts{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;margin-top:4px}
+.rw__hint{font-size:13.5px;color:var(--text-2);max-width:46ch}
+.rw__ok{display:none;padding:30px clamp(18px,3vw,28px) 32px}
+.rw__ok.on{display:block}
+.rw__ok:focus{outline:none}
+.rw__ok h3{font-size:clamp(26px,3vw,36px);color:var(--nuc)}
+.rw__ok p{margin-top:10px;color:var(--text-2)}
+.rw__ok dl{margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:15px}
+.rw__ok dt{font:600 11px/1.7 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--caramida)}
+.rw__ok dd{margin:0;overflow-wrap:anywhere}
+.rw__ok .rw__acts{margin-top:22px}
+.rw__modifica{border:0;background:none;padding:8px 2px;font:600 14px/1 var(--f-body);color:var(--caramida);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.rw[data-faza="ok"] .rw__pas,.rw[data-faza="ok"] .rw__rezumat,.rw[data-faza="ok"] .rw__date{display:none}
+@media (max-width:980px){.rez{grid-template-columns:1fr}}
+@media (max-width:620px){.rw__intervale,.rw__date{grid-template-columns:1fr}.rw__ok dl{grid-template-columns:1fr;gap:2px}.rw__ok dd{margin-bottom:8px}}
 .harta{margin-top:56px;border-radius:var(--r);overflow:hidden;box-shadow:var(--sombra);aspect-ratio:16/7;background:var(--var-2)}
 .harta iframe{width:100%;height:100%;border:0;display:block;filter:sepia(.35) saturate(.7)}
 @media (max-width:700px){.harta{aspect-ratio:4/3}}
@@ -553,7 +633,7 @@ button{font:inherit;color:inherit}
 </script>
 </head>
 <body>
-<div class="banner" role="note">Prezentare Pacheco Studios · propunere de site · date de confirmat</div>
+
 <a class="skip" href="#continut">Sari la conținut</a>
 <header class="nav">
   <div class="nav__in">
@@ -567,7 +647,7 @@ button{font:inherit;color:inherit}
       <li><a href="carmangeria.html">Carmangeria</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a class="btn btn--lumina nav__cta" href="tel:+40752589881">Rezervă o masă</a>
+    <a class="btn btn--lumina nav__cta" href="contact.html#rezervare">Rezervă o masă</a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -706,13 +786,12 @@ button{font:inherit;color:inherit}
     <div class="footer__legal">
       <span>© <span id="ano">2026</span> Casa Bolta Rece · <a href="https://www.casaboltarece.ro/privacy-policy/">Politica de confidențialitate</a> · Denumire firmă, CUI, Nr. Reg. Com.: de confirmat</span>
       <span class="anpc"><a href="https://anpc.ro/ce-este-sal/" rel="noopener" aria-label="ANPC — Soluționarea alternativă a litigiilor"><img src="media/anpc-sal.png" alt="ANPC SAL" width="409" height="103"></a></span>
-      <span>site de Pacheco Studios</span>
     </div>
   </div>
 </footer>
 
 <script>
-/* Casa Bolta Rece — comportamentos partilhados (nav, revelação, herói, galeria) */
+/* Casa Bolta Rece — comportamentos partilhados (nav, revelação, herói, galeria, widget de rezervări) */
 (function () {
   "use strict";
   var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -865,11 +944,177 @@ button{font:inherit;color:inherit}
   /* formulário: só feedback local (envio via Netlify Forms quando alojado lá) */
   var form = document.querySelector("form.form");
   if (form && !form.hasAttribute("data-netlify")) {
+    form.addEventListener("input", function () { err.hidden = true; });
+    form.addEventListener("change", function () { err.hidden = true; });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var ok = form.querySelector(".form__ok");
       if (ok) ok.hidden = false;
     });
+  }
+
+  /* rezervări: widget ziua · ora · persoane · locul · date.
+     window.BOLTA (em src/rezervare.html) liga-o a um sistema: endpoint (POST JSON), disponibilitate (GET ?data=).
+     Sem endpoint, no Netlify, a cerere vai para o painel Forms (formulário "rezervare"). Sem nenhum dos dois,
+     a pessoa envia-a por e-mail ou telefone com os dados já preenchidos. Nunca se inventa disponibilidade. */
+  var rw = document.getElementById("rw");
+  if (rw) {
+    var B = window.BOLTA || {};
+    var CFG = {
+      endpoint: B.endpoint || null,
+      disponibilitate: B.disponibilitate || null,
+      netlify: B.netlify !== false,
+      telefon: B.telefon || "+40752589881",
+      whatsapp: B.whatsapp || "",
+      email: B.email || "casaboltareceiasi@gmail.com",
+      pranz: B.pranz || ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"],
+      seara: B.seara || ["18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"],
+      zile: B.zile || 21
+    };
+    var ZILE = ["dum", "lun", "mar", "mie", "joi", "vin", "sâm"], ZILE_L = ["duminică", "luni", "marți", "miercuri", "joi", "vineri", "sâmbătă"];
+    var LUNI = ["ian", "feb", "mar", "apr", "mai", "iun", "iul", "aug", "sep", "oct", "nov", "dec"];
+    var LUNI_L = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
+    var LOC_L = { oriunde: "oriunde", crama: "în cramă", salon: "în salon", "sala-rustica": "în sala rustică", terasa: "pe terasă" };
+    var el = function (id) { return document.getElementById(id); };
+    var cZile = el("rw-zile"), cPranz = el("rw-pranz"), cSeara = el("rw-seara"), outN = el("rw-n"), rez = el("rw-rezumat");
+    var form = el("rw-form"), err = el("rw-eroare"), ok = el("rw-ok");
+    var sel = { data: null, ora: null, interval: null, persoane: 2, zona: "oriunde" }, libere = null, pedido = 0;
+    rw.hidden = false;
+    [].forEach.call(document.querySelectorAll(".rw-simplu"), function (f) { f.hidden = true; });
+
+    var esc = function (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); };
+    var telL = function (t) { return /^\+40\d{9}$/.test(t) ? "+40 " + t.slice(3, 6) + " " + t.slice(6, 9) + " " + t.slice(9) : t; };
+    var persL = function (n) { return n === 1 ? "1 persoană" : n + (n >= 20 ? " de persoane" : " persoane"); };
+    function acum() {                          // a hora de Iași, seja qual for o fuso de quem reserva
+      try {
+        var g = {};
+        new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Bucharest", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
+          .formatToParts(new Date()).forEach(function (x) { g[x.type] = x.value; });
+        return { y: +g.year, m: +g.month, d: +g.day, min: (+g.hour % 24) * 60 + (+g.minute) };
+      } catch (e) { var n = new Date(); return { y: n.getFullYear(), m: n.getMonth() + 1, d: n.getDate(), min: n.getHours() * 60 + n.getMinutes() }; }
+    }
+    var iso = function (dt) { return dt.getUTCFullYear() + "-" + String(dt.getUTCMonth() + 1).padStart(2, "0") + "-" + String(dt.getUTCDate()).padStart(2, "0"); };
+    var zi = function (s) { var p = s.split("-"); return new Date(Date.UTC(+p[0], p[1] - 1, +p[2])); };
+    var ziL = function (s) { var d = zi(s); return ZILE_L[d.getUTCDay()] + " " + d.getUTCDate() + " " + LUNI_L[d.getUTCMonth()]; };
+    var minute = function (h) { var p = h.split(":"); return +p[0] * 60 + (+p[1]); };
+    var A = acum(), azi = iso(new Date(Date.UTC(A.y, A.m - 1, A.d)));
+    var trecuta = function (h) { return sel.data === azi && minute(h) < A.min + 60; };   // hoje: pelo menos uma hora antes
+
+    for (var i = 0; i < CFG.zile; i++) {
+      var d = new Date(Date.UTC(A.y, A.m - 1, A.d + i)), b = document.createElement("button");
+      b.type = "button"; b.className = "rw__zi"; b.dataset.data = iso(d); b.setAttribute("aria-pressed", "false");
+      b.setAttribute("aria-label", (i === 0 ? "azi, " : i === 1 ? "mâine, " : "") + ziL(iso(d)));
+      b.innerHTML = "<small>" + (i === 0 ? "azi" : i === 1 ? "mâine" : ZILE[d.getUTCDay()]) + "</small><b>" + d.getUTCDate() + "</b><em>" + LUNI[d.getUTCMonth()] + "</em>";
+      b.addEventListener("click", function () { sel.data = this.dataset.data; sel.ora = null; sel.interval = null; cereDisponibilitate(); pinta(); });
+      cZile.appendChild(b);
+    }
+    function cereDisponibilitate() {
+      libere = null;
+      if (!CFG.disponibilitate || !sel.data) return;
+      var n = ++pedido;
+      fetch(CFG.disponibilitate + (CFG.disponibilitate.indexOf("?") < 0 ? "?" : "&") + "data=" + sel.data)
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { if (n === pedido && j && typeof j === "object") { libere = j; el("rw-legenda").hidden = false; pinta(); } })
+        .catch(function () {});
+    }
+    function stare(h) {
+      if (trecuta(h)) return "trecut";
+      if (!libere || libere[h] == null) return "";
+      var l = +libere[h];
+      return l <= 0 ? "plin" : l <= 3 ? "putine" : "liber";
+    }
+    function eticheta(s, h) {
+      return s === "trecut" ? "prea curând" : s === "plin" ? "complet · listă de așteptare" : s === "putine" ? (+libere[h] === 1 ? "o masă" : libere[h] + " mese") : s === "liber" ? "liber" : "";
+    }
+    function pintaOre(cont, lista, interval) {
+      cont.innerHTML = "";
+      lista.forEach(function (h) {
+        var s = sel.data ? stare(h) : "", e = sel.data ? eticheta(s, h) : "", b = document.createElement("button");
+        b.type = "button"; b.className = "rw__ora"; b.dataset.ora = h; b.dataset.interval = interval;
+        if (s) b.dataset.stare = s;
+        b.disabled = !sel.data || s === "trecut";
+        b.setAttribute("aria-pressed", sel.ora === h ? "true" : "false");
+        b.innerHTML = "<b>" + h + "</b>" + (e ? "<span>" + e + "</span>" : "");
+        b.addEventListener("click", function () { sel.ora = this.dataset.ora; sel.interval = this.dataset.interval; pinta(); });
+        cont.appendChild(b);
+      });
+    }
+    function pinta() {
+      err.hidden = true;                          // qualquer escolha nova apaga o aviso anterior
+      [].forEach.call(cZile.children, function (b) { b.setAttribute("aria-pressed", b.dataset.data === sel.data ? "true" : "false"); });
+      pintaOre(cPranz, CFG.pranz, "pranz"); pintaOre(cSeara, CFG.seara, "seara");
+      outN.textContent = sel.persoane;
+      el("rw-nota-pers").textContent = sel.persoane > 12 ? "Pentru " + persL(sel.persoane) + ", masa și meniul se stabilesc la confirmare." : "Pentru grupuri mari, stabilim masa împreună la confirmare.";
+      [].forEach.call(el("rw-locuri").children, function (b) { b.setAttribute("aria-pressed", b.dataset.loc === sel.zona ? "true" : "false"); });
+      var nota = el("rw-nota-ora");
+      if (sel.data === azi && CFG.pranz.concat(CFG.seara).every(trecuta)) nota.innerHTML = 'Pentru astăzi nu mai sunt ore disponibile online. Sunați: <a href="tel:' + CFG.telefon + '">' + telL(CFG.telefon) + "</a>.";
+      else nota.textContent = (sel.data === azi ? "Pentru astăzi, cu cel puțin o oră înainte. " : "") + "Orele sunt orientative: restaurantul confirmă ora exactă.";
+      if (sel.data && sel.ora) {
+        rez.innerHTML = "<b>" + persL(sel.persoane) + "</b> · <b>" + ziL(sel.data) + "</b> · <b>ora " + sel.ora + "</b> · " + LOC_L[sel.zona] + (stare(sel.ora) === "plin" ? " · <b>listă de așteptare</b>" : "");
+      } else rez.textContent = sel.data ? "Acum alegeți ora." : "Alegeți ziua și ora.";
+    }
+    el("rw-minus").addEventListener("click", function () { sel.persoane = Math.max(1, sel.persoane - 1); pinta(); });
+    el("rw-plus").addEventListener("click", function () { sel.persoane = Math.min(30, sel.persoane + 1); pinta(); });
+    [].forEach.call(el("rw-locuri").children, function (b) { b.addEventListener("click", function () { sel.zona = this.dataset.loc; pinta(); }); });
+    pinta();
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); err.hidden = true;
+      var nume = form.nume.value.trim(), tel = form.telefon.value.trim(), email = form.email.value.trim(), foc = null, problema = "";
+      if (!sel.data) { problema = "Alegeți ziua."; foc = cZile.querySelector(".rw__zi"); }
+      else if (!sel.ora) { problema = "Alegeți ora."; foc = rw.querySelector(".rw__ora:not(:disabled)"); }
+      else if (!nume) { problema = "Scrieți-ne numele."; foc = form.nume; }
+      else if (tel.replace(/\D/g, "").length < 9) { problema = "Lăsați-ne un număr de telefon, ca restaurantul să vă poată confirma."; foc = form.telefon; }
+      else if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { problema = "Adresa de e-mail nu pare corectă."; foc = form.email; }
+      else if (!el("rw-acord").checked) { problema = "Bifați acordul pentru folosirea datelor."; foc = el("rw-acord"); }
+      if (problema) { err.textContent = problema; err.hidden = false; if (foc) foc.focus(); return; }
+      var c = { data: sel.data, ora: sel.ora, interval: sel.interval, persoane: sel.persoane, zona: sel.zona, nume: nume, telefon: tel, email: email,
+                observatii: form.observatii.value.trim(), lista_asteptare: stare(sel.ora) === "plin", limba: "ro", sursa: "web" };
+      var btn = el("rw-trimite"); btn.disabled = true; btn.textContent = "Se trimite…";
+      trimite(c).then(function (r) { btn.disabled = false; btn.textContent = "Trimite cererea"; arata(c, r); });
+    });
+    function trimite(c) {
+      if (CFG.endpoint) {
+        return fetch(CFG.endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(c) })
+          .then(function (r) { return r.ok; }).catch(function () { return false; });
+      }
+      if (CFG.netlify && /^https?:$/.test(location.protocol)) {
+        var campuri = { "form-name": "rezervare", "adresa-web": "" };
+        Object.keys(c).forEach(function (k) { campuri[k] = typeof c[k] === "boolean" ? (c[k] ? "da" : "nu") : String(c[k]); });
+        return fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(campuri).toString() })
+          .then(function (r) { return r.ok; }).catch(function () { return false; });
+      }
+      return Promise.resolve(null);
+    }
+    function arata(c, r) {
+      var date = [["Ziua", ziL(c.data)], ["Ora", c.ora], ["Persoane", String(c.persoane)], ["Locul", LOC_L[c.zona]], ["Nume", c.nume], ["Telefon", c.telefon]];
+      if (c.email) date.push(["E-mail", c.email]);
+      if (c.lista_asteptare) date.push(["Stare", "listă de așteptare: vă anunțăm dacă se eliberează o masă"]);
+      if (c.observatii) date.push(["Observații", c.observatii]);
+      el("rw-ok-date").innerHTML = date.map(function (x) { return "<dt>" + x[0] + "</dt><dd>" + esc(x[1]) + "</dd>"; }).join("");
+      el("rw-ok-t").textContent = r === true ? "Cererea a fost trimisă" : r === false ? "Cererea nu a plecat" : "Mai e un pas";
+      el("rw-ok-p").textContent = r === true ? "Restaurantul vă confirmă rezervarea prin telefon sau e-mail. Pentru un răspuns imediat, sunați."
+        : r === false ? "Nu am putut trimite cererea de pe site. Trimiteți-o pe e-mail sau sunați: datele de mai jos sunt deja completate."
+        : "Trimiteți cererea pe e-mail sau sunați: datele de mai jos sunt deja completate.";
+      var mesaj = "Bună ziua! Aș dori să rezerv o masă la Casa Bolta Rece: " + ziL(c.data) + ", ora " + c.ora + ", " + persL(c.persoane) + (c.zona !== "oriunde" ? ", " + LOC_L[c.zona] : "") +
+        ". Nume: " + c.nume + ". Telefon: " + c.telefon + (c.observatii ? ". Observații: " + c.observatii : "") + (c.lista_asteptare ? " (listă de așteptare)" : "") + ".";
+      var acts = el("rw-ok-acts"); acts.innerHTML = "";
+      var link = function (cls, txt, href, rel) { var a = document.createElement("a"); a.className = "btn " + cls; a.textContent = txt; a.href = href; if (rel) a.rel = rel; acts.appendChild(a); };
+      if (r !== true) link("btn--primary", "Trimiteți pe e-mail", "mailto:" + CFG.email + "?subject=" + encodeURIComponent("Rezervare: " + ziL(c.data) + ", ora " + c.ora) + "&body=" + encodeURIComponent(mesaj));
+      link(r === true ? "btn--primary" : "btn--ghost", "Sunați: " + telL(CFG.telefon), "tel:" + CFG.telefon);
+      if (CFG.whatsapp && r !== true) link("btn--ghost", "Trimiteți pe WhatsApp", "https://wa.me/" + CFG.whatsapp.replace(/\D/g, "") + "?text=" + encodeURIComponent(mesaj), "noopener");
+      if (r !== true) {
+        var cp = document.createElement("button"); cp.type = "button"; cp.className = "btn btn--ghost"; cp.textContent = "Copiați cererea";
+        cp.addEventListener("click", function () { if (navigator.clipboard) navigator.clipboard.writeText(mesaj).then(function () { cp.textContent = "Copiată"; }); });
+        acts.appendChild(cp);
+        var mod = document.createElement("button"); mod.type = "button"; mod.className = "rw__modifica"; mod.textContent = "Modificați cererea";
+        mod.addEventListener("click", function () { rw.removeAttribute("data-faza"); ok.classList.remove("on"); form.nume.focus(); });
+        acts.appendChild(mod);
+      }
+      rw.setAttribute("data-faza", "ok"); ok.classList.add("on");
+      rw.scrollIntoView({ behavior: reduzido ? "auto" : "smooth", block: "start" });
+      ok.focus({ preventScroll: true });
+    }
   }
 
   var ano = document.getElementById("ano");
