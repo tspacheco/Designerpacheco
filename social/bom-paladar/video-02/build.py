@@ -307,9 +307,12 @@ def main():
     npm = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
     subprocess.run(["node", str(AQUI / "render.js"), str(AQUI / "video.html"), str(FRAMES), str(FPS)],
                    check=True, cwd=AQUI, env={**os.environ, "NODE_PATH": npm})
+    # formato mais compatível (telemóvel, WhatsApp, Instagram): H.264 High 4.0, ~3 Mbps, com faixa de áudio silenciosa
     subprocess.run([FF, "-hide_banner", "-loglevel", "error", "-y", "-framerate", str(FPS),
-                    "-i", str(FRAMES / "%04d.jpg"), "-c:v", "libx264", "-preset", "slow", "-crf", "19",
-                    "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(AQUI / "Bom-Paladar-video-2.mp4")], check=True)
+                    "-i", str(FRAMES / "%04d.jpg"), "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
+                    "-shortest", "-c:v", "libx264", "-preset", "slow", "-profile:v", "high", "-level:v", "4.0",
+                    "-crf", "22", "-maxrate", "3500k", "-bufsize", "7000k", "-pix_fmt", "yuv420p", "-g", "60",
+                    "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", str(AQUI / "Bom-Paladar-video-2.mp4")], check=True)
     folha()
 
 
