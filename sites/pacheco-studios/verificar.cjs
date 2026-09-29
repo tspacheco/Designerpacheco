@@ -5,7 +5,8 @@
 //  1. QR do cartão: HTTPS://RO.PACHECOST.COM/C → página romena. Endereços antigos e de cada língua.
 //  2. Em 360, 390 e 1280 px, nas 3 línguas e nas 3 vistas: sem scroll horizontal, letra ≥ 12 px, contraste,
 //     alvos ≥ 44 px, títulos por ordem.
-//  3. Seletor PT · EN · RO, canonical e hreflang; separadores (com e sem JavaScript), automatizações, quadrados,
+//  3. Seletor PT · EN · RO, canonical e hreflang; separadores (com e sem JavaScript), automatizações, sites em destaque e
+//     por tipo de negócio (cada site ativo num deles, sem grelha com todos),
 //     cópia da Toda Chic com «voltar» em cada língua, 404 em cada língua, privacidade, barra fixa, faixa de cookies.
 //  4. Esquemas: «Ver o esquema» abre cada um dos 8 num cartão no meio do ecrã (Esc, X e tocar fora fecham), o
 //     endereço #esquema-… abre-o direto, e sem JavaScript mostra-o na mesma.
@@ -141,6 +142,7 @@ const fs = require('fs');
     return { saltos, final: url };
   }
 
+  const portfolio = JSON.parse(fs.readFileSync(path.join(__dirname, 'portfolio.json'), 'utf8'));
   const LINGUAS = { pt: { url: PT + '/', lang: 'pt-PT' }, en: { url: PT + '/en/', lang: 'en' }, ro: { url: RO + '/', lang: 'ro' } };
 
   // ——— 1. domínios, QR e endereços ———
@@ -230,7 +232,8 @@ const fs = require('fs');
         const erros = [];
         p.on('pageerror', e => erros.push(e.message));
         await p.goto(`${v.url}#${vista}`);
-        if (vista === 'automatizari') await p.$$eval('details', ds => ds.forEach(d => d.open = true));
+        // abre todos os cartões (sem o «name», senão o navegador deixa só um aberto) para medir o que está lá dentro
+        await p.$$eval('details', ds => ds.forEach(d => { d.removeAttribute('name'); d.open = true; }));
         const r = await p.evaluate(medir);
         avaliar(r, `${k} #${vista} ${nome}px`);
         if (erros.length) mal(`${k} #${vista} ${nome}px: erros de JavaScript: ${erros.join(' | ')}`);
@@ -268,9 +271,26 @@ const fs = require('fs');
     if (!(await vis('servicii'))) mal(`${k}: separador dos serviços não trocou a vista`);
     await p.click('.tabs a[href="#proiecte"]');
     if (!(await vis('proiecte'))) mal(`${k}: voltar aos projetos falhou`);
-    // quadrados e exemplos: cada ligação interna tem de existir
-    const hrefs = await p.$$eval('.grelha .q, .link-ex', as => as.map(a => a.getAttribute('href')));
-    const semSep = await p.$$eval('.grelha .q[href^=http]', as => as.filter(a => a.target !== '_blank').length);
+    // sites em destaque, sites dentro de cada tipo de negócio e exemplos: cada ligação interna tem de existir
+    const hrefs = await p.$$eval('.grelha .q, .exemplos a, .link-ex', as => as.map(a => a.getAttribute('href')));
+    const semSep = await p.$$eval('.grelha .q[href^=http], .exemplos a[href^=http]', as => as.filter(a => a.target !== '_blank').length);
+    // sem grelha com todos, sem «O teu negócio?»: cada site ativo aparece uma vez num tipo de negócio
+    const setores = await p.$$eval('details.setor', ds => ds.map(d => ({ id: d.id, n: d.querySelectorAll('.exemplos a').length,
+      qa: d.querySelectorAll('.perguntas dt').length, combina: d.querySelectorAll('.chips a').length })));
+    const nosSetores = await p.$$eval('.exemplos a', as => as.map(a => a.getAttribute('href')));
+    const ativos = portfolio.itens.filter(x => x.ativo && !x.demo && (x.url || x.pasta));
+    const emFalta = ativos.filter(x => !nosSetores.some(h => x.url ? h === x.url : h.startsWith(`/p/${x.slug}/`))).map(x => x.slug);
+    if (setores.length !== 4 || setores.some(x => !x.qa || !x.combina)) mal(`${k}: tipos de negócio ${JSON.stringify(setores)}`);
+    if (emFalta.length || nosSetores.length !== ativos.length) mal(`${k}: sites fora dos tipos de negócio: ${emFalta.join(', ')} (${nosSetores.length}/${ativos.length})`);
+    if (await p.$('.q.teu, .grelha > li:not(.dest)')) mal(`${k}: a grelha ainda tem mais do que os três em destaque`);
+    // «Combina com» leva à automação e abre-a
+    await p.click('.tabs a[href="#proiecte"]');
+    await p.click('#s-restauracao summary');
+    await p.click('#s-restauracao .chips a');
+    await p.waitForTimeout(250);
+    if (!(await p.evaluate(() => { const d = document.querySelector(location.hash); return d && d.tagName === 'DETAILS' && d.open && !!d.closest('#automatizari'); })))
+      mal(`${k}: «Combina com» não abriu a automação`);
+    await p.click('.tabs a[href="#proiecte"]');
     if (semSep) mal(`${k}: ${semSep} ligações externas sem target=_blank`);
     for (const h of hrefs) {
       if (h.startsWith('#') || /^https?:/.test(h)) continue;
@@ -293,7 +313,7 @@ const fs = require('fs');
       if (l !== v.lang || !p.url().startsWith(v.url)) mal(`${k}: o botão de voltar foi para ${p.url()} (${l})`);
     }
     if (!noindex) mal(`${k}: a cópia do site não tem noindex`);
-    if (falhas === falhasAntes) bem(`${k}: separadores, 8 automatizações, ligações, primeira fila (${dest.join(', ')}), Toda Chic com «${pil && pil.t}» a voltar à página ${k.toUpperCase()}`);
+    if (falhas === falhasAntes) bem(`${k}: separadores, 8 automatizações, ligações, em destaque (${dest.join(', ')}), 4 tipos de negócio com os ${ativos.length} sites, Toda Chic com «${pil && pil.t}» a voltar à página ${k.toUpperCase()}`);
   }
 
   // barra fixa

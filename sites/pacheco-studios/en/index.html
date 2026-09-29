@@ -105,16 +105,12 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .lead{margin-top:1rem;max-width:44ch;color:var(--osso-2);font-size:1.0625rem}
 .claro .lead{color:var(--tinta-2)}
 
-/* ═══ quadrados: cada um com a fonte e as cores do próprio site ═══
-   Primeira fila = os 3 em destaque, em qualquer ecrã. Telemóvel: grelha de 6 colunas, destaque ocupa 2 (três por fila,
-   cartões altos), os outros 3 (dois por fila). Tablet: 3 colunas iguais. Computador: 12 colunas, destaque 4 (mais
-   largos, 4:3) e os outros 3 (quadrados) — as duas filas ficam com a mesma altura. */
-.grelha{margin-top:1.75rem;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
-.grelha > li{grid-column:span 3}
+/* ═══ em destaque: três sites, cada um com a fonte e as cores do próprio site ═══
+   Telemóvel: 6 colunas, cada um ocupa 2 (cartões altos). Tablet: 3 colunas. Computador: 12 colunas, cada um 4 (4:3).
+   Os outros sites ficam dentro do tipo de negócio deles: o número de trabalhos não é o assunto. */
+.rotulo.selecao{margin-top:2.5rem}
+.grelha{margin-top:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
 .grelha > li.dest{grid-column:span 2}
-/* «O teu negócio?» ocupa o que sobra da última fila, em cada ecrã (o gerador calcula --s*, --a* e --h*) */
-.grelha > li.teu{grid-column:span var(--sm)}
-.grelha > li.teu .q{aspect-ratio:var(--am);height:var(--hm)}
 .q{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;padding:.9rem;
   border-radius:1rem;background:var(--bg);color:var(--ink);text-decoration:none;overflow:hidden;
   /* contorno fino por dentro: os sites de fundo escuro não se perdem no carvão da página */
@@ -136,10 +132,37 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 /* a linha do tipo/cidade reserva 2 linhas: os três nomes da primeira fila ficam à mesma altura */
 .dest .q-meta{margin-top:.5rem;padding-top:.4rem;min-height:calc(2.6em + .4rem + 2px)}
 .dest .q-tip,.dest .q-sep{display:none}
-.q.teu{background:transparent;color:var(--laranja);border:3px dashed var(--laranja);box-shadow:none;justify-content:center;align-items:center;text-align:center}
-.q.teu .q-nome{font-family:var(--display);font-weight:400;text-transform:uppercase}
-.q.teu:hover,.q.teu:focus-visible{background:var(--laranja);color:var(--carvao);border-style:solid}
-.nota-grelha{margin-top:1.25rem;font:400 .8125rem/1.5 var(--mono);color:var(--osso-2);letter-spacing:.02em}
+
+/* ═══ por tipo de negócio: o que o cliente pergunta, o que o site responde ═══ */
+.setores-grelha{margin-top:clamp(3.5rem,11vw,6rem)}
+.setores{margin-top:1.5rem;max-width:48rem;display:grid;gap:.75rem}
+.setor-tipos{font:700 .75rem/1.35 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso-2);padding-right:2rem}
+.durere .decide{font-size:1rem;line-height:1.5;color:var(--osso)}
+/* as perguntas do cliente e as respostas do site: no telemóvel uma por baixo da outra; com largura, ligadas por
+   pontos, como numa ementa */
+.perguntas{display:grid;gap:.85rem}
+.perguntas > div{display:grid;gap:.2rem;padding-left:.9rem;border-left:2px solid var(--laranja)}
+.perguntas dt{font-size:.9375rem;line-height:1.45;color:var(--osso-2)}
+.perguntas dd{margin:0;font-weight:600;line-height:1.45}
+.setor .rotulo{line-height:1.45}
+/* um site feito, pequeno, com a fonte e as cores dele */
+.exemplos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.ex{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-height:6.25rem;padding:.75rem .8rem .7rem;
+  border-radius:.75rem;background:var(--bg);color:var(--ink);text-decoration:none;box-shadow:inset 0 0 0 1px rgba(239,234,227,.14);
+  transition:transform .2s var(--sair),box-shadow .2s}
+.ex.neutro{background:var(--carvao)}
+.ex:hover,.ex:focus-visible{transform:translateY(-2px);box-shadow:inset 0 0 0 1px rgba(239,234,227,.35),0 .8rem 1.4rem -1rem rgba(0,0,0,.9)}
+.ex-nome{font-family:var(--f),var(--display);font-weight:var(--w);font-size:1.0625rem;line-height:1.1;overflow-wrap:anywhere;padding-right:1.4rem}
+.ex[style*="--f:'Space Mono'"] .ex-nome{font-size:.9375rem;text-transform:uppercase;letter-spacing:.02em;line-height:1.2}
+.ex-meta{margin-top:.5rem;padding-top:.4rem;border-top:2px solid var(--ac);font:700 .75rem/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.ex svg{position:absolute;right:.65rem;top:.65rem;width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ═══ o que fica ao nosso cuidado: compromissos, não uma sequência (sem números) ═══ */
+.cuidado{margin-top:clamp(3.5rem,11vw,6rem);padding-top:clamp(2rem,6vw,3rem);border-top:1px solid var(--linha-e)}
+.compromissos{margin-top:1.75rem;display:grid;gap:1.4rem 2.5rem}
+.compromissos li{padding-top:.9rem;border-top:2px solid var(--linha-e)}
+.compromissos h3{font:600 1.1875rem/1.3 var(--texto);color:var(--osso)}
+.compromissos p{margin-top:.35rem;color:var(--osso-2);max-width:38ch}
 
 /* como trabalhamos: sequência real → lista ordenada */
 .passos{margin-top:2rem;display:grid;gap:1.75rem;counter-reset:passo}
@@ -150,21 +173,21 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 
 /* ═══ automatizações: a dor à vista, o fluxo por baixo ═══ */
 .autos{margin-top:2rem;max-width:48rem;display:grid;gap:.75rem}
-.auto{border:1px solid var(--linha-e);border-radius:1rem;background:var(--carvao-2);scroll-margin-top:calc(var(--tabs) + .75rem)}
-.auto summary{list-style:none;cursor:pointer;padding:1.15rem 1.1rem 1.1rem;display:grid;gap:.7rem;border-radius:1rem}
-.auto summary::-webkit-details-marker{display:none}
-.auto summary:focus-visible{outline-offset:-3px}
-.auto h3{font:400 1.25rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance;padding-right:2rem}
+.auto,.setor{border:1px solid var(--linha-e);border-radius:1rem;background:var(--carvao-2);scroll-margin-top:calc(var(--tabs) + .75rem)}
+.auto summary,.setor summary{list-style:none;cursor:pointer;padding:1.15rem 1.1rem 1.1rem;display:grid;gap:.7rem;border-radius:1rem}
+.auto summary::-webkit-details-marker,.setor summary::-webkit-details-marker{display:none}
+.auto summary:focus-visible,.setor summary:focus-visible{outline-offset:-3px}
+.auto h3,.setor h3{font:400 1.25rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance;padding-right:2rem}
 .durere{display:grid;gap:.35rem;padding-left:.9rem;border-left:3px solid var(--laranja)}
 .durere .eyebrow{font-size:.75rem;letter-spacing:.2em}
-.durere q{font-size:1.0625rem;line-height:1.5;color:var(--osso);quotes:"«" "»"}
-.durere q:lang(en){quotes:"“" "”"} .durere q:lang(ro){quotes:"„" "”"}
+.durere q{font-size:1.0625rem;line-height:1.5;color:var(--osso)}
+q{quotes:"«" "»"} q:lang(en){quotes:"“" "”"} q:lang(ro){quotes:"„" "”"}
 .vezi{display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;font:700 .75rem/1 var(--mono);letter-spacing:.12em;
   text-transform:uppercase;color:var(--laranja)}
 .vezi svg{width:1rem;height:1rem;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--sair)}
-.auto[open] .vezi svg{transform:rotate(180deg)}
-.auto[open] .vezi .abre{display:none}
-.auto:not([open]) .vezi .fecha{display:none}
+.auto[open] .vezi svg,.setor[open] .vezi svg{transform:rotate(180deg)}
+.auto[open] .vezi .abre,.setor[open] .vezi .abre{display:none}
+.auto:not([open]) .vezi .fecha,.setor:not([open]) .vezi .fecha{display:none}
 .corpo{padding:.25rem 1.1rem 1.35rem;display:grid;gap:1.35rem;border-top:1px solid var(--linha-e);padding-top:1.15rem;margin-inline:0}
 .rotulo{font:700 .75rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--osso-2);margin:0 0 .7rem}
 .obtii{padding:1rem 1.1rem;border-radius:.75rem;background:var(--osso);color:var(--carvao);font-weight:600;line-height:1.45}
@@ -296,8 +319,9 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 .msg.asistent{background:#E7F1EA;margin-left:2rem;border-bottom-right-radius:.3rem}
 .demo{display:grid;gap:.6rem;justify-items:start;padding-top:1rem;border-top:1px solid var(--linha-e)}
 .demo p{font-weight:600}
-.secundario{border-color:var(--contorno);color:var(--osso)}
-.secundario:hover{background:rgba(239,234,227,.08)}
+/* .botao vem depois e repõe a borda transparente: a borda do secundário precisa de mais peso */
+.botao.secundario{border-color:var(--contorno);color:var(--osso)}
+.botao.secundario:hover{background:rgba(239,234,227,.08)}
 
 /* ligam-se entre si: três caminhos, nada mais */
 .combos{margin-top:clamp(3rem,10vw,5rem);max-width:48rem}
@@ -368,9 +392,15 @@ body.rgpd-aberto .barra{display:none}
 
 @media (min-width:40rem){
   .grelha{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-  .grelha > li,.grelha > li.dest{grid-column:auto}
-  .grelha > li.teu{grid-column:span var(--st)}
-  .grelha > li.teu .q{aspect-ratio:var(--at);height:var(--ht)}
+  .grelha > li.dest{grid-column:auto}
+  .exemplos{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .compromissos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .perguntas{gap:.6rem}
+  /* pergunta à esquerda, resposta à direita, sempre alinhadas; os pontos vão do fim da pergunta até à resposta */
+  .perguntas > div{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:0 .75rem;align-items:baseline;padding-left:0;border-left:0}
+  .perguntas dt{display:flex;align-items:flex-end;gap:.6rem}
+  .perguntas dt q{min-width:0}
+  .perguntas dt::after{content:"";flex:1 1 1.25rem;min-width:1.25rem;margin-bottom:.4em;border-bottom:2px dotted rgba(232,98,44,.6)}
   .q,.dest .q{padding:1.1rem}
   .dest .q{aspect-ratio:1}
   .q-nome,.grelha .dest .q-nome{font-size:calc(clamp(1.35rem,3vw,2rem) * var(--fs,1))}
@@ -388,23 +418,22 @@ body.rgpd-aberto .barra{display:none}
 }
 @media (min-width:64rem){
   .grelha{grid-template-columns:repeat(12,minmax(0,1fr));gap:1.1rem}
-  .grelha > li{grid-column:span 3}
   .grelha > li.dest{grid-column:span 4}
-  .grelha > li.teu{grid-column:span var(--sd)}
-  .grelha > li.teu .q{aspect-ratio:var(--ad);height:var(--hd)}
   .dest .q{aspect-ratio:4/3}
   .q-nome{font-size:calc(2rem * var(--fs,1))}
   .grelha .dest .q-nome{font-size:calc(2.5rem * var(--fs,1))}
   .grelha .dest .q[style*="--f:'Space Mono'"] .q-nome{font-size:calc(1.9rem * var(--fs,1))}
-  .autos-grelha{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:clamp(3rem,6vw,5rem);align-items:start}
-  .autos-grelha .cab{position:sticky;top:calc(var(--tabs) + 2rem)}
+  .autos-grelha,.setores-grelha{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:clamp(3rem,6vw,5rem);align-items:start}
+  .autos-grelha .cab,.setores-grelha .cab{position:sticky;top:calc(var(--tabs) + 2rem)}
+  .setores{margin-top:0}
+  .compromissos{grid-template-columns:repeat(3,minmax(0,1fr))}
   .autos-grelha .cab .afirmacao{font-size:clamp(1.75rem,2.7vw,2.6rem)}
   .autos{margin-top:0}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1!important;transform:none!important;transition:none!important}
-  .barra,.botao,.q,.vezi svg,.ver-esquema{transition:none}
+  .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
   dialog.esquema[open]{animation:none}
 }
 </style>
@@ -419,7 +448,7 @@ body.rgpd-aberto .barra{display:none}
 
 <nav class="tabs" aria-label="Sections">
   <ul>
-    <li><a href="#proiecte" data-vista="proiecte" aria-current="page">Projects</a></li>
+    <li><a href="#proiecte" data-vista="proiecte" aria-current="page">Websites</a></li>
     <li><a href="#automatizari" data-vista="automatizari">Automations</a></li>
     <li><a href="#servicii" data-vista="servicii">What else we do</a></li>
   </ul>
@@ -834,22 +863,117 @@ body.rgpd-aberto .barra{display:none}
 </section>
 <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
   <div class="envolver seccao">
-    <p class="eyebrow">Projects</p>
-    <h2 id="t-proiecte" class="afirmacao">Websites built for real businesses.</h2>
-    <p class="lead">Each one was made for a real business, with its own name, address and reviews. Tap one to see it.</p>
+    <p class="eyebrow">Websites</p>
+    <h2 id="t-proiecte" class="afirmacao">Every business sells differently. So should its website.</h2>
+    <p class="lead">We don’t start from a template. We start from how your customers choose, and the site answers them, one question at a time.</p>
+    <p class="rotulo selecao">Featured</p>
     <ul class="grelha">
 <li class="rv dest" style="--i:0"><a class="q neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Jasmim 2</span><span class="q-meta"><span class="q-tip">Seafood restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Manta Rota</span></span></a></li>
 <li class="rv dest" style="--i:1"><a class="q" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400;--fs:1" target="_blank" rel="noopener"><span class="q-nome">HANAM</span><span class="q-meta"><span class="q-tip">Korean barbecue</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Quarteira</span></span></a></li>
 <li class="rv dest" style="--i:2"><a class="q" href="/p/toda-chic/en.html" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400;--fs:1"><span class="q-nome">Toda Chic</span><span class="q-meta"><span class="q-tip">Online clothing store</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Portugal</span></span></a></li>
-<li class="rv" style="--i:3"><a class="q neutro" href="https://barbeariadocao.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">Barbearia do Cão</span><span class="q-meta"><span class="q-tip">Dog grooming and pet shop</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Loulé</span></span></a></li>
-<li class="rv" style="--i:4"><a class="q" href="https://gruponaval.online" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">Grupo Naval</span><span class="q-meta"><span class="q-tip">Restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Olhão</span></span></a></li>
-<li class="rv" style="--i:5"><a class="q neutro" href="https://gelatariamuxagata.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Gelataria Muxagata</span><span class="q-meta"><span class="q-tip">Artisan gelato</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Tavira</span></span></a></li>
-<li class="rv" style="--i:6"><a class="q neutro" href="https://bompaladar.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Simona&#x27;s O Bom Paladar</span><span class="q-meta"><span class="q-tip">Restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Almancil</span></span></a></li>
-<li class="rv" style="--i:7"><a class="q neutro" href="https://ginasioclubetavira.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Ginásio Clube Tavira</span><span class="q-meta"><span class="q-tip">Club restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Tavira</span></span></a></li>
-<li class="rv" style="--i:8"><a class="q neutro" href="https://sao-martinho.com/" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">São Martinho</span><span class="q-meta"><span class="q-tip">Seafood restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Guia</span></span></a></li>
-<li class="rv teu" style="--i:9;--sm:6;--am:2;--hm:auto;--st:3;--at:3;--ht:auto;--sd:6;--ad:auto;--hd:100%"><a class="q teu" href="#contact" style="--fs:.8"><span class="q-nome">Your business?</span></a></li>
     </ul>
-    <p class="nota-grelha">Made in Portugal. The next one: yours.</p>
+    <div class="setores-grelha">
+      <div class="cab">
+        <p class="eyebrow">By type of business</p>
+        <p class="lead">What customers ask before they choose, and what the site answers. The sites we’ve built are inside, for anyone who wants to open them.</p>
+      </div>
+      <div class="setores">
+<details class="setor rv" name="setor" id="s-restauracao" style="--i:0">
+  <summary>
+    <span class="setor-tipos">Restaurants · Seafood · Grills</span>
+    <h3>Restaurants and seafood houses</h3>
+    <span class="durere"><span class="eyebrow">How customers choose</span><span class="decide">They choose on their phone, often already in the street, comparing you with the places next door. The table goes to whoever answers first.</span></span>
+    <span class="vezi" aria-hidden="true"><span class="abre">See what the site does</span><span class="fecha">Close</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+  </summary>
+  <div class="corpo">
+    <div><h4 class="rotulo">The customer asks <span aria-hidden="true">·</span> The site answers</h4>
+    <dl class="perguntas">
+      <div><dt><q>What’s on the menu?</q></dt><dd>The menu, readable on a phone. No PDF.</dd></div>
+      <div><dt><q>Is it good?</q></dt><dd>Your Google reviews, the real ones.</dd></div>
+      <div><dt><q>Is there a table tonight?</q></dt><dd>Book in one tap: phone, WhatsApp or TheFork.</dd></div>
+      <div><dt><q>How do I get there?</q></dt><dd>The map and opening hours, always right.</dd></div>
+      <div><dt><q>Fala português?</q></dt><dd>English and Portuguese, plus other languages if you need them.</dd></div>
+    </dl></div>
+    <div><h4 class="rotulo">Sites we’ve built</h4><ul class="exemplos"><li><a class="ex neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Jasmim 2</span><span class="ex-meta">Seafood restaurant · Manta Rota</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (opens in a new tab)</span></a></li><li><a class="ex" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400" target="_blank" rel="noopener"><span class="ex-nome">HANAM</span><span class="ex-meta">Korean barbecue · Quarteira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (opens in a new tab)</span></a></li><li><a class="ex" href="https://gruponaval.online" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800" target="_blank" rel="noopener"><span class="ex-nome">Grupo Naval</span><span class="ex-meta">Restaurant · Olhão</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (opens in a new tab)</span></a></li><li><a class="ex neutro" href="https://bompaladar.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Simona&#x27;s O Bom Paladar</span><span class="ex-meta">Restaurant · Almancil</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (opens in a new tab)</span></a></li><li><a class="ex neutro" href="https://ginasioclubetavira.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Ginásio Clube Tavira</span><span class="ex-meta">Club restaurant · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (opens in a new tab)</span></a></li><li><a class="ex neutro" href="https://sao-martinho.com/" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">São Martinho</span><span class="ex-meta">Seafood restaurant · Guia</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (opens in a new tab)</span></a></li></ul></div>
+    <div><h4 class="rotulo">Works well with</h4><div class="chips"><a class="chip" href="#a-receptionist">AI receptionist</a> <a class="chip" href="#a-recenzii">Google reviews</a> <a class="chip" href="#a-revenire">Returning customers</a></div></div>
+    <div class="demo"><p>Want to see how yours would look? We build it before you pay.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%E2%80%99d%20like%20to%20see%20how%20my%20business%E2%80%99s%20website%20would%20look%3A%20Restaurants%20and%20seafood%20houses"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Ask on WhatsApp</a></div>
+  </div>
+</details>
+<details class="setor rv" name="setor" id="s-cafes" style="--i:1">
+  <summary>
+    <span class="setor-tipos">Cafés · Pastry shops · Ice cream</span>
+    <h3>Cafés, pastry shops and ice cream parlours</h3>
+    <span class="durere"><span class="eyebrow">How customers choose</span><span class="decide">They decide in passing: is it open, is it close, what’s good today. In high season the hours change, and they have to be right everywhere.</span></span>
+    <span class="vezi" aria-hidden="true"><span class="abre">See what the site does</span><span class="fecha">Close</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+  </summary>
+  <div class="corpo">
+    <div><h4 class="rotulo">The customer asks <span aria-hidden="true">·</span> The site answers</h4>
+    <dl class="perguntas">
+      <div><dt><q>Are you open now?</q></dt><dd>This season’s hours in plain sight, with closing days.</dd></div>
+      <div><dt><q>What’s good here?</q></dt><dd>The house specialities, with photos.</dd></div>
+      <div><dt><q>Is it close?</q></dt><dd>The map, one tap away.</dd></div>
+      <div><dt><q>Do you take orders?</q></dt><dd>Orders by phone or WhatsApp.</dd></div>
+    </dl></div>
+    <div><h4 class="rotulo">Sites we’ve built</h4><ul class="exemplos"><li><a class="ex neutro" href="https://gelatariamuxagata.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Gelataria Muxagata</span><span class="ex-meta">Artisan gelato · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (opens in a new tab)</span></a></li></ul></div>
+    <div><h4 class="rotulo">Works well with</h4><div class="chips"><a class="chip" href="#a-social">Posts</a> <a class="chip" href="#a-recenzii">Google reviews</a></div></div>
+    <div class="demo"><p>Want to see how yours would look? We build it before you pay.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%E2%80%99d%20like%20to%20see%20how%20my%20business%E2%80%99s%20website%20would%20look%3A%20Caf%C3%A9s%2C%20pastry%20shops%20and%20ice%20cream%20parlours"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Ask on WhatsApp</a></div>
+  </div>
+</details>
+<details class="setor rv" name="setor" id="s-lojas" style="--i:2">
+  <summary>
+    <span class="setor-tipos">Clothing · Accessories · Home</span>
+    <h3>Online shops</h3>
+    <span class="durere"><span class="eyebrow">How customers choose</span><span class="decide">They arrive from Instagram and decide on their phone. They want to see the item, the size and the delivery time without having to ask. Every unanswered question is a purchase put off.</span></span>
+    <span class="vezi" aria-hidden="true"><span class="abre">See what the site does</span><span class="fecha">Close</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+  </summary>
+  <div class="corpo">
+    <div><h4 class="rotulo">The customer asks <span aria-hidden="true">·</span> The site answers</h4>
+    <dl class="perguntas">
+      <div><dt><q>Do you have my size?</q></dt><dd>Sizes on every item, plus a size guide.</dd></div>
+      <div><dt><q>When will it arrive?</q></dt><dd>The delivery time, before paying.</dd></div>
+      <div><dt><q>How do I pay?</q></dt><dd>MB WAY or card, no hassle.</dd></div>
+      <div><dt><q>What if it doesn’t fit?</q></dt><dd>Returns explained before buying.</dd></div>
+      <div><dt><q>Is anyone there?</q></dt><dd>Questions on WhatsApp, answered by a person.</dd></div>
+    </dl></div>
+    <div><h4 class="rotulo">Sites we’ve built</h4><ul class="exemplos"><li><a class="ex" href="/p/toda-chic/en.html" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400"><span class="ex-nome">Toda Chic</span><span class="ex-meta">Online clothing store · Portugal</span></a></li></ul></div>
+    <div><h4 class="rotulo">Works well with</h4><div class="chips"><a class="chip" href="#a-lead">Fast reply</a> <a class="chip" href="#a-revenire">Returning customers</a></div></div>
+    <div class="demo"><p>Want to see how yours would look? We build it before you pay.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%E2%80%99d%20like%20to%20see%20how%20my%20business%E2%80%99s%20website%20would%20look%3A%20Online%20shops"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Ask on WhatsApp</a></div>
+  </div>
+</details>
+<details class="setor rv" name="setor" id="s-marcacoes" style="--i:3">
+  <summary>
+    <span class="setor-tipos">Barbers · Hairdressers · Clinics · Pet shops</span>
+    <h3>Appointment-based services</h3>
+    <span class="durere"><span class="eyebrow">How customers choose</span><span class="decide">Before booking, they want to trust you: they check the reviews, the photos and whether there’s a slot. If they have to call just to learn the basics, they put it off.</span></span>
+    <span class="vezi" aria-hidden="true"><span class="abre">See what the site does</span><span class="fecha">Close</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+  </summary>
+  <div class="corpo">
+    <div><h4 class="rotulo">The customer asks <span aria-hidden="true">·</span> The site answers</h4>
+    <dl class="perguntas">
+      <div><dt><q>What exactly do you do?</q></dt><dd>Every service explained, with what it includes.</dd></div>
+      <div><dt><q>When is there a slot?</q></dt><dd>Book by phone or WhatsApp, in one tap.</dd></div>
+      <div><dt><q>Can I trust you?</q></dt><dd>Real reviews and photos of the place.</dd></div>
+      <div><dt><q>Where are you, and when are you open?</q></dt><dd>The map and opening hours, always right.</dd></div>
+    </dl></div>
+    <div><h4 class="rotulo">Sites we’ve built</h4><ul class="exemplos"><li><a class="ex neutro" href="https://barbeariadocao.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Barbearia do Cão</span><span class="ex-meta">Dog grooming and pet shop · Loulé</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (opens in a new tab)</span></a></li></ul></div>
+    <div><h4 class="rotulo">Works well with</h4><div class="chips"><a class="chip" href="#a-programari">Appointments</a> <a class="chip" href="#a-recenzii">Google reviews</a></div></div>
+    <div class="demo"><p>Want to see how yours would look? We build it before you pay.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%E2%80%99d%20like%20to%20see%20how%20my%20business%E2%80%99s%20website%20would%20look%3A%20Appointment-based%20services"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Ask on WhatsApp</a></div>
+  </div>
+</details>
+      </div>
+    </div>
+    <div class="cuidado">
+      <p class="eyebrow">Responsibility</p>
+      <h2 class="afirmacao">What we take care of.</h2>
+      <ul class="compromissos">
+<li class="rv" style="--i:0"><h3>The information is true.</h3><p>Reviews, prices, hours and contacts come from you or from Google. Anything unconfirmed stays off the site.</p></li>
+<li class="rv" style="--i:1"><h3>It loads fast, even on a weak signal.</h3><p>A single file, with no plugins or heavy software behind it.</p></li>
+<li class="rv" style="--i:2"><h3>Google understands what you are.</h3><p>Name, address, hours and type of business, written for Google to read.</p></li>
+<li class="rv" style="--i:3"><h3>Everyone can read it.</h3><p>Legible type, good contrast and keyboard navigation.</p></li>
+<li class="rv" style="--i:4"><h3>It follows the law.</h3><p>Whatever the law asks where you trade: in Portugal, the electronic complaints book; in Romania, the consumer information ANPC requires.</p></li>
+<li class="rv" style="--i:5"><h3>It’s never left behind.</h3><p>With maintenance: always online, the domain paid by us and changes within a week.</p></li>
+      </ul>
+    </div>
   </div>
   <div class="claro">
     <div class="envolver seccao">
@@ -868,9 +992,9 @@ body.rgpd-aberto .barra{display:none}
     <p class="eyebrow">Contact</p>
     <h2 id="t-contact" class="afirmacao">Tell us your business’s name.</h2>
     <p class="lead">We’ll build your site and show it to you. No strings attached.</p>
-    <a class="botao primario grande" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%20saw%20the%20Pacheco%20Studios%20projects%20and%20I%E2%80%99d%20like%20to%20talk%20about%20my%20business%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Message us on WhatsApp</a>
+    <a class="botao primario grande" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%20saw%20the%20Pacheco%20Studios%20websites%20and%20I%E2%80%99d%20like%20to%20talk%20about%20my%20business%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Message us on WhatsApp</a>
     <ul class="contactos">
-<li><a href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%20saw%20the%20Pacheco%20Studios%20projects%20and%20I%E2%80%99d%20like%20to%20talk%20about%20my%20business%3A%20" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="txt"><span class="qual">WhatsApp</span><span class="valor">+351 967 117 357</span></span></a></li>
+<li><a href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%20saw%20the%20Pacheco%20Studios%20websites%20and%20I%E2%80%99d%20like%20to%20talk%20about%20my%20business%3A%20" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="txt"><span class="qual">WhatsApp</span><span class="valor">+351 967 117 357</span></span></a></li>
 <li><a href="tel:+351967117357"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="txt"><span class="qual">Phone</span><span class="valor">+351 967 117 357</span></span></a></li>
 <li><a href="mailto:tomas@pachecost.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg><span class="txt"><span class="qual">Email</span><span class="valor">tomas@pachecost.com</span></span></a></li>
 <li><a href="https://www.instagram.com/pachecostudiospt/" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg><span class="txt"><span class="qual">Instagram</span><span class="valor">@pachecostudiospt</span></span></a></li>
@@ -889,7 +1013,7 @@ body.rgpd-aberto .barra{display:none}
 </footer>
 
 <div class="barra" id="barra" inert>
-  <a class="botao primario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%20saw%20the%20Pacheco%20Studios%20projects%20and%20I%E2%80%99d%20like%20to%20talk%20about%20my%20business%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Message us on WhatsApp</a>
+  <a class="botao primario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%20saw%20the%20Pacheco%20Studios%20websites%20and%20I%E2%80%99d%20like%20to%20talk%20about%20my%20business%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Message us on WhatsApp</a>
 </div>
 
 <section class="rgpd" id="rgpd" aria-label="Cookies and statistics" hidden>
@@ -989,6 +1113,12 @@ body.rgpd-aberto .barra{display:none}
   if (/[?&]origem=cartao\b/.test(location.search)) {
     window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
   }
+  // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
+  document.querySelectorAll('details.setor').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (d.open) gc({ path: 'setor/' + d.id.slice(2), title: 'tipo de negócio: ' + d.id.slice(2), event: true });
+    });
+  });
   // saídas para o WhatsApp e o telefone
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="https://wa.me"], a[href^="tel:"]');

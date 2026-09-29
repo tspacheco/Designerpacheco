@@ -105,16 +105,12 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .lead{margin-top:1rem;max-width:44ch;color:var(--osso-2);font-size:1.0625rem}
 .claro .lead{color:var(--tinta-2)}
 
-/* ═══ quadrados: cada um com a fonte e as cores do próprio site ═══
-   Primeira fila = os 3 em destaque, em qualquer ecrã. Telemóvel: grelha de 6 colunas, destaque ocupa 2 (três por fila,
-   cartões altos), os outros 3 (dois por fila). Tablet: 3 colunas iguais. Computador: 12 colunas, destaque 4 (mais
-   largos, 4:3) e os outros 3 (quadrados) — as duas filas ficam com a mesma altura. */
-.grelha{margin-top:1.75rem;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
-.grelha > li{grid-column:span 3}
+/* ═══ em destaque: três sites, cada um com a fonte e as cores do próprio site ═══
+   Telemóvel: 6 colunas, cada um ocupa 2 (cartões altos). Tablet: 3 colunas. Computador: 12 colunas, cada um 4 (4:3).
+   Os outros sites ficam dentro do tipo de negócio deles: o número de trabalhos não é o assunto. */
+.rotulo.selecao{margin-top:2.5rem}
+.grelha{margin-top:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
 .grelha > li.dest{grid-column:span 2}
-/* «O teu negócio?» ocupa o que sobra da última fila, em cada ecrã (o gerador calcula --s*, --a* e --h*) */
-.grelha > li.teu{grid-column:span var(--sm)}
-.grelha > li.teu .q{aspect-ratio:var(--am);height:var(--hm)}
 .q{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;padding:.9rem;
   border-radius:1rem;background:var(--bg);color:var(--ink);text-decoration:none;overflow:hidden;
   /* contorno fino por dentro: os sites de fundo escuro não se perdem no carvão da página */
@@ -136,10 +132,37 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 /* a linha do tipo/cidade reserva 2 linhas: os três nomes da primeira fila ficam à mesma altura */
 .dest .q-meta{margin-top:.5rem;padding-top:.4rem;min-height:calc(2.6em + .4rem + 2px)}
 .dest .q-tip,.dest .q-sep{display:none}
-.q.teu{background:transparent;color:var(--laranja);border:3px dashed var(--laranja);box-shadow:none;justify-content:center;align-items:center;text-align:center}
-.q.teu .q-nome{font-family:var(--display);font-weight:400;text-transform:uppercase}
-.q.teu:hover,.q.teu:focus-visible{background:var(--laranja);color:var(--carvao);border-style:solid}
-.nota-grelha{margin-top:1.25rem;font:400 .8125rem/1.5 var(--mono);color:var(--osso-2);letter-spacing:.02em}
+
+/* ═══ por tipo de negócio: o que o cliente pergunta, o que o site responde ═══ */
+.setores-grelha{margin-top:clamp(3.5rem,11vw,6rem)}
+.setores{margin-top:1.5rem;max-width:48rem;display:grid;gap:.75rem}
+.setor-tipos{font:700 .75rem/1.35 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso-2);padding-right:2rem}
+.durere .decide{font-size:1rem;line-height:1.5;color:var(--osso)}
+/* as perguntas do cliente e as respostas do site: no telemóvel uma por baixo da outra; com largura, ligadas por
+   pontos, como numa ementa */
+.perguntas{display:grid;gap:.85rem}
+.perguntas > div{display:grid;gap:.2rem;padding-left:.9rem;border-left:2px solid var(--laranja)}
+.perguntas dt{font-size:.9375rem;line-height:1.45;color:var(--osso-2)}
+.perguntas dd{margin:0;font-weight:600;line-height:1.45}
+.setor .rotulo{line-height:1.45}
+/* um site feito, pequeno, com a fonte e as cores dele */
+.exemplos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.ex{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-height:6.25rem;padding:.75rem .8rem .7rem;
+  border-radius:.75rem;background:var(--bg);color:var(--ink);text-decoration:none;box-shadow:inset 0 0 0 1px rgba(239,234,227,.14);
+  transition:transform .2s var(--sair),box-shadow .2s}
+.ex.neutro{background:var(--carvao)}
+.ex:hover,.ex:focus-visible{transform:translateY(-2px);box-shadow:inset 0 0 0 1px rgba(239,234,227,.35),0 .8rem 1.4rem -1rem rgba(0,0,0,.9)}
+.ex-nome{font-family:var(--f),var(--display);font-weight:var(--w);font-size:1.0625rem;line-height:1.1;overflow-wrap:anywhere;padding-right:1.4rem}
+.ex[style*="--f:'Space Mono'"] .ex-nome{font-size:.9375rem;text-transform:uppercase;letter-spacing:.02em;line-height:1.2}
+.ex-meta{margin-top:.5rem;padding-top:.4rem;border-top:2px solid var(--ac);font:700 .75rem/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.ex svg{position:absolute;right:.65rem;top:.65rem;width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ═══ o que fica ao nosso cuidado: compromissos, não uma sequência (sem números) ═══ */
+.cuidado{margin-top:clamp(3.5rem,11vw,6rem);padding-top:clamp(2rem,6vw,3rem);border-top:1px solid var(--linha-e)}
+.compromissos{margin-top:1.75rem;display:grid;gap:1.4rem 2.5rem}
+.compromissos li{padding-top:.9rem;border-top:2px solid var(--linha-e)}
+.compromissos h3{font:600 1.1875rem/1.3 var(--texto);color:var(--osso)}
+.compromissos p{margin-top:.35rem;color:var(--osso-2);max-width:38ch}
 
 /* como trabalhamos: sequência real → lista ordenada */
 .passos{margin-top:2rem;display:grid;gap:1.75rem;counter-reset:passo}
@@ -150,21 +173,21 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 
 /* ═══ automatizações: a dor à vista, o fluxo por baixo ═══ */
 .autos{margin-top:2rem;max-width:48rem;display:grid;gap:.75rem}
-.auto{border:1px solid var(--linha-e);border-radius:1rem;background:var(--carvao-2);scroll-margin-top:calc(var(--tabs) + .75rem)}
-.auto summary{list-style:none;cursor:pointer;padding:1.15rem 1.1rem 1.1rem;display:grid;gap:.7rem;border-radius:1rem}
-.auto summary::-webkit-details-marker{display:none}
-.auto summary:focus-visible{outline-offset:-3px}
-.auto h3{font:400 1.25rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance;padding-right:2rem}
+.auto,.setor{border:1px solid var(--linha-e);border-radius:1rem;background:var(--carvao-2);scroll-margin-top:calc(var(--tabs) + .75rem)}
+.auto summary,.setor summary{list-style:none;cursor:pointer;padding:1.15rem 1.1rem 1.1rem;display:grid;gap:.7rem;border-radius:1rem}
+.auto summary::-webkit-details-marker,.setor summary::-webkit-details-marker{display:none}
+.auto summary:focus-visible,.setor summary:focus-visible{outline-offset:-3px}
+.auto h3,.setor h3{font:400 1.25rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance;padding-right:2rem}
 .durere{display:grid;gap:.35rem;padding-left:.9rem;border-left:3px solid var(--laranja)}
 .durere .eyebrow{font-size:.75rem;letter-spacing:.2em}
-.durere q{font-size:1.0625rem;line-height:1.5;color:var(--osso);quotes:"«" "»"}
-.durere q:lang(en){quotes:"“" "”"} .durere q:lang(ro){quotes:"„" "”"}
+.durere q{font-size:1.0625rem;line-height:1.5;color:var(--osso)}
+q{quotes:"«" "»"} q:lang(en){quotes:"“" "”"} q:lang(ro){quotes:"„" "”"}
 .vezi{display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;font:700 .75rem/1 var(--mono);letter-spacing:.12em;
   text-transform:uppercase;color:var(--laranja)}
 .vezi svg{width:1rem;height:1rem;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--sair)}
-.auto[open] .vezi svg{transform:rotate(180deg)}
-.auto[open] .vezi .abre{display:none}
-.auto:not([open]) .vezi .fecha{display:none}
+.auto[open] .vezi svg,.setor[open] .vezi svg{transform:rotate(180deg)}
+.auto[open] .vezi .abre,.setor[open] .vezi .abre{display:none}
+.auto:not([open]) .vezi .fecha,.setor:not([open]) .vezi .fecha{display:none}
 .corpo{padding:.25rem 1.1rem 1.35rem;display:grid;gap:1.35rem;border-top:1px solid var(--linha-e);padding-top:1.15rem;margin-inline:0}
 .rotulo{font:700 .75rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--osso-2);margin:0 0 .7rem}
 .obtii{padding:1rem 1.1rem;border-radius:.75rem;background:var(--osso);color:var(--carvao);font-weight:600;line-height:1.45}
@@ -296,8 +319,9 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 .msg.asistent{background:#E7F1EA;margin-left:2rem;border-bottom-right-radius:.3rem}
 .demo{display:grid;gap:.6rem;justify-items:start;padding-top:1rem;border-top:1px solid var(--linha-e)}
 .demo p{font-weight:600}
-.secundario{border-color:var(--contorno);color:var(--osso)}
-.secundario:hover{background:rgba(239,234,227,.08)}
+/* .botao vem depois e repõe a borda transparente: a borda do secundário precisa de mais peso */
+.botao.secundario{border-color:var(--contorno);color:var(--osso)}
+.botao.secundario:hover{background:rgba(239,234,227,.08)}
 
 /* ligam-se entre si: três caminhos, nada mais */
 .combos{margin-top:clamp(3rem,10vw,5rem);max-width:48rem}
@@ -368,9 +392,15 @@ body.rgpd-aberto .barra{display:none}
 
 @media (min-width:40rem){
   .grelha{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-  .grelha > li,.grelha > li.dest{grid-column:auto}
-  .grelha > li.teu{grid-column:span var(--st)}
-  .grelha > li.teu .q{aspect-ratio:var(--at);height:var(--ht)}
+  .grelha > li.dest{grid-column:auto}
+  .exemplos{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .compromissos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .perguntas{gap:.6rem}
+  /* pergunta à esquerda, resposta à direita, sempre alinhadas; os pontos vão do fim da pergunta até à resposta */
+  .perguntas > div{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:0 .75rem;align-items:baseline;padding-left:0;border-left:0}
+  .perguntas dt{display:flex;align-items:flex-end;gap:.6rem}
+  .perguntas dt q{min-width:0}
+  .perguntas dt::after{content:"";flex:1 1 1.25rem;min-width:1.25rem;margin-bottom:.4em;border-bottom:2px dotted rgba(232,98,44,.6)}
   .q,.dest .q{padding:1.1rem}
   .dest .q{aspect-ratio:1}
   .q-nome,.grelha .dest .q-nome{font-size:calc(clamp(1.35rem,3vw,2rem) * var(--fs,1))}
@@ -388,23 +418,22 @@ body.rgpd-aberto .barra{display:none}
 }
 @media (min-width:64rem){
   .grelha{grid-template-columns:repeat(12,minmax(0,1fr));gap:1.1rem}
-  .grelha > li{grid-column:span 3}
   .grelha > li.dest{grid-column:span 4}
-  .grelha > li.teu{grid-column:span var(--sd)}
-  .grelha > li.teu .q{aspect-ratio:var(--ad);height:var(--hd)}
   .dest .q{aspect-ratio:4/3}
   .q-nome{font-size:calc(2rem * var(--fs,1))}
   .grelha .dest .q-nome{font-size:calc(2.5rem * var(--fs,1))}
   .grelha .dest .q[style*="--f:'Space Mono'"] .q-nome{font-size:calc(1.9rem * var(--fs,1))}
-  .autos-grelha{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:clamp(3rem,6vw,5rem);align-items:start}
-  .autos-grelha .cab{position:sticky;top:calc(var(--tabs) + 2rem)}
+  .autos-grelha,.setores-grelha{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:clamp(3rem,6vw,5rem);align-items:start}
+  .autos-grelha .cab,.setores-grelha .cab{position:sticky;top:calc(var(--tabs) + 2rem)}
+  .setores{margin-top:0}
+  .compromissos{grid-template-columns:repeat(3,minmax(0,1fr))}
   .autos-grelha .cab .afirmacao{font-size:clamp(1.75rem,2.7vw,2.6rem)}
   .autos{margin-top:0}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1!important;transform:none!important;transition:none!important}
-  .barra,.botao,.q,.vezi svg,.ver-esquema{transition:none}
+  .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
   dialog.esquema[open]{animation:none}
 }
 </style>
@@ -419,7 +448,7 @@ body.rgpd-aberto .barra{display:none}
 
 <nav class="tabs" aria-label="Secțiuni">
   <ul>
-    <li><a href="#proiecte" data-vista="proiecte" aria-current="page">Proiecte</a></li>
+    <li><a href="#proiecte" data-vista="proiecte" aria-current="page">Site-uri</a></li>
     <li><a href="#automatizari" data-vista="automatizari">Automatizări</a></li>
     <li><a href="#servicii" data-vista="servicii">Ce mai facem</a></li>
   </ul>
@@ -834,22 +863,117 @@ body.rgpd-aberto .barra{display:none}
 </section>
 <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
   <div class="envolver seccao">
-    <p class="eyebrow">Proiecte</p>
-    <h2 id="t-proiecte" class="afirmacao">Site-uri făcute pentru afaceri reale.</h2>
-    <p class="lead">Fiecare a fost făcut pentru o afacere adevărată, cu numele, adresa și recenziile ei. Apasă pe unul ca să-l vezi.</p>
+    <p class="eyebrow">Site-uri</p>
+    <h2 id="t-proiecte" class="afirmacao">Fiecare afacere vinde altfel. Și site-ul ei.</h2>
+    <p class="lead">Nu pornim de la un șablon. Pornim de la felul în care alege clientul tău, iar site-ul îi răspunde, întrebare cu întrebare.</p>
+    <p class="rotulo selecao">În prim-plan</p>
     <ul class="grelha">
 <li class="rv dest" style="--i:0"><a class="q neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Jasmim 2</span><span class="q-meta"><span class="q-tip">Fructe de mare</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Manta Rota</span></span></a></li>
 <li class="rv dest" style="--i:1"><a class="q" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400;--fs:1" target="_blank" rel="noopener"><span class="q-nome">HANAM</span><span class="q-meta"><span class="q-tip">Grătar coreean</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Quarteira</span></span></a></li>
 <li class="rv dest" style="--i:2"><a class="q" href="/p/toda-chic/" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400;--fs:1"><span class="q-nome">Toda Chic</span><span class="q-meta"><span class="q-tip">Magazin de haine online</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Portugalia</span></span></a></li>
-<li class="rv" style="--i:3"><a class="q neutro" href="https://barbeariadocao.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">Barbearia do Cão</span><span class="q-meta"><span class="q-tip">Salon canin</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Loulé</span></span></a></li>
-<li class="rv" style="--i:4"><a class="q" href="https://gruponaval.online" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">Grupo Naval</span><span class="q-meta"><span class="q-tip">Restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Olhão</span></span></a></li>
-<li class="rv" style="--i:5"><a class="q neutro" href="https://gelatariamuxagata.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Gelataria Muxagata</span><span class="q-meta"><span class="q-tip">Gelaterie artizanală</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Tavira</span></span></a></li>
-<li class="rv" style="--i:6"><a class="q neutro" href="https://bompaladar.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Simona&#x27;s O Bom Paladar</span><span class="q-meta"><span class="q-tip">Restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Almancil</span></span></a></li>
-<li class="rv" style="--i:7"><a class="q neutro" href="https://ginasioclubetavira.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.72" target="_blank" rel="noopener"><span class="q-nome">Ginásio Clube Tavira</span><span class="q-meta"><span class="q-tip">Restaurantul clubului</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Tavira</span></span></a></li>
-<li class="rv" style="--i:8"><a class="q neutro" href="https://sao-martinho.com/" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:0.86" target="_blank" rel="noopener"><span class="q-nome">São Martinho</span><span class="q-meta"><span class="q-tip">Fructe de mare</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Guia</span></span></a></li>
-<li class="rv teu" style="--i:9;--sm:6;--am:2;--hm:auto;--st:3;--at:3;--ht:auto;--sd:6;--ad:auto;--hd:100%"><a class="q teu" href="#contact" style="--fs:.8"><span class="q-nome">Afacerea ta?</span></a></li>
     </ul>
-    <p class="nota-grelha">Făcute în Portugalia. Următorul: al tău, în România.</p>
+    <div class="setores-grelha">
+      <div class="cab">
+        <p class="eyebrow">După tipul de afacere</p>
+        <p class="lead">Ce întreabă clientul înainte să aleagă și ce îi răspunde site-ul. Înăuntru sunt site-urile făcute de noi, pentru cine vrea să le deschidă.</p>
+      </div>
+      <div class="setores">
+<details class="setor rv" name="setor" id="s-restauracao" style="--i:0">
+  <summary>
+    <span class="setor-tipos">Restaurante · Pește și fructe de mare · Grătar</span>
+    <h3>Restaurante</h3>
+    <span class="durere"><span class="eyebrow">Cum alege clientul</span><span class="decide">Alege de pe telefon, de multe ori deja pe stradă, și te compară cu localurile de alături. Câștigă cine îi răspunde primul.</span></span>
+    <span class="vezi" aria-hidden="true"><span class="abre">Vezi ce face site-ul</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+  </summary>
+  <div class="corpo">
+    <div><h4 class="rotulo">Clientul întreabă <span aria-hidden="true">·</span> Site-ul răspunde</h4>
+    <dl class="perguntas">
+      <div><dt><q>Ce aveți de mâncare?</q></dt><dd>Meniul, ușor de citit pe telefon. Fără PDF.</dd></div>
+      <div><dt><q>E bun?</q></dt><dd>Recenziile de pe Google, cele adevărate.</dd></div>
+      <div><dt><q>Aveți masă pentru diseară?</q></dt><dd>Rezervi dintr-o atingere: telefon, WhatsApp sau platforma de rezervări pe care o folosești.</dd></div>
+      <div><dt><q>Cum ajung acolo?</q></dt><dd>Harta și programul, mereu corecte.</dd></div>
+      <div><dt><q>Do you speak English?</q></dt><dd>Română și engleză, și alte limbi dacă ai nevoie.</dd></div>
+    </dl></div>
+    <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Jasmim 2</span><span class="ex-meta">Fructe de mare · Manta Rota</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400" target="_blank" rel="noopener"><span class="ex-nome">HANAM</span><span class="ex-meta">Grătar coreean · Quarteira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex" href="https://gruponaval.online" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800" target="_blank" rel="noopener"><span class="ex-nome">Grupo Naval</span><span class="ex-meta">Restaurant · Olhão</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex neutro" href="https://bompaladar.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Simona&#x27;s O Bom Paladar</span><span class="ex-meta">Restaurant · Almancil</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex neutro" href="https://ginasioclubetavira.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Ginásio Clube Tavira</span><span class="ex-meta">Restaurantul clubului · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex neutro" href="https://sao-martinho.com/" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">São Martinho</span><span class="ex-meta">Fructe de mare · Guia</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li></ul></div>
+    <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-receptionist">Recepționist AI</a> <a class="chip" href="#a-recenzii">Recenzii Google</a> <a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum ar arăta al tău? Îl facem înainte să plătești.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Restaurante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
+  </div>
+</details>
+<details class="setor rv" name="setor" id="s-cafes" style="--i:1">
+  <summary>
+    <span class="setor-tipos">Cafenele · Cofetării · Gelaterii</span>
+    <h3>Cafenele, cofetării și gelaterii</h3>
+    <span class="durere"><span class="eyebrow">Cum alege clientul</span><span class="decide">Hotărăște din mers: dacă e deschis, dacă e aproape și ce e bun azi. În sezon programul se schimbă și trebuie să fie corect peste tot.</span></span>
+    <span class="vezi" aria-hidden="true"><span class="abre">Vezi ce face site-ul</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+  </summary>
+  <div class="corpo">
+    <div><h4 class="rotulo">Clientul întreabă <span aria-hidden="true">·</span> Site-ul răspunde</h4>
+    <dl class="perguntas">
+      <div><dt><q>Sunteți deschiși acum?</q></dt><dd>Programul sezonului la vedere, cu zilele libere.</dd></div>
+      <div><dt><q>Ce e bun aici?</q></dt><dd>Specialitățile casei, cu fotografii.</dd></div>
+      <div><dt><q>E aproape?</q></dt><dd>Harta, la o atingere.</dd></div>
+      <div><dt><q>Primiți comenzi?</q></dt><dd>Comenzi la telefon sau pe WhatsApp.</dd></div>
+    </dl></div>
+    <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex neutro" href="https://gelatariamuxagata.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Gelataria Muxagata</span><span class="ex-meta">Gelaterie artizanală · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li></ul></div>
+    <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-social">Postări</a> <a class="chip" href="#a-recenzii">Recenzii Google</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum ar arăta al tău? Îl facem înainte să plătești.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Cafenele%2C%20cofet%C4%83rii%20%C8%99i%20gelaterii"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
+  </div>
+</details>
+<details class="setor rv" name="setor" id="s-lojas" style="--i:2">
+  <summary>
+    <span class="setor-tipos">Haine · Accesorii · Casă</span>
+    <h3>Magazine online</h3>
+    <span class="durere"><span class="eyebrow">Cum alege clientul</span><span class="decide">Vine de pe Instagram și hotărăște pe telefon. Vrea să vadă produsul, mărimea și termenul de livrare fără să întrebe. Fiecare întrebare fără răspuns e o comandă amânată.</span></span>
+    <span class="vezi" aria-hidden="true"><span class="abre">Vezi ce face site-ul</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+  </summary>
+  <div class="corpo">
+    <div><h4 class="rotulo">Clientul întreabă <span aria-hidden="true">·</span> Site-ul răspunde</h4>
+    <dl class="perguntas">
+      <div><dt><q>Aveți pe mărimea mea?</q></dt><dd>Mărimi la fiecare produs și un ghid de mărimi.</dd></div>
+      <div><dt><q>Când ajunge?</q></dt><dd>Termenul de livrare, înainte de plată.</dd></div>
+      <div><dt><q>Cum plătesc?</q></dt><dd>Cu cardul sau la livrare, fără complicații.</dd></div>
+      <div><dt><q>Dacă nu-mi vine?</q></dt><dd>Retururile explicate înainte de comandă.</dd></div>
+      <div><dt><q>E cineva acolo?</q></dt><dd>Întrebări pe WhatsApp, cu răspuns de la un om.</dd></div>
+    </dl></div>
+    <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex" href="/p/toda-chic/" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400"><span class="ex-nome">Toda Chic</span><span class="ex-meta">Magazin de haine online · Portugalia</span></a></li></ul></div>
+    <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-lead">Răspuns rapid</a> <a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum ar arăta al tău? Îl facem înainte să plătești.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Magazine%20online"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
+  </div>
+</details>
+<details class="setor rv" name="setor" id="s-marcacoes" style="--i:3">
+  <summary>
+    <span class="setor-tipos">Frizerii · Saloane · Clinici · Pet shop-uri</span>
+    <h3>Servicii cu programare</h3>
+    <span class="durere"><span class="eyebrow">Cum alege clientul</span><span class="decide">Înainte să se programeze, vrea să aibă încredere: se uită la recenzii, la poze și dacă e loc liber. Dacă trebuie să sune doar ca să afle lucrurile de bază, amână.</span></span>
+    <span class="vezi" aria-hidden="true"><span class="abre">Vezi ce face site-ul</span><span class="fecha">Închide</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+  </summary>
+  <div class="corpo">
+    <div><h4 class="rotulo">Clientul întreabă <span aria-hidden="true">·</span> Site-ul răspunde</h4>
+    <dl class="perguntas">
+      <div><dt><q>Ce faceți, mai exact?</q></dt><dd>Fiecare serviciu explicat, cu ce include.</dd></div>
+      <div><dt><q>Când aveți loc?</q></dt><dd>Programare la telefon sau pe WhatsApp, dintr-o atingere.</dd></div>
+      <div><dt><q>Pot avea încredere?</q></dt><dd>Recenzii adevărate și poze din local.</dd></div>
+      <div><dt><q>Unde sunteți și când aveți deschis?</q></dt><dd>Harta și programul, mereu corecte.</dd></div>
+    </dl></div>
+    <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex neutro" href="https://barbeariadocao.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Barbearia do Cão</span><span class="ex-meta">Salon canin · Loulé</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li></ul></div>
+    <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-programari">Programări</a> <a class="chip" href="#a-recenzii">Recenzii Google</a></div></div>
+    <div class="demo"><p>Vrei să vezi cum ar arăta al tău? Îl facem înainte să plătești.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Servicii%20cu%20programare"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
+  </div>
+</details>
+      </div>
+    </div>
+    <div class="cuidado">
+      <p class="eyebrow">Responsabilitate</p>
+      <h2 class="afirmacao">De ce avem noi grijă.</h2>
+      <ul class="compromissos">
+<li class="rv" style="--i:0"><h3>Datele sunt adevărate.</h3><p>Recenziile, prețurile, programul și contactele vin de la tine sau de pe Google. Ce nu e confirmat nu apare pe site.</p></li>
+<li class="rv" style="--i:1"><h3>Se deschide repede, chiar și cu semnal slab.</h3><p>Un singur fișier, fără pluginuri sau programe grele în spate.</p></li>
+<li class="rv" style="--i:2"><h3>Google înțelege ce faci.</h3><p>Numele, adresa, programul și tipul afacerii, scrise ca Google să le citească.</p></li>
+<li class="rv" style="--i:3"><h3>Oricine îl poate citi.</h3><p>Litere lizibile, contrast bun și navigare cu tastatura.</p></li>
+<li class="rv" style="--i:4"><h3>Respectă legea.</h3><p>Ce cere legea acolo unde lucrezi: în România, informațiile cerute de ANPC; în Portugalia, cartea de reclamații electronică.</p></li>
+<li class="rv" style="--i:5"><h3>Nu rămâne abandonat.</h3><p>Cu mentenanța: mereu online, domeniul plătit de noi și modificări în cel mult o săptămână.</p></li>
+      </ul>
+    </div>
   </div>
   <div class="claro">
     <div class="envolver seccao">
@@ -868,9 +992,9 @@ body.rgpd-aberto .barra{display:none}
     <p class="eyebrow">Contact</p>
     <h2 id="t-contact" class="afirmacao">Spune-ne numele afacerii tale.</h2>
     <p class="lead">Îți facem site-ul și ți-l arătăm. Fără obligații.</p>
-    <a class="botao primario grande" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20proiectele%20Pacheco%20Studios%20%C8%99i%20vreau%20s%C4%83%20vorbim%20despre%20afacerea%20mea%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Scrie-ne pe WhatsApp</a>
+    <a class="botao primario grande" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20site-urile%20Pacheco%20Studios%20%C8%99i%20vreau%20s%C4%83%20vorbim%20despre%20afacerea%20mea%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Scrie-ne pe WhatsApp</a>
     <ul class="contactos">
-<li><a href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20proiectele%20Pacheco%20Studios%20%C8%99i%20vreau%20s%C4%83%20vorbim%20despre%20afacerea%20mea%3A%20" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="txt"><span class="qual">WhatsApp</span><span class="valor">+351 967 117 357</span></span></a></li>
+<li><a href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20site-urile%20Pacheco%20Studios%20%C8%99i%20vreau%20s%C4%83%20vorbim%20despre%20afacerea%20mea%3A%20" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="txt"><span class="qual">WhatsApp</span><span class="valor">+351 967 117 357</span></span></a></li>
 <li><a href="tel:+351967117357"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="txt"><span class="qual">Telefon</span><span class="valor">+351 967 117 357</span></span></a></li>
 <li><a href="mailto:tomas@pachecost.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg><span class="txt"><span class="qual">Email</span><span class="valor">tomas@pachecost.com</span></span></a></li>
 <li><a href="https://www.instagram.com/pachecostudiospt/" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg><span class="txt"><span class="qual">Instagram</span><span class="valor">@pachecostudiospt</span></span></a></li>
@@ -890,7 +1014,7 @@ body.rgpd-aberto .barra{display:none}
 </footer>
 
 <div class="barra" id="barra" inert>
-  <a class="botao primario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20proiectele%20Pacheco%20Studios%20%C8%99i%20vreau%20s%C4%83%20vorbim%20despre%20afacerea%20mea%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Scrie-ne pe WhatsApp</a>
+  <a class="botao primario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20site-urile%20Pacheco%20Studios%20%C8%99i%20vreau%20s%C4%83%20vorbim%20despre%20afacerea%20mea%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Scrie-ne pe WhatsApp</a>
 </div>
 
 <section class="rgpd" id="rgpd" aria-label="Cookie-uri și statistici" hidden>
@@ -990,6 +1114,12 @@ body.rgpd-aberto .barra{display:none}
   if (/[?&]origem=cartao\b/.test(location.search)) {
     window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
   }
+  // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
+  document.querySelectorAll('details.setor').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (d.open) gc({ path: 'setor/' + d.id.slice(2), title: 'tipo de negócio: ' + d.id.slice(2), event: true });
+    });
+  });
   // saídas para o WhatsApp e o telefone
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="https://wa.me"], a[href^="tel:"]');

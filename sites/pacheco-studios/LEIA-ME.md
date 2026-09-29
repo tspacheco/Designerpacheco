@@ -11,12 +11,20 @@ Um só site, um só projeto no Netlify, dois domínios:
 No topo de cada página há o seletor **PT · EN · RO**. O RO leva a `ro.pachecost.com`; o PT e o EN ficam em
 `pachecost.com`. Os três têm as mesmas três vistas e o contacto no fim:
 
-1. **Projetos** — um quadrado por cliente real, com a fonte e as cores do próprio site: os clientes de pachecost.com,
-   mais o Jasmim 2 e a Toda Chic. As apresentações a negócios que não compraram ficam de fora (decisão de 26/09).
-   Primeira fila, em qualquer ecrã: **Jasmim 2, Hanam e Toda Chic**. Ao tocar, abre o site do cliente num separador
-   novo. A Toda Chic ainda não tem loja publicada: abre a cópia em `/p/toda-chic/` (uma página por língua), com o
-   botão fixo de voltar na língua certa. No fim da grelha, o quadrado tracejado leva ao contacto. Por baixo,
-   «Como trabalhamos»: fazemos o site antes de pagares, mostramos no telemóvel, só pagas se gostares.
+1. **Sites** (EN «Websites», RO «Site-uri») — não mostra quantos trabalhos temos nem pede «o teu negócio»
+   (decisão do Tomás, 29/09): passa responsabilidade e conhecimento de mercado, como as automações.
+   - **Em destaque:** Jasmim 2, HANAM e Toda Chic, com a fonte e as cores de cada site.
+   - **Por tipo de negócio:** quatro cartões que abrem como os das automações: restaurantes e marisqueiras; cafés,
+     pastelarias e gelatarias; lojas online; serviços com marcação. Fechado, mostra como o cliente escolhe. Aberto,
+     mostra as perguntas do cliente e o que o site responde, ligadas por pontos como numa ementa. Mostra também os
+     sites que já fizemos para esse tipo, as automações que combinam e o pedido no WhatsApp.
+   - **O que fica ao nosso cuidado:** seis compromissos que já cumprimos em todos os sites: dados verdadeiros, abre
+     depressa, Google, leitura para toda a gente, a lei e a manutenção.
+   - **Como trabalhamos:** fazemos o site antes de pagares, mostramos no telemóvel, só pagas se gostares.
+
+   Os sites dos clientes abrem num separador novo. A Toda Chic ainda não tem loja publicada: abre a cópia em
+   `/p/toda-chic/` (uma página por língua), com o botão fixo de voltar na língua certa. As apresentações a negócios
+   que não compraram nunca entram (decisão de 26/09).
 2. **Automações** — segue a direção «mostrar a máquina» (PLAYBOOK, secção 16). No topo, «O que é, afinal, a IA
    por trás?»: cinco frases sobre o que a IA faz e não faz. Depois, 8 automações. Cada cartão mostra o título e a
    dor na voz do dono. Ao tocar, abre a máquina por dentro. Primeiro vem o botão **«Ver o esquema»** (EN «See the
@@ -33,13 +41,16 @@ Sem preços: combinam-se com cada negócio.
 
 - Textos: `conteudo/pt.json`, `conteudo/en.json` e `conteudo/ro.json`. A estrutura é igual nos três (o gerador
   recusa-se a avançar se faltar uma letra nas fontes).
-- Quadrados: `portfolio.json`, pela ordem do ficheiro — `ativo`, `destaque` (os três da primeira fila), `nome`,
+- Sites: `portfolio.json`, pela ordem do ficheiro — `ativo`, `destaque` (os três «Em destaque»), `setor` (o cartão
+  do tipo de negócio: `restauracao`, `cafes`, `lojas` ou `marcacoes`), `nome`,
   `fonte`/`peso`/`bg`/`ink`/`accent` (as do site), `url` (site do cliente, abre noutro separador) ou `pasta` (site do
   repositório, copiado para `/p/<slug>/`, só para clientes sem site publicado). `demo: true` marca as apresentações:
   nunca entram. A ProBuilders está desligada até o site sair. O Ola Kathmandu está desligado desde 29/09: o
   `olakathmandu.com` não abre. O Jasmim 2 está em `neutro` (estilo da marca) até termos a fonte e as cores
-  do site dele. O quadrado tracejado «O teu negócio?» ocupa sempre o que sobra da última fila: com qualquer número
-  de quadrados, a grelha não fica com buracos.
+  do site dele.
+- Tipos de negócio: `proiecte.setores` nos três JSON. Cada um tem `tipos`, `decide` (como o cliente escolhe), `qa`
+  (pergunta do cliente e resposta do site) e `combina` (ids das automações). Só se escreve o que os nossos sites
+  fazem mesmo.
 - Esquemas: os passos são o `fluxo` de cada automação nos três JSON (`tip`, `t`, `d`; `espera` junta uma caixa de
   espera antes do passo; `ramuri` faz a decisão e os ramos). Os ícones estão em `conteudo/esquemas.json`, um por
   passo e um por ramo, iguais nas três línguas. Os desenhos dos ícones estão em `ICONES_ESQUEMA`, no `gerar.py`. Se
@@ -115,8 +126,10 @@ avisa.
 - Os 8 esquemas nas 3 línguas, a 360 e a 1280 px: cada um abre num cartão no meio do ecrã, com o foco lá dentro, e
   nenhuma caixa sai da tela. Letra, contraste e títulos também dentro do cartão. Esc, o X e tocar fora fecham; pelo
   teclado, o foco volta ao botão. O endereço `#esquema-…` abre-o direto e, sem JavaScript, mostra-o na mesma.
-- Separadores com e sem JavaScript, as 8 automatizações e as ligações entre elas. Cada quadrado e cada exemplo tem
-  de existir. A primeira fila tem de ter os três em destaque. A Toda Chic tem de voltar à página certa.
+- Separadores com e sem JavaScript, as 8 automatizações e as ligações entre elas. Três sites em destaque e mais
+  nenhum na grelha. Os 4 tipos de negócio, cada site ativo dentro de um deles, e cada ligação tem de existir. O
+  «Combina com» abre a automação. A Toda Chic tem de voltar à página certa. Os testes de leitura abrem todos os
+  cartões antes de medir.
 - A 404 e a privacidade em cada língua, e a barra fixa do WhatsApp.
 - A faixa de cookies: aparece só em pachecost.com, «Só o essencial» nunca carrega o pixel e «Aceitar» carrega-o.
   Nos dois casos a escolha fica guardada.

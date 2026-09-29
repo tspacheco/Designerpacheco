@@ -50,6 +50,7 @@ I = {
     "site": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
     "seta": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
     "baixo": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+    "fora": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>',
 }
 
 # ícones das caixas do esquema (traço, 24×24), no estilo dos Feather Icons (MIT)
@@ -149,7 +150,7 @@ def quadrado(item, rot, i, lang):
 
 
 def ativos(portfolio):
-    """Os quadrados, por ordem: primeiro os três em destaque (primeira fila), depois os outros pela ordem do ficheiro."""
+    """Os sites feitos, por ordem: primeiro os três em destaque, depois os outros pela ordem do ficheiro."""
     itens = [x for x in portfolio["itens"] if x.get("ativo") and not x.get("demo") and (x.get("pasta") or x.get("url"))]
     return sorted(itens, key=lambda x: not x.get("destaque"))
 
@@ -201,23 +202,71 @@ def fontes_google(portfolio):
     return "&".join(f"family={f}" for f in fam)
 
 
-def vista_proiecte(c, portfolio, lang):
+def mini_quadrado(item, rot, lang, lab):
+    """Um site feito, dentro do cartão do tipo de negócio dele: pequeno, com a fonte e as cores do próprio site."""
+    href = href_projeto(item, lang)
+    fora = href.startswith("http")
+    estilo = (f"--bg:{item['bg']};--ink:{item['ink']};--ac:{item['accent']};--f:'{item['fonte']}';--w:{item['peso']}"
+              + (";font-style:italic" if item.get("italico") else ""))
+    info = rot["itens"].get(item["slug"], {})
+    meta = " · ".join(x for x in (info.get("tip", ""), info.get("oras", "")) if x)
+    alvo = ' target="_blank" rel="noopener"' if fora else ""
+    aviso = f'<span class="so-leitor"> ({e(lab["novo"])})</span>' if fora else ""
+    return (f'<li><a class="ex{" neutro" if item.get("neutro") else ""}" href="{e(href)}" style="{estilo}"{alvo}>'
+            f'<span class="ex-nome">{e(item["nome"])}</span><span class="ex-meta">{e(meta)}</span>'
+            f'{I["fora"] if fora else ""}{aviso}</a></li>')
+
+
+def cartao_setor(s, i, itens, rot, lang, autos, digitos):
+    """Um tipo de negócio, como os cartões das automações: fechado mostra como o cliente escolhe; aberto, as perguntas
+    dele e o que o site responde, os sites que já fizemos para esse tipo, as automações que combinam e o pedido."""
+    lab = rot["labels"]
+    qa = "\n".join(f"      <div><dt><q>{e(q)}</q></dt><dd>{e(r)}</dd></div>" for q, r in s["qa"])
+    exs = [x for x in itens if x.get("setor") == s["id"]]
+    exemplos = (f'<div><h4 class="rotulo">{e(lab["exemplos"])}</h4><ul class="exemplos">'
+                + "".join(mini_quadrado(x, rot, lang, lab) for x in exs) + "</ul></div>") if exs else ""
+    chips = " ".join(f'<a class="chip" href="#a-{e(k)}">{e(autos[k]["scurt"])}</a>' for k in s["combina"])
+    wa = f"https://wa.me/351{digitos}?text={quote(lab['cta_msg'] + s['titlu'])}"
+    return f"""<details class="setor rv" name="setor" id="s-{e(s["id"])}" style="--i:{i}">
+  <summary>
+    <span class="setor-tipos">{e(s["tipos"])}</span>
+    <h3>{e(s["titlu"])}</h3>
+    <span class="durere"><span class="eyebrow">{e(lab["decide"])}</span><span class="decide">{e(s["decide"])}</span></span>
+    <span class="vezi" aria-hidden="true"><span class="abre">{e(lab["ver"])}</span><span class="fecha">{e(lab["fechar"])}</span>{I["baixo"]}</span>
+  </summary>
+  <div class="corpo">
+    <div><h4 class="rotulo">{e(lab["pergunta"])} <span aria-hidden="true">·</span> {e(lab["responde"])}</h4>
+    <dl class="perguntas">
+{qa}
+    </dl></div>
+    {exemplos}
+    <div><h4 class="rotulo">{e(lab["combina"])}</h4><div class="chips">{chips}</div></div>
+    <div class="demo"><p>{e(lab["cta_t"])}</p><a class="botao secundario" href="{e(wa)}">{I["chat"]}{e(lab["cta"])}</a></div>
+  </div>
+</details>"""
+
+
+def vista_proiecte(c, portfolio, lang, digitos):
+    """Sites: três em destaque, depois os tipos de negócio (o que o cliente pergunta e o que o site responde), com os
+    sites feitos lá dentro, para quem os quiser ver. Não há grelha com todos: o número de trabalhos não é o assunto."""
     p = c["proiecte"]
     itens = ativos(portfolio)
-    dest = [x["slug"] for x in itens if x.get("destaque")]
+    dest = [x for x in itens if x.get("destaque")]
     if len(dest) != 3:
-        raise SystemExit(f"portfolio.json: a primeira fila leva 3 quadrados em destaque, há {len(dest)}: {dest}")
-    lis = "\n".join(quadrado(x, p, i, lang) for i, x in enumerate(itens))
-    # «O teu negócio?» fica com o que sobra da última fila em cada ecrã (2, 3 e 4 quadrados por fila): nunca um buraco.
-    # Sozinho numa fila, faz uma faixa da altura de um quadrado; com outros, estica até à altura deles.
-    n = len(itens) - len(dest)
-    estilo = f"--i:{len(itens)}"
-    for bp, por, cols in (("m", 2, 3), ("t", 3, 1), ("d", 4, 3)):  # quadrados por fila e colunas de cada um
-        sobra = por - n % por
-        sozinho = n % por == 0
-        estilo += f";--s{bp}:{sobra * cols};--a{bp}:{sobra if sozinho else 'auto'};--h{bp}:{'auto' if sozinho else '100%'}"
-    lis += (f'\n<li class="rv teu" style="{estilo}"><a class="q teu" href="#contact" style="--fs:.8">'
-            f'<span class="q-nome">{e(p["teu"])}</span></a></li>')
+        raise SystemExit(f"portfolio.json: «Em destaque» leva 3 sites, há {len(dest)}: {[x['slug'] for x in dest]}")
+    ids = [s["id"] for s in p["setores"]]
+    sem = [x["slug"] for x in itens if x.get("setor") not in ids]
+    if sem:
+        raise SystemExit(f"portfolio.json: estes sites não têm um «setor» de conteudo/{lang}.json (proiecte.setores): {sem}")
+    autos = {x["id"]: x for x in c["automatizari"]["itens"]}
+    for s in p["setores"]:
+        if not set(s["combina"]) <= set(autos):
+            raise SystemExit(f"conteudo/{lang}.json: o tipo «{s['id']}» combina com automações que não existem")
+    selecao = "\n".join(quadrado(x, p, i, lang) for i, x in enumerate(dest))
+    cartoes = "\n".join(cartao_setor(s, i, itens, p, lang, autos, digitos) for i, s in enumerate(p["setores"]))
+    cu = p["cuidado"]
+    compromissos = "\n".join(f'<li class="rv" style="--i:{i}"><h3>{e(x["t"])}</h3><p>{e(x["d"])}</p></li>'
+                             for i, x in enumerate(cu["itens"]))
     m = c["metoda"]
     passos = "\n".join(f'<li class="passo rv" style="--i:{i}"><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p></li>' for i, s in enumerate(m["pasi"]))
     return f"""<section id="proiecte" class="vista" aria-labelledby="t-proiecte">
@@ -225,10 +274,26 @@ def vista_proiecte(c, portfolio, lang):
     <p class="eyebrow">{e(p["eyebrow"])}</p>
     <h2 id="t-proiecte" class="afirmacao">{e(p["titlu"])}</h2>
     <p class="lead">{e(p["intro"])}</p>
+    <p class="rotulo selecao">{e(p["selecao"])}</p>
     <ul class="grelha">
-{lis}
+{selecao}
     </ul>
-    <p class="nota-grelha">{e(p["nota"])}</p>
+    <div class="setores-grelha">
+      <div class="cab">
+        <p class="eyebrow">{e(p["setores_e"])}</p>
+        <p class="lead">{e(p["setores_intro"])}</p>
+      </div>
+      <div class="setores">
+{cartoes}
+      </div>
+    </div>
+    <div class="cuidado">
+      <p class="eyebrow">{e(cu["eyebrow"])}</p>
+      <h2 class="afirmacao">{e(cu["titlu"])}</h2>
+      <ul class="compromissos">
+{compromissos}
+      </ul>
+    </div>
   </div>
   <div class="claro">
     <div class="envolver seccao">
@@ -703,7 +768,7 @@ def main():
             "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
             "TAB_SERVICII": e(c["topo"]["tabs"]["servicii"]),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones), "VISTA_SERVICII": vista_servicii(c, portfolio, lang),
-            "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang),
+            "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
             "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "RODAPE": rodape(c, lang),
             "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
             "CONSENT_ROTULO": e(k["rotulo"]), "CONSENT_TEXTO": e(k["texto"]), "CONSENT_SIM": e(k["sim"]),

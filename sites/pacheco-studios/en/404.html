@@ -79,16 +79,12 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .lead{margin-top:1rem;max-width:44ch;color:var(--osso-2);font-size:1.0625rem}
 .claro .lead{color:var(--tinta-2)}
 
-/* ═══ quadrados: cada um com a fonte e as cores do próprio site ═══
-   Primeira fila = os 3 em destaque, em qualquer ecrã. Telemóvel: grelha de 6 colunas, destaque ocupa 2 (três por fila,
-   cartões altos), os outros 3 (dois por fila). Tablet: 3 colunas iguais. Computador: 12 colunas, destaque 4 (mais
-   largos, 4:3) e os outros 3 (quadrados) — as duas filas ficam com a mesma altura. */
-.grelha{margin-top:1.75rem;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
-.grelha > li{grid-column:span 3}
+/* ═══ em destaque: três sites, cada um com a fonte e as cores do próprio site ═══
+   Telemóvel: 6 colunas, cada um ocupa 2 (cartões altos). Tablet: 3 colunas. Computador: 12 colunas, cada um 4 (4:3).
+   Os outros sites ficam dentro do tipo de negócio deles: o número de trabalhos não é o assunto. */
+.rotulo.selecao{margin-top:2.5rem}
+.grelha{margin-top:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
 .grelha > li.dest{grid-column:span 2}
-/* «O teu negócio?» ocupa o que sobra da última fila, em cada ecrã (o gerador calcula --s*, --a* e --h*) */
-.grelha > li.teu{grid-column:span var(--sm)}
-.grelha > li.teu .q{aspect-ratio:var(--am);height:var(--hm)}
 .q{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;padding:.9rem;
   border-radius:1rem;background:var(--bg);color:var(--ink);text-decoration:none;overflow:hidden;
   /* contorno fino por dentro: os sites de fundo escuro não se perdem no carvão da página */
@@ -110,10 +106,37 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 /* a linha do tipo/cidade reserva 2 linhas: os três nomes da primeira fila ficam à mesma altura */
 .dest .q-meta{margin-top:.5rem;padding-top:.4rem;min-height:calc(2.6em + .4rem + 2px)}
 .dest .q-tip,.dest .q-sep{display:none}
-.q.teu{background:transparent;color:var(--laranja);border:3px dashed var(--laranja);box-shadow:none;justify-content:center;align-items:center;text-align:center}
-.q.teu .q-nome{font-family:var(--display);font-weight:400;text-transform:uppercase}
-.q.teu:hover,.q.teu:focus-visible{background:var(--laranja);color:var(--carvao);border-style:solid}
-.nota-grelha{margin-top:1.25rem;font:400 .8125rem/1.5 var(--mono);color:var(--osso-2);letter-spacing:.02em}
+
+/* ═══ por tipo de negócio: o que o cliente pergunta, o que o site responde ═══ */
+.setores-grelha{margin-top:clamp(3.5rem,11vw,6rem)}
+.setores{margin-top:1.5rem;max-width:48rem;display:grid;gap:.75rem}
+.setor-tipos{font:700 .75rem/1.35 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso-2);padding-right:2rem}
+.durere .decide{font-size:1rem;line-height:1.5;color:var(--osso)}
+/* as perguntas do cliente e as respostas do site: no telemóvel uma por baixo da outra; com largura, ligadas por
+   pontos, como numa ementa */
+.perguntas{display:grid;gap:.85rem}
+.perguntas > div{display:grid;gap:.2rem;padding-left:.9rem;border-left:2px solid var(--laranja)}
+.perguntas dt{font-size:.9375rem;line-height:1.45;color:var(--osso-2)}
+.perguntas dd{margin:0;font-weight:600;line-height:1.45}
+.setor .rotulo{line-height:1.45}
+/* um site feito, pequeno, com a fonte e as cores dele */
+.exemplos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.ex{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-height:6.25rem;padding:.75rem .8rem .7rem;
+  border-radius:.75rem;background:var(--bg);color:var(--ink);text-decoration:none;box-shadow:inset 0 0 0 1px rgba(239,234,227,.14);
+  transition:transform .2s var(--sair),box-shadow .2s}
+.ex.neutro{background:var(--carvao)}
+.ex:hover,.ex:focus-visible{transform:translateY(-2px);box-shadow:inset 0 0 0 1px rgba(239,234,227,.35),0 .8rem 1.4rem -1rem rgba(0,0,0,.9)}
+.ex-nome{font-family:var(--f),var(--display);font-weight:var(--w);font-size:1.0625rem;line-height:1.1;overflow-wrap:anywhere;padding-right:1.4rem}
+.ex[style*="--f:'Space Mono'"] .ex-nome{font-size:.9375rem;text-transform:uppercase;letter-spacing:.02em;line-height:1.2}
+.ex-meta{margin-top:.5rem;padding-top:.4rem;border-top:2px solid var(--ac);font:700 .75rem/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.ex svg{position:absolute;right:.65rem;top:.65rem;width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ═══ o que fica ao nosso cuidado: compromissos, não uma sequência (sem números) ═══ */
+.cuidado{margin-top:clamp(3.5rem,11vw,6rem);padding-top:clamp(2rem,6vw,3rem);border-top:1px solid var(--linha-e)}
+.compromissos{margin-top:1.75rem;display:grid;gap:1.4rem 2.5rem}
+.compromissos li{padding-top:.9rem;border-top:2px solid var(--linha-e)}
+.compromissos h3{font:600 1.1875rem/1.3 var(--texto);color:var(--osso)}
+.compromissos p{margin-top:.35rem;color:var(--osso-2);max-width:38ch}
 
 /* como trabalhamos: sequência real → lista ordenada */
 .passos{margin-top:2rem;display:grid;gap:1.75rem;counter-reset:passo}
@@ -124,21 +147,21 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 
 /* ═══ automatizações: a dor à vista, o fluxo por baixo ═══ */
 .autos{margin-top:2rem;max-width:48rem;display:grid;gap:.75rem}
-.auto{border:1px solid var(--linha-e);border-radius:1rem;background:var(--carvao-2);scroll-margin-top:calc(var(--tabs) + .75rem)}
-.auto summary{list-style:none;cursor:pointer;padding:1.15rem 1.1rem 1.1rem;display:grid;gap:.7rem;border-radius:1rem}
-.auto summary::-webkit-details-marker{display:none}
-.auto summary:focus-visible{outline-offset:-3px}
-.auto h3{font:400 1.25rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance;padding-right:2rem}
+.auto,.setor{border:1px solid var(--linha-e);border-radius:1rem;background:var(--carvao-2);scroll-margin-top:calc(var(--tabs) + .75rem)}
+.auto summary,.setor summary{list-style:none;cursor:pointer;padding:1.15rem 1.1rem 1.1rem;display:grid;gap:.7rem;border-radius:1rem}
+.auto summary::-webkit-details-marker,.setor summary::-webkit-details-marker{display:none}
+.auto summary:focus-visible,.setor summary:focus-visible{outline-offset:-3px}
+.auto h3,.setor h3{font:400 1.25rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance;padding-right:2rem}
 .durere{display:grid;gap:.35rem;padding-left:.9rem;border-left:3px solid var(--laranja)}
 .durere .eyebrow{font-size:.75rem;letter-spacing:.2em}
-.durere q{font-size:1.0625rem;line-height:1.5;color:var(--osso);quotes:"«" "»"}
-.durere q:lang(en){quotes:"“" "”"} .durere q:lang(ro){quotes:"„" "”"}
+.durere q{font-size:1.0625rem;line-height:1.5;color:var(--osso)}
+q{quotes:"«" "»"} q:lang(en){quotes:"“" "”"} q:lang(ro){quotes:"„" "”"}
 .vezi{display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;font:700 .75rem/1 var(--mono);letter-spacing:.12em;
   text-transform:uppercase;color:var(--laranja)}
 .vezi svg{width:1rem;height:1rem;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--sair)}
-.auto[open] .vezi svg{transform:rotate(180deg)}
-.auto[open] .vezi .abre{display:none}
-.auto:not([open]) .vezi .fecha{display:none}
+.auto[open] .vezi svg,.setor[open] .vezi svg{transform:rotate(180deg)}
+.auto[open] .vezi .abre,.setor[open] .vezi .abre{display:none}
+.auto:not([open]) .vezi .fecha,.setor:not([open]) .vezi .fecha{display:none}
 .corpo{padding:.25rem 1.1rem 1.35rem;display:grid;gap:1.35rem;border-top:1px solid var(--linha-e);padding-top:1.15rem;margin-inline:0}
 .rotulo{font:700 .75rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--osso-2);margin:0 0 .7rem}
 .obtii{padding:1rem 1.1rem;border-radius:.75rem;background:var(--osso);color:var(--carvao);font-weight:600;line-height:1.45}
@@ -270,8 +293,9 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 .msg.asistent{background:#E7F1EA;margin-left:2rem;border-bottom-right-radius:.3rem}
 .demo{display:grid;gap:.6rem;justify-items:start;padding-top:1rem;border-top:1px solid var(--linha-e)}
 .demo p{font-weight:600}
-.secundario{border-color:var(--contorno);color:var(--osso)}
-.secundario:hover{background:rgba(239,234,227,.08)}
+/* .botao vem depois e repõe a borda transparente: a borda do secundário precisa de mais peso */
+.botao.secundario{border-color:var(--contorno);color:var(--osso)}
+.botao.secundario:hover{background:rgba(239,234,227,.08)}
 
 /* ligam-se entre si: três caminhos, nada mais */
 .combos{margin-top:clamp(3rem,10vw,5rem);max-width:48rem}
@@ -342,9 +366,15 @@ body.rgpd-aberto .barra{display:none}
 
 @media (min-width:40rem){
   .grelha{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-  .grelha > li,.grelha > li.dest{grid-column:auto}
-  .grelha > li.teu{grid-column:span var(--st)}
-  .grelha > li.teu .q{aspect-ratio:var(--at);height:var(--ht)}
+  .grelha > li.dest{grid-column:auto}
+  .exemplos{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .compromissos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .perguntas{gap:.6rem}
+  /* pergunta à esquerda, resposta à direita, sempre alinhadas; os pontos vão do fim da pergunta até à resposta */
+  .perguntas > div{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:0 .75rem;align-items:baseline;padding-left:0;border-left:0}
+  .perguntas dt{display:flex;align-items:flex-end;gap:.6rem}
+  .perguntas dt q{min-width:0}
+  .perguntas dt::after{content:"";flex:1 1 1.25rem;min-width:1.25rem;margin-bottom:.4em;border-bottom:2px dotted rgba(232,98,44,.6)}
   .q,.dest .q{padding:1.1rem}
   .dest .q{aspect-ratio:1}
   .q-nome,.grelha .dest .q-nome{font-size:calc(clamp(1.35rem,3vw,2rem) * var(--fs,1))}
@@ -362,23 +392,22 @@ body.rgpd-aberto .barra{display:none}
 }
 @media (min-width:64rem){
   .grelha{grid-template-columns:repeat(12,minmax(0,1fr));gap:1.1rem}
-  .grelha > li{grid-column:span 3}
   .grelha > li.dest{grid-column:span 4}
-  .grelha > li.teu{grid-column:span var(--sd)}
-  .grelha > li.teu .q{aspect-ratio:var(--ad);height:var(--hd)}
   .dest .q{aspect-ratio:4/3}
   .q-nome{font-size:calc(2rem * var(--fs,1))}
   .grelha .dest .q-nome{font-size:calc(2.5rem * var(--fs,1))}
   .grelha .dest .q[style*="--f:'Space Mono'"] .q-nome{font-size:calc(1.9rem * var(--fs,1))}
-  .autos-grelha{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:clamp(3rem,6vw,5rem);align-items:start}
-  .autos-grelha .cab{position:sticky;top:calc(var(--tabs) + 2rem)}
+  .autos-grelha,.setores-grelha{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:clamp(3rem,6vw,5rem);align-items:start}
+  .autos-grelha .cab,.setores-grelha .cab{position:sticky;top:calc(var(--tabs) + 2rem)}
+  .setores{margin-top:0}
+  .compromissos{grid-template-columns:repeat(3,minmax(0,1fr))}
   .autos-grelha .cab .afirmacao{font-size:clamp(1.75rem,2.7vw,2.6rem)}
   .autos{margin-top:0}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1!important;transform:none!important;transition:none!important}
-  .barra,.botao,.q,.vezi svg,.ver-esquema{transition:none}
+  .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
   dialog.esquema[open]{animation:none}
 }
 </style>
@@ -390,8 +419,8 @@ body.rgpd-aberto .barra{display:none}
 <main id="conteudo" class="envolver seccao">
   <p class="eyebrow">404</p>
   <h1 class="afirmacao">This page doesn’t exist.</h1>
-  <p class="lead">Check the address or go back to the projects.</p>
-  <a class="botao primario grande" href="/en/#proiecte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Back to projects</a>
+  <p class="lead">Check the address or go back to the websites.</p>
+  <a class="botao primario grande" href="/en/#proiecte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Back to websites</a>
 </main>
 <footer class="rodape">
   <div class="envolver">
