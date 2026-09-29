@@ -1,16 +1,15 @@
-# Vai buscar ficheiros a endereços públicos e põe-nos num ramo temporário do repositório.
-# Serve para trazer imagens geradas fora (Higgsfield, etc.) para sessões cuja rede não chega a esses domínios:
-# corre-se à mão (Actions → buscar-imagens → Run workflow), depois faz-se «git fetch origin <ramo>» e lê-se de lá.
+# Traz para o repositório ficheiros de endereços públicos (imagens geradas no Higgsfield, etc.) e testa links
+# a partir de um runner do GitHub, para sessões cuja rede não chega a esses domínios.
+# Como usar: escrever em .github/buscar-imagens.txt uma linha «<etiqueta> <url>» por ficheiro
+# («testar <url>» só testa o link) e fazer push desse ficheiro. O runner descarrega, apara cada imagem
+# à caixa do alfa, guarda-a em sites/pacheco-studios/media/intro-candidatos/<etiqueta>.webp com uma
+# folha de contacto (folha.jpg) e o relatório dos links (links.txt), e faz commit no mesmo ramo.
+# Depois, na sessão: «git pull origin <ramo>», escolher, apagar o que sobra.
 name: buscar-imagens
 on:
+  push:
+    paths: ['.github/buscar-imagens.txt']
   workflow_dispatch:
-    inputs:
-      urls:
-        description: Endereços a buscar, separados por espaços
-        required: true
-      ramo:
-        description: Ramo temporário onde ficam os ficheiros
-        default: recebido/imagens
 permissions:
   contents: write
 jobs:
@@ -18,20 +17,62 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Descarregar
-        env:
-          URLS: ${{ inputs.urls }}
+      - name: Descarregar, aparar e testar
         run: |
-          mkdir -p recebido && i=0
-          for u in $URLS; do
-            i=$((i+1)); nome=$(basename "${u%%\?*}")
-            curl -fsSL -o "recebido/$(printf '%02d' $i)-$nome" "$u"
-          done
-          ls -la recebido
-      - name: Publicar no ramo temporário
-        env:
-          RAMO: ${{ inputs.ramo }}
+          python3 -m pip install --quiet pillow
+          python3 - <<'EOF'
+          import io, os, subprocess, urllib.request
+          from PIL import Image, ImageDraw
+          dest = "sites/pacheco-studios/media/intro-candidatos"
+          os.makedirs(dest, exist_ok=True)
+          tiles, links = [], []
+          for linha in open(".github/buscar-imagens.txt", encoding="utf-8"):
+              linha = linha.strip()
+              if not linha or linha.startswith("#"):
+                  continue
+              etiqueta, url = linha.split(None, 1)
+              if etiqueta == "testar":
+                  r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25",
+                                      "-A", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36",
+                                      "-w", "%{http_code} %{url_effective} %{size_download}", url],
+                                     capture_output=True, text=True)
+                  links.append(f"{url} -> {r.stdout.strip() or 'ERRO'} {r.stderr.strip()}".strip())
+                  print(links[-1])
+                  continue
+              pedido = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+              dados = urllib.request.urlopen(pedido, timeout=60).read()
+              im = Image.open(io.BytesIO(dados)).convert("RGBA")
+              caixa = im.getchannel("A").getbbox()
+              print(etiqueta, im.size, caixa)
+              if caixa:
+                  x0, y0, x1, y1 = caixa
+                  m = 8
+                  im = im.crop((max(0, x0 - m), max(0, y0 - m), min(im.width, x1 + m), min(im.height, y1 + m)))
+              if im.width > 1400:
+                  im = im.resize((1400, round(im.height * 1400 / im.width)), Image.LANCZOS)
+              im.save(f"{dest}/{etiqueta}.webp", "WEBP", quality=90, method=6)
+              tiles.append((etiqueta, im, caixa))
+          if links:
+              open(f"{dest}/links.txt", "w", encoding="utf-8").write("\n".join(links) + "\n")
+          if tiles:
+              W, cols = 640, 2
+              n_linhas = (len(tiles) + cols - 1) // cols
+              alt = max(round(t[1].height * (W - 20) / t[1].width) for t in tiles) + 40
+              folha = Image.new("RGB", (cols * W, n_linhas * alt), (20, 18, 16))
+              d = ImageDraw.Draw(folha)
+              for i, (etiqueta, im, caixa) in enumerate(tiles):
+                  x, y = (i % cols) * W, (i // cols) * alt
+                  t = im.resize((W - 20, round(im.height * (W - 20) / im.width)), Image.LANCZOS)
+                  folha.paste(t, (x + 10, y + 30), t)
+                  d.text((x + 10, y + 8), f"{etiqueta}  {im.width}x{im.height}  caixa={caixa}", fill=(239, 234, 227))
+              folha.save(f"{dest}/folha.jpg", "JPEG", quality=85)
+          EOF
+          ls -la "sites/pacheco-studios/media/intro-candidatos"
+      - name: Publicar no mesmo ramo
         run: |
-          git config user.name "buscar-imagens" && git config user.email "buscar-imagens@users.noreply.github.com"
-          git checkout --orphan "$RAMO" && git reset -q
-          git add -f recebido && git commit -q -m "Ficheiros recebidos por buscar-imagens" && git push -f origin "$RAMO"
+          git config user.name "buscar-imagens"
+          git config user.email "buscar-imagens@users.noreply.github.com"
+          git add -f sites/pacheco-studios/media/intro-candidatos
+          if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
+          git commit -q -m "Ficheiros recebidos por buscar-imagens" -m "Claude-Session: https://claude.ai/code/session_01F3dGrYNZMdXGq7r8GVtcmV"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
