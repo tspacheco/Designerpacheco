@@ -7,7 +7,6 @@ const path = require('path');
   const p = await b.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   await p.goto('file://' + path.resolve(html));
   await p.evaluate(() => document.fonts.ready);
-  // pré-carregar as sequências de vídeo e as fotos
   await p.evaluate(async () => {
     const urls = [...document.querySelectorAll('img')].map(i => i.getAttribute('src')).filter(Boolean);
     for (let k = 1; k <= 76; k++) urls.push('img/v1/' + String(k).padStart(3, '0') + '.jpg');
