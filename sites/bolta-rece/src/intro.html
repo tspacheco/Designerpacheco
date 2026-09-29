@@ -9,7 +9,7 @@
   @media (prefers-reduced-motion:reduce){#cb-intro{display:none}}
 </style>
 <div id="cb-intro" aria-hidden="true">
-  <video id="cb-intro-video" muted playsinline preload="auto" disablepictureinpicture>
+  <video id="cb-intro-video" muted playsinline preload="none" disablepictureinpicture>
     <source src="media/intro.webm" type="video/webm">
     <source src="media/intro.mp4" type="video/mp4">
   </video>
@@ -35,7 +35,12 @@
     var tirar = function () { if (intro.parentNode) intro.parentNode.removeChild(intro); };
     if (imediato) tirar(); else setTimeout(tirar, 1000);
   }
-  if (reduzido || jaVisto || !video || !video.canPlayType) { fechar(true); return; }
+  if (reduzido || jaVisto || !video || !video.canPlayType) { if (video) video.innerHTML = ""; fechar(true); return; }
+  /* só na primeira entrada: o vídeo começa a descarregar agora (no HTML está preload="none") */
+  video.preload = "auto";
+  var fontes = video.querySelectorAll("source");
+  if (fontes.length) fontes[fontes.length - 1].addEventListener("error", function () { fechar(true); });
+  try { video.load(); } catch (e) {}
   document.documentElement.classList.add("cb-intro-lock");
   var comecou = false;
   var guarda = setTimeout(function () { if (!comecou) fechar(true); }, ESPERA_MAX);

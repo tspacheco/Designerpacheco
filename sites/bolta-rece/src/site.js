@@ -1,8 +1,7 @@
-/* Casa Bolta Rece — comportamentos partilhados (nav, revelação, herói, cards, galeria) */
+/* Casa Bolta Rece — comportamentos partilhados (nav, revelação, herói, galeria) */
 (function () {
   "use strict";
   var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var pointerFino = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   /* nav: fundo sólido ao rolar */
   var nav = document.querySelector(".nav");
@@ -124,23 +123,6 @@
       window.scrollTo({ top: pov.offsetTop + meio * (pov.offsetHeight - stage.offsetHeight), behavior: "instant" });
     });
     medir(); aoScroll(); pos = curva(alvo); aplicar();
-  }
-
-  /* cards: inclinação 3D e felinar que segue o cursor */
-  if (pointerFino && !reduzido) {
-    document.querySelectorAll(".card").forEach(function (card) {
-      card.addEventListener("pointermove", function (e) {
-        var r = card.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-        card.style.setProperty("--ry", ((px - 0.5) * 12).toFixed(2) + "deg");
-        card.style.setProperty("--rx", ((0.5 - py) * 10).toFixed(2) + "deg");
-        card.style.setProperty("--gx", (px * 100).toFixed(1) + "%");
-        card.style.setProperty("--gy", (py * 100).toFixed(1) + "%");
-      });
-      card.addEventListener("pointerleave", function () {
-        card.style.setProperty("--rx", "0deg"); card.style.setProperty("--ry", "0deg");
-      });
-    });
   }
 
   /* galeria: caixa de luz */
