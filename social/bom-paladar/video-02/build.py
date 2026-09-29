@@ -3,8 +3,8 @@
 
 Estrutura:
   0–2,2 s   gancho: grelha de 9 pratos a acender + "Ainda não jantou aqui?" + ALMANCIL · ALGARVE
-  2,2–9,4 s a câmara mergulha em 5 fotos da grelha (zoom in, pausa, zoom out); no quadrado do
-            meio corre o vídeo real do bacalhau
+  2,2–9,6 s takes curtos a entrar em 7 fotos da grelha (zoom in e pausa, corte seco); no quadrado
+            do meio corre o vídeo real do bacalhau
   9,4–14,6  a carta em 3 filas de cards — Mar · Grelha · Especialidades — sobre a sala do
             restaurante desfocada; o vídeo real do caril corre num card; no fim a sala fica nítida
   14,6–17,8 "Chegue." com a porta, morada e horário
@@ -53,8 +53,9 @@ FOTO = {
 # grelha 3×3 do gancho (o do meio é o vídeo do bacalhau)
 GRELHA = ["salmao", "carpaccio", "carre", "arroz", "BACALHAU", "espetada", "tabua", "ninho", "camarao"]
 # mergulhos: (índice na grelha, legenda, duração)
-MERGULHOS = [(4, "Bacalhau Bom Paladar", 2.6), (3, "Arroz de tamboril", 1.15), (2, "Carré de borrego", 1.15),
-             (6, "Tábua para partilhar", 1.15), (7, "Ninho de caramelo", 1.15)]
+MERGULHOS = [(4, "Bacalhau Bom Paladar", 2.3), (3, "Arroz de tamboril", 0.85), (2, "Carré de borrego", 0.85),
+             (5, "Espetada Pop’s", 0.85), (6, "Tábua para partilhar", 0.85), (7, "Ninho de caramelo", 0.85),
+             (8, "Camarão frito com alho", 0.85)]
 # a carta em 3 filas
 FILAS = [("Mar", ["arroz", "salmao", "CARIL", "camarao", "tachos"]),
          ("Grelha", ["carre", "pops", "espetada", "bife"]),
@@ -204,8 +205,8 @@ const easeIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
 const MSG="Olá! Mesa para 2, sexta às 20h?";
 const G0=2.2;                                             // início dos mergulhos
 let GFIM=G0; for(const [,d] of MERG) GFIM+=d;             // fim dos mergulhos (9,4 s)
-const T=[["s-grelha",0,GFIM],["s-carta",GFIM,GFIM+5.2],["s-porta",GFIM+5.2,GFIM+8.4],["s-wa",GFIM+8.4,GFIM+12.2],["s-fim",GFIM+12.2,25.0]];
-const DUR=25.0;
+const T=[["s-grelha",0,GFIM],["s-carta",GFIM,GFIM+5.2],["s-porta",GFIM+5.2,GFIM+8.4],["s-wa",GFIM+8.4,GFIM+12.2],["s-fim",GFIM+12.2,GFIM+15.6]];
+const DUR=GFIM+15.6;
 function kb(el,tl,dur,from,to,ox,oy){{const p=ease(clamp(tl/dur,0,1));const s=from+(to-from)*p;el.style.transformOrigin=ox+"% "+oy+"%";el.style.transform="scale("+s.toFixed(4)+")";}}
 function rise(el,tl,t0,d=.35,dy=40){{const p=ease(clamp((tl-t0)/d,0,1));el.style.opacity=p;el.style.transform="translateY("+((1-p)*dy).toFixed(1)+"px)";}}
 function frame(el,i,n,pasta){{el.src=pasta+String(clamp(i,1,n)).padStart(3,"0")+".jpg";}}
@@ -223,9 +224,9 @@ function render(t){{
         // mergulhos: escala 3× com origem no centro do quadrado
         let s=1,ox=50,oy=50,k=G0,ativo=-1,legs=el.querySelectorAll(".t2");
         for(let m=0;m<MERG.length;m++){{const [gi,d]=MERG[m];const l=tl-k;
-          if(l>=0&&l<d){{const zin=.42,zout=.38;const p=l<zin?easeIO(l/zin):(l>d-zout?1-easeIO((l-(d-zout))/zout):1);
+          if(l>=0&&l<d){{const zin=m===0?.42:.32;const p=l<zin?easeIO(l/zin):1;
             s=1+2*p;ox=[16.7,50,83.3][gi%3];oy=[16.7,50,83.3][Math.floor(gi/3)];ativo=m;
-            legs[m].style.opacity=clamp((l-.3)/.25,0,1)*(1-ease(clamp((l-d+.3)/.25,0,1)));legs[m].style.transform="translateY("+((1-clamp((l-.3)/.25,0,1))*24).toFixed(1)+"px)";
+            const lp=clamp((l-.22)/.2,0,1);legs[m].style.opacity=lp;legs[m].style.transform="translateY("+((1-lp)*24).toFixed(1)+"px)";
             if(gi===4)frame($("v1"),Math.round(l*FPS)+1,N1,"img/v1/");}}
           else legs[m].style.opacity=0;
           k+=d;}}

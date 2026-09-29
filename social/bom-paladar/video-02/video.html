@@ -55,7 +55,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
   <p class="tag" id="g-tag">Almancil<b>·</b>Algarve</p>
   <p class="txt t1" id="g-pergunta" style="top:1500px">Ainda não<br>jantou <em>aqui?</em></p>
   <div class="sombra leve" id="g-sombra2"></div>
-  <p class="txt t2" style="top:1660px">Bacalhau Bom Paladar</p><p class="txt t2" style="top:1660px">Arroz de tamboril</p><p class="txt t2" style="top:1660px">Carré de borrego</p><p class="txt t2" style="top:1660px">Tábua para partilhar</p><p class="txt t2" style="top:1660px">Ninho de caramelo</p>
+  <p class="txt t2" style="top:1660px">Bacalhau Bom Paladar</p><p class="txt t2" style="top:1660px">Arroz de tamboril</p><p class="txt t2" style="top:1660px">Carré de borrego</p><p class="txt t2" style="top:1660px">Espetada Pop’s</p><p class="txt t2" style="top:1660px">Tábua para partilhar</p><p class="txt t2" style="top:1660px">Ninho de caramelo</p><p class="txt t2" style="top:1660px">Camarão frito com alho</p>
 </section>
 
 <section class="shot" id="s-carta"><div class="carta">
@@ -90,7 +90,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 
 </div>
 <script>
-const FPS=30, N1=76, N2=40, MERG=[[4, 2.6], [3, 1.15], [2, 1.15], [6, 1.15], [7, 1.15]];
+const FPS=30, N1=76, N2=40, MERG=[[4, 2.3], [3, 0.85], [2, 0.85], [5, 0.85], [6, 0.85], [7, 0.85], [8, 0.85]];
 const $=id=>document.getElementById(id);
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const ease=x=>1-Math.pow(1-x,3);
@@ -98,8 +98,8 @@ const easeIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
 const MSG="Olá! Mesa para 2, sexta às 20h?";
 const G0=2.2;                                             // início dos mergulhos
 let GFIM=G0; for(const [,d] of MERG) GFIM+=d;             // fim dos mergulhos (9,4 s)
-const T=[["s-grelha",0,GFIM],["s-carta",GFIM,GFIM+5.2],["s-porta",GFIM+5.2,GFIM+8.4],["s-wa",GFIM+8.4,GFIM+12.2],["s-fim",GFIM+12.2,25.0]];
-const DUR=25.0;
+const T=[["s-grelha",0,GFIM],["s-carta",GFIM,GFIM+5.2],["s-porta",GFIM+5.2,GFIM+8.4],["s-wa",GFIM+8.4,GFIM+12.2],["s-fim",GFIM+12.2,GFIM+15.6]];
+const DUR=GFIM+15.6;
 function kb(el,tl,dur,from,to,ox,oy){const p=ease(clamp(tl/dur,0,1));const s=from+(to-from)*p;el.style.transformOrigin=ox+"% "+oy+"%";el.style.transform="scale("+s.toFixed(4)+")";}
 function rise(el,tl,t0,d=.35,dy=40){const p=ease(clamp((tl-t0)/d,0,1));el.style.opacity=p;el.style.transform="translateY("+((1-p)*dy).toFixed(1)+"px)";}
 function frame(el,i,n,pasta){el.src=pasta+String(clamp(i,1,n)).padStart(3,"0")+".jpg";}
@@ -117,9 +117,9 @@ function render(t){
         // mergulhos: escala 3× com origem no centro do quadrado
         let s=1,ox=50,oy=50,k=G0,ativo=-1,legs=el.querySelectorAll(".t2");
         for(let m=0;m<MERG.length;m++){const [gi,d]=MERG[m];const l=tl-k;
-          if(l>=0&&l<d){const zin=.42,zout=.38;const p=l<zin?easeIO(l/zin):(l>d-zout?1-easeIO((l-(d-zout))/zout):1);
+          if(l>=0&&l<d){const zin=m===0?.42:.32;const p=l<zin?easeIO(l/zin):1;
             s=1+2*p;ox=[16.7,50,83.3][gi%3];oy=[16.7,50,83.3][Math.floor(gi/3)];ativo=m;
-            legs[m].style.opacity=clamp((l-.3)/.25,0,1)*(1-ease(clamp((l-d+.3)/.25,0,1)));legs[m].style.transform="translateY("+((1-clamp((l-.3)/.25,0,1))*24).toFixed(1)+"px)";
+            const lp=clamp((l-.22)/.2,0,1);legs[m].style.opacity=lp;legs[m].style.transform="translateY("+((1-lp)*24).toFixed(1)+"px)";
             if(gi===4)frame($("v1"),Math.round(l*FPS)+1,N1,"img/v1/");}
           else legs[m].style.opacity=0;
           k+=d;}
