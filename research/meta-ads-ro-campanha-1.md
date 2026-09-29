@@ -98,3 +98,20 @@ Música: só da Coleção de Sons da Meta / biblioteca do editor do anúncio (m�
 Título: «Facem la fel și pentru afacerea ta» · Descrição: «Concept neoficial · Pacheco Studios» · Botão: Saber mais.
 
 PT: «Refizemos o site de um dos restaurantes mais conhecidos de Iași. Bolta Rece, desde 1786: a moldura da página inicial abre-se, entras no alpendre, desces ao salão e chegas à bolta dos vinhos — tal como na casa verdadeira. Conceito não oficial, criado pela Pacheco Studios. Fazemos o mesmo pelo teu negócio. Pede o teu orçamento e descobre porque temos uma das melhores relações qualidade-preço.»
+
+## Variação B — Jasmim 2 (escolhido em vez do Hanam)
+
+Porquê: vídeo mais claro e legível (o do Hanam está escuro e o site ocupa só o meio do quadro), pratos com fotografias reais da casa, seletor PT · EN · ES · FR visível (prova "em qualquer língua"), cliente real (jasmim2marisqueira.pt, Manta Rota).
+Vídeo: `videos/prontos/jasmim-2-ad-4x5.mp4` (branch `claude/awesome-knuth-8hnx4j`), 27 s, 4:5.
+
+> Afacerea ta merită un site de acest nivel.
+>
+> Jasmim 2, o marisqueria din Portugalia: meniul cu fotografii reale din casă, site în 4 limbi și rezervare dintr-o atingere.
+>
+> Facem la fel și pentru afacerea ta. Cere o ofertă și descoperă de ce avem unul dintre cele mai bune raporturi calitate-preț.
+
+Título: «Afacerea ta merită un site de acest nivel» · Descrição: «Jasmim 2 · proiect Pacheco Studios» · Botão: Saber mais.
+URL: `https://ro.pachecost.com/?utm_source=meta&utm_medium=paid-video&utm_campaign=ps-prospecao-out26-ro&utm_content=web-jasmim`
+Música: acústica / lounge de verão (mar), volume baixo.
+
+**Destino corrigido:** existe `ro.pachecost.com` (versão romena) — usar nas duas variações; na A, `utm_content=web-bolta`.
