@@ -213,8 +213,8 @@ button{font:inherit;color:inherit}
 @media (max-width:960px){.nav__links,.nav__cta{display:none}.burger{display:block}}
 
 /* ---- intro: la hoja corta la cebolla ---- */
-#pb-intro{position:fixed;inset:0;z-index:2147483000;background:var(--tinta);color:var(--hueso);overflow:hidden;clip-path:polygon(-20% 0,120% 0,120% 100%,-20% 100%)}
-#pb-intro.cut-out{transition:clip-path 1s var(--ease-in-out);clip-path:polygon(-20% 0,-20% 0,-60% 100%,-60% 100%)}
+#pb-intro{--s:50vw;position:fixed;inset:0;z-index:2147483000;background:var(--tinta);color:var(--hueso);overflow:hidden;clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,var(--s) 0,var(--s) 100%,var(--s) 100%,var(--s) 0)}
+#pb-intro.cut-out{transition:clip-path 1.05s var(--ease-in-out);clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,-2% 0,-2% 100%,102% 100%,102% 0)}
 #pb-intro canvas,#pb-intro video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
 #pb-intro video{display:none}
 .intro__mark{position:absolute;left:var(--pad);top:calc(var(--banner) + 26px);font:600 11px/1 var(--f-body);letter-spacing:.28em;text-transform:uppercase;color:var(--inv-2);opacity:0;transition:opacity .8s}
@@ -226,8 +226,12 @@ button{font:inherit;color:inherit}
 .intro__title h2 em{font-style:italic;font-weight:400;color:var(--azafran-2)}
 .intro__skip{position:absolute;right:var(--pad);bottom:28px;border:1.5px solid rgba(244,236,223,.4);background:transparent;color:var(--inv-2);border-radius:999px;padding:10px 18px;font:600 12px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:border-color .25s,color .25s}
 .intro__skip:hover{border-color:var(--azafran);color:var(--hueso)}
-.intro__edge{position:absolute;top:-10%;bottom:-10%;right:-4px;width:4px;background:linear-gradient(180deg,transparent,var(--azafran-2) 25%,var(--azafran-2) 75%,transparent);transform:skewX(-14deg);opacity:0}
-.cut-out .intro__edge{opacity:1}
+.intro__edge{position:absolute;top:0;bottom:0;left:var(--s);width:2px;background:linear-gradient(180deg,transparent,var(--azafran-2) 18%,#FFF6E0 50%,var(--azafran-2) 82%,transparent);opacity:0;pointer-events:none}
+.intro__edge.l{margin-left:-3px}.intro__edge.r{margin-left:1px}
+.cut-out .intro__edge.l{animation:filoL 1.05s var(--ease-in-out) forwards}
+.cut-out .intro__edge.r{animation:filoR 1.05s var(--ease-in-out) forwards}
+@keyframes filoL{0%{opacity:1;transform:translateX(0)}100%{opacity:.5;transform:translateX(calc(-1 * var(--s) - 2vw))}}
+@keyframes filoR{0%{opacity:1;transform:translateX(0)}100%{opacity:.5;transform:translateX(calc(102vw - var(--s)))}}
 .no-js #pb-intro,.rm #pb-intro{display:none}
 
 /* ---- héroe: el chef ---- */
@@ -248,18 +252,29 @@ button{font:inherit;color:inherit}
 .hero__strip span{display:inline-flex;align-items:center;gap:10px}
 .hero__strip svg{width:16px;height:16px;color:var(--azafran);flex:none}
 .hero__strip a{text-decoration:none}
-.hero__chef{position:relative;align-self:end;justify-self:center;width:min(100%,520px);aspect-ratio:3/4;--tx:0px;--ty:0px}
-.hero__chef svg,.hero__chef img,.hero__chef video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
-.hero__chef video{-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent);mask-image:linear-gradient(180deg,#000 78%,transparent);background:var(--tinta)}
-.hero__chef img{-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent);mask-image:linear-gradient(180deg,#000 78%,transparent)}
-.hero__chef .chef,.hero__chef img,.hero__chef video{transform:translate3d(var(--tx),calc(var(--ty) + var(--sy,0px)),0);transition:transform .6s var(--ease-out)}
+.hero__chef{--tx:0px;--ty:0px;position:absolute;z-index:0;right:max(0px,calc((100vw - 1440px) / 2));bottom:0;width:min(60vw,calc((100vh - var(--banner) - var(--nav)) * 1.008),860px);width:min(60vw,calc((100svh - var(--banner) - var(--nav)) * 1.008),860px);aspect-ratio:1125/1116;margin:0}
+.hero__media{position:absolute;inset:0;transform:translate3d(var(--tx),calc(var(--ty) + var(--sy,0px)),0);transition:transform .6s var(--ease-out);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 95%,transparent),linear-gradient(180deg,transparent 0,#000 9%,#000 78%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 95%,transparent),linear-gradient(180deg,transparent 0,#000 9%,#000 78%,transparent);mask-composite:intersect}
+.hero__media > svg,.hero__media video,.hero__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__foto{--filo:46.3%;position:absolute;inset:0}
+.mitad.a{clip-path:inset(0 calc(100% - var(--filo) - .2%) 0 0)}
+.mitad.b{clip-path:inset(0 0 0 var(--filo))}
+.hero__filo{position:absolute;left:var(--filo);top:10%;bottom:12%;width:2px;margin-left:-1px;background:linear-gradient(180deg,transparent,var(--azafran-2) 20%,#FFF6E0 50%,var(--azafran-2) 80%,transparent);opacity:0;transform-origin:50% 0;pointer-events:none}
 .hero__glow{transform:translateY(calc(var(--sy,0px) * -.6))}
-.hero__cap{position:absolute;left:0;bottom:clamp(20px,4vh,40px);background:rgba(16,14,12,.72);border:1px solid rgba(244,236,223,.14);backdrop-filter:blur(6px);padding:12px 16px;border-radius:10px;font-size:13px;letter-spacing:.04em;color:var(--inv-2);max-width:26ch}
-.hero__cap b{display:block;font:700 15px/1.2 var(--f-display);color:var(--hueso);margin-bottom:3px}
+.hero__cap{position:absolute;right:var(--pad);bottom:clamp(22px,5vh,48px);text-align:right;font:600 11px/1.5 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--inv-2)}
+.hero__cap::before{content:"";display:block;width:36px;height:2px;background:var(--azafran);margin:0 0 12px auto}
+.hero__cap b{display:block;font:700 20px/1.2 var(--f-display);letter-spacing:.01em;text-transform:none;color:var(--hueso);margin-bottom:4px}
 /* coreografía de entrada */
-.hero .hero__seal,.hero h1 .l,.hero__lead,.hero__cta,.hero__strip,.hero__chef,.hero__cap{opacity:0;transform:translateY(22px)}
+.hero .hero__seal,.hero h1 .l,.hero__lead,.hero__cta,.hero__strip,.hero__cap{opacity:0;transform:translateY(22px)}
+.hero .hero__chef{opacity:0}
+.hero .mitad{opacity:0}
+.hero .mitad.a{transform:translateY(-7%)}
+.hero .mitad.b{transform:translateY(7%)}
 .hero h1 .l{display:block}
-.hero.is-in .hero__chef{animation:up 1.2s var(--ease-out) 0s forwards}
+.hero.is-in .hero__chef{animation:up .5s var(--ease-out) 0s forwards}
+.hero.is-in .mitad{animation:encaja 1.3s var(--ease-out) .15s forwards}
+.hero.is-in .hero__filo{animation:destello 1.2s var(--ease-out) 1.2s forwards}
+@keyframes encaja{0%{opacity:0}35%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes destello{0%{opacity:0;transform:scaleY(.08)}22%{opacity:1}100%{opacity:0;transform:scaleY(1)}}
 .hero.is-in .hero__seal{animation:up .9s var(--ease-out) .25s forwards}
 .hero.is-in h1 .l:nth-child(1){animation:up 1s var(--ease-out) .4s forwards}
 .hero.is-in h1 .l:nth-child(2){animation:up 1s var(--ease-out) .52s forwards}
@@ -269,10 +284,12 @@ button{font:inherit;color:inherit}
 .hero.is-in .hero__cap{animation:up .9s var(--ease-out) 1.3s forwards}
 @keyframes up{to{opacity:1;transform:none}}
 @media (max-width:880px){
-  .hero__in{grid-template-columns:1fr;align-items:start}
-  .hero__chef{width:min(100%,380px);justify-self:end;aspect-ratio:4/5;margin-top:10px}
-  .hero__copy{padding-bottom:40px;order:2}
-  .hero__chef{order:1}
+  .hero{align-content:start}
+  .hero__in{grid-template-columns:1fr;align-items:start;grid-row:2;margin-top:-10vw}
+  .hero__chef{position:relative;right:auto;bottom:auto;grid-row:1;width:100%;max-width:560px;justify-self:center}
+  .hero__media{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 94%,transparent),linear-gradient(180deg,transparent 0,#000 8%,#000 70%,transparent);mask-image:linear-gradient(90deg,#000 0,#000 94%,transparent),linear-gradient(180deg,transparent 0,#000 8%,#000 70%,transparent)}
+  .hero__cap{display:none}
+  .hero__copy{padding-bottom:40px}
   .hero h1{font-size:clamp(38px,11vw,64px)}
 }
 
@@ -481,12 +498,15 @@ button{font:inherit;color:inherit}
   .rv,.hero .hero__seal,.hero h1 .l,.hero__lead,.hero__cta,.hero__strip,.hero__chef,.hero__cap{opacity:1;transform:none}
   .cut__in{clip-path:none}
   .cut::after{display:none}
+  .hero .mitad{opacity:1!important;transform:none!important;animation:none!important}
+  .hero__filo{display:none}
   .pilares svg path,.pilares svg circle{stroke-dashoffset:0}
   .momento{transform:none!important}
   .arroz__pan .anillo{stroke-dashoffset:0}
 }
 .no-js .rv,.no-js .hero .hero__seal,.no-js .hero h1 .l,.no-js .hero__lead,.no-js .hero__cta,.no-js .hero__strip,.no-js .hero__chef,.no-js .hero__cap{opacity:1;transform:none}
 .no-js .cut__in{clip-path:none}
+.no-js .hero .mitad{opacity:1;transform:none}
 .no-js .arroz__pan .anillo{stroke-dashoffset:0}
 .no-js .nav{background:rgba(16,14,12,.94)}
 .no-js .widget{display:none}
@@ -505,7 +525,7 @@ button{font:inherit;color:inherit}
   <p class="intro__mark">Patai Beach · Corralejo</p>
   <div class="intro__title"><p>Ariel Patai · maestro paellero</p><h2>Todo empieza <em>con un corte</em></h2></div>
   <button class="intro__skip" type="button">Saltar</button>
-  <span class="intro__edge" aria-hidden="true"></span>
+  <span class="intro__edge l" aria-hidden="true"></span><span class="intro__edge r" aria-hidden="true"></span>
 </div>
 
 <a class="skip" href="#contenido">Ir al contenido</a>
@@ -541,22 +561,8 @@ button{font:inherit;color:inherit}
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="hero__board" aria-hidden="true"></div>
   <div class="hero__grain" aria-hidden="true"></div>
-  <div class="hero__in">
-    <div class="hero__copy">
-      <p class="hero__seal"><b>Corralejo</b><span>Ariel Patai · maestro paellero</span></p>
-      <h1><span class="l">El chef de los arroces,</span><span class="l"><em>frente al Atlántico</em></span></h1>
-      <p class="hero__lead">Paellas y arroces de producto local, con socarrat y toque cubano, en la playa de Corralejo. Elige tu turno y déjanos la mesa a nosotros.</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="#reservas">Reservar mesa</a>
-        <a class="btn btn--ghost" href="#arroces">Ver los arroces</a>
-      </div>
-      <p class="hero__strip">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Playa de La Goleta · Corralejo</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Cenando con Pablo vino a probar el arroz de chuletón</span>
-        <a href="https://www.instagram.com/patai_beach/" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@patai_beach</a>
-      </p>
-    </div>
-    <figure class="hero__chef" aria-label="Ariel Patai, chef de Patai Beach">
+  <figure class="hero__chef" aria-label="Ariel Patai, chef de Patai Beach">
+    <div class="hero__media">
       <svg class="chef" viewBox="0 0 600 800" aria-hidden="true">
         <defs>
           <radialGradient id="gl" cx="52%" cy="42%" r="55%"><stop offset="0" stop-color="#E3A233" stop-opacity=".28"/><stop offset="1" stop-color="#E3A233" stop-opacity="0"/></radialGradient>
@@ -585,10 +591,30 @@ button{font:inherit;color:inherit}
         </g>
         <path d="M112 800V560c0-92 62-156 146-176M488 800V560c0-92-62-156-146-176" fill="none" stroke="#E3A233" stroke-opacity=".35" stroke-width="2"/>
       </svg>
-      <img src="media/chef.jpg" alt="Ariel Patai, chef de Patai Beach, con los brazos cruzados" width="900" height="1200" onerror="this.remove()">
+      <div class="hero__foto">
+        <img class="mitad a" src="media/chef.jpg" alt="Ariel Patai sostiene un cuchillo en vertical delante del rostro, sobre fondo negro" width="1125" height="1116" onerror="var f=this.closest('.hero__foto');if(f)f.remove()">
+        <img class="mitad b" src="media/chef.jpg" alt="" aria-hidden="true" width="1125" height="1116" onerror="var f=this.closest('.hero__foto');if(f)f.remove()">
+        <span class="hero__filo" aria-hidden="true"></span>
+      </div>
       <video class="hero__video" muted loop playsinline preload="auto" poster="media/chef.jpg" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4" onerror="this.parentNode.remove()"></video>
-      <figcaption class="hero__cap"><b>Ariel Patai</b>Chef cubano, maestro paellero. Foto del chef: por incorporar.</figcaption>
-    </figure>
+    </div>
+    <figcaption class="hero__cap"><b>Ariel Patai</b>Chef cubano · maestro paellero</figcaption>
+  </figure>
+  <div class="hero__in">
+    <div class="hero__copy">
+      <p class="hero__seal"><b>Corralejo</b><span>Ariel Patai · maestro paellero</span></p>
+      <h1><span class="l">El chef de los arroces,</span><span class="l"><em>frente al Atlántico</em></span></h1>
+      <p class="hero__lead">Paellas y arroces de producto local, con socarrat y toque cubano, en la playa de Corralejo. Elige tu turno y déjanos la mesa a nosotros.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#reservas">Reservar mesa</a>
+        <a class="btn btn--ghost" href="#arroces">Ver los arroces</a>
+      </div>
+      <p class="hero__strip">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Playa de La Goleta · Corralejo</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Cenando con Pablo vino a probar el arroz de chuletón</span>
+        <a href="https://www.instagram.com/patai_beach/" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@patai_beach</a>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1088,8 +1114,13 @@ button{font:inherit;color:inherit}
       document.documentElement.style.overflow = "";
       entrarHero();
       if (inmediato) { intro.remove(); return; }
+      /* el corte se abre justo en la hoja del cuchillo de la foto del chef */
+      var ref = document.querySelector(".hero__foto") || document.querySelector(".hero__chef"), sx = window.innerWidth / 2;
+      if (ref) { var rr = ref.getBoundingClientRect(); if (rr.width) sx = rr.left + rr.width * 0.463; }
+      intro.style.setProperty("--s", sx.toFixed(1) + "px");
+      void intro.offsetWidth;
       intro.classList.add("cut-out");
-      setTimeout(function () { intro.remove(); }, 1100);
+      setTimeout(function () { intro.remove(); }, 1150);
     }
     saltar.addEventListener("click", function () { terminar(true); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") terminar(true); });
