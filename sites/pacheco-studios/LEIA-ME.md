@@ -36,8 +36,8 @@ Sem preços: combinam-se com cada negócio.
 - Quadrados: `portfolio.json`, pela ordem do ficheiro — `ativo`, `destaque` (os três da primeira fila), `nome`,
   `fonte`/`peso`/`bg`/`ink`/`accent` (as do site), `url` (site do cliente, abre noutro separador) ou `pasta` (site do
   repositório, copiado para `/p/<slug>/`, só para clientes sem site publicado). `demo: true` marca as apresentações:
-  nunca entram. A ProBuilders está desligada até o site sair. O Grupo Naval está desligado desde 29/09: o
-  `restaurantegruponaval.com` não existe. O Jasmim 2 está em `neutro` (estilo da marca) até termos a fonte e as cores
+  nunca entram. A ProBuilders está desligada até o site sair. O Ola Kathmandu está desligado desde 29/09: o
+  `olakathmandu.com` não abre. O Jasmim 2 está em `neutro` (estilo da marca) até termos a fonte e as cores
   do site dele. O quadrado tracejado «O teu negócio?» ocupa sempre o que sobra da última fila: com qualquer número
   de quadrados, a grelha não fica com buracos.
 - Esquemas: os passos são o `fluxo` de cada automação nos três JSON (`tip`, `t`, `d`; `espera` junta uma caixa de
