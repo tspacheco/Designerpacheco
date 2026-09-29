@@ -104,10 +104,22 @@ button{font:inherit;color:inherit}
 @media (max-width:960px){.nav__links,.nav__cta{display:none}.burger{display:block}}
 
 /* ---- intro: la hoja corta la cebolla ---- */
-#pb-intro{--s:50vw;position:fixed;inset:0;z-index:2147483000;background:var(--tinta);color:var(--hueso);overflow:hidden;clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,var(--s) 0,var(--s) 100%,var(--s) 100%,var(--s) 0)}
+#pb-intro{--s:50vw;--r:50vw;position:fixed;inset:0;z-index:2147483000;background:var(--tinta);color:var(--hueso);overflow:hidden;clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,var(--s) 0,var(--s) 100%,var(--s) 100%,var(--s) 0)}
 #pb-intro.cut-out{transition:clip-path 1.05s var(--ease-in-out);clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,-2% 0,-2% 100%,102% 100%,102% 0)}
-#pb-intro canvas,#pb-intro video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
-#pb-intro video{display:none}
+#pb-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.intro__reel{position:absolute;inset:0;z-index:1;background:#0B0A09;visibility:hidden;clip-path:polygon(var(--r) 0,var(--r) 0,var(--r) 100%,var(--r) 100%)}
+.intro__reel.abierto{visibility:visible;transition:clip-path .95s var(--ease-in-out);clip-path:polygon(-2% 0,102% 0,102% 100%,-2% 100%)}
+.intro__reel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,10,9,.72) 0,rgba(11,10,9,0) 46%),linear-gradient(0deg,rgba(11,10,9,.55),rgba(11,10,9,0) 40%);pointer-events:none}
+.intro__fondo{position:absolute;inset:-6%;width:112%;height:112%;filter:blur(26px) brightness(.42) saturate(1.15)}
+.intro__panel{position:absolute;top:0;left:var(--r);height:100%;width:auto;aspect-ratio:9/16;transform:translateX(-50%);object-fit:cover;background:#0B0A09;box-shadow:0 0 0 1px rgba(244,236,223,.08),0 40px 120px rgba(0,0,0,.6)}
+@media (max-aspect-ratio:4/5){.intro__panel{left:0;width:100%;transform:none;aspect-ratio:auto}.intro__reel::after{background:linear-gradient(0deg,rgba(11,10,9,.8),rgba(11,10,9,0) 50%)}}
+.intro__tajo{position:absolute;z-index:2;top:0;bottom:0;left:var(--r,50%);width:2px;margin-left:-1px;background:linear-gradient(180deg,transparent,var(--azafran-2) 15%,#FFF6E0 50%,var(--azafran-2) 85%,transparent);transform:scaleY(0);transform-origin:50% 0;opacity:0;pointer-events:none}
+.intro__tajo.on{animation:tajo .55s var(--ease-out) forwards}
+@keyframes tajo{0%{opacity:1;transform:scaleY(0)}55%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(1)}}
+.intro__mark,.intro__title,.intro__skip,.intro__edge{z-index:3}
+#pb-intro .intro__title--reel{max-width:min(34vw,520px)}
+#pb-intro .intro__title--reel h2{font-size:clamp(30px,3.6vw,56px)}
+@media (max-aspect-ratio:4/5){#pb-intro .intro__title--reel{max-width:none;right:var(--pad)}#pb-intro .intro__title--reel h2{font-size:clamp(30px,8.5vw,44px)}}
 .intro__mark{position:absolute;left:var(--pad);top:calc(var(--banner) + 26px);font:600 11px/1 var(--f-body);letter-spacing:.28em;text-transform:uppercase;color:var(--inv-2);opacity:0;transition:opacity .8s}
 .intro__mark.on{opacity:1}
 .intro__title{position:absolute;left:var(--pad);bottom:clamp(64px,12vh,120px);max-width:min(88vw,720px);opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
@@ -267,16 +279,58 @@ button{font:inherit;color:inherit}
 .tapas{margin-top:26px;color:var(--inv-2);font-size:15.5px}
 .tapas b{color:var(--hueso);font-weight:600}
 
-/* ---- la playa (tres momentos) ---- */
-.playa-sec{background:var(--hueso)}
-.momentos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
-@media (max-width:820px){.momentos{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.momentos{grid-template-columns:1fr}}
-.momento{--rx:0deg;--ry:0deg;position:relative;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:var(--arena);box-shadow:var(--sombra);transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .55s var(--ease-out)}
-.momento svg,.momento img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.momento figcaption{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(16,14,12,.78);color:var(--hueso);padding:10px 14px;border-radius:8px;font-size:13px;letter-spacing:.04em}
-.momento:nth-child(2){margin-top:28px}
-@media (max-width:820px){.momento:nth-child(2){margin-top:0}}
+/* ---- entre fogones: cortes en 3D (el scroll abre cada panel por el centro, como una hoja) ---- */
+.fogones{position:relative;height:calc(var(--n,4) * 85vh + 70vh);background:var(--tinta);color:var(--hueso)}
+.fogones__stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);grid-template-rows:auto 1fr auto;column-gap:clamp(24px,4vw,64px);padding:calc(var(--banner) + var(--nav) + 18px) var(--pad) 0;background:radial-gradient(ellipse 50% 60% at 66% 55%,rgba(227,162,51,.12),transparent 65%),var(--tinta)}
+.fogones__head{grid-column:1;grid-row:1;align-self:start;max-width:520px;margin-left:max(0px,calc((100vw - 2 * var(--pad) - var(--w)) / 2))}
+.fogones__head .h2{font-size:clamp(32px,4vw,58px);margin-top:14px}
+.fogones__escena{--ph:min(64vh,620px);--pw:calc(var(--ph) * 9 / 16);grid-column:2;grid-row:1/4;display:grid;place-items:center;perspective:1400px;perspective-origin:50% 42%;min-height:0}
+.fogones__pila{position:relative;width:var(--pw);height:var(--ph);transform-style:preserve-3d;transform:translateX(-4%)}
+.corte{position:absolute;inset:0;margin:0;transform-style:preserve-3d;--s:0;--o:1;--luz:1;will-change:transform}
+.corte__mitad{position:absolute;inset:0;opacity:var(--o);will-change:transform}
+.corte__mitad img,.corte__mitad canvas,.corte__vivo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--op,50% 50%);display:block}
+.corte__mitad canvas{opacity:0}
+.corte.congelado .corte__mitad canvas{opacity:1}
+.corte__mitad.izq{clip-path:inset(0 50% 0 0 round 14px 0 0 14px);transform-origin:0 50%;transform:translateX(calc(var(--s) * -16%)) rotateY(calc(var(--s) * 74deg))}
+.corte__mitad.der{clip-path:inset(0 0 0 50% round 0 14px 14px 0);transform-origin:100% 50%;transform:translateX(calc(var(--s) * 16%)) rotateY(calc(var(--s) * -74deg))}
+.corte__mitad::after{content:"";position:absolute;inset:0;background:#000;opacity:calc(1 - var(--luz));pointer-events:none}
+.corte__vivo{border-radius:14px;opacity:0;transition:opacity .18s linear;background:#0B0A09}
+.corte.vivo .corte__vivo{opacity:1}
+.corte__filo{position:absolute;top:-3%;bottom:-3%;left:50%;width:2px;margin-left:-1px;background:linear-gradient(180deg,transparent,var(--azafran-2) 18%,#FFF6E0 50%,var(--azafran-2) 82%,transparent);opacity:var(--filo,0);transform:translateZ(2px);pointer-events:none}
+.corte__cap{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fogones__caps{grid-column:1;grid-row:2;align-self:end;display:grid;padding-bottom:clamp(40px,10vh,110px);margin-left:max(0px,calc((100vw - 2 * var(--pad) - var(--w)) / 2));max-width:460px}
+.fogones__cap{grid-area:1/1;opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+.fogones__cap.on{opacity:1;transform:none}
+.fogones__cap h3{font-size:clamp(28px,3.2vw,44px);margin-top:12px}
+.fogones__cap h3 em{font-style:italic;font-weight:400;color:var(--azafran-2)}
+.fogones__cap > p:last-child{margin-top:12px;color:var(--inv-2);font-size:16px}
+.fogones__puntos{grid-column:1;grid-row:3;display:flex;gap:10px;list-style:none;margin:0 0 30px;padding:0;margin-left:max(0px,calc((100vw - 2 * var(--pad) - var(--w)) / 2))}
+.fogones__puntos li{width:26px;height:3px;border-radius:2px;background:rgba(244,236,223,.22);transition:background-color .4s}
+.fogones__puntos li.on{background:var(--azafran)}
+.fogones__hint{position:absolute;right:var(--pad);bottom:28px;font:600 11px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--inv-2);opacity:.75}
+@media (max-width:880px){
+  .fogones{height:calc(var(--n,4) * 80vh + 60vh)}
+  .fogones__stage{grid-template-columns:1fr;grid-template-rows:auto 1fr auto auto;padding-top:calc(var(--banner) + var(--nav) + 10px)}
+  .fogones__head{grid-column:1;grid-row:1;margin-left:0}
+  .fogones__head .h2{font-size:clamp(26px,7.4vw,36px);margin-top:8px}
+  .fogones__escena{--ph:min(46vh,440px);grid-column:1;grid-row:2}
+  .fogones__pila{transform:none}
+  .fogones__caps{grid-column:1;grid-row:3;padding-bottom:10px;margin-left:0;max-width:none;text-align:left}
+  .fogones__cap h3{font-size:clamp(24px,6.8vw,32px);margin-top:6px}
+  .fogones__cap > p:last-child{font-size:15px;margin-top:6px}
+  .fogones__puntos{grid-column:1;grid-row:4;margin:6px 0 22px}
+  .fogones__hint{display:none}
+}
+/* sin JS o con movimiento reducido: rejilla estática con sus pies de foto */
+.no-js .fogones,.rm .fogones{height:auto}
+.no-js .fogones__stage,.rm .fogones__stage{position:relative;height:auto;display:block;padding:clamp(72px,10vw,140px) var(--pad)}
+.no-js .fogones__escena,.rm .fogones__escena{display:block;margin-top:40px}
+.no-js .fogones__pila,.rm .fogones__pila{width:auto;height:auto;transform:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
+.no-js .corte,.rm .corte{position:relative;inset:auto;aspect-ratio:9/16;border-radius:14px;overflow:hidden}
+.no-js .corte__mitad,.rm .corte__mitad{transform:none!important}
+.no-js .corte__cap,.rm .corte__cap{position:absolute;left:12px;right:12px;bottom:12px;width:auto;height:auto;clip:auto;white-space:normal;background:rgba(16,14,12,.8);padding:10px 12px;border-radius:8px;font-size:13px;color:var(--inv-2)}
+.no-js .corte__cap b,.rm .corte__cap b{display:block;color:var(--hueso);font:700 16px/1.2 var(--f-display)}
+.no-js .fogones__caps,.rm .fogones__caps,.no-js .fogones__puntos,.rm .fogones__puntos,.no-js .fogones__hint,.rm .fogones__hint,.no-js .corte__filo,.rm .corte__filo{display:none}
 
 /* ---- reservas (widget por turnos) ---- */
 .rez-sec{background:var(--hueso)}
@@ -392,7 +446,6 @@ button{font:inherit;color:inherit}
   .hero .mitad{opacity:1!important;transform:none!important;animation:none!important}
   .hero__filo{display:none}
   .pilares svg path,.pilares svg circle{stroke-dashoffset:0}
-  .momento{transform:none!important}
   .arroz__pan .anillo{stroke-dashoffset:0}
 }
 .no-js .rv,.no-js .hero .hero__seal,.no-js .hero h1 .l,.no-js .hero__lead,.no-js .hero__cta,.no-js .hero__strip,.no-js .hero__chef,.no-js .hero__cap{opacity:1;transform:none}
@@ -411,10 +464,15 @@ button{font:inherit;color:inherit}
 <body>
 
 <div id="pb-intro" aria-hidden="true">
-  <video id="pb-video" muted playsinline preload="auto"><source src="media/intro.mp4" type="video/mp4"></video>
   <canvas id="pb-canvas"></canvas>
+  <div class="intro__reel">
+    <canvas class="intro__fondo" width="36" height="64"></canvas>
+    <video id="pb-video" class="intro__panel" muted playsinline preload="auto"><source src="media/intro.mp4" type="video/mp4"><source src="media/intro.webm" type="video/webm"></video>
+  </div>
+  <span class="intro__tajo" aria-hidden="true"></span>
   <p class="intro__mark">Patai Beach · Corralejo</p>
   <div class="intro__title"><p>Ariel Patai · maestro paellero</p><h2>Todo empieza <em>con un corte</em></h2></div>
+  <div class="intro__title intro__title--reel"><p>Ariel Patai · maestro paellero</p><h2>Entre fogones, arroz <em>y buena compañía</em></h2></div>
   <button class="intro__skip" type="button">Saltar</button>
   <span class="intro__edge l" aria-hidden="true"></span><span class="intro__edge r" aria-hidden="true"></span>
 </div>
@@ -545,11 +603,10 @@ button{font:inherit;color:inherit}
             </g>
             <path d="M40 80l400 440" stroke="#F4ECDF" stroke-opacity=".12" stroke-width="2"/>
           </svg>
-          <img src="media/chef-cocina.jpg" alt="Ariel Patai cocinando un arroz en la paellera" width="960" height="1200" loading="lazy" onerror="this.remove()">
-          <figcaption>El chef en la paellera · foto por incorporar</figcaption>
+          <img src="media/chef-cocina.jpg" alt="Ariel Patai, con sombrero, sirve una paella en la mesa" width="720" height="900" loading="lazy" onerror="this.remove()">
+          <figcaption>Ariel, sirviendo la paella en la mesa</figcaption>
           </div>
         </figure>
-        <p class="side__nota">Las fotos del chef y de los arroces se incorporan en cuanto las tengamos: los huecos ya están preparados.</p>
       </div>
     </div>
   </div>
@@ -635,33 +692,69 @@ button{font:inherit;color:inherit}
   </div>
 </section>
 
-<section class="sec playa-sec" id="playa" aria-labelledby="t-playa">
-  <div class="wrap">
-    <p class="eyebrow rv">La playa</p>
-    <h2 class="h2 rv d1" id="t-playa">Paella al aire libre, <em>con el Atlántico de fondo</em></h2>
-    <div class="momentos">
-      <figure class="momento cut">
-        <div class="cut__in">
-          <svg viewBox="0 0 480 600" aria-hidden="true"><defs><linearGradient id="p1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E5F63"/><stop offset=".62" stop-color="#143E42"/><stop offset=".62" stop-color="#E7DBC4"/><stop offset="1" stop-color="#D6C6A8"/></linearGradient></defs><rect width="480" height="600" fill="url(#p1)"/><circle cx="150" cy="190" r="92" fill="#E3A233"/><path d="M0 372h480" stroke="#F4ECDF" stroke-opacity=".5" stroke-width="2"/><g fill="none" stroke="#7A3A1B" stroke-width="2.5"><circle cx="300" cy="470" r="110"/><circle cx="300" cy="470" r="84"/><circle cx="300" cy="470" r="56"/><circle cx="300" cy="470" r="26"/></g><path d="M190 470h-40M410 470h40" stroke="#7A3A1B" stroke-width="10" stroke-linecap="round"/></svg>
-          <img src="media/chef-playa.jpg" alt="Ariel Patai cocinando una paella al aire libre, junto al mar" width="960" height="1200" loading="lazy" onerror="this.remove()">
-          <figcaption>El chef, al aire libre</figcaption>
-        </div>
-      </figure>
-      <figure class="momento cut">
-        <div class="cut__in">
-          <svg viewBox="0 0 480 600" aria-hidden="true"><rect width="480" height="600" fill="#E7DBC4"/><rect width="480" height="250" fill="#8FC1CF"/><path d="M0 250h480" stroke="#1E5F63" stroke-opacity=".6" stroke-width="3"/><path d="M-40 300L200 120l240 180z" fill="#F4ECDF"/><path d="M160 340L400 160l240 180z" fill="#F4ECDF" opacity=".92"/><path d="M200 120v380M400 160v340" stroke="#3A332C" stroke-width="5"/><circle cx="90" cy="520" r="34" fill="#3A332C"/><circle cx="300" cy="540" r="34" fill="#3A332C"/></svg>
-          <img src="media/terraza.jpg" alt="La terraza de Patai Beach, con sombrillas frente a la playa" width="960" height="1200" loading="lazy" onerror="this.remove()">
-          <figcaption>La terraza, frente a la playa de La Goleta</figcaption>
-        </div>
-      </figure>
-      <figure class="momento cut">
-        <div class="cut__in">
-          <svg viewBox="0 0 480 600" aria-hidden="true"><rect width="480" height="600" fill="#F4ECDF"/><circle cx="300" cy="360" r="210" fill="#E7DBC4"/><circle cx="300" cy="360" r="196" fill="none" stroke="#D6C6A8" stroke-width="2"/><circle cx="300" cy="360" r="150" fill="#FBF6EC"/><path d="M110 120l70 20-40 62z" fill="#E3A233"/><g fill="none" stroke="#7A3A1B" stroke-width="2" stroke-opacity=".7"><path d="M250 330c30-30 70-30 100 0"/><path d="M240 380c40-24 80-24 120 0"/></g></svg>
-          <img src="media/tapas.jpg" alt="Navajas a la plancha y chipirones fritos con limón" width="960" height="1200" loading="lazy" onerror="this.remove()">
-          <figcaption>Para empezar: navajas y chipirones</figcaption>
-        </div>
-      </figure>
+<section class="fogones dark" id="fogones" aria-labelledby="t-fogones">
+  <div class="fogones__stage">
+    <div class="fogones__head">
+      <p class="eyebrow">En Patai Beach</p>
+      <h2 class="h2" id="t-fogones">Entre fogones, arroz <em>y buena compañía</em></h2>
     </div>
+    <div class="fogones__escena">
+      <div class="fogones__pila" id="pila">
+        <figure class="corte" data-id="mesa" data-video="media/fogones-mesa" style="--op:50% 50%">
+          <div class="corte__mitad izq"><img src="media/fogones-mesa.jpg" alt="Ariel Patai sirve una paella en la mesa, bajo una sombrilla" onerror="this.style.visibility='hidden'"></div>
+          <div class="corte__mitad der"><img src="media/fogones-mesa.jpg" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'"></div>
+          <span class="corte__filo" aria-hidden="true"></span>
+          <figcaption class="corte__cap"><b>La paella, servida en la mesa</b> Ariel la reparte delante de sus invitados.</figcaption>
+        </figure>
+        <figure class="corte" data-id="langosta" data-video="media/fogones-langosta" style="--op:50% 50%">
+          <div class="corte__mitad izq"><img src="media/fogones-langosta.jpg" alt="Paella con langosta y gambas, en primer plano" onerror="this.style.visibility='hidden'"></div>
+          <div class="corte__mitad der"><img src="media/fogones-langosta.jpg" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'"></div>
+          <span class="corte__filo" aria-hidden="true"></span>
+          <figcaption class="corte__cap"><b>Langosta y azafrán</b> El arroz seco de langosta, de cerca.</figcaption>
+        </figure>
+        <figure class="corte" data-id="bogavante" data-opcional style="--op:50% 50%">
+          <div class="corte__mitad izq"><img src="media/arroz-bogavante.jpg" alt="Paellera con arroz de bogavante" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
+          <div class="corte__mitad der"><img src="media/arroz-bogavante.jpg" alt="" aria-hidden="true" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
+          <span class="corte__filo" aria-hidden="true"></span>
+          <figcaption class="corte__cap"><b>Arroz de bogavante</b> Con el bogavante entero sobre el arroz.</figcaption>
+        </figure>
+        <figure class="corte" data-id="jamon" data-video="media/fogones-jamon" style="--op:50% 40%">
+          <div class="corte__mitad izq"><img src="media/fogones-jamon.jpg" alt="Un cortador corta jamón a cuchillo con la playa de fondo" onerror="this.style.visibility='hidden'"></div>
+          <div class="corte__mitad der"><img src="media/fogones-jamon.jpg" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'"></div>
+          <span class="corte__filo" aria-hidden="true"></span>
+          <figcaption class="corte__cap"><b>Jamón cortado a cuchillo</b> Con el mar de fondo.</figcaption>
+        </figure>
+        <figure class="corte" data-id="tapas" data-opcional style="--op:50% 50%">
+          <div class="corte__mitad izq"><img src="media/tapas.jpg" alt="Navajas a la plancha y chipirones fritos con limón" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
+          <div class="corte__mitad der"><img src="media/tapas.jpg" alt="" aria-hidden="true" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
+          <span class="corte__filo" aria-hidden="true"></span>
+          <figcaption class="corte__cap"><b>Navajas y chipirones</b> A la plancha y fritos.</figcaption>
+        </figure>
+        <figure class="corte" data-id="terraza" data-opcional style="--op:50% 50%">
+          <div class="corte__mitad izq"><img src="media/terraza.jpg" alt="La terraza de Patai Beach, con sombrillas" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
+          <div class="corte__mitad der"><img src="media/terraza.jpg" alt="" aria-hidden="true" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
+          <span class="corte__filo" aria-hidden="true"></span>
+          <figcaption class="corte__cap"><b>Bajo las sombrillas</b> Con vistas a la playa.</figcaption>
+        </figure>
+        <figure class="corte" data-id="chef" style="--op:41.6% 50%">
+          <div class="corte__mitad izq"><img src="media/chef.jpg" alt="Ariel Patai con un cuchillo en vertical delante del rostro" onerror="this.style.visibility='hidden'"></div>
+          <div class="corte__mitad der"><img src="media/chef.jpg" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'"></div>
+          <span class="corte__filo" aria-hidden="true"></span>
+          <figcaption class="corte__cap"><b>Ariel Patai</b> Chef cubano, maestro paellero.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="fogones__caps" aria-hidden="true">
+      <div class="fogones__cap" data-para="mesa"><p class="eyebrow">En la mesa</p><h3>La paella, <em>servida en la mesa</em></h3><p>Ariel la reparte delante de sus invitados.</p></div>
+      <div class="fogones__cap" data-para="langosta"><p class="eyebrow">El arroz</p><h3>Langosta <em>y azafrán</em></h3><p>El arroz seco de langosta, de cerca.</p></div>
+      <div class="fogones__cap" data-para="bogavante"><p class="eyebrow">El arroz</p><h3>Arroz <em>de bogavante</em></h3><p>Con el bogavante entero sobre el arroz.</p></div>
+      <div class="fogones__cap" data-para="jamon"><p class="eyebrow">Frente al mar</p><h3>Jamón <em>cortado a cuchillo</em></h3><p>Con el mar de fondo.</p></div>
+      <div class="fogones__cap" data-para="tapas"><p class="eyebrow">Para empezar</p><h3>Navajas <em>y chipirones</em></h3><p>A la plancha y fritos.</p></div>
+      <div class="fogones__cap" data-para="terraza"><p class="eyebrow">La terraza</p><h3>Bajo las <em>sombrillas</em></h3><p>Con vistas a la playa.</p></div>
+      <div class="fogones__cap" data-para="chef"><p class="eyebrow">El chef</p><h3>Ariel <em>Patai</em></h3><p>Chef cubano, maestro paellero.</p></div>
+    </div>
+    <ol class="fogones__puntos" aria-hidden="true"></ol>
+    <p class="fogones__hint" aria-hidden="true">Desliza: cada corte abre el siguiente</p>
   </div>
 </section>
 
@@ -988,15 +1081,38 @@ button{font:inherit;color:inherit}
       ctx.fillStyle = vin; ctx.fillRect(0, 0, W, H);
     }
 
+    /* el vídeo del reel: se abre con un corte tras los cortes de la cebola */
+    var reel = intro.querySelector(".intro__reel"), fondo = intro.querySelector(".intro__fondo"), fctx = fondo.getContext("2d");
+    var tajo = intro.querySelector(".intro__tajo"), tituloReel = intro.querySelector(".intro__title--reel");
+    var videoListo = false, reelAbierto = false, tAbre = 0;
+    video.addEventListener("canplay", function () { videoListo = true; });
+    if (video.readyState >= 3) videoListo = true;
+    function posReel() { var w = intro.clientWidth, h = intro.clientHeight; return w / h > 0.8 ? w * 0.64 : w / 2; }
+    function pintarFondo() { if (terminado) return; try { fctx.drawImage(video, 0, 0, fondo.width, fondo.height); } catch (e) {} requestAnimationFrame(pintarFondo); }
+    function abrirReel(t) {
+      reelAbierto = true; tAbre = t;
+      intro.style.setProperty("--r", posReel().toFixed(1) + "px");
+      tajo.classList.add("on");
+      var pr = video.play();
+      if (pr && pr.catch) pr.catch(function () { reelAbierto = false; reel.classList.remove("abierto"); usaVideo = false; });
+      setTimeout(function () { if (terminado || !reelAbierto) return; void reel.offsetWidth; reel.classList.add("abierto"); marca.classList.add("on"); requestAnimationFrame(pintarFondo); }, 280);
+      setTimeout(function () { if (!terminado && reelAbierto) tituloReel.classList.add("on"); }, 950);
+      video.addEventListener("ended", function () { terminar(false); }, { once: true });
+    }
+
     var ultimoT = 0;
     function ciclo(ahora) {
-      if (terminado || usaVideo) return;
+      if (terminado) return;
       if (!inicio) inicio = ahora;
       var t = (ahora - inicio) / 1000, dt = Math.min(0.05, (ahora - ultimoT) / 1000 || 0.016); ultimoT = ahora;
+      if (reelAbierto && t > tAbre + 1.4) { usaVideo = true; return; }       // el reel ya lo cubre todo: el lienzo descansa
       dibujar(t, dt);
       if (t > 0.9) marca.classList.add("on");
-      if (t > 2.35) titulo.classList.add("on");
-      if (t > 3.55) return terminar(false);
+      if (!reelAbierto && t >= 2.2) {
+        if (videoListo) abrirReel(t);
+        else if (t > 3.55 || video.networkState === 3) return terminar(false);   // sin vídeo: termina la animación original
+      }
+      if (!reelAbierto && t > 2.35) titulo.classList.add("on");
       requestAnimationFrame(ciclo);
     }
     function terminar(inmediato) {
@@ -1004,6 +1120,7 @@ button{font:inherit;color:inherit}
       window.removeEventListener("resize", medir);
       document.documentElement.style.overflow = "";
       entrarHero();
+      try { if (!inmediato) setTimeout(function () { video.pause(); }, 1100); else video.pause(); } catch (e) {}
       if (inmediato) { intro.remove(); return; }
       /* el corte se abre justo en la hoja del cuchillo de la foto del chef */
       var ref = document.querySelector(".hero__foto") || document.querySelector(".hero__chef"), sx = window.innerWidth / 2;
@@ -1015,18 +1132,8 @@ button{font:inherit;color:inherit}
     }
     saltar.addEventListener("click", function () { terminar(true); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") terminar(true); });
-    /* vídeo opcional (media/intro.mp4): si carga en 400 ms, sustituye a la animación */
-    var esperaVideo = setTimeout(function () { esperaVideo = null; }, 400);
-    video.addEventListener("loadeddata", function () {
-      if (!esperaVideo || terminado) return; clearTimeout(esperaVideo); usaVideo = true;
-      lienzo.style.display = "none"; video.style.display = "block";
-      video.play().catch(function () { usaVideo = false; lienzo.style.display = ""; video.style.display = "none"; requestAnimationFrame(ciclo); });
-      video.addEventListener("ended", function () { terminar(false); });
-      setTimeout(function () { terminar(false); }, 12000);
-    });
-    video.addEventListener("error", function () { /* sin vídeo: sigue la animación */ }, true);
     requestAnimationFrame(ciclo);
-    setTimeout(function () { terminar(false); }, 9000);   // red de seguridad
+    setTimeout(function () { terminar(false); }, 12000);   // red de seguridad
   }
 
   /* ---------- la rueda de arroces: el scroll gira la mesa ---------- */
@@ -1060,12 +1167,100 @@ button{font:inherit;color:inherit}
     alRodarR(); posR = curvaR(alvoR); aplicarR();
   }
 
-  /* ---------- tiles de la playa: inclinación 3D que sigue el cursor ---------- */
-  if (pointerFino && !reducido) {
-    document.querySelectorAll(".momento").forEach(function (m) {
-      m.addEventListener("pointermove", function (e) { var r = m.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height; m.style.setProperty("--ry", ((px - 0.5) * 10).toFixed(2) + "deg"); m.style.setProperty("--rx", ((0.5 - py) * 8).toFixed(2) + "deg"); });
-      m.addEventListener("pointerleave", function () { m.style.setProperty("--rx", "0deg"); m.style.setProperty("--ry", "0deg"); });
-    });
+  /* ---------- entre fogones: el scroll abre cada panel por el centro y el siguiente avanza ---------- */
+  var fog = document.querySelector(".fogones");
+  if (fog && !reducido) {
+    var stageF = fog.querySelector(".fogones__stage"), pila = document.getElementById("pila"), ptos = fog.querySelector(".fogones__puntos");
+    var cortesF = [], alvoF = 0, posF = 0, visF = false, correF = false, ultF = 0, idxF = -1;
+    var DPR = Math.min(window.devicePixelRatio || 1, 2);
+    function prepVideo(c) {                                  // capa de vídeo en vivo + dos lienzos para "congelar" el fotograma al cortar
+      if (c._v || !c.dataset.video) return;
+      var v = document.createElement("video"); v.className = "corte__vivo"; v.muted = true; v.setAttribute("muted", ""); v.loop = true; v.playsInline = true; v.setAttribute("playsinline", ""); v.preload = "none"; v.setAttribute("aria-hidden", "true");
+      c.appendChild(v); c._v = v;
+      c.querySelectorAll(".corte__mitad").forEach(function (m) { var cv = document.createElement("canvas"); m.appendChild(cv); });
+    }
+    function cargar(c) {
+      if (!c._v || c._cargado) return; c._cargado = true;
+      c._v.innerHTML = '<source src="' + c.dataset.video + '.mp4" type="video/mp4"><source src="' + c.dataset.video + '.webm" type="video/webm">';
+      c._v.preload = "auto"; c._v.load();
+    }
+    function congelar(c) {
+      var v = c._v; if (!v || v.readyState < 2) return;
+      var w = Math.round(c.offsetWidth * DPR), h = Math.round(c.offsetHeight * DPR);
+      c.querySelectorAll(".corte__mitad canvas").forEach(function (cv) { cv.width = w; cv.height = h; try { cv.getContext("2d").drawImage(v, 0, 0, w, h); } catch (e) {} });
+      c.classList.add("congelado");
+    }
+    function montar() {
+      cortesF = Array.prototype.slice.call(pila.querySelectorAll(".corte"));
+      cortesF.forEach(prepVideo);
+      fog.style.setProperty("--n", cortesF.length);
+      ptos.innerHTML = cortesF.map(function () { return "<li></li>"; }).join("");
+      idxF = -1; alRodarF(); posF = curvaF(alvoF); aplicarF();
+    }
+    window.PB_recontar = montar;
+    var suaveF = function (x) { return x * x * (3 - 2 * x); };
+    function curvaF(p) {
+      var n = cortesF.length; if (n < 2) return 0;
+      var PA = 0.12, DE = (1 - n * PA) / (n - 1);
+      for (var k = 0; k < n - 1; k++) { var ini = PA * (k + 1) + DE * k, fim = ini + DE; if (p < ini) return k; if (p < fim) return k + suaveF((p - ini) / DE); }
+      return n - 1;
+    }
+    function aplicarF() {
+      var idx = Math.round(posF);
+      cortesF.forEach(function (c, i) {
+        var d = i - posF;
+        if (d >= 0) {                                        // en espera, detrás: apilado en profundidad
+          var k = Math.min(d, 3.4);
+          c.style.transform = "translate3d(" + (k * 34).toFixed(1) + "px," + (-k * 16).toFixed(1) + "px," + (-k * 170).toFixed(1) + "px) rotateY(" + (-k * 9).toFixed(2) + "deg)";
+          c.style.setProperty("--s", 0); c.style.setProperty("--filo", 0);
+          c.style.setProperty("--luz", (1 - Math.min(k, 3) * 0.2).toFixed(3));
+          c.style.setProperty("--o", d > 3 ? Math.max(0, 1 - (d - 3) * 2.5).toFixed(3) : 1);
+        } else {                                             // cortado: las dos mitades se abren como puertas desde la hoja
+          var sF = Math.min(1, -d);
+          c.style.transform = "translate3d(0,0," + (sF * 60).toFixed(1) + "px)";
+          c.style.setProperty("--s", sF.toFixed(4));
+          c.style.setProperty("--filo", Math.max(0, 1 - Math.abs(sF - 0.05) * 7).toFixed(3));
+          c.style.setProperty("--luz", 1);
+          c.style.setProperty("--o", Math.max(0, 1 - Math.pow(sF, 2.2)).toFixed(3));
+        }
+        if (c._v) {
+          var frente = Math.abs(d) < 0.035 && visF;
+          if (Math.abs(d) < 1.6) cargar(c);
+          if (frente) {
+            if (c._v.readyState >= 2) { c.classList.add("vivo"); c.classList.remove("congelado"); }
+            if (c._v.paused) { var pr = c._v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+          } else if (!c._v.paused || c.classList.contains("vivo")) {
+            congelar(c); c.classList.remove("vivo"); c._v.pause();
+          }
+        }
+      });
+      if (idx !== idxF && cortesF[idx]) {
+        idxF = idx;
+        var id = cortesF[idx].dataset.id;
+        fog.querySelectorAll(".fogones__cap").forEach(function (k) { k.classList.toggle("on", k.dataset.para === id); });
+        Array.prototype.forEach.call(ptos.children, function (l, i) { l.classList.toggle("on", i === idx); });
+      }
+    }
+    function cicloF(t) {
+      if (!visF) { correF = false; return; }
+      var dt = Math.min(0.05, (t - ultF) / 1000 || 0.016); ultF = t;
+      var destino = curvaF(alvoF); posF += (destino - posF) * Math.min(1, dt * 6.5);
+      if (Math.abs(destino - posF) < 0.0006) posF = destino;
+      aplicarF(); if (posF === destino) { correF = false; return; }
+      requestAnimationFrame(cicloF);
+    }
+    function despertarF() { if (visF && !correF) { correF = true; ultF = performance.now(); requestAnimationFrame(cicloF); } }
+    function alRodarF() { var r = fog.getBoundingClientRect(), total = r.height - stageF.offsetHeight; alvoF = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0; despertarF(); }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var antes = visF; visF = e.isIntersecting;
+        if (visF && !antes) { alRodarF(); posF = curvaF(alvoF); aplicarF(); despertarF(); }
+        if (!visF) cortesF.forEach(function (c) { if (c._v && !c._v.paused) { congelar(c); c.classList.remove("vivo"); c._v.pause(); } });
+      });
+    }, { rootMargin: "10% 0px" }).observe(fog);
+    window.addEventListener("scroll", alRodarF, { passive: true });
+    window.addEventListener("resize", function () { alRodarF(); aplicarF(); });
+    montar();
   }
 
   /* ---------- widget de reservas por turnos ---------- */

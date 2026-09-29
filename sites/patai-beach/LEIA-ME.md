@@ -15,9 +15,14 @@ Restaurante de arroces do chef cubano Ariel Patai, na praia de La Goleta. Análi
 
 ## Assinatura visual: "El corte"
 
-A web abre com **a faca a cortar a cebola** (animação procedimental em canvas, ~3,5 s, uma vez por sessão): tábua escura, luz quente, cinco cortes com rodelas a separarem-se e partículas, raios e chispas de luz ("los efectos surgen"), os anéis da cebola transformam-se nos anéis da paellera, e o ecrã **abre-se na vertical, exatamente na linha da lâmina** da foto do chef (`media/chef.jpg`: o chef de preto com a faca à frente do rosto); ao mesmo tempo as duas metades da foto deslizam e encaixam na lâmina, e um destello dourado percorre o filo. Se a foto faltar, fica uma silhueta em SVG. O mesmo corte diagonal revela as fotografias ao longo da página (`.cut`), os anéis das paelleras desenham-se ao aparecer, e o texto entra em coreografia. Se existir `media/intro.mp4`, o vídeo substitui a animação. Com movimento reduzido ou sem JS: sem intro, tudo visível. Tecla Esc ou "Saltar" fecham o intro.
+Tudo o que se revela no site revela-se **por um corte vertical, como a lâmina da faca**:
 
-Design system (ui-ux-pro-max pediu "Kinetic Brutalism" + Playfair/Karla — rejeitado: brutalismo não é um restaurante premium de praia e a Playfair já foi usada): mantido só o **preto premium + acento dourado**; paleta própria tinta `#100E0C` · hueso `#F4ECDF` · azafrán `#E3A233` · pimentón `#B8432A` · socarrat `#7A3A1B` · atlántico `#1E5F63`; tipos **Rufina** (display) + **Figtree** (texto).
+1. **Abertura (uma vez por sessão, ~8 s, "Saltar"/Esc):** faca a cortar a cebola em canvas (tábua escura, luz quente, partículas) → uma linha dourada corta o ecrã e **abre o vídeo do cliente** num painel vertical com o fundo desfocado do próprio vídeo (o chef a servir a paella → langosta em grande plano), com o título "Entre fogones, arroz y buena compañía" → no fim, o ecrã abre-se **na linha da lâmina da foto do chef** e o herói aparece com as duas metades da cara a encaixar. Se o vídeo não carregar a tempo, a animação da cebola termina sozinha como antes.
+2. **Herói:** foto do chef de preto com a faca à frente do rosto (`media/chef.jpg`), partida na lâmina; vídeo `media/hero.mp4` opcional por cima.
+3. **"Entre fogones, arroz y buena compañía" (secção 3D comandada pelo scroll):** painéis verticais empilhados em profundidade; cada scroll **corta o painel da frente ao meio** — as duas metades abrem-se como portas para trás, com um brilho no fio — e o seguinte avança. Os painéis de vídeo tocam só quando estão à frente e o fotograma fica congelado nas metades durante o corte. Termina no retrato do chef, com a lâmina exatamente no centro. Painéis de foto opcionais (`arroz-bogavante.jpg`, `tapas.jpg`, `terraza.jpg`) entram sozinhos quando o ficheiro existe.
+4. Mesa giratória 3D das paelleras (langosta já com foto real), cortes diagonais nas fotografias, paelleras SVG que se desenham.
+
+Com movimento reduzido ou sem JS: sem abertura, a secção 3D vira uma grelha estática com legendas, tudo visível.
 
 ## Widget de reservas por turnos (decisão do Tomás: sem Cal.com)
 
