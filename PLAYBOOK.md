@@ -107,7 +107,7 @@ publish = "."
 for = "/*"
 [headers.values]
 X-Content-Type-Options = "nosniff"
-Referrer-Policy = "strict-origin-when-crossorigin"
+Referrer-Policy = "strict-origin-when-cross-origin"
 TOML
 for f in NOME1 NOME2 NOME3; do
 python3 -c "

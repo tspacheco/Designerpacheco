@@ -23,6 +23,10 @@ nav = ler(SRC / "nav.html")
 footer = ler(SRC / "footer.html")
 intro = ler(SRC / "intro.html")
 bolta = ler(SRC / "bolta.js")
+# o vídeo de entrada (Higgsfield) só entra se o ficheiro existir: sem ele, nenhum pedido 404
+tem_intro = (RAIZ / "media" / "intro.mp4").exists() or (RAIZ / "media" / "intro.webm").exists()
+if not tem_intro:
+    print("nota: media/intro.mp4 em falta — o index sai sem o vídeo de entrada.")
 three_path = RAIZ / "ferramentas" / "three.min.js"
 three = ler(three_path).replace("</script>", "<\\/script>") if three_path.exists() else ""
 if not three:
@@ -38,7 +42,7 @@ for pagina in sorted((SRC / "pages").glob("*.html")):
     nav_p = re.sub(r'href="(%s)\.html"' % atual, r'href="\1.html" aria-current="page"', nav)
     html = html.replace("<!--@head-->", head).replace("<!--@nav-->", nav_p).replace("<!--@footer-->", footer)
     if atual == "index":
-        html = html.replace("<!--@intro-->", intro)
+        html = html.replace("<!--@intro-->", intro if tem_intro else "")
         bloco = (f"<script>\n{three}\n</script>\n" if three else "") + f"<script>\n{bolta}\n</script>"
         html = html.replace("<!--@bolta-->", bloco)
     html = html.replace("<!--@scripts-->", scripts)

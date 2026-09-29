@@ -37,7 +37,7 @@ As legendas ficam em baixo à esquerda, com os textos do istoric do cliente. O n
 
 ## Intro em vídeo (só na primeira entrada)
 
-`src/intro.html` mostra `media/intro.mp4` (+ `media/intro.webm`) em ecrã inteiro **uma vez por sessão**, só no index, e funde para o herói — que é a mesma fotografia em que o vídeo acaba. Sem o ficheiro, o intro não aparece (guarda de 2,5 s). O vídeo tem `preload="none"` e só começa a descarregar na primeira entrada. Os ficheiros vêm do Higgsfield (ver `sites/carmangeria-boierilor/intro/LEIA-ME.md` para os comandos ffmpeg). Não usar em transições entre páginas.
+`src/intro.html` mostra `media/intro.mp4` (+ `media/intro.webm`) em ecrã inteiro **uma vez por sessão**, só no index, e funde para o herói — que é a mesma fotografia em que o vídeo acaba. Sem o ficheiro, o build deixa o intro de fora e o site abre direto no herói, sem pedidos em falta. Para o ativar: pôr `media/intro.mp4` (+ `intro.webm`) e voltar a correr o build. O vídeo tem `preload="none"` e só começa a descarregar na primeira entrada. Os ficheiros vêm do Higgsfield (ver `sites/carmangeria-boierilor/intro/LEIA-ME.md` para os comandos ffmpeg). Não usar em transições entre páginas.
 
 ## Dados reais (do site atual) e o que está "de confirmat"
 
@@ -46,7 +46,7 @@ De confirmat: denumire firmă/CUI/Reg. Com. (rodapé), preços (não há nenhum 
 
 ## Publicar
 
-- **Netlify:** arrastar a pasta `sites/bolta-rece/` (ou um zip com `*.html`, `media/`, `netlify.toml`). O formulário de reserva funciona lá (Netlify Forms, `data-netlify`); noutro alojamento, ligar o `action` a um serviço de formulários ou deixar só o telefone.
+- **Netlify:** arrastar `dist/bolta-rece-netlify.zip` (as 6 páginas, `netlify.toml` e só as fotos que as páginas usam, com `media/LEIA-ME.txt`). Para voltar a gerá-lo: build e depois o zip com os mesmos ficheiros. O formulário de reserva funciona lá (Netlify Forms, `data-netlify`); noutro alojamento, ligar o `action` a um serviço de formulários ou deixar só o telefone.
 - **Hostinger:** o mesmo, sem `netlify.toml`, em `public_html`.
 - Na venda: retirar o `.banner` de `src/nav.html`, preencher os dados da firma no `src/footer.html`, voltar a correr o build.
 
