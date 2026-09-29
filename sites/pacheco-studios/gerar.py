@@ -13,7 +13,8 @@ Escreve em dist/ (não vai para o git):
   404.html · en/404.html · ro/404.html            404 em cada língua
   privacidade.html · privacy.html · confidentialitate.html
   _redirects (QR /c primeiro, ro.pachecost.com → /ro/) · _headers · netlify.toml · robots.txt · sitemap.xml
-  media/og-{pt,en,ro}.png · p/<slug>/ (clientes sem site publicado: index.html romeno, pt.html, en.html)
+  media/og-{pt,en,ro}.png · media/intro-{1,2,3}.webp (os três carros da intro) · p/<slug>/ (clientes sem site
+  publicado: index.html romeno, pt.html, en.html)
   ../pacheco-studios-netlify.zip   tudo isto, pronto a arrastar para o projeto Netlify do pachecost.com
 Copia ainda as páginas e os ficheiros do Netlify para esta pasta (para o git ter sempre a versão atual).
 Depois corre verificar.cjs, que serve dist/ como o Netlify serviria os dois domínios (lê o _redirects).
@@ -500,6 +501,60 @@ def contacto(c, d, wa, tel_legivel, digitos, com_site):
 </section>"""
 
 
+def intro(c):
+    """Ecrã de arranque: um carro passa pelos dois portais (web design + marketing, IA) e sai transformado. Só o
+    JavaScript o mostra (uma vez por sessão, nunca com movimento reduzido); sem ele fica em display:none. As três
+    fotografias (media/intro-{1,2,3}.webp) são postas pelo JavaScript quando carregam; o texto vem de «intro»."""
+    t = c["intro"]
+    slogan = re.sub(r"\*(.+?)\*", r"<em>\1</em>", e(" ".join(c["og"]["slogan"])))
+    legendas = "\n".join(f'      <p id="intro-l{i + 1}"{" class=" + chr(34) + "ativa" + chr(34) if i == 0 else ""}><b>0{i + 1}</b><span>{e(x)}</span></p>'
+                         for i, x in enumerate(t["legendas"]))
+    portal = ('<g id="intro-p{n}"><rect class="aura" x="-12" y="0" width="24" height="250" fill="url(#intro-brilho)" opacity=".35"/>'
+              '<line class="fio" x1="0" y1="4" x2="0" y2="246" stroke="#E8622C" stroke-width="2.5"/>'
+              '<line x1="-10" y1="4" x2="10" y2="4" stroke="#E8622C" stroke-width="2.5" stroke-linecap="round"/></g>')
+    carro = ('<g clip-path="url(#intro-z{z})"><g id="intro-c{z}"><ellipse cx="0" cy="3" rx="0" ry="8" fill="url(#intro-sombra)"/>'
+             '<image x="0" y="0" width="0" height="0"/></g></g>')
+    marca = '<p class="marca"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</p>'
+    return f'''<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="{e(t["rotulo"])}">
+  <div class="intro-topo">
+    {marca}
+    <button class="intro-saltar" type="button" id="intro-saltar">{e(t["saltar"])}</button>
+  </div>
+  <div class="intro-palco">
+    <div class="intro-cena">
+      <p class="intro-rot" id="intro-rot1">{e(t["p1"])}</p>
+      <p class="intro-rot" id="intro-rot2">{e(t["p2"])}</p>
+      <svg viewBox="0 0 560 300" role="img" aria-labelledby="intro-cena-t">
+        <title id="intro-cena-t">{e(t["descricao"])}</title>
+        <defs>
+          <clipPath id="intro-zA" clipPathUnits="userSpaceOnUse"><rect id="intro-rA" x="-1000" y="-50" width="1600" height="400"/></clipPath>
+          <clipPath id="intro-zB" clipPathUnits="userSpaceOnUse"><rect id="intro-rB" x="600" y="-50" width="0" height="400"/></clipPath>
+          <clipPath id="intro-zC" clipPathUnits="userSpaceOnUse"><rect id="intro-rC" x="1600" y="-50" width="4000" height="400"/></clipPath>
+          <linearGradient id="intro-brilho" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#E8622C" stop-opacity="0"/><stop offset=".5" stop-color="#E8622C" stop-opacity=".55"/><stop offset="1" stop-color="#E8622C" stop-opacity="0"/></linearGradient>
+          <radialGradient id="intro-sombra"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+        </defs>
+        <line x1="-1500" y1="240" x2="2500" y2="240" stroke="rgba(239,234,227,.45)" stroke-width="1.5"/>
+        <line id="intro-tracos" x1="-1500" y1="262" x2="2500" y2="262" stroke="rgba(239,234,227,.2)" stroke-width="3" stroke-dasharray="22 26"/>
+        <g id="intro-riscos" stroke="#E8622C" stroke-linecap="round" opacity="0"></g>
+        {carro.format(z="A")}
+        {carro.format(z="B")}
+        {carro.format(z="C")}
+        {portal.format(n=1)}
+        {portal.format(n=2)}
+      </svg>
+    </div>
+    <div class="intro-legenda">
+{legendas}
+    </div>
+  </div>
+  <div class="intro-pe"></div>
+  <div class="intro-final" aria-hidden="true">
+    {marca}
+    <p class="intro-slogan">{slogan}</p>
+  </div>
+</div>'''
+
+
 def rodape(c, lang):
     r = c["rodape"]
     return f"""<footer class="rodape">
@@ -779,7 +834,7 @@ def main():
             "TAB_SERVICII": e(c["topo"]["tabs"]["servicii"]),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones), "VISTA_SERVICII": vista_servicii(c, portfolio, lang),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "RODAPE": rodape(c, lang),
+            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "RODAPE": rodape(c, lang), "INTRO": intro(c),
             "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
             "CONSENT_ROTULO": e(k["rotulo"]), "CONSENT_TEXTO": e(k["texto"]), "CONSENT_SIM": e(k["sim"]),
             "CONSENT_NAO": e(k["nao"]), "CONSENT_LINK": e(k["link"]), "URL_PRIVACIDADE": e(cfg["privacidade"]),
@@ -849,6 +904,12 @@ def main():
     n = copiar_sites(portfolio, linguas)
     for lang, c in linguas.items():
         og_png(fontes, c["og"], os.path.join(DIST, "media", f"og-{lang}.png"))
+    # os três carros da intro (fotografias recortadas, frente à direita, WebP com transparência)
+    for i in (1, 2, 3):
+        carro = os.path.join(AQUI, "media", f"intro-{i}.webp")
+        if not os.path.exists(carro):
+            raise SystemExit(f"falta media/intro-{i}.webp (os três carros da intro: ver LEIA-ME.md)")
+        shutil.copy(carro, os.path.join(DIST, "media", f"intro-{i}.webp"))
 
     # cópia para o git (e para abrir na app): tudo menos as cópias dos sites e os media
     antiga_pt = os.path.join(AQUI, "pt")

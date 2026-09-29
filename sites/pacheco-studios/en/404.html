@@ -364,6 +364,43 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 body.rgpd-aberto .barra{display:none}
 @media (min-width:40rem){.rgpd{grid-template-columns:1fr auto;align-items:center}}
 
+/* ═══ intro: o ecrã de arranque. Só o JavaScript a mostra (html.intro-vai: 1.ª vez em cada sessão, nunca com movimento
+   reduzido; ver o script no <head>); sem ele não existe. O carro passa pelos dois portais e sai transformado; no fim
+   aparece a marca e o ecrã sobe para mostrar o site. ═══ */
+.intro{display:none;position:fixed;inset:0;z-index:60;grid-template-rows:auto 1fr auto;background:var(--carvao);overflow:hidden;
+  transition:transform .55s cubic-bezier(.7,0,.2,1);cursor:pointer}
+html.intro-vai{overflow:hidden}
+html.intro-vai .intro{display:grid}
+.intro.sobe{transform:translateY(-100%)}
+.intro-topo{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:calc(.9rem + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right)) 0 max(var(--gutter),env(safe-area-inset-left));
+  font:700 .8125rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase}
+.intro-saltar{min-height:2.75rem;padding:.55rem 1rem;border-radius:999px;border:2px solid rgba(239,234,227,.5);background:transparent;
+  cursor:pointer;font:700 .75rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso)}
+/* o palco nunca é mais alto do que metade do ecrã (largura × 300/560); em ecrãs altos pode ser maior */
+.intro-palco{align-self:center;width:min(100%,70rem,85vh);margin-inline:auto;padding-inline:var(--gutter);transition:opacity .35s}
+@media (min-width:48rem) and (min-height:40rem){.intro-palco{width:min(100%,70rem,110vh)}}
+.intro-cena{position:relative;padding-top:2.75rem}
+/* o svg deixa ver o que sai do palco: a estrada atravessa o ecrã, o carro entra e sai pelas bordas do ecrã */
+.intro-cena svg{display:block;width:100%;height:auto;overflow:visible}
+/* os rótulos dos portais ficam por cima do palco; o JavaScript põe-lhes o left conforme o portal anda */
+.intro-rot{position:absolute;bottom:calc(100% - 2.5rem);left:200%;transform:translateX(-50%);width:max-content;max-width:9.5rem;text-align:center;
+  font:700 .75rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso);transition:color .2s;pointer-events:none;text-wrap:balance}
+.intro-rot.ativo{color:var(--laranja)}
+.intro-legenda{position:relative;min-height:4.5rem;margin-top:1.25rem;text-align:center}
+.intro-legenda p{position:absolute;inset:0;opacity:0;transform:translateY(.4rem);transition:opacity .18s,transform .18s}
+.intro-legenda p.ativa{opacity:1;transform:none;transition-delay:.16s}
+.intro-legenda b{display:block;font:700 .75rem/1 var(--mono);letter-spacing:.3em;color:var(--laranja)}
+.intro-legenda span{display:block;margin-top:.55rem;font:600 clamp(1.15rem,3.4vw,1.6rem)/1.25 var(--texto)}
+.intro-pe{height:calc(2rem + env(safe-area-inset-bottom,0px))}
+.intro-final{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:1.1rem;padding:1rem;text-align:center;
+  opacity:0;transition:opacity .4s;pointer-events:none;font:700 .8125rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase}
+.intro-slogan{max-width:12ch;font:400 clamp(2rem,8vw,4.5rem)/.98 var(--display);letter-spacing:0;text-wrap:balance}
+.intro-slogan em{font-style:normal;color:var(--laranja)}
+.intro.fim .intro-palco{opacity:0}
+.intro.fim .intro-final{opacity:1}
+@media (prefers-reduced-motion:reduce){.intro{display:none!important}}
+
 /* ═══ movimento (desligado em prefers-reduced-motion) ═══ */
 .js .rv{opacity:0;transform:translateY(.9rem);transition:opacity .6s var(--sair),transform .6s var(--sair);transition-delay:calc(var(--i,0) * 45ms)}
 .js .rv.vis{opacity:1;transform:none}

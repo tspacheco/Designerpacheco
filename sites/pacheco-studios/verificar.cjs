@@ -10,6 +10,8 @@
 //     cópia da Toda Chic com «voltar» em cada língua, 404 em cada língua, privacidade, barra fixa, faixa de cookies.
 //  4. Esquemas: «Ver o esquema» abre cada um dos 8 num cartão no meio do ecrã (Esc, X e tocar fora fecham), o
 //     endereço #esquema-… abre-o direto, e sem JavaScript mostra-o na mesma.
+//  5. Intro: na 1.ª visita da sessão o carro passa pelos dois portais com as três fotografias e o ecrã sobe; um toque
+//     ou Esc saltam-na; ao recarregar, com movimento reduzido ou sem JavaScript não aparece.
 const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
@@ -65,8 +67,10 @@ const fs = require('fs');
   const mal = m => { falhas++; console.log('  ✗ ' + m); };
   const bem = m => console.log('  ✓ ' + m);
   // consent: 'nao' = já respondeu (faixa escondida), null = primeira visita
-  async function contexto(opcoes = {}, consent = 'nao') {
+  // intro: false = a sessão já a viu (não aparece); true = primeira visita, aparece
+  async function contexto(opcoes = {}, consent = 'nao', intro = false) {
     const ctx = await browser.newContext({ deviceScaleFactor: 1, ...opcoes });
+    if (!intro) await ctx.addInitScript(() => { try { sessionStorage.setItem('ps-intro', '1'); } catch (e) {} });
     await ctx.route('**/*', async rota => {
       const u = new URL(rota.request().url());
       if (u.host !== 'pachecost.com' && u.host !== 'ro.pachecost.com') return rota.abort(); // Google Fonts, GoatCounter, Meta, wa.me
@@ -457,13 +461,81 @@ const fs = require('fs');
     await c.close();
   }
 
-  // ——— 6. sem JavaScript: os separadores e os esquemas continuam a funcionar (:target) ———
+  // ——— 6. intro: 1.ª vez na sessão, com as três fotografias; salta com um toque ou Esc; nunca com movimento reduzido ———
+  console.log('\nINTRO');
+  for (const n of [1, 2, 3]) {
+    const r = responder(PT + '/media/intro-' + n + '.webp');
+    if (r.status !== 200 || r.headers['content-type'] !== 'image/webp') mal(`/media/intro-${n}.webp: ${r.status}`);
+  }
+  const conteudo = k => JSON.parse(fs.readFileSync(path.join(__dirname, 'conteudo', k + '.json'), 'utf8'));
+  for (const [k, v] of Object.entries(LINGUAS)) {
+    for (const largura of (k === 'pt' ? [390, 1280] : [390])) {
+      const c = await contexto({ viewport: { width: largura, height: largura === 390 ? 844 : 720 } }, 'nao', true);
+      const q = await c.newPage();
+      const erros = []; q.on('pageerror', e => erros.push(e.message));
+      const t0 = Date.now();
+      await q.goto(v.url);
+      const i = conteudo(k).intro, esperados = [i.saltar, i.p1, i.p2, ...i.legendas];
+      const antes = await q.evaluate(() => ({ vai: document.documentElement.classList.contains('intro-vai'),
+        mostra: getComputedStyle(document.getElementById('intro')).display === 'grid', guardado: sessionStorage.getItem('ps-intro'),
+        inerte: [...document.body.children].filter(el => el.id !== 'intro' && el.tagName !== 'SCRIPT').every(el => el.hasAttribute('inert')),
+        textos: [...document.querySelectorAll('#intro-rot1, #intro-rot2, .intro-legenda span, #intro-saltar')].map(e => e.textContent.trim()),
+        slogan: document.querySelector('.intro-slogan').textContent.trim() }));
+      avaliar(await q.evaluate(medir, '#intro'), `${k} ${largura}px: intro`);
+      await q.waitForTimeout(1200);
+      // a meio: as três fotografias já no palco, e o palco todo dentro do ecrã
+      const meio = await q.evaluate(() => {
+        const caixa = document.querySelector('.intro-palco').getBoundingClientRect();
+        return { fotos: [...document.querySelectorAll('#intro image')].map(x => x.getAttribute('href')),
+          dentro: caixa.top >= 0 && caixa.bottom <= innerHeight && caixa.left >= 0 && caixa.right <= innerWidth };
+      });
+      await q.waitForFunction(() => !document.documentElement.classList.contains('intro-vai'), null, { timeout: 8000 });
+      const durou = Date.now() - t0;
+      const depois = await q.evaluate(() => ({ inerte: document.querySelector('main').hasAttribute('inert'),
+        escondida: getComputedStyle(document.getElementById('intro')).display === 'none', legenda: document.querySelector('.intro-legenda p.ativa').id }));
+      await q.reload();
+      const segunda = await q.evaluate(() => getComputedStyle(document.getElementById('intro')).display);
+      const slogan = conteudo(k).og.slogan.join(' ').replace(/\*/g, '');
+      const fotos = meio.fotos.join() === '/media/intro-1.webp,/media/intro-2.webp,/media/intro-3.webp';
+      if (!antes.vai || !antes.mostra || antes.guardado !== '1' || !antes.inerte || antes.textos.join('|') !== esperados.join('|') || antes.slogan !== slogan
+          || !fotos || !meio.dentro || durou < 4000 || depois.inerte || !depois.escondida || depois.legenda !== 'intro-l3' || segunda !== 'none' || erros.length)
+        mal(`${k} ${largura}px, intro: ${JSON.stringify({ antes, meio, durou, depois, segunda, erros })}`);
+      else bem(`${k} ${largura}px: intro na 1.ª visita (${(durou / 1000).toFixed(1)} s, 3 fotografias, textos certos, página inerte), sobe no fim e não volta ao recarregar`);
+      await c.close();
+    }
+  }
+  for (const modo of ['toque', 'Esc']) {
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    const q = await c.newPage();
+    await q.goto(LINGUAS.pt.url);
+    const t0 = Date.now();
+    if (modo === 'toque') await q.click('#intro-saltar'); else await q.keyboard.press('Escape');
+    await q.waitForFunction(() => !document.documentElement.classList.contains('intro-vai'), null, { timeout: 3000 });
+    const r = await q.evaluate(() => ({ inerte: document.querySelector('main').hasAttribute('inert'), guardado: sessionStorage.getItem('ps-intro'),
+      escondida: getComputedStyle(document.getElementById('intro')).display === 'none' }));
+    const durou = Date.now() - t0;
+    if (r.inerte || r.guardado !== '1' || !r.escondida || durou > 1500) mal(`intro, ${modo}: ${JSON.stringify(r)} em ${durou} ms`);
+    else bem(`intro: ${modo === 'toque' ? 'o botão «Saltar»' : 'a tecla Esc'} salta-a em ${durou} ms e a página volta a estar ativa`);
+    await c.close();
+  }
+  {
+    const c = await contexto({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' }, 'nao', true);
+    const q = await c.newPage();
+    await q.goto(LINGUAS.ro.url);
+    const r = await q.evaluate(() => ({ vai: document.documentElement.classList.contains('intro-vai'), mostra: getComputedStyle(document.getElementById('intro')).display,
+      inerte: document.querySelector('main').hasAttribute('inert'), guardado: sessionStorage.getItem('ps-intro') }));
+    if (r.vai || r.mostra !== 'none' || r.inerte || r.guardado) mal(`intro com movimento reduzido: ${JSON.stringify(r)}`);
+    else bem('intro: com movimento reduzido não aparece e a página abre direta');
+    await c.close();
+  }
+
+  // ——— 7. sem JavaScript: os separadores e os esquemas continuam a funcionar (:target) ———
   // movimento reduzido: sem o scroll suave, o Playwright não toca a meio do deslizar
-  const ctx2 = await contexto({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false, reducedMotion: 'reduce' });
+  const ctx2 = await contexto({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false, reducedMotion: 'reduce' }, 'nao', true);
   const p2 = await ctx2.newPage();
   await p2.goto(LINGUAS.pt.url + '#servicii');
-  const semJs = await p2.evaluate(() => [getComputedStyle(document.getElementById('servicii')).display, getComputedStyle(document.getElementById('proiecte')).display, document.getElementById('rgpd').hidden]);
-  if (semJs[0] === 'none' || semJs[1] !== 'none' || !semJs[2]) mal('sem JavaScript: vistas ou faixa de cookies erradas'); else bem('sem JavaScript: separadores funcionam (:target) e a faixa de cookies não aparece');
+  const semJs = await p2.evaluate(() => [getComputedStyle(document.getElementById('servicii')).display, getComputedStyle(document.getElementById('proiecte')).display, document.getElementById('rgpd').hidden, getComputedStyle(document.getElementById('intro')).display]);
+  if (semJs[0] === 'none' || semJs[1] !== 'none' || !semJs[2] || semJs[3] !== 'none') mal('sem JavaScript: vistas, faixa de cookies ou intro erradas'); else bem('sem JavaScript: separadores funcionam (:target), a faixa de cookies e a intro não aparecem');
   // o esquema: abre-se a automação (<details> nativo), «Ver o esquema» mostra o cartão e o X volta à automação
   await p2.goto(LINGUAS.pt.url + '#automatizari');
   await p2.click('#a-lead summary');

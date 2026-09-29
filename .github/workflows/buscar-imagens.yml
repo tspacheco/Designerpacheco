@@ -72,7 +72,7 @@ jobs:
         run: |
           git config user.name "buscar-imagens"
           git config user.email "buscar-imagens@users.noreply.github.com"
-          git add -f sites/pacheco-studios/media/intro-candidatos
+          git add -f sites/pacheco-studios/media/intro-candidatos 2>/dev/null || true
           if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
           git commit -q -m "Ficheiros recebidos por buscar-imagens" -m "Claude-Session: https://claude.ai/code/session_01F3dGrYNZMdXGq7r8GVtcmV"
           git push origin "HEAD:${GITHUB_REF_NAME}"

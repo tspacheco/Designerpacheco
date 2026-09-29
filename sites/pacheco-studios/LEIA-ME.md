@@ -11,6 +11,13 @@ Um só site, um só projeto no Netlify, dois domínios:
 No topo de cada página há o seletor **PT · EN · RO**. O RO leva a `ro.pachecost.com`; o PT e o EN ficam em
 `pachecost.com`. Os três têm as mesmas três vistas e o contacto no fim:
 
+Na primeira visita de cada sessão, antes do site, corre a **intro** (4 s): um compacto entra, passa pelo portal «Web
+design + marketing» e sai muscle car, passa pelo portal «Implementação de IA» e sai superdesportivo; arranca, aparece a
+marca com o slogan e o ecrã sobe para mostrar o site. Um toque, o botão «Saltar» ou Esc saltam-na. Não aparece ao
+recarregar, com o movimento reduzido ligado no telemóvel nem sem JavaScript; se as fotografias demorarem mais de 1,5 s,
+o site abre sem ela. As fotografias (`media/intro-{1,2,3}.webp`, geradas, sem marcas registadas) só existem na intro:
+nunca no corpo do site. Para as trocar: `intro-prompts.md`.
+
 1. **Sites** (EN «Websites», RO «Site-uri») — não mostra quantos trabalhos temos nem pede «o teu negócio»
    (decisão do Tomás, 29/09): passa responsabilidade e conhecimento de mercado, como as automações.
    - **Em destaque:** Jasmim 2, HANAM e Toda Chic, com a fonte e as cores de cada site.
@@ -21,6 +28,8 @@ No topo de cada página há o seletor **PT · EN · RO**. O RO leva a `ro.pachec
    - **O que fica ao nosso cuidado:** seis compromissos que já cumprimos em todos os sites: dados verdadeiros, abre
      depressa, Google, leitura para toda a gente, a lei e a manutenção.
    - **Como trabalhamos:** fazemos o site antes de pagares, mostramos no telemóvel, só pagas se gostares.
+   - **Mais sites que fizemos:** no fim, os outros sites ativos numa grelha simples, só para mostrar mais variações;
+     sem quadrado «O teu negócio?».
 
    Os sites dos clientes abrem num separador novo. A Toda Chic ainda não tem loja publicada: abre a cópia em
    `/p/toda-chic/` (uma página por língua), com o botão fixo de voltar na língua certa. As apresentações a negócios
@@ -55,6 +64,10 @@ Sem preços: combinam-se com cada negócio.
   espera antes do passo; `ramuri` faz a decisão e os ramos). Os ícones estão em `conteudo/esquemas.json`, um por
   passo e um por ramo, iguais nas três línguas. Os desenhos dos ícones estão em `ICONES_ESQUEMA`, no `gerar.py`. Se
   faltar um ícone, o gerador para e diz qual.
+- Intro: os textos estão em `intro` nos três JSON (rótulos dos portais, as três legendas, «Saltar» e a descrição para
+  leitores de ecrã); o slogan do fim é o de `og`. As fotografias são `media/intro-{1,2,3}.webp` (o JavaScript mede cada
+  uma ao carregar; só o comprimento no palco está fixo em `CARROS`, no `index.src.html`, com os tempos em `T`). Como
+  gerar outras: `intro-prompts.md`.
 - Contactos, domínios e medição: `marca/dados.json` (os mesmos do cartão). `medicao` tem o GoatCounter e o pixel da
   Meta do site anterior; o pixel só existe nas línguas de `pixel_linguas` (PT e EN).
 - Desenho: `index.src.html`. As páginas (`index.html`, `en/`, `ro/`, 404, privacidade) e os ficheiros do Netlify
@@ -131,5 +144,8 @@ avisa.
   «Combina com» abre a automação. A Toda Chic tem de voltar à página certa. Os testes de leitura abrem todos os
   cartões antes de medir.
 - A 404 e a privacidade em cada língua, e a barra fixa do WhatsApp.
+- A intro, nas 3 línguas: na 1.ª visita da sessão aparece com as três fotografias e os textos certos, a página por
+  baixo fica inerte, sobe no fim (≈ 4 s) e não volta ao recarregar; «Saltar» e Esc saltam-na; com movimento reduzido ou
+  sem JavaScript não aparece. Letra, contraste e alvos de toque também dentro dela.
 - A faixa de cookies: aparece só em pachecost.com, «Só o essencial» nunca carrega o pixel e «Aceitar» carrega-o.
   Nos dois casos a escolha fica guardada.

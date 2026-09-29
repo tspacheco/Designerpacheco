@@ -390,6 +390,43 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 body.rgpd-aberto .barra{display:none}
 @media (min-width:40rem){.rgpd{grid-template-columns:1fr auto;align-items:center}}
 
+/* ═══ intro: o ecrã de arranque. Só o JavaScript a mostra (html.intro-vai: 1.ª vez em cada sessão, nunca com movimento
+   reduzido; ver o script no <head>); sem ele não existe. O carro passa pelos dois portais e sai transformado; no fim
+   aparece a marca e o ecrã sobe para mostrar o site. ═══ */
+.intro{display:none;position:fixed;inset:0;z-index:60;grid-template-rows:auto 1fr auto;background:var(--carvao);overflow:hidden;
+  transition:transform .55s cubic-bezier(.7,0,.2,1);cursor:pointer}
+html.intro-vai{overflow:hidden}
+html.intro-vai .intro{display:grid}
+.intro.sobe{transform:translateY(-100%)}
+.intro-topo{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:calc(.9rem + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right)) 0 max(var(--gutter),env(safe-area-inset-left));
+  font:700 .8125rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase}
+.intro-saltar{min-height:2.75rem;padding:.55rem 1rem;border-radius:999px;border:2px solid rgba(239,234,227,.5);background:transparent;
+  cursor:pointer;font:700 .75rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso)}
+/* o palco nunca é mais alto do que metade do ecrã (largura × 300/560); em ecrãs altos pode ser maior */
+.intro-palco{align-self:center;width:min(100%,70rem,85vh);margin-inline:auto;padding-inline:var(--gutter);transition:opacity .35s}
+@media (min-width:48rem) and (min-height:40rem){.intro-palco{width:min(100%,70rem,110vh)}}
+.intro-cena{position:relative;padding-top:2.75rem}
+/* o svg deixa ver o que sai do palco: a estrada atravessa o ecrã, o carro entra e sai pelas bordas do ecrã */
+.intro-cena svg{display:block;width:100%;height:auto;overflow:visible}
+/* os rótulos dos portais ficam por cima do palco; o JavaScript põe-lhes o left conforme o portal anda */
+.intro-rot{position:absolute;bottom:calc(100% - 2.5rem);left:200%;transform:translateX(-50%);width:max-content;max-width:9.5rem;text-align:center;
+  font:700 .75rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso);transition:color .2s;pointer-events:none;text-wrap:balance}
+.intro-rot.ativo{color:var(--laranja)}
+.intro-legenda{position:relative;min-height:4.5rem;margin-top:1.25rem;text-align:center}
+.intro-legenda p{position:absolute;inset:0;opacity:0;transform:translateY(.4rem);transition:opacity .18s,transform .18s}
+.intro-legenda p.ativa{opacity:1;transform:none;transition-delay:.16s}
+.intro-legenda b{display:block;font:700 .75rem/1 var(--mono);letter-spacing:.3em;color:var(--laranja)}
+.intro-legenda span{display:block;margin-top:.55rem;font:600 clamp(1.15rem,3.4vw,1.6rem)/1.25 var(--texto)}
+.intro-pe{height:calc(2rem + env(safe-area-inset-bottom,0px))}
+.intro-final{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:1.1rem;padding:1rem;text-align:center;
+  opacity:0;transition:opacity .4s;pointer-events:none;font:700 .8125rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase}
+.intro-slogan{max-width:12ch;font:400 clamp(2rem,8vw,4.5rem)/.98 var(--display);letter-spacing:0;text-wrap:balance}
+.intro-slogan em{font-style:normal;color:var(--laranja)}
+.intro.fim .intro-palco{opacity:0}
+.intro.fim .intro-final{opacity:1}
+@media (prefers-reduced-motion:reduce){.intro{display:none!important}}
+
 /* ═══ movimento (desligado em prefers-reduced-motion) ═══ */
 .js .rv{opacity:0;transform:translateY(.9rem);transition:opacity .6s var(--sair),transform .6s var(--sair);transition-delay:calc(var(--i,0) * 45ms)}
 .js .rv.vis{opacity:1;transform:none}
@@ -442,6 +479,10 @@ body.rgpd-aberto .barra{display:none}
   dialog.esquema[open]{animation:none}
 }
 </style>
+<script>
+/* intro: decide-se antes de pintar (1.ª vez na sessão e sem movimento reduzido), para o site não aparecer um instante antes dela */
+(function(){try{if(!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
+</script>
 </head>
 <body>
 <a class="saltar" href="#conteudo">Sari la conținut</a>
@@ -1042,6 +1083,161 @@ body.rgpd-aberto .barra{display:none}
     <a href="/confidentialitate.html">Confidențialitate</a>
   </div>
 </section>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Introducere">
+  <div class="intro-topo">
+    <p class="marca"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</p>
+    <button class="intro-saltar" type="button" id="intro-saltar">Sari peste</button>
+  </div>
+  <div class="intro-palco">
+    <div class="intro-cena">
+      <p class="intro-rot" id="intro-rot1">Web design + marketing</p>
+      <p class="intro-rot" id="intro-rot2">Implementare AI</p>
+      <svg viewBox="0 0 560 300" role="img" aria-labelledby="intro-cena-t">
+        <title id="intro-cena-t">O mașină compactă trece prin web design și marketing și iese muscle car; trece prin implementarea AI și iese supercar.</title>
+        <defs>
+          <clipPath id="intro-zA" clipPathUnits="userSpaceOnUse"><rect id="intro-rA" x="-1000" y="-50" width="1600" height="400"/></clipPath>
+          <clipPath id="intro-zB" clipPathUnits="userSpaceOnUse"><rect id="intro-rB" x="600" y="-50" width="0" height="400"/></clipPath>
+          <clipPath id="intro-zC" clipPathUnits="userSpaceOnUse"><rect id="intro-rC" x="1600" y="-50" width="4000" height="400"/></clipPath>
+          <linearGradient id="intro-brilho" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#E8622C" stop-opacity="0"/><stop offset=".5" stop-color="#E8622C" stop-opacity=".55"/><stop offset="1" stop-color="#E8622C" stop-opacity="0"/></linearGradient>
+          <radialGradient id="intro-sombra"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+        </defs>
+        <line x1="-1500" y1="240" x2="2500" y2="240" stroke="rgba(239,234,227,.45)" stroke-width="1.5"/>
+        <line id="intro-tracos" x1="-1500" y1="262" x2="2500" y2="262" stroke="rgba(239,234,227,.2)" stroke-width="3" stroke-dasharray="22 26"/>
+        <g id="intro-riscos" stroke="#E8622C" stroke-linecap="round" opacity="0"></g>
+        <g clip-path="url(#intro-zA)"><g id="intro-cA"><ellipse cx="0" cy="3" rx="0" ry="8" fill="url(#intro-sombra)"/><image x="0" y="0" width="0" height="0"/></g></g>
+        <g clip-path="url(#intro-zB)"><g id="intro-cB"><ellipse cx="0" cy="3" rx="0" ry="8" fill="url(#intro-sombra)"/><image x="0" y="0" width="0" height="0"/></g></g>
+        <g clip-path="url(#intro-zC)"><g id="intro-cC"><ellipse cx="0" cy="3" rx="0" ry="8" fill="url(#intro-sombra)"/><image x="0" y="0" width="0" height="0"/></g></g>
+        <g id="intro-p1"><rect class="aura" x="-12" y="0" width="24" height="250" fill="url(#intro-brilho)" opacity=".35"/><line class="fio" x1="0" y1="4" x2="0" y2="246" stroke="#E8622C" stroke-width="2.5"/><line x1="-10" y1="4" x2="10" y2="4" stroke="#E8622C" stroke-width="2.5" stroke-linecap="round"/></g>
+        <g id="intro-p2"><rect class="aura" x="-12" y="0" width="24" height="250" fill="url(#intro-brilho)" opacity=".35"/><line class="fio" x1="0" y1="4" x2="0" y2="246" stroke="#E8622C" stroke-width="2.5"/><line x1="-10" y1="4" x2="10" y2="4" stroke="#E8622C" stroke-width="2.5" stroke-linecap="round"/></g>
+      </svg>
+    </div>
+    <div class="intro-legenda">
+      <p id="intro-l1" class="ativa"><b>01</b><span>Azi.</span></p>
+      <p id="intro-l2"><b>02</b><span>Cu site și marketing.</span></p>
+      <p id="intro-l3"><b>03</b><span>Cu AI.</span></p>
+    </div>
+  </div>
+  <div class="intro-pe"></div>
+  <div class="intro-final" aria-hidden="true">
+    <p class="marca"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</p>
+    <p class="intro-slogan">Unde afacerea ta <em>prinde viață</em> online.</p>
+  </div>
+</div>
+
+<script>
+/* intro: o carro passa pelos dois portais e sai transformado. Corre uma vez por sessão e nunca com movimento reduzido
+   (o <html> só tem .intro-vai nesses casos: ver o script no <head>). Um toque, o botão «Saltar» ou Esc saltam-na. */
+(function () {
+  var raiz = document.documentElement, intro = document.getElementById('intro');
+  if (!intro || !raiz.classList.contains('intro-vai')) return;
+  try { sessionStorage.setItem('ps-intro', '1'); } catch (e) {}
+  var $ = function (id) { return document.getElementById('intro-' + id); };
+  var gc = function (o) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(o); } catch (e) {} };
+  // o resto da página fica inerte enquanto a intro está à frente
+  var fora = [].filter.call(document.body.children, function (el) { return el !== intro && el.tagName !== 'SCRIPT'; });
+  fora.forEach(function (el) { el.setAttribute('inert', ''); });
+
+  var SVGNS = 'http://www.w3.org/2000/svg', XLINK = 'http://www.w3.org/1999/xlink';
+  var W = 560, CHAO = 240, FRENTE = 400, V = 0.6;                     // palco 560×300; a estrada anda 0,6 unidades/ms
+  // as três fotografias (recortadas, frente à direita), com o comprimento no palco à escala real (3,95 · 4,82 · 4,60 m)
+  var CARROS = [{ f: '/media/intro-1.webp', L: 246 }, { f: '/media/intro-2.webp', L: 300 }, { f: '/media/intro-3.webp', L: 287 }];
+  var G1 = 970, G2 = 1510;                                            // onde os portais começam, na estrada
+  var T = { entra: 700, lanca: 2650, lancaFim: 3150, marca: 3000, sobe: 3500, fim: 4100 };
+  var grupos = [$('cA'), $('cB'), $('cC')];
+  var sai = function (p) { return 1 - Math.pow(1 - p, 3); };
+  var entra = function (p) { return p * p * p; };
+  var lim = function (x) { return Math.max(0, Math.min(1, x)); };
+  // riscos de velocidade, atrás do carro quando arranca
+  var RISCOS = [-34, -22, -48, -12].map(function (dy, i) {
+    var l = document.createElementNS(SVGNS, 'line');
+    l.setAttribute('stroke-width', i % 2 ? 1.6 : 2.4); l.setAttribute('y1', CHAO + dy); l.setAttribute('y2', CHAO + dy);
+    $('riscos').appendChild(l); return l;
+  });
+
+  var legendaAtual = 0, portalAtivo = [null, null];
+  function desenhar(t) {
+    var d = V * t;                                                    // estrada andada
+    var frente = t < T.entra ? -40 + (FRENTE + 40) * sai(t / T.entra)
+               : t < T.lanca ? FRENTE : FRENTE + 560 * entra(lim((t - T.lanca) / (T.lancaFim - T.lanca)));
+    var g1 = G1 - d, g2 = G2 - d;
+    $('rA').setAttribute('width', Math.max(0, g1 + 1000));
+    $('rB').setAttribute('x', g1); $('rB').setAttribute('width', Math.max(0, g2 - g1));
+    $('rC').setAttribute('x', g2);
+    var bob = Math.sin(t / 90) * .35;
+    grupos.forEach(function (g) { g.setAttribute('transform', 'translate(' + frente.toFixed(2) + ' ' + (CHAO + bob).toFixed(2) + ')'); });
+    $('p1').setAttribute('transform', 'translate(' + g1.toFixed(2) + ' 0)');
+    $('p2').setAttribute('transform', 'translate(' + g2.toFixed(2) + ' 0)');
+    $('rot1').style.left = (g1 / W * 100) + '%';
+    $('rot2').style.left = (g2 / W * 100) + '%';
+    $('tracos').setAttribute('stroke-dashoffset', (d + Math.max(0, frente - FRENTE)) % 48);
+    // o portal acende enquanto atravessa o carro que revela
+    [[g1, CARROS[1].L, 'p1', 'rot1'], [g2, CARROS[2].L, 'p2', 'rot2']].forEach(function (p, i) {
+      var ativo = p[0] <= frente + 4 && p[0] >= frente - p[1] - 4;
+      if (ativo !== portalAtivo[i]) {
+        portalAtivo[i] = ativo;
+        var g = $(p[2]), aura = g.querySelector('.aura');
+        aura.setAttribute('opacity', ativo ? '1' : '.35'); aura.setAttribute('width', ativo ? 40 : 24); aura.setAttribute('x', ativo ? -20 : -12);
+        g.querySelector('.fio').setAttribute('stroke', ativo ? '#FFE3D4' : '#E8622C');
+        $(p[3]).classList.toggle('ativo', ativo);
+      }
+    });
+    // a frase muda quando o portal vai a meio do carro
+    var n = g2 < frente - CARROS[1].L / 2 ? 2 : g1 < frente - CARROS[0].L / 2 ? 1 : 0;
+    if (n !== legendaAtual) {
+      $('l' + (legendaAtual + 1)).classList.remove('ativa'); $('l' + (n + 1)).classList.add('ativa'); legendaAtual = n;
+    }
+    // arranque: riscos atrás do carro
+    var pl = lim((t - T.lanca) / (T.lancaFim - T.lanca));
+    $('riscos').setAttribute('opacity', pl > 0 ? Math.min(1, pl * 3).toFixed(2) : 0);
+    RISCOS.forEach(function (l, i) {
+      var tras = frente - CARROS[2].L + 10, comp = 40 + 220 * pl * (1 - i * .15);
+      l.setAttribute('x1', (tras - comp).toFixed(1)); l.setAttribute('x2', (tras - 6 - i * 4).toFixed(1));
+    });
+  }
+
+  var inicio = 0, pedido = 0, fase = '';
+  function passo(agora) {
+    if (!inicio) inicio = agora;
+    var t = agora - inicio;
+    desenhar(Math.min(t, T.lancaFim));
+    if (t >= T.marca && fase === '') { fase = 'marca'; intro.classList.add('fim'); }
+    if (t >= T.sobe && fase === 'marca') { fase = 'sobe'; intro.classList.add('sobe'); }
+    if (t >= T.fim) { acabar('vista'); return; }
+    pedido = requestAnimationFrame(passo);
+  }
+  function acabar(como) {
+    cancelAnimationFrame(pedido); fase = 'fora';
+    raiz.classList.remove('intro-vai'); intro.classList.remove('fim', 'sobe');
+    fora.forEach(function (el) { el.removeAttribute('inert'); });
+    gc({ path: 'intro/' + como, title: 'intro: ' + como, event: true });
+  }
+  function saltar(como) {
+    if (fase === 'fora' || fase === 'sobe') return;
+    cancelAnimationFrame(pedido); fase = 'sobe'; intro.classList.add('sobe');
+    setTimeout(function () { acabar(typeof como === 'string' ? como : 'saltada'); }, 560);
+  }
+  intro.addEventListener('click', saltar);
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') saltar(); });
+
+  // as fotografias: a intro arranca quando as três estiverem prontas; se demorarem mais de 1,5 s, o site abre sem ela
+  var prontas = 0, desistiu = false;
+  var limite = setTimeout(function () { desistiu = true; saltar('lenta'); }, 1500);
+  CARROS.forEach(function (c, i) {
+    var im = new Image();
+    im.onload = function () {
+      if (desistiu) return;
+      var H = c.L * im.naturalHeight / im.naturalWidth, foto = grupos[i].querySelector('image'), sombra = grupos[i].querySelector('ellipse');
+      foto.setAttribute('x', -c.L); foto.setAttribute('y', (-H).toFixed(2)); foto.setAttribute('width', c.L); foto.setAttribute('height', H.toFixed(2));
+      foto.setAttribute('href', c.f); foto.setAttributeNS(XLINK, 'xlink:href', c.f);
+      sombra.setAttribute('cx', -c.L / 2); sombra.setAttribute('rx', (c.L * .47).toFixed(1));
+      if (++prontas === CARROS.length) { clearTimeout(limite); desenhar(0); pedido = requestAnimationFrame(passo); }
+    };
+    im.onerror = function () { if (!desistiu) { desistiu = true; clearTimeout(limite); saltar('erro'); } };
+    im.src = c.f;
+  });
+})();
+</script>
 
 <script>
 (function () {
