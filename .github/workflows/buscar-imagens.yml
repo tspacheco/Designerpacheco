@@ -1,0 +1,37 @@
+# Vai buscar ficheiros a endereços públicos e põe-nos num ramo temporário do repositório.
+# Serve para trazer imagens geradas fora (Higgsfield, etc.) para sessões cuja rede não chega a esses domínios:
+# corre-se à mão (Actions → buscar-imagens → Run workflow), depois faz-se «git fetch origin <ramo>» e lê-se de lá.
+name: buscar-imagens
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: Endereços a buscar, separados por espaços
+        required: true
+      ramo:
+        description: Ramo temporário onde ficam os ficheiros
+        default: recebido/imagens
+permissions:
+  contents: write
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descarregar
+        env:
+          URLS: ${{ inputs.urls }}
+        run: |
+          mkdir -p recebido && i=0
+          for u in $URLS; do
+            i=$((i+1)); nome=$(basename "${u%%\?*}")
+            curl -fsSL -o "recebido/$(printf '%02d' $i)-$nome" "$u"
+          done
+          ls -la recebido
+      - name: Publicar no ramo temporário
+        env:
+          RAMO: ${{ inputs.ramo }}
+        run: |
+          git config user.name "buscar-imagens" && git config user.email "buscar-imagens@users.noreply.github.com"
+          git checkout --orphan "$RAMO" && git reset -q
+          git add -f recebido && git commit -q -m "Ficheiros recebidos por buscar-imagens" && git push -f origin "$RAMO"
