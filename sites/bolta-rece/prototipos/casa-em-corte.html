@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa în secțiune · protótipo</title>
+<!-- Ideia 2 para a página inicial da Bolta Rece: "a casa em corte". Só protótipo para vídeo (1920x1080).
+     A animação corre por tempo; ?t=12.5 mostra esse instante e window.setT(s) desenha qualquer instante (para gravar quadro a quadro). -->
+<link rel="stylesheet" href="../_fontes/fontes.css">
+<style>
+  :root{--noapte:#14100D;--var:#F4EEE2;--var-2:#EAE1CF;--caramida:#8E3B26;--lumina:#E7B86A;--lumina-2:#F3D59A;--rosu:#B22B32;--text-inv-2:#CDBFA8}
+  html,body{margin:0;height:100%;background:var(--noapte);overflow:hidden}
+  body{font-family:"Albert Sans",system-ui,sans-serif;color:var(--var)}
+  #palco{position:fixed;inset:0;display:grid;place-items:center}
+  svg{width:100vw;height:56.25vw;max-height:100vh;max-width:177.78vh;display:block}
+  .linha{fill:none;stroke:var(--lumina);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+  .fina{fill:none;stroke:#CDBFA8;stroke-width:1;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.8}
+  .var{fill:none;stroke:var(--var-2);stroke-width:2.2;vector-effect:non-scaling-stroke}
+  .lenda{fill:none;stroke:var(--lumina);stroke-width:1.4;stroke-dasharray:7 7;vector-effect:non-scaling-stroke}
+  .eti{font:600 11px/1 "Albert Sans",sans-serif;letter-spacing:.22em;text-transform:uppercase;fill:var(--var-2)}
+  .eti-lenda{font:italic 400 15px/1 "EB Garamond",serif;fill:var(--lumina-2)}
+  #cap{position:fixed;left:6vw;bottom:9vh;max-width:40vw;pointer-events:none}
+  #cap h2{font:700 clamp(30px,3.6vw,64px)/1.05 "Bona Nova",serif;margin:0;letter-spacing:-.005em}
+  #cap h2 em{font-style:italic;font-weight:400;color:var(--lumina-2)}
+  #cap p{margin:12px 0 0;font:italic 400 clamp(17px,1.5vw,25px)/1.45 "EB Garamond",serif;color:var(--var-2)}
+  #cap .q{font-size:.8em;opacity:.8}
+  #tag{position:fixed;left:3vw;top:3.4vh;font:600 12px/1 "Albert Sans",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--var-2);opacity:.7}
+  #tag b{color:var(--lumina)}
+  #veu{position:fixed;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(14,10,7,.85),rgba(14,10,7,0) 42%)}
+  #final{position:fixed;inset:0;opacity:0;background:#000 center/cover no-repeat url(../media/crama-1.jpg)}
+  #final::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,10,7,.85),rgba(14,10,7,.1) 50%)}
+  #fim{position:fixed;left:6vw;bottom:9vh;opacity:0;max-width:44vw}
+  #fim h2{font:700 clamp(34px,4.2vw,76px)/1.05 "Bona Nova",serif;margin:0}
+  #fim h2 em{font-style:italic;font-weight:400;color:var(--lumina-2)}
+  #fim p{margin:12px 0 0;font:italic 400 clamp(17px,1.5vw,25px)/1.45 "EB Garamond",serif;color:var(--var-2)}
+</style>
+</head>
+<body>
+<div id="palco">
+<svg id="svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-label="Casa Bolta Rece în secțiune: casa cu prispă, curtea, crama și pivnițele pe mai multe niveluri">
+  <defs>
+    <pattern id="hasura" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#4a3526" stroke-width="1.2"/>
+    </pattern>
+    <linearGradient id="adanc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity=".25"/>
+    </linearGradient>
+    <mask id="mSol"><rect x="0" y="470" width="1920" height="610" fill="url(#adanc)"/></mask>
+    <radialGradient id="glow"><stop offset="0" stop-color="#F3D59A" stop-opacity=".95"/><stop offset=".35" stop-color="#E7B86A" stop-opacity=".45"/><stop offset="1" stop-color="#E7B86A" stop-opacity="0"/></radialGradient>
+    <clipPath id="cSalon"><rect x="690" y="340" width="540" height="100"/></clipPath>
+    <clipPath id="cTerasa"><rect x="1395" y="330" width="445" height="140"/></clipPath>
+    <clipPath id="cCrama"><path id="pCramaClip"/></clipPath>
+    <clipPath id="cL1"><path id="pL1Clip"/></clipPath>
+    <clipPath id="cL2"><path id="pL2Clip"/></clipPath>
+  </defs>
+  <g id="mundo">
+    <!-- pământ (hașură) -->
+    <rect id="sol" x="0" y="470" width="1920" height="610" fill="url(#hasura)" mask="url(#mSol)" opacity="0"/>
+    <!-- cavidades (cortam a hașura) -->
+    <g id="cav" opacity="0"><path id="cavCrama" fill="#0f0b08"/><path id="cavL1" fill="#0f0b08"/><path id="cavL2" fill="#0f0b08"/>
+    <rect x="1188" y="440" width="52" height="250" fill="#0f0b08"/>
+    <rect x="632" y="690" width="52" height="70" fill="#0f0b08"/>
+    <rect x="1452" y="862" width="44" height="150" fill="#0f0b08"/></g>
+
+    <!-- fotografias reais dentro das divisões -->
+    <g class="foto" data-f="6.4 7.4" clip-path="url(#cSalon)"><image href="../media/salon-7.jpg" x="690" y="208" width="540" height="360" preserveAspectRatio="xMidYMid slice"/></g>
+    <g class="foto" data-f="10.0 11.0" clip-path="url(#cTerasa)"><image href="../media/terasa-1.jpg" x="1395" y="252" width="445" height="297" preserveAspectRatio="xMidYMid slice"/></g>
+    <g class="foto" data-f="13.3 14.3" clip-path="url(#cCrama)"><image href="../media/crama-1.jpg" x="620" y="421" width="560" height="373" preserveAspectRatio="xMidYMid slice"/></g>
+    <g class="foto" data-f="16.1 17.1" clip-path="url(#cL1)"><image href="../media/pivnita-1.jpg" x="380" y="427" width="1140" height="760" preserveAspectRatio="xMidYMid slice"/></g>
+    <g class="foto" data-f="16.6 17.6" clip-path="url(#cL2)"><image href="../media/pivnita-3.jpg" x="620" y="560" width="1080" height="720" preserveAspectRatio="xMidYMid slice"/></g>
+
+    <!-- linha do chão -->
+    <path class="linha d" data-d="0.15 1.4" d="M40 470 H1880"/>
+    <!-- casa: soclu, prispă, pereți, tavan, acoperiș -->
+    <path class="linha d" data-d="1.0 2.2" d="M560 470 V440 H1260 V470"/>
+    <path class="fina d" data-d="1.4 2.4" d="M575 452 H640 M660 458 H760 M790 452 H880 M905 459 H1010 M1040 452 H1140 M1160 459 H1245"/>
+    <path class="linha d" data-d="1.2 2.6" d="M520 470 V460 H533 V450 H546 V440 H560"/>
+    <path class="linha d" data-d="1.4 2.8" d="M572 440 V326 M566 326 H578 M626 440 V326 M620 326 H632"/>
+    <path class="fina d" data-d="1.6 3.0" d="M560 404 H680 M569 404 V440 M578 404 V440 M587 404 V440 M596 404 V440 M605 404 V440 M614 404 V440 M635 404 V440 M644 404 V440 M653 404 V440 M662 404 V440 M671 404 V440"/>
+    <path class="linha d" data-d="1.5 2.9" d="M680 318 V368 M680 440 V440 M1240 318 V440"/>
+    <path class="linha d" data-d="1.8 3.2" d="M530 318 H1290 L1050 200 H770 Z"/>
+    <path class="fina d" data-d="2.0 3.4" d="M600 300 L780 208 M680 300 L820 208 M760 300 L860 208 M1160 300 L1000 208 M1240 300 L1040 208"/>
+    <g id="medalioane" class="d-op" data-d="2.4 3.2"></g>
+    <!-- salonul: arcul din fund, mese, portrete, candelabru -->
+    <path class="linha d" data-d="2.2 3.4" data-out="6.4 7.2" d="M900 440 V372 A60 26 0 0 1 1020 372 V440 M890 440 V372 A70 36 0 0 1 1030 372 V440"/>
+    <path class="fina d" data-d="2.6 3.6" data-out="6.4 7.2" d="M915 440 V380 M930 440 V376 M945 440 V374 M960 440 V373 M975 440 V374 M990 440 V376 M1005 440 V380 M900 404 H1020"/>
+    <path class="fina d" data-d="2.4 3.6" data-out="6.4 7.2" d="M705 418 H755 M712 418 V440 M748 418 V440 M795 418 H845 M802 418 V440 M838 418 V440 M1075 418 H1125 M1082 418 V440 M1118 418 V440 M1165 418 H1215 M1172 418 V440 M1208 418 V440"/>
+    <path class="fina d" data-d="2.6 3.8" data-out="6.4 7.2" d="M752 346 h16 v20 h-16 Z M790 346 h16 v20 h-16 Z M1114 346 h16 v20 h-16 Z M1152 346 h16 v20 h-16 Z M960 318 V344 M948 348 Q960 356 972 348"/>
+    <!-- grădina: bustul, roțile, gardul, copacul -->
+    <path class="linha d" data-d="1.8 3.0" d="M300 470 V402 H340 V470 M306 402 L310 390 H330 L334 402 M320 390 m-12 -16 a12 13 0 1 0 24 0 a12 13 0 1 0 -24 0"/>
+    <g class="d" data-d="2.0 3.2">
+      <circle class="linha" cx="420" cy="444" r="26" pathLength="1"/><circle class="linha" cx="220" cy="444" r="26" pathLength="1"/>
+    </g>
+    <path class="fina d" data-d="2.2 3.4" d="M420 418 V470 M394 444 H446 M402 426 L438 462 M438 426 L402 462 M220 418 V470 M194 444 H246 M202 426 L238 462 M238 426 L202 462"/>
+    <path class="fina d" data-d="2.0 3.2" d="M150 470 V454 M162 470 V454 M174 470 V454 M186 470 V454 M258 470 V454 M270 470 V454 M282 470 V454 M354 470 V454 M366 470 V454 M378 470 V454 M458 470 V454 M470 470 V454 M482 470 V454 M494 470 V454 M506 470 V454 M150 458 H510"/>
+    <path class="fina d" id="copac" data-d="2.0 3.8"/>
+    <!-- curtea: poarta sub viță, pergola, mese -->
+    <path class="linha d" data-d="2.0 3.2" d="M1300 470 V334 M1380 470 V334 M1290 334 L1340 314 L1390 334 Z"/>
+    <path class="fina d" data-d="2.2 3.4" d="M1308 470 V344 H1372 V470 M1340 344 V470"/>
+    <path class="linha d" data-d="2.2 3.4" d="M1420 470 V322 M1560 470 V322 M1700 470 V322 M1830 470 V322 M1400 322 H1850"/>
+    <path class="fina d" data-d="2.4 3.8" d="M1402 322 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0 M1270 318 q14 -16 28 -2 q14 -18 30 -4 q16 -14 30 2 q14 -10 26 4"/>
+    <path class="fina d" data-d="2.4 3.6" data-out="10.0 10.8" d="M1450 446 H1510 M1458 446 V470 M1502 446 V470 M1590 446 H1650 M1598 446 V470 M1642 446 V470 M1730 446 H1790 M1738 446 V470 M1782 446 V470 M1490 322 V338 M1630 322 V338 M1770 322 V338"/>
+    <!-- scara spre cramă -->
+    <path class="linha d" data-d="2.6 3.8" d="M1240 440 V470 M1188 470 V690 M1240 470 H1232 V490 H1224 V510 H1216 V530 H1208 V550 H1200 V570 H1192 V590 H1200 V610 H1208 V630 H1216 V650 H1224 V670 H1232 V690"/>
+    <!-- crama: trei bolți de cărămidă cu arcul alb -->
+    <path class="linha d" id="lCrama" data-d="2.8 4.2"/>
+    <path class="var d" id="lCramaAlb" data-d="3.2 4.4"/>
+    <path class="fina d" id="lCramaCar" data-d="3.4 4.6"/>
+    <g id="cramaMese" class="d-op" data-d="3.8 4.6" data-out="13.0 13.7"></g>
+    <!-- pasaj spre hrube -->
+    <path class="fina d" data-d="3.2 4.4" d="M632 690 V760 M684 690 V760 M684 700 H672 V712 H660 V724 H648 V736 H636 V748"/>
+    <!-- hrubele: nivelul 1 și nivelul 2 -->
+    <path class="linha d" id="lL1" data-d="3.2 4.6"/>
+    <path class="fina d" id="lL1Pietre" data-d="3.6 4.8" data-out="16.1 16.9"/>
+    <path class="linha d" id="lL2" data-d="3.6 5.0"/>
+    <path class="fina d" id="lL2Pietre" data-d="4.0 5.2" data-out="16.6 17.4"/>
+    <path class="fina d" data-d="3.8 5.0" d="M1452 862 V1012 M1496 862 V1012 M1460 880 H1488 M1460 910 H1488 M1460 940 H1488 M1460 970 H1488 M1460 1000 H1488"/>
+    <!-- lenda: până sub Casa Pogor -->
+    <path class="lenda d" id="lLenda" data-d="19.2 20.4"/>
+    <!-- felinare (cintilă) -->
+    <g id="felinare"></g>
+    <!-- etichete -->
+    <g class="eti-g" data-e="4.6 5.4">
+      <text class="eti" x="60" y="494">Strada Rece nr. 10</text>
+      <text class="eti" x="270" y="496">Grădina</text>
+      <text class="eti" x="548" y="494">Prispa</text>
+      <text class="eti" x="900" y="310">Salonul</text>
+      <text class="eti" x="1303" y="494">Poarta</text>
+      <text class="eti" x="1590" y="494">Terasa</text>
+      <text class="eti" x="846" y="714">Crama</text>
+      <text class="eti" x="1204" y="714">Scara</text>
+      <text class="eti" x="900" y="886">Hrubele · nivelul 1</text>
+      <text class="eti" x="1090" y="1034">Hrubele · nivelul 2</text>
+    </g>
+    <text class="eti-lenda" id="tLenda" x="1716" y="892" opacity="0">spre Casa Pogor? · legendă</text>
+  </g>
+</svg>
+</div>
+<div id="veu"></div>
+<div id="final"></div>
+<div id="cap"></div>
+<div id="fim"><h2>Coborâm <em>sub boltă.</em></h2><p>Din secțiune intrăm în cramă, iar de aici coborârea continuă în 3D, ca pe site.</p></div>
+<p id="tag"><b>Proposta 2</b> · A casa em corte · protótipo Pacheco Studios</p>
+<script>
+(function () {
+  "use strict";
+  var $ = function (s) { return document.querySelector(s); }, $$ = function (s) { return [].slice.call(document.querySelectorAll(s)); };
+  function clamp(x, a, b) { return x < a ? a : x > b ? b : x; }
+  function suave(t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+  function inOut(t) { t = clamp(t, 0, 1); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+  /* bolți: cada vão com o topo em arco (meia elipse) */
+  function bolti(x0, w, n, nascere, cheie, podea) {
+    var d = "M" + x0 + " " + podea + " V" + nascere, rx = w / 2, ry = nascere - cheie;
+    for (var i = 0; i < n; i++) d += " A" + rx + " " + ry + " 0 0 1 " + (x0 + (i + 1) * w) + " " + nascere;
+    return d + " V" + podea + " Z";
+  }
+  function arcuri(x0, w, n, nascere, cheie, extra) {      // só os arcos (para o contorno branco ou para o extradorso)
+    var d = "", rx = w / 2, ry = nascere - cheie;
+    for (var i = 0; i < n; i++) d += "M" + (x0 + i * w + extra) + " " + nascere + " A" + (rx - extra) + " " + (ry - extra * 0.6) + " 0 0 1 " + (x0 + (i + 1) * w - extra) + " " + nascere + " ";
+    return d;
+  }
+  function caramizi(x0, w, n, nascere, cheie) {         // tijolos: traços radiais entre intradorso e extradorso
+    var d = "", rx = w / 2, ry = nascere - cheie;
+    for (var i = 0; i < n; i++) {
+      var cx = x0 + i * w + rx;
+      for (var a = 8; a < 180; a += 11) {
+        var r = a * Math.PI / 180, c = Math.cos(r), s = Math.sin(r);
+        d += "M" + (cx - c * rx).toFixed(1) + " " + (nascere - s * ry).toFixed(1) + " L" + (cx - c * (rx + 11)).toFixed(1) + " " + (nascere - s * (ry + 11)).toFixed(1) + " ";
+      }
+      d += "M" + (cx - rx - 11) + " " + nascere + " A" + (rx + 11) + " " + (ry + 11) + " 0 0 1 " + (cx + rx + 11) + " " + nascere + " ";
+    }
+    return d;
+  }
+  function pietre(x0, x1, y0, y1, semente) {            // blocos de pedra irregulares nas paredes das hrube
+    var d = "", s = semente;
+    function rnd() { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; }
+    for (var y = y0; y < y1 - 10; y += 16 + rnd() * 6) {
+      var x = x0 + rnd() * 20;
+      while (x < x1 - 20) { var l = 24 + rnd() * 30; d += "M" + x.toFixed(0) + " " + y.toFixed(0) + " h" + l.toFixed(0) + " "; x += l + 8 + rnd() * 16; }
+    }
+    return d;
+  }
+  var CRAMA = [620, 186.67, 3, 588, 528, 690], L1 = [380, 190, 6, 800, 752, 862], L2 = [620, 180, 6, 950, 912, 1010];
+  ["pCramaClip", "cavCrama"].forEach(function (id) { $("#" + id).setAttribute("d", bolti.apply(null, CRAMA)); });
+  ["pL1Clip", "cavL1"].forEach(function (id) { $("#" + id).setAttribute("d", bolti.apply(null, L1)); });
+  ["pL2Clip", "cavL2"].forEach(function (id) { $("#" + id).setAttribute("d", bolti.apply(null, L2)); });
+  $("#lCrama").setAttribute("d", bolti.apply(null, CRAMA));
+  $("#lCramaAlb").setAttribute("d", arcuri(620, 186.67, 3, 588, 528, 4));
+  $("#lCramaCar").setAttribute("d", caramizi(620, 186.67, 3, 588, 528) + " M807 588 V690 M993 588 V690");
+  $("#lL1").setAttribute("d", bolti.apply(null, L1));
+  $("#lL1Pietre").setAttribute("d", pietre(390, 1510, 806, 856, 7));
+  $("#lL2").setAttribute("d", bolti.apply(null, L2));
+  $("#lL2Pietre").setAttribute("d", pietre(630, 1690, 956, 1004, 13));
+  $("#lLenda").setAttribute("d", "M1700 950 A90 38 0 0 1 1880 950 M1700 1010 H1880 M1790 912 A90 38 0 0 1 1900 940");
+  /* medalhões sob a streașină e mesas da crama com ștergar roșu */
+  var med = "", mese = "";
+  for (var x = 702; x <= 1222; x += 30) med += '<circle cx="' + x + '" cy="332" r="4" fill="none" stroke="#E7B86A" stroke-width="1" vector-effect="non-scaling-stroke"/>';
+  $("#medalioane").innerHTML = med;
+  /* copac: ramos em traço fino, como numa gravura */
+  var ramos = "", sem = 5;
+  function rr() { sem = (sem * 16807) % 2147483647; return (sem - 1) / 2147483646; }
+  (function ramo(x, y, ang, len, nivel) {
+    var x2 = x + Math.cos(ang) * len, y2 = y - Math.sin(ang) * len;
+    ramos += "M" + x.toFixed(1) + " " + y.toFixed(1) + " Q" + ((x + x2) / 2 + (rr() - .5) * len * .25).toFixed(1) + " " + ((y + y2) / 2).toFixed(1) + " " + x2.toFixed(1) + " " + y2.toFixed(1) + " ";
+    if (nivel < 6) { ramo(x2, y2, ang + .32 + rr() * .22, len * (.66 + rr() * .1), nivel + 1); ramo(x2, y2, ang - .3 - rr() * .24, len * (.64 + rr() * .1), nivel + 1); if (nivel > 2 && rr() > .55) ramo(x2, y2, ang + (rr() - .5) * .3, len * .55, nivel + 2); }
+  })(468, 470, Math.PI / 2 + .03, 82, 0);
+  $("#copac").setAttribute("d", ramos);
+  [713, 900, 1087].forEach(function (cx) {
+    mese += '<rect x="' + (cx - 42) + '" y="660" width="84" height="7" fill="#B22B32"/><path class="fina" d="M' + (cx - 36) + ' 667 V690 M' + (cx + 36) + ' 667 V690"/>';
+  });
+  $("#cramaMese").innerHTML = mese;
+  /* felinare: uma luz em cada vão da crama e nas hrube */
+  var fel = [[713, 600], [900, 600], [1087, 600], [475, 812], [855, 812], [1235, 812], [710, 962], [1070, 962], [1430, 962]], fh = "";
+  fel.forEach(function (f, i) { fh += '<circle class="fel" data-i="' + i + '" cx="' + f[0] + '" cy="' + f[1] + '" r="26" fill="url(#glow)" opacity="0"/>'; });
+  $("#felinare").innerHTML = fh;
+
+  /* pathLength=1 para desenhar cada traço com dashoffset */
+  $$(".d").forEach(function (el) {
+    var alvos = el.tagName === "g" ? [].slice.call(el.querySelectorAll("path,circle")) : [el];
+    alvos.forEach(function (a) { a.setAttribute("pathLength", "1"); a.style.strokeDasharray = "1 1"; });
+  });
+
+  var mundo = $("#mundo"), cap = $("#cap");
+  /* câmara: [tempo, centro x, centro y, zoom] */
+  var K = [[0, 960, 580, 1], [5.4, 960, 580, 1], [7.2, 960, 392, 2.35], [9.0, 952, 392, 2.4], [10.6, 1612, 404, 2.5], [12.0, 1604, 404, 2.55],
+    [13.9, 900, 610, 2.05], [15.4, 906, 612, 2.1], [17.2, 1000, 880, 1.28], [19.0, 1010, 884, 1.3], [20.5, 1560, 950, 1.9], [21.6, 1580, 950, 1.95],
+    [23.4, 900, 607.5, 3.43]];              /* no fim a foto da crama enche o ecrã exatamente como o #final */
+  function camera(t) {
+    var i = 0; while (i < K.length - 2 && K[i + 1][0] <= t) i++;
+    var a = K[i], b = K[i + 1], f = inOut((t - a[0]) / (b[0] - a[0]));
+    if (t >= K[K.length - 1][0]) { a = b = K[K.length - 1]; f = 1; }
+    var z = Math.exp(Math.log(a[3]) + (Math.log(b[3]) - Math.log(a[3])) * f);
+    var cx = a[1] + (b[1] - a[1]) * f, cy = a[2] + (b[2] - a[2]) * f;
+    mundo.setAttribute("transform", "translate(960 540) scale(" + z.toFixed(4) + ") translate(" + (-cx).toFixed(2) + " " + (-cy).toFixed(2) + ")");
+  }
+  var LEG = [
+    [6.2, 9.2, '<h2>Salonul</h2><p>Fețe de masă albe și portretele junimiștilor pe pereți.</p>'],
+    [10.0, 12.2, '<h2>Terasa</h2><p>Mese de lemn sub bolta de viță, în curtea din strada Rece.</p>'],
+    [13.4, 15.6, '<h2>Crama</h2><p>Dedesubt, bolțile de cărămidă cu arcul alb.</p>'],
+    [16.2, 19.2, '<h2>Hrubele</h2><p>„…unele se află pe nivele mai adânci sau mai puțin adânci, ca niște adevărate etaje subterane.” <span class="q">— din istoricul casei</span></p>'],
+    [19.6, 22.0, '<h2>Basm <em>sau realitate.</em></h2><p>Legendele spun că labirintul de hrube mergea până dedesubtul Casei Pogor.</p>']
+  ];
+  var legAtual = -1;
+  window.setT = function (t) {
+    $$(".d").forEach(function (el) {
+      var w = el.getAttribute("data-d").split(" ").map(Number), f = suave((t - w[0]) / (w[1] - w[0]));
+      var alvos = el.tagName === "g" ? [].slice.call(el.querySelectorAll("path,circle")) : [el];
+      alvos.forEach(function (a) { a.style.strokeDashoffset = (1 - f).toFixed(4); });
+      var sai = el.getAttribute("data-out");         // traços do mobiliário saem quando a foto real enche a divisão
+      if (sai) { sai = sai.split(" ").map(Number); el.style.opacity = (1 - suave((t - sai[0]) / (sai[1] - sai[0]))).toFixed(3); }
+    });
+    $$(".d-op").forEach(function (el) {
+      var w = el.getAttribute("data-d").split(" ").map(Number), o = suave((t - w[0]) / (w[1] - w[0])), s = el.getAttribute("data-out");
+      if (s) { s = s.split(" ").map(Number); o *= 1 - suave((t - s[0]) / (s[1] - s[0])); }
+      el.setAttribute("opacity", o.toFixed(3));
+    });
+    $("#sol").setAttribute("opacity", (suave((t - 2.6) / 2) * 0.9).toFixed(3));
+    $("#cav").setAttribute("opacity", suave((t - 2.8) / 1.6).toFixed(3));
+    $$(".foto").forEach(function (g) { var w = g.getAttribute("data-f").split(" ").map(Number); g.setAttribute("opacity", suave((t - w[0]) / (w[1] - w[0])).toFixed(3)); });
+    $$(".eti-g").forEach(function (g) { var w = g.getAttribute("data-e").split(" ").map(Number); g.setAttribute("opacity", (suave((t - w[0]) / (w[1] - w[0])) * (1 - suave((t - 21.6) / 1))).toFixed(3)); });
+    $("#tLenda").setAttribute("opacity", (suave((t - 20.0) / 0.8) * (1 - suave((t - 21.6) / 1))).toFixed(3));
+    $$(".fel").forEach(function (c) {
+      var i = +c.getAttribute("data-i"), on = suave((t - 4.2 - i * 0.08) / 0.8);
+      var fl = 0.72 + 0.16 * Math.sin(t * 6.1 + i * 1.7) + 0.1 * Math.sin(t * 13.7 + i * 3.1);
+      c.setAttribute("opacity", (on * fl).toFixed(3));
+    });
+    camera(t);
+    var li = -1;
+    LEG.forEach(function (l, i) { if (t >= l[0] && t < l[1]) li = i; });
+    if (li !== legAtual) { legAtual = li; cap.innerHTML = li >= 0 ? LEG[li][2] : ""; }
+    if (li >= 0) { var l = LEG[li], o = suave((t - l[0]) / 0.5) * (1 - suave((t - l[1] + 0.5) / 0.5)); cap.style.opacity = o.toFixed(3); cap.style.transform = "translateY(" + ((1 - o) * 12).toFixed(1) + "px)"; }
+    var fim = suave((t - 22.7) / 0.8);
+    $("#final").style.opacity = fim.toFixed(3);
+    $("#fim").style.opacity = suave((t - 23.4) / 0.8).toFixed(3);
+    $("#fim").style.transform = "translateY(" + ((1 - suave((t - 23.4) / 0.8)) * 12).toFixed(1) + "px)";
+    $("#final").style.transform = "scale(" + (1 + 0.05 * suave((t - 23.5) / 2.5)).toFixed(4) + ")";
+  };
+  var q = /[?&]t=([\d.]+)/.exec(location.search);
+  if (q) window.setT(+q[1]);
+  else if (!/[?&]gravar/.test(location.search)) {
+    var t0 = performance.now();
+    (function f(agora) { var t = ((agora - t0) / 1000) % 27; window.setT(t); requestAnimationFrame(f); })(t0);
+  }
+})();
+</script>
+</body>
+</html>
