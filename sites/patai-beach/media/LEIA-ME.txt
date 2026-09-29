@@ -7,17 +7,19 @@ hero.mp4              HERÓI EM VÍDEO: o vídeo do chef (o que está de preto).
 chef.jpg              JÁ COLOCADA (29/09): o chef de preto com a faca em vertical à frente do rosto, fundo negro, 1125×1116.
                       O herói parte-a em duas metades na linha da lâmina (46,3 % da largura) e o intro abre o ecrã nessa linha.
                       Se trocar a foto por outra com a lâmina noutra posição, mudar --filo no CSS e 0.463 no JS (terminar()).
-chef-cocina.jpg       Secção "El chef": o chef na paellera (foto enviada: chef de chaqueta branca a cozinhar na praia), vertical 4:5.
-chef-playa.jpg        Secção "La playa", tile 1: cozinhar ao ar livre (pode ser a mesma foto do chef na praia), vertical 4:5.
-terraza.jpg           Secção "La playa", tile 2: a esplanada com guarda-sóis (foto enviada), vertical 4:5.
-                      ATENÇÃO: mesas na areia = domínio público (ver research/patai-beach-club.md, secção 4). Usar só com o título legal confirmado.
-tapas.jpg             Secção "La playa", tile 3: navajas + chipirones fritos (foto enviada), vertical 4:5.
+chef-playa.jpg        JÁ COLOCADA (29/09): o chef de jaleca branca do Patai Beach Club ("Ariel" bordado) a servir o arroz na praia,
+                      690×862 (4:5), secção "El chef". Foto do Instagram, limpa das setas e pontos do carrossel.
+fogones-tapas.jpg     JÁ COLOCADA (29/09): navajas + chipirones fritos, painel "Para empezar" da secção 3D "Entre fogones", 681×893.
+fogones-servir.jpg    JÁ COLOCADA (29/09): o arroz a ser servido da paellera para os pratos, com a praia de fundo, painel "De la paellera al plato", 683×861.
+arroz-langostinos.jpg JÁ COLOCADA (29/09): recorte quadrado do arroz com langostinos, no prato "Marinero" da mesa giratória e no cartão da carta, 530×530.
+terraza.jpg           PRONTA, MAS FORA DO SITE: a esplanada com guarda-sóis e mesas na areia (684×892).
+                      Só entra com o título legal da esplanada confirmado: a Costas precintou mesas nesse areal em 2022 (ver research/patai-beach-club.md, secção 4).
+                      Não vai no zip. Para a pôr: um <figure class="corte" data-id="terraza"> + <div class="fogones__cap" data-para="terraza"> na secção 3D.
 arroz-carabinero.jpg  Card "Paella de carabinero" — recorte quadrado, a paellera centrada.
-arroz-langosta.jpg    Card "Arroz seco de langosta cubana".
+arroz-langosta.jpg    JÁ COLOCADA: "Arroz seco de langosta cubana" (still do vídeo).
 arroz-chuleton.jpg    Card "Arroz meloso de chuletón".
-arroz-bogavante.jpg   Card "Arroz caldoso de bogavante" (foto enviada: paellera com bogavante e gambas).
+arroz-bogavante.jpg   Card "Arroz caldoso de bogavante" (paellera com bogavante e gambas).
 arroz-cigalas.jpg     Card "Arroz con cigalas".
-arroz-langostinos.jpg Card "Arroz de langostinos y sepia" (foto enviada: a servir o arroz com langostinos serve aqui).
 intro.mp4             Opcional: vídeo de abertura (faca a cortar / o chef). Se existir, substitui a animação; ideal 4–8 s, sem som, 1920×1080, H.264.
 
 Tamanhos: JPG a 1800 px no lado maior, qualidade 80. Sem texto sobreposto nas fotos.
@@ -29,12 +31,11 @@ fogones-mesa.mp4/.webm/.jpg      0–3,17 s    secção 3D "Entre fogones": o ch
 fogones-langosta.mp4/.webm/.jpg  3,2–6,1 s   langosta e açafrão (720×1280, CRF 19)
 fogones-jamon.mp4/.webm/.jpg     6,13–13,33 s corte de jamón com o mar de fondo (720×1280, CRF 19)
 intro-fondo-1.jpg / -2.jpg       fundo da abertura, já desfocado e escurecido (3 KB cada)
-chef-cocina.jpg                  still a 2,0 s, recorte 4:5 (secção "El chef")
 arroz-langosta.jpg               still a 5,0 s, recorte quadrado (mesa giratória + carta)
 Comando-tipo: ffmpeg -ss INI -to FIM -i video.mp4 -vf scale=540:960 -c:v libx264 -preset slow -crf 25 -pix_fmt yuv420p -g 30 -an -movflags +faststart saida.mp4
               ffmpeg -ss INI -to FIM -i video.mp4 -vf scale=540:960 -c:v libvpx-vp9 -crf 38 -b:v 0 -g 30 -an saida.webm
 
-AINDA POR RECEBER: arroz-bogavante.jpg, tapas.jpg, terraza.jpg, arroz-carabinero/chuleton/cigalas/langostinos.jpg.
+AINDA POR RECEBER: arroz-carabinero.jpg, arroz-chuleton.jpg, arroz-bogavante.jpg, arroz-cigalas.jpg.
 Para não haver pedidos 404, estas fotos NÃO estão referenciadas no HTML; quando chegarem, acrescentar:
  - secção 3D: um <figure class="corte" data-id="..."> igual aos existentes em src/index.html + o seu <div class="fogones__cap" data-para="...">;
  - mesa giratória / carta: <img src="media/arroz-XXX.jpg" alt="" loading="lazy"> dentro do .plato / .arroz__pan correspondente.
