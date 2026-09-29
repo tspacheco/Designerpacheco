@@ -31,7 +31,7 @@ Título: «Nu mai pierde rezervări pe WhatsApp» · Botão: **Trimite mesaj** (
 - «Cele mai bune prețuri de pe piață» ficou de fora: é superlativo sem prova (lei 158/2008 e revisão da Meta podem travar). Usado: «Preț corect. Fără costuri ascunse.» — só manter se o orçamento for mesmo fechado (6.000 + 1.000/mês, sem extras).
 - «Câteva secunde» e «zi și noapte» são promessas do sistema — garantir no produto (n8n + WhatsApp Cloud API).
 - Sem números de resultados, sem testemunhos, sem logótipos de terceiros. O restaurante e as pessoas são gerados por IA (não é um cliente real) — não dizer «clientul nostru».
-- Os vídeos antigos da Pacheco Studios no Instagram só têm música (sem fala); não entram neste vídeo.
+- Vídeos antigos da Pacheco Studios (biblioteca Higgsfield): o áudio é só música, sem fala; a análise visual ainda estava em fila, por isso não foram usados excertos.
 
 ## Produção (Higgsfield)
 
@@ -39,3 +39,17 @@ Título: «Nu mai pierde rezervări pe WhatsApp» · Botão: **Trimite mesaj** (
 - Clips: Kling 3.0 std, 4 s, som off (6 créditos cada, 5 clips).
 - Overlays: HTML → PNG (Playwright), Manrope, diacríticos RO.
 - Montagem e som: ffmpeg + sox na sandbox; scripts em `research/video-automatizare-ro/`.
+
+## Plano dos 3 vídeos — versão Roménia
+
+| # | Vídeo | Gancho (RO) | Destino |
+|---|---|---|---|
+| 1 | Recriação do site do Bolta Rece (Iași) | «Am refăcut site-ul celui mai cunoscut restaurant din Iași.» | Perfil / site |
+| 2 | Trabalho da Pacheco Studios (demo real) | «Afacerea ta merită un site de acest nivel.» | Site |
+| 3 | Automação WhatsApp (este) | «Clientul ți-a scris la 21:40. Tu ai văzut la 23:10.» | WhatsApp (Mensagens) |
+
+- **Público:** Roménia inteira, «vive em»; 30–65+; interesses de donos (restauração, pequenas empresas, Facebook Page admins). Começar com as 5 cidades grandes (București, Cluj, Iași, Timișoara, Brașov) se o CPM subir.
+- **Idioma:** tudo em romeno (texto no ecrã + texto do anúncio). Resposta no WhatsApp também em RO (ou EN).
+- **Orçamento:** mantém-se a regra dos 14 dias — 1 campanha, 3 anúncios; o vídeo 3 vai para uma campanha de Mensagens (WhatsApp) à parte, porque o objetivo é conversa, não visita ao site.
+- **Vídeo 1 — cuidado:** usar o nome e as fotos do Bolta Rece num anúncio pago precisa de autorização escrita. Sem ela: legenda fixa «Concept neoficial · Pacheco Studios», sem logótipo deles, só imagens nossas/geradas, e nunca sugerir que são clientes.
+- **Frase «cele mai bune prețuri»:** trocada por «Preț corect. Fără costuri ascunse.» (superlativo sem prova).
