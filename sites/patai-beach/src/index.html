@@ -103,14 +103,17 @@ button{font:inherit;color:inherit}
 .menu a:hover{color:var(--azafran)}
 @media (max-width:960px){.nav__links,.nav__cta{display:none}.burger{display:block}}
 
-/* ---- intro: la hoja corta la cebolla ---- */
+/* ---- apertura: el vídeo del chef, abierto por un corte ---- */
 #pb-intro{--s:50vw;--r:50vw;position:fixed;inset:0;z-index:2147483000;background:var(--tinta);color:var(--hueso);overflow:hidden;clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,var(--s) 0,var(--s) 100%,var(--s) 100%,var(--s) 0)}
 #pb-intro.cut-out{transition:clip-path 1.05s var(--ease-in-out);clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,-2% 0,-2% 100%,102% 100%,102% 0)}
-#pb-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .intro__reel{position:absolute;inset:0;z-index:1;background:#0B0A09;visibility:hidden;clip-path:polygon(var(--r) 0,var(--r) 0,var(--r) 100%,var(--r) 100%)}
 .intro__reel.abierto{visibility:visible;transition:clip-path .95s var(--ease-in-out);clip-path:polygon(-2% 0,102% 0,102% 100%,-2% 100%)}
 .intro__reel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,10,9,.72) 0,rgba(11,10,9,0) 46%),linear-gradient(0deg,rgba(11,10,9,.55),rgba(11,10,9,0) 40%);pointer-events:none}
-.intro__fondo{position:absolute;inset:-6%;width:112%;height:112%;filter:blur(26px) brightness(.42) saturate(1.15)}
+.intro__fondo{position:absolute;inset:0;overflow:hidden}
+.intro__fondo span{position:absolute;inset:-4%;background:center/cover no-repeat;transition:opacity .9s var(--ease-in-out)}
+.intro__fondo .f1{background-image:url(media/intro-fondo-1.jpg)}
+.intro__fondo .f2{background-image:url(media/intro-fondo-2.jpg);opacity:0}
+.intro__reel.escena2 .intro__fondo .f2{opacity:1}
 .intro__panel{position:absolute;top:0;left:var(--r);height:100%;width:auto;aspect-ratio:9/16;transform:translateX(-50%);object-fit:cover;background:#0B0A09;box-shadow:0 0 0 1px rgba(244,236,223,.08),0 40px 120px rgba(0,0,0,.6)}
 @media (max-aspect-ratio:4/5){.intro__panel{left:0;width:100%;transform:none;aspect-ratio:auto}.intro__reel::after{background:linear-gradient(0deg,rgba(11,10,9,.8),rgba(11,10,9,0) 50%)}}
 .intro__tajo{position:absolute;z-index:2;top:0;bottom:0;left:var(--r,50%);width:2px;margin-left:-1px;background:linear-gradient(180deg,transparent,var(--azafran-2) 15%,#FFF6E0 50%,var(--azafran-2) 85%,transparent);transform:scaleY(0);transform-origin:50% 0;opacity:0;pointer-events:none}
@@ -463,17 +466,15 @@ button{font:inherit;color:inherit}
 </head>
 <body>
 
-<div id="pb-intro" aria-hidden="true">
-  <canvas id="pb-canvas"></canvas>
-  <div class="intro__reel">
-    <canvas class="intro__fondo" width="36" height="64"></canvas>
-    <video id="pb-video" class="intro__panel" muted playsinline preload="auto"><source src="media/intro.mp4" type="video/mp4"><source src="media/intro.webm" type="video/webm"></video>
+<div id="pb-intro">
+  <div class="intro__reel" aria-hidden="true">
+    <div class="intro__fondo"><span class="f1"></span><span class="f2"></span></div>
+    <video id="pb-video" class="intro__panel" muted playsinline preload="none" poster="media/fogones-mesa.jpg"><source src="media/intro.mp4" type="video/mp4"><source src="media/intro.webm" type="video/webm"></video>
   </div>
   <span class="intro__tajo" aria-hidden="true"></span>
-  <p class="intro__mark">Patai Beach · Corralejo</p>
-  <div class="intro__title"><p>Ariel Patai · maestro paellero</p><h2>Todo empieza <em>con un corte</em></h2></div>
-  <div class="intro__title intro__title--reel"><p>Ariel Patai · maestro paellero</p><h2>Entre fogones, arroz <em>y buena compañía</em></h2></div>
-  <button class="intro__skip" type="button">Saltar</button>
+  <p class="intro__mark" aria-hidden="true">Patai Beach · Corralejo</p>
+  <div class="intro__title intro__title--reel" aria-hidden="true"><p>Ariel Patai · maestro paellero</p><h2>Entre fogones, arroz <em>y buena compañía</em></h2></div>
+  <button class="intro__skip" type="button" aria-label="Saltar la introducción">Saltar</button>
   <span class="intro__edge l" aria-hidden="true"></span><span class="intro__edge r" aria-hidden="true"></span>
 </div>
 
@@ -545,7 +546,6 @@ button{font:inherit;color:inherit}
         <img class="mitad b" src="media/chef.jpg" alt="" aria-hidden="true" width="1125" height="1116" onerror="var f=this.closest('.hero__foto');if(f)f.remove()">
         <span class="hero__filo" aria-hidden="true"></span>
       </div>
-      <video class="hero__video" muted loop playsinline preload="auto" poster="media/chef.jpg" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4" onerror="this.parentNode.remove()"></video>
     </div>
     <figcaption class="hero__cap"><b>Ariel Patai</b>Chef cubano · maestro paellero</figcaption>
   </figure>
@@ -623,7 +623,7 @@ button{font:inherit;color:inherit}
       <div class="rueda" id="rueda" style="--giro:0deg">
         <div class="plato" style="--i:0">
           <svg viewBox="0 0 220 220" aria-hidden="true"><circle cx="110" cy="110" r="100" fill="#2B2420"/><circle cx="110" cy="110" r="92" fill="#C4832A"/><circle cx="110" cy="110" r="84" fill="#E3A233"/><circle cx="110" cy="110" r="84" fill="none" stroke="#7A3A1B" stroke-opacity=".35" stroke-width="10"/><g fill="none" stroke="#7A3A1B" stroke-opacity=".28" stroke-width="1.5"><circle cx="110" cy="110" r="62"/><circle cx="110" cy="110" r="40"/></g><g fill="#B8432A"><circle cx="86" cy="92" r="6"/><circle cx="138" cy="128" r="6"/><circle cx="112" cy="70" r="5"/></g><path d="M10 110H-6M210 110h16" stroke="#1D1814" stroke-width="10" stroke-linecap="round"/></svg>
-          <img src="media/arroz-carabinero.jpg" alt="" loading="lazy" onerror="this.remove()">
+          
         </div>
         <div class="plato" style="--i:1">
           <svg viewBox="0 0 220 220" aria-hidden="true"><circle cx="110" cy="110" r="100" fill="#2B2420"/><circle cx="110" cy="110" r="92" fill="#C4832A"/><circle cx="110" cy="110" r="84" fill="#F3C664"/><circle cx="110" cy="110" r="84" fill="none" stroke="#7A3A1B" stroke-opacity=".35" stroke-width="10"/><g fill="none" stroke="#7A3A1B" stroke-opacity=".28" stroke-width="1.5"><circle cx="110" cy="110" r="62"/><circle cx="110" cy="110" r="40"/></g><g fill="#B8432A"><path d="M70 120c20-16 46-10 52 10-20 12-46 6-52-10z"/><path d="M118 84c14-10 30-6 34 8-14 8-30 4-34-8z"/></g><path d="M10 110H-6M210 110h16" stroke="#1D1814" stroke-width="10" stroke-linecap="round"/></svg>
@@ -631,19 +631,19 @@ button{font:inherit;color:inherit}
         </div>
         <div class="plato" style="--i:2">
           <svg viewBox="0 0 220 220" aria-hidden="true"><circle cx="110" cy="110" r="100" fill="#2B2420"/><circle cx="110" cy="110" r="92" fill="#C4832A"/><circle cx="110" cy="110" r="84" fill="#B8432A"/><circle cx="110" cy="110" r="84" fill="none" stroke="#7A3A1B" stroke-opacity=".35" stroke-width="10"/><g fill="none" stroke="#7A3A1B" stroke-opacity=".28" stroke-width="1.5"><circle cx="110" cy="110" r="62"/><circle cx="110" cy="110" r="40"/></g><g fill="#7A3A1B"><rect x="78" y="86" width="30" height="22" rx="6"/><rect x="118" y="112" width="30" height="22" rx="6"/></g><path d="M10 110H-6M210 110h16" stroke="#1D1814" stroke-width="10" stroke-linecap="round"/></svg>
-          <img src="media/arroz-chuleton.jpg" alt="" loading="lazy" onerror="this.remove()">
+          
         </div>
         <div class="plato" style="--i:3">
           <svg viewBox="0 0 220 220" aria-hidden="true"><circle cx="110" cy="110" r="100" fill="#2B2420"/><circle cx="110" cy="110" r="92" fill="#C4832A"/><circle cx="110" cy="110" r="84" fill="#E3A233"/><circle cx="110" cy="110" r="84" fill="none" stroke="#7A3A1B" stroke-opacity=".35" stroke-width="10"/><g fill="none" stroke="#7A3A1B" stroke-opacity=".28" stroke-width="1.5"><circle cx="110" cy="110" r="62"/><circle cx="110" cy="110" r="40"/></g><path d="M84 100c10-22 42-22 52 0-10 16-42 16-52 0z" fill="#B8432A"/><path d="M10 110H-6M210 110h16" stroke="#1D1814" stroke-width="10" stroke-linecap="round"/></svg>
-          <img src="media/arroz-bogavante.jpg" alt="" loading="lazy" onerror="this.remove()">
+          
         </div>
         <div class="plato" style="--i:4">
           <svg viewBox="0 0 220 220" aria-hidden="true"><circle cx="110" cy="110" r="100" fill="#2B2420"/><circle cx="110" cy="110" r="92" fill="#C4832A"/><circle cx="110" cy="110" r="84" fill="#F3C664"/><circle cx="110" cy="110" r="84" fill="none" stroke="#7A3A1B" stroke-opacity=".35" stroke-width="10"/><g fill="none" stroke="#7A3A1B" stroke-opacity=".28" stroke-width="1.5"><circle cx="110" cy="110" r="62"/><circle cx="110" cy="110" r="40"/></g><g fill="#B8432A"><path d="M66 132c18-6 30-2 36 8-16 6-30 2-36-8z"/><path d="M118 76c18-6 30-2 36 8-16 6-30 2-36-8z"/><path d="M100 100c18-6 30-2 36 8-16 6-30 2-36-8z"/></g><path d="M10 110H-6M210 110h16" stroke="#1D1814" stroke-width="10" stroke-linecap="round"/></svg>
-          <img src="media/arroz-cigalas.jpg" alt="" loading="lazy" onerror="this.remove()">
+          
         </div>
         <div class="plato" style="--i:5">
           <svg viewBox="0 0 220 220" aria-hidden="true"><circle cx="110" cy="110" r="100" fill="#2B2420"/><circle cx="110" cy="110" r="92" fill="#C4832A"/><circle cx="110" cy="110" r="84" fill="#E3A233"/><circle cx="110" cy="110" r="84" fill="none" stroke="#7A3A1B" stroke-opacity=".35" stroke-width="10"/><g fill="none" stroke="#7A3A1B" stroke-opacity=".28" stroke-width="1.5"><circle cx="110" cy="110" r="62"/><circle cx="110" cy="110" r="40"/></g><g fill="#B8432A"><circle cx="80" cy="96" r="7"/><circle cx="140" cy="86" r="7"/><circle cx="120" cy="140" r="7"/></g><g fill="#F4ECDF" opacity=".8"><circle cx="100" cy="120" r="4"/><circle cx="130" cy="110" r="4"/></g><path d="M10 110H-6M210 110h16" stroke="#1D1814" stroke-width="10" stroke-linecap="round"/></svg>
-          <img src="media/arroz-langostinos.jpg" alt="" loading="lazy" onerror="this.remove()">
+          
         </div>
       </div>
     </div>
@@ -666,22 +666,22 @@ button{font:inherit;color:inherit}
     <p class="lead rv d2">Los que más se repiten en las reseñas y en las visitas. Cada uno, en su punto: seco con socarrat, meloso o caldoso.</p>
     <div class="arroces">
       <article class="arroz rv"><span class="arroz__tag">Con socarrat</span>
-        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#E3A233"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><g fill="#B8432A"><circle cx="86" cy="92" r="6"/><circle cx="138" cy="128" r="6"/><circle cx="112" cy="70" r="5"/></g></svg><img src="media/arroz-carabinero.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#E3A233"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><g fill="#B8432A"><circle cx="86" cy="92" r="6"/><circle cx="138" cy="128" r="6"/><circle cx="112" cy="70" r="5"/></g></svg></div>
         <h3>Paella de carabinero</h3><p>Seca, con socarrat y el carabinero encima. La que más se repite en las reseñas.</p></article>
       <article class="arroz rv d1"><span class="arroz__tag">Firma del chef</span>
         <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#F3C664"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><g fill="#B8432A"><path d="M70 120c20-16 46-10 52 10-20 12-46 6-52-10z"/><path d="M118 84c14-10 30-6 34 8-14 8-30 4-34-8z"/></g></svg><img src="media/arroz-langosta.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
         <h3>Arroz seco de langosta cubana</h3><p>Langosta enchilada e infusión de azafrán: la receta con la que Ariel representó a Cuba en el Mundial de Paellas.</p></article>
       <article class="arroz rv d2"><span class="arroz__tag">Meloso</span>
-        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#B8432A"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><g fill="#7A3A1B"><rect x="78" y="86" width="30" height="22" rx="6"/><rect x="118" y="112" width="30" height="22" rx="6"/></g></svg><img src="media/arroz-chuleton.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#B8432A"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><g fill="#7A3A1B"><rect x="78" y="86" width="30" height="22" rx="6"/><rect x="118" y="112" width="30" height="22" rx="6"/></g></svg></div>
         <h3>Arroz meloso de chuletón</h3><p>Meloso y de carne: el que Cenando con Pablo vino a probar en noviembre de 2025.</p></article>
       <article class="arroz rv"><span class="arroz__tag">Caldoso</span>
-        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#E3A233"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><path d="M84 100c10-22 42-22 52 0-10 16-42 16-52 0z" fill="#B8432A"/></svg><img src="media/arroz-bogavante.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#E3A233"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><path d="M84 100c10-22 42-22 52 0-10 16-42 16-52 0z" fill="#B8432A"/></svg></div>
         <h3>Arroz caldoso de bogavante</h3><p>Caldoso, para comer con cuchara y sin prisa.</p></article>
       <article class="arroz rv d1"><span class="arroz__tag">Seco</span>
-        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#F3C664"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><g fill="#B8432A"><path d="M66 132c18-6 30-2 36 8-16 6-30 2-36-8z"/><path d="M118 76c18-6 30-2 36 8-16 6-30 2-36-8z"/><path d="M100 100c18-6 30-2 36 8-16 6-30 2-36-8z"/></g></svg><img src="media/arroz-cigalas.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#F3C664"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><g fill="#B8432A"><path d="M66 132c18-6 30-2 36 8-16 6-30 2-36-8z"/><path d="M118 76c18-6 30-2 36 8-16 6-30 2-36-8z"/><path d="M100 100c18-6 30-2 36 8-16 6-30 2-36-8z"/></g></svg></div>
         <h3>Arroz con cigalas</h3><p>De los más celebrados en las reseñas de 2026.</p></article>
       <article class="arroz rv d2"><span class="arroz__tag">Marinero</span>
-        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#E3A233"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><g fill="#B8432A"><circle cx="80" cy="96" r="7"/><circle cx="140" cy="86" r="7"/><circle cx="120" cy="140" r="7"/></g><g fill="#F4ECDF" opacity=".8"><circle cx="100" cy="120" r="4"/><circle cx="130" cy="110" r="4"/></g></svg><img src="media/arroz-langostinos.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="arroz__pan"><svg viewBox="0 0 220 220" aria-hidden="true" style="--acento:#E3A233"><circle class="anillo" cx="110" cy="110" r="96"/><circle class="anillo" cx="110" cy="110" r="76"/><circle class="anillo" cx="110" cy="110" r="52"/><circle class="anillo" cx="110" cy="110" r="26"/><path d="M14 110H2M206 110h12" stroke="#CBBFA9" stroke-width="6" stroke-linecap="round"/><g fill="#B8432A"><circle cx="80" cy="96" r="7"/><circle cx="140" cy="86" r="7"/><circle cx="120" cy="140" r="7"/></g><g fill="#F4ECDF" opacity=".8"><circle cx="100" cy="120" r="4"/><circle cx="130" cy="110" r="4"/></g></svg></div>
         <h3>Arroz de langostinos y sepia</h3><p>El arroz marinero de siempre, con langostinos y sepia.</p></article>
     </div>
     <p class="tapas rv"><b>Para empezar:</b> navajas a la plancha, chipirones fritos, calamares a la andaluza, carabineros a la plancha. <b>Para acabar:</b> cheesecake de pistacho.</p>
@@ -712,29 +712,11 @@ button{font:inherit;color:inherit}
           <span class="corte__filo" aria-hidden="true"></span>
           <figcaption class="corte__cap"><b>Langosta y azafrán</b> El arroz seco de langosta, de cerca.</figcaption>
         </figure>
-        <figure class="corte" data-id="bogavante" data-opcional style="--op:50% 50%">
-          <div class="corte__mitad izq"><img src="media/arroz-bogavante.jpg" alt="Paellera con arroz de bogavante" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
-          <div class="corte__mitad der"><img src="media/arroz-bogavante.jpg" alt="" aria-hidden="true" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
-          <span class="corte__filo" aria-hidden="true"></span>
-          <figcaption class="corte__cap"><b>Arroz de bogavante</b> Con el bogavante entero sobre el arroz.</figcaption>
-        </figure>
         <figure class="corte" data-id="jamon" data-video="media/fogones-jamon" style="--op:50% 40%">
           <div class="corte__mitad izq"><img src="media/fogones-jamon.jpg" alt="Un cortador corta jamón a cuchillo con la playa de fondo" onerror="this.style.visibility='hidden'"></div>
           <div class="corte__mitad der"><img src="media/fogones-jamon.jpg" alt="" aria-hidden="true" onerror="this.style.visibility='hidden'"></div>
           <span class="corte__filo" aria-hidden="true"></span>
           <figcaption class="corte__cap"><b>Jamón cortado a cuchillo</b> Con el mar de fondo.</figcaption>
-        </figure>
-        <figure class="corte" data-id="tapas" data-opcional style="--op:50% 50%">
-          <div class="corte__mitad izq"><img src="media/tapas.jpg" alt="Navajas a la plancha y chipirones fritos con limón" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
-          <div class="corte__mitad der"><img src="media/tapas.jpg" alt="" aria-hidden="true" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
-          <span class="corte__filo" aria-hidden="true"></span>
-          <figcaption class="corte__cap"><b>Navajas y chipirones</b> A la plancha y fritos.</figcaption>
-        </figure>
-        <figure class="corte" data-id="terraza" data-opcional style="--op:50% 50%">
-          <div class="corte__mitad izq"><img src="media/terraza.jpg" alt="La terraza de Patai Beach, con sombrillas" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
-          <div class="corte__mitad der"><img src="media/terraza.jpg" alt="" aria-hidden="true" onerror="var c=this.closest('.corte');if(c){var k=document.querySelector('.fogones__cap[data-para='+c.dataset.id+']');if(k)k.remove();c.remove();if(window.PB_recontar)window.PB_recontar()}"></div>
-          <span class="corte__filo" aria-hidden="true"></span>
-          <figcaption class="corte__cap"><b>Bajo las sombrillas</b> Con vistas a la playa.</figcaption>
         </figure>
         <figure class="corte" data-id="chef" style="--op:41.6% 50%">
           <div class="corte__mitad izq"><img src="media/chef.jpg" alt="Ariel Patai con un cuchillo en vertical delante del rostro" onerror="this.style.visibility='hidden'"></div>
@@ -747,10 +729,7 @@ button{font:inherit;color:inherit}
     <div class="fogones__caps" aria-hidden="true">
       <div class="fogones__cap" data-para="mesa"><p class="eyebrow">En la mesa</p><h3>La paella, <em>servida en la mesa</em></h3><p>Ariel la reparte delante de sus invitados.</p></div>
       <div class="fogones__cap" data-para="langosta"><p class="eyebrow">El arroz</p><h3>Langosta <em>y azafrán</em></h3><p>El arroz seco de langosta, de cerca.</p></div>
-      <div class="fogones__cap" data-para="bogavante"><p class="eyebrow">El arroz</p><h3>Arroz <em>de bogavante</em></h3><p>Con el bogavante entero sobre el arroz.</p></div>
       <div class="fogones__cap" data-para="jamon"><p class="eyebrow">Frente al mar</p><h3>Jamón <em>cortado a cuchillo</em></h3><p>Con el mar de fondo.</p></div>
-      <div class="fogones__cap" data-para="tapas"><p class="eyebrow">Para empezar</p><h3>Navajas <em>y chipirones</em></h3><p>A la plancha y fritos.</p></div>
-      <div class="fogones__cap" data-para="terraza"><p class="eyebrow">La terraza</p><h3>Bajo las <em>sombrillas</em></h3><p>Con vistas a la playa.</p></div>
       <div class="fogones__cap" data-para="chef"><p class="eyebrow">El chef</p><h3>Ariel <em>Patai</em></h3><p>Chef cubano, maestro paellero.</p></div>
     </div>
     <ol class="fogones__puntos" aria-hidden="true"></ol>
@@ -948,192 +927,65 @@ button{font:inherit;color:inherit}
     });
   }
 
-  /* ---------- intro: la hoja corta la cebolla (una vez por sesión) ---------- */
+  /* ---------- apertura: el vídeo del chef, abierto por un corte (una vez por sesión) ---------- */
   var intro = document.getElementById("pb-intro");
   var visto = false;
   try { visto = sessionStorage.getItem("pb-intro-visto") === "1"; } catch (e) {}
   if (!intro || reducido || visto) {
-    if (intro) intro.remove();
+    if (intro) {                                                   // corta la descarga del vídeo de la apertura
+      var vi = intro.querySelector("video");
+      if (vi) { vi.removeAttribute("poster"); vi.innerHTML = ""; try { vi.load(); } catch (e) {} }
+      intro.remove();
+    }
     requestAnimationFrame(function () { requestAnimationFrame(entrarHero); });
   } else {
     try { sessionStorage.setItem("pb-intro-visto", "1"); } catch (e) {}
     document.documentElement.style.overflow = "hidden";
-    var lienzo = document.getElementById("pb-canvas"), ctx = lienzo.getContext("2d");
     var video = document.getElementById("pb-video");
-    var marca = intro.querySelector(".intro__mark"), titulo = intro.querySelector(".intro__title"), saltar = intro.querySelector(".intro__skip");
-    var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
-    var terminado = false, inicio = 0, usaVideo = false;
-    var grano = document.createElement("canvas"); grano.width = grano.height = 160;
-    (function () { var g = grano.getContext("2d"), d = g.createImageData(160, 160); for (var i = 0; i < d.data.length; i += 4) { var v = 200 + Math.random() * 55; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 22; } g.putImageData(d, 0, 0); })();
-    function medir() { W = intro.clientWidth; H = intro.clientHeight; lienzo.width = W * DPR; lienzo.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
-    medir(); window.addEventListener("resize", medir);
-
-    /* escena */
-    var cortes = [0.55, 0.95, 1.35, 1.75, 2.15], anchoCorte = 0.09;  // instantes de cada corte; anchura relativa de cada rodaja
-    var particulas = [], rayos = [], chispas = [];
-    var suave = function (x) { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
-    var entra = function (x) { x = Math.min(1, Math.max(0, x)); return x * x * x; };
-    var sale = function (x) { x = Math.min(1, Math.max(0, x)); return 1 - Math.pow(1 - x, 3); };
-    var ultimoCorte = -1;
-
-    function cebolla(cx, cy, r, ry) {
-      var capas = 7;
-      for (var i = capas; i >= 1; i--) {
-        var k = i / capas, rr = r * k;
-        ctx.beginPath(); ctx.ellipse(cx, cy, rr, rr * ry, 0, 0, Math.PI * 2);
-        ctx.fillStyle = i % 2 ? "#EFE3CF" : "#E0CFBB"; ctx.fill();
-        ctx.lineWidth = 1.4; ctx.strokeStyle = "rgba(139,96,120,.55)"; ctx.stroke();
-      }
-      ctx.beginPath(); ctx.ellipse(cx, cy, r * 0.12, r * 0.12 * ry, 0, 0, Math.PI * 2); ctx.fillStyle = "#C9B39E"; ctx.fill();
-    }
-    function cuchillo(x, y, ang, brillo) {
-      ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
-      var L = Math.min(W * 0.5, Math.min(W, H) * 0.62), A = L * 0.17;
-      var g = ctx.createLinearGradient(0, -A, 0, A * 0.2);
-      g.addColorStop(0, "#EAEAE6"); g.addColorStop(0.55, "#B9BAB6"); g.addColorStop(1, "#6E6F6B");
-      ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(L * 0.25, -A * 1.05, L * 0.55, -A); ctx.lineTo(L, -A * 0.98); ctx.lineTo(L, A * 0.18); ctx.quadraticCurveTo(L * 0.5, A * 0.3, L * 0.08, A * 0.16); ctx.closePath();
-      ctx.fillStyle = g; ctx.fill();
-      ctx.beginPath(); ctx.moveTo(L * 0.06, A * 0.1); ctx.quadraticCurveTo(L * 0.5, A * 0.22, L * 0.98, A * 0.12); ctx.strokeStyle = "rgba(255,255,255," + (0.35 + 0.5 * brillo) + ")"; ctx.lineWidth = 1.2; ctx.stroke();
-      ctx.fillStyle = "#1B1714"; ctx.beginPath(); ctx.roundRect(L, -A * 1.02, L * 0.42, A * 1.22, 8); ctx.fill();
-      ctx.fillStyle = "#2E2721"; ctx.beginPath(); ctx.roundRect(L * 1.02, -A * 0.92, L * 0.38, A * 1.02, 6); ctx.fill();
-      ctx.fillStyle = "#E3A233"; ctx.beginPath(); ctx.arc(L * 1.12, 0, A * 0.1, 0, Math.PI * 2); ctx.arc(L * 1.3, 0, A * 0.1, 0, Math.PI * 2); ctx.fill();
-      ctx.restore();
-    }
-    function spawnParticulas(x, y, n) {
-      for (var i = 0; i < n; i++) particulas.push({ x: x, y: y, vx: -Math.random() * 260 - 40, vy: -Math.random() * 300 - 60, r: 1.5 + Math.random() * 3, vida: 0, max: 0.45 + Math.random() * 0.35, c: Math.random() < 0.7 ? "244,236,223" : "227,162,51" });
-    }
-    function spawnRayos() { for (var i = 0; i < 7; i++) rayos.push({ y: Math.random() * H, len: W * (0.25 + Math.random() * 0.4), t0: 2.2 + i * 0.09, dur: 0.9 + Math.random() * 0.4 }); }
-    function spawnChispas() { for (var i = 0; i < 14; i++) chispas.push({ x: Math.random() * W, y: Math.random() * H * 0.8, t0: 2.4 + Math.random() * 0.9, dur: 0.5 + Math.random() * 0.5, s: 4 + Math.random() * 8 }); }
-    spawnRayos(); spawnChispas();
-
-    function dibujar(t, dt) {
-      ctx.clearRect(0, 0, W, H);
-      var fondo = ctx.createLinearGradient(0, 0, 0, H); fondo.addColorStop(0, "#1B1714"); fondo.addColorStop(1, "#0E0C0A");
-      ctx.fillStyle = fondo; ctx.fillRect(0, 0, W, H);
-      var luz = ctx.createRadialGradient(W * 0.22, H * 0.15, 0, W * 0.22, H * 0.15, Math.max(W, H) * 0.7);
-      luz.addColorStop(0, "rgba(227,162,51," + (0.16 * suave(t / 0.8)) + ")"); luz.addColorStop(1, "rgba(227,162,51,0)");
-      ctx.fillStyle = luz; ctx.fillRect(0, 0, W, H);
-      /* tabla */
-      var ty = H * 0.68;
-      var tabla = ctx.createLinearGradient(0, ty - 40, 0, H); tabla.addColorStop(0, "rgba(58,46,36,0)"); tabla.addColorStop(0.2, "rgba(58,46,36,.7)"); tabla.addColorStop(1, "rgba(16,14,12,1)");
-      ctx.fillStyle = tabla; ctx.fillRect(0, ty - 40, W, H);
-      ctx.fillStyle = "rgba(244,236,223,.06)"; ctx.fillRect(0, ty, W, 1.5);
-
-      /* cebolla y rodajas */
-      var cx = W * 0.56, cy = ty - 8, r = Math.min(W * 0.26, Math.min(W, H) * 0.21), ry = 0.62;
-      var ap = suave((t - 0.15) / 0.5);
-      var nCortes = 0; for (var i = 0; i < cortes.length; i++) if (t >= cortes[i]) nCortes = i + 1;
-      var x0 = cx - r;                                   // el cuchillo avanza de izquierda a derecha
-      ctx.save(); ctx.globalAlpha = ap; ctx.translate(0, (1 - ap) * 24);
-      var sombra = ctx.createRadialGradient(cx - 10, cy + r * ry * 0.9, 0, cx - 10, cy + r * ry * 0.9, r * 1.3); sombra.addColorStop(0, "rgba(0,0,0,.55)"); sombra.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = sombra; ctx.beginPath(); ctx.ellipse(cx - 10, cy + r * ry * 0.9, r * 1.3, r * 0.5, 0, 0, Math.PI * 2); ctx.fill();
-      /* resto de la cebolla (a la derecha del último corte) */
-      ctx.save(); ctx.beginPath(); ctx.rect(x0 + nCortes * anchoCorte * 2 * r, cy - r * 2, W, r * 4); ctx.clip(); cebolla(cx, cy, r, ry); ctx.restore();
-      /* rodajas ya cortadas, apartándose */
-      for (var k = 0; k < nCortes; k++) {
-        var edad = t - cortes[k], d = sale(edad / 0.9);
-        ctx.save(); ctx.translate(-d * (52 + k * 12), 0); ctx.translate(x0 + k * anchoCorte * 2 * r, cy); ctx.rotate(-d * 0.16 * (k % 2 ? 1 : 0.6)); ctx.translate(-(x0 + k * anchoCorte * 2 * r), -cy);
-        ctx.beginPath(); ctx.rect(x0 + k * anchoCorte * 2 * r, cy - r * 2, anchoCorte * 2 * r - 2, r * 4); ctx.clip(); cebolla(cx, cy, r, ry); ctx.restore();
-      }
-      ctx.restore();
-
-      /* cuchillo */
-      var kx = x0 + Math.min(nCortes, cortes.length) * anchoCorte * 2 * r, ky = cy - r * ry - 6, fase = 0, brillo = 0;
-      for (i = 0; i < cortes.length; i++) {
-        var dtc = t - cortes[i];
-        if (dtc > -0.22 && dtc < 0.2) { fase = dtc < 0 ? entra(1 + dtc / 0.22) : 1 - sale(dtc / 0.2); brillo = dtc < 0 ? 1 + dtc / 0.22 : 0; kx = x0 + i * anchoCorte * 2 * r; }
-      }
-      if (t > cortes[cortes.length - 1] + 0.2) { var sal = sale((t - cortes[cortes.length - 1] - 0.2) / 0.6); ky -= sal * H * 0.6; kx += sal * W * 0.25; fase = 0; }
-      var alt = (1 - fase) * H * 0.34 + (t < 0.3 ? (1 - suave(t / 0.3)) * H * 0.4 : 0);
-      cuchillo(kx, ky - alt, -0.28, brillo);
-      if (nCortes > ultimoCorte) { if (ultimoCorte >= 0 || nCortes > 0) spawnParticulas(kx, ky, 26); ultimoCorte = nCortes; }
-
-      /* partículas */
-      for (i = particulas.length - 1; i >= 0; i--) {
-        var p = particulas[i]; p.vida += dt; if (p.vida > p.max) { particulas.splice(i, 1); continue; }
-        p.vy += 900 * dt; p.x += p.vx * dt; p.y += p.vy * dt;
-        ctx.fillStyle = "rgba(" + p.c + "," + (1 - p.vida / p.max) + ")"; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-      }
-      /* rayos y chispas: los efectos surgen */
-      rayos.forEach(function (ra) {
-        var u = (t - ra.t0) / ra.dur; if (u < 0 || u > 1) return;
-        var x = -ra.len + (W + ra.len * 2) * u, a = Math.sin(u * Math.PI) * 0.55;
-        var g = ctx.createLinearGradient(x, 0, x + ra.len, 0); g.addColorStop(0, "rgba(243,198,100,0)"); g.addColorStop(0.5, "rgba(243,198,100," + a + ")"); g.addColorStop(1, "rgba(243,198,100,0)");
-        ctx.save(); ctx.translate(0, ra.y); ctx.rotate(-0.24); ctx.fillStyle = g; ctx.fillRect(x, 0, ra.len, 1.5); ctx.restore();
-      });
-      chispas.forEach(function (c) {
-        var u = (t - c.t0) / c.dur; if (u < 0 || u > 1) return;
-        var a = Math.sin(u * Math.PI), s = c.s * (0.6 + a);
-        ctx.strokeStyle = "rgba(243,198,100," + a * 0.9 + ")"; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(c.x - s, c.y); ctx.lineTo(c.x + s, c.y); ctx.moveTo(c.x, c.y - s); ctx.lineTo(c.x, c.y + s); ctx.stroke();
-      });
-      /* anillos: de la cebolla a la paellera */
-      if (t > 2.45) {
-        for (i = 0; i < 5; i++) {
-          var u2 = (t - 2.45 - i * 0.12) / 0.9; if (u2 < 0 || u2 > 1) continue;
-          ctx.beginPath(); ctx.ellipse(cx, cy, r * (0.4 + u2 * 2.2), r * (0.4 + u2 * 2.2) * ry, 0, 0, Math.PI * 2);
-          ctx.strokeStyle = "rgba(227,162,51," + (1 - u2) * 0.6 + ")"; ctx.lineWidth = 1.5; ctx.stroke();
-        }
-      }
-      /* grano y viñeta */
-      ctx.globalAlpha = 0.5; ctx.fillStyle = ctx.createPattern(grano, "repeat"); ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1;
-      var vin = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.3, W / 2, H / 2, Math.max(W, H) * 0.75); vin.addColorStop(0, "rgba(0,0,0,0)"); vin.addColorStop(1, "rgba(0,0,0,.55)");
-      ctx.fillStyle = vin; ctx.fillRect(0, 0, W, H);
-    }
-
-    /* el vídeo del reel: se abre con un corte tras los cortes de la cebola */
-    var reel = intro.querySelector(".intro__reel"), fondo = intro.querySelector(".intro__fondo"), fctx = fondo.getContext("2d");
-    var tajo = intro.querySelector(".intro__tajo"), tituloReel = intro.querySelector(".intro__title--reel");
-    var videoListo = false, reelAbierto = false, tAbre = 0;
-    video.addEventListener("canplay", function () { videoListo = true; });
-    if (video.readyState >= 3) videoListo = true;
+    var reel = intro.querySelector(".intro__reel"), tajo = intro.querySelector(".intro__tajo");
+    var marca = intro.querySelector(".intro__mark"), tituloReel = intro.querySelector(".intro__title--reel"), saltar = intro.querySelector(".intro__skip");
+    var terminado = false, abierto = false, t0 = performance.now(), timers = [];
+    video.preload = "auto"; try { video.load(); } catch (e) {}
+    var espera = function (fn, ms) { timers.push(setTimeout(fn, ms)); };
+    requestAnimationFrame(function () { marca.classList.add("on"); });
     function posReel() { var w = intro.clientWidth, h = intro.clientHeight; return w / h > 0.8 ? w * 0.64 : w / 2; }
-    function pintarFondo() { if (terminado) return; try { fctx.drawImage(video, 0, 0, fondo.width, fondo.height); } catch (e) {} requestAnimationFrame(pintarFondo); }
-    function abrirReel(t) {
-      reelAbierto = true; tAbre = t;
-      intro.style.setProperty("--r", posReel().toFixed(1) + "px");
-      tajo.classList.add("on");
-      var pr = video.play();
-      if (pr && pr.catch) pr.catch(function () { reelAbierto = false; reel.classList.remove("abierto"); usaVideo = false; });
-      setTimeout(function () { if (terminado || !reelAbierto) return; void reel.offsetWidth; reel.classList.add("abierto"); marca.classList.add("on"); requestAnimationFrame(pintarFondo); }, 280);
-      setTimeout(function () { if (!terminado && reelAbierto) tituloReel.classList.add("on"); }, 950);
-      video.addEventListener("ended", function () { terminar(false); }, { once: true });
-    }
-
-    var ultimoT = 0;
-    function ciclo(ahora) {
+    function mostrar() {
       if (terminado) return;
-      if (!inicio) inicio = ahora;
-      var t = (ahora - inicio) / 1000, dt = Math.min(0.05, (ahora - ultimoT) / 1000 || 0.016); ultimoT = ahora;
-      if (reelAbierto && t > tAbre + 1.4) { usaVideo = true; return; }       // el reel ya lo cubre todo: el lienzo descansa
-      dibujar(t, dt);
-      if (t > 0.9) marca.classList.add("on");
-      if (!reelAbierto && t >= 2.2) {
-        if (videoListo) abrirReel(t);
-        else if (t > 3.55 || video.networkState === 3) return terminar(false);   // sin vídeo: termina la animación original
-      }
-      if (!reelAbierto && t > 2.35) titulo.classList.add("on");
-      requestAnimationFrame(ciclo);
+      tajo.classList.add("on");
+      espera(function () { if (!terminado) reel.classList.add("abierto"); }, 280);
+      espera(function () { if (!terminado) tituloReel.classList.add("on"); }, 950);
+      espera(function () { terminar(false); }, Math.max(4000, ((video.duration || 6.2) + 1.2) * 1000));   // seguridad
     }
+    function abrir() {
+      if (abierto || terminado) return; abierto = true;
+      intro.style.setProperty("--r", posReel().toFixed(1) + "px");
+      var pr;
+      try { pr = video.play(); } catch (e) { return terminar(false); }
+      if (pr && pr.then) pr.then(mostrar, function () { terminar(false); });   // reproducción automática bloqueada: directo al héroe
+      else mostrar();
+    }
+    function listo() { espera(abrir, Math.max(0, 350 - (performance.now() - t0))); }
+    if (video.readyState >= 3) listo(); else video.addEventListener("canplay", listo, { once: true });
+    video.addEventListener("timeupdate", function () { if (video.currentTime >= 3.15) reel.classList.add("escena2"); });
+    video.addEventListener("ended", function () { terminar(false); });
+    espera(function () { if (!abierto) terminar(false); }, 2600);           // el vídeo no llega a tiempo: directo al héroe
+
     function terminar(inmediato) {
       if (terminado) return; terminado = true;
-      window.removeEventListener("resize", medir);
+      timers.forEach(clearTimeout);
       document.documentElement.style.overflow = "";
       entrarHero();
-      try { if (!inmediato) setTimeout(function () { video.pause(); }, 1100); else video.pause(); } catch (e) {}
-      if (inmediato) { intro.remove(); return; }
-      /* el corte se abre justo en la hoja del cuchillo de la foto del chef */
+      if (inmediato) { try { video.pause(); } catch (e) {} intro.remove(); return; }
+      /* el corte final se abre justo en la hoja del cuchillo de la foto del chef */
       var ref = document.querySelector(".hero__foto") || document.querySelector(".hero__chef"), sx = window.innerWidth / 2;
       if (ref) { var rr = ref.getBoundingClientRect(); if (rr.width) sx = rr.left + rr.width * 0.463; }
       intro.style.setProperty("--s", sx.toFixed(1) + "px");
       void intro.offsetWidth;
       intro.classList.add("cut-out");
-      setTimeout(function () { intro.remove(); }, 1150);
+      setTimeout(function () { try { video.pause(); } catch (e) {} intro.remove(); }, 1150);
     }
     saltar.addEventListener("click", function () { terminar(true); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") terminar(true); });
-    requestAnimationFrame(ciclo);
-    setTimeout(function () { terminar(false); }, 12000);   // red de seguridad
   }
 
   /* ---------- la rueda de arroces: el scroll gira la mesa ---------- */
@@ -1161,7 +1013,11 @@ button{font:inherit;color:inherit}
       requestAnimationFrame(cicloR);
     };
     var despertarR = function () { if (visR && !corriendo) { corriendo = true; ultimoR = performance.now(); requestAnimationFrame(cicloR); } };
-    var alRodarR = function () { var r = ruedaSec.getBoundingClientRect(), total = r.height - stageR.offsetHeight; alvoR = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0; despertarR(); };
+    var topR = 0, totalR = 1;
+    var medirR = function () { topR = ruedaSec.getBoundingClientRect().top + window.scrollY; totalR = Math.max(1, ruedaSec.offsetHeight - stageR.offsetHeight); };
+    var alRodarR = function () { alvoR = Math.min(1, Math.max(0, (window.scrollY - topR) / totalR)); despertarR(); };
+    medirR(); window.addEventListener("resize", function () { medirR(); alRodarR(); });
+    if (window.ResizeObserver) new ResizeObserver(function () { medirR(); }).observe(document.body);
     new IntersectionObserver(function (es) { es.forEach(function (e) { var antes = visR; visR = e.isIntersecting; if (visR && !antes) { alRodarR(); posR = curvaR(alvoR); aplicarR(); despertarR(); } }); }, { rootMargin: "10% 0px" }).observe(ruedaSec);
     window.addEventListener("scroll", alRodarR, { passive: true });
     alRodarR(); posR = curvaR(alvoR); aplicarR();
@@ -1171,8 +1027,8 @@ button{font:inherit;color:inherit}
   var fog = document.querySelector(".fogones");
   if (fog && !reducido) {
     var stageF = fog.querySelector(".fogones__stage"), pila = document.getElementById("pila"), ptos = fog.querySelector(".fogones__puntos");
-    var cortesF = [], alvoF = 0, posF = 0, visF = false, correF = false, ultF = 0, idxF = -1;
-    var DPR = Math.min(window.devicePixelRatio || 1, 2);
+    var cortesF = [], alvoF = 0, posF = 0, visF = false, cercaF = false, correF = false, ultF = 0, idxF = -1;
+    var DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     function prepVideo(c) {                                  // capa de vídeo en vivo + dos lienzos para "congelar" el fotograma al cortar
       if (c._v || !c.dataset.video) return;
       var v = document.createElement("video"); v.className = "corte__vivo"; v.muted = true; v.setAttribute("muted", ""); v.loop = true; v.playsInline = true; v.setAttribute("playsinline", ""); v.preload = "none"; v.setAttribute("aria-hidden", "true");
@@ -1186,7 +1042,7 @@ button{font:inherit;color:inherit}
     }
     function congelar(c) {
       var v = c._v; if (!v || v.readyState < 2) return;
-      var w = Math.round(c.offsetWidth * DPR), h = Math.round(c.offsetHeight * DPR);
+      var w = Math.round(pw * DPR), h = Math.round(ph * DPR);
       c.querySelectorAll(".corte__mitad canvas").forEach(function (cv) { cv.width = w; cv.height = h; try { cv.getContext("2d").drawImage(v, 0, 0, w, h); } catch (e) {} });
       c.classList.add("congelado");
     }
@@ -1195,7 +1051,7 @@ button{font:inherit;color:inherit}
       cortesF.forEach(prepVideo);
       fog.style.setProperty("--n", cortesF.length);
       ptos.innerHTML = cortesF.map(function () { return "<li></li>"; }).join("");
-      idxF = -1; alRodarF(); posF = curvaF(alvoF); aplicarF();
+      idxF = -1; medirF(); alRodarF(); posF = curvaF(alvoF); aplicarF();
     }
     window.PB_recontar = montar;
     var suaveF = function (x) { return x * x * (3 - 2 * x); };
@@ -1225,7 +1081,7 @@ button{font:inherit;color:inherit}
         }
         if (c._v) {
           var frente = Math.abs(d) < 0.035 && visF;
-          if (Math.abs(d) < 1.6) cargar(c);
+          if (cercaF && Math.abs(d) < 1.6) cargar(c);
           if (frente) {
             if (c._v.readyState >= 2) { c.classList.add("vivo"); c.classList.remove("congelado"); }
             if (c._v.paused) { var pr = c._v.play(); if (pr && pr.catch) pr.catch(function () {}); }
@@ -1250,7 +1106,10 @@ button{font:inherit;color:inherit}
       requestAnimationFrame(cicloF);
     }
     function despertarF() { if (visF && !correF) { correF = true; ultF = performance.now(); requestAnimationFrame(cicloF); } }
-    function alRodarF() { var r = fog.getBoundingClientRect(), total = r.height - stageF.offsetHeight; alvoF = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0; despertarF(); }
+    var topF = 0, totalF = 1, pw = 0, ph = 0;
+    function medirF() { topF = fog.getBoundingClientRect().top + window.scrollY; totalF = Math.max(1, fog.offsetHeight - stageF.offsetHeight); pw = pila.offsetWidth; ph = pila.offsetHeight; }
+    function alRodarF() { alvoF = Math.min(1, Math.max(0, (window.scrollY - topF) / totalF)); despertarF(); }
+    if (window.ResizeObserver) new ResizeObserver(function () { medirF(); }).observe(document.body);
     new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         var antes = visF; visF = e.isIntersecting;
@@ -1258,8 +1117,9 @@ button{font:inherit;color:inherit}
         if (!visF) cortesF.forEach(function (c) { if (c._v && !c._v.paused) { congelar(c); c.classList.remove("vivo"); c._v.pause(); } });
       });
     }, { rootMargin: "10% 0px" }).observe(fog);
+    new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !cercaF) { cercaF = true; aplicarF(); } }); }, { rootMargin: "120% 0px" }).observe(fog);
     window.addEventListener("scroll", alRodarF, { passive: true });
-    window.addEventListener("resize", function () { alRodarF(); aplicarF(); });
+    window.addEventListener("resize", function () { medirF(); alRodarF(); aplicarF(); });
     montar();
   }
 

@@ -24,13 +24,19 @@ Tamanhos: JPG a 1800 px no lado maior, qualidade 80. Sem texto sobreposto nas fo
 
 VÍDEO DO CLIENTE (29/09) — "Entre fogones, arroz y buena compañía" (13,3 s, 720×1280, H.264)
 Cortado com ffmpeg (sem som, faststart; MP4 H.264 para Safari/Chrome/Firefox + WebM VP9 de reserva):
-intro.mp4 / intro.webm           0,7–5,8 s   abertura: o chef a servir a paella + langosta em grande plano (720×1280)
-fogones-mesa.mp4/.webm/.jpg      0–3,17 s    secção 3D "Entre fogones": o chef a servir na mesa (540×960; .jpg = poster)
-fogones-langosta.mp4/.webm/.jpg  3,2–6,1 s   langosta e açafrão
-fogones-jamon.mp4/.webm/.jpg     6,13–13,33 s corte de jamón com o mar de fondo
+intro.mp4 / intro.webm           0–6,1 s     abertura: o chef a servir a paella + langosta (720×1280, cópia SEM recompressão)
+fogones-mesa.mp4/.webm/.jpg      0–3,17 s    secção 3D "Entre fogones": o chef a servir na mesa (720×1280, cópia SEM recompressão; .jpg = poster)
+fogones-langosta.mp4/.webm/.jpg  3,2–6,1 s   langosta e açafrão (720×1280, CRF 19)
+fogones-jamon.mp4/.webm/.jpg     6,13–13,33 s corte de jamón com o mar de fondo (720×1280, CRF 19)
+intro-fondo-1.jpg / -2.jpg       fundo da abertura, já desfocado e escurecido (3 KB cada)
 chef-cocina.jpg                  still a 2,0 s, recorte 4:5 (secção "El chef")
 arroz-langosta.jpg               still a 5,0 s, recorte quadrado (mesa giratória + carta)
 Comando-tipo: ffmpeg -ss INI -to FIM -i video.mp4 -vf scale=540:960 -c:v libx264 -preset slow -crf 25 -pix_fmt yuv420p -g 30 -an -movflags +faststart saida.mp4
               ffmpeg -ss INI -to FIM -i video.mp4 -vf scale=540:960 -c:v libvpx-vp9 -crf 38 -b:v 0 -g 30 -an saida.webm
 
-AINDA POR RECEBER (entram sozinhos como painéis na secção 3D quando existirem): arroz-bogavante.jpg, tapas.jpg, terraza.jpg (ver aviso da esplanada acima).
+AINDA POR RECEBER: arroz-bogavante.jpg, tapas.jpg, terraza.jpg, arroz-carabinero/chuleton/cigalas/langostinos.jpg.
+Para não haver pedidos 404, estas fotos NÃO estão referenciadas no HTML; quando chegarem, acrescentar:
+ - secção 3D: um <figure class="corte" data-id="..."> igual aos existentes em src/index.html + o seu <div class="fogones__cap" data-para="...">;
+ - mesa giratória / carta: <img src="media/arroz-XXX.jpg" alt="" loading="lazy"> dentro do .plato / .arroz__pan correspondente.
+VÍDEO NO HERÓI (opcional): acrescentar dentro de .hero__media, depois de .hero__foto:
+ <video class="hero__video" muted loop playsinline preload="auto" poster="media/chef.jpg" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4"></video>

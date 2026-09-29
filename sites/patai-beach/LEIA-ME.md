@@ -17,7 +17,7 @@ Restaurante de arroces do chef cubano Ariel Patai, na praia de La Goleta. Análi
 
 Tudo o que se revela no site revela-se **por um corte vertical, como a lâmina da faca**:
 
-1. **Abertura (uma vez por sessão, ~8 s, "Saltar"/Esc):** faca a cortar a cebola em canvas (tábua escura, luz quente, partículas) → uma linha dourada corta o ecrã e **abre o vídeo do cliente** num painel vertical com o fundo desfocado do próprio vídeo (o chef a servir a paella → langosta em grande plano), com o título "Entre fogones, arroz y buena compañía" → no fim, o ecrã abre-se **na linha da lâmina da foto do chef** e o herói aparece com as duas metades da cara a encaixar. Se o vídeo não carregar a tempo, a animação da cebola termina sozinha como antes.
+1. **Abertura (uma vez por sessão, ~7,7 s, "Saltar"/Esc):** ecrã escuro com a marca → uma linha dourada corta o ecrã e **abre o vídeo do cliente** num painel vertical, com o fundo desfocado da mesma cena (o chef a servir a paella → langosta em grande plano) e o título "Entre fogones, arroz y buena compañía" → no fim, o ecrã abre-se **na linha da lâmina da foto do chef** e o herói aparece com as duas metades da cara a encaixar. Se o vídeo não estiver pronto aos 2,6 s (rede lenta, ficheiro em falta, reprodução automática bloqueada), entra direto o herói. A animação da faca a cortar a cebola foi retirada a 29/09 a pedido do Tomás (está no histórico do git, commit `e8d1f62`, se for para voltar).
 2. **Herói:** foto do chef de preto com a faca à frente do rosto (`media/chef.jpg`), partida na lâmina; vídeo `media/hero.mp4` opcional por cima.
 3. **"Entre fogones, arroz y buena compañía" (secção 3D comandada pelo scroll):** painéis verticais empilhados em profundidade; cada scroll **corta o painel da frente ao meio** — as duas metades abrem-se como portas para trás, com um brilho no fio — e o seguinte avança. Os painéis de vídeo tocam só quando estão à frente e o fotograma fica congelado nas metades durante o corte. Termina no retrato do chef, com a lâmina exatamente no centro. Painéis de foto opcionais (`arroz-bogavante.jpg`, `tapas.jpg`, `terraza.jpg`) entram sozinhos quando o ficheiro existe.
 4. Mesa giratória 3D das paelleras (langosta já com foto real), cortes diagonais nas fotografias, paelleras SVG que se desenham.
@@ -43,6 +43,13 @@ Por confirmar: horário, telefone/WhatsApp (4 números em circulação), e-mail,
 ## Legal (Espanha/Canárias)
 
 Aviso legal (LSSI art. 10), política de privacidade (RGPD + LOPDGDD) para o widget, nota de cookies (sem cookies de analítica → sem banner; só `sessionStorage` técnico do intro; mapa em link, não em iframe), hojas de reclamaciones (Decreto 90/2023). Sem preços e sem alergénios na demo.
+
+## Qualidade e desempenho do vídeo
+
+- `intro.mp4` e `fogones-mesa.mp4`: **corte sem recompressão** do original (720×1280, H.264, ~1,2 Mbit/s). `fogones-langosta` e `fogones-jamon` começam fora de um keyframe, por isso foram recomprimidos a CRF 19 (SSIM 0,991 face ao original — visualmente igual). Todos sem som, com `faststart`; WebM VP9 como reserva.
+- O vídeo da abertura só é descarregado na primeira visita da sessão (`preload="none"` + `load()` no JS); os vídeos da secção 3D só quando a secção está a menos de ~1 ecrã; só toca o painel da frente.
+- Nada de leituras de layout durante o scroll (posições em cache, recalculadas em resize/ResizeObserver); fundo desfocado da abertura = duas imagens de 3 KB já desfocadas (sem filtros ao vivo).
+- Testado (Chromium, 29/09): fluxo normal, Saltar, Esc, vídeo pendurado, vídeo em falta, autoplay bloqueado, segunda visita, telemóvel, movimento reduzido, percurso completo sem erros na consola, sem scroll horizontal a 360/768/1024/1440.
 
 ## Publicar
 
