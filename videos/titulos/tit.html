@@ -1,0 +1,79 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="fontes.css" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;background:transparent;overflow:hidden}
+#band{position:absolute;left:0;right:0}
+.card{position:absolute;left:70px;right:50px}
+.bar{position:absolute;left:0;top:6px;width:13px;transform-origin:50% 0}
+.txt{padding-left:36px}
+.l{display:block;white-space:nowrap;will-change:transform}
+.sub{display:block;margin-top:18px;white-space:nowrap}
+</style></head>
+<body>
+<div id="band"></div>
+<div id="cards"></div>
+<script>
+const V = {
+  bolta: {
+    band: "top:760px;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,.9) 90px,#000 150px)",
+    top: 930, bar: "#e3161b",
+    l: "font-family:Nunito;font-weight:900;font-size:72px;line-height:1.12;color:#fff;letter-spacing:-.5px",
+    l2: "", sub: "font-family:Nunito;font-weight:600;font-size:30px;color:#a9a39c;letter-spacing:.3px",
+    cards: [
+      {in: .4, out: 60.6, a: "Bolta Rece, din 1786.", b: "I-am imaginat un site nou.", s: "Concept neoficial · Pacheco Studios"},
+      {in: 61.0, out: 1e9, a: "Afacerea ta merită", b: "un site ca acesta.", s: "Concept neoficial · Pacheco Studios"}
+    ]
+  },
+  hanam: {
+    band: "top:0;height:560px;background:linear-gradient(180deg,#000 0,#000 440px,rgba(0,0,0,0) 560px)",
+    top: 150, bar: "#e8312f",
+    l: "font-family:Bungee;font-size:66px;line-height:1.15;color:#fff;text-transform:uppercase",
+    l2: "color:#e8312f", sub: "font-family:Archivo;font-weight:500;font-size:27px;color:#9a9a9a;letter-spacing:2px;text-transform:uppercase",
+    cards: [{in: .4, out: 1e9, a: "Afacerea ta merită", b: "un site ca acesta.", s: "Hanam KBBQ · Quarteira, Portugalia"}]
+  },
+  jasmim: {
+    band: "top:760px;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,.9) 90px,#000 150px)",
+    top: 930, bar: "#ff5b45",
+    l: "font-family:Archivo;font-weight:300;font-size:84px;line-height:1.08;color:#fff;letter-spacing:-1.5px",
+    l2: "font-weight:800", sub: "font-family:Archivo;font-weight:500;font-size:28px;color:#a6a6a6;letter-spacing:.3px",
+    cards: [{in: .4, out: 1e9, a: "Afacerea ta merită", b: "un site ca acesta.", s: "Jasmim 2 · Manta Rota, Portugalia"}]
+  }
+};
+const cfg = V[new URLSearchParams(location.search).get('v')];
+document.getElementById('band').style.cssText = cfg.band;
+const root = document.getElementById('cards');
+const els = cfg.cards.map(c => {
+  const d = document.createElement('div'); d.className = 'card'; d.style.top = cfg.top + 'px';
+  d.innerHTML = `<div class="bar" style="background:${cfg.bar}"></div><div class="txt">
+    <span class="l a" style="${cfg.l}">${c.a}</span><span class="l b" style="${cfg.l};${cfg.l2}">${c.b}</span>
+    <span class="sub" style="${cfg.sub}">${c.s}</span></div>`;
+  root.appendChild(d);
+  const bar = d.querySelector('.bar'); bar.style.height = (d.querySelector('.txt').offsetHeight - 10) + 'px';
+  return {c, d, bar, a: d.querySelector('.a'), b: d.querySelector('.b'), s: d.querySelector('.sub')};
+});
+const cl = x => Math.max(0, Math.min(1, x));
+const eo = x => 1 - Math.pow(1 - x, 3);            // easeOutCubic
+const ei = x => x * x * x;                          // easeInCubic
+function part(el, t, t0, len, dx) {                 // entrada: desliza da esquerda + revela
+  const p = eo(cl((t - t0) / len));
+  el.style.transform = `translateX(${(1 - p) * dx}px)`;
+  el.style.opacity = p;
+  el.style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`;
+}
+window.setT = t => {
+  for (const e of els) {
+    const {c} = e;
+    if (t < c.in) { e.d.style.opacity = 0; continue; }
+    const q = ei(cl((t - c.out) / .35));           // saída
+    e.d.style.opacity = 1 - q;
+    e.d.style.transform = `translateY(${-q * 24}px)`;
+    e.bar.style.transform = `scaleY(${eo(cl((t - c.in) / .35))})`;
+    part(e.a, t, c.in + .12, .55, -60);
+    part(e.b, t, c.in + .26, .55, -60);
+    part(e.s, t, c.in + .55, .5, -30);
+  }
+};
+</script>
+</body></html>
