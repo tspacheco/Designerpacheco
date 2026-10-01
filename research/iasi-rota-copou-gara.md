@@ -25,3 +25,11 @@ Fontes: OpenStreetMap (Overpass), Wanderlog (dados do Google), pesquisa web. Fot
 | 10 | Fat Cat (café) | Copou + Alexandru cel Bun (Piața Voievozilor) | 2 locais, um em cada ponta da rota | Um site para os dois cafés |
 
 Nota: RestaurantGuru começou a responder 503 (limite de pedidos) a 01/10 ~16:00; a recolha de fotos reais continua quando voltar.
+
+## Estado a 01/10 (noite) — parado a pedido do Tomás
+- Demos feitas: Caucaz (`sites/caucaz/`), Andalu Gastrobar (`sites/andalu-gastrobar/`) + as 3 antigas.
+- Próximas (dados já recolhidos, falta construir com fotos reais):
+  - **Harmony Cafe** — Bd. Carol I 27 · 0753 817 519 · specialty coffee, jardim escondido, brunch (avocado toast, panquecas de frutos vermelhos, chicken parmigiana, smashed burger, «Pancakes Delight») · Wanderlog 2910126.
+  - **Cheffa** — Str. Gheorghe Lascăr 2 · 12:00–23:00 todos os dias · conceito de ex-concorrente MasterChef · burgers, tacos, quesadillas, esplanada · telefone a confirmar.
+  - **Tacos King** — Bd. Carol I 28 · Glovo (97 %) · tamanhos Prince (250 g) / Queen / King, 38–60 lei · horário a confirmar.
+- Fotos reais: via sandbox Higgsfield (Wanderlog/RestaurantGuru). Permissões em `.claude/settings.json` (valem a partir de uma sessão nova).
