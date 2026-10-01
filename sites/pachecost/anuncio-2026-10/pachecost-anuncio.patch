@@ -1,7 +1,7 @@
 diff -ru cur/en/index.html novo/en/index.html
 --- cur/en/index.html	2026-10-01 17:12:06.000000000 +0000
-+++ novo/en/index.html	2026-10-01 17:24:47.380663739 +0000
-@@ -478,10 +478,42 @@
++++ novo/en/index.html	2026-10-01 21:27:06.752163737 +0000
+@@ -478,10 +478,72 @@
    .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
    dialog.esquema[open]{animation:none}
  }
@@ -15,7 +15,6 @@ diff -ru cur/en/index.html novo/en/index.html
 +html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .afirmacao,
 +html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .lead{display:none}
 +.heroi-anuncio .botao{display:flex;width:100%;margin-top:1.5rem}
-+.heroi-anuncio .nota{margin-top:.9rem;font-size:.9375rem;color:var(--osso-2)}
 +/* em destaque: no anúncio, o terceiro quadrado é um restaurante e não a loja de roupa */
 +.so-anuncio{display:none}
 +html.anuncio .so-anuncio{display:block}
@@ -37,6 +36,37 @@ diff -ru cur/en/index.html novo/en/index.html
 +  .rgpd button{min-height:2.75rem;padding:0 1.1rem}
 +  .rgpd a{min-height:2.75rem}
 +}
++/* ═══ separadores com mais ar no computador (no telemóvel ficam como estão: os três têm de caber) ═══ */
++@media (min-width:48rem){
++  :root{--tabs:3.5rem}
++  .tabs ul{gap:2.25rem}
++  .tabs a{padding-inline:.15rem}
++}
++/* ═══ lema: a frase da casa, acima da secção dos sites. Escondido a quem chega por anúncio: aí fala o herói. ═══ */
++.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:28ch;
++  font:600 clamp(1.25rem,2.6vw,1.75rem)/1.3 var(--texto);color:var(--osso);text-wrap:balance}
++.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.6em;border-radius:2px;background:var(--laranja);
++  transform-origin:left center;transform:scaleX(0);animation:lema-traco .9s var(--sair) .3s forwards}
++@keyframes lema-traco{to{transform:none}}
++html.anuncio .lema{display:none}
++/* ═══ ponte para as automações: entre os tipos de negócio e "Mais sites que fizemos" ═══ */
++.ponte{margin-top:clamp(3rem,9vw,5rem);display:grid;gap:1.75rem;padding:clamp(1.4rem,4vw,2.5rem);
++  border:1px solid var(--linha-e);border-radius:1.25rem;background:var(--carvao-2);
++  background-image:radial-gradient(70% 90% at 100% 0%,rgba(232,98,44,.16),transparent 70%)}
++.ponte .afirmacao{font-size:clamp(1.5rem,3.2vw,2.25rem);margin-top:.7rem;max-width:16ch}
++.ponte .lead{font-size:1rem}
++.ponte-botao{margin-top:1.4rem;border-color:var(--laranja);color:var(--laranja)}
++.ponte-botao:hover,.ponte-botao:focus-visible{background:var(--laranja);color:var(--carvao)}
++.ponte-botao svg{transition:transform .25s var(--sair)}
++.ponte-botao:hover svg,.ponte-botao:focus-visible svg{transform:translateX(.3rem)}
++.ponte .chat{max-width:none}
++@media (min-width:48rem){
++  .ponte{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:clamp(2rem,5vw,4rem)}
++}
++@media (prefers-reduced-motion:reduce){
++  .lema-traco{animation:none;transform:none}
++  .ponte-botao svg{transition:none}
++}
  </style>
  <script>
  /* intro: decide-se antes de pintar (1.ª vez na sessão e sem movimento reduzido), para o site não aparecer um instante antes dela */
@@ -45,7 +75,34 @@ diff -ru cur/en/index.html novo/en/index.html
  </script>
  </head>
  <body>
-@@ -1326,6 +1358,11 @@
+@@ -909,6 +971,7 @@
+ </section>
+ <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
+   <div class="envolver seccao">
++    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>The work that takes your business to the next level.</p>
+     <p class="eyebrow">Websites</p>
+     <h2 id="t-proiecte" class="afirmacao">Every business sells differently. So should its website.</h2>
+     <p class="lead">We don’t start from a template. We start from how your customers choose, and the site answers them, one question at a time.</p>
+@@ -1008,6 +1071,18 @@
+ </details>
+       </div>
+     </div>
++          <aside class="ponte rv" aria-labelledby="t-ponte">
++        <div class="ponte-texto">
++          <p class="eyebrow">And after the website</p>
++          <h3 id="t-ponte" class="afirmacao">Your website brings customers. Automations keep them.</h3>
++          <p class="lead">Eight things you do by hand today, running on their own on WhatsApp: confirmed bookings, Google reviews, the customers who haven’t come back, invoices for your accountant.</p>
++          <a class="botao ponte-botao" href="#automatizari">See the automations<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
++        </div>
++        <div class="chat" aria-hidden="true">
++          <div class="msg client rv" style="--i:3"><small>Customer</small>Do you have a table for 4 tonight at 8?</div>
++          <div class="msg asistent rv" style="--i:14"><small>Assistant</small>We do. What name should I put it under? I’ll confirm the booking for 4 people at 20:00 right away.</div>
++        </div>
++      </aside>
+     <div class="mais">
+       <p class="eyebrow">More sites we’ve built</p>
+       <p class="lead">More variations, each with the identity of its own business.</p>
+@@ -1326,6 +1401,11 @@
    if (/[?&]origem=cartao\b/.test(location.search)) {
      window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
    }
@@ -57,7 +114,7 @@ diff -ru cur/en/index.html novo/en/index.html
    // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
    document.querySelectorAll('details.setor').forEach(function (d) {
      d.addEventListener('toggle', function () {
-@@ -1338,6 +1375,7 @@
+@@ -1338,6 +1418,7 @@
      if (!a) return;
      var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
      gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });
@@ -67,8 +124,8 @@ diff -ru cur/en/index.html novo/en/index.html
  
 diff -ru cur/index.html novo/index.html
 --- cur/index.html	2026-10-01 17:12:06.000000000 +0000
-+++ novo/index.html	2026-10-01 17:24:47.373756920 +0000
-@@ -478,10 +478,42 @@
++++ novo/index.html	2026-10-01 21:27:06.745863271 +0000
+@@ -478,10 +478,72 @@
    .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
    dialog.esquema[open]{animation:none}
  }
@@ -82,7 +139,6 @@ diff -ru cur/index.html novo/index.html
 +html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .afirmacao,
 +html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .lead{display:none}
 +.heroi-anuncio .botao{display:flex;width:100%;margin-top:1.5rem}
-+.heroi-anuncio .nota{margin-top:.9rem;font-size:.9375rem;color:var(--osso-2)}
 +/* em destaque: no anúncio, o terceiro quadrado é um restaurante e não a loja de roupa */
 +.so-anuncio{display:none}
 +html.anuncio .so-anuncio{display:block}
@@ -104,6 +160,37 @@ diff -ru cur/index.html novo/index.html
 +  .rgpd button{min-height:2.75rem;padding:0 1.1rem}
 +  .rgpd a{min-height:2.75rem}
 +}
++/* ═══ separadores com mais ar no computador (no telemóvel ficam como estão: os três têm de caber) ═══ */
++@media (min-width:48rem){
++  :root{--tabs:3.5rem}
++  .tabs ul{gap:2.25rem}
++  .tabs a{padding-inline:.15rem}
++}
++/* ═══ lema: a frase da casa, acima da secção dos sites. Escondido a quem chega por anúncio: aí fala o herói. ═══ */
++.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:28ch;
++  font:600 clamp(1.25rem,2.6vw,1.75rem)/1.3 var(--texto);color:var(--osso);text-wrap:balance}
++.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.6em;border-radius:2px;background:var(--laranja);
++  transform-origin:left center;transform:scaleX(0);animation:lema-traco .9s var(--sair) .3s forwards}
++@keyframes lema-traco{to{transform:none}}
++html.anuncio .lema{display:none}
++/* ═══ ponte para as automações: entre os tipos de negócio e "Mais sites que fizemos" ═══ */
++.ponte{margin-top:clamp(3rem,9vw,5rem);display:grid;gap:1.75rem;padding:clamp(1.4rem,4vw,2.5rem);
++  border:1px solid var(--linha-e);border-radius:1.25rem;background:var(--carvao-2);
++  background-image:radial-gradient(70% 90% at 100% 0%,rgba(232,98,44,.16),transparent 70%)}
++.ponte .afirmacao{font-size:clamp(1.5rem,3.2vw,2.25rem);margin-top:.7rem;max-width:16ch}
++.ponte .lead{font-size:1rem}
++.ponte-botao{margin-top:1.4rem;border-color:var(--laranja);color:var(--laranja)}
++.ponte-botao:hover,.ponte-botao:focus-visible{background:var(--laranja);color:var(--carvao)}
++.ponte-botao svg{transition:transform .25s var(--sair)}
++.ponte-botao:hover svg,.ponte-botao:focus-visible svg{transform:translateX(.3rem)}
++.ponte .chat{max-width:none}
++@media (min-width:48rem){
++  .ponte{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:clamp(2rem,5vw,4rem)}
++}
++@media (prefers-reduced-motion:reduce){
++  .lema-traco{animation:none;transform:none}
++  .ponte-botao svg{transition:none}
++}
  </style>
  <script>
  /* intro: decide-se antes de pintar (1.ª vez na sessão e sem movimento reduzido), para o site não aparecer um instante antes dela */
@@ -112,7 +199,7 @@ diff -ru cur/index.html novo/index.html
  </script>
  </head>
  <body>
-@@ -909,6 +941,12 @@
+@@ -909,6 +971,13 @@
  </section>
  <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
    <div class="envolver seccao">
@@ -122,10 +209,11 @@ diff -ru cur/index.html novo/index.html
 +      <p class="lead">Fazemos o teu site e mostramos-to antes de pagares. Sem compromisso.</p>
 +      <a class="botao primario grande" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Vi%20o%20an%C3%BAncio.%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20restaurante%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Escreve-nos no WhatsApp</a>
 +    </div>
++    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>O trabalho que faz o teu negócio subir de nível.</p>
      <p class="eyebrow">Sites</p>
      <h2 id="t-proiecte" class="afirmacao">Cada negócio vende de maneira diferente. O site também.</h2>
      <p class="lead">Não partimos de um modelo. Partimos da maneira como o teu cliente escolhe, e o site responde-lhe, pergunta a pergunta.</p>
-@@ -916,7 +954,8 @@
+@@ -916,7 +985,8 @@
      <ul class="grelha">
  <li class="rv dest" style="--i:0"><a class="q neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Jasmim 2</span><span class="q-meta"><span class="q-tip">Marisqueira</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Manta Rota</span></span></a></li>
  <li class="rv dest" style="--i:1"><a class="q" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400;--fs:1" target="_blank" rel="noopener"><span class="q-nome">HANAM</span><span class="q-meta"><span class="q-tip">Churrasco coreano</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Quarteira</span></span></a></li>
@@ -135,7 +223,26 @@ diff -ru cur/index.html novo/index.html
      </ul>
      <div class="setores-grelha">
        <div class="cab">
-@@ -1326,6 +1365,11 @@
+@@ -1008,6 +1078,18 @@
+ </details>
+       </div>
+     </div>
++          <aside class="ponte rv" aria-labelledby="t-ponte">
++        <div class="ponte-texto">
++          <p class="eyebrow">E depois do site</p>
++          <h3 id="t-ponte" class="afirmacao">O site traz clientes. As automações mantêm-nos.</h3>
++          <p class="lead">Oito coisas que hoje fazes à mão, a andarem sozinhas no WhatsApp: marcações confirmadas, avaliações no Google, os clientes que não voltaram, faturas para o contabilista.</p>
++          <a class="botao ponte-botao" href="#automatizari">Ver as automações<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
++        </div>
++        <div class="chat" aria-hidden="true">
++          <div class="msg client rv" style="--i:3"><small>Cliente</small>Têm mesa para 4 hoje às 20h?</div>
++          <div class="msg asistent rv" style="--i:14"><small>Assistente</small>Temos, sim. Em nome de quem fica? Confirmo já a reserva das 20:00 para 4 pessoas.</div>
++        </div>
++      </aside>
+     <div class="mais">
+       <p class="eyebrow">Mais sites que fizemos</p>
+       <p class="lead">Outras variações, cada uma com a identidade do próprio negócio.</p>
+@@ -1326,6 +1408,11 @@
    if (/[?&]origem=cartao\b/.test(location.search)) {
      window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
    }
@@ -147,7 +254,7 @@ diff -ru cur/index.html novo/index.html
    // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
    document.querySelectorAll('details.setor').forEach(function (d) {
      d.addEventListener('toggle', function () {
-@@ -1338,6 +1382,7 @@
+@@ -1338,6 +1425,7 @@
      if (!a) return;
      var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
      gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });
@@ -157,8 +264,8 @@ diff -ru cur/index.html novo/index.html
  
 diff -ru cur/ro/index.html novo/ro/index.html
 --- cur/ro/index.html	2026-10-01 17:12:16.000000000 +0000
-+++ novo/ro/index.html	2026-10-01 17:24:47.377675776 +0000
-@@ -478,10 +478,42 @@
++++ novo/ro/index.html	2026-10-01 21:27:06.749221899 +0000
+@@ -478,10 +478,72 @@
    .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
    dialog.esquema[open]{animation:none}
  }
@@ -172,7 +279,6 @@ diff -ru cur/ro/index.html novo/ro/index.html
 +html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .afirmacao,
 +html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .lead{display:none}
 +.heroi-anuncio .botao{display:flex;width:100%;margin-top:1.5rem}
-+.heroi-anuncio .nota{margin-top:.9rem;font-size:.9375rem;color:var(--osso-2)}
 +/* em destaque: no anúncio, o terceiro quadrado é um restaurante e não a loja de roupa */
 +.so-anuncio{display:none}
 +html.anuncio .so-anuncio{display:block}
@@ -194,6 +300,37 @@ diff -ru cur/ro/index.html novo/ro/index.html
 +  .rgpd button{min-height:2.75rem;padding:0 1.1rem}
 +  .rgpd a{min-height:2.75rem}
 +}
++/* ═══ separadores com mais ar no computador (no telemóvel ficam como estão: os três têm de caber) ═══ */
++@media (min-width:48rem){
++  :root{--tabs:3.5rem}
++  .tabs ul{gap:2.25rem}
++  .tabs a{padding-inline:.15rem}
++}
++/* ═══ lema: a frase da casa, acima da secção dos sites. Escondido a quem chega por anúncio: aí fala o herói. ═══ */
++.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:28ch;
++  font:600 clamp(1.25rem,2.6vw,1.75rem)/1.3 var(--texto);color:var(--osso);text-wrap:balance}
++.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.6em;border-radius:2px;background:var(--laranja);
++  transform-origin:left center;transform:scaleX(0);animation:lema-traco .9s var(--sair) .3s forwards}
++@keyframes lema-traco{to{transform:none}}
++html.anuncio .lema{display:none}
++/* ═══ ponte para as automações: entre os tipos de negócio e "Mais sites que fizemos" ═══ */
++.ponte{margin-top:clamp(3rem,9vw,5rem);display:grid;gap:1.75rem;padding:clamp(1.4rem,4vw,2.5rem);
++  border:1px solid var(--linha-e);border-radius:1.25rem;background:var(--carvao-2);
++  background-image:radial-gradient(70% 90% at 100% 0%,rgba(232,98,44,.16),transparent 70%)}
++.ponte .afirmacao{font-size:clamp(1.5rem,3.2vw,2.25rem);margin-top:.7rem;max-width:16ch}
++.ponte .lead{font-size:1rem}
++.ponte-botao{margin-top:1.4rem;border-color:var(--laranja);color:var(--laranja)}
++.ponte-botao:hover,.ponte-botao:focus-visible{background:var(--laranja);color:var(--carvao)}
++.ponte-botao svg{transition:transform .25s var(--sair)}
++.ponte-botao:hover svg,.ponte-botao:focus-visible svg{transform:translateX(.3rem)}
++.ponte .chat{max-width:none}
++@media (min-width:48rem){
++  .ponte{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:clamp(2rem,5vw,4rem)}
++}
++@media (prefers-reduced-motion:reduce){
++  .lema-traco{animation:none;transform:none}
++  .ponte-botao svg{transition:none}
++}
  </style>
  <script>
  /* intro: decide-se antes de pintar (1.ª vez na sessão e sem movimento reduzido), para o site não aparecer um instante antes dela */
@@ -202,7 +339,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
  </script>
  </head>
  <body>
-@@ -909,6 +941,12 @@
+@@ -909,6 +971,13 @@
  </section>
  <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
    <div class="envolver seccao">
@@ -212,10 +349,11 @@ diff -ru cur/ro/index.html novo/ro/index.html
 +      <p class="lead">Îți facem site-ul și ți-l arătăm înainte să plătești. Fără obligații.</p>
 +      <a class="botao primario grande" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20anun%C8%9Bul.%20Vreau%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20restaurantului%20meu%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Scrie-ne pe WhatsApp</a>
 +    </div>
++    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>Munca care îți duce afacerea la următorul nivel.</p>
      <p class="eyebrow">Site-uri</p>
      <h2 id="t-proiecte" class="afirmacao">Fiecare afacere vinde altfel. Și site-ul ei.</h2>
      <p class="lead">Nu pornim de la un șablon. Pornim de la felul în care alege clientul tău, iar site-ul îi răspunde, întrebare cu întrebare.</p>
-@@ -916,7 +954,8 @@
+@@ -916,7 +985,8 @@
      <ul class="grelha">
  <li class="rv dest" style="--i:0"><a class="q neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Jasmim 2</span><span class="q-meta"><span class="q-tip">Fructe de mare</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Manta Rota</span></span></a></li>
  <li class="rv dest" style="--i:1"><a class="q" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400;--fs:1" target="_blank" rel="noopener"><span class="q-nome">HANAM</span><span class="q-meta"><span class="q-tip">Grătar coreean</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Quarteira</span></span></a></li>
@@ -225,7 +363,26 @@ diff -ru cur/ro/index.html novo/ro/index.html
      </ul>
      <div class="setores-grelha">
        <div class="cab">
-@@ -1327,6 +1366,11 @@
+@@ -1008,6 +1078,18 @@
+ </details>
+       </div>
+     </div>
++          <aside class="ponte rv" aria-labelledby="t-ponte">
++        <div class="ponte-texto">
++          <p class="eyebrow">Și după site</p>
++          <h3 id="t-ponte" class="afirmacao">Site-ul aduce clienți. Automatizările îi păstrează.</h3>
++          <p class="lead">Opt lucruri pe care le faci acum de mână, mergând singure pe WhatsApp: programări confirmate, recenzii pe Google, clienții care nu s-au mai întors, facturi pentru contabil.</p>
++          <a class="botao ponte-botao" href="#automatizari">Vezi automatizările<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
++        </div>
++        <div class="chat" aria-hidden="true">
++          <div class="msg client rv" style="--i:3"><small>Client</small>Aveți masă pentru 4 diseară la 20?</div>
++          <div class="msg asistent rv" style="--i:14"><small>Asistent</small>Da, avem. Pe ce nume o trec? Confirm imediat rezervarea de la 20:00 pentru 4 persoane.</div>
++        </div>
++      </aside>
+     <div class="mais">
+       <p class="eyebrow">Mai multe site-uri făcute de noi</p>
+       <p class="lead">Mai multe variații, fiecare cu identitatea propriei afaceri.</p>
+@@ -1327,6 +1409,11 @@
    if (/[?&]origem=cartao\b/.test(location.search)) {
      window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
    }
@@ -237,7 +394,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
    // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
    document.querySelectorAll('details.setor').forEach(function (d) {
      d.addEventListener('toggle', function () {
-@@ -1339,6 +1383,7 @@
+@@ -1339,6 +1426,7 @@
      if (!a) return;
      var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
      gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });
