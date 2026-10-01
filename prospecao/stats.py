@@ -6,7 +6,7 @@
     python3 prospecao/stats.py --cidade Faro
 
 Uma linha por contacto (visita, chamada, WhatsApp, reunião). Colunas (separador ';'):
-  data (AAAA-MM-DD) · canal (visita/chamada/whatsapp/reuniao) · cidade · zona · negocio · tipo
+  data (AAAA-MM-DD) · canal (visita/chamada/whatsapp/reuniao/anuncio) · cidade · zona · negocio · tipo
   estrelas · avaliacoes · tem_site (S/N) · dono_falado (S/N) · contacto · telefone
   demo (S/N) · cartao (S/N) · qr_pack (N / O=oferecido / V=vendido)
   estado: visita | dono | demo | reuniao | proposta | venda | nao | excluir
