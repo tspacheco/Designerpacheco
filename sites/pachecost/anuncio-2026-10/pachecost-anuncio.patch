@@ -1,0 +1,247 @@
+diff -ru cur/en/index.html novo/en/index.html
+--- cur/en/index.html	2026-10-01 17:12:06.000000000 +0000
++++ novo/en/index.html	2026-10-01 17:24:47.380663739 +0000
+@@ -478,10 +478,42 @@
+   .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
+   dialog.esquema[open]{animation:none}
+ }
++
++/* ═══ chegada por anúncio (html.anuncio: ?utm_*, fbclid ou ?origem=anuncio, decidido no <head>) ═══
++   O primeiro ecrã fala a quem viu o vídeo de um restaurante: o que fazemos, a oferta e o WhatsApp.
++   Sem parâmetros, a página é a de sempre. */
++.heroi-anuncio{display:none}
++html.anuncio .heroi-anuncio{display:block}
++html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .eyebrow,
++html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .afirmacao,
++html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .lead{display:none}
++.heroi-anuncio .botao{display:flex;width:100%;margin-top:1.5rem}
++.heroi-anuncio .nota{margin-top:.9rem;font-size:.9375rem;color:var(--osso-2)}
++/* em destaque: no anúncio, o terceiro quadrado é um restaurante e não a loja de roupa */
++.so-anuncio{display:none}
++html.anuncio .so-anuncio{display:block}
++html.anuncio .sem-anuncio{display:none}
++@media (min-width:40rem){
++  .heroi-anuncio .botao{display:inline-flex;width:auto}
++}
++/* ═══ aviso de cookies compacto: faixa colada ao fundo no telemóvel (antes tapava um terço do ecrã) ═══ */
++.rgpd{left:0;right:0;bottom:0;transform:none;width:auto;border-radius:1rem 1rem 0 0;border-bottom:0;
++  gap:.55rem;padding:.7rem max(var(--gutter),env(safe-area-inset-left)) calc(.7rem + env(safe-area-inset-bottom))}
++.rgpd p{font-size:.8125rem;line-height:1.4}
++.rgpd .acoes{gap:.5rem}
++.rgpd button{min-height:2.5rem;padding:0 .9rem}
++.rgpd a{min-height:2.5rem}
++@media (min-width:40rem){
++  .rgpd{left:50%;right:auto;bottom:calc(1rem + env(safe-area-inset-bottom));transform:translateX(-50%);
++    width:min(42rem,calc(100% - 2rem));border-radius:1rem;border-bottom:1px solid var(--linha-e);gap:.9rem;padding:1rem 1.1rem}
++  .rgpd p{font-size:.875rem;line-height:1.5}
++  .rgpd button{min-height:2.75rem;padding:0 1.1rem}
++  .rgpd a{min-height:2.75rem}
++}
+ </style>
+ <script>
+ /* intro: decide-se antes de pintar (1.ª vez na sessão e sem movimento reduzido), para o site não aparecer um instante antes dela */
+-(function(){try{if(!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
++(function(){try{var a=/[?&](utm_[a-z]+=|fbclid=|origem=anuncio)/.test(location.search);if(a)document.documentElement.classList.add('anuncio');if(!a&&!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
+ </script>
+ </head>
+ <body>
+@@ -1326,6 +1358,11 @@
+   if (/[?&]origem=cartao\b/.test(location.search)) {
+     window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
+   }
++  // chegadas por anúncio (html.anuncio, decidido no <head>) e as saídas delas para o WhatsApp, contadas à parte
++  var porAnuncio = document.documentElement.classList.contains('anuncio');
++  if (porAnuncio) {
++    window.addEventListener('load', function () { gc({ path: 'anuncio/chegada', title: 'chegada por anúncio', event: true }); });
++  }
+   // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
+   document.querySelectorAll('details.setor').forEach(function (d) {
+     d.addEventListener('toggle', function () {
+@@ -1338,6 +1375,7 @@
+     if (!a) return;
+     var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
+     gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });
++    if (porAnuncio) gc({ path: 'anuncio/' + canal, title: 'saída por anúncio: ' + canal, event: true });
+     try { if (window.fbq) window.fbq('track', 'Contact', { canal: canal }); } catch (err) {}
+   }, { passive: true });
+ 
+diff -ru cur/index.html novo/index.html
+--- cur/index.html	2026-10-01 17:12:06.000000000 +0000
++++ novo/index.html	2026-10-01 17:24:47.373756920 +0000
+@@ -478,10 +478,42 @@
+   .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
+   dialog.esquema[open]{animation:none}
+ }
++
++/* ═══ chegada por anúncio (html.anuncio: ?utm_*, fbclid ou ?origem=anuncio, decidido no <head>) ═══
++   O primeiro ecrã fala a quem viu o vídeo de um restaurante: o que fazemos, a oferta e o WhatsApp.
++   Sem parâmetros, a página é a de sempre. */
++.heroi-anuncio{display:none}
++html.anuncio .heroi-anuncio{display:block}
++html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .eyebrow,
++html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .afirmacao,
++html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .lead{display:none}
++.heroi-anuncio .botao{display:flex;width:100%;margin-top:1.5rem}
++.heroi-anuncio .nota{margin-top:.9rem;font-size:.9375rem;color:var(--osso-2)}
++/* em destaque: no anúncio, o terceiro quadrado é um restaurante e não a loja de roupa */
++.so-anuncio{display:none}
++html.anuncio .so-anuncio{display:block}
++html.anuncio .sem-anuncio{display:none}
++@media (min-width:40rem){
++  .heroi-anuncio .botao{display:inline-flex;width:auto}
++}
++/* ═══ aviso de cookies compacto: faixa colada ao fundo no telemóvel (antes tapava um terço do ecrã) ═══ */
++.rgpd{left:0;right:0;bottom:0;transform:none;width:auto;border-radius:1rem 1rem 0 0;border-bottom:0;
++  gap:.55rem;padding:.7rem max(var(--gutter),env(safe-area-inset-left)) calc(.7rem + env(safe-area-inset-bottom))}
++.rgpd p{font-size:.8125rem;line-height:1.4}
++.rgpd .acoes{gap:.5rem}
++.rgpd button{min-height:2.5rem;padding:0 .9rem}
++.rgpd a{min-height:2.5rem}
++@media (min-width:40rem){
++  .rgpd{left:50%;right:auto;bottom:calc(1rem + env(safe-area-inset-bottom));transform:translateX(-50%);
++    width:min(42rem,calc(100% - 2rem));border-radius:1rem;border-bottom:1px solid var(--linha-e);gap:.9rem;padding:1rem 1.1rem}
++  .rgpd p{font-size:.875rem;line-height:1.5}
++  .rgpd button{min-height:2.75rem;padding:0 1.1rem}
++  .rgpd a{min-height:2.75rem}
++}
+ </style>
+ <script>
+ /* intro: decide-se antes de pintar (1.ª vez na sessão e sem movimento reduzido), para o site não aparecer um instante antes dela */
+-(function(){try{if(!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
++(function(){try{var a=/[?&](utm_[a-z]+=|fbclid=|origem=anuncio)/.test(location.search);if(a)document.documentElement.classList.add('anuncio');if(!a&&!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
+ </script>
+ </head>
+ <body>
+@@ -909,6 +941,12 @@
+ </section>
+ <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
+   <div class="envolver seccao">
++    <div class="heroi-anuncio">
++      <p class="eyebrow">Sites para restaurantes</p>
++      <h2 class="afirmacao">Um site assim para o teu restaurante.</h2>
++      <p class="lead">Fazemos o teu site e mostramos-to antes de pagares. Sem compromisso.</p>
++      <a class="botao primario grande" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Vi%20o%20an%C3%BAncio.%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20restaurante%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Escreve-nos no WhatsApp</a>
++    </div>
+     <p class="eyebrow">Sites</p>
+     <h2 id="t-proiecte" class="afirmacao">Cada negócio vende de maneira diferente. O site também.</h2>
+     <p class="lead">Não partimos de um modelo. Partimos da maneira como o teu cliente escolhe, e o site responde-lhe, pergunta a pergunta.</p>
+@@ -916,7 +954,8 @@
+     <ul class="grelha">
+ <li class="rv dest" style="--i:0"><a class="q neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Jasmim 2</span><span class="q-meta"><span class="q-tip">Marisqueira</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Manta Rota</span></span></a></li>
+ <li class="rv dest" style="--i:1"><a class="q" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400;--fs:1" target="_blank" rel="noopener"><span class="q-nome">HANAM</span><span class="q-meta"><span class="q-tip">Churrasco coreano</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Quarteira</span></span></a></li>
+-<li class="rv dest" style="--i:2"><a class="q" href="/p/toda-chic/pt.html" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400;--fs:1"><span class="q-nome">Toda Chic</span><span class="q-meta"><span class="q-tip">Loja de roupa online</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Portugal</span></span></a></li>
++<li class="rv dest sem-anuncio" style="--i:2"><a class="q" href="/p/toda-chic/pt.html" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400;--fs:1"><span class="q-nome">Toda Chic</span><span class="q-meta"><span class="q-tip">Loja de roupa online</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Portugal</span></span></a></li>
++<li class="rv dest so-anuncio" style="--i:2"><a class="q" href="https://gruponaval.online" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Grupo Naval</span><span class="q-meta"><span class="q-tip">Restaurante</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Olhão</span></span></a></li>
+     </ul>
+     <div class="setores-grelha">
+       <div class="cab">
+@@ -1326,6 +1365,11 @@
+   if (/[?&]origem=cartao\b/.test(location.search)) {
+     window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
+   }
++  // chegadas por anúncio (html.anuncio, decidido no <head>) e as saídas delas para o WhatsApp, contadas à parte
++  var porAnuncio = document.documentElement.classList.contains('anuncio');
++  if (porAnuncio) {
++    window.addEventListener('load', function () { gc({ path: 'anuncio/chegada', title: 'chegada por anúncio', event: true }); });
++  }
+   // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
+   document.querySelectorAll('details.setor').forEach(function (d) {
+     d.addEventListener('toggle', function () {
+@@ -1338,6 +1382,7 @@
+     if (!a) return;
+     var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
+     gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });
++    if (porAnuncio) gc({ path: 'anuncio/' + canal, title: 'saída por anúncio: ' + canal, event: true });
+     try { if (window.fbq) window.fbq('track', 'Contact', { canal: canal }); } catch (err) {}
+   }, { passive: true });
+ 
+diff -ru cur/ro/index.html novo/ro/index.html
+--- cur/ro/index.html	2026-10-01 17:12:16.000000000 +0000
++++ novo/ro/index.html	2026-10-01 17:24:47.377675776 +0000
+@@ -478,10 +478,42 @@
+   .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
+   dialog.esquema[open]{animation:none}
+ }
++
++/* ═══ chegada por anúncio (html.anuncio: ?utm_*, fbclid ou ?origem=anuncio, decidido no <head>) ═══
++   O primeiro ecrã fala a quem viu o vídeo de um restaurante: o que fazemos, a oferta e o WhatsApp.
++   Sem parâmetros, a página é a de sempre. */
++.heroi-anuncio{display:none}
++html.anuncio .heroi-anuncio{display:block}
++html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .eyebrow,
++html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .afirmacao,
++html.anuncio #proiecte > .envolver:has(.heroi-anuncio) > .lead{display:none}
++.heroi-anuncio .botao{display:flex;width:100%;margin-top:1.5rem}
++.heroi-anuncio .nota{margin-top:.9rem;font-size:.9375rem;color:var(--osso-2)}
++/* em destaque: no anúncio, o terceiro quadrado é um restaurante e não a loja de roupa */
++.so-anuncio{display:none}
++html.anuncio .so-anuncio{display:block}
++html.anuncio .sem-anuncio{display:none}
++@media (min-width:40rem){
++  .heroi-anuncio .botao{display:inline-flex;width:auto}
++}
++/* ═══ aviso de cookies compacto: faixa colada ao fundo no telemóvel (antes tapava um terço do ecrã) ═══ */
++.rgpd{left:0;right:0;bottom:0;transform:none;width:auto;border-radius:1rem 1rem 0 0;border-bottom:0;
++  gap:.55rem;padding:.7rem max(var(--gutter),env(safe-area-inset-left)) calc(.7rem + env(safe-area-inset-bottom))}
++.rgpd p{font-size:.8125rem;line-height:1.4}
++.rgpd .acoes{gap:.5rem}
++.rgpd button{min-height:2.5rem;padding:0 .9rem}
++.rgpd a{min-height:2.5rem}
++@media (min-width:40rem){
++  .rgpd{left:50%;right:auto;bottom:calc(1rem + env(safe-area-inset-bottom));transform:translateX(-50%);
++    width:min(42rem,calc(100% - 2rem));border-radius:1rem;border-bottom:1px solid var(--linha-e);gap:.9rem;padding:1rem 1.1rem}
++  .rgpd p{font-size:.875rem;line-height:1.5}
++  .rgpd button{min-height:2.75rem;padding:0 1.1rem}
++  .rgpd a{min-height:2.75rem}
++}
+ </style>
+ <script>
+ /* intro: decide-se antes de pintar (1.ª vez na sessão e sem movimento reduzido), para o site não aparecer um instante antes dela */
+-(function(){try{if(!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
++(function(){try{var a=/[?&](utm_[a-z]+=|fbclid=|origem=anuncio)/.test(location.search);if(a)document.documentElement.classList.add('anuncio');if(!a&&!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
+ </script>
+ </head>
+ <body>
+@@ -909,6 +941,12 @@
+ </section>
+ <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
+   <div class="envolver seccao">
++    <div class="heroi-anuncio">
++      <p class="eyebrow">Site-uri pentru restaurante</p>
++      <h2 class="afirmacao">Un site ca acesta pentru restaurantul tău.</h2>
++      <p class="lead">Îți facem site-ul și ți-l arătăm înainte să plătești. Fără obligații.</p>
++      <a class="botao primario grande" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20anun%C8%9Bul.%20Vreau%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20restaurantului%20meu%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Scrie-ne pe WhatsApp</a>
++    </div>
+     <p class="eyebrow">Site-uri</p>
+     <h2 id="t-proiecte" class="afirmacao">Fiecare afacere vinde altfel. Și site-ul ei.</h2>
+     <p class="lead">Nu pornim de la un șablon. Pornim de la felul în care alege clientul tău, iar site-ul îi răspunde, întrebare cu întrebare.</p>
+@@ -916,7 +954,8 @@
+     <ul class="grelha">
+ <li class="rv dest" style="--i:0"><a class="q neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Jasmim 2</span><span class="q-meta"><span class="q-tip">Fructe de mare</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Manta Rota</span></span></a></li>
+ <li class="rv dest" style="--i:1"><a class="q" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400;--fs:1" target="_blank" rel="noopener"><span class="q-nome">HANAM</span><span class="q-meta"><span class="q-tip">Grătar coreean</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Quarteira</span></span></a></li>
+-<li class="rv dest" style="--i:2"><a class="q" href="/p/toda-chic/" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400;--fs:1"><span class="q-nome">Toda Chic</span><span class="q-meta"><span class="q-tip">Magazin de haine online</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Portugalia</span></span></a></li>
++<li class="rv dest sem-anuncio" style="--i:2"><a class="q" href="/p/toda-chic/" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400;--fs:1"><span class="q-nome">Toda Chic</span><span class="q-meta"><span class="q-tip">Magazin de haine online</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Portugalia</span></span></a></li>
++<li class="rv dest so-anuncio" style="--i:2"><a class="q" href="https://gruponaval.online" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Grupo Naval</span><span class="q-meta"><span class="q-tip">Restaurant</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Olhão</span></span></a></li>
+     </ul>
+     <div class="setores-grelha">
+       <div class="cab">
+@@ -1327,6 +1366,11 @@
+   if (/[?&]origem=cartao\b/.test(location.search)) {
+     window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
+   }
++  // chegadas por anúncio (html.anuncio, decidido no <head>) e as saídas delas para o WhatsApp, contadas à parte
++  var porAnuncio = document.documentElement.classList.contains('anuncio');
++  if (porAnuncio) {
++    window.addEventListener('load', function () { gc({ path: 'anuncio/chegada', title: 'chegada por anúncio', event: true }); });
++  }
+   // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
+   document.querySelectorAll('details.setor').forEach(function (d) {
+     d.addEventListener('toggle', function () {
+@@ -1339,6 +1383,7 @@
+     if (!a) return;
+     var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
+     gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });
++    if (porAnuncio) gc({ path: 'anuncio/' + canal, title: 'saída por anúncio: ' + canal, event: true });
+     try { if (window.fbq) window.fbq('track', 'Contact', { canal: canal }); } catch (err) {}
+   }, { passive: true });
+ 
