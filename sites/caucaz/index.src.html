@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Caucaz · Bucătărie georgiană în Copou, Iași</title>
+<meta name="description" content="Restaurant Caucaz — bucătărie georgiană pe Bulevardul Carol I 26-28, Iași. Khachapuri, khinkali, pkhali și grătar. Rezervări: +40 759 853 887.">
+<meta name="theme-color" content="#1b0f0c">
+<style>
+/*__FONTES__*/
+:root{
+  --vin:#5b1420; --vin2:#7e1d2c; --noapte:#1b0f0c; --lut:#f3e7d6; --lut2:#e7d4ba; --aur:#c99a4b; --aur2:#e2bd78; --ink:#24130f; --mut:#8c7462;
+  --serif:"Forum",Georgia,serif; --geo:"Noto Serif Georgian",serif; --sans:"Manrope",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--lut);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--aur);outline-offset:3px;border-radius:4px}
+.demo{position:sticky;top:0;z-index:50;background:var(--aur);color:var(--noapte);text-align:center;font:600 12px/1 var(--sans);letter-spacing:.18em;padding:9px 12px;text-transform:uppercase}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+
+/* HERÓI — o brinde georgiano escreve-se */
+.hero{position:relative;min-height:92svh;display:grid;align-items:end;color:var(--lut);overflow:hidden;background:var(--noapte)}
+.hero .bg{position:absolute;inset:0}
+.hero .bg svg,.hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .bg img{filter:saturate(.9) contrast(1.05);transform:scale(1.08);animation:zoom 14s ease-out forwards}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,15,12,.35) 0%,rgba(27,15,12,.2) 35%,rgba(27,15,12,.92) 85%)}
+@keyframes zoom{to{transform:scale(1)}}
+.hero .in{position:relative;padding:0 0 9vh}
+.toast{font-family:var(--geo);font-weight:800;font-size:clamp(46px,11vw,128px);line-height:1.2;color:var(--aur2);display:flex;flex-wrap:wrap}
+.toast span{display:inline-block;opacity:0;transform:translateY(.35em);animation:lit .5s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes lit{to{opacity:1;transform:none}}
+.toast-tr{font:500 14px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--lut2);margin-top:10px;opacity:0;animation:fade .8s 1.5s forwards}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(64px,15vw,190px);line-height:.85;letter-spacing:-.01em;margin-top:22px;opacity:0;animation:fade 1s 1.7s forwards}
+.sub{max-width:34ch;font-size:clamp(17px,2.2vw,21px);color:var(--lut2);margin-top:16px;opacity:0;animation:fade 1s 2s forwards}
+@keyframes fade{to{opacity:1}}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;opacity:0;animation:fade 1s 2.3s forwards}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font:700 15px/1 var(--sans);text-decoration:none;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--aur);color:var(--noapte)}
+.btn.p:hover{background:var(--aur2)}
+.btn.s{border:1.5px solid rgba(243,231,214,.5);color:var(--lut)}
+.rate{position:absolute;right:0;bottom:9vh;background:rgba(27,15,12,.65);backdrop-filter:blur(6px);border:1px solid rgba(201,154,75,.5);border-radius:14px;padding:12px 16px;text-align:center;opacity:0;animation:fade 1s 2.6s forwards}
+.rate b{display:block;font:400 34px/1 var(--serif);color:var(--aur2)}
+.rate small{font-size:12px;color:var(--lut2);letter-spacing:.06em}
+
+/* ornamento — viță de vie */
+.vine{display:block;width:100%;height:46px;color:var(--vin)}
+
+section{padding:88px 0}
+.kick{font:600 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--vin2)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6vw,68px);line-height:1;margin:14px 0 18px;color:var(--vin)}
+h2 .g{font-family:var(--geo);font-size:.55em;color:var(--aur);display:block;margin-bottom:6px}
+.lead{max-width:60ch;color:#4b3329;font-size:18px}
+
+/* SUPRA — a mesa */
+.supra{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.dish{background:#fffaf2;border:1px solid var(--lut2);border-radius:18px;padding:22px 22px 20px;position:relative;transition:transform .25s,box-shadow .25s}
+.dish:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(91,20,32,.45)}
+.dish .ge{font-family:var(--geo);font-weight:800;color:var(--aur);font-size:22px}
+.dish h3{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.05;color:var(--vin);margin:6px 0 8px}
+.dish p{font-size:15px;color:#5c4337}
+.dish .pr{display:inline-block;margin-top:12px;font:600 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);border:1px dashed var(--lut2);padding:6px 10px;border-radius:999px}
+
+/* GALERIA */
+.gal{background:var(--noapte);color:var(--lut);padding:88px 0}
+.gal h2{color:var(--lut)}
+.gal .kick{color:var(--aur2)}
+.grid{display:grid;gap:14px;grid-template-columns:1.4fr 1fr;grid-template-rows:260px 260px;margin-top:34px}
+.ph{position:relative;border-radius:16px;overflow:hidden;background:#2a1712}
+.ph:first-child{grid-row:span 2}
+.ph svg,.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph img{transition:transform .6s}
+.ph:hover img{transform:scale(1.05)}
+.ph figcaption{position:absolute;left:12px;bottom:10px;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;background:rgba(27,15,12,.7);padding:7px 10px;border-radius:999px}
+.src{margin-top:14px;font-size:12px;color:#a8917e}
+
+/* RECENZIE */
+.quote{background:var(--vin);color:var(--lut);border-radius:24px;padding:42px clamp(24px,5vw,56px);margin-top:10px;position:relative;overflow:hidden}
+.quote::before{content:"“";position:absolute;right:24px;top:-30px;font:400 220px/1 var(--serif);color:rgba(226,189,120,.18)}
+.quote p{font-family:var(--serif);font-size:clamp(22px,3vw,30px);line-height:1.3;max-width:40ch}
+.quote cite{display:block;margin-top:18px;font:600 13px/1.4 var(--sans);letter-spacing:.08em;color:var(--aur2);font-style:normal}
+
+/* VISIT */
+.visit{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:30px}
+.card{background:#fffaf2;border:1px solid var(--lut2);border-radius:18px;padding:26px}
+.card h3{font-family:var(--serif);font-weight:400;font-size:28px;color:var(--vin);margin-bottom:10px}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px}
+.card dt{color:var(--mut)}
+.map{border-radius:18px;overflow:hidden;min-height:280px;background:var(--lut2);display:grid;place-items:center;text-align:center;padding:20px}
+.map button{all:unset;cursor:pointer;background:var(--vin);color:var(--lut);padding:14px 22px;border-radius:999px;font:700 14px/1 var(--sans)}
+.map iframe{width:100%;height:100%;min-height:280px;border:0}
+
+/* PENTRU PROPRIETAR — o que o site faz */
+.own{background:var(--lut2);border-top:1px solid #d9c2a3}
+.flow{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:30px;counter-reset:f}
+.flow div{background:var(--lut);border-radius:16px;padding:20px;counter-increment:f}
+.flow div::before{content:counter(f,decimal-leading-zero);display:block;font:400 34px/1 var(--serif);color:var(--aur)}
+.flow b{display:block;margin:8px 0 4px;color:var(--vin)}
+.flow p{font-size:14.5px;color:#5c4337}
+
+footer{background:var(--noapte);color:#bfa98f;padding:46px 0 120px;font-size:14px}
+footer a{color:var(--aur2)}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+.bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:10px;justify-content:center}
+.bar a{flex:1;max-width:280px;text-align:center;justify-content:center;box-shadow:0 12px 30px -10px rgba(0,0,0,.5)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.rv.on{opacity:1;transform:none}
+@media (min-width:900px){.bar{display:none}}
+@media (max-width:640px){.grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 160px}.ph:first-child{grid-column:span 2;grid-row:auto}.rate{position:relative;top:auto;right:auto;display:inline-block;margin-bottom:22px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.toast span,.toast-tr,h1,.sub,.cta,.rate{opacity:1;transform:none}.rv{opacity:1;transform:none}.hero .bg img{transform:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Restaurant Caucaz","servesCuisine":"Georgian","address":{"@type":"PostalAddress","streetAddress":"Bulevardul Carol I 26-28","addressLocality":"Iași","postalCode":"700505","addressCountry":"RO"},"telephone":"+40 759 853 887","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.6","reviewCount":"947"},"sameAs":["https://www.facebook.com/restaurantcaucaz"]}
+</script>
+</head>
+<body>
+<div class="demo" role="note">Prezentare · Pacheco Studios · concept de site</div>
+
+<header class="hero">
+  <div class="bg" aria-hidden="true">
+    <svg viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="h" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#7e1d2c"/><stop offset="1" stop-color="#1b0f0c"/></radialGradient><pattern id="v" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M10 70c20-10 20-40 40-50s30 10 20 25-35 5-30-15" fill="none" stroke="#c99a4b" stroke-opacity=".18" stroke-width="2"/><circle cx="62" cy="58" r="5" fill="#c99a4b" fill-opacity=".15"/></pattern></defs><rect width="400" height="600" fill="url(#h)"/><rect width="400" height="600" fill="url(#v)"/></svg>
+    <img src="https://itin-dev.wanderlogstatic.com/freeImage/SxuuqW8avNOLJ09PT9m5Pc0GL4TS0jgf" alt="" onerror="this.remove()" fetchpriority="high">
+  </div>
+  <div class="wrap in">
+    <div class="rate" aria-label="4,6 din 5 pe Google, 947 de recenzii"><b>4,6★</b><small>947 recenzii Google</small></div>
+    <p class="toast" aria-label="Gaumarjos — noroc, în georgiană" id="toast">გაუმარჯოს!</p>
+    <p class="toast-tr">„Gaumarjos!” — Noroc, în georgiană</p>
+    <h1>Caucaz</h1>
+    <p class="sub">Bucătărie georgiană pe Bulevardul Carol I. Khachapuri ieșit din cuptor, khinkali făcute de mână și o masă la care nu se pleacă devreme.</p>
+    <div class="cta">
+      <a class="btn p" href="tel:+40759853887">Rezervă o masă · 0759 853 887</a>
+      <a class="btn s" href="#meniu">Vezi masa georgiană</a>
+    </div>
+  </div>
+</header>
+
+<svg class="vine" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 23 C100 3 200 43 300 23 S500 3 600 23 800 43 900 23 1100 3 1200 23" fill="none" stroke="currentColor" stroke-width="2"/><g fill="currentColor"><circle cx="300" cy="23" r="5"/><circle cx="600" cy="23" r="5"/><circle cx="900" cy="23" r="5"/></g></svg>
+
+<section id="meniu">
+  <div class="wrap">
+    <p class="kick rv">Supra · masa georgiană</p>
+    <h2 class="rv"><span class="g">სუფრა</span>Ce ajunge pe masă</h2>
+    <p class="lead rv">În Georgia, masa se numește <em>supra</em> și nu se termină până nu s-a ridicat ultimul pahar. La Caucaz, felurile pe care oaspeții le pomenesc cel mai des:</p>
+    <div class="supra">
+      <article class="dish rv"><span class="ge">ხაჭაპური</span><h3>Khachapuri</h3><p>Pâine-barcă umplută cu brânză, scoasă fierbinte din cuptor. Felul cu care încep mai toți.</p><span class="pr">preț · a confirmar</span></article>
+      <article class="dish rv"><span class="ge">ხინკალი</span><h3>Khinkali</h3><p>Găluște georgiene cu brânză, porc, legume sau vită — cu supa înăuntru.</p><span class="pr">preț · a confirmar</span></article>
+      <article class="dish rv"><span class="ge">ფხალი</span><h3>Pkhali</h3><p>Pastă de sfeclă cu nucă — prospețimea dinaintea grătarului.</p><span class="pr">preț · a confirmar</span></article>
+      <article class="dish rv"><span class="ge">მწვადი</span><h3>De la grătar</h3><p>Carne la grătar cu sosurile casei. Meniul complet, cu prețuri, intră aici.</p><span class="pr">preț · a confirmar</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="gal">
+  <div class="wrap">
+    <p class="kick rv">Atmosfera</p>
+    <h2 class="rv">La Caucaz, pe Carol I</h2>
+    <div class="grid">
+      <figure class="ph rv"><svg viewBox="0 0 4 3" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="3" fill="#3a1f18"/></svg><img loading="lazy" src="https://itin-dev.wanderlogstatic.com/freeImage/NURo39hKUFruI6bESilyYvDtwjaGah2T" alt="Restaurant Caucaz, Iași" onerror="this.remove()"></figure>
+      <figure class="ph rv"><svg viewBox="0 0 4 3" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="3" fill="#4a2018"/></svg><img loading="lazy" src="https://itin-dev.wanderlogstatic.com/freeImage/3JE2oV9g2ekNaWq9mZMXnq00knMrchpi" alt="Restaurant Caucaz, Iași" onerror="this.remove()"></figure>
+      <figure class="ph rv"><svg viewBox="0 0 4 3" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="3" fill="#5b1420"/></svg><img loading="lazy" src="https://itin-dev.wanderlogstatic.com/freeImage/SxuuqW8avNOLJ09PT9m5Pc0GL4TS0jgf" alt="Restaurant Caucaz, Iași" onerror="this.remove()"></figure>
+    </div>
+    <p class="src">Fotografii publice ale localului (Google). În site-ul final intră fotografiile voastre.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick rv">Ce spun oaspeții</p>
+    <h2 class="rv">947 de recenzii, 4,6 din 5</h2>
+    <blockquote class="quote rv">
+      <p>„A great place to enjoy traditional Georgian cuisine… A popular dish on the menu and one of my favorites is Khachapuri.”</p>
+      <cite>Alina M. · 5★ pe Google · octombrie 2024</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section id="vizita" style="padding-top:0">
+  <div class="wrap">
+    <p class="kick rv">Vizită</p>
+    <h2 class="rv">Vă așteptăm la masă</h2>
+    <div class="visit">
+      <div class="card rv">
+        <h3>Restaurant Caucaz</h3>
+        <dl>
+          <dt>Adresă</dt><dd>Bulevardul Carol I 26-28, Copou, Iași</dd>
+          <dt>Telefon</dt><dd><a href="tel:+40759853887">+40 759 853 887</a></dd>
+          <dt>Program</dt><dd>Zilnic 12:00 – 22:00 <small>(a confirmar)</small></dd>
+          <dt>Rezervări</dt><dd>Recomandate — prin telefon</dd>
+          <dt>Social</dt><dd><a href="https://www.facebook.com/restaurantcaucaz" rel="noopener">Facebook</a></dd>
+        </dl>
+      </div>
+      <div class="map rv" id="map"><div><p style="margin-bottom:14px;color:#5c4337">Harta se încarcă doar dacă o deschideți.</p><button type="button" onclick="this.closest('.map').innerHTML='<iframe title=&quot;Harta Restaurant Caucaz&quot; loading=&quot;lazy&quot; src=&quot;https://www.google.com/maps?q=Restaurant+Caucaz,+Bulevardul+Carol+I+26-28,+Iasi&amp;output=embed&quot;></iframe>'">Deschide harta</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="own">
+  <div class="wrap">
+    <p class="kick rv">Pentru proprietar · ce face acest site</p>
+    <h2 class="rv">947 de oameni v-au lăudat pe Google. Acum au și unde să rezerve.</h2>
+    <div class="flow">
+      <div class="rv"><b>Găsit pe Google</b><p>Un site propriu, nu doar Facebook — apare la „restaurant georgian Iași”.</p></div>
+      <div class="rv"><b>Meniul pe telefon</b><p>Cu fotografii și prețuri, actualizat de voi în câteva minute.</p></div>
+      <div class="rv"><b>Rezervare în 2 atingeri</b><p>Telefon sau WhatsApp, cu confirmare automată și reminder.</p></div>
+      <div class="rv"><b>Recenzii care cresc</b><p>După vizită, oaspetele primește linkul de recenzie Google.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <p>© Restaurant Caucaz · Bulevardul Carol I 26-28, Iași</p>
+    <p><a href="https://anpc.ro/ce-este-sal/" rel="noopener">ANPC – SAL</a> · <a href="https://ec.europa.eu/consumers/odr" rel="noopener">SOL</a></p>
+    <p>Concept: <a href="https://ro.pachecost.com" rel="noopener">Pacheco Studios</a></p>
+  </div>
+</footer>
+
+<nav class="bar" aria-label="Acțiuni rapide"><a class="btn p" href="tel:+40759853887">Rezervă · sună acum</a></nav>
+
+<script>
+// literele brindului entram uma a uma
+(function(){var t=document.getElementById('toast');if(!t)return;var s=t.textContent;t.textContent='';[...s].forEach(function(c,i){var e=document.createElement('span');e.textContent=c;e.style.animationDelay=(0.15+i*0.11)+'s';e.setAttribute('aria-hidden','true');t.appendChild(e)});})();
+(function(){var els=document.querySelectorAll('.rv');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')});return}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.15});els.forEach(function(e){io.observe(e)});})();
+</script>
+</body>
+</html>

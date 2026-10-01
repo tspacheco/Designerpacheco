@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Andalu Gastrobar · Spania, în Copou</title>
+<meta name="description" content="Andalu Gastrobar — gastrobar spaniol pe Strada Teodor Codrescu 6, Iași. Doi ieșeni întorși după 13 ani în Madrid. Rezervări: +40 752 803 443.">
+<meta name="theme-color" content="#b8321e">
+<style>
+/*__FONTES__*/
+:root{--rojo:#b8321e;--rojo2:#d9482f;--azafran:#f2b632;--oliva:#4d5a2a;--crema:#f7eedd;--crema2:#efe0c4;--tinta:#1f140e;--mut:#7a6650;
+--disp:"Shrikhand",Georgia,serif;--sans:"Manrope",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--crema);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--azafran);outline-offset:3px;border-radius:4px}
+.demo{position:sticky;top:0;z-index:50;background:var(--tinta);color:var(--azafran);text-align:center;font:500 12px/1 var(--mono);letter-spacing:.16em;padding:9px 12px;text-transform:uppercase}
+.wrap{width:min(1140px,100% - 40px);margin-inline:auto}
+
+/* HERÓI */
+.hero{position:relative;min-height:92svh;display:grid;align-items:end;color:var(--crema);overflow:hidden;background:var(--rojo)}
+.hero .bg{position:absolute;inset:0}
+.hero .bg svg,.hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .bg img{animation:pan 16s ease-out forwards;transform:scale(1.1)}
+@keyframes pan{to{transform:scale(1)}}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,20,14,.25),rgba(31,20,14,.15) 30%,rgba(120,30,16,.88) 82%)}
+.in{position:relative;padding-bottom:8vh}
+.tag{display:inline-flex;gap:10px;align-items:center;font:500 13px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;background:var(--azafran);color:var(--tinta);padding:9px 14px;border-radius:999px;opacity:0;animation:up .7s .3s forwards}
+h1{font-family:var(--disp);font-weight:400;font-size:clamp(72px,17vw,220px);line-height:.9;letter-spacing:-.01em;margin-top:18px;text-shadow:0 6px 40px rgba(0,0,0,.25)}
+h1 span{display:inline-block;opacity:0;transform:translateY(40px) rotate(-6deg);animation:up .7s cubic-bezier(.2,.8,.2,1.2) forwards}
+.sub{font-size:clamp(18px,2.4vw,23px);max-width:32ch;margin-top:14px;opacity:0;animation:up .8s 1.2s forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;opacity:0;animation:up .8s 1.45s forwards}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font:800 15px/1 var(--sans);text-decoration:none;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px) rotate(-1deg)}
+.btn.p{background:var(--azafran);color:var(--tinta)}
+.btn.s{border:2px solid rgba(247,238,221,.6);color:var(--crema)}
+
+/* ROTA MADRID → IAȘI — assinatura */
+.ruta{background:var(--tinta);color:var(--crema);padding:90px 0;overflow:hidden}
+.ruta .kick{color:var(--azafran)}
+.ruta h2{color:var(--crema)}
+.map{position:relative;margin-top:36px}
+.map svg{width:100%;height:auto;display:block}
+.map .line{stroke-dasharray:6 10;stroke-dashoffset:1200;transition:stroke-dashoffset 2.6s cubic-bezier(.4,0,.2,1)}
+.map.on .line{stroke-dashoffset:0}
+.map .plane{opacity:0;transition:opacity .4s 2.4s}
+.map.on .plane{opacity:1}
+.km{display:flex;flex-wrap:wrap;gap:28px;margin-top:22px;font-family:var(--mono)}
+.km div{border-left:3px solid var(--rojo2);padding-left:14px}
+.km b{display:block;font:400 clamp(34px,5vw,54px)/1 var(--disp);color:var(--azafran)}
+.km small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cdbb9c}
+
+section{padding:88px 0}
+.kick{font:500 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--rojo)}
+h2{font-family:var(--disp);font-weight:400;font-size:clamp(40px,6.5vw,76px);line-height:1;margin:14px 0 18px;color:var(--rojo)}
+.lead{max-width:58ch;font-size:18px;color:#4a382a}
+
+/* PIZARRA — o quadro de ardósia */
+.pizarra{margin-top:36px;background:#2b2a24;color:#efe8da;border-radius:20px;padding:34px clamp(22px,4vw,46px);box-shadow:inset 0 0 0 10px #6b4a2b,inset 0 0 0 12px #3d2a18;font-family:var(--mono);position:relative}
+.pizarra h3{font:400 34px/1 var(--disp);color:var(--azafran);margin-bottom:18px}
+.pizarra ul{list-style:none;padding:0;display:grid;gap:14px}
+.pizarra li{display:flex;gap:12px;align-items:baseline;font-size:16px}
+.pizarra li::after{content:"";flex:1;border-bottom:1px dotted rgba(239,232,218,.35);order:2;transform:translateY(-4px)}
+.pizarra li span{order:1}
+.pizarra li em{order:3;font-style:normal;color:#d9c9a8;font-size:12px;white-space:nowrap}
+.pizarra .nota{margin-top:20px;font-size:13px;color:#bfb29a}
+
+/* FOTOS */
+.fotos{display:grid;gap:14px;grid-template-columns:repeat(3,1fr);margin-top:34px}
+.f{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--crema2);transform:rotate(var(--r,0deg));transition:transform .35s}
+.f:hover{transform:rotate(0) scale(1.02)}
+.f svg,.f img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.f figcaption{position:absolute;left:12px;bottom:12px;background:var(--crema);color:var(--tinta);font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
+.src{margin-top:14px;font-size:12px;color:var(--mut)}
+
+.visit{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:30px}
+.card{background:#fffaf0;border:2px solid var(--crema2);border-radius:20px;padding:26px}
+.card h3{font:400 30px/1 var(--disp);color:var(--rojo);margin-bottom:14px}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px}
+.card dt{color:var(--mut);font-family:var(--mono);font-size:13px}
+.mapa{border-radius:20px;overflow:hidden;min-height:280px;background:var(--crema2);display:grid;place-items:center;text-align:center;padding:20px}
+.mapa button{all:unset;cursor:pointer;background:var(--rojo);color:var(--crema);padding:14px 22px;border-radius:999px;font:800 14px/1 var(--sans)}
+.mapa iframe{width:100%;height:100%;min-height:280px;border:0}
+
+.own{background:var(--oliva);color:var(--crema)}
+.own .kick{color:var(--azafran)} .own h2{color:var(--crema)}
+.flow{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:30px}
+.flow div{background:rgba(247,238,221,.1);border:1px solid rgba(247,238,221,.2);border-radius:16px;padding:20px}
+.flow b{display:block;color:var(--azafran);margin-bottom:4px}
+.flow p{font-size:14.5px;color:#e6dcc6}
+
+footer{background:var(--tinta);color:#cdbb9c;padding:46px 0 120px;font-size:14px}
+footer a{color:var(--azafran)}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+.bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;justify-content:center}
+.bar a{flex:1;max-width:300px;justify-content:center;box-shadow:0 12px 30px -10px rgba(0,0,0,.5)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.rv.on{opacity:1;transform:none}
+@media (min-width:900px){.bar{display:none}}
+@media (max-width:700px){.fotos{grid-template-columns:1fr 1fr}.fotos .f:first-child{grid-column:span 2;aspect-ratio:4/3}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}h1 span,.tag,.sub,.cta,.rv{opacity:1;transform:none}.map .line{stroke-dashoffset:0}.map .plane{opacity:1}.hero .bg img{transform:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarOrPub","name":"Andalu Gastrobar","servesCuisine":"Spanish","address":{"@type":"PostalAddress","streetAddress":"Strada Teodor Codrescu 6","addressLocality":"Iași","postalCode":"700481","addressCountry":"RO"},"telephone":"+40 752 803 443"}
+</script>
+</head>
+<body>
+<div class="demo" role="note">Prezentare · Pacheco Studios · concept de site</div>
+
+<header class="hero">
+  <div class="bg" aria-hidden="true">
+    <svg viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice"><defs><pattern id="t" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="18" fill="none" stroke="#f2b632" stroke-opacity=".18" stroke-width="2"/><path d="M30 12v36M12 30h36" stroke="#f2b632" stroke-opacity=".12"/></pattern></defs><rect width="400" height="600" fill="#b8321e"/><rect width="400" height="600" fill="url(#t)"/></svg>
+    <img src="https://img.restaurantguru.com/r7d9-Andalu-Gastrobar-design-2024-09.jpg" alt="" onerror="this.remove()" fetchpriority="high">
+  </div>
+  <div class="wrap in">
+    <span class="tag">Gastrobar spaniol · Copou</span>
+    <h1 id="titlu" aria-label="Andalu">Andalu</h1>
+    <p class="sub">Tapas, carne și vin, ca în Madrid — pe Strada Teodor Codrescu, într-un fost depozit.</p>
+    <div class="cta">
+      <a class="btn p" href="tel:+40752803443">Rezervă · 0752 803 443</a>
+      <a class="btn s" href="#povestea">Povestea noastră</a>
+    </div>
+  </div>
+</header>
+
+<section class="ruta" id="povestea">
+  <div class="wrap">
+    <p class="kick rv">Povestea</p>
+    <h2 class="rv">13 ani în Madrid. Acum, acasă.</h2>
+    <p class="lead rv" style="color:#e2d6bf">Doi ieșeni au trăit 13 ani în Madrid și s-au întors acasă cu secretele bucătăriei spaniole. Andalu e drumul ăsta, pus pe masă.</p>
+    <div class="map rv" id="map">
+      <svg viewBox="0 0 1000 360" role="img" aria-label="Drumul de la Madrid la Iași, aproximativ 2.600 km">
+        <defs><pattern id="d" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#f7eedd" fill-opacity=".14"/></pattern></defs>
+        <rect width="1000" height="360" fill="url(#d)"/>
+        <path class="line" d="M110 280 C 330 120, 640 60, 890 120" fill="none" stroke="#f2b632" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="110" cy="280" r="9" fill="#d9482f"/><circle cx="110" cy="280" r="20" fill="none" stroke="#d9482f" stroke-opacity=".5"/>
+        <circle cx="890" cy="120" r="9" fill="#f2b632"/><circle cx="890" cy="120" r="20" fill="none" stroke="#f2b632" stroke-opacity=".5"/>
+        <text x="110" y="325" fill="#f7eedd" font-family="Shrikhand" font-size="34" text-anchor="middle">Madrid</text>
+        <text x="890" y="80" fill="#f7eedd" font-family="Shrikhand" font-size="34" text-anchor="middle">Iași</text>
+        <g class="plane" transform="translate(870 112) rotate(12)"><path d="M0 0l-26-8 4 8-4 8z" fill="#f2b632"/></g>
+      </svg>
+      <div class="km"><div><b>13</b><small>ani în Madrid</small></div><div><b>~2.600</b><small>km până în Copou</small></div><div><b>1</b><small>gastrobar spaniol</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick rv">Pe tablă azi</p>
+    <h2 class="rv">Ce se mănâncă la Andalu</h2>
+    <div class="pizarra rv">
+      <h3>La pizarra</h3>
+      <ul>
+        <li><span>Tapas de împărțit</span><em>preț · a confirmar</em></li>
+        <li><span>Carne la grătar — steak</span><em>preț · a confirmar</em></li>
+        <li><span>Platouri pentru masă</span><em>preț · a confirmar</em></li>
+        <li><span>Vin spaniol &amp; băuturi</span><em>preț · a confirmar</em></li>
+      </ul>
+      <p class="nota">Aici intră meniul vostru complet, cu fotografii — și se schimbă din telefon, ca tabla din bar.</p>
+    </div>
+    <div class="fotos">
+      <figure class="f rv" style="--r:-1.5deg"><svg viewBox="0 0 4 5" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="5" fill="#d9482f"/></svg><img loading="lazy" src="https://img02.restaurantguru.com/c2ce-Andalu-Gastrobar-food-2.jpg" alt="Preparat la Andalu Gastrobar" onerror="this.remove()"><figcaption>Din bucătărie</figcaption></figure>
+      <figure class="f rv" style="--r:1deg"><svg viewBox="0 0 4 5" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="5" fill="#4d5a2a"/></svg><img loading="lazy" src="https://img02.restaurantguru.com/c3ed-Restaurant-Andalu-Gastrobar-steak.jpg" alt="Steak la Andalu Gastrobar" onerror="this.remove()"><figcaption>Steak</figcaption></figure>
+      <figure class="f rv" style="--r:-.5deg"><svg viewBox="0 0 4 5" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="5" fill="#f2b632"/></svg><img loading="lazy" src="https://img02.restaurantguru.com/c3ee-Andalu-Gastrobar-meals-2.jpg" alt="Platou la Andalu Gastrobar" onerror="this.remove()"><figcaption>De împărțit</figcaption></figure>
+    </div>
+    <p class="src">Fotografii publice ale localului. În site-ul final intră fotografiile voastre.</p>
+  </div>
+</section>
+
+<section id="vizita" style="padding-top:0">
+  <div class="wrap">
+    <p class="kick rv">Vino</p>
+    <h2 class="rv">¡Os esperamos!</h2>
+    <div class="visit">
+      <div class="card rv">
+        <h3>Andalu Gastrobar</h3>
+        <dl>
+          <dt>Adresă</dt><dd>Strada Teodor Codrescu 6, Copou, Iași</dd>
+          <dt>Telefon</dt><dd><a href="tel:+40752803443">+40 752 803 443</a></dd>
+          <dt>Program</dt><dd>a confirmar</dd>
+          <dt>Rezervări</dt><dd>Telefon — în curând și online</dd>
+        </dl>
+      </div>
+      <div class="mapa rv"><div><p style="margin-bottom:14px;color:#4a382a">Harta se încarcă doar dacă o deschideți.</p><button type="button" onclick="this.closest('.mapa').innerHTML='<iframe title=&quot;Harta Andalu Gastrobar&quot; loading=&quot;lazy&quot; src=&quot;https://www.google.com/maps?q=Andalu+Gastrobar,+Strada+Teodor+Codrescu+6,+Iasi&amp;output=embed&quot;></iframe>'">Deschide harta</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="own">
+  <div class="wrap">
+    <p class="kick rv">Pentru proprietari · ce face acest site</p>
+    <h2 class="rv">O poveste ca a voastră merită mai mult decât o subpagină.</h2>
+    <div class="flow">
+      <div class="rv"><b>Povestea în față</b><p>Madrid → Iași e motivul pentru care vine lumea. Site-ul o spune din prima secundă.</p></div>
+      <div class="rv"><b>Tabla, pe telefon</b><p>Meniul se actualizează din telefon, cu fotografii, ca tabla din bar.</p></div>
+      <div class="rv"><b>Rezervare în 2 atingeri</b><p>Telefon sau WhatsApp, cu confirmare automată.</p></div>
+      <div class="rv"><b>În spaniolă și engleză</b><p>Pentru studenții Erasmus din Copou și turiști.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <p>© Andalu Gastrobar · Strada Teodor Codrescu 6, Iași</p>
+    <p><a href="https://anpc.ro/ce-este-sal/" rel="noopener">ANPC – SAL</a> · <a href="https://ec.europa.eu/consumers/odr" rel="noopener">SOL</a></p>
+    <p>Concept: <a href="https://ro.pachecost.com" rel="noopener">Pacheco Studios</a></p>
+  </div>
+</footer>
+<nav class="bar" aria-label="Acțiuni rapide"><a class="btn p" href="tel:+40752803443">Rezervă · sună acum</a></nav>
+
+<script>
+(function(){var t=document.getElementById('titlu');var s=t.textContent;t.textContent='';[...s].forEach(function(c,i){var e=document.createElement('span');e.textContent=c;e.setAttribute('aria-hidden','true');e.style.animationDelay=(.45+i*.08)+'s';t.appendChild(e)})})();
+(function(){var els=document.querySelectorAll('.rv,.map');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')});return}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.2});els.forEach(function(e){io.observe(e)})})();
+</script>
+</body>
+</html>
