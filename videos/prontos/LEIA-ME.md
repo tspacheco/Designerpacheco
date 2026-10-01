@@ -9,3 +9,5 @@ Cortados de `videos/brutos/` a 29/09/2026. Formato 4:5 (1080x1350, feed do Faceb
 | `jasmim-2-ad-4x5.mp4` | 27 s (de 37) | 2 s do início (fundo da página e o salto para o topo); 6 s a mais no carrossel dos pratos; 1 s do rodapé no fim |
 
 Para voltar a gerar: `videos/brutos/*.mp4` → recorte `crop=478:598:0:Y0` (Y0 = 0 Bolta, 252 Hanam, 220 Jasmim) → `scale=1080:1350` (lanczos) → `hqdn3d` + `unsharp` → segmentos unidos com `xfade` → libx264 CRF 18 (Bolta: CRF 23 com teto de 3,6 Mb/s, para caber nos 30 MB de envio). Os segmentos (segundos no original): Bolta 3,6–54,0 · 56,6–71,0 · 73,4–76,4 · Hanam 6,6–12,0 · 18,6–49,7 · Jasmim 2,0–18,0 · 24,0–35,4.
+
+**Nota de 01/10/2026 (1.ª campanha Meta):** a entrada de 0,5 s a negro deixa a 1.ª imagem preta, e as miniaturas dos anúncios saíram pretas. Tempo médio visto: 4 s. Nas próximas versões: sem entrada a negro, a melhor parte logo no início e o público chamado nos 2 primeiros segundos ("Tem um restaurante?"), com 15 s no máximo.
