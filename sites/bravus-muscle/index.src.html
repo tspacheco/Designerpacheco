@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bravus Muscle Suplementos · Jardim Helena, São Paulo</title>
+<meta name="description" content="Bravus Muscle Suplementos — tudo para sua performance e treinos. Av. Dr. José Artur Nova, 2441, Jardim Helena, São Paulo. Monte seu pedido e reserve pelo WhatsApp.">
+<meta name="theme-color" content="#0c0f0d">
+<style>
+/*__FONTES__*/
+:root{--preto:#0c0f0d;--grafite:#161b18;--grafite2:#212823;--verde:#1fbf5a;--verde2:#0f8f3e;--azul:#2563eb;--branco:#f4f7f5;--mut:#98a59d;--linha:#2b332e;
+--disp:"Teko",Impact,sans-serif;--sans:"Inter",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--preto);color:var(--branco);font-family:var(--sans);font-size:16.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--verde);outline-offset:3px;border-radius:6px}
+.demo{position:sticky;top:0;z-index:60;background:var(--verde);color:var(--preto);text-align:center;font:700 11.5px/1 var(--sans);letter-spacing:.18em;padding:9px 12px;text-transform:uppercase}
+.wrap{width:min(1140px,100% - 36px);margin-inline:auto}
+.disp{font-family:var(--disp);font-weight:600;line-height:.85;text-transform:uppercase;letter-spacing:.01em}
+
+/* HERÓI — barra a carregar */
+.hero{position:relative;padding:44px 0 56px;overflow:hidden;border-bottom:1px solid var(--linha)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 420px at 85% 15%,rgba(31,191,90,.18),transparent 70%),repeating-linear-gradient(115deg,transparent 0 46px,rgba(255,255,255,.025) 46px 48px)}
+.hero .grid{position:relative;display:grid;gap:40px;grid-template-columns:1.05fr .95fr;align-items:center}
+.pill{display:inline-flex;gap:8px;align-items:center;font:600 12.5px/1 var(--sans);background:var(--grafite2);border:1px solid var(--linha);padding:8px 12px;border-radius:99px;color:#d6dfda}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 4px rgba(31,191,90,.2)}
+h1{font-size:clamp(72px,11vw,132px);margin-top:18px}
+h1 .l{display:block;overflow:hidden}
+h1 .l span{display:block;transform:translateY(105%);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards}
+h1 .l:nth-child(2) span{animation-delay:.12s}
+h1 .l:nth-child(3) span{animation-delay:.24s;color:var(--verde)}
+@keyframes up{to{transform:none}}
+.lead{font-size:clamp(17px,2vw,20px);color:#cfd9d3;max-width:36ch;margin-top:18px;opacity:0;animation:fade .8s .6s forwards}
+@keyframes fade{to{opacity:1}}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;opacity:0;animation:fade .8s .8s forwards}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 22px;border-radius:12px;font:700 15px/1 var(--sans);text-decoration:none;border:0;cursor:pointer;transition:transform .18s,background .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--verde);color:var(--preto);box-shadow:0 10px 30px -10px rgba(31,191,90,.7)}
+.btn.p:hover{background:#2bd469}
+.btn.s{background:transparent;color:var(--branco);border:1.5px solid #3a443e}
+.stars{display:flex;gap:14px;align-items:center;margin-top:26px;opacity:0;animation:fade .8s 1s forwards;font-size:14px;color:var(--mut)}
+.stars b{font:600 34px/1 var(--disp);color:var(--branco)}
+.stars em{font-style:normal;color:#ffd24a;letter-spacing:2px}
+
+.foto{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;min-height:420px;background:var(--grafite);box-shadow:0 30px 80px -30px rgba(0,0,0,.8);opacity:0;animation:fade 1s .3s forwards}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.foto figcaption{position:absolute;left:14px;bottom:14px;background:rgba(12,15,13,.8);backdrop-filter:blur(6px);font:600 12px/1.2 var(--sans);padding:9px 12px;border-radius:10px}
+.bar{position:absolute;left:-6%;right:-6%;top:50%;height:12px;background:linear-gradient(#c9d1cc,#7d8781);border-radius:6px;transform:translateY(-50%);z-index:-1}
+
+/* MONTE SEU PEDIDO — assinatura: anilhas que carregam a barra */
+.monte{padding:80px 0}
+.kick{font:700 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--verde)}
+h2{font-size:clamp(48px,7vw,84px);margin:12px 0 14px}
+.sub{color:#c3cec7;max-width:56ch}
+.rack{margin-top:28px;background:var(--grafite);border:1px solid var(--linha);border-radius:20px;padding:22px clamp(16px,3vw,28px)}
+.barbell{height:120px;position:relative;margin:4px 0 18px}
+.barbell svg{width:100%;height:100%}
+.plate.nl{animation:sl .45s cubic-bezier(.2,.8,.2,1.2)}.plate.nr{animation:sr .45s cubic-bezier(.2,.8,.2,1.2)}
+@keyframes sl{from{transform:translateX(-60px);opacity:0}}@keyframes sr{from{transform:translateX(60px);opacity:0}}
+.count{font:600 22px/1 var(--disp);color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.count b{color:var(--verde);font-size:30px}
+.obj{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 18px}
+.obj button{all:unset;cursor:pointer;padding:10px 14px;border-radius:99px;border:1.5px solid #3a443e;font:600 14px/1 var(--sans);color:#d6dfda}
+.obj button[aria-pressed="true"]{background:var(--branco);color:var(--preto);border-color:var(--branco)}
+.prods{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.prod{all:unset;cursor:pointer;display:grid;grid-template-columns:42px 1fr 26px;gap:12px;align-items:center;background:var(--grafite2);border:1.5px solid transparent;border-radius:14px;padding:12px 14px;transition:border-color .2s,background .2s}
+.prod:hover{border-color:#3a443e}
+.prod[aria-pressed="true"]{border-color:var(--verde);background:#14301f}
+.prod .ic{width:42px;height:42px;border-radius:10px;background:var(--preto);display:grid;place-items:center;font:600 20px/1 var(--disp);color:var(--verde)}
+.prod b{display:block;font-size:14.5px}
+.prod small{color:var(--mut);font-size:12.5px}
+.prod .ck{width:24px;height:24px;border-radius:50%;border:2px solid #3a443e;display:grid;place-items:center;font-size:13px;color:transparent}
+.prod[aria-pressed="true"] .ck{background:var(--verde);border-color:var(--verde);color:var(--preto)}
+.prod[hidden]{display:none}
+.send{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:18px;padding-top:18px;border-top:1px solid var(--linha)}
+.send p{font-size:14px;color:var(--mut);max-width:46ch}
+.send .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.aviso{margin-top:14px;font-size:12.5px;color:#7f8c84}
+
+/* COMO FUNCIONA */
+.passos{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:28px;counter-reset:p}
+.passo{background:var(--grafite);border:1px solid var(--linha);border-radius:18px;padding:20px;counter-increment:p}
+.passo::before{content:counter(p,decimal-leading-zero);font:600 40px/1 var(--disp);color:var(--verde)}
+.passo b{display:block;margin:8px 0 4px;font-size:16px}
+.passo p{font-size:14.5px;color:#b9c4bd}
+
+/* A LOJA */
+.loja{padding:80px 0;border-top:1px solid var(--linha)}
+.loja .grid{display:grid;gap:22px;grid-template-columns:minmax(260px,340px) 1fr;align-items:stretch;margin-top:26px}
+.loja figure{position:relative;border-radius:20px;overflow:hidden;background:var(--grafite);aspect-ratio:3/5;max-width:340px}
+.loja figcaption{position:absolute;left:12px;bottom:12px;background:rgba(12,15,13,.8);font:600 12px/1.2 var(--sans);padding:8px 11px;border-radius:9px}
+.loja figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.info{background:var(--grafite);border:1px solid var(--linha);border-radius:20px;padding:24px;display:grid;gap:16px;align-content:start}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px}
+.info dt{color:var(--mut)}
+.mapa{border-radius:16px;overflow:hidden;min-height:200px;background:var(--grafite2);display:grid;place-items:center;text-align:center;padding:18px;font-size:14px;color:var(--mut)}
+.mapa iframe{width:100%;min-height:240px;border:0}
+.mapa button{all:unset;cursor:pointer;margin-top:10px;background:var(--branco);color:var(--preto);padding:12px 18px;border-radius:10px;font:700 14px/1 var(--sans)}
+
+footer{border-top:1px solid var(--linha);padding:36px 0 110px;font-size:13.5px;color:var(--mut)}
+footer .row{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
+footer a{color:#d6dfda}
+.fixo{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:8px}
+.fixo .btn{flex:1}
+@media (min-width:900px){.fixo{display:none}}
+@media (max-width:860px){.hero .grid,.loja .grid{grid-template-columns:1fr}.foto{aspect-ratio:4/4;max-height:520px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}h1 .l span{transform:none}.lead,.cta,.stars,.foto{opacity:1}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Store","name":"Bravus Muscle Suplementos","description":"Loja de vitaminas e suplementos","address":{"@type":"PostalAddress","streetAddress":"Av. Dr. José Artur Nova, 2441","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"08090-000","addressCountry":"BR"},"telephone":"+55 11 97132-4125","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"7"}}
+</script>
+</head>
+<body>
+<div class="demo" role="note">Apresentação · Pacheco Studios · prévia do site</div>
+
+<header class="hero">
+  <div class="wrap grid">
+    <div>
+      <span class="pill"><i></i>Jardim Helena · São Paulo</span>
+      <h1 class="disp" aria-label="Bravus Muscle Suplementos"><span class="l"><span>Bravus</span></span><span class="l"><span>Muscle</span></span><span class="l"><span>Suplementos</span></span></h1>
+      <p class="lead">Tudo para a sua performance e os seus treinos — escolha pelo objetivo, mande pelo WhatsApp e retire na loja.</p>
+      <div class="cta">
+        <a class="btn p" href="#monte">Montar meu pedido</a>
+        <a class="btn s" href="tel:+5511971324125">Ligar · (11) 97132-4125</a>
+      </div>
+      <div class="stars"><b>5,0</b><span><em>★★★★★</em><br>7 avaliações no Google</span></div>
+    </div>
+    <figure class="foto">
+      <img src="media/produto.jpg" alt="Suplemento na prateleira da Bravus Muscle Suplementos" onerror="this.remove()">
+      <figcaption>Direto da prateleira da loja</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="monte" id="monte">
+  <div class="wrap">
+    <p class="kick">Monte seu pedido</p>
+    <h2 class="disp">Carregue a sua barra</h2>
+    <p class="sub">Escolha o seu objetivo, marque o que procura e a mensagem para a loja sai pronta no WhatsApp. A equipe confirma disponibilidade e separa para você.</p>
+
+    <div class="rack">
+      <div class="barbell" aria-hidden="true">
+        <svg viewBox="0 0 1000 120" preserveAspectRatio="xMidYMid meet" id="svgbar">
+          <rect x="20" y="54" width="960" height="12" rx="6" fill="#8d9791"/>
+          <rect x="150" y="44" width="16" height="32" rx="3" fill="#c9d1cc"/>
+          <rect x="834" y="44" width="16" height="32" rx="3" fill="#c9d1cc"/>
+          <g id="esq"></g><g id="dir"></g>
+        </svg>
+      </div>
+      <p class="count" aria-live="polite"><b id="n">0</b> itens no pedido</p>
+
+      <div class="obj" role="group" aria-label="Filtrar por objetivo">
+        <button type="button" data-f="todos" aria-pressed="true">Todos</button>
+        <button type="button" data-f="massa" aria-pressed="false">Ganho de massa</button>
+        <button type="button" data-f="energia" aria-pressed="false">Energia e treino</button>
+        <button type="button" data-f="definicao" aria-pressed="false">Definição</button>
+        <button type="button" data-f="saude" aria-pressed="false">Saúde e vitaminas</button>
+        <button type="button" data-f="sono" aria-pressed="false">Sono e recuperação</button>
+      </div>
+
+      <div class="prods" id="prods">
+        <button type="button" class="prod" data-c="massa" aria-pressed="false"><span class="ic">W</span><span><b>Whey Protein</b><small>Proteína para o pós-treino</small></span><span class="ck">✓</span></button>
+        <button type="button" class="prod" data-c="massa energia" aria-pressed="false"><span class="ic">C</span><span><b>Creatina</b><small>Força e rendimento</small></span><span class="ck">✓</span></button>
+        <button type="button" class="prod" data-c="massa" aria-pressed="false"><span class="ic">H</span><span><b>Hipercalórico</b><small>Para quem precisa ganhar peso</small></span><span class="ck">✓</span></button>
+        <button type="button" class="prod" data-c="energia" aria-pressed="false"><span class="ic">P</span><span><b>Pré-treino</b><small>Energia para treinar</small></span><span class="ck">✓</span></button>
+        <button type="button" class="prod" data-c="energia definicao" aria-pressed="false"><span class="ic">B</span><span><b>BCAA / Aminoácidos</b><small>Apoio no treino</small></span><span class="ck">✓</span></button>
+        <button type="button" class="prod" data-c="definicao" aria-pressed="false"><span class="ic">T</span><span><b>Termogênico</b><small>Para a fase de definição</small></span><span class="ck">✓</span></button>
+        <button type="button" class="prod" data-c="saude" aria-pressed="false"><span class="ic">M</span><span><b>Multivitamínico</b><small>Vitaminas e minerais</small></span><span class="ck">✓</span></button>
+        <button type="button" class="prod" data-c="saude" aria-pressed="false"><span class="ic">Ω</span><span><b>Ômega 3</b><small>Uso diário</small></span><span class="ck">✓</span></button>
+        <button type="button" class="prod" data-c="sono" aria-pressed="false"><span class="ic">Z</span><span><b>Melatonina</b><small>Ex.: Nutrye Melatonina + Triptofano</small></span><span class="ck">✓</span></button>
+        <button type="button" class="prod" data-c="massa energia definicao saude sono" aria-pressed="false"><span class="ic">?</span><span><b>Não sei o que escolher</b><small>Quero uma orientação da loja</small></span><span class="ck">✓</span></button>
+      </div>
+
+      <div class="send">
+        <p>Disponibilidade, marcas e preços são confirmados pela loja no WhatsApp.</p>
+        <a class="btn p" id="wa" href="https://wa.me/5511971324125" target="_blank" rel="noopener" aria-disabled="true">Enviar pedido pelo WhatsApp</a>
+      </div>
+      <p class="aviso">Suplementos alimentares não são medicamentos e não substituem uma alimentação equilibrada. Em caso de dúvida, procure um nutricionista ou médico.</p>
+    </div>
+
+    <div class="passos">
+      <div class="passo"><b>Escolha</b><p>Marque os produtos pelo seu objetivo — leva 30 segundos.</p></div>
+      <div class="passo"><b>Mande</b><p>A mensagem já vai escrita para o WhatsApp da loja.</p></div>
+      <div class="passo"><b>Retire</b><p>A equipe confirma e deixa separado com o seu nome.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="loja" id="loja">
+  <div class="wrap">
+    <p class="kick">A loja</p>
+    <h2 class="disp">Na Av. Dr. José Artur Nova</h2>
+    <div class="grid">
+      <figure><img src="media/fachada.jpg" alt="Fachada da Bravus Muscle Suplementos" onerror="this.remove()"><figcaption>A fachada · foto do Google</figcaption></figure>
+      <div class="info">
+        <dl>
+          <dt>Endereço</dt><dd>Av. Dr. José Artur Nova, 2441 · Jardim Helena · São Paulo – SP · 08090-000</dd>
+          <dt>WhatsApp</dt><dd><a href="https://wa.me/5511971324125">(11) 97132-4125</a></dd>
+          <dt>Horário</dt><dd>Fecha às 20:00 · dias e abertura a confirmar</dd>
+          <dt>Google</dt><dd>5,0 ★ · 7 avaliações</dd>
+        </dl>
+        <div class="mapa"><div>O mapa carrega só quando você abrir.<br><button type="button" onclick="this.closest('.mapa').innerHTML='<iframe title=&quot;Mapa Bravus Muscle Suplementos&quot; loading=&quot;lazy&quot; src=&quot;https://www.google.com/maps?q=Av.+Dr.+Jos%C3%A9+Artur+Nova,+2441,+Jardim+Helena,+S%C3%A3o+Paulo&amp;output=embed&quot;></iframe>'">Abrir mapa</button></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <p>© Bravus Muscle Suplementos · CNPJ a confirmar</p>
+    <p><a href="https://www.consumidor.gov.br" rel="noopener">consumidor.gov.br</a> · <a href="https://www.procon.sp.gov.br" rel="noopener">Procon-SP</a></p>
+    <p>Prévia: <a href="https://pachecost.com" rel="noopener">Pacheco Studios</a></p>
+  </div>
+</footer>
+
+<nav class="fixo" aria-label="Ações rápidas">
+  <a class="btn p" href="#monte">Montar pedido</a>
+  <a class="btn s" href="https://wa.me/5511971324125" style="background:var(--preto)">WhatsApp</a>
+</nav>
+
+<script>
+(function(){
+  var prods=[].slice.call(document.querySelectorAll('.prod')), wa=document.getElementById('wa'), n=document.getElementById('n');
+  var esq=document.getElementById('esq'), dir=document.getElementById('dir');
+  var cores=['#1fbf5a','#2563eb','#f4f7f5','#1fbf5a','#2563eb','#f4f7f5','#1fbf5a','#2563eb','#f4f7f5','#1fbf5a'];
+  var prevK=0;
+  function plates(k){
+    var grow=k>prevK; prevK=k;
+    esq.innerHTML='';dir.innerHTML='';
+    for(var i=0;i<k;i++){
+      var h=96-i*4, w=18, y=60-h/2;
+      var xl=150-(i+1)*(w+4), xr=850+4+i*(w+4);
+      esq.insertAdjacentHTML('beforeend','<rect class="plate'+(grow&&i===k-1?' nl':'')+'" x="'+xl+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4" fill="'+cores[i]+'"/>');
+      dir.insertAdjacentHTML('beforeend','<rect class="plate'+(grow&&i===k-1?' nr':'')+'" x="'+xr+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="4" fill="'+cores[i]+'"/>');
+    }
+  }
+  function update(){
+    var sel=prods.filter(function(p){return p.getAttribute('aria-pressed')==='true'});
+    n.textContent=sel.length; plates(sel.length);
+    if(!sel.length){wa.setAttribute('aria-disabled','true');wa.href='https://wa.me/5511971324125';return}
+    wa.removeAttribute('aria-disabled');
+    var lista=sel.map(function(p){return '• '+p.querySelector('b').textContent}).join('\n');
+    var msg='Oi, Bravus! Vim pelo site e quero saber a disponibilidade de:\n'+lista+'\n\nPosso retirar na loja?';
+    wa.href='https://wa.me/5511971324125?text='+encodeURIComponent(msg);
+  }
+  prods.forEach(function(p){p.addEventListener('click',function(){p.setAttribute('aria-pressed',p.getAttribute('aria-pressed')==='true'?'false':'true');update()})});
+  [].slice.call(document.querySelectorAll('.obj button')).forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.obj button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');
+    var f=b.dataset.f; prods.forEach(function(p){p.hidden=!(f==='todos'||p.dataset.c.split(' ').indexOf(f)>=0)});
+  })});
+  // demonstração: a barra carrega 3 anilhas ao entrar
+  var shown=false, rack=document.querySelector('.rack');
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!shown){shown=true;var k=0;var t=setInterval(function(){k++;plates(k);if(k>=3){clearInterval(t);setTimeout(function(){update()},900)}},260);o.disconnect()}},{threshold:.4}).observe(rack)}
+  update();
+})();
+</script>
+</body>
+</html>
