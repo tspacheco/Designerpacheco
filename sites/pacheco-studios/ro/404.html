@@ -72,6 +72,10 @@ body:has(#consultanta:target,#consultanta :target) .tabs a[href="#consultanta"]{
 #consultanta{display:block}
 .vista:target,.vista:has(:target){display:block}
 :is(.vista:target,.vista:has(:target)) ~ #consultanta{display:none}
+html.js .vista{display:none!important}
+html.js .vista.ativa{display:block!important}
+html.js .tabs a{color:var(--osso-2)!important;border-color:transparent!important}
+html.js .tabs a[aria-current]{color:var(--osso)!important;border-color:var(--laranja)!important}
 
 .seccao{padding-block:clamp(2.5rem,8vw,5rem)}
 .claro{background:var(--osso);color:var(--carvao)}
@@ -410,8 +414,9 @@ html.intro-vai .intro{display:grid}
 .heroi-t{margin-top:1.4rem;font-weight:400}
 .heroi-pre{display:flex;align-items:center;gap:.9rem;font:600 clamp(1.125rem,4.4vw,1.5rem)/1.3 var(--texto);color:var(--osso)}
 .heroi-pre::before{content:"";flex:none;width:clamp(2.5rem,10vw,4.5rem);height:3px;background:var(--laranja);transform-origin:left}
-.heroi-grande{display:block;margin-top:.7rem;max-width:11ch;font:400 clamp(2.6rem,12.4vw,7rem)/.92 var(--display);
+.heroi-grande{display:block;margin-top:.7rem;max-width:14ch;font:400 clamp(2rem,8.6vw,4.25rem)/.98 var(--display);
   text-transform:uppercase;letter-spacing:-.01em;color:var(--laranja);text-wrap:balance}
+.nq{white-space:nowrap}
 .heroi-passo{margin-top:1.1rem;font:700 clamp(1.125rem,4.4vw,1.5rem)/1.3 var(--texto)}
 .heroi-lead{max-width:40ch}
 .heroi-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.75rem;margin-top:1.9rem}

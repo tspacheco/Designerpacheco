@@ -474,6 +474,11 @@ def textos_casos(c, casos, lang):
     return out
 
 
+def inteiras(t):
+    """Palavras com hífen (fazê-lo, AI-ul) nunca partem a meio no título grande."""
+    return " ".join(f'<span class="nq">{e(p)}</span>' if "-" in p else e(p) for p in t.split(" "))
+
+
 def vista_consultanta(c, casos, lang, wa):
     """A porta de entrada: o objetivo do dono, a diferença entre agência e consultoria, os cinco passos, o que é a IA
     (as mesmas cinco frases de sempre), três números de casos reais (de outros, e dito), os compromissos e quem faz."""
@@ -501,7 +506,7 @@ def vista_consultanta(c, casos, lang, wa):
     return f"""<section id="consultanta" class="vista" aria-labelledby="t-consultanta">
   <div class="envolver heroi">
     <p class="eyebrow">{e(k["eyebrow"])}</p>
-    <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">{e(k["pre"])}</span><span class="heroi-grande">{e(k["titlu"])}</span></h2>
+    <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">{e(k["pre"])}</span><span class="heroi-grande">{inteiras(k["titlu"])}</span></h2>
     <p class="heroi-passo">{e(k["passo"])}</p>
     <p class="lead heroi-lead">{e(k["lead"])}</p>
     <div class="heroi-acoes">
