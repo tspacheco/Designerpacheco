@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Sistem de recenzii și revenire clienți — plan de execuție</title>
+<style>
+/*__FONTES__*/
+@page{size:A4;margin:0}
+:root{--ink:#16110d;--ink2:#3a302a;--mut:#7a6d63;--line:#e7ddd3;--paper:#faf6f1;--or:#e0702f;--or2:#b8541c;--orC:#fbeadf;--ok:#1f8a4c;--okC:#e4f4ea;--warn:#a33a12;--warnC:#fdeee6}
+*{box-sizing:border-box;margin:0}
+html,body{font-family:Outfit,system-ui,sans-serif;color:var(--ink);font-size:10.4pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html[data-lang="ro"] [lang="pt"],html[data-lang="pt"] [lang="ro"]{display:none!important}
+.pg{width:210mm;height:297mm;padding:15mm 16mm 17mm;position:relative;page-break-after:always;overflow:hidden;background:#fff}
+.pg:last-child{page-break-after:auto}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.kick{font:500 7.6pt/1 "JetBrains Mono";letter-spacing:.16em;text-transform:uppercase;color:var(--or2)}
+h1,h2,h3{font-weight:800;letter-spacing:-.3px;line-height:1.05}
+h2{font-size:24pt;margin:2.5mm 0 3.5mm}
+h3{font-size:12.5pt;margin-bottom:1.2mm}
+.lead{font-size:10.8pt;color:var(--ink2);max-width:170mm}
+.foot{position:absolute;left:16mm;right:16mm;bottom:9mm;display:flex;justify-content:space-between;font:400 7.4pt/1 "JetBrains Mono";color:var(--mut);border-top:1px solid var(--line);padding-top:3mm}
+
+/* CAPA */
+.capa{background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:space-between}
+.capa::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 300px at 80% 22%,rgba(224,112,47,.28),transparent 70%)}
+.capa>*{position:relative}
+.capa .kick{color:#f2a374}
+.capa h1{font-size:44pt;margin-top:12mm;max-width:160mm}
+.capa h1 span{color:var(--or)}
+.capa .sub{font-size:13pt;color:#e6dbd2;max-width:150mm;margin-top:7mm;font-weight:300}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:12mm}
+.duo div{border:1px solid rgba(255,255,255,.18);border-radius:4mm;padding:5mm}
+.duo b{display:block;font-size:30pt;line-height:1;color:var(--or)}
+.duo p{font-size:10pt;color:#e6dbd2;margin-top:2mm}
+.capa .sig{display:flex;justify-content:space-between;align-items:end;font-size:9pt;color:#b9aba0;border-top:1px solid rgba(255,255,255,.18);padding-top:5mm}
+.capa .sig strong{font-size:15pt;letter-spacing:2px;color:#fff}
+
+/* ALERTA */
+.alert{display:grid;grid-template-columns:9mm 1fr;gap:3mm;background:var(--warnC);border:1px solid #f4cdb8;border-radius:4mm;padding:4mm 5mm;margin-top:4mm}
+.alert .i{width:8mm;height:8mm;border-radius:50%;background:var(--warn);color:#fff;font-weight:800;display:grid;place-items:center}
+.alert b{color:var(--warn)}
+.alert p{font-size:9.4pt;color:var(--ink2)}
+.fix{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-top:4mm}
+.fix>div{border-radius:4mm;padding:4mm 5mm;font-size:9.3pt}
+.fix .no{background:#f6f1ec;border:1px dashed #d8c9bb;color:var(--mut)}
+.fix .yes{background:var(--okC);border:1px solid #bfe3cc}
+.fix h3{font-size:10.5pt}
+.fix .no h3{color:var(--mut);text-decoration:line-through}
+.fix .yes h3{color:var(--ok)}
+
+/* FLUXOS */
+.flow{border:1px solid var(--line);border-radius:5mm;padding:4.5mm 5mm;margin-top:4mm;background:#fff}
+.flow .hd{display:flex;justify-content:space-between;align-items:baseline;gap:4mm;margin-bottom:3mm}
+.flow .hd h3{font-size:13pt}
+.flow .hd .tag{font:500 7.6pt/1 "JetBrains Mono";letter-spacing:.1em;text-transform:uppercase;background:var(--orC);color:var(--or2);padding:1.5mm 3mm;border-radius:99px;white-space:nowrap}
+.steps{display:flex;align-items:stretch;gap:0}
+.st{flex:1;background:var(--paper);border-radius:3mm;padding:3mm 3.2mm;font-size:8.6pt;position:relative;margin-right:4.5mm}
+.st:last-child{margin-right:0}
+.st:not(:last-child)::after{content:"→";position:absolute;right:-4.2mm;top:50%;transform:translateY(-50%);color:var(--or);font-weight:800;font-size:10pt}
+.st b{display:block;font-size:9pt;margin-bottom:.8mm}
+.st code{font:500 7.4pt/1.3 "JetBrains Mono";color:var(--or2);display:block;margin-bottom:1mm}
+.msg{margin-top:3mm;display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.bub{background:#e7f6dd;border-radius:3mm 3mm 3mm 1mm;padding:3mm 3.5mm;font-size:8.8pt;color:#1d2a17;line-height:1.4}
+.bub small{display:block;font:400 7pt/1 "JetBrains Mono";color:#5c7150;margin-top:1.5mm}
+.rules{font-size:8.7pt;color:var(--ink2)}
+.rules li{margin:.6mm 0}
+.rules ul{padding-left:4mm}
+
+/* TABELA DADOS */
+table{width:100%;border-collapse:collapse;font-size:8.7pt;margin-top:3mm}
+th{text-align:left;font:500 7.4pt/1.2 "JetBrains Mono";text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border-bottom:1.5px solid var(--ink);padding:1.8mm 2mm}
+td{border-bottom:1px solid var(--line);padding:1.8mm 2mm;vertical-align:top}
+td.c{font-family:"JetBrains Mono";font-size:8pt;color:var(--or2)}
+
+/* CRONOGRAMA */
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-top:4mm}
+.wk{border:1px solid var(--line);border-radius:4mm;padding:3.5mm 4mm;background:#fff}
+.wk .n{font:500 7.6pt/1 "JetBrains Mono";letter-spacing:.1em;text-transform:uppercase;color:var(--or2)}
+.wk h3{font-size:11pt;margin:1.5mm 0}
+.wk ul{padding-left:3.8mm;font-size:8.5pt;color:var(--ink2)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:5mm}
+.box{background:var(--paper);border-radius:4mm;padding:4mm 5mm}
+.box ul{padding-left:4mm;font-size:9pt;display:grid;gap:1mm}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-top:4mm}
+.kpi div{border:1px solid var(--line);border-radius:3.5mm;padding:3.5mm;font-size:8.6pt;color:var(--ink2)}
+.kpi b{display:block;font-size:11pt;color:var(--ink);margin-bottom:1mm}
+.cta{margin-top:6mm;background:var(--ink);color:#fff;border-radius:5mm;padding:6mm 7mm;display:flex;justify-content:space-between;gap:6mm;align-items:center}
+.cta .big{font-size:18pt;font-weight:800;line-height:1.1}
+.cta .big span{color:var(--or)}
+.cta p{font-size:9.4pt;color:#e6dbd2;max-width:85mm}
+.legal{margin-top:4mm;font-size:7.8pt;color:var(--mut)}
+</style>
+</head>
+<body>
+
+<!-- 1 · CAPA -->
+<section class="pg capa">
+  <div>
+    <p class="kick"><span lang="ro">Plan de execuție · automatizare</span><span lang="pt">Plano de execução · automação</span></p>
+    <h1><span lang="ro">Clientul cumpără o dată.<br><span>Sistemul îl aduce înapoi.</span></span><span lang="pt">O cliente compra uma vez.<br><span>O sistema trá-lo de volta.</span></span></h1>
+    <p class="sub"><span lang="ro">Două fluxuri automate, construite în n8n, care lucrează singure în fiecare zi: unul după fiecare cumpărătură, unul pentru clienții care nu au mai trecut de o lună.</span><span lang="pt">Dois fluxos automáticos, montados no n8n, que trabalham sozinhos todos os dias: um depois de cada compra, outro para os clientes que não voltam há um mês.</span></p>
+    <div class="duo">
+      <div><b>10%</b><p><span lang="ro">la următoarea cumpărătură — trimis automat după fiecare vizită, împreună cu invitația de a lăsa o recenzie.</span><span lang="pt">na próxima compra — enviado automaticamente depois de cada visita, com o convite para deixar uma avaliação.</span></p></div>
+      <div><b>15%</b><p><span lang="ro">la cumpărături de peste 150 lei — pentru clienții din baza de date care nu au mai venit de cel puțin 30 de zile.</span><span lang="pt">em compras acima de 150 lei — para os clientes da base de dados que não voltam há pelo menos 30 dias.</span></p></div>
+    </div>
+  </div>
+  <div class="sig"><span><span lang="ro">Fără costuri în acest document — doar soluția și pașii.</span><span lang="pt">Sem preços neste documento — só a solução e os passos.</span></span><strong>PACHECO STUDIOS</strong></div>
+</section>
+
+<!-- 2 · REGRA GOOGLE + FLUXO 1 -->
+<section class="pg">
+  <p class="kick"><span lang="ro">01 · Înainte de toate</span><span lang="pt">01 · Antes de tudo</span></p>
+  <h2><span lang="ro">Recenzii da — fără să le „cumpărăm”</span><span lang="pt">Avaliações sim — sem as «comprar»</span></h2>
+  <div class="alert"><span class="i">!</span><div>
+    <p lang="ro"><b>Regula Google:</b> nu este permis să oferi reduceri, produse sau bani <b>în schimbul</b> unei recenzii. Dacă Google detectează asta, poate șterge recenziile și poate penaliza profilul magazinului. Și legislația europeană privind protecția consumatorilor cere ca recenziile să nu fie „plătite”.</p>
+    <p lang="pt"><b>Regra da Google:</b> não é permitido oferecer descontos, produtos ou dinheiro <b>em troca</b> de uma avaliação. Se a Google detetar, pode apagar as avaliações e penalizar o perfil da loja. A lei europeia de proteção do consumidor também exige que as avaliações não sejam «pagas».</p>
+  </div></div>
+  <div class="fix">
+    <div class="no"><h3><span lang="ro">„Lasă o recenzie și primești 10%”</span><span lang="pt">«Deixa uma avaliação e recebes 10%»</span></h3><p><span lang="ro">Reducerea depinde de recenzie → încalcă regula.</span><span lang="pt">O desconto depende da avaliação → viola a regra.</span></p></div>
+    <div class="yes"><h3><span lang="ro">„Mulțumim! Ai 10% la următoarea vizită.”</span><span lang="pt">«Obrigado! Tens 10% na próxima visita.»</span></h3><p><span lang="ro">Toți clienții primesc 10%. În același mesaj, separat, îi rugăm să ne lase o părere. Același efect, fără risc.</span><span lang="pt">Todos os clientes recebem 10%. Na mesma mensagem, à parte, pedimos que deixem a opinião. Mesmo efeito, sem risco.</span></p></div>
+  </div>
+
+  <div class="flow">
+    <div class="hd"><h3><span lang="ro">Flux 1 · După cumpărătură</span><span lang="pt">Fluxo 1 · Depois da compra</span></h3><span class="tag"><span lang="ro">automat · la fiecare vânzare</span><span lang="pt">automático · em cada venda</span></span></div>
+    <div class="steps">
+      <div class="st"><code>Trigger</code><b><span lang="ro">Vânzare înregistrată</span><span lang="pt">Venda registada</span></b><span lang="ro">Telefonul clientului + valoarea, din casa de marcat sau dintr-un formular simplu pe tabletă.</span><span lang="pt">Telefone do cliente + valor, da caixa ou de um formulário simples num tablet.</span></div>
+      <div class="st"><code>Wait</code><b><span lang="ro">Așteaptă 3 ore</span><span lang="pt">Espera 3 horas</span></b><span lang="ro">Mesajul ajunge după ce clientul a încercat produsul (nu noaptea).</span><span lang="pt">A mensagem chega depois de o cliente experimentar (nunca de noite).</span></div>
+      <div class="st"><code>Code</code><b><span lang="ro">Generează codul</span><span lang="pt">Gera o código</span></b><span lang="ro">Cod unic de 10%, valabil 30 de zile, o singură utilizare.</span><span lang="pt">Código único de 10%, válido 30 dias, uso único.</span></div>
+      <div class="st"><code>WhatsApp</code><b><span lang="ro">Trimite mesajul</span><span lang="pt">Envia a mensagem</span></b><span lang="ro">Mulțumire + codul + linkul direct spre recenzia Google.</span><span lang="pt">Agradecimento + código + link direto para a avaliação no Google.</span></div>
+      <div class="st"><code>Sheets</code><b><span lang="ro">Salvează</span><span lang="pt">Guarda</span></b><span lang="ro">Clientul, codul și data rămân în baza de date.</span><span lang="pt">Cliente, código e data ficam na base de dados.</span></div>
+    </div>
+    <div class="msg">
+      <div class="bub" lang="ro">Mulțumim că ai trecut pe la noi, Ana! 🙏 Ca să revii, ai <b>10% reducere</b> la următoarea cumpărătură: cod <b>MUL-4821</b> (valabil 30 de zile).<br><br>Și dacă ți-a plăcut, ne ajută enorm o părere pe Google: [link]<small>exemplu de mesaj · textul final îl alegeți voi</small></div>
+      <div class="bub" lang="pt">Obrigado por teres passado cá, Ana! 🙏 Para voltares, tens <b>10% de desconto</b> na próxima compra: código <b>MUL-4821</b> (válido 30 dias).<br><br>E se gostaste, ajuda-nos imenso uma opinião no Google: [link]<small>exemplo de mensagem · o texto final é escolhido por vocês</small></div>
+      <div class="rules"><ul>
+        <li lang="ro">Mesajul pleacă doar clienților care au acceptat să primească mesaje.</li><li lang="pt">A mensagem só vai para clientes que aceitaram receber mensagens.</li>
+        <li lang="ro">Fără al doilea mesaj insistent — maximum un memento după 5 zile, doar despre cod.</li><li lang="pt">Sem segunda mensagem insistente — no máximo um lembrete aos 5 dias, só sobre o código.</li>
+        <li lang="ro">Codul nu se cumulează cu alte promoții (regulă de confirmat).</li><li lang="pt">O código não acumula com outras promoções (regra a confirmar).</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="foot"><span><span lang="ro">Sistem de recenzii și revenire</span><span lang="pt">Sistema de avaliações e regresso</span></span><span>Pacheco Studios · 2</span></div>
+</section>
+
+<!-- 3 · FLUXO 2 + VALIDAÇÃO -->
+<section class="pg">
+  <p class="kick"><span lang="ro">02 · Clienții care nu au mai venit</span><span lang="pt">02 · Clientes que não voltaram</span></p>
+  <h2><span lang="ro">Ne-a fost dor de tine: 15%</span><span lang="pt">Tivemos saudades: 15%</span></h2>
+  <p class="lead"><span lang="ro">Magazinul are deja o bază de clienți. Cei care nu au mai cumpărat de cel puțin 30 de zile primesc automat o invitație cu 15% la cumpărături de peste 150 lei.</span><span lang="pt">A loja já tem uma base de clientes. Quem não compra há pelo menos 30 dias recebe automaticamente um convite com 15% em compras acima de 150 lei.</span></p>
+
+  <div class="flow">
+    <div class="hd"><h3><span lang="ro">Flux 2 · Reactivare</span><span lang="pt">Fluxo 2 · Reativação</span></h3><span class="tag"><span lang="ro">zilnic · ora 10:00</span><span lang="pt">diário · 10:00</span></span></div>
+    <div class="steps">
+      <div class="st"><code>Schedule</code><b><span lang="ro">În fiecare dimineață</span><span lang="pt">Todas as manhãs</span></b><span lang="ro">n8n verifică baza de date la 10:00.</span><span lang="pt">O n8n verifica a base de dados às 10:00.</span></div>
+      <div class="st"><code>Filter</code><b><span lang="ro">Cine se califică</span><span lang="pt">Quem se qualifica</span></b><span lang="ro">Ultima cumpărătură ≥ 30 de zile · acord pentru mesaje · necontactat în ultimele 30 de zile.</span><span lang="pt">Última compra ≥ 30 dias · aceitou mensagens · não contactado nos últimos 30 dias.</span></div>
+      <div class="st"><code>Code</code><b><span lang="ro">Cod 15%</span><span lang="pt">Código 15%</span></b><span lang="ro">Unic, valabil 14 zile, minim 150 lei.</span><span lang="pt">Único, válido 14 dias, mínimo 150 lei.</span></div>
+      <div class="st"><code>WhatsApp</code><b><span lang="ro">Invitația</span><span lang="pt">O convite</span></b><span lang="ro">Mesaj personal, cu numele clientului; câte 20–30 pe zi, ca să nu încarce magazinul.</span><span lang="pt">Mensagem pessoal, com o nome; 20–30 por dia, para não encher a loja de uma vez.</span></div>
+      <div class="st"><code>Sheets</code><b><span lang="ro">Notează</span><span lang="pt">Regista</span></b><span lang="ro">Data contactului, ca să nu primească din nou prea curând.</span><span lang="pt">Data do contacto, para não voltar a receber cedo demais.</span></div>
+    </div>
+    <div class="msg">
+      <div class="bub" lang="ro">Bună, Mihai! Ne-a fost dor de tine 😊 Până pe 30 octombrie ai <b>15% reducere</b> la cumpărături de peste 150 lei, cu codul <b>REV-7310</b>. Te așteptăm!<small>exemplu · „STOP” pentru a nu mai primi mesaje</small></div>
+      <div class="bub" lang="pt">Olá, Mihai! Tivemos saudades 😊 Até 30 de outubro tens <b>15% de desconto</b> em compras acima de 150 lei, com o código <b>REV-7310</b>. Esperamos por ti!<small>exemplo · «STOP» para deixar de receber</small></div>
+      <div class="rules"><ul>
+        <li lang="ro">Prima rundă: toată baza veche, eșalonat pe câteva zile.</li><li lang="pt">Primeira ronda: a base antiga toda, repartida por alguns dias.</li>
+        <li lang="ro">Apoi: automat, pentru fiecare client care ajunge la 30 de zile.</li><li lang="pt">Depois: automático, para cada cliente que chega aos 30 dias.</li>
+        <li lang="ro">Cine răspunde „STOP” iese din listă imediat.</li><li lang="pt">Quem responde «STOP» sai da lista na hora.</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="flow">
+    <div class="hd"><h3><span lang="ro">Flux 3 · Codul la casă</span><span lang="pt">Fluxo 3 · O código na caixa</span></h3><span class="tag"><span lang="ro">la fiecare utilizare</span><span lang="pt">em cada uso</span></span></div>
+    <div class="steps">
+      <div class="st"><code>Form</code><b><span lang="ro">Vânzătorul introduce codul</span><span lang="pt">O vendedor escreve o código</span></b><span lang="ro">+ valoarea coșului, pe telefon sau tabletă.</span><span lang="pt">+ valor da compra, no telemóvel ou tablet.</span></div>
+      <div class="st"><code>Check</code><b><span lang="ro">n8n verifică</span><span lang="pt">O n8n verifica</span></b><span lang="ro">Există? Nefolosit? În termen? Peste 150 lei (pentru 15%)?</span><span lang="pt">Existe? Por usar? Dentro do prazo? Acima de 150 lei (para os 15%)?</span></div>
+      <div class="st"><code>Reply</code><b><span lang="ro">Răspuns în 2 secunde</span><span lang="pt">Resposta em 2 segundos</span></b><span lang="ro">✓ Valid: aplică 10% / 15% — sau ✗ cu motivul.</span><span lang="pt">✓ Válido: aplica 10% / 15% — ou ✗ com o motivo.</span></div>
+      <div class="st"><code>Sheets</code><b><span lang="ro">Marcat ca folosit</span><span lang="pt">Marcado como usado</span></b><span lang="ro">Nu se mai poate folosi a doua oară; vânzarea intră în raport.</span><span lang="pt">Não pode ser usado de novo; a venda entra no relatório.</span></div>
+    </div>
+  </div>
+  <div class="foot"><span><span lang="ro">Sistem de recenzii și revenire</span><span lang="pt">Sistema de avaliações e regresso</span></span><span>Pacheco Studios · 3</span></div>
+</section>
+
+<!-- 4 · DADOS, PRAZOS, MEDIÇÃO -->
+<section class="pg">
+  <p class="kick"><span lang="ro">03 · Cum se construiește</span><span lang="pt">03 · Como se constrói</span></p>
+  <h2><span lang="ro">Baza de date și calendarul</span><span lang="pt">Base de dados e calendário</span></h2>
+  <table>
+    <thead><tr><th><span lang="ro">Câmp</span><span lang="pt">Campo</span></th><th><span lang="ro">Pentru ce</span><span lang="pt">Para quê</span></th><th><span lang="ro">Câmp</span><span lang="pt">Campo</span></th><th><span lang="ro">Pentru ce</span><span lang="pt">Para quê</span></th></tr></thead>
+    <tbody>
+      <tr><td class="c">nume, telefon</td><td><span lang="ro">Mesaj personal</span><span lang="pt">Mensagem pessoal</span></td><td class="c">acord_mesaje + data</td><td><span lang="ro">GDPR — fără acord, fără mesaje</span><span lang="pt">RGPD — sem consentimento, sem mensagens</span></td></tr>
+      <tr><td class="c">ultima_cumparatura</td><td><span lang="ro">Regula celor 30 de zile</span><span lang="pt">Regra dos 30 dias</span></td><td class="c">ultimul_contact</td><td><span lang="ro">Nu trimitem prea des</span><span lang="pt">Não enviar demasiado</span></td></tr>
+      <tr><td class="c">cod, tip (10/15), expira</td><td><span lang="ro">Reducerile active</span><span lang="pt">Descontos ativos</span></td><td class="c">folosit, valoare_cos</td><td><span lang="ro">Vânzări aduse de sistem</span><span lang="pt">Vendas trazidas pelo sistema</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="tl">
+    <div class="wk"><span class="n"><span lang="ro">Săptămâna 1</span><span lang="pt">Semana 1</span></span><h3><span lang="ro">Fundația</span><span lang="pt">Fundação</span></h3><ul>
+      <li lang="ro">Baza de clienți curățată</li><li lang="pt">Base de clientes limpa</li>
+      <li lang="ro">Acordul GDPR la casă</li><li lang="pt">Consentimento RGPD na caixa</li>
+      <li lang="ro">WhatsApp Business API</li><li lang="pt">WhatsApp Business API</li>
+      <li lang="ro">Mesaje trimise la aprobare Meta</li><li lang="pt">Mensagens enviadas para aprovação da Meta</li></ul></div>
+    <div class="wk"><span class="n"><span lang="ro">Săptămâna 2</span><span lang="pt">Semana 2</span></span><h3><span lang="ro">Construcția</span><span lang="pt">Construção</span></h3><ul>
+      <li lang="ro">Fluxurile 1, 2 și 3 în n8n</li><li lang="pt">Fluxos 1, 2 e 3 no n8n</li>
+      <li lang="ro">Formularul de la casă</li><li lang="pt">Formulário da caixa</li>
+      <li lang="ro">Teste cu numere interne</li><li lang="pt">Testes com números internos</li></ul></div>
+    <div class="wk"><span class="n"><span lang="ro">Săptămâna 3</span><span lang="pt">Semana 3</span></span><h3><span lang="ro">Pornire pilot</span><span lang="pt">Arranque piloto</span></h3><ul>
+      <li lang="ro">Fluxul 1 pentru toți clienții noi</li><li lang="pt">Fluxo 1 para todos os clientes novos</li>
+      <li lang="ro">Fluxul 2 pentru primii 100 din bază</li><li lang="pt">Fluxo 2 para os primeiros 100 da base</li>
+      <li lang="ro">Echipa învață codul la casă</li><li lang="pt">Equipa aprende o código na caixa</li></ul></div>
+    <div class="wk"><span class="n"><span lang="ro">Săptămâna 4</span><span lang="pt">Semana 4</span></span><h3><span lang="ro">Ajustare</span><span lang="pt">Ajuste</span></h3><ul>
+      <li lang="ro">Toată baza în flux</li><li lang="pt">Base toda no fluxo</li>
+      <li lang="ro">Primul raport</li><li lang="pt">Primeiro relatório</li>
+      <li lang="ro">Ajustăm textele și ora</li><li lang="pt">Ajustamos textos e horário</li></ul></div>
+  </div>
+
+  <div class="two">
+    <div class="box"><h3><span lang="ro">Ce avem nevoie de la dumneavoastră</span><span lang="pt">O que precisamos da dona</span></h3><ul>
+      <li lang="ro">Lista clienților (nume, telefon, ultima cumpărătură)</li><li lang="pt">Lista de clientes (nome, telefone, última compra)</li>
+      <li lang="ro">Cine a acceptat deja să primească mesaje</li><li lang="pt">Quem já aceitou receber mensagens</li>
+      <li lang="ro">Cum se înregistrează azi o vânzare (casă / program)</li><li lang="pt">Como se regista hoje uma venda (caixa / programa)</li>
+      <li lang="ro">Numărul de WhatsApp al magazinului și linkul de recenzie Google</li><li lang="pt">Número de WhatsApp da loja e link de avaliação do Google</li>
+      <li lang="ro">Regulile reducerii: excluderi, cumul cu alte promoții</li><li lang="pt">Regras do desconto: exclusões, acumulação com outras promoções</li>
+    </ul></div>
+    <div class="box"><h3><span lang="ro">Raport săptămânal (automat)</span><span lang="pt">Relatório semanal (automático)</span></h3>
+      <div class="kpi" style="grid-template-columns:1fr 1fr">
+        <div><b><span lang="ro">Mesaje</span><span lang="pt">Mensagens</span></b><span lang="ro">trimise / citite</span><span lang="pt">enviadas / lidas</span></div>
+        <div><b><span lang="ro">Coduri</span><span lang="pt">Códigos</span></b><span lang="ro">folosite la casă</span><span lang="pt">usados na caixa</span></div>
+        <div><b><span lang="ro">Vânzări</span><span lang="pt">Vendas</span></b><span lang="ro">aduse de sistem</span><span lang="pt">trazidas pelo sistema</span></div>
+        <div><b><span lang="ro">Recenzii</span><span lang="pt">Avaliações</span></b><span lang="ro">noi pe Google</span><span lang="pt">novas no Google</span></div>
+      </div></div>
+  </div>
+
+  <div class="cta">
+    <div class="big"><span lang="ro">Fiecare client <span>are un motiv</span><br>să se întoarcă.</span><span lang="pt">Cada cliente <span>tem um motivo</span><br>para voltar.</span></div>
+    <p><span lang="ro">Pornim cu un pilot de 2 săptămâni pe primii clienți, vedem cifrele împreună și apoi extindem la toată baza.</span><span lang="pt">Começamos com um piloto de 2 semanas nos primeiros clientes, vemos os números juntos e depois alargamos à base toda.</span></p>
+  </div>
+  <p class="legal"><span lang="ro">Mesajele de marketing se trimit doar clienților care și-au dat acordul (GDPR, Legea 506/2004), cu opțiune de dezabonare în fiecare mesaj. Mesajele WhatsApp promoționale folosesc șabloane aprobate de Meta.</span><span lang="pt">As mensagens de marketing só vão para clientes que deram consentimento (RGPD, Lei romena 506/2004), com opção de cancelar em cada mensagem. As mensagens promocionais de WhatsApp usam modelos aprovados pela Meta.</span></p>
+  <div class="foot"><span><span lang="ro">Sistem de recenzii și revenire</span><span lang="pt">Sistema de avaliações e regresso</span></span><span>Pacheco Studios · 4</span></div>
+</section>
+</body>
+</html>
