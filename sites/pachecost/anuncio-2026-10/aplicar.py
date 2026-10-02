@@ -47,9 +47,9 @@ HEROI = {
 }
 
 LEMA = {
-    "pt": "O trabalho que faz o teu negócio subir de nível.",
-    "ro": "Munca care îți duce afacerea la următorul nivel.",
-    "en": "The work that takes your business to the next level.",
+    "pt": ("Tens um objetivo a atingir?", "A IA vai <span class=\"nb\">fazê-lo</span> acontecer.", "Só tens de dar o primeiro passo."),
+    "ro": ("Ai un obiectiv de atins?", "AI-ul îl va face să se întâmple.", "Trebuie doar să faci primul pas."),
+    "en": ("Do you have a goal to reach?", "AI will make it happen.", "You just have to take the first step."),
 }
 
 PONTE = {
@@ -188,12 +188,18 @@ html.anuncio .sem-anuncio{display:none}
   .tabs ul{gap:2.25rem}
   .tabs a{padding-inline:.15rem}
 }
-/* ═══ lema: a frase da casa, no topo de cada vista principal. Escondido a quem chega por anúncio: aí fala o herói. ═══ */
-.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:28ch;
-  font:600 clamp(1.25rem,2.6vw,1.75rem)/1.3 var(--texto);color:var(--osso);text-wrap:balance}
-.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.6em;border-radius:2px;background:var(--laranja);
+/* ═══ lema: três frases no topo de cada vista principal; a do meio, em laranja e na fonte display, é o destaque.
+   Escondido a quem chega por anúncio: aí fala o herói. ═══ */
+.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:36rem;
+  font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--osso)}
+.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.62em;border-radius:2px;background:var(--laranja);
   transform-origin:left center;transform:scaleX(0);animation:lema-traco .9s var(--sair) .3s forwards}
 @keyframes lema-traco{to{transform:none}}
+.lema-txt{display:grid;gap:.3rem}
+.lema-l1,.lema-l3{font:600 1em/1.3 var(--texto);text-wrap:balance}
+.lema-l2{display:block;margin:.1em 0 .15em;font:400 clamp(1.6rem,4.4vw,3rem)/1.02 var(--display);text-transform:uppercase;
+  letter-spacing:.005em;color:var(--laranja);text-wrap:balance}
+.lema .nb{white-space:nowrap}
 html.anuncio .lema{display:none}
 /* ═══ pontes: dos sites para as automações (fim dos tipos de negócio) e das automações para os sites (fim da vista) ═══ */
 .ponte{margin-top:clamp(3rem,9vw,5rem);display:grid;gap:1.75rem;padding:clamp(1.4rem,4vw,2.5rem);
@@ -286,8 +292,9 @@ def heroi(h):
             f'    </div>\n')
 
 
-def lema(texto):
-    return f'    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>{texto}</p>\n'
+def lema(t):
+    return (f'    <p class="lema"><span class="lema-traco" aria-hidden="true"></span><span class="lema-txt">'
+            f'<span class="lema-l1">{t[0]}</span> <strong class="lema-l2">{t[1]}</strong> <span class="lema-l3">{t[2]}</span></span></p>\n')
 
 
 def ponte(p):

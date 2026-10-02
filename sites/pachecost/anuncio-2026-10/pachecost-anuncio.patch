@@ -1,6 +1,6 @@
 diff -ru cur/en/index.html novo/en/index.html
 --- cur/en/index.html	2026-10-01 17:12:06.000000000 +0000
-+++ novo/en/index.html	2026-10-02 18:18:54.958367150 +0000
++++ novo/en/index.html	2026-10-02 20:31:46.880790414 +0000
 @@ -7,8 +7,8 @@
  <head>
  <meta charset="utf-8">
@@ -32,7 +32,7 @@ diff -ru cur/en/index.html novo/en/index.html
  <!-- estatísticas sem cookies (GoatCounter): o domínio entra no caminho, para separar pachecost.com de ro.pachecost.com -->
  <script>window.goatcounter = { path: function (p) { return location.host + p; } };</script>
  <script data-goatcounter="https://pachecost.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-@@ -478,10 +478,101 @@
+@@ -478,10 +478,107 @@
    .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
    dialog.esquema[open]{animation:none}
  }
@@ -73,12 +73,18 @@ diff -ru cur/en/index.html novo/en/index.html
 +  .tabs ul{gap:2.25rem}
 +  .tabs a{padding-inline:.15rem}
 +}
-+/* ═══ lema: a frase da casa, no topo de cada vista principal. Escondido a quem chega por anúncio: aí fala o herói. ═══ */
-+.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:28ch;
-+  font:600 clamp(1.25rem,2.6vw,1.75rem)/1.3 var(--texto);color:var(--osso);text-wrap:balance}
-+.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.6em;border-radius:2px;background:var(--laranja);
++/* ═══ lema: três frases no topo de cada vista principal; a do meio, em laranja e na fonte display, é o destaque.
++   Escondido a quem chega por anúncio: aí fala o herói. ═══ */
++.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:36rem;
++  font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--osso)}
++.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.62em;border-radius:2px;background:var(--laranja);
 +  transform-origin:left center;transform:scaleX(0);animation:lema-traco .9s var(--sair) .3s forwards}
 +@keyframes lema-traco{to{transform:none}}
++.lema-txt{display:grid;gap:.3rem}
++.lema-l1,.lema-l3{font:600 1em/1.3 var(--texto);text-wrap:balance}
++.lema-l2{display:block;margin:.1em 0 .15em;font:400 clamp(1.6rem,4.4vw,3rem)/1.02 var(--display);text-transform:uppercase;
++  letter-spacing:.005em;color:var(--laranja);text-wrap:balance}
++.lema .nb{white-space:nowrap}
 +html.anuncio .lema{display:none}
 +/* ═══ pontes: dos sites para as automações (fim dos tipos de negócio) e das automações para os sites (fim da vista) ═══ */
 +.ponte{margin-top:clamp(3rem,9vw,5rem);display:grid;gap:1.75rem;padding:clamp(1.4rem,4vw,2.5rem);
@@ -135,7 +141,7 @@ diff -ru cur/en/index.html novo/en/index.html
  </script>
  </head>
  <body>
-@@ -494,8 +585,8 @@
+@@ -494,8 +591,8 @@
  
  <nav class="tabs" aria-label="Sections">
    <ul>
@@ -146,11 +152,11 @@ diff -ru cur/en/index.html novo/en/index.html
      <li><a href="#servicii" data-vista="servicii">What else we do</a></li>
    </ul>
  </nav>
-@@ -503,10 +594,11 @@
+@@ -503,10 +600,11 @@
  <main id="conteudo">
  <section id="automatizari" class="vista" aria-labelledby="t-automatizari">
    <div class="envolver seccao">
-+    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>The work that takes your business to the next level.</p>
++    <p class="lema"><span class="lema-traco" aria-hidden="true"></span><span class="lema-txt"><span class="lema-l1">Do you have a goal to reach?</span> <strong class="lema-l2">AI will make it happen.</strong> <span class="lema-l3">You just have to take the first step.</span></span></p>
      <div class="autos-grelha">
        <div class="cab">
 -        <p class="eyebrow">Automations</p>
@@ -160,7 +166,7 @@ diff -ru cur/en/index.html novo/en/index.html
          <p class="lead">Eight things you now do by hand, or have stopped doing because there’s no time. Each one runs on its own, on WhatsApp, with what you already have.</p>
          <p class="lead intro-2">Each one is drawn here the way it’s built: step by step, with its rules and the moments when a person steps in. We don’t promise. We show.</p>
          <details class="ai">
-@@ -889,6 +981,19 @@
+@@ -889,6 +987,19 @@
  <li class="drum"><span class="drum-t">Shop</span><span class="drum-c"><a class="chip" href="#a-lead">Fast reply</a><span class="dc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><a class="chip" href="#a-social">Posts</a></span><span class="dc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><a class="chip" href="#a-documente">Receipts and invoices</a></span></span></li>
        </ul>
      </div>
@@ -180,15 +186,15 @@ diff -ru cur/en/index.html novo/en/index.html
    </div>
  </section>
  <section id="servicii" class="vista claro" aria-labelledby="t-servicii">
-@@ -909,6 +1014,7 @@
+@@ -909,6 +1020,7 @@
  </section>
  <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
    <div class="envolver seccao">
-+    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>The work that takes your business to the next level.</p>
++    <p class="lema"><span class="lema-traco" aria-hidden="true"></span><span class="lema-txt"><span class="lema-l1">Do you have a goal to reach?</span> <strong class="lema-l2">AI will make it happen.</strong> <span class="lema-l3">You just have to take the first step.</span></span></p>
      <p class="eyebrow">Websites</p>
      <h2 id="t-proiecte" class="afirmacao">Every business sells differently. So should its website.</h2>
      <p class="lead">We don’t start from a template. We start from how your customers choose, and the site answers them, one question at a time.</p>
-@@ -1008,6 +1114,18 @@
+@@ -1008,6 +1120,18 @@
  </details>
        </div>
      </div>
@@ -207,7 +213,7 @@ diff -ru cur/en/index.html novo/en/index.html
      <div class="mais">
        <p class="eyebrow">More sites we’ve built</p>
        <p class="lead">More variations, each with the identity of its own business.</p>
-@@ -1049,10 +1167,10 @@
+@@ -1049,10 +1173,10 @@
    <div class="envolver">
      <p class="eyebrow">Contact</p>
      <h2 id="t-contact" class="afirmacao">Tell us your business’s name.</h2>
@@ -221,7 +227,7 @@ diff -ru cur/en/index.html novo/en/index.html
  <li><a href="tel:+351967117357"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="txt"><span class="qual">Phone</span><span class="valor">+351 967 117 357</span></span></a></li>
  <li><a href="mailto:tomas@pachecost.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg><span class="txt"><span class="qual">Email</span><span class="valor">tomas@pachecost.com</span></span></a></li>
  <li><a href="https://www.instagram.com/pachecostudiospt/" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg><span class="txt"><span class="qual">Instagram</span><span class="valor">@pachecostudiospt</span></span></a></li>
-@@ -1071,7 +1189,7 @@
+@@ -1071,7 +1195,7 @@
  </footer>
  
  <div class="barra" id="barra" inert>
@@ -230,7 +236,7 @@ diff -ru cur/en/index.html novo/en/index.html
  </div>
  
  <section class="rgpd" id="rgpd" aria-label="Cookies and statistics" hidden>
-@@ -1248,7 +1366,7 @@
+@@ -1248,7 +1372,7 @@
    var tabs = document.querySelectorAll('.tabs a');
    function vista() {
      var alvo = location.hash.length > 1 ? document.getElementById(location.hash.slice(1)) : null;
@@ -239,7 +245,7 @@ diff -ru cur/en/index.html novo/en/index.html
      if (alvo) {
        var sec = alvo.closest('.vista');
        if (sec) v = sec.id;
-@@ -1326,6 +1444,11 @@
+@@ -1326,6 +1450,11 @@
    if (/[?&]origem=cartao\b/.test(location.search)) {
      window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
    }
@@ -251,7 +257,7 @@ diff -ru cur/en/index.html novo/en/index.html
    // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
    document.querySelectorAll('details.setor').forEach(function (d) {
      d.addEventListener('toggle', function () {
-@@ -1338,6 +1461,7 @@
+@@ -1338,6 +1467,7 @@
      if (!a) return;
      var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
      gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });
@@ -261,7 +267,7 @@ diff -ru cur/en/index.html novo/en/index.html
  
 diff -ru cur/index.html novo/index.html
 --- cur/index.html	2026-10-01 17:12:06.000000000 +0000
-+++ novo/index.html	2026-10-02 18:18:54.948066250 +0000
++++ novo/index.html	2026-10-02 20:31:46.866751684 +0000
 @@ -7,8 +7,8 @@
  <head>
  <meta charset="utf-8">
@@ -293,7 +299,7 @@ diff -ru cur/index.html novo/index.html
  <!-- estatísticas sem cookies (GoatCounter): o domínio entra no caminho, para separar pachecost.com de ro.pachecost.com -->
  <script>window.goatcounter = { path: function (p) { return location.host + p; } };</script>
  <script data-goatcounter="https://pachecost.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-@@ -478,10 +478,101 @@
+@@ -478,10 +478,107 @@
    .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
    dialog.esquema[open]{animation:none}
  }
@@ -334,12 +340,18 @@ diff -ru cur/index.html novo/index.html
 +  .tabs ul{gap:2.25rem}
 +  .tabs a{padding-inline:.15rem}
 +}
-+/* ═══ lema: a frase da casa, no topo de cada vista principal. Escondido a quem chega por anúncio: aí fala o herói. ═══ */
-+.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:28ch;
-+  font:600 clamp(1.25rem,2.6vw,1.75rem)/1.3 var(--texto);color:var(--osso);text-wrap:balance}
-+.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.6em;border-radius:2px;background:var(--laranja);
++/* ═══ lema: três frases no topo de cada vista principal; a do meio, em laranja e na fonte display, é o destaque.
++   Escondido a quem chega por anúncio: aí fala o herói. ═══ */
++.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:36rem;
++  font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--osso)}
++.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.62em;border-radius:2px;background:var(--laranja);
 +  transform-origin:left center;transform:scaleX(0);animation:lema-traco .9s var(--sair) .3s forwards}
 +@keyframes lema-traco{to{transform:none}}
++.lema-txt{display:grid;gap:.3rem}
++.lema-l1,.lema-l3{font:600 1em/1.3 var(--texto);text-wrap:balance}
++.lema-l2{display:block;margin:.1em 0 .15em;font:400 clamp(1.6rem,4.4vw,3rem)/1.02 var(--display);text-transform:uppercase;
++  letter-spacing:.005em;color:var(--laranja);text-wrap:balance}
++.lema .nb{white-space:nowrap}
 +html.anuncio .lema{display:none}
 +/* ═══ pontes: dos sites para as automações (fim dos tipos de negócio) e das automações para os sites (fim da vista) ═══ */
 +.ponte{margin-top:clamp(3rem,9vw,5rem);display:grid;gap:1.75rem;padding:clamp(1.4rem,4vw,2.5rem);
@@ -396,7 +408,7 @@ diff -ru cur/index.html novo/index.html
  </script>
  </head>
  <body>
-@@ -494,8 +585,8 @@
+@@ -494,8 +591,8 @@
  
  <nav class="tabs" aria-label="Secções">
    <ul>
@@ -407,11 +419,11 @@ diff -ru cur/index.html novo/index.html
      <li><a href="#servicii" data-vista="servicii">O que mais fazemos</a></li>
    </ul>
  </nav>
-@@ -503,10 +594,11 @@
+@@ -503,10 +600,11 @@
  <main id="conteudo">
  <section id="automatizari" class="vista" aria-labelledby="t-automatizari">
    <div class="envolver seccao">
-+    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>O trabalho que faz o teu negócio subir de nível.</p>
++    <p class="lema"><span class="lema-traco" aria-hidden="true"></span><span class="lema-txt"><span class="lema-l1">Tens um objetivo a atingir?</span> <strong class="lema-l2">A IA vai <span class="nb">fazê-lo</span> acontecer.</strong> <span class="lema-l3">Só tens de dar o primeiro passo.</span></span></p>
      <div class="autos-grelha">
        <div class="cab">
 -        <p class="eyebrow">Automações</p>
@@ -421,7 +433,7 @@ diff -ru cur/index.html novo/index.html
          <p class="lead">Oito coisas que hoje fazes à mão ou já nem fazes, porque não tens tempo. Cada uma anda sozinha, no WhatsApp, com o que já tens.</p>
          <p class="lead intro-2">Cada uma está desenhada aqui tal como se monta: passo a passo, com as regras dela e com os momentos em que entra uma pessoa. Não prometemos. Mostramos.</p>
          <details class="ai">
-@@ -889,6 +981,20 @@
+@@ -889,6 +987,20 @@
  <li class="drum"><span class="drum-t">Loja</span><span class="drum-c"><a class="chip" href="#a-lead">Resposta rápida</a><span class="dc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><a class="chip" href="#a-social">Publicações</a></span><span class="dc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><a class="chip" href="#a-documente">Talões e faturas</a></span></span></li>
        </ul>
      </div>
@@ -442,7 +454,7 @@ diff -ru cur/index.html novo/index.html
    </div>
  </section>
  <section id="servicii" class="vista claro" aria-labelledby="t-servicii">
-@@ -909,6 +1015,13 @@
+@@ -909,6 +1021,13 @@
  </section>
  <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
    <div class="envolver seccao">
@@ -452,11 +464,11 @@ diff -ru cur/index.html novo/index.html
 +      <p class="lead">Fazemos o teu site e mostramos-to antes de pagares. Sem compromisso.</p>
 +      <a class="botao primario grande" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Vi%20o%20an%C3%BAncio.%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20restaurante%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Escreve-nos no WhatsApp</a>
 +    </div>
-+    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>O trabalho que faz o teu negócio subir de nível.</p>
++    <p class="lema"><span class="lema-traco" aria-hidden="true"></span><span class="lema-txt"><span class="lema-l1">Tens um objetivo a atingir?</span> <strong class="lema-l2">A IA vai <span class="nb">fazê-lo</span> acontecer.</strong> <span class="lema-l3">Só tens de dar o primeiro passo.</span></span></p>
      <p class="eyebrow">Sites</p>
      <h2 id="t-proiecte" class="afirmacao">Cada negócio vende de maneira diferente. O site também.</h2>
      <p class="lead">Não partimos de um modelo. Partimos da maneira como o teu cliente escolhe, e o site responde-lhe, pergunta a pergunta.</p>
-@@ -916,7 +1029,8 @@
+@@ -916,7 +1035,8 @@
      <ul class="grelha">
  <li class="rv dest" style="--i:0"><a class="q neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Jasmim 2</span><span class="q-meta"><span class="q-tip">Marisqueira</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Manta Rota</span></span></a></li>
  <li class="rv dest" style="--i:1"><a class="q" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400;--fs:1" target="_blank" rel="noopener"><span class="q-nome">HANAM</span><span class="q-meta"><span class="q-tip">Churrasco coreano</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Quarteira</span></span></a></li>
@@ -466,7 +478,7 @@ diff -ru cur/index.html novo/index.html
      </ul>
      <div class="setores-grelha">
        <div class="cab">
-@@ -1008,6 +1122,18 @@
+@@ -1008,6 +1128,18 @@
  </details>
        </div>
      </div>
@@ -485,7 +497,7 @@ diff -ru cur/index.html novo/index.html
      <div class="mais">
        <p class="eyebrow">Mais sites que fizemos</p>
        <p class="lead">Outras variações, cada uma com a identidade do próprio negócio.</p>
-@@ -1049,10 +1175,10 @@
+@@ -1049,10 +1181,10 @@
    <div class="envolver">
      <p class="eyebrow">Contacto</p>
      <h2 id="t-contact" class="afirmacao">Diz-nos o nome do teu negócio.</h2>
@@ -499,7 +511,7 @@ diff -ru cur/index.html novo/index.html
  <li><a href="tel:+351967117357"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="txt"><span class="qual">Telefone</span><span class="valor">+351 967 117 357</span></span></a></li>
  <li><a href="mailto:tomas@pachecost.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg><span class="txt"><span class="qual">Email</span><span class="valor">tomas@pachecost.com</span></span></a></li>
  <li><a href="https://www.instagram.com/pachecostudiospt/" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg><span class="txt"><span class="qual">Instagram</span><span class="valor">@pachecostudiospt</span></span></a></li>
-@@ -1071,7 +1197,7 @@
+@@ -1071,7 +1203,7 @@
  </footer>
  
  <div class="barra" id="barra" inert>
@@ -508,7 +520,7 @@ diff -ru cur/index.html novo/index.html
  </div>
  
  <section class="rgpd" id="rgpd" aria-label="Cookies e estatísticas" hidden>
-@@ -1248,7 +1374,7 @@
+@@ -1248,7 +1380,7 @@
    var tabs = document.querySelectorAll('.tabs a');
    function vista() {
      var alvo = location.hash.length > 1 ? document.getElementById(location.hash.slice(1)) : null;
@@ -517,7 +529,7 @@ diff -ru cur/index.html novo/index.html
      if (alvo) {
        var sec = alvo.closest('.vista');
        if (sec) v = sec.id;
-@@ -1326,6 +1452,11 @@
+@@ -1326,6 +1458,11 @@
    if (/[?&]origem=cartao\b/.test(location.search)) {
      window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
    }
@@ -529,7 +541,7 @@ diff -ru cur/index.html novo/index.html
    // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
    document.querySelectorAll('details.setor').forEach(function (d) {
      d.addEventListener('toggle', function () {
-@@ -1338,6 +1469,7 @@
+@@ -1338,6 +1475,7 @@
      if (!a) return;
      var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
      gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });
@@ -539,7 +551,7 @@ diff -ru cur/index.html novo/index.html
  
 diff -ru cur/ro/index.html novo/ro/index.html
 --- cur/ro/index.html	2026-10-01 17:12:16.000000000 +0000
-+++ novo/ro/index.html	2026-10-02 18:18:54.954074910 +0000
++++ novo/ro/index.html	2026-10-02 20:31:46.874444429 +0000
 @@ -7,8 +7,8 @@
  <head>
  <meta charset="utf-8">
@@ -571,7 +583,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
  <!-- estatísticas sem cookies (GoatCounter): o domínio entra no caminho, para separar pachecost.com de ro.pachecost.com -->
  <script>window.goatcounter = { path: function (p) { return location.host + p; } };</script>
  <script data-goatcounter="https://pachecost.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-@@ -478,10 +478,101 @@
+@@ -478,10 +478,107 @@
    .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
    dialog.esquema[open]{animation:none}
  }
@@ -612,12 +624,18 @@ diff -ru cur/ro/index.html novo/ro/index.html
 +  .tabs ul{gap:2.25rem}
 +  .tabs a{padding-inline:.15rem}
 +}
-+/* ═══ lema: a frase da casa, no topo de cada vista principal. Escondido a quem chega por anúncio: aí fala o herói. ═══ */
-+.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:28ch;
-+  font:600 clamp(1.25rem,2.6vw,1.75rem)/1.3 var(--texto);color:var(--osso);text-wrap:balance}
-+.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.6em;border-radius:2px;background:var(--laranja);
++/* ═══ lema: três frases no topo de cada vista principal; a do meio, em laranja e na fonte display, é o destaque.
++   Escondido a quem chega por anúncio: aí fala o herói. ═══ */
++.lema{display:flex;align-items:flex-start;gap:1rem;margin:0 0 clamp(2.5rem,7vw,4rem);max-width:36rem;
++  font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--osso)}
++.lema-traco{flex:none;width:2.25rem;height:3px;margin-top:.62em;border-radius:2px;background:var(--laranja);
 +  transform-origin:left center;transform:scaleX(0);animation:lema-traco .9s var(--sair) .3s forwards}
 +@keyframes lema-traco{to{transform:none}}
++.lema-txt{display:grid;gap:.3rem}
++.lema-l1,.lema-l3{font:600 1em/1.3 var(--texto);text-wrap:balance}
++.lema-l2{display:block;margin:.1em 0 .15em;font:400 clamp(1.6rem,4.4vw,3rem)/1.02 var(--display);text-transform:uppercase;
++  letter-spacing:.005em;color:var(--laranja);text-wrap:balance}
++.lema .nb{white-space:nowrap}
 +html.anuncio .lema{display:none}
 +/* ═══ pontes: dos sites para as automações (fim dos tipos de negócio) e das automações para os sites (fim da vista) ═══ */
 +.ponte{margin-top:clamp(3rem,9vw,5rem);display:grid;gap:1.75rem;padding:clamp(1.4rem,4vw,2.5rem);
@@ -674,7 +692,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
  </script>
  </head>
  <body>
-@@ -494,8 +585,8 @@
+@@ -494,8 +591,8 @@
  
  <nav class="tabs" aria-label="Secțiuni">
    <ul>
@@ -685,11 +703,11 @@ diff -ru cur/ro/index.html novo/ro/index.html
      <li><a href="#servicii" data-vista="servicii">Ce mai facem</a></li>
    </ul>
  </nav>
-@@ -503,10 +594,11 @@
+@@ -503,10 +600,11 @@
  <main id="conteudo">
  <section id="automatizari" class="vista" aria-labelledby="t-automatizari">
    <div class="envolver seccao">
-+    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>Munca care îți duce afacerea la următorul nivel.</p>
++    <p class="lema"><span class="lema-traco" aria-hidden="true"></span><span class="lema-txt"><span class="lema-l1">Ai un obiectiv de atins?</span> <strong class="lema-l2">AI-ul îl va face să se întâmple.</strong> <span class="lema-l3">Trebuie doar să faci primul pas.</span></span></p>
      <div class="autos-grelha">
        <div class="cab">
 -        <p class="eyebrow">Automatizări</p>
@@ -699,7 +717,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
          <p class="lead">Opt lucruri pe care le faci acum de mână sau nu le mai faci deloc, pentru că nu ai timp. Fiecare merge singură, pe WhatsApp, cu ce ai deja.</p>
          <p class="lead intro-2">Fiecare e desenată aici așa cum se montează: pas cu pas, cu regulile ei și cu momentele în care intră un om. Nu promitem. Arătăm.</p>
          <details class="ai">
-@@ -889,6 +981,20 @@
+@@ -889,6 +987,20 @@
  <li class="drum"><span class="drum-t">Magazin</span><span class="drum-c"><a class="chip" href="#a-lead">Răspuns rapid</a><span class="dc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><a class="chip" href="#a-social">Postări</a></span><span class="dc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><a class="chip" href="#a-documente">Bonuri și facturi</a></span></span></li>
        </ul>
      </div>
@@ -720,7 +738,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
    </div>
  </section>
  <section id="servicii" class="vista claro" aria-labelledby="t-servicii">
-@@ -909,6 +1015,13 @@
+@@ -909,6 +1021,13 @@
  </section>
  <section id="proiecte" class="vista" aria-labelledby="t-proiecte">
    <div class="envolver seccao">
@@ -730,11 +748,11 @@ diff -ru cur/ro/index.html novo/ro/index.html
 +      <p class="lead">Îți facem site-ul și ți-l arătăm înainte să plătești. Fără obligații.</p>
 +      <a class="botao primario grande" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20anun%C8%9Bul.%20Vreau%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20restaurantului%20meu%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Scrie-ne pe WhatsApp</a>
 +    </div>
-+    <p class="lema"><span class="lema-traco" aria-hidden="true"></span>Munca care îți duce afacerea la următorul nivel.</p>
++    <p class="lema"><span class="lema-traco" aria-hidden="true"></span><span class="lema-txt"><span class="lema-l1">Ai un obiectiv de atins?</span> <strong class="lema-l2">AI-ul îl va face să se întâmple.</strong> <span class="lema-l3">Trebuie doar să faci primul pas.</span></span></p>
      <p class="eyebrow">Site-uri</p>
      <h2 id="t-proiecte" class="afirmacao">Fiecare afacere vinde altfel. Și site-ul ei.</h2>
      <p class="lead">Nu pornim de la un șablon. Pornim de la felul în care alege clientul tău, iar site-ul îi răspunde, întrebare cu întrebare.</p>
-@@ -916,7 +1029,8 @@
+@@ -916,7 +1035,8 @@
      <ul class="grelha">
  <li class="rv dest" style="--i:0"><a class="q neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700;--fs:1" target="_blank" rel="noopener"><span class="q-nome">Jasmim 2</span><span class="q-meta"><span class="q-tip">Fructe de mare</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Manta Rota</span></span></a></li>
  <li class="rv dest" style="--i:1"><a class="q" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400;--fs:1" target="_blank" rel="noopener"><span class="q-nome">HANAM</span><span class="q-meta"><span class="q-tip">Grătar coreean</span><span class="q-sep">&nbsp;· </span><span class="q-oras">Quarteira</span></span></a></li>
@@ -744,7 +762,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
      </ul>
      <div class="setores-grelha">
        <div class="cab">
-@@ -1008,6 +1122,18 @@
+@@ -1008,6 +1128,18 @@
  </details>
        </div>
      </div>
@@ -763,7 +781,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
      <div class="mais">
        <p class="eyebrow">Mai multe site-uri făcute de noi</p>
        <p class="lead">Mai multe variații, fiecare cu identitatea propriei afaceri.</p>
-@@ -1049,10 +1175,10 @@
+@@ -1049,10 +1181,10 @@
    <div class="envolver">
      <p class="eyebrow">Contact</p>
      <h2 id="t-contact" class="afirmacao">Spune-ne numele afacerii tale.</h2>
@@ -777,7 +795,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
  <li><a href="tel:+351967117357"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="txt"><span class="qual">Telefon</span><span class="valor">+351 967 117 357</span></span></a></li>
  <li><a href="mailto:tomas@pachecost.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg><span class="txt"><span class="qual">Email</span><span class="valor">tomas@pachecost.com</span></span></a></li>
  <li><a href="https://www.instagram.com/pachecostudiospt/" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg><span class="txt"><span class="qual">Instagram</span><span class="valor">@pachecostudiospt</span></span></a></li>
-@@ -1072,7 +1198,7 @@
+@@ -1072,7 +1204,7 @@
  </footer>
  
  <div class="barra" id="barra" inert>
@@ -786,7 +804,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
  </div>
  
  <section class="rgpd" id="rgpd" aria-label="Cookie-uri și statistici" hidden>
-@@ -1249,7 +1375,7 @@
+@@ -1249,7 +1381,7 @@
    var tabs = document.querySelectorAll('.tabs a');
    function vista() {
      var alvo = location.hash.length > 1 ? document.getElementById(location.hash.slice(1)) : null;
@@ -795,7 +813,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
      if (alvo) {
        var sec = alvo.closest('.vista');
        if (sec) v = sec.id;
-@@ -1327,6 +1453,11 @@
+@@ -1327,6 +1459,11 @@
    if (/[?&]origem=cartao\b/.test(location.search)) {
      window.addEventListener('load', function () { gc({ path: 'qr/cartao', title: 'QR do cartão', event: true }); });
    }
@@ -807,7 +825,7 @@ diff -ru cur/ro/index.html novo/ro/index.html
    // tipos de negócio abertos, contados à parte: mostra o que interessa a quem visita
    document.querySelectorAll('details.setor').forEach(function (d) {
      d.addEventListener('toggle', function () {
-@@ -1339,6 +1470,7 @@
+@@ -1339,6 +1476,7 @@
      if (!a) return;
      var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
      gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });

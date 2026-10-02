@@ -41,13 +41,13 @@ A partir de 48rem: 2,25rem entre separadores, sublinhado só na largura do texto
 
 ## 4. Lema (PT, RO, EN)
 
-No topo das vistas Automações e Sites, com um traço laranja que se desenha ao carregar (respeita `prefers-reduced-motion`):
+No topo das vistas Automações e Sites: três frases, com a do meio em laranja e na fonte display (o destaque), e um traço laranja que se desenha ao carregar (respeita `prefers-reduced-motion`):
 
-- PT: O trabalho que faz o teu negócio subir de nível.
-- RO: Munca care îți duce afacerea la următorul nivel.
-- EN: The work that takes your business to the next level.
+- PT: Tens um objetivo a atingir? / **A IA vai fazê-lo acontecer.** / Só tens de dar o primeiro passo.
+- RO: Ai un obiectiv de atins? / **AI-ul îl va face să se întâmple.** / Trebuie doar să faci primul pas.
+- EN: Do you have a goal to reach? / **AI will make it happen.** / You just have to take the first step.
 
-Escondido a quem chega por anúncio (aí fala o herói).
+Em português, "fazê-lo" não se parte no hífen (`span.nb`). Escondido a quem chega por anúncio (aí fala o herói).
 
 ## 5. Ponte para as automações (PT, RO, EN)
 
