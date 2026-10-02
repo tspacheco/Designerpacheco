@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Bravus Muscle Suplementos — Plano de execução digital</title>
+<style>
+/*__FONTES__*/
+@page{size:A4;margin:0}
+:root{--ink:#111513;--ink2:#2b312d;--mut:#6b736e;--line:#dfe5e1;--paper:#f6f8f6;--verde:#17a34a;--verde2:#0f7a37;--verdeC:#e3f5e9;--azul:#1d4fd8}
+*{box-sizing:border-box;margin:0}
+html,body{font-family:Inter,system-ui,sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pg{width:210mm;height:297mm;padding:15mm 16mm 16mm;position:relative;page-break-after:always;background:#fff;overflow:hidden}
+.pg:last-child{page-break-after:auto}
+h1,h2,h3,.big{font-family:"Barlow Condensed",Inter,sans-serif;font-weight:800;letter-spacing:.2px;line-height:1}
+.kick{font:700 8pt/1 Inter;letter-spacing:.18em;text-transform:uppercase;color:var(--verde2)}
+.foot{position:absolute;left:17mm;right:17mm;bottom:9mm;display:flex;justify-content:space-between;font-size:7.5pt;color:var(--mut);border-top:1px solid var(--line);padding-top:3mm}
+
+/* CAPA */
+.capa{background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:space-between}
+.capa .stripes{position:absolute;right:-30mm;top:-20mm;width:140mm;height:340mm;background:repeating-linear-gradient(115deg,rgba(23,163,74,.0) 0 14mm,rgba(23,163,74,.16) 14mm 16mm);pointer-events:none}
+.capa .kick{color:#7fe0a3}
+.capa h1{font-size:62pt;line-height:.9;margin-top:10mm;text-transform:uppercase}
+.capa h1 span{color:var(--verde)}
+.capa .sub{font-size:14pt;color:#cfd8d2;max-width:120mm;margin-top:8mm;line-height:1.4}
+.capa .meta{display:grid;grid-template-columns:auto 1fr;gap:2mm 8mm;font-size:10pt;color:#cfd8d2;border-top:1px solid rgba(255,255,255,.18);padding-top:6mm}
+.capa .meta b{color:#fff;font-weight:600}
+.capa .sig{display:flex;justify-content:space-between;align-items:end;margin-top:8mm;font-size:9pt;color:#9fb0a6}
+.capa .sig strong{font-family:"Barlow Condensed";font-size:18pt;color:#fff;letter-spacing:1px}
+
+h2{font-size:28pt;text-transform:uppercase;margin:2.5mm 0 3.5mm}
+h3{font-size:14pt;text-transform:uppercase;margin-bottom:1.2mm}
+.lead{font-size:10.5pt;color:var(--ink2);max-width:165mm}
+
+/* DIAGNÓSTICO */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:4mm}
+.box{border:1px solid var(--line);border-radius:4mm;padding:3.5mm 4.5mm;background:#fff}
+.box.ok{background:var(--verdeC);border-color:#bfe8cd}
+.box ul{list-style:none;padding:0;display:grid;gap:1.2mm;margin-top:1.5mm}
+.box li{display:grid;grid-template-columns:5mm 1fr;gap:2mm;font-size:9pt}
+.box li::before{content:"✓";font-weight:700;color:var(--verde2)}.box.num li::before{content:"–";color:#a33a12}
+.prob{margin-top:4mm;display:grid;gap:2.4mm}
+.p{display:grid;grid-template-columns:10mm 1fr;gap:3mm;border:1px solid var(--line);border-radius:4mm;padding:2.6mm 4mm;align-items:start}
+.p .n{font-family:"Barlow Condensed";font-weight:800;font-size:21pt;color:var(--verde);line-height:1}
+.p b{display:block;font-size:10.2pt;margin-bottom:.5mm}
+.p p{font-size:8.9pt;color:var(--ink2);line-height:1.42}
+.p .imp{display:inline-block;margin-top:1mm;font-size:8pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a33a12;background:#fdeee6;padding:1mm 2.5mm;border-radius:99px}
+.quote{margin-top:3.5mm;font-size:9pt;color:var(--ink2);border-left:3px solid var(--verde);padding:1mm 0 1mm 4mm}
+
+/* ETAPAS */
+.et{display:grid;grid-template-columns:22mm 1fr;gap:5mm;padding:3.2mm 0;align-items:start;border-top:1px solid var(--line)}
+.et:first-of-type{border-top:0}
+.et .tag{font-family:"Barlow Condensed";font-weight:800;text-transform:uppercase;font-size:12pt;color:#fff;background:var(--ink);border-radius:3mm;padding:3mm 0;text-align:center;line-height:1.05}
+.et .tag small{display:block;font:600 7.5pt/1.2 Inter;color:#7fe0a3;letter-spacing:.08em;margin-top:1mm}
+.et h3 span{color:var(--verde2)}
+.et .goal{font-size:9.2pt;color:var(--ink2);margin-bottom:1.5mm}
+.chk{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1mm 6mm}
+.chk li{display:grid;grid-template-columns:4.5mm 1fr;gap:1.4mm;font-size:8.8pt;line-height:1.38}
+.chk li::before{content:"";width:3mm;height:3mm;border:1.5px solid var(--verde);border-radius:.8mm;margin-top:1mm}
+.res{margin-top:1.8mm;font-size:8.7pt;background:var(--paper);border-radius:2.5mm;padding:2.2mm 3.5mm}
+.res b{color:var(--verde2)}
+
+/* JORNADA */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-top:6mm;counter-reset:s}
+.st{border:1px solid var(--line);border-radius:4mm;padding:4mm;counter-increment:s;position:relative;background:#fff}
+.st::before{content:counter(s,decimal-leading-zero);font-family:"Barlow Condensed";font-weight:800;font-size:20pt;color:var(--verde);display:block;line-height:1;margin-bottom:2mm}
+.st b{display:block;font-size:10pt;margin-bottom:1mm}
+.st p{font-size:8.8pt;color:var(--ink2)}
+.wa{margin-top:7mm;display:grid;grid-template-columns:1fr 1fr;gap:6mm;align-items:start}
+.phone{background:#0b141a;border-radius:6mm;padding:5mm;color:#e9edef;font-size:9pt}
+.phone .hd{font-weight:700;margin-bottom:3mm;color:#fff}
+.m{max-width:85%;padding:2.2mm 3mm;border-radius:3mm;margin:2mm 0;line-height:1.35}
+.m.in{background:#202c33}
+.m.out{background:#005c4b;margin-left:auto}
+.m small{display:block;font-size:7pt;color:#9fb3ad;margin-top:1mm;text-align:right}
+.note{font-size:8.6pt;color:var(--mut);margin-top:2mm}
+
+/* PRÓXIMOS PASSOS */
+.need{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:5mm}
+.need ul{padding-left:4.5mm;display:grid;gap:1.6mm;font-size:9.6pt}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin-top:4mm}
+.kpi div{background:var(--paper);border-radius:3mm;padding:3.5mm;font-size:9pt}
+.kpi b{display:block;font-family:"Barlow Condensed";font-size:13pt;text-transform:uppercase;margin-bottom:1mm}
+.cta{margin-top:8mm;background:var(--ink);color:#fff;border-radius:5mm;padding:7mm 8mm;display:flex;justify-content:space-between;align-items:center;gap:6mm}
+.cta .big{font-size:22pt;text-transform:uppercase}
+.cta .big span{color:var(--verde)}
+.cta p{font-size:9.5pt;color:#cfd8d2;max-width:80mm}
+.legal{margin-top:5mm;font-size:8pt;color:var(--mut)}
+</style>
+</head>
+<body>
+
+<!-- 1 CAPA -->
+<section class="pg capa">
+  <div class="stripes"></div>
+  <div>
+    <p class="kick">Plano de execução digital · sem custos nesta etapa</p>
+    <h1>Bravus<br>Muscle<br><span>Suplementos</span></h1>
+    <p class="sub">O que hoje impede a loja de vender mais fora do balcão — e o passo a passo para resolver, na ordem certa.</p>
+  </div>
+  <div>
+    <div class="meta">
+      <span>Preparado para</span><b>Cristiano · Bravus Muscle Suplementos</b>
+      <span>Loja</span><b>Av. Dr. José Artur Nova, 2441 · Jardim Helena · São Paulo – SP</b>
+      <span>Reunião</span><b>Sexta, 2 de outubro de 2026 · 11:00 (Brasília)</b>
+    </div>
+    <div class="sig"><span>Diagnóstico feito a partir do perfil público da loja no Google (outubro de 2026).</span><strong>PACHECO STUDIOS</strong></div>
+  </div>
+</section>
+
+<!-- 2 DIAGNÓSTICO -->
+<section class="pg">
+  <p class="kick">01 · Diagnóstico</p>
+  <h2>Onde a loja está hoje</h2>
+  <p class="lead">A base é boa: quem compra gosta e volta. O problema é que quase tudo depende de o cliente <b>já conhecer</b> a loja e passar na porta. Quem procura “suplementos perto de mim” no Google ou à noite no celular encontra pouco motivo para escolher a Bravus.</p>
+
+  <div class="two">
+    <div class="box ok">
+      <h3>O que já funciona</h3>
+      <ul>
+        <li>Nota 5,0 no Google (7 avaliações)</li>
+        <li>Telefone e WhatsApp no perfil</li>
+        <li>Horário publicado</li>
+        <li>Fotos de produtos e da fachada</li>
+        <li>Já publica novidades no perfil do Google</li>
+      </ul>
+    </div>
+    <div class="box num">
+      <h3>Em números</h3>
+      <ul>
+        <li>7 avaliações — pouco para quem compara lojas pela nota e pela quantidade</li>
+        <li>0 site próprio — o link do perfil leva ao Instagram</li>
+        <li>0 canal de venda online — só balcão e conversa</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prob">
+    <div class="p"><span class="n">1</span><div><b>Sem site próprio</b><p>O cliente não consegue ver produtos, marcas, objetivos (massa, emagrecimento, energia, saúde) nem como comprar antes de chegar. No Google, a loja compete só com nome e nota.</p><span class="imp">Perde quem pesquisa antes de comprar</span></div></div>
+    <div class="p"><span class="n">2</span><div><b>Sem e-mail de contato</b><p>Sem um e-mail profissional (contato@…), fica difícil atender academias, personal trainers, fornecedores e pedidos maiores — e todo contato depende do WhatsApp pessoal.</p><span class="imp">Perde parcerias e contatos B2B</span></div></div>
+    <div class="p"><span class="n">3</span><div><b>Sem pedido ou venda online</b><p>Não há catálogo, reserva de produto nem pedido com retirada ou entrega. A venda acontece só no horário da loja e com o cliente presente.</p><span class="imp">Vendas limitadas ao fluxo da rua</span></div></div>
+    <div class="p"><span class="n">4</span><div><b>Perfil do Google incompleto / por verificar</b><p>Confirmar se o perfil está reivindicado e verificado: perfis verificados, com descrição completa, produtos e muitas avaliações aparecem melhor e passam mais confiança do que os concorrentes sem selo.</p><span class="imp">Menos confiança e menos destaque no mapa</span></div></div>
+    <div class="p"><span class="n">5</span><div><b>Recompra deixada ao acaso</b><p>Suplemento acaba — whey, creatina, vitaminas são compras que se repetem. Hoje nada lembra o cliente de voltar quando o pote está acabando, e ele pode comprar em outro lugar.</p><span class="imp">Cliente fiel que some sem aviso</span></div></div>
+  </div>
+  <p class="quote">O que os clientes já escrevem no Google: “Suplementos com custo baixo e…” · “Melhor loja de…” — é essa reputação que o plano vai mostrar para quem ainda não conhece a loja.</p>
+  <div class="foot"><span>Bravus Muscle Suplementos · Plano de execução</span><span>Pacheco Studios · 2</span></div>
+</section>
+
+<!-- 3 PLANO -->
+<section class="pg">
+  <p class="kick">02 · Execução</p>
+  <h2>O plano, em 4 etapas</h2>
+  <p class="lead">Cada etapa resolve um dos problemas acima e prepara a seguinte. A loja continua funcionando normalmente; o trabalho é nosso.</p>
+
+  <div class="et"><div class="tag">Etapa 1<small>Semana 1</small></div><div>
+    <h3>Google <span>blindado</span></h3>
+    <p class="goal">Ser a loja de suplementos mais completa e confiável no mapa da região.</p>
+    <ul class="chk">
+      <li>Reivindicar e verificar o perfil</li><li>Descrição profissional com palavras de busca</li>
+      <li>Categorias e serviços corretos</li><li>Produtos e marcas cadastrados no perfil</li>
+      <li>Fotos novas: fachada, prateleiras, marcas</li><li>Link do perfil apontando para o site</li>
+      <li>QR code de avaliação no balcão</li><li>Resposta a todas as avaliações</li>
+    </ul>
+    <p class="res"><b>Resolve:</b> problema 4 · mais avaliações, mais cliques em “Ligar” e “Rotas”.</p>
+  </div></div>
+
+  <div class="et"><div class="tag">Etapa 2<small>Semanas 2–3</small></div><div>
+    <h3>Site <span>próprio</span> + e-mail</h3>
+    <p class="goal">Um site rápido no celular que vende a loja antes de o cliente chegar.</p>
+    <ul class="chk">
+      <li>Domínio próprio da Bravus</li><li>E-mail profissional (contato@…)</li>
+      <li>Catálogo por objetivo: massa, emagrecimento, energia, saúde, sono</li><li>Marcas que a loja trabalha</li>
+      <li>Botão “Pedir pelo WhatsApp” com a mensagem pronta</li><li>Retirada na loja e entrega na região</li>
+      <li>Mapa, horário e avaliações reais</li><li>Textos dentro das regras da Anvisa (sem promessa de resultado)</li>
+    </ul>
+    <p class="res"><b>Resolve:</b> problemas 1 e 2 · quem pesquisa encontra, entende e chama.</p>
+  </div></div>
+
+  <div class="et"><div class="tag">Etapa 3<small>Semanas 3–4</small></div><div>
+    <h3>WhatsApp <span>que vende sozinho</span></h3>
+    <p class="goal">Atender rápido, mesmo com a loja cheia ou fechada, e trazer o cliente de volta.</p>
+    <ul class="chk">
+      <li>WhatsApp Business com catálogo</li><li>Respostas automáticas: horário, endereço, pagamento, entrega</li>
+      <li>Reserva de produto para retirada</li><li>Lista de clientes organizada</li>
+      <li>Lembrete de recompra (~25 dias após a compra)</li><li>Aviso de chegada de produtos e promoções</li>
+      <li>Pedido de avaliação no Google após a compra</li><li>Tudo no número que a loja já usa</li>
+    </ul>
+    <p class="res"><b>Resolve:</b> problemas 3 e 5 · venda fora do horário e cliente que volta.</p>
+  </div></div>
+
+  <div class="et"><div class="tag">Etapa 4<small>Quando fizer sentido</small></div><div>
+    <h3>Loja <span>online</span></h3>
+    <p class="goal">Vender com pagamento online (Pix e cartão) e entrega na região, quando o volume pedir.</p>
+    <ul class="chk">
+      <li>Carrinho e pagamento Pix/cartão</li><li>Entrega por bairro / retirada</li>
+      <li>Estoque dos principais produtos</li><li>Combos por objetivo</li>
+    </ul>
+    <p class="res"><b>Resolve:</b> problema 3 por completo · a loja vende 24 horas.</p>
+  </div></div>
+  <div class="foot"><span>Bravus Muscle Suplementos · Plano de execução</span><span>Pacheco Studios · 3</span></div>
+</section>
+
+<!-- 4 JORNADA + PRÓXIMOS PASSOS -->
+<section class="pg">
+  <p class="kick">03 · Como fica para o cliente</p>
+  <h2>Do Google ao pote na mão</h2>
+  <div class="flow">
+    <div class="st"><b>Pesquisa</b><p>“Loja de suplementos Jardim Helena” → a Bravus aparece com nota, fotos e produtos.</p></div>
+    <div class="st"><b>Conhece</b><p>Abre o site: vê o catálogo pelo objetivo e as marcas.</p></div>
+    <div class="st"><b>Pede</b><p>Toca em “Pedir pelo WhatsApp” — a mensagem já vem escrita.</p></div>
+    <div class="st"><b>Volta</b><p>Retira ou recebe; depois ganha lembrete de recompra e pedido de avaliação.</p></div>
+  </div>
+
+  <div class="wa">
+    <div class="phone">
+      <div class="hd">Bravus Muscle Suplementos</div>
+      <div class="m out">Oi! Quero saber se tem creatina disponível para retirar hoje.<small>21:12</small></div>
+      <div class="m in">Oi! Recebemos sua mensagem 💪 Nosso horário é até as 20:00 — amanhã cedo confirmamos a disponibilidade e já deixamos separada para você. Pode ser no seu nome?<small>21:12 · resposta automática</small></div>
+      <div class="m out">Pode sim, obrigado!<small>21:13</small></div>
+    </div>
+    <div>
+      <h3>Exemplo do fluxo</h3>
+      <p style="font-size:9.6pt;color:var(--ink2)">O cliente que escreve depois do horário não fica sem resposta: recebe a confirmação na hora, o pedido fica registrado e a equipe só precisa separar o produto na abertura. Nada de mensagem perdida no meio do dia.</p>
+      <p class="note">Mensagem ilustrativa — os textos finais são definidos com você.</p>
+    </div>
+  </div>
+
+  <div class="need">
+    <div><h3>O que precisamos de você</h3><ul>
+      <li>Acesso ao perfil do Google (ou ajuda para verificar)</li>
+      <li>Lista das marcas e dos produtos mais vendidos</li>
+      <li>Logo em boa qualidade</li>
+      <li>Fotos da loja (ou 1 visita para fotografar)</li>
+      <li>Região de entrega e formas de pagamento</li>
+    </ul></div>
+    <div><h3>Como medimos</h3>
+      <div class="kpi"><div><b>Google</b>Cliques em “Ligar” e “Rotas”</div><div><b>Avaliações</b>Novas por mês</div><div><b>WhatsApp</b>Conversas vindas do site</div></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div class="big">Primeiro <span>mostramos</span>,<br>depois decidimos.</div>
+    <p>Combinamos a etapa 1 e montamos uma prévia do site com a cara da Bravus para você ver no celular antes de qualquer decisão.</p>
+  </div>
+  <p class="legal">Diagnóstico baseado nas informações públicas do perfil da loja no Google em outubro de 2026. Números de avaliações e status do perfil a confirmar com a loja. Pacheco Studios · pachecost.com</p>
+  <div class="foot"><span>Bravus Muscle Suplementos · Plano de execução</span><span>Pacheco Studios · 4</span></div>
+</section>
+</body>
+</html>
