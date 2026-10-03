@@ -276,7 +276,7 @@ const fs = require('fs');
     const esperados = JSON.parse(fs.readFileSync(path.join(__dirname, 'conteudo', 'casos.json'), 'utf8')).itens.length;
     if (casos.length !== esperados) mal(`${k}: ${casos.length} casos (esperava ${esperados})`);
     for (const c of casos) {
-      if (!c.selo || c.n !== 3 || !c.fonte.startsWith('https://') || c.alvo !== '_blank' || !c.chips.length) mal(`${k}: caso mal montado ${JSON.stringify(c)}`);
+      if (!c.selo || c.n !== 3 || c.fonte || !c.chips.length) mal(`${k}: caso mal montado ${JSON.stringify(c)}`);
       for (const h of c.chips) if (!(await p.$(h))) mal(`${k}: o caso ${c.id} liga a ${h}, que não existe`);
     }
     if (!(await p.$('.caso.vazio a[href^="https://wa.me/"]'))) mal(`${k}: falta o lugar do caso n.º 1 com o pedido no WhatsApp`);
@@ -347,7 +347,35 @@ const fs = require('fs');
       if (l !== v.lang || !p.url().startsWith(v.url)) mal(`${k}: o botão de voltar foi para ${p.url()} (${l})`);
     }
     if (!noindex) mal(`${k}: a cópia do site não tem noindex`);
-    if (falhas === falhasAntes) bem(`${k}: separadores, consultoria, ${casos.length} casos com selo e fonte + o lugar do n.º 1, 8 automatizações, ligações, em destaque (${dest.join(', ')}), 4 tipos de negócio com os ${ativos.length} sites, Toda Chic com «${pil && pil.t}» a voltar à página ${k.toUpperCase()}`);
+    if (falhas === falhasAntes) bem(`${k}: separadores, consultoria, ${casos.length} casos com selo, sem ligações para fora, + o lugar do próximo caso, 8 automatizações, ligações, em destaque (${dest.join(', ')}), 4 tipos de negócio com os ${ativos.length} sites, Toda Chic com «${pil && pil.t}» a voltar à página ${k.toUpperCase()}`);
+  }
+
+  // diagnóstico: «Conhece-nos» abre a conversa; 8 respostas; no fim, a mensagem para o WhatsApp leva tudo
+  for (const [k, v] of Object.entries(LINGUAS)) {
+    await p.goto(v.url);
+    await p.click('.heroi [data-diagnostico]');
+    const g = JSON.parse(fs.readFileSync(path.join(__dirname, 'conteudo', k + '.json'), 'utf8')).diagnostico;
+    const respostas = [];
+    for (const q of g.perguntas) {
+      if (q.tipo === 'texto' || q.tipo === 'tel') {
+        await p.waitForSelector('#diag-in', { timeout: 8000 });
+        const t = q.tipo === 'tel' ? '+351 900 000 000' : `Teste ${q.id}`;
+        await p.fill('#diag-in', t); await p.press('#diag-in', 'Enter'); respostas.push(t);
+      } else {
+        await p.waitForSelector('.opcoes button', { timeout: 8000 });
+        await p.click('.opcoes button'); respostas.push(q.opcoes[0]);
+        if (q.tipo === 'multi') await p.click('.diag-acoes .botao');
+      }
+      await p.waitForTimeout(100);
+    }
+    await p.waitForSelector('.diag-acoes a[href^="https://wa.me/"]', { timeout: 10000 });
+    const fim = await p.evaluate(() => ({ href: decodeURIComponent(document.querySelector('.diag-acoes a').href),
+      n: document.getElementById('diag-n').textContent, aberto: document.getElementById('diagnostico').open }));
+    const falta = respostas.filter(t => !fim.href.includes(t));
+    await p.keyboard.press('Escape');
+    const fechou = await p.evaluate(() => !document.getElementById('diagnostico').open);
+    if (falta.length || fim.n !== String(g.perguntas.length) || !fim.aberto || !fechou) mal(`${k}, diagnóstico: ${JSON.stringify({ falta, fim, fechou })}`);
+    else bem(`${k}: diagnóstico em conversa, ${g.perguntas.length} respostas, todas na mensagem para o WhatsApp; Esc fecha`);
   }
 
   // anúncio de sites: entra nos Sites; sem utm, entra na Consultoria

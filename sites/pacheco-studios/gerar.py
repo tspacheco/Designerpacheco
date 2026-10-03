@@ -479,18 +479,26 @@ def inteiras(t):
     return " ".join(f'<span class="nq">{e(p)}</span>' if "-" in p else e(p) for p in t.split(" "))
 
 
+def mosaico(rotulos, centro, cls):
+    """Mosaico 3D (só decoração): um plano isométrico com a grelha e os passos em placas; a placa do meio é a marca."""
+    placas = "".join(f'<span class="placa p{i + 1}"><span>{e(t)}</span></span>' for i, t in enumerate(rotulos))
+    return (f'<div class="mosaico {cls}" aria-hidden="true"><div class="plano">{placas}'
+            f'<span class="placa centro"><span><i class="ponto"></i>{e(centro)}</span></span></div></div>')
+
+
 def vista_consultanta(c, casos, lang, wa):
-    """A porta de entrada: o objetivo do dono, a diferença entre agência e consultoria, os cinco passos, o que é a IA
-    (as mesmas cinco frases de sempre), três números de casos reais (de outros, e dito), os compromissos e quem faz."""
+    """A porta de entrada: o herói (a frase da marca, «Conhece-nos» abre o diagnóstico), a consultoria em cinco passos,
+    o veredito de um caso real sobre o mosaico 3D, o que é a IA, três números de casos, os compromissos e quem faz."""
     k = c["consultanta"]
     tx = textos_casos(c, casos, lang)
     factos = "".join(f"<li>{e(f)}</li>" for f in k["factos"])
-    d = k["dif"]
-    col = lambda cls, t, itens: (f'<div class="dif-col {cls}"><h3>{e(t)}</h3><ul>'
-                                 + "".join(f"<li>{e(x)}</li>" for x in itens) + "</ul></div>")
     m = k["metodo"]
     passos = "\n".join(f'<li class="passo rv" style="--i:{i}"><span class="passo-q">{e(p["q"])}</span><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p></li>'
                        for i, p in enumerate(m["pasi"]))
+    vd = k["veredito"]
+    if vd["caso"] not in {x["id"] for x in tx}:
+        raise SystemExit(f"conteudo/{lang}.json: o veredito aponta para o caso «{vd['caso']}», que não existe")
+    trad = f'<small class="trad">{e(vd["traducao"])}</small>' if vd["traducao"] else ""
     ia = k["ia"]
     frases = "".join(f'<li class="rv" style="--i:{i}">{e(f)}</li>' for i, f in enumerate(c["automatizari"]["labels"]["ai"]))
     cs = k["casos"]
@@ -505,31 +513,42 @@ def vista_consultanta(c, casos, lang, wa):
     q = k["quem"]
     return f"""<section id="consultanta" class="vista" aria-labelledby="t-consultanta">
   <div class="envolver heroi">
-    <p class="eyebrow">{e(k["eyebrow"])}</p>
-    <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">{e(k["pre"])}</span><span class="heroi-grande">{inteiras(k["titlu"])}</span></h2>
-    <p class="heroi-passo">{e(k["passo"])}</p>
-    <p class="lead heroi-lead">{e(k["lead"])}</p>
-    <div class="heroi-acoes">
-      <a class="botao primario grande" href="{e(wa)}">{I["chat"]}{e(c["contact"]["cta"])}</a>
-      <a class="link-seta" href="#cazuri">{e(k["ver_casos"])}{I["seta"]}</a>
+    <div class="heroi-txt">
+      <p class="eyebrow heroi-e">{e(k["eyebrow"])}</p>
+      <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">{e(k["pre"])}</span> <span class="heroi-grande">{inteiras(k["titlu"])}</span></h2>
+      <p class="heroi-passo">{e(k["passo"])}</p>
+      <p class="lead heroi-lead">{e(k["lead"])}</p>
+      <div class="heroi-acoes">
+        <a class="botao primario grande" href="{e(wa)}" data-diagnostico>{e(k["conhece"])}{I["seta"]}</a>
+        <a class="botao contorno grande" href="#cazuri">{e(k["ver_casos"])}</a>
+      </div>
+      <ul class="factos">{factos}</ul>
     </div>
-    <ul class="factos">{factos}</ul>
-  </div>
-  <div class="envolver seccao dif">
-    <p class="eyebrow">{e(d["eyebrow"])}</p>
-    <h2 class="afirmacao">{e(d["titlu"])}</h2>
-    <div class="dif-grelha">
-      {col("agencia", d["a_t"], d["a"])}
-      {col("nos", d["c_t"], d["c"])}
-    </div>
+    {mosaico(k["tiles"], "Pacheco Studios", "heroi-3d")}
   </div>
   <div class="claro">
     <div class="envolver seccao">
       <p class="eyebrow">{e(m["eyebrow"])}</p>
       <h2 class="afirmacao">{e(m["titlu"])}</h2>
+      <p class="lead">{e(m["intro"])}</p>
       <ol class="passos passos-5">
 {passos}
       </ol>
+    </div>
+  </div>
+  <div class="veredito seccao">
+    {mosaico(k["tiles"], "Pacheco Studios", "fundo-3d")}
+    <div class="envolver">
+      <p class="eyebrow">{e(vd["eyebrow"])}</p>
+      <h2 class="so-leitor">{e(vd["leitor"])}</h2>
+      <figure class="cartao-v rv">
+        <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+        <blockquote><p>{e(vd["quote"])}</p></blockquote>
+        <figcaption>
+          <span class="v-quem"><span class="v-marca" aria-hidden="true"></span><span><b>{e(vd["quem"])}</b><small>{e(vd["fonte"])}</small>{trad}</span></span>
+          <a class="botao escuro" href="#caso-{e(vd["caso"])}">{e(vd["ver"])}{I["seta"]}</a>
+        </figcaption>
+      </figure>
     </div>
   </div>
   <div class="envolver seccao ia-bloco">
@@ -566,6 +585,32 @@ def vista_consultanta(c, casos, lang, wa):
 </section>"""
 
 
+def diagnostico(c, url_priv):
+    """O diagnóstico em conversa: 8 perguntas, uma de cada vez, com o contador. Nada é guardado:
+    no fim, as respostas vão para o WhatsApp do Tomás numa mensagem que o próprio visitante envia."""
+    g = c["diagnostico"]
+    n = len(g["perguntas"])
+    pontos = "".join("<li></li>" for _ in range(n))
+    priv = e(g["privacidade"]).replace("{link}", f'<a href="{e(url_priv)}">{e(g["privacidade_link"])}</a>')
+    dados = json.dumps({k: g[k] for k in ("abertura", "perguntas", "continuar", "enviar_resp", "obrigatorio", "escolhe", "fim",
+                                          "enviar", "recomecar", "wa_intro")}, ensure_ascii=False).replace("</", "<\\/")
+    return f"""<dialog class="diag" id="diagnostico" aria-labelledby="diag-t">
+  <div class="diag-topo">
+    <p class="marca"><span class="ponto" aria-hidden="true"></span><span class="diag-nome">Pacheco Studios</span></p>
+    <ol class="diag-prog" aria-hidden="true">{pontos}</ol>
+    <p class="diag-cont"><b id="diag-n">0</b> <span>{e(g["de"])} {n}</span></p>
+    <button class="diag-x" type="button" data-fechar-diag aria-label="{e(g["fechar"])}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <h2 id="diag-t" class="so-leitor">{e(g["titulo"])}</h2>
+  <div class="diag-corpo">
+    <div class="diag-conversa" id="diag-conversa" aria-live="polite"></div>
+    <div class="diag-resposta" id="diag-resposta"></div>
+  </div>
+  <p class="diag-pe">{priv}</p>
+  <script type="application/json" id="diag-dados">{dados}</script>
+</dialog>"""
+
+
 def vista_cazuri(c, casos, lang, digitos):
     """Casos reais de outras empresas, ditos como tal: o problema, o que fizeram, três números, a fonte (abre a página
     original) e a solução nossa que faz o mesmo. No fim, o lugar vazio do primeiro caso nosso."""
@@ -577,7 +622,6 @@ def vista_cazuri(c, casos, lang, digitos):
         nums = "".join(f'<li><b>{e(n["v"])}</b><span>{e(n["l"])}</span></li>' for n in x["numeros"])
         chips = " ".join(f'<a class="chip" href="#proiecte">{e(lab["sites"])}</a>' if a == "sites" else
                          f'<a class="chip" href="#a-{e(a)}">{e(por_id[a]["scurt"])}</a>' for a in x["aplica"])
-        dominio = re.sub(r"^https://(www\.)?([^/]+).*$", r"\2", x["url"])
         itens.append(f"""<li class="caso rv" id="caso-{e(x["id"])}" style="--i:{i % 2}">
   <p class="caso-tag">{e(x["setor"])}</p>
   <p class="selo">{e(lab["selo"])}</p>
@@ -590,7 +634,6 @@ def vista_cazuri(c, casos, lang, digitos):
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">{e(lab["aplica"])}</h4><div class="chips">{chips}</div></div>
-    <a class="fonte" href="{e(x["url"])}" target="_blank" rel="noopener"><span>{e(lab["fonte"])}<small>{e(casos["fonte"])} · {e(dominio)}</small></span>{I["fora"]}</a>
   </div>
 </li>""")
     v = z["vazio"]
@@ -667,7 +710,7 @@ def contacto(c, d, wa, tel_legivel, digitos, com_site):
     <p class="eyebrow">{e(k["eyebrow"])}</p>
     <h2 id="t-contact" class="afirmacao">{e(k["titlu"])}</h2>
     <p class="lead">{e(k["text"])}</p>
-    <a class="botao primario grande" href="{e(wa)}">{I["chat"]}{e(k["cta"])}</a>
+    <a class="botao primario grande" href="{e(wa)}" data-diagnostico>{e(k["cta"])}{I["seta"]}</a>
     <ul class="contactos">
 {lis}
     </ul>
@@ -1010,7 +1053,7 @@ def main():
             "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, digitos),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "RODAPE": rodape(c, lang), "INTRO": intro(c),
+            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "RODAPE": rodape(c, lang), "INTRO": intro(c),
             "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
             "CONSENT_ROTULO": e(k["rotulo"]), "CONSENT_TEXTO": e(k["texto"]), "CONSENT_SIM": e(k["sim"]),
             "CONSENT_NAO": e(k["nao"]), "CONSENT_LINK": e(k["link"]), "URL_PRIVACIDADE": e(cfg["privacidade"]),

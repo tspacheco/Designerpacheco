@@ -435,19 +435,41 @@ html.intro-vai .intro{display:grid}
 @media (prefers-reduced-motion:reduce){.intro{display:none!important}}
 
 
-/* ═══ consultoria: o objetivo do dono primeiro. O herói repete a frase da marca, tal como no anúncio:
-   traço laranja + pergunta, a resposta enorme a laranja, o primeiro passo a branco ═══ */
-.heroi{padding-block:clamp(2.75rem,10vw,6rem) clamp(2.5rem,8vw,4.5rem)}
-.heroi-t{margin-top:1.4rem;font-weight:400}
-.heroi-pre{display:flex;align-items:center;gap:.9rem;font:600 clamp(1.125rem,4.4vw,1.5rem)/1.3 var(--texto);color:var(--osso)}
-.heroi-pre::before{content:"";flex:none;width:clamp(2.5rem,10vw,4.5rem);height:3px;background:var(--laranja);transform-origin:left}
-.heroi-grande{display:block;margin-top:.7rem;max-width:14ch;font:400 clamp(2rem,8.6vw,4.25rem)/.98 var(--display);
-  text-transform:uppercase;letter-spacing:-.01em;color:var(--laranja);text-wrap:balance}
+/* ═══ consultoria: o herói ao jeito de uma página de produto limpa (rótulo, frase a dois tons, dois botões) com o
+   mosaico 3D dos passos à direita. A frase é a da marca: a pergunta a branco, a resposta a laranja ═══ */
+.heroi{display:grid;gap:1.5rem;align-items:center;padding-block:clamp(2.25rem,8vw,5rem) clamp(1.5rem,5vw,3.5rem)}
+.heroi-e{color:var(--osso-2);letter-spacing:.22em}
+.heroi-t{margin-top:1.1rem;max-width:17ch;font:600 clamp(2.15rem,8.4vw,4.1rem)/1.04 var(--texto);letter-spacing:-.035em;text-wrap:balance}
+.heroi-pre{color:var(--osso)}
+.heroi-grande{display:block;color:var(--laranja)}
 .nq{white-space:nowrap}
-.heroi-passo{margin-top:1.1rem;font:700 clamp(1.125rem,4.4vw,1.5rem)/1.3 var(--texto)}
-.heroi-lead{max-width:40ch}
-.heroi-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.75rem;margin-top:1.9rem}
+.heroi-passo{margin-top:1.1rem;font:600 clamp(1.1rem,3.8vw,1.35rem)/1.35 var(--texto)}
+.heroi-lead{margin-top:.55rem;max-width:42ch}
+.heroi-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:1.75rem}
 .heroi-acoes .grande{margin-top:0}
+.botao.contorno{border-color:var(--contorno);color:var(--osso);background:transparent}
+.botao.contorno:hover{background:rgba(239,234,227,.08)}
+.primario svg{transition:transform .2s var(--sair)} .primario:hover svg{transform:translateX(.2rem)}
+/* mosaico 3D (decoração): plano isométrico com a grelha; placas com espessura; a da marca brilha a laranja */
+.mosaico{position:relative;overflow:hidden;pointer-events:none;user-select:none}
+.heroi-3d{height:clamp(15rem,66vw,22rem);margin-inline:calc(max(var(--gutter),env(safe-area-inset-left)) * -1)}
+.plano{position:absolute;left:50%;top:50%;width:44rem;height:44rem;margin:-22rem 0 0 -22rem;
+  transform:scale(var(--esc,.6)) rotateX(56deg) rotateZ(-45deg);
+  background-image:linear-gradient(rgba(239,234,227,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(239,234,227,.1) 1px,transparent 1px);
+  background-size:5.5rem 5.5rem;background-position:-1px -1px;
+  -webkit-mask-image:radial-gradient(closest-side,#000 60%,transparent);mask-image:radial-gradient(closest-side,#000 60%,transparent)}
+.placa{position:absolute;width:11rem;height:11rem;display:grid;place-items:center;border-radius:1.5rem;
+  background:linear-gradient(135deg,#2B2622,#1B1816);
+  box-shadow:inset 0 0 0 1px rgba(239,234,227,.14),-7px 7px 0 #0B0A09,-7px 7px 0 1px rgba(239,234,227,.08),-26px 26px 40px rgba(0,0,0,.55)}
+.placa span{display:flex;align-items:center;gap:.6rem;font:700 1.05rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso)}
+.placa.p1{left:2.5rem;top:5.5rem} .placa.p2{left:30.5rem;top:3rem} .placa.p3{left:3rem;top:30.5rem} .placa.p4{left:30rem;top:29.5rem}
+.placa.centro{left:14.25rem;top:14.25rem;width:15.5rem;height:15.5rem;border-radius:1.9rem;
+  background:linear-gradient(135deg,#2E241E,#1D1A17);
+  box-shadow:inset 0 0 0 1.5px rgba(232,98,44,.85),-10px 10px 0 #5A2611,-10px 10px 0 1.5px rgba(232,98,44,.5),0 0 70px rgba(232,98,44,.38),-36px 36px 60px rgba(0,0,0,.6);
+  animation:ps-flutua 5s ease-in-out infinite}
+.placa.centro span{font:400 1.3rem/1 var(--display);letter-spacing:.01em;text-transform:none}
+.placa .ponto{width:.75rem;height:.75rem}
+@keyframes ps-flutua{0%,100%{translate:0 0}50%{translate:7px -7px}}
 .link-seta{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;font:700 .8125rem/1.2 var(--mono);letter-spacing:.14em;
   text-transform:uppercase;color:var(--laranja);text-decoration:none}
 .link-seta svg{width:1.1rem;height:1.1rem;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s var(--sair)}
@@ -458,23 +480,85 @@ html.intro-vai .intro{display:grid}
 .factos li::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:var(--laranja);flex:none}
 /* entrada coreografada: só depois de a intro sair (html.intro-vai) e nunca com movimento reduzido */
 @keyframes ps-sobe{from{opacity:0;transform:translateY(1.1rem)}to{opacity:1;transform:none}}
-@keyframes ps-risca{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.js:not(.intro-vai) .heroi :is(.eyebrow,.heroi-pre,.heroi-grande,.heroi-passo,.heroi-lead,.heroi-acoes,.factos){animation:ps-sobe .75s var(--sair) both;animation-delay:var(--d,0s)}
-.js:not(.intro-vai) .heroi-pre::before{animation:ps-risca .6s var(--sair) .15s both}
-.heroi-pre{--d:.12s} .heroi-grande{--d:.3s} .heroi-passo{--d:.6s} .heroi-lead{--d:.72s} .heroi-acoes{--d:.84s} .factos{--d:.96s}
+.js:not(.intro-vai) .heroi :is(.heroi-e,.heroi-t,.heroi-passo,.heroi-lead,.heroi-acoes,.factos,.heroi-3d){animation:ps-sobe .75s var(--sair) both;animation-delay:var(--d,0s)}
+.heroi-t{--d:.1s} .heroi-passo{--d:.3s} .heroi-lead{--d:.4s} .heroi-acoes{--d:.5s} .factos{--d:.6s} .heroi-3d{--d:.25s}
 #consultanta > .envolver + .envolver{border-top:1px solid var(--linha-e)}
-/* agência vs consultoria: a nossa coluna é a que tem cor */
-.dif-grelha{margin-top:1.9rem;display:grid;gap:.75rem;max-width:56rem}
-.dif-col{padding:1.15rem 1.1rem 1.3rem;border-radius:1rem;border:1px solid var(--linha-e)}
-.dif-col h3{font:700 .8125rem/1.2 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--osso-2)}
-.dif-col ul{margin-top:1rem;display:grid;gap:.75rem}
-.dif-col li{position:relative;padding-left:1.4rem;line-height:1.45}
-.dif-col li::before{content:"";position:absolute;left:0;top:.68em;width:.7rem;height:2px;background:var(--osso-2)}
-.agencia li{color:var(--osso-2)}
-.dif-col.nos{background:var(--carvao-2);border-color:rgba(232,98,44,.55)}
-.nos h3{color:var(--laranja)}
-.nos li{color:var(--osso);font-weight:600}
-.nos li::before{top:.42em;width:.6rem;height:.6rem;border-radius:50%;background:var(--laranja)}
+/* ═══ veredito: um caso real em destaque, num cartão de vidro sobre o mosaico 3D ═══ */
+.veredito{position:relative;overflow:hidden;isolation:isolate;
+  background:radial-gradient(60rem 30rem at 50% 70%,rgba(232,98,44,.16),transparent 70%),var(--carvao)}
+.fundo-3d{position:absolute;inset:0;z-index:-1}
+.fundo-3d .plano{--esc:1.15}
+.fundo-3d .placa span{visibility:hidden}
+.cartao-v{position:relative;margin:1.4rem 0 0;max-width:54rem;padding:clamp(3.25rem,8vw,4.25rem) clamp(1.25rem,5vw,3rem) clamp(1.25rem,4vw,2.25rem);
+  border-radius:1.5rem;background:rgba(29,26,23,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid rgba(239,234,227,.16);box-shadow:0 2.5rem 5rem -2rem rgba(0,0,0,.85),0 0 0 1px rgba(232,98,44,.1)}
+.aspas{position:absolute;left:clamp(1.1rem,4vw,2.4rem);top:clamp(1.1rem,3vw,1.6rem);width:2.6rem;fill:rgba(232,98,44,.55)}
+.cartao-v blockquote{margin:0}
+.cartao-v blockquote p{font:400 clamp(1.25rem,4.4vw,1.85rem)/1.42 var(--texto);letter-spacing:-.01em;color:var(--osso);text-wrap:pretty}
+.cartao-v figcaption{margin-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.1rem}
+.v-quem{display:flex;align-items:center;gap:.9rem;min-width:0}
+.v-marca{flex:none;width:3rem;height:3rem;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F2773F,#A64923);
+  box-shadow:0 0 0 3px var(--carvao-2),0 0 0 4px rgba(239,234,227,.25)}
+.v-quem b{display:block;font-weight:600;line-height:1.3}
+.v-quem small{display:block;margin-top:.2rem;font-size:.875rem;line-height:1.4;color:var(--osso-2)}
+.v-quem .trad{font-style:italic}
+.botao.escuro{background:var(--osso);color:var(--carvao)}
+.botao.escuro:hover{background:#fff}
+
+/* ═══ diagnóstico em conversa (abre com «Conhece-nos») ═══ */
+dialog.diag{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;
+  background:var(--osso);color:var(--carvao)}
+dialog.diag[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+dialog.diag::backdrop{background:rgba(0,0,0,.6)}
+.diag-topo{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:.9rem;
+  padding:calc(.6rem + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right)) .6rem max(var(--gutter),env(safe-area-inset-left));
+  background:var(--carvao);color:var(--osso);font:700 .8125rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase}
+.diag-topo .marca{min-height:2.75rem}
+.diag-prog{display:flex;align-items:center;justify-content:center}
+.diag-prog li{position:relative;flex:none;width:.6rem;height:.6rem;border-radius:50%;border:1.5px solid rgba(239,234,227,.55);transition:background-color .3s,border-color .3s}
+.diag-prog li+li{margin-left:clamp(.55rem,3.2vw,3.25rem)}
+.diag-prog li+li::before{content:"";position:absolute;right:calc(100% + 1.5px);top:50%;width:clamp(.55rem,3.2vw,3.25rem);height:1px;background:rgba(239,234,227,.3)}
+.diag-prog li.feito{background:var(--laranja);border-color:var(--laranja)}
+.diag-prog li.feito::before{background:var(--laranja)}
+.diag-cont{display:flex;align-items:baseline;gap:.4rem;letter-spacing:0;text-transform:none}
+.diag-cont b{font:400 1.75rem/1 var(--display)}
+.diag-cont span{font:400 .8125rem/1 var(--texto);color:var(--osso-2)}
+.diag-x{width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(239,234,227,.4);background:transparent;color:var(--osso);cursor:pointer}
+.diag-x svg{width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;fill:none}
+.diag-corpo{overflow-y:auto;overscroll-behavior:contain;padding:1.5rem max(var(--gutter),env(safe-area-inset-left)) 2rem}
+.diag-conversa,.diag-resposta{max-width:46rem;margin-inline:auto}
+.diag-conversa{display:grid;gap:.85rem}
+.msg-d{display:flex;align-items:flex-start;gap:.7rem;max-width:38rem;animation:ps-sobe .35s var(--sair) both}
+.msg-d .av{flex:none;width:2.6rem;height:2.6rem;display:grid;place-items:center;border-radius:50%;background:var(--carvao);color:var(--osso);
+  font:700 .75rem/1 var(--mono);letter-spacing:.06em;box-shadow:0 0 0 2px var(--osso),0 0 0 3px rgba(20,18,16,.15)}
+.msg-d p{padding:.85rem 1.1rem;border-radius:.3rem 1.2rem 1.2rem 1.2rem;background:#fff;line-height:1.5;box-shadow:0 1px 2px rgba(20,18,16,.08)}
+.msg-d.escreve p{display:flex;gap:.3rem;padding-block:1.15rem}
+.msg-d.escreve i{width:.45rem;height:.45rem;border-radius:50%;background:#8A847C;animation:ps-pisca 1s infinite}
+.msg-d.escreve i:nth-child(2){animation-delay:.15s} .msg-d.escreve i:nth-child(3){animation-delay:.3s}
+@keyframes ps-pisca{0%,100%{opacity:.35}50%{opacity:1}}
+.msg-r{justify-self:end;max-width:32rem;padding:.75rem 1.1rem;border-radius:1.2rem .3rem 1.2rem 1.2rem;background:var(--carvao);color:var(--osso);
+  line-height:1.45;animation:ps-sobe .3s var(--sair) both}
+.diag-resposta{display:grid;justify-items:end;gap:.6rem;margin-top:1.25rem}
+.diag-resposta form{display:grid;justify-items:end;gap:.55rem;width:min(100%,30rem)}
+.rotulo-d{font:700 .75rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2)}
+.campo{display:flex;align-items:center;gap:.4rem;width:100%;padding:.3rem .3rem .3rem 1.2rem;border:2px solid #D3CBBF;border-radius:999px;background:#fff;transition:border-color .2s}
+.campo:focus-within{border-color:var(--laranja-tinta)}
+.campo input{flex:1;min-width:0;min-height:2.75rem;border:0;background:transparent;outline:none;font:400 1.0625rem/1.3 var(--texto);color:var(--carvao)}
+.campo input::placeholder{color:#6B665F}
+.campo button{flex:none;width:2.75rem;height:2.75rem;display:grid;place-items:center;border:0;border-radius:50%;background:var(--laranja);color:var(--carvao);cursor:pointer}
+.campo button svg{width:1.15rem;height:1.15rem;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.opcoes{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.5rem;max-width:40rem}
+.opcoes button{min-height:2.75rem;padding:.55rem 1.05rem;border:2px solid var(--carvao);border-radius:999px;background:transparent;color:var(--carvao);
+  font:600 .9375rem/1.25 var(--texto);text-align:left;cursor:pointer;transition:background-color .15s,color .15s}
+.opcoes button:hover{background:rgba(20,18,16,.06)}
+.opcoes button[aria-pressed="true"]{background:var(--carvao);color:var(--osso)}
+.erro-d{font-size:.875rem;color:#9B2C1C}
+.diag-acoes{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.6rem}
+.botao.contorno-e{border-color:var(--carvao);color:var(--carvao);background:transparent}
+.diag-pe{padding:.85rem max(var(--gutter),env(safe-area-inset-left)) calc(.85rem + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(20,18,16,.12);
+  text-align:center;font-size:.8125rem;line-height:1.45;color:var(--tinta-2)}
+.diag-pe a{color:var(--carvao)}
+@media (max-width:30rem){.diag-nome{display:none}}
 /* os cinco passos: o mesmo .passo dos sites, com o «quando» por cima */
 .passo-q{display:inline-block;margin-bottom:.55rem;font:700 .75rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--laranja-tinta)}
 /* o que é a IA: as cinco frases de sempre, à vista */
@@ -553,7 +637,6 @@ html.intro-vai .intro{display:grid}
   .dest .q-meta{margin-top:.6rem;padding-top:.5rem;min-height:calc(2.6em + .5rem + 2px)}
   .dest .q-tip,.dest .q-sep{display:inline}
   .svcs{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
-  .dif-grelha{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
   .passos{grid-template-columns:repeat(3,1fr);gap:2rem}
 }
 @media (min-width:48rem){
@@ -578,13 +661,17 @@ html.intro-vai .intro{display:grid}
   .autos-grelha .cab .afirmacao{font-size:clamp(1.75rem,2.7vw,2.6rem)}
   .autos{margin-top:0}
   .passos-5{grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5rem}
+  .heroi{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem}
+  .heroi-3d{height:34rem;margin-inline:-2rem calc(max(var(--gutter),env(safe-area-inset-right)) * -1)}
+  .heroi-3d .plano{--esc:.68}
+  .fundo-3d .plano{--esc:1.35}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1!important;transform:none!important;transition:none!important}
   .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
   dialog.esquema[open]{animation:none}
-  .heroi *,.heroi *::before{animation:none!important}
+  .heroi *,.heroi *::before,.placa,.msg-d,.msg-r,.msg-d.escreve i{animation:none!important}
   .link-seta svg,.numeros a,.fonte{transition:none}
 }
 </style>
@@ -1020,13 +1107,13 @@ html.intro-vai .intro{display:grid}
 <section id="cazuri" class="vista" aria-labelledby="t-cazuri">
   <div class="envolver seccao">
     <p class="eyebrow">Casos reais</p>
-    <h2 id="t-cazuri" class="afirmacao">Casos reais. Ainda não são nossos.</h2>
-    <p class="lead">Estes resultados foram publicados por outras empresas que puseram a IA a trabalhar no dia a dia. Não fomos nós que os fizemos. Mostramo-los porque são o tipo de trabalho que fazemos, em negócios como o teu.</p>
-    <p class="aviso">Fonte: casos publicados pela Viver de IA (Brasil), com o nome de cada empresa. Os números são os que cada empresa declarou. Os resultados de outros negócios não garantem os teus: por isso medimos o teu ponto de partida antes de começar.</p>
+    <h2 id="t-cazuri" class="afirmacao">Resultados reais. O próximo pode ser o teu.</h2>
+    <p class="lead">Estes resultados já aconteceram em negócios como o teu. O nosso trabalho é transformá-los nos resultados do teu negócio: o mesmo método, desenhado para ti e medido a partir do teu ponto de partida.</p>
+    <p class="aviso">Casos públicos, com o nome de cada empresa e os números que cada uma declarou. Cada negócio parte de um sítio diferente: por isso medimos o teu ponto de partida antes de começar.</p>
     <ul class="casos">
 <li class="caso rv" id="caso-alphaview" style="--i:0">
   <p class="caso-tag">Clínica médica · Brasil</p>
-  <p class="selo">Caso público de outra empresa · não é cliente nosso</p>
+  <p class="selo">Onde podes chegar</p>
   <h3 class="caso-empresa">Centro Médico Alphaview</h3>
   <p class="caso-titulo">A receção quase toda automática, e mais marcações sem contratar ninguém.</p>
   <ul class="caso-num"><li><b>80–87%</b><span>do atendimento da receção automatizado</span></li><li><b>+15–20</b><span>marcações extra por dia</span></li><li><b>20 min → quase 0</b><span>de espera na receção</span></li></ul>
@@ -1036,12 +1123,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-programari">Marcações</a> <a class="chip" href="#a-receptionist">Rececionista IA</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/centro-medico-alphaview" target="_blank" rel="noopener"><span>Ver o caso original<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-omega" style="--i:1">
   <p class="caso-tag">Clínica de exames · Brasil</p>
-  <p class="selo">Caso público de outra empresa · não é cliente nosso</p>
+  <p class="selo">Onde podes chegar</p>
   <h3 class="caso-empresa">OMEGA Radiologia</h3>
   <p class="caso-titulo">Os pedidos de preço que não marcavam passaram a ter uma segunda conversa.</p>
   <ul class="caso-num"><li><b>R$ 40 mil</b><span>em 3,5 meses, só de quem não tinha marcado</span></li><li><b>+10%</b><span>na receita mensal, com o seguimento automático</span></li><li><b>+7,5%</b><span>nas marcações, com o site novo</span></li></ul>
@@ -1051,12 +1137,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-lead">Resposta rápida</a> <a class="chip" href="#proiecte">Um site novo</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/omega-radiologia" target="_blank" rel="noopener"><span>Ver o caso original<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-carioca" style="--i:0">
   <p class="caso-tag">Loja de roupa · Brasil</p>
-  <p class="selo">Caso público de outra empresa · não é cliente nosso</p>
+  <p class="selo">Onde podes chegar</p>
   <h3 class="caso-empresa">Carioca Jeans</h3>
   <p class="caso-titulo">Mais de 300 contactos por dia, respondidos na hora, a qualquer hora.</p>
   <ul class="caso-num"><li><b>24 h</b><span>de atendimento, todos os dias</span></li><li><b>300+</b><span>contactos por dia no WhatsApp</span></li><li><b>7 dias</b><span>até aos primeiros ganhos</span></li></ul>
@@ -1066,12 +1151,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-receptionist">Rececionista IA</a> <a class="chip" href="#a-lead">Resposta rápida</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/carioca-jeans" target="_blank" rel="noopener"><span>Ver o caso original<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-chopp" style="--i:1">
   <p class="caso-tag">Bebidas para eventos · Brasil</p>
-  <p class="selo">Caso público de outra empresa · não é cliente nosso</p>
+  <p class="selo">Onde podes chegar</p>
   <h3 class="caso-empresa">Chopp Fácil</h3>
   <p class="caso-titulo">Na época alta, dez vezes mais orçamentos respondidos por dia.</p>
   <ul class="caso-num"><li><b>50 → 500</b><span>orçamentos respondidos por dia</span></li><li><b>10×</b><span>capacidade de atendimento na época alta</span></li><li><b>100%</b><span>dos orçamentos respondidos sem esperar por uma pessoa</span></li></ul>
@@ -1081,12 +1165,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-lead">Resposta rápida</a> <a class="chip" href="#a-receptionist">Rececionista IA</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/esv-chopp-facil" target="_blank" rel="noopener"><span>Ver o caso original<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-vize" style="--i:0">
   <p class="caso-tag">Barbearias · Brasil</p>
-  <p class="selo">Caso público de outra empresa · não é cliente nosso</p>
+  <p class="selo">Onde podes chegar</p>
   <h3 class="caso-empresa">Vize Imagem Masculina</h3>
   <p class="caso-titulo">Três barbearias com o mesmo atendimento, e a equipa só confirma a marcação.</p>
   <ul class="caso-num"><li><b>30%</b><span>atendimento mais eficiente</span></li><li><b>3 → 1</b><span>barbearias, uma só receção</span></li><li><b>Em curso</b><span>implementação, segundo a própria empresa</span></li></ul>
@@ -1096,12 +1179,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-programari">Marcações</a> <a class="chip" href="#a-receptionist">Rececionista IA</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/vize-imagem-masculina" target="_blank" rel="noopener"><span>Ver o caso original<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-sms" style="--i:1">
   <p class="caso-tag">Clínica · Brasil</p>
-  <p class="selo">Caso público de outra empresa · não é cliente nosso</p>
+  <p class="selo">Onde podes chegar</p>
   <h3 class="caso-empresa">Instituto SMS</h3>
   <p class="caso-titulo">12 000 pacientes parados na base, chamados de volta pelo WhatsApp.</p>
   <ul class="caso-num"><li><b>12 000</b><span>pacientes na base, só 1 500 ativos por ano</span></li><li><b>40%</b><span>da capacidade da clínica estava parada</span></li><li><b>R$ 240 mil</b><span>por ano: projeção publicada, não resultado fechado</span></li></ul>
@@ -1111,14 +1193,13 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-revenire">Clientes que voltam</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/instituto-sms-4" target="_blank" rel="noopener"><span>Ver o caso original<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso vazio rv" id="caso-1">
-  <p class="caso-tag">Pacheco Studios · caso n.º 1</p>
-  <h3 class="caso-empresa">Este lugar é do primeiro negócio que fizer o piloto connosco.</h3>
-  <p>Ponto de partida medido no dia 0, resultado no dia 30, publicado com autorização. Pode ser o teu.</p>
-  <a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20ser%20o%20caso%20n.%C2%BA%201%20da%20Pacheco%20Studios.%20O%20meu%20neg%C3%B3cio%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Quero ser o caso n.º 1</a>
+  <p class="caso-tag">Pacheco Studios · o próximo caso</p>
+  <h3 class="caso-empresa">O próximo resultado pode ser o do teu negócio.</h3>
+  <p>Medimos o ponto de partida no dia 0 e o resultado no dia 30. É assim que um destes casos passa a ser o teu.</p>
+  <a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Vi%20os%20casos%20no%20site%20e%20quero%20este%20resultado%20no%20meu%20neg%C3%B3cio%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Quero este resultado</a>
 </li>
     </ul>
   </div>
@@ -1274,28 +1355,24 @@ html.intro-vai .intro{display:grid}
 </section>
 <section id="consultanta" class="vista" aria-labelledby="t-consultanta">
   <div class="envolver heroi">
-    <p class="eyebrow">Consultoria de IA para negócios locais</p>
-    <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">Tens um objetivo a atingir?</span><span class="heroi-grande">A IA vai <span class="nq">fazê-lo</span> acontecer.</span></h2>
-    <p class="heroi-passo">Só tens de dar o primeiro passo.</p>
-    <p class="lead heroi-lead">Ouvimos o teu negócio, desenhamos à tua frente o que a IA vai fazer e pomo-la a trabalhar. Começa com uma conversa.</p>
-    <div class="heroi-acoes">
-      <a class="botao primario grande" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Marcar o diagnóstico</a>
-      <a class="link-seta" href="#cazuri">Ver casos reais<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="heroi-txt">
+      <p class="eyebrow heroi-e">Consultoria de IA para negócios locais</p>
+      <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">Tens um objetivo a atingir?</span> <span class="heroi-grande">A IA vai <span class="nq">fazê-lo</span> acontecer.</span></h2>
+      <p class="heroi-passo">Só tens de dar o primeiro passo.</p>
+      <p class="lead heroi-lead">Ouvimos o teu negócio, desenhamos à tua frente o que a IA vai fazer e pomo-la a trabalhar. Começa com uma conversa.</p>
+      <div class="heroi-acoes">
+        <a class="botao primario grande" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20" data-diagnostico>Conhece-nos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="botao contorno grande" href="#cazuri">Ver casos reais</a>
+      </div>
+      <ul class="factos"><li>20 min de conversa</li><li>Diagnóstico escrito no mesmo dia</li><li>Sem custo, sem compromisso</li></ul>
     </div>
-    <ul class="factos"><li>20 min de conversa</li><li>Diagnóstico escrito no mesmo dia</li><li>Sem custo, sem compromisso</li></ul>
-  </div>
-  <div class="envolver seccao dif">
-    <p class="eyebrow">A diferença</p>
-    <h2 class="afirmacao">Primeiro o teu objetivo. Depois a ferramenta.</h2>
-    <div class="dif-grelha">
-      <div class="dif-col agencia"><h3>Uma agência</h3><ul><li>Chega com um produto e procura onde o encaixar.</li><li>Vende pacotes iguais para negócios diferentes.</li><li>Entrega e passa ao cliente seguinte.</li></ul></div>
-      <div class="dif-col nos"><h3>Uma consultoria</h3><ul><li>Chega com perguntas e mede o ponto de partida.</li><li>Desenha a solução para o teu objetivo, à tua frente.</li><li>Fica a medir e a ajustar, todos os meses.</li></ul></div>
-    </div>
+    <div class="mosaico heroi-3d" aria-hidden="true"><div class="plano"><span class="placa p1"><span>Diagnóstico</span></span><span class="placa p2"><span>Desenho</span></span><span class="placa p3"><span>Piloto</span></span><span class="placa p4"><span>Acompanhamento</span></span><span class="placa centro"><span><i class="ponto"></i>Pacheco Studios</span></span></div></div>
   </div>
   <div class="claro">
     <div class="envolver seccao">
-      <p class="eyebrow">Como trabalhamos</p>
-      <h2 class="afirmacao">Cinco passos. O primeiro é uma conversa.</h2>
+      <p class="eyebrow">Consultoria</p>
+      <h2 class="afirmacao">Do teu objetivo ao resultado, em cinco passos.</h2>
+      <p class="lead">Começamos pelo teu objetivo, não por uma ferramenta. Ouvimos, medimos o ponto de partida, desenhamos à tua frente e ficamos a acompanhar.</p>
       <ol class="passos passos-5">
 <li class="passo rv" style="--i:0"><span class="passo-q">20 min</span><h3>Conversa de diagnóstico</h3><p>No teu negócio ou por videochamada. Qual é o objetivo, como chegam os clientes, onde se perdem e o que te come o tempo.</p></li>
 <li class="passo rv" style="--i:1"><span class="passo-q">No mesmo dia</span><h3>O diagnóstico, por escrito</h3><p>O que trava o objetivo, por ordem de impacto, e por onde começar. Fica contigo, mesmo que não avances.</p></li>
@@ -1303,6 +1380,21 @@ html.intro-vai .intro{display:grid}
 <li class="passo rv" style="--i:3"><span class="passo-q">30 dias</span><h3>Piloto</h3><p>Uma só solução. Medimos o ponto de partida no dia 0 e comparamos no dia 30. Decides com os números à frente.</p></li>
 <li class="passo rv" style="--i:4"><span class="passo-q">Todos os meses</span><h3>Acompanhamento</h3><p>Relatório, ajustes e, quando fizer sentido, a solução seguinte. Uma de cada vez.</p></li>
       </ol>
+    </div>
+  </div>
+  <div class="veredito seccao">
+    <div class="mosaico fundo-3d" aria-hidden="true"><div class="plano"><span class="placa p1"><span>Diagnóstico</span></span><span class="placa p2"><span>Desenho</span></span><span class="placa p3"><span>Piloto</span></span><span class="placa p4"><span>Acompanhamento</span></span><span class="placa centro"><span><i class="ponto"></i>Pacheco Studios</span></span></div></div>
+    <div class="envolver">
+      <p class="eyebrow">Veredito de um caso real</p>
+      <h2 class="so-leitor">O veredito de quem já pôs a IA a atender</h2>
+      <figure class="cartao-v rv">
+        <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+        <blockquote><p>Hoje a IA responde 24 horas por dia. (…) O cliente já vê o catálogo, escolhe o produto e chega na loja praticamente pronto para comprar.</p></blockquote>
+        <figcaption>
+          <span class="v-quem"><span class="v-marca" aria-hidden="true"></span><span><b>Fundador de uma loja de roupa · Brasil</b><small>Caso real e público</small></span></span>
+          <a class="botao escuro" href="#caso-carioca">Ver o caso<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </figcaption>
+      </figure>
     </div>
   </div>
   <div class="envolver seccao ia-bloco">
@@ -1320,7 +1412,7 @@ html.intro-vai .intro{display:grid}
 <li class="rv" style="--i:1"><a href="#caso-omega"><b>R$ 40 mil</b><span>em 3,5 meses, só de quem não tinha marcado</span><small>OMEGA Radiologia · Ver o caso<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
 <li class="rv" style="--i:2"><a href="#caso-chopp"><b>50 → 500</b><span>orçamentos respondidos por dia</span><small>Chopp Fácil · Ver o caso<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
     </ul>
-    <p class="nota-fonte">Casos de outras empresas, publicados pela Viver de IA. Ainda não são nossos.</p>
+    <p class="nota-fonte">Resultados que outros negócios já alcançaram. O nosso trabalho é levá-los para o teu.</p>
     <a class="link-seta" href="#cazuri">Ver todos os casos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
   <div class="envolver seccao cuidado-c">
@@ -1348,8 +1440,8 @@ html.intro-vai .intro{display:grid}
   <div class="envolver">
     <p class="eyebrow">Primeiro passo</p>
     <h2 id="t-contact" class="afirmacao">O primeiro passo é uma conversa.</h2>
-    <p class="lead">20 minutos, no teu negócio ou por videochamada. Diz-nos o objetivo; sais com o diagnóstico por escrito.</p>
-    <a class="botao primario grande" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Marcar o diagnóstico</a>
+    <p class="lead">8 perguntas, menos de 2 minutos. Depois falamos no WhatsApp e recebes o diagnóstico escrito no mesmo dia.</p>
+    <a class="botao primario grande" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20" data-diagnostico>Conhece-nos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <ul class="contactos">
 <li><a href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="txt"><span class="qual">WhatsApp</span><span class="valor">+351 967 117 357</span></span></a></li>
 <li><a href="tel:+351967117357"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="txt"><span class="qual">Telefone</span><span class="valor">+351 967 117 357</span></span></a></li>
@@ -1370,7 +1462,7 @@ html.intro-vai .intro{display:grid}
 </footer>
 
 <div class="barra" id="barra" inert>
-  <a class="botao primario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Marcar o diagnóstico</a>
+  <a class="botao primario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20" data-diagnostico>Conhece-nos</a>
 </div>
 
 <section class="rgpd" id="rgpd" aria-label="Cookies e estatísticas" hidden>
@@ -1422,6 +1514,21 @@ html.intro-vai .intro{display:grid}
     <p class="intro-slogan">Tens um objetivo? <em>A IA faz</em> <em>acontecer.</em></p>
   </div>
 </div>
+<dialog class="diag" id="diagnostico" aria-labelledby="diag-t">
+  <div class="diag-topo">
+    <p class="marca"><span class="ponto" aria-hidden="true"></span><span class="diag-nome">Pacheco Studios</span></p>
+    <ol class="diag-prog" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+    <p class="diag-cont"><b id="diag-n">0</b> <span>de 8</span></p>
+    <button class="diag-x" type="button" data-fechar-diag aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <h2 id="diag-t" class="so-leitor">Diagnóstico Pacheco Studios</h2>
+  <div class="diag-corpo">
+    <div class="diag-conversa" id="diag-conversa" aria-live="polite"></div>
+    <div class="diag-resposta" id="diag-resposta"></div>
+  </div>
+  <p class="diag-pe">Ao continuar, concordas com a <a href="/privacidade.html">Política de Privacidade</a>. As respostas só saem do teu telemóvel quando tocas em enviar.</p>
+  <script type="application/json" id="diag-dados">{"abertura": ["Os negócios que põem a IA no sítio certo respondem mais depressa, perdem menos clientes e ganham horas por semana. Vamos ver onde é que isso está no teu?", "São 8 perguntas, menos de 2 minutos. Como te chamas?"], "perguntas": [{"id": "nome", "tipo": "texto", "rotulo": "O teu nome", "ph": "Nome e apelido", "wa": "Nome"}, {"id": "negocio", "tipo": "texto", "msg": "Prazer, {nome}! Como se chama o teu negócio?", "rotulo": "Nome do negócio", "ph": "Ex.: Café Central", "wa": "Negócio"}, {"id": "tipo", "tipo": "opcoes", "msg": "Que tipo de negócio é?", "opcoes": ["Restaurante ou café", "Clínica ou saúde", "Salão, barbearia ou estética", "Loja", "Serviços com marcação", "Outro"], "wa": "Tipo"}, {"id": "onde", "tipo": "texto", "msg": "Em que cidade fica?", "rotulo": "Cidade", "ph": "Ex.: Faro", "wa": "Cidade"}, {"id": "objetivo", "tipo": "opcoes", "msg": "Se a IA resolvesse uma coisa nos próximos 3 meses, qual seria?", "opcoes": ["Mais clientes novos", "Que os clientes voltem mais vezes", "Menos faltas às marcações", "Responder a toda a gente, a qualquer hora", "Mais avaliações no Google", "Ganhar tempo no dia a dia"], "wa": "Objetivo"}, {"id": "dor", "tipo": "multi", "msg": "Onde se perde mais hoje? Podes escolher várias.", "opcoes": ["Mensagens e chamadas sem resposta", "Marcações e faltas", "Clientes que vêm uma vez e não voltam", "Poucas avaliações", "Papelada, talões e faturas", "Redes sociais paradas"], "wa": "Onde se perde"}, {"id": "canais", "tipo": "multi", "msg": "E como te chegam os clientes?", "opcoes": ["Google e Maps", "Instagram ou Facebook", "WhatsApp", "Telefone", "De passagem", "Recomendação", "Plataformas (Glovo, Booking…)"], "wa": "Chegam por"}, {"id": "contacto", "tipo": "tel", "msg": "Último passo: para que número envio o diagnóstico?", "rotulo": "WhatsApp ou telefone", "ph": "+351 …", "wa": "Contacto"}], "continuar": "Continuar", "enviar_resp": "Enviar resposta", "obrigatorio": "Escreve pelo menos 2 letras.", "escolhe": "Escolhe pelo menos uma.", "fim": ["Obrigado, {nome}! Já tenho o que preciso para começar.", "Toca em enviar: a conversa continua no WhatsApp e o diagnóstico escrito chega no mesmo dia."], "enviar": "Enviar pelo WhatsApp", "recomecar": "Recomeçar", "wa_intro": "Olá Tomás! Fiz o diagnóstico no site:"}</script>
+</dialog>
 
 <script>
 /* intro: o carro passa pelos dois portais e sai transformado. Corre uma vez por sessão e nunca com movimento reduzido
@@ -1633,6 +1740,135 @@ html.intro-vai .intro{display:grid}
   }
 })();
 
+/* diagnóstico em conversa: «Conhece-nos» abre-o; 8 perguntas, uma de cada vez; no fim, a mensagem para o WhatsApp
+   (nada é enviado nem guardado sem o visitante tocar em enviar). Sem JavaScript, os botões vão direto ao WhatsApp. */
+(function () {
+  var d = document.getElementById('diagnostico');
+  if (!d || !d.showModal) return;
+  var D = JSON.parse(document.getElementById('diag-dados').textContent);
+  var conv = document.getElementById('diag-conversa'), resp = document.getElementById('diag-resposta');
+  var corpo = d.querySelector('.diag-corpo'), nEl = document.getElementById('diag-n'), pontos = d.querySelectorAll('.diag-prog li');
+  var calmo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var base = 'https://wa.me/';
+  var r = {}, passo = 0, ronda = 0, comecou = false;
+  var SETA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+  function gc(o) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(o); } catch (e) {} }
+  function nome() { return (r.nome || '').trim().split(/\s+/)[0]; }
+  function txt(s) { return s.replace(/\{nome\}/g, nome()); }
+  function rolar() { corpo.scrollTop = corpo.scrollHeight; }
+  function bolha(t) {
+    var m = document.createElement('div'); m.className = 'msg-d';
+    m.innerHTML = '<span class="av" aria-hidden="true">TP</span><p></p>'; m.querySelector('p').textContent = t;
+    conv.appendChild(m); rolar();
+  }
+  function eu(t) { var p = document.createElement('p'); p.className = 'msg-r'; p.textContent = t; conv.appendChild(p); rolar(); }
+  function diz(lista, depois) {
+    var minha = ronda, i = 0;
+    (function prox() {
+      if (minha !== ronda) return;
+      if (i >= lista.length) { if (depois) depois(); return; }
+      if (calmo) { bolha(txt(lista[i++])); prox(); return; }
+      var e = document.createElement('div'); e.className = 'msg-d escreve';
+      e.innerHTML = '<span class="av" aria-hidden="true">TP</span><p><i></i><i></i><i></i></p>';
+      conv.appendChild(e); rolar();
+      setTimeout(function () { e.remove(); if (minha !== ronda) return; bolha(txt(lista[i++])); prox(); }, 650);
+    })();
+  }
+  function progresso() {
+    nEl.textContent = passo;
+    pontos.forEach(function (p, i) { p.classList.toggle('feito', i < passo); });
+  }
+  function seguinte(valor, mostrar) {
+    var q = D.perguntas[passo];
+    r[q.id] = valor; eu(mostrar); resp.innerHTML = ''; passo++; progresso();
+    if (passo >= D.perguntas.length) return fim();
+    diz([D.perguntas[passo].msg], campo);
+  }
+  function erro(onde, t) {
+    var p = onde.querySelector('.erro-d');
+    if (!p) { p = document.createElement('p'); p.className = 'erro-d'; p.setAttribute('role', 'alert'); onde.appendChild(p); }
+    p.textContent = t;
+  }
+  function campo() {
+    var q = D.perguntas[passo];
+    resp.innerHTML = '';
+    if (q.tipo === 'texto' || q.tipo === 'tel') {
+      var f = document.createElement('form');
+      f.innerHTML = '<label class="rotulo-d" for="diag-in"></label><div class="campo"><input id="diag-in" autocomplete="off">' +
+        '<button type="submit">' + SETA + '</button></div>';
+      f.querySelector('label').textContent = q.rotulo;
+      var inp = f.querySelector('input');
+      inp.type = q.tipo === 'tel' ? 'tel' : 'text';
+      inp.placeholder = q.ph || '';
+      inp.autocomplete = q.id === 'nome' ? 'name' : q.tipo === 'tel' ? 'tel' : 'off';
+      f.querySelector('button').setAttribute('aria-label', D.enviar_resp);
+      f.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var v = inp.value.trim();
+        if (v.replace(/[^\p{L}\p{N}]/gu, '').length < 2) { erro(f, D.obrigatorio); inp.focus(); return; }
+        seguinte(v, v);
+      });
+      resp.appendChild(f);
+      inp.focus({ preventScroll: true });
+    } else {
+      var box = document.createElement('div'); box.className = 'opcoes'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', q.msg);
+      var multi = q.tipo === 'multi';
+      q.opcoes.forEach(function (o) {
+        var b = document.createElement('button'); b.type = 'button'; b.textContent = o;
+        if (multi) b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function () {
+          if (!multi) { seguinte(o, o); return; }
+          b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+        });
+        box.appendChild(b);
+      });
+      resp.appendChild(box);
+      if (multi) {
+        var acoes = document.createElement('div'); acoes.className = 'diag-acoes';
+        var c = document.createElement('button'); c.type = 'button'; c.className = 'botao primario'; c.textContent = D.continuar;
+        c.addEventListener('click', function () {
+          var esc = [].map.call(box.querySelectorAll('[aria-pressed="true"]'), function (b) { return b.textContent; });
+          if (!esc.length) { erro(resp, D.escolhe); return; }
+          seguinte(esc, esc.join(', '));
+        });
+        acoes.appendChild(c); resp.appendChild(acoes);
+      }
+      box.querySelector('button').focus({ preventScroll: true });
+    }
+    rolar();
+  }
+  function fim() {
+    gc({ path: 'diagnostico/fim', title: 'diagnóstico: fim', event: true });
+    diz(D.fim, function () {
+      var linhas = D.perguntas.map(function (q) { var v = r[q.id]; return '• ' + q.wa + ': ' + (Array.isArray(v) ? v.join(', ') : v); });
+      var a = document.createElement('a'); a.className = 'botao primario'; a.rel = 'noopener';
+      a.href = base + '?text=' + encodeURIComponent(D.wa_intro + '\n' + linhas.join('\n'));
+      a.textContent = D.enviar;
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'botao contorno-e'; b.textContent = D.recomecar;
+      b.addEventListener('click', comecar);
+      var acoes = document.createElement('div'); acoes.className = 'diag-acoes';
+      acoes.appendChild(b); acoes.appendChild(a); resp.appendChild(acoes);
+      a.focus({ preventScroll: true }); rolar();
+    });
+  }
+  function comecar() {
+    ronda++; r = {}; passo = 0; conv.innerHTML = ''; resp.innerHTML = ''; progresso();
+    diz(D.abertura, campo);
+  }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('[data-diagnostico]');
+    if (a) {
+      ev.preventDefault();
+      base = a.href.split('?')[0];
+      if (!d.open) d.showModal();
+      if (!comecou) { comecou = true; comecar(); }
+      gc({ path: 'diagnostico/aberto', title: 'diagnóstico: aberto', event: true });
+      return;
+    }
+    if (ev.target.closest && ev.target.closest('[data-fechar-diag]')) d.close();
+  });
+})();
+
 /* medição, a mesma do site anterior: GoatCounter sempre (sem cookies); pixel da Meta só com autorização */
 (function () {
   'use strict';
@@ -1656,7 +1892,7 @@ html.intro-vai .intro{display:grid}
   });
   // saídas para o WhatsApp e o telefone
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href^="https://wa.me"], a[href^="tel:"]');
+    var a = e.target.closest && e.target.closest('a[href^="https://wa.me"]:not([data-diagnostico]), a[href^="tel:"]');
     if (!a) return;
     var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
     gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });

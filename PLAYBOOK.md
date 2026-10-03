@@ -327,13 +327,14 @@ Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que v
 
 - **Frase da marca:** «Tens um objetivo a atingir? / A IA VAI FAZÊ-LO ACONTECER. / Só tens de dar o primeiro passo.» Mantém-se a ideologia da secção 16: explicar o que a IA é e não é, para passar confiança («Não prometemos. Mostramos.»).
 - **Processo (5 passos):** conversa de diagnóstico, 20 min → diagnóstico escrito no mesmo dia → solução desenhada à frente do dono → piloto de 30 dias com o ponto de partida medido no dia 0 → acompanhamento mensal. Hoje a conversa e o diagnóstico escrito não têm custo.
-- **Casos:** até termos casos nossos, o site mostra casos reais de **outras** empresas (Viver de IA), com:
-  - o nome da empresa;
-  - a fonte;
-  - o selo «não é cliente nosso»;
-  - as projeções escritas como projeções.
-
-  Nunca se apresentam como nossos. O 1.º caso nosso vem de um piloto com baseline (dia 0) e resultado (dia 30), publicado com autorização. Vai para `sites/pacheco-studios/conteudo/casos.json` e substitui o lugar vazio «caso n.º 1».
+- **Casos (decisão de 03/10):**
+  - O site mostra resultados reais de outros negócios como **«onde podes chegar»**. O nosso trabalho é levar esses resultados para o negócio do cliente.
+  - **Nenhuma ligação nem menção à Viver de IA no site** (nem nome, nem link). As fontes ficam só internas, em `conteudo/casos.json` e `research/consultoria-ia-referencias.md`, para confirmar cada número.
+  - Limite que não se passa: nunca dizer que são clientes nossos ou trabalho nosso. O texto diz «já aconteceram noutros negócios / em negócios como o teu».
+  - Projeções aparecem como projeções.
+  - O 1.º caso nosso (piloto com dia 0 e dia 30) entra em primeiro lugar.
+- **Diagnóstico em conversa (03/10):** «Conhece-nos» abre 8 perguntas no estilo chat (nome, negócio, tipo, cidade, objetivo, onde se perde, canais, contacto). No fim, a mensagem vai para o WhatsApp do Tomás; nada é guardado no site.
+- **Herói:** frase da marca em minúsculas a dois tons, com o mosaico 3D dos passos. Na Consultoria, a 3.ª secção é um veredito de caso em cartão sobre fundo 3D.
 - **Site pachecost.com (PT · EN · RO)** em `sites/pacheco-studios/`, trazido do branch `cool-sagan` a 02/10. Separadores:
   - **Consultoria** (entrada);
   - **Casos**;

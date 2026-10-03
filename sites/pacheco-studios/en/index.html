@@ -435,19 +435,41 @@ html.intro-vai .intro{display:grid}
 @media (prefers-reduced-motion:reduce){.intro{display:none!important}}
 
 
-/* ═══ consultoria: o objetivo do dono primeiro. O herói repete a frase da marca, tal como no anúncio:
-   traço laranja + pergunta, a resposta enorme a laranja, o primeiro passo a branco ═══ */
-.heroi{padding-block:clamp(2.75rem,10vw,6rem) clamp(2.5rem,8vw,4.5rem)}
-.heroi-t{margin-top:1.4rem;font-weight:400}
-.heroi-pre{display:flex;align-items:center;gap:.9rem;font:600 clamp(1.125rem,4.4vw,1.5rem)/1.3 var(--texto);color:var(--osso)}
-.heroi-pre::before{content:"";flex:none;width:clamp(2.5rem,10vw,4.5rem);height:3px;background:var(--laranja);transform-origin:left}
-.heroi-grande{display:block;margin-top:.7rem;max-width:14ch;font:400 clamp(2rem,8.6vw,4.25rem)/.98 var(--display);
-  text-transform:uppercase;letter-spacing:-.01em;color:var(--laranja);text-wrap:balance}
+/* ═══ consultoria: o herói ao jeito de uma página de produto limpa (rótulo, frase a dois tons, dois botões) com o
+   mosaico 3D dos passos à direita. A frase é a da marca: a pergunta a branco, a resposta a laranja ═══ */
+.heroi{display:grid;gap:1.5rem;align-items:center;padding-block:clamp(2.25rem,8vw,5rem) clamp(1.5rem,5vw,3.5rem)}
+.heroi-e{color:var(--osso-2);letter-spacing:.22em}
+.heroi-t{margin-top:1.1rem;max-width:17ch;font:600 clamp(2.15rem,8.4vw,4.1rem)/1.04 var(--texto);letter-spacing:-.035em;text-wrap:balance}
+.heroi-pre{color:var(--osso)}
+.heroi-grande{display:block;color:var(--laranja)}
 .nq{white-space:nowrap}
-.heroi-passo{margin-top:1.1rem;font:700 clamp(1.125rem,4.4vw,1.5rem)/1.3 var(--texto)}
-.heroi-lead{max-width:40ch}
-.heroi-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.75rem;margin-top:1.9rem}
+.heroi-passo{margin-top:1.1rem;font:600 clamp(1.1rem,3.8vw,1.35rem)/1.35 var(--texto)}
+.heroi-lead{margin-top:.55rem;max-width:42ch}
+.heroi-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:1.75rem}
 .heroi-acoes .grande{margin-top:0}
+.botao.contorno{border-color:var(--contorno);color:var(--osso);background:transparent}
+.botao.contorno:hover{background:rgba(239,234,227,.08)}
+.primario svg{transition:transform .2s var(--sair)} .primario:hover svg{transform:translateX(.2rem)}
+/* mosaico 3D (decoração): plano isométrico com a grelha; placas com espessura; a da marca brilha a laranja */
+.mosaico{position:relative;overflow:hidden;pointer-events:none;user-select:none}
+.heroi-3d{height:clamp(15rem,66vw,22rem);margin-inline:calc(max(var(--gutter),env(safe-area-inset-left)) * -1)}
+.plano{position:absolute;left:50%;top:50%;width:44rem;height:44rem;margin:-22rem 0 0 -22rem;
+  transform:scale(var(--esc,.6)) rotateX(56deg) rotateZ(-45deg);
+  background-image:linear-gradient(rgba(239,234,227,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(239,234,227,.1) 1px,transparent 1px);
+  background-size:5.5rem 5.5rem;background-position:-1px -1px;
+  -webkit-mask-image:radial-gradient(closest-side,#000 60%,transparent);mask-image:radial-gradient(closest-side,#000 60%,transparent)}
+.placa{position:absolute;width:11rem;height:11rem;display:grid;place-items:center;border-radius:1.5rem;
+  background:linear-gradient(135deg,#2B2622,#1B1816);
+  box-shadow:inset 0 0 0 1px rgba(239,234,227,.14),-7px 7px 0 #0B0A09,-7px 7px 0 1px rgba(239,234,227,.08),-26px 26px 40px rgba(0,0,0,.55)}
+.placa span{display:flex;align-items:center;gap:.6rem;font:700 1.05rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso)}
+.placa.p1{left:2.5rem;top:5.5rem} .placa.p2{left:30.5rem;top:3rem} .placa.p3{left:3rem;top:30.5rem} .placa.p4{left:30rem;top:29.5rem}
+.placa.centro{left:14.25rem;top:14.25rem;width:15.5rem;height:15.5rem;border-radius:1.9rem;
+  background:linear-gradient(135deg,#2E241E,#1D1A17);
+  box-shadow:inset 0 0 0 1.5px rgba(232,98,44,.85),-10px 10px 0 #5A2611,-10px 10px 0 1.5px rgba(232,98,44,.5),0 0 70px rgba(232,98,44,.38),-36px 36px 60px rgba(0,0,0,.6);
+  animation:ps-flutua 5s ease-in-out infinite}
+.placa.centro span{font:400 1.3rem/1 var(--display);letter-spacing:.01em;text-transform:none}
+.placa .ponto{width:.75rem;height:.75rem}
+@keyframes ps-flutua{0%,100%{translate:0 0}50%{translate:7px -7px}}
 .link-seta{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;font:700 .8125rem/1.2 var(--mono);letter-spacing:.14em;
   text-transform:uppercase;color:var(--laranja);text-decoration:none}
 .link-seta svg{width:1.1rem;height:1.1rem;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s var(--sair)}
@@ -458,23 +480,85 @@ html.intro-vai .intro{display:grid}
 .factos li::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:var(--laranja);flex:none}
 /* entrada coreografada: só depois de a intro sair (html.intro-vai) e nunca com movimento reduzido */
 @keyframes ps-sobe{from{opacity:0;transform:translateY(1.1rem)}to{opacity:1;transform:none}}
-@keyframes ps-risca{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.js:not(.intro-vai) .heroi :is(.eyebrow,.heroi-pre,.heroi-grande,.heroi-passo,.heroi-lead,.heroi-acoes,.factos){animation:ps-sobe .75s var(--sair) both;animation-delay:var(--d,0s)}
-.js:not(.intro-vai) .heroi-pre::before{animation:ps-risca .6s var(--sair) .15s both}
-.heroi-pre{--d:.12s} .heroi-grande{--d:.3s} .heroi-passo{--d:.6s} .heroi-lead{--d:.72s} .heroi-acoes{--d:.84s} .factos{--d:.96s}
+.js:not(.intro-vai) .heroi :is(.heroi-e,.heroi-t,.heroi-passo,.heroi-lead,.heroi-acoes,.factos,.heroi-3d){animation:ps-sobe .75s var(--sair) both;animation-delay:var(--d,0s)}
+.heroi-t{--d:.1s} .heroi-passo{--d:.3s} .heroi-lead{--d:.4s} .heroi-acoes{--d:.5s} .factos{--d:.6s} .heroi-3d{--d:.25s}
 #consultanta > .envolver + .envolver{border-top:1px solid var(--linha-e)}
-/* agência vs consultoria: a nossa coluna é a que tem cor */
-.dif-grelha{margin-top:1.9rem;display:grid;gap:.75rem;max-width:56rem}
-.dif-col{padding:1.15rem 1.1rem 1.3rem;border-radius:1rem;border:1px solid var(--linha-e)}
-.dif-col h3{font:700 .8125rem/1.2 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--osso-2)}
-.dif-col ul{margin-top:1rem;display:grid;gap:.75rem}
-.dif-col li{position:relative;padding-left:1.4rem;line-height:1.45}
-.dif-col li::before{content:"";position:absolute;left:0;top:.68em;width:.7rem;height:2px;background:var(--osso-2)}
-.agencia li{color:var(--osso-2)}
-.dif-col.nos{background:var(--carvao-2);border-color:rgba(232,98,44,.55)}
-.nos h3{color:var(--laranja)}
-.nos li{color:var(--osso);font-weight:600}
-.nos li::before{top:.42em;width:.6rem;height:.6rem;border-radius:50%;background:var(--laranja)}
+/* ═══ veredito: um caso real em destaque, num cartão de vidro sobre o mosaico 3D ═══ */
+.veredito{position:relative;overflow:hidden;isolation:isolate;
+  background:radial-gradient(60rem 30rem at 50% 70%,rgba(232,98,44,.16),transparent 70%),var(--carvao)}
+.fundo-3d{position:absolute;inset:0;z-index:-1}
+.fundo-3d .plano{--esc:1.15}
+.fundo-3d .placa span{visibility:hidden}
+.cartao-v{position:relative;margin:1.4rem 0 0;max-width:54rem;padding:clamp(3.25rem,8vw,4.25rem) clamp(1.25rem,5vw,3rem) clamp(1.25rem,4vw,2.25rem);
+  border-radius:1.5rem;background:rgba(29,26,23,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid rgba(239,234,227,.16);box-shadow:0 2.5rem 5rem -2rem rgba(0,0,0,.85),0 0 0 1px rgba(232,98,44,.1)}
+.aspas{position:absolute;left:clamp(1.1rem,4vw,2.4rem);top:clamp(1.1rem,3vw,1.6rem);width:2.6rem;fill:rgba(232,98,44,.55)}
+.cartao-v blockquote{margin:0}
+.cartao-v blockquote p{font:400 clamp(1.25rem,4.4vw,1.85rem)/1.42 var(--texto);letter-spacing:-.01em;color:var(--osso);text-wrap:pretty}
+.cartao-v figcaption{margin-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.1rem}
+.v-quem{display:flex;align-items:center;gap:.9rem;min-width:0}
+.v-marca{flex:none;width:3rem;height:3rem;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F2773F,#A64923);
+  box-shadow:0 0 0 3px var(--carvao-2),0 0 0 4px rgba(239,234,227,.25)}
+.v-quem b{display:block;font-weight:600;line-height:1.3}
+.v-quem small{display:block;margin-top:.2rem;font-size:.875rem;line-height:1.4;color:var(--osso-2)}
+.v-quem .trad{font-style:italic}
+.botao.escuro{background:var(--osso);color:var(--carvao)}
+.botao.escuro:hover{background:#fff}
+
+/* ═══ diagnóstico em conversa (abre com «Conhece-nos») ═══ */
+dialog.diag{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;
+  background:var(--osso);color:var(--carvao)}
+dialog.diag[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+dialog.diag::backdrop{background:rgba(0,0,0,.6)}
+.diag-topo{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:.9rem;
+  padding:calc(.6rem + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right)) .6rem max(var(--gutter),env(safe-area-inset-left));
+  background:var(--carvao);color:var(--osso);font:700 .8125rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase}
+.diag-topo .marca{min-height:2.75rem}
+.diag-prog{display:flex;align-items:center;justify-content:center}
+.diag-prog li{position:relative;flex:none;width:.6rem;height:.6rem;border-radius:50%;border:1.5px solid rgba(239,234,227,.55);transition:background-color .3s,border-color .3s}
+.diag-prog li+li{margin-left:clamp(.55rem,3.2vw,3.25rem)}
+.diag-prog li+li::before{content:"";position:absolute;right:calc(100% + 1.5px);top:50%;width:clamp(.55rem,3.2vw,3.25rem);height:1px;background:rgba(239,234,227,.3)}
+.diag-prog li.feito{background:var(--laranja);border-color:var(--laranja)}
+.diag-prog li.feito::before{background:var(--laranja)}
+.diag-cont{display:flex;align-items:baseline;gap:.4rem;letter-spacing:0;text-transform:none}
+.diag-cont b{font:400 1.75rem/1 var(--display)}
+.diag-cont span{font:400 .8125rem/1 var(--texto);color:var(--osso-2)}
+.diag-x{width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(239,234,227,.4);background:transparent;color:var(--osso);cursor:pointer}
+.diag-x svg{width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;fill:none}
+.diag-corpo{overflow-y:auto;overscroll-behavior:contain;padding:1.5rem max(var(--gutter),env(safe-area-inset-left)) 2rem}
+.diag-conversa,.diag-resposta{max-width:46rem;margin-inline:auto}
+.diag-conversa{display:grid;gap:.85rem}
+.msg-d{display:flex;align-items:flex-start;gap:.7rem;max-width:38rem;animation:ps-sobe .35s var(--sair) both}
+.msg-d .av{flex:none;width:2.6rem;height:2.6rem;display:grid;place-items:center;border-radius:50%;background:var(--carvao);color:var(--osso);
+  font:700 .75rem/1 var(--mono);letter-spacing:.06em;box-shadow:0 0 0 2px var(--osso),0 0 0 3px rgba(20,18,16,.15)}
+.msg-d p{padding:.85rem 1.1rem;border-radius:.3rem 1.2rem 1.2rem 1.2rem;background:#fff;line-height:1.5;box-shadow:0 1px 2px rgba(20,18,16,.08)}
+.msg-d.escreve p{display:flex;gap:.3rem;padding-block:1.15rem}
+.msg-d.escreve i{width:.45rem;height:.45rem;border-radius:50%;background:#8A847C;animation:ps-pisca 1s infinite}
+.msg-d.escreve i:nth-child(2){animation-delay:.15s} .msg-d.escreve i:nth-child(3){animation-delay:.3s}
+@keyframes ps-pisca{0%,100%{opacity:.35}50%{opacity:1}}
+.msg-r{justify-self:end;max-width:32rem;padding:.75rem 1.1rem;border-radius:1.2rem .3rem 1.2rem 1.2rem;background:var(--carvao);color:var(--osso);
+  line-height:1.45;animation:ps-sobe .3s var(--sair) both}
+.diag-resposta{display:grid;justify-items:end;gap:.6rem;margin-top:1.25rem}
+.diag-resposta form{display:grid;justify-items:end;gap:.55rem;width:min(100%,30rem)}
+.rotulo-d{font:700 .75rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2)}
+.campo{display:flex;align-items:center;gap:.4rem;width:100%;padding:.3rem .3rem .3rem 1.2rem;border:2px solid #D3CBBF;border-radius:999px;background:#fff;transition:border-color .2s}
+.campo:focus-within{border-color:var(--laranja-tinta)}
+.campo input{flex:1;min-width:0;min-height:2.75rem;border:0;background:transparent;outline:none;font:400 1.0625rem/1.3 var(--texto);color:var(--carvao)}
+.campo input::placeholder{color:#6B665F}
+.campo button{flex:none;width:2.75rem;height:2.75rem;display:grid;place-items:center;border:0;border-radius:50%;background:var(--laranja);color:var(--carvao);cursor:pointer}
+.campo button svg{width:1.15rem;height:1.15rem;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.opcoes{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.5rem;max-width:40rem}
+.opcoes button{min-height:2.75rem;padding:.55rem 1.05rem;border:2px solid var(--carvao);border-radius:999px;background:transparent;color:var(--carvao);
+  font:600 .9375rem/1.25 var(--texto);text-align:left;cursor:pointer;transition:background-color .15s,color .15s}
+.opcoes button:hover{background:rgba(20,18,16,.06)}
+.opcoes button[aria-pressed="true"]{background:var(--carvao);color:var(--osso)}
+.erro-d{font-size:.875rem;color:#9B2C1C}
+.diag-acoes{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.6rem}
+.botao.contorno-e{border-color:var(--carvao);color:var(--carvao);background:transparent}
+.diag-pe{padding:.85rem max(var(--gutter),env(safe-area-inset-left)) calc(.85rem + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(20,18,16,.12);
+  text-align:center;font-size:.8125rem;line-height:1.45;color:var(--tinta-2)}
+.diag-pe a{color:var(--carvao)}
+@media (max-width:30rem){.diag-nome{display:none}}
 /* os cinco passos: o mesmo .passo dos sites, com o «quando» por cima */
 .passo-q{display:inline-block;margin-bottom:.55rem;font:700 .75rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--laranja-tinta)}
 /* o que é a IA: as cinco frases de sempre, à vista */
@@ -553,7 +637,6 @@ html.intro-vai .intro{display:grid}
   .dest .q-meta{margin-top:.6rem;padding-top:.5rem;min-height:calc(2.6em + .5rem + 2px)}
   .dest .q-tip,.dest .q-sep{display:inline}
   .svcs{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
-  .dif-grelha{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
   .passos{grid-template-columns:repeat(3,1fr);gap:2rem}
 }
 @media (min-width:48rem){
@@ -578,13 +661,17 @@ html.intro-vai .intro{display:grid}
   .autos-grelha .cab .afirmacao{font-size:clamp(1.75rem,2.7vw,2.6rem)}
   .autos{margin-top:0}
   .passos-5{grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5rem}
+  .heroi{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem}
+  .heroi-3d{height:34rem;margin-inline:-2rem calc(max(var(--gutter),env(safe-area-inset-right)) * -1)}
+  .heroi-3d .plano{--esc:.68}
+  .fundo-3d .plano{--esc:1.35}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1!important;transform:none!important;transition:none!important}
   .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
   dialog.esquema[open]{animation:none}
-  .heroi *,.heroi *::before{animation:none!important}
+  .heroi *,.heroi *::before,.placa,.msg-d,.msg-r,.msg-d.escreve i{animation:none!important}
   .link-seta svg,.numeros a,.fonte{transition:none}
 }
 </style>
@@ -1020,13 +1107,13 @@ html.intro-vai .intro{display:grid}
 <section id="cazuri" class="vista" aria-labelledby="t-cazuri">
   <div class="envolver seccao">
     <p class="eyebrow">Real cases</p>
-    <h2 id="t-cazuri" class="afirmacao">Real cases. Not ours yet.</h2>
-    <p class="lead">These results were published by other companies that put AI to work day to day. We didn&#x27;t build them. We show them because they are the kind of work we do, in businesses like yours.</p>
-    <p class="aviso">Source: cases published by Viver de IA (Brazil), with each company&#x27;s name. The numbers are the ones each company reported. Other businesses&#x27; results don&#x27;t guarantee yours: that&#x27;s why we measure your starting point before we begin.</p>
+    <h2 id="t-cazuri" class="afirmacao">Real results. The next one could be yours.</h2>
+    <p class="lead">These results have already happened in businesses like yours. Our job is to turn them into results for your business: the same method, designed for you and measured from your starting point.</p>
+    <p class="aviso">Public cases, with each company&#x27;s name and the numbers each one reported. Every business starts from a different place: that&#x27;s why we measure your starting point before we begin.</p>
     <ul class="casos">
 <li class="caso rv" id="caso-alphaview" style="--i:0">
   <p class="caso-tag">Medical clinic · Brazil</p>
-  <p class="selo">Public case from another company · not our client</p>
+  <p class="selo">Where you can get to</p>
   <h3 class="caso-empresa">Centro Médico Alphaview</h3>
   <p class="caso-titulo">A front desk that runs almost on its own, and more bookings without hiring.</p>
   <ul class="caso-num"><li><b>80–87%</b><span>of front-desk service automated</span></li><li><b>+15–20</b><span>extra bookings a day</span></li><li><b>20 min → almost 0</b><span>waiting at the front desk</span></li></ul>
@@ -1036,12 +1123,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">In your business, this is</h4><div class="chips"><a class="chip" href="#a-programari">Appointments</a> <a class="chip" href="#a-receptionist">AI receptionist</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/centro-medico-alphaview" target="_blank" rel="noopener"><span>See the original case<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-omega" style="--i:1">
   <p class="caso-tag">Imaging clinic · Brazil</p>
-  <p class="selo">Public case from another company · not our client</p>
+  <p class="selo">Where you can get to</p>
   <h3 class="caso-empresa">OMEGA Radiologia</h3>
   <p class="caso-titulo">Price requests that never booked got a second conversation.</p>
   <ul class="caso-num"><li><b>R$40k</b><span>in 3.5 months, only from people who hadn&#x27;t booked</span></li><li><b>+10%</b><span>monthly revenue, from the automatic follow-up</span></li><li><b>+7.5%</b><span>bookings, with the new website</span></li></ul>
@@ -1051,12 +1137,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">In your business, this is</h4><div class="chips"><a class="chip" href="#a-lead">Fast reply</a> <a class="chip" href="#proiecte">A new website</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/omega-radiologia" target="_blank" rel="noopener"><span>See the original case<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-carioca" style="--i:0">
   <p class="caso-tag">Clothing store · Brazil</p>
-  <p class="selo">Public case from another company · not our client</p>
+  <p class="selo">Where you can get to</p>
   <h3 class="caso-empresa">Carioca Jeans</h3>
   <p class="caso-titulo">Over 300 contacts a day, answered on the spot, at any hour.</p>
   <ul class="caso-num"><li><b>24 h</b><span>of service, every day</span></li><li><b>300+</b><span>WhatsApp contacts a day</span></li><li><b>7 days</b><span>to the first gains</span></li></ul>
@@ -1066,12 +1151,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">In your business, this is</h4><div class="chips"><a class="chip" href="#a-receptionist">AI receptionist</a> <a class="chip" href="#a-lead">Fast reply</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/carioca-jeans" target="_blank" rel="noopener"><span>See the original case<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-chopp" style="--i:1">
   <p class="caso-tag">Drinks for events · Brazil</p>
-  <p class="selo">Public case from another company · not our client</p>
+  <p class="selo">Where you can get to</p>
   <h3 class="caso-empresa">Chopp Fácil</h3>
   <p class="caso-titulo">In high season, ten times more quotes answered a day.</p>
   <ul class="caso-num"><li><b>50 → 500</b><span>quotes answered a day</span></li><li><b>10×</b><span>service capacity in high season</span></li><li><b>100%</b><span>of quotes answered without waiting for a person</span></li></ul>
@@ -1081,12 +1165,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">In your business, this is</h4><div class="chips"><a class="chip" href="#a-lead">Fast reply</a> <a class="chip" href="#a-receptionist">AI receptionist</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/esv-chopp-facil" target="_blank" rel="noopener"><span>See the original case<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-vize" style="--i:0">
   <p class="caso-tag">Barbershops · Brazil</p>
-  <p class="selo">Public case from another company · not our client</p>
+  <p class="selo">Where you can get to</p>
   <h3 class="caso-empresa">Vize Imagem Masculina</h3>
   <p class="caso-titulo">Three barbershops with the same service, and the team only confirms the booking.</p>
   <ul class="caso-num"><li><b>30%</b><span>more efficient service</span></li><li><b>3 → 1</b><span>barbershops, one front desk</span></li><li><b>Ongoing</b><span>implementation, according to the company</span></li></ul>
@@ -1096,12 +1179,11 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">In your business, this is</h4><div class="chips"><a class="chip" href="#a-programari">Appointments</a> <a class="chip" href="#a-receptionist">AI receptionist</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/vize-imagem-masculina" target="_blank" rel="noopener"><span>See the original case<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso rv" id="caso-sms" style="--i:1">
   <p class="caso-tag">Clinic · Brazil</p>
-  <p class="selo">Public case from another company · not our client</p>
+  <p class="selo">Where you can get to</p>
   <h3 class="caso-empresa">Instituto SMS</h3>
   <p class="caso-titulo">12,000 dormant patients, called back on WhatsApp.</p>
   <ul class="caso-num"><li><b>12,000</b><span>patients on file, only 1,500 active a year</span></li><li><b>40%</b><span>of the clinic&#x27;s capacity was idle</span></li><li><b>R$240k</b><span>a year: published projection, not a closed result</span></li></ul>
@@ -1111,14 +1193,13 @@ html.intro-vai .intro{display:grid}
   </div>
   <div class="caso-pe">
     <div><h4 class="rotulo">In your business, this is</h4><div class="chips"><a class="chip" href="#a-revenire">Returning customers</a></div></div>
-    <a class="fonte" href="https://viverdeia.ai/cases/instituto-sms-4" target="_blank" rel="noopener"><span>See the original case<small>Viver de IA · viverdeia.ai</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </li>
 <li class="caso vazio rv" id="caso-1">
-  <p class="caso-tag">Pacheco Studios · case no. 1</p>
-  <h3 class="caso-empresa">This spot belongs to the first business that runs the pilot with us.</h3>
-  <p>Starting point measured on day 0, result on day 30, published with permission. It could be yours.</p>
-  <a class="botao secundario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%20want%20to%20be%20Pacheco%20Studios%27%20case%20no.%201.%20My%20business%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>I want to be case no. 1</a>
+  <p class="caso-tag">Pacheco Studios · the next case</p>
+  <h3 class="caso-empresa">The next result could be your business&#x27;s.</h3>
+  <p>We measure the starting point on day 0 and the result on day 30. That&#x27;s how one of these cases becomes yours.</p>
+  <a class="botao secundario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%20saw%20the%20cases%20on%20the%20website%20and%20I%20want%20this%20result%20in%20my%20business%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>I want this result</a>
 </li>
     </ul>
   </div>
@@ -1274,28 +1355,24 @@ html.intro-vai .intro{display:grid}
 </section>
 <section id="consultanta" class="vista" aria-labelledby="t-consultanta">
   <div class="envolver heroi">
-    <p class="eyebrow">AI consulting for local businesses</p>
-    <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">Got a goal to reach?</span><span class="heroi-grande">AI will make it happen.</span></h2>
-    <p class="heroi-passo">All you have to do is take the first step.</p>
-    <p class="lead heroi-lead">We listen to your business, draw in front of you what the AI will do, and put it to work. It starts with a conversation.</p>
-    <div class="heroi-acoes">
-      <a class="botao primario grande" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%27d%20like%20to%20book%20the%20diagnosis%20conversation%20for%20my%20business%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Book the diagnosis</a>
-      <a class="link-seta" href="#cazuri">See real cases<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="heroi-txt">
+      <p class="eyebrow heroi-e">AI consulting for local businesses</p>
+      <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">Got a goal to reach?</span> <span class="heroi-grande">AI will make it happen.</span></h2>
+      <p class="heroi-passo">All you have to do is take the first step.</p>
+      <p class="lead heroi-lead">We listen to your business, draw in front of you what the AI will do, and put it to work. It starts with a conversation.</p>
+      <div class="heroi-acoes">
+        <a class="botao primario grande" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%27d%20like%20to%20book%20the%20diagnosis%20conversation%20for%20my%20business%3A%20" data-diagnostico>Get to know us<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="botao contorno grande" href="#cazuri">See real cases</a>
+      </div>
+      <ul class="factos"><li>20-minute conversation</li><li>Written diagnosis the same day</li><li>No cost, no commitment</li></ul>
     </div>
-    <ul class="factos"><li>20-minute conversation</li><li>Written diagnosis the same day</li><li>No cost, no commitment</li></ul>
-  </div>
-  <div class="envolver seccao dif">
-    <p class="eyebrow">The difference</p>
-    <h2 class="afirmacao">Your goal first. The tool second.</h2>
-    <div class="dif-grelha">
-      <div class="dif-col agencia"><h3>An agency</h3><ul><li>Arrives with a product and looks for where it fits.</li><li>Sells the same packages to different businesses.</li><li>Delivers and moves on to the next client.</li></ul></div>
-      <div class="dif-col nos"><h3>A consultancy</h3><ul><li>Arrives with questions and measures the starting point.</li><li>Designs the solution for your goal, in front of you.</li><li>Stays to measure and adjust, every month.</li></ul></div>
-    </div>
+    <div class="mosaico heroi-3d" aria-hidden="true"><div class="plano"><span class="placa p1"><span>Diagnosis</span></span><span class="placa p2"><span>Design</span></span><span class="placa p3"><span>Pilot</span></span><span class="placa p4"><span>Follow-up</span></span><span class="placa centro"><span><i class="ponto"></i>Pacheco Studios</span></span></div></div>
   </div>
   <div class="claro">
     <div class="envolver seccao">
-      <p class="eyebrow">How we work</p>
-      <h2 class="afirmacao">Five steps. The first is a conversation.</h2>
+      <p class="eyebrow">Consulting</p>
+      <h2 class="afirmacao">From your goal to the result, in five steps.</h2>
+      <p class="lead">We start from your goal, not from a tool. We listen, measure the starting point, draw the solution in front of you and stay to follow up.</p>
       <ol class="passos passos-5">
 <li class="passo rv" style="--i:0"><span class="passo-q">20 min</span><h3>Diagnosis conversation</h3><p>At your business or on a video call. What the goal is, how customers arrive, where they get lost and what eats your time.</p></li>
 <li class="passo rv" style="--i:1"><span class="passo-q">Same day</span><h3>The diagnosis, in writing</h3><p>What is holding the goal back, by order of impact, and where to start. It&#x27;s yours to keep, even if you don&#x27;t go ahead.</p></li>
@@ -1303,6 +1380,21 @@ html.intro-vai .intro{display:grid}
 <li class="passo rv" style="--i:3"><span class="passo-q">30 days</span><h3>Pilot</h3><p>One solution only. We measure the starting point on day 0 and compare on day 30. You decide with the numbers in front of you.</p></li>
 <li class="passo rv" style="--i:4"><span class="passo-q">Every month</span><h3>Follow-up</h3><p>A report, adjustments and, when it makes sense, the next solution. One at a time.</p></li>
       </ol>
+    </div>
+  </div>
+  <div class="veredito seccao">
+    <div class="mosaico fundo-3d" aria-hidden="true"><div class="plano"><span class="placa p1"><span>Diagnosis</span></span><span class="placa p2"><span>Design</span></span><span class="placa p3"><span>Pilot</span></span><span class="placa p4"><span>Follow-up</span></span><span class="placa centro"><span><i class="ponto"></i>Pacheco Studios</span></span></div></div>
+    <div class="envolver">
+      <p class="eyebrow">Verdict from a real case</p>
+      <h2 class="so-leitor">The verdict of someone who already put AI to work</h2>
+      <figure class="cartao-v rv">
+        <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+        <blockquote><p>Today the AI answers 24 hours a day. (…) Customers already see the catalogue, choose the product and arrive at the shop practically ready to buy.</p></blockquote>
+        <figcaption>
+          <span class="v-quem"><span class="v-marca" aria-hidden="true"></span><span><b>Founder of a clothing store · Brazil</b><small>Real, public case</small><small class="trad">Translated from Portuguese.</small></span></span>
+          <a class="botao escuro" href="#caso-carioca">See the case<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </figcaption>
+      </figure>
     </div>
   </div>
   <div class="envolver seccao ia-bloco">
@@ -1320,7 +1412,7 @@ html.intro-vai .intro{display:grid}
 <li class="rv" style="--i:1"><a href="#caso-omega"><b>R$40k</b><span>in 3.5 months, only from people who hadn&#x27;t booked</span><small>OMEGA Radiologia · See the case<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
 <li class="rv" style="--i:2"><a href="#caso-chopp"><b>50 → 500</b><span>quotes answered a day</span><small>Chopp Fácil · See the case<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
     </ul>
-    <p class="nota-fonte">Cases from other companies, published by Viver de IA. They are not ours yet.</p>
+    <p class="nota-fonte">Results other businesses have already reached. Our job is to bring them to yours.</p>
     <a class="link-seta" href="#cazuri">See all cases<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
   <div class="envolver seccao cuidado-c">
@@ -1348,8 +1440,8 @@ html.intro-vai .intro{display:grid}
   <div class="envolver">
     <p class="eyebrow">First step</p>
     <h2 id="t-contact" class="afirmacao">The first step is a conversation.</h2>
-    <p class="lead">20 minutes, at your business or on a video call. Tell us the goal; you leave with the diagnosis in writing.</p>
-    <a class="botao primario grande" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%27d%20like%20to%20book%20the%20diagnosis%20conversation%20for%20my%20business%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Book the diagnosis</a>
+    <p class="lead">8 questions, under 2 minutes. Then we talk on WhatsApp and you get the written diagnosis the same day.</p>
+    <a class="botao primario grande" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%27d%20like%20to%20book%20the%20diagnosis%20conversation%20for%20my%20business%3A%20" data-diagnostico>Get to know us<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <ul class="contactos">
 <li><a href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%27d%20like%20to%20book%20the%20diagnosis%20conversation%20for%20my%20business%3A%20" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="txt"><span class="qual">WhatsApp</span><span class="valor">+351 967 117 357</span></span></a></li>
 <li><a href="tel:+351967117357"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="txt"><span class="qual">Phone</span><span class="valor">+351 967 117 357</span></span></a></li>
@@ -1370,7 +1462,7 @@ html.intro-vai .intro{display:grid}
 </footer>
 
 <div class="barra" id="barra" inert>
-  <a class="botao primario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%27d%20like%20to%20book%20the%20diagnosis%20conversation%20for%20my%20business%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Book the diagnosis</a>
+  <a class="botao primario" href="https://wa.me/351967117357?text=Hi%20Tom%C3%A1s%21%20I%27d%20like%20to%20book%20the%20diagnosis%20conversation%20for%20my%20business%3A%20" data-diagnostico>Get to know us</a>
 </div>
 
 <section class="rgpd" id="rgpd" aria-label="Cookies and statistics" hidden>
@@ -1422,6 +1514,21 @@ html.intro-vai .intro{display:grid}
     <p class="intro-slogan">Got a goal? <em>AI makes it</em> <em>happen.</em></p>
   </div>
 </div>
+<dialog class="diag" id="diagnostico" aria-labelledby="diag-t">
+  <div class="diag-topo">
+    <p class="marca"><span class="ponto" aria-hidden="true"></span><span class="diag-nome">Pacheco Studios</span></p>
+    <ol class="diag-prog" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+    <p class="diag-cont"><b id="diag-n">0</b> <span>of 8</span></p>
+    <button class="diag-x" type="button" data-fechar-diag aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <h2 id="diag-t" class="so-leitor">Pacheco Studios diagnosis</h2>
+  <div class="diag-corpo">
+    <div class="diag-conversa" id="diag-conversa" aria-live="polite"></div>
+    <div class="diag-resposta" id="diag-resposta"></div>
+  </div>
+  <p class="diag-pe">By continuing, you agree to the <a href="/privacy.html">Privacy Policy</a>. Your answers only leave your phone when you tap send.</p>
+  <script type="application/json" id="diag-dados">{"abertura": ["Businesses that put AI in the right place answer faster, lose fewer customers and win back hours every week. Shall we see where that is in yours?", "It's 8 questions, under 2 minutes. What's your name?"], "perguntas": [{"id": "nome", "tipo": "texto", "rotulo": "Your name", "ph": "First and last name", "wa": "Name"}, {"id": "negocio", "tipo": "texto", "msg": "Nice to meet you, {nome}! What's your business called?", "rotulo": "Business name", "ph": "E.g. Central Café", "wa": "Business"}, {"id": "tipo", "tipo": "opcoes", "msg": "What kind of business is it?", "opcoes": ["Restaurant or café", "Clinic or health", "Salon, barber or beauty", "Shop", "Services by appointment", "Other"], "wa": "Type"}, {"id": "onde", "tipo": "texto", "msg": "Which city is it in?", "rotulo": "City", "ph": "E.g. Lisbon", "wa": "City"}, {"id": "objetivo", "tipo": "opcoes", "msg": "If AI solved one thing in the next 3 months, what would it be?", "opcoes": ["More new customers", "Customers coming back more often", "Fewer missed appointments", "Answering everyone, at any hour", "More Google reviews", "More time in the day"], "wa": "Goal"}, {"id": "dor", "tipo": "multi", "msg": "Where do you lose the most today? You can pick several.", "opcoes": ["Unanswered messages and calls", "Bookings and no-shows", "Customers who come once and never return", "Few reviews", "Paperwork, receipts and invoices", "Idle social media"], "wa": "Losing most at"}, {"id": "canais", "tipo": "multi", "msg": "And how do customers find you?", "opcoes": ["Google and Maps", "Instagram or Facebook", "WhatsApp", "Phone", "Walk-ins", "Word of mouth", "Platforms (Glovo, Booking…)"], "wa": "Customers come from"}, {"id": "contacto", "tipo": "tel", "msg": "Last step: which number should I send the diagnosis to?", "rotulo": "WhatsApp or phone", "ph": "+44 …", "wa": "Contact"}], "continuar": "Continue", "enviar_resp": "Send answer", "obrigatorio": "Type at least 2 letters.", "escolhe": "Pick at least one.", "fim": ["Thank you, {nome}! I have what I need to start.", "Tap send: the conversation continues on WhatsApp and the written diagnosis arrives the same day."], "enviar": "Send on WhatsApp", "recomecar": "Start again", "wa_intro": "Hi Tomás! I did the diagnosis on the website:"}</script>
+</dialog>
 
 <script>
 /* intro: o carro passa pelos dois portais e sai transformado. Corre uma vez por sessão e nunca com movimento reduzido
@@ -1633,6 +1740,135 @@ html.intro-vai .intro{display:grid}
   }
 })();
 
+/* diagnóstico em conversa: «Conhece-nos» abre-o; 8 perguntas, uma de cada vez; no fim, a mensagem para o WhatsApp
+   (nada é enviado nem guardado sem o visitante tocar em enviar). Sem JavaScript, os botões vão direto ao WhatsApp. */
+(function () {
+  var d = document.getElementById('diagnostico');
+  if (!d || !d.showModal) return;
+  var D = JSON.parse(document.getElementById('diag-dados').textContent);
+  var conv = document.getElementById('diag-conversa'), resp = document.getElementById('diag-resposta');
+  var corpo = d.querySelector('.diag-corpo'), nEl = document.getElementById('diag-n'), pontos = d.querySelectorAll('.diag-prog li');
+  var calmo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var base = 'https://wa.me/';
+  var r = {}, passo = 0, ronda = 0, comecou = false;
+  var SETA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+  function gc(o) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(o); } catch (e) {} }
+  function nome() { return (r.nome || '').trim().split(/\s+/)[0]; }
+  function txt(s) { return s.replace(/\{nome\}/g, nome()); }
+  function rolar() { corpo.scrollTop = corpo.scrollHeight; }
+  function bolha(t) {
+    var m = document.createElement('div'); m.className = 'msg-d';
+    m.innerHTML = '<span class="av" aria-hidden="true">TP</span><p></p>'; m.querySelector('p').textContent = t;
+    conv.appendChild(m); rolar();
+  }
+  function eu(t) { var p = document.createElement('p'); p.className = 'msg-r'; p.textContent = t; conv.appendChild(p); rolar(); }
+  function diz(lista, depois) {
+    var minha = ronda, i = 0;
+    (function prox() {
+      if (minha !== ronda) return;
+      if (i >= lista.length) { if (depois) depois(); return; }
+      if (calmo) { bolha(txt(lista[i++])); prox(); return; }
+      var e = document.createElement('div'); e.className = 'msg-d escreve';
+      e.innerHTML = '<span class="av" aria-hidden="true">TP</span><p><i></i><i></i><i></i></p>';
+      conv.appendChild(e); rolar();
+      setTimeout(function () { e.remove(); if (minha !== ronda) return; bolha(txt(lista[i++])); prox(); }, 650);
+    })();
+  }
+  function progresso() {
+    nEl.textContent = passo;
+    pontos.forEach(function (p, i) { p.classList.toggle('feito', i < passo); });
+  }
+  function seguinte(valor, mostrar) {
+    var q = D.perguntas[passo];
+    r[q.id] = valor; eu(mostrar); resp.innerHTML = ''; passo++; progresso();
+    if (passo >= D.perguntas.length) return fim();
+    diz([D.perguntas[passo].msg], campo);
+  }
+  function erro(onde, t) {
+    var p = onde.querySelector('.erro-d');
+    if (!p) { p = document.createElement('p'); p.className = 'erro-d'; p.setAttribute('role', 'alert'); onde.appendChild(p); }
+    p.textContent = t;
+  }
+  function campo() {
+    var q = D.perguntas[passo];
+    resp.innerHTML = '';
+    if (q.tipo === 'texto' || q.tipo === 'tel') {
+      var f = document.createElement('form');
+      f.innerHTML = '<label class="rotulo-d" for="diag-in"></label><div class="campo"><input id="diag-in" autocomplete="off">' +
+        '<button type="submit">' + SETA + '</button></div>';
+      f.querySelector('label').textContent = q.rotulo;
+      var inp = f.querySelector('input');
+      inp.type = q.tipo === 'tel' ? 'tel' : 'text';
+      inp.placeholder = q.ph || '';
+      inp.autocomplete = q.id === 'nome' ? 'name' : q.tipo === 'tel' ? 'tel' : 'off';
+      f.querySelector('button').setAttribute('aria-label', D.enviar_resp);
+      f.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var v = inp.value.trim();
+        if (v.replace(/[^\p{L}\p{N}]/gu, '').length < 2) { erro(f, D.obrigatorio); inp.focus(); return; }
+        seguinte(v, v);
+      });
+      resp.appendChild(f);
+      inp.focus({ preventScroll: true });
+    } else {
+      var box = document.createElement('div'); box.className = 'opcoes'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', q.msg);
+      var multi = q.tipo === 'multi';
+      q.opcoes.forEach(function (o) {
+        var b = document.createElement('button'); b.type = 'button'; b.textContent = o;
+        if (multi) b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function () {
+          if (!multi) { seguinte(o, o); return; }
+          b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+        });
+        box.appendChild(b);
+      });
+      resp.appendChild(box);
+      if (multi) {
+        var acoes = document.createElement('div'); acoes.className = 'diag-acoes';
+        var c = document.createElement('button'); c.type = 'button'; c.className = 'botao primario'; c.textContent = D.continuar;
+        c.addEventListener('click', function () {
+          var esc = [].map.call(box.querySelectorAll('[aria-pressed="true"]'), function (b) { return b.textContent; });
+          if (!esc.length) { erro(resp, D.escolhe); return; }
+          seguinte(esc, esc.join(', '));
+        });
+        acoes.appendChild(c); resp.appendChild(acoes);
+      }
+      box.querySelector('button').focus({ preventScroll: true });
+    }
+    rolar();
+  }
+  function fim() {
+    gc({ path: 'diagnostico/fim', title: 'diagnóstico: fim', event: true });
+    diz(D.fim, function () {
+      var linhas = D.perguntas.map(function (q) { var v = r[q.id]; return '• ' + q.wa + ': ' + (Array.isArray(v) ? v.join(', ') : v); });
+      var a = document.createElement('a'); a.className = 'botao primario'; a.rel = 'noopener';
+      a.href = base + '?text=' + encodeURIComponent(D.wa_intro + '\n' + linhas.join('\n'));
+      a.textContent = D.enviar;
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'botao contorno-e'; b.textContent = D.recomecar;
+      b.addEventListener('click', comecar);
+      var acoes = document.createElement('div'); acoes.className = 'diag-acoes';
+      acoes.appendChild(b); acoes.appendChild(a); resp.appendChild(acoes);
+      a.focus({ preventScroll: true }); rolar();
+    });
+  }
+  function comecar() {
+    ronda++; r = {}; passo = 0; conv.innerHTML = ''; resp.innerHTML = ''; progresso();
+    diz(D.abertura, campo);
+  }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('[data-diagnostico]');
+    if (a) {
+      ev.preventDefault();
+      base = a.href.split('?')[0];
+      if (!d.open) d.showModal();
+      if (!comecou) { comecou = true; comecar(); }
+      gc({ path: 'diagnostico/aberto', title: 'diagnóstico: aberto', event: true });
+      return;
+    }
+    if (ev.target.closest && ev.target.closest('[data-fechar-diag]')) d.close();
+  });
+})();
+
 /* medição, a mesma do site anterior: GoatCounter sempre (sem cookies); pixel da Meta só com autorização */
 (function () {
   'use strict';
@@ -1656,7 +1892,7 @@ html.intro-vai .intro{display:grid}
   });
   // saídas para o WhatsApp e o telefone
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href^="https://wa.me"], a[href^="tel:"]');
+    var a = e.target.closest && e.target.closest('a[href^="https://wa.me"]:not([data-diagnostico]), a[href^="tel:"]');
     if (!a) return;
     var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
     gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });

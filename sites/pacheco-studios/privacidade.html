@@ -410,19 +410,41 @@ html.intro-vai .intro{display:grid}
 @media (prefers-reduced-motion:reduce){.intro{display:none!important}}
 
 
-/* ═══ consultoria: o objetivo do dono primeiro. O herói repete a frase da marca, tal como no anúncio:
-   traço laranja + pergunta, a resposta enorme a laranja, o primeiro passo a branco ═══ */
-.heroi{padding-block:clamp(2.75rem,10vw,6rem) clamp(2.5rem,8vw,4.5rem)}
-.heroi-t{margin-top:1.4rem;font-weight:400}
-.heroi-pre{display:flex;align-items:center;gap:.9rem;font:600 clamp(1.125rem,4.4vw,1.5rem)/1.3 var(--texto);color:var(--osso)}
-.heroi-pre::before{content:"";flex:none;width:clamp(2.5rem,10vw,4.5rem);height:3px;background:var(--laranja);transform-origin:left}
-.heroi-grande{display:block;margin-top:.7rem;max-width:14ch;font:400 clamp(2rem,8.6vw,4.25rem)/.98 var(--display);
-  text-transform:uppercase;letter-spacing:-.01em;color:var(--laranja);text-wrap:balance}
+/* ═══ consultoria: o herói ao jeito de uma página de produto limpa (rótulo, frase a dois tons, dois botões) com o
+   mosaico 3D dos passos à direita. A frase é a da marca: a pergunta a branco, a resposta a laranja ═══ */
+.heroi{display:grid;gap:1.5rem;align-items:center;padding-block:clamp(2.25rem,8vw,5rem) clamp(1.5rem,5vw,3.5rem)}
+.heroi-e{color:var(--osso-2);letter-spacing:.22em}
+.heroi-t{margin-top:1.1rem;max-width:17ch;font:600 clamp(2.15rem,8.4vw,4.1rem)/1.04 var(--texto);letter-spacing:-.035em;text-wrap:balance}
+.heroi-pre{color:var(--osso)}
+.heroi-grande{display:block;color:var(--laranja)}
 .nq{white-space:nowrap}
-.heroi-passo{margin-top:1.1rem;font:700 clamp(1.125rem,4.4vw,1.5rem)/1.3 var(--texto)}
-.heroi-lead{max-width:40ch}
-.heroi-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.75rem;margin-top:1.9rem}
+.heroi-passo{margin-top:1.1rem;font:600 clamp(1.1rem,3.8vw,1.35rem)/1.35 var(--texto)}
+.heroi-lead{margin-top:.55rem;max-width:42ch}
+.heroi-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:1.75rem}
 .heroi-acoes .grande{margin-top:0}
+.botao.contorno{border-color:var(--contorno);color:var(--osso);background:transparent}
+.botao.contorno:hover{background:rgba(239,234,227,.08)}
+.primario svg{transition:transform .2s var(--sair)} .primario:hover svg{transform:translateX(.2rem)}
+/* mosaico 3D (decoração): plano isométrico com a grelha; placas com espessura; a da marca brilha a laranja */
+.mosaico{position:relative;overflow:hidden;pointer-events:none;user-select:none}
+.heroi-3d{height:clamp(15rem,66vw,22rem);margin-inline:calc(max(var(--gutter),env(safe-area-inset-left)) * -1)}
+.plano{position:absolute;left:50%;top:50%;width:44rem;height:44rem;margin:-22rem 0 0 -22rem;
+  transform:scale(var(--esc,.6)) rotateX(56deg) rotateZ(-45deg);
+  background-image:linear-gradient(rgba(239,234,227,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(239,234,227,.1) 1px,transparent 1px);
+  background-size:5.5rem 5.5rem;background-position:-1px -1px;
+  -webkit-mask-image:radial-gradient(closest-side,#000 60%,transparent);mask-image:radial-gradient(closest-side,#000 60%,transparent)}
+.placa{position:absolute;width:11rem;height:11rem;display:grid;place-items:center;border-radius:1.5rem;
+  background:linear-gradient(135deg,#2B2622,#1B1816);
+  box-shadow:inset 0 0 0 1px rgba(239,234,227,.14),-7px 7px 0 #0B0A09,-7px 7px 0 1px rgba(239,234,227,.08),-26px 26px 40px rgba(0,0,0,.55)}
+.placa span{display:flex;align-items:center;gap:.6rem;font:700 1.05rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso)}
+.placa.p1{left:2.5rem;top:5.5rem} .placa.p2{left:30.5rem;top:3rem} .placa.p3{left:3rem;top:30.5rem} .placa.p4{left:30rem;top:29.5rem}
+.placa.centro{left:14.25rem;top:14.25rem;width:15.5rem;height:15.5rem;border-radius:1.9rem;
+  background:linear-gradient(135deg,#2E241E,#1D1A17);
+  box-shadow:inset 0 0 0 1.5px rgba(232,98,44,.85),-10px 10px 0 #5A2611,-10px 10px 0 1.5px rgba(232,98,44,.5),0 0 70px rgba(232,98,44,.38),-36px 36px 60px rgba(0,0,0,.6);
+  animation:ps-flutua 5s ease-in-out infinite}
+.placa.centro span{font:400 1.3rem/1 var(--display);letter-spacing:.01em;text-transform:none}
+.placa .ponto{width:.75rem;height:.75rem}
+@keyframes ps-flutua{0%,100%{translate:0 0}50%{translate:7px -7px}}
 .link-seta{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;font:700 .8125rem/1.2 var(--mono);letter-spacing:.14em;
   text-transform:uppercase;color:var(--laranja);text-decoration:none}
 .link-seta svg{width:1.1rem;height:1.1rem;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s var(--sair)}
@@ -433,23 +455,85 @@ html.intro-vai .intro{display:grid}
 .factos li::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:var(--laranja);flex:none}
 /* entrada coreografada: só depois de a intro sair (html.intro-vai) e nunca com movimento reduzido */
 @keyframes ps-sobe{from{opacity:0;transform:translateY(1.1rem)}to{opacity:1;transform:none}}
-@keyframes ps-risca{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.js:not(.intro-vai) .heroi :is(.eyebrow,.heroi-pre,.heroi-grande,.heroi-passo,.heroi-lead,.heroi-acoes,.factos){animation:ps-sobe .75s var(--sair) both;animation-delay:var(--d,0s)}
-.js:not(.intro-vai) .heroi-pre::before{animation:ps-risca .6s var(--sair) .15s both}
-.heroi-pre{--d:.12s} .heroi-grande{--d:.3s} .heroi-passo{--d:.6s} .heroi-lead{--d:.72s} .heroi-acoes{--d:.84s} .factos{--d:.96s}
+.js:not(.intro-vai) .heroi :is(.heroi-e,.heroi-t,.heroi-passo,.heroi-lead,.heroi-acoes,.factos,.heroi-3d){animation:ps-sobe .75s var(--sair) both;animation-delay:var(--d,0s)}
+.heroi-t{--d:.1s} .heroi-passo{--d:.3s} .heroi-lead{--d:.4s} .heroi-acoes{--d:.5s} .factos{--d:.6s} .heroi-3d{--d:.25s}
 #consultanta > .envolver + .envolver{border-top:1px solid var(--linha-e)}
-/* agência vs consultoria: a nossa coluna é a que tem cor */
-.dif-grelha{margin-top:1.9rem;display:grid;gap:.75rem;max-width:56rem}
-.dif-col{padding:1.15rem 1.1rem 1.3rem;border-radius:1rem;border:1px solid var(--linha-e)}
-.dif-col h3{font:700 .8125rem/1.2 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--osso-2)}
-.dif-col ul{margin-top:1rem;display:grid;gap:.75rem}
-.dif-col li{position:relative;padding-left:1.4rem;line-height:1.45}
-.dif-col li::before{content:"";position:absolute;left:0;top:.68em;width:.7rem;height:2px;background:var(--osso-2)}
-.agencia li{color:var(--osso-2)}
-.dif-col.nos{background:var(--carvao-2);border-color:rgba(232,98,44,.55)}
-.nos h3{color:var(--laranja)}
-.nos li{color:var(--osso);font-weight:600}
-.nos li::before{top:.42em;width:.6rem;height:.6rem;border-radius:50%;background:var(--laranja)}
+/* ═══ veredito: um caso real em destaque, num cartão de vidro sobre o mosaico 3D ═══ */
+.veredito{position:relative;overflow:hidden;isolation:isolate;
+  background:radial-gradient(60rem 30rem at 50% 70%,rgba(232,98,44,.16),transparent 70%),var(--carvao)}
+.fundo-3d{position:absolute;inset:0;z-index:-1}
+.fundo-3d .plano{--esc:1.15}
+.fundo-3d .placa span{visibility:hidden}
+.cartao-v{position:relative;margin:1.4rem 0 0;max-width:54rem;padding:clamp(3.25rem,8vw,4.25rem) clamp(1.25rem,5vw,3rem) clamp(1.25rem,4vw,2.25rem);
+  border-radius:1.5rem;background:rgba(29,26,23,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid rgba(239,234,227,.16);box-shadow:0 2.5rem 5rem -2rem rgba(0,0,0,.85),0 0 0 1px rgba(232,98,44,.1)}
+.aspas{position:absolute;left:clamp(1.1rem,4vw,2.4rem);top:clamp(1.1rem,3vw,1.6rem);width:2.6rem;fill:rgba(232,98,44,.55)}
+.cartao-v blockquote{margin:0}
+.cartao-v blockquote p{font:400 clamp(1.25rem,4.4vw,1.85rem)/1.42 var(--texto);letter-spacing:-.01em;color:var(--osso);text-wrap:pretty}
+.cartao-v figcaption{margin-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.1rem}
+.v-quem{display:flex;align-items:center;gap:.9rem;min-width:0}
+.v-marca{flex:none;width:3rem;height:3rem;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F2773F,#A64923);
+  box-shadow:0 0 0 3px var(--carvao-2),0 0 0 4px rgba(239,234,227,.25)}
+.v-quem b{display:block;font-weight:600;line-height:1.3}
+.v-quem small{display:block;margin-top:.2rem;font-size:.875rem;line-height:1.4;color:var(--osso-2)}
+.v-quem .trad{font-style:italic}
+.botao.escuro{background:var(--osso);color:var(--carvao)}
+.botao.escuro:hover{background:#fff}
+
+/* ═══ diagnóstico em conversa (abre com «Conhece-nos») ═══ */
+dialog.diag{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;
+  background:var(--osso);color:var(--carvao)}
+dialog.diag[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+dialog.diag::backdrop{background:rgba(0,0,0,.6)}
+.diag-topo{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:.9rem;
+  padding:calc(.6rem + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right)) .6rem max(var(--gutter),env(safe-area-inset-left));
+  background:var(--carvao);color:var(--osso);font:700 .8125rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase}
+.diag-topo .marca{min-height:2.75rem}
+.diag-prog{display:flex;align-items:center;justify-content:center}
+.diag-prog li{position:relative;flex:none;width:.6rem;height:.6rem;border-radius:50%;border:1.5px solid rgba(239,234,227,.55);transition:background-color .3s,border-color .3s}
+.diag-prog li+li{margin-left:clamp(.55rem,3.2vw,3.25rem)}
+.diag-prog li+li::before{content:"";position:absolute;right:calc(100% + 1.5px);top:50%;width:clamp(.55rem,3.2vw,3.25rem);height:1px;background:rgba(239,234,227,.3)}
+.diag-prog li.feito{background:var(--laranja);border-color:var(--laranja)}
+.diag-prog li.feito::before{background:var(--laranja)}
+.diag-cont{display:flex;align-items:baseline;gap:.4rem;letter-spacing:0;text-transform:none}
+.diag-cont b{font:400 1.75rem/1 var(--display)}
+.diag-cont span{font:400 .8125rem/1 var(--texto);color:var(--osso-2)}
+.diag-x{width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(239,234,227,.4);background:transparent;color:var(--osso);cursor:pointer}
+.diag-x svg{width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;fill:none}
+.diag-corpo{overflow-y:auto;overscroll-behavior:contain;padding:1.5rem max(var(--gutter),env(safe-area-inset-left)) 2rem}
+.diag-conversa,.diag-resposta{max-width:46rem;margin-inline:auto}
+.diag-conversa{display:grid;gap:.85rem}
+.msg-d{display:flex;align-items:flex-start;gap:.7rem;max-width:38rem;animation:ps-sobe .35s var(--sair) both}
+.msg-d .av{flex:none;width:2.6rem;height:2.6rem;display:grid;place-items:center;border-radius:50%;background:var(--carvao);color:var(--osso);
+  font:700 .75rem/1 var(--mono);letter-spacing:.06em;box-shadow:0 0 0 2px var(--osso),0 0 0 3px rgba(20,18,16,.15)}
+.msg-d p{padding:.85rem 1.1rem;border-radius:.3rem 1.2rem 1.2rem 1.2rem;background:#fff;line-height:1.5;box-shadow:0 1px 2px rgba(20,18,16,.08)}
+.msg-d.escreve p{display:flex;gap:.3rem;padding-block:1.15rem}
+.msg-d.escreve i{width:.45rem;height:.45rem;border-radius:50%;background:#8A847C;animation:ps-pisca 1s infinite}
+.msg-d.escreve i:nth-child(2){animation-delay:.15s} .msg-d.escreve i:nth-child(3){animation-delay:.3s}
+@keyframes ps-pisca{0%,100%{opacity:.35}50%{opacity:1}}
+.msg-r{justify-self:end;max-width:32rem;padding:.75rem 1.1rem;border-radius:1.2rem .3rem 1.2rem 1.2rem;background:var(--carvao);color:var(--osso);
+  line-height:1.45;animation:ps-sobe .3s var(--sair) both}
+.diag-resposta{display:grid;justify-items:end;gap:.6rem;margin-top:1.25rem}
+.diag-resposta form{display:grid;justify-items:end;gap:.55rem;width:min(100%,30rem)}
+.rotulo-d{font:700 .75rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2)}
+.campo{display:flex;align-items:center;gap:.4rem;width:100%;padding:.3rem .3rem .3rem 1.2rem;border:2px solid #D3CBBF;border-radius:999px;background:#fff;transition:border-color .2s}
+.campo:focus-within{border-color:var(--laranja-tinta)}
+.campo input{flex:1;min-width:0;min-height:2.75rem;border:0;background:transparent;outline:none;font:400 1.0625rem/1.3 var(--texto);color:var(--carvao)}
+.campo input::placeholder{color:#6B665F}
+.campo button{flex:none;width:2.75rem;height:2.75rem;display:grid;place-items:center;border:0;border-radius:50%;background:var(--laranja);color:var(--carvao);cursor:pointer}
+.campo button svg{width:1.15rem;height:1.15rem;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.opcoes{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.5rem;max-width:40rem}
+.opcoes button{min-height:2.75rem;padding:.55rem 1.05rem;border:2px solid var(--carvao);border-radius:999px;background:transparent;color:var(--carvao);
+  font:600 .9375rem/1.25 var(--texto);text-align:left;cursor:pointer;transition:background-color .15s,color .15s}
+.opcoes button:hover{background:rgba(20,18,16,.06)}
+.opcoes button[aria-pressed="true"]{background:var(--carvao);color:var(--osso)}
+.erro-d{font-size:.875rem;color:#9B2C1C}
+.diag-acoes{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.6rem}
+.botao.contorno-e{border-color:var(--carvao);color:var(--carvao);background:transparent}
+.diag-pe{padding:.85rem max(var(--gutter),env(safe-area-inset-left)) calc(.85rem + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(20,18,16,.12);
+  text-align:center;font-size:.8125rem;line-height:1.45;color:var(--tinta-2)}
+.diag-pe a{color:var(--carvao)}
+@media (max-width:30rem){.diag-nome{display:none}}
 /* os cinco passos: o mesmo .passo dos sites, com o «quando» por cima */
 .passo-q{display:inline-block;margin-bottom:.55rem;font:700 .75rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--laranja-tinta)}
 /* o que é a IA: as cinco frases de sempre, à vista */
@@ -528,7 +612,6 @@ html.intro-vai .intro{display:grid}
   .dest .q-meta{margin-top:.6rem;padding-top:.5rem;min-height:calc(2.6em + .5rem + 2px)}
   .dest .q-tip,.dest .q-sep{display:inline}
   .svcs{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
-  .dif-grelha{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
   .passos{grid-template-columns:repeat(3,1fr);gap:2rem}
 }
 @media (min-width:48rem){
@@ -553,13 +636,17 @@ html.intro-vai .intro{display:grid}
   .autos-grelha .cab .afirmacao{font-size:clamp(1.75rem,2.7vw,2.6rem)}
   .autos{margin-top:0}
   .passos-5{grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5rem}
+  .heroi{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem}
+  .heroi-3d{height:34rem;margin-inline:-2rem calc(max(var(--gutter),env(safe-area-inset-right)) * -1)}
+  .heroi-3d .plano{--esc:.68}
+  .fundo-3d .plano{--esc:1.35}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1!important;transform:none!important;transition:none!important}
   .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
   dialog.esquema[open]{animation:none}
-  .heroi *,.heroi *::before{animation:none!important}
+  .heroi *,.heroi *::before,.placa,.msg-d,.msg-r,.msg-d.escreve i{animation:none!important}
   .link-seta svg,.numeros a,.fonte{transition:none}
 }
 </style>

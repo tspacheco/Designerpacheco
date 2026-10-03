@@ -28,14 +28,16 @@ decisões: `research/consultoria-ia-referencias.md` e PLAYBOOK, secção 17.
    diagnóstico escrito no mesmo dia → solução desenhada → piloto de 30 dias → acompanhamento); «O que é, afinal, a
    IA por trás?» (as cinco frases de sempre, agora à vista, saíram das Automações); três números de casos reais
    (cada um leva ao caso); os compromissos; «Falas sempre com a mesma pessoa» (o Tomás).
-2. **Casos** (EN «Cases», RO «Cazuri», `#cazuri`) — **casos reais de outras empresas, ditos como tal.** Até termos
-   casos nossos, mostramos 6 casos publicados pela Viver de IA (viverdeia.ai/cases), com o nome da empresa: cada
-   cartão tem o selo «Caso público de outra empresa · não é cliente nosso», 3 números (os que a empresa declarou,
-   copiados da página de origem), o problema, o que fizeram, «No teu negócio, isto é» (a nossa solução que faz o
-   mesmo, liga à automação) e «Ver o caso original» (abre a fonte noutro separador). No fim, o lugar vazio
-   «Pacheco Studios · caso n.º 1» com o pedido no WhatsApp, e «Como um caso destes passa a ser teu».
-   Projeções publicadas aparecem como projeções (Instituto SMS). **Quando houver um caso nosso**, entra em primeiro
-   lugar em `conteudo/casos.json` (fonte = o nosso relatório do dia 30) e o lugar vazio sai.
+2. **Casos** (EN «Cases», RO «Cazuri», `#cazuri`): **resultados reais de outros negócios, mostrados como «onde podes chegar»**. Decisão do Tomás de 03/10:
+   - **Sem qualquer nome ou ligação à fonte no site.** As fontes ficam em `conteudo/casos.json` (interno, não vai para o zip).
+   - O texto diz que os resultados já aconteceram noutros negócios. Nunca diz que são clientes nossos.
+   - Cada cartão tem: o selo «Onde podes chegar», 3 números, o problema, o que fizeram e «No teu negócio, isto é» (liga à nossa solução).
+   - No fim fica «Pacheco Studios · o próximo caso», com «Quero este resultado» no WhatsApp, e «Como um caso destes passa a ser teu».
+
+   Na Consultoria:
+   - **Herói:** frase da marca a dois tons, com o mosaico 3D dos passos.
+   - **«Conhece-nos»:** abre o **diagnóstico em conversa** (8 perguntas). No fim envia tudo pelo WhatsApp; sem JavaScript, vai direto ao WhatsApp.
+   - **Secções:** a consultoria em 5 passos, depois o **veredito** de um caso (cartão sobre fundo 3D, liga ao cartão do caso).
 
 3. **Soluções** (antes «Automações»; EN «Solutions», RO «Soluții») — segue a direção «mostrar a máquina» (PLAYBOOK, secção 16). As cinco frases «O que é, afinal, a IA
    por trás?» passaram para a Consultoria. Aqui ficam as 8 automações. Cada cartão mostra o título e a
