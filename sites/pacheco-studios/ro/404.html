@@ -410,7 +410,11 @@ html.intro-vai .intro{display:grid}
 
 /* ═══ consultoria: o herói ao jeito de uma página de produto limpa (rótulo, frase a dois tons, dois botões) com o
    mosaico 3D dos passos à direita. A frase é a da marca: a pergunta a branco, a resposta a laranja ═══ */
-.heroi{display:grid;gap:1.5rem;align-items:center;padding-block:clamp(2.25rem,8vw,5rem) clamp(1.5rem,5vw,3.5rem)}
+.heroi-bg{position:relative;isolation:isolate;overflow:hidden;background:var(--carvao)}
+.heroi-img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:72% 50%}
+.heroi-bg::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(20,18,16,.42) 0%,rgba(20,18,16,.78) 50%,var(--carvao) 100%)}
+.heroi{position:relative;padding-block:clamp(2.75rem,9vw,6rem) clamp(2.5rem,7vw,5rem)}
 .heroi-e{color:var(--osso-2);letter-spacing:.22em}
 .heroi-t{margin-top:1.1rem;max-width:17ch;font:600 clamp(2.15rem,8.4vw,4.1rem)/1.04 var(--texto);letter-spacing:-.035em;text-wrap:balance}
 .heroi-pre{color:var(--osso)}
@@ -423,9 +427,21 @@ html.intro-vai .intro{display:grid}
 .botao.contorno{border-color:var(--contorno);color:var(--osso);background:transparent}
 .botao.contorno:hover{background:rgba(239,234,227,.08)}
 .primario svg{transition:transform .2s var(--sair)} .primario:hover svg{transform:translateX(.2rem)}
+.heroi-adere{margin-top:2.25rem;padding-top:1.1rem;border-top:1px solid var(--linha-e);max-width:38rem;display:flex;gap:.75rem;
+  font:600 1.0625rem/1.5 var(--texto);color:var(--osso)}
+.heroi-adere::before{content:"";flex:none;width:.5rem;height:.5rem;margin-top:.55em;border-radius:50%;background:var(--laranja)}
+.logo{flex:none;width:2.4rem;height:2.4rem}
+/* o que faz uma consultoria de IA: uma caixa, três passos */
+.caixa-c{margin-top:2rem;padding:clamp(1.25rem,4vw,2.25rem);border-radius:1.25rem;background:var(--carvao);color:var(--osso);
+  box-shadow:inset 0 0 0 1px rgba(232,98,44,.55),0 1.5rem 3rem -1.75rem rgba(20,18,16,.6)}
+.caixa-c h3{font:700 .8125rem/1.2 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--laranja)}
+.c-passos{margin-top:1.4rem;display:grid;gap:1.5rem;counter-reset:cp}
+.c-passos li{counter-increment:cp;display:grid;grid-template-columns:auto 1fr;column-gap:1rem;align-items:baseline}
+.c-passos li::before{content:counter(cp);grid-row:span 2;font:400 2.4rem/1 var(--display);color:var(--laranja)}
+.c-passos h4{font:600 1.1875rem/1.3 var(--texto)}
+.c-passos p{margin-top:.35rem;color:var(--osso-2)}
 /* mosaico 3D (decoração): plano isométrico com a grelha; placas com espessura; a da marca brilha a laranja */
 .mosaico{position:relative;overflow:hidden;pointer-events:none;user-select:none}
-.heroi-3d{height:clamp(15rem,66vw,22rem);margin-inline:calc(max(var(--gutter),env(safe-area-inset-left)) * -1)}
 .plano{position:absolute;left:50%;top:50%;width:44rem;height:44rem;margin:-22rem 0 0 -22rem;
   transform:scale(var(--esc,.6)) rotateX(56deg) rotateZ(-45deg);
   background-image:linear-gradient(rgba(239,234,227,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(239,234,227,.1) 1px,transparent 1px);
@@ -453,8 +469,10 @@ html.intro-vai .intro{display:grid}
 .factos li::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:var(--laranja);flex:none}
 /* entrada coreografada: só depois de a intro sair (html.intro-vai) e nunca com movimento reduzido */
 @keyframes ps-sobe{from{opacity:0;transform:translateY(1.1rem)}to{opacity:1;transform:none}}
-.js:not(.intro-vai) .heroi :is(.heroi-e,.heroi-t,.heroi-passo,.heroi-lead,.heroi-acoes,.factos,.heroi-3d){animation:ps-sobe .75s var(--sair) both;animation-delay:var(--d,0s)}
-.heroi-t{--d:.1s} .heroi-passo{--d:.3s} .heroi-lead{--d:.4s} .heroi-acoes{--d:.5s} .factos{--d:.6s} .heroi-3d{--d:.25s}
+.js:not(.intro-vai) .heroi :is(.heroi-e,.heroi-t,.heroi-passo,.heroi-lead,.heroi-acoes,.heroi-adere){animation:ps-sobe .75s var(--sair) both;animation-delay:var(--d,0s)}
+.js:not(.intro-vai) .heroi-img{animation:ps-revela 1.6s var(--sair) both}
+@keyframes ps-revela{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:none}}
+.heroi-t{--d:.1s} .heroi-passo{--d:.3s} .heroi-lead{--d:.4s} .heroi-acoes{--d:.5s} .heroi-adere{--d:.6s}
 #consultanta > .envolver + .envolver{border-top:1px solid var(--linha-e)}
 /* ═══ veredito: um caso real em destaque, num cartão de vidro sobre o mosaico 3D ═══ */
 .veredito{position:relative;overflow:hidden;isolation:isolate;
@@ -478,60 +496,67 @@ html.intro-vai .intro{display:grid}
 .botao.escuro{background:var(--osso);color:var(--carvao)}
 .botao.escuro:hover{background:#fff}
 
-/* ═══ diagnóstico em conversa (abre com «Conhece-nos») ═══ */
+/* ═══ diagnóstico (abre com «Conhece-nos»): uma pergunta por ecrã, em grande, e a ficha do negócio que se preenche
+   ao lado, como uma folha de esquema. Escuro como a marca; a ficha em papel ═══ */
 dialog.diag{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;
-  background:var(--osso);color:var(--carvao)}
-dialog.diag[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
-dialog.diag::backdrop{background:rgba(0,0,0,.6)}
-.diag-topo{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:.9rem;
-  padding:calc(.6rem + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right)) .6rem max(var(--gutter),env(safe-area-inset-left));
-  background:var(--carvao);color:var(--osso);font:700 .8125rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase}
-.diag-topo .marca{min-height:2.75rem}
-.diag-prog{display:flex;align-items:center;justify-content:center}
-.diag-prog li{position:relative;flex:none;width:.6rem;height:.6rem;border-radius:50%;border:1.5px solid rgba(239,234,227,.55);transition:background-color .3s,border-color .3s}
-.diag-prog li+li{margin-left:clamp(.55rem,3.2vw,3.25rem)}
-.diag-prog li+li::before{content:"";position:absolute;right:calc(100% + 1.5px);top:50%;width:clamp(.55rem,3.2vw,3.25rem);height:1px;background:rgba(239,234,227,.3)}
-.diag-prog li.feito{background:var(--laranja);border-color:var(--laranja)}
-.diag-prog li.feito::before{background:var(--laranja)}
-.diag-cont{display:flex;align-items:baseline;gap:.4rem;letter-spacing:0;text-transform:none}
-.diag-cont b{font:400 1.75rem/1 var(--display)}
-.diag-cont span{font:400 .8125rem/1 var(--texto);color:var(--osso-2)}
+  background:var(--carvao);color:var(--osso)}
+dialog.diag[open]{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto}
+dialog.diag::backdrop{background:rgba(0,0,0,.7)}
+.diag-topo{display:flex;align-items:center;gap:1rem;padding:calc(.6rem + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right)) .6rem max(var(--gutter),env(safe-area-inset-left))}
+.diag-marca{display:flex;align-items:center;gap:.75rem;min-height:2.75rem;margin-right:auto;font:700 .8125rem/1.2 var(--mono);letter-spacing:.2em;text-transform:uppercase}
+.diag-cont{font:700 .875rem/1 var(--mono);letter-spacing:.06em;color:var(--osso-2)}
+.diag-cont b{font:400 1.6rem/1 var(--display);color:var(--laranja);margin-right:.15rem}
 .diag-x{width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(239,234,227,.4);background:transparent;color:var(--osso);cursor:pointer}
 .diag-x svg{width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;fill:none}
-.diag-corpo{overflow-y:auto;overscroll-behavior:contain;padding:1.5rem max(var(--gutter),env(safe-area-inset-left)) 2rem}
-.diag-conversa,.diag-resposta{max-width:46rem;margin-inline:auto}
-.diag-conversa{display:grid;gap:.85rem}
-.msg-d{display:flex;align-items:flex-start;gap:.7rem;max-width:38rem;animation:ps-sobe .35s var(--sair) both}
-.msg-d .av{flex:none;width:2.6rem;height:2.6rem;display:grid;place-items:center;border-radius:50%;background:var(--carvao);color:var(--osso);
-  font:700 .75rem/1 var(--mono);letter-spacing:.06em;box-shadow:0 0 0 2px var(--osso),0 0 0 3px rgba(20,18,16,.15)}
-.msg-d p{padding:.85rem 1.1rem;border-radius:.3rem 1.2rem 1.2rem 1.2rem;background:#fff;line-height:1.5;box-shadow:0 1px 2px rgba(20,18,16,.08)}
-.msg-d.escreve p{display:flex;gap:.3rem;padding-block:1.15rem}
-.msg-d.escreve i{width:.45rem;height:.45rem;border-radius:50%;background:#8A847C;animation:ps-pisca 1s infinite}
-.msg-d.escreve i:nth-child(2){animation-delay:.15s} .msg-d.escreve i:nth-child(3){animation-delay:.3s}
-@keyframes ps-pisca{0%,100%{opacity:.35}50%{opacity:1}}
-.msg-r{justify-self:end;max-width:32rem;padding:.75rem 1.1rem;border-radius:1.2rem .3rem 1.2rem 1.2rem;background:var(--carvao);color:var(--osso);
-  line-height:1.45;animation:ps-sobe .3s var(--sair) both}
-.diag-resposta{display:grid;justify-items:end;gap:.6rem;margin-top:1.25rem}
-.diag-resposta form{display:grid;justify-items:end;gap:.55rem;width:min(100%,30rem)}
-.rotulo-d{font:700 .75rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2)}
-.campo{display:flex;align-items:center;gap:.4rem;width:100%;padding:.3rem .3rem .3rem 1.2rem;border:2px solid #D3CBBF;border-radius:999px;background:#fff;transition:border-color .2s}
-.campo:focus-within{border-color:var(--laranja-tinta)}
-.campo input{flex:1;min-width:0;min-height:2.75rem;border:0;background:transparent;outline:none;font:400 1.0625rem/1.3 var(--texto);color:var(--carvao)}
-.campo input::placeholder{color:#6B665F}
-.campo button{flex:none;width:2.75rem;height:2.75rem;display:grid;place-items:center;border:0;border-radius:50%;background:var(--laranja);color:var(--carvao);cursor:pointer}
-.campo button svg{width:1.15rem;height:1.15rem;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
-.opcoes{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.5rem;max-width:40rem}
-.opcoes button{min-height:2.75rem;padding:.55rem 1.05rem;border:2px solid var(--carvao);border-radius:999px;background:transparent;color:var(--carvao);
-  font:600 .9375rem/1.25 var(--texto);text-align:left;cursor:pointer;transition:background-color .15s,color .15s}
-.opcoes button:hover{background:rgba(20,18,16,.06)}
-.opcoes button[aria-pressed="true"]{background:var(--carvao);color:var(--osso)}
-.erro-d{font-size:.875rem;color:#9B2C1C}
-.diag-acoes{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.6rem}
-.botao.contorno-e{border-color:var(--carvao);color:var(--carvao);background:transparent}
-.diag-pe{padding:.85rem max(var(--gutter),env(safe-area-inset-left)) calc(.85rem + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(20,18,16,.12);
-  text-align:center;font-size:.8125rem;line-height:1.45;color:var(--tinta-2)}
-.diag-pe a{color:var(--carvao)}
-@media (max-width:30rem){.diag-nome{display:none}}
+.diag-barra{height:3px;background:rgba(239,234,227,.12)}
+.diag-barra i{display:block;height:100%;width:0;background:var(--laranja);transition:width .5s var(--sair)}
+.diag-corpo{overflow-y:auto;overscroll-behavior:contain;display:grid;align-content:start;gap:2rem;
+  padding:clamp(1.75rem,6vw,4rem) max(var(--gutter),env(safe-area-inset-left)) 2.5rem}
+.diag-palco{width:100%;max-width:44rem;margin-inline:auto}
+.diag-palco > *{animation:ps-sobe .45s var(--sair) both}
+.diag-meta{font:700 .75rem/1.3 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--laranja)}
+.diag-q{margin-top:.9rem;font:400 clamp(1.7rem,6.4vw,2.9rem)/1.02 var(--display);text-transform:uppercase;text-wrap:balance}
+.diag-txt{margin-top:1rem;max-width:40ch;color:var(--osso-2);font-size:1.0625rem}
+.diag-campo{margin-top:2rem}
+.diag-campo label{display:block;font:700 .75rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--osso-2)}
+.diag-campo input{display:block;width:100%;margin-top:.6rem;min-height:3.25rem;padding:.4rem 0;border:0;border-bottom:2px solid rgba(239,234,227,.45);
+  background:transparent;color:var(--osso);font:400 clamp(1.3rem,4.6vw,1.75rem)/1.3 var(--texto);border-radius:0;outline:none;transition:border-color .2s}
+.diag-campo input:focus{border-bottom-color:var(--laranja)}
+.diag-campo input::placeholder{color:#8F8A83}
+.diag-ops{margin-top:1.75rem;display:grid;gap:.6rem}
+.diag-op{display:flex;align-items:center;gap:.85rem;min-height:3.4rem;padding:.65rem 1rem;border:1px solid var(--linha-e);border-radius:.9rem;
+  background:var(--carvao-2);color:var(--osso);font:600 1rem/1.3 var(--texto);text-align:left;cursor:pointer;transition:border-color .15s,background-color .15s,transform .15s var(--sair)}
+.diag-op:hover{border-color:var(--contorno)}
+.diag-op:active{transform:scale(.99)}
+.diag-op kbd{flex:none;width:1.75rem;height:1.75rem;display:grid;place-items:center;border-radius:.4rem;border:1px solid rgba(239,234,227,.35);
+  font:700 .75rem/1 var(--mono);color:var(--osso-2)}
+.diag-op[aria-pressed="true"]{border-color:var(--laranja);background:rgba(232,98,44,.14)}
+.diag-op[aria-pressed="true"] kbd{background:var(--laranja);border-color:var(--laranja);color:var(--carvao)}
+.diag-erro{margin-top:.75rem;font-size:.9375rem;color:#F2A27E}
+.diag-acoes{margin-top:2rem;display:flex;flex-wrap:wrap;align-items:center;gap:.75rem}
+.diag-acoes .botao{min-height:3.25rem}
+/* a ficha: papel pontilhado, como os esquemas; cada resposta acende a sua linha */
+.diag-ficha{display:none;width:100%;max-width:44rem;margin-inline:auto;padding:1.25rem 1.25rem 1rem;border-radius:1rem;color:#1D2330;
+  background:#FAF8F4 radial-gradient(rgba(20,18,16,.12) 1px,transparent 1.2px) 0 0/12px 12px;box-shadow:0 1.5rem 3rem -1.5rem rgba(0,0,0,.8)}
+.ficha-t{display:flex;align-items:center;gap:.6rem;font:700 .75rem/1.2 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#1D2330}
+.diag-ficha dl{margin:1rem 0 0;display:grid}
+.diag-ficha dl div{display:grid;grid-template-columns:7.5rem 1fr;gap:.75rem;padding:.55rem 0;border-top:1px dashed #CFC8BC}
+.diag-ficha dt{font:700 .75rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5F5A52}
+.diag-ficha dd{margin:0;font-size:.9375rem;line-height:1.45;color:#5F5A52;overflow-wrap:anywhere}
+.diag-ficha .ok dd{color:#1D2330;font-weight:600}
+.diag-ficha .ok dt{color:#A64923}
+.ficha-pe{margin-top:.75rem;padding-top:.7rem;border-top:1px solid #E7E2D9;font:400 .75rem/1.4 var(--mono);color:#5F5A52}
+dialog.diag.fim .diag-ficha{display:block}
+.diag-pe{padding:.8rem max(var(--gutter),env(safe-area-inset-left)) calc(.8rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--linha-e);
+  text-align:center;font-size:.8125rem;line-height:1.45;color:var(--osso-2)}
+.diag-pe a{color:var(--osso)}
+@media (min-width:40rem){.diag-ops{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:64rem){
+  .diag-corpo{grid-template-columns:minmax(0,1fr) 22rem;gap:3.5rem;max-width:76rem;width:100%;margin-inline:auto;align-content:center}
+  .diag-palco{margin-inline:0}
+  .diag-ficha{display:block;position:sticky;top:0}
+}
+@media (max-width:30rem){.diag-marca span{display:none}}
 /* os cinco passos: o mesmo .passo dos sites, com o «quando» por cima */
 .passo-q{display:inline-block;margin-bottom:.55rem;font:700 .75rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--laranja-tinta)}
 /* o que é a IA: as cinco frases de sempre, à vista */
@@ -635,8 +660,14 @@ dialog.diag::backdrop{background:rgba(0,0,0,.6)}
   .autos{margin-top:0}
   .passos-5{grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5rem}
   .heroi{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem}
-  .heroi-3d{height:34rem;margin-inline:-2rem calc(max(var(--gutter),env(safe-area-inset-right)) * -1)}
-  .heroi-3d .plano{--esc:.68}
+  .heroi-bg::after{background:linear-gradient(90deg,var(--carvao) 0%,rgba(20,18,16,.93) 28%,rgba(20,18,16,.5) 55%,rgba(20,18,16,.08) 85%),
+    linear-gradient(0deg,var(--carvao) 0%,transparent 25%)}
+  .heroi{min-height:min(46rem,calc(100vh - 8rem));display:flex;flex-direction:column;justify-content:center}
+  .heroi-img{object-position:center}
+  .c-passos{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+  .c-passos li{grid-template-columns:1fr;align-items:start;align-content:start}
+  .c-passos li::before{grid-row:auto;margin-bottom:.7rem}
+  .cuidado-c .compromissos{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fundo-3d .plano{--esc:1.35}
 }
 @media (prefers-reduced-motion:reduce){
@@ -644,7 +675,7 @@ dialog.diag::backdrop{background:rgba(0,0,0,.6)}
   .js .rv{opacity:1!important;transform:none!important;transition:none!important}
   .barra,.botao,.q,.ex,.vezi svg,.ver-esquema{transition:none}
   dialog.esquema[open]{animation:none}
-  .heroi *,.heroi *::before,.placa,.msg-d,.msg-r,.msg-d.escreve i{animation:none!important}
+  .heroi *,.heroi-img,.placa,.diag-palco > *{animation:none!important}
   .link-seta svg,.numeros a,.fonte{transition:none}
 }
 </style>

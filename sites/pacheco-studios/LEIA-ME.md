@@ -34,10 +34,21 @@ decisões: `research/consultoria-ia-referencias.md` e PLAYBOOK, secção 17.
    - Cada cartão tem: o selo «Onde podes chegar», 3 números, o problema, o que fizeram e «No teu negócio, isto é» (liga à nossa solução).
    - No fim fica «Pacheco Studios · o próximo caso», com «Quero este resultado» no WhatsApp, e «Como um caso destes passa a ser teu».
 
-   Na Consultoria:
-   - **Herói:** frase da marca a dois tons, com o mosaico 3D dos passos.
-   - **«Conhece-nos»:** abre o **diagnóstico em conversa** (8 perguntas). No fim envia tudo pelo WhatsApp; sem JavaScript, vai direto ao WhatsApp.
-   - **Secções:** a consultoria em 5 passos, depois o **veredito** de um caso (cartão sobre fundo 3D, liga ao cartão do caso).
+   Na Consultoria (versão de 03/10):
+   - **Herói:** a frase da marca a dois tons, sobre a imagem `media/heroi.webp`. Imagem gerada no Higgsfield (gpt_image_2_5, 16:9): placas escuras a flutuar com fios de luz laranja e o lado esquerdo vazio para o texto. Vai embutida na página, para abrir também fora do Netlify. Se faltar, o herói fica só escuro.
+   - **Botões:** «Conhece-nos» abre o diagnóstico; «Ver soluções» vai às Soluções. Por baixo: «Adere hoje aos sistemas que a IA te pode entregar…».
+   - **Logótipo:** o «P» no anel dourado, no cabeçalho, em vez do ponto laranja.
+   - **Diagnóstico:**
+     - Uma pergunta por ecrã, em grande. Opções com letras (A, B, C…, também pelo teclado) e os botões Anterior e Seguinte.
+     - A **ficha do teu negócio**, em papel pontilhado, preenche-se ao lado (no telemóvel, no fim).
+     - No fim, «Enviar pelo WhatsApp» com a ficha inteira. Nada é guardado.
+   - **Secções a seguir ao herói:**
+     - «O que faz uma consultoria de IA»: uma caixa com 3 passos.
+     - O veredito de um caso sobre o mosaico 3D.
+     - O que é a IA.
+     - Os números dos casos.
+     - A responsabilidade, com 4 compromissos.
+   - **Saíram:** os 5 passos, «Nunca inventamos números», «Sais quando quiseres» e «Quem está por trás».
 
 3. **Soluções** (antes «Automações»; EN «Solutions», RO «Soluții») — segue a direção «mostrar a máquina» (PLAYBOOK, secção 16). As cinco frases «O que é, afinal, a IA
    por trás?» passaram para a Consultoria. Aqui ficam as 8 automações. Cada cartão mostra o título e a

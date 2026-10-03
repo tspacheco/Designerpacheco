@@ -334,7 +334,12 @@ Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que v
   - Projeções aparecem como projeções.
   - O 1.º caso nosso (piloto com dia 0 e dia 30) entra em primeiro lugar.
 - **Diagnóstico em conversa (03/10):** «Conhece-nos» abre 8 perguntas no estilo chat (nome, negócio, tipo, cidade, objetivo, onde se perde, canais, contacto). No fim, a mensagem vai para o WhatsApp do Tomás; nada é guardado no site.
-- **Herói:** frase da marca em minúsculas a dois tons, com o mosaico 3D dos passos. Na Consultoria, a 3.ª secção é um veredito de caso em cartão sobre fundo 3D.
+- **Herói (03/10):** frase da marca a dois tons sobre a imagem gerada no Higgsfield (`media/heroi.webp`), com o logótipo «P» no cabeçalho. Por baixo: «O que faz uma consultoria de IA» (caixa com 3 passos), o veredito de um caso sobre fundo 3D, o que é a IA, os números dos casos e 4 compromissos. Sem «Quem está por trás».
+- **Diagnóstico com cara própria (não copiar o do Viver de IA):** uma pergunta por ecrã, opções A–H e a «ficha do teu negócio» a preencher-se ao lado.
+- **Higgsfield nesta sessão:** o CDN de resultados (cloudfront) está bloqueado no proxy local. Receita que funciona:
+  1. Na sandbox, converter para WebP.
+  2. Passar o ficheiro em base64 em blocos de 12 000 caracteres.
+  3. Juntar os blocos localmente e confirmar o MD5.
 - **Site pachecost.com (PT · EN · RO)** em `sites/pacheco-studios/`, trazido do branch `cool-sagan` a 02/10. Separadores:
   - **Consultoria** (entrada);
   - **Casos**;

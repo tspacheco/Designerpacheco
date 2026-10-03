@@ -355,6 +355,7 @@ const fs = require('fs');
     await p.goto(v.url);
     await p.click('.heroi [data-diagnostico]');
     const g = JSON.parse(fs.readFileSync(path.join(__dirname, 'conteudo', k + '.json'), 'utf8')).diagnostico;
+    await p.click('#diag-comecar');
     const respostas = [];
     for (const q of g.perguntas) {
       if (q.tipo === 'texto' || q.tipo === 'tel') {
@@ -362,20 +363,20 @@ const fs = require('fs');
         const t = q.tipo === 'tel' ? '+351 900 000 000' : `Teste ${q.id}`;
         await p.fill('#diag-in', t); await p.press('#diag-in', 'Enter'); respostas.push(t);
       } else {
-        await p.waitForSelector('.opcoes button', { timeout: 8000 });
-        await p.click('.opcoes button'); respostas.push(q.opcoes[0]);
-        if (q.tipo === 'multi') await p.click('.diag-acoes .botao');
+        await p.waitForSelector('.diag-op', { timeout: 8000 });
+        await p.click('.diag-op'); respostas.push(q.opcoes[0]);
+        if (q.tipo === 'multi') await p.click('#diag-seg');
       }
-      await p.waitForTimeout(100);
+      await p.waitForTimeout(350);
     }
-    await p.waitForSelector('.diag-acoes a[href^="https://wa.me/"]', { timeout: 10000 });
-    const fim = await p.evaluate(() => ({ href: decodeURIComponent(document.querySelector('.diag-acoes a').href),
+    await p.waitForSelector('#diag-enviar', { timeout: 10000 });
+    const fim = await p.evaluate(() => ({ href: decodeURIComponent(document.getElementById('diag-enviar').href),
       n: document.getElementById('diag-n').textContent, aberto: document.getElementById('diagnostico').open }));
     const falta = respostas.filter(t => !fim.href.includes(t));
     await p.keyboard.press('Escape');
     const fechou = await p.evaluate(() => !document.getElementById('diagnostico').open);
-    if (falta.length || fim.n !== String(g.perguntas.length) || !fim.aberto || !fechou) mal(`${k}, diagnóstico: ${JSON.stringify({ falta, fim, fechou })}`);
-    else bem(`${k}: diagnóstico em conversa, ${g.perguntas.length} respostas, todas na mensagem para o WhatsApp; Esc fecha`);
+    if (falta.length || +fim.n !== g.perguntas.length || !fim.aberto || !fechou) mal(`${k}, diagnóstico: ${JSON.stringify({ falta, fim, fechou })}`);
+    else bem(`${k}: diagnóstico com a ficha, ${g.perguntas.length} respostas, todas na mensagem para o WhatsApp; Esc fecha`);
   }
 
   // anúncio de sites: entra nos Sites; sem utm, entra na Consultoria

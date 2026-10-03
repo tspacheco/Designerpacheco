@@ -486,15 +486,23 @@ def mosaico(rotulos, centro, cls):
             f'<span class="placa centro"><span><i class="ponto"></i>{e(centro)}</span></span></div></div>')
 
 
+def imagem_heroi():
+    """Fundo do herói (gerado no Higgsfield, ver LEIA-ME): embutido para abrir também fora do Netlify."""
+    p = os.path.join(AQUI, "media", "heroi.webp")
+    if not os.path.exists(p):
+        return ""
+    b64 = base64.b64encode(open(p, "rb").read()).decode()
+    return f'<img class="heroi-img" src="data:image/webp;base64,{b64}" alt="" aria-hidden="true" decoding="async">'
+
+
 def vista_consultanta(c, casos, lang, wa):
-    """A porta de entrada: o herói (a frase da marca, «Conhece-nos» abre o diagnóstico), a consultoria em cinco passos,
-    o veredito de um caso real sobre o mosaico 3D, o que é a IA, três números de casos, os compromissos e quem faz."""
+    """A porta de entrada: o herói sobre a imagem (a frase da marca; «Conhece-nos» abre o diagnóstico), o que faz uma
+    consultoria de IA (3 passos), o veredito de um caso real sobre o mosaico 3D, o que é a IA, três números de casos
+    e os compromissos."""
     k = c["consultanta"]
     tx = textos_casos(c, casos, lang)
-    factos = "".join(f"<li>{e(f)}</li>" for f in k["factos"])
-    m = k["metodo"]
-    passos = "\n".join(f'<li class="passo rv" style="--i:{i}"><span class="passo-q">{e(p["q"])}</span><h3>{e(p["t"])}</h3><p>{e(p["d"])}</p></li>'
-                       for i, p in enumerate(m["pasi"]))
+    m = k["consultoria"]
+    passos = "\n".join(f'<li class="rv" style="--i:{i}"><h4>{e(p["t"])}</h4><p>{e(p["d"])}</p></li>' for i, p in enumerate(m["pasi"]))
     vd = k["veredito"]
     if vd["caso"] not in {x["id"] for x in tx}:
         raise SystemExit(f"conteudo/{lang}.json: o veredito aponta para o caso «{vd['caso']}», que não existe")
@@ -510,34 +518,36 @@ def vista_consultanta(c, casos, lang, wa):
     cu = k["cuidado"]
     compromissos = "\n".join(f'<li class="rv" style="--i:{i}"><h3>{e(x["t"])}</h3><p>{e(x["d"])}</p></li>'
                              for i, x in enumerate(cu["itens"]))
-    q = k["quem"]
     return f"""<section id="consultanta" class="vista" aria-labelledby="t-consultanta">
-  <div class="envolver heroi">
-    <div class="heroi-txt">
+  <div class="heroi-bg">
+    {imagem_heroi()}
+    <div class="envolver heroi">
       <p class="eyebrow heroi-e">{e(k["eyebrow"])}</p>
       <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">{e(k["pre"])}</span> <span class="heroi-grande">{inteiras(k["titlu"])}</span></h2>
       <p class="heroi-passo">{e(k["passo"])}</p>
       <p class="lead heroi-lead">{e(k["lead"])}</p>
       <div class="heroi-acoes">
         <a class="botao primario grande" href="{e(wa)}" data-diagnostico>{e(k["conhece"])}{I["seta"]}</a>
-        <a class="botao contorno grande" href="#cazuri">{e(k["ver_casos"])}</a>
+        <a class="botao contorno grande" href="#automatizari">{e(k["ver_solucoes"])}</a>
       </div>
-      <ul class="factos">{factos}</ul>
+      <p class="heroi-adere">{e(k["adere"])}</p>
     </div>
-    {mosaico(k["tiles"], "Pacheco Studios", "heroi-3d")}
   </div>
   <div class="claro">
-    <div class="envolver seccao">
+    <div class="envolver seccao consultoria">
       <p class="eyebrow">{e(m["eyebrow"])}</p>
       <h2 class="afirmacao">{e(m["titlu"])}</h2>
       <p class="lead">{e(m["intro"])}</p>
-      <ol class="passos passos-5">
+      <div class="caixa-c">
+        <h3>{e(m["caixa_t"])}</h3>
+        <ol class="c-passos">
 {passos}
-      </ol>
+        </ol>
+      </div>
     </div>
   </div>
   <div class="veredito seccao">
-    {mosaico(k["tiles"], "Pacheco Studios", "fundo-3d")}
+    {mosaico(["", "", "", ""], "Pacheco Studios", "fundo-3d")}
     <div class="envolver">
       <p class="eyebrow">{e(vd["eyebrow"])}</p>
       <h2 class="so-leitor">{e(vd["leitor"])}</h2>
@@ -574,37 +584,41 @@ def vista_consultanta(c, casos, lang, wa):
 {compromissos}
     </ul>
   </div>
-  <div class="claro">
-    <div class="envolver seccao quem">
-      <p class="eyebrow">{e(q["eyebrow"])}</p>
-      <h2 class="afirmacao">{e(q["titlu"])}</h2>
-      <p class="quem-texto">{e(q["texto"])}</p>
-      <p class="quem-assina">{e(q["assina"])}</p>
-    </div>
-  </div>
 </section>"""
 
 
+# o logótipo da Pacheco Studios (o «P» no anel dourado de logo.svg), em traço próprio para não depender de fontes
+LOGO = ('<svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#0D0B08"/>'
+        '<circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/>'
+        '<circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/>'
+        '<path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>')
+
+
 def diagnostico(c, url_priv):
-    """O diagnóstico em conversa: 8 perguntas, uma de cada vez, com o contador. Nada é guardado:
-    no fim, as respostas vão para o WhatsApp do Tomás numa mensagem que o próprio visitante envia."""
+    """O diagnóstico com a cara da Pacheco Studios: uma pergunta por ecrã, em grande, e ao lado a ficha do negócio que
+    se vai preenchendo. Nada é guardado: no fim, a ficha vai para o WhatsApp do Tomás numa mensagem que o visitante envia."""
     g = c["diagnostico"]
     n = len(g["perguntas"])
-    pontos = "".join("<li></li>" for _ in range(n))
     priv = e(g["privacidade"]).replace("{link}", f'<a href="{e(url_priv)}">{e(g["privacidade_link"])}</a>')
-    dados = json.dumps({k: g[k] for k in ("abertura", "perguntas", "continuar", "enviar_resp", "obrigatorio", "escolhe", "fim",
-                                          "enviar", "recomecar", "wa_intro")}, ensure_ascii=False).replace("</", "<\\/")
+    linhas = "".join(f'<div data-id="{e(q["id"])}"><dt>{e(q["wa"])}</dt><dd>—</dd></div>' for q in g["perguntas"])
+    dados = json.dumps({k: g[k] for k in ("abertura", "perguntas", "continuar", "obrigatorio", "escolhe", "fim", "enviar",
+                                          "recomecar", "wa_intro", "comecar", "anterior", "seguinte", "pergunta", "meta",
+                                          "intro_t")}, ensure_ascii=False).replace("</", "<\\/")
     return f"""<dialog class="diag" id="diagnostico" aria-labelledby="diag-t">
   <div class="diag-topo">
-    <p class="marca"><span class="ponto" aria-hidden="true"></span><span class="diag-nome">Pacheco Studios</span></p>
-    <ol class="diag-prog" aria-hidden="true">{pontos}</ol>
-    <p class="diag-cont"><b id="diag-n">0</b> <span>{e(g["de"])} {n}</span></p>
+    <p class="diag-marca">{LOGO}<span>{e(g["titulo"])}</span></p>
+    <p class="diag-cont" aria-hidden="true"><b id="diag-n">00</b><span>/{n:02d}</span></p>
     <button class="diag-x" type="button" data-fechar-diag aria-label="{e(g["fechar"])}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
+  <div class="diag-barra" aria-hidden="true"><i id="diag-barra"></i></div>
   <h2 id="diag-t" class="so-leitor">{e(g["titulo"])}</h2>
   <div class="diag-corpo">
-    <div class="diag-conversa" id="diag-conversa" aria-live="polite"></div>
-    <div class="diag-resposta" id="diag-resposta"></div>
+    <div class="diag-palco" id="diag-palco" aria-live="polite"></div>
+    <aside class="diag-ficha" aria-label="{e(g["ficha_t"])}">
+      <p class="ficha-t"><span class="ponto" aria-hidden="true"></span>{e(g["ficha_t"])}</p>
+      <dl id="diag-ficha">{linhas}</dl>
+      <p class="ficha-pe">{e(g["ficha_pe"])}</p>
+    </aside>
   </div>
   <p class="diag-pe">{priv}</p>
   <script type="application/json" id="diag-dados">{dados}</script>
@@ -1053,7 +1067,7 @@ def main():
             "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, digitos),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "RODAPE": rodape(c, lang), "INTRO": intro(c),
+            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "RODAPE": rodape(c, lang), "INTRO": intro(c),
             "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
             "CONSENT_ROTULO": e(k["rotulo"]), "CONSENT_TEXTO": e(k["texto"]), "CONSENT_SIM": e(k["sim"]),
             "CONSENT_NAO": e(k["nao"]), "CONSENT_LINK": e(k["link"]), "URL_PRIVACIDADE": e(cfg["privacidade"]),
