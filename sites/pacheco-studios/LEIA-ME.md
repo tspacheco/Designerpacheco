@@ -28,6 +28,11 @@ decisões: `research/consultoria-ia-referencias.md` e PLAYBOOK, secção 17.
    diagnóstico escrito no mesmo dia → solução desenhada → piloto de 30 dias → acompanhamento); «O que é, afinal, a
    IA por trás?» (as cinco frases de sempre, agora à vista, saíram das Automações); três números de casos reais
    (cada um leva ao caso); os compromissos; «Falas sempre com a mesma pessoa» (o Tomás).
+**Atualização de 03/10, à tarde:**
+- Cada caso mostra só o depoimento (`depo`) e os 3 números.
+- Saíram o nome, o tipo de negócio, o problema e a solução, a caixa «próximo caso», os chips «Caso real» das Soluções e o bloco «Sites: como fazemos» (fazemos antes de pagares).
+- As Soluções abrem só com uma frase.
+
 2. **Casos** (EN «Cases», RO «Cazuri», `#cazuri`): **resultados reais de outros negócios, mostrados como «onde podes chegar»**. Decisão do Tomás de 03/10:
    - **Sem qualquer nome ou ligação à fonte no site.** As fontes ficam em `conteudo/casos.json` (interno, não vai para o zip).
    - O texto diz que os resultados já aconteceram noutros negócios. Nunca diz que são clientes nossos.

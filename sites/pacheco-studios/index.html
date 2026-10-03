@@ -614,6 +614,10 @@ dialog.diag.fim .diag-ficha{display:block}
 .caso{display:grid;align-content:start;gap:.95rem;padding:1.25rem 1.15rem 1.15rem;border-radius:1rem;background:var(--carvao-2);
   border:1px solid var(--linha-e);scroll-margin-top:calc(var(--tabs) + .75rem)}
 .caso:target{border-color:var(--laranja)}
+.caso .aspas{position:static;width:2.1rem;fill:rgba(232,98,44,.6)}
+.caso-depo{margin:0}
+.caso-depo p{font:400 clamp(1.0625rem,3.6vw,1.2rem)/1.5 var(--texto);color:var(--osso);text-wrap:pretty}
+.caso-depo + .caso-num{padding-top:1rem;border-top:1px solid var(--linha-e)}
 .caso-tag{font:700 .75rem/1.35 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--osso-2)}
 .selo{justify-self:start;margin-top:-.35rem;padding:.35rem .6rem;border:1px dashed var(--contorno);border-radius:.4rem;
   font:400 .75rem/1.35 var(--mono);color:var(--osso)}
@@ -735,8 +739,8 @@ dialog.diag.fim .diag-ficha{display:block}
       <div class="cab">
         <p class="eyebrow">Soluções</p>
         <h2 id="t-automatizari" class="afirmacao">O que podemos pôr a trabalhar no teu negócio.</h2>
-        <p class="lead">Oito soluções que já sabemos desenhar e montar. No diagnóstico escolhemos a que mais aproxima o teu objetivo. Começa-se por uma.</p>
-        <p class="lead intro-2">Cada uma está desenhada aqui tal como se monta: passo a passo, com as regras dela e com os momentos em que entra uma pessoa. Não prometemos. Mostramos.</p>
+        <p class="lead">Estes são alguns dos sistemas mais eficazes e mais comuns para resolver a tua dor de hoje.</p>
+        
       </div>
       <div class="autos">
 <details class="auto rv" name="auto" id="a-receptionist" style="--i:0">
@@ -748,7 +752,6 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="corpo">
     <a class="ver-esquema" href="#esquema-receptionist" data-esquema="esquema-receptionist"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Nenhum cliente sem resposta, dia e noite. Tu só entras quando é preciso uma pessoa.</div>
-    <div class="caso-ref"><h4 class="rotulo">Caso real</h4><div class="chips"><a class="chip" href="#caso-alphaview">Centro Médico Alphaview</a> <a class="chip" href="#caso-carioca">Carioca Jeans</a> <a class="chip" href="#caso-chopp">Chopp Fácil</a> <a class="chip" href="#caso-vize">Vize Imagem Masculina</a></div></div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Não inventa preços: só diz o que está na lista aprovada.</li>
 <li>Não sabe? Não responde. Passa a uma pessoa.</li>
@@ -772,7 +775,6 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="corpo">
     <a class="ver-esquema" href="#esquema-programari" data-esquema="esquema-programari"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>A agenda enche-se sozinha e os lugares libertados não ficam vazios.</div>
-    <div class="caso-ref"><h4 class="rotulo">Caso real</h4><div class="chips"><a class="chip" href="#caso-alphaview">Centro Médico Alphaview</a> <a class="chip" href="#caso-vize">Vize Imagem Masculina</a></div></div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Não muda nem cancela nada sem o cliente carregar no botão.</li>
 <li>Não promete horas que não estão livres na tua agenda.</li>
@@ -819,7 +821,6 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="corpo">
     <a class="ver-esquema" href="#esquema-lead" data-esquema="esquema-lead"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Nenhum pedido esquecido. Quem responde primeiro ganha o cliente.</div>
-    <div class="caso-ref"><h4 class="rotulo">Caso real</h4><div class="chips"><a class="chip" href="#caso-omega">OMEGA Radiologia</a> <a class="chip" href="#caso-carioca">Carioca Jeans</a> <a class="chip" href="#caso-chopp">Chopp Fácil</a></div></div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Três mensagens, no máximo. Depois cala-se.</li>
 <li>Não promete preços nem prazos: dizes tu.</li>
@@ -865,7 +866,6 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="corpo">
     <a class="ver-esquema" href="#esquema-revenire" data-esquema="esquema-revenire"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Ver o esquema</b><small>O desenho completo, passo a passo.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">O que ganhas</h4>Os clientes antigos voltam sem pagares anúncios para os trazer de volta.</div>
-    <div class="caso-ref"><h4 class="rotulo">Caso real</h4><div class="chips"><a class="chip" href="#caso-sms">Instituto SMS</a></div></div>
     <div><h4 class="rotulo">As regras dela</h4><ul class="reguli">
 <li>Só com consentimento. Sem ele, não envia.</li>
 <li>Uma mensagem aos 60 dias, não mais vezes.</li>
@@ -1140,97 +1140,32 @@ dialog.diag.fim .diag-ficha{display:block}
     <p class="eyebrow">Casos reais</p>
     <h2 id="t-cazuri" class="afirmacao">Resultados reais. O próximo pode ser o teu.</h2>
     <p class="lead">Estes resultados já aconteceram em negócios como o teu. O nosso trabalho é transformá-los nos resultados do teu negócio: o mesmo método, desenhado para ti e medido a partir do teu ponto de partida.</p>
-    <p class="aviso">Casos públicos, com o nome de cada empresa e os números que cada uma declarou. Cada negócio parte de um sítio diferente: por isso medimos o teu ponto de partida antes de começar.</p>
+    <p class="aviso">Depoimentos e números publicados pelas próprias empresas. Cada negócio parte de um sítio diferente: por isso medimos o teu ponto de partida antes de começar.</p>
     <ul class="casos">
 <li class="caso rv" id="caso-alphaview" style="--i:0">
-  <p class="caso-tag">Clínica médica · Brasil</p>
-  <p class="selo">Onde podes chegar</p>
-  <h3 class="caso-empresa">Centro Médico Alphaview</h3>
-  <p class="caso-titulo">A receção quase toda automática, e mais marcações sem contratar ninguém.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>Hoje conseguimos automatizar até 87% do atendimento e ainda aumentar nossos agendamentos, sem aumentar custo.</p></blockquote>
   <ul class="caso-num"><li><b>80–87%</b><span>do atendimento da receção automatizado</span></li><li><b>+15–20</b><span>marcações extra por dia</span></li><li><b>20 min → quase 0</b><span>de espera na receção</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">O problema</h4><p>Espera de até 20 minutos na receção, muitas faltas às consultas e uma equipa presa a tarefas repetitivas.</p></div>
-    <div><h4 class="rotulo">O que fizeram</h4><p>Confirmação das consultas por WhatsApp, com reforço por voz. Enquanto o paciente espera, a IA olha para o histórico dele e propõe-lhe a próxima marcação no WhatsApp.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-programari">Marcações</a> <a class="chip" href="#a-receptionist">Rececionista IA</a></div></div>
-  </div>
 </li>
 <li class="caso rv" id="caso-omega" style="--i:1">
-  <p class="caso-tag">Clínica de exames · Brasil</p>
-  <p class="selo">Onde podes chegar</p>
-  <h3 class="caso-empresa">OMEGA Radiologia</h3>
-  <p class="caso-titulo">Os pedidos de preço que não marcavam passaram a ter uma segunda conversa.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>Gera muito dado, você tem mais previsibilidade e consegue medir quem está performando bem, mal, por que está performando bem e por que está performando mal.</p></blockquote>
   <ul class="caso-num"><li><b>R$ 40 mil</b><span>em 3,5 meses, só de quem não tinha marcado</span></li><li><b>+10%</b><span>na receita mensal, com o seguimento automático</span></li><li><b>+7,5%</b><span>nas marcações, com o site novo</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">O problema</h4><p>Os anúncios traziam chamadas todos os dias, mas muita gente pedia o preço e não marcava. Ninguém lhes voltava a falar.</p></div>
-    <div><h4 class="rotulo">O que fizeram</h4><p>Quem pedia orçamento e não marcava recebia um seguimento automático no WhatsApp. Ao mesmo tempo, um site novo, feito para marcar.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-lead">Resposta rápida</a> <a class="chip" href="#proiecte">Um site novo</a></div></div>
-  </div>
 </li>
 <li class="caso rv" id="caso-carioca" style="--i:0">
-  <p class="caso-tag">Loja de roupa · Brasil</p>
-  <p class="selo">Onde podes chegar</p>
-  <h3 class="caso-empresa">Carioca Jeans</h3>
-  <p class="caso-titulo">Mais de 300 contactos por dia, respondidos na hora, a qualquer hora.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>Hoje a IA responde 24 horas por dia. Ela não precisa parar, não precisa almoçar e consegue atender muito mais rápido.</p></blockquote>
   <ul class="caso-num"><li><b>24 h</b><span>de atendimento, todos os dias</span></li><li><b>300+</b><span>contactos por dia no WhatsApp</span></li><li><b>7 dias</b><span>até aos primeiros ganhos</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">O problema</h4><p>Quatro pessoas a responder à mão no WhatsApp, a mandar fotos e tamanhos um a um, para mais de 300 contactos por dia.</p></div>
-    <div><h4 class="rotulo">O que fizeram</h4><p>Um assistente com IA no WhatsApp oficial responde na hora e leva o cliente a um catálogo onde escolhe o modelo e o tamanho. O vendedor só fecha a venda.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-receptionist">Rececionista IA</a> <a class="chip" href="#a-lead">Resposta rápida</a></div></div>
-  </div>
 </li>
 <li class="caso rv" id="caso-chopp" style="--i:1">
-  <p class="caso-tag">Bebidas para eventos · Brasil</p>
-  <p class="selo">Onde podes chegar</p>
-  <h3 class="caso-empresa">Chopp Fácil</h3>
-  <p class="caso-titulo">Na época alta, dez vezes mais orçamentos respondidos por dia.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>O mercado é altamente sazonal… algo humanamente impossível de atender manualmente. A automação do atendimento foi o fator-chave que viabilizou essa nova fase de expansão.</p></blockquote>
   <ul class="caso-num"><li><b>50 → 500</b><span>orçamentos respondidos por dia</span></li><li><b>10×</b><span>capacidade de atendimento na época alta</span></li><li><b>100%</b><span>dos orçamentos respondidos sem esperar por uma pessoa</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">O problema</h4><p>Picos de mais de 100 pedidos por dia no WhatsApp. À mão, não dava para responder a todos e os clientes iam a outro lado.</p></div>
-    <div><h4 class="rotulo">O que fizeram</h4><p>A IA atende no WhatsApp, calcula o orçamento, sugere produtos e regista o pedido, que segue sozinho para o distribuidor mais perto.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-lead">Resposta rápida</a> <a class="chip" href="#a-receptionist">Rececionista IA</a></div></div>
-  </div>
 </li>
 <li class="caso rv" id="caso-vize" style="--i:0">
-  <p class="caso-tag">Barbearias · Brasil</p>
-  <p class="selo">Onde podes chegar</p>
-  <h3 class="caso-empresa">Vize Imagem Masculina</h3>
-  <p class="caso-titulo">Três barbearias com o mesmo atendimento, e a equipa só confirma a marcação.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>Quando a mensagem chega, ela já vem trabalhada — é só finalizar o agendamento. Isso otimiza o tempo e padroniza o atendimento.</p></blockquote>
   <ul class="caso-num"><li><b>30%</b><span>atendimento mais eficiente</span></li><li><b>3 → 1</b><span>barbearias, uma só receção</span></li><li><b>Em curso</b><span>implementação, segundo a própria empresa</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">O problema</h4><p>Cada barbearia respondia à sua maneira e a aplicação de marcações não falava com mais nada.</p></div>
-    <div><h4 class="rotulo">O que fizeram</h4><p>Uma receção com IA para as três casas: responde, sugere serviços extra e prepara a marcação. A equipa só a confirma.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-programari">Marcações</a> <a class="chip" href="#a-receptionist">Rececionista IA</a></div></div>
-  </div>
-</li>
-<li class="caso rv" id="caso-sms" style="--i:1">
-  <p class="caso-tag">Clínica · Brasil</p>
-  <p class="selo">Onde podes chegar</p>
-  <h3 class="caso-empresa">Instituto SMS</h3>
-  <p class="caso-titulo">12 000 pacientes parados na base, chamados de volta pelo WhatsApp.</p>
-  <ul class="caso-num"><li><b>12 000</b><span>pacientes na base, só 1 500 ativos por ano</span></li><li><b>40%</b><span>da capacidade da clínica estava parada</span></li><li><b>R$ 240 mil</b><span>por ano: projeção publicada, não resultado fechado</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">O problema</h4><p>Uma base enorme de pacientes que não voltavam e uma agenda com buracos, a pagar anúncios para trazer gente nova.</p></div>
-    <div><h4 class="rotulo">O que fizeram</h4><p>Mensagens personalizadas no WhatsApp oficial para os pacientes inativos, com uma cadência que não bloqueia o número e uma pessoa a entrar quando é preciso.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">No teu negócio, isto é</h4><div class="chips"><a class="chip" href="#a-revenire">Clientes que voltam</a></div></div>
-  </div>
-</li>
-<li class="caso vazio rv" id="caso-1">
-  <p class="caso-tag">Pacheco Studios · o próximo caso</p>
-  <h3 class="caso-empresa">O próximo resultado pode ser o do teu negócio.</h3>
-  <p>Medimos o ponto de partida no dia 0 e o resultado no dia 30. É assim que um destes casos passa a ser o teu.</p>
-  <a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Vi%20os%20casos%20no%20site%20e%20quero%20este%20resultado%20no%20meu%20neg%C3%B3cio%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Quero este resultado</a>
 </li>
     </ul>
   </div>
@@ -1281,7 +1216,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Sites que fizemos</h4><ul class="exemplos"><li><a class="ex neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Jasmim 2</span><span class="ex-meta">Marisqueira · Manta Rota</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (abre noutro separador)</span></a></li><li><a class="ex" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400" target="_blank" rel="noopener"><span class="ex-nome">HANAM</span><span class="ex-meta">Churrasco coreano · Quarteira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (abre noutro separador)</span></a></li><li><a class="ex" href="https://gruponaval.online" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800" target="_blank" rel="noopener"><span class="ex-nome">Grupo Naval</span><span class="ex-meta">Restaurante · Olhão</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (abre noutro separador)</span></a></li><li><a class="ex neutro" href="https://bompaladar.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Simona&#x27;s O Bom Paladar</span><span class="ex-meta">Restaurante · Almancil</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (abre noutro separador)</span></a></li><li><a class="ex neutro" href="https://ginasioclubetavira.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Ginásio Clube Tavira</span><span class="ex-meta">Restaurante do clube · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (abre noutro separador)</span></a></li><li><a class="ex neutro" href="https://sao-martinho.com/" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">São Martinho</span><span class="ex-meta">Marisqueira · Guia</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (abre noutro separador)</span></a></li></ul></div>
     <div><h4 class="rotulo">Combina com</h4><div class="chips"><a class="chip" href="#a-receptionist">Rececionista IA</a> <a class="chip" href="#a-recenzii">Avaliações Google</a> <a class="chip" href="#a-revenire">Clientes que voltam</a></div></div>
-    <div class="demo"><p>Queres ver como ficaria o teu? Fazemo-lo antes de pagares.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20neg%C3%B3cio%3A%20Restaurantes%20e%20marisqueiras"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pedir no WhatsApp</a></div>
+    <div class="demo"><p>Queres um site assim para o teu negócio?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20neg%C3%B3cio%3A%20Restaurantes%20e%20marisqueiras"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pedir no WhatsApp</a></div>
   </div>
 </details>
 <details class="setor rv" name="setor" id="s-cafes" style="--i:1">
@@ -1301,7 +1236,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Sites que fizemos</h4><ul class="exemplos"><li><a class="ex neutro" href="https://gelatariamuxagata.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Gelataria Muxagata</span><span class="ex-meta">Gelataria artesanal · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (abre noutro separador)</span></a></li></ul></div>
     <div><h4 class="rotulo">Combina com</h4><div class="chips"><a class="chip" href="#a-social">Publicações</a> <a class="chip" href="#a-recenzii">Avaliações Google</a></div></div>
-    <div class="demo"><p>Queres ver como ficaria o teu? Fazemo-lo antes de pagares.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20neg%C3%B3cio%3A%20Caf%C3%A9s%2C%20pastelarias%20e%20gelatarias"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pedir no WhatsApp</a></div>
+    <div class="demo"><p>Queres um site assim para o teu negócio?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20neg%C3%B3cio%3A%20Caf%C3%A9s%2C%20pastelarias%20e%20gelatarias"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pedir no WhatsApp</a></div>
   </div>
 </details>
 <details class="setor rv" name="setor" id="s-lojas" style="--i:2">
@@ -1322,7 +1257,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Sites que fizemos</h4><ul class="exemplos"><li><a class="ex" href="/p/toda-chic/pt.html" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400"><span class="ex-nome">Toda Chic</span><span class="ex-meta">Loja de roupa online · Portugal</span></a></li></ul></div>
     <div><h4 class="rotulo">Combina com</h4><div class="chips"><a class="chip" href="#a-lead">Resposta rápida</a> <a class="chip" href="#a-revenire">Clientes que voltam</a></div></div>
-    <div class="demo"><p>Queres ver como ficaria o teu? Fazemo-lo antes de pagares.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20neg%C3%B3cio%3A%20Lojas%20online"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pedir no WhatsApp</a></div>
+    <div class="demo"><p>Queres um site assim para o teu negócio?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20neg%C3%B3cio%3A%20Lojas%20online"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pedir no WhatsApp</a></div>
   </div>
 </details>
 <details class="setor rv" name="setor" id="s-marcacoes" style="--i:3">
@@ -1342,7 +1277,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Sites que fizemos</h4><ul class="exemplos"><li><a class="ex neutro" href="https://barbeariadocao.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Barbearia do Cão</span><span class="ex-meta">Tosquia e pet shop · Loulé</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (abre noutro separador)</span></a></li></ul></div>
     <div><h4 class="rotulo">Combina com</h4><div class="chips"><a class="chip" href="#a-programari">Marcações</a> <a class="chip" href="#a-recenzii">Avaliações Google</a></div></div>
-    <div class="demo"><p>Queres ver como ficaria o teu? Fazemo-lo antes de pagares.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20neg%C3%B3cio%3A%20Servi%C3%A7os%20com%20marca%C3%A7%C3%A3o"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pedir no WhatsApp</a></div>
+    <div class="demo"><p>Queres um site assim para o teu negócio?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Queria%20ver%20como%20ficaria%20o%20site%20do%20meu%20neg%C3%B3cio%3A%20Servi%C3%A7os%20com%20marca%C3%A7%C3%A3o"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Pedir no WhatsApp</a></div>
   </div>
 </details>
       </div>
@@ -1370,17 +1305,6 @@ dialog.diag.fim .diag-ficha{display:block}
 <li class="rv" style="--i:4"><h3>Cumpre a lei.</h3><p>O que a lei pede onde trabalhas: em Portugal, o Livro de Reclamações eletrónico; na Roménia, a informação que a ANPC exige.</p></li>
 <li class="rv" style="--i:5"><h3>Não fica abandonado.</h3><p>Com a manutenção: sempre no ar, domínio pago por nós e alterações em até uma semana.</p></li>
       </ul>
-    </div>
-  </div>
-  <div class="claro">
-    <div class="envolver seccao">
-      <p class="eyebrow">Sites: como fazemos</p>
-      <h2 class="afirmacao">Fazemos o teu site antes de pagares.</h2>
-      <ol class="passos">
-<li class="passo rv" style="--i:0"><h3>Fazemos o teu site.</h3><p>Com o nome, a morada e as avaliações que já tens no Google.</p></li>
-<li class="passo rv" style="--i:1"><h3>Mostramos-to no telemóvel.</h3><p>No teu negócio ou pelo WhatsApp, em poucos minutos.</p></li>
-<li class="passo rv" style="--i:2"><h3>Só pagas se gostares.</h3><p>Se não gostares, não pagas nada.</p></li>
-      </ol>
     </div>
   </div>
 </section>
@@ -1440,9 +1364,9 @@ dialog.diag.fim .diag-ficha{display:block}
     <p class="eyebrow">Casos reais</p>
     <h2 class="afirmacao">Já está a acontecer em negócios como o teu.</h2>
     <ul class="numeros">
-<li class="rv" style="--i:0"><a href="#caso-alphaview"><b>+15–20</b><span>marcações extra por dia</span><small>Centro Médico Alphaview · Ver o caso<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
-<li class="rv" style="--i:1"><a href="#caso-omega"><b>R$ 40 mil</b><span>em 3,5 meses, só de quem não tinha marcado</span><small>OMEGA Radiologia · Ver o caso<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
-<li class="rv" style="--i:2"><a href="#caso-chopp"><b>50 → 500</b><span>orçamentos respondidos por dia</span><small>Chopp Fácil · Ver o caso<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
+<li class="rv" style="--i:0"><a href="#caso-alphaview"><b>+15–20</b><span>marcações extra por dia</span><small>Ver o caso<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
+<li class="rv" style="--i:1"><a href="#caso-omega"><b>R$ 40 mil</b><span>em 3,5 meses, só de quem não tinha marcado</span><small>Ver o caso<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
+<li class="rv" style="--i:2"><a href="#caso-chopp"><b>50 → 500</b><span>orçamentos respondidos por dia</span><small>Ver o caso<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
     </ul>
     <p class="nota-fonte">Resultados que outros negócios já alcançaram. O nosso trabalho é levá-los para o teu.</p>
     <a class="link-seta" href="#cazuri">Ver todos os casos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>

@@ -271,8 +271,6 @@ def vista_proiecte(c, portfolio, lang, digitos):
     cu = p["cuidado"]
     compromissos = "\n".join(f'<li class="rv" style="--i:{i}"><h3>{e(x["t"])}</h3><p>{e(x["d"])}</p></li>'
                              for i, x in enumerate(cu["itens"]))
-    m = c["metoda"]
-    passos = "\n".join(f'<li class="passo rv" style="--i:{i}"><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p></li>' for i, s in enumerate(m["pasi"]))
     return f"""<section id="proiecte" class="vista" aria-labelledby="t-proiecte">
   <div class="envolver seccao">
     <p class="eyebrow">{e(p["eyebrow"])}</p>
@@ -304,15 +302,6 @@ def vista_proiecte(c, portfolio, lang, digitos):
       <ul class="compromissos">
 {compromissos}
       </ul>
-    </div>
-  </div>
-  <div class="claro">
-    <div class="envolver seccao">
-      <p class="eyebrow">{e(m["eyebrow"])}</p>
-      <h2 class="afirmacao">{e(m["titlu"])}</h2>
-      <ol class="passos">
-{passos}
-      </ol>
     </div>
   </div>
 </section>"""
@@ -392,11 +381,6 @@ def vista_automatizari(c, digitos, icones, casos, servicii):
                        for m in x["exemplu"])
         chips = " ".join(f'<a class="chip" href="#a-{e(k)}">{e(por_id[k]["scurt"])}</a>' for k in x["leaga"] if k in por_id)
         wa_demo = f"https://wa.me/351{digitos}?text={quote(lab['demo_msg'] + x['titlu'])}"
-        vistos = [k for k in casos["itens"] if x["id"] in k["aplica"]]
-        caso = ""
-        if vistos:
-            ligs = " ".join(f'<a class="chip" href="#caso-{e(k["id"])}">{e(k["empresa"])}</a>' for k in vistos)
-            caso = f'\n    <div class="caso-ref"><h4 class="rotulo">{e(lab["caso"])}</h4><div class="chips">{ligs}</div></div>'
 
         cards.append(f"""<details class="auto rv" name="auto" id="a-{e(x["id"])}" style="--i:{i}">
   <summary>
@@ -406,7 +390,7 @@ def vista_automatizari(c, digitos, icones, casos, servicii):
   </summary>
   <div class="corpo">
     {botao_esquema(x, lab)}
-    <div class="obtii"><h4 class="rotulo">{e(lab["obtii"])}</h4>{e(x["obtii"])}</div>{caso}
+    <div class="obtii"><h4 class="rotulo">{e(lab["obtii"])}</h4>{e(x["obtii"])}</div>
     <div><h4 class="rotulo">{e(lab["reguli"])}</h4><ul class="reguli">
 {reguli}
     </ul></div>
@@ -431,7 +415,7 @@ def vista_automatizari(c, digitos, icones, casos, servicii):
         <p class="eyebrow">{e(a["eyebrow"])}</p>
         <h2 id="t-automatizari" class="afirmacao">{e(a["titlu"])}</h2>
         <p class="lead">{e(a["intro"])}</p>
-        <p class="lead intro-2">{e(a["intro_extra"])}</p>
+        {f'<p class="lead intro-2">{e(a["intro_extra"])}</p>' if a.get("intro_extra") else ""}
       </div>
       <div class="autos">
 {chr(10).join(cards)}
@@ -513,7 +497,7 @@ def vista_consultanta(c, casos, lang, wa):
     dest = [x for x in tx if x.get("destaque")]
     numeros = "\n".join(
         f'<li class="rv" style="--i:{i}"><a href="#caso-{e(x["id"])}"><b>{e(x["numeros"][x["destaque_n"]]["v"])}</b>'
-        f'<span>{e(x["numeros"][x["destaque_n"]]["l"])}</span><small>{e(x["empresa"])} · {e(cs["ver"])}{I["seta"]}</small></a></li>'
+        f'<span>{e(x["numeros"][x["destaque_n"]]["l"])}</span><small>{e(cs["ver"])}{I["seta"]}</small></a></li>'
         for i, x in enumerate(dest))
     cu = k["cuidado"]
     compromissos = "\n".join(f'<li class="rv" style="--i:{i}"><h3>{e(x["t"])}</h3><p>{e(x["d"])}</p></li>'
@@ -626,37 +610,18 @@ def diagnostico(c, url_priv):
 
 
 def vista_cazuri(c, casos, lang, digitos):
-    """Casos reais de outras empresas, ditos como tal: o problema, o que fizeram, três números, a fonte (abre a página
-    original) e a solução nossa que faz o mesmo. No fim, o lugar vazio do primeiro caso nosso."""
+    """Casos: só o depoimento e os resultados (sem nome nem tipo de negócio, decisão de 03/10). As fontes ficam em
+    conteudo/casos.json, fora do site."""
     z = c["cazuri"]
     lab = z["labels"]
     por_id = {x["id"]: x for x in c["automatizari"]["itens"]}
     itens = []
     for i, x in enumerate(textos_casos(c, casos, lang)):
         nums = "".join(f'<li><b>{e(n["v"])}</b><span>{e(n["l"])}</span></li>' for n in x["numeros"])
-        chips = " ".join(f'<a class="chip" href="#proiecte">{e(lab["sites"])}</a>' if a == "sites" else
-                         f'<a class="chip" href="#a-{e(a)}">{e(por_id[a]["scurt"])}</a>' for a in x["aplica"])
         itens.append(f"""<li class="caso rv" id="caso-{e(x["id"])}" style="--i:{i % 2}">
-  <p class="caso-tag">{e(x["setor"])}</p>
-  <p class="selo">{e(lab["selo"])}</p>
-  <h3 class="caso-empresa">{e(x["empresa"])}</h3>
-  <p class="caso-titulo">{e(x["titlu"])}</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>{e(x["depo"])}</p></blockquote>
   <ul class="caso-num">{nums}</ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">{e(lab["problema"])}</h4><p>{e(x["problema"])}</p></div>
-    <div><h4 class="rotulo">{e(lab["solucao"])}</h4><p>{e(x["solucao"])}</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">{e(lab["aplica"])}</h4><div class="chips">{chips}</div></div>
-  </div>
-</li>""")
-    v = z["vazio"]
-    wa_v = f"https://wa.me/351{digitos}?text={quote(v['msg'])}"
-    itens.append(f"""<li class="caso vazio rv" id="caso-1">
-  <p class="caso-tag">{e(v["tag"])}</p>
-  <h3 class="caso-empresa">{e(v["titlu"])}</h3>
-  <p>{e(v["texto"])}</p>
-  <a class="botao secundario" href="{e(wa_v)}">{I["chat"]}{e(v["cta"])}</a>
 </li>""")
     p = z["ponte"]
     passos = "\n".join(f'<li class="passo rv" style="--i:{i}"><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p></li>' for i, s in enumerate(p["pasi"]))

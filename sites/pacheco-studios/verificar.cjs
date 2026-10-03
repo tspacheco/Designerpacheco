@@ -268,22 +268,20 @@ const fs = require('fs');
     if (heroi !== 1) mal(`${k}: o herói devia ter um botão de WhatsApp (tem ${heroi})`);
     for (const h of nums) if (!(await p.$(h + '.caso'))) mal(`${k}: o número da Consultoria aponta para ${h}, que não é um caso`);
     if (nums.length !== 3) mal(`${k}: a Consultoria devia mostrar 3 números de casos (mostra ${nums.length})`);
-    // casos: todos com selo de «não é cliente nosso», 3 números, fonte externa num separador novo e a nossa solução ligada
+    // casos: só o depoimento e 3 números; sem nome, sem tipo de negócio, sem ligações para fora, sem «próximo caso»
     await p.click('.tabs a[href="#cazuri"]');
     if (!(await vis('cazuri')) || await vis('consultanta')) mal(`${k}: separador dos casos não trocou a vista`);
-    const casos = await p.$$eval('.caso:not(.vazio)', cs => cs.map(c => ({ id: c.id, selo: !!c.querySelector('.selo'), n: c.querySelectorAll('.caso-num li').length,
-      fonte: (c.querySelector('.fonte') || {}).href || '', alvo: (c.querySelector('.fonte') || {}).target, chips: [...c.querySelectorAll('.chips a')].map(a => a.getAttribute('href')) })));
-    const esperados = JSON.parse(fs.readFileSync(path.join(__dirname, 'conteudo', 'casos.json'), 'utf8')).itens.length;
-    if (casos.length !== esperados) mal(`${k}: ${casos.length} casos (esperava ${esperados})`);
+    const nomes = JSON.parse(fs.readFileSync(path.join(__dirname, 'conteudo', 'casos.json'), 'utf8')).itens.map(x => x.empresa);
+    const casos = await p.$$eval('.caso', cs => cs.map(c => ({ id: c.id, depo: (c.querySelector('.caso-depo') || {}).textContent || '',
+      n: c.querySelectorAll('.caso-num li').length, fora: c.querySelectorAll('a[href^="http"]').length, txt: c.textContent })));
+    if (casos.length !== nomes.length) mal(`${k}: ${casos.length} casos (esperava ${nomes.length})`);
     for (const c of casos) {
-      if (!c.selo || c.n !== 3 || c.fonte || !c.chips.length) mal(`${k}: caso mal montado ${JSON.stringify(c)}`);
-      for (const h of c.chips) if (!(await p.$(h))) mal(`${k}: o caso ${c.id} liga a ${h}, que não existe`);
+      if (c.depo.trim().length < 20 || c.n !== 3 || c.fora) mal(`${k}: caso mal montado ${JSON.stringify(c)}`);
     }
-    if (!(await p.$('.caso.vazio a[href^="https://wa.me/"]'))) mal(`${k}: falta o lugar do caso n.º 1 com o pedido no WhatsApp`);
-    await p.click('.caso:not(.vazio) .chips a[href^="#a-"]');
-    await p.waitForTimeout(250);
-    if (!(await p.evaluate(() => { const d = document.querySelector(location.hash); return d && d.tagName === 'DETAILS' && d.open && !!d.closest('#automatizari'); })))
-      mal(`${k}: a solução ligada a um caso não abriu`);
+    const pagina = await p.evaluate(() => document.body.innerText);
+    const comNome = nomes.filter(x => pagina.includes(x));
+    if (comNome.length) mal(`${k}: o site mostra o nome de empresas dos casos: ${comNome.join(', ')}`);
+    if (await p.$('.caso.vazio')) mal(`${k}: ainda há a caixa «o próximo caso»`);
     await p.click('.tabs a[href="#automatizari"]');
     if (!(await vis('automatizari')) || await vis('proiecte')) mal(`${k}: separador das automatizações não trocou a vista`);
     if (await p.$eval('.tabs a[href="#automatizari"]', a => a.getAttribute('aria-current')) !== 'page') mal(`${k}: aria-current não passou`);
@@ -296,10 +294,6 @@ const fs = require('fs');
     if (!(await p.evaluate(() => { const d = document.querySelector(location.hash); return d && d.tagName === 'DETAILS' && d.open; }))) mal(`${k}: ligação entre automatizações não abriu a apontada`);
     // «O que mais fazemos» vive no fim das Soluções
     if (!(await p.$('#automatizari #servicii .svc'))) mal(`${k}: «O que mais fazemos» não está no fim das Soluções`);
-    // cada automação com caso real liga ao cartão do caso
-    const refs = await p.$$eval('.caso-ref a', as => as.map(a => a.getAttribute('href')));
-    if (!refs.length) mal(`${k}: nenhuma automação mostra o caso real`);
-    for (const h of refs) if (!(await p.$(h + '.caso'))) mal(`${k}: «Caso real» aponta para ${h}, que não existe`);
     await p.click('.tabs a[href="#proiecte"]');
     if (!(await vis('proiecte')) || await vis('consultanta')) mal(`${k}: separador dos sites falhou`);
     // sites em destaque, sites dentro de cada tipo de negócio e exemplos: cada ligação interna tem de existir
@@ -347,7 +341,7 @@ const fs = require('fs');
       if (l !== v.lang || !p.url().startsWith(v.url)) mal(`${k}: o botão de voltar foi para ${p.url()} (${l})`);
     }
     if (!noindex) mal(`${k}: a cópia do site não tem noindex`);
-    if (falhas === falhasAntes) bem(`${k}: separadores, consultoria, ${casos.length} casos com selo, sem ligações para fora, + o lugar do próximo caso, 8 automatizações, ligações, em destaque (${dest.join(', ')}), 4 tipos de negócio com os ${ativos.length} sites, Toda Chic com «${pil && pil.t}» a voltar à página ${k.toUpperCase()}`);
+    if (falhas === falhasAntes) bem(`${k}: separadores, consultoria, ${casos.length} casos só com depoimento e resultados (sem nomes), 8 automatizações, ligações, em destaque (${dest.join(', ')}), 4 tipos de negócio com os ${ativos.length} sites, Toda Chic com «${pil && pil.t}» a voltar à página ${k.toUpperCase()}`);
   }
 
   // diagnóstico: «Conhece-nos» abre a conversa; 8 respostas; no fim, a mensagem para o WhatsApp leva tudo

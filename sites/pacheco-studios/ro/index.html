@@ -614,6 +614,10 @@ dialog.diag.fim .diag-ficha{display:block}
 .caso{display:grid;align-content:start;gap:.95rem;padding:1.25rem 1.15rem 1.15rem;border-radius:1rem;background:var(--carvao-2);
   border:1px solid var(--linha-e);scroll-margin-top:calc(var(--tabs) + .75rem)}
 .caso:target{border-color:var(--laranja)}
+.caso .aspas{position:static;width:2.1rem;fill:rgba(232,98,44,.6)}
+.caso-depo{margin:0}
+.caso-depo p{font:400 clamp(1.0625rem,3.6vw,1.2rem)/1.5 var(--texto);color:var(--osso);text-wrap:pretty}
+.caso-depo + .caso-num{padding-top:1rem;border-top:1px solid var(--linha-e)}
 .caso-tag{font:700 .75rem/1.35 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--osso-2)}
 .selo{justify-self:start;margin-top:-.35rem;padding:.35rem .6rem;border:1px dashed var(--contorno);border-radius:.4rem;
   font:400 .75rem/1.35 var(--mono);color:var(--osso)}
@@ -735,8 +739,8 @@ dialog.diag.fim .diag-ficha{display:block}
       <div class="cab">
         <p class="eyebrow">Soluții</p>
         <h2 id="t-automatizari" class="afirmacao">Ce putem pune la treabă în afacerea ta.</h2>
-        <p class="lead">Opt soluții pe care știm deja să le desenăm și să le construim. La diagnostic o alegem pe cea care te apropie cel mai mult de obiectiv. Se începe cu una.</p>
-        <p class="lead intro-2">Fiecare e desenată aici așa cum se montează: pas cu pas, cu regulile ei și cu momentele în care intră un om. Nu promitem. Arătăm.</p>
+        <p class="lead">Acestea sunt câteva dintre cele mai eficiente și mai folosite sisteme pentru problema afacerii tale de azi.</p>
+        
       </div>
       <div class="autos">
 <details class="auto rv" name="auto" id="a-receptionist" style="--i:0">
@@ -748,7 +752,6 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="corpo">
     <a class="ver-esquema" href="#esquema-receptionist" data-esquema="esquema-receptionist"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Vezi schema</b><small>Desenul complet, pas cu pas.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Nici un client fără răspuns, zi și noapte. Tu intri doar când e nevoie de un om.</div>
-    <div class="caso-ref"><h4 class="rotulo">Caz real</h4><div class="chips"><a class="chip" href="#caso-alphaview">Centro Médico Alphaview</a> <a class="chip" href="#caso-carioca">Carioca Jeans</a> <a class="chip" href="#caso-chopp">Chopp Fácil</a> <a class="chip" href="#caso-vize">Vize Imagem Masculina</a></div></div>
     <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
 <li>Nu inventează prețuri: spune doar ce e în lista aprobată.</li>
 <li>Nu știe? Nu răspunde. Trece la o persoană.</li>
@@ -772,7 +775,6 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="corpo">
     <a class="ver-esquema" href="#esquema-programari" data-esquema="esquema-programari"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Vezi schema</b><small>Desenul complet, pas cu pas.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Calendarul se umple singur, iar locurile eliberate nu rămân goale.</div>
-    <div class="caso-ref"><h4 class="rotulo">Caz real</h4><div class="chips"><a class="chip" href="#caso-alphaview">Centro Médico Alphaview</a> <a class="chip" href="#caso-vize">Vize Imagem Masculina</a></div></div>
     <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
 <li>Nu mută și nu anulează nimic fără ca clientul să apese butonul.</li>
 <li>Nu promite ore care nu sunt libere în calendarul tău.</li>
@@ -819,7 +821,6 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="corpo">
     <a class="ver-esquema" href="#esquema-lead" data-esquema="esquema-lead"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Vezi schema</b><small>Desenul complet, pas cu pas.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Nici o cerere uitată. Cine răspunde primul câștigă clientul.</div>
-    <div class="caso-ref"><h4 class="rotulo">Caz real</h4><div class="chips"><a class="chip" href="#caso-omega">OMEGA Radiologia</a> <a class="chip" href="#caso-carioca">Carioca Jeans</a> <a class="chip" href="#caso-chopp">Chopp Fácil</a></div></div>
     <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
 <li>Trei mesaje, maximum. Apoi tace.</li>
 <li>Nu promite prețuri sau termene: le spui tu.</li>
@@ -865,7 +866,6 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="corpo">
     <a class="ver-esquema" href="#esquema-revenire" data-esquema="esquema-revenire"><span class="mini" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt"><b>Vezi schema</b><small>Desenul complet, pas cu pas.</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="obtii"><h4 class="rotulo">Ce obții</h4>Clienții vechi revin fără să plătești reclame ca să-i aduci înapoi.</div>
-    <div class="caso-ref"><h4 class="rotulo">Caz real</h4><div class="chips"><a class="chip" href="#caso-sms">Instituto SMS</a></div></div>
     <div><h4 class="rotulo">Regulile ei</h4><ul class="reguli">
 <li>Doar cu consimțământ. Fără, nu trimite.</li>
 <li>Un mesaj la 60 de zile, nu mai des.</li>
@@ -1140,97 +1140,32 @@ dialog.diag.fim .diag-ficha{display:block}
     <p class="eyebrow">Cazuri reale</p>
     <h2 id="t-cazuri" class="afirmacao">Rezultate reale. Următorul poate fi al tău.</h2>
     <p class="lead">Aceste rezultate s-au întâmplat deja în afaceri ca a ta. Treaba noastră e să le transformăm în rezultatele afacerii tale: aceeași metodă, desenată pentru tine și măsurată de la punctul tău de plecare.</p>
-    <p class="aviso">Cazuri publice, cu numele fiecărei firme și cifrele declarate de fiecare. Fiecare afacere pornește din alt loc: de aceea măsurăm punctul tău de plecare înainte să începem.</p>
+    <p class="aviso">Mărturii și cifre publicate chiar de firme, traduse din portugheză. Fiecare afacere pornește din alt loc: de aceea măsurăm punctul tău de plecare înainte să începem.</p>
     <ul class="casos">
 <li class="caso rv" id="caso-alphaview" style="--i:0">
-  <p class="caso-tag">Clinică medicală · Brazilia</p>
-  <p class="selo">Unde poți ajunge</p>
-  <h3 class="caso-empresa">Centro Médico Alphaview</h3>
-  <p class="caso-titulo">Recepția merge aproape singură, iar programările au crescut fără angajări.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>Azi putem automatiza până la 87% din relația cu pacienții și tot creștem programările, fără să creștem costurile.</p></blockquote>
   <ul class="caso-num"><li><b>80–87%</b><span>din activitatea recepției automatizată</span></li><li><b>+15–20</b><span>programări în plus pe zi</span></li><li><b>20 min → aproape 0</b><span>de așteptare la recepție</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">Problema</h4><p>Până la 20 de minute de așteptare la recepție, multe neprezentări și o echipă blocată în sarcini repetitive.</p></div>
-    <div><h4 class="rotulo">Ce au făcut</h4><p>Confirmarea programărilor pe WhatsApp, cu întărire prin apel vocal. Cât pacientul așteaptă, AI-ul se uită în istoricul lui și îi propune pe WhatsApp următoarea programare.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">În afacerea ta, asta e</h4><div class="chips"><a class="chip" href="#a-programari">Programări</a> <a class="chip" href="#a-receptionist">Recepționist AI</a></div></div>
-  </div>
 </li>
 <li class="caso rv" id="caso-omega" style="--i:1">
-  <p class="caso-tag">Clinică de imagistică · Brazilia</p>
-  <p class="selo">Unde poți ajunge</p>
-  <h3 class="caso-empresa">OMEGA Radiologia</h3>
-  <p class="caso-titulo">Cererile de preț care nu se programau au primit a doua discuție.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>Generează multe date: ai mai multă predictibilitate și poți măsura cine are rezultate bune, cine nu, și de ce.</p></blockquote>
   <ul class="caso-num"><li><b>R$ 40 mii</b><span>în 3,5 luni, doar de la cei care nu se programaseră</span></li><li><b>+10%</b><span>la venitul lunar, cu mesajul automat de revenire</span></li><li><b>+7,5%</b><span>la programări, cu site-ul nou</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">Problema</h4><p>Reclamele aduceau apeluri zilnic, dar mulți întrebau prețul și nu se programau. Nimeni nu-i mai contacta.</p></div>
-    <div><h4 class="rotulo">Ce au făcut</h4><p>Cine cerea o ofertă și nu se programa primea un mesaj automat de revenire pe WhatsApp. În paralel, un site nou, făcut pentru programări.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">În afacerea ta, asta e</h4><div class="chips"><a class="chip" href="#a-lead">Răspuns rapid</a> <a class="chip" href="#proiecte">Un site nou</a></div></div>
-  </div>
 </li>
 <li class="caso rv" id="caso-carioca" style="--i:0">
-  <p class="caso-tag">Magazin de haine · Brazilia</p>
-  <p class="selo">Unde poți ajunge</p>
-  <h3 class="caso-empresa">Carioca Jeans</h3>
-  <p class="caso-titulo">Peste 300 de contacte pe zi, cu răspuns pe loc, la orice oră.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>Azi AI-ul răspunde 24 de ore din 24. Nu trebuie să se oprească, nu trebuie să ia prânzul și poate servi oamenii mult mai repede.</p></blockquote>
   <ul class="caso-num"><li><b>24 h</b><span>de răspuns, în fiecare zi</span></li><li><b>300+</b><span>contacte pe zi pe WhatsApp</span></li><li><b>7 zile</b><span>până la primele câștiguri</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">Problema</h4><p>Patru oameni răspundeau de mână pe WhatsApp, trimițând poze și mărimi una câte una, pentru peste 300 de contacte pe zi.</p></div>
-    <div><h4 class="rotulo">Ce au făcut</h4><p>Un asistent AI pe WhatsApp-ul oficial răspunde pe loc și duce clientul într-un catalog unde alege modelul și mărimea. Vânzătorul doar închide vânzarea.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">În afacerea ta, asta e</h4><div class="chips"><a class="chip" href="#a-receptionist">Recepționist AI</a> <a class="chip" href="#a-lead">Răspuns rapid</a></div></div>
-  </div>
 </li>
 <li class="caso rv" id="caso-chopp" style="--i:1">
-  <p class="caso-tag">Băuturi pentru evenimente · Brazilia</p>
-  <p class="selo">Unde poți ajunge</p>
-  <h3 class="caso-empresa">Chopp Fácil</h3>
-  <p class="caso-titulo">În sezonul de vârf, de zece ori mai multe oferte trimise pe zi.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>Piața e foarte sezonieră… imposibil de gestionat manual de oameni. Automatizarea relației cu clienții a fost factorul-cheie care a făcut posibilă noua etapă de extindere.</p></blockquote>
   <ul class="caso-num"><li><b>50 → 500</b><span>oferte trimise pe zi</span></li><li><b>10×</b><span>capacitate de răspuns în sezonul de vârf</span></li><li><b>100%</b><span>din oferte trimise fără să aștepte un om</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">Problema</h4><p>Vârfuri de peste 100 de cereri pe zi pe WhatsApp. De mână, nu se putea răspunde tuturor și clienții plecau în altă parte.</p></div>
-    <div><h4 class="rotulo">Ce au făcut</h4><p>AI-ul răspunde pe WhatsApp, calculează oferta, sugerează produse și înregistrează comanda, care pleacă singură la cel mai apropiat distribuitor.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">În afacerea ta, asta e</h4><div class="chips"><a class="chip" href="#a-lead">Răspuns rapid</a> <a class="chip" href="#a-receptionist">Recepționist AI</a></div></div>
-  </div>
 </li>
 <li class="caso rv" id="caso-vize" style="--i:0">
-  <p class="caso-tag">Frizerii · Brazilia</p>
-  <p class="selo">Unde poți ajunge</p>
-  <h3 class="caso-empresa">Vize Imagem Masculina</h3>
-  <p class="caso-titulo">Trei frizerii cu același stil de răspuns, iar echipa doar confirmă programarea.</p>
+  <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+  <blockquote class="caso-depo"><p>Când mesajul ajunge, e deja pregătit: noi doar finalizăm programarea. Asta economisește timp și ne face răspunsul la fel de fiecare dată.</p></blockquote>
   <ul class="caso-num"><li><b>30%</b><span>răspuns mai eficient</span></li><li><b>3 → 1</b><span>frizerii, o singură recepție</span></li><li><b>În curs</b><span>implementare, după spusele firmei</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">Problema</h4><p>Fiecare frizerie răspundea în felul ei, iar aplicația de programări nu comunica cu nimic altceva.</p></div>
-    <div><h4 class="rotulo">Ce au făcut</h4><p>O recepție AI pentru toate trei: răspunde, sugerează servicii în plus și pregătește programarea. Echipa doar o confirmă.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">În afacerea ta, asta e</h4><div class="chips"><a class="chip" href="#a-programari">Programări</a> <a class="chip" href="#a-receptionist">Recepționist AI</a></div></div>
-  </div>
-</li>
-<li class="caso rv" id="caso-sms" style="--i:1">
-  <p class="caso-tag">Clinică · Brazilia</p>
-  <p class="selo">Unde poți ajunge</p>
-  <h3 class="caso-empresa">Instituto SMS</h3>
-  <p class="caso-titulo">12.000 de pacienți inactivi, chemați înapoi pe WhatsApp.</p>
-  <ul class="caso-num"><li><b>12.000</b><span>pacienți în bază, doar 1.500 activi pe an</span></li><li><b>40%</b><span>din capacitatea clinicii stătea nefolosită</span></li><li><b>R$ 240 mii</b><span>pe an: proiecție publicată, nu rezultat încheiat</span></li></ul>
-  <div class="caso-txt">
-    <div><h4 class="rotulo">Problema</h4><p>O bază uriașă de pacienți care nu mai reveneau și o agendă cu goluri, în timp ce plăteau reclame ca să aducă oameni noi.</p></div>
-    <div><h4 class="rotulo">Ce au făcut</h4><p>Mesaje personalizate pe WhatsApp-ul oficial pentru pacienții inactivi, într-un ritm care nu blochează numărul, cu un om care intervine când e nevoie.</p></div>
-  </div>
-  <div class="caso-pe">
-    <div><h4 class="rotulo">În afacerea ta, asta e</h4><div class="chips"><a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
-  </div>
-</li>
-<li class="caso vazio rv" id="caso-1">
-  <p class="caso-tag">Pacheco Studios · următorul caz</p>
-  <h3 class="caso-empresa">Următorul rezultat poate fi al afacerii tale.</h3>
-  <p>Măsurăm punctul de plecare în ziua 0 și rezultatul în ziua 30. Așa devine unul dintre aceste cazuri al tău.</p>
-  <a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Am%20v%C4%83zut%20cazurile%20pe%20site%20%C8%99i%20vreau%20acest%20rezultat%20%C3%AEn%20afacerea%20mea%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Vreau acest rezultat</a>
 </li>
     </ul>
   </div>
@@ -1281,7 +1216,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Jasmim 2</span><span class="ex-meta">Fructe de mare · Manta Rota</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400" target="_blank" rel="noopener"><span class="ex-nome">HANAM</span><span class="ex-meta">Grătar coreean · Quarteira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex" href="https://gruponaval.online" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800" target="_blank" rel="noopener"><span class="ex-nome">Grupo Naval</span><span class="ex-meta">Restaurant · Olhão</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex neutro" href="https://bompaladar.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Simona&#x27;s O Bom Paladar</span><span class="ex-meta">Restaurant · Almancil</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex neutro" href="https://ginasioclubetavira.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Ginásio Clube Tavira</span><span class="ex-meta">Restaurantul clubului · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex neutro" href="https://sao-martinho.com/" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">São Martinho</span><span class="ex-meta">Fructe de mare · Guia</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li></ul></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-receptionist">Recepționist AI</a> <a class="chip" href="#a-recenzii">Recenzii Google</a> <a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
-    <div class="demo"><p>Vrei să vezi cum ar arăta al tău? Îl facem înainte să plătești.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Restaurante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
+    <div class="demo"><p>Vrei un site ca acesta pentru afacerea ta?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Restaurante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
   </div>
 </details>
 <details class="setor rv" name="setor" id="s-cafes" style="--i:1">
@@ -1301,7 +1236,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex neutro" href="https://gelatariamuxagata.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Gelataria Muxagata</span><span class="ex-meta">Gelaterie artizanală · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li></ul></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-social">Postări</a> <a class="chip" href="#a-recenzii">Recenzii Google</a></div></div>
-    <div class="demo"><p>Vrei să vezi cum ar arăta al tău? Îl facem înainte să plătești.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Cafenele%2C%20cofet%C4%83rii%20%C8%99i%20gelaterii"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
+    <div class="demo"><p>Vrei un site ca acesta pentru afacerea ta?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Cafenele%2C%20cofet%C4%83rii%20%C8%99i%20gelaterii"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
   </div>
 </details>
 <details class="setor rv" name="setor" id="s-lojas" style="--i:2">
@@ -1322,7 +1257,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex" href="/p/toda-chic/" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400"><span class="ex-nome">Toda Chic</span><span class="ex-meta">Magazin de haine online · Portugalia</span></a></li></ul></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-lead">Răspuns rapid</a> <a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
-    <div class="demo"><p>Vrei să vezi cum ar arăta al tău? Îl facem înainte să plătești.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Magazine%20online"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
+    <div class="demo"><p>Vrei un site ca acesta pentru afacerea ta?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Magazine%20online"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
   </div>
 </details>
 <details class="setor rv" name="setor" id="s-marcacoes" style="--i:3">
@@ -1342,7 +1277,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex neutro" href="https://barbeariadocao.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Barbearia do Cão</span><span class="ex-meta">Salon canin · Loulé</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li></ul></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-programari">Programări</a> <a class="chip" href="#a-recenzii">Recenzii Google</a></div></div>
-    <div class="demo"><p>Vrei să vezi cum ar arăta al tău? Îl facem înainte să plătești.</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Servicii%20cu%20programare"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
+    <div class="demo"><p>Vrei un site ca acesta pentru afacerea ta?</p><a class="botao secundario" href="https://wa.me/351967117357?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20A%C8%99%20vrea%20s%C4%83%20v%C4%83d%20cum%20ar%20ar%C4%83ta%20site-ul%20afacerii%20mele%3A%20Servicii%20cu%20programare"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere pe WhatsApp</a></div>
   </div>
 </details>
       </div>
@@ -1370,17 +1305,6 @@ dialog.diag.fim .diag-ficha{display:block}
 <li class="rv" style="--i:4"><h3>Respectă legea.</h3><p>Ce cere legea acolo unde lucrezi: în România, informațiile cerute de ANPC; în Portugalia, cartea de reclamații electronică.</p></li>
 <li class="rv" style="--i:5"><h3>Nu rămâne abandonat.</h3><p>Cu mentenanța: mereu online, domeniul plătit de noi și modificări în cel mult o săptămână.</p></li>
       </ul>
-    </div>
-  </div>
-  <div class="claro">
-    <div class="envolver seccao">
-      <p class="eyebrow">Site-uri: cum le facem</p>
-      <h2 class="afirmacao">Îți facem site-ul înainte să plătești.</h2>
-      <ol class="passos">
-<li class="passo rv" style="--i:0"><h3>Facem site-ul tău.</h3><p>Cu numele, adresa și recenziile pe care le ai deja pe Google.</p></li>
-<li class="passo rv" style="--i:1"><h3>Ți-l arătăm pe telefon.</h3><p>La tine în local sau pe WhatsApp, în câteva minute.</p></li>
-<li class="passo rv" style="--i:2"><h3>Plătești doar dacă îți place.</h3><p>Dacă nu, nu plătești nimic.</p></li>
-      </ol>
     </div>
   </div>
 </section>
@@ -1440,9 +1364,9 @@ dialog.diag.fim .diag-ficha{display:block}
     <p class="eyebrow">Cazuri reale</p>
     <h2 class="afirmacao">Se întâmplă deja în afaceri ca a ta.</h2>
     <ul class="numeros">
-<li class="rv" style="--i:0"><a href="#caso-alphaview"><b>+15–20</b><span>programări în plus pe zi</span><small>Centro Médico Alphaview · Vezi cazul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
-<li class="rv" style="--i:1"><a href="#caso-omega"><b>R$ 40 mii</b><span>în 3,5 luni, doar de la cei care nu se programaseră</span><small>OMEGA Radiologia · Vezi cazul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
-<li class="rv" style="--i:2"><a href="#caso-chopp"><b>50 → 500</b><span>oferte trimise pe zi</span><small>Chopp Fácil · Vezi cazul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
+<li class="rv" style="--i:0"><a href="#caso-alphaview"><b>+15–20</b><span>programări în plus pe zi</span><small>Vezi cazul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
+<li class="rv" style="--i:1"><a href="#caso-omega"><b>R$ 40 mii</b><span>în 3,5 luni, doar de la cei care nu se programaseră</span><small>Vezi cazul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
+<li class="rv" style="--i:2"><a href="#caso-chopp"><b>50 → 500</b><span>oferte trimise pe zi</span><small>Vezi cazul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small></a></li>
     </ul>
     <p class="nota-fonte">Rezultate pe care alte afaceri le-au atins deja. Treaba noastră e să le aducem în afacerea ta.</p>
     <a class="link-seta" href="#cazuri">Vezi toate cazurile<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
