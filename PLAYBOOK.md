@@ -339,11 +339,12 @@ Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que v
   - Nos Casos só ficam o depoimento e os resultados: sem nome, sem tipo de negócio e sem a caixa «o próximo caso».
   - Saiu todo o texto «fazemos o site antes de pagares / só pagas se gostares», incluindo a página Sites.
   - As Soluções abrem só com «Estes são alguns dos sistemas mais eficazes e mais comuns para resolver a tua dor de hoje.»
+- **Herói em scroll to animation (03/10, noite):** vídeo Kling 3.0 gerado a partir da imagem do herói (push-in, os fios acendem). 18 fotogramas WebP 720 px (≈134 KB no total) em `media/heroi-seq/`, embutidos na página; o scroll avança o vídeo com fusão entre fotogramas e o texto desaparece no fim. Fica a imagem parada sem JavaScript, com movimento reduzido ou se o texto não couber no ecrã. O Seedance quase não mexia: rejeitado.
 - **Diagnóstico com cara própria (não copiar o do Viver de IA):** uma pergunta por ecrã, opções A–H e a «ficha do teu negócio» a preencher-se ao lado.
 - **Higgsfield nesta sessão:** o CDN de resultados (cloudfront) está bloqueado no proxy local. Receita que funciona:
   1. Na sandbox, converter para WebP.
-  2. Passar o ficheiro em base64 em blocos de 12 000 caracteres.
-  3. Juntar os blocos localmente e confirmar o MD5.
+  2. Passar o ficheiro em base64 em blocos de 19 500 caracteres, cada um com o MD5 de cada pedaço de 500 (corrige-se só o pedaço errado).
+  3. Juntar os blocos localmente e confirmar o MD5. A sandbox é recriada entre chamadas: o script tem de ser determinístico e reescrito em cada chamada.
 - **Site pachecost.com (PT · EN · RO)** em `sites/pacheco-studios/`, trazido do branch `cool-sagan` a 02/10. Separadores:
   - **Consultoria** (entrada);
   - **Casos**;

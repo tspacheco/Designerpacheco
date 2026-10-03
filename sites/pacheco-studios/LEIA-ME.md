@@ -40,7 +40,7 @@ decisões: `research/consultoria-ia-referencias.md` e PLAYBOOK, secção 17.
    - No fim fica «Pacheco Studios · o próximo caso», com «Quero este resultado» no WhatsApp, e «Como um caso destes passa a ser teu».
 
    Na Consultoria (versão de 03/10):
-   - **Herói:** a frase da marca a dois tons, sobre a imagem `media/heroi.webp`. Imagem gerada no Higgsfield (gpt_image_2_5, 16:9): placas escuras a flutuar com fios de luz laranja e o lado esquerdo vazio para o texto. Vai embutida na página, para abrir também fora do Netlify. Se faltar, o herói fica só escuro.
+   - **Herói:** a frase da marca a dois tons, sobre a imagem `media/heroi.webp`. Imagem gerada no Higgsfield (gpt_image_2_5, 16:9): placas escuras a flutuar com fios de luz laranja e o lado esquerdo vazio para o texto. Vai embutida na página, para abrir também fora do Netlify. Se faltar, o herói fica só escuro. Por cima corre o vídeo em scroll to animation: 18 fotogramas em `media/heroi-seq/` (Kling 3.0 a partir da mesma imagem), desenhados num canvas conforme o scroll; o herói fica preso ao ecrã durante 240vh. Sem JavaScript, com movimento reduzido ou se o texto não couber, fica a imagem parada. Para trocar o vídeo, substituir os ficheiros da pasta (por ordem de nome) e voltar a gerar.
    - **Botões:** «Conhece-nos» abre o diagnóstico; «Ver soluções» vai às Soluções. Por baixo: «Adere hoje aos sistemas que a IA te pode entregar…».
    - **Logótipo:** o «P» no anel dourado, no cabeçalho, em vez do ponto laranja.
    - **Diagnóstico:**

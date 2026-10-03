@@ -476,7 +476,15 @@ def imagem_heroi():
     if not os.path.exists(p):
         return ""
     b64 = base64.b64encode(open(p, "rb").read()).decode()
-    return f'<img class="heroi-img" src="data:image/webp;base64,{b64}" alt="" aria-hidden="true" decoding="async">'
+    img = f'<img class="heroi-img" src="data:image/webp;base64,{b64}" alt="" aria-hidden="true" decoding="async">'
+    # o vídeo do herói, em fotogramas (media/heroi-seq/NN.webp): o scroll faz avançar o vídeo (ver index.src.html)
+    seq = sorted(f for f in os.listdir(os.path.join(AQUI, "media", "heroi-seq")) if f.endswith(".webp")) \
+        if os.path.isdir(os.path.join(AQUI, "media", "heroi-seq")) else []
+    if not seq:
+        return img
+    quadros = [f"data:image/webp;base64,{base64.b64encode(open(os.path.join(AQUI, 'media', 'heroi-seq', f), 'rb').read()).decode()}" for f in seq]
+    return (img + '<canvas class="heroi-cv" aria-hidden="true"></canvas>'
+            f'<script type="application/json" id="heroi-quadros">{json.dumps(quadros)}</script>')
 
 
 def vista_consultanta(c, casos, lang, wa):
@@ -504,7 +512,9 @@ def vista_consultanta(c, casos, lang, wa):
                              for i, x in enumerate(cu["itens"]))
     return f"""<section id="consultanta" class="vista" aria-labelledby="t-consultanta">
   <div class="heroi-bg">
+   <div class="heroi-palco">
     {imagem_heroi()}
+    <div class="heroi-veu" aria-hidden="true"></div>
     <div class="envolver heroi">
       <p class="eyebrow heroi-e">{e(k["eyebrow"])}</p>
       <h2 id="t-consultanta" class="heroi-t"><span class="heroi-pre">{e(k["pre"])}</span> <span class="heroi-grande">{inteiras(k["titlu"])}</span></h2>
@@ -516,6 +526,7 @@ def vista_consultanta(c, casos, lang, wa):
       </div>
       <p class="heroi-adere">{e(k["adere"])}</p>
     </div>
+   </div>
   </div>
   <div class="claro">
     <div class="envolver seccao consultoria">

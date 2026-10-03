@@ -412,13 +412,20 @@ html.intro-vai .intro{display:grid}
 
 /* ═══ consultoria: o herói ao jeito de uma página de produto limpa (rótulo, frase a dois tons, dois botões) com o
    mosaico 3D dos passos à direita. A frase é a da marca: a pergunta a branco, a resposta a laranja ═══ */
-.heroi-bg{position:relative;isolation:isolate;overflow:hidden;background:var(--carvao)}
+.heroi-bg{position:relative;isolation:isolate;overflow-x:clip;background:var(--carvao)}
 .heroi-img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:72% 50%}
-.heroi-bg::after{content:"";position:absolute;inset:0;z-index:-1;
+.heroi-palco{position:relative;isolation:isolate;overflow:hidden}
+.heroi-veu{position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:linear-gradient(180deg,rgba(20,18,16,.42) 0%,rgba(20,18,16,.78) 50%,var(--carvao) 100%)}
+.heroi-cv{position:absolute;inset:0;z-index:-2;width:100%;height:100%;display:block}
+/* scroll to animation: o herói fica preso ao ecrã e o scroll faz avançar o vídeo (só com JavaScript, sem movimento
+   reduzido e quando o texto cabe no ecrã; senão fica a imagem parada) */
+.heroi-bg.rolo{height:var(--rolo-h,240vh)}
+.heroi-bg.rolo .heroi-palco{position:sticky;top:var(--tabs);height:calc(100vh - var(--tabs));height:calc(100svh - var(--tabs))}
+.heroi-bg.rolo .heroi{height:100%;min-height:0;padding-block:2rem;display:flex;flex-direction:column;justify-content:center;will-change:opacity,transform}
 .heroi{position:relative;padding-block:clamp(2.75rem,9vw,6rem) clamp(2.5rem,7vw,5rem)}
 .heroi-e{color:var(--osso-2);letter-spacing:.22em}
-.heroi-t{margin-top:1.1rem;max-width:17ch;font:600 clamp(2.15rem,8.4vw,4.1rem)/1.04 var(--texto);letter-spacing:-.035em;text-wrap:balance}
+.heroi-t{margin-top:1.1rem;max-width:17ch;font:600 clamp(2.15rem,8.4vw,3.6rem)/1.04 var(--texto);letter-spacing:-.035em;text-wrap:balance}
 .heroi-pre{color:var(--osso)}
 .heroi-grande{display:block;color:var(--laranja)}
 .nq{white-space:nowrap}
@@ -429,7 +436,7 @@ html.intro-vai .intro{display:grid}
 .botao.contorno{border-color:var(--contorno);color:var(--osso);background:transparent}
 .botao.contorno:hover{background:rgba(239,234,227,.08)}
 .primario svg{transition:transform .2s var(--sair)} .primario:hover svg{transform:translateX(.2rem)}
-.heroi-adere{margin-top:2.25rem;padding-top:1.1rem;border-top:1px solid var(--linha-e);max-width:38rem;display:flex;gap:.75rem;
+.heroi-adere{margin-top:1.75rem;padding-top:1rem;border-top:1px solid var(--linha-e);max-width:38rem;display:flex;gap:.75rem;
   font:600 1.0625rem/1.5 var(--texto);color:var(--osso)}
 .heroi-adere::before{content:"";flex:none;width:.5rem;height:.5rem;margin-top:.55em;border-radius:50%;background:var(--laranja)}
 .logo{flex:none;width:2.4rem;height:2.4rem}
@@ -666,7 +673,7 @@ dialog.diag.fim .diag-ficha{display:block}
   .autos{margin-top:0}
   .passos-5{grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5rem}
   .heroi{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem}
-  .heroi-bg::after{background:linear-gradient(90deg,var(--carvao) 0%,rgba(20,18,16,.93) 28%,rgba(20,18,16,.5) 55%,rgba(20,18,16,.08) 85%),
+  .heroi-veu{background:linear-gradient(90deg,var(--carvao) 0%,rgba(20,18,16,.93) 28%,rgba(20,18,16,.5) 55%,rgba(20,18,16,.08) 85%),
     linear-gradient(0deg,var(--carvao) 0%,transparent 25%)}
   .heroi{min-height:min(46rem,calc(100vh - 8rem));display:flex;flex-direction:column;justify-content:center}
   .heroi-img{object-position:center}
