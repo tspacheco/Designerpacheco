@@ -348,6 +348,8 @@ const fs = require('fs');
   // diagnóstico: «Conhece-nos» abre a conversa; 8 respostas; no fim, a mensagem para o WhatsApp leva tudo
   for (const [k, v] of Object.entries(LINGUAS)) {
     await p.goto(v.url);
+    // o GoatCounter está cortado no teste: um substituto apanha os eventos
+    await p.evaluate(() => { window.__gc = []; window.goatcounter = { count: o => window.__gc.push(o.path) }; });
     await p.click('.heroi [data-diagnostico]');
     const g = JSON.parse(fs.readFileSync(path.join(__dirname, 'conteudo', k + '.json'), 'utf8')).diagnostico;
     await p.click('#diag-comecar');
@@ -375,6 +377,11 @@ const fs = require('fs');
     const fim = await p.evaluate(() => ({ href: decodeURIComponent(document.getElementById('diag-enviar').href),
       n: document.getElementById('diag-n').textContent, aberto: document.getElementById('diagnostico').open }));
     const falta = respostas.filter(t => !fim.href.includes(t));
+    await p.evaluate(() => { const a = document.getElementById('diag-enviar'); a.addEventListener('click', e => e.preventDefault()); a.click(); });
+    const ev = await p.evaluate(() => window.__gc);
+    const esperado = ['diagnostico/aberto', 'diagnostico/comecou', ...g.perguntas.map((q, i) => `diagnostico/pergunta-${String(i + 1).padStart(2, '0')}-${q.id}`), 'diagnostico/fim', 'diagnostico/enviado'];
+    if (JSON.stringify(ev) !== JSON.stringify(esperado)) mal(`${k}, eventos do diagnóstico: ${ev.join(' ')}`);
+    else bem(`${k}: eventos do diagnóstico no GoatCounter, por ordem: aberto, começou, as ${g.perguntas.length} perguntas, fim, enviado`);
     await p.keyboard.press('Escape');
     const fechou = await p.evaluate(() => !document.getElementById('diagnostico').open);
     const fat = g.perguntas.find(q => q.id === 'faturacao');

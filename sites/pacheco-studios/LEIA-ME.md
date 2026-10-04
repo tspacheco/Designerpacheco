@@ -160,6 +160,10 @@ cabeçalho), para não competirem no Google com os sites dos próprios negócios
   (`pachecost.com/`, `ro.pachecost.com/`). As leituras do QR contam à parte, como o evento `qr/cartao`, e os
   cliques para o WhatsApp e o telefone como `ir/whatsapp` e `ir/telefone`. Cada esquema aberto conta como
   `esquema/<id>` (`esquema/programari`, por exemplo): dá para ver quais automações interessam mais.
+- **Medir o diagnóstico** (painel em https://pachecost.goatcounter.com, eventos em «diagnostico/…»): `aberto` (tocou
+  em «Conhece-nos») → `comecou` → `pergunta-01-nome` … `pergunta-08-contacto` (a 1.ª vez que chega a cada uma; a
+  diferença entre duas seguidas é quem desistiu ali) → `fim` → `enviado` (tocou em «Enviar pelo WhatsApp»; é o número
+  que conta). No pixel da Meta, `enviado` vai como `Lead`. `ir/whatsapp` conta só os outros botões de WhatsApp.
 - **Sem faixa de cookies (decisão do Tomás, 04/10):** nada aparece ao abrir o site. O rodapé diz «Ao usares este site
   aceitas os nossos termos: a política de privacidade e a política de cookies», com as duas ligações.
 - **Pixel da Meta** só em `pachecost.com` (PT e EN) e carrega sozinho. Desliga-se na página Cookies (`cookies.html`,

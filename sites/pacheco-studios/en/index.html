@@ -1761,7 +1761,7 @@ dialog.diag.fim .diag-ficha{display:block}
   var palco = document.getElementById('diag-palco'), nEl = document.getElementById('diag-n'), barra = document.getElementById('diag-barra');
   var corpo = d.querySelector('.diag-corpo'), N = D.perguntas.length, LETRAS = 'ABCDEFGHIJ';
   var SETA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-  var base = 'https://wa.me/', r = {}, passo = -1, comecou = false;
+  var base = 'https://wa.me/', r = {}, passo = -1, comecou = false, vistas = {};
   function gc(o) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(o); } catch (e) {} }
   function nome() { return (r.nome || '').trim().split(/\s+/)[0]; }
   function txt(s) { return s.replace(/\{nome\}/g, nome()); }
@@ -1787,6 +1787,7 @@ dialog.diag.fim .diag-ficha{display:block}
     if (passo < 0) return intro();
     if (passo >= N) return fim();
     var q = D.perguntas[passo];
+    if (!vistas[passo]) { vistas[passo] = true; var nn = (passo + 1 < 10 ? '0' : '') + (passo + 1); gc({ path: 'diagnostico/pergunta-' + nn + '-' + q.id, title: 'diagnóstico: pergunta ' + nn + ' (' + q.id + ')', event: true }); }
     palco.appendChild(el('p', 'diag-meta', D.pergunta + ' ' + (passo + 1 < 10 ? '0' : '') + (passo + 1) + ' / ' + (N < 10 ? '0' : '') + N));
     var h = el('h3', 'diag-q', txt(q.msg)); h.id = 'diag-q'; palco.appendChild(h);
     var acoes = el('div', 'diag-acoes'), seg = botao('primario', q.tipo === 'opcoes' ? D.seguinte : D.seguinte, true);
@@ -1859,7 +1860,7 @@ dialog.diag.fim .diag-ficha{display:block}
     var h = el('h3', 'diag-q', D.intro_t); h.id = 'diag-q'; palco.appendChild(h);
     palco.appendChild(el('p', 'diag-txt', D.abertura[0]));
     var acoes = el('div', 'diag-acoes'), b = botao('primario', D.comecar, true);
-    b.id = 'diag-comecar'; b.addEventListener('click', function () { passo = 0; mostrar(); });
+    b.id = 'diag-comecar'; b.addEventListener('click', function () { gc({ path: 'diagnostico/comecou', title: 'diagnóstico: começou', event: true }); passo = 0; mostrar(); });
     acoes.appendChild(b); palco.appendChild(acoes);
     setTimeout(function () { b.focus({ preventScroll: true }); }, 30);
   }
@@ -1872,6 +1873,10 @@ dialog.diag.fim .diag-ficha{display:block}
     var a = el('a', 'botao primario', D.enviar); a.rel = 'noopener'; a.id = 'diag-enviar';
     a.href = base + '?text=' + encodeURIComponent(D.wa_intro + '\n' + linhas.join('\n'));
     a.insertAdjacentHTML('beforeend', SETA);
+    a.addEventListener('click', function () {
+      gc({ path: 'diagnostico/enviado', title: 'diagnóstico: enviado para o WhatsApp', event: true });
+      try { if (window.fbq) window.fbq('track', 'Lead', { origem: 'diagnostico', faturacao: r.faturacao || '' }); } catch (e) {}
+    });
     var b = botao('contorno', D.recomecar); b.addEventListener('click', function () { r = {}; passo = 0; mostrar(); });
     var acoes = el('div', 'diag-acoes'); acoes.appendChild(a); acoes.appendChild(b); palco.appendChild(acoes);
     setTimeout(function () { a.focus({ preventScroll: true }); }, 30);
@@ -1922,7 +1927,7 @@ dialog.diag.fim .diag-ficha{display:block}
   });
   // saídas para o WhatsApp e o telefone
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href^="https://wa.me"]:not([data-diagnostico]), a[href^="tel:"]');
+    var a = e.target.closest && e.target.closest('a[href^="https://wa.me"]:not([data-diagnostico]):not(#diag-enviar), a[href^="tel:"]');
     if (!a) return;
     var canal = a.getAttribute('href').indexOf('wa.me') > -1 ? 'whatsapp' : 'telefone';
     gc({ path: 'ir/' + canal, title: 'saída: ' + canal, event: true });
