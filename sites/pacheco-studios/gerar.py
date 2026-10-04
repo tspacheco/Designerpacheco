@@ -467,7 +467,7 @@ def mosaico(rotulos, centro, cls):
     """Mosaico 3D (só decoração): um plano isométrico com a grelha e os passos em placas; a placa do meio é a marca."""
     placas = "".join(f'<span class="placa p{i + 1}"><span>{e(t)}</span></span>' for i, t in enumerate(rotulos))
     return (f'<div class="mosaico {cls}" aria-hidden="true"><div class="plano">{placas}'
-            f'<span class="placa centro"><span>{LOGO}{e(centro)}</span></span></div></div>')
+            f'<span class="placa centro"><span>{logo_completo("placa-" + cls)}</span></span></div></div>')
 
 
 def imagem_heroi():
@@ -590,9 +590,27 @@ LOGO = ('<svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="
         '<circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/>'
         '<path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>')
 
-# o mesmo logótipo como imagem de CSS (var(--logo)), para os marcadores que antes eram pontos laranja
-LOGO_URI = "data:image/svg+xml," + quote(LOGO.replace('<svg class="logo" ', '<svg xmlns="http://www.w3.org/2000/svg" ')
-                                         .replace(' aria-hidden="true"', ""), safe=" =:/,.-")
+def logo_completo(sufixo, cls=""):
+    """O logótipo inteiro da Pacheco Studios (logo.svg: anéis, «PACHECO STUDIOS» em arco, P, «DIGITAL»), para os sítios
+    onde vai a marca. O arco tem um id por sítio, porque pode haver vários na mesma página."""
+    return (f'<svg class="logo-c{" " + cls if cls else ""}" viewBox="0 0 600 600" aria-hidden="true" focusable="false">'
+            f'<defs><path id="arco-{sufixo}" d="M 68,300 A 232,232 0 0,1 532,300"/></defs>'
+            '<circle cx="300" cy="300" r="296" fill="#0D0B08"/>'
+            '<circle cx="300" cy="300" r="280" fill="none" stroke="#C9A256" stroke-width="4"/>'
+            '<circle cx="300" cy="300" r="274" fill="none" stroke="#C9A256" stroke-width="1.5" opacity=".7"/>'
+            '<circle cx="300" cy="300" r="258" fill="none" stroke="#C8612A" stroke-width="2.5" stroke-dasharray="9 5.5"/>'
+            '<text fill="#C9A256" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="600" letter-spacing="10">'
+            f'<textPath href="#arco-{sufixo}" startOffset="50%">PACHECO STUDIOS</textPath></text>'
+            '<text x="300" y="368" fill="#EDE8D8" text-anchor="middle" font-family="Georgia, \'Times New Roman\', serif" font-size="230" font-weight="700">P</text>'
+            '<text x="300" y="452" fill="#C9A256" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="500" letter-spacing="16">DIGITAL</text>'
+            '</svg>')
+
+
+def marca(sufixo, tag="p", href=None, cls=""):
+    """Onde vai a marca: só o logótipo; o nome fica para os leitores de ecrã."""
+    h = f' href="{href}"' if href else ""
+    return f'<{tag} class="marca"{h}>{logo_completo(sufixo, cls)}<span class="so-leitor">Pacheco Studios</span></{tag}>'
+
 
 
 def diagnostico(c, url_priv):
@@ -616,7 +634,7 @@ def diagnostico(c, url_priv):
   <div class="diag-corpo">
     <div class="diag-palco" id="diag-palco" aria-live="polite"></div>
     <aside class="diag-ficha" aria-label="{e(g["ficha_t"])}">
-      <p class="ficha-t">{LOGO}{e(g["ficha_t"])}</p>
+      <p class="ficha-t"><span class="ponto" aria-hidden="true"></span>{e(g["ficha_t"])}</p>
       <dl id="diag-ficha">{linhas}</dl>
       {f'<p class="ficha-pe">{e(g["ficha_pe"])}</p>' if g.get("ficha_pe") else ""}
     </aside>
@@ -727,10 +745,9 @@ def intro(c):
               '<line x1="-10" y1="4" x2="10" y2="4" stroke="#E8622C" stroke-width="2.5" stroke-linecap="round"/></g>')
     carro = ('<g clip-path="url(#intro-z{z})"><g id="intro-c{z}"><ellipse cx="0" cy="3" rx="0" ry="8" fill="url(#intro-sombra)"/>'
              '<image x="0" y="0" width="0" height="0"/></g></g>')
-    marca = f'<p class="marca">{LOGO}Pacheco Studios</p>'
     return f'''<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="{e(t["rotulo"])}">
   <div class="intro-topo">
-    {marca}
+    {marca("intro")}
     <button class="intro-saltar" type="button" id="intro-saltar">{e(t["saltar"])}</button>
   </div>
   <div class="intro-palco">
@@ -762,7 +779,7 @@ def intro(c):
   </div>
   <div class="intro-pe"></div>
   <div class="intro-final" aria-hidden="true">
-    {marca}
+    {marca("intro-fim", cls="grande")}
     <p class="intro-slogan">{slogan}</p>
   </div>
 </div>'''
@@ -936,7 +953,7 @@ def pagina_404(c, estilo, lang):
     return cabeca_simples(lang, t["titlu"], estilo, '<meta name="robots" content="noindex">\n') + f"""
 <body>
 <header class="envolver topo">
-  <a class="marca" href="{casa}">{LOGO}Pacheco Studios</a>
+  {marca("pag", "a", casa)}
 </header>
 <main id="conteudo" class="envolver seccao">
   <p class="eyebrow">404</p>
@@ -967,7 +984,7 @@ def pagina_privacidade(c, estilo, lang, email):
 <body>
 <a class="saltar" href="#conteudo">{e(LINGUAS[lang]["saltar"])}</a>
 <header class="envolver topo">
-  <a class="marca" href="{casa}">{LOGO}Pacheco Studios</a>
+  {marca("pag", "a", casa)}
 </header>
 <main id="conteudo" class="envolver seccao legal">
   <p class="eyebrow">Legal</p>
@@ -1029,7 +1046,7 @@ def pagina_cookies(c, estilo, lang, tem_pixel):
 <body>
 <a class="saltar" href="#conteudo">{e(LINGUAS[lang]["saltar"])}</a>
 <header class="envolver topo">
-  <a class="marca" href="{casa}">{LOGO}Pacheco Studios</a>
+  {marca("pag", "a", casa)}
 </header>
 <main id="conteudo" class="envolver seccao legal">
   <p class="eyebrow">Legal</p>
@@ -1122,7 +1139,7 @@ def main():
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
             "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "RODAPE": rodape(c, lang), "INTRO": intro(c),
-            "LOGO_URI": LOGO_URI, "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
+            "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }
         pagina = montar(src, valores)
         paginas[lang] = pagina

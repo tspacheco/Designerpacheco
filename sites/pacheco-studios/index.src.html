@@ -33,7 +33,7 @@
 <style>
 {{FONTES}}
 /* ═══ tokens: marca do Instagram + derivadas com contraste medido ═══ */
-:root{--logo:url("{{LOGO_URI}}");
+:root{
   --carvao:#141210; --carvao-2:#1D1A17; --osso:#EFEAE3;
   --osso-2:#A5A19B;        /* texto secundário sobre carvão — 7,3:1 */
   --tinta-2:#4D4A47;       /* texto secundário sobre osso — 7,4:1 */
@@ -312,8 +312,8 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 .legenda-e .l.espera{background:var(--e-bege);border-color:#DCD4C7}
 .folha-pe>p{padding-top:.7rem;border-top:1px solid #E7E2D9;font:400 .75rem/1.4 var(--mono);color:var(--e-tinta-2)}
 .reguli{display:grid;gap:.45rem}
-.reguli li{position:relative;padding-left:1.7rem;font-size:.9375rem}
-.reguli li::before{content:"";position:absolute;left:0;top:.2rem;width:1.1rem;height:1.1rem;background:var(--logo) center/contain no-repeat}
+.reguli li{position:relative;padding-left:1.3rem;font-size:.9375rem}
+.reguli li::before{content:"";position:absolute;left:0;top:.5rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--laranja)}
 .decide{display:grid;gap:.55rem}
 .decide div{display:grid;grid-template-columns:5.5rem 1fr;gap:.6rem;font-size:.9375rem;align-items:baseline}
 .decide b{font:700 .75rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--laranja)}
@@ -442,10 +442,14 @@ html.intro-vai .intro{display:grid}
 .primario svg{transition:transform .2s var(--sair)} .primario:hover svg{transform:translateX(.2rem)}
 .heroi-adere{margin-top:1.75rem;padding-top:1rem;border-top:1px solid var(--linha-e);max-width:38rem;display:flex;gap:.75rem;
   font:600 1.0625rem/1.5 var(--texto);color:var(--osso)}
-.heroi-adere::before{content:"";flex:none;width:1.4rem;height:1.4rem;margin-top:.1em;background:var(--logo) center/contain no-repeat}
+.heroi-adere::before{content:"";flex:none;width:.5rem;height:.5rem;margin-top:.55em;border-radius:50%;background:var(--laranja)}
 .logo{flex:none;width:2.4rem;height:2.4rem}
-.ficha-t .logo,.placa .logo{width:1.6rem;height:1.6rem}
-.intro .marca .logo{width:2rem;height:2rem}
+/* o logótipo inteiro onde vai a marca: cabeçalho, intro, páginas legais e a placa do fundo 3D */
+.logo-c{flex:none;display:block;width:3.75rem;height:3.75rem}
+@media (min-width:64rem){.topo .logo-c{width:4.5rem;height:4.5rem}}
+.intro-topo .logo-c{width:3.25rem;height:3.25rem}
+.logo-c.grande{width:clamp(7rem,28vw,10rem);height:clamp(7rem,28vw,10rem)}
+.placa.centro .logo-c{width:10.5rem;height:10.5rem}
 /* o que faz uma consultoria de IA: uma caixa, três passos */
 .caixa-c{margin-top:2rem;padding:clamp(1.25rem,4vw,2.25rem);border-radius:1.25rem;background:var(--carvao);color:var(--osso);
   box-shadow:inset 0 0 0 1px rgba(232,98,44,.55),0 1.5rem 3rem -1.75rem rgba(20,18,16,.6)}
@@ -481,7 +485,7 @@ html.intro-vai .intro{display:grid}
 .factos{margin-top:2.5rem;padding-top:1.1rem;border-top:1px solid var(--linha-e);display:flex;flex-wrap:wrap;gap:.6rem 1.75rem;
   font:700 .75rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--osso-2)}
 .factos li{display:flex;align-items:center;gap:.55rem}
-.factos li::before{content:"";width:1rem;height:1rem;background:var(--logo) center/contain no-repeat;flex:none}
+.factos li::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:var(--laranja);flex:none}
 /* entrada coreografada: só depois de a intro sair (html.intro-vai) e nunca com movimento reduzido */
 @keyframes ps-sobe{from{opacity:0;transform:translateY(1.1rem)}to{opacity:1;transform:none}}
 .js:not(.intro-vai) .heroi :is(.heroi-e,.heroi-t,.heroi-passo,.heroi-lead,.heroi-acoes,.heroi-adere){animation:ps-sobe .75s var(--sair) both;animation-delay:var(--d,0s)}
@@ -503,7 +507,7 @@ html.intro-vai .intro{display:grid}
 .cartao-v blockquote p{font:400 clamp(1.25rem,4.4vw,1.85rem)/1.42 var(--texto);letter-spacing:-.01em;color:var(--osso);text-wrap:pretty}
 .cartao-v figcaption{margin-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.1rem}
 .v-quem{display:flex;align-items:center;gap:.9rem;min-width:0}
-.v-marca{flex:none;width:3rem;height:3rem;border-radius:50%;background:var(--logo) center/contain no-repeat;
+.v-marca{flex:none;width:3rem;height:3rem;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F2773F,#A64923);
   box-shadow:0 0 0 3px var(--carvao-2),0 0 0 4px rgba(239,234,227,.25)}
 .v-quem b{display:block;font-weight:600;line-height:1.3}
 .v-quem small{display:block;margin-top:.2rem;font-size:.875rem;line-height:1.4;color:var(--osso-2)}
@@ -708,7 +712,7 @@ dialog.diag.fim .diag-ficha{display:block}
 <a class="saltar" href="#conteudo">{{SALTAR}}</a>
 
 <header class="envolver topo">
-  <h1 class="marca">{{LOGO}}Pacheco Studios</h1>
+  {{MARCA_TOPO}}
   {{LINGUAS}}
 </header>
 
