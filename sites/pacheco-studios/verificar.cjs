@@ -538,6 +538,24 @@ const fs = require('fs');
     await c.close();
   }
 
+  // ——— 5b. herói: o vídeo em fotogramas (16:9 em ecrãs deitados, recorte 9:16 ao alto) avança com o scroll ———
+  console.log('\nHERÓI');
+  for (const [w, h, conj] of [[1280, 800, 'd'], [390, 844, 'v']]) {
+    const c = await contexto({ viewport: { width: w, height: h } });
+    const q = await c.newPage();
+    await q.goto(LINGUAS.pt.url);
+    await q.waitForTimeout(1500);
+    const pedidos = await q.evaluate(() => performance.getEntriesByType('resource').map(r => r.name).filter(n => n.includes('/heroi-hd/')));
+    const certo = pedidos.length > 1 && pedidos.every(n => n.includes(`/heroi-hd/${pedidos[0].includes('/v/') ? 'v' : 'd'}/`)) && pedidos[0].includes(`/${conj}/`);
+    const rolo = await q.$eval('.heroi-bg', b => b.classList.contains('rolo'));
+    await q.evaluate(() => { const b = document.querySelector('.heroi-bg'); window.scrollTo(0, (b.offsetHeight - innerHeight) * .5); });
+    await q.waitForTimeout(500);
+    const pinta = await q.evaluate(() => { const cv = document.querySelector('.heroi-cv'); const d = cv.getContext('2d').getImageData(0, 0, cv.width, cv.height).data; let s = 0; for (let i = 0; i < d.length; i += 400) s += d[i] + d[i + 1] + d[i + 2]; return s; });
+    if (!certo || !rolo || !pinta) mal(`herói ${w}px: conjunto ${conj} certo=${certo} (${pedidos.length} pedidos) rolo=${rolo} desenha=${!!pinta}`);
+    else bem(`herói ${w}px: fotogramas ${conj === 'd' ? '16:9' : '9:16'} (${pedidos.length} carregados), preso ao ecrã e desenhado a meio do scroll`);
+    await c.close();
+  }
+
   // ——— 6. intro: 1.ª vez na sessão, com as três fotografias; salta com um toque ou Esc; nunca com movimento reduzido ———
   console.log('\nINTRO');
   for (const n of [1, 2, 3]) {

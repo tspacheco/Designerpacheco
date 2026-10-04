@@ -951,16 +951,27 @@ dialog.diag.fim .diag-ficha{display:block}
   var bg = document.querySelector('.heroi-bg'), dados = document.getElementById('heroi-quadros');
   if (!bg || !dados || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var palco = bg.querySelector('.heroi-palco'), cv = bg.querySelector('.heroi-cv'), txt = bg.querySelector('.heroi');
-  var ctx = cv.getContext('2d'), fontes = JSON.parse(dados.textContent), N = fontes.length;
-  var quadros = fontes.map(function () { return null; }), ultimo = -1, pedido = false, ativo = false;
-  // carrega o primeiro, o do meio e o último primeiro; depois os outros por ordem
-  var ordem = [0, N - 1, N >> 1].concat(fontes.map(function (_, i) { return i; }));
-  ordem.forEach(function (i) {
+  var ctx = cv.getContext('2d'), conjuntos = JSON.parse(dados.textContent), N = conjuntos.d.length;
+  var fontes = null, quadros = [], ultimo = -1, pedido = false, ativo = false, todos = false;
+  // ficheiros à parte: em file:// (pré-visualização) relativos à pasta da língua; publicado, a partir da raiz do domínio
+  var raiz = location.protocol === 'file:' ? (document.documentElement.lang === 'pt-PT' ? '' : '../') : '/';
+  function carrega(i) {
     if (quadros[i]) return;
     var im = new Image(); quadros[i] = im; im.decoding = 'async';
-    im.onload = function () { im.pronto = true; if (!pedido) agenda(); };
-    im.src = fontes[i];
-  });
+    im.onload = function () { im.pronto = true; agenda(); };
+    im.src = raiz + fontes[i];
+  }
+  // ecrã ao alto: o recorte 9:16 (v), feito à medida; deitado: o 16:9 (d)
+  function escolhe() {
+    if (fontes) return;
+    fontes = conjuntos.v && conjuntos.v.length === N && cv.height > cv.width ? conjuntos.v : conjuntos.d;
+    carrega(0);
+  }
+  // com o rolo ativo: o último e o do meio primeiro, depois os outros por ordem
+  function carregaTodos() {
+    if (todos) return; todos = true;
+    [N - 1, N >> 1].concat(fontes.map(function (_, i) { return i; })).forEach(carrega);
+  }
   function tabsH() { var t = document.querySelector('.tabs'); return t ? t.offsetHeight : 0; }
   function medir() {
     if (!palco.offsetParent) return false;               // vista escondida
@@ -976,6 +987,8 @@ dialog.diag.fim .diag-ficha{display:block}
   function desenha() {
     pedido = false;
     if (!medir()) return;
+    escolhe();
+    if (ativo) carregaTodos();
     var p = 0;
     if (ativo) {
       var r = bg.getBoundingClientRect(), total = bg.offsetHeight - palco.offsetHeight;
@@ -983,7 +996,7 @@ dialog.diag.fim .diag-ficha{display:block}
       var o = p < .55 ? 1 : Math.max(0, 1 - (p - .55) / .35);
       txt.style.opacity = o; txt.style.transform = 'translateY(' + (-(1 - o) * 40) + 'px)';
     }
-    // posição fracionária: funde o fotograma a com o a+1 (18 fotogramas chegam para um movimento contínuo)
+    // posição fracionária: funde o fotograma a com o a+1, para um movimento contínuo
     var f = p * (N - 1), a = Math.floor(f), t = f - a, b = Math.min(N - 1, a + 1);
     while (a > 0 && !(quadros[a] && quadros[a].pronto)) { a--; t = 0; }
     if (!(quadros[b] && quadros[b].pronto)) t = 0;
@@ -996,8 +1009,8 @@ dialog.diag.fim .diag-ficha{display:block}
   }
   function pinta(im, alfa) {
     var cw = cv.width, ch = cv.height, s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
-    var dw = im.naturalWidth * s, dh = im.naturalHeight * s, fx = cw > ch ? .5 : .72;
-    ctx.globalAlpha = alfa;
+    var dw = im.naturalWidth * s, dh = im.naturalHeight * s, fx = im.naturalWidth > im.naturalHeight && cw <= ch ? .72 : .5; // o recorte v já vem centrado
+    ctx.globalAlpha = alfa; ctx.imageSmoothingQuality = 'high';
     ctx.drawImage(im, (cw - dw) * fx, (ch - dh) / 2, dw, dh);
   }
   function agenda() { if (!pedido) { pedido = true; requestAnimationFrame(desenha); } }

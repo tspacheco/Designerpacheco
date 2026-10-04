@@ -477,14 +477,16 @@ def imagem_heroi():
         return ""
     b64 = base64.b64encode(open(p, "rb").read()).decode()
     img = f'<img class="heroi-img" src="data:image/webp;base64,{b64}" alt="" aria-hidden="true" decoding="async">'
-    # o vídeo do herói, em fotogramas (media/heroi-seq/NN.webp): o scroll faz avançar o vídeo (ver index.src.html)
-    seq = sorted(f for f in os.listdir(os.path.join(AQUI, "media", "heroi-seq")) if f.endswith(".webp")) \
-        if os.path.isdir(os.path.join(AQUI, "media", "heroi-seq")) else []
-    if not seq:
+    # o vídeo do herói em fotogramas (media/heroi-hd/{d,v}/NN.webp, tirados do vídeo em 4K pelo workflow buscar-video):
+    # ficheiros à parte, carregados pelo JavaScript; o scroll faz avançar o vídeo (ver index.src.html).
+    # d = 16:9 a 1920 px (ecrãs deitados), v = recorte 9:16 a 720×1280 (telemóvel ao alto).
+    seq = {k: sorted(f for f in os.listdir(os.path.join(AQUI, "media", "heroi-hd", k)) if f.endswith(".webp"))
+           for k in ("d", "v") if os.path.isdir(os.path.join(AQUI, "media", "heroi-hd", k))}
+    if not seq.get("d"):
         return img
-    quadros = [f"data:image/webp;base64,{base64.b64encode(open(os.path.join(AQUI, 'media', 'heroi-seq', f), 'rb').read()).decode()}" for f in seq]
+    dados = {k: [f"media/heroi-hd/{k}/{f}" for f in v] for k, v in seq.items()}
     return (img + '<canvas class="heroi-cv" aria-hidden="true"></canvas>'
-            f'<script type="application/json" id="heroi-quadros">{json.dumps(quadros)}</script>')
+            f'<script type="application/json" id="heroi-quadros">{json.dumps(dados)}</script>')
 
 
 def vista_consultanta(c, casos, lang, wa):
@@ -1192,6 +1194,10 @@ def main():
         if not os.path.exists(carro):
             raise SystemExit(f"falta media/intro-{i}.webp (os três carros da intro: ver LEIA-ME.md)")
         shutil.copy(carro, os.path.join(DIST, "media", f"intro-{i}.webp"))
+    hd = os.path.join(AQUI, "media", "heroi-hd")
+    if os.path.isdir(hd):
+        shutil.copytree(hd, os.path.join(DIST, "media", "heroi-hd"), dirs_exist_ok=True,
+                        ignore=shutil.ignore_patterns("*.txt"))
 
     # cópia para o git (e para abrir na app): tudo menos as cópias dos sites e os media
     antiga_pt = os.path.join(AQUI, "pt")
