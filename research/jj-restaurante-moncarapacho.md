@@ -23,3 +23,16 @@
 **Fotos:** as do Google só se veem em compósitos do Restaurant Guru com mascote por cima (`sites/jj-restaurante/media/recolha/`, não usar no site). Fachada real: casa branca térrea com barras ocre, junto à EN125. O site usa 8 imagens ilustrativas do Higgsfield (gpt_image_2_5) a substituir por fotos da casa.
 
 **Bloqueios desta sessão:** TripAdvisor 403 também pela ponte; Google Maps timeout; Google Search captcha. Restaurant Guru, menuweb e bellaciao.pt leem-se pela ponte.
+
+## Atualização 04/10/2026 (noite): fotos reais e dados novos
+
+- **A cozinheira chama-se Fatinha** (dito pelo Tomás). As fotos dela vêm do Tomás → `media/fatinha.webp`.
+- **Já têm site:** https://restaurantejj.eatbu.com/ (modelo genérico eatbu, em inglês, sem fotos próprias). Ângulo de venda: **"elevar, não substituir"**.
+  - Horário no site deles: 12:00–15:30 e 19:00–22:30, fecha à quinta (passou a ser o do novo site).
+  - Telemóvel +351 918 940 674 e e-mail jorgemiguelpais@gmail.com (provável dono ou filho: Jorge Miguel Pais, a confirmar).
+  - Morada lá: EN125, 8700-121 Murteira. O cartão da casa diz 8700-122 Olhão.
+- **Cartão da casa** (foto do Google): "Restaurante JJ · 40 anos · 1985–2025 · Murteira – Algarve", "Cozinha regional algarvia", "Arroz de marisco e cataplanas diversas", "Mariscos e peixe grelhado", restaurante.residencialjj@gmail.com, GPS N 37.06956 W 7.74714, Wi-Fi, quartos (PT/ES/EN/DE/FR).
+- **Ementa do dia manuscrita** (foto do Google, data desconhecida): sopa de legumes 2,00; ensopado de cabrito 11,00; bochechas de porco estufadas 12,50; lombo de porco c/ cogumelos 12,50; mista de carne grelhada 10,00; bitoque de frango c/ ovo 9,50; secretos de porco preto grelhados 15,00; picanha c/ ananás 16,00; robalos p/ grelhar 13,50; douradas 15,00; lulas 15,00; bifes de atum 15,00; salmão 14,00; sardinhas assadas 10,00. IVA incluído. No site aparece como "exemplo de um dia" com "preços a confirmar".
+- **Fotos reais:** a ficha do Google, aberta pela ponte com a nova operação `fotosmaps`, deu 127 fotos de clientes (lista em `sites/jj-restaurante/media/recolha/g-ids.txt`, grandes em `recolha/gl/`). Há 20 no site. Não usei as que mostram caras de clientes (026, 062, 071).
+- Street View: só se vê a traseira com vedação. Não serve.
+- Tirei as imagens geradas da "cozinheira" (cozinha, maos-bolo, postigo) e a tarte. Ficam como ilustrativas só o `ensopado.webp` e o `quarto.webp`.
