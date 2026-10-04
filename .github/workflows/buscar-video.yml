@@ -27,7 +27,7 @@ jobs:
             curl -sSfL -A "Mozilla/5.0" -o /tmp/v.mp4 "$url"
             ffprobe -v error -select_streams v:0 -show_entries stream=width,height,nb_frames,r_frame_rate,bit_rate -of default=nw=1 /tmp/v.mp4 | tee "$dest/info.txt"
             sel="select='not(mod(n\,$passo))'"
-            ffmpeg -v error -i /tmp/v.mp4 -vf "$sel,scale='min(1920,iw)':-2:flags=lanczos" -fps_mode vfr -c:v libwebp -quality 76 -compression_level 6 "$dest/d/%02d.webp"
+            ffmpeg -v error -i /tmp/v.mp4 -vf "$sel,scale='min(1920,iw)':-2:flags=lanczos" -fps_mode vfr -c:v libwebp -quality 72 -compression_level 6 "$dest/d/%02d.webp"
             ffmpeg -v error -i /tmp/v.mp4 -vf "$sel,crop=ih*9/16:ih:(iw-ih*9/16)*0.72:0,scale=720:1280:flags=lanczos" -fps_mode vfr -c:v libwebp -quality 74 -compression_level 6 "$dest/v/%02d.webp"
             echo "d: $(ls $dest/d | wc -l) fotogramas, $(du -sk $dest/d | cut -f1) KB" | tee -a "$dest/info.txt"
             echo "v: $(ls $dest/v | wc -l) fotogramas, $(du -sk $dest/v | cut -f1) KB" | tee -a "$dest/info.txt"
