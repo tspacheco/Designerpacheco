@@ -357,6 +357,13 @@ const fs = require('fs');
         await p.waitForSelector('#diag-in', { timeout: 8000 });
         const t = q.tipo === 'tel' ? '+351 900 000 000' : `Teste ${q.id}`;
         await p.fill('#diag-in', t); await p.press('#diag-in', 'Enter'); respostas.push(t);
+      } else if (q.outro) {
+        // «Outro»: abre um campo; o que se escreve é a resposta
+        await p.waitForSelector('.diag-op', { timeout: 8000 });
+        await p.click(`.diag-op:nth-child(${q.opcoes.indexOf(q.outro) + 1})`);
+        await p.waitForSelector('#diag-in', { timeout: 8000 });
+        const t = `Teste ${q.id} escrito`;
+        await p.fill('#diag-in', t); await p.press('#diag-in', 'Enter'); respostas.push(t);
       } else {
         await p.waitForSelector('.diag-op', { timeout: 8000 });
         await p.click('.diag-op'); respostas.push(q.opcoes[0]);
@@ -370,8 +377,10 @@ const fs = require('fs');
     const falta = respostas.filter(t => !fim.href.includes(t));
     await p.keyboard.press('Escape');
     const fechou = await p.evaluate(() => !document.getElementById('diagnostico').open);
-    if (falta.length || +fim.n !== g.perguntas.length || !fim.aberto || !fechou) mal(`${k}, diagnóstico: ${JSON.stringify({ falta, fim, fechou })}`);
-    else bem(`${k}: diagnóstico com a ficha, ${g.perguntas.length} respostas, todas na mensagem para o WhatsApp; Esc fecha`);
+    const fat = g.perguntas.find(q => q.id === 'faturacao');
+    const moeda = fat && fat.opcoes.slice(0, -1).every(o => o.includes(k === 'ro' ? 'lei' : '€'));
+    if (falta.length || +fim.n !== g.perguntas.length || !fim.aberto || !fechou || !moeda) mal(`${k}, diagnóstico: ${JSON.stringify({ falta, fim, fechou, moeda })}`);
+    else bem(`${k}: diagnóstico com a ficha, ${g.perguntas.length} respostas (tipo «${g.perguntas.find(q => q.outro).outro}» escrito à mão, faturação em ${k === 'ro' ? 'lei' : '€'}), todas na mensagem para o WhatsApp; Esc fecha`);
   }
 
   // anúncio de sites: entra nos Sites; sem utm, entra na Consultoria

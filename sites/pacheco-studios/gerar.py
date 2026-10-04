@@ -467,7 +467,7 @@ def mosaico(rotulos, centro, cls):
     """Mosaico 3D (só decoração): um plano isométrico com a grelha e os passos em placas; a placa do meio é a marca."""
     placas = "".join(f'<span class="placa p{i + 1}"><span>{e(t)}</span></span>' for i, t in enumerate(rotulos))
     return (f'<div class="mosaico {cls}" aria-hidden="true"><div class="plano">{placas}'
-            f'<span class="placa centro"><span><i class="ponto"></i>{e(centro)}</span></span></div></div>')
+            f'<span class="placa centro"><span>{LOGO}{e(centro)}</span></span></div></div>')
 
 
 def imagem_heroi():
@@ -612,9 +612,9 @@ def diagnostico(c, url_priv):
   <div class="diag-corpo">
     <div class="diag-palco" id="diag-palco" aria-live="polite"></div>
     <aside class="diag-ficha" aria-label="{e(g["ficha_t"])}">
-      <p class="ficha-t"><span class="ponto" aria-hidden="true"></span>{e(g["ficha_t"])}</p>
+      <p class="ficha-t">{LOGO}{e(g["ficha_t"])}</p>
       <dl id="diag-ficha">{linhas}</dl>
-      <p class="ficha-pe">{e(g["ficha_pe"])}</p>
+      {f'<p class="ficha-pe">{e(g["ficha_pe"])}</p>' if g.get("ficha_pe") else ""}
     </aside>
   </div>
   <p class="diag-pe">{priv}</p>
@@ -723,7 +723,7 @@ def intro(c):
               '<line x1="-10" y1="4" x2="10" y2="4" stroke="#E8622C" stroke-width="2.5" stroke-linecap="round"/></g>')
     carro = ('<g clip-path="url(#intro-z{z})"><g id="intro-c{z}"><ellipse cx="0" cy="3" rx="0" ry="8" fill="url(#intro-sombra)"/>'
              '<image x="0" y="0" width="0" height="0"/></g></g>')
-    marca = '<p class="marca"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</p>'
+    marca = f'<p class="marca">{LOGO}Pacheco Studios</p>'
     return f'''<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="{e(t["rotulo"])}">
   <div class="intro-topo">
     {marca}
@@ -933,7 +933,7 @@ def pagina_404(c, estilo, lang):
     return cabeca_simples(lang, t["titlu"], estilo, '<meta name="robots" content="noindex">\n') + f"""
 <body>
 <header class="envolver topo">
-  <a class="marca" href="{casa}"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</a>
+  <a class="marca" href="{casa}">{LOGO}Pacheco Studios</a>
 </header>
 <main id="conteudo" class="envolver seccao">
   <p class="eyebrow">404</p>
@@ -964,7 +964,7 @@ def pagina_privacidade(c, estilo, lang, email):
 <body>
 <a class="saltar" href="#conteudo">{e(LINGUAS[lang]["saltar"])}</a>
 <header class="envolver topo">
-  <a class="marca" href="{casa}"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</a>
+  <a class="marca" href="{casa}">{LOGO}Pacheco Studios</a>
 </header>
 <main id="conteudo" class="envolver seccao legal">
   <p class="eyebrow">Legal</p>
@@ -1026,7 +1026,7 @@ def pagina_cookies(c, estilo, lang, tem_pixel):
 <body>
 <a class="saltar" href="#conteudo">{e(LINGUAS[lang]["saltar"])}</a>
 <header class="envolver topo">
-  <a class="marca" href="{casa}"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</a>
+  <a class="marca" href="{casa}">{LOGO}Pacheco Studios</a>
 </header>
 <main id="conteudo" class="envolver seccao legal">
   <p class="eyebrow">Legal</p>

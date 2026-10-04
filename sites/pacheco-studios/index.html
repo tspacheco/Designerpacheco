@@ -450,6 +450,8 @@ html.intro-vai .intro{display:grid}
   font:600 1.0625rem/1.5 var(--texto);color:var(--osso)}
 .heroi-adere::before{content:"";flex:none;width:.5rem;height:.5rem;margin-top:.55em;border-radius:50%;background:var(--laranja)}
 .logo{flex:none;width:2.4rem;height:2.4rem}
+.ficha-t .logo,.placa .logo{width:1.6rem;height:1.6rem}
+.intro .marca .logo{width:2rem;height:2rem}
 /* o que faz uma consultoria de IA: uma caixa, três passos */
 .caixa-c{margin-top:2rem;padding:clamp(1.25rem,4vw,2.25rem);border-radius:1.25rem;background:var(--carvao);color:var(--osso);
   box-shadow:inset 0 0 0 1px rgba(232,98,44,.55),0 1.5rem 3rem -1.75rem rgba(20,18,16,.6)}
@@ -537,6 +539,7 @@ dialog.diag::backdrop{background:rgba(0,0,0,.7)}
 .diag-q{margin-top:.9rem;font:400 clamp(1.7rem,6.4vw,2.9rem)/1.02 var(--display);text-transform:uppercase;text-wrap:balance}
 .diag-txt{margin-top:1rem;max-width:40ch;color:var(--osso-2);font-size:1.0625rem}
 .diag-campo{margin-top:2rem}
+.diag-outro{margin-top:1.4rem}
 .diag-campo label{display:block;font:700 .75rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--osso-2)}
 .diag-campo input{display:block;width:100%;margin-top:.6rem;min-height:3.25rem;padding:.4rem 0;border:0;border-bottom:2px solid rgba(239,234,227,.45);
   background:transparent;color:var(--osso);font:400 clamp(1.3rem,4.6vw,1.75rem)/1.3 var(--texto);border-radius:0;outline:none;transition:border-color .2s}
@@ -1334,7 +1337,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </div>
   </div>
   <div class="veredito seccao">
-    <div class="mosaico fundo-3d" aria-hidden="true"><div class="plano"><span class="placa p1"><span></span></span><span class="placa p2"><span></span></span><span class="placa p3"><span></span></span><span class="placa p4"><span></span></span><span class="placa centro"><span><i class="ponto"></i>Pacheco Studios</span></span></div></div>
+    <div class="mosaico fundo-3d" aria-hidden="true"><div class="plano"><span class="placa p1"><span></span></span><span class="placa p2"><span></span></span><span class="placa p3"><span></span></span><span class="placa p4"><span></span></span><span class="placa centro"><span><svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>Pacheco Studios</span></span></div></div>
     <div class="envolver">
       <p class="eyebrow">Veredito de um caso real</p>
       <h2 class="so-leitor">O veredito de quem já pôs a IA a atender</h2>
@@ -1381,7 +1384,7 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="envolver">
     <p class="eyebrow">Primeiro passo</p>
     <h2 id="t-contact" class="afirmacao">O primeiro passo é uma conversa.</h2>
-    <p class="lead">8 perguntas, menos de 2 minutos. Depois falamos no WhatsApp e recebes o diagnóstico escrito no mesmo dia.</p>
+    <p class="lead">8 perguntas, menos de 2 minutos. Depois falamos no WhatsApp.</p>
     <a class="botao primario grande" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20" data-diagnostico>Conhece-nos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <ul class="contactos">
 <li><a href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="txt"><span class="qual">WhatsApp</span><span class="valor">+351 967 117 357</span></span></a></li>
@@ -1408,7 +1411,7 @@ dialog.diag.fim .diag-ficha{display:block}
 
 <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Introdução">
   <div class="intro-topo">
-    <p class="marca"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</p>
+    <p class="marca"><svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>Pacheco Studios</p>
     <button class="intro-saltar" type="button" id="intro-saltar">Saltar</button>
   </div>
   <div class="intro-palco">
@@ -1442,7 +1445,7 @@ dialog.diag.fim .diag-ficha{display:block}
   </div>
   <div class="intro-pe"></div>
   <div class="intro-final" aria-hidden="true">
-    <p class="marca"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</p>
+    <p class="marca"><svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>Pacheco Studios</p>
     <p class="intro-slogan">Tens um objetivo? <em>A IA faz</em> <em>acontecer.</em></p>
   </div>
 </div>
@@ -1457,13 +1460,13 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="diag-corpo">
     <div class="diag-palco" id="diag-palco" aria-live="polite"></div>
     <aside class="diag-ficha" aria-label="Ficha do teu negócio">
-      <p class="ficha-t"><span class="ponto" aria-hidden="true"></span>Ficha do teu negócio</p>
-      <dl id="diag-ficha"><div data-id="nome"><dt>Nome</dt><dd>—</dd></div><div data-id="negocio"><dt>Negócio</dt><dd>—</dd></div><div data-id="tipo"><dt>Tipo</dt><dd>—</dd></div><div data-id="onde"><dt>Cidade</dt><dd>—</dd></div><div data-id="objetivo"><dt>Objetivo</dt><dd>—</dd></div><div data-id="dor"><dt>Onde se perde</dt><dd>—</dd></div><div data-id="canais"><dt>Chegam por</dt><dd>—</dd></div><div data-id="contacto"><dt>Contacto</dt><dd>—</dd></div></dl>
-      <p class="ficha-pe">Diagnóstico escrito no mesmo dia</p>
+      <p class="ficha-t"><svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>Ficha do teu negócio</p>
+      <dl id="diag-ficha"><div data-id="nome"><dt>Nome</dt><dd>—</dd></div><div data-id="negocio"><dt>Negócio</dt><dd>—</dd></div><div data-id="tipo"><dt>Tipo</dt><dd>—</dd></div><div data-id="onde"><dt>Cidade</dt><dd>—</dd></div><div data-id="faturacao"><dt>Faturação/mês</dt><dd>—</dd></div><div data-id="dor"><dt>Onde se perde</dt><dd>—</dd></div><div data-id="canais"><dt>Chegam por</dt><dd>—</dd></div><div data-id="contacto"><dt>Contacto</dt><dd>—</dd></div></dl>
+      
     </aside>
   </div>
   <p class="diag-pe">Ao continuar, concordas com a <a href="/privacidade.html">Política de Privacidade</a>. As respostas só saem do teu telemóvel quando tocas em enviar.</p>
-  <script type="application/json" id="diag-dados">{"abertura": ["Os negócios que põem a IA no sítio certo respondem mais depressa, perdem menos clientes e ganham horas por semana. Vamos ver onde é que isso está no teu?", "São 8 perguntas, menos de 2 minutos. Como te chamas?"], "perguntas": [{"id": "nome", "tipo": "texto", "rotulo": "O teu nome", "ph": "Nome e apelido", "wa": "Nome", "msg": "Como te chamas?"}, {"id": "negocio", "tipo": "texto", "msg": "Prazer, {nome}! Como se chama o teu negócio?", "rotulo": "Nome do negócio", "ph": "Ex.: Café Central", "wa": "Negócio"}, {"id": "tipo", "tipo": "opcoes", "msg": "Que tipo de negócio é?", "opcoes": ["Restaurante ou café", "Clínica ou saúde", "Salão, barbearia ou estética", "Loja", "Serviços com marcação", "Outro"], "wa": "Tipo"}, {"id": "onde", "tipo": "texto", "msg": "Em que cidade fica?", "rotulo": "Cidade", "ph": "Ex.: Faro", "wa": "Cidade"}, {"id": "objetivo", "tipo": "opcoes", "msg": "Se a IA resolvesse uma coisa nos próximos 3 meses, qual seria?", "opcoes": ["Mais clientes novos", "Que os clientes voltem mais vezes", "Menos faltas às marcações", "Responder a toda a gente, a qualquer hora", "Mais avaliações no Google", "Ganhar tempo no dia a dia"], "wa": "Objetivo"}, {"id": "dor", "tipo": "multi", "msg": "Onde se perde mais hoje? Podes escolher várias.", "opcoes": ["Mensagens e chamadas sem resposta", "Marcações e faltas", "Clientes que vêm uma vez e não voltam", "Poucas avaliações", "Papelada, talões e faturas", "Redes sociais paradas"], "wa": "Onde se perde"}, {"id": "canais", "tipo": "multi", "msg": "E como te chegam os clientes?", "opcoes": ["Google e Maps", "Instagram ou Facebook", "WhatsApp", "Telefone", "De passagem", "Recomendação", "Plataformas (Glovo, Booking…)"], "wa": "Chegam por"}, {"id": "contacto", "tipo": "tel", "msg": "Último passo: para que número envio o diagnóstico?", "rotulo": "WhatsApp ou telefone", "ph": "+351 …", "wa": "Contacto"}], "continuar": "Continuar", "obrigatorio": "Escreve pelo menos 2 letras.", "escolhe": "Escolhe pelo menos uma.", "fim": ["Obrigado, {nome}! Já tenho o que preciso para começar.", "Toca em enviar: a conversa continua no WhatsApp e o diagnóstico escrito chega no mesmo dia."], "enviar": "Enviar pelo WhatsApp", "recomecar": "Recomeçar", "wa_intro": "Olá Tomás! Fiz o diagnóstico no site:", "comecar": "Começar", "anterior": "Anterior", "seguinte": "Seguinte", "pergunta": "Pergunta", "meta": "8 perguntas · menos de 2 minutos", "intro_t": "Vamos ver onde a IA entra no teu negócio."}</script>
+  <script type="application/json" id="diag-dados">{"abertura": ["Os negócios que põem a IA no sítio certo respondem mais depressa, perdem menos clientes e ganham horas por semana. Vamos ver onde é que isso está no teu?", "São 8 perguntas, menos de 2 minutos. Como te chamas?"], "perguntas": [{"id": "nome", "tipo": "texto", "rotulo": "O teu nome", "ph": "Nome e apelido", "wa": "Nome", "msg": "Como te chamas?"}, {"id": "negocio", "tipo": "texto", "msg": "Prazer, {nome}! Como se chama o teu negócio?", "rotulo": "Nome do negócio", "ph": "Ex.: Café Central", "wa": "Negócio"}, {"id": "tipo", "tipo": "opcoes", "msg": "Que tipo de negócio é?", "opcoes": ["Restaurante ou café", "Clínica ou saúde", "Salão, barbearia ou estética", "Loja", "Serviços com marcação", "Outro"], "wa": "Tipo", "outro": "Outro", "outro_rotulo": "Que tipo de negócio?", "outro_ph": "Ex.: oficina, ginásio, escola de línguas"}, {"id": "onde", "tipo": "texto", "msg": "Em que cidade fica?", "rotulo": "Cidade", "ph": "Ex.: Faro", "wa": "Cidade"}, {"id": "faturacao", "tipo": "opcoes", "msg": "Como está o negócio hoje? Quanto fatura por mês, mais ou menos?", "opcoes": ["Até 2 500 €", "2 500 – 5 000 €", "5 000 – 10 000 €", "10 000 – 20 000 €", "20 000 – 35 000 €", "35 000 – 50 000 €", "Mais de 50 000 €", "Prefiro não dizer"], "wa": "Faturação/mês"}, {"id": "dor", "tipo": "multi", "msg": "Onde se perde mais hoje? Podes escolher várias.", "opcoes": ["Mensagens e chamadas sem resposta", "Marcações e faltas", "Clientes que vêm uma vez e não voltam", "Poucas avaliações", "Papelada, talões e faturas", "Redes sociais paradas"], "wa": "Onde se perde"}, {"id": "canais", "tipo": "multi", "msg": "E como te chegam os clientes?", "opcoes": ["Google e Maps", "Instagram ou Facebook", "WhatsApp", "Telefone", "De passagem", "Recomendação", "Plataformas (Glovo, Booking…)"], "wa": "Chegam por"}, {"id": "contacto", "tipo": "tel", "msg": "Último passo: para que número envio o diagnóstico?", "rotulo": "WhatsApp ou telefone", "ph": "+351 …", "wa": "Contacto"}], "continuar": "Continuar", "obrigatorio": "Escreve pelo menos 2 letras.", "escolhe": "Escolhe pelo menos uma.", "fim": ["Obrigado, {nome}! Já tenho o que preciso para começar.", "Toca em enviar: a conversa continua no WhatsApp."], "enviar": "Enviar pelo WhatsApp", "recomecar": "Recomeçar", "wa_intro": "Olá Tomás! Fiz o diagnóstico no site:", "comecar": "Começar", "anterior": "Anterior", "seguinte": "Seguinte", "pergunta": "Pergunta", "meta": "8 perguntas · menos de 2 minutos", "intro_t": "Vamos ver onde a IA entra no teu negócio."}</script>
 </dialog>
 
 <script>
@@ -1805,27 +1808,47 @@ dialog.diag.fim .diag-ficha{display:block}
       seg.addEventListener('click', ir);
       setTimeout(function () { inp.focus({ preventScroll: true }); }, 30);
     } else {
-      var multi = q.tipo === 'multi', box = el('div', 'diag-ops');
+      var multi = q.tipo === 'multi', box = el('div', 'diag-ops'), campo = null;
       box.setAttribute('role', 'group'); box.setAttribute('aria-labelledby', 'diag-q');
       var antes = [].concat(r[q.id] || []);
+      // «Outro»: abre um campo para escrever o que melhor descreve o negócio (a resposta guardada é o texto escrito)
+      var proprio = !multi && q.outro && r[q.id] && q.opcoes.indexOf(r[q.id]) < 0 ? r[q.id] : '';
+      function abreOutro(v) {
+        if (!campo) {
+          campo = el('div', 'diag-campo diag-outro');
+          var lab = el('label', null, q.outro_rotulo), inp = el('input');
+          lab.htmlFor = 'diag-in'; inp.id = 'diag-in'; inp.type = 'text'; inp.placeholder = q.outro_ph || ''; inp.value = v || '';
+          inp.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); seg.click(); } });
+          campo.appendChild(lab); campo.appendChild(inp); box.parentNode.insertBefore(campo, box.nextSibling);
+        }
+        setTimeout(function () { campo.querySelector('input').focus({ preventScroll: true }); }, 30);
+      }
       q.opcoes.forEach(function (o, i) {
         var b = el('button', 'diag-op'); b.type = 'button';
         b.innerHTML = '<kbd aria-hidden="true">' + LETRAS[i] + '</kbd><span></span>'; b.querySelector('span').textContent = o;
-        b.setAttribute('aria-pressed', antes.indexOf(o) > -1 ? 'true' : 'false');
+        b.setAttribute('aria-pressed', antes.indexOf(o) > -1 || (proprio && o === q.outro) ? 'true' : 'false');
         b.addEventListener('click', function () {
           if (multi) { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); return; }
           box.querySelectorAll('.diag-op').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          if (q.outro && o === q.outro) { abreOutro(''); return; }
+          if (campo) { campo.remove(); campo = null; }
           r[q.id] = o; setTimeout(function () { passo++; mostrar(); }, 180);
         });
         box.appendChild(b);
       });
       palco.appendChild(box);
+      if (proprio) abreOutro(proprio);
       seg.addEventListener('click', function () {
         var esc = [].map.call(box.querySelectorAll('[aria-pressed="true"] span'), function (s) { return s.textContent; });
         if (!esc.length) { erro(D.escolhe); return; }
+        if (campo) {
+          var v = campo.querySelector('input').value.trim();
+          if (v.replace(/[^\p{L}\p{N}]/gu, '').length < 2) { erro(D.obrigatorio); campo.querySelector('input').focus(); return; }
+          r[q.id] = v; passo++; mostrar(); return;
+        }
         r[q.id] = multi ? esc : esc[0]; passo++; mostrar();
       });
-      setTimeout(function () { box.querySelector('button').focus({ preventScroll: true }); }, 30);
+      if (!proprio) setTimeout(function () { box.querySelector('button').focus({ preventScroll: true }); }, 30);
     }
     if (passo > 0) acoes.appendChild(ant);
     acoes.appendChild(seg);
