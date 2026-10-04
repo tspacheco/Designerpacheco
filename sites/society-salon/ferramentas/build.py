@@ -15,4 +15,9 @@ out = (src.replace('/*__FONTES__*/', open('_fontes/fontes-v2.css', encoding='utf
 assert '__' not in re.sub(r'__[a-z]', '', out.replace('/*__FONTES__*/', 'X')) or True
 faltam = sorted({m for m in re.findall(r'media/([\w.-]+\.webp)', out) if not os.path.exists('media/' + m)})
 open('index.html', 'w', encoding='utf-8').write(out)
+# pt.html: a mesma página a abrir em português (para o Tomás rever); o cliente vê RO/EN
+pt = out.replace('<html lang="ro" data-lang="ro">', '<html lang="pt-PT" data-lang="pt">', 1).replace("'ss2.lang'", "'ss2.lang.pt'")
+pt = pt.replace('<title>Society Salon · Barbershop în Copou, Iași</title>', '<title>Society Salon · Barbearia em Copou, Iași</title>', 1)
+assert 'data-lang="pt"' in pt
+open('pt.html', 'w', encoding='utf-8').write(pt)
 print('index.html %.0f KB' % (len(out.encode()) / 1024) + (' · faltam: ' + ', '.join(faltam) if faltam else ' · todas as fotos presentes'))

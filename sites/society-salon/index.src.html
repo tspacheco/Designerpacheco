@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ro_RO">
 <link rel="icon" href="__FAVICON__">
-<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('ss2.lang');if(l==='en'||l==='ro'){document.documentElement.dataset.lang=l;document.documentElement.lang=l}}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('ss2.lang');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
 <style>
 /*__FONTES__*/
 :root{
@@ -35,12 +35,14 @@ p{margin:0}
 ul,ol{margin:0;padding:0;list-style:none}
 h1,h2,h3{margin:0;font-weight:400}
 button{font:inherit;color:inherit}
-html[data-lang="ro"] [lang="en"]{display:none!important}
-html[data-lang="en"] [lang="ro"]{display:none!important}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
 .lat{width:var(--lat);margin-inline:auto}
 .mono{font-family:var(--f-mono)}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 :focus-visible{outline:2px solid var(--rosu);outline-offset:3px}
+[tabindex="-1"]:focus{outline:none}
 .sari{position:absolute;left:12px;top:-60px;z-index:100;background:var(--cerneala);color:#fff;padding:10px 14px;text-decoration:none;font-weight:600}
 .sari:focus{top:12px}
 .de-confirmat{display:inline-block;font:500 12px/1.4 var(--f-mono);letter-spacing:.02em;color:var(--rosu-text);background:rgba(227,0,15,.07);padding:2px 7px;border-radius:3px;white-space:nowrap}
@@ -356,6 +358,41 @@ html.js .rv.d3{transition-delay:.24s}
 @media (min-width:760px){.contact{grid-template-columns:repeat(2,1fr);gap:34px}}
 @media (min-width:1080px){.contact{grid-template-columns:repeat(4,1fr)}}
 
+/* ===== subpáginas ===== */
+.pagina[hidden]{display:none!important}
+.firimituri{border-bottom:1px solid var(--linie);font:500 12px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--otel)}
+.firimituri .lat{display:flex;gap:10px;align-items:center;min-height:46px}
+.firimituri a{text-decoration:none;color:var(--otel);padding-block:12px}
+.firimituri a:hover{color:var(--cerneala)}
+.firimituri [aria-current]{color:var(--cerneala)}
+.firimituri+.sectiune{padding-top:clamp(48px,6vw,88px)}
+.pagina-intrare{animation:pagIn .45s var(--ease) both}
+@keyframes pagIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.index{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.ix{display:grid;grid-template-columns:96px 1fr 24px;gap:16px;align-items:center;padding:12px 16px 12px 12px;background:#fff;border:1px solid var(--linie);border-radius:6px;text-decoration:none;transition:border-color .2s,transform .3s var(--ease)}
+.ix:hover{border-color:var(--cerneala);transform:translateY(-2px)}
+.ix-foto{width:96px;height:96px;border-radius:4px;overflow:hidden;background:var(--grafit) linear-gradient(160deg,#2A2A2A,#141414);display:block}
+.ix-foto img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.ix:hover .ix-foto img{transform:scale(1.06)}
+.ix-card{display:grid;place-items:center;align-content:center;gap:6px;background:var(--card)}
+.ix-sigiliu{width:38px;height:38px;border-radius:50%;background:var(--rosu);display:grid;place-items:center;transform:rotate(-8deg)}
+.ix-sigiliu svg{width:12px;height:18px;fill:#fff}
+.ix-6{font:500 9px/1 var(--f-mono);letter-spacing:.08em;color:#fff}
+.ix-txt{display:grid;gap:4px;min-width:0}
+.ix-t{font:400 25px/1.05 var(--f-disp)}
+.ix-d{font-size:14.5px;line-height:1.4;color:var(--otel)}
+.ix-sag{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--ease)}
+.ix:hover .ix-sag{transform:translateX(4px);stroke:var(--rosu)}
+@media (min-width:900px){.index{grid-template-columns:repeat(3,1fr)}.ix{grid-template-columns:1fr;padding:12px 12px 20px}.ix-foto{width:100%;height:auto;aspect-ratio:16/10}.ix-txt{padding-inline:6px}.ix-sag{position:absolute;right:18px;bottom:22px}.ix{position:relative}.ix-t{font-size:28px;padding-right:30px}.ix-d{padding-right:34px}}
+.urm{border-top:1px solid var(--linie)}
+.urm a{display:grid;gap:10px;padding-block:clamp(44px,6vw,72px);text-decoration:none}
+.urm-t{display:flex;align-items:center;gap:18px;font:400 clamp(36px,5.4vw,68px)/1 var(--f-disp);transition:color .2s}
+.urm-t svg{width:.7em;height:.7em;flex:none;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease)}
+.urm a:hover .urm-t{color:var(--rosu-text)}
+.urm a:hover .urm-t svg{transform:translateX(8px)}
+.nav a[aria-current="page"]{color:var(--cerneala);box-shadow:inset 0 -2px 0 var(--rosu)}
+.meniu li a[aria-current="page"]{color:#FF6B74}
+
 /* rodapé */
 .rodape{background:var(--cerneala);color:var(--argint);padding-block:64px calc(env(safe-area-inset-bottom,0px) + 110px);font-size:15px}
 .rodape .logo-rod{height:56px;width:auto}
@@ -403,82 +440,85 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
 </script>
 </head>
 <body>
-<a class="sari" href="#continut"><span lang="ro">Sari la conținut</span><span lang="en">Skip to content</span></a>
+<a class="sari" href="#continut"><span lang="ro">Sari la conținut</span><span lang="en">Skip to content</span><span lang="pt">Saltar para o conteúdo</span></a>
 
 <div class="demo" role="note">
   <span lang="ro">PREZENTARE PACHECO STUDIOS · propunere de site nou<span class="lung"> · ce e marcat <b>de confirmat</b> completăm împreună cu salonul</span></span>
-  <span lang="en">PACHECO STUDIOS PRESENTATION · new website proposal<span class="lung"> · anything marked <b>to confirm</b> we fill in with the salon</span></span>
+  <span lang="en">PACHECO STUDIOS PRESENTATION · new website proposal<span class="lung"> · anything marked <b>to confirm</b> we fill in with the salon</span></span><span lang="pt">APRESENTAÇÃO PACHECO STUDIOS · proposta de site novo<span class="lung"> · o que está marcado <b>a confirmar</b> completamos com o salão</span></span>
 </div>
 
 <header class="bara" id="bara">
   <div class="bara-in">
-    <a class="marca" href="#sus"><img src="__LOGO_NEGRU__" width="600" height="196" alt="Society Salon"></a>
+    <a class="marca" href="#/"><img src="__LOGO_NEGRU__" width="600" height="196" alt="Society Salon"></a>
     <nav class="nav" aria-label="Principal">
-      <a href="#programare"><span lang="ro">Programare</span><span lang="en">Booking</span></a>
-      <a href="#preturi"><span lang="ro">Prețuri</span><span lang="en">Prices</span></a>
-      <a href="#echipa"><span lang="ro">Echipa</span><span lang="en">Team</span></a>
-      <a href="#lucrari"><span lang="ro">Lucrări</span><span lang="en">Work</span></a>
-      <a href="#card"><span lang="ro">Cardul</span><span lang="en">The card</span></a>
-      <a href="#program"><span lang="ro">Program</span><span lang="en">Hours</span></a>
+      <a href="#/programare"><span lang="ro">Programare</span><span lang="en">Booking</span><span lang="pt">Marcação</span></a>
+      <a href="#/servicii"><span lang="ro">Servicii</span><span lang="en">Services</span><span lang="pt">Serviços</span></a>
+      <a href="#/echipa"><span lang="ro">Echipa</span><span lang="en">Team</span><span lang="pt">Equipa</span></a>
+      <a href="#/lucrari"><span lang="ro">Lucrări</span><span lang="en">Work</span><span lang="pt">Trabalhos</span></a>
+      <a href="#/card"><span lang="ro">Cardul</span><span lang="en">The card</span><span lang="pt">O cartão</span></a>
+      <a href="#/contact"><span lang="ro">Contact</span><span lang="en">Contact</span><span lang="pt">Contacto</span></a>
     </nav>
     <div class="limba" role="group" aria-label="Limba / Language">
       <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
       <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false">PT</button>
     </div>
-    <a class="btn btn-rosu cta" href="#programare"><span lang="ro">Programează-te</span><span lang="en">Book now</span></a>
-    <button class="burger" type="button" aria-expanded="false" aria-controls="meniu"><span class="sr-only"><span lang="ro">Meniu</span><span lang="en">Menu</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+    <a class="btn btn-rosu cta" href="#/programare"><span lang="ro">Programează-te</span><span lang="en">Book now</span><span lang="pt">Marcar</span></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="meniu"><span class="sr-only"><span lang="ro">Meniu</span><span lang="en">Menu</span><span lang="pt">Menu</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
   </div>
 </header>
 
 <div class="meniu" id="meniu" role="dialog" aria-modal="true" aria-label="Meniu">
   <div class="meniu-sus">
     <img src="__LOGO_ALB__" width="600" height="196" alt="">
-    <button class="burger inchide" type="button" style="color:#fff"><span class="sr-only"><span lang="ro">Închide meniul</span><span lang="en">Close menu</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button class="burger inchide" type="button" style="color:#fff"><span class="sr-only"><span lang="ro">Închide meniul</span><span lang="en">Close menu</span><span lang="pt">Fechar o menu</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
   <ul>
-    <li><a href="#programare"><span lang="ro">Programare</span><span lang="en">Booking</span></a></li>
-    <li><a href="#preturi"><span lang="ro">Prețuri</span><span lang="en">Prices</span></a></li>
-    <li><a href="#echipa"><span lang="ro">Echipa</span><span lang="en">Team</span></a></li>
-    <li><a href="#lucrari"><span lang="ro">Lucrări</span><span lang="en">Work</span></a></li>
-    <li><a href="#card"><span lang="ro">Cardul de membru</span><span lang="en">Member card</span></a></li>
-    <li><a href="#program"><span lang="ro">Program și locație</span><span lang="en">Hours and location</span></a></li>
+    <li><a href="#/"><span lang="ro">Acasă</span><span lang="en">Home</span><span lang="pt">Início</span></a></li>
+    <li><a href="#/programare"><span lang="ro">Programare</span><span lang="en">Booking</span><span lang="pt">Marcação</span></a></li>
+    <li><a href="#/servicii"><span lang="ro">Servicii</span><span lang="en">Services</span><span lang="pt">Serviços</span></a></li>
+    <li><a href="#/echipa"><span lang="ro">Echipa</span><span lang="en">Team</span><span lang="pt">Equipa</span></a></li>
+    <li><a href="#/lucrari"><span lang="ro">Lucrări</span><span lang="en">Work</span><span lang="pt">Trabalhos</span></a></li>
+    <li><a href="#/card"><span lang="ro">Cardul de membru</span><span lang="en">Member card</span><span lang="pt">Cartão de membro</span></a></li>
+    <li><a href="#/contact"><span lang="ro">Program și locație</span><span lang="en">Hours and location</span><span lang="pt">Horário e localização</span></a></li>
   </ul>
-  <a class="btn btn-rosu" href="https://mero.ro/p/societysalon" target="_blank" rel="noopener"><span lang="ro">Programează-te pe MERO</span><span lang="en">Book on MERO</span></a>
+  <a class="btn btn-rosu" href="https://mero.ro/p/societysalon" target="_blank" rel="noopener"><span lang="ro">Programează-te pe MERO</span><span lang="en">Book on MERO</span><span lang="pt">Marcar no MERO</span></a>
 </div>
 
 <main id="continut">
-  <!-- ERou -->
+  <div class="pagina" data-pagina="acasa">
+<!-- ERou -->
   <section class="erou" id="sus">
     <div class="lat erou-grid">
       <div>
-        <p class="supra">Society Salon <i>/</i> Barbershop <i>/</i> Copou, Iași <i>/</i> <span lang="ro">din 2025</span><span lang="en">since 2025</span></p>
+        <p class="supra">Society Salon <i>/</i> Barbershop <i>/</i> Copou, Iași <i>/</i> <span lang="ro">din 2025</span><span lang="en">since 2025</span><span lang="pt">desde 2025</span></p>
         <h1 class="titlu-erou">
           <span class="r r1">Authentically <em>you.</em></span>
           <span class="r r2">Skillfully <em>us.</em></span>
-          <span class="sr-only"><span lang="ro"> Society Salon, barbershop pentru bărbați în Copou, Iași.</span><span lang="en"> Society Salon, men's barbershop in Copou, Iași.</span></span>
+          <span class="sr-only"><span lang="ro"> Society Salon, barbershop pentru bărbați în Copou, Iași.</span><span lang="en"> Society Salon, men's barbershop in Copou, Iași.</span><span lang="pt"> Society Salon, barbearia masculina em Copou, Iași.</span></span>
         </h1>
         <p class="sub">
           <span lang="ro">Barbershop pentru bărbați pe Bulevardul Carol I, la demisol. Cinci frizeri pe trei niveluri, un singur standard. Iar a 6-a tunsoare e din partea casei.</span>
-          <span lang="en">A men's barbershop on Carol I Boulevard, one floor down. Five barbers across three levels, one standard. And your 6th haircut is on the house.</span>
+          <span lang="en">A men's barbershop on Carol I Boulevard, one floor down. Five barbers across three levels, one standard. And your 6th haircut is on the house.</span><span lang="pt">Barbearia masculina no Boulevard Carol I, na cave. Cinco barbeiros em três níveis, um só padrão. E o 6.º corte é oferta da casa.</span>
         </p>
         <div class="actiuni">
-          <a class="btn btn-rosu" href="#programare"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span lang="ro">Programează-te</span><span lang="en">Book a cut</span></a>
+          <a class="btn btn-rosu" href="#/programare"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span lang="ro">Programează-te</span><span lang="en">Book a cut</span><span lang="pt">Marcar corte</span></a>
           <a class="btn btn-linie" href="tel:+40799735945"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>0799 735 945</a>
         </div>
         <div class="dovezi">
-          <div class="dovada"><span class="n"><span lang="ro">5,00</span><span lang="en">5.00</span></span><span class="t"><b><span lang="ro">1.612 evaluări</span><span lang="en">1,612 ratings</span></b><span lang="ro">pe MERO</span><span lang="en">on MERO</span></span></div>
+          <div class="dovada"><span class="n"><span lang="ro">5,00</span><span lang="en">5.00</span><span lang="pt">5,00</span></span><span class="t"><b><span lang="ro">1.612 evaluări</span><span lang="en">1,612 ratings</span><span lang="pt">1.612 avaliações</span></b><span lang="ro">pe MERO</span><span lang="en">on MERO</span><span lang="pt">no MERO</span></span></div>
           <span class="sep-v" aria-hidden="true"></span>
-          <div class="dovada"><span class="n"><span lang="ro">5,0</span><span lang="en">5.0</span></span><span class="t"><b><span lang="ro">70 de recenzii</span><span lang="en">70 reviews</span></b><span lang="ro">pe Google</span><span lang="en">on Google</span></span></div>
+          <div class="dovada"><span class="n"><span lang="ro">5,0</span><span lang="en">5.0</span><span lang="pt">5,0</span></span><span class="t"><b><span lang="ro">70 de recenzii</span><span lang="en">70 reviews</span><span lang="pt">70 avaliações</span></b><span lang="ro">pe Google</span><span lang="en">on Google</span><span lang="pt">no Google</span></span></div>
         </div>
       </div>
       <div class="erou-vizual">
         <figure class="erou-foto">
           <img src="media/erou.webp" width="768" height="1024" alt="Un frizer Society Salon finisează cu pieptenele și mașina un fade la ceafă." fetchpriority="high" onerror="this.remove()">
-          <figcaption>Bd. Carol I 26–28 · <span lang="ro">demisol</span><span lang="en">lower ground</span></figcaption>
+          <figcaption>Bd. Carol I 26–28 · <span lang="ro">demisol</span><span lang="en">lower ground</span><span lang="pt">cave</span></figcaption>
         </figure>
         <div class="erou-card">
           <div class="card-wrap" data-card="erou" data-auto="5"></div>
-          <p class="card-nota"><span lang="ro">5 vizite, apoi <b>a 6-a tunsoare: gratis</b></span><span lang="en">5 visits, then <b>your 6th cut is free</b></span></p>
+          <p class="card-nota"><span lang="ro">5 vizite, apoi <b>a 6-a tunsoare: gratis</b></span><span lang="en">5 visits, then <b>your 6th cut is free</b></span><span lang="pt">5 visitas e <b>o 6.º corte é grátis</b></span></p>
         </div>
       </div>
     </div>
@@ -491,50 +531,104 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
     </div>
   </div>
 
-  <!-- PROGRAMARE -->
+    <section class="sectiune" aria-labelledby="t-index">
+    <div class="lat">
+      <div class="cap">
+        <p class="eticheta rv"><span lang="ro">Tot salonul, pe pagini</span><span lang="en">The whole salon, page by page</span><span lang="pt">O salão inteiro, página a página</span></p>
+        <h2 class="titlu rv d1" id="t-index"><span lang="ro">Intră</span><span lang="en">Come in</span><span lang="pt">Entre</span></h2>
+      </div>
+      <ul class="index">
+        <li class="rv"><a class="ix" href="#/programare"><span class="ix-foto"><img src="media/atelier-04.webp" alt="" loading="lazy" onerror="this.remove()"></span><span class="ix-txt"><span class="ix-t"><span lang="ro">Programare</span><span lang="en">Booking</span><span lang="pt">Marcação</span></span><span class="ix-d"><span lang="ro">Serviciul, frizerul, apoi ora pe MERO sau WhatsApp.</span><span lang="en">Service, barber, then the time on MERO or WhatsApp.</span><span lang="pt">Serviço, barbeiro e depois a hora no MERO ou no WhatsApp.</span></span></span><svg class="ix-sag" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rv d1"><a class="ix" href="#/servicii"><span class="ix-foto"><img src="media/ilustr-pieptene.webp" alt="" loading="lazy" onerror="this.remove()"></span><span class="ix-txt"><span class="ix-t"><span lang="ro">Servicii și prețuri</span><span lang="en">Services and prices</span><span lang="pt">Serviços e preços</span></span><span class="ix-d"><span lang="ro">Prețuri pe nivel, Gentleman's Package și Pachet Premium.</span><span lang="en">Prices by level, Gentleman's Package and Premium.</span><span lang="pt">Preços por nível, Gentleman's Package e Premium.</span></span></span><svg class="ix-sag" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rv d2"><a class="ix" href="#/echipa"><span class="ix-foto"><img src="media/echipa-bogdan.webp" alt="" loading="lazy" onerror="this.remove()"></span><span class="ix-txt"><span class="ix-t"><span lang="ro">Echipa</span><span lang="en">The team</span><span lang="pt">Equipa</span></span><span class="ix-d"><span lang="ro">Cinci frizeri, cu nivelul și nota de pe MERO.</span><span lang="en">Five barbers, with level and MERO rating.</span><span lang="pt">Cinco barbeiros, com nível e nota no MERO.</span></span></span><svg class="ix-sag" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rv"><a class="ix" href="#/lucrari"><span class="ix-foto"><img src="media/lucrare-01.webp" alt="" loading="lazy" onerror="this.remove()"></span><span class="ix-txt"><span class="ix-t"><span lang="ro">Lucrări</span><span lang="en">Our work</span><span lang="pt">Trabalhos</span></span><span class="ix-d"><span lang="ro">Fade-uri, tunsori clasice și bărbi, din salon.</span><span lang="en">Fades, classic cuts and beards, from the salon.</span><span lang="pt">Fades, cortes clássicos e barbas, feitos no salão.</span></span></span><svg class="ix-sag" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rv d1"><a class="ix" href="#/card"><span class="ix-foto ix-card" aria-hidden="true"><span class="ix-sigiliu"><svg viewBox="0 0 14 20"><use href="#s-mic"/></svg></span><span class="ix-6">6 · GRATIS</span></span><span class="ix-txt"><span class="ix-t"><span lang="ro">Cardul de membru</span><span lang="en">Member card</span><span lang="pt">Cartão de membro</span></span><span class="ix-d"><span lang="ro">Cinci vizite, apoi a 6-a tunsoare e gratuită.</span><span lang="en">Five visits, then the 6th cut is free.</span><span lang="pt">Cinco visitas e o 6.º corte é grátis.</span></span></span><svg class="ix-sag" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rv d2"><a class="ix" href="#/contact"><span class="ix-foto"><img src="media/fachada.webp" alt="" loading="lazy" onerror="this.remove()"></span><span class="ix-txt"><span class="ix-t"><span lang="ro">Program și contact</span><span lang="en">Hours and contact</span><span lang="pt">Horário e contacto</span></span><span class="ix-d"><span lang="ro">Când suntem deschiși și cum găsești ușa.</span><span lang="en">When we're open and how to find the door.</span><span lang="pt">Quando estamos abertos e como encontrar a porta.</span></span></span><svg class="ix-sag" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      </ul>
+    </div>
+  </section>
+
+<!-- RECENZII -->
+  <section class="sectiune" id="recenzii" aria-labelledby="t-rec">
+    <div class="lat rec">
+      <div class="scoruri">
+        <div class="scor rv">
+          <p class="sursa">MERO</p>
+          <p class="mare"><span lang="ro">5,00</span><span lang="en">5.00</span><span lang="pt">5,00</span></p>
+          <p><span lang="ro">din 1.612 evaluări</span><span lang="en">from 1,612 ratings</span><span lang="pt">em 1.612 avaliações</span> · <a href="https://mero.ro/p/societysalon" target="_blank" rel="noopener"><span lang="ro">vezi pe MERO</span><span lang="en">see on MERO</span><span lang="pt">ver no MERO</span></a></p>
+        </div>
+        <div class="scor rv d1">
+          <p class="sursa">Google</p>
+          <p class="mare"><span lang="ro">5,0</span><span lang="en">5.0</span><span lang="pt">5,0</span></p>
+          <p><span lang="ro">din 70 de recenzii</span><span lang="en">from 70 reviews</span><span lang="pt">em 70 avaliações</span> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Society%20Salon%20Barbershop%2C%20Bulevardul%20Carol%20I%2026-28%2C%20Ia%C8%99i" target="_blank" rel="noopener"><span lang="ro">vezi pe Google</span><span lang="en">see on Google</span><span lang="pt">ver no Google</span></a></p>
+        </div>
+      </div>
+      <div>
+        <p class="eticheta rv"><span lang="ro">Ce spun clienții</span><span lang="en">What clients say</span><span lang="pt">O que dizem os clientes</span></p>
+        <h2 class="titlu rv d1" id="t-rec"><span lang="ro">Pleci și revii</span><span lang="en">You leave, you come back</span><span lang="pt">Sai e volta</span></h2>
+        <ul class="teme" style="margin-top:28px">
+          <li class="rv"><p><span lang="ro">Un client scrie că Bogdan e cel mai bun frizer la care a fost și că nu l-ar schimba pentru nimic.</span><span lang="en">One client writes that Bogdan is the best barber he's ever had and that he'd never switch.</span><span lang="pt">Um cliente escreve que o Bogdan é o melhor barbeiro onde já foi e que não o troca por nada.</span></p><span>MERO · Bogdan R</span></li>
+          <li class="rv d1"><p><span lang="ro">Frizerii ascultă ce le ceri și tund atent, fără grabă.</span><span lang="en">The barbers listen to what you ask for and cut carefully, without rushing.</span><span lang="pt">Os barbeiros ouvem o que se pede e cortam com cuidado, sem pressa.</span></p><span lang="ro">MERO · mai multe recenzii</span><span lang="en">MERO · several reviews</span><span lang="pt">MERO · várias avaliações</span></li>
+          <li class="rv d2"><p><span lang="ro">Profesioniști, rapizi și eficienți. Lumea pleacă mulțumită și revine.</span><span lang="en">Professional, quick and efficient. People leave happy and come back.</span><span lang="pt">Profissionais, rápidos e eficientes. As pessoas saem satisfeitas e voltam.</span></p><span lang="ro">MERO · mai multe recenzii</span><span lang="en">MERO · several reviews</span><span lang="pt">MERO · várias avaliações</span></li>
+        </ul>
+        <p class="teme-nota"><span lang="ro">Rezumat al recenziilor publice de pe MERO, nu citate exacte.</span><span lang="en">A summary of public MERO reviews, not exact quotes.</span><span lang="pt">Resumo das avaliações públicas no MERO, não são citações exatas.</span></p>
+      </div>
+    </div>
+  </section>
+
+    </div>
+
+  <div class="pagina" data-pagina="programare" hidden>
+<div class="firimituri"><div class="lat"><a href="#/"><span lang="ro">Acasă</span><span lang="en">Home</span><span lang="pt">Início</span></a><span aria-hidden="true">/</span><span aria-current="page"><span lang="ro">Programare</span><span lang="en">Booking</span><span lang="pt">Marcação</span></span></div></div>
+<!-- PROGRAMARE -->
   <section class="sectiune" id="programare" aria-labelledby="t-prog">
     <div class="lat">
       <div class="cap">
-        <p class="eticheta rv"><span lang="ro">Programare în trei pași</span><span lang="en">Book in three steps</span></p>
-        <h2 class="titlu rv d1" id="t-prog"><span lang="ro">Alege. Confirmă. Vino jos.</span><span lang="en">Choose. Confirm. Come downstairs.</span></h2>
-        <p class="intro rv d2"><span lang="ro">Alegi serviciul și frizerul aici. Ora o prinzi pe MERO, unde vezi locurile libere în timp real, sau ne scrii pe WhatsApp cu mesajul gata completat.</span><span lang="en">Pick the service and the barber here. Grab the time on MERO, which shows free slots live, or message us on WhatsApp with the text already filled in.</span></p>
+        <p class="eticheta rv"><span lang="ro">Programare în trei pași</span><span lang="en">Book in three steps</span><span lang="pt">Marcação em três passos</span></p>
+        <h2 class="titlu rv d1" id="t-prog"><span lang="ro">Alege. Confirmă. Vino jos.</span><span lang="en">Choose. Confirm. Come downstairs.</span><span lang="pt">Escolha. Confirme. Desça.</span></h2>
+        <p class="intro rv d2"><span lang="ro">Alegi serviciul și frizerul aici. Ora o prinzi pe MERO, unde vezi locurile libere în timp real, sau ne scrii pe WhatsApp cu mesajul gata completat.</span><span lang="en">Pick the service and the barber here. Grab the time on MERO, which shows free slots live, or message us on WhatsApp with the text already filled in.</span><span lang="pt">Escolhe aqui o serviço e o barbeiro. A hora marca-se no MERO, que mostra as vagas em tempo real, ou pelo WhatsApp com a mensagem já escrita.</span></p>
       </div>
       <div class="prog">
         <div class="prog-st">
           <div class="pas rv">
-            <div class="pas-cap"><span class="nr">01</span><h3><span lang="ro">Serviciul</span><span lang="en">The service</span></h3></div>
+            <div class="pas-cap"><span class="nr">01</span><h3><span lang="ro">Serviciul</span><span lang="en">The service</span><span lang="pt">O serviço</span></h3></div>
             <div id="servicii-opt"></div>
           </div>
           <div class="pas rv">
-            <div class="pas-cap"><span class="nr">02</span><h3><span lang="ro">Frizerul</span><span lang="en">The barber</span></h3></div>
+            <div class="pas-cap"><span class="nr">02</span><h3><span lang="ro">Frizerul</span><span lang="en">The barber</span><span lang="pt">O barbeiro</span></h3></div>
             <div class="frizeri" id="frizeri-opt"></div>
           </div>
         </div>
         <aside class="rezumat rv d1" aria-live="polite">
-          <p class="eticheta"><span class="mono">03</span> · <span lang="ro">Programarea ta</span><span lang="en">Your booking</span></p>
+          <p class="eticheta"><span class="mono">03</span> · <span lang="ro">Programarea ta</span><span lang="en">Your booking</span><span lang="pt">A sua marcação</span></p>
           <dl class="rez-linii">
-            <div><dt><span lang="ro">Serviciu</span><span lang="en">Service</span></dt><dd id="r-serv">—</dd></div>
-            <div><dt><span lang="ro">Frizer</span><span lang="en">Barber</span></dt><dd id="r-friz">—</dd></div>
-            <div><dt><span lang="ro">Durată</span><span lang="en">Duration</span></dt><dd id="r-dur">—</dd></div>
+            <div><dt><span lang="ro">Serviciu</span><span lang="en">Service</span><span lang="pt">Serviço</span></dt><dd id="r-serv">—</dd></div>
+            <div><dt><span lang="ro">Frizer</span><span lang="en">Barber</span><span lang="pt">Barbeiro</span></dt><dd id="r-friz">—</dd></div>
+            <div><dt><span lang="ro">Durată</span><span lang="en">Duration</span><span lang="pt">Duração</span></dt><dd id="r-dur">—</dd></div>
           </dl>
           <p class="rez-pret"><span id="r-pret">—</span><small>lei</small></p>
           <div class="rez-act">
-            <a class="btn btn-rosu" href="https://mero.ro/p/societysalon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span lang="ro">Alege ora pe MERO</span><span lang="en">Pick a time on MERO</span></a>
-            <a class="btn btn-linie-alb" id="r-wa" href="https://wa.me/40799735945" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 1.6 3.6 3.6 4.4l1.1-1.1 1.8.8-.3 1.4c-3 .3-6.4-3-6.1-6l1.4-.3.8 1.8z"/></svg><span lang="ro">Trimite pe WhatsApp</span><span lang="en">Send on WhatsApp</span></a>
+            <a class="btn btn-rosu" href="https://mero.ro/p/societysalon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span lang="ro">Alege ora pe MERO</span><span lang="en">Pick a time on MERO</span><span lang="pt">Escolher a hora no MERO</span></a>
+            <a class="btn btn-linie-alb" id="r-wa" href="https://wa.me/40799735945" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 1.6 3.6 3.6 4.4l1.1-1.1 1.8.8-.3 1.4c-3 .3-6.4-3-6.1-6l1.4-.3.8 1.8z"/></svg><span lang="ro">Trimite pe WhatsApp</span><span lang="en">Send on WhatsApp</span><span lang="pt">Enviar pelo WhatsApp</span></a>
           </div>
-          <p class="rez-nota"><span lang="ro">Prețurile și duratele sunt cele afișate pe MERO. Prețul final depinde de frizer și de lungimea părului.</span><span lang="en">Prices and durations are the ones shown on MERO. The final price depends on the barber and hair length.</span></p>
+          <p class="rez-nota"><span lang="ro">Prețurile și duratele sunt cele afișate pe MERO. Prețul final depinde de frizer și de lungimea părului.</span><span lang="en">Prices and durations are the ones shown on MERO. The final price depends on the barber and hair length.</span><span lang="pt">Preços e durações tal como aparecem no MERO. O preço final depende do barbeiro e do comprimento do cabelo.</span></p>
         </aside>
       </div>
     </div>
   </section>
 
-  <!-- PRETURI -->
+    <div class="urm"><div class="lat"><a href="#/servicii"><span class="eticheta"><span lang="ro">Următoarea pagină</span><span lang="en">Next page</span><span lang="pt">Página seguinte</span></span><span class="urm-t"><span lang="ro">Servicii și prețuri</span><span lang="en">Services and prices</span><span lang="pt">Serviços e preços</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div>
+  </div>
+
+  <div class="pagina" data-pagina="servicii" hidden>
+<div class="firimituri"><div class="lat"><a href="#/"><span lang="ro">Acasă</span><span lang="en">Home</span><span lang="pt">Início</span></a><span aria-hidden="true">/</span><span aria-current="page"><span lang="ro">Servicii și prețuri</span><span lang="en">Services and prices</span><span lang="pt">Serviços e preços</span></span></div></div>
+<!-- PRETURI -->
   <section class="sectiune" id="preturi" aria-labelledby="t-pret">
     <div class="lat">
       <div class="cap">
         <p class="eticheta rv">Master · Senior · Junior</p>
-        <h2 class="titlu rv d1" id="t-pret"><span lang="ro">Prețuri, pe nivel</span><span lang="en">Prices, by level</span></h2>
-        <p class="intro rv d2"><span lang="ro">Nivelul frizerului contează. Alegi exact cât experiență vrei pentru tunsoarea ta.</span><span lang="en">The barber's level matters. You choose exactly how much experience goes into your cut.</span></p>
+        <h2 class="titlu rv d1" id="t-pret"><span lang="ro">Prețuri, pe nivel</span><span lang="en">Prices, by level</span><span lang="pt">Preços, por nível</span></h2>
+        <p class="intro rv d2"><span lang="ro">Nivelul frizerului contează. Alegi exact cât experiență vrei pentru tunsoarea ta.</span><span lang="en">The barber's level matters. You choose exactly how much experience goes into your cut.</span><span lang="pt">O nível do barbeiro conta. Escolhe exatamente quanta experiência quer no seu corte.</span></p>
       </div>
       <div class="pret-grid">
         <div class="rv">
@@ -542,10 +636,10 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
             <button class="fila" role="tab" id="f-master" aria-controls="p-master" aria-selected="true">Master</button>
             <button class="fila" role="tab" id="f-senior" aria-controls="p-senior" aria-selected="false" tabindex="-1">Senior</button>
             <button class="fila" role="tab" id="f-junior" aria-controls="p-junior" aria-selected="false" tabindex="-1">Junior</button>
-            <button class="fila" role="tab" id="f-altele" aria-controls="p-altele" aria-selected="false" tabindex="-1"><span lang="ro">Extra</span><span lang="en">Extras</span></button>
+            <button class="fila" role="tab" id="f-altele" aria-controls="p-altele" aria-selected="false" tabindex="-1"><span lang="ro">Extra</span><span lang="en">Extras</span><span lang="pt">Extras</span></button>
           </div>
           <div id="panouri-pret"></div>
-          <p class="pret-nota"><span lang="ro">Prețuri de pe societysalon.ro. Pe MERO unele servicii apar cu alt interval (de exemplu Haircut &amp; Styling 70–85 lei).</span><span lang="en">Prices from societysalon.ro. MERO shows a different range for some services (e.g. Haircut &amp; Styling 70–85 lei).</span> <span class="de-confirmat"><span lang="ro">de confirmat lista la zi</span><span lang="en">current list to confirm</span></span></p>
+          <p class="pret-nota"><span lang="ro">Prețuri de pe societysalon.ro. Pe MERO unele servicii apar cu alt interval (de exemplu Haircut &amp; Styling 70–85 lei).</span><span lang="en">Prices from societysalon.ro. MERO shows a different range for some services (e.g. Haircut &amp; Styling 70–85 lei).</span><span lang="pt">Preços do societysalon.ro. No MERO alguns serviços aparecem com outro intervalo (por exemplo Haircut &amp; Styling 70–85 lei).</span> <span class="de-confirmat"><span lang="ro">de confirmat lista la zi</span><span lang="en">current list to confirm</span><span lang="pt">lista em vigor a confirmar</span></span></p>
         </div>
         <figure class="pret-ilustr rv d1">
           <img src="media/ilustr-pieptene.webp" width="800" height="1000" alt="" loading="lazy" onerror="this.remove()">
@@ -554,34 +648,9 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
             <li><i><span></span><span></span><span class="g"></span></i>Senior / Top</li>
             <li><i><span></span><span class="g"></span><span class="g"></span></i>Junior</li>
           </ul>
-          <figcaption><span lang="ro">Imagine ilustrativă</span><span lang="en">Illustrative image</span></figcaption>
+          <figcaption><span lang="ro">Imagine ilustrativă</span><span lang="en">Illustrative image</span><span lang="pt">Imagem ilustrativa</span></figcaption>
         </figure>
       </div>
-    </div>
-  </section>
-
-  <!-- ECHIPA -->
-  <section class="sectiune" id="echipa" aria-labelledby="t-echipa">
-    <div class="lat">
-      <div class="cap">
-        <p class="eticheta rv"><span lang="ro">Cinci frizeri</span><span lang="en">Five barbers</span></p>
-        <h2 class="titlu rv d1" id="t-echipa"><span lang="ro">Societatea</span><span lang="en">The society</span></h2>
-        <p class="intro rv d2"><span lang="ro">Clienții revin la același frizer. Aici îl alegi după nume, nivel și nota primită pe MERO.</span><span lang="en">Clients keep coming back to the same barber. Choose yours by name, level and MERO rating.</span></p>
-      </div>
-      <div class="echipa" id="echipa-lista"></div>
-      <p class="echipa-nota rv"><span lang="ro">Note și număr de evaluări de pe MERO, la 4 octombrie 2026. Fotografiile sunt de pe site-ul și pagina MERO a salonului.</span><span lang="en">Ratings and counts from MERO, as of 4 October 2026. Photos from the salon's website and MERO page.</span></p>
-    </div>
-  </section>
-
-  <!-- LUCRARI -->
-  <section class="sectiune" id="lucrari" aria-labelledby="t-lucrari">
-    <div class="lat">
-      <div class="cap">
-        <p class="eticheta rv"><span lang="ro">Lucrări reale</span><span lang="en">Real work</span></p>
-        <h2 class="titlu rv d1" id="t-lucrari"><span lang="ro">Ieșit de pe scaun</span><span lang="en">Straight from the chair</span></h2>
-      </div>
-      <div class="galerie" id="galerie"></div>
-      <p class="galerie-nota rv"><span lang="ro">Fotografii din salon, de pe site-ul societysalon.ro și de pe pagina MERO. Apasă pe o fotografie ca s-o vezi mare.</span><span lang="en">Photos from the salon, taken from societysalon.ro and the MERO page. Tap a photo to see it full size.</span></p>
     </div>
   </section>
 
@@ -590,90 +659,107 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
     <figure class="ritual-fundal" aria-hidden="true"><img src="media/ilustr-natureza-morta.webp" width="1344" height="752" alt="" loading="lazy" onerror="this.remove()"></figure>
     <div class="lat ritual-grid">
       <div>
-        <p class="eticheta rv"><span lang="ro">Pentru o oră doar a ta</span><span lang="en">An hour that's just yours</span></p>
-        <h2 class="titlu rv d1" id="t-ritual"><span lang="ro">Ritualul complet</span><span lang="en">The full ritual</span></h2>
-        <p class="intro rv d2"><span lang="ro">Păr și barbă în aceeași vizită. Pentru o zi importantă sau doar pentru că meriți.</span><span lang="en">Hair and beard in one visit. For a big day, or just because.</span></p>
+        <p class="eticheta rv"><span lang="ro">Pentru o oră doar a ta</span><span lang="en">An hour that's just yours</span><span lang="pt">Uma hora só para si</span></p>
+        <h2 class="titlu rv d1" id="t-ritual"><span lang="ro">Ritualul complet</span><span lang="en">The full ritual</span><span lang="pt">O ritual completo</span></h2>
+        <p class="intro rv d2"><span lang="ro">Păr și barbă în aceeași vizită. Pentru o zi importantă sau doar pentru că meriți.</span><span lang="en">Hair and beard in one visit. For a big day, or just because.</span><span lang="pt">Cabelo e barba na mesma visita. Para um dia importante ou só porque sim.</span></p>
         <div class="pachete">
           <article class="pachet rv">
             <div class="pachet-cap"><h3>Gentleman's Package</h3><span class="lei">100–115 lei</span></div>
-            <ul><li><span lang="ro">tuns</span><span lang="en">haircut</span></li><li><span lang="ro">aranjat păr</span><span lang="en">styling</span></li><li><span lang="ro">tuns barbă</span><span lang="en">beard trim</span></li><li><span lang="ro">contur și ras</span><span lang="en">outline and shave</span></li></ul>
+            <ul><li><span lang="ro">tuns</span><span lang="en">haircut</span><span lang="pt">corte</span></li><li><span lang="ro">aranjat păr</span><span lang="en">styling</span><span lang="pt">penteado</span></li><li><span lang="ro">tuns barbă</span><span lang="en">beard trim</span><span lang="pt">aparar barba</span></li><li><span lang="ro">contur și ras</span><span lang="en">outline and shave</span><span lang="pt">contorno e navalha</span></li></ul>
             <p class="durata">1 h – 1 h 20 min</p>
-            <button class="btn btn-linie-alb" type="button" data-alege-serv="gp"><span lang="ro">Alege pachetul</span><span lang="en">Choose this</span></button>
+            <button class="btn btn-linie-alb" type="button" data-alege-serv="gp"><span lang="ro">Alege pachetul</span><span lang="en">Choose this</span><span lang="pt">Escolher este pacote</span></button>
           </article>
           <article class="pachet rv d1">
-            <div class="pachet-cap"><h3><span lang="ro">Pachet Premium</span><span lang="en">Premium Package</span></h3><span class="lei">140 lei</span></div>
-            <ul><li><span lang="ro">păr și barbă</span><span lang="en">hair and beard</span></li><li>Black Mask</li><li><span lang="ro">tonic</span><span lang="en">tonic</span></li><li><span lang="ro">masaj capilar</span><span lang="en">scalp massage</span></li></ul>
+            <div class="pachet-cap"><h3><span lang="ro">Pachet Premium</span><span lang="en">Premium Package</span><span lang="pt">Pacote Premium</span></h3><span class="lei">140 lei</span></div>
+            <ul><li><span lang="ro">păr și barbă</span><span lang="en">hair and beard</span><span lang="pt">cabelo e barba</span></li><li>Black Mask</li><li><span lang="ro">tonic</span><span lang="en">tonic</span><span lang="pt">tónico</span></li><li><span lang="ro">masaj capilar</span><span lang="en">scalp massage</span><span lang="pt">massagem capilar</span></li></ul>
             <p class="durata">1 h 20 min – 1 h 30 min</p>
-            <button class="btn btn-rosu" type="button" data-alege-serv="premium"><span lang="ro">Alege pachetul</span><span lang="en">Choose this</span></button>
+            <button class="btn btn-rosu" type="button" data-alege-serv="premium"><span lang="ro">Alege pachetul</span><span lang="en">Choose this</span><span lang="pt">Escolher este pacote</span></button>
           </article>
         </div>
       </div>
       <div class="ritual-fotos">
-        <figure class="ritual-foto rv"><img src="media/ilustr-prosop-cald.webp" width="800" height="1000" alt="Prosop cald pe fața clientului și briciul în mâna frizerului." loading="lazy" onerror="this.remove()"><figcaption><span lang="ro">Imagine ilustrativă</span><span lang="en">Illustrative image</span></figcaption></figure>
-        <figure class="ritual-foto rv d1" style="margin-top:48px"><img src="media/ilustr-fade.webp" width="800" height="1000" alt="Un skin fade proaspăt, văzut din spate." loading="lazy" onerror="this.remove()"><figcaption><span lang="ro">Imagine ilustrativă</span><span lang="en">Illustrative image</span></figcaption></figure>
+        <figure class="ritual-foto rv"><img src="media/ilustr-prosop-cald.webp" width="800" height="1000" alt="Prosop cald pe fața clientului și briciul în mâna frizerului." loading="lazy" onerror="this.remove()"><figcaption><span lang="ro">Imagine ilustrativă</span><span lang="en">Illustrative image</span><span lang="pt">Imagem ilustrativa</span></figcaption></figure>
+        <figure class="ritual-foto rv d1" style="margin-top:48px"><img src="media/ilustr-fade.webp" width="800" height="1000" alt="Un skin fade proaspăt, văzut din spate." loading="lazy" onerror="this.remove()"><figcaption><span lang="ro">Imagine ilustrativă</span><span lang="en">Illustrative image</span><span lang="pt">Imagem ilustrativa</span></figcaption></figure>
       </div>
     </div>
   </section>
 
-  <!-- CARD -->
+    <div class="urm"><div class="lat"><a href="#/echipa"><span class="eticheta"><span lang="ro">Următoarea pagină</span><span lang="en">Next page</span><span lang="pt">Página seguinte</span></span><span class="urm-t"><span lang="ro">Echipa</span><span lang="en">The team</span><span lang="pt">Equipa</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div>
+  </div>
+
+  <div class="pagina" data-pagina="echipa" hidden>
+<div class="firimituri"><div class="lat"><a href="#/"><span lang="ro">Acasă</span><span lang="en">Home</span><span lang="pt">Início</span></a><span aria-hidden="true">/</span><span aria-current="page"><span lang="ro">Echipa</span><span lang="en">The team</span><span lang="pt">Equipa</span></span></div></div>
+<!-- ECHIPA -->
+  <section class="sectiune" id="echipa" aria-labelledby="t-echipa">
+    <div class="lat">
+      <div class="cap">
+        <p class="eticheta rv"><span lang="ro">Cinci frizeri</span><span lang="en">Five barbers</span><span lang="pt">Cinco barbeiros</span></p>
+        <h2 class="titlu rv d1" id="t-echipa"><span lang="ro">Societatea</span><span lang="en">The society</span><span lang="pt">A sociedade</span></h2>
+        <p class="intro rv d2"><span lang="ro">Clienții revin la același frizer. Aici îl alegi după nume, nivel și nota primită pe MERO.</span><span lang="en">Clients keep coming back to the same barber. Choose yours by name, level and MERO rating.</span><span lang="pt">Os clientes voltam ao mesmo barbeiro. Aqui escolhe-o pelo nome, nível e nota no MERO.</span></p>
+      </div>
+      <div class="echipa" id="echipa-lista"></div>
+      <p class="echipa-nota rv"><span lang="ro">Note și număr de evaluări de pe MERO, la 4 octombrie 2026. Fotografiile sunt de pe site-ul și pagina MERO a salonului.</span><span lang="en">Ratings and counts from MERO, as of 4 October 2026. Photos from the salon's website and MERO page.</span><span lang="pt">Notas e número de avaliações do MERO, a 4 de outubro de 2026. Fotografias do site e da página MERO do salão.</span></p>
+    </div>
+  </section>
+
+    <div class="urm"><div class="lat"><a href="#/lucrari"><span class="eticheta"><span lang="ro">Următoarea pagină</span><span lang="en">Next page</span><span lang="pt">Página seguinte</span></span><span class="urm-t"><span lang="ro">Lucrări</span><span lang="en">Our work</span><span lang="pt">Trabalhos</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div>
+  </div>
+
+  <div class="pagina" data-pagina="lucrari" hidden>
+<div class="firimituri"><div class="lat"><a href="#/"><span lang="ro">Acasă</span><span lang="en">Home</span><span lang="pt">Início</span></a><span aria-hidden="true">/</span><span aria-current="page"><span lang="ro">Lucrări</span><span lang="en">Our work</span><span lang="pt">Trabalhos</span></span></div></div>
+<!-- LUCRARI -->
+  <section class="sectiune" id="lucrari" aria-labelledby="t-lucrari">
+    <div class="lat">
+      <div class="cap">
+        <p class="eticheta rv"><span lang="ro">Lucrări reale</span><span lang="en">Real work</span><span lang="pt">Trabalho real</span></p>
+        <h2 class="titlu rv d1" id="t-lucrari"><span lang="ro">Ieșit de pe scaun</span><span lang="en">Straight from the chair</span><span lang="pt">Acabado de sair da cadeira</span></h2>
+      </div>
+      <div class="galerie" id="galerie"></div>
+      <p class="galerie-nota rv"><span lang="ro">Fotografii din salon, de pe site-ul societysalon.ro și de pe pagina MERO. Apasă pe o fotografie ca s-o vezi mare.</span><span lang="en">Photos from the salon, taken from societysalon.ro and the MERO page. Tap a photo to see it full size.</span><span lang="pt">Fotografias do salão, tiradas do societysalon.ro e da página MERO. Toque numa fotografia para a ver em grande.</span></p>
+    </div>
+  </section>
+
+    <div class="urm"><div class="lat"><a href="#/card"><span class="eticheta"><span lang="ro">Următoarea pagină</span><span lang="en">Next page</span><span lang="pt">Página seguinte</span></span><span class="urm-t"><span lang="ro">Cardul de membru</span><span lang="en">Member card</span><span lang="pt">Cartão de membro</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div>
+  </div>
+
+  <div class="pagina" data-pagina="card" hidden>
+<div class="firimituri"><div class="lat"><a href="#/"><span lang="ro">Acasă</span><span lang="en">Home</span><span lang="pt">Início</span></a><span aria-hidden="true">/</span><span aria-current="page"><span lang="ro">Cardul de membru</span><span lang="en">Member card</span><span lang="pt">Cartão de membro</span></span></div></div>
+<!-- CARD -->
   <section class="sectiune" id="card" aria-labelledby="t-card">
     <div class="lat membru-sec">
       <div class="card-mare rv">
         <div data-card="mare" data-start="2"></div>
         <div class="card-act">
-          <button class="btn btn-negru" type="button" id="card-plus"><span lang="ro">Adaugă o vizită</span><span lang="en">Add a visit</span></button>
+          <button class="btn btn-negru" type="button" id="card-plus"><span lang="ro">Adaugă o vizită</span><span lang="en">Add a visit</span><span lang="pt">Adicionar uma visita</span></button>
           <p class="card-stare" id="card-stare" aria-live="polite"></p>
         </div>
       </div>
       <div>
-        <p class="eticheta rv"><span lang="ro">Cardul de membru</span><span lang="en">The member card</span></p>
-        <h2 class="titlu rv d1" id="t-card"><span lang="ro">A 6-a tunsoare e din partea casei</span><span lang="en">The 6th cut is on the house</span></h2>
+        <p class="eticheta rv"><span lang="ro">Cardul de membru</span><span lang="en">The member card</span><span lang="pt">O cartão de membro</span></p>
+        <h2 class="titlu rv d1" id="t-card"><span lang="ro">A 6-a tunsoare e din partea casei</span><span lang="en">The 6th cut is on the house</span><span lang="pt">O 6.º corte é oferta da casa</span></h2>
         <ol class="reguli">
-          <li class="rv"><span class="nr">1–5</span><p><span lang="ro"><strong>Fiecare vizită, o perforare.</strong> Tunsoare, barbă sau pachet: fiecare programare onorată contează.</span><span lang="en"><strong>Every visit, one punch.</strong> Haircut, beard or package: every booking you show up for counts.</span></p></li>
-          <li class="rv d1"><span class="nr">6</span><p><span lang="ro"><strong>A șasea tunsoare: 100% reducere.</strong> Oferta e deja pe fișa Google a salonului. Aici o vezi la fiecare pas.</span><span lang="en"><strong>The sixth haircut: 100% off.</strong> The offer is already on the salon's Google listing. Here you see it at every step.</span></p></li>
-          <li class="rv d2"><span class="nr">?</span><p><span lang="ro">Card fizic, în MERO sau după numărul de telefon: cum se ține evidența</span><span lang="en">Physical card, in MERO or by phone number: how visits are tracked</span> <span class="de-confirmat"><span lang="ro">de confirmat</span><span lang="en">to confirm</span></span></p></li>
+          <li class="rv"><span class="nr">1–5</span><p><span lang="ro"><strong>Fiecare vizită, o perforare.</strong> Tunsoare, barbă sau pachet: fiecare programare onorată contează.</span><span lang="en"><strong>Every visit, one punch.</strong> Haircut, beard or package: every booking you show up for counts.</span><span lang="pt"><strong>Cada visita, um furo.</strong> Corte, barba ou pacote: conta cada marcação a que comparece.</span></p></li>
+          <li class="rv d1"><span class="nr">6</span><p><span lang="ro"><strong>A șasea tunsoare: 100% reducere.</strong> Oferta e deja pe fișa Google a salonului. Aici o vezi la fiecare pas.</span><span lang="en"><strong>The sixth haircut: 100% off.</strong> The offer is already on the salon's Google listing. Here you see it at every step.</span><span lang="pt"><strong>O sexto corte: 100% de desconto.</strong> A oferta já está na ficha Google do salão. Aqui vê-se a cada passo.</span></p></li>
+          <li class="rv d2"><span class="nr">?</span><p><span lang="ro">Card fizic, în MERO sau după numărul de telefon: cum se ține evidența</span><span lang="en">Physical card, in MERO or by phone number: how visits are tracked</span><span lang="pt">Cartão físico, no MERO ou pelo número de telefone: como se contam as visitas</span> <span class="de-confirmat"><span lang="ro">de confirmat</span><span lang="en">to confirm</span><span lang="pt">a confirmar</span></span></p></li>
         </ol>
       </div>
     </div>
   </section>
 
-  <!-- RECENZII -->
-  <section class="sectiune" id="recenzii" aria-labelledby="t-rec">
-    <div class="lat rec">
-      <div class="scoruri">
-        <div class="scor rv">
-          <p class="sursa">MERO</p>
-          <p class="mare"><span lang="ro">5,00</span><span lang="en">5.00</span></p>
-          <p><span lang="ro">din 1.612 evaluări</span><span lang="en">from 1,612 ratings</span> · <a href="https://mero.ro/p/societysalon" target="_blank" rel="noopener"><span lang="ro">vezi pe MERO</span><span lang="en">see on MERO</span></a></p>
-        </div>
-        <div class="scor rv d1">
-          <p class="sursa">Google</p>
-          <p class="mare"><span lang="ro">5,0</span><span lang="en">5.0</span></p>
-          <p><span lang="ro">din 70 de recenzii</span><span lang="en">from 70 reviews</span> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Society%20Salon%20Barbershop%2C%20Bulevardul%20Carol%20I%2026-28%2C%20Ia%C8%99i" target="_blank" rel="noopener"><span lang="ro">vezi pe Google</span><span lang="en">see on Google</span></a></p>
-        </div>
-      </div>
-      <div>
-        <p class="eticheta rv"><span lang="ro">Ce spun clienții</span><span lang="en">What clients say</span></p>
-        <h2 class="titlu rv d1" id="t-rec"><span lang="ro">Pleci și revii</span><span lang="en">You leave, you come back</span></h2>
-        <ul class="teme" style="margin-top:28px">
-          <li class="rv"><p><span lang="ro">Un client scrie că Bogdan e cel mai bun frizer la care a fost și că nu l-ar schimba pentru nimic.</span><span lang="en">One client writes that Bogdan is the best barber he's ever had and that he'd never switch.</span></p><span>MERO · Bogdan R</span></li>
-          <li class="rv d1"><p><span lang="ro">Frizerii ascultă ce le ceri și tund atent, fără grabă.</span><span lang="en">The barbers listen to what you ask for and cut carefully, without rushing.</span></p><span lang="ro">MERO · mai multe recenzii</span><span lang="en">MERO · several reviews</span></li>
-          <li class="rv d2"><p><span lang="ro">Profesioniști, rapizi și eficienți. Lumea pleacă mulțumită și revine.</span><span lang="en">Professional, quick and efficient. People leave happy and come back.</span></p><span lang="ro">MERO · mai multe recenzii</span><span lang="en">MERO · several reviews</span></li>
-        </ul>
-        <p class="teme-nota"><span lang="ro">Rezumat al recenziilor publice de pe MERO, nu citate exacte.</span><span lang="en">A summary of public MERO reviews, not exact quotes.</span></p>
-      </div>
-    </div>
-  </section>
+    <div class="urm"><div class="lat"><a href="#/contact"><span class="eticheta"><span lang="ro">Următoarea pagină</span><span lang="en">Next page</span><span lang="pt">Página seguinte</span></span><span class="urm-t"><span lang="ro">Program și contact</span><span lang="en">Hours and contact</span><span lang="pt">Horário e contacto</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div>
+  </div>
 
-  <!-- PROGRAM + DRUM -->
+  <div class="pagina" data-pagina="contact" hidden>
+<div class="firimituri"><div class="lat"><a href="#/"><span lang="ro">Acasă</span><span lang="en">Home</span><span lang="pt">Início</span></a><span aria-hidden="true">/</span><span aria-current="page"><span lang="ro">Program și contact</span><span lang="en">Hours and contact</span><span lang="pt">Horário e contacto</span></span></div></div>
+<!-- PROGRAM + DRUM -->
   <section class="sectiune" id="program" aria-labelledby="t-program">
     <div class="lat loc">
       <div>
-        <p class="eticheta rv"><span lang="ro">Program</span><span lang="en">Opening hours</span></p>
-        <h2 class="titlu rv d1" id="t-program"><span lang="ro">Când ne găsești</span><span lang="en">When we're open</span></h2>
+        <p class="eticheta rv"><span lang="ro">Program</span><span lang="en">Opening hours</span><span lang="pt">Horário</span></p>
+        <h2 class="titlu rv d1" id="t-program"><span lang="ro">Când ne găsești</span><span lang="en">When we're open</span><span lang="pt">Quando estamos abertos</span></h2>
         <p class="stare rv d2" id="stare"><i></i><span id="stare-t">…</span></p>
         <dl class="orar rv d2" id="orar"></dl>
-        <p class="orar-nota"><span lang="ro">Programul de pe MERO. Site-ul actual arată alt program (L–V 9–21, S 10–18).</span><span lang="en">Hours from MERO. The current website shows different hours (Mon–Fri 9–21, Sat 10–18).</span> <span class="de-confirmat"><span lang="ro">de confirmat</span><span lang="en">to confirm</span></span></p>
+        <p class="orar-nota"><span lang="ro">Programul de pe MERO. Site-ul actual arată alt program (L–V 9–21, S 10–18).</span><span lang="en">Hours from MERO. The current website shows different hours (Mon–Fri 9–21, Sat 10–18).</span><span lang="pt">Horário do MERO. O site atual mostra outro horário (seg–sex 9–21, sáb 10–18).</span> <span class="de-confirmat"><span lang="ro">de confirmat</span><span lang="en">to confirm</span><span lang="pt">a confirmar</span></span></p>
       </div>
       <div class="loc-dr">
         <figure class="poza rv" id="poza">
@@ -681,19 +767,19 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
           <span class="reper" data-reper="1" style="left:52%;top:83%" aria-hidden="true">1</span>
           <span class="reper" data-reper="2" style="left:15%;top:47%" aria-hidden="true">2</span>
           <span class="reper" data-reper="3" style="left:48%;top:68%" aria-hidden="true">3</span>
-          <figcaption><span lang="ro">Intrarea, văzută din curte.</span><span lang="en">The entrance, seen from the courtyard.</span></figcaption>
+          <figcaption><span lang="ro">Intrarea, văzută din curte.</span><span lang="en">The entrance, seen from the courtyard.</span><span lang="pt">A entrada, vista do pátio.</span></figcaption>
         </figure>
         <div>
-          <p class="eticheta rv"><span lang="ro">Demisol · 100 m de stația Universitate</span><span lang="en">Lower ground · 100 m from Universitate stop</span></p>
+          <p class="eticheta rv"><span lang="ro">Demisol · 100 m de stația Universitate</span><span lang="en">Lower ground · 100 m from Universitate stop</span><span lang="pt">Cave · a 100 m da paragem Universitate</span></p>
           <ol class="pasi">
-            <li class="rv" data-reper="1"><span class="nr" aria-hidden="true">1</span><div><strong><span lang="ro">Bd. Carol I nr. 26–28</span><span lang="en">26–28 Carol I Blvd</span></strong><p><span lang="ro">De pe bulevard intri în curtea cu copaci.</span><span lang="en">From the boulevard, walk into the tree-lined courtyard.</span></p></div></li>
-            <li class="rv d1" data-reper="2"><span class="nr" aria-hidden="true">2</span><div><strong><span lang="ro">Lângă Tacos King</span><span lang="en">Next to Tacos King</span></strong><p><span lang="ro">Tacos King rămâne în stânga. Mergi înainte pe alee.</span><span lang="en">Keep Tacos King on your left and walk along the path.</span></p></div></li>
-            <li class="rv d2" data-reper="3"><span class="nr" aria-hidden="true">3</span><div><strong><span lang="ro">Sub copertina neagră</span><span lang="en">Under the black canopy</span></strong><p><span lang="ro">Ușa e sub firma Society Salon, cu stâlpul de frizerie în stânga. Cobori o treaptă: suntem la demisol.</span><span lang="en">The door is under the Society Salon sign, barber pole on the left. One floor down.</span></p></div></li>
+            <li class="rv" data-reper="1"><span class="nr" aria-hidden="true">1</span><div><strong><span lang="ro">Bd. Carol I nr. 26–28</span><span lang="en">26–28 Carol I Blvd</span><span lang="pt">Bd. Carol I n.º 26–28</span></strong><p><span lang="ro">De pe bulevard intri în curtea cu copaci.</span><span lang="en">From the boulevard, walk into the tree-lined courtyard.</span><span lang="pt">Do boulevard, entra-se no pátio com árvores.</span></p></div></li>
+            <li class="rv d1" data-reper="2"><span class="nr" aria-hidden="true">2</span><div><strong><span lang="ro">Lângă Tacos King</span><span lang="en">Next to Tacos King</span><span lang="pt">Ao lado do Tacos King</span></strong><p><span lang="ro">Tacos King rămâne în stânga. Mergi înainte pe alee.</span><span lang="en">Keep Tacos King on your left and walk along the path.</span><span lang="pt">O Tacos King fica à esquerda. Segue-se em frente pelo caminho.</span></p></div></li>
+            <li class="rv d2" data-reper="3"><span class="nr" aria-hidden="true">3</span><div><strong><span lang="ro">Sub copertina neagră</span><span lang="en">Under the black canopy</span><span lang="pt">Debaixo da cobertura preta</span></strong><p><span lang="ro">Ușa e sub firma Society Salon, cu stâlpul de frizerie în stânga. Cobori o treaptă: suntem la demisol.</span><span lang="en">The door is under the Society Salon sign, barber pole on the left. One floor down.</span><span lang="pt">A porta fica debaixo do letreiro Society Salon, com o poste de barbeiro à esquerda. Desce-se um piso.</span></p></div></li>
           </ol>
           <p class="adresa">Bulevardul Carol I nr. 26–28, demisol · 700505 Iași</p>
           <div class="drum-act">
-            <a class="btn btn-negru" href="https://www.google.com/maps/dir/?api=1&amp;destination=Society%20Salon%20Barbershop%2C%20Bulevardul%20Carol%20I%2026-28%2C%20Ia%C8%99i" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><span lang="ro">Navighează până aici</span><span lang="en">Get directions</span></a>
-            <button class="btn btn-linie" type="button" id="arata-harta"><span lang="ro">Arată harta</span><span lang="en">Show the map</span></button>
+            <a class="btn btn-negru" href="https://www.google.com/maps/dir/?api=1&amp;destination=Society%20Salon%20Barbershop%2C%20Bulevardul%20Carol%20I%2026-28%2C%20Ia%C8%99i" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><span lang="ro">Navighează până aici</span><span lang="en">Get directions</span><span lang="pt">Como chegar</span></a>
+            <button class="btn btn-linie" type="button" id="arata-harta"><span lang="ro">Arată harta</span><span lang="en">Show the map</span><span lang="pt">Mostrar o mapa</span></button>
           </div>
           <div class="harta" id="harta" hidden></div>
         </div>
@@ -704,26 +790,26 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
   <!-- CONTACT -->
   <section class="sectiune" id="contact" aria-labelledby="t-contact">
     <div class="lat">
-      <p class="eticheta rv"><span lang="ro">Contact</span><span lang="en">Contact</span></p>
-      <h2 class="titlu rv d1" id="t-contact"><span lang="ro">Te așteptăm jos</span><span lang="en">See you downstairs</span></h2>
+      <p class="eticheta rv"><span lang="ro">Contact</span><span lang="en">Contact</span><span lang="pt">Contacto</span></p>
+      <h2 class="titlu rv d1" id="t-contact"><span lang="ro">Te așteptăm jos</span><span lang="en">See you downstairs</span><span lang="pt">Esperamos por si lá em baixo</span></h2>
       <div class="contact">
         <div class="casuta rv">
-          <h3><span lang="ro">Telefon</span><span lang="en">Phone</span></h3>
+          <h3><span lang="ro">Telefon</span><span lang="en">Phone</span><span lang="pt">Telefone</span></h3>
           <a class="val" href="tel:+40799735945">0799 735 945</a>
-          <p><span lang="ro">Programări și întrebări.</span><span lang="en">Bookings and questions.</span></p>
+          <p><span lang="ro">Programări și întrebări.</span><span lang="en">Bookings and questions.</span><span lang="pt">Marcações e perguntas.</span></p>
         </div>
         <div class="casuta rv d1">
           <h3>WhatsApp</h3>
-          <a class="val" href="https://wa.me/40799735945?text=Salut!%20A%C8%99%20dori%20s%C4%83%20fac%20o%20programare." target="_blank" rel="noopener"><span lang="ro">Scrie-ne</span><span lang="en">Message us</span></a>
-          <p><span lang="ro">Același număr, cu mesajul pregătit.</span><span lang="en">Same number, message ready to send.</span></p>
+          <a class="val" href="https://wa.me/40799735945?text=Salut!%20A%C8%99%20dori%20s%C4%83%20fac%20o%20programare." target="_blank" rel="noopener"><span lang="ro">Scrie-ne</span><span lang="en">Message us</span><span lang="pt">Escreva-nos</span></a>
+          <p><span lang="ro">Același număr, cu mesajul pregătit.</span><span lang="en">Same number, message ready to send.</span><span lang="pt">O mesmo número, com a mensagem pronta.</span></p>
         </div>
         <div class="casuta rv d2">
           <h3>Email</h3>
           <a class="val" href="mailto:office@societysalon.ro" style="font-size:22px">office@societysalon.ro</a>
-          <p><span lang="ro">Sugestii sau reclamații:</span><span lang="en">Feedback or complaints:</span> <a href="mailto:reclamatii@societysalon.ro">reclamatii@societysalon.ro</a></p>
+          <p><span lang="ro">Sugestii sau reclamații:</span><span lang="en">Feedback or complaints:</span><span lang="pt">Sugestões ou reclamações:</span> <a href="mailto:reclamatii@societysalon.ro">reclamatii@societysalon.ro</a></p>
         </div>
         <div class="casuta rv d3">
-          <h3><span lang="ro">Urmărește-ne</span><span lang="en">Follow us</span></h3>
+          <h3><span lang="ro">Urmărește-ne</span><span lang="en">Follow us</span><span lang="pt">Siga-nos</span></h3>
           <div class="social">
             <a href="https://www.instagram.com/societysalon.ro/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6"/></svg>Instagram</a>
             <a href="https://www.facebook.com/societysalon.ro" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5h2.5V5H14a3.5 3.5 0 0 0-3.5 3.5V11H8v3.5h2.5V21H14v-6.5h2.5L17 11h-3V9a.5.5 0 0 1 .5-.5Z"/></svg>Facebook</a>
@@ -733,6 +819,9 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
       </div>
     </div>
   </section>
+  <div class="urm"><div class="lat"><a href="#/programare"><span class="eticheta"><span lang="ro">Următoarea pagină</span><span lang="en">Next page</span><span lang="pt">Página seguinte</span></span><span class="urm-t"><span lang="ro">Programează-te</span><span lang="en">Book now</span><span lang="pt">Marcar</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div>
+  </div>
+
 </main>
 
 <footer class="rodape">
@@ -740,32 +829,32 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
     <img class="logo-rod" src="__LOGO_ALB__" width="600" height="196" alt="Society Salon">
     <p class="motto">The secret society of powerful men.</p>
     <div class="rod-grila">
-      <div><h3><span lang="ro">Adresa</span><span lang="en">Address</span></h3><p>Bulevardul Carol I nr. 26–28, demisol<br>700505 Iași, România</p></div>
-      <div><h3><span lang="ro">Programări</span><span lang="en">Bookings</span></h3><p><a href="https://mero.ro/p/societysalon" target="_blank" rel="noopener">mero.ro/p/societysalon</a><br><a href="tel:+40799735945">0799 735 945</a></p></div>
+      <div><h3><span lang="ro">Adresa</span><span lang="en">Address</span><span lang="pt">Morada</span></h3><p>Bulevardul Carol I nr. 26–28, demisol<br>700505 Iași, România</p></div>
+      <div><h3><span lang="ro">Programări</span><span lang="en">Bookings</span><span lang="pt">Marcações</span></h3><p><a href="https://mero.ro/p/societysalon" target="_blank" rel="noopener">mero.ro/p/societysalon</a><br><a href="tel:+40799735945">0799 735 945</a></p></div>
       <div><h3>Email</h3><p><a href="mailto:office@societysalon.ro">office@societysalon.ro</a><br><a href="mailto:reclamatii@societysalon.ro">reclamatii@societysalon.ro</a></p></div>
-      <div><h3><span lang="ro">Firma</span><span lang="en">Company</span></h3><p><span lang="ro">Denumire, CUI, Nr. Reg. Com.</span><span lang="en">Company name, tax ID, trade reg. no.</span><br><span class="de-confirmat" style="background:rgba(255,107,116,.12);color:#FF8A91"><span lang="ro">de confirmat</span><span lang="en">to confirm</span></span></p></div>
+      <div><h3><span lang="ro">Firma</span><span lang="en">Company</span><span lang="pt">Empresa</span></h3><p><span lang="ro">Denumire, CUI, Nr. Reg. Com.</span><span lang="en">Company name, tax ID, trade reg. no.</span><span lang="pt">Denominação, CUI, n.º no Registo Comercial</span><br><span class="de-confirmat" style="background:rgba(255,107,116,.12);color:#FF8A91"><span lang="ro">de confirmat</span><span lang="en">to confirm</span><span lang="pt">a confirmar</span></span></p></div>
     </div>
     <div class="rod-legal">
       <span>© 2026 Society Salon</span>
-      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener"><span lang="ro">ANPC · Soluționarea alternativă a litigiilor</span><span lang="en">ANPC · Alternative dispute resolution</span></a>
-      <span><span lang="ro">Site fără cookie-uri. Harta Google se încarcă doar dacă o ceri.</span><span lang="en">No cookies on this site. The Google map only loads if you ask for it.</span></span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener"><span lang="ro">ANPC · Soluționarea alternativă a litigiilor</span><span lang="en">ANPC · Alternative dispute resolution</span><span lang="pt">ANPC · Resolução alternativa de litígios</span></a>
+      <span><span lang="ro">Site fără cookie-uri. Harta Google se încarcă doar dacă o ceri.</span><span lang="en">No cookies on this site. The Google map only loads if you ask for it.</span><span lang="pt">Site sem cookies. O mapa do Google só carrega se o pedir.</span></span>
       <a href="https://pachecost.com" target="_blank" rel="noopener">Website: Pacheco Studios</a>
     </div>
   </div>
 </footer>
 
 <nav class="jos" id="jos" aria-label="Acțiuni rapide">
-  <a class="btn btn-rosu" href="#programare"><span lang="ro">Programează-te</span><span lang="en">Book now</span></a>
-  <a class="btn btn-ic" href="tel:+40799735945"><span class="sr-only"><span lang="ro">Sună</span><span lang="en">Call</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+  <a class="btn btn-rosu" href="#/programare"><span lang="ro">Programează-te</span><span lang="en">Book now</span><span lang="pt">Marcar</span></a>
+  <a class="btn btn-ic" href="tel:+40799735945"><span class="sr-only"><span lang="ro">Sună</span><span lang="en">Call</span><span lang="pt">Ligar</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
   <a class="btn btn-ic" href="https://wa.me/40799735945" target="_blank" rel="noopener"><span class="sr-only">WhatsApp</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 1.6 3.6 3.6 4.4l1.1-1.1 1.8.8-.3 1.4c-3 .3-6.4-3-6.1-6l1.4-.3.8 1.8z"/></svg></a>
 </nav>
 
 <dialog class="lightbox" id="lb" aria-label="Fotografie">
   <div class="lb-in">
     <img id="lb-img" src="" alt="">
-    <button class="lb-btn lb-inchide" type="button" id="lb-x"><span class="sr-only"><span lang="ro">Închide</span><span lang="en">Close</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <button class="lb-btn lb-st" type="button" id="lb-p"><span class="sr-only"><span lang="ro">Anterioara</span><span lang="en">Previous</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-    <button class="lb-btn lb-dr" type="button" id="lb-n"><span class="sr-only"><span lang="ro">Următoarea</span><span lang="en">Next</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="lb-btn lb-inchide" type="button" id="lb-x"><span class="sr-only"><span lang="ro">Închide</span><span lang="en">Close</span><span lang="pt">Fechar</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button class="lb-btn lb-st" type="button" id="lb-p"><span class="sr-only"><span lang="ro">Anterioara</span><span lang="en">Previous</span><span lang="pt">Anterior</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="lb-btn lb-dr" type="button" id="lb-n"><span class="sr-only"><span lang="ro">Următoarea</span><span lang="en">Next</span><span lang="pt">Seguinte</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     <p class="lb-nr" id="lb-nr"></p>
   </div>
 </dialog>
@@ -778,8 +867,10 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
 <script>
 (function(){
   var html=document.documentElement;
-  var L=function(){return html.dataset.lang==='en'?'en':'ro'};
-  var t=function(ro,en){return L()==='en'?en:ro};
+  var L=function(){var l=html.dataset.lang;return l==='en'||l==='pt'?l:'ro'};
+  var PT={"Skip to content": "Saltar para o conteúdo", "PACHECO STUDIOS PRESENTATION · new website proposal<span class=\"lung\"> · anything marked <b>to confirm</b> we fill in with the salon</span>": "APRESENTAÇÃO PACHECO STUDIOS · proposta de site novo<span class=\"lung\"> · o que está marcado <b>a confirmar</b> completamos com o salão</span>", "Booking": "Marcação", "Services": "Serviços", "Team": "Equipa", "Work": "Trabalhos", "The card": "O cartão", "Book now": "Marcar", "Menu": "Menu", "Close menu": "Fechar o menu", "Home": "Início", "Member card": "Cartão de membro", "Hours and location": "Horário e localização", "Book on MERO": "Marcar no MERO", "since 2025": "desde 2025", " Society Salon, men's barbershop in Copou, Iași.": " Society Salon, barbearia masculina em Copou, Iași.", "A men's barbershop on Carol I Boulevard, one floor down. Five barbers across three levels, one standard. And your 6th haircut is on the house.": "Barbearia masculina no Boulevard Carol I, na cave. Cinco barbeiros em três níveis, um só padrão. E o 6.º corte é oferta da casa.", "Book a cut": "Marcar corte", "5.00": "5,00", "1,612 ratings": "1.612 avaliações", "on MERO": "no MERO", "5.0": "5,0", "70 reviews": "70 avaliações", "on Google": "no Google", "lower ground": "cave", "5 visits, then <b>your 6th cut is free</b>": "5 visitas e <b>o 6.º corte é grátis</b>", "The whole salon, page by page": "O salão inteiro, página a página", "Come in": "Entre", "Service, barber, then the time on MERO or WhatsApp.": "Serviço, barbeiro e depois a hora no MERO ou no WhatsApp.", "Services and prices": "Serviços e preços", "Prices by level, Gentleman's Package and Premium.": "Preços por nível, Gentleman's Package e Premium.", "The team": "Equipa", "Five barbers, with level and MERO rating.": "Cinco barbeiros, com nível e nota no MERO.", "Our work": "Trabalhos", "Fades, classic cuts and beards, from the salon.": "Fades, cortes clássicos e barbas, feitos no salão.", "Five visits, then the 6th cut is free.": "Cinco visitas e o 6.º corte é grátis.", "Hours and contact": "Horário e contacto", "When we're open and how to find the door.": "Quando estamos abertos e como encontrar a porta.", "from 1,612 ratings": "em 1.612 avaliações", "see on MERO": "ver no MERO", "from 70 reviews": "em 70 avaliações", "see on Google": "ver no Google", "What clients say": "O que dizem os clientes", "You leave, you come back": "Sai e volta", "One client writes that Bogdan is the best barber he's ever had and that he'd never switch.": "Um cliente escreve que o Bogdan é o melhor barbeiro onde já foi e que não o troca por nada.", "The barbers listen to what you ask for and cut carefully, without rushing.": "Os barbeiros ouvem o que se pede e cortam com cuidado, sem pressa.", "MERO · several reviews": "MERO · várias avaliações", "Professional, quick and efficient. People leave happy and come back.": "Profissionais, rápidos e eficientes. As pessoas saem satisfeitas e voltam.", "A summary of public MERO reviews, not exact quotes.": "Resumo das avaliações públicas no MERO, não são citações exatas.", "Book in three steps": "Marcação em três passos", "Choose. Confirm. Come downstairs.": "Escolha. Confirme. Desça.", "Pick the service and the barber here. Grab the time on MERO, which shows free slots live, or message us on WhatsApp with the text already filled in.": "Escolhe aqui o serviço e o barbeiro. A hora marca-se no MERO, que mostra as vagas em tempo real, ou pelo WhatsApp com a mensagem já escrita.", "The service": "O serviço", "The barber": "O barbeiro", "Your booking": "A sua marcação", "Service": "Serviço", "Barber": "Barbeiro", "Duration": "Duração", "Pick a time on MERO": "Escolher a hora no MERO", "Send on WhatsApp": "Enviar pelo WhatsApp", "Prices and durations are the ones shown on MERO. The final price depends on the barber and hair length.": "Preços e durações tal como aparecem no MERO. O preço final depende do barbeiro e do comprimento do cabelo.", "Next page": "Página seguinte", "Prices, by level": "Preços, por nível", "The barber's level matters. You choose exactly how much experience goes into your cut.": "O nível do barbeiro conta. Escolhe exatamente quanta experiência quer no seu corte.", "Extras": "Extras", "Prices from societysalon.ro. MERO shows a different range for some services (e.g. Haircut &amp; Styling 70–85 lei).": "Preços do societysalon.ro. No MERO alguns serviços aparecem com outro intervalo (por exemplo Haircut &amp; Styling 70–85 lei).", "current list to confirm": "lista em vigor a confirmar", "Illustrative image": "Imagem ilustrativa", "An hour that's just yours": "Uma hora só para si", "The full ritual": "O ritual completo", "Hair and beard in one visit. For a big day, or just because.": "Cabelo e barba na mesma visita. Para um dia importante ou só porque sim.", "haircut": "corte", "styling": "penteado", "beard trim": "aparar barba", "outline and shave": "contorno e navalha", "Choose this": "Escolher este pacote", "Premium Package": "Pacote Premium", "hair and beard": "cabelo e barba", "tonic": "tónico", "scalp massage": "massagem capilar", "Five barbers": "Cinco barbeiros", "The society": "A sociedade", "Clients keep coming back to the same barber. Choose yours by name, level and MERO rating.": "Os clientes voltam ao mesmo barbeiro. Aqui escolhe-o pelo nome, nível e nota no MERO.", "Ratings and counts from MERO, as of 4 October 2026. Photos from the salon's website and MERO page.": "Notas e número de avaliações do MERO, a 4 de outubro de 2026. Fotografias do site e da página MERO do salão.", "Real work": "Trabalho real", "Straight from the chair": "Acabado de sair da cadeira", "Photos from the salon, taken from societysalon.ro and the MERO page. Tap a photo to see it full size.": "Fotografias do salão, tiradas do societysalon.ro e da página MERO. Toque numa fotografia para a ver em grande.", "Add a visit": "Adicionar uma visita", "The member card": "O cartão de membro", "The 6th cut is on the house": "O 6.º corte é oferta da casa", "<strong>Every visit, one punch.</strong> Haircut, beard or package: every booking you show up for counts.": "<strong>Cada visita, um furo.</strong> Corte, barba ou pacote: conta cada marcação a que comparece.", "<strong>The sixth haircut: 100% off.</strong> The offer is already on the salon's Google listing. Here you see it at every step.": "<strong>O sexto corte: 100% de desconto.</strong> A oferta já está na ficha Google do salão. Aqui vê-se a cada passo.", "Physical card, in MERO or by phone number: how visits are tracked": "Cartão físico, no MERO ou pelo número de telefone: como se contam as visitas", "to confirm": "a confirmar", "Opening hours": "Horário", "When we're open": "Quando estamos abertos", "Hours from MERO. The current website shows different hours (Mon–Fri 9–21, Sat 10–18).": "Horário do MERO. O site atual mostra outro horário (seg–sex 9–21, sáb 10–18).", "The entrance, seen from the courtyard.": "A entrada, vista do pátio.", "Lower ground · 100 m from Universitate stop": "Cave · a 100 m da paragem Universitate", "26–28 Carol I Blvd": "Bd. Carol I n.º 26–28", "From the boulevard, walk into the tree-lined courtyard.": "Do boulevard, entra-se no pátio com árvores.", "Next to Tacos King": "Ao lado do Tacos King", "Keep Tacos King on your left and walk along the path.": "O Tacos King fica à esquerda. Segue-se em frente pelo caminho.", "Under the black canopy": "Debaixo da cobertura preta", "The door is under the Society Salon sign, barber pole on the left. One floor down.": "A porta fica debaixo do letreiro Society Salon, com o poste de barbeiro à esquerda. Desce-se um piso.", "Get directions": "Como chegar", "Show the map": "Mostrar o mapa", "Contact": "Contacto", "See you downstairs": "Esperamos por si lá em baixo", "Phone": "Telefone", "Bookings and questions.": "Marcações e perguntas.", "Message us": "Escreva-nos", "Same number, message ready to send.": "O mesmo número, com a mensagem pronta.", "Feedback or complaints:": "Sugestões ou reclamações:", "Follow us": "Siga-nos", "Address": "Morada", "Bookings": "Marcações", "Company": "Empresa", "Company name, tax ID, trade reg. no.": "Denominação, CUI, n.º no Registo Comercial", "ANPC · Alternative dispute resolution": "ANPC · Resolução alternativa de litígios", "No cookies on this site. The Google map only loads if you ask for it.": "Site sem cookies. O mapa do Google só carrega se o pedir.", "Call": "Ligar", "Close": "Fechar", "Previous": "Anterior", "Next": "Seguinte", "Society Salon member card: 6th haircut free": "Cartão de membro Society Salon: 6.º corte grátis", "Your 6th cut is on the house. Press again to start a new card.": "O 6.º corte é oferta da casa. Carregue outra vez para começar um cartão novo.", "Your next cut is free.": "O próximo corte é grátis.", "Hair": "Cabelo", "Beard": "Barba", "Packages": "Pacotes", "First available": "Quem estiver livre", "earliest slot": "a hora mais cedo", "cut, wash and style": "corte, lavagem e penteado", "beard trim, outline or shave": "aparar, contorno ou barbear", "haircut and style, beard trim, outline and shave": "corte e penteado, barba aparada, contorno e navalha", "long hair cut and style, beard": "corte e penteado de cabelo comprido, barba", "hair and beard, Black Mask, tonic and scalp massage": "cabelo e barba, Black Mask, tónico e massagem capilar", "black face mask": "máscara preta para o rosto", "beard colouring": "coloração da barba", "wash and style": "lavagem e penteado", "Monday": "Segunda", "Tuesday": "Terça", "Wednesday": "Quarta", "Thursday": "Quinta", "Friday": "Sexta", "Saturday": "Sábado", "Sunday": "Domingo", "Closed": "Fechado", "Open now · closes at ": "Aberto agora · fecha às ", "Closed now · opens ": "Fechado agora · abre ", "today": "hoje", "tomorrow": "amanhã", " at ": " às ", "Barbershop in Copou, Iași": "Barbearia em Copou, Iași", "Map: Society Salon, Iași": "Mapa: Society Salon, Iași", "Society Salon work ": "Trabalho Society Salon "};
+  var ptDe=function(en,pt){return pt!==undefined?pt:(PT[en]!==undefined?PT[en]:en)};
+  var t=function(ro,en,pt){var l=L();return l==='en'?en:l==='pt'?ptDe(en,pt):ro};
 
   /* ---------- dados (MERO + societysalon.ro, 4/10/2026) ---------- */
   var SERV=[
@@ -812,7 +903,7 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
   var ORAR=[[1,'Luni','Monday','9:00','21:00'],[2,'Marți','Tuesday','9:00','21:00'],[3,'Miercuri','Wednesday','10:00','21:00'],[4,'Joi','Thursday','10:00','21:00'],[5,'Vineri','Friday','10:00','21:00'],[6,'Sâmbătă','Saturday','9:00','17:00'],[0,'Duminică','Sunday',null,null]];
 
   var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
-  var bi=function(ro,en){return '<span lang="ro">'+esc(ro)+'</span><span lang="en">'+esc(en)+'</span>'};
+  var bi=function(ro,en,pt){return '<span lang="ro">'+esc(ro)+'</span><span lang="en">'+esc(en)+'</span><span lang="pt">'+esc(ptDe(en,pt))+'</span>'};
   var bars=function(n){var s='<i aria-hidden="true">';for(var i=0;i<3;i++)s+='<span'+(i<n?'':' class="g"')+'></span>';return s+'</i>'};
 
   /* ---------- cardul de membru (assinatura) ---------- */
@@ -826,7 +917,7 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
       }else{
         sl+='<g><circle class="sigiliu-gol" cx="'+x+'" cy="'+y+'" r="15" fill="none" stroke="#E3000F" stroke-width="1.2" stroke-dasharray="2 3"/>'+
             '<g class="sigiliu"><circle cx="'+x+'" cy="'+y+'" r="17" fill="#E3000F"/><circle cx="'+x+'" cy="'+y+'" r="14" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width=".8"/><use href="#s-mic" x="'+(x-6)+'" y="'+(y-9)+'" width="12" height="18" fill="#fff"/></g>'+
-            '<text class="gratis" x="'+x+'" y="'+(y+30)+'" text-anchor="middle" font-family="Geist Mono,monospace" font-size="9" font-weight="500" fill="#E3000F">6 · '+(L()==='en'?'FREE':'GRATIS')+'</text></g>';
+            '<text class="gratis" x="'+x+'" y="'+(y+30)+'" text-anchor="middle" font-family="Geist Mono,monospace" font-size="9" font-weight="500" fill="#E3000F">6 · '+t('GRATIS','FREE','GRÁTIS')+'</text></g>';
       }
     }
     var mask='';for(i=0;i<5;i++)mask+='<circle class="gaura" data-i="'+i+'" cx="'+(40+i*52)+'" cy="152" r="10" fill="#000"/>';
@@ -837,7 +928,7 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
       '<g mask="url(#'+id+'k)"><rect width="'+W+'" height="'+H+'" rx="14" fill="url(#'+id+'g)"/><rect class="luciu" x="-120" width="120" height="'+H+'" fill="url(#'+id+'l)" transform="skewX(-18)"/>'+
       '<rect x=".5" y=".5" width="'+(W-1)+'" height="'+(H-1)+'" rx="13.5" fill="none" stroke="#fff" stroke-opacity=".08"/>'+
       '<image href="'+document.querySelector('.meniu-sus img').getAttribute('src')+'" x="22" y="22" width="132" height="43"/>'+
-      '<text x="318" y="36" text-anchor="end" font-family="Geist Mono,monospace" font-size="8.5" letter-spacing="1.6" fill="#B9BCC0">'+(L()==='en'?'MEMBER CARD':'CARD DE MEMBRU')+'</text>'+
+      '<text x="318" y="36" text-anchor="end" font-family="Geist Mono,monospace" font-size="8.5" letter-spacing="1.6" fill="#B9BCC0">'+t('CARD DE MEMBRU','MEMBER CARD','CARTÃO DE MEMBRO')+'</text>'+
       '<text x="318" y="52" text-anchor="end" font-family="Geist Mono,monospace" font-size="8.5" letter-spacing="1.2" fill="#6C6F73">Nº 0006 · COPOU</text>'+
       '<text x="22" y="100" font-family="Kalnia,Georgia,serif" font-size="15" font-weight="300" fill="#E9E9E6" letter-spacing=".3">The secret society of powerful men</text>'+
       '<line x1="22" y1="114" x2="318" y2="114" stroke="#fff" stroke-opacity=".08"/>'+sl+'</g></svg>';
@@ -874,7 +965,7 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
   var cMare=cards[1], vizite=2, stare=document.getElementById('card-stare'), plus=document.getElementById('card-plus');
   function textStare(){
     if(vizite>=6) return t('A 6-a tunsoare e din partea casei. Apasă din nou ca să începi un card nou.','Your 6th cut is on the house. Press again to start a new card.');
-    var r=5-vizite; return r===0?t('Următoarea tunsoare e gratuită.','Your next cut is free.'):t(vizite+' din 5 vizite · încă '+r+' până la tunsoarea gratuită',vizite+' of 5 visits · '+r+' more to the free cut');
+    var r=5-vizite; return r===0?t('Următoarea tunsoare e gratuită.','Your next cut is free.'):t(vizite+' din 5 vizite · încă '+r+' până la tunsoarea gratuită',vizite+' of 5 visits · '+r+' more to the free cut',vizite+' de 5 visitas · faltam '+r+' para o corte grátis');
   }
   cMare.set(vizite);
   plus.addEventListener('click',function(){vizite=vizite>=6?0:vizite+1;cMare.set(vizite);stare.textContent=textStare();stare.classList.toggle('ok',vizite>=5)});
@@ -900,12 +991,12 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
     document.getElementById('r-friz').textContent=f?f.n+' · '+f.lv:t('Oricine e liber','First available');
     document.getElementById('r-dur').textContent=s.d;
     document.getElementById('r-pret').textContent=s.p;
-    var msg=t('Salut! Aș dori o programare: '+s.n+(f?' cu '+f.n:'')+'. Când aveți liber?','Hi! I\'d like to book: '+s.n+(f?' with '+f.n:'')+'. When are you free?');
+    var msg=t('Salut! Aș dori o programare: '+s.n+(f?' cu '+f.n:'')+'. Când aveți liber?','Hi! I\'d like to book: '+s.n+(f?' with '+f.n:'')+'. When are you free?','Salut! Aș dori o programare: '+s.n+(f?' cu '+f.n:'')+'. Când aveți liber?');
     document.getElementById('r-wa').href='https://wa.me/40799735945?text='+encodeURIComponent(msg);
   }
   so.addEventListener('click',function(e){var b=e.target.closest('[data-serv]');if(b){sel.serv=b.dataset.serv;randeaza()}});
   fo.addEventListener('click',function(e){var b=e.target.closest('[data-friz]');if(b){sel.friz=b.dataset.friz;randeaza()}});
-  document.querySelectorAll('[data-alege-serv]').forEach(function(b){b.addEventListener('click',function(){sel.serv=b.dataset.alegeServ;randeaza();document.getElementById('programare').scrollIntoView({behavior:reduz?'auto':'smooth'})})});
+  document.querySelectorAll('[data-alege-serv]').forEach(function(b){b.addEventListener('click',function(){sel.serv=b.dataset.alegeServ;randeaza();location.hash='#/programare'})});
   randeaza();
 
   /* ---------- prețuri (separadores) ---------- */
@@ -928,15 +1019,15 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
   FRIZ.forEach(function(f,i){
     h+='<article class="membru rv'+(i%4?' d'+(i%4):'')+'"><figure class="membru-foto"><span class="initiala" aria-hidden="true">'+f.n[0]+'</span><img src="'+f.f+'" alt="'+esc(f.n)+', '+esc(f.lv)+'" width="370" height="450" loading="lazy" onerror="this.remove()"></figure>'+
        '<h3>'+esc(f.n)+'</h3><p class="nivel">'+bars(f.niv)+esc(f.lv)+'</p>'+
-       '<p class="scor-m"><b>★ '+bi(f.r,f.re)+'</b> · '+bi(f.c+' evaluări pe MERO',f.c+' ratings on MERO')+'</p>'+
-       '<button class="btn btn-linie" type="button" data-cu="'+f.id+'">'+bi('Programează cu '+f.n.split(' ')[0],'Book with '+f.n.split(' ')[0])+'</button></article>';
+       '<p class="scor-m"><b>★ '+bi(f.r,f.re)+'</b> · '+bi(f.c+' evaluări pe MERO',f.c+' ratings on MERO',f.c+' avaliações no MERO')+'</p>'+
+       '<button class="btn btn-linie" type="button" data-cu="'+f.id+'">'+bi('Programează cu '+f.n.split(' ')[0],'Book with '+f.n.split(' ')[0],'Marcar com o '+f.n.split(' ')[0])+'</button></article>';
   });
   el.innerHTML=h;
-  el.addEventListener('click',function(e){var b=e.target.closest('[data-cu]');if(!b)return;sel.friz=b.dataset.cu;randeaza();document.getElementById('programare').scrollIntoView({behavior:reduz?'auto':'smooth'})});
+  el.addEventListener('click',function(e){var b=e.target.closest('[data-cu]');if(!b)return;sel.friz=b.dataset.cu;randeaza();location.hash='#/programare'});
 
   /* ---------- galerie + lightbox ---------- */
   var gl=document.getElementById('galerie'); h='';
-  GAL.forEach(function(g,i){h+='<button type="button" class="rv'+(i%3?' d'+(i%3):'')+'" data-g="'+i+'"><span class="sr-only">'+bi('Deschide fotografia '+(i+1),'Open photo '+(i+1))+'</span><img src="media/'+g+'.webp" alt="" loading="lazy" onerror="this.closest(\'button\').remove()"></button>'});
+  GAL.forEach(function(g,i){h+='<button type="button" class="rv'+(i%3?' d'+(i%3):'')+'" data-g="'+i+'"><span class="sr-only">'+bi('Deschide fotografia '+(i+1),'Open photo '+(i+1),'Abrir a fotografia '+(i+1))+'</span><img src="media/'+g+'.webp" alt="" loading="lazy" onerror="this.closest(\'button\').remove()"></button>'});
   gl.innerHTML=h;
   var lb=document.getElementById('lb'), li=document.getElementById('lb-img'), cur=0;
   function lbArata(i){cur=(i+GAL.length)%GAL.length;li.src='media/'+GAL[cur]+'.webp';li.alt=t('Lucrare Society Salon ','Society Salon work ')+(cur+1);document.getElementById('lb-nr').textContent=(cur+1)+' / '+GAL.length}
@@ -967,18 +1058,38 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
     else{
       var urm=null;for(var k=0;k<8;k++){var zz=(a.z+k)%7,r=ORAR.filter(function(x){return x[0]===zz})[0];if(r[3]&&(k>0||a.m<min(r[3]))){urm={k:k,r:r};break}}
       st.className='stare rv vis inchis';
-      tt.textContent=t('Închis acum · deschide ','Closed now · opens ')+(urm.k===0?t('azi','today'):urm.k===1?t('mâine','tomorrow'):t(urm.r[1].toLowerCase(),urm.r[2]))+t(' la ',' at ')+urm.r[3];
+      tt.textContent=t('Închis acum · deschide ','Closed now · opens ')+(urm.k===0?t('azi','today'):urm.k===1?t('mâine','tomorrow'):t(urm.r[1].toLowerCase(),urm.r[2],(PT[urm.r[2]]||'').toLowerCase()))+t(' la ',' at ')+urm.r[3];
     }
   }
   randOrar(); setInterval(randOrar,60000);
 
+  /* ---------- subpáginas (router por #/) ---------- */
+  var PAGINI={acasa:['Barbershop în Copou, Iași','Barbershop in Copou, Iași'],programare:['Programare','Booking'],servicii:['Servicii și prețuri','Services and prices'],echipa:['Echipa','The team'],lucrari:['Lucrări','Our work'],card:['Cardul de membru','Member card'],contact:['Program și contact','Hours and contact']};
+  var ALIAS={'':'acasa',sus:'acasa',recenzii:'acasa',preturi:'servicii',ritual:'servicii',program:'contact'};
+  var paginaCur=null;
+  function titlu(){var x=PAGINI[paginaCur||'acasa'];document.title='Society Salon · '+t(x[0],x[1])}
+  function ruta(prima){
+    var h=location.hash;
+    if(h==='#continut')return;
+    var id=h.replace(/^#\/?/,'');
+    id=ALIAS[id]||id; if(!PAGINI[id])id='acasa';
+    if(id===paginaCur)return;
+    paginaCur=id;
+    document.querySelectorAll('.pagina').forEach(function(p){var on=p.dataset.pagina===id;p.hidden=!on;p.classList.toggle('pagina-intrare',on&&!prima&&!reduz)});
+    document.querySelectorAll('.nav a,.meniu li a').forEach(function(a){var r=a.getAttribute('href').replace(/^#\/?/,'')||'acasa';if(r===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    titlu();
+    if(!prima){scrollTo(0,0);var hh=document.querySelector('.pagina:not([hidden]) h2, .pagina:not([hidden]) h1');if(hh){hh.setAttribute('tabindex','-1');hh.focus({preventScroll:true})}}
+    sc();
+  }
+  addEventListener('hashchange',function(){ruta(false)});
+
   /* ---------- limba ---------- */
   function seteaza(l){
-    html.dataset.lang=l; html.lang=l;
+    html.dataset.lang=l; html.lang=l==='pt'?'pt-PT':l;
     document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
-    document.title=l==='en'?'Society Salon · Barbershop in Copou, Iași':'Society Salon · Barbershop în Copou, Iași';
+    titlu();
     try{localStorage.setItem('ss2.lang',l)}catch(e){}
-    cards.forEach(function(c){c.svg.querySelector('.gratis').textContent='6 · '+(l==='en'?'FREE':'GRATIS');c.svg.querySelectorAll('text')[0].textContent=l==='en'?'MEMBER CARD':'CARD DE MEMBRU';c.svg.setAttribute('aria-label',t('Cardul de membru Society Salon: a 6-a tunsoare gratuită','Society Salon member card: 6th haircut free'))});
+    cards.forEach(function(c){c.svg.querySelector('.gratis').textContent='6 · '+t('GRATIS','FREE','GRÁTIS');c.svg.querySelectorAll('text')[0].textContent=t('CARD DE MEMBRU','MEMBER CARD','CARTÃO DE MEMBRO');c.svg.setAttribute('aria-label',t('Cardul de membru Society Salon: a 6-a tunsoare gratuită','Society Salon member card: 6th haircut free'))});
     randeaza(); randOrar(); stare.textContent=textStare();
   }
   document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
@@ -986,8 +1097,8 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
 
   /* ---------- bara, meniu, bara de jos ---------- */
   var bara=document.getElementById('bara'), jos=document.getElementById('jos'), erou=document.getElementById('sus');
-  function sc(){bara.classList.toggle('scrolled',scrollY>8);jos.classList.toggle('vizibil',scrollY>erou.offsetHeight*.7)}
-  addEventListener('scroll',sc,{passive:true}); sc();
+  function sc(){bara.classList.toggle('scrolled',scrollY>8);jos.classList.toggle('vizibil',paginaCur!=='acasa'||scrollY>erou.offsetHeight*.7)}
+  addEventListener('scroll',sc,{passive:true}); ruta(true);
   var burger=document.querySelector('.bara .burger'), meniu=document.getElementById('meniu'), inchide=meniu.querySelector('.inchide');
   function deschide(d){meniu.classList.toggle('deschis',d);burger.setAttribute('aria-expanded',d?'true':'false');document.body.style.overflow=d?'hidden':'';(d?inchide:burger).focus()}
   burger.addEventListener('click',function(){deschide(true)});
