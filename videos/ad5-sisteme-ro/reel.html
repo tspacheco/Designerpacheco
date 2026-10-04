@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Reel 5 sisteme — RO</title>
+<!-- Zonas seguras do Reels: nada essencial nos 14 % de cima (até 270 px) nem nos 35 % de baixo (a partir de ~1250 px);
+     o esquema pode entrar por baixo, o título e o CTA não.
+     Versão romena do reel «Ad 5 systems» (04/10/2026). Cada fotograma é desenhado por render(t), sem estado:
+     render.cjs captura 30 fps com Playwright e o ffmpeg põe por baixo o clip limpo da intro (0–5 s). -->
+<style>
+@font-face{font-family:I;src:url(../../marca/fontes/inter-var.woff2) format("woff2");font-weight:100 900}
+@font-face{font-family:I;src:url(../../marca/fontes/inter-var-latin-ext.woff2) format("woff2");font-weight:100 900;unicode-range:U+0100-02FF,U+1E00-1EFF,U+201E,U+201D}
+@font-face{font-family:I;src:url(../../marca/fontes/inter-600-ro.woff2) format("woff2");font-weight:100 900;unicode-range:U+2192}
+:root{--bar:#24161a;--gold:#e8dbb8;--navy1:#1f2451;--navy2:#1c3564;--ink:#f4f1ea;--mute:#b9c2dc}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent;font-family:I,system-ui,sans-serif;color:var(--ink)}
+#stage{position:absolute;inset:0}
+.bar{position:absolute;left:0;right:0;background:var(--bar);z-index:5}
+.bar.top{top:0;height:118px}
+.bar.top::after{content:"";position:absolute;left:55px;right:55px;top:98px;height:4px;background:var(--gold)}
+.bar.bot{bottom:0;height:120px}
+.navy{position:absolute;left:0;right:0;top:118px;bottom:120px;background:
+  radial-gradient(120% 70% at 0% 100%,#1d4182 0%,transparent 60%),
+  linear-gradient(180deg,var(--navy1),var(--navy2));}
+.navy::after{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 70% 40%,rgba(255,255,255,.025) 0 2px,transparent 2px 220px)}
+.t{position:absolute;left:0;right:0;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.18}
+.intro1{top:270px;font-size:60px;color:#f3e9d2;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.intro2{top:420px;font-size:34px;letter-spacing:.04em;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.intro3{top:1150px;left:90px;right:90px;padding:22px 10px;font-size:31px;letter-spacing:.05em;line-height:1.35;border-radius:14px;background:rgba(14,18,20,.58);text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.sys{position:absolute;inset:0}
+.lab{position:absolute;left:62px;top:280px;font-size:20px;font-weight:700;letter-spacing:.16em;color:var(--mute)}
+.tit{position:absolute;left:62px;right:62px;top:320px;font-size:52px;font-weight:700;text-transform:uppercase;line-height:1.12;letter-spacing:.01em}
+.sub{position:absolute;left:62px;right:120px;font-size:27px;line-height:1.4;color:#d6dcef}
+.card{position:absolute;left:50%;background:#fff;border-radius:18px;padding:14px;box-shadow:0 30px 80px rgba(5,10,40,.55)}
+.card img{display:block;border-radius:10px}
+.flow{position:absolute;left:40px;right:40px;top:1690px;text-align:center;font-size:21px;font-weight:700;letter-spacing:.1em;color:#e7ebf7}
+.foot{position:absolute;left:0;right:0;top:1752px;text-align:center;font-size:16px;font-weight:600;letter-spacing:.2em;color:#9aa6c8}
+.big{position:absolute;left:60px;right:60px;text-align:center;font-weight:700;text-transform:uppercase;font-size:44px;line-height:1.25}
+.pill{position:absolute;left:50%;transform:translateX(-50%);border:3px solid #8fa3d9;background:#141a3d;padding:34px 0;width:640px;text-align:center;font-weight:700;font-size:25px;letter-spacing:.12em;text-transform:uppercase}
+.kick{position:absolute;left:0;right:0;text-align:center;font-weight:700;font-size:20px;letter-spacing:.2em;color:#c9d2ee;text-transform:uppercase}
+.cta{position:absolute;left:40px;right:40px;text-align:center;font-weight:800;text-transform:uppercase;font-size:64px;line-height:1.15;color:#fff}
+.cta b{color:#f6c66b}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const SYS=[
+ {n:'01',img:'receptionist',w:2102,h:1904,t:'Apel pierdut?<br>Răspuns pe WhatsApp.',s:'Un apel ratat devine o conversație, nu un client pierdut.',f:'APEL PIERDUT → RĂSPUNS ÎN 5 SECUNDE → REZERVARE'},
+ {n:'02',img:'lead',w:2102,h:1830,t:'Răspuns în<br>60 de secunde',s:'Orice cerere primește răspuns, de pe orice canal.',f:'CERERE → RĂSPUNS → ÎNTREBARE → URMĂTORUL PAS'},
+ {n:'03',img:'programari',w:2102,h:2303,t:'Programări<br>confirmate',s:'Reminder la timp. Locurile eliberate nu rămân goale.',f:'CERERE → ORĂ LIBERĂ → REMINDER → CONFIRMARE'},
+ {n:'04',img:'revenire',w:2102,h:2655,t:'Clienții care<br>revin',s:'Pentru clienții care n-au mai trecut pe la tine.',f:'60 DE ZILE FĂRĂ VIZITĂ → MESAJ PERSONAL → REVENIRE'},
+ {n:'05',img:'recenzii',w:2102,h:2073,t:'Recenzii Google,<br>automat',s:'Clienții mulțumiți lasă recenzia. Problemele se rezolvă în privat.',f:'VIZITĂ → „CUM A FOST?” → RECENZIE SAU DISCUȚIE PRIVATĂ'},
+];
+// linha do tempo (s): intro 0–5 · sistemas 5,2 → 28,6 · «um só sistema» 29,2–33,6 · fecho 34,2–40
+const SCN=[[5.2,9.6],[9.6,14.6],[14.6,19.6],[19.6,24.2],[24.2,28.6]];
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=x=>1-Math.pow(1-cl(x),3);
+const fin=(t,a,d=.4)=>ease((t-a)/d);            // entra em a
+const fout=(t,b,d=.3)=>1-cl((t-(b-d))/d);       // sai até b
+const st=(o,y=0,s=1)=>`opacity:${o.toFixed(3)};transform:translateY(${y.toFixed(1)}px) scale(${s.toFixed(4)})`;
+function render(t){
+  let h='';
+  if(t<5.05){
+    const a=fin(t,.25,.35)*fout(t,3.5,.3), b=fin(t,1.6,.35)*fout(t,3.5,.3), c=fin(t,2.0,.4)*fout(t,5.0,.3);
+    h+=`<div class="t intro1" style="${st(a,(1-fin(t,.25,.35))*14)}">Clienții nu dispar.</div>`;
+    h+=`<div class="t intro2" style="${st(b,(1-fin(t,1.6,.35))*12)}">Se pierd pe drum.</div>`;
+    h+=`<div class="t intro3" style="${st(c,(1-fin(t,2,.4))*12)}">Iată 5 sisteme care rezolvă asta,<br>odată puse la treabă.</div>`;
+  } else {
+    h+='<div class="navy"></div>';
+    SCN.forEach(([a,b],i)=>{
+      if(t<a-.01||t>=b) return;
+      const S=SYS[i], k=t-a, out=i<4?1:fout(t,b,.35);
+      const maxW=940,maxH=1010; const sc=Math.min(maxW/S.w,maxH/S.h); const W=S.w*sc,H=S.h*sc;
+      const subTop=320+2*58+30;
+      const cardTop=Math.max(subTop+110, 1660-H-28-20);
+      const cin=fin(k,.35,.55), drift=1+.025*cl(k/(b-a));
+      h+=`<div class="sys" style="opacity:${out}">
+        <div class="lab" style="${st(fin(k,0,.3))}">SISTEMUL ${S.n}</div>
+        <div class="tit" style="${st(fin(k,.05,.4),(1-fin(k,.05,.4))*16)}">${S.t}</div>
+        <div class="sub" style="top:${subTop}px;${st(fin(k,.2,.4))}">${S.s}</div>
+        <div class="card" style="top:${cardTop}px;margin-left:${-(W+28)/2}px;opacity:${cin};transform:translateY(${(1-cin)*70}px) scale(${drift})"><img src="scheme/${S.img}.png" width="${W.toFixed(0)}" height="${H.toFixed(0)}" alt=""></div>
+        <div class="flow" style="${st(fin(k,.9,.4))}">${S.f}</div>
+        <div class="foot" style="${st(fin(k,.9,.4)*.9)}">EXEMPLU DE FLUX · ADAPTAT AFACERII TALE</div>
+      </div>`;
+    });
+    if(t>=29.2&&t<33.6){
+      const k=t-29.2, o=fout(t,33.6,.35);
+      h+=`<div style="opacity:${o}">
+        <div class="kick" style="top:300px;${st(fin(k,0,.4))}">Un singur sistem, conectat</div>
+        <div class="big" style="top:520px;${st(fin(k,.2,.45),(1-fin(k,.2,.45))*14)}">Recuperezi clienții.<br>Alergi mai puțin după ei.</div>
+        <div class="pill" style="top:860px;${st(fin(k,.9,.35))};transform:translateX(-50%) translateY(${(1-fin(k,.9,.35))*16}px)">Răspuns rapid</div>
+        <div class="pill" style="top:1040px;width:600px;${st(fin(k,1.3,.35))};transform:translateX(-50%) translateY(${(1-fin(k,1.3,.35))*16}px)">Revenire la timp</div>
+        <div class="pill" style="top:1220px;width:560px;${st(fin(k,1.7,.35))};transform:translateX(-50%) translateY(${(1-fin(k,1.7,.35))*16}px)">Un om, când e nevoie</div>
+        <div class="kick" style="top:1500px;font-size:19px;color:#dfe5f5;${st(fin(k,2.2,.4))}">Procesul e construit în jurul afacerii tale.</div>
+      </div>`;
+    }
+    if(t>=34.2){
+      const k=t-34.2;
+      h+=`<div class="kick" style="top:300px;font-size:17px;${st(fin(k,0,.4))}">Pacheco Studios</div>
+        <div class="big" style="top:560px;font-size:42px;${st(fin(k,.15,.45),(1-fin(k,.15,.45))*14)}">Găsim golurile înainte<br>să construim sistemul.</div>
+        <div class="cta" style="top:1060px;${st(fin(k,1.3,.45),(1-fin(k,1.3,.45))*18,.96+.04*fin(k,1.3,.45))}">Scrie <b>„HARTA”</b><br>pe WhatsApp</div>
+        <div class="kick" style="top:1380px;font-size:20px;color:#e7ebf7;${st(fin(k,2.0,.4))}">Răspuns rapid · Revenire · Recenzii</div>
+        <div class="kick" style="top:1720px;font-size:16px;${st(fin(k,2.4,.4))}">Sisteme care nu lasă clienții să se piardă</div>`;
+    }
+  }
+  h+='<div class="bar top"></div><div class="bar bot"></div>';
+  document.getElementById('stage').innerHTML=h;
+}
+window.render=render;
+const q=new URLSearchParams(location.search); render(parseFloat(q.get('t')||'12'));
+</script>
+</body>
+</html>

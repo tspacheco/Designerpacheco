@@ -352,6 +352,7 @@ Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que v
   - **Sites**.
 
   Quem vem de anúncios de sites (`utm_content=web-…`) entra direto nos Sites. Gerar e testar com `python3 gerar.py`; o zip `pacheco-studios-netlify.zip` é para arrastar para o projeto Netlify do pachecost.com.
+- **Meta Ads de outubro (04/10):** dois criativos e o reel «5 sistemas» em romeno. Carrossel 4:5 «a máquina, desenhada» (PT e RO, 5 cartões) em `social/meta-ads-out26/` (`node cartoes.cjs`); reel RO em `videos/ad5-sisteme-ro/` (`node render.cjs`: fotogramas de `reel.html` por cima do clip limpo da intro, `videos/fontes/ad5-intro-limpo.mp4`). Regras: nos anúncios nunca entram os números dos Casos (não são nossos); títulos fora dos 14 % de cima e CTA fora dos 35 % de baixo (zona segura do Reels); quem escreve «HARTA» tem de receber resposta automática com o link do diagnóstico.
 - **A decidir:**
   - diagnóstico pago e creditado na implementação, depois do 1.º caso;
   - preços «desde»;

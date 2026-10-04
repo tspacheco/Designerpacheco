@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Carrossel «A máquina, desenhada»</title>
+<!-- Meta Ads, outubro de 2026 · criativo B · 5 cartões 4:5 (1080×1350) em PT e RO.
+     Gerar: node cartoes.cjs  → cartoes/pt-1.png … ro-5.png. Cores e fontes da marca (PLAYBOOK §15). -->
+<style>
+@font-face{font-family:AB;src:url(../../marca/fontes/archivo-black.woff2) format("woff2")}
+@font-face{font-family:AB;src:url(../../marca/fontes/archivo-black-ro.woff2) format("woff2");unicode-range:U+0100-02FF,U+201E,U+201D}
+@font-face{font-family:SM;src:url(../../marca/fontes/space-mono-700.woff2) format("woff2")}
+@font-face{font-family:SM;src:url(../../marca/fontes/space-mono-700-ro.woff2) format("woff2");unicode-range:U+0100-02FF,U+201E,U+201D,U+2192}
+@font-face{font-family:IN;src:url(../../marca/fontes/inter-var.woff2) format("woff2");font-weight:100 900}
+@font-face{font-family:IN;src:url(../../marca/fontes/inter-600-ro.woff2) format("woff2");font-weight:100 900;unicode-range:U+0100-02FF,U+201E,U+201D,U+2192}
+:root{--carvao:#141210;--osso:#EFEAE3;--laranja:#E8622C;--cinza:#A5A19B;--cinza2:#4D4A47;--laranja-t:#A64923}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1350px;overflow:hidden}
+.c{position:relative;width:1080px;height:1350px;padding:84px 80px;display:flex;flex-direction:column;font-family:IN,sans-serif}
+.esc{background:var(--carvao);color:var(--osso)}
+.cla{background:var(--osso);color:var(--carvao)}
+.eb{font-family:SM,monospace;font-size:30px;letter-spacing:.14em;text-transform:uppercase}
+.esc .eb{color:var(--laranja)} .cla .eb{color:var(--laranja-t)}
+h1,h2{font-family:AB,sans-serif;font-weight:400;text-transform:uppercase;line-height:1.02;letter-spacing:-.005em;text-wrap:balance}
+h1{font-size:96px;margin-top:40px}
+h2{font-size:76px;margin-top:28px}
+.q{font-size:92px;margin-top:48px}
+.q::before{content:"«";color:var(--laranja)} .q::after{content:"»";color:var(--laranja)}
+.ro .q::before{content:"„"} .ro .q::after{content:"”"}
+.meio{margin-block:auto;display:flex;flex-direction:column}
+.pe{display:flex;justify-content:space-between;align-items:center;font-family:SM,monospace;font-size:22px;letter-spacing:.12em;text-transform:uppercase}
+.esc .pe{color:var(--cinza)} .cla .pe{color:var(--cinza2)}
+.marca{display:flex;align-items:center;gap:14px}
+.marca i{width:48px;height:48px;border-radius:50%;border:3px solid #C9A45C;display:grid;place-items:center;font-style:normal;font-family:AB;font-size:22px;color:inherit}
+.sw{color:var(--laranja)}
+.cla .sw{color:var(--laranja-t)}
+.janela{margin-top:44px;border-radius:22px;overflow:hidden;background:#fff;border:2px solid #d9d2c7;position:relative;flex:0 0 auto}
+.janela img{display:block;width:100%;position:relative}
+.lista{list-style:none;padding:0;margin-top:56px;display:grid;gap:34px}
+.lista li{display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;font-size:46px;line-height:1.28}
+.lista b{font-family:SM;font-size:30px;color:var(--laranja);padding-top:6px}
+.sub{font-size:50px;line-height:1.3;margin-top:34px;color:#d8d2c9}
+.cla .sub{color:var(--cinza2)}
+.btn{margin-top:64px;align-self:flex-start;background:var(--laranja);color:var(--carvao);font-family:IN;font-weight:700;font-size:48px;padding:30px 48px;border-radius:999px}
+.url{font-family:SM;font-size:36px;margin-top:30px;color:var(--osso)}
+.fecho{font-family:AB;text-transform:uppercase;font-size:44px;color:var(--cinza);margin-top:56px}
+.fecho em{font-style:normal;color:var(--laranja)}
+</style>
+</head>
+<body>
+<div id="r"></div>
+<script>
+const T={
+ pt:{img:'esquema-pt.png',H:1957,n:[
+  {k:'esc',eb:'Soa-te familiar?',q:'À noite encontro doze chamadas perdidas e não sei quem queria o quê.'},
+  {k:'cla',eb:'Quando não podes atender',h:'Responde em 5 segundos, com o texto que aprovaste.',crop:[40,700,330,1770]},
+  {k:'cla',eb:'O que sai da rotina',h:'Chega a ti, com a conversa inteira.',crop:[930,1330,1380,2102]},
+  {k:'esc',eb:'Sem mistério',h:'As regras são tuas.',li:['Aprovas cada texto que ele pode enviar.','Apresenta-se sempre como assistente automático.','Corre no teu WhatsApp. Os dados ficam onde estavam.']},
+  {k:'esc',eb:'Primeiro passo',h:'Descobre onde perdes clientes.',sub:'Diagnóstico em 8 perguntas, menos de 2 minutos.',btn:'Fazer o diagnóstico →',url:'pachecost.com',fe:'Não prometemos. <em>Mostramos.</em>'}],
+  sw:'Desliza'},
+ ro:{img:'esquema-ro.png',H:1904,n:[
+  {k:'esc',eb:'Sună cunoscut?',q:'Seara găsesc doisprezece apeluri pierdute și nu știu cine voia ce.'},
+  {k:'cla',eb:'Când nu poți răspunde',h:'Răspunde în 5 secunde, cu textul aprobat de tine.',crop:[40,680,330,1770]},
+  {k:'cla',eb:'Ce iese din rutină',h:'Ajunge la tine, cu toată conversația.',crop:[900,1290,1380,2102]},
+  {k:'esc',eb:'Fără mister',h:'Regulile sunt ale tale.',li:['Aprobi fiecare text pe care îl poate trimite.','Se prezintă mereu ca asistent automat.','Rulează pe WhatsApp-ul tău. Datele rămân unde erau.']},
+  {k:'esc',eb:'Primul pas',h:'Află unde pierzi clienți.',sub:'Diagnostic în 8 întrebări, sub 2 minute.',btn:'Fă diagnosticul →',url:'ro.pachecost.com',fe:'Nu promitem. <em>Arătăm.</em>'}],
+  sw:'Glisează'}};
+function card(lang,i){
+  const L=T[lang], c=L.n[i]; let h='';
+  h+=`<div class="meio"><div class="eb">${c.eb}</div>`;
+  if(c.q) h+=`<h1 class="q">${c.q}</h1>`;
+  if(c.h) h+=c.crop||c.li?`<h2>${c.h}</h2>`:`<h1>${c.h}</h1>`;
+  if(c.crop){const [a,b,x0,x1]=c.crop, s=920/(x1-x0); h+=`<div class="janela" style="height:${((b-a)*s).toFixed(0)}px"><img src="${L.img}" style="width:${(2102*s).toFixed(0)}px;max-width:none;top:${(-a*s).toFixed(0)}px;left:${(-x0*s).toFixed(0)}px" alt=""></div>`;}
+  if(c.li) h+='<ul class="lista">'+c.li.map((x,j)=>`<li><b>0${j+1}</b><span>${x}</span></li>`).join('')+'</ul>';
+  if(c.sub) h+=`<p class="sub">${c.sub}</p>`;
+  if(c.btn) h+=`<div class="btn">${c.btn}</div><div class="url">${c.url}</div><div class="fecho">${c.fe}</div>`;
+  h+='</div>';
+  h+=`<div class="pe"><span class="marca"><i>P</i>Pacheco Studios</span><span class="sw">${i<4?L.sw+' →':''} ${i+1}/5</span></div>`;
+  document.getElementById('r').innerHTML=`<div class="c ${c.k} ${lang}" lang="${lang==='pt'?'pt-PT':'ro'}">${h}</div>`;
+}
+window.card=card;
+const q=new URLSearchParams(location.search); card(q.get('l')||'pt',+(q.get('n')||0));
+</script>
+</body>
+</html>
