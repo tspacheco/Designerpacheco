@@ -477,7 +477,7 @@ def imagem_heroi():
         return ""
     b64 = base64.b64encode(open(p, "rb").read()).decode()
     img = f'<img class="heroi-img" src="data:image/webp;base64,{b64}" alt="" aria-hidden="true" decoding="async">'
-    # o vídeo do herói em fotogramas (media/heroi-hd/{d,v}/NN.webp, tirados do vídeo em 4K pelo workflow buscar-video):
+    # o vídeo do herói em fotogramas (media/heroi-hd/{d,v}/NN.webp, tirados do vídeo em 4K pela ponte, .github/ponte.txt):
     # ficheiros à parte, carregados pelo JavaScript; o scroll faz avançar o vídeo (ver index.src.html).
     # d = 16:9 a 1920 px (ecrãs deitados), v = recorte 9:16 a 720×1280 (telemóvel ao alto).
     seq = {k: sorted(f for f in os.listdir(os.path.join(AQUI, "media", "heroi-hd", k)) if f.endswith(".webp"))
