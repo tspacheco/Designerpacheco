@@ -38,7 +38,7 @@ TEXTOS = {
         l3="You just have to take the first step.",
         tel="+351 967 117 357",
         site="pachecost.com",
-        local="HQ Algarve, Portugal · Working worldwide",
+        local="HQ Portugal · Working worldwide",
     ),
 }
 
