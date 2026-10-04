@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vídeo B · A máquina, desenhada</title>
+<!-- Criativo B em vídeo (Meta Ads, outubro de 2026). 19,5 s, PT e RO (?l=ro).
+     Cada fotograma sai de render(t), sem estado; render.cjs captura 30 fps e junta o som de som.py.
+     Composição 9:16 (1080×1920) com tudo o que importa dentro da caixa 4:5 (y 285–1635): o 4:5 do feed é um recorte.
+     Zona segura do Reels: textos essenciais entre y 300 e y 1250; abaixo só desenho. -->
+<style>
+@font-face{font-family:AB;src:url(../../../marca/fontes/archivo-black.woff2) format("woff2")}
+@font-face{font-family:AB;src:url(../../../marca/fontes/archivo-black-ro.woff2) format("woff2");unicode-range:U+0100-02FF,U+201E,U+201D}
+@font-face{font-family:SM;src:url(../../../marca/fontes/space-mono-700.woff2) format("woff2")}
+@font-face{font-family:SM;src:url(../../../marca/fontes/space-mono-700-ro.woff2) format("woff2");unicode-range:U+0100-02FF,U+201E,U+201D,U+2192}
+@font-face{font-family:IN;src:url(../../../marca/fontes/inter-var.woff2) format("woff2");font-weight:100 900}
+@font-face{font-family:IN;src:url(../../../marca/fontes/inter-var-latin-ext.woff2) format("woff2");font-weight:100 900;unicode-range:U+0100-02FF,U+201E,U+201D}
+@font-face{font-family:IN;src:url(../../../marca/fontes/inter-600-ro.woff2) format("woff2");font-weight:100 900;unicode-range:U+2192}
+:root{--carvao:#141210;--osso:#EFEAE3;--laranja:#E8622C;--cinza:#A5A19B;--cinza2:#4D4A47;--laranja-t:#A64923;--ouro:#C9A256;
+  --ambar:#FBF1DC;--ambar-l:#DDB45A;--verde:#E3F1E8;--verde-l:#4F9270;--tinta:#1C1A17}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--carvao)}
+#s{position:absolute;inset:0;overflow:hidden;font-family:IN,sans-serif}
+.cena{position:absolute;inset:0}
+.esc{background:radial-gradient(70% 45% at 50% 100%,rgba(232,98,44,.16),transparent 70%),var(--carvao);color:var(--osso)}
+.cla{background:var(--osso);color:var(--tinta)}
+.eb{position:absolute;left:80px;right:80px;top:318px;font:700 30px/1 SM,monospace;letter-spacing:.14em;text-transform:uppercase}
+.esc .eb{color:var(--laranja)} .cla .eb{color:var(--laranja-t)}
+.fit{white-space:nowrap}
+.ti{position:absolute;left:80px;right:80px;font-family:AB,sans-serif;text-transform:uppercase;line-height:1;letter-spacing:-.005em}
+/* notificações */
+.nt{position:absolute;left:80px;width:920px;height:118px;border-radius:30px;background:rgba(239,234,227,.09);border:1px solid rgba(239,234,227,.14);
+  display:grid;grid-template-columns:76px 1fr auto;align-items:center;gap:22px;padding:0 30px;color:var(--osso)}
+.nt .ic{width:64px;height:64px;border-radius:18px;display:grid;place-items:center}
+.nt .ic.ch{background:#3a1d14} .nt .ic.wa{background:#183325}
+.nt .ic svg{width:34px;height:34px;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.nt .ic.ch svg{stroke:#ff7a4a} .nt .ic.wa svg{stroke:#62d08f}
+.nt b{display:block;font:600 30px/1.15 IN;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nt small{display:block;font:400 26px/1.25 IN;color:var(--cinza);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px}
+.nt time{font:700 22px SM;color:var(--cinza)}
+.q{top:420px;font-size:84px;line-height:1.04}
+.q span{display:inline-block;margin-right:.22em}
+.q .ab{color:var(--laranja)}
+/* esquema */
+.bx{position:absolute;border-radius:22px;background:#fff;border:2px solid #d8d0c4;display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:center;padding:22px 28px;box-shadow:0 10px 30px rgba(20,18,16,.07)}
+.bx .ic{width:64px;height:64px;border-radius:16px;background:#F1ECE4;display:grid;place-items:center}
+.bx .ic svg{width:32px;height:32px;fill:none;stroke:var(--tinta);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bx b{display:block;font:700 34px/1.15 IN}
+.bx small{display:block;font:400 25px/1.3 IN;color:var(--cinza2);margin-top:4px}
+.bx.gat{background:var(--ambar);border-color:var(--ambar-l)} .bx.gat .ic{background:#F4DFAF}
+.bx.dec{border-style:dashed;border-color:#3b3833;background:#fff}
+.bx.pes{background:var(--verde);border-color:var(--verde-l)} .bx.pes .ic{background:#C9E5D3}
+.bx.br{grid-template-columns:1fr;text-align:center;padding:22px 18px}
+.bx.br b{font:600 29px/1.2 IN}
+.bolha{grid-column:1/-1;margin-top:6px;background:#DCF3E4;border-radius:6px 22px 22px 22px;padding:16px 22px;font:400 27px/1.35 IN;color:#173322;min-height:94px}
+.bolha i{display:inline-block;width:3px;height:30px;background:#173322;vertical-align:-5px;margin-left:2px}
+.ln{position:absolute;width:3px;background:#9b938a;transform-origin:top}
+.ln.h{height:3px;transform-origin:left}
+.pl{position:absolute;height:54px;border-radius:999px;background:#25221e;color:#fff;font:700 26px/54px IN;padding:0 26px;transform:translateX(-50%);white-space:nowrap}
+/* regras e CTA */
+.col{position:absolute;left:80px;right:80px;top:318px;display:flex;flex-direction:column;align-items:flex-start}
+.eb2{font:700 30px/1 SM,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja)}
+.ti2{font-family:AB,sans-serif;text-transform:uppercase;line-height:1;font-size:94px;margin-top:22px;text-wrap:balance}
+.its{display:grid;gap:44px;margin-top:70px}
+.it{display:grid;grid-template-columns:86px 1fr;gap:10px;font:500 46px/1.25 IN;color:var(--osso)}
+.it b{font:700 34px SM;color:var(--laranja);padding-top:8px}
+.sub{font:400 44px/1.3 IN;color:#d8d2c9;margin-top:34px}
+.btn{background:var(--laranja);color:var(--carvao);font:700 50px/1 IN;padding:32px 52px;border-radius:999px;transform-origin:left center;margin-top:48px}
+.url{font:700 36px SM;color:var(--osso);margin-top:30px}
+.fe{font-family:AB;text-transform:uppercase;font-size:44px;color:var(--cinza);margin-top:44px}
+.fe em{font-style:normal;color:var(--laranja)}
+.marca{position:absolute;left:80px;right:80px;top:1530px;display:flex;align-items:center;gap:18px;font:700 26px SM;letter-spacing:.16em;text-transform:uppercase}
+.esc .marca{color:var(--cinza)} .cla .marca{color:var(--cinza2)}
+.marca svg{width:62px;height:62px}
+</style>
+</head>
+<body>
+<div id="s"></div>
+<script>
+const I={
+ ch:'<svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/><path d="M16 2l6 6M22 2l-6 6"/></svg>',
+ wa:'<svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg>',
+ tel:'<svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>',
+ msg:'<svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg>',
+ q:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>',
+ pes:'<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+ logo:'<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>'
+};
+const T={
+ pt:{hora:'Sábado · 23:10',
+  nots:[['ch','Chamada perdida','+351 9•• ••• 214','21:40'],['wa','WhatsApp · Ana','Têm mesa para 4 às 21h?','21:41'],['ch','Chamada perdida','+351 9•• ••• 870','21:52'],
+        ['ch','Chamada perdida','+351 2•• ••• 133','22:05'],['wa','WhatsApp · Rui','Ainda estão abertos?','22:11'],['ch','Chamada perdida','+351 9•• ••• 502','22:26'],
+        ['ch','Chamada perdida','+351 9•• ••• 214','22:38'],['wa','WhatsApp · Ana','Ok, fica para outra vez.','22:47']],
+  fam:'Soa-te familiar?', q:'«À noite encontro doze chamadas perdidas e não sei quem queria o quê.»',
+  e2:'Quando não podes atender', t2:'Isto atende.', e2b:'O que sai da rotina', t2b:'Chega a ti.',
+  b1:['Chamada perdida ou mensagem','a qualquer hora, também fora do horário'], b2:['Responde em 5 segundos','com o texto que aprovaste'],
+  bolha:'Olá! Sou o assistente automático do Restaurante X. Em que posso ajudar?', b3:'Percebe o que o cliente quer',
+  pl:['Rotina','Reserva','Outra coisa'], br:['Responde da lista aprovada','Marca e confirma','Chega a ti, com a conversa toda'],
+  e3:'Sem mistério', t3:'As regras<br>são tuas.', it:['Aprovas cada texto que ele pode enviar.','Apresenta-se sempre como assistente automático.','Corre no teu WhatsApp. Os dados ficam contigo.'],
+  e4:'Primeiro passo', t4:'Descobre onde<br>perdes clientes.', sub:'Diagnóstico em 8 perguntas,<br>menos de 2 minutos.', btn:'Fazer o diagnóstico →', url:'pachecost.com', fe:'Não prometemos. <em>Mostramos.</em>'},
+ ro:{hora:'Sâmbătă · 23:10',
+  nots:[['ch','Apel pierdut','+40 7•• ••• 214','21:40'],['wa','WhatsApp · Ana','Aveți masă pentru 4 la 21?','21:41'],['ch','Apel pierdut','+40 7•• ••• 870','21:52'],
+        ['ch','Apel pierdut','+40 2•• ••• 133','22:05'],['wa','WhatsApp · Radu','Mai sunteți deschiși?','22:11'],['ch','Apel pierdut','+40 7•• ••• 502','22:26'],
+        ['ch','Apel pierdut','+40 7•• ••• 214','22:38'],['wa','WhatsApp · Ana','Ok, rămâne pe altă dată.','22:47']],
+  fam:'Sună cunoscut?', q:'„Seara găsesc doisprezece apeluri pierdute și nu știu cine voia ce.”',
+  e2:'Când nu poți răspunde', t2:'Sistemul răspunde.', e2b:'Ce iese din rutină', t2b:'Ajunge la tine.',
+  b1:['Apel pierdut sau mesaj','la orice oră, inclusiv în afara programului'], b2:['Răspunde în 5 secunde','cu textul aprobat de tine'],
+  bolha:'Bună! Sunt asistentul automat al restaurantului X. Cu ce te pot ajuta?', b3:'Înțelege ce vrea clientul',
+  pl:['Rutină','Rezervare','Altceva'], br:['Răspunde din lista aprobată','Rezervă și confirmă','Ajunge la tine, cu toată conversația'],
+  e3:'Fără mister', t3:'Regulile sunt<br>ale tale.', it:['Aprobi fiecare text pe care îl poate trimite.','Se prezintă mereu ca asistent automat.','Rulează pe WhatsApp-ul tău. Datele rămân la tine.'],
+  e4:'Primul pas', t4:'Află unde<br>pierzi clienți.', sub:'Diagnostic în 8 întrebări,<br>sub 2 minute.', btn:'Fă diagnosticul →', url:'ro.pachecost.com', fe:'Nu promitem. <em>Arătăm.</em>'}
+};
+const L=T[new URLSearchParams(location.search).get('l')||'pt'];
+document.documentElement.lang=L===T.ro?'ro':'pt-PT';
+// linha do tempo (s) — som.py usa os mesmos tempos
+const NT0=.25, NTD=.27, Q0=3.0, W1=5.35, S2=5.6, W2=12.2, S3=12.5, S4=15.1, DUR=19.5;
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), E=x=>1-Math.pow(1-cl(x),3), EI=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const fi=(t,a,d=.35)=>E((t-a)/d);
+const op=(o,y=0,s=1,x=0)=>`opacity:${o.toFixed(3)};transform:translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${s.toFixed(4)})`;
+function render(t){
+  let h='';
+  // ---------- cena 1: as chamadas perdidas ----------
+  if(t<W1+.6){
+    const dim=EI((t-2.75)/.4);
+    h+=`<div class="cena esc">`;
+    h+=`<div class="eb" style="${op(1-dim)}">${L.hora}</div>`;
+    h+=`<div class="eb" style="${op(fi(t,Q0-.1,.3))}">${L.fam}</div>`;
+    const n=L.nots.length;
+    L.nots.forEach((m,i)=>{
+      const a=NT0+i*NTD; if(t<a) return;
+      const k=fi(t,a,.28), above=L.nots.filter((_,j)=>j>i&&t>=NT0+j*NTD).length;
+      // cada notificação nova entra no topo e empurra as outras para baixo
+      let y=400+above*132; const push=L.nots.reduce((s,_,j)=>j>i&&t>=NT0+j*NTD?s+(1-fi(t,NT0+j*NTD,.28))*132:s,0); y-=push;
+      const o=k*(1-.78*dim)*(above>6?0:1), blur=dim*4;
+      h+=`<div class="nt" style="top:${(y-(1-k)*40+dim*40).toFixed(1)}px;${op(o,0,.96+.04*k)};filter:blur(${blur.toFixed(2)}px)"><span class="ic ${m[0]}">${I[m[0]]}</span><span><b>${m[1]}</b><small>${m[2]}</small></span><time>${m[3]}</time></div>`;
+    });
+    if(t>=Q0){
+      const words=L.q.split(' ');
+      h+=`<div class="ti q">`+words.map((w,i)=>{const k=fi(t,Q0+i*.075,.3);const ww=w.replace(/^([«„])/,'<span class="ab" style="margin:0">$1</span>').replace(/([»”])$/,'<span class="ab" style="margin:0">$1</span>');return `<span style="${op(k,(1-k)*26)}">${ww}</span>`}).join('')+`</div>`;
+    }
+    h+=`<div class="marca" style="${op(1-dim*.0)}">${I.logo}<span>Pacheco Studios</span></div>`;
+    h+=`</div>`;
+  }
+  // ---------- cena 2: a máquina ----------
+  if(t>=W1){
+    const up=EI((t-W1)/.5), out=t<W2?1:1-EI((t-W2)/.45);
+    const hl=EI((t-10.15)/.5); // destaque do ramo «outra coisa»
+    h+=`<div class="cena cla" style="transform:translateY(${((1-up)*1920).toFixed(1)}px);opacity:${(t<W2?1:1).toFixed(2)}">`;
+    if(t<W2+.5){
+      const sh=t>=W2?EI((t-W2)/.45):0;
+      h+=`<div style="${op(1-sh,-sh*60)}">`;
+      h+=`<div class="eb" style="${op(fi(t,S2+.2)*(1-hl))}">${L.e2}</div><div class="eb" style="${op(hl)}">${L.e2b}</div>`;
+      h+=`<div class="ti fit" style="top:362px;font-size:100px;${op(fi(t,S2+.3,.4)*(1-hl),(1-fi(t,S2+.3,.4))*20)}">${L.t2}</div>`;
+      h+=`<div class="ti fit" style="top:362px;font-size:100px;color:var(--verde-l);${op(hl,(1-hl)*20)}">${L.t2b}</div>`;
+      const d=1-.6*hl; // o resto do esquema recua quando o ramo da pessoa acende
+      const b1=fi(t,6.05,.4);
+      h+=`<div class="bx gat" style="left:140px;width:800px;top:530px;${op(b1*d,(1-b1)*30)}"><span class="ic">${I.tel}</span><span><b>${L.b1[0]}</b><small>${L.b1[1]}</small></span></div>`;
+      const l1=E((t-6.45)/.25); h+=`<div class="ln" style="left:539px;top:668px;height:42px;transform:scaleY(${l1});opacity:${d}"></div>`;
+      const b2=fi(t,6.65,.4); const ty=cl((t-7.05)/1.15); const nch=Math.round(L.bolha.length*ty);
+      const cur=(t>7.0&&t<8.6&&Math.floor(t*3)%2===0)?'<i></i>':'';
+      h+=`<div class="bx" style="left:140px;width:800px;top:712px;${op(b2*d,(1-b2)*30)}"><span class="ic">${I.msg}</span><span><b>${L.b2[0]}</b><small>${L.b2[1]}</small></span><div class="bolha">${L.bolha.slice(0,nch)}${cur}</div></div>`;
+      const l2=E((t-8.3)/.25); h+=`<div class="ln" style="left:539px;top:990px;height:40px;transform:scaleY(${l2});opacity:${d}"></div>`;
+      const b3=fi(t,8.45,.4);
+      h+=`<div class="bx dec" style="left:140px;width:800px;top:1032px;${op(b3*d,(1-b3)*30)}"><span class="ic">${I.q}</span><span><b>${L.b3}</b></span></div>`;
+      const lh=E((t-8.85)/.3);
+      h+=`<div class="ln" style="left:539px;top:1140px;height:24px;transform:scaleY(${E((t-8.8)/.15)});opacity:${d}"></div>`;
+      h+=`<div class="ln h" style="left:210px;top:1164px;width:660px;transform:scaleX(${lh});opacity:${d}"></div>`;
+      const cx=[210,540,870];
+      cx.forEach((x,i)=>{
+        const pk=fi(t,9.0+i*.12,.3), bk=fi(t,9.25+i*.15,.35), me=i===2, dd=me?1:d;
+        h+=`<div class="ln" style="left:${x-1}px;top:1164px;height:22px;transform:scaleY(${pk});opacity:${dd}"></div>`;
+        h+=`<div class="pl" style="left:${x}px;top:1186px;${op(pk*dd)};transform:translateX(-50%) scale(${(.9+.1*pk).toFixed(3)})">${L.pl[i]}</div>`;
+        const pulse=me?1+.05*hl*(1+.5*Math.sin((t-10.15)*6.5)*cl((t-10.4)/.2)):1;
+        h+=`<div class="bx br ${me?'pes':''}" style="left:${x-155}px;width:310px;top:1262px;min-height:156px;${op(bk*dd,(1-bk)*24,pulse)};${me&&hl>0?`box-shadow:0 0 0 ${(8*hl).toFixed(1)}px rgba(79,146,112,.18),0 18px 40px rgba(20,18,16,.12)`:''}"><b>${L.br[i]}</b></div>`;
+      });
+      h+=`</div>`;
+    }
+    h+=`<div class="marca" style="${op(1)}">${I.logo}<span>Pacheco Studios</span></div>`;
+    h+=`</div>`;
+  }
+  // ---------- cenas 3 e 4: as regras e o diagnóstico ----------
+  if(t>=W2){
+    const up=EI((t-W2)/.5);
+    h+=`<div class="cena esc" style="transform:translateY(${((1-up)*1920).toFixed(1)}px)">`;
+    const o3=t<S4?1:1-EI((t-S4)/.35);
+    if(t<S4+.4){
+      h+=`<div class="col" style="${op(o3,-(1-o3)*40)}">`;
+      h+=`<div class="eb2" style="${op(fi(t,S3))}">${L.e3}</div>`;
+      h+=`<div class="ti2" style="${op(fi(t,S3+.1,.4),(1-fi(t,S3+.1,.4))*20)}">${L.t3}</div>`;
+      h+=`<div class="its">`+L.it.map((x,i)=>{const k=fi(t,S3+.75+i*.42,.4);return `<div class="it" style="${op(k,(1-k)*24)}"><b>0${i+1}</b><span>${x}</span></div>`}).join('')+`</div>`;
+      h+=`</div>`;
+    }
+    if(t>=S4){
+      const k=t-S4;
+      const bk=fi(t,S4+1.65,.4), pulse=1+.035*Math.max(0,Math.sin((k-2.3)*4.2))*cl((k-2.3)/.3);
+      h+=`<div class="col">`;
+      h+=`<div class="eb2" style="${op(fi(t,S4+.45))}">${L.e4}</div>`;
+      h+=`<div class="ti2" style="${op(fi(t,S4+.55,.45),(1-fi(t,S4+.55,.45))*22)}">${L.t4}</div>`;
+      h+=`<div class="sub" style="${op(fi(t,S4+1.1,.4),(1-fi(t,S4+1.1,.4))*16)}">${L.sub}</div>`;
+      h+=`<div class="btn" style="${op(bk,(1-bk)*20,(.94+.06*bk)*pulse)}">${L.btn}</div>`;
+      h+=`<div class="url" style="${op(fi(t,S4+2.05,.4))}">${L.url}</div>`;
+      h+=`<div class="fe" style="${op(fi(t,S4+2.6,.45),(1-fi(t,S4+2.6,.45))*16)}">${L.fe}</div>`;
+      h+=`</div>`;
+    }
+    h+=`<div class="marca">${I.logo}<span>Pacheco Studios</span></div>`;
+    h+=`</div>`;
+  }
+  document.getElementById('s').innerHTML=h;
+  // títulos de uma linha: encolher até caberem em 920 px (o romeno é mais comprido)
+  document.querySelectorAll('.fit').forEach(el=>{let fs=parseFloat(el.style.fontSize);while(el.scrollWidth>el.clientWidth+1&&fs>48){fs-=2;el.style.fontSize=fs+'px'}});
+}
+window.render=render; window.DUR=DUR;
+render(parseFloat(new URLSearchParams(location.search).get('t')||'9.6'));
+</script>
+</body>
+</html>
