@@ -1,0 +1,42 @@
+# Extrai os fotogramas de um vídeo público (ex.: resultado do Higgsfield, cujo CDN está bloqueado nas sessões) num
+# runner do GitHub e faz commit no mesmo ramo.
+# Como usar: escrever em .github/buscar-video.txt uma linha «<pasta> <passo> <url>» e fazer push desse ficheiro.
+# Grava em sites/pacheco-studios/media/<pasta>/: d/NN.webp (até 1920 px, ecrãs grandes), m/NN.webp (960 px,
+# telemóvel), um fotograma em cada <passo>, e info.txt com a resolução original. Depois: git pull.
+name: buscar-video
+on:
+  push:
+    paths: ['.github/buscar-video.txt']
+permissions:
+  contents: write
+jobs:
+  fotogramas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - name: Descarregar e extrair
+        run: |
+          set -e
+          while read -r pasta passo url; do
+            case "$pasta" in ''|\#*) continue;; esac
+            dest="sites/pacheco-studios/media/$pasta"
+            rm -rf "$dest" && mkdir -p "$dest/d" "$dest/m"
+            curl -sSfL -A "Mozilla/5.0" -o /tmp/v.mp4 "$url"
+            ffprobe -v error -select_streams v:0 -show_entries stream=width,height,nb_frames,r_frame_rate,bit_rate -of default=nw=1 /tmp/v.mp4 | tee "$dest/info.txt"
+            sel="select='not(mod(n\,$passo))'"
+            ffmpeg -v error -i /tmp/v.mp4 -vf "$sel,scale='min(1920,iw)':-2:flags=lanczos" -fps_mode vfr -c:v libwebp -quality 74 -compression_level 6 "$dest/d/%02d.webp"
+            ffmpeg -v error -i /tmp/v.mp4 -vf "$sel,scale=960:-2:flags=lanczos" -fps_mode vfr -c:v libwebp -quality 70 -compression_level 6 "$dest/m/%02d.webp"
+            echo "d: $(ls $dest/d | wc -l) fotogramas, $(du -sk $dest/d | cut -f1) KB" | tee -a "$dest/info.txt"
+            echo "m: $(ls $dest/m | wc -l) fotogramas, $(du -sk $dest/m | cut -f1) KB" | tee -a "$dest/info.txt"
+          done < .github/buscar-video.txt
+      - name: Publicar no mesmo ramo
+        run: |
+          git config user.name "buscar-video"
+          git config user.email "buscar-video@users.noreply.github.com"
+          git add -f sites/pacheco-studios/media
+          if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
+          git commit -q -m "Fotogramas recebidos por buscar-video"
+          git pull -q --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
