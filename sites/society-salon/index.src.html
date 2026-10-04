@@ -608,7 +608,7 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
           </dl>
           <p class="rez-pret"><span id="r-pret">—</span><small>lei</small></p>
           <div class="rez-act">
-            <a class="btn btn-rosu" href="https://mero.ro/p/societysalon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span lang="ro">Alege ora pe MERO</span><span lang="en">Pick a time on MERO</span><span lang="pt">Escolher a hora no MERO</span></a>
+            <a class="btn btn-rosu" id="r-mero" href="https://mero.ro/p/societysalon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span lang="ro">Alege ora pe MERO</span><span lang="en">Pick a time on MERO</span><span lang="pt">Escolher a hora no MERO</span></a>
             <a class="btn btn-linie-alb" id="r-wa" href="https://wa.me/40799735945" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 1.6 3.6 3.6 4.4l1.1-1.1 1.8.8-.3 1.4c-3 .3-6.4-3-6.1-6l1.4-.3.8 1.8z"/></svg><span lang="ro">Trimite pe WhatsApp</span><span lang="en">Send on WhatsApp</span><span lang="pt">Enviar pelo WhatsApp</span></a>
           </div>
           <p class="rez-nota"><span lang="ro">Prețurile și duratele sunt cele afișate pe MERO. Prețul final depinde de frizer și de lungimea părului.</span><span lang="en">Prices and durations are the ones shown on MERO. The final price depends on the barber and hair length.</span><span lang="pt">Preços e durações tal como aparecem no MERO. O preço final depende do barbeiro e do comprimento do cabelo.</span></p>
@@ -874,24 +874,24 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
 
   /* ---------- dados (MERO + societysalon.ro, 4/10/2026) ---------- */
   var SERV=[
-    {g:'Hair',id:'hs',n:'Haircut & Styling',d:'30–40 min',p:'70–85',ro:'tuns, spălat și aranjat',en:'cut, wash and style'},
-    {g:'Hair',id:'long',n:'Long Hair',d:'1 h',p:'90–100',ro:'tuns, spălat și aranjat',en:'cut, wash and style'},
-    {g:'Hair',id:'design',n:'Hair Design',d:'40 min',p:'80–100',ro:'tuns, spălat și aranjat',en:'cut, wash and style'},
-    {g:'Hair',id:'spalat',n:'Spălat & Styling',d:'10 min',p:'20',ro:'spălat și aranjat',en:'wash and style'},
-    {g:'Beard',id:'beard',n:'Beard Trim & Shave',d:'30–40 min',p:'50',ro:'tuns, contur sau ras',en:'trim, outline or shave'},
-    {g:'Beard',id:'mask',n:'Black Mask',d:'30 min',p:'50',ro:'mască neagră',en:'black mask'},
-    {g:'Beard',id:'color',n:'Beard Color',d:'30–40 min',p:'50–80',ro:'colorare barbă',en:'beard colouring'},
-    {g:'Gentleman',id:'gp',n:"Gentleman's Pack",d:'1 h – 1 h 20',p:'100–115',ro:'păr + barbă, contur și ras',en:'hair + beard, outline and shave'},
-    {g:'Gentleman',id:'gpl',n:"Gentleman's Pack (long hair)",d:'1 h 20 – 1 h 30',p:'120–135',ro:'păr lung + barbă',en:'long hair + beard'},
-    {g:'Gentleman',id:'premium',n:'Pachet Premium',d:'1 h 20 – 1 h 30',p:'140',ro:'+ Black Mask, tonic, masaj',en:'+ Black Mask, tonic, massage'}
+    {g:'Hair',id:'hs',m:'693845dc12f002cb2cbbbf74',n:'Haircut & Styling',d:'30–40 min',p:'70–85',ro:'tuns, spălat și aranjat',en:'cut, wash and style'},
+    {g:'Hair',id:'long',m:'6938468d12f002cb2cbbd884',n:'Long Hair',d:'1 h',p:'90–100',ro:'tuns, spălat și aranjat',en:'cut, wash and style'},
+    {g:'Hair',id:'design',m:'693846b712f002cb2cbbdfcd',n:'Hair Design',d:'40 min',p:'80–100',ro:'tuns, spălat și aranjat',en:'cut, wash and style'},
+    {g:'Hair',id:'spalat',m:'6938475012f002cb2cbbf809',n:'Spălat & Styling',d:'10 min',p:'20',ro:'spălat și aranjat',en:'wash and style'},
+    {g:'Beard',id:'beard',m:'693846d212f002cb2cbbe3a8',n:'Beard Trim & Shave',d:'30–40 min',p:'50',ro:'tuns, contur sau ras',en:'trim, outline or shave'},
+    {g:'Beard',id:'mask',m:'6938471712f002cb2cbbee15',n:'Black Mask',d:'30 min',p:'50',ro:'mască neagră',en:'black mask'},
+    {g:'Beard',id:'color',m:'6938473312f002cb2cbbf3b3',n:'Beard Color',d:'30–40 min',p:'50–80',ro:'colorare barbă',en:'beard colouring'},
+    {g:'Gentleman',id:'gp',m:'6938463012f002cb2cbbcb11',n:"Gentleman's Pack",d:'1 h – 1 h 20',p:'100–115',ro:'păr + barbă, contur și ras',en:'hair + beard, outline and shave'},
+    {g:'Gentleman',id:'gpl',m:'6938466312f002cb2cbbd29c',n:"Gentleman's Pack (long hair)",d:'1 h 20 – 1 h 30',p:'120–135',ro:'păr lung + barbă',en:'long hair + beard'},
+    {g:'Gentleman',id:'premium',m:'693846fe12f002cb2cbbeabb',n:'Pachet Premium',d:'1 h 20 – 1 h 30',p:'140',ro:'+ Black Mask, tonic, masaj',en:'+ Black Mask, tonic, massage'}
   ];
   var GRUP={Hair:['Păr','Hair'],Beard:['Barbă','Beard'],Gentleman:['Pachete','Packages']};
   var FRIZ=[
-    {id:'robert',n:'Robert E',niv:3,lv:'Master Barber',r:'5,00',re:'5.00',c:550,f:'media/echipa-robert.webp'},
-    {id:'bogdan',n:'Bogdan R',niv:3,lv:'Master Barber',r:'5,00',re:'5.00',c:444,f:'media/echipa-bogdan.webp'},
-    {id:'dorin',n:'Dorin N',niv:2,lv:'Top Barber',r:'5,00',re:'5.00',c:322,f:'media/echipa-dorin.webp'},
-    {id:'stefan',n:'Stefan D',niv:2,lv:'Top Barber',r:'4,99',re:'4.99',c:234,f:'media/echipa-stefan.webp'},
-    {id:'emi',n:'Emi C',niv:1,lv:'Junior Barber',r:'4,97',re:'4.97',c:62,f:'media/echipa-emi.webp'}
+    {id:'robert',m:'692ff5bf94463b59ade1e604',nu:['design'],n:'Robert E',niv:3,lv:'Master Barber',r:'5,00',re:'5.00',c:550,f:'media/echipa-robert.webp'},
+    {id:'bogdan',m:'693847af12f002cb2cbc081d',nu:['design'],n:'Bogdan R',niv:3,lv:'Master Barber',r:'5,00',re:'5.00',c:444,f:'media/echipa-bogdan.webp'},
+    {id:'dorin',m:'6938483d12f002cb2cbc24a0',nu:['design'],n:'Dorin N',niv:2,lv:'Top Barber',r:'5,00',re:'5.00',c:322,f:'media/echipa-dorin.webp'},
+    {id:'stefan',m:'6938495012f002cb2cbc5079',nu:[],n:'Stefan D',niv:2,lv:'Top Barber',r:'4,99',re:'4.99',c:234,f:'media/echipa-stefan.webp'},
+    {id:'emi',m:'693849c712f002cb2cbc6203',nu:['long','design','gpl'],n:'Emi C',niv:1,lv:'Junior Barber',r:'4,97',re:'4.97',c:62,f:'media/echipa-emi.webp'}
   ];
   var PRET={
     master:[['Haircut & Styling','85','tuns, spălat și aranjat păr','cut, wash and style'],['Long Hair','80–100','tuns, spălat și aranjat','cut, wash and style'],['Hair Design','80–100','tuns, spălat și aranjat păr','cut, wash and style'],['Beard Trim & Shave','50','tuns, contur sau ras barbă','beard trim, outline or shave'],["Gentleman's Package",'115','păr tuns și aranjat, barbă tunsă, contur și ras','haircut and style, beard trim, outline and shave'],["Gentleman's Package (Long Hair)",'115–135','păr lung tuns și aranjat, barbă','long hair cut and style, beard']],
@@ -992,6 +992,10 @@ html.js .erou-card .card-wrap{animation:cardIn .9s var(--ease) .9s both}
     document.getElementById('r-dur').textContent=s.d;
     document.getElementById('r-pret').textContent=s.p;
     var msg=t('Salut! Aș dori o programare: '+s.n+(f?' cu '+f.n:'')+'. Când aveți liber?','Hi! I\'d like to book: '+s.n+(f?' with '+f.n:'')+'. When are you free?','Salut! Aș dori o programare: '+s.n+(f?' cu '+f.n:'')+'. Când aveți liber?');
+    /* MERO abre já com o serviço e o barbeiro escolhidos (parâmetros da própria página do MERO, testados a 4/10/2026):
+       com barbeiro → direto à escolha da hora; "quem estiver livre" ou barbeiro que não faz o serviço → escolha do barbeiro */
+    var mf=f&&f.nu.indexOf(s.id)<0;
+    document.getElementById('r-mero').href='https://mero.ro/p/societysalon?'+(mf?'page=appointment_summary&workerIds='+f.m+'&':'page=select_worker&')+'serviceIds='+s.m;
     document.getElementById('r-wa').href='https://wa.me/40799735945?text='+encodeURIComponent(msg);
   }
   so.addEventListener('click',function(e){var b=e.target.closest('[data-serv]');if(b){sel.serv=b.dataset.serv;randeaza()}});
