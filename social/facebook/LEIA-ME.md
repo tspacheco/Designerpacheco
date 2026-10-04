@@ -14,9 +14,11 @@ Feita em 1640×924 (16:9). O computador mostra a faixa do meio, 1640×624 (820×
 |---|---|
 | `capa-facebook-selo-aberto-1640x924.png` | **Recomendada.** O anel do selo em ponto grande, com a frase no lugar do "P"; o ponto laranja da marca no anel tracejado. |
 | `capa-facebook-ondas-1640x924.png` | Os anéis do selo a sair do canto da foto de perfil, como ondas, com o texto à direita. |
+| `capa-facebook-selo-aberto-en-1640x924.png` | **Em inglês (04/10), a usar agora.** Selo aberto com "AI automations · Websites", o lema em inglês, +351 967 117 357 · pachecost.com e "HQ Algarve, Portugal · Working worldwide". |
+| `capa-facebook-ondas-en-1640x924.png` | Ondas, em inglês, com o mesmo texto. |
 
-`previa-*` mostram cada uma com a foto de perfil por cima, no computador e no telemóvel (posições aproximadas).
+`previa-*` (com `-en` para as inglesas) mostram cada uma com a foto de perfil por cima, no computador e no telemóvel (posições aproximadas).
 
 Carregar: Página → foto de capa → Carregar foto. No computador, se o Facebook pedir para arrastar, centrar a frase e guardar. PNG porque tem texto: o Facebook comprime menos.
 
-Refazer: `python3 gerar.py` (escreve `capa.html`, fontes do site em `fontes/`) e `python3 exportar.py` (PNG + pré-visualizações; precisa do Playwright com o Chromium em `/opt/pw-browsers/chromium`).
+Refazer: `python3 gerar.py` (escreve `capa.html` com as quatro capas, PT e EN; textos em `TEXTOS`; fontes do site em `fontes/`) e `python3 exportar.py` (PNG + pré-visualizações; precisa do Playwright com o Chromium em `/opt/pw-browsers/chromium`).

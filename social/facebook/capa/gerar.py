@@ -5,7 +5,7 @@ Computador: o Facebook mostra a faixa central 1640×624 (820×312 a 2×). Telem�
 Tudo o que importa fica dentro da faixa central (y 150–774) e longe do canto inferior esquerdo, onde a foto de perfil
 (o selo) se sobrepõe à capa.
 
-    python3 gerar.py            # escreve capa.html (as duas direções, uma por baixo da outra)
+    python3 gerar.py            # escreve capa.html (duas direções × PT e EN, uma por baixo da outra)
 """
 import base64, pathlib
 
@@ -21,14 +21,26 @@ def fonte(nome, ficheiro, peso):
 W, H = 1640, 924
 BANDA = (150, 774)          # o que o computador mostra
 
-TEXTO = dict(
-    eyebrow="Automações com IA · Sites",
-    l1="Tens um objetivo a atingir?",
-    big=("A IA vai", "<span class=\"nb\">fazê-lo</span>", "acontecer."),
-    l3="Só tens de dar o primeiro passo.",
-    tel="967 117 357",
-    site="pachecost.com",
-)
+TEXTOS = {
+    "pt": dict(
+        eyebrow="Automações com IA · Sites",
+        l1="Tens um objetivo a atingir?",
+        big=("A IA vai", "<span class=\"nb\">fazê-lo</span>", "acontecer."),
+        l3="Só tens de dar o primeiro passo.",
+        tel="967 117 357",
+        site="pachecost.com",
+        local=None,
+    ),
+    "en": dict(
+        eyebrow="AI automations · Websites",
+        l1="Do you have a goal to reach?",
+        big=("AI will", "make it", "happen."),
+        l3="You just have to take the first step.",
+        tel="+351 967 117 357",
+        site="pachecost.com",
+        local="HQ Algarve, Portugal · Working worldwide",
+    ),
+}
 
 
 def aneis_selo(cx, cy, r_ouro, extra=""):
@@ -53,7 +65,8 @@ def bloco(t, classe=""):
             f'<p class="big">{big}</p>'
             f'<p class="l3">{t["l3"]}</p>'
             f'<p class="contacto"><b>{t["tel"]}</b><i aria-hidden="true">·</i>{t["site"]}</p>'
-            f'</div>')
+            + (f'<p class="local">{t["local"]}</p>' if t.get("local") else "")
+            + '</div>')
 
 
 # ── A: ondas do selo — os anéis saem de onde está a foto de perfil e o texto fica à direita ──
@@ -80,7 +93,7 @@ html,body{background:#2a2a2a}
 .capa{position:relative;width:1640px;height:924px;overflow:hidden;background:var(--fundo);margin-bottom:40px}
 .fundo{position:absolute;inset:0}
 .brilho{position:absolute;inset:0}
-.bloco{position:absolute;color:var(--creme)}
+.bloco{position:absolute;color:var(--creme);width:max-content}
 .eyebrow{font:700 24px/1 "Space Mono";letter-spacing:.32em;text-transform:uppercase;color:var(--ouro)}
 .l1,.l3{font:600 42px/1.2 "Inter";letter-spacing:-.005em}
 .l1{margin-top:34px}
@@ -90,24 +103,29 @@ html,body{background:#2a2a2a}
 .contacto b{color:var(--ouro);font-weight:700}
 .contacto i{font-style:normal;color:var(--ouro);margin:0 .7em}
 .nb{white-space:nowrap}
+.local{margin-top:14px;font:700 20px/1 "Space Mono";letter-spacing:.22em;text-transform:uppercase;color:var(--creme-2)}
+.d-b .local{margin-right:-.22em}
+/* inglês: três linhas curtas no destaque e o bloco mais compacto, para caber a linha da sede */
+.l-en .l1{margin-top:28px}
+.l-en .contacto{margin-top:30px}
 /* A */
-#a .brilho{background:radial-gradient(760px 620px at 10% 92%,rgba(232,98,44,.17),transparent 70%),
+.d-a .brilho{background:radial-gradient(760px 620px at 10% 92%,rgba(232,98,44,.17),transparent 70%),
   radial-gradient(900px 700px at 72% 46%,rgba(201,162,86,.07),transparent 72%)}
-#a .bloco{left:800px;top:50%;transform:translateY(-50%)}
+.d-a .bloco{left:800px;top:50%;transform:translateY(-50%)}
 /* B */
-#b .brilho{background:radial-gradient(620px 520px at 64% 50%,rgba(232,98,44,.12),transparent 70%)}
-#b .bloco{left:1050px;top:50%;transform:translate(-50%,-50%);text-align:center}
-#b .l1,#b .l3{font-size:40px}
-#b .eyebrow{margin-right:-.32em}
-#b .contacto{margin-right:-.08em}
-#b .big{font-size:92px}
+.d-b .brilho{background:radial-gradient(620px 520px at 64% 50%,rgba(232,98,44,.12),transparent 70%)}
+.d-b .bloco{left:1050px;top:50%;transform:translate(-50%,-50%);text-align:center}
+.d-b .l1,.d-b .l3{font-size:40px}
+.d-b .eyebrow{margin-right:-.32em}
+.d-b .contacto{margin-right:-.08em}
+.d-b .big{font-size:92px}
 """
 
+DIRECOES = {"a": svg_a, "b": svg_b}
+capas = "".join(f'<div class="capa d-{d} l-{l}" id="{d}-{l}" lang="{l}"><div class="brilho"></div>{svg}{bloco(t)}</div>'
+                for l, t in TEXTOS.items() for d, svg in DIRECOES.items())
 html = (f'<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><title>Pacheco Studios — capa Facebook</title><style>'
         + fonte("Archivo Black", "archivo-black-400.woff2", 400) + fonte("Space Mono", "space-mono-700.woff2", 700)
-        + fonte("Inter", "inter-600.woff2", 600) + CSS + '</style></head><body>'
-        + f'<div class="capa" id="a"><div class="brilho"></div>{svg_a}{bloco(TEXTO)}</div>'
-        + f'<div class="capa" id="b"><div class="brilho"></div>{svg_b}{bloco(TEXTO)}</div>'
-        + '</body></html>')
+        + fonte("Inter", "inter-600.woff2", 600) + CSS + '</style></head><body>' + capas + '</body></html>')
 (AQUI / "capa.html").write_text(html, encoding="utf-8")
 print("capa.html", len(html) // 1024, "KB")
