@@ -339,6 +339,7 @@ Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que v
   - Nos Casos só ficam o depoimento e os resultados: sem nome, sem tipo de negócio e sem a caixa «o próximo caso».
   - Saiu todo o texto «fazemos o site antes de pagares / só pagas se gostares», incluindo a página Sites.
   - As Soluções abrem só com «Estes são alguns dos sistemas mais eficazes e mais comuns para resolver a tua dor de hoje.»
+- **Cookies (04/10):** saiu a faixa; nada aparece ao abrir. O rodapé diz que usar o site é aceitar a política de privacidade e a de cookies. Pixel da Meta automático em pachecost.com, desligável na página Cookies (e com Global Privacy Control). **Risco assumido pelo Tomás, avisado:** sem faixa, isto não é consentimento válido na UE (TJUE Planet49, CNPD) e a Meta exige-o aos anunciantes.
 - **Herói em scroll to animation (03/10, noite):** vídeo Kling 3.0 gerado a partir da imagem do herói (push-in, os fios acendem). 18 fotogramas WebP 720 px (≈134 KB no total) em `media/heroi-seq/`, embutidos na página; o scroll avança o vídeo com fusão entre fotogramas e o texto desaparece no fim. Fica a imagem parada sem JavaScript, com movimento reduzido ou se o texto não couber no ecrã. O Seedance quase não mexia: rejeitado.
 - **Diagnóstico com cara própria (não copiar o do Viver de IA):** uma pergunta por ecrã, opções A–H e a «ficha do teu negócio» a preencher-se ao lado.
 - **Higgsfield nesta sessão:** o CDN de resultados (cloudfront) está bloqueado no proxy local. Receita que funciona:

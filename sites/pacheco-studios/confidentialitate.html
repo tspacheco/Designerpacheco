@@ -357,21 +357,6 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 .barra.visivel{transform:none}
 .barra .botao{width:100%;pointer-events:auto;box-shadow:0 .5rem 1.5rem rgba(20,18,16,.45),0 0 0 3px var(--carvao)}
 
-/* faixa de consentimento (pixel da Meta): por cima da barra fixa, que se esconde enquanto a faixa está aberta */
-.rgpd{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;
-  width:min(42rem,calc(100% - 2rem));display:grid;gap:.9rem;padding:1rem 1.1rem;border-radius:1rem;
-  background:var(--carvao-2);border:1px solid var(--linha-e);box-shadow:0 1.2rem 2.8rem rgba(0,0,0,.6)}
-.rgpd[hidden]{display:none}
-.rgpd p{font-size:.875rem;line-height:1.5;color:var(--osso-2)}
-.rgpd .acoes{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
-.rgpd button{min-height:2.75rem;padding:0 1.1rem;border-radius:999px;border:1px solid var(--contorno);background:transparent;
-  color:var(--osso);font:700 .75rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-.rgpd button:hover{border-color:var(--osso)}
-.rgpd .sim{background:var(--osso);border-color:var(--osso);color:var(--carvao)}
-.rgpd a{min-height:2.75rem;display:inline-flex;align-items:center;font-size:.8125rem;color:var(--osso);text-underline-offset:.2em}
-body.rgpd-aberto .barra{display:none}
-@media (min-width:40rem){.rgpd{grid-template-columns:1fr auto;align-items:center}}
-
 /* ═══ intro: o ecrã de arranque. Só o JavaScript a mostra (html.intro-vai: 1.ª vez em cada sessão, nunca com movimento
    reduzido; ver o script no <head>); sem ele não existe. O carro passa pelos dois portais e sai transformado; no fim
    aparece a marca e o ecrã sobe para mostrar o site. ═══ */
@@ -710,22 +695,22 @@ dialog.diag.fim .diag-ficha{display:block}
 <p>Site-ul e găzduit de Netlify. Ca orice server, înregistrează date tehnice, cum ar fi adresa IP și data și ora accesării, pentru securitate și funcționare. <a href="https://www.netlify.com/privacy/" rel="noopener">Politica de confidențialitate Netlify</a></p>
 <h2>Statistici fără cookie-uri</h2>
 <p>Folosim GoatCounter ca să numărăm vizitele, scanările codului QR de pe cartea de vizită și clicurile spre WhatsApp și telefon. Nu folosește cookie-uri, nu păstrează adresa IP și nu permite identificarea nimănui, așa că funcționează fără să cerem acordul.</p>
-<h2>Pixelul Meta, doar cu acordul tău</h2>
-<p>Pe pachecost.com, dacă apeși „Accept” în banda care apare la prima vizită, încărcăm pixelul Meta (Facebook și Instagram). Acesta pune cookie-uri și îi spune Meta că ai vizitat site-ul, ca să putem măsura reclamele. Dacă alegi „Doar esențialul”, pixelul nu se încarcă niciodată. Pe ro.pachecost.com nu există pixel. Te poți răzgândi ștergând datele site-ului din browser.</p>
+<h2>Pixelul Meta</h2>
+<p>Pe ro.pachecost.com nu există pixelul Meta. Pe pachecost.com (portugheză și engleză) îl folosim ca să măsurăm reclamele. Detalii în politica de cookie-uri. <a href="/cookie-uri.html" rel="noopener">Politica de cookie-uri</a></p>
 <h2>Fonturi</h2>
 <p>Numele proiectelor folosesc fonturi Google Fonts. Când deschizi pagina, browserul tău le cere de la serverele Google, care primesc adresa ta IP.</p>
 <h2>Cât timp păstrăm datele</h2>
 <p>Mesajele rămân păstrate doar cât e nevoie ca să ne ocupăm de cererea ta sau ca să respectăm obligațiile legale, cum ar fi facturarea. Nu vindem și nu cedăm date terților.</p>
 <h2>Drepturile tale</h2>
 <p>Poți cere oricând acces, corectare, o copie sau ștergerea datelor tale: scrie la <a href="mailto:tomas@pachecost.com">tomas@pachecost.com</a>. Poți depune și o plângere la autoritatea de protecție a datelor din România (ANSPDCP) sau la CNPD, în Portugalia. <a href="https://www.dataprotection.ro/" rel="noopener">dataprotection.ro</a></p>
-  <p class="nota">Ultima actualizare: septembrie 2026.</p>
+  <p class="nota">Ultima actualizare: octombrie 2026.</p>
   <a class="botao secundario" href="/">Înapoi la site</a>
 </main>
 <footer class="rodape">
   <div class="envolver">
     <p>Pacheco Studios · Tomás Pacheco · Portugalia</p>
     <p><a href="https://www.livroreclamacoes.pt/inicio/" rel="noopener">Livro de Reclamações (Portugalia)</a></p>
-    <p><a href="/confidentialitate.html">Confidențialitate</a></p>
+    <p>Folosind site-ul, accepți termenii noștri: <a href="/confidentialitate.html">politica de confidențialitate</a> și <a href="/cookie-uri.html">politica de cookie-uri</a>.</p>
     <p>Pagina asta e un exemplu de ce facem: un singur fișier, rapid pe orice telefon.</p>
   </div>
 </footer>

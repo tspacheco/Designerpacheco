@@ -160,8 +160,14 @@ cabeçalho), para não competirem no Google com os sites dos próprios negócios
   (`pachecost.com/`, `ro.pachecost.com/`). As leituras do QR contam à parte, como o evento `qr/cartao`, e os
   cliques para o WhatsApp e o telefone como `ir/whatsapp` e `ir/telefone`. Cada esquema aberto conta como
   `esquema/<id>` (`esquema/programari`, por exemplo): dá para ver quais automações interessam mais.
-- **Pixel da Meta** só em `pachecost.com` (PT e EN), só depois de «Aceitar» na faixa. A escolha fica guardada.
-  Em `ro.pachecost.com` não há pixel nem faixa: quem lê o QR entra direto na Consultoria.
+- **Sem faixa de cookies (decisão do Tomás, 04/10):** nada aparece ao abrir o site. O rodapé diz «Ao usares este site
+  aceitas os nossos termos: a política de privacidade e a política de cookies», com as duas ligações.
+- **Pixel da Meta** só em `pachecost.com` (PT e EN) e carrega sozinho. Desliga-se na página Cookies (`cookies.html`,
+  `en/cookies.html`), que guarda `ps-consentimento = nao` neste navegador; com o sinal Global Privacy Control também não
+  carrega. Em `ro.pachecost.com` não há pixel; a página é `cookie-uri.html`.
+  **Risco assumido:** na UE, «continuar a navegar» não conta como consentimento para cookies de publicidade (TJUE
+  Planet49, CNPD, diretrizes EDPB 05/2020), e a Meta exige consentimento aos anunciantes. O Tomás foi avisado a 04/10 e
+  escolheu assim. Para voltar a pedir autorização, a faixa antiga está no histórico do git (antes de 04/10).
 - Privacidade em cada língua: `/privacidade.html`, `/privacy.html`, `/confidentialitate.html`.
 
 O site anterior do pachecost.com (o «Estúdio de IA») está guardado em `sites/pachecost-com/`.
@@ -191,5 +197,5 @@ avisa.
 - A intro, nas 3 línguas: na 1.ª visita da sessão aparece com as três fotografias e os textos certos, a página por
   baixo fica inerte, sobe no fim (≈ 4 s) e não volta ao recarregar; «Saltar» e Esc saltam-na; com movimento reduzido ou
   sem JavaScript não aparece. Letra, contraste e alvos de toque também dentro dela.
-- A faixa de cookies: aparece só em pachecost.com, «Só o essencial» nunca carrega o pixel e «Aceitar» carrega-o.
+- Cookies: nada aparece ao abrir; o pixel carrega sozinho em pachecost.com, nunca em ro.pachecost.com; o botão da página Cookies desliga-o e volta a ligá-lo; com Global Privacy Control não carrega.
   Nos dois casos a escolha fica guardada.

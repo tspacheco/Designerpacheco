@@ -11,7 +11,7 @@ Lê: index.src.html · conteudo/{pt,en,ro}.json · portfolio.json · ../../marca
 Escreve em dist/ (não vai para o git):
   index.html · en/index.html · ro/index.html      as três versões (proiecte / automatizari / servicii + contacto)
   404.html · en/404.html · ro/404.html            404 em cada língua
-  privacidade.html · privacy.html · confidentialitate.html
+  privacidade.html · privacy.html · confidentialitate.html · cookies.html · en/cookies.html · cookie-uri.html
   _redirects (QR /c primeiro, ro.pachecost.com → /ro/) · _headers · netlify.toml · robots.txt · sitemap.xml
   media/og-{pt,en,ro}.png · media/intro-{1,2,3}.webp (os três carros da intro) · p/<slug>/ (clientes sem site
   publicado: index.html romeno, pt.html, en.html)
@@ -768,10 +768,17 @@ def rodape(c, lang):
   <div class="envolver">
     <p>{e(r["linha"])}</p>
     <p><a href="https://www.livroreclamacoes.pt/inicio/" rel="noopener">{e(r["legal"])}</a></p>
-    <p><a href="{e(LINGUAS[lang]["privacidade"])}">{e(r["privacidade"])}</a></p>
+    <p>{aceite(r, lang)}</p>
     <p>{e(r["nota"])}</p>
   </div>
 </footer>"""
+
+
+def aceite(r, lang):
+    """Linha do rodapé: usar o site é aceitar a política de privacidade e a de cookies (não há faixa ao abrir)."""
+    pv = f'<a href="{e(LINGUAS[lang]["privacidade"])}">{e(r["privacidade"])}</a>'
+    ck = f'<a href="{e(LINGUAS[lang]["cookies"])}">{e(r["cookies"])}</a>'
+    return e(r["aceite"]).replace("{privacidade}", pv).replace("{cookies}", ck)
 
 
 def caminho_para(de, para):
@@ -971,24 +978,91 @@ def pagina_privacidade(c, estilo, lang, email):
 """
 
 
+def pagina_cookies(c, estilo, lang, tem_pixel):
+    """Política de cookies. Onde há pixel, mostra o estado neste navegador e um botão para o desligar/ligar
+    (a mesma chave ps-consentimento que a página principal lê)."""
+    t = c["cookies"]
+    casa = LINGUAS[lang]["caminho"]
+    url = f"https://{LINGUAS[lang]['host']}{LINGUAS[lang]['cookies']}"
+    def par(s):
+        lig = f' <a href="{e(s["link"]["href"])}" rel="noopener">{e(s["link"]["t"])}</a>' if s.get("link") else ""
+        return f'<h2>{e(s["t"])}</h2>\n<p>{e(s["p"])}{lig}</p>'
+    secoes = "\n".join(par(s) for s in t["secoes"])
+    controlo = ""
+    if tem_pixel:
+        x = t["controlo"]
+        controlo = f"""
+  <div class="pixel-estado" id="pixel" hidden>
+    <p id="pixel-txt" role="status"></p>
+    <button type="button" class="botao primario" id="pixel-btn"></button>
+  </div>
+  <script>
+  (function () {{
+    var T = {json.dumps(x, ensure_ascii=False)}, CHAVE = 'ps-consentimento';
+    var caixa = document.getElementById('pixel'), txt = document.getElementById('pixel-txt'), btn = document.getElementById('pixel-btn');
+    function le() {{ try {{ return localStorage.getItem(CHAVE); }} catch (e) {{ return null; }} }}
+    function mostra() {{
+      if (navigator.globalPrivacyControl) {{ txt.textContent = T.gpc; btn.hidden = true; return; }}
+      var desligado = le() === 'nao';
+      txt.textContent = desligado ? T.desligado : T.ligado;
+      btn.textContent = desligado ? T.ligar : T.desligar;
+    }}
+    btn.addEventListener('click', function () {{
+      try {{ if (le() === 'nao') localStorage.removeItem(CHAVE); else localStorage.setItem(CHAVE, 'nao'); }} catch (e) {{}}
+      mostra();
+    }});
+    caixa.hidden = false; mostra();
+  }})();
+  </script>"""
+    extra = (f'<meta name="description" content="{e(t["intro"])}">\n<link rel="canonical" href="{url}">\n'
+             '<style>.legal h2{margin-top:2.2rem;font:700 .8125rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso)}'
+             '.legal h2+p{max-width:62ch;margin-top:.6rem;color:var(--osso-2)}.legal h2+p a{color:var(--osso);text-underline-offset:.2em}'
+             '.legal .nota{margin-top:2.4rem;font:400 .8125rem/1.5 var(--mono)}.legal .botao{margin-top:1.6rem}'
+             '.pixel-estado{margin-top:2.2rem;padding:1.2rem 1.3rem;max-width:62ch;border:1px solid var(--linha-e);border-radius:1rem;background:var(--carvao-2)}'
+             '.pixel-estado[hidden]{display:none}.pixel-estado p{color:var(--osso)}.pixel-estado .botao{margin-top:1rem}</style>\n')
+    return cabeca_simples(lang, t["titulo"], estilo, extra) + f"""
+<body>
+<a class="saltar" href="#conteudo">{e(LINGUAS[lang]["saltar"])}</a>
+<header class="envolver topo">
+  <a class="marca" href="{casa}"><span class="ponto" aria-hidden="true"></span>Pacheco Studios</a>
+</header>
+<main id="conteudo" class="envolver seccao legal">
+  <p class="eyebrow">Legal</p>
+  <h1 class="afirmacao">{e(t["titulo"])}</h1>
+  <p class="lead">{e(t["intro"])}</p>{controlo}
+{secoes}
+  <p class="nota">{e(t["atualizado"])}</p>
+  <a class="botao secundario" href="{casa}">{e(t["voltar"])}</a>
+</main>
+{rodape(c, lang)}
+</body>
+</html>
+"""
+
+
 def configurar_linguas(d):
     """Onde vive cada língua. PT abre pachecost.com; EN em /en/; RO em ro.pachecost.com (o QR do cartão)."""
     principal, dominio = d["site_principal"].strip().lower(), d["dominio"].strip().lower()
     LINGUAS.clear()
     LINGUAS.update({
         "pt": {"host": principal, "caminho": "/", "pasta": "", "hreflang": "pt-PT", "og_locale": "pt_PT",
-               "privacidade": "/privacidade.html", "areas": ["Portugal", "Romania"], "saltar": "Saltar para o conteúdo",
+               "privacidade": "/privacidade.html", "cookies": "/cookies.html", "areas": ["Portugal", "Romania"], "saltar": "Saltar para o conteúdo",
                "nav": "Secções", "com_site": False},
         "en": {"host": principal, "caminho": "/en/", "pasta": "en", "hreflang": "en", "og_locale": "en_GB",
-               "privacidade": "/privacy.html", "areas": ["Portugal", "Romania"], "saltar": "Skip to content",
+               "privacidade": "/privacy.html", "cookies": "/en/cookies.html", "areas": ["Portugal", "Romania"], "saltar": "Skip to content",
                "nav": "Sections", "com_site": False},
         "ro": {"host": dominio, "caminho": "/", "pasta": "ro", "hreflang": "ro", "og_locale": "ro_RO",
-               "privacidade": "/confidentialitate.html", "areas": ["Romania"], "saltar": "Sari la conținut",
+               "privacidade": "/confidentialitate.html", "cookies": "/cookie-uri.html", "areas": ["Romania"], "saltar": "Sari la conținut",
                "nav": "Secțiuni", "com_site": True},
     })
     for v in LINGUAS.values():
         v["url"] = f"https://{v['host']}{v['caminho']}"
     return principal, dominio
+
+
+def pixel_de(medicao, lang):
+    """Número do pixel da Meta nesta língua, ou "" (ro.pachecost.com não tem)."""
+    return re.sub(r"\D", "", medicao.get("pixel_meta", "")) if lang in medicao.get("pixel_linguas", ["pt", "en"]) else ""
 
 
 def main():
@@ -1030,13 +1104,12 @@ def main():
                   "areaServed": [{"@type": "Country", "name": n} for n in cfg["areas"]],
                   "sameAs": [f"https://www.instagram.com/{d['instagram'].lstrip('@')}/"],
                   "founder": {"@type": "Person", "name": d["nome"]}}
-        k = c["consent"]
         valores = {
             "LINGUA": cfg["hreflang"], "TITLE": e(c["meta"]["title"]), "DESCRIPTION": e(c["meta"]["description"]),
             "OG_TITLE": e(c["meta"]["og_title"]), "OG_LOCALE": cfg["og_locale"], "OG_IMAGE": og_img,
             "URL_PAGINA": cfg["url"], "HREFLANG": hreflang(), "FONTES": fontes, "FONTES_GOOGLE": fontes_google(portfolio),
             "JSONLD": json.dumps(jsonld, ensure_ascii=False).replace("</", "<\\/"),
-            "GOATCOUNTER": e(medicao.get("goatcounter", "")), "PIXEL": re.sub(r"\D", "", medicao.get("pixel_meta", "")) if lang in medicao.get("pixel_linguas", ["pt", "en"]) else "",
+            "GOATCOUNTER": e(medicao.get("goatcounter", "")), "PIXEL": pixel_de(medicao, lang),
             "SALTAR": e(cfg["saltar"]), "NAV_LABEL": e(cfg["nav"]), "LINGUAS": seletor(c, lang),
             "TAB_CONSULTANTA": e(c["topo"]["tabs"]["consultanta"]), "TAB_CAZURI": e(c["topo"]["tabs"]["cazuri"]),
             "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
@@ -1045,8 +1118,6 @@ def main():
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
             "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "RODAPE": rodape(c, lang), "INTRO": intro(c),
             "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
-            "CONSENT_ROTULO": e(k["rotulo"]), "CONSENT_TEXTO": e(k["texto"]), "CONSENT_SIM": e(k["sim"]),
-            "CONSENT_NAO": e(k["nao"]), "CONSENT_LINK": e(k["link"]), "URL_PRIVACIDADE": e(cfg["privacidade"]),
         }
         pagina = montar(src, valores)
         paginas[lang] = pagina
@@ -1060,6 +1131,7 @@ def main():
         cfg = LINGUAS[lang]
         extras[f"{cfg['pasta'] + '/' if cfg['pasta'] else ''}404.html"] = pagina_404(c, estilo, lang)
         extras[cfg["privacidade"].lstrip("/")] = pagina_privacidade(c, estilo, lang, d["email"])
+        extras[cfg["cookies"].lstrip("/")] = pagina_cookies(c, estilo, lang, bool(pixel_de(medicao, lang)))
     for nome, h in extras.items():
         open(os.path.join(DIST, nome), "w", encoding="utf-8").write(h)
 
@@ -1100,7 +1172,8 @@ def main():
                                                               "DataForSeoBot", "PetalBot", "Bytespider"))
         + f"\nSitemap: https://{principal}/sitemap.xml\n")
     urls = [(f"https://{principal}/", "1.0"), (f"https://{principal}/en/", "0.8"),
-            (f"https://{principal}/privacidade.html", "0.2"), (f"https://{principal}/privacy.html", "0.2")]
+            (f"https://{principal}/privacidade.html", "0.2"), (f"https://{principal}/privacy.html", "0.2"),
+            (f"https://{principal}/cookies.html", "0.2"), (f"https://{principal}/en/cookies.html", "0.2")]
     open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{u}</loc><priority>{pr}</priority></url>\n" for u, pr in urls) + "</urlset>\n")

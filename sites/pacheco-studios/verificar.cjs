@@ -7,7 +7,7 @@
 //     alvos ≥ 44 px, títulos por ordem.
 //  3. Seletor PT · EN · RO, canonical e hreflang; separadores (com e sem JavaScript), automatizações, sites em destaque e
 //     por tipo de negócio (cada site ativo num deles, sem grelha com todos),
-//     cópia da Toda Chic com «voltar» em cada língua, 404 em cada língua, privacidade, barra fixa, faixa de cookies.
+//     cópia da Toda Chic com «voltar» em cada língua, 404 em cada língua, privacidade e cookies, barra fixa, pixel sem faixa (desliga-se na página Cookies).
 //  4. Esquemas: «Ver o esquema» abre cada um dos 8 num cartão no meio do ecrã (Esc, X e tocar fora fecham), o
 //     endereço #esquema-… abre-o direto, e sem JavaScript mostra-o na mesma.
 //  5. Intro: na 1.ª visita da sessão o carro passa pelos dois portais com as três fotografias e o ecrã sobe; um toque
@@ -66,7 +66,7 @@ const fs = require('fs');
   let falhas = 0;
   const mal = m => { falhas++; console.log('  ✗ ' + m); };
   const bem = m => console.log('  ✓ ' + m);
-  // consent: 'nao' = já respondeu (faixa escondida), null = primeira visita
+  // consent: 'nao' = pixel desligado na página Cookies, null = primeira visita (pixel carrega sozinho)
   // intro: false = a sessão já a viu (não aparece); true = primeira visita, aparece
   async function contexto(opcoes = {}, consent = 'nao', intro = false) {
     const ctx = await browser.newContext({ deviceScaleFactor: 1, ...opcoes });
@@ -216,7 +216,8 @@ const fs = require('fs');
       if (r.status() !== 404 || l !== lang) mal(`404 de ${url}: ${r.status()} em ${l}`); else bem(`404 em ${lang}: ${url.replace('https://', '')}`);
     }
     // privacidade
-    for (const [url, lang] of [[PT + '/privacidade.html', 'pt-PT'], [PT + '/privacy.html', 'en'], [RO + '/confidentialitate.html', 'ro']]) {
+    for (const [url, lang] of [[PT + '/privacidade.html', 'pt-PT'], [PT + '/privacy.html', 'en'], [RO + '/confidentialitate.html', 'ro'],
+                               [PT + '/cookies.html', 'pt-PT'], [PT + '/en/cookies.html', 'en'], [RO + '/cookie-uri.html', 'ro']]) {
       const r = await p.goto(url);
       const l = await p.$eval('html', h => h.lang);
       const r2 = await p.evaluate(medir);
@@ -485,35 +486,55 @@ const fs = require('fs');
     if (linhas.length === 2) bem(`${k}: ${linhas.join(' · ')}; Esc, X e tocar fora fecham; teclado e endereço direto`);
   }
 
-  // ——— 5. faixa de cookies (primeira visita) ———
+  // ——— 5. cookies: nada aparece ao abrir; o pixel carrega sozinho em pachecost.com e desliga-se na página Cookies ———
   console.log('\nCOOKIES');
+  const temPixel = q => q.evaluate(() => typeof window.fbq === 'function');
   {
-    // ro.pachecost.com (quem lê o QR): sem pixel, logo sem faixa
+    // ro.pachecost.com (quem lê o QR): sem pixel
     const c = await contexto({ viewport: { width: 390, height: 844 } }, null);
     const q = await c.newPage();
     await q.goto(LINGUAS.ro.url);
-    const faixa = await q.$eval('#rgpd', f => !f.hidden);
-    const semPixel = await q.evaluate(() => !/fbevents|fbq\('init'/.test([...document.scripts].map(x => x.textContent).join('')) || !/var PIXEL = '\d/.test([...document.scripts].map(x => x.textContent).join('')));
-    if (faixa || !semPixel) mal(`ro.pachecost.com: faixa=${faixa}, sem pixel=${semPixel}`); else bem('ro.pachecost.com: sem pixel da Meta e sem faixa (o QR abre direto nos projetos)');
+    const faixa = await q.$('#rgpd');
+    const px = await temPixel(q);
+    const rod = await q.$$eval('.rodape a', as => as.map(a => a.getAttribute('href')));
+    if (faixa || px || !rod.includes('/cookie-uri.html')) mal(`ro.pachecost.com: faixa=${!!faixa} pixel=${px} rodapé=${rod}`);
+    else bem('ro.pachecost.com: nada ao abrir, sem pixel da Meta; rodapé liga à política de cookie-uri');
     await c.close();
   }
-  for (const escolha of ['nao', 'sim']) {
+  {
     const c = await contexto({ viewport: { width: 390, height: 844 } }, null);
     const q = await c.newPage();
     await q.goto(LINGUAS.pt.url);
-    const aberta = await q.$eval('#rgpd', f => !f.hidden);
-    const r = await q.evaluate(medir);
-    avaliar(r, 'faixa de cookies');
-    const barraEscondida = await q.$eval('#barra', b => getComputedStyle(b).display === 'none');
-    await q.click(escolha === 'sim' ? '#rgpdSim' : '#rgpdNao');
-    const fechada = await q.$eval('#rgpd', f => f.hidden);
+    const faixa = await q.$('#rgpd');
+    const px = await temPixel(q);
+    const rod = await q.$$eval('.rodape a', as => as.map(a => a.getAttribute('href')));
+    if (faixa || !px || !rod.includes('/cookies.html') || !rod.includes('/privacidade.html'))
+      mal(`pachecost.com, 1.ª visita: faixa=${!!faixa} pixel=${px} rodapé=${rod}`);
+    else bem('pachecost.com, 1.ª visita: nada aparece, o pixel carrega sozinho e o rodapé liga à privacidade e aos cookies');
+    // página Cookies: desligar e voltar a ligar
+    await q.goto(PT + '/cookies.html');
+    const t1 = await q.$eval('#pixel-txt', e => e.textContent);
+    await q.click('#pixel-btn');
     const guardado = await q.evaluate(() => localStorage.getItem('ps-consentimento'));
-    const pixel = await q.evaluate(() => typeof window.fbq === 'function');
-    await q.reload();
-    const depoisRecarregar = await q.$eval('#rgpd', f => f.hidden);
-    if (!aberta || !barraEscondida || !fechada || guardado !== escolha || pixel !== (escolha === 'sim') || !depoisRecarregar)
-      mal(`faixa (${escolha}): aberta=${aberta} barra escondida=${barraEscondida} fechou=${fechada} guardou=${guardado} pixel=${pixel} ao recarregar=${depoisRecarregar}`);
-    else bem(escolha === 'sim' ? 'pachecost.com, «Aceitar»: a faixa fecha, fica guardado e o pixel da Meta arranca' : 'pachecost.com, «Só o essencial»: a faixa fecha, fica guardado e o pixel nunca carrega');
+    const t2 = await q.$eval('#pixel-txt', e => e.textContent);
+    await q.goto(LINGUAS.pt.url);
+    const pxDesligado = await temPixel(q);
+    await q.goto(PT + '/cookies.html');
+    await q.click('#pixel-btn');
+    await q.goto(LINGUAS.pt.url);
+    const pxReligado = await temPixel(q);
+    if (guardado !== 'nao' || t1 === t2 || pxDesligado || !pxReligado)
+      mal(`página Cookies: guardou=${guardado} texto mudou=${t1 !== t2} pixel desligado=${pxDesligado} religado=${pxReligado}`);
+    else bem('página Cookies: «Desligar o pixel» fica guardado e o site deixa de o carregar; «Voltar a ligar» repõe');
+    await c.close();
+  }
+  {
+    // sinal Global Privacy Control do navegador: o pixel não carrega
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, null);
+    await c.addInitScript(() => Object.defineProperty(Navigator.prototype, 'globalPrivacyControl', { get: () => true }));
+    const q = await c.newPage();
+    await q.goto(LINGUAS.pt.url);
+    if (await temPixel(q)) mal('GPC: o pixel carregou'); else bem('navegador com Global Privacy Control: o pixel não carrega');
     await c.close();
   }
 
@@ -590,7 +611,7 @@ const fs = require('fs');
   const ctx2 = await contexto({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false, reducedMotion: 'reduce' }, 'nao', true);
   const p2 = await ctx2.newPage();
   await p2.goto(LINGUAS.pt.url + '#cazuri');
-  const semJs = await p2.evaluate(() => [getComputedStyle(document.getElementById('cazuri')).display, getComputedStyle(document.getElementById('consultanta')).display, document.getElementById('rgpd').hidden, getComputedStyle(document.getElementById('intro')).display]);
+  const semJs = await p2.evaluate(() => [getComputedStyle(document.getElementById('cazuri')).display, getComputedStyle(document.getElementById('consultanta')).display, !document.getElementById('rgpd'), getComputedStyle(document.getElementById('intro')).display]);
   if (semJs[0] === 'none' || semJs[1] !== 'none' || !semJs[2] || semJs[3] !== 'none') mal('sem JavaScript: vistas, faixa de cookies ou intro erradas'); else bem('sem JavaScript: separadores funcionam (:target), a faixa de cookies e a intro não aparecem');
   // o esquema: abre-se a automação (<details> nativo), «Ver o esquema» mostra o cartão e o X volta à automação
   await p2.goto(LINGUAS.pt.url + '#automatizari');
