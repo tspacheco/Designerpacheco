@@ -5,7 +5,7 @@ import re, base64, urllib.request, os, sys
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36'}
 PEDIDOS = sys.argv[1:] or [
-  'https://fonts.googleapis.com/css2?family=Corben:wght@400;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&display=swap',
+  'https://fonts.googleapis.com/css2?family=Corben:wght@400;700&family=Lexend:wght@400;600;700&family=Caveat:wght@500;700&display=swap',
 ]
 SUBSETS = {'latin', 'latin-ext'}
 out, vistos = [], {}
