@@ -81,3 +81,41 @@ Confirmar na conversa: quantas cadeiras, quantos barbeiros, se a agenda do MERO 
 - MERO: mero.ro/p/societysalon
 - Instagram: instagram.com/societysalon.ro · Facebook: facebook.com/societysalon.ro
 - Captura do Google Maps enviada pelo Tomás (26/09/2026): 5,0/69, 80–120 lei, fecha às 18:00, fotos da fachada
+
+---
+
+# Atualização 04/10/2026 — dados reais (via ponte) e V2
+
+Lidos pela ponte (`ponte/ss-*.txt|jpg`): societysalon.ro (/, /despre, /servicii, /contact), mero.ro/p/societysalon, Facebook, TikTok. O Instagram devolve 429 (sem login).
+
+## Ficha confirmada
+
+| Dado | Valor | Fonte |
+|---|---|---|
+| Telefone / WhatsApp | 0799 735 945 (+40 799 735 945) | site, Facebook, Google |
+| Email | office@societysalon.ro · reclamações: reclamatii@societysalon.ro | site |
+| Lema | "Authentically you. Skillfully us." · "The secret society of powerful men" | site, TikTok |
+| Desde | 2025 | site (/despre) |
+| Referência | 100 m da paragem Universitate | site |
+| MERO | **5,00 · 1.612 avaliações** | MERO |
+| Google | 5,0 · 70 avaliações · oferta "100% reducere la a 6-a tunsoare" | captura do Tomás 04/10 |
+| Redes | Facebook 65 seguidores · TikTok 44 seguidores / 1.151 likes | páginas |
+
+**Equipa (MERO):** Robert E (Master, 5,00/550) · Bogdan R (Master, 5,00/444) · Dorin N (Top Barber, 5,00/322) · Stefan D (Top Barber, 4,99/234) · Emi C (Junior, 4,97/62). O site tem também Cristi (não aparece no MERO).
+
+**Horário — divergente:** MERO: seg–ter 9–21, qua–sex 10–21, sáb 9–17, dom fechado. Site: seg–sex 9–21, "SAT/SUN 10–18 / SUN: CLOSED". A V2 usa o do MERO e marca "de confirmat".
+
+**Preços — divergentes:** o site lista por nível (Master: Haircut & Styling 85, Long Hair 80–100, Hair Design 80–100, Beard 50, Gentleman's 115, Gentleman's long 115–135 · Senior: 80 / 75–100 / 50 / 115 / 105–130 · Junior: 80 / 45 / 110 · Extra: Pachet Premium 140, Black Mask 50, Beard Coloring 50–80, Spălat & Styling 20). O MERO mostra intervalos e durações (Haircut & Styling 30–40 min 70–85 · Long Hair 1 h 90–100 · Hair Design 40 min 80–100 · Spălat 10 min 20 · Beard 30–40 min 50 · Black Mask 30 min 50 · Beard Color 30–40 min 50–80 · Gentleman's 1 h–1 h 20 100–115 · Gentleman's long 1 h 20–1 h 30 120–135 · Premium 1 h 20–1 h 30 140).
+
+## Falhas do site atual (para a conversa)
+
+1. Secções vazias: "Misiunea Society Salon" e "Ce spun clienții noștri" aparecem sem conteúdo (carrosséis que não carregam).
+2. Faixa de cookies por cima do herói logo ao abrir.
+3. Preços e horário não batem com o MERO; o horário de sábado/domingo contradiz-se.
+4. Nenhuma das 1.612 avaliações do MERO aparece no site; a equipa não tem notas.
+5. Sem inglês (zona universitária com muitos estrangeiros).
+
+## Fotos usadas na V2
+
+- **Reais:** galeria e retratos de `societysalon.ro/wp-content/uploads/2025/11` e `/2026/01`; galeria e perfis do MERO (`d3uxkpn8v3i9eu.cloudfront.net/responsive-images/large/…`, `profile-images/large/…`). Originais em `sites/society-salon/media/recolha/`.
+- **Higgsfield** (`gpt_image_2_5`, 4 imagens, sem caras identificáveis nem marcas): natureza-morta navalha/toalha/máquina (16:9), toalha quente (4:5), pentes #0–#3 em linha (4:5), skin fade de costas (4:5). Marcadas "Imagine ilustrativă" no site. Originais em `media/higgsfield/`.

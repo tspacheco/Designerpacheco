@@ -3,22 +3,29 @@ SOCIETY SALON · fotografii pentru site / fotografias para o site
 
 RO
 --
-Site-ul are acum două fotografii, decupate dintr-o captură de ecran Google Maps
-(rezoluție mică). Înlocuiește-le cu originalele, cu același nume de fișier:
+Toate fotografiile cu lucrări și cu echipa sunt ale voastre, luate de pe
+societysalon.ro și de pe pagina MERO. Le puteți înlocui oricând cu altele,
+cu același nume de fișier (format .webp sau .jpg redenumit):
 
-  fachada.jpg   curtea și intrarea, văzută de pe alee (vertical, ~1200 x 1500 px)
-  porta.jpg     firma, copertina neagră și ușa (vertical, ~900 x 1225 px)
+  erou.webp            fotografia mare de sus (verticală, ~1200 x 1500 px)
+  echipa-<nume>.webp   portretele frizerilor (Robert, Bogdan, Dorin, Stefan, Emi)
+  lucrare-NN.webp      galeria „Ieșit de pe scaun”
+  atelier-NN.webp      frizerii la lucru (tot în galerie)
+  fachada.webp         curtea și intrarea (pentru „Cum ne găsești”)
 
-Dacă vrei, trimite-ne și:
-  - fotografii din salon (scaunele, oglinzile, detalii)
-  - fotografii cu echipa: nume și nivel (Master / Senior / Junior)
-  - logo-ul oficial în format vectorial (SVG sau PDF): S-ul roșu din site e o
-    reconstrucție după firmă, nu logo-ul original
-  - programul pe zile și numărul de telefon
+Imaginile „ilustr-*.webp” (pieptenii, prosopul cald, fade-ul, natura moartă)
+sunt generate cu AI și sunt marcate pe site ca „Imagine ilustrativă”.
+Le înlocuim cu fotografii din salon când le aveți.
+
+Dacă un fișier lipsește, site-ul arată un fundal închis în locul lui: nu se
+strică nimic.
 
 PT (para o Tomás)
 -----------------
-As duas fotos são recortes da captura do Google Maps enviada a 26/09/2026.
-Trocar pelos originais com o mesmo nome e voltar a correr:
-  python3 ferramentas/build.py
-O S vermelho é a fonte Pirata One (só a letra S), não o logótipo oficial.
+- Fontes das fotos reais: societysalon.ro/wp-content/uploads (galeria e equipa)
+  e mero.ro/p/societysalon (galeria e perfis). Originais em media/recolha/.
+- Higgsfield (gpt_image_2_5, 04/10/2026): media/higgsfield/ (originais) →
+  ilustr-*.webp. Prompts no commit e em research/society-salon-iasi.md.
+- O logótipo (S + SOCIETY SALON) é o PNG do site deles, recolorido a preto
+  para fundo claro (_logo-negru.webp) e embutido no HTML.
+- Depois de trocar fotos: python3 ferramentas/build.py
