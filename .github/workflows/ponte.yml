@@ -1,0 +1,134 @@
+# PONTE: o que as sessões do Claude não conseguem fazer pela rede delas (CDN do Higgsfield, sites bloqueados pelo
+# proxy) faz-se aqui, num runner do GitHub, e o resultado volta ao mesmo ramo num commit. Substitui a sandbox do
+# Higgsfield para transferir ficheiros, processar vídeo e ler sites (decisão do Tomás, 04/10/2026).
+#
+# Como usar: escrever pedidos em .github/ponte.txt, um por linha, e fazer push desse ficheiro. Ao fim de 1–4 min:
+# «git pull origin <ramo>». O relatório fica em ponte/relatorio.txt. Caminhos de destino são relativos à raiz do repo.
+#
+#   imagem     <destino.webp> <url>             descarrega e grava em WebP q90 (até 2400 px de largura)
+#   recorte    <destino.webp> <url>             igual, mas apara à caixa do alfa (PNG com fundo transparente)
+#   ficheiro   <destino>      <url>             grava tal como vem (mp4, pdf, …), até 90 MB
+#   fotogramas <pasta> <passo> <url do vídeo>   um fotograma em cada <passo>: <pasta>/d/NN.webp (16:9, 1920 px) e
+#                                               <pasta>/v/NN.webp (recorte 9:16 a 72 % da largura, 720×1280) + info.txt
+#   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
+#                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
+#   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
+#
+# Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
+# fotogramas de herói.
+name: ponte
+on:
+  push:
+    paths: ['.github/ponte.txt']
+permissions:
+  contents: write
+jobs:
+  ponte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ferramentas (só as que os pedidos usam)
+        run: |
+          grep -qE '^\s*fotogramas\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
+          python3 -m pip install --quiet pillow
+          if grep -qE '^\s*pagina\s' .github/ponte.txt; then
+            python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
+          fi
+      - name: Pedidos
+        run: |
+          python3 - <<'EOF'
+          import io, os, shlex, subprocess, urllib.request
+          from PIL import Image
+          UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
+          os.makedirs("ponte", exist_ok=True)
+          rel = []
+          def baixa(url, limite=90 * 1024 * 1024):
+              dados = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=120).read()
+              if len(dados) > limite:
+                  raise ValueError(f"{len(dados)} bytes, acima do limite")
+              return dados
+          def pasta(p):
+              d = os.path.dirname(p)
+              if d:
+                  os.makedirs(d, exist_ok=True)
+          paginas = []
+          for n, linha in enumerate(open(".github/ponte.txt", encoding="utf-8"), 1):
+              linha = linha.strip()
+              if not linha or linha.startswith("#"):
+                  continue
+              p = shlex.split(linha)
+              op = p[0]
+              try:
+                  if op in ("imagem", "recorte"):
+                      dest, url = p[1], p[2]
+                      im = Image.open(io.BytesIO(baixa(url)))
+                      im = im.convert("RGBA") if "A" in im.getbands() or op == "recorte" else im.convert("RGB")
+                      if op == "recorte" and im.getchannel("A").getbbox():
+                          x0, y0, x1, y1 = im.getchannel("A").getbbox(); m = 8
+                          im = im.crop((max(0, x0 - m), max(0, y0 - m), min(im.width, x1 + m), min(im.height, y1 + m)))
+                      if im.width > 2400:
+                          im = im.resize((2400, round(im.height * 2400 / im.width)), Image.LANCZOS)
+                      pasta(dest); im.save(dest, "WEBP", quality=90, method=6)
+                      rel.append(f"ok  {op} {dest} {im.width}x{im.height} {os.path.getsize(dest)//1024} KB")
+                  elif op == "ficheiro":
+                      dest, url = p[1], p[2]
+                      pasta(dest); open(dest, "wb").write(baixa(url))
+                      rel.append(f"ok  ficheiro {dest} {os.path.getsize(dest)//1024} KB")
+                  elif op == "fotogramas":
+                      dest, passo, url = p[1], int(p[2]), p[3]
+                      subprocess.run(["rm", "-rf", dest], check=True)
+                      os.makedirs(f"{dest}/d"); os.makedirs(f"{dest}/v")
+                      open("/tmp/v.mp4", "wb").write(baixa(url))
+                      info = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                                             "stream=width,height,nb_frames,r_frame_rate", "-of", "default=nw=1", "/tmp/v.mp4"],
+                                            capture_output=True, text=True, check=True).stdout
+                      sel = f"select='not(mod(n\\,{passo}))'"
+                      for sub, vf, q in (("d", f"{sel},scale='min(1920,iw)':-2:flags=lanczos", "72"),
+                                         ("v", f"{sel},crop=ih*9/16:ih:(iw-ih*9/16)*0.72:0,scale=720:1280:flags=lanczos", "74")):
+                          subprocess.run(["ffmpeg", "-v", "error", "-i", "/tmp/v.mp4", "-vf", vf, "-fps_mode", "vfr",
+                                          "-c:v", "libwebp", "-quality", q, "-compression_level", "6", f"{dest}/{sub}/%02d.webp"], check=True)
+                      tam = {s: (len(os.listdir(f"{dest}/{s}")), sum(os.path.getsize(f"{dest}/{s}/{f}") for f in os.listdir(f"{dest}/{s}")) // 1024) for s in "dv"}
+                      info += "".join(f"{s}: {k} fotogramas, {kb} KB\n" for s, (k, kb) in tam.items())
+                      open(f"{dest}/info.txt", "w").write(info)
+                      rel.append(f"ok  fotogramas {dest} " + " · ".join(info.split("\n")))
+                  elif op == "pagina":
+                      paginas.append((p[1], p[2]))
+                  elif op == "testar":
+                      r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
+                                          "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
+                      rel.append(f"ok  testar {p[1]} -> {r.stdout.strip() or 'ERRO'} {r.stderr.strip()}".strip())
+                  else:
+                      rel.append(f"ERRO linha {n}: operação desconhecida «{op}»")
+              except Exception as ex:
+                  rel.append(f"ERRO linha {n} ({linha[:80]}): {ex}")
+          if paginas:
+              from playwright.sync_api import sync_playwright
+              with sync_playwright() as pw:
+                  b = pw.chromium.launch()
+                  for nome, url in paginas:
+                      try:
+                          pg = b.new_page(viewport={"width": 1280, "height": 900}, user_agent=UA)
+                          r = pg.goto(url, wait_until="networkidle", timeout=60000)
+                          pg.wait_for_timeout(1500)
+                          open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
+                          open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
+                          pg.screenshot(path=f"ponte/{nome}.jpg", full_page=True, type="jpeg", quality=70)
+                          rel.append(f"ok  pagina {nome} {r.status if r else '?'} {url}")
+                          pg.close()
+                      except Exception as ex:
+                          rel.append(f"ERRO pagina {nome} {url}: {ex}")
+                  b.close()
+          open("ponte/relatorio.txt", "w", encoding="utf-8").write("\n".join(rel) + "\n")
+          print("\n".join(rel))
+          EOF
+      - name: Publicar no mesmo ramo
+        run: |
+          git config user.name "ponte"
+          git config user.email "ponte@users.noreply.github.com"
+          git add -A -f .
+          git reset -q -- .github/ponte.txt
+          if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
+          git commit -q -m "Ponte: pedidos de .github/ponte.txt"
+          git pull -q --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
