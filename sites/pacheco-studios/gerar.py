@@ -590,6 +590,10 @@ LOGO = ('<svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="
         '<circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/>'
         '<path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>')
 
+# o mesmo logótipo como imagem de CSS (var(--logo)), para os marcadores que antes eram pontos laranja
+LOGO_URI = "data:image/svg+xml," + quote(LOGO.replace('<svg class="logo" ', '<svg xmlns="http://www.w3.org/2000/svg" ')
+                                         .replace(' aria-hidden="true"', ""), safe=" =:/,.-")
+
 
 def diagnostico(c, url_priv):
     """O diagnóstico com a cara da Pacheco Studios: uma pergunta por ecrã, em grande, e ao lado a ficha do negócio que
@@ -771,7 +775,6 @@ def rodape(c, lang):
     <p>{e(r["linha"])}</p>
     <p><a href="https://www.livroreclamacoes.pt/inicio/" rel="noopener">{e(r["legal"])}</a></p>
     <p>{aceite(r, lang)}</p>
-    <p>{e(r["nota"])}</p>
   </div>
 </footer>"""
 
@@ -1119,7 +1122,7 @@ def main():
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
             "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "RODAPE": rodape(c, lang), "INTRO": intro(c),
-            "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
+            "LOGO_URI": LOGO_URI, "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }
         pagina = montar(src, valores)
         paginas[lang] = pagina
