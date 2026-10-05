@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MB Cakes · Brunch &amp; Coffee em Loulé e Almancil</title>
+<meta name="description" content="MB Cakes Brunch & Coffee: panquecas, tostas abertas, bowls de açaí, brunch para dois e bolos por encomenda. Loulé (Tv. Amorim Benevides 2) e Almancil. WhatsApp 932 626 851.">
+<meta name="theme-color" content="#3A2420">
+<meta property="og:title" content="MB Cakes · Brunch & Coffee">
+<meta property="og:description" content="Brunch, panquecas e bolos por encomenda em Loulé e Almancil.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%233A2420'/%3E%3Ctext x='32' y='42' font-family='Georgia' font-size='26' text-anchor='middle' fill='%23F7E1E3'%3EMB%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "MB Cakes Brunch & Coffee",
+  "telephone": "+351 932 626 851",
+  "servesCuisine": ["Brunch", "Pastelaria", "Café"],
+  "priceRange": "€",
+  "image": "media/brunch-para-dois.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Tv. Amorim Benevides 2, RC direito, loja B",
+    "addressLocality": "Loulé",
+    "postalCode": "8100-705",
+    "addressRegion": "Faro",
+    "addressCountry": "PT"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 37.1405771, "longitude": -8.029099 },
+  "department": {
+    "@type": "Bakery",
+    "name": "MB Cakes Almancil",
+    "address": { "@type": "PostalAddress", "streetAddress": "R. Manuel dos Santos Vaquinhas 108, RC direito", "addressLocality": "Almancil", "addressCountry": "PT" }
+  },
+  "sameAs": ["https://linktr.ee/meirybahens"]
+}
+</script>
+<style>
+/*__FONTES__*/
+:root{
+  --cacau:#3A2420;      /* a superfície onde cai o açúcar */
+  --cacau-2:#4A2F29;
+  --acucar:#FFF8F3;
+  --blush:#F7E1E3;      /* o rosa da ementa */
+  --blush-2:#F1CDD1;
+  --blush-3:#E7B5BB;
+  --salvia:#7E9273;     /* o verde da ementa */
+  --salvia-esc:#3E5236; /* texto em verde (AA) */
+  --salvia-claro:#DDE5D6;
+  --magenta:#B0124F;    /* o sofá da loja de Loulé */
+  --magenta-esc:#8E0D3F;
+  --ouro:#B98A47;
+  --tinta:#2B1D1A;
+  --cinza:#6B5853;
+  --display:'Calistoga', Georgia, serif;
+  --corpo:'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  --mao:'Caveat', 'Segoe Print', cursive;
+  --lat:min(1180px, 100% - 40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --banner:30px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--corpo);font-size:17px;line-height:1.62;color:var(--tinta);background:var(--cacau);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:3px solid var(--magenta);outline-offset:3px;border-radius:6px}
+.escuro :focus-visible,.heroi :focus-visible,.rodape :focus-visible,.nav :focus-visible{outline-color:#F3C9CF}
+.salta{position:fixed;left:12px;top:-60px;z-index:200;background:var(--magenta);color:#fff;padding:10px 16px;border-radius:8px;font-weight:600;text-decoration:none}
+.salta:focus{top:calc(var(--banner) + 8px)}
+.banner{position:fixed;top:0;left:0;right:0;height:var(--banner);z-index:120;background:var(--salvia-esc);color:var(--acucar);font:600 11px/var(--banner) var(--corpo);letter-spacing:.12em;text-transform:uppercase;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 12px}
+@media (max-width:600px){.b-longo{display:none}}
+
+/* nav */
+.nav{position:fixed;top:var(--banner);left:0;right:0;z-index:110;background:var(--cacau);transition:box-shadow .3s}
+.nav.scrolled,.nav.solida{background:var(--cacau);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nav-in{width:var(--lat);margin:auto;height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--acucar)}
+.marca{text-decoration:none;display:flex;align-items:baseline;gap:8px}
+.marca b{font:400 26px/1 var(--display)}
+.marca small{font:500 22px/1 var(--mao);color:#F3C9CF;white-space:nowrap}
+.marca b{white-space:nowrap}
+@media (max-width:480px){.marca small{display:none}}
+.menu{display:flex;gap:2px;list-style:none;align-items:center}
+.menu a{display:block;padding:9px 13px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:500;color:#E5D3CD;transition:background .2s,color .2s}
+.menu a:hover{background:rgba(255,255,255,.07);color:#fff}
+.menu a[aria-current="page"]{background:var(--blush);color:var(--cacau)}
+.menu .m-cta{background:var(--magenta);color:#fff;margin-left:6px}
+.menu .m-cta:hover{background:var(--magenta-esc)}
+.menu .m-cta[aria-current="page"]{background:var(--blush);color:var(--cacau)}
+.acoes-nav{display:flex;align-items:center;gap:8px}
+.lingua{min-width:48px;height:40px;border-radius:999px;border:1.5px solid rgba(255,255,255,.3);font-weight:600;font-size:14px;letter-spacing:.06em;color:var(--acucar)}
+.lingua:hover{background:rgba(255,255,255,.08)}
+.burger{display:none;width:46px;height:46px;border-radius:12px;position:relative;color:var(--acucar)}
+.burger span{position:absolute;left:12px;right:12px;height:2px;background:currentColor;border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:22px}.burger span:nth-child(3){top:28px}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:1000px){
+  .burger{display:block}
+  .menu{position:fixed;left:0;right:0;top:calc(var(--banner) + 66px);bottom:0;background:var(--cacau);flex-direction:column;align-items:stretch;padding:16px 20px calc(110px + env(safe-area-inset-bottom));gap:0;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s var(--ease),visibility .25s;overflow:auto}
+  .menu.aberto{opacity:1;visibility:visible;transform:none}
+  .menu a{font:400 30px/1.15 var(--display);padding:14px 4px;border-radius:0;border-bottom:1px solid rgba(255,255,255,.08);background:none!important;color:var(--acucar)!important}
+  .menu a[aria-current="page"]{color:#F3C9CF!important}
+  .menu .m-cta{margin:18px 0 0;border-radius:16px;text-align:center;border:0;background:var(--magenta)!important}
+}
+
+.pagina[hidden]{display:none}
+.pagina{animation:entra .45s var(--ease)}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h1:focus,h2:focus{outline:none}
+
+/* fotos */
+.ph{position:relative;overflow:hidden;background:var(--blush-2)}
+.ph>svg{position:absolute;inset:0;width:100%;height:100%}
+.ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ── HERÓI: o açúcar pela peneira ── */
+.heroi{display:grid;grid-template-columns:1.15fr .85fr;min-height:min(100svh,900px);background:var(--cacau);color:var(--acucar)}
+.painel{position:relative;padding:calc(var(--banner) + 66px + clamp(40px,7vw,90px)) clamp(20px,5vw,72px) clamp(48px,6vw,80px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;
+  background:radial-gradient(90% 70% at 30% 40%,#4B2E28 0%,var(--cacau) 70%)}
+#acucar{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.peneira{position:absolute;z-index:3;width:120px;height:auto;left:0;top:0;opacity:0;pointer-events:none;will-change:transform}
+.eyebrow{position:relative;z-index:1;font:600 13px/1.3 var(--corpo);letter-spacing:.2em;text-transform:uppercase;color:#F3C9CF;margin-bottom:12px}
+.heroi h1{position:relative;z-index:1;font-weight:400}
+.h1-nome{display:block;font:400 clamp(76px,12.5vw,176px)/.92 var(--display);letter-spacing:-.01em;color:var(--acucar);transition:color 1s ease}
+.js .h1-nome{color:transparent}
+.js .h1-nome.pronto{color:var(--acucar)}
+.h1-linha{display:block;font:700 clamp(30px,3.6vw,46px)/1.1 var(--mao);color:#F3C9CF;margin-top:6px;opacity:0;transform:translateY(10px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.h1-linha.pronto,.no-js .h1-linha{opacity:1;transform:none}
+.heroi-sub{position:relative;z-index:1;max-width:470px;margin-top:22px;color:#EADCD6;font-size:clamp(16px,1.5vw,18px)}
+.heroi-acoes{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.heroi-sub,.heroi-acoes{opacity:0;transform:translateY(12px);transition:opacity .8s var(--ease) .15s,transform .8s var(--ease) .15s}
+.pronto-tudo .heroi-sub,.pronto-tudo .heroi-acoes{opacity:1;transform:none}
+.heroi-foto{position:relative;min-height:420px}
+.heroi-foto .ph{position:absolute;inset:0;background:var(--blush-2)}
+.heroi-foto .selo{position:absolute;z-index:2;left:-58px;bottom:56px;width:132px;height:132px;border-radius:50%;background:var(--blush);color:var(--cacau);display:grid;place-items:center;text-align:center;font:700 22px/1 var(--mao);box-shadow:0 18px 40px -16px rgba(0,0,0,.5);transform:rotate(-8deg)}
+.heroi-foto .selo b{display:block;font:400 30px/1 var(--display);margin-top:4px}
+@media (max-width:900px){
+  .heroi{grid-template-columns:1fr;min-height:0}
+  .painel{min-height:78svh;padding-top:calc(var(--banner) + 66px + 40px)}
+  .heroi-foto{min-height:0;aspect-ratio:4/4.3}
+  .heroi-foto .selo{left:auto;right:18px;bottom:auto;top:-56px;width:112px;height:112px;font-size:19px}
+  .heroi-foto .selo b{font-size:26px}
+}
+
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .2s var(--ease),background .2s,box-shadow .2s;touch-action:manipulation}
+.bt:active{transform:scale(.97)}
+.bt svg{width:20px;height:20px;flex:none}
+.bt-rosa{background:var(--blush);color:var(--cacau)}
+.bt-rosa:hover{background:#fff}
+.bt-linha{border:1.5px solid rgba(255,248,243,.4);color:var(--acucar)}
+.bt-linha:hover{background:rgba(255,255,255,.08);border-color:#fff}
+.bt-mag{background:var(--magenta);color:#fff;box-shadow:0 12px 30px -12px rgba(176,18,79,.6)}
+.bt-mag:hover{background:var(--magenta-esc)}
+.bt-cacau{background:var(--cacau);color:var(--acucar)}
+.bt-cacau:hover{background:var(--cacau-2)}
+.bt-wa{background:#1E8E52;color:#fff}
+.bt-wa:hover{background:#177442}
+.bt-contorno{border:1.5px solid var(--tinta);color:var(--tinta)}
+.bt-contorno:hover{background:var(--tinta);color:var(--acucar)}
+
+/* faixa */
+.faixa{background:var(--blush);overflow:hidden;padding:22px 0;border-bottom:1px solid var(--blush-2)}
+.faixa-trilho{display:flex;width:max-content;animation:desliza 46s linear infinite}
+.faixa span{font:400 26px var(--display);color:var(--salvia-esc);white-space:nowrap;padding:0 26px}
+.faixa span::after{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--magenta);margin-left:52px;vertical-align:5px}
+@keyframes desliza{to{transform:translateX(-50%)}}
+
+/* secções */
+.sec{padding:clamp(72px,10vw,124px) 0;position:relative}
+.sec-in{width:var(--lat);margin:auto}
+.rosa{background:var(--blush)}
+.acucar{background:var(--acucar)}
+.salvia{background:var(--salvia-claro)}
+.escuro{background:var(--cacau);color:var(--acucar)}
+.etq{display:inline-block;font:700 26px/1 var(--mao);color:var(--magenta);margin-bottom:10px}
+.escuro .etq{color:#F3C9CF}
+h2{font:400 clamp(38px,5.6vw,72px)/1.02 var(--display);letter-spacing:-.005em;text-wrap:balance}
+h3{font:400 26px/1.15 var(--display)}
+.lead{font-size:clamp(17px,1.5vw,19px);max-width:600px;margin-top:16px;color:var(--cinza)}
+.escuro .lead{color:#E2D2CC}
+.cab-pag{background:var(--cacau);color:var(--acucar);padding:calc(var(--banner) + 66px + clamp(44px,7vw,90px)) 0 clamp(40px,6vw,64px);position:relative;overflow:hidden}
+.cab-pag .lead{color:#E2D2CC}
+.cab-pag .etq{color:#F3C9CF}
+.conf{display:inline-flex;align-items:center;gap:6px;font:500 11px/1 var(--corpo);letter-spacing:.08em;text-transform:uppercase;color:#7A4A12;background:rgba(185,138,71,.16);border:1px dashed rgba(122,74,18,.5);padding:5px 8px;border-radius:999px;white-space:nowrap;vertical-align:middle}
+.escuro .conf,.cab-pag .conf,.rodape .conf{color:#F1D3A6;background:rgba(241,211,166,.1);border-color:rgba(241,211,166,.45)}
+
+/* brunch para dois */
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,84px);align-items:center}
+@media (max-width:860px){.duas{grid-template-columns:1fr}}
+.duas .ph{border-radius:30px;aspect-ratio:4/5}
+.legenda{font:600 20px/1.2 var(--mao);color:var(--cinza);margin-top:10px}
+.escuro .legenda{color:#CDB9B2}
+.preco-grande{display:flex;align-items:baseline;gap:14px;margin-top:22px}
+.preco-grande b{font:400 clamp(44px,5vw,60px)/1 var(--display);color:var(--magenta);white-space:nowrap}
+.preco-grande span{font-size:15px;color:var(--cinza)}
+.inclui{list-style:none;margin-top:22px;columns:2 220px;column-gap:28px}
+.inclui li{break-inside:avoid;padding:10px 0;border-bottom:1px dashed var(--blush-3);font-size:15.5px}
+.inclui li b{display:block;font-weight:600}
+.inclui li span{color:var(--cinza);font-size:14.5px}
+
+/* picks */
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+@media (max-width:900px){.picks{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.picks{grid-template-columns:1fr}}
+.pick{background:#fff;border-radius:24px;padding:24px 22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;box-shadow:0 1px 0 var(--blush-2)}
+.pick .cat{font:700 20px/1 var(--mao);color:var(--salvia-esc)}
+.pick h3{font-size:24px}
+.pick p{font-size:15px;color:var(--cinza)}
+.pick .pr{margin-top:auto;padding-top:8px;font:400 24px var(--display);color:var(--magenta)}
+.pick::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,var(--blush) 0 2px,transparent 2.5px) 0 0/12px 12px;opacity:.9}
+
+/* vitrine mosaico */
+.mosaico{display:grid;grid-template-columns:1.1fr .9fr .9fr;grid-template-rows:auto auto;gap:14px;margin-top:44px}
+.mosaico .ph{border-radius:24px}
+.mosaico .m1{grid-row:span 2;aspect-ratio:auto;min-height:520px}
+.mosaico .m2{aspect-ratio:1/1.1}
+.mosaico .m3{aspect-ratio:1/1.1}
+.mosaico .m4{grid-column:span 2;aspect-ratio:2/1.05}
+@media (max-width:760px){.mosaico{grid-template-columns:1fr 1fr}.mosaico .m1{grid-column:span 2;grid-row:auto;min-height:0;aspect-ratio:4/4.6}.mosaico .m4{grid-column:span 2}}
+
+/* casas */
+.casas{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+@media (max-width:760px){.casas{grid-template-columns:1fr}}
+.casa{background:var(--cacau-2);border-radius:26px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.casa h3{font-size:34px}
+.casa .mor{color:#E2D2CC}
+.casa .hor{font-size:15px;color:#E2D2CC}
+.casa .hor b{color:var(--acucar);font-weight:600}
+.casa .bts{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.casa .bt{min-height:46px;padding:0 18px;font-size:15px}
+
+/* ── EMENTA ── */
+.cats{position:sticky;top:calc(var(--banner) + 66px);z-index:20;background:var(--blush);border-bottom:1px solid var(--blush-2)}
+.cats-in{width:var(--lat);margin:auto;display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+.cats-in::-webkit-scrollbar{display:none}
+.cats a{flex:none;padding:9px 16px;border-radius:999px;background:#fff;text-decoration:none;font-size:14.5px;font-weight:500;white-space:nowrap;min-height:40px;display:flex;align-items:center}
+.cats a:hover{background:var(--cacau);color:var(--acucar)}
+.cats a.ativa{background:var(--cacau);color:var(--acucar)}
+.ementa{display:grid;grid-template-columns:1fr 1fr;gap:20px 56px}
+@media (max-width:860px){.ementa{grid-template-columns:1fr}}
+.grupo{scroll-margin-top:calc(var(--banner) + 66px + 72px);break-inside:avoid}
+.grupo-cab{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:2px solid var(--cacau);padding-bottom:8px;margin:30px 0 6px}
+.grupo-cab h3{font-size:32px}
+.grupo-cab small{font:700 20px/1 var(--mao);color:var(--salvia-esc)}
+.item{display:grid;grid-template-columns:1fr auto;gap:2px 18px;padding:13px 0;border-bottom:1px dashed var(--blush-3)}
+.item b{font-weight:600;font-size:16px;letter-spacing:.02em}
+.item .pr{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--magenta)}
+.item p{grid-column:1/-1;font-size:14.5px;color:var(--cinza);line-height:1.5}
+.item .veg{display:inline-block;margin-left:8px;font:600 11px/1 var(--corpo);letter-spacing:.06em;color:var(--salvia-esc);border:1px solid var(--salvia);border-radius:999px;padding:3px 7px;vertical-align:2px}
+.bowl{background:#fff;border-radius:22px;padding:20px 22px;margin-top:16px}
+.bowl .bowl-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.bowl .bowl-top b{font:400 24px var(--display)}
+.bowl .bowl-top .pr{font-weight:600;color:var(--magenta)}
+.bowl dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 18px;margin-top:12px}
+.bowl dt{font:700 19px/1.1 var(--mao);color:var(--salvia-esc)}
+.bowl dd{font-size:14px;color:var(--cinza)}
+.nota-legal{margin-top:48px;font-size:13px;color:var(--cinza);max-width:860px}
+
+/* ── BOLOS: encomenda ── */
+.enc{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
+@media (max-width:960px){.enc{grid-template-columns:1fr}}
+.bloco{border:0;min-width:0;background:#fff;border-radius:26px;padding:clamp(20px,3vw,32px)}
+.bloco+.bloco{margin-top:16px}
+.bloco h3{font-size:26px}
+.bloco .ajuda{color:var(--cinza);font-size:15px;margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{border:1.5px solid var(--blush-3);border-radius:999px;padding:10px 16px;font-size:15px;font-weight:500;min-height:44px;transition:background .15s,border-color .15s,color .15s}
+.chip:hover{border-color:var(--cacau)}
+.chip[aria-pressed="true"]{background:var(--cacau);border-color:var(--cacau);color:var(--acucar)}
+.passo-n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blush);color:var(--magenta);font:700 20px/1 var(--mao);margin-right:10px;vertical-align:4px}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media (max-width:520px){.campos{grid-template-columns:1fr}}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo.todo{grid-column:1/-1}
+.campo label,.campo .lb{font-size:14px;font-weight:600}
+.campo label i,.campo .lb i{font-style:normal;font-weight:400;color:var(--cinza)}
+.campo input,.campo select,.campo textarea{font:inherit;font-size:16px;color:var(--tinta);background:var(--blush);border:1.5px solid transparent;border-radius:14px;padding:12px 14px;min-height:50px;width:100%;transition:border-color .2s,background .2s}
+.campo textarea{min-height:90px;resize:vertical}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--cacau);background:#fff}
+.campo .erro{color:var(--magenta-esc);font-size:14px;font-weight:500}
+.campo[data-erro] input{border-color:var(--magenta)}
+.passos-n{display:flex;align-items:center;gap:0;margin-top:14px;background:var(--blush);border-radius:999px;width:max-content}
+.passos-n button{width:52px;height:52px;border-radius:50%;font-size:24px;font-weight:500;color:var(--cacau)}
+.passos-n button:hover{background:var(--blush-2)}
+.passos-n output{min-width:110px;text-align:center;font:400 24px var(--display)}
+.loja{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.loja label{position:relative}
+.loja input{position:absolute;opacity:0;inset:0}
+.loja span{display:flex;flex-direction:column;border:1.5px solid var(--blush-3);border-radius:16px;padding:12px 14px;min-height:64px;font:400 20px/1.1 var(--display);cursor:pointer}
+.loja span small{font:400 13px/1.3 var(--corpo);color:var(--cinza);margin-top:4px}
+.loja input:checked+span{border-color:var(--cacau);background:var(--blush)}
+.loja input:focus-visible+span{outline:3px solid var(--magenta);outline-offset:2px}
+.talao{position:sticky;top:calc(var(--banner) + 86px);background:var(--acucar);border-radius:6px;padding:28px 24px 24px;box-shadow:0 30px 60px -30px rgba(58,36,32,.5);
+  -webkit-mask:radial-gradient(circle 7px at 50% 0,transparent 98%,#000) 0 0/18px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,transparent 98%,#000) 0 100%/18px 51% repeat-x;
+          mask:radial-gradient(circle 7px at 50% 0,transparent 98%,#000) 0 0/18px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,transparent 98%,#000) 0 100%/18px 51% repeat-x}
+.talao h3{font-size:26px;text-align:center}
+.talao .sub{text-align:center;font:600 20px/1.1 var(--mao);color:var(--magenta);margin-top:2px}
+.talao pre{white-space:pre-wrap;word-break:break-word;font:14.5px/1.6 var(--corpo);margin-top:16px;padding-top:14px;border-top:1.5px dashed var(--blush-3);min-height:180px}
+.talao .bt{width:100%;margin-top:16px}
+.talao .erro-geral{color:var(--magenta-esc);font-size:14px;margin-top:10px;text-align:center}
+.talao .nota-envio{font-size:13px;color:var(--cinza);margin-top:10px;text-align:center}
+
+/* casa */
+.neon{font:700 clamp(40px,6vw,72px)/1 var(--mao);color:#FFD9F0;text-shadow:0 0 6px #FF7AC8,0 0 22px #E0338C,0 0 46px #B0124F}
+.factos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+@media (max-width:760px){.factos{grid-template-columns:1fr}}
+.facto{background:#fff;border-radius:22px;padding:22px}
+.facto dt{font:700 20px/1 var(--mao);color:var(--magenta)}
+.facto dd{font:400 22px/1.2 var(--display);margin-top:8px}
+
+/* galeria */
+.galeria{columns:3 280px;column-gap:14px}
+.galeria figure{break-inside:avoid;margin-bottom:14px}
+.galeria button{display:block;width:100%;border-radius:22px;overflow:hidden}
+.galeria .ph{display:block;border-radius:22px}
+.galeria img{transition:transform .5s var(--ease)}
+.galeria button:hover img{transform:scale(1.03)}
+.galeria figcaption{font:600 19px/1.2 var(--mao);color:var(--cinza);padding:8px 4px 0}
+dialog.caixa{border:0;padding:0;background:transparent;max-width:min(96vw,1100px);max-height:92svh;margin:auto;color:#fff}
+dialog.caixa::backdrop{background:rgba(30,18,16,.92)}
+dialog.caixa img{max-width:100%;max-height:80svh;border-radius:18px;margin:auto}
+dialog.caixa p{text-align:center;margin-top:12px;font:600 22px var(--mao)}
+dialog.caixa .fecha{position:fixed;top:calc(16px + env(safe-area-inset-top));right:16px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:26px;line-height:1}
+
+/* visitar */
+.horario{width:100%;border-collapse:collapse;margin-top:16px;font-size:15.5px}
+.horario th,.horario td{text-align:left;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:400}
+.horario td{text-align:right}
+.horario tr.hoje th{font-weight:700}
+.horario tr.hoje th::after{content:attr(data-hoje);margin-left:8px;font:600 10px/1 var(--corpo);letter-spacing:.1em;text-transform:uppercase;background:var(--blush);color:var(--cacau);padding:4px 7px;border-radius:999px;vertical-align:2px}
+.mapa{border-radius:26px;overflow:hidden;aspect-ratio:4/3;position:relative;background:var(--cacau-2);margin-top:28px}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapa-fundo{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:#E2D2CC;font-size:15px;padding:20px}
+.mapa-fundo b{font:400 26px var(--display);color:var(--acucar);display:block}
+.contactos-lista{list-style:none;display:grid;gap:10px;margin-top:22px}
+.contactos-lista a{display:flex;align-items:center;gap:14px;background:#fff;border-radius:18px;padding:14px 18px;text-decoration:none;min-height:62px}
+.contactos-lista a:hover{box-shadow:0 0 0 1.5px var(--cacau) inset}
+.contactos-lista svg{width:24px;height:24px;color:var(--magenta);flex:none}
+.contactos-lista small{display:block;font-size:13px;color:var(--cinza)}
+.contactos-lista b{font-weight:600}
+
+/* rodapé */
+.rodape{background:#2A1A17;color:#D9C8C2;padding:56px 0 calc(40px + env(safe-area-inset-bottom));font-size:15px}
+.rodape-in{width:var(--lat);margin:auto;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
+@media (max-width:820px){.rodape-in{grid-template-columns:1fr}}
+.rodape .nome{font:400 34px/1 var(--display);color:var(--acucar)}
+.rodape h4{font:700 22px/1 var(--mao);color:#F3C9CF;margin-bottom:10px;font-weight:700}
+.rodape ul{list-style:none;display:grid;gap:8px}
+.rodape a{color:#F2E6E1;text-underline-offset:3px}
+.rodape .fim{width:var(--lat);margin:40px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:13px;color:#B9A49D}
+
+.cta-movel{display:none}
+@media (max-width:860px){
+  .cta-movel{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:100;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(58,36,32,.97);box-shadow:0 -1px 0 rgba(255,255,255,.08)}
+  .cta-movel .bt{min-height:50px;padding:0 12px;font-size:15px}
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}
+.rv.vis{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv,.heroi-sub,.heroi-acoes,.h1-linha{opacity:1!important;transform:none!important}
+  .js .h1-nome{color:var(--acucar)}
+  .faixa-trilho{flex-wrap:wrap;width:auto;justify-content:center}
+  .peneira,#acucar{display:none}
+}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.className='js'</script>
+<a class="salta" href="#conteudo" id="salta" data-en="Skip to content">Saltar para o conteúdo</a>
+<div class="banner" role="note">APRESENTAÇÃO PACHECO STUDIOS · <span class="b-longo">Proposta de site para a </span>MB Cakes</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+    <!-- desenho por baixo das fotos: prato com rendado e açúcar -->
+    <symbol id="d-prato" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+      <rect width="400" height="400" fill="#F1CDD1"/>
+      <circle cx="200" cy="200" r="150" fill="#FFF8F3"/>
+      <circle cx="200" cy="200" r="150" fill="none" stroke="#E7B5BB" stroke-width="10" stroke-dasharray="4 10"/>
+      <circle cx="200" cy="200" r="112" fill="#F7E1E3"/>
+      <circle cx="200" cy="200" r="78" fill="#4A2F29"/>
+      <circle cx="200" cy="200" r="78" fill="none" stroke="#FFF8F3" stroke-width="3" stroke-dasharray="1 7" opacity=".8"/>
+      <circle cx="200" cy="200" r="52" fill="none" stroke="#FFF8F3" stroke-width="2" stroke-dasharray="1 6" opacity=".7"/>
+      <circle cx="200" cy="200" r="26" fill="none" stroke="#FFF8F3" stroke-width="2" stroke-dasharray="1 5" opacity=".6"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="marca" href="#/" aria-label="MB Cakes — início" data-en-aria="MB Cakes — home"><b>MB Cakes</b><small>brunch &amp; coffee</small></a>
+    <ul class="menu" id="menu">
+      <li><a href="#/" data-en="Home">Início</a></li>
+      <li><a href="#/ementa" data-en="Menu">Ementa</a></li>
+      <li><a href="#/casa" data-en="The café">A casa</a></li>
+      <li><a href="#/galeria" data-en="Gallery">Galeria</a></li>
+      <li><a href="#/visitar" data-en="Visit">Visitar</a></li>
+      <li><a class="m-cta" href="#/bolos" data-en="Order a cake">Encomendar bolo</a></li>
+    </ul>
+    <div class="acoes-nav">
+      <button class="lingua" id="lingua" type="button" aria-label="Switch to English" lang="en">EN</button>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu" data-en-aria="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+
+<!-- ══════════ INÍCIO ══════════ -->
+<section class="pagina" data-pagina="" data-titulo="MB Cakes · Brunch & Coffee em Loulé e Almancil" data-titulo-en="MB Cakes · Brunch & Coffee in Loulé and Almancil" aria-labelledby="t-inicio">
+  <div class="heroi">
+    <div class="painel" id="painel">
+      <canvas id="acucar" aria-hidden="true"></canvas>
+      <svg class="peneira" id="peneira" viewBox="0 0 140 70" aria-hidden="true">
+        <defs><pattern id="malha" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 0h5M0 0v5" stroke="#D8C8B8" stroke-width=".7" fill="none"/></pattern></defs>
+        <rect x="120" y="29" width="22" height="8" rx="4" fill="#B98A47"/>
+        <ellipse cx="60" cy="33" rx="58" ry="14" fill="#2B1D1A" stroke="#B98A47" stroke-width="4"/>
+        <ellipse cx="60" cy="33" rx="52" ry="10" fill="url(#malha)"/>
+      </svg>
+      <p class="eyebrow" data-en="Loulé · Almancil">Loulé · Almancil</p>
+      <h1 id="t-inicio" tabindex="-1"><span class="h1-nome" id="h1-nome">MB Cakes</span><span class="h1-linha" id="h1-linha" data-en="brunch, coffee &amp; cakes made to order">brunch, café e bolos por encomenda</span></h1>
+      <p class="heroi-sub" data-en="Pancakes, open toasts, açaí bowls and a brunch for two that fills the table. Cakes you order on WhatsApp and pick up in Loulé or Almancil.">Panquecas, tostas abertas, bowls de açaí e um brunch para dois que enche a mesa. Bolos que se encomendam pelo WhatsApp e se levantam em Loulé ou Almancil.</p>
+      <div class="heroi-acoes">
+        <a class="bt bt-rosa" href="#/ementa" data-en="See the menu">Ver a ementa</a>
+        <a class="bt bt-linha" href="#/bolos" data-en="Order a cake">Encomendar um bolo</a>
+      </div>
+    </div>
+    <div class="heroi-foto">
+      <div class="ph"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/panquecas-coracoes.webp" alt="Panquecas cor-de-rosa empilhadas com chocolate e corações de morango" data-en-alt="Stacked pink pancakes with chocolate and strawberry hearts" fetchpriority="high" onerror="this.remove()" style="object-position:42% 50%"></div>
+      <p class="selo" aria-hidden="true"><span><span data-en="brunch for 2">brunch p/ 2</span><b>39,50 €</b></span></p>
+    </div>
+  </div>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-trilho">
+    <span data-en="Pancakes">Panquecas</span><span data-en="Open toasts">Tostas abertas</span><span data-en="Açaí bowls">Bowls de açaí</span><span data-en="Cakes to order">Bolos por encomenda</span><span>Pistache latte</span><span data-en="Brunch for two">Brunch para dois</span>
+    <span data-en="Pancakes">Panquecas</span><span data-en="Open toasts">Tostas abertas</span><span data-en="Açaí bowls">Bowls de açaí</span><span data-en="Cakes to order">Bolos por encomenda</span><span>Pistache latte</span><span data-en="Brunch for two">Brunch para dois</span>
+  </div></div>
+
+  <section class="sec rosa" aria-labelledby="t-brunch">
+    <div class="sec-in duas">
+      <div class="rv">
+        <div class="ph"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/brunch-para-dois.webp" alt="O brunch para dois servido em torres douradas" data-en-alt="Brunch for two served on golden stands" loading="lazy" onerror="this.remove()"></div>
+        <p class="legenda" data-en="Two stands, two drinks each, and the whole morning.">Duas torres, duas bebidas cada um e a manhã toda.</p>
+      </div>
+      <div>
+        <p class="etq rv" data-en="for two">para dois</p>
+        <h2 id="t-brunch" class="rv d1" data-en="The brunch that fills the table.">O brunch que enche a mesa.</h2>
+        <div class="preco-grande rv d2"><b>39,50 €</b><span data-en="for 2 people · 2 drinks per person">2 pessoas · 2 bebidas por pessoa</span></div>
+        <ul class="inclui" id="inclui"></ul>
+        <p class="rv" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px"><a class="bt bt-mag link-brunch" href="#"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-en="Ask for a brunch table">Pedir mesa para o brunch</span></a><a class="bt bt-contorno" href="#/ementa" data-en="Full menu">Ementa completa</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec acucar" aria-labelledby="t-picks">
+    <div class="sec-in">
+      <p class="etq rv" data-en="to start">para começar</p>
+      <h2 id="t-picks" class="rv d1" data-en="Six from the menu.">Seis da ementa.</h2>
+      <p class="lead rv d2" data-en="Sweet, savoury and something to drink. The rest is on the menu page.">Doce, salgado e um para beber. O resto está na ementa.</p>
+      <div class="picks" id="picks"></div>
+    </div>
+  </section>
+
+  <section class="sec salvia" aria-labelledby="t-bolos">
+    <div class="sec-in duas">
+      <div>
+        <p class="etq rv" data-en="made to order">por encomenda</p>
+        <h2 id="t-bolos" class="rv d1" data-en="Your cake, as you pictured it.">O seu bolo, como o imaginou.</h2>
+        <p class="lead rv d2" data-en="Tell us the occasion, how many people and the day. Pick it up in Loulé or Almancil. Send a reference photo if you have one.">Diga-nos a ocasião, para quantas pessoas e o dia. Levanta em Loulé ou Almancil. Se tiver uma fotografia de referência, mande junto.</p>
+        <p class="rv" style="margin-top:26px"><a class="bt bt-cacau" href="#/bolos" data-en="Start a cake order">Começar a encomenda</a></p>
+      </div>
+      <div class="rv d1">
+        <div class="ph" style="aspect-ratio:3/2"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bolo-vintage-cerejas.webp" alt="Bolo branco de estilo vintage com corações vermelhos e cerejas no topo" data-en-alt="White vintage-style cake with red hearts and cherries on top" loading="lazy" onerror="this.remove()"></div>
+        <p class="legenda" data-en="Vintage piping, hearts and cherries.">Bico vintage, corações e cerejas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec rosa" aria-labelledby="t-vitrine">
+    <div class="sec-in">
+      <p class="etq rv" data-en="the counter">a vitrine</p>
+      <h2 id="t-vitrine" class="rv d1" data-en="Croissants, pastéis de nata, homemade cakes.">Croissants, pastéis de nata, bolos caseiros.</h2>
+      <div class="mosaico">
+        <div class="ph m1 rv"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/vitrine.webp" alt="Vitrine com croissants, pastéis de nata, tartes e bolos polvilhados de açúcar" data-en-alt="Display case with croissants, pastéis de nata, tarts and sugar-dusted cakes" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph m2 rv d1"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/eclairs.webp" alt="Éclairs sobre ardósia, um com creme e framboesas" data-en-alt="Éclairs on slate, one with cream and raspberries" loading="lazy" onerror="this.remove()" style="object-position:50% 40%"></div>
+        <div class="ph m3 rv d2"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/lattes-de-natal.webp" alt="Dois lattes com natas, canela e uma bolacha de gengibre" data-en-alt="Two lattes with cream, cinnamon and a gingerbread biscuit" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph m4 rv"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/sobremesas-e-cafe.webp" alt="Duas sobremesas com framboesas e dois cafés, vistas de cima" data-en-alt="Two raspberry desserts and two espressos, from above" loading="lazy" onerror="this.remove()"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec escuro" aria-labelledby="t-casas">
+    <div class="sec-in">
+      <p class="etq rv" data-en="two addresses">duas moradas</p>
+      <h2 id="t-casas" class="rv d1" data-en="Loulé and Almancil.">Loulé e Almancil.</h2>
+      <div class="casas">
+        <article class="casa rv">
+          <h3>Loulé</h3>
+          <p class="mor">Tv. Amorim Benevides 2, RC dto., loja B<br>8100-705 Loulé</p>
+          <p class="hor"><b data-en="Monday">Segunda</b> 08:00–15:00 · <span data-en="other days">restantes dias</span> <span class="conf" data-en="to confirm">a confirmar</span></p>
+          <div class="bts"><a class="bt bt-rosa" href="https://www.google.com/maps/dir/?api=1&amp;destination=37.1405771,-8.029099" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-en="Directions">Como chegar</span></a></div>
+        </article>
+        <article class="casa rv d1">
+          <h3>Almancil</h3>
+          <p class="mor">R. Manuel dos Santos Vaquinhas 108, RC dto.<br>Almancil</p>
+          <p class="hor"><b data-en="Opening hours">Horário</b> <span class="conf" data-en="to confirm">a confirmar</span></p>
+          <div class="bts"><a class="bt bt-rosa" href="https://www.google.com/maps/search/?api=1&amp;query=R.+Manuel+dos+Santos+Vaquinhas+108+Almancil" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-en="Directions">Como chegar</span></a></div>
+        </article>
+      </div>
+      <p class="rv" style="margin-top:26px"><a class="bt bt-linha" href="#/visitar" data-en="Map and contacts">Mapa e contactos</a></p>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════ EMENTA ══════════ -->
+<section class="pagina" data-pagina="ementa" data-titulo="Ementa · MB Cakes Loulé" data-titulo-en="Menu · MB Cakes Loulé" aria-labelledby="t-ementa" hidden>
+  <header class="cab-pag">
+    <div class="sec-in">
+      <p class="etq" data-en="the menu">a ementa</p>
+      <h2 id="t-ementa" tabindex="-1" data-en="From toast to pistachio latte.">Da tosta ao pistache latte.</h2>
+      <p class="lead" data-en="Prices in euros, VAT included. Tap a section to jump to it.">Preços em euros, com IVA. Toque numa secção para saltar para ela.</p>
+    </div>
+  </header>
+  <nav class="cats" aria-label="Secções da ementa" data-en-aria="Menu sections"><div class="cats-in" id="cats"></div></nav>
+  <section class="sec rosa" style="padding-top:20px" aria-label="Ementa" data-en-aria="Menu">
+    <div class="sec-in">
+      <div class="ementa" id="ementa"></div>
+      <p class="nota-legal" data-en="No dish, food or drink, including couvert, can be charged unless requested by the customer. Plastic or can drinks under 3 litres carry a 10-cent deposit. All prices in euros, VAT included. A complaints book is available.">Nenhum prato, produto alimentar ou bebida, incluindo o couvert, pode ser cobrado se não for solicitado pelo cliente. Nas bebidas em plástico ou lata inferiores a 3 litros acresce o depósito de 10 cêntimos. Preços em euros com IVA incluído. Existe Livro de Reclamações.</p>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════ BOLOS ══════════ -->
+<section class="pagina" data-pagina="bolos" data-titulo="Encomendar bolo · MB Cakes" data-titulo-en="Order a cake · MB Cakes" aria-labelledby="t-enc" hidden>
+  <header class="cab-pag">
+    <div class="sec-in">
+      <p class="etq" data-en="cakes to order">bolos por encomenda</p>
+      <h2 id="t-enc" tabindex="-1" data-en="Order your cake.">Encomende o seu bolo.</h2>
+      <p class="lead" data-en="Four questions and the order goes to MB Cakes on WhatsApp, already written. Prices and flavours are confirmed in the reply.">Quatro perguntas e a encomenda segue escrita para o WhatsApp da MB Cakes. Preço e sabores confirmam-se na resposta.</p>
+    </div>
+  </header>
+  <section class="sec rosa" style="padding-top:40px" aria-label="Formulário de encomenda" data-en-aria="Order form">
+    <form class="sec-in enc" id="form-bolo" novalidate>
+      <div>
+        <fieldset class="bloco">
+          <legend class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" data-en="Occasion">Ocasião</legend>
+          <h3><span class="passo-n">1</span><span data-en="The occasion">A ocasião</span></h3>
+          <div class="chips" id="ocasioes"></div>
+        </fieldset>
+        <fieldset class="bloco">
+          <legend style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" data-en="Size and date">Tamanho e data</legend>
+          <h3><span class="passo-n">2</span><span data-en="How many people, and when?">Para quantos e quando?</span></h3>
+          <div class="passos-n" role="group" aria-label="Número de pessoas" data-en-aria="Number of people"><button type="button" id="menos" aria-label="Menos pessoas" data-en-aria="Fewer people">−</button><output id="pessoas" aria-live="polite">12</output><button type="button" id="mais" aria-label="Mais pessoas" data-en-aria="More people">+</button></div>
+          <div class="campos">
+            <div class="campo" id="c-data"><label for="data" data-en="Pick-up day">Dia de levantar</label><input type="date" id="data" name="data"><span class="erro" id="e-data"></span></div>
+            <div class="campo"><label for="hora"><span data-en="Time">Hora</span> <i data-en="(optional)">(opcional)</i></label><input type="time" id="hora" name="hora"></div>
+          </div>
+          <p class="ajuda" style="margin-top:10px"><span data-en="Minimum notice:">Antecedência mínima:</span> <span class="conf" data-en="to confirm">a confirmar</span></p>
+          <p class="lb" style="font-size:14px;font-weight:600;margin-top:18px" data-en="Pick up at">Levantar em</p>
+          <div class="loja">
+            <label><input type="radio" name="loja" value="Loulé" checked><span>Loulé<small>Tv. Amorim Benevides 2</small></span></label>
+            <label><input type="radio" name="loja" value="Almancil"><span>Almancil<small>R. Manuel dos Santos Vaquinhas 108</small></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="bloco">
+          <legend style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" data-en="Style">Estilo</legend>
+          <h3><span class="passo-n">3</span><span data-en="The look">O aspeto</span></h3>
+          <div class="chips" id="estilos"></div>
+          <div class="campos">
+            <div class="campo todo"><label for="sabor"><span data-en="Flavour and filling">Sabor e recheio</span> <i data-en="(optional — we suggest if you prefer)">(opcional — sugerimos, se preferir)</i></label><input id="sabor" name="sabor" placeholder="ex.: chocolate com morango" data-en-placeholder="e.g. chocolate and strawberry"></div>
+            <div class="campo todo"><label for="escrita"><span data-en="Writing on the cake">Escrever no bolo</span> <i data-en="(optional)">(opcional)</i></label><input id="escrita" name="escrita" maxlength="60" placeholder="ex.: Parabéns, Rita!" data-en-placeholder="e.g. Happy birthday, Rita!"></div>
+          </div>
+          <p class="ajuda" style="margin-top:10px"><span data-en="Flavours and price list:">Sabores e preçário:</span> <span class="conf" data-en="to confirm">a confirmar</span></p>
+        </fieldset>
+        <fieldset class="bloco">
+          <legend style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" data-en="Your details">Os seus dados</legend>
+          <h3><span class="passo-n">4</span><span data-en="Who is ordering">Quem encomenda</span></h3>
+          <div class="campos">
+            <div class="campo" id="c-nome"><label for="nome" data-en="Your name">O seu nome</label><input id="nome" name="nome" autocomplete="name"><span class="erro" id="e-nome"></span></div>
+            <div class="campo todo"><label for="notas"><span data-en="Anything else?">Mais alguma coisa?</span> <i data-en="(optional)">(opcional)</i></label><textarea id="notas" name="notas" placeholder="ex.: sem frutos secos; tenho uma foto de referência" data-en-placeholder="e.g. no nuts; I have a reference photo"></textarea></div>
+          </div>
+        </fieldset>
+      </div>
+      <aside class="talao" aria-labelledby="t-talao">
+        <h3 id="t-talao" data-en="Your order">A sua encomenda</h3>
+        <p class="sub">MB Cakes</p>
+        <pre id="previa" aria-live="polite"></pre>
+        <button class="bt bt-wa" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-en="Send on WhatsApp">Enviar pelo WhatsApp</span></button>
+        <p class="erro-geral" id="erro-geral" role="alert"></p>
+        <p class="nota-envio" data-en="Opens WhatsApp with the message ready for 932 626 851. Nothing is sent until you tap send.">Abre o WhatsApp com a mensagem pronta para o 932 626 851. Nada é enviado sem carregar em enviar.</p>
+      </aside>
+    </form>
+  </section>
+</section>
+
+<!-- ══════════ A CASA ══════════ -->
+<section class="pagina" data-pagina="casa" data-titulo="A casa · MB Cakes Loulé" data-titulo-en="The café · MB Cakes Loulé" aria-labelledby="t-casa" hidden>
+  <header class="cab-pag">
+    <div class="sec-in duas">
+      <div>
+        <p class="etq" data-en="the café">a casa</p>
+        <h2 id="t-casa" tabindex="-1" data-en="A wall of roses and a pink neon.">Uma parede de rosas e um néon cor-de-rosa.</h2>
+        <p class="lead" data-en="In Loulé, a pink sofa runs along a wall covered in flowers. The neon says what the house is for.">Em Loulé, um sofá magenta corre ao longo de uma parede coberta de flores. O néon diz para que serve a casa.</p>
+        <p class="neon" style="margin-top:28px" lang="pt">Doces momentos</p>
+      </div>
+      <div>
+        <div class="ph" style="aspect-ratio:704/1000;border-radius:30px"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/parede-de-flores.webp" alt="Parede coberta de rosas com o néon “Doces momentos” e um sofá magenta" data-en-alt="Wall covered in roses with the neon sign “Doces momentos” and a magenta sofa" loading="lazy" onerror="this.remove()" style="object-position:50% 35%"></div>
+      </div>
+    </div>
+  </header>
+  <section class="sec rosa" aria-labelledby="t-casa2">
+    <div class="sec-in">
+      <p class="etq rv" data-en="what you'll find">o que vai encontrar</p>
+      <h2 id="t-casa2" class="rv d1" data-en="Brunch in the morning, cakes all day.">Brunch de manhã, bolos o dia todo.</h2>
+      <dl class="factos">
+        <div class="facto rv"><dt data-en="On the table">À mesa</dt><dd data-en="Pancakes, open toasts, bowls, tapiocas">Panquecas, tostas abertas, bowls, tapiocas</dd></div>
+        <div class="facto rv d1"><dt data-en="To order">Por encomenda</dt><dd data-en="Celebration cakes, picked up in Loulé or Almancil">Bolos de festa, a levantar em Loulé ou Almancil</dd></div>
+        <div class="facto rv d2"><dt data-en="To drink">Para beber</dt><dd data-en="Smoothies, juices, lattes, sangria">Smoothies, sumos, lattes, sangria</dd></div>
+      </dl>
+      <div class="duas" style="margin-top:56px">
+        <div class="rv"><div class="ph" style="aspect-ratio:3/2;border-radius:28px"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/panquecas-iogurte-fruta.webp" alt="Panquecas, ovos, fiambre, iogurte com mirtilos, fruta e sumo de laranja" data-en-alt="Pancakes, eggs, ham, yoghurt with blueberries, fruit and orange juice" loading="lazy" onerror="this.remove()"></div></div>
+        <div>
+          <p class="etq rv" data-en="who's behind it">quem está por trás</p>
+          <h3 class="rv d1" style="font-size:clamp(30px,3.6vw,44px)">MB Cakes</h3>
+          <p class="lead rv d2"><span data-en="The story of the house, who bakes, and since when:">A história da casa, quem faz os bolos e desde quando:</span> <span class="conf" data-en="to confirm">a confirmar</span></p>
+          <p class="lead rv d2" data-en="Everyone is welcome.">Todos são bem-vindos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════ GALERIA ══════════ -->
+<section class="pagina" data-pagina="galeria" data-titulo="Galeria · MB Cakes" data-titulo-en="Gallery · MB Cakes" aria-labelledby="t-galeria" hidden>
+  <header class="cab-pag">
+    <div class="sec-in">
+      <p class="etq" data-en="gallery">galeria</p>
+      <h2 id="t-galeria" tabindex="-1" data-en="Before the first bite.">Antes da primeira dentada.</h2>
+      <p class="lead" data-en="Tap a photo to see it bigger.">Toque numa fotografia para a ver maior.</p>
+    </div>
+  </header>
+  <section class="sec rosa" style="padding-top:44px" aria-label="Fotografias" data-en-aria="Photos">
+    <div class="sec-in galeria" id="galeria">
+      <figure><button type="button"><span class="ph" style="aspect-ratio:1200/1514"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/brunch-para-dois.webp" alt="Brunch para dois" data-en-alt="Brunch for two" loading="lazy" onerror="this.remove()"></span></button><figcaption data-en="Brunch for two">Brunch para dois</figcaption></figure>
+      <figure><button type="button"><span class="ph" style="aspect-ratio:3/2"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bolo-vintage-cerejas.webp" alt="Bolo vintage com cerejas" data-en-alt="Vintage cake with cherries" loading="lazy" onerror="this.remove()"></span></button><figcaption data-en="Vintage cake with cherries">Bolo vintage com cerejas</figcaption></figure>
+      <figure><button type="button"><span class="ph" style="aspect-ratio:1000/1778"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/vitrine.webp" alt="A vitrine" data-en-alt="The display case" loading="lazy" onerror="this.remove()"></span></button><figcaption data-en="The display case">A vitrine</figcaption></figure>
+      <figure><button type="button"><span class="ph" style="aspect-ratio:3/2"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/panquecas-iogurte-fruta.webp" alt="Panquecas, ovos, fiambre, iogurte com mirtilos, fruta e sumo de laranja" data-en-alt="Pancakes, eggs, ham, yoghurt with blueberries, fruit and orange juice" loading="lazy" onerror="this.remove()"></span></button><figcaption data-en="Pancakes, yoghurt, fruit and juice">Panquecas, iogurte, fruta e sumo</figcaption></figure>
+      <figure><button type="button"><span class="ph" style="aspect-ratio:720/1280"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/eclairs.webp" alt="Éclairs" data-en-alt="Éclairs" loading="lazy" onerror="this.remove()"></span></button><figcaption>Éclairs</figcaption></figure>
+      <figure><button type="button"><span class="ph" style="aspect-ratio:3/2"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/panquecas-coracoes.webp" alt="Panquecas cor-de-rosa com corações" data-en-alt="Pink pancakes with hearts" loading="lazy" onerror="this.remove()"></span></button><figcaption data-en="Pink pancakes with hearts">Panquecas cor-de-rosa com corações</figcaption></figure>
+      <figure><button type="button"><span class="ph" style="aspect-ratio:704/1280"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/parede-de-flores.webp" alt="A parede de rosas e o néon" data-en-alt="The rose wall and the neon" loading="lazy" onerror="this.remove()"></span></button><figcaption data-en="The rose wall">A parede de rosas</figcaption></figure>
+      <figure><button type="button"><span class="ph" style="aspect-ratio:3/2"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/sobremesas-e-cafe.webp" alt="Sobremesas e cafés" data-en-alt="Desserts and coffees" loading="lazy" onerror="this.remove()"></span></button><figcaption data-en="Desserts and espresso">Sobremesas e café</figcaption></figure>
+      <figure><button type="button"><span class="ph" style="aspect-ratio:2/3"><svg aria-hidden="true"><use href="#d-prato"/></svg><img src="media/lattes-de-natal.webp" alt="Lattes de inverno com bolacha de gengibre" data-en-alt="Winter lattes with a gingerbread biscuit" loading="lazy" onerror="this.remove()"></span></button><figcaption data-en="Winter lattes">Lattes de inverno</figcaption></figure>
+    </div>
+  </section>
+  <dialog class="caixa" id="caixa" aria-label="Fotografia ampliada"><button class="fecha" type="button" aria-label="Fechar" data-en-aria="Close">×</button><img id="caixa-img" src="" alt=""><p id="caixa-txt"></p></dialog>
+</section>
+
+<!-- ══════════ VISITAR ══════════ -->
+<section class="pagina" data-pagina="visitar" data-titulo="Visitar · MB Cakes Loulé e Almancil" data-titulo-en="Visit · MB Cakes Loulé and Almancil" aria-labelledby="t-visitar" hidden>
+  <header class="cab-pag">
+    <div class="sec-in">
+      <p class="etq" data-en="visit">visitar</p>
+      <h2 id="t-visitar" tabindex="-1" data-en="Come in, or send a message.">Entre, ou mande mensagem.</h2>
+      <p class="lead" data-en="Two cafés, one WhatsApp: 932 626 851.">Duas casas, um WhatsApp: 932 626 851.</p>
+    </div>
+  </header>
+  <section class="sec escuro" style="padding-top:44px" aria-label="Moradas e horário" data-en-aria="Addresses and hours">
+    <div class="sec-in duas" style="align-items:start">
+      <div>
+        <article class="casa">
+          <h3>Loulé</h3>
+          <p class="mor">Tv. Amorim Benevides 2, RC dto., loja B · 8100-705 Loulé</p>
+          <table class="horario" aria-label="Horário de Loulé" data-en-aria="Loulé opening hours"><tbody id="tab-horario"></tbody></table>
+          <div class="bts"><a class="bt bt-rosa" href="https://www.google.com/maps/dir/?api=1&amp;destination=37.1405771,-8.029099" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-en="Directions">Como chegar</span></a></div>
+        </article>
+        <article class="casa" style="margin-top:16px">
+          <h3>Almancil</h3>
+          <p class="mor">R. Manuel dos Santos Vaquinhas 108, RC dto. · Almancil</p>
+          <p class="hor"><b data-en="Opening hours">Horário</b> <span class="conf" data-en="to confirm">a confirmar</span></p>
+          <div class="bts"><a class="bt bt-rosa" href="https://www.google.com/maps/search/?api=1&amp;query=R.+Manuel+dos+Santos+Vaquinhas+108+Almancil" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-en="Directions">Como chegar</span></a></div>
+        </article>
+      </div>
+      <div>
+        <ul class="contactos-lista" style="color:var(--tinta);margin-top:0">
+          <li><a href="tel:+351932626851"><svg aria-hidden="true"><use href="#i-tel"/></svg><span><small data-en="Phone">Telefone</small><b>932 626 851</b></span></a></li>
+          <li><a class="link-wa" href="#"><svg aria-hidden="true"><use href="#i-wa"/></svg><span><small>WhatsApp</small><b data-en="Message 932 626 851">Mensagem para o 932 626 851</b></span></a></li>
+          <li><a href="https://www.instagram.com/mbahens.cakes/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><span><small>Instagram</small><b>@mbahens.cakes</b></span></a></li>
+          <li><a href="https://linktr.ee/meirybahens" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-link"/></svg><span><small>Linktree</small><b data-en="Menus, price list and links">Ementas, preçário e ligações</b></span></a></li>
+        </ul>
+        <div class="mapa"><div class="mapa-fundo"><b>MB Cakes · Loulé</b>Tv. Amorim Benevides 2</div><iframe title="Mapa: MB Cakes, Loulé" src="https://maps.google.com/maps?q=37.1405771,-8.029099&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="rodape-in">
+    <div>
+      <p class="nome">MB Cakes</p>
+      <p style="margin-top:10px;max-width:340px" data-en="Brunch &amp; coffee, and cakes made to order. Loulé and Almancil.">Brunch &amp; coffee, e bolos por encomenda. Loulé e Almancil.</p>
+      <p style="margin-top:10px"><span data-en="Company name and VAT no.:">Denominação e NIF:</span> <span class="conf" data-en="to confirm">a confirmar</span></p>
+    </div>
+    <div>
+      <h4 data-en="contact">contacto</h4>
+      <ul><li><a href="tel:+351932626851">932 626 851</a></li><li><a href="https://www.instagram.com/mbahens.cakes/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://linktr.ee/meirybahens" target="_blank" rel="noopener">Linktree</a></li></ul>
+    </div>
+    <div>
+      <h4 data-en="pages">páginas</h4>
+      <ul><li><a href="#/ementa" data-en="Menu">Ementa</a></li><li><a href="#/bolos" data-en="Order a cake">Encomendar bolo</a></li><li><a href="#/casa" data-en="The café">A casa</a></li><li><a href="#/galeria" data-en="Gallery">Galeria</a></li><li><a href="#/visitar" data-en="Visit">Visitar</a></li></ul>
+    </div>
+  </div>
+  <div class="fim">
+    <span>© <span id="ano-atual">2026</span> MB Cakes Brunch &amp; Coffee</span>
+    <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener" data-en="Complaints Book (Livro de Reclamações)">Livro de Reclamações</a>
+    <span data-en="Website: Pacheco Studios">Site: Pacheco Studios</span>
+  </div>
+</footer>
+
+<nav class="cta-movel" aria-label="Contacto rápido" data-en-aria="Quick contact">
+  <a class="bt bt-linha" href="tel:+351932626851"><svg aria-hidden="true"><use href="#i-tel"/></svg><span data-en="Call">Ligar</span></a>
+  <a class="bt bt-wa link-wa" href="#"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+</nav>
+
+<noscript><p style="padding:20px;background:#fff">MB Cakes Brunch &amp; Coffee · Tv. Amorim Benevides 2, RC dto., loja B, 8100-705 Loulé · R. Manuel dos Santos Vaquinhas 108, Almancil · 932 626 851 · <a href="https://www.livroreclamacoes.pt/inicio">Livro de Reclamações</a></p></noscript>
+
+<script>
+(function(){
+'use strict';
+var WA = '351932626851';
+var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function $(s,c){return (c||document).querySelector(s)}
+function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))}
+function waLink(t){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t)}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+var L = 'pt';
+try{ var g = localStorage.getItem('mb-lingua'); if(g==='en') L='en' }catch(e){}
+function t(pt,en){ return L==='en' ? (en||pt) : pt }
+
+/* ── A ementa (transcrita das ementas PT/EN da casa) ── */
+var EMENTA = [
+ {id:'tostas', pt:'Tostas abertas', en:'Open toasts', itens:[
+  {n:'Americana', p:'7,90', pt:'Pão, ovos (mexidos ou estrelados), queijo creme e bacon', en:'Bread, eggs (scrambled or fried), cream cheese and crispy bacon'},
+  {n:'Tartine d’Salmão', p:'9,80', pt:'Pão, creme de abacate, salmão fumado, rúcula, tomate seco, queijo creme com ervas e vinagre balsâmico', en:'Bread, avocado cream, smoked salmon, rocket, sundried tomatoes, herb cream cheese and balsamic vinegar'},
+  {n:'D’Frango', p:'8,20', pt:'Pão, frango desfiado, queijo brie, cebola caramelizada, maionese verde e manteiga de ervas', en:'Bread, shredded chicken, brie, caramelized onion, green mayonnaise and herb butter'},
+  {n:'Botanic', p:'8,40', veg:1, pt:'Pão, húmus de beterraba, tomate cherry flambado, granola caseira e tofu marinado', en:'Bread, beet hummus, flambéed cherry tomatoes, homemade granola and marinated tofu'},
+  {n:'D’Camarão', p:'10,20', pt:'Pão, camarão salteado, abacate, ceviche de manga, mix de folhas e tomate cherry', en:'Bread, sautéed shrimp, avocado, mango ceviche, mixed leaves and cherry tomatoes'}]},
+ {id:'hamburguer', pt:'Hambúrguer', en:'Burgers', npt:'com batata chips', nen:'with potato chips', itens:[
+  {n:'MB Cakes', p:'12,00', pt:'Pão bagel, beef angus 200 g, queijo brie, cebola caramelizada, mix de folhas e molho verde', en:'Bagel bun, 200 g Angus beef, brie, caramelized onion, mixed leaves and green sauce'},
+  {n:'Crocantus', p:'11,40', pt:'Pão bagel, beef angus 200 g, queijo, bacon, cebola crocante, molho da casa, alface e tomate', en:'Bagel bun, 200 g Angus beef, cheese, bacon, crispy onion, house sauce, leaves and tomato'}]},
+ {id:'sandes', pt:'Sandes', en:'Sandwiches', itens:[
+  {n:'Sandes Club', p:'7,60', pt:'Pão baguete, ovo mexido, bacon crispy, tomate e alface', en:'Baguette, scrambled eggs, crispy bacon, tomato and leaves'},
+  {n:'Ao Pesto', p:'8,45', pt:'Pão baguete, molho pesto, presunto, mini mussarela, rúcula, tomate cherry e vinagre balsâmico', en:'Baguette, pesto, prosciutto, mini mozzarella, rocket, cherry tomatoes and balsamic vinegar'}]},
+ {id:'croissant', pt:'Croissant', en:'Croissants', itens:[
+  {n:'D’Bacon', p:'6,70', pt:'Croissant, ovos mexidos, bacon crispy, rúcula e tomate cherry', en:'Croissant, scrambled eggs, crispy bacon, rocket and cherry tomatoes'},
+  {n:'Abacrocado', p:'6,80', pt:'Croissant, ovos mexidos, abacate e tomate cherry', en:'Croissant, scrambled eggs, avocado and cherry tomatoes'}]},
+ {id:'ovos', pt:'Omeletes e ovos', en:'Omelettes & eggs', npt:'com salada e torrada', nen:'with salad and toast', itens:[
+  {n:'Simples', nen:'Simple', p:'5,90', pt:'Omelete simples', en:'Plain omelette'},
+  {n:'La Gourmet', p:'7,30', pt:'Omelete, queijo, cebola roxa, queijo creme e fiambre', en:'Omelette, cheese, red onion, cream cheese and ham'},
+  {n:'Horte', p:'8,00', pt:'Omelete, molho de manjericão, tomate cherry, cebola roxa e queijo', en:'Omelette, basil sauce, cherry tomatoes, red onion and cheese'},
+  {n:'Ovos escalfados', nen:'Poached eggs', p:'9,10', pt:'Ovos escalfados, presunto e molho holandês pink', en:'Toast, poached eggs, ham and pink hollandaise'}]},
+ {id:'menus', pt:'Menus', en:'Set menus', itens:[
+  {n:'Sweet menu', p:'2,80', pt:'Café com pastel de nata', en:'Espresso with a pastel de nata'},
+  {n:'Torrada menu', nen:'Toast menu', p:'3,70', pt:'Torrada com café com leite', en:'Toast with white coffee'},
+  {n:'Ovo menu', nen:'Eggs menu', p:'6,20', pt:'Ovos mexidos com torrada e café com leite ou sumo do dia', en:'Scrambled eggs with toast, and white coffee or juice of the day'},
+  {n:'Tosta menu', nen:'Toastie menu', p:'4,80', pt:'Tosta mista com café ou café com leite', en:'Ham and cheese toastie with espresso or white coffee'},
+  {n:'Croissant menu', p:'5,30', pt:'Croissant misto com café ou café com leite', en:'Ham and cheese croissant with espresso or white coffee'}]},
+ {id:'brunch', pt:'Brunch', en:'Brunch', itens:[
+  {n:'Brunch para 2', nen:'Brunch for 2', p:'39,50', pt:'Ovos mexidos com bacon crispy, tartine d’salmão, 2 mini croissants com presunto e burrata, panqueca com geleia de frutos vermelhos e creme de chocolate, 2 iogurtes com granola, 2 mini bolos caseiros, pães, fruta da época, manteiga e geleia, fiambre e queijo, bebidas quentes e sumo do dia (2 bebidas por pessoa)', en:'Scrambled eggs with crispy bacon, salmon tartine, 2 mini croissants with prosciutto and burrata, pancake with red-fruit jelly and chocolate cream, 2 yoghurts with granola, 2 homemade mini cakes, breads, seasonal fruit, butter and jam, ham and cheese, hot drinks and juice of the day (2 drinks per person)'},
+  {n:'Brunch de verão', nen:'Summer brunch', p:'13,70', pt:'Ovos mexidos com bacon, panquecas simples, mini bowl de iogurte, frutas da época e sumo do dia', en:'Scrambled eggs with bacon, plain pancakes, mini yoghurt bowl, seasonal fruit and juice of the day'},
+  {n:'Pequeno-almoço inglês', nen:'English breakfast', p:'15,10', pt:'Ovos fritos, bacon, salsicha, cogumelos, tomate, feijão e torrada', en:'Fried eggs, bacon, sausage, mushrooms, tomato, beans and toast'}]},
+ {id:'tapiocas', pt:'Tapiocas', en:'Tapiocas', itens:[
+  {n:'Clássica', nen:'Classic', p:'5,50', pt:'Tapioca com queijo e fiambre', en:'Tapioca with cheese and ham'},
+  {n:'Tapibacon', p:'5,80', pt:'Tapioca com ovos e bacon', en:'Tapioca with eggs and bacon'},
+  {n:'Cream & Frango', nen:'Cream & Chicken', p:'6,50', pt:'Tapioca com frango e queijo creme', en:'Tapioca with chicken and cream cheese'},
+  {n:'Choco', p:'5,90', pt:'Tapioca com chocolate e banana', en:'Tapioca with chocolate and banana'}]},
+ {id:'panquecas', pt:'Panquecas e waffles', en:'Pancakes & waffles', itens:[
+  {n:'Simples', nen:'Simple', p:'4,00', pt:'Açúcar, mel ou canela', en:'Sugar, honey or cinnamon'},
+  {n:'Tradicional', nen:'Traditional', p:'6,50', pt:'Maple syrup, bacon crispy e manteiga', en:'Maple syrup, crispy bacon and butter'},
+  {n:'Dois Amores', nen:'Two Loves', p:'7,20', pt:'Creme de avelã, morangos e morangos marinados', en:'Hazelnut cream, strawberries and marinated strawberries'},
+  {n:'Banoff', p:'7,50', pt:'Bananas caramelizadas, caramelo de doce de leite e creme de natas com baunilha', en:'Caramelized bananas, dulce de leche caramel and vanilla whipped cream'},
+  {n:'Panqueca da Chloé', nen:'Chloé’s pancake', p:'7,30', conf:1, pt:'Pasta de amendoim ou mel, morangos e banana', en:'Peanut butter or honey, strawberries and banana'}]},
+ {id:'classicos', pt:'Clássicos', en:'Classics', itens:[
+  {n:'Brownice', p:'6,50', pt:'Brownie com uma bola de gelado, calda de creme de avelã e morangos', en:'Brownie with a scoop of ice cream, hazelnut sauce and strawberries'},
+  {n:'La Toast', p:'7,00', pt:'French toast caramelizada com uma bola de gelado, calda de creme de chocolate e framboesas', en:'Caramelized French toast with a scoop of ice cream, chocolate cream and raspberries'},
+  {n:'Sweet', p:'4,80', pt:'Croissant com recheio de creme de avelã, pistache, kinder bueno ou chocolate', en:'Croissant filled with hazelnut, pistachio, Kinder Bueno or chocolate cream'}]},
+ {id:'bowls', pt:'Bowls', en:'Bowls', bowls:[
+  {n:'Bowl de salada', nen:'Salad bowl', p:'9,10', g:[
+    {pt:'Base', en:'Base', o:'Mix de folhas', oen:'Mixed leaves'},
+    {pt:'3 toppings', en:'3 toppings', o:'Cebola roxa, cenoura ralada, cogumelos, couve roxa, pepino, queijo mini mussarela, quinoa, tomate cherry', oen:'Red onion, grated carrot, mushrooms, red cabbage, cucumber, mini mozzarella, quinoa, cherry tomatoes'},
+    {pt:'1 proteína', en:'1 protein', o:'Frango, atum, salmão fumado, ovo cozido', oen:'Chicken, tuna, smoked salmon, boiled egg'},
+    {pt:'2 frutas', en:'2 fruits', o:'Manga, maçã, abacate, abacaxi', oen:'Mango, apple, avocado, pineapple'},
+    {pt:'1 molho', en:'1 sauce', o:'Mostarda e mel, vinagrete, iogurte', oen:'Honey mustard, vinaigrette, yoghurt'}]},
+  {n:'Bowl de iogurte', nen:'Yoghurt bowl', p:'6,90', g:[
+    {pt:'3 toppings', en:'3 toppings', o:'Aveia, chia, granola crocante, leite condensado, pasta de amendoim, mel', oen:'Oats, chia, crunchy granola, condensed milk, peanut butter, honey'},
+    {pt:'2 frutas', en:'2 fruits', o:'Banana, coco ralado, mirtilo, morango, kiwi, maçã, manga', oen:'Banana, shredded coconut, blueberry, strawberry, kiwi, apple, mango'}]},
+  {n:'Bowl de açaí', nen:'Açaí bowl', p:'8,00', g:[
+    {pt:'3 toppings', en:'3 toppings', o:'Aveia, chia, granola crocante, leite em pó, pasta de amendoim, mel, creme de avelã, leite condensado', oen:'Oats, chia, crunchy granola, powdered milk, peanut butter, honey, hazelnut cream, condensed milk'},
+    {pt:'2 frutas', en:'2 fruits', o:'Banana, coco ralado, mirtilo, morango, kiwi, maçã, manga', oen:'Banana, shredded coconut, blueberry, strawberry, kiwi, apple, mango'}]}]},
+ {id:'smoothies', pt:'Smoothies', en:'Smoothies', itens:[
+  {n:'Xtra Energy', p:'6,00', pt:'Morango e banana', en:'Strawberry and banana'},
+  {n:'Morning Glory', p:'7,00', pt:'Espinafre, manga, banana e ananás', en:'Spinach, mango, banana and pineapple'},
+  {n:'Tropical Tango', p:'6,80', pt:'Manga, melão, ananás e kiwi', en:'Mango, melon, pineapple and kiwi'},
+  {n:'Veggie Twist', p:'6,80', pt:'Maçã, gengibre, espinafre, cenoura e limão', en:'Apple, ginger, spinach, carrot and lemon'},
+  {n:'Jungle Juice', p:'7,50', pt:'Açaí, mirtilo, morango e manga', en:'Açaí, blueberry, strawberry and mango'}]},
+ {id:'quentes', pt:'Cafés e bebidas quentes', en:'Coffee & hot drinks', itens:[
+  {n:'Café', nen:'Espresso', p:'1,00'},{n:'Garoto', p:'1,20'},{n:'Descafeinado', nen:'Decaf', p:'1,30'},{n:'Leite', nen:'Milk', p:'1,00'},
+  {n:'Café com leite', nen:'White coffee', p:'2,20'},{n:'Galão', p:'2,20'},{n:'Macchiato', p:'2,20'},{n:'Chá', nen:'Tea', p:'2,20'},
+  {n:'Cappuccino', p:'2,70'},{n:'Chocolate quente', nen:'Hot chocolate', p:'2,70'},{n:'Iced coffee', p:'4,10'},
+  {n:'Caramel macchiato', p:'4,10 / 4,30', pt:'Quente / gelado', en:'Hot / iced'},
+  {n:'Moca', p:'4,20 / 4,40', pt:'Quente / gelado', en:'Hot / iced'},
+  {n:'Pistache latte', p:'4,30 / 4,50', pt:'Quente / gelado', en:'Hot / iced'},
+  {n:'Leite vegetal (extra)', nen:'Plant milk (extra)', p:'0,50'}]},
+ {id:'bebidas', pt:'Bebidas', en:'Drinks', itens:[
+  {n:'Água', nen:'Water', p:'2,00'},{n:'Água com gás', nen:'Sparkling water', p:'2,30'},{n:'Água com sabor', nen:'Flavoured water', p:'2,50'},
+  {n:'Sumo', nen:'Juice', p:'3,00', pt:'Laranja, morango, abacaxi com hortelã, maracujá, goiaba, manga', en:'Orange, strawberry, pineapple with mint, passion fruit, guava, mango'},
+  {n:'Refrigerantes', nen:'Soft drinks', p:'2,50'},{n:'Ice tea', p:'2,50'},{n:'Compal', p:'2,20'},
+  {n:'Imperial 30 cl', nen:'Draught beer 30 cl', p:'2,50'},{n:'Imperial 50 cl', nen:'Draught beer 50 cl', p:'3,80'},
+  {n:'Vinho (taça)', nen:'Wine (glass)', p:'4,00'},{n:'Sangria 1,5 L', p:'17,20'},{n:'Sangria 2,0 L', p:'22,20'}]},
+ {id:'extras', pt:'Adicionais', en:'Extras', itens:[
+  {n:'Bacon / queijo / fiambre', nen:'Bacon / cheese / ham', p:'1,40'},{n:'Presunto / salmão fumado', nen:'Prosciutto / smoked salmon', p:'2,20'},
+  {n:'Frutas', nen:'Fruit', p:'1,40'},{n:'Cremes / geleias', nen:'Creams / jams', p:'2,00'},{n:'Ovo', nen:'Egg', p:'1,70'}]}
+];
+var BRUNCH2 = [
+ ['Ovos mexidos com bacon crispy','Scrambled eggs with crispy bacon','e salsa','and parsley'],
+ ['Tartine d’salmão','Salmon tartine','abacate, salmão fumado, rúcula','avocado, smoked salmon, rocket'],
+ ['2 mini croissants','2 mini croissants','presunto e burrata','prosciutto and burrata'],
+ ['Panqueca','Pancake','geleia de frutos vermelhos e chocolate','red-fruit jelly and chocolate cream'],
+ ['2 iogurtes com granola','2 yoghurts with granola','',''],
+ ['2 mini bolos caseiros','2 homemade mini cakes','',''],
+ ['Pães, fruta da época','Breads, seasonal fruit','manteiga e geleia, fiambre e queijo','butter and jam, ham and cheese'],
+ ['Bebidas quentes e sumo do dia','Hot drinks and juice of the day','2 por pessoa','2 per person']
+];
+var PICKS = [['tostas',1],['panquecas',4],['panquecas',3],['bowls',2],['quentes',13],['hamburguer',0]];
+function porId(id){for(var i=0;i<EMENTA.length;i++) if(EMENTA[i].id===id) return EMENTA[i]}
+function preco(p){return p.indexOf('/')>-1 ? p.replace(/ \/ /,' € / ')+' €' : p+' €'}
+function nomeI(i){return t(i.n, i.nen)}
+
+function pintaEmenta(){
+  $('#cats').innerHTML = EMENTA.map(function(c){return '<a href="#/ementa" data-alvo="g-'+c.id+'">'+esc(t(c.pt,c.en))+'</a>'}).join('');
+  $('#ementa').innerHTML = EMENTA.map(function(c){
+    var h = '<div class="grupo" id="g-'+c.id+'"><div class="grupo-cab"><h3>'+esc(t(c.pt,c.en))+'</h3>'+(c.npt?'<small>'+esc(t(c.npt,c.nen))+'</small>':'')+'</div>';
+    if(c.itens) h += c.itens.map(function(i){
+      var d = t(i.pt,i.en);
+      return '<div class="item"><b>'+esc(nomeI(i))+(i.veg?'<span class="veg">'+t('vegetariano','vegetarian')+'</span>':'')+'</b><span class="pr">'+preco(i.p)+(i.conf?' <span class="conf">'+t('a confirmar','to confirm')+'</span>':'')+'</span>'+(d?'<p>'+esc(d)+'</p>':'')+'</div>';
+    }).join('');
+    if(c.bowls) h += c.bowls.map(function(b){
+      return '<div class="bowl"><div class="bowl-top"><b>'+esc(nomeI(b))+'</b><span class="pr">'+preco(b.p)+'</span></div><dl>'+b.g.map(function(x){return '<div><dt>'+esc(t(x.pt,x.en))+'</dt><dd>'+esc(t(x.o,x.oen))+'</dd></div>'}).join('')+'</dl></div>';
+    }).join('');
+    return h+'</div>';
+  }).join('');
+  $('#inclui').innerHTML = BRUNCH2.map(function(b,i){return '<li class="rv vis"><b>'+esc(t(b[0],b[1]))+'</b>'+(b[2]?'<span>'+esc(t(b[2],b[3]))+'</span>':'')+'</li>'}).join('');
+  $('#picks').innerHTML = PICKS.map(function(pk,k){
+    var c = porId(pk[0]), i = c.itens ? c.itens[pk[1]] : c.bowls[pk[1]];
+    var d = i.g ? t('3 toppings e 2 frutas à escolha','3 toppings and 2 fruits of your choice') : t(i.pt,i.en);
+    return '<article class="pick rv'+(k%3?' d'+(k%3):'')+'"><span class="cat">'+esc(t(c.pt,c.en).toLowerCase())+'</span><h3>'+esc(nomeI(i))+'</h3><p>'+esc(d||'')+'</p><span class="pr">'+preco(i.p)+'</span></article>';
+  }).join('');
+  observa();
+}
+$('#cats').addEventListener('click', function(e){
+  var a = e.target.closest('a'); if(!a) return; e.preventDefault();
+  var g = document.getElementById(a.dataset.alvo); if(!g) return;
+  g.scrollIntoView({behavior: reduz?'auto':'smooth'});
+  $$('#cats a').forEach(function(x){x.classList.toggle('ativa', x===a)});
+});
+
+/* ── horário de Loulé ── */
+var DIAS = [['Segunda','Monday'],['Terça','Tuesday'],['Quarta','Wednesday'],['Quinta','Thursday'],['Sexta','Friday'],['Sábado','Saturday'],['Domingo','Sunday']];
+function hojeIdx(){ try{ var w = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',weekday:'short'}).format(new Date()); return ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].indexOf(w) }catch(e){ return (new Date().getDay()+6)%7 } }
+function pintaHorario(){
+  var h = hojeIdx(), conf = '<span class="conf">'+t('a confirmar','to confirm')+'</span>';
+  $('#tab-horario').innerHTML = DIAS.map(function(d,i){
+    var v = i===0 ? '08:00–15:00' : i===1 ? t('abre às 08:00 · fecho ','opens 08:00 · closes ')+conf : conf;
+    return '<tr'+(i===h?' class="hoje"':'')+'><th scope="row"'+(i===h?' data-hoje="'+t('hoje','today')+'"':'')+'>'+t(d[0],d[1])+'</th><td>'+v+'</td></tr>';
+  }).join('');
+}
+
+/* ── encomenda de bolo ── */
+var OCASIOES = [['Aniversário','Birthday'],['Batizado','Christening'],['Casamento','Wedding'],['Chá de bebé','Baby shower'],['Empresa','Corporate'],['Outra','Other']];
+var ESTILOS = [['Vintage com corações','Vintage with hearts'],['Minimalista','Minimal'],['Com flores','With flowers'],['Temático','Themed'],['Sugiram vocês','Surprise me']];
+var form = $('#form-bolo'), nPessoas = 12;
+function pintaChips(){
+  var oc = $('#ocasioes').querySelector('[aria-pressed="true"]'), es = $('#estilos').querySelector('[aria-pressed="true"]');
+  var ocI = oc ? +oc.dataset.i : -1, esI = es ? +es.dataset.i : -1;
+  $('#ocasioes').innerHTML = OCASIOES.map(function(o,i){return '<button type="button" class="chip" data-i="'+i+'" aria-pressed="'+(i===ocI)+'">'+t(o[0],o[1])+'</button>'}).join('');
+  $('#estilos').innerHTML = ESTILOS.map(function(o,i){return '<button type="button" class="chip" data-i="'+i+'" aria-pressed="'+(i===esI)+'">'+t(o[0],o[1])+'</button>'}).join('');
+}
+function unico(cont){ cont.addEventListener('click', function(e){ var b=e.target.closest('.chip'); if(!b) return; var on=b.getAttribute('aria-pressed')!=='true'; $$('.chip',cont).forEach(function(x){x.setAttribute('aria-pressed','false')}); b.setAttribute('aria-pressed', on?'true':'false'); atualiza() }) }
+unico($('#ocasioes')); unico($('#estilos'));
+function escolha(cont, lista){ var b = cont.querySelector('[aria-pressed="true"]'); return b ? t(lista[+b.dataset.i][0], lista[+b.dataset.i][1]) : '' }
+$('#menos').addEventListener('click', function(){ nPessoas = Math.max(4, nPessoas - (nPessoas>20?5:2)); atualiza() });
+$('#mais').addEventListener('click', function(){ nPessoas = Math.min(150, nPessoas + (nPessoas>=20?5:2)); atualiza() });
+var dataIn = $('#data');
+(function(){ var d = new Date(); d.setDate(d.getDate()+1); dataIn.min = d.toISOString().slice(0,10) })();
+function dataBonita(v){
+  if(!v) return '';
+  try{ var d = new Date(v+'T12:00:00'); return new Intl.DateTimeFormat(L==='en'?'en-GB':'pt-PT',{weekday:'long',day:'numeric',month:'long'}).format(d) }catch(e){ return v }
+}
+function val(id){ return ($('#'+id).value||'').trim() }
+function mensagem(){
+  var linhas = [t('Olá MB Cakes! Queria encomendar um bolo.','Hello MB Cakes! I would like to order a cake.'), ''];
+  var oc = escolha($('#ocasioes'), OCASIOES), es = escolha($('#estilos'), ESTILOS);
+  if(oc) linhas.push('• '+t('Ocasião','Occasion')+': '+oc);
+  linhas.push('• '+t('Para','For')+': '+nPessoas+' '+t('pessoas','people'));
+  linhas.push('• '+t('Levantar','Pick-up')+': '+(dataBonita(val('data'))||'…')+(val('hora')?' '+t('às','at')+' '+val('hora'):''));
+  var lj = $('input[name="loja"]:checked', form); linhas.push('• '+t('Loja','Shop')+': '+(lj?lj.value:''));
+  if(es) linhas.push('• '+t('Estilo','Style')+': '+es);
+  if(val('sabor')) linhas.push('• '+t('Sabor','Flavour')+': '+val('sabor'));
+  if(val('escrita')) linhas.push('• '+t('Escrever no bolo','Writing on the cake')+': "'+val('escrita')+'"');
+  if(val('notas')) linhas.push('• '+t('Notas','Notes')+': '+val('notas'));
+  linhas.push('');
+  linhas.push(t('Podem dizer-me o preço e os sabores disponíveis? Obrigado','Could you tell me the price and available flavours? Thank you')+(val('nome')?', '+val('nome'):'')+'.');
+  return linhas.join('\n');
+}
+function atualiza(){ $('#pessoas').textContent = nPessoas+' '+t('pessoas','people'); $('#previa').textContent = mensagem() }
+form.addEventListener('input', atualiza); form.addEventListener('change', atualiza);
+function erro(c, e, txt){ var el=$('#'+c); if(txt){el.setAttribute('data-erro','');$('#'+e).textContent=txt} else {el.removeAttribute('data-erro');$('#'+e).textContent=''} return !txt }
+form.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var ok1 = erro('c-data','e-data', val('data') ? '' : t('Escolha o dia em que quer levantar o bolo.','Choose the day you want to pick up the cake.'));
+  var ok2 = erro('c-nome','e-nome', val('nome') ? '' : t('Escreva o seu nome, para a encomenda.','Write your name for the order.'));
+  var temOc = !!$('#ocasioes [aria-pressed="true"]');
+  $('#erro-geral').textContent = temOc ? '' : t('Escolha a ocasião no passo 1.','Choose the occasion in step 1.');
+  if(!ok1){ dataIn.focus(); return } if(!ok2){ $('#nome').focus(); return } if(!temOc){ $('#ocasioes .chip').focus(); return }
+  window.open(waLink(mensagem()), '_blank', 'noopener');
+});
+
+/* ── ligações WhatsApp ── */
+function pintaLinks(){
+  $$('.link-wa').forEach(function(a){ a.href = waLink(t('Olá MB Cakes! Vi o vosso site e tenho uma pergunta: ','Hello MB Cakes! I saw your website and have a question: ')); a.target='_blank'; a.rel='noopener' });
+  $$('.link-brunch').forEach(function(a){ a.href = waLink(t('Olá MB Cakes! Queria o brunch para 2 em Loulé. Dia: … Hora: … É preciso reservar?','Hello MB Cakes! I would like the brunch for 2 in Loulé. Day: … Time: … Do I need to book?')); a.target='_blank'; a.rel='noopener' });
+}
+
+/* ── língua ── */
+function aplicaLingua(){
+  document.documentElement.lang = L==='en' ? 'en' : 'pt-PT';
+  $$('[data-en]').forEach(function(el){ if(el.dataset.pt===undefined) el.dataset.pt = el.innerHTML; el.innerHTML = L==='en' ? el.dataset.en : el.dataset.pt });
+  [['data-en-aria','aria-label'],['data-en-alt','alt'],['data-en-placeholder','placeholder']].forEach(function(par){
+    $$('['+par[0]+']').forEach(function(el){ var k='pt'+par[1].replace(/\W/g,''); if(el.dataset[k]===undefined) el.dataset[k] = el.getAttribute(par[1])||''; el.setAttribute(par[1], L==='en' ? el.getAttribute(par[0]) : el.dataset[k]) });
+  });
+  var b = $('#lingua'); b.textContent = L==='en' ? 'PT' : 'EN'; b.setAttribute('lang', L==='en'?'pt-PT':'en'); b.setAttribute('aria-label', L==='en' ? 'Mudar para português' : 'Switch to English');
+  pintaEmenta(); pintaChips(); pintaHorario(); pintaLinks(); atualiza();
+  var p = $('.pagina:not([hidden])'); if(p) document.title = L==='en' ? p.dataset.tituloEn : p.dataset.titulo;
+}
+$('#lingua').addEventListener('click', function(){ L = L==='en' ? 'pt' : 'en'; try{ localStorage.setItem('mb-lingua', L) }catch(e){} aplicaLingua() });
+
+/* ── galeria ── */
+var caixa = $('#caixa');
+$('#galeria').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return; var img = b.querySelector('img'); if(!img) return;
+  $('#caixa-img').src = img.src; $('#caixa-img').alt = img.alt; $('#caixa-txt').textContent = b.parentNode.querySelector('figcaption').textContent;
+  if(caixa.showModal) caixa.showModal();
+});
+caixa.addEventListener('click', function(e){ if(e.target===caixa || e.target.classList.contains('fecha')) caixa.close() });
+
+/* ── nav ── */
+var nav = $('#nav'), burger = $('#burger'), menu = $('#menu');
+function fechaMenu(){ menu.classList.remove('aberto'); burger.setAttribute('aria-expanded','false') }
+burger.addEventListener('click', function(){ var a = burger.getAttribute('aria-expanded')!=='true'; menu.classList.toggle('aberto', a); burger.setAttribute('aria-expanded', a) });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') fechaMenu() });
+function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>40) }
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+$('#salta').addEventListener('click', function(e){ e.preventDefault(); var h=$('.pagina:not([hidden]) h1, .pagina:not([hidden]) h2'); h && h.focus() });
+var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target) } }) }, {rootMargin:'0px 0px -8% 0px'}) : null;
+function observa(){ $$('.pagina:not([hidden]) .rv:not(.vis)').forEach(function(el){ io ? io.observe(el) : el.classList.add('vis') }) }
+
+/* ── O AÇÚCAR PELA PENEIRA ── */
+var acucarFeito = false;
+function acucar(){
+  var nome = $('#h1-nome'), linha = $('#h1-linha'), painel = $('#painel');
+  function fim(){ nome.classList.add('pronto'); linha.classList.add('pronto'); painel.classList.add('pronto-tudo'); acucarFeito = true }
+  var cv = $('#acucar'), pen = $('#peneira');
+  if(reduz || !cv.getContext){ fim(); return }
+  var ctx = cv.getContext('2d'), dpr = Math.min(window.devicePixelRatio||1, 2);
+  var W = painel.clientWidth, H = painel.clientHeight;
+  cv.width = W*dpr; cv.height = H*dpr; ctx.scale(dpr,dpr);
+  // o stencil: o nome desenhado numa máscara, palavra a palavra, no sítio exato do h1
+  var m = document.createElement('canvas'); m.width = W; m.height = H; var mc = m.getContext('2d');
+  var cs = getComputedStyle(nome), pr = painel.getBoundingClientRect();
+  mc.font = cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily; mc.fillStyle = '#000'; mc.textBaseline = 'alphabetic';
+  var met = mc.measureText('MB'), asc = met.fontBoundingBoxAscent || parseFloat(cs.fontSize)*.8;
+  var tn = nome.firstChild, txt = tn.textContent, re = /\S+/g, mm, x0=1e9, x1=-1e9, y0=1e9, y1=-1e9;
+  while((mm = re.exec(txt))){
+    var r = document.createRange(); r.setStart(tn, mm.index); r.setEnd(tn, mm.index+mm[0].length);
+    var b = r.getBoundingClientRect(), x = b.left-pr.left, y = b.top-pr.top;
+    mc.fillText(mm[0], x, y+asc); x0=Math.min(x0,x); x1=Math.max(x1,x+b.width); y0=Math.min(y0,y); y1=Math.max(y1,y+b.height);
+  }
+  var md = mc.getImageData(0,0,W,H).data;
+  function naMascara(x,y){ x|=0; y|=0; if(x<0||y<0||x>=W||y>=H) return false; return md[(y*W+x)*4+3] > 100 }
+  var grs = [], t0 = performance.now(), DUR = 2300, topo = Math.max(10, y0 - 70), pw = pen.getBoundingClientRect().width || 120;
+  pen.style.opacity = '1';
+  function quadro(agora){
+    var e = agora - t0, k = Math.min(1, e/DUR);
+    // a peneira varre da esquerda para a direita, a abanar
+    var ease = k<.5 ? 2*k*k : 1-Math.pow(-2*k+2,2)/2;
+    var sx = x0 - 20 + (x1 - x0 + 40) * ease, abana = Math.sin(e/38)*5;
+    pen.style.transform = 'translate('+(sx - pw/2 + abana)+'px,'+(topo-30)+'px)';
+    if(k < 1){ for(var i=0;i<26;i++) grs.push({x:sx+abana+(Math.random()-.5)*96, y:topo+(Math.random()*6), vx:(Math.random()-.5)*.35, vy:.6+Math.random()*1.4, r:.6+Math.random()*1.25}) }
+    ctx.fillStyle = 'rgba(255,248,243,0.95)';
+    for(var j=grs.length-1;j>=0;j--){
+      var g = grs[j]; g.vy += .09; g.x += g.vx; g.y += g.vy;
+      if(naMascara(g.x,g.y) && Math.random() < .42){ ctx.globalAlpha = .55+Math.random()*.45; ctx.beginPath(); ctx.arc(g.x,g.y,g.r,0,6.283); ctx.fill(); grs.splice(j,1); continue }
+      if(g.y > H){ grs.splice(j,1); continue }
+      if(g.y > y1+10 && Math.random() < .015){ ctx.globalAlpha = .18; ctx.fillRect(g.x,g.y,1,1); grs.splice(j,1); continue }
+    }
+    ctx.globalAlpha = 1;
+    // grãos em queda (camada própria, por cima, apagada a cada quadro)
+    voo.clearRect(0,0,W,H); voo.fillStyle = '#FFF8F3';
+    for(var q=0;q<grs.length;q++){ var gg=grs[q]; voo.globalAlpha=.75; voo.fillRect(gg.x,gg.y,gg.r*1.3,gg.r*1.3) }
+    if(k < 1 || grs.length) requestAnimationFrame(quadro);
+    else { voo.clearRect(0,0,W,H); pen.style.transition='opacity .6s, transform .6s'; pen.style.opacity='0'; pen.style.transform += ' translateY(-30px)'; fim(); cv.style.transition='opacity 1.4s'; cv.style.opacity='.55' }
+  }
+  // camada dos grãos em voo
+  var cv2 = document.createElement('canvas'); cv2.setAttribute('aria-hidden','true'); cv2.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2';
+  cv2.width = W*dpr; cv2.height = H*dpr; painel.appendChild(cv2); var voo = cv2.getContext('2d'); voo.scale(dpr,dpr);
+  requestAnimationFrame(quadro);
+  window.addEventListener('resize', function(){ if(acucarFeito){ ctx.clearRect(0,0,W,H) } }, {once:true});
+}
+
+/* ── router #/ ── */
+var paginas = $$('.pagina'), primeira = true, comecou = false;
+function rota(){
+  var id = location.hash.replace(/^#\/?/,'').split('?')[0];
+  var alvo = paginas.filter(function(p){return p.dataset.pagina===id})[0];
+  if(!alvo){ alvo = paginas[0]; id = '' }
+  paginas.forEach(function(p){ p.hidden = p!==alvo });
+  document.title = L==='en' ? alvo.dataset.tituloEn : alvo.dataset.titulo;
+  $$('.menu a').forEach(function(a){ var r=a.getAttribute('href').replace(/^#\/?/,''); if(r===id) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current') });
+  nav.classList.toggle('solida', id!=='');
+  fechaMenu(); window.scrollTo(0,0);
+  if(!primeira){ var h = alvo.querySelector('h1, h2'); h && h.focus({preventScroll:true}) }
+  primeira = false; observa();
+  if(id==='' && !comecou){ comecou = true; var arranca = function(){ setTimeout(function(){ try{ acucar() }catch(e){ $('#h1-nome').classList.add('pronto'); $('#h1-linha').classList.add('pronto'); $('#painel').classList.add('pronto-tudo') } }, 250) }; (document.fonts && document.fonts.ready) ? document.fonts.ready.then(arranca) : arranca() }
+}
+window.addEventListener('hashchange', rota);
+$('#ano-atual').textContent = new Date().getFullYear();
+aplicaLingua();
+rota();
+})();
+</script>
+</body>
+</html>

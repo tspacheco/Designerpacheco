@@ -49,7 +49,7 @@ p{margin:0 0 1em}
 .lapis{font-family:var(--f-l);font-weight:400;color:var(--grafite);letter-spacing:.01em}
 .eyebrow{font:700 12.5px/1.2 var(--f-t);letter-spacing:.16em;text-transform:uppercase;color:var(--mar);margin:0 0 16px}
 .selo{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--f-t);color:var(--tijoleira-2);background:#FFF;border:1.5px dashed #D79B85;padding:5px 9px;border-radius:4px;transform:rotate(-1.5deg);white-space:nowrap;vertical-align:middle}
-.papel{background:var(--toalha)}
+
 
 /* banner + nav */
 .banner{background:var(--tinta);color:#E6EEF3;font:700 11px/1.3 var(--f-t);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:8px 14px}
@@ -112,8 +112,10 @@ p{margin:0 0 1em}
 
 /* herói */
 .heroi{padding-top:clamp(28px,5vw,64px);padding-bottom:clamp(40px,6vw,80px)}
-.heroi .grelha{display:grid;grid-template-columns:1.25fr .9fr 330px;gap:clamp(24px,3.5vw,48px);align-items:start}
-.heroi h1{font-size:clamp(66px,10.5vw,148px);line-height:.9;letter-spacing:-.035em;font-weight:800;margin:6px 0 0}
+.heroi .grelha{display:grid;grid-template-columns:1.1fr .9fr 290px;grid-template-areas:'ey ey conta' 'tit tit conta' 'sub foto conta' 'bot foto conta' 'est foto conta' '. foto conta';column-gap:clamp(24px,3.5vw,48px);align-items:start}
+.heroi .texto{display:contents}
+.heroi .eyebrow{grid-area:ey}.heroi h1{grid-area:tit}.heroi .sub{grid-area:sub}.heroi .botoes{grid-area:bot}.heroi .est{grid-area:est}.heroi .prato{grid-area:foto}.heroi .margem{grid-area:conta}
+.heroi h1{white-space:nowrap;font-size:clamp(56px,9.4vw,136px);line-height:.9;letter-spacing:-.035em;font-weight:800;margin:6px 0 0}
 .heroi h1 .o{font-weight:400;display:block;font-size:.36em;letter-spacing:0;margin-bottom:.08em;color:var(--mar)}
 .heroi .sub{font-size:clamp(18px,2vw,20px);max-width:36ch;margin:24px 0 28px;color:var(--grafite)}
 .botoes{display:flex;flex-wrap:wrap;gap:12px}
@@ -137,8 +139,8 @@ p{margin:0 0 1em}
 .anot{display:flex;align-items:flex-start;gap:8px;margin-top:12px;font-size:30px;line-height:.95}
 .anot svg{width:46px;height:40px;flex:none;margin-top:-10px}
 .anot path{fill:none;stroke:var(--grafite);stroke-width:2;stroke-linecap:round}
-@media (max-width:1100px){.heroi .grelha{grid-template-columns:1.2fr .8fr}.heroi .margem{grid-column:1/-1}}
-@media (max-width:700px){.heroi .grelha{grid-template-columns:1fr}.heroi .prato{margin-top:0}.heroi .prato .ft{aspect-ratio:4/3}}
+@media (max-width:1100px){.heroi .grelha{grid-template-columns:1.2fr .8fr;grid-template-areas:'ey ey' 'tit tit' 'sub foto' 'bot foto' 'est foto' 'conta conta'}.heroi .margem{margin-top:40px}}
+@media (max-width:700px){.heroi h1{font-size:14.6vw}.heroi .grelha{display:block}.heroi .texto{display:block}.heroi .prato{margin-top:36px}.heroi .prato{margin-top:0}.heroi .prato .ft{aspect-ratio:4/3}}
 .js .heroi .entra{opacity:0;transform:translateY(14px)}
 .ini .heroi .entra{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0)*.12s + .1s)}
 .js .heroi h1 .l{display:inline-block;opacity:0;transform:translateY(.25em)}
@@ -151,12 +153,13 @@ p{margin:0 0 1em}
 .conta h3{font:400 40px/1 var(--f-l);color:var(--tinta);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .conta h3 small{font:600 12px/1 var(--f-t);letter-spacing:.12em;text-transform:uppercase;color:var(--grafite)}
 .conta ol{list-style:none;margin:14px 0 0;padding:0;min-height:var(--q)}
-.conta li{display:grid;grid-template-columns:1.6em 1fr auto 34px;align-items:center;gap:6px;min-height:var(--q);padding:2px 0}
+.conta li{display:grid;grid-template-columns:1.6em 1fr auto 40px;align-items:center;gap:6px;min-height:var(--q);padding:2px 0}
 .conta li.novo .tx{animation:escreve .7s steps(14) both}
 @keyframes escreve{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 .conta .qt{color:var(--lapis-verm)}
-.conta .tx{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.conta .tira{width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:var(--grafite);font:400 24px/1 var(--f-t);cursor:pointer}
+.conta .tx{line-height:.95}
+.folha .conta h3{padding-right:46px}
+.conta .tira{width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:var(--grafite);font:400 24px/1 var(--f-t);cursor:pointer}
 .conta .tira:hover{background:#fff;color:var(--lapis-verm)}
 .conta .vazio{font-size:26px;color:#7A8088;grid-template-columns:1fr}
 .conta .total{display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--grafite);margin-top:8px;padding-top:6px;font-size:36px;color:var(--tinta)}
@@ -354,7 +357,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2C3E4E;padding-top:22px;fon
 <section class="pagina" data-rota="" data-titulo="O António · Restaurante em Moncarapacho" data-titulo-en="O António · Restaurant in Moncarapacho" aria-label="Início">
   <div class="wrap heroi">
     <div class="grelha">
-      <div>
+      <div class="texto">
         <p class="eyebrow entra" style="--i:0" data-en="Moncarapacho · lunch and dinner, Monday to Friday">Moncarapacho · almoço e jantar, de segunda a sexta</p>
         <h1 tabindex="-1" data-foco aria-label="O António"><span class="o" aria-hidden="true"><span class="l" style="--i:0">R</span><span class="l" style="--i:1">e</span><span class="l" style="--i:2">s</span><span class="l" style="--i:3">t</span><span class="l" style="--i:4">a</span><span class="l" style="--i:5">u</span><span class="l" style="--i:6">r</span><span class="l" style="--i:7">a</span><span class="l" style="--i:8">n</span><span class="l" style="--i:9">t</span><span class="l" style="--i:10">e</span></span><span aria-hidden="true"><span class="l" style="--i:11">O</span> <span class="risco"><span class="l" style="--i:12">A</span><span class="l" style="--i:13">n</span><span class="l" style="--i:14">t</span><span class="l" style="--i:15">ó</span><span class="l" style="--i:16">n</span><span class="l" style="--i:17">i</span><span class="l" style="--i:18">o</span><svg viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M3 12 C50 4 120 18 197 7"/></svg></span></span></h1>
         <p class="sub entra" style="--i:2" data-en="Portuguese cooking with a few journeys in between: prawn curry, samosas, sesame-crusted tuna, steak finishing on a hot stone. Pick from the tablecloth — the bill adds up in the margin.">Cozinha portuguesa com algumas viagens pelo meio: caril de camarão, chamuças, atum em sésamo, lombo a acabar na pedra. Escolha na toalha — a conta faz-se na margem.</p>
@@ -362,7 +365,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2C3E4E;padding-top:22px;fon
           <a class="btn btn-p" href="#/reservar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.5-4.2A8 8 0 1 1 8.4 18.6z"/></svg><span data-en="Book on WhatsApp">Reservar pelo WhatsApp</span></a>
           <a class="btn btn-l" href="#/carta" data-en="See the menu">Ver a carta</a>
         </div>
-        <div class="entra" style="--i:4">
+        <div class="entra est" style="--i:4">
           <p class="estado" data-estado aria-live="polite"><i></i><span>—</span></p>
           <p class="nota"><b>4,6</b><span class="estrelas" aria-hidden="true">__ESTRELAS__</span><span data-en="802 reviews on Google">802 avaliações no Google</span></p>
         </div>
@@ -441,7 +444,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2C3E4E;padding-top:22px;fon
       </div>
       <div class="rv d1">
         <p class="eyebrow" data-en="The house">A casa</p>
-        <h2 id="h-sala" data-en="Reed ceiling, <span class='risco'>sea blue</span>.">Teto de cana, <span class="risco">azul de mar</span>.</h2>
+        <h2 id="h-sala" data-en="Reed ceiling, <span class='risco'>sea blue.</span>">Teto de cana, <span class="risco">azul de mar.</span></h2>
         <p style="margin-top:20px" data-en="Inside, white beams over a reed ceiling, pale blue walls and an olive tree in a clay pot. Outside, tables for warm evenings. Air conditioning for the hot days.">Lá dentro, vigas brancas sobre o teto de cana, paredes azul-claro e uma oliveira num vaso de barro. Lá fora, mesas para as noites quentes. Ar condicionado para os dias de calor.</p>
         <a class="lig" href="#/casa"><span data-en="See the house">Ver a casa</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
@@ -453,7 +456,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2C3E4E;padding-top:22px;fon
 <section class="pagina" data-rota="carta" data-titulo="Carta · O António" data-titulo-en="Menu · O António" aria-labelledby="h-carta" hidden>
   <div class="wrap cab">
     <p class="migalhas"><a href="#/" data-en="Home">Início</a> / <span data-en="Menu">Carta</span></p>
-    <h2 id="h-carta" tabindex="-1" data-foco data-en="The menu, <span class='risco'>in pencil</span>.">A carta, <span class="risco">a lápis</span>.</h2>
+    <h2 id="h-carta" tabindex="-1" data-foco data-en="The menu, <span class='risco'>in pencil.</span>">A carta, <span class="risco">a lápis.</span></h2>
     <p class="lead" data-en="Tap a dish to add it to the bill in the margin. When you book, the dishes go in the message, so the kitchen knows what you fancy.">Toque num prato para o pôr na conta, na margem. Ao reservar, os pratos seguem na mensagem e a cozinha fica a saber o que lhe apetece.</p>
   </div>
   <nav class="ca-indice" aria-label="Secções da carta" data-en-aria="Menu sections">
@@ -480,7 +483,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2C3E4E;padding-top:22px;fon
 <section class="pagina" data-rota="casa" data-titulo="A casa · O António" data-titulo-en="The house · O António" aria-labelledby="h-casa" hidden>
   <div class="wrap cab">
     <p class="migalhas"><a href="#/" data-en="Home">Início</a> / <span data-en="The house">A casa</span></p>
-    <h2 id="h-casa" tabindex="-1" data-foco data-en="A room that <span class='risco'>smells of holidays</span>.">Uma sala com <span class="risco">cheiro a férias</span>.</h2>
+    <h2 id="h-casa" tabindex="-1" data-foco data-en="A room with a <span class='risco'>holiday air.</span>">Uma sala com <span class="risco">ar de férias.</span></h2>
     <p class="lead" data-en="On Avenida Dona Maria Lizarda Palermo, in Moncarapacho. Open for lunch and dinner from Monday to Friday; weekends off.">Na Avenida Dona Maria Lizarda Palermo, em Moncarapacho. Almoço e jantar de segunda a sexta; ao fim de semana descansa.</p>
   </div>
   <div class="wrap duo">
@@ -512,7 +515,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2C3E4E;padding-top:22px;fon
 <section class="pagina" data-rota="galeria" data-titulo="Galeria · O António" data-titulo-en="Gallery · O António" aria-labelledby="h-gal" hidden>
   <div class="wrap cab">
     <p class="migalhas"><a href="#/" data-en="Home">Início</a> / <span data-en="Gallery">Galeria</span></p>
-    <h2 id="h-gal" tabindex="-1" data-foco data-en="Off the <span class='risco'>plate</span>.">Do <span class="risco">prato</span>.</h2>
+    <h2 id="h-gal" tabindex="-1" data-foco data-en="Off the <span class='risco'>plate.</span>">Do <span class="risco">prato.</span></h2>
     <p class="lead" data-en="The way dishes reach the table: square plates, sauce drawn with a spoon, a flower here and there.">Como os pratos chegam à mesa: pratos quadrados, molho desenhado à colher, uma flor aqui e ali.</p>
   </div>
   <div class="wrap galeria">
@@ -530,7 +533,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2C3E4E;padding-top:22px;fon
 <section class="pagina" data-rota="reservar" data-titulo="Reservar · O António" data-titulo-en="Book a table · O António" aria-labelledby="h-res" hidden>
   <div class="wrap cab">
     <p class="migalhas"><a href="#/" data-en="Home">Início</a> / <span data-en="Book">Reservar</span></p>
-    <h2 id="h-res" tabindex="-1" data-foco data-en="A table <span class='risco'>for you</span>.">Uma mesa <span class="risco">para si</span>.</h2>
+    <h2 id="h-res" tabindex="-1" data-foco data-en="A table <span class='risco'>for you.</span>">Uma mesa <span class="risco">para si.</span></h2>
     <p class="lead" data-en="Choose the day, the time and how many you are. The message goes out written to the restaurant's WhatsApp — just press send.">Escolha o dia, a hora e quantos são. A mensagem sai escrita para o WhatsApp do restaurante: só tem de carregar em enviar.</p>
   </div>
   <div class="wrap reserva">
@@ -579,7 +582,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2C3E4E;padding-top:22px;fon
         </table>
       </div>
       <div class="mapa rv" data-mapa>
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#FBFCFA"/><path d="M0 20H400M0 46H400M0 72H400M0 98H400M0 124H400M0 150H400M0 176H400M0 202H400M0 228H400M0 254H400M0 280H400M20 0V300M46 0V300M72 0V300M98 0V300M124 0V300M150 0V300M176 0V300M202 0V300M228 0V300M254 0V300M280 0V300M306 0V300M332 0V300M358 0V300M384 0V300" stroke="#D6E5EE"/><path d="M-10 210 C120 180 260 150 410 90" stroke="#4A4E55" stroke-width="3" fill="none"/><path d="M190 -10 C200 100 210 200 230 310" stroke="#4A4E55" stroke-width="2" fill="none" stroke-dasharray="6 5"/><circle cx="214" cy="158" r="14" fill="none" stroke="#C8473B" stroke-width="3"/><text x="236" y="150" font-family="cursive" font-size="20" fill="#4A4E55">14B</text></svg>
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#FBFCFA"/><path d="M0 20H400M0 46H400M0 72H400M0 98H400M0 124H400M0 150H400M0 176H400M0 202H400M0 228H400M0 254H400M0 280H400M20 0V300M46 0V300M72 0V300M98 0V300M124 0V300M150 0V300M176 0V300M202 0V300M228 0V300M254 0V300M280 0V300M306 0V300M332 0V300M358 0V300M384 0V300" stroke="#D6E5EE"/><path d="M-10 210 C120 180 260 150 410 90" stroke="#4A4E55" stroke-width="3" fill="none"/><path d="M190 -10 C200 100 210 200 230 310" stroke="#4A4E55" stroke-width="2" fill="none" stroke-dasharray="6 5"/><circle cx="214" cy="158" r="14" fill="none" stroke="#C8473B" stroke-width="3"/><text x="236" y="150" font-family="Reenie Beanie, cursive" font-size="30" fill="#4A4E55">14B</text></svg>
         <div class="cap"><button class="btn btn-l" type="button" data-mapa-btn data-en="Show the map">Mostrar o mapa</button><a class="lig" href="https://www.google.com/maps/search/?api=1&amp;query=O+Ant%C3%B3nio+Moncarapacho" target="_blank" rel="noopener" data-en="Open in Google Maps">Abrir no Google Maps</a></div>
       </div>
     </div>
@@ -622,7 +625,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2C3E4E;padding-top:22px;fon
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="d-prato" viewBox="0 0 400 320"><rect width="400" height="320" fill="#fff"/><g fill="none" stroke="#4A4E55" stroke-width="1.6" stroke-linecap="round"><path d="M70 60 L330 52 L338 270 L62 278 Z"/><path d="M96 84 L306 78 L312 248 L90 254 Z" opacity=".45"/><path d="M150 170 C170 130 240 128 262 160 C280 190 240 214 200 210 C160 206 140 196 150 170 Z"/><path d="M168 168 l14 -16 M190 172 l14 -18 M212 174 l14 -18 M234 170 l10 -12"/><path d="M120 120 c10 -8 22 -6 26 4 M260 220 c8 6 20 6 26 -2"/></g></symbol>
-    <symbol id="d-caril" viewBox="0 0 400 320"><rect width="400" height="320" fill="#fff"/><g fill="none" stroke="#4A4E55" stroke-width="1.6" stroke-linecap="round"><ellipse cx="200" cy="180" rx="150" ry="70"/><ellipse cx="200" cy="172" rx="118" ry="50" opacity=".5"/><path d="M110 170 C130 140 170 138 190 160 C200 172 180 190 160 188 C130 186 108 184 110 170 Z"/><path d="M220 150 c18 -18 52 -16 64 4 c-10 6 -24 4 -30 -4 M232 176 c18 -14 46 -10 54 8 c-10 4 -22 2 -28 -6 M206 196 c16 -12 40 -8 48 6"/><path d="M150 150 l6 -8 M164 156 l8 -6 M140 166 l4 -10" opacity=".7"/></g><text x="200" y="290" text-anchor="middle" font-family="cursive" font-size="22" fill="#4A4E55">caril de camarão · arroz basmati</text></symbol>
+    <symbol id="d-caril" viewBox="0 0 400 320"><rect width="400" height="320" fill="#fff"/><g fill="none" stroke="#4A4E55" stroke-width="1.6" stroke-linecap="round"><ellipse cx="200" cy="180" rx="150" ry="70"/><ellipse cx="200" cy="172" rx="118" ry="50" opacity=".5"/><path d="M110 170 C130 140 170 138 190 160 C200 172 180 190 160 188 C130 186 108 184 110 170 Z"/><path d="M220 150 c18 -18 52 -16 64 4 c-10 6 -24 4 -30 -4 M232 176 c18 -14 46 -10 54 8 c-10 4 -22 2 -28 -6 M206 196 c16 -12 40 -8 48 6"/><path d="M150 150 l6 -8 M164 156 l8 -6 M140 166 l4 -10" opacity=".7"/></g><text x="200" y="292" text-anchor="middle" font-family="Reenie Beanie, cursive" font-size="32" fill="#4A4E55">caril de camarão · arroz basmati</text></symbol>
     <symbol id="d-sala" viewBox="0 0 400 300"><rect width="400" height="300" fill="#DCEAF2"/><g stroke="#D9C49A" stroke-width="3"><path d="M0 10 L400 30M0 30 L400 50M0 50 L400 70M0 70 L400 90"/></g><path d="M0 0 L400 0 L400 100 L0 60Z" fill="#E9DDBE" opacity=".6"/><rect y="200" width="400" height="100" fill="#B5603E"/><g fill="#F3EEE4"><ellipse cx="120" cy="200" rx="56" ry="14"/><ellipse cx="270" cy="210" rx="56" ry="14"/></g><circle cx="360" cy="150" r="34" fill="#7C8B49"/><rect x="340" y="176" width="40" height="40" rx="8" fill="#C27A52"/></symbol>
   </defs>
 </svg>
