@@ -704,7 +704,7 @@ dialog.diag.fim .diag-ficha{display:block}
 </style>
 <script>
 /* intro: decide-se antes de pintar (1.ª vez na sessão, sem movimento reduzido e sem ligação direta ao diagnóstico), para o site não aparecer um instante antes dela */
-(function(){try{var diag=location.hash==='#diagnostico'||/[?&]utm_content=diag-/.test(location.search);if(!diag&&!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
+(function(){try{var diag=location.hash==='#diagnostico'||/[?&]utm_content=diag-/.test(location.search);if({{INTRO_LIGADA}}&&!diag&&!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
 </script>
 </head>
 <body>

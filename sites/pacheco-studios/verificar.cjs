@@ -574,6 +574,21 @@ const fs = require('fs');
 
   // ——— 6. intro: 1.ª vez na sessão, com as três fotografias; salta com um toque ou Esc; nunca com movimento reduzido ———
   console.log('\nINTRO');
+  const comIntro = fs.readFileSync(path.join(dist, 'index.html'), 'utf8').includes('id="intro"');
+  if (!comIntro) {
+    // desligada no gerar.py (INTRO_LIGADA = False): na 1.ª visita não aparece e a página abre ativa
+    for (const [k, v] of Object.entries(LINGUAS)) {
+      const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+      const q = await c.newPage();
+      await q.goto(v.url);
+      const r = await q.evaluate(() => ({ vai: document.documentElement.classList.contains('intro-vai'), existe: !!document.getElementById('intro'),
+        inerte: document.querySelector('main').hasAttribute('inert'), rola: getComputedStyle(document.documentElement).overflow !== 'hidden' }));
+      if (r.vai || r.existe || r.inerte || !r.rola) mal(`${k}: intro desligada mas ${JSON.stringify(r)}`);
+      else bem(`${k}: intro desligada; a 1.ª visita abre direta no site`);
+      await c.close();
+    }
+  }
+  if (comIntro) {
   for (const n of [1, 2, 3]) {
     const r = responder(PT + '/media/intro-' + n + '.webp');
     if (r.status !== 200 || r.headers['content-type'] !== 'image/webp') mal(`/media/intro-${n}.webp: ${r.status}`);
@@ -639,6 +654,7 @@ const fs = require('fs');
     else bem('intro: com movimento reduzido não aparece e a página abre direta');
     await c.close();
   }
+  }
   // ligação direta dos anúncios, na 1.ª visita: sem intro, diagnóstico aberto e utilizável; fechar limpa o #diagnostico
   for (const [lg, sufixo] of [['pt', '#diagnostico'], ['ro', '?utm_source=meta&utm_content=diag-teste']]) {
     const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
@@ -661,7 +677,7 @@ const fs = require('fs');
   const ctx2 = await contexto({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false, reducedMotion: 'reduce' }, 'nao', true);
   const p2 = await ctx2.newPage();
   await p2.goto(LINGUAS.pt.url + '#cazuri');
-  const semJs = await p2.evaluate(() => [getComputedStyle(document.getElementById('cazuri')).display, getComputedStyle(document.getElementById('consultanta')).display, !document.getElementById('rgpd'), getComputedStyle(document.getElementById('intro')).display]);
+  const semJs = await p2.evaluate(() => [getComputedStyle(document.getElementById('cazuri')).display, getComputedStyle(document.getElementById('consultanta')).display, !document.getElementById('rgpd'), document.getElementById('intro') ? getComputedStyle(document.getElementById('intro')).display : 'none']);
   if (semJs[0] === 'none' || semJs[1] !== 'none' || !semJs[2] || semJs[3] !== 'none') mal('sem JavaScript: vistas, faixa de cookies ou intro erradas'); else bem('sem JavaScript: separadores funcionam (:target), a faixa de cookies e a intro não aparecem');
   // o esquema: abre-se a automação (<details> nativo), «Ver o esquema» mostra o cartão e o X volta à automação
   await p2.goto(LINGUAS.pt.url + '#automatizari');

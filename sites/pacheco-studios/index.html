@@ -710,7 +710,7 @@ dialog.diag.fim .diag-ficha{display:block}
 </style>
 <script>
 /* intro: decide-se antes de pintar (1.ª vez na sessão, sem movimento reduzido e sem ligação direta ao diagnóstico), para o site não aparecer um instante antes dela */
-(function(){try{var diag=location.hash==='#diagnostico'||/[?&]utm_content=diag-/.test(location.search);if(!diag&&!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
+(function(){try{var diag=location.hash==='#diagnostico'||/[?&]utm_content=diag-/.test(location.search);if(false&&!diag&&!sessionStorage.getItem('ps-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vai')}catch(e){}})();
 </script>
 </head>
 <body>
@@ -1411,46 +1411,7 @@ dialog.diag.fim .diag-ficha{display:block}
   <a class="botao primario" href="https://wa.me/351967117357?text=Ol%C3%A1%20Tom%C3%A1s%21%20Quero%20marcar%20a%20conversa%20de%20diagn%C3%B3stico%20para%20o%20meu%20neg%C3%B3cio%3A%20" data-diagnostico>Conhece-nos</a>
 </div>
 
-<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Introdução">
-  <div class="intro-topo">
-    <p class="marca"><svg class="logo-c" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><defs><path id="arco-intro" d="M 68,300 A 232,232 0 0,1 532,300"/></defs><circle cx="300" cy="300" r="296" fill="#0D0B08"/><circle cx="300" cy="300" r="280" fill="none" stroke="#C9A256" stroke-width="4"/><circle cx="300" cy="300" r="274" fill="none" stroke="#C9A256" stroke-width="1.5" opacity=".7"/><circle cx="300" cy="300" r="258" fill="none" stroke="#C8612A" stroke-width="2.5" stroke-dasharray="9 5.5"/><text fill="#C9A256" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="600" letter-spacing="10"><textPath href="#arco-intro" startOffset="50%">PACHECO STUDIOS</textPath></text><text x="300" y="368" fill="#EDE8D8" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="230" font-weight="700">P</text><text x="300" y="452" fill="#C9A256" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="500" letter-spacing="16">DIGITAL</text></svg><span class="so-leitor">Pacheco Studios</span></p>
-    <button class="intro-saltar" type="button" id="intro-saltar">Saltar</button>
-  </div>
-  <div class="intro-palco">
-    <div class="intro-cena">
-      <p class="intro-rot" id="intro-rot1">Diagnóstico</p>
-      <p class="intro-rot" id="intro-rot2">Implementação de IA</p>
-      <svg viewBox="0 0 560 300" role="img" aria-labelledby="intro-cena-t">
-        <title id="intro-cena-t">Um carro compacto passa pelo diagnóstico e sai muscle car; passa pela implementação de IA e sai superdesportivo.</title>
-        <defs>
-          <clipPath id="intro-zA" clipPathUnits="userSpaceOnUse"><rect id="intro-rA" x="-1000" y="-50" width="1600" height="400"/></clipPath>
-          <clipPath id="intro-zB" clipPathUnits="userSpaceOnUse"><rect id="intro-rB" x="600" y="-50" width="0" height="400"/></clipPath>
-          <clipPath id="intro-zC" clipPathUnits="userSpaceOnUse"><rect id="intro-rC" x="1600" y="-50" width="4000" height="400"/></clipPath>
-          <linearGradient id="intro-brilho" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#E8622C" stop-opacity="0"/><stop offset=".5" stop-color="#E8622C" stop-opacity=".55"/><stop offset="1" stop-color="#E8622C" stop-opacity="0"/></linearGradient>
-          <radialGradient id="intro-sombra"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
-        </defs>
-        <line x1="-1500" y1="240" x2="2500" y2="240" stroke="rgba(239,234,227,.45)" stroke-width="1.5"/>
-        <line id="intro-tracos" x1="-1500" y1="262" x2="2500" y2="262" stroke="rgba(239,234,227,.2)" stroke-width="3" stroke-dasharray="22 26"/>
-        <g id="intro-riscos" stroke="#E8622C" stroke-linecap="round" opacity="0"></g>
-        <g clip-path="url(#intro-zA)"><g id="intro-cA"><ellipse cx="0" cy="3" rx="0" ry="8" fill="url(#intro-sombra)"/><image x="0" y="0" width="0" height="0"/></g></g>
-        <g clip-path="url(#intro-zB)"><g id="intro-cB"><ellipse cx="0" cy="3" rx="0" ry="8" fill="url(#intro-sombra)"/><image x="0" y="0" width="0" height="0"/></g></g>
-        <g clip-path="url(#intro-zC)"><g id="intro-cC"><ellipse cx="0" cy="3" rx="0" ry="8" fill="url(#intro-sombra)"/><image x="0" y="0" width="0" height="0"/></g></g>
-        <g id="intro-p1"><rect class="aura" x="-12" y="0" width="24" height="250" fill="url(#intro-brilho)" opacity=".35"/><line class="fio" x1="0" y1="4" x2="0" y2="246" stroke="#E8622C" stroke-width="2.5"/><line x1="-10" y1="4" x2="10" y2="4" stroke="#E8622C" stroke-width="2.5" stroke-linecap="round"/></g>
-        <g id="intro-p2"><rect class="aura" x="-12" y="0" width="24" height="250" fill="url(#intro-brilho)" opacity=".35"/><line class="fio" x1="0" y1="4" x2="0" y2="246" stroke="#E8622C" stroke-width="2.5"/><line x1="-10" y1="4" x2="10" y2="4" stroke="#E8622C" stroke-width="2.5" stroke-linecap="round"/></g>
-      </svg>
-    </div>
-    <div class="intro-legenda">
-      <p id="intro-l1" class="ativa"><b>01</b><span>Hoje.</span></p>
-      <p id="intro-l2"><b>02</b><span>Com um plano.</span></p>
-      <p id="intro-l3"><b>03</b><span>Com IA.</span></p>
-    </div>
-  </div>
-  <div class="intro-pe"></div>
-  <div class="intro-final" aria-hidden="true">
-    <p class="marca"><svg class="logo-c grande" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><defs><path id="arco-intro-fim" d="M 68,300 A 232,232 0 0,1 532,300"/></defs><circle cx="300" cy="300" r="296" fill="#0D0B08"/><circle cx="300" cy="300" r="280" fill="none" stroke="#C9A256" stroke-width="4"/><circle cx="300" cy="300" r="274" fill="none" stroke="#C9A256" stroke-width="1.5" opacity=".7"/><circle cx="300" cy="300" r="258" fill="none" stroke="#C8612A" stroke-width="2.5" stroke-dasharray="9 5.5"/><text fill="#C9A256" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="600" letter-spacing="10"><textPath href="#arco-intro-fim" startOffset="50%">PACHECO STUDIOS</textPath></text><text x="300" y="368" fill="#EDE8D8" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="230" font-weight="700">P</text><text x="300" y="452" fill="#C9A256" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="500" letter-spacing="16">DIGITAL</text></svg><span class="so-leitor">Pacheco Studios</span></p>
-    <p class="intro-slogan">Tens um objetivo? <em>A IA faz</em> <em>acontecer.</em></p>
-  </div>
-</div>
+
 <dialog class="diag" id="diagnostico" aria-labelledby="diag-t">
   <div class="diag-topo">
     <p class="diag-marca"><svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg><span>Diagnóstico Pacheco Studios</span></p>

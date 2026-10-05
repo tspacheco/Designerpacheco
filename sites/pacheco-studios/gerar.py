@@ -732,6 +732,10 @@ def contacto(c, d, wa, tel_legivel, digitos, com_site):
 </section>"""
 
 
+# A intro do carro está desligada por agora (pedido do Tomás, 05/10). Para a voltar a ligar: True e gerar de novo.
+INTRO_LIGADA = False
+
+
 def intro(c):
     """Ecrã de arranque: um carro passa pelos dois portais (web design + marketing, IA) e sai transformado. Só o
     JavaScript o mostra (uma vez por sessão, nunca com movimento reduzido); sem ele fica em display:none. As três
@@ -1138,7 +1142,7 @@ def main():
             "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, digitos),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "RODAPE": rodape(c, lang), "INTRO": intro(c),
+            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
             "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }
         pagina = montar(src, valores)

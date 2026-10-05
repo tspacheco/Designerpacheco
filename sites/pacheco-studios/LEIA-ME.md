@@ -11,6 +11,9 @@ Um só site, um só projeto no Netlify, dois domínios:
 No topo de cada página há o seletor **PT · EN · RO**. O RO leva a `ro.pachecost.com`; o PT e o EN ficam em
 `pachecost.com`. Os três têm as mesmas quatro vistas e o contacto no fim.
 
+> **Intro desligada desde 05/10 (pedido do Tomás, «por enquanto»).** Para a ligar: `INTRO_LIGADA = True` em `gerar.py`
+> e gerar de novo. O que segue descreve-a quando está ligada.
+
 Na primeira visita de cada sessão, antes do site, corre a **intro** (4 s): um compacto entra, passa pelo portal «Diagnóstico»
 (antes «Web design + marketing») e sai muscle car, passa pelo portal «Implementação de IA» e sai superdesportivo; arranca, aparece a
 marca com o slogan e o ecrã sobe para mostrar o site. Um toque, o botão «Saltar» ou Esc saltam-na. Não aparece ao
