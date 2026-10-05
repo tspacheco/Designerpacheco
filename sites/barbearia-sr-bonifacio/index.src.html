@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barbearia Sr. Bonifácio · Barbearia em Olhão desde 2012</title>
+<meta name="description" content="Barbearia Sr. Bonifácio, Rua dos Combatentes da Grande Guerra 5, Olhão. Desde 2012. Atendimento por ordem de chegada. Corte 12 €, barba 8 €. 5,0 no Google com 97 avaliações. 926 240 012.">
+<meta name="theme-color" content="#E5AC33">
+<meta property="og:title" content="Barbearia Sr. Bonifácio · Olhão">
+<meta property="og:description" content="Desde 2012 em Olhão. Sem marcação: chega, senta-se, a vez é sua.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%23E5AC33'/%3E%3Cpath d='M14 26h36v4H14z M22 26c0-10 4-14 10-14s10 4 10 14z' fill='%231E2024'/%3E%3Cpath d='M20 36c0 14 6 20 12 20s12-6 12-20c-4 4-20 4-24 0z' fill='%231E2024'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BarberShop",
+  "name": "Barbearia Sr. Bonifácio",
+  "description": "Barbearia em Olhão desde 2012. Atendimento por ordem de chegada.",
+  "foundingDate": "2012",
+  "telephone": "+351 926 240 012",
+  "image": "media/fachada.webp",
+  "priceRange": "€",
+  "sameAs": ["https://www.instagram.com/barbeariasr.bonifacio/"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "R. dos Combatentes da Grande Guerra 5",
+    "addressLocality": "Olhão",
+    "postalCode": "8700-440",
+    "addressRegion": "Faro",
+    "addressCountry": "PT"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 37.0296757, "longitude": -7.8414069 },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "97", "bestRating": "5" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "09:00", "closes": "19:00" }
+  ]
+}
+</script>
+<style>
+/*__FONTES__*/
+:root{
+  --mostarda:#E5AC33;     /* o círculo do logótipo */
+  --mostarda-2:#D99A1E;
+  --mostarda-claro:#F2CB72;
+  --grafite:#1E2024;      /* paredes e cadeiras */
+  --grafite-2:#2A2D33;
+  --grafite-3:#3A3E46;
+  --giz:#F6F1E6;          /* cartolina do cartão */
+  --giz-2:#E9E1D0;
+  --texto-claro:#C9C4BA;  /* texto secundário sobre grafite (9:1) */
+  --tinta:#B8322A;        /* tinta do carimbo */
+  --azul:#1D5BA6;         /* faixa azul da fachada */
+  --display:'Holtwood One SC', 'Rockwell Extra Bold', Georgia, serif;
+  --corpo:'Barlow', system-ui, sans-serif;
+  --cond:'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --mao:'Caveat', 'Segoe Print', cursive;
+  --lat:min(1160px, 100% - 40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --mola:cubic-bezier(.34,1.56,.64,1);
+  --nav-h:66px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:90px}
+body{margin:0;background:var(--mostarda);color:var(--grafite);font:400 1.0625rem/1.6 var(--corpo);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--grafite);outline-offset:3px;border-radius:4px}
+.escuro :focus-visible{outline-color:var(--mostarda)}
+h1:focus,h2:focus{outline:none}
+.salta{position:fixed;left:12px;top:-60px;z-index:200;background:var(--grafite);color:var(--giz);padding:10px 16px;border-radius:6px;font-weight:600}
+.salta:focus{top:12px}
+
+.banner{background:var(--grafite);color:var(--mostarda-claro);font:700 .78rem/1.3 var(--cond);letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 14px}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:60;background:var(--mostarda);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 1px 0 rgba(30,32,36,.18),0 10px 24px -18px rgba(30,32,36,.5)}
+.nav-in{width:var(--lat);margin:auto;height:var(--nav-h);display:flex;align-items:center;gap:16px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;line-height:1}
+.marca svg{width:40px;height:40px;flex:none}
+.marca b{font:400 .98rem/1 var(--display);display:block}
+.marca small{font:700 .72rem/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;display:block;margin-top:4px}
+.menu{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.menu a{display:block;text-decoration:none;font:700 1rem/1 var(--cond);letter-spacing:.06em;text-transform:uppercase;padding:11px 12px;border-radius:4px;transition:background .2s}
+.menu a:hover{background:rgba(30,32,36,.1)}
+.menu a[aria-current="page"]{background:var(--grafite);color:var(--mostarda)}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--grafite);color:var(--giz);font:700 1rem/1 var(--cond);letter-spacing:.06em;text-transform:uppercase;padding:13px 16px;border-radius:4px}
+.btn-nav svg{width:18px;height:18px}
+.burger{display:none;width:48px;height:48px;border:2px solid var(--grafite);border-radius:6px;background:none;cursor:pointer}
+.burger span{display:block;width:20px;height:2.5px;background:var(--grafite);margin:4px auto;transition:transform .3s var(--ease),opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ---------- páginas ---------- */
+.pg{display:none}.pg.on{display:block}
+.js .pg.on{animation:entra .45s var(--ease)}
+@keyframes entra{from{opacity:0}to{opacity:1}}
+.w{width:var(--lat);margin:auto}
+.sec{padding:clamp(60px,9vw,112px) 0;position:relative}
+.escuro{background:var(--grafite);color:var(--giz)}
+.papel{background:var(--giz)}
+.eyebrow{font:700 .95rem/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;margin:0 0 16px;display:flex;align-items:center;gap:12px;min-height:44px}
+h2{font:400 clamp(1.75rem,5vw,3.3rem)/1.2 var(--display);margin:0 0 18px;letter-spacing:-.01em;text-wrap:balance}
+h3{font:700 1.35rem/1.15 var(--cond);letter-spacing:.02em;text-transform:uppercase;margin:0 0 6px}
+.lead{font-size:clamp(1.08rem,1.6vw,1.22rem);max-width:58ch;margin:0}
+.escuro .lead,.escuro p{color:var(--texto-claro)}
+
+/* ---------- carimbo de secção ---------- */
+.marca-c{width:46px;height:46px;flex:none;color:var(--tinta);opacity:0;transform:scale(2.4) rotate(-30deg)}
+.marca-c.carimbado{opacity:.92;transform:scale(1) rotate(var(--r,-12deg));transition:transform .38s var(--mola),opacity .12s}
+.escuro .marca-c{color:#E2584B}
+
+/* ---------- herói: o cartão ---------- */
+.heroi{padding:clamp(28px,5vw,64px) 0 clamp(56px,8vw,96px);overflow:hidden}
+.heroi .w{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center}
+.local{font:700 1rem/1 var(--cond);letter-spacing:.2em;text-transform:uppercase;margin:0 0 18px;display:flex;align-items:center;gap:12px}
+.local i{height:3px;width:34px;background:var(--grafite);display:inline-block}
+h1{margin:0;font:400 clamp(2.7rem,7.6vw,6.2rem)/1.02 var(--display);letter-spacing:-.02em}
+h1 .pre{display:block;font:700 clamp(1.1rem,2.4vw,1.6rem)/1 var(--cond);letter-spacing:.32em;text-transform:uppercase;margin-bottom:12px}
+.heroi-txt{font-size:clamp(1.1rem,1.8vw,1.28rem);max-width:40ch;margin:22px 0 26px;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px;padding:0;list-style:none}
+.chips li{display:inline-flex;align-items:center;gap:8px;background:var(--grafite);color:var(--giz);font:600 .95rem/1 var(--corpo);padding:10px 14px;border-radius:999px}
+.chips li svg{width:16px;height:16px;color:var(--mostarda)}
+.chips li.claro{background:transparent;color:var(--grafite);box-shadow:inset 0 0 0 2px var(--grafite)}
+.chips li.claro svg{color:var(--grafite)}
+.acoes{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:6px;text-decoration:none;font:700 1.12rem/1 var(--cond);letter-spacing:.06em;text-transform:uppercase;border:0;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s,background .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-g{background:var(--grafite);color:var(--giz);box-shadow:0 5px 0 #000}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 7px 0 #000}
+.btn-g:active{transform:translateY(4px);box-shadow:0 1px 0 #000}
+.btn-l{background:transparent;color:var(--grafite);box-shadow:inset 0 0 0 2.5px var(--grafite)}
+.btn-l:hover{background:rgba(30,32,36,.08)}
+.escuro .btn-l{color:var(--giz);box-shadow:inset 0 0 0 2.5px var(--giz)}
+.btn-m{background:var(--mostarda);color:var(--grafite);box-shadow:0 5px 0 #8A5E0A}
+.btn-m:hover{transform:translateY(-2px);box-shadow:0 7px 0 #8A5E0A}
+.btn-m:active{transform:translateY(4px);box-shadow:0 1px 0 #8A5E0A}
+
+.cartao{position:relative;background:var(--giz);border-radius:14px;padding:clamp(18px,3vw,28px);box-shadow:0 2px 0 rgba(0,0,0,.08),0 30px 50px -24px rgba(60,35,0,.55);transform:rotate(2.2deg);max-width:520px;justify-self:center;width:100%}
+.cartao::before{content:"";position:absolute;inset:8px;border:1.5px dashed rgba(30,32,36,.28);border-radius:9px;pointer-events:none}
+.cartao-cab{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;padding-bottom:14px;border-bottom:2px solid var(--grafite)}
+.cartao-cab svg{width:64px;height:64px}
+.cartao-cab b{font:400 1.15rem/1.05 var(--display);display:block}
+.cartao-cab small{font:700 .82rem/1 var(--cond);letter-spacing:.18em;text-transform:uppercase;display:block;margin-top:6px;color:#5A5148}
+.cartao-nome{display:flex;align-items:baseline;gap:10px;margin:14px 0 6px;font:700 .85rem/1 var(--cond);letter-spacing:.14em;text-transform:uppercase;color:#5A5148}
+.cartao-nome span{flex:1;border-bottom:1.5px solid rgba(30,32,36,.4);font:600 1.6rem/1 var(--mao);letter-spacing:0;text-transform:none;color:#2B3E8C;padding:0 0 2px 6px}
+.casas{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1.6vw,14px);margin:16px 0 12px;padding:0;list-style:none}
+.casas li{aspect-ratio:1;border-radius:50%;border:2px dashed rgba(30,32,36,.35);display:grid;place-items:center;position:relative;font:700 1.05rem/1 var(--cond);color:rgba(30,32,36,.35)}
+.casas li.dez{border-style:solid;border-color:var(--grafite);color:var(--grafite)}
+.casas li svg{position:absolute;inset:-12%;width:124%;height:124%;color:var(--tinta);opacity:0;transform:scale(2.2) rotate(-40deg)}
+.casas li.ok{border-color:transparent;color:transparent}
+.casas li.ok svg{opacity:.93;transform:scale(1) rotate(var(--r,-10deg));transition:transform .36s var(--mola),opacity .1s}
+.cartao-pe{display:flex;justify-content:space-between;align-items:center;gap:12px;font:600 .92rem/1.3 var(--corpo);color:#4A423A;flex-wrap:wrap}
+.confirmar{display:inline-flex;align-items:center;font:700 .74rem/1 var(--cond);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta);border:1.5px solid currentColor;padding:5px 8px 4px;border-radius:3px;transform:rotate(-2deg);white-space:nowrap}
+.escuro .confirmar{color:#F08A7F}
+.cartao .dica{font:600 1.35rem/1.1 var(--mao);color:#2B3E8C;position:absolute;right:16px;bottom:-40px;transform:rotate(-3deg)}
+/* entrada */
+.js .heroi .local,.js .heroi h1,.js .heroi .heroi-txt,.js .heroi .chips,.js .heroi .acoes{opacity:0;transform:translateY(16px)}
+.js .heroi .cartao{opacity:0;transform:rotate(9deg) translateY(60px) scale(.94)}
+.ini .heroi .local{opacity:1;transform:none;transition:all .6s var(--ease) .05s}
+.ini .heroi h1{opacity:1;transform:none;transition:all .7s var(--ease) .15s}
+.ini .heroi .heroi-txt{opacity:1;transform:none;transition:all .7s var(--ease) .35s}
+.ini .heroi .chips{opacity:1;transform:none;transition:all .7s var(--ease) .45s}
+.ini .heroi .acoes{opacity:1;transform:none;transition:all .7s var(--ease) .55s}
+.ini .heroi .cartao{opacity:1;transform:rotate(2.2deg);transition:transform .9s var(--mola) .3s,opacity .5s var(--ease) .3s}
+
+/* ---------- faixa ---------- */
+.faixa{background:var(--grafite);color:var(--mostarda);overflow:hidden;border-top:5px solid var(--azul)}
+.faixa-in{display:flex;width:max-content;animation:corre 40s linear infinite}
+.faixa ul{display:flex;list-style:none;margin:0;padding:16px 0}
+.faixa li{font:700 1.3rem/1 var(--cond);letter-spacing:.12em;text-transform:uppercase;padding:0 20px;display:flex;align-items:center;gap:20px;white-space:nowrap}
+.faixa li::after{content:"";width:10px;height:10px;border-radius:50%;border:2px solid var(--mostarda)}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+/* ---------- fotos ---------- */
+.foto{position:relative;overflow:hidden;background:var(--grafite-2);border-radius:8px}
+.foto>svg{position:absolute;inset:0;width:100%;height:100%}
+.foto>img{position:relative;width:100%;height:100%;object-fit:cover}
+
+/* ---------- preços ---------- */
+.precos-top{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.preco{background:var(--giz);border-radius:10px;padding:22px 20px 20px;position:relative;box-shadow:0 2px 0 rgba(0,0,0,.08)}
+.preco .v{font:400 2.4rem/1 var(--display);display:block;margin-top:14px;font-variant-numeric:tabular-nums}
+.preco .v small{font:700 1.1rem/1 var(--cond);margin-left:4px}
+.preco p{margin:4px 0 0;color:#5A5148;font-size:.95rem}
+.iva{font:600 .92rem/1.3 var(--corpo);margin:18px 0 0}
+
+.lista-precos{list-style:none;margin:0;padding:0}
+.lista-precos li{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 14px;padding:16px 0;border-bottom:2px dotted rgba(30,32,36,.3)}
+.lista-precos b{font:700 1.3rem/1.15 var(--cond);letter-spacing:.03em;text-transform:uppercase}
+.lista-precos span.v{font:400 1.45rem/1 var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.lista-precos small{grid-column:1/-1;color:#5A5148;font-size:.95rem}
+
+/* ---------- ordem de chegada ---------- */
+.chegada{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,80px);align-items:center}
+.chegada .foto{aspect-ratio:3/4}
+.relogio{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin:26px 0 0;padding:18px 20px;background:var(--grafite-2);border-radius:10px;border-left:5px solid var(--mostarda)}
+.relogio b{font:400 2.2rem/1 var(--display);color:var(--mostarda);white-space:nowrap}
+.relogio span{color:var(--texto-claro);font-size:1rem;line-height:1.4;flex:1 1 200px}
+
+/* ---------- nota ---------- */
+.nota .w{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.nota-num{font:400 clamp(5.5rem,17vw,11rem)/.85 var(--display);letter-spacing:-.04em}
+.estrelas{display:flex;gap:6px;margin-bottom:12px}.estrelas svg{width:28px;height:28px}
+
+/* ---------- casa ---------- */
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.duas .foto{aspect-ratio:4/3}
+.pormenores{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,32px);margin-top:44px}
+.pormenor .foto{aspect-ratio:4/5;margin-bottom:14px}
+.pormenor p{margin:0;color:#4A423A}
+.escuro .pormenor p{color:var(--texto-claro)}
+.trabalho{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}
+.trabalho figure{margin:0}
+.trabalho .foto{aspect-ratio:3/4}
+.trabalho figcaption{font:700 .92rem/1.2 var(--cond);letter-spacing:.1em;text-transform:uppercase;margin-top:10px;color:var(--texto-claro)}
+.fatos{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:0}
+.fatos li{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:18px 0;border-top:2px solid var(--grafite)}
+.fatos li b{font:700 1.15rem/1.2 var(--cond);letter-spacing:.08em;text-transform:uppercase}
+.fatos li span{color:#3A342E}
+
+/* ---------- ferramenta "vou a caminho" ---------- */
+.ferr{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,56px);align-items:start}
+.talao{background:var(--giz);border-radius:12px;padding:clamp(20px,3.5vw,34px);box-shadow:0 30px 50px -28px rgba(0,0,0,.55);color:var(--grafite)}
+.talao fieldset{border:0;margin:0 0 22px;padding:0}
+.talao legend{font:700 1.2rem/1 var(--cond);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;padding:0}
+.modos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chk{position:relative;display:block}
+.chk input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;width:100%;height:100%}
+.chk span{display:grid;grid-template-columns:26px 1fr auto;gap:10px;align-items:center;min-height:52px;padding:10px 14px;background:#fff;border-radius:8px;box-shadow:inset 0 0 0 2px var(--giz-2);cursor:pointer;transition:box-shadow .15s,background .15s;font-weight:600}
+.chk span i{width:22px;height:22px;border-radius:50%;border:2px solid var(--grafite);display:grid;place-items:center;transition:background .15s}
+.chk span i svg{width:14px;height:14px;opacity:0;color:var(--mostarda)}
+.chk span em{font:400 1.05rem/1 var(--display);font-style:normal;font-variant-numeric:tabular-nums}
+.chk input:hover+span{box-shadow:inset 0 0 0 2px #B9AE98}
+.chk input:checked+span{box-shadow:inset 0 0 0 2.5px var(--grafite);background:#FFFBF0}
+.chk input:checked+span i{background:var(--grafite)}
+.chk input:checked+span i svg{opacity:1}
+.chk input:focus-visible+span{outline:3px solid var(--azul);outline-offset:2px}
+.chk.rad span{grid-template-columns:26px 1fr}
+.lista-chk{display:grid;gap:8px}
+.lista-chk.duas-col{grid-template-columns:1fr 1fr}
+.campo{display:grid;gap:6px}
+.campo label{font-weight:700;font-size:.95rem}
+.campo input,.campo select{min-height:52px;border-radius:8px;border:2px solid var(--giz-2);background:#fff;padding:0 14px;font-weight:500}
+.campo input:focus-visible,.campo select:focus-visible{outline:3px solid var(--azul);outline-offset:1px}
+.linha-campos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:2px solid var(--grafite);border-bottom:2px solid var(--grafite);margin:0 0 16px}
+.total b{font:700 1.1rem/1 var(--cond);letter-spacing:.14em;text-transform:uppercase}
+.total span{font:400 2rem/1 var(--display);font-variant-numeric:tabular-nums}
+.previa{background:#DCF8C6;color:#1E2024;border-radius:10px 10px 10px 2px;padding:12px 14px;font-size:.95rem;line-height:1.45;margin:0 0 16px;white-space:pre-line;box-shadow:0 1px 0 rgba(0,0,0,.1)}
+.previa.vazio{background:#fff;color:#7A2219;font-weight:600}
+.talao .btn{width:100%}
+.talao .btn[aria-disabled="true"]{background:#B7AE9F;box-shadow:none;cursor:not-allowed;transform:none}
+.escuro .talao .miudo,.miudo{font-size:.88rem;color:#5A5148;margin:12px 0 0}
+.oculto{display:none!important}
+
+/* ---------- galeria ---------- */
+.galeria{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-flow:dense;gap:12px;margin-top:36px}
+.galeria button{padding:0;border:0;background:none;cursor:zoom-in;border-radius:8px;overflow:hidden;position:relative;aspect-ratio:3/4}
+.galeria button.larga{grid-column:span 2;aspect-ratio:auto}
+.galeria .foto{height:100%;border-radius:8px}
+.galeria .foto img{transition:transform .5s var(--ease)}
+.galeria button:hover .foto img{transform:scale(1.04)}
+.galeria .leg{position:absolute;left:8px;bottom:8px;right:8px;text-align:left;font:700 .82rem/1.2 var(--cond);letter-spacing:.08em;text-transform:uppercase;color:var(--giz);background:rgba(30,32,36,.85);padding:7px 9px;border-radius:4px;width:max-content;max-width:calc(100% - 16px)}
+dialog{border:0;padding:0;background:transparent;max-width:min(92vw,1000px);max-height:90vh}
+dialog::backdrop{background:rgba(20,21,24,.92)}
+dialog img{max-height:82vh;width:auto;margin:auto;border-radius:8px}
+dialog p{text-align:center;font:700 1rem/1.3 var(--cond);letter-spacing:.08em;text-transform:uppercase;color:var(--giz);margin:12px 0 0}
+.fechar{position:fixed;top:14px;right:14px;width:50px;height:50px;border-radius:50%;border:0;background:var(--mostarda);color:var(--grafite);font-size:1.7rem;cursor:pointer}
+
+/* ---------- visitar ---------- */
+.visita{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,60px)}
+.horas{width:100%;border-collapse:collapse;margin:8px 0 0}
+.horas th,.horas td{text-align:left;padding:14px 0;border-bottom:2px solid rgba(30,32,36,.18);vertical-align:middle}
+.escuro .horas th,.escuro .horas td{border-bottom-color:rgba(246,241,230,.15)}
+.horas th{font:700 1.1rem/1.2 var(--cond);letter-spacing:.06em;text-transform:uppercase;width:44%}
+.horas td{font-variant-numeric:tabular-nums;font-weight:600}
+.mapa{position:relative;min-height:380px;border-radius:10px;overflow:hidden;background:var(--grafite-2)}
+.mapa svg,.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.contactos{display:grid;gap:0;margin-top:22px}
+.contactos a{display:flex;gap:12px;align-items:center;text-decoration:none;font-weight:700;padding:14px 0;border-bottom:2px solid rgba(30,32,36,.18)}
+.escuro .contactos a{border-bottom-color:rgba(246,241,230,.15)}
+.contactos a:hover{text-decoration:underline;text-underline-offset:4px}
+.contactos svg{width:22px;height:22px;flex:none}
+
+.cab{padding:clamp(40px,7vw,88px) 0 clamp(28px,4vw,44px)}
+
+/* ---------- cartão em miniatura ---------- */
+.mini{position:fixed;right:16px;bottom:20px;z-index:65;display:flex;align-items:center;gap:10px;background:var(--giz);color:var(--grafite);border-radius:999px;padding:8px 14px 8px 10px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5),inset 0 0 0 2px var(--grafite);font:700 .95rem/1 var(--cond);letter-spacing:.06em;transform:translateY(140%);transition:transform .45s var(--ease);text-decoration:none}
+.mini.ve{transform:none}
+.mini .pontos{display:grid;grid-template-columns:repeat(5,9px);gap:3px}
+.mini .pontos i{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(30,32,36,.45)}
+.mini .pontos i.ok{background:var(--tinta);border-color:var(--tinta)}
+.mini.pum{animation:pum .5s var(--mola)}
+@keyframes pum{40%{transform:scale(1.12) rotate(-3deg)}}
+.aviso{position:fixed;left:50%;bottom:90px;z-index:80;transform:translate(-50%,30px);opacity:0;pointer-events:none;background:var(--grafite);color:var(--giz);padding:14px 18px;border-radius:10px;max-width:min(92vw,440px);font-size:.98rem;box-shadow:0 20px 40px -16px rgba(0,0,0,.6);transition:all .4s var(--ease)}
+.aviso.ve{opacity:1;transform:translate(-50%,0)}
+.aviso b{color:var(--mostarda)}
+
+/* ---------- rodapé ---------- */
+.rodape{background:var(--grafite);color:var(--texto-claro);padding:56px 0 calc(40px + env(safe-area-inset-bottom));font-size:.95rem}
+.rodape .w{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+.rodape b.m{font:400 1.25rem/1.1 var(--display);color:var(--mostarda);display:block;margin-bottom:10px}
+.rodape a{color:var(--giz);text-underline-offset:3px}
+.rodape ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.legal{display:inline-flex;gap:8px;align-items:center;margin-top:14px;padding:10px 14px;border:1.5px solid rgba(246,241,230,.3);border-radius:6px;text-decoration:none}
+
+.cta-fixo{display:none}
+
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.d1{transition-delay:.1s}.js .rv.d2{transition-delay:.2s}.js .rv.d3{transition-delay:.3s}
+.js .rv.vi{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .menu-wrap{position:fixed;inset:var(--nav-h) 0 0 0;background:var(--mostarda);padding:20px;display:none;flex-direction:column;gap:20px;overflow:auto}
+  .menu-wrap.aberto{display:flex}
+  .menu{flex-direction:column}
+  .menu a{font:400 1.7rem/1.2 var(--display);text-transform:none;letter-spacing:0;padding:14px 8px;border-bottom:2px solid rgba(30,32,36,.15);border-radius:0}
+  .menu a[aria-current="page"]{background:none;color:var(--tinta)}
+  .burger{display:block}
+  .btn-nav{display:none}
+  .heroi .w,.chegada,.ferr,.visita{grid-template-columns:1fr}
+  .precos-top{grid-template-columns:1fr 1fr}
+  .pormenores{grid-template-columns:1fr 1fr}
+  .pormenores .pormenor:last-child{grid-column:1/-1}
+  .pormenores .pormenor:last-child .foto{aspect-ratio:16/9}
+  .trabalho{grid-template-columns:1fr 1fr}
+  .galeria{grid-template-columns:1fr 1fr}
+  .rodape .w{grid-template-columns:1fr}
+  .cartao{transform:rotate(1.5deg)}
+  .ini .heroi .cartao{transform:rotate(1.5deg)}
+}
+@media (min-width:981px){.menu-wrap{display:flex}}
+@media (max-width:680px){
+  body{padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+  .marca b{font-size:.86rem}
+  .heroi{padding-top:22px}
+  .heroi .w{gap:0}
+  .heroi-bloco{display:contents}
+  .heroi .local{order:0}.heroi h1{order:1}.heroi .cartao{order:2;margin:26px 0 8px;max-width:360px}
+  .heroi .heroi-txt{order:3}.heroi .chips{order:4}.heroi .acoes{order:5}
+  .cartao-cab{grid-template-columns:52px 1fr}.cartao-cab svg{width:52px;height:52px}
+  .casas{margin:12px 0 10px}
+  .nota .w{grid-template-columns:1fr}
+  .duas{grid-template-columns:1fr}
+  .lista-chk.duas-col{grid-template-columns:1fr}
+  .fatos li{grid-template-columns:1fr;gap:4px}
+  .cta-fixo{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--grafite)}
+  .cta-fixo a{min-height:52px;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:8px;font:700 1.1rem/1 var(--cond);letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+  .cta-fixo a svg{width:20px;height:20px}
+  .cta-fixo .l{color:var(--giz);box-shadow:inset 0 0 0 2px rgba(246,241,230,.5)}
+  .cta-fixo .z{background:var(--mostarda);color:var(--grafite)}
+  .mini{bottom:calc(84px + env(safe-area-inset-bottom));right:12px}
+  .aviso{bottom:calc(150px + env(safe-area-inset-bottom))}
+  .mapa{min-height:300px}
+  .relogio b{font-size:1.8rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv,.js .heroi .local,.js .heroi h1,.js .heroi .heroi-txt,.js .heroi .chips,.js .heroi .acoes{opacity:1!important;transform:none!important}
+  .js .heroi .cartao{opacity:1!important;transform:rotate(1.5deg)!important}
+}
+</style>
+</head>
+<body>
+<a class="salta" href="#conteudo">Saltar para o conteúdo</a>
+<div class="banner" role="note">APRESENTAÇÃO PACHECO STUDIOS · proposta de site para a Barbearia Sr. Bonifácio</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="tinta-f" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" result="d"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.1 1.45" result="buracos"/><feComposite in="d" in2="buracos" operator="in"/></filter>
+    <symbol id="mascote" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="49" fill="#E5AC33"/>
+      <path d="M18 40 Q50 33 82 40 L82 44 Q50 38 18 44 Z" fill="#1E2024"/>
+      <path d="M30 40 Q30 16 50 15 Q70 16 70 40 Q50 36 30 40 Z" fill="#1E2024"/>
+      <path d="M31 35 Q50 31 69 35 L69 38 Q50 34 31 38 Z" fill="#E5AC33"/>
+      <circle cx="40" cy="51" r="7" fill="#F6F1E6" stroke="#1E2024" stroke-width="3"/>
+      <circle cx="60" cy="51" r="7" fill="#F6F1E6" stroke="#1E2024" stroke-width="3"/>
+      <path d="M47 51 h6" stroke="#1E2024" stroke-width="3"/>
+      <path d="M30 58 Q32 88 50 90 Q68 88 70 58 Q66 62 60 62 Q55 66 50 63 Q45 66 40 62 Q34 62 30 58 Z" fill="#1E2024"/>
+      <path d="M42 70 Q50 66 58 70 Q50 73 42 70 Z" fill="#F6F1E6"/>
+    </symbol>
+    <symbol id="carimbo" viewBox="0 0 100 100">
+      <g filter="url(#tinta-f)" fill="currentColor">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="5"/>
+        <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M28 43 Q50 38 72 43 L72 46 Q50 42 28 46 Z"/>
+        <path d="M37 43 Q37 26 50 25 Q63 26 63 43 Q50 40 37 43 Z"/>
+        <circle cx="43" cy="51" r="4.5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="57" cy="51" r="4.5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M37 57 Q38 77 50 78 Q62 77 63 57 Q56 61 50 59 Q44 61 37 57 Z"/>
+        <path d="M14 50 l6 -2 v4 Z M86 50 l-6 -2 v4 Z"/>
+      </g>
+    </symbol>
+    <pattern id="tijolo" width="60" height="30" patternUnits="userSpaceOnUse"><rect width="60" height="30" fill="#2A2D33"/><path d="M0 0.5h60M0 15.5h60M30 0v15M0 15v15M60 15v15" stroke="#1E2024" stroke-width="2"/><rect x="2" y="2" width="26" height="12" fill="#4A3A36" opacity=".55"/><rect x="32" y="2" width="26" height="12" fill="#3E3431" opacity=".55"/><rect x="-13" y="17" width="26" height="12" fill="#3E3431" opacity=".55"/><rect x="17" y="17" width="26" height="12" fill="#4A3A36" opacity=".55"/><rect x="47" y="17" width="26" height="12" fill="#45363A" opacity=".55"/></pattern>
+    <symbol id="cena" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice"><rect width="300" height="400" fill="url(#tijolo)"/><g transform="translate(110 150)" opacity=".9"><use href="#mascote" width="80" height="80"/></g></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Zm0 1.8a7.7 7.7 0 1 1-4 14.3l-.3-.2-2.8.8.8-2.7-.2-.3A7.7 7.7 0 0 1 12 4.3Zm-3.4 3.9c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.2.2 2 3.2 5 4.3 2.4.9 2.9.8 3.5.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4l-.5-.3-1.8-.9c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.5.3-.5v-.5l-.8-2c-.2-.5-.4-.5-.6-.5h-.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-estrela" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" fill="currentColor"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="marca" href="#/" aria-label="Barbearia Sr. Bonifácio — início">
+      <svg aria-hidden="true"><use href="#mascote"/></svg>
+      <span><b>Sr. Bonifácio</b><small>Barbearia · Olhão</small></span>
+    </a>
+    <div class="menu-wrap" id="menu">
+      <ul class="menu">
+        <li><a href="#/" data-r="">Início</a></li>
+        <li><a href="#/servicos" data-r="servicos">Serviços e preços</a></li>
+        <li><a href="#/casa" data-r="casa">A casa</a></li>
+        <li><a href="#/galeria" data-r="galeria">Galeria</a></li>
+        <li><a href="#/visitar" data-r="visitar">Visitar</a></li>
+      </ul>
+    </div>
+    <a class="btn-nav" href="tel:+351926240012"><svg aria-hidden="true"><use href="#i-tel"/></svg>926 240 012</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span><b class="sr">Menu</b></button>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ================= INÍCIO ================= -->
+<section class="pg" id="pg-" data-t="Barbearia Sr. Bonifácio · Barbearia em Olhão desde 2012">
+  <section class="heroi" data-c="i0" aria-label="Apresentação">
+    <div class="w">
+      <div class="heroi-bloco">
+        <p class="local">Olhão <i></i> desde 2012</p>
+        <h1 tabindex="-1"><span class="pre">Barbearia</span>Sr. Bonifácio</h1>
+        <p class="heroi-txt">Não se marca: chega-se. Senta-se no sofá, bebe-se um café e a vez é sua, por ordem de chegada.</p>
+        <ul class="chips">
+          <li><svg aria-hidden="true"><use href="#i-estrela"/></svg>5,0 no Google · 97 avaliações</li>
+          <li class="claro"><svg aria-hidden="true"><use href="#i-relogio"/></svg>Espera de 15 a 20 min</li>
+        </ul>
+        <div class="acoes">
+          <a class="btn btn-g" href="#/servicos">Vou a caminho</a>
+          <a class="btn btn-l" href="tel:+351926240012"><svg aria-hidden="true"><use href="#i-tel"/></svg>Ligar</a>
+        </div>
+      </div>
+      <div class="cartao" id="cartao" role="img" aria-label="Cartão de cliente da Barbearia Sr. Bonifácio, com dez casas para carimbar">
+        <div class="cartao-cab">
+          <svg aria-hidden="true"><use href="#mascote"/></svg>
+          <div><b>Barbearia<br>Sr. Bonifácio</b><small>Cartão de cliente · Est. 2012</small></div>
+        </div>
+        <p class="cartao-nome">Nome <span>o seu</span></p>
+        <ol class="casas" id="casas" aria-hidden="true"></ol>
+        <div class="cartao-pe"><span>Um carimbo por corte. O décimo é especial.</span><span class="confirmar">a confirmar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-in">
+    <ul><li>Corte 12 €</li><li>Barba 8 €</li><li>Barboterapia 12 €</li><li>Por ordem de chegada</li><li>Olhão</li><li>Desde 2012</li></ul>
+    <ul><li>Corte 12 €</li><li>Barba 8 €</li><li>Barboterapia 12 €</li><li>Por ordem de chegada</li><li>Olhão</li><li>Desde 2012</li></ul>
+  </div></div>
+
+  <section class="sec" data-c="i1" aria-labelledby="t-precos">
+    <div class="w">
+      <p class="eyebrow rv"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>O preçário da parede</p>
+      <h2 id="t-precos" class="rv d1">Preços claros,<br>com IVA incluído.</h2>
+      <div class="precos-top">
+        <div class="preco rv"><h3>Corte</h3><p>Máquina, tesoura, degradê.</p><span class="v">12<small>€</small></span></div>
+        <div class="preco rv d1"><h3>Barba</h3><p>Aparar e alinhar.</p><span class="v">8<small>€</small></span></div>
+        <div class="preco rv d2"><h3>Barboterapia</h3><p>O tratamento completo da barba.</p><span class="v">12<small>€</small></span></div>
+        <div class="preco rv d3"><h3>Sobrancelha</h3><p>Acerto à navalha ou pinça.</p><span class="v">5<small>€</small></span></div>
+      </div>
+      <p class="iva rv"><a class="btn btn-g" href="#/servicos" style="margin-top:10px">Ver os 10 serviços</a></p>
+    </div>
+  </section>
+
+  <section class="sec escuro" data-c="i2" aria-labelledby="t-chegada">
+    <div class="w chegada">
+      <div class="foto rv"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/entrada-ordem-chegada.webp" alt="Entrada da barbearia com a placa Atendimento por ordem de chegada, tempo de espera 15 a 20 minutos, e o poste de barbeiro" loading="lazy" onerror="this.remove()"></div>
+      <div>
+        <p class="eyebrow rv" style="color:var(--mostarda)"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>Como funciona</p>
+        <h2 id="t-chegada" class="rv d1">Por ordem de chegada.</h2>
+        <p class="lead rv d2">Está escrito à porta e é assim desde o início: não há agenda, há fila. Quem chega primeiro senta-se primeiro. Para não perder tempo, mande mensagem a dizer que vai a caminho.</p>
+        <div class="relogio rv d3"><b>15–20 min</b><span>de espera habitual. Em dias de muito movimento pode ser mais.</span></div>
+        <p class="rv d3" style="margin-top:26px"><a class="btn btn-m wa-cam" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Como está a espera?</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec nota" data-c="i3" aria-labelledby="t-nota">
+    <div class="w">
+      <div class="nota-num rv" aria-hidden="true">5,0</div>
+      <div class="rv d1">
+        <p class="eyebrow"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>No Google</p>
+        <div class="estrelas" aria-hidden="true"><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg></div>
+        <h2 id="t-nota">97 avaliações.<br>Média de cinco estrelas.</h2>
+        <p class="lead">A nota máxima no Google, dada por quem já se sentou na cadeira — 97 vezes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec papel" data-c="i4" aria-labelledby="t-casa">
+    <div class="w">
+      <p class="eyebrow rv"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>Enquanto espera</p>
+      <h2 id="t-casa" class="rv d1">Sofá, café<br>e rebuçados no balcão.</h2>
+      <div class="pormenores">
+        <div class="pormenor rv"><div class="foto"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/cafe.webp" alt="Chávena de café ao balcão, com o logótipo da barbearia no vidro" loading="lazy" onerror="this.remove()"></div><h3>O café</h3><p>Uma bica ao balcão, com vista para a rua.</p></div>
+        <div class="pormenor rv d1"><div class="foto"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/rebucados.webp" alt="Taça de cristal com rebuçados embrulhados em papel vermelho" loading="lazy" onerror="this.remove()" style="object-position:70% 50%"></div><h3>Os rebuçados</h3><p>A taça de cristal, sempre cheia.</p></div>
+        <div class="pormenor rv d2"><div class="foto"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/sala-sofa.webp" alt="Sala da barbearia com sofá capitoné preto, cadeiras e candeeiros pendentes" loading="lazy" onerror="this.remove()"></div><h3>O sofá</h3><p>Capitoné preto, junto às cadeiras.</p></div>
+      </div>
+      <p class="rv" style="margin-top:34px"><a class="btn btn-l" href="#/casa">Conhecer a casa</a></p>
+    </div>
+  </section>
+
+  <section class="sec" data-c="i5" aria-labelledby="t-onde">
+    <div class="w visita">
+      <div>
+        <p class="eyebrow rv"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>Onde estamos</p>
+        <h2 id="t-onde" class="rv d1">Rua dos Combatentes da Grande Guerra, 5</h2>
+        <p class="lead rv d2">8700-440 Olhão. Toldo azul, letreiro preto e o poste às riscas à porta.</p>
+        <table class="horas rv d2">
+          <caption class="sr">Horário</caption>
+          <tr><th scope="row">Segunda</th><td>09:00–19:00</td></tr>
+          <tr><th scope="row">Terça a sábado</th><td><span class="confirmar">a confirmar</span></td></tr>
+          <tr><th scope="row">Domingo</th><td>Encerrado</td></tr>
+        </table>
+        <p class="rv d3" style="margin-top:24px"><a class="btn btn-g" href="#/visitar">Como chegar</a></p>
+      </div>
+      <div class="foto rv d1" style="aspect-ratio:3/4"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/fachada.webp" alt="Fachada da Barbearia Sr. Bonifácio: letreiro preto com o logótipo, faixa azul, porta de madeira e poste de barbeiro" loading="lazy" onerror="this.remove()"></div>
+    </div>
+  </section>
+</section>
+
+<!-- ================= SERVIÇOS ================= -->
+<section class="pg" id="pg-servicos" data-t="Serviços e preços · Barbearia Sr. Bonifácio, Olhão">
+  <div class="w cab">
+    <p class="eyebrow">Serviços e preços</p>
+    <h2 tabindex="-1">Dez serviços.<br>Preço na parede.</h2>
+    <p class="lead">Escolha o que quer fazer, veja quanto custa e avise que vai a caminho. Os preços têm IVA incluído.</p>
+  </div>
+  <section class="sec escuro" data-c="s2" aria-labelledby="t-cam">
+    <div class="w ferr">
+      <div>
+        <p class="eyebrow rv" style="color:var(--mostarda)"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>Vou a caminho</p>
+        <h2 id="t-cam" class="rv d1">Avise que vem. Chegue à sua vez.</h2>
+        <p class="lead rv d2">Marque os serviços, diga a que horas chega e envie. A barbearia recebe no WhatsApp quem vem, o que quer fazer e quanto vai pagar — e responde como está a espera.</p>
+        <p class="lead rv d3" style="margin-top:16px">Prefere marcar dia e hora? Escolha “Pedir marcação” e pergunte se há essa possibilidade.</p>
+      </div>
+      <form class="talao rv d1" id="talao" novalidate>
+        <fieldset>
+          <legend>O que vem fazer</legend>
+          <div class="lista-chk duas-col" id="chkServ"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Como</legend>
+          <div class="modos">
+            <label class="chk rad"><input type="radio" name="modo" value="caminho" checked><span><i><svg><use href="#i-check"/></svg></i>Vou a caminho</span></label>
+            <label class="chk rad"><input type="radio" name="modo" value="marcar"><span><i><svg><use href="#i-check"/></svg></i>Pedir marcação</span></label>
+          </div>
+        </fieldset>
+        <fieldset id="fsQuando">
+          <legend>Quando chego</legend>
+          <div class="lista-chk duas-col">
+            <label class="chk rad"><input type="radio" name="quando" value="0"><span><i><svg><use href="#i-check"/></svg></i>Já estou a sair</span></label>
+            <label class="chk rad"><input type="radio" name="quando" value="30"><span><i><svg><use href="#i-check"/></svg></i>Daqui a 30 min</span></label>
+            <label class="chk rad"><input type="radio" name="quando" value="60"><span><i><svg><use href="#i-check"/></svg></i>Daqui a 1 hora</span></label>
+            <label class="chk rad"><input type="radio" name="quando" value="tarde"><span><i><svg><use href="#i-check"/></svg></i>Mais logo</span></label>
+          </div>
+        </fieldset>
+        <fieldset id="fsMarcar" class="oculto">
+          <legend>Dia e hora que lhe dava jeito</legend>
+          <div class="linha-campos">
+            <div class="campo"><label for="dia">Dia</label><select id="dia"></select></div>
+            <div class="campo"><label for="hora">Hora</label><input id="hora" type="time" min="09:00" max="19:00" step="900" value="10:00"></div>
+          </div>
+        </fieldset>
+        <div class="campo" style="margin-bottom:18px"><label for="nome">O seu nome (opcional)</label><input id="nome" autocomplete="given-name" maxlength="40"></div>
+        <div class="total"><b>Total</b><span id="total">0,00 €</span></div>
+        <p class="previa vazio" id="previa" aria-live="polite"></p>
+        <a class="btn btn-m" id="enviar" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar no WhatsApp</a>
+        <p class="miudo">A mensagem abre no seu WhatsApp, pronta a enviar para o 926 240 012.</p>
+      </form>
+    </div>
+  </section>
+  <section class="sec" data-c="s1" aria-label="Preçário">
+    <div class="w ferr">
+      <div>
+        <p class="eyebrow rv"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>Preçário · Price list</p>
+        <ul class="lista-precos" id="listaPrecos"></ul>
+        <p class="iva">Preços com IVA incluído. Na casa experimenta e compra os produtos Alfa Look’s.</p>
+      </div>
+      <div class="foto rv d1" style="aspect-ratio:3/4"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/precario.webp" alt="Quadro do preçário pendurado na parede da barbearia" loading="lazy" onerror="this.remove()"></div>
+    </div>
+  </section>
+</section>
+
+<!-- ================= A CASA ================= -->
+<section class="pg" id="pg-casa" data-t="A casa · Barbearia Sr. Bonifácio, Olhão">
+  <div class="w cab">
+    <p class="eyebrow">A casa</p>
+    <h2 tabindex="-1">O chapéu, os óculos<br>e a barba. Desde 2012.</h2>
+    <p class="lead">O senhor do logótipo está no letreiro, no vidro da porta, nas capas e no quadro dos preços. Por dentro, paredes de tijolo e cimento queimado, chão de mármore, cadeiras pretas e candeeiros de fábrica.</p>
+  </div>
+  <section class="sec" style="padding-top:0" data-c="c1" aria-label="Espaço">
+    <div class="w">
+      <p class="eyebrow rv"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>O espaço</p>
+      <div class="duas">
+        <div class="foto rv"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/sala.webp" alt="Sala da barbearia: balcão, cadeiras de barbeiro pretas, parede de tijolo e sofá capitoné" loading="lazy" onerror="this.remove()"></div>
+        <div class="foto rv d1"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/fachada.webp" alt="Fachada com letreiro, faixa azul e poste de barbeiro" loading="lazy" onerror="this.remove()" style="object-position:50% 30%"></div>
+      </div>
+      <ul class="fatos">
+        <li class="rv"><b>Desde 2012</b><span>O ano está no logótipo, por baixo do nome: Est. 2012.</span></li>
+        <li class="rv"><b>Sem agenda</b><span>Atendimento por ordem de chegada. Espera habitual de 15 a 20 minutos.</span></li>
+        <li class="rv"><b>Miúdos</b><span>Também há atendimento para os mais novos — e um carro vermelho de brincar à espera deles na sala.</span></li>
+        <li class="rv"><b>Para todos</b><span>Uma casa onde toda a gente é bem-vinda, como deve ser.</span></li>
+        <li class="rv"><b>Alfa Look’s</b><span>Os produtos que usam na cadeira estão à venda no balcão.</span></li>
+      </ul>
+    </div>
+  </section>
+  <section class="sec escuro" data-c="c2" aria-labelledby="t-trab">
+    <div class="w">
+      <p class="eyebrow rv" style="color:var(--mostarda)"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>Na cadeira</p>
+      <h2 id="t-trab" class="rv d1">Navalha, tesoura,<br>máquina e toalha.</h2>
+      <div class="trabalho">
+        <figure class="rv"><div class="foto"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/barba-navalha.webp" alt="Barbeiro de óculos a alinhar a barba de um cliente à navalha" loading="lazy" onerror="this.remove()" style="object-position:62% 50%"></div><figcaption>Barba à navalha</figcaption></figure>
+        <figure class="rv d1"><div class="foto"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/corte-tesoura.webp" alt="Mãos a cortar cabelo à tesoura sobre o pente, com degradê na nuca" loading="lazy" onerror="this.remove()"></div><figcaption>Tesoura e pente</figcaption></figure>
+        <figure class="rv d2"><div class="foto"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/barba-maquina.webp" alt="Acabamento da barba com máquina dourada e toalha sobre os olhos" loading="lazy" onerror="this.remove()"></div><figcaption>Acabamento à máquina</figcaption></figure>
+        <figure class="rv d3"><div class="foto"><svg aria-hidden="true"><use href="#cena"/></svg><img src="media/toalha-quente.webp" alt="Barbeiro a pousar a toalha no rosto de um cliente reclinado" loading="lazy" onerror="this.remove()" style="object-position:40% 50%"></div><figcaption>A toalha</figcaption></figure>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ================= GALERIA ================= -->
+<section class="pg" id="pg-galeria" data-t="Galeria · Barbearia Sr. Bonifácio, Olhão">
+  <div class="w cab">
+    <p class="eyebrow">Galeria</p>
+    <h2 tabindex="-1">Por dentro e por fora.</h2>
+    <p class="lead">Toque para ampliar. Os cortes da semana estão no Instagram <a href="https://www.instagram.com/barbeariasr.bonifacio/" target="_blank" rel="noopener">@barbeariasr.bonifacio</a>.</p>
+  </div>
+  <section class="sec" style="padding-top:0" data-c="g1" aria-label="Fotografias">
+    <div class="w"><p class="eyebrow"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>11 fotografias</p><div class="galeria" id="galeria"></div></div>
+  </section>
+</section>
+
+<!-- ================= VISITAR ================= -->
+<section class="pg" id="pg-visitar" data-t="Visitar · Barbearia Sr. Bonifácio, Olhão">
+  <div class="w cab">
+    <p class="eyebrow">Visitar</p>
+    <h2 tabindex="-1">Toldo azul,<br>poste à porta.</h2>
+    <p class="lead">Rua dos Combatentes da Grande Guerra, 5 — 8700-440 Olhão. Procure o letreiro preto com o senhor de chapéu e o poste às riscas ao lado da porta de madeira.</p>
+  </div>
+  <section class="sec" style="padding-top:0" data-c="v1" aria-label="Horário, contactos e mapa">
+    <div class="w visita">
+      <div class="rv">
+        <p class="eyebrow"><svg class="marca-c" aria-hidden="true"><use href="#carimbo"/></svg>Horário</p>
+        <table class="horas">
+          <caption class="sr">Horário</caption>
+          <tr><th scope="row">Segunda</th><td>09:00–19:00</td></tr>
+          <tr><th scope="row">Terça a sábado</th><td><span class="confirmar">a confirmar</span></td></tr>
+          <tr><th scope="row">Feriados</th><td><span class="confirmar">a confirmar</span></td></tr>
+          <tr><th scope="row">Domingo</th><td>Encerrado</td></tr>
+        </table>
+        <div class="contactos">
+          <a href="tel:+351926240012"><svg aria-hidden="true"><use href="#i-tel"/></svg>926 240 012</a>
+          <a class="wa-geral" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a href="https://www.instagram.com/barbeariasr.bonifacio/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>@barbeariasr.bonifacio</a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Barbearia+Sr.+Bonif%C3%A1cio%2C+R.+dos+Combatentes+da+Grande+Guerra+5%2C+8700-440+Olh%C3%A3o" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Abrir caminho no Google Maps</a>
+        </div>
+      </div>
+      <div class="mapa rv d1">
+        <svg viewBox="0 0 400 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="380" fill="#2A2D33"/><path d="M0 200 L400 170 M150 0 L190 380 M0 80 L400 110 M300 0 L260 380" stroke="#3A3E46" stroke-width="20"/><circle cx="196" cy="186" r="12" fill="#E5AC33"/><circle cx="196" cy="186" r="26" fill="none" stroke="#E5AC33" stroke-width="2"/></svg>
+        <iframe title="Mapa: Barbearia Sr. Bonifácio, Rua dos Combatentes da Grande Guerra 5, Olhão" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Barbearia+Sr.+Bonif%C3%A1cio,+R.+dos+Combatentes+da+Grande+Guerra+5,+8700-440+Olh%C3%A3o&amp;output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</section>
+</main>
+
+<footer class="rodape escuro">
+  <div class="w">
+    <div>
+      <b class="m">Barbearia<br>Sr. Bonifácio</b>
+      <p style="margin:0">R. dos Combatentes da Grande Guerra 5<br>8700-440 Olhão · desde 2012</p>
+      <a class="legal" href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">Livro de Reclamações ↗</a>
+    </div>
+    <ul>
+      <li><a href="#/servicos">Serviços e preços</a></li>
+      <li><a href="#/casa">A casa</a></li>
+      <li><a href="#/galeria">Galeria</a></li>
+      <li><a href="#/visitar">Visitar</a></li>
+    </ul>
+    <ul>
+      <li><a href="tel:+351926240012">926 240 012</a></li>
+      <li><a href="https://www.instagram.com/barbeariasr.bonifacio/" target="_blank" rel="noopener">Instagram @barbeariasr.bonifacio</a></li>
+      <li style="margin-top:10px;font-size:.86rem">© Barbearia Sr. Bonifácio · site por Pacheco Studios</li>
+    </ul>
+  </div>
+</footer>
+
+<a class="mini" id="mini" href="#/" aria-label="Cartão de cliente: 0 de 10 carimbos"><span class="pontos" aria-hidden="true"></span><span id="miniN">0/10</span></a>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<nav class="cta-fixo" aria-label="Contacto rápido">
+  <a class="l" href="tel:+351926240012"><svg aria-hidden="true"><use href="#i-tel"/></svg>Ligar</a>
+  <a class="z wa-cam" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Vou a caminho</a>
+</nav>
+
+<dialog id="caixa" aria-label="Fotografia ampliada"><button class="fechar" type="button" aria-label="Fechar">×</button><img alt=""><p></p></dialog>
+
+<noscript><p style="padding:20px;text-align:center">Barbearia Sr. Bonifácio · R. dos Combatentes da Grande Guerra 5, 8700-440 Olhão · 926 240 012 · Atendimento por ordem de chegada · <a href="https://www.livroreclamacoes.pt/inicio">Livro de Reclamações</a></p></noscript>
+
+<script>
+(function(){
+  var TEL='351926240012', D=document, H=D.documentElement;
+  var reduz=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function wa(m){return 'https://wa.me/'+TEL+'?text='+encodeURIComponent(m)}
+  function eur(n){return n.toFixed(2).replace('.',',')+' €'}
+  D.querySelectorAll('.wa-cam').forEach(function(a){a.href=wa('Olá Sr. Bonifácio! Estou a pensar passar aí para um corte. Como está a espera neste momento?')});
+  D.querySelectorAll('.wa-geral').forEach(function(a){a.href=wa('Olá! Vi o vosso site e tenho uma pergunta: ')});
+
+  /* ---------- nav ---------- */
+  var nav=D.getElementById('nav'), burger=D.getElementById('burger'), menu=D.getElementById('menu');
+  burger.addEventListener('click',function(){var a=burger.getAttribute('aria-expanded')==='true';burger.setAttribute('aria-expanded',String(!a));menu.classList.toggle('aberto',!a);D.body.style.overflow=a?'':'hidden'});
+  function fechaMenu(){burger.setAttribute('aria-expanded','false');menu.classList.remove('aberto');D.body.style.overflow=''}
+  D.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.classList.contains('aberto')){fechaMenu();burger.focus()}});
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8)},{passive:true});
+
+  /* ---------- cartão de cliente: 10 carimbos ---------- */
+  var casas=D.getElementById('casas'), mini=D.getElementById('mini'), miniP=mini.querySelector('.pontos'), aviso=D.getElementById('aviso');
+  var ROT=[-14,8,-6,12,-10,5,-16,10,-4,14];
+  for(var i=0;i<10;i++){casas.insertAdjacentHTML('beforeend','<li class="'+(i===9?'dez':'')+'" style="--r:'+ROT[i]+'deg">'+(i===9?'10.º':(i+1))+'<svg><use href="#carimbo"/></svg></li>');miniP.insertAdjacentHTML('beforeend','<i></i>')}
+  var feitos=[];try{feitos=JSON.parse(sessionStorage.getItem('sb.c')||'[]')}catch(e){}
+  function pintaCartao(anima){
+    var n=Math.min(10,feitos.length);
+    casas.querySelectorAll('li').forEach(function(li,k){li.classList.toggle('ok',k<n)});
+    miniP.querySelectorAll('i').forEach(function(p,k){p.classList.toggle('ok',k<n)});
+    D.getElementById('miniN').textContent=n+'/10';
+    mini.setAttribute('aria-label','Cartão de cliente: '+n+' de 10 carimbos');
+    if(anima&&!reduz){mini.classList.remove('pum');void mini.offsetWidth;mini.classList.add('pum')}
+  }
+  var tAviso;
+  function avisa(html){aviso.innerHTML=html;aviso.classList.add('ve');clearTimeout(tAviso);tAviso=setTimeout(function(){aviso.classList.remove('ve')},5200)}
+  function carimba(id){
+    if(feitos.indexOf(id)>-1)return;
+    feitos.push(id);try{sessionStorage.setItem('sb.c',JSON.stringify(feitos))}catch(e){}
+    pintaCartao(true);
+    if(feitos.length===10)avisa('<b>Cartão cheio.</b> Na barbearia, o 10.º carimbo podia valer um corte por conta da casa — proposta a confirmar.');
+  }
+  pintaCartao(false);
+
+  /* ---------- revelação + carimbos por secção ---------- */
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vi');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
+  var ioC='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var s=e.target;s.querySelectorAll('.marca-c').forEach(function(m){setTimeout(function(){m.classList.add('carimbado')},250)});carimba(s.dataset.c);ioC.unobserve(s)}})},{threshold:.25}):null;
+  function observa(pg){
+    pg.querySelectorAll('.rv:not(.vi)').forEach(function(el){io?io.observe(el):el.classList.add('vi')});
+    pg.querySelectorAll('[data-c]').forEach(function(s){if(feitos.indexOf(s.dataset.c)>-1){s.querySelectorAll('.marca-c').forEach(function(m){m.classList.add('carimbado')})}else if(ioC)ioC.observe(s);else carimba(s.dataset.c)});
+  }
+
+  /* mini-cartão aparece quando o cartão grande sai do ecrã */
+  var cartao=D.getElementById('cartao'), cartaoVis=true;
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){cartaoVis=es[0].isIntersecting;miniVis()}).observe(cartao);
+  function miniVis(){mini.classList.toggle('ve',!(rotaAtual===''&&cartaoVis))}
+  mini.addEventListener('click',function(e){if(rotaAtual===''){e.preventDefault();cartao.scrollIntoView({behavior:reduz?'auto':'smooth',block:'center'})}});
+
+  /* ---------- router #/ ---------- */
+  var pags=D.querySelectorAll('.pg'), primeira=true, rotaAtual='';
+  function rota(){var r=(location.hash.replace(/^#\/?/,'')||'').split('/')[0];return D.getElementById('pg-'+r)?r:''}
+  function mostra(){
+    if(location.hash&&location.hash.indexOf('#/')!==0)return;
+    var r=rota(), pg=D.getElementById('pg-'+r);rotaAtual=r;
+    pags.forEach(function(p){p.classList.toggle('on',p===pg)});
+    D.querySelectorAll('.menu a').forEach(function(a){if(a.dataset.r===r)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    fechaMenu();D.title=pg.dataset.t;
+    if(!primeira){window.scrollTo(0,0);var h=pg.querySelector('h2[tabindex],h1');if(h)h.focus({preventScroll:true})}
+    primeira=false;observa(pg);miniVis();
+  }
+  setTimeout(function(){H.classList.add('ini')},60);
+
+  /* ---------- preçário + "vou a caminho" ---------- */
+  var SERV=[
+    ['corte','Corte','Haircut',12],['barba','Barba','Beard',8],['barboterapia','Barboterapia','Barbotherapy',12],['sobrancelha','Sobrancelha','Eyebrow',5],
+    ['retoque','Retoque (pezinho)','Hair retouching',5],['luzes','Luzes / madeixas','Hair highlights',45],
+    ['pig-cabelo','Pigmentação no cabelo (preta/castanha)','Hair pigmentation',11.5],['pig-barba','Pigmentação na barba (preta/castanha)','Beard pigmentation',7],
+    ['nariz','Depilação de nariz','Nose waxing',7],['orelha','Depilação de orelha','Ear waxing',7]
+  ];
+  D.getElementById('listaPrecos').innerHTML=SERV.map(function(s){return '<li class="rv"><b>'+s[1]+'</b><span class="v">'+eur(s[3])+'</span><small>'+s[2]+'</small></li>'}).join('');
+  D.getElementById('chkServ').innerHTML=SERV.map(function(s){return '<label class="chk"><input type="checkbox" name="serv" value="'+s[0]+'"><span><i><svg><use href="#i-check"/></svg></i>'+s[1].replace(/ \(preta\/castanha\)/,'')+'<em>'+eur(s[3]).replace(',00','')+'</em></span></label>'}).join('');
+  var DIAS=['domingo','segunda','terça','quarta','quinta','sexta','sábado'], MES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  var sel=D.getElementById('dia'), hoje=new Date();
+  for(var k=0,n=0;n<10&&k<14;k++){var x=new Date(hoje);x.setDate(hoje.getDate()+k);if(x.getDay()===0)continue;n++;sel.insertAdjacentHTML('beforeend','<option value="'+(k===0?'hoje':k===1?'amanhã':DIAS[x.getDay()]+', '+x.getDate()+' '+MES[x.getMonth()])+'">'+(k===0?'Hoje':k===1?'Amanhã':DIAS[x.getDay()]+', '+x.getDate()+' '+MES[x.getMonth()])+'</option>')}
+  var f=D.getElementById('talao');
+  function hhmm(min){var d=new Date(Date.now()+min*60000);var m=Math.ceil(d.getMinutes()/5)*5;if(m===60){d.setHours(d.getHours()+1);m=0}return ('0'+d.getHours()).slice(-2)+':'+('0'+m).slice(-2)}
+  function atualiza(){
+    var sv=[].slice.call(f.querySelectorAll('input[name=serv]:checked')).map(function(i){return SERV.filter(function(s){return s[0]===i.value})[0]});
+    var modo=f.querySelector('input[name=modo]:checked').value, q=f.querySelector('input[name=quando]:checked'), nome=D.getElementById('nome').value.trim();
+    D.getElementById('fsQuando').classList.toggle('oculto',modo!=='caminho');D.getElementById('fsMarcar').classList.toggle('oculto',modo!=='marcar');
+    var tot=sv.reduce(function(a,s){return a+s[3]},0);D.getElementById('total').textContent=eur(tot);
+    var pv=D.getElementById('previa'), b=D.getElementById('enviar'), falta=[];
+    if(!sv.length)falta.push('o serviço');if(modo==='caminho'&&!q)falta.push('quando chega');
+    if(falta.length){pv.className='previa vazio';pv.textContent='Falta escolher '+falta.join(' e ')+'.';b.setAttribute('aria-disabled','true');b.href='#';return}
+    var lista=sv.map(function(s){return s[1].replace(/ \(preta\/castanha\)/,'')}).join(' + ');
+    var m=(nome?'Olá Sr. Bonifácio! Daqui fala '+nome+'. ':'Olá Sr. Bonifácio! ');
+    if(modo==='caminho'){
+      var quando=q.value==='0'?'Estou a sair agora, chego por volta das '+hhmm(10):q.value==='tarde'?'Passo aí mais logo':'Chego por volta das '+hhmm(+q.value);
+      m+=quando+' para: '+lista+' ('+eur(tot)+'). Como está a espera?';
+    }else{
+      m+='Seria possível marcar para '+sel.value+' às '+(D.getElementById('hora').value||'—')+'? Era para: '+lista+' ('+eur(tot)+'). Obrigado!';
+    }
+    pv.className='previa';pv.textContent=m;b.removeAttribute('aria-disabled');b.href=wa(m);
+  }
+  f.addEventListener('change',atualiza);f.addEventListener('input',atualiza);
+  D.getElementById('enviar').addEventListener('click',function(e){if(this.getAttribute('aria-disabled')==='true'){e.preventDefault();var p=f.querySelector('input[name=serv]');if(!f.querySelector('input[name=serv]:checked'))p.focus();else f.querySelector('input[name=quando]').focus()}});
+  atualiza();
+
+  /* ---------- galeria ---------- */
+  var FOTOS=[['fachada','A fachada'],['sala','A sala',1],['barba-navalha','Barba à navalha',1],['corte-tesoura','Tesoura e pente'],['entrada-ordem-chegada','Por ordem de chegada'],['toalha-quente','A toalha'],['cafe','O café'],['barba-maquina','Acabamento'],['rebucados','Os rebuçados',1],['sala-sofa','O sofá'],['precario','O preçário']];
+  var gal=D.getElementById('galeria');
+  gal.innerHTML=FOTOS.map(function(f,i){return '<button type="button" class="rv'+(f[2]?' larga':'')+'" data-i="'+i+'" aria-label="Ampliar: '+f[1]+'"><div class="foto"><svg aria-hidden="true" viewBox="0 0 300 400" preserveAspectRatio="none"><use href="#cena"/></svg><img src="media/'+f[0]+'.webp" alt="'+f[1]+'" loading="lazy" onerror="this.parentElement.parentElement.remove()"></div><span class="leg">'+f[1]+'</span></button>'}).join('');
+  var cx=D.getElementById('caixa');
+  gal.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var f=FOTOS[+b.dataset.i];cx.querySelector('img').src='media/'+f[0]+'.webp';cx.querySelector('img').alt=f[1];cx.querySelector('p').textContent=f[1];if(cx.showModal)cx.showModal()});
+  cx.querySelector('.fechar').addEventListener('click',function(){cx.close()});
+  cx.addEventListener('click',function(e){if(e.target===cx)cx.close()});
+
+  addEventListener('hashchange',mostra);mostra();
+})();
+</script>
+</body>
+</html>
