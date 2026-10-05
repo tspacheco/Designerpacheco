@@ -39,7 +39,7 @@
 :root{
   --verde:#173B33; --verde-2:#1F4B3F; --verde-3:#2B5E50;
   --cal:#F4F1E8; --cal-2:#EAE4D4; --cal-3:#FBFAF5;
-  --telha:#C2522D; --telha-cl:#E07A50; --telha-esc:#93391A;
+  --telha:#B24A27; --telha-cl:#E07A50; --telha-esc:#93391A;
   --luz:#F4C04E; --luz-2:#F8D98A;
   --tinta:#16211D; --tinta-2:#4B5651; --linha:#D8D1BF;
   --zap:#18793F;
@@ -157,13 +157,13 @@ html:not([lang="en"]) [data-l="en"]{display:none!important}
   position:relative;min-height:calc(100svh - var(--nav-h) - 30px);display:flex;flex-direction:column;
   background:linear-gradient(180deg,var(--ceu-a) 0%,var(--ceu-b) 100%);color:var(--txt);overflow:hidden;transition:background .6s}
 .hero.ceu-dia{--ceu-a:#8DBAD6;--ceu-b:#F1E3C6;--txt:#14231E;--txt-2:#33433D}
-.hero.ceu-tarde{--ceu-a:#3B3F75;--ceu-b:#C98A79;--txt:#FFFFFF;--txt-2:#ECE3EA}
+.hero.ceu-tarde{--ceu-a:#2E3163;--ceu-b:#9C5F5E;--txt:#FFFFFF;--txt-2:#F3ECF0}
 .estrelas{position:absolute;inset:0 0 40% 0;opacity:0;transition:opacity .8s;pointer-events:none;background-image:radial-gradient(1.4px 1.4px at 12% 18%,#fff 50%,transparent),radial-gradient(1.2px 1.2px at 32% 9%,#fff 50%,transparent),radial-gradient(1.6px 1.6px at 58% 22%,#fff 50%,transparent),radial-gradient(1.2px 1.2px at 74% 12%,#fff 50%,transparent),radial-gradient(1.4px 1.4px at 88% 28%,#fff 50%,transparent),radial-gradient(1px 1px at 46% 34%,#fff 50%,transparent),radial-gradient(1px 1px at 22% 38%,#fff 50%,transparent),radial-gradient(1.3px 1.3px at 94% 6%,#fff 50%,transparent)}
 .hero:not(.ceu-dia):not(.ceu-tarde) .estrelas{opacity:.8}
 .astro{position:absolute;right:12%;top:14%;width:58px;height:58px;border-radius:50%;background:#F7F1DC;box-shadow:0 0 40px 6px rgba(247,241,220,.25);transition:all .8s}
 .hero:not(.ceu-dia):not(.ceu-tarde) .astro{box-shadow:inset -14px -6px 0 0 #D8D0B6,0 0 30px 4px rgba(247,241,220,.18)}
 .hero.ceu-dia .astro{background:#FFF4CF;box-shadow:0 0 60px 20px rgba(255,236,170,.6);top:10%}
-.hero.ceu-tarde .astro{background:#F8C98C;box-shadow:0 0 70px 26px rgba(248,180,120,.45);top:44%}
+.hero.ceu-tarde .astro{background:#F8C98C;box-shadow:0 0 70px 26px rgba(248,180,120,.45);top:auto;bottom:clamp(110px,24vw,230px);right:9%;left:auto}
 .hero-txt{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:clamp(28px,6vh,72px) var(--gut) 0}
 .hero h1{font:900 clamp(60px,18vw,150px)/.88 var(--f-d);letter-spacing:-.035em}
 .hero h1 span{display:inline-block}
@@ -181,16 +181,18 @@ html:not([lang="en"]) [data-l="en"]{display:none!important}
 .nota b{color:var(--txt);font-weight:800}
 .cidade{position:relative;margin-top:auto;width:100%;height:clamp(170px,30vw,300px);flex:none}
 .cidade svg{position:absolute;left:0;bottom:0;width:100%;height:100%}
-.linha-telhados{fill:none;stroke:var(--luz);stroke-width:2.4;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
-.casas{opacity:0;transform:translateY(14px)}
+.linha-telhados{fill:none;stroke:var(--luz);stroke-width:2.4;stroke-linejoin:round}
+.cidade-mini .linha-telhados,.cidade-rod .linha-telhados{display:none}
+.hero .linha-telhados{stroke-dasharray:1;stroke-dashoffset:1}
+.hero .casas{opacity:0;transform:translateY(14px)}
 .jan{transition:fill .5s calc(var(--i) * 35ms)}
 .aberto .jan{fill:#F4C04E}
 .aberto .jan:nth-of-type(5n+3){fill:#2A3442}
 .hero.ceu-dia.aberto .jan{fill:#F8D98A}
 /* coreografia */
 .js .hero h1 span,.js .hero .onde,.js .hero .pergunta,.js .hero .resposta,.js .hero .agora,.js .hero-ctas,.js .hero .nota{opacity:0;transform:translateY(16px)}
-.ini .linha-telhados{stroke-dashoffset:0;transition:stroke-dashoffset 1.8s var(--ease-out) .2s}
-.ini .casas{opacity:1;transform:none;transition:opacity .9s var(--ease-out) 1.1s, transform .9s var(--ease-out) 1.1s}
+.ini .hero .linha-telhados{stroke-dashoffset:0;transition:stroke-dashoffset 1.8s var(--ease-out) .2s}
+.ini .hero .casas{opacity:1;transform:none;transition:opacity .9s var(--ease-out) 1.1s, transform .9s var(--ease-out) 1.1s}
 .ini .hero .onde{opacity:1;transform:none;transition:all .6s var(--ease-out) .2s}
 .ini .hero h1 span{opacity:1;transform:none;transition:all .8s var(--ease-out)}
 .ini .hero h1 span:nth-child(1){transition-delay:.3s}.ini .hero h1 span:nth-child(2){transition-delay:.42s}.ini .hero h1 span:nth-child(3){transition-delay:.54s}
@@ -201,13 +203,14 @@ html:not([lang="en"]) [data-l="en"]{display:none!important}
   .hero-txt{display:grid;grid-template-columns:1fr 1fr;gap:20px 60px;align-items:end;padding-top:80px}
   .hero-txt .lado-b{padding-bottom:6px}
   .pergunta{margin-top:0}
+  .astro{top:7%;right:auto;left:47%}
 }
 @media (max-width:640px){
-  .hero{min-height:calc(100svh - var(--nav-h) - 44px)}
-  .hero-txt{padding-bottom:6px}
-  .cidade{height:150px}
+  .hero{min-height:calc(100svh - var(--nav-h) - 44px - 70px)}
+  .hero-txt{padding-bottom:10px}
+  .cidade{height:clamp(150px,44vw,200px)}
   .hero-ctas .btn{flex:1 1 auto;padding:0 14px;font-size:15px}
-  .astro{width:44px;height:44px;right:8%;top:8%}
+  .astro{width:34px;height:34px;right:6%;top:14px}
 }
 
 /* faixa */
@@ -265,11 +268,13 @@ html:not([lang="en"]) [data-l="en"]{display:none!important}
 .nota-g p{font-size:15px;color:var(--tinta-2)}
 
 /* ---------- petiscos ---------- */
-.pag-topo{padding:clamp(56px,9vw,100px) 0 clamp(36px,6vw,56px);position:relative;overflow:hidden}
+.pag-topo{padding:clamp(56px,9vw,100px) 0 clamp(96px,11vw,120px);position:relative;overflow:hidden}
 .pag-topo .cab{margin-bottom:0;position:relative;z-index:1}
 .pag-topo .cidade-mini{position:absolute;left:0;right:0;bottom:0;height:70px;opacity:.22;pointer-events:none}
 .pag-topo .cidade-mini svg{width:100%;height:100%}
 .pratos{display:grid;gap:18px}
+.pratos > *,.prato > div{min-width:0}
+.prato .ac{white-space:normal;line-height:1.3}
 .prato{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:start;background:#fff;border:1px solid var(--linha);border-radius:8px;padding:12px}
 .prato .ft{aspect-ratio:1;border-radius:4px}
 .prato h3{font:700 20px/1.2 var(--f-d);margin:4px 0 6px}
@@ -317,6 +322,7 @@ html:not([lang="en"]) [data-l="en"]{display:none!important}
 .escuro .coisas li svg{color:var(--luz)}
 .coisas b{display:block}
 .coisas span{font-size:15.5px;color:var(--tinta-2)}
+.coisas .ac,.ficha .ac{font-size:11.5px}
 .escuro .coisas span{color:#C8D8D0}
 
 /* ---------- galeria ---------- */
@@ -532,7 +538,7 @@ dialog.caixa .fechar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
   <section class="sec" style="padding-top:clamp(36px,6vw,64px)" aria-label="Pratos">
     <div class="wrap">
       <div class="pratos">
-        <article class="prato rv"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bacalhau-grao.webp" alt="Bacalhau com grão" data-alt-en="Salt cod with chickpeas" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Bacalhau cozido com grão</span><span data-l="en">Boiled salt cod with chickpeas</span></h3><p><span data-l="pt">Com batata, ovo cozido, cebola picada, alho e salsa. Prato limpo, de prato fundo com risca azul.</span><span data-l="en">With potato, boiled egg, chopped onion, garlic and parsley. Simple and honest.</span></p><p class="preco"><span class="ac"><span data-l="pt">preço a confirmar</span><span data-l="en">price to be confirmed</span></span></p></div></article>
+        <article class="prato rv"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bacalhau-grao.webp" alt="Bacalhau com grão" data-alt-en="Salt cod with chickpeas" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Bacalhau cozido com grão</span><span data-l="en">Boiled salt cod with chickpeas</span></h3><p><span data-l="pt">Com batata, ovo cozido, cebola picada, alho e salsa. Servido no prato fundo de risca azul.</span><span data-l="en">With potato, boiled egg, chopped onion, garlic and parsley. Simple and honest.</span></p><p class="preco"><span class="ac"><span data-l="pt">preço a confirmar</span><span data-l="en">price to be confirmed</span></span></p></div></article>
         <article class="prato rv d1"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bife-ovo-batata.webp" alt="Bifinhos com ovo e batata frita" data-alt-en="Steak with egg and chips" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Bifinhos com ovo e batata frita</span><span data-l="en">Thin steaks, fried egg and chips</span></h3><p><span data-l="pt">Bifes finos com lascas de alho e rodela de limão, ovo estrelado e batata frita às tiras.</span><span data-l="en">Thin steaks with garlic slivers and lemon, a fried egg and hand-cut chips.</span></p><p class="preco"><span class="ac"><span data-l="pt">preço a confirmar</span><span data-l="en">price to be confirmed</span></span></p></div></article>
         <article class="prato rv d2"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/feijao-branco.webp" alt="Feijão branco com carnes e arroz" data-alt-en="White beans with meat and rice" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Feijão branco com carnes</span><span data-l="en">White beans with meat</span></h3><p><span data-l="pt">Carne de porco, enchido, cenoura e batata no tacho; arroz branco ao lado.</span><span data-l="en">Pork, sausage, carrot and potato from the pot; white rice on the side.</span></p><p class="preco"><span class="ac"><span data-l="pt">nome e preço a confirmar</span><span data-l="en">name and price to be confirmed</span></span></p></div></article>
         <article class="prato rv"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/prato-de-tacho.webp" alt="Guisado de tacho com batata e tomate" data-alt-en="Home stew with potato and tomato" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Guisado de tacho</span><span data-l="en">Pot stew</span></h3><p><span data-l="pt">Batata, tomate e cebola em molho, como em casa.</span><span data-l="en">Potato, tomato and onion in a rich sauce, like at home.</span></p><p class="preco"><span class="ac"><span data-l="pt">nome e preço a confirmar</span><span data-l="en">name and price to be confirmed</span></span></p></div></article>
@@ -614,7 +620,7 @@ dialog.caixa .fechar{position:fixed;top:14px;right:14px;width:48px;height:48px;b
         <p class="rv d1"><span data-l="pt">As paredes têm meia altura de pedra e, por cima, as fotografias do futebol da terra. Há televisão para o jogo e para as notícias. Ninguém vem cá por luxo — vem pelo prato e pela conversa.</span><span data-l="en">The walls are stone to half height, with photos of the local football club above. There's a TV for the match and the news. Nobody comes for luxury — they come for the food and the chat.</span></p>
         <ul class="coisas">
           <li class="rv"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26V12l10-7 10 7v14M12 26v-8h8v8" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg><div><b><span data-l="pt">Mural de Tavira</span><span data-l="en">Tavira mural</span></b><span><span data-l="pt">Uma rua antiga da cidade, a preto e branco, atrás do balcão.</span><span data-l="en">An old street of the town, in black and white, behind the bar.</span></span></div></li>
-          <li class="rv d1"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 4h12v6l-3 4v14h-6V14l-3-4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg><div><b><span data-l="pt">Cerveja fresca</span><span data-l="en">Cold beer</span></b><span><span data-l="pt">Sagres e Cristal, em garrafa pequena e bem gelada.</span><span data-l="en">Sagres and Cristal, small bottles, ice cold.</span></span></div></li>
+          <li class="rv d1"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 4h12v6l-3 4v14h-6V14l-3-4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg><div><b><span data-l="pt">Cerveja fresca</span><span data-l="en">Cold beer</span></b><span><span data-l="pt">Sagres e Cristal, bem geladas.</span><span data-l="en">Sagres and Cristal, ice cold.</span></span></div></li>
           <li class="rv d2"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2" fill="none"/><path d="M16 9v7l5 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><div><b><span data-l="pt">Treze horas de porta aberta</span><span data-l="en">Thirteen hours open</span></b><span><span data-l="pt">Das 10:00 às 23:00. <span class="ac">dias a confirmar</span></span><span data-l="en">10:00 to 23:00. <span class="ac">days to be confirmed</span></span></span></div></li>
         </ul>
       </div>
