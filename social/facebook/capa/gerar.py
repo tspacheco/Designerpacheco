@@ -32,7 +32,7 @@ TEXTOS = {
         local=None,
     ),
     "en": dict(
-        eyebrow="AI automations · Websites",
+        eyebrow="AI audit · Automations · Solutions",
         l1="Do you have a goal to reach?",
         big=("AI will", "make it", "happen."),
         l3="You just have to take the first step.",
@@ -108,6 +108,8 @@ html,body{background:#2a2a2a}
 /* inglês: três linhas curtas no destaque e o bloco mais compacto, para caber a linha da sede */
 .l-en .l1{margin-top:28px}
 .l-en .contacto{margin-top:30px}
+.l-en .eyebrow{letter-spacing:.22em}
+.d-b.l-en .eyebrow{margin-right:-.22em}
 /* A */
 .d-a .brilho{background:radial-gradient(760px 620px at 10% 92%,rgba(232,98,44,.17),transparent 70%),
   radial-gradient(900px 700px at 72% 46%,rgba(201,162,86,.07),transparent 72%)}

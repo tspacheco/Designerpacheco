@@ -1,17 +1,17 @@
 # Instagram da Pacheco Studios (04/10/2026)
 
-Em inglês, para o público "worldwide". Mesmos conceitos da capa do Facebook em inglês: o que fazemos (automações com IA e sites), a sede, o "working worldwide" e o lema do site. O logótipo é o selo.
+Em inglês, para o público "worldwide". Mesmos conceitos da capa do Facebook em inglês: o que fazemos (auditoria, automações e soluções de IA; os sites saíram a 05/10), a sede, o "working worldwide" e o lema do site. O logótipo é o selo.
 
-**Nome** (26 de 30 carateres; entra na pesquisa do Instagram):
-
-```
-Pacheco Studios · AI & Web
-```
-
-**Bio** (132 de 150 carateres):
+**Nome** (30 de 30 carateres; entra na pesquisa do Instagram):
 
 ```
-AI automations & websites for businesses.
+Pacheco Studios · AI Solutions
+```
+
+**Bio** (140 de 150 carateres):
+
+```
+AI audit, automations & solutions for businesses.
 HQ Portugal · Working worldwide.
 Got a goal? AI will make it happen.
 Take the first step ↓
