@@ -377,6 +377,7 @@ Decisão do Tomás: a execução daqui para a frente segue o método do vídeo �
   9. PDF com o plano de 90 dias.
 - **O PDF entregue ao dono:** o que nos pediu para ver → o mapa → a matriz → as 3 vitórias rápidas (antes/depois, tempo, contas) → quanto vale tudo por ano → plano de 90 dias. As vitórias rápidas vêm primeiro, mesmo que não levem IA.
 - **Guião das perguntas** (36 perguntas, 15 essenciais, PT + RO, com a folha dos números e a matriz): `entregas/society-salon-auditoria/` (`python3 gerar.py` gera o HTML e o PDF). Reutilizável para outros negócios: mudar `BLOCOS`, `NUMEROS` e `HIPOTESES`.
+- **Exemplo do PDF final** (para o dono perceber o que recebe): `entregas/society-salon-auditoria/exemplo.py` gera RO (dono) e PT (Tomás), 9 páginas A4 deitadas, com a faixa «EXEMPLO · números ilustrativos» em todas. Cenário fictício numa barbearia de 5 cadeiras: faltas, clientes que voltam e resposta a mensagens, ≈ 87 mil lei/ano. As contas estão no topo do gerador. Na auditoria real trocam-se pelos números do salão.
 - **1.ª auditoria: Society Salon (Iași)**, decisão do Tomás a 05/10. Faz-se sem custo, como treino e caso.
 - **A decidir:** o preço a partir da 2.ª auditoria. O autor cobra 500 $ por pessoa da empresa; a proposta é cobrar por pessoa e creditar o valor se o cliente avançar para a implementação.
 - **Nicho:** contar as auditorias por setor. À 10.ª no mesmo setor, criar a biblioteca de soluções repetíveis.

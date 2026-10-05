@@ -1,0 +1,135 @@
+@font-face{font-family:"Archivo Black";src:url(FONTES/archivo-black.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2190-21FF}
+@font-face{font-family:"Archivo Black";src:url(FONTES/archivo-black-latin-ext.woff2) format("woff2");unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+@font-face{font-family:"Inter";src:url(FONTES/inter-var.woff2) format("woff2");font-weight:100 900;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2190-21FF}
+@font-face{font-family:"Inter";src:url(FONTES/inter-var-latin-ext.woff2) format("woff2");font-weight:100 900;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+@font-face{font-family:"Space Mono";src:url(FONTES/space-mono-400.woff2) format("woff2");font-weight:400;unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF}
+@font-face{font-family:"Space Mono";src:url(FONTES/space-mono-400-latin-ext.woff2) format("woff2");font-weight:400;unicode-range:U+0100-024F}
+@font-face{font-family:"Space Mono";src:url(FONTES/space-mono-700.woff2) format("woff2");font-weight:700;unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF}
+@font-face{font-family:"Space Mono";src:url(FONTES/space-mono-700-latin-ext.woff2) format("woff2");font-weight:700;unicode-range:U+0100-024F}
+
+:root{
+  --carvao:#141210;--osso:#EFEAE3;--laranja:#E8622C;--laranja-txt:#A64923;--traco:#D35A29;
+  --sec:#4D4A47;--sec-escuro:#A5A19B;--linha:#D9D2C8;
+  --tempo:#F2E3B6;--tempo-txt:#614507;--risco:#F5D6CB;--risco-txt:#8A2E14;--bom:#1F5E3D;--bom-bg:#DCEBDF;
+  --titulo:"Archivo Black",Impact,sans-serif;--mono:"Space Mono",ui-monospace,monospace;--texto:"Inter",system-ui,sans-serif;
+}
+@page{size:297mm 210mm;margin:0}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:#fff;color:var(--carvao);font:400 12.5pt/1.45 var(--texto)}
+h1,h2,h3,p{margin:0}
+ol,ul{margin:0}
+.ponto{display:inline-block;width:.26em;height:.26em;border-radius:50%;background:var(--laranja);margin-left:.1em}
+.mono{font:700 8pt var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--sec)}
+.lar{color:var(--laranja)}
+.cinza{color:var(--sec);font-size:10.5pt}
+
+.sl{position:relative;width:297mm;height:210mm;padding:20mm 18mm 16mm;break-after:page;overflow:hidden;display:grid;grid-template-rows:auto 1fr;gap:9mm}
+.sl:last-child{break-after:auto}
+.faixa{position:absolute;top:0;left:0;right:0;height:7mm;background:var(--laranja);color:var(--carvao);font:700 7.5pt/7mm var(--mono);letter-spacing:.14em;text-align:center}
+.sl-cab{display:flex;align-items:baseline;gap:5mm}
+.sl-n{font:700 10pt var(--mono);color:var(--laranja-txt)}
+.sl-cab h2{font:400 24pt/1.05 var(--titulo);text-transform:uppercase}
+.rod{position:absolute;left:18mm;right:18mm;bottom:7mm;display:flex;justify-content:space-between;font:400 7.5pt var(--mono);color:var(--sec-escuro)}
+.lead{color:var(--sec);margin-bottom:7mm;font-size:13pt}
+
+/* capa */
+.capa{background:var(--carvao);color:var(--osso);grid-template-rows:auto 1fr}
+.capa .mono{color:var(--sec-escuro)}
+.capa-top{display:flex;justify-content:space-between;align-items:center}
+.marca{font:400 11pt var(--titulo);letter-spacing:.06em}
+.capa-grid{display:grid;grid-template-columns:1.2fr 1fr;align-items:end;gap:12mm;padding-bottom:6mm}
+.capa h1{font:400 76pt/.9 var(--titulo);text-transform:uppercase}
+.capa-sub{margin-top:6mm;font-size:13pt;color:var(--sec-escuro);max-width:110mm}
+.capa-num{border-left:2px solid var(--laranja);padding-left:8mm;display:grid;gap:2mm}
+.capa .lar{color:var(--laranja)}
+.grande{font:400 54pt/1 var(--titulo);color:#fff}
+.grande small{font-size:20pt;color:var(--sec-escuro)}
+.capa .cinza{color:var(--sec-escuro)}
+
+/* 01 */
+.obj{font:400 32pt/1.15 var(--titulo);max-width:220mm;text-transform:none}
+.feito{display:grid;grid-template-columns:repeat(4,1fr);gap:6mm;margin-top:28mm}
+.feito div{border-top:2px solid var(--carvao);padding-top:4mm;display:grid;gap:1.5mm}
+.feito b{font:400 30pt var(--titulo)}
+.feito span{color:var(--sec)}
+
+/* 02 mapa */
+.motores{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
+.motor{border:1.5px solid var(--carvao);border-radius:4mm;padding:5mm;display:grid;align-content:start;gap:1.5mm}
+.motor h3{font:400 17pt var(--titulo);text-transform:uppercase}
+.motor ol{list-style:none;padding:0;margin-top:3mm;display:grid;gap:0}
+.motor li{position:relative;padding:3.6mm 3.5mm 3.6mm 8mm;border-radius:2mm;font-size:11.5pt;margin-bottom:4.5mm;background:#F6F3EF}
+.motor li::before{content:"";position:absolute;left:3mm;top:50%;width:1.6mm;height:1.6mm;margin-top:-.8mm;border-radius:50%;background:var(--sec-escuro)}
+.motor li:not(:last-child)::after{content:"";position:absolute;left:3.7mm;bottom:-4.5mm;height:4.5mm;border-left:1px solid var(--sec-escuro)}
+.motor li.t{background:var(--tempo);color:var(--tempo-txt)}
+.motor li.t::before{background:var(--tempo-txt)}
+.motor li.r{background:var(--risco);color:var(--risco-txt)}
+.motor li.r::before{background:var(--risco-txt)}
+.leg{margin-top:6mm;font-size:10.5pt;color:var(--sec)}
+.tag{display:inline-block;border-radius:1mm;padding:0 1.5mm;font-size:8pt}
+.tag.t{background:var(--tempo);color:var(--tempo-txt)}
+.tag.r{background:var(--risco);color:var(--risco-txt)}
+
+/* 03 matriz */
+.matriz{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3mm;height:128mm;margin-left:9mm}
+.mq{border-radius:4mm;padding:5mm 6mm;display:grid;align-content:start;gap:1.5mm}
+.mq b{font:400 17pt var(--titulo);text-transform:uppercase}
+.mq ul{padding-left:5mm;margin-top:3mm;display:grid;gap:2mm;font-size:13pt}
+.m1{background:var(--laranja);color:var(--carvao)}
+.m1 .mono{color:var(--carvao)}
+.m1 li{font-weight:600}
+.m2{background:var(--carvao);color:var(--osso)}
+.m2 .mono{color:var(--sec-escuro)}
+.m3{background:var(--osso)}
+.m4{border:1.5px dashed var(--sec-escuro);color:var(--sec)}
+.eixo{position:absolute;font:700 7.5pt var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--sec)}
+.eixo.y{left:-5mm;bottom:0;transform-origin:left bottom;transform:rotate(-90deg);white-space:nowrap}
+.eixo.x{right:0;bottom:-6mm}
+
+/* vitórias rápidas */
+.qw .sl-corpo{display:grid;gap:6mm;align-content:start}
+.dor{font-size:17pt;font-weight:600;max-width:230mm;line-height:1.35}
+.ad{display:grid;grid-template-columns:1fr 10mm 1fr;align-items:stretch}
+.ad>div:not(.seta){border-radius:4mm;padding:7mm 8mm;display:grid;align-content:start;gap:2.5mm}
+.ad ol{padding-left:5mm;display:grid;gap:3mm;font-size:12.5pt}
+.antes{background:#F6F3EF}
+.depois{background:var(--carvao);color:var(--osso)}
+.depois .mono{color:var(--laranja)}
+.seta{display:grid;place-items:center;font:400 16pt var(--titulo);color:var(--laranja-txt)}
+.conta{border-collapse:collapse;width:100%}
+.conta td{padding:4mm 3mm;border-bottom:1px solid var(--linha);vertical-align:baseline}
+.conta td.mono{text-transform:none;letter-spacing:0;font-weight:400;font-size:10.5pt;width:52%}
+.conta .v{font:400 18pt var(--titulo);white-space:nowrap;text-align:right;width:22%}
+.conta tr.fim td{border-bottom:2px solid var(--carvao)}
+.conta tr.fim .v{color:var(--bom)}
+.extra{font-size:10.5pt;color:var(--sec)}
+
+/* 07 dinheiro */
+.din{display:grid;grid-template-columns:1.35fr 1fr;gap:12mm;align-items:start}
+.tot{border-collapse:collapse;width:100%}
+.tot th{text-align:left;font:700 7.5pt var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--sec);padding:2mm;border-bottom:2px solid var(--carvao)}
+.tot th:last-child{text-align:right}
+.tot td{padding:8mm 2mm;border-bottom:1px solid var(--linha);font-weight:600}
+.tot .barra{width:42%}
+.tot .barra i{display:block;height:5mm;border-radius:1mm;background:var(--laranja)}
+.tot .v{text-align:right;font:400 17pt var(--titulo);white-space:nowrap}
+.tot .soma td{border-bottom:none;border-top:2px solid var(--carvao);font:400 13pt var(--titulo);text-transform:uppercase}
+.tot .soma .v{font-size:26pt;color:var(--bom)}
+.kpis{display:grid;gap:4mm}
+.kpis>div{border:1.5px solid var(--carvao);border-radius:4mm;padding:7mm 7mm;display:grid;gap:1mm}
+.kpis .k{font:400 30pt/1.05 var(--titulo)}
+.kpis .lar-bg{background:var(--laranja);border-color:var(--laranja)}
+.kpis .lar-bg .mono{color:var(--carvao)}
+
+/* 08 plano */
+.plano{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:14mm}
+.fase{border-top:3px solid var(--carvao);padding:4mm 6mm 0 0;display:grid;gap:2mm;align-content:start;position:relative}
+.fase::before{content:"";position:absolute;top:-2.6mm;left:0;width:4.2mm;height:4.2mm;border-radius:50%;background:var(--laranja)}
+.fase h3{font:400 17pt var(--titulo);text-transform:uppercase}
+.fase p:last-child{font-size:12pt;color:var(--sec)}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:12mm}
+.pts{list-style:none;padding:0;margin-top:3.5mm;display:grid;gap:2.5mm}
+.pts li{padding-left:5mm;position:relative}
+.pts li::before{content:"";position:absolute;left:0;top:.55em;width:1.8mm;height:1.8mm;border-radius:50%;background:var(--laranja)}
+.prox{margin-top:14mm;font:400 18pt var(--titulo);text-transform:uppercase}
