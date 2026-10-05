@@ -1,0 +1,101 @@
+@font-face{font-family:"Archivo Black";src:url(FONTES/archivo-black.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2190-21FF,U+2605}
+@font-face{font-family:"Archivo Black";src:url(FONTES/archivo-black-latin-ext.woff2) format("woff2");unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+@font-face{font-family:"Inter";src:url(FONTES/inter-var.woff2) format("woff2");font-weight:100 900;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2190-21FF}
+@font-face{font-family:"Inter";src:url(FONTES/inter-var-latin-ext.woff2) format("woff2");font-weight:100 900;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+@font-face{font-family:"Space Mono";src:url(FONTES/space-mono-400.woff2) format("woff2");font-weight:400;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Space Mono";src:url(FONTES/space-mono-400-latin-ext.woff2) format("woff2");font-weight:400;unicode-range:U+0100-024F}
+@font-face{font-family:"Space Mono";src:url(FONTES/space-mono-700.woff2) format("woff2");font-weight:700;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Space Mono";src:url(FONTES/space-mono-700-latin-ext.woff2) format("woff2");font-weight:700;unicode-range:U+0100-024F}
+
+:root{
+  --carvao:#141210;--osso:#EFEAE3;--laranja:#E8622C;--laranja-txt:#A64923;--traco:#D35A29;
+  --sec:#4D4A47;--sec-escuro:#A5A19B;--papel:#FFFFFF;--linha:#D9D2C8;
+  --tempo:#F2E3B6;--tempo-txt:#614507;--risco:#F5D6CB;--risco-txt:#8A2E14;
+  --titulo:"Archivo Black",Impact,sans-serif;--mono:"Space Mono",ui-monospace,monospace;--texto:"Inter",system-ui,sans-serif;
+}
+@page{size:A4;margin:16mm 15mm 16mm}
+@page capa{margin:0}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--papel);color:var(--carvao);font:400 10pt/1.45 var(--texto)}
+h1,h2,h3,p{margin:0}
+.ponto{display:inline-block;width:.32em;height:.32em;border-radius:50%;background:var(--laranja);margin-left:.08em}
+
+/* capa */
+.capa{page:capa;break-after:page;height:297mm;background:var(--carvao);color:var(--osso);padding:20mm 18mm;display:grid;grid-template-rows:auto 1fr auto}
+.marca{font:400 11pt var(--titulo);letter-spacing:.06em}
+.capa-meio{align-self:center}
+.kicker{font:700 9.5pt var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--laranja);margin-bottom:9mm}
+.capa h1{font:400 58pt/.95 var(--titulo);text-transform:uppercase;letter-spacing:-.01em}
+.sub{margin-top:7mm;font:400 11pt var(--mono);color:var(--sec-escuro)}
+.capa-dados{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6mm 10mm;border-top:1px solid #3a3632;padding-top:7mm}
+.capa-dados dt{font:700 7.5pt var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--sec-escuro)}
+.capa-dados dd{margin:1.5mm 0 0;font-size:10.5pt}
+
+/* páginas */
+.pagina{break-before:page}
+.titulo{font:400 22pt/1.05 var(--titulo);text-transform:uppercase;margin-bottom:7mm}
+.titulo::after{content:"";display:inline-block;width:.28em;height:.28em;border-radius:50%;background:var(--laranja);margin-left:.1em}
+h3{font:700 8.5pt var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--laranja-txt);margin:5mm 0 2mm}
+h3:first-child{margin-top:0}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:9mm}
+.lead{color:var(--sec);margin-bottom:5mm;max-width:150mm}
+.pts{margin:0;padding:0;list-style:none;display:grid;gap:1.8mm}
+.pts li{padding-left:4.5mm;position:relative}
+.pts li::before{content:"";position:absolute;left:0;top:.55em;width:1.6mm;height:1.6mm;border-radius:50%;background:var(--laranja)}
+blockquote{margin:0;background:var(--osso);border-left:3px solid var(--traco);padding:4mm 5mm;display:grid;gap:3mm;font-size:10pt}
+.ro{color:var(--sec);font-style:italic}
+.motores{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm}
+.motores div{border:1.5px solid var(--carvao);border-radius:3mm;padding:3mm;display:grid;gap:1mm;background:#fff}
+.motores b{font:400 9.5pt var(--titulo);text-transform:uppercase}
+.motores span{font-size:8.5pt;color:var(--sec)}
+.leg{margin-top:3mm;font-size:8.5pt;color:var(--sec)}
+.tag{display:inline-block;font:700 7pt var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.5mm 1.8mm;border-radius:1mm}
+.tag.t{background:var(--tempo);color:var(--tempo-txt)}
+.tag.r{background:var(--risco);color:var(--risco-txt)}
+
+/* blocos de perguntas */
+.bloco{break-before:auto;margin-bottom:6mm}
+.intro + .bloco{break-before:page}
+.bloco-cab{display:flex;gap:4mm;align-items:center;background:var(--carvao);color:var(--osso);border-radius:3mm;padding:3mm 5mm;break-after:avoid}
+.bn{font:400 20pt/1 var(--titulo);color:var(--laranja)}
+.bloco h2{font:400 13pt/1.1 var(--titulo);text-transform:uppercase}
+.quem{font:400 8pt var(--mono);color:var(--sec-escuro);margin-top:.8mm}
+.bnota{margin:3mm 0 0;font-size:9pt;color:var(--sec);break-after:avoid}
+.qs{list-style:none;margin:2mm 0 0;padding:0}
+.q{display:grid;grid-template-columns:11mm 1fr;gap:2mm;padding:3.2mm 0 2mm;border-bottom:1px solid var(--linha);break-inside:avoid}
+.n{font:700 10pt var(--mono);color:var(--sec);padding-top:.3mm}
+.ess .n::after{content:" ★";color:var(--laranja-txt)}
+.pt{font-weight:600;font-size:10.5pt;line-height:1.35}
+.corpo .ro{font-size:9pt;margin-top:1mm}
+.dica{margin-top:1.4mm;font:400 8pt/1.4 var(--mono);color:var(--laranja-txt)}
+.linhas{display:grid;gap:5.5mm;margin-top:4mm}
+.linhas i{display:block;border-bottom:1px dotted #B9B0A4}
+
+/* números */
+table.num{width:100%;border-collapse:collapse;font-size:9.5pt}
+.num th{text-align:left;font:700 7.5pt var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--sec);border-bottom:2px solid var(--carvao);padding:2mm 2mm}
+.num td{border-bottom:1px solid var(--linha);padding:3.4mm 2mm;vertical-align:top}
+.num .un{font:400 8.5pt var(--mono);color:var(--sec);white-space:nowrap}
+.num .val{width:32mm;background:#fff;border-left:1px solid var(--linha);border-right:1px solid var(--linha)}
+.num .ja{font-size:8.5pt;color:var(--sec);width:42mm}
+.formula{margin-top:7mm;background:var(--carvao);color:var(--osso);border-radius:3mm;padding:5mm 6mm;display:grid;gap:2.5mm}
+.formula .k{font:700 8pt var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--laranja)}
+.formula .f{font:400 9.5pt/1.5 var(--mono)}
+.formula b{color:#fff}
+
+/* depois */
+.filtro,.entrega{margin:0;padding-left:5mm;display:grid;gap:1.6mm}
+.filtro li::marker,.entrega li::marker{font:700 9pt var(--mono);color:var(--laranja-txt)}
+.aviso{background:var(--risco);color:var(--risco-txt);border-radius:2mm;padding:2mm 3mm;font-size:8.5pt;margin-bottom:2.5mm}
+.matriz{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:30mm 30mm;gap:1.5mm;margin:1mm 0 8mm 6mm}
+.matriz div{border-radius:2.5mm;padding:3mm;display:grid;align-content:start;gap:1mm}
+.matriz b{font:400 9.5pt var(--titulo);text-transform:uppercase}
+.matriz span{font-size:8pt}
+.q1{background:var(--laranja);color:var(--carvao)}
+.q2{background:var(--carvao);color:var(--osso)}
+.q3{background:var(--osso);color:var(--carvao)}
+.q4{background:#fff;border:1px dashed var(--sec);color:var(--sec)}
+.eixo{position:absolute;font:700 7pt var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--sec)}
+.eixo.y{left:-6mm;top:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap}
+.eixo.x{right:0;bottom:-5mm}

@@ -1,7 +1,7 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 02/10/2026 (consultoria de IA — secção 17)
+> Última atualização: 05/10/2026 (auditoria de IA — secção 18)
 
 ## 0. COMO USAR
 
@@ -326,7 +326,7 @@ Decisão do Tomás, a aplicar em tudo o que a Pacheco Studios faz daqui para a f
 Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que vende produtos (sites, automações) e passa a ser uma **consultoria de IA para negócios locais**. Começa pelo objetivo do dono, faz o diagnóstico, desenha, implementa e acompanha. Pesquisa: `research/consultoria-ia-referencias.md` (Viver de IA + 8 consultoras).
 
 - **Frase da marca:** «Tens um objetivo a atingir? / A IA VAI FAZÊ-LO ACONTECER. / Só tens de dar o primeiro passo.» Mantém-se a ideologia da secção 16: explicar o que a IA é e não é, para passar confiança («Não prometemos. Mostramos.»).
-- **Processo (5 passos):** conversa de diagnóstico, 20 min → diagnóstico escrito no mesmo dia → solução desenhada à frente do dono → piloto de 30 dias com o ponto de partida medido no dia 0 → acompanhamento mensal. Hoje a conversa e o diagnóstico escrito não têm custo.
+- **Processo (5 passos):** conversa de diagnóstico (desde 05/10 é a auditoria da secção 18) → diagnóstico escrito no mesmo dia → solução desenhada à frente do dono → piloto de 30 dias com o ponto de partida medido no dia 0 → acompanhamento mensal. Hoje a conversa e o diagnóstico escrito não têm custo.
 - **Casos (decisão de 03/10):**
   - O site mostra resultados reais de outros negócios como **«onde podes chegar»**. O nosso trabalho é levar esses resultados para o negócio do cliente.
   - **Nenhuma ligação nem menção à Viver de IA no site** (nem nome, nem link). As fontes ficam só internas, em `conteudo/casos.json` e `research/consultoria-ia-referencias.md`, para confirmar cada número.
@@ -359,3 +359,25 @@ Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que v
   - calculadora de horas;
   - foto do Tomás;
   - texto do cartão («Vezi proiectele» → algo sobre o diagnóstico) na próxima impressão.
+
+## 18. O DIAGNÓSTICO É UMA AUDITORIA DE IA (novo — 05/10/2026)
+
+Decisão do Tomás: a execução daqui para a frente segue o método do vídeo «The ULTIMATE AI Consulting Course For Beginners (2026)» de Andrew Dunn. Resumo completo, fontes e o que muda: `research/execucao-video.md` (**ler antes de preparar qualquer diagnóstico**). O YouTube bloqueia a transcrição na sessão e na ponte; o resumo vem dos artigos do autor. Se o Tomás colar a transcrição, confirmar.
+
+- **O «diagnóstico» da secção 17 passa a ser uma auditoria com método.** Não se vende IA: encontra-se o problema mais caro, põe-se-lhe um valor em dinheiro e só depois se receita a solução.
+- **Passos:**
+  1. Conversa com o dono (objetivo com estado atual, alvo e valor).
+  2. Conversa com a equipa. A pergunta-mãe é «Conta-me ontem, desde que abriste a porta» e repete-se «e depois?».
+  3. Mapa do negócio em 3 motores: **Aquisição · Entrega · Retorno/Suporte**, com os passos marcados a âmbar (tempo) e vermelho (erros).
+  4. Partir cada tarefa nos passos mais pequenos.
+  5. Filtro das 4 perguntas: entrada estruturada? saída previsível? regras? repete-se todas as semanas?
+  6. Matriz 2×2: vitórias rápidas · grandes apostas · extras · evitar.
+  7. Contas: horas × pessoas × semanas × custo/hora, mais a receita perdida.
+  8. 15 min de validação com o dono.
+  9. PDF com o plano de 90 dias.
+- **O PDF entregue ao dono:** o que nos pediu para ver → o mapa → a matriz → as 3 vitórias rápidas (antes/depois, tempo, contas) → quanto vale tudo por ano → plano de 90 dias. As vitórias rápidas vêm primeiro, mesmo que não levem IA.
+- **Guião das perguntas** (36 perguntas, 15 essenciais, PT + RO, com a folha dos números e a matriz): `entregas/society-salon-auditoria/` (`python3 gerar.py` gera o HTML e o PDF). Reutilizável para outros negócios: mudar `BLOCOS`, `NUMEROS` e `HIPOTESES`.
+- **1.ª auditoria: Society Salon (Iași)**, decisão do Tomás a 05/10. Faz-se sem custo, como treino e caso.
+- **A decidir:** o preço a partir da 2.ª auditoria. O autor cobra 500 $ por pessoa da empresa; a proposta é cobrar por pessoa e creditar o valor se o cliente avançar para a implementação.
+- **Nicho:** contar as auditorias por setor. À 10.ª no mesmo setor, criar a biblioteca de soluções repetíveis.
+

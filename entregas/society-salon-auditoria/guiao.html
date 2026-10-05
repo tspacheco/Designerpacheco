@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="pt-PT"><head><meta charset="utf-8">
+<title>Society Salon — guião da auditoria</title>
+<style>@font-face{font-family:"Archivo Black";src:url(file:///home/user/Designerpacheco/marca/fontes/archivo-black.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2190-21FF,U+2605}
+@font-face{font-family:"Archivo Black";src:url(file:///home/user/Designerpacheco/marca/fontes/archivo-black-latin-ext.woff2) format("woff2");unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+@font-face{font-family:"Inter";src:url(file:///home/user/Designerpacheco/marca/fontes/inter-var.woff2) format("woff2");font-weight:100 900;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2190-21FF}
+@font-face{font-family:"Inter";src:url(file:///home/user/Designerpacheco/marca/fontes/inter-var-latin-ext.woff2) format("woff2");font-weight:100 900;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+@font-face{font-family:"Space Mono";src:url(file:///home/user/Designerpacheco/marca/fontes/space-mono-400.woff2) format("woff2");font-weight:400;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Space Mono";src:url(file:///home/user/Designerpacheco/marca/fontes/space-mono-400-latin-ext.woff2) format("woff2");font-weight:400;unicode-range:U+0100-024F}
+@font-face{font-family:"Space Mono";src:url(file:///home/user/Designerpacheco/marca/fontes/space-mono-700.woff2) format("woff2");font-weight:700;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Space Mono";src:url(file:///home/user/Designerpacheco/marca/fontes/space-mono-700-latin-ext.woff2) format("woff2");font-weight:700;unicode-range:U+0100-024F}
+
+:root{
+  --carvao:#141210;--osso:#EFEAE3;--laranja:#E8622C;--laranja-txt:#A64923;--traco:#D35A29;
+  --sec:#4D4A47;--sec-escuro:#A5A19B;--papel:#FFFFFF;--linha:#D9D2C8;
+  --tempo:#F2E3B6;--tempo-txt:#614507;--risco:#F5D6CB;--risco-txt:#8A2E14;
+  --titulo:"Archivo Black",Impact,sans-serif;--mono:"Space Mono",ui-monospace,monospace;--texto:"Inter",system-ui,sans-serif;
+}
+@page{size:A4;margin:16mm 15mm 16mm}
+@page capa{margin:0}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--papel);color:var(--carvao);font:400 10pt/1.45 var(--texto)}
+h1,h2,h3,p{margin:0}
+.ponto{display:inline-block;width:.32em;height:.32em;border-radius:50%;background:var(--laranja);margin-left:.08em}
+
+/* capa */
+.capa{page:capa;break-after:page;height:297mm;background:var(--carvao);color:var(--osso);padding:20mm 18mm;display:grid;grid-template-rows:auto 1fr auto}
+.marca{font:400 11pt var(--titulo);letter-spacing:.06em}
+.capa-meio{align-self:center}
+.kicker{font:700 9.5pt var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--laranja);margin-bottom:9mm}
+.capa h1{font:400 58pt/.95 var(--titulo);text-transform:uppercase;letter-spacing:-.01em}
+.sub{margin-top:7mm;font:400 11pt var(--mono);color:var(--sec-escuro)}
+.capa-dados{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6mm 10mm;border-top:1px solid #3a3632;padding-top:7mm}
+.capa-dados dt{font:700 7.5pt var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--sec-escuro)}
+.capa-dados dd{margin:1.5mm 0 0;font-size:10.5pt}
+
+/* páginas */
+.pagina{break-before:page}
+.titulo{font:400 22pt/1.05 var(--titulo);text-transform:uppercase;margin-bottom:7mm}
+.titulo::after{content:"";display:inline-block;width:.28em;height:.28em;border-radius:50%;background:var(--laranja);margin-left:.1em}
+h3{font:700 8.5pt var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--laranja-txt);margin:5mm 0 2mm}
+h3:first-child{margin-top:0}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:9mm}
+.lead{color:var(--sec);margin-bottom:5mm;max-width:150mm}
+.pts{margin:0;padding:0;list-style:none;display:grid;gap:1.8mm}
+.pts li{padding-left:4.5mm;position:relative}
+.pts li::before{content:"";position:absolute;left:0;top:.55em;width:1.6mm;height:1.6mm;border-radius:50%;background:var(--laranja)}
+blockquote{margin:0;background:var(--osso);border-left:3px solid var(--traco);padding:4mm 5mm;display:grid;gap:3mm;font-size:10pt}
+.ro{color:var(--sec);font-style:italic}
+.motores{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm}
+.motores div{border:1.5px solid var(--carvao);border-radius:3mm;padding:3mm;display:grid;gap:1mm;background:#fff}
+.motores b{font:400 9.5pt var(--titulo);text-transform:uppercase}
+.motores span{font-size:8.5pt;color:var(--sec)}
+.leg{margin-top:3mm;font-size:8.5pt;color:var(--sec)}
+.tag{display:inline-block;font:700 7pt var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.5mm 1.8mm;border-radius:1mm}
+.tag.t{background:var(--tempo);color:var(--tempo-txt)}
+.tag.r{background:var(--risco);color:var(--risco-txt)}
+
+/* blocos de perguntas */
+.bloco{break-before:auto;margin-bottom:6mm}
+.intro + .bloco{break-before:page}
+.bloco-cab{display:flex;gap:4mm;align-items:center;background:var(--carvao);color:var(--osso);border-radius:3mm;padding:3mm 5mm;break-after:avoid}
+.bn{font:400 20pt/1 var(--titulo);color:var(--laranja)}
+.bloco h2{font:400 13pt/1.1 var(--titulo);text-transform:uppercase}
+.quem{font:400 8pt var(--mono);color:var(--sec-escuro);margin-top:.8mm}
+.bnota{margin:3mm 0 0;font-size:9pt;color:var(--sec);break-after:avoid}
+.qs{list-style:none;margin:2mm 0 0;padding:0}
+.q{display:grid;grid-template-columns:11mm 1fr;gap:2mm;padding:3.2mm 0 2mm;border-bottom:1px solid var(--linha);break-inside:avoid}
+.n{font:700 10pt var(--mono);color:var(--sec);padding-top:.3mm}
+.ess .n::after{content:" ★";color:var(--laranja-txt)}
+.pt{font-weight:600;font-size:10.5pt;line-height:1.35}
+.corpo .ro{font-size:9pt;margin-top:1mm}
+.dica{margin-top:1.4mm;font:400 8pt/1.4 var(--mono);color:var(--laranja-txt)}
+.linhas{display:grid;gap:5.5mm;margin-top:4mm}
+.linhas i{display:block;border-bottom:1px dotted #B9B0A4}
+
+/* números */
+table.num{width:100%;border-collapse:collapse;font-size:9.5pt}
+.num th{text-align:left;font:700 7.5pt var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--sec);border-bottom:2px solid var(--carvao);padding:2mm 2mm}
+.num td{border-bottom:1px solid var(--linha);padding:3.4mm 2mm;vertical-align:top}
+.num .un{font:400 8.5pt var(--mono);color:var(--sec);white-space:nowrap}
+.num .val{width:32mm;background:#fff;border-left:1px solid var(--linha);border-right:1px solid var(--linha)}
+.num .ja{font-size:8.5pt;color:var(--sec);width:42mm}
+.formula{margin-top:7mm;background:var(--carvao);color:var(--osso);border-radius:3mm;padding:5mm 6mm;display:grid;gap:2.5mm}
+.formula .k{font:700 8pt var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--laranja)}
+.formula .f{font:400 9.5pt/1.5 var(--mono)}
+.formula b{color:#fff}
+
+/* depois */
+.filtro,.entrega{margin:0;padding-left:5mm;display:grid;gap:1.6mm}
+.filtro li::marker,.entrega li::marker{font:700 9pt var(--mono);color:var(--laranja-txt)}
+.aviso{background:var(--risco);color:var(--risco-txt);border-radius:2mm;padding:2mm 3mm;font-size:8.5pt;margin-bottom:2.5mm}
+.matriz{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:30mm 30mm;gap:1.5mm;margin:1mm 0 8mm 6mm}
+.matriz div{border-radius:2.5mm;padding:3mm;display:grid;align-content:start;gap:1mm}
+.matriz b{font:400 9.5pt var(--titulo);text-transform:uppercase}
+.matriz span{font-size:8pt}
+.q1{background:var(--laranja);color:var(--carvao)}
+.q2{background:var(--carvao);color:var(--osso)}
+.q3{background:var(--osso);color:var(--carvao)}
+.q4{background:#fff;border:1px dashed var(--sec);color:var(--sec)}
+.eixo{position:absolute;font:700 7pt var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--sec)}
+.eixo.y{left:-6mm;top:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap}
+.eixo.x{right:0;bottom:-5mm}
+</style></head><body>
+
+<section class="capa">
+  <div class="marca">PACHECO STUDIOS<span class="ponto"></span></div>
+  <div class="capa-meio">
+    <p class="kicker">Auditoria de IA · guião da conversa</p>
+    <h1>Society Salon<br>Barbershop</h1>
+    <p class="sub">Iași · Bulevardul Carol I 26–28</p>
+  </div>
+  <dl class="capa-dados">
+    <div><dt>Para</dt><dd>Tomás Pacheco (uso interno)</dd></div>
+    <div><dt>Data</dt><dd>outubro de 2026</dd></div>
+    <div><dt>Perguntas</dt><dd>36 · 15 essenciais ★</dd></div>
+    <div><dt>Duração</dt><dd>45 min com o dono + 10 min por barbeiro</dd></div>
+  </dl>
+</section>
+
+<section class="pagina intro">
+  <h2 class="titulo">Como corre a conversa</h2>
+  <div class="duas">
+    <div>
+      <h3>O objetivo</h3>
+      <p>Sair com o mapa de como o salão funciona de verdade e com números suficientes para fazer as contas. Não se vende nada nesta conversa. A proposta vem depois, no PDF da auditoria.</p>
+      <h3>Antes de ir</h3>
+      <ul class="pts">
+        <li>Pedir ao dono, com antecedência, o relatório do MERO dos últimos 3 meses: marcações, faltas, cancelamentos, clientes novos e recorrentes.</li>
+        <li>Confirmar no telemóvel as avaliações do Google e do MERO no próprio dia.</li>
+        <li>Imprimir este guião ou levá-lo no tablet. As linhas por baixo de cada pergunta são para as respostas.</li>
+      </ul>
+      <h3>Regras</h3>
+      <ul class="pts">
+        <li><b>Pedir para gravar</b> (com autorização) e transcrever depois. Assim ouves em vez de escrever.</li>
+        <li><b>Perguntar sempre «e depois?»</b> até a tarefa não dar para partir mais.</li>
+        <li><b>Não sugerir soluções</b> durante a conversa. Só ouvir e anotar tempos.</li>
+        <li><b>Cada problema sai com um número:</b> estado atual, alvo e quanto vale em lei.</li>
+        <li>Pouco tempo? Faz só as perguntas com ★.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Abertura (dizer assim)</h3>
+      <blockquote>
+        <p>«Isto não é uma venda. Durante uns 45 minutos vou fazer-te perguntas sobre como o salão funciona no dia a dia. Daqui a uma semana volto com o mapa do salão, onde se perde tempo e dinheiro, e o que vale a pena fazer primeiro, com as contas. Depois decides tu.»</p>
+        <p lang="ro" class="ro">„Nu e o vânzare. Timp de vreo 45 de minute o să-ți pun întrebări despre cum funcționează salonul zi de zi. Peste o săptămână revin cu harta salonului, unde se pierd timp și bani și ce merită făcut mai întâi, cu cifrele. Apoi decizi tu."</p>
+      </blockquote>
+      <h3>O que vais desenhar a seguir</h3>
+      <div class="motores">
+        <div><b>Aquisição</b><span>como chega um cliente novo</span></div>
+        <div><b>Entrega</b><span>da marcação à cadeira e à caixa</span></div>
+        <div><b>Retorno</b><span>voltar, recomendar, avaliar</span></div>
+      </div>
+      <p class="leg"><span class="tag t">Tempo</span> tarefa manual e repetitiva · <span class="tag r">Risco</span> passo onde acontecem erros</p>
+    </div>
+  </div>
+</section>
+
+
+  <section class="bloco">
+    <header class="bloco-cab">
+      <span class="bn">1</span>
+      <div><h2>O objetivo</h2><p class="quem">Dono · 10 min</p></div>
+    </header>
+    <p class="bnota">Transformar desejos em números: estado atual → alvo → valor em lei.</p>
+    <ol class="qs">
+      <li class="q ess">
+        <span class="n">01</span>
+        <div class="corpo">
+          <p class="pt">Qual é o problema que mais dinheiro te custa hoje?</p>
+          <p class="ro" lang="ro">Care e problema care te costă cei mai mulți bani acum?</p>
+          <p class="dica">Deixa-o falar. Não sugiras nada.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q ess">
+        <span class="n">02</span>
+        <div class="corpo">
+          <p class="pt">Se resolvêssemos uma só coisa que mexesse na faturação, qual era?</p>
+          <p class="ro" lang="ro">Dacă am rezolva un singur lucru care să crească încasările, care ar fi?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">03</span>
+        <div class="corpo">
+          <p class="pt">Onde sabes que perdes dinheiro mas ainda não tiveste tempo de resolver?</p>
+          <p class="ro" lang="ro">Unde știi că pierzi bani, dar încă n-ai apucat să rezolvi?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q ess">
+        <span class="n">04</span>
+        <div class="corpo">
+          <p class="pt">Daqui a 12 meses, o que tem de ser verdade para dizeres que foi um bom ano?</p>
+          <p class="ro" lang="ro">Peste 12 luni, ce trebuie să fie adevărat ca să spui că a fost un an bun?</p>
+          <p class="dica">Puxa por um número: faturação, cadeiras cheias, mais barbeiros, 2.º salão.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">05</span>
+        <div class="corpo">
+          <p class="pt">Se a equipa ganhasse mais 20 % de tempo, onde o punhas?</p>
+          <p class="ro" lang="ro">Dacă echipa ar avea cu 20 % mai mult timp, unde l-ai folosi?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li></ol>
+  </section>
+  <section class="bloco">
+    <header class="bloco-cab">
+      <span class="bn">2</span>
+      <div><h2>O dia de ontem</h2><p class="quem">Dono, depois cada barbeiro</p></div>
+    </header>
+    <p class="bnota">A pergunta-mãe do método. Sobre ontem contam o que acontece, não o que devia acontecer.</p>
+    <ol class="qs">
+      <li class="q ess">
+        <span class="n">06</span>
+        <div class="corpo">
+          <p class="pt">Conta-me ontem, desde que abriste a porta. O que fizeste primeiro? E depois? E depois?</p>
+          <p class="ro" lang="ro">Povestește-mi ziua de ieri, de când ai deschis ușa. Ce ai făcut prima dată? Și apoi? Și după aceea?</p>
+          <p class="dica">Repete «e depois?» até não dar para partir mais. Aponta o tempo de cada passo.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">07</span>
+        <div class="corpo">
+          <p class="pt">Ontem, quantas mensagens e chamadas atendeste? Por onde chegaram e quanto tempo levaram?</p>
+          <p class="ro" lang="ro">Ieri, câte mesaje și apeluri ai primit? Pe unde au venit și cât timp ți-au luat?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">08</span>
+        <div class="corpo">
+          <p class="pt">E depois de fechar, o que ficou para fazer?</p>
+          <p class="ro" lang="ro">Și după închidere, ce a mai rămas de făcut?</p>
+          <p class="dica">Caixa, comissões, Instagram, encomendas.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li></ol>
+  </section>
+  <section class="bloco">
+    <header class="bloco-cab">
+      <span class="bn">3</span>
+      <div><h2>Motor de aquisição</h2><p class="quem">Como chega um cliente novo</p></div>
+    </header>
+    
+    <ol class="qs">
+      <li class="q ess">
+        <span class="n">09</span>
+        <div class="corpo">
+          <p class="pt">De onde vêm os clientes novos? MERO, Google, Instagram, quem passa na rua, recomendação… Em percentagem, mais ou menos.</p>
+          <p class="ro" lang="ro">De unde vin clienții noi? MERO, Google, Instagram, trecători, recomandări… Cam în ce procent?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">10</span>
+        <div class="corpo">
+          <p class="pt">Quantos clientes novos têm por mês? Onde vês esse número?</p>
+          <p class="ro" lang="ro">Câți clienți noi aveți pe lună? Unde vezi cifra asta?</p>
+          <p class="dica">Se não souber, já é um achado.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q ess">
+        <span class="n">11</span>
+        <div class="corpo">
+          <p class="pt">Quando alguém pergunta preço ou vaga por mensagem ou telefone, quem responde e quanto tempo demora? E à noite ou ao domingo?</p>
+          <p class="ro" lang="ro">Când cineva întreabă de preț sau de un loc liber pe mesaj sau la telefon, cine răspunde și în cât timp? Dar seara sau duminica?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">12</span>
+        <div class="corpo">
+          <p class="pt">Quantos pedidos ficam sem resposta ou chegam quando a agenda já está cheia? O que acontece a essas pessoas?</p>
+          <p class="ro" lang="ro">Câte cereri rămân fără răspuns sau vin când agenda e deja plină? Ce se întâmplă cu oamenii ăștia?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">13</span>
+        <div class="corpo">
+          <p class="pt">Quem trata do Instagram e quanto tempo leva por semana?</p>
+          <p class="ro" lang="ro">Cine se ocupă de Instagram și cât timp îi ia pe săptămână?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">14</span>
+        <div class="corpo">
+          <p class="pt">Quantos clientes estrangeiros têm (estudantes de Medicina, por exemplo)? A língua atrapalha?</p>
+          <p class="ro" lang="ro">Câți clienți străini aveți (studenți la Medicină, de exemplu)? Limba e o problemă?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li></ol>
+  </section>
+  <section class="bloco">
+    <header class="bloco-cab">
+      <span class="bn">4</span>
+      <div><h2>Motor de entrega</h2><p class="quem">Da marcação à cadeira e à caixa</p></div>
+    </header>
+    
+    <ol class="qs">
+      <li class="q ess">
+        <span class="n">15</span>
+        <div class="corpo">
+          <p class="pt">Como entra uma marcação: MERO, telefone, Instagram, porta? Quem passa para o MERO as que não vêm por lá?</p>
+          <p class="ro" lang="ro">Cum intră o programare: MERO, telefon, Instagram, direct la ușă? Cine le trece în MERO pe cele care nu vin de acolo?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q ess">
+        <span class="n">16</span>
+        <div class="corpo">
+          <p class="pt">Faltas e cancelamentos à última hora: quantos por semana? O que fazem quando acontece?</p>
+          <p class="ro" lang="ro">Neprezentări și anulări de ultim moment: câte pe săptămână? Ce faceți când se întâmplă?</p>
+          <p class="dica">Cada falta é dinheiro perdido: preço médio × faltas × 52.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">17</span>
+        <div class="corpo">
+          <p class="pt">Em que dias e horas a agenda tem buracos? Numa semana normal, quantas horas de cadeira ficam vazias?</p>
+          <p class="ro" lang="ro">În ce zile și la ce ore agenda are goluri? Într-o săptămână obișnuită, câte ore rămân scaunele libere?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">18</span>
+        <div class="corpo">
+          <p class="pt">Como fecham a caixa e fazem as contas das comissões dos barbeiros? Quem faz e quanto tempo leva?</p>
+          <p class="ro" lang="ro">Cum închideți casa și calculați comisioanele frizerilor? Cine face asta și cât durează?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">19</span>
+        <div class="corpo">
+          <p class="pt">Vendem produtos? Como controlam o stock e as encomendas?</p>
+          <p class="ro" lang="ro">Vindeți produse? Cum țineți evidența stocului și a comenzilor?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">20</span>
+        <div class="corpo">
+          <p class="pt">Onde costuma haver erros: marcação a dobrar, barbeiro errado, preço errado?</p>
+          <p class="ro" lang="ro">Unde apar de obicei greșeli: programări duble, frizer greșit, preț greșit?</p>
+          <p class="dica">Marca a vermelho no mapa (risco de qualidade).</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li></ol>
+  </section>
+  <section class="bloco">
+    <header class="bloco-cab">
+      <span class="bn">5</span>
+      <div><h2>Motor de retorno</h2><p class="quem">Depois do corte: voltar, recomendar, avaliar</p></div>
+    </header>
+    
+    <ol class="qs">
+      <li class="q ess">
+        <span class="n">21</span>
+        <div class="corpo">
+          <p class="pt">De quanto em quanto tempo volta um cliente? Sabem quem deixou de vir?</p>
+          <p class="ro" lang="ro">La cât timp revine un client? Știți cine a încetat să mai vină?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">22</span>
+        <div class="corpo">
+          <p class="pt">Fazem alguma coisa para trazer de volta quem não vem há 5 ou 6 semanas?</p>
+          <p class="ro" lang="ro">Faceți ceva ca să-i aduceți înapoi pe cei care n-au mai venit de 5–6 săptămâni?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">23</span>
+        <div class="corpo">
+          <p class="pt">O 6.º corte grátis: como é que o controlam? Cartão de papel, MERO, de cabeça?</p>
+          <p class="ro" lang="ro">A șasea tunsoare gratuită: cum o țineți evidența? Card de hârtie, MERO, din memorie?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q ess">
+        <span class="n">24</span>
+        <div class="corpo">
+          <p class="pt">No MERO têm mais de 1 600 avaliações e no Google cerca de 70. Pedem avaliação no Google? Porque acham que há esta diferença?</p>
+          <p class="ro" lang="ro">Pe MERO aveți peste 1.600 de recenzii, iar pe Google în jur de 70. Cereți recenzii pe Google? De ce credeți că e diferența asta?</p>
+          <p class="dica">Confirmar os números no dia, no telemóvel.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">25</span>
+        <div class="corpo">
+          <p class="pt">Quando um cliente se queixa, por onde chega e quem trata?</p>
+          <p class="ro" lang="ro">Când un client se plânge, pe unde ajunge plângerea și cine se ocupă?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li></ol>
+  </section>
+  <section class="bloco">
+    <header class="bloco-cab">
+      <span class="bn">6</span>
+      <div><h2>A equipa</h2><p class="quem">Cada barbeiro, 10 min, se possível sem o dono ao lado</p></div>
+    </header>
+    <p class="bnota">Quem faz o trabalho conhece os buracos da estrada.</p>
+    <ol class="qs">
+      <li class="q ess">
+        <span class="n">26</span>
+        <div class="corpo">
+          <p class="pt">Que parte do teu dia é mais repetitiva?</p>
+          <p class="ro" lang="ro">Ce parte din ziua ta e cea mai repetitivă?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q ess">
+        <span class="n">27</span>
+        <div class="corpo">
+          <p class="pt">Que tarefa nunca mais querias fazer?</p>
+          <p class="ro" lang="ro">Ce sarcină n-ai mai vrea s-o faci niciodată?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">28</span>
+        <div class="corpo">
+          <p class="pt">Onde gastas tempo em coisas que não precisam das tuas mãos?</p>
+          <p class="ro" lang="ro">Unde pierzi timp cu lucruri care nu au nevoie de mâinile tale?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">29</span>
+        <div class="corpo">
+          <p class="pt">Que perguntas te fazem os clientes sempre, todas as semanas?</p>
+          <p class="ro" lang="ro">Ce întrebări îți pun clienții mereu, în fiecare săptămână?</p>
+          <p class="dica">Matéria-prima para respostas automáticas.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li></ol>
+  </section>
+  <section class="bloco">
+    <header class="bloco-cab">
+      <span class="bn">7</span>
+      <div><h2>Sistemas</h2><p class="quem">O que já usam</p></div>
+    </header>
+    
+    <ol class="qs">
+      <li class="q ess">
+        <span class="n">30</span>
+        <div class="corpo">
+          <p class="pt">Que ferramentas usam hoje? MERO (que plano, lembretes por SMS ligados?), WhatsApp, Instagram, caixa, faturação, contabilista, Excel…</p>
+          <p class="ro" lang="ro">Ce instrumente folosiți acum? MERO (ce abonament, aveți remindere SMS activate?), WhatsApp, Instagram, casa de marcat, facturare, contabil, Excel…</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">31</span>
+        <div class="corpo">
+          <p class="pt">Onde copiam dados à mão de um sítio para outro? Que sistemas deviam falar uns com os outros e não falam?</p>
+          <p class="ro" lang="ro">Unde copiați date de mână dintr-un loc în altul? Ce sisteme ar trebui să comunice între ele și nu o fac?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">32</span>
+        <div class="corpo">
+          <p class="pt">O que já experimentaram e não resultou?</p>
+          <p class="ro" lang="ro">Ce ați încercat deja și n-a mers?</p>
+          <p class="dica">Evita repetir o que já falhou.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li></ol>
+  </section>
+  <section class="bloco">
+    <header class="bloco-cab">
+      <span class="bn">8</span>
+      <div><h2>Fecho e validação</h2><p class="quem">Dono · 5 min</p></div>
+    </header>
+    
+    <ol class="qs">
+      <li class="q ess">
+        <span class="n">33</span>
+        <div class="corpo">
+          <p class="pt">De tudo o que falámos, o que te tira mais o sono?</p>
+          <p class="ro" lang="ro">Din tot ce am vorbit, ce te frământă cel mai mult?</p>
+          <p class="dica">É este o 1.º problema do PDF.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">34</span>
+        <div class="corpo">
+          <p class="pt">Como costuma a equipa reagir a ferramentas novas?</p>
+          <p class="ro" lang="ro">Cum reacționează de obicei echipa la instrumente noi?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q">
+        <span class="n">35</span>
+        <div class="corpo">
+          <p class="pt">Há mais alguém que eu deva ouvir?</p>
+          <p class="ro" lang="ro">Mai e cineva cu care ar trebui să vorbesc?</p>
+          
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li>
+      <li class="q ess">
+        <span class="n">36</span>
+        <div class="corpo">
+          <p class="pt">Posso voltar daqui a uma semana para te mostrar o mapa do salão, onde se perde tempo e dinheiro e o que vale a pena fazer primeiro, com as contas?</p>
+          <p class="ro" lang="ro">Pot să revin peste o săptămână să-ți arăt harta salonului, unde se pierd timp și bani și ce merită făcut mai întâi, cu cifrele?</p>
+          <p class="dica">Marca a data antes de saíres.</p>
+          <div class="linhas" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </li></ol>
+  </section>
+
+<section class="pagina">
+  <h2 class="titulo">Números para as contas</h2>
+  <p class="lead">Preencher na conversa ou a partir do relatório do MERO. Se for estimativa do dono, escrever «est.» ao lado.</p>
+  <table class="num">
+    <thead><tr><th>O quê</th><th>Unidade</th><th>Valor</th><th>O que já sabemos</th></tr></thead>
+    <tbody><tr><td>Preço médio de um serviço</td><td class='un'>lei</td><td class='val'></td><td class='ja'>Google: 80–120 lei (a confirmar)</td></tr><tr><td>Barbeiros a trabalhar</td><td class='un'>pessoas</td><td class='val'></td><td class='ja'>MERO: 5 (a confirmar)</td></tr><tr><td>Marcações por semana</td><td class='un'>marcações</td><td class='val'></td><td class='ja'></td></tr><tr><td>Faltas + cancelamentos de última hora por semana</td><td class='un'>por semana</td><td class='val'></td><td class='ja'></td></tr><tr><td>Horas de cadeira vazias por semana</td><td class='un'>horas</td><td class='val'></td><td class='ja'></td></tr><tr><td>Tempo a responder a mensagens e chamadas</td><td class='un'>h / semana</td><td class='val'></td><td class='ja'></td></tr><tr><td>Tempo a fechar caixa e comissões</td><td class='un'>h / semana</td><td class='val'></td><td class='ja'></td></tr><tr><td>Clientes novos por mês</td><td class='un'>clientes</td><td class='val'></td><td class='ja'></td></tr><tr><td>Dos clientes novos, quantos voltam</td><td class='un'>%</td><td class='val'></td><td class='ja'></td></tr><tr><td>Intervalo médio entre cortes</td><td class='un'>semanas</td><td class='val'></td><td class='ja'></td></tr><tr><td>Custo de 1 hora de trabalho (comissão / salário)</td><td class='un'>lei / h</td><td class='val'></td><td class='ja'></td></tr><tr><td>Pedidos sem resposta ou perdidos por semana</td><td class='un'>pedidos</td><td class='val'></td><td class='ja'></td></tr></tbody>
+  </table>
+  <div class="formula">
+    <p class="k">A conta de cada problema</p>
+    <p class="f">horas perdidas por semana × pessoas × 52 semanas × custo de 1 hora = <b>custo por ano</b></p>
+    <p class="f">faltas por semana × preço médio × 52 = <b>receita perdida por ano</b></p>
+  </div>
+</section>
+
+<section class="pagina">
+  <h2 class="titulo">Depois da conversa</h2>
+  <div class="duas">
+    <div>
+      <h3>1. Filtro das 4 perguntas</h3>
+      <p>Para cada passo do mapa. Quatro «sim» = candidato a automatizar.</p>
+      <ol class="filtro">
+        <li>A entrada é estruturada? (formulário, mensagem, marcação)</li>
+        <li>A saída é previsível? (resposta padrão, lembrete)</li>
+        <li>A decisão segue regras? (se… então…)</li>
+        <li>Repete-se todos os dias ou todas as semanas?</li>
+      </ol>
+      <h3>2. Hipóteses a confirmar</h3>
+      <p class="aviso">Não dizer ao dono antes de ele falar. Servem só para saberes onde escavar.</p>
+      <ul class="pts"><li><b>Avaliações.</b> Mais de 1 600 no MERO e cerca de 70 no Google. Um pedido automático de avaliação depois de cada corte pode puxar o Google para as centenas.</li><li><b>Voltar a marcar.</b> Um corte dura 3–4 semanas. Lembrete por volta do dia 21–28 com o link do MERO já com o barbeiro escolhido.</li><li><b>Faltas.</b> Confirmação na véspera e lista de espera que preenche o buraco.</li><li><b>Mensagens fora de horas.</b> Respostas imediatas às perguntas de sempre (preço, vaga, onde fica a porta), em RO e EN, e o resto passa para uma pessoa.</li><li><b>Society Membership.</b> Assinatura mensal com cortes a preço fixo. Receita certa todos os meses.</li></ul>
+    </div>
+    <div>
+      <h3>3. Matriz de oportunidades</h3>
+      <div class="matriz">
+        <span class="eixo y">valor para o salão ↑</span>
+        <div class="q1"><b>Vitórias rápidas</b><span>fácil · valor alto · começar aqui</span></div>
+        <div class="q2"><b>Grandes apostas</b><span>difícil · valor alto · fase 2</span></div>
+        <div class="q3"><b>Extras</b><span>fácil · valor baixo · mais tarde</span></div>
+        <div class="q4"><b>Evitar</b><span>difícil · valor baixo</span></div>
+        <span class="eixo x">dificuldade →</span>
+      </div>
+      <h3>4. O que o dono recebe (PDF, 1 semana depois)</h3>
+      <ol class="entrega">
+        <li>O que nos pediste para ver</li>
+        <li>O mapa do salão, com o tempo e os erros marcados</li>
+        <li>A matriz de oportunidades</li>
+        <li>As 3 vitórias rápidas: antes e depois, tempo poupado, contas</li>
+        <li>Quanto vale tudo junto por ano</li>
+        <li>Plano de 90 dias</li>
+      </ol>
+      <p>Antes de entregar, 15 min de validação com o dono: «Destas três, qual bate mais com o que a equipa contou?»</p>
+    </div>
+  </div>
+</section>
+
+</body></html>
