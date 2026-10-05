@@ -36,14 +36,14 @@ jobs:
         run: |
           grep -qE '^\s*fotogramas\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
           python3 -m pip install --quiet pillow
-          if grep -qE '^\s*pagina\s' .github/ponte.txt; then
+          if grep -qE '^\s*(pagina|fotosmaps)\s' .github/ponte.txt; then
             python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
           fi
       - name: Pedidos
         if: steps.ha.outputs.n != '0'
         run: |
           python3 - <<'EOF'
-          import io, os, shlex, subprocess, urllib.request
+          import io, os, re, shlex, subprocess, urllib.request
           from PIL import Image
           UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
           os.makedirs("ponte", exist_ok=True)
@@ -99,6 +99,8 @@ jobs:
                       rel.append(f"ok  fotogramas {dest} " + " · ".join(info.split("\n")))
                   elif op == "pagina":
                       paginas.append((p[1], p[2]))
+                  elif op == "fotosmaps":
+                      paginas.append((p[1], p[2], "fotos"))
                   elif op == "testar":
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
@@ -111,11 +113,29 @@ jobs:
               from playwright.sync_api import sync_playwright
               with sync_playwright() as pw:
                   b = pw.chromium.launch()
-                  for nome, url in paginas:
+                  for nome, url, *modo in paginas:
                       try:
                           pg = b.new_page(viewport={"width": 1280, "height": 900}, user_agent=UA)
-                          r = pg.goto(url, wait_until="networkidle", timeout=60000)
-                          pg.wait_for_timeout(1500)
+                          try:
+                              r = pg.goto(url, wait_until="networkidle", timeout=30000)
+                          except Exception:
+                              r = None  # páginas que nunca ficam quietas (Google Maps): segue com o que carregou
+                          pg.wait_for_timeout(4000)
+                          if modo:  # fotosmaps: abre a galeria de fotos da ficha e desce para carregar mais
+                              for sel in ['button[aria-label^="Foto"]', 'button[aria-label*="foto"]', 'button[jsaction*="heroHeaderImage"]', 'img[decoding]']:
+                                  try:
+                                      pg.locator(sel).first.click(timeout=5000); break
+                                  except Exception:
+                                      pass
+                              pg.wait_for_timeout(4000)
+                              for _ in range(12):
+                                  pg.mouse.move(250, 500); pg.mouse.wheel(0, 2500); pg.wait_for_timeout(900)
+                          imgs = pg.evaluate("""() => { const s = new Set();
+                              document.querySelectorAll('img').forEach(i => i.currentSrc && s.add(i.currentSrc));
+                              document.querySelectorAll('*').forEach(e => { const m = getComputedStyle(e).backgroundImage.match(/url\\("?([^")]+)/); if (m) s.add(m[1]); });
+                              return [...s]; }""")
+                          imgs += sorted(set(re.findall(r'https://lh[0-9]\.googleusercontent\.com/[A-Za-z0-9_/.=-]+', pg.content())))
+                          open(f"ponte/{nome}.imagens.txt", "w", encoding="utf-8").write("\n".join(dict.fromkeys(imgs)))
                           open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
                           open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
                           pg.screenshot(path=f"ponte/{nome}.jpg", full_page=True, type="jpeg", quality=70)
