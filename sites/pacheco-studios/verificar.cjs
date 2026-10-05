@@ -639,6 +639,22 @@ const fs = require('fs');
     else bem('intro: com movimento reduzido não aparece e a página abre direta');
     await c.close();
   }
+  // ligação direta dos anúncios, na 1.ª visita: sem intro, diagnóstico aberto e utilizável; fechar limpa o #diagnostico
+  for (const [lg, sufixo] of [['pt', '#diagnostico'], ['ro', '?utm_source=meta&utm_content=diag-teste']]) {
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    const q = await c.newPage();
+    await q.goto(LINGUAS[lg].url.replace(/\/$/, '') + '/' + sufixo);
+    await q.waitForTimeout(300);
+    const r = await q.evaluate(() => ({ vai: document.documentElement.classList.contains('intro-vai'),
+      aberto: document.getElementById('diagnostico').open, comecar: !!document.getElementById('diag-comecar') }));
+    let ok = !r.vai && r.aberto && r.comecar;
+    if (ok) { await q.click('#diag-comecar'); ok = await q.evaluate(() => !document.getElementById('diag-comecar')); }
+    if (ok) { await q.keyboard.press('Escape'); await q.waitForTimeout(100);
+      ok = await q.evaluate(() => !document.getElementById('diagnostico').open && location.hash === ''); }
+    if (!ok) mal(`ligação direta ao diagnóstico (${lg} ${sufixo}): ${JSON.stringify(r)}`);
+    else bem(`${lg}: ${sufixo} abre o diagnóstico na 1.ª visita, sem intro; «Começar» funciona e fechar limpa o endereço`);
+    await c.close();
+  }
 
   // ——— 7. sem JavaScript: os separadores e os esquemas continuam a funcionar (:target) ———
   // movimento reduzido: sem o scroll suave, o Playwright não toca a meio do deslizar

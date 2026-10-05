@@ -160,6 +160,8 @@ cabeçalho), para não competirem no Google com os sites dos próprios negócios
   (`pachecost.com/`, `ro.pachecost.com/`). As leituras do QR contam à parte, como o evento `qr/cartao`, e os
   cliques para o WhatsApp e o telefone como `ir/whatsapp` e `ir/telefone`. Cada esquema aberto conta como
   `esquema/<id>` (`esquema/programari`, por exemplo): dá para ver quais automações interessam mais.
+- **Link direto ao diagnóstico (anúncios):** `pachecost.com/#diagnostico` ou qualquer link com `utm_content=diag-…`
+  abre o diagnóstico logo ao chegar, sem a intro. Fechar volta à página inicial. Os links com `utm_content=web-…` não mudam.
 - **Medir o diagnóstico** (painel em https://pachecost.goatcounter.com, entra-se com gon.pacheco50@gmail.com; eventos em «diagnostico/…»): `aberto` (tocou
   em «Conhece-nos») → `comecou` → `pergunta-01-nome` … `pergunta-08-contacto` (a 1.ª vez que chega a cada uma; a
   diferença entre duas seguidas é quem desistiu ali) → `fim` → `enviado` (tocou em «Enviar pelo WhatsApp»; é o número
