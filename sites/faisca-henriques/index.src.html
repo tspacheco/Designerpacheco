@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Faísca &amp; Henriques · Fábrica de bolos desde 1978, Faro</title>
+<meta name="description" content="Faísca &amp; Henriques, fábrica de bolos em Faro desde 1978. Bolos de aniversário, casamento e batizado por encomenda, fios de ovos, pastéis de nata e bolas de Berlim. Rua Brites de Almeida 27. Encomendas: 932 532 805.">
+<meta name="theme-color" content="#CDEBDD">
+<meta property="og:title" content="Faísca &amp; Henriques · Fábrica de bolos, Faro">
+<meta property="og:description" content="Tradicionalmente doce, desde 1978. Monte o seu bolo e encomende por WhatsApp.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23D3252B'/%3E%3Ccircle cx='32' cy='32' r='25' fill='%23CDEBDD'/%3E%3Ccircle cx='32' cy='32' r='19' fill='%23FFFDF8'/%3E%3Ctext x='32' y='40' font-family='Georgia' font-weight='700' font-size='20' text-anchor='middle' fill='%233A1F17'%3EF%26amp;H%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Faísca & Henriques",
+  "alternateName": "Faisca & Henriques — Fábrica de Bolos",
+  "slogan": "Tradicionalmente doce",
+  "foundingDate": "1978",
+  "telephone": "+351 932 532 805",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Brites de Almeida 27",
+    "addressLocality": "Faro",
+    "postalCode": "8000-234",
+    "addressRegion": "Faro",
+    "addressCountry": "PT"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 37.0152892, "longitude": -7.9304481 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "08:30", "closes": "13:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "15:00", "closes": "19:00" }
+  ]
+}
+</script>
+<style>
+/*__FONTES__*/
+:root{
+  --menta:#CDEBDD;        /* faixa verde-água da montra */
+  --menta-2:#B5E0CD;
+  --menta-esc:#1F6B53;
+  --nata:#FFFDF8;         /* chantilly */
+  --pao:#F3D08A;          /* pão-de-ló */
+  --pao-2:#E8B95C;
+  --fios:#E9A21F;         /* fios de ovos */
+  --morango:#C8242C;      /* vermelho do selo */
+  --vermelho-txt:#A81B22;
+  --choc:#3A1F17;         /* ganache / tinta */
+  --choc-2:#5A3426;
+  --cinza:#5E4A42;
+  --linha:rgba(58,31,23,.16);
+  --display:'Shrikhand', 'Cooper Black', Georgia, serif;
+  --corpo:'Nunito', system-ui, sans-serif;
+  --glace:'Pacifico', 'Brush Script MT', cursive;
+  --lat:min(1180px, 100% - 40px);
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --mola:cubic-bezier(.34,1.5,.5,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--menta);color:var(--choc);font:400 1.0625rem/1.6 var(--corpo);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;margin:0;letter-spacing:.005em}
+p{margin:0 0 1em}
+.lat{width:var(--lat);margin-inline:auto}
+[hidden]{display:none!important}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--morango);outline-offset:3px;border-radius:6px}
+.escuro :focus-visible,.morango :focus-visible{outline-color:var(--pao)}
+.pg-t:focus{outline:none}
+.salta{position:absolute;left:12px;top:-60px;background:var(--choc);color:#fff;padding:10px 16px;border-radius:8px;z-index:300;text-decoration:none}
+.salta:focus{top:12px}
+.pv-banner{background:var(--choc);color:var(--nata);font:800 .7rem/1.3 var(--corpo);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:8px 14px}
+
+.confirmar{display:inline-flex;align-items:center;gap:.4em;font:800 .66rem/1 var(--corpo);letter-spacing:.12em;text-transform:uppercase;color:var(--vermelho-txt);border:1.5px dashed currentColor;border-radius:999px;padding:.45em .8em;white-space:nowrap;vertical-align:middle;background:rgba(255,253,248,.6)}
+.escuro .confirmar,.morango .confirmar{color:var(--nata);background:transparent}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:100;background:var(--menta);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 10px 24px -18px rgba(58,31,23,.6)}
+.nav-in{display:flex;align-items:center;gap:14px;min-height:68px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.selo{width:46px;height:46px;flex:none}
+.marca b{font:400 1.25rem/1 var(--display)}
+.marca small{display:block;font:800 .62rem/1.2 var(--corpo);letter-spacing:.16em;text-transform:uppercase;color:var(--vermelho-txt);margin-top:4px}
+.nav-links{display:none;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{display:block;text-decoration:none;font-weight:700;font-size:.95rem;padding:10px 13px;border-radius:999px}
+.nav-links a:hover{background:var(--menta-2)}
+.nav-links a[aria-current="page"]{background:var(--choc);color:var(--nata)}
+.nav-cta{display:none}
+.burger{width:48px;height:48px;border:0;background:var(--choc);border-radius:50%;display:grid;place-items:center;cursor:pointer;flex:none}
+.burger span{display:block;width:18px;height:2.4px;border-radius:2px;background:#fff;position:relative;transition:transform .3s var(--ease)}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2.4px;border-radius:2px;background:#fff;transition:transform .3s var(--ease)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+.menu-movel{position:fixed;inset:0;z-index:90;background:var(--morango);color:var(--nata);padding:110px 26px 40px;display:flex;flex-direction:column;gap:4px;transform:translateY(-102%);transition:transform .45s var(--ease);visibility:hidden}
+.menu-movel.aberto{transform:none;visibility:visible}
+.menu-movel a{font:400 2.3rem/1.15 var(--display);text-decoration:none;padding:6px 0}
+.menu-movel a[aria-current="page"]{color:var(--pao)}
+.menu-movel p{margin-top:auto;font-weight:700}
+@media (min-width:1000px){.nav-links{display:flex}.burger,.menu-movel{display:none}}
+
+.pag{display:none}
+.pag.ativa{display:block;animation:entraPag .5s var(--ease)}
+@keyframes entraPag{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* fotos */
+.foto{position:relative;margin:0;overflow:hidden;background:var(--pao);aspect-ratio:var(--ar,4/5);border-radius:18px}
+.foto > svg.fb{position:absolute;inset:0;width:100%;height:100%}
+.foto > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.legenda{font-size:.9rem;font-weight:600;color:var(--cinza);margin-top:8px}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:800;font-size:1rem;text-decoration:none;border:0;cursor:pointer;transition:transform .2s var(--mola),background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-morango{background:var(--morango);color:#fff;box-shadow:0 6px 0 #8E161C}
+.btn-morango:hover{box-shadow:0 8px 0 #8E161C}
+.btn-choc{background:var(--choc);color:var(--nata);box-shadow:0 6px 0 #1E0F0A}
+.btn-nata{background:var(--nata);color:var(--choc);box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.btn-linha{border:2px solid currentColor;background:transparent}
+
+/* ---------- herói ---------- */
+.heroi{position:relative;padding:28px 0 0;overflow:hidden}
+.heroi-g{display:grid;gap:8px;align-items:end}
+.selo-grande{width:96px;height:96px;margin-bottom:16px;transform:scale(0) rotate(-40deg);transition:transform .9s var(--mola) .2s}
+.ini .selo-grande{transform:none}
+.heroi h1{font-size:clamp(3.2rem,15vw,8rem);line-height:.92;margin:0 0 14px;color:var(--choc)}
+.heroi h1 .l{display:block;overflow:hidden;padding:.04em 0 .08em}
+.heroi h1 .l > span{display:inline-block;transform:translateY(110%);transition:transform .9s var(--ease)}
+.ini .heroi h1 .l > span{transform:none}
+.heroi h1 .l:nth-child(1) > span{transition-delay:.35s}
+.heroi h1 .l:nth-child(2) > span{transition-delay:.5s}
+.heroi h1 .amp{color:var(--morango)}
+.slogan{font:400 clamp(1.5rem,6vw,2.3rem)/1.2 var(--glace);color:var(--vermelho-txt);margin:0 0 14px;opacity:0;transition:opacity .8s .9s}
+.ini .slogan{opacity:1}
+.heroi-sub{margin:0;max-width:38ch;font-size:1.06rem;font-weight:600;color:var(--cinza)}
+.heroi-acoes{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 10px}
+.bolo-heroi{width:100%;max-width:640px;margin:0 auto;display:block;overflow:visible}
+.cam{transform:translateY(-260px);opacity:0;transition:transform .7s var(--mola),opacity .3s}
+.ini .cam{transform:none;opacity:1}
+.cam.c1{transition-delay:.9s}.cam.c2{transition-delay:1.05s}.cam.c3{transition-delay:1.2s}.cam.c4{transition-delay:1.35s}.cam.c5{transition-delay:1.5s}.cam.c6{transition-delay:1.7s}
+.roseta{transform:scale(0);transform-box:fill-box;transform-origin:50% 100%;transition:transform .45s var(--mola)}
+.ini .roseta{transform:none}
+.morangos g{transform:translateY(-200px);opacity:0;transition:transform .6s var(--mola),opacity .2s}
+.ini .morangos g{transform:none;opacity:1}
+.placa{transform:translateY(-30px) rotate(-8deg);opacity:0;transform-box:fill-box;transform-origin:50% 100%;transition:transform .8s var(--mola) 2.9s,opacity .3s 2.9s}
+.ini .placa{transform:rotate(-4deg);opacity:1}
+.faca{transform:translateY(-120%);transition:transform .7s var(--ease) 3.3s}
+.ini .faca{transform:translateY(0)}
+.heroi-g{display:flex;flex-direction:column;align-items:stretch}
+.bolo-heroi{order:0;max-height:34svh;margin:4px auto 10px}
+@media (max-width:899px){.selo-grande{display:none}}
+@media (min-width:900px){
+  .heroi{padding:56px 0 60px}
+  .heroi-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);column-gap:48px;align-items:center}
+  .heroi h1{font-size:clamp(4rem,7.4vw,7.6rem)}
+  .heroi-g > *{grid-column:1}
+  .heroi-g .bolo-heroi{grid-column:2;grid-row:1 / span 6;max-height:none;margin:0}
+}
+
+/* camadas: as secções empilham-se como um bolo em corte */
+.camada{position:relative;padding:clamp(70px,11vw,130px) 0}
+.camada::before{content:"";position:absolute;left:0;right:0;top:-29px;height:30px;background-repeat:repeat-x;background-size:auto 30px;pointer-events:none}
+.c-nata{background:var(--nata)}
+.c-nata::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cpath d='M0 30 C0 12 10 6 15 6 C20 6 18 0 30 0 C42 0 40 6 45 6 C50 6 60 12 60 30Z' fill='%23FFFDF8'/%3E%3C/svg%3E");background-size:60px 30px}
+.c-morango{background:var(--morango);color:var(--nata)}
+.c-morango::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='30'%3E%3Cpath d='M0 30 L0 18 Q30 4 60 16 T120 18 L120 30Z' fill='%23C8242C'/%3E%3C/svg%3E");background-size:120px 30px}
+.c-pao{background-color:var(--pao);background-image:radial-gradient(circle at 20% 30%,rgba(196,140,50,.35) 0 2.5px,transparent 3px),radial-gradient(circle at 70% 60%,rgba(196,140,50,.3) 0 3.5px,transparent 4px),radial-gradient(circle at 45% 85%,rgba(196,140,50,.28) 0 2px,transparent 2.5px),radial-gradient(circle at 85% 15%,rgba(255,240,200,.5) 0 2px,transparent 2.5px);background-size:46px 46px,70px 70px,38px 38px,58px 58px}
+.c-pao::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='30'%3E%3Cpath d='M0 30 L0 20 Q12 14 22 18 Q34 22 46 15 Q60 9 72 17 Q82 22 90 20 L90 30Z' fill='%23F3D08A'/%3E%3C/svg%3E");background-size:90px 30px}
+.c-choc{background:var(--choc);color:var(--nata)}
+.c-choc::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30'%3E%3Cpath d='M0 30 L0 22 Q25 14 50 22 T100 22 L100 30Z' fill='%233A1F17'/%3E%3C/svg%3E");background-size:100px 30px}
+.c-choc::after{content:"";position:absolute;left:0;right:0;bottom:-34px;height:36px;z-index:2;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='36'%3E%3Cpath d='M0 0 H160 V4 C150 4 150 10 148 22 C147 30 140 30 139 22 C137 8 128 6 116 6 C104 6 104 12 103 16 C102 21 96 21 95 16 C93 6 80 4 62 6 C52 7 50 12 49 28 C48 36 40 36 39 28 C38 12 30 5 20 5 C12 5 10 9 9 13 C8 17 2 17 0 13Z' fill='%233A1F17'/%3E%3C/svg%3E") repeat-x;background-size:160px 36px;pointer-events:none}
+.c-menta{background:var(--menta)}
+.c-menta::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cpath d='M0 30 L0 22 Q15 12 30 22 T60 22 L60 30Z' fill='%23CDEBDD'/%3E%3C/svg%3E");background-size:60px 30px}
+
+.camada-rotulo{display:inline-flex;align-items:center;gap:10px;font:800 .72rem/1 var(--corpo);letter-spacing:.18em;text-transform:uppercase;margin:0 0 16px;color:var(--vermelho-txt)}
+.camada-rotulo i{width:22px;height:12px;border-radius:3px;background:currentColor;display:inline-block}
+.c-morango .camada-rotulo,.c-choc .camada-rotulo{color:var(--pao)}
+.sec-t{font-size:clamp(2.4rem,9vw,4.6rem);margin-bottom:18px}
+.sec-t em{font-style:normal;color:var(--morango)}
+.c-morango .sec-t em{color:var(--pao)}
+.c-choc .sec-t em{color:var(--fios)}
+.lead{font-size:1.12rem;line-height:1.55;max-width:56ch;color:var(--cinza);font-weight:600}
+.c-morango .lead,.c-choc .lead{color:#FBE9DF}
+
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.vis{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.1s}.js .rv.d2{transition-delay:.2s}.js .rv.d3{transition-delay:.3s}
+
+/* faixa */
+.faixa{background:var(--choc);color:var(--nata);overflow:hidden;position:relative;z-index:3}
+.faixa-in{display:flex;width:max-content;animation:corre 38s linear infinite}
+.faixa ul{display:flex;list-style:none;margin:0;padding:15px 0}
+.faixa li{font:400 1.35rem/1 var(--display);padding:0 18px;display:flex;align-items:center;gap:18px;white-space:nowrap}
+.faixa li::after{content:"";width:14px;height:14px;border-radius:50%;background:var(--morango);box-shadow:inset -3px -3px 0 rgba(0,0,0,.2)}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+/* montra (início) */
+.montra{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:34px}
+.montra figure{margin:0}
+.montra .foto{--ar:4/5}
+.montra figcaption{font:400 1.25rem/1.15 var(--display);margin-top:10px}
+.montra figcaption small{display:block;font:600 .88rem/1.4 var(--corpo);color:var(--cinza);margin-top:4px}
+.montra .larga{grid-column:span 2}
+.montra .larga .foto{--ar:16/10}
+@media (min-width:900px){.montra{grid-template-columns:repeat(4,1fr);gap:22px}.montra .larga{grid-column:span 2}.montra .larga .foto{--ar:auto;height:calc(100% - 44px)}}
+
+.duo{display:grid;gap:30px;align-items:center}
+@media (min-width:900px){.duo{grid-template-columns:1fr 1fr;gap:64px}.duo.inv > :first-child{order:2}}
+
+.ano{font:400 clamp(6rem,30vw,13rem)/.8 var(--display);color:var(--morango);display:block;margin:0 0 10px;text-shadow:5px 5px 0 var(--nata)}
+.factos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.factos div{background:rgba(255,253,248,.55);border-radius:14px;padding:14px 12px}
+.factos b{display:block;font:400 1.7rem/1 var(--display);color:var(--morango)}
+.factos span{display:block;font-size:.85rem;font-weight:700;line-height:1.3;margin-top:6px}
+
+/* corte lateral (desktop) */
+.corte{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:70;display:none;flex-direction:column;gap:3px;padding:8px;background:rgba(255,253,248,.8);border-radius:16px;box-shadow:0 10px 30px -14px rgba(58,31,23,.5)}
+.corte a{display:flex;align-items:center;justify-content:flex-end;gap:10px;text-decoration:none;font-size:.78rem;font-weight:800;color:var(--choc)}
+.corte a span{opacity:0;transform:translateX(6px);transition:opacity .25s,transform .25s;white-space:nowrap}
+.corte:hover a span,.corte a:focus-visible span,.corte a.on span{opacity:1;transform:none}
+.corte a i{display:block;width:44px;height:16px;border-radius:4px;border:1.5px solid rgba(58,31,23,.25);transition:width .3s var(--ease)}
+.corte a.on i{width:60px;border-color:var(--choc)}
+@media (min-width:1360px){.mostra-corte.passou .corte{display:flex}}
+
+/* cabeçalho de página */
+.pg-cab{padding:clamp(40px,7vw,90px) 0 clamp(26px,4vw,40px)}
+.pg-cab .sec-t{font-size:clamp(2.8rem,11vw,6rem)}
+
+/* catálogo de bolos */
+.filtros{display:flex;gap:8px;overflow-x:auto;padding:6px 20px 14px;margin:0 -20px;scrollbar-width:none;position:sticky;top:68px;z-index:20;background:var(--menta)}
+.filtros::-webkit-scrollbar{display:none}
+.chip{flex:none;border:2px solid var(--choc);background:var(--nata);border-radius:999px;padding:0 16px;min-height:44px;font-weight:800;font-size:.92rem;cursor:pointer;transition:background .2s,color .2s}
+.chip:hover{background:#fff}
+.chip[aria-pressed="true"]{background:var(--choc);color:var(--nata)}
+.grelha{display:grid;gap:22px;margin-top:20px;padding-bottom:40px}
+@media (min-width:640px){.grelha{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.grelha{grid-template-columns:repeat(3,1fr)}}
+.item{background:var(--nata);border-radius:24px;padding:12px 12px 20px;display:flex;flex-direction:column;box-shadow:0 2px 0 rgba(58,31,23,.08)}
+.item .foto{--ar:4/3;border-radius:16px}
+.item h3{font-size:1.65rem;margin:16px 8px 6px}
+.item p{margin:0 8px 12px;color:var(--cinza);font-size:.98rem;font-weight:600}
+.item .meta{display:flex;flex-wrap:wrap;gap:6px;margin:0 8px 16px;align-items:center}
+.item .meta i{font-style:normal;font-size:.8rem;font-weight:800;background:var(--menta);border-radius:999px;padding:5px 10px}
+.item .btn{margin:auto 8px 0;align-self:flex-start;min-height:46px}
+
+/* construtor */
+.constr{display:grid;gap:28px;padding-bottom:70px}
+@media (min-width:1000px){.constr{grid-template-columns:1fr 1.05fr;align-items:start}}
+.palco-bolo{position:sticky;top:76px;z-index:5;background:var(--nata);border-radius:28px;padding:18px 16px 16px;box-shadow:0 18px 40px -26px rgba(58,31,23,.55)}
+.palco-bolo svg{width:100%;height:auto;display:block;max-height:46svh}
+.palco-bolo .resumo-l{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;justify-content:center}
+.palco-bolo .resumo-l span{font-size:.8rem;font-weight:800;background:var(--menta);border-radius:999px;padding:5px 10px}
+@media (max-width:999px){.palco-bolo{top:68px;border-radius:0 0 24px 24px;margin:0 -20px;padding:10px 16px 12px}.palco-bolo svg{max-height:30svh}}
+.constr fieldset{border:0;margin:0 0 26px;padding:0}
+.constr legend{font:400 1.7rem/1 var(--display);margin-bottom:12px;padding:0}
+.opcoes{display:flex;flex-wrap:wrap;gap:8px}
+.opcoes input{position:absolute;opacity:0;width:1px;height:1px}
+.opcoes label{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border:2px solid transparent;border-radius:999px;background:var(--nata);cursor:pointer;font-weight:700;transition:border-color .2s,background .2s}
+.opcoes label:hover{border-color:var(--choc)}
+.opcoes input:checked + label{background:var(--choc);color:var(--nata)}
+.opcoes input:focus-visible + label{outline:3px solid var(--morango);outline-offset:3px}
+.opcoes .am{width:18px;height:18px;border-radius:5px;border:1px solid rgba(0,0,0,.18);flex:none}
+.pessoas{display:flex;align-items:center;gap:14px;background:var(--nata);border-radius:20px;padding:12px 14px}
+.pessoas button{width:48px;height:48px;border-radius:50%;border:0;background:var(--choc);color:var(--nata);font-size:1.5rem;font-weight:800;cursor:pointer;flex:none}
+.pessoas output{font:400 2.4rem/1 var(--display);min-width:2.2ch;text-align:center}
+.pessoas span{font-weight:700;color:var(--cinza);font-size:.95rem;line-height:1.3}
+.campo{display:grid;gap:6px;margin-bottom:14px}
+.campo label{font-weight:800;font-size:.93rem}
+.campo input,.campo textarea,.campo select{font:inherit;font-size:1rem;font-weight:600;padding:12px 14px;border:2px solid transparent;border-radius:14px;background:var(--nata);color:var(--choc);min-height:50px;width:100%}
+.campo input:focus,.campo textarea:focus,.campo select:focus{border-color:var(--choc);outline:none}
+.campo .ajuda{font-size:.86rem;font-weight:600;color:var(--cinza)}
+.duas{display:grid;gap:0 12px}
+@media (min-width:560px){.duas{grid-template-columns:1fr 1fr}}
+.erro{color:var(--vermelho-txt);font-weight:800;min-height:1.4em;margin:8px 0}
+.msg{background:#DCF8C6;border-radius:16px 16px 16px 4px;padding:14px 16px;font-size:.92rem;font-weight:600;white-space:pre-wrap;line-height:1.5;margin:0 0 16px;color:#1B2A1E}
+.enviar{background:var(--nata);border-radius:24px;padding:20px 18px}
+.enviar h3{font-size:1.6rem;margin-bottom:10px}
+
+/* montra (página) */
+.lista-balcao{display:grid;gap:16px;margin-top:10px}
+@media (min-width:760px){.lista-balcao{grid-template-columns:repeat(2,1fr)}}
+.balcao{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;background:var(--nata);border-radius:20px;padding:10px}
+.balcao .foto{--ar:1/1;border-radius:14px}
+.balcao h3{font-size:1.35rem;margin-bottom:4px}
+.balcao p{margin:0;color:var(--cinza);font-size:.95rem;font-weight:600}
+
+/* galeria */
+.mosaico{columns:2 150px;column-gap:12px;padding-bottom:60px}
+.mosaico button{display:block;width:100%;border:0;padding:0;margin:0 0 12px;background:none;cursor:zoom-in;break-inside:avoid;text-align:left}
+.mosaico .foto{aspect-ratio:var(--ar)}
+.mosaico span{display:block;font-size:.86rem;font-weight:700;padding:6px 4px 0}
+@media (min-width:900px){.mosaico{columns:3;column-gap:18px}}
+dialog.lupa{border:0;padding:0;background:transparent;max-width:min(92vw,1100px);max-height:92svh}
+dialog.lupa::backdrop{background:rgba(30,15,10,.92)}
+dialog.lupa img{max-height:82svh;width:auto;max-width:100%;margin:auto;border-radius:14px}
+dialog.lupa p{color:var(--nata);text-align:center;font-weight:700;margin:12px 0 0}
+dialog.lupa button{position:fixed;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:0;background:var(--nata);font-size:1.4rem;cursor:pointer}
+
+/* visitar */
+.horario{width:100%;border-collapse:collapse}
+.horario th,.horario td{text-align:left;padding:12px 0;border-bottom:1px solid var(--linha);vertical-align:middle}
+.horario th{font-weight:800;width:34%}
+.horario tr.hoje th,.horario tr.hoje td{color:var(--vermelho-txt)}
+.mapa{position:relative;aspect-ratio:4/3;background:var(--menta-2);border-radius:24px;overflow:hidden}
+.mapa svg,.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.contactos{list-style:none;margin:0;padding:0}
+.contactos a{display:flex;gap:14px;align-items:center;text-decoration:none;padding:13px 0;border-bottom:1px solid var(--linha);font-weight:800;font-size:1.05rem}
+.contactos a:hover{color:var(--vermelho-txt)}
+.contactos svg{width:22px;height:22px;flex:none;color:var(--morango)}
+.contactos small{display:block;font-size:.82rem;font-weight:600;color:var(--cinza)}
+.c-choc .contactos a{border-color:rgba(255,253,248,.18)}
+.c-choc .contactos small{color:#E8D5CB}
+.c-choc .contactos svg{color:var(--fios)}
+.c-choc .horario th,.c-choc .horario td{border-color:rgba(255,253,248,.18)}
+.c-choc .horario tr.hoje th,.c-choc .horario tr.hoje td{color:var(--fios)}
+
+/* rodapé: base de renda */
+.rodape{position:relative;background:var(--nata);padding:64px 0 calc(110px + env(safe-area-inset-bottom));font-size:.95rem;font-weight:600}
+.rodape::before{content:"";position:absolute;left:0;right:0;top:-23px;height:24px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24'%3E%3Cpath d='M0 24 V14 A10 10 0 0 1 20 14 A10 10 0 0 1 40 14 V24Z' fill='%23FFFDF8'/%3E%3Ccircle cx='10' cy='15' r='2.4' fill='%23CDEBDD'/%3E%3Ccircle cx='30' cy='15' r='2.4' fill='%23CDEBDD'/%3E%3Ccircle cx='20' cy='20' r='1.6' fill='%23CDEBDD'/%3E%3Ccircle cx='0' cy='20' r='1.6' fill='%23CDEBDD'/%3E%3C/svg%3E") repeat-x;background-size:40px 24px}
+.rodape-g{display:grid;gap:26px}
+@media (min-width:900px){.rodape-g{grid-template-columns:1.4fr 1fr 1fr}.rodape{padding-bottom:60px}}
+.rodape h3{font:800 .74rem/1 var(--corpo);letter-spacing:.16em;text-transform:uppercase;color:var(--vermelho-txt);margin-bottom:12px}
+.rodape p{margin:0 0 6px}
+.livro{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--choc);border-radius:12px;padding:10px 14px;text-decoration:none;margin-top:8px;font-weight:800}
+.fim{border-top:1px solid var(--linha);margin-top:30px;padding-top:16px;font-size:.84rem;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;color:var(--cinza)}
+
+/* CTA móvel */
+.cta-movel{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:80;display:grid;grid-template-columns:1fr 1.4fr;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+.cta-movel.vis{transform:none}
+.cta-movel a{min-height:54px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:9px;font-weight:800;text-decoration:none;box-shadow:0 10px 26px -10px rgba(0,0,0,.5)}
+.cta-movel svg{width:20px;height:20px}
+.cta-ligar{background:var(--nata);color:var(--choc);border:2px solid var(--choc)}
+.cta-wa{background:#1F7A4D;color:#fff}
+@media (min-width:1000px){.cta-movel{display:none}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .cam,.morangos g,.roseta,.placa,.faca,.selo-grande,.heroi h1 .l > span{transform:none!important;opacity:1!important}
+  .placa{transform:rotate(-4deg)!important}
+  .slogan{opacity:1}
+  .js .rv{opacity:1;transform:none}
+  .faixa-in{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="salta" href="#conteudo">Saltar para o conteúdo</a>
+<div class="pv-banner">Apresentação Pacheco Studios · site de demonstração para a Faísca &amp; Henriques</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="selo" viewBox="0 0 100 100">
+      <path d="M50 2 l6.5 5.2 8-2.4 3.9 7.4 8.3.6.6 8.3 7.4 3.9-2.4 8 5.2 6.5-5.2 6.5 2.4 8-7.4 3.9-.6 8.3-8.3.6-3.9 7.4-8-2.4L50 98l-6.5-5.2-8 2.4-3.9-7.4-8.3-.6-.6-8.3-7.4-3.9 2.4-8L2 50l5.2-6.5-2.4-8 7.4-3.9.6-8.3 8.3-.6 3.9-7.4 8 2.4z" fill="#D3252B"/>
+      <circle cx="50" cy="50" r="40" fill="#CDEBDD"/>
+      <circle cx="50" cy="50" r="31" fill="#FFFDF8" stroke="#3A1F17" stroke-width="1.6"/>
+      <text x="50" y="47" text-anchor="middle" font-family="Shrikhand, Georgia" font-size="13" fill="#3A1F17">F&amp;H</text>
+      <text x="50" y="62" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="7.5" fill="#C8242C" letter-spacing=".5">1978</text>
+    </symbol>
+    <symbol id="fb" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+      <rect width="400" height="300" fill="#F3D08A"/>
+      <g fill="rgba(196,140,50,.35)"><circle cx="40" cy="40" r="5"/><circle cx="120" cy="80" r="7"/><circle cx="300" cy="50" r="4"/><circle cx="360" cy="140" r="6"/><circle cx="60" cy="220" r="6"/><circle cx="250" cy="250" r="5"/></g>
+      <ellipse cx="200" cy="246" rx="120" ry="14" fill="#FFFDF8" opacity=".8"/>
+      <rect x="110" y="150" width="180" height="90" rx="6" fill="#E8B95C"/>
+      <rect x="110" y="178" width="180" height="10" fill="#FFFDF8"/><rect x="110" y="208" width="180" height="10" fill="#C8242C"/>
+      <path d="M104 150 Q104 130 124 130 H276 Q296 130 296 150Z" fill="#FFFDF8"/>
+      <circle cx="160" cy="124" r="10" fill="#C8242C"/><circle cx="200" cy="120" r="10" fill="#C8242C"/><circle cx="240" cy="124" r="10" fill="#C8242C"/>
+    </symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.45-.72-1.68-.8s-.39-.12-.55.12-.63.8-.78.96-.29.18-.53.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33a.45.45 0 0 0-.02-.42c-.06-.12-.55-1.33-.76-1.82s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2 4.7 4.7 0 0 0 1 2.5 10.8 10.8 0 0 0 4.1 3.65c1.53.66 2.13.72 2.9.6a2.5 2.5 0 0 0 1.63-1.15 2 2 0 0 0 .14-1.15c-.06-.1-.22-.16-.47-.28z" fill="currentColor"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></symbol>
+    <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="lat nav-in">
+    <a class="marca" href="#/" aria-label="Faísca &amp; Henriques, início">
+      <svg class="selo" aria-hidden="true"><use href="#selo"/></svg>
+      <span><b>Faísca &amp; Henriques</b><small>Fábrica de bolos</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#/">Início</a></li>
+      <li><a href="#/bolos">Bolos</a></li>
+      <li><a href="#/encomendar">Encomendar</a></li>
+      <li><a href="#/montra">Montra</a></li>
+      <li><a href="#/a-casa">A casa</a></li>
+      <li><a href="#/galeria">Galeria</a></li>
+      <li><a href="#/visitar">Visitar</a></li>
+    </ul>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu-movel" aria-label="Abrir menu"><span></span></button>
+  </div>
+</header>
+<nav class="menu-movel" id="menu-movel" aria-label="Menu">
+  <a href="#/">Início</a>
+  <a href="#/bolos">Bolos de festa</a>
+  <a href="#/encomendar">Montar o meu bolo</a>
+  <a href="#/montra">Montra do dia</a>
+  <a href="#/a-casa">A casa</a>
+  <a href="#/galeria">Galeria</a>
+  <a href="#/visitar">Visitar</a>
+  <p>Rua Brites de Almeida 27, Faro · 932 532 805</p>
+</nav>
+
+<main id="conteudo">
+
+<!-- ===================== INÍCIO ===================== -->
+<section class="pag" data-pag="" data-titulo="Faísca &amp; Henriques · Fábrica de bolos desde 1978, Faro">
+  <div class="heroi">
+    <div class="lat heroi-g">
+        <svg class="selo-grande" aria-hidden="true"><use href="#selo"/></svg>
+        <h1><span class="l"><span>Faísca <span class="amp">&amp;</span></span></span><span class="l"><span>Henriques</span></span></h1>
+        <p class="slogan">Tradicionalmente doce.</p>
+      <!-- assinatura: bolo em corte, a montar-se camada a camada -->
+      <svg class="bolo-heroi" viewBox="0 0 520 420" role="img" aria-label="Bolo em corte: três camadas de pão-de-ló, recheios de creme e morango, cobertura de chantilly, morangos e uma placa de Parabéns">
+        <ellipse cx="260" cy="392" rx="232" ry="20" fill="#E9A21F" opacity=".35"/>
+        <path d="M30 380 Q260 410 490 380 L486 392 Q260 422 34 392Z" fill="#E6E2D8"/>
+        <path d="M34 380 H486" stroke="#FFFDF8" stroke-width="10" stroke-linecap="round"/>
+        <g class="cam c1"><rect x="70" y="316" width="380" height="62" rx="4" fill="#F3D08A"/><g fill="#D9A84E" opacity=".7"><circle cx="110" cy="340" r="3"/><circle cx="170" cy="356" r="4"/><circle cx="240" cy="334" r="2.6"/><circle cx="300" cy="360" r="3.4"/><circle cx="380" cy="342" r="3"/><circle cx="420" cy="364" r="2.4"/></g></g>
+        <g class="cam c2"><rect x="70" y="298" width="380" height="20" fill="#FBE7B0"/><g fill="#C8242C"><circle cx="110" cy="308" r="6"/><circle cx="180" cy="306" r="5"/><circle cx="260" cy="309" r="6"/><circle cx="330" cy="306" r="5"/><circle cx="410" cy="308" r="6"/></g></g>
+        <g class="cam c3"><rect x="70" y="238" width="380" height="62" rx="2" fill="#F3D08A"/><g fill="#D9A84E" opacity=".7"><circle cx="130" cy="262" r="3.4"/><circle cx="200" cy="280" r="2.6"/><circle cx="270" cy="256" r="4"/><circle cx="350" cy="276" r="3"/><circle cx="420" cy="258" r="2.6"/></g></g>
+        <g class="cam c4"><rect x="70" y="220" width="380" height="20" fill="#E9A21F"/><path d="M70 230 q12 -8 24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0" stroke="#F6C452" stroke-width="2" fill="none"/></g>
+        <g class="cam c5"><rect x="70" y="160" width="380" height="62" rx="2" fill="#F3D08A"/><g fill="#D9A84E" opacity=".7"><circle cx="120" cy="190" r="3"/><circle cx="190" cy="176" r="3.6"/><circle cx="260" cy="200" r="2.8"/><circle cx="330" cy="182" r="3.6"/><circle cx="400" cy="198" r="3"/></g></g>
+        <g class="cam c6"><path d="M62 166 Q62 132 96 132 H424 Q458 132 458 166 V176 H62Z" fill="#FFFDF8"/><path d="M62 176 H458" stroke="#F3E9DA" stroke-width="3"/></g>
+        <g fill="#FFFDF8" stroke="#EFE3D0" stroke-width="1.5">
+          <path class="roseta" style="transition-delay:1.9s" d="M84 134 c-10 0 -12 -12 -4 -16 c-2 -10 12 -12 14 -4 c8 -4 14 6 6 12 c2 6 -6 10 -16 8z"/>
+          <path class="roseta" style="transition-delay:2s" d="M140 134 c-10 0 -12 -12 -4 -16 c-2 -10 12 -12 14 -4 c8 -4 14 6 6 12 c2 6 -6 10 -16 8z"/>
+          <path class="roseta" style="transition-delay:2.1s" d="M196 134 c-10 0 -12 -12 -4 -16 c-2 -10 12 -12 14 -4 c8 -4 14 6 6 12 c2 6 -6 10 -16 8z"/>
+          <path class="roseta" style="transition-delay:2.2s" d="M312 134 c-10 0 -12 -12 -4 -16 c-2 -10 12 -12 14 -4 c8 -4 14 6 6 12 c2 6 -6 10 -16 8z"/>
+          <path class="roseta" style="transition-delay:2.3s" d="M368 134 c-10 0 -12 -12 -4 -16 c-2 -10 12 -12 14 -4 c8 -4 14 6 6 12 c2 6 -6 10 -16 8z"/>
+          <path class="roseta" style="transition-delay:2.4s" d="M424 134 c-10 0 -12 -12 -4 -16 c-2 -10 12 -12 14 -4 c8 -4 14 6 6 12 c2 6 -6 10 -16 8z"/>
+        </g>
+        <g class="morangos">
+          <g style="transition-delay:2.5s"><path d="M112 112 q-14 -2 -14 12 q2 16 14 20 q12 -4 14 -20 q0 -14 -14 -12z" fill="#C8242C"/><path d="M104 112 l8 -8 l8 8" fill="#3F7A45"/></g>
+          <g style="transition-delay:2.6s"><path d="M168 108 q-14 -2 -14 12 q2 16 14 20 q12 -4 14 -20 q0 -14 -14 -12z" fill="#D7303A"/><path d="M160 108 l8 -8 l8 8" fill="#3F7A45"/></g>
+          <g style="transition-delay:2.7s"><path d="M340 108 q-14 -2 -14 12 q2 16 14 20 q12 -4 14 -20 q0 -14 -14 -12z" fill="#C8242C"/><path d="M332 108 l8 -8 l8 8" fill="#3F7A45"/></g>
+          <g style="transition-delay:2.8s"><path d="M396 112 q-14 -2 -14 12 q2 16 14 20 q12 -4 14 -20 q0 -14 -14 -12z" fill="#D7303A"/><path d="M388 112 l8 -8 l8 8" fill="#3F7A45"/></g>
+        </g>
+        <g class="placa">
+          <path d="M260 128 V70" stroke="#C9A44C" stroke-width="3"/>
+          <rect x="196" y="36" width="128" height="44" rx="6" fill="#FFFDF8" stroke="#E6D6BE" stroke-width="2"/>
+          <text x="260" y="66" text-anchor="middle" font-family="Pacifico, cursive" font-size="20" fill="#1F6B53">Parabéns</text>
+        </g>
+      </svg>
+
+        <p class="heroi-sub">Fábrica de bolos em Faro desde 1978. Bolos de festa por encomenda, fios de ovos e a montra cheia todas as manhãs.</p>
+        <div class="heroi-acoes">
+          <a class="btn btn-morango" href="#/encomendar">Montar o meu bolo <svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+          <a class="btn btn-linha" href="#/bolos">Ver bolos</a>
+        </div>
+      
+
+    </div>
+  </div>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-in">
+    <ul><li>Bolos de aniversário</li><li>Fios de ovos</li><li>Pastéis de nata</li><li>Bolas de Berlim</li><li>Casamentos</li><li>Batizados</li><li>Bolos frios</li><li>Folhados</li></ul>
+    <ul><li>Bolos de aniversário</li><li>Fios de ovos</li><li>Pastéis de nata</li><li>Bolas de Berlim</li><li>Casamentos</li><li>Batizados</li><li>Bolos frios</li><li>Folhados</li></ul>
+  </div></div>
+
+  <section class="camada c-nata" id="cam-montra" data-camada="Cobertura · montra">
+    <div class="lat">
+      <p class="camada-rotulo rv"><i></i>Cobertura · a montra</p>
+      <h2 class="sec-t rv d1">Saído do forno, <em>direto ao balcão</em></h2>
+      <p class="lead rv d2">A fábrica é atrás do balcão. Os tabuleiros saem para a montra de manhã: pastéis de nata, bolas de Berlim, folhados, croissants. Leve um, ou leve a caixa.</p>
+      <div class="montra">
+        <figure class="larga rv"><div class="foto" style="--pos:50% 40%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/tabuleiros-pastelaria.webp" alt="Tabuleiros de pastelaria acabada de fazer: palmiers, folhados, bolas de Berlim e pastéis de nata" loading="lazy" onerror="this.remove()"></div><figcaption>Os tabuleiros da manhã<small>o que há varia de dia para dia</small></figcaption></figure>
+        <figure class="rv d1"><div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/pasteis-de-nata.webp" alt="Dois pastéis de nata com a superfície queimada, numa caixa" loading="lazy" onerror="this.remove()"></div><figcaption>Pastel de nata<small>caramelizado por cima</small></figcaption></figure>
+        <figure class="rv d2"><div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/caixa-sortido.webp" alt="Caixa com bolas de Berlim recheadas de creme, pastel de nata e croissant" loading="lazy" onerror="this.remove()"></div><figcaption>A caixa sortida<small>bolas de Berlim, nata, croissant</small></figcaption></figure>
+      </div>
+      <p style="margin-top:28px" class="rv"><a class="btn btn-choc" href="#/montra">Ver a montra <svg aria-hidden="true"><use href="#i-seta"/></svg></a></p>
+    </div>
+  </section>
+
+  <section class="camada c-morango morango" id="cam-recheio" data-camada="Recheio · encomendas">
+    <div class="lat duo">
+      <div>
+        <p class="camada-rotulo rv"><i></i>Recheio · bolos por encomenda</p>
+        <h2 class="sec-t rv d1">Escolha a massa, o recheio <em>e o que se escreve em cima</em></h2>
+        <p class="lead rv d2">Monte o bolo no ecrã — massa, recheio, cobertura, número de pessoas — e veja-o crescer camada a camada. O pedido segue para o WhatsApp já escrito, com a data de levantamento.</p>
+        <div class="rv d3" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px"><a class="btn btn-nata" href="#/encomendar">Montar o meu bolo <svg aria-hidden="true"><use href="#i-seta"/></svg></a><a class="btn btn-linha" href="#/bolos">Ver bolos já feitos</a></div>
+      </div>
+      <figure class="rv d1" style="margin:0"><div class="foto" style="--ar:4/5"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-red-velvet.webp" alt="Bolo red velvet em camadas, com chantilly, morangos, amoras e velas com o número 15" loading="lazy" onerror="this.remove()"></div><figcaption class="legenda" style="color:#FBE9DF">Red velvet com chantilly e frutos vermelhos, para uns 15 anos.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="camada c-pao" id="cam-pao" data-camada="Pão-de-ló · desde 1978">
+    <div class="lat duo inv">
+      <div>
+        <p class="camada-rotulo rv"><i></i>Pão-de-ló · a casa</p>
+        <span class="ano rv d1" aria-hidden="true">1978</span>
+        <h2 class="sec-t rv d1">Quase cinquenta anos <em>de forno ligado</em></h2>
+        <p class="lead rv d2" style="color:#4A3328">A Faísca &amp; Henriques faz bolos em Faro desde 1978. Chamamos-lhe fábrica porque é isso que é: aqui amassa-se, coze-se e decora-se, e o que sai do forno vai direto para a montra.</p>
+        <div class="factos rv d3">
+          <div><b>1978</b><span>ano de abertura</span></div>
+          <div><b>48</b><span>anos a fazer bolos</span></div>
+          <div><b>Faro</b><span>Rua Brites de Almeida, 27</span></div>
+        </div>
+        <p style="margin-top:24px" class="rv"><a class="btn btn-choc" href="#/a-casa">Conhecer a casa</a></p>
+      </div>
+      <figure class="rv d1" style="margin:0"><div class="foto" style="--ar:4/5;--pos:50% 30%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/fabrica.webp" alt="A fábrica atrás do balcão, com fornos e bancadas de inox, e um pasteleiro a trabalhar" loading="lazy" onerror="this.remove()"></div><figcaption class="legenda" style="color:#4A3328">A fábrica, logo atrás do balcão.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="camada c-choc escuro" id="cam-choc" data-camada="Ganache · visitar">
+    <div class="lat duo">
+      <div>
+        <p class="camada-rotulo rv"><i></i>Ganache · visitar</p>
+        <h2 class="sec-t rv d1">Rua Brites de Almeida, <em>27</em></h2>
+        <p class="lead rv d2">No centro de Faro. Procure o selo verde-água de bordo vermelho na montra.</p>
+        <ul class="contactos rv d3">
+          <li><a href="tel:+351932532805"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>932 532 805<small>telemóvel · encomendas</small></span></a></li>
+          <li><a href="tel:+351289828856"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>289 828 856<small>telefone da loja</small></span></a></li>
+          <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Faisca+%26+Henriques,+Rua+Brites+de+Almeida+27,+8000-234+Faro" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Como chegar<small>abrir no Google Maps</small></span></a></li>
+        </ul>
+      </div>
+      <div class="rv d1">
+        <table class="horario" data-horario>
+          <tr data-d="1"><th>Segunda</th><td>08:30–13:00 · 15:00–19:00</td></tr>
+          <tr data-d="2"><th>Terça</th><td>abre às 08:30 · fecho <span class="confirmar">a confirmar</span></td></tr>
+          <tr data-d="3"><th>Quarta a sábado</th><td><span class="confirmar">a confirmar</span></td></tr>
+          <tr data-d="0"><th>Domingo</th><td><span class="confirmar">a confirmar</span></td></tr>
+        </table>
+        <p style="margin-top:20px"><a class="btn btn-nata" href="#/visitar">Mapa e horário</a></p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ===================== BOLOS ===================== -->
+<section class="pag" data-pag="bolos" data-titulo="Bolos de festa por encomenda · Faísca &amp; Henriques, Faro">
+  <div class="lat">
+    <header class="pg-cab">
+      <p class="camada-rotulo"><i></i>Bolos por encomenda</p>
+      <h2 class="sec-t pg-t" tabindex="-1">Bolos que já <em>saíram daqui</em></h2>
+      <p class="lead">Aniversários, casamentos, batizados, encomendas para a empresa. Cada um destes foi feito na fábrica — peça um igual, ou use-o como ponto de partida. O preço depende do tamanho e da decoração e é dado na resposta.</p>
+    </header>
+    <div class="filtros" role="group" aria-label="Filtrar bolos">
+      <button class="chip" type="button" data-f="" aria-pressed="true">Todos</button>
+      <button class="chip" type="button" data-f="aniversario" aria-pressed="false">Aniversário</button>
+      <button class="chip" type="button" data-f="criancas" aria-pressed="false">Crianças</button>
+      <button class="chip" type="button" data-f="casamento" aria-pressed="false">Casamento e batizado</button>
+      <button class="chip" type="button" data-f="fios" aria-pressed="false">Fios de ovos</button>
+      <button class="chip" type="button" data-f="chocolate" aria-pressed="false">Chocolate</button>
+      <button class="chip" type="button" data-f="frios" aria-pressed="false">Bolos frios</button>
+    </div>
+    <p class="sr" aria-live="polite" id="cat-estado"></p>
+    <div class="grelha" id="grelha">
+      <article class="item" data-o="aniversario">
+        <div class="foto" style="--pos:50% 45%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-red-velvet.webp" alt="Bolo red velvet sem cobertura nos lados, com chantilly, morangos e amoras" loading="lazy" onerror="this.remove()"></div>
+        <h3>Red velvet com frutos vermelhos</h3>
+        <p>Camadas de red velvet à vista, chantilly em rosetas, morangos e amoras. Velas de número a pedido.</p>
+        <div class="meta"><i>Aniversário</i><i>Sem cobertura lateral</i><span class="confirmar">preço a confirmar</span></div>
+        <button class="btn btn-morango" type="button" data-pedir="Red velvet com frutos vermelhos|aniversario|redvelvet|chantilly|naked">Pedir um assim</button>
+      </article>
+      <article class="item" data-o="aniversario fios">
+        <div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-frutas.webp" alt="Bolo com chantilly, fruta em calda, kiwi, cerejas e fios de ovos à volta" loading="lazy" onerror="this.remove()"></div>
+        <h3>Bolo de frutas com fios de ovos</h3>
+        <p>Chantilly, pêssego, kiwi, cerejas e folhas de chocolate, com uma coroa de fios de ovos na base.</p>
+        <div class="meta"><i>Aniversário</i><i>Fios de ovos</i><span class="confirmar">preço a confirmar</span></div>
+        <button class="btn btn-morango" type="button" data-pedir="Bolo de frutas com fios de ovos|aniversario|paodelo|chantilly|chantilly">Pedir um assim</button>
+      </article>
+      <article class="item" data-o="fios aniversario">
+        <div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-fios-de-ovos.webp" alt="Bolo coberto de fios de ovos, com pérolas prateadas, uma rosa de açúcar azul e placa de Parabéns" loading="lazy" onerror="this.remove()"></div>
+        <h3>Bolo de fios de ovos</h3>
+        <p>Coberto por inteiro de fios de ovos, pérolas prateadas e uma rosa de açúcar. O clássico das festas de família.</p>
+        <div class="meta"><i>Fios de ovos</i><i>Clássico</i><span class="confirmar">preço a confirmar</span></div>
+        <button class="btn btn-morango" type="button" data-pedir="Bolo de fios de ovos|aniversario|paodelo|ovos|fios">Pedir um assim</button>
+      </article>
+      <article class="item" data-o="chocolate aniversario fios">
+        <div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-chocolate-parabens.webp" alt="Bolo retangular de chocolate com Parabéns e um nome escrito a branco, borboletas de chocolate e fios de ovos" loading="lazy" onerror="this.remove()"></div>
+        <h3>Chocolate com o nome escrito</h3>
+        <p>Retangular, coberto de chocolate, com “Parabéns” e o nome escritos à mão, borboletas de chocolate e fios de ovos.</p>
+        <div class="meta"><i>Chocolate</i><i>Com inscrição</i><span class="confirmar">preço a confirmar</span></div>
+        <button class="btn btn-morango" type="button" data-pedir="Bolo de chocolate retangular com inscrição|aniversario|chocolate|chocolate|chocolate|retangular">Pedir um assim</button>
+      </article>
+      <article class="item" data-o="chocolate aniversario">
+        <div class="foto" style="--pos:50% 70%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-raspas-chocolate.webp" alt="Bolos de chocolate cobertos de raspas e leques de chocolate, polvilhados com açúcar" loading="lazy" onerror="this.remove()"></div>
+        <h3>Raspas de chocolate</h3>
+        <p>Leques e raspas de chocolate por cima de tudo, açúcar em pó a terminar. Para quem diz “quanto mais chocolate, melhor”.</p>
+        <div class="meta"><i>Chocolate</i><span class="confirmar">preço a confirmar</span></div>
+        <button class="btn btn-morango" type="button" data-pedir="Bolo com raspas de chocolate|aniversario|chocolate|chocolate|chocolate">Pedir um assim</button>
+      </article>
+      <article class="item" data-o="frios">
+        <div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolos-frios.webp" alt="Três bolos frios de mousse com cobertura de frutos vermelhos e de maracujá, com leques de chocolate" loading="lazy" onerror="this.remove()"></div>
+        <h3>Bolos frios</h3>
+        <p>Mousse com cobertura brilhante de frutos vermelhos ou de maracujá, e um leque de chocolate no centro.</p>
+        <div class="meta"><i>Bolo frio</i><i>Frutos vermelhos · maracujá</i><span class="confirmar">sabores a confirmar</span></div>
+        <button class="btn btn-morango" type="button" data-pedir="Bolo frio de mousse|aniversario|outra|frutos|naked">Pedir um assim</button>
+      </article>
+      <article class="item" data-o="criancas aniversario">
+        <div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-gomas.webp" alt="Bolo de chocolate coberto de gomas coloridas e marshmallows, com fios de ovos à volta" loading="lazy" onerror="this.remove()"></div>
+        <h3>Bolo das gomas</h3>
+        <p>Chocolate por baixo, gomas, corações e marshmallows por cima. O que desaparece primeiro nas festas de crianças.</p>
+        <div class="meta"><i>Crianças</i><span class="confirmar">preço a confirmar</span></div>
+        <button class="btn btn-morango" type="button" data-pedir="Bolo das gomas|aniversario|chocolate|chocolate|chocolate">Pedir um assim</button>
+      </article>
+      <article class="item" data-o="casamento aniversario">
+        <div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-pasta-acucar.webp" alt="Bolo redondo coberto de pasta de açúcar branca, com rosa e flores cor-de-rosa e fita" loading="lazy" onerror="this.remove()"></div>
+        <h3>Pasta de açúcar com flores</h3>
+        <p>Cobertura lisa de pasta de açúcar, rosa grande e flores pequenas em cascata, fita à volta. Batizados, comunhões, aniversários.</p>
+        <div class="meta"><i>Pasta de açúcar</i><i>Batizado · comunhão</i><span class="confirmar">preço a confirmar</span></div>
+        <button class="btn btn-morango" type="button" data-pedir="Bolo de pasta de açúcar com flores|batizado|paodelo|ovos|pasta">Pedir um assim</button>
+      </article>
+      <article class="item" data-o="casamento">
+        <div class="foto" style="--pos:50% 30%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-casamento.webp" alt="Bolo de casamento em andares, branco, com flores de açúcar e figuras de noivos no topo" loading="lazy" onerror="this.remove()"></div>
+        <h3>Bolo de casamento em andares</h3>
+        <p>Andares em branco, cascata de rosas de açúcar e os noivos no topo. Diga-nos a data e o número de convidados.</p>
+        <div class="meta"><i>Casamento</i><i>Andares</i><span class="confirmar">orçamento</span></div>
+        <button class="btn btn-morango" type="button" data-pedir="Bolo de casamento em andares|casamento|paodelo|ovos|pasta|andares">Pedir orçamento</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ENCOMENDAR ===================== -->
+<section class="pag" data-pag="encomendar" data-titulo="Montar o meu bolo · Encomendas por WhatsApp · Faísca &amp; Henriques">
+  <div class="lat">
+    <header class="pg-cab" style="padding-bottom:20px">
+      <p class="camada-rotulo"><i></i>Encomenda de bolo</p>
+      <h2 class="sec-t pg-t" tabindex="-1">Monte o seu bolo, <em>camada a camada</em></h2>
+      <p class="lead">Escolha e veja o bolo a mudar. No fim, o pedido abre no WhatsApp já escrito. Nada fica pago aqui: respondemos a confirmar o que é possível, o preço e a data.</p>
+    </header>
+    <form class="constr" id="form-bolo" novalidate>
+      <div class="palco-bolo" aria-live="polite">
+        <svg id="bolo-svg" viewBox="0 0 400 300" role="img" aria-label="Pré-visualização do bolo"></svg>
+        <div class="resumo-l" id="resumo-l"></div>
+      </div>
+      <div>
+        <p class="aviso-ref" id="ref-aviso" hidden style="background:var(--nata);border-left:5px solid var(--morango);padding:10px 14px;border-radius:0 12px 12px 0;font-weight:700"></p>
+        <fieldset>
+          <legend>Para quê?</legend>
+          <div class="opcoes">
+            <input type="radio" name="ocasiao" id="o1" value="aniversario" checked><label for="o1">Aniversário</label>
+            <input type="radio" name="ocasiao" id="o2" value="batizado"><label for="o2">Batizado / comunhão</label>
+            <input type="radio" name="ocasiao" id="o3" value="casamento"><label for="o3">Casamento</label>
+            <input type="radio" name="ocasiao" id="o4" value="empresa"><label for="o4">Empresa</label>
+            <input type="radio" name="ocasiao" id="o5" value="outra"><label for="o5">Outra festa</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Massa</legend>
+          <div class="opcoes">
+            <input type="radio" name="massa" id="m1" value="paodelo" checked><label for="m1"><i class="am" style="background:#F3D08A"></i>Pão-de-ló</label>
+            <input type="radio" name="massa" id="m2" value="chocolate"><label for="m2"><i class="am" style="background:#5A3426"></i>Chocolate</label>
+            <input type="radio" name="massa" id="m3" value="redvelvet"><label for="m3"><i class="am" style="background:#A8262E"></i>Red velvet</label>
+            <input type="radio" name="massa" id="m4" value="outra"><label for="m4"><i class="am" style="background:repeating-linear-gradient(45deg,#E8C9A0 0 4px,#FFFDF8 4px 8px)"></i>Aconselhem-me</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Recheio</legend>
+          <div class="opcoes">
+            <input type="radio" name="recheio" id="r1" value="chantilly" checked><label for="r1"><i class="am" style="background:#FFFDF8"></i>Chantilly e fruta</label>
+            <input type="radio" name="recheio" id="r2" value="ovos"><label for="r2"><i class="am" style="background:#F4B63A"></i>Doce de ovos</label>
+            <input type="radio" name="recheio" id="r3" value="chocolate"><label for="r3"><i class="am" style="background:#3A1F17"></i>Chocolate</label>
+            <input type="radio" name="recheio" id="r4" value="frutos"><label for="r4"><i class="am" style="background:#B8203E"></i>Frutos vermelhos</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Cobertura</legend>
+          <div class="opcoes">
+            <input type="radio" name="cobertura" id="c1" value="chantilly" checked><label for="c1">Chantilly</label>
+            <input type="radio" name="cobertura" id="c2" value="fios"><label for="c2">Fios de ovos</label>
+            <input type="radio" name="cobertura" id="c3" value="chocolate"><label for="c3">Chocolate</label>
+            <input type="radio" name="cobertura" id="c4" value="pasta"><label for="c4">Pasta de açúcar</label>
+            <input type="radio" name="cobertura" id="c5" value="naked"><label for="c5">Sem cobertura, fruta por cima</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Forma e tamanho</legend>
+          <div class="opcoes" style="margin-bottom:12px">
+            <input type="radio" name="forma" id="f1" value="redondo" checked><label for="f1">Redondo</label>
+            <input type="radio" name="forma" id="f2" value="retangular"><label for="f2">Retangular</label>
+            <input type="radio" name="forma" id="f3" value="andares"><label for="f3">Em andares</label>
+          </div>
+          <div class="pessoas">
+            <button type="button" id="menos" aria-label="Menos pessoas">−</button>
+            <output id="n-pessoas" for="menos mais" aria-live="polite">12</output>
+            <span>pessoas<br><small style="font-weight:600">mais ou menos</small></span>
+            <button type="button" id="mais" aria-label="Mais pessoas" style="margin-left:auto">+</button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>O que se escreve</legend>
+          <div class="duas">
+            <div class="campo"><label for="inscricao">Na placa ou no bolo</label><input id="inscricao" name="inscricao" maxlength="28" placeholder="Parabéns Rita"></div>
+            <div class="campo"><label for="vela">Vela de número (opcional)</label><input id="vela" name="vela" inputmode="numeric" maxlength="3" placeholder="ex.: 40"></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Levantamento</legend>
+          <div class="duas">
+            <div class="campo"><label for="data">Dia *</label><input type="date" id="data" name="data" required></div>
+            <div class="campo"><label for="periodo">Hora</label><select id="periodo" name="periodo"><option>de manhã</option><option>à tarde</option><option>indiferente</option></select></div>
+          </div>
+          <p class="campo"><span class="ajuda">Antecedência mínima para encomendas: <span class="confirmar">a confirmar</span></span></p>
+          <div class="duas">
+            <div class="campo"><label for="nome">O seu nome *</label><input id="nome" name="nome" autocomplete="name" required></div>
+            <div class="campo"><label for="notas">Alergias ou notas</label><input id="notas" name="notas"></div>
+          </div>
+        </fieldset>
+        <div class="enviar">
+          <h3>A mensagem que vai seguir</h3>
+          <div class="msg" id="msg-prev"></div>
+          <p class="erro" id="erro" role="alert"></p>
+          <button class="btn btn-morango" type="submit" style="width:100%"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar pedido no WhatsApp</button>
+          <p style="margin:14px 0 0;font-size:.9rem;font-weight:700">Prefere ligar? <a href="tel:+351932532805">932 532 805</a> · <a href="tel:+351289828856">289 828 856</a></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== MONTRA ===================== -->
+<section class="pag" data-pag="montra" data-titulo="Montra do dia · Pastelaria · Faísca &amp; Henriques, Faro">
+  <div class="lat">
+    <header class="pg-cab">
+      <p class="camada-rotulo"><i></i>Ao balcão</p>
+      <h2 class="sec-t pg-t" tabindex="-1">A montra <em>de todas as manhãs</em></h2>
+      <p class="lead">Pastelaria feita na fábrica, logo atrás do balcão. O que há muda de dia para dia; estes são os que mais se veem nos tabuleiros.</p>
+    </header>
+    <div class="lista-balcao">
+      <div class="balcao rv"><div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/pasteis-de-nata.webp" alt="" loading="lazy" onerror="this.remove()"></div><div><h3>Pastel de nata</h3><p>Massa folhada estaladiça, creme e o topo queimado.</p></div></div>
+      <div class="balcao rv d1"><div class="foto" style="--pos:30% 30%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/caixa-sortido.webp" alt="" loading="lazy" onerror="this.remove()"></div><div><h3>Bola de Berlim</h3><p>Fofa, passada por açúcar, aberta e recheada de creme.</p></div></div>
+      <div class="balcao rv"><div class="foto" style="--pos:20% 50%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/folhado-maca-nata.webp" alt="" loading="lazy" onerror="this.remove()"></div><div><h3>Folhado de maçã</h3><p>Massa folhada, creme e fatias finas de maçã com canela.</p></div></div>
+      <div class="balcao rv d1"><div class="foto" style="--pos:50% 10%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/tabuleiros-pastelaria.webp" alt="" loading="lazy" onerror="this.remove()"></div><div><h3>Palmiers e folhados</h3><p>Os tabuleiros de cima, em leque e dourados.</p></div></div>
+      <div class="balcao rv"><div class="foto" style="--pos:85% 75%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/caixa-sortido.webp" alt="" loading="lazy" onerror="this.remove()"></div><div><h3>Croissant</h3><p>Brilhante por cima, para o pequeno-almoço.</p></div></div>
+      <div class="balcao rv d1"><div class="foto"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/tabuleiros-folhados.webp" alt="" loading="lazy" onerror="this.remove()"></div><div><h3>E o resto do tabuleiro</h3><p>Pergunte ao balcão o que saiu hoje. Preços <span class="confirmar">a confirmar</span></p></div></div>
+    </div>
+    <section class="camada c-nata" style="margin:70px -20px 0;padding-inline:20px;border-radius:0">
+      <div class="duo">
+        <div>
+          <p class="camada-rotulo"><i></i>Para festas e escritórios</p>
+          <h3 class="sec-t" style="font-size:clamp(2.2rem,8vw,3.6rem)">Tabuleiros <em>por encomenda</em></h3>
+          <p class="lead">Pastelaria sortida para uma reunião, um lanche de anos ou uma festa de escola. Diga quantas pessoas e para que dia.</p>
+          <a class="btn btn-morango" id="wa-tabuleiro" href="https://wa.me/351932532805" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir tabuleiro</a>
+        </div>
+        <figure style="margin:0"><div class="foto" style="--ar:4/5"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/tabuleiros-folhados.webp" alt="Tabuleiros de pastelaria variada: palmiers, folhados e bolos em estante de inox" loading="lazy" onerror="this.remove()"></div></figure>
+      </div>
+    </section>
+  </div>
+</section>
+
+<!-- ===================== A CASA ===================== -->
+<section class="pag" data-pag="a-casa" data-titulo="A casa · Fábrica de bolos desde 1978 · Faísca &amp; Henriques">
+  <div class="lat">
+    <header class="pg-cab">
+      <p class="camada-rotulo"><i></i>A casa</p>
+      <h2 class="sec-t pg-t" tabindex="-1">Fábrica de bolos, <em>desde 1978</em></h2>
+      <p class="lead">“Tradicionalmente doce” — está escrito a vermelho no vidro da montra, e é a melhor descrição da casa. Bolos de família, pastelaria portuguesa, fios de ovos feitos como sempre.</p>
+    </header>
+    <div class="duo" style="padding-bottom:60px">
+      <figure class="rv" style="margin:0"><div class="foto" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/logotipo-montra.webp" alt="O selo da casa no vidro da montra: Faísca &amp; Henriques, Desde 1978, Fábrica de Bolos" loading="lazy" onerror="this.remove()"></div><figcaption class="legenda">O selo da montra: verde-água, bordo vermelho, desde 1978.</figcaption></figure>
+      <div>
+        <span class="ano rv" aria-hidden="true">1978</span>
+        <h3 class="sec-t rv d1" style="font-size:clamp(2rem,7vw,3.2rem)">O que se faz aqui</h3>
+        <ul class="contactos rv d2" style="margin-top:10px">
+          <li><a href="#/bolos"><span>Bolos de festa<small>aniversários, batizados, comunhões, casamentos</small></span></a></li>
+          <li><a href="#/bolos?o=fios"><span>Fios de ovos<small>a cobrir bolos ou a fazer de coroa</small></span></a></li>
+          <li><a href="#/montra"><span>Pastelaria do dia<small>pastéis de nata, bolas de Berlim, folhados</small></span></a></li>
+          <li><a href="#/bolos?o=frios"><span>Bolos frios<small>mousses com cobertura de fruta</small></span></a></li>
+          <li><a href="#/montra"><span>Tabuleiros para festas<small>por encomenda</small></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <section class="camada c-pao">
+    <div class="lat duo inv">
+      <div>
+        <p class="camada-rotulo rv"><i></i>Atrás do balcão</p>
+        <h3 class="sec-t rv d1">Fornos, inox <em>e farinha</em></h3>
+        <p class="lead rv d2" style="color:#4A3328">A fábrica vê-se do balcão: bancadas de inox, os fornos ao fundo, tabuleiros a arrefecer nas estantes. Quem entra para um café vê o bolo de amanhã a ser feito.</p>
+        <p class="rv d3" style="font-weight:700">Nomes de quem faz os bolos e história da casa <span class="confirmar">a confirmar</span></p>
+      </div>
+      <figure class="rv d1" style="margin:0"><div class="foto" style="--ar:4/5;--pos:50% 30%"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/fabrica.webp" alt="A fábrica atrás do balcão" loading="lazy" onerror="this.remove()"></div></figure>
+    </div>
+  </section>
+  <section class="camada c-menta" style="padding-bottom:90px">
+    <div class="lat duo">
+      <figure class="rv" style="margin:0"><div class="foto" style="--ar:4/3"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/fachada.webp" alt="Fachada da Faísca &amp; Henriques, com a faixa verde-água e o selo na montra" loading="lazy" onerror="this.remove()"></div></figure>
+      <div>
+        <h3 class="sec-t rv">Encontra-nos <em>pelo verde-água</em></h3>
+        <p class="lead rv d1">A faixa verde-água por baixo das montras e o selo redondo de bordo vermelho. Rua Brites de Almeida, 27.</p>
+        <a class="btn btn-choc rv d2" href="#/visitar">Como chegar</a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ===================== GALERIA ===================== -->
+<section class="pag" data-pag="galeria" data-titulo="Galeria · Faísca &amp; Henriques, Faro">
+  <div class="lat">
+    <header class="pg-cab">
+      <p class="camada-rotulo"><i></i>Galeria</p>
+      <h2 class="sec-t pg-t" tabindex="-1">Feito <em>na fábrica</em></h2>
+      <p class="lead">Bolos de festa, pastelaria e a casa. Toque numa foto para a ver maior.</p>
+    </header>
+    <div class="mosaico" id="mosaico">
+      <button type="button" data-src="media/bolo-red-velvet.webp"><div class="foto" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-red-velvet.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Red velvet com frutos vermelhos</span></button>
+      <button type="button" data-src="media/tabuleiros-pastelaria.webp"><div class="foto" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/tabuleiros-pastelaria.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Tabuleiros da manhã</span></button>
+      <button type="button" data-src="media/bolo-fios-de-ovos.webp"><div class="foto" style="--ar:16/9"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-fios-de-ovos.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Fios de ovos</span></button>
+      <button type="button" data-src="media/pasteis-de-nata.webp"><div class="foto" style="--ar:4/3"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/pasteis-de-nata.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Pastéis de nata</span></button>
+      <button type="button" data-src="media/bolo-casamento.webp"><div class="foto" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-casamento.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Bolo de casamento</span></button>
+      <button type="button" data-src="media/bolos-frios.webp"><div class="foto" style="--ar:16/9"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolos-frios.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Bolos frios</span></button>
+      <button type="button" data-src="media/caixa-sortido.webp"><div class="foto" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/caixa-sortido.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Caixa sortida</span></button>
+      <button type="button" data-src="media/bolo-gomas.webp"><div class="foto" style="--ar:16/9"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-gomas.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Bolo das gomas</span></button>
+      <button type="button" data-src="media/bolo-raspas-chocolate.webp"><div class="foto" style="--ar:9/16"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-raspas-chocolate.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Raspas de chocolate</span></button>
+      <button type="button" data-src="media/folhado-maca-nata.webp"><div class="foto" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/folhado-maca-nata.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Folhado de maçã e pastel de nata</span></button>
+      <button type="button" data-src="media/bolo-frutas.webp"><div class="foto" style="--ar:16/9"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-frutas.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Bolo de frutas</span></button>
+      <button type="button" data-src="media/bolo-chocolate-parabens.webp"><div class="foto" style="--ar:16/9"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-chocolate-parabens.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Chocolate com o nome</span></button>
+      <button type="button" data-src="media/bolo-pasta-acucar.webp"><div class="foto" style="--ar:16/9"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/bolo-pasta-acucar.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>Pasta de açúcar</span></button>
+      <button type="button" data-src="media/fabrica.webp"><div class="foto" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/fabrica.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>A fábrica</span></button>
+      <button type="button" data-src="media/logotipo-montra.webp"><div class="foto" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/logotipo-montra.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>O selo da montra</span></button>
+      <button type="button" data-src="media/fachada.webp"><div class="foto" style="--ar:4/3"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/fachada.webp" alt="" loading="lazy" onerror="this.remove()"></div><span>A fachada</span></button>
+    </div>
+  </div>
+  <dialog class="lupa" id="lupa" aria-label="Fotografia ampliada"><button type="button" id="lupa-fecha" aria-label="Fechar">×</button><img id="lupa-img" alt=""><p id="lupa-txt"></p></dialog>
+</section>
+
+<!-- ===================== VISITAR ===================== -->
+<section class="pag" data-pag="visitar" data-titulo="Visitar e contactos · Faísca &amp; Henriques, Faro">
+  <div class="lat">
+    <header class="pg-cab">
+      <p class="camada-rotulo"><i></i>Visitar</p>
+      <h2 class="sec-t pg-t" tabindex="-1">Rua Brites de Almeida, <em>27</em></h2>
+      <p class="lead">8000-234 Faro, no centro. A faixa verde-água e o selo de bordo vermelho na montra.</p>
+    </header>
+    <div class="duo" style="align-items:start;padding-bottom:80px">
+      <div>
+        <h3 class="sec-t" style="font-size:2.2rem">Horário</h3>
+        <table class="horario" data-horario>
+          <tr data-d="1"><th>Segunda</th><td>08:30–13:00 · 15:00–19:00</td></tr>
+          <tr data-d="2"><th>Terça</th><td>abre às 08:30 · fecho <span class="confirmar">a confirmar</span></td></tr>
+          <tr data-d="3"><th>Quarta</th><td><span class="confirmar">a confirmar</span></td></tr>
+          <tr data-d="4"><th>Quinta</th><td><span class="confirmar">a confirmar</span></td></tr>
+          <tr data-d="5"><th>Sexta</th><td><span class="confirmar">a confirmar</span></td></tr>
+          <tr data-d="6"><th>Sábado</th><td><span class="confirmar">a confirmar</span></td></tr>
+          <tr data-d="0"><th>Domingo</th><td><span class="confirmar">a confirmar</span></td></tr>
+        </table>
+        <h3 class="sec-t" style="font-size:2.2rem;margin-top:40px">Contactos</h3>
+        <ul class="contactos">
+          <li><a href="tel:+351932532805"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>932 532 805<small>telemóvel · encomendas</small></span></a></li>
+          <li><a href="tel:+351289828856"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>289 828 856<small>telefone da loja</small></span></a></li>
+          <li><a href="https://wa.me/351932532805?text=Ol%C3%A1%20Fa%C3%ADsca%20%26%20Henriques!" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp<small>encomendas e fotos de bolos</small></span></a></li>
+          <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Faisca+%26+Henriques,+Rua+Brites+de+Almeida+27,+8000-234+Faro" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Como chegar<small>abrir no Google Maps</small></span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="mapa">
+          <svg viewBox="0 0 400 300" aria-hidden="true"><rect width="400" height="300" fill="#B5E0CD"/><path d="M-10 90 L410 170" stroke="#FFFDF8" stroke-width="16"/><path d="M150 -10 L120 310" stroke="#FFFDF8" stroke-width="12"/><path d="M290 -10 L310 310" stroke="#FFFDF8" stroke-width="10"/><use href="#selo" x="186" y="120" width="44" height="44"/></svg>
+          <iframe title="Mapa: Faísca &amp; Henriques, Rua Brites de Almeida 27, Faro" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://www.google.com/maps?q=Faisca+%26+Henriques,+Rua+Brites+de+Almeida+27,+8000-234+Faro&amp;output=embed"></iframe>
+        </div>
+        <figure style="margin:20px 0 0"><div class="foto" style="--ar:4/3"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/fachada.webp" alt="A fachada da loja" loading="lazy" onerror="this.remove()"></div></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<nav class="corte" aria-label="Camadas da página">
+  <a href="#cam-montra" data-alvo="cam-montra"><span>Cobertura · montra</span><i style="background:#FFFDF8"></i></a>
+  <a href="#cam-recheio" data-alvo="cam-recheio"><span>Recheio · encomendas</span><i style="background:#C8242C"></i></a>
+  <a href="#cam-pao" data-alvo="cam-pao"><span>Pão-de-ló · desde 1978</span><i style="background:#F3D08A"></i></a>
+  <a href="#cam-choc" data-alvo="cam-choc"><span>Ganache · visitar</span><i style="background:#3A1F17"></i></a>
+</nav>
+
+<footer class="rodape">
+  <div class="lat">
+    <div class="rodape-g">
+      <div>
+        <span class="marca"><svg class="selo" aria-hidden="true"><use href="#selo"/></svg><span><b>Faísca &amp; Henriques</b><small>Fábrica de bolos · desde 1978</small></span></span>
+        <p style="margin-top:14px">Tradicionalmente doce.</p>
+        <a class="livro" href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">Livro de Reclamações</a>
+      </div>
+      <div>
+        <h3>Loja e fábrica</h3>
+        <p>Rua Brites de Almeida, 27<br>8000-234 Faro</p>
+        <p><a href="tel:+351932532805">932 532 805</a> · <a href="tel:+351289828856">289 828 856</a></p>
+      </div>
+      <div>
+        <h3>Horário</h3>
+        <p>Seg 08:30–13:00 · 15:00–19:00</p>
+        <p>Restantes dias <span class="confirmar">a confirmar</span></p>
+      </div>
+    </div>
+    <div class="fim"><span>© Faísca &amp; Henriques · Denominação e NIF <span class="confirmar">a confirmar</span></span><span>Site por Pacheco Studios</span></div>
+  </div>
+</footer>
+
+<div class="cta-movel" id="cta-movel">
+  <a class="cta-ligar" href="tel:+351932532805"><svg aria-hidden="true"><use href="#i-tel"/></svg>Ligar</a>
+  <a class="cta-wa" href="https://wa.me/351932532805?text=Ol%C3%A1%20Fa%C3%ADsca%20%26%20Henriques!%20Gostava%20de%20encomendar%20um%20bolo." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+</div>
+
+<noscript><p style="padding:20px">Faísca &amp; Henriques · Fábrica de bolos desde 1978 · Rua Brites de Almeida 27, 8000-234 Faro · 932 532 805 · 289 828 856 · Seg 8:30–13 e 15–19 · <a href="https://www.livroreclamacoes.pt/inicio">Livro de Reclamações</a></p></noscript>
+
+<script>
+(function(){
+  'use strict';
+  var WA = '351932532805';
+  var doc = document.documentElement;
+  doc.classList.add('js');
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* nav */
+  var nav = document.getElementById('nav'), cta = document.getElementById('cta-movel');
+  function rolou(){ nav.classList.toggle('scrolled', window.scrollY > 8); document.body.classList.toggle('passou', window.scrollY > window.innerHeight * .7); cta.classList.toggle('vis', window.scrollY > 260 || !document.querySelector('.pag.ativa[data-pag=""]')); }
+  window.addEventListener('scroll', rolou, {passive:true});
+  var burger = document.querySelector('.burger'), menu = document.getElementById('menu-movel');
+  function fechaMenu(){ burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Abrir menu'); menu.classList.remove('aberto'); document.body.style.overflow=''; }
+  burger.addEventListener('click', function(){
+    var abre = burger.getAttribute('aria-expanded') !== 'true';
+    burger.setAttribute('aria-expanded', String(abre)); burger.setAttribute('aria-label', abre ? 'Fechar menu' : 'Abrir menu');
+    menu.classList.toggle('aberto', abre); document.body.style.overflow = abre ? 'hidden' : '';
+    if (abre) menu.querySelector('a').focus();
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('aberto')){ fechaMenu(); burger.focus(); } });
+
+  /* revelação */
+  var io = ('IntersectionObserver' in window && !reduz) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:.06}) : null;
+  function observa(r){ r.querySelectorAll('.rv:not(.vis)').forEach(function(el){ if (io) io.observe(el); else el.classList.add('vis'); }); }
+
+  /* corte lateral */
+  var corteLinks = [].slice.call(document.querySelectorAll('.corte a'));
+  if ('IntersectionObserver' in window){
+    var ioC = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) corteLinks.forEach(function(a){ a.classList.toggle('on', a.dataset.alvo === e.target.id); }); });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    document.querySelectorAll('[data-camada]').forEach(function(s){ ioC.observe(s); });
+  }
+  corteLinks.forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); var s = document.getElementById(a.dataset.alvo); s.scrollIntoView({behavior: reduz ? 'auto' : 'smooth'}); }); });
+
+  /* router */
+  var pags = [].slice.call(document.querySelectorAll('.pag')), primeira = true, arrancou = false;
+  function mostra(){
+    if (location.hash && location.hash.indexOf('#/') !== 0) return;
+    var h = (location.hash || '').replace(/^#\/?/, ''), q = '';
+    if (h.indexOf('?') > -1){ q = h.split('?')[1]; h = h.split('?')[0]; }
+    var qs = new URLSearchParams(q);
+    var alvo = pags.filter(function(p){ return p.dataset.pag === h; })[0] || pags[0];
+    pags.forEach(function(p){ p.classList.toggle('ativa', p === alvo); });
+    document.title = alvo.dataset.titulo;
+    document.querySelectorAll('.nav-links a, .menu-movel a').forEach(function(a){
+      if (a.getAttribute('href') === '#/' + alvo.dataset.pag) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    document.body.classList.toggle('mostra-corte', alvo.dataset.pag === '');
+    fechaMenu();
+    if (!primeira){ window.scrollTo(0,0); var t = alvo.querySelector('.pg-t'); if (t) t.focus({preventScroll:true}); }
+    primeira = false;
+    observa(alvo);
+    if (alvo.dataset.pag === '' && !arrancou){ arrancou = true; requestAnimationFrame(function(){ requestAnimationFrame(function(){ doc.classList.add('ini'); }); }); }
+    if (alvo.dataset.pag === 'bolos') filtra(qs.get('o') || '');
+    if (alvo.dataset.pag === 'visitar'){ var f = alvo.querySelector('iframe[data-src]'); if (f && !f.src) f.src = f.dataset.src; }
+    rolou();
+  }
+  window.addEventListener('hashchange', mostra);
+
+  /* hoje no horário */
+  (function(){
+    var d;
+    try { d = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',weekday:'short'}).format(new Date())]; } catch(e){ d = new Date().getDay(); }
+    document.querySelectorAll('[data-horario] tr').forEach(function(tr){ tr.classList.toggle('hoje', +tr.dataset.d === d); });
+  })();
+
+  /* catálogo */
+  var itens = [].slice.call(document.querySelectorAll('#grelha .item'));
+  function filtra(f){
+    document.querySelectorAll('.filtros .chip').forEach(function(c){ c.setAttribute('aria-pressed', String(c.dataset.f === f)); });
+    itens.forEach(function(it){ it.hidden = !!f && (' ' + it.dataset.o + ' ').indexOf(' ' + f + ' ') < 0; });
+    document.getElementById('cat-estado').textContent = itens.filter(function(i){ return !i.hidden; }).length + ' bolos';
+  }
+  document.querySelectorAll('.filtros .chip').forEach(function(c){
+    c.addEventListener('click', function(){ filtra(c.dataset.f); history.replaceState(null,'','#/bolos' + (c.dataset.f ? '?o=' + c.dataset.f : '')); });
+  });
+
+  /* ---------- construtor de bolo ---------- */
+  var form = document.getElementById('form-bolo');
+  var svg = document.getElementById('bolo-svg');
+  var N = 12, REF = '';
+  var NOMES = {
+    ocasiao:{aniversario:'Aniversário',batizado:'Batizado / comunhão',casamento:'Casamento',empresa:'Empresa',outra:'Outra festa'},
+    massa:{paodelo:'Pão-de-ló',chocolate:'Chocolate',redvelvet:'Red velvet',outra:'aconselhem-me'},
+    recheio:{chantilly:'Chantilly e fruta',ovos:'Doce de ovos',chocolate:'Chocolate',frutos:'Frutos vermelhos'},
+    cobertura:{chantilly:'Chantilly',fios:'Fios de ovos',chocolate:'Chocolate',pasta:'Pasta de açúcar',naked:'Sem cobertura, fruta por cima'},
+    forma:{redondo:'Redondo',retangular:'Retangular',andares:'Em andares'}
+  };
+  var COR_MASSA = {paodelo:['#F3D08A','#D9A84E'], chocolate:['#5A3426','#3E2117'], redvelvet:['#A8262E','#7E1A21'], outra:['#E8C9A0','#C9A479']};
+  var COR_RECHEIO = {chantilly:'#FFFDF6', ovos:'#F4B63A', chocolate:'#3A1F17', frutos:'#B8203E'};
+  function val(n){ var el = form.querySelector('[name="' + n + '"]:checked') || form.querySelector('[name="' + n + '"]:not([type=radio])'); return el ? el.value.trim() : ''; }
+  function marca(n, v){ var el = form.querySelector('input[name="' + n + '"][value="' + v + '"]'); if (el) el.checked = true; }
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  function andar(cx, base, w, h, m, r, cob, topo){
+    var cm = COR_MASSA[m], cr = COR_RECHEIO[r], x = cx - w/2, s = '';
+    var nC = 3, hc = (h - 2 * 8) / nC;
+    for (var i = 0; i < nC; i++){
+      var y = base - (i + 1) * hc - i * 8;
+      s += '<rect x="' + x + '" y="' + y.toFixed(1) + '" width="' + w + '" height="' + hc.toFixed(1) + '" fill="' + cm[0] + '"/>';
+      for (var k = 0; k < Math.floor(w / 26); k++){ s += '<circle cx="' + (x + 12 + k * 26 + (i * 9) % 13).toFixed(1) + '" cy="' + (y + hc * (.3 + ((k + i) % 3) * .2)).toFixed(1) + '" r="' + (1.6 + (k % 3) * .6) + '" fill="' + cm[1] + '" opacity=".7"/>'; }
+      if (i < nC - 1){
+        var yr = y - 8;
+        s += '<rect x="' + x + '" y="' + yr.toFixed(1) + '" width="' + w + '" height="8" fill="' + cr + '"' + (r === 'chantilly' ? ' stroke="#EADFCB" stroke-width=".8"' : '') + '/>';
+        if (r === 'chantilly' || r === 'frutos') for (var f = 0; f < Math.floor(w / 34); f++) s += '<circle cx="' + (x + 16 + f * 34) + '" cy="' + (yr + 4) + '" r="3.2" fill="' + (r === 'frutos' ? '#7A1026' : '#C8242C') + '"/>';
+      }
+    }
+    var top = base - h;
+    if (cob === 'chantilly'){
+      s += '<rect x="' + (x - 4) + '" y="' + top + '" width="' + (w + 8) + '" height="' + h + '" rx="6" fill="none" stroke="#FFFDF8" stroke-width="7"/>';
+      s += '<rect x="' + (x - 6) + '" y="' + (top - 10) + '" width="' + (w + 12) + '" height="12" rx="6" fill="#FFFDF8"/>';
+      if (topo) for (var j = 0; j < Math.floor(w / 30); j++){ var px = x + 14 + j * 30; s += '<path d="M' + (px - 9) + ' ' + (top - 8) + ' q0 -14 9 -16 q9 2 9 16z" fill="#FFFDF8" stroke="#EADFCB"/>' + (j % 2 ? '<circle cx="' + px + '" cy="' + (top - 26) + '" r="6" fill="#C8242C"/>' : ''); }
+    } else if (cob === 'fios'){
+      var cx0 = x + w * .44;
+      s += '<rect x="' + (x - 5) + '" y="' + (top - 12) + '" width="' + (w + 10) + '" height="16" rx="8" fill="#E9A21F"/>';
+      s += '<rect x="' + cx0 + '" y="' + (top - 12) + '" width="' + (x + w + 5 - cx0) + '" height="' + (h + 12) + '" rx="10" fill="#E9A21F"/><path d="M' + cx0 + ' ' + (top + 2) + ' V' + base + '" stroke="rgba(0,0,0,.18)" stroke-width="3"/>';
+      var p = '';
+      for (var q = Math.ceil(w * .44 / 6); q < Math.floor(w / 6); q++){ var qx = x + q * 6; p += 'M' + qx + ' ' + (top - 8 + (q % 4) * 3) + ' q6 ' + (h * .4) + ' 2 ' + (h * .9) + ' '; }
+      s += '<path d="' + p + '" stroke="#F8C752" stroke-width="1.6" fill="none" opacity=".9"/>';
+      s += '<path d="M' + (x - 5) + ' ' + (top - 6) + ' q' + (w / 8) + ' -10 ' + (w / 4) + ' 0 t' + (w / 4) + ' 0 t' + (w / 4) + ' 0 t' + (w / 4 + 10) + ' 0" stroke="#C47F0E" stroke-width="2" fill="none"/>';
+    } else if (cob === 'chocolate'){
+      s += '<rect x="' + (x - 4) + '" y="' + (top - 8) + '" width="' + (w + 8) + '" height="' + (h + 8) + '" rx="6" fill="none" stroke="#3A1F17" stroke-width="8"/>';
+      s += '<rect x="' + (x - 6) + '" y="' + (top - 12) + '" width="' + (w + 12) + '" height="16" rx="6" fill="#3A1F17"/>';
+      for (var g = 0; g < Math.floor(w / 22); g++){ var gx = x + 8 + g * 22, gl = 8 + (g * 7) % 18; s += '<path d="M' + (gx - 4) + ' ' + (top + 2) + ' v' + gl + ' a4 4 0 0 0 8 0 v' + (-gl) + 'z" fill="#3A1F17"/>'; }
+      if (topo) for (var c2 = 0; c2 < 3; c2++) s += '<path d="M' + (cx - 30 + c2 * 30) + ' ' + (top - 12) + ' l-8 -16 l16 0z" fill="#5A3426"/>';
+    } else if (cob === 'pasta'){
+      var px0 = x + w * .44;
+      s += '<rect x="' + (x - 6) + '" y="' + (top - 8) + '" width="' + (w + 12) + '" height="12" rx="6" fill="#FBF3F1" stroke="#EBD9D4" stroke-width="2"/>';
+      s += '<rect x="' + px0 + '" y="' + (top - 8) + '" width="' + (x + w + 6 - px0) + '" height="' + (h + 8) + '" rx="10" fill="#FBF3F1" stroke="#EBD9D4" stroke-width="2"/>';
+      s += '<path d="M' + (px0 + 4) + ' ' + (base - 12) + ' H' + (x + w + 6) + '" stroke="#E7A0B4" stroke-width="7"/>';
+      for (var b = Math.ceil(w * .5 / 24); b < Math.floor(w / 24); b++) s += '<circle cx="' + (x + 6 + b * 24) + '" cy="' + (top + 14 + (b % 2) * 6) + '" r="2.4" fill="#D9C7C0"/>';
+      if (topo) s += '<circle cx="' + (x + w * .3) + '" cy="' + (top - 10) + '" r="12" fill="#D7336B"/><circle cx="' + (x + w * .3) + '" cy="' + (top - 10) + '" r="5" fill="#B0204F"/><path d="M' + (x + w * .3 + 10) + ' ' + (top - 6) + ' q14 -10 22 2 q-12 4 -22 -2z" fill="#4E8F5A"/>';
+    } else if (cob === 'naked'){
+      s += '<rect x="' + (x - 2) + '" y="' + (top - 6) + '" width="' + (w + 4) + '" height="8" rx="4" fill="#FFFDF6"/>';
+      if (topo) for (var z = 0; z < Math.floor(w / 22); z++){ var zx = x + 10 + z * 22; s += (z % 3 === 1) ? '<circle cx="' + zx + '" cy="' + (top - 12) + '" r="7" fill="#2B1830"/>' : '<path d="M' + zx + ' ' + (top - 22) + ' q-9 0 -9 8 q1 10 9 13 q8 -3 9 -13 q0 -8 -9 -8z" fill="#C8242C"/>'; }
+    }
+    return s;
+  }
+  function desenha(){
+    var m = val('massa'), r = val('recheio'), cob = val('cobertura'), forma = val('forma');
+    var andares = forma === 'andares' ? (N >= 60 ? 3 : 2) : 1;
+    var s = '<ellipse cx="200" cy="284" rx="170" ry="10" fill="#3A1F17" opacity=".12"/>';
+    s += '<path d="M24 276 H376 L368 286 H32Z" fill="#E6E2D8"/><path d="M28 276 H372" stroke="#C9A44C" stroke-width="3"/>';
+    var wMax = forma === 'retangular' ? Math.min(350, 230 + N * 2.4) : Math.min(320, 200 + N * 2.2);
+    var base = 274, hTot = andares === 1 ? 110 : andares === 2 ? 168 : 200;
+    var hA = hTot / andares, w = wMax;
+    for (var a = 0; a < andares; a++){
+      s += andar(200, base, Math.round(w), Math.round(hA - 6), m, r, cob, a === andares - 1);
+      base -= hA + (cob === 'chantilly' || cob === 'fios' ? 10 : 6); w *= .7;
+    }
+    var topY = base + 4;
+    var ins = val('inscricao'), vela = val('vela').replace(/\D/g, '');
+    if (vela){
+      var dx = 200 - (vela.length - 1) * 13;
+      vela.split('').forEach(function(d, i){ s += '<g transform="translate(' + (dx + i * 26) + ' ' + (topY - 30) + ')"><rect x="-10" y="-30" width="20" height="34" rx="6" fill="#FFFDF8" stroke="#C9A44C" stroke-width="2"/><text x="0" y="-6" text-anchor="middle" font-family="Shrikhand, Georgia" font-size="20" fill="#C8242C">' + d + '</text><path d="M0 -32 v-6" stroke="#3A1F17" stroke-width="2"/><path d="M0 -50 q6 7 0 12 q-6 -5 0 -12z" fill="#E9A21F"/></g>'; });
+    }
+    if (ins){
+      var px2 = vela ? 300 : 200, tw = Math.min(170, Math.max(90, ins.length * 9.5));
+      s += '<g transform="translate(' + px2 + ' ' + (topY - 18) + ') rotate(' + (vela ? 6 : -4) + ')"><path d="M0 4 V-24" stroke="#C9A44C" stroke-width="2.5"/><rect x="' + (-tw/2) + '" y="-56" width="' + tw + '" height="34" rx="5" fill="#FFFDF8" stroke="#E6D6BE" stroke-width="2"/><text x="0" y="-33" text-anchor="middle" font-family="Pacifico, cursive" font-size="' + (ins.length > 16 ? 12 : 15) + '" fill="#1F6B53">' + esc(ins) + '</text></g>';
+    }
+    svg.innerHTML = s;
+    svg.setAttribute('aria-label', 'Bolo ' + NOMES.forma[forma].toLowerCase() + ', massa ' + NOMES.massa[m].toLowerCase() + ', recheio ' + NOMES.recheio[r].toLowerCase() + ', cobertura ' + NOMES.cobertura[cob].toLowerCase() + ', para ' + N + ' pessoas');
+    document.getElementById('resumo-l').innerHTML = '<span>' + N + ' pessoas</span><span>' + NOMES.massa[m] + '</span><span>' + NOMES.recheio[r] + '</span><span>' + NOMES.cobertura[cob] + '</span>';
+  }
+  function dataTxt(s){ if (!s) return ''; var p = s.split('-'); var d = new Date(+p[0], +p[1]-1, +p[2]); return ['domingo','segunda','terça','quarta','quinta','sexta','sábado'][d.getDay()] + ', ' + p[2] + '/' + p[1]; }
+  function msg(){
+    var L = ['Olá Faísca & Henriques! Gostava de encomendar um bolo:'];
+    if (REF) L.push('• Como o da foto: ' + REF);
+    L.push('• Para: ' + NOMES.ocasiao[val('ocasiao')]);
+    L.push('• ' + NOMES.forma[val('forma')] + ', para ' + N + ' pessoas');
+    L.push('• Massa: ' + NOMES.massa[val('massa')]);
+    L.push('• Recheio: ' + NOMES.recheio[val('recheio')]);
+    L.push('• Cobertura: ' + NOMES.cobertura[val('cobertura')]);
+    if (val('inscricao')) L.push('• Escrever: "' + val('inscricao') + '"');
+    if (val('vela').replace(/\D/g,'')) L.push('• Vela de número: ' + val('vela').replace(/\D/g,''));
+    var d = document.getElementById('data').value;
+    L.push('• Levantamento: ' + (d ? dataTxt(d) + ', ' + val('periodo') : '(dia por escolher)'));
+    if (val('notas')) L.push('• Notas: ' + val('notas'));
+    if (val('nome')) L.push('• Nome: ' + val('nome'));
+    L.push('', 'Podem confirmar se é possível e o preço? Obrigado!');
+    return L.join('\n');
+  }
+  function atualiza(){ desenha(); document.getElementById('msg-prev').textContent = msg(); document.getElementById('n-pessoas').textContent = N; }
+  form.addEventListener('input', atualiza); form.addEventListener('change', atualiza);
+  document.getElementById('menos').addEventListener('click', function(){ N = Math.max(6, N - 2); atualiza(); });
+  document.getElementById('mais').addEventListener('click', function(){ N = Math.min(120, N + (N >= 40 ? 10 : 2)); atualiza(); });
+  var dataEl = document.getElementById('data'); dataEl.min = new Date().toISOString().slice(0,10);
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var falta = [];
+    if (!dataEl.value) falta.push('o dia de levantamento');
+    if (!val('nome')) falta.push('o seu nome');
+    var er = document.getElementById('erro');
+    if (falta.length){ er.textContent = 'Falta indicar ' + falta.join(' e ') + '.'; (!dataEl.value ? dataEl : document.getElementById('nome')).focus(); return; }
+    er.textContent = '';
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg()), '_blank', 'noopener');
+  });
+  document.querySelectorAll('[data-pedir]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p = b.dataset.pedir.split('|');
+      REF = p[0]; marca('ocasiao', p[1]); marca('massa', p[2]); marca('recheio', p[3]); marca('cobertura', p[4]); marca('forma', p[5] || 'redondo');
+      if (p[5] === 'andares') N = Math.max(N, 50);
+      var av = document.getElementById('ref-aviso'); av.hidden = false; av.textContent = 'A partir da foto: ' + REF + '. Ajuste o que quiser.';
+      atualiza(); location.hash = '#/encomendar';
+    });
+  });
+  document.getElementById('wa-tabuleiro').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Olá Faísca & Henriques! Gostava de encomendar um tabuleiro de pastelaria sortida para __ pessoas, para o dia __. Obrigado!');
+
+  /* galeria */
+  var lupa = document.getElementById('lupa');
+  document.querySelectorAll('#mosaico button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var img = document.getElementById('lupa-img'); img.src = b.dataset.src; img.alt = b.querySelector('span').textContent;
+      document.getElementById('lupa-txt').textContent = b.querySelector('span').textContent;
+      if (lupa.showModal) lupa.showModal(); else lupa.setAttribute('open','');
+    });
+  });
+  document.getElementById('lupa-fecha').addEventListener('click', function(){ lupa.close(); });
+  lupa.addEventListener('click', function(e){ if (e.target === lupa) lupa.close(); });
+
+  atualiza();
+  mostra();
+})();
+</script>
+</body>
+</html>
