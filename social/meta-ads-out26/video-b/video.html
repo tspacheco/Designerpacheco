@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Vídeo B · A máquina, desenhada</title>
-<!-- Criativo B em vídeo (Meta Ads, outubro de 2026). 19,5 s, PT e RO (?l=ro).
+<!-- Criativo B em vídeo (Meta Ads, outubro de 2026). 19,5 s, PT, RO (?l=ro) e EN (?l=en).
      Cada fotograma sai de render(t), sem estado; render.cjs captura 30 fps e junta o som de som.py.
      Composição 9:16 (1080×1920) com tudo o que importa dentro da caixa 4:5 (y 285–1635): o 4:5 do feed é um recorte.
      Zona segura do Reels: textos essenciais entre y 300 e y 1250; abaixo só desenho. -->
@@ -107,10 +107,21 @@ const T={
   bolha:'Bună! Sunt asistentul automat al restaurantului X. Cu ce te pot ajuta?', b3:'Înțelege ce vrea clientul',
   pl:['Rutină','Rezervare','Altceva'], br:['Răspunde din lista aprobată','Rezervă și confirmă','Ajunge la tine, cu toată conversația'],
   e3:'Fără mister', t3:'Regulile sunt<br>ale tale.', it:['Aprobi fiecare text pe care îl poate trimite.','Se prezintă mereu ca asistent automat.','Rulează pe WhatsApp-ul tău. Datele rămân la tine.'],
-  e4:'Primul pas', t4:'Află unde<br>pierzi clienți.', sub:'Diagnostic în 8 întrebări,<br>sub 2 minute.', btn:'Fă diagnosticul →', url:'ro.pachecost.com', fe:'Nu promitem. <em>Arătăm.</em>'}
+  e4:'Primul pas', t4:'Află unde<br>pierzi clienți.', sub:'Diagnostic în 8 întrebări,<br>sub 2 minute.', btn:'Fă diagnosticul →', url:'ro.pachecost.com', fe:'Nu promitem. <em>Arătăm.</em>'},
+ en:{hora:'Saturday · 23:10',
+  nots:[['ch','Missed call','+351 9•• ••• 214','21:40'],['wa','WhatsApp · Sarah','Got a table for 4 at 9pm?','21:41'],['ch','Missed call','+44 7•• ••• 870','21:52'],
+        ['ch','Missed call','+351 2•• ••• 133','22:05'],['wa','WhatsApp · James','Are you still open?','22:11'],['ch','Missed call','+44 7•• ••• 502','22:26'],
+        ['ch','Missed call','+351 9•• ••• 214','22:38'],['wa','WhatsApp · Sarah','Ok, maybe another time.','22:47']],
+  fam:'Sound familiar?', q:'“At night I find twelve missed calls and no idea who wanted what.”',
+  e2:'When you can’t pick up', t2:'It picks up.', e2b:'Anything out of the ordinary', t2b:'Comes to you.',
+  b1:['Missed call or message','any time, even after hours'], b2:['Replies in 5 seconds','with the text you approved'],
+  bolha:'Hi! I’m Restaurant X’s automated assistant. How can I help?', b3:'Understands what the customer wants',
+  pl:['Routine','Booking','Something else'], br:['Replies from the approved list','Books and confirms','Comes to you, with the whole conversation'],
+  e3:'No mystery', t3:'The rules<br>are yours.', it:['You approve every text it can send.','It always says it’s an automated assistant.','It runs on your WhatsApp. Your data stays with you.'],
+  e4:'First step', t4:'Find out where<br>you lose customers.', sub:'A diagnosis in 8 questions,<br>under 2 minutes.', btn:'Take the diagnosis →', url:'pachecost.com/en', fe:'We don’t promise. <em>We show.</em>'}
 };
 const L=T[new URLSearchParams(location.search).get('l')||'pt'];
-document.documentElement.lang=L===T.ro?'ro':'pt-PT';
+document.documentElement.lang=L===T.ro?'ro':L===T.en?'en':'pt-PT';
 // linha do tempo (s) — som.py usa os mesmos tempos
 const NT0=.25, NTD=.27, Q0=3.0, W1=5.35, S2=5.6, W2=12.2, S3=12.5, S4=15.1, DUR=19.5;
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), E=x=>1-Math.pow(1-cl(x),3), EI=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
@@ -135,7 +146,7 @@ function render(t){
     });
     if(t>=Q0){
       const words=L.q.split(' ');
-      h+=`<div class="ti q">`+words.map((w,i)=>{const k=fi(t,Q0+i*.075,.3);const ww=w.replace(/^([«„])/,'<span class="ab" style="margin:0">$1</span>').replace(/([»”])$/,'<span class="ab" style="margin:0">$1</span>');return `<span style="${op(k,(1-k)*26)}">${ww}</span>`}).join('')+`</div>`;
+      h+=`<div class="ti q">`+words.map((w,i)=>{const k=fi(t,Q0+i*.075,.3);const ww=w.replace(/^([«„“])/,'<span class="ab" style="margin:0">$1</span>').replace(/([»”])$/,'<span class="ab" style="margin:0">$1</span>');return `<span style="${op(k,(1-k)*26)}">${ww}</span>`}).join('')+`</div>`;
     }
     h+=`<div class="marca" style="${op(1-dim*.0)}">${I.logo}<span>Pacheco Studios</span></div>`;
     h+=`</div>`;

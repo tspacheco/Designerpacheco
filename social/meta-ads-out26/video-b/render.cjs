@@ -1,10 +1,10 @@
-// Vídeo B: captura video.html a 30 fps (PT e RO), junta o som de som.py e grava 9:16 (Reels/Stories) e 4:5 (feed).
+// Vídeo B: captura video.html a 30 fps (PT, RO e EN), junta o som de som.py e grava 9:16 (Reels/Stories) e 4:5 (feed).
 // O 4:5 é o recorte y 285–1635 do 9:16 (a composição foi desenhada para isso).
-// Uso: node render.cjs [pasta-temporária] [pt|ro]
+// Uso: node render.cjs [pasta-temporária] [pt|ro|en]
 const { chromium } = require('/opt/node-tools/node_modules/playwright');
 const { execFileSync } = require('child_process');
 const fs = require('fs'), path = require('path');
-const TMP = process.argv[2] || '/tmp/video-b', LANGS = process.argv[3] ? [process.argv[3]] : ['pt', 'ro'], FPS = 30;
+const TMP = process.argv[2] || '/tmp/video-b', LANGS = process.argv[3] ? [process.argv[3]] : ['pt', 'ro', 'en'], FPS = 30;
 (async () => {
   fs.mkdirSync(TMP, { recursive: true });
   const som = path.join(TMP, 'som.wav');
