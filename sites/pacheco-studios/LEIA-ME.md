@@ -13,6 +13,9 @@ No topo de cada página há o seletor **PT · EN · RO**. O RO leva a `ro.pachec
 
 > **Intro desligada desde 05/10 (pedido do Tomás, «por enquanto»).** Para a ligar: `INTRO_LIGADA = True` em `gerar.py`
 > e gerar de novo. O que segue descreve-a quando está ligada.
+>
+> **Vídeo do herói com o scroll também desligado desde 05/10:** fica a imagem `media/heroi.webp` parada. Para o ligar:
+> `HEROI_VIDEO = True` em `gerar.py`.
 
 Na primeira visita de cada sessão, antes do site, corre a **intro** (4 s): um compacto entra, passa pelo portal «Diagnóstico»
 (antes «Web design + marketing») e sai muscle car, passa pelo portal «Implementação de IA» e sai superdesportivo; arranca, aparece a

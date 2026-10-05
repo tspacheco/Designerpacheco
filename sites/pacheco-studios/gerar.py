@@ -482,7 +482,7 @@ def imagem_heroi():
     # d = 16:9 a 1920 px (ecrãs deitados), v = recorte 9:16 a 720×1280 (telemóvel ao alto).
     seq = {k: sorted(f for f in os.listdir(os.path.join(AQUI, "media", "heroi-hd", k)) if f.endswith(".webp"))
            for k in ("d", "v") if os.path.isdir(os.path.join(AQUI, "media", "heroi-hd", k))}
-    if not seq.get("d"):
+    if not HEROI_VIDEO or not seq.get("d"):
         return img
     dados = {k: [f"media/heroi-hd/{k}/{f}" for f in v] for k, v in seq.items()}
     return (img + '<canvas class="heroi-cv" aria-hidden="true"></canvas>'
@@ -734,6 +734,8 @@ def contacto(c, d, wa, tel_legivel, digitos, com_site):
 
 # A intro do carro está desligada por agora (pedido do Tomás, 05/10). Para a voltar a ligar: True e gerar de novo.
 INTRO_LIGADA = False
+# O vídeo do herói com o scroll também está desligado (pedido do Tomás, 05/10): fica a imagem parada. True para o ligar.
+HEROI_VIDEO = False
 
 
 def intro(c):
@@ -1219,7 +1221,7 @@ def main():
             raise SystemExit(f"falta media/intro-{i}.webp (os três carros da intro: ver LEIA-ME.md)")
         shutil.copy(carro, os.path.join(DIST, "media", f"intro-{i}.webp"))
     hd = os.path.join(AQUI, "media", "heroi-hd")
-    if os.path.isdir(hd):
+    if HEROI_VIDEO and os.path.isdir(hd):
         shutil.copytree(hd, os.path.join(DIST, "media", "heroi-hd"), dirs_exist_ok=True,
                         ignore=shutil.ignore_patterns("*.txt"))
 

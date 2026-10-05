@@ -556,7 +556,23 @@ const fs = require('fs');
 
   // ——— 5b. herói: o vídeo em fotogramas (16:9 em ecrãs deitados, recorte 9:16 ao alto) avança com o scroll ———
   console.log('\nHERÓI');
-  for (const [w, h, conj] of [[1280, 800, 'd'], [390, 844, 'v']]) {
+  const comVideo = fs.readFileSync(path.join(dist, 'index.html'), 'utf8').includes('id="heroi-quadros"');
+  if (!comVideo) {
+    // desligado no gerar.py (HEROI_VIDEO = False): imagem parada, o scroll desce normalmente
+    for (const [w, h] of [[1280, 800], [390, 844]]) {
+      const c = await contexto({ viewport: { width: w, height: h } });
+      const q = await c.newPage();
+      await q.goto(LINGUAS.pt.url);
+      await q.waitForTimeout(800);
+      const r = await q.evaluate(() => ({ rolo: document.querySelector('.heroi-bg').classList.contains('rolo'), cv: !!document.querySelector('.heroi-cv'),
+        pedidos: performance.getEntriesByType('resource').filter(x => x.name.includes('/heroi-hd/')).length,
+        img: !!document.querySelector('.heroi-img') }));
+      if (r.rolo || r.cv || r.pedidos || !r.img) mal(`herói ${w}px: vídeo desligado mas ${JSON.stringify(r)}`);
+      else bem(`herói ${w}px: vídeo desligado; imagem parada e o scroll desce normalmente`);
+      await c.close();
+    }
+  }
+  for (const [w, h, conj] of (comVideo ? [[1280, 800, 'd'], [390, 844, 'v']] : [])) {
     const c = await contexto({ viewport: { width: w, height: h } });
     const q = await c.newPage();
     await q.goto(LINGUAS.pt.url);
