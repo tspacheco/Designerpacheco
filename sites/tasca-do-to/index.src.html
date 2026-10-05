@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tasca do Tó · Petiscos em Tavira, aberta até às 23:00</title>
+<meta name="description" content="Tasca do Tó, Rua dos Fumeiros Diante, Tavira: petiscos, pratos de tacho e café, das 10:00 às 23:00. Veja se está aberta agora, ligue ou mande WhatsApp.">
+<meta name="theme-color" content="#173B33">
+<meta property="og:title" content="Tasca do Tó · Tavira">
+<meta property="og:description" content="Petiscos e pratos de tacho em Tavira. 4,5 no Google com 173 avaliações.">
+<meta property="og:image" content="media/balcao-mural.webp">
+<meta property="og:locale" content="pt_PT">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M4 40L20 18L32 40z' fill='%23D0643A'/%3E%3Cpath d='M32 40L44 16L60 40z' fill='%23A8451F'/%3E%3Crect x='6' y='40' width='52' height='20' fill='%23F4F1E8'/%3E%3Crect x='26' y='46' width='12' height='14' fill='%23F4C04E'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Tasca do Tó",
+  "description": "Tasca de bairro em Tavira: petiscos, pratos de tacho e café.",
+  "servesCuisine": ["Portuguesa", "Petiscos"],
+  "telephone": "+351964610125",
+  "image": "media/balcao-mural.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua dos Fumeiros Diante, 2",
+    "postalCode": "8800",
+    "addressLocality": "Tavira",
+    "addressRegion": "Faro",
+    "addressCountry": "PT"
+  },
+  "geo": {"@type": "GeoCoordinates", "latitude": 37.1292894, "longitude": -7.649379},
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=37.1292894%2C-7.649379",
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.5", "bestRating": "5", "reviewCount": "173"}
+}
+</script>
+<style>
+/*__FONTES__*/
+
+:root{
+  --verde:#173B33; --verde-2:#1F4B3F; --verde-3:#2B5E50;
+  --cal:#F4F1E8; --cal-2:#EAE4D4; --cal-3:#FBFAF5;
+  --telha:#C2522D; --telha-cl:#E07A50; --telha-esc:#93391A;
+  --luz:#F4C04E; --luz-2:#F8D98A;
+  --tinta:#16211D; --tinta-2:#4B5651; --linha:#D8D1BF;
+  --zap:#18793F;
+  --f-d:'Kufam', 'Trebuchet MS', sans-serif;
+  --f-c:'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-m:'DM Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --gut:clamp(20px, 5vw, 56px);
+  --max:1180px;
+  --nav-h:62px;
+  --ease-out:cubic-bezier(.2,.8,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--nav-h) + 16px)}
+body{margin:0;background:var(--cal);color:var(--tinta);font:400 17px/1.6 var(--f-c);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3{margin:0;font-weight:400}
+p{margin:0}
+:focus-visible{outline:3px solid var(--telha);outline-offset:3px;border-radius:4px}
+.escuro :focus-visible,.nav :focus-visible,.menu-movel :focus-visible,.rodape :focus-visible,.fixo :focus-visible{outline-color:var(--luz)}
+.salta{position:fixed;left:12px;top:-60px;z-index:200;background:var(--cal);color:var(--tinta);padding:10px 16px;border-radius:8px;font-weight:600;text-decoration:none}
+.salta:focus{top:12px}
+html[lang="en"] [data-l="pt"]{display:none!important}
+html:not([lang="en"]) [data-l="en"]{display:none!important}
+
+.demo{position:relative;z-index:60;background:var(--telha);color:#fff;font:600 11.5px/1.35 var(--f-c);letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:7px 14px}
+.demo b{font-weight:800}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;gap:14px;padding:0 var(--gut);background:var(--verde);color:var(--cal);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 8px 24px -14px rgba(0,0,0,.6)}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 22px/1 var(--f-d);letter-spacing:-.01em;white-space:nowrap}
+.marca svg{width:30px;height:24px;flex:none}
+.estado-mini{display:inline-flex;align-items:center;gap:7px;font:500 12.5px/1 var(--f-m);color:#CFE0D8;white-space:nowrap}
+.estado-mini i{width:8px;height:8px;border-radius:50%;background:#7C8A84}
+.estado-mini.aberto i{background:var(--luz);box-shadow:0 0 0 4px rgba(244,192,78,.2)}
+.nav-links{display:none;margin-left:auto;gap:4px;list-style:none;padding:0}
+.nav-links a{display:block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:500;font-size:15.5px;color:#D3E1DA;transition:color .2s, background .2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav-links a[aria-current="page"]{color:#fff;background:var(--verde-3);box-shadow:inset 0 -3px 0 var(--luz)}
+.lingua{margin-left:auto;display:flex;border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:3px}
+.lingua button{background:none;border:0;min-width:42px;height:38px;border-radius:7px;font:600 13px/1 var(--f-m);color:#C8D8D0}
+.lingua button[aria-pressed="true"]{background:var(--cal);color:var(--verde)}
+.burger{width:46px;height:46px;border:0;background:none;display:grid;place-items:center;border-radius:12px;margin-right:-8px}
+.burger span{display:block;width:22px;height:2px;background:var(--cal);position:relative;transition:background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:22px;height:2px;background:var(--cal);transition:transform .3s var(--ease-out)}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg)}
+.nav .nav-cta{display:none}
+@media (max-width:999px){
+  .nav{padding:0 14px 0 16px;gap:10px}
+  .estado-mini{display:none}
+}
+.menu-movel{position:fixed;inset:calc(var(--nav-h) + 30px) 0 0 0;z-index:45;background:var(--verde);color:var(--cal);padding:26px var(--gut) 120px;display:flex;flex-direction:column;gap:2px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s, transform .3s var(--ease-out), visibility 0s .3s;overflow:auto}
+.menu-movel.aberto{opacity:1;transform:none;visibility:visible;transition:opacity .25s, transform .3s var(--ease-out)}
+.menu-movel a{font:800 clamp(30px,9vw,44px)/1.25 var(--f-d);text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.menu-movel a[aria-current="page"]{color:var(--luz)}
+.menu-movel .mm-info{margin-top:26px;font-size:15px;color:#C8D8D0;line-height:1.7}
+@media (min-width:1000px){
+  .nav-links{display:flex}
+  .lingua{margin-left:10px}
+  .burger,.menu-movel{display:none}
+  .nav .nav-cta{display:inline-flex;margin-left:10px}
+}
+
+/* ---------- botões ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 22px;border-radius:12px;border:2px solid transparent;font:600 16px/1 var(--f-c);text-decoration:none;transition:transform .18s var(--ease-out), background .2s, color .2s, border-color .2s;touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-telha{background:var(--telha);color:#fff}
+.btn-telha:hover{background:var(--telha-esc)}
+.btn-verde{background:var(--verde);color:#fff}
+.btn-verde:hover{background:var(--verde-2)}
+.btn-linha{border-color:currentColor;color:inherit;background:transparent}
+.btn-linha:hover{background:rgba(127,127,127,.1)}
+.btn-zap{background:var(--zap);color:#fff}
+.btn-zap:hover{background:#11602F}
+.btn-pq{min-height:44px;padding:0 16px;font-size:14.5px}
+
+.ac{display:inline-flex;align-items:center;gap:6px;font:500 11.5px/1 var(--f-m);letter-spacing:.02em;padding:5px 9px 5px 8px;border-radius:6px;border:1px dashed currentColor;opacity:.85;white-space:nowrap;vertical-align:middle;text-transform:lowercase}
+.ac::before{content:"";width:6px;height:6px;border-radius:1px;background:currentColor;opacity:.7;transform:rotate(45deg)}
+
+/* ---------- páginas ---------- */
+.js .pag{display:none}
+.js .pag.ativa{display:block;animation:pag-entra .45s var(--ease-out)}
+@keyframes pag-entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pg-t:focus{outline:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.sec{padding:clamp(72px,11vw,128px) 0;position:relative}
+.escuro{background:var(--verde);color:var(--cal)}
+
+/* cabeçalho de secção emoldurado por um telhado de tesoura */
+.cab{margin-bottom:clamp(30px,5vw,52px)}
+.tesoura{display:block;width:120px;height:40px;margin-bottom:14px;overflow:visible}
+.tesoura .t-l{fill:none;stroke:var(--telha);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s var(--ease-out)}
+.tesoura .t-f{opacity:0;transition:opacity .6s .7s}
+.escuro .tesoura .t-l{stroke:var(--luz)}
+.cab.vis .t-l{stroke-dashoffset:0}
+.cab.vis .t-f{opacity:1}
+.sobre{font:500 13px/1.2 var(--f-m);letter-spacing:.04em;color:var(--telha);margin-bottom:10px}
+.escuro .sobre{color:var(--luz)}
+.cab h2{font:800 clamp(34px,8vw,62px)/1.02 var(--f-d);letter-spacing:-.02em;max-width:17ch}
+.cab .lead{margin-top:16px;font-size:clamp(17px,2.1vw,19px);max-width:56ch;color:var(--tinta-2)}
+.escuro .cab .lead,.escuro .texto p{color:#C8D8D0}
+
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease-out), transform .7s var(--ease-out)}
+.js .rv.vis{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+
+/* ---------- herói: Tavira agora ---------- */
+.hero{--ceu-a:#0F1730;--ceu-b:#2A3863;--txt:#F4F1E8;--txt-2:#C9D0E4;
+  position:relative;min-height:calc(100svh - var(--nav-h) - 30px);display:flex;flex-direction:column;
+  background:linear-gradient(180deg,var(--ceu-a) 0%,var(--ceu-b) 100%);color:var(--txt);overflow:hidden;transition:background .6s}
+.hero.ceu-dia{--ceu-a:#8DBAD6;--ceu-b:#F1E3C6;--txt:#14231E;--txt-2:#33433D}
+.hero.ceu-tarde{--ceu-a:#3B3F75;--ceu-b:#C98A79;--txt:#FFFFFF;--txt-2:#ECE3EA}
+.estrelas{position:absolute;inset:0 0 40% 0;opacity:0;transition:opacity .8s;pointer-events:none;background-image:radial-gradient(1.4px 1.4px at 12% 18%,#fff 50%,transparent),radial-gradient(1.2px 1.2px at 32% 9%,#fff 50%,transparent),radial-gradient(1.6px 1.6px at 58% 22%,#fff 50%,transparent),radial-gradient(1.2px 1.2px at 74% 12%,#fff 50%,transparent),radial-gradient(1.4px 1.4px at 88% 28%,#fff 50%,transparent),radial-gradient(1px 1px at 46% 34%,#fff 50%,transparent),radial-gradient(1px 1px at 22% 38%,#fff 50%,transparent),radial-gradient(1.3px 1.3px at 94% 6%,#fff 50%,transparent)}
+.hero:not(.ceu-dia):not(.ceu-tarde) .estrelas{opacity:.8}
+.astro{position:absolute;right:12%;top:14%;width:58px;height:58px;border-radius:50%;background:#F7F1DC;box-shadow:0 0 40px 6px rgba(247,241,220,.25);transition:all .8s}
+.hero:not(.ceu-dia):not(.ceu-tarde) .astro{box-shadow:inset -14px -6px 0 0 #D8D0B6,0 0 30px 4px rgba(247,241,220,.18)}
+.hero.ceu-dia .astro{background:#FFF4CF;box-shadow:0 0 60px 20px rgba(255,236,170,.6);top:10%}
+.hero.ceu-tarde .astro{background:#F8C98C;box-shadow:0 0 70px 26px rgba(248,180,120,.45);top:44%}
+.hero-txt{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:clamp(28px,6vh,72px) var(--gut) 0}
+.hero h1{font:900 clamp(60px,18vw,150px)/.88 var(--f-d);letter-spacing:-.035em}
+.hero h1 span{display:inline-block}
+.onde{font:500 13px/1 var(--f-m);letter-spacing:.04em;color:var(--txt-2);margin-bottom:16px}
+.pergunta{margin-top:clamp(22px,4vh,40px);font:700 clamp(17px,4.4vw,20px)/1.2 var(--f-c);color:var(--txt-2)}
+.resposta{margin-top:6px;font:800 clamp(30px,8.6vw,58px)/1.02 var(--f-d);letter-spacing:-.02em;max-width:16ch;min-height:2.04em}
+.resposta .sim{color:var(--luz)}
+.hero.ceu-dia .resposta .sim{color:#9A3A12}
+.agora{margin-top:12px;font:500 14px/1.4 var(--f-m);color:var(--txt-2);display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.hero .ac{color:var(--txt-2)}
+.hero-ctas{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.hero .btn-linha{color:var(--txt)}
+.nota{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--txt-2);margin-top:16px}
+.nota .est{display:flex;gap:2px}.nota .est svg{width:15px;height:15px}
+.nota b{color:var(--txt);font-weight:800}
+.cidade{position:relative;margin-top:auto;width:100%;height:clamp(170px,30vw,300px);flex:none}
+.cidade svg{position:absolute;left:0;bottom:0;width:100%;height:100%}
+.linha-telhados{fill:none;stroke:var(--luz);stroke-width:2.4;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.casas{opacity:0;transform:translateY(14px)}
+.jan{transition:fill .5s calc(var(--i) * 35ms)}
+.aberto .jan{fill:#F4C04E}
+.aberto .jan:nth-of-type(5n+3){fill:#2A3442}
+.hero.ceu-dia.aberto .jan{fill:#F8D98A}
+/* coreografia */
+.js .hero h1 span,.js .hero .onde,.js .hero .pergunta,.js .hero .resposta,.js .hero .agora,.js .hero-ctas,.js .hero .nota{opacity:0;transform:translateY(16px)}
+.ini .linha-telhados{stroke-dashoffset:0;transition:stroke-dashoffset 1.8s var(--ease-out) .2s}
+.ini .casas{opacity:1;transform:none;transition:opacity .9s var(--ease-out) 1.1s, transform .9s var(--ease-out) 1.1s}
+.ini .hero .onde{opacity:1;transform:none;transition:all .6s var(--ease-out) .2s}
+.ini .hero h1 span{opacity:1;transform:none;transition:all .8s var(--ease-out)}
+.ini .hero h1 span:nth-child(1){transition-delay:.3s}.ini .hero h1 span:nth-child(2){transition-delay:.42s}.ini .hero h1 span:nth-child(3){transition-delay:.54s}
+.ini .hero .pergunta{opacity:1;transform:none;transition:all .6s var(--ease-out) .9s}
+.ini .hero .resposta{opacity:1;transform:none;transition:all .7s var(--ease-out) 1.25s}
+.ini .hero .agora,.ini .hero-ctas,.ini .hero .nota{opacity:1;transform:none;transition:all .6s var(--ease-out) 1.5s}
+@media (min-width:1000px){
+  .hero-txt{display:grid;grid-template-columns:1fr 1fr;gap:20px 60px;align-items:end;padding-top:80px}
+  .hero-txt .lado-b{padding-bottom:6px}
+  .pergunta{margin-top:0}
+}
+@media (max-width:640px){
+  .hero{min-height:calc(100svh - var(--nav-h) - 44px)}
+  .hero-txt{padding-bottom:6px}
+  .cidade{height:150px}
+  .hero-ctas .btn{flex:1 1 auto;padding:0 14px;font-size:15px}
+  .astro{width:44px;height:44px;right:8%;top:8%}
+}
+
+/* faixa */
+.faixa{background:var(--telha);color:#fff;overflow:hidden;padding:14px 0}
+.faixa-in{display:flex;width:max-content;animation:corre 40s linear infinite}
+.faixa-in span{font:800 clamp(19px,3.4vw,24px)/1 var(--f-d);padding-right:26px;white-space:nowrap;display:flex;align-items:center;gap:26px}
+.faixa-in span::after{content:"";width:22px;height:12px;background:var(--luz-2);clip-path:polygon(0 100%,25% 0,50% 100%,75% 0,100% 100%)}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+/* ---------- das 10 às 23: janelas por hora ---------- */
+.horas{display:grid;gap:clamp(28px,5vw,60px);align-items:center}
+.predio{position:relative;padding-top:48px}
+.predio-telhado{position:absolute;left:-6px;right:-6px;top:0;height:52px}
+.predio-telhado svg{width:100%;height:100%}
+.predio-fachada{background:var(--cal-3);border:1px solid var(--linha);border-bottom:10px solid #D9A441;padding:22px 18px 18px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px 10px}
+.hj{display:grid;justify-items:center;gap:6px}
+.hj i{width:100%;max-width:46px;aspect-ratio:3/4;background:#2A3442;border:4px solid #D9CFB8;border-radius:3px 3px 0 0;transition:background .4s}
+.hj span{font:500 12px/1 var(--f-m);color:var(--tinta-2)}
+.hj.passou i{background:#6A5E3E}
+.hj.agora i{background:var(--luz);box-shadow:0 0 22px 2px rgba(244,192,78,.65)}
+.hj.agora span{color:var(--tinta);font-weight:600}
+.hj.porta{grid-column:span 1}
+.hj.porta i{background:var(--verde-2);aspect-ratio:3/5}
+.hj-leg{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font:500 13px/1.3 var(--f-m);color:var(--tinta-2)}
+.hj-leg b{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-2px;margin-right:6px}
+.estado-txt{font:800 clamp(26px,5vw,40px)/1.1 var(--f-d);letter-spacing:-.015em}
+.estado-txt .sim{color:var(--telha)}
+.texto p{max-width:58ch;color:var(--tinta-2)}
+.texto p + p{margin-top:14px}
+.texto p.forte{font-size:clamp(19px,2.4vw,22px);line-height:1.45;color:var(--tinta);font-weight:500}
+.mais{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+@media (min-width:900px){.horas{grid-template-columns:1fr 1fr}.predio-fachada{grid-template-columns:repeat(7,1fr)}}
+
+/* ---------- fotos ---------- */
+.ft{position:relative;margin:0;overflow:hidden;background:var(--cal-2);border-radius:6px}
+.ft > svg{position:absolute;inset:0;width:100%;height:100%}
+.ft > img{position:relative;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out)}
+
+/* à mesa */
+.mesa-g{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mesa-g a{text-decoration:none;display:grid;gap:10px}
+.mesa-g .ft{aspect-ratio:4/5;border-radius:6px;clip-path:polygon(0 12%,25% 0,50% 12%,75% 0,100% 12%,100% 100%,0 100%)}
+.mesa-g a:hover img{transform:scale(1.04)}
+.mesa-g h3{font:700 clamp(17px,2.4vw,21px)/1.2 var(--f-d)}
+.mesa-g p{font-size:14.5px;color:#C8D8D0;line-height:1.45}
+@media (min-width:900px){.mesa-g{grid-template-columns:repeat(4,1fr);gap:22px}}
+
+/* parede */
+.parede{display:grid;gap:clamp(28px,5vw,60px);align-items:center}
+.parede .ft{aspect-ratio:4/3}
+@media (min-width:900px){.parede{grid-template-columns:1.2fr 1fr}}
+.nota-g{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:26px 0 0;margin-top:30px;border-top:1px solid var(--linha)}
+.nota-g .n{font:900 clamp(70px,16vw,120px)/.85 var(--f-d);letter-spacing:-.04em;color:var(--telha)}
+.nota-g .est{display:flex;gap:3px}.nota-g .est svg{width:24px;height:24px}
+.nota-g p{font-size:15px;color:var(--tinta-2)}
+
+/* ---------- petiscos ---------- */
+.pag-topo{padding:clamp(56px,9vw,100px) 0 clamp(36px,6vw,56px);position:relative;overflow:hidden}
+.pag-topo .cab{margin-bottom:0;position:relative;z-index:1}
+.pag-topo .cidade-mini{position:absolute;left:0;right:0;bottom:0;height:70px;opacity:.22;pointer-events:none}
+.pag-topo .cidade-mini svg{width:100%;height:100%}
+.pratos{display:grid;gap:18px}
+.prato{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:start;background:#fff;border:1px solid var(--linha);border-radius:8px;padding:12px}
+.prato .ft{aspect-ratio:1;border-radius:4px}
+.prato h3{font:700 20px/1.2 var(--f-d);margin:4px 0 6px}
+.prato p{font-size:15px;color:var(--tinta-2);line-height:1.5}
+.prato .preco{margin-top:10px;display:flex;align-items:center;gap:8px;font:500 13px/1 var(--f-m);color:var(--tinta-2)}
+@media (min-width:700px){.pratos{grid-template-columns:1fr 1fr}.prato{grid-template-columns:150px 1fr}}
+@media (min-width:1100px){.pratos{grid-template-columns:repeat(3,1fr)}.prato{grid-template-columns:1fr}.prato .ft{aspect-ratio:4/3}}
+.dia-box{display:grid;gap:22px;align-items:center;background:var(--verde);color:var(--cal);border-radius:10px;padding:clamp(22px,4vw,40px);margin-top:clamp(36px,6vw,64px);position:relative;overflow:hidden}
+.dia-box h3{font:800 clamp(26px,5vw,38px)/1.08 var(--f-d)}
+.dia-box p{color:#C8D8D0;margin-top:8px;max-width:48ch}
+@media (min-width:900px){.dia-box{grid-template-columns:1.3fr 1fr}}
+
+/* vou a caminho */
+.caminho{display:grid;gap:clamp(28px,5vw,56px)}
+.caminho > *{min-width:0}
+.form{background:#fff;color:var(--tinta);border-radius:10px;padding:clamp(20px,4vw,34px);display:grid;gap:18px}
+.campo{display:grid;gap:7px;min-width:0}
+.campo label,.campo .rot{font-weight:600;font-size:15px}
+.campo input,.campo textarea{width:100%;min-width:0;min-height:50px;border:1.5px solid #C9C2AE;border-radius:8px;padding:12px 14px;font:400 17px/1.3 var(--f-c);color:var(--tinta);background:var(--cal-3);-webkit-appearance:none;appearance:none}
+.campo input:focus,.campo textarea:focus{border-color:var(--verde-2);background:#fff;outline:none;box-shadow:0 0 0 3px rgba(31,75,63,.2)}
+.campo textarea{min-height:84px;resize:vertical}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.passo{display:flex;align-items:center;gap:10px}
+.passo button{width:50px;height:50px;border-radius:8px;border:1.5px solid #C9C2AE;background:var(--cal-3);font-size:22px;font-weight:600}
+.passo output{min-width:44px;text-align:center;font:800 28px/1 var(--f-d)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:44px;padding:0 14px;border-radius:8px;border:1.5px solid #C9C2AE;background:var(--cal-3);font-weight:600;font-size:15px}
+.chips button[aria-pressed="true"]{background:var(--verde);color:#fff;border-color:var(--verde)}
+.resumo{background:var(--cal);border-radius:8px;padding:14px 16px;font-size:15px;white-space:pre-line;color:var(--tinta-2);border:1px dashed #C9C2AE}
+.ajuda{font-size:13.5px;color:var(--tinta-2)}
+.erro{color:#A3261B;font-size:14px;font-weight:600}
+.erro:empty{display:none}
+.aviso-fecho{font:500 14px/1.45 var(--f-m);color:#9A3A12;background:#FBEBD9;border-radius:8px;padding:10px 12px}
+.aviso-fecho:empty{display:none}
+@media (min-width:900px){.caminho{grid-template-columns:.9fr 1.1fr;align-items:start}}
+
+/* ---------- a casa ---------- */
+.casa-grid{display:grid;gap:clamp(28px,5vw,60px);align-items:start}
+.casa-grid .ft{aspect-ratio:4/3}
+@media (min-width:900px){.casa-grid{grid-template-columns:1fr 1fr}.casa-grid.inv > :first-child{order:2}}
+.coisas{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:0}
+.coisas li{padding:14px 0;border-top:1px solid var(--linha);display:grid;grid-template-columns:40px 1fr;gap:12px}
+.coisas li svg{width:32px;height:32px;color:var(--telha)}
+.escuro .coisas li{border-color:rgba(255,255,255,.12)}
+.escuro .coisas li svg{color:var(--luz)}
+.coisas b{display:block}
+.coisas span{font-size:15.5px;color:var(--tinta-2)}
+.escuro .coisas span{color:#C8D8D0}
+
+/* ---------- galeria ---------- */
+.gal{columns:2 160px;column-gap:12px}
+.gal button{display:block;width:100%;padding:0;border:0;background:none;margin:0 0 12px;break-inside:avoid;border-radius:6px}
+.gal button:hover img{transform:scale(1.035)}
+@media (min-width:900px){.gal{columns:3;column-gap:18px}.gal button{margin-bottom:18px}}
+dialog.caixa{border:0;padding:0;background:transparent;max-width:min(94vw,1100px);max-height:92vh;color:var(--cal)}
+dialog.caixa::backdrop{background:rgba(10,24,20,.92)}
+dialog.caixa img{max-height:80vh;width:auto;max-width:100%;border-radius:6px;margin:0 auto}
+dialog.caixa p{text-align:center;margin-top:12px;font-weight:500}
+dialog.caixa .fechar{position:fixed;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:0;background:var(--cal);color:var(--verde);font-size:26px;line-height:1}
+
+/* ---------- visitar ---------- */
+.visitar{display:grid;gap:clamp(28px,5vw,56px)}
+.visitar > *{min-width:0}
+.ficha{list-style:none;margin:0;padding:0}
+.ficha li{display:grid;grid-template-columns:1fr;gap:6px;padding:18px 0;border-top:1px solid var(--linha)}
+.ficha li > span:first-child{font:500 13px/1.3 var(--f-m);color:var(--telha)}
+.ficha a{font-weight:600}
+.ficha .grande{font:800 23px/1.2 var(--f-d)}
+.semana{width:100%;border-collapse:collapse;font-size:15.5px}
+.semana td{padding:10px 0;border-bottom:1px solid var(--linha)}
+.semana td:last-child{text-align:right;font-family:var(--f-m);font-size:14px}
+.semana tr.hoje td{font-weight:700}
+.semana tr.hoje td:first-child::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--telha);margin-right:8px;vertical-align:1px}
+.mapa{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;background:var(--verde);color:var(--cal);display:grid;place-items:center}
+.mapa > svg{position:absolute;inset:0;width:100%;height:100%}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapa-cap{position:relative;text-align:center;display:grid;gap:12px;justify-items:center;padding:20px}
+.mapa-cap p{font-size:15px;color:#E6EEE9;max-width:30ch}
+@media (min-width:900px){.visitar{grid-template-columns:1fr 1fr;align-items:start}.ficha li{grid-template-columns:120px 1fr;align-items:baseline}}
+
+/* ---------- rodapé ---------- */
+.rodape{background:var(--verde);color:#C8D8D0;position:relative;padding:0 0 calc(110px + env(safe-area-inset-bottom))}
+.rodape .cidade-rod{height:110px;background:var(--cal)}
+.rodape .cidade-rod svg{width:100%;height:100%;display:block}
+.rodape .wrap{display:grid;gap:30px;padding-top:48px}
+.rodape .marca{color:var(--cal);font-size:28px}
+.rodape p{font-size:15px;line-height:1.7}
+.rodape a{color:var(--cal)}
+.rodape .legal{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:14px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12)}
+.rodape .legal > *{display:inline-flex;align-items:center;min-height:44px}
+@media (min-width:900px){.rodape .wrap{grid-template-columns:1.3fr 1fr 1fr}.rodape .legal{grid-column:1/-1}.rodape{padding-bottom:48px}}
+
+.fixo{position:fixed;left:0;right:0;bottom:0;z-index:55;display:grid;grid-template-columns:1fr 1.25fr;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(19,48,41,.97);border-top:1px solid rgba(255,255,255,.08)}
+.fixo .btn{min-height:52px;font-size:15.5px;padding:0 12px}
+.fixo .btn-linha{color:var(--cal);border-color:rgba(255,255,255,.35)}
+@media (min-width:1000px){.fixo{display:none}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;transform:none}
+  .js .hero h1 span,.js .hero .onde,.js .hero .pergunta,.js .hero .resposta,.js .hero .agora,.js .hero-ctas,.js .hero .nota{opacity:1;transform:none}
+  .linha-telhados,.tesoura .t-l{stroke-dashoffset:0}
+  .casas,.tesoura .t-f{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="salta" href="#conteudo"><span data-l="pt">Saltar para o conteúdo</span><span data-l="en">Skip to content</span></a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="telhadinho" viewBox="0 0 64 48"><path d="M2 30L18 8L32 30z" fill="#D0643A"/><path d="M32 30L18 8L32 30z" fill="#A8451F"/><path d="M32 30L46 6L62 30z" fill="#A8451F"/><path d="M32 30L46 6L46 30z" fill="#D0643A"/><rect x="4" y="30" width="56" height="18" fill="#F4F1E8"/><rect x="26" y="34" width="12" height="14" fill="#F4C04E"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.4.3-.5v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.6.6-.9 1.4-.9 2.2.1 1 .5 2 1.1 2.8 1.1 1.6 2.5 2.9 4.2 3.7.5.2 1 .4 1.5.5.5.2 1.1.2 1.6.1.6-.1 1.4-.6 1.6-1.2.1-.4.1-.8.1-1.2-.1-.1-.3-.2-.5-.3z" fill="currentColor"/></symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+  <symbol id="i-mapa" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></symbol>
+  <symbol id="d-prato" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice"><rect width="400" height="400" fill="#EAE4D4"/><path d="M0 50h400M0 100h400M0 150h400M0 200h400M0 250h400M0 300h400M0 350h400" stroke="#D8D1BF"/><circle cx="200" cy="205" r="150" fill="#FBFAF5"/><circle cx="200" cy="205" r="132" fill="none" stroke="#2E4C8C" stroke-width="3"/><circle cx="200" cy="205" r="100" fill="#EED9A8"/></symbol>
+  <symbol id="d-sala" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#F1EEE6"/><rect y="170" width="400" height="80" fill="#9C8F7A"/><rect y="250" width="400" height="50" fill="#D9D4C8"/><rect x="60" y="80" width="70" height="110" fill="#CFE0EA"/><rect x="270" y="90" width="70" height="100" fill="#CFE0EA"/><rect x="150" y="200" width="100" height="10" fill="#5A2E1E"/></symbol>
+  <symbol id="d-rua" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#8DBAD6"/><rect y="120" width="400" height="120" fill="#F4F1E8"/><circle cx="180" cy="110" r="70" fill="#6E8F4E"/><rect x="174" y="150" width="12" height="80" fill="#6A5038"/><rect y="230" width="400" height="70" fill="#5B5E63"/></symbol>
+</svg>
+
+<div class="demo" role="note">APRESENTAÇÃO <b>PACHECO STUDIOS</b> · <span data-l="pt">proposta de site para a Tasca do Tó</span><span data-l="en">website proposal for Tasca do Tó</span></div>
+
+<header class="nav" id="nav">
+  <a class="marca" href="#/" aria-label="Tasca do Tó — início"><svg viewBox="0 0 64 48" aria-hidden="true"><use href="#telhadinho"/></svg><span>Tasca do Tó</span></a>
+  <span class="estado-mini" data-estado-mini><i></i><span></span></span>
+  <ul class="nav-links">
+    <li><a href="#/"><span data-l="pt">Início</span><span data-l="en">Home</span></a></li>
+    <li><a href="#/petiscos"><span data-l="pt">Petiscos</span><span data-l="en">Food</span></a></li>
+    <li><a href="#/casa"><span data-l="pt">A casa</span><span data-l="en">The place</span></a></li>
+    <li><a href="#/galeria"><span data-l="pt">Galeria</span><span data-l="en">Gallery</span></a></li>
+    <li><a href="#/visitar"><span data-l="pt">Visitar</span><span data-l="en">Visit</span></a></li>
+  </ul>
+  <div class="lingua" role="group" aria-label="Idioma / Language">
+    <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+  <a class="btn btn-telha btn-pq nav-cta" href="tel:+351964610125"><svg aria-hidden="true"><use href="#i-tel"/></svg>964 610 125</a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="menu-movel" aria-label="Abrir menu" data-aria-pt="Abrir menu" data-aria-en="Open menu"><span></span></button>
+</header>
+
+<nav class="menu-movel" id="menu-movel" aria-label="Menu">
+  <a href="#/"><span data-l="pt">Início</span><span data-l="en">Home</span></a>
+  <a href="#/petiscos"><span data-l="pt">Petiscos</span><span data-l="en">Food</span></a>
+  <a href="#/casa"><span data-l="pt">A casa</span><span data-l="en">The place</span></a>
+  <a href="#/galeria"><span data-l="pt">Galeria</span><span data-l="en">Gallery</span></a>
+  <a href="#/visitar"><span data-l="pt">Visitar</span><span data-l="en">Visit</span></a>
+  <p class="mm-info">Rua dos Fumeiros Diante, 2 · Tavira<br><a href="tel:+351964610125">964 610 125</a></p>
+</nav>
+
+<main id="conteudo">
+
+<!-- ================= INÍCIO ================= -->
+<section class="pag" data-pag="" data-titulo-pt="Tasca do Tó · Petiscos em Tavira, aberta até às 23:00" data-titulo-en="Tasca do Tó · Portuguese tavern in Tavira, open until 11 pm">
+  <div class="hero" id="hero">
+    <div class="estrelas" aria-hidden="true"></div>
+    <div class="astro" aria-hidden="true"></div>
+    <div class="hero-txt">
+      <div>
+        <p class="onde">Rua dos Fumeiros Diante · Tavira</p>
+        <h1><span>Tasca</span> <span>do</span> <span>Tó</span></h1>
+      </div>
+      <div class="lado-b">
+        <p class="pergunta"><span data-l="pt">Ainda está aberto?</span><span data-l="en">Still open?</span></p>
+        <p class="resposta" aria-live="polite" data-resposta></p>
+        <p class="agora" data-agora></p>
+        <div class="hero-ctas">
+          <a class="btn btn-telha" href="tel:+351964610125"><svg aria-hidden="true"><use href="#i-tel"/></svg><span data-l="pt">Ligar</span><span data-l="en">Call</span></a>
+          <a class="btn btn-linha" href="#/petiscos"><span data-l="pt">Ver os petiscos</span><span data-l="en">See the food</span><svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+        </div>
+        <p class="nota"><span class="est" aria-hidden="true">__ESTRELAS__</span><span><b>4,5</b> <span data-l="pt">no Google · 173 avaliações</span><span data-l="en">on Google · 173 reviews</span></span></p>
+      </div>
+    </div>
+    <div class="cidade" aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">__TELHADOS__</svg>
+    </div>
+  </div>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-in">
+    <span data-l="pt">petiscos</span><span data-l="pt">pratos de tacho</span><span data-l="pt">café</span><span data-l="pt">cerveja fresca</span><span data-l="pt">das 10 às 23</span><span data-l="pt">Tavira</span>
+    <span data-l="pt">petiscos</span><span data-l="pt">pratos de tacho</span><span data-l="pt">café</span><span data-l="pt">cerveja fresca</span><span data-l="pt">das 10 às 23</span><span data-l="pt">Tavira</span>
+    <span data-l="en">small plates</span><span data-l="en">home stews</span><span data-l="en">coffee</span><span data-l="en">cold beer</span><span data-l="en">10 am to 11 pm</span><span data-l="en">Tavira</span>
+    <span data-l="en">small plates</span><span data-l="en">home stews</span><span data-l="en">coffee</span><span data-l="en">cold beer</span><span data-l="en">10 am to 11 pm</span><span data-l="en">Tavira</span>
+  </div></div>
+
+  <section class="sec" aria-labelledby="t-horas">
+    <div class="wrap horas">
+      <div>
+        <div class="cab">
+          <svg class="tesoura" viewBox="0 0 120 40" aria-hidden="true"><path class="t-f" d="M2 38L22 12L42 38zM42 38L62 6L82 38zM82 38L100 16L118 38z" fill="#D0643A" fill-opacity=".18"/><path class="t-l" d="M2 38L22 12L42 38L62 6L82 38L100 16L118 38" pathLength="1"/></svg>
+          <p class="sobre"><span data-l="pt">das 10:00 às 23:00</span><span data-l="en">10 am to 11 pm</span></p>
+          <h2 id="t-horas"><span data-l="pt">Uma janela por cada hora de porta aberta</span><span data-l="en">One window for every hour the door is open</span></h2>
+        </div>
+        <p class="estado-txt rv" data-estado-txt></p>
+        <div class="texto rv d1" style="margin-top:14px">
+          <p><span data-l="pt">Do café da manhã ao último copo da noite: treze horas seguidas. A janela acesa é a hora em que está agora.</span><span data-l="en">From the morning coffee to the last drink at night: thirteen hours straight. The lit window is the hour you're in now.</span></p>
+          <p><span data-l="pt">Segunda-feira: 10:00–23:00. Outros dias e folgas <span class="ac">a confirmar</span></span><span data-l="en">Monday: 10:00–23:00. Other days and closing days <span class="ac">to be confirmed</span></span></p>
+        </div>
+        <div class="mais rv d2">
+          <a class="btn btn-verde" href="tel:+351964610125"><svg aria-hidden="true"><use href="#i-tel"/></svg><span data-l="pt">Ligar antes de vir</span><span data-l="en">Call before you come</span></a>
+        </div>
+      </div>
+      <div class="predio rv" aria-hidden="true">
+        <div class="predio-telhado"><svg viewBox="0 0 400 52" preserveAspectRatio="none"><path d="M0 52L66 6L133 52z" fill="#D0643A"/><path d="M66 6L133 52L66 52z" fill="#A8451F"/><path d="M133 52L200 2L267 52z" fill="#D0643A"/><path d="M200 2L267 52L200 52z" fill="#A8451F"/><path d="M267 52L334 8L400 52z" fill="#D0643A"/><path d="M334 8L400 52L334 52z" fill="#A8451F"/></svg></div>
+        <div class="predio-fachada" data-predio></div>
+        <p class="hj-leg"><span><b style="background:#F4C04E"></b><span data-l="pt">agora</span><span data-l="en">now</span></span><span><b style="background:#6A5E3E"></b><span data-l="pt">já passou</span><span data-l="en">gone by</span></span><span><b style="background:#2A3442"></b><span data-l="pt">ainda falta</span><span data-l="en">still to come</span></span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec escuro" aria-labelledby="t-mesa">
+    <div class="wrap">
+      <div class="cab">
+        <svg class="tesoura" viewBox="0 0 120 40" aria-hidden="true"><path class="t-f" d="M2 38L22 12L42 38zM42 38L62 6L82 38zM82 38L100 16L118 38z" fill="#F4C04E" fill-opacity=".15"/><path class="t-l" d="M2 38L22 12L42 38L62 6L82 38L100 16L118 38" pathLength="1"/></svg>
+        <p class="sobre"><span data-l="pt">à mesa</span><span data-l="en">at the table</span></p>
+        <h2 id="t-mesa"><span data-l="pt">Comida de casa, sem pressa nem cerimónia</span><span data-l="en">Home cooking, no rush, no fuss</span></h2>
+      </div>
+      <div class="mesa-g">
+        <a class="rv" href="#/petiscos"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bacalhau-grao.webp" alt="Bacalhau cozido com grão, batata, ovo, cebola e salsa" data-alt-en="Boiled salt cod with chickpeas, potato, egg, onion and parsley" loading="lazy" onerror="this.remove()"></figure><h3><span data-l="pt">Bacalhau com grão</span><span data-l="en">Salt cod with chickpeas</span></h3><p><span data-l="pt">Batata, ovo cozido, cebola e salsa por cima.</span><span data-l="en">Potato, boiled egg, onion and parsley on top.</span></p></a>
+        <a class="rv d1" href="#/petiscos"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bife-ovo-batata.webp" alt="Bifinhos com alho e limão, ovo estrelado e batata frita" data-alt-en="Thin steaks with garlic and lemon, fried egg and chips" loading="lazy" onerror="this.remove()"></figure><h3><span data-l="pt">Bifinhos com ovo</span><span data-l="en">Steak and egg</span></h3><p><span data-l="pt">Alho, limão, ovo estrelado e batata frita.</span><span data-l="en">Garlic, lemon, a fried egg and chips.</span></p></a>
+        <a class="rv d2" href="#/petiscos"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/feijao-branco.webp" alt="Feijão branco com carne, enchido e cenoura, com arroz" data-alt-en="White beans with meat, sausage and carrot, with rice" loading="lazy" onerror="this.remove()"></figure><h3><span data-l="pt">Feijão branco</span><span data-l="en">White bean stew</span></h3><p><span data-l="pt">Com carne, enchido e cenoura; arroz ao lado.</span><span data-l="en">With meat, sausage and carrot; rice on the side.</span></p></a>
+        <a class="rv d3" href="#/petiscos"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/petisco-frio.webp" alt="Petisco frio de tomate, pimento e cebola picados, com azeitonas e pão" data-alt-en="Cold dish of chopped tomato, pepper and onion, with olives and bread" loading="lazy" onerror="this.remove()" style="object-position:70% 50%"></figure><h3><span data-l="pt">Petisco frio</span><span data-l="en">Cold small plate</span></h3><p><span data-l="pt">Tomate, pimento e cebola picados, azeitonas e pão.</span><span data-l="en">Chopped tomato, pepper and onion, olives and bread.</span></p></a>
+      </div>
+      <div class="mais"><a class="btn btn-telha" href="#/petiscos"><span data-l="pt">Ver os petiscos</span><span data-l="en">See the food</span><svg aria-hidden="true"><use href="#i-seta"/></svg></a></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="t-parede">
+    <div class="wrap parede">
+      <figure class="ft rv"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-sala"/></svg><img src="media/balcao-mural.webp" alt="Balcão de pedra com uma grande fotografia a preto e branco de uma rua antiga de Tavira na parede" data-alt-en="Stone bar counter with a large black-and-white photo of an old Tavira street on the wall" loading="lazy" onerror="this.remove()"></figure>
+      <div>
+        <div class="cab">
+          <svg class="tesoura" viewBox="0 0 120 40" aria-hidden="true"><path class="t-f" d="M2 38L22 12L42 38zM42 38L62 6L82 38zM82 38L100 16L118 38z" fill="#D0643A" fill-opacity=".18"/><path class="t-l" d="M2 38L22 12L42 38L62 6L82 38L100 16L118 38" pathLength="1"/></svg>
+          <p class="sobre"><span data-l="pt">atrás do balcão</span><span data-l="en">behind the bar</span></p>
+          <h2 id="t-parede"><span data-l="pt">Tavira pendurada na parede</span><span data-l="en">Tavira hung on the wall</span></h2>
+        </div>
+        <div class="texto">
+          <p class="forte rv"><span data-l="pt">Uma fotografia antiga de uma rua de Tavira, do tamanho da parede: casas caiadas, janelas de cantaria, telhado de telha.</span><span data-l="en">An old photograph of a Tavira street, as big as the wall: whitewashed houses, stone-framed windows, a tiled roof.</span></p>
+          <p class="rv d1"><span data-l="pt">À frente, o balcão de pedra, a máquina do café e as garrafas na prateleira. É uma tasca de bairro: quem vem, volta.</span><span data-l="en">In front, the stone bar, the coffee machine and the bottles on the shelf. It's a neighbourhood tasca: people who come, come back.</span></p>
+        </div>
+        <div class="nota-g rv d2"><span class="n">4,5</span><div><span class="est" aria-hidden="true">__ESTRELAS__</span><p><span data-l="pt">no Google, em 173 avaliações</span><span data-l="en">on Google, from 173 reviews</span></p></div></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ================= PETISCOS ================= -->
+<section class="pag" data-pag="petiscos" data-titulo-pt="Petiscos e pratos · Tasca do Tó, Tavira" data-titulo-en="Food · Tasca do Tó, Tavira">
+  <div class="pag-topo escuro">
+    <div class="wrap">
+      <div class="cab">
+        <svg class="tesoura" viewBox="0 0 120 40" aria-hidden="true"><path class="t-f" d="M2 38L22 12L42 38zM42 38L62 6L82 38zM82 38L100 16L118 38z" fill="#F4C04E" fill-opacity=".15"/><path class="t-l" d="M2 38L22 12L42 38L62 6L82 38L100 16L118 38" pathLength="1"/></svg>
+        <p class="sobre"><span data-l="pt">petiscos</span><span data-l="en">food</span></p>
+        <h2 class="pg-t" tabindex="-1"><span data-l="pt">O que sai da cozinha do Tó</span><span data-l="en">What comes out of Tó's kitchen</span></h2>
+        <p class="lead"><span data-l="pt">Pratos que já se viram à mesa. A carta muda com o dia: o melhor é perguntar o que há hoje.</span><span data-l="en">Dishes that have been on the tables. It changes day to day: best to ask what's on today.</span></p>
+      </div>
+    </div>
+    <div class="cidade-mini" aria-hidden="true"><svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">__TELHADOS_RODAPE__</svg></div>
+  </div>
+
+  <section class="sec" style="padding-top:clamp(36px,6vw,64px)" aria-label="Pratos">
+    <div class="wrap">
+      <div class="pratos">
+        <article class="prato rv"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bacalhau-grao.webp" alt="Bacalhau com grão" data-alt-en="Salt cod with chickpeas" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Bacalhau cozido com grão</span><span data-l="en">Boiled salt cod with chickpeas</span></h3><p><span data-l="pt">Com batata, ovo cozido, cebola picada, alho e salsa. Prato limpo, de prato fundo com risca azul.</span><span data-l="en">With potato, boiled egg, chopped onion, garlic and parsley. Simple and honest.</span></p><p class="preco"><span class="ac"><span data-l="pt">preço a confirmar</span><span data-l="en">price to be confirmed</span></span></p></div></article>
+        <article class="prato rv d1"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bife-ovo-batata.webp" alt="Bifinhos com ovo e batata frita" data-alt-en="Steak with egg and chips" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Bifinhos com ovo e batata frita</span><span data-l="en">Thin steaks, fried egg and chips</span></h3><p><span data-l="pt">Bifes finos com lascas de alho e rodela de limão, ovo estrelado e batata frita às tiras.</span><span data-l="en">Thin steaks with garlic slivers and lemon, a fried egg and hand-cut chips.</span></p><p class="preco"><span class="ac"><span data-l="pt">preço a confirmar</span><span data-l="en">price to be confirmed</span></span></p></div></article>
+        <article class="prato rv d2"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/feijao-branco.webp" alt="Feijão branco com carnes e arroz" data-alt-en="White beans with meat and rice" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Feijão branco com carnes</span><span data-l="en">White beans with meat</span></h3><p><span data-l="pt">Carne de porco, enchido, cenoura e batata no tacho; arroz branco ao lado.</span><span data-l="en">Pork, sausage, carrot and potato from the pot; white rice on the side.</span></p><p class="preco"><span class="ac"><span data-l="pt">nome e preço a confirmar</span><span data-l="en">name and price to be confirmed</span></span></p></div></article>
+        <article class="prato rv"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/prato-de-tacho.webp" alt="Guisado de tacho com batata e tomate" data-alt-en="Home stew with potato and tomato" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Guisado de tacho</span><span data-l="en">Pot stew</span></h3><p><span data-l="pt">Batata, tomate e cebola em molho, como em casa.</span><span data-l="en">Potato, tomato and onion in a rich sauce, like at home.</span></p><p class="preco"><span class="ac"><span data-l="pt">nome e preço a confirmar</span><span data-l="en">name and price to be confirmed</span></span></p></div></article>
+        <article class="prato rv d1"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/petisco-frio.webp" alt="Petisco frio de tomate, pimento e cebola" data-alt-en="Cold dish of tomato, pepper and onion" loading="lazy" onerror="this.remove()" style="object-position:70% 50%"></figure><div><h3><span data-l="pt">Petisco frio</span><span data-l="en">Cold small plate</span></h3><p><span data-l="pt">Tomate, pimento verde e cebola picados miúdos, com azeite. Pede uma cerveja ao lado.</span><span data-l="en">Finely chopped tomato, green pepper and onion with olive oil. Calls for a cold beer.</span></p><p class="preco"><span class="ac"><span data-l="pt">nome e preço a confirmar</span><span data-l="en">name and price to be confirmed</span></span></p></div></article>
+        <article class="prato rv d2"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/cafe.webp" alt="Bica numa chávena branca com pacotes de açúcar" data-alt-en="Espresso in a white cup with sugar sachets" loading="lazy" onerror="this.remove()"></figure><div><h3><span data-l="pt">Café e pão</span><span data-l="en">Coffee and bread</span></h3><p><span data-l="pt">A porta abre às 10:00. Para a bica da manhã ou o café depois do almoço.</span><span data-l="en">Doors open at 10:00. For the morning espresso or the coffee after lunch.</span></p><p class="preco"><span class="ac"><span data-l="pt">preço a confirmar</span><span data-l="en">price to be confirmed</span></span></p></div></article>
+      </div>
+
+      <div class="dia-box rv">
+        <div>
+          <h3><span data-l="pt">Qual é o prato do dia?</span><span data-l="en">What's today's dish?</span></h3>
+          <p><span data-l="pt">Pergunte por WhatsApp antes de sair de casa. A mensagem já vai escrita.</span><span data-l="en">Ask on WhatsApp before you leave home. The message is already written.</span></p>
+        </div>
+        <div class="mais" style="margin-top:0"><a class="btn btn-zap" data-zap="dia" href="https://wa.me/351964610125" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-zap"/></svg><span data-l="pt">Perguntar o prato do dia</span><span data-l="en">Ask for today's dish</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec escuro" id="caminho" aria-labelledby="t-caminho">
+    <div class="wrap caminho">
+      <div>
+        <div class="cab">
+          <svg class="tesoura" viewBox="0 0 120 40" aria-hidden="true"><path class="t-f" d="M2 38L22 12L42 38zM42 38L62 6L82 38zM82 38L100 16L118 38z" fill="#F4C04E" fill-opacity=".15"/><path class="t-l" d="M2 38L22 12L42 38L62 6L82 38L100 16L118 38" pathLength="1"/></svg>
+          <p class="sobre"><span data-l="pt">vou a caminho</span><span data-l="en">on my way</span></p>
+          <h2 id="t-caminho"><span data-l="pt">Avise que vai — guardam-lhe a mesa</span><span data-l="en">Let them know you're coming</span></h2>
+        </div>
+        <div class="texto"><p class="rv"><span data-l="pt">Diga quantos são e a que horas chegam. Se for perto das 23:00, o site avisa — e a mensagem pergunta se ainda há cozinha.</span><span data-l="en">Say how many and when you'll arrive. If it's close to 11 pm the site warns you — and the message asks if the kitchen is still on.</span></p></div>
+      </div>
+      <form class="form" id="form-caminho" novalidate>
+        <div class="campo">
+          <span class="rot" id="rot-p"><span data-l="pt">Quantos são?</span><span data-l="en">How many?</span></span>
+          <div class="passo" role="group" aria-labelledby="rot-p">
+            <button type="button" data-p="-1" aria-label="Menos uma pessoa" data-aria-pt="Menos uma pessoa" data-aria-en="One fewer">−</button>
+            <output id="pessoas" aria-live="polite">2</output>
+            <button type="button" data-p="1" aria-label="Mais uma pessoa" data-aria-pt="Mais uma pessoa" data-aria-en="One more">+</button>
+          </div>
+        </div>
+        <div class="campo">
+          <span class="rot" id="rot-q"><span data-l="pt">Quando?</span><span data-l="en">When?</span></span>
+          <div class="chips" role="group" aria-labelledby="rot-q" data-quando>
+            <button type="button" data-q="hoje" aria-pressed="true"><span data-l="pt">Hoje</span><span data-l="en">Today</span></button>
+            <button type="button" data-q="amanha" aria-pressed="false"><span data-l="pt">Amanhã</span><span data-l="en">Tomorrow</span></button>
+          </div>
+        </div>
+        <div class="duas">
+          <div class="campo"><label for="f-hora"><span data-l="pt">Chegamos às</span><span data-l="en">Arriving at</span></label><input type="time" id="f-hora" value="20:30" step="900"></div>
+          <div class="campo"><label for="f-nome"><span data-l="pt">Nome</span><span data-l="en">Name</span></label><input type="text" id="f-nome" autocomplete="name"></div>
+        </div>
+        <p class="aviso-fecho" id="aviso" aria-live="polite"></p>
+        <div class="campo">
+          <span class="rot"><span data-l="pt">A mensagem</span><span data-l="en">The message</span></span>
+          <div class="resumo" id="resumo" aria-live="polite"></div>
+        </div>
+        <p class="erro" id="erro" role="alert"></p>
+        <button class="btn btn-zap" type="submit"><svg aria-hidden="true"><use href="#i-zap"/></svg><span data-l="pt">Enviar por WhatsApp</span><span data-l="en">Send on WhatsApp</span></button>
+      </form>
+    </div>
+  </section>
+</section>
+
+<!-- ================= A CASA ================= -->
+<section class="pag" data-pag="casa" data-titulo-pt="A casa · Tasca do Tó, Tavira" data-titulo-en="The place · Tasca do Tó, Tavira">
+  <div class="pag-topo escuro">
+    <div class="wrap">
+      <div class="cab">
+        <svg class="tesoura" viewBox="0 0 120 40" aria-hidden="true"><path class="t-f" d="M2 38L22 12L42 38zM42 38L62 6L82 38zM82 38L100 16L118 38z" fill="#F4C04E" fill-opacity=".15"/><path class="t-l" d="M2 38L22 12L42 38L62 6L82 38L100 16L118 38" pathLength="1"/></svg>
+        <p class="sobre"><span data-l="pt">a casa</span><span data-l="en">the place</span></p>
+        <h2 class="pg-t" tabindex="-1"><span data-l="pt">Uma tasca de bairro, à moda antiga</span><span data-l="en">An old-school neighbourhood tasca</span></h2>
+        <p class="lead"><span data-l="pt">Mesas de madeira, televisão ligada, pedra nas paredes e conversa de balcão.</span><span data-l="en">Wooden tables, the TV on, stone on the walls and talk at the bar.</span></p>
+      </div>
+    </div>
+    <div class="cidade-mini" aria-hidden="true"><svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">__TELHADOS_RODAPE__</svg></div>
+  </div>
+
+  <section class="sec" aria-label="Lá dentro">
+    <div class="wrap casa-grid">
+      <figure class="ft rv"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-sala"/></svg><img src="media/sala.webp" alt="Sala com mesas de madeira escura, janelas e meia parede de pedra" data-alt-en="Dining room with dark wooden tables, windows and a half stone wall" loading="lazy" onerror="this.remove()"></figure>
+      <div class="texto">
+        <p class="forte rv"><span data-l="pt">Mesas quadradas de madeira, toalha de papel, azeitonas e pão antes de tudo o resto.</span><span data-l="en">Square wooden tables, paper placemats, olives and bread before anything else.</span></p>
+        <p class="rv d1"><span data-l="pt">As paredes têm meia altura de pedra e, por cima, as fotografias do futebol da terra. Há televisão para o jogo e para as notícias. Ninguém vem cá por luxo — vem pelo prato e pela conversa.</span><span data-l="en">The walls are stone to half height, with photos of the local football club above. There's a TV for the match and the news. Nobody comes for luxury — they come for the food and the chat.</span></p>
+        <ul class="coisas">
+          <li class="rv"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26V12l10-7 10 7v14M12 26v-8h8v8" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg><div><b><span data-l="pt">Mural de Tavira</span><span data-l="en">Tavira mural</span></b><span><span data-l="pt">Uma rua antiga da cidade, a preto e branco, atrás do balcão.</span><span data-l="en">An old street of the town, in black and white, behind the bar.</span></span></div></li>
+          <li class="rv d1"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 4h12v6l-3 4v14h-6V14l-3-4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg><div><b><span data-l="pt">Cerveja fresca</span><span data-l="en">Cold beer</span></b><span><span data-l="pt">Sagres e Cristal, em garrafa pequena e bem gelada.</span><span data-l="en">Sagres and Cristal, small bottles, ice cold.</span></span></div></li>
+          <li class="rv d2"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2" fill="none"/><path d="M16 9v7l5 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><div><b><span data-l="pt">Treze horas de porta aberta</span><span data-l="en">Thirteen hours open</span></b><span><span data-l="pt">Das 10:00 às 23:00. <span class="ac">dias a confirmar</span></span><span data-l="en">10:00 to 23:00. <span class="ac">days to be confirmed</span></span></span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec escuro" aria-labelledby="t-rua">
+    <div class="wrap casa-grid inv">
+      <figure class="ft rv"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-rua"/></svg><img src="media/rua.webp" alt="Vista da porta da tasca para a Rua dos Fumeiros Diante: árvore, bancos e cadeiras ao sol" data-alt-en="View from the tasca door onto Rua dos Fumeiros Diante: a tree, benches and chairs in the sun" loading="lazy" onerror="this.remove()"></figure>
+      <div>
+        <div class="cab">
+          <svg class="tesoura" viewBox="0 0 120 40" aria-hidden="true"><path class="t-f" d="M2 38L22 12L42 38zM42 38L62 6L82 38zM82 38L100 16L118 38z" fill="#F4C04E" fill-opacity=".15"/><path class="t-l" d="M2 38L22 12L42 38L62 6L82 38L100 16L118 38" pathLength="1"/></svg>
+          <p class="sobre"><span data-l="pt">à porta</span><span data-l="en">at the door</span></p>
+          <h2 id="t-rua"><span data-l="pt">Uma cerveja a ver a rua</span><span data-l="en">A beer, watching the street</span></h2>
+        </div>
+        <div class="texto">
+          <p class="rv"><span data-l="pt">À porta, a Rua dos Fumeiros Diante: uma árvore, bancos de jardim e sol de Tavira. Longe do movimento do centro, perto de tudo.</span><span data-l="en">Outside is Rua dos Fumeiros Diante: a tree, park benches and Tavira sun. Away from the bustle of the centre, close to everything.</span></p>
+          <p class="rv d1"><span data-l="pt">Esplanada <span class="ac">a confirmar</span></span><span data-l="en">Outdoor seating <span class="ac">to be confirmed</span></span></p>
+        </div>
+        <div class="mais rv d2"><a class="btn btn-telha" href="#/visitar"><span data-l="pt">Como chegar</span><span data-l="en">How to get here</span><svg aria-hidden="true"><use href="#i-seta"/></svg></a></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ================= GALERIA ================= -->
+<section class="pag" data-pag="galeria" data-titulo-pt="Galeria · Tasca do Tó, Tavira" data-titulo-en="Gallery · Tasca do Tó, Tavira">
+  <div class="pag-topo escuro">
+    <div class="wrap">
+      <div class="cab">
+        <svg class="tesoura" viewBox="0 0 120 40" aria-hidden="true"><path class="t-f" d="M2 38L22 12L42 38zM42 38L62 6L82 38zM82 38L100 16L118 38z" fill="#F4C04E" fill-opacity=".15"/><path class="t-l" d="M2 38L22 12L42 38L62 6L82 38L100 16L118 38" pathLength="1"/></svg>
+        <p class="sobre"><span data-l="pt">galeria</span><span data-l="en">gallery</span></p>
+        <h2 class="pg-t" tabindex="-1"><span data-l="pt">Pratos, balcão e rua</span><span data-l="en">Plates, bar and street</span></h2>
+        <p class="lead"><span data-l="pt">Toque numa foto para a ver maior.</span><span data-l="en">Tap a photo to see it larger.</span></p>
+      </div>
+    </div>
+    <div class="cidade-mini" aria-hidden="true"><svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">__TELHADOS_RODAPE__</svg></div>
+  </div>
+  <section class="sec" style="padding-top:clamp(36px,6vw,64px)" aria-label="Fotografias">
+    <div class="wrap gal" id="gal">
+      <button type="button"><figure class="ft"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-sala"/></svg><img src="media/balcao-mural.webp" alt="O balcão e o mural de Tavira" data-alt-en="The bar and the Tavira mural" width="1600" height="1200" loading="lazy" onerror="this.remove()"></figure></button>
+      <button type="button"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bacalhau-grao.webp" alt="Bacalhau com grão" data-alt-en="Salt cod with chickpeas" width="1600" height="1600" loading="lazy" onerror="this.remove()"></figure></button>
+      <button type="button"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/bife-ovo-batata.webp" alt="Bifinhos com ovo e batata frita" data-alt-en="Steak, egg and chips" width="1600" height="2133" loading="lazy" onerror="this.remove()"></figure></button>
+      <button type="button"><figure class="ft"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-rua"/></svg><img src="media/rua.webp" alt="A rua vista da porta" data-alt-en="The street seen from the door" width="1600" height="1203" loading="lazy" onerror="this.remove()"></figure></button>
+      <button type="button"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/feijao-branco.webp" alt="Feijão branco com carnes" data-alt-en="White beans with meat" width="1600" height="2133" loading="lazy" onerror="this.remove()"></figure></button>
+      <button type="button"><figure class="ft"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-sala"/></svg><img src="media/sala.webp" alt="A sala" data-alt-en="The dining room" width="1600" height="1273" loading="lazy" onerror="this.remove()"></figure></button>
+      <button type="button"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/prato-de-tacho.webp" alt="Guisado de tacho com batata" data-alt-en="Pot stew with potato" width="1600" height="1200" loading="lazy" onerror="this.remove()"></figure></button>
+      <button type="button"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/petisco-frio.webp" alt="Petisco frio, cerveja e azeite" data-alt-en="Cold small plate, beer and olive oil" width="1600" height="903" loading="lazy" onerror="this.remove()"></figure></button>
+      <button type="button"><figure class="ft"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#d-prato"/></svg><img src="media/cafe.webp" alt="Café" data-alt-en="Espresso" width="1600" height="2839" loading="lazy" onerror="this.remove()"></figure></button>
+    </div>
+  </section>
+  <dialog class="caixa" id="caixa" aria-label="Fotografia">
+    <button class="fechar" type="button" aria-label="Fechar" data-aria-pt="Fechar" data-aria-en="Close">×</button>
+    <img id="caixa-img" src="" alt="">
+    <p id="caixa-txt"></p>
+  </dialog>
+</section>
+
+<!-- ================= VISITAR ================= -->
+<section class="pag" data-pag="visitar" data-titulo-pt="Visitar · Tasca do Tó, Tavira" data-titulo-en="Visit · Tasca do Tó, Tavira">
+  <div class="pag-topo escuro">
+    <div class="wrap">
+      <div class="cab">
+        <svg class="tesoura" viewBox="0 0 120 40" aria-hidden="true"><path class="t-f" d="M2 38L22 12L42 38zM42 38L62 6L82 38zM82 38L100 16L118 38z" fill="#F4C04E" fill-opacity=".15"/><path class="t-l" d="M2 38L22 12L42 38L62 6L82 38L100 16L118 38" pathLength="1"/></svg>
+        <p class="sobre"><span data-l="pt">visitar</span><span data-l="en">visit</span></p>
+        <h2 class="pg-t" tabindex="-1"><span data-l="pt">Rua dos Fumeiros Diante, 2</span><span data-l="en">Rua dos Fumeiros Diante, 2</span></h2>
+        <p class="lead" data-estado-lead></p>
+      </div>
+    </div>
+    <div class="cidade-mini" aria-hidden="true"><svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">__TELHADOS_RODAPE__</svg></div>
+  </div>
+  <section class="sec" style="padding-top:clamp(36px,6vw,64px)" aria-label="Morada, horário e contactos">
+    <div class="wrap visitar">
+      <div>
+        <ul class="ficha">
+          <li class="rv"><span><span data-l="pt">morada</span><span data-l="en">address</span></span><span class="grande">Rua dos Fumeiros Diante, 2<br>8800 Tavira</span></li>
+          <li class="rv d1"><span><span data-l="pt">telefone</span><span data-l="en">phone</span></span><span><a class="grande" href="tel:+351964610125">964 610 125</a></span></li>
+          <li class="rv d2"><span><span data-l="pt">horário</span><span data-l="en">hours</span></span>
+            <div>
+              <table class="semana" data-semana><tbody></tbody></table>
+              <p class="ajuda" style="margin-top:10px"><span data-l="pt">Segunda-feira confirmada. Nos outros dias mostramos o horário habitual até a casa confirmar.</span><span data-l="en">Monday is confirmed. Other days show the usual hours until the house confirms.</span></p>
+            </div>
+          </li>
+          <li class="rv"><span><span data-l="pt">pagamento</span><span data-l="en">payment</span></span><span><span class="ac"><span data-l="pt">a confirmar</span><span data-l="en">to be confirmed</span></span></span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="mapa rv" data-mapa>
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#1F4B3F"/><path d="M-10 90 L410 140 M120 -10 L180 310 M260 -10 L300 310 M-10 230 L410 210" stroke="#2B5E50" stroke-width="14"/><circle cx="300" cy="60" r="9" fill="#F4C04E"/><circle cx="300" cy="60" r="22" fill="none" stroke="#F4C04E" stroke-opacity=".4" stroke-width="2"/></svg>
+          <div class="mapa-cap">
+            <p><span data-l="pt">O mapa carrega do Google só quando tocar.</span><span data-l="en">The map loads from Google only when you tap.</span></p>
+            <button class="btn btn-telha btn-pq" type="button" data-mapa-btn><svg aria-hidden="true"><use href="#i-mapa"/></svg><span data-l="pt">Mostrar mapa</span><span data-l="en">Show map</span></button>
+          </div>
+        </div>
+        <div class="mais">
+          <a class="btn btn-linha" href="https://www.google.com/maps/dir/?api=1&amp;destination=37.1292894%2C-7.649379" target="_blank" rel="noopener"><span data-l="pt">Abrir direções</span><span data-l="en">Get directions</span><svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+          <a class="btn btn-zap" data-zap="geral" href="https://wa.me/351964610125" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-zap"/></svg>WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="cidade-rod" aria-hidden="true"><svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice" class="aberto-rod">__TELHADOS_RODAPE__</svg></div>
+  <div class="wrap">
+    <div>
+      <a class="marca" href="#/"><svg viewBox="0 0 64 48" aria-hidden="true" style="width:36px;height:27px"><use href="#telhadinho"/></svg>Tasca do Tó</a>
+      <p style="margin-top:12px"><span data-l="pt">Petiscos e pratos de tacho em Tavira.</span><span data-l="en">Small plates and home stews in Tavira.</span></p>
+    </div>
+    <p>Rua dos Fumeiros Diante, 2<br>8800 Tavira<br><a href="tel:+351964610125">964 610 125</a></p>
+    <p><span data-l="pt">10:00–23:00 (segunda)</span><span data-l="en">10:00–23:00 (Monday)</span><br><span data-l="pt">Denominação e NIF</span><span data-l="en">Company name and VAT no.</span>: <span class="ac"><span data-l="pt">a confirmar</span><span data-l="en">to be confirmed</span></span></p>
+    <div class="legal">
+      <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener"><span data-l="pt">Livro de Reclamações</span><span data-l="en">Complaints Book</span></a>
+      <span>© 2026 Tasca do Tó</span>
+      <span><span data-l="pt">Site: Pacheco Studios</span><span data-l="en">Website: Pacheco Studios</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="fixo">
+  <a class="btn btn-linha" href="tel:+351964610125"><svg aria-hidden="true"><use href="#i-tel"/></svg><span data-l="pt">Ligar</span><span data-l="en">Call</span></a>
+  <a class="btn btn-zap" data-zap="geral" href="https://wa.me/351964610125" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-zap"/></svg>WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var ZAP = '351964610125';
+  /* Horário: [abre, fecha] em minutos, por dia (0 = domingo). conf = confirmado pela casa.
+     Só a segunda-feira está confirmada; os outros dias usam o horário habitual até confirmação. */
+  var HORARIO = {
+    0:{h:[600,1380],conf:false}, 1:{h:[600,1380],conf:true}, 2:{h:[600,1380],conf:false}, 3:{h:[600,1380],conf:false},
+    4:{h:[600,1380],conf:false}, 5:{h:[600,1380],conf:false}, 6:{h:[600,1380],conf:false}
+  };
+  var doc = document.documentElement;
+  doc.classList.add('js');
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lang = 'pt';
+  try { var g = localStorage.getItem('tt-lang'); if (g === 'en' || g === 'pt') lang = g; } catch(e){}
+  function T(pt, en){ return lang === 'en' ? en : pt; }
+  var DIAS = {pt:['domingo','segunda','terça','quarta','quinta','sexta','sábado'], en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']};
+
+  /* ---------- idioma ---------- */
+  var botoesLang = [].slice.call(document.querySelectorAll('[data-lang]'));
+  [].forEach.call(document.querySelectorAll('img[data-alt-en]'), function(i){ i.dataset.altPt = i.getAttribute('alt'); });
+  function aplicaLang(){
+    doc.lang = lang === 'en' ? 'en' : 'pt-PT';
+    botoesLang.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+    [].forEach.call(document.querySelectorAll('[data-aria-pt]'), function(el){ el.setAttribute('aria-label', lang === 'en' ? el.dataset.ariaEn : el.dataset.ariaPt); });
+    [].forEach.call(document.querySelectorAll('img[data-alt-en]'), function(i){ i.setAttribute('alt', lang === 'en' ? i.dataset.altEn : i.dataset.altPt); });
+    var at = document.querySelector('.pag.ativa'); if (at) document.title = lang === 'en' ? at.dataset.tituloEn : at.dataset.tituloPt;
+    estado(); atualizaZap(); atualizaMsg();
+  }
+  botoesLang.forEach(function(b){ b.addEventListener('click', function(){ lang = b.dataset.lang; try { localStorage.setItem('tt-lang', lang); } catch(e){} aplicaLang(); }); });
+
+  /* ---------- router por #/ ---------- */
+  var pags = [].slice.call(document.querySelectorAll('.pag'));
+  var primeira = true;
+  function mostra(){
+    var h = (location.hash || '').replace(/^#\/?/, '');
+    if (h === 'conteudo' || h === 'caminho') return;
+    var alvo = pags.filter(function(p){ return p.dataset.pag === h; })[0] || pags[0];
+    pags.forEach(function(p){ p.classList.toggle('ativa', p === alvo); });
+    document.title = lang === 'en' ? alvo.dataset.tituloEn : alvo.dataset.tituloPt;
+    var chave = '#/' + alvo.dataset.pag;
+    [].forEach.call(document.querySelectorAll('.nav-links a, .menu-movel a'), function(a){
+      if (a.getAttribute('href') === chave) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    fechaMenu();
+    if (!primeira){ window.scrollTo(0, 0); var t = alvo.querySelector('.pg-t'); if (t) t.focus({preventScroll:true}); }
+    primeira = false;
+    observa(alvo);
+    if (alvo.dataset.pag === '') arranca();
+  }
+  window.addEventListener('hashchange', mostra);
+
+  /* ---------- nav ---------- */
+  var nav = document.getElementById('nav');
+  var burger = document.querySelector('.burger'), menu = document.getElementById('menu-movel');
+  function fechaMenu(){ burger.setAttribute('aria-expanded','false'); menu.classList.remove('aberto'); document.body.style.overflow=''; }
+  burger.addEventListener('click', function(){
+    var abre = burger.getAttribute('aria-expanded') !== 'true';
+    burger.setAttribute('aria-expanded', String(abre)); menu.classList.toggle('aberto', abre);
+    document.body.style.overflow = abre ? 'hidden' : '';
+    if (abre) menu.querySelector('a').focus();
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('aberto')){ fechaMenu(); burger.focus(); } });
+  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 8); }, {passive:true});
+
+  /* ---------- revelação ---------- */
+  var io = ('IntersectionObserver' in window && !reduz) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -10% 0px', threshold:.1}) : null;
+  function observa(raiz){ [].forEach.call(raiz.querySelectorAll('.rv:not(.vis), .cab:not(.vis)'), function(el){ if (io) io.observe(el); else el.classList.add('vis'); }); }
+  var arrancou = false;
+  function arranca(){ if (arrancou) return; arrancou = true; requestAnimationFrame(function(){ requestAnimationFrame(function(){ doc.classList.add('ini'); }); }); }
+
+  /* ---------- hora de Tavira e "ainda está aberto?" ---------- */
+  function agoraLisboa(){
+    try {
+      var f = new Intl.DateTimeFormat('en-GB', {timeZone:'Europe/Lisbon', weekday:'short', hour:'2-digit', minute:'2-digit', hour12:false});
+      var p = {}; f.formatToParts(new Date()).forEach(function(x){ p[x.type] = x.value; });
+      return {d: {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[p.weekday], m: (+p.hour % 24) * 60 + (+p.minute)};
+    } catch(e){ var n = new Date(); return {d:n.getDay(), m:n.getHours()*60+n.getMinutes()}; }
+  }
+  function hhmm(m){ return String(Math.floor(m/60) % 24).padStart(2,'0') + ':' + String(m%60).padStart(2,'0'); }
+  function dur(m){ var h = Math.floor(m/60), mi = m % 60; return (h ? h + ' h ' : '') + (mi ? mi + ' min' : (h ? '' : '0 min')); }
+  var hero = document.getElementById('hero');
+  var acTxt = function(){ return '<span class="ac">' + T('horário de hoje a confirmar', "today's hours to be confirmed") + '</span>'; };
+  function calcula(){
+    var a = agoraLisboa(), dia = HORARIO[a.d], ab = dia.h[0], fe = dia.h[1];
+    var r = {a:a, dia:dia, aberto: a.m >= ab && a.m < fe, falta: fe - a.m, abre: ab, fecha: fe};
+    r.antes = a.m < ab; r.depois = a.m >= fe;
+    return r;
+  }
+  function estado(){
+    var r = calcula(), a = r.a;
+    /* céu de Tavira agora */
+    hero.classList.remove('ceu-dia','ceu-tarde');
+    if (a.m >= 7*60 && a.m < 18*60+30) hero.classList.add('ceu-dia');
+    else if (a.m >= 18*60+30 && a.m < 20*60+30) hero.classList.add('ceu-tarde');
+    hero.classList.toggle('aberto', r.aberto);
+    document.querySelector('.rodape').classList.toggle('aberto', r.aberto);
+    var resp, sub;
+    if (r.aberto && r.falta <= 30){
+      resp = T('<span class="sim">Está</span>, mas despache-se: fecha às ' + hhmm(r.fecha) + '.', '<span class="sim">Yes</span>, but hurry: it closes at ' + hhmm(r.fecha) + '.');
+    } else if (r.aberto){
+      resp = T('<span class="sim">Está.</span> Até às ' + hhmm(r.fecha) + '.', '<span class="sim">Yes.</span> Until ' + hhmm(r.fecha) + '.');
+    } else if (r.antes){
+      resp = T('Ainda não. Abre às ' + hhmm(r.abre) + '.', 'Not yet. Opens at ' + hhmm(r.abre) + '.');
+    } else {
+      var am = HORARIO[(a.d + 1) % 7];
+      resp = T('Já fechou. Amanhã abre às ' + hhmm(am.h[0]) + '.', 'Closed for today. Opens tomorrow at ' + hhmm(am.h[0]) + '.');
+    }
+    sub = T('Agora em Tavira: ', 'Now in Tavira: ') + DIAS[lang][a.d] + ', ' + hhmm(a.m);
+    if (r.aberto) sub += T(' · fecha daqui a ', ' · closes in ') + dur(r.falta);
+    document.querySelector('[data-resposta]').innerHTML = resp;
+    document.querySelector('[data-agora]').innerHTML = '<span>' + sub + '</span>' + (r.dia.conf ? '' : acTxt());
+    var mini = document.querySelector('[data-estado-mini]');
+    mini.classList.toggle('aberto', r.aberto);
+    mini.querySelector('span').textContent = r.aberto ? T('aberto · até às ', 'open · until ') + hhmm(r.fecha) : T('fechado', 'closed');
+    var et = document.querySelector('[data-estado-txt]');
+    if (et) et.innerHTML = r.aberto ? T('Agora: <span class="sim">aberto</span>, até às ' + hhmm(r.fecha) + '.', 'Right now: <span class="sim">open</span>, until ' + hhmm(r.fecha) + '.') : T('Agora: fechado. Abre às ' + hhmm(r.antes ? r.abre : HORARIO[(a.d+1)%7].h[0]) + (r.antes ? '.' : ' de amanhã.'), 'Right now: closed. Opens at ' + hhmm(r.antes ? r.abre : HORARIO[(a.d+1)%7].h[0]) + (r.antes ? '.' : ' tomorrow.'));
+    var el = document.querySelector('[data-estado-lead]');
+    if (el) el.innerHTML = (r.aberto ? T('Aberto agora, até às ' + hhmm(r.fecha) + '.', 'Open now, until ' + hhmm(r.fecha) + '.') : T('Fechado agora.', 'Closed now.')) + T(' Fica fora do centro histórico, a poucos minutos a pé.', ' Just outside the old town, a few minutes on foot.');
+    /* janelas por hora */
+    var pr = document.querySelector('[data-predio]');
+    if (pr){
+      var h = '';
+      for (var k = 10; k <= 22; k++){
+        var cls = (r.aberto && a.m >= k*60 && a.m < (k+1)*60) ? 'agora' : ((a.m >= (k+1)*60 && !r.antes) ? 'passou' : '');
+        h += '<div class="hj ' + cls + '"><i></i><span>' + String(k).padStart(2,'0') + 'h</span></div>';
+      }
+      h += '<div class="hj porta"><i></i><span>23h</span></div>';
+      pr.innerHTML = h;
+    }
+    /* semana */
+    var tb = document.querySelector('[data-semana] tbody');
+    if (tb){
+      var ordem = [1,2,3,4,5,6,0], s = '';
+      ordem.forEach(function(d){
+        var x = HORARIO[d];
+        s += '<tr' + (d === a.d ? ' class="hoje"' : '') + '><td>' + DIAS[lang][d].replace(/^./, function(c){ return c.toUpperCase(); }) + '</td><td>' + hhmm(x.h[0]) + '–' + hhmm(x.h[1]) + (x.conf ? '' : ' <span class="ac">' + T('a confirmar', 'tbc') + '</span>') + '</td></tr>';
+      });
+      tb.innerHTML = s;
+    }
+    atualizaMsg();
+  }
+
+  /* ---------- WhatsApp ---------- */
+  var MSG = {
+    geral: function(){ return T('Olá! Vi o vosso site. Hoje estão abertos até às 23:00?', 'Hello! I saw your website. Are you open until 11 pm today?'); },
+    dia: function(){ return T('Olá! Qual é o prato do dia hoje na Tasca do Tó?', "Hello! What's today's dish at Tasca do Tó?"); }
+  };
+  function atualizaZap(){ [].forEach.call(document.querySelectorAll('[data-zap]'), function(a){ a.href = 'https://wa.me/' + ZAP + '?text=' + encodeURIComponent(MSG[a.dataset.zap]()); }); }
+
+  /* ---------- vou a caminho ---------- */
+  var pessoas = 2, quando = 'hoje';
+  var fHora = document.getElementById('f-hora'), fNome = document.getElementById('f-nome');
+  var resumo = document.getElementById('resumo'), aviso = document.getElementById('aviso'), erro = document.getElementById('erro');
+  function minutos(v){ var p = (v || '').split(':'); return p.length === 2 ? (+p[0])*60 + (+p[1]) : null; }
+  function mensagem(){
+    var m = minutos(fHora.value), r = calcula();
+    var d = quando === 'hoje' ? r.a.d : (r.a.d + 1) % 7, fe = HORARIO[d].h[1], ab = HORARIO[d].h[0];
+    var tarde = m !== null && fe - m <= 45 && m < fe, fora = m !== null && (m < ab || m >= fe);
+    var l = [];
+    l.push(T('Olá! Daqui fala ' + (fNome.value.trim() || '…') + '.', 'Hello! This is ' + (fNome.value.trim() || '…') + '.'));
+    l.push(T('Somos ' + pessoas + (pessoas === 1 ? ' pessoa' : ' pessoas') + ' e chegamos ' + (quando === 'hoje' ? 'hoje' : 'amanhã') + ' por volta das ' + (fHora.value || '…') + '.', "We're " + pessoas + (pessoas === 1 ? ' person' : ' people') + ' arriving ' + (quando === 'hoje' ? 'today' : 'tomorrow') + ' around ' + (fHora.value || '…') + '.'));
+    l.push(tarde ? T('Ainda há cozinha a essa hora? Podem guardar-nos mesa?', 'Is the kitchen still on at that time? Can you keep us a table?') : T('Podem guardar-nos mesa?', 'Could you keep us a table?'));
+    l.push(T('Obrigado!', 'Thank you!'));
+    aviso.textContent = fora ? T('Atenção: a essa hora a casa costuma estar fechada (abre às ' + hhmm(ab) + ', fecha às ' + hhmm(fe) + ').', 'Heads up: the place is usually closed then (opens ' + hhmm(ab) + ', closes ' + hhmm(fe) + ').') : (tarde ? T('Perto da hora de fecho — a mensagem pergunta se ainda há cozinha.', 'Close to closing time — the message asks if the kitchen is still on.') : '');
+    return l.join('\n');
+  }
+  function atualizaMsg(){ if (resumo) resumo.textContent = mensagem(); }
+  document.querySelectorAll('[data-p]').forEach(function(b){ b.addEventListener('click', function(){ pessoas = Math.max(1, Math.min(30, pessoas + +b.dataset.p)); document.getElementById('pessoas').textContent = pessoas; atualizaMsg(); }); });
+  document.querySelectorAll('[data-q]').forEach(function(b){ b.addEventListener('click', function(){ quando = b.dataset.q; document.querySelectorAll('[data-q]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); }); atualizaMsg(); }); });
+  [fHora, fNome].forEach(function(el){ el.addEventListener('input', atualizaMsg); });
+  document.getElementById('form-caminho').addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!fNome.value.trim()){ erro.textContent = T('Escreva o seu nome para a casa saber quem vem.', 'Enter your name so they know who is coming.'); fNome.focus(); return; }
+    if (!fHora.value){ erro.textContent = T('Escolha a hora de chegada.', 'Choose your arrival time.'); fHora.focus(); return; }
+    erro.textContent = '';
+    window.open('https://wa.me/' + ZAP + '?text=' + encodeURIComponent(mensagem()), '_blank', 'noopener');
+  });
+
+  /* ---------- galeria ---------- */
+  var caixa = document.getElementById('caixa'), cImg = document.getElementById('caixa-img'), cTxt = document.getElementById('caixa-txt');
+  [].forEach.call(document.querySelectorAll('#gal button'), function(b){
+    b.addEventListener('click', function(){
+      var i = b.querySelector('img'); if (!i) return;
+      cImg.src = i.src; cImg.alt = i.alt; cTxt.textContent = i.alt;
+      if (caixa.showModal) caixa.showModal(); else caixa.setAttribute('open', '');
+    });
+  });
+  caixa.querySelector('.fechar').addEventListener('click', function(){ caixa.close(); });
+  caixa.addEventListener('click', function(e){ if (e.target === caixa) caixa.close(); });
+  function rotulaGal(){ [].forEach.call(document.querySelectorAll('#gal button'), function(b){ var i = b.querySelector('img'); b.setAttribute('aria-label', T('Ver maior: ', 'View larger: ') + (i ? i.alt : '')); }); }
+
+  /* ---------- mapa só a pedido ---------- */
+  var mb = document.querySelector('[data-mapa-btn]');
+  if (mb) mb.addEventListener('click', function(){
+    var m = document.querySelector('[data-mapa]');
+    var f = document.createElement('iframe');
+    f.title = T('Mapa: Tasca do Tó, Tavira', 'Map: Tasca do Tó, Tavira');
+    f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade';
+    f.src = 'https://www.google.com/maps?q=' + encodeURIComponent('37.1292894,-7.649379') + '&z=17&output=embed';
+    m.appendChild(f); m.querySelector('.mapa-cap').hidden = true;
+  });
+
+  aplicaLang(); rotulaGal();
+  botoesLang.forEach(function(b){ b.addEventListener('click', rotulaGal); });
+  mostra();
+  setInterval(estado, 30000);
+})();
+</script>
+</body>
+</html>
