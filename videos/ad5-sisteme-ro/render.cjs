@@ -1,4 +1,5 @@
-// Captura os fotogramas de reel.html (30 fps) e monta o MP4 9:16 com o clip limpo da intro por baixo.
+// Captura os fotogramas de reel.html (30 fps) e monta o MP4 9:16 com o clip limpo da intro por baixo e o som de som.py.
+// Saídas: ad5-sisteme-ro.mp4 (música + efeitos) e ad5-sisteme-ro-efeitos.mp4 (só efeitos, para levar outra música por baixo).
 // Uso: node render.cjs [pasta-temporária]   ·   pré-visualização: node render.cjs <pasta> 2.5,7,12
 const { chromium } = require('/opt/node-tools/node_modules/playwright');
 const { execFileSync } = require('child_process');
@@ -20,9 +21,14 @@ const FPS = 30, DUR = 40;
   await b.close();
   if (ONLY) return;
   const clip = path.join(__dirname, '../fontes/ad5-intro-limpo.mp4');
+  execFileSync('python3', [path.join(__dirname, 'som.py'), OUT], { stdio: 'inherit' });
+  const mp4 = path.join(__dirname, 'ad5-sisteme-ro.mp4');
   execFileSync('ffmpeg', ['-v', 'error', '-y',
     '-i', clip, '-framerate', String(FPS), '-i', path.join(OUT, 'f%04d.png'),
-    '-f', 'lavfi', '-t', String(DUR), '-i', 'anullsrc=r=48000:cl=stereo',
+    '-i', path.join(OUT, 'som-mix.wav'),
     '-filter_complex', `color=c=black:s=1080x1920:r=${FPS}:d=${DUR}[base];[0:v]fps=${FPS},scale=1080:1920,setpts=PTS-STARTPTS[clip];[base][clip]overlay=0:0:eof_action=pass[bg];[bg][1:v]overlay=0:0,format=yuv420p[v]`,
-    '-map', '[v]', '-map', '2:a', '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-c:a', 'aac', '-t', String(DUR), '-movflags', '+faststart', path.join(__dirname, 'ad5-sisteme-ro.mp4')], { stdio: 'inherit' });
+    '-map', '[v]', '-map', '2:a', '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-c:a', 'aac', '-b:a', '192k', '-t', String(DUR), '-movflags', '+faststart', mp4], { stdio: 'inherit' });
+  execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', mp4, '-i', path.join(OUT, 'som-efeitos.wav'),
+    '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-t', String(DUR), '-movflags', '+faststart',
+    path.join(__dirname, 'ad5-sisteme-ro-efeitos.mp4')], { stdio: 'inherit' });
 })();
