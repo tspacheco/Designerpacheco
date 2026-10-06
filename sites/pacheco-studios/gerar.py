@@ -628,7 +628,7 @@ def diagnostico(c, url_priv):
     linhas = "".join(f'<div data-id="{e(q["id"])}"><dt>{e(q["wa"])}</dt><dd>—</dd></div>' for q in g["perguntas"])
     dados = json.dumps({k: g[k] for k in ("abertura", "perguntas", "continuar", "obrigatorio", "escolhe", "fim", "enviar",
                                           "recomecar", "wa_intro", "comecar", "anterior", "seguinte", "pergunta", "meta",
-                                          "intro_t", "quem_nome", "quem_papel", "quem_alt", "pensa", "mudar", "enviar_msg")}, ensure_ascii=False)
+                                          "intro_t", "quem_nome", "quem_papel", "quem_alt", "pensa", "mudar", "enviar_msg", "email_invalido")}, ensure_ascii=False)
     # a foto do Tomás (media/tomas.webp, 360 px) vai embutida: quem faz o diagnóstico tem cara desde o primeiro ecrã
     foto = os.path.join(AQUI, "media", "tomas.webp")
     if os.path.exists(foto):

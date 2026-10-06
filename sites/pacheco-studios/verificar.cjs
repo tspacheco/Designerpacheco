@@ -363,9 +363,9 @@ const fs = require('fs');
     if (!ecra1.nome || ecra1.comecar || !ecra1.foto || ecra1.foco === 'diag-in') mal(`${k}: 1.º ecrã do diagnóstico ${JSON.stringify(ecra1)}`);
     const respostas = [];
     for (const q of g.perguntas) {
-      if (q.tipo === 'texto' || q.tipo === 'tel') {
+      if (q.tipo === 'texto' || q.tipo === 'tel' || q.tipo === 'email') {
         await p.waitForSelector('#diag-in', { timeout: 8000 });
-        const t = q.tipo === 'tel' ? '+351 900 000 000' : `Teste ${q.id}`;
+        const t = q.tipo === 'tel' ? '+351 900 000 000' : q.tipo === 'email' ? 'teste@exemplo.pt' : `Teste ${q.id}`;
         await p.fill('#diag-in', t); await p.press('#diag-in', 'Enter'); respostas.push(t);
         // depois de cada resposta, o Tomás «está a escrever…» antes da mensagem seguinte
         if (q.id === 'nome' && !(await p.evaluate(() => !!document.querySelector('.diag-pensa')))) mal(`${k}: falta o «a escrever…» depois do nome`);
@@ -410,7 +410,7 @@ const fs = require('fs');
     const fat = g.perguntas.find(q => q.id === 'faturacao');
     const moeda = fat && fat.opcoes.slice(0, -1).every(o => o.includes(k === 'ro' ? 'lei' : '€'));
     if (falta.length || +fim.n !== g.perguntas.length || !fim.aberto || !fechou || !moeda) mal(`${k}, diagnóstico: ${JSON.stringify({ falta, fim, fechou, moeda })}`);
-    else bem(`${k}: diagnóstico com a ficha, ${g.perguntas.length} respostas (tipo «${g.perguntas.find(q => q.outro).outro}» escrito à mão, faturação em ${k === 'ro' ? 'lei' : '€'}), todas na mensagem para o WhatsApp; Esc fecha`);
+    else bem(`${k}: diagnóstico com a ficha, ${g.perguntas.length} respostas (e-mail na 3.ª, faturação em ${k === 'ro' ? 'lei' : '€'}), todas na mensagem para o WhatsApp; Esc fecha`);
   }
 
   // anúncio de sites: entra nos Sites; sem utm, entra na Consultoria

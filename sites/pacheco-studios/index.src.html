@@ -1173,6 +1173,7 @@ dialog.diag.fim .diag-ficha{display:block}
       var ir = function () {
         var x = inp.value.trim();
         if (x.replace(/[^\p{L}\p{N}]/gu, '').length < 2) { erro(D.obrigatorio, resp); inp.focus(); return; }
+        if (tipo === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(x)) { erro(D.email_invalido, resp); inp.focus(); return; }
         ok(x);
       };
       inp.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); ir(); } });
@@ -1180,8 +1181,8 @@ dialog.diag.fim .diag-ficha{display:block}
       f.appendChild(lab); f.appendChild(inp); f.appendChild(env);
       return f;
     }
-    if (q.tipo === 'texto' || q.tipo === 'tel') {
-      resp.appendChild(caixa(q.rotulo, q.ph, q.tipo === 'tel' ? 'tel' : 'text', r[q.id], q.id === 'nome' ? 'name' : q.tipo === 'tel' ? 'tel' : 'off',
+    if (q.tipo === 'texto' || q.tipo === 'tel' || q.tipo === 'email') {
+      resp.appendChild(caixa(q.rotulo, q.ph, q.tipo === 'texto' ? 'text' : q.tipo, r[q.id], q.id === 'nome' ? 'name' : q.tipo === 'texto' ? 'off' : q.tipo,
         function (v) { responder(q, v); }));
       if (passo > 0) setTimeout(function () { var i = document.getElementById('diag-in'); if (i) i.focus({ preventScroll: true }); }, 30);
       return;
