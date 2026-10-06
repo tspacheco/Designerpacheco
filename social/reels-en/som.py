@@ -205,7 +205,7 @@ musica1() if ESTILO == "1" else musica2()
 
 if ESTILO == '1':
     put(sfx, 0, impact(), .55)                 # gancho: entra com tudo
-else:                                          # gancho do reel 2: o relógio rola das 23:47 para as 07:00 com um despertador suave
+else:                                          # gancho do reel 2: o relógio rola das 00:30 para as 07:00 com um despertador suave
     put(sfx, 0, kick(), .5)
     for j, f in enumerate((1318.5, 1760, 2217.5, 2637)):
         put(sfx, .9 + j * .09, ping(f, f * 1.5, 5, .9), .08)
@@ -214,7 +214,13 @@ for t in [S0[0], S0[1], S0[2], OUT, 27.0]:
 for i, s in enumerate(S0):
     put(sfx, s + PAIN - .3, whoosh(.5), .09)    # problema → solução
     ui = tempos[i]['pain']
-    if ui == 'calls':
+    if ui == 'ring':  # chamada a tocar (dois tons) que fica perdida; o contador sobe até 12
+        for j in range(2):
+            x = tt(.4); put(sfx, s + .1 + j * .45, (np.sin(2 * np.pi * 440 * x) + np.sin(2 * np.pi * 480 * x)) * .5 * np.minimum(1, x * 80) * np.clip((.4 - x) / .05, 0, 1), .14)
+        put(sfx, s + .95, ping(330, 311, 5, .7), .15)
+        for j in range(11):
+            put(sfx, s + 1.0 + j * .073, tick(), .07)
+    elif ui == 'calls':
         for j, tp in enumerate(['ch', 'wa', 'ch', 'ch', 'wa']):
             put(sfx, s + .1 + j * .16, buzz(.2) if tp == 'ch' else ping(1568, 2349, d=.4), .2 if tp == 'ch' else .14)
     elif ui == 'diary':
