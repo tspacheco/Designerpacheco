@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""Descarrega as fontes do Google Fonts (só subconjuntos latin + latin-ext: ă â î ș ț do romeno)
+e gera _fontes/fontes.css com as fontes em base64 (o site abre sem rede)."""
+import re, base64, urllib.request, os, sys
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36'}
+PEDIDOS = sys.argv[1:] or [
+  'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400&family=Doto:wght@600..900&display=swap',
+]
+SUBSETS = {'latin', 'latin-ext'}
+out, vistos = [], {}
+for url in PEDIDOS:
+    css = urllib.request.urlopen(urllib.request.Request(url, headers=UA)).read().decode()
+    for subset, bloco in re.findall(r'/\* ([^*]+?) \*/\s*(@font-face \{.*?\})', css, re.S):
+        if subset.strip() not in SUBSETS: continue
+        src = re.search(r'url\((https://[^)]+)\)', bloco).group(1)
+        peso = re.search(r'font-weight: ([\d ]+);', bloco).group(1).split()
+        if src in vistos:
+            i, pesos = vistos[src]; pesos += [int(p) for p in peso]
+            out[i] = re.sub(r'font-weight: [\d ]+;', 'font-weight: %d %d;' % (min(pesos), max(pesos)), out[i]); continue
+        dados = urllib.request.urlopen(urllib.request.Request(src, headers=UA)).read()
+        vistos[src] = (len(out), [int(p) for p in peso])
+        out.append(re.sub(r"url\(https://[^)]+\) format\('[^']+'\)", "url(data:font/woff2;base64,%s) format('woff2')" % base64.b64encode(dados).decode(), bloco))
+open('_fontes/fontes.css', 'w').write('\n'.join(out))
+print(len(out), 'faces ·', round(os.path.getsize('_fontes/fontes.css') / 1024), 'KB')
