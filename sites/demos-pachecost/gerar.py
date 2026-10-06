@@ -41,7 +41,15 @@ DEMOS = [  # (endereço curto, pasta em sites/)
 NOINDEX = '<meta name="robots" content="noindex, nofollow">'
 
 
+# Sem a barra final os caminhos relativos (media/...) partiam-se. Não se resolve no
+# _redirects: o Netlify ignora a barra final ao comparar regras, e /x → /x/ 301! fazia
+# um ciclo infinito (06/10). Por isso a página acrescenta a barra antes de carregar.
+BARRA = ('<script>(function(l){if(!/\\/$|\\.html$/.test(l.pathname))'
+         'l.replace(l.pathname+"/"+l.search+l.hash)})(location)</script>')
+
+
 def com_noindex(html):
+    html = re.sub(r"(<head[^>]*>)", r"\1" + BARRA.replace("\\", "\\\\"), html, count=1)
     if 'name="robots"' in html:
         return re.sub(r'<meta name="robots"[^>]*>', NOINDEX, html, count=1)
     return re.sub(r"(<head[^>]*>)", r"\1" + NOINDEX, html, count=1)
@@ -75,9 +83,6 @@ for curto, pasta in DEMOS:
         p = os.path.join(src, "media", f)
         if os.path.isfile(p) and f != "LEIA-ME.txt":
             shutil.copy2(p, os.path.join(dst, "media", f))
-    # sem a barra final os caminhos relativos (media/...) partiam-se
-    regras.append(f"{HOST}/{curto}    {HOST}/{curto}/    301!")
-    regras.append(f"/demo/{curto}    /demo/{curto}/    301")
 regras.append(f"{HOST}/*    /demo/:splat    200!")
 
 # entra antes da secção 3 do site; a primeira regra que bate ganha
