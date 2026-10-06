@@ -135,6 +135,10 @@ jobs:
                               document.querySelectorAll('*').forEach(e => { const m = getComputedStyle(e).backgroundImage.match(/url\\("?([^")]+)/); if (m) s.add(m[1]); });
                               return [...s]; }""")
                           imgs += sorted(set(re.findall(r'https://lh[0-9]\.googleusercontent\.com/[A-Za-z0-9_/.=-]+', pg.content())))
+                          vids = pg.evaluate("""() => [...document.querySelectorAll('video, video source')].map(v => v.currentSrc || v.src).filter(Boolean)""")
+                          vids += sorted(set(re.findall(r'https://[a-z0-9.-]*googlevideo\.com/[^"\'\\s<>]+', pg.content())))
+                          if vids:
+                              open(f"ponte/{nome}.videos.txt", "w", encoding="utf-8").write("\n".join(dict.fromkeys(v.replace("\\u0026", "&") for v in vids)))
                           open(f"ponte/{nome}.imagens.txt", "w", encoding="utf-8").write("\n".join(dict.fromkeys(imgs)))
                           open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
                           open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
