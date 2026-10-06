@@ -1,6 +1,6 @@
 # Contador de Chamadas (cold caller)
 
-App Android que conta as chamadas de WhatsApp do cold caller. Cada vez que uma chamada começa e acaba, guarda a hora
+Duas versões: **Windows** (o cold caller usa o WhatsApp no PC, 06/10/2026) e **Android**. As duas contam as chamadas de WhatsApp do cold caller. Cada vez que uma chamada começa e acaba, guarda a hora
 de início, a hora de fim e a duração, e envia uma linha para o registo
 [issue #3](https://github.com/tspacheco/Designerpacheco/issues/3). Não lê nomes, números nem mensagens.
 
@@ -8,7 +8,23 @@ Uma rotina do projeto corre `relatorio.py` às 11:55, 14:55, 17:55 e 20:55 (seg�
 resumo no thread «Contador de chamadas»: total do dia, tempo ao telefone, chamadas com 30 s ou mais, atendidas e
 chamadas desde o relatório anterior.
 
-## Descarregar
+## Windows (WhatsApp no PC)
+
+Zip: https://github.com/tspacheco/Designerpacheco/raw/claude/contador-chamadas-cold-caller-qo3dyp/ferramentas/contador-chamadas/ContadorChamadas-Windows.zip
+
+Deteta a chamada pelo microfone: o Windows regista quando cada app liga e desliga o microfone, e o programa vê
+quando é o WhatsApp. Funciona com a app WhatsApp para Windows; não funciona com o WhatsApp Web no browser.
+Uma nota de voz gravada no PC também conta como chamada (curta).
+
+1. Criar o código de acesso (secção 1 abaixo).
+2. No PC dele: descarregar o zip → Extrair tudo → duplo clique em `instalar.cmd` (SmartScreen: Mais informações →
+   Executar mesmo assim) → colar o código → Enter.
+3. Aparece um ícone (i) junto ao relógio com «Chamadas hoje: N». Botão direito → **Enviar teste**.
+4. Arranca sozinho quando o PC liga. Sem administrador. Dados em `%LOCALAPPDATA%\ContadorChamadas`.
+
+Código em `windows/` (PowerShell 5.1, que vem no Windows). Teste automático no workflow `contador-windows.yml`.
+
+## Android
 
 APK: https://github.com/tspacheco/Designerpacheco/raw/claude/contador-chamadas-cold-caller-qo3dyp/ferramentas/contador-chamadas/ContadorChamadas.apk
 

@@ -1,0 +1,32 @@
+# Testa o Contador de Chamadas para Windows (ferramentas/contador-chamadas/windows) no Windows PowerShell 5.1,
+# o mesmo que vem em qualquer PC com Windows 10/11.
+name: contador-windows
+on:
+  push:
+    paths:
+      - 'ferramentas/contador-chamadas/windows/**'
+      - '.github/workflows/contador-windows.yml'
+  workflow_dispatch:
+jobs:
+  teste:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sintaxe
+        shell: powershell
+        run: |
+          foreach ($f in Get-ChildItem ferramentas/contador-chamadas/windows/*.ps1) {
+            $erros = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($f.FullName, [ref]$null, [ref]$erros) | Out-Null
+            if ($erros) { $erros | ForEach-Object { Write-Host "$($f.Name): $_" }; exit 1 }
+            Write-Host "OK $($f.Name)"
+          }
+      - name: Teste da detecao
+        shell: powershell
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File ferramentas/contador-chamadas/windows/contador.ps1 -Teste
+      - name: Microfone real do runner (so informativo)
+        shell: powershell
+        run: |
+          $r = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone'
+          if (Test-Path $r) { Get-ChildItem $r | Select-Object -ExpandProperty PSChildName } else { 'sem chave' }
