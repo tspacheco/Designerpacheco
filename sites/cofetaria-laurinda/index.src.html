@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laurinda · Cofetărie artizanală, torturi personalizate și candy bar în Iași</title>
+<meta name="description" content="Cofetăria artizanală Laurinda, Bd. Socola 22, Iași — torturi personalizate, candy bar pentru evenimente, prăjituri în formă de fructe. Comandați pe WhatsApp: 0770 988 652.">
+<meta name="theme-color" content="#3B1F2E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='14' width='52' height='44' rx='4' fill='%23fff' stroke='%233B1F2E' stroke-width='3'/%3E%3Cpath d='M32 14v44M6 34h52' stroke='%23E9A6B6' stroke-width='6'/%3E%3Cpath d='M32 14c-10-12-20-4-8 2M32 14c10-12 20-4 8 2' fill='none' stroke='%23C97A8E' stroke-width='4'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Cofetăria artizanală Laurinda",
+  "slogan": "Savori fine pentru tine",
+  "telephone": "+40770988652",
+  "address": {"@type": "PostalAddress", "streetAddress": "Bulevardul Socola 22, parterul blocului-turn (între Cotnari și Casa Sindicatelor)", "postalCode": "700186", "addressLocality": "Iași", "addressCountry": "RO"},
+  "geo": {"@type": "GeoCoordinates", "latitude": 47.1466271, "longitude": 27.5922933},
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "90", "bestRating": "5"},
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "16:00"}
+  ],
+  "servesCuisine": ["Cofetărie", "Torturi personalizate", "Candy bar"]
+}
+</script>
+<style>
+/*__FONTES__*/
+:root{
+  --cutie:#FFFFFF;          /* a caixa do bolo */
+  --hartie:#FBF4F2;         /* papel de seda, rosado */
+  --satin:#E9A6B6;          /* fita de cetim */
+  --satin-umbra:#C97A8E;
+  --satin-lumina:#F8D3DC;
+  --zmeura:#A3214A;         /* framboesa: CTA e acentos de texto */
+  --zmeura-2:#87163A;
+  --fistic:#93B34E;         /* pistácio */
+  --fistic-inchis:#4D6A1F;
+  --aur:#C9A050;            /* suportes dourados */
+  --aur-inchis:#8E6A22;
+  --prun:#3B1F2E;           /* texto: ameixa-chocolate */
+  --prun-2:#6B4A5A;         /* texto secundário */
+  --linie:rgba(59,31,46,.12);
+  --r:20px;
+  --umbra:0 1px 0 rgba(59,31,46,.06),0 22px 44px -30px rgba(59,31,46,.45);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --disp:'Sansita Swashed', Georgia, serif;
+  --corp:'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mana:'Caveat', 'Segoe Print', cursive;
+  --nav-h:66px;
+  --safe-b:env(safe-area-inset-bottom, 0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--nav-h) + 12px)}
+body{margin:0;font-family:var(--corp);font-size:17px;line-height:1.6;color:var(--prun);background:var(--cutie);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--zmeura);outline-offset:3px;border-radius:6px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.salta{position:fixed;left:12px;top:-60px;z-index:100;background:var(--prun);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
+.salta:focus{top:12px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+
+/* faixa de apresentação */
+.demo{background:var(--prun);color:#F6E3E8;font:600 11.5px/1.3 var(--corp);letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 14px}
+
+/* nav — fundo sólido (sem backdrop-filter) */
+.nav{position:sticky;top:0;z-index:50;background:var(--cutie);border-bottom:1px solid var(--linie);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 12px 30px -22px rgba(59,31,46,.5)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:var(--nav-h)}
+.marca{display:flex;flex-direction:column;line-height:1;text-decoration:none;margin-right:auto}
+.marca b{font:700 30px/0.95 var(--disp);color:var(--zmeura)}
+.marca i{font:500 11px/1.2 var(--corp);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--prun-2);margin-top:3px}
+.nav-links{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{display:block;padding:10px 13px;text-decoration:none;font-weight:600;font-size:15px;color:var(--prun-2);border-radius:999px;position:relative;transition:color .2s}
+.nav-links a:hover{color:var(--prun)}
+.nav-links a[aria-current=page]{color:var(--zmeura)}
+.nav-links a[aria-current=page]::after{content:"";position:absolute;left:50%;bottom:2px;width:22px;height:8px;margin-left:-11px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 8'%3E%3Cpath d='M11 4C7 0 2 0 2 4s5 4 9 0c4 4 9 4 9 0s-5-4-9 0z' fill='%23E9A6B6' stroke='%23C97A8E' stroke-width='1'/%3E%3Ccircle cx='11' cy='4' r='1.8' fill='%23C97A8E'/%3E%3C/svg%3E") center/contain no-repeat}
+.lingua{display:flex;gap:2px;background:var(--hartie);border-radius:999px;padding:3px}
+.lingua button{border:0;background:transparent;color:var(--prun-2);font:700 12px/1 var(--corp);letter-spacing:.06em;padding:8px 9px;border-radius:999px;min-width:36px;min-height:32px}
+.lingua button[aria-pressed=true]{background:var(--prun);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 24px;border-radius:999px;border:0;font-weight:700;font-size:16px;text-decoration:none;transition:transform .2s var(--ease),background .2s,box-shadow .2s;touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-z{background:var(--zmeura);color:#fff;box-shadow:0 12px 26px -14px rgba(163,33,74,.8)}
+.btn-z:hover{background:var(--zmeura-2)}
+.btn-l{background:var(--cutie);color:var(--prun);box-shadow:inset 0 0 0 1.5px rgba(59,31,46,.3)}
+.btn-l:hover{box-shadow:inset 0 0 0 1.5px var(--prun)}
+.nav .btn{min-height:42px;padding:9px 18px;font-size:15px}
+.burger{display:none;width:46px;height:46px;border:0;background:var(--hartie);border-radius:12px;align-items:center;justify-content:center}
+.burger span{display:block;width:20px;height:2px;background:var(--prun);position:relative;transition:background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--prun);transition:transform .25s}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded=true] span::after{transform:translateY(-6px) rotate(-45deg)}
+.menu-movel{position:fixed;inset:var(--nav-h) 0 0 0;z-index:49;background:var(--cutie);padding:22px 24px calc(120px + var(--safe-b));display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility 0s .25s;overflow:auto}
+.menu-movel.aberto{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s}
+.menu-movel a{font:700 34px/1.2 var(--disp);color:var(--prun);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--linie)}
+.menu-movel a[aria-current=page]{color:var(--zmeura)}
+.menu-movel .lingua{align-self:flex-start;margin-top:20px}
+
+/* páginas */
+.pag{display:none}
+.pag.ativa{display:block;animation:entra .45s var(--ease)}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pg-t:focus{outline:none}
+.sec{padding:clamp(60px,8vw,104px) 0 0}
+.sec-roz{background:var(--hartie)}
+.ochi{font:700 12px/1.3 var(--corp);letter-spacing:.16em;text-transform:uppercase;color:var(--fistic-inchis);margin:0 0 12px}
+h2,.h2{font:700 clamp(36px,5.2vw,62px)/1.02 var(--disp);margin:0 0 16px;color:var(--prun);letter-spacing:-.005em}
+h2 em,.h2 em{font-style:normal;color:var(--zmeura)}
+h3{font:700 22px/1.2 var(--disp);margin:0 0 8px;color:var(--prun)}
+.lead{font-size:clamp(18px,2vw,20px);line-height:1.55;max-width:58ch;margin:0 0 24px;color:var(--prun-2)}
+.cap{margin-bottom:clamp(30px,4.5vw,48px);max-width:760px}
+.mut{color:var(--prun-2)}
+.conf{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--corp);letter-spacing:.02em;color:var(--prun-2);background:repeating-linear-gradient(135deg,rgba(233,166,182,.18) 0 6px,transparent 6px 12px);border:1px dashed var(--satin-umbra);padding:6px 10px;border-radius:999px;white-space:nowrap;vertical-align:middle}
+.conf::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--satin-umbra)}
+
+/* laço que fecha cada secção */
+.funda{display:flex;align-items:center;justify-content:center;padding:clamp(48px,6vw,72px) 0 clamp(40px,5vw,60px);position:relative}
+.funda::before{content:"";position:absolute;left:0;right:0;top:50%;height:8px;margin-top:-4px;background:linear-gradient(var(--satin-lumina),var(--satin) 45%,var(--satin-umbra));opacity:.9;transform-origin:50% 50%}
+.funda svg{position:relative;width:96px;height:56px}
+.js .funda.rv::before{transform:scaleX(0);transition:transform 1s var(--ease)}
+.js .funda.rv svg .bucla{transform:scale(0);transition:transform .7s cubic-bezier(.3,1.5,.5,1) .5s}
+.js .funda.rv svg .nod{transform:scale(0);transition:transform .4s var(--ease) .45s}
+.js .funda.rv svg .capat{opacity:0;transition:opacity .5s .8s}
+.js .funda.rv.vis::before{transform:none}
+.js .funda.rv.vis svg .bucla,.js .funda.rv.vis svg .nod{transform:none}
+.js .funda.rv.vis svg .capat{opacity:1}
+.funda svg .bucla,.funda svg .nod{transform-box:fill-box}
+.funda svg .bucla.st{transform-origin:100% 50%}.funda svg .bucla.dr{transform-origin:0 50%}.funda svg .nod{transform-origin:50% 50%}
+
+/* ---------- herói: a caixa do bolo ---------- */
+.erou{position:relative;overflow-x:clip;padding:clamp(28px,5vw,64px) 0 0;background:radial-gradient(70% 60% at 80% 30%,var(--hartie),var(--cutie) 70%)}
+.erou-g{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(24px,5vw,72px);align-items:center}
+.erou h1{margin:0 0 16px;font:800 clamp(78px,11vw,168px)/.86 var(--disp);color:var(--zmeura);letter-spacing:-.01em}
+.erou .slogan{font:700 clamp(30px,3.6vw,46px)/1 var(--mana);color:var(--fistic-inchis);margin:0 0 22px;transform:rotate(-2deg);transform-origin:left}
+.erou .lead{color:var(--prun-2)}
+.erou-cta{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}
+.fise{display:flex;flex-wrap:wrap;gap:10px}
+.fisa{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;background:var(--cutie);box-shadow:inset 0 0 0 1px var(--linie)}
+.fisa svg{width:16px;height:16px;color:var(--aur)}
+.estado::before{content:"";width:8px;height:8px;border-radius:50%;background:#A39AA0;flex:none}
+.estado.aberto::before{background:#3FA35B;box-shadow:0 0 0 4px rgba(63,163,91,.18)}
+
+.cutie{position:relative;width:min(100%,460px);margin-inline:auto;aspect-ratio:9/12.4;perspective:1400px}
+.cutie .fund{position:absolute;inset:0;border-radius:6px;background:#fff;box-shadow:0 40px 60px -36px rgba(59,31,46,.55),0 0 0 1px rgba(59,31,46,.08);padding:14px}
+.cutie .fund::after{content:"";position:absolute;inset:0;border-radius:6px;pointer-events:none;box-shadow:inset 0 0 0 14px #fff,inset 0 0 0 15px rgba(59,31,46,.08),inset 0 24px 30px -20px rgba(59,31,46,.35)}
+.cutie .ecran{position:relative;width:100%;height:100%;overflow:hidden;border-radius:2px;background:#E9DCCF}
+.cutie .ecran>svg,.cutie .ecran>img,.cutie .ecran>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cutie .eticheta{position:absolute;left:-18px;bottom:28px;z-index:3;background:#fff;padding:10px 16px 10px 14px;border-radius:4px;box-shadow:0 14px 26px -16px rgba(59,31,46,.6);transform:rotate(-4deg);font:700 22px/1 var(--mana);color:var(--prun)}
+.cutie .eticheta small{display:block;font:600 10.5px/1.3 var(--corp);letter-spacing:.12em;text-transform:uppercase;color:var(--prun-2);margin-top:4px}
+.capac{position:absolute;inset:-8px;z-index:4;transform-origin:50% 0;transform-style:preserve-3d;pointer-events:none}
+.capac svg{width:100%;height:100%;display:block;overflow:visible}
+.capac .panglica-v,.capac .panglica-o{transition:transform .9s cubic-bezier(.6,0,.4,1),opacity .6s}
+.capac .bucle{transform-box:fill-box;transform-origin:50% 100%;transition:transform .55s cubic-bezier(.6,-0.4,.4,1),opacity .4s}
+.ini .capac .bucle{transform:scale(.2) rotate(18deg);opacity:0;transition-delay:.35s}
+.ini .capac .panglica-v{transform:translateY(115%);opacity:0;transition-delay:.8s}
+.ini .capac .panglica-o{transform:translateX(115%);opacity:0;transition-delay:.9s}
+.ini .capac{animation:ridica 1.1s cubic-bezier(.55,0,.3,1) 1.45s forwards}
+.capac.foi{visibility:hidden}
+@keyframes ridica{0%{transform:none;opacity:1}50%{transform:translateY(-30%) rotateX(35deg) rotate(-4deg);opacity:1}100%{transform:translateY(-72%) rotateX(55deg) rotate(-8deg);opacity:0}}
+.js .erou h1,.js .erou .slogan,.js .erou .lead,.js .erou-cta,.js .fise,.js .erou .ochi{opacity:0;transform:translateY(20px)}
+.js .erou .slogan{transform:translateY(20px) rotate(-2deg)}
+.js .cutie .eticheta{opacity:0;transform:translateY(16px) rotate(-4deg)}
+.ini .erou .ochi{animation:sobe .7s var(--ease) .1s forwards}
+.ini .erou h1{animation:sobe .9s var(--ease) .2s forwards}
+.ini .erou .slogan{animation:sobeR .9s var(--ease) 1.7s forwards}
+.ini .erou .lead{animation:sobe .8s var(--ease) 1.85s forwards}
+.ini .erou-cta{animation:sobe .8s var(--ease) 2s forwards}
+.ini .fise{animation:sobe .8s var(--ease) 2.1s forwards}
+.ini .cutie .eticheta{animation:sobeE .8s var(--ease) 2.5s forwards}
+@keyframes sobe{to{opacity:1;transform:none}}
+@keyframes sobeR{to{opacity:1;transform:rotate(-2deg)}}
+@keyframes sobeE{to{opacity:1;transform:rotate(-4deg)}}
+
+/* faixa de cetim (marquee) */
+.banda{margin-top:clamp(48px,6vw,80px);background:linear-gradient(var(--satin-lumina),var(--satin) 40%,var(--satin-umbra));color:var(--prun);overflow:hidden;padding:13px 0;box-shadow:inset 0 2px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(59,31,46,.1)}
+.banda-trilho{display:flex;width:max-content;animation:rula 42s linear infinite}
+.banda span{font:700 23px/1 var(--disp);padding-right:30px;white-space:nowrap;display:flex;align-items:center;gap:30px}
+.banda span::after{content:"";width:22px;height:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 10'%3E%3Cpath d='M11 5C7 0 1 0 1 5s6 5 10 0c4 5 10 5 10 0S15 0 11 5z' fill='%23fff' opacity='.85'/%3E%3C/svg%3E") center/contain no-repeat}
+@keyframes rula{to{transform:translateX(-50%)}}
+
+/* trei uși */
+.usi{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px)}
+.usa{position:relative;display:flex;flex-direction:column;text-decoration:none;background:var(--cutie);border-radius:var(--r);overflow:hidden;box-shadow:var(--umbra);transition:transform .35s var(--ease),box-shadow .35s}
+.usa:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(59,31,46,.06),0 30px 50px -30px rgba(59,31,46,.55)}
+.usa .foto{aspect-ratio:4/3.4;border-radius:0}
+.usa div.txt{padding:20px 22px 24px}
+.usa p{margin:0 0 12px;color:var(--prun-2);font-size:16px}
+.usa .mai{font-weight:700;color:var(--zmeura);display:inline-flex;align-items:center;gap:6px}
+.usa .mai svg{width:18px;height:18px;transition:transform .25s}
+.usa:hover .mai svg{transform:translateX(4px)}
+
+/* fotos */
+.foto{position:relative;overflow:hidden;border-radius:var(--r);background:var(--hartie);margin:0}
+.foto>svg,.foto>img,.foto>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.foto.decupat{background:radial-gradient(circle at 50% 60%,#fff,var(--hartie) 70%)}
+.foto.decupat>img{object-fit:contain;padding:8%}
+.foto figcaption{position:absolute;left:12px;bottom:12px;z-index:2;font:700 18px/1.1 var(--mana);background:#fff;color:var(--prun);padding:6px 12px;border-radius:6px;box-shadow:0 8px 16px -10px rgba(59,31,46,.5);transform:rotate(-2deg)}
+
+/* fructele */
+.fructe{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,5vw,64px);align-items:center}
+.fructe .perechi{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fructe .foto{aspect-ratio:3/4}
+.lista-v{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.lista-v li{display:flex;gap:12px;align-items:baseline}
+.lista-v li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--fistic);box-shadow:0 0 0 3px rgba(147,179,78,.25);transform:translateY(-1px)}
+
+/* avaliações */
+.aval{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(24px,5vw,64px);align-items:center}
+.nota{position:relative;text-align:center;padding:40px 24px 34px;background:var(--cutie);border-radius:6px;box-shadow:var(--umbra)}
+.nota::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:22px;margin-left:-11px;background:linear-gradient(90deg,var(--satin-umbra),var(--satin) 30%,var(--satin-lumina) 50%,var(--satin) 70%,var(--satin-umbra));opacity:.9}
+.nota>*{position:relative;background:var(--cutie);display:inline-block;padding:0 10px}
+.nota b{display:block;width:max-content;margin:0 auto;font:800 clamp(84px,10vw,120px)/.95 var(--disp);color:var(--zmeura)}
+.nota .stele{display:block;width:max-content;margin:8px auto;color:var(--aur);font-size:22px;letter-spacing:4px}
+.nota span{font:700 12px/1.4 var(--corp);letter-spacing:.14em;text-transform:uppercase;color:var(--prun-2)}
+.teme{display:grid;gap:14px;list-style:none;margin:0;padding:0}
+.teme li{padding:18px 22px;border-left:4px solid var(--satin);background:var(--cutie);border-radius:0 14px 14px 0;box-shadow:var(--umbra)}
+.teme h3{font-size:20px;margin-bottom:4px}
+.teme p{margin:0;color:var(--prun-2);font-size:16px}
+
+/* galerias */
+.galerie{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:260px;grid-auto-flow:dense;gap:14px}
+.galerie .mare{grid-row:span 2}
+.galerie .lat{grid-column:span 2}
+.torturi{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 18px}
+.tort{display:flex;flex-direction:column;gap:10px}
+.tort .foto{aspect-ratio:1}
+.tort p{margin:0;font-size:15.5px;color:var(--prun-2)}
+.tort h3{font-size:20px;margin:4px 0 0}
+
+/* duas colunas genéricas */
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.duo .foto{aspect-ratio:4/5}
+.duo .galerie .foto{aspect-ratio:auto}
+.duo.video .foto{aspect-ratio:9/14;max-width:440px;justify-self:center;width:100%}
+
+/* horário */
+.orar{width:100%;border-collapse:collapse;font-size:16px}
+.orar th,.orar td{text-align:left;padding:11px 0;border-bottom:1px solid var(--linie);font-weight:500}
+.orar td{text-align:right;font-variant-numeric:tabular-nums}
+.orar tr.hoje th,.orar tr.hoje td{color:var(--zmeura);font-weight:700}
+.orar tr.hoje th::after{content:" · " attr(data-azi)}
+.cartao{background:var(--cutie);border-radius:var(--r);padding:clamp(22px,3vw,32px);box-shadow:var(--umbra)}
+.linha-c{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--linie)}
+.linha-c:last-of-type{border-bottom:0}
+.linha-c svg{width:22px;height:22px;flex:none;margin-top:3px;color:var(--zmeura)}
+.linha-c a{font-weight:700;text-underline-offset:3px;text-decoration-color:rgba(59,31,46,.3)}
+.harta{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:#EADFE2}
+.harta svg,.harta iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* ---------- comanda: configurador ---------- */
+.file{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:var(--hartie);margin-bottom:28px}
+.file button{border:0;background:transparent;font-weight:700;font-size:16px;padding:10px 20px;border-radius:999px;min-height:44px;color:var(--prun-2)}
+.file button[aria-selected=true]{background:var(--zmeura);color:#fff;box-shadow:0 8px 18px -10px rgba(163,33,74,.8)}
+.conf-g{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,52px);align-items:start}
+fieldset{border:0;margin:0 0 28px;padding:0;min-width:0}
+legend{font:700 26px/1.15 var(--disp);color:var(--prun);margin-bottom:12px;padding:0}
+legend small{display:block;font:500 15px/1.4 var(--corp);color:var(--prun-2);margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.chips label>span{display:flex;align-items:center;gap:8px;min-height:44px;padding:9px 16px;border-radius:999px;background:var(--cutie);box-shadow:inset 0 0 0 1.5px rgba(59,31,46,.2);font-weight:600;font-size:15.5px;transition:background .2s,box-shadow .2s,color .2s}
+.chips label:hover>span{box-shadow:inset 0 0 0 1.5px var(--prun-2)}
+.chips input:checked+span{background:var(--prun);color:#fff;box-shadow:none}
+.chips input:focus-visible+span{outline:3px solid var(--zmeura);outline-offset:2px}
+.chips .pata{width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.camp{display:grid;gap:6px;margin-top:14px}
+.camp label{font-weight:700;font-size:15px}
+.camp input,.camp select,.camp textarea{width:100%;min-height:48px;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(59,31,46,.25);background:#fff;font-size:16px}
+.camp textarea{min-height:84px;resize:vertical}
+.camp input:focus,.camp select:focus,.camp textarea:focus{outline:none;border-color:var(--zmeura);box-shadow:0 0 0 3px rgba(233,166,182,.6)}
+.camp .ajuda{font-size:14px;color:var(--prun-2)}
+.camp .err,.err{font-size:14px;color:var(--zmeura);font-weight:700;margin:6px 0 0}
+.doi{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.pas{display:inline-flex;align-items:center;gap:6px;background:var(--hartie);border-radius:999px;padding:4px}
+.pas button{width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--prun);font:700 22px/1 var(--corp);box-shadow:0 1px 2px rgba(59,31,46,.25)}
+.pas output{min-width:56px;text-align:center;font:700 20px/1 var(--corp);font-variant-numeric:tabular-nums}
+.previzualizare{position:sticky;top:calc(var(--nav-h) + 18px)}
+.scena{position:relative;background:var(--hartie);border-radius:var(--r);padding:18px 18px 8px;overflow:hidden}
+.scena::before{content:"";position:absolute;left:0;right:0;top:56%;height:14px;background:linear-gradient(var(--satin-lumina),var(--satin) 45%,var(--satin-umbra));opacity:.55}
+.scena svg{position:relative;width:100%;height:auto;display:block}
+.scena .tag{position:absolute;right:14px;top:14px;font:700 20px/1 var(--mana);color:var(--prun);background:#fff;padding:6px 12px;border-radius:6px;transform:rotate(3deg);box-shadow:0 8px 16px -10px rgba(59,31,46,.5)}
+#tort-svg .etaj{transform-box:fill-box;transform-origin:50% 100%;animation:pune .5s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes pune{from{transform:translateY(-14px) scaleY(.9);opacity:0}to{transform:none;opacity:1}}
+.rezumat{margin-top:16px;background:#fff;border-radius:14px;padding:16px 18px;box-shadow:var(--umbra);font-size:15px}
+.rezumat .rg{display:flex;justify-content:space-between;gap:14px;padding:6px 0;border-bottom:1px dashed var(--linie)}
+.rezumat .rg:last-child{border-bottom:0}
+.rezumat .rg span:first-child{color:var(--prun-2)}
+.rezumat .rg span:last-child{text-align:right;font-weight:600}
+.trimite{margin-top:16px;display:grid;gap:10px}
+.trimite .btn{width:100%}
+.trimite p{margin:0;text-align:center;font-size:14px;color:var(--prun-2)}
+.lipsa{color:var(--zmeura);font-weight:700;font-size:15px;text-align:center;margin:0}
+
+/* rodapé */
+footer{background:var(--prun);color:#E9D8DE;padding:56px 0 calc(110px + var(--safe-b));font-size:15px}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+footer .marca b{color:#F6C7D3;font-size:40px}
+footer .marca i{color:#CDB4BE;margin-top:8px}
+footer h3{color:#fff;font:700 13px/1.3 var(--corp);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{color:#fff;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.35)}
+footer .conf{color:#E9D8DE;border-color:rgba(246,199,211,.5);background:none}
+.legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;font-size:13px}
+.legal .anpc{display:flex;gap:10px;flex-wrap:wrap}
+.legal .anpc a{display:inline-flex;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.08);text-decoration:none;font-weight:600}
+
+.cta-movel{display:none}
+
+/* revelação */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.vis{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.1s}.js .rv.d2{transition-delay:.2s}.js .rv.d3{transition-delay:.3s}
+.js .funda.rv{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .nav-links,.nav .btn-nav,.nav .lingua{display:none}
+  .burger{display:inline-flex}
+  .erou-g,.fructe,.aval,.duo,.conf-g{grid-template-columns:1fr}
+  .usi{grid-template-columns:1fr 1fr}
+  .torturi{grid-template-columns:1fr 1fr}
+  .galerie{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .previzualizare{display:contents}
+  .scena{order:-1;position:sticky;top:calc(var(--nav-h) + 8px);z-index:6;height:min(230px,30vh);padding:8px;box-shadow:0 14px 24px -18px rgba(59,31,46,.45)}
+  .scena svg{height:100%;width:auto;margin-inline:auto}
+  .scena .tag{font-size:16px;top:10px;right:10px}
+  .rezumat{margin-top:4px}
+  footer .wrap{grid-template-columns:1fr 1fr}
+  footer .wrap>div:first-child{grid-column:1/-1}
+}
+@media (max-width:680px){
+  body{font-size:16.5px}
+  .wrap{width:calc(100% - 32px)}
+  .marca b{font-size:27px}
+  .erou{padding-top:22px}
+  .erou-g{gap:8px}
+  .erou h1{font-size:84px;text-align:center}
+  .erou .slogan{text-align:center;transform-origin:center}
+  .erou .ochi{text-align:center}
+  .erou .lead{text-align:center;margin-top:24px}
+  .erou-cta,.fise{justify-content:center}
+  .cutie{width:min(100%,330px);aspect-ratio:9/11.5}
+  .cutie .eticheta{left:-8px;font-size:19px}
+  .usi{grid-template-columns:1fr}
+  .usa{display:grid;grid-template-columns:42% 1fr;align-items:stretch}
+  .usa .foto{aspect-ratio:auto;min-height:170px}
+  .usa div.txt{padding:16px 16px 18px}
+  .usa h3{font-size:20px}
+  .usa p{font-size:15px}
+  .galerie{grid-auto-rows:150px;gap:8px}
+  .torturi{gap:26px 12px}
+  .tort h3{font-size:18px}
+  .tort p{font-size:14px}
+  .doi{grid-template-columns:1fr}
+  .file{display:flex}
+  .file button{flex:1;padding:10px 12px}
+  .cta-movel{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:46;padding:10px 12px calc(10px + var(--safe-b));background:rgba(255,255,255,.98);border-top:1px solid var(--linie);transform:translateY(110%);transition:transform .35s var(--ease)}
+  .cta-movel.vis{transform:none}
+  .cta-movel .btn{min-height:50px;font-size:15px;padding:10px 12px}
+  footer .wrap{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
+  .capac{display:none}
+  .js .rv,.js .erou h1,.js .erou .lead,.js .erou-cta,.js .fise,.js .erou .ochi{opacity:1;transform:none}
+  .js .erou .slogan{opacity:1;transform:rotate(-2deg)}
+  .js .cutie .eticheta{opacity:1;transform:rotate(-4deg)}
+  .js .funda.rv::before,.js .funda.rv svg .bucla,.js .funda.rv svg .nod{transform:none}
+  .js .funda.rv svg .capat{opacity:1}
+  .banda-trilho{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="salta" href="#continut" data-en="Skip to content" data-pt="Saltar para o conteúdo">Salt la conținut</a>
+<div class="demo" role="note">Prezentare Pacheco Studios · <span data-en="website proposal for Cofetăria Laurinda" data-pt="proposta de site para a Cofetăria Laurinda">propunere de site pentru Cofetăria Laurinda</span></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="marca" href="#/" aria-label="Laurinda — acasă" data-en-aria-label="Laurinda — home" data-pt-aria-label="Laurinda — início"><b>Laurinda</b><i data-en="artisan patisserie · Iași" data-pt="pastelaria artesanal · Iași">cofetărie artizanală · Iași</i></a>
+    <nav aria-label="Principal" data-en-aria-label="Main" data-pt-aria-label="Principal">
+      <ul class="nav-links">
+        <li><a href="#/" data-en="Home" data-pt="Início">Acasă</a></li>
+        <li><a href="#/torturi" data-en="Cakes" data-pt="Bolos">Torturi</a></li>
+        <li><a href="#/candy-bar">Candy bar</a></li>
+        <li><a href="#/comanda" data-en="Order" data-pt="Encomendar">Comandă</a></li>
+        <li><a href="#/atelier" data-en="The atelier" data-pt="O atelier">Atelierul</a></li>
+      </ul>
+    </nav>
+    <div class="lingua" role="group" aria-label="Limba" data-en-aria-label="Language" data-pt-aria-label="Língua">
+      <button type="button" data-lang="ro" aria-pressed="true">RO</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="pt" aria-pressed="false" hidden>PT</button>
+    </div>
+    <a class="btn btn-z btn-nav" href="#/comanda" data-en="Order a cake" data-pt="Encomendar bolo">Comandați un tort</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu-movel" aria-label="Deschide meniul"><span></span></button>
+  </div>
+</header>
+<div class="menu-movel" id="menu-movel">
+  <a href="#/" data-en="Home" data-pt="Início">Acasă</a>
+  <a href="#/torturi" data-en="Cakes" data-pt="Bolos">Torturi</a>
+  <a href="#/candy-bar">Candy bar</a>
+  <a href="#/comanda" data-en="Order" data-pt="Encomendar">Comandă</a>
+  <a href="#/atelier" data-en="The atelier" data-pt="O atelier">Atelierul</a>
+  <div class="lingua" role="group" aria-label="Limba" data-en-aria-label="Language" data-pt-aria-label="Língua">
+    <button type="button" data-lang="ro" aria-pressed="true">RO</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="pt" aria-pressed="false" hidden>PT</button>
+  </div>
+</div>
+
+<noscript>
+  <div style="padding:24px;background:#fff;color:#3B1F2E">
+    <p><strong>Cofetăria artizanală Laurinda</strong> — torturi personalizate, candy bar, prăjituri. Bulevardul Socola 22, parterul blocului-turn (între Cotnari și Casa Sindicatelor), 700186 Iași. Telefon / WhatsApp: <a href="tel:+40770988652">0770 988 652</a>.</p>
+    <p>Program: luni–vineri 09–18 · sâmbătă 09–16 · duminică închis.</p>
+    <p><a href="https://anpc.ro/ce-este-sal/">ANPC — SAL</a> · <a href="https://ec.europa.eu/consumers/odr">SOL / ODR</a></p>
+  </div>
+</noscript>
+
+<main id="continut">
+
+<!-- ======================= ACASĂ ======================= -->
+<section class="pag" data-pag="" data-titulo-ro="Laurinda · Cofetărie artizanală, torturi personalizate și candy bar în Iași" data-titulo-en="Laurinda · Artisan patisserie, custom cakes and candy bars in Iași" data-titulo-pt="Laurinda · Pastelaria artesanal, bolos personalizados e candy bar em Iași">
+  <div class="erou">
+    <div class="wrap erou-g">
+      <div>
+        <p class="ochi" data-en="Artisan patisserie · Socola, Iași" data-pt="Pastelaria artesanal · Socola, Iași">Cofetărie artizanală · Socola, Iași</p>
+        <h1 class="pg-t" tabindex="-1">Laurinda</h1>
+        <p class="slogan" data-en="Fine flavours, made for you" data-pt="Sabores finos, para si">Savori fine pentru tine</p>
+        <div class="cutie" aria-hidden="true" id="cutie-erou">
+          <div class="fund"><div class="ecran">
+            <svg viewBox="0 0 90 124" preserveAspectRatio="xMidYMid slice"><rect width="90" height="124" fill="#EFE3DA"/><rect y="78" width="90" height="46" fill="#D9C7BA"/><g fill="#C9A050"><rect x="18" y="40" width="2" height="40"/><ellipse cx="19" cy="40" rx="12" ry="2.5"/><ellipse cx="19" cy="60" rx="14" ry="3"/></g><g fill="#93B34E"><circle cx="50" cy="74" r="4"/><circle cx="62" cy="80" r="4"/></g><g fill="#F2A33A"><circle cx="40" cy="86" r="4.5"/></g><g fill="#E9A6B6"><rect x="58" y="60" width="16" height="7" rx="3"/></g></svg>
+            <img src="media/candy-bar-auriu-poster.webp" alt="" onerror="this.remove()">
+            <video id="video-erou" muted playsinline loop preload="none" poster="media/candy-bar-auriu-poster.webp" data-video="candy-bar-auriu-video"></video>
+          </div></div>
+          <div class="eticheta">Candy bar<small data-en="for your event" data-pt="para o seu evento">pentru evenimentul dvs.</small></div>
+          <div class="capac">
+            <svg viewBox="0 0 476 640" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="g-capac" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1E6E8"/></linearGradient>
+                <linearGradient id="g-sat-v" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C97A8E"/><stop offset=".3" stop-color="#E9A6B6"/><stop offset=".5" stop-color="#F8D3DC"/><stop offset=".7" stop-color="#E9A6B6"/><stop offset="1" stop-color="#C97A8E"/></linearGradient>
+                <linearGradient id="g-sat-o" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C97A8E"/><stop offset=".3" stop-color="#E9A6B6"/><stop offset=".5" stop-color="#F8D3DC"/><stop offset=".7" stop-color="#E9A6B6"/><stop offset="1" stop-color="#C97A8E"/></linearGradient>
+              </defs>
+              <rect x="0" y="0" width="476" height="640" rx="8" fill="url(#g-capac)"/>
+              <rect x="10" y="10" width="456" height="620" rx="4" fill="none" stroke="#E7D7DB" stroke-width="2"/>
+              <g class="panglica-o"><rect x="0" y="292" width="476" height="44" fill="url(#g-sat-o)"/></g>
+              <g class="panglica-v"><rect x="216" y="0" width="44" height="640" fill="url(#g-sat-v)"/></g>
+              <g class="bucle">
+                <path d="M238 312C196 250 120 236 118 290s80 46 120 22z" fill="#E9A6B6" stroke="#C97A8E" stroke-width="3"/>
+                <path d="M238 312C280 250 356 236 358 290s-80 46-120 22z" fill="#E9A6B6" stroke="#C97A8E" stroke-width="3"/>
+                <path d="M150 284c20-14 46-10 70 14M326 284c-20-14-46-10-70 14" fill="none" stroke="#F8D3DC" stroke-width="5" stroke-linecap="round"/>
+                <path d="M226 326l-40 110 22-6 10 22 20-114zM250 326l40 110-22-6-10 22-20-114z" fill="#E1909F" stroke="#C97A8E" stroke-width="2"/>
+                <rect x="220" y="296" width="36" height="34" rx="10" fill="#D98A9C" stroke="#C97A8E" stroke-width="3"/>
+              </g>
+              <g transform="translate(60 520) rotate(-6)"><rect width="150" height="58" rx="6" fill="#fff" stroke="#E7D7DB"/><text x="75" y="30" text-anchor="middle" font-family="Sansita Swashed, Georgia, serif" font-size="28" font-weight="700" fill="#A3214A">Laurinda</text><text x="75" y="47" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="10" letter-spacing="2" fill="#6B4A5A">COFETĂRIE · IAȘI</text></g>
+            </svg>
+          </div>
+        </div>
+        <p class="lead" data-en="Custom cakes with a name and a story, candy bars that fill a whole table, and little pastries shaped like pears, oranges and apples. Ordered by phone or WhatsApp, made in our atelier on Socola." data-pt="Bolos personalizados com nome e história, candy bars que enchem uma mesa inteira e pequenos doces em forma de pera, laranja e maçã. Encomendam-se por telefone ou WhatsApp e fazem-se no nosso atelier, na Socola.">Torturi personalizate, cu nume și poveste, candy bar-uri care umplu o masă întreagă și prăjituri mici în formă de pere, portocale și mere. Le comandați la telefon sau pe WhatsApp, le facem în atelierul nostru de pe Socola.</p>
+        <div class="erou-cta">
+          <a class="btn btn-z" href="#/comanda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h16v9H4zM2 7h20v4H2zM12 7v13M12 7C9 2 5 3 7 7M12 7c3-5 7-4 5 0"/></svg><span data-en="Design your cake" data-pt="Desenhar o bolo">Creați-vă tortul</span></a>
+          <a class="btn btn-l" href="#/candy-bar" data-en="Candy bar for events" data-pt="Candy bar para eventos">Candy bar pentru evenimente</a>
+        </div>
+        <div class="fise">
+          <span class="fisa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><span data-en="4.9 on Google · 90 reviews" data-pt="4,9 no Google · 90 avaliações">4,9 pe Google · 90 de recenzii</span></span>
+          <span class="fisa estado" data-estado><span>…</span></span>
+        </div>
+      </div>
+      <div class="cutie-loc"></div>
+    </div>
+  </div>
+
+  <div class="banda" aria-hidden="true"><div class="banda-trilho">
+    <span data-en="Custom cakes" data-pt="Bolos personalizados">Torturi personalizate</span><span>Candy bar</span><span data-en="Fruit-shaped pastries" data-pt="Doces em forma de fruta">Prăjituri-fructe</span><span>Macarons</span><span data-en="Christenings" data-pt="Batizados">Botezuri</span><span data-en="Weddings" data-pt="Casamentos">Nunți</span><span data-en="Birthdays" data-pt="Aniversários">Aniversări</span><span data-en="Gift boxes" data-pt="Caixas de oferta">Cutii cadou</span>
+    <span data-en="Custom cakes" data-pt="Bolos personalizados">Torturi personalizate</span><span>Candy bar</span><span data-en="Fruit-shaped pastries" data-pt="Doces em forma de fruta">Prăjituri-fructe</span><span>Macarons</span><span data-en="Christenings" data-pt="Batizados">Botezuri</span><span data-en="Weddings" data-pt="Casamentos">Nunți</span><span data-en="Birthdays" data-pt="Aniversários">Aniversări</span><span data-en="Gift boxes" data-pt="Caixas de oferta">Cutii cadou</span>
+  </div></div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="cap rv">
+        <p class="ochi" data-en="What we make" data-pt="O que fazemos">Ce facem</p>
+        <h2 data-en="Three reasons to <em>open the box</em>" data-pt="Três razões para <em>abrir a caixa</em>">Trei motive să <em>deschideți cutia</em></h2>
+      </div>
+      <div class="usi">
+        <a class="usa rv" href="#/torturi">
+          <figure class="foto"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#F8D3DC"/></svg><img src="media/tort-funde-roz.webp" alt="Tort alb cu funde de satin roz și inimioare, „La mulți ani, Giulia”" data-en-alt="White cake with pink satin bows and little hearts" data-pt-alt="Bolo branco com laços de cetim cor-de-rosa e coraçõezinhos" loading="lazy" style="object-fit:contain;padding:6%" onerror="this.remove()"></figure>
+          <div class="txt"><h3 data-en="Custom cakes" data-pt="Bolos personalizados">Torturi personalizate</h3><p data-en="The name on top, the colours of the party, figurines, fresh fruit or an edible photo." data-pt="O nome em cima, as cores da festa, figuras, fruta fresca ou uma foto comestível.">Numele pe tort, culorile petrecerii, figurine, fructe proaspete sau o poză comestibilă.</p><span class="mai"><span data-en="See the cakes" data-pt="Ver os bolos">Vedeți torturile</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="usa rv d1" href="#/candy-bar">
+          <figure class="foto"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#C9A050"/></svg><img src="media/candy-bar-sala.webp" alt="Candy bar lung, cu macarons, prăjituri-fructe și prăjituri pe băț" data-en-alt="A long candy bar with macarons, fruit-shaped pastries and cake pops" data-pt-alt="Um candy bar comprido com macarons, doces em forma de fruta e bolos no pau" loading="lazy" onerror="this.remove()"></figure>
+          <div class="txt"><h3>Candy bar</h3><p data-en="Weddings, christenings, company parties: a table set from one end to the other." data-pt="Casamentos, batizados, festas de empresa: uma mesa posta de uma ponta à outra.">Nunți, botezuri, petreceri de firmă: o masă aranjată de la un capăt la altul.</p><span class="mai"><span data-en="See the candy bars" data-pt="Ver os candy bars">Vedeți candy bar-urile</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="usa rv d2" href="#/atelier">
+          <figure class="foto"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#F2E4D0"/></svg><img src="media/cutie-fructe-la-multi-ani.webp" alt="Cutie cu prăjituri în formă de mango, lămâie și o prăjitură „La mulți ani”" data-en-alt="Box of pastries shaped like a mango and a lemon, with a “Happy birthday” one" data-pt-alt="Caixa com doces em forma de manga e limão e um de “Parabéns”" loading="lazy" onerror="this.remove()"></figure>
+          <div class="txt"><h3 data-en="Pastries &amp; gift boxes" data-pt="Doces e caixas de oferta">Prăjituri și cutii cadou</h3><p data-en="Fruit-shaped pastries, macarons, chocolate pralines, boxes for a small surprise." data-pt="Doces em forma de fruta, macarons, bombons, caixas para uma pequena surpresa.">Prăjituri-fructe, macarons, praline de ciocolată, cutii pentru o surpriză mică.</p><span class="mai"><span data-en="Visit the atelier" data-pt="Visitar o atelier">Vizitați atelierul</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+      </div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+
+  <section class="sec sec-roz" style="padding-top:clamp(60px,8vw,96px)">
+    <div class="wrap fructe">
+      <div class="perechi">
+        <figure class="foto decupat rv"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#FBF4F2"/></svg><img src="media/prajituri-fructe.webp" alt="Platou cu prăjituri în formă de pere, banane, portocale, zmeură și căpșuni" data-en-alt="Plate of pastries shaped like pears, bananas, oranges, raspberries and strawberries" data-pt-alt="Prato de doces em forma de peras, bananas, laranjas, framboesas e morangos" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv d1" style="margin-top:48px"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#F3D0D6"/></svg><img src="media/fruct-in-sectiune.webp" alt="O prăjitură-căpșună tăiată în două: cremă roz, inimă de fructe și blat" data-en-alt="A strawberry-shaped pastry cut in half: pink cream, fruit heart and sponge base" data-pt-alt="Um doce em forma de morango cortado ao meio: creme rosa, coração de fruta e base" loading="lazy" onerror="this.remove()"><figcaption data-en="inside" data-pt="por dentro">pe dinăuntru</figcaption></figure>
+      </div>
+      <div class="rv">
+        <p class="ochi" data-en="The house signature" data-pt="A assinatura da casa">Semnătura casei</p>
+        <h2 data-en="Pears that are <em>not pears</em>" data-pt="Peras que <em>não são peras</em>">Pere care <em>nu sunt pere</em></h2>
+        <p class="lead" data-en="On every table we set you will find them: little pears, apples, oranges and mangoes. Cut one open and inside there is cream, a fruit heart and a thin sponge base." data-pt="Em cada mesa que montamos vai encontrá-las: pequenas peras, maçãs, laranjas e mangas. Corta-se uma e lá dentro há creme, um coração de fruta e uma base fina.">Pe fiecare masă pe care o aranjăm le găsiți: pere, mere, portocale și mango în miniatură. Tăiați una și dați de cremă, o inimă de fructe și un blat subțire.</p>
+        <ul class="lista-v">
+          <li data-en="They appear on candy bars, in gift boxes and on cake trays." data-pt="Aparecem nos candy bars, nas caixas de oferta e nas bandejas.">Apar pe candy bar-uri, în cutiile cadou și pe platouri.</li>
+          <li data-en="15 kinds of pastries, so everyone picks the flavours and textures they like." data-pt="15 variedades de doces, para cada um escolher os sabores e texturas de que gosta.">15 sortimente de prăjituri, ca fiecare să-și aleagă aromele și texturile preferate.</li>
+          <li><span data-en="Flavours and prices per piece:" data-pt="Sabores e preço por unidade:">Arome și preț pe bucată:</span> <span class="conf" data-en="to be confirmed" data-pt="a confirmar">de confirmat</span></li>
+        </ul>
+        <a class="btn btn-z" href="#/comanda?f=candy" data-en="Add them to a candy bar" data-pt="Pô-las num candy bar">Puneți-le într-un candy bar</a>
+      </div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap aval">
+      <div class="nota rv" role="img" aria-label="4,9 din 5 pe Google, 90 de recenzii" data-en-aria-label="4.9 out of 5 on Google, 90 reviews" data-pt-aria-label="4,9 em 5 no Google, 90 avaliações">
+        <span aria-hidden="true" data-en="Google rating" data-pt="Nota no Google">Nota pe Google</span>
+        <b aria-hidden="true" data-en="4.9" data-pt="4,9">4,9</b>
+        <span class="stele" aria-hidden="true">★★★★★</span>
+        <span aria-hidden="true" data-en="90 reviews" data-pt="90 avaliações">90 de recenzii</span>
+      </div>
+      <div>
+        <div class="cap rv">
+          <p class="ochi" data-en="What customers come back for" data-pt="Porque é que os clientes voltam">De ce revin clienții</p>
+          <h2 data-en="Elegant on the outside, <em>honest</em> inside" data-pt="Elegante por fora, <em>honesto</em> por dentro">Elegant pe dinafară, <em>cinstit</em> pe dinăuntru</h2>
+        </div>
+        <ul class="teme">
+          <li class="rv"><h3 data-en="Cakes made with attention to detail" data-pt="Bolos feitos com atenção ao detalhe">Torturi lucrate cu atenție la detalii</h3><p data-en="Reviews talk about elegant cakes that taste as good as they look." data-pt="As avaliações falam de bolos elegantes, com sabor à altura do aspeto.">Recenziile vorbesc despre torturi elegante, cu gustul pe măsura aspectului.</p></li>
+          <li class="rv d1"><h3 data-en="Fresh, fine pastries" data-pt="Doces frescos e finos">Prăjituri proaspete și fine</h3><p data-en="Mini tarts and pastries described as fresh, delicate and beautifully presented." data-pt="Mini tartes e doces descritos como frescos, delicados e bem apresentados.">Mini-tartele și prăjiturile sunt descrise ca proaspete, fine și frumos prezentate.</p></li>
+          <li class="rv d2"><h3 data-en="The taste of real ingredients" data-pt="O sabor dos ingredientes verdadeiros">Gustul ingredientelor adevărate</h3><p data-en="Customers mention rare quality, and the same care from the first order to the hundredth." data-pt="Os clientes falam de uma qualidade rara e do mesmo cuidado da primeira à centésima encomenda.">Clienții pomenesc o calitate rară și aceeași seriozitate de la prima comandă până la a suta.</p></li>
+        </ul>
+      </div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+
+  <section class="sec sec-roz" style="padding-top:clamp(60px,8vw,96px)">
+    <div class="wrap duo">
+      <div class="rv">
+        <p class="ochi" data-en="Where to find us" data-pt="Onde estamos">Unde ne găsiți</p>
+        <h2 data-en="At the foot of the tower block on <em>Socola</em>" data-pt="No rés-do-chão da torre da <em>Socola</em>">La parterul blocului-turn de pe <em>Socola</em></h2>
+        <p class="lead" data-en="Bulevardul Socola 22, between Cotnari and Casa Sindicatelor. Monday to Friday 09–18, Saturday 09–16." data-pt="Bulevardul Socola 22, entre o Cotnari e a Casa Sindicatelor. Segunda a sexta 09–18, sábado 09–16.">Bulevardul Socola 22, între Cotnari și Casa Sindicatelor. Luni–vineri 09–18, sâmbătă 09–16.</p>
+        <a class="btn btn-z" href="#/atelier" data-en="Hours &amp; map" data-pt="Horário e mapa">Program și hartă</a>
+      </div>
+      <div class="cartao rv d1"><table class="orar" data-orar></table></div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+</section>
+
+<!-- ======================= TORTURI ======================= -->
+<section class="pag" data-pag="torturi" data-titulo-ro="Torturi personalizate · Laurinda, Iași" data-titulo-en="Custom cakes · Laurinda, Iași" data-titulo-pt="Bolos personalizados · Laurinda, Iași">
+  <section class="sec">
+    <div class="wrap">
+      <div class="cap">
+        <p class="ochi" data-en="Custom cakes" data-pt="Bolos personalizados">Torturi personalizate</p>
+        <h2 class="pg-t" tabindex="-1" data-en="A cake that knows <em>whose party it is</em>" data-pt="Um bolo que sabe <em>de quem é a festa</em>">Un tort care știe <em>a cui e petrecerea</em></h2>
+        <p class="lead" data-en="Tell us the name, the age, the colours and what the person loves. We take care of the cream, the decoration and the plaque with the message." data-pt="Diga-nos o nome, a idade, as cores e aquilo de que a pessoa gosta. Nós tratamos do creme, da decoração e da placa com a mensagem.">Spuneți-ne numele, vârsta, culorile și ce îi place sărbătoritului. Noi ne ocupăm de cremă, de decor și de plăcuța cu mesaj.</p>
+      </div>
+      <div class="torturi">
+        <article class="tort rv"><figure class="foto decupat"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#FBF4F2"/></svg><img src="media/tort-smochine-flori.webp" alt="Tort cu cremă de vanilie, smochine, zmeură, macarons și trandafir alb" data-en-alt="Vanilla cream cake with figs, raspberries, macarons and a white rose" data-pt-alt="Bolo de creme de baunilha com figos, framboesas, macarons e uma rosa branca" loading="lazy" onerror="this.remove()"></figure><h3 data-en="Fruit &amp; flowers" data-pt="Fruta e flores">Fructe și flori</h3><p data-en="Figs, raspberries, macarons, gold pearls and a white rose." data-pt="Figos, framboesas, macarons, pérolas douradas e uma rosa branca.">Smochine, zmeură, macarons, perle aurii și un trandafir alb.</p></article>
+        <article class="tort rv d1"><figure class="foto decupat"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#FBF4F2"/></svg><img src="media/tort-funde-roz.webp" alt="Tort alb cu volane de cremă, funde roz și inimioare" data-en-alt="White cake with cream ruffles, pink bows and hearts" data-pt-alt="Bolo branco com folhos de creme, laços cor-de-rosa e corações" loading="lazy" onerror="this.remove()"></figure><h3 data-en="Satin bows" data-pt="Laços de cetim">Funde de satin</h3><p data-en="Cream ruffles, pink bows, little hearts and the name in a frame." data-pt="Folhos de creme, laços cor-de-rosa, coraçõezinhos e o nome numa moldura.">Volane de cremă, funde roz, inimioare și numele într-un medalion.</p></article>
+        <article class="tort rv d2"><figure class="foto"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#F3C9D2"/></svg><img src="media/tort-coronita-roz.webp" alt="Tort roz cu coroniță, căprioară din cremă și numele Ilaria" data-en-alt="Pink cake with a crown, a sugar fawn and the name Ilaria" data-pt-alt="Bolo cor-de-rosa com coroa, uma corça de açúcar e o nome Ilaria" loading="lazy" onerror="this.remove()"></figure><h3 data-en="For little ones" data-pt="Para os mais pequenos">Pentru cei mici</h3><p data-en="Crown, a sleeping fawn, pearls and the name in white letters." data-pt="Coroa, uma corça a dormir, pérolas e o nome em letras brancas.">Coroniță, o căprioară adormită, perle și numele cu litere albe.</p></article>
+        <article class="tort rv d3"><figure class="foto decupat"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#FBF4F2"/></svg><img src="media/tort-pinguini-ciocolata.webp" alt="Tort de ciocolată cu doi pinguini și mașini pe margine" data-en-alt="Chocolate cake with two penguins and cars on the side" data-pt-alt="Bolo de chocolate com dois pinguins e carros à volta" loading="lazy" onerror="this.remove()"></figure><h3 data-en="With a story" data-pt="Com história">Cu poveste</h3><p data-en="Chocolate glaze, two penguins and his favourite cars around the side." data-pt="Cobertura de chocolate, dois pinguins e os carros preferidos à volta.">Glazură de ciocolată, doi pinguini și mașinile lui preferate pe margine.</p></article>
+      </div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+  <section class="sec sec-roz" style="padding-top:clamp(60px,8vw,96px)">
+    <div class="wrap duo">
+      <div class="rv">
+        <p class="ochi" data-en="How a cake is ordered" data-pt="Como se encomenda um bolo">Cum se comandă un tort</p>
+        <h2 data-en="Five decisions, <em>one message</em>" data-pt="Cinco decisões, <em>uma mensagem</em>">Cinci decizii, <em>un singur mesaj</em></h2>
+        <ul class="lista-v">
+          <li data-en="Occasion and number of guests." data-pt="Ocasião e número de convidados.">Ocazia și numărul de invitați.</li>
+          <li data-en="Shape, tiers and cream colour." data-pt="Forma, andares e cor do creme.">Forma, etajele și culoarea cremei.</li>
+          <li data-en="Decoration: fruit, flowers, figurines, bows, edible photo." data-pt="Decoração: fruta, flores, figuras, laços, foto comestível.">Decorul: fructe, flori, figurine, funde, poză comestibilă.</li>
+          <li data-en="The message on the plaque." data-pt="A mensagem na placa.">Mesajul de pe plăcuță.</li>
+          <li data-en="The day you pick it up." data-pt="O dia em que o vem buscar.">Ziua în care îl ridicați.</li>
+        </ul>
+        <p><span class="conf" data-en="minimum notice &amp; price per kg · to be confirmed" data-pt="antecedência mínima e preço por kg · a confirmar">termen minim și preț pe kg · de confirmat</span></p>
+        <a class="btn btn-z" href="#/comanda" data-en="Design your cake" data-pt="Desenhar o bolo">Creați-vă tortul</a>
+      </div>
+      <div class="galerie rv d1" style="grid-template-columns:1fr 1fr;grid-auto-rows:200px">
+        <figure class="foto mare"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#DCE8F3"/></svg><img src="media/cutie-cupcakes-botez.webp" alt="Cutie cu cupcakes de botez cu mesaje și prăjituri pe băț" data-en-alt="Christening box with message cupcakes and cake pops" data-pt-alt="Caixa de batizado com cupcakes com mensagens e bolos no pau" loading="lazy" onerror="this.remove()"><figcaption data-en="christening" data-pt="batizado">botez</figcaption></figure>
+        <figure class="foto"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#C9A050"/></svg><img src="media/pantof-ciocolata.webp" alt="Pantof cu toc din ciocolată, aurit, cu fundă" data-en-alt="Gilded chocolate high-heel shoe with a bow" data-pt-alt="Sapato de salto em chocolate dourado, com laço" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#F2E4D0"/></svg><img src="media/cutie-fructe-la-multi-ani.webp" alt="Cutie cadou cu prăjituri-fructe și „La mulți ani”" data-en-alt="Gift box with fruit pastries and “Happy birthday”" data-pt-alt="Caixa de oferta com doces-fruta e “Parabéns”" loading="lazy" onerror="this.remove()"></figure>
+      </div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+</section>
+
+<!-- ======================= CANDY BAR ======================= -->
+<section class="pag" data-pag="candy-bar" data-titulo-ro="Candy bar pentru evenimente · Laurinda, Iași" data-titulo-en="Candy bars for events · Laurinda, Iași" data-titulo-pt="Candy bar para eventos · Laurinda, Iași">
+  <section class="sec">
+    <div class="wrap duo video">
+      <div>
+        <p class="ochi" data-en="Candy bar" data-pt="Candy bar">Candy bar</p>
+        <h2 class="pg-t" tabindex="-1" data-en="A table guests <em>photograph first</em>" data-pt="A mesa que os convidados <em>fotografam primeiro</em>">Masa pe care invitații <em>o fotografiază primii</em></h2>
+        <p class="lead" data-en="Gold stands, mirrored trays, little fruits between plates and dozens of kinds of pastries in small sizes. We bring it set up and coordinated with your event's colours." data-pt="Suportes dourados, tabuleiros espelhados, frutinhas entre os pratos e dezenas de doces em tamanho pequeno. Levamos tudo montado e combinado com as cores do seu evento.">Suporturi aurii, tăvi cu oglindă, fructe mici printre platouri și zeci de prăjituri în format mic. Venim cu ea aranjată și asortată la culorile evenimentului dumneavoastră.</p>
+        <p><span class="conf" data-en="set-up, delivery &amp; price per guest · to be confirmed" data-pt="montagem, entrega e preço por convidado · a confirmar">montaj, transport și preț pe invitat · de confirmat</span></p>
+        <a class="btn btn-z" href="#/comanda?f=candy" data-en="Ask for a candy bar" data-pt="Pedir um candy bar">Cereți un candy bar</a>
+      </div>
+      <figure class="foto rv">
+        <svg viewBox="0 0 9 14" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="9" height="14" fill="#B86A3E"/><circle cx="2" cy="2" r="1.6" fill="#B98AD6"/><circle cx="4.5" cy="1.5" r="1.4" fill="#E7B48C"/><circle cx="7" cy="2.2" r="1.6" fill="#C9A050"/><rect y="9" width="9" height="5" fill="#fff"/></svg>
+        <img src="media/candy-bar-baloane-poster.webp" alt="Candy bar cu baloane mov și aurii, cuști aurii cu prăjituri și fructe din prăjitură pe masă" data-en-alt="Candy bar with purple and gold balloons, gold cage stands and fruit pastries" data-pt-alt="Candy bar com balões roxos e dourados, suportes dourados e doces-fruta na mesa" onerror="this.remove()">
+        <video muted playsinline loop preload="none" poster="media/candy-bar-baloane-poster.webp" data-video="candy-bar-baloane-video" aria-hidden="true"></video>
+      </figure>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+  <section class="sec sec-roz" style="padding-top:clamp(60px,8vw,96px)">
+    <div class="wrap">
+      <div class="cap rv">
+        <p class="ochi" data-en="What goes on the table" data-pt="O que vai para a mesa">Ce pune pe masă</p>
+        <h2 data-en="Small, many and <em>different</em>" data-pt="Pequenos, muitos e <em>diferentes</em>">Mici, multe și <em>diferite</em></h2>
+        <ul class="lista-v" style="columns:2;column-gap:32px;display:block">
+          <li style="margin-bottom:10px" data-en="Macarons" data-pt="Macarons">Macarons</li>
+          <li style="margin-bottom:10px" data-en="Mini tarts with fresh fruit" data-pt="Mini tartes com fruta fresca">Mini-tarte cu fructe proaspete</li>
+          <li style="margin-bottom:10px" data-en="Cupcakes" data-pt="Cupcakes">Cupcakes</li>
+          <li style="margin-bottom:10px" data-en="Fruit-shaped pastries" data-pt="Doces em forma de fruta">Prăjituri-fructe</li>
+          <li style="margin-bottom:10px" data-en="Cake pops" data-pt="Bolos no pau">Prăjituri pe băț</li>
+          <li style="margin-bottom:10px" data-en="Choux with cream and raspberries" data-pt="Choux com creme e framboesa">Choux cu cremă și zmeură</li>
+          <li style="margin-bottom:10px" data-en="Pistachio rolls" data-pt="Rolinhos de pistácio">Rulouri cu fistic</li>
+          <li style="margin-bottom:10px" data-en="Dessert cups" data-pt="Copinhos de sobremesa">Pahare cu desert</li>
+          <li style="margin-bottom:10px" data-en="Biscuits and pralines" data-pt="Biscoitos e bombons">Fursecuri și praline</li>
+        </ul>
+      </div>
+      <div class="galerie">
+        <figure class="foto mare rv"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#C9A050"/></svg><img src="media/candy-bar-macarons.webp" alt="Candy bar alb cu macarons, prăjituri pe etaje și tartelete cu zmeură" data-en-alt="White candy bar with macarons, tiered pastries and raspberry tarts" data-pt-alt="Candy bar branco com macarons, doces em andares e tartes de framboesa" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto lat rv d1"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#B88A4A"/></svg><img src="media/candy-bar-auriu.webp" alt="Masă de candy bar cu suporturi aurii, cannoli, cupcakes și pere din prăjitură" data-en-alt="Candy bar table with gold stands, cannoli, cupcakes and pastry pears" data-pt-alt="Mesa de candy bar com suportes dourados, cannoli, cupcakes e peras de doce" loading="lazy" onerror="this.remove()"><figcaption data-en="gold &amp; glass" data-pt="dourado e vidro">auriu și sticlă</figcaption></figure>
+        <figure class="foto rv"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#2B3A66"/></svg><img src="media/candy-bar-albastru.webp" alt="Candy bar în albastru și auriu, pentru botez de băiat" data-en-alt="Blue and gold candy bar for a baby boy's christening" data-pt-alt="Candy bar azul e dourado para batizado de menino" loading="lazy" onerror="this.remove()"><figcaption data-en="christening" data-pt="batizado">botez</figcaption></figure>
+        <figure class="foto rv d1"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#D9C7AE"/></svg><img src="media/candy-bar-restaurant.webp" alt="Candy bar pe mese de lemn, într-un restaurant cu perete de piatră" data-en-alt="Candy bar on wooden tables in a restaurant with a stone wall" data-pt-alt="Candy bar em mesas de madeira, num restaurante com parede de pedra" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto mare rv d2"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#F3E6D8"/></svg><img src="media/prajituri-pe-etaje.webp" alt="Prăjituri pe trepte: pere verzi, choux glazurate, pătrățele roz" data-en-alt="Pastries on steps: green pears, glazed choux, pink squares" data-pt-alt="Doces em degraus: peras verdes, choux glaceados, quadrados cor-de-rosa" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto lat rv"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#9A6BB0"/></svg><img src="media/candy-bar-baloane.webp" alt="Candy bar cu arcadă de baloane mov și aurii" data-en-alt="Candy bar under a purple and gold balloon arch" data-pt-alt="Candy bar com arco de balões roxos e dourados" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv d1"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#93B34E"/></svg><img src="media/tartelete-flori.webp" alt="Tartelete cu cremă de fistic și flori de zahăr" data-en-alt="Pistachio cream tartlets with sugar flowers" data-pt-alt="Tartelettes de creme de pistácio com flores de açúcar" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv d2"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#F2D35A"/></svg><img src="media/platou-petit-four.webp" alt="Platou cu petit four verzi, galbene și trandafiri de ciocolată albă" data-en-alt="Tray of green and yellow petits fours and white chocolate roses" data-pt-alt="Bandeja de petits fours verdes e amarelos e rosas de chocolate branco" loading="lazy" onerror="this.remove()"></figure>
+      </div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+</section>
+
+<!-- ======================= COMANDĂ ======================= -->
+<section class="pag" data-pag="comanda" data-titulo-ro="Comandă · Laurinda, Iași" data-titulo-en="Order · Laurinda, Iași" data-titulo-pt="Encomendar · Laurinda, Iași">
+  <section class="sec">
+    <div class="wrap">
+      <div class="cap">
+        <p class="ochi" data-en="Order" data-pt="Encomendar">Comandă</p>
+        <h2 class="pg-t" tabindex="-1" data-en="Tell us, and <em>we'll write it down</em>" data-pt="Diga-nos e <em>nós apontamos</em>">Spuneți-ne, iar <em>noi notăm</em></h2>
+        <p class="lead" data-en="Choose what you want: the drawing and the summary update as you go. At the end the message goes to us on WhatsApp, and we reply with the price and confirmation." data-pt="Escolha o que quer: o desenho e o resumo atualizam-se à medida. No fim a mensagem segue para nós por WhatsApp e respondemos com o preço e a confirmação.">Alegeți ce doriți: desenul și rezumatul se actualizează pe loc. La final mesajul ajunge la noi pe WhatsApp, iar noi vă răspundem cu prețul și confirmarea.</p>
+      </div>
+      <div class="file" role="tablist" aria-label="Tip de comandă" data-en-aria-label="Order type" data-pt-aria-label="Tipo de encomenda">
+        <button type="button" role="tab" id="tab-tort" aria-controls="panou-tort" aria-selected="true" data-en="Custom cake" data-pt="Bolo personalizado">Tort personalizat</button>
+        <button type="button" role="tab" id="tab-candy" aria-controls="panou-candy" aria-selected="false" tabindex="-1">Candy bar</button>
+      </div>
+      <div class="conf-g">
+        <form id="form" novalidate>
+          <div id="panou-tort" role="tabpanel" aria-labelledby="tab-tort">
+            <fieldset><legend data-en="Occasion" data-pt="Ocasião">Ocazia</legend>
+              <div class="chips" data-grup="ocazie"></div></fieldset>
+            <fieldset><legend><span data-en="Number of guests" data-pt="Número de pessoas">Numărul de persoane</span><small data-en="So we can suggest the right size." data-pt="Para sugerirmos o tamanho certo.">Ca să vă recomandăm mărimea potrivită.</small></legend>
+              <div class="pas" role="group" aria-label="Persoane" data-en-aria-label="Guests" data-pt-aria-label="Pessoas"><button type="button" data-p="-2" aria-label="Mai puține persoane" data-en-aria-label="Fewer guests" data-pt-aria-label="Menos pessoas">−</button><output id="persoane" aria-live="polite">12</output><button type="button" data-p="2" aria-label="Mai multe persoane" data-en-aria-label="More guests" data-pt-aria-label="Mais pessoas">+</button></div></fieldset>
+            <fieldset><legend data-en="Shape &amp; tiers" data-pt="Forma e andares">Forma și etajele</legend>
+              <div class="chips" data-grup="forma"></div>
+              <div class="chips" data-grup="etaje" style="margin-top:10px"></div></fieldset>
+            <fieldset><legend data-en="Cream colour" data-pt="Cor do creme">Culoarea cremei</legend>
+              <div class="chips" data-grup="culoare"></div></fieldset>
+            <fieldset><legend><span data-en="Flavour you like" data-pt="Sabor preferido">Aroma preferată</span><small data-en="We agree the exact filling together." data-pt="O recheio exato combinamos juntos.">Blatul și crema exacte le stabilim împreună.</small></legend>
+              <div class="chips" data-grup="aroma"></div></fieldset>
+            <fieldset><legend><span data-en="Decoration" data-pt="Decoração">Decorul</span><small data-en="As many as you like." data-pt="Quantas quiser.">Câte doriți.</small></legend>
+              <div class="chips" data-grup="decor" data-multi></div></fieldset>
+            <fieldset><legend data-en="Message on the cake" data-pt="Mensagem no bolo">Mesajul de pe tort</legend>
+              <div class="camp" style="margin-top:0"><label for="mesaj" data-en="Text on the plaque (optional)" data-pt="Texto na placa (opcional)">Textul de pe plăcuță (opțional)</label><input id="mesaj" name="mesaj" maxlength="40" placeholder="La mulți ani, Ana!" data-en-placeholder="Happy birthday, Ana!" data-pt-placeholder="Parabéns, Ana!"><span class="ajuda" data-en="If you have a model photo, send it in the same WhatsApp chat." data-pt="Se tiver uma foto de modelo, envie-a na mesma conversa de WhatsApp.">Dacă aveți o poză model, o trimiteți în aceeași conversație pe WhatsApp.</span></div></fieldset>
+          </div>
+          <div id="panou-candy" role="tabpanel" aria-labelledby="tab-candy" hidden>
+            <fieldset><legend data-en="Event" data-pt="Evento">Evenimentul</legend>
+              <div class="chips" data-grup="eveniment"></div></fieldset>
+            <fieldset><legend data-en="Number of guests" data-pt="Número de convidados">Numărul de invitați</legend>
+              <div class="pas" role="group" aria-label="Invitați" data-en-aria-label="Guests" data-pt-aria-label="Convidados"><button type="button" data-i="-10" aria-label="Mai puțini invitați" data-en-aria-label="Fewer guests" data-pt-aria-label="Menos convidados">−</button><output id="invitati" aria-live="polite">80</output><button type="button" data-i="10" aria-label="Mai mulți invitați" data-en-aria-label="More guests" data-pt-aria-label="Mais convidados">+</button></div></fieldset>
+            <fieldset><legend data-en="Colours of the event" data-pt="Cores do evento">Culorile evenimentului</legend>
+              <div class="chips" data-grup="paleta"></div></fieldset>
+            <fieldset><legend><span data-en="What should be on it" data-pt="O que deve ter">Ce să nu lipsească</span><small data-en="Tick what you'd like; we suggest the rest." data-pt="Marque o que gostava; o resto sugerimos nós.">Bifați ce v-ar plăcea; restul vi-l propunem noi.</small></legend>
+              <div class="chips" data-grup="dulciuri" data-multi></div></fieldset>
+            <div class="camp"><label for="locatie" data-en="Venue (name or address)" data-pt="Local (nome ou morada)">Locația (nume sau adresă)</label><input id="locatie" name="locatie" placeholder="Restaurant, sală, grădină…" data-en-placeholder="Restaurant, hall, garden…" data-pt-placeholder="Restaurante, sala, jardim…"><span class="err" id="err-locatie" hidden></span></div>
+          </div>
+          <fieldset style="margin-top:28px"><legend data-en="When &amp; who" data-pt="Quando e quem">Când și pe numele cui</legend>
+            <div class="doi">
+              <div class="camp"><label for="data" data-en="Date" data-pt="Data">Data</label><input type="date" id="data" name="data"><span class="err" id="err-data" hidden></span></div>
+              <div class="camp" id="camp-ridicare"><label for="ridicare" data-en="Collection" data-pt="Levantamento">Ridicare</label><select id="ridicare" name="ridicare"><option value="atelier" data-en="From the atelier, Socola 22" data-pt="No atelier, Socola 22">Din atelier, Socola 22</option><option value="livrare" data-en="I'd like delivery" data-pt="Gostava de entrega">Aș dori livrare</option></select></div>
+            </div>
+            <p class="aviz err" id="aviz-data" hidden style="color:var(--prun-2);font-weight:600"></p>
+            <div class="doi">
+              <div class="camp"><label for="nume" data-en="Your name" data-pt="O seu nome">Numele dumneavoastră</label><input id="nume" name="nume" autocomplete="name"><span class="err" id="err-nume" hidden></span></div>
+              <div class="camp"><label for="obs" data-en="Anything else (optional)" data-pt="Mais alguma coisa (opcional)">Altceva (opțional)</label><input id="obs" name="obs" placeholder="alergii, fără zahăr…" data-en-placeholder="allergies, no sugar…" data-pt-placeholder="alergias, sem açúcar…"></div>
+            </div>
+          </fieldset>
+        </form>
+        <aside class="previzualizare" aria-label="Previzualizare" data-en-aria-label="Preview" data-pt-aria-label="Pré-visualização">
+          <div class="scena" id="scena">
+            <span class="tag" id="scena-tag" data-en="your cake" data-pt="o seu bolo">tortul dvs.</span>
+            <svg id="tort-svg" viewBox="0 0 360 320" role="img" aria-label="Desenul tortului ales" data-en-aria-label="Drawing of the chosen cake" data-pt-aria-label="Desenho do bolo escolhido"></svg>
+          </div>
+          <div class="rezumat" id="rezumat"></div>
+          <div class="trimite">
+            <p class="lipsa" id="lipsa" aria-live="polite"></p>
+            <a class="btn btn-z" id="trimite" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg><span data-en="Send on WhatsApp" data-pt="Enviar por WhatsApp">Trimiteți pe WhatsApp</span></a>
+            <p data-en="We reply with the price, availability and pick-up time." data-pt="Respondemos com o preço, a disponibilidade e a hora de levantamento.">Vă răspundem cu prețul, disponibilitatea și ora de ridicare.</p>
+            <a class="btn btn-l" href="tel:+40770988652" data-en="Or call 0770 988 652" data-pt="Ou ligue 0770 988 652">Sau sunați la 0770 988 652</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+</section>
+
+<!-- ======================= ATELIER ======================= -->
+<section class="pag" data-pag="atelier" data-titulo-ro="Atelierul · Laurinda, Iași" data-titulo-en="The atelier · Laurinda, Iași" data-titulo-pt="O atelier · Laurinda, Iași">
+  <section class="sec">
+    <div class="wrap duo">
+      <figure class="foto rv" style="aspect-ratio:4/3.2"><svg viewBox="0 0 10 8" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="10" height="8" fill="#EDE6E2"/><rect y="5" width="10" height="3" fill="#D8C8B4"/></svg><img src="media/dona-la-candy-bar.webp" alt="Cofetăreasa de la Laurinda în spatele unui candy bar întreg" data-en-alt="Laurinda's pastry chef behind a full candy bar" data-pt-alt="A pasteleira da Laurinda atrás de um candy bar completo" loading="lazy" onerror="this.remove()"></figure>
+      <div>
+        <p class="ochi" data-en="The atelier" data-pt="O atelier">Atelierul</p>
+        <h2 class="pg-t" tabindex="-1" data-en="A small atelier, <em>run by a woman</em>" data-pt="Um atelier pequeno, <em>gerido por uma mulher</em>">Un atelier mic, <em>condus de o femeie</em></h2>
+        <p class="lead" data-en="Laurinda is an artisan patisserie: cakes, pastries and candy bars made by hand, in small batches, in Socola. Behind every table there is the same person who puts the last pear in place." data-pt="A Laurinda é uma pastelaria artesanal: bolos, doces e candy bars feitos à mão, em pequenas quantidades, na Socola. Por trás de cada mesa está a mesma pessoa que põe a última pera no lugar.">Laurinda este o cofetărie artizanală: torturi, prăjituri și candy bar-uri făcute de mână, în cantități mici, pe Socola. În spatele fiecărei mese e aceeași persoană care așază ultima pară la locul ei.</p>
+        <p class="mut" data-en="Name of the pastry chef and the story of the house: to be confirmed." data-pt="Nome da pasteleira e história da casa: a confirmar."><span class="conf" data-en="story &amp; founding year · to be confirmed" data-pt="história e ano de abertura · a confirmar">povestea și anul înființării · de confirmat</span></p>
+      </div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+  <section class="sec sec-roz" style="padding-top:clamp(60px,8vw,96px)">
+    <div class="wrap">
+      <div class="cap rv">
+        <p class="ochi" data-en="Visit" data-pt="Visitar">Vizită</p>
+        <h2 data-en="Bulevardul Socola 22, <em>ground floor</em>" data-pt="Bulevardul Socola 22, <em>rés-do-chão</em>">Bulevardul Socola 22, <em>la parter</em></h2>
+      </div>
+      <div class="duo" style="align-items:start">
+        <div class="harta rv">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#F1E6E8"/><path d="M-10 170L410 130M150 -10L190 310" stroke="#fff" stroke-width="16"/><rect x="200" y="96" width="34" height="34" fill="#E9A6B6"/><circle cx="217" cy="150" r="13" fill="#A3214A"/><circle cx="217" cy="150" r="5" fill="#fff"/></svg>
+          <iframe data-src="https://www.google.com/maps?q=Cofetaria+artizanala+Laurinda,+Bulevardul+Socola+22,+Ia%C8%99i&amp;output=embed" title="Hartă: Cofetăria Laurinda" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="cartao rv d1">
+          <div class="linha-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div>Bulevardul Socola 22, 700186 Iași<br><span class="mut" data-en="Ground floor of the tower block, between Cotnari and Casa Sindicatelor" data-pt="Rés-do-chão da torre, entre o Cotnari e a Casa Sindicatelor">La parterul blocului-turn, între Cotnari și Casa Sindicatelor</span><br><a href="https://www.google.com/maps/dir/?api=1&amp;destination=47.1466271,27.5922933" target="_blank" rel="noopener" data-en="Directions" data-pt="Direções">Indicații de orientare</a></div></div>
+          <div class="linha-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><div><a href="tel:+40770988652">0770 988 652</a><br><span class="mut" data-en="phone &amp; WhatsApp" data-pt="telefone e WhatsApp">telefon și WhatsApp</span></div></div>
+          <div class="linha-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 11h16v9H4zM2 7h20v4H2zM12 7v13"/></svg><div><span data-en="Pick-up from the atelier" data-pt="Levantamento no atelier">Ridicare din atelier</span><br><span class="conf" data-en="delivery &amp; payment methods · to be confirmed" data-pt="entrega e pagamentos · a confirmar">livrare și plată · de confirmat</span></div></div>
+          <h3 style="margin-top:20px" data-en="Hours" data-pt="Horário">Program</h3>
+          <p class="fisa estado" data-estado style="margin:0 0 6px"><span>…</span></p>
+          <table class="orar" data-orar></table>
+        </div>
+      </div>
+    </div>
+    <div class="funda rv" aria-hidden="true">__FUNDA__</div>
+  </section>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="marca" href="#/"><b>Laurinda</b><i data-en="artisan patisserie · Iași" data-pt="pastelaria artesanal · Iași">cofetărie artizanală · Iași</i></a>
+      <p style="max-width:42ch;margin-top:14px;font:700 24px/1.2 var(--mana);color:#F6C7D3" data-en="Fine flavours, made for you." data-pt="Sabores finos, para si.">Savori fine pentru tine.</p>
+    </div>
+    <div>
+      <h3 data-en="Pages" data-pt="Páginas">Pagini</h3>
+      <ul><li><a href="#/torturi" data-en="Cakes" data-pt="Bolos">Torturi</a></li><li><a href="#/candy-bar">Candy bar</a></li><li><a href="#/comanda" data-en="Order" data-pt="Encomendar">Comandă</a></li><li><a href="#/atelier" data-en="The atelier" data-pt="O atelier">Atelierul</a></li></ul>
+    </div>
+    <div>
+      <h3 data-en="Contact" data-pt="Contacto">Contact</h3>
+      <ul><li>Bd. Socola 22, Iași</li><li><a href="tel:+40770988652">0770 988 652</a></li><li><a class="wa-link" href="https://wa.me/40770988652" target="_blank" rel="noopener">WhatsApp</a></li></ul>
+    </div>
+    <div class="legal">
+      <span>© <span id="an">2026</span> Laurinda · <span data-en="company name &amp; tax ID" data-pt="denominação e CUI">denumire firmă și CUI</span> <span class="conf" data-en="to be confirmed" data-pt="a confirmar">de confirmat</span></span>
+      <span class="anpc">
+        <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC · <span data-en="Alternative dispute resolution (SAL)" data-pt="Resolução alternativa de litígios (SAL)">Soluționarea alternativă a litigiilor</span></a>
+        <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener"><span data-en="Online dispute resolution (ODR)" data-pt="Resolução de litígios em linha (ODR)">Soluționarea online a litigiilor</span></a>
+      </span>
+      <span style="margin-left:auto" data-en="Site by Pacheco Studios" data-pt="Site por Pacheco Studios">Site realizat de Pacheco Studios</span>
+    </div>
+  </div>
+</footer>
+
+<div class="cta-movel" id="cta-movel">
+  <a class="btn btn-l" href="tel:+40770988652"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span data-en="Call" data-pt="Ligar">Sunați</span></a>
+  <a class="btn btn-z" id="cta-wa" href="https://wa.me/40770988652" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var WA = '40770988652';
+  var doc = document.documentElement;
+  doc.classList.add('js');
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var BASE = doc.getAttribute('data-lang') || 'ro';
+  var CHAVE = 'laurinda-lang-' + BASE;
+  var LANG = BASE;
+  try { var g = localStorage.getItem(CHAVE); if (g === 'ro' || g === 'en' || (g === 'pt' && BASE === 'pt')) LANG = g; } catch(e){}
+  if (BASE === 'pt') document.querySelectorAll('.lingua button[data-lang="pt"]').forEach(function(b){ b.hidden = false; });
+
+  /* a caixa vai para a coluna direita no desktop */
+  var cutie = document.getElementById('cutie-erou'), loc = document.querySelector('.cutie-loc'), casa = cutie.parentNode, depoisDe = cutie.previousElementSibling;
+  function posCutie(){
+    if (window.innerWidth > 980){ if (cutie.parentNode !== loc) loc.appendChild(cutie); }
+    else if (cutie.parentNode !== casa) depoisDe.after(cutie);
+  }
+  posCutie();
+  window.addEventListener('resize', posCutie);
+
+  var T = {
+    ro:{abrir:'Deschide meniul', fechar:'Închide meniul', aberto:'Deschis acum', fechado:'Închis acum', ate:' · până la ', abre:' · deschide ', hoje:'azi la ', amanha:'mâine la ',
+      dias:['duminică','luni','marți','miercuri','joi','vineri','sâmbătă'], azi:'azi', inchis:'Închis',
+      olaT:'Bună ziua! Aș dori să comand un tort personalizat:', olaC:'Bună ziua! Aș dori o ofertă pentru un candy bar:',
+      ocazie:'Ocazie', pers:'Persoane', forma:'Formă', etaje:'Etaje', culoare:'Cremă', aroma:'Aromă', decor:'Decor', mesaj:'Mesaj pe tort', eveniment:'Eveniment', invitati:'Invitați', paleta:'Culori', dulciuri:'Aș vrea să fie', locatie:'Locația',
+      data:'Data', rid:'Ridicare', nume:'Nume', obs:'Observații', fim:'Mulțumesc! Aștept prețul și confirmarea.', fimC:'Mulțumesc! Aștept o propunere și prețul.',
+      lipsa:'Mai lipsește: ', ldata:'data', lnume:'numele', lloc:'locația', eData:'Alegeți data.', eNume:'Scrieți numele, ca să știm pe cine notăm.', eLoc:'Scrieți unde are loc evenimentul.',
+      duminica:'Duminica atelierul e închis. Ridicarea se poate face luni–sâmbătă; pentru duminică, întrebați-ne pe WhatsApp.', nimic:'nimic ales încă', etaj1:'1 etaj', etajN:' etaje', alege:'—',
+      waCta:'Bună ziua! Aș dori să comand un tort / un candy bar.', tagT:'tortul dvs.', tagC:'candy bar-ul dvs.'},
+    en:{abrir:'Open menu', fechar:'Close menu', aberto:'Open now', fechado:'Closed now', ate:' · until ', abre:' · opens ', hoje:'today at ', amanha:'tomorrow at ',
+      dias:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], azi:'today', inchis:'Closed',
+      olaT:'Hello! I would like to order a custom cake:', olaC:'Hello! I would like a quote for a candy bar:',
+      ocazie:'Occasion', pers:'Guests', forma:'Shape', etaje:'Tiers', culoare:'Cream', aroma:'Flavour', decor:'Decoration', mesaj:'Message on the cake', eveniment:'Event', invitati:'Guests', paleta:'Colours', dulciuri:'I would like', locatie:'Venue',
+      data:'Date', rid:'Collection', nume:'Name', obs:'Notes', fim:'Thank you! Waiting for the price and confirmation.', fimC:'Thank you! Waiting for a proposal and the price.',
+      lipsa:'Still missing: ', ldata:'the date', lnume:'your name', lloc:'the venue', eData:'Choose the date.', eNume:'Write your name so we know who the order is for.', eLoc:'Write where the event takes place.',
+      duminica:'The atelier is closed on Sundays. Collection is Monday–Saturday; for Sunday, ask us on WhatsApp.', nimic:'nothing chosen yet', etaj1:'1 tier', etajN:' tiers', alege:'—',
+      waCta:'Hello! I would like to order a cake / a candy bar.', tagT:'your cake', tagC:'your candy bar'},
+    pt:{abrir:'Abrir menu', fechar:'Fechar menu', aberto:'Aberto agora', fechado:'Fechado agora', ate:' · até às ', abre:' · abre ', hoje:'hoje às ', amanha:'amanhã às ',
+      dias:['domingo','segunda','terça','quarta','quinta','sexta','sábado'], azi:'hoje', inchis:'Fechado',
+      olaT:'Olá! Gostava de encomendar um bolo personalizado:', olaC:'Olá! Gostava de um orçamento para um candy bar:',
+      ocazie:'Ocasião', pers:'Pessoas', forma:'Forma', etaje:'Andares', culoare:'Creme', aroma:'Sabor', decor:'Decoração', mesaj:'Mensagem no bolo', eveniment:'Evento', invitati:'Convidados', paleta:'Cores', dulciuri:'Gostava que tivesse', locatie:'Local',
+      data:'Data', rid:'Levantamento', nume:'Nome', obs:'Notas', fim:'Obrigado! Fico a aguardar o preço e a confirmação.', fimC:'Obrigado! Fico a aguardar uma proposta e o preço.',
+      lipsa:'Falta: ', ldata:'a data', lnume:'o nome', lloc:'o local', eData:'Escolha a data.', eNume:'Escreva o nome para sabermos de quem é a encomenda.', eLoc:'Escreva onde é o evento.',
+      duminica:'Ao domingo o atelier está fechado. O levantamento é de segunda a sábado; para domingo, pergunte-nos por WhatsApp.', nimic:'nada escolhido ainda', etaj1:'1 andar', etajN:' andares', alege:'—',
+      waCta:'Olá! Gostava de encomendar um bolo / um candy bar.', tagT:'o seu bolo', tagC:'o seu candy bar'}
+  };
+  function t(k){ return T[LANG][k]; }
+  function tx(o){ return typeof o === 'string' ? o : (o[LANG] || o.ro); }
+
+  /* opções do configurador */
+  var O = {
+    ocazie:[['aniversare',{ro:'Aniversare',en:'Birthday',pt:'Aniversário'}],['copii',{ro:'Petrecere copii',en:'Kids\' party',pt:'Festa infantil'}],['botez',{ro:'Botez',en:'Christening',pt:'Batizado'}],['nunta',{ro:'Nuntă',en:'Wedding',pt:'Casamento'}],['firma',{ro:'Eveniment de firmă',en:'Company event',pt:'Evento de empresa'}],['alta',{ro:'Altă ocazie',en:'Something else',pt:'Outra ocasião'}]],
+    forma:[['rotund',{ro:'Rotund',en:'Round',pt:'Redondo'}],['patrat',{ro:'Pătrat',en:'Square',pt:'Quadrado'}]],
+    etaje:[['1',{ro:'1 etaj',en:'1 tier',pt:'1 andar'}],['2',{ro:'2 etaje',en:'2 tiers',pt:'2 andares'}],['3',{ro:'3 etaje',en:'3 tiers',pt:'3 andares'}]],
+    culoare:[['alb',{ro:'Alb',en:'White',pt:'Branco'},'#FBF7F2'],['vanilie',{ro:'Vanilie',en:'Vanilla',pt:'Baunilha'},'#F6E7B8'],['roz',{ro:'Roz',en:'Pink',pt:'Rosa'},'#F2BCC8'],['fistic',{ro:'Fistic',en:'Pistachio',pt:'Pistácio'},'#BFD38A'],['lila',{ro:'Lila',en:'Lilac',pt:'Lilás'},'#CDB6E2'],['ciocolata',{ro:'Ciocolată',en:'Chocolate',pt:'Chocolate'},'#6B3B26']],
+    aroma:[['ciocolata',{ro:'Ciocolată',en:'Chocolate',pt:'Chocolate'}],['fructe',{ro:'Fructe de pădure',en:'Forest fruits',pt:'Frutos silvestres'}],['vanilie',{ro:'Vanilie',en:'Vanilla',pt:'Baunilha'}],['fistic',{ro:'Fistic',en:'Pistachio',pt:'Pistácio'}],['caramel',{ro:'Caramel',en:'Caramel',pt:'Caramelo'}],['recomandare',{ro:'Mă las pe mâna voastră',en:'Your recommendation',pt:'Deixo convosco'}]],
+    decor:[['fructe',{ro:'Fructe proaspete',en:'Fresh fruit',pt:'Fruta fresca'}],['flori',{ro:'Flori',en:'Flowers',pt:'Flores'}],['figurine',{ro:'Figurine',en:'Figurines',pt:'Figuras'}],['funde',{ro:'Funde',en:'Bows',pt:'Laços'}],['perle',{ro:'Perle aurii',en:'Gold pearls',pt:'Pérolas douradas'}],['poza',{ro:'Poză comestibilă',en:'Edible photo',pt:'Foto comestível'}],['macarons',{ro:'Macarons',en:'Macarons',pt:'Macarons'}]],
+    eveniment:[['nunta',{ro:'Nuntă',en:'Wedding',pt:'Casamento'}],['botez',{ro:'Botez',en:'Christening',pt:'Batizado'}],['aniversare',{ro:'Aniversare',en:'Birthday',pt:'Aniversário'}],['firma',{ro:'Eveniment de firmă',en:'Company event',pt:'Evento de empresa'}],['alt',{ro:'Alt eveniment',en:'Other event',pt:'Outro evento'}]],
+    paleta:[['alb-auriu',{ro:'Alb și auriu',en:'White & gold',pt:'Branco e dourado'},'#C9A050'],['roz',{ro:'Roz',en:'Pink',pt:'Rosa'},'#E9A6B6'],['albastru',{ro:'Albastru',en:'Blue',pt:'Azul'},'#4C78B5'],['mov',{ro:'Mov și lila',en:'Purple & lilac',pt:'Roxo e lilás'},'#9A6BB0'],['verde',{ro:'Verde fistic',en:'Pistachio green',pt:'Verde pistácio'},'#93B34E'],['propunere',{ro:'Propuneți voi',en:'You suggest',pt:'Sugiram vocês'},'conic-gradient(#E9A6B6,#C9A050,#93B34E,#9A6BB0,#E9A6B6)']],
+    dulciuri:[['macarons',{ro:'Macarons',en:'Macarons',pt:'Macarons'}],['tarte',{ro:'Mini-tarte cu fructe',en:'Fruit mini tarts',pt:'Mini tartes de fruta'}],['cupcakes',{ro:'Cupcakes',en:'Cupcakes',pt:'Cupcakes'}],['fructe',{ro:'Prăjituri-fructe',en:'Fruit-shaped pastries',pt:'Doces em forma de fruta'}],['bat',{ro:'Prăjituri pe băț',en:'Cake pops',pt:'Bolos no pau'}],['choux',{ro:'Choux cu cremă',en:'Cream choux',pt:'Choux com creme'}],['rulouri',{ro:'Rulouri cu fistic',en:'Pistachio rolls',pt:'Rolinhos de pistácio'}],['pahare',{ro:'Pahare cu desert',en:'Dessert cups',pt:'Copinhos de sobremesa'}],['fursecuri',{ro:'Fursecuri',en:'Biscuits',pt:'Biscoitos'}],['praline',{ro:'Praline',en:'Pralines',pt:'Bombons'}],['tort',{ro:'Și un tort',en:'A cake too',pt:'E um bolo'}]]
+  };
+  var ST = {ocazie:'aniversare', forma:'rotund', etaje:'1', culoare:'alb', aroma:'', decor:{fructe:1}, eveniment:'nunta', paleta:'alb-auriu', dulciuri:{macarons:1, fructe:1}};
+  var PERS = 12, INV = 80, MOD = 'tort';
+
+  function desenhaChips(){
+    document.querySelectorAll('[data-grup]').forEach(function(box){
+      var gname = box.dataset.grup, multi = box.hasAttribute('data-multi');
+      box.innerHTML = O[gname].map(function(o){
+        var on = multi ? !!ST[gname][o[0]] : ST[gname] === o[0];
+        var pata = o[2] ? '<i class="pata" style="background:' + o[2] + '" aria-hidden="true"></i>' : '';
+        return '<label><input type="' + (multi ? 'checkbox' : 'radio') + '" name="' + gname + '" value="' + o[0] + '"' + (on ? ' checked' : '') + '><span>' + pata + tx(o[1]) + '</span></label>';
+      }).join('');
+    });
+  }
+  function nomeOp(gname, v){ var o = O[gname].filter(function(x){ return x[0] === v; })[0]; return o ? tx(o[1]) : ''; }
+  function cor(v){ var o = O.culoare.filter(function(x){ return x[0] === v; })[0]; return o ? o[2] : '#FBF7F2'; }
+  function escuro(hex, f){ var n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255; return 'rgb(' + Math.round(r * f) + ',' + Math.round(g * f) + ',' + Math.round(b * f) + ')'; }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  /* ---------- o desenho do bolo ---------- */
+  function desenhaTort(){
+    var svg = document.getElementById('tort-svg');
+    if (MOD === 'candy') return desenhaCandy(svg);
+    var n = +ST.etaje, quad = ST.forma === 'patrat', c = cor(ST.culoare), cE = escuro(c, .86), cL = escuro(c, 1.02);
+    var dec = ST.decor, out = '';
+    out += '<defs><linearGradient id="t-umbra" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#3B1F2E" stop-opacity=".16"/></linearGradient><linearGradient id="t-aur" x1="0" x2="1"><stop offset="0" stop-color="#B98B34"/><stop offset=".4" stop-color="#F0D58C"/><stop offset="1" stop-color="#A57A2A"/></linearGradient></defs>';
+    out += '<ellipse cx="180" cy="306" rx="70" ry="9" fill="#3B1F2E" opacity=".08"/><path d="M150 302q30-10 60 0l-8-34h-44z" fill="url(#t-aur)"/><ellipse cx="180" cy="302" rx="44" ry="8" fill="url(#t-aur)" stroke="#8E6A22" stroke-width=".8"/>';
+    out += '<ellipse cx="180" cy="262" rx="150" ry="20" fill="url(#t-aur)" stroke="#8E6A22" stroke-width="1"/><ellipse cx="180" cy="258" rx="146" ry="17" fill="#fff" stroke="#E5D3D8" stroke-width="1.5"/>';
+    var larg = n === 1 ? [236] : n === 2 ? [240, 168] : [244, 182, 124];
+    var alt = n === 1 ? [122] : n === 2 ? [92, 76] : [70, 60, 52];
+    var y = 258, topo = null;
+    for (var i = 0; i < n; i++){
+      var w = larg[i], h = alt[i], x = 180 - w / 2, ry = quad ? 0 : w * .09;
+      var g = '<g class="etaj" style="animation-delay:' + (i * .08) + 's">';
+      if (quad){
+        g += '<path d="M' + x + ' ' + (y - h) + 'h' + w + 'v' + h + 'h-' + w + 'z" fill="' + c + '"/>';
+        g += '<path d="M' + x + ' ' + (y - h) + 'l18 -14h' + (w - 36) + 'l18 14z" fill="' + cL + '" stroke="' + cE + '" stroke-width="1"/>';
+        g += '<path d="M' + (x + w) + ' ' + (y - h) + 'v' + h + '" stroke="' + cE + '" stroke-width="3"/>';
+        g += '<path d="M' + x + ' ' + (y - h) + 'h' + w + 'v' + h + 'h-' + w + 'z" fill="url(#t-umbra)"/>';
+      } else {
+        g += '<path d="M' + x + ' ' + (y - h) + 'v' + h + 'a' + (w / 2) + ' ' + ry + ' 0 0 0 ' + w + ' 0v-' + h + 'z" fill="' + c + '"/>';
+        g += '<path d="M' + x + ' ' + (y - h) + 'v' + h + 'a' + (w / 2) + ' ' + ry + ' 0 0 0 ' + w + ' 0v-' + h + 'z" fill="url(#t-umbra)"/>';
+        g += '<ellipse cx="180" cy="' + (y - h) + '" rx="' + (w / 2) + '" ry="' + ry + '" fill="' + cL + '" stroke="' + cE + '" stroke-width="1"/>';
+        var sw = '', ns = 9; for (k = 0; k < ns; k++){ var a0 = Math.PI * k / ns, a1 = Math.PI * (k + 1) / ns, x0 = 180 - Math.cos(a0) * w / 2, x1 = 180 - Math.cos(a1) * w / 2, y0 = y - h + Math.sin(a0) * ry, y1 = y - h + Math.sin(a1) * ry; sw += 'M' + x0.toFixed(1) + ' ' + y0.toFixed(1) + 'Q' + ((x0 + x1) / 2).toFixed(1) + ' ' + ((y0 + y1) / 2 + 13).toFixed(1) + ' ' + x1.toFixed(1) + ' ' + y1.toFixed(1); }
+        g += '<path d="' + sw + '" fill="none" stroke="' + cE + '" stroke-width="2.4" stroke-linecap="round" opacity=".55"/>';
+      }
+      var bead = '', k, nb = Math.round(w / 13);
+      for (k = 0; k <= nb; k++){ var bx = x + k * w / nb, by = quad ? y : y + Math.sin(Math.PI * k / nb) * ry * .9; bead += '<circle cx="' + bx.toFixed(1) + '" cy="' + by.toFixed(1) + '" r="5.5" fill="' + cL + '" stroke="' + cE + '" stroke-width="1"/>'; }
+      g += bead;
+      if (dec.perle){ var pe = ''; for (k = 1; k < nb; k += 2){ var px = x + k * w / nb, py = (quad ? y - h + 12 : y - h + 10 + Math.sin(Math.PI * k / nb) * ry * .8); pe += '<circle cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="3.2" fill="#D9B45E" stroke="#8E6A22" stroke-width=".6"/>'; } g += pe; }
+      if (dec.funde){ g += funda(x + 8, y - h * .55, .55) + funda(x + w - 8, y - h * .55, .55); }
+      if (i === 0 && (ST.mesaj || '').trim()){
+        var m = esc(ST.mesaj.trim().slice(0, 40)), fs = m.length > 22 ? 15 : 19;
+        g += '<g transform="translate(180 ' + (y - h * .48) + ')"><rect x="-' + Math.min(w * .42, 100) + '" y="-17" width="' + Math.min(w * .84, 200) + '" height="34" rx="9" fill="#fff" stroke="#E9A6B6" stroke-width="1.5"/><text text-anchor="middle" y="6" font-family="Caveat, cursive" font-weight="700" font-size="' + fs + '" fill="#3B1F2E">' + m + '</text></g>';
+      }
+      g += '</g>';
+      out += g;
+      topo = {cx:180, cy:y - h, w:w, ry:quad ? 7 : ry};
+      y -= h;
+    }
+    var d = '';
+    if (dec.fructe){ d += '<circle cx="' + (topo.cx - 22) + '" cy="' + (topo.cy - 4) + '" r="8" fill="#C22F4E"/><circle cx="' + (topo.cx - 10) + '" cy="' + (topo.cy - 10) + '" r="6" fill="#3E3A78"/><path d="M' + (topo.cx + 6) + ' ' + (topo.cy - 2) + 'a10 10 0 0 1 18 0z" fill="#8E3A5C"/><path d="M' + (topo.cx + 8) + ' ' + (topo.cy - 3) + 'a8 8 0 0 1 14 0z" fill="#E8A0A8"/><circle cx="' + (topo.cx + 28) + '" cy="' + (topo.cy - 6) + '" r="6.5" fill="#C22F4E"/>'; }
+    if (dec.flori){ d += floare(topo.cx - topo.w * .3, topo.cy - 12) + floare(topo.cx - topo.w * .3 + 16, topo.cy - 4, .7); }
+    if (dec.macarons){ d += '<g transform="translate(' + (topo.cx + topo.w * .26) + ' ' + (topo.cy - 12) + ')"><rect x="-13" y="-9" width="26" height="8" rx="4" fill="#F2BCC8"/><rect x="-12" y="-2" width="24" height="4" fill="#fff"/><rect x="-13" y="2" width="26" height="8" rx="4" fill="#F2BCC8"/></g>'; }
+    if (dec.figurine){ d += '<g transform="translate(' + topo.cx + ' ' + (topo.cy - 20) + ')"><ellipse cy="10" rx="14" ry="14" fill="#F4E7DA" stroke="#C9A98C"/><circle cy="-10" r="11" fill="#F4E7DA" stroke="#C9A98C"/><circle cx="-9" cy="-19" r="5" fill="#F4E7DA" stroke="#C9A98C"/><circle cx="9" cy="-19" r="5" fill="#F4E7DA" stroke="#C9A98C"/><circle cx="-4" cy="-11" r="1.5" fill="#3B1F2E"/><circle cx="4" cy="-11" r="1.5" fill="#3B1F2E"/></g>'; }
+    if (dec.poza){ d += '<g transform="translate(' + (topo.cx + (dec.figurine ? -topo.w * .22 : 0)) + ' ' + (topo.cy - 2) + ')"><ellipse rx="20" ry="' + Math.max(6, topo.ry * .7) + '" fill="#fff" stroke="#E9A6B6" stroke-width="2"/><ellipse rx="14" ry="' + Math.max(4, topo.ry * .45) + '" fill="#BFD8EA"/></g>'; }
+    svg.innerHTML = out + d;
+  }
+  function funda(x, y, s){
+    return '<g transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + s + ')"><path d="M0 0C-8-12-22-12-22 0s14 12 22 0c8 12 22 12 22 0S8-12 0 0z" fill="#E9A6B6" stroke="#C97A8E" stroke-width="2"/><path d="M-3 2l-8 18 5-1 3 5 3-20zM3 2l8 18-5-1-3 5-3-20z" fill="#E1909F"/><circle r="4" fill="#C97A8E"/></g>';
+  }
+  function floare(x, y, s){
+    s = s || 1;
+    return '<g transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + s + ')"><circle r="13" fill="#FFFFFF" stroke="#E5D9D2" stroke-width="1.5"/><path d="M-2-5a6 6 0 1 1-5 8M3-1a3 3 0 1 1-3 4" stroke="#D8CBC4" stroke-width="1.6" fill="none"/></g>';
+  }
+  function desenhaCandy(svg){
+    var p = O.paleta.filter(function(x){ return x[0] === ST.paleta; })[0], ac = p && p[2].charAt(0) === '#' ? p[2] : '#C9A050';
+    var s = ST.dulciuri, out = '';
+    var bal = '', cores = [ac, '#FFFFFF', '#D9B45E', ac, '#F6E3C8'];
+    for (var b = 0; b < 15; b++){ var an = Math.PI * (1.08 - b * 1.16 / 14), bx = 180 + Math.cos(an) * 168, by = 214 - Math.sin(an) * 176, r = 15 + (b * 7 % 5) * 2; bal += '<circle cx="' + bx.toFixed(1) + '" cy="' + by.toFixed(1) + '" r="' + r + '" fill="' + cores[b % 5] + '" stroke="rgba(59,31,46,.12)"/><circle cx="' + (bx - r * .35).toFixed(1) + '" cy="' + (by - r * .4).toFixed(1) + '" r="' + (r * .22).toFixed(1) + '" fill="#fff" opacity=".55"/>'; }
+    out += '<g opacity=".9">' + bal + '</g>';
+    out += '<rect x="14" y="208" width="332" height="14" rx="4" fill="#fff" stroke="#E5D3D8"/><path d="M20 222h320v98H20z" fill="#fff"/><path d="M20 222q20 22 40 0t40 0 40 0 40 0 40 0 40 0 40 0 40 0" fill="none" stroke="' + ac + '" stroke-width="3.5" opacity=".85"/><path d="M20 222v98M340 222v98" stroke="#E5D3D8"/>';
+    function suport(cx, w, h){ return '<rect x="' + (cx - 2) + '" y="' + (210 - h) + '" width="4" height="' + h + '" fill="#C9A050"/><ellipse cx="' + cx + '" cy="' + (210 - h) + '" rx="' + w + '" ry="6" fill="#D9B45E" stroke="#8E6A22"/><ellipse cx="' + cx + '" cy="208" rx="' + (w * .6) + '" ry="4" fill="#C9A050"/>'; }
+    out += suport(80, 44, 70) + suport(180, 54, 110) + suport(282, 44, 60);
+    var items = [];
+    if (s.macarons) items.push(function(cx, cy){ var r = ''; for (var i = -2; i <= 2; i++) r += '<rect x="' + (cx + i * 14 - 6) + '" y="' + (cy - 12) + '" width="12" height="12" rx="5" fill="' + ['#F2BCC8','#F6E7B8','#BFD38A','#CDB6E2','#F2BCC8'][i + 2] + '"/>'; return r; });
+    if (s.fructe) items.push(function(cx, cy){ return '<path d="M' + (cx - 20) + ' ' + cy + 'c-8 0-10-10-4-16 2-6 0-10 4-12 4 2 2 6 4 12 6 6 4 16-4 16z" fill="#C9D35A"/><circle cx="' + cx + '" cy="' + (cy - 8) + '" r="8" fill="#F2A33A"/><circle cx="' + (cx + 20) + '" cy="' + (cy - 8) + '" r="8" fill="#9CC25B"/>'; });
+    if (s.cupcakes) items.push(function(cx, cy){ var r = ''; for (var i = -1; i <= 1; i++) r += '<path d="M' + (cx + i * 20 - 7) + ' ' + (cy - 8) + 'h14l-2 8h-10z" fill="#B88A5A"/><circle cx="' + (cx + i * 20) + '" cy="' + (cy - 12) + '" r="7" fill="#fff" stroke="#E5D3D8"/><circle cx="' + (cx + i * 20) + '" cy="' + (cy - 19) + '" r="2.6" fill="#C22F4E"/>'; return r; });
+    if (s.tarte) items.push(function(cx, cy){ var r = ''; for (var i = -1; i <= 1; i++) r += '<ellipse cx="' + (cx + i * 20) + '" cy="' + (cy - 5) + '" rx="9" ry="5" fill="#D9A55A"/><circle cx="' + (cx + i * 20 - 3) + '" cy="' + (cy - 8) + '" r="3" fill="#C22F4E"/><circle cx="' + (cx + i * 20 + 3) + '" cy="' + (cy - 8) + '" r="2.6" fill="#3E3A78"/>'; return r; });
+    if (s.bat) items.push(function(cx, cy){ var r = ''; for (var i = -1; i <= 1; i++) r += '<rect x="' + (cx + i * 18 - 1) + '" y="' + (cy - 30) + '" width="2" height="22" fill="#E7D3B4"/><rect x="' + (cx + i * 18 - 7) + '" y="' + (cy - 40) + '" width="14" height="16" rx="6" fill="' + ['#F2BCC8','#BFD38A','#F6E7B8'][i + 1] + '"/>'; return r; });
+    if (s.choux) items.push(function(cx, cy){ var r = ''; for (var i = -1; i <= 1; i++) r += '<circle cx="' + (cx + i * 18) + '" cy="' + (cy - 8) + '" r="8" fill="#C98E52"/><circle cx="' + (cx + i * 18) + '" cy="' + (cy - 15) + '" r="4.5" fill="#fff"/><circle cx="' + (cx + i * 18) + '" cy="' + (cy - 19) + '" r="2.4" fill="#C22F4E"/>'; return r; });
+    if (s.rulouri) items.push(function(cx, cy){ return '<rect x="' + (cx - 26) + '" y="' + (cy - 12) + '" width="24" height="10" rx="5" fill="#D9A55A"/><rect x="' + (cx + 2) + '" y="' + (cy - 12) + '" width="24" height="10" rx="5" fill="#D9A55A"/><circle cx="' + (cx - 26) + '" cy="' + (cy - 7) + '" r="4" fill="#93B34E"/><circle cx="' + (cx + 26) + '" cy="' + (cy - 7) + '" r="4" fill="#93B34E"/>'; });
+    if (s.pahare) items.push(function(cx, cy){ var r = ''; for (var i = -1; i <= 1; i++) r += '<path d="M' + (cx + i * 16 - 6) + ' ' + (cy - 18) + 'h12l-2 18h-8z" fill="#F7E79A" stroke="#E5D3A0"/>'; return r; });
+    if (s.fursecuri) items.push(function(cx, cy){ return '<circle cx="' + (cx - 12) + '" cy="' + (cy - 6) + '" r="8" fill="#C98E52"/><circle cx="' + (cx + 4) + '" cy="' + (cy - 7) + '" r="8" fill="#B87A44"/><circle cx="' + (cx + 18) + '" cy="' + (cy - 6) + '" r="7" fill="#C98E52"/>'; });
+    if (s.praline) items.push(function(cx, cy){ var r = ''; for (var i = -2; i <= 2; i++) r += '<ellipse cx="' + (cx + i * 11) + '" cy="' + (cy - 7) + '" rx="5" ry="6.5" fill="' + ['#C22F4E','#2E8A6B','#E2B23A','#8A3A9C','#3E6FB0'][i + 2] + '"/>'; return r; });
+    if (s.tort) items.push(function(cx, cy){ return '<rect x="' + (cx - 20) + '" y="' + (cy - 32) + '" width="40" height="32" fill="#FBF7F2" stroke="#E5D3D8"/><ellipse cx="' + cx + '" cy="' + (cy - 32) + '" rx="20" ry="5" fill="#fff" stroke="#E5D3D8"/><circle cx="' + cx + '" cy="' + (cy - 38) + '" r="4" fill="#C22F4E"/>'; });
+    var pos = [[80, 140], [180, 100], [282, 150], [80, 208], [180, 208], [282, 208], [130, 208], [232, 208], [180, 60], [40, 208], [322, 208]];
+    items.slice(0, pos.length).forEach(function(f, i){ var px = pos[i][0], py = pos[i][1], sc = i < 3 ? 1.45 : 1.15; out += '<g class="etaj" style="animation-delay:' + (i * .05) + 's"><g transform="translate(' + px + ' ' + py + ') scale(' + sc + ') translate(' + (-px) + ' ' + (-py) + ')">' + f(px, py) + '</g></g>'; });
+    svg.innerHTML = out;
+  }
+
+  /* ---------- formulário ---------- */
+  var form = document.getElementById('form'), dataEl = document.getElementById('data'), tocou = {};
+  (function(){ var d = new Date(); d.setDate(d.getDate() + 1); dataEl.min = d.toISOString().slice(0, 10); })();
+  function dataTxt(){
+    if (!dataEl.value) return '';
+    var p = dataEl.value.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    return p[2] + '.' + p[1] + '.' + p[0] + ' (' + t('dias')[d.getDay()] + ')';
+  }
+  function lista(gname){ return Object.keys(ST[gname]).filter(function(k){ return ST[gname][k]; }).map(function(k){ return nomeOp(gname, k); }); }
+  function val(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; }
+  function linhas(){
+    var L = [];
+    if (MOD === 'tort'){
+      L.push([t('ocazie'), nomeOp('ocazie', ST.ocazie)]);
+      L.push([t('pers'), String(PERS)]);
+      L.push([t('forma'), nomeOp('forma', ST.forma) + ', ' + (ST.etaje === '1' ? t('etaj1') : ST.etaje + t('etajN'))]);
+      L.push([t('culoare'), nomeOp('culoare', ST.culoare)]);
+      if (ST.aroma) L.push([t('aroma'), nomeOp('aroma', ST.aroma)]);
+      var dd = lista('decor'); L.push([t('decor'), dd.length ? dd.join(', ') : t('alege')]);
+      if ((ST.mesaj || '').trim()) L.push([t('mesaj'), '„' + ST.mesaj.trim() + '”']);
+    } else {
+      L.push([t('eveniment'), nomeOp('eveniment', ST.eveniment)]);
+      L.push([t('invitati'), String(INV)]);
+      L.push([t('paleta'), nomeOp('paleta', ST.paleta)]);
+      var ds = lista('dulciuri'); L.push([t('dulciuri'), ds.length ? ds.join(', ') : t('alege')]);
+      if (val('locatie')) L.push([t('locatie'), val('locatie')]);
+    }
+    L.push([t('data'), dataTxt() || t('alege')]);
+    if (MOD === 'tort') L.push([t('rid'), document.getElementById('ridicare').selectedOptions[0].textContent]);
+    if (val('nume')) L.push([t('nume'), val('nume')]);
+    if (val('obs')) L.push([t('obs'), val('obs')]);
+    return L;
+  }
+  function faltas(){
+    var f = [];
+    if (MOD === 'candy' && !val('locatie')) f.push('locatie');
+    if (!dataEl.value) f.push('data');
+    if (!val('nume')) f.push('nume');
+    return f;
+  }
+  function mensagem(){
+    var M = [MOD === 'tort' ? t('olaT') : t('olaC')];
+    linhas().forEach(function(l){ M.push('• ' + l[0] + ': ' + l[1]); });
+    M.push(''); M.push(MOD === 'tort' ? t('fim') : t('fimC'));
+    return M.join('\n');
+  }
+  function atualiza(){
+    var r = document.getElementById('rezumat');
+    r.innerHTML = linhas().map(function(l){ return '<div class="rg"><span>' + esc(l[0]) + '</span><span>' + esc(l[1]) + '</span></div>'; }).join('');
+    var f = faltas(), mapa = {data:t('ldata'), nume:t('lnume'), locatie:t('lloc')};
+    document.getElementById('lipsa').textContent = f.length ? t('lipsa') + f.map(function(x){ return mapa[x]; }).join(', ') : '';
+    document.getElementById('trimite').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(mensagem());
+    [['data', t('eData')], ['nume', t('eNume')], ['locatie', t('eLoc')]].forEach(function(p){
+      var e = document.getElementById('err-' + p[0]); if (!e) return;
+      var mostra = tocou[p[0]] && f.indexOf(p[0]) > -1; e.hidden = !mostra; e.textContent = mostra ? p[1] : '';
+    });
+    var av = document.getElementById('aviz-data');
+    if (dataEl.value){ var p = dataEl.value.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]); av.hidden = d.getDay() !== 0 || MOD !== 'tort'; av.textContent = t('duminica'); } else av.hidden = true;
+    document.getElementById('persoane').textContent = PERS;
+    document.getElementById('invitati').textContent = INV;
+    document.getElementById('scena-tag').textContent = MOD === 'tort' ? t('tagT') : t('tagC');
+  }
+  form.addEventListener('change', function(e){
+    var el = e.target, gname = el.name;
+    if (O[gname]){
+      if (el.type === 'checkbox') ST[gname][el.value] = el.checked ? 1 : 0;
+      else ST[gname] = el.value;
+      desenhaTort();
+    }
+    atualiza();
+  });
+  form.addEventListener('input', function(e){ if (e.target.id === 'mesaj'){ ST.mesaj = e.target.value; desenhaTort(); } atualiza(); });
+  ['data','nume','locatie'].forEach(function(id){ document.getElementById(id).addEventListener('blur', function(){ tocou[id] = true; atualiza(); }); });
+  document.querySelectorAll('[data-p]').forEach(function(b){ b.addEventListener('click', function(){ PERS = Math.max(4, Math.min(150, PERS + +b.dataset.p)); atualiza(); }); });
+  document.querySelectorAll('[data-i]').forEach(function(b){ b.addEventListener('click', function(){ INV = Math.max(20, Math.min(500, INV + +b.dataset.i)); atualiza(); }); });
+  document.getElementById('trimite').addEventListener('click', function(e){
+    var f = faltas();
+    if (f.length){
+      e.preventDefault(); tocou.data = tocou.nume = tocou.locatie = true; atualiza();
+      var a = document.getElementById(f[0]); a.focus(); a.scrollIntoView({block:'center', behavior: reduz ? 'auto' : 'smooth'});
+    }
+  });
+  var tabs = [document.getElementById('tab-tort'), document.getElementById('tab-candy')];
+  function modo(m, foca){
+    MOD = m;
+    tabs.forEach(function(b){ var on = b.id === 'tab-' + m; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; if (on && foca) b.focus(); });
+    document.getElementById('panou-tort').hidden = m !== 'tort';
+    document.getElementById('panou-candy').hidden = m !== 'candy';
+    document.getElementById('camp-ridicare').hidden = m !== 'tort';
+    desenhaTort(); atualiza();
+  }
+  tabs.forEach(function(b, i){
+    b.addEventListener('click', function(){ modo(i ? 'candy' : 'tort'); history.replaceState(null, '', '#/comanda' + (i ? '?f=candy' : '')); });
+    b.addEventListener('keydown', function(e){ if (e.key === 'ArrowRight' || e.key === 'ArrowLeft'){ e.preventDefault(); modo(MOD === 'tort' ? 'candy' : 'tort', true); } });
+  });
+
+  /* ---------- horário ---------- */
+  var H = {0:null, 1:[540,1080], 2:[540,1080], 3:[540,1080], 4:[540,1080], 5:[540,1080], 6:[540,960]};
+  function agora(){
+    try {
+      var f = new Intl.DateTimeFormat('en-GB', {timeZone:'Europe/Bucharest', weekday:'short', hour:'2-digit', minute:'2-digit', hour12:false});
+      var p = {}; f.formatToParts(new Date()).forEach(function(x){ p[x.type] = x.value; });
+      return {d:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[p.weekday], m:(+p.hour % 24) * 60 + (+p.minute)};
+    } catch(e){ var n = new Date(); return {d:n.getDay(), m:n.getHours()*60 + n.getMinutes()}; }
+  }
+  function hm(m){ return String(Math.floor(m/60)).padStart(2,'0') + ':' + String(m%60).padStart(2,'0'); }
+  function estado(){
+    var a = agora(), h = H[a.d], ab = !!(h && a.m >= h[0] && a.m < h[1]), txt;
+    if (ab) txt = t('aberto') + t('ate') + hm(h[1]);
+    else {
+      var prox;
+      if (h && a.m < h[0]) prox = t('hoje') + hm(h[0]);
+      else for (var k = 1; k < 8; k++){ var d = (a.d + k) % 7; if (H[d]){ prox = (k === 1 ? t('amanha') : t('dias')[d] + ' ') + hm(H[d][0]); break; } }
+      txt = t('fechado') + t('abre') + prox;
+    }
+    document.querySelectorAll('[data-estado]').forEach(function(el){ el.classList.toggle('aberto', ab); el.querySelector('span').textContent = txt; });
+    document.querySelectorAll('[data-orar]').forEach(function(tb){
+      tb.innerHTML = '<caption class="sr">' + ({ro:'Program',en:'Opening hours',pt:'Horário'})[LANG] + '</caption>' + [1,2,3,4,5,6,0].map(function(d){
+        var x = H[d], nm = t('dias')[d];
+        return '<tr' + (d === a.d ? ' class="hoje"' : '') + '><th scope="row" data-azi="' + t('azi') + '">' + nm.charAt(0).toUpperCase() + nm.slice(1) + '</th><td>' + (x ? hm(x[0]) + '–' + hm(x[1]) : t('inchis')) + '</td></tr>';
+      }).join('');
+    });
+  }
+
+  /* ---------- língua ---------- */
+  function aplicaLingua(){
+    doc.lang = LANG === 'en' ? 'en' : LANG === 'pt' ? 'pt-PT' : 'ro';
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if (el.dataset.ro === undefined) el.dataset.ro = el.innerHTML;
+      el.innerHTML = LANG === 'ro' ? el.dataset.ro : (el.dataset[LANG] || el.dataset.en);
+    });
+    ['aria-label','alt','placeholder'].forEach(function(at){
+      var k = at.replace(/-(\w)/g, function(_, c){ return c.toUpperCase(); }), kU = k.charAt(0).toUpperCase() + k.slice(1);
+      document.querySelectorAll('[data-en-' + at + ']').forEach(function(el){
+        if (el.dataset['ro' + kU] === undefined) el.dataset['ro' + kU] = el.getAttribute(at) || '';
+        el.setAttribute(at, LANG === 'ro' ? el.dataset['ro' + kU] : (el.dataset[LANG + kU] || el.dataset['en' + kU]));
+      });
+    });
+    document.querySelectorAll('.lingua button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === LANG)); });
+    burger.setAttribute('aria-label', burger.getAttribute('aria-expanded') === 'true' ? t('fechar') : t('abrir'));
+    var ativa = document.querySelector('.pag.ativa');
+    if (ativa) document.title = ativa.dataset['titulo' + LANG.charAt(0).toUpperCase() + LANG.slice(1)];
+    var wa = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t('waCta'));
+    document.getElementById('cta-wa').href = wa;
+    document.querySelectorAll('.wa-link').forEach(function(a){ a.href = wa; });
+    desenhaChips(); desenhaTort(); estado(); atualiza();
+  }
+  document.querySelectorAll('.lingua button').forEach(function(b){
+    b.addEventListener('click', function(){ LANG = b.dataset.lang; try { localStorage.setItem(CHAVE, LANG); } catch(e){} aplicaLingua(); });
+  });
+
+  /* ---------- nav + burger ---------- */
+  var nav = document.getElementById('nav'), cta = document.getElementById('cta-movel');
+  function rolou(){ nav.classList.toggle('scrolled', window.scrollY > 8); cta.classList.toggle('vis', window.scrollY > 320 || !document.querySelector('.pag.ativa[data-pag=""]')); }
+  window.addEventListener('scroll', rolou, {passive:true});
+  var burger = document.querySelector('.burger'), menu = document.getElementById('menu-movel');
+  function fechaMenu(){ burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label', t('abrir')); menu.classList.remove('aberto'); document.body.style.overflow = ''; }
+  burger.addEventListener('click', function(){
+    var abre = burger.getAttribute('aria-expanded') !== 'true';
+    burger.setAttribute('aria-expanded', String(abre)); burger.setAttribute('aria-label', abre ? t('fechar') : t('abrir'));
+    menu.classList.toggle('aberto', abre); document.body.style.overflow = abre ? 'hidden' : '';
+    if (abre) menu.querySelector('a').focus();
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('aberto')){ fechaMenu(); burger.focus(); } });
+
+  /* ---------- revelação ---------- */
+  var io = ('IntersectionObserver' in window && !reduz) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:.08}) : null;
+  function observa(raiz){ raiz.querySelectorAll('.rv:not(.vis)').forEach(function(el){ if (io) io.observe(el); else el.classList.add('vis'); }); }
+
+  /* ---------- vídeos: só com movimento permitido, só quando visíveis ---------- */
+  function carregaVideo(v){
+    if (v.dataset.ok || reduz) return;
+    v.dataset.ok = 1;
+    var n = v.dataset.video;
+    v.innerHTML = '<source src="media/' + n + '.webm" type="video/webm"><source src="media/' + n + '.mp4" type="video/mp4">';
+    v.load();
+    v.addEventListener('error', function(){ v.remove(); }, true);
+  }
+  var vio = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting){ carregaVideo(v); if (!reduz){ var p = v.play(); if (p && p.catch) p.catch(function(){}); } }
+      else if (!v.paused) v.pause();
+    });
+  }, {threshold:.2}) : null;
+  document.querySelectorAll('video[data-video]').forEach(function(v){ if (reduz) return; if (vio) vio.observe(v); else { carregaVideo(v); v.play(); } });
+
+  /* ---------- router #/ ---------- */
+  var pags = [].slice.call(document.querySelectorAll('.pag')), primeira = true, abriu = false;
+  function mostra(){
+    if (location.hash && location.hash.indexOf('#/') !== 0) return;
+    var h = (location.hash || '').replace(/^#\/?/, ''), q = '';
+    if (h.indexOf('?') > -1){ q = h.split('?')[1]; h = h.split('?')[0]; }
+    var alvo = pags.filter(function(p){ return p.dataset.pag === h; })[0] || pags[0];
+    pags.forEach(function(p){ p.classList.toggle('ativa', p === alvo); });
+    document.title = alvo.dataset['titulo' + LANG.charAt(0).toUpperCase() + LANG.slice(1)];
+    var chave = '#/' + alvo.dataset.pag;
+    document.querySelectorAll('.nav-links a, .menu-movel a').forEach(function(a){ if (a.getAttribute('href') === chave) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+    fechaMenu();
+    if (!primeira){ window.scrollTo(0, 0); var tt = alvo.querySelector('.pg-t'); if (tt) tt.focus({preventScroll:true}); }
+    primeira = false;
+    if (alvo.dataset.pag === 'comanda') modo(new URLSearchParams(q).get('f') === 'candy' ? 'candy' : 'tort');
+    if (alvo.dataset.pag === 'atelier'){ var ifr = alvo.querySelector('iframe[data-src]'); if (ifr && !ifr.src) ifr.src = ifr.dataset.src; }
+    observa(alvo);
+    if (alvo.dataset.pag === '' && !abriu){ abriu = true; var cp = document.querySelector('.capac'); if (cp) cp.addEventListener('animationend', function(){ cp.classList.add('foi'); }); if (reduz) doc.classList.add('ini'); else requestAnimationFrame(function(){ requestAnimationFrame(function(){ doc.classList.add('ini'); }); }); }
+    rolou();
+  }
+  window.addEventListener('hashchange', mostra);
+
+  document.getElementById('an').textContent = new Date().getFullYear();
+  aplicaLingua();
+  mostra();
+  setInterval(estado, 60000);
+})();
+</script>
+</body>
+</html>

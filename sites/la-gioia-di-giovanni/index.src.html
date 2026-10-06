@@ -1,0 +1,1308 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Gioia di Giovanni · Pizzerie în centrul Iașului</title>
+<meta name="description" content="La Gioia di Giovanni — pizzerie pe Strada Anastasie Panu 46, Iași. Pizza scoasă din cuptor pe pală, la masă, la pachet sau cu livrare. Comandă pe WhatsApp: 0745 451 313.">
+<meta name="theme-color" content="#1A1310">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 56V34a24 22 0 0 1 48 0v22z' fill='%23C2703D'/%3E%3Cpath d='M18 56V38a14 12 0 0 1 28 0v18z' fill='%23FF7A2E'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "La Gioia di Giovanni",
+  "servesCuisine": ["Pizza", "Italiană"],
+  "telephone": "+40745451313",
+  "address": {"@type": "PostalAddress", "streetAddress": "Strada Anastasie Panu 46", "postalCode": "700019", "addressLocality": "Iași", "addressCountry": "RO"},
+  "geo": {"@type": "GeoCoordinates", "latitude": 47.161562, "longitude": 27.5900766},
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "164", "bestRating": "5"},
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "12:00", "closes": "22:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "23:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "13:00", "closes": "22:00"}
+  ],
+  "hasMenu": "#/meniu",
+  "acceptsReservations": "False"
+}
+</script>
+<style>
+/*__FONTES__*/
+:root{
+  --funingine:#1A1310;      /* fundo do forno */
+  --funingine-2:#251B16;
+  --cupru:#C2703D;          /* cúpula de cobre */
+  --cupru-claro:#E9A26B;
+  --jar:#FF7A2E;            /* brasa */
+  --jar-claro:#FFB15C;
+  --glazura:#FBFAF6;        /* vidrado branco da majólica */
+  --glazura-2:#F1EEE6;
+  --cobalt:#1D3F91;         /* azul da majólica */
+  --cobalt-tinta:#16295C;   /* texto */
+  --galben:#F2B632;         /* amarelo da majólica */
+  --rosu:#B8321A;           /* vermelho do tomate, texto sobre claro */
+  --busuioc:#2F7D4A;
+  --fum:#CDBBA8;            /* texto secundário sobre escuro */
+  --gri:#5A6275;            /* texto secundário sobre claro */
+  --r:18px;
+  --sombra:0 18px 40px -22px rgba(22,41,92,.45);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --disp:'Agbalumo', 'Rethink Sans', system-ui, sans-serif;
+  --corp:'Rethink Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono:'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --nav-h:64px;
+  --safe-b:env(safe-area-inset-bottom, 0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--nav-h) + 12px)}
+body{margin:0;font-family:var(--corp);font-size:17px;line-height:1.6;color:var(--cobalt-tinta);background:var(--glazura);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--galben);outline-offset:3px;border-radius:6px}
+[hidden]{display:none!important}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.salta{position:fixed;left:12px;top:-60px;z-index:100;background:var(--galben);color:var(--funingine);padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
+.salta:focus{top:12px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+
+/* ---------- faixa de apresentação ---------- */
+.demo{background:var(--galben);color:var(--funingine);font:600 11px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:8px 14px}
+.demo b{font-weight:600}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:var(--funingine);color:var(--glazura);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 10px 30px -12px rgba(0,0,0,.6)}
+.nav .wrap{display:flex;align-items:center;gap:20px;height:var(--nav-h)}
+.marca{display:flex;align-items:baseline;gap:6px;text-decoration:none;white-space:nowrap;margin-right:auto}
+.marca b{font:400 27px/1 var(--disp);color:var(--glazura)}
+.marca i{font:italic 400 14px/1 var(--corp);color:var(--jar-claro)}
+.nav-links{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav-links a{display:block;padding:10px 12px;text-decoration:none;font-weight:600;font-size:15px;color:var(--fum);border-radius:999px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--glazura);background:rgba(255,255,255,.06)}
+.nav-links a[aria-current=page]{color:var(--glazura);background:rgba(255,122,46,.16);box-shadow:inset 0 0 0 1px rgba(255,122,46,.4)}
+.lingua{display:flex;gap:2px;background:rgba(255,255,255,.06);border-radius:999px;padding:3px}
+.lingua button{border:0;background:transparent;color:var(--fum);font:600 12px/1 var(--mono);padding:8px 9px;border-radius:999px;min-width:36px;min-height:32px}
+.lingua button[aria-pressed=true]{background:var(--glazura);color:var(--funingine)}
+.lingua button[hidden]{display:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;border:0;font-weight:700;font-size:16px;text-decoration:none;transition:transform .2s var(--ease),box-shadow .2s,background .2s;touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-jar{background:var(--jar);color:var(--funingine);box-shadow:0 10px 30px -10px rgba(255,122,46,.7)}
+.btn-jar:hover{background:var(--jar-claro)}
+.btn-linha{background:transparent;color:var(--glazura);box-shadow:inset 0 0 0 1.5px rgba(251,250,246,.45)}
+.btn-linha:hover{box-shadow:inset 0 0 0 1.5px var(--glazura)}
+.btn-cobalt{background:var(--cobalt);color:#fff}
+.btn-cobalt:hover{background:#25499f}
+.btn-linha-c{background:transparent;color:var(--cobalt);box-shadow:inset 0 0 0 1.5px var(--cobalt)}
+.btn-linha-c:hover{background:rgba(29,63,145,.06)}
+.nav .btn{min-height:42px;padding:9px 18px;font-size:15px}
+.burger{display:none;width:46px;height:46px;border:0;background:rgba(255,255,255,.06);border-radius:12px;align-items:center;justify-content:center}
+.burger span{display:block;width:20px;height:2px;background:var(--glazura);position:relative;transition:transform .25s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--glazura);transition:transform .25s}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded=true] span::after{transform:translateY(-6px) rotate(-45deg)}
+.menu-movel{position:fixed;inset:var(--nav-h) 0 0 0;z-index:49;background:var(--funingine);color:var(--glazura);padding:24px 24px calc(120px + var(--safe-b));display:flex;flex-direction:column;gap:6px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility 0s .25s;overflow:auto}
+.menu-movel.aberto{opacity:1;transform:none;visibility:visible;transition:opacity .25s,transform .25s}
+.menu-movel a{font:400 34px/1.25 var(--disp);text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.menu-movel a[aria-current=page]{color:var(--jar-claro)}
+.menu-movel .lingua{align-self:flex-start;margin-top:18px}
+
+/* ---------- páginas ---------- */
+.pag{display:none}
+.pag.ativa{display:block;animation:entra .45s var(--ease)}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pg-t:focus{outline:none}
+.sec{padding:clamp(64px,9vw,112px) 0}
+.sec-escura{background:var(--funingine);color:var(--glazura)}
+.sec-glazura2{background:var(--glazura-2)}
+.ochi{font:600 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--rosu);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.sec-escura .ochi,.forno-sec .ochi{color:var(--jar-claro)}
+.ochi::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+h2,.h2{font:400 clamp(36px,5.4vw,64px)/1.02 var(--disp);margin:0 0 18px;letter-spacing:-.005em;color:var(--cobalt)}
+.sec-escura h2{color:var(--glazura)}
+h3{font-weight:700;font-size:21px;line-height:1.25;margin:0 0 8px}
+.lead{font-size:clamp(18px,2vw,20px);line-height:1.55;max-width:58ch;margin:0 0 24px}
+.mut{color:var(--gri)}
+.sec-escura .mut{color:var(--fum)}
+.cap{display:grid;gap:8px;margin-bottom:clamp(32px,5vw,52px)}
+
+/* selo "de confirmat" */
+.conf{display:inline-flex;align-items:center;gap:6px;font:500 11px/1 var(--mono);letter-spacing:.04em;color:var(--gri);background:repeating-linear-gradient(135deg,rgba(29,63,145,.07) 0 6px,transparent 6px 12px);border:1px dashed rgba(29,63,145,.35);padding:6px 9px;border-radius:999px;white-space:nowrap;vertical-align:middle}
+.conf::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--galben);box-shadow:0 0 0 2px rgba(242,182,50,.3)}
+.sec-escura .conf,.forno-sec .conf{color:var(--fum);border-color:rgba(251,250,246,.3);background:repeating-linear-gradient(135deg,rgba(251,250,246,.06) 0 6px,transparent 6px 12px)}
+
+/* faixa de majólica (divisor) */
+.maiolica{height:22px;background-color:var(--cobalt);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='22' viewBox='0 0 88 22'%3E%3Cpath d='M0 3h88M0 19h88' stroke='%23F2B632' stroke-width='2'/%3E%3Cpath d='M8 11c0-4 5-6 8-3s1 7-3 6M36 11c0 4 5 6 8 3s1-7-3-6' fill='none' stroke='%23F2B632' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='11' r='3' fill='%23FBFAF6'/%3E%3Ccircle cx='58' cy='11' r='2.4' fill='%23E2622B'/%3E%3Cpath d='M66 11c4-5 10-5 14 0-4 5-10 5-14 0z' fill='%23FBFAF6' opacity='.9'/%3E%3C/svg%3E");background-repeat:repeat-x;background-position:center}
+
+/* ---------- herói: a boca do forno ---------- */
+.forno-sec{position:relative;background:radial-gradient(120% 90% at 72% 70%,#3A1E10 0%,var(--funingine) 55%);color:var(--glazura);overflow:hidden;padding:clamp(36px,6vw,72px) 0 clamp(52px,7vw,88px)}
+.forno-sec::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 30% at 72% 78%,rgba(255,122,46,.18),transparent 70%);opacity:var(--brilho,.6)}
+.heroi{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,4vw,56px);align-items:center;position:relative;z-index:1}
+.heroi-txt{max-width:560px}
+.heroi h1{margin:0 0 20px;font-weight:400;line-height:.9;letter-spacing:-.01em}
+.heroi h1 .l1{display:block;font:400 clamp(66px,10.5vw,150px)/.88 var(--disp);color:var(--glazura)}
+.heroi h1 .l2{display:block;font:400 clamp(34px,4.6vw,62px)/1 var(--disp);color:var(--jar-claro);margin-top:6px;padding-left:.12em}
+.heroi .lead{color:#EDE3D6}
+.heroi-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+.fichas{display:flex;flex-wrap:wrap;gap:10px}
+.ficha{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.ficha svg{width:16px;height:16px;color:var(--galben)}
+.estado::before{content:"";width:8px;height:8px;border-radius:50%;background:#9AA0A6;flex:none}
+.estado.aberto::before{background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.18)}
+
+.forno{position:relative;width:100%;max-width:640px;margin-inline:auto;aspect-ratio:600/600}
+.forno svg.frente{position:absolute;inset:0;width:100%;height:100%;z-index:2;overflow:visible}
+.forno canvas{position:absolute;left:26%;top:41.2%;width:48%;height:38.6%;z-index:1;display:block;background:#140905}
+.forno .pala{position:absolute;z-index:3;left:34%;top:60%;width:32%;aspect-ratio:1;transform-origin:50% 40%}
+.pala .disco{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:#E8B76C;box-shadow:0 0 0 5px #F2B632,0 0 0 9px var(--cobalt),0 30px 40px -18px rgba(0,0,0,.8)}
+.pala .disco svg,.pala .disco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pala .disco img{object-position:50% 62%;transform:scale(1.55)}
+.pala .cabo{position:absolute;left:78%;top:70%;width:95%;height:9%;background:linear-gradient(#C99A5E,#8E6233);border-radius:6px;transform:rotate(28deg);transform-origin:0 50%;box-shadow:0 10px 20px -8px rgba(0,0,0,.7)}
+.forno .eticheta{position:absolute;z-index:4;right:2%;top:6%;font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--fum);text-align:right}
+.forno .eticheta b{display:block;color:var(--jar-claro);font-weight:600}
+
+/* coreografia de entrada */
+.js .heroi .l1,.js .heroi .l2,.js .heroi .lead,.js .heroi-cta,.js .fichas,.js .heroi .ochi{opacity:0;transform:translateY(22px)}
+.js .forno .cupola{opacity:0;transform:translateY(-18px)}
+.js .forno canvas{opacity:0}
+.js .forno .pala{opacity:0;transform:translate(0,-40%) scale(.42)}
+.ini .heroi .ochi{animation:sobe .7s var(--ease) .1s forwards}
+.ini .heroi .l1{animation:sobe .9s var(--ease) .25s forwards}
+.ini .heroi .l2{animation:sobe .9s var(--ease) .42s forwards}
+.ini .heroi .lead{animation:sobe .8s var(--ease) 1.5s forwards}
+.ini .heroi-cta{animation:sobe .8s var(--ease) 1.65s forwards}
+.ini .fichas{animation:sobe .8s var(--ease) 1.8s forwards}
+.ini .forno .cupola{animation:sobe .9s var(--ease) .15s forwards}
+.ini .forno canvas{animation:acende 1s ease-out .55s forwards}
+.ini .forno .pala{animation:scoate 1.15s cubic-bezier(.3,.9,.25,1) 1.15s forwards}
+@keyframes sobe{to{opacity:1;transform:none}}
+@keyframes acende{0%{opacity:0;filter:brightness(.2)}60%{opacity:1;filter:brightness(1.5)}100%{opacity:1;filter:none}}
+@keyframes scoate{0%{opacity:0;transform:translate(0,-40%) scale(.42)}18%{opacity:1}70%{transform:translate(0,12%) scale(1.04)}100%{opacity:1;transform:translate(0,8%) scale(1)}}
+
+/* marquee */
+.banda{background:var(--cobalt);color:var(--glazura);overflow:hidden;padding:14px 0;border-block:3px solid var(--galben)}
+.banda-trilho{display:flex;width:max-content;animation:rula 38s linear infinite}
+.banda span{font:400 24px/1 var(--disp);padding-right:28px;white-space:nowrap;display:flex;align-items:center;gap:28px}
+.banda span::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--galben);box-shadow:0 0 0 4px rgba(242,182,50,.25)}
+@keyframes rula{to{transform:translateX(-50%)}}
+
+/* ---------- cartões na pá ---------- */
+.palete{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,32px)}
+.pz{position:relative;display:flex;flex-direction:column;gap:14px}
+.pz .farfurie{position:relative;width:78%;aspect-ratio:1;border-radius:50%;margin:0 0 6px 4%;background:#E8B76C;box-shadow:0 0 0 6px var(--galben),0 0 0 11px var(--cobalt),var(--sombra);overflow:hidden;z-index:1}
+.pz .farfurie svg,.pz .farfurie img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pz .farfurie img{transform:scale(1.25);transition:transform .6s var(--ease)}
+.pz:hover .farfurie img{transform:scale(1.32) rotate(4deg)}
+.pz .coada{position:absolute;left:62%;top:calc(39% - 9px);width:46%;height:16px;border-radius:8px;background:linear-gradient(#D7AE73,#9C6E3C);transform-origin:0 50%;box-shadow:0 8px 14px -8px rgba(60,30,10,.6)}
+.pz h3{font:400 28px/1.05 var(--disp);color:var(--cobalt);margin:0}
+.pz p{margin:0;color:var(--gri);font-size:16px}
+.pz .rand{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:auto;padding-top:4px}
+.js .pz.rv .farfurie,.js .pz.rv .coada{transform:translateX(-46%) scale(.86);opacity:0;transition:transform .9s cubic-bezier(.3,.9,.25,1),opacity .5s}
+.js .pz.rv .coada{transform:translateX(-46%) scaleX(.6)}
+.js .pz.rv.vis .farfurie,.js .pz.rv.vis .coada{transform:none;opacity:1}
+.adauga{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px 8px 12px;border-radius:999px;border:1.5px solid var(--cobalt);background:transparent;color:var(--cobalt);font-weight:700;font-size:15px;transition:background .2s,color .2s,transform .2s}
+.adauga:hover{background:rgba(29,63,145,.07)}
+.adauga:active{transform:scale(.96)}
+.adauga svg{width:18px;height:18px}
+.adauga.are{background:var(--cobalt);color:#fff}
+.adauga .nr{font:600 12px/1 var(--mono);background:var(--galben);color:var(--funingine);border-radius:999px;padding:4px 7px;display:none}
+.adauga.are .nr{display:inline-block}
+
+/* revelação genérica */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.vis{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.1s}.js .rv.d2{transition-delay:.2s}.js .rv.d3{transition-delay:.3s}
+
+/* ---------- passos ---------- */
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:p;list-style:none;padding:0;margin:0 0 34px}
+.passos li{position:relative;padding:26px 22px 24px;border-radius:var(--r);background:var(--funingine-2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.passos li::before{counter-increment:p;content:counter(p);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--jar);color:var(--funingine);font:400 24px/1 var(--disp);margin-bottom:16px}
+.passos h3{color:var(--glazura)}
+.passos p{margin:0;color:var(--fum)}
+
+/* ---------- avaliações ---------- */
+.aval{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(24px,5vw,64px);align-items:start}
+.nota{position:relative;aspect-ratio:1;max-width:340px;border-radius:50%;display:grid;place-content:center;text-align:center;background:var(--glazura);box-shadow:0 0 0 10px var(--galben),0 0 0 18px var(--cobalt),0 0 0 22px var(--galben),var(--sombra)}
+.nota b{font:400 clamp(88px,12vw,130px)/.9 var(--disp);color:var(--cobalt)}
+.nota span{font:600 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--gri)}
+.nota .stele{color:var(--galben);font-size:22px;letter-spacing:4px;margin:6px 0 4px}
+.teme{display:grid;gap:14px;list-style:none;margin:0;padding:0}
+.teme li{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;padding:18px 20px;background:#fff;border-radius:var(--r);box-shadow:0 1px 0 rgba(22,41,92,.08),0 12px 26px -20px rgba(22,41,92,.4)}
+.teme svg{width:52px;height:52px}
+.teme h3{margin:2px 0 4px;color:var(--cobalt)}
+.teme p{margin:0;color:var(--gri);font-size:16px}
+
+/* ---------- fotos ---------- */
+.foto{position:relative;overflow:hidden;border-radius:var(--r);background:var(--funingine-2)}
+.foto>svg,.foto>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.foto figcaption{position:absolute;left:12px;bottom:12px;z-index:2;font:500 11px/1.3 var(--mono);letter-spacing:.04em;text-transform:uppercase;background:rgba(26,19,16,.78);color:var(--glazura);padding:7px 10px;border-radius:8px}
+.duo{display:grid;grid-template-columns:3fr 2fr;gap:18px}
+.duo .foto{aspect-ratio:4/3}
+.duo .foto.alta{aspect-ratio:auto;min-height:100%}
+
+/* horário */
+.orar{width:100%;border-collapse:collapse;font-size:16px}
+.orar th,.orar td{text-align:left;padding:11px 0;border-bottom:1px solid rgba(29,63,145,.12)}
+.orar td{text-align:right;font-family:var(--mono);font-size:14px}
+.sec-escura .orar th,.sec-escura .orar td{border-color:rgba(255,255,255,.1)}
+.orar tr.hoje th,.orar tr.hoje td{color:var(--rosu);font-weight:700}
+.sec-escura .orar tr.hoje th,.sec-escura .orar tr.hoje td{color:var(--jar-claro)}
+.orar tr.hoje th::after{content:" · " attr(data-azi)}
+
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.cartao{background:#fff;border-radius:var(--r);padding:clamp(22px,3vw,32px);box-shadow:0 1px 0 rgba(22,41,92,.08),0 18px 36px -26px rgba(22,41,92,.45)}
+.cartao h3{color:var(--cobalt)}
+.sec-escura .cartao{background:var(--funingine-2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.sec-escura .cartao h3{color:var(--glazura)}
+.linha-contact{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(29,63,145,.1)}
+.linha-contact:last-child{border-bottom:0}
+.linha-contact svg{width:22px;height:22px;flex:none;margin-top:3px;color:var(--rosu)}
+.linha-contact a{font-weight:700;text-decoration-color:rgba(29,63,145,.3);text-underline-offset:3px}
+
+/* ---------- carta ---------- */
+.carta-cap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;margin-bottom:28px}
+.filtre{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 36px;position:sticky;top:calc(var(--nav-h) + 8px);z-index:5;padding:8px;background:rgba(251,250,246,.94);border-radius:999px;box-shadow:0 8px 24px -18px rgba(22,41,92,.6);width:max-content;max-width:100%}
+.filtre button{border:0;background:transparent;font-weight:700;font-size:15px;padding:9px 16px;border-radius:999px;color:var(--cobalt);min-height:42px}
+.filtre button[aria-pressed=true]{background:var(--cobalt);color:#fff}
+.grupa{margin-bottom:56px}
+.grupa>h2{font-size:clamp(32px,4.4vw,48px);display:flex;align-items:center;gap:16px}
+.grupa>h2::after{content:"";flex:1;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--galben),rgba(242,182,50,0))}
+.bauturi{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.baut{display:flex;align-items:center;gap:14px;padding:14px 16px;background:#fff;border-radius:16px;box-shadow:0 1px 0 rgba(22,41,92,.08)}
+.baut svg.ic{width:34px;height:34px;flex:none}
+.baut div{flex:1;min-width:0}
+.baut b{display:block;font-size:16px}
+.baut small{color:var(--gri);font-size:14px}
+.baut .adauga{padding:6px 10px;min-height:40px}
+
+/* ---------- comanda ---------- */
+.cmd{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,48px);align-items:start}
+fieldset{border:0;margin:0 0 30px;padding:0;min-width:0}
+legend{font:400 30px/1.1 var(--disp);color:var(--cobalt);margin-bottom:14px;padding:0}
+.alegeri{display:grid;gap:10px}
+.alege{display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center;padding:10px 12px;background:#fff;border-radius:16px;box-shadow:0 1px 0 rgba(22,41,92,.08)}
+.alege .mini{width:56px;height:56px;border-radius:50%;overflow:hidden;position:relative;background:#E8B76C;box-shadow:0 0 0 3px var(--galben)}
+.alege .mini svg,.alege .mini img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.alege .mini img{transform:scale(1.3)}
+.alege b{display:block;font-size:16px;line-height:1.3}
+.alege small{display:block;color:var(--gri);font-size:13.5px;line-height:1.4}
+.pas{display:flex;align-items:center;gap:4px;background:var(--glazura-2);border-radius:999px;padding:3px}
+.pas button{width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:var(--cobalt);font:700 20px/1 var(--corp);box-shadow:0 1px 2px rgba(22,41,92,.2)}
+.pas button:disabled{opacity:.4;cursor:not-allowed}
+.pas output{min-width:24px;text-align:center;font:600 15px/1 var(--mono)}
+.seg{display:flex;flex-wrap:wrap;gap:10px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.seg label>span{display:flex;align-items:center;gap:8px;min-height:48px;padding:10px 18px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(29,63,145,.25);font-weight:700;transition:background .2s,box-shadow .2s}
+.seg input:checked+span{background:var(--cobalt);color:#fff;box-shadow:none}
+.seg input:focus-visible+span{outline:3px solid var(--galben);outline-offset:2px}
+.seg input:disabled+span{opacity:.45;text-decoration:line-through}
+.camp{display:grid;gap:6px;margin-top:14px}
+.camp label{font-weight:700;font-size:15px}
+.camp input,.camp select,.camp textarea{width:100%;min-height:48px;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(29,63,145,.28);background:#fff;font-size:16px}
+.camp textarea{min-height:84px;resize:vertical}
+.camp input:focus,.camp select:focus,.camp textarea:focus{outline:none;border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(242,182,50,.55)}
+.camp .ajuda{font-size:14px;color:var(--gri)}
+.camp .err{font-size:14px;color:var(--rosu);font-weight:600}
+.aviz{margin:12px 0 0;padding:12px 14px;border-radius:12px;background:rgba(242,182,50,.18);font-size:15px}
+
+/* talão de comanda */
+.talon-loc{position:sticky;top:calc(var(--nav-h) + 20px)}
+.talon{position:relative;background:#FFFDF8;color:#2B2420;font:400 13px/1.7 var(--mono);padding:30px 24px 26px;box-shadow:0 26px 40px -24px rgba(26,19,16,.55);transform:rotate(-1deg);--dinte:radial-gradient(circle at 8px 0,transparent 7px,#FFFDF8 7.5px);}
+.talon::before,.talon::after{content:"";position:absolute;left:0;right:0;height:10px;background:radial-gradient(circle at 8px 10px,var(--glazura) 6px,transparent 6.5px) 0 0/16px 10px repeat-x}
+.talon::before{top:-1px}
+.talon::after{bottom:-1px;transform:scaleY(-1)}
+.talon h3{font:600 15px/1.2 var(--mono);letter-spacing:.14em;text-align:center;margin:0 0 4px}
+.talon .sub{text-align:center;color:#6B5E55;font-size:11px;margin:0 0 14px}
+.talon hr{border:0;border-top:1.5px dashed #BFB2A6;margin:12px 0}
+.talon ul{list-style:none;margin:0;padding:0}
+.talon li{display:flex;gap:10px}
+.talon li .q{min-width:34px;font-weight:600}
+.talon .gol{color:#8A7D72;text-align:center;padding:14px 0}
+.talon .rg{display:flex;justify-content:space-between;gap:12px}
+.talon .rg span:first-child{color:#6B5E55}
+.talon .rg span:last-child{text-align:right}
+.talon .stampila{position:absolute;right:16px;bottom:58px;transform:rotate(-12deg);border:2px solid var(--rosu);color:var(--rosu);font:600 11px/1.2 var(--mono);letter-spacing:.1em;padding:6px 8px;border-radius:6px;opacity:0;transition:opacity .3s,transform .3s}
+.talon.gata .stampila{opacity:.85;transform:rotate(-8deg)}
+.talon-cta{margin-top:22px;display:grid;gap:10px}
+.talon-cta .btn{width:100%}
+.talon-cta p{font-size:14px;color:var(--gri);margin:0;text-align:center}
+.lipsa{color:var(--rosu);font-weight:600;font-size:15px;text-align:center;margin:0}
+
+/* pílula do carrinho */
+.cos{position:fixed;right:18px;bottom:calc(18px + var(--safe-b));z-index:45;display:none;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:var(--cobalt);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 14px 30px -12px rgba(22,41,92,.8);transition:transform .25s var(--ease)}
+.cos.vis{display:inline-flex}
+.cos b{font:600 13px/1 var(--mono);background:var(--galben);color:var(--funingine);border-radius:999px;padding:5px 8px}
+.cos.salt{animation:salt .45s var(--ease)}
+@keyframes salt{40%{transform:translateY(-8px) scale(1.06)}}
+
+/* ---------- casa ---------- */
+.capitol{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center;padding:clamp(40px,6vw,72px) 0}
+.capitol+.capitol{border-top:1px solid rgba(29,63,145,.1)}
+.capitol.inv .foto{order:2}
+.capitol .foto{aspect-ratio:4/5}
+.galerie{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;grid-auto-flow:dense;gap:12px}
+.galerie .foto:nth-child(1){grid-row:span 2}
+.galerie .foto:nth-child(4){grid-column:span 2}
+.galerie .foto:nth-child(6){grid-row:span 2}
+.galerie .foto:nth-child(8){grid-column:span 2}
+
+/* mapa */
+.harta{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:#D9DEE8}
+.harta svg{position:absolute;inset:0;width:100%;height:100%}
+.harta iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* ---------- rodapé ---------- */
+footer{background:var(--funingine);color:var(--fum);padding:56px 0 calc(110px + var(--safe-b));font-size:15px}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+footer .marca b{font-size:36px}
+footer h3{color:var(--glazura);font-size:14px;font-family:var(--mono);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{color:var(--glazura);text-underline-offset:3px;text-decoration-color:rgba(251,250,246,.3)}
+.legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;font-size:13px}
+.legal .anpc{display:flex;gap:10px;flex-wrap:wrap}
+.legal .anpc a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.06);text-decoration:none;font-weight:600;font-size:13px}
+
+/* CTA fixo no telemóvel */
+.cta-movel{display:none}
+
+/* ---------- responsivo ---------- */
+@media (max-width:980px){
+  .nav-links,.nav .btn-nav{display:none}
+  .nav .lingua{display:none}
+  .burger{display:inline-flex}
+  .heroi{grid-template-columns:1fr}
+  .heroi-txt{max-width:none}
+  .forno{max-width:520px}
+  .palete{grid-template-columns:1fr 1fr}
+  .cmd{grid-template-columns:1fr}
+  .talon-loc{position:static}
+  .aval,.info-grid,.capitol,.duo{grid-template-columns:1fr}
+  .capitol.inv .foto{order:0}
+  .nota{margin-inline:auto;width:min(300px,80%)}
+  .galerie{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+  .galerie .foto:nth-child(1),.galerie .foto:nth-child(6){grid-row:span 1}
+  footer .wrap{grid-template-columns:1fr 1fr}
+  footer .wrap>div:first-child{grid-column:1/-1}
+}
+@media (max-width:680px){
+  body{font-size:16.5px}
+  .wrap{width:calc(100% - 32px)}
+  .marca b{font-size:24px}
+  .marca i{font-size:13px}
+  .forno-sec{padding-top:24px}
+  .heroi{display:flex;flex-direction:column;gap:0}
+  .heroi-txt{display:contents}
+  .heroi .ochi{order:1}.heroi h1{order:2}.forno{order:3;max-width:330px;margin:-6px auto 6px}.heroi .lead{order:4}.heroi-cta{order:5}.fichas{order:6}
+  .heroi h1 .l1{font-size:64px}
+  .heroi h1 .l2{font-size:32px}
+  .heroi .lead{text-align:center}
+  .heroi-cta,.fichas{justify-content:center}
+  .heroi h1{margin-bottom:14px}
+  .forno .eticheta{display:none}
+  .passos{grid-template-columns:1fr}
+  .palete{grid-template-columns:1fr;gap:34px}
+  .pz{display:grid;grid-template-columns:44% 1fr;gap:6px 18px;align-items:center}
+  .pz .farfurie{width:100%;margin:0;grid-row:span 3}
+  .pz .coada{display:none}
+  .pz h3{font-size:24px}
+  .pz p{font-size:15px}
+  .pz .rand{grid-column:2}
+  .carta-cap{grid-template-columns:1fr}
+  .filtre{border-radius:18px;width:auto}
+  .filtre button{padding:8px 12px;font-size:14px}
+  .alege{grid-template-columns:48px 1fr;row-gap:8px}
+  .alege .mini{width:48px;height:48px}
+  .alege .pas{grid-column:2;justify-self:start}
+  .capitol .foto{aspect-ratio:4/3}
+  .galerie{grid-auto-rows:150px;gap:8px}
+  .talon{transform:none}
+  .cta-movel{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:46;padding:10px 12px calc(10px + var(--safe-b));background:rgba(26,19,16,.97);border-top:1px solid rgba(255,255,255,.08);transform:translateY(110%);transition:transform .35s var(--ease)}
+  .cta-movel.vis{transform:none}
+  .cta-movel .btn{min-height:50px;font-size:15px;padding:10px 12px}
+  .cos{bottom:calc(84px + var(--safe-b));right:12px}
+  footer .wrap{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .js .rv,.js .pz.rv .farfurie,.js .pz.rv .coada{opacity:1;transform:none}
+  .js .heroi .l1,.js .heroi .l2,.js .heroi .lead,.js .heroi-cta,.js .fichas,.js .heroi .ochi,.js .forno .cupola,.js .forno canvas{opacity:1;transform:none;animation:none}
+  .js .forno .pala{opacity:1;transform:translate(0,8%);animation:none}
+  .banda-trilho{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="salta" href="#continut" data-en="Skip to content" data-pt="Saltar para o conteúdo">Sari la conținut</a>
+<div class="demo" role="note"><b>Prezentare Pacheco Studios</b> · <span data-en="website proposal for La Gioia di Giovanni" data-pt="proposta de site para a La Gioia di Giovanni">propunere de site pentru La Gioia di Giovanni</span></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="marca" href="#/" aria-label="La Gioia di Giovanni — acasă" data-en-aria-label="La Gioia di Giovanni — home" data-pt-aria-label="La Gioia di Giovanni — início"><b>La Gioia</b><i>di Giovanni</i></a>
+    <nav aria-label="Principal" data-en-aria-label="Main" data-pt-aria-label="Principal">
+      <ul class="nav-links">
+        <li><a href="#/" data-en="Home" data-pt="Início">Acasă</a></li>
+        <li><a href="#/meniu" data-en="Menu" data-pt="Carta">Meniu</a></li>
+        <li><a href="#/comanda" data-en="Order" data-pt="Encomendar">Comandă</a></li>
+        <li><a href="#/casa" data-en="The house" data-pt="A casa">Despre noi</a></li>
+        <li><a href="#/vizita" data-en="Visit" data-pt="Visitar">Vizită</a></li>
+      </ul>
+    </nav>
+    <div class="lingua" role="group" aria-label="Limba" data-en-aria-label="Language" data-pt-aria-label="Língua">
+      <button type="button" data-lang="ro" aria-pressed="true">RO</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="pt" aria-pressed="false" hidden>PT</button>
+    </div>
+    <a class="btn btn-jar btn-nav" href="#/comanda" data-en="Order now" data-pt="Encomendar">Comandă acum</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu-movel" aria-label="Deschide meniul"><span></span></button>
+  </div>
+</header>
+<div class="menu-movel" id="menu-movel">
+  <a href="#/" data-en="Home" data-pt="Início">Acasă</a>
+  <a href="#/meniu" data-en="Menu" data-pt="Carta">Meniu</a>
+  <a href="#/comanda" data-en="Order" data-pt="Encomendar">Comandă</a>
+  <a href="#/casa" data-en="The house" data-pt="A casa">Despre noi</a>
+  <a href="#/vizita" data-en="Visit" data-pt="Visitar">Vizită</a>
+  <div class="lingua" role="group" aria-label="Limba" data-en-aria-label="Language" data-pt-aria-label="Língua">
+    <button type="button" data-lang="ro" aria-pressed="true">RO</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="pt" aria-pressed="false" hidden>PT</button>
+  </div>
+</div>
+
+<noscript>
+  <div style="padding:24px;background:#fff;color:#16295C">
+    <p><strong>La Gioia di Giovanni</strong> — pizzerie, Strada Anastasie Panu 46, 700019 Iași. Telefon / WhatsApp: <a href="tel:+40745451313">0745 451 313</a>.</p>
+    <p>Program: luni închis · marți–joi 12–22 · vineri–sâmbătă 12–23 · duminică 13–22.</p>
+    <p><a href="https://anpc.ro/ce-este-sal/">ANPC — SAL</a> · <a href="https://ec.europa.eu/consumers/odr">SOL / ODR</a></p>
+  </div>
+</noscript>
+
+<main id="continut">
+
+<!-- ======================= ACASĂ ======================= -->
+<section class="pag" data-pag="" data-titulo-ro="La Gioia di Giovanni · Pizzerie în centrul Iașului" data-titulo-en="La Gioia di Giovanni · Pizzeria in central Iași" data-titulo-pt="La Gioia di Giovanni · Pizzaria no centro de Iași">
+  <div class="forno-sec">
+    <div class="wrap heroi">
+      <div class="heroi-txt">
+        <p class="ochi" data-en="Pizzeria · Anastasie Panu 46, Iași" data-pt="Pizzaria · Anastasie Panu 46, Iași">Pizzerie · Anastasie Panu 46, Iași</p>
+        <h1 class="pg-t" tabindex="-1"><span class="l1">La Gioia</span><span class="l2">di Giovanni</span></h1>
+        <p class="lead" data-en="Pizza pulled from the copper oven on the peel, with puffed, fire-spotted edges. Eat in, take it away, or order it delivered." data-pt="Pizza tirada do forno de cobre na pá, com bordas altas e manchadas de fogo. Come cá, leva para casa ou pede com entrega.">Pizza scoasă pe pală din cuptorul de cupru, cu marginile umflate și pătate de foc. O mănânci aici, o iei la pachet sau o comanzi cu livrare.</p>
+        <div class="heroi-cta">
+          <a class="btn btn-jar" href="#/comanda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h13M12 6l6 6-6 6"/></svg><span data-en="Build your order" data-pt="Montar a encomenda">Fă-ți comanda</span></a>
+          <a class="btn btn-linha" href="#/meniu" data-en="See the menu" data-pt="Ver a carta">Vezi meniul</a>
+        </div>
+        <div class="fichas">
+          <span class="ficha"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><span data-en="5.0 on Google · 164 reviews" data-pt="5,0 no Google · 164 avaliações">5,0 pe Google · 164 de recenzii</span></span>
+          <span class="ficha estado" data-estado><span>…</span></span>
+        </div>
+      </div>
+      <div class="forno" aria-hidden="true">
+        <canvas id="foc" width="280" height="220"></canvas>
+        <svg class="frente" viewBox="0 0 600 600">
+          <defs>
+            <linearGradient id="g-cupru" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F0B27C"/><stop offset=".35" stop-color="#C9783F"/><stop offset=".7" stop-color="#93491F"/><stop offset="1" stop-color="#5E2A12"/>
+            </linearGradient>
+            <radialGradient id="g-reflexo" cx=".35" cy=".3" r=".5"><stop offset="0" stop-color="#FFE3C2" stop-opacity=".75"/><stop offset="1" stop-color="#FFE3C2" stop-opacity="0"/></radialGradient>
+            <radialGradient id="g-brilho" cx=".5" cy="1" r=".75"><stop offset="0" stop-color="#FF8A3D" stop-opacity=".9"/><stop offset="1" stop-color="#FF8A3D" stop-opacity="0"/></radialGradient>
+            <pattern id="p-martelo" width="64" height="52" patternUnits="userSpaceOnUse"><g fill="#fff"><ellipse cx="8" cy="7" rx="7" ry="5.5" opacity=".1"/><ellipse cx="31" cy="12" rx="5" ry="4.2" opacity=".07"/><ellipse cx="52" cy="6" rx="8" ry="6" opacity=".09"/><ellipse cx="18" cy="31" rx="6.5" ry="5" opacity=".08"/><ellipse cx="44" cy="36" rx="7.5" ry="6" opacity=".1"/><ellipse cx="60" cy="27" rx="4" ry="3.4" opacity=".06"/></g><g fill="#3a1606"><ellipse cx="11" cy="11" rx="6" ry="3.5" opacity=".09"/><ellipse cx="55" cy="10" rx="7" ry="4" opacity=".08"/><ellipse cx="21" cy="35" rx="5.5" ry="3.2" opacity=".07"/><ellipse cx="47" cy="40" rx="6.5" ry="3.8" opacity=".09"/><ellipse cx="33" cy="47" rx="5" ry="3" opacity=".06"/></g></pattern>
+            <linearGradient id="g-ferro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E2724"/><stop offset="1" stop-color="#161210"/></linearGradient>
+            <linearGradient id="g-piatra" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A4441"/><stop offset="1" stop-color="#26211F"/></linearGradient>
+          </defs>
+          <g class="cupola">
+            <path d="M58 300C58 128 172 44 300 44S542 128 542 300Z" fill="url(#g-cupru)"/>
+            <path d="M58 300C58 128 172 44 300 44S542 128 542 300Z" fill="url(#p-martelo)"/>
+            <path d="M58 300C58 128 172 44 300 44S542 128 542 300Z" fill="url(#g-reflexo)"/>
+            <path id="dom-brilho" d="M58 300C58 128 172 44 300 44S542 128 542 300Z" fill="url(#g-brilho)" opacity=".25"/>
+            <path d="M120 170C150 110 220 76 300 72" stroke="#FFE7CC" stroke-width="5" stroke-linecap="round" fill="none" opacity=".45"/>
+            <rect x="44" y="290" width="512" height="30" rx="6" fill="#7A3A18"/>
+            <rect x="44" y="290" width="512" height="6" rx="3" fill="#E9A26B" opacity=".55"/>
+            <g fill="#F3C08E" opacity=".8"><circle cx="70" cy="306" r="3.2"/><circle cx="130" cy="306" r="3.2"/><circle cx="190" cy="306" r="3.2"/><circle cx="410" cy="306" r="3.2"/><circle cx="470" cy="306" r="3.2"/><circle cx="530" cy="306" r="3.2"/></g>
+          </g>
+          <path fill="url(#g-ferro)" fill-rule="evenodd" d="M136 486V296Q136 228 204 228H396Q464 228 464 296V486ZM156 476V340A144 100 0 0 1 444 340V476Z"/>
+          <path d="M156 476V340A144 100 0 0 1 444 340V476" fill="none" stroke="#C2703D" stroke-width="9"/>
+          <path d="M156 476V340A144 100 0 0 1 444 340V476" fill="none" stroke="#F0B27C" stroke-width="2" opacity=".6" transform="translate(0 -3)"/>
+          <rect x="84" y="474" width="432" height="30" rx="5" fill="url(#g-piatra)"/>
+          <rect x="84" y="474" width="432" height="4" rx="2" fill="#7A726D"/>
+          <rect x="128" y="504" width="344" height="78" fill="#1C1715"/>
+          <rect x="146" y="520" width="146" height="46" rx="4" fill="none" stroke="#7A3A18" stroke-width="3"/>
+          <rect x="308" y="520" width="146" height="46" rx="4" fill="none" stroke="#7A3A18" stroke-width="3"/>
+          <rect x="198" y="540" width="42" height="6" rx="3" fill="#C2703D"/><rect x="360" y="540" width="42" height="6" rx="3" fill="#C2703D"/>
+        </svg>
+        <div class="pala">
+          <div class="cabo"></div>
+          <div class="disco">
+            <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#E3A85E"/><circle cx="50" cy="50" r="40" fill="#C8341C"/><g fill="#F7EEDC"><circle cx="38" cy="40" r="8"/><circle cx="62" cy="36" r="7"/><circle cx="56" cy="62" r="9"/><circle cx="34" cy="64" r="6"/></g><g fill="#2F7D4A"><ellipse cx="48" cy="50" rx="5" ry="3" transform="rotate(30 48 50)"/><ellipse cx="66" cy="52" rx="4" ry="2.4"/></g></svg>
+            <img src="media/margherita-pe-pala.webp" alt="" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="eticheta"><b data-en="Copper oven" data-pt="Forno de cobre">Cuptor de cupru</b><span data-en="the pizza comes out on the peel" data-pt="a pizza sai na pá">pizza iese pe pală</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="banda" aria-hidden="true"><div class="banda-trilho">
+    <span data-en="Margherita" data-pt="Margherita">Margherita</span><span data-en="Spicy salami" data-pt="Salame picante">Salam picant</span><span data-en="Pick-up" data-pt="Levantar">Ridicare din local</span><span data-en="Delivery" data-pt="Entrega">Livrare</span><span>Tiramisu</span><span data-en="Terrace" data-pt="Esplanada">Terasă</span><span data-en="Sweet pizza" data-pt="Pizza doce">Pizza dulce</span><span data-en="Copper oven" data-pt="Forno de cobre">Cuptor de cupru</span>
+    <span data-en="Margherita" data-pt="Margherita">Margherita</span><span data-en="Spicy salami" data-pt="Salame picante">Salam picant</span><span data-en="Pick-up" data-pt="Levantar">Ridicare din local</span><span data-en="Delivery" data-pt="Entrega">Livrare</span><span>Tiramisu</span><span data-en="Terrace" data-pt="Esplanada">Terasă</span><span data-en="Sweet pizza" data-pt="Pizza doce">Pizza dulce</span><span data-en="Copper oven" data-pt="Forno de cobre">Cuptor de cupru</span>
+  </div></div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="cap rv">
+        <p class="ochi" data-en="Straight from the oven" data-pt="Acabadas de sair do forno">Direct din cuptor</p>
+        <h2 data-en="Three to start with" data-pt="Três para começar">Trei, ca să începi</h2>
+        <p class="lead mut" data-en="Thin in the middle, tall at the rim, a few dark spots where the flame touched. Tap “Add” and they go straight into your order." data-pt="Fina no meio, alta na borda, umas manchas escuras onde a chama tocou. Toca em “Juntar” e vão direto para a tua encomenda.">Subțire la mijloc, înaltă pe margine, câteva pete închise unde a atins flacăra. Apeși „Adaugă” și intră direct în comanda ta.</p>
+      </div>
+      <div class="palete" data-palete="margherita,salam,ton"></div>
+      <p style="margin-top:40px" class="rv"><a class="btn btn-linha-c" href="#/meniu" data-en="The whole menu" data-pt="A carta toda">Tot meniul</a></p>
+    </div>
+  </section>
+
+  <div class="maiolica" aria-hidden="true"></div>
+
+  <section class="sec sec-escura">
+    <div class="wrap">
+      <div class="cap rv">
+        <p class="ochi" data-en="Ordering" data-pt="Encomendar">Cum comanzi</p>
+        <h2 data-en="Three taps, one message" data-pt="Três toques, uma mensagem">Trei atingeri, un mesaj</h2>
+      </div>
+      <ol class="passos">
+        <li class="rv"><h3 data-en="Pick the pizzas" data-pt="Escolhe as pizzas">Alegi pizzele</h3><p data-en="From the menu or straight on the order page, with quantities." data-pt="Na carta ou direto na página de encomenda, com quantidades.">Din meniu sau direct pe pagina de comandă, cu bucățile.</p></li>
+        <li class="rv d1"><h3 data-en="Pick-up or delivery" data-pt="Levantar ou entrega">Ridicare sau livrare</h3><p data-en="Choose the time, and the address if we deliver." data-pt="Escolhe a hora e, se for entrega, a morada.">Alegi ora și, dacă vrei livrare, adresa.</p></li>
+        <li class="rv d2"><h3 data-en="Send on WhatsApp" data-pt="Enviar por WhatsApp">Trimiți pe WhatsApp</h3><p data-en="The message is already written. We reply with the total and the time." data-pt="A mensagem já vai escrita. Respondemos com o total e a hora.">Mesajul e deja scris. Îți răspundem cu totalul și ora.</p></li>
+      </ol>
+      <a class="btn btn-jar rv" href="#/comanda" data-en="Start the order" data-pt="Começar a encomenda">Începe comanda</a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap aval">
+      <div class="nota rv" role="img" aria-label="5,0 din 5 pe Google, 164 de recenzii" data-en-aria-label="5.0 out of 5 on Google, 164 reviews" data-pt-aria-label="5,0 em 5 no Google, 164 avaliações">
+        <span aria-hidden="true" data-en="Google rating" data-pt="Nota no Google">Nota pe Google</span>
+        <b aria-hidden="true" data-en="5.0" data-pt="5,0">5,0</b>
+        <div class="stele" aria-hidden="true">★★★★★</div>
+        <span aria-hidden="true" data-en="164 reviews" data-pt="164 avaliações">164 de recenzii</span>
+      </div>
+      <div>
+        <div class="cap rv">
+          <p class="ochi" data-en="What guests keep saying" data-pt="O que os clientes repetem">Ce spun cei care au mâncat aici</p>
+          <h2 data-en="An Italian taste, in the centre of Iași" data-pt="Sabor italiano, no centro de Iași">Gust italian, în centrul Iașului</h2>
+        </div>
+        <ul class="teme">
+          <li class="rv"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="#F2B632"/><path d="M12 30c4-10 24-10 28 0" stroke="#1D3F91" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="20" cy="22" r="2.5" fill="#1D3F91"/><circle cx="31" cy="20" r="2" fill="#1D3F91"/></svg><div><h3 data-en="The dough" data-pt="A massa">Aluatul</h3><p data-en="Many mention an airy, light dough that stays crisp at the edges." data-pt="Muitos falam de uma massa arejada e leve, estaladiça nas bordas.">Mulți pomenesc un aluat aerat și ușor, crocant pe margini.</p></div></li>
+          <li class="rv d1"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="#1D3F91"/><path d="M16 34c2-9 9-15 20-18-1 11-8 18-20 18z" fill="#2F7D4A"/><path d="M16 34l14-12" stroke="#FBFAF6" stroke-width="2"/></svg><div><h3 data-en="The ingredients" data-pt="Os ingredientes">Ingredientele</h3><p data-en="Quality ingredients and that Italian taste come up again and again." data-pt="Ingredientes de qualidade e aquele sabor italiano aparecem uma e outra vez.">Ingredientele de calitate și gustul italian revin în aproape fiecare recenzie.</p></div></li>
+          <li class="rv d2"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="#B8321A"/><path d="M15 27l7 7 15-16" stroke="#FBFAF6" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3 data-en="The people" data-pt="As pessoas">Oamenii</h3><p data-en="Attentive staff and a fair price for what lands on the plate." data-pt="Pessoal atento e um preço justo pelo que chega ao prato.">Personal atent și un preț corect pentru ce ajunge în farfurie.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-glazura2">
+    <div class="wrap">
+      <div class="cap rv">
+        <p class="ochi" data-en="Inside and out" data-pt="Dentro e fora">Înăuntru și afară</p>
+        <h2 data-en="Tall windows, a terrace in the shade" data-pt="Janelas altas, esplanada à sombra">Ferestre înalte, terasă la umbră</h2>
+      </div>
+      <div class="duo">
+        <figure class="foto rv" style="margin:0">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#E9E4DA"/><rect x="40" y="20" width="160" height="150" fill="#CFD8E3"/><rect x="230" y="110" width="140" height="80" fill="#C2703D"/><rect y="230" width="400" height="70" fill="#D8D0C2"/></svg>
+          <img src="media/sala.webp" alt="Sala pizzeriei: mese rotunde, scaune de catifea și cuptorul de cupru în fund" data-en-alt="The dining room: round tables, velvet chairs and the copper oven at the back" data-pt-alt="A sala: mesas redondas, cadeiras de veludo e o forno de cobre ao fundo" loading="lazy" onerror="this.remove()">
+          <figcaption data-en="The dining room" data-pt="A sala">Sala</figcaption>
+        </figure>
+        <figure class="foto rv d1" style="margin:0">
+          <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="400" fill="#BFD3E6"/><path d="M0 90L150 40l150 50z" fill="#fff"/><rect y="260" width="300" height="140" fill="#C9C3B8"/></svg>
+          <img src="media/terasa.webp" alt="Terasa cu umbrele albe și mese albe" data-en-alt="The terrace with white umbrellas and tables" data-pt-alt="A esplanada com chapéus e mesas brancas" loading="lazy" onerror="this.remove()">
+          <figcaption data-en="The terrace" data-pt="A esplanada">Terasa</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-escura">
+    <div class="wrap info-grid">
+      <div class="rv">
+        <p class="ochi" data-en="Opening hours" data-pt="Horário">Program</p>
+        <h2 data-en="Lit from noon" data-pt="Aceso desde o meio-dia">Aprins de la prânz</h2>
+        <p class="lead mut" data-en="Closed on Mondays. Fridays and Saturdays the oven stays on until 23:00." data-pt="Fechado à segunda. À sexta e ao sábado o forno fica aceso até às 23:00.">Luni e închis. Vinerea și sâmbăta cuptorul stă aprins până la 23:00.</p>
+        <a class="btn btn-jar" href="#/vizita" data-en="How to get here" data-pt="Como chegar">Cum ajungi</a>
+      </div>
+      <div class="cartao rv d1"><table class="orar" data-orar></table></div>
+    </div>
+  </section>
+</section>
+
+<!-- ======================= MENIU ======================= -->
+<section class="pag" data-pag="meniu" data-titulo-ro="Meniu · La Gioia di Giovanni" data-titulo-en="Menu · La Gioia di Giovanni" data-titulo-pt="Carta · La Gioia di Giovanni">
+  <div class="sec" style="padding-top:clamp(40px,6vw,72px)">
+    <div class="wrap">
+      <div class="carta-cap">
+        <div>
+          <p class="ochi" data-en="Menu" data-pt="Carta">Meniu</p>
+          <h2 class="pg-t" tabindex="-1" data-en="What comes out of the oven" data-pt="O que sai do forno">Ce iese din cuptor</h2>
+          <p class="lead mut" style="margin-bottom:0" data-en="Pizza with red sauce, white pizza, a sweet one and tiramisu. Add what you fancy and send the order from the next page." data-pt="Pizza com molho de tomate, pizza branca, uma doce e tiramisu. Junta o que te apetecer e envia a encomenda na página seguinte.">Pizza cu sos de roșii, pizza albă, una dulce și tiramisu. Adaugi ce-ți place și trimiți comanda de pe pagina următoare.</p>
+        </div>
+        <span class="conf" data-en="names &amp; prices · to be confirmed" data-pt="nomes e preços · a confirmar">denumiri și prețuri · de confirmat</span>
+      </div>
+      <div class="filtre" role="group" aria-label="Filtrează meniul" data-en-aria-label="Filter the menu" data-pt-aria-label="Filtrar a carta">
+        <button type="button" data-f="" aria-pressed="true" data-en="All" data-pt="Tudo">Tot</button>
+        <button type="button" data-f="rosie" aria-pressed="false" data-en="Red base" data-pt="Base vermelha">Cu sos de roșii</button>
+        <button type="button" data-f="alba" aria-pressed="false" data-en="White" data-pt="Brancas">Albe</button>
+        <button type="button" data-f="dulce" aria-pressed="false" data-en="Sweet" data-pt="Doces">Dulciuri</button>
+        <button type="button" data-f="bauturi" aria-pressed="false" data-en="Drinks" data-pt="Bebidas">Băuturi</button>
+      </div>
+      <div class="grupa" data-g="rosie"><h2 data-en="With tomato sauce" data-pt="Com molho de tomate">Cu sos de roșii</h2><div class="palete" data-palete="margherita,salam,sunca,mixta,legume,ton,tonporumb"></div></div>
+      <div class="grupa" data-g="alba"><h2 data-en="White pizza" data-pt="Pizza branca">Pizza albă</h2><div class="palete" data-palete="albacarnati,albarosii"></div></div>
+      <div class="grupa" data-g="dulce"><h2 data-en="Something sweet" data-pt="Qualquer coisa doce">Ceva dulce</h2><div class="palete" data-palete="dulce,tiramisu"></div></div>
+      <div class="grupa" data-g="bauturi"><h2 data-en="Drinks" data-pt="Bebidas">Băuturi</h2><div class="bauturi" data-bauturi></div></div>
+      <p class="rv"><a class="btn btn-cobalt" href="#/comanda" data-en="Go to my order" data-pt="Ir para a encomenda">Mergi la comandă</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= COMANDĂ ======================= -->
+<section class="pag" data-pag="comanda" data-titulo-ro="Comandă · La Gioia di Giovanni" data-titulo-en="Order · La Gioia di Giovanni" data-titulo-pt="Encomendar · La Gioia di Giovanni">
+  <div class="sec sec-glazura2" style="padding-top:clamp(40px,6vw,72px)">
+    <div class="wrap">
+      <div class="cap">
+        <p class="ochi" data-en="Pick-up or delivery" data-pt="Levantar ou entrega">Ridicare sau livrare</p>
+        <h2 class="pg-t" tabindex="-1" data-en="Your order, written for you" data-pt="A tua encomenda, já escrita">Comanda ta, scrisă pentru tine</h2>
+        <p class="lead mut" data-en="Choose, and the slip on the right fills itself in. At the end it goes to us on WhatsApp, ready to send." data-pt="Escolhe e o talão ao lado preenche-se sozinho. No fim segue para nós por WhatsApp, pronto a enviar.">Alegi, iar bonul de alături se completează singur. La final pleacă la noi pe WhatsApp, gata de trimis.</p>
+      </div>
+      <div class="cmd">
+        <form id="form-cmd" novalidate>
+          <fieldset>
+            <legend data-en="1 · Pizzas &amp; more" data-pt="1 · Pizzas e mais">1 · Pizza și restul</legend>
+            <div class="alegeri" id="alegeri"></div>
+            <p class="err" id="err-prod" hidden></p>
+          </fieldset>
+          <fieldset>
+            <legend data-en="2 · How you get it" data-pt="2 · Como a recebes">2 · Cum o primești</legend>
+            <div class="seg">
+              <label><input type="radio" name="mod" value="ridicare" checked><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9h16l-1.5 11h-13zM8 9V6a4 4 0 0 1 8 0v3"/></svg><span data-en="Pick-up" data-pt="Levanto no local">Ridic din local</span></span></label>
+              <label><input type="radio" name="mod" value="livrare"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M9 17h6M14 6h3l3 7M6 14l3-6h5"/></svg><span data-en="Delivery" data-pt="Entrega">Livrare</span></span></label>
+            </div>
+            <div class="camp" id="camp-adresa" hidden>
+              <label for="adresa" data-en="Delivery address" data-pt="Morada de entrega">Adresa de livrare</label>
+              <textarea id="adresa" name="adresa" autocomplete="street-address" placeholder="Strada, numărul, bloc, scară, apartament" data-en-placeholder="Street, number, building, flat" data-pt-placeholder="Rua, número, prédio, andar"></textarea>
+              <span class="ajuda" data-en="Delivery area and fee: to be confirmed on WhatsApp." data-pt="Zona e custo de entrega: a confirmar por WhatsApp.">Zona și taxa de livrare: de confirmat pe WhatsApp.</span>
+              <span class="err" id="err-adresa" hidden></span>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend data-en="3 · When" data-pt="3 · Quando">3 · Când</legend>
+            <div class="seg" id="zile">
+              <label><input type="radio" name="zi" value="0" checked><span data-en="Today" data-pt="Hoje">Azi</span></label>
+              <label><input type="radio" name="zi" value="1"><span data-en="Tomorrow" data-pt="Amanhã">Mâine</span></label>
+            </div>
+            <div class="camp">
+              <label for="ora" data-en="Time" data-pt="Hora">Ora</label>
+              <select id="ora" name="ora"></select>
+            </div>
+            <p class="aviz" id="aviz-zi" hidden></p>
+          </fieldset>
+          <fieldset>
+            <legend data-en="4 · Who is it for" data-pt="4 · Para quem">4 · Pe numele cui</legend>
+            <div class="camp">
+              <label for="nume" data-en="Your name" data-pt="O teu nome">Numele tău</label>
+              <input id="nume" name="nume" autocomplete="given-name">
+              <span class="err" id="err-nume" hidden></span>
+            </div>
+            <div class="camp">
+              <label for="obs" data-en="Notes (optional)" data-pt="Notas (opcional)">Observații (opțional)</label>
+              <textarea id="obs" name="obs" placeholder="fără ceapă, tăiată în felii…" data-en-placeholder="no onion, cut into slices…" data-pt-placeholder="sem cebola, cortada às fatias…"></textarea>
+            </div>
+          </fieldset>
+        </form>
+        <aside class="talon-loc" aria-label="Bonul comenzii" data-en-aria-label="Order slip" data-pt-aria-label="Talão da encomenda">
+          <div class="talon" id="talon">
+            <h3 data-en="ORDER" data-pt="ENCOMENDA">COMANDĂ</h3>
+            <p class="sub">La Gioia di Giovanni · Anastasie Panu 46</p>
+            <hr>
+            <ul id="talon-linii"></ul>
+            <hr>
+            <div id="talon-det"></div>
+            <span class="stampila" data-en="READY" data-pt="PRONTA">GATA</span>
+          </div>
+          <div class="talon-cta">
+            <p class="lipsa" id="lipsa" aria-live="polite"></p>
+            <a class="btn btn-jar" id="trimite" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg><span data-en="Send the order on WhatsApp" data-pt="Enviar por WhatsApp">Trimite comanda pe WhatsApp</span></a>
+            <p data-en="We reply with the total and the exact time." data-pt="Respondemos com o total e a hora certa.">Îți răspundem cu totalul și ora exactă.</p>
+            <a class="btn btn-linha-c" href="tel:+40745451313" data-en="Or call 0745 451 313" data-pt="Ou liga 0745 451 313">Sau sună la 0745 451 313</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DESPRE ======================= -->
+<section class="pag" data-pag="casa" data-titulo-ro="Despre noi · La Gioia di Giovanni" data-titulo-en="The house · La Gioia di Giovanni" data-titulo-pt="A casa · La Gioia di Giovanni">
+  <div class="sec" style="padding-top:clamp(40px,6vw,72px)">
+    <div class="wrap">
+      <div class="cap">
+        <p class="ochi" data-en="The house" data-pt="A casa">Despre noi</p>
+        <h2 class="pg-t" tabindex="-1" data-en="A copper oven, a peel and painted plates" data-pt="Um forno de cobre, uma pá e pratos pintados">Un cuptor de cupru, o pală și farfurii pictate</h2>
+      </div>
+      <article class="capitol">
+        <figure class="foto rv" style="margin:0">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="500" fill="#2A211C"/><path d="M60 300c0-90 60-140 140-140s140 50 140 140z" fill="#C2703D"/><rect x="230" y="200" width="120" height="260" rx="20" fill="#1A1310"/></svg>
+          <img src="media/pizzaiolo-la-cuptor.webp" alt="Pizzaiolo cu pala în mână, în fața cuptorului de cupru, sub firma La Gioia" data-en-alt="The pizzaiolo holding the peel in front of the copper oven, under the La Gioia sign" data-pt-alt="O pizzaiolo com a pá na mão, em frente ao forno de cobre, sob a placa La Gioia" loading="lazy" onerror="this.remove()">
+        </figure>
+        <div class="rv d1">
+          <p class="ochi" data-en="The oven" data-pt="O forno">Cuptorul</p>
+          <h3 class="h2" style="font-size:clamp(30px,4vw,44px)" data-en="Everything goes through the arch" data-pt="Tudo passa pelo arco">Totul trece prin gura cuptorului</h3>
+          <p data-en="The copper dome is the first thing you see when you walk in. Each pizza goes in on the long peel, turns by the fire and comes out with its edges puffed and spotted." data-pt="A cúpula de cobre é a primeira coisa que se vê ao entrar. Cada pizza entra na pá comprida, roda junto ao fogo e sai com as bordas altas e manchadas.">Cupola de cupru e primul lucru pe care îl vezi când intri. Fiecare pizza intră pe pala lungă, se întoarce lângă foc și iese cu marginile umflate și pătate.</p>
+          <p class="mut" data-en="The face on the sign above the oven is the house's own." data-pt="A cara na placa por cima do forno é a da casa.">Chipul de pe firma de deasupra cuptorului e chiar al casei.</p>
+        </div>
+      </article>
+      <article class="capitol inv">
+        <figure class="foto rv" style="margin:0">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="500" fill="#1D3F91"/><circle cx="200" cy="250" r="170" fill="#F2B632"/><circle cx="200" cy="250" r="120" fill="#FBFAF6"/></svg>
+          <img src="media/felii-pe-maiolica.webp" alt="Felii de pizza pe o farfurie pictată în galben și albastru" data-en-alt="Pizza slices on a yellow and blue painted plate" data-pt-alt="Fatias de pizza num prato pintado de amarelo e azul" loading="lazy" onerror="this.remove()">
+        </figure>
+        <div class="rv d1">
+          <p class="ochi" data-en="The plates" data-pt="Os pratos">Farfuriile</p>
+          <h3 class="h2" style="font-size:clamp(30px,4vw,44px)" data-en="Yellow, cobalt and a bit of orange" data-pt="Amarelo, cobalto e um pouco de laranja">Galben, cobalt și puțin portocaliu</h3>
+          <p data-en="The pizza is served on hand-painted ceramic in the southern Italian style: scrolls, lemons, pomegranates. The colours of this site come from those plates." data-pt="A pizza chega em cerâmica pintada à moda do sul de Itália: volutas, limões, romãs. As cores deste site vêm desses pratos.">Pizza vine pe ceramică pictată în stilul sudului Italiei: volute, lămâi, rodii. Culorile acestui site vin din farfuriile acelea.</p>
+        </div>
+      </article>
+      <article class="capitol">
+        <figure class="foto rv" style="margin:0">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="500" fill="#E9E4DA"/><rect x="40" y="30" width="320" height="200" fill="#CFD8E3"/><rect y="380" width="400" height="120" fill="#D8D0C2"/></svg>
+          <img src="media/sala-ferestre.webp" alt="Sala înaltă cu ferestre mari și ghirlande de lumini" data-en-alt="The tall room with big windows and strings of lights" data-pt-alt="A sala alta com janelas grandes e fios de luzes" loading="lazy" onerror="this.remove()">
+        </figure>
+        <div class="rv d1">
+          <p class="ochi" data-en="The room" data-pt="A sala">Sala</p>
+          <h3 class="h2" style="font-size:clamp(30px,4vw,44px)" data-en="Lots of light, round tables" data-pt="Muita luz, mesas redondas">Multă lumină, mese rotunde</h3>
+          <p data-en="Tall windows, marble-look tables and velvet chairs in four colours. In summer there is also the terrace, under white umbrellas." data-pt="Janelas altas, mesas a imitar mármore e cadeiras de veludo em quatro cores. No verão há ainda a esplanada, debaixo de chapéus brancos.">Ferestre înalte, mese cu aspect de marmură și scaune de catifea în patru culori. Vara mai e și terasa, sub umbrele albe.</p>
+          <p><span class="conf" data-en="seats &amp; reservations · to be confirmed" data-pt="lugares e reservas · a confirmar">locuri și rezervări · de confirmat</span></p>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="maiolica" aria-hidden="true"></div>
+  <section class="sec sec-glazura2">
+    <div class="wrap">
+      <div class="cap rv"><p class="ochi" data-en="Gallery" data-pt="Galeria">Galerie</p><h2 data-en="From the oven to the table" data-pt="Do forno para a mesa">De la cuptor la masă</h2></div>
+      <div class="galerie">
+        <figure class="foto rv" style="margin:0"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#C2703D"/></svg><img src="media/legume-pe-pala.webp" alt="Pizza cu legume, scoasă chiar acum din cuptor" data-en-alt="Vegetable pizza fresh out of the oven" data-pt-alt="Pizza de legumes acabada de sair do forno" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv d1" style="margin:0"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#B8321A"/></svg><img src="media/salam-picant.webp" alt="Pizza cu salam picant și busuioc, de aproape" data-en-alt="Spicy salami pizza with basil, close up" data-pt-alt="Pizza de salame picante com manjericão, de perto" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv d2" style="margin:0"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#7A4A2A"/></svg><img src="media/tiramisu.webp" alt="Tiramisu pe farfurie pictată, cu cuptorul în spate" data-en-alt="Tiramisu on a painted plate, the oven behind" data-pt-alt="Tiramisu num prato pintado, com o forno atrás" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv" style="margin:0"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#E9E4DA"/></svg><img src="media/sala.webp" alt="Sala pizzeriei" data-en-alt="The dining room" data-pt-alt="A sala da pizzaria" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv d1" style="margin:0"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#E3A85E"/></svg><img src="media/alba-carnati-ciuperci.webp" alt="Pizza albă cu cârnați și ciuperci" data-en-alt="White pizza with sausage and mushrooms" data-pt-alt="Pizza branca com salsicha e cogumelos" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv d2" style="margin:0"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#BFD3E6"/></svg><img src="media/pizza-pe-terasa.webp" alt="Două pizze pe o masă de pe terasă" data-en-alt="Two pizzas on a terrace table" data-pt-alt="Duas pizzas numa mesa da esplanada" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv" style="margin:0"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#C8341C"/></svg><img src="media/salam-sunca-ciuperci.webp" alt="Pizza cu salam, șuncă, ciuperci și ardei" data-en-alt="Pizza with salami, ham, mushrooms and peppers" data-pt-alt="Pizza com salame, fiambre, cogumelos e pimento" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="foto rv d1" style="margin:0"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#C2703D"/></svg><img src="media/margherita-pe-pala.webp" alt="Margherita ținută în fața cuptorului de cupru" data-en-alt="A margherita held up in front of the copper oven" data-pt-alt="Uma margherita em frente ao forno de cobre" loading="lazy" style="object-position:50% 70%" onerror="this.remove()"></figure>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ======================= VIZITĂ ======================= -->
+<section class="pag" data-pag="vizita" data-titulo-ro="Vizită · La Gioia di Giovanni" data-titulo-en="Visit · La Gioia di Giovanni" data-titulo-pt="Visitar · La Gioia di Giovanni">
+  <div class="sec" style="padding-top:clamp(40px,6vw,72px)">
+    <div class="wrap">
+      <div class="cap">
+        <p class="ochi" data-en="Visit" data-pt="Visitar">Vizită</p>
+        <h2 class="pg-t" tabindex="-1" data-en="Anastasie Panu 46, in the centre" data-pt="Anastasie Panu 46, no centro">Anastasie Panu 46, în centru</h2>
+      </div>
+      <div class="info-grid">
+        <div class="harta rv">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#E3E7EE"/><path d="M-10 190L410 120M120 -10L180 310M260 -10l40 320" stroke="#fff" stroke-width="14"/><circle cx="200" cy="150" r="14" fill="#B8321A"/><circle cx="200" cy="150" r="5" fill="#fff"/></svg>
+          <iframe data-src="https://www.google.com/maps?q=La+Gioia+di+Giovanni,+Strada+Anastasie+Panu+46,+Ia%C8%99i&amp;output=embed" title="Hartă: La Gioia di Giovanni" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="cartao rv d1">
+          <h3 data-en="Where &amp; how" data-pt="Onde e como">Unde și cum</h3>
+          <div class="linha-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div>Strada Anastasie Panu 46, 700019 Iași<br><a href="https://www.google.com/maps/dir/?api=1&amp;destination=47.161562,27.5900766" target="_blank" rel="noopener" data-en="Directions" data-pt="Direções">Indicații de orientare</a></div></div>
+          <div class="linha-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><div><a href="tel:+40745451313">0745 451 313</a><br><span class="mut" data-en="phone &amp; WhatsApp" data-pt="telefone e WhatsApp">telefon și WhatsApp</span></div></div>
+          <div class="linha-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9h16l-1.5 11h-13zM8 9V6a4 4 0 0 1 8 0v3"/></svg><div><span data-en="Eat in, pick-up and delivery" data-pt="Comer cá, levantar e entrega">La masă, ridicare și livrare</span><br><span class="conf" data-en="delivery area · to be confirmed" data-pt="zona de entrega · a confirmar">zona de livrare · de confirmat</span></div></div>
+          <div class="linha-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M15 8h-2a2 2 0 0 0-2 2v11M9 13h5"/></svg><div>Facebook<br><span class="conf" data-en="page link · to be confirmed" data-pt="link da página · a confirmar">link pagină · de confirmat</span></div></div>
+          <h3 style="margin-top:22px" data-en="Hours" data-pt="Horário">Program</h3>
+          <p class="ficha estado" data-estado style="background:var(--glazura-2);box-shadow:none;margin:0 0 6px"><span>…</span></p>
+          <table class="orar" data-orar></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="marca" href="#/"><b>La Gioia</b><i>di Giovanni</i></a>
+      <p style="max-width:40ch;margin-top:14px" data-en="Pizzeria in the centre of Iași. Copper oven, painted plates, pick-up and delivery." data-pt="Pizzaria no centro de Iași. Forno de cobre, pratos pintados, levantar e entrega.">Pizzerie în centrul Iașului. Cuptor de cupru, farfurii pictate, ridicare și livrare.</p>
+    </div>
+    <div>
+      <h3 data-en="Pages" data-pt="Páginas">Pagini</h3>
+      <ul><li><a href="#/meniu" data-en="Menu" data-pt="Carta">Meniu</a></li><li><a href="#/comanda" data-en="Order" data-pt="Encomendar">Comandă</a></li><li><a href="#/casa" data-en="The house" data-pt="A casa">Despre noi</a></li><li><a href="#/vizita" data-en="Visit" data-pt="Visitar">Vizită</a></li></ul>
+    </div>
+    <div>
+      <h3 data-en="Contact" data-pt="Contacto">Contact</h3>
+      <ul><li>Strada Anastasie Panu 46, Iași</li><li><a href="tel:+40745451313">0745 451 313</a></li><li><a class="wa-link" href="https://wa.me/40745451313" target="_blank" rel="noopener">WhatsApp</a></li></ul>
+    </div>
+    <div class="legal">
+      <span>© <span id="an">2026</span> La Gioia di Giovanni · <span data-en="company name &amp; tax ID" data-pt="denominação e CUI">denumire firmă și CUI</span> <span class="conf" data-en="to be confirmed" data-pt="a confirmar">de confirmat</span></span>
+      <span class="anpc">
+        <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC · <span data-en="Alternative dispute resolution (SAL)" data-pt="Resolução alternativa de litígios (SAL)">Soluționarea alternativă a litigiilor</span></a>
+        <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener"><span data-en="Online dispute resolution (ODR)" data-pt="Resolução de litígios em linha (ODR)">Soluționarea online a litigiilor</span></a>
+      </span>
+      <span style="margin-left:auto" data-en="Site by Pacheco Studios" data-pt="Site por Pacheco Studios">Site realizat de Pacheco Studios</span>
+    </div>
+  </div>
+</footer>
+
+<a class="cos" id="cos" href="#/comanda"><span data-en="My order" data-pt="A minha encomenda">Comanda mea</span> <b id="cos-n">0</b></a>
+<div class="cta-movel" id="cta-movel">
+  <a class="btn btn-linha" href="tel:+40745451313"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span data-en="Call" data-pt="Ligar">Sună</span></a>
+  <a class="btn btn-jar" id="cta-wa" href="https://wa.me/40745451313" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var WA = '40745451313';
+  var doc = document.documentElement;
+  doc.classList.add('js');
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var BASE = doc.getAttribute('data-lang') || 'ro';
+  var CHAVE = 'lg-lang-' + BASE;
+  var LANG = BASE;
+  try { var g = localStorage.getItem(CHAVE); if (g === 'ro' || g === 'en' || (g === 'pt' && BASE === 'pt')) LANG = g; } catch(e){}
+  if (BASE === 'pt') document.querySelectorAll('.lingua button[data-lang="pt"]').forEach(function(b){ b.hidden = false; });
+
+  /* ---------- dados: a carta ---------- */
+  var P = {
+    margherita:{c:'rosie', img:'margherita-pe-pala', pos:'50% 62%', n:{ro:'Margherita',en:'Margherita',pt:'Margherita'}, d:{ro:'Sos de roșii, mozzarella, busuioc.',en:'Tomato sauce, mozzarella, basil.',pt:'Molho de tomate, mozzarella, manjericão.'}},
+    salam:{c:'rosie', img:'salam-picant', n:{ro:'Salam picant',en:'Spicy salami',pt:'Salame picante'}, d:{ro:'Sos de roșii, mozzarella, salam picant, frunze de busuioc.',en:'Tomato sauce, mozzarella, spicy salami, basil leaves.',pt:'Molho de tomate, mozzarella, salame picante, folhas de manjericão.'}},
+    sunca:{c:'rosie', img:'sunca-ciuperci', n:{ro:'Șuncă și ciuperci',en:'Ham & mushrooms',pt:'Fiambre e cogumelos'}, d:{ro:'Sos de roșii, mozzarella, șuncă, ciuperci, busuioc.',en:'Tomato sauce, mozzarella, ham, mushrooms, basil.',pt:'Molho de tomate, mozzarella, fiambre, cogumelos, manjericão.'}},
+    mixta:{c:'rosie', img:'salam-sunca-ciuperci', pos:'50% 60%', n:{ro:'Salam, șuncă și ciuperci',en:'Salami, ham & mushrooms',pt:'Salame, fiambre e cogumelos'}, d:{ro:'Sos de roșii, mozzarella, salam, șuncă, ciuperci, ardei.',en:'Tomato sauce, mozzarella, salami, ham, mushrooms, peppers.',pt:'Molho de tomate, mozzarella, salame, fiambre, cogumelos, pimento.'}},
+    legume:{c:'rosie', img:'legume-pe-pala', pos:'50% 60%', n:{ro:'Cu legume',en:'Vegetable',pt:'De legumes'}, d:{ro:'Sos de roșii, mozzarella, ardei, porumb, ceapă și legume coapte.',en:'Tomato sauce, mozzarella, peppers, corn, onion and roasted vegetables.',pt:'Molho de tomate, mozzarella, pimento, milho, cebola e legumes assados.'}},
+    ton:{c:'rosie', img:'ton-ceapa', n:{ro:'Ton și ceapă',en:'Tuna & onion',pt:'Atum e cebola'}, d:{ro:'Sos de roșii, ton, ceapă, busuioc.',en:'Tomato sauce, tuna, onion, basil.',pt:'Molho de tomate, atum, cebola, manjericão.'}},
+    tonporumb:{c:'rosie', img:'ton-porumb', n:{ro:'Ton, porumb și ceapă',en:'Tuna, corn & onion',pt:'Atum, milho e cebola'}, d:{ro:'Sos de roșii, ton, porumb, ceapă.',en:'Tomato sauce, tuna, corn, onion.',pt:'Molho de tomate, atum, milho, cebola.'}},
+    albacarnati:{c:'alba', img:'alba-carnati-ciuperci', n:{ro:'Albă cu cârnați și ciuperci',en:'White, sausage & mushrooms',pt:'Branca com salsicha e cogumelos'}, d:{ro:'Fără sos de roșii: mozzarella, cârnați, ciuperci, ceapă.',en:'No tomato sauce: mozzarella, sausage, mushrooms, onion.',pt:'Sem molho de tomate: mozzarella, salsicha, cogumelos, cebola.'}},
+    albarosii:{c:'alba', img:'alba-rosii-uscate', n:{ro:'Albă cu roșii uscate',en:'White with sun-dried tomatoes',pt:'Branca com tomate seco'}, d:{ro:'Mozzarella, ceapă, roșii uscate, busuioc.',en:'Mozzarella, onion, sun-dried tomatoes, basil.',pt:'Mozzarella, cebola, tomate seco, manjericão.'}},
+    dulce:{c:'dulce', img:'pizza-dulce-cacao', n:{ro:'Pizza dulce',en:'Sweet pizza',pt:'Pizza doce'}, d:{ro:'Cremă de cacao, banane, zahăr pudră.',en:'Cocoa cream, banana, icing sugar.',pt:'Creme de cacau, banana, açúcar em pó.'}},
+    tiramisu:{c:'dulce', img:'tiramisu', pos:'50% 60%', n:{ro:'Tiramisu',en:'Tiramisu',pt:'Tiramisu'}, d:{ro:'Felie, cu cacao deasupra.',en:'A slice, dusted with cocoa.',pt:'Uma fatia, com cacau por cima.'}}
+  };
+  var B = {
+    cola:{n:{ro:'Coca-Cola Zero',en:'Coca-Cola Zero',pt:'Coca-Cola Zero'}, d:'500 ml', col:'#B8321A'},
+    fanta:{n:{ro:'Fanta pere',en:'Fanta pear',pt:'Fanta pera'}, d:'500 ml', col:'#9BBE3A'},
+    dorna:{n:{ro:'Apă Dorna',en:'Dorna water',pt:'Água Dorna'}, d:'500 ml', col:'#3E9FD0'},
+    fuze:{n:{ro:'Fuze Tea piersică și hibiscus',en:'Fuze Tea peach & hibiscus',pt:'Fuze Tea pêssego e hibisco'}, d:{ro:'sticlă',en:'glass bottle',pt:'garrafa de vidro'}, col:'#E0782E'},
+    espresso:{n:{ro:'Espresso',en:'Espresso',pt:'Café expresso'}, d:{ro:'ceașcă',en:'cup',pt:'chávena'}, col:'#5B3A24', cafe:1}
+  };
+  function icB(b){
+    return b.cafe ? '<path d="M7 13h17v7a7 7 0 0 1-7 7h-3a7 7 0 0 1-7-7z" fill="#FBFAF6" stroke="#1D3F91" stroke-width="2"/><path d="M24 15h2a3 3 0 0 1 0 6h-2" fill="none" stroke="#1D3F91" stroke-width="2"/><ellipse cx="15.5" cy="14" rx="7" ry="1.6" fill="' + b.col + '"/>'
+      : '<path d="M14 3h6v4l3 4v18a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2V11l3-4z" fill="' + b.col + '" fill-opacity=".22" stroke="#1D3F91" stroke-width="1.8"/><rect x="11.5" y="15" width="11" height="8" rx="1" fill="' + b.col + '"/>';
+  }
+  function tx(o){ return typeof o === 'string' ? o : (o[LANG] || o.ro); }
+
+  var T = {
+    ro:{abrir:'Deschide meniul', fechar:'Închide meniul', aberto:'Deschis acum', fechado:'Închis acum', ate:' · până la ', abre:' · deschide ', hoje:'azi la ', amanha:'mâine la ',
+      dias:['duminică','luni','marți','miercuri','joi','vineri','sâmbătă'], azi:'azi', inchis:'Închis',
+      add:'Adaugă', addAria:'Adaugă în comandă: ', menos:'Scade', mais:'Crește',
+      ola:'Bună ziua! Aș vrea să comand de la La Gioia di Giovanni:', rid:'Ridicare din local', liv:'Livrare la adresa', ora:'Ora', cat:'cât mai repede', nume:'Nume', obs:'Observații', fim:'Mulțumesc! Aștept confirmarea, totalul și ora.',
+      gol:'Nicio pizza încă — adaugă din listă.', modo:'Mod', cand:'Când', azi2:'azi', maine:'mâine',
+      lipsa:'Mai lipsește: ', lprod:'cel puțin un produs', ladr:'adresa de livrare', lnume:'numele tău',
+      eProd:'Alege cel puțin un produs.', eAdr:'Scrie adresa ca să știm unde venim.', eNume:'Scrie numele, ca să știm pe cine căutăm.',
+      ziInchis:'În ziua aleasă suntem închiși (luni). Alege altă zi.', tarziu:'Pentru azi nu mai sunt ore disponibile. Alege mâine.',
+      waCta:'Bună ziua! Aș vrea să fac o comandă la La Gioia di Giovanni.', prod:'produse'},
+    en:{abrir:'Open menu', fechar:'Close menu', aberto:'Open now', fechado:'Closed now', ate:' · until ', abre:' · opens ', hoje:'today at ', amanha:'tomorrow at ',
+      dias:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], azi:'today', inchis:'Closed',
+      add:'Add', addAria:'Add to order: ', menos:'Less', mais:'More',
+      ola:'Hello! I would like to order from La Gioia di Giovanni:', rid:'Pick-up at the pizzeria', liv:'Delivery to', ora:'Time', cat:'as soon as possible', nume:'Name', obs:'Notes', fim:'Thank you! Waiting for your confirmation, total and time.',
+      gol:'No pizza yet — add from the list.', modo:'Mode', cand:'When', azi2:'today', maine:'tomorrow',
+      lipsa:'Still missing: ', lprod:'at least one item', ladr:'delivery address', lnume:'your name',
+      eProd:'Choose at least one item.', eAdr:'Write the address so we know where to come.', eNume:'Write your name so we know who to look for.',
+      ziInchis:'We are closed on the chosen day (Monday). Pick another day.', tarziu:'No more times available today. Choose tomorrow.',
+      waCta:'Hello! I would like to place an order at La Gioia di Giovanni.', prod:'items'},
+    pt:{abrir:'Abrir menu', fechar:'Fechar menu', aberto:'Aberto agora', fechado:'Fechado agora', ate:' · até às ', abre:' · abre ', hoje:'hoje às ', amanha:'amanhã às ',
+      dias:['domingo','segunda','terça','quarta','quinta','sexta','sábado'], azi:'hoje', inchis:'Fechado',
+      add:'Juntar', addAria:'Juntar à encomenda: ', menos:'Menos', mais:'Mais',
+      ola:'Olá! Gostava de encomendar na La Gioia di Giovanni:', rid:'Levanto no local', liv:'Entrega na morada', ora:'Hora', cat:'o mais depressa possível', nume:'Nome', obs:'Notas', fim:'Obrigado! Fico a aguardar a confirmação, o total e a hora.',
+      gol:'Ainda nenhuma pizza — junta da lista.', modo:'Modo', cand:'Quando', azi2:'hoje', maine:'amanhã',
+      lipsa:'Falta: ', lprod:'pelo menos um produto', ladr:'a morada de entrega', lnume:'o teu nome',
+      eProd:'Escolhe pelo menos um produto.', eAdr:'Escreve a morada para sabermos onde ir.', eNume:'Escreve o nome para sabermos por quem perguntar.',
+      ziInchis:'No dia escolhido estamos fechados (segunda). Escolhe outro dia.', tarziu:'Hoje já não há horas disponíveis. Escolhe amanhã.',
+      waCta:'Olá! Gostava de fazer uma encomenda na La Gioia di Giovanni.', prod:'produtos'}
+  };
+  function t(k){ return T[LANG][k]; }
+
+  /* ---------- carrinho ---------- */
+  var COS = {};
+  try { COS = JSON.parse(localStorage.getItem('lg-cos') || '{}') || {}; } catch(e){ COS = {}; }
+  Object.keys(COS).forEach(function(k){ if (!P[k] && !B[k]) delete COS[k]; });
+  function salva(){ try { localStorage.setItem('lg-cos', JSON.stringify(COS)); } catch(e){} }
+  function total(){ var s = 0; for (var k in COS) s += COS[k]; return s; }
+  function muda(id, d){
+    var n = Math.max(0, Math.min(20, (COS[id] || 0) + d));
+    if (n) COS[id] = n; else delete COS[id];
+    salva(); sincroniza(); if (d > 0){ var c = document.getElementById('cos'); c.classList.remove('salt'); void c.offsetWidth; c.classList.add('salt'); }
+  }
+
+  /* ---------- fotos com fundo desenhado ---------- */
+  function fundo(id){
+    return '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#E3A85E"/><circle cx="50" cy="50" r="39" fill="' + (P[id].c === 'alba' ? '#F3E6CC' : P[id].c === 'dulce' ? '#6B3A1E' : '#C8341C') + '"/><g fill="#F7EEDC" opacity=".9"><circle cx="38" cy="40" r="7"/><circle cx="62" cy="38" r="6"/><circle cx="56" cy="62" r="8"/></g></svg>';
+  }
+  function foto(id){ var p = P[id]; return fundo(id) + '<img src="media/' + p.img + '.webp" alt="" loading="lazy"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + ' onerror="this.remove()">'; }
+
+  var SVGPLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+  function desenhaPaletes(){
+    document.querySelectorAll('[data-palete]').forEach(function(box){
+      box.innerHTML = box.dataset.palete.split(',').map(function(id, i){
+        var p = P[id];
+        return '<article class="pz rv' + (i % 3 ? ' d' + (i % 3) : '') + '" data-c="' + p.c + '">' +
+          '<div class="coada" aria-hidden="true"></div><div class="farfurie">' + foto(id) + '</div>' +
+          '<h3>' + tx(p.n) + '</h3><p>' + tx(p.d) + '</p>' +
+          '<div class="rand"><button type="button" class="adauga" data-add="' + id + '" aria-label="' + t('addAria') + tx(p.n) + '">' + SVGPLUS + '<span>' + t('add') + '</span><span class="nr"></span></button>' +
+          '<span class="conf">' + ({ro:'preț · de confirmat',en:'price · to be confirmed',pt:'preço · a confirmar'})[LANG] + '</span></div></article>';
+      }).join('');
+    });
+    var bb = document.querySelector('[data-bauturi]');
+    if (bb) bb.innerHTML = Object.keys(B).map(function(id){
+      var b = B[id];
+      var ic = '<svg class="ic" viewBox="0 0 34 34" aria-hidden="true">' + icB(b) + '</svg>';
+      return '<div class="baut" data-c="bauturi">' + ic + '<div><b>' + tx(b.n) + '</b><small>' + tx(b.d) + '</small></div>' +
+        '<button type="button" class="adauga" data-add="' + id + '" aria-label="' + t('addAria') + tx(b.n) + '">' + SVGPLUS + '<span class="nr"></span></button></div>';
+    }).join('');
+    document.querySelectorAll('[data-add]').forEach(function(b){ b.addEventListener('click', function(){ muda(b.dataset.add, 1); }); });
+    var ativa = document.querySelector('.pag.ativa'); if (ativa) observa(ativa);
+    desenhaAlegeri();
+    sincroniza();
+  }
+  function desenhaAlegeri(){
+    var box = document.getElementById('alegeri');
+    var ids = Object.keys(P).concat(Object.keys(B));
+    box.innerHTML = ids.map(function(id){
+      var p = P[id] || B[id];
+      var mini = P[id] ? foto(id) : '<svg viewBox="-7 -7 48 48" aria-hidden="true"><rect x="-7" y="-7" width="48" height="48" fill="#FBFAF6"/>' + icB(p) + '</svg>';
+      return '<div class="alege"><div class="mini">' + mini + '</div><div><b>' + tx(p.n) + '</b><small>' + tx(p.d) + '</small></div>' +
+        '<div class="pas" role="group" aria-label="' + tx(p.n) + '"><button type="button" data-m="' + id + '" data-d="-1" aria-label="' + t('menos') + ': ' + tx(p.n) + '">−</button><output data-q="' + id + '" aria-live="polite">0</output><button type="button" data-m="' + id + '" data-d="1" aria-label="' + t('mais') + ': ' + tx(p.n) + '">+</button></div></div>';
+    }).join('');
+    box.querySelectorAll('[data-m]').forEach(function(b){ b.addEventListener('click', function(){ muda(b.dataset.m, +b.dataset.d); }); });
+  }
+  function sincroniza(){
+    document.querySelectorAll('[data-add]').forEach(function(b){
+      var n = COS[b.dataset.add] || 0;
+      b.classList.toggle('are', n > 0); b.querySelector('.nr').textContent = n ? '× ' + n : '';
+    });
+    document.querySelectorAll('[data-q]').forEach(function(o){
+      var n = COS[o.dataset.q] || 0; o.textContent = n;
+      o.previousElementSibling.disabled = n === 0;
+    });
+    var n = total();
+    document.getElementById('cos-n').textContent = n;
+    atualizaCos();
+    talon();
+  }
+  function atualizaCos(){
+    var c = document.getElementById('cos');
+    var naComanda = !!document.querySelector('.pag.ativa[data-pag="comanda"]');
+    c.classList.toggle('vis', total() > 0 && !naComanda);
+  }
+
+  /* ---------- horário ---------- */
+  var H = {0:[780,1320], 1:null, 2:[720,1320], 3:[720,1320], 4:[720,1320], 5:[720,1380], 6:[720,1380]};
+  function agora(){
+    try {
+      var f = new Intl.DateTimeFormat('en-GB', {timeZone:'Europe/Bucharest', weekday:'short', hour:'2-digit', minute:'2-digit', hour12:false});
+      var p = {}; f.formatToParts(new Date()).forEach(function(x){ p[x.type] = x.value; });
+      return {d:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[p.weekday], m:(+p.hour % 24) * 60 + (+p.minute)};
+    } catch(e){ var n = new Date(); return {d:n.getDay(), m:n.getHours()*60 + n.getMinutes()}; }
+  }
+  function hm(m){ return String(Math.floor(m/60)).padStart(2,'0') + ':' + String(m%60).padStart(2,'0'); }
+  function estado(){
+    var a = agora(), h = H[a.d], ab = !!(h && a.m >= h[0] && a.m < h[1]), txt;
+    if (ab) txt = t('aberto') + t('ate') + hm(h[1]);
+    else {
+      var prox;
+      if (h && a.m < h[0]) prox = t('hoje') + hm(h[0]);
+      else for (var k = 1; k < 8; k++){ var d = (a.d + k) % 7; if (H[d]){ prox = (k === 1 ? t('amanha') : t('dias')[d] + ' ') + hm(H[d][0]); break; } }
+      txt = t('fechado') + t('abre') + prox;
+    }
+    document.querySelectorAll('[data-estado]').forEach(function(el){ el.classList.toggle('aberto', ab); el.querySelector('span').textContent = txt; });
+    var ordem = [1,2,3,4,5,6,0];
+    document.querySelectorAll('[data-orar]').forEach(function(tb){
+      tb.innerHTML = '<caption class="sr">' + ({ro:'Program',en:'Opening hours',pt:'Horário'})[LANG] + '</caption>' + ordem.map(function(d){
+        var x = H[d]; var nm = t('dias')[d];
+        return '<tr' + (d === a.d ? ' class="hoje"' : '') + '><th scope="row" data-azi="' + t('azi') + '">' + nm.charAt(0).toUpperCase() + nm.slice(1) + '</th><td>' + (x ? hm(x[0]) + '–' + hm(x[1]) : t('inchis')) + '</td></tr>';
+      }).join('');
+    });
+  }
+
+  /* ---------- formulário de comanda ---------- */
+  var form = document.getElementById('form-cmd');
+  var oraEl = document.getElementById('ora');
+  var tocou = {};
+  function val(n){ var el = form.querySelector('[name="' + n + '"]:checked') || form.querySelector('[name="' + n + '"]:not([type=radio])'); return el ? el.value.trim() : ''; }
+  function ore(){
+    var a = agora(), off = +val('zi'), d = (a.d + off) % 7, h = H[d], av = document.getElementById('aviz-zi');
+    var atual = oraEl.value;
+    var opts = [];
+    av.hidden = true;
+    if (!h){ av.hidden = false; av.textContent = t('ziInchis'); }
+    else {
+      var ini = h[0] + 15, fim = h[1] - 15;
+      if (off === 0){
+        if (a.m >= h[0] && a.m < h[1] - 30) opts.push(['asap', t('cat')]);
+        ini = Math.max(ini, Math.ceil((a.m + 30) / 15) * 15);
+      }
+      for (var m = ini; m <= fim; m += 15) opts.push([hm(m), hm(m)]);
+      if (!opts.length){ av.hidden = false; av.textContent = t('tarziu'); }
+    }
+    oraEl.innerHTML = opts.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('');
+    oraEl.disabled = !opts.length;
+    if (atual && opts.some(function(o){ return o[0] === atual; })) oraEl.value = atual;
+  }
+  function dataTxt(){
+    var a = agora(), off = +val('zi'), d = (a.d + off) % 7;
+    return (off ? t('maine') : t('azi2')) + ' (' + t('dias')[d] + ')';
+  }
+  function linhas(){
+    return Object.keys(COS).map(function(id){ var p = P[id] || B[id]; return [COS[id], tx(p.n)]; });
+  }
+  function faltas(){
+    var f = [];
+    if (!total()) f.push('prod');
+    if (val('mod') === 'livrare' && !val('adresa')) f.push('adresa');
+    if (!val('nume')) f.push('nume');
+    return f;
+  }
+  function mensagem(){
+    var L = [t('ola')];
+    linhas().forEach(function(l){ L.push('• ' + l[0] + ' × ' + l[1]); });
+    L.push('');
+    L.push(val('mod') === 'livrare' ? t('liv') + ': ' + val('adresa') : t('rid'));
+    var o = val('ora');
+    L.push(t('ora') + ': ' + dataTxt() + ', ' + (o === 'asap' ? t('cat') : o));
+    if (val('nume')) L.push(t('nume') + ': ' + val('nume'));
+    if (val('obs')) L.push(t('obs') + ': ' + val('obs'));
+    L.push('');
+    L.push(t('fim'));
+    return L.join('\n');
+  }
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function talon(){
+    var ul = document.getElementById('talon-linii');
+    if (!ul) return;
+    var ls = linhas();
+    ul.innerHTML = ls.length ? ls.map(function(l){ return '<li><span class="q">' + l[0] + ' ×</span><span>' + esc(l[1]) + '</span></li>'; }).join('') : '<li class="gol">' + t('gol') + '</li>';
+    var o = val('ora');
+    var det = [[t('modo'), val('mod') === 'livrare' ? t('liv') : t('rid')]];
+    if (val('mod') === 'livrare' && val('adresa')) det.push(['', val('adresa')]);
+    det.push([t('cand'), dataTxt() + (o ? ', ' + (o === 'asap' ? t('cat') : o) : '')]);
+    if (val('nume')) det.push([t('nume'), val('nume')]);
+    if (val('obs')) det.push([t('obs'), val('obs')]);
+    document.getElementById('talon-det').innerHTML = det.map(function(r){ return '<div class="rg"><span>' + esc(r[0]) + '</span><span>' + esc(r[1]) + '</span></div>'; }).join('');
+    var f = faltas();
+    document.getElementById('talon').classList.toggle('gata', !f.length);
+    var mapa = {prod:t('lprod'), adresa:t('ladr'), nume:t('lnume')};
+    document.getElementById('lipsa').textContent = f.length ? t('lipsa') + f.map(function(x){ return mapa[x]; }).join(', ') : '';
+    document.getElementById('trimite').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(mensagem());
+    if (tocou.prod) mostraErr('err-prod', f.indexOf('prod') > -1 ? t('eProd') : '');
+    if (tocou.adresa) mostraErr('err-adresa', f.indexOf('adresa') > -1 ? t('eAdr') : '');
+    if (tocou.nume) mostraErr('err-nume', f.indexOf('nume') > -1 ? t('eNume') : '');
+  }
+  function mostraErr(id, m){ var e = document.getElementById(id); e.hidden = !m; e.textContent = m; }
+  form.addEventListener('input', talon);
+  form.addEventListener('change', function(e){
+    if (e.target.name === 'mod') document.getElementById('camp-adresa').hidden = val('mod') !== 'livrare';
+    if (e.target.name === 'zi') ore();
+    talon();
+  });
+  ['adresa','nume'].forEach(function(id){ document.getElementById(id).addEventListener('blur', function(){ tocou[id] = true; talon(); }); });
+  document.getElementById('trimite').addEventListener('click', function(e){
+    var f = faltas();
+    if (f.length){
+      e.preventDefault();
+      tocou.prod = tocou.adresa = tocou.nume = true; talon();
+      var alvo = f[0] === 'prod' ? document.querySelector('#alegeri [data-d="1"]') : document.getElementById(f[0]);
+      if (alvo){ alvo.focus(); alvo.scrollIntoView({block:'center', behavior: reduz ? 'auto' : 'smooth'}); }
+    }
+  });
+
+  /* ---------- língua ---------- */
+  function aplicaLingua(){
+    doc.lang = LANG === 'en' ? 'en' : LANG === 'pt' ? 'pt-PT' : 'ro';
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if (el.dataset.ro === undefined) el.dataset.ro = el.innerHTML;
+      el.innerHTML = LANG === 'ro' ? el.dataset.ro : (el.dataset[LANG] || el.dataset.en);
+    });
+    ['aria-label','alt','placeholder'].forEach(function(at){
+      var k = at.replace(/-(\w)/g, function(_, c){ return c.toUpperCase(); });
+      var kU = k.charAt(0).toUpperCase() + k.slice(1);
+      document.querySelectorAll('[data-en-' + at + ']').forEach(function(el){
+        if (el.dataset['ro' + kU] === undefined) el.dataset['ro' + kU] = el.getAttribute(at) || '';
+        el.setAttribute(at, LANG === 'ro' ? el.dataset['ro' + kU] : (el.dataset[LANG + kU] || el.dataset['en' + kU]));
+      });
+    });
+    document.querySelectorAll('.lingua button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === LANG)); });
+    burger.setAttribute('aria-label', burger.getAttribute('aria-expanded') === 'true' ? t('fechar') : t('abrir'));
+    var ativa = document.querySelector('.pag.ativa');
+    if (ativa) document.title = ativa.dataset['titulo' + LANG.charAt(0).toUpperCase() + LANG.slice(1)];
+    document.getElementById('cta-wa').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t('waCta'));
+    document.querySelectorAll('.wa-link').forEach(function(a){ a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t('waCta')); });
+    desenhaPaletes(); estado(); ore(); talon();
+  }
+  document.querySelectorAll('.lingua button').forEach(function(b){
+    b.addEventListener('click', function(){
+      LANG = b.dataset.lang;
+      try { localStorage.setItem(CHAVE, LANG); } catch(e){}
+      aplicaLingua();
+    });
+  });
+
+  /* ---------- nav + burger ---------- */
+  var nav = document.getElementById('nav'), cta = document.getElementById('cta-movel');
+  function rolou(){ nav.classList.toggle('scrolled', window.scrollY > 8); cta.classList.toggle('vis', window.scrollY > 300 || !document.querySelector('.pag.ativa[data-pag=""]')); }
+  window.addEventListener('scroll', rolou, {passive:true});
+  var burger = document.querySelector('.burger'), menu = document.getElementById('menu-movel');
+  function fechaMenu(){ burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label', t('abrir')); menu.classList.remove('aberto'); document.body.style.overflow = ''; }
+  burger.addEventListener('click', function(){
+    var abre = burger.getAttribute('aria-expanded') !== 'true';
+    burger.setAttribute('aria-expanded', String(abre));
+    burger.setAttribute('aria-label', abre ? t('fechar') : t('abrir'));
+    menu.classList.toggle('aberto', abre);
+    document.body.style.overflow = abre ? 'hidden' : '';
+    if (abre) menu.querySelector('a').focus();
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('aberto')){ fechaMenu(); burger.focus(); } });
+
+  /* ---------- revelação ---------- */
+  var io = ('IntersectionObserver' in window && !reduz) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:.08}) : null;
+  function observa(raiz){ raiz.querySelectorAll('.rv:not(.vis)').forEach(function(el){ if (io) io.observe(el); else el.classList.add('vis'); }); }
+
+  /* ---------- filtros da carta ---------- */
+  function filtra(f){
+    document.querySelectorAll('.filtre button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.f === f)); });
+    document.querySelectorAll('.grupa').forEach(function(g){ g.hidden = !!f && g.dataset.g !== f; });
+  }
+  document.querySelectorAll('.filtre button').forEach(function(b){
+    b.addEventListener('click', function(){ filtra(b.dataset.f); history.replaceState(null, '', '#/meniu' + (b.dataset.f ? '?f=' + b.dataset.f : '')); var a = document.querySelector('.pag.ativa'); observa(a); });
+  });
+
+  /* ---------- router #/ ---------- */
+  var pags = [].slice.call(document.querySelectorAll('.pag'));
+  var primeira = true;
+  function mostra(){
+    if (location.hash && location.hash.indexOf('#/') !== 0) return;
+    var h = (location.hash || '').replace(/^#\/?/, ''), q = '';
+    if (h.indexOf('?') > -1){ q = h.split('?')[1]; h = h.split('?')[0]; }
+    var alvo = pags.filter(function(p){ return p.dataset.pag === h; })[0] || pags[0];
+    pags.forEach(function(p){ p.classList.toggle('ativa', p === alvo); });
+    document.title = alvo.dataset['titulo' + LANG.charAt(0).toUpperCase() + LANG.slice(1)];
+    var chave = '#/' + alvo.dataset.pag;
+    document.querySelectorAll('.nav-links a, .menu-movel a').forEach(function(a){
+      if (a.getAttribute('href') === chave) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    fechaMenu();
+    if (!primeira){
+      window.scrollTo(0, 0);
+      var tt = alvo.querySelector('.pg-t'); if (tt) tt.focus({preventScroll:true});
+    }
+    primeira = false;
+    if (alvo.dataset.pag === 'meniu') filtra(new URLSearchParams(q).get('f') || '');
+    if (alvo.dataset.pag === 'comanda') ore();
+    if (alvo.dataset.pag === 'vizita'){ var ifr = alvo.querySelector('iframe[data-src]'); if (ifr && !ifr.src) ifr.src = ifr.dataset.src; }
+    observa(alvo);
+    if (alvo.dataset.pag === '') arranca();
+    rolou(); atualizaCos(); talon();
+  }
+  window.addEventListener('hashchange', mostra);
+
+  /* ---------- o forno: brasa viva em canvas ---------- */
+  var cv = document.getElementById('foc'), ctx = cv && cv.getContext ? cv.getContext('2d') : null;
+  var domBrilho = document.getElementById('dom-brilho'), fornoSec = document.querySelector('.forno-sec');
+  var W = 280, Hc = 220, brasas = [], faiscas = [], visivel = true, arrancou = false, t0 = 0;
+  function rnd(a, b){ return a + Math.random() * (b - a); }
+  function prepara(){
+    if (!ctx) return;
+    var r = cv.getBoundingClientRect();
+    var dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth < 820 ? 1.5 : 2);
+    cv.width = Math.max(1, Math.round(r.width * dpr)); cv.height = Math.max(1, Math.round(r.height * dpr));
+    ctx.setTransform(cv.width / W, 0, 0, cv.height / Hc, 0, 0);
+    brasas = [];
+    for (var i = 0; i < 70; i++) brasas.push({x: rnd(6, 150) + (i % 3 ? 0 : rnd(0, 110)), y: rnd(196, 214), r: rnd(1.4, 4.2), f: rnd(0, 6.28), v: rnd(1, 3)});
+  }
+  function chama(x, base, h, w, sway, cor){
+    ctx.beginPath();
+    ctx.moveTo(x - w, base);
+    ctx.bezierCurveTo(x - w, base - h * .45, x - w * .3 + sway * .5, base - h * .7, x + sway, base - h);
+    ctx.bezierCurveTo(x + w * .3 + sway * .5, base - h * .7, x + w, base - h * .45, x + w, base);
+    ctx.closePath();
+    var g = ctx.createLinearGradient(0, base, 0, base - h);
+    g.addColorStop(0, cor[0]); g.addColorStop(.45, cor[1]); g.addColorStop(1, 'rgba(255,90,20,0)');
+    ctx.fillStyle = g; ctx.fill();
+  }
+  function quadro(ts){
+    if (!ctx) return;
+    var s = ts / 1000;
+    var rampa = reduz ? 1 : Math.min(1, Math.max(0, (ts - t0 - 500) / 1100));
+    ctx.globalCompositeOperation = 'source-over';
+    var bg = ctx.createRadialGradient(70, 210, 10, 120, 200, 260);
+    bg.addColorStop(0, 'rgb(' + Math.round(70 + 60 * rampa) + ',28,8)'); bg.addColorStop(.5, '#2A1007'); bg.addColorStop(1, '#0E0604');
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, Hc);
+    ctx.strokeStyle = 'rgba(255,150,80,' + (.06 + .08 * rampa) + ')'; ctx.lineWidth = 1;
+    for (var k = 0; k < 5; k++){ ctx.beginPath(); ctx.ellipse(140, 230, 150 - k * 22, 150 - k * 26, 0, Math.PI, 2 * Math.PI); ctx.stroke(); }
+    ctx.fillStyle = 'rgba(30,14,8,.9)'; ctx.fillRect(0, 205, W, 15);
+    ctx.globalCompositeOperation = 'lighter';
+    var intens = 0;
+    ctx.filter = 'blur(1.6px)';
+    for (var i = 0; i < 7; i++){
+      var n = Math.sin(s * (2.1 + i * .37) + i * 1.7) * .5 + Math.sin(s * (5.3 + i) + i) * .25;
+      intens += n;
+      var h = (70 + i % 3 * 22 + n * 26) * rampa;
+      chama(20 + i * 17, 210, h, 17 + (i % 2) * 6, Math.sin(s * 1.6 + i) * 10, ['rgba(255,236,170,.85)', 'rgba(255,130,40,.55)']);
+    }
+    chama(70, 210, (120 + Math.sin(s * 3.1) * 18) * rampa, 34, Math.sin(s * 1.2) * 14, ['rgba(255,200,110,.35)', 'rgba(255,90,20,.25)']);
+    ctx.filter = 'none';
+    brasas.forEach(function(b){
+      var a = (.45 + .55 * Math.abs(Math.sin(s * b.v + b.f))) * rampa;
+      var g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r * 3);
+      g.addColorStop(0, 'rgba(255,220,140,' + a + ')'); g.addColorStop(.35, 'rgba(255,110,30,' + a * .7 + ')'); g.addColorStop(1, 'rgba(255,60,0,0)');
+      ctx.fillStyle = g; ctx.fillRect(b.x - b.r * 3, b.y - b.r * 3, b.r * 6, b.r * 6);
+    });
+    if (!reduz && rampa > .3 && faiscas.length < 40 && Math.random() < .35) faiscas.push({x: rnd(20, 130), y: 200, vx: rnd(-.2, .5), vy: rnd(-1.6, -.6), v: 1});
+    faiscas = faiscas.filter(function(p){
+      p.x += p.vx + Math.sin(s * 3 + p.y * .05) * .2; p.y += p.vy; p.v -= .012;
+      if (p.v <= 0 || p.y < 0) return false;
+      ctx.fillStyle = 'rgba(255,' + Math.round(150 + 80 * p.v) + ',90,' + p.v + ')';
+      ctx.fillRect(p.x, p.y, 1.6, 1.6);
+      return true;
+    });
+    var gl = ctx.createRadialGradient(80, 205, 0, 80, 205, 160);
+    gl.addColorStop(0, 'rgba(255,120,40,' + .25 * rampa + ')'); gl.addColorStop(1, 'rgba(255,120,40,0)');
+    ctx.fillStyle = gl; ctx.fillRect(0, 0, W, Hc);
+    var lum = Math.max(0, Math.min(1, .55 + intens * .12)) * rampa;
+    if (domBrilho) domBrilho.setAttribute('opacity', (.12 + .22 * lum).toFixed(3));
+    if (fornoSec) fornoSec.style.setProperty('--brilho', (.45 + .45 * lum).toFixed(3));
+  }
+  function ciclo(ts){
+    if (!document.querySelector('.pag.ativa[data-pag=""]') || !visivel){ requestAnimationFrame(ciclo); return; }
+    quadro(ts); requestAnimationFrame(ciclo);
+  }
+  if (ctx && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ visivel = es[0].isIntersecting; }).observe(cv);
+  }
+  function arranca(){
+    if (arrancou) return; arrancou = true;
+    prepara();
+    t0 = performance.now();
+    if (reduz){ quadro(t0 + 5000); doc.classList.add('ini'); return; }
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ doc.classList.add('ini'); }); });
+    requestAnimationFrame(ciclo);
+  }
+  var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(function(){ if (arrancou){ prepara(); if (reduz) quadro(t0 + 5000); } }, 150); });
+
+  document.getElementById('an').textContent = new Date().getFullYear();
+  aplicaLingua();
+  mostra();
+  setInterval(estado, 60000);
+})();
+</script>
+</body>
+</html>
