@@ -6,6 +6,8 @@ Dois reels orgânicos em inglês para @pachecostudiospt, na linguagem do vídeo 
 - `reel-en-2-evenings-back-9x16.mp4`: recibos para o contabilista, relatório da manhã, publicações a partir das fotos.
 - `*-capa.jpg`: capa para escolher no Instagram.
 
+Os dois não se parecem de propósito: o 1 é carvão, osso e laranja, em maiúsculas, com cenas que entram por baixo e uma batida a cada tempo (Am F C G); o 2 é «noite → manhã», azul-noite e âmbar, Archivo em caixa normal e centrado, cenas que entram de lado, relógio 23:47 → 07:00 no gancho e música em meio-tempo com piano elétrico (Dmaj7 Bm7 Gmaj7 A6).
+
 Gerar de novo: `node render.cjs /tmp/reels-en` (precisa de Playwright, ffmpeg e numpy). Textos em `reel.html` (objeto `REELS`), som em `som.py`.
 Os sistemas e as regras vêm da secção de automações de pachecost.com/en. Nomes, números e avaliações nas interfaces são fictícios e ilustrativos.
 

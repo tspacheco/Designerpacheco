@@ -16,7 +16,7 @@ const NOME = { 1: 'reel-en-1-lost-customers', 2: 'reel-en-2-evenings-back' };
     const sfx = await p.evaluate(() => window.SFX), dur = await p.evaluate(() => window.DUR), n = Math.round(dur * FPS);
     fs.writeFileSync(path.join(dir, 'tempos.json'), JSON.stringify(sfx));
     const som = path.join(dir, 'som.wav');
-    execFileSync('python3', [path.join(__dirname, 'som.py'), path.join(dir, 'tempos.json'), som]);
+    execFileSync('python3', [path.join(__dirname, 'som.py'), path.join(dir, 'tempos.json'), som, r]);
     for (let i = 0; i < n; i++) {
       await p.evaluate(t => render(t), i / FPS);
       await p.screenshot({ path: path.join(dir, `f${String(i).padStart(4, '0')}.jpg`), type: 'jpeg', quality: 95 });

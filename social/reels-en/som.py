@@ -118,36 +118,97 @@ def impact():
 
 # ---------- arranjo ----------
 tempos = json.load(open(sys.argv[1]))
+ESTILO = sys.argv[3] if len(sys.argv) > 3 else '1'
 nbars = int(DUR / BAR)
 pain_bars = {int(round(s / BAR)) for s in S0}
-for b in range(nbars):
-    t0 = b * BAR
-    root, notes = CH[b % 4]
-    if b in pain_bars:  # problema: sem bateria, drone grave e tensão
-        put(mus, t0, drone(root - 12, BAR), .16)
-        put(mus, t0, pad([n - 12 for n in notes], BAR, .3, .3), .07)
-        put(mus, t0, kick(), .55)  # um só bombo no 1, para marcar a entrada
-        continue
-    last = b == nbars - 1
-    for q in range(4):
-        tq = t0 + q * BEAT
-        if not (last and q > 1):
-            put(mus, tq, kick(), .8)
-        if q in (1, 3) and not (last and q == 3):
-            put(mus, tq, clap(), .32)
-        for e in (0, .3):
-            put(mus, tq + e, hat(open_=(e == .3 and q == 3)), .09 if e else .06)
-        for e in (0, .3):  # baixo em colcheias, com «pump» do bombo
-            put(mus, tq + e, bass(root - 12 if e == 0 else root, .28), .2 if e else .26)
-    if not last:
-        arp = notes + [notes[1] + 12, notes[2] + 12, notes[1] + 12]
-        for s in range(16):  # arpejo em semicolcheias
-            put(mus, t0 + s * BEAT / 4, pluck(arp[s % len(arp)] + 12), .045 if s % 4 else .06)
-    put(mus, t0, pad(notes, BAR + .3), .07)
-# final: acorde aberto que soa até ao fim (o reel volta ao início em loop)
-put(mus, DUR - 1.2, pad([57, 64, 69, 72, 76], 1.2, .05, .9), .14)
 
-put(sfx, 0, impact(), .55)                     # gancho: entra com tudo
+
+def musica1():  # reel 1: Am F C G, bombo a cada tempo, palmas, arpejo em semicolcheias
+    for b in range(nbars):
+        t0 = b * BAR
+        root, notes = CH[b % 4]
+        if b in pain_bars:  # problema: sem bateria, drone grave e tensão
+            put(mus, t0, drone(root - 12, BAR), .16)
+            put(mus, t0, pad([n - 12 for n in notes], BAR, .3, .3), .07)
+            put(mus, t0, kick(), .55)  # um só bombo no 1, para marcar a entrada
+            continue
+        last = b == nbars - 1
+        for q in range(4):
+            tq = t0 + q * BEAT
+            if not (last and q > 1):
+                put(mus, tq, kick(), .8)
+            if q in (1, 3) and not (last and q == 3):
+                put(mus, tq, clap(), .32)
+            for e in (0, .3):
+                put(mus, tq + e, hat(open_=(e == .3 and q == 3)), .09 if e else .06)
+            for e in (0, .3):  # baixo em colcheias, com «pump» do bombo
+                put(mus, tq + e, bass(root - 12 if e == 0 else root, .28), .2 if e else .26)
+        if not last:
+            arp = notes + [notes[1] + 12, notes[2] + 12, notes[1] + 12]
+            for s in range(16):  # arpejo em semicolcheias
+                put(mus, t0 + s * BEAT / 4, pluck(arp[s % len(arp)] + 12), .045 if s % 4 else .06)
+        put(mus, t0, pad(notes, BAR + .3), .07)
+    # final: acorde aberto que soa até ao fim (o reel volta ao início em loop)
+    put(mus, DUR - 1.2, pad([57, 64, 69, 72, 76], 1.2, .05, .9), .14)
+
+
+# reel 2: «noite → manhã», mais quente e mais lenta no sentir: Dmaj7 Bm7 Gmaj7 A6, meio-tempo, estalos de dedos,
+# shaker, acordes de piano elétrico em contratempo e baixo redondo; os problemas têm o tique-taque do relógio
+CH2 = [(38, [57, 61, 64, 66]), (35, [54, 57, 61, 62]), (43, [54, 57, 59, 62]), (45, [54, 57, 61, 64])]
+
+
+def epiano(notes, d=.5):
+    x = tt(d)
+    s = sum(np.sin(2 * np.pi * hz(m) * x + 1.2 * np.sin(2 * np.pi * hz(m) * x) * np.exp(-x * 6)) for m in notes) / len(notes)
+    return s * np.exp(-x * 3.2) * np.minimum(1, x * 200) * (1 + .2 * np.sin(2 * np.pi * 4.5 * x))
+
+
+def snap():
+    x = tt(.12); n = noise(.12); n = n - smooth(n, 2)
+    return n * np.exp(-x * 45) + np.sin(2 * np.pi * 1800 * x) * np.exp(-x * 80) * .3
+
+
+def sub(m, d):
+    x = tt(d)
+    return np.sin(2 * np.pi * hz(m) * x) * np.minimum(1, x * 80) * np.clip((d - x) / .08, 0, 1)
+
+
+def musica2():
+    for b in range(nbars):
+        t0 = b * BAR
+        root, notes = CH2[b % 4]
+        if b in pain_bars:
+            put(mus, t0, drone(root - 12, BAR), .12)
+            for q in range(4):
+                put(mus, t0 + q * BEAT, tick(), .14)  # relógio
+                put(mus, t0 + q * BEAT + .3, tick()[::2], .07)
+            continue
+        last = b == nbars - 1
+        put(mus, t0, kick(), .75)
+        if not last:
+            put(mus, t0 + 1.5 * BEAT, kick(), .55)
+        for q in (1, 3):
+            if not (last and q == 3):
+                put(mus, t0 + q * BEAT, snap(), .4)
+        for s16 in range(16):
+            put(mus, t0 + s16 * BEAT / 4, hat() * (1 if s16 % 2 else .5), .05)
+        for q in range(4):
+            if not (last and q > 1):
+                put(mus, t0 + q * BEAT + .3, epiano(notes, .45), .11)
+        put(mus, t0, sub(root, BEAT * 1.5), .3)
+        put(mus, t0 + BEAT * 2, sub(root + (7 if b % 2 else 12), BEAT * 1.9), .24)
+        put(mus, t0, pad([n + 12 for n in notes], BAR + .3, .8, .8), .035)
+    put(mus, DUR - 1.2, epiano([62, 66, 69, 73, 76], 1.2), .2)
+
+
+musica1() if ESTILO == "1" else musica2()
+
+if ESTILO == '1':
+    put(sfx, 0, impact(), .55)                 # gancho: entra com tudo
+else:                                          # gancho do reel 2: o relógio rola das 23:47 para as 07:00 com um despertador suave
+    put(sfx, 0, kick(), .5)
+    for j, f in enumerate((1318.5, 1760, 2217.5, 2637)):
+        put(sfx, .9 + j * .09, ping(f, f * 1.5, 5, .9), .08)
 for t in [S0[0], S0[1], S0[2], OUT, 27.0]:
     put(sfx, t - .35, whoosh(.55), .1)
 for i, s in enumerate(S0):

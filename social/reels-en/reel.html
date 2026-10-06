@@ -102,6 +102,42 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--carvao)}
 .marca{position:absolute;left:80px;right:80px;top:1530px;display:flex;align-items:center;gap:18px;font:700 26px SM;letter-spacing:.16em;text-transform:uppercase}
 .esc .marca{color:var(--cinza)} .cla .marca{color:var(--cinza2)}
 .marca svg{width:62px;height:62px}
+
+/* ===== reel 2: identidade própria, «noite → manhã» (navy e âmbar, Archivo em caixa normal, tudo centrado, cenas entram de lado) ===== */
+@font-face{font-family:AR;src:url(../../videos/titulos/fontes/Archivo-800-latin.woff2) format("woff2");font-weight:800}
+@font-face{font-family:AR;src:url(../../videos/titulos/fontes/Archivo-300-latin.woff2) format("woff2");font-weight:300}
+@font-face{font-family:AR;src:url(../../videos/titulos/fontes/Archivo-500-latin.woff2) format("woff2");font-weight:500}
+body.r2{--carvao:#0E1530;--osso:#FFF3D9;--laranja:#F5B83D;--laranja-t:#9A5F00;--tinta:#16213F;--cinza:#9AA3C4;--cinza2:#4A5272;
+  --verde:#DDE6FF;--verde-l:#4C6CD3;--verde-t:#2D46A0;--ambar:#FFE7AE;--ambar-l:#F5B83D}
+.r2 .esc{background:radial-gradient(38% 22% at 82% 9%,rgba(245,184,61,.22),transparent 70%),linear-gradient(180deg,#0E1530,#18224A);color:#F3F0FF}
+.r2 .cla{background:radial-gradient(90% 38% at 50% 108%,rgba(245,184,61,.55),transparent 70%),var(--osso);color:var(--tinta)}
+.r2 .eb{text-align:center;font:500 32px/1 AR;letter-spacing:.01em;text-transform:none}
+.r2 .ti{text-align:center;font-family:AR;font-weight:800;text-transform:none;letter-spacing:-.025em;line-height:1.02}
+.r2 .q{font-size:78px}
+.r2 .pg{left:50%;right:auto;transform:translateX(-50%);grid-template-columns:repeat(3,26px);gap:18px;top:262px}
+.r2 .pg i{height:26px;border-radius:50%;background:rgba(154,163,196,.3)}
+.r2 .flow{left:100px;right:100px}
+.r2 .bx{border:0;border-radius:34px;box-shadow:0 16px 40px rgba(22,33,63,.12)}
+.r2 .bx.dec{border:3px dashed var(--tinta)}
+.r2 .bx .ic{border-radius:50%}
+.r2 .pl{background:var(--tinta)}
+.r2 .bolha{background:#E4EAFF;color:#16213F;border-radius:26px 26px 26px 6px}
+.r2 .chips span.pick{background:#E4EAFF;outline-color:var(--verde-l);color:#16213F}
+.r2 .nt{border-radius:40px;background:rgba(255,255,255,.07)}
+.r2 .col{align-items:center;text-align:center}
+.r2 .eb2{font:500 32px/1 AR;letter-spacing:.01em;text-transform:none}
+.r2 .ti2{font-family:AR;font-weight:800;text-transform:none;letter-spacing:-.025em}
+.r2 .it{border-radius:999px;text-align:left}
+.r2 .it b{font:800 56px/1 AR}
+.r2 .btn{color:var(--tinta);transform-origin:center}
+.r2 .sv{font:500 30px AR;letter-spacing:.02em;text-transform:none}
+.r2 .marca{justify-content:center}
+.clk{position:absolute;left:0;right:0;top:330px;height:330px;overflow:hidden;text-align:center;font:800 300px/330px AR;letter-spacing:-.04em;color:var(--laranja)}
+.clk span{position:absolute;left:0;right:0}
+.hk2{top:780px;font-size:100px}
+.hk2 em{font-style:normal;color:var(--laranja)}
+.hk2 small{display:block;font:300 44px/1.3 AR;letter-spacing:0;color:#C9CDE6;margin-top:34px}
+.moon{position:absolute;right:120px;top:150px;width:90px;height:90px;border-radius:50%;box-shadow:-22px 10px 0 0 #F5B83D;transform:rotate(-20deg)}
 </style>
 </head>
 <body>
@@ -198,7 +234,8 @@ const REELS={
   out:{e:'Your turn',t:'Which one do<br>you need first?',its:['Receipts','Morning report','Posts'],c:'Comment 1, 2 or 3 ↓',
        e2:'Free diagnosis',t2:'What should you<br>automate first?'}}
 };
-const R=REELS[new URLSearchParams(location.search).get('r')||'1'];
+const RN=new URLSearchParams(location.search).get('r')||'1', R=REELS[RN];
+document.body.classList.add('r'+RN);
 
 // ---------- linha do tempo (s) — som.py usa os mesmos tempos ----------
 const BAR=2.4, S0=[2.4,9.6,16.8], PAIN=2.4, OUT=24.0, OUT2=27.0, DUR=30.0;
@@ -208,12 +245,23 @@ const op=(o,y=0,s=1,x=0)=>`opacity:${o.toFixed(3)};transform:translate(${x.toFix
 const words=(txt,t0,k,step=.06)=>txt.split(' ').map((w,i)=>{const a=fi(k,t0+i*step,.28);return `<span class="w" style="${op(a,(1-a)*26)}">${w}</span>`}).join('');
 const prog=(i,f)=>`<div class="pg">${[0,1,2].map(j=>`<i><b style="transform:scaleX(${(j<i?1:j>i?0:cl(f)).toFixed(3)})"></b></i>`).join('')}</div>`;
 const marca=()=>`<div class="marca">${I.logo}<span>Pacheco Studios</span></div>`;
-const slide=(t,a)=>a<=0?0:(1-EI((t-a)/.45))*1920; // cada cena entra por baixo e tapa a anterior
+const slide=(t,a)=>a<=0?0:(1-EI((t-a)/.45))*1920; // cada cena entra e tapa a anterior
+const mv=(t,a)=>RN==='2'?`translateX(${(slide(t,a)*1080/1920).toFixed(1)}px)`:`translateY(${slide(t,a).toFixed(1)}px)`;
 
 // passos do esquema: momentos de entrada (k) — exportados para o som
 function steps(S){const n=S.fix.steps.length+(S.fix.br?1:0);return Array.from({length:n},(_,j)=>FX0+j*FXW/n)}
 
+function cenaGancho2(t){
+  const H=R.hook, dr=(1-E(t/2.4))*20, k=EI((t-.9)/.45); // o relógio rola das 23:47 para as 07:00
+  let h=`<div class="cena esc"><div class="moon"></div>`;
+  h+=`<div class="eb" style="top:280px;color:var(--cinza)">${H.pre}</div>`;
+  h+=`<div class="clk"><span style="transform:translateY(${(-k*330).toFixed(1)}px);opacity:${(1-k).toFixed(3)}">23:47</span><span style="transform:translateY(${((1-k)*330).toFixed(1)}px);opacity:${k.toFixed(3)}">07:00</span></div>`;
+  h+=`<div class="ti hk2" style="${op(1,dr)}">3 AI systems<br>that give you<br><em>your evenings back.</em><small>${'Receipts · reports · posts'}</small></div>`;
+  h+=marca()+`</div>`;
+  return h;
+}
 function cenaGancho(t){
+  if(RN==='2') return cenaGancho2(t);
   const H=R.hook;
   let h=`<div class="cena esc">`;
   // o 1.º fotograma já mostra o gancho inteiro (é o que aparece no feed antes de começar): só o «3» e a deriva mexem
@@ -229,7 +277,7 @@ function cenaGancho(t){
 
 function cenaProblema(t,i,S){
   const k=t-S0[i];
-  let h=`<div class="cena esc" style="transform:translateY(${slide(t,S0[i]).toFixed(1)}px)">`;
+  let h=`<div class="cena esc" style="transform:${mv(t,S0[i])}">`;
   h+=prog(i,k/(BAR*3));
   h+=`<div class="eb" style="${op(fi(k,.1,.25))}">0${i+1}/03 · The problem</div>`;
   h+=`<div class="ti q">${S.pain.q.split(' ').map((w,j)=>{const a=fi(k,.12+j*.05,.26);w=w.replace(/^“/,'<span class="ab">“</span>').replace(/”$/,'<span class="ab">”</span>');return `<span class="w" style="${op(a,(1-a)*24)}">${w}</span>`}).join('')}</div>`;
@@ -241,7 +289,7 @@ function cenaProblema(t,i,S){
 function cenaSolucao(t,i,S){
   const a=S0[i]+PAIN, k=t-a, F=S.fix, ts=steps(S);
   const hl=EI((k-3.6)/.45); // resultado: troca do título e destaque do ramo «pessoa»
-  let h=`<div class="cena cla" style="transform:translateY(${slide(t,a).toFixed(1)}px)">`;
+  let h=`<div class="cena cla" style="transform:${mv(t,a)}">`;
   h+=prog(i,(PAIN+k)/(BAR*3));
   h+=`<div class="eb" style="${op(fi(k,.15,.25)*(1-hl))}">0${i+1}/03 · The fix</div><div class="eb" style="${op(hl)};color:var(--verde-t)">0${i+1}/03 · The result</div>`;
   h+=`<div class="ti fit" style="top:362px;font-size:96px;${op(fi(k,.2,.35)*(1-hl),(1-fi(k,.2,.35))*20)}">${F.t}</div>`;
@@ -278,7 +326,7 @@ function cenaSolucao(t,i,S){
 
 function cenaFecho(t){
   const O=R.out, k=t-OUT;
-  let h=`<div class="cena esc" style="transform:translateY(${slide(t,OUT).toFixed(1)}px)">`;
+  let h=`<div class="cena esc" style="transform:${mv(t,OUT)}">`;
   const o1=t<OUT2?1:1-EI((t-OUT2)/.35);
   if(t<OUT2+.4){
     h+=`<div class="col" style="${op(o1,-(1-o1)*40)}">`;
