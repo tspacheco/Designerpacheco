@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>@@meta.title</title>
+<meta name="description" content="@@meta.desc">
+<meta name="theme-color" content="#24161B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2324161B'/%3E%3Crect x='14' y='10' width='36' height='44' rx='8' fill='none' stroke='%23E8D3C9' stroke-width='4'/%3E%3Ccircle cx='14' cy='18' r='4' fill='%23FFD898'/%3E%3Ccircle cx='14' cy='32' r='4' fill='%23FFD898'/%3E%3Ccircle cx='14' cy='46' r='4' fill='%23FFD898'/%3E%3Ccircle cx='50' cy='18' r='4' fill='%23FFD898'/%3E%3Ccircle cx='50' cy='32' r='4' fill='%23FFD898'/%3E%3Ccircle cx='50' cy='46' r='4' fill='%23FFD898'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('bz.lang'),h=document.documentElement;if(l==='ro'||l==='en'||(l==='pt'&&h.dataset.pt)){h.dataset.lang=l;h.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --pudra:#F6EAE5; --pudra-2:#EEDBD3; --pudra-3:#E6CBC0;
+  --ink:#2A1A1F; --ink-2:#5E434A; --linha:rgba(42,26,31,.14);
+  --lac:#9B2C48; --lac-2:#7A1F38; --ruj:#C7325C;
+  --camarin:#24161B; --camarin-2:#33212A; --camarin-txt:#F7E9E3; --camarin-txt-2:#D8C2BA;
+  --rama:#E8D3C9; --rama-2:#C9A99C;
+  --bec:#FFD898; --bec-glow:rgba(255,196,120,.55);
+  --f-disp:'Forum',Georgia,serif; --f-txt:'Manrope',system-ui,sans-serif; --f-ruj:'Caveat Brush','Segoe Print',cursive;
+  --r:18px; --ease:cubic-bezier(.2,.7,.2,1);
+  --gut:clamp(18px,5vw,56px); --max:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--pudra);color:var(--ink);font:400 16.5px/1.6 var(--f-txt);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--f-disp);font-weight:400;line-height:1.04;margin:0;letter-spacing:-.005em}
+p{margin:0 0 1em}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--lac);outline-offset:3px;border-radius:6px}
+.escuro :focus-visible,.nav :focus-visible,.meniu :focus-visible,.rodape :focus-visible,dialog :focus-visible{outline-color:var(--bec)}
+.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none}
+.skip:focus{top:12px}
+.wrap{width:min(100% - 2*var(--gut),var(--max));margin-inline:auto}
+.kicker{font:600 .74rem/1.2 var(--f-txt);letter-spacing:.18em;text-transform:uppercase;color:var(--lac);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.escuro .kicker{color:var(--bec)}
+.tbc{display:inline-flex;align-items:center;gap:5px;font:600 .72em/1 var(--f-txt);letter-spacing:.04em;padding:.32em .7em .34em;border-radius:99px;border:1px dashed currentColor;color:var(--lac);background:rgba(155,44,72,.06);white-space:nowrap;vertical-align:.12em}
+.tbc::before{content:"";width:.5em;height:.5em;border-radius:50%;background:currentColor;opacity:.55}
+.escuro .tbc{color:var(--bec);background:rgba(255,216,152,.08)}
+
+/* ---------- faixa + nav */
+.faixa{background:var(--ink);color:#F3DCD3;font:600 .68rem/1.3 var(--f-txt);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:8px 14px calc(8px);padding-top:max(8px,env(safe-area-inset-top))}
+.nav{position:sticky;top:0;z-index:50;background:var(--camarin);color:var(--camarin-txt);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 10px 30px -18px rgba(0,0,0,.7)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:400 1.45rem/1 var(--f-disp);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.marca i{display:block;width:10px;height:10px;border-radius:50%;background:var(--bec);box-shadow:0 0 10px 3px var(--bec-glow)}
+.nav-links{display:none;list-style:none;margin:0;padding:0;gap:4px}
+.nav-links a{display:block;padding:10px 12px;border-radius:99px;text-decoration:none;font-weight:500;font-size:.95rem;color:var(--camarin-txt-2);transition:color .2s,background .2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav-links a[aria-current=page]{color:var(--camarin);background:var(--bec)}
+.nav-dir{display:flex;align-items:center;gap:8px}
+.lang{display:flex;border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:3px}
+.lang button{border:0;background:none;padding:6px 9px;min-width:38px;min-height:34px;border-radius:99px;font:600 .74rem/1 var(--f-txt);letter-spacing:.08em;cursor:pointer;color:var(--camarin-txt-2)}
+.lang button[aria-pressed=true]{background:var(--camarin-txt);color:var(--camarin)}
+.lang [data-pt-only]{display:none}
+html[data-pt] .lang [data-pt-only]{display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:99px;border:1.5px solid transparent;font:600 .98rem/1.1 var(--f-txt);text-decoration:none;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s,border-color .2s;touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.btn-lac{background:var(--lac);color:#fff}
+.btn-lac:hover{background:var(--lac-2)}
+.btn-bec{background:var(--bec);color:var(--camarin)}
+.btn-bec:hover{background:#FFE6BC}
+.btn-linha{border-color:currentColor;background:transparent}
+.btn-linha:hover{background:rgba(155,44,72,.08)}
+.escuro .btn-linha:hover{background:rgba(255,255,255,.08)}
+.btn svg{width:18px;height:18px;flex:none}
+.nav-cta{display:none}
+.burger{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:none;display:grid;place-items:center;cursor:pointer}
+.burger span{display:block;width:18px;height:1.5px;background:currentColor;position:relative;transition:transform .3s var(--ease),background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:currentColor;transition:transform .3s var(--ease)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded=true] span::after{transform:translateY(-6px) rotate(-45deg)}
+.meniu{position:fixed;inset:0;z-index:45;background:var(--camarin);color:var(--camarin-txt);padding:150px var(--gut) 40px;display:flex;flex-direction:column;gap:28px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.meniu.aberto{opacity:1;visibility:visible}
+.meniu ul{list-style:none;margin:0;padding:0}
+.meniu li a{display:flex;align-items:center;gap:14px;padding:10px 0;font:400 2.3rem/1.1 var(--f-disp);text-decoration:none;color:var(--camarin-txt-2)}
+.meniu li a::before{content:"";width:12px;height:12px;border-radius:50%;background:#5a4740;transition:background .3s,box-shadow .3s}
+.meniu li a[aria-current=page]{color:#fff}
+.meniu li a[aria-current=page]::before{background:var(--bec);box-shadow:0 0 12px 4px var(--bec-glow)}
+@media(max-width:420px){.nav-in{gap:8px}.marca{font-size:1.2rem;letter-spacing:.1em;gap:8px}.lang button{min-width:32px;padding:6px 7px}.burger{width:44px;height:44px}}
+@media(min-width:960px){.nav-links{display:flex}.burger{display:none}.nav-cta{display:inline-flex;min-height:42px;padding:10px 18px}.meniu{display:none}}
+
+/* ---------- herói: a oglinda */
+.erou{position:relative;background:var(--camarin);color:var(--camarin-txt);overflow:hidden;padding:26px 0 56px;isolation:isolate}
+.erou::before{content:"";position:absolute;inset:-20% -10% auto;height:120%;z-index:-1;background:radial-gradient(60% 50% at 50% 42%,rgba(255,190,120,.30),transparent 70%);opacity:var(--lit,0);transition:opacity .5s}
+.erou::after{content:"";position:absolute;inset:0;z-index:-2;opacity:.5;background:repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px)}
+.erou-grid{display:grid;gap:22px;justify-items:center;text-align:center}
+.erou .kicker{justify-content:center;color:var(--camarin-txt-2)}
+.erou h1{font-size:clamp(3.3rem,15vw,7.4rem);letter-spacing:.02em;text-transform:uppercase;line-height:.9;color:#FBEFEA}
+.erou h1 span{display:block;font-size:.42em;letter-spacing:.42em;margin-top:.25em;color:var(--rama);padding-left:.42em}
+@media(min-width:960px){.erou h1 span{padding-left:.08em;letter-spacing:.62em}}
+.erou-txt{max-width:34ch;color:var(--camarin-txt-2);font-size:1.05rem}
+.erou-acoes{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.erou-nota{display:inline-flex;align-items:center;gap:10px;font-size:.92rem;color:var(--camarin-txt-2);text-decoration:none}
+.erou-nota b{font:400 1.6rem/1 var(--f-disp);color:#fff}
+.erou-nota .estrelas svg{width:16px;height:16px;fill:var(--bec)}
+.oglinda{--pad:26px;position:relative;width:min(80vw,440px);aspect-ratio:4/5;border-radius:34px;padding:var(--pad);background:linear-gradient(150deg,#F3E4DC 0%,var(--rama) 40%,var(--rama-2) 100%);box-shadow:0 40px 90px -30px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.25) inset,0 -3px 0 rgba(0,0,0,.12) inset}
+.sticla{position:absolute;inset:var(--pad);border-radius:14px;overflow:hidden;background:#1b1114;box-shadow:inset 0 0 0 1px rgba(0,0,0,.35),inset 0 6px 20px rgba(0,0,0,.45)}
+.sticla .fb,.ph .fb{position:absolute;inset:0;width:100%;height:100%}
+.sticla img{position:absolute;inset:-4%;max-width:none;width:108%;height:108%;object-fit:cover;transform:scaleX(-1) translate3d(var(--mx,0),var(--my,0),0);transition:transform .6s var(--ease)}
+.sticla .umbra{position:absolute;inset:0;background:#120a0d;opacity:calc(1 - var(--lit,1)*.95);transition:opacity .45s}
+.sticla::after{content:"";position:absolute;inset:-10% -60%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.22) 48%,rgba(255,255,255,.05) 53%,transparent 60%);transform:translateX(-70%);pointer-events:none}
+.erou.aceso .sticla::after{animation:luciu 1.6s .2s var(--ease) both}
+@keyframes luciu{to{transform:translateX(70%)}}
+.ruj{position:absolute;left:9%;bottom:7%;margin:0;font:400 clamp(1.9rem,8.5vw,2.9rem)/1 var(--f-ruj);color:var(--ruj);transform:rotate(-7deg);text-shadow:0 1px 0 rgba(255,255,255,.35),0 0 1px rgba(120,10,40,.6);text-align:left;pointer-events:none}
+html.js .ruj{clip-path:inset(-20% 100% -20% 0)}
+html.js .erou.aceso .ruj{clip-path:inset(-20% -5% -20% 0);transition:clip-path 1.3s .5s steps(14,end)}
+.bec{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#9b8780,#5c4a44 70%);box-shadow:0 2px 3px rgba(0,0,0,.35)}
+.bec::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff 0,#FFF3D6 30%,var(--bec) 75%);opacity:0;transition:opacity .25s}
+.bec::after{content:"";position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(255,206,130,.6),transparent 65%);opacity:0;transition:opacity .4s}
+.bec.on::before,.bec.on::after{opacity:1}
+.oglinda-legenda{font-size:.8rem;color:var(--camarin-txt-2);letter-spacing:.06em}
+@media(min-width:960px){
+  .erou{padding:56px 0 90px;min-height:calc(100svh - 96px);display:flex;align-items:center}
+  .erou-grid{grid-template-columns:1.05fr .95fr;text-align:left;justify-items:start;align-items:center;gap:40px}
+  .erou .kicker{justify-content:flex-start}
+  .erou-acoes{justify-content:flex-start}
+  .erou-col{display:grid;gap:26px;justify-items:start}
+  .oglinda{width:min(38vw,470px);justify-self:center}
+}
+@media(max-width:959px){.erou-col{display:contents}.erou-col .kicker{order:-2}.erou-col h1{order:-1}.erou-txt,.erou-acoes,.erou-nota{order:1}}
+
+/* entrada do herói */
+html.js .erou .in{opacity:0;transform:translateY(16px)}
+html.js .erou.pronto .in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+html.js .erou.pronto .in.d1{transition-delay:.15s}html.js .erou.pronto .in.d2{transition-delay:.3s}html.js .erou.pronto .in.d3{transition-delay:.45s}
+
+/* ---------- marquee */
+.mq{background:var(--lac);color:#FBE9EE;overflow:hidden;padding:13px 0;font:400 1.15rem/1 var(--f-disp);letter-spacing:.06em;white-space:nowrap}
+.mq-in{display:inline-flex;gap:0;animation:mq 38s linear infinite}
+.mq-in span{padding-right:.6em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- secções */
+.sec{padding:clamp(64px,10vw,120px) 0}
+.sec-cab{display:grid;gap:12px;margin-bottom:clamp(30px,5vw,54px);max-width:760px}
+.sec-cab h2{font-size:clamp(2.2rem,6.4vw,3.8rem)}
+.sec-cab p{color:var(--ink-2);font-size:1.05rem;max-width:56ch;margin:0}
+.escuro{background:var(--camarin);color:var(--camarin-txt)}
+.escuro .sec-cab p{color:var(--camarin-txt-2)}
+.ph{position:relative;overflow:hidden;border-radius:var(--r);background:var(--pudra-3);margin:0}
+.ph img{position:relative;width:100%;height:100%;object-fit:cover}
+.rv{opacity:1}
+html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+html.js .rv.vis{opacity:1;transform:none}
+html.js .rv.d1{transition-delay:.1s}html.js .rv.d2{transition-delay:.2s}html.js .rv.d3{transition-delay:.3s}
+
+/* disciplinas (início) */
+.disc{display:grid;gap:18px;grid-template-columns:1fr}
+.disc a{display:grid;grid-template-columns:112px 1fr;gap:18px;align-items:center;text-decoration:none;padding:12px;border-radius:calc(var(--r) + 6px);background:var(--pudra-2);transition:background .25s,transform .25s var(--ease)}
+.disc a:hover{background:var(--pudra-3)}
+.disc .ph{aspect-ratio:4/5}
+.disc h3{font-size:1.9rem;margin-bottom:6px}
+.disc p{margin:0;color:var(--ink-2);font-size:.95rem;line-height:1.5}
+@media(min-width:760px){.disc{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.disc{grid-template-columns:repeat(4,1fr)}.disc a{grid-template-columns:1fr;align-content:start;padding:12px 12px 22px}.disc a>div{padding:4px 8px 0}}
+.mais{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+
+/* tira de trabalhos (início) */
+.tira{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tira .ph{aspect-ratio:4/5}
+.tira .ph:nth-child(1){grid-row:span 2;aspect-ratio:auto}
+@media(min-width:760px){.tira{grid-template-columns:repeat(4,1fr)}.tira .ph:nth-child(4){grid-row:span 2;aspect-ratio:auto}}
+
+/* teaser marcação */
+.teaser{display:grid;gap:34px;align-items:center}
+.teaser h2{font-size:clamp(2rem,6vw,3.4rem)}
+.teaser p{color:var(--camarin-txt-2);max-width:48ch}
+.mini-oglinda{--pad:24px;position:relative;width:min(70vw,300px);aspect-ratio:1;border-radius:26px;justify-self:center;background:linear-gradient(150deg,#F3E4DC,var(--rama) 45%,var(--rama-2));padding:24px}
+.mini-oglinda .sticla img{max-width:none}
+.mini-oglinda .bec{width:16px;height:16px;margin:-8px 0 0 -8px}
+.mini-oglinda .sticla strong{font:400 4.5rem/1 var(--f-disp);color:var(--bec)}
+.mini-oglinda .sticla small{display:block;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--camarin-txt-2)}
+@media(min-width:860px){.teaser{grid-template-columns:1.2fr .8fr}}
+
+/* visita (início) */
+.visita{display:grid;gap:22px}
+.cartao{background:var(--pudra-2);border-radius:calc(var(--r) + 6px);padding:clamp(22px,4vw,36px)}
+.cartao h3{font-size:1.7rem;margin-bottom:10px}
+.nota-g{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.nota-g b{font:400 4rem/1 var(--f-disp);color:var(--lac)}
+.estrelas{display:inline-flex;gap:3px}.estrelas svg{width:18px;height:18px;fill:var(--lac)}
+@media(min-width:860px){.visita{grid-template-columns:1fr 1fr}}
+
+/* ---------- páginas interiores */
+.pagina[hidden]{display:none!important}
+.cab-pag{background:var(--camarin);color:var(--camarin-txt);padding:clamp(44px,8vw,90px) 0 clamp(40px,6vw,70px);position:relative;overflow:hidden}
+.cab-pag h2{font-size:clamp(2.6rem,9vw,5.4rem);max-width:15ch;outline:none}
+.cab-pag p.lead{color:var(--camarin-txt-2);max-width:56ch;margin:18px 0 0;font-size:1.05rem}
+.becuri{display:flex;gap:14px;margin-bottom:22px}
+.becuri .bec{position:relative;margin:0;width:14px;height:14px}
+.becuri .bec::after{inset:-10px}
+
+.cab-pag .kicker{color:var(--bec)}
+.cab-pag .tbc{color:var(--bec);background:rgba(255,216,152,.08)}
+.cab-grid{display:grid;gap:30px;align-items:center}
+.oglinda-mica{display:none}
+@media(min-width:960px){
+  .cab-grid{grid-template-columns:1fr 300px;gap:60px}
+  .cab-pag .becuri{display:none}
+  .oglinda-mica{--pad:20px;display:block;position:relative;margin:0;width:300px;aspect-ratio:4/5;border-radius:26px;padding:var(--pad);background:linear-gradient(150deg,#F3E4DC,var(--rama) 45%,var(--rama-2));box-shadow:0 30px 60px -28px rgba(0,0,0,.8)}
+  .oglinda-mica .sticla img{max-width:none}
+  .oglinda-mica .bec{width:14px;height:14px;margin:-7px 0 0 -7px}
+  .oglinda-mica .bec::after{inset:-10px}
+}
+/* serviços */
+.cap{display:grid;gap:26px;padding:clamp(40px,7vw,80px) 0;border-bottom:1px solid var(--linha)}
+.cap:last-of-type{border-bottom:0}
+.cap .ph{aspect-ratio:4/5;max-width:420px}
+.cap h3{font-size:clamp(2.4rem,7vw,3.6rem);margin-bottom:6px}
+.cap .cap-d{color:var(--ink-2);margin-bottom:18px;max-width:50ch}
+.trat{list-style:none;margin:0;padding:0;border-top:1px solid var(--linha)}
+.trat li{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:18px 0;border-bottom:1px solid var(--linha);align-items:center}
+.trat h4{margin:0;font:600 1.08rem/1.3 var(--f-txt)}
+.trat p{margin:0;color:var(--ink-2);font-size:.95rem;grid-column:1}
+.trat .preco{grid-column:1;font-size:.85rem;color:var(--ink-2);display:flex;gap:8px;align-items:center}
+.trat .btn{grid-column:2;grid-row:1/span 3;min-height:44px;padding:10px 16px;font-size:.9rem}
+@media(min-width:860px){.cap{grid-template-columns:minmax(260px,.8fr) 1.2fr;gap:56px;align-items:start}.cap .ph{position:sticky;top:96px}}
+.ajuda{display:grid;gap:18px;align-items:center;border-radius:calc(var(--r) + 8px);padding:clamp(24px,5vw,44px)}
+.ajuda h3{font-size:clamp(1.9rem,5vw,2.6rem)}
+.ajuda p{color:var(--camarin-txt-2);margin:6px 0 0}
+@media(min-width:860px){.ajuda{grid-template-columns:1fr auto}}
+
+/* galeria */
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chip{border:1.5px solid var(--linha);background:transparent;border-radius:99px;padding:10px 16px;min-height:44px;font-weight:600;font-size:.92rem;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.chip:hover{border-color:var(--lac)}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--pudra);border-color:var(--ink)}
+.gal{columns:2;column-gap:12px}
+@media(min-width:860px){.gal{columns:3;column-gap:18px}}
+.gal button{display:block;width:100%;border:0;padding:0;margin:0 0 12px;background:none;text-align:left;cursor:zoom-in;break-inside:avoid}
+.gal button[hidden]{display:none}
+.gal .ph{aspect-ratio:var(--ar,4/5)}
+.gal .ph img{transition:transform .6s var(--ease)}
+.gal button:hover .ph img{transform:scale(1.04)}
+.gal small{display:block;padding:8px 2px 4px;font-size:.84rem;color:var(--ink-2);line-height:1.35}
+dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;color:#fff}
+dialog.lb::backdrop{background:rgba(18,10,13,.94)}
+.lb-in{position:absolute;inset:0;display:grid;grid-template-rows:auto 1fr auto;padding:max(14px,env(safe-area-inset-top)) 14px max(16px,env(safe-area-inset-bottom))}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lb-img{display:grid;place-items:center;min-height:0;padding:10px 0}
+.lb-img img{max-height:100%;max-width:min(100%,900px);object-fit:contain;border-radius:12px}
+.lb-bot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;max-width:900px;width:100%;margin:0 auto}
+.lb-bot p{margin:0;font-size:.98rem;color:#F1DED7}
+.ic{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.25);display:grid;place-items:center;cursor:pointer;color:#fff}
+.ic svg{width:20px;height:20px}
+.lb-nav{display:flex;gap:8px}
+
+/* o salão */
+.duas{display:grid;gap:36px}
+@media(min-width:860px){.duas{grid-template-columns:1fr 1fr;gap:64px;align-items:start}}
+.duas .grande{font-size:1.15rem}
+.passos{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:p}
+.passos li{counter-increment:p;display:grid;grid-template-columns:52px 1fr;gap:4px 16px;padding:18px;background:var(--pudra-2);border-radius:var(--r)}
+.passos li::before{content:counter(p);grid-row:span 2;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:400 1.4rem/1 var(--f-disp);background:var(--camarin);color:var(--bec)}
+.passos b{font-weight:600}
+.passos span{color:var(--ink-2);font-size:.95rem}
+.equipa{display:flex;gap:18px;align-items:center;padding:22px;border:1.5px dashed var(--rama-2);border-radius:var(--r)}
+.equipa .avatar{flex:none;width:64px;height:80px;border-radius:12px;background:linear-gradient(160deg,var(--rama),var(--rama-2));position:relative}
+.equipa .avatar::after{content:"";position:absolute;left:50%;top:18px;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:rgba(255,255,255,.5);box-shadow:0 26px 0 6px rgba(255,255,255,.4)}
+details{border-bottom:1px solid var(--linha)}
+details summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;font-weight:600;position:relative;font-size:1.05rem}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"";position:absolute;right:6px;top:50%;width:12px;height:12px;margin-top:-8px;border-right:2px solid var(--lac);border-bottom:2px solid var(--lac);transform:rotate(45deg);transition:transform .25s}
+details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
+details p{color:var(--ink-2);padding-bottom:16px;margin:0}
+
+/* marcação */
+.progr{display:flex;gap:10px;align-items:center;margin-top:26px}
+.progr .bec{position:relative;margin:0;width:22px;height:22px}
+.progr small{margin-left:8px;color:var(--camarin-txt-2);font-size:.85rem}
+.form{display:grid;gap:22px;padding:clamp(40px,6vw,70px) 0}
+@media(min-width:980px){.form{grid-template-columns:1.25fr .75fr;align-items:start;gap:40px}.resumo{position:sticky;top:90px}}
+fieldset{border:0;margin:0;padding:clamp(20px,4vw,30px);background:var(--pudra-2);border-radius:calc(var(--r) + 6px);min-width:0}
+fieldset+fieldset{margin-top:16px}
+legend{float:left;width:100%;display:flex;align-items:center;gap:12px;font:400 1.75rem/1.1 var(--f-disp);margin-bottom:16px;padding:0}
+legend .n{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--camarin);color:var(--bec);font-size:1.1rem}
+fieldset.feito legend .n{background:var(--bec);color:var(--camarin);box-shadow:0 0 14px 3px var(--bec-glow)}
+.grupo{clear:both;margin-bottom:12px}
+.grupo h4{margin:0 0 8px;font:600 .74rem/1 var(--f-txt);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+.ops{display:flex;flex-wrap:wrap;gap:8px;clear:both}
+.op{position:relative}
+.op input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.op label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:46px;padding:10px 15px;border-radius:14px;border:1.5px solid var(--linha);background:var(--pudra);font-weight:600;font-size:.93rem;line-height:1.2;cursor:pointer;transition:background .2s,border-color .2s,color .2s;text-align:center}
+.op label small{font-weight:500;font-size:.75rem;color:var(--ink-2)}
+.op input:hover+label{border-color:var(--lac)}
+.op input:checked+label{background:var(--ink);border-color:var(--ink);color:var(--pudra)}
+.op input:checked+label small{color:var(--rama)}
+.op input:focus-visible+label{outline:3px solid var(--lac);outline-offset:2px}
+.dias{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;clear:both}
+@media(min-width:600px){.dias{grid-template-columns:repeat(7,1fr)}}
+.dias .op label{min-height:68px;padding:8px 4px}
+.dias .op label b{font:400 1.5rem/1 var(--f-disp)}
+.horas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;clear:both}
+@media(min-width:600px){.horas{grid-template-columns:repeat(6,1fr)}}
+.horas .op.larga{grid-column:span 2}
+.aviso{font-size:.88rem;color:var(--ink-2);margin:12px 0 0;clear:both}
+.campo{display:grid;gap:6px;clear:both;margin-bottom:12px}
+.campo label{font-weight:600;font-size:.92rem}
+.campo input,.campo textarea{font:inherit;font-size:16px;padding:13px 15px;border-radius:14px;border:1.5px solid var(--linha);background:var(--pudra);color:var(--ink);min-height:48px}
+.campo textarea{min-height:84px;resize:vertical}
+.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--lac);box-shadow:0 0 0 3px rgba(155,44,72,.18)}
+.resumo{background:var(--camarin);color:var(--camarin-txt);border-radius:calc(var(--r) + 8px);padding:clamp(22px,4vw,30px)}
+.resumo h3{font-size:1.6rem;margin-bottom:14px}
+.msg{white-space:pre-wrap;font:500 .95rem/1.55 var(--f-txt);background:#ECE5DD;color:#1d1416;border-radius:4px 16px 16px 16px;padding:14px 16px;margin:0 0 16px;position:relative}
+.estado{font-size:.9rem;color:var(--camarin-txt-2);margin:0 0 14px;min-height:1.4em}
+.estado.ok{color:var(--bec)}
+.resumo .btn{width:100%}
+.resumo .btn[aria-disabled=true]{opacity:.45;cursor:not-allowed}
+
+/* visitar */
+.info{display:grid;gap:14px}
+.info>div{background:var(--pudra-2);border-radius:var(--r);padding:20px 22px}
+.info h3{font:600 .74rem/1 var(--f-txt);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:10px}
+.info .big{font:400 1.7rem/1.15 var(--f-disp)}
+.info .big a{text-decoration:none}
+.info .acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.horario{margin:0;display:grid;gap:2px}
+.horario div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--linha)}
+.horario div:last-child{border-bottom:0}
+.horario dt{font-weight:500}
+.horario dd{margin:0;text-align:right}
+.horario .hoje dt,.horario .hoje dd{font-weight:700;color:var(--lac)}
+.tira-h{display:flex;justify-content:space-between;gap:4px;margin:14px 0 6px;padding:14px 12px;border-radius:14px;background:var(--camarin)}
+.tira-h .bec{position:relative;margin:0;width:16px;height:16px}
+.tira-h-leg{display:flex;justify-content:space-between;font-size:.78rem;color:var(--ink-2)}
+.estado-h{display:inline-flex;align-items:center;gap:8px;font-weight:600;margin-top:10px}
+.estado-h::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--ink-2)}
+.estado-h.aberto::before{background:#1f8a4c;box-shadow:0 0 0 4px rgba(31,138,76,.18)}
+.mapa{border-radius:calc(var(--r) + 6px);overflow:hidden;min-height:340px;background:var(--pudra-3);position:relative}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapa-fb{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--lac);font:400 1.5rem/1.2 var(--f-disp);background:repeating-linear-gradient(35deg,transparent 0 38px,rgba(155,44,72,.07) 38px 40px),repeating-linear-gradient(-55deg,transparent 0 58px,rgba(155,44,72,.07) 58px 60px),var(--pudra-3)}
+.mapa-fb svg{width:34px;height:34px;display:block;margin:0 auto 8px}
+@media(min-width:900px){.contacto{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}}
+.contacto .mapa{margin-top:14px}
+@media(min-width:900px){.contacto .mapa{margin-top:0}}
+
+/* rodapé */
+.rodape{background:var(--camarin);color:var(--camarin-txt-2);padding:56px 0 calc(110px + env(safe-area-inset-bottom));font-size:.92rem}
+@media(min-width:960px){.rodape{padding-bottom:40px}}
+.rodape-grid{display:grid;gap:30px}
+@media(min-width:860px){.rodape-grid{grid-template-columns:1.2fr 1fr 1fr}}
+.rodape .marca{color:var(--camarin-txt);font-size:1.6rem;margin-bottom:12px}
+.rodape h3{font:600 .72rem/1 var(--f-txt);letter-spacing:.16em;text-transform:uppercase;color:var(--camarin-txt);margin-bottom:12px}
+.rodape ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rodape a{color:var(--camarin-txt);text-underline-offset:3px}
+.rodape .fim{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;font-size:.82rem}
+
+/* CTA fixo telemóvel */
+.cta-fixo{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1.4fr;gap:10px;padding:10px 14px max(10px,env(safe-area-inset-bottom));background:rgba(36,22,27,.97);border-top:1px solid rgba(255,255,255,.08)}
+.cta-fixo .btn{min-height:50px}
+.cta-fixo .btn-linha{color:var(--camarin-txt)}
+@media(min-width:960px){.cta-fixo{display:none}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  html.js .rv,html.js .erou .in{opacity:1!important;transform:none!important}
+  html.js .ruj{clip-path:none!important}
+  .sticla img{transform:scaleX(-1)!important}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BeautySalon","name":"Beauty Zone","image":"media/unghii-sclipici-roz.webp","telephone":"+40729376681","address":{"@type":"PostalAddress","streetAddress":"Strada Armeană 11","postalCode":"700039","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1626025,"longitude":27.5893941},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"https://schema.org/Tuesday","opens":"10:00","closes":"20:00"}],"hasMap":"https://www.google.com/maps/search/?api=1&query=BEAUTY+ZONE+Strada+Armean%C4%83+11+Ia%C8%99i","knowsAbout":["Manichiură","Nail art","Extensii de gene","Sprâncene","Machiaj"]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main" data-t="skip"></a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gfb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EFDCD4"/><stop offset="1" stop-color="#C99A8C"/></linearGradient>
+    <radialGradient id="gbec"><stop offset="0" stop-color="#FFF3D6"/><stop offset="1" stop-color="#FFD898" stop-opacity="0"/></radialGradient>
+    <symbol id="fb" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+      <rect width="400" height="500" fill="url(#gfb)"/>
+      <rect x="92" y="96" width="216" height="290" rx="26" fill="none" stroke="#9B2C48" stroke-opacity=".28" stroke-width="3"/>
+      <g fill="url(#gbec)"><circle cx="92" cy="140" r="22"/><circle cx="92" cy="240" r="22"/><circle cx="92" cy="340" r="22"/><circle cx="308" cy="140" r="22"/><circle cx="308" cy="240" r="22"/><circle cx="308" cy="340" r="22"/></g>
+      <path d="M180 300c0-40 8-70 20-86 12 16 20 46 20 86z" fill="#9B2C48" fill-opacity=".22"/>
+    </symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33.08-.16.04-.3-.02-.43l-.76-1.83c-.2-.48-.4-.41-.56-.42h-.48a.92.92 0 0 0-.67.31 2.8 2.8 0 0 0-.87 2.08 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.24.75 3.04.63.5-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.22-.16-.47-.28z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.2 6.6.7-5 4.5 1.4 6.6L12 17.2l-5.9 3.3 1.4-6.6-5-4.5 6.6-.7z"/></symbol>
+  </defs>
+</svg>
+
+<div class="faixa" data-t="faixa"></div>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="marca" href="#/"><i aria-hidden="true"></i>Beauty Zone</a>
+    <ul class="nav-links">
+      <li><a href="#/" data-t="nav.acasa"></a></li>
+      <li><a href="#/servicii" data-t="nav.servicii"></a></li>
+      <li><a href="#/lucrari" data-t="nav.lucrari"></a></li>
+      <li><a href="#/salonul" data-t="nav.salonul"></a></li>
+      <li><a href="#/contact" data-t="nav.contact"></a></li>
+    </ul>
+    <div class="nav-dir">
+      <div class="lang" role="group" aria-label="@@lang.label" data-ta="aria-label:lang.label">
+        <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-set-lang="pt" aria-pressed="false" data-pt-only>PT</button>
+      </div>
+      <a class="btn btn-bec nav-cta" href="#/programare" data-t="nav.programare"></a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="@@nav.menu" data-ta="aria-label:nav.menu"><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="meniu" id="meniu" aria-label="@@nav.menu" data-ta="aria-label:nav.menu">
+  <ul>
+    <li><a href="#/" data-t="nav.acasa"></a></li>
+    <li><a href="#/servicii" data-t="nav.servicii"></a></li>
+    <li><a href="#/lucrari" data-t="nav.lucrari"></a></li>
+    <li><a href="#/salonul" data-t="nav.salonul"></a></li>
+    <li><a href="#/programare" data-t="nav.programare"></a></li>
+    <li><a href="#/contact" data-t="nav.contact"></a></li>
+  </ul>
+  <a class="btn btn-bec" href="tel:+40729376681"><svg aria-hidden="true"><use href="#i-tel"/></svg>+40 729 376 681</a>
+</nav>
+
+<main id="main" tabindex="-1">
+
+<!-- ===================== ACASĂ ===================== -->
+<section class="pagina" data-pagina="acasa">
+  <div class="erou" id="erou">
+    <div class="wrap erou-grid">
+      <div class="erou-col">
+        <p class="kicker in" data-t="h.eyebrow"></p>
+        <h1 class="in d1">Beauty <span>Zone</span></h1>
+        <p class="erou-txt in d2" data-t="h.sub"></p>
+        <div class="erou-acoes in d3">
+          <a class="btn btn-bec" href="#/programare" data-t="h.cta1"></a>
+          <a class="btn btn-linha" href="#/lucrari" data-t="h.cta2"></a>
+        </div>
+        <a class="erou-nota in d3" href="#/contact"><b>5,0</b><span class="estrelas" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><span data-t="h.nota"></span></a>
+      </div>
+      <figure class="oglinda" id="oglinda" role="img" aria-label="@@h.oglinda" data-ta="aria-label:h.oglinda" style="margin:0">
+        <div class="sticla">
+          <svg class="fb" aria-hidden="true"><use href="#fb"/></svg>
+          <img src="media/unghii-sclipici-roz.webp" alt="" width="1200" height="1500" fetchpriority="high" onerror="this.remove()">
+          <div class="umbra"></div>
+          <p class="ruj" aria-hidden="true" data-t="h.ruj"></p>
+        </div>
+      </figure>
+    </div>
+  </div>
+  <div class="mq" aria-hidden="true"><div class="mq-in"><span data-t="mq"></span><span data-t="mq"></span><span data-t="mq"></span><span data-t="mq"></span></div></div>
+
+  <section class="sec" aria-labelledby="t-disc">
+    <div class="wrap">
+      <div class="sec-cab rv">
+        <p class="kicker" data-t="d.kicker"></p>
+        <h2 id="t-disc" data-t="d.titlu"></h2>
+      </div>
+      <div class="disc">
+        <a class="rv" href="#/servicii" data-cap="unghii">
+          <figure class="ph"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-migdala-folie.webp" alt="" loading="lazy" width="1162" height="1502" onerror="this.remove()"></figure>
+          <div><h3 data-t="d.unghii"></h3><p data-t="d.unghii.t"></p></div>
+        </a>
+        <a class="rv d1" href="#/servicii" data-cap="gene">
+          <figure class="ph"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/extensii-gene.webp" alt="" loading="lazy" width="1200" height="1039" onerror="this.remove()"></figure>
+          <div><h3 data-t="d.gene"></h3><p data-t="d.gene.t"></p></div>
+        </a>
+        <a class="rv d2" href="#/servicii" data-cap="sprancene">
+          <figure class="ph"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/sprancene.webp" alt="" loading="lazy" width="1200" height="1600" onerror="this.remove()"></figure>
+          <div><h3 data-t="d.sprancene"></h3><p data-t="d.sprancene.t"></p></div>
+        </a>
+        <a class="rv d3" href="#/servicii" data-cap="machiaj">
+          <figure class="ph"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/machiaj-pleoapa.webp" alt="" loading="lazy" width="1200" height="1601" onerror="this.remove()"></figure>
+          <div><h3 data-t="d.machiaj"></h3><p data-t="d.machiaj.t"></p></div>
+        </a>
+      </div>
+      <div class="mais rv"><a class="btn btn-linha" href="#/servicii" data-t="d.vezi"></a></div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0" aria-labelledby="t-lucr">
+    <div class="wrap">
+      <div class="sec-cab rv">
+        <p class="kicker" data-t="l.kicker"></p>
+        <h2 id="t-lucr" data-t="l.titlu"></h2>
+      </div>
+      <div class="tira">
+        <figure class="ph rv"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-roz-floare.webp" alt="@@c.floare" data-ta="alt:c.floare" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="ph rv d1"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-scurte-linii.webp" alt="@@c.linii" data-ta="alt:c.linii" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="ph rv d2"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/gene-privire.webp" alt="@@c.privire" data-ta="alt:c.privire" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="ph rv d1"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-mate-albastru-portocaliu.webp" alt="@@c.mate" data-ta="alt:c.mate" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="ph rv d2"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-inimioara-strasuri.webp" alt="@@c.inimioara" data-ta="alt:c.inimioara" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="ph rv d3"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-negre-lucioase.webp" alt="@@c.negre" data-ta="alt:c.negre" loading="lazy" onerror="this.remove()"></figure>
+      </div>
+      <div class="mais rv"><a class="btn btn-linha" href="#/lucrari" data-t="l.toate"></a></div>
+    </div>
+  </section>
+
+  <section class="sec escuro" aria-labelledby="t-teaser">
+    <div class="wrap teaser">
+      <div class="rv">
+        <p class="kicker" data-t="p.kicker"></p>
+        <h2 id="t-teaser" data-t="p.titlu"></h2>
+        <p style="margin-top:18px" data-t="p.text"></p>
+        <a class="btn btn-bec" href="#/programare" data-t="p.btn"></a>
+      </div>
+      <div class="mini-oglinda rv d1" id="mini-oglinda" aria-hidden="true">
+        <div class="sticla"><svg class="fb"><use href="#fb"/></svg><img src="media/unghii-mate-albastru-portocaliu.webp" alt="" loading="lazy" onerror="this.remove()"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="t-vis">
+    <div class="wrap">
+      <div class="sec-cab rv">
+        <p class="kicker" data-t="v.kicker"></p>
+        <h2 id="t-vis" data-t="v.titlu"></h2>
+      </div>
+      <div class="visita">
+        <div class="cartao rv">
+          <div class="nota-g"><b>5,0</b><span class="estrelas" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></div>
+          <h3 data-t="v.nota"></h3>
+          <p style="color:var(--ink-2)" data-t="v.nota.t"></p>
+        </div>
+        <div class="cartao rv d1">
+          <h3>Strada Armeană 11</h3>
+          <p style="color:var(--ink-2)">700039 Iași · <a href="tel:+40729376681">+40 729 376 681</a></p>
+          <div class="mais" style="margin-top:8px">
+            <a class="btn btn-lac" href="#/contact" data-t="v.program"></a>
+            <a class="btn btn-linha" href="https://www.google.com/maps/search/?api=1&amp;query=BEAUTY+ZONE+Strada+Armean%C4%83+11+Ia%C8%99i" target="_blank" rel="noopener" data-t="v.harta"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ===================== SERVICII ===================== -->
+<section class="pagina" data-pagina="servicii" hidden>
+  <header class="cab-pag">
+    <div class="wrap cab-grid"><div>
+      <div class="becuri" aria-hidden="true"><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i></div>
+      <p class="kicker" data-t="s.kicker"></p>
+      <h2 tabindex="-1" data-t="s.titlu"></h2>
+      <p class="lead" data-t="s.intro"></p>
+    </div>
+      <figure class="oglinda-mica" aria-hidden="true"><div class="sticla"><svg class="fb"><use href="#fb"/></svg><img src="media/nail-art-perle-verzi.webp" alt="" loading="lazy" onerror="this.remove()"></div></figure>
+    </div>
+  </header>
+  <div class="wrap">
+    <article class="cap" id="cap-unghii">
+      <figure class="ph rv"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/nail-art-perle-verzi.webp" alt="@@c.perle" data-ta="alt:c.perle" loading="lazy" onerror="this.remove()"></figure>
+      <div>
+        <h3 data-t="d.unghii"></h3>
+        <p class="cap-d" data-t="d.unghii.t"></p>
+        <ul class="trat">
+          <li><h4 data-t="u.constructie"></h4><p data-t="u.constructie.d"></p><span class="preco"><span data-t="s.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-lac" href="#/programare" data-alege="u.constructie" data-t="s.alege"></a></li>
+          <li><h4 data-t="u.intretinere"></h4><p data-t="u.intretinere.d"></p><span class="preco"><span data-t="s.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-lac" href="#/programare" data-alege="u.intretinere" data-t="s.alege"></a></li>
+          <li><h4 data-t="u.semi"></h4><p data-t="u.semi.d"></p><span class="preco"><span data-t="s.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-lac" href="#/programare" data-alege="u.semi" data-t="s.alege"></a></li>
+          <li><h4 data-t="u.art"></h4><p data-t="u.art.d"></p><span class="preco"><span data-t="s.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-lac" href="#/programare" data-alege="u.art" data-t="s.alege"></a></li>
+        </ul>
+      </div>
+    </article>
+    <article class="cap" id="cap-gene">
+      <figure class="ph rv"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/extensii-gene.webp" alt="@@c.extensii" data-ta="alt:c.extensii" loading="lazy" onerror="this.remove()"></figure>
+      <div>
+        <h3 data-t="d.gene"></h3>
+        <p class="cap-d" data-t="d.gene.t"></p>
+        <ul class="trat">
+          <li><h4 data-t="g.extensii"></h4><p data-t="g.extensii.d"></p><span class="preco"><span data-t="s.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-lac" href="#/programare" data-alege="g.extensii" data-t="s.alege"></a></li>
+          <li><h4 data-t="g.lift"></h4><p data-t="g.lift.d"></p><span class="preco"><span data-t="s.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-lac" href="#/programare" data-alege="g.lift" data-t="s.alege"></a></li>
+        </ul>
+      </div>
+    </article>
+    <article class="cap" id="cap-sprancene">
+      <figure class="ph rv"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/sprancene.webp" alt="@@c.sprancene" data-ta="alt:c.sprancene" loading="lazy" onerror="this.remove()"></figure>
+      <div>
+        <h3 data-t="d.sprancene"></h3>
+        <p class="cap-d" data-t="d.sprancene.t"></p>
+        <ul class="trat">
+          <li><h4 data-t="b.stil"></h4><p data-t="b.stil.d"></p><span class="preco"><span data-t="s.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-lac" href="#/programare" data-alege="b.stil" data-t="s.alege"></a></li>
+        </ul>
+      </div>
+    </article>
+    <article class="cap" id="cap-machiaj">
+      <figure class="ph rv"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/machiaj-pleoapa.webp" alt="@@c.machiaj" data-ta="alt:c.machiaj" loading="lazy" onerror="this.remove()"></figure>
+      <div>
+        <h3 data-t="d.machiaj"></h3>
+        <p class="cap-d" data-t="d.machiaj.t"></p>
+        <ul class="trat">
+          <li><h4 data-t="m.zi"></h4><p data-t="m.zi.d"></p><span class="preco"><span data-t="s.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-lac" href="#/programare" data-alege="m.zi" data-t="s.alege"></a></li>
+          <li><h4 data-t="m.eveniment"></h4><p data-t="m.eveniment.d"></p><span class="preco"><span data-t="s.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-lac" href="#/programare" data-alege="m.eveniment" data-t="s.alege"></a></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+  <div class="wrap" style="padding-bottom:clamp(60px,9vw,110px)">
+    <div class="ajuda escuro rv">
+      <div><h3 data-t="s.nu.titlu"></h3><p data-t="s.nu.text"></p></div>
+      <a class="btn btn-bec" data-wa="s.nu.wa" href="https://wa.me/40729376681" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="s.nu.btn"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LUCRĂRI ===================== -->
+<section class="pagina" data-pagina="lucrari" hidden>
+  <header class="cab-pag">
+    <div class="wrap cab-grid"><div>
+      <div class="becuri" aria-hidden="true"><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i></div>
+      <p class="kicker" data-t="g.kicker"></p>
+      <h2 tabindex="-1" data-t="g.titlu"></h2>
+      <p class="lead" data-t="g.intro"></p>
+    </div>
+      <figure class="oglinda-mica" aria-hidden="true"><div class="sticla"><svg class="fb"><use href="#fb"/></svg><img src="media/unghii-inimioara-strasuri.webp" alt="" loading="lazy" onerror="this.remove()"></div></figure>
+    </div>
+  </header>
+  <div class="wrap sec" style="padding-top:clamp(30px,5vw,50px)">
+    <div class="filtros" role="group" aria-label="@@g.filtru" data-ta="aria-label:g.filtru">
+      <button type="button" class="chip" data-f="*" aria-pressed="true" data-t="g.toate"></button>
+      <button type="button" class="chip" data-f="unghii" aria-pressed="false" data-t="d.unghii"></button>
+      <button type="button" class="chip" data-f="gene" aria-pressed="false" data-t="d.gene"></button>
+      <button type="button" class="chip" data-f="sprancene" aria-pressed="false" data-t="d.sprancene"></button>
+      <button type="button" class="chip" data-f="machiaj" aria-pressed="false" data-t="d.machiaj"></button>
+    </div>
+    <div class="gal" id="gal">
+      <button type="button" data-c="unghii" data-k="c.sclipici" data-src="unghii-sclipici-roz"><figure class="ph" style="--ar:4/5"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-sclipici-roz.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.sclipici"></small></button>
+      <button type="button" data-c="gene" data-k="c.extensii" data-src="extensii-gene"><figure class="ph" style="--ar:1200/1039"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/extensii-gene.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.extensii"></small></button>
+      <button type="button" data-c="unghii" data-k="c.migdala" data-src="unghii-migdala-folie"><figure class="ph" style="--ar:1162/1502"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-migdala-folie.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.migdala"></small></button>
+      <button type="button" data-c="unghii" data-k="c.linii" data-src="unghii-scurte-linii"><figure class="ph" style="--ar:4/5"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-scurte-linii.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.linii"></small></button>
+      <button type="button" data-c="machiaj" data-k="c.machiaj" data-src="machiaj-pleoapa"><figure class="ph" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/machiaj-pleoapa.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.machiaj"></small></button>
+      <button type="button" data-c="unghii" data-k="c.perle" data-src="nail-art-perle-verzi"><figure class="ph" style="--ar:4/5"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/nail-art-perle-verzi.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.perle"></small></button>
+      <button type="button" data-c="sprancene" data-k="c.sprancene" data-src="sprancene"><figure class="ph" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/sprancene.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.sprancene"></small></button>
+      <button type="button" data-c="unghii" data-k="c.negre" data-src="unghii-negre-lucioase"><figure class="ph" style="--ar:945/1178"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-negre-lucioase.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.negre"></small></button>
+      <button type="button" data-c="unghii" data-k="c.inimioara" data-src="unghii-inimioara-strasuri"><figure class="ph" style="--ar:4/5"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-inimioara-strasuri.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.inimioara"></small></button>
+      <button type="button" data-c="gene" data-k="c.privire" data-src="gene-privire"><figure class="ph" style="--ar:1200/1491"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/gene-privire.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.privire"></small></button>
+      <button type="button" data-c="unghii" data-k="c.mate" data-src="unghii-mate-albastru-portocaliu"><figure class="ph" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-mate-albastru-portocaliu.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.mate"></small></button>
+      <button type="button" data-c="unghii" data-k="c.floare" data-src="unghii-roz-floare"><figure class="ph" style="--ar:3/4"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-roz-floare.webp" alt="" loading="lazy" onerror="this.remove()"></figure><small data-t="c.floare"></small></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SALONUL ===================== -->
+<section class="pagina" data-pagina="salonul" hidden>
+  <header class="cab-pag">
+    <div class="wrap cab-grid"><div>
+      <div class="becuri" aria-hidden="true"><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i></div>
+      <p class="kicker" data-t="a.kicker"></p>
+      <h2 tabindex="-1" data-t="a.titlu"></h2>
+    </div>
+      <figure class="oglinda-mica" aria-hidden="true"><div class="sticla"><svg class="fb"><use href="#fb"/></svg><img src="media/gene-privire.webp" alt="" loading="lazy" onerror="this.remove()"></div></figure>
+    </div>
+  </header>
+  <div class="wrap sec">
+    <div class="duas">
+      <div class="rv">
+        <p class="grande" data-t="a.p1"></p>
+        <p style="color:var(--ink-2)" data-t="a.p2"></p>
+        <div class="nota-g" style="margin-top:26px"><b>5,0</b><span class="estrelas" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><span style="color:var(--ink-2)" data-t="h.nota"></span></div>
+      </div>
+      <figure class="ph rv d1" style="aspect-ratio:4/5"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/unghii-roz-floare.webp" alt="@@c.floare" data-ta="alt:c.floare" loading="lazy" onerror="this.remove()"></figure>
+    </div>
+  </div>
+  <div class="wrap" style="padding-bottom:clamp(60px,9vw,110px)">
+    <div class="duas">
+      <div class="rv">
+        <h3 style="font-size:2.2rem;margin-bottom:20px" data-t="a.pasi"></h3>
+        <ol class="passos">
+          <li><b data-t="a.pas1"></b><span data-t="a.pas1.t"></span></li>
+          <li><b data-t="a.pas2"></b><span data-t="a.pas2.t"></span></li>
+          <li><b data-t="a.pas3"></b><span data-t="a.pas3.t"></span></li>
+          <li><b data-t="a.pas4"></b><span data-t="a.pas4.t"></span></li>
+        </ol>
+      </div>
+      <div class="rv d1">
+        <h3 style="font-size:2.2rem;margin-bottom:20px" data-t="a.echipa"></h3>
+        <div class="equipa"><span class="avatar" aria-hidden="true"></span><p style="margin:0"><span data-t="a.echipa.t"></span> <span class="tbc" data-t="tbc"></span></p></div>
+        <h3 style="font-size:2.2rem;margin:40px 0 8px" data-t="a.faq"></h3>
+        <details><summary data-t="a.q1"></summary><p data-t="a.r1"></p></details>
+        <details><summary data-t="a.q2"></summary><p data-t="a.r2"></p></details>
+        <details><summary data-t="a.q3"></summary><p data-t="a.r3"></p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROGRAMARE ===================== -->
+<section class="pagina" data-pagina="programare" hidden>
+  <header class="cab-pag">
+    <div class="wrap cab-grid"><div>
+      <p class="kicker" data-t="b.kicker"></p>
+      <h2 tabindex="-1" data-t="b.titlu"></h2>
+      <p class="lead" data-t="b.intro"></p>
+      <div class="progr" id="progr"><i class="bec" aria-hidden="true"></i><i class="bec" aria-hidden="true"></i><i class="bec" aria-hidden="true"></i><i class="bec" aria-hidden="true"></i><small id="progr-t"></small></div>
+    </div>
+      <figure class="oglinda-mica" id="oglinda-prog" aria-hidden="true"><div class="sticla"><svg class="fb"><use href="#fb"/></svg><img src="media/unghii-migdala-folie.webp" alt="" loading="lazy" onerror="this.remove()"><div class="umbra"></div></div></figure>
+    </div>
+  </header>
+  <div class="wrap">
+    <form class="form" id="form" novalidate>
+      <div>
+        <fieldset id="fs1"><legend><span class="n" aria-hidden="true">1</span><span data-t="b.pas1"></span></legend><div id="ops-trat"></div></fieldset>
+        <fieldset id="fs2"><legend><span class="n" aria-hidden="true">2</span><span data-t="b.pas2"></span></legend><div class="dias" id="ops-zi"></div><p class="aviso" data-t="b.zi.nota"></p></fieldset>
+        <fieldset id="fs3"><legend><span class="n" aria-hidden="true">3</span><span data-t="b.pas3"></span></legend><div class="horas" id="ops-ora"></div></fieldset>
+        <fieldset id="fs4"><legend><span class="n" aria-hidden="true">4</span><span data-t="b.pas4"></span></legend>
+          <div class="campo"><label for="f-nume" data-t="b.nume"></label><input id="f-nume" name="nume" autocomplete="given-name" required></div>
+          <div class="campo"><label for="f-nota" data-t="b.nota"></label><textarea id="f-nota" name="nota" placeholder="@@b.nota.ph" data-ta="placeholder:b.nota.ph"></textarea></div>
+        </fieldset>
+      </div>
+      <aside class="resumo" aria-labelledby="t-msg">
+        <h3 id="t-msg" data-t="b.mesaj"></h3>
+        <p class="msg" id="msg" aria-live="polite"></p>
+        <p class="estado" id="estado" aria-live="polite"></p>
+        <a class="btn btn-bec" id="enviar" href="https://wa.me/40729376681" target="_blank" rel="noopener" aria-disabled="true"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="b.trimite"></span></a>
+      </aside>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="pagina" data-pagina="contact" hidden>
+  <header class="cab-pag">
+    <div class="wrap cab-grid"><div>
+      <div class="becuri" aria-hidden="true"><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i><i class="bec"></i></div>
+      <p class="kicker" data-t="v2.kicker"></p>
+      <h2 tabindex="-1" data-t="v2.titlu"></h2>
+    </div>
+      <figure class="oglinda-mica" aria-hidden="true"><div class="sticla"><svg class="fb"><use href="#fb"/></svg><img src="media/unghii-roz-floare.webp" alt="" loading="lazy" onerror="this.remove()"></div></figure>
+    </div>
+  </header>
+  <div class="wrap sec" style="padding-top:clamp(30px,5vw,50px)">
+    <div class="contacto">
+      <div class="info">
+        <div>
+          <h3 data-t="v2.adresa"></h3>
+          <p class="big" style="margin:0">Strada Armeană 11<br>700039 Iași</p>
+          <p style="color:var(--ink-2);margin:10px 0 0" data-t="v2.cum.t"></p>
+          <div class="acoes"><a class="btn btn-lac" href="https://www.google.com/maps/dir/?api=1&amp;destination=47.1626025,27.5893941" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-t="v2.indicatii"></span></a></div>
+        </div>
+        <div>
+          <h3 data-t="v2.telefon"></h3>
+          <p class="big" style="margin:0"><a href="tel:+40729376681">+40 729 376 681</a></p>
+          <div class="acoes">
+            <a class="btn btn-lac" href="tel:+40729376681"><svg aria-hidden="true"><use href="#i-tel"/></svg><span data-t="cta.suna"></span></a>
+            <a class="btn btn-linha" data-wa="wa.salut" href="https://wa.me/40729376681" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="cta.wa"></span></a>
+          </div>
+        </div>
+        <div>
+          <h3 data-t="v2.program"></h3>
+          <dl class="horario" id="horario"></dl>
+          <h3 style="margin-top:22px" data-t="v2.azi"></h3>
+          <div class="tira-h" id="tira-h" aria-hidden="true"></div>
+          <div class="tira-h-leg" aria-hidden="true"><span>10:00</span><span>15:00</span><span>20:00</span></div>
+          <p style="color:var(--ink-2);font-size:.88rem;margin:8px 0 0" data-t="v2.azi.t"></p>
+          <p class="estado-h" id="estado-h" role="status"></p>
+        </div>
+      </div>
+      <div class="mapa"><div class="mapa-fb" aria-hidden="true"><div><svg><use href="#i-pin"/></svg>Strada Armeană 11</div></div><iframe title="@@v2.harta" data-ta="title:v2.harta" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=47.1626025,27.5893941&amp;z=17&amp;output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape-grid">
+      <div>
+        <p class="marca"><i aria-hidden="true"></i>Beauty Zone</p>
+        <p data-t="f.tag"></p>
+        <p>Strada Armeană 11, 700039 Iași<br><a href="tel:+40729376681">+40 729 376 681</a></p>
+      </div>
+      <div>
+        <h3 data-t="nav.menu"></h3>
+        <ul>
+          <li><a href="#/servicii" data-t="nav.servicii"></a></li>
+          <li><a href="#/lucrari" data-t="nav.lucrari"></a></li>
+          <li><a href="#/salonul" data-t="nav.salonul"></a></li>
+          <li><a href="#/programare" data-t="nav.programare"></a></li>
+          <li><a href="#/contact" data-t="nav.contact"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-t="f.legal"></h3>
+        <ul>
+          <li><a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener" data-t="f.anpc"></a></li>
+          <li><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" data-t="f.odr"></a></li>
+          <li data-t="f.firma"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fim"><span>© <span id="ano">2026</span> Beauty Zone</span><span data-t="f.facut"></span></div>
+  </div>
+</footer>
+
+<div class="cta-fixo">
+  <a class="btn btn-linha" href="tel:+40729376681"><svg aria-hidden="true"><use href="#i-tel"/></svg><span data-t="cta.suna"></span></a>
+  <a class="btn btn-bec" data-wa="wa.salut" href="https://wa.me/40729376681" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="cta.wa"></span></a>
+</div>
+
+<dialog class="lb" id="lb" aria-label="@@g.titlu" data-ta="aria-label:g.titlu">
+  <div class="lb-in">
+    <div class="lb-top"><span id="lb-nr" style="font-size:.9rem;color:#E8D3C9"></span><button type="button" class="ic" id="lb-x" aria-label="@@lb.inchide" data-ta="aria-label:lb.inchide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <div class="lb-img"><img id="lb-img" alt=""></div>
+    <div class="lb-bot">
+      <p id="lb-cap"></p>
+      <div class="lb-nav">
+        <button type="button" class="ic" id="lb-p" aria-label="@@lb.prev" data-ta="aria-label:lb.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <button type="button" class="ic" id="lb-n" aria-label="@@lb.next" data-ta="aria-label:lb.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <a class="btn btn-bec" id="lb-wa" href="https://wa.me/40729376681" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="g.vreau"></span></a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<noscript><p style="padding:16px;background:#24161B;color:#F7E9E3;margin:0" data-t="nojs"></p></noscript>
+
+<script>
+/*__T__*/
+(function(){
+  var html=document.documentElement, WA='40729376681';
+  var reduz=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var LI={ro:0,en:1,pt:2};
+  var L=function(){var l=html.dataset.lang;return LI[l]!==undefined?l:'ro'};
+  var t=function(k){var v=T[k];return v?(v[LI[L()]]||v[0]):k};
+  var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
+  var waURL=function(txt){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(txt)};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+
+  /* ---------- língua */
+  function aplicarLingua(){
+    $$('[data-t]').forEach(function(e){var v=T[e.dataset.t];if(v)e.innerHTML=v[LI[L()]]||v[0]});
+    $$('[data-ta]').forEach(function(e){e.dataset.ta.split('|').forEach(function(p){var a=p.split(':');e.setAttribute(a[0],t(a[1]))})});
+    $$('[data-wa]').forEach(function(a){a.href=waURL(t(a.dataset.wa))});
+    $$('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===L()?'true':'false')});
+    renderTrat();renderZile();renderOre();renderHorario();atualizar();titulo();
+  }
+  function seteaza(l){html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;try{localStorage.setItem('bz.lang',l)}catch(e){}aplicarLingua()}
+  $$('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+
+  /* ---------- nav + menu */
+  var nav=$('#nav'), burger=$('.burger'), meniu=$('#meniu');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>10)},{passive:true});
+  function fechaMenu(){meniu.classList.remove('aberto');burger.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+  burger.addEventListener('click',function(){var a=burger.getAttribute('aria-expanded')!=='true';burger.setAttribute('aria-expanded',a);meniu.classList.toggle('aberto',a);document.body.style.overflow=a?'hidden':'';if(a)$('a',meniu).focus()});
+  $$('a',meniu).forEach(function(a){a.addEventListener('click',fechaMenu)});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&meniu.classList.contains('aberto')){fechaMenu();burger.focus()}});
+
+  /* ---------- herói: a oglinda acende-se */
+  var oglinda=$('#oglinda'), erou=$('#erou'), becuri=[];
+  (function(){
+    var pos=[], top=5, lat=6, i;
+    for(i=0;i<top;i++)pos.push([(i+.5)/top*100,0]);
+    for(i=0;i<lat;i++)pos.push([100,(i+.5)/lat*100]);
+    for(i=top-1;i>=0;i--)pos.push([(i+.5)/top*100,100]);
+    for(i=lat-1;i>=0;i--)pos.push([0,(i+.5)/lat*100]);
+    pos.forEach(function(p){var b=document.createElement('i');b.className='bec';b.setAttribute('aria-hidden','true');
+      b.style.left='calc(var(--pad)/2 + (100% - var(--pad))*'+(p[0]/100)+')';b.style.top='calc(var(--pad)/2 + (100% - var(--pad))*'+(p[1]/100)+')';oglinda.appendChild(b);becuri.push(b)});
+  })();
+  function setLit(n){var f=n/becuri.length;oglinda.style.setProperty('--lit',f);erou.style.setProperty('--lit',f)}
+  var heroFeito=false;
+  function acendeHeroi(){
+    if(heroFeito)return;heroFeito=true;
+    erou.classList.add('pronto');
+    if(reduz){becuri.forEach(function(b){b.classList.add('on')});setLit(becuri.length);erou.classList.add('aceso');return}
+    setLit(0);var n=0;
+    setTimeout(function passo(){becuri[n].classList.add('on');n++;setLit(n);if(n<becuri.length)setTimeout(passo,n<4?140:70);else erou.classList.add('aceso')},450);
+  }
+  if(!reduz&&matchMedia('(pointer:fine)').matches){
+    oglinda.addEventListener('pointermove',function(e){var r=oglinda.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;oglinda.style.setProperty('--mx',(x*16)+'px');oglinda.style.setProperty('--my',(-y*10)+'px')});
+    oglinda.addEventListener('pointerleave',function(){oglinda.style.setProperty('--mx','0px');oglinda.style.setProperty('--my','0px')});
+  }
+
+  /* ---------- revelação */
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08}):null;
+  $$('.rv').forEach(function(el){io?io.observe(el):el.classList.add('vis')});
+
+  function io0(cb){if(!('IntersectionObserver' in window))return function(){cb()};var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cb();o.unobserve(e.target)}})},{threshold:.4});return function(el){o.observe(el)}}
+  /* ---------- espelhos pequenos dos cabeçalhos */
+  function poeBecuri(el,top,lat){var pos=[],i;for(i=0;i<top;i++)pos.push([(i+.5)/top,0]);for(i=0;i<lat;i++)pos.push([1,(i+.5)/lat]);for(i=top-1;i>=0;i--)pos.push([(i+.5)/top,1]);for(i=lat-1;i>=0;i--)pos.push([0,(i+.5)/lat]);
+    return pos.map(function(p){var b=document.createElement('i');b.className='bec';b.style.left='calc(var(--pad)/2 + (100% - var(--pad))*'+p[0]+')';b.style.top='calc(var(--pad)/2 + (100% - var(--pad))*'+p[1]+')';el.appendChild(b);return b})}
+  $$('.oglinda-mica').forEach(function(m){poeBecuri(m,3,4)});
+  var mini=$('#mini-oglinda');if(mini){poeBecuri(mini,3,3);var mio=io0(function(){var bs=$$('.bec',mini);bs.forEach(function(b,i){reduz?b.classList.add('on'):setTimeout(function(){b.classList.add('on')},200+i*120)})});mio(mini)}
+  /* ---------- lâmpadas pequenas das páginas */
+  function acendeFila(fila){var bs=$$('.bec',fila);bs.forEach(function(b){b.classList.remove('on')});bs.forEach(function(b,i){reduz?b.classList.add('on'):setTimeout(function(){b.classList.add('on')},250+i*110)})}
+
+  /* ---------- marcação */
+  var SERV=[['d.unghii',['u.constructie','u.intretinere','u.semi','u.art']],['d.gene',['g.extensii','g.lift']],['d.sprancene',['b.stil']],['d.machiaj',['m.zi','m.eveniment']]];
+  var sel={trat:null,zi:null,ora:null};
+  var ORE=['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00'];
+  var loc=function(){return L()==='en'?'en-GB':L()==='pt'?'pt-PT':'ro-RO'};
+  function renderTrat(){
+    var h='';SERV.forEach(function(g){h+='<div class="grupo"><h4>'+esc(t(g[0]))+'</h4><div class="ops">';g[1].forEach(function(k){h+='<span class="op"><input type="radio" name="trat" id="t-'+k+'" value="'+k+'"'+(sel.trat===k?' checked':'')+'><label for="t-'+k+'">'+esc(t(k))+'</label></span>'});h+='</div></div>'});
+    $('#ops-trat').innerHTML=h;
+  }
+  var zile=[];
+  (function(){var d=new Date();d.setHours(0,0,0,0);if(new Date().getHours()>=19)d.setDate(d.getDate()+1);for(var i=0;i<14;i++){zile.push(new Date(d));d.setDate(d.getDate()+1)}})();
+  var iso=function(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)};
+  function fmt(d,o){try{return d.toLocaleDateString(loc(),o)}catch(e){return iso(d)}}
+  function renderZile(){
+    var h='';zile.forEach(function(d){var k=iso(d);h+='<span class="op"><input type="radio" name="zi" id="z-'+k+'" value="'+k+'"'+(sel.zi===k?' checked':'')+'><label for="z-'+k+'"><small>'+esc(fmt(d,{weekday:'short'}))+'</small><b>'+d.getDate()+'</b><small>'+esc(fmt(d,{month:'short'}))+'</small></label></span>'});
+    $('#ops-zi').innerHTML=h;
+  }
+  function renderOre(){
+    var h='';ORE.forEach(function(o){h+='<span class="op"><input type="radio" name="ora" id="o-'+o.replace(':','')+'" value="'+o+'"'+(sel.ora===o?' checked':'')+'><label for="o-'+o.replace(':','')+'">'+o+'</label></span>'});
+    h+='<span class="op larga"><input type="radio" name="ora" id="o-oricand" value="*"'+(sel.ora==='*'?' checked':'')+'><label for="o-oricand">'+esc(t('b.oricand'))+'</label></span>';
+    $('#ops-ora').innerHTML=h;
+  }
+  var nume=$('#f-nume'), nota=$('#f-nota'), msg=$('#msg'), enviar=$('#enviar'), estado=$('#estado'), progr=$$('#progr .bec');
+  function mensagem(){
+    var z=sel.zi?zile.filter(function(d){return iso(d)===sel.zi})[0]:null;
+    var linhas=[t('b.m.salut'),'',
+      '• '+t('b.m.trat')+': '+(sel.trat?t(sel.trat):t('b.m.lipsa')),
+      '• '+t('b.m.zi')+': '+(z?fmt(z,{weekday:'long',day:'numeric',month:'long'}):t('b.m.lipsa')),
+      '• '+t('b.m.ora')+': '+(sel.ora?(sel.ora==='*'?t('b.m.oricand'):sel.ora):t('b.m.lipsa')),
+      '• '+t('b.m.nume')+': '+(nume.value.trim()||t('b.m.lipsa'))];
+    if(nota.value.trim())linhas.push('• '+t('b.m.nota')+': '+nota.value.trim());
+    linhas.push('',t('b.m.final'));
+    return linhas.join('\n');
+  }
+  function atualizar(){
+    var ok=[!!sel.trat,!!sel.zi,!!sel.ora,!!nume.value.trim()], n=ok.filter(Boolean).length;
+    progr.forEach(function(b,i){b.classList.toggle('on',i<n)});
+    var ob=$$('#oglinda-prog .bec'), on=Math.round(ob.length*n/4);ob.forEach(function(b,i){b.classList.toggle('on',i<on)});
+    $('#oglinda-prog .sticla').style.setProperty('--lit',.25+.75*n/4);
+    ['#fs1','#fs2','#fs3','#fs4'].forEach(function(s,i){$(s).classList.toggle('feito',ok[i])});
+    $('#progr-t').textContent=t('b.becuri')+': '+n+' / 4';
+    var txt=mensagem();msg.textContent=txt;
+    var falta=['b.lipsa.trat','b.lipsa.zi','b.lipsa.ora','b.lipsa.nume'].filter(function(k,i){return !ok[i]});
+    if(falta.length){enviar.setAttribute('aria-disabled','true');enviar.href=waURL(txt);estado.className='estado';estado.textContent=t('b.lipsa')+t(falta[0])+'.'}
+    else{enviar.removeAttribute('aria-disabled');enviar.href=waURL(txt);estado.className='estado ok';estado.textContent=t('b.gata')}
+    enviar.dataset.ok=falta.length?'':'1';
+  }
+  $('#form').addEventListener('change',function(e){var x=e.target;if(x.name==='trat')sel.trat=x.value;if(x.name==='zi')sel.zi=x.value;if(x.name==='ora')sel.ora=x.value;atualizar()});
+  $('#form').addEventListener('input',atualizar);
+  $('#form').addEventListener('submit',function(e){e.preventDefault()});
+  enviar.addEventListener('click',function(e){
+    if(enviar.dataset.ok)return;
+    e.preventDefault();
+    var alvo=!sel.trat?'#ops-trat input':!sel.zi?'#ops-zi input':!sel.ora?'#ops-ora input':'#f-nume';
+    var el=$(alvo);if(el){el.focus();el.closest('fieldset').scrollIntoView({behavior:reduz?'auto':'smooth',block:'center'})}
+  });
+  $$('[data-alege]').forEach(function(a){a.addEventListener('click',function(){sel.trat=a.dataset.alege;renderTrat();atualizar()})});
+
+  /* ---------- galeria + lightbox */
+  var gal=$('#gal'), itens=$$('button',gal), lb=$('#lb'), cur=0, vis=itens;
+  $$('.filtros .chip').forEach(function(c){c.addEventListener('click',function(){
+    var f=c.dataset.f;$$('.filtros .chip').forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
+    itens.forEach(function(b){b.hidden=!(f==='*'||b.dataset.c===f)});vis=itens.filter(function(b){return !b.hidden});
+  })});
+  function lbMostra(i){cur=(i+vis.length)%vis.length;var b=vis[cur];$('#lb-img').src='media/'+b.dataset.src+'.webp';$('#lb-img').alt=t(b.dataset.k);$('#lb-cap').textContent=t(b.dataset.k);$('#lb-nr').textContent=(cur+1)+' / '+vis.length;$('#lb-wa').href=waURL(t('g.wa1')+t(b.dataset.k)+t('g.wa2'))}
+  gal.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;lbMostra(vis.indexOf(b));if(lb.showModal)lb.showModal();else lb.setAttribute('open','')});
+  $('#lb-x').addEventListener('click',function(){lb.close()});
+  $('#lb-p').addEventListener('click',function(){lbMostra(cur-1)});
+  $('#lb-n').addEventListener('click',function(){lbMostra(cur+1)});
+  lb.addEventListener('keydown',function(e){if(e.key==='ArrowRight')lbMostra(cur+1);if(e.key==='ArrowLeft')lbMostra(cur-1)});
+  lb.addEventListener('click',function(e){if(e.target.classList.contains('lb-img'))lb.close()});
+  var tx=null;lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){if(tx===null)return;var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)lbMostra(cur+(d<0?1:-1));tx=null});
+
+  /* ---------- horário (só a terça está confirmada) */
+  var ORAR=[[1,null],[2,['10:00','20:00']],[3,null],[4,null],[5,null],[6,null],[0,null]];
+  function acumIasi(){try{var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Bucharest',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value});return{z:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday],h:+o.hour%24,m:+o.minute}}catch(e){var d=new Date();return{z:d.getDay(),h:d.getHours(),m:d.getMinutes()}}}
+  function renderHorario(){
+    var a=acumIasi(),h='';
+    ORAR.forEach(function(r){h+='<div'+(r[0]===a.z?' class="hoje"':'')+'><dt>'+esc(t('zi.'+r[0]))+'</dt><dd>'+(r[1]?r[1][0]+' – '+r[1][1]:'<span class="tbc">'+esc(t('tbc'))+'</span>')+'</dd></div>'});
+    $('#horario').innerHTML=h;
+    var tira=$('#tira-h');if(!tira.children.length){for(var i=10;i<20;i++){var b=document.createElement('i');b.className='bec';tira.appendChild(b)}}
+    var bs=$$('.bec',tira), est=$('#estado-h');
+    if(a.z===2){var lit=Math.max(0,Math.min(10,a.h-10+(a.m>0?1:0)));bs.forEach(function(b,i){b.classList.toggle('on',i<lit)});var ab=a.h>=10&&a.h<20;est.className='estado-h'+(ab?' aberto':'');est.textContent=t(ab?'v2.deschis':'v2.inchis')}
+    else{bs.forEach(function(b){b.classList.add('on')});est.className='estado-h';est.textContent=t('v2.necunoscut')}
+  }
+
+  /* ---------- router #/ */
+  var PAG={acasa:'meta.title',servicii:'nav.servicii',lucrari:'nav.lucrari',salonul:'nav.salonul',programare:'b.kicker',contact:'nav.contact'};
+  var atual='acasa';
+  function titulo(){document.title=atual==='acasa'?t('meta.title'):t(PAG[atual])+' · Beauty Zone · Iași'}
+  function ruta(prima){
+    var h=location.hash;if(h&&h.indexOf('#/')!==0&&!prima)return;
+    var id=(h.indexOf('#/')===0?h.slice(2):'')||'acasa';if(!PAG[id])id='acasa';
+    atual=id;
+    $$('.pagina').forEach(function(p){p.hidden=p.dataset.pagina!==id});
+    $$('.nav-links a,.meniu li a').forEach(function(a){var r=a.getAttribute('href').replace(/^#\/?/,'')||'acasa';if(r===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    titulo();
+    if(!prima){window.scrollTo(0,0);var h2=$('.pagina[data-pagina="'+id+'"] h2[tabindex]');if(h2)h2.focus({preventScroll:true})}
+    var pg=$('.pagina[data-pagina="'+id+'"]'), fila=$('.becuri',pg);if(fila)acendeFila(fila);
+    var om=$('.oglinda-mica',pg);if(om&&id!=='programare')acendeFila(om);if(id==='programare')atualizar();
+    if(id==='acasa')acendeHeroi();
+    if(id==='contact')renderHorario();
+  }
+  addEventListener('hashchange',function(){ruta(false)});
+
+  var ano=$('#ano');if(ano)ano.textContent=new Date().getFullYear();
+  if(L()!=='ro'||html.dataset.pt)aplicarLingua();else{renderTrat();renderZile();renderOre();renderHorario();atualizar();$$('[data-wa]').forEach(function(a){a.href=waURL(t(a.dataset.wa))})}
+  ruta(true);
+})();
+</script>
+</body>
+</html>

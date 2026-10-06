@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>@@meta.title</title>
+<meta name="description" content="@@meta.desc">
+<meta name="theme-color" content="#4E5163">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234E5163'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23C9A15E' stroke-width='5'/%3E%3Cpath d='M44 44l10 14' stroke='%23C9A15E' stroke-width='3'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('sj.lang'),h=document.documentElement;if(l==='ro'||l==='en'||(l==='pt'&&h.dataset.pt)){h.dataset.lang=l;h.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --stuc:#666A80; --stuc-2:#4E5163; --stuc-3:#3B3D4B; --stuc-claro:#B4B6C6;
+  --fum:#E8E7EE; --fum-2:#DCDBE5; --fum-3:#CFCEDA;
+  --ink:#16171C; --ink-2:#4A4C5C; --linha:rgba(22,23,28,.14);
+  --alama:#C9A15E; --alama-2:#A47E3C; --alama-claro:#E8CF9C;
+  --halo:#F3F5FF;
+  --rosu:#B3262E; --albastru:#2A4A99; --lemn:#8E5E37;
+  --f-disp:'Montagu Slab',Rockwell,Georgia,serif; --f-txt:'Red Hat Text',system-ui,sans-serif; --f-mono:'Red Hat Mono',ui-monospace,monospace;
+  --r:16px; --ease:cubic-bezier(.2,.7,.2,1); --mola:cubic-bezier(.2,.9,.25,1.25);
+  --gut:clamp(18px,5vw,56px); --max:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--fum);color:var(--ink);font:400 16.5px/1.6 var(--f-txt);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--f-disp);font-weight:500;line-height:1.05;margin:0}
+p{margin:0 0 1em}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--albastru);outline-offset:3px;border-radius:6px}
+.stuc :focus-visible,.nav :focus-visible,.meniu :focus-visible,.rodape :focus-visible,.negru :focus-visible,dialog :focus-visible,.erou :focus-visible{outline-color:var(--alama-claro)}
+.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none}
+.skip:focus{top:12px}
+.wrap{width:min(100% - 2*var(--gut),var(--max));margin-inline:auto}
+.kicker{font:500 .74rem/1.2 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin:0 0 14px}
+.stuc .kicker,.negru .kicker,.erou .kicker{color:var(--alama-claro)}
+.tbc{display:inline-flex;align-items:center;gap:6px;font:500 .74em/1 var(--f-mono);letter-spacing:.02em;padding:.34em .7em;border-radius:99px;border:1px dashed currentColor;color:var(--albastru);background:rgba(42,74,153,.06);white-space:nowrap;vertical-align:.1em}
+.tbc::before{content:"";width:.45em;height:.45em;border-radius:50%;background:currentColor;opacity:.6}
+.stuc .tbc,.negru .tbc{color:var(--alama-claro);background:rgba(232,207,156,.08)}
+.mono{font-family:var(--f-mono)}
+
+/* estuque: o reboco das paredes da casa */
+.stuc{background-color:var(--stuc);color:#fff;background-image:radial-gradient(120% 80% at 20% 10%,rgba(255,255,255,.07),transparent 60%),radial-gradient(90% 70% at 85% 90%,rgba(0,0,0,.18),transparent 60%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .03' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E")}
+.negru{background:var(--ink);color:#EDEDF3}
+
+/* ---------- faixa + nav */
+.faixa{background:var(--ink);color:var(--alama-claro);font:500 .68rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 14px;padding-top:max(8px,env(safe-area-inset-top))}
+.nav{position:sticky;top:0;z-index:50;background:var(--stuc-3);color:#fff;transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 10px 30px -18px rgba(0,0,0,.8)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 1.3rem/1 var(--f-disp);white-space:nowrap}
+.marca svg{width:30px;height:34px;flex:none}
+.marca small{font:500 .62rem/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--alama-claro);display:block;margin-top:3px}
+.nav-links{display:none;list-style:none;margin:0;padding:0;gap:2px}
+.nav-links a{display:block;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:500;font-size:.95rem;color:#D9DAE4;transition:color .2s,background .2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav-links a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 var(--alama)}
+.nav-dir{display:flex;align-items:center;gap:8px}
+.lang{display:flex;border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:3px}
+.lang button{border:0;background:none;padding:6px 8px;min-width:36px;min-height:34px;border-radius:7px;font:500 .74rem/1 var(--f-mono);cursor:pointer;color:#D9DAE4}
+.lang button[aria-pressed=true]{background:var(--alama);color:var(--ink)}
+.lang [data-pt-only]{display:none}
+html[data-pt] .lang [data-pt-only]{display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:12px;border:1.5px solid transparent;font:700 .97rem/1.1 var(--f-txt);text-decoration:none;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s,border-color .2s;touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.btn-alama{background:var(--alama);color:var(--ink)}
+.btn-alama:hover{background:var(--alama-claro)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:var(--stuc-3)}
+.btn-linha{border-color:currentColor;background:transparent}
+.btn-linha:hover{background:rgba(22,23,28,.06)}
+.stuc .btn-linha:hover,.negru .btn-linha:hover,.erou .btn-linha:hover{background:rgba(255,255,255,.08)}
+.btn svg{width:18px;height:18px;flex:none}
+.nav-cta{display:none}
+.burger{width:46px;height:46px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:none;display:grid;place-items:center;cursor:pointer}
+.burger span{display:block;width:18px;height:1.5px;background:currentColor;position:relative;transition:background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:currentColor;transition:transform .3s var(--ease)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded=true] span::after{transform:translateY(-6px) rotate(-45deg)}
+.meniu{position:fixed;inset:0;z-index:45;color:#fff;padding:150px var(--gut) 40px;display:flex;flex-direction:column;gap:28px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.meniu.aberto{opacity:1;visibility:visible}
+.meniu ul{list-style:none;margin:0;padding:0}
+.meniu li a{display:flex;align-items:baseline;gap:14px;padding:9px 0;font:500 2.2rem/1.1 var(--f-disp);text-decoration:none;color:#E2E3EC}
+.meniu li a[aria-current=page]{color:var(--alama-claro)}
+.meniu li a[aria-current=page]::after{content:"";width:12px;height:12px;border:2px solid var(--alama);border-radius:50%;align-self:center}
+@media(max-width:420px){.nav-in{gap:8px}.marca{font-size:1.12rem}.marca small{display:none}.lang button{min-width:32px;padding:6px 6px}.burger{width:44px;height:44px}}
+@media(min-width:980px){.nav-links{display:flex}.burger{display:none}.nav-cta{display:inline-flex;min-height:42px;padding:10px 16px}.meniu{display:none}}
+
+/* ---------- brasão */
+.brasao .pc{transform-box:fill-box;transform-origin:center}
+html.js .brasao .pc{opacity:0;transform:translate(var(--tx,0),var(--ty,-30px)) rotate(var(--r,0deg)) scale(.7)}
+html.js #brasao-prog .pc{opacity:.13;transform:none;filter:grayscale(1)}
+html.js #brasao-prog .pc.on{opacity:1;filter:none;animation:pop .6s var(--mola)}
+@keyframes pop{0%{transform:scale(.6)}100%{transform:none}}
+html.js .brasao .pc.on{opacity:1;transform:none;transition:opacity .45s var(--ease),transform .8s var(--mola)}
+
+/* ---------- herói */
+.erou{position:relative;color:#fff;padding:28px 0 60px;overflow:hidden}
+.erou-grid{display:grid;gap:26px;justify-items:center;text-align:center}
+.erou .brasao{width:96px;height:auto}
+.erou h1{font-size:clamp(3.4rem,17vw,7.6rem);font-weight:600;letter-spacing:-.02em;line-height:.88}
+.erou h1 small{display:block;font:500 clamp(.78rem,2.6vw,.95rem)/1 var(--f-mono);letter-spacing:.42em;text-transform:uppercase;color:var(--alama-claro);margin-top:16px}
+.erou-txt{max-width:38ch;color:#E7E8F0;font-size:1.05rem;margin:0}
+.erou-acoes{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.erou .btn-linha{color:#fff}
+.estado{display:inline-flex;align-items:center;gap:10px;font:500 .84rem/1.3 var(--f-mono);color:#EDEDF3;padding:8px 14px;border-radius:99px;background:rgba(22,23,28,.35)}
+.estado::before{content:"";width:9px;height:9px;border-radius:50%;background:#9a9cae;flex:none}
+.estado.aberto::before{background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.22)}
+.erou-nota{display:flex;align-items:center;gap:10px;font-size:.92rem;color:#E7E8F0;text-decoration:none}
+.erou-nota b{font:600 1.7rem/1 var(--f-disp);color:#fff}
+.estrelas{display:inline-flex;gap:2px}.estrelas svg{width:15px;height:15px;fill:var(--alama)}
+.erou-col{display:contents}
+.erou-col .brasao{order:-3}.erou-col .kicker{order:-2}.erou-col h1{order:-1}
+.erou-col .erou-txt,.erou-col .erou-acoes,.erou-col .erou-linha{order:1}
+.erou-linha{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center}
+@media(min-width:980px){
+  .erou{padding:56px 0 90px;min-height:calc(100svh - 96px);display:flex;align-items:center}
+  .erou-grid{grid-template-columns:1.1fr .9fr;justify-items:start;text-align:left;align-items:center;gap:48px}
+  .erou-col{display:grid;gap:22px;justify-items:start}
+  .erou-acoes,.erou-linha{justify-content:flex-start}
+  .erou .brasao{width:110px}
+}
+
+/* arcada (os espelhos em arco da casa) + monóculo */
+.arcada{position:relative;width:min(80vw,420px);aspect-ratio:5/7;justify-self:center;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.arcada.quadrada{aspect-ratio:1/1;width:min(100%,560px)}
+.arc-in{position:absolute;inset:0;overflow:hidden;border-radius:50% 50% 14px 14px / 36% 36% 14px 14px;background:var(--stuc-3);box-shadow:0 0 0 2px rgba(255,255,255,.85),0 0 22px 6px rgba(236,240,255,.55),0 0 70px 10px rgba(220,226,255,.22),0 40px 80px -30px rgba(0,0,0,.7)}
+.arcada.quadrada .arc-in{border-radius:50% 50% 14px 14px / 34% 34% 14px 14px}
+.arc-in .fb,.ph .fb{position:absolute;inset:0;width:100%;height:100%}
+.arc-in img,.arc-in video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.arc-in video{opacity:0;transition:opacity .9s}
+.arc-in video.pronto{opacity:1}
+.monoclu{position:absolute;left:0;top:0;width:var(--d,128px);height:var(--d,128px);margin:calc(var(--d,128px)/-2) 0 0 calc(var(--d,128px)/-2);border-radius:50%;z-index:3;will-change:transform;touch-action:none;cursor:grab;opacity:0;transition:opacity .6s}
+.monoclu.vivo{opacity:1}
+.monoclu canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;background:#2a2c36}
+.monoclu::before{content:"";position:absolute;inset:-9px;border-radius:50%;background:conic-gradient(from 210deg,#7d5f2a,#f1d9a4,#b48a45,#6e5122,#e9cc8f,#9c7535,#7d5f2a);box-shadow:0 14px 30px -8px rgba(0,0,0,.6);z-index:-1;-webkit-mask:radial-gradient(circle,transparent calc(50% - 9px),#000 calc(50% - 8px));mask:radial-gradient(circle,transparent calc(50% - 9px),#000 calc(50% - 8px))}
+.monoclu::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(60% 45% at 32% 26%,rgba(255,255,255,.38),rgba(255,255,255,0) 60%),radial-gradient(circle,transparent 62%,rgba(0,0,0,.28));pointer-events:none}
+.monoclu .z{position:absolute;left:50%;bottom:-30px;transform:translateX(-50%);font:500 .7rem/1 var(--f-mono);color:var(--ink);background:var(--alama-claro);padding:4px 7px;border-radius:6px;white-space:nowrap}
+.lant{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}
+.lant path{fill:none;stroke:var(--alama);stroke-width:2.2;stroke-dasharray:4 3;stroke-linecap:round}
+.lant circle{fill:var(--alama)}
+.dica{font:500 .76rem/1.3 var(--f-mono);color:var(--stuc-claro);margin-top:12px;text-align:center}
+@media(min-width:980px){.arcada{width:min(34vw,420px);aspect-ratio:3/5}.arcada .arc-in{border-radius:50% 50% 14px 14px / 30% 30% 14px 14px}}
+
+/* ---------- marquee (poste de barbeiro) */
+.mq{position:relative;background:var(--ink);color:#EDEDF3;overflow:hidden;padding:14px 0;font:500 1.05rem/1 var(--f-disp);white-space:nowrap}
+.mq::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:repeating-linear-gradient(-45deg,var(--rosu) 0 10px,#fff 10px 20px,var(--albastru) 20px 30px,#fff 30px 40px);animation:poste 1.6s linear infinite;background-size:56.57px 5px}
+.mq-in{display:inline-flex;animation:mq 40s linear infinite;padding-top:4px}
+@keyframes mq{to{transform:translateX(-50%)}}
+@keyframes poste{to{background-position:56.57px 0}}
+
+/* ---------- secções */
+.sec{padding:clamp(64px,10vw,120px) 0}
+.sec-cab{display:grid;gap:10px;margin-bottom:clamp(28px,5vw,50px);max-width:760px}
+.sec-cab h2{font-size:clamp(2.1rem,6.2vw,3.7rem)}
+.sec-cab p{color:var(--ink-2);font-size:1.05rem;max-width:58ch;margin:0}
+.stuc .sec-cab p,.negru .sec-cab p{color:#E2E3EC}
+.ph{position:relative;overflow:hidden;border-radius:var(--r);background:var(--fum-3);margin:0}
+.ph img,.ph video{position:relative;width:100%;height:100%;object-fit:cover}
+.ph.arco{border-radius:50% 50% var(--r) var(--r) / 28% 28% var(--r) var(--r)}
+html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+html.js .rv.vis{opacity:1;transform:none}
+html.js .rv.d1{transition-delay:.1s}html.js .rv.d2{transition-delay:.2s}html.js .rv.d3{transition-delay:.3s}
+
+/* inspector */
+.insp{display:grid;gap:30px;align-items:center}
+@media(min-width:900px){.insp{grid-template-columns:1fr 1fr;gap:60px}}
+.insp .arcada{width:min(100%,520px)}
+.miniaturas{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+.miniaturas button{border:0;padding:0;border-radius:12px;overflow:hidden;aspect-ratio:1;cursor:pointer;position:relative;background:var(--fum-3);outline-offset:3px}
+.miniaturas button img{width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease)}
+.miniaturas button:hover img{transform:scale(1.06)}
+.miniaturas button[aria-pressed=true]{box-shadow:0 0 0 3px var(--alama)}
+.legenda{font:500 .85rem/1.4 var(--f-mono);color:var(--ink-2);margin:14px 0 0}
+
+/* serviços como tabela de barbeiro */
+.lista{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.lista li{display:grid;grid-template-columns:1fr auto;gap:4px 18px;padding:20px 0;border-bottom:1px solid var(--linha);align-items:center}
+.lista h3{font-size:clamp(1.5rem,4.4vw,2rem)}
+.lista p{margin:0;color:var(--ink-2);font-size:.96rem;grid-column:1;max-width:56ch}
+.lista .preco{grid-column:1;font:500 .82rem/1 var(--f-mono);color:var(--ink-2);display:flex;gap:8px;align-items:center;margin-top:6px}
+.lista .btn{grid-column:2;grid-row:1/span 3;min-height:44px;padding:10px 16px;font-size:.9rem}
+.servicos-grid{display:grid;gap:40px}
+@media(min-width:900px){.servicos-grid{grid-template-columns:1.3fr .7fr;gap:60px;align-items:start}.servicos-grid .lateral{position:sticky;top:96px}}
+.lateral{display:grid;gap:14px}
+.lateral .ph{aspect-ratio:4/5}
+.lateral figcaption,.cap-f{font:500 .8rem/1.4 var(--f-mono);color:var(--ink-2);margin-top:8px}
+.caixa{border-radius:calc(var(--r) + 4px);padding:clamp(22px,4vw,34px)}
+.caixa h3{font-size:clamp(1.6rem,4.6vw,2.2rem);margin-bottom:8px}
+
+/* avaliações */
+.aval{display:grid;gap:34px}
+@media(min-width:900px){.aval{grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}}
+.nota{font:600 clamp(5rem,16vw,8rem)/.9 var(--f-disp);letter-spacing:-.03em}
+.barra{height:10px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden;margin:16px 0 8px;max-width:360px}
+.barra i{display:block;height:100%;width:0;background:var(--alama);border-radius:99px;transition:width 1.4s var(--ease)}
+.vis .barra i{width:94.2%}
+.temas{display:grid;gap:14px}
+.temas div{padding:20px 22px;border-radius:var(--r);background:rgba(22,23,28,.22);border:1px solid rgba(255,255,255,.12)}
+.temas h3{font-size:1.4rem;margin-bottom:6px}
+.temas p{margin:0;color:#E2E3EC}
+
+/* visita (início) */
+.visita{display:grid;gap:26px;align-items:center}
+@media(min-width:900px){.visita{grid-template-columns:1fr 1fr;gap:60px}}
+.visita .ph{aspect-ratio:540/400}
+
+/* ---------- páginas interiores */
+.pagina[hidden]{display:none!important}
+.cab-pag{padding:clamp(40px,7vw,84px) 0 clamp(40px,6vw,70px);position:relative;overflow:hidden}
+.cab-grid{display:grid;gap:24px;align-items:center;grid-template-columns:1fr auto}
+.cab-pag h2{font-size:clamp(2.5rem,9vw,5.2rem);font-weight:600;max-width:14ch;outline:none}
+.cab-pag p.lead{color:#E7E8F0;max-width:56ch;margin:18px 0 0;font-size:1.05rem}
+.cab-pag .brasao{width:clamp(70px,18vw,150px)}
+.cab-pag .lead{grid-column:1/-1}
+
+/* galeria */
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:900px){.gal{grid-template-columns:repeat(4,1fr);gap:16px}}
+.gal .ph{aspect-ratio:3/4}
+.gal .larga{grid-column:span 2}
+.gal .larga .ph{aspect-ratio:auto;height:100%}
+.gal figcaption{font:500 .78rem/1.4 var(--f-mono);color:var(--ink-2);padding:8px 2px 0}
+
+/* casa */
+.duas{display:grid;gap:36px}
+@media(min-width:900px){.duas{grid-template-columns:1fr 1fr;gap:64px;align-items:center}}
+.grande{font-size:1.16rem}
+.detalhes{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:700px){.detalhes{grid-template-columns:repeat(2,1fr)}}
+.detalhes div{padding:22px;border-radius:var(--r);background:var(--fum-2)}
+.detalhes h3{font-size:1.45rem;margin-bottom:6px}
+.detalhes p{margin:0;color:var(--ink-2)}
+.trio{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+.trio .ph{aspect-ratio:3/4}
+.trio .ph:first-child{grid-row:span 2;aspect-ratio:auto}
+
+/* marcação */
+.form{display:grid;gap:22px;padding:clamp(40px,6vw,70px) 0}
+@media(min-width:980px){.form{grid-template-columns:1.25fr .75fr;align-items:start;gap:40px}.resumo{position:sticky;top:90px}}
+fieldset{border:0;margin:0;padding:clamp(20px,4vw,30px);background:var(--fum-2);border-radius:calc(var(--r) + 4px);min-width:0}
+fieldset+fieldset{margin-top:16px}
+legend{float:left;width:100%;display:flex;align-items:center;gap:12px;font:500 1.7rem/1.1 var(--f-disp);margin-bottom:16px;padding:0}
+legend .n{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--stuc-2);color:#fff;font:500 .9rem/1 var(--f-mono);transition:background .3s,color .3s}
+fieldset.feito legend .n{background:var(--alama);color:var(--ink)}
+.ops{display:flex;flex-wrap:wrap;gap:8px;clear:both}
+.op{position:relative}
+.op input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;width:100%;height:100%}
+.op label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:46px;padding:10px 15px;border-radius:12px;border:1.5px solid var(--linha);background:var(--fum);font-weight:700;font-size:.93rem;line-height:1.2;cursor:pointer;transition:background .2s,border-color .2s,color .2s;text-align:center}
+.op label small{font:500 .72rem/1.2 var(--f-mono);color:var(--ink-2);text-transform:lowercase}
+.op input:hover+label{border-color:var(--stuc)}
+.op input:checked+label{background:var(--ink);border-color:var(--ink);color:#fff}
+.op input:checked+label small{color:var(--alama-claro)}
+.op input:focus-visible+label{outline:3px solid var(--albastru);outline-offset:2px}
+.op input:disabled{cursor:not-allowed}
+.op input:disabled+label{opacity:.42;cursor:not-allowed;text-decoration:line-through}
+.dias{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;clear:both}
+@media(min-width:600px){.dias{grid-template-columns:repeat(7,1fr)}}
+.dias .op label{min-height:70px;padding:8px 4px}
+.dias .op label b{font:600 1.5rem/1 var(--f-disp)}
+.horas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;clear:both}
+@media(min-width:600px){.horas{grid-template-columns:repeat(5,1fr)}}
+.horas .op label{font-family:var(--f-mono);font-weight:500}
+.aviso{font:500 .84rem/1.4 var(--f-mono);color:var(--ink-2);margin:12px 0 0;clear:both}
+.campo{display:grid;gap:6px;clear:both;margin-bottom:12px}
+.campo label{font-weight:700;font-size:.92rem}
+.campo input{font:inherit;font-size:16px;padding:13px 15px;border-radius:12px;border:1.5px solid var(--linha);background:var(--fum);color:var(--ink);min-height:48px}
+.campo input:focus{outline:none;border-color:var(--albastru);box-shadow:0 0 0 3px rgba(42,74,153,.2)}
+.resumo{border-radius:calc(var(--r) + 6px);padding:clamp(22px,4vw,30px)}
+.resumo h3{font-size:1.6rem;margin-bottom:14px}
+.msg{white-space:pre-wrap;font:500 .93rem/1.55 var(--f-mono);background:#ECE8DF;color:#1d1d22;border-radius:4px 16px 16px 16px;padding:14px 16px;margin:0 0 16px}
+.estado-f{font-size:.9rem;color:#C9CAD6;margin:0 0 14px;min-height:1.4em}
+.estado-f.ok{color:var(--alama-claro)}
+.resumo .btn{width:100%}
+.resumo .btn[aria-disabled=true]{opacity:.5;cursor:not-allowed}
+
+/* contacto */
+.info{display:grid;gap:14px}
+.info>div{background:var(--fum-2);border-radius:var(--r);padding:20px 22px}
+.info h3{font:500 .74rem/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:10px}
+.info .big{font:500 1.55rem/1.2 var(--f-disp);margin:0}
+.info .big a{text-decoration:none}
+.info .acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.horario{margin:0}
+.horario div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--linha)}
+.horario div:last-child{border-bottom:0}
+.horario dd{margin:0;font-family:var(--f-mono)}
+.horario .hoje dt,.horario .hoje dd{font-weight:700;color:var(--albastru)}
+.contacto{display:grid;gap:16px}
+@media(min-width:900px){.contacto{grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}}
+.mapa{border-radius:calc(var(--r) + 4px);overflow:hidden;min-height:340px;background:var(--fum-3);position:relative}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapa-fb{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--stuc-2);font:500 1.3rem/1.2 var(--f-disp);background:repeating-linear-gradient(35deg,transparent 0 38px,rgba(78,81,99,.08) 38px 40px),repeating-linear-gradient(-55deg,transparent 0 58px,rgba(78,81,99,.08) 58px 60px),var(--fum-3)}
+.mapa-fb svg{width:32px;height:32px;display:block;margin:0 auto 8px}
+.lado{display:grid;gap:16px}
+
+/* rodapé */
+.rodape{padding:56px 0 calc(110px + env(safe-area-inset-bottom));font-size:.92rem;color:#C9CAD6}
+@media(min-width:980px){.rodape{padding-bottom:40px}}
+.rodape-grid{display:grid;gap:30px}
+@media(min-width:860px){.rodape-grid{grid-template-columns:1.2fr 1fr 1fr}}
+.rodape .marca{color:#fff;margin-bottom:12px}
+.rodape h3{font:500 .72rem/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.rodape ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rodape a{color:#fff;text-underline-offset:3px}
+.rodape .fim{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;font-size:.82rem}
+
+/* CTA fixo */
+.cta-fixo{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1.4fr;gap:10px;padding:10px 14px max(10px,env(safe-area-inset-bottom));background:rgba(22,23,28,.97);border-top:1px solid rgba(255,255,255,.08)}
+.cta-fixo .btn{min-height:50px}
+.cta-fixo .btn-linha{color:#fff}
+@media(min-width:980px){.cta-fixo{display:none}}
+
+dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;color:#fff}
+dialog.lb::backdrop{background:rgba(18,19,24,.95)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  html.js .rv{opacity:1!important;transform:none!important}
+  html.js .brasao .pc{opacity:1!important;transform:none!important}
+  .vis .barra i,.barra i{width:94.2%}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarberShop","name":"Sir John's Barbershop","image":"media/vitrina-noaptea.webp","telephone":"+40731422775","address":{"@type":"PostalAddress","streetAddress":"Strada Costache Negruzzi 1, Bl. H1, Sc. A, Parter","postalCode":"700126","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1639042,"longitude":27.5806526},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"191","bestRating":"5"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["https://schema.org/Monday","https://schema.org/Tuesday","https://schema.org/Wednesday","https://schema.org/Thursday","https://schema.org/Friday"],"opens":"10:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"https://schema.org/Saturday","opens":"09:00","closes":"15:00"}],"hasMap":"https://www.google.com/maps/search/?api=1&query=Sir+John%27s+Barbershop+Ia%C8%99i"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main" data-t="skip"></a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gfb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A7E94"/><stop offset="1" stop-color="#3B3D4B"/></linearGradient>
+    <clipPath id="clip-escudo"><path d="M120 66 L190 82 V146 C190 192 158 220 120 236 C82 220 50 192 50 146 V82 Z"/></clipPath>
+    <symbol id="fb" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+      <rect width="300" height="400" fill="url(#gfb)"/>
+      <path d="M90 330 V150 a60 60 0 0 1 120 0 V330 Z" fill="none" stroke="#F3F5FF" stroke-opacity=".55" stroke-width="3"/>
+      <circle cx="150" cy="210" r="34" fill="none" stroke="#C9A15E" stroke-width="5"/>
+      <path d="M174 234 l26 30" stroke="#C9A15E" stroke-width="3"/>
+    </symbol>
+    <symbol id="brasao" viewBox="0 0 240 270">
+      <g class="pc" style="--tx:-60px;--ty:-40px;--r:-50deg">
+        <g transform="translate(120 132) rotate(-36) scale(1.28) translate(-118 0)">
+          <rect x="0" y="-7" width="112" height="14" rx="7" fill="#16171C" stroke="#C9A15E" stroke-width="2"/>
+          <path d="M104 -10 L196 -13 Q206 -6 199 8 L104 10 Z" fill="#DADDE8" stroke="#16171C" stroke-width="1.5"/>
+        </g>
+      </g>
+      <g class="pc" style="--tx:60px;--ty:-40px;--r:50deg">
+        <g transform="translate(120 132) rotate(36) scale(1.28) translate(-118 0)">
+          <circle cx="12" cy="-13" r="11" fill="none" stroke="#C9A15E" stroke-width="5"/>
+          <circle cx="12" cy="13" r="11" fill="none" stroke="#C9A15E" stroke-width="5"/>
+          <path d="M22 -9 L230 3 L22 1 Z M22 9 L230 -3 L22 -1 Z" fill="#DADDE8" stroke="#16171C" stroke-width="1.2"/>
+        </g>
+      </g>
+      <g class="pc" style="--ty:30px">
+        <path d="M120 66 L190 82 V146 C190 192 158 220 120 236 C82 220 50 192 50 146 V82 Z" fill="#4E5163" stroke="#C9A15E" stroke-width="4"/>
+      </g>
+      <g class="pc" style="--tx:-40px;--ty:20px" clip-path="url(#clip-escudo)">
+        <g transform="rotate(-35 120 200)"><rect x="0" y="176" width="260" height="12" fill="#B3262E"/><rect x="0" y="188" width="260" height="12" fill="#F3F5FF"/><rect x="0" y="200" width="260" height="12" fill="#2A4A99"/><rect x="0" y="212" width="260" height="12" fill="#F3F5FF"/><rect x="0" y="224" width="260" height="12" fill="#B3262E"/></g>
+      </g>
+      <g class="pc" style="--ty:-20px;--r:0deg">
+        <text x="120" y="148" text-anchor="middle" font-family="Montagu Slab, Georgia, serif" font-weight="700" font-size="58" fill="#F3F5FF">SJ</text>
+      </g>
+      <g class="pc" style="--ty:-70px;--r:-12deg">
+        <ellipse cx="120" cy="64" rx="46" ry="8" fill="#16171C" stroke="#C9A15E" stroke-width="2"/>
+        <path d="M92 62 V24 Q92 18 98 18 H142 Q148 18 148 24 V62 Z" fill="#16171C" stroke="#C9A15E" stroke-width="2"/>
+        <rect x="92" y="48" width="56" height="8" fill="#B3262E"/>
+      </g>
+      <g class="pc" style="--ty:50px">
+        <path d="M14 214 L40 214 L40 248 L14 248 L26 231 Z M226 214 L200 214 L200 248 L226 248 L214 231 Z" fill="#3B3D4B"/>
+        <path d="M34 206 H206 V242 H34 Z" fill="#16171C" stroke="#C9A15E" stroke-width="2.5"/>
+        <text x="120" y="230" text-anchor="middle" font-family="Red Hat Mono, monospace" font-weight="500" font-size="11" letter-spacing="1.6" fill="#E8CF9C">BARBERSHOP · IAȘI</text>
+      </g>
+    </symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33.08-.16.04-.3-.02-.43l-.76-1.83c-.2-.48-.4-.41-.56-.42h-.48a.92.92 0 0 0-.67.31 2.8 2.8 0 0 0-.87 2.08 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.24.75 3.04.63.5-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.22-.16-.47-.28z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.2 6.6.7-5 4.5 1.4 6.6L12 17.2l-5.9 3.3 1.4-6.6-5-4.5 6.6-.7z"/></symbol>
+  </defs>
+</svg>
+
+<div class="faixa" data-t="faixa"></div>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="marca" href="#/"><svg viewBox="0 0 240 270" aria-hidden="true"><use href="#brasao"/></svg><span>Sir John's<small>Barbershop · Iași</small></span></a>
+    <ul class="nav-links">
+      <li><a href="#/" data-t="nav.acasa"></a></li>
+      <li><a href="#/servicii" data-t="nav.servicii"></a></li>
+      <li><a href="#/tunsori" data-t="nav.tunsori"></a></li>
+      <li><a href="#/salonul" data-t="nav.salonul"></a></li>
+      <li><a href="#/contact" data-t="nav.contact"></a></li>
+    </ul>
+    <div class="nav-dir">
+      <div class="lang" role="group" aria-label="@@lang.label" data-ta="aria-label:lang.label">
+        <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-set-lang="pt" aria-pressed="false" data-pt-only>PT</button>
+      </div>
+      <a class="btn btn-alama nav-cta" href="#/programare" data-t="nav.programare"></a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="@@nav.menu" data-ta="aria-label:nav.menu"><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="meniu stuc" id="meniu" aria-label="@@nav.menu" data-ta="aria-label:nav.menu">
+  <ul>
+    <li><a href="#/" data-t="nav.acasa"></a></li>
+    <li><a href="#/servicii" data-t="nav.servicii"></a></li>
+    <li><a href="#/tunsori" data-t="nav.tunsori"></a></li>
+    <li><a href="#/salonul" data-t="nav.salonul"></a></li>
+    <li><a href="#/programare" data-t="nav.programare"></a></li>
+    <li><a href="#/contact" data-t="nav.contact"></a></li>
+  </ul>
+  <a class="btn btn-alama" href="tel:+40731422775"><svg aria-hidden="true"><use href="#i-tel"/></svg>+40 731 422 775</a>
+</nav>
+
+<main id="main" tabindex="-1">
+
+<!-- ===================== ACASĂ ===================== -->
+<section class="pagina" data-pagina="acasa">
+  <div class="erou stuc" id="erou">
+    <div class="wrap erou-grid">
+      <div class="erou-col">
+        <svg class="brasao" id="brasao-erou" viewBox="0 0 240 270" role="img" aria-label="Sir John's"><use href="#brasao"/></svg>
+        <p class="kicker" data-t="h.eyebrow"></p>
+        <h1>Sir John's<small>Barbershop · Iași</small></h1>
+        <p class="erou-txt" data-t="h.sub"></p>
+        <div class="erou-acoes">
+          <a class="btn btn-alama" href="#/programare" data-t="h.cta1"></a>
+          <a class="btn btn-linha" href="#/tunsori" data-t="h.cta2"></a>
+        </div>
+        <div class="erou-linha">
+          <p class="estado" data-estado style="margin:0"></p>
+          <a class="erou-nota" href="#/salonul"><b>4,8</b><span class="estrelas" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><span data-t="h.nota"></span></a>
+        </div>
+      </div>
+      <div>
+        <div class="arcada" id="arcada-erou" data-zoom="2" role="img" aria-label="@@h.lupa" data-ta="aria-label:h.lupa">
+          <div class="arc-in">
+            <svg class="fb" aria-hidden="true"><use href="#fb"/></svg>
+            <img src="media/video-frizerii-la-lucru-poster.webp" alt="" width="720" height="1280" fetchpriority="high" onerror="this.remove()">
+            <video muted loop playsinline preload="none" poster="media/video-frizerii-la-lucru-poster.webp" aria-hidden="true" tabindex="-1">
+              <source src="media/video-frizerii-la-lucru.webm" type="video/webm">
+              <source src="media/video-frizerii-la-lucru.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <p class="dica" data-t="h.lupa.hint"></p>
+      </div>
+    </div>
+  </div>
+  <div class="mq" aria-hidden="true"><div class="mq-in"><span data-t="mq"></span><span data-t="mq"></span><span data-t="mq"></span><span data-t="mq"></span></div></div>
+
+  <section class="sec" aria-labelledby="t-insp">
+    <div class="wrap insp">
+      <div class="arcada quadrada rv" id="arcada-fade" data-zoom="2.6" role="img" aria-label="@@c.fade" data-ta="aria-label:c.fade">
+        <div class="arc-in"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/fade-profil.webp" alt="" loading="lazy" width="1080" height="1080" onerror="this.remove()"></div>
+      </div>
+      <div class="rv d1">
+        <p class="kicker" data-t="i.kicker"></p>
+        <h2 id="t-insp" style="font-size:clamp(2.1rem,6.2vw,3.7rem);margin-bottom:16px" data-t="i.titlu"></h2>
+        <p style="color:var(--ink-2);font-size:1.06rem;max-width:46ch" data-t="i.text"></p>
+        <a class="btn btn-ink" href="#/tunsori" data-t="i.btn"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0" aria-labelledby="t-serv">
+    <div class="wrap">
+      <div class="sec-cab rv">
+        <p class="kicker" data-t="s.kicker"></p>
+        <h2 id="t-serv" data-t="s.titlu"></h2>
+      </div>
+      <ul class="lista rv">
+        <li><h3 data-t="x.tuns"></h3><p data-t="x.tuns.d"></p><a class="btn btn-ink" href="#/programare" data-alege="x.tuns" data-t="sv.alege"></a></li>
+        <li><h3 data-t="x.tunsbarba"></h3><p data-t="x.tunsbarba.d"></p><a class="btn btn-ink" href="#/programare" data-alege="x.tunsbarba" data-t="sv.alege"></a></li>
+        <li><h3 data-t="x.barba"></h3><p data-t="x.barba.d"></p><a class="btn btn-ink" href="#/programare" data-alege="x.barba" data-t="sv.alege"></a></li>
+      </ul>
+      <div style="margin-top:26px" class="rv"><a class="btn btn-linha" href="#/servicii" data-t="s.vezi"></a></div>
+    </div>
+  </section>
+
+  <section class="sec stuc" aria-labelledby="t-aval">
+    <div class="wrap aval rv">
+      <div>
+        <p class="kicker" data-t="r.kicker"></p>
+        <h2 id="t-aval" class="sr-only" data-t="r.titlu"></h2>
+        <p class="nota" aria-hidden="true">4,8</p>
+        <span class="estrelas" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+        <p class="mono" style="margin:12px 0 0;color:#E2E3EC" data-t="h.nota"></p>
+        <div class="barra" aria-hidden="true"><i></i></div>
+        <p class="mono" style="font-size:.85rem;color:#E2E3EC"><b style="color:#fff">180 / 191</b> <span data-t="r.cinci"></span></p>
+      </div>
+      <div class="temas">
+        <div><h3 data-t="r.t1"></h3><p data-t="r.t1.d"></p></div>
+        <div><h3 data-t="r.t2"></h3><p data-t="r.t2.d"></p></div>
+        <div><h3 data-t="r.t3"></h3><p data-t="r.t3.d"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="t-vis">
+    <div class="wrap visita">
+      <figure class="ph rv" style="margin:0">
+        <svg class="fb" aria-hidden="true"><use href="#fb"/></svg>
+        <img src="media/video-fatada-noaptea-poster.webp" alt="" loading="lazy" onerror="this.remove()">
+        <video class="vid-auto" muted loop playsinline preload="none" poster="media/video-fatada-noaptea-poster.webp" aria-hidden="true" tabindex="-1" style="position:absolute;inset:0">
+          <source src="media/video-fatada-noaptea.webm" type="video/webm"><source src="media/video-fatada-noaptea.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <div class="rv d1">
+        <p class="kicker" data-t="v.kicker"></p>
+        <h2 id="t-vis" style="font-size:clamp(1.9rem,5vw,3rem);margin-bottom:14px" data-t="v.titlu"></h2>
+        <p style="color:var(--ink-2)" data-t="v.text"></p>
+        <p class="estado" data-estado style="background:var(--stuc-2);margin:0 0 20px"></p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a class="btn btn-ink" href="#/contact" data-t="v.btn"></a>
+          <a class="btn btn-linha" href="tel:+40731422775"><svg aria-hidden="true"><use href="#i-tel"/></svg>0731 422 775</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ===================== SERVICII ===================== -->
+<section class="pagina" data-pagina="servicii" hidden>
+  <header class="cab-pag stuc">
+    <div class="wrap cab-grid">
+      <div><p class="kicker" data-t="sv.kicker"></p><h2 tabindex="-1" data-t="sv.titlu"></h2></div>
+      <svg class="brasao" viewBox="0 0 240 270" aria-hidden="true"><use href="#brasao"/></svg>
+      <p class="lead" data-t="sv.intro"></p>
+    </div>
+  </header>
+  <div class="wrap sec">
+    <div class="servicos-grid">
+      <ul class="lista">
+        <li><h3 data-t="x.tuns"></h3><p data-t="x.tuns.d"></p><span class="preco"><span data-t="sv.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-ink" href="#/programare" data-alege="x.tuns" data-t="sv.alege"></a></li>
+        <li><h3 data-t="x.tunsbarba"></h3><p data-t="x.tunsbarba.d"></p><span class="preco"><span data-t="sv.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-ink" href="#/programare" data-alege="x.tunsbarba" data-t="sv.alege"></a></li>
+        <li><h3 data-t="x.barba"></h3><p data-t="x.barba.d"></p><span class="preco"><span data-t="sv.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-ink" href="#/programare" data-alege="x.barba" data-t="sv.alege"></a></li>
+        <li><h3 data-t="x.spalat"></h3><p data-t="x.spalat.d"></p><span class="preco"><span data-t="sv.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-ink" href="#/programare" data-alege="x.spalat" data-t="sv.alege"></a></li>
+        <li><h3 data-t="x.fata"></h3><p data-t="x.fata.d"></p><span class="preco"><span data-t="sv.pret"></span><span class="tbc" data-t="tbc"></span></span><a class="btn btn-ink" href="#/programare" data-alege="x.fata" data-t="sv.alege"></a></li>
+      </ul>
+      <div class="lateral">
+        <figure style="margin:0"><div class="ph arco"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/spalat-par.webp" alt="@@sv.foto1" data-ta="alt:sv.foto1" loading="lazy" onerror="this.remove()"></div><figcaption data-t="sv.foto1"></figcaption></figure>
+        <div class="caixa negru">
+          <h3 data-t="sv.nu"></h3>
+          <p style="color:#D9DAE4" data-t="sv.nu.t"></p>
+          <a class="btn btn-alama" data-wa="sv.nu.wa" href="https://wa.me/40731422775" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="sv.nu.btn"></span></a>
+        </div>
+        <figure style="margin:0"><div class="ph" style="aspect-ratio:3/2"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/ingrijire-fata.webp" alt="@@sv.foto2" data-ta="alt:sv.foto2" loading="lazy" onerror="this.remove()"></div><figcaption data-t="sv.foto2"></figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TUNSORI ===================== -->
+<section class="pagina" data-pagina="tunsori" hidden>
+  <header class="cab-pag stuc">
+    <div class="wrap cab-grid">
+      <div><p class="kicker" data-t="t.kicker"></p><h2 tabindex="-1" data-t="t.titlu"></h2></div>
+      <svg class="brasao" viewBox="0 0 240 270" aria-hidden="true"><use href="#brasao"/></svg>
+      <p class="lead" data-t="t.intro"></p>
+    </div>
+  </header>
+  <div class="wrap sec" style="padding-top:clamp(40px,6vw,70px)">
+    <div class="insp">
+      <div>
+        <div class="arcada quadrada" id="arcada-insp" data-zoom="2.4" role="img" aria-label="@@c.fade" data-ta="aria-label:c.fade">
+          <div class="arc-in"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img id="insp-img" src="media/fade-profil.webp" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
+      </div>
+      <div>
+        <p class="kicker" data-t="t.alege"></p>
+        <h3 id="insp-leg" style="font-size:clamp(1.7rem,4.6vw,2.4rem)" data-t="c.fade"></h3>
+        <p class="legenda"><span data-t="t.zoom"></span> <b id="insp-z">×2,4</b></p>
+        <div class="miniaturas" id="miniaturas">
+          <button type="button" aria-pressed="true" data-src="fade-profil" data-k="c.fade" data-z="2.4"><img src="media/fade-profil.webp" alt="@@c.fade" data-ta="alt:c.fade" loading="lazy"></button>
+          <button type="button" aria-pressed="false" data-src="frizerii-la-lucru" data-k="c.lucru" data-z="2.2"><img src="media/frizerii-la-lucru.webp" alt="@@c.lucru" data-ta="alt:c.lucru" loading="lazy"></button>
+          <button type="button" aria-pressed="false" data-src="frizer-portret" data-k="c.portret" data-z="2.2"><img src="media/frizer-portret.webp" alt="@@c.portret" data-ta="alt:c.portret" loading="lazy"></button>
+          <button type="button" aria-pressed="false" data-src="spalat-par" data-k="c.spalat" data-z="2.2"><img src="media/spalat-par.webp" alt="@@c.spalat" data-ta="alt:c.spalat" loading="lazy"></button>
+          <button type="button" aria-pressed="false" data-src="oglinzi-arcade-noaptea" data-k="c.arcade" data-z="2"><img src="media/oglinzi-arcade-noaptea.webp" alt="@@c.arcade" data-ta="alt:c.arcade" loading="lazy"></button>
+          <button type="button" aria-pressed="false" data-src="ingrijire-fata" data-k="c.fata" data-z="2.2"><img src="media/ingrijire-fata.webp" alt="@@c.fata" data-ta="alt:c.fata" loading="lazy"></button>
+          <button type="button" aria-pressed="false" data-src="vitrina-noaptea" data-k="c.vitrina" data-z="2.2"><img src="media/vitrina-noaptea.webp" alt="@@c.vitrina" data-ta="alt:c.vitrina" loading="lazy"></button>
+          <button type="button" aria-pressed="false" data-src="salonul-interior" data-k="c.interior" data-z="2"><img src="media/salonul-interior.webp" alt="@@c.interior" data-ta="alt:c.interior" loading="lazy"></button>
+        </div>
+        <a class="btn btn-ink" id="insp-wa" style="margin-top:22px" href="https://wa.me/40731422775" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="t.vreau"></span></a>
+      </div>
+    </div>
+  </div>
+  <section class="sec stuc" aria-labelledby="t-tv">
+    <div class="wrap duas">
+      <figure class="ph rv" style="aspect-ratio:600/790;max-width:440px;margin:0">
+        <svg class="fb" aria-hidden="true"><use href="#fb"/></svg>
+        <img src="media/video-tunsori-fade-poster.webp" alt="" loading="lazy" onerror="this.remove()">
+        <video class="vid-auto" muted loop playsinline preload="none" poster="media/video-tunsori-fade-poster.webp" aria-hidden="true" tabindex="-1" style="position:absolute;inset:0">
+          <source src="media/video-tunsori-fade.webm" type="video/webm"><source src="media/video-tunsori-fade.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <div class="rv d1">
+        <p class="kicker" data-t="t.kicker"></p>
+        <h2 id="t-tv" style="font-size:clamp(2rem,6vw,3.4rem);margin-bottom:14px" data-t="t.video"></h2>
+        <p style="color:#E2E3EC" data-t="t.video.t"></p>
+        <a class="btn btn-alama" href="#/programare" data-t="h.cta1"></a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ===================== SALONUL ===================== -->
+<section class="pagina" data-pagina="salonul" hidden>
+  <header class="cab-pag stuc">
+    <div class="wrap cab-grid">
+      <div><p class="kicker" data-t="a.kicker"></p><h2 tabindex="-1" data-t="a.titlu"></h2></div>
+      <svg class="brasao" viewBox="0 0 240 270" aria-hidden="true"><use href="#brasao"/></svg>
+    </div>
+  </header>
+  <div class="wrap sec">
+    <div class="duas">
+      <div class="rv">
+        <p class="grande" data-t="a.p1"></p>
+        <p style="color:var(--ink-2)" data-t="a.p2"></p>
+      </div>
+      <div class="trio rv d1">
+        <figure class="ph arco"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/oglinzi-arcade-noaptea.webp" alt="@@a.alt.arcade" data-ta="alt:a.alt.arcade" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="ph"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/masa-lemn-cafea.webp" alt="@@a.alt.masa" data-ta="alt:a.alt.masa" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="ph"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/usa-program.webp" alt="@@a.alt.usa" data-ta="alt:a.alt.usa" loading="lazy" onerror="this.remove()"></figure>
+      </div>
+    </div>
+  </div>
+  <section class="sec negru" aria-labelledby="t-echipa">
+    <div class="wrap duas">
+      <figure class="ph rv" style="aspect-ratio:3/2;margin:0"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/echipa.webp" alt="@@a.echipa.alt" data-ta="alt:a.echipa.alt" loading="lazy" onerror="this.remove()"></figure>
+      <div class="rv d1">
+        <p class="kicker" data-t="a.kicker"></p>
+        <h2 id="t-echipa" style="font-size:clamp(2.2rem,6vw,3.6rem);margin-bottom:14px" data-t="a.echipa"></h2>
+        <p style="color:#D9DAE4"><span data-t="a.echipa.t"></span> <span class="tbc" data-t="tbc"></span></p>
+      </div>
+    </div>
+  </section>
+  <div class="wrap sec">
+    <div class="sec-cab rv"><h2 data-t="a.detalii"></h2></div>
+    <div class="detalhes">
+      <div class="rv"><h3 data-t="a.d1"></h3><p data-t="a.d1.t"></p></div>
+      <div class="rv d1"><h3 data-t="a.d2"></h3><p data-t="a.d2.t"></p></div>
+      <div class="rv d2"><h3 data-t="a.d3"></h3><p data-t="a.d3.t"></p></div>
+      <div class="rv d3"><h3 data-t="a.d4"></h3><p data-t="a.d4.t"></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROGRAMARE ===================== -->
+<section class="pagina" data-pagina="programare" hidden>
+  <header class="cab-pag stuc">
+    <div class="wrap cab-grid">
+      <div><p class="kicker" data-t="b.kicker"></p><h2 tabindex="-1" data-t="b.titlu"></h2></div>
+      <svg class="brasao" id="brasao-prog" viewBox="0 0 240 270" aria-hidden="true"><use href="#brasao"/></svg>
+      <p class="lead" data-t="b.intro"></p>
+    </div>
+  </header>
+  <div class="wrap">
+    <form class="form" id="form" novalidate>
+      <div>
+        <fieldset id="fs1"><legend><span class="n" aria-hidden="true">1</span><span data-t="b.pas1"></span></legend><div class="ops" id="ops-serv"></div></fieldset>
+        <fieldset id="fs2"><legend><span class="n" aria-hidden="true">2</span><span data-t="b.pas2"></span></legend><div class="dias" id="ops-zi"></div><p class="aviso" data-t="b.zi.nota"></p></fieldset>
+        <fieldset id="fs3"><legend><span class="n" aria-hidden="true">3</span><span data-t="b.pas3"></span></legend><div class="horas" id="ops-ora"></div></fieldset>
+        <fieldset id="fs4"><legend><span class="n" aria-hidden="true">4</span><span data-t="b.pas4"></span></legend>
+          <div class="campo"><label for="f-nume" data-t="b.nume"></label><input id="f-nume" name="nume" autocomplete="given-name" required></div>
+          <div class="campo"><label for="f-frizer" data-t="b.frizer"></label><input id="f-frizer" name="frizer" placeholder="@@b.frizer.ph" data-ta="placeholder:b.frizer.ph"></div>
+        </fieldset>
+      </div>
+      <aside class="resumo negru" aria-labelledby="t-msg">
+        <h3 id="t-msg" data-t="b.mesaj"></h3>
+        <p class="msg" id="msg" aria-live="polite"></p>
+        <p class="estado-f" id="estado-f" aria-live="polite"></p>
+        <a class="btn btn-alama" id="enviar" href="https://wa.me/40731422775" target="_blank" rel="noopener" aria-disabled="true"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="b.trimite"></span></a>
+      </aside>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="pagina" data-pagina="contact" hidden>
+  <header class="cab-pag stuc">
+    <div class="wrap cab-grid">
+      <div><p class="kicker" data-t="k.kicker"></p><h2 tabindex="-1" data-t="k.titlu"></h2></div>
+      <svg class="brasao" viewBox="0 0 240 270" aria-hidden="true"><use href="#brasao"/></svg>
+    </div>
+  </header>
+  <div class="wrap sec" style="padding-top:clamp(30px,5vw,50px)">
+    <div class="contacto">
+      <div class="info">
+        <div>
+          <h3 data-t="k.adresa"></h3>
+          <p class="big" data-t="k.adresa.t"></p>
+          <p style="color:var(--ink-2);margin:10px 0 0"><span data-t="v.text"></span> <span data-t="k.parcare"></span></p>
+          <div class="acoes"><a class="btn btn-ink" href="https://www.google.com/maps/dir/?api=1&amp;destination=47.1639042,27.5806526" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-t="k.indicatii"></span></a></div>
+        </div>
+        <div>
+          <h3 data-t="k.telefon"></h3>
+          <p class="big"><a href="tel:+40731422775">+40 731 422 775</a></p>
+          <div class="acoes">
+            <a class="btn btn-ink" href="tel:+40731422775"><svg aria-hidden="true"><use href="#i-tel"/></svg><span data-t="cta.suna"></span></a>
+            <a class="btn btn-linha" data-wa="wa.salut" href="https://wa.me/40731422775" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="cta.wa"></span></a>
+          </div>
+        </div>
+        <div>
+          <h3 data-t="k.program"></h3>
+          <dl class="horario" id="horario"></dl>
+          <p class="estado" data-estado style="background:var(--stuc-2);margin:14px 0 0"></p>
+        </div>
+      </div>
+      <div class="lado">
+        <div class="mapa"><div class="mapa-fb" aria-hidden="true"><div><svg><use href="#i-pin"/></svg>Costache Negruzzi 1</div></div><iframe title="@@k.harta" data-ta="title:k.harta" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=47.1639042,27.5806526&amp;z=17&amp;output=embed"></iframe></div>
+        <figure style="margin:0"><div class="ph" style="aspect-ratio:4/3"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/fatada-zi.webp" alt="@@v.text" data-ta="alt:v.text" loading="lazy" onerror="this.remove()"></div></figure>
+        <figure style="margin:0"><div class="ph" style="aspect-ratio:540/400"><svg class="fb" aria-hidden="true"><use href="#fb"/></svg><img src="media/video-fatada-noaptea-poster.webp" alt="" loading="lazy" onerror="this.remove()"><video class="vid-auto" muted loop playsinline preload="none" poster="media/video-fatada-noaptea-poster.webp" aria-hidden="true" tabindex="-1" style="position:absolute;inset:0"><source src="media/video-fatada-noaptea.webm" type="video/webm"><source src="media/video-fatada-noaptea.mp4" type="video/mp4"></video></div><figcaption class="cap-f" data-t="k.noapte"></figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape negru">
+  <div class="wrap">
+    <div class="rodape-grid">
+      <div>
+        <p class="marca"><svg viewBox="0 0 240 270" aria-hidden="true"><use href="#brasao"/></svg><span>Sir John's<small>Barbershop · Iași</small></span></p>
+        <p data-t="f.tag"></p>
+        <p>Str. Costache Negruzzi 1, bl. H1, sc. A, parter, 700126 Iași<br><a href="tel:+40731422775">+40 731 422 775</a></p>
+      </div>
+      <div>
+        <h3 data-t="nav.menu"></h3>
+        <ul>
+          <li><a href="#/servicii" data-t="nav.servicii"></a></li>
+          <li><a href="#/tunsori" data-t="nav.tunsori"></a></li>
+          <li><a href="#/salonul" data-t="nav.salonul"></a></li>
+          <li><a href="#/programare" data-t="nav.programare"></a></li>
+          <li><a href="#/contact" data-t="nav.contact"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-t="f.legal"></h3>
+        <ul>
+          <li><a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener" data-t="f.anpc"></a></li>
+          <li><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" data-t="f.odr"></a></li>
+          <li data-t="f.firma"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fim"><span>© <span id="ano">2026</span> Sir John's Barbershop</span><span data-t="f.facut"></span></div>
+  </div>
+</footer>
+
+<div class="cta-fixo">
+  <a class="btn btn-linha" href="tel:+40731422775"><svg aria-hidden="true"><use href="#i-tel"/></svg><span data-t="cta.suna"></span></a>
+  <a class="btn btn-alama" data-wa="wa.salut" href="https://wa.me/40731422775" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="cta.wa"></span></a>
+</div>
+
+<noscript><p style="padding:16px;background:#16171C;color:#fff;margin:0" data-t="nojs"></p></noscript>
+
+<script>
+/*__T__*/
+(function(){
+  var html=document.documentElement, WA='40731422775';
+  var reduz=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var LI={ro:0,en:1,pt:2};
+  var L=function(){var l=html.dataset.lang;return LI[l]!==undefined?l:'ro'};
+  var t=function(k){var v=T[k];return v?(v[LI[L()]]||v[0]):k};
+  var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
+  var waURL=function(txt){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(txt)};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var loc=function(){return L()==='en'?'en-GB':L()==='pt'?'pt-PT':'ro-RO'};
+  var num=function(x){return L()==='en'?String(x):String(x).replace('.',',')};
+
+  /* ---------- língua */
+  function aplicarLingua(){
+    $$('[data-t]').forEach(function(e){var v=T[e.dataset.t];if(v)e.innerHTML=v[LI[L()]]||v[0]});
+    $$('[data-ta]').forEach(function(e){e.dataset.ta.split('|').forEach(function(p){var a=p.split(':');e.setAttribute(a[0],t(a[1]))})});
+    $$('[data-wa]').forEach(function(a){a.href=waURL(t(a.dataset.wa))});
+    $$('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===L()?'true':'false')});
+    renderServ();renderZile();renderOre();renderHorario();estado();atualizar();inspAtual();titulo();
+  }
+  function seteaza(l){html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;try{localStorage.setItem('sj.lang',l)}catch(e){}aplicarLingua()}
+  $$('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+
+  /* ---------- nav + menu */
+  var nav=$('#nav'), burger=$('.burger'), meniu=$('#meniu');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>10)},{passive:true});
+  function fechaMenu(){meniu.classList.remove('aberto');burger.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+  burger.addEventListener('click',function(){var a=burger.getAttribute('aria-expanded')!=='true';burger.setAttribute('aria-expanded',a);meniu.classList.toggle('aberto',a);document.body.style.overflow=a?'hidden':'';if(a)$('a',meniu).focus()});
+  $$('a',meniu).forEach(function(a){a.addEventListener('click',fechaMenu)});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&meniu.classList.contains('aberto')){fechaMenu();burger.focus()}});
+
+  /* ---------- brasão: as peças de um <use> não se animam, por isso cada brasão recebe a sua cópia */
+  var simbolo=$('#brasao');
+  function montaBrasao(svg){var u=$('use',svg);if(!u)return svg;svg.removeChild(u);[].slice.call(simbolo.childNodes).forEach(function(n){svg.appendChild(n.cloneNode(true))});return svg}
+  $$('svg.brasao').forEach(montaBrasao);
+  function acendeBrasao(svg,n,atraso){var pcs=$$('.pc',svg);if(n===undefined)n=pcs.length;pcs.forEach(function(p,i){if(i<n){if(reduz||!atraso)p.classList.add('on');else setTimeout(function(){p.classList.add('on')},atraso+i*140)}else p.classList.remove('on')})}
+
+  /* ---------- monóculo: lente que segue o dedo/rato e amplia o que está por baixo */
+  function Monoclu(arc,opt){
+    var self=this, inn=$('.arc-in',arc), lens=document.createElement('div'), cv=document.createElement('canvas'), z=document.createElement('span');
+    lens.className='monoclu';lens.setAttribute('aria-hidden','true');z.className='z';lens.appendChild(cv);lens.appendChild(z);arc.appendChild(lens);
+    var lant=document.createElementNS('http://www.w3.org/2000/svg','svg');lant.setAttribute('class','lant');lant.setAttribute('aria-hidden','true');
+    var path=document.createElementNS(lant.namespaceURI,'path'), pino=document.createElementNS(lant.namespaceURI,'circle');pino.setAttribute('r','4');lant.appendChild(path);lant.appendChild(pino);arc.appendChild(lant);
+    var ctx=cv.getContext('2d'), W=0,H=0,D=0,dpr=Math.min(2,window.devicePixelRatio||1);
+    var pos={x:0,y:0}, alvo={x:0,y:0}, manual=0, arrasta=false, ativo=false, t0=performance.now(), raf=0;
+    this.zoom=+arc.dataset.zoom||2;
+    function medir(){var r=arc.getBoundingClientRect();W=r.width;H=r.height;D=Math.round(Math.max(96,Math.min(170,W*.36)));lens.style.setProperty('--d',D+'px');cv.width=D*dpr;cv.height=D*dpr;if(!pos.x){pos.x=alvo.x=W*.5;pos.y=alvo.y=H*.42}z.textContent='×'+num(self.zoom.toFixed(1))}
+    function fonte(){var v=$('video',inn);if(v&&v.readyState>=2&&!v.paused)return{el:v,w:v.videoWidth,h:v.videoHeight};var im=$('img',inn);if(im&&im.complete&&im.naturalWidth)return{el:im,w:im.naturalWidth,h:im.naturalHeight};return null}
+    function desenha(){
+      var f=fonte();ctx.fillStyle='#2a2c36';ctx.fillRect(0,0,cv.width,cv.height);if(!f)return;
+      var s=Math.max(W/f.w,H/f.h), ox=(W-f.w*s)/2, oy=(H-f.h*s)/2, lado=D/self.zoom, x0=pos.x-lado/2, y0=pos.y-lado/2;
+      try{ctx.drawImage(f.el,(x0-ox)/s,(y0-oy)/s,lado/s,lado/s,0,0,cv.width,cv.height)}catch(e){}
+    }
+    function passo(now){
+      if(!ativo){raf=0;return}
+      if(!arrasta&&now>manual&&!reduz){var tt=(now-t0)/1000;alvo.x=W*(.5+.27*Math.sin(tt*.45));alvo.y=H*(.46+.26*Math.sin(tt*.31+1.3))}
+      pos.x+=(alvo.x-pos.x)*(arrasta?.5:.08);pos.y+=(alvo.y-pos.y)*(arrasta?.5:.08);
+      lens.style.transform='translate3d('+pos.x+'px,'+pos.y+'px,0)';
+      var ax=W*.86, ay=-8, mx=(ax+pos.x)/2, my=Math.max(ay,pos.y-D/2)+60, ang=Math.atan2(ay-pos.y,ax-pos.x), ex=pos.x+Math.cos(ang)*(D/2+8), ey=pos.y+Math.sin(ang)*(D/2+8);
+      path.setAttribute('d','M'+ax+' '+ay+' Q'+mx+' '+my+' '+ex+' '+ey);pino.setAttribute('cx',ax);pino.setAttribute('cy',ay);
+      desenha();raf=requestAnimationFrame(passo);
+    }
+    function ponto(e){var r=arc.getBoundingClientRect();return{x:Math.max(0,Math.min(W,e.clientX-r.left)),y:Math.max(0,Math.min(H,e.clientY-r.top))}}
+    arc.addEventListener('pointermove',function(e){if(e.pointerType==='mouse'||arrasta){var p=ponto(e);alvo.x=p.x;alvo.y=p.y;manual=performance.now()+2600;self.ligar()}});
+    arc.addEventListener('pointerdown',function(e){var p=ponto(e);alvo.x=p.x;alvo.y=p.y;manual=performance.now()+(e.pointerType==='mouse'?2600:4500);if(e.target.closest('.monoclu')){arrasta=true;try{lens.setPointerCapture(e.pointerId)}catch(_){}}self.ligar()});
+    lens.addEventListener('pointermove',function(e){if(arrasta){var p=ponto(e);alvo.x=p.x;alvo.y=p.y;manual=performance.now()+4500}});
+    var solta=function(){arrasta=false};lens.addEventListener('pointerup',solta);lens.addEventListener('pointercancel',solta);
+    this.ligar=function(){if(ativo&&raf)return;ativo=true;medir();lens.classList.add('vivo');if(!raf)raf=requestAnimationFrame(passo)};
+    this.desligar=function(){ativo=false};
+    this.redesenha=function(){medir();desenha()};
+    addEventListener('resize',function(){pos.x=0;medir()});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!arc.closest('[hidden]'))self.ligar();else self.desligar()})},{threshold:.15}).observe(arc)}else self.ligar();
+  }
+  var monoErou=new Monoclu($('#arcada-erou'));
+  new Monoclu($('#arcada-fade'));
+  var monoInsp=new Monoclu($('#arcada-insp'));
+
+  /* ---------- vídeos: só com movimento permitido; senão fica a imagem */
+  function tocaVideo(v){if(reduz||!v)return;v.preload='auto';v.load();var p=v.play();if(p&&p.catch)p.catch(function(){});v.addEventListener('playing',function(){v.classList.add('pronto')},{once:true})}
+  var vErou=$('#arcada-erou video');
+  if(!reduz){vErou.style.opacity='';vErou.addEventListener('playing',function(){vErou.classList.add('pronto')});}
+  var vids=$$('video.vid-auto');
+  if(!reduz&&'IntersectionObserver' in window){var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.dataset.ok){v.dataset.ok=1;v.preload='auto';v.load()}var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:.25});vids.forEach(function(v){vio.observe(v)})}
+
+  /* ---------- revelação */
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08}):null;
+  $$('.rv').forEach(function(el){io?io.observe(el):el.classList.add('vis')});
+
+  /* ---------- horário (porta da casa: L–V 10–20, S 9–15, D fechado) */
+  var ORAR={1:[10,20],2:[10,20],3:[10,20],4:[10,20],5:[10,20],6:[9,15],0:null};
+  function acum(){try{var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Bucharest',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value});return{z:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday],h:+o.hour%24,m:+o.minute}}catch(e){var d=new Date();return{z:d.getDay(),h:d.getHours(),m:d.getMinutes()}}}
+  var hh=function(h){return ('0'+h).slice(-2)+':00'};
+  function estado(){
+    var a=acum(), r=ORAR[a.z], agora=a.h+a.m/60, txt, ab=false;
+    if(r&&agora>=r[0]&&agora<r[1]){ab=true;txt=t('st.deschis')+hh(r[1])}
+    else{for(var k=0;k<8;k++){var zz=(a.z+k)%7,rr=ORAR[zz];if(rr&&(k>0||agora<rr[0])){txt=t('st.inchis')+(k===0?t('st.azi'):k===1?t('st.maine'):t('zi.'+zz).toLowerCase()+t('st.zi'))+hh(rr[0]);break}}}
+    $$('[data-estado]').forEach(function(e){e.textContent=txt;e.classList.toggle('aberto',ab)});
+  }
+  function renderHorario(){
+    var a=acum(),h='',ordem=[1,2,3,4,5,6,0];
+    ordem.forEach(function(z){var r=ORAR[z];h+='<div'+(z===a.z?' class="hoje"':'')+'><dt>'+esc(t('zi.'+z))+'</dt><dd>'+(r?hh(r[0])+' – '+hh(r[1]):esc(t('k.inchis')))+'</dd></div>'});
+    $('#horario').innerHTML=h;
+  }
+
+  /* ---------- marcação */
+  var SERV=['x.tuns','x.tunsbarba','x.barba','x.spalat','x.fata'];
+  var sel={serv:null,zi:null,ora:null};
+  var zile=[];(function(){var d=new Date();d.setHours(0,0,0,0);for(var i=0;i<14;i++){zile.push(new Date(d));d.setDate(d.getDate()+1)}})();
+  var iso=function(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)};
+  function fmt(d,o){try{return d.toLocaleDateString(loc(),o)}catch(e){return iso(d)}}
+  function oreZi(k){var d=zile.filter(function(x){return iso(x)===k})[0];if(!d)return[];var r=ORAR[d.getDay()];if(!r)return[];var out=[],a=acum(),hoje=iso(zile[0])===k;for(var h=r[0];h<r[1];h++){if(hoje&&h<=a.h)continue;out.push(hh(h))}return out}
+  function renderServ(){var h='';SERV.forEach(function(k){h+='<span class="op"><input type="radio" name="serv" id="s-'+k+'" value="'+k+'"'+(sel.serv===k?' checked':'')+'><label for="s-'+k+'">'+esc(t(k))+'</label></span>'});$('#ops-serv').innerHTML=h}
+  function renderZile(){var h='';zile.forEach(function(d){var k=iso(d),fechado=!ORAR[d.getDay()]||!oreZi(k).length;h+='<span class="op"><input type="radio" name="zi" id="z-'+k+'" value="'+k+'"'+(sel.zi===k?' checked':'')+(fechado?' disabled':'')+'><label for="z-'+k+'"><small>'+esc(fmt(d,{weekday:'short'}))+'</small><b>'+d.getDate()+'</b><small>'+esc(fechado&&!ORAR[d.getDay()]?t('b.inchis'):fmt(d,{month:'short'}))+'</small></label></span>'});$('#ops-zi').innerHTML=h}
+  function renderOre(){
+    var c=$('#ops-ora');if(!sel.zi){c.innerHTML='<p class="aviso" style="grid-column:1/-1;margin:0">'+esc(t('b.ora.gol'))+'</p>';return}
+    var o=oreZi(sel.zi);if(!o.length){c.innerHTML='<p class="aviso" style="grid-column:1/-1;margin:0">'+esc(t('b.ora.nimic'))+'</p>';return}
+    if(o.indexOf(sel.ora)<0)sel.ora=null;
+    c.innerHTML=o.map(function(x){var id='o-'+x.replace(':','');return '<span class="op"><input type="radio" name="ora" id="'+id+'" value="'+x+'"'+(sel.ora===x?' checked':'')+'><label for="'+id+'">'+x+'</label></span>'}).join('');
+  }
+  var nume=$('#f-nume'), frizer=$('#f-frizer'), msg=$('#msg'), enviar=$('#enviar'), estF=$('#estado-f'), bProg=$('#brasao-prog');
+  function mensagem(){
+    var z=sel.zi?zile.filter(function(d){return iso(d)===sel.zi})[0]:null;
+    var l=[t('b.m.salut'),'',
+      '• '+t('b.m.serv')+': '+(sel.serv?t(sel.serv):t('b.m.lipsa')),
+      '• '+t('b.m.zi')+': '+(z?fmt(z,{weekday:'long',day:'numeric',month:'long'}):t('b.m.lipsa')),
+      '• '+t('b.m.ora')+': '+(sel.ora||t('b.m.lipsa')),
+      '• '+t('b.m.nume')+': '+(nume.value.trim()||t('b.m.lipsa'))];
+    if(frizer.value.trim())l.push('• '+t('b.m.frizer')+': '+frizer.value.trim());
+    l.push('',t('b.m.final'));return l.join('\n');
+  }
+  var PECAS=[0,2,4,5,7];
+  function atualizar(){
+    var ok=[!!sel.serv,!!sel.zi,!!sel.ora,!!nume.value.trim()], n=ok.filter(Boolean).length;
+    ['#fs1','#fs2','#fs3','#fs4'].forEach(function(s,i){$(s).classList.toggle('feito',ok[i])});
+    if(bProg)acendeBrasao(bProg,PECAS[n]);
+    var txt=mensagem();msg.textContent=txt;enviar.href=waURL(txt);
+    var falta=['b.lipsa.serv','b.lipsa.zi','b.lipsa.ora','b.lipsa.nume'].filter(function(k,i){return !ok[i]});
+    if(falta.length){enviar.setAttribute('aria-disabled','true');estF.className='estado-f';estF.textContent=t('b.lipsa')+falta.map(t).join(', ')+'.'}
+    else{enviar.removeAttribute('aria-disabled');estF.className='estado-f ok';estF.textContent=t('b.gata')}
+    enviar.dataset.ok=falta.length?'':'1';
+  }
+  $('#form').addEventListener('change',function(e){var x=e.target;if(x.name==='serv')sel.serv=x.value;if(x.name==='zi'){sel.zi=x.value;renderOre()}if(x.name==='ora')sel.ora=x.value;atualizar()});
+  $('#form').addEventListener('input',atualizar);
+  $('#form').addEventListener('submit',function(e){e.preventDefault()});
+  enviar.addEventListener('click',function(e){if(enviar.dataset.ok)return;e.preventDefault();var alvo=!sel.serv?'#ops-serv input':!sel.zi?'#ops-zi input:not(:disabled)':!sel.ora?'#ops-ora input':'#f-nume';var el=$(alvo);if(el){el.focus();el.closest('fieldset').scrollIntoView({behavior:reduz?'auto':'smooth',block:'center'})}});
+  $$('[data-alege]').forEach(function(a){a.addEventListener('click',function(){sel.serv=a.dataset.alege;renderServ();atualizar()})});
+
+  /* ---------- inspector de cortes */
+  var inspK='c.fade';
+  function inspAtual(){$('#insp-leg').textContent=t(inspK);$('#arcada-insp').setAttribute('aria-label',t(inspK));$('#insp-wa').href=waURL(t('t.wa')+t(inspK)+t('t.wa2'))}
+  $('#miniaturas').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+    $$('#miniaturas button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    var im=$('#insp-img');im.style.visibility='';im.src='media/'+b.dataset.src+'.webp';monoInsp.zoom=+b.dataset.z;inspK=b.dataset.k;$('#insp-z').textContent='×'+num((+b.dataset.z).toFixed(1));inspAtual();im.onload=function(){monoInsp.redesenha()};
+  });
+
+  /* ---------- router #/ */
+  var PAG={acasa:'meta.title',servicii:'nav.servicii',tunsori:'nav.tunsori',salonul:'nav.salonul',programare:'b.kicker',contact:'nav.contact'};
+  var atual='acasa', brasaoFeito=false;
+  function titulo(){document.title=atual==='acasa'?t('meta.title'):t(PAG[atual])+" · Sir John's Barbershop · Iași"}
+  function ruta(prima){
+    var h=location.hash;if(h&&h.indexOf('#/')!==0&&!prima)return;
+    var id=(h.indexOf('#/')===0?h.slice(2):'')||'acasa';if(!PAG[id])id='acasa';
+    atual=id;
+    $$('.pagina').forEach(function(p){p.hidden=p.dataset.pagina!==id});
+    $$('.nav-links a,.meniu li a').forEach(function(a){var r=a.getAttribute('href').replace(/^#\/?/,'')||'acasa';if(r===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    titulo();
+    if(!prima){window.scrollTo(0,0);var h2=$('.pagina[data-pagina="'+id+'"] h2[tabindex]');if(h2)h2.focus({preventScroll:true})}
+    var pg=$('.pagina[data-pagina="'+id+'"]'), br=$('.cab-pag .brasao',pg);
+    if(br&&id!=='programare'){acendeBrasao(br,0);acendeBrasao(br,undefined,200)}
+    if(id==='programare')atualizar();
+    if(id==='acasa'&&!brasaoFeito){brasaoFeito=true;acendeBrasao($('#brasao-erou'),undefined,250);setTimeout(function(){tocaVideo(vErou)},reduz?0:900)}
+    if(id==='contact')renderHorario();
+    setTimeout(function(){if(id==='acasa')monoErou.ligar();if(id==='tunsori')monoInsp.ligar()},60);
+  }
+  addEventListener('hashchange',function(){ruta(false)});
+
+  var ano=$('#ano');if(ano)ano.textContent=new Date().getFullYear();
+  if(L()!=='ro'||html.dataset.pt)aplicarLingua();else{renderServ();renderZile();renderOre();renderHorario();estado();atualizar();inspAtual();$$('[data-wa]').forEach(function(a){a.href=waURL(t(a.dataset.wa))})}
+  setInterval(estado,60000);
+  ruta(true);
+})();
+</script>
+</body>
+</html>
