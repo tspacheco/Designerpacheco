@@ -533,6 +533,13 @@ dialog.diag::backdrop{background:rgba(0,0,0,.7)}
 .diag-palco{width:100%;max-width:44rem;margin-inline:auto}
 .diag-palco > *{animation:ps-sobe .45s var(--sair) both}
 .diag-meta{font:700 .75rem/1.3 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--laranja)}
+.diag-quem{display:flex;align-items:center;gap:.9rem;margin-bottom:1.6rem}
+.diag-quem img{flex:none;width:4.25rem;height:4.25rem;border-radius:50%;object-fit:cover;background:var(--carvao-2);
+  box-shadow:0 0 0 2px var(--carvao),0 0 0 4px var(--laranja)}
+.diag-quem b{display:block;font:600 1.0625rem/1.25 var(--texto);color:var(--osso)}
+.diag-quem small{display:block;margin-top:.15rem;font:700 .6875rem/1.3 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--osso-2)}
+.diag-linha{display:flex;align-items:center;gap:.65rem}
+.diag-linha img{flex:none;width:2rem;height:2rem;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px var(--laranja)}
 .diag-q{margin-top:.9rem;font:400 clamp(1.7rem,6.4vw,2.9rem)/1.02 var(--display);text-transform:uppercase;text-wrap:balance}
 .diag-txt{margin-top:1rem;max-width:40ch;color:var(--osso-2);font-size:1.0625rem}
 .diag-campo{margin-top:2rem}
@@ -1060,7 +1067,7 @@ dialog.diag.fim .diag-ficha{display:block}
     if (passo >= N) return fim();
     var q = D.perguntas[passo];
     if (!vistas[passo]) { vistas[passo] = true; var nn = (passo + 1 < 10 ? '0' : '') + (passo + 1); gc({ path: 'diagnostico/pergunta-' + nn + '-' + q.id, title: 'diagnóstico: pergunta ' + nn + ' (' + q.id + ')', event: true }); }
-    palco.appendChild(el('p', 'diag-meta', D.pergunta + ' ' + (passo + 1 < 10 ? '0' : '') + (passo + 1) + ' / ' + (N < 10 ? '0' : '') + N));
+    palco.appendChild(linha(D.pergunta + ' ' + (passo + 1 < 10 ? '0' : '') + (passo + 1) + ' / ' + (N < 10 ? '0' : '') + N));
     var h = el('h3', 'diag-q', txt(q.msg)); h.id = 'diag-q'; palco.appendChild(h);
     var acoes = el('div', 'diag-acoes'), seg = botao('primario', q.tipo === 'opcoes' ? D.seguinte : D.seguinte, true);
     seg.id = 'diag-seg';
@@ -1127,7 +1134,22 @@ dialog.diag.fim .diag-ficha{display:block}
     acoes.appendChild(seg);
     palco.appendChild(acoes);
   }
+  // quem faz o diagnóstico: a foto do Tomás no 1.º ecrã (grande, com nome) e ao lado de cada pergunta (pequena)
+  function foto(alt) { var im = el('img'); im.src = D.foto; im.alt = alt || ''; im.width = 68; im.height = 68; im.decoding = 'async'; return im; }
+  function quem() {
+    var q = el('div', 'diag-quem'), t = el('span');
+    if (D.foto) q.appendChild(foto(D.quem_alt));
+    t.appendChild(el('b', null, D.quem_nome)); t.appendChild(el('small', null, D.quem_papel)); q.appendChild(t);
+    return q;
+  }
+  function linha(texto) {
+    var p = el('p', 'diag-meta diag-linha');
+    if (D.foto) { var im = foto(''); im.setAttribute('aria-hidden', 'true'); p.appendChild(im); }
+    p.appendChild(el('span', null, texto));
+    return p;
+  }
   function intro() {
+    palco.appendChild(quem());
     palco.appendChild(el('p', 'diag-meta', D.meta));
     var h = el('h3', 'diag-q', D.intro_t); h.id = 'diag-q'; palco.appendChild(h);
     palco.appendChild(el('p', 'diag-txt', D.abertura[0]));
@@ -1138,7 +1160,7 @@ dialog.diag.fim .diag-ficha{display:block}
   }
   function fim() {
     gc({ path: 'diagnostico/fim', title: 'diagnóstico: fim', event: true });
-    palco.appendChild(el('p', 'diag-meta', D.meta));
+    palco.appendChild(linha(D.quem_nome));
     var h = el('h3', 'diag-q', txt(D.fim[0])); h.id = 'diag-q'; palco.appendChild(h);
     palco.appendChild(el('p', 'diag-txt', txt(D.fim[1])));
     var linhas = D.perguntas.map(function (q) { return '• ' + q.wa + ': ' + valor(r[q.id]); });

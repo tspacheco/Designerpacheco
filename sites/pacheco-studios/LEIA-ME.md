@@ -166,6 +166,9 @@ cabeçalho), para não competirem no Google com os sites dos próprios negócios
   (`pachecost.com/`, `ro.pachecost.com/`). As leituras do QR contam à parte, como o evento `qr/cartao`, e os
   cliques para o WhatsApp e o telefone como `ir/whatsapp` e `ir/telefone`. Cada esquema aberto conta como
   `esquema/<id>` (`esquema/programari`, por exemplo): dá para ver quais automações interessam mais.
+- **Diagnóstico com cara (06/10):** a foto do Tomás (`media/tomas.webp`, 360 px, recortada da selfie que ele enviou) vai
+  embutida no diagnóstico: grande no 1.º ecrã com nome e papel, pequena ao lado de cada pergunta e no fim. Textos em
+  `diagnostico.quem_*` e `abertura` nos três JSON (a abertura fala na 1.ª pessoa e diz «sem compromisso»).
 - **Link direto ao diagnóstico (anúncios):** `pachecost.com/#diagnostico` ou qualquer link com `utm_content=diag-…`
   abre o diagnóstico logo ao chegar, sem a intro. Fechar volta à página inicial. Os links com `utm_content=web-…` não mudam.
 - **Medir o diagnóstico** (painel em https://pachecost.goatcounter.com; eventos em «diagnostico/…»): `aberto` (tocou

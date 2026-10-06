@@ -622,7 +622,13 @@ def diagnostico(c, url_priv):
     linhas = "".join(f'<div data-id="{e(q["id"])}"><dt>{e(q["wa"])}</dt><dd>—</dd></div>' for q in g["perguntas"])
     dados = json.dumps({k: g[k] for k in ("abertura", "perguntas", "continuar", "obrigatorio", "escolhe", "fim", "enviar",
                                           "recomecar", "wa_intro", "comecar", "anterior", "seguinte", "pergunta", "meta",
-                                          "intro_t")}, ensure_ascii=False).replace("</", "<\\/")
+                                          "intro_t", "quem_nome", "quem_papel", "quem_alt")}, ensure_ascii=False)
+    # a foto do Tomás (media/tomas.webp, 360 px) vai embutida: quem faz o diagnóstico tem cara desde o primeiro ecrã
+    foto = os.path.join(AQUI, "media", "tomas.webp")
+    if os.path.exists(foto):
+        d_ = json.loads(dados); d_["foto"] = "data:image/webp;base64," + base64.b64encode(open(foto, "rb").read()).decode()
+        dados = json.dumps(d_, ensure_ascii=False)
+    dados = dados.replace("</", "<\\/")
     return f"""<dialog class="diag" id="diagnostico" aria-labelledby="diag-t">
   <div class="diag-topo">
     <p class="diag-marca">{LOGO}<span>{e(g["titulo"])}</span></p>

@@ -352,6 +352,11 @@ const fs = require('fs');
     await p.evaluate(() => { window.__gc = []; window.goatcounter = { count: o => window.__gc.push(o.path) }; });
     await p.click('.heroi [data-diagnostico]');
     const g = JSON.parse(fs.readFileSync(path.join(__dirname, 'conteudo', k + '.json'), 'utf8')).diagnostico;
+    // quem faz o diagnóstico: a foto do Tomás carregada, com nome e papel na língua da página
+    const cara = await p.evaluate(() => { const i = document.querySelector('.diag-quem img');
+      return { foto: !!i && i.complete && i.naturalWidth > 100, alt: i && i.alt, nome: (document.querySelector('.diag-quem b') || {}).textContent,
+        papel: (document.querySelector('.diag-quem small') || {}).textContent }; });
+    if (!cara.foto || cara.nome !== g.quem_nome || cara.papel !== g.quem_papel || cara.alt !== g.quem_alt) mal(`${k}: diagnóstico sem a cara do Tomás: ${JSON.stringify(cara)}`);
     await p.click('#diag-comecar');
     const respostas = [];
     for (const q of g.perguntas) {
@@ -378,6 +383,8 @@ const fs = require('fs');
       n: document.getElementById('diag-n').textContent, aberto: document.getElementById('diagnostico').open }));
     const falta = respostas.filter(t => !fim.href.includes(t));
     await p.evaluate(() => { const a = document.getElementById('diag-enviar'); a.addEventListener('click', e => e.preventDefault()); a.click(); });
+    const avatar = await p.evaluate(() => !!document.querySelector('.diag-linha img'));
+    if (!avatar) mal(`${k}: o fim do diagnóstico devia ter a foto do Tomás`);
     const ev = await p.evaluate(() => window.__gc);
     const esperado = ['diagnostico/aberto', 'diagnostico/comecou', ...g.perguntas.map((q, i) => `diagnostico/pergunta-${String(i + 1).padStart(2, '0')}-${q.id}`), 'diagnostico/fim', 'diagnostico/enviado'];
     if (JSON.stringify(ev) !== JSON.stringify(esperado)) mal(`${k}, eventos do diagnóstico: ${ev.join(' ')}`);
@@ -679,19 +686,36 @@ const fs = require('fs');
   }
   }
   // ligação direta dos anúncios, na 1.ª visita: sem intro, diagnóstico aberto e utilizável; fechar limpa o #diagnostico
-  for (const [lg, sufixo] of [['pt', '#diagnostico'], ['ro', '?utm_source=meta&utm_content=diag-teste']]) {
+  // os links que estão nos anúncios da Meta (campanhas de outubro) e o #diagnostico do cartão
+  const anuncio = (camp, cont) => `?utm_source=meta&utm_medium=paid&utm_campaign=${camp}&utm_content=${cont}`;
+  for (const [lg, sufixo] of [['pt', '#diagnostico'], ['pt', anuncio('ps-pt-out26', 'diag-video-b')], ['en', anuncio('ps-en-out26', 'diag-video-b')],
+                              ['ro', anuncio('ps-ro-out26', 'diag-video-b')], ['ro', '#diagnostico']]) {
     const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    await c.addInitScript(() => { window.__gc = []; const stub = { count: o => window.__gc.push(o.path) };
+      Object.defineProperty(window, 'goatcounter', { get: () => stub, set: () => {}, configurable: true }); });
     const q = await c.newPage();
     await q.goto(LINGUAS[lg].url.replace(/\/$/, '') + '/' + sufixo);
     await q.waitForTimeout(300);
-    const r = await q.evaluate(() => ({ vai: document.documentElement.classList.contains('intro-vai'),
-      aberto: document.getElementById('diagnostico').open, comecar: !!document.getElementById('diag-comecar') }));
-    let ok = !r.vai && r.aberto && r.comecar;
-    if (ok) { await q.click('#diag-comecar'); ok = await q.evaluate(() => !document.getElementById('diag-comecar')); }
+    const r = await q.evaluate(() => ({ vai: document.documentElement.classList.contains('intro-vai'), lang: document.documentElement.lang,
+      aberto: document.getElementById('diagnostico').open, comecar: !!document.getElementById('diag-comecar'),
+      foto: !!document.querySelector('.diag-quem img'), gc: window.__gc.slice() }));
+    let ok = !r.vai && r.aberto && r.comecar && r.foto && r.lang === LINGUAS[lg].lang && r.gc.includes('diagnostico/aberto');
+    if (ok) { await q.click('#diag-comecar'); ok = await q.evaluate(() => window.__gc.includes('diagnostico/comecou')); }
+    if (ok) ok = await q.evaluate(() => !document.getElementById('diag-comecar'));
     if (ok) { await q.keyboard.press('Escape'); await q.waitForTimeout(100);
       ok = await q.evaluate(() => !document.getElementById('diagnostico').open && location.hash === ''); }
     if (!ok) mal(`ligação direta ao diagnóstico (${lg} ${sufixo}): ${JSON.stringify(r)}`);
-    else bem(`${lg}: ${sufixo} abre o diagnóstico na 1.ª visita, sem intro; «Começar» funciona e fechar limpa o endereço`);
+    else bem(`${lg}: ${sufixo} abre o diagnóstico com a foto, conta «aberto» e «começou» no GoatCounter; fechar limpa o endereço`);
+    await c.close();
+  }
+
+  { // os anúncios de web design (utm_content=web-…) continuam a abrir o site, sem o diagnóstico
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    const q = await c.newPage();
+    await q.goto(RO + '/?utm_source=meta&utm_medium=paid-video&utm_campaign=ps-prospecao-out26-ro&utm_content=web-bolta');
+    await q.waitForTimeout(300);
+    const aberto = await q.evaluate(() => document.getElementById('diagnostico').open);
+    if (aberto) mal('anúncio web-bolta abriu o diagnóstico'); else bem('ro: o anúncio web-bolta abre o site, sem o diagnóstico');
     await c.close();
   }
 
