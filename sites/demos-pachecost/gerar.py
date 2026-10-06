@@ -63,7 +63,14 @@ for curto, pasta in DEMOS:
     redirects.append(f"/{curto} /{curto}/ 301")
 
 with open(os.path.join(OUT, "_redirects"), "w") as f:
-    f.write("\n".join(redirects) + "\n/ https://pachecost.com 302\n")
+    # nada de redirecionar a raiz para pachecost.com: se este zip for parar ao site
+    # principal por engano, isso fazia um ciclo infinito (aconteceu a 06/10)
+    f.write("\n".join(redirects) + "\n")
+with open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as f:
+    f.write('<!doctype html><html lang="pt-PT"><head><meta charset="utf-8">' + NOINDEX +
+            '<meta name="viewport" content="width=device-width,initial-scale=1"><title>Pacheco Studios · demos</title>'
+            '<style>body{font:18px/1.5 system-ui,sans-serif;margin:0;min-height:100vh;display:grid;place-items:center;background:#111;color:#eee}'
+            'a{color:#ff7a1a}</style></head><body><p>Demos da <a href="https://pachecost.com">Pacheco Studios</a>.</p></body></html>\n')
 with open(os.path.join(OUT, "netlify.toml"), "w") as f:
     f.write('[[headers]]\n  for = "/*"\n  [headers.values]\n    X-Robots-Tag = "noindex, nofollow"\n')
 with open(os.path.join(OUT, "robots.txt"), "w") as f:
