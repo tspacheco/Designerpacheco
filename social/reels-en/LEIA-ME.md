@@ -2,7 +2,7 @@
 
 Dois reels orgânicos em inglês para @pachecostudiospt, na linguagem do vídeo B. 30 s, 9:16, com som (batida sintetizada, sem direitos de terceiros, por isso também servem como anúncio).
 
-- `reel-en-1-lost-customers-9x16.mp4`: confirmações contra faltas, avaliações Google, receção no WhatsApp.
+- `reel-en-1-lost-customers-9x16.mp4`: «3 jobs big companies already hand to AI»: avaliações Google, faltas, clientes que deixaram de vir (a rececionista do WhatsApp fica de fora porque já está no vídeo B).
 - `reel-en-2-evenings-back-9x16.mp4`: recibos para o contabilista, relatório da manhã, publicações a partir das fotos.
 - `*-capa.jpg`: capa para escolher no Instagram.
 
@@ -14,20 +14,20 @@ Os sistemas e as regras vêm da secção de automações de pachecost.com/en. No
 ## Legendas (copiar para o Instagram)
 
 ### Reel 1
-Empty chairs, missing reviews, missed calls. Here’s the fix for each. 👇
+Airlines, booking sites and big brands handed these jobs to AI years ago. Your business can do the same. 👇
 
-3 AI systems that stop a local business losing customers:
-1️⃣ A booking → two buttons the day before → fewer empty chairs
-2️⃣ A visit → "How was it?" → happy customers go to Google, problems come to you first
-3️⃣ Missed call → a WhatsApp reply in 5 seconds
+1️⃣ Reviews: after the visit, one short "How was it?". Happy customers get one tap to your Google page. Problems come to you first, in private.
+2️⃣ No-shows: the day before, a message with two buttons, Confirm or Change. Freed-up slots go to your waiting list.
+3️⃣ Customers who stopped coming: after 60 days, a personal message in your name. Only with their consent, and STOP means stop.
 
-You approve every text. It always says it's an automated assistant. Your data stays yours.
+You approve every message. It always says it's automated. Your data stays yours.
 
 Which one does your business need first? Comment 1, 2 or 3 👇
-Free diagnosis: pachecost.com
-Portugal based · Acting worldwide
 
-#smallbusiness #AIforbusiness #automation #restaurantowner #salonowner #localbusiness #whatsappbusiness #googlereviews #algarve
+🌐 pachecost.com
+📍 Portugal based · Acting worldwide
+
+#smallbusiness #AIforbusiness #automation #localbusiness #restaurantowner #salonowner #googlereviews #customerretention #portugal
 
 ### Reel 2
 If you run a small business, your evenings aren't yours. Let's fix that. 🌙

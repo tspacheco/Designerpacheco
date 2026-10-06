@@ -223,6 +223,9 @@ for i, s in enumerate(S0):
     elif ui == 'calls':
         for j, tp in enumerate(['ch', 'wa', 'ch', 'ch', 'wa']):
             put(sfx, s + .1 + j * .16, buzz(.2) if tp == 'ch' else ping(1568, 2349, d=.4), .2 if tp == 'ch' else .14)
+    elif ui == 'lapsed':  # clientes que se afastam: toques a descer de tom
+        for j, f in enumerate((660, 523, 392)):
+            put(sfx, s + .1 + j * .18, ping(f, f * 1.5, 7, .5), .11)
     elif ui == 'diary':
         for j in range(4):
             put(sfx, s + .1 + j * .18, tick(), .12)
