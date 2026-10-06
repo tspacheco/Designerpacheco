@@ -491,7 +491,7 @@ def imagem_heroi():
 
 def vista_consultanta(c, casos, lang, wa):
     """A porta de entrada: o herói sobre a imagem (a frase da marca; «Conhece-nos» abre o diagnóstico), o que faz uma
-    consultoria de IA (3 passos), o veredito de um caso real sobre o mosaico 3D, o que é a IA, três números de casos
+    o veredito de um caso real sobre o mosaico 3D, o que faz uma consultoria de IA (3 passos), o que é a IA, três números de casos
     e os compromissos."""
     k = c["consultanta"]
     tx = textos_casos(c, casos, lang)
@@ -530,19 +530,6 @@ def vista_consultanta(c, casos, lang, wa):
     </div>
    </div>
   </div>
-  <div class="claro">
-    <div class="envolver seccao consultoria">
-      <p class="eyebrow">{e(m["eyebrow"])}</p>
-      <h2 class="afirmacao">{e(m["titlu"])}</h2>
-      <p class="lead">{e(m["intro"])}</p>
-      <div class="caixa-c">
-        <h3>{e(m["caixa_t"])}</h3>
-        <ol class="c-passos">
-{passos}
-        </ol>
-      </div>
-    </div>
-  </div>
   <div class="veredito seccao">
     {mosaico(["", "", "", ""], "Pacheco Studios", "fundo-3d")}
     <div class="envolver">
@@ -556,6 +543,19 @@ def vista_consultanta(c, casos, lang, wa):
           <a class="botao escuro" href="#caso-{e(vd["caso"])}">{e(vd["ver"])}{I["seta"]}</a>
         </figcaption>
       </figure>
+    </div>
+  </div>
+  <div class="claro">
+    <div class="envolver seccao consultoria">
+      <p class="eyebrow">{e(m["eyebrow"])}</p>
+      <h2 class="afirmacao">{e(m["titlu"])}</h2>
+      <p class="lead">{e(m["intro"])}</p>
+      <div class="caixa-c">
+        <h3>{e(m["caixa_t"])}</h3>
+        <ol class="c-passos">
+{passos}
+        </ol>
+      </div>
     </div>
   </div>
   <div class="envolver seccao ia-bloco">

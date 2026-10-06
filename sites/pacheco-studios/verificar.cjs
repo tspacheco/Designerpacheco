@@ -556,6 +556,13 @@ const fs = require('fs');
 
   // ——— 5b. herói: o vídeo em fotogramas (16:9 em ecrãs deitados, recorte 9:16 ao alto) avança com o scroll ———
   console.log('\nHERÓI');
+  // a ordem a seguir ao herói é a mesma nas três línguas: veredito (3D), depois a caixa da consultoria
+  for (const [k, f] of [['pt', 'index.html'], ['en', 'en/index.html'], ['ro', 'ro/index.html']]) {
+    const h = fs.readFileSync(path.join(dist, f), 'utf8');
+    const ordem = ['class="heroi-bg"', 'class="veredito seccao"', 'class="envolver seccao consultoria"', 'class="envolver seccao ia-bloco"'].map(x => h.indexOf(x));
+    if (ordem.some(x => x < 0) || ordem.some((x, i) => i && x <= ordem[i - 1])) mal(`${k}: ordem das secções a seguir ao herói ${JSON.stringify(ordem)}`);
+    else bem(`${k}: a seguir ao herói vem o veredito e depois a consultoria`);
+  }
   const comVideo = fs.readFileSync(path.join(dist, 'index.html'), 'utf8').includes('id="heroi-quadros"');
   if (!comVideo) {
     // desligado no gerar.py (HEROI_VIDEO = False): imagem parada, o scroll desce normalmente
