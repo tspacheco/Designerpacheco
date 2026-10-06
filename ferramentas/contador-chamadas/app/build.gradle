@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'pt.pachecost.contador'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'pt.pachecost.contador'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    // Chave fixa no repositório para que cada versão nova se instale por cima da anterior.
+    // É uma chave de depuração sem valor: a app não é publicada na Play Store.
+    signingConfigs {
+        fixa {
+            storeFile file('contador.keystore')
+            storePassword 'contador'
+            keyAlias 'contador'
+            keyPassword 'contador'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.fixa
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint { abortOnError false; checkReleaseBuilds false }
+}
