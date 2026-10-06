@@ -1,509 +1,697 @@
-<!DOCTYPE html>
-<!--
-  RESTAURANTE & PIZZARIA CATARINA — Altura · Pacheco Studios (demo V2 "Forno & Mar")
-  Proposta dupla: website + sessão fotográfica.
-
-  MEDIA A PRODUZIR (pasta media/, nomes exatos — bate certo com a shot list no fim):
-    hero-forno.jpg  4:5   pizza a sair do forno, fio de fumo
-    hero-mar.jpg    4:5   dourada/robalo na grelha ou banca de gelo
-    pizza.jpg       4:5   pizza artesanal em cima da mesa
-    peixe.jpg       4:5   peixe na grelha / arroz de peixe com vapor
-    antonio.jpg     4:5   retrato do António ao balcão
-    gal-01.jpg      3:2   forno
-    gal-02.jpg      1:1   mãos a esticar massa
-    gal-03.jpg      3:2   banca de peixe
-    gal-04.jpg      1:1   esplanada ao fim de tarde
-    gal-05.jpg      3:2   mesa de família com pizza + peixe juntos (a foto-conceito)
-    gal-06.jpg      1:1   sobremesa + café
-  O site funciona sem qualquer media (placeholders SVG nas cores da casa).
-
-  SESSÃO FOTOGRÁFICA (shot list):
-    1. Pizza a sair do forno, fio de fumo (hero-forno, 4:5)
-    2. Dourada/robalo na grelha ou banca de gelo (hero-mar, 4:5)
-    3. Mãos a esticar massa (gal-02, 1:1)
-    4. Retrato do António ao balcão (antonio, 4:5)
-    5. Mesa de família com pizza + peixe juntos — a foto-conceito (gal-05, 3:2)
-    6. Esplanada ao fim de tarde (gal-04, 1:1)
-    7. Arroz de peixe com vapor (peixe, 4:5)
-    8. Sobremesa + café (gal-06, 1:1)
-    Luz natural sempre.
--->
+<!doctype html>
 <html lang="pt-PT">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Restaurante &amp; Pizzaria Catarina — pizzas artesanais e peixe fresco em Altura</title>
-<meta name="description" content="Em Altura, a mesa dividida resolve-se: pizzas artesanais do forno e peixe fresco da grelha na mesma casa. Aberto todos os dias, Rua da Alagoa 8. Reservas: 281 957 492.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurante &amp; Pizzaria Catarina — Altura, Algarve | Pizza em forno a lenha e sabores do Algarve</title>
+<meta name="description" content="Em Altura, a quatro minutos da Praia da Alagoa. Pizzas de crosta fina em forno a lenha e os sabores do Algarve à mesa: peixe, polvo, lulas, arrozes e carnes grelhadas. Reservas 281 957 492.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:title" content="Restaurante &amp; Pizzaria Catarina — Altura">
+<meta property="og:description" content="O segredo está no forno. Pizzas de crosta fina em forno a lenha e os sabores do Algarve, a quatro minutos da praia.">
+<meta property="og:image" content="media/sala.jpg">
+<meta property="og:locale" content="pt_PT">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Schibsted+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org","@type":"Restaurant",
-  "name":"Restaurante & Pizzaria Catarina",
-  "servesCuisine":["Pizza","Peixe","Cozinha portuguesa","Italiana"],
-  "telephone":"+351281957492",
-  "address":{"@type":"PostalAddress","streetAddress":"Rua da Alagoa 8","addressLocality":"Altura","postalCode":"8950-411","addressCountry":"PT"},
-  "aggregateRating":{"@type":"AggregateRating","ratingValue":"3.9","reviewCount":"238"},
-  "openingHoursSpecification":[
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"12:00","closes":"15:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"19:00","closes":"23:00"}
-  ],
-  "sameAs":["https://www.facebook.com/Restaurantepizzariacatarina"]
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍤</text></svg>">
 <style>
+/* ══════════════════════════════════════════════════════════════════
+   PALETA BASE — cada secção redefine as suas próprias variáveis,
+   por isso o site muda de cor conforme o que está a contar.
+   ══════════════════════════════════════════════════════════════════ */
 :root{
-  --sal:#FDFBF6; --tinta:#14232C; --tinta-dim:rgba(20,35,44,.66);
-  --tomate:#C93F2B; --tomate-claro:#FFF6F1;
-  --atl:#1F6E8C; --atl-claro:#E9F2F6;
-  --manj:#4F7245;
-  --ease:cubic-bezier(.16,1,.3,1); --pad:clamp(1.25rem,4.5vw,4rem);
+  --noite:#0B1F26; --mar:#0E4C5C; --mar-cl:#2E93A8;
+  --brasa:#D4522A; --brasa-cl:#F58E52; --ambar:#D69A4E;
+  --creme:#FAF6EE; --cal:#FFFDF9; --areia:#F0E4CC; --linha:#E4D8C2;
+  --tinta:#15242A; --muted:#6C7C80;
+  --disp:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,-apple-system,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--sal);color:var(--tinta);font:300 1rem/1.7 "Schibsted Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3{font-family:"Young Serif",serif;font-weight:400;line-height:1.08;letter-spacing:-.01em}
-p{max-width:70ch}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
-:focus-visible{outline:2px solid var(--tomate);outline-offset:3px;border-radius:2px}
-::selection{background:var(--tomate);color:var(--sal)}
-.pv-banner{background:var(--tinta);color:var(--sal);font-size:.75rem;font-weight:500;letter-spacing:.02em;text-align:center;padding:.5rem var(--pad)}
+body{font-family:var(--sans);color:var(--tinta);background:var(--creme);line-height:1.65;
+     -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit} button,a{font-family:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1180px,92vw);margin:0 auto}
+h1,h2,h3,h4{font-family:var(--disp);font-weight:400;line-height:1.1;letter-spacing:-.3px}
+section{padding:clamp(64px,8vw,124px) 0;position:relative}
 
-.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.4rem;padding:.8rem var(--pad);background:var(--sal);transition:box-shadow .4s}
-.nav.scrolled{box-shadow:0 1px 0 rgba(20,35,44,.1),0 8px 24px rgba(20,35,44,.07)}
-.brand{font-family:"Young Serif",serif;font-size:1.25rem;line-height:1.15}
-.brand small{display:block;font-family:"Schibsted Grotesk",sans-serif;font-size:.75rem;font-weight:500;color:var(--tinta-dim)}
-.nav-links{display:flex;gap:1.5rem;margin-left:auto;align-items:center}
-.nav-links a{font-size:1rem;font-weight:700;color:var(--tinta-dim);transition:color .3s}
-.nav-links a:hover{color:var(--tinta)}
-.lang{display:flex;gap:.15rem;border:1px solid rgba(20,35,44,.18);border-radius:99px;padding:.15rem}
-.lang button{font-size:.75rem;font-weight:700;padding:.25rem .55rem;border-radius:99px;color:var(--tinta-dim);transition:.3s}
-.lang button[aria-pressed="true"]{background:var(--tinta);color:var(--sal)}
-.cta{display:inline-block;background:var(--tomate);color:#FFF6F3;font-weight:700;font-size:1rem;padding:.85rem 1.7rem;border-radius:6px;transition:background .3s,transform .3s;box-shadow:0 6px 18px rgba(20,35,44,.14)}
-.cta:hover{background:#B23522;transform:translateY(-1px)}
-.link-quiet{font-weight:500;text-decoration:underline;text-underline-offset:4px;transition:color .3s}
-.link-quiet:hover{color:var(--tomate)}
-.nav .cta{padding:.55rem 1.15rem}
-.burger{display:none;margin-left:auto;width:42px;height:42px;position:relative;z-index:55}
-.burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--tinta);transition:.35s var(--ease)}
-.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
-.burger[aria-expanded="true"] span:nth-child(1){top:21px;transform:rotate(45deg)}
-.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
-.burger[aria-expanded="true"] span:nth-child(3){top:21px;transform:rotate(-45deg)}
+/* etiqueta de secção — herda a cor do bloco onde está */
+.olho{font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:4px;
+      text-transform:uppercase;color:var(--acento,var(--brasa));display:flex;align-items:center;gap:12px}
+.olho::before{content:'';width:26px;height:1px;background:currentColor;opacity:.7}
+
+/* ─────────────── NAV ─────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:80;transition:background .4s,box-shadow .4s;
+    background:transparent}
+nav.solida{background:rgba(11,31,38,.94);backdrop-filter:blur(14px);box-shadow:0 10px 40px rgba(0,0,0,.24)}
+nav .wrap{display:flex;align-items:center;gap:18px;height:74px}
+nav .marca{font-family:var(--disp);font-size:22px;font-weight:600;color:#fff;margin-right:auto;
+           line-height:1;text-decoration:none;letter-spacing:-.5px}
+nav .marca span{display:block;font-family:var(--sans);font-size:9px;letter-spacing:3.4px;
+                text-transform:uppercase;color:#8FB0B8;font-weight:600;margin-top:5px}
+nav ul{display:flex;gap:26px;list-style:none}
+nav a{color:#C7DBE0;text-decoration:none;font-size:13.5px;font-weight:500;letter-spacing:.2px;
+      position:relative;padding-bottom:3px}
+nav a::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--brasa-cl);
+             transition:right .3s}
+nav a:hover{color:#fff} nav a:hover::after{right:0}
+@media(max-width:1000px){nav ul{display:none}}
+.langs{display:flex;border:1px solid rgba(255,255,255,.24);border-radius:999px;overflow:hidden}
+.langs button{background:none;border:0;color:#A8C4CA;font-size:11px;font-weight:700;padding:7px 12px;
+              letter-spacing:1px;transition:.2s}
+.langs button[aria-pressed=true]{background:var(--brasa);color:#fff}
+
+/* ══════════════ HERO — meia página de cor, meia de fotografia NÍTIDA ══════════════ */
+.hero{display:grid;grid-template-columns:1.02fr .98fr;min-height:94svh;background:var(--noite);
+      position:relative;overflow:hidden}
+@media(max-width:960px){.hero{grid-template-columns:1fr;min-height:auto}}
+.hero-campo{display:flex;flex-direction:column;justify-content:center;
+            padding:140px clamp(28px,5vw,72px) 72px;position:relative;isolation:isolate}
+.hero-campo::before{content:'';position:absolute;inset:0;z-index:-2;
+  background:radial-gradient(74% 62% at 8% 26%,rgba(46,147,168,.30),transparent 70%),
+             radial-gradient(66% 58% at 92% 100%,rgba(212,82,42,.34),transparent 68%)}
+.hero-campo::after{content:'';position:absolute;inset:0;z-index:-1;opacity:.5;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:3px 3px}
+.hero-campo .dentro{max-width:560px;margin-left:auto;width:100%}
+@media(max-width:960px){.hero-campo .dentro{margin:0;max-width:none}}
+
+.estado{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.26);
+        border-radius:999px;padding:8px 18px;font-size:12.5px;color:#E4EFF1;margin-bottom:30px;
+        letter-spacing:.3px;background:rgba(255,255,255,.05)}
+.pt{width:8px;height:8px;border-radius:50%;background:#4CC98A;animation:pulso 2.6s infinite}
+.estado.off .pt{background:#DB6A54;animation:none}
+@keyframes pulso{70%{box-shadow:0 0 0 9px rgba(76,201,138,0)}100%{box-shadow:0 0 0 0 rgba(76,201,138,0)}}
+
+.hero h1{font-size:clamp(40px,5.6vw,80px);color:#fff;line-height:.92;letter-spacing:-3.4px;
+         font-weight:600}
+.hero h1 .fina{display:block;font-size:.6em;line-height:1.05;margin-top:.28em;font-weight:300;font-style:italic;color:var(--ambar);letter-spacing:-2px}
+/* "no forno." — as letras acendem-se como brasa, uma vez, ao abrir */
+.hero h1 .lume{display:block;color:transparent;-webkit-background-clip:text;background-clip:text;
+  background-image:linear-gradient(100deg,var(--brasa-cl) 0 36%,#FFD2A0 46%,#fff 58% 100%);
+  background-size:260% 100%;background-position:100% 0;animation:acende 2.4s .5s cubic-bezier(.3,.6,.2,1) forwards}
+@keyframes acende{to{background-position:0 0}}
+@media(max-width:600px){.hero h1{letter-spacing:-1.8px}.hero h1 .fina{letter-spacing:-.4px;font-size:.66em}}
+.hero .sub{font-size:17px;color:#A9C3C9;margin-top:28px;max-width:40ch;line-height:1.72}
+.hero .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:2px;
+     padding:17px 32px;font-size:13.5px;font-weight:700;text-decoration:none;letter-spacing:1.4px;
+     text-transform:uppercase;transition:transform .18s,box-shadow .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn-p{background:var(--brasa);color:#fff;box-shadow:0 12px 34px rgba(212,82,42,.34)}
+.btn-p:hover{box-shadow:0 18px 44px rgba(212,82,42,.44)}
+.btn-c{background:transparent;color:#DCE9EB;border:1px solid rgba(255,255,255,.32)}
+.btn-c:hover{background:rgba(255,255,255,.08)}
+.btn-esc{background:var(--noite);color:#fff}
+
+/* a fotografia, ao tamanho a que é nítida */
+.hero-pe{margin-top:clamp(38px,5vw,62px);padding-top:20px;border-top:1px solid rgba(255,255,255,.13);
+         display:flex;flex-wrap:wrap;gap:9px 30px;font-size:11px;letter-spacing:2.1px;
+         text-transform:uppercase;color:#6F8D95;font-weight:600}
+.hero-pe b{color:#A9C3C9;font-weight:600}
+.hero-foto{position:relative;display:flex;align-items:center;justify-content:flex-start;
+           padding:100px 0 60px}
+@media(max-width:960px){.hero-foto{padding:0 0 0;order:-1}}
+.hero-foto figure{position:relative;width:min(690px,100%);box-shadow:-30px 40px 90px rgba(0,0,0,.5)}
+@media(max-width:960px){.hero-foto figure{width:100%;box-shadow:none}}
+.hero-foto img{width:100%;height:auto}
+.hero-foto figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 26px 20px;
+  font-family:var(--disp);font-style:italic;font-weight:300;font-size:14.5px;color:rgba(255,255,255,.95);
+  background:linear-gradient(to top,rgba(6,20,25,.86),transparent)}
+.hero-tira{position:absolute;left:0;top:0;bottom:0;width:5px;
+           background:linear-gradient(180deg,var(--mar-cl),var(--brasa))}
+@media(max-width:960px){.hero-tira{display:none}}
+
+/* ─────────────── FAIXA DE PROVAS ─────────────── */
+.provas{background:var(--noite);border-top:1px solid rgba(255,255,255,.08);color:#B7CED3}
+.provas .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 0;padding:0}
+.provas .p{flex:1 1 200px;text-align:center;padding:26px 16px;border-left:1px solid rgba(255,255,255,.08)}
+.provas .p:first-child{border-left:0}
+.provas .n{font-family:var(--disp);font-size:26px;font-weight:600;color:#fff;display:block;line-height:1}
+.provas .n em{font-style:normal;color:var(--ambar)}
+.provas .d{font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;margin-top:9px;color:#7E9BA3}
+
+/* ══════════════ AS DUAS COZINHAS — díptico a sangrar ══════════════ */
+.diptico{display:grid;grid-template-columns:1fr 1fr;min-height:clamp(400px,52vw,560px)}
+@media(max-width:840px){.diptico{grid-template-columns:1fr}}
+.metade{padding:clamp(44px,5vw,74px) clamp(28px,4.4vw,66px);display:flex;flex-direction:column;
+        justify-content:center;position:relative;overflow:hidden;color:#fff}
+.metade.mar{background:linear-gradient(155deg,#14606F 0%,#0B3D49 100%)}
+.metade.fogo{background:linear-gradient(155deg,#C74C22 0%,#8A2E12 100%)}
+.metade::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(70% 54% at 84% 108%,rgba(255,255,255,.13),transparent 68%)}
+.metade .num{font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:4px;
+             color:rgba(255,255,255,.5);margin-bottom:16px}
+.metade h3{font-size:clamp(32px,3.8vw,46px);font-weight:300;letter-spacing:-1.2px;margin-bottom:14px}
+.metade h3 em{font-style:italic;font-weight:600}
+.metade p.lead{font-family:var(--disp);font-style:italic;font-weight:300;font-size:clamp(19px,1.8vw,22px);
+  color:#fff;margin-bottom:12px;line-height:1.35}
+.metade p{font-size:15.5px;color:rgba(255,255,255,.82);line-height:1.72;max-width:42ch}
+.metade ul{list-style:none;margin-top:24px;display:flex;flex-wrap:wrap;gap:7px}
+.metade li{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 15px;font-size:12.5px;
+           font-weight:500;letter-spacing:.4px}
+
+/* ══════════════ SECÇÕES DEDICADAS — cada uma com a sua paleta ══════════════ */
+.retrato-sec{background:var(--fundo);color:var(--tinta-s)}
+.retrato-sec .olho{color:var(--acento)}
+.ded{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5.4vw,84px);align-items:center;
+     margin-top:clamp(34px,4vw,54px)}
+@media(max-width:920px){.ded{grid-template-columns:1fr;gap:34px}
+  .ded .visual{order:-1}}
+.ded h2{color:var(--tinta-s)}
+.ded p{font-size:16.5px;line-height:1.82;color:var(--corpo)}
+.ded p + p{margin-top:18px}
+.selo{display:inline-flex;align-items:center;gap:11px;margin-top:32px;padding:12px 22px;
+      border:1px solid var(--acento);color:var(--acento);border-radius:2px;
+      font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:2.6px;text-transform:uppercase}
+.selo::before{content:'';width:6px;height:6px;background:currentColor;border-radius:50%}
+
+.visual{position:relative}
+.visual .moldura{position:relative;overflow:hidden;background:#0B1F26}
+.visual img{width:100%;height:auto;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.visual:hover img{transform:scale(1.04)}
+.visual figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 24px 20px;z-index:2;
+  font-family:var(--disp);font-style:italic;font-weight:300;font-size:15px;color:rgba(255,255,255,.96);
+  background:linear-gradient(to top,rgba(6,20,25,.88),transparent)}
+.visual .marca-n{position:absolute;z-index:3;font-family:var(--disp);font-weight:600;
+  font-size:clamp(72px,9vw,132px);line-height:.8;color:var(--acento);opacity:.16;letter-spacing:-6px;
+  pointer-events:none}
+.visual .fundo-cor{position:absolute;border-radius:2px;z-index:0}
+
+/* ─── 01 O NOSSO ESPAÇO: sala + esplanada — luz do dia, tipografia arejada ─── */
+#espaco{--fundo:#E9F3F5; --tinta-s:#0D2E37; --corpo:#4C6971; --acento:#17798D}
+#espaco h2{font-weight:300;letter-spacing:-1.6px;font-size:clamp(34px,4.6vw,58px);line-height:1.06}
+#espaco h2 em{font-style:italic;font-weight:400;color:var(--acento)}
+.lead-s{font-family:var(--disp);font-style:italic;font-weight:300;font-size:clamp(19px,1.9vw,23px);
+        line-height:1.4;color:var(--acento,var(--brasa));margin:16px 0 20px;max-width:34ch}
+.ded p.lead-s{font-size:clamp(19px,1.9vw,23px);line-height:1.4;color:var(--acento)}
+#espaco .momentos{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);margin-top:30px;
+  border-top:1px solid #C9DFE4;border-bottom:1px solid #C9DFE4}
+#espaco .momentos li{padding:16px 14px 15px;border-left:1px solid #C9DFE4}
+#espaco .momentos li:first-child{border-left:0;padding-left:0}
+#espaco .momentos b{display:block;font-family:var(--disp);font-size:22px;font-weight:400;color:var(--tinta-s);line-height:1}
+#espaco .momentos span{display:block;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;
+  color:#5D8089;margin-top:7px;font-weight:600}
+/* duas fotografias sobrepostas: a sala por trás, a esplanada à frente e mais abaixo */
+.duo{display:grid;grid-template-columns:1fr .86fr;align-items:start;padding-bottom:56px}
+.duo .f1{grid-column:1;grid-row:1;z-index:1}
+.duo .f2{grid-column:2;grid-row:1;margin-top:clamp(70px,9vw,120px);margin-left:-18%;z-index:2;
+         outline:8px solid #E9F3F5}
+.duo .moldura{border-radius:2px;box-shadow:0 30px 64px rgba(13,46,55,.24)}
+#espaco .visual .fundo-cor{inset:40px -26px 10px 30%;background:#CFE6EA}
+#espaco .visual .marca-n{top:-34px;right:-6px;left:auto;z-index:0}
+.duo figcaption{padding:40px 18px 14px;font-size:14px}
+
+/* ─── 03 A COZINHA: tijolo, lume — tipografia pesada, em maiúsculas ─── */
+#cozinha{--fundo:#120C09; --tinta-s:#FBEDE4; --corpo:#A79287; --acento:#E2603F}
+#cozinha::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50% 44% at 22% 78%,rgba(226,96,63,.22),transparent 64%),
+             radial-gradient(46% 40% at 88% 14%,rgba(255,139,74,.12),transparent 68%)}
+#cozinha > .wrap{position:relative;z-index:1}
+/* fagulhas a subir do fundo da secção do forno */
+.faulhas{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.faulhas i{position:absolute;bottom:-12px;width:3px;height:3px;border-radius:50%;
+  background:#FFB070;box-shadow:0 0 8px 2px rgba(255,120,50,.7);opacity:0;
+  animation:sobe var(--d,7s) linear var(--a,0s) infinite}
+@keyframes sobe{0%{transform:translate(0,0);opacity:0}10%{opacity:.9}
+  70%{opacity:.5}100%{transform:translate(var(--x,20px),-78vh);opacity:0}}
+#cozinha h2{font-weight:700;text-transform:uppercase;letter-spacing:-1px;line-height:.98;
+            font-size:clamp(32px,4.4vw,56px)}
+#cozinha h2 em{font-style:normal;color:var(--acento)}
+#cozinha .visual .fundo-cor{inset:30px -32px -32px 30px;
+  background:linear-gradient(150deg,#3A1A0E,#1C0D07)}
+#cozinha .visual .moldura{border-radius:2px;box-shadow:0 34px 74px rgba(0,0,0,.62)}
+#cozinha .visual .marca-n{top:-30px;left:-12px;opacity:.2}
+#cozinha .temp{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+#cozinha .temp div{border-left:2px solid var(--acento);padding-left:14px}
+#cozinha .temp b{display:block;font-family:var(--disp);font-size:28px;font-weight:600;color:#fff;line-height:1}
+#cozinha .temp span{font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:#8E7A6F;
+                    margin-top:6px;display:block}
+
+/* ─────────────── EMENTA ─────────────── */
+#ementa{background:var(--cal)}
+#ementa .olho{color:var(--brasa)}
+#ementa h2{font-size:clamp(32px,4.4vw,54px);font-weight:300;letter-spacing:-1.6px}
+#ementa h2 em{font-style:italic;font-weight:600;color:var(--brasa)}
+.intro{font-size:16.5px;color:var(--muted);max-width:60ch;margin-top:16px;line-height:1.74}
+.cartas{display:grid;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));gap:44px;margin-top:52px}
+.grupo{--g:var(--brasa)}
+.grupo.mar{--g:#17798D} .grupo.forno{--g:#D4522A} .grupo.grelha{--g:#0E4C5C}
+.grupo h4{font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:3.4px;
+          text-transform:uppercase;color:var(--g);padding-bottom:12px;margin-bottom:4px;
+          border-bottom:2px solid var(--g)}
+.prato{display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--linha)}
+.prato .tx{flex:1;min-width:0}
+.prato b{font-size:16.5px;font-weight:600;display:block;letter-spacing:-.1px}
+.prato span{font-size:13.5px;color:var(--muted);display:block;margin-top:3px;line-height:1.5}
+.prato .pr{font-family:var(--disp);font-size:18px;font-weight:600;color:var(--g);white-space:nowrap;
+           font-variant-numeric:tabular-nums}
+/* "Hoje apetece-me…" — filtra a ementa sem sair da página */
+.apetece{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:34px}
+.apetece .q{font-family:var(--disp);font-style:italic;font-size:18px;color:var(--tinta);margin-right:8px}
+.apetece button{background:transparent;border:1px solid var(--linha);border-radius:999px;padding:9px 18px;
+  font-size:13px;font-weight:600;color:var(--tinta);letter-spacing:.2px;transition:background .2s,color .2s,border-color .2s}
+.apetece button:hover{border-color:var(--brasa);color:var(--brasa)}
+.apetece button[aria-pressed=true]{background:var(--brasa);border-color:var(--brasa);color:#fff}
+.grupo{transition:opacity .35s,transform .35s,filter .35s}
+.cartas.filtra .grupo{opacity:.28;filter:grayscale(1)}
+.cartas.filtra .grupo.ativo{opacity:1;filter:none;transform:translateY(-4px)}
+:focus-visible{outline:2px solid var(--brasa);outline-offset:3px}
+.nota-p{font-size:13.5px;color:var(--muted);font-style:italic;margin-top:32px}
+
+/* ─────────────── ANTES DE VIR ─────────────── */
+#antes{background:var(--mar);color:#DCEBEE}
+#antes .olho{color:var(--ambar)}
+#antes h2{color:#fff;font-weight:300;letter-spacing:-1.6px;font-size:clamp(32px,4.4vw,54px)}
+#antes h2 em{font-style:italic;font-weight:600;color:var(--ambar)}
+.grade4{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;margin-top:48px;
+        background:rgba(255,255,255,.14)}
+.grade4 .c{background:var(--mar);padding:30px 26px}
+.grade4 .c .ic{font-size:24px;line-height:1;margin-bottom:14px}
+.grade4 .c h4{font-size:19px;color:#fff;margin-bottom:8px;font-weight:600}
+.grade4 .c p{font-size:14.5px;color:#9DBAC0;line-height:1.66}
+
+/* ─────────────── COMO CHEGAR ─────────────── */
+#chegar .olho{color:var(--brasa)}
+#chegar h2{font-size:clamp(32px,4.4vw,54px);font-weight:300;letter-spacing:-1.6px}
+#chegar h2 em{font-style:italic;font-weight:600;color:var(--brasa)}
+.rotas{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;margin-top:40px;
+       background:var(--linha);border:1px solid var(--linha)}
+.rota{background:var(--cal);padding:24px 16px;text-align:center}
+.rota .t{font-family:var(--disp);font-size:30px;font-weight:600;color:var(--brasa);line-height:1}
+.rota .l{font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:1.2px;text-transform:uppercase}
+.mapa{margin-top:30px;height:256px;border:1px solid var(--linha);position:relative;overflow:hidden;
+      background:linear-gradient(170deg,#EDF3EC,#DCE8E1)}
+.mapa .praia{position:absolute;left:0;right:0;bottom:0;height:40%;
+             background:linear-gradient(180deg,#EFE3C6 0 22%,#9FCBD6 22%,#6FAEC0)}
+.mapa .rua{position:absolute;left:-4%;right:-4%;top:44%;height:13px;background:#E2D6BE;
+           box-shadow:0 0 0 3px #D2C4A8;transform:rotate(-2deg)}
+.mapa .pin{position:absolute;left:46%;top:36%;width:20px;height:20px;border-radius:50% 50% 50% 0;
+           background:var(--brasa);transform:rotate(-45deg);box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.mapa .et{position:absolute;font-size:11px;font-weight:700;color:#5E6E63;letter-spacing:1px}
+.baixo{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:30px;margin-top:40px;
+       align-items:start}
+.horario{border:1px solid var(--linha);background:var(--cal);padding:30px}
+.horario h3{font-size:22px;font-weight:600;margin-bottom:16px}
+.horario .l{display:flex;justify-content:space-between;padding:11px 0;border-top:1px solid var(--linha);
+            font-size:14.5px}
+.horario .l:first-of-type{border-top:0}
+.horario .l.hoje{font-weight:700;color:var(--brasa)}
+.horario .l.fech{color:var(--muted)}
+
+footer.site{background:var(--noite);color:#7E99A0;padding:64px 0 46px;font-size:14px}
+footer.site .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:30px}
+footer.site b{color:#DCEBEE;display:block;margin-bottom:10px;font-family:var(--disp);font-size:19px;
+              font-weight:600}
+footer.site a{color:var(--ambar);text-decoration:none}
+.legal{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:22px;font-size:12.5px;
+       color:#5E7A81;line-height:1.75}
+
+/* no telemóvel os blocos de cor deslocados encolhem para dentro (senão dão scroll lateral) */
 @media(max-width:920px){
-  .burger{display:block}
-  .nav-links{position:fixed;inset:0;background:var(--sal);flex-direction:column;justify-content:center;gap:2rem;transform:translateY(-102%);transition:transform .5s var(--ease)}
-  .nav-links.open{transform:none}
-  .nav-links a{font-size:1.25rem}
-  .nav .cta{display:none}
+  #espaco .visual .fundo-cor{inset:30px -12px 0 34%}
+  #cozinha  .visual .fundo-cor{inset:22px -12px -22px 22px}
+  .visual .marca-n{font-size:64px}
+  #espaco .visual .marca-n,#cozinha .visual .marca-n{top:-18px;left:0}
+  .duo .f2{outline-width:5px}
 }
-
-/* ---------- HERO: ecrã dividido Forno & Mar ---------- */
-.hero{position:relative;min-height:92svh;overflow:hidden;background:var(--tinta)}
-.half{position:absolute;inset:0}
-.half .ph{position:absolute;inset:0}
-.half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.half.forno{clip-path:polygon(0 0, calc(58% + var(--shift,0%)) 0, calc(42% + var(--shift,0%)) 100%, 0 100%)}
-.half.mar{clip-path:polygon(calc(58% + var(--shift,0%)) 0, 100% 0, 100% 100%, calc(42% + var(--shift,0%)) 100%)}
-.half.forno .ph{background:
-  radial-gradient(70% 60% at 35% 60%,rgba(201,63,43,.65),transparent 75%),
-  linear-gradient(160deg,#7A2417,#3B140D)}
-.half.mar .ph{background:
-  radial-gradient(70% 60% at 70% 45%,rgba(31,110,140,.65),transparent 75%),
-  linear-gradient(200deg,#134A62,#0C2733)}
-.half .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,35,44,.42),rgba(20,35,44,.16) 40%,rgba(20,35,44,.6))}
-.hero-in{position:relative;z-index:3;min-height:92svh;display:flex;flex-direction:column;justify-content:flex-end;padding:6rem var(--pad) 4rem;max-width:1200px;margin:0 auto;color:#FBF7EF}
-.hero h1{font-size:clamp(2.6rem,7.5vw,5.6rem);max-width:14ch;text-shadow:0 3px 26px rgba(20,35,44,.55)}
-.hero .lead{margin:1.1rem 0 .6rem;font-size:clamp(1.05rem,1.8vw,1.3rem);font-weight:500;color:#F3ECE0}
-.hero .rating{font-size:1rem;color:rgba(251,247,239,.85);margin-bottom:1.8rem}
-.hero-ctas{display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
-.hero .link-quiet{color:#F3ECE0}
-.h-seq{opacity:0;transform:translateY(18px);animation:rise .9s var(--ease) forwards}
-.h-seq.s2{animation-delay:.15s}.h-seq.s3{animation-delay:.3s}.h-seq.s4{animation-delay:.45s}
-@keyframes rise{to{opacity:1;transform:none}}
-@media(max-width:760px){
-  .half.forno{clip-path:none;inset:0 0 50% 0;transition:inset .6s var(--ease)}
-  .half.mar{clip-path:none;inset:50% 0 0 0;transition:inset .6s var(--ease)}
-  .hero.focus-forno .half.forno{inset:0 0 34% 0}
-  .hero.focus-forno .half.mar{inset:66% 0 0 0}
-  .hero.focus-mar .half.forno{inset:0 0 66% 0}
-  .hero.focus-mar .half.mar{inset:34% 0 0 0}
-  .hero-in{padding-bottom:8rem}
-}
-
-/* ---------- blocos FORNO / MAR ---------- */
-.mundo{position:relative;overflow:hidden;padding:clamp(4.5rem,9vw,8rem) var(--pad)}
-.mundo.forno{background:var(--tomate);color:var(--tomate-claro)}
-.mundo.mar{background:var(--atl);color:var(--atl-claro)}
-.mundo .giant{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);font-family:"Young Serif",serif;font-size:clamp(7rem,26vw,20rem);line-height:1;letter-spacing:.02em;opacity:.14;user-select:none;pointer-events:none;white-space:nowrap}
-.mundo .wrap{position:relative;z-index:2;max-width:1150px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
-.mundo.mar .wrap{direction:rtl}
-.mundo.mar .wrap>*{direction:ltr}
-.mundo h2{font-size:clamp(2rem,4.6vw,3.4rem);margin-bottom:1.2rem;color:inherit}
-.mundo p{margin-bottom:1rem;color:inherit}
-.mundo p strong{font-weight:700}
-.mundo .foto{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;box-shadow:0 18px 44px rgba(20,35,44,.28)}
-.mundo.forno .foto{background:radial-gradient(65% 55% at 50% 70%,rgba(253,251,246,.24),transparent 72%),linear-gradient(200deg,#A83322,#7C2416)}
-.mundo.mar .foto{background:radial-gradient(65% 55% at 50% 35%,rgba(253,251,246,.22),transparent 72%),linear-gradient(160deg,#18596F,#12455A)}
-.mundo .foto svg{position:absolute;inset:0;width:100%;height:100%;opacity:.6}
-.mundo .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-@media(max-width:860px){.mundo .wrap{grid-template-columns:1fr}.mundo .giant{top:28%}}
-
-/* ---------- António ---------- */
-.antonio{padding:clamp(4.5rem,9vw,8rem) var(--pad)}
-.antonio .wrap{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
-.antonio h2{font-size:clamp(2.1rem,5vw,3.6rem);margin-bottom:1.4rem}
-.antonio p{margin-bottom:1rem;color:var(--tinta-dim)}
-.antonio .foto{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;box-shadow:0 16px 40px rgba(20,35,44,.16);background:
-  radial-gradient(60% 50% at 50% 35%,rgba(79,114,69,.18),transparent 70%),
-  linear-gradient(170deg,#EFE9DC,#E3DBC9)}
-.antonio .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.destaques{margin-top:2.4rem}
-.destaques p{font-family:"Young Serif",serif;font-size:1.25rem;line-height:1.4;color:var(--manj);margin-bottom:.9rem}
-.destaques .src{font-family:"Schibsted Grotesk",sans-serif;font-size:1rem;color:var(--tinta-dim)}
-.destaques .src a{text-decoration:underline;text-underline-offset:3px}
-@media(max-width:860px){.antonio .wrap{grid-template-columns:1fr}}
-
-/* ---------- galeria ---------- */
-.galeria{padding:clamp(4rem,8vw,7rem) var(--pad);background:#F7F3EA}
-.galeria .wrap{max-width:1150px;margin:0 auto}
-.galeria h2{font-size:clamp(2rem,4.6vw,3.2rem);margin-bottom:2.2rem}
-.g-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:1rem}
-.g-grid figure{position:relative;border-radius:8px;overflow:hidden;box-shadow:0 10px 26px rgba(20,35,44,.1)}
-.g-grid figure:nth-child(1){grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#B23522,#7C2416)}
-.g-grid figure:nth-child(2){grid-row:span 2;background:linear-gradient(200deg,#E3DBC9,#CFC5AC)}
-.g-grid figure:nth-child(3){background:linear-gradient(160deg,#18596F,#12455A)}
-.g-grid figure:nth-child(4){background:linear-gradient(200deg,#4F7245,#3A5632)}
-.g-grid figure:nth-child(5){grid-column:span 2;background:linear-gradient(170deg,#C93F2B,#1F6E8C)}
-.g-grid figure:nth-child(6){background:linear-gradient(160deg,#E3DBC9,#B8AD90)}
-.g-grid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
-.g-grid figure:hover img{transform:scale(1.03)}
-@media(max-width:760px){.g-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}.g-grid figure:nth-child(5){grid-column:span 2}}
-
-/* ---------- à mesa ---------- */
-.mesa{padding:clamp(4.5rem,9vw,8rem) var(--pad);background:var(--tinta);color:#F3ECE0}
-.mesa .wrap{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
-.mesa h2{font-size:clamp(2.1rem,5vw,3.6rem);margin-bottom:1.4rem;color:#FBF7EF}
-.mesa .tel{font-family:"Young Serif",serif;font-size:clamp(2rem,5.5vw,3.6rem);display:inline-block;margin:.6rem 0 1.4rem;color:#FBF7EF;transition:color .3s}
-.mesa .tel:hover{color:#E9A08F}
-.mesa dl{display:grid;gap:1rem;margin-top:1.6rem;font-size:1rem}
-.mesa dt{font-weight:700;color:#CFE2EA}
-.mesa dd{color:rgba(243,236,224,.85)}
-.mesa dd a{text-decoration:underline;text-underline-offset:3px}
-.mesa .map{aspect-ratio:4/3;border-radius:8px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.3)}
-.mesa .map iframe{width:100%;height:100%;border:0}
-@media(max-width:860px){.mesa .wrap{grid-template-columns:1fr}.mesa .map{aspect-ratio:16/10}}
-
-footer{padding:2rem var(--pad);background:#0E1920;color:rgba(243,236,224,.7);font-size:1rem}
-footer .wrap{max-width:1150px;margin:0 auto;display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
-footer a{text-decoration:underline;text-underline-offset:3px}
-footer a:hover{color:#F3ECE0}
-
-/* botão ligar fixo (mobile) */
-.call-fab{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:45;display:none;background:var(--tomate);color:#FFF6F3;font-weight:700;text-align:center;padding:1rem;border-radius:10px;box-shadow:0 10px 30px rgba(20,35,44,.35)}
-@media(max-width:760px){.call-fab{display:block}.mesa{padding-bottom:7rem}footer{padding-bottom:5.5rem}}
-
-.rv{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.js .rv{opacity:0;transform:translateY(14px)}
-.js .rv.on{opacity:1;transform:none}
-
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .rv,.h-seq{opacity:1!important;transform:none!important}
-  html{scroll-behavior:auto}
-}
+.rev{opacity:0;transform:translateY(30px);
+     transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rev.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}
+  .rev{opacity:1;transform:none} html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<div class="pv-banner" data-i18n="banner">APRESENTAÇÃO PACHECO STUDIOS · Proposta de demonstração para o Restaurante &amp; Pizzaria Catarina · carta e preços a confirmar</div>
-
-<header class="nav" id="nav">
-  <a class="brand" href="#top" aria-label="Restaurante e Pizzaria Catarina — início">Catarina<small data-i18n="brand.sub">Restaurante &amp; Pizzaria · Altura</small></a>
-  <button class="burger" id="burger" aria-expanded="false" aria-controls="navlinks" aria-label="Abrir menu">
-    <span></span><span></span><span></span>
-  </button>
-  <nav class="nav-links" id="navlinks" aria-label="Navegação principal">
-    <a href="#forno" data-i18n="nav.forno">Do forno</a>
-    <a href="#mar" data-i18n="nav.mar">Do mar</a>
-    <a href="#casa" data-i18n="nav.casa">A casa</a>
-    <a href="#galeria" data-i18n="nav.gal">Galeria</a>
-    <a href="#mesa" data-i18n="nav.mesa">À mesa</a>
-    <div class="lang" role="group" aria-label="Idioma / Language / Idioma">
-      <button data-lang="pt" aria-pressed="true">PT</button>
-      <button data-lang="en" aria-pressed="false">EN</button>
-      <button data-lang="es" aria-pressed="false">ES</button>
+<nav id="nav">
+  <div class="wrap">
+    <a class="marca" href="#topo">Catarina<span>Altura · Algarve</span></a>
+    <ul>
+      <li><a href="#cozinhas" data-t="A nossa cozinha" data-en="Our kitchen" data-es="Nuestra cocina">A nossa cozinha</a></li>
+      <li><a href="#espaco" data-t="O nosso espaço" data-en="Our place" data-es="Nuestro espacio">O nosso espaço</a></li>
+      <li><a href="#cozinha" data-t="O forno" data-en="The oven" data-es="El horno">O forno</a></li>
+      <li><a href="#ementa" data-t="Ementa" data-en="Menu" data-es="Carta">Ementa</a></li>
+      <li><a href="#chegar" data-t="Chegar" data-en="Find us" data-es="Llegar">Chegar</a></li>
+    </ul>
+    <div class="langs" role="group" aria-label="Idioma">
+      <button type="button" data-l="pt" aria-pressed="true">PT</button>
+      <button type="button" data-l="en" aria-pressed="false">EN</button>
+      <button type="button" data-l="es" aria-pressed="false">ES</button>
     </div>
-  </nav>
-  <a class="cta" href="tel:+351281957492" data-i18n="cta.call">Ligar a reservar</a>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero" id="topo">
+  <div class="hero-campo">
+    <div class="dentro">
+      <div class="estado" id="estado"><span class="pt"></span><span id="estado-txt">…</span></div>
+      <h1 data-t="O segredo está <span class='lume'>no forno.</span><span class='fina'>E sente-se em cada fatia.</span>" data-en="The secret is <span class='lume'>in the oven.</span><span class='fina'>And you taste it in every slice.</span>" data-es="El secreto está <span class='lume'>en el horno.</span><span class='fina'>Y se nota en cada porción.</span>">O segredo está <span class="lume">no forno.</span><span class="fina">E sente-se em cada fatia.</span></h1>
+      <p class="sub" data-t="Pizzas de crosta fina, preparadas para ganhar no forno a lenha o sabor e a textura que as tornam especiais. E à mesa, muito mais para descobrir, porque aqui também se saboreia o Algarve." data-en="Thin-crust pizzas, made to take on the flavour and texture that only a wood-fired oven gives them. And at the table, much more to discover, because here you also get a taste of the Algarve." data-es="Pizzas de masa fina, preparadas para ganar en el horno de leña el sabor y la textura que las hacen especiales. Y en la mesa, mucho más por descubrir, porque aquí también se saborea el Algarve.">Pizzas de crosta fina, preparadas para ganhar no forno a lenha o sabor e a textura que as tornam especiais. E à mesa, muito mais para descobrir, porque aqui também se saboreia o Algarve.</p>
+      <div class="acoes">
+        <a class="btn btn-p" href="tel:+351281957492" data-t="Reservar · 281 957 492" data-en="Book · 281 957 492" data-es="Reservar · 281 957 492">Reservar · 281 957 492</a>
+        <a class="btn btn-c" href="#ementa" data-t="Ver a ementa" data-en="See the menu" data-es="Ver la carta">Ver a ementa</a>
+      </div>
+      <div class="hero-pe">
+        <span><b>R. da Alagoa 84</b> · Altura, Castro Marim</span>
+        <span data-t="Encerrado à quarta-feira" data-en="Closed on Wednesdays" data-es="Miércoles cerrado">Encerrado à quarta-feira</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-foto">
+    <span class="hero-tira" aria-hidden="true"></span>
+    <figure>
+      <img src="media/sala.jpg" width="675" height="449" fetchpriority="high"
+           alt="Sala do Restaurante &amp; Pizzaria Catarina cheia ao almoço, com paredes de pedra e mesas de madeira">
+      <figcaption data-t="A sala, num sábado de agosto." data-en="The dining room, on an August Saturday." data-es="La sala, un sábado de agosto.">A sala, num sábado de agosto.</figcaption>
+    </figure>
+  </div>
 </header>
 
-<main id="top">
-
-  <section class="hero" id="hero" aria-label="Forno e mar">
-    <div class="half forno" aria-hidden="true">
-      <div class="ph"></div>
-      <img src="media/hero-forno.jpg" alt="" loading="eager" fetchpriority="high" onerror="this.remove()">
-      <div class="veil"></div>
-    </div>
-    <div class="half mar" aria-hidden="true">
-      <div class="ph"></div>
-      <img src="media/hero-mar.jpg" alt="" loading="eager" onerror="this.remove()">
-      <div class="veil"></div>
-    </div>
-    <div class="hero-in">
-      <h1 class="h-seq" data-i18n-html="hero.h1">Pizza para eles.<br>Peixe para ti.</h1>
-      <p class="lead h-seq s2" data-i18n="hero.lead">As duas melhores cozinhas de Altura são a mesma.</p>
-      <p class="rating h-seq s3" data-i18n="hero.rating">3,9★ em 238 opiniões no Tripadvisor · n.º 5 de 37 restaurantes em Altura.</p>
-      <div class="hero-ctas h-seq s4">
-        <a class="cta" href="tel:+351281957492" data-i18n="cta.call">Ligar a reservar</a>
-        <a class="link-quiet" href="https://www.google.com/maps?q=Restaurante%20e%20Pizzaria%20Catarina%2C%20Rua%20da%20Alagoa%208%2C%20Altura" target="_blank" rel="noopener" data-i18n="cta.dir">Como chegar</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="mundo forno" id="forno">
-    <span class="giant" aria-hidden="true">FORNO</span>
-    <div class="wrap">
-      <div class="rv">
-        <h2 data-i18n="forno.h2">Do forno, com as mãos na massa.</h2>
-        <p data-i18n-html="forno.p1"><strong>Pizzas artesanais</strong>, de massa esticada à mão e forno bem quente. A bolha na borda é assinatura, não defeito.</p>
-        <p data-i18n-html="forno.p2"><strong>Pastas</strong> para quem quer Itália sem sair da Rua da Alagoa, feitas com o mesmo cuidado das pizzas.</p>
-        <p data-i18n-html="forno.p3">E sim — as <strong>opções vegetarianas e veganas</strong> não são um pedido especial: estão na carta, para que ninguém fique de fora.</p>
-      </div>
-      <div class="foto rv">
-        <svg viewBox="0 0 400 500" aria-hidden="true"><circle cx="200" cy="250" r="130" fill="none" stroke="#FBEDE8" stroke-width="1.6"/><circle cx="200" cy="250" r="96" fill="none" stroke="#FBEDE8" stroke-width="1" opacity=".6"/><path d="M200 120v260M70 250h260M110 160l180 180M290 160 110 340" stroke="#FBEDE8" stroke-width="1" opacity=".45"/></svg>
-        <img src="media/pizza.jpg" alt="Pizza artesanal da casa" loading="lazy" onerror="this.remove()">
-      </div>
-    </div>
-  </section>
-
-  <section class="mundo mar" id="mar">
-    <span class="giant" aria-hidden="true">MAR</span>
-    <div class="wrap">
-      <div class="rv">
-        <h2 data-i18n="mar.h2">Do mar, como Altura manda.</h2>
-        <p data-i18n-html="mar.p1"><strong>Dourada e robalo na grelha</strong>, atum quando o mar deixa: peixe fresco, simples, no ponto.</p>
-        <p data-i18n-html="mar.p2"><strong>Arrozes</strong> que chegam à mesa a fumegar, para dividir e repetir.</p>
-        <p data-i18n-html="mar.p3">Preços <strong>sem truques</strong> — "qualidade-preço sem preços inflacionados" é frase das avaliações, não nossa.</p>
-      </div>
-      <div class="foto rv">
-        <svg viewBox="0 0 400 500" aria-hidden="true"><path d="M80 260c55-60 185-60 250-8-60 52-190 52-250 8Zm250-8 42-26-12 34 12 30-42-28M60 340c60 24 220 24 290 0M60 180c60-24 220-24 290 0" fill="none" stroke="#E9F2F6" stroke-width="1.4" opacity=".8"/></svg>
-        <img src="media/peixe.jpg" alt="Peixe fresco na grelha" loading="lazy" onerror="this.remove()">
-      </div>
-    </div>
-  </section>
-
-  <section class="antonio" id="casa">
-    <div class="wrap">
-      <div class="foto rv">
-        <img src="media/antonio.jpg" alt="António, o proprietário, ao balcão" loading="lazy" onerror="this.remove()">
-      </div>
-      <div class="rv d1">
-        <h2 data-i18n="ant.h2">Uma casa com dono à vista.</h2>
-        <p data-i18n="ant.p1">Chamo-me António e esta casa é minha, no sentido em que estou cá. Ao almoço e ao jantar, na sala e no balcão. Quem escreve uma opinião sobre a Catarina recebe resposta minha, não de uma agência.</p>
-        <p data-i18n="ant.p2">A receita é curta: casa limpa, pessoal profissional e amigável, e preços sem truques. O resto é o forno e o mar a fazerem o trabalho deles.</p>
-        <p data-i18n="ant.p3">Somos a casa das mesas divididas: pizza para uns, peixe para outros, opções vegetarianas e veganas para que ninguém fique de fora. E a praia de Altura fica a cinco minutos a pé.</p>
-        <div class="destaques">
-          <p data-i18n="ant.d1">"Pessoal profissional e amigável."</p>
-          <p data-i18n="ant.d2">"Boa relação qualidade-preço, sem preços inflacionados."</p>
-          <p class="src" data-i18n-html="ant.src">Sentido geral das avaliações públicas — não são citações literais. <a href="https://www.tripadvisor.pt/Search?q=Restaurante%20Pizzaria%20Catarina%20Altura" target="_blank" rel="noopener">Ler no Tripadvisor</a>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="galeria" id="galeria">
-    <div class="wrap">
-      <h2 class="rv" data-i18n="gal.h2">A casa, ao vivo.</h2>
-      <div class="g-grid">
-        <figure class="rv"><img src="media/gal-01.jpg" alt="O forno da casa" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="rv d1"><img src="media/gal-02.jpg" alt="Mãos a esticar massa de pizza" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="rv d2"><img src="media/gal-03.jpg" alt="Banca de peixe fresco" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="rv"><img src="media/gal-04.jpg" alt="Esplanada ao fim de tarde" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="rv d1"><img src="media/gal-05.jpg" alt="Mesa de família com pizza e peixe" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="rv d2"><img src="media/gal-06.jpg" alt="Sobremesa e café" loading="lazy" onerror="this.remove()"></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="mesa" id="mesa">
-    <div class="wrap">
-      <div class="rv">
-        <h2 data-i18n="mesa.h2">À mesa, todos os dias.</h2>
-        <a class="tel" href="tel:+351281957492">281 957 492</a>
-        <dl>
-          <div><dt data-i18n="mesa.hor.t">Horário</dt><dd data-i18n="mesa.hor.d">Todos os dias · 12:00–15:00 e 19:00–23:00</dd></div>
-          <div><dt data-i18n="mesa.mor.t">Morada</dt><dd>Rua da Alagoa 8, 8950-411 Altura — <a href="https://www.google.com/maps?q=Restaurante%20e%20Pizzaria%20Catarina%2C%20Rua%20da%20Alagoa%208%2C%20Altura" target="_blank" rel="noopener" data-i18n="cta.dir">Como chegar</a></dd></div>
-          <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/Restaurantepizzariacatarina" target="_blank" rel="noopener">Restaurantepizzariacatarina</a></dd></div>
-        </dl>
-      </div>
-      <div class="map rv d1">
-        <iframe src="https://www.google.com/maps?q=Restaurante%20e%20Pizzaria%20Catarina%2C%20Rua%20da%20Alagoa%208%2C%20Altura&output=embed" title="Mapa — Restaurante e Pizzaria Catarina, Altura" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
+<div class="provas">
   <div class="wrap">
-    <span>© <span id="yy">2026</span> Restaurante &amp; Pizzaria Catarina — Altura</span>
-    <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener" data-i18n="foot.book">Livro de Reclamações</a>
-    <span data-i18n="foot.by">Website: Pacheco Studios</span>
+    <div class="p"><span class="n">4,4<em>★</em></span><span class="d" data-t="168 avaliações Google" data-en="168 Google reviews" data-es="168 reseñas Google">168 avaliações Google</span></div>
+    <div class="p"><span class="n"><em>N.º 1</em></span><span class="d" data-t="Pizzaria de Altura · TripAdvisor" data-en="Pizzeria in Altura · TripAdvisor" data-es="Pizzería de Altura · TripAdvisor">Pizzaria de Altura · TripAdvisor</span></div>
+    <div class="p"><span class="n">4 min</span><span class="d" data-t="Da Praia da Alagoa" data-en="From Alagoa beach" data-es="De la playa de Alagoa">Da Praia da Alagoa</span></div>
+    <div class="p"><span class="n" data-t="Lenha" data-en="Wood" data-es="Leña">Lenha</span><span class="d" data-t="Forno de tijolo, à vista" data-en="Brick oven, in plain sight" data-es="Horno de ladrillo, a la vista">Forno de tijolo, à vista</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ A NOSSA COZINHA ══════════════ -->
+<div class="diptico" id="cozinhas">
+  <div class="metade mar">
+    <div class="num">I</div>
+    <h3 data-t="Sabores da <em>nossa terra</em>" data-en="Flavours of <em>our land</em>" data-es="Sabores de <em>nuestra tierra</em>">Sabores da <em>nossa terra</em></h3>
+    <p class="lead" data-t="O Algarve também se serve à mesa." data-en="The Algarve is served at the table too." data-es="El Algarve también se sirve en la mesa.">O Algarve também se serve à mesa.</p>
+    <p data-t="Peixe grelhado, polvo, lulas à algarvia, arrozes e outros sabores que fazem parte da nossa cozinha. Pratos simples, generosos e feitos para desfrutar à mesa." data-en="Grilled fish, octopus, Algarve-style squid, rice dishes and other flavours that are part of our kitchen. Simple, generous dishes, made to be enjoyed at the table." data-es="Pescado a la brasa, pulpo, calamares al estilo del Algarve, arroces y otros sabores que forman parte de nuestra cocina. Platos sencillos, generosos y hechos para disfrutar en la mesa.">Peixe grelhado, polvo, lulas à algarvia, arrozes e outros sabores que fazem parte da nossa cozinha. Pratos simples, generosos e feitos para desfrutar à mesa.</p>
+    <ul><li data-t="Peixe" data-en="Fish" data-es="Pescado">Peixe</li><li data-t="Polvo" data-en="Octopus" data-es="Pulpo">Polvo</li><li data-t="Lulas" data-en="Squid" data-es="Calamares">Lulas</li><li data-t="Arrozes" data-en="Rice dishes" data-es="Arroces">Arrozes</li><li data-t="Sabores algarvios" data-en="Algarve flavours" data-es="Sabores del Algarve">Sabores algarvios</li></ul>
+  </div>
+  <div class="metade fogo">
+    <div class="num">II</div>
+    <h3 data-t="O nosso <em>forno</em>" data-en="Our <em>oven</em>" data-es="Nuestro <em>horno</em>">O nosso <em>forno</em></h3>
+    <p class="lead" data-t="Onde a pizza ganha outro sabor." data-en="Where pizza takes on another flavour." data-es="Donde la pizza gana otro sabor.">Onde a pizza ganha outro sabor.</p>
+    <p data-t="Pizzas de crosta fina, preparadas no próprio dia e cozinhadas em forno de lenha. O calor, o fogo e o tempo certo fazem o resto." data-en="Thin-crust pizzas, made the same day and baked in a wood-fired oven. The heat, the fire and the right timing do the rest." data-es="Pizzas de masa fina, preparadas el mismo día y cocinadas en horno de leña. El calor, el fuego y el tiempo justo hacen el resto.">Pizzas de crosta fina, preparadas no próprio dia e cozinhadas em forno de lenha. O calor, o fogo e o tempo certo fazem o resto.</p>
+    <ul><li>Pizza</li><li data-t="Forno a lenha" data-en="Wood-fired oven" data-es="Horno de leña">Forno a lenha</li><li data-t="Crosta fina" data-en="Thin crust" data-es="Masa fina">Crosta fina</li><li data-t="Para levar" data-en="Takeaway" data-es="Para llevar">Para levar</li></ul>
+  </div>
+</div>
+
+<!-- ══════════════ 01 · O NOSSO ESPAÇO ══════════════ -->
+<section class="retrato-sec" id="espaco">
+  <div class="wrap rev">
+    <div class="olho" data-t="A casa · 01 · O nosso espaço" data-en="The house · 01 · Our place" data-es="La casa · 01 · Nuestro espacio">A casa · 01 · O nosso espaço</div>
+    <div class="ded">
+      <div>
+        <h2 data-t="Conheça o<br><em>nosso espaço</em>." data-en="Come and see<br><em>our place</em>." data-es="Conozca<br><em>nuestro espacio</em>.">Conheça o<br><em>nosso espaço</em>.</h2>
+        <p class="lead-s" data-t="Sente-se, está em casa. À mesa, o Algarve sabe melhor." data-en="Sit down, you are at home. At the table, the Algarve tastes better." data-es="Siéntese, está en casa. En la mesa, el Algarve sabe mejor.">Sente-se, está em casa. À mesa, o Algarve sabe melhor.</p>
+        <p data-t="No Catarina há espaço para todos. Uma sala ampla e uma esplanada coberta para aproveitar os dias do Algarve, seja num almoço em família, num jantar entre amigos ou numa mesa que se prolonga pela noite." data-en="At Catarina there is room for everyone. A spacious dining room and a covered terrace to make the most of Algarve days, whether it is a family lunch, dinner with friends or a table that lingers into the night." data-es="En Catarina hay sitio para todos. Una sala amplia y una terraza cubierta para aprovechar los días del Algarve, ya sea en una comida en familia, una cena entre amigos o una mesa que se alarga hasta la noche.">No Catarina há espaço para todos. Uma sala ampla e uma esplanada coberta para aproveitar os dias do Algarve, seja num almoço em família, num jantar entre amigos ou numa mesa que se prolonga pela noite.</p>
+        <ul class="momentos">
+          <li><b data-t="Almoço" data-en="Lunch" data-es="Comida">Almoço</b><span data-t="em família" data-en="with family" data-es="en familia">em família</span></li>
+          <li><b data-t="Jantar" data-en="Dinner" data-es="Cena">Jantar</b><span data-t="entre amigos" data-en="with friends" data-es="entre amigos">entre amigos</span></li>
+          <li><b data-t="Noite" data-en="Night" data-es="Noche">Noite</b><span data-t="sem pressa" data-en="no rush" data-es="sin prisa">sem pressa</span></li>
+        </ul>
+        <div class="selo" data-t="Sala ampla · Esplanada coberta" data-en="Spacious room · Covered terrace" data-es="Sala amplia · Terraza cubierta">Sala ampla · Esplanada coberta</div>
+      </div>
+      <div class="visual duo">
+        <span class="fundo-cor" aria-hidden="true"></span>
+        <span class="marca-n" aria-hidden="true">01</span>
+        <figure class="moldura f1">
+          <img src="media/sala-detalhe.jpg" width="392" height="449" loading="lazy"
+               alt="Sala do restaurante: paredes de pedra, vigas de madeira e candeeiros suspensos">
+          <figcaption data-t="A sala." data-en="The dining room." data-es="La sala.">A sala.</figcaption>
+        </figure>
+        <figure class="moldura f2">
+          <img src="media/esplanada.jpg" width="342" height="509" loading="lazy"
+               alt="Esplanada coberta do Restaurante &amp; Pizzaria Catarina, com mesas e o letreiro da casa">
+          <figcaption data-t="A esplanada." data-en="The terrace." data-es="La terraza.">A esplanada.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 02 · O FORNO ══════════════ -->
+<section class="retrato-sec" id="cozinha">
+  <div class="faulhas" aria-hidden="true"></div>
+  <div class="wrap rev">
+    <div class="olho" data-t="A casa · 02 · O forno" data-en="The house · 02 · The oven" data-es="La casa · 02 · El horno">A casa · 02 · O forno</div>
+    <div class="ded">
+      <div>
+        <h2 data-t="O sabor começa<br><em>no forno</em>." data-en="Flavour starts<br><em>in the oven</em>." data-es="El sabor empieza<br><em>en el horno</em>.">O sabor começa<br><em>no forno</em>.</h2>
+        <p class="lead-s" data-t="Lenha, fogo e o tempo certo." data-en="Wood, fire and the right timing." data-es="Leña, fuego y el tiempo justo.">Lenha, fogo e o tempo certo.</p>
+        <p data-t="O nosso forno a lenha é o coração da pizzaria. É aqui que as pizzas de crosta fina ganham a textura, o aroma e o sabor que as tornam tão especiais. Preparadas na hora e cozinhadas de lume aceso, como uma boa e genuína pizza deve ser." data-en="Our wood-fired oven is the heart of the pizzeria. This is where our thin-crust pizzas get the texture, the aroma and the flavour that make them so special. Made to order and baked over a live fire, the way a good, genuine pizza should be." data-es="Nuestro horno de leña es el corazón de la pizzería. Es aquí donde las pizzas de masa fina ganan la textura, el aroma y el sabor que las hacen tan especiales. Preparadas al momento y cocinadas con el fuego encendido, como debe ser una buena y auténtica pizza.">O nosso forno a lenha é o coração da pizzaria. É aqui que as pizzas de crosta fina ganham a textura, o aroma e o sabor que as tornam tão especiais. Preparadas na hora e cozinhadas de lume aceso, como uma boa e genuína pizza deve ser.</p>
+        <div class="temp">
+          <div><b data-t="Lenha" data-en="Wood" data-es="Leña">Lenha</b><span data-t="Lume sempre aceso" data-en="A live fire" data-es="Fuego siempre vivo">Lume sempre aceso</span></div>
+          <div><b data-t="Na hora" data-en="To order" data-es="Al momento">Na hora</b><span data-t="Preparadas no momento" data-en="Made when you order" data-es="Preparadas al pedir">Preparadas no momento</span></div>
+          <div><b data-t="Fina" data-en="Thin" data-es="Fina">Fina</b><span data-t="Crosta estaladiça" data-en="Crisp crust" data-es="Masa crujiente">Crosta estaladiça</span></div>
+        </div>
+        <div class="selo" data-t="Também vai para levar, quente" data-en="Takeaway too, hot" data-es="También para llevar, caliente">Também vai para levar, quente</div>
+      </div>
+      <div class="visual">
+        <span class="fundo-cor" aria-hidden="true"></span>
+        <span class="marca-n" aria-hidden="true">02</span>
+        <figure class="moldura">
+          <img src="media/forno.jpg" width="338" height="510"
+               alt="Pizzaiolo a trabalhar no forno a lenha de tijolo, com o lume aceso">
+          <figcaption data-t="O lume não se apaga entre pizzas." data-en="The fire does not go out between pizzas." data-es="El fuego no se apaga entre pizzas.">O lume não se apaga entre pizzas.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ EMENTA ══════════════ -->
+<section id="ementa">
+  <div class="wrap rev">
+    <div class="olho" data-t="A ementa" data-en="The menu" data-es="La carta">A ementa</div>
+    <h2 data-t="Sabores para<br><em>todos os gostos</em>." data-en="Flavours for<br><em>every taste</em>." data-es="Sabores para<br><em>todos los gustos</em>.">Sabores para<br><em>todos os gostos</em>.</h2>
+    <p class="lead-s" data-t="Da nossa cozinha à sua mesa." data-en="From our kitchen to your table." data-es="De nuestra cocina a su mesa.">Da nossa cozinha à sua mesa.</p>
+    <p class="intro" data-t="Dos pratos de peixe e marisco às carnes grelhadas e às nossas pizzas de crosta fina em forno a lenha. Descubra a ementa do Catarina e escolha o que lhe apetece hoje." data-en="From fish and seafood dishes to grilled meats and our thin-crust, wood-fired pizzas. Discover Catarina's menu and choose what you feel like today." data-es="De los platos de pescado y marisco a las carnes a la brasa y nuestras pizzas de masa fina en horno de leña. Descubra la carta de Catarina y elija lo que le apetece hoy.">Dos pratos de peixe e marisco às carnes grelhadas e às nossas pizzas de crosta fina em forno a lenha. Descubra a ementa do Catarina e escolha o que lhe apetece hoje.</p>
+
+    <div class="apetece" role="group" aria-label="Filtrar a ementa">
+      <span class="q" data-t="Hoje apetece-me…" data-en="Today I feel like…" data-es="Hoy me apetece…">Hoje apetece-me…</span>
+      <button type="button" data-f="tudo" aria-pressed="true" data-t="Tudo" data-en="Everything" data-es="Todo">Tudo</button>
+      <button type="button" data-f="forno" aria-pressed="false" data-t="Pizza" data-en="Pizza" data-es="Pizza">Pizza</button>
+      <button type="button" data-f="mar" aria-pressed="false" data-t="Peixe e marisco" data-en="Fish &amp; seafood" data-es="Pescado y marisco">Peixe e marisco</button>
+      <button type="button" data-f="grelha" aria-pressed="false" data-t="Da grelha" data-en="From the grill" data-es="De la brasa">Da grelha</button>
+    </div>
+
+    <div class="cartas" id="cartas">
+      <div class="grupo grelha">
+        <h4 data-t="Da grelha" data-en="From the grill" data-es="De la brasa">Da grelha</h4>
+        <div class="prato"><div class="tx"><b data-t="Robalo grelhado" data-en="Grilled sea bass" data-es="Lubina a la brasa">Robalo grelhado</b><span data-t="inteiro, com batata e legumes" data-en="whole, with potato and vegetables" data-es="entero, con patata y verduras">inteiro, com batata e legumes</span></div><span class="pr">14,00</span></div>
+        <div class="prato"><div class="tx"><b data-t="Dourada grelhada" data-en="Grilled sea bream" data-es="Dorada a la brasa">Dourada grelhada</b><span data-t="conforme o tamanho do dia" data-en="depending on the day's size" data-es="según el tamaño del día">conforme o tamanho do dia</span></div><span class="pr">14,00</span></div>
+        <div class="prato"><div class="tx"><b data-t="Choco grelhado" data-en="Grilled cuttlefish" data-es="Choco a la brasa">Choco grelhado</b><span data-t="da costa, na grelha" data-en="from the coast, on the grill" data-es="de la costa, a la brasa">da costa, na grelha</span></div><span class="pr">15,00</span></div>
+        <div class="prato"><div class="tx"><b data-t="Polvo à lagareiro" data-en="Octopus lagareiro" data-es="Pulpo al lagareiro">Polvo à lagareiro</b><span data-t="com batata a murro" data-en="with smashed potatoes" data-es="con patatas">com batata a murro</span></div><span class="pr">17,00</span></div>
+        <div class="prato"><div class="tx"><b data-t="Lulas à algarvia" data-en="Algarve-style squid" data-es="Calamares al estilo del Algarve">Lulas à algarvia</b><span data-t="com alho e coentros" data-en="with garlic and coriander" data-es="con ajo y cilantro">com alho e coentros</span></div></div>
+        <div class="prato"><div class="tx"><b data-t="Bifes" data-en="Steaks" data-es="Filetes">Bifes</b><span data-t="para quem não vem pelo peixe" data-en="for those not here for the fish" data-es="para quien no viene por el pescado">para quem não vem pelo peixe</span></div></div>
+      </div>
+      <div class="grupo mar">
+        <h4 data-t="Do mar, à mesa" data-en="Sea, to share" data-es="Del mar, a la mesa">Do mar, à mesa</h4>
+        <div class="prato"><div class="tx"><b data-t="Ostras" data-en="Oysters" data-es="Ostras">Ostras</b><span data-t="da ria, para começar" data-en="from the lagoon, to start" data-es="de la ría, para empezar">da ria, para começar</span></div></div>
+        <div class="prato"><div class="tx"><b data-t="Arroz de marisco" data-en="Seafood rice" data-es="Arroz de marisco">Arroz de marisco</b><span data-t="mínimo duas pessoas" data-en="minimum two people" data-es="mínimo dos personas">mínimo duas pessoas</span></div></div>
+        <div class="prato"><div class="tx"><b data-t="Arroz de polvo" data-en="Octopus rice" data-es="Arroz de pulpo">Arroz de polvo</b><span data-t="malandrinho, como deve ser" data-en="soupy, as it should be" data-es="caldoso, como debe ser">malandrinho, como deve ser</span></div><span class="pr">13,50</span></div>
+        <div class="prato"><div class="tx"><b data-t="Peixe do dia" data-en="Catch of the day" data-es="Pescado del día">Peixe do dia</b><span data-t="pergunte — muda todos os dias" data-en="just ask — it changes daily" data-es="pregunte — cambia cada día">pergunte — muda todos os dias</span></div></div>
+      </div>
+      <div class="grupo forno">
+        <h4 data-t="Do forno a lenha" data-en="From the wood oven" data-es="Del horno de leña">Do forno a lenha</h4>
+        <div class="prato"><div class="tx"><b>Pizza pepperoni</b><span data-t="a mais pedida da casa" data-en="the house favourite" data-es="la más pedida de la casa">a mais pedida da casa</span></div></div>
+        <div class="prato"><div class="tx"><b data-t="Pizzas da casa" data-en="House pizzas" data-es="Pizzas de la casa">Pizzas da casa</b><span data-t="massa feita no dia" data-en="dough made same day" data-es="masa hecha en el día">massa feita no dia</span></div></div>
+        <div class="prato"><div class="tx"><b data-t="Lasanha" data-en="Lasagna" data-es="Lasaña">Lasanha</b><span data-t="a de sempre" data-en="the classic" data-es="la de siempre">a de sempre</span></div></div>
+        <div class="prato"><div class="tx"><b data-t="Opções vegetarianas" data-en="Vegetarian options" data-es="Opciones vegetarianas">Opções vegetarianas</b><span data-t="diga-nos e resolvemos" data-en="tell us and we sort it" data-es="díganoslo y lo resolvemos">diga-nos e resolvemos</span></div></div>
+        <div class="prato"><div class="tx"><b data-t="Sobremesas" data-en="Desserts" data-es="Postres">Sobremesas</b><span data-t="parfait, gelados e crepes" data-en="parfait, ice cream and crêpes" data-es="parfait, helados y crepes">parfait, gelados e crepes</span></div></div>
+      </div>
+    </div>
+    <p class="nota-p" data-t="Valores em euros. Ementa completa na casa — cerca de 15 € a 20 € por pessoa, conforme o que escolher." data-en="Prices in euros. Full menu at the restaurant — around €15–20 per person, depending on what you choose." data-es="Precios en euros. Carta completa en el restaurante — entre 15 € y 20 € por persona, según lo que elija.">Valores em euros. Ementa completa na casa — cerca de 15 € a 20 € por pessoa, conforme o que escolher.</p>
+  </div>
+</section>
+
+<!-- ══════════════ ANTES DE VIR ══════════════ -->
+<section id="antes">
+  <div class="wrap rev">
+    <div class="olho" data-t="Antes de vir" data-en="Before you come" data-es="Antes de venir">Antes de vir</div>
+    <h2 data-t="O que costuma <em>fazer falta</em> saber." data-en="What people usually <em>need to know</em>." data-es="Lo que suele <em>hacer falta</em> saber.">O que costuma <em>fazer falta</em> saber.</h2>
+    <div class="grade4">
+      <div class="c"><div class="ic">🌤️</div><h4 data-t="Esplanada" data-en="Terrace" data-es="Terraza">Esplanada</h4>
+        <p data-t="Mesas fora, para as noites em que não apetece estar dentro de portas." data-en="Tables outside, for the nights when nobody wants to be indoors." data-es="Mesas fuera, para las noches en que no apetece estar dentro.">Mesas fora, para as noites em que não apetece estar dentro de portas.</p></div>
+      <div class="c"><div class="ic">🥡</div><h4 data-t="Para levar" data-en="Takeaway" data-es="Para llevar">Para levar</h4>
+        <p data-t="Leve para o apartamento ou para a praia. É só ligar e dizer a que horas passa." data-en="Take it to the apartment or the beach. Just call and say when you are coming by." data-es="Llévelo al apartamento o a la playa. Solo tiene que llamar y decir a qué hora pasa.">Leve para o apartamento ou para a praia. É só ligar e dizer a que horas passa.</p></div>
+      <div class="c"><div class="ic">🅿️</div><h4 data-t="Estacionamento" data-en="Parking" data-es="Aparcamiento">Estacionamento</h4>
+        <p data-t="Gratuito na rua, mesmo à porta. Em agosto, venha um bocadinho mais cedo." data-en="Free on the street, right outside. In August, come a little earlier." data-es="Gratuito en la calle, justo a la puerta. En agosto, venga un poco antes.">Gratuito na rua, mesmo à porta. Em agosto, venha um bocadinho mais cedo.</p></div>
+      <div class="c"><div class="ic">♿</div><h4 data-t="Acessível" data-en="Accessible" data-es="Accesible">Acessível</h4>
+        <p data-t="Entrada acessível a cadeira de rodas, Wi-Fi e pagamento com cartão." data-en="Wheelchair accessible entrance, Wi-Fi and card payment." data-es="Entrada accesible en silla de ruedas, Wi-Fi y pago con tarjeta.">Entrada acessível a cadeira de rodas, Wi-Fi e pagamento com cartão.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ COMO CHEGAR ══════════════ -->
+<section id="chegar">
+  <div class="wrap rev">
+    <div class="olho" data-t="Onde estamos" data-en="Where we are" data-es="Dónde estamos">Onde estamos</div>
+    <h2 data-t="Em Altura, a <em>quatro minutos</em> da praia." data-en="In Altura, <em>four minutes</em> from the beach." data-es="En Altura, a <em>cuatro minutos</em> de la playa.">Em Altura, a <em>quatro minutos</em> da praia.</h2>
+    <p class="intro" data-t="Rua da Alagoa, 84 — a mesma rua que leva à praia. Quem vem de Espanha está a vinte minutos da fronteira." data-en="Rua da Alagoa 84 — the same road that leads to the beach. Coming from Spain, you are twenty minutes from the border." data-es="Rua da Alagoa 84 — la misma calle que lleva a la playa. Desde España, está a veinte minutos de la frontera.">Rua da Alagoa, 84 — a mesma rua que leva à praia. Quem vem de Espanha está a vinte minutos da fronteira.</p>
+
+    <div class="rotas">
+      <div class="rota"><div class="t">4</div><div class="l" data-t="min · Praia da Alagoa" data-en="min · Alagoa beach" data-es="min · Playa de Alagoa">min · Praia da Alagoa</div></div>
+      <div class="rota"><div class="t">10</div><div class="l">min · Monte Gordo</div></div>
+      <div class="rota"><div class="t">12</div><div class="l">min · Cacela Velha</div></div>
+      <div class="rota"><div class="t">15</div><div class="l">min · V. R. Sto. António</div></div>
+      <div class="rota"><div class="t">20</div><div class="l" data-t="min · Fronteira" data-en="min · Border" data-es="min · Frontera">min · Fronteira</div></div>
+    </div>
+
+    <div class="mapa" role="img" aria-label="Mapa esquemático: o restaurante fica na Rua da Alagoa, entre Altura e a praia">
+      <div class="praia"></div><div class="rua"></div><div class="pin"></div>
+      <span class="et" style="left:6%;top:30%">ALTURA</span>
+      <span class="et" style="left:40%;top:26%">R. DA ALAGOA</span>
+      <span class="et" style="right:7%;top:30%">V.R.S.A.</span>
+      <span class="et" style="left:44%;bottom:7%;color:#2F5F6B">PRAIA DA ALAGOA</span>
+    </div>
+
+    <div class="baixo">
+      <div class="horario">
+        <h3 data-t="Horário" data-en="Opening hours" data-es="Horario">Horário</h3>
+        <div id="tabela-horario"></div>
+        <p style="font-size:13px;color:var(--muted);margin-top:14px" data-t="Cozinha das 12h30 às 15h e das 19h às 22h." data-en="Kitchen open 12.30–3pm and 7–10pm." data-es="Cocina de 12.30 a 15 h y de 19 a 22 h.">Cozinha das 12h30 às 15h e das 19h às 22h.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--disp);font-size:30px;font-weight:600;margin-bottom:12px" data-t="Reservar" data-en="Book a table" data-es="Reservar">Reservar</h3>
+        <p style="color:var(--muted);margin-bottom:22px;font-size:16px" data-t="Em julho e agosto, e aos fins de semana, vale mesmo a pena ligar antes." data-en="In July and August, and at weekends, it really is worth calling ahead." data-es="En julio y agosto, y los fines de semana, merece la pena llamar antes.">Em julho e agosto, e aos fins de semana, vale mesmo a pena ligar antes.</p>
+        <a class="btn btn-esc" href="tel:+351281957492" style="width:100%">281 957 492</a>
+        <p style="font-size:13px;color:var(--muted);margin-top:16px">R. da Alagoa 84, 8950-414 Altura · Castro Marim</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div><b>Restaurante &amp; Pizzaria Catarina</b>
+      R. da Alagoa 84<br>8950-414 Altura · Castro Marim<br>
+      <a href="tel:+351281957492">281 957 492</a><br>
+      <a href="https://www.instagram.com/pizzaria_catarina/" target="_blank" rel="noopener">@pizzaria_catarina</a></div>
+    <div><b data-t="Horário" data-en="Hours" data-es="Horario">Horário</b>
+      <span data-t="Todos os dias · 12h30–15h e 19h–22h" data-en="Every day · 12.30–3pm and 7–10pm" data-es="Todos los días · 12.30–15 h y 19–22 h">Todos os dias · 12h30–15h e 19h–22h</span><br>
+      <span data-t="Quarta-feira encerrado" data-en="Closed on Wednesdays" data-es="Miércoles cerrado">Quarta-feira encerrado</span></div>
+    <div><b data-t="A casa" data-en="The house" data-es="La casa">A casa</b>
+      <span data-t="Esplanada · Para levar · Wi-Fi" data-en="Terrace · Takeaway · Wi-Fi" data-es="Terraza · Para llevar · Wi-Fi">Esplanada · Para levar · Wi-Fi</span><br>
+      <span data-t="Cartões · Acessível · Estacionamento" data-en="Cards · Accessible · Parking" data-es="Tarjetas · Accesible · Aparcamiento">Cartões · Acessível · Estacionamento</span></div>
+  </div>
+  <div class="wrap">
+    <p class="legal">
+      © <span id="ano"></span> Restaurante &amp; Pizzaria Catarina ·
+      <a href="privacidade.html" data-t="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a> ·
+      <a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">Livro de Reclamações</a><br>
+      <span style="opacity:.7" data-t="Site por" data-en="Site by" data-es="Sitio por">Site por</span>
+      <a href="https://pachecost.com" target="_blank" rel="noopener">Pacheco Studios</a>
+    </p>
   </div>
 </footer>
 
-<a class="call-fab" href="tel:+351281957492" data-i18n="cta.call">Ligar a reservar</a>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant",
+"name":"Restaurante & Pizzaria Catarina",
+"servesCuisine":["Portuguesa","Italiana","Pizza","Marisco"],
+"priceRange":"€€","telephone":"+351281957492","image":"media/sala.jpg",
+"address":{"@type":"PostalAddress","streetAddress":"Rua da Alagoa 84","addressLocality":"Altura","addressRegion":"Faro","postalCode":"8950-414","addressCountry":"PT"},
+"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.4","reviewCount":"168"},
+"openingHoursSpecification":[
+ {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Thursday","Friday","Saturday","Sunday"],"opens":"12:30","closes":"15:00"},
+ {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Thursday","Friday","Saturday","Sunday"],"opens":"19:00","closes":"22:00"}]}
+</script>
 
 <script>
-document.documentElement.classList.add('js');
-const I18N={
- pt:{
-  "banner":"APRESENTAÇÃO PACHECO STUDIOS · Proposta de demonstração para o Restaurante & Pizzaria Catarina · carta e preços a confirmar",
-  "brand.sub":"Restaurante & Pizzaria · Altura",
-  "nav.forno":"Do forno","nav.mar":"Do mar","nav.casa":"A casa","nav.gal":"Galeria","nav.mesa":"À mesa",
-  "cta.call":"Ligar a reservar","cta.dir":"Como chegar",
-  "hero.h1":"Pizza para eles.<br>Peixe para ti.",
-  "hero.lead":"As duas melhores cozinhas de Altura são a mesma.",
-  "hero.rating":"3,9★ em 238 opiniões no Tripadvisor · n.º 5 de 37 restaurantes em Altura.",
-  "forno.h2":"Do forno, com as mãos na massa.",
-  "forno.p1":"<strong>Pizzas artesanais</strong>, de massa esticada à mão e forno bem quente. A bolha na borda é assinatura, não defeito.",
-  "forno.p2":"<strong>Pastas</strong> para quem quer Itália sem sair da Rua da Alagoa, feitas com o mesmo cuidado das pizzas.",
-  "forno.p3":"E sim — as <strong>opções vegetarianas e veganas</strong> não são um pedido especial: estão na carta, para que ninguém fique de fora.",
-  "mar.h2":"Do mar, como Altura manda.",
-  "mar.p1":"<strong>Dourada e robalo na grelha</strong>, atum quando o mar deixa: peixe fresco, simples, no ponto.",
-  "mar.p2":"<strong>Arrozes</strong> que chegam à mesa a fumegar, para dividir e repetir.",
-  "mar.p3":"Preços <strong>sem truques</strong> — \"qualidade-preço sem preços inflacionados\" é frase das avaliações, não nossa.",
-  "ant.h2":"Uma casa com dono à vista.",
-  "ant.p1":"Chamo-me António e esta casa é minha, no sentido em que estou cá. Ao almoço e ao jantar, na sala e no balcão. Quem escreve uma opinião sobre a Catarina recebe resposta minha, não de uma agência.",
-  "ant.p2":"A receita é curta: casa limpa, pessoal profissional e amigável, e preços sem truques. O resto é o forno e o mar a fazerem o trabalho deles.",
-  "ant.p3":"Somos a casa das mesas divididas: pizza para uns, peixe para outros, opções vegetarianas e veganas para que ninguém fique de fora. E a praia de Altura fica a cinco minutos a pé.",
-  "ant.d1":"“Pessoal profissional e amigável.”",
-  "ant.d2":"“Boa relação qualidade-preço, sem preços inflacionados.”",
-  "ant.src":"Sentido geral das avaliações públicas — não são citações literais. <a href=\"https://www.tripadvisor.pt/Search?q=Restaurante%20Pizzaria%20Catarina%20Altura\" target=\"_blank\" rel=\"noopener\">Ler no Tripadvisor</a>.",
-  "gal.h2":"A casa, ao vivo.",
-  "mesa.h2":"À mesa, todos os dias.",
-  "mesa.hor.t":"Horário","mesa.hor.d":"Todos os dias · 12:00–15:00 e 19:00–23:00","mesa.mor.t":"Morada",
-  "foot.book":"Livro de Reclamações","foot.by":"Website: Pacheco Studios",
-  "title":"Restaurante & Pizzaria Catarina — pizzas artesanais e peixe fresco em Altura",
-  "desc":"Em Altura, a mesa dividida resolve-se: pizzas artesanais do forno e peixe fresco da grelha na mesma casa. Aberto todos os dias, Rua da Alagoa 8. Reservas: 281 957 492."
- },
- en:{
-  "banner":"PACHECO STUDIOS PRESENTATION · Demo proposal for Restaurante & Pizzaria Catarina · menu and prices to be confirmed",
-  "brand.sub":"Restaurant & Pizzeria · Altura",
-  "nav.forno":"The oven","nav.mar":"The sea","nav.casa":"The house","nav.gal":"Gallery","nav.mesa":"Your table",
-  "cta.call":"Call to book","cta.dir":"Directions",
-  "hero.h1":"Pizza for them.<br>Fish for you.",
-  "hero.lead":"The two best kitchens in Altura are the same one.",
-  "hero.rating":"3.9★ from 238 Tripadvisor reviews · #5 of 37 restaurants in Altura.",
-  "forno.h2":"From the oven, hands in the dough.",
-  "forno.p1":"<strong>Artisan pizzas</strong>, hand-stretched dough and a properly hot oven. The bubble on the crust is a signature, not a flaw.",
-  "forno.p2":"<strong>Pasta</strong> for anyone craving Italy without leaving Rua da Alagoa, made with the same care as the pizzas.",
-  "forno.p3":"And yes — the <strong>vegetarian and vegan options</strong> are not a special request: they're on the menu, so nobody is left out.",
-  "mar.h2":"From the sea, the Altura way.",
-  "mar.p1":"<strong>Grilled sea bream and sea bass</strong>, tuna when the sea allows: fresh fish, simple, done right.",
-  "mar.p2":"<strong>Seafood rice</strong> that arrives steaming, made for sharing and for seconds.",
-  "mar.p3":"Prices <strong>without tricks</strong> — \"good value, no inflated prices\" comes from the reviews, not from us.",
-  "ant.h2":"A house with the owner in sight.",
-  "ant.p1":"My name is António and this house is mine, in the sense that I'm here. At lunch and at dinner, in the dining room and at the counter. Anyone who writes a review of Catarina gets an answer from me, not from an agency.",
-  "ant.p2":"The recipe is short: a clean house, professional and friendly staff, and prices without tricks. The rest is the oven and the sea doing their job.",
-  "ant.p3":"We're the house of divided tables: pizza for some, fish for others, vegetarian and vegan options so nobody is left out. And Altura beach is five minutes on foot.",
-  "ant.d1":"“Professional and friendly staff.”",
-  "ant.d2":"“Good value for money, no inflated prices.”",
-  "ant.src":"General sense of public reviews — not literal quotes. <a href=\"https://www.tripadvisor.com/Search?q=Restaurante%20Pizzaria%20Catarina%20Altura\" target=\"_blank\" rel=\"noopener\">Read on Tripadvisor</a>.",
-  "gal.h2":"The house, live.",
-  "mesa.h2":"At the table, every day.",
-  "mesa.hor.t":"Opening hours","mesa.hor.d":"Every day · 12:00–15:00 and 19:00–23:00","mesa.mor.t":"Address",
-  "foot.book":"Complaints Book","foot.by":"Website: Pacheco Studios",
-  "title":"Restaurante & Pizzaria Catarina — artisan pizza and fresh fish in Altura",
-  "desc":"In Altura the divided table is solved: artisan pizzas from the oven and fresh grilled fish in the same house. Open every day, Rua da Alagoa 8. Bookings: +351 281 957 492."
- },
- es:{
-  "banner":"PRESENTACIÓN PACHECO STUDIOS · Propuesta de demostración para Restaurante & Pizzaria Catarina · carta y precios por confirmar",
-  "brand.sub":"Restaurante & Pizzería · Altura",
-  "nav.forno":"Del horno","nav.mar":"Del mar","nav.casa":"La casa","nav.gal":"Galería","nav.mesa":"A la mesa",
-  "cta.call":"Llamar y reservar","cta.dir":"Cómo llegar",
-  "hero.h1":"Pizza para ellos.<br>Pescado para ti.",
-  "hero.lead":"Las dos mejores cocinas de Altura son la misma.",
-  "hero.rating":"3,9★ en 238 opiniones en Tripadvisor · n.º 5 de 37 restaurantes en Altura.",
-  "forno.h2":"Del horno, con las manos en la masa.",
-  "forno.p1":"<strong>Pizzas artesanas</strong>, masa estirada a mano y horno bien caliente. La burbuja del borde es firma, no defecto.",
-  "forno.p2":"<strong>Pastas</strong> para quien quiere Italia sin salir de la Rua da Alagoa, hechas con el mismo cuidado que las pizzas.",
-  "forno.p3":"Y sí — las <strong>opciones vegetarianas y veganas</strong> no son un pedido especial: están en la carta, para que nadie se quede fuera.",
-  "mar.h2":"Del mar, como manda Altura.",
-  "mar.p1":"<strong>Dorada y lubina a la brasa</strong>, atún cuando el mar lo permite: pescado fresco, simple, en su punto.",
-  "mar.p2":"<strong>Arroces</strong> que llegan a la mesa humeando, para compartir y repetir.",
-  "mar.p3":"Precios <strong>sin trucos</strong> — \"buena relación calidad-precio, sin precios inflados\" es frase de las reseñas, no nuestra.",
-  "ant.h2":"Una casa con dueño a la vista.",
-  "ant.p1":"Me llamo António y esta casa es mía, en el sentido de que estoy aquí. En la comida y en la cena, en la sala y en la barra. Quien escribe una reseña sobre Catarina recibe respuesta mía, no de una agencia.",
-  "ant.p2":"La receta es corta: casa limpia, personal profesional y amable, y precios sin trucos. El resto lo hacen el horno y el mar.",
-  "ant.p3":"Somos la casa de las mesas divididas: pizza para unos, pescado para otros, opciones vegetarianas y veganas para que nadie se quede fuera. Y la playa de Altura está a cinco minutos a pie.",
-  "ant.d1":"“Personal profesional y amable.”",
-  "ant.d2":"“Buena relación calidad-precio, sin precios inflados.”",
-  "ant.src":"Sentido general de las reseñas públicas — no son citas literales. <a href=\"https://www.tripadvisor.es/Search?q=Restaurante%20Pizzaria%20Catarina%20Altura\" target=\"_blank\" rel=\"noopener\">Leer en Tripadvisor</a>.",
-  "gal.h2":"La casa, en vivo.",
-  "mesa.h2":"A la mesa, todos los días.",
-  "mesa.hor.t":"Horario","mesa.hor.d":"Todos los días · 12:00–15:00 y 19:00–23:00","mesa.mor.t":"Dirección",
-  "foot.book":"Libro de Reclamaciones","foot.by":"Web: Pacheco Studios",
-  "title":"Restaurante & Pizzaria Catarina — pizza artesana y pescado fresco en Altura",
-  "desc":"En Altura la mesa dividida se resuelve: pizzas artesanas del horno y pescado fresco a la brasa en la misma casa. Abierto todos los días, Rua da Alagoa 8. Reservas: +351 281 957 492."
- }
-};
-function setLang(l){
-  const d=I18N[l]||I18N.pt;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(d[k]!==undefined)el.textContent=d[k]});
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(d[k]!==undefined)el.innerHTML=d[k]});
-  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===l)));
-  document.documentElement.lang=l==='pt'?'pt-PT':l;
-  document.title=d.title;
-  const m=document.querySelector('meta[name="description"]');if(m)m.setAttribute('content',d.desc);
-  try{localStorage.setItem('cat-lang',l)}catch(e){}
-}
-document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-let saved='pt';try{saved=localStorage.getItem('cat-lang')||'pt'}catch(e){}
-if(saved!=='pt')setLang(saved);
+(function(){
+  'use strict';
+  var $=function(s,c){return (c||document).querySelector(s)},
+      $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
 
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24),{passive:true});
-const burger=document.getElementById('burger'),links=document.getElementById('navlinks');
-burger.addEventListener('click',()=>{const o=burger.getAttribute('aria-expanded')==='true';burger.setAttribute('aria-expanded',String(!o));links.classList.toggle('open',!o)});
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.setAttribute('aria-expanded','false');links.classList.remove('open')}));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-document.getElementById('yy').textContent=new Date().getFullYear();
-
-/* momento autoral: a diagonal segue o rato com easing (desktop, sem reduced-motion) */
-const hero=document.getElementById('hero');
-const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(!rm && matchMedia('(min-width: 761px)').matches){
-  let target=0,current=0,raf=null;
-  hero.addEventListener('mousemove',e=>{
-    const r=hero.getBoundingClientRect();
-    target=((e.clientX-r.left)/r.width-.5)*12; /* -6% a +6% */
-    if(!raf)step();
-  });
-  hero.addEventListener('mouseleave',()=>{target=0;if(!raf)step()});
-  function step(){
-    raf=requestAnimationFrame(()=>{
-      current+=(target-current)*.07;
-      hero.querySelectorAll('.half').forEach(h=>h.style.setProperty('--shift',current.toFixed(2)+'%'));
-      if(Math.abs(target-current)>.05){step()}else{raf=null}
-    });
+  var H={0:[[12.5,15],[19,22]],1:[[12.5,15],[19,22]],2:[[12.5,15],[19,22]],3:[],
+         4:[[12.5,15],[19,22]],5:[[12.5,15],[19,22]],6:[[12.5,15],[19,22]]};
+  var NOMES={
+    pt:['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+    en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+    es:['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']
+  };
+  var TX={
+    pt:{ab:'Aberto agora · fecha às ',fe:'Fechado · abre ',hoje:'hoje',amanha:'amanhã',fech:'Encerrado',as:' às '},
+    en:{ab:'Open now · closes at ',fe:'Closed · opens ',hoje:'today',amanha:'tomorrow',fech:'Closed',as:' at '},
+    es:{ab:'Abierto ahora · cierra a las ',fe:'Cerrado · abre ',hoje:'hoy',amanha:'mañana',fech:'Cerrado',as:' a las '}
+  };
+  var L='pt';
+  function hm(h){var i=Math.floor(h);return i+'h'+((h-i)?String(Math.round((h-i)*60)).padStart(2,'0'):'00');}
+  function estado(){
+    var d=new Date(),dia=d.getDay(),h=d.getHours()+d.getMinutes()/60,j=H[dia]||[],t=TX[L];
+    for(var i=0;i<j.length;i++) if(h>=j[i][0]&&h<j[i][1]) return {ab:true,txt:t.ab+hm(j[i][1])};
+    for(var k=0;k<8;k++){
+      var dd=(dia+k)%7,jj=H[dd]||[];
+      for(var n=0;n<jj.length;n++){
+        if(k>0||jj[n][0]>h){
+          var q=k===0?t.hoje:(k===1?t.amanha:NOMES[L][dd].toLowerCase());
+          return {ab:false,txt:t.fe+q+t.as+hm(jj[n][0])};
+        }
+      }
+    }
+    return {ab:false,txt:t.fech};
   }
-}
-/* mobile: toque alterna o destaque forno/mar */
-if(matchMedia('(max-width: 760px)').matches){
-  let state=0;
-  hero.addEventListener('click',e=>{
-    if(e.target.closest('a,button'))return;
-    state=(state+1)%3;
-    hero.classList.toggle('focus-forno',state===1);
-    hero.classList.toggle('focus-mar',state===2);
-  });
-}
+  function pintaEstado(){
+    var e=estado(); $('#estado').classList.toggle('off',!e.ab); $('#estado-txt').textContent=e.txt;
+    var hoje=new Date().getDay(), html='';
+    for(var i=1;i<=7;i++){
+      var d=i%7, aberto=(H[d]||[]).length>0;
+      html+='<div class="l '+(d===hoje?'hoje':'')+(aberto?'':' fech')+'"><span>'+NOMES[L][d]+'</span><span>'+
+        (aberto?'12h30–15h · 19h–22h':TX[L].fech)+'</span></div>';
+    }
+    $('#tabela-horario').innerHTML=html;
+  }
+
+  function setLang(l){
+    L=l;
+    $$('[data-en]').forEach(function(el){
+      if(!el.hasAttribute('data-t')) el.setAttribute('data-t', el.innerHTML);
+      el.innerHTML = el.getAttribute(l==='pt'?'data-t':(l==='en'?'data-en':'data-es')) || el.getAttribute('data-t');
+    });
+    $$('.langs button').forEach(function(b){ b.setAttribute('aria-pressed',String(b.dataset.l===l)); });
+    document.documentElement.lang = l==='pt'?'pt-PT':(l==='en'?'en':'es');
+    pintaEstado();
+  }
+  $$('.langs button').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.l); }); });
+
+  var nav=$('#nav');
+  function verNav(){ nav.classList.toggle('solida', window.scrollY > 90); }
+  window.addEventListener('scroll',verNav,{passive:true}); verNav();
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},
+      {rootMargin:'0px 0px -12% 0px'});
+    $$('.rev').forEach(function(e){io.observe(e);});
+  } else $$('.rev').forEach(function(e){e.classList.add('on');});
+
+  /* ementa: "Hoje apetece-me…" */
+  var cartas=$('#cartas');
+  $$('.apetece button').forEach(function(b){ b.addEventListener('click',function(){
+    var f=b.dataset.f;
+    $$('.apetece button').forEach(function(x){ x.setAttribute('aria-pressed',String(x===b)); });
+    cartas.classList.toggle('filtra', f!=='tudo');
+    $$('.grupo',cartas).forEach(function(g){ g.classList.toggle('ativo', g.classList.contains(f)); });
+  }); });
+
+  /* fagulhas do forno (só se o visitante aceita movimento) */
+  if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    var fa=$('.faulhas'), h='';
+    for(var i=0;i<22;i++){
+      h+='<i style="left:'+(4+Math.random()*92).toFixed(1)+'%;--d:'+(6+Math.random()*6).toFixed(1)+'s;--a:'+
+         (-Math.random()*10).toFixed(1)+'s;--x:'+(Math.random()*80-40).toFixed(0)+'px"></i>';
+    }
+    fa.innerHTML=h;
+  }
+
+  $('#ano').textContent=new Date().getFullYear();
+  pintaEstado(); setInterval(pintaEstado,60000);
+})();
 </script>
 </body>
 </html>
