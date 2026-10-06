@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reel EN 4 · Same Tuesday</title>
+<!-- Reel 4 «Same Tuesday. Two cafés.» (Instagram @pachecostudiospt, 07/10/2026)
+     Ângulo: antes e depois NUM SÓ PLANO. Ecrã dividido em cima (café sem sistema, papel de jornal, lápis vermelho) e em baixo
+     (café com sistema, creme e verde), com um relógio de palhetas no meio a correr a terça-feira: 13:30 avaliações · 16:00 faltas · 23:40 → 07:00 relatório.
+     Em baixo, o esquema de cada sistema (pachecost.com/en) desenha-se como linha horizontal de 3 passos e termina num carimbo verde.
+     Identidade própria: editorial, Fraunces itálico + Space Grotesk, carimbos rodados, cenas que entram da direita (o dia avança).
+     30 s, 100 BPM com swing. Linha do tempo: gancho 0–3 · 13:30 em 3,0 · 16:00 em 9,6 · 23:40 em 16,2 (vira para 07:00 em 20,4) · resultado 23,4 · fecho 27–30.
+     Cada fotograma sai de render(t), sem estado; render34.cjs captura 30 fps e junta o som de som34.py (eventos em window.SFX).
+     Nomes, números e horas são fictícios e ilustrativos. Zona segura: em cima y 270–900; em baixo y 1020–1480. -->
+<style>
+@font-face{font-family:FR;src:url(fontes/fraunces-i900.woff2) format("woff2");font-weight:900;font-style:italic}
+@font-face{font-family:FR;src:url(fontes/fraunces-i400.woff2) format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:SG;src:url(fontes/spacegrotesk-700.woff2) format("woff2");font-weight:700}
+@font-face{font-family:SG;src:url(fontes/spacegrotesk-500.woff2) format("woff2");font-weight:500}
+@font-face{font-family:IN;src:url(../../marca/fontes/inter-var.woff2) format("woff2");font-weight:100 900}
+:root{--paper:#ECE9E3;--ink:#1C1B19;--red:#C8321E;--grey:#7E7A73;--cream:#FFF6E4;--green:#1F5B3F;--green2:#2F7D58;--gold:#D9A441;--band:#141311}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--band)}
+#s{position:absolute;inset:0;overflow:hidden;font-family:IN,sans-serif;color:var(--ink)}
+.half{position:absolute;left:0;right:0;overflow:hidden}
+.top{top:0;height:920px;background:var(--paper);background-image:radial-gradient(rgba(28,27,25,.07) 1px,transparent 1px);background-size:14px 14px}
+.bot{top:1000px;height:920px;background:var(--cream)}
+.band{position:absolute;left:0;right:0;top:920px;height:80px;background:var(--band);color:var(--cream);display:flex;align-items:center;padding:0 80px;gap:30px;overflow:hidden}
+.band .clk{position:relative;width:300px;height:80px;font:900 italic 74px/80px FR;letter-spacing:-.02em;overflow:hidden}
+.band .clk span{position:absolute;left:0;right:0}
+.band .day{font:700 24px/1 SG;letter-spacing:.2em;text-transform:uppercase;color:#B8B2A6}
+.band .bar{flex:1;height:4px;background:rgba(255,246,228,.18);position:relative;border-radius:2px}
+.band .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);transform-origin:left;border-radius:2px}
+.lab{position:absolute;left:80px;font:700 26px/1 SG;letter-spacing:.18em;text-transform:uppercase}
+.top .lab{top:270px;color:var(--red)} .bot .lab{top:44px;color:var(--green)}
+.fr{font-family:FR;font-style:italic;font-weight:900;letter-spacing:-.02em;line-height:.98}
+.w{display:inline-block;margin-right:.22em}
+/* gancho */
+.hk1{position:absolute;left:80px;right:80px;top:380px;font-size:170px}
+.hk2{position:absolute;left:80px;right:80px;top:60px;font-size:170px;color:var(--green)}
+.hk2 small{display:block;font:500 34px/1.35 SG;letter-spacing:0;color:var(--ink);margin-top:40px;font-style:normal}
+/* cenas de cima: cartões de papel */
+.sc{position:absolute;left:80px;right:80px;top:330px}
+.card{background:#fff;border:1.5px solid #D8D3CA;border-radius:8px;padding:24px 30px;margin-bottom:16px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;box-shadow:0 6px 0 -3px rgba(28,27,25,.06)}
+.card b{display:block;font:700 34px/1.15 SG}
+.card small{display:block;font:500 25px/1.3 IN;color:var(--grey);margin-top:6px}
+.card em{font:700 24px/1 SG;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);font-style:normal}
+.card em.bad{color:var(--red)}
+.card .n{font:900 italic 60px/1 FR;color:var(--ink)}
+.stamp{position:absolute;padding:14px 26px;border:5px solid var(--red);color:var(--red);font:900 italic 64px/1 FR;letter-spacing:-.01em;transform:rotate(-7deg);border-radius:10px;mix-blend-mode:multiply;transform-origin:center}
+.stamp.g{border-color:var(--green2);color:var(--green2);transform:rotate(-4deg)}
+.note{position:absolute;left:80px;right:80px;font:400 italic 42px/1.25 FR;color:var(--red)}
+.note u{text-decoration:none;border-bottom:4px solid var(--red)}
+/* cenas de baixo: linha horizontal de 3 passos */
+.flow{position:absolute;left:80px;right:80px;top:130px;height:390px}
+.track{position:absolute;left:0;right:0;top:36px;height:3px;background:var(--green);transform-origin:left}
+.step{position:absolute;top:0;width:296px}
+.step .dot{width:28px;height:28px;border-radius:50%;background:var(--green);border:5px solid var(--cream);box-shadow:0 0 0 3px var(--green);margin:24px 0 0 0}
+.step .tm{font:700 22px/1 SG;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-top:18px}
+.step .bx{margin-top:12px;background:#fff;border:1.5px solid #E6D9BF;border-radius:10px;padding:20px 20px;min-height:200px;box-shadow:0 10px 24px rgba(31,91,63,.08)}
+.step .bx b{display:block;font:700 30px/1.15 SG}
+.step .bx small{display:block;font:500 24px/1.3 IN;color:#5B6B61;margin-top:8px}
+.step .bx .bt{display:flex;gap:8px;margin-top:12px} .step .bx .bt span{font:700 20px/1 SG;padding:10px 14px;border-radius:999px;border:2px solid var(--green);color:var(--green)}
+.step .bx .bt span.on{background:var(--green);color:var(--cream)}
+.step.pes .bx{background:#E6F2EA;border-color:#9CC6AD}
+.wa{position:absolute;left:80px;right:140px;top:150px;background:#DFF5E3;border-radius:8px 26px 26px 26px;padding:26px 30px;font:400 31px/1.4 IN;color:#123320;box-shadow:0 10px 30px rgba(31,91,63,.12)}
+.wa b{display:block;font:700 22px/1 SG;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.wa i{display:inline-block;width:3px;height:30px;background:#123320;vertical-align:-5px}
+/* resultado e fecho */
+.big{position:absolute;left:80px;right:80px;font-size:112px;white-space:nowrap}
+.sub{position:absolute;left:80px;right:80px;font:500 36px/1.4 SG;color:var(--grey)}
+.tiles{position:absolute;left:80px;right:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tiles div{background:#fff;border:1.5px solid #E6D9BF;border-radius:12px;padding:20px 22px;font:700 28px/1.15 SG;color:var(--ink)}
+.tiles div b{display:block;font:900 italic 54px/1 FR;color:var(--green);margin-bottom:10px}
+.btn{position:absolute;left:80px;background:var(--green);color:var(--cream);font:700 46px/1 SG;padding:30px 44px;border-radius:14px;transform-origin:left center}
+.sv{position:absolute;left:80px;right:80px;font:700 24px SG;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
+.marca{position:absolute;left:80px;right:80px;top:1530px;display:flex;align-items:center;gap:18px;font:700 22px SG;letter-spacing:.18em;text-transform:uppercase;color:#8E9A92}
+.marca svg{width:62px;height:62px}
+.bot .marca{top:830px}
+</style>
+</head>
+<body>
+<div id="s"></div>
+<script>
+const LOGO='<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>';
+const marca=()=>`<div class="marca">${LOGO}<span>Pacheco Studios</span></div>`;
+const T={hook:0,M:[3.0,9.6,16.2],FLIP:20.4,R:23.4,E:27.0,DUR:30.0};
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), E=x=>1-Math.pow(1-cl(x),3), EI=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const fi=(k,a,d=.3)=>E((k-a)/d);
+const op=(o,y=0,s=1,x=0,r=0)=>`opacity:${o.toFixed(3)};transform:translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${s.toFixed(4)}) rotate(${r}deg)`;
+const words=(txt,k,t0,step=.06,d=.28)=>txt.split(' ').map((w,i)=>{const a=fi(k,t0+i*step,d);return `<span class="w" style="${op(a,(1-a)*26)}">${w}</span>`}).join('');
+const type=(txt,k,t0,dur)=>{const p=cl((k-t0)/dur);return txt.slice(0,Math.round(txt.length*p))+(p>0&&p<1?'<i></i>':'')};
+// entrada «o dia avança»: a cena nova entra da direita e empurra a anterior
+const SL=.5;
+const slideIn=(t,a)=>a<=0?0:(1-EI((t-a)/SL))*1080, slideOut=(t,a)=>-EI((t-a)/SL)*1080;
+// o carimbo cai: escala grande → 1 com um ressalto curto
+const stampIn=(k,a)=>{const p=cl((k-a)/.22);const s=1.6-.6*E(p)+(p>=1?0:.0);return {o:cl(p*3),s}};
+
+// ---------- relógio de palhetas ----------
+const CLK=[['TUESDAY','07:00'],['TUESDAY','13:30'],['TUESDAY','16:00'],['TUESDAY','23:40'],['WEDNESDAY','07:00']];
+function band(t){
+  // índice do relógio: 0 no gancho (a partir de 1,8 s), 1..3 nos momentos, 4 depois do FLIP
+  let i=0, a=1.8;
+  T.M.forEach((m,j)=>{if(t>=m){i=j+1;a=m}}); if(t>=T.FLIP){i=4;a=T.FLIP}
+  const show=t>=1.8?1:0, p=EI((t-a)/.4), prev=CLK[Math.max(0,i-1)], cur=CLK[i];
+  const dayp=cl((t-3)/(T.R-3));
+  let h=`<div class="band" style="opacity:${show}"><div class="clk">`;
+  h+=`<span style="transform:translateY(${(-p*80).toFixed(1)}px);opacity:${(1-p).toFixed(2)}">${prev[1]}</span><span style="transform:translateY(${((1-p)*80).toFixed(1)}px);opacity:${p.toFixed(2)}">${cur[1]}</span></div>`;
+  h+=`<div class="day">${cur[0]}</div><div class="bar"><i style="transform:scaleX(${dayp.toFixed(3)})"></i></div></div>`;
+  return h;
+}
+
+// ---------- momentos ----------
+const MOM=[
+ {top:{h:'13:30 · A happy customer leaves',cards:[['Table 6','Loved it. Said so at the till.','<span class="n">★★★★★</span>'],['Your Google profile','23 reviews · 4.6','<em>23</em>']],stamp:'STILL 23',sx:560,sy:560,note:'They meant to. <u>They forgot</u> by the car park.'},
+  bot:{h:'13:35 · The system does the asking',steps:[
+    {tm:'13:35',b:'“Thanks for coming in! How was it?”',s:'one message, in your name'},
+    {tm:'Loved it',b:'One tap to your Google review',s:'the button, not a form'},
+    {tm:'Not great',b:'Comes to you, privately',s:'you reply before anything public',pes:1}],
+   stamp:'24 reviews ★',sx:520,sy:500}},
+ {top:{h:'16:00 · The 4 o’clock appointment',cards:[['16:00 · Lucy','Cut + colour · booked 9 days ago','<em class="bad">NO-SHOW</em>'],['Chair 2','Empty until 17:00','<em>1 HOUR</em>']],stamp:'NO-SHOW',sx:600,sy:400,note:'She forgot. <u>Nobody reminded her.</u> The phone stayed silent.'},
+  bot:{h:'Yesterday 16:00 · Two buttons',steps:[
+    {tm:'Day before',b:'“See you tomorrow at 4pm”',s:'',bt:['Confirm','Change']},
+    {tm:'Lucy taps',b:'Change → Thursday 17:00',s:'rebooked by herself, no call'},
+    {tm:'Slot freed',b:'Offered to the waiting list',s:'Marco takes it. 16:00 stays full'}],
+   stamp:'Chair filled',sx:480,sy:500}},
+ {top:{h:'23:40 · Still at the computer',cards:[['sales_tue_FINAL(3).xlsx','3 tabs · didn’t add up','<em class="bad">23:40</em>'],['Tuesday’s takings?','No idea yet','<em>?</em>']],stamp:'HOME 00:10',sx:520,sy:540,note:'<u>Every night.</u> Not just Tuesdays.',
+       top2:{h:'06:30 · Up. Coffee. Still no idea what Tuesday made.',cards:[['Tuesday’s takings?','Will check tonight. Again.','<em class="bad">?</em>']]}},
+  bot:{h:'22:30 · Phone face down. Asleep.',steps:[
+    {tm:'03:00',b:'Gathers the numbers',s:'till · bookings · reviews · messages'},
+    {tm:'07:00',b:'Ten lines on WhatsApp',s:'before you wake up'},
+    {tm:'Any time',b:'Ask it anything',s:'“How was Tuesday?”',pes:1}],
+   wa:'Good morning! Tuesday: €1,240 · Today: 18 bookings · 2 new reviews · 1 enquiry waiting.'}}
+];
+
+function topScene(t,m,a,kEnd){
+  const M=MOM[m].top, k=t-a;
+  let h=`<div class="lab" style="${op(fi(k,.1,.25))}">Café without a system</div>`;
+  const hh=fi(k,.3,.3);
+  h+=`<div class="sc"><div style="font:700 26px/1 SG;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:22px;${op(hh,(1-hh)*12)}">${M.h}</div>`;
+  M.cards.forEach((c,i)=>{const o=fi(k,.5+i*.35,.3);h+=`<div class="card" style="${op(o,(1-o)*18)}"><div><b>${c[0]}</b><small>${c[1]}</small></div>${c[2]}</div>`});
+  h+=`</div>`;
+  const st=stampIn(k,1.9); if(st.o>0) h+=`<div class="stamp" style="left:${M.sx}px;top:${M.sy}px;${op(st.o,0,st.s,0,-7)}">${M.stamp}</div>`;
+  const nt=fi(k,2.6,.4); h+=`<div class="note" style="top:${M.cards.length>1?680:560}px;${op(nt,(1-nt)*14)}">${M.note}</div>`;
+  return h;
+}
+function topScene2(t){ // 07:00 de quarta, em cima
+  const M=MOM[2].top.top2, k=t-T.FLIP;
+  let h=`<div class="lab" style="${op(1)}">Café without a system</div>`;
+  const hh=fi(k,.3,.3);
+  h+=`<div class="sc"><div style="font:700 26px/1.3 SG;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:22px;${op(hh,(1-hh)*12)}">${M.h}</div>`;
+  M.cards.forEach((c,i)=>{const o=fi(k,.6+i*.35,.3);h+=`<div class="card" style="${op(o,(1-o)*18)}"><div><b>${c[0]}</b><small>${c[1]}</small></div>${c[2]}</div>`});
+  h+=`</div>`;
+  const st=stampIn(k,1.4); if(st.o>0) h+=`<div class="stamp" style="left:420px;top:600px;${op(st.o,0,st.s,0,-7)}">Every. Night.</div>`;
+  return h;
+}
+function botScene(t,m,a){
+  const B=MOM[m].bot, k=t-a;
+  let h=`<div class="lab" style="${op(fi(k,.1,.25))}">Café with a system</div>`;
+  const hh=fi(k,.3,.3);
+  h+=`<div style="position:absolute;left:80px;right:80px;top:88px;font:700 26px/1 SG;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);${op(hh,(1-hh)*12)}">${B.h}</div>`;
+  h+=`<div class="flow"><div class="track" style="transform:scaleX(${E((k-.8)/1.9).toFixed(3)})"></div>`;
+  B.steps.forEach((s,i)=>{
+    const o=fi(k,.9+i*.8,.3), x=i*312;
+    h+=`<div class="step ${s.pes?'pes':''}" style="left:${x}px;${op(o,0,1,(1-o)*30)}"><div class="dot"></div><div class="tm">${s.tm}</div><div class="bx"><b>${s.b}</b>${s.s?`<small>${s.s}</small>`:''}${s.bt?`<div class="bt"><span>${s.bt[0]}</span><span class="${k>2.6?'on':''}">${s.bt[1]}</span></div>`:''}</div></div>`;
+  });
+  h+=`</div>`;
+  if(B.stamp){const st=stampIn(k,4.4); if(st.o>0) h+=`<div class="stamp g" style="left:${B.sx}px;top:${B.sy}px;${op(st.o,0,st.s,0,-4)}">${B.stamp}</div>`;}
+  return h;
+}
+function botScene2(t){ // 07:00: a mensagem chega
+  const B=MOM[2].bot, k=t-T.FLIP;
+  let h=`<div class="lab" style="${op(1)}">Café with a system</div>`;
+  const hh=fi(k,.3,.3);
+  h+=`<div style="position:absolute;left:80px;right:80px;top:88px;font:700 26px/1 SG;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);${op(hh,(1-hh)*12)}">07:00 · Before the coffee</div>`;
+  const o=fi(k,.6,.35);
+  h+=`<div class="wa" style="${op(o,(1-o)*20,.96+.04*o)}"><b>WhatsApp · Morning report</b>${type(B.wa,k,.7,1.4)}</div>`;
+  const st=stampIn(k,2.5); if(st.o>0) h+=`<div class="stamp g" style="left:420px;top:420px;${op(st.o,0,st.s,0,-4)}">Home at 18:00</div>`;
+  return h;
+}
+
+function cenaHook(t){
+  const k=t;
+  let h=`<div class="half top"><div class="fr hk1" style="${op(1,(1-E(k/2.4))*14)}">Same<br>Tuesday.</div></div>`;
+  h+=`<div class="half bot"><div class="fr hk2" style="${op(1,(1-E(k/2.4))*14)}">Two cafés.<small>One owner got home at 00:10.<br>The other at 18:00. Same customers, same street.</small></div>`;
+  h+=marca()+`</div>`;
+  return h;
+}
+function cenaMom(t){
+  // qual o momento atual e o anterior (para o empurrão)
+  let m=0; T.M.forEach((a,j)=>{if(t>=a)m=j}); const a=T.M[m];
+  let h='';
+  const x=slideIn(t,a), xo=slideOut(t,a);
+  const prevTop=m>0?topScene(t,m-1,T.M[m-1]):`<div class="fr hk1" style="opacity:.9">Same<br>Tuesday.</div>`;
+  const prevBot=m>0?botScene(t,m-1,T.M[m-1]):`<div class="fr hk2">Two cafés.<small>One owner got home at 00:10.<br>The other at 18:00. Same customers, same street.</small></div>`;
+  let curTop=topScene(t,m,a), curBot=botScene(t,m,a);
+  if(m===2&&t>=T.FLIP){ // 07:00 de quarta: a cena de cima e de baixo trocam
+    const x2=slideIn(t,T.FLIP), xo2=slideOut(t,T.FLIP);
+    curTop=`<div style="position:absolute;inset:0;transform:translateX(${xo2.toFixed(1)}px)">${curTop}</div><div style="position:absolute;inset:0;transform:translateX(${x2.toFixed(1)}px)">${topScene2(t)}</div>`;
+    curBot=`<div style="position:absolute;inset:0;transform:translateX(${xo2.toFixed(1)}px)">${curBot}</div><div style="position:absolute;inset:0;transform:translateX(${x2.toFixed(1)}px)">${botScene2(t)}</div>`;
+  }
+  h+=`<div class="half top">${x>0?`<div style="position:absolute;inset:0;transform:translateX(${xo.toFixed(1)}px)">${prevTop}</div>`:''}<div style="position:absolute;inset:0;transform:translateX(${x.toFixed(1)}px)">${curTop}</div></div>`;
+  h+=`<div class="half bot">${x>0?`<div style="position:absolute;inset:0;transform:translateX(${xo.toFixed(1)}px)">${prevBot}</div>`:''}<div style="position:absolute;inset:0;transform:translateX(${x.toFixed(1)}px)">${curBot}</div>${marca()}</div>`;
+  return h;
+}
+function cenaR(t){
+  const k=t-T.R, x=slideIn(t,T.R);
+  let h=`<div class="half top"><div style="position:absolute;inset:0;transform:translateX(${x.toFixed(1)}px)">`;
+  h+=`<div class="lab" style="${op(fi(k,.1,.25))}">Café without a system</div>`;
+  h+=`<div class="fr big" style="top:340px;color:var(--grey)">${words('Home at 00:10.',k,.3,.08)}</div>`;
+  const s1=fi(k,.9,.35); h+=`<div class="sub" style="top:500px;${op(s1,(1-s1)*12)}">23 reviews. One empty chair. Tuesday’s takings: still a mystery.</div>`;
+  h+=`</div></div>`;
+  h+=`<div class="half bot"><div style="position:absolute;inset:0;transform:translateX(${x.toFixed(1)}px)">`;
+  h+=`<div class="lab" style="${op(fi(k,.1,.25))}">Café with a system</div>`;
+  h+=`<div class="fr big" style="top:110px;color:var(--green)">${words('Home at 18:00.',k,.6,.08)}</div>`;
+  h+=`<div class="tiles" style="top:270px">${['Reviews','No-shows','Morning report'].map((x,i)=>{const o=fi(k,1.3+i*.2,.3);return `<div style="${op(o,0,1,(1-o)*-40)}"><b>${i+1}</b>${x}</div>`}).join('')}</div>`;
+  const b=fi(k,2.0,.35), pulse=1+.04*Math.max(0,Math.sin((k-2.4)*5))*cl((k-2.4)/.2);
+  h+=`<div class="btn" style="top:470px;${op(b,(1-b)*16,(.94+.06*b)*pulse)}">Which one first? Comment 1, 2 or 3 ↓</div>`;
+  h+=`</div>${marca()}</div>`;
+  return h;
+}
+function cenaE(t){
+  const k=t-T.E, y=(1-EI(k/.5))*1920;
+  let h=`<div class="half bot" style="top:0;height:1920px;transform:translateY(${y.toFixed(1)}px)">`;
+  h+=`<div class="lab" style="top:330px;${op(fi(k,.5,.3))}">Free diagnosis</div>`;
+  h+=`<div class="fr big" style="top:400px;font-size:120px;color:var(--green);white-space:normal">${words('Which evening do you want?',k,.6,.08)}</div>`;
+  const b=fi(k,1.3,.35); h+=`<div class="btn" style="top:760px;${op(b,(1-b)*16,.94+.06*b)}">pachecost.com</div>`;
+  h+=`<div class="sv" style="top:900px;${op(fi(k,1.7,.35))}">Portugal based · Acting worldwide</div>`;
+  h+=marca().replace('class="marca"','class="marca" style="top:1530px"')+`</div>`;
+  return h;
+}
+function render(t){
+  let h='';
+  if(t<T.M[0]) h+=cenaHook(t);
+  if(t>=T.M[0]&&t<T.R) h+=cenaMom(t);
+  if(t>=T.R) h+=cenaR(t);
+  if(t<T.E+.6) h+=band(t);
+  if(t>=T.E) h+=cenaE(t);
+  document.getElementById('s').innerHTML=h;
+}
+// eventos para o som (segundos absolutos)
+const nodes=[],bad=[],ok=[],tin=[];
+T.M.forEach((a,m)=>{tin.push(a); MOM[m].bot.steps.forEach((s,i)=>nodes.push(+(a+.9+i*.8).toFixed(3))); bad.push(+(a+1.9).toFixed(3)); if(MOM[m].bot.stamp) ok.push(+(a+4.4).toFixed(3));});
+window.SFX={style:'cafe',flip:[1.8,...T.M,T.FLIP],top_in:[...tin,T.FLIP,T.R],top_bad:[...bad,T.FLIP+1.4],node:nodes,ok:[...ok,T.FLIP+2.5],typing:[T.FLIP+.7],morning:[T.FLIP+.6],zzz:[T.M[2]+.5],
+ result:[T.R+.3],abc:[T.R+1.3,T.R+1.5,T.R+1.7],btn:[T.R+2.0,T.E+1.3]};
+window.render=render; window.DUR=T.DUR;
+render(parseFloat(new URLSearchParams(location.search).get('t')||'8'));
+</script>
+</body>
+</html>

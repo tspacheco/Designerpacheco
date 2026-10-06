@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reel EN 3 · X-ray</title>
+<!-- Reel 3 «I messaged 3 businesses at 10pm. Only one replied.» (Instagram @pachecostudiospt, 07/10/2026)
+     Ângulo: ponto de vista do CLIENTE. Três conversas vistas do lado de quem escreve; a que respondeu em 40 s fica transparente
+     e o esquema do sistema «resposta em 60 segundos a cada pedido» (pachecost.com/en) aparece por trás, como planta técnica em ciano.
+     Identidade própria: teal-negro, ciano, grelha de planta, transições por linha de varrimento (scan), Unbounded + DM Mono.
+     30 s, 100 BPM (compasso 2,4 s). Linha do tempo: gancho 0–2,4 · A 2,4 · B 4,8 · C 7,2 · raio-X 9,6 · esquema 12–21,6 · resultado 21,6 · pergunta 24 · fecho 27–30.
+     Cada fotograma sai de render(t), sem estado; render34.cjs captura 30 fps e junta o som de som34.py (eventos em window.SFX).
+     Nomes, números e horas são fictícios e ilustrativos. Zona segura: textos essenciais entre y 270 e ~1300. -->
+<style>
+@font-face{font-family:UB;src:url(fontes/unbounded-900.woff2) format("woff2");font-weight:900}
+@font-face{font-family:UB;src:url(fontes/unbounded-700.woff2) format("woff2");font-weight:700}
+@font-face{font-family:DM;src:url(fontes/dmmono-500.woff2) format("woff2")}
+@font-face{font-family:IN;src:url(../../marca/fontes/inter-var.woff2) format("woff2");font-weight:100 900}
+:root{--bg:#06171C;--bg2:#0B2730;--cy:#4FE3F0;--cy2:#A9F3F9;--ink:#EDF8F9;--mute:#6F9AA1;--red:#FF6B5B;--grid:rgba(79,227,240,.08)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+#s{position:absolute;inset:0;overflow:hidden;font-family:IN,sans-serif;color:var(--ink)}
+.cena{position:absolute;inset:0;overflow:hidden;background:radial-gradient(60% 40% at 50% 0%,rgba(79,227,240,.10),transparent 70%),var(--bg)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:60px 60px;background-position:30px 30px}
+.scan{position:absolute;left:0;right:0;height:6px;background:var(--cy);box-shadow:0 0 30px 8px rgba(79,227,240,.55)}
+.eb{position:absolute;left:80px;right:80px;top:300px;font:500 28px/1 DM,monospace;letter-spacing:.08em;color:var(--cy)}
+.ti{position:absolute;left:80px;right:80px;font-family:UB,sans-serif;font-weight:900;line-height:1.02;letter-spacing:-.02em}
+.w{display:inline-block;margin-right:.24em}
+/* gancho */
+.hk{top:400px;font-size:104px}
+.hk .c{color:var(--cy)}
+.hk small{display:block;font:500 30px/1.4 DM;letter-spacing:.04em;color:var(--mute);margin-top:44px}
+.ph3{position:absolute;left:80px;right:80px;top:1130px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ph3 div{height:280px;border-radius:34px;border:2px solid rgba(79,227,240,.25);position:relative;overflow:hidden}
+.ph3 div b{position:absolute;left:24px;top:22px;font:900 44px UB;color:rgba(79,227,240,.5)}
+.ph3 div i{position:absolute;left:24px;right:24px;height:28px;border-radius:14px;background:rgba(237,248,249,.08)}
+/* conversa */
+.hd{position:absolute;left:80px;right:80px;top:290px;display:grid;grid-template-columns:120px 1fr;gap:26px;align-items:center}
+.hd b{font:900 110px/1 UB;color:var(--cy)}
+.hd span{display:block;font:600 40px/1.1 IN}
+.hd small{display:block;font:500 25px/1.3 DM;color:var(--mute);margin-top:8px;letter-spacing:.04em}
+.chat{position:absolute;left:80px;right:80px;top:490px;display:flex;flex-direction:column;gap:18px}
+.bb{max-width:760px;padding:26px 32px;border-radius:30px;font:400 35px/1.3 IN;position:relative}
+.bb.me{align-self:flex-end;background:var(--cy);color:#05282E;border-bottom-right-radius:8px}
+.bb.th{align-self:flex-start;background:#13353D;color:var(--ink);border-bottom-left-radius:8px}
+.bb.gh{align-self:flex-start;border:2px dashed rgba(255,107,91,.6);color:var(--red);background:transparent;font:500 30px DM}
+.bb time{display:block;font:500 22px DM;letter-spacing:.04em;margin-top:12px;opacity:.75;text-align:right}
+.bb.th time{text-align:left}
+.bb time i{font-style:normal}
+.chip{align-self:flex-start;font:500 26px/1 DM;letter-spacing:.06em;color:var(--mute);padding:14px 22px;border-radius:999px;border:1px solid rgba(111,154,161,.4)}
+.chip.ok{color:var(--cy);border-color:rgba(79,227,240,.5)}
+.chip.red{color:var(--red);border-color:rgba(255,107,91,.5)}
+.sw{align-self:flex-start;display:flex;align-items:center;gap:18px;font:500 44px/1 DM;color:var(--cy);letter-spacing:.02em}
+.sw em{font:500 24px DM;color:var(--mute);font-style:normal;letter-spacing:.06em}
+.ring{width:54px;height:54px;border-radius:50%;border:4px solid rgba(79,227,240,.3);position:relative}
+.ring i{position:absolute;inset:-4px;border-radius:50%;border:4px solid transparent;border-top-color:var(--cy)}
+/* tabuleiro A B C */
+.tray{position:absolute;left:80px;right:80px;top:1250px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tray div{border-radius:26px;border:2px solid rgba(79,227,240,.18);padding:22px 24px;min-height:150px}
+.tray b{font:900 40px/1 UB;color:var(--mute);display:block}
+.tray span{display:block;font:500 24px/1.3 DM;color:var(--mute);margin-top:14px;letter-spacing:.02em}
+.tray div.ok{border-color:var(--cy);background:rgba(79,227,240,.08)} .tray div.ok b,.tray div.ok span{color:var(--cy)}
+.tray div.red span{color:var(--red)}
+/* raio-X */
+.xr .bb.me,.xr .bb.th{background:transparent;color:var(--cy2);border:2px solid rgba(79,227,240,.75);box-shadow:inset 0 0 40px rgba(79,227,240,.08)}
+.sonar{position:absolute;left:50%;top:760px;width:40px;height:40px;margin:-20px;border-radius:50%;border:3px solid var(--cy)}
+/* esquema (planta) */
+.bp{position:absolute;left:80px;right:80px;top:300px}
+.bp .t{font:500 26px/1 DM;letter-spacing:.1em;color:var(--cy)}
+.bp .h{font:900 54px/1.05 UB;margin-top:22px;letter-spacing:-.02em}
+.nd{position:absolute;left:150px;width:780px;border:2px solid var(--cy);border-radius:10px;padding:22px 28px 24px 28px;background:rgba(6,23,28,.85)}
+.nd b{display:block;font:700 31px/1.15 UB;letter-spacing:-.01em;color:var(--ink)}
+.nd small{display:block;font:500 24px/1.35 DM;color:var(--mute);margin-top:10px}
+.nd .st{position:absolute;right:-2px;top:-22px;font:500 22px/1 DM;letter-spacing:.08em;background:var(--bg);color:var(--cy);padding:6px 12px;border:2px solid var(--cy);border-radius:6px}
+.nd .tp{position:absolute;left:-2px;top:-22px;font:500 20px/1 DM;letter-spacing:.14em;text-transform:uppercase;background:var(--cy);color:#05282E;padding:7px 12px;border-radius:6px}
+.nd.dec{border-style:dashed;border-radius:18px}
+.nd.pes{border-color:#7CF2A4;box-shadow:0 0 0 0 rgba(124,242,164,0)} .nd.pes .tp{background:#7CF2A4}
+.nd.br{width:250px;padding:18px 20px}
+.nd.br b{font-size:24px} .nd.br small{font-size:21px;margin-top:8px}
+.ln{position:absolute;left:539px;width:2px;background:var(--cy);transform-origin:top}
+.ln::after{content:"";position:absolute;left:-9px;bottom:-2px;width:20px;height:2px;background:var(--cy)}
+.hz{position:absolute;height:2px;background:var(--cy);transform-origin:center}
+.vt{position:absolute;width:2px;background:var(--cy);transform-origin:top}
+.dim{opacity:.28}
+/* resultado / pergunta / fecho */
+.col{position:absolute;left:80px;right:80px;top:330px;display:flex;flex-direction:column;align-items:flex-start}
+.ti2{font:900 86px/1.02 UB;letter-spacing:-.02em}
+.ti2 .c{color:var(--cy)}
+.ti2 .w.c{color:var(--cy)}
+.sub{font:500 28px/1.5 DM;color:var(--mute);margin-top:40px;letter-spacing:.02em}
+.btn{background:var(--cy);color:#05282E;font:700 44px/1 UB;letter-spacing:-.01em;padding:30px 46px;border-radius:14px;margin-top:54px;transform-origin:left center}
+.sv{font:500 26px DM;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:40px}
+.marca{position:absolute;left:80px;right:80px;top:1530px;display:flex;align-items:center;gap:18px;font:500 24px DM;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.marca svg{width:62px;height:62px}
+</style>
+</head>
+<body>
+<div id="s"></div>
+<script>
+const LOGO='<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>';
+const marca=()=>`<div class="marca">${LOGO}<span>Pacheco Studios</span></div>`;
+// ---------- linha do tempo ----------
+const T={hook:0,A:2.4,B:4.8,C:7.2,X:9.6,D:12.0,R:21.6,Q:24.0,E:27.0,DUR:30.0};
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), E=x=>1-Math.pow(1-cl(x),3), EI=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const fi=(k,a,d=.3)=>E((k-a)/d);
+const op=(o,y=0,s=1,x=0)=>`opacity:${o.toFixed(3)};transform:translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${s.toFixed(4)})`;
+const words=(txt,k,t0,step=.055,d=.26)=>txt.split(' ').map((w,i)=>{const a=fi(k,t0+i*step,d), c=w.startsWith('*');w=w.replace(/\*/g,'');return `<span class="w ${c?'c':''}" style="${op(a,(1-a)*22)}">${w}</span>`}).join('');
+const type=(txt,k,t0,dur)=>{const p=cl((k-t0)/dur);return txt.slice(0,Math.round(txt.length*p))};
+// transição por varrimento: a cena nova revela-se de cima para baixo atrás de uma linha ciano
+const SCAN=.5;
+function scan(t,a){ if(a<=0) return ''; const p=EI((t-a)/SCAN); if(p>=1) return ''; return `clip-path:inset(0 0 ${((1-p)*100).toFixed(2)}% 0)`; }
+function scanLine(t,a){ const p=EI((t-a)/SCAN); if(p>=1||a<=0) return ''; return `<div class="scan" style="top:${(p*1920-3).toFixed(1)}px;opacity:${(1-cl((p-.85)/.15)).toFixed(2)}"></div>`; }
+// ---------- as três conversas (ponto de vista do cliente) ----------
+const MSG='Hi! Do you have a table for 4 tomorrow at 8pm?';
+const CH={
+ A:{n:'Business A',s:'Phone · WhatsApp',r:null},
+ B:{n:'Business B',s:'Facebook page',r:'Hi, sorry for the late reply! We were busy. Still need the table?',rt:'Thursday 11:12',me2:'Already booked somewhere else, thanks.'},
+ C:{n:'Business C',s:'Instagram · reply by WhatsApp',r:'Hi! I’m Café Mar’s automated assistant 🙂 Table for 4 tomorrow at 8pm: what name shall I put it under?',rt:'22:04 · 40 s later',me2:'Sarah, thanks!'}
+};
+const TRAY=[['A','No reply','red'],['B','Replied 3 days later','red'],['C','Replied in 40 seconds','ok']];
+function tray(idx,k,thr){ // idx = conversa atual (0..2); as anteriores estão fechadas, a atual fecha a k>thr
+  return `<div class="tray">${TRAY.map((r,i)=>{const on=i<idx||(i===idx&&k>thr), o=i<idx?1:(i===idx?fi(k,thr,.3):0); return `<div class="${on?r[2]:''}" style="opacity:${(on?o:.35).toFixed(3)}"><b>${r[0]}</b><span>${on?r[1]:'…'}</span></div>`}).join('')}</div>`;
+}
+function cenaHook(t){
+  const k=t, dr=(1-E(k/2.4))*18;
+  let h=`<div class="cena"><div class="grid"></div>`;
+  h+=`<div class="eb">22:04 · TUESDAY</div>`;
+  h+=`<div class="ti hk" style="${op(1,dr)}">I messaged<br>3 businesses<br>at 10pm.<span class="c" style="display:block;margin-top:18px">Only one replied.</span><small>Guess which one got my booking.</small></div>`;
+  h+=`<div class="ph3">${['A','B','C'].map((l,i)=>{const o=fi(k,.3+i*.2,.35);return `<div style="${op(o,(1-o)*30)}"><b>${l}</b><i style="top:110px;width:70%"></i><i style="top:156px;width:45%"></i><i style="top:202px;width:60%;${i===2?'background:rgba(79,227,240,.35)':''}"></i></div>`}).join('')}</div>`;
+  h+=marca()+`</div>`; return h;
+}
+function cenaChat(t,L,a,xray,noTray,noScan){
+  const k=t-a, c=CH[L], idx={A:1,B:2,C:3}[L];
+  let h=`<div class="cena ${xray?'xr':''}" style="${noScan?'':scan(t,a)}"><div class="grid" style="opacity:${xray?1:.5}"></div>`;
+  const hd=fi(k,.05,.3);
+  h+=`<div class="hd" style="${op(hd,(1-hd)*16)}"><b>${L}</b><div><span>${c.n}</span><small>${c.s}</small></div></div>`;
+  h+=`<div class="chat">`;
+  const m1=fi(k,.15,.3);
+  h+=`<div class="bb me" style="${op(m1,(1-m1)*20,.96+.04*m1)}">${MSG}<time>22:04 <i>${L==='A'?(k>.9?'✓✓':'✓'):'✓✓'}</i></time></div>`;
+  if(L==='A'){
+    const s1=fi(k,.9,.25); h+=`<div class="chip" style="${op(s1,(1-s1)*10)}">SEEN 22:05</div>`;
+    const g=fi(k,1.5,.3); h+=`<div class="bb gh" style="${op(g,(1-g)*14)}">${type('No reply. Not that night. Not ever.',k,1.5,.7)}</div>`;
+  }
+  if(L==='B'){
+    const s1=fi(k,.5,.25); h+=`<div class="chip" style="${op(s1,(1-s1)*10)}">SEEN 22:31</div>`;
+    const r=fi(k,1.0,.3); h+=`<div class="bb th" style="${op(r,(1-r)*20,.96+.04*r)}">${c.r}<time>${c.rt}</time></div>`;
+    const m2=fi(k,1.75,.3); h+=`<div class="bb me" style="${op(m2,(1-m2)*20,.96+.04*m2)}">${c.me2}<time>Thursday 11:40 ✓✓</time></div>`;
+  }
+  if(L==='C'){
+    const sw=cl((k-.15)/.75), secs=Math.round(40*sw), live=k>.15&&k<.95;
+    const s1=fi(k,.15,.2);
+    h+=`<div class="sw" style="${op(s1,(1-s1)*10)}"><span class="ring"><i style="transform:rotate(${(k*720).toFixed(0)}deg);opacity:${live?1:0}"></i></span>00:${String(secs).padStart(2,'0')}<em>${live?'WAITING…':'REPLY TIME'}</em></div>`;
+    const r=fi(k,.95,.3); h+=`<div class="bb th" style="${op(r,(1-r)*20,.96+.04*r)}">${c.r}<time>${c.rt}</time></div>`;
+    const m2=fi(k,1.75,.3); h+=`<div class="bb me" style="${op(m2,(1-m2)*20,.96+.04*m2)}">${c.me2}<time>22:05 ✓✓</time></div>`;
+    const ok=fi(k,2.1,.25); h+=`<div class="chip ok" style="${op(ok,(1-ok)*10)}">BOOKED ✓ · TABLE FOR 4 · 20:00</div>`;
+  }
+  h+=`</div>`;
+  if(!noTray) h+=tray(idx-1,k,L==='A'?1.8:L==='B'?2.0:2.15);
+  h+=(noTray?`<div class="ti xt" style="top:1230px;font-size:62px"></div>`:'')+marca()+`</div>`+(noScan?'':scanLine(t,a)); return h;
+}
+function cenaX(t){
+  const k=t-T.X;
+  // a conversa C continua (sem tabuleiro, sem varrimento) e passa a arame a partir de k=1.0
+  let h=cenaChat(t,'C',T.C,k>1.0,true,true);
+  const ti=fi(k,.1,.35);
+  h=h.replace('<div class="ti xt" style="top:1230px;font-size:62px"></div>',`<div class="ti" style="top:1230px;font-size:62px;${op(ti,(1-ti)*20)}">Here’s what’s <span style="color:var(--cy)">behind</span> the one that replied.</div>`);
+  if(k>1.0){ // sonar
+    for(let j=0;j<3;j++){const ph=cl((k-1.0-j*.25)/1.2); if(ph<=0||ph>=1) continue; h+=`<div class="sonar" style="transform:scale(${(1+ph*40).toFixed(2)});opacity:${((1-ph)*.9).toFixed(3)}"></div>`}
+  }
+  return h;
+}
+// ---------- esquema: resposta em 60 segundos ----------
+const ND=[
+ {y:470,tp:'trigger',st:'T+0:00',b:'A new enquiry',s:'website form · Instagram · Facebook · missed call'},
+ {y:640,tp:'automatic',st:'T+0:40',b:'A reply on WhatsApp, under a minute',s:'the text you approved + the next question: what, when, how many'},
+ {y:830,tp:'decision',st:'',b:'Did they reply?',s:'',dec:1},
+ {y:1010,tp:'',b:'',s:'',br:[
+   {x:150,tp:'person',b:'Yes',s:'comes to you, with everything they said',pes:1},
+   {x:415,tp:'automatic',b:'No, after a day',s:'a second, short message'},
+   {x:680,tp:'automatic',b:'No, after 3 days',s:'a third and final one'}]},
+ {y:1205,tp:'automatic',st:'ALWAYS',b:'Every enquiry in a list',s:'where it came from · what they wanted · what was answered · status'},
+ {y:1365,tp:'person',st:'MONDAY',b:'The weekly dashboard',s:'enquiries · answered · became customers · lost',pes:1}
+];
+const NT=[.3,1.5,2.7,3.9,5.7,7.0]; // k de entrada de cada nó (as ramificações entram a 3.9, 4.3, 4.7)
+function cenaD(t){
+  const k=t-T.D, hl=EI((k-8.4)/.5); // resultado: só o ramo «pessoa» fica aceso
+  let h=`<div class="cena" style="${scan(t,T.D)}"><div class="grid"></div>`;
+  const tt=fi(k,.05,.3);
+  h+=`<div class="bp" style="${op(tt*(1-hl),(1-tt)*16)}"><div class="t">SYSTEM 04 · A REPLY WITHIN 60 SECONDS</div><div class="h">Drawn exactly as it runs.</div></div>`;
+  h+=`<div class="bp" style="${op(hl,(1-hl)*16)}"><div class="t" style="color:#7CF2A4">THE RESULT</div><div class="h" style="font-size:46px"><span style="color:#7CF2A4">Green</span> = a person steps in.<br>The rest runs on its own.</div></div>`;
+  ND.forEach((n,i)=>{
+    const o=fi(k,NT[i],.3), dimmed=hl>0&&!n.pes&&!n.br;
+    if(i>0){ const prev=ND[i-1]; const y0=(prev.br?1010+165:prev.y+ (prev.dec?110:130)); const ln=E((k-NT[i]+.35)/.3); if(!n.br) h+=`<div class="ln" style="top:${y0}px;height:${n.y-y0-6}px;transform:scaleY(${ln.toFixed(3)});opacity:${dimmed?.28:.9}"></div>`; }
+    if(n.br){
+      const y0=830+110, ln=E((k-NT[i]+.35)/.3);
+      h+=`<div class="vt" style="left:539px;top:${y0}px;height:60px;transform:scaleY(${ln.toFixed(3)});opacity:${hl>0?.5:.9}"></div>`;
+      h+=`<div class="hz" style="left:275px;width:530px;top:${y0+60}px;transform:scaleX(${ln.toFixed(3)});opacity:${hl>0?.5:.9}"></div>`;
+      n.br.forEach((b,m)=>{
+        const ob=fi(k,NT[i]+m*.4,.3), bd=hl>0&&!b.pes, pulse=b.pes?1+.03*hl*(1+Math.sin((k-8.4)*6)):1;
+        h+=`<div class="vt" style="left:${b.x+123}px;top:${y0+60}px;height:40px;transform:scaleY(${ob.toFixed(3)});opacity:${bd?.28:.9}"></div>`;
+        h+=`<div class="nd br ${b.pes?'pes':''}" style="left:${b.x}px;top:${n.y}px;${op(ob*(bd?.28:1),(1-ob)*16,pulse)};${b.pes&&hl>0?`box-shadow:0 0 0 ${(10*hl).toFixed(1)}px rgba(124,242,164,.18),0 0 60px rgba(124,242,164,${(.35*hl).toFixed(2)})`:''}"><span class="tp">${b.tp}</span><b>${b.b}</b><small>${b.s}</small></div>`;
+      });
+      return;
+    }
+    const pulse=n.pes?1+.02*hl*(1+Math.sin((k-8.4)*6)):1;
+    h+=`<div class="nd ${n.dec?'dec':''} ${n.pes?'pes':''}" style="top:${n.y}px;${op(o*(dimmed?.28:1),(1-o)*16,pulse)};${n.pes&&hl>0?`box-shadow:0 0 0 ${(10*hl).toFixed(1)}px rgba(124,242,164,.18),0 0 60px rgba(124,242,164,${(.35*hl).toFixed(2)})`:''}">${n.tp?`<span class="tp">${n.tp}</span>`:''}${n.st?`<span class="st">${n.st}</span>`:''}<b>${n.b}</b>${n.s?`<small>${n.s}</small>`:''}</div>`;
+  });
+  h+=marca()+`</div>`+scanLine(t,T.D); return h;
+}
+function cenaR(t){
+  const k=t-T.R;
+  let h=`<div class="cena" style="${scan(t,T.R)}"><div class="grid"></div>`;
+  h+=`<div class="col"><div class="eb" style="position:static;${op(fi(k,.1))}">THE RULE</div>`;
+  h+=`<div class="ti2" style="margin-top:40px">${words('Whoever answers',k,.2)}<br>${words('*first* wins',k,.5)}<br>${words('the customer.',k,.75)}</div>`;
+  const s=fi(k,1.3,.35); h+=`<div class="sub" style="${op(s,(1-s)*14)}">40 seconds. Any hour. Three tries at most.<br>You only step in when a person is needed.</div></div>`;
+  h+=marca()+`</div>`+scanLine(t,T.R); return h;
+}
+function cenaQ(t){
+  const k=t-T.Q;
+  let h=`<div class="cena" style="${scan(t,T.Q)}"><div class="grid"></div>`;
+  h+=`<div class="col"><div class="eb" style="position:static;${op(fi(k,.1))}">BE HONEST</div>`;
+  const ti=fi(k,.2,.4); h+=`<div class="ti2" style="margin-top:40px;${op(ti,(1-ti)*18)}">Which one is <span class="c">your</span> business?</div>`;
+  h+=`<div class="tray" style="position:static;margin-top:60px;width:100%">${TRAY.map((r,i)=>{const o=fi(k,.7+i*.22,.35);return `<div class="${r[2]}" style="${op(o,0,1,(1-o)*-50)}"><b>${r[0]}</b><span>${r[1]}</span></div>`}).join('')}</div>`;
+  const b=fi(k,1.5,.35), pulse=1+.04*Math.max(0,Math.sin((k-1.9)*5))*cl((k-1.9)/.2);
+  h+=`<div class="btn" style="${op(b,(1-b)*16,(.94+.06*b)*pulse)}">Comment A, B or C ↓</div></div>`;
+  h+=marca()+`</div>`+scanLine(t,T.Q); return h;
+}
+function cenaE(t){
+  const k=t-T.E;
+  let h=`<div class="cena" style="${scan(t,T.E)}"><div class="grid"></div>`;
+  h+=`<div class="col"><div class="eb" style="position:static;${op(fi(k,.15))}">FREE DIAGNOSIS</div>`;
+  const ti=fi(k,.3,.4); h+=`<div class="ti2" style="margin-top:40px;${op(ti,(1-ti)*18)}">Find out where<br>your enquiries<br><span class="c">go to die.</span></div>`;
+  const b=fi(k,.9,.35); h+=`<div class="btn" style="${op(b,(1-b)*16,.94+.06*b)}">pachecost.com</div>`;
+  h+=`<div class="sv" style="${op(fi(k,1.3,.35))}">Portugal based · Acting worldwide</div></div>`;
+  h+=marca()+`</div>`+scanLine(t,T.E); return h;
+}
+function render(t){
+  let h='';
+  if(t<T.A+SCAN) h+=cenaHook(t);
+  if(t>=T.A&&t<T.B+SCAN) h+=cenaChat(t,'A',T.A,false);
+  if(t>=T.B&&t<T.C+SCAN) h+=cenaChat(t,'B',T.B,false);
+  if(t>=T.C&&t<T.X) h+=cenaChat(t,'C',T.C,false);
+  if(t>=T.X&&t<T.D+SCAN) h+=cenaX(t);
+  if(t>=T.D&&t<T.R+SCAN) h+=cenaD(t);
+  if(t>=T.R&&t<T.Q+SCAN) h+=cenaR(t);
+  if(t>=T.Q&&t<T.E+SCAN) h+=cenaQ(t);
+  if(t>=T.E) h+=cenaE(t);
+  document.getElementById('s').innerHTML=h;
+}
+// eventos para o som (segundos absolutos)
+window.SFX={style:'xray',scan:[T.A,T.B,T.C,T.D,T.R,T.Q,T.E],
+ send:[T.A+.15,T.B+.15,T.B+1.75,T.C+.15,T.C+1.75],seen:[T.A+.9,T.B+.5],noreply:[T.A+1.5],recv_slow:[T.B+1.0],recv_fast:[T.C+.95],
+ tick:Array.from({length:8},(_,i)=>+(T.C+.15+i*.1).toFixed(3)),booked:[T.C+2.1],xray:[T.X+1.0],
+ node:NT.map(x=>+(T.D+x).toFixed(3)).concat([T.D+4.3,T.D+4.7]),result:[T.D+8.4],rule:[T.R+.2],abc:[T.Q+.7,T.Q+.92,T.Q+1.14],btn:[T.Q+1.5,T.E+.9]};
+window.render=render; window.DUR=T.DUR;
+render(parseFloat(new URLSearchParams(location.search).get('t')||'13'));
+</script>
+</body>
+</html>
