@@ -357,7 +357,10 @@ const fs = require('fs');
       return { foto: !!i && i.complete && i.naturalWidth > 100, alt: i && i.alt, nome: (document.querySelector('.diag-quem b') || {}).textContent,
         papel: (document.querySelector('.diag-quem small') || {}).textContent }; });
     if (!cara.foto || cara.nome !== g.quem_nome || cara.papel !== g.quem_papel || cara.alt !== g.quem_alt) mal(`${k}: diagnóstico sem a cara do Tomás: ${JSON.stringify(cara)}`);
-    await p.click('#diag-comecar');
+    // 1.º ecrã: a foto, o porquê e logo o campo do nome (sem «Começar»)
+    const ecra1 = await p.evaluate(() => ({ nome: !!document.getElementById('diag-in'), comecar: !!document.getElementById('diag-comecar'),
+      foto: !!document.querySelector('.diag-quem img'), foco: document.activeElement && document.activeElement.id }));
+    if (!ecra1.nome || ecra1.comecar || !ecra1.foto || ecra1.foco === 'diag-in') mal(`${k}: 1.º ecrã do diagnóstico ${JSON.stringify(ecra1)}`);
     const respostas = [];
     for (const q of g.perguntas) {
       if (q.tipo === 'texto' || q.tipo === 'tel') {
@@ -386,9 +389,10 @@ const fs = require('fs');
     const avatar = await p.evaluate(() => !!document.querySelector('.diag-linha img'));
     if (!avatar) mal(`${k}: o fim do diagnóstico devia ter a foto do Tomás`);
     const ev = await p.evaluate(() => window.__gc);
-    const esperado = ['diagnostico/aberto', 'diagnostico/comecou', ...g.perguntas.map((q, i) => `diagnostico/pergunta-${String(i + 1).padStart(2, '0')}-${q.id}`), 'diagnostico/fim', 'diagnostico/enviado'];
+    const pq = g.perguntas.map((q, i) => `diagnostico/pergunta-${String(i + 1).padStart(2, '0')}-${q.id}`);
+    const esperado = ['diagnostico/aberto', pq[0], 'diagnostico/comecou', ...pq.slice(1), 'diagnostico/fim', 'diagnostico/enviado'];
     if (JSON.stringify(ev) !== JSON.stringify(esperado)) mal(`${k}, eventos do diagnóstico: ${ev.join(' ')}`);
-    else bem(`${k}: eventos do diagnóstico no GoatCounter, por ordem: aberto, começou, as ${g.perguntas.length} perguntas, fim, enviado`);
+    else bem(`${k}: 1.º ecrã com foto e nome; eventos no GoatCounter por ordem: aberto, pergunta 1, começou, as outras perguntas, fim, enviado`);
     await p.keyboard.press('Escape');
     const fechou = await p.evaluate(() => !document.getElementById('diagnostico').open);
     const fat = g.perguntas.find(q => q.id === 'faturacao');
@@ -697,15 +701,15 @@ const fs = require('fs');
     await q.goto(LINGUAS[lg].url.replace(/\/$/, '') + '/' + sufixo);
     await q.waitForTimeout(300);
     const r = await q.evaluate(() => ({ vai: document.documentElement.classList.contains('intro-vai'), lang: document.documentElement.lang,
-      aberto: document.getElementById('diagnostico').open, comecar: !!document.getElementById('diag-comecar'),
+      aberto: document.getElementById('diagnostico').open, comecar: !!document.getElementById('diag-in'),
       foto: !!document.querySelector('.diag-quem img'), gc: window.__gc.slice() }));
     let ok = !r.vai && r.aberto && r.comecar && r.foto && r.lang === LINGUAS[lg].lang && r.gc.includes('diagnostico/aberto');
-    if (ok) { await q.click('#diag-comecar'); ok = await q.evaluate(() => window.__gc.includes('diagnostico/comecou')); }
-    if (ok) ok = await q.evaluate(() => !document.getElementById('diag-comecar'));
+    if (ok) { await q.fill('#diag-in', 'Teste Link'); await q.press('#diag-in', 'Enter'); await q.waitForTimeout(200);
+      ok = await q.evaluate(() => window.__gc.includes('diagnostico/comecou') && window.__gc.includes('diagnostico/pergunta-02-negocio')); }
     if (ok) { await q.keyboard.press('Escape'); await q.waitForTimeout(100);
       ok = await q.evaluate(() => !document.getElementById('diagnostico').open && location.hash === ''); }
     if (!ok) mal(`ligação direta ao diagnóstico (${lg} ${sufixo}): ${JSON.stringify(r)}`);
-    else bem(`${lg}: ${sufixo} abre o diagnóstico com a foto, conta «aberto» e «começou» no GoatCounter; fechar limpa o endereço`);
+    else bem(`${lg}: ${sufixo} abre o diagnóstico com a foto, o nome logo no 1.º ecrã; conta «aberto» e «começou» no GoatCounter; fechar limpa o endereço`);
     await c.close();
   }
 

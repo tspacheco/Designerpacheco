@@ -1732,7 +1732,7 @@ dialog.diag.fim .diag-ficha{display:block}
   var palco = document.getElementById('diag-palco'), nEl = document.getElementById('diag-n'), barra = document.getElementById('diag-barra');
   var corpo = d.querySelector('.diag-corpo'), N = D.perguntas.length, LETRAS = 'ABCDEFGHIJ';
   var SETA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-  var base = 'https://wa.me/', r = {}, passo = -1, comecou = false, vistas = {};
+  var base = 'https://wa.me/', r = {}, passo = 0, comecou = false, vistas = {};
   function gc(o) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(o); } catch (e) {} }
   function nome() { return (r.nome || '').trim().split(/\s+/)[0]; }
   function txt(s) { return s.replace(/\{nome\}/g, nome()); }
@@ -1755,12 +1755,19 @@ dialog.diag.fim .diag-ficha{display:block}
   function mostrar() {
     palco.innerHTML = ''; corpo.scrollTop = 0; progresso(); ficha();
     d.classList.toggle('fim', passo >= N);
-    if (passo < 0) return intro();
     if (passo >= N) return fim();
     var q = D.perguntas[passo];
     if (!vistas[passo]) { vistas[passo] = true; var nn = (passo + 1 < 10 ? '0' : '') + (passo + 1); gc({ path: 'diagnostico/pergunta-' + nn + '-' + q.id, title: 'diagnóstico: pergunta ' + nn + ' (' + q.id + ')', event: true }); }
-    palco.appendChild(linha(D.pergunta + ' ' + (passo + 1 < 10 ? '0' : '') + (passo + 1) + ' / ' + (N < 10 ? '0' : '') + N));
-    var h = el('h3', 'diag-q', txt(q.msg)); h.id = 'diag-q'; palco.appendChild(h);
+    if (passo === 0) {
+      // 1.º ecrã: quem pergunta (a cara do Tomás), o porquê e logo o nome, sem um «Começar» pelo meio
+      palco.appendChild(quem());
+      palco.appendChild(el('p', 'diag-meta', D.meta));
+      var h = el('h3', 'diag-q', D.intro_t); h.id = 'diag-q'; palco.appendChild(h);
+      palco.appendChild(el('p', 'diag-txt', D.abertura[0]));
+    } else {
+      palco.appendChild(linha(D.pergunta + ' ' + (passo + 1 < 10 ? '0' : '') + (passo + 1) + ' / ' + (N < 10 ? '0' : '') + N));
+      var h = el('h3', 'diag-q', txt(q.msg)); h.id = 'diag-q'; palco.appendChild(h);
+    }
     var acoes = el('div', 'diag-acoes'), seg = botao('primario', q.tipo === 'opcoes' ? D.seguinte : D.seguinte, true);
     seg.id = 'diag-seg';
     var ant = botao('contorno', D.anterior); ant.id = 'diag-ant';
@@ -1774,11 +1781,12 @@ dialog.diag.fim .diag-ficha{display:block}
       var ir = function () {
         var v = inp.value.trim();
         if (v.replace(/[^\p{L}\p{N}]/gu, '').length < 2) { erro(D.obrigatorio); inp.focus(); return; }
+        if (passo === 0 && !r.nome) gc({ path: 'diagnostico/comecou', title: 'diagnóstico: começou (escreveu o nome)', event: true });
         r[q.id] = v; passo++; mostrar();
       };
       inp.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); ir(); } });
       seg.addEventListener('click', ir);
-      setTimeout(function () { inp.focus({ preventScroll: true }); }, 30);
+      if (passo > 0) setTimeout(function () { inp.focus({ preventScroll: true }); }, 30);
     } else {
       var multi = q.tipo === 'multi', box = el('div', 'diag-ops'), campo = null;
       box.setAttribute('role', 'group'); box.setAttribute('aria-labelledby', 'diag-q');
@@ -1840,16 +1848,6 @@ dialog.diag.fim .diag-ficha{display:block}
     p.appendChild(el('span', null, texto));
     return p;
   }
-  function intro() {
-    palco.appendChild(quem());
-    palco.appendChild(el('p', 'diag-meta', D.meta));
-    var h = el('h3', 'diag-q', D.intro_t); h.id = 'diag-q'; palco.appendChild(h);
-    palco.appendChild(el('p', 'diag-txt', D.abertura[0]));
-    var acoes = el('div', 'diag-acoes'), b = botao('primario', D.comecar, true);
-    b.id = 'diag-comecar'; b.addEventListener('click', function () { gc({ path: 'diagnostico/comecou', title: 'diagnóstico: começou', event: true }); passo = 0; mostrar(); });
-    acoes.appendChild(b); palco.appendChild(acoes);
-    setTimeout(function () { b.focus({ preventScroll: true }); }, 30);
-  }
   function fim() {
     gc({ path: 'diagnostico/fim', title: 'diagnóstico: fim', event: true });
     palco.appendChild(linha(D.quem_nome));
@@ -1877,8 +1875,8 @@ dialog.diag.fim .diag-ficha{display:block}
   function abrir(a) {
     if (a) base = a.href.split('?')[0];
     if (!d.open) d.showModal();
-    if (!comecou) { comecou = true; mostrar(); }
     gc({ path: 'diagnostico/aberto', title: 'diagnóstico: aberto', event: true });
+    if (!comecou) { comecou = true; mostrar(); }
   }
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest && ev.target.closest('[data-diagnostico]');
