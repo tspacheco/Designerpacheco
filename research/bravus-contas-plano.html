@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: uma coluna estreita de leitura no telemóvel; o resumo primeiro, depois os 4 passos, o gráfico do saldo, o mês a mês e as premissas editáveis. */
+/* Layout: uma coluna estreita de leitura no telemóvel; o resumo primeiro, depois as 4 etapas, o gráfico do saldo, o mês a mês e as premissas editáveis. */
 :root{
   --chao:#F3F5F2; --folha:#FFFFFF; --tinta:#17201B; --tinta-2:#46524B; --tinta-3:#6B766F;
   --linha:#DCE2DD; --ferro:#1F3A2E; --ferro-texto:#EEF3EF; --laranja:#C2410C; --laranja-suave:#FCE9DE;
@@ -54,6 +54,25 @@ section{display:grid;gap:16px}
 .passo .v{grid-column:3;grid-row:1 / span 2;text-align:right;font-weight:700;white-space:nowrap}
 .passo .v small{display:block;font-weight:500;font-size:12px;color:var(--tinta-3)}
 @media (max-width:480px){.passo{grid-template-columns:34px minmax(0,1fr)}.passo .v{grid-column:2;grid-row:auto;text-align:left}}
+/* etapas */
+.etapas{display:grid;gap:14px}
+.etapa{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:16px;display:grid;gap:10px}
+.etapa .cab{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.etapa .n{font-family:var(--display);font-size:20px;font-weight:600;color:var(--laranja);letter-spacing:.06em;text-transform:uppercase}
+.etapa .quando{font-size:13px;color:var(--tinta-3)}
+.etapa p{font-size:15px;color:var(--tinta-2)}
+.etapa ul{margin:0;padding-left:18px;font-size:14px;color:var(--tinta-2);display:grid;gap:3px}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.duo div{border-radius:10px;padding:10px 12px;background:var(--chao);display:grid;gap:2px;min-width:0}
+.duo div:last-child{background:var(--laranja-suave)}
+.duo span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-3)}
+.duo b{font-family:var(--display);font-size:32px;font-weight:500;line-height:1}
+.duo small{font-size:13px;color:var(--tinta-2)}
+.totais{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;background:var(--ferro);color:var(--ferro-texto);border-radius:14px;padding:16px}
+.totais div{display:grid;gap:2px;min-width:0}
+.totais span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.totais b{font-family:var(--display);font-size:36px;font-weight:500;line-height:1}
+.totais small{font-size:13px;opacity:.85}
 /* gráfico */
 .grafico{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:16px 12px 8px}
 .grafico svg{display:block;width:100%;height:auto}
@@ -92,8 +111,8 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
 <main class="pagina">
   <header class="topo">
     <p class="olho">Pacheco Studios · Bravus Muscle Suplementos</p>
-    <h1>Quanto o plano de 4 passos pode render</h1>
-    <p class="lead">Conta conservadora para o primeiro ano, com o investimento de R$ 5.000 na implantação e R$ 1.000 por mês. O lucro abaixo já desconta tudo isso.</p>
+    <h1>Quanto o plano de 4 etapas pode render</h1>
+    <p class="lead">Conta conservadora de cada etapa do plano de execução, no 1.º mês e no 1.º ano, com o investimento de R$ 5.000 na implantação e R$ 1.000 por mês. O lucro abaixo já desconta tudo isso.</p>
     <p class="aviso">Estimativa feita com médias do mercado de suplementos, não promessa de resultado. Os números da loja (ticket, margem, clientes ativos) substituem as premissas no fim da página.</p>
     <div class="controlo">
       <span>Clientes na base</span>
@@ -109,23 +128,24 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
     <h2 id="t-resumo" hidden>Resumo</h2>
     <div class="placa">
       <div>
-        <div class="grande num" id="rLucro">R$ 7.200</div>
+        <div class="grande num" id="rLucro">R$ 10.700</div>
         <p class="rot">de lucro a mais no 1.º ano, já pagos os R$ <span id="rCusto">17.000</span> do plano</p>
       </div>
       <div class="kpis">
-        <div class="kpi"><b class="num" id="rMes">8.º mês</b><span>o plano se paga</span></div>
-        <div class="kpi"><b class="num" id="rFat">R$ 80.800</b><span>faturamento a mais no ano</span></div>
-        <div class="kpi"><b class="num" id="rRun">R$ 10.000</b><span>a mais por mês, no 12.º mês</span></div>
-        <div class="kpi"><b class="num" id="rAno2">R$ 24.000</b><span>lucro no 2.º ano, só com a mensalidade</span></div>
+        <div class="kpi"><b class="num" id="rMes">7.º mês</b><span>o plano se paga</span></div>
+        <div class="kpi"><b class="num" id="rFat">R$ 93.800</b><span>faturamento a mais no ano</span></div>
+        <div class="kpi"><b class="num" id="rRun">R$ 11.000</b><span>a mais por mês, no 12.º mês</span></div>
+        <div class="kpi"><b class="num" id="rAno2">R$ 26.900</b><span>lucro no 2.º ano, só com a mensalidade</span></div>
       </div>
     </div>
   </section>
 
   <section aria-labelledby="t-passos">
-    <p class="olho">De onde vem o dinheiro</p>
-    <h2 id="t-passos">Os 4 passos</h2>
-    <div class="passos" id="passos"></div>
-    <p class="aviso">Valores de faturamento a mais em 12 meses, por passo.</p>
+    <p class="olho">Etapa a etapa</p>
+    <h2 id="t-passos">1.º mês contra 1 ano</h2>
+    <p class="aviso">O 1.º mês é o primeiro mês inteiro com a etapa a funcionar. As etapas 1 a 3 ficam prontas nas primeiras 4 semanas; a loja online entra no <span id="e4mesTxt">6.º</span> mês. Lucro = faturamento a mais × margem.</p>
+    <div class="etapas" id="passos"></div>
+    <div class="totais" id="totais"></div>
   </section>
 
   <section aria-labelledby="t-saldo">
@@ -145,10 +165,10 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
 
   <section aria-labelledby="t-escala">
     <p class="olho">A meta de 3x a 8x</p>
-    <h2 id="t-escala">Onde os 4 passos deixam a loja</h2>
+    <h2 id="t-escala">Onde as 4 etapas deixam a loja</h2>
     <p class="lead" id="escalaTxt"></p>
     <div class="escada" id="escada"></div>
-    <div class="chaves"><span><i style="background:var(--ferro)"></i>Hoje (estimado)</span><span><i style="background:var(--laranja)"></i>A mais com os 4 passos, no 12.º mês</span></div>
+    <div class="chaves"><span><i style="background:var(--ferro)"></i>Hoje (estimado)</span><span><i style="background:var(--laranja)"></i>A mais com as 4 etapas, no 12.º mês</span></div>
     <p class="caixa" id="escalaCaixa"></p>
   </section>
 
@@ -164,41 +184,59 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
 
 <script>
 (function(){
-  var PADRAO={ticket:140,margem:30,ativos:30,freq:0.5,reat:5,fica:40,lift:10,churn:8,site:8,aval:5};
+  var PADRAO={ticket:140,margem:30,ativos:30,freq:0.5,churn:8,google:4,site:3,b2b:500,lift:10,noite:4,reat:5,fica:40,e4:6,online:6,ticketOn:180,taxa:4};
   var CAMPOS=[
-    ['ticket','Ticket médio (R$)','Valor médio de uma compra na loja.',1],
+    ['ticket','Ticket médio no balcão (R$)','Valor médio de uma compra na loja.',1],
     ['margem','Margem bruta (%)','O que sobra de cada venda depois do custo do produto.',1],
     ['ativos','Clientes ativos hoje (%)','Parte da base que comprou nos últimos 6 meses.',1],
     ['freq','Compras por cliente ativo/mês','0,5 = uma compra a cada 2 meses.',0.1],
-    ['reat','Inativos que voltam a comprar (%)','Resposta à campanha de reativação no WhatsApp.',1],
-    ['fica','Reativados que continuam (%)','Dos que voltam, quantos ficam a comprar.',1],
-    ['lift','Aumento da recompra (%)','Efeito do lembrete quando o pote está a acabar.',1],
-    ['churn','Perda de clientes novos/mês (%)','Parte dos clientes novos que para de comprar a cada mês.',1],
-    ['site','Clientes novos/mês pelo site','A partir do 4.º mês; menos nos primeiros.',1],
-    ['aval','Clientes novos/mês pelas avaliações','A partir do 7.º mês, com o Google a subir.',1]
+    ['churn','Perda de clientes novos/mês (%)','Clientes novos que param de comprar a cada mês.',1],
+    ['google','Etapa 1 · clientes novos/mês pelo Google','No 1.º mês; sobe com as avaliações até +50%.',1],
+    ['site','Etapa 2 · clientes novos/mês pelo site','No mês cheio; sobe até +30% com o site indexado.',1],
+    ['b2b','Etapa 2 · compras de parceiros (R$/mês)','Uma academia ou personal a partir do 6.º mês.',50],
+    ['lift','Etapa 3 · aumento da recompra (%)','Efeito do lembrete ~25 dias depois da compra.',1],
+    ['noite','Etapa 3 · pedidos salvos fora do horário/mês','Mensagens depois das 20:00 que hoje se perdem.',1],
+    ['reat','Etapa 3 · inativos que voltam (%)','Aviso de chegada e promoção para a lista de clientes.',1],
+    ['fica','Etapa 3 · reativados que continuam (%)','Dos que voltam, quantos ficam a comprar.',1],
+    ['e4','Etapa 4 · mês em que a loja online entra','Quando o volume pedir.',1],
+    ['online','Etapa 4 · pedidos online novos/mês','No 1.º mês; sobe até +50% no ano.',1],
+    ['ticketOn','Etapa 4 · ticket online com combos (R$)','Combos por objetivo sobem o valor do pedido.',1],
+    ['taxa','Etapa 4 · taxas de pagamento e entrega (%)','Sai da margem dos pedidos online.',0.5]
   ];
   var P=Object.assign({},PADRAO), BASE=1000, CUSTO_IMPL=5000, MENSAL=1000;
   var brl=function(v){var s=Math.round(Math.abs(v)).toLocaleString('pt-BR');return (v<0?'−':'')+'R$ '+s;};
   var r100=function(v){return Math.round(v/100)*100;};
+  var r10=function(v){return Math.round(v/10)*10;};
 
   function simular(){
-    var tk=P.ticket, mg=P.margem/100, fr=P.freq;
+    var tk=P.ticket, mg=P.margem/100, fr=P.freq, ch=P.churn/100;
     var ativos=BASE*P.ativos/100, inativos=BASE-ativos, hoje=ativos*fr;
-    var rampSite=[0,0.5,0.75,1,1,1,1,1,1,1,1,1], rampAval=[0,0,0,0.4,0.6,0.6,1,1,1,1,1,1];
-    var pS=0,pA=0,pR=0, saldo=-CUSTO_IMPL, meses=[], porPasso=[0,0,0,0], mesPaga=null;
+    var rG=[0.75,1,1,1,1.15,1.15,1.3,1.3,1.4,1.4,1.5,1.5];
+    var rS=[0.3,1,1,1,1.1,1.1,1.2,1.2,1.3,1.3,1.3,1.3];
+    var rO=[1,1.1,1.2,1.3,1.4,1.5,1.5,1.5,1.5,1.5,1.5,1.5];
+    var e4=Math.max(1,Math.min(12,Math.round(P.e4)))-1;
+    var pG=0,pS=0,pR=0, saldo=-CUSTO_IMPL, meses=[], mesPaga=null;
+    var et=[0,1,2,3].map(function(){return {fat:[],luc:[],novos:[]}});
     for(var m=0;m<12;m++){
-      var nS=P.site*rampSite[m], nA=P.aval*rampAval[m];
+      var nG=P.google*rG[m], nS=P.site*rS[m];
       var volta=(m===1||m===2)?inativos*P.reat/100/2:0;
-      var cS=nS+pS*fr, cA=nA+pA*fr, cR=volta+pR*fr, cL=m>=1?hoje*P.lift/100:0;
-      pS=pS*(1-P.churn/100)+nS; pA=pA*(1-P.churn/100)+nA; pR=pR*(1-P.churn/100)+volta*P.fica/100;
-      var compras=cS+cA+cR+cL, fat=compras*tk, lucro=fat*mg;
-      porPasso[0]+=cS*tk; porPasso[1]+=cR*tk; porPasso[2]+=cL*tk; porPasso[3]+=cA*tk;
+      var f1=(nG+pG*fr)*tk;
+      var f2=(nS+pS*fr)*tk+(m>=5?P.b2b:0);
+      var c3=(m>=1?hoje*P.lift/100+P.noite:0)+volta+pR*fr;
+      var f3=c3*tk;
+      var on=m>=e4?P.online*rO[m-e4]:0, f4=on*P.ticketOn;
+      pG=pG*(1-ch)+nG; pS=pS*(1-ch)+nS; pR=pR*(1-ch)+volta*P.fica/100;
+      var mg4=Math.max(0,mg-P.taxa/100);
+      var L=[f1*mg,f2*mg,f3*mg,f4*mg4], F=[f1,f2,f3,f4], N=[nG,nS,(m>=1?P.noite:0)+volta,on];
+      for(var k=0;k<4;k++){et[k].fat.push(F[k]);et[k].luc.push(L[k]);et[k].novos.push(N[k]);}
+      var fat=f1+f2+f3+f4, lucro=L[0]+L[1]+L[2]+L[3];
       saldo+=lucro-MENSAL; if(mesPaga===null&&saldo>=0)mesPaga=m+1;
-      meses.push({m:m+1,compras:compras,fat:fat,lucro:lucro,pago:(m===0?CUSTO_IMPL:0)+MENSAL,saldo:saldo});
+      meses.push({m:m+1,compras:fat/tk,fat:fat,lucro:lucro,pago:(m===0?CUSTO_IMPL:0)+MENSAL,saldo:saldo});
     }
     var ult=meses[11];
-    return {hoje:hoje,hojeFat:hoje*tk,meses:meses,porPasso:porPasso,mesPaga:mesPaga,saldo:saldo,
-      fatAno:meses.reduce(function(a,b){return a+b.fat},0),run:ult.fat,ano2:ult.lucro*12-MENSAL*12};
+    return {hoje:hoje,hojeFat:hoje*tk,meses:meses,et:et,e4:e4,mesPaga:mesPaga,saldo:saldo,
+      fatAno:meses.reduce(function(a,b){return a+b.fat},0),lucAno:meses.reduce(function(a,b){return a+b.lucro},0),
+      run:ult.fat,ano2:ult.lucro*12-MENSAL*12};
   }
 
   function render(){
@@ -211,15 +249,24 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
     document.getElementById('rRun').textContent=brl(r100(s.run));
     document.getElementById('rAno2').textContent=brl(r100(s.ano2));
 
-    var passos=[
-      ['Site com pedido por objetivo','O cliente monta o pedido no site e ele chega escrito no WhatsApp da loja. Conta '+P.site+' clientes novos por mês quando o site estiver no Google.',s.porPasso[0]],
-      ['Reativar a base de clientes','Mensagem no WhatsApp para quem não compra há mais de 6 meses. Conta que só '+P.reat+'% voltam a comprar.',s.porPasso[1]],
-      ['Lembrete de recompra','Aviso automático quando o whey ou a creatina estão a acabar. Conta '+P.lift+'% a mais de recompra entre os clientes ativos.',s.porPasso[2]],
-      ['Avaliações no Google','Pedido de avaliação depois de cada compra, para sair das 7 avaliações de hoje. Conta '+P.aval+' clientes novos por mês a partir do 7.º mês.',s.porPasso[3]]
+    var soma=function(a){return a.reduce(function(x,y){return x+y},0)};
+    var primeiro=[1,1,1,s.e4];
+    var info=[
+      ['Google blindado','Semana 1','Perfil verificado, produtos e fotos, QR de avaliação no balcão. A loja sai das 7 avaliações e aparece melhor no mapa.',['Clientes novos que acham a loja no mapa: '+P.google+'/mês no início, até '+Math.round(P.google*1.5)+'/mês no fim do ano']],
+      ['Site próprio + e-mail','Semanas 2–3','Catálogo por objetivo com “Pedir pelo WhatsApp”, domínio e e-mail profissional.',['Clientes novos que chegam pela pesquisa: '+P.site+'/mês, até '+Math.round(P.site*1.3)+'/mês','Uma parceria (academia ou personal) a partir do 6.º mês: '+brl(P.b2b)+'/mês']],
+      ['WhatsApp que vende sozinho','Semanas 3–4','Respostas automáticas, reserva para retirada, lista de clientes, lembrete de recompra e pedido de avaliação.',['Recompra: +'+P.lift+'% entre os ~'+Math.round(BASE*P.ativos/100)+' clientes ativos','Pedidos fora do horário que hoje se perdem: '+P.noite+'/mês','Inativos que voltam com o aviso de novidades: '+P.reat+'% (meses 2 e 3)']],
+      ['Loja online','A partir do '+(s.e4+1)+'.º mês','Pix e cartão, entrega por bairro, combos por objetivo. A loja vende 24 horas.',['Pedidos online novos: '+P.online+'/mês, até '+Math.round(P.online*1.5)+'/mês','Ticket com combo: '+brl(P.ticketOn)+'; '+P.taxa+'% de taxas sai da margem']]
     ];
-    document.getElementById('passos').innerHTML=passos.map(function(p,i){
-      return '<div class="passo"><span class="n">'+(i+1)+'</span><h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="v num">'+brl(r100(p[2]))+'<small>no ano</small></span></div>';
+    document.getElementById('e4mesTxt').textContent=(s.e4+1)+'.º';
+    document.getElementById('passos').innerHTML=info.map(function(e,i){
+      var E=s.et[i], m1=primeiro[i];
+      return '<article class="etapa"><div class="cab"><span class="n">Etapa '+(i+1)+'</span><h3>'+e[0]+'</h3><span class="quando">'+e[1]+'</span></div><p>'+e[2]+'</p><ul>'+e[3].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'
+        +'<div class="duo"><div><span>1.º mês ('+(m1+1)+'.º do plano)</span><b class="num">'+brl(r10(E.fat[m1]))+'</b><small>lucro '+brl(r10(E.luc[m1]))+'</small></div>'
+        +'<div><span>1 ano</span><b class="num">'+brl(r100(soma(E.fat)))+'</b><small>lucro '+brl(r100(soma(E.luc)))+'</small></div></div></article>';
     }).join('');
+    var f1=0,l1=0; for(var i=0;i<4;i++){f1+=s.et[i].fat[1];l1+=s.et[i].luc[1];}
+    document.getElementById('totais').innerHTML='<div><span>Etapas 1 a 3 · 1.º mês</span><b class="num">'+brl(r10(f1))+'</b><small>lucro '+brl(r10(l1))+' · paga '+brl(MENSAL)+' de mensalidade</small></div>'
+      +'<div><span>As 4 etapas · 1 ano</span><b class="num">'+brl(r100(s.fatAno))+'</b><small>lucro '+brl(r100(s.lucAno))+' · paga '+brl(CUSTO_IMPL+MENSAL*12)+' do plano</small></div>';
 
     document.getElementById('tabela').innerHTML=s.meses.map(function(x){
       return '<tr><td>'+x.m+'</td><td class="num">'+Math.round(x.compras)+'</td><td class="num">'+brl(x.fat)+'</td><td class="num">'+brl(x.lucro)+'</td><td class="num">'+brl(-x.pago)+'</td><td class="num '+(x.saldo<0?'neg':'pos')+'">'+brl(x.saldo)+'</td></tr>';
@@ -253,18 +300,18 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
 
   function escala(s){
     var hoje=s.hojeFat, com=hoje+s.run, mult=com/hoje, maxV=hoje*8;
-    document.getElementById('escalaTxt').textContent='Com '+BASE.toLocaleString('pt-BR')+' clientes na base e as premissas abaixo, a loja vende hoje cerca de '+brl(r100(hoje))+' por mês. No 12.º mês, os 4 passos sozinhos levam a cerca de '+brl(r100(com))+', ou '+mult.toLocaleString('pt-BR',{maximumFractionDigits:1})+'x.';
-    var linhas=[[1,'Hoje'],[mult,'4 passos'],[3,'Meta 3x'],[8,'Meta 8x']];
+    document.getElementById('escalaTxt').textContent='Com '+BASE.toLocaleString('pt-BR')+' clientes na base e as premissas abaixo, a loja vende hoje cerca de '+brl(r100(hoje))+' por mês. No 12.º mês, as 4 etapas sozinhas levam a cerca de '+brl(r100(com))+', ou '+mult.toLocaleString('pt-BR',{maximumFractionDigits:1})+'x.';
+    var linhas=[[1,'Hoje'],[mult,'4 etapas'],[3,'Meta 3x'],[8,'Meta 8x']];
     document.getElementById('escada').innerHTML=linhas.map(function(l){
-      var tot=hoje*l[0], base=Math.min(hoje,tot), extra=l[1]==='4 passos'?s.run:0;
+      var tot=hoje*l[0], base=Math.min(hoje,tot), extra=l[1]==='4 etapas'?s.run:0;
       var wB=base/maxV*100, wE=extra/maxV*100;
-      var bar=l[1]==='4 passos'?'<i style="width:'+wB+'%"></i><em style="left:'+wB+'%;width:'+wE+'%"></em>':(l[1]==='Hoje'?'<i style="width:'+wB+'%"></i>':'<i style="width:'+(tot/maxV*100)+'%;background:var(--linha)"></i>');
-      return '<div class="degrau"><b class="num">'+(l[1]==='4 passos'?mult.toLocaleString('pt-BR',{maximumFractionDigits:1})+'x':l[0]+'x')+'</b><div class="trilho" aria-label="'+l[1]+': '+brl(tot)+' por mês">'+bar+'<span class="num">'+brl(r100(tot))+'/mês</span></div></div>';
+      var bar=l[1]==='4 etapas'?'<i style="width:'+wB+'%"></i><em style="left:'+wB+'%;width:'+wE+'%"></em>':(l[1]==='Hoje'?'<i style="width:'+wB+'%"></i>':'<i style="width:'+(tot/maxV*100)+'%;background:var(--linha)"></i>');
+      return '<div class="degrau"><b class="num">'+(l[1]==='4 etapas'?mult.toLocaleString('pt-BR',{maximumFractionDigits:1})+'x':l[0]+'x')+'</b><div class="trilho" aria-label="'+l[1]+': '+brl(tot)+' por mês">'+bar+'<span class="num">'+brl(r100(tot))+'/mês</span></div></div>';
     }).join('');
     var falta3=hoje*3-com, comprasFalta=falta3/P.ticket;
     document.getElementById('escalaCaixa').textContent=falta3>0
-      ?'Para chegar a 3x faltam cerca de '+brl(r100(falta3))+' por mês, ou '+Math.round(comprasFalta)+' compras a mais por mês. Essa parte vem da continuidade: captação de clientes novos com anúncios, gestão dos contatos e marketing. Os 4 passos montam a base que faz esse crescimento render: cada cliente novo cai no site, no lembrete de recompra e no pedido de avaliação.'
-      :'Com estas premissas, os 4 passos já chegam a 3x.';
+      ?'Para chegar a 3x faltam cerca de '+brl(r100(falta3))+' por mês, ou '+Math.round(comprasFalta)+' compras a mais por mês. Essa parte vem da continuidade: captação de clientes novos com anúncios, gestão dos contatos e marketing. As 4 etapas montam a base que faz esse crescimento render: cada cliente novo cai no site, no lembrete de recompra e no pedido de avaliação.'
+      :'Com estas premissas, as 4 etapas já chegam a 3x.';
   }
 
   function campos(){
