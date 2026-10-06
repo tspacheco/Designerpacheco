@@ -13,6 +13,7 @@
 #   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
+#   rastrear   <url>                            cada salto de um redirecionamento (código, Location, servidor) → relatório
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
 # fotogramas de herói.
@@ -103,6 +104,11 @@ jobs:
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
                       rel.append(f"ok  testar {p[1]} -> {r.stdout.strip() or 'ERRO'} {r.stderr.strip()}".strip())
+                  elif op == "rastrear":
+                      r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-D", "-", "-L", "--max-redirs", "6", "--max-time", "25", "-A", UA, p[1]],
+                                         capture_output=True, text=True)
+                      saltos = [l.strip() for l in r.stdout.splitlines() if l.lower().startswith(("http/", "location:", "server:", "x-nf-request-id", "cf-ray"))]
+                      rel.append(f"ok  rastrear {p[1]}: " + " | ".join(saltos) + (f" ({r.stderr.strip()})" if r.stderr.strip() else ""))
                   else:
                       rel.append(f"ERRO linha {n}: operação desconhecida «{op}»")
               except Exception as ex:
