@@ -367,6 +367,8 @@ const fs = require('fs');
         await p.waitForSelector('#diag-in', { timeout: 8000 });
         const t = q.tipo === 'tel' ? '+351 900 000 000' : `Teste ${q.id}`;
         await p.fill('#diag-in', t); await p.press('#diag-in', 'Enter'); respostas.push(t);
+        // depois de cada resposta, o Tomás «está a escrever…» antes da mensagem seguinte
+        if (q.id === 'nome' && !(await p.evaluate(() => !!document.querySelector('.diag-pensa')))) mal(`${k}: falta o «a escrever…» depois do nome`);
       } else if (q.outro) {
         // «Outro»: abre um campo; o que se escreve é a resposta
         await p.waitForSelector('.diag-op', { timeout: 8000 });
@@ -382,11 +384,21 @@ const fs = require('fs');
       await p.waitForTimeout(350);
     }
     await p.waitForSelector('#diag-enviar', { timeout: 10000 });
+    // os ganchos: cada pergunta vem com uma frase que reage à resposta anterior (o nome do negócio, a dor escolhida…)
+    const conversa = await p.evaluate(() => document.getElementById('diag-palco').textContent);
+    const ganchos = g.perguntas.filter(q => q.gancho).map(q => {
+      const antes = g.perguntas.find(x => x.id === q.gancho_de), v = respostas[g.perguntas.indexOf(antes)];
+      const i = antes.opcoes ? antes.opcoes.indexOf(v) : -1;
+      return (q.gancho[String(i)] || q.gancho['*']).replace(/\{(\w+)\}/g, (m, id) => id === 'nome' ? 'Teste' : respostas[g.perguntas.findIndex(x => x.id === id)]);
+    });
+    const semGancho = ganchos.filter(t => !conversa.includes(t));
+    if (semGancho.length) mal(`${k}: ganchos em falta na conversa: ${semGancho.join(' | ')}`);
+    else bem(`${k}: conversa com «a escrever…» e ${ganchos.length} ganchos que reagem às respostas`);
     const fim = await p.evaluate(() => ({ href: decodeURIComponent(document.getElementById('diag-enviar').href),
       n: document.getElementById('diag-n').textContent, aberto: document.getElementById('diagnostico').open }));
     const falta = respostas.filter(t => !fim.href.includes(t));
     await p.evaluate(() => { const a = document.getElementById('diag-enviar'); a.addEventListener('click', e => e.preventDefault()); a.click(); });
-    const avatar = await p.evaluate(() => !!document.querySelector('.diag-linha img'));
+    const avatar = await p.evaluate(() => !!document.querySelector('.diag-bot img'));
     if (!avatar) mal(`${k}: o fim do diagnóstico devia ter a foto do Tomás`);
     const ev = await p.evaluate(() => window.__gc);
     const pq = g.perguntas.map((q, i) => `diagnostico/pergunta-${String(i + 1).padStart(2, '0')}-${q.id}`);

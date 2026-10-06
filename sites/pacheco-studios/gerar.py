@@ -27,6 +27,7 @@ import re
 import shutil
 import subprocess
 import sys
+import urllib.parse
 import zipfile
 from html.parser import HTMLParser
 from urllib.parse import quote
@@ -590,6 +591,11 @@ LOGO = ('<svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="
         '<circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/>'
         '<path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>')
 
+# o ícone do separador: o mesmo símbolo do cabeçalho (anéis e P), que se lê a 16 px; o logótipo inteiro não se leria
+FAVICON_SVG = LOGO.replace('<svg class="logo" viewBox="0 0 100 100" aria-hidden="true">', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">')
+FAVICON = "data:image/svg+xml," + urllib.parse.quote(FAVICON_SVG.replace('"', "'"), safe="=:/'")
+
+
 def logo_completo(sufixo, cls=""):
     """O logótipo inteiro da Pacheco Studios (logo.svg: anéis, «PACHECO STUDIOS» em arco, P, «DIGITAL»), para os sítios
     onde vai a marca. O arco tem um id por sítio, porque pode haver vários na mesma página."""
@@ -622,7 +628,7 @@ def diagnostico(c, url_priv):
     linhas = "".join(f'<div data-id="{e(q["id"])}"><dt>{e(q["wa"])}</dt><dd>—</dd></div>' for q in g["perguntas"])
     dados = json.dumps({k: g[k] for k in ("abertura", "perguntas", "continuar", "obrigatorio", "escolhe", "fim", "enviar",
                                           "recomecar", "wa_intro", "comecar", "anterior", "seguinte", "pergunta", "meta",
-                                          "intro_t", "quem_nome", "quem_papel", "quem_alt")}, ensure_ascii=False)
+                                          "intro_t", "quem_nome", "quem_papel", "quem_alt", "pensa", "mudar", "enviar_msg")}, ensure_ascii=False)
     # a foto do Tomás (media/tomas.webp, 360 px) vai embutida: quem faz o diagnóstico tem cara desde o primeiro ecrã
     foto = os.path.join(AQUI, "media", "tomas.webp")
     if os.path.exists(foto):
@@ -955,6 +961,7 @@ def cabeca_simples(lang, titulo, estilo, extra=""):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{e(titulo)} — Pacheco Studios</title>
 <meta name="theme-color" content="#141210">
+<link rel="icon" href="{FAVICON}">
 {extra}{estilo}
 </head>"""
 
@@ -1150,7 +1157,7 @@ def main():
             "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, digitos),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
+            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
             "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }
         pagina = montar(src, valores)
