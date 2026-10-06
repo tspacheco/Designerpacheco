@@ -3,29 +3,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: uma coluna estreita de leitura no telemóvel; o resumo primeiro, depois as 4 etapas, o gráfico do saldo, o mês a mês e as premissas editáveis. */
+/* Layout: uma coluna de leitura no celular, na ordem da apresentação de resultados: o que o dono pediu → matriz de oportunidades → gráfico mês a mês → as 4 etapas → quanto vale tudo → premissas. */
 :root{
-  --chao:#F3F5F2; --folha:#FFFFFF; --tinta:#17201B; --tinta-2:#46524B; --tinta-3:#6B766F;
+  --chao:#F3F5F2; --folha:#FFFFFF; --tinta:#17201B; --tinta-2:#46524B; --tinta-3:#66716A;
   --linha:#DCE2DD; --ferro:#1F3A2E; --ferro-texto:#EEF3EF; --laranja:#C2410C; --laranja-suave:#FCE9DE;
-  --bom:#1E7A46; --mau:#B42318; --barra-neg:#E7B4AE; --barra-pos:#8CC5A1;
+  --bom:#1E7A46; --mau:#B42318;
+  --hoje:#B9C2BC; --e1:#16875F; --e2:#3A6FD8; --e3:#D9622B; --e4:#8A5CC2;
+  --q-rapida:#E4F2EA; --q-aposta:#E6EDFB; --q-extra:#F1F3F1; --q-evitar:#F8E7E5;
   --display:"Teko","Arial Narrow",Impact,sans-serif;
   --texto:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --chao:#101613; --folha:#18201C; --tinta:#E8EEEA; --tinta-2:#B8C3BC; --tinta-3:#8E9A93;
   --linha:#2C3832; --ferro:#24443A; --ferro-texto:#EEF3EF; --laranja:#F28A4E; --laranja-suave:#3A2418;
-  --bom:#5CC98A; --mau:#F0857A; --barra-neg:#7A3A33; --barra-pos:#2F7A50; color-scheme:dark}}
+  --bom:#5CC98A; --mau:#F0857A;
+  --hoje:#4A554F; --e1:#2E9C74; --e2:#5B88E0; --e3:#D46A30; --e4:#A27AD8;
+  --q-rapida:#1C3328; --q-aposta:#1D2740; --q-extra:#1F2622; --q-evitar:#3A2220; color-scheme:dark}}
 :root[data-theme="dark"]{
   --chao:#101613; --folha:#18201C; --tinta:#E8EEEA; --tinta-2:#B8C3BC; --tinta-3:#8E9A93;
   --linha:#2C3832; --ferro:#24443A; --ferro-texto:#EEF3EF; --laranja:#F28A4E; --laranja-suave:#3A2418;
-  --bom:#5CC98A; --mau:#F0857A; --barra-neg:#7A3A33; --barra-pos:#2F7A50; color-scheme:dark}
+  --bom:#5CC98A; --mau:#F0857A;
+  --hoje:#4A554F; --e1:#2E9C74; --e2:#5B88E0; --e3:#D46A30; --e4:#A27AD8;
+  --q-rapida:#1C3328; --q-aposta:#1D2740; --q-extra:#1F2622; --q-evitar:#3A2220; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--chao);color:var(--tinta);font:16px/1.55 var(--texto);padding-inline:16px;padding-block:28px 56px}
-.pagina{max-width:760px;margin:0 auto;display:grid;gap:40px}
+.pagina{max-width:780px;margin:0 auto;display:grid;gap:44px}
 h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1;margin:0;text-wrap:balance;letter-spacing:.01em}
-h1{font-size:clamp(44px,9vw,64px)}
-h2{font-size:clamp(32px,6vw,40px)}
-h3{font-size:24px;font-weight:500}
+h1{font-size:clamp(46px,10vw,68px)}
+h2{font-size:clamp(32px,6vw,42px)}
+h3{font-size:25px;font-weight:500}
 p{margin:0}
 .num{font-variant-numeric:tabular-nums}
 :focus-visible{outline:3px solid var(--laranja);outline-offset:2px;border-radius:6px}
@@ -34,284 +40,368 @@ section{display:grid;gap:16px}
 .topo{display:grid;gap:14px}
 .lead{font-size:18px;color:var(--tinta-2);max-width:62ch}
 .aviso{font-size:14px;color:var(--tinta-3);max-width:66ch}
-.seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--folha);border:1px solid var(--linha);border-radius:999px;padding:4px;width:max-content;max-width:100%}
-.seg button{font:600 15px var(--texto);color:var(--tinta-2);background:none;border:0;border-radius:999px;padding:9px 16px;min-height:42px;cursor:pointer}
+.pedido{font-family:var(--display);font-size:clamp(28px,6vw,36px);font-weight:500;line-height:1.05;border-left:4px solid var(--laranja);padding-left:14px;max-width:30ch}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--folha);border:1px solid var(--linha);border-radius:999px;padding:4px;max-width:100%}
+.seg button{font:600 15px var(--texto);color:var(--tinta-2);background:none;border:0;border-radius:999px;padding:9px 14px;min-height:42px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--ferro);color:var(--ferro-texto)}
 .controlo{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:15px;color:var(--tinta-2)}
-/* resumo: o veredito em placa de ferro */
+/* placa do resultado */
 .placa{background:var(--ferro);color:var(--ferro-texto);border-radius:14px;padding:22px 20px;display:grid;gap:18px}
-.placa .grande{font-family:var(--display);font-size:clamp(56px,14vw,84px);line-height:.9;font-weight:600}
-.placa .rot{font-size:14px;opacity:.85;max-width:44ch}
-.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px;border-top:1px solid rgba(255,255,255,.18);padding-top:16px}
+.placa .grande{font-family:var(--display);font-size:clamp(58px,15vw,88px);line-height:.9;font-weight:600}
+.placa .grande small{font-size:.42em;font-weight:500;opacity:.85}
+.placa .rot{font-size:15px;opacity:.88;max-width:46ch}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px;border-top:1px solid rgba(238,243,239,.2);padding-top:16px}
 .kpi{display:grid;gap:2px;min-width:0}
 .kpi b{font-family:var(--display);font-size:34px;font-weight:500;line-height:1}
 .kpi span{font-size:13px;opacity:.85}
-/* passos */
-.passos{display:grid;gap:0;border-top:1px solid var(--linha)}
-.passo{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 12px;padding:16px 0;border-bottom:1px solid var(--linha);align-items:baseline}
-.passo .n{font-family:var(--display);font-size:34px;color:var(--laranja);line-height:.8}
-.passo p{grid-column:2;font-size:15px;color:var(--tinta-2)}
-.passo .v{grid-column:3;grid-row:1 / span 2;text-align:right;font-weight:700;white-space:nowrap}
-.passo .v small{display:block;font-weight:500;font-size:12px;color:var(--tinta-3)}
-@media (max-width:480px){.passo{grid-template-columns:34px minmax(0,1fr)}.passo .v{grid-column:2;grid-row:auto;text-align:left}}
+/* matriz 2×2 */
+.matriz{display:grid;grid-template-columns:22px minmax(0,1fr);grid-template-rows:auto 22px;gap:6px}
+.eixo-y{writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3);text-align:center}
+.eixo-x{grid-column:2;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3);text-align:right}
+.quad{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.q{border-radius:12px;padding:14px;display:grid;gap:8px;align-content:start;min-width:0}
+.q h3{font-size:22px}
+.q .sub{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3)}
+.q ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14.5px;line-height:1.35}
+.q li{display:flex;gap:8px;align-items:baseline}
+.q li i{flex:none;font-style:normal;font-size:11px;font-weight:700;border-radius:5px;padding:1px 5px;color:#fff}
+.q.rapida{background:var(--q-rapida)} .q.aposta{background:var(--q-aposta)} .q.extra{background:var(--q-extra)} .q.evitar{background:var(--q-evitar)}
+.q.evitar li{color:var(--tinta-2)}
+@media (max-width:520px){.quad{grid-template-columns:1fr}.matriz{grid-template-columns:1fr}.eixo-y,.eixo-x{display:none}}
+.tag1{background:var(--e1)} .tag2{background:var(--e2)} .tag3{background:var(--e3)} .tag4{background:var(--e4)} .tagc{background:var(--tinta-3)}
+/* gráfico */
+.grafico{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:16px 12px 12px;display:grid;gap:10px}
+.grafico svg{display:block;width:100%;height:auto;touch-action:manipulation}
+.legenda{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--tinta-2);padding:0 4px}
+.legenda span{display:inline-flex;align-items:center;gap:6px}
+.legenda i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.dica{background:var(--chao);border-radius:10px;padding:10px 12px;font-size:14px;display:grid;gap:4px}
+.dica b{font-weight:700}
+.dica .ln{display:flex;justify-content:space-between;gap:12px}
+.dica .ln span{display:inline-flex;align-items:center;gap:6px;color:var(--tinta-2)}
+.dica .ln i{width:10px;height:10px;border-radius:2px;display:inline-block}
+details{border:1px solid var(--linha);border-radius:14px;background:var(--folha)}
+summary{cursor:pointer;padding:12px 16px;font-weight:600;font-size:15px}
+.rolar{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{padding:9px 12px;text-align:right;border-top:1px solid var(--linha);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--tinta-3)}
+.neg{color:var(--mau)} .pos{color:var(--bom)}
 /* etapas */
 .etapas{display:grid;gap:14px}
-.etapa{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:16px;display:grid;gap:10px}
-.etapa .cab{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
-.etapa .n{font-family:var(--display);font-size:20px;font-weight:600;color:var(--laranja);letter-spacing:.06em;text-transform:uppercase}
+.etapa{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:16px;display:grid;gap:12px}
+.etapa .cab{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.etapa .n{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;border-radius:6px;padding:2px 8px}
 .etapa .quando{font-size:13px;color:var(--tinta-3)}
-.etapa p{font-size:15px;color:var(--tinta-2)}
-.etapa ul{margin:0;padding-left:18px;font-size:14px;color:var(--tinta-2);display:grid;gap:3px}
+.antes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;font-size:14px}
+.antes div{display:grid;gap:4px;align-content:start}
+.antes span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-3)}
+.antes ul{margin:0;padding-left:18px;display:grid;gap:3px;color:var(--tinta-2)}
+@media (max-width:480px){.antes{grid-template-columns:1fr}}
+.conta{font-size:13.5px;color:var(--tinta-2);border-top:1px dashed var(--linha);padding-top:10px}
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .duo div{border-radius:10px;padding:10px 12px;background:var(--chao);display:grid;gap:2px;min-width:0}
 .duo div:last-child{background:var(--laranja-suave)}
 .duo span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-3)}
 .duo b{font-family:var(--display);font-size:32px;font-weight:500;line-height:1}
 .duo small{font-size:13px;color:var(--tinta-2)}
-.totais{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;background:var(--ferro);color:var(--ferro-texto);border-radius:14px;padding:16px}
-.totais div{display:grid;gap:2px;min-width:0}
-.totais span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
-.totais b{font-family:var(--display);font-size:36px;font-weight:500;line-height:1}
-.totais small{font-size:13px;opacity:.85}
-/* gráfico */
-.grafico{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:16px 12px 8px}
-.grafico svg{display:block;width:100%;height:auto}
-.legenda{font-size:13px;color:var(--tinta-3);padding:4px 6px 6px}
-/* tabela */
-.rolar{overflow-x:auto;border:1px solid var(--linha);border-radius:14px;background:var(--folha)}
-table{border-collapse:collapse;width:100%;font-size:14px;min-width:540px}
-th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--linha);white-space:nowrap}
-th:first-child,td:first-child{text-align:left}
-th{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--tinta-3)}
-tr:last-child td{border-bottom:0}
-.neg{color:var(--mau)} .pos{color:var(--bom)}
-/* escala 3x a 8x */
-.escada{display:grid;gap:10px}
-.degrau{display:grid;grid-template-columns:70px minmax(0,1fr);gap:12px;align-items:center}
-.degrau b{font-family:var(--display);font-size:30px;font-weight:500;line-height:1}
-.trilho{height:30px;background:var(--folha);border:1px solid var(--linha);border-radius:8px;position:relative;overflow:hidden}
-.trilho i{position:absolute;inset:0 auto 0 0;background:var(--ferro);border-radius:7px 0 0 7px}
-.trilho em{position:absolute;inset:0 auto 0 0;background:var(--laranja)}
-.trilho span{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:600;color:var(--tinta)}
-.chaves{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--tinta-2)}
-.chaves i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+/* quanto vale */
+.valor{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px}
+@media (max-width:600px){.valor{grid-template-columns:1fr}}
+.linhas{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:6px 16px}
+.linhas .l{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--linha);font-size:15px}
+.linhas .l span{display:inline-flex;align-items:center;gap:8px}
+.linhas .l i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.linhas .l.total{border-bottom:0;font-weight:700}
+.linhas .l b{font-variant-numeric:tabular-nums}
+.inv{background:var(--ferro);color:var(--ferro-texto);border-radius:14px;padding:16px;display:grid;gap:14px;align-content:start}
+.inv div{display:grid;gap:2px}
+.inv span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.inv b{font-family:var(--display);font-size:38px;font-weight:500;line-height:1}
+.inv small{font-size:13px;opacity:.85}
 .caixa{background:var(--laranja-suave);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--tinta)}
 /* premissas */
-.premissas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.premissas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;padding:4px 16px 16px}
 @media (max-width:520px){.premissas{grid-template-columns:1fr}}
 .campo{display:grid;gap:4px;min-width:0}
 .campo label{font-size:14px;font-weight:600}
 .campo small{font-size:12.5px;color:var(--tinta-3)}
-.campo input{font:600 17px var(--texto);font-variant-numeric:tabular-nums;color:var(--tinta);background:var(--folha);border:1px solid var(--linha);border-radius:10px;padding:10px 12px;width:100%;min-height:44px}
-button.repor{justify-self:start;font:600 14px var(--texto);background:none;border:1px solid var(--linha);color:var(--tinta-2);border-radius:999px;padding:8px 14px;cursor:pointer}
+.campo input{font:600 17px var(--texto);font-variant-numeric:tabular-nums;color:var(--tinta);background:var(--chao);border:1px solid var(--linha);border-radius:10px;padding:10px 12px;width:100%;min-height:44px}
+button.repor{margin:0 16px 16px;font:600 14px var(--texto);background:none;border:1px solid var(--linha);color:var(--tinta-2);border-radius:999px;padding:8px 14px;cursor:pointer}
 footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);padding-top:16px}
-@media (prefers-reduced-motion:no-preference){.trilho i,.trilho em{transition:width .5s ease}}
 </style>
 
 <main class="pagina">
   <header class="topo">
     <p class="olho">Pacheco Studios · Bravus Muscle Suplementos</p>
-    <h1>Quanto o plano de 4 etapas pode render</h1>
-    <p class="lead">Conta conservadora de cada etapa do plano de execução, no 1.º mês e no 1.º ano, com o investimento de R$ 5.000 na implantação e R$ 1.000 por mês. O lucro abaixo já desconta tudo isso.</p>
-    <p class="aviso">Estimativa feita com médias do mercado de suplementos, não promessa de resultado. Os números da loja (ticket, margem, clientes ativos) substituem as premissas no fim da página.</p>
+    <h1>O caminho para 2x a 3x</h1>
+    <p class="pedido">“Dobrar ou triplicar o faturamento em 6 meses a 1 ano.”</p>
+    <p class="lead">Foi o que você pediu. Abaixo está quanto cada etapa do plano de execução rende no 1.º mês e em 1 ano, numa conta conservadora, já descontado o investimento de R$ 5.000 na implantação e R$ 1.000 por mês.</p>
     <div class="controlo">
-      <span>Clientes na base</span>
-      <div class="seg" role="group" aria-label="Clientes na base">
-        <button type="button" id="b1000" aria-pressed="true" data-base="1000">1.000</button>
-        <button type="button" id="b3000" aria-pressed="false" data-base="3000">3.000</button>
-        <button type="button" id="b5000" aria-pressed="false" data-base="5000">5.000</button>
+      <span>Faturamento hoje, por mês</span>
+      <div class="seg" role="group" aria-label="Faturamento hoje por mês">
+        <button type="button" aria-pressed="false" data-fat="5000">R$ 5 mil</button>
+        <button type="button" aria-pressed="true" data-fat="7500">R$ 7,5 mil</button>
+        <button type="button" aria-pressed="false" data-fat="10000">R$ 10 mil</button>
       </div>
     </div>
-  </header>
-
-  <section aria-labelledby="t-resumo">
-    <h2 id="t-resumo" hidden>Resumo</h2>
     <div class="placa">
       <div>
-        <div class="grande num" id="rLucro">R$ 10.700</div>
-        <p class="rot">de lucro a mais no 1.º ano, já pagos os R$ <span id="rCusto">17.000</span> do plano</p>
+        <div class="grande num" id="rRun">R$ 17.300<small>/mês</small></div>
+        <p class="rot" id="rRot">no 12.º mês: 2,3x o faturamento de hoje</p>
       </div>
       <div class="kpis">
-        <div class="kpi"><b class="num" id="rMes">7.º mês</b><span>o plano se paga</span></div>
-        <div class="kpi"><b class="num" id="rFat">R$ 93.800</b><span>faturamento a mais no ano</span></div>
-        <div class="kpi"><b class="num" id="rRun">R$ 11.000</b><span>a mais por mês, no 12.º mês</span></div>
-        <div class="kpi"><b class="num" id="rAno2">R$ 26.900</b><span>lucro no 2.º ano, só com a mensalidade</span></div>
+        <div class="kpi"><b class="num" id="rMeta">7.º mês</b><span>em que o faturamento passa de 2x</span></div>
+        <div class="kpi"><b class="num" id="rMes">8.º mês</b><span>em que o plano já se pagou</span></div>
+        <div class="kpi"><b class="num" id="rFat">R$ 81.800</b><span>faturamento a mais no 1.º ano</span></div>
+        <div class="kpi"><b class="num" id="rLucro">R$ 7.200</b><span>lucro a mais no 1.º ano, já pago o plano</span></div>
       </div>
     </div>
+    <p class="aviso">Estimativa com médias do mercado de suplementos, não promessa de resultado. Os números reais aparecem no relatório mensal a partir do 2.º mês.</p>
+  </header>
+
+  <section aria-labelledby="t-matriz">
+    <p class="olho">01 · Matriz de oportunidades</p>
+    <h2 id="t-matriz">O que vale a pena fazer primeiro</h2>
+    <p class="aviso">Cada ideia ficou num quadrante pelo valor que traz para a loja e pela dificuldade de pôr de pé. O plano começa pelas vitórias rápidas.</p>
+    <div class="matriz">
+      <div class="eixo-y">Valor para a loja →</div>
+      <div class="quad">
+        <div class="q rapida"><div><h3>Vitórias rápidas</h3><p class="sub">Começar aqui · mês 1</p></div>
+          <ul>
+            <li><i class="tag3">E3</i>Trazer de volta os clientes da base que pararam de comprar</li>
+            <li><i class="tag3">E3</i>Lembrete de recompra quando o pote está acabando</li>
+            <li><i class="tag3">E3</i>Resposta automática para quem chama depois das 20:00</li>
+            <li><i class="tag1">E1</i>Google blindado: perfil completo e mais avaliações</li>
+            <li><i class="tag2">E2</i>Site com catálogo e “Pedir pelo WhatsApp”</li>
+          </ul></div>
+        <div class="q aposta"><div><h3>Grandes apostas</h3><p class="sub">Fase 2 · depois do 5.º mês</p></div>
+          <ul>
+            <li><i class="tag4">E4</i>Loja online com Pix, cartão e entrega no bairro</li>
+            <li><i class="tag2">E2</i>Parcerias com academias e personal trainers</li>
+            <li><i class="tagc">+</i>Anúncios para captar clientes novos (continuidade)</li>
+          </ul></div>
+        <div class="q extra"><div><h3>Extras</h3><p class="sub">Mais tarde</p></div>
+          <ul>
+            <li><i class="tag2">E2</i>E-mail profissional (contato@…)</li>
+            <li><i class="tagc">+</i>Calendário de posts no Instagram</li>
+          </ul></div>
+        <div class="q evitar"><div><h3>Evitar</h3><p class="sub">Custa muito, rende pouco</p></div>
+          <ul>
+            <li><i class="tagc">×</i>Aplicativo próprio da loja</li>
+            <li><i class="tagc">×</i>Programa de pontos complexo antes de ter a lista de clientes organizada</li>
+          </ul></div>
+      </div>
+      <div class="eixo-x">Dificuldade →</div>
+    </div>
   </section>
 
-  <section aria-labelledby="t-passos">
-    <p class="olho">Etapa a etapa</p>
-    <h2 id="t-passos">1.º mês contra 1 ano</h2>
-    <p class="aviso">O 1.º mês é o primeiro mês inteiro com a etapa a funcionar. As etapas 1 a 3 ficam prontas nas primeiras 4 semanas; a loja online entra no <span id="e4mesTxt">6.º</span> mês. Lucro = faturamento a mais × margem.</p>
-    <div class="etapas" id="passos"></div>
-    <div class="totais" id="totais"></div>
-  </section>
-
-  <section aria-labelledby="t-saldo">
-    <p class="olho">Mês a mês</p>
-    <h2 id="t-saldo">Saldo acumulado do plano</h2>
+  <section aria-labelledby="t-graf">
+    <p class="olho">02 · Mês a mês</p>
+    <h2 id="t-graf">Faturamento com o plano</h2>
     <div class="grafico">
-      <svg id="graf" viewBox="0 0 640 260" role="img" aria-label="Saldo acumulado por mês"></svg>
-      <p class="legenda">Lucro a mais acumulado menos a implantação e as mensalidades pagas até ao mês.</p>
+      <div class="legenda" id="legenda"></div>
+      <svg id="graf" viewBox="0 0 420 300" role="img" aria-label="Faturamento mensal com o plano, por etapa"></svg>
+      <div class="dica" id="dica" aria-live="polite"></div>
     </div>
-    <div class="rolar">
-      <table>
-        <thead><tr><th>Mês</th><th>Compras a mais</th><th>Faturamento a mais</th><th>Lucro a mais</th><th>Pago ao plano</th><th>Saldo</th></tr></thead>
+    <p class="aviso">Toque num mês para ver o detalhe. Os meses 2 a 4 têm o pico dos clientes antigos que voltam; depois a curva sobe com os clientes novos que ficam.</p>
+    <details>
+      <summary>Ver a tabela mês a mês</summary>
+      <div class="rolar"><table>
+        <thead><tr><th>Mês</th><th>Faturamento</th><th>Vezes hoje</th><th>A mais</th><th>Lucro a mais</th><th>Pago ao plano</th><th>Saldo</th></tr></thead>
         <tbody id="tabela"></tbody>
-      </table>
-    </div>
+      </table></div>
+    </details>
   </section>
 
-  <section aria-labelledby="t-escala">
-    <p class="olho">A meta de 3x a 8x</p>
-    <h2 id="t-escala">Onde as 4 etapas deixam a loja</h2>
-    <p class="lead" id="escalaTxt"></p>
-    <div class="escada" id="escada"></div>
-    <div class="chaves"><span><i style="background:var(--ferro)"></i>Hoje (estimado)</span><span><i style="background:var(--laranja)"></i>A mais com as 4 etapas, no 12.º mês</span></div>
-    <p class="caixa" id="escalaCaixa"></p>
+  <section aria-labelledby="t-etapas">
+    <p class="olho">03 · Etapa a etapa</p>
+    <h2 id="t-etapas">1.º mês contra 1 ano</h2>
+    <p class="aviso">O 1.º mês é o primeiro mês inteiro com a etapa funcionando. As etapas 1 a 3 ficam prontas nas primeiras 4 semanas; a loja online entra no <span id="e4mesTxt">6.º</span> mês.</p>
+    <div class="etapas" id="etapas"></div>
+  </section>
+
+  <section aria-labelledby="t-valor">
+    <p class="olho">04 · Quanto vale tudo junto</p>
+    <h2 id="t-valor">O 1.º ano em reais</h2>
+    <div class="valor">
+      <div class="linhas" id="linhas"></div>
+      <div class="inv">
+        <div><span>Investimento no 1.º ano</span><b class="num">R$ 17.000</b><small>R$ 5.000 de implantação + 12 × R$ 1.000</small></div>
+        <div><span>Retorno sobre o investimento</span><b class="num" id="vRoi">42%</b><small>lucro a mais ÷ investimento</small></div>
+        <div><span>Se paga no</span><b class="num" id="vMes">8.º mês</b></div>
+      </div>
+    </div>
+    <p class="caixa" id="caixa"></p>
   </section>
 
   <section aria-labelledby="t-prem">
     <p class="olho">Troque pelos números reais</p>
     <h2 id="t-prem">Premissas</h2>
-    <div class="premissas" id="premissas"></div>
-    <button type="button" class="repor" id="repor">Voltar às premissas conservadoras</button>
+    <details>
+      <summary>Ver e mudar as premissas</summary>
+      <div class="premissas" id="premissas"></div>
+      <button type="button" class="repor" id="repor">Voltar às premissas conservadoras</button>
+    </details>
   </section>
 
-  <footer>Pacheco Studios · pachecost.com · Rascunho de 06/10/2026. Os números reais da loja aparecem no relatório mensal depois dos primeiros 60 dias.</footer>
+  <footer>Pacheco Studios · pachecost.com · Rascunho de 06/10/2026. Faturamento informado pela loja (R$ 5 a 10 mil por mês); as demais premissas são médias de mercado até a loja confirmar.</footer>
 </main>
 
 <script>
 (function(){
-  var PADRAO={ticket:140,margem:30,ativos:30,freq:0.5,churn:8,google:4,site:3,b2b:500,lift:10,noite:4,reat:5,fica:40,e4:6,online:6,ticketOn:180,taxa:4};
+  var PADRAO={base:1000,ticket:140,margem:30,freq:0.5,churn:8,google:4,site:3,b2b:500,lift:10,noite:4,reat:5,fica:40,e4:6,online:6,ticketOn:180,taxa:4};
   var CAMPOS=[
-    ['ticket','Ticket médio no balcão (R$)','Valor médio de uma compra na loja.',1],
+    ['base','Clientes na base','Todos os que já compraram em 11 anos.',100],
+    ['ticket','Ticket médio no balcão (R$)','Valor médio de uma compra.',1],
     ['margem','Margem bruta (%)','O que sobra de cada venda depois do custo do produto.',1],
-    ['ativos','Clientes ativos hoje (%)','Parte da base que comprou nos últimos 6 meses.',1],
     ['freq','Compras por cliente ativo/mês','0,5 = uma compra a cada 2 meses.',0.1],
     ['churn','Perda de clientes novos/mês (%)','Clientes novos que param de comprar a cada mês.',1],
     ['google','Etapa 1 · clientes novos/mês pelo Google','No 1.º mês; sobe com as avaliações até +50%.',1],
-    ['site','Etapa 2 · clientes novos/mês pelo site','No mês cheio; sobe até +30% com o site indexado.',1],
+    ['site','Etapa 2 · clientes novos/mês pelo site','No mês cheio; sobe até +30% com o site no Google.',1],
     ['b2b','Etapa 2 · compras de parceiros (R$/mês)','Uma academia ou personal a partir do 6.º mês.',50],
     ['lift','Etapa 3 · aumento da recompra (%)','Efeito do lembrete ~25 dias depois da compra.',1],
     ['noite','Etapa 3 · pedidos salvos fora do horário/mês','Mensagens depois das 20:00 que hoje se perdem.',1],
-    ['reat','Etapa 3 · inativos que voltam (%)','Aviso de chegada e promoção para a lista de clientes.',1],
-    ['fica','Etapa 3 · reativados que continuam (%)','Dos que voltam, quantos ficam a comprar.',1],
+    ['reat','Etapa 3 · clientes parados que voltam (%)','Mensagem para a base, nos meses 2 a 4.',1],
+    ['fica','Etapa 3 · dos que voltam, ficam (%)','Passam a comprar de novo com regularidade.',1],
     ['e4','Etapa 4 · mês em que a loja online entra','Quando o volume pedir.',1],
-    ['online','Etapa 4 · pedidos online novos/mês','No 1.º mês; sobe até +50% no ano.',1],
+    ['online','Etapa 4 · pedidos online novos/mês','No 1.º mês; sobe até +50%.',1],
     ['ticketOn','Etapa 4 · ticket online com combos (R$)','Combos por objetivo sobem o valor do pedido.',1],
     ['taxa','Etapa 4 · taxas de pagamento e entrega (%)','Sai da margem dos pedidos online.',0.5]
   ];
-  var P=Object.assign({},PADRAO), BASE=1000, CUSTO_IMPL=5000, MENSAL=1000;
+  var P=Object.assign({},PADRAO), FAT=7500, CUSTO_IMPL=5000, MENSAL=1000, SEL=11;
+  var COR=['var(--e1)','var(--e2)','var(--e3)','var(--e4)'];
+  var NOME=['Google blindado','Site + e-mail','WhatsApp que vende','Loja online'];
   var brl=function(v){var s=Math.round(Math.abs(v)).toLocaleString('pt-BR');return (v<0?'−':'')+'R$ '+s;};
-  var r100=function(v){return Math.round(v/100)*100;};
-  var r10=function(v){return Math.round(v/10)*10;};
+  var r100=function(v){return Math.round(v/100)*100;}, r10=function(v){return Math.round(v/10)*10;};
+  var vez=function(x){return x.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'x';};
+  var soma=function(a){return a.reduce(function(x,y){return x+y},0)};
 
   function simular(){
     var tk=P.ticket, mg=P.margem/100, fr=P.freq, ch=P.churn/100;
-    var ativos=BASE*P.ativos/100, inativos=BASE-ativos, hoje=ativos*fr;
+    var hoje=FAT/tk, ativos=hoje/fr, inativos=Math.max(0,P.base-ativos);
     var rG=[0.75,1,1,1,1.15,1.15,1.3,1.3,1.4,1.4,1.5,1.5];
     var rS=[0.3,1,1,1,1.1,1.1,1.2,1.2,1.3,1.3,1.3,1.3];
     var rO=[1,1.1,1.2,1.3,1.4,1.5,1.5,1.5,1.5,1.5,1.5,1.5];
     var e4=Math.max(1,Math.min(12,Math.round(P.e4)))-1;
-    var pG=0,pS=0,pR=0, saldo=-CUSTO_IMPL, meses=[], mesPaga=null;
-    var et=[0,1,2,3].map(function(){return {fat:[],luc:[],novos:[]}});
+    var pG=0,pS=0,pR=0, saldo=-CUSTO_IMPL, meses=[], mesPaga=null, mesMeta=null;
+    var et=[0,1,2,3].map(function(){return {fat:[],luc:[]}});
     for(var m=0;m<12;m++){
       var nG=P.google*rG[m], nS=P.site*rS[m];
-      var volta=(m===1||m===2)?inativos*P.reat/100/2:0;
+      var volta=(m>=1&&m<=3)?inativos*P.reat/100/3:0;
       var f1=(nG+pG*fr)*tk;
       var f2=(nS+pS*fr)*tk+(m>=5?P.b2b:0);
-      var c3=(m>=1?hoje*P.lift/100+P.noite:0)+volta+pR*fr;
-      var f3=c3*tk;
-      var on=m>=e4?P.online*rO[m-e4]:0, f4=on*P.ticketOn;
+      var f3=((m>=1?hoje*P.lift/100+P.noite:0)+volta+pR*fr)*tk;
+      var f4=m>=e4?P.online*rO[m-e4]*P.ticketOn:0;
       pG=pG*(1-ch)+nG; pS=pS*(1-ch)+nS; pR=pR*(1-ch)+volta*P.fica/100;
-      var mg4=Math.max(0,mg-P.taxa/100);
-      var L=[f1*mg,f2*mg,f3*mg,f4*mg4], F=[f1,f2,f3,f4], N=[nG,nS,(m>=1?P.noite:0)+volta,on];
-      for(var k=0;k<4;k++){et[k].fat.push(F[k]);et[k].luc.push(L[k]);et[k].novos.push(N[k]);}
-      var fat=f1+f2+f3+f4, lucro=L[0]+L[1]+L[2]+L[3];
+      var F=[f1,f2,f3,f4], L=[f1*mg,f2*mg,f3*mg,f4*Math.max(0,mg-P.taxa/100)];
+      for(var k=0;k<4;k++){et[k].fat.push(F[k]);et[k].luc.push(L[k]);}
+      var extra=soma(F), lucro=soma(L);
       saldo+=lucro-MENSAL; if(mesPaga===null&&saldo>=0)mesPaga=m+1;
-      meses.push({m:m+1,compras:fat/tk,fat:fat,lucro:lucro,pago:(m===0?CUSTO_IMPL:0)+MENSAL,saldo:saldo});
+      var mult=(FAT+extra)/FAT; if(mesMeta===null&&mult>=2&&m>=4)mesMeta=m+1;
+      meses.push({m:m+1,partes:F,extra:extra,tot:FAT+extra,mult:mult,lucro:lucro,pago:(m===0?CUSTO_IMPL:0)+MENSAL,saldo:saldo});
     }
-    var ult=meses[11];
-    return {hoje:hoje,hojeFat:hoje*tk,meses:meses,et:et,e4:e4,mesPaga:mesPaga,saldo:saldo,
-      fatAno:meses.reduce(function(a,b){return a+b.fat},0),lucAno:meses.reduce(function(a,b){return a+b.lucro},0),
-      run:ult.fat,ano2:ult.lucro*12-MENSAL*12};
+    return {meses:meses,et:et,e4:e4,mesPaga:mesPaga,mesMeta:mesMeta,saldo:saldo,ativos:ativos,inativos:inativos,hoje:hoje,
+      fatAno:soma(meses.map(function(x){return x.extra})),lucAno:soma(meses.map(function(x){return x.lucro}))};
   }
 
   function render(){
-    var s=simular();
-    document.getElementById('rLucro').textContent=brl(r100(s.saldo));
-    document.getElementById('rLucro').style.color=s.saldo<0?'#F7B7AE':'';
-    document.getElementById('rCusto').textContent=(CUSTO_IMPL+MENSAL*12).toLocaleString('pt-BR');
-    document.getElementById('rMes').textContent=s.mesPaga?s.mesPaga+'.º mês':'depois do 12.º';
-    document.getElementById('rFat').textContent=brl(r100(s.fatAno));
-    document.getElementById('rRun').textContent=brl(r100(s.run));
-    document.getElementById('rAno2').textContent=brl(r100(s.ano2));
+    var s=simular(), u=s.meses[11];
+    var el=function(id){return document.getElementById(id)};
+    el('rRun').innerHTML=brl(r100(u.tot))+'<small>/mês</small>';
+    el('rRot').textContent='no 12.º mês: '+vez(u.mult)+' o faturamento de hoje ('+brl(FAT)+')';
+    el('rMeta').textContent=s.mesMeta?s.mesMeta+'.º mês':'depois do 12.º';
+    el('rMes').textContent=s.mesPaga?s.mesPaga+'.º mês':'depois do 12.º';
+    el('rFat').textContent=brl(r100(s.fatAno));
+    el('rLucro').textContent=brl(r100(s.saldo));
+    el('e4mesTxt').textContent=(s.e4+1)+'.º';
 
-    var soma=function(a){return a.reduce(function(x,y){return x+y},0)};
-    var primeiro=[1,1,1,s.e4];
+    el('legenda').innerHTML='<span><i style="background:var(--hoje)"></i>Hoje</span>'+NOME.map(function(n,i){return '<span><i style="background:'+COR[i]+'"></i>Etapa '+(i+1)+' · '+n+'</span>'}).join('');
+    grafico(s); dica(s);
+
+    el('tabela').innerHTML=s.meses.map(function(x){
+      return '<tr><td>'+x.m+'</td><td class="num">'+brl(x.tot)+'</td><td class="num">'+vez(x.mult)+'</td><td class="num">'+brl(x.extra)+'</td><td class="num">'+brl(x.lucro)+'</td><td class="num">'+brl(-x.pago)+'</td><td class="num '+(x.saldo<0?'neg':'pos')+'">'+brl(x.saldo)+'</td></tr>';
+    }).join('');
+
+    var ativos=Math.round(s.ativos), parados=Math.round(s.inativos);
     var info=[
-      ['Google blindado','Semana 1','Perfil verificado, produtos e fotos, QR de avaliação no balcão. A loja sai das 7 avaliações e aparece melhor no mapa.',['Clientes novos que acham a loja no mapa: '+P.google+'/mês no início, até '+Math.round(P.google*1.5)+'/mês no fim do ano']],
-      ['Site próprio + e-mail','Semanas 2–3','Catálogo por objetivo com “Pedir pelo WhatsApp”, domínio e e-mail profissional.',['Clientes novos que chegam pela pesquisa: '+P.site+'/mês, até '+Math.round(P.site*1.3)+'/mês','Uma parceria (academia ou personal) a partir do 6.º mês: '+brl(P.b2b)+'/mês']],
-      ['WhatsApp que vende sozinho','Semanas 3–4','Respostas automáticas, reserva para retirada, lista de clientes, lembrete de recompra e pedido de avaliação.',['Recompra: +'+P.lift+'% entre os ~'+Math.round(BASE*P.ativos/100)+' clientes ativos','Pedidos fora do horário que hoje se perdem: '+P.noite+'/mês','Inativos que voltam com o aviso de novidades: '+P.reat+'% (meses 2 e 3)']],
-      ['Loja online','A partir do '+(s.e4+1)+'.º mês','Pix e cartão, entrega por bairro, combos por objetivo. A loja vende 24 horas.',['Pedidos online novos: '+P.online+'/mês, até '+Math.round(P.online*1.5)+'/mês','Ticket com combo: '+brl(P.ticketOn)+'; '+P.taxa+'% de taxas sai da margem']]
+      ['Semana 1',
+        ['Nota 5,0, mas só 7 avaliações','Perfil por verificar, sem produtos','Quem pesquisa “suplementos perto de mim” escolhe outra loja'],
+        ['Perfil verificado, com produtos, marcas e fotos','QR de avaliação no balcão e resposta a todas','Mais cliques em “Ligar” e “Rotas”'],
+        P.google+' clientes novos/mês pelo mapa, até '+Math.round(P.google*1.5)+' no fim do ano × '+brl(P.ticket)+', e quem fica volta a comprar'],
+      ['Semanas 2–3',
+        ['O link do Google leva ao Instagram','Ninguém vê produtos nem marcas antes de chegar','Sem e-mail para academias e parceiros'],
+        ['Site rápido com catálogo por objetivo','“Pedir pelo WhatsApp” com a mensagem pronta','Domínio e e-mail contato@ da Bravus'],
+        P.site+' clientes novos/mês pela pesquisa, até '+Math.round(P.site*1.3)+'; uma parceria a partir do 6.º mês: '+brl(P.b2b)+'/mês'],
+      ['Semanas 3–4',
+        ['Cerca de '+parados.toLocaleString('pt-BR')+' clientes da base pararam de comprar e ninguém os chama','O pote acaba e nada lembra o cliente de voltar','Quem escreve depois das 20:00 fica sem resposta'],
+        ['Mensagem para a base com novidades e promoção','Lembrete de recompra ~25 dias depois da compra','Resposta na hora, reserva para retirar no dia seguinte'],
+        P.reat+'% dos '+parados.toLocaleString('pt-BR')+' parados voltam ('+P.fica+'% ficam) · +'+P.lift+'% de recompra nos ~'+ativos+' ativos · '+P.noite+' pedidos/mês fora do horário'],
+      ['A partir do '+(s.e4+1)+'.º mês',
+        ['Venda só no balcão e no horário da loja','Sem Pix online nem entrega'],
+        ['Carrinho com Pix e cartão','Entrega por bairro ou retirada','Combos por objetivo'],
+        P.online+' pedidos online/mês, até '+Math.round(P.online*1.5)+' × '+brl(P.ticketOn)+' com combo; '+P.taxa+'% de taxas sai da margem']
     ];
-    document.getElementById('e4mesTxt').textContent=(s.e4+1)+'.º';
-    document.getElementById('passos').innerHTML=info.map(function(e,i){
+    var primeiro=[1,1,1,s.e4];
+    el('etapas').innerHTML=info.map(function(e,i){
       var E=s.et[i], m1=primeiro[i];
-      return '<article class="etapa"><div class="cab"><span class="n">Etapa '+(i+1)+'</span><h3>'+e[0]+'</h3><span class="quando">'+e[1]+'</span></div><p>'+e[2]+'</p><ul>'+e[3].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'
+      return '<article class="etapa"><div class="cab"><span class="n" style="background:'+COR[i]+'">Etapa '+(i+1)+'</span><h3>'+NOME[i]+'</h3><span class="quando">'+e[0]+'</span></div>'
+        +'<div class="antes"><div><span>Hoje</span><ul>'+e[1].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div><div><span>Com o plano</span><ul>'+e[2].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div></div>'
+        +'<p class="conta">'+e[3]+'</p>'
         +'<div class="duo"><div><span>1.º mês ('+(m1+1)+'.º do plano)</span><b class="num">'+brl(r10(E.fat[m1]))+'</b><small>lucro '+brl(r10(E.luc[m1]))+'</small></div>'
         +'<div><span>1 ano</span><b class="num">'+brl(r100(soma(E.fat)))+'</b><small>lucro '+brl(r100(soma(E.luc)))+'</small></div></div></article>';
     }).join('');
-    var f1=0,l1=0; for(var i=0;i<4;i++){f1+=s.et[i].fat[1];l1+=s.et[i].luc[1];}
-    document.getElementById('totais').innerHTML='<div><span>Etapas 1 a 3 · 1.º mês</span><b class="num">'+brl(r10(f1))+'</b><small>lucro '+brl(r10(l1))+' · paga '+brl(MENSAL)+' de mensalidade</small></div>'
-      +'<div><span>As 4 etapas · 1 ano</span><b class="num">'+brl(r100(s.fatAno))+'</b><small>lucro '+brl(r100(s.lucAno))+' · paga '+brl(CUSTO_IMPL+MENSAL*12)+' do plano</small></div>';
 
-    document.getElementById('tabela').innerHTML=s.meses.map(function(x){
-      return '<tr><td>'+x.m+'</td><td class="num">'+Math.round(x.compras)+'</td><td class="num">'+brl(x.fat)+'</td><td class="num">'+brl(x.lucro)+'</td><td class="num">'+brl(-x.pago)+'</td><td class="num '+(x.saldo<0?'neg':'pos')+'">'+brl(x.saldo)+'</td></tr>';
-    }).join('');
-
-    grafico(s.meses);
-    escala(s);
+    el('linhas').innerHTML=NOME.map(function(n,i){
+      return '<div class="l"><span><i style="background:'+COR[i]+'"></i>Etapa '+(i+1)+' · '+n+'</span><b>'+brl(r100(soma(s.et[i].fat)))+'</b></div>';
+    }).join('')+'<div class="l"><span>Faturamento a mais no ano</span><b>'+brl(r100(s.fatAno))+'</b></div>'
+      +'<div class="l total"><span>Lucro a mais (margem de '+P.margem+'%)</span><b>'+brl(r100(s.lucAno))+'</b></div>';
+    var inv=CUSTO_IMPL+MENSAL*12, roi=(s.lucAno-inv)/inv*100;
+    el('vRoi').textContent=Math.round(roi)+'%';
+    el('vMes').textContent=s.mesPaga?s.mesPaga+'.º mês':'depois do 12.º';
+    el('caixa').textContent='Só com as 4 etapas o faturamento chega a '+vez(u.mult)+' no 12.º mês. '
+      +(u.mult>=3?'A meta de 3x já fica ao alcance.':'Para chegar a 3x faltam cerca de '+brl(r100(FAT*3-u.tot))+' por mês, que vêm da continuidade: captação de clientes novos com anúncios, gestão dos contatos e marketing. Cada cliente que chega por aí já cai no Google, no site, no lembrete de recompra e no pedido de avaliação.');
   }
 
-  function grafico(meses){
-    var W=640,H=260,L=64,R=10,T=14,B=30;
-    var vals=meses.map(function(x){return x.saldo});
-    var max=Math.max(1000,Math.max.apply(null,vals)), min=Math.min(-1000,Math.min.apply(null,vals));
-    var passo=Math.pow(10,Math.floor(Math.log10((max-min)/4))); var st=[1,2,2.5,5,10].map(function(k){return k*passo}).find(function(k){return (max-min)/k<=5});
-    max=Math.ceil(max/st)*st; min=Math.floor(min/st)*st;
-    var y=function(v){return T+(max-v)/(max-min)*(H-T-B)};
+  function grafico(s){
+    var W=420,H=300,L=46,R=28,T=12,B=26;
+    var max=Math.max(FAT*3, Math.max.apply(null,s.meses.map(function(x){return x.tot})));
+    var st=FAT<=5000?2500:5000; max=Math.ceil(max*1.04/st)*st;
+    var y=function(v){return T+(1-v/max)*(H-T-B)};
     var bw=(W-L-R)/12, out='';
-    for(var v=min;v<=max+1e-6;v+=st){
-      out+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--linha)" stroke-width="'+(v===0?1.6:1)+'"/>';
+    for(var v=0;v<=max+1;v+=st){
+      out+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--linha)" stroke-width="1"/>';
       out+='<text x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="12" fill="var(--tinta-3)" font-family="Figtree,sans-serif">'+(v/1000).toLocaleString('pt-BR')+' mil</text>';
     }
-    meses.forEach(function(x,i){
-      var x0=L+i*bw+bw*0.18, w=bw*0.64, y0=y(0), y1=y(x.saldo);
-      out+='<rect x="'+x0+'" y="'+Math.min(y0,y1)+'" width="'+w+'" height="'+Math.max(1,Math.abs(y1-y0))+'" rx="3" fill="'+(x.saldo<0?'var(--barra-neg)':'var(--barra-pos)')+'"/>';
-      out+='<text x="'+(x0+w/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="12" fill="var(--tinta-3)" font-family="Figtree,sans-serif">'+x.m+'</text>';
+    s.meses.forEach(function(x,i){
+      var x0=L+i*bw+bw*0.16, w=bw*0.68, acc=0;
+      var partes=[FAT].concat(x.partes), cores=['var(--hoje)'].concat(COR);
+      partes.forEach(function(p,k){
+        if(p<=0)return; var y0=y(acc+p), h=y(acc)-y(acc+p)-2; acc+=p;
+        if(h>0.5)out+='<rect x="'+x0+'" y="'+y0+'" width="'+w+'" height="'+h+'" rx="2" fill="'+cores[k]+'"/>';
+      });
+      out+='<text x="'+(x0+w/2)+'" y="'+(H-9)+'" text-anchor="middle" font-size="12" fill="'+(i===SEL?'var(--tinta)':'var(--tinta-3)')+'" font-weight="'+(i===SEL?700:400)+'" font-family="Figtree,sans-serif">'+x.m+'</text>';
+      if(i===SEL)out+='<rect x="'+(L+i*bw+1)+'" y="'+T+'" width="'+(bw-2)+'" height="'+(H-T-B)+'" fill="none" stroke="var(--tinta-3)" stroke-width="1" stroke-dasharray="2 3" rx="4"/>';
+      out+='<rect class="alvo" data-i="'+i+'" x="'+(L+i*bw)+'" y="'+T+'" width="'+bw+'" height="'+(H-T)+'" fill="transparent" style="cursor:pointer"/>';
     });
-    var u=meses[11];
-    out+='<text x="'+(L+11*bw+bw/2)+'" y="'+(u.saldo<0?y(u.saldo)+16:y(u.saldo)-6)+'" text-anchor="end" font-size="13" font-weight="700" fill="var(--tinta)" font-family="Figtree,sans-serif">'+brl(r100(u.saldo))+'</text>';
-    document.getElementById('graf').innerHTML=out;
+    [2,3].forEach(function(k){
+      var yy=y(FAT*k);
+      out+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+yy+'" y2="'+yy+'" stroke="var(--tinta)" stroke-width="1.5" stroke-dasharray="6 5"/>';
+      out+='<text x="'+(W-R+6)+'" y="'+(yy+4)+'" font-size="13" font-weight="700" fill="var(--tinta)" font-family="Figtree,sans-serif">'+k+'x</text>';
+    });
+    var g=document.getElementById('graf'); g.innerHTML=out;
+    [].slice.call(g.querySelectorAll('.alvo')).forEach(function(r){
+      var f=function(){SEL=+r.getAttribute('data-i');grafico(s);dica(s);};
+      r.addEventListener('click',f); r.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')f();});
+    });
   }
 
-  function escala(s){
-    var hoje=s.hojeFat, com=hoje+s.run, mult=com/hoje, maxV=hoje*8;
-    document.getElementById('escalaTxt').textContent='Com '+BASE.toLocaleString('pt-BR')+' clientes na base e as premissas abaixo, a loja vende hoje cerca de '+brl(r100(hoje))+' por mês. No 12.º mês, as 4 etapas sozinhas levam a cerca de '+brl(r100(com))+', ou '+mult.toLocaleString('pt-BR',{maximumFractionDigits:1})+'x.';
-    var linhas=[[1,'Hoje'],[mult,'4 etapas'],[3,'Meta 3x'],[8,'Meta 8x']];
-    document.getElementById('escada').innerHTML=linhas.map(function(l){
-      var tot=hoje*l[0], base=Math.min(hoje,tot), extra=l[1]==='4 etapas'?s.run:0;
-      var wB=base/maxV*100, wE=extra/maxV*100;
-      var bar=l[1]==='4 etapas'?'<i style="width:'+wB+'%"></i><em style="left:'+wB+'%;width:'+wE+'%"></em>':(l[1]==='Hoje'?'<i style="width:'+wB+'%"></i>':'<i style="width:'+(tot/maxV*100)+'%;background:var(--linha)"></i>');
-      return '<div class="degrau"><b class="num">'+(l[1]==='4 etapas'?mult.toLocaleString('pt-BR',{maximumFractionDigits:1})+'x':l[0]+'x')+'</b><div class="trilho" aria-label="'+l[1]+': '+brl(tot)+' por mês">'+bar+'<span class="num">'+brl(r100(tot))+'/mês</span></div></div>';
-    }).join('');
-    var falta3=hoje*3-com, comprasFalta=falta3/P.ticket;
-    document.getElementById('escalaCaixa').textContent=falta3>0
-      ?'Para chegar a 3x faltam cerca de '+brl(r100(falta3))+' por mês, ou '+Math.round(comprasFalta)+' compras a mais por mês. Essa parte vem da continuidade: captação de clientes novos com anúncios, gestão dos contatos e marketing. As 4 etapas montam a base que faz esse crescimento render: cada cliente novo cai no site, no lembrete de recompra e no pedido de avaliação.'
-      :'Com estas premissas, as 4 etapas já chegam a 3x.';
+  function dica(s){
+    var x=s.meses[SEL];
+    var ln=function(cor,nome,v){return '<div class="ln"><span><i style="background:'+cor+'"></i>'+nome+'</span><b class="num">'+brl(r10(v))+'</b></div>'};
+    document.getElementById('dica').innerHTML='<div class="ln"><b>'+x.m+'.º mês</b><b class="num">'+brl(r10(x.tot))+' · '+vez(x.mult)+'</b></div>'
+      +ln('var(--hoje)','Hoje',FAT)+x.partes.map(function(p,i){return p>0?ln(COR[i],'Etapa '+(i+1)+' · '+NOME[i],p):''}).join('');
   }
 
   function campos(){
@@ -323,7 +413,7 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
     });
   }
   [].slice.call(document.querySelectorAll('.seg button')).forEach(function(b){
-    b.addEventListener('click',function(){BASE=+b.dataset.base;[].slice.call(document.querySelectorAll('.seg button')).forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});render();});
+    b.addEventListener('click',function(){FAT=+b.getAttribute('data-fat');[].slice.call(document.querySelectorAll('.seg button')).forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});render();});
   });
   document.getElementById('repor').addEventListener('click',function(){P=Object.assign({},PADRAO);campos();render();});
   campos(); render();
