@@ -1,0 +1,284 @@
+<title>Contas do plano Bravus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: uma coluna estreita de leitura no telemóvel; o resumo primeiro, depois os 4 passos, o gráfico do saldo, o mês a mês e as premissas editáveis. */
+:root{
+  --chao:#F3F5F2; --folha:#FFFFFF; --tinta:#17201B; --tinta-2:#46524B; --tinta-3:#6B766F;
+  --linha:#DCE2DD; --ferro:#1F3A2E; --ferro-texto:#EEF3EF; --laranja:#C2410C; --laranja-suave:#FCE9DE;
+  --bom:#1E7A46; --mau:#B42318; --barra-neg:#E7B4AE; --barra-pos:#8CC5A1;
+  --display:"Teko","Arial Narrow",Impact,sans-serif;
+  --texto:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --chao:#101613; --folha:#18201C; --tinta:#E8EEEA; --tinta-2:#B8C3BC; --tinta-3:#8E9A93;
+  --linha:#2C3832; --ferro:#24443A; --ferro-texto:#EEF3EF; --laranja:#F28A4E; --laranja-suave:#3A2418;
+  --bom:#5CC98A; --mau:#F0857A; --barra-neg:#7A3A33; --barra-pos:#2F7A50; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --chao:#101613; --folha:#18201C; --tinta:#E8EEEA; --tinta-2:#B8C3BC; --tinta-3:#8E9A93;
+  --linha:#2C3832; --ferro:#24443A; --ferro-texto:#EEF3EF; --laranja:#F28A4E; --laranja-suave:#3A2418;
+  --bom:#5CC98A; --mau:#F0857A; --barra-neg:#7A3A33; --barra-pos:#2F7A50; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--chao);color:var(--tinta);font:16px/1.55 var(--texto);padding-inline:16px;padding-block:28px 56px}
+.pagina{max-width:760px;margin:0 auto;display:grid;gap:40px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1;margin:0;text-wrap:balance;letter-spacing:.01em}
+h1{font-size:clamp(44px,9vw,64px)}
+h2{font-size:clamp(32px,6vw,40px)}
+h3{font-size:24px;font-weight:500}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:2px;border-radius:6px}
+section{display:grid;gap:16px}
+.olho{font-size:13px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--laranja)}
+.topo{display:grid;gap:14px}
+.lead{font-size:18px;color:var(--tinta-2);max-width:62ch}
+.aviso{font-size:14px;color:var(--tinta-3);max-width:66ch}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--folha);border:1px solid var(--linha);border-radius:999px;padding:4px;width:max-content;max-width:100%}
+.seg button{font:600 15px var(--texto);color:var(--tinta-2);background:none;border:0;border-radius:999px;padding:9px 16px;min-height:42px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ferro);color:var(--ferro-texto)}
+.controlo{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:15px;color:var(--tinta-2)}
+/* resumo: o veredito em placa de ferro */
+.placa{background:var(--ferro);color:var(--ferro-texto);border-radius:14px;padding:22px 20px;display:grid;gap:18px}
+.placa .grande{font-family:var(--display);font-size:clamp(56px,14vw,84px);line-height:.9;font-weight:600}
+.placa .rot{font-size:14px;opacity:.85;max-width:44ch}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px;border-top:1px solid rgba(255,255,255,.18);padding-top:16px}
+.kpi{display:grid;gap:2px;min-width:0}
+.kpi b{font-family:var(--display);font-size:34px;font-weight:500;line-height:1}
+.kpi span{font-size:13px;opacity:.85}
+/* passos */
+.passos{display:grid;gap:0;border-top:1px solid var(--linha)}
+.passo{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 12px;padding:16px 0;border-bottom:1px solid var(--linha);align-items:baseline}
+.passo .n{font-family:var(--display);font-size:34px;color:var(--laranja);line-height:.8}
+.passo p{grid-column:2;font-size:15px;color:var(--tinta-2)}
+.passo .v{grid-column:3;grid-row:1 / span 2;text-align:right;font-weight:700;white-space:nowrap}
+.passo .v small{display:block;font-weight:500;font-size:12px;color:var(--tinta-3)}
+@media (max-width:480px){.passo{grid-template-columns:34px minmax(0,1fr)}.passo .v{grid-column:2;grid-row:auto;text-align:left}}
+/* gráfico */
+.grafico{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:16px 12px 8px}
+.grafico svg{display:block;width:100%;height:auto}
+.legenda{font-size:13px;color:var(--tinta-3);padding:4px 6px 6px}
+/* tabela */
+.rolar{overflow-x:auto;border:1px solid var(--linha);border-radius:14px;background:var(--folha)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:540px}
+th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--linha);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--tinta-3)}
+tr:last-child td{border-bottom:0}
+.neg{color:var(--mau)} .pos{color:var(--bom)}
+/* escala 3x a 8x */
+.escada{display:grid;gap:10px}
+.degrau{display:grid;grid-template-columns:70px minmax(0,1fr);gap:12px;align-items:center}
+.degrau b{font-family:var(--display);font-size:30px;font-weight:500;line-height:1}
+.trilho{height:30px;background:var(--folha);border:1px solid var(--linha);border-radius:8px;position:relative;overflow:hidden}
+.trilho i{position:absolute;inset:0 auto 0 0;background:var(--ferro);border-radius:7px 0 0 7px}
+.trilho em{position:absolute;inset:0 auto 0 0;background:var(--laranja)}
+.trilho span{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:600;color:var(--tinta)}
+.chaves{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--tinta-2)}
+.chaves i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.caixa{background:var(--laranja-suave);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--tinta)}
+/* premissas */
+.premissas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+@media (max-width:520px){.premissas{grid-template-columns:1fr}}
+.campo{display:grid;gap:4px;min-width:0}
+.campo label{font-size:14px;font-weight:600}
+.campo small{font-size:12.5px;color:var(--tinta-3)}
+.campo input{font:600 17px var(--texto);font-variant-numeric:tabular-nums;color:var(--tinta);background:var(--folha);border:1px solid var(--linha);border-radius:10px;padding:10px 12px;width:100%;min-height:44px}
+button.repor{justify-self:start;font:600 14px var(--texto);background:none;border:1px solid var(--linha);color:var(--tinta-2);border-radius:999px;padding:8px 14px;cursor:pointer}
+footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);padding-top:16px}
+@media (prefers-reduced-motion:no-preference){.trilho i,.trilho em{transition:width .5s ease}}
+</style>
+
+<main class="pagina">
+  <header class="topo">
+    <p class="olho">Pacheco Studios · Bravus Muscle Suplementos</p>
+    <h1>Quanto o plano de 4 passos pode render</h1>
+    <p class="lead">Conta conservadora para o primeiro ano, com o investimento de R$ 5.000 na implantação e R$ 1.000 por mês. O lucro abaixo já desconta tudo isso.</p>
+    <p class="aviso">Estimativa feita com médias do mercado de suplementos, não promessa de resultado. Os números da loja (ticket, margem, clientes ativos) substituem as premissas no fim da página.</p>
+    <div class="controlo">
+      <span>Clientes na base</span>
+      <div class="seg" role="group" aria-label="Clientes na base">
+        <button type="button" id="b1000" aria-pressed="true" data-base="1000">1.000</button>
+        <button type="button" id="b3000" aria-pressed="false" data-base="3000">3.000</button>
+        <button type="button" id="b5000" aria-pressed="false" data-base="5000">5.000</button>
+      </div>
+    </div>
+  </header>
+
+  <section aria-labelledby="t-resumo">
+    <h2 id="t-resumo" hidden>Resumo</h2>
+    <div class="placa">
+      <div>
+        <div class="grande num" id="rLucro">R$ 7.200</div>
+        <p class="rot">de lucro a mais no 1.º ano, já pagos os R$ <span id="rCusto">17.000</span> do plano</p>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b class="num" id="rMes">8.º mês</b><span>o plano se paga</span></div>
+        <div class="kpi"><b class="num" id="rFat">R$ 80.800</b><span>faturamento a mais no ano</span></div>
+        <div class="kpi"><b class="num" id="rRun">R$ 10.000</b><span>a mais por mês, no 12.º mês</span></div>
+        <div class="kpi"><b class="num" id="rAno2">R$ 24.000</b><span>lucro no 2.º ano, só com a mensalidade</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-passos">
+    <p class="olho">De onde vem o dinheiro</p>
+    <h2 id="t-passos">Os 4 passos</h2>
+    <div class="passos" id="passos"></div>
+    <p class="aviso">Valores de faturamento a mais em 12 meses, por passo.</p>
+  </section>
+
+  <section aria-labelledby="t-saldo">
+    <p class="olho">Mês a mês</p>
+    <h2 id="t-saldo">Saldo acumulado do plano</h2>
+    <div class="grafico">
+      <svg id="graf" viewBox="0 0 640 260" role="img" aria-label="Saldo acumulado por mês"></svg>
+      <p class="legenda">Lucro a mais acumulado menos a implantação e as mensalidades pagas até ao mês.</p>
+    </div>
+    <div class="rolar">
+      <table>
+        <thead><tr><th>Mês</th><th>Compras a mais</th><th>Faturamento a mais</th><th>Lucro a mais</th><th>Pago ao plano</th><th>Saldo</th></tr></thead>
+        <tbody id="tabela"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-escala">
+    <p class="olho">A meta de 3x a 8x</p>
+    <h2 id="t-escala">Onde os 4 passos deixam a loja</h2>
+    <p class="lead" id="escalaTxt"></p>
+    <div class="escada" id="escada"></div>
+    <div class="chaves"><span><i style="background:var(--ferro)"></i>Hoje (estimado)</span><span><i style="background:var(--laranja)"></i>A mais com os 4 passos, no 12.º mês</span></div>
+    <p class="caixa" id="escalaCaixa"></p>
+  </section>
+
+  <section aria-labelledby="t-prem">
+    <p class="olho">Troque pelos números reais</p>
+    <h2 id="t-prem">Premissas</h2>
+    <div class="premissas" id="premissas"></div>
+    <button type="button" class="repor" id="repor">Voltar às premissas conservadoras</button>
+  </section>
+
+  <footer>Pacheco Studios · pachecost.com · Rascunho de 06/10/2026. Os números reais da loja aparecem no relatório mensal depois dos primeiros 60 dias.</footer>
+</main>
+
+<script>
+(function(){
+  var PADRAO={ticket:140,margem:30,ativos:30,freq:0.5,reat:5,fica:40,lift:10,churn:8,site:8,aval:5};
+  var CAMPOS=[
+    ['ticket','Ticket médio (R$)','Valor médio de uma compra na loja.',1],
+    ['margem','Margem bruta (%)','O que sobra de cada venda depois do custo do produto.',1],
+    ['ativos','Clientes ativos hoje (%)','Parte da base que comprou nos últimos 6 meses.',1],
+    ['freq','Compras por cliente ativo/mês','0,5 = uma compra a cada 2 meses.',0.1],
+    ['reat','Inativos que voltam a comprar (%)','Resposta à campanha de reativação no WhatsApp.',1],
+    ['fica','Reativados que continuam (%)','Dos que voltam, quantos ficam a comprar.',1],
+    ['lift','Aumento da recompra (%)','Efeito do lembrete quando o pote está a acabar.',1],
+    ['churn','Perda de clientes novos/mês (%)','Parte dos clientes novos que para de comprar a cada mês.',1],
+    ['site','Clientes novos/mês pelo site','A partir do 4.º mês; menos nos primeiros.',1],
+    ['aval','Clientes novos/mês pelas avaliações','A partir do 7.º mês, com o Google a subir.',1]
+  ];
+  var P=Object.assign({},PADRAO), BASE=1000, CUSTO_IMPL=5000, MENSAL=1000;
+  var brl=function(v){var s=Math.round(Math.abs(v)).toLocaleString('pt-BR');return (v<0?'−':'')+'R$ '+s;};
+  var r100=function(v){return Math.round(v/100)*100;};
+
+  function simular(){
+    var tk=P.ticket, mg=P.margem/100, fr=P.freq;
+    var ativos=BASE*P.ativos/100, inativos=BASE-ativos, hoje=ativos*fr;
+    var rampSite=[0,0.5,0.75,1,1,1,1,1,1,1,1,1], rampAval=[0,0,0,0.4,0.6,0.6,1,1,1,1,1,1];
+    var pS=0,pA=0,pR=0, saldo=-CUSTO_IMPL, meses=[], porPasso=[0,0,0,0], mesPaga=null;
+    for(var m=0;m<12;m++){
+      var nS=P.site*rampSite[m], nA=P.aval*rampAval[m];
+      var volta=(m===1||m===2)?inativos*P.reat/100/2:0;
+      var cS=nS+pS*fr, cA=nA+pA*fr, cR=volta+pR*fr, cL=m>=1?hoje*P.lift/100:0;
+      pS=pS*(1-P.churn/100)+nS; pA=pA*(1-P.churn/100)+nA; pR=pR*(1-P.churn/100)+volta*P.fica/100;
+      var compras=cS+cA+cR+cL, fat=compras*tk, lucro=fat*mg;
+      porPasso[0]+=cS*tk; porPasso[1]+=cR*tk; porPasso[2]+=cL*tk; porPasso[3]+=cA*tk;
+      saldo+=lucro-MENSAL; if(mesPaga===null&&saldo>=0)mesPaga=m+1;
+      meses.push({m:m+1,compras:compras,fat:fat,lucro:lucro,pago:(m===0?CUSTO_IMPL:0)+MENSAL,saldo:saldo});
+    }
+    var ult=meses[11];
+    return {hoje:hoje,hojeFat:hoje*tk,meses:meses,porPasso:porPasso,mesPaga:mesPaga,saldo:saldo,
+      fatAno:meses.reduce(function(a,b){return a+b.fat},0),run:ult.fat,ano2:ult.lucro*12-MENSAL*12};
+  }
+
+  function render(){
+    var s=simular();
+    document.getElementById('rLucro').textContent=brl(r100(s.saldo));
+    document.getElementById('rLucro').style.color=s.saldo<0?'#F7B7AE':'';
+    document.getElementById('rCusto').textContent=(CUSTO_IMPL+MENSAL*12).toLocaleString('pt-BR');
+    document.getElementById('rMes').textContent=s.mesPaga?s.mesPaga+'.º mês':'depois do 12.º';
+    document.getElementById('rFat').textContent=brl(r100(s.fatAno));
+    document.getElementById('rRun').textContent=brl(r100(s.run));
+    document.getElementById('rAno2').textContent=brl(r100(s.ano2));
+
+    var passos=[
+      ['Site com pedido por objetivo','O cliente monta o pedido no site e ele chega escrito no WhatsApp da loja. Conta '+P.site+' clientes novos por mês quando o site estiver no Google.',s.porPasso[0]],
+      ['Reativar a base de clientes','Mensagem no WhatsApp para quem não compra há mais de 6 meses. Conta que só '+P.reat+'% voltam a comprar.',s.porPasso[1]],
+      ['Lembrete de recompra','Aviso automático quando o whey ou a creatina estão a acabar. Conta '+P.lift+'% a mais de recompra entre os clientes ativos.',s.porPasso[2]],
+      ['Avaliações no Google','Pedido de avaliação depois de cada compra, para sair das 7 avaliações de hoje. Conta '+P.aval+' clientes novos por mês a partir do 7.º mês.',s.porPasso[3]]
+    ];
+    document.getElementById('passos').innerHTML=passos.map(function(p,i){
+      return '<div class="passo"><span class="n">'+(i+1)+'</span><h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="v num">'+brl(r100(p[2]))+'<small>no ano</small></span></div>';
+    }).join('');
+
+    document.getElementById('tabela').innerHTML=s.meses.map(function(x){
+      return '<tr><td>'+x.m+'</td><td class="num">'+Math.round(x.compras)+'</td><td class="num">'+brl(x.fat)+'</td><td class="num">'+brl(x.lucro)+'</td><td class="num">'+brl(-x.pago)+'</td><td class="num '+(x.saldo<0?'neg':'pos')+'">'+brl(x.saldo)+'</td></tr>';
+    }).join('');
+
+    grafico(s.meses);
+    escala(s);
+  }
+
+  function grafico(meses){
+    var W=640,H=260,L=64,R=10,T=14,B=30;
+    var vals=meses.map(function(x){return x.saldo});
+    var max=Math.max(1000,Math.max.apply(null,vals)), min=Math.min(-1000,Math.min.apply(null,vals));
+    var passo=Math.pow(10,Math.floor(Math.log10((max-min)/4))); var st=[1,2,2.5,5,10].map(function(k){return k*passo}).find(function(k){return (max-min)/k<=5});
+    max=Math.ceil(max/st)*st; min=Math.floor(min/st)*st;
+    var y=function(v){return T+(max-v)/(max-min)*(H-T-B)};
+    var bw=(W-L-R)/12, out='';
+    for(var v=min;v<=max+1e-6;v+=st){
+      out+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--linha)" stroke-width="'+(v===0?1.6:1)+'"/>';
+      out+='<text x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="12" fill="var(--tinta-3)" font-family="Figtree,sans-serif">'+(v/1000).toLocaleString('pt-BR')+' mil</text>';
+    }
+    meses.forEach(function(x,i){
+      var x0=L+i*bw+bw*0.18, w=bw*0.64, y0=y(0), y1=y(x.saldo);
+      out+='<rect x="'+x0+'" y="'+Math.min(y0,y1)+'" width="'+w+'" height="'+Math.max(1,Math.abs(y1-y0))+'" rx="3" fill="'+(x.saldo<0?'var(--barra-neg)':'var(--barra-pos)')+'"/>';
+      out+='<text x="'+(x0+w/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="12" fill="var(--tinta-3)" font-family="Figtree,sans-serif">'+x.m+'</text>';
+    });
+    var u=meses[11];
+    out+='<text x="'+(L+11*bw+bw/2)+'" y="'+(u.saldo<0?y(u.saldo)+16:y(u.saldo)-6)+'" text-anchor="end" font-size="13" font-weight="700" fill="var(--tinta)" font-family="Figtree,sans-serif">'+brl(r100(u.saldo))+'</text>';
+    document.getElementById('graf').innerHTML=out;
+  }
+
+  function escala(s){
+    var hoje=s.hojeFat, com=hoje+s.run, mult=com/hoje, maxV=hoje*8;
+    document.getElementById('escalaTxt').textContent='Com '+BASE.toLocaleString('pt-BR')+' clientes na base e as premissas abaixo, a loja vende hoje cerca de '+brl(r100(hoje))+' por mês. No 12.º mês, os 4 passos sozinhos levam a cerca de '+brl(r100(com))+', ou '+mult.toLocaleString('pt-BR',{maximumFractionDigits:1})+'x.';
+    var linhas=[[1,'Hoje'],[mult,'4 passos'],[3,'Meta 3x'],[8,'Meta 8x']];
+    document.getElementById('escada').innerHTML=linhas.map(function(l){
+      var tot=hoje*l[0], base=Math.min(hoje,tot), extra=l[1]==='4 passos'?s.run:0;
+      var wB=base/maxV*100, wE=extra/maxV*100;
+      var bar=l[1]==='4 passos'?'<i style="width:'+wB+'%"></i><em style="left:'+wB+'%;width:'+wE+'%"></em>':(l[1]==='Hoje'?'<i style="width:'+wB+'%"></i>':'<i style="width:'+(tot/maxV*100)+'%;background:var(--linha)"></i>');
+      return '<div class="degrau"><b class="num">'+(l[1]==='4 passos'?mult.toLocaleString('pt-BR',{maximumFractionDigits:1})+'x':l[0]+'x')+'</b><div class="trilho" aria-label="'+l[1]+': '+brl(tot)+' por mês">'+bar+'<span class="num">'+brl(r100(tot))+'/mês</span></div></div>';
+    }).join('');
+    var falta3=hoje*3-com, comprasFalta=falta3/P.ticket;
+    document.getElementById('escalaCaixa').textContent=falta3>0
+      ?'Para chegar a 3x faltam cerca de '+brl(r100(falta3))+' por mês, ou '+Math.round(comprasFalta)+' compras a mais por mês. Essa parte vem da continuidade: captação de clientes novos com anúncios, gestão dos contatos e marketing. Os 4 passos montam a base que faz esse crescimento render: cada cliente novo cai no site, no lembrete de recompra e no pedido de avaliação.'
+      :'Com estas premissas, os 4 passos já chegam a 3x.';
+  }
+
+  function campos(){
+    document.getElementById('premissas').innerHTML=CAMPOS.map(function(c){
+      return '<div class="campo"><label for="p-'+c[0]+'">'+c[1]+'</label><input id="p-'+c[0]+'" type="number" inputmode="decimal" min="0" step="'+c[3]+'" value="'+P[c[0]]+'"><small>'+c[2]+'</small></div>';
+    }).join('');
+    CAMPOS.forEach(function(c){
+      document.getElementById('p-'+c[0]).addEventListener('input',function(e){var v=parseFloat(String(e.target.value).replace(',','.'));if(!isNaN(v)&&v>=0){P[c[0]]=v;render();}});
+    });
+  }
+  [].slice.call(document.querySelectorAll('.seg button')).forEach(function(b){
+    b.addEventListener('click',function(){BASE=+b.dataset.base;[].slice.call(document.querySelectorAll('.seg button')).forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});render();});
+  });
+  document.getElementById('repor').addEventListener('click',function(){P=Object.assign({},PADRAO);campos();render();});
+  campos(); render();
+})();
+</script>
