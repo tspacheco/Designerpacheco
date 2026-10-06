@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reels EN · 3 systems</title>
+<!-- Dois reels orgânicos em inglês (Instagram @pachecostudiospt, 06/10/2026), na linguagem do vídeo B.
+     ?r=1 «3 AI systems that stop you losing customers» (receção, faltas, avaliações)
+     ?r=2 «3 AI systems that give you your evenings back» (recibos, relatório da manhã, publicações)
+     Os sistemas e as regras vêm de pachecost.com/en (secção de automações); nada inventado sobre clientes.
+     30 s, 100 BPM (compasso 2,4 s): gancho 0–2,4 · sistemas 2,4 · 9,6 · 16,8 (problema 2,4 s + solução 4,8 s) · fecho 24–30.
+     Cada fotograma sai de render(t), sem estado; render.cjs captura 30 fps e junta o som de som.py.
+     Zona segura do Reels: textos essenciais entre y 270 e ~1250; abaixo, só o fim dos esquemas. -->
+<style>
+@font-face{font-family:AB;src:url(../../marca/fontes/archivo-black.woff2) format("woff2")}
+@font-face{font-family:SM;src:url(../../marca/fontes/space-mono-700.woff2) format("woff2")}
+@font-face{font-family:IN;src:url(../../marca/fontes/inter-var.woff2) format("woff2");font-weight:100 900}
+@font-face{font-family:IN;src:url(../../marca/fontes/inter-600-ro.woff2) format("woff2");font-weight:100 900;unicode-range:U+2192}
+:root{--carvao:#141210;--osso:#EFEAE3;--laranja:#E8622C;--cinza:#A5A19B;--cinza2:#4D4A47;--laranja-t:#A64923;
+  --ambar:#FBF1DC;--ambar-l:#DDB45A;--verde:#E3F1E8;--verde-l:#4F9270;--verde-t:#2F6E4E;--tinta:#1C1A17;--vermelho:#ff7a4a}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--carvao)}
+#s{position:absolute;inset:0;overflow:hidden;font-family:IN,sans-serif}
+.cena{position:absolute;inset:0;overflow:hidden}
+.esc{background:radial-gradient(70% 45% at 50% 100%,rgba(232,98,44,.18),transparent 70%),var(--carvao);color:var(--osso)}
+.cla{background:var(--osso);color:var(--tinta)}
+.eb{position:absolute;left:80px;right:80px;top:318px;font:700 30px/1 SM,monospace;letter-spacing:.14em;text-transform:uppercase}
+.esc .eb{color:var(--laranja)} .cla .eb{color:var(--laranja-t)}
+.ti{position:absolute;left:80px;right:80px;font-family:AB,sans-serif;text-transform:uppercase;line-height:1;letter-spacing:-.005em}
+.fit{white-space:nowrap}
+.w{display:inline-block;margin-right:.22em}
+/* progresso 1/3 2/3 3/3 */
+.pg{position:absolute;left:80px;right:80px;top:270px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pg i{height:8px;border-radius:9px;background:rgba(127,120,112,.28);overflow:hidden;position:relative}
+.pg i b{position:absolute;inset:0;background:var(--laranja);transform-origin:left}
+/* gancho */
+.n3{position:absolute;left:62px;top:330px;font:400 500px/.8 AB,sans-serif;color:var(--laranja);letter-spacing:-.04em}
+.hk{top:850px;font-size:104px;line-height:.98}
+.hk .o{color:var(--laranja)}
+.hsub{position:absolute;left:80px;right:80px;top:785px;font:700 28px/1 SM;letter-spacing:.14em;text-transform:uppercase;color:var(--cinza)}
+/* problema */
+.q{top:400px;font-size:80px;line-height:1.04}
+.q .ab{color:var(--laranja)}
+.ui{position:absolute;left:80px;right:80px}
+.nt{height:112px;border-radius:30px;background:rgba(239,234,227,.09);border:1px solid rgba(239,234,227,.14);margin-bottom:16px;
+  display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:22px;padding:0 30px;color:var(--osso)}
+.nt .ic{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:#3a1d14}
+.nt .ic.wa{background:#183325}
+.nt .ic svg{width:32px;height:32px;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke:#ff7a4a}
+.nt .ic.wa svg{stroke:#62d08f}
+.nt b{display:block;font:600 30px/1.15 IN;white-space:nowrap}
+.nt small{display:block;font:400 25px/1.25 IN;color:var(--cinza);white-space:nowrap;margin-top:4px}
+.nt time,.nt em{font:700 22px SM;color:var(--cinza);font-style:normal}
+.nt em.bad{color:#ff7a4a} .nt em.ok{color:#62d08f}
+.nt.big{height:150px}
+.nt.big b{font:800 54px/1 IN}
+.stars{display:inline-flex;gap:4px;vertical-align:-3px;margin-left:10px}
+.stars svg{width:26px;height:26px;fill:#E8B04B}
+.rc{position:absolute;width:300px;padding:26px 26px 30px;background:#F6F1E8;color:#2a2622;border-radius:6px;box-shadow:0 20px 40px rgba(0,0,0,.4);font:500 22px/1.5 SM}
+.rc b{display:block;font:700 26px/1.2 SM;margin-bottom:12px}
+.rc hr{border:0;border-top:2px dashed #b8b0a3;margin:12px 0}
+.rc .tt{display:flex;justify-content:space-between;font:700 28px SM}
+.grid9{width:420px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.grid9 i{aspect-ratio:1;border-radius:8px;background:rgba(239,234,227,.08)}
+.grid9 i.ph{background:linear-gradient(135deg,#5b4a3c,#2a221c)}
+/* solução: esquema em coluna */
+.flow{position:absolute;left:110px;right:110px;top:510px;display:flex;flex-direction:column}
+.bx{border-radius:22px;background:#fff;border:2px solid #d8d0c4;display:grid;grid-template-columns:62px 1fr;gap:20px;align-items:center;padding:20px 26px;box-shadow:0 10px 30px rgba(20,18,16,.07)}
+.bx .ic{width:62px;height:62px;border-radius:16px;background:#F1ECE4;display:grid;place-items:center}
+.bx .ic svg{width:32px;height:32px;fill:none;stroke:var(--tinta);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bx b{display:block;font:700 36px/1.15 IN}
+.bx small{display:block;font:400 27px/1.3 IN;color:var(--cinza2);margin-top:4px}
+.bx.gat{background:var(--ambar);border-color:var(--ambar-l)} .bx.gat .ic{background:#F4DFAF}
+.bx.dec{border-style:dashed;border-color:#3b3833}
+.bolha{grid-column:1/-1;margin-top:4px;background:#DCF3E4;border-radius:6px 22px 22px 22px;padding:14px 22px;font:400 29px/1.35 IN;color:#173322}
+.bolha.me{background:#EDE6DA;color:#2a2622;border-radius:22px 6px 22px 22px}
+.bolha i{display:inline-block;width:3px;height:30px;background:#173322;vertical-align:-5px;margin-left:2px}
+.bolha .bt{display:flex;gap:12px;margin-top:12px}
+.bolha .bt span{flex:1;text-align:center;border-radius:12px;background:#fff;color:#1f6b43;font:600 25px/1 IN;padding:14px 0}
+.chips{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.chips span{border-radius:12px;background:#F1ECE4;padding:12px 14px;font:400 21px/1.3 IN;color:#3b3833;height:94px;overflow:hidden}
+.chips span.pick{background:#DCF3E4;outline:3px solid var(--verde-l);color:#173322}
+.cn{width:3px;height:34px;background:#9b938a;margin:0 auto;transform-origin:top}
+.brs{position:relative;display:grid;gap:18px;padding-top:24px}
+.brs .hl{position:absolute;top:0;height:3px;background:#9b938a;transform-origin:left}
+.br{display:flex;flex-direction:column;align-items:center;position:relative}
+.br .vl{width:3px;height:22px;background:#9b938a;position:absolute;top:-24px}
+.pl{height:52px;border-radius:999px;background:#25221e;color:#fff;font:700 25px/52px IN;padding:0 24px;white-space:nowrap}
+.br .bx{margin-top:14px;grid-template-columns:1fr;text-align:center;padding:18px 14px;min-height:136px;align-content:center;width:100%}
+.br .bx b{font:600 28px/1.22 IN}
+.bx.pes{background:var(--verde);border-color:var(--verde-l)}
+/* fecho */
+.col{position:absolute;left:80px;right:80px;top:318px;display:flex;flex-direction:column;align-items:flex-start}
+.eb2{font:700 30px/1 SM,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja)}
+.ti2{font-family:AB,sans-serif;text-transform:uppercase;line-height:1;font-size:96px;margin-top:22px}
+.its{display:grid;gap:22px;margin-top:56px;width:100%}
+.it{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:6px;font:600 44px/1.2 IN;color:var(--osso);background:rgba(239,234,227,.07);border:1px solid rgba(239,234,227,.12);border-radius:26px;padding:22px 28px}
+.it b{font:400 64px/1 AB;color:var(--laranja)}
+.btn{background:var(--laranja);color:var(--carvao);font:700 50px/1 IN;padding:30px 50px;border-radius:999px;transform-origin:left center;margin-top:50px}
+.sub{font:400 44px/1.3 IN;color:#d8d2c9;margin-top:30px}
+.url{font:700 40px SM;color:var(--osso);margin-top:32px}
+.sv{font:700 28px SM;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza);margin-top:40px}
+.marca{position:absolute;left:80px;right:80px;top:1530px;display:flex;align-items:center;gap:18px;font:700 26px SM;letter-spacing:.16em;text-transform:uppercase}
+.esc .marca{color:var(--cinza)} .cla .marca{color:var(--cinza2)}
+.marca svg{width:62px;height:62px}
+</style>
+</head>
+<body>
+<div id="s"></div>
+<script>
+const P='<svg viewBox="0 0 24 24">', Z='</svg>';
+const I={
+ tel:P+'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>'+Z,
+ ch:P+'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/><path d="M16 2l6 6M22 2l-6 6"/>'+Z,
+ msg:P+'<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/>'+Z,
+ q:P+'<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>'+Z,
+ cal:P+'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'+Z,
+ bell:P+'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/>'+Z,
+ chk:P+'<path d="M20 6 9 17l-5-5"/>'+Z,
+ star:P+'<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>'+Z,
+ cam:P+'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>'+Z,
+ doc:P+'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/>'+Z,
+ mail:P+'<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/>'+Z,
+ clock:P+'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>'+Z,
+ bars:P+'<path d="M12 20V10M18 20V4M6 20v-4"/>'+Z,
+ pen:P+'<path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>'+Z,
+ tap:P+'<path d="M9 11V5a2 2 0 0 1 4 0v6M13 10a2 2 0 0 1 4 0v1M17 11a2 2 0 0 1 4 0v4a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L4 14.6a2 2 0 0 1 3.3-2.2L9 14"/>'+Z,
+ send:P+'<path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/>'+Z,
+ logo:'<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>'
+};
+const STAR='<svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>';
+const stars=n=>`<span class="stars">${STAR.repeat(n)}</span>`;
+
+// ---------- interfaces da cena «problema» (ilustrativas, nomes e números fictícios) ----------
+// cada uma recebe k (s desde o início da cena) e devolve HTML; ficam em y 860–1400
+const fi=(t,a,d=.35)=>E((t-a)/d);
+const UI={
+ calls:k=>{const rows=[['ch','Missed call','+44 7•• ••• 214','21:40'],['wa','WhatsApp · Sarah','Got a table for 4 at 9pm?','21:41'],['ch','Missed call','+351 9•• ••• 870','21:52'],['ch','Missed call','+44 7•• ••• 133','22:05'],['wa','WhatsApp · James','Are you still open?','22:11']];
+  return rows.map((r,i)=>{const o=fi(k,.1+i*.16,.25);return `<div class="nt" style="${op(o,(1-o)*-30)}"><span class="ic ${r[0]}">${I[r[0]==='wa'?'msg':r[0]]}</span><span><b>${r[1]}</b><small>${r[2]}</small></span><time>${r[3]}</time></div>`}).join('')},
+ diary:k=>{const rows=[['chk','14:00 · Tom','Haircut','<em class="ok">CAME</em>'],['chk','15:00 · Emma','Colour','<em class="ok">CAME</em>'],['ch','16:00 · Lucy','Cut + beard','<em class="bad">NO-SHOW</em>'],['cal','17:00','—','<em>EMPTY</em>']];
+  return rows.map((r,i)=>{const o=fi(k,.1+i*.18,.25);const bad=i>=2;return `<div class="nt" style="${op(o,(1-o)*24)};${bad?'border-color:rgba(255,122,74,.45)':''}"><span class="ic ${bad?'':'wa'}">${I[r[0]]}</span><span><b>${r[1]}</b><small>${r[2]}</small></span>${r[3]}</div>`}).join('')},
+ reviews:k=>{const a=fi(k,.15,.3),b=fi(k,.5,.3);return `<div class="nt big" style="${op(a,(1-a)*24)}"><span class="ic wa">${I.star}</span><span><small style="margin:0 0 8px">The place next door</small><b>4.8${stars(5)}</b></span><em>412 reviews</em></div>
+  <div class="nt big" style="${op(b,(1-b)*24)};border-color:rgba(255,122,74,.45)"><span class="ic">${I.star}</span><span><small style="margin:0 0 8px">You · and you’re better</small><b>4.6${stars(4)}</b></span><em class="bad">23 reviews</em></div>`},
+ receipts:k=>{const R=[['MAKRO','€148.20',-9,20,0],['SHELL','€62.10',7,330,40],['IKEA','€89.99',-4,640,-10],['EDP','€213.47',11,170,250],['NOS','€39.90',-12,470,230]];
+  return R.map((r,i)=>{const o=fi(k,.08+i*.12,.22);return `<div class="rc" style="left:${r[3]-80}px;top:${r[4]}px;opacity:${o};transform:rotate(${r[2]}deg) translateY(${(1-o)*-60}px)"><b>${r[0]}</b>03/10/2026<hr><div class="tt"><span>TOTAL</span><span>${r[1]}</span></div><hr>VAT ???</div>`}).join('')},
+ night:k=>{const a=fi(k,.1,.3),b=fi(k,.45,.3),c=fi(k,.75,.3);return `<div class="nt big" style="${op(a,(1-a)*24)}"><span class="ic">${I.clock}</span><span><small style="margin:0 0 8px">Still at the computer</small><b>23:47</b></span><em class="bad">TUE</em></div>
+  <div class="nt" style="${op(b,(1-b)*24)}"><span class="ic">${I.doc}</span><span><b>sales_oct_FINAL(3).xlsx</b><small>3 tabs · didn’t add up</small></span><time>23:31</time></div>
+  <div class="nt" style="${op(c,(1-c)*24)}"><span class="ic">${I.bars}</span><span><b>Yesterday’s takings?</b><small>No idea yet</small></span><time>?</time></div>`},
+ insta:k=>{const a=fi(k,.1,.3);return `<div class="nt big" style="${op(a,(1-a)*24)}"><span class="ic">${I.cam}</span><span><small style="margin:0 0 8px">Your Instagram</small><b>Last post</b></span><em class="bad">62 DAYS AGO</em></div>
+  <div class="grid9">${[0,1,2,3,4,5,6,7,8].map(i=>{const o=fi(k,.35+i*.05,.2);return `<i class="${i>2?'ph':''}" style="opacity:${(o*(i>2?.55:1)).toFixed(2)}"></i>`}).join('')}</div>`}
+};
+
+// ---------- os dois reels ----------
+const REELS={
+ 1:{hook:{pre:'Restaurants · salons · clinics · shops',l1:'AI systems',l2:'that stop you',l3:'<span class="o">losing customers</span>'},
+  sys:[
+   {pain:{q:'“At night I find twelve missed calls and no idea who wanted what.”',ui:'calls'},
+    fix:{t:'It picks up.',r:'Nobody left|waiting.',steps:[
+      {c:'gat',i:'ch',b:'Missed call or message',s:'any time, even after hours'},
+      {i:'msg',b:'Replies in 5 seconds',s:'with the text you approved',bo:'Hi! I’m Restaurant X’s automated assistant. How can I help?'},
+      {c:'dec',i:'q',b:'Works out what they want'}],
+     br:{pl:['Question','Booking','Anything else'],bx:['Answers from your approved list','Books it and confirms','Comes to you, with the whole chat'],pes:2}}},
+   {pain:{q:'“The empty chair at four cost me an hour of work.”',ui:'diary'},
+    fix:{t:'It confirms.',r:'Fewer empty|chairs.',steps:[
+      {c:'gat',i:'cal',b:'A booking is made',s:'on WhatsApp, the website or by phone'},
+      {i:'bell',b:'The day before: two buttons',s:'one tap to answer',bo:'Hi Lucy! See you tomorrow at 4pm.',bt:['Confirm','Change']},
+      {c:'dec',i:'q',b:'Did they reply?'}],
+     br:{pl:['Confirmed','Changed','No reply'],bx:['Stays booked, reminder 2h before','Slot goes to the waiting list','You see it. A quick call, if you like'],pes:2}}},
+   {pain:{q:'“They leave happy. Nobody leaves a review.”',ui:'reviews'},
+    fix:{t:'It asks.',r:'Reviews on|autopilot.',steps:[
+      {c:'gat',i:'chk',b:'The customer visited you',s:'from the diary, or one tap at the till'},
+      {i:'msg',b:'One short thank-you',s:'in your name, no pestering',bo:'Thanks for coming in today! How was it?'},
+      {c:'dec',i:'q',b:'What did they say?'}],
+     br:{pl:['Loved it','Not great','Nothing'],bx:['One tap to your Google review','Comes to you, privately, first','It doesn’t insist'],pes:1}}}
+  ],
+  out:{e:'Your turn',t:'Which one do<br>you need first?',its:['Missed calls','No-shows','Reviews'],c:'Comment 1, 2 or 3 ↓',
+       e2:'Free diagnosis',t2:'Find out where<br>you lose customers.'}},
+ 2:{hook:{pre:'If you run a small business',l1:'AI systems',l2:'that give you',l3:'<span class="o">your evenings back</span>'},
+  sys:[
+   {pain:{q:'“End of the month, I dig through drawers for receipts.”',ui:'receipts'},
+    fix:{t:'Snap. Done.',r:'Your accountant|stops calling.',steps:[
+      {c:'gat',i:'cam',b:'Photo of the receipt',s:'sent on WhatsApp, right away'},
+      {i:'doc',b:'Reads it into a spreadsheet',s:'supplier · date · amount · VAT',bo:'Noted ✓ Makro · 03/10 · €148.20 · VAT €27.71'},
+      {c:'dec',i:'q',b:'Could it read everything?'}],
+     br:{pl:['Yes','Not sure'],bx:['Filed. Sent to your accountant on the agreed day','It asks you: “148 or 143?”'],pes:1}}},
+   {pain:{q:'“I don’t know what I made yesterday until I sit at the computer at night.”',ui:'night'},
+    fix:{t:'It reports.',r:'Your business,|in your pocket.',steps:[
+      {c:'gat',i:'clock',b:'Every night at 3:00',s:'starts on its own'},
+      {i:'bars',b:'Gathers your numbers',s:'till · bookings · reviews · messages'},
+      {i:'msg',b:'Ten lines on WhatsApp',s:'before you wake up',bo:'Good morning! Yesterday: €1,240 · Today: 18 bookings · 2 new reviews · 1 enquiry waiting'},
+      {c:'pes',i:'q',b:'Ask it anything',s:'“How many bookings on Saturday?”'}]}},
+   {pain:{q:'“Good photos on my phone. The page hasn’t posted in two months.”',ui:'insta'},
+    fix:{t:'It posts.',r:'A live page,|2 minutes a day.',steps:[
+      {c:'gat',i:'cam',b:'You send a photo',s:'“tomorrow’s new cake”'},
+      {i:'pen',b:'Writes three versions',s:'in your tone',ch:['Fresh out of the oven tomorrow…','New on the counter: …','You asked, we baked…']},
+      {c:'pes',i:'tap',b:'You pick one with a tap',s:'nothing goes out without it'},
+      {i:'send',b:'Schedules it',s:'Instagram · Facebook · Google'}]}}
+  ],
+  out:{e:'Your turn',t:'Which one do<br>you need first?',its:['Receipts','Morning report','Posts'],c:'Comment 1, 2 or 3 ↓',
+       e2:'Free diagnosis',t2:'What should you<br>automate first?'}}
+};
+const R=REELS[new URLSearchParams(location.search).get('r')||'1'];
+
+// ---------- linha do tempo (s) — som.py usa os mesmos tempos ----------
+const BAR=2.4, S0=[2.4,9.6,16.8], PAIN=2.4, OUT=24.0, OUT2=27.0, DUR=30.0;
+const FX0=.35, FXW=2.55; // na cena solução: o esquema monta-se entre k=FX0 e k=FX0+FXW; o resultado troca o título a k=3.6
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), E=x=>1-Math.pow(1-cl(x),3), EI=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const op=(o,y=0,s=1,x=0)=>`opacity:${o.toFixed(3)};transform:translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${s.toFixed(4)})`;
+const words=(txt,t0,k,step=.06)=>txt.split(' ').map((w,i)=>{const a=fi(k,t0+i*step,.28);return `<span class="w" style="${op(a,(1-a)*26)}">${w}</span>`}).join('');
+const prog=(i,f)=>`<div class="pg">${[0,1,2].map(j=>`<i><b style="transform:scaleX(${(j<i?1:j>i?0:cl(f)).toFixed(3)})"></b></i>`).join('')}</div>`;
+const marca=()=>`<div class="marca">${I.logo}<span>Pacheco Studios</span></div>`;
+const slide=(t,a)=>a<=0?0:(1-EI((t-a)/.45))*1920; // cada cena entra por baixo e tapa a anterior
+
+// passos do esquema: momentos de entrada (k) — exportados para o som
+function steps(S){const n=S.fix.steps.length+(S.fix.br?1:0);return Array.from({length:n},(_,j)=>FX0+j*FXW/n)}
+
+function cenaGancho(t){
+  const H=R.hook;
+  let h=`<div class="cena esc">`;
+  // o 1.º fotograma já mostra o gancho inteiro (é o que aparece no feed antes de começar): só o «3» e a deriva mexem
+  const dr=(1-E(t/2.4))*24;
+  h+=`<div class="hsub" style="${op(1,dr)}">${H.pre}</div>`;
+  const s3=1+.12*(1-E(t/.35));
+  h+=`<div class="n3" style="${op(1,0,s3)};transform-origin:left top">3</div>`;
+  const sw=E((t-.2)/.5); // o sublinhado laranja corre por baixo da promessa
+  h+=`<div class="ti hk" style="${op(1,dr)}">${H.l1}<br>${H.l2}<br>${H.l3}<div style="height:12px;width:880px;margin-top:18px;background:var(--laranja);transform-origin:left;transform:scaleX(${sw.toFixed(3)})"></div></div>`;
+  h+=marca()+`</div>`;
+  return h;
+}
+
+function cenaProblema(t,i,S){
+  const k=t-S0[i];
+  let h=`<div class="cena esc" style="transform:translateY(${slide(t,S0[i]).toFixed(1)}px)">`;
+  h+=prog(i,k/(BAR*3));
+  h+=`<div class="eb" style="${op(fi(k,.1,.25))}">0${i+1}/03 · The problem</div>`;
+  h+=`<div class="ti q">${S.pain.q.split(' ').map((w,j)=>{const a=fi(k,.12+j*.05,.26);w=w.replace(/^“/,'<span class="ab">“</span>').replace(/”$/,'<span class="ab">”</span>');return `<span class="w" style="${op(a,(1-a)*24)}">${w}</span>`}).join('')}</div>`;
+  h+=`<div class="ui">${UI[S.pain.ui](k)}</div>`;
+  h+=marca()+`</div>`;
+  return h;
+}
+
+function cenaSolucao(t,i,S){
+  const a=S0[i]+PAIN, k=t-a, F=S.fix, ts=steps(S);
+  const hl=EI((k-3.6)/.45); // resultado: troca do título e destaque do ramo «pessoa»
+  let h=`<div class="cena cla" style="transform:translateY(${slide(t,a).toFixed(1)}px)">`;
+  h+=prog(i,(PAIN+k)/(BAR*3));
+  h+=`<div class="eb" style="${op(fi(k,.15,.25)*(1-hl))}">0${i+1}/03 · The fix</div><div class="eb" style="${op(hl)};color:var(--verde-t)">0${i+1}/03 · The result</div>`;
+  h+=`<div class="ti fit" style="top:362px;font-size:96px;${op(fi(k,.2,.35)*(1-hl),(1-fi(k,.2,.35))*20)}">${F.t}</div>`;
+  h+=`<div class="ti" style="top:362px;color:var(--verde-l);${op(hl,(1-hl)*20)}">${F.r.split('|').map(x=>`<div class="fit" style="font-size:84px">${x}</div>`).join('')}</div>`;
+  const d=1-.55*hl;
+  h+=`<div class="flow" style="transform:translateY(${(hl*120).toFixed(1)}px)">`;
+  F.steps.forEach((st,j)=>{
+    const o=fi(k,ts[j],.3), me=st.c==='pes', dd=me?1:d;
+    if(j) h+=`<div class="cn" style="transform:scaleY(${E((k-ts[j]+.12)/.15).toFixed(3)});opacity:${d}"></div>`;
+    let extra='';
+    if(st.bo){const ty=cl((k-ts[j]-.25)/.75), nch=Math.round(st.bo.length*ty), cur=ty>0&&ty<1?'<i></i>':'';
+      extra=`<div class="bolha">${st.bo.slice(0,nch)}${cur}${st.bt?`<div class="bt" style="opacity:${fi(k,ts[j]+1.05,.25)}">${st.bt.map(x=>`<span>${x}</span>`).join('')}</div>`:''}</div>`}
+    if(st.ch){extra=`<div class="chips">${st.ch.map((x,m)=>{const oo=fi(k,ts[j]+.2+m*.15,.25);const pk=m===0&&k>ts[j+1]+.15;return `<span class="${pk?'pick':''}" style="opacity:${oo}">${x}</span>`}).join('')}</div>`}
+    const pulse=me?1+.04*hl*(1+.5*Math.sin((k-3.6)*6.5)*cl((k-3.85)/.2)):1;
+    h+=`<div class="bx ${st.c||''}" style="${op(o*dd,(1-o)*26,pulse)}"><span class="ic">${I[st.i]}</span><span><b>${st.b}</b>${st.s?`<small>${st.s}</small>`:''}</span>${extra}</div>`;
+  });
+  if(F.br){
+    const B=F.br, n=B.pl.length, j0=ts[ts.length-1];
+    h+=`<div class="cn" style="transform:scaleY(${E((k-j0+.1)/.15).toFixed(3)});opacity:${d}"></div>`;
+    const lh=E((k-j0)/.3);
+    h+=`<div class="brs" style="grid-template-columns:repeat(${n},1fr)"><div class="hl" style="left:${(50/n).toFixed(2)}%;right:${(50/n).toFixed(2)}%;transform:scaleX(${lh.toFixed(3)});opacity:${d}"></div>`;
+    for(let m=0;m<n;m++){
+      const pk=fi(k,j0+.15+m*.1,.3), bk=fi(k,j0+.35+m*.12,.35), me=m===B.pes, dd=me?1:d;
+      const pulse=me?1+.05*hl*(1+.5*Math.sin((k-3.6)*6.5)*cl((k-3.85)/.2)):1;
+      h+=`<div class="br"><div class="vl" style="transform:scaleY(${pk.toFixed(3)});opacity:${dd}"></div><div class="pl" style="${op(pk*dd,0,.9+.1*pk)}">${B.pl[m]}</div>`;
+      h+=`<div class="bx ${me?'pes':''}" style="${op(bk*dd,(1-bk)*22,pulse)};${me&&hl>0?`box-shadow:0 0 0 ${(8*hl).toFixed(1)}px rgba(79,146,112,.18),0 18px 40px rgba(20,18,16,.12)`:''}"><b>${B.bx[m]}</b></div></div>`;
+    }
+    h+=`</div>`;
+  }
+  h+=`</div>`;
+  h+=marca()+`</div>`;
+  return h;
+}
+
+function cenaFecho(t){
+  const O=R.out, k=t-OUT;
+  let h=`<div class="cena esc" style="transform:translateY(${slide(t,OUT).toFixed(1)}px)">`;
+  const o1=t<OUT2?1:1-EI((t-OUT2)/.35);
+  if(t<OUT2+.4){
+    h+=`<div class="col" style="${op(o1,-(1-o1)*40)}">`;
+    h+=`<div class="eb2" style="${op(fi(k,.2))}">${O.e}</div>`;
+    h+=`<div class="ti2" style="${op(fi(k,.3,.4),(1-fi(k,.3,.4))*20)}">${O.t}</div>`;
+    h+=`<div class="its">`+O.its.map((x,m)=>{const a=fi(k,.75+m*.25,.35);return `<div class="it" style="${op(a,0,1,(1-a)*-60)}"><b>${m+1}</b><span>${x}</span></div>`}).join('')+`</div>`;
+    const bk=fi(k,1.6,.35), pulse=1+.04*Math.max(0,Math.sin((k-2.0)*5))*cl((k-2.0)/.2);
+    h+=`<div class="btn" style="${op(bk,(1-bk)*20,(.94+.06*bk)*pulse)}">${O.c}</div>`;
+    h+=`</div>`;
+  }
+  if(t>=OUT2){
+    const k2=t-OUT2;
+    h+=`<div class="col">`;
+    h+=`<div class="eb2" style="${op(fi(k2,.25))}">${O.e2}</div>`;
+    h+=`<div class="ti2" style="${op(fi(k2,.35,.4),(1-fi(k2,.35,.4))*22)}">${O.t2}</div>`;
+    const b2=fi(k2,.8,.35);
+    h+=`<div class="btn" style="${op(b2,(1-b2)*20,.94+.06*b2)}">pachecost.com/en</div>`;
+    h+=`<div class="sv" style="${op(fi(k2,1.2,.35))}">Save this for later ↗</div>`;
+    h+=`</div>`;
+  }
+  h+=marca()+`</div>`;
+  return h;
+}
+
+function render(t){
+  let h='';
+  if(t<S0[0]+.5) h+=cenaGancho(t);
+  R.sys.forEach((S,i)=>{
+    const a=S0[i], b=i<2?S0[i+1]:OUT;
+    if(t>=a&&t<a+PAIN+.5) h+=cenaProblema(t,i,S);
+    if(t>=a+PAIN&&t<b+.5) h+=cenaSolucao(t,i,S);
+  });
+  if(t>=OUT) h+=cenaFecho(t);
+  document.getElementById('s').innerHTML=h;
+  // títulos de uma linha: encolher até caberem em 920 px
+  const q=document.querySelector('.cena:last-child .q')||document.querySelector('.q'), u=document.querySelector('.ui');
+  if(q&&u) u.style.top=(q.offsetTop+q.offsetHeight+56)+'px';
+  document.querySelectorAll('.fit').forEach(el=>{let fs=parseFloat(el.style.fontSize);while(el.scrollWidth>el.clientWidth+1&&fs>48){fs-=2;el.style.fontSize=fs+'px'}});
+}
+// tempos para o som: entradas dos passos de cada sistema (absolutos)
+window.SFX=R.sys.map((S,i)=>({pain:S.pain.ui,steps:steps(S).map(x=>+(S0[i]+PAIN+x).toFixed(3)),bolhas:S.fix.steps.map((st,j)=>st.bo?+(S0[i]+PAIN+steps(S)[j]+.25).toFixed(3):null).filter(x=>x!==null),br:!!S.fix.br}));
+window.render=render; window.DUR=DUR;
+render(parseFloat(new URLSearchParams(location.search).get('t')||'8'));
+</script>
+</body>
+</html>
