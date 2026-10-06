@@ -1,6 +1,6 @@
 # Demos e contactos — 20 negócios
 
-Quando o demo.pachecost.com estiver ligado no Netlify, estes links abrem as demos. Toca no WhatsApp para abrir a conversa com o negócio.
+Os links abrem as demos depois de juntares `demo.pachecost.com` como alias no projeto do pachecost.com. Toca no WhatsApp para abrir a conversa com o negócio.
 
 ## Iași (Roménia) — demo em romeno
 

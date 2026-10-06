@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-"""Junta as demos num só site Netlify (demo.pachecost.com/<curto>/).
+"""Junta o site pachecost.com e as demos num só zip (como o ro.pachecost.com).
 
-Cada demo fica numa pasta com index.html (+ pt.html quando existe) e media/.
-Tudo leva noindex: são apresentações para o dono ver, não sites públicos.
-Correr: python3 sites/demos-pachecost/gerar.py  ->  demos-pachecost-netlify.zip
+Parte do zip mais recente do site da Pacheco Studios (ramo do thread dono,
+claude/pacheco-studios-playbook-kztskg) e acrescenta demo/<curto>/ com index.html
+(+ pt.html quando existe) e media/. O domínio demo.pachecost.com (alias no mesmo
+projeto Netlify) é reescrito para /demo/, por isso demo.pachecost.com/la-gioia/
+e pachecost.com/demo/la-gioia/ abrem a mesma página. Tudo com noindex.
+Correr: python3 sites/demos-pachecost/gerar.py  ->  pachecost-com-e-demos-netlify.zip
 """
-import os, re, shutil, zipfile
+import os, re, shutil, subprocess, zipfile
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 SITES = os.path.dirname(AQUI)
 OUT = os.path.join(AQUI, "_site")
+RAMO_SITE = "claude/pacheco-studios-playbook-kztskg"
+HOST = "https://demo.pachecost.com"
 
 DEMOS = [  # (endereço curto, pasta em sites/)
     ("la-gioia", "la-gioia-di-giovanni"),
@@ -44,9 +49,20 @@ def com_noindex(html):
 
 shutil.rmtree(OUT, ignore_errors=True)
 os.makedirs(OUT)
-redirects = []
+subprocess.run(["git", "fetch", "-q", "origin", RAMO_SITE], cwd=AQUI, check=True)
+base = subprocess.run(["git", "show", f"origin/{RAMO_SITE}:sites/pacheco-studios/pacheco-studios-netlify.zip"],
+                      cwd=AQUI, check=True, capture_output=True).stdout
+base_zip = os.path.join(AQUI, "_base.zip")
+with open(base_zip, "wb") as f:
+    f.write(base)
+with zipfile.ZipFile(base_zip) as z:
+    z.extractall(OUT)
+os.remove(base_zip)
+assert os.path.exists(os.path.join(OUT, "index.html")) and not os.path.exists(os.path.join(OUT, "demo"))
+
+regras = [f"{HOST}/    https://pachecost.com/    302!"]
 for curto, pasta in DEMOS:
-    src, dst = os.path.join(SITES, pasta), os.path.join(OUT, curto)
+    src, dst = os.path.join(SITES, pasta), os.path.join(OUT, "demo", curto)
     os.makedirs(os.path.join(dst, "media"))
     for nome in ("index.html", "pt.html"):
         p = os.path.join(src, nome)
@@ -60,26 +76,30 @@ for curto, pasta in DEMOS:
         if os.path.isfile(p) and f != "LEIA-ME.txt":
             shutil.copy2(p, os.path.join(dst, "media", f))
     # sem a barra final os caminhos relativos (media/...) partiam-se
-    redirects.append(f"/{curto} /{curto}/ 301")
+    regras.append(f"{HOST}/{curto}    {HOST}/{curto}/    301!")
+    regras.append(f"/demo/{curto}    /demo/{curto}/    301")
+regras.append(f"{HOST}/*    /demo/:splat    200!")
 
-with open(os.path.join(OUT, "_redirects"), "w") as f:
-    # nada de redirecionar a raiz para pachecost.com: se este zip for parar ao site
-    # principal por engano, isso fazia um ciclo infinito (aconteceu a 06/10)
-    f.write("\n".join(redirects) + "\n")
-with open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as f:
-    f.write('<!doctype html><html lang="pt-PT"><head><meta charset="utf-8">' + NOINDEX +
-            '<meta name="viewport" content="width=device-width,initial-scale=1"><title>Pacheco Studios · demos</title>'
-            '<style>body{font:18px/1.5 system-ui,sans-serif;margin:0;min-height:100vh;display:grid;place-items:center;background:#111;color:#eee}'
-            'a{color:#ff7a1a}</style></head><body><p>Demos da <a href="https://pachecost.com">Pacheco Studios</a>.</p></body></html>\n')
-with open(os.path.join(OUT, "netlify.toml"), "w") as f:
-    f.write('[[headers]]\n  for = "/*"\n  [headers.values]\n    X-Robots-Tag = "noindex, nofollow"\n')
-with open(os.path.join(OUT, "robots.txt"), "w") as f:
-    f.write("User-agent: *\nDisallow: /\n")
+# entra antes da secção 3 do site; a primeira regra que bate ganha
+rp = os.path.join(OUT, "_redirects")
+with open(rp, encoding="utf-8") as f:
+    r = f.read()
+marca = "# 3)"
+assert marca in r
+r = r.replace(marca, "# 2b) demo.pachecost.com → /demo/ (sites/demos-pachecost/gerar.py)\n" + "\n".join(regras) + "\n" + marca, 1)
+with open(rp, "w", encoding="utf-8") as f:
+    f.write(r)
+with open(os.path.join(OUT, "_headers"), "a", encoding="utf-8") as f:
+    f.write("/demo/*\n  X-Robots-Tag: noindex, nofollow\n")
+with open(os.path.join(OUT, "robots.txt"), encoding="utf-8") as f:
+    rb = f.read()
+with open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8") as f:
+    f.write(rb.replace("Disallow: /p/\n", "Disallow: /p/\nDisallow: /demo/\n", 1))
 
-zp = os.path.join(AQUI, "demos-pachecost-netlify.zip")
+zp = os.path.join(AQUI, "pachecost-com-e-demos-netlify.zip")
 with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED) as z:
     for raiz, _, fs in os.walk(OUT):
         for f in sorted(fs):
             p = os.path.join(raiz, f)
             z.write(p, os.path.relpath(p, OUT))
-print(f"{len(DEMOS)} demos -> {zp} ({os.path.getsize(zp)/1e6:.1f} MB)")
+print(f"site + {len(DEMOS)} demos -> {zp} ({os.path.getsize(zp)/1e6:.1f} MB)")
