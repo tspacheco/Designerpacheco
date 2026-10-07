@@ -727,12 +727,17 @@ def vista_servicii(c, portfolio, lang):
 </div>"""
 
 
-def contacto(c, d, wa, tel_legivel, digitos, com_site):
+def contacto(c, d, wa, tel_legivel, digitos, com_site, lang="pt"):
     k = c["contact"]
     lab = k["labels"]
     ig = d["instagram"].lstrip("@")
     site = d["site_principal"]
-    linhas = [(lab["whatsapp"], tel_legivel, wa, "chat"), (lab["telefon"], tel_legivel, f"tel:+351{digitos}", "telefone"),
+    wa_c, tel_c, tel_href = wa, tel_legivel, f"tel:+351{digitos}"
+    local = d.get("whatsapp_diagnostico", {}).get(lang)
+    if local:  # ro: o número romeno também nos contactos do fim da página (pedido do Tomás, 07/10)
+        n = re.sub(r"\D", "", local)
+        wa_c, tel_c, tel_href = f"https://wa.me/{n}?text={quote(k['mensagem_wa'])}", local, f"tel:+{n}"
+    linhas = [(lab["whatsapp"], tel_c, wa_c, "chat"), (lab["telefon"], tel_c, tel_href, "telefone"),
               (lab["email"], d["email"], f"mailto:{d['email']}", "email"),
               (lab["instagram"], f"@{ig}", f"https://www.instagram.com/{ig}/", "instagram")]
     if com_site:  # na página romena, o site principal; em pachecost.com seria uma ligação para a própria página
@@ -1166,7 +1171,7 @@ def main():
             "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, digitos),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"], wa_diagnostico(d, lang)), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
+            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"], lang), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"], wa_diagnostico(d, lang)), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
             "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }
         pagina = montar(src, valores)

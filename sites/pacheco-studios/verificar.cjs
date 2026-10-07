@@ -401,6 +401,12 @@ const fs = require('fs');
     const numDiag = k === 'ro' ? 'https://wa.me/40723098556?' : 'https://wa.me/351967117357?';
     if (!fim.href.startsWith(numDiag)) mal(`${k}: o diagnóstico vai para ${fim.href.split('?')[0]} e devia ir para ${numDiag.slice(0, -1)}`);
     else bem(`${k}: o diagnóstico é enviado para ${numDiag.slice(14, -1)}`);
+    // os contactos do fim da página: o número romeno no RO, o português no resto
+    const cont = await p.evaluate(() => { const s = document.getElementById('contact');
+      return { txt: s.textContent, tel: (s.querySelector('a[href^="tel:"]') || {}).href, wa: (s.querySelector('.contactos a[href^="https://wa.me"]') || {}).href }; });
+    const [numTxt, numTel] = k === 'ro' ? ['+40 723 098 556', 'tel:+40723098556'] : ['+351 967 117 357', 'tel:+351967117357'];
+    if (!cont.txt.includes(numTxt) || cont.tel !== numTel || !cont.wa.startsWith(numDiag)) mal(`${k}: contactos do fim da página ${JSON.stringify({ tel: cont.tel, wa: cont.wa && cont.wa.split('?')[0] })}`);
+    else bem(`${k}: contactos do fim da página com ${numTxt}`);
     await p.evaluate(() => { const a = document.getElementById('diag-enviar'); a.addEventListener('click', e => e.preventDefault()); a.click(); });
     const avatar = await p.evaluate(() => !!document.querySelector('.diag-bot img'));
     if (!avatar) mal(`${k}: o fim do diagnóstico devia ter a foto do Tomás`);
