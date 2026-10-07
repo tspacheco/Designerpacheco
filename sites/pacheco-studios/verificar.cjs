@@ -397,6 +397,10 @@ const fs = require('fs');
     const fim = await p.evaluate(() => ({ href: decodeURIComponent(document.getElementById('diag-enviar').href),
       n: document.getElementById('diag-n').textContent, aberto: document.getElementById('diagnostico').open }));
     const falta = respostas.filter(t => !fim.href.includes(t));
+    // o número que recebe o diagnóstico: o romeno no ro.pachecost.com, o português no resto (marca/dados.json)
+    const numDiag = k === 'ro' ? 'https://wa.me/40723098556?' : 'https://wa.me/351967117357?';
+    if (!fim.href.startsWith(numDiag)) mal(`${k}: o diagnóstico vai para ${fim.href.split('?')[0]} e devia ir para ${numDiag.slice(0, -1)}`);
+    else bem(`${k}: o diagnóstico é enviado para ${numDiag.slice(14, -1)}`);
     await p.evaluate(() => { const a = document.getElementById('diag-enviar'); a.addEventListener('click', e => e.preventDefault()); a.click(); });
     const avatar = await p.evaluate(() => !!document.querySelector('.diag-bot img'));
     if (!avatar) mal(`${k}: o fim do diagnóstico devia ter a foto do Tomás`);

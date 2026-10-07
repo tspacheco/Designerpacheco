@@ -1935,7 +1935,7 @@ dialog.diag.fim .diag-ficha{display:block}
     if (ev.key && ev.key.length === 1 && i > -1 && i < ops.length) { ev.preventDefault(); ops[i].click(); ops[i].focus(); }
   });
   function abrir(a) {
-    if (a) base = a.href.split('?')[0];
+    base = D.wa || (a ? a.href.split('?')[0] : base); // ro: o número romeno; nas outras, o do botão
     if (!d.open) d.showModal();
     gc({ path: 'diagnostico/aberto', title: 'diagnóstico: aberto', event: true });
     if (!comecou) { comecou = true; mostrar(false); }

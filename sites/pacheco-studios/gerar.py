@@ -618,8 +618,15 @@ def marca(sufixo, tag="p", href=None, cls=""):
     return f'<{tag} class="marca"{h}>{logo_completo(sufixo, cls)}<span class="so-leitor">Pacheco Studios</span></{tag}>'
 
 
+def wa_diagnostico(d, lang):
+    """wa.me do número que recebe o diagnóstico nesta língua (marca/dados.json → whatsapp_diagnostico); vazio = o principal."""
+    n = re.sub(r"\D", "", d.get("whatsapp_diagnostico", {}).get(lang, ""))
+    if n and not 10 <= len(n) <= 15:
+        raise SystemExit(f"marca/dados.json: whatsapp_diagnostico.{lang} não parece um número internacional")
+    return f"https://wa.me/{n}" if n else ""
 
-def diagnostico(c, url_priv):
+
+def diagnostico(c, url_priv, wa_diag=""):
     """O diagnóstico com a cara da Pacheco Studios: uma pergunta por ecrã, em grande, e ao lado a ficha do negócio que
     se vai preenchendo. Nada é guardado: no fim, a ficha vai para o WhatsApp do Tomás numa mensagem que o visitante envia."""
     g = c["diagnostico"]
@@ -634,6 +641,8 @@ def diagnostico(c, url_priv):
     if os.path.exists(foto):
         d_ = json.loads(dados); d_["foto"] = "data:image/webp;base64," + base64.b64encode(open(foto, "rb").read()).decode()
         dados = json.dumps(d_, ensure_ascii=False)
+    if wa_diag:  # o número do diagnóstico nesta língua, quando não é o telefone principal (ro: o número romeno)
+        d_ = json.loads(dados); d_["wa"] = wa_diag; dados = json.dumps(d_, ensure_ascii=False)
     dados = dados.replace("</", "<\\/")
     return f"""<dialog class="diag" id="diagnostico" aria-labelledby="diag-t">
   <div class="diag-topo">
@@ -1157,7 +1166,7 @@ def main():
             "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, digitos),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
+            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"], wa_diagnostico(d, lang)), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
             "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }
         pagina = montar(src, valores)
