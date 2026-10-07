@@ -17,7 +17,7 @@
 @font-face{font-family:SG;src:url(fontes/spacegrotesk-700.woff2) format("woff2");font-weight:700}
 @font-face{font-family:SG;src:url(fontes/spacegrotesk-500.woff2) format("woff2");font-weight:500}
 @font-face{font-family:IN;src:url(../../marca/fontes/inter-var.woff2) format("woff2");font-weight:100 900}
-:root{--paper:#ECE9E3;--ink:#1C1B19;--red:#C8321E;--grey:#7E7A73;--cream:#FFF6E4;--green:#1F5B3F;--green2:#2F7D58;--gold:#D9A441;--band:#141311}
+:root{--laranja:#E8622C;--paper:#ECE9E3;--ink:#1C1B19;--red:#C8321E;--grey:#7E7A73;--cream:#FFF6E4;--green:#1F5B3F;--green2:#2F7D58;--gold:#D9A441;--band:#141311}
 *{box-sizing:border-box;margin:0}
 html,body{width:1080px;height:1920px;overflow:hidden;background:var(--band)}
 #s{position:absolute;inset:0;overflow:hidden;font-family:IN,sans-serif;color:var(--ink)}
@@ -32,6 +32,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--band)}
 .band .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);transform-origin:left;border-radius:2px}
 .lab{position:absolute;left:80px;font:700 26px/1 SG;letter-spacing:.18em;text-transform:uppercase}
 .top .lab{top:270px;color:var(--red)} .bot .lab{top:44px;color:var(--green)}
+.tag{position:absolute;left:80px;right:80px;font:700 58px/1 SG;letter-spacing:.01em}
+.tag span{font-family:FR;font-style:italic;font-weight:900;font-size:68px;letter-spacing:-.01em}
 .fr{font-family:FR;font-style:italic;font-weight:900;letter-spacing:-.02em;line-height:.98}
 .w{display:inline-block;margin-right:.22em}
 /* gancho */
@@ -181,8 +183,9 @@ function botScene2(t){ // 07:00: a mensagem chega
   return h;
 }
 
-const HOOK_TOP=(k)=>`<div class="lab" style="${op(fi(k,1.3,.3))}">Café without a system</div><div class="fr hk1" style="top:330px;font-size:150px;color:var(--grey);${op(1,(1-E(k/2.4))*14)}">Home<br>at 00:10.</div>`;
-const HOOK_BOT=(k)=>`<div class="lab" style="${op(fi(k,1.3,.3))}">Café with a system</div><div class="fr hk2" style="top:110px;font-size:150px">Home<br>at 18:00.<small style="${op(fi(k,.9,.35))}">Same street. Same customers. Same Tuesday.<br>One of them has a system. Watch the day.</small></div>`;
+// frases do gancho (pedido do Tomás 07/10 11:07): «Your business today» em cima, «Your business with AI» em laranja Pacheco em baixo, visíveis desde o 1.º fotograma
+const HOOK_TOP=(k)=>`<div class="tag" style="top:262px;color:var(--grey);${op(1,(1-E(k/.6))*-10)}">Your business <span>today</span></div><div class="fr hk1" style="top:350px;font-size:150px;color:var(--grey);${op(1,(1-E(k/2.4))*14)}">Home<br>at 00:10.</div>`;
+const HOOK_BOT=(k)=>`<div class="tag" style="top:40px;color:var(--laranja);${op(1,(1-E(k/.6))*10)}">Your business <span>with AI</span></div><div class="fr hk2" style="top:130px;font-size:150px">Home<br>at 18:00.<small style="${op(fi(k,.9,.35))}">Same street. Same customers. Same Tuesday.<br>One of them has a system. Watch the day.</small></div>`;
 function cenaHook(t){
   const k=t;
   let h=`<div class="half top">${HOOK_TOP(k)}</div>`;
