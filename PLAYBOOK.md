@@ -269,6 +269,11 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 5. Evitar cadeias e franchisings (decisão não é local). Verificar sempre se já têm site antes de investir tempo.
 6. Ângulo que fecha: **"tem 4,5 estrelas e centenas de avaliações — e está invisível fora do Google Maps."**
 7. Quem já tem site (Tavont, Ita Trattoria): **"elevar, não substituir"** — mostrar 3 falhas concretas do site atual.
+8. **WhatsApp verificado (regra de 07/10/2026).** Ter telemóvel não garante WhatsApp; no lote de Iași alguns números não o tinham. Na pesquisa, a tabela leva uma coluna «WhatsApp», com um de três valores:
+   - **sim**: há prova pública, como um botão ou link wa.me na ficha Google, no Facebook ou no Instagram, um autocolante na montra numa foto, ou uma avaliação que fale do WhatsApp;
+   - **?**: não há prova;
+   - **não**: há prova de que não usam.
+   Com «sim», a mensagem vai por WhatsApp. Com «?» ou «não», o negócio vai para a Lista A (visita) ou para uma chamada, e o ficheiro de contactos dá a morada com link do Maps em vez do botão de WhatsApp. No site, o CTA principal desses negócios é «Ligar». Daqui não se consegue testar se um número tem WhatsApp, por isso vale a prova pública ou a resposta do Tomás.
 
 ## 12. ECONOMIA DE CRÉDITOS
 
