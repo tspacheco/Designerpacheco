@@ -91,7 +91,7 @@ h1 .mat{color:#B7BDC6}
 .opt.rec .pret{border-top-color:rgba(255,255,255,.16)}
 .insigna{position:absolute;top:-3mm;left:5mm;font:800 7.5pt/1 'Manrope';letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:99px;background:linear-gradient(180deg,#E7C46F,#C99A36);color:#1A1406;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
 /* ce urmeaza */
-.urmeaza{margin-top:12mm}
+.urmeaza{margin-top:10mm}
 .pasi{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;counter-reset:p}
 .pasi li{counter-increment:p;display:flex;gap:3mm;align-items:flex-start;font-size:8.8pt;line-height:1.42}
 .pasi li::before{content:counter(p);flex:none;width:7mm;height:7mm;border-radius:50%;display:grid;place-items:center;font:400 8pt/1 'Michroma';background:var(--lac);color:var(--aur);box-shadow:inset 0 0 0 1px var(--aur)}
@@ -108,24 +108,6 @@ h1 .mat{color:#B7BDC6}
 .contact dd{margin:0;font-weight:700;color:#fff}
 .marcaj{display:inline-block;padding:2px 7px;border-radius:5px;background:#FFE36B;color:#1A1406;font-weight:800;outline:1.5px dashed #C99A36;outline-offset:1px}
 
-
-.unica{display:grid;grid-template-columns:1.35fr 1fr;gap:0;border-radius:16px;overflow:hidden;box-shadow:inset 0 0 0 1px #C9CFD6,0 10px 26px -14px rgba(12,13,16,.45)}
-.unica .ce{background:linear-gradient(180deg,#FFFFFF,#F4F6F8);padding:9mm 8mm 8mm}
-.unica h2{font-size:13pt;margin-bottom:2mm}
-.unica .ce > p{font-size:9pt;color:var(--text-2);margin:0 0 4.5mm}
-.unica ul{list-style:none;margin:0;padding:0;display:grid;gap:2.4mm;font-size:9.4pt;line-height:1.4}
-.unica li{position:relative;padding-left:15px}
-.unica li::before{content:'';position:absolute;left:0;top:.4em;width:7px;height:9px;background:linear-gradient(160deg,#F2D28A,#C99A36 60%,#8C6A1E);border-radius:50% 50% 50% 50%/62% 62% 38% 38%;transform:rotate(180deg)}
-.unica li small{display:block;color:var(--text-2);font-size:8pt;font-weight:500}
-.unica .cost{position:relative;background:radial-gradient(120% 90% at 20% 0%,#2A2E36 0%,#121418 50%,#08090B 100%);color:#E7E9EC;padding:15mm 7mm 8mm;display:flex;flex-direction:column;justify-content:center;gap:6mm;box-shadow:inset 1.5px 0 0 var(--aur)}
-.unica .cost .insigna{top:5mm;left:7mm}
-.unica .suma{display:block;font:400 22pt/1 'Michroma';letter-spacing:-.02em;color:#fff;white-space:nowrap}
-.unica .suma .lei{font:700 11pt/1 'Manrope';letter-spacing:.02em;color:var(--aur);margin-left:5px}
-.unica .ce-e{display:block;font:400 6.8pt/1 'Michroma';letter-spacing:.18em;text-transform:uppercase;color:var(--aur);margin-bottom:2.5mm}
-.unica .det{display:block;font-size:8pt;line-height:1.4;color:#AEB5BE;margin-top:2mm}
-.unica .sep{height:1px;background:rgba(255,255,255,.16)}
-.apoi{margin:5mm 0 0;font-size:8.8pt;color:var(--text-2);line-height:1.45}
-.apoi b{color:var(--text)}
 </style>
 </head>
 <body>
@@ -141,21 +123,31 @@ h1 .mat{color:#B7BDC6}
   </header>
 
   <div class="corp">
-    <p class="eticheta">Oferta</p>
-    <section class="unica">
-      <div class="ce">
-        <h2>Site pentru ambele spălătorii</h2>
-        <p>Un singur site, pregătit pentru clienții ambelor locații.</p>
-        <ul><li>Clientul alege locația<small>adresă, program și Google Maps pentru fiecare</small></li><li>Pachete și prețuri după tipul mașinii</li><li>Programare pe WhatsApp, dintr-o singură apăsare</li><li>Gândit pentru mobil, rapid și ușor de găsit</li><li>Domeniu, găzduire și suport incluse</li></ul>
-      </div>
-      <div class="cost">
-        <span class="insigna">Preț pentru 2 locații</span>
-        <div><span class="ce-e">Instalare</span><span class="suma">2.500<span class="lei">RON</span></span><span class="det">plată unică, site online în ~7 zile</span></div>
-        <div class="sep"></div>
-        <div><span class="ce-e">Pe lună</span><span class="suma">350<span class="lei">RON</span></span><span class="det">domeniu, găzduire, modificări de texte și prețuri, suport</span></div>
-      </div>
+    <p class="eticheta">Trei opțiuni</p>
+    <section class="optiuni">
+      <article class="opt">
+        <p class="nr">Opțiunea 1</p>
+        <h2>Site</h2>
+        <p class="baza">Un site pentru ambele spălătorii:</p>
+        <ul><li>Clientul alege locația</li><li>Pachete după tipul mașinii</li><li>Programare pe WhatsApp</li><li>Google Maps pentru fiecare locație</li><li>Gândit pentru mobil</li></ul>
+        <div class="pret"><div class="linie-p"><span class="suma">800<span class="eur">€</span><span class="u">instalare</span></span><span class="det">2 × 400 € — preț de grup pentru 2 locații</span></div><div class="linie-p"><span class="suma">80<span class="eur">€</span><span class="u">/lună</span></span><span class="det">domeniu, găzduire, modificări în 1 săptămână, suport</span></div></div>
+      </article>
+      <article class="opt rec">
+        <span class="insigna">Recomandat</span>
+        <p class="nr">Opțiunea 2</p>
+        <h2>Site + răspunsuri automate pe WhatsApp</h2>
+        <p class="baza">Tot ce include „Site”, plus:</p>
+        <ul><li>Răspunsuri automate la întrebări despre prețuri și program</li><li>Adresa fiecărei locații, trimisă automat</li><li>Programare direct din conversație</li></ul>
+        <div class="pret"><div class="linie-p"><span class="suma">1.050<span class="eur">€</span><span class="u">instalare</span></span><span class="det">800 € + 250 €</span></div><div class="linie-p"><span class="suma">130<span class="eur">€</span><span class="u">/lună</span></span><span class="det">80 € + 50 €</span></div></div>
+      </article>
+      <article class="opt">
+        <p class="nr">Opțiunea 3</p>
+        <h2>Complet</h2>
+        <p class="baza">Tot ce include opțiunea 2, plus:</p>
+        <ul><li>Memento și confirmare pentru programare</li><li>Cerere automată de recenzie pe Google după spălare<small>utilă ca a doua spălătorie să pornească și ea cu recenzii</small></li></ul>
+        <div class="pret"><div class="linie-p"><span class="suma">1.550<span class="eur">€</span><span class="u">instalare</span></span><span class="det">800 € + 3 × 250 €</span></div><div class="linie-p"><span class="suma">230<span class="eur">€</span><span class="u">/lună</span></span><span class="det">80 € + 3 × 50 €</span></div></div>
+      </article>
     </section>
-    <p class="apoi"><b>Mai târziu, dacă doriți:</b> răspunsuri automate pe WhatsApp, memento-uri pentru programări, cereri de recenzie. Le discutăm separat, după ce site-ul e online.</p>
 
     <section class="urmeaza">
       <p class="eticheta">Ce urmează</p>
