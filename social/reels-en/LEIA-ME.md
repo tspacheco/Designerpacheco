@@ -58,23 +58,24 @@ Pedido do Tomás (06/10 23:19): mudar o rumo e o estilo, manter os esquemas, tra
 Gerar de novo: `node render34.cjs /tmp/reels-en [3|4]` (Playwright, ffmpeg, numpy). Textos e tempos em `reel3.html` / `reel4.html`; som em `som34.py` (lê `window.SFX` da página). Fontes novas em `fontes/` (Google Fonts, subconjunto latino).
 Sistemas e regras de pachecost.com/en. Nomes, números, horas e avaliações são fictícios e ilustrativos.
 
-## Legendas (copiar para o Instagram)
+## Legendas (copiar para o Instagram, no máximo 5 hashtags)
 
 ### Reel 3
 Businesses that use AI the right way are cutting costs by up to 40% and growing revenue without growing the team. (Industry figure, not a promise.)
 
-"The right way" is the part everyone skips. It's not a chatbot that chats, not a robot voice, not a tool nobody opens after week two.
+"The right way" is the part everyone skips. It's not a chatbot that chats. Not a robot voice. Not a tool nobody opens after week two.
 
-It's small systems like this one: a customer writes at 22:04 and gets a reply on WhatsApp in 40 seconds, with the text the owner approved and the next question. Website form, Instagram, Facebook or a missed call, same thing. Nothing in 3 days? Two short follow-ups, then it stops. The owner only steps in when a person is needed.
+It's small systems like this one: a customer writes at 22:04 and gets a reply on WhatsApp in 40 seconds, with the text the owner approved and the next question. Website form, Instagram, Facebook or a missed call: same thing. No answer in 3 days? Two short follow-ups, then it stops. The owner only steps in when a person is needed.
 
-Whoever answers first wins the customer. That's where the savings come from: the boring jobs, done every time.
+Whoever answers first wins the customer.
 
-Where do your enquiries go to die? Comment 1 (Instagram/Facebook), 2 (missed calls) or 3 (website form) 👇
+Where do your enquiries go to die? Comment 1, 2 or 3 👇
+1 Instagram & Facebook · 2 Missed calls · 3 Website form
 
-🌐 pachecost.com · free diagnosis, 8 questions, under 2 minutes
+🌐 Free diagnosis at pachecost.com (8 questions, under 2 minutes)
 📍 Portugal based · Acting worldwide
 
-#smallbusiness #AIforbusiness #automation #customerservice #restaurantowner #salonowner #whatsappbusiness #localbusiness #leadresponse #portugal
+#smallbusiness #AIforbusiness #automation #whatsappbusiness #customerservice
 
 ### Reel 4
 Home at 00:10 or home at 18:00. Same Tuesday, same street, same customers. One café has a system. ☕
@@ -89,4 +90,4 @@ Which one first? Comment 1, 2 or 3 👇
 Free diagnosis: pachecost.com
 Portugal based · Acting worldwide
 
-#smallbusiness #cafeowner #AIforbusiness #automation #noshows #googlereviews #businessowner #worklifebalance #localbusiness #algarve
+#smallbusiness #AIforbusiness #automation #cafeowner #worklifebalance
