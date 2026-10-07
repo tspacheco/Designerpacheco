@@ -8,7 +8,7 @@
      (café com sistema, creme e verde), com um relógio de palhetas no meio a correr a terça-feira: 13:30 avaliações · 16:00 faltas · 23:40 → 07:00 relatório.
      Em baixo, o esquema de cada sistema (pachecost.com/en) desenha-se como linha horizontal de 3 passos e termina num carimbo verde.
      Identidade própria: editorial, Fraunces itálico + Space Grotesk, carimbos rodados, cenas que entram da direita (o dia avança).
-     30 s, 100 BPM com swing. Linha do tempo: gancho 0–3 · 13:30 em 3,0 · 16:00 em 9,6 · 23:40 em 16,2 (vira para 07:00 em 20,4) · resultado 23,4 · fecho 27–30.
+     30 s, 100 BPM com swing. Linha do tempo: gancho 0–3 (o contraste 00:10 / 18:00 já no 1.º fotograma) · 13:30 em 3,0 · 16:00 em 9,6 · 23:40 em 16,2 (vira para 07:00 em 20,4) · resultado 23,4 · fecho 27–30.
      Cada fotograma sai de render(t), sem estado; render34.cjs captura 30 fps e junta o som de som34.py (eventos em window.SFX).
      Nomes, números e horas são fictícios e ilustrativos. Zona segura: em cima y 270–900; em baixo y 1020–1480. -->
 <style>
@@ -96,16 +96,19 @@ const slideIn=(t,a)=>a<=0?0:(1-EI((t-a)/SL))*1080, slideOut=(t,a)=>-EI((t-a)/SL)
 const stampIn=(k,a)=>{const p=cl((k-a)/.22);const s=1.6-.6*E(p)+(p>=1?0:.0);return {o:cl(p*3),s}};
 
 // ---------- relógio de palhetas ----------
-const CLK=[['TUESDAY','07:00'],['TUESDAY','13:30'],['TUESDAY','16:00'],['TUESDAY','23:40'],['WEDNESDAY','07:00']];
+const CLK=[['SAME TUESDAY','07:00'],['TUESDAY','07:00'],['TUESDAY','13:30'],['TUESDAY','16:00'],['TUESDAY','23:40'],['WEDNESDAY','07:00']];
 function band(t){
   // índice do relógio: 0 no gancho (a partir de 1,8 s), 1..3 nos momentos, 4 depois do FLIP
-  let i=0, a=1.8;
-  T.M.forEach((m,j)=>{if(t>=m){i=j+1;a=m}}); if(t>=T.FLIP){i=4;a=T.FLIP}
-  const show=t>=1.8?1:0, p=EI((t-a)/.4), prev=CLK[Math.max(0,i-1)], cur=CLK[i];
+  let i=0, a=-1;
+  if(t>=1.8){i=1;a=1.8}
+  T.M.forEach((m,j)=>{if(t>=m){i=j+2;a=m}}); if(t>=T.FLIP){i=5;a=T.FLIP}
+  const show=1, p=a<0?1:EI((t-a)/.4), prev=CLK[Math.max(0,i-1)], cur=CLK[i];
   const dayp=cl((t-3)/(T.R-3));
+  if(i===0) return `<div class="band" style="justify-content:center"><div class="day" style="font-size:30px;color:var(--gold);white-space:nowrap">Same Tuesday · same street · same customers</div></div>`;
   let h=`<div class="band" style="opacity:${show}"><div class="clk">`;
-  h+=`<span style="transform:translateY(${(-p*80).toFixed(1)}px);opacity:${(1-p).toFixed(2)}">${prev[1]}</span><span style="transform:translateY(${((1-p)*80).toFixed(1)}px);opacity:${p.toFixed(2)}">${cur[1]}</span></div>`;
-  h+=`<div class="day">${cur[0]}</div><div class="bar"><i style="transform:scaleX(${dayp.toFixed(3)})"></i></div></div>`;
+  const hide0=(x)=>x==='SAME TUESDAY'?'':x;
+  h+=`<span style="transform:translateY(${(-p*80).toFixed(1)}px);opacity:${(1-p).toFixed(2)}">${i===1?'':prev[1]}</span><span style="transform:translateY(${((1-p)*80).toFixed(1)}px);opacity:${p.toFixed(2)}">${i===0?'':cur[1]}</span></div>`;
+  h+=`<div class="day" style="${i===0?'font-size:30px;color:var(--gold)':''}">${i===0?'Same Tuesday · same street':cur[0]}</div><div class="bar"><i style="transform:scaleX(${dayp.toFixed(3)})"></i></div></div>`;
   return h;
 }
 
@@ -178,11 +181,12 @@ function botScene2(t){ // 07:00: a mensagem chega
   return h;
 }
 
+const HOOK_TOP=(k)=>`<div class="lab" style="${op(fi(k,1.3,.3))}">Café without a system</div><div class="fr hk1" style="top:330px;font-size:150px;color:var(--grey);${op(1,(1-E(k/2.4))*14)}">Home<br>at 00:10.</div>`;
+const HOOK_BOT=(k)=>`<div class="lab" style="${op(fi(k,1.3,.3))}">Café with a system</div><div class="fr hk2" style="top:110px;font-size:150px">Home<br>at 18:00.<small style="${op(fi(k,.9,.35))}">Same street. Same customers. Same Tuesday.<br>One of them has a system. Watch the day.</small></div>`;
 function cenaHook(t){
   const k=t;
-  let h=`<div class="half top"><div class="fr hk1" style="${op(1,(1-E(k/2.4))*14)}">Same<br>Tuesday.</div></div>`;
-  h+=`<div class="half bot"><div class="fr hk2" style="${op(1,(1-E(k/2.4))*14)}">Two cafés.<small>One owner got home at 00:10.<br>The other at 18:00. Same customers, same street.</small></div>`;
-  h+=marca()+`</div>`;
+  let h=`<div class="half top">${HOOK_TOP(k)}</div>`;
+  h+=`<div class="half bot">${HOOK_BOT(k)}${marca()}</div>`;
   return h;
 }
 function cenaMom(t){
@@ -190,8 +194,8 @@ function cenaMom(t){
   let m=0; T.M.forEach((a,j)=>{if(t>=a)m=j}); const a=T.M[m];
   let h='';
   const x=slideIn(t,a), xo=slideOut(t,a);
-  const prevTop=m>0?topScene(t,m-1,T.M[m-1]):`<div class="fr hk1" style="opacity:.9">Same<br>Tuesday.</div>`;
-  const prevBot=m>0?botScene(t,m-1,T.M[m-1]):`<div class="fr hk2">Two cafés.<small>One owner got home at 00:10.<br>The other at 18:00. Same customers, same street.</small></div>`;
+  const prevTop=m>0?topScene(t,m-1,T.M[m-1]):HOOK_TOP(t);
+  const prevBot=m>0?botScene(t,m-1,T.M[m-1]):HOOK_BOT(t);
   let curTop=topScene(t,m,a), curBot=botScene(t,m,a);
   if(m===2&&t>=T.FLIP){ // 07:00 de quarta: a cena de cima e de baixo trocam
     const x2=slideIn(t,T.FLIP), xo2=slideOut(t,T.FLIP);

@@ -51,8 +51,8 @@ Portugal based · Acting worldwide
 
 Pedido do Tomás (06/10 23:19): mudar o rumo e o estilo, manter os esquemas, trazer outros ângulos de visão. Dos 6 conceitos propostos no thread, avançaram o 1 e o 2. 30 s, 9:16, H.264/AAC com faststart, som sintetizado (sem direitos de terceiros).
 
-- `reel-en-3-three-businesses-9x16.mp4` · **«I messaged 3 businesses at 10pm. Only one replied.»** Ângulo: ponto de vista do cliente. Três conversas vistas do lado de quem escreve (A não responde, B responde na quinta, C responde em 40 s); a de C fica em arame e por trás aparece o esquema do sistema «resposta em 60 segundos a cada pedido», desenhado como planta técnica. Identidade: teal-negro e ciano, grelha de planta, transições por linha de varrimento, Unbounded + DM Mono, pulso de sonar em Mi menor.
-- `reel-en-4-same-tuesday-9x16.mp4` · **«Same Tuesday. Two cafés.»** Ângulo: antes e depois num só plano. Ecrã dividido: em cima o café sem sistema (papel de jornal, carimbos a lápis vermelho), em baixo o café com sistema (creme e verde), e um relógio de palhetas no meio a correr a terça: 13:30 avaliações, 16:00 faltas, 23:40 → 07:00 relatório da manhã. Os esquemas desenham-se em linha horizontal de três passos e fecham com carimbo verde. Identidade: editorial, Fraunces itálico + Space Grotesk, groove de café com swing (contrabaixo, vassouras, Rhodes).
+- `reel-en-3-three-businesses-9x16.mp4` · **«Businesses that use AI the right way cut costs by up to 40%. Without hiring anyone.»** (v2, 07/10, a pedido do Tomás: sem a estrutura de «3 negócios», abrir com uma conclusão sobre resultados da IA, como na abertura do diagnóstico). O «até 40%» é número de mercado, assinalado como «industry figure», não resultado nosso. Depois: o que «da forma certa» não é (chatbot, voz robô, ferramenta que ninguém abre), um pedido de cliente respondido em 40 s, e o raio-X do sistema «resposta em 60 segundos a cada pedido» como planta técnica. Fecha com o diagnóstico: 8 perguntas, menos de 2 minutos. Identidade: teal-negro e ciano, grelha de planta, transições por linha de varrimento, Unbounded + DM Mono, pulso de sonar em Mi menor.
+- `reel-en-4-same-tuesday-9x16.mp4` · **«Home at 00:10. / Home at 18:00. Same Tuesday.»** Ângulo: antes e depois num só plano; o gancho (v2) mostra o contraste logo no 1.º fotograma. Ecrã dividido: em cima o café sem sistema (papel de jornal, carimbos a lápis vermelho), em baixo o café com sistema (creme e verde), e um relógio de palhetas no meio a correr a terça: 13:30 avaliações, 16:00 faltas, 23:40 → 07:00 relatório da manhã. Os esquemas desenham-se em linha horizontal de três passos e fecham com carimbo verde. Identidade: editorial, Fraunces itálico + Space Grotesk, groove de café com swing (contrabaixo, vassouras, Rhodes).
 - `*-capa.jpg`: capas para escolher no Instagram.
 
 Gerar de novo: `node render34.cjs /tmp/reels-en [3|4]` (Playwright, ffmpeg, numpy). Textos e tempos em `reel3.html` / `reel4.html`; som em `som34.py` (lê `window.SFX` da página). Fontes novas em `fontes/` (Google Fonts, subconjunto latino).
@@ -61,33 +61,29 @@ Sistemas e regras de pachecost.com/en. Nomes, números, horas e avaliações sã
 ## Legendas (copiar para o Instagram)
 
 ### Reel 3
-I messaged 3 businesses at 10pm asking for a table. 📱
+Businesses that use AI the right way are cutting costs by up to 40% and growing revenue without growing the team. (Industry figure, not a promise.)
 
-A: seen at 22:05. No reply. Ever.
-B: replied on Thursday. I'd already booked somewhere else.
-C: replied in 40 seconds, asked my name, booked the table.
+"The right way" is the part everyone skips. It's not a chatbot that chats, not a robot voice, not a tool nobody opens after week two.
 
-Guess who got my money.
+It's small systems like this one: a customer writes at 22:04 and gets a reply on WhatsApp in 40 seconds, with the text the owner approved and the next question. Website form, Instagram, Facebook or a missed call, same thing. Nothing in 3 days? Two short follow-ups, then it stops. The owner only steps in when a person is needed.
 
-C isn't a bigger business. It just has a system: every enquiry (website, Instagram, Facebook, missed call) gets a reply on WhatsApp in under a minute, with the text the owner approved and the next question. Nothing in 3 days? Two short follow-ups, then it stops. The owner only steps in when a person is needed.
+Whoever answers first wins the customer. That's where the savings come from: the boring jobs, done every time.
 
-Whoever answers first wins the customer.
+Where do your enquiries go to die? Comment 1 (Instagram/Facebook), 2 (missed calls) or 3 (website form) 👇
 
-Which one is your business? Comment A, B or C 👇
-
-🌐 pachecost.com
+🌐 pachecost.com · free diagnosis, 8 questions, under 2 minutes
 📍 Portugal based · Acting worldwide
 
 #smallbusiness #AIforbusiness #automation #customerservice #restaurantowner #salonowner #whatsappbusiness #localbusiness #leadresponse #portugal
 
 ### Reel 4
-Same Tuesday. Two cafés. Same street, same customers. ☕
+Home at 00:10 or home at 18:00. Same Tuesday, same street, same customers. One café has a system. ☕
 
 13:30 · A happy customer leaves. One café stays at 23 reviews. The other asks "How was it?" and gets its 24th.
 16:00 · Lucy forgets her appointment. One chair sits empty for an hour. The other café sent two buttons the day before, Lucy moved to Thursday, Marco took the slot.
 23:40 · One owner is still at the computer. The other had Tuesday's numbers on WhatsApp at 07:00.
 
-Home at 00:10 or home at 18:00. Same Tuesday.
+Now you know why.
 
 Which one first? Comment 1, 2 or 3 👇
 Free diagnosis: pachecost.com
