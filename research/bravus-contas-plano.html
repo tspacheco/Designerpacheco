@@ -65,6 +65,7 @@ section{display:grid;gap:16px}
 .motor li.t{background:var(--ambar-suave)} .motor li.d{background:var(--mau-suave)}
 .motor li .n{font-family:var(--display);font-size:20px;line-height:1;font-weight:600;color:var(--tinta-2);padding-top:1px}
 .motor li .e{font-size:11px;font-weight:700;color:#fff;border-radius:5px;padding:2px 5px;white-space:nowrap}
+.motor li .conf{display:block;width:max-content;margin-top:4px;font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--tinta-2);border:1px dashed var(--tinta-3);border-radius:5px;padding:0 5px}
 .chaves{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--tinta-2)}
 .chaves i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .chaves .e{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:5px;padding:1px 5px;margin-right:4px}
@@ -130,21 +131,12 @@ th:first-child,td:first-child{text-align:left}
 th{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--tinta-3)}
 .neg{color:var(--mau)} .pos{color:var(--bom)}
 /* quanto vale */
-.valor{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px}
-@media (max-width:600px){.valor{grid-template-columns:1fr}}
-.linhas{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:6px 16px}
-.linhas .l{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--linha);font-size:15px}
-.linhas .l span{display:inline-flex;align-items:center;gap:8px}
-.linhas .l i{width:10px;height:10px;border-radius:2px;display:inline-block;flex:none}
-.linhas .l.total{font-weight:700}
-.linhas .l.menos{color:var(--tinta-2)}
-.linhas .l.fim{border-bottom:0;font-weight:700;font-size:17px}
-.linhas .l b{font-variant-numeric:tabular-nums;white-space:nowrap}
 .inv{background:var(--ferro);color:var(--ferro-texto);border-radius:14px;padding:16px;display:grid;gap:14px;align-content:start}
 .inv div{display:grid;gap:2px}
 .inv span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
 .inv b{font-family:var(--display);font-size:38px;font-weight:500;line-height:1}
 .inv small{font-size:13px;opacity:.85}
+@media (min-width:601px){.inv{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;padding:20px}}
 .caixa{background:var(--laranja-suave);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--tinta);display:grid;gap:8px}
 /* 90 dias */
 .dias{display:grid;gap:0;border-top:1px solid var(--linha)}
@@ -170,7 +162,22 @@ th{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
 .g .gb{grid-column:1/-1;height:5px;border-radius:3px;background:var(--chao);overflow:hidden;margin-top:3px}
 .g .gb i{display:block;height:100%;border-radius:3px}
 .g .gb i.p{background:var(--bom)} .g .gb i.n{background:var(--mau)}
-.fimano{margin-top:10px}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{padding:0;font-size:14px;background:#fff}
+  .pagina{max-width:none;display:block}
+  .pagina>*+*{margin-top:28px}
+  section{display:block}
+  section>*+*{margin-top:12px}
+  section[aria-labelledby="t-mapa"],section[aria-labelledby="t-matriz"],section[aria-labelledby="t-passos"],section[aria-labelledby="t-graf"],section[aria-labelledby="t-bolso"]{break-before:page;margin-top:0}
+  .motores{grid-template-columns:1fr}
+  section[aria-labelledby="t-90"]{break-inside:avoid}
+  .so-tela,.seg button[aria-pressed="false"]{display:none}
+  .seg{border:0;padding:0;background:none}
+  .seg button[aria-pressed="true"]{padding:4px 10px;min-height:0}
+  .placa,.motor li,.q,.passo,.et,.etapas,.matriz,.g,.dia,.inv,.caixa,.ia,.grafico,.dica{break-inside:avoid}
+  h2,h3,.olho,.motor .sub{break-after:avoid}
+}
 footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);padding-top:16px}
 </style>
 
@@ -230,6 +237,7 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
             <li><b class="e e4">E4</b><span>Loja online com Pix, cartão e entrega no bairro<small>resolve 10, 16, 17</small></span></li>
             <li><b class="e e4">E4</b><span>Meta Ads todos os meses, com 30% das vendas de volta para os anúncios<small>resolve 9</small></span></li>
             <li><b class="e ec">+</b><span>Assinatura mensal de whey e creatina com desconto<small>depois da loja online</small></span></li>
+            <li><b class="e ec">+</b><span>Aplicativo próprio da Bravus: recompra em 1 toque, cupons e assinatura no celular<small>mais à frente, quando a loja online tiver volume</small></span></li>
           </ul></div>
         <div class="q extra"><div><h3>Extras</h3><p class="sub">Mais tarde</p></div>
           <ul>
@@ -239,7 +247,6 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
           </ul></div>
         <div class="q evitar"><div><h3>Evitar</h3><p class="sub">Custa muito, rende pouco</p></div>
           <ul>
-            <li><b class="e ec">×</b><span>Aplicativo próprio da loja</span></li>
             <li><b class="e ec">×</b><span>Vender só por marketplace: a comissão come a margem e o cliente fica do marketplace, não da Bravus</span></li>
             <li><b class="e ec">×</b><span>Programa de pontos antes de ter a lista de clientes organizada</span></li>
           </ul></div>
@@ -270,8 +277,8 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
       <svg id="graf" viewBox="0 0 420 300" role="img" aria-label="Faturamento mensal com o plano"></svg>
       <div class="dica" id="dica" aria-live="polite"></div>
     </div>
-    <p class="aviso">Toque em um mês para ver o detalhe.</p>
-    <details>
+    <p class="aviso so-tela">Toque em um mês para ver o detalhe.</p>
+    <details class="so-tela">
       <summary>Ver a tabela mês a mês</summary>
       <div class="rolar"><table>
         <thead><tr><th>Mês</th><th>Faturamento</th><th>Vezes hoje</th><th>Compras da base</th><th>Anúncios</th><th>Vendas dos anúncios</th><th>Recompra</th><th>Lucro a mais</th><th>Plano</th><th>Saldo</th></tr></thead>
@@ -297,15 +304,11 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
     <h2 id="t-bolso">O que fica no bolso, mês a mês</h2>
     <div class="ia" id="iaTxt"></div>
     <div class="ganhos" id="ganhos"></div>
-    <h3 class="fimano">No fim do 1.º ano</h3>
-    <div class="valor">
-      <div class="linhas" id="linhas"></div>
-      <div class="inv">
-        <div><span>Faturamento no 12.º mês</span><b class="num" id="vFat">R$&nbsp;34.700/mês</b><small id="vFatTxt">4,6x os R$&nbsp;7.500 de hoje</small></div>
-        <div><span>Lucro do dono no ano</span><b class="num" id="vLuc">R$&nbsp;41.500</b><small id="vLucTxt">hoje: 12 × R$&nbsp;2.250 = R$&nbsp;27.000</small></div>
-        <div><span>Do 12.º mês em diante</span><b class="num" id="vMes">+R$&nbsp;2.500/mês</b><small>a mais no bolso, já pagos a Pacheco Studios e os anúncios</small></div>
-        <div><span>O máximo que sai do bolso</span><b class="num" id="vMax">R$&nbsp;3.200</b><small id="vMaxTxt">no 1.º mês; depois o plano se paga sozinho</small></div>
-      </div>
+    <div class="inv">
+      <div><span>Faturamento no 12.º mês</span><b class="num" id="vFat">R$&nbsp;34.700/mês</b><small id="vFatTxt">4,6x os R$&nbsp;7.500 de hoje</small></div>
+      <div><span>Lucro do dono no ano</span><b class="num" id="vLuc">R$&nbsp;41.500</b><small id="vLucTxt">hoje: 12 × R$&nbsp;2.250 = R$&nbsp;27.000</small></div>
+      <div><span>Do 12.º mês em diante</span><b class="num" id="vMes">+R$&nbsp;2.450/mês</b><small>a mais no bolso, já pagos a Pacheco Studios e os anúncios</small></div>
+      <div><span>O máximo que sai do bolso</span><b class="num" id="vMax">R$&nbsp;3.200</b><small id="vMaxTxt">no 1.º mês; depois o plano se paga sozinho</small></div>
     </div>
     <div class="caixa" id="caixa"></div>
   </section>
@@ -404,7 +407,7 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
     el('motores').innerHTML=PROBLEMAS.map(function(mo){
       return '<div class="motor"><h3>'+mo.t+'</h3><p class="sub">'+mo.s+'</p><ol>'+mo.p.map(function(p){
         var txt=p[0]===20?'Cerca de '+n0(parados)+' dos '+n0(BASE)+' clientes da base não compram há meses e ninguém os chama':p[1];
-        return '<li class="'+p[2]+'"><span class="n">'+p[0]+'</span><span>'+txt+'</span><b class="e e'+p[3]+'">E'+p[3]+'</b></li>';
+        return '<li class="'+p[2]+'"><span class="n">'+p[0]+'</span><span>'+txt+(p[4]==='c'?'<small class="conf">a confirmar com você</small>':'')+'</span><b class="e e'+p[3]+'">E'+p[3]+'</b></li>';
       }).join('')+'</ol></div>';
     }).join('');
 
@@ -482,16 +485,6 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
         +'<span class="gb" aria-hidden="true"><i class="'+(g<0?'n':'p')+'" style="width:'+(Math.abs(g)/maxG*100).toFixed(1)+'%"></i></span></div>';
     }).join('');
 
-    el('linhas').innerHTML=
-       '<div class="l"><span>Faturamento sem o trabalho: 12 × '+brl(FAT)+'</span><b>'+brl(12*FAT)+'</b></div>'
-      +'<div class="l"><span><i style="background:'+COR.base+'"></i>+ Campanhas à base</span><b>'+brl(r100(s.fb))+'</b></div>'
-      +'<div class="l"><span><i style="background:'+COR.ads+'"></i>+ Vendas dos anúncios</span><b>'+brl(r100(s.sa))+'</b></div>'
-      +'<div class="l"><span><i style="background:'+COR.rec+'"></i>+ Recompra dos clientes novos</span><b>'+brl(r100(s.fr))+'</b></div>'
-      +'<div class="l total"><span>Faturamento no ano com o trabalho</span><b>'+brl(r100(12*FAT+s.extra))+'</b></div>'
-      +'<div class="l total"><span>Lucro a mais, depois do custo dos produtos</span><b>'+brl(r100(s.luc))+'</b></div>'
-      +'<div class="l menos"><span>− Anúncios (pagos à Meta)</span><b>'+brl(-r100(s.A))+'</b></div>'
-      +'<div class="l menos"><span>− Pacheco Studios: '+brl(CUSTO_IMPL)+' + 12 × '+brl(MENSAL)+'</span><b>'+brl(-s.plano)+'</b></div>'
-      +'<div class="l fim"><span>Lucro com o nosso trabalho</span><b class="'+(s.saldo>=0?'pos':'neg')+'">'+brls(r100(s.saldo))+'</b></div>';
     var liq=u.luc-MENSAL-u.A, hojeL=FAT*MG;
     el('vFat').textContent=brl(r100(u.tot))+'/mês';
     el('vFatTxt').textContent=vez(u.mult)+' os '+brl(FAT)+' de hoje';
