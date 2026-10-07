@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: uma coluna de leitura no celular, na ordem da apresentação de resultados: o pedido do dono → o mapa da loja com os 23 problemas → matriz de oportunidades → a conta passo a passo → etapa a etapa (1.º mês × 1 ano) → mês a mês → 90 dias → o que fica no bolso (mesma estrutura, com IA), com o fim do 1.º ano. Sem painel de premissas: cada número aparece com a sua conta. */
+/* Layout: uma coluna de leitura no celular, na ordem da apresentação de resultados: o pedido do dono → o mapa da loja com os 23 problemas → matriz de oportunidades → a conta passo a passo → etapa a etapa (1.º mês × 1 ano) → mês a mês → 90 dias → investimento (Pix ou parcelado: o preço chega depois do que o plano faz e antes do que fica no bolso, que já o desconta) → o que fica no bolso (mesma estrutura, com IA). Sem painel de premissas: cada número aparece com a sua conta. */
 :root{
   --chao:#F3F5F2; --folha:#FFFFFF; --tinta:#17201B; --tinta-2:#46524B; --tinta-3:#66716A;
   --linha:#DCE2DD; --ferro:#1F3A2E; --ferro-texto:#EEF3EF; --laranja:#C2410C; --laranja-suave:#FCE9DE;
@@ -145,6 +145,39 @@ th{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
 .dia .q90{font-family:var(--display);font-size:22px;font-weight:500;line-height:1.05;color:var(--laranja)}
 .dia p{color:var(--tinta-2)}
 .dia .e{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:5px;padding:1px 5px;margin-right:4px;vertical-align:1px}
+/* investimento: duas formas de pagar a mesma coisa */
+.planos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:640px){.planos{grid-template-columns:1fr}}
+.plano{background:var(--folha);border:1px solid var(--linha);border-radius:16px;padding:18px;display:grid;gap:14px;align-content:start;min-width:0}
+.plano.pix{background:var(--ferro);color:var(--ferro-texto);border-color:var(--ferro)}
+.plano .selo{justify-self:start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;background:var(--chao);color:var(--tinta-2)}
+.plano.pix .selo{background:var(--ferro-texto);color:var(--ferro)}
+.plano h3{font-size:27px}
+.preco{display:grid;gap:2px}
+.preco b{font-family:var(--display);font-size:60px;font-weight:600;line-height:.9;letter-spacing:.01em}
+.preco b small{font-size:.5em;font-weight:500}
+.preco.m b{font-size:40px}
+.preco span{font-size:14px;color:var(--tinta-2)}
+.plano.pix .preco span{color:var(--ferro-texto);opacity:.85}
+.linhas{display:grid;gap:7px;border-top:1px solid var(--linha);padding-top:12px}
+.plano.pix .linhas{border-color:rgba(238,243,239,.22)}
+.linhas .rot{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-3)}
+.plano.pix .linhas .rot{color:var(--ferro-texto);opacity:.75}
+.lin{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;font-size:14px;align-items:baseline}
+.lin span{color:var(--tinta-2)}
+.plano.pix .lin span{color:var(--ferro-texto);opacity:.88}
+.lin b{white-space:nowrap;font-variant-numeric:tabular-nums}
+.lin.forte b{font-family:var(--display);font-size:27px;font-weight:500;line-height:1}
+.inclui{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:640px){.inclui{grid-template-columns:1fr}}
+.inc{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:14px 16px;display:grid;gap:10px;align-content:start}
+.inc h3{font-size:22px}
+.inc ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:14.5px;line-height:1.35}
+.inc li{display:flex;gap:8px;align-items:baseline}
+.inc li .e{flex:none;font-size:11px;font-weight:700;color:#fff;border-radius:5px;padding:1px 5px}
+.inc li .p{flex:none;width:6px;height:6px;border-radius:50%;background:var(--laranja);transform:translateY(-2px)}
+.comecar{border-left:4px solid var(--laranja);padding:2px 0 2px 14px;font-size:15px;color:var(--tinta-2);max-width:66ch}
+.comecar b{color:var(--tinta)}
 /* fecho: o que fica no bolso */
 .ia{background:var(--folha);border:1px solid var(--linha);border-left:4px solid var(--e3);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--tinta-2);display:grid;gap:6px}
 .ia b{color:var(--tinta)}
@@ -170,15 +203,24 @@ th{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
   .pagina>*+*{margin-top:28px}
   section{display:block}
   section>*+*{margin-top:12px}
-  section[aria-labelledby="t-mapa"],section[aria-labelledby="t-matriz"],section[aria-labelledby="t-passos"],section[aria-labelledby="t-graf"],section[aria-labelledby="t-bolso"]{break-before:page;margin-top:0}
+  section[aria-labelledby="t-mapa"],section[aria-labelledby="t-matriz"],section[aria-labelledby="t-passos"],section[aria-labelledby="t-graf"],section[aria-labelledby="t-inv"],section[aria-labelledby="t-bolso"]{break-before:page;margin-top:0}
   .motores{grid-template-columns:1fr}
-  section[aria-labelledby="t-90"]{break-inside:avoid}
+  section[aria-labelledby="t-90"],section[aria-labelledby="t-inv"]{break-inside:avoid}
   .so-tela,.seg button[aria-pressed="false"]{display:none}
   .seg{border:0;padding:0;background:none}
   .seg button[aria-pressed="true"]{padding:4px 10px;min-height:0}
-  .placa,.motor li,.q,.passo,.et,.etapas,.matriz,.g,.dia,.inv,.caixa,.ia,.grafico,.dica{break-inside:avoid}
+  .placa,.motor li,.q,.passo,.et,.etapas,.matriz,.g,.dia,.inv,.caixa,.ia,.grafico,.dica,.plano,.inc{break-inside:avoid}
   h2,h3,.olho,.motor .sub{break-after:avoid}
   .g{padding:8px 0}
+  .planos,.inclui{gap:10px}
+  .plano{padding:14px 16px;gap:10px}
+  .preco b{font-size:50px}
+  .preco.m b{font-size:32px}
+  .linhas{gap:5px;padding-top:9px}
+  .lin{font-size:13px}
+  .lin.forte b{font-size:24px}
+  .inc{padding:12px 14px;gap:8px}
+  .inc ul{font-size:13px;gap:5px}
   .g .gm b,.g .gv b{font-size:23px}
 }
 footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);padding-top:16px}
@@ -302,8 +344,65 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
     </div>
   </section>
 
+  <section aria-labelledby="t-inv">
+    <p class="olho">07 · Investimento</p>
+    <h2 id="t-inv">Duas formas de começar</h2>
+    <p class="aviso">O mesmo plano nas duas: as 4 etapas e o acompanhamento todo mês. Só muda a forma de pagar a implementação.</p>
+    <div class="planos">
+      <article class="plano pix" aria-labelledby="t-pix">
+        <p class="selo">Mais econômico · R$&nbsp;1.000 a menos</p>
+        <h3 id="t-pix">À vista no Pix</h3>
+        <div class="preco"><b class="num">R$&nbsp;5.000</b><span>implementação, à vista no Pix</span></div>
+        <div class="preco m"><b class="num"><small>+</small> R$&nbsp;1.000<small>/mês</small></b><span>acompanhamento</span></div>
+        <div class="linhas"><p class="rot">Você paga</p>
+          <div class="lin"><span>1.º mês: R$&nbsp;5.000 + R$&nbsp;1.000</span><b>R$&nbsp;6.000</b></div>
+          <div class="lin"><span>Do 2.º mês em diante</span><b>R$&nbsp;1.000/mês</b></div>
+          <div class="lin"><span>1.º ano: R$&nbsp;5.000 + 12 × R$&nbsp;1.000</span><b>R$&nbsp;17.000</b></div>
+        </div>
+        <div class="linhas"><p class="rot">No seu bolso</p>
+          <div class="lin"><span id="pxM1t">1.º mês: R$&nbsp;2.800 de lucro a mais − R$&nbsp;6.000</span><b id="pxM1">−R$&nbsp;3.200</b></div>
+          <div class="lin forte"><span>1.º ano, já pagos o plano e os anúncios</span><b id="pxAno">+R$&nbsp;14.500</b></div>
+        </div>
+      </article>
+      <article class="plano parc" aria-labelledby="t-parc">
+        <p class="selo">Mais leve no começo</p>
+        <h3 id="t-parc">Parcelado em 4 meses</h3>
+        <div class="preco"><b class="num">R$&nbsp;6.000</b><span>implementação em 4 × R$&nbsp;1.500</span></div>
+        <div class="preco m"><b class="num"><small>+</small> R$&nbsp;1.000<small>/mês</small></b><span>acompanhamento</span></div>
+        <div class="linhas"><p class="rot">Você paga</p>
+          <div class="lin"><span>Do 1.º ao 4.º mês: R$&nbsp;1.500 + R$&nbsp;1.000</span><b>R$&nbsp;2.500/mês</b></div>
+          <div class="lin"><span>Do 5.º mês em diante</span><b>R$&nbsp;1.000/mês</b></div>
+          <div class="lin"><span>1.º ano: R$&nbsp;6.000 + 12 × R$&nbsp;1.000</span><b>R$&nbsp;18.000</b></div>
+        </div>
+        <div class="linhas"><p class="rot">No seu bolso</p>
+          <div class="lin"><span id="paM1t">1.º mês: R$&nbsp;2.800 de lucro a mais − R$&nbsp;2.500</span><b id="paM1">+R$&nbsp;300</b></div>
+          <div class="lin forte"><span>1.º ano, já pagos o plano e os anúncios</span><b id="paAno">+R$&nbsp;13.500</b></div>
+        </div>
+      </article>
+    </div>
+    <div class="inclui">
+      <div class="inc"><h3>Na implementação</h3>
+        <ul>
+          <li><b class="e e1">E1</b><span>Google blindado: link certo do Instagram, descrição, produtos, fotos e QR de avaliação</span></li>
+          <li><b class="e e2">E2</b><span>Site próprio com catálogo por objetivo, domínio e e-mail contato@</span></li>
+          <li><b class="e e3">E3</b><span>WhatsApp que vende sozinho: respostas automáticas, reserva para retirada, lista de clientes e lembrete de recompra</span></li>
+          <li><b class="e e4">E4</b><span>Loja online com Pix, cartão e entrega no bairro</span></li>
+        </ul></div>
+      <div class="inc"><h3>Todo mês</h3>
+        <ul>
+          <li><i class="p" aria-hidden="true"></i><span>Campanha no WhatsApp com cupom para toda a base</span></li>
+          <li><i class="p" aria-hidden="true"></i><span>E-mails dos eventos exclusivos</span></li>
+          <li><i class="p" aria-hidden="true"></i><span>Lembretes de recompra e respostas depois das 20:00, feitos pela IA</span></li>
+          <li><i class="p" aria-hidden="true"></i><span>Gestão dos anúncios no Meta Ads, a partir do 3.º mês</span></li>
+          <li><i class="p" aria-hidden="true"></i><span>Relatório com os números reais do mês</span></li>
+        </ul></div>
+    </div>
+    <p class="aviso">A verba dos anúncios é paga direto à Meta e já está descontada nas contas. O mês a mês da próxima seção usa o pagamento no Pix.</p>
+    <p class="comecar"><b>Para começar:</b> escolher a forma de pagamento e dar acesso ao perfil do Google, que é por onde começa a semana 1.</p>
+  </section>
+
   <section aria-labelledby="t-bolso">
-    <p class="olho">07 · Com a mesma estrutura, com IA</p>
+    <p class="olho">08 · Com a mesma estrutura, com IA</p>
     <h2 id="t-bolso">O que fica no bolso, mês a mês</h2>
     <div class="ia" id="iaTxt"></div>
     <div class="ganhos" id="ganhos"></div>
@@ -325,7 +424,7 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
   var BASE=1000, RESP=0.10, TK=140, MG=0.30, CUP=0.10;   // base de clientes, quem compra com o cupão, compra média, margem, cupão
   var ADS_M=3, A0=1500, ROAS=2, REINV=0.30;              // anúncios: mês de início, verba, retorno em vendas, parte reinvestida
   var REG=1/3, FR=0.5, CH=0.08;                          // recompra dos clientes novos: 1 em cada 3 fica, compra a cada 2 meses, 8% param por mês
-  var CUSTO_IMPL=5000, MENSAL=1000, SEGURO=50;
+  var CUSTO_IMPL=5000, MENSAL=1000, SEGURO=50, PARC_TOT=6000, PARC_N=4;   // Pix: 5.000 no 1.º mês; parcelado: 6.000 em 4 vezes
   var COMPRA_CUP=TK*(1-CUP), CUSTO=TK*(1-MG), LUC_CUP=COMPRA_CUP-CUSTO, LUC=TK*MG;
   var COR={base:'var(--e3)',ads:'var(--e4)',rec:'var(--e2)'};
   var brl=function(v){var s=Math.round(Math.abs(v)).toLocaleString('pt-BR');return (v<0?'−':'')+'R$\u00a0'+s;};
@@ -368,7 +467,7 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
     ]}
   ];
 
-  function simular(baseDepois){
+  function simular(baseDepois,parcelado){
     var pool=0, prev=0, saldo=0, meses=[], minSaldo=0, minMes=1;
     for(var m=1;m<=12;m++){
       var nb=m<=3?BASE*RESP:baseDepois;
@@ -377,7 +476,7 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
       var sa=ROAS*A, la=sa*MG, novos=Math.round(sa/TK);
       var pa=pool, rep=Math.round(pa*FR), fr=rep*TK, lr=fr*MG;
       pool=Math.round(pool*(1-CH)+novos*REG); prev=sa;
-      var plano=(m===1?CUSTO_IMPL:0)+MENSAL;
+      var plano=(parcelado?(m<=PARC_N?PARC_TOT/PARC_N:0):(m===1?CUSTO_IMPL:0))+MENSAL;
       var extra=fb+sa+fr, luc=lb+la+lr;
       saldo+=luc-plano-A;
       if(saldo<minSaldo){minSaldo=saldo;minMes=m;}
@@ -487,6 +586,14 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
         +'<p class="gc num">'+partes.join(' − ')+'</p>'
         +'<span class="gb" aria-hidden="true"><i class="'+(g<0?'n':'p')+'" style="width:'+(Math.abs(g)/maxG*100).toFixed(1)+'%"></i></span></div>';
     }).join('');
+
+    var pc=simular(BASE*RESP,true), P1=pc.meses[0];
+    el('pxM1t').textContent='1.º mês: '+brl(M[0].luc)+' de lucro a mais − '+brl(M[0].plano);
+    el('pxM1').textContent=brls(Math.round(M[0].gan));
+    el('pxAno').textContent=brls(r100(s.saldo));
+    el('paM1t').textContent='1.º mês: '+brl(P1.luc)+' de lucro a mais − '+brl(P1.plano);
+    el('paM1').textContent=brls(Math.round(P1.gan));
+    el('paAno').textContent=brls(r100(pc.saldo));
 
     var liq=u.luc-MENSAL-u.A, hojeL=FAT*MG;
     el('vFat').textContent=brl(r100(u.tot))+'/mês';
