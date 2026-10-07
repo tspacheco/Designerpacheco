@@ -1,0 +1,91 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="../titulos/fontes.css" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:transparent;overflow:hidden}
+.band{position:absolute;left:0;right:0}
+#card{position:absolute;left:70px;right:50px}
+.bar{position:absolute;left:0;top:6px;width:13px;transform-origin:50% 0}
+.txt{padding-left:36px}
+.l{display:block;white-space:nowrap;will-change:transform}
+.sub{display:block;margin-top:18px;white-space:nowrap}
+#credit{position:absolute;left:0;right:0;text-align:center;white-space:nowrap}
+#end{position:absolute;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0}
+#end .u{color:#fff;white-space:nowrap}
+#end .t{margin-top:26px;white-space:nowrap}
+#end .rule{height:6px;width:120px;margin-bottom:46px;transform-origin:50% 50%}
+</style></head>
+<body>
+<div class="band" id="b1"></div><div class="band" id="b2"></div>
+<div id="card"></div>
+<div id="credit"></div>
+<div id="end"><div class="rule"></div><div class="u">pachecost.com</div><div class="t">Portugal based · Acting worldwide</div></div>
+<script>
+// Reels EN (Hanam, Jasmim 2) em 9:16. O vídeo 4:5 entra por baixo, em y = V.y; esta página só desenha por cima.
+const V = {
+  hanam: {
+    y: 170,
+    bands: ["top:0;height:640px;background:linear-gradient(180deg,#000 0,#000 520px,rgba(0,0,0,0) 640px)",
+            "top:1380px;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0,#000 90px)"],
+    top: 245, bar: "#e8312f",
+    lines: [
+      {t: "Business owner?", s: "font-family:Bungee;font-size:66px;line-height:1.18;color:#fff;text-transform:uppercase"},
+      {t: "You deserve a", s: "font-family:Bungee;font-size:66px;line-height:1.18;color:#e8312f;text-transform:uppercase"},
+      {t: "website like this.", s: "font-family:Bungee;font-size:66px;line-height:1.18;color:#e8312f;text-transform:uppercase"}
+    ],
+    sub: {t: "Hanam KBBQ · Quarteira, Portugal", s: "font-family:Archivo;font-weight:500;font-size:27px;color:#9a9a9a;letter-spacing:2px;text-transform:uppercase"},
+    credit: {top: 1455, t: "Website by Pacheco Studios", s: "font-family:Archivo;font-weight:500;font-size:26px;color:#8a8a8a;letter-spacing:3px;text-transform:uppercase"},
+    end: {u: "font-family:Bungee;font-size:84px", t: "font-family:Archivo;font-weight:500;font-size:30px;color:#9a9a9a;letter-spacing:3px;text-transform:uppercase", rule: "#e8312f"}
+  },
+  jasmim: {
+    y: 330,
+    bands: ["top:1080px;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,.9) 90px,#000 150px)"],
+    top: 1240, bar: "#ff5b45",
+    lines: [
+      {t: "Business owner?", s: "font-family:Archivo;font-weight:300;font-size:84px;line-height:1.08;color:#fff;letter-spacing:-1.5px"},
+      {t: "You deserve a", s: "font-family:Archivo;font-weight:800;font-size:84px;line-height:1.08;color:#fff;letter-spacing:-1.5px"},
+      {t: "website like this.", s: "font-family:Archivo;font-weight:800;font-size:84px;line-height:1.08;color:#fff;letter-spacing:-1.5px"}
+    ],
+    sub: {t: "Jasmim 2 · Manta Rota, Portugal", s: "font-family:Archivo;font-weight:500;font-size:28px;color:#a6a6a6;letter-spacing:.3px"},
+    credit: {top: 175, t: "Website by Pacheco Studios", s: "font-family:Archivo;font-weight:500;font-size:26px;color:#8a8a8a;letter-spacing:3px;text-transform:uppercase"},
+    end: {u: "font-family:Archivo;font-weight:800;font-size:96px;letter-spacing:-2px", t: "font-family:Archivo;font-weight:500;font-size:30px;color:#a6a6a6;letter-spacing:3px;text-transform:uppercase", rule: "#ff5b45"}
+  }
+};
+const cfg = V[new URLSearchParams(location.search).get('v')];
+const DUR = +new URLSearchParams(location.search).get('d') || 30;   // duração do vídeo de base; o fecho vem depois
+cfg.bands.forEach((b, i) => document.getElementById('b' + (i + 1)).style.cssText = b);
+const card = document.getElementById('card'); card.style.top = cfg.top + 'px';
+card.innerHTML = `<div class="bar" style="background:${cfg.bar}"></div><div class="txt">` +
+  cfg.lines.map(l => `<span class="l" style="${l.s}">${l.t}</span>`).join('') +
+  `<span class="sub" style="${cfg.sub.s}">${cfg.sub.t}</span></div>`;
+const bar = card.querySelector('.bar'); bar.style.height = (card.querySelector('.txt').offsetHeight - 10) + 'px';
+const ls = [...card.querySelectorAll('.l')], sub = card.querySelector('.sub');
+const cr = document.getElementById('credit'); cr.style.top = cfg.credit.top + 'px'; cr.style.cssText += cfg.credit.s; cr.textContent = cfg.credit.t;
+const end = document.getElementById('end');
+end.querySelector('.u').style.cssText = cfg.end.u; end.querySelector('.t').style.cssText = cfg.end.t;
+const rule = end.querySelector('.rule'); rule.style.background = cfg.end.rule;
+const cl = x => Math.max(0, Math.min(1, x));
+const eo = x => 1 - Math.pow(1 - x, 3);
+function part(el, t, t0, len, dx) {
+  const p = eo(cl((t - t0) / len));
+  el.style.transform = `translateX(${(1 - p) * dx}px)`;
+  el.style.opacity = p;
+  el.style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`;
+}
+// 1.º fotograma já com «Business owner?» e a barra; o resto entra logo a seguir.
+window.setT = t => {
+  bar.style.transform = `scaleY(${.34 + .66 * eo(cl((t - .15) / .45))})`;
+  part(ls[1], t, .25, .55, -60);
+  part(ls[2], t, .42, .55, -60);
+  part(sub, t, .8, .5, -30);
+  cr.style.opacity = eo(cl((t - 1.4) / .6));
+  const e = cl((t - DUR + .1) / .45);                  // fecho: preto + pachecost.com
+  end.style.opacity = e;
+  rule.style.transform = `scaleX(${eo(cl((t - DUR - .2) / .5))})`;
+  end.querySelector('.u').style.transform = `translateY(${(1 - eo(cl((t - DUR - .1) / .6))) * 30}px)`;
+  end.querySelector('.t').style.opacity = eo(cl((t - DUR - .45) / .5));
+};
+setT(0);
+</script>
+</body></html>
