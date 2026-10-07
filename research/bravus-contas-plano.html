@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: uma coluna de leitura no celular, na ordem da apresentação de resultados: o pedido do dono → o mapa da loja com os 23 problemas → matriz de oportunidades → a conta passo a passo → etapa a etapa (1.º mês × 1 ano) → mês a mês → quanto vale tudo → 90 dias. Sem painel de premissas: cada número aparece com a sua conta. */
+/* Layout: uma coluna de leitura no celular, na ordem da apresentação de resultados: o pedido do dono → o mapa da loja com os 23 problemas → matriz de oportunidades → a conta passo a passo → etapa a etapa (1.º mês × 1 ano) → mês a mês → 90 dias → o que fica no bolso (mesma estrutura, com IA), com o fim do 1.º ano. Sem painel de premissas: cada número aparece com a sua conta. */
 :root{
   --chao:#F3F5F2; --folha:#FFFFFF; --tinta:#17201B; --tinta-2:#46524B; --tinta-3:#66716A;
   --linha:#DCE2DD; --ferro:#1F3A2E; --ferro-texto:#EEF3EF; --laranja:#C2410C; --laranja-suave:#FCE9DE;
@@ -152,6 +152,25 @@ th{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
 .dia .q90{font-family:var(--display);font-size:22px;font-weight:500;line-height:1.05;color:var(--laranja)}
 .dia p{color:var(--tinta-2)}
 .dia .e{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:5px;padding:1px 5px;margin-right:4px;vertical-align:1px}
+/* fecho: o que fica no bolso */
+.ia{background:var(--folha);border:1px solid var(--linha);border-left:4px solid var(--e3);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--tinta-2);display:grid;gap:6px}
+.ia b{color:var(--tinta)}
+.ganhos{background:var(--folha);border:1px solid var(--linha);border-radius:14px;padding:4px 16px}
+.g{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--linha);align-items:start}
+.g:last-child{border-bottom:0}
+.g.cab{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-3);padding-bottom:6px;align-items:baseline}
+.g.cab span:last-child{text-align:right}
+.g .gm{display:grid;gap:3px}
+.g .gm b{font-family:var(--display);font-size:27px;font-weight:500;line-height:1}
+.g .gm span{font-size:13px;color:var(--tinta-3)}
+.g .gv{display:grid;justify-items:end;gap:2px}
+.g .gv b{font-family:var(--display);font-size:27px;font-weight:500;line-height:1;white-space:nowrap}
+.g .gv small{font-size:12px;color:var(--tinta-3);white-space:nowrap}
+.g .gc{grid-column:1/-1;font-size:13px;color:var(--tinta-2);margin-top:2px}
+.g .gb{grid-column:1/-1;height:5px;border-radius:3px;background:var(--chao);overflow:hidden;margin-top:3px}
+.g .gb i{display:block;height:100%;border-radius:3px}
+.g .gb i.p{background:var(--bom)} .g .gb i.n{background:var(--mau)}
+.fimano{margin-top:10px}
 footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);padding-top:16px}
 </style>
 
@@ -261,22 +280,8 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
     </details>
   </section>
 
-  <section aria-labelledby="t-valor">
-    <p class="olho">06 · Quanto vale tudo junto</p>
-    <h2 id="t-valor">O 1.º ano em reais</h2>
-    <div class="valor">
-      <div class="linhas" id="linhas"></div>
-      <div class="inv">
-        <div><span>Sobra no 1.º ano</span><b class="num" id="vSaldo">+R$&nbsp;14.500</b><small>já pagos o plano e os anúncios</small></div>
-        <div><span>Do 12.º mês em diante</span><b class="num" id="vMes">+R$&nbsp;2.500/mês</b><small>a mais no bolso, todos os meses</small></div>
-        <div><span>O máximo que sai do bolso</span><b class="num" id="vMax">R$&nbsp;3.200</b><small id="vMaxTxt">no 1.º mês; depois o plano se paga sozinho</small></div>
-      </div>
-    </div>
-    <div class="caixa" id="caixa"></div>
-  </section>
-
   <section aria-labelledby="t-90">
-    <p class="olho">07 · Plano de 90 dias</p>
+    <p class="olho">06 · Plano de 90 dias</p>
     <h2 id="t-90">O que acontece, e quando</h2>
     <div class="dias">
       <div class="dia"><div class="q90">Semana 1</div><p><b class="e e1">E1</b>Google blindado: reivindicar e verificar o perfil, descrição com as palavras de busca, produtos e marcas, fotos novas, QR de avaliação no balcão, resposta a todas as avaliações.</p></div>
@@ -287,7 +292,25 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
     </div>
   </section>
 
-  <footer>Pacheco Studios · pachecost.com · Rascunho de 06/10/2026. Faturamento informado pela loja (R$&nbsp;5 a 10 mil por mês). Textos das campanhas e da loja online dentro das regras da Anvisa, sem promessa de resultado.</footer>
+  <section aria-labelledby="t-bolso">
+    <p class="olho">07 · Com a mesma estrutura, com IA</p>
+    <h2 id="t-bolso">O que fica no bolso, mês a mês</h2>
+    <div class="ia" id="iaTxt"></div>
+    <div class="ganhos" id="ganhos"></div>
+    <h3 class="fimano">No fim do 1.º ano</h3>
+    <div class="valor">
+      <div class="linhas" id="linhas"></div>
+      <div class="inv">
+        <div><span>Faturamento no 12.º mês</span><b class="num" id="vFat">R$&nbsp;34.700/mês</b><small id="vFatTxt">4,6x os R$&nbsp;7.500 de hoje</small></div>
+        <div><span>Lucro do dono no ano</span><b class="num" id="vLuc">R$&nbsp;41.500</b><small id="vLucTxt">hoje: 12 × R$&nbsp;2.250 = R$&nbsp;27.000</small></div>
+        <div><span>Do 12.º mês em diante</span><b class="num" id="vMes">+R$&nbsp;2.500/mês</b><small>a mais no bolso, já pagos a Pacheco Studios e os anúncios</small></div>
+        <div><span>O máximo que sai do bolso</span><b class="num" id="vMax">R$&nbsp;3.200</b><small id="vMaxTxt">no 1.º mês; depois o plano se paga sozinho</small></div>
+      </div>
+    </div>
+    <div class="caixa" id="caixa"></div>
+  </section>
+
+  <footer>Pacheco Studios · pachecost.com · Rascunho de 07/10/2026. Faturamento informado pela loja (R$&nbsp;5 a 10 mil por mês). Textos das campanhas e da loja online dentro das regras da Anvisa, sem promessa de resultado.</footer>
 </main>
 
 <script>
@@ -352,7 +375,7 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
       var extra=fb+sa+fr, luc=lb+la+lr;
       saldo+=luc-plano-A;
       if(saldo<minSaldo){minSaldo=saldo;minMes=m;}
-      meses.push({m:m,nb:nb,fb:fb,lb:lb,A:A,sa:sa,la:la,novos:novos,pa:pa,rep:rep,fr:fr,lr:lr,plano:plano,extra:extra,tot:FAT+extra,mult:(FAT+extra)/FAT,luc:luc,adsLiq:la+lr-A,saldo:saldo});
+      meses.push({m:m,nb:nb,fb:fb,lb:lb,A:A,sa:sa,la:la,novos:novos,pa:pa,rep:rep,fr:fr,lr:lr,plano:plano,extra:extra,tot:FAT+extra,mult:(FAT+extra)/FAT,luc:luc,adsLiq:la+lr-A,gan:luc-A-plano,saldo:saldo});
     }
     var verde=null; for(var i=11;i>=0;i--){if(meses[i].saldo<0){verde=i+2;break;}} if(verde===null)verde=1; if(verde>12)verde=null;
     var adsVerde=null; for(var j=11;j>=ADS_M-1;j--){if(meses[j].adsLiq<=0){adsVerde=j+2;break;}} if(adsVerde>12)adsVerde=null;
@@ -442,22 +465,42 @@ footer{font-size:13px;color:var(--tinta-3);border-top:1px solid var(--linha);pad
       return '<tr><td>'+x.m+'</td><td class="num">'+brl(x.tot)+'</td><td class="num">'+vez(x.mult)+'</td><td class="num">'+n0(x.nb)+'</td><td class="num">'+(x.A?brl(-x.A):'—')+'</td><td class="num">'+(x.sa?brl(x.sa):'—')+'</td><td class="num">'+(x.fr?brl(x.fr):'—')+'</td><td class="num">'+brl(x.luc)+'</td><td class="num">'+brl(-x.plano)+'</td><td class="num '+(x.saldo<0?'neg':'pos')+'">'+brl(x.saldo)+'</td></tr>';
     }).join('');
 
+    // fecho: com a mesma equipe, o trabalho a mais fica com a IA
+    var lista=BASE+soma(M.map(function(x){return x.novos})), lemb=u.nb+u.rep+u.novos;
+    el('iaTxt').innerHTML='<p><b>A loja continua com a mesma equipe: o trabalho a mais fica com a IA.</b> No 12.º mês ela manda a campanha no WhatsApp para '+n0(lista)+' clientes (os '+n0(BASE)+' de hoje + '+n0(lista-BASE)+' que vieram dos anúncios), '+n0(lemb)+' lembretes de recompra e os e-mails dos eventos, e responde depois das 20:00.</p>'
+      +'<p>À mão, a 1 minuto por mensagem: '+n0(lista)+' + '+n0(lemb)+' = '+n0(lista+lemb)+' minutos, cerca de <b>'+n0((lista+lemb)/60)+' horas de trabalho por mês</b>.</p>';
+
+    var acc=0, maxG=Math.max.apply(null,M.map(function(x){return Math.abs(Math.round(x.gan))}));
+    el('ganhos').innerHTML='<div class="g cab"><span>Mês e faturamento</span><span>A mais no bolso</span></div>'+M.map(function(x){
+      var g=Math.round(x.gan); acc+=g;
+      var partes=[brl(x.luc)+' de lucro a mais'];
+      if(x.A)partes.push(brl(x.A)+' de anúncios');
+      partes.push(brl(x.plano)+' da Pacheco Studios');
+      return '<div class="g"><div class="gm"><b>'+ord(x.m)+'</b><span class="num">fatura '+brl(x.tot)+'</span></div>'
+        +'<div class="gv"><b class="num '+(g<0?'neg':'pos')+'">'+brls(g)+'</b><small class="num">acumulado '+brls(acc)+'</small></div>'
+        +'<p class="gc num">'+partes.join(' − ')+'</p>'
+        +'<span class="gb" aria-hidden="true"><i class="'+(g<0?'n':'p')+'" style="width:'+(Math.abs(g)/maxG*100).toFixed(1)+'%"></i></span></div>';
+    }).join('');
+
     el('linhas').innerHTML=
-       '<div class="l"><span><i style="background:'+COR.base+'"></i>Campanhas à base</span><b>'+brl(r100(s.fb))+'</b></div>'
-      +'<div class="l"><span><i style="background:'+COR.ads+'"></i>Vendas dos anúncios</span><b>'+brl(r100(s.sa))+'</b></div>'
-      +'<div class="l"><span><i style="background:'+COR.rec+'"></i>Recompra dos clientes novos</span><b>'+brl(r100(s.fr))+'</b></div>'
-      +'<div class="l total"><span>Faturamento a mais no ano</span><b>'+brl(r100(s.extra))+'</b></div>'
+       '<div class="l"><span>Faturamento sem o trabalho: 12 × '+brl(FAT)+'</span><b>'+brl(12*FAT)+'</b></div>'
+      +'<div class="l"><span><i style="background:'+COR.base+'"></i>+ Campanhas à base</span><b>'+brl(r100(s.fb))+'</b></div>'
+      +'<div class="l"><span><i style="background:'+COR.ads+'"></i>+ Vendas dos anúncios</span><b>'+brl(r100(s.sa))+'</b></div>'
+      +'<div class="l"><span><i style="background:'+COR.rec+'"></i>+ Recompra dos clientes novos</span><b>'+brl(r100(s.fr))+'</b></div>'
+      +'<div class="l total"><span>Faturamento no ano com o trabalho</span><b>'+brl(r100(12*FAT+s.extra))+'</b></div>'
       +'<div class="l total"><span>Lucro a mais, depois do custo dos produtos</span><b>'+brl(r100(s.luc))+'</b></div>'
-      +'<div class="l menos"><span>− Plano: '+brl(CUSTO_IMPL)+' + 12 × '+brl(MENSAL)+'</span><b>'+brl(-s.plano)+'</b></div>'
-      +'<div class="l menos"><span>− Anúncios</span><b>'+brl(-r100(s.A))+'</b></div>'
-      +'<div class="l fim"><span>Sobra no 1.º ano</span><b class="'+(s.saldo>=0?'pos':'neg')+'">'+brls(r100(s.saldo))+'</b></div>';
-    var liq=u.luc-MENSAL-u.A;
-    el('vSaldo').textContent=brls(r100(s.saldo));
-    el('vMes').textContent=brls(r100(liq))+'/mês';
+      +'<div class="l menos"><span>− Anúncios (pagos à Meta)</span><b>'+brl(-r100(s.A))+'</b></div>'
+      +'<div class="l menos"><span>− Pacheco Studios: '+brl(CUSTO_IMPL)+' + 12 × '+brl(MENSAL)+'</span><b>'+brl(-s.plano)+'</b></div>'
+      +'<div class="l fim"><span>Lucro com o nosso trabalho</span><b class="'+(s.saldo>=0?'pos':'neg')+'">'+brls(r100(s.saldo))+'</b></div>';
+    var liq=u.luc-MENSAL-u.A, hojeL=FAT*MG;
+    el('vFat').textContent=brl(r100(u.tot))+'/mês';
+    el('vFatTxt').textContent=vez(u.mult)+' os '+brl(FAT)+' de hoje';
+    el('vLuc').textContent=brl(r100(12*hojeL+s.saldo));
+    el('vLucTxt').textContent='hoje: 12 × '+brl(hojeL)+' = '+brl(12*hojeL);
+    el('vMes').textContent=brls(r10(liq))+'/mês';
     el('vMax').textContent=brl(r100(-s.minSaldo));
     el('vMaxTxt').textContent='no '+ord(s.minMes)+'; depois o plano se paga sozinho';
-    var hojeL=FAT*MG;
-    el('caixa').innerHTML='<p><b>O lucro do dono:</b> hoje '+brl(FAT)+' × 30% = '+brl(hojeL)+' por mês. No 12.º mês: '+brl(hojeL)+' + '+brl(r10(liq))+' = <b>'+brl(r10(hojeL+liq))+' por mês</b>, já pagos o plano e os anúncios.</p>'
+    el('caixa').innerHTML='<p><b>O lucro do dono, por mês:</b> hoje '+brl(FAT)+' × 30% = '+brl(hojeL)+'. No 12.º mês: '+brl(hojeL)+' + '+brl(r10(liq))+' = <b>'+brl(r10(hojeL+liq))+' por mês</b>, já pagos a Pacheco Studios e os anúncios.</p>'
       +'<p><b>Margem de segurança:</b> se do 4.º mês em diante a base der metade (50 compras por mês em vez de 100), o 1.º ano ainda fecha em '+brls(r100(seg.saldo))+'.</p>';
   }
 
