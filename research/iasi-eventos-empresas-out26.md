@@ -1,5 +1,31 @@
 # Eventos para empresas em Iași (pesquisa de 08/10/2026)
 
+# Plano 9–23 out 2026 (atualizado a 08/10, páginas lidas pela ponte)
+
+| Ordem | Data | Evento | Local | Entrada |
+|---|---|---|---|---|
+| 1 | sex 16 out, 09:30 | ATIPIC Internațional (exportadores da Moldávia) | Palas Congress Hall, Sala Mozart | grátis, inscrição prévia no formulário da página |
+| 2 | ter 20 e qua 21 out | AI4IMPACT Week (DIZ) | Iași (local exato a confirmar) | grátis, lugares limitados |
+| 3 | qui 22 out, 08:30 | US–Romania Regional Economic Forum, dia 1 | Palatul Culturii, Sala Voievozilor | «Register your interest», preço a confirmar |
+| 4 | sex 23 out, 09:30 | US–Romania Forum, dia 2 (B2B, missão de investimento) | Palas Iași, Sala Mozart | mesma inscrição |
+
+Reserva: Codecamp Iași 27–29 out (AGORA; empresas de IT); Digital&Sustenabil 9 out (Hotel Internațional; dia das escolas, fraco); webinars online «Miercurea finanțărilor» da DIZ.
+
+### ATIPIC Internațional — 16 out
+- Organizam: Comunitatea Antreprenorială ATIPIC + CCI Iași (com CCI Suceava e Vaslui). Faz parte do Trade Policy Day 2026 da Comissão Europeia.
+- Programa: 09:30 café e networking; painel 1 com a Comissão Europeia, ADR Nord-Est, Paul Butnariu (presidente da CCI Iași); painel 2 com exportadores: Victor Deleanu (Casa de Vinuri Cotnari), George Safir (Holding Familia Safir), Alina Chifan (EGGER Romania), Mihai Țopa (Self Trust, a confirmar); 12:30–13:30 almoço de networking.
+- Público: donos, gestores, produtores e empresas de serviços, exportadores e quem quer começar a exportar.
+- Porquê IA: exportar exige orçamentos, traduções, documentação e follow-up com clientes estrangeiros. É trabalho repetitivo, que se automatiza.
+- Página e inscrição: https://atipic.ong/atipic-international-la-iasi-politicile-comerciale-ale-ue-si-experienta-exportatorilor-din-regiunea-moldovei/
+
+### AI4IMPACT Week — 20 a 23 out
+- Organiza a Digital Innovation Zone (projeto Iași Digital Resilience Lab, cofinanciado pelo Município de Iași), parte do European AI Innovation Month.
+- Programa: lançamento do DIZ AI Helpdesk (acesso grátis a infraestruturas europeias de IA), grupo de trabalho de IA com sessões por setor, workshops, oradores internacionais; de 21 a 23 out decorre também a conferência nacional AI4-MED (IA na medicina).
+- Público: PME e instituições que querem usar IA. É exatamente o alvo.
+- Inscrição grátis: https://digital-innovation.zone/ai4impact-week-ro/ · Facebook: https://www.facebook.com/events/1328548035827750/
+- Como sobrepõe ao fórum a 22–23, ir aos dias 20 e 21.
+
+
 Objetivo: encontrar donos de empresas que estão a pensar em IA (ou ainda não a têm) e marcar a reunião de 20 min.
 Fontes: pesquisa web a 08/10/2026. Preço e inscrição exata: «a confirmar» onde indicado.
 
