@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reel · 5 things under one AI question · overlay</title>
+<!-- Camada de texto do reel «You ask AI one question. This is what's underneath.» (Instagram @pachecostudiospt, 08/10/2026).
+     Por baixo fica o vídeo 3D do Higgsfield (figura humana à beira do abismo → mergulho). Esta página desenha só o texto, com fundo
+     transparente; render.cjs captura 30 fps em PNG com alfa e o ffmpeg sobrepõe ao vídeo e junta o som de som.py.
+     15 s. Linha do tempo: gancho 0–3 · 5 camadas de 2 s (3, 5, 7, 9, 11) · fecho 13–15. Cada fotograma sai de render(t), sem estado.
+     Identidade própria: Dela Gothic One (números monumentais) + JetBrains Mono (etiquetas), osso e laranja Pacheco sobre o abismo,
+     contador de profundidade a correr à direita e régua de ticks a subir à esquerda (sensação de queda).
+     Zona segura do Instagram: textos essenciais entre y 270 e ~1300. Factos e fontes: LEIA-ME.md. -->
+<style>
+@font-face{font-family:DG;src:url(fontes/dela-gothic-one.woff2) format("woff2")}
+@font-face{font-family:JB;src:url(fontes/jetbrains-mono-500.woff2) format("woff2");font-weight:500}
+@font-face{font-family:JB;src:url(fontes/jetbrains-mono-700.woff2) format("woff2");font-weight:700}
+:root{--bone:#EFEAE3;--or:#E8622C;--mute:rgba(239,234,227,.62)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
+#s{position:absolute;inset:0;overflow:hidden;font-family:JB,monospace;color:var(--bone)}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.05) 32%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%)}
+.rail{position:absolute;left:54px;top:0;bottom:0;width:2px;background:rgba(239,234,227,.18)}
+.tick{position:absolute;left:46px;width:18px;height:2px;background:rgba(239,234,227,.5)}
+.tick.big{width:30px;left:40px;background:var(--or)}
+.depth{position:absolute;right:60px;top:300px;text-align:right;font:700 30px/1 JB;letter-spacing:.08em;color:var(--or)}
+.depth small{display:block;font:500 20px/1 JB;letter-spacing:.2em;color:var(--mute);margin-top:12px}
+.hook{position:absolute;left:90px;right:90px;top:430px}
+.hook .l1{font:400 108px/1.0 DG;letter-spacing:-.01em;text-transform:uppercase}
+.hook .l2{font:400 108px/1.0 DG;letter-spacing:-.01em;text-transform:uppercase;color:var(--or);margin-top:22px}
+.hook .arr{margin-top:60px;font:700 30px/1 JB;letter-spacing:.3em;color:var(--mute)}
+.fact{position:absolute;left:90px;right:90px;top:400px}
+.fact .tag{display:inline-block;font:700 26px/1 JB;letter-spacing:.22em;color:#141210;background:var(--or);padding:14px 18px;border-radius:6px;text-transform:uppercase}
+.fact .num{font:400 150px/.95 DG;letter-spacing:-.02em;margin-top:34px}
+.fact .num.sm{font-size:112px}
+.fact .txt{font:700 42px/1.25 JB;margin-top:30px;max-width:900px}
+.fact .txt em{font-style:normal;color:var(--or)}
+.fact .src{font:500 24px/1.4 JB;letter-spacing:.06em;color:var(--mute);margin-top:26px;text-transform:uppercase}
+.end{position:absolute;left:90px;right:90px;top:720px;text-align:center}
+.end .site{font:400 92px/1 DG;letter-spacing:-.01em}
+.end .site i{font-style:normal;color:var(--or)}
+.end .sub{font:700 30px/1 JB;letter-spacing:.24em;color:var(--mute);margin-top:44px;text-transform:uppercase}
+.end .srcs{font:500 24px/1 JB;letter-spacing:.14em;color:var(--mute);margin-top:140px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div id="s"></div>
+<script>
+const DUR=15.0, T={hook:0, f:[3.0,5.0,7.0,9.0,11.0], end:13.0, L:2.0};
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const EO=x=>1-Math.pow(1-cl(x),3), EI=x=>Math.pow(cl(x),3);
+const fi=(t,a,d=.3)=>EO((t-a)/d);
+// entra a cair de cima (como tudo no reel), sai a cair para baixo com desfoque
+const drop=(t,a,b,d=.28,dout=.22)=>{
+  const i=fi(t,a,d), o=EI((t-(b-dout))/dout);
+  const y=(1-i)*-90 + o*140, op=i*(1-o), bl=o*14;
+  return `opacity:${op.toFixed(3)};transform:translateY(${y.toFixed(1)}px);filter:blur(${bl.toFixed(1)}px)`;
+};
+// profundidade: acelera com o tempo (metros), só para dar sensação de queda
+const depth=t=>{ if(t<1.2) return 0; const x=t-1.2; return Math.round(Math.pow(x,2.2)*28); };
+const FACTS=[
+ {tag:'−1 · The question', num:'0.34 Wh', txt:'One ChatGPT question. <em>A light bulb for ~2 min.</em>', src:'OpenAI CEO, June 2025 · company figure'},
+ {tag:'−2 · The machine', num:'100,000 GPUs', sm:true, txt:'One training cluster. <em>Built in 122 days.</em>', src:'xAI Colossus, Memphis · Sept 2024'},
+ {tag:'−3 · The power', num:'A nuclear plant', sm:true, txt:'Three Mile Island, restarting. <em>20-year deal to feed data centres.</em>', src:'Constellation · Microsoft · Sept 2024'},
+ {tag:'−4 · The planet', num:'1.5%', txt:'of the world’s electricity went to data centres in 2024. <em>Doubling by 2030.</em>', src:'IEA · Energy and AI · April 2025'},
+ {tag:'−5 · The seabed', num:'864 servers', sm:true, txt:'2 years under the sea, 36 m down. <em>1/8 the failures of land.</em>', src:'Microsoft Project Natick · 2020'}
+];
+window.SFX={style:'abyss',dur:DUR,facts:T.f,end:T.end,hook2:1.2};
+function render(t){
+  let h='<div class="shade"></div>';
+  // régua à esquerda: ticks que sobem cada vez mais depressa (queda)
+  const d=depth(t); const spacing=120; const off=(d*6)%spacing;
+  h+='<div class="rail"></div>';
+  for(let i=-1;i<18;i++){ const y=i*spacing - off; const big=((Math.floor((d*6)/spacing)+i)%5)===0; h+=`<div class="tick ${big?'big':''}" style="top:${y.toFixed(1)}px"></div>`; }
+  // contador de profundidade
+  if(t>=1.2){ const o=fi(t,1.2,.4)*(1-EI((t-(DUR-.6))/.5)); h+=`<div class="depth" style="opacity:${o.toFixed(3)}">−${d.toLocaleString('en-US')} m<small>depth</small></div>`; }
+  if(t<T.f[0]+.3){
+    h+=`<div class="hook">
+      <div class="l1" style="${drop(t,0.0,T.f[0],.3)}">You ask AI<br>one question.</div>
+      <div class="l2" style="${drop(t,0.9,T.f[0],.3)}">This is what’s underneath.</div>
+      <div class="arr" style="${drop(t,1.5,T.f[0],.3)}">▼ ▼ ▼</div></div>`;
+  }
+  FACTS.forEach((f,i)=>{ const a=T.f[i], b=a+T.L; if(t<a-.05||t>b+.05) return;
+    h+=`<div class="fact">
+      <div class="tag" style="${drop(t,a,b,.22)}">${f.tag}</div>
+      <div class="num ${f.sm?'sm':''}" style="${drop(t,a+.06,b,.28)}">${f.num}</div>
+      <div class="txt" style="${drop(t,a+.16,b,.28)}">${f.txt}</div>
+      <div class="src" style="${drop(t,a+.3,b,.3)}">${f.src}</div></div>`;
+  });
+  if(t>=T.end-.05){
+    const a=T.end;
+    h+=`<div class="end">
+      <div class="site" style="${drop(t,a,DUR+1,.32)}">pachecost<i>.</i>com</div>
+      <div class="sub" style="${drop(t,a+.2,DUR+1,.32)}">Portugal based · Acting worldwide</div>
+      <div class="srcs" style="${drop(t,a+.4,DUR+1,.32)}">Sources in the caption</div></div>`;
+  }
+  document.getElementById('s').innerHTML=h;
+}
+window.render=render; window.DUR=DUR;
+render(0);
+</script>
+</body>
+</html>
