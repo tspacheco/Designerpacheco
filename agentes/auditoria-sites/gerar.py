@@ -39,6 +39,8 @@ DEMO_POR_TIPO = [
     (r"salon|beauty|nail|unghii|lash|gene|estetic|skin|body|clinic|masaj|tatu|tattoo|ink|epil|fit|kinetic", "beauty-zone", "Beauty Zone"),
 ]
 DEMO_PADRAO = ("fika", "Fika")
+# Fora do --top: lojas de cadeia (a decisão não é local, PLAYBOOK §11).
+EXCLUIR = {"magazin-aurora-iasi-calea-gala"}
 
 # Think with Google (2017), «Find out how you stack up to new industry benchmarks for mobile page speed»:
 # quando o carregamento passa de 1 s para X s, a probabilidade de o visitante sair (bounce) aumenta Y %.
@@ -84,6 +86,7 @@ T = {
         "cta": "Îți arătăm în 20 de minute, la tine sau la telefon. Fără costuri și fără obligații.",
         "cta_wa": "Scrie-ne pe WhatsApp", "assin": "Tomás Pacheco · Pacheco Studios · ro.pachecost.com",
         "nota_honesta": "Toate cifrele de mai sus au fost măsurate pe site-ul tău, în ziua auditului. Nu am inventat nimic.",
+        "nota_demo": "Site-ul nostru de exemplu e ascuns de Google intenționat; nota lui SEO e măsurată fără acea verificare.",
         "pag": "Pagina",
     },
     "pt": {
@@ -124,6 +127,7 @@ T = {
         "cta": "Mostramos-te em 20 minutos, aí ou ao telefone. Sem custo e sem compromisso.",
         "cta_wa": "Fala connosco no WhatsApp", "assin": "Tomás Pacheco · Pacheco Studios · pachecost.com",
         "nota_honesta": "Todos os números acima foram medidos no teu site, no dia da auditoria. Nada foi inventado.",
+        "nota_demo": "O nosso site de exemplo está escondido do Google de propósito; a nota SEO dele é medida sem essa verificação.",
         "pag": "Página",
     },
 }
@@ -191,7 +195,9 @@ def fraqueza(d, c):
         return None
     if d.get("erro_pagina") and not d.get("notas"):
         return 100
-    n = d.get("notas") or {}
+    n = dict(d.get("notas") or {})
+    if n.get("performance") == 0 and aud(d, "largest-contentful-paint") is None:
+        n["performance"] = 50  # o Lighthouse não apanhou o LCP: nota 0 não é real
     f = (100 - n.get("performance", 50)) * 0.35 + (100 - n.get("seo", 80)) * 0.15 + (100 - n.get("accessibility", 80)) * 0.1
     pesos = {"https": 10, "viewport": 15, "cabe": 8, "tel": 10, "tel1": 5, "whatsapp": 5, "marcacao": 6,
              "jsonld": 4, "descricao": 3, "ano": 6, "mapa": 2}
@@ -339,7 +345,7 @@ CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:#E7E1D7}
 body{font:400 10.5pt/1.45 var(--corpo);color:var(--carvao);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.folha{width:210mm;min-height:297mm;margin:0 auto 10mm;background:var(--papel);padding:16mm 15mm 14mm;position:relative;display:flex;flex-direction:column;page-break-after:always;break-after:page;overflow:hidden}
+.folha{width:210mm;height:297mm;margin:0 auto 10mm;background:var(--papel);padding:16mm 15mm 14mm;position:relative;display:flex;flex-direction:column;page-break-after:always;break-after:page;overflow:hidden}
 .folha:last-child{page-break-after:auto;break-after:auto}
 @media print{html{background:none}.folha{margin:0}}
 .topo{display:flex;align-items:center;justify-content:space-between;font:600 8pt/1 var(--corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--cinza);margin-bottom:9mm}
@@ -356,9 +362,9 @@ h2{font:400 17pt/1 var(--display);text-transform:uppercase;margin-bottom:4mm}
 .lado{border:1px solid var(--linha);border-radius:6px;padding:5mm;background:#fff;display:flex;flex-direction:column;gap:4mm}
 .lado.nosso{background:var(--carvao);color:var(--osso);border-color:var(--carvao)}
 .lado h3{font:400 11pt/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
-.lado .sub{font-size:7.5pt;color:var(--cinza);margin-top:-2.5mm;min-height:2.6em}
+.lado .sub{font-size:7pt;line-height:1.3;color:var(--cinza);margin-top:-2.5mm;min-height:4em}
 .lado.nosso .sub{color:#A9A196}
-.tel{width:47mm;height:96mm;margin:0 auto;border-radius:7mm;border:2.2mm solid #1E1C1A;background:#1E1C1A;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.tel{width:43mm;height:88mm;margin:0 auto;border-radius:7mm;border:2.2mm solid #1E1C1A;background:#1E1C1A;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.18)}
 .lado.nosso .tel{border-color:#3A3631;background:#3A3631}
 .tel img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:4.5mm}
 .aneis{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm}
@@ -410,8 +416,19 @@ def logo_mini():
             '<text x="32" y="43" text-anchor="middle" font-family="Archivo Black,sans-serif" font-size="30" fill="#E8622C">P</text></svg>')
 
 
+def whatsapp(c):
+    """Regra do PLAYBOOK: «sim» só com prova pública. Fixo (+40 2…/3…) não tem WhatsApp."""
+    t = re.sub(r"\D", "", c.get("telefone", ""))
+    return "não (fixo: ligar)" if t.startswith(("402", "403")) else "?"
+
+
+def nome_curto(c):
+    n = re.split(r"\s+[-|–]\s+|,|\(", c["nome"])[0].strip()
+    return n if len(n) <= 40 else n[:38].rsplit(" ", 1)[0]
+
+
 def mensagem_ro(c, slug):
-    return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Am văzut că {c['nome']} are {c.get('nota')}★ pe Google, "
+    return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Am văzut că {nome_curto(c)} are {c.get('nota')}★ pe Google, "
             f"așa că v-am făcut gratuit un audit al site-ului, măsurat pe telefon: viteza, ce găsește clientul și ce i-ar lipsi ca să vă sune. "
             f"Vi-l trimit aici în PDF (3 pagini). Dacă vreți, vă arăt în 20 de minute cum ar arăta site-ul refăcut. Mulțumesc!")
 
@@ -442,9 +459,9 @@ def apresentacao(slug, c, lang, cand_pt=False):
 
     topo = (f'<div class="topo"><span class="marca">{logo_mini()}Pacheco Studios</span><span>{L["titulo"]} · {html.escape(dom)}</span></div>')
     p1 = (f'<section class="folha">{topo}<span class="etiqueta">{L["gratis"]}</span>'
-          f'<h1>{html.escape(c["nome"])}</h1><p class="dominio">{html.escape(dom)}</p>'
+          f'<h1 style="font-size:{30 if len(nome_curto(c)) <= 18 else 24}pt">{html.escape(nome_curto(c))}</h1><p class="dominio">{html.escape(dom)}</p>'
           f'<p class="elogio">{L["elogio"].format(nota=c.get("nota"), aval=aval)}</p><p class="medido">{L["medido"].format(d=data_fmt)}</p>'
-          f'<div class="duelo">{lado(d, n, "teu", L["hoje"], "", img)}{lado(dm, nd, "nosso", L["podia"], L["podia_sub"].format(demo=demo_nome), img_d)}</div>'
+          f'<div class="duelo">{lado(d, n, "teu", L["hoje"], "", img)}{lado(dm, nd, "nosso", L["podia"], L["podia_sub"].format(demo=demo_nome) + ". " + L["nota_demo"], img_d)}</div>'
           f'<div class="rodape"><span>{L["nota_honesta"]}</span><span>{L["pag"]} 1/3</span></div></section>')
 
     chk = verificacoes(d, c)
@@ -485,10 +502,10 @@ def apresentacao(slug, c, lang, cand_pt=False):
 
     p4 = ""
     if cand_pt:
-        wa = "?"  # sem prova pública de WhatsApp: regra do PLAYBOOK
+        wa = whatsapp(c)
         p4 = (f'<section class="folha">{topo}<h2>Notas para o Tomás</h2><div class="notas">'
               f'<p><b>{html.escape(c["nome"])}</b> · {html.escape(c.get("categoria", ""))} · {html.escape(c.get("morada", "") or "morada a confirmar")}</p>'
-              f'<p>Telefone {html.escape(c.get("telefone", ""))} · WhatsApp: {wa} (sem prova pública; se falhar, ligar ou visitar) · Google {c.get("nota")}{" · " + c["avaliacoes"] + " avaliações" if c.get("avaliacoes") else ""}</p>'
+              f'<p>Telefone {html.escape(c.get("telefone", ""))} · WhatsApp: {wa}  · Google {c.get("nota")}{" · " + c["avaliacoes"] + " avaliações" if c.get("avaliacoes") else ""}</p>'
               f'<p>Fraqueza {fraqueza(d, c)}/100 · demo de comparação: {demo_nome} (pachecost.com/demo/{demo_slug}/)</p>'
               f'<h3>Mensagem (RO), mandar com o PDF romeno</h3><pre>{html.escape(mensagem_ro(c, slug))}</pre>'
               f'<h3>PDF para o dono</h3><pre>{RAW}/{slug}/auditie-{slug}-ro.pdf</pre>'
@@ -531,6 +548,36 @@ def gerar(slug, cands):
     print("ok", slug)
 
 
+def mensagem_morto(c):
+    dom = urlparse(c["site"]).netloc.replace("www.", "")
+    return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Am văzut că {c['nome']} are {c.get('nota')}★ pe Google. "
+            f"Vă scriu pentru că linkul de site din profilul vostru Google ({dom}) nu se mai deschide: cine apasă pe el ajunge la o eroare. "
+            f"Dacă vreți, vă arăt în 20 de minute un site nou pentru voi, gata de pus în loc. Mulțumesc!")
+
+
+def escrever_envio(escolhidos, cands):
+    data = datetime.date.today().strftime("%d/%m/%Y")
+    out = [f"# Agente 3 · auditorias para enviar ({data})", "",
+           "Mandar pelo WhatsApp Business RO: mensagem + PDF romeno (link raw abaixo, descarrega no telemóvel). "
+           "WhatsApp dos donos: «?» nos telemóveis (sem prova pública), «não» nos fixos. Se a mensagem não entregar, ligar ou visitar com a morada; nos fixos, ligar e pedir um WhatsApp ou e-mail para mandar o PDF.", ""]
+    for i, s in enumerate(escolhidos, 1):
+        c = cands[s]
+        out += [f"## {i}. {c['nome']} · {c.get('categoria', '')}", "",
+                f"- Telefone {c.get('telefone')} · WhatsApp: {whatsapp(c)} · Google {c.get('nota')}{' · ' + c['avaliacoes'] + ' avaliações' if c.get('avaliacoes') else ''}",
+                f"- Morada: {c.get('morada') or 'a confirmar'} · site {c['site']}",
+                f"- PDF RO (dono): {RAW}/{s}/auditie-{s}-ro.pdf",
+                f"- PDF PT (Tomás): {RAW}/{s}/auditoria-{s}-pt.pdf", "", "```", mensagem_ro(c, s), "```", ""]
+    mortos = [(s, c) for s, c in cands.items() if (ler(s) or {}).get("erro_pagina") and not (ler(s) or {}).get("notas")]
+    if mortos:
+        out += ["## Sites que já não abrem (o Google manda os clientes para um erro)", "",
+                "O link do site na ficha Google dá erro (o domínio não existe). É o argumento mais forte: não precisa de PDF.", ""]
+        for s, c in mortos:
+            out += [f"### {c['nome']} · {c.get('categoria', '')}", "",
+                    f"- Telefone {c.get('telefone')} · WhatsApp: {whatsapp(c)} · Google {c.get('nota')} · morada {c.get('morada') or 'a confirmar'}",
+                    f"- Erro medido: {(ler(s).get('erro_pagina') or '').splitlines()[0][:120]}", "", "```", mensagem_morto(c), "```", ""]
+    open(os.path.join(SAIDA, "ENVIAR.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
+
+
 def main():
     cands = ler_candidatos()
     a = sys.argv[1:]
@@ -540,11 +587,13 @@ def main():
         return
     if a[0] == "--top":
         k = int(a[1])
-        escolhidos = [s for fr, s, c, d, n in escrever_ranking(cands) if nota_num(c) >= 4.4 and d.get("notas")][:k]
+        escolhidos = [s for fr, s, c, d, n in escrever_ranking(cands) if s not in EXCLUIR and nota_num(c) >= 4.4 and d.get("notas") and aud(d, "largest-contentful-paint") is not None][:k]
     else:
         escolhidos = a
     for s in escolhidos:
         gerar(s, cands)
+    if a[0] == "--top":
+        escrever_envio(escolhidos, cands)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 02/10/2026 (consultoria de IA — secção 17)
+> Última atualização: 08/10/2026 (agente 3: auditoria a sites fracos — secção 19)
 
 ## 0. COMO USAR
 
@@ -359,3 +359,12 @@ Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que v
   - calculadora de horas;
   - foto do Tomás;
   - texto do cartão («Vezi proiectele» → algo sobre o diagnóstico) na próxima impressão.
+
+## 19. AGENTE 3: AUDITORIA GRÁTIS A SITES FRACOS (novo — 08/10/2026)
+
+Pedido do Tomás (08/10): negócios que já têm site, mas fraco, recebem uma auditoria grátis «o teu site hoje vs. o que podia ser», com resultados possíveis e vitórias rápidas. Tudo em `agentes/auditoria-sites/` (ver `LEIA-ME.md`), ramo `claude/auditoria-sites-fracos-fpyd0h`.
+
+- **Medir:** a PONTE ganhou `auditar <slug> <url>` (Lighthouse móvel + iPhone simulado: botão de chamada, WhatsApp, marcação, JSON-LD, ano do ©). As demos medem-se igual e são o «o que podia ser» (SEO sem a verificação do noindex, dito na página).
+- **Escolher:** `gerar.py ranking` → `auditorias/RANKING.md` (fraqueza 0–100). Fora: cadeias, nota < 4,4.
+- **Gerar:** `gerar.py --top 10` → PDF RO de 3 páginas para o dono (comparação, o que encontrámos, 3 vitórias rápidas, Google: abandono vs. tempo de carregamento) e PDF PT com notas para o Tomás; `auditorias/ENVIAR.md` com mensagens e links raw. Sem preço no PDF; o dinheiro conta-se na reunião com visitas/mês e valor de um cliente.
+- **1.º lote (08/10, Iași):** 91 sites medidos, 10 auditorias, 3 sites que já nem abrem (Trimite Flori, La Dolce Vita, Tudor Saloon: argumento mais forte, mensagem própria).
