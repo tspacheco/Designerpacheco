@@ -10,11 +10,13 @@ Cada empresa encontrada traz nome, morada, telefone (quando declarado), CAEN e d
   python3 recolher.py --inicio 5560000      começa nesse número (sem o algarismo de controlo)
   python3 recolher.py --sondar-ckan         também lista os conjuntos de dados ONRC em data.gov.ro
 """
-import argparse, datetime, json, os, sys, time, urllib.request
+import argparse, datetime, json, os, sys, time, urllib.error, urllib.request
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 DADOS = os.path.join(AQUI, "dados")
 ESTADO = os.path.join(DADOS, "estado.json")
+VISTOS = os.path.join(DADOS, "vistos.txt")  # CUI já lidos (para não repetir)
+RECUO = 600  # a ANAF demora a mostrar alguns CUI: cada corrida volta a pedir os últimos 600 números
 API = "https://webservicesp.anaf.ro/api/PlatitorTvaRest/v9/tva"
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
 
@@ -36,6 +38,11 @@ def anaf(cuis, data):
         try:
             req = urllib.request.Request(API, data=corpo, headers={"Content-Type": "application/json", "User-Agent": UA})
             return json.load(urllib.request.urlopen(req, timeout=60))
+        except urllib.error.HTTPError as ex:
+            if ex.code == 404:  # a ANAF responde 404 quando nenhum dos CUI existe (passámos a fronteira)
+                return {"found": [], "notFound": cuis}
+            print(f"  ANAF falhou ({ex}), nova tentativa", file=sys.stderr)
+            time.sleep(3 * (tentativa + 1))
         except Exception as ex:
             print(f"  ANAF falhou ({ex}), nova tentativa", file=sys.stderr)
             time.sleep(3 * (tentativa + 1))
@@ -79,7 +86,8 @@ def main():
     if a.sondar_ckan:
         sondar_ckan()
     estado = json.load(open(ESTADO)) if os.path.exists(ESTADO) else {}
-    base = a.inicio if a.inicio else estado.get("ultimo_base", 0) + 1
+    base = a.inicio if a.inicio else estado.get("ultimo_base", 0) - RECUO
+    vistos = set(open(VISTOS).read().split()) if os.path.exists(VISTOS) else set()
     if not base or base < 1000000:
         sys.exit("Sem ponto de partida: usar --inicio")
     hoje = datetime.date.today().isoformat()
@@ -89,7 +97,8 @@ def main():
         r = anaf([cui(b) for b in bases], hoje)
         f = r.get("found") or []
         for x in f:
-            achadas.append(resumo(x))
+            if str(x["date_generale"]["cui"]) not in vistos:
+                achadas.append(resumo(x))
             maior = max(maior, int(str(x["date_generale"]["cui"])[:-1]))
         print(f"lote {lote}: {bases[0]}..{bases[-1]} -> {len(f)} encontradas", file=sys.stderr)
         vazios = 0 if f else vazios + 1
@@ -97,14 +106,14 @@ def main():
             break
         base += 100
         time.sleep(1.2)
-    ficheiro = os.path.join(DADOS, f"{hoje}.json")
+    ficheiro = os.path.join(DADOS, f"iasi-{hoje}.json")
     anteriores = json.load(open(ficheiro)) if os.path.exists(ficheiro) else []
-    vistos = {x["cui"] for x in anteriores}
-    todas = anteriores + [x for x in achadas if x["cui"] not in vistos]
-    json.dump(todas, open(ficheiro, "w"), ensure_ascii=False, indent=0)
+    iasi = [x for x in achadas if x["judet"] == "IS"]  # só se guarda o distrito de Iași; dos outros fica o CUI em vistos
+    json.dump(anteriores + iasi, open(ficheiro, "w"), ensure_ascii=False, indent=0)
+    with open(VISTOS, "a") as v:
+        v.write("".join(f"{x['cui']}\n" for x in achadas))
     estado.update({"ultimo_base": maior, "ultima_corrida": datetime.datetime.utcnow().isoformat(timespec="seconds") + "Z"})
     json.dump(estado, open(ESTADO, "w"), indent=1)
-    iasi = [x for x in achadas if x["judet"] == "IS"]
     print(f"{len(achadas)} empresas novas lidas, {len(iasi)} no distrito de Iași, último CUI-base {maior}")
 
 
