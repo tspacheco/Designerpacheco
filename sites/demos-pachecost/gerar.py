@@ -90,6 +90,18 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("mb-cakes", "mb-cakes"),
 ]
 NOINDEX = '<meta name="robots" content="noindex, nofollow">'
+# Contador de aberturas (tracker das demos, ramo claude/tracker-demos-kx5ukf): só no index.html,
+# com o caminho fixo /demo/<curto>/ para contar igual em pachecost.com/demo/, demo.pachecost.com
+# e pachecost-demos.netlify.app. Sem cookies e sem script externo (um pedido de imagem ao GoatCounter).
+# Não conta navegadores automáticos (ponte, testes) nem quem abriu um link com #nao-contar
+# (o Tomás faz isso uma vez em cada telemóvel/PC para não contar as próprias visitas).
+CONTADOR = ('<script>(function(c){try{var L=localStorage;if(location.hash=="#nao-contar")'
+            '{L.setItem("skipgc","t");return}if(L.getItem("skipgc")=="t")return}catch(e){}'
+            'if(navigator.webdriver)return;var q="p="+encodeURIComponent("/demo/"+c+"/")+"&t="+'
+            'encodeURIComponent(document.title)+"&r="+encodeURIComponent(document.referrer)+'
+            '"&rnd="+Math.random().toString(36).slice(2);'
+            '(new Image).src="https://pachecost.goatcounter.com/count?"+q})("%s")</script>')
+
 FONTE = re.compile(r"@font-face\s*\{[^}]*?url\(['\"]?data:[^}]*\}")
 
 
@@ -128,6 +140,8 @@ def gerar_demos():
             for n in htmls:
                 h = FONTE.sub("", htmls[n])
                 htmls[n] = re.sub(r"(<head[^>]*>)", r'\1<link rel="stylesheet" href="fontes.css">', h, count=1)
+        if "index.html" in htmls:
+            htmls["index.html"] = htmls["index.html"].replace("</body>", CONTADOR % curto + "</body>", 1)
         for nome, html in htmls.items():
             with open(os.path.join(dst, nome), "w", encoding="utf-8") as f:
                 f.write(html)
