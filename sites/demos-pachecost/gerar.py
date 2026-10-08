@@ -60,6 +60,9 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("exclusive-laundry", "exclusive-laundry"),
     ("inkhaus-tattoo", "inkhaus-tattoo"),
     # lote 4 de Iași (08/10)
+    ("croitorie-grand-siraj", "croitorie-grand-siraj"),
+    ("interventii-rapide", "interventii-rapide"),
+    ("chei-targu-cucu", "chei-targu-cucu"),
     ("magic-key", "magic-key"),
     ("dubitec", "dubitec"),
     ("city-wash", "city-wash"),
