@@ -1,0 +1,72 @@
+# Tracker das demos: lê as aberturas de cada demo no GoatCounter e grava tracker/aberturas.json.
+# Corre quando se faz push de .github/tracker.txt (a rotina diária faz isso) ou à mão em Actions.
+# Precisa do segredo GOATCOUNTER_TOKEN (GoatCounter → Settings → API → token com «Read statistics»;
+# GitHub → Settings → Secrets and variables → Actions → New repository secret).
+# Conta-se cada demo pelo caminho /demo/<curto>/ (o contador vai no index.html de cada demo,
+# não no pt.html, que é só para o Tomás).
+name: tracker-demos
+on:
+  push:
+    paths: ['.github/tracker.txt']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: tracker-demos
+jobs:
+  ler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: GoatCounter -> tracker/aberturas.json
+        env:
+          GC_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import datetime, json, os, urllib.parse, urllib.request
+          tok = os.environ.get("GC_TOKEN", "")
+          out = {"lido_em": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "erro": "", "demos": {}}
+          if not tok:
+              out["erro"] = "falta o segredo GOATCOUNTER_TOKEN"
+          else:
+              base = "https://pachecost.goatcounter.com/api/v0/stats/hits"
+              hoje = datetime.date.today() + datetime.timedelta(days=1)
+              vistos, mais = [], True
+              try:
+                  while mais:
+                      q = {"start": "2026-10-01", "end": hoje.isoformat(), "limit": "100"}
+                      if vistos:
+                          q["exclude_paths"] = ",".join(map(str, vistos))
+                      req = urllib.request.Request(base + "?" + urllib.parse.urlencode(q), headers={
+                          "Authorization": "Bearer " + tok, "Content-Type": "application/json"})
+                      r = json.load(urllib.request.urlopen(req, timeout=60))
+                      hits = r.get("hits") or []
+                      for h in hits:
+                          vistos.append(h["path_id"])
+                          p = h.get("path", "")
+                          if not p.startswith("/demo/") or h.get("event"):
+                              continue
+                          curto = p.strip("/").split("/")[1] if p.count("/") >= 2 else ""
+                          if not curto:
+                              continue
+                          dias = {s["day"]: s.get("daily", 0) for s in (h.get("stats") or []) if s.get("daily")}
+                          d = out["demos"].setdefault(curto, {"visitas": 0, "dias": {}})
+                          d["visitas"] += h.get("count", 0)
+                          for k, v in dias.items():
+                              d["dias"][k] = d["dias"].get(k, 0) + v
+                      mais = bool(r.get("more")) and bool(hits)
+              except Exception as e:
+                  out["erro"] = f"{type(e).__name__}: {e}"
+              for d in out["demos"].values():
+                  d["primeira"] = min(d["dias"]) if d["dias"] else ""
+                  d["ultima"] = max(d["dias"]) if d["dias"] else ""
+          os.makedirs("tracker", exist_ok=True)
+          json.dump(out, open("tracker/aberturas.json", "w"), ensure_ascii=False, indent=1, sort_keys=True)
+          print(out["erro"] or f'{len(out["demos"])} demos com aberturas')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "tracker-demos"; git config user.email "actions@github.com"
+          git add tracker/aberturas.json
+          git diff --cached --quiet || git commit -m "Tracker: aberturas das demos (GoatCounter)"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
