@@ -43,9 +43,12 @@ CHECAR = r"""() => {
 }"""
 
 
-def lighthouse(url):
+def lighthouse(url, demo=False):
     t0 = time.time()
-    r = subprocess.run(["lighthouse", url, "--quiet", "--output=json", "--output-path=/tmp/lh.json",
+    # As demos têm «noindex» de propósito (não aparecem no Google): sem isso a nota SEO cairia ~34 pontos por
+    # uma escolha nossa que o site do cliente não teria. Só nas demos se salta essa verificação.
+    extra = ["--skip-audits=is-crawlable"] if demo else []
+    r = subprocess.run(["lighthouse", url, *extra, "--quiet", "--output=json", "--output-path=/tmp/lh.json",
                         "--only-categories=performance,accessibility,best-practices,seo", "--max-wait-for-load=45000",
                         "--chrome-flags=--headless=new --no-sandbox --disable-gpu"], capture_output=True, text=True, timeout=180)
     if r.returncode or not os.path.exists("/tmp/lh.json"):
@@ -82,7 +85,7 @@ def medir_todos(lista):
         for nome, url in lista:
             d = {"nome": nome, "url": url, "medido_em": time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())}
             try:
-                d.update(lighthouse(url))
+                d.update(lighthouse(url, demo=nome.startswith("demo-")))
             except Exception as ex:
                 d["erro_lighthouse"] = str(ex)
             try:
