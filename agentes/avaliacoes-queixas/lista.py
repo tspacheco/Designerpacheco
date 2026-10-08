@@ -37,15 +37,15 @@ SOLUCAO = {
 }
 
 MSG_RO = ("Bună ziua! Sunt Tomás, de la Pacheco Studios, din Iași.\n\n"
-          "{elogio_ro}Citind recenziile {nome} pe Google, am dat peste asta ({data}):\n„{citacao}”\n\n"
+          "{elogio_ro}Citind recenziile de pe Google pentru {nome}, am dat peste asta ({data}):\n„{citacao}”\n\n"
           "Nu vă scriu ca să vă critic. {solucao_ro}\n\n"
-          "Fac gratuit o auditare a firmei: unde se pierd clienți și ce se poate automatiza, cu IA. "
+          "Vă propun o auditare gratuită a firmei: unde se pierd clienți și ce se poate automatiza, cu IA. "
           "Aveți 20 de minute săptămâna aceasta să ne vedem?\n\n"
           "Mai multe despre noi: ro.pachecost.com")
 MSG_PT = ("Bom dia! Sou o Tomás, da Pacheco Studios, de Iași.\n\n"
           "{elogio_pt}A ler as avaliações de {nome} no Google, encontrei isto ({data_pt}):\n«{citacao_pt}»\n\n"
           "Não vos escrevo para criticar. {solucao_pt}\n\n"
-          "Faço de graça uma auditoria ao negócio: onde se perdem clientes e o que se pode automatizar, com IA. "
+          "Proponho-vos uma auditoria grátis ao negócio: onde se perdem clientes e o que se pode automatizar, com IA. "
           "Têm 20 minutos esta semana para nos vermos?\n\n"
           "Mais sobre nós: ro.pachecost.com")
 
