@@ -24,7 +24,7 @@ jobs:
           CMD="$(grep -vE '^\s*(#|$)' .github/avaliacoes.txt | head -1 || true)"
           [ -n "$CMD" ] || exit 0
           set -o pipefail
-          python3 agentes/avaliacoes-queixas/$CMD 2>&1 | tee agentes/avaliacoes-queixas/dados/ultima-corrida.txt
+          eval "python3 agentes/avaliacoes-queixas/$CMD" 2>&1 | tee agentes/avaliacoes-queixas/dados/ultima-corrida.txt
       - name: Publicar no mesmo ramo
         if: always()
         run: |
