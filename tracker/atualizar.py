@@ -4,7 +4,7 @@
 
 <pasta> é o out_dir de um ArtifactData list da coleção «negocios» (um .json por doc,
 com «version»). Para cada demo: cria o negócio se falta (estado «por-enviar») e
-atualiza visitas/primeira/ultima se mudaram. Nunca toca no estado nem na nota.
+atualiza a ficha (nome, tel, lote, ordem) e visitas/primeira/ultima se mudaram. Nunca toca no estado nem na nota.
 """
 import glob, json, os, sys
 
@@ -16,6 +16,9 @@ for p in glob.glob(os.path.join(sys.argv[1], "**", "*.json"), recursive=True):
 neg = json.load(open(os.path.join(AQUI, "negocios.json"), encoding="utf-8"))
 ab = json.load(open(os.path.join(AQUI, "aberturas.json"), encoding="utf-8")) if os.path.exists(
     os.path.join(AQUI, "aberturas.json")) else {"demos": {}, "lido_em": "", "erro": "sem leitura"}
+# o out_dir não guarda a versão: o resultado do list mostra-a; passar {id: versão} em tracker/_versoes.json
+VP = os.path.join(AQUI, "_versoes.json")
+versoes = json.load(open(VP)) if os.path.exists(VP) else {}
 w = []
 for i, n in enumerate(neg):
     a = ab["demos"].get(n["id"], {})
@@ -27,8 +30,12 @@ for i, n in enumerate(neg):
         continue
     d = lidos[n["id"]]
     atual = d.get("data", d)
-    if ab.get("lido_em") and any(atual.get(k) != v for k, v in novo.items()):
-        w.append({"op": "update", "collection": "negocios", "doc_id": n["id"], "data": novo,
-                  "if_version": d.get("version")})
+    ficha = {"nome": n["nome"], "tel": n["tel"], "lote": n["lote"], "demo": n["demo"], "ordem": i}
+    if not ab.get("lido_em") or ab.get("erro"):
+        novo = {}
+    muda = {k: v for k, v in {**ficha, **novo}.items() if atual.get(k) != v}
+    if muda:
+        w.append({"op": "update", "collection": "negocios", "doc_id": n["id"], "data": muda,
+                  "if_version": d.get("version") or versoes.get(n["id"])})
 json.dump(w, open(os.path.join(AQUI, "_escritas.json"), "w"), ensure_ascii=False, indent=1)
 print(f"{len(w)} escritas; lido_em={ab.get('lido_em')!r} erro={ab.get('erro')!r}")

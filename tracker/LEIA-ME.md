@@ -17,7 +17,7 @@ Página (Artifact, com base de dados): https://claude.ai/artifact/NDnUhrKktvWHT2
 
 1. `python3 tracker/sincronizar.py` (lista de negócios a partir do DEMOS do gerar.py e dos ficheiros de lote; demos novas entram como «Por enviar»).
 2. Push de `.github/tracker.txt` (uma data nova) → o workflow lê o GoatCounter e faz commit de `tracker/aberturas.json`; `git pull` quando aparecer.
-3. Ler a coleção `negocios` do Artifact, criar os negócios que faltam e atualizar `visitas`, `primeira`, `ultima` (sem mexer no estado nem na nota); `meta/geral` com `lido_em` e `erro`.
+3. `ArtifactData list` da coleção `negocios` com `out_dir`; gravar {id: versão} (o resultado do list mostra-as) em `tracker/_versoes.json`; `python3 tracker/atualizar.py <out_dir>` e aplicar `tracker/_escritas.json` em batch (cria os negócios que faltam e atualizar `visitas`, `primeira`, `ultima` e a ficha (nome, tel, lote, ordem), sem mexer no estado nem na nota); `meta/geral` com `lido_em` e `erro`.
 4. Relatório curto no thread «Tracker das demos»: funil (enviados, abriram, responderam, reuniões, sem interesse, clientes, com %), e a lista «abriram e não responderam» para o follow-up.
 
 ## Falta (Tomás)
