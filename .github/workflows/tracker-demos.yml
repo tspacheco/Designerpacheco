@@ -25,7 +25,7 @@ jobs:
           python3 - <<'PY'
           import datetime, json, os, urllib.parse, urllib.request
           tok = os.environ.get("GC_TOKEN", "")
-          out = {"lido_em": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "erro": "", "demos": {}}
+          out = {"lido_em": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%MZ"), "erro": "", "demos": {}}
           if not tok:
               out["erro"] = "falta o segredo GOATCOUNTER_TOKEN"
           else:
@@ -69,4 +69,9 @@ jobs:
           git config user.name "tracker-demos"; git config user.email "actions@github.com"
           git add tracker/aberturas.json
           git diff --cached --quiet || git commit -m "Tracker: aberturas das demos (GoatCounter)"
-          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
+          # sem «git pull»: no clone raso o pull ficou 10 min pendurado (08/10)
+          B="${GITHUB_REF_NAME}"
+          for i in 1 2 3; do
+            timeout 120 git push -q origin "HEAD:$B" && break
+            timeout 120 git fetch -q --depth=20 origin "$B" && git rebase -q FETCH_HEAD; sleep 5
+          done
