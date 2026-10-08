@@ -189,16 +189,25 @@ IDEIAS = [
         "tomas": "Subir o zip do pachecost.com quando o thread do site integrar o cartaz.",
     },
     {
-        "n": 10, "titulo": "Caso Catarina e pedido de indicações", "estado": "curso",
-        "sub": "Um cliente real que mostra o antes e o depois",
+        "n": 10, "titulo": "Caso Catarina e pedido de indicações", "estado": "pronto",
+        "sub": "Um cliente real mostra o antes e o depois, e indica outros donos",
         "exec": [
-            "Caso de estudo da Pizzaria Catarina (antes e depois, página e guião de reel) e mensagem para a dona a pedir 2 nomes de outros donos.",
-            "Sem autorização e números reais da dona, o caso fica sem números.",
+            "Página do caso da Pizzaria Catarina: abre com «168 avaliações. Nenhum site. Agora tem.», mostra o antes (a casa só aparecia em sites de outros), o depois (3 ecrãs do site) e os números com «a preencher».",
+            "Reel 9:16 de 31 s, com som, que abre com «4,4★ · 168 avaliações. Nenhum site. Agora tem.»",
+            "Mensagem à dona, com lembrete ao 4.º dia, a pedir três coisas: autorização, reservas por semana antes e agora, e nome e número de 2 donos da zona.",
         ],
-        "kpis": [],
-        "res": ["<b>Em curso.</b> Esta página é atualizada quando o thread entregar."],
-        "dia": ["A definir pelo thread."],
-        "tomas": "",
+        "kpis": [("1", "caso montado"), ("31 s", "reel 9:16"), ("2", "indicações pedidas")],
+        "res": [
+            "Pré-visualização: claude.ai/artifact/PYk2ZYwv3oFU5g6MGW38sD. Nenhum número inventado: os resultados ficam «a preencher» até a dona os dar.",
+            "O site da Catarina não conta visitas. Com o teu «sim» leva o contador, e daqui a 30 dias o caso já tem esse número.",
+            "Ficheiros (mensagem, lembrete, legenda do Instagram) em research/casos/catarina/LEIA-ME.md, ramo claude/caso-catarina-p9rinu.",
+        ],
+        "dia": [
+            "Cada cliente fechado leva o contador no dia da entrega. Ao dia 30, o agente prepara a página, o reel e a mensagem.",
+            "Tu: envias a mensagem e ligas aos 2 indicados.",
+            "Depois: os números entram no caso, o reel é refeito a abrir com o resultado, a página passa para o site da Pacheco Studios e os indicados entram nos leads como «indicado por…».",
+        ],
+        "tomas": "Enviar a mensagem à dona no grupo «Sites Catarina», com o reel. Dizer se o site da Catarina leva o contador.",
     },
 ]
 
@@ -240,6 +249,7 @@ PENDENTES = [
     "Confirmar o lote de auditorias às segundas",
     "Instagram do Noir Barbershop",
     "Subir o zip leve novo (páginas por nicho e cartaz) e enviar o sitemap no Search Console",
+    "Mensagem à dona da Catarina (caso e 2 indicações)",
     "Inscrição na ATIPIC (16/10) e na AI4IMPACT (20–21/10)",
 ]
 
