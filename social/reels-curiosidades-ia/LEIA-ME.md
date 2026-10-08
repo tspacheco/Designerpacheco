@@ -31,7 +31,37 @@ Nada é resultado nosso; são factos públicos de terceiros, cada um com a fonte
 
 `node render.cjs /tmp/reel-abyss base.mp4` (Playwright, ffmpeg, numpy). `base.mp4` é o clip do Higgsfield (ver `prompts.md`; a transferência faz-se pela PONTE, `.github/ponte.txt`). Textos e tempos em `overlay.html`; som em `som.py` (lê `window.SFX` da página).
 
-## Legenda (copiar para o Instagram)
+## Legenda com foco em alcance (versão final, 08/10/2026 19:50)
+
+Decisão (pedido do Tomás: alcance): **legenda curta, com 4 hashtags**. Razões, verificadas a 08/10/2026:
+- O alcance de um reel vem do tempo de visualização e, sobretudo, dos **envios por DM** (sends per reach): é o sinal que leva o reel a quem não nos segue (Mosseri, jan. 2025; cobertura em socialmediatoday.com, eclincher.com). A legenda deve pedir o envio, não o comentário.
+- As hashtags **não aumentam o alcance** («don't increase your reach», Mosseri, maio 2025) e o Instagram limita a **5 por publicação** desde dez. 2025; servem só para catalogar. Usar 3 a 4 específicas não prejudica e ajuda a pesquisa; mais do que isso é ruído.
+- A pesquisa do Instagram lê a legenda e o texto no ecrã: as **palavras-chave vão na 1.ª linha** (os primeiros ~125 caracteres aparecem antes do «mais»).
+- Comprida ou curta: a 1.ª linha decide; o resto só é lido por quem já parou. Fica curta, com as fontes em 5 linhas porque o ecrã final diz «Sources in the caption».
+
+**Legenda (copiar):**
+
+Inside the AI infrastructure behind one ChatGPT question: 5 facts, 15 seconds. ⬇️
+
+Send this to the friend who thinks AI lives in the cloud.
+
+−1 One question ≈ 0.34 Wh (OpenAI's own figure, 2025)
+−2 100,000 GPUs in one cluster, built in 122 days (xAI, 2024)
+−3 A nuclear plant restarted to feed data centres (Constellation + Microsoft, 2024)
+−4 1.5% of the world's electricity, doubling by 2030 (IEA, 2025)
+−5 864 servers, 2 years on the seabed, 1/8 the failures (Microsoft, 2020)
+
+Your business doesn't need any of this to use AI well. It needs the right system. pachecost.com
+
+#AIinfrastructure #datacenter #artificialintelligence #techfacts
+
+**Palavras de atração (3 a 4, para a 1.ª linha, o texto no ecrã ou o Instagram sem hashtags):** AI infrastructure · data centre · ChatGPT · nuclear
+
+Versão ultracurta (se quiseres testar sem fontes na legenda; nesse caso tira «Sources in the caption» do ecrã final em `overlay.html`):
+«What's under one ChatGPT question? 5 facts, 15 s. Send it to someone who uses AI every day. pachecost.com #AIinfrastructure #datacenter #techfacts»
+
+## Legenda anterior (primeira versão, para registo)
+
 
 You ask AI one question. Here's what's underneath it. 👇
 
