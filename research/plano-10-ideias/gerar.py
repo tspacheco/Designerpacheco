@@ -17,7 +17,7 @@ IDEIAS = [
         "exec": [
             "Duas rotinas de segunda a sexta (hora de Iași). <b>7h52, corrida A:</b> pesquisa 50 fichas Google de negócios sem site, constrói as 25 melhores demos com 5 construtores em paralelo e publica-as em pachecost.com/demo/&lt;slug&gt;/. <b>11h22, corrida B:</b> constrói as outras 25.",
             "Zona: bairros e comunas à volta do centro (Tătărași, Nicolina, Valea Lupului, Miroslava, Bucium…) e nichos ainda não pesquisados.",
-            "Cada contacto leva a mensagem dos 40 % com IA (sem preço), WhatsApp sim / ? / não, link de WhatsApp, link de SMS e morada. O registo das fichas vistas impede repetir negócios.",
+            "Mensagem nova (desde o Star Services Auto, em romeno): «Procura aumentar entre 10% a 30% o número de clientes deste mês e além? Aqui vai a solução que criei após olhar o seu negócio (link da demo); se fizer sentido, vamos marcar uma hora para implementar esta solução.» Cada contacto leva WhatsApp sim / ? / não, link de WhatsApp, link de SMS e morada. O registo das fichas vistas impede repetir negócios.",
             "Se uma corrida não fechar as 25, as que faltam passam para a seguinte, com o motivo.",
         ],
         "kpis": [("50", "negócios por dia"), ("25 + 25", "demos às 7h52 e 11h22"), ("250", "demos por semana")],
@@ -215,7 +215,7 @@ IDEIAS = [
 DIA = [
     ("7h52", "auto", "Caçador, corrida A", "50 fichas pesquisadas, 25 demos no ar, lista com mensagens"),
     ("8h47", "auto", "Empresas novas", "lista do dia: 2 ou 3 negócios locais registados"),
-    ("9h–11h", "tu", "Enviar corrida A + empresas novas", "~27 mensagens pelo WhatsApp Business RO"),
+    ("9h–11h", "tu", "Enviar corrida A + empresas novas", "~27 mensagens pelo WhatsApp Business RO, com a mensagem nova dos 10 a 30 % de clientes"),
     ("11h22", "auto", "Caçador, corrida B", "as outras 25 demos e mensagens"),
     ("11h–13h", "tu", "Reels do D+2/D+3", "primeiro a quem abriu a demo (filtro do tracker)"),
     ("14h–17h", "tu", "Enviar corrida B + 2 auditorias", "~27 mensagens; nos fixos, ligar"),
