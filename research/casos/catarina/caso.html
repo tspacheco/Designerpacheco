@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Caso Catarina · Pacheco Studios</title>
+<meta name="description" content="Restaurante &amp; Pizzaria Catarina, Altura: de nenhum site a um site em três línguas. Caso de estudo da Pacheco Studios.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Caso Catarina: de nenhum site a um site em três línguas","author":{"@type":"Organization","name":"Pacheco Studios","url":"https://pachecost.com"},"about":{"@type":"Restaurant","name":"Restaurante & Pizzaria Catarina","telephone":"+351281957492","address":{"@type":"PostalAddress","streetAddress":"R. da Alagoa 84","postalCode":"8950-414","addressLocality":"Altura","addressCountry":"PT"}}}
+</script>
+<style>
+/* ── NÚMEROS DA CASA ───────────────────────────────────────────────
+   Preencher em CASO (no script, fim do ficheiro). null = «a preencher». */
+:root{
+  --carvao:#141210;--carvao-2:#1D1A17;--osso:#EFEAE3;--osso-2:#A5A19B;--tinta-2:#4D4A47;
+  --laranja:#E8622C;--laranja-tinta:#A64923;--linha-e:rgba(239,234,227,.18);--linha-c:rgba(20,18,16,.16);
+  --tomate:#D5532B;--mar:#1A2A33;
+  --display:"Archivo Black",system-ui,sans-serif;--texto:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"Space Mono",ui-monospace,Menlo,monospace;
+  --g:clamp(1rem,5vw,3rem);--max:70rem;--sair:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--carvao);color:var(--osso);font:400 1.0625rem/1.6 var(--texto);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:3px;border-radius:2px}
+.faixa{background:var(--laranja);color:var(--carvao);font:700 .72rem/1 var(--mono);letter-spacing:.14em;text-align:center;padding:.6rem var(--g);text-transform:uppercase}
+.w{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+.mono{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* topo */
+header.topo{display:flex;justify-content:space-between;align-items:center;padding-block:1.25rem}
+.marca{font:400 1.05rem/1 var(--display);letter-spacing:.01em;text-decoration:none}
+.marca b{color:var(--laranja)}
+.topo .mono{color:var(--osso-2)}
+
+/* herói */
+.heroi{padding-block:clamp(3rem,10vw,7rem) clamp(2.5rem,7vw,5rem)}
+.heroi .mono{color:var(--laranja)}
+h1{font:400 clamp(2.4rem,7.6vw,5.6rem)/.98 var(--display);letter-spacing:-.02em;margin-top:1.25rem;max-width:15ch}
+h1 .l{display:block;overflow:hidden;padding-bottom:.06em}
+h1 .l>span{display:inline-block;animation:sobe .9s var(--sair) both}
+h1 .l:nth-child(2)>span{animation-delay:.12s}
+h1 .l:nth-child(3)>span{animation-delay:.24s;color:var(--laranja)}
+@keyframes sobe{from{transform:translateY(105%)}to{transform:none}}
+.heroi p.sub{max-width:38rem;color:var(--osso-2);margin-top:1.5rem;font-size:1.125rem;animation:aparece .8s .5s var(--sair) both}
+@keyframes aparece{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));border-top:1px solid var(--linha-e);margin-top:clamp(2.5rem,6vw,4rem);animation:aparece .8s .7s var(--sair) both}
+.ficha div{padding:1rem 1rem 1rem 0;border-bottom:1px solid var(--linha-e)}
+.ficha dt{color:var(--osso-2)}
+.ficha dd{font-weight:600;margin-top:.3rem}
+
+/* antes / depois: régua */
+.regua{display:flex;align-items:center;gap:1rem;margin:clamp(3rem,8vw,5rem) 0 1.5rem}
+.regua .n{font:400 clamp(3.5rem,11vw,7rem)/.8 var(--display);color:transparent;-webkit-text-stroke:1.5px var(--osso-2)}
+.regua h2{font:400 clamp(1.6rem,4.4vw,2.6rem)/1.05 var(--display);letter-spacing:-.01em}
+.regua .mono{color:var(--laranja);display:block;margin-bottom:.4rem}
+
+/* antes: o restaurante aos bocados */
+.antes{position:relative;background:var(--carvao-2);border:1px solid var(--linha-e);border-radius:4px;padding:clamp(1.25rem,4vw,2.5rem);overflow:hidden}
+.mesa{position:relative;height:26rem}
+.ficha-3p{position:absolute;width:min(13.5rem,46%);background:var(--osso);color:var(--carvao);border-radius:3px;padding:.8rem .9rem;box-shadow:0 14px 30px rgba(0,0,0,.45);transform:translate(var(--x0,0),var(--y0,0)) rotate(var(--r));transition:transform .9s var(--sair);font-size:.85rem;line-height:1.35}
+.ficha-3p b{display:block;font:700 .66rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:.45rem}
+.ficha-3p span{font-weight:600}
+.mesa:not(.vista) .ficha-3p{--x0:0;--y0:40px}
+.antes ul{list-style:none;padding:0;margin-top:1.5rem;display:grid;gap:.75rem;max-width:40rem}
+.antes li{padding-left:1.6rem;position:relative;color:var(--osso)}
+.antes li::before{content:"";position:absolute;left:0;top:.62em;width:.9rem;height:2px;background:var(--osso-2)}
+.antes .nota{color:var(--osso-2);font-size:.85rem;margin-top:1.25rem}
+
+/* depois: telemóveis */
+.depois{display:grid;gap:clamp(2rem,5vw,3.5rem);grid-template-columns:1fr}
+@media (min-width:860px){.depois{grid-template-columns:1.05fr 1fr;align-items:start}}
+.telas{display:flex;gap:clamp(.6rem,2vw,1rem);justify-content:center}
+.tel{flex:1 1 0;max-width:13.5rem;border:6px solid #2A2724;border-radius:1.6rem;overflow:hidden;background:#000;box-shadow:0 30px 60px rgba(0,0,0,.5);aspect-ratio:390/844}
+.tel img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tel:nth-child(2){transform:translateY(2.25rem)}
+.lista{list-style:none;padding:0;display:grid;gap:0;border-top:1px solid var(--linha-e)}
+.lista li{display:grid;grid-template-columns:2.2rem 1fr;gap:.25rem 1rem;padding:1.1rem 0;border-bottom:1px solid var(--linha-e)}
+.lista .i{font:700 .75rem/1.9 var(--mono);color:var(--laranja)}
+.lista strong{display:block;font-weight:600}
+.lista p{color:var(--osso-2);font-size:.95rem;grid-column:2}
+.agil{margin-top:1.75rem;border-left:3px solid var(--laranja);padding:.2rem 0 .2rem 1rem;color:var(--osso)}
+.agil .mono{color:var(--osso-2);display:block;margin-bottom:.3rem}
+
+/* resultados (fundo osso) */
+.claro{background:var(--osso);color:var(--carvao);margin-top:clamp(4rem,10vw,7rem);padding-block:clamp(3rem,8vw,5.5rem)}
+.claro .regua{margin-top:0}
+.claro .regua .n{-webkit-text-stroke-color:var(--tinta-2)}
+.claro .regua .mono{color:var(--laranja-tinta)}
+.claro .intro{max-width:40rem;color:var(--tinta-2)}
+.metricas{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin-top:2rem}
+.met{border:1px solid var(--linha-c);border-radius:4px;padding:1.4rem;background:#F6F2EC}
+.met .mono{color:var(--tinta-2)}
+.met .v{display:flex;align-items:baseline;gap:.6rem;margin-top:1rem;font:400 clamp(2.2rem,6vw,3rem)/1 var(--display);letter-spacing:-.02em}
+.met .v small{font:500 .9rem/1 var(--texto);color:var(--tinta-2);letter-spacing:0}
+.met .seta{color:var(--laranja-tinta);font-family:var(--texto);font-weight:700;font-size:1.5rem}
+.met p{color:var(--tinta-2);font-size:.9rem;margin-top:.9rem}
+.vazio{display:inline-block;font:700 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--laranja-tinta);border:1.5px dashed var(--laranja-tinta);border-radius:2px;padding:.45rem .55rem;vertical-align:middle}
+blockquote{margin-top:clamp(2.5rem,6vw,4rem);max-width:46rem}
+blockquote q{font:400 clamp(1.5rem,4vw,2.2rem)/1.2 var(--display);letter-spacing:-.01em;quotes:"«" "»"}
+blockquote footer{margin-top:1rem;color:var(--tinta-2)}
+.periodo{margin-top:1.5rem;color:var(--tinta-2);font-size:.85rem}
+
+/* fecho */
+.fecho{padding-block:clamp(4rem,10vw,6.5rem);text-align:left}
+.fecho h2{font:400 clamp(2rem,6vw,3.6rem)/1 var(--display);letter-spacing:-.02em;max-width:16ch}
+.fecho p{color:var(--osso-2);max-width:34rem;margin-top:1rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;background:var(--laranja);color:var(--carvao);font:700 .9rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:1.1rem 1.4rem;border-radius:2px;transition:transform .25s var(--sair),background .25s}
+.btn:hover{transform:translateY(-2px);background:#F07743}
+.btn:active{transform:translateY(0)}
+.btn i{font-style:normal;transition:transform .25s var(--sair)}
+.btn:hover i{transform:translateX(4px)}
+footer.rod{border-top:1px solid var(--linha-e);padding-block:1.5rem 2.5rem;color:var(--osso-2);font-size:.85rem;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
+
+.rev{opacity:0;transform:translateY(24px);transition:opacity .8s var(--sair),transform .8s var(--sair)}
+.rev.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rev{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="faixa" role="note">Rascunho Pacheco Studios · números por confirmar com a casa</div>
+
+<div class="w">
+  <header class="topo">
+    <a class="marca" href="https://pachecost.com">Pacheco<b>.</b>Studios</a>
+    <span class="mono">Caso 01</span>
+  </header>
+
+  <section class="heroi" aria-labelledby="t">
+    <span class="mono">Restaurante &amp; Pizzaria Catarina · Altura, Algarve</span>
+    <h1 id="t"><span class="l"><span>168 avaliações.</span></span><span class="l"><span>Nenhum site.</span></span><span class="l"><span>Agora tem.</span></span></h1>
+    <p class="sub">Pizza em forno a lenha e cozinha algarvia, a quatro minutos da Praia da Alagoa. Os clientes gostavam da casa, mas para a encontrar tinham de juntar o restaurante aos bocados, em sites de outros. Fizemos-lhe uma casa própria na internet, em português, inglês e espanhol.</p>
+    <dl class="ficha">
+      <div><dt class="mono">Negócio</dt><dd>Restaurante e pizzaria</dd></div>
+      <div><dt class="mono">Google</dt><dd>4,4 ★ · 168 avaliações</dd></div>
+      <div><dt class="mono">Línguas</dt><dd>PT · EN · ES</dd></div>
+      <div><dt class="mono">No ar desde</dt><dd data-k="no_ar"></dd></div>
+    </dl>
+  </section>
+
+  <div class="regua rev"><span class="n" aria-hidden="true">01</span><div><span class="mono">Antes</span><h2>O restaurante, aos bocados.</h2></div></div>
+  <div class="antes rev">
+    <div class="mesa" id="mesa" aria-label="Sites onde a Catarina aparecia antes: Google, TripAdvisor, RestaurantGuru, cardapio.menu, Baixo Guadiana e Instagram">
+      <div class="ficha-3p" style="left:2%;top:4%;--r:-6deg"><b>Google</b><span>4,4 ★ · 168 avaliações</span></div>
+      <div class="ficha-3p" style="left:50%;top:0;--r:4deg"><b>TripAdvisor</b><span>Avaliações e fotos dos clientes</span></div>
+      <div class="ficha-3p" style="left:30%;top:28%;--r:-2deg"><b>RestaurantGuru</b><span>Ficha feita por outros</span></div>
+      <div class="ficha-3p" style="left:0;top:50%;--r:5deg"><b>cardapio.menu</b><span>Ementa que a casa não controla</span></div>
+      <div class="ficha-3p" style="left:53%;top:47%;--r:-5deg"><b>Baixo Guadiana</b><span>Listagem regional</span></div>
+      <div class="ficha-3p" style="left:22%;top:75%;--r:3deg"><b>Instagram</b><span>@pizzaria_catarina</span></div>
+    </div>
+    <ul>
+      <li>Nenhuma página da própria casa. Quem procurava «pizzaria Altura» caía em sites de terceiros.</li>
+      <li>Ementa e horário espalhados por fichas que a casa não escreveu nem atualiza.</li>
+      <li>Nenhuma fotografia pública do exterior: quem vinha de carro não sabia que porta procurar.</li>
+      <li>Nada da própria casa em inglês ou espanhol, com a fronteira a vinte minutos.</li>
+    </ul>
+  </div>
+
+  <div class="regua rev"><span class="n" aria-hidden="true">02</span><div><span class="mono">Depois</span><h2>Uma casa só, que se lê num telemóvel.</h2></div></div>
+  <div class="depois">
+    <div class="telas rev">
+      <div class="tel"><img src="img/m-heroi.jpg" alt="Início do site da Catarina no telemóvel: foto da sala, «Aberto agora» e botão Reservar" loading="lazy" width="390" height="844"></div>
+      <div class="tel"><img src="img/m-ementa.jpg" alt="Ementa com o filtro «Hoje apetece-me…» e os preços" loading="lazy" width="390" height="844"></div>
+      <div class="tel"><img src="img/m-chegar.jpg" alt="Secção Onde estamos, com as distâncias às praias" loading="lazy" width="390" height="844"></div>
+    </div>
+    <div class="rev">
+      <ul class="lista">
+        <li><span class="i">01</span><div><strong>Reservar com um toque</strong></div><p>O botão liga logo para o 281 957 492, no topo e no fim da página.</p></li>
+        <li><span class="i">02</span><div><strong>«Aberto agora · fecha às 15h00»</strong></div><p>O site sabe o horário e diz se a casa está aberta naquele minuto. À quarta diz que está fechada.</p></li>
+        <li><span class="i">03</span><div><strong>Ementa com «Hoje apetece-me…»</strong></div><p>Pizza, peixe e marisco ou grelha: um toque filtra a ementa, com os preços.</p></li>
+        <li><span class="i">04</span><div><strong>Português, inglês e espanhol</strong></div><p>Um botão muda o site todo. Para o turista de agosto e para quem vem de Ayamonte.</p></li>
+        <li><span class="i">05</span><div><strong>Como chegar, em minutos</strong></div><p>Quatro minutos da Praia da Alagoa, dez de Monte Gordo, vinte da fronteira.</p></li>
+        <li><span class="i">06</span><div><strong>A sala, a esplanada e o forno</strong></div><p>Fotografias da própria casa, não de banco de imagens.</p></li>
+      </ul>
+      <div class="agil"><span class="mono">06/10/2026</span>A dona pediu alterações pelo WhatsApp, com capturas do que queria mudar. Ficaram no site no mesmo dia.</div>
+    </div>
+  </div>
+</div>
+
+<section class="claro" aria-labelledby="r">
+  <div class="w">
+    <div class="regua rev"><span class="n" aria-hidden="true">03</span><div><span class="mono">Resultado</span><h2 id="r">Os números da casa.</h2></div></div>
+    <p class="intro rev">Números dados pela própria Catarina, sem arredondar para cima.</p>
+    <div class="metricas">
+      <div class="met rev"><span class="mono">Reservas por telefone · semana normal</span><div class="v"><span data-k="reservas_antes"></span><span class="seta" aria-hidden="true">→</span><span data-k="reservas_depois"></span></div><p>Antes do site e agora, na mesma época do ano.</p></div>
+      <div class="met rev"><span class="mono">Visitas ao site · último mês</span><div class="v"><span data-k="visitas_mes"></span></div><p>Pessoas que abriram o site, contadas pelo próprio site.</p></div>
+      <div class="met rev"><span class="mono">Clientes que vieram pelo site</span><div class="v"><span data-k="clientes_site"></span><small>por semana</small></div><p>Quem disse à mesa ou ao telefone que viu o site.</p></div>
+    </div>
+    <blockquote class="rev"><q data-k="citacao"></q><footer data-k="citacao_autor"></footer></blockquote>
+    <p class="periodo" data-k="periodo"></p>
+  </div>
+</section>
+
+<div class="w">
+  <section class="fecho rev" aria-labelledby="f">
+    <h2 id="f">O seu negócio também merece uma casa própria.</h2>
+    <p>Começamos por uma conversa de oito perguntas sobre o seu negócio. Sem custo e sem compromisso.</p>
+    <a class="btn" href="https://pachecost.com/#diagnostico">Conhece-nos <i aria-hidden="true">→</i></a>
+  </section>
+  <footer class="rod">
+    <span>© Pacheco Studios · pachecost.com</span>
+    <span>Site da Catarina: <span data-k="url_site"></span></span>
+    <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a>
+  </footer>
+</div>
+
+<script>
+/* ── PREENCHER COM OS NÚMEROS DA DONA (null = mostra «a preencher») ── */
+const CASO = {
+  no_ar: null,            // ex.: "julho de 2026"
+  reservas_antes: null,   // ex.: 20
+  reservas_depois: null,  // ex.: 28
+  visitas_mes: null,      // ex.: 640
+  clientes_site: null,    // ex.: 5
+  citacao: null,          // frase da dona, palavra por palavra
+  citacao_autor: null,    // ex.: "Catarina, dona do Restaurante & Pizzaria Catarina"
+  periodo: null,          // ex.: "Números de setembro de 2026 comparados com setembro de 2025."
+  url_site: null          // ex.: "pizzariacatarina.pt"
+};
+for (const el of document.querySelectorAll('[data-k]')) {
+  const v = CASO[el.dataset.k];
+  if (v === null || v === undefined || v === '') {
+    el.innerHTML = '<span class="vazio">a preencher</span>';
+  } else el.textContent = typeof v === 'number' ? v.toLocaleString('pt-PT') : v;
+}
+/* entradas ao fazer scroll; as fichas do «antes» assentam na mesa */
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => {
+  for (const e of es) if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+}, {threshold: .15}) : null;
+for (const el of document.querySelectorAll('.rev')) io ? io.observe(el) : el.classList.add('on');
+const mesa = document.getElementById('mesa');
+const fichas = [...mesa.children];
+fichas.forEach((f, i) => f.style.transitionDelay = (i * 70) + 'ms');
+if (io) new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { mesa.classList.add('vista'); o.disconnect(); } }, {threshold: .3}).observe(mesa);
+else mesa.classList.add('vista');
+</script>
+</body>
+</html>
