@@ -13,6 +13,11 @@
 #   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
+#   auditar    <nome> <url>                     auditoria de um site no telemóvel: Lighthouse móvel (as notas do
+#                                               PageSpeed) + verificações no Chromium (botão de chamada, WhatsApp,
+#                                               marcação, JSON-LD, ano do ©, …) → auditorias/dados/<nome>.json e
+#                                               <nome>.jpg (ecrã do telemóvel). Um de cada vez (~1 min por site);
+#                                               até ~25 por push, para lotes maiores fazer vários pushes.
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
 # fotogramas de herói.
@@ -25,7 +30,7 @@ permissions:
 jobs:
   ponte:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - name: Há pedidos?
@@ -36,9 +41,10 @@ jobs:
         run: |
           grep -qE '^\s*fotogramas\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
           python3 -m pip install --quiet pillow
-          if grep -qE '^\s*pagina\s' .github/ponte.txt; then
+          if grep -qE '^\s*(pagina|auditar)\s' .github/ponte.txt; then
             python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
           fi
+          grep -qE '^\s*auditar\s' .github/ponte.txt && npm install -g --silent lighthouse@12.6.1 >/dev/null || true
       - name: Pedidos
         if: steps.ha.outputs.n != '0'
         run: |
@@ -58,6 +64,7 @@ jobs:
               if d:
                   os.makedirs(d, exist_ok=True)
           paginas = []
+          auditar = []
           for n, linha in enumerate(open(".github/ponte.txt", encoding="utf-8"), 1):
               linha = linha.strip()
               if not linha or linha.startswith("#"):
@@ -99,6 +106,8 @@ jobs:
                       rel.append(f"ok  fotogramas {dest} " + " · ".join(info.split("\n")))
                   elif op == "pagina":
                       paginas.append((p[1], p[2]))
+                  elif op == "auditar":
+                      auditar.append((p[1], p[2]))
                   elif op == "testar":
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
@@ -124,6 +133,9 @@ jobs:
                       except Exception as ex:
                           rel.append(f"ERRO pagina {nome} {url}: {ex}")
                   b.close()
+          if auditar:
+              exec(open("agentes/auditoria-sites/medir.py", encoding="utf-8").read())
+              rel += medir_todos(auditar)
           open("ponte/relatorio.txt", "w", encoding="utf-8").write("\n".join(rel) + "\n")
           print("\n".join(rel))
           EOF
@@ -136,5 +148,9 @@ jobs:
           git reset -q -- .github/ponte.txt
           if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
           git commit -q -m "Ponte: pedidos de .github/ponte.txt"
-          git pull -q --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          # Várias pontes em paralelo no mesmo ramo (lotes de «auditar»): o relatório desta ganha e tenta-se de novo.
+          for i in 1 2 3 4 5 6; do
+            git pull -q --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i * 8))
+          done
+          exit 1
