@@ -10,7 +10,7 @@ Cada empresa encontrada traz nome, morada, telefone (quando declarado), CAEN e d
   python3 recolher.py --inicio 5560000      começa nesse número (sem o algarismo de controlo)
   python3 recolher.py --sondar-ckan         também lista os conjuntos de dados ONRC em data.gov.ro
 """
-import argparse, datetime, json, os, sys, time, urllib.error, urllib.request
+import argparse, datetime, glob, json, os, sys, time, urllib.error, urllib.request
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 DADOS = os.path.join(AQUI, "dados")
@@ -75,6 +75,23 @@ def sondar_ckan():
     json.dump(out, open(os.path.join(DADOS, "ckan-onrc.json"), "w"), ensure_ascii=False, indent=1)
 
 
+def rever_caen(hoje, dias=21):
+    """As empresas dos últimos dias aparecem na ANAF sem CAEN; volta a perguntar por elas até o CAEN chegar."""
+    limite = (datetime.date.today() - datetime.timedelta(days=dias)).isoformat()
+    for f in sorted(glob.glob(os.path.join(DADOS, "iasi-*.json"))):
+        lista = json.load(open(f))
+        falta = [x["cui"] for x in lista if not x.get("caen") and (x.get("data_inregistrare") or "") >= limite]
+        novos = {}
+        for i in range(0, len(falta), 100):
+            for y in anaf(falta[i:i + 100], hoje).get("found") or []:
+                novos[y["date_generale"]["cui"]] = resumo(y)
+            time.sleep(1.2)
+        if novos:
+            lista = [novos.get(x["cui"], x) for x in lista]
+            json.dump(lista, open(f, "w"), ensure_ascii=False, indent=0)
+        print(f"CAEN revisto em {os.path.basename(f)}: {sum(1 for v in novos.values() if v.get('caen'))} de {len(falta)}", file=sys.stderr)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--inicio", type=int)
@@ -106,6 +123,7 @@ def main():
             break
         base += 100
         time.sleep(1.2)
+    rever_caen(hoje)
     ficheiro = os.path.join(DADOS, f"iasi-{hoje}.json")
     anteriores = json.load(open(ficheiro)) if os.path.exists(ficheiro) else []
     iasi = [x for x in achadas if x["judet"] == "IS"]  # só se guarda o distrito de Iași; dos outros fica o CUI em vistos

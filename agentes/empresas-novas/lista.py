@@ -69,24 +69,32 @@ def telefone(t):
     return d, ("móvel" if d.startswith("07") else "fixo")
 
 
+PESSOA = r"(PERSOAN[AĂ] FIZIC[AĂ] AUTORIZAT[AĂ]|[IÎ]NTREPRINDERE (INDIVIDUAL|FAMILIAL)[AĂ]|P\.?F\.?A\.?|I\.?I\.?|I\.?F\.?)"
+
+
 def nome_curto(den):
-    n = re.sub(r"\s*\b(S\.?R\.?L\.?(-D)?|SRL-D|S\.?A\.?|P\.?F\.?A\.?|I\.?I\.?|I\.?F\.?)\s*$", "", den.strip(), flags=re.I)
-    n = re.sub(r"\s+(PERSOANA FIZICA AUTORIZATA|INTREPRINDERE INDIVIDUALA|INTREPRINDERE FAMILIALA)\s*$", "", n, flags=re.I)
-    return n.strip(" .-").title()
+    """(nome para mostrar, é pessoa singular?) — PFA/II/IF têm o nome do dono, não uma marca."""
+    n = re.sub(r"\s*-?\s*SEDIU SECUNDAR\s*$", "", den.strip(), flags=re.I)
+    pessoa = bool(re.search(r"\s" + PESSOA + r"\s*$", n, flags=re.I))
+    n = re.sub(r"\s+" + PESSOA + r"\s*$", "", n, flags=re.I)
+    n = re.sub(r"\s*\b(S\.?R\.?L\.?(-D)?|SRL-D|S\.?A\.?)\s*$", "", n, flags=re.I)
+    return n.strip(" .-").title(), pessoa
 
 
-def mensagem(nome, ramo_ro, demo):
+def mensagem(nome, ramo_ro, demo, pessoa=False):
+    quem = "firma dumneavoastră" if pessoa else nome
     return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios.\n\n"
-            f"Am văzut că {nome} s-a înregistrat de curând. Felicitări și mult succes la început de drum!\n\n"
+            f"Am văzut că {quem} s-a înregistrat de curând. Felicitări și mult succes la început de drum!\n\n"
             f"În acest moment sunt firme care își reduc costurile/își măresc eficiența cu 40% cu IA. "
             f"Noi începem cu un site profesional. Uitați un exemplu făcut pentru o afacere din Iași:\n{DEMO.format(demo)}\n\n"
-            f"Vă pot pregăti unul la fel pentru {nome}, ca să vă găsească clienții pe Google din prima zi. "
+            f"Vă pot pregăti unul la fel pentru {quem}, ca să vă găsească clienții pe Google din prima zi. "
             f"Aș vrea să stabilim o oră să ne întâlnim, dacă vă interesează.\n\n"
             f"Puteți vedea mais multe pe ro.pachecost.com").replace("mais multe", "mai multe")
 
 
-def mensagem_pt(nome, ramo_pt):
-    return (f"Olá! Sou o Tomás, da Pacheco Studios. Vi que a {nome} foi registada há pouco. Parabéns e boa sorte neste início! "
+def mensagem_pt(nome, ramo_pt, pessoa=False):
+    quem = "a vossa empresa" if pessoa else f"a {nome}"
+    return (f"Olá! Sou o Tomás, da Pacheco Studios. Vi que {quem} foi registada há pouco. Parabéns e boa sorte neste início! "
             f"Neste momento há empresas que reduzem custos/aumentam a eficiência em 40% com IA. Nós começamos por um site profissional. "
             f"Aqui está um exemplo feito para um negócio de Iași: [demo]. Posso preparar-vos um igual, para os clientes vos encontrarem "
             f"no Google desde o primeiro dia. Gostava de marcar uma hora para nos encontrarmos, se tiverem interesse. Mais em ro.pachecost.com")
@@ -111,6 +119,8 @@ def main():
         r = ramo(x.get("caen"))
         if c in listadas or not d or not r or (hoje - d).days > a.dias:
             continue
+        if not x.get("nrRegCom") and "SEDIU SECUNDAR" not in (x.get("denumire") or "").upper():
+            continue  # sem número do Registo Comercial = profissão liberal (médico colaborador, assistente…), não é loja
         if "RADIERE" in (x.get("stare") or "").upper() or "INACTIV" in (x.get("stare") or "").upper():
             continue
         tel, tipo = telefone(x.get("telefon"))
@@ -127,10 +137,12 @@ def main():
         if s != secao:
             L += [f"## {s}", ""]
             secao = s
-        nome = nome_curto(x["denumire"])
-        msg = mensagem(nome, ro, demo)
+        nome, pessoa = nome_curto(x["denumire"])
+        msg = mensagem(nome, ro, demo, pessoa)
+        if "SEDIU SECUNDAR" in x["denumire"].upper():
+            pt = pt + " (novo espaço de uma empresa que já existe)"
         morada = x.get("adresa") or ""
-        L.append(f"### {nome}")
+        L.append(f"### {nome}" + (" (PFA/II, nome do dono)" if pessoa else ""))
         L.append(f"{pt.capitalize()} · CAEN {x.get('caen')} · registada a {d.strftime('%d/%m')} · CUI {c}  ")
         L.append(f"Firma: {x['denumire']} ({x.get('nrRegCom') or '?'})  ")
         L.append(f"Sede: [{morada.title()}](https://www.google.com/maps/search/?api=1&query={urllib.parse.quote(morada)})  ")
@@ -145,7 +157,7 @@ def main():
                 L.append(f"Tel.: {fone} (fixo, só chamada) · WhatsApp: não (fixo)")
         else:
             L.append("Tel.: sem telefone no registo · procurar no Google/Facebook pelo nome antes de enviar")
-        L += ["", "> " + msg.replace("\n", "\n> "), "", f"<details><summary>PT</summary>{mensagem_pt(nome, pt)}</details>", ""]
+        L += ["", "> " + msg.replace("\n", "\n> "), "", f"<details><summary>PT</summary>{mensagem_pt(nome, pt, pessoa)}</details>", ""]
     open(saida, "w").write("\n".join(L) + "\n")
     with open(LISTADAS, "a") as f:
         f.write("".join(f"{c[3]}\n" for c in cand))
