@@ -160,13 +160,17 @@ IDEIAS = [
         "n": 8, "titulo": "Avaliações Google com queixas", "estado": "curso",
         "sub": "A dor já está escrita pelos clientes deles",
         "exec": [
-            "O agente procura negócios de Iași com avaliações do tipo «não atendem o telefone» ou «demoram a responder» e prepara a mensagem da consultoria de IA com essa queixa citada.",
-            "Lê as avaliações das fichas do Maps a partir do GitHub, deteta as queixas e prepara a mensagem em RO + PT com a citação e a tradução.",
+            "Pesquisa 10 a 12 ramos de Iași no Maps e lê até 90 fichas: as avaliações mais recentes, as piores e as que falam de «telefon», «răspuns», «mesaj» ou «programare».",
+            "Deteta as queixas do tipo «não atendem o telefone» ou «demoram a responder» e prepara a mensagem da consultoria de IA em RO + PT, a citar a frase real da avaliação.",
+            "É a porta para vender sistemas de IA (atendimento, marcações), não só o site.",
         ],
         "kpis": [],
-        "res": ["<b>Em curso.</b> Esta página é atualizada quando o thread entregar a primeira pesquisa."],
-        "dia": ["Segunda e quinta às 9h37 de Iași: nova pesquisa e lista com as citações."],
-        "tomas": "",
+        "res": ["<b>A correr agora.</b> A 1.ª pesquisa (até 90 fichas) está a terminar no GitHub; esta página é atualizada com o resultado."],
+        "dia": [
+            "Segunda e quinta às 9h37 de Iași: nova pesquisa e lista com as citações e traduções.",
+            "Tu: envias pelo WhatsApp ou SMS e dizes quem respondeu.",
+        ],
+        "tomas": "Enviar as mensagens e dizer quem respondeu.",
     },
     {
         "n": 9, "titulo": "Ferramenta grátis no site", "estado": "pronto",
