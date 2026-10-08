@@ -1,0 +1,34 @@
+# Agente 7 (empresas acabadas de abrir): lê as empresas registadas desde a última corrida pela API pública da ANAF
+# (a rede dos threads não lá chega) e grava agentes/empresas-novas/dados/. Para correr: escrever em
+# .github/empresas-novas.txt os argumentos do recolher.py numa linha (vazia = continuar do estado) e fazer push.
+name: empresas-novas
+on:
+  push:
+    paths: ['.github/empresas-novas.txt']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: empresas-novas-${{ github.ref }}
+jobs:
+  recolher:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recolher
+        run: |
+          ARGS="$(grep -vE '^\s*(#|$)' .github/empresas-novas.txt | head -1 || true)"
+          python3 agentes/empresas-novas/recolher.py $ARGS 2>&1 | tee agentes/empresas-novas/dados/ultima-corrida.txt
+      - name: Publicar no mesmo ramo
+        run: |
+          git config user.name "empresas-novas"
+          git config user.email "ponte@users.noreply.github.com"
+          git add -A agentes/empresas-novas/dados
+          if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
+          git commit -q -m "Empresas novas: recolha $(date -u +%F)"
+          for i in 1 2 3 4; do
+            git pull -q --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
