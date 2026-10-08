@@ -157,20 +157,24 @@ IDEIAS = [
         "tomas": "Nada pendente. Enviar as mensagens.",
     },
     {
-        "n": 8, "titulo": "Avaliações Google com queixas", "estado": "curso",
+        "n": 8, "titulo": "Avaliações Google com queixas", "estado": "ativo",
         "sub": "A dor já está escrita pelos clientes deles",
         "exec": [
             "Pesquisa 10 a 12 ramos de Iași no Maps e lê até 90 fichas: as avaliações mais recentes, as piores e as que falam de «telefon», «răspuns», «mesaj» ou «programare».",
-            "Deteta as queixas do tipo «não atendem o telefone» ou «demoram a responder» e prepara a mensagem da consultoria de IA em RO + PT, a citar a frase real da avaliação.",
-            "É a porta para vender sistemas de IA (atendimento, marcações), não só o site.",
+            "Fica com quem tem queixas escritas de telefone ou mensagens sem resposta, ou encomendas esquecidas. Tira cadeias, queixas já resolvidas e queixas com mais de 2 anos.",
+            "Cada mensagem cita a frase real da avaliação e oferece a auditoria grátis e os 20 minutos, com botões de WhatsApp e SMS e a versão PT por baixo. É a porta para vender sistemas de IA, não só o site.",
         ],
-        "kpis": [],
-        "res": ["<b>A correr agora.</b> A 1.ª pesquisa (até 90 fichas) está a terminar no GitHub; esta página é atualizada com o resultado."],
+        "kpis": [("90", "fichas lidas, 12 ramos"), ("717", "avaliações lidas"), ("12", "negócios com queixa citada")],
+        "res": [
+            "Ramos: dentistas, clínicas, veterinários, pizzarias, salões, service auto, instaladores e mais 5. Saíram 12 leads; 14 foram tirados.",
+            "Os mais fortes: <b>Man Pizza</b> (4,9★): «nu mai răspunde nimeni la telefon» (há 2 semanas). <b>Pizzeria Alila</b>: «Am sunat de 5 ori până a răspuns cineva» (há 4 meses). <b>Urgente veterinare non stop</b>: ninguém atende, apesar de ser 24 h (há 3 meses).",
+            "Lista: agentes/avaliacoes-queixas/listas/2026-10-08.md, ramo claude/avaliacoes-queixas-m7qdst.",
+        ],
         "dia": [
-            "Segunda e quinta às 9h37 de Iași: nova pesquisa e lista com as citações e traduções.",
-            "Tu: envias pelo WhatsApp ou SMS e dizes quem respondeu.",
+            "Segunda e quinta às 9h37 de Iași: 10 a 12 ramos novos, até 90 fichas, lista nova já revista e traduzida no thread.",
+            "Tu: nesses dias envias as cerca de 12 mensagens pelo WhatsApp ou SMS, de manhã, e dizes quem respondeu.",
         ],
-        "tomas": "Enviar as mensagens e dizer quem respondeu.",
+        "tomas": "Enviar as 12 mensagens da 1.ª lista e dizer quem respondeu.",
     },
     {
         "n": 9, "titulo": "Ferramenta grátis no site", "estado": "pronto",
@@ -243,17 +247,18 @@ AGENDA = [
 CONTAS = [
     ("50", "demos por dia útil"),
     ("~55", "mensagens tuas por dia"),
-    ("~280", "contactos novos por semana"),
+    ("~305", "contactos novos por semana"),
 ]
 CONTAS_NOTA = ("Semana: 250 demos do caçador + 10 a 15 empresas novas + 10 auditorias "
-               "+ 10 parceiros ≈ 280 contactos. O limite é o tempo de envio: ~55 mensagens "
-               "por dia, mais os reels e as chamadas.")
+               "+ 10 parceiros + ~24 queixas citadas ≈ 305 contactos. O limite é o tempo de envio: ~55 mensagens "
+               "por dia (mais ~12 à segunda e à quinta), mais os reels e as chamadas.")
 PENDENTES = [
     "Token do GoatCounter no GitHub (GOATCOUNTER_TOKEN) e que lotes já enviaste",
     "Comissão dos parceiros: «ok» aos 500 lei / 100 € ou outro valor",
     "Confirmar o lote de auditorias às segundas",
     "Instagram do Noir Barbershop",
     "Subir o zip leve novo (páginas por nicho e cartaz) e enviar o sitemap no Search Console",
+    "Enviar as 12 mensagens das avaliações com queixas",
     "Mensagem à dona da Catarina (caso e 2 indicações)",
     "Inscrição na ATIPIC (16/10) e na AI4IMPACT (20–21/10)",
 ]
