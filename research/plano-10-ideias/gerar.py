@@ -160,16 +160,24 @@ IDEIAS = [
         "tomas": "",
     },
     {
-        "n": 9, "titulo": "Ferramenta grátis no site", "estado": "curso",
-        "sub": "O dono leva algo útil em 1 minuto e acaba no diagnóstico",
+        "n": 9, "titulo": "Ferramenta grátis no site", "estado": "pronto",
+        "sub": "Cartaz com QR para pedir avaliações Google, feito em 1 minuto",
         "exec": [
-            "Ferramenta escolhida: <b>cartaz com QR para pedir avaliações Google</b>, em PT, RO e EN, em pachecost.com e ro.pachecost.com. No fim abre o diagnóstico.",
-            "O thread está a construí-la.",
+            "O dono cola o link da ficha Google e escreve o nome. Imprime em A4 ou A5, descarrega ou partilha o cartaz. De bónus leva uma mensagem pronta para pedir avaliações aos clientes pelo WhatsApp.",
+            "No fim aparece «E agora?», que abre o diagnóstico. Cada cartaz impresso fica no balcão com a linha «Cartaz grátis em pachecost.com/cartaz»: publicidade à frente dos clientes dele.",
+            "Escolhido em vez da «nota da ficha Google», que precisava de ler o Google em tempo real (daqui só funciona por lotes).",
         ],
-        "kpis": [],
-        "res": ["<b>Em curso.</b> Esta página é atualizada quando o thread publicar a pré-visualização."],
-        "dia": ["Funciona sozinha: as visitas e os diagnósticos contam no GoatCounter."],
-        "tomas": "",
+        "kpis": [("3", "línguas: PT, RO e EN"), ("A4 / A5", "imprimir, descarregar, partilhar"), ("1 min", "do link ao cartaz")],
+        "res": [
+            "Pronta e testada: o QR do cartaz gerado leva ao link exato da ficha.",
+            "Pré-visualizações: PT claude.ai/artifact/Rb9i9SEJ5WTosKFvjDERr1 · RO claude.ai/artifact/2HrhkfE3rr1ujbMnBH5GQU (Imprimir e Descarregar só funcionam no site).",
+            "Endereços quando entrar no site: pachecost.com/cartaz, ro.pachecost.com/afis e pachecost.com/en/poster. A integração já foi passada ao thread do site.",
+        ],
+        "dia": [
+            "Sozinho: cada uso conta no GoatCounter (colou o link, imprimiu, descarregou, foi ao diagnóstico).",
+            "Tu: podes mandar o link aos donos das demos como oferta («fiz-te também o cartaz das avaliações»), por exemplo junto com o reel do D+2.",
+        ],
+        "tomas": "Subir o zip do pachecost.com quando o thread do site integrar o cartaz.",
     },
     {
         "n": 10, "titulo": "Caso Catarina e pedido de indicações", "estado": "curso",
@@ -200,7 +208,7 @@ DIA = [
 SEMANAL = [
     ("Segunda 8h00", "Auditorias: lote novo de 10 PDFs (quando confirmares)"),
     ("Segunda 9h53", "Parceiros: 10 novos, lembretes aos 7 dias, comissões"),
-    ("Sempre", "Ideias 5 e 9 trazem contactos sozinhas pelo site e pelo diagnóstico"),
+    ("Sempre", "Ideias 5 e 9 (cartaz) trazem contactos sozinhas pelo site e pelo diagnóstico"),
 ]
 AGENDA = [
     ("Sex 09/10", "1.ª corrida do caçador"),
@@ -222,6 +230,7 @@ PENDENTES = [
     "Comissão dos parceiros: «ok» aos 500 lei / 100 € ou outro valor",
     "Confirmar o lote de auditorias às segundas",
     "Instagram do Noir Barbershop",
+    "Subir o zip do pachecost.com quando o cartaz (ideia 9) estiver integrado",
     "Inscrição na ATIPIC (16/10) e na AI4IMPACT (20–21/10)",
 ]
 
