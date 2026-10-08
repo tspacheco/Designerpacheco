@@ -13,15 +13,16 @@ from queixas import dores, NOME
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PRIORIDADE = {"telefon": 0, "mesaje": 1, "marcacoes": 2}
+MAX_MESES = 24  # queixas mais antigas não se citam
 
 # Cada dor tem a sua frase de solução (RO, PT). Sem números: os números saem da auditoria.
 SOLUCAO = {
     "telefon": ("Se întâmplă des la firmele care au mult de lucru: telefonul sună exact când toată lumea e ocupată. "
                 "Azi se poate rezolva cu un asistent IA care preia apelurile pierdute, răspunde imediat pe SMS sau "
-                "WhatsApp și face programarea în locul dumneavoastră.",
+                "WhatsApp și preia programarea, rezervarea sau comanda în locul dumneavoastră.",
                 "Acontece muito em negócios com muito trabalho: o telefone toca precisamente quando estão todos "
                 "ocupados. Hoje resolve-se com um assistente de IA que apanha as chamadas perdidas, responde logo por "
-                "SMS ou WhatsApp e faz a marcação por vocês."),
+                "SMS ou WhatsApp e regista a marcação, a reserva ou a encomenda por vocês."),
     "mesaje": ("Se întâmplă des la firmele care au mult de lucru: mesajele se adună și răspunsul vine prea târziu. "
                "Azi se poate rezolva cu un asistent IA care răspunde în câteva secunde pe WhatsApp, Facebook și "
                "Instagram, cu informațiile dumneavoastră, și vă lasă doar ce are nevoie de un om.",
@@ -56,6 +57,7 @@ DATA_PT = [("acum o zi", "há um dia"), ("acum o săptămână", "há uma semana
 
 
 def data_pt(d):
+    d = d.replace("Modificat pe ", "")
     for a, b in DATA_PT:
         d = d.replace(a, b)
     return d
@@ -96,13 +98,16 @@ def main(caminho):
     listadas = set(open(listadas_p, encoding="utf-8").read().split("\n")) if os.path.exists(listadas_p) else set()
     trad_p = os.path.join(AQUI, "traducoes", f"{data}.json")
     trad = json.load(open(trad_p, encoding="utf-8")) if os.path.exists(trad_p) else {}
+    excluir = trad.pop("_excluir", {})  # {nome: motivo}, decidido pelo Claude ao rever os candidatos
 
     leads = []
     for f in fichas:
-        if f.get("chave") in listadas:
+        if f.get("chave") in listadas or f.get("nome") in excluir:
             continue
         achados = []
         for a in f.get("avaliacoes", []):
+            if idade_meses(a.get("data")) > MAX_MESES:
+                continue
             for dor, frase in dores(a.get("texto", "")):
                 achados.append({"dor": dor, "frase": frase, **a})
         if not achados:
@@ -132,10 +137,15 @@ def main(caminho):
         elogio_ro = elogio_pt = ""
         if nota and nota >= 4.3 and l.get("n_avaliacoes"):
             n_str = f"{nota:.1f}".replace(".", ",")
-            elogio_ro = f"Am văzut că aveți {n_str} pe Google din {l['n_avaliacoes']} de recenzii, felicitări. "
-            elogio_pt = f"Vi que têm {n_str} no Google em {l['n_avaliacoes']} avaliações, parabéns. "
-        cit_pt = trad.get(e["id"], "(tradução por fazer)")
-        ro = MSG_RO.format(elogio_ro=elogio_ro, nome=l["nome"], data=e.get("data", ""), citacao=e["frase"],
+            n_av = f"{l['n_avaliacoes']:,}".replace(",", ".")
+            elogio_ro = f"Am văzut că aveți {n_str} pe Google din {n_av} de recenzii, felicitări. "
+            elogio_pt = f"Vi que têm {n_str} no Google em {n_av} avaliações, parabéns. "
+        t = trad.get(e["id"], "(tradução por fazer)")
+        if isinstance(t, dict):  # {"ro": excerto literal da frase, "pt": tradução}
+            e["frase"], cit_pt = t["ro"], t["pt"]
+        else:
+            cit_pt = t
+        ro = MSG_RO.format(elogio_ro=elogio_ro, nome=l["nome"], data=e.get("data", "").replace("Modificat pe ", ""), citacao=e["frase"],
                            solucao_ro=SOLUCAO[e["dor"]][0])
         pt = MSG_PT.format(elogio_pt=elogio_pt, nome=l["nome"], data_pt=data_pt(e.get("data", "")),
                            citacao_pt=cit_pt, solucao_pt=SOLUCAO[e["dor"]][1])
@@ -161,6 +171,9 @@ def main(caminho):
         if len(l["achados"]) > 1:
             out.append("Outras queixas: " + " · ".join(f"«{a['frase'][:140]}» ({a.get('data', '')})"
                                                      for a in l["achados"][1:4]) + "\n")
+    if excluir:
+        out.append("## Tirados na revisão\n\n| Negócio | Motivo |\n|---|---|")
+        out += [f"| {n} | {m} |" for n, m in excluir.items()]
     os.makedirs(os.path.join(AQUI, "listas"), exist_ok=True)
     open(os.path.join(AQUI, "listas", f"{data}.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
     print(f"{len(leads)} leads → listas/{data}.md")
