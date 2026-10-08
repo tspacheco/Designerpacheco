@@ -16,7 +16,7 @@ import csv, sys, urllib.parse
 MSG = ("Bună ziua! Sunt Tomás, de la Pacheco Studios.\n\n"
        "Căutați să creșteți cu 10% până la 30% numărul de clienți, luna aceasta și în continuare? "
        "Iată soluția pe care am creat-o după ce m-am uitat la afacerea dumneavoastră:\n{demo}\n\n"
-       "Dacă are sens pentru dumneavoastră, haideți să stabilim o oră ca să implementăm această soluție.")
+       "Poate nu înțelegeți încă, dar credeți-mă, așa va fi. Haideți să stabilim o oră ca să implementăm această soluție.")
 
 
 def numero(tel):
