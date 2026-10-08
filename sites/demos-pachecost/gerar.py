@@ -60,6 +60,9 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("exclusive-laundry", "exclusive-laundry"),
     ("inkhaus-tattoo", "inkhaus-tattoo"),
     # lote 4 de Iași (08/10)
+    ("odaia-neagra", "odaia-neagra"),
+    ("magic-pets-house", "magic-pets-house"),
+    ("fevila-pet-spa", "fevila-pet-spa"),
     ("star-service-auto", "star-service-auto"),
     ("service-auto-paul-ion", "service-auto-paul-ion"),
     ("service-la-pici", "service-la-pici"),
