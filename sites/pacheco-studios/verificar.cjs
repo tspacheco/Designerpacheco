@@ -56,7 +56,8 @@ const fs = require('fs');
       const f = ficheiro(alvo.split('?')[0]);
       if (f) return { status: r.estado, headers: { 'content-type': tipos[path.extname(f)] || 'application/octet-stream' }, body: fs.readFileSync(f) };
     }
-    const f = ficheiro(u.pathname);
+    // URLs bonitos do Netlify: /cartaz serve cartaz.html
+    const f = ficheiro(u.pathname) || (!path.extname(u.pathname) && !u.pathname.endsWith('/') ? ficheiro(u.pathname + '.html') : null);
     if (f) return { status: 200, headers: { 'content-type': tipos[path.extname(f)] || 'application/octet-stream' }, body: fs.readFileSync(f) };
     return { status: 404, headers: { 'content-type': 'text/html; charset=utf-8' }, body: fs.readFileSync(path.join(dist, '404.html')) };
   }
@@ -770,6 +771,25 @@ const fs = require('fs');
     mal(`sem JavaScript, esquema: ${JSON.stringify(nj)} → ${JSON.stringify(nj2)}`);
   else bem('sem JavaScript: «Ver o esquema» mostra o cartão (:target) e o X volta à automação');
   await ctx2.close();
+
+  // ——— cartaz grátis de avaliações (pachecost.com/cartaz, ro.pachecost.com/afis, pachecost.com/en/poster) ———
+  console.log('\nCARTAZ GRÁTIS');
+  {
+    const ctx = await contexto();
+    for (const [lg, sufixo] of [['pt', '/cartaz'], ['en', '/en/poster'], ['ro', '/afis']]) {
+      const p = await ctx.newPage();
+      await p.goto(LINGUAS[lg].url, { waitUntil: 'domcontentloaded' });
+      const href = await p.evaluate(() => { const a = [...document.querySelectorAll('.rodape a')].find(x => /\/(cartaz|afis|poster)$/.test(x.getAttribute('href'))); return a && a.getAttribute('href'); });
+      const r = href === sufixo ? responder(new URL(sufixo, LINGUAS[lg].url).href) : { status: 0 };
+      let ok = r.status === 200 && /<title>[^<]*(avalia|review|recenz)/i.test(r.body.toString());
+      if (ok) { await p.click(`.rodape a[href="${sufixo}"]`); await p.waitForLoadState('domcontentloaded');
+        ok = await p.evaluate(l => document.documentElement.lang.startsWith(l === 'pt' ? 'pt' : l), lg); }
+      if (!ok) mal(`${lg}: cartaz grátis no rodapé (${href} → ${r.status})`);
+      else bem(`${lg}: o rodapé leva ao cartaz grátis em ${new URL(sufixo, LINGUAS[lg].url).href}`);
+      await p.close();
+    }
+    await ctx.close();
+  }
 
   await browser.close();
   console.log(falhas ? `\n${falhas} problema(s).` : '\n✓ Sem problemas.');

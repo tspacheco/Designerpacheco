@@ -817,11 +817,16 @@ def intro(c):
 </div>'''
 
 
+FERRAMENTAS = [("cartaz.html", "cartaz.html"), ("afis.html", "ro/afis.html"), ("poster.html", "en/poster.html")]
+CARTAZ = {"pt": "/cartaz", "en": "/en/poster", "ro": "/afis"}  # o endereço do cartaz grátis a partir de cada língua
+
+
 def rodape(c, lang):
     r = c["rodape"]
     return f"""<footer class="rodape">
   <div class="envolver">
     <p>{e(r["linha"])}</p>
+    <p><a href="{CARTAZ[lang]}">{e(r["cartaz"])}</a></p>
     <p><a href="https://www.livroreclamacoes.pt/inicio/" rel="noopener">{e(r["legal"])}</a></p>
     <p>{aceite(r, lang)}</p>
   </div>
@@ -1200,6 +1205,10 @@ def main():
            f"# 2) {dominio} abre a versão romena, guardada em /ro/. O resto dos ficheiros é partilhado.",
            f"https://{dominio}/              /ro/index.html    200!",
            f"https://{dominio}/index.html    /ro/index.html    200!",
+           f"https://{dominio}/afis     /ro/afis.html    200!",
+           f"https://{dominio}/afis/    /ro/afis.html    200!",
+           "/en/poster     /en/poster.html    200!",
+           "/en/poster/    /en/poster.html    200!",
            "# 3) cada língua no seu endereço",
            f"/ro        https://{dominio}/    301!", f"/ro/*      https://{dominio}/    301!",
            f"https://{dominio}/en      https://{principal}/en/    301!",
@@ -1228,10 +1237,16 @@ def main():
         + f"\nSitemap: https://{principal}/sitemap.xml\n")
     urls = [(f"https://{principal}/", "1.0"), (f"https://{principal}/en/", "0.8"),
             (f"https://{principal}/privacidade.html", "0.2"), (f"https://{principal}/privacy.html", "0.2"),
-            (f"https://{principal}/cookies.html", "0.2"), (f"https://{principal}/en/cookies.html", "0.2")]
+            (f"https://{principal}/cookies.html", "0.2"), (f"https://{principal}/en/cookies.html", "0.2"),
+            (f"https://{principal}/cartaz", "0.6"), (f"https://{principal}/en/poster", "0.5"), (f"https://{dominio}/afis", "0.5")]
     open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{u}</loc><priority>{pr}</priority></url>\n" for u, pr in urls) + "</urlset>\n")
+    # a ferramenta grátis (cartaz de avaliações Google, feita no ramo claude/ferramenta-gratis-ak2zu8): páginas
+    # autónomas, copiadas tal como vêm para pachecost.com/cartaz, ro.pachecost.com/afis e pachecost.com/en/poster
+    for origem, destino in FERRAMENTAS:
+        os.makedirs(os.path.dirname(os.path.join(DIST, destino)), exist_ok=True)
+        shutil.copy(os.path.join(AQUI, "ferramentas", origem), os.path.join(DIST, destino))
     # ficheiros do site anterior que podem estar ligados de fora (partilhas, pesquisas)
     for f in ("favicon.svg", "logo.svg"):
         antigo = os.path.join(SITES, "pachecost-com", f)
