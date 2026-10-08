@@ -60,11 +60,8 @@ def numero(tel, cidade):
 
 
 def fixo(tel, cidade):
-    d = "".join(c for c in tel if c.isdigit())
-    if cidade == "Iași":
-        return d.startswith("02") or d.startswith("03") or d.startswith("4023") or d.startswith("4033")
-    d = d[3:] if d.startswith("351") else d
-    return d.startswith("2")
+    d = numero(tel, cidade)
+    return d[2] in "23" if cidade == "Iași" else d[3] == "2"
 
 
 def dias_desde(estado):
@@ -87,7 +84,7 @@ def main():
     print("Os escritórios convertem melhor ao vivo: em Iași, passa com a proposta impressa e a demo aberta no telemóvel. "
           "Diz-me quem aceitou, quem recusou e quem não respondeu.\n")
     print("<details><summary>O que diz a mensagem romena (PT)</summary>\n")
-    print("> " + PT.replace("Algarve", "Iași").replace("sos-car", "la-gioia").replace("100 €", "500 lei")
+    print("> " + PT.replace("do Algarve", "de Iași").replace("sos-car", "la-gioia").replace("100 €", "500 lei")
           .format(gancho="[uma frase sobre o que esse parceiro vê todos os dias: as mesmas frases da versão PT, por tipo]")
           .replace("\n", "\n> ").replace("> \n", ">\n") + "\n\n</details>\n")
     for cidade in ("Iași", "Faro"):
@@ -104,7 +101,7 @@ def main():
                     texto = (RO if ro else PT).format(gancho=(GANCHO_RO if ro else GANCHO_PT)[tipo])
                 else:
                     texto = RO_LEMBRETE if ro else PT_LEMBRETE
-                nota = f" · Google {l['nota']}/{l['avaliacoes']}" if l["nota"] else ""
+                nota = (f" · Google {l['nota']}" + (f" ({l['avaliacoes']} avaliações)" if l["avaliacoes"] else "")) if l["nota"] else ""
                 print(f"#### {l['nome']}\nTel.: {l['tel'] or 'a confirmar'} · WhatsApp: {l['whatsapp']}{nota}  ")
                 print(f"Morada: [{l['morada'] or 'ver no Maps'}]({l['maps']})  ")
                 if l["notas"]:

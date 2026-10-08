@@ -247,6 +247,7 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 5. Evitar cadeias e franchisings (decisão não é local). Verificar sempre se já têm site antes de investir tempo.
 6. Ângulo que fecha: **"tem 4,5 estrelas e centenas de avaliações — e está invisível fora do Google Maps."**
 7. Quem já tem site (Tavont, Ita Trattoria): **"elevar, não substituir"** — mostrar 3 falhas concretas do site atual.
+8. **Parceiros que indicam (08/10/2026):** contabilistas, quem abre firmas, gráficas, reclamos luminosos, máquinas registadoras, imobiliárias de espaços comerciais, consultores de fundos e HoReCa recebem 20 % da 1.ª fatura por cliente indicado (500 lei / 100 € por site, 250 lei / 50 € por sistema) e o cliente indicado tem o 1.º mês grátis. Proposta por omissão, a decisão final é do Tomás. Tudo em `research/parceiros/` (ramo `claude/parceiros-indicam-4kcnrc`); corrida semanal às segundas, 9h53 de Iași.
 
 ## 12. ECONOMIA DE CRÉDITOS
 
