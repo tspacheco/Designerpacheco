@@ -96,16 +96,25 @@ IDEIAS = [
         "tomas": "Dizer o Instagram do Noir Barbershop.",
     },
     {
-        "n": 5, "titulo": "Páginas por nicho e cidade", "estado": "curso",
+        "n": 5, "titulo": "Páginas por nicho e cidade", "estado": "pronto",
         "sub": "Quem pesquisa no Google entra sozinho",
         "exec": [
-            "Páginas como «Site pentru frizerii în Iași» e «Sites para restaurantes no Algarve» em pachecost.com e ro.pachecost.com, cada uma com as demos desse nicho e o botão do diagnóstico.",
-            "O thread está a agrupar as 70 demos por nicho e cidade e a construir o gerador das páginas em PT e RO.",
+            "Uma página por nicho e cidade, cada uma com as demos desse nicho e o botão do diagnóstico. As demos aparecem como uma rua de telemóveis, com a morada do negócio numa placa azul (RO) ou em azulejo (PT).",
+            "Sem preços nem números inventados: o único número é quantas demos há em cada página. Quem abre uma demo a partir daqui conta à parte, para o tracker continuar a contar só os donos.",
+            "Algarve tem poucas demos, por isso as páginas PT mostram também as demos de Iași com versão em PT, com o selo «Feito em Iași».",
         ],
-        "kpis": [],
-        "res": ["<b>Em curso.</b> Esta página é atualizada quando o thread entregar a primeira versão."],
-        "dia": ["Leva semanas a aparecer no Google. Os contactos chegam pelo diagnóstico e contam no GoatCounter."],
-        "tomas": "",
+        "kpis": [("12", "páginas RO, Iași"), ("5", "páginas PT, Algarve"), ("3", "demos para nascer página nova")],
+        "res": [
+            "<b>Iași</b> (ro.pachecost.com/site-uri/): restaurantes, cafés e pastelarias, barbearias, salões de beleza, oficinas e lavagens auto, lojas, animais, tatuagens, massagens, costura e reparações, chaves, serviços ao domicílio.",
+            "<b>Algarve</b> (pachecost.com/sites/): restaurantes, pastelarias e cafés, barbearias, oficinas e lojas.",
+            "Pré-visualizações: claude.ai/artifact/B3Xnn4im3GtkijK6GvoS2h (barbearias Iași) · claude.ai/artifact/Q8we1oDvdfD3XSk7MhinSe (restaurantes Algarve). Ainda não estão no ar: o thread das demos junta o código.",
+        ],
+        "dia": [
+            "Sozinho: cada demo nova do caçador entra na página do seu nicho no mesmo push. Quando um nicho chega a 3 demos, nasce página nova (o texto para clínicas e ginásios já está escrito).",
+            "GoatCounter mostra quem clica no diagnóstico em cada página.",
+            "Ao fim de 2 a 4 semanas: ver no Search Console que páginas aparecem e para que palavras, e reforçar o texto dos nichos que pedirem mais.",
+        ],
+        "tomas": "Subir o zip leve quando o thread das demos o der. No Search Console, criar a propriedade de domínio pachecost.com e enviar o sitemap pachecost.com/sitemap-nichos.xml.",
     },
     {
         "n": 6, "titulo": "Parceiros que indicam clientes", "estado": "pronto",
@@ -230,7 +239,7 @@ PENDENTES = [
     "Comissão dos parceiros: «ok» aos 500 lei / 100 € ou outro valor",
     "Confirmar o lote de auditorias às segundas",
     "Instagram do Noir Barbershop",
-    "Subir o zip do pachecost.com quando o cartaz (ideia 9) estiver integrado",
+    "Subir o zip leve novo (páginas por nicho e cartaz) e enviar o sitemap no Search Console",
     "Inscrição na ATIPIC (16/10) e na AI4IMPACT (20–21/10)",
 ]
 
