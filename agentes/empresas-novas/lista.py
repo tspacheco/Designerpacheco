@@ -81,10 +81,11 @@ def nome_curto(den):
     return n.strip(" .-").title(), pessoa
 
 
-def mensagem(nome, ramo_ro, demo, pessoa=False):
+def mensagem(nome, ramo_ro, demo, pessoa=False, filial=False):
     quem = "firma dumneavoastră" if pessoa else nome
-    return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios.\n\n"
-            f"Am văzut că {quem} s-a înregistrat de curând. Felicitări și mult succes la început de drum!\n\n"
+    abre = (f"Am văzut că {quem} deschide un nou punct de lucru în Iași. Felicitări și mult succes!" if filial else
+            f"Am văzut că {quem} s-a înregistrat de curând. Felicitări și mult succes la început de drum!")
+    return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios.\n\n{abre}\n\n"
             f"În acest moment sunt firme care își reduc costurile/își măresc eficiența cu 40% cu IA. "
             f"Noi începem cu un site profesional. Uitați un exemplu făcut pentru o afacere din Iași:\n{DEMO.format(demo)}\n\n"
             f"Vă pot pregăti unul la fel pentru {quem}, ca să vă găsească clienții pe Google din prima zi. "
@@ -131,16 +132,20 @@ def main():
          f"Registadas nos últimos {a.dias} dias, ativas, de negócio local. {len(cand)} novas nesta lista.",
          "O telefone é o que a empresa declarou à ANAF: às vezes é do contabilista. WhatsApp: ? em todas (sem prova pública).",
          "A morada é a sede no registo: pode ser casa do dono, não a loja. Visita só se o Maps mostrar o espaço.", ""]
-    secao = None
+    secao, ja = None, set()
     for prio, _, _, c, x, (ro, pt, demo, _p), tel, tipo, d in cand:
         s = "Clientes à porta" if prio == 1 else "Serviços (obras, limpezas, escolas…)"
         if s != secao:
             L += [f"## {s}", ""]
             secao = s
         nome, pessoa = nome_curto(x["denumire"])
-        msg = mensagem(nome, ro, demo, pessoa)
-        if "SEDIU SECUNDAR" in x["denumire"].upper():
-            pt = pt + " (novo espaço de uma empresa que já existe)"
+        if nome in ja:
+            continue
+        ja.add(nome)
+        filial = "SEDIU SECUNDAR" in x["denumire"].upper()
+        msg = mensagem(nome, ro, demo, pessoa, filial)
+        if filial:
+            pt = pt + " (novo espaço de uma empresa que já existe: ver antes se já tem site)"
         morada = x.get("adresa") or ""
         L.append(f"### {nome}" + (" (PFA/II, nome do dono)" if pessoa else ""))
         L.append(f"{pt.capitalize()} · CAEN {x.get('caen')} · registada a {d.strftime('%d/%m')} · CUI {c}  ")
