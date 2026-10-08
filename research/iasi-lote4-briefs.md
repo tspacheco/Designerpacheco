@@ -27,4 +27,5 @@ Estrutura e regras: iguais ao lote 3 (`research/iasi-lote3-briefs.md`). Fonte di
 | BonVino | `bonvino` | EB Garamond | **O copo que se enche**: vinho que enche o copo ao descer e a cor muda por casta | întreabă de un vin / rezervă degustare |
 | Cosi Buono | `cosi-buono` | Rammetto One | **A espátula de gelato**: a vitrine com cubas onde a espátula faz a onda do gelado | precomandă cutie gelato pentru ridicare |
 | Frame Art (înrămări) | `frame-art` | Old Standard TT | **A moldura que se monta**: cantoneiras que se juntam em volta de cada secção; escolha de moldura ao vivo sobre uma imagem | cerere înrămare: dimensiuni, tip ramă |
+| Shaorma Păcurari | `shaorma-pacurari` | Rubik (pesos altos) ou outra com ș ț | **A balança de pita**: a shaorma enrola-se em espiral ao descer, folha de alumínio a fechar | meniu + comandă la pachet → Sună (só fixo: sem WhatsApp/SMS; o pedido escrito serve para ler ao telefone) |
 | DUBITEC | `dubitec` | Exo 2 | **A chave e o escudo**: chave auto e apólice RCA lado a lado, duas portas para dois serviços | cerere: cheie auto sau ofertă RCA/CASCO |

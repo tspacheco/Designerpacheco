@@ -2,7 +2,7 @@
 
 Pedido do Tomás (08/10 09:17): «Faz mais 25 Websites para lançarmos juntamente com após esses 15». Mesmas regras do lote 3 (`research/iasi-lote3-out26.md`, `research/iasi-lote3-briefs.md`): RO com botão EN, `pt.html`, ANPC SAL + ODR, CTA **Sună** + pedido por WhatsApp ou SMS, coluna WhatsApp (nenhum com prova).
 
-Seleção: 34 pesquisas no Maps (20 novas a 08/10 + 14 extra) e sobras dos lotes 2 e 3. **Regra nova aplicada:** o campo «Site» de cada ficha foi lido antes de escolher; 26 das 48 fichas abertas tinham site próprio (Vendetta, Head Hunters, Izzu Lashes, Geamgeria, Fleur Boutique, Tasha, Beauty Lines, Q-Bo Ink, Chicano, Oby Ink, as gelatarias La Coppetta/Pistacchio, Paradiso, etc.) e saíram. A oferta de negócios bons sem site está a esgotar-se nas categorias já pesquisadas: há três salões de pestanas, três de massagem e vários auto; cada site tem de ficar claramente diferente.
+Seleção: 34 pesquisas no Maps (20 novas a 08/10 + 14 extra) e sobras dos lotes 2 e 3. **Regra nova aplicada:** o campo «Site» de cada ficha foi lido antes de escolher; a maioria das 48 fichas abertas tinha site próprio (Vendetta, Head Hunters, Izzu Lashes, Geamgeria, Fleur Boutique, Tasha, Beauty Lines, Q-Bo Ink, Chicano, Oby Ink, as gelatarias La Coppetta/Pistacchio, Paradiso, etc.) e saíram. A oferta de negócios bons sem site está a esgotar-se nas categorias já pesquisadas: há três salões de pestanas, três de massagem e vários auto; cada site tem de ficar claramente diferente.
 
 Notas e nº de avaliações: confirmar na ficha. Onde a ficha só mostra o dia de hoje, o resto do horário fica «de confirmat». Fichas em `ponte/r4-*` (sobras em `ponte/r2-*` e `ponte/r3-*`), fotos em `ponte/fotos-r4-<slug>.*`.
 
@@ -31,6 +31,9 @@ Notas e nº de avaliações: confirmar na ficha. Onde a ficha só mostra o dia d
 | BonVino - magazin de vinuri creat de The | `bonvino` | Magazin de vinuri | 4,8 · 17 | 0786 216 276 | ? | Strada Grigore Ghica Vodă 3 | nenhuma | joi,10 – 22; vineri,10 – 22; sâmbătă,10 – 22; duminică,10 – 22; luni,10 – 22; marți,10 – 2 |
 | COSI BUONO - Gelato artigianale | `cosi-buono` | Gelaterie | 4,9 · 460 | 0741 424 480 | ? | Strada Arcu 3 | nenhuma | joi,10 – 22; vineri,10 – 22; sâmbătă,10 – 22; duminică,10 – 22; luni,14 – 22; marți,10 – 2 |
 | Inramari Profesionale Iasi Frame Art | `frame-art` | Atelier de înrămări | 4,9 | 0757 562 050 | ? | Piața Unirii | facebook.com | joi,08 – 17:30 |
+| Shaorma Păcurari | `shaorma-pacurari` | Shaormerie | 4,7 · 626 | 0371 331 188 (fixo) | não (fixo) | Str. Păcurari 153 | nenhuma | de confirmat |
 | DUBITEC - CHEI AUTO/ASIGURARI RCA, LOCUI | `dubitec` | Atelier de reparații electroni | 4,8 · 5 | 0740 322 333 | ? | in spatele Petrom- in incinta serviciului SCM, Șoseaua Păcur | nenhuma | joi,08:30 – 16; vineri,08:30 – 16; sâmbătă,Închis; duminică,Închis; luni,08:30 – 16; marți |
 
 Avaliações que a lista de pesquisa mostra e a ficha não: Andreea Lash 40, Yssa 25, Kineos 75, ACM 47, Intervenții Rapide 29, Frame Art 173. Service Auto (Paul Ion 15) não tem fotos: site ilustrado, sem fotos falsas. Gemino marca no diago.ro (elevar, não substituir). Bistro Felix: 2.152 avaliações, abre até 00.
+
+Shaorma Păcurari só tem telefone fixo: sem WhatsApp nem SMS, vai para visita (com a demo aberta no telemóvel) ou chamada.
