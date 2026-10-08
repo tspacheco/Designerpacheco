@@ -112,7 +112,7 @@ def main():
     json.dump(anteriores + iasi, open(ficheiro, "w"), ensure_ascii=False, indent=0)
     with open(VISTOS, "a") as v:
         v.write("".join(f"{x['cui']}\n" for x in achadas))
-    estado.update({"ultimo_base": maior, "ultima_corrida": datetime.datetime.utcnow().isoformat(timespec="seconds") + "Z"})
+    estado.update({"ultimo_base": maior, "ultima_corrida": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")})
     json.dump(estado, open(ESTADO, "w"), indent=1)
     print(f"{len(achadas)} empresas novas lidas, {len(iasi)} no distrito de Iași, último CUI-base {maior}")
 

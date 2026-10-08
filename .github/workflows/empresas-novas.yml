@@ -18,6 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Recolher
         run: |
+          mkdir -p agentes/empresas-novas/dados
           ARGS="$(grep -vE '^\s*(#|$)' .github/empresas-novas.txt | head -1 || true)"
           python3 agentes/empresas-novas/recolher.py $ARGS 2>&1 | tee agentes/empresas-novas/dados/ultima-corrida.txt
       - name: Publicar no mesmo ramo
