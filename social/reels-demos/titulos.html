@@ -1,0 +1,99 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{margin:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:transparent;overflow:hidden}
+/* títulos: a fonte de título da demo só em textos curtos (nota, nome); frases na fonte de texto, para se lerem */
+/* faixa de cima (0–470 px); o site gravado entra por baixo, de 470 a 1920 */
+#faixa{position:absolute;left:0;right:0;top:0;height:470px;overflow:hidden}
+#faixa::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--a);opacity:.55;transform-origin:0 50%;transform:scaleX(var(--linha,0))}
+.cena{position:absolute;left:72px;right:72px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+.l{display:block;will-change:transform,opacity}
+#gancho .nota{display:flex;align-items:center;gap:22px;font-family:var(--ft);color:var(--a);font-size:150px;line-height:1;letter-spacing:-.01em}
+#gancho .nota svg{width:104px;height:104px;flex:none}
+#gancho .nota small{font-family:var(--fx);font-size:40px;color:var(--c);opacity:.86;letter-spacing:0;align-self:flex-end;padding-bottom:12px;font-weight:500}
+#gancho .l2{margin-top:24px;font-family:var(--fx);font-weight:600;font-size:56px;line-height:1.14;color:var(--c);letter-spacing:-.01em}
+#gancho .l3{margin-top:8px;font-family:var(--fx);font-weight:700;font-size:56px;line-height:1.14;color:var(--a);letter-spacing:-.01em}
+#nome .n{font-family:var(--ft);color:var(--c);font-size:var(--tn,96px);line-height:1.02;letter-spacing:-.005em}
+#nome .m{margin-top:22px;font-family:var(--fx);font-weight:500;font-size:30px;letter-spacing:4px;text-transform:uppercase;color:var(--a)}
+#nome .cr{margin-top:12px;font-family:var(--fx);font-weight:400;font-size:26px;letter-spacing:3px;text-transform:uppercase;color:var(--c);opacity:.6}
+#frase .f1{font-family:var(--fx);font-weight:400;font-size:60px;line-height:1.1;color:var(--c);opacity:.9;letter-spacing:-.01em}
+#frase .f2{margin-top:10px;font-family:var(--fx);font-weight:700;font-size:var(--tf,76px);line-height:1.06;color:var(--a);letter-spacing:-.02em}
+#fim{position:absolute;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0}
+#fim .r{height:6px;width:120px;margin-bottom:46px;background:var(--a);transform-origin:50% 50%}
+#fim .u{color:#fff;white-space:nowrap;font-family:var(--fx);font-weight:700;font-size:84px;letter-spacing:-2px}
+#fim .t{margin-top:26px;white-space:nowrap;font-family:var(--fx);font-weight:500;font-size:30px;letter-spacing:3px;text-transform:uppercase;color:#a6a6a6}
+</style></head>
+<body>
+<div id="faixa">
+  <div class="cena" id="gancho">
+    <span class="l nota"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.1l-6.1 3.5 1.5-6.8L2.2 9.2l6.9-.7z"/></svg><span class="v"></span><small></small></span>
+    <span class="l l2"></span>
+    <span class="l l3"></span>
+  </div>
+  <div class="cena" id="nome"><span class="l n"></span><span class="l m"></span><span class="l cr"></span></div>
+  <div class="cena" id="frase"><span class="l f1"></span><span class="l f2"></span></div>
+</div>
+<div id="fim"><div class="r"></div><div class="u"></div><div class="t">Portugal based · Acting worldwide</div></div>
+<script>
+// Texto por cima do reel de uma demo. O gerar_reel.py chama init(cfg) e depois setT(t) por fotograma.
+// cfg: {fundo, cor, acento, ft (fonte de título da demo), fx (fonte de texto), gancho:{nota,sub,l2,l3}|null,
+//       nome, morada, credito, f1, f2, url, T:{gancho, nome, frase, fim}}
+const $ = s => document.querySelector(s);
+const cl = x => Math.max(0, Math.min(1, x)), eo = x => 1 - Math.pow(1 - x, 3);
+let C;
+function entra(el, t, t0, len = .55, dy = 26) {
+  const p = eo(cl((t - t0) / len));
+  el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * dy}px)`;
+  el.style.clipPath = `inset(0 0 ${(1 - p) * 40}% 0)`;
+}
+function sai(el, t, t0, len = .3) {         // a cena inteira sobe e desaparece
+  const p = eo(cl((t - t0) / len));
+  el.style.opacity = 1 - p; el.style.transform = `translateY(${-p * 40}px)`;
+}
+window.init = cfg => {
+  C = cfg;
+  const r = document.documentElement.style;
+  r.setProperty('--a', cfg.acento); r.setProperty('--c', cfg.cor);
+  r.setProperty('--ft', cfg.ft); r.setProperty('--fx', cfg.fx);
+  $('#faixa').style.background = cfg.fundo;
+  if (cfg.gancho) {
+    $('#gancho .v').textContent = cfg.gancho.nota; $('#gancho small').textContent = cfg.gancho.sub;
+    $('#gancho .l2').textContent = cfg.gancho.l2; $('#gancho .l3').textContent = cfg.gancho.l3;
+  } else $('#gancho').style.display = 'none';
+  $('#nome .n').textContent = cfg.nome; $('#nome .m').textContent = cfg.morada; $('#nome .cr').textContent = cfg.credito;
+  $('#frase .f1').textContent = cfg.f1; $('#frase .f2').textContent = cfg.f2;
+  $('#fim .u').textContent = cfg.url;
+  // nomes compridos: reduz o tamanho até caber em 2 linhas
+  for (const [sel, v, min] of [['#nome .n', '--tn', 54], ['#frase .f2', '--tf', 50]]) {
+    let s = parseInt(getComputedStyle($(sel)).fontSize);
+    while ($(sel).offsetHeight > s * 2.2 && s > min) { s -= 4; r.setProperty(v, s + 'px'); }
+  }
+  setT(0);
+};
+window.setT = t => {
+  const T = C.T, G = $('#gancho'), N = $('#nome'), F = $('#frase');
+  document.documentElement.style.setProperty('--linha', eo(cl(t / .9)));
+  if (C.gancho) {
+    // 1.º fotograma já mostra a nota: o gancho tem de estar lá antes do primeiro scroll do dedo
+    const nota = $('#gancho .nota'); nota.style.opacity = 1; nota.style.transform = `scale(${1.06 - .06 * eo(cl(t / .5))})`;
+    nota.style.transformOrigin = '0 50%';
+    entra($('#gancho .l2'), t, .35); entra($('#gancho .l3'), t, T.gancho - 1.3, .5, 18);
+    G.style.display = t < T.nome + .4 ? '' : 'none';
+    if (t >= T.nome - .3) sai(G, t, T.nome - .3); else { G.style.opacity = 1; G.style.transform = 'none'; }
+  }
+  const t0 = C.gancho ? T.nome : 0;
+  N.style.display = t >= t0 - .05 && t < T.frase + .4 ? '' : 'none';
+  N.style.opacity = 1; N.style.transform = 'none';
+  entra($('#nome .n'), t, t0, .6, 34); entra($('#nome .m'), t, t0 + .25); entra($('#nome .cr'), t, t0 + .45);
+  if (t >= T.frase - .3) sai(N, t, T.frase - .3);
+  F.style.display = t >= T.frase - .05 ? '' : 'none';
+  entra($('#frase .f1'), t, T.frase); entra($('#frase .f2'), t, T.frase + .3, .6, 34);
+  const fim = $('#fim'), e = cl((t - T.fim + .1) / .45);
+  fim.style.opacity = e;
+  fim.querySelector('.r').style.transform = `scaleX(${eo(cl((t - T.fim - .2) / .5))})`;
+  fim.querySelector('.u').style.transform = `translateY(${(1 - eo(cl((t - T.fim - .1) / .6))) * 30}px)`;
+  fim.querySelector('.t').style.opacity = eo(cl((t - T.fim - .45) / .5));
+};
+</script>
+</body></html>

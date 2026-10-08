@@ -247,6 +247,7 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 5. Evitar cadeias e franchisings (decisão não é local). Verificar sempre se já têm site antes de investir tempo.
 6. Ângulo que fecha: **"tem 4,5 estrelas e centenas de avaliações — e está invisível fora do Google Maps."**
 7. Quem já tem site (Tavont, Ita Trattoria): **"elevar, não substituir"** — mostrar 3 falhas concretas do site atual.
+8. **Reel por demo (2.º contacto, 08/10/2026):** 2–3 dias depois da mensagem da demo, enviar ao dono um reel 9:16 do site dele (grátis, é dele) e pedir autorização para o publicar como Colaboração no @pachecostudiospt. Só se publica com «sim» escrito; um «sim» = lead quente. Gerador e processo: `social/reels-demos/` (LEIA-ME.md), ramo `claude/reels-demos-pjhcbh`.
 
 ## 12. ECONOMIA DE CRÉDITOS
 
