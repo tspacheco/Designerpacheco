@@ -5,20 +5,18 @@
 
 Colunas do TSV (com cabeçalho): corrida slug nome descricao tel whatsapp morada zona estado
   corrida   A (8h00) ou B (11h30)
-  descricao como o negócio aparece na frase, com o artigo: «frizeria Noir Barbershop», «magazinul Arca Pet Iași»
+  descricao (já não entra na mensagem desde 08/10; pode ficar vazia)
   whatsapp  sim / ? / não (sim só com prova pública: PLAYBOOK §11 ponto 8)
   estado    publicada / por fazer / tirada (motivo)
 Só as linhas «publicada» levam mensagem; as outras aparecem numa tabela no fim.
 """
 import csv, sys, urllib.parse
 
+# Mensagem nova do Tomás (08/10, a partir da Star Service Auto do lote 4); texto igual ao de sites/demos-pachecost/LOTE4-IASI.md
 MSG = ("Bună ziua! Sunt Tomás, de la Pacheco Studios.\n\n"
-       "În acest moment sunt firme care își reduc costurile/își măresc eficiența cu 40% cu IA.\n\n"
-       "Am început prin a vă crea un site profesional, pentru că am văzut că {descricao} nu are încă unul. "
-       "Îl puteți vedea aici:\n{demo}\n\n"
-       "Aș vrea să stabilim o oră să ne întâlnim și să vorbim despre implementarea acestei structuri, "
-       "dacă sunteți interesați să faceți un nou pas în ceea ce privește actualitatea.\n\n"
-       "Puteți vedea mai multe pe ro.pachecost.com")
+       "Căutați să creșteți cu 10% până la 30% numărul de clienți, luna aceasta și în continuare? "
+       "Iată soluția pe care am creat-o după ce m-am uitat la afacerea dumneavoastră:\n{demo}\n\n"
+       "Dacă are sens pentru dumneavoastră, haideți să stabilim o oră ca să implementăm această soluție.")
 
 
 def numero(tel):

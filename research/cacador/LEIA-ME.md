@@ -44,5 +44,6 @@ Se uma corrida não fechar as 25, as que faltarem ficam «por fazer» no `.tsv` 
 
 - Construir sem ler o campo «Site» da ficha (Gist e Salon Monne, 07/10).
 - Inventar notas, preços, horários, citações ou provas de WhatsApp.
+- Mudar o texto da mensagem: é o de `mensagens.py` (10% a 30% mais clientes, desde 08/10), igual ao do `LOTE4-IASI.md`.
 - Pôr preço na mensagem (o preço fala-se depois: 500 € ≈ 2.500 lei + 75 €/mês ≈ 375 lei, auditoria grátis incluída).
 - Push noutro ramo que não o do caçador, exceto a publicação descrita no passo 10.
