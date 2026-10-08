@@ -1,0 +1,40 @@
+# Agente 8 (avaliações com queixas): lê fichas do Google Maps de Iași no runner (a rede dos threads não lá chega),
+# guarda as avaliações e o recolher deixa em agentes/avaliacoes-queixas/dados/. Para correr: escrever em
+# .github/avaliacoes.txt o comando numa linha (ex.: «recolher.py --pesquisas pesquisas.txt») e fazer push.
+name: avaliacoes
+on:
+  push:
+    paths: ['.github/avaliacoes.txt']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: avaliacoes-${{ github.ref }}
+jobs:
+  recolher:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ferramentas
+        run: python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Recolher
+        run: |
+          mkdir -p agentes/avaliacoes-queixas/dados
+          CMD="$(grep -vE '^\s*(#|$)' .github/avaliacoes.txt | head -1 || true)"
+          [ -n "$CMD" ] || exit 0
+          set -o pipefail
+          python3 agentes/avaliacoes-queixas/$CMD 2>&1 | tee agentes/avaliacoes-queixas/dados/ultima-corrida.txt
+      - name: Publicar no mesmo ramo
+        if: always()
+        run: |
+          git config user.name "avaliacoes"
+          git config user.email "ponte@users.noreply.github.com"
+          git add -A agentes/avaliacoes-queixas/dados
+          if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
+          git commit -q -m "Avaliações: recolha $(date -u +%F)"
+          for i in 1 2 3 4; do
+            git pull -q --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
