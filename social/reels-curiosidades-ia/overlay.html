@@ -6,7 +6,7 @@
 <!-- Camada de texto do reel «You ask AI one question. This is what's underneath.» (Instagram @pachecostudiospt, 08/10/2026).
      Por baixo fica o vídeo 3D do Higgsfield (figura humana à beira do abismo → mergulho). Esta página desenha só o texto, com fundo
      transparente; render.cjs captura 30 fps em PNG com alfa e o ffmpeg sobrepõe ao vídeo e junta o som de som.py.
-     15 s. Linha do tempo: gancho 0–3 · 5 camadas de 2 s (3, 5, 7, 9, 11) · fecho 13–15. Cada fotograma sai de render(t), sem estado.
+     15 s. Linha do tempo: gancho 0–3 · camadas a 3,0 · 4,8 · 6,6 · 8,4 · 11,5 (a 4.ª é mais longa porque a grelha de cidade do clip dura mais) · fecho 13,6–15. Cada fotograma sai de render(t), sem estado.
      Identidade própria: Dela Gothic One (números monumentais) + JetBrains Mono (etiquetas), osso e laranja Pacheco sobre o abismo,
      contador de profundidade a correr à direita e régua de ticks a subir à esquerda (sensação de queda).
      Zona segura do Instagram: textos essenciais entre y 270 e ~1300. Factos e fontes: LEIA-ME.md. -->
@@ -17,7 +17,7 @@
 :root{--bone:#EFEAE3;--or:#E8622C;--mute:rgba(239,234,227,.62)}
 *{box-sizing:border-box;margin:0}
 html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
-#s{position:absolute;inset:0;overflow:hidden;font-family:JB,monospace;color:var(--bone)}
+#s{position:absolute;inset:0;overflow:hidden;font-family:JB,monospace;color:var(--bone);text-shadow:0 2px 6px rgba(0,0,0,.75),0 0 40px rgba(0,0,0,.55)}
 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.05) 32%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%)}
 .rail{position:absolute;left:54px;top:0;bottom:0;width:2px;background:rgba(239,234,227,.18)}
 .tick{position:absolute;left:46px;width:18px;height:2px;background:rgba(239,234,227,.5)}
@@ -45,7 +45,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
 <body>
 <div id="s"></div>
 <script>
-const DUR=15.0, T={hook:0, f:[3.0,5.0,7.0,9.0,11.0], end:13.0, L:2.0};
+const DUR=15.0, T={hook:0, f:[3.0,4.8,6.6,8.4,11.5], fe:[4.8,6.6,8.4,11.5,13.6], end:13.6};
+// tempos afinados ao clip c1 do Kling: racks 3–4 · cabos 4–6 · torres 6–8 · grelha de cidade 8–12,5 · oceano 13–15
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const EO=x=>1-Math.pow(1-cl(x),3), EI=x=>Math.pow(cl(x),3);
 const fi=(t,a,d=.3)=>EO((t-a)/d);
@@ -79,7 +80,7 @@ function render(t){
       <div class="l2" style="${drop(t,0.9,T.f[0],.3)}">This is what’s underneath.</div>
       <div class="arr" style="${drop(t,1.5,T.f[0],.3)}">▼ ▼ ▼</div></div>`;
   }
-  FACTS.forEach((f,i)=>{ const a=T.f[i], b=a+T.L; if(t<a-.05||t>b+.05) return;
+  FACTS.forEach((f,i)=>{ const a=T.f[i], b=T.fe[i]; if(t<a-.05||t>b+.05) return;
     h+=`<div class="fact">
       <div class="tag" style="${drop(t,a,b,.22)}">${f.tag}</div>
       <div class="num ${f.sm?'sm':''}" style="${drop(t,a+.06,b,.28)}">${f.num}</div>

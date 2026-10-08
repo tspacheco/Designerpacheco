@@ -4,7 +4,7 @@
 const { chromium } = require('/opt/node-tools/node_modules/playwright');
 const { execFileSync } = require('child_process');
 const fs = require('fs'), path = require('path');
-const TMP = process.argv[2] || '/tmp/reel-abyss', BASE = process.argv[3], FPS = 30, NOME = 'reel-en-5-under-one-question', CAPA = 2.2;
+const TMP = process.argv[2] || '/tmp/reel-abyss', BASE = process.argv[3], FPS = 30, NOME = 'reel-en-5-under-one-question', CAPA = 0.9;
 (async () => {
   const dir = path.join(TMP, 'ov'); fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive: true });
   const b = await chromium.launch();
