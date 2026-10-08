@@ -284,6 +284,7 @@ def telemovel(d, cid, ui, embutir, sites, com_nome=True, classe="tel", gc=""):
 
 
 def cabeca(ui, cid, titulo, desc, url, ld, pixel_id):
+    ld_txt = json.dumps(ld, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     return f"""<!DOCTYPE html>
 <html lang="{ui['html']}">
 <head>
@@ -305,7 +306,7 @@ def cabeca(ui, cid, titulo, desc, url, ld, pixel_id):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTES}">
-<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")}</script>
+<script type="application/ld+json">{ld_txt}</script>
 <script>document.documentElement.classList.add('js');window.goatcounter={{path:function(p){{return location.host+p}}}};</script>
 <script data-goatcounter="https://pachecost.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <style>{CSS}</style>
@@ -459,11 +460,14 @@ def pagina_indice(cid, cfg, ui, paginas, embutir, sites, pixel_id):
     titulo, desc = ui["indice_title"].format(**fmt), ui["indice_desc"].format(**fmt)
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "url": url, "name": titulo, "description": desc,
           "inLanguage": ui["html"], "hasPart": [{"@type": "WebPage", "name": p["curto"], "url": url + p["slug"] + "/"} for p in paginas]}
-    cards = "".join(
-        f'<a class="area entra" style="--i:{i % 6}" href="{cfg["base"]}{p["slug"]}/" data-gc="area-{p["slug"]}">'
-        f'{telemovel(p["capa"], cid, ui, embutir, sites, com_nome=False, classe="tel").replace("<a ", "<span ").replace("</a>", "</span>").replace(" href=", " data-h=").replace(' data-gc="', ' data-x="')}'
-        f'<span><b>{e(p["curto"])}</b><small>{e(plural(p["n"], ui["card_n"]).format(n=p["n"]))}</small></span></a>'
-        for i, p in enumerate(paginas))
+    cards = ""
+    for i, p in enumerate(paginas):
+        # o telemóvel vai dentro do cartão: sem link nem contagem próprios
+        capa = telemovel(p["capa"], cid, ui, embutir, sites, com_nome=False)
+        capa = capa.replace("<a ", "<span ").replace("</a>", "</span>").replace(" href=", " data-h=").replace(' data-gc="', ' data-x="')
+        n_txt = plural(p["n"], ui["card_n"]).format(n=p["n"])
+        cards += (f'<a class="area entra" style="--i:{i % 6}" href="{cfg["base"]}{p["slug"]}/" data-gc="area-{p["slug"]}">'
+                  f'{capa}<span><b>{e(p["curto"])}</b><small>{e(n_txt)}</small></span></a>')
     return cabeca(ui, cid, titulo, desc, url, ld, pixel_id) + topo(ui, cfg, diag) + f"""
 <main id="conteudo">
 <section class="env heroi" style="grid-template-columns:1fr">
