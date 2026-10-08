@@ -161,11 +161,11 @@ IDEIAS = [
         "sub": "A dor já está escrita pelos clientes deles",
         "exec": [
             "O agente procura negócios de Iași com avaliações do tipo «não atendem o telefone» ou «demoram a responder» e prepara a mensagem da consultoria de IA com essa queixa citada.",
-            "O thread está a montar a leitura das avaliações pela ponte e o filtro de queixas.",
+            "Lê as avaliações das fichas do Maps a partir do GitHub, deteta as queixas e prepara a mensagem em RO + PT com a citação e a tradução.",
         ],
         "kpis": [],
         "res": ["<b>Em curso.</b> Esta página é atualizada quando o thread entregar a primeira pesquisa."],
-        "dia": ["A definir pelo thread quando a 1.ª pesquisa estiver feita."],
+        "dia": ["Segunda e quinta às 9h37 de Iași: nova pesquisa e lista com as citações."],
         "tomas": "",
     },
     {
@@ -226,6 +226,7 @@ DIA = [
 SEMANAL = [
     ("Segunda 8h00", "Auditorias: lote novo de 10 PDFs (quando confirmares)"),
     ("Segunda 9h53", "Parceiros: 10 novos, lembretes aos 7 dias, comissões"),
+    ("Seg e Qui 9h37", "Avaliações com queixas: lista nova com a queixa citada"),
     ("Sempre", "Ideias 5 e 9 (cartaz) trazem contactos sozinhas pelo site e pelo diagnóstico"),
 ]
 AGENDA = [
