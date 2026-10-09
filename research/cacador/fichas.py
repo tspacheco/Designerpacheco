@@ -28,7 +28,7 @@ def ficha(f):
     pres = site if any(r in site for r in REDES) else ""
     proprio = "" if pres or not site else site
     b = os.path.basename(f)[:-5]
-    slug = b.split("-f-", 1)[1] if "-f-" in b else b.split("-", 1)[1]
+    slug = next((b.split(m, 1)[1] for m in ("-x-", "-f-") if m in b), b.split("-", 1)[1])
     return [slug, nome, cat, nota, aval, proprio, tel, mor, hor[:200], pres, wa]
 
 

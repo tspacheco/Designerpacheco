@@ -8,7 +8,7 @@ while [ "$(date +%s)" -lt "$fim" ]; do
   sleep 30
   git fetch -q origin "$R" 2>/dev/null || continue
   if git log --format=%s "$base..origin/$R" | grep -q '^Ponte:'; then
-    git pull -q --rebase origin "$R"
+    git pull -q --rebase --autostash origin "$R"
     echo "ponte: $(grep -c '^ok' ponte/relatorio.txt) ok, $(grep -c '^ERRO' ponte/relatorio.txt) erros"
     grep '^ERRO' ponte/relatorio.txt | cut -c1-140 | head -5
     exit 0
