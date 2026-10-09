@@ -357,7 +357,7 @@ const fs = require('fs');
     const cara = await p.evaluate(() => { const i = document.querySelector('.diag-quem img');
       return { foto: !!i && i.complete && i.naturalWidth > 100, alt: i && i.alt, nome: (document.querySelector('.diag-quem b') || {}).textContent,
         papel: (document.querySelector('.diag-quem small') || {}).textContent }; });
-    if (!cara.foto || cara.nome !== g.quem_nome || cara.papel !== g.quem_papel || cara.alt !== g.quem_alt) mal(`${k}: diagnóstico sem a cara do Tomás: ${JSON.stringify(cara)}`);
+    if (!cara.foto || cara.nome !== g.quem_nome || cara.papel !== g.quem_papel || ![g.quem_alt, 'Pacheco Studios'].includes(cara.alt)) mal(`${k}: diagnóstico sem a cara do Tomás: ${JSON.stringify(cara)}`);
     // 1.º ecrã: a foto, o porquê e logo o campo do nome (sem «Começar»)
     const ecra1 = await p.evaluate(() => ({ nome: !!document.getElementById('diag-in'), comecar: !!document.getElementById('diag-comecar'),
       foto: !!document.querySelector('.diag-quem img'), foco: document.activeElement && document.activeElement.id }));

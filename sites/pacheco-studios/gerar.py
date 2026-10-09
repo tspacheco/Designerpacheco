@@ -618,6 +618,9 @@ def marca(sufixo, tag="p", href=None, cls=""):
     return f'<{tag} class="marca"{h}>{logo_completo(sufixo, cls)}<span class="so-leitor">Pacheco Studios</span></{tag}>'
 
 
+DIAG_AVATAR = "logo"  # "logo" (teste de 09/10) ou "foto" (a cara do Tomás, media/tomas.webp)
+
+
 def wa_diagnostico(d, lang):
     """wa.me do número que recebe o diagnóstico nesta língua (marca/dados.json → whatsapp_diagnostico); vazio = o principal."""
     n = re.sub(r"\D", "", d.get("whatsapp_diagnostico", {}).get(lang, ""))
@@ -637,8 +640,13 @@ def diagnostico(c, url_priv, wa_diag=""):
                                           "recomecar", "wa_intro", "comecar", "anterior", "seguinte", "pergunta", "meta",
                                           "intro_t", "quem_nome", "quem_papel", "quem_alt", "pensa", "mudar", "enviar_msg", "email_invalido")}, ensure_ascii=False)
     # a foto do Tomás (media/tomas.webp, 360 px) vai embutida: quem faz o diagnóstico tem cara desde o primeiro ecrã
+    # Teste do Tomás (09/10): o logótipo no lugar da cara, para ver se mais gente passa da 1.ª pergunta. A foto volta
+    # com DIAG_AVATAR = "foto".
     foto = os.path.join(AQUI, "media", "tomas.webp")
-    if os.path.exists(foto):
+    if DIAG_AVATAR == "logo":
+        d_ = json.loads(dados); d_["foto"] = FAVICON.replace("viewBox=", "width='200'%20height='200'%20viewBox=", 1); d_["quem_alt"] = "Pacheco Studios"
+        dados = json.dumps(d_, ensure_ascii=False)
+    elif os.path.exists(foto):
         d_ = json.loads(dados); d_["foto"] = "data:image/webp;base64," + base64.b64encode(open(foto, "rb").read()).decode()
         dados = json.dumps(d_, ensure_ascii=False)
     if wa_diag:  # o número do diagnóstico nesta língua, quando não é o telefone principal (ro: o número romeno)
