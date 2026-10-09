@@ -15,16 +15,19 @@ ALGARVE = {"tasquinha-do-bruno", "tasca-do-to", "o-antonio", "colibri", "barbers
            "sr-bonifacio", "flor-mimosa", "faisca-henriques", "sos-car", "mb-cakes"}
 
 
-def ler(caminho):
+CACADOR = "origin/claude/cacador-diario-nkiz36"  # listas diárias em research/cacador/AAAA-MM-DD.md
+
+
+def ler(caminho, ramo=RAMO):
     try:
-        return subprocess.run(["git", "show", f"{RAMO}:{caminho}"], capture_output=True,
+        return subprocess.run(["git", "show", f"{ramo}:{caminho}"], capture_output=True,
                               text=True, check=True).stdout
     except subprocess.CalledProcessError:
         return ""
 
 
-def ficheiros(pasta):
-    out = subprocess.run(["git", "ls-tree", "--name-only", f"{RAMO}", pasta + "/"],
+def ficheiros(pasta, ramo=RAMO):
+    out = subprocess.run(["git", "ls-tree", "--name-only", ramo, pasta + "/"],
                          capture_output=True, text=True).stdout
     return out.split()
 
@@ -36,6 +39,9 @@ def demos():
         m = re.search(r"#\s*lote\s*(\d+)", linha, re.I)
         if m:
             lote = f"Iași {m.group(1)}"
+        m = re.search(r"#\s*ca[çc]ador\s*(\d{4})-(\d\d)-(\d\d)", linha, re.I)
+        if m:
+            lote = f"Caçador {m.group(3)}/{m.group(2)}"
         m = re.search(r'\("([^"]+)",\s*"([^"]+)"\)', linha)
         if m:
             curto, pasta = m.groups()
@@ -51,13 +57,15 @@ def demos():
 def contactos():
     """curto -> (nome, telefone) a partir dos ficheiros de mensagens."""
     r = {}
-    for f in ficheiros("sites/demos-pachecost"):
+    fontes = [(f, RAMO) for f in ficheiros("sites/demos-pachecost")] + \
+             [(f, CACADOR) for f in ficheiros("research/cacador", CACADOR)]
+    for f, ramo in fontes:
         if not f.endswith(".md"):
             continue
-        txt = ler(f)
-        # formato «### Nome» / «Demo: …/demo/x/» / «Tel.: …»
-        for bl in re.split(r"\n(?=### )", txt):
-            m = re.match(r"### (.+)", bl)
+        txt = ler(f, ramo)
+        # formato «### Nome» (ou «####») / «Demo: …/demo/x/» / «Tel.: …»
+        for bl in re.split(r"\n(?=####? )", txt):
+            m = re.match(r"####? (.+)", bl)
             d = re.search(r"/demo/([a-z0-9-]+)/", bl)
             t = re.search(r"Tel\.?:\s*([^·\n]+)", bl)
             if m and d and d.group(1) not in r:
@@ -87,7 +95,8 @@ def titulo(pasta):
 
 
 def main():
-    subprocess.run(["git", "fetch", "-q", "origin", RAMO.split("/", 1)[1]], check=False)
+    for r in (RAMO, CACADOR):
+        subprocess.run(["git", "fetch", "-q", "origin", r.split("/", 1)[1]], check=False)
     cont, pesq = contactos(), pesquisa()
     out = []
     for curto, pasta, lote in demos():

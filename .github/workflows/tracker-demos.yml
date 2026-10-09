@@ -34,7 +34,7 @@ jobs:
               vistos, mais = [], True
               try:
                   while mais:
-                      q = {"start": "2026-10-01", "end": hoje.isoformat(), "limit": "100"}
+                      q = {"start": "2026-10-09", "end": hoje.isoformat(), "limit": "100"}
                       if vistos:
                           q["exclude_paths"] = ",".join(map(str, vistos))
                       req = urllib.request.Request(base + "?" + urllib.parse.urlencode(q), headers={

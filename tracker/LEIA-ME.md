@@ -11,7 +11,8 @@ Página (Artifact, com base de dados): https://claude.ai/artifact/NDnUhrKktvWHT2
 
 - Cada demo conta-se pelo caminho `/demo/<curto>/` (igual em pachecost.com/demo/, demo.pachecost.com e pachecost-demos.netlify.app). Só o `index.html` conta; o `pt.html` é do Tomás.
 - Não contam: navegadores automáticos (ponte, testes) e quem abriu um link de demo com `#nao-contar` no fim (o Tomás faz isso uma vez em cada telemóvel e PC, ex. `https://pachecost.com/demo/fika/#nao-contar`).
-- Aberturas antes do contador entrar no ar não ficam registadas.
+- A contagem começa a 09/10/2026 (pedido do Tomás: dia 1 = 09/10); antes disso não conta.
+- Lotes «Caçador DD/MM» vêm das listas research/cacador/AAAA-MM-DD.md do ramo claude/cacador-diario-nkiz36.
 
 ## Rotina diária (19h de Iași)
 
