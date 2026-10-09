@@ -14,6 +14,8 @@
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
 #   rastrear   <url>                            cada salto de um redirecionamento (código, Location, servidor) → relatório
+#   goatcounter <desde AAAA-MM-DD> [ate]        visitas e eventos de pachecost.goatcounter.com → ponte/goatcounter.txt
+#                                               (precisa do segredo GOATCOUNTER_TOKEN; o token nunca vai para ficheiros)
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
 # fotogramas de herói.
@@ -42,6 +44,8 @@ jobs:
           fi
       - name: Pedidos
         if: steps.ha.outputs.n != '0'
+        env:
+          GC_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
         run: |
           python3 - <<'EOF'
           import io, os, shlex, subprocess, urllib.request
@@ -109,6 +113,27 @@ jobs:
                                          capture_output=True, text=True)
                       saltos = [l.strip() for l in r.stdout.splitlines() if l.lower().startswith(("http/", "location:", "server:", "x-nf-request-id", "cf-ray"))]
                       rel.append(f"ok  rastrear {p[1]}: " + " | ".join(saltos) + (f" ({r.stderr.strip()})" if r.stderr.strip() else ""))
+                  elif op == "goatcounter":
+                      import json as _j
+                      tok = os.environ.get("GC_TOKEN", "")
+                      if not tok:
+                          raise ValueError("falta o segredo GOATCOUNTER_TOKEN (GitHub → Settings → Secrets → Actions)")
+                      q = f"start={p[1]}T00:00:00Z" + (f"&end={p[2]}T23:59:59Z" if len(p) > 2 else "")
+                      def gc_api(cam):
+                          rq = urllib.request.Request("https://pachecost.goatcounter.com/api/v0/" + cam,
+                                                      headers={"Authorization": "Bearer " + tok, "Content-Type": "application/json", "User-Agent": UA})
+                          return _j.loads(urllib.request.urlopen(rq, timeout=60).read())
+                      linhas, excl = [], []
+                      for _ in range(10):
+                          r_ = gc_api(f"stats/hits?{q}&limit=100" + (f"&exclude_paths={','.join(excl)}" if excl else ""))
+                          for h in r_.get("hits", []):
+                              excl.append(str(h["path_id"]))
+                              linhas.append((h.get("count", 0), "evento" if h.get("event") else "página", h["path"], h.get("title", "")))
+                          if not r_.get("more"):
+                              break
+                      linhas.sort(key=lambda x: (x[2]))
+                      open("ponte/goatcounter.txt", "w", encoding="utf-8").write(f"GoatCounter {q}\n\n" + "\n".join(f"{c:6d}  {t:6s}  {pth}  ({ti})" for c, t, pth, ti in linhas) + "\n")
+                      rel.append(f"ok  goatcounter {q}: {len(linhas)} caminhos → ponte/goatcounter.txt")
                   else:
                       rel.append(f"ERRO linha {n}: operação desconhecida «{op}»")
               except Exception as ex:

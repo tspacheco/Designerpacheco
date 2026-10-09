@@ -416,7 +416,7 @@ const fs = require('fs');
     await p.evaluate(() => { const a = document.getElementById('diag-enviar'); a.addEventListener('click', e => e.preventDefault()); a.click(); });
     const avatar = await p.evaluate(() => !!document.querySelector('.diag-bot img'));
     if (!avatar) mal(`${k}: o fim do diagnóstico devia ter a foto do Tomás`);
-    const ev = await p.evaluate(() => window.__gc);
+    const ev = await p.evaluate(() => window.__gc.filter(x => x.startsWith("diagnostico/")));
     const pq = g.perguntas.map((q, i) => `diagnostico/pergunta-${String(i + 1).padStart(2, '0')}-${q.id}`);
     const esperado = ['diagnostico/aberto', pq[0], 'diagnostico/comecou', ...pq.slice(1), 'diagnostico/fim', 'diagnostico/enviado'];
     if (JSON.stringify(ev) !== JSON.stringify(esperado)) mal(`${k}, eventos do diagnóstico: ${ev.join(' ')}`);
@@ -738,6 +738,22 @@ const fs = require('fs');
       ok = await q.evaluate(() => !document.getElementById('diagnostico').open && location.hash === ''); }
     if (!ok) mal(`ligação direta ao diagnóstico (${lg} ${sufixo}): ${JSON.stringify(r)}`);
     else bem(`${lg}: ${sufixo} abre o diagnóstico com a foto, o nome logo no 1.º ecrã; conta «aberto» e «começou» no GoatCounter; fechar limpa o endereço`);
+    await c.close();
+  }
+
+  // cada separador conta como página no GoatCounter (pedido do Tomás, 09/10): inicio, solucoes, casos, sites
+  for (const lg of ['pt', 'en', 'ro']) {
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    await c.addInitScript(() => { window.__gc = []; const stub = { count: o => window.__gc.push(o.path) };
+      Object.defineProperty(window, 'goatcounter', { get: () => stub, set: () => {}, configurable: true }); });
+    const q = await c.newPage();
+    await q.goto(LINGUAS[lg].url);
+    await q.waitForTimeout(300);
+    for (const v of ['automatizari', 'cazuri', 'proiecte', 'consultanta']) { await q.click(`.tabs a[data-vista="${v}"]`); await q.waitForTimeout(50); }
+    const r = await q.evaluate(() => ({ base: location.host + location.pathname, gc: window.__gc.filter(x => !x.includes('/') || x.startsWith(location.host)) }));
+    const esperado = ['inicio', 'solucoes', 'casos', 'sites', 'inicio'].map(n => r.base + n);
+    if (JSON.stringify(r.gc) !== JSON.stringify(esperado)) mal(`${lg}: separadores no GoatCounter ${JSON.stringify(r.gc)}`);
+    else bem(`${lg}: cada separador conta como página no GoatCounter (${r.base}inicio, solucoes, casos, sites)`);
     await c.close();
   }
 

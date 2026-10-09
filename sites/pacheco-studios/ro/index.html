@@ -1600,6 +1600,7 @@ dialog.diag.fim .diag-ficha{display:block}
     });
     var mudou = atual !== v;
     atual = v;
+    if (mudou) contarVista(v);
     if (alvo && alvo.tagName === 'DETAILS') alvo.open = true;
     if (alvo && alvo.tagName === 'DIALOG') { if (alvo.classList.contains('esquema')) abrirEsquema(alvo); return; } // endereço partilhado: #esquema-lead abre o esquema (#diagnostico abre-se mais abaixo)
     if (!rolar) return;
@@ -1607,6 +1608,14 @@ dialog.diag.fim .diag-ficha{display:block}
     else alvo.scrollIntoView({ block: 'start' });
   }
   function vista() { ir(location.hash.slice(1), !!location.hash); }
+  // cada separador conta como página no GoatCounter: pachecost.com/inicio, /en/casos, ro.pachecost.com/sites…
+  // (o count.js chega depois, por isso a 1.ª vista espera pelo load)
+  var NOMES = { consultanta: 'inicio', automatizari: 'solucoes', cazuri: 'casos', proiecte: 'sites' };
+  function contarVista(v) {
+    var o = { path: location.host + location.pathname + NOMES[v], title: 'separador: ' + NOMES[v] };
+    function vai() { try { if (window.goatcounter && window.goatcounter.count) { window.goatcounter.count(o); return true; } } catch (e) {} return false; }
+    if (!vai()) window.addEventListener('load', function () { setTimeout(vai, 300); });
+  }
   // ligações internas (#…): trocam a vista sem depender do :target, por isso funcionam em qualquer lado
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest && ev.target.closest('a[href^="#"]');
