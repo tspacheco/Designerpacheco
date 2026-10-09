@@ -105,7 +105,7 @@
     "eyebrow": "Casos reais",
     "titlu": "Resultados reais. O próximo pode ser o teu.",
     "intro": "Estes resultados já aconteceram em negócios como o teu. O nosso trabalho é transformá-los nos resultados do teu negócio: o mesmo método, desenhado para ti e medido a partir do teu ponto de partida.",
-    "aviso": "Depoimentos e números publicados pelas próprias empresas. Cada negócio parte de um sítio diferente: por isso medimos o teu ponto de partida antes de começar.",
+    "aviso": "Cada negócio parte de um sítio diferente: por isso medimos o teu ponto de partida antes de começar.",
     "labels": {
       "problema": "O problema",
       "solucao": "O que fizeram",
@@ -147,7 +147,7 @@
           },
           {
             "v": "20 min → quase 0",
-            "l": "de espera na receção"
+            "l": "de espera por cliente na receção: ~23 h poupadas por semana por cada 10 clientes por dia (20 min × 7 dias)"
           }
         ],
         "problema": "Espera de até 20 minutos na receção, muitas faltas às consultas e uma equipa presa a tarefas repetitivas.",
@@ -194,7 +194,7 @@
         ],
         "problema": "Quatro pessoas a responder à mão no WhatsApp, a mandar fotos e tamanhos um a um, para mais de 300 contactos por dia.",
         "solucao": "Um assistente com IA no WhatsApp oficial responde na hora e leva o cliente a um catálogo onde escolhe o modelo e o tamanho. O vendedor só fecha a venda.",
-        "depo": "Hoje a IA responde 24 horas por dia. Ela não precisa parar, não precisa almoçar e consegue atender muito mais rápido."
+        "depo": "Hoje a IA responde 24 horas por dia… e consegue atender muito mais rápido."
       },
       "chopp": {
         "setor": "Bebidas para eventos · Brasil",
@@ -1346,7 +1346,8 @@
     "legal": "Livro de Reclamações",
     "aceite": "Ao usares este site aceitas os nossos termos: a {privacidade} e a {cookies}.",
     "privacidade": "política de privacidade",
-    "cookies": "política de cookies"
+    "cookies": "política de cookies",
+    "cartaz": "Cartaz grátis de avaliações Google"
   },
   "inapoi": "Voltar aos sites",
   "p404": {
@@ -1427,7 +1428,7 @@
     "de": "de",
     "fechar": "Fechar",
     "abertura": [
-      "Os negócios que põem a IA no sítio certo respondem mais depressa, perdem menos clientes e ganham horas por semana. Vamos ver onde é que isso está no teu?",
+      "Empresas que aplicam IA da forma certa estão a reduzir custos até 40% e a aumentar a receita sem aumentar a equipa. Primeiro, conversamos sem compromisso: são 8 perguntas rápidas para eu perceber o teu negócio.",
       "São 8 perguntas, menos de 2 minutos. Como te chamas?"
     ],
     "perguntas": [
@@ -1448,21 +1449,16 @@
         "wa": "Negócio"
       },
       {
-        "id": "tipo",
-        "tipo": "opcoes",
-        "msg": "Que tipo de negócio é?",
-        "opcoes": [
-          "Restaurante ou café",
-          "Clínica ou saúde",
-          "Salão, barbearia ou estética",
-          "Loja",
-          "Serviços com marcação",
-          "Outro"
-        ],
-        "wa": "Tipo",
-        "outro": "Outro",
-        "outro_rotulo": "Que tipo de negócio?",
-        "outro_ph": "Ex.: oficina, ginásio, escola de línguas"
+        "id": "email",
+        "tipo": "email",
+        "msg": "Qual é o teu e-mail?",
+        "rotulo": "O teu e-mail",
+        "ph": "nome@exemplo.pt",
+        "wa": "E-mail",
+        "gancho_de": "negocio",
+        "gancho": {
+          "*": "{negocio}, gosto do nome. Com isto já consigo ver como o teu negócio aparece online antes de falarmos."
+        }
       },
       {
         "id": "onde",
@@ -1470,7 +1466,11 @@
         "msg": "Em que cidade fica?",
         "rotulo": "Cidade",
         "ph": "Ex.: Faro",
-        "wa": "Cidade"
+        "wa": "Cidade",
+        "gancho_de": "email",
+        "gancho": {
+          "*": "Obrigado. Em quase todos os negócios, o tempo perde-se nos mesmos sítios: mensagens, marcações e clientes que não voltam."
+        }
       },
       {
         "id": "faturacao",
@@ -1486,7 +1486,11 @@
           "Mais de 50 000 €",
           "Prefiro não dizer"
         ],
-        "wa": "Faturação/mês"
+        "wa": "Faturação/mês",
+        "gancho_de": "onde",
+        "gancho": {
+          "*": "{onde}, boa. Em qualquer cidade, quem responde primeiro ao cliente fica com ele, e a IA responde a qualquer hora, até ao domingo à noite."
+        }
       },
       {
         "id": "dor",
@@ -1500,7 +1504,12 @@
           "Papelada, talões e faturas",
           "Redes sociais paradas"
         ],
-        "wa": "Onde se perde"
+        "wa": "Onde se perde",
+        "gancho_de": "faturacao",
+        "gancho": {
+          "7": "Sem problema, fica entre nós.",
+          "*": "Obrigado. Serve só para eu calcular o que cada melhoria vale para ti, em euros e não em promessas."
+        }
       },
       {
         "id": "canais",
@@ -1515,7 +1524,17 @@
           "Recomendação",
           "Plataformas (Glovo, Booking…)"
         ],
-        "wa": "Chegam por"
+        "wa": "Chegam por",
+        "gancho_de": "dor",
+        "gancho": {
+          "0": "É das fugas mais comuns e das mais rápidas de fechar: um assistente que responde em segundos, a qualquer hora, com o tom da tua casa.",
+          "1": "As faltas resolvem-se com lembretes e confirmação automática, e os buracos na agenda enchem-se com uma lista de espera que avisa sozinha.",
+          "2": "Trazer de volta quem já te conhece custa muito menos do que conquistar um cliente novo. E dá para automatizar.",
+          "3": "As avaliações pedem-se no momento certo, de forma automática. É das coisas que mais pesa no Google Maps.",
+          "4": "Talões e faturas lidos por IA e arrumados sozinhos: menos horas perdidas ao fim do mês.",
+          "5": "Redes paradas resolvem-se com um sistema que prepara as publicações por ti. Tu só aprovas.",
+          "*": "Percebo. Isso tem solução."
+        }
       },
       {
         "id": "contacto",
@@ -1523,7 +1542,11 @@
         "msg": "Último passo: para que número envio o diagnóstico?",
         "rotulo": "WhatsApp ou telefone",
         "ph": "+351 …",
-        "wa": "Contacto"
+        "wa": "Contacto",
+        "gancho_de": "canais",
+        "gancho": {
+          "*": "Perfeito, {nome}. Já tenho uma boa ideia de por onde começar no teu negócio."
+        }
       }
     ],
     "continuar": "Continuar",
@@ -1545,9 +1568,16 @@
     "ficha_t": "Ficha do teu negócio",
     "ficha_pe": "",
     "pergunta": "Pergunta",
-    "meta": "8 perguntas · menos de 2 minutos",
+    "meta": "8 perguntas · menos de 2 minutos · sem compromisso",
+    "quem_nome": "Tomás Pacheco",
+    "quem_papel": "Fundador da Pacheco Studios",
+    "quem_alt": "Tomás Pacheco, fundador da Pacheco Studios",
     "q_nome": "Como te chamas?",
-    "intro_t": "Vamos ver onde a IA entra no teu negócio."
+    "intro_t": "Queres descobrir como aplicar IA de forma eficaz?",
+    "pensa": "Tomás está a escrever…",
+    "mudar": "Toca para mudar esta resposta",
+    "enviar_msg": "Enviar",
+    "email_invalido": "Confirma o e-mail (ex.: nome@exemplo.pt)."
   },
   "cookies": {
     "titulo": "Política de cookies",

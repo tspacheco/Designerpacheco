@@ -11,6 +11,12 @@ Um só site, um só projeto no Netlify, dois domínios:
 No topo de cada página há o seletor **PT · EN · RO**. O RO leva a `ro.pachecost.com`; o PT e o EN ficam em
 `pachecost.com`. Os três têm as mesmas quatro vistas e o contacto no fim.
 
+> **Intro desligada desde 05/10 (pedido do Tomás, «por enquanto»).** Para a ligar: `INTRO_LIGADA = True` em `gerar.py`
+> e gerar de novo. O que segue descreve-a quando está ligada.
+>
+> **Vídeo do herói com o scroll também desligado desde 05/10:** fica a imagem `media/heroi.webp` parada. Para o ligar:
+> `HEROI_VIDEO = True` em `gerar.py`.
+
 Na primeira visita de cada sessão, antes do site, corre a **intro** (4 s): um compacto entra, passa pelo portal «Diagnóstico»
 (antes «Web design + marketing») e sai muscle car, passa pelo portal «Implementação de IA» e sai superdesportivo; arranca, aparece a
 marca com o slogan e o ecrã sobe para mostrar o site. Um toque, o botão «Saltar» ou Esc saltam-na. Não aparece ao
@@ -160,8 +166,14 @@ cabeçalho), para não competirem no Google com os sites dos próprios negócios
   (`pachecost.com/`, `ro.pachecost.com/`). As leituras do QR contam à parte, como o evento `qr/cartao`, e os
   cliques para o WhatsApp e o telefone como `ir/whatsapp` e `ir/telefone`. Cada esquema aberto conta como
   `esquema/<id>` (`esquema/programari`, por exemplo): dá para ver quais automações interessam mais.
-- **Medir o diagnóstico** (painel em https://pachecost.goatcounter.com, eventos em «diagnostico/…»): `aberto` (tocou
-  em «Conhece-nos») → `comecou` → `pergunta-01-nome` … `pergunta-08-contacto` (a 1.ª vez que chega a cada uma; a
+- **Diagnóstico com cara (06/10):** a foto do Tomás (`media/tomas.webp`, 360 px, recortada da selfie que ele enviou) vai
+  embutida no diagnóstico: grande no 1.º ecrã com nome e papel, pequena ao lado de cada pergunta e no fim. Textos em
+  `diagnostico.quem_*` e `abertura` nos três JSON (a abertura fala na 1.ª pessoa e diz «sem compromisso»).
+- **Link direto ao diagnóstico (anúncios):** `pachecost.com/#diagnostico` ou qualquer link com `utm_content=diag-…`
+  abre o diagnóstico logo ao chegar, sem a intro. Fechar volta à página inicial. Os links com `utm_content=web-…` não mudam.
+- **Medir o diagnóstico** (painel em https://pachecost.goatcounter.com; eventos em «diagnostico/…»): `aberto` (tocou
+  em «Conhece-nos»; o 1.º ecrã já pede o nome, por isso conta também `pergunta-01-nome`) → `comecou` (escreveu o nome; desde 06/10
+  não há botão «Começar») → `pergunta-02-negocio` … `pergunta-08-contacto` (a 1.ª vez que chega a cada uma; a
   diferença entre duas seguidas é quem desistiu ali) → `fim` → `enviado` (tocou em «Enviar pelo WhatsApp»; é o número
   que conta). No pixel da Meta, `enviado` vai como `Lead`. `ir/whatsapp` conta só os outros botões de WhatsApp.
 - **Sem faixa de cookies (decisão do Tomás, 04/10):** nada aparece ao abrir o site. O rodapé diz «Ao usares este site

@@ -105,7 +105,7 @@
     "eyebrow": "Cazuri reale",
     "titlu": "Rezultate reale. Următorul poate fi al tău.",
     "intro": "Aceste rezultate s-au întâmplat deja în afaceri ca a ta. Treaba noastră e să le transformăm în rezultatele afacerii tale: aceeași metodă, desenată pentru tine și măsurată de la punctul tău de plecare.",
-    "aviso": "Mărturii și cifre publicate chiar de firme, traduse din portugheză. Fiecare afacere pornește din alt loc: de aceea măsurăm punctul tău de plecare înainte să începem.",
+    "aviso": "Fiecare afacere pornește din alt loc: de aceea măsurăm punctul tău de plecare înainte să începem.",
     "labels": {
       "problema": "Problema",
       "solucao": "Ce au făcut",
@@ -147,7 +147,7 @@
           },
           {
             "v": "20 min → aproape 0",
-            "l": "de așteptare la recepție"
+            "l": "de așteptare per client la recepție: ~23 h economisite pe săptămână la fiecare 10 clienți pe zi (20 min × 7 zile)"
           }
         ],
         "problema": "Până la 20 de minute de așteptare la recepție, multe neprezentări și o echipă blocată în sarcini repetitive.",
@@ -194,7 +194,7 @@
         ],
         "problema": "Patru oameni răspundeau de mână pe WhatsApp, trimițând poze și mărimi una câte una, pentru peste 300 de contacte pe zi.",
         "solucao": "Un asistent AI pe WhatsApp-ul oficial răspunde pe loc și duce clientul într-un catalog unde alege modelul și mărimea. Vânzătorul doar închide vânzarea.",
-        "depo": "Azi AI-ul răspunde 24 de ore din 24. Nu trebuie să se oprească, nu trebuie să ia prânzul și poate servi oamenii mult mai repede."
+        "depo": "Azi AI-ul răspunde 24 de ore din 24… și poate servi oamenii mult mai repede."
       },
       "chopp": {
         "setor": "Băuturi pentru evenimente · Brazilia",
@@ -1346,7 +1346,8 @@
     "legal": "Livro de Reclamações (Portugalia)",
     "aceite": "Folosind site-ul, accepți termenii noștri: {privacidade} și {cookies}.",
     "privacidade": "politica de confidențialitate",
-    "cookies": "politica de cookie-uri"
+    "cookies": "politica de cookie-uri",
+    "cartaz": "Afiș gratuit pentru recenzii Google"
   },
   "inapoi": "Înapoi la site-uri",
   "p404": {
@@ -1427,7 +1428,7 @@
     "de": "din",
     "fechar": "Închide",
     "abertura": [
-      "Afacerile care pun AI-ul unde trebuie răspund mai repede, pierd mai puțini clienți și câștigă ore pe săptămână. Hai să vedem unde e asta la tine?",
+      "Companiile care aplică AI-ul corect își reduc costurile cu până la 40% și cresc veniturile fără să mărească echipa. Mai întâi stăm de vorbă, fără obligații: 8 întrebări rapide ca să-ți înțeleg afacerea.",
       "Sunt 8 întrebări, sub 2 minute. Cum te cheamă?"
     ],
     "perguntas": [
@@ -1448,21 +1449,16 @@
         "wa": "Afacere"
       },
       {
-        "id": "tipo",
-        "tipo": "opcoes",
-        "msg": "Ce fel de afacere e?",
-        "opcoes": [
-          "Restaurant sau cafenea",
-          "Clinică sau sănătate",
-          "Salon, frizerie sau estetică",
-          "Magazin",
-          "Servicii cu programare",
-          "Altceva"
-        ],
-        "wa": "Tip",
-        "outro": "Altceva",
-        "outro_rotulo": "Ce fel de afacere?",
-        "outro_ph": "Ex.: service auto, sală de fitness, școală de limbi"
+        "id": "email",
+        "tipo": "email",
+        "msg": "Care e adresa ta de e-mail?",
+        "rotulo": "E-mailul tău",
+        "ph": "nume@exemplu.ro",
+        "wa": "E-mail",
+        "gancho_de": "negocio",
+        "gancho": {
+          "*": "{negocio}, îmi place numele. Așa pot deja să văd cum apare afacerea ta online înainte să vorbim."
+        }
       },
       {
         "id": "onde",
@@ -1470,7 +1466,11 @@
         "msg": "În ce oraș e?",
         "rotulo": "Oraș",
         "ph": "Ex.: Iași",
-        "wa": "Oraș"
+        "wa": "Oraș",
+        "gancho_de": "email",
+        "gancho": {
+          "*": "Mulțumesc. Aproape în orice afacere, timpul se pierde în aceleași locuri: mesaje, programări și clienți care nu mai revin."
+        }
       },
       {
         "id": "faturacao",
@@ -1486,7 +1486,11 @@
           "Peste 250.000 lei",
           "Prefer să nu spun"
         ],
-        "wa": "Încasări/lună"
+        "wa": "Încasări/lună",
+        "gancho_de": "onde",
+        "gancho": {
+          "*": "{onde}, super. În orice oraș, cine îi răspunde primul clientului îl câștigă, iar AI-ul răspunde la orice oră, chiar și duminică seara."
+        }
       },
       {
         "id": "dor",
@@ -1500,7 +1504,12 @@
           "Hârțoage, bonuri și facturi",
           "Rețele sociale abandonate"
         ],
-        "wa": "Unde se pierde"
+        "wa": "Unde se pierde",
+        "gancho_de": "faturacao",
+        "gancho": {
+          "7": "Nicio problemă, rămâne între noi.",
+          "*": "Mulțumesc. Îmi trebuie doar ca să calculez cât valorează fiecare îmbunătățire pentru tine, în lei, nu în promisiuni."
+        }
       },
       {
         "id": "canais",
@@ -1515,7 +1524,17 @@
           "Recomandări",
           "Platforme (Glovo, Booking…)"
         ],
-        "wa": "Clienții vin din"
+        "wa": "Clienții vin din",
+        "gancho_de": "dor",
+        "gancho": {
+          "0": "E una dintre cele mai dese pierderi și una dintre cele mai rapide de oprit: un asistent care răspunde în câteva secunde, la orice oră, pe tonul casei tale.",
+          "1": "Neprezentările se rezolvă cu mementouri și confirmări automate, iar golurile din agendă se umplu cu o listă de așteptare care anunță singură.",
+          "2": "Să-i aduci înapoi pe cei care te cunosc deja costă mult mai puțin decât un client nou. Și se poate automatiza.",
+          "3": "Recenziile se cer la momentul potrivit, automat. E unul dintre lucrurile care contează cel mai mult pe Google Maps.",
+          "4": "Bonuri și facturi citite de AI și aranjate singure: mai puține ore pierdute la final de lună.",
+          "5": "Rețelele abandonate se rezolvă cu un sistem care pregătește postările pentru tine. Tu doar aprobi.",
+          "*": "Înțeleg. Are rezolvare."
+        }
       },
       {
         "id": "contacto",
@@ -1523,7 +1542,11 @@
         "msg": "Ultimul pas: pe ce număr îți trimit diagnosticul?",
         "rotulo": "WhatsApp sau telefon",
         "ph": "+40 …",
-        "wa": "Contact"
+        "wa": "Contact",
+        "gancho_de": "canais",
+        "gancho": {
+          "*": "Perfect, {nome}. Am deja o idee bună de unde să încep în afacerea ta."
+        }
       }
     ],
     "continuar": "Continuă",
@@ -1545,9 +1568,16 @@
     "ficha_t": "Fișa afacerii tale",
     "ficha_pe": "",
     "pergunta": "Întrebarea",
-    "meta": "8 întrebări · sub 2 minute",
+    "meta": "8 întrebări · sub 2 minute · fără obligații",
+    "quem_nome": "Tomás Pacheco",
+    "quem_papel": "Fondator Pacheco Studios",
+    "quem_alt": "Tomás Pacheco, fondatorul Pacheco Studios",
     "q_nome": "Cum te cheamă?",
-    "intro_t": "Hai să vedem unde intră AI-ul în afacerea ta."
+    "intro_t": "Vrei să afli cum să aplici AI-ul eficient?",
+    "pensa": "Tomás scrie…",
+    "mudar": "Atinge ca să schimbi răspunsul",
+    "enviar_msg": "Trimite",
+    "email_invalido": "Verifică e-mailul (ex.: nume@exemplu.ro)."
   },
   "cookies": {
     "titulo": "Politica de cookie-uri",

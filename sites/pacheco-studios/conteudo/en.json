@@ -105,7 +105,7 @@
     "eyebrow": "Real cases",
     "titlu": "Real results. The next one could be yours.",
     "intro": "These results have already happened in businesses like yours. Our job is to turn them into results for your business: the same method, designed for you and measured from your starting point.",
-    "aviso": "Testimonials and numbers published by the companies themselves, translated from Portuguese. Every business starts from a different place: that's why we measure your starting point before we begin.",
+    "aviso": "Every business starts from a different place: that's why we measure your starting point before we begin.",
     "labels": {
       "problema": "The problem",
       "solucao": "What they did",
@@ -147,7 +147,7 @@
           },
           {
             "v": "20 min → almost 0",
-            "l": "waiting at the front desk"
+            "l": "waiting per client at the front desk: ~23 h saved per week for every 10 clients a day (20 min × 7 days)"
           }
         ],
         "problema": "Up to 20 minutes waiting at the front desk, many missed appointments and a team stuck on repetitive tasks.",
@@ -194,7 +194,7 @@
         ],
         "problema": "Four people answering WhatsApp by hand, sending photos and sizes one by one, for more than 300 contacts a day.",
         "solucao": "An AI assistant on the official WhatsApp answers instantly and takes the customer to a catalogue where they pick the model and size. The salesperson just closes the sale.",
-        "depo": "Today the AI answers 24 hours a day. It doesn't need to stop, it doesn't need lunch, and it can serve people much faster."
+        "depo": "Today the AI answers 24 hours a day… and it can serve people much faster."
       },
       "chopp": {
         "setor": "Drinks for events · Brazil",
@@ -1346,7 +1346,8 @@
     "legal": "Livro de Reclamações (complaints book)",
     "aceite": "By using this site you accept our terms: the {privacidade} and the {cookies}.",
     "privacidade": "privacy policy",
-    "cookies": "cookie policy"
+    "cookies": "cookie policy",
+    "cartaz": "Free Google review poster"
   },
   "inapoi": "Back to websites",
   "p404": {
@@ -1427,7 +1428,7 @@
     "de": "of",
     "fechar": "Close",
     "abertura": [
-      "Businesses that put AI in the right place answer faster, lose fewer customers and win back hours every week. Shall we see where that is in yours?",
+      "Companies that apply AI the right way are cutting costs by up to 40% and growing revenue without growing the team. First, we talk with no commitment: 8 quick questions so I can understand your business.",
       "It's 8 questions, under 2 minutes. What's your name?"
     ],
     "perguntas": [
@@ -1448,21 +1449,16 @@
         "wa": "Business"
       },
       {
-        "id": "tipo",
-        "tipo": "opcoes",
-        "msg": "What kind of business is it?",
-        "opcoes": [
-          "Restaurant or café",
-          "Clinic or health",
-          "Salon, barber or beauty",
-          "Shop",
-          "Services by appointment",
-          "Other"
-        ],
-        "wa": "Type",
-        "outro": "Other",
-        "outro_rotulo": "What kind of business?",
-        "outro_ph": "E.g. garage, gym, language school"
+        "id": "email",
+        "tipo": "email",
+        "msg": "What's your email?",
+        "rotulo": "Your email",
+        "ph": "name@example.com",
+        "wa": "Email",
+        "gancho_de": "negocio",
+        "gancho": {
+          "*": "{negocio}, I like the name. With that I can already see how your business shows up online before we talk."
+        }
       },
       {
         "id": "onde",
@@ -1470,7 +1466,11 @@
         "msg": "Which city is it in?",
         "rotulo": "City",
         "ph": "E.g. Lisbon",
-        "wa": "City"
+        "wa": "City",
+        "gancho_de": "email",
+        "gancho": {
+          "*": "Thanks. In almost every business, time gets lost in the same places: messages, bookings and customers who don't come back."
+        }
       },
       {
         "id": "faturacao",
@@ -1486,7 +1486,11 @@
           "Over €50,000",
           "I’d rather not say"
         ],
-        "wa": "Monthly revenue"
+        "wa": "Monthly revenue",
+        "gancho_de": "onde",
+        "gancho": {
+          "*": "{onde}, great. In any town, whoever answers the customer first gets them, and AI answers at any hour, even on a Sunday night."
+        }
       },
       {
         "id": "dor",
@@ -1500,7 +1504,12 @@
           "Paperwork, receipts and invoices",
           "Idle social media"
         ],
-        "wa": "Losing most at"
+        "wa": "Losing most at",
+        "gancho_de": "faturacao",
+        "gancho": {
+          "7": "No problem, that stays between us.",
+          "*": "Thanks. It's only so I can work out what each improvement is worth to you, in euros, not promises."
+        }
       },
       {
         "id": "canais",
@@ -1515,7 +1524,17 @@
           "Word of mouth",
           "Platforms (Glovo, Booking…)"
         ],
-        "wa": "Customers come from"
+        "wa": "Customers come from",
+        "gancho_de": "dor",
+        "gancho": {
+          "0": "That's one of the most common leaks and one of the quickest to close: an assistant that replies in seconds, at any hour, in your business's tone.",
+          "1": "No-shows are solved with automatic reminders and confirmations, and gaps in the diary fill up with a waiting list that notifies people on its own.",
+          "2": "Bringing back people who already know you costs far less than winning a new customer. And it can be automated.",
+          "3": "Reviews are best asked for at the right moment, automatically. It's one of the things that matters most on Google Maps.",
+          "4": "Receipts and invoices read by AI and filed on their own: fewer hours lost at the end of the month.",
+          "5": "Idle social media is solved with a system that drafts the posts for you. You just approve.",
+          "*": "I see. That can be solved."
+        }
       },
       {
         "id": "contacto",
@@ -1523,7 +1542,11 @@
         "msg": "Last step: which number should I send the diagnosis to?",
         "rotulo": "WhatsApp or phone",
         "ph": "+44 …",
-        "wa": "Contact"
+        "wa": "Contact",
+        "gancho_de": "canais",
+        "gancho": {
+          "*": "Perfect, {nome}. I already have a good idea of where to start in your business."
+        }
       }
     ],
     "continuar": "Continue",
@@ -1545,9 +1568,16 @@
     "ficha_t": "Your business sheet",
     "ficha_pe": "",
     "pergunta": "Question",
-    "meta": "8 questions · under 2 minutes",
+    "meta": "8 questions · under 2 minutes · no commitment",
+    "quem_nome": "Tomás Pacheco",
+    "quem_papel": "Founder, Pacheco Studios",
+    "quem_alt": "Tomás Pacheco, founder of Pacheco Studios",
     "q_nome": "What's your name?",
-    "intro_t": "Let's see where AI fits in your business."
+    "intro_t": "Want to find out how to apply AI effectively?",
+    "pensa": "Tomás is typing…",
+    "mudar": "Tap to change this answer",
+    "enviar_msg": "Send",
+    "email_invalido": "Check the email (e.g. name@example.com)."
   },
   "cookies": {
     "titulo": "Cookie policy",
