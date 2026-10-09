@@ -170,5 +170,8 @@ jobs:
           git reset -q -- .github/ponte.txt
           if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
           git commit -q -m "Ponte: pedidos de .github/ponte.txt"
-          git pull -q --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          # pedidos em paralelo no mesmo ramo escrevem todos ponte/relatorio.txt: em conflito fica o desta corrida
+          for i in 1 2 3 4; do
+            git pull -q --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break
+            sleep $((i * 5))
+          done
