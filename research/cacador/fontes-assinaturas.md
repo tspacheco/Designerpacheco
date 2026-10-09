@@ -29,3 +29,28 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-09 | ambiental-covoare | Domine | O tapete que se desenrola |
 | 2026-10-09 | vulcanizare-miroslava | Alumni Sans | O rasto do pneu |
 | 2026-10-09 | anton-giovani | Sedan | O livro de amostras |
+| 2026-10-09 | pescaria-galata | Podkova | A balança de ponteiro |
+| 2026-10-09 | pescaria-noastra | Rasa | A rede |
+| 2026-10-09 | piscicola | Aleo | O tanque |
+| 2026-10-09 | polar-cars | Saira Stencil One | A bússola polar |
+| 2026-10-09 | atelier-madi | Belleza | O ramo que se ata |
+| 2026-10-09 | idalia | Linden Hill | O herbário |
+| 2026-10-09 | be3concept | Unica One | As três gotas |
+| 2026-10-09 | elephant-car-wash | Sansita | A tromba |
+| 2026-10-09 | beer-house | Inknut Antiqua | O copo que espuma |
+| 2026-10-09 | crys-grill | Fjalla One | A grelha |
+| 2026-10-09 | status-coffee | Wittgenstein | A barra de estado |
+| 2026-10-09 | fresco-jugo | Mali | O espremedor |
+| 2026-10-09 | dynamite-pacurari | Teko | O rastilho |
+| 2026-10-09 | roxette | Grenze | A cassete |
+| 2026-10-09 | vogue-pacurari | Bona Nova SC | A capa de revista |
+| 2026-10-09 | cosmetica-pacurari | Rosario | A gota de sérum |
+| 2026-10-09 | pilates-fusion | Nata Sans | A coluna que se alinha |
+| 2026-10-09 | swallow-pilates | Yrsa | A andorinha |
+| 2026-10-09 | mop-vet | Merriweather Sans | O estetoscópio |
+| 2026-10-09 | vet-point-of-care | Spline Sans | A triagem |
+| 2026-10-09 | pethealth | Kurale | O boletim de vacinas |
+| 2026-10-09 | total-fauna | Sono | As pegadas |
+| 2026-10-09 | niobal-auto | Asap Condensed | O painel de bordo |
+| 2026-10-09 | reglare-unghiuri | Danfo | A geometria |
+| 2026-10-09 | vulcanizarea-galata | Climate Crisis | O manómetro |
