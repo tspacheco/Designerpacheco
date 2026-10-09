@@ -13,7 +13,12 @@ Só as linhas «publicada» levam mensagem; as outras aparecem numa tabela no fi
 import csv, sys, urllib.parse
 
 # Mensagem nova do Tomás (08/10, a partir da Star Service Auto do lote 4); texto igual ao de sites/demos-pachecost/LOTE4-IASI.md
-MSG = ("Bună ziua! Sunt Tomás, de la Pacheco Studios.\n\n"
+# Só a saudação roda (09/10: o WhatsApp bloqueou o Tomás por spam com textos iguais de 10 em 10 s); o resto é fixo.
+SAUDACOES = ("Bună ziua! Sunt Tomás, de la Pacheco Studios.",
+             "Bună ziua, {nome}! Sunt Tomás, de la Pacheco Studios.",
+             "Bună! Mă numesc Tomás și lucrez la Pacheco Studios.",
+             "Bună ziua! Aici Tomás, de la Pacheco Studios.")
+MSG = ("{saudacao}\n\n"
        "Căutați să creșteți cu 10% până la 30% numărul de clienți, luna aceasta și în continuare? "
        "Iată soluția pe care am creat-o după ce m-am uitat la afacerea dumneavoastră:\n{demo}\n\n"
        "Poate nu înțelegeți încă, dar credeți-mă, așa va fi. Haideți să stabilim o oră ca să implementăm această soluție.")
@@ -37,6 +42,9 @@ def main(caminho):
     print(f"{len(pub)} demos prontas. Nenhum número com «WhatsApp: ?» está confirmado: toca em **Abrir no WhatsApp**; "
           "se o WhatsApp disser que o número não está registado, usa **Enviar por SMS** (mesmo texto) ou passa lá "
           "com a demo aberta. Depois diz-me quais falharam.\n")
+    print("**Envio:** no mínimo **1 minuto** entre mensagens (a 09/10 o WhatsApp bloqueou um dia por envios de 10 em 10 s). "
+          "A saudação já vem variada de mensagem para mensagem; não envies duas iguais seguidas.\n")
+    ordem = 0
     for corrida in ("A", "B"):
         grupo = [l for l in pub if l["corrida"] == corrida]
         if not grupo:
@@ -46,7 +54,8 @@ def main(caminho):
             print(f"### {zona}\n")
             for l in (x for x in grupo if x["zona"] == zona):
                 demo = f"https://pachecost.com/demo/{l['slug']}/"
-                texto = MSG.format(descricao=l["descricao"], demo=demo)
+                texto = MSG.format(saudacao=SAUDACOES[ordem % len(SAUDACOES)].format(nome=l["nome"]), demo=demo)
+                ordem += 1
                 q = urllib.parse.quote
                 mapa = "https://www.google.com/maps/search/?api=1&query=" + q(f"{l['nome']}, {l['morada']}, Iași")
                 print(f"#### {l['nome']}\nDemo: {demo}  \nTel.: {l['tel']} · WhatsApp: {l['whatsapp']}  \n"
