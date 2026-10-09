@@ -15,7 +15,7 @@ Cada construtor recebe 3 a 4 negócios (linha do `AAAA-MM-DD.tsv` + brief em `br
 - Um só `<h1>`, JSON-LD do negócio, `prefers-reduced-motion`, `:focus-visible`, contraste AA, banner «PREZENTARE PACHECO STUDIOS» (como nas outras demos), rodapé com ANPC SAL + ODR (como o site de referência).
 - **HONEST-DATA:** só o que está na ficha (nome, nota, nº de avaliações, telefone, morada, horário, categoria, avaliações). O que falta fica «de confirmat»; preços nunca inventados. Nada de notas sobre a origem dos dados; no máximo um selo «de confirmat».
 - **CTA:** WhatsApp «?» → botão principal **Sună** (tel:) e o pedido do formulário sai por WhatsApp ou SMS; WhatsApp «sim» → WhatsApp; fixo → só **Sună**.
-- Fotos: fundo SVG inline sempre, `<img>` por cima com `onerror`. Sem fotos → site ilustrado, nunca fotos falsas.
+- Fotos: usar só ficheiros diretamente em `media/` (o motor das demos não copia subpastas: copiar de `media/g/` para `media/<nome>.webp`). Fundo SVG inline sempre, `<img>` por cima com `onerror`. Sem fotos → site ilustrado, nunca fotos falsas.
 - Assinatura visual do brief, coreografada: sequência de entrada no herói, micro-interações, estados impecáveis. A funcionalidade que vende (marcação, pedido, montador, etc.) tem de funcionar de ponta a ponta.
 
 ## Verificar antes de entregar

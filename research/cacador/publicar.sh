@@ -9,7 +9,7 @@ git -C "$R" fetch -q origin $DEM
 cd "$WT" && git checkout -q --detach origin/$DEM && git reset -q --hard origin/$DEM
 for s in "$@"; do
   rm -rf "sites/$s"; mkdir -p "sites/$s"
-  (cd "$R/sites/$s" && tar cf - --exclude='_fontes' --exclude='*.zip' .) | (cd "sites/$s" && tar xf -)
+  (cd "$R/sites/$s" && tar cf - --exclude='_fontes' --exclude='*.zip' --exclude='./media/g' .) | (cd "sites/$s" && tar xf -)
 done
 python3 - "$DATA" "$@" <<'PY'
 import sys,re
