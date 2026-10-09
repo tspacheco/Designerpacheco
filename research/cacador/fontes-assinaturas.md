@@ -41,7 +41,7 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-09 | crys-grill | Fjalla One | A grelha |
 | 2026-10-09 | status-coffee | Wittgenstein | A barra de estado |
 | 2026-10-09 | fresco-jugo | Mali | O espremedor |
-| 2026-10-09 | dynamite-pacurari | Teko | O rastilho |
+| 2026-10-09 | dynamite-pacurari | Antonio (Teko já usada) | O rastilho |
 | 2026-10-09 | roxette | Grenze | A cassete |
 | 2026-10-09 | vogue-pacurari | Bona Nova SC | A capa de revista |
 | 2026-10-09 | cosmetica-pacurari | Rosario | A gota de sérum |
