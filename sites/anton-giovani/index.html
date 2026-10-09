@@ -194,44 +194,37 @@ html.rev .limbi .doar-rev{display:block}
 .nota b{font:400 2.4rem/1 var(--f-disp);color:var(--verde)}
 .nota .stele{display:flex;gap:2px;color:var(--alama);margin-bottom:2px}
 .stele svg{width:14px;height:14px}
-/* atelierul: fotoliul + mostrarul */
-.atelier{position:relative;min-height:470px}
-.fotoliu{position:absolute;left:0;bottom:0;width:74%;height:auto;filter:drop-shadow(0 30px 30px rgba(26,31,28,.25))}
-.fotoliu .tes{transition:fill .01s}
-.fotoliu .imbraca{clip-path:inset(100% 0 0 0)}
-.gata .fotoliu .imbraca{animation:imbraca 1.2s cubic-bezier(.6,0,.2,1) .5s both}
-@keyframes imbraca{to{clip-path:inset(0 0 0 0)}}
-.mostrar{position:absolute;right:0;top:0;width:min(232px,44%);perspective:1100px;z-index:2}
-.inel{position:relative;height:30px;background:linear-gradient(#2A2F2C,#121513);border-radius:6px 6px 2px 2px;z-index:20;box-shadow:0 6px 10px -6px rgba(0,0,0,.6)}
-.inel::before,.inel::after{content:"";position:absolute;top:-12px;width:20px;height:26px;border:4px solid #B9BDB8;border-bottom:0;border-radius:12px 12px 0 0}
-.inel::before{left:24%}.inel::after{right:24%}
-.inel span{position:absolute;left:0;right:0;top:9px;text-align:center;font:600 .58rem/1 var(--f-mono);letter-spacing:.18em;color:#C9CEC9}
-.pagini{position:relative;height:300px;cursor:pointer}
-.pag{position:absolute;left:0;right:0;top:0;height:270px;transform-origin:50% 0;transition:transform .7s cubic-bezier(.3,.7,.2,1),opacity .5s;background:var(--alb);
-  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/14px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/14px 100%;box-shadow:0 2px 0 rgba(0,0,0,.05)}
-.pag svg{position:absolute;inset:0;width:100%;height:100%}
-.pag .luciu{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.18),transparent 40%,rgba(0,0,0,.18));pointer-events:none}
-.pag .et{position:absolute;left:12px;right:12px;bottom:22px;background:var(--alb);padding:9px 11px 8px;box-shadow:0 4px 10px -6px rgba(0,0,0,.5)}
-.pag .et b{display:block;font:400 1.25rem/1.05 var(--f-disp)}
-.pag .et small{display:flex;justify-content:space-between;gap:8px;font:600 .66rem/1.2 var(--f-mono);color:var(--text-3);letter-spacing:.04em;margin-top:4px}
-.pag.dus{transform:rotateX(-112deg);opacity:0;pointer-events:none}
-.mostrar-ctl{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
-.mostrar-ctl button{width:46px;height:46px;border-radius:50%;border:0;background:var(--verde);color:#fff;cursor:pointer;display:grid;place-items:center;transition:transform .15s,background .2s}
-.mostrar-ctl button:hover{background:var(--verde-2)}
-.mostrar-ctl button:active{transform:scale(.92)}
-.mostrar-ctl button svg{width:18px;height:18px}
-.mostrar-ctl output{font:600 .74rem/1.3 var(--f-mono);color:var(--ink);text-align:center;background:var(--alb);padding:6px 9px;border-radius:4px;box-shadow:0 4px 10px -6px rgba(0,0,0,.4)}
+/* atelierul: fotografii reale */
+.atelier{position:relative;aspect-ratio:1/1.02;width:100%;max-width:600px;justify-self:end}
+.a-foto{position:absolute;margin:0;overflow:hidden;background:var(--verde-2);border-radius:6px;box-shadow:0 30px 50px -30px rgba(26,31,28,.55)}
+.a-foto img{width:100%;height:100%;object-fit:cover}
+.a-foto>svg{position:absolute;inset:0;width:100%;height:100%}
+.a-foto img{position:relative}
+.a-mare{right:0;top:0;width:68%;aspect-ratio:3/4}
+.a-mic{left:0;bottom:0;width:42%;aspect-ratio:9/13;border:6px solid var(--alb);z-index:2}
+.a-mic img{object-position:50% 30%}
+.a-et{position:absolute;z-index:3;font:400 .74rem/1.35 var(--f-mono);color:var(--ink);background:var(--alb);padding:7px 10px 7px 22px;border-radius:3px;background-image:radial-gradient(circle at 10px 50%,var(--alama) 0 3.5px,transparent 4px);box-shadow:0 8px 16px -10px rgba(0,0,0,.5);white-space:nowrap}
+.a-et1{right:12px;top:14px}
+.a-et2{left:18px;bottom:18px}
+.tinte-a{position:absolute;left:30%;right:0;bottom:-14px;height:10px;background:radial-gradient(circle at 5px 5px,#F2DB9E 0,#B8893A 2.6px,#6E4A0E 4px,transparent 4.6px) 0 0/18px 10px repeat-x;z-index:1}
+.js .a-mare{clip-path:inset(100% 0 0 0)}
+.js .a-mare img{transform:scale(1.12)}
+.js .a-mic{opacity:0;transform:translate(-18px,24px) rotate(-3deg)}
+.js .a-et,.js .tinte-a{opacity:0}
+.gata .a-mare{animation:imbraca 1.25s cubic-bezier(.65,0,.2,1) .35s both}
+.gata .a-mare img{transition:transform 2s var(--ease) .35s;transform:none}
+.gata .a-mic{opacity:1;transform:rotate(-2deg);transition:opacity .7s var(--ease) 1.15s,transform .9s var(--ease) 1.15s}
+.gata .tinte-a{opacity:1;transition:opacity .6s 1.5s;animation:tinte 1s steps(12) 1.5s both}
+.gata .a-et1{animation:sus .6s var(--ease) 1.7s both}.gata .a-et2{animation:sus .6s var(--ease) 1.9s both}
+@keyframes imbraca{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes tinte{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 .js .erou .ochi,.js .erou h1 .r,.js .erou .lead,.js .erou-cta,.js .nota{opacity:0}
-.js .pag{opacity:0}
 .gata .erou .ochi{animation:sus .6s var(--ease) both}
 .gata .erou h1 .r{animation:sus .7s var(--ease) both}
 .gata .erou h1 .r:nth-child(1){animation-delay:.1s}.gata .erou h1 .r:nth-child(2){animation-delay:.24s}
 .gata .erou .lead{animation:sus .7s var(--ease) .45s both}
 .gata .erou-cta{animation:sus .7s var(--ease) .6s both}
 .gata .erou .nota{animation:sus .7s var(--ease) .75s both}
-.gata .pag{opacity:1;animation:cade .8s cubic-bezier(.2,.8,.2,1) both}
-.gata .pag.dus{opacity:0;animation:none}
-@keyframes cade{from{transform:rotateX(-95deg);opacity:0}to{opacity:1}}
 @keyframes sus{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 /* bandă */
@@ -245,7 +238,13 @@ html.rev .limbi .doar-rev{display:block}
 .mobila{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
 .m-card{position:relative;background:var(--alb);border-radius:6px;padding:20px 20px 18px;box-shadow:inset 0 0 0 1px var(--hartie-2);display:flex;flex-direction:column;text-decoration:none;transition:transform .25s var(--ease),box-shadow .25s}
 .m-card:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px var(--alama),0 22px 30px -24px rgba(26,31,28,.6)}
-.m-card svg{width:100%;height:130px;margin-bottom:12px}
+.m-card .m-f{position:relative;margin:-20px -20px 16px;aspect-ratio:4/3;overflow:hidden;border-radius:6px 6px 0 0;background:var(--verde-2)}
+.m-card .m-f>svg{position:absolute;inset:0;width:100%;height:100%}
+.m-card .m-f img{position:relative;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.m-card:hover .m-f img{transform:scale(1.04)}
+.m-card .m-f small{position:absolute;left:10px;bottom:10px;font:400 .7rem/1.3 var(--f-mono);background:var(--alb);color:var(--ink);padding:5px 8px;border-radius:3px}
+.m-card.alta{background:var(--verde);box-shadow:none;color:#fff;justify-content:center}
+.m-card.alta h3{color:#fff}.m-card.alta p{color:#D5DDD8}.m-card.alta .lnk{color:var(--alama-2,#E3C27A)}
 .m-card h3{font-size:1.65rem;margin-bottom:4px}
 .m-card p{margin:0;color:var(--text-2);font-size:.97rem}
 .m-card .jos-c{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:14px;flex-wrap:wrap}
@@ -315,9 +314,6 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
 .foto>svg{position:absolute;inset:0;width:100%;height:100%}
 .foto img{position:relative;width:100%;height:100%;object-fit:cover}
 .foto figcaption{position:absolute;left:10px;bottom:10px;font:400 .74rem/1.35 var(--f-mono);color:var(--ink);background:var(--alb);padding:7px 10px 7px 22px;border-radius:3px;max-width:calc(100% - 20px);background-image:radial-gradient(circle at 10px 50%,var(--alama) 3px,transparent 3.5px)}
-.galerie{display:grid;grid-auto-flow:dense;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px;margin-top:34px}
-.galerie .foto:nth-child(1){grid-column:span 2;grid-row:span 2}
-.galerie .foto.w{grid-column:span 2}
 
 /* program, contact */
 .ora{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
@@ -375,9 +371,7 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
   .erou-in{grid-template-columns:1fr;gap:20px;padding-top:30px}
   .erou::after{background:linear-gradient(180deg,var(--hartie) 0 40%,rgba(233,235,228,.55) 70%,var(--tint))}
   .erou h1{font-size:clamp(2.6rem,11vw,3.5rem)}
-  .atelier{min-height:390px;max-width:520px;width:100%;margin:0 auto}
-  .pagini{height:270px}
-  .pag{height:240px}
+  .atelier{max-width:520px;margin:0 auto}
   .pasi{grid-template-columns:1fr}
   .cer,.ora,.contact{grid-template-columns:1fr}
   .fisa-wrap{position:static;margin-top:14px}
@@ -385,7 +379,6 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
   .rodape-grid>div:first-child{grid-column:1/-1}
   .jos{display:grid}
   .bara .bara-tel{display:none}
-  .galerie{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
 }
 @media (max-width:560px){
   .lat{width:min(1180px,100% - 32px)}
@@ -393,16 +386,12 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
   .limbi button{min-width:34px;padding:9px 6px}
   .mobila{grid-template-columns:1fr}
   .doi{grid-template-columns:1fr}
-  .atelier{min-height:350px}
-  .mostrar{width:56%}
-  .fotoliu{width:84%}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .js .rv,.js .erou .ochi,.js .erou h1 .r,.js .erou .lead,.js .erou-cta,.js .nota,.js .pag{opacity:1!important;transform:none!important}
-  .js .pag.dus{opacity:0!important}
-  .fotoliu .imbraca{clip-path:none}
+  .js .rv,.js .erou .ochi,.js .erou h1 .r,.js .erou .lead,.js .erou-cta,.js .nota,.js .a-mic,.js .a-et,.js .tinte-a{opacity:1!important;transform:none!important}
+  .js .a-mare{clip-path:none!important}.js .a-mare img{transform:none!important}
 }
 </style>
 </head>
@@ -469,7 +458,7 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
     <div>
       <p class="ochi"><span lang="ro">tapițerie · Șoseaua Păcurari 39, Iași</span><span lang="en">upholstery · Șoseaua Păcurari 39, Iași</span><span lang="pt">estofos · Șoseaua Păcurari 39, Iași</span></p>
       <h1><span class="r"><span lang="ro">Mobila veche,</span><span lang="en">Old furniture,</span><span lang="pt">Móveis antigos,</span></span><span class="r"><em><span lang="ro">îmbrăcată din nou.</span><span lang="en">dressed again.</span><span lang="pt">vestidos de novo.</span></em></span></h1>
-      <p class="lead"><span lang="ro">Răsfoiește mostrarul și vezi fotoliul în altă stofă. Apoi trimite-ne mobila, dimensiunile și materialul, și primești oferta.</span><span lang="en">Flip through the sample book and see the armchair in another fabric. Then send us the piece, its size and the material, and get a quote.</span><span lang="pt">Folheie o mostruário e veja a poltrona noutro tecido. Depois envie-nos o móvel, as medidas e o material, e receba o orçamento.</span></p>
+      <p class="lead"><span lang="ro">Scaune sculptate, canapele, colțare și bănci, retapițate în atelierul de pe Păcurari 39. Trimite-ne mobila, dimensiunile și materialul, și primești oferta.</span><span lang="en">Carved chairs, sofas, corner sofas and benches, reupholstered in the workshop on Păcurari 39. Send us the piece, its size and the material, and get a quote.</span><span lang="pt">Cadeiras entalhadas, sofás, sofás de canto e bancos, reestofados na oficina da Păcurari 39. Envie-nos o móvel, as medidas e o material, e receba o orçamento.</span></p>
       <div class="erou-cta">
         <a class="btn btn-verde" href="tel:+40742971192"><svg aria-hidden="true"><use href="#i-tel"/></svg><span lang="ro">Sună: 0742 971 192</span><span lang="en">Call: 0742 971 192</span><span lang="pt">Ligar: 0742 971 192</span></a>
         <a class="btn btn-contur" href="#cerere"><span lang="ro">Cere ofertă</span><span lang="en">Get a quote</span><span lang="pt">Pedir orçamento</span></a>
@@ -477,34 +466,11 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
       <a class="nota" href="https://www.google.com/maps/place/?q=place_id:ChIJr_pS7237ykARmLN-8LGp_H0" target="_blank" rel="noopener"><b>4,4</b><span><span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg style="opacity:.35"><use href="#i-stea"/></svg></span><span lang="ro">29 de recenzii pe Google</span><span lang="en">29 Google reviews</span><span lang="pt">29 avaliações no Google</span></span></a>
     </div>
     <div class="atelier">
-      <svg class="fotoliu" viewBox="0 0 400 360" role="img" aria-label="Un fotoliu îmbrăcat în stofa aleasă din mostrar" data-aria="Un fotoliu îmbrăcat în stofa aleasă din mostrar|An armchair covered in the fabric picked from the sample book|Uma poltrona forrada com o tecido escolhido no mostruário">
-        <ellipse cx="200" cy="336" rx="180" ry="14" fill="#1A1F1C" opacity=".12"/>
-        <g fill="#C9CBC3"><path d="M82 46q0-28 28-28h180q28 0 28 28v164H82z"/><path d="M30 140q0-30 30-30h36v190H30z"/><path d="M304 110h36q30 0 30 30v160h-66z"/><path d="M84 206h232v52H84z"/><path d="M30 258h340v42H30z"/></g>
-        <g class="imbraca">
-          <path class="tes" fill="url(#f-0)" d="M82 46q0-28 28-28h180q28 0 28 28v164H82z"/>
-          <path d="M82 46q0-28 28-28h180q28 0 28 28v164H82z" fill="url(#g-lat)"/>
-          <path d="M120 40v150M200 40v150M280 40v150" stroke="#000" stroke-opacity=".16" stroke-width="2"/>
-          <path class="tes" fill="url(#f-0)" d="M84 206h232v52H84z"/>
-          <path d="M84 206h232v52H84z" fill="url(#g-umbra)"/>
-          <path class="tes" fill="url(#f-0)" d="M30 140q0-30 30-30h36v190H30z"/>
-          <path class="tes" fill="url(#f-0)" d="M304 110h36q30 0 30 30v160h-66z"/>
-          <path d="M30 140q0-30 30-30h36v190H30z" fill="url(#g-lat)"/>
-          <path d="M304 110h36q30 0 30 30v160h-66z" fill="url(#g-lat)"/>
-          <path class="tes" fill="url(#f-0)" d="M30 258h340v42H30z"/>
-          <path d="M30 258h340v42H30z" fill="#000" opacity=".18"/>
-          <g fill="url(#g-tinta)"><circle cx="42" cy="292" r="4"/><circle cx="62" cy="292" r="4"/><circle cx="82" cy="292" r="4"/><circle cx="102" cy="292" r="4"/><circle cx="122" cy="292" r="4"/><circle cx="142" cy="292" r="4"/><circle cx="162" cy="292" r="4"/><circle cx="182" cy="292" r="4"/><circle cx="202" cy="292" r="4"/><circle cx="222" cy="292" r="4"/><circle cx="242" cy="292" r="4"/><circle cx="262" cy="292" r="4"/><circle cx="282" cy="292" r="4"/><circle cx="302" cy="292" r="4"/><circle cx="322" cy="292" r="4"/><circle cx="342" cy="292" r="4"/><circle cx="358" cy="292" r="4"/></g>
-        </g>
-        <path d="M54 300h14l-4 30h-6zM332 300h14l-4 30h-6z" fill="#3A2716"/>
-      </svg>
-      <div class="mostrar" id="mostrar">
-        <div class="inel"><span><span lang="ro">MOSTRAR</span><span lang="en">SAMPLES</span><span lang="pt">MOSTRUÁRIO</span></span></div>
-        <div class="pagini" id="pagini" tabindex="0" role="group" aria-roledescription="<span lang="ro">mostrar</span><span lang="en">sample book</span><span lang="pt">mostruário</span>" aria-label="Mostrar de stofe: săgețile schimbă pagina" data-aria="Mostrar de stofe: săgețile schimbă pagina|Fabric sample book: arrow keys turn the page|Mostruário de tecidos: as setas mudam de página"></div>
-        <div class="mostrar-ctl">
-          <button type="button" id="m-ant" aria-label="Mostra anterioară" data-aria="Mostra anterioară|Previous sample|Amostra anterior"><svg aria-hidden="true"><use href="#i-sus"/></svg></button>
-          <output id="m-nr" aria-live="polite"></output>
-          <button type="button" id="m-urm" aria-label="Mostra următoare" data-aria="Mostra următoare|Next sample|Amostra seguinte"><svg aria-hidden="true"><use href="#i-jos"/></svg></button>
-        </div>
-      </div>
+      <figure class="a-foto a-mare"><svg viewBox="0 0 30 40" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="30" height="40" fill="#2C5446"/><path d="M9 14h12v10H9zM8 24h14v4H8zM10 28v6M20 28v6" fill="none" stroke="#5C7E70" stroke-width="1.2"/></svg><img src="media/atelier-scaun.webp" width="1350" height="1800" alt="Scaun sculptat, retapițat cu stofă florală, în atelierul Anton Giovani" aria-label="Scaun sculptat, retapițat cu stofă florală, în atelierul Anton Giovani" data-aria="Scaun sculptat, retapițat cu stofă florală, în atelierul Anton Giovani|A carved chair reupholstered in floral fabric, in the Anton Giovani workshop|Cadeira entalhada reestofada com tecido floral, na oficina Anton Giovani" fetchpriority="high" onerror="this.remove()"></figure>
+      <figure class="a-foto a-mic"><svg viewBox="0 0 30 40" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="30" height="40" fill="#2C5446"/><path d="M9 14h12v10H9zM8 24h14v4H8zM10 28v6M20 28v6" fill="none" stroke="#5C7E70" stroke-width="1.2"/></svg><img src="media/mostrar-perete.webp" width="1012" height="1800" alt="Peretele cu mostrare de stofe din magazin" aria-label="Peretele cu mostrare de stofe din magazin" data-aria="Peretele cu mostrare de stofe din magazin|The wall of fabric sample books in the shop|A parede de mostruários de tecido na loja" onerror="this.remove()"></figure>
+      <span class="tinte-a" aria-hidden="true"></span>
+      <span class="a-et a-et1" aria-hidden="true"><span lang="ro">scaun sculptat · retapițat</span><span lang="en">carved chair · reupholstered</span><span lang="pt">cadeira entalhada · reestofada</span></span>
+      <span class="a-et a-et2" aria-hidden="true"><span lang="ro">mostrarele, pe perete</span><span lang="en">sample books, on the wall</span><span lang="pt">mostruários, na parede</span></span>
     </div>
   </div>
 </section>
@@ -514,10 +480,10 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
 <section class="sectiune" id="mobila" aria-labelledby="t-mob">
   <div class="lat">
     <p class="ochi rv"><span lang="ro">ce îmbrăcăm</span><span lang="en">what we cover</span><span lang="pt">o que forramos</span></p>
-    <h2 class="titlu rv" id="t-mob"><span lang="ro">Fiecare piesă, <em>în stofa din mostrar.</em></span><span lang="en">Every piece, <em>in the fabric from the book.</em></span><span lang="pt">Cada peça, <em>no tecido do mostruário.</em></span></h2>
-    <p class="lead rv"><span lang="ro">Schimbă mostra de sus și se schimbă și aici. Atinge piesa ca să ceri oferta pentru ea.</span><span lang="en">Change the sample above and it changes here too. Tap a piece to ask for a quote for it.</span><span lang="pt">Mude a amostra lá em cima e muda aqui também. Toque numa peça para pedir orçamento.</span></p>
+    <h2 class="titlu rv" id="t-mob"><span lang="ro">Ce trece <em>prin atelier.</em></span><span lang="en">What goes <em>through the workshop.</em></span><span lang="pt">O que passa <em>pela oficina.</em></span></h2>
+    <p class="lead rv"><span lang="ro">Lucrări din pozele atelierului de pe Păcurari 39. Atinge piesa ca să ceri oferta pentru una la fel.</span><span lang="en">Work from the Păcurari 39 workshop’s own photos. Tap a piece to ask for a quote for one like it.</span><span lang="pt">Trabalhos das fotos da própria oficina da Păcurari 39. Toque numa peça para pedir orçamento para uma igual.</span></p>
     <div class="mobila" id="mobila-l"></div>
-    <p class="mic rv"><span lang="ro">Mostrele de pe site sunt ilustrative. Ce materiale sunt în magazin și la ce preț:</span><span lang="en">The samples on this site are illustrative. Which materials are in the shop and at what price:</span><span lang="pt">As amostras do site são ilustrativas. Que materiais há na loja e a que preço:</span> <span class="confirmat"><span lang="ro">de confirmat</span><span lang="en">to be confirmed</span><span lang="pt">a confirmar</span></span></p>
+    <p class="mic rv"><span lang="ro">Ce materiale sunt în magazin și la ce preț:</span><span lang="en">Which materials are in the shop and at what price:</span><span lang="pt">Que materiais há na loja e a que preço:</span> <span class="confirmat"><span lang="ro">de confirmat</span><span lang="en">to be confirmed</span><span lang="pt">a confirmar</span></span></p>
   </div>
 </section>
 
@@ -530,7 +496,7 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
     <ol class="pasi">
       <li class="rv"><b><span lang="ro">Măsori</span><span lang="en">Measure</span><span lang="pt">Meça</span></b><p><span lang="ro">Lățimea, adâncimea și înălțimea, cu ruleta, în centimetri. Aproximativ e destul la început.</span><span lang="en">Width, depth and height, with a tape, in centimetres. Rough figures are enough to start.</span><span lang="pt">Largura, profundidade e altura, com a fita, em centímetros. Aproximado chega para começar.</span></p></li>
       <li class="rv d1"><b><span lang="ro">Fotografiezi</span><span lang="en">Take photos</span><span lang="pt">Fotografe</span></b><p><span lang="ro">Din față și din lateral, plus locurile rupte sau lăsate. Pozele le trimiți pe WhatsApp, după cerere.</span><span lang="en">Front and side, plus the torn or sagging spots. Send the photos on WhatsApp after the request.</span><span lang="pt">De frente e de lado, mais as zonas rasgadas ou abatidas. Envie as fotos por WhatsApp depois do pedido.</span></p></li>
-      <li class="rv d2"><b><span lang="ro">Alegi stofa</span><span lang="en">Pick the fabric</span><span lang="pt">Escolha o tecido</span></b><p><span lang="ro">Din mostrarul de aici ca idee, apoi pe viu, în magazinul de pe Păcurari 39.</span><span lang="en">From this sample book as an idea, then in person at the shop on Păcurari 39.</span><span lang="pt">Deste mostruário como ideia, depois ao vivo, na loja da Păcurari 39.</span></p></li>
+      <li class="rv d2"><b><span lang="ro">Alegi stofa</span><span lang="en">Pick the fabric</span><span lang="pt">Escolha o tecido</span></b><p><span lang="ro">Pe viu, din peretele cu mostrare din magazinul de pe Păcurari 39.</span><span lang="en">In person, from the wall of sample books in the shop on Păcurari 39.</span><span lang="pt">Ao vivo, na parede de mostruários da loja da Păcurari 39.</span></p></li>
     </ol>
   </div>
 </section>
@@ -593,14 +559,6 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sectiune" id="galerie-s" aria-labelledby="t-gal" hidden style="padding-top:0">
-  <div class="lat">
-    <p class="ochi rv"><span lang="ro">din atelier</span><span lang="en">from the workshop</span><span lang="pt">da oficina</span></p>
-    <h2 class="titlu rv" id="t-gal"><span lang="ro">Pe <em>Păcurari 39.</em></span><span lang="en">On <em>Păcurari 39.</em></span><span lang="pt">Na <em>Păcurari 39.</em></span></h2>
-    <div class="galerie" id="galerie"></div>
   </div>
 </section>
 
@@ -703,28 +661,13 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
     {n:['Jacquard bordo','Burgundy jacquard','Jacquard bordeaux'],d:['model țesut','woven pattern','padrão tecido'],c:'94,31,43'},
     {n:['Catifea muștar','Mustard velvet','Veludo mostarda'],d:['moale, cu luciu','soft, with a sheen','macio, com brilho'],c:'181,134,42'}
   ];
-  var cur=0,pag=$('pagini');
-  function randPagini(){
-    pag.innerHTML=STOFE.map(function(s,i){return '<div class="pag'+(i<cur?' dus':'')+'" data-i="'+i+'" style="z-index:'+(STOFE.length-i)+';transform:'+(i<cur?'':'translateY('+Math.min(3,i-cur)*7+'px)')+';animation-delay:'+(.15+i*.06)+'s" aria-hidden="'+(i===cur?'false':'true')+'"><svg aria-hidden="true"><rect width="100%" height="100%" fill="url(#f-'+i+')"/></svg><span class="luciu"></span><span class="et"><b>'+esc(t3(s.n))+'</b><small><span>Nr. '+String(i+1).padStart(2,'0')+'</span><span>'+esc(t3(s.d))+'</span></small></span></div>'}).join('');
-    eticheta();
-  }
-  function aseaza(){pag.querySelectorAll('.pag').forEach(function(p){var i=+p.dataset.i;p.classList.toggle('dus',i<cur);p.style.transform=i<cur?'':'translateY('+Math.min(3,i-cur)*7+'px)';p.setAttribute('aria-hidden',i===cur?'false':'true')})}
-  function eticheta(){$('m-nr').textContent=(cur+1)+' / '+STOFE.length;$('m-nr').setAttribute('aria-label',t3(STOFE[cur].n)+', '+(cur+1)+' / '+STOFE.length)}
+  var cur=0;
   function imbraca(){
     document.querySelectorAll('.tes').forEach(function(e){e.setAttribute('fill','url(#f-'+cur+')')});
     html.style.setProperty('--tint','rgba('+STOFE[cur].c+',.30)');
     st.mat='s'+cur;
     if($('c-mat'))$('c-mat').querySelectorAll('input').forEach(function(x){x.checked=x.value===st.mat});
   }
-  function mergi(i){cur=(i+STOFE.length)%STOFE.length;aseaza();eticheta();imbraca();fisa()}
-  $('m-urm').addEventListener('click',function(){mergi(cur+1)});
-  $('m-ant').addEventListener('click',function(){mergi(cur-1)});
-  pag.addEventListener('keydown',function(e){if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();mergi(cur+1)}else if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();mergi(cur-1)}});
-  pag.addEventListener('click',function(){mergi(cur+1)});
-  var px=null,py=null;
-  pag.addEventListener('pointerdown',function(e){px=e.clientX;py=e.clientY});
-  pag.addEventListener('pointerup',function(e){if(px===null)return;var dx=e.clientX-px,dy=e.clientY-py;px=null;if(Math.abs(dy)>40||Math.abs(dx)>40){e.stopPropagation();mergi(cur+((dy<0||dx<0)?1:-1));pag.dataset.sw='1';setTimeout(function(){pag.dataset.sw=''},50)}});
-  pag.addEventListener('click',function(e){if(pag.dataset.sw)e.stopImmediatePropagation()},true);
 
   /* ---------- banda ---------- */
   function banda(){var it=[['retapițare','re-upholstery','reestofamento'],['canapele','sofas','sofás'],['fotolii','armchairs','poltronas'],['scaune','chairs','cadeiras'],['catifea','velvet','veludo'],['piele ecologică','faux leather','pele sintética'],['Șoseaua Păcurari 39','Șoseaua Păcurari 39','Șoseaua Păcurari 39']];var s=it.map(function(x){return '<span>'+esc(t3(x))+'</span>'}).join('');$('banda-in').innerHTML=s+s}
@@ -738,10 +681,22 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
     {id:'coltar',n:['Colțar','Corner sofa','Sofá de canto'],d:['Pe bucăți, măsurat pe fiecare latură.','In sections, measured on each side.','Por módulos, medido em cada lado.']},
     {id:'taburet',n:['Taburet','Ottoman','Pufe'],d:['Mic, dar tot cu stofă bună.','Small, but still in good fabric.','Pequeno, mas com bom tecido.']}
   ];
+  /* lucrări din pozele reale ale atelierului (media/) */
+  var LUCR=[
+    {mob:'canapea',f:'canapea-alba.webp',w:1013,h:1800,p:'50% 60%',n:['Canapele','Sofas','Sofás'],d:['Ca cea din poză: tapițată în alb, cu perne de spătar.','Like the one pictured: upholstered in white, with back cushions.','Como o da foto: estofado em branco, com almofadas de costas.'],e:['canapea tapițată în alb','sofa upholstered in white','sofá estofado em branco']},
+    {mob:'coltar',f:'coltar-portocaliu.webp',w:1400,h:788,p:'50% 50%',n:['Colțare și fotolii','Corner sofas and armchairs','Sofás de canto e poltronas'],d:['Colț și fotoliu în piele portocalie, pe bucăți.','A corner sofa and armchair in orange leather, in sections.','Sofá de canto e poltrona em pele laranja, por módulos.'],e:['colțar și fotoliu, piele','corner sofa and armchair, leather','sofá de canto e poltrona, pele']},
+    {mob:'coltar',f:'coltar-turcoaz.webp',w:1012,h:1800,p:'50% 45%',n:['Bănci de colț','Corner benches','Bancos de canto'],d:['Pentru bucătărie: bancă de colț în stofă turcoaz.','For the kitchen: a corner bench in turquoise fabric.','Para a cozinha: banco de canto em tecido turquesa.'],e:['bancă de colț, turcoaz','corner bench, turquoise','banco de canto, turquesa']},
+    {mob:'scaun',f:'scaune-curbate.webp',w:1400,h:1047,p:'50% 50%',n:['Scaune','Chairs','Cadeiras'],d:['Scaune din lemn curbat, cu șezutul tapițat, în set.','Bentwood chairs with upholstered seats, as a set.','Cadeiras de madeira curvada com assento estofado, em conjunto.'],e:['scaune din lemn curbat','bentwood chairs','cadeiras de madeira curvada']},
+    {mob:'canapea',f:'banca-mustar.webp',w:1347,h:1800,p:'50% 55%',n:['Bănci și banchete','Benches and settees','Bancos e canapés'],d:['Bancă din lemn curbat, în catifea muștar.','A bentwood bench in mustard velvet.','Banco de madeira curvada em veludo mostarda.'],e:['bancă, catifea muștar','bench, mustard velvet','banco, veludo mostarda']}
+  ];
   function silueta(id,cls){return '<svg viewBox="0 0 160 90" class="'+(cls||'')+'" aria-hidden="true"><use href="#m-'+id+'"/></svg>'}
   function randMobila(){
-    $('mobila-l').innerHTML=MOB.map(function(m,i){return '<a class="m-card rv'+(i%3===1?' d1':i%3===2?' d2':'')+'" href="#cerere" data-mob="'+m.id+'">'+silueta(m.id)+'<h3>'+esc(t3(m.n))+'</h3><p>'+esc(t3(m.d))+'</p><span class="jos-c"><span class="confirmat">'+t('preț: de confirmat','price: to be confirmed','preço: a confirmar')+'</span><span class="lnk">'+t('Cere ofertă','Get a quote','Pedir orçamento')+'<svg aria-hidden="true"><use href="#i-sag"/></svg></span></span></a>'}).join('');
+    var FB='<svg viewBox="0 0 40 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="40" height="30" fill="#2C5446"/></svg>';
+    var jos=function(){return '<span class="jos-c"><span class="confirmat">'+t('preț: de confirmat','price: to be confirmed','preço: a confirmar')+'</span><span class="lnk">'+t('Cere ofertă','Get a quote','Pedir orçamento')+'<svg aria-hidden="true"><use href="#i-sag"/></svg></span></span>'};
+    $('mobila-l').innerHTML=LUCR.map(function(m,i){return '<a class="m-card rv'+(i%3===1?' d1':i%3===2?' d2':'')+'" href="#cerere" data-mob="'+m.mob+'"><span class="m-f">'+FB+'<img src="media/'+m.f+'" width="'+m.w+'" height="'+m.h+'" loading="lazy" alt="'+esc(t3(m.d))+'" style="object-position:'+m.p+'" onerror="this.remove()"><small>'+esc(t3(m.e))+'</small></span><h3>'+esc(t3(m.n))+'</h3><p>'+esc(t3(m.d))+'</p>'+jos()+'</a>'}).join('')+
+      '<a class="m-card alta rv d2" href="#cerere"><h3>'+t('Altă piesă?','Something else?','Outra peça?')+'</h3><p>'+t('Fotolii, tăblii de pat, taburete, scaune de birou: trimite poze și dimensiunile și îți spunem dacă se poate.','Armchairs, headboards, ottomans, office chairs: send photos and sizes and we’ll tell you if it can be done.','Poltronas, cabeceiras, pufes, cadeiras de escritório: envie fotos e medidas e dizemos se é possível.')+'</p>'+jos()+'</a>';
   }
+
   $('mobila-l').addEventListener('click',function(e){var a=e.target.closest('[data-mob]');if(!a)return;st.mob=a.dataset.mob;randForm();fisa()});
 
   /* ---------- cererea ---------- */
@@ -778,13 +733,13 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
   }
   $('c-mob').addEventListener('change',function(e){st.mob=e.target.value;$('e-mob').classList.remove('on');cote();fisa()});
   $('c-buc').addEventListener('change',function(e){st.buc=e.target.value;fisa()});
-  $('c-mat').addEventListener('change',function(e){st.mat=e.target.value;if(st.mat.charAt(0)==='s'){cur=+st.mat.slice(1);aseaza();eticheta();imbraca()}fisa()});
+  $('c-mat').addEventListener('change',function(e){st.mat=e.target.value;if(st.mat.charAt(0)==='s'){cur=+st.mat.slice(1);imbraca()}fisa()});
   $('c-luc').addEventListener('change',function(e){st.luc[e.target.value]=e.target.checked;fisa()});
   ['d-l','d-a','d-h'].forEach(function(id){$(id).addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,3);cote();fisa()})});
   $('nume').addEventListener('input',function(){$('e-nume').classList.remove('on');fisa()});
   function mesaj(){
     var m=MOB.filter(function(x){return x.id===st.mob})[0],b=BUC.filter(function(x){return x[0]===st.buc})[0];
-    var mat=st.mat.charAt(0)==='s'?STOFE[+st.mat.slice(1)].n[0]+' (ca idee, din mostrarul de pe site)':(EXTRA.filter(function(e){return e[0]===st.mat})[0]||[0,['']])[1][0];
+    var mat=st.mat.charAt(0)==='s'?STOFE[+st.mat.slice(1)].n[0]:(EXTRA.filter(function(e){return e[0]===st.mat})[0]||[0,['']])[1][0];
     var r='Bună ziua! Aș vrea o ofertă de tapițerie.\n';
     r+='Mobila: '+m.n[0]+(b?' · '+b[1][0]:'')+'\n';
     var l=val('d-l'),a=val('d-a'),h=val('d-h');if(l||a||h)r+='Dimensiuni (L × A × H): '+[l||'?',a||'?',h||'?'].join(' × ')+' cm\n';
@@ -822,14 +777,6 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
     document.querySelectorAll('[data-stare]').forEach(function(s){s.classList.remove('da','nu');if(cls)s.classList.add(cls);s.querySelector('span').textContent=txt});
   }
 
-  /* ---------- galerie ---------- */
-  var FOTO=[["atelier-scaun.webp", ["Scaun sculptat retapițat, în atelier", "A carved chair reupholstered, in the workshop", "Cadeira entalhada reestofada, na oficina"], "center", ""], ["mostrar-perete.webp", ["Peretele cu mostrare de stofe", "The wall of fabric sample books", "A parede de mostruários de tecido"], "center", "w"], ["canapea-alba.webp", ["Canapea tapițată în alb", "A sofa upholstered in white", "Sofá estofado em branco"], "center", ""], ["coltar-portocaliu.webp", ["Colțar și fotoliu în piele portocalie", "Corner sofa and armchair in orange leather", "Sofá de canto e poltrona em pele laranja"], "center", ""], ["coltar-turcoaz.webp", ["Bancă de colț în turcoaz", "A teal corner bench", "Banco de canto em turquesa"], "center", "w"], ["scaune-curbate.webp", ["Scaune din lemn curbat, tapițate", "Upholstered bentwood chairs", "Cadeiras de madeira curvada, estofadas"], "center", ""], ["banca-mustar.webp", ["Bancă din lemn curbat, catifea muștar", "Bentwood bench in mustard velvet", "Banco de madeira curvada em veludo mostarda"], "center", ""]];
-  function galerie(){
-    if(!FOTO.length)return;
-    $('galerie-s').hidden=false;
-    $('galerie').innerHTML=FOTO.map(function(f,i){return '<figure class="foto rv'+(f[3]?' w':'')+(i%3===1?' d1':i%3===2?' d2':'')+'"><svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="400" fill="url(#f-'+(i%8)+')"/><rect width="400" height="400" fill="#1A1F1C" opacity=".35"/></svg><img src="media/'+f[0]+'" loading="lazy" alt="'+esc(t3(f[1]))+'" data-alt="'+esc(f[1].join('|'))+'" onerror="this.parentNode.remove()"'+(f[2]?' style="object-position:'+f[2]+'"':'')+'><figcaption>'+esc(t3(f[1]))+'</figcaption></figure>'}).join('');
-  }
-
   function atrib(){
     document.querySelectorAll('[data-aria]').forEach(function(e){e.setAttribute('aria-label',tr(e.dataset.aria))});
     document.querySelectorAll('[data-ph]').forEach(function(e){e.setAttribute('placeholder',tr(e.dataset.ph))});
@@ -849,8 +796,7 @@ legend i{font:600 .72rem/1 var(--f-mono);font-style:normal;background:var(--verd
     document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
     try{localStorage.setItem('anton-giovani.lang',l)}catch(e){}
     titlu();program();
-    if(prima)randPagini();else pag.querySelectorAll('.pag').forEach(function(p){var s=STOFE[+p.dataset.i];p.querySelector('.et b').textContent=t3(s.n);p.querySelector('.et small span:last-child').textContent=t3(s.d)});
-    eticheta();randMobila();randForm();fisa();banda();galerie();atrib();observa();imbraca();prima=false;
+    randMobila();randForm();fisa();banda();atrib();observa();imbraca();prima=false;
   }
   document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
 
