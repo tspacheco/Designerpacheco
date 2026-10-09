@@ -1,5 +1,9 @@
 # Projeto Netlify «pachecost-demos»: ligado ao GitHub (repositório Designerpacheco, este ramo),
-# com «Base directory» = sites/demos-pachecost. Publica-se sozinho a cada push.
+# com «Base directory» = sites/demos-pachecost.
+# Desde 09/10/2026 (pedido do Tomás: os deploys gastam o plano da Netlify) só publica quando o
+# PUBLICAR.txt muda. Os pushes normais (demos novas, ponte, mensagens) ficam à espera e entram todos
+# no deploy seguinte. Para publicar: acrescentar uma linha ao PUBLICAR.txt e fazer push.
 [build]
   command = "python3 gerar.py --so-demos"
   publish = "_demos"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- PUBLICAR.txt"
