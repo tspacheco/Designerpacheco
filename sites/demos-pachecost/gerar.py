@@ -148,6 +148,11 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("vulcanizarea-galata", "vulcanizarea-galata"),
 ]
 NOINDEX = '<meta name="robots" content="noindex, nofollow">'
+# Páginas soltas (não são demos de site): copiadas tal como estão, sem faixa, sem contador e fora das
+# páginas por nicho; só levam noindex. (endereço curto, ficheiro em sites/)
+PAGINAS_SOLTAS = [
+    ("magic-key-asistent", "magic-key/rececionista/index.html"),  # rececionista de IA simulada (09/10)
+]
 # Contador de aberturas (tracker das demos, ramo claude/tracker-demos-kx5ukf): só no index.html,
 # com o caminho fixo /demo/<curto>/ para contar igual em pachecost.com/demo/, demo.pachecost.com
 # e pachecost-demos.netlify.app. Sem cookies e sem script externo (um pedido de imagem ao GoatCounter).
@@ -223,9 +228,15 @@ def gerar_demos():
         print("AVISO: páginas por nicho não geradas:", repr(erro))
     with open(os.path.join(out, "_redirects"), "w", encoding="utf-8") as f:
         f.write("/    https://pachecost.com/    302\n")
+    for curto, ficheiro in PAGINAS_SOLTAS:
+        os.makedirs(os.path.join(out, curto))
+        with open(os.path.join(SITES, ficheiro), encoding="utf-8") as f:
+            h = com_noindex(f.read())
+        with open(os.path.join(out, curto, "index.html"), "w", encoding="utf-8") as f:
+            f.write(h)
     with open(os.path.join(out, "_headers"), "w", encoding="utf-8") as f:
         # noindex só nas demos (as páginas por nicho têm de ser indexadas)
-        f.writelines(f"/{curto}/*\n  X-Robots-Tag: noindex, nofollow\n" for curto, _ in DEMOS)
+        f.writelines(f"/{curto}/*\n  X-Robots-Tag: noindex, nofollow\n" for curto, _ in DEMOS + PAGINAS_SOLTAS)
         f.write("/*/media/*\n  Cache-Control: public, max-age=604800\n")
     with open(os.path.join(out, "robots.txt"), "w", encoding="utf-8") as f:
         f.write("User-agent: *\nDisallow: /\n")
