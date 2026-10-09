@@ -1,5 +1,5 @@
 #!/bin/bash
-# Pede o deploy do dia do pachecost-demos (regra de 09/10: um deploy por dia, só no fim da corrida B).
+# Deploy do pachecost-demos: correr SÓ quando o Tomás disser «publica» (ordem de 09/10: nenhum deploy automático).
 # O Netlify só publica quando sites/demos-pachecost/PUBLICAR.txt muda; os outros pushes acumulam.
 #   bash research/cacador/deploy.sh AAAA-MM-DD
 set -e

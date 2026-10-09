@@ -40,15 +40,15 @@ Os passos 2 a 6 abaixo fazem-se com os comandos do modo economia; o texto fica c
 8. **Construir em paralelo.** Lançar 5 trabalhadores (Agent), 5 sites cada, com o brief, as regras do PLAYBOOK §3/§3-A, a estrutura dos lotes anteriores (RO com botão EN, `pt.html`, ANPC SAL + ODR, banner de apresentação, JSON-LD, um só `<h1>`, HONEST-DATA: o que não está na ficha fica «de confirmat»; sem notas sobre a origem dos dados) e o CTA: «Sună» + pedido por WhatsApp ou SMS quando o WhatsApp é «?»; só «Sună» quando é fixo. Dizer-lhes que não usam ferramentas `mcp__hearthbot__` nem fazem push. Usar os skills `frontend-design` e `ui-ux-pro-max` como manda o CLAUDE.md.
 9. **Validar.** Script do PLAYBOOK §4 em cada site; abrir cada página em Chromium (Playwright local, `/opt/pw-browsers/chromium`) a 390 px e a 1280 px, sem erros de consola nem scroll horizontal; crítica final «isto podia ser um template?».
 10. **Publicar.** Commit no ramo do caçador. Depois, numa worktree do ramo das demos: copiar só as pastas `sites/<pasta>/` do dia e juntar as linhas a `DEMOS` sob `# caçador AAAA-MM-DD`; um commit; `git pull --rebase origin claude/dez-negocios-dez-websites-7gevwu` e push (até 4 tentativas). Nunca reescrever história desse ramo nem mexer noutros ficheiros dele: é do thread «Dez negócios, dez websites». Em conflito no `gerar.py`, manter as duas listas.
-11. **Deploy (regra de 09/10: um por dia).** O pachecost-demos só publica quando `sites/demos-pachecost/PUBLICAR.txt` muda. A corrida A faz push das demos mas **não** mexe nesse ficheiro: as demos da A só ficam no ar depois da corrida B. No fim da corrida B, depois do último push: `TMPDIR=/tmp/claude-0 bash research/cacador/deploy.sh AAAA-MM-DD` (acrescenta a linha «AAAA-MM-DD HH:MM — caçador corrida B»). Esperar ~3 min antes de testar.
-12. **Confirmar no ar.** Na corrida A, as demos que entraram no ramo das demos passam a «publicada» (a lista avisa que só ficam no ar depois da B). Na corrida B, depois do deploy, pedido `testar` pela ponte para as 50 do dia; as que não dão 200 voltam a «por fazer».
+11. **Deploy: só com ordem do Tomás (09/10).** O pachecost-demos só publica quando `sites/demos-pachecost/PUBLICAR.txt` muda. **Nenhuma corrida mexe nesse ficheiro sozinha.** No fim da corrida B, depois do último push, dizer ao Tomás no thread, numa linha, que as 50 demos do dia estão no ramo à espera de publicação e que basta ele dizer «publica». Só quando ele disser: `TMPDIR=/tmp/claude-0 bash research/cacador/deploy.sh AAAA-MM-DD`, esperar ~3 min e testar.
+12. **Confirmar no ar.** As demos que entraram no ramo das demos passam a «publicada» (a lista avisa que só ficam no ar depois de o Tomás mandar publicar). Depois do deploy que ele pedir, pedido `testar` pela ponte para as do dia; as que não dão 200 voltam a «por fazer».
 13. **Entregar.** Gerar `AAAA-MM-DD.md`, commit + push no ramo do caçador e responder no thread com: quantas demos ficaram no ar, o link da lista (`https://github.com/tspacheco/Designerpacheco/blob/claude/cacador-diario-nkiz36/research/cacador/AAAA-MM-DD.md`, abre no telemóvel com os botões a funcionar), as que caíram e porquê, e o que passa para a corrida B.
 
 ## Corrida B (11h30): construir as outras 25
 
 1. Passo 1 da corrida A. Se a corrida A ainda não terminou, terminá-la primeiro.
 2. Ler `AAAA-MM-DD.tsv`: as linhas B com estado «por fazer», mais as A que tenham ficado por fazer.
-3. Passos 6 a 13 da corrida A para essas (o 11, deploy, só aqui).
+3. Passos 6 a 13 da corrida A para essas; no fim, a linha a pedir o «publica» (passo 11).
 4. Se faltarem negócios B (ex.: saíram por terem site), completar com novas fichas (passo 4) até 25.
 
 ## Quando não chega
