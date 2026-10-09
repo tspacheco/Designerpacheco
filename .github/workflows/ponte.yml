@@ -13,6 +13,7 @@
 #   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
 #   listamaps  <nome> <url>                     como pagina, mas desce a lista de resultados de uma pesquisa no Maps (até ~60)
+#   fichamaps  <nome> <url>                     ficha do Maps (.html/.txt da ficha) + fotos da galeria (.imagens.txt) num só pedido
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
@@ -37,7 +38,7 @@ jobs:
         run: |
           grep -qE '^\s*fotogramas\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
           python3 -m pip install --quiet pillow
-          if grep -qE '^\s*(pagina|fotosmaps|listamaps)\s' .github/ponte.txt; then
+          if grep -qE '^\s*(pagina|fotosmaps|listamaps|fichamaps)\s' .github/ponte.txt; then
             python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
           fi
       - name: Pedidos
@@ -104,6 +105,8 @@ jobs:
                       paginas.append((p[1], p[2], "fotos"))
                   elif op == "listamaps":
                       paginas.append((p[1], p[2], "lista"))
+                  elif op == "fichamaps":
+                      paginas.append((p[1], p[2], "ficha"))
                   elif op == "testar":
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
@@ -132,6 +135,9 @@ jobs:
                                       pg.mouse.move(300, 600); pg.mouse.wheel(0, 4000)
                                   pg.wait_for_timeout(1200)
                           elif modo:  # fotosmaps: abre a galeria de fotos da ficha e desce para carregar mais
+                              if modo == ["ficha"]:  # fichamaps: grava a ficha (site, telefone, horário) antes de abrir a galeria
+                                  open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
+                                  open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
                               for sel in ['button[aria-label^="Foto"]', 'button[aria-label*="foto"]', 'button[jsaction*="heroHeaderImage"]', 'img[decoding]']:
                                   try:
                                       pg.locator(sel).first.click(timeout=5000); break
@@ -150,9 +156,11 @@ jobs:
                           if vids:
                               open(f"ponte/{nome}.videos.txt", "w", encoding="utf-8").write("\n".join(dict.fromkeys(v.replace("\\u0026", "&") for v in vids)))
                           open(f"ponte/{nome}.imagens.txt", "w", encoding="utf-8").write("\n".join(dict.fromkeys(imgs)))
-                          open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
-                          open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
-                          pg.screenshot(path=f"ponte/{nome}.jpg", full_page=True, type="jpeg", quality=70)
+                          if modo != ["ficha"]:
+                              open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
+                              open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
+                          if not modo:
+                              pg.screenshot(path=f"ponte/{nome}.jpg", full_page=True, type="jpeg", quality=70)
                           rel.append(f"ok  pagina {nome} {r.status if r else '?'} {url}")
                           pg.close()
                       except Exception as ex:

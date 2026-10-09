@@ -6,7 +6,9 @@ Cada construtor recebe 3 a 4 negócios (linha do `AAAA-MM-DD.tsv` + brief em `br
 
 1. Ler `CLAUDE.md`, `PLAYBOOK.md` §3, §3-A e §11, e um site de referência do lote 4 inteiro: `sites/star-service-auto/` (estrutura de pastas, `index.src.html`, `ferramentas/build.py`, `ferramentas/fontes.py`, `DADOS-PARA-O-DONO.md`, `media/LEIA-ME.txt`). Copiar `ferramentas/` e `netlify.toml` de lá e adaptar.
 2. Usar os skills `frontend-design` e `ui-ux-pro-max` para a direção de cada site (o CLAUDE.md obriga), mas a fonte display e a assinatura visual são as do brief: não trocar sem razão (ver ponto 4).
-3. Dados do negócio: a ficha está em `ponte/cc-AAAAMMDD-f-<slug>.txt` (texto visível) e `.html`; fotos em `sites/<slug>/media/g/*.webp` quando existirem. Ler as avaliações visíveis no `.txt` para a voz do negócio e os serviços.
+3. Dados do negócio: a ficha está em `ponte/cc-AAAAMMDD-f-<slug>.txt` (texto visível) e `.html`; fotos em `sites/<slug>/media/g-NN.webp` (ou `media/g/*.webp` nas corridas antigas) quando existirem. A ficha nova chama-se `ponte/cc-AAAAMMDD-x-<slug>.txt`. Ler as avaliações visíveis no `.txt` para a voz do negócio e os serviços.
+
+Modo economia: ler só o que cada site precisa (a ficha `.txt`, não o `.html`); a execução do site é completa.
 
 ## Regras de cada site
 

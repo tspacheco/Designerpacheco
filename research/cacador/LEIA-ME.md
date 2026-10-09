@@ -14,7 +14,21 @@ Ler antes da 1.ª corrida de cada dia: `PLAYBOOK.md` (§3, §3-A, §5, §6, §11
 | `research/cacador/briefs-AAAA-MM-DD.md` | Fonte display, assinatura visual e funcionalidade de cada site do dia. |
 | `research/cacador/fontes-assinaturas.md` | Fontes e assinaturas já usadas pelo caçador (somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4). |
 
+## Modo economia (pedido do Tomás, 09/10)
+
+A pesquisa gasta o mínimo; a construção continua com execução completa (nível 10K, skills, crítica). Na pesquisa:
+
+1. Tudo por `cacar.py`, que só imprime contagens. **Nunca** abrir à mão `.html`/`.txt` da ponte, nem imprimir `vistos.tsv`, TSV do dia ou listas inteiras (usar `wc -l`, `cut`, `head -3` quando for mesmo preciso).
+2. Pesquisas: `python3 research/cacador/cacar.py pesquisas AAAAMMDD 12` (tira da fila `pesquisas.txt`, com `listamaps`) → commit + push → `bash research/cacador/esperar.sh` (uma chamada, sem sondagens repetidas).
+3. `cacar.py lista AAAAMMDD`: lê os cartões das listas (nota, avaliações, categoria, telefone e o botão «Site»). Quem tem domínio próprio sai **sem abrir a ficha**; cadeias, hotéis, farmácias etc. também.
+4. `cacar.py fichas AAAAMMDD 25` (op `fichamaps`: ficha **e** fotos num só pedido) → push → `esperar.sh`. Repetir até `cacar.py dia AAAAMMDD` dizer «faltam 0». O `dia` lê o campo «Site» de cada ficha (regra do Gist e do Salon Monne), junta ao `vistos.tsv` e escreve o `AAAA-MM-DD.tsv` com 25 A + 25 B por força.
+5. `cacar.py fotos AAAAMMDD A` → push → `esperar.sh`. As fotos ficam diretamente em `sites/<slug>/media/g-NN.webp` (o motor das demos não copia subpastas).
+6. Briefs curtos (uma linha por site: fonte, assinatura, funcionalidade) e construtores com `research/cacador/trabalhador.md` por caminho, sem colar regras longas no prompt.
+7. Mensagens no thread: só a entrega final de cada corrida, curta. Estado no checklist.
+
 ## Corrida A (8h00): pesquisar 50, construir 25
+
+Os passos 2 a 6 abaixo fazem-se com os comandos do modo economia; o texto fica como referência do que cada passo tem de garantir.
 
 1. **Preparar.** `git fetch origin claude/cacador-diario-nkiz36 claude/dez-negocios-dez-websites-7gevwu`; ficar no ramo do caçador e fazer `git merge origin/claude/dez-negocios-dez-websites-7gevwu` (merge, nunca rebase/force). Lista de exclusão: slugs e pastas de `DEMOS`, nomes em `research/iasi-*.md` (lotes 1 a 4) e todo o `vistos.tsv`.
 2. **Escolher as pesquisas.** 10 a 14 pesquisas no Maps em categorias **ainda não feitas** (ver `ponte/iasi-*.txt` e a coluna categoria de `vistos.tsv`). As categorias habituais estão quase esgotadas no centro: variar por nicho (ex.: ortopedie, optică, croitorie de mireasă, atelier biciclete, tâmplărie, gresie-faianță, saltele, flori de nuntă, fotograf, cofetărie de nuntă, croitorie, curățătorie, autoșcoală, centru de copiat, vulcanizare, tapițerie auto, laborator dentar, kinetoterapie, sală de fitness mică, pensiune) e por bairro ou comuna à volta (Tătărași, Nicolina, Alexandru cel Bun, Dacia, Galata, Păcurari, Valea Lupului, Miroslava, Tomești, Bucium, Holboca, Popricani, Lunca Cetățuii). URL: `https://www.google.com/maps/search/<termo>+<zona>+Iași?hl=ro`, nome `ponte/cc-AAAAMMDD-<termo>`.
