@@ -17,6 +17,8 @@ Modo economia: ler só o que cada site precisa (a ficha `.txt`, não o `.html`);
 - Um só `<h1>`, JSON-LD do negócio, `prefers-reduced-motion`, `:focus-visible`, contraste AA, banner «PREZENTARE PACHECO STUDIOS» (como nas outras demos), rodapé com ANPC SAL + ODR (como o site de referência).
 - **HONEST-DATA:** só o que está na ficha (nome, nota, nº de avaliações, telefone, morada, horário, categoria, avaliações). O que falta fica «de confirmat»; preços nunca inventados. Nada de notas sobre a origem dos dados; no máximo um selo «de confirmat».
 - **CTA:** WhatsApp «?» → botão principal **Sună** (tel:) e o pedido do formulário sai por WhatsApp ou SMS; WhatsApp «sim» → WhatsApp; fixo → só **Sună**.
+- **Fotos reais, sempre (regra do Tomás, 09/10):** nada de emojis nem imagens «ilustrativas» (geradas, Higgsfield, ilustrações a fazer de foto). Usar as fotos reais do negócio e conteúdo tirado do que se vê nelas (produtos, espaço, trabalhos feitos). Ícones SVG de linha e estrelas de nota são aceitáveis. Sem fotos suficientes → dizer na entrega, para o coordenador pedir mais à ponte; não inventar imagem.
+- **Hero com cuidado:** a melhor foto real do negócio, composição forte e entrada coreografada; é o primeiro ecrã que o dono vê.
 - Fotos: usar só ficheiros diretamente em `media/` (o motor das demos não copia subpastas: copiar de `media/g/` para `media/<nome>.webp`). Fundo SVG inline sempre, `<img>` por cima com `onerror`. Sem fotos → site ilustrado, nunca fotos falsas.
 - Assinatura visual do brief, coreografada: sequência de entrada no herói, micro-interações, estados impecáveis. A funcionalidade que vende (marcação, pedido, montador, etc.) tem de funcionar de ponta a ponta.
 
