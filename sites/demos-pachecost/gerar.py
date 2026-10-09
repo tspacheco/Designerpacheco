@@ -60,6 +60,25 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("exclusive-laundry", "exclusive-laundry"),
     ("inkhaus-tattoo", "inkhaus-tattoo"),
     # lote 4 de Iași (08/10)
+    ("gemino-barbershop", "gemino-barbershop"),
+    ("frame-art", "frame-art"),
+    ("bonvino", "bonvino"),
+    ("cosi-buono", "cosi-buono"),
+    ("shaorma-pacurari", "shaorma-pacurari"),
+    ("carmangerie-spinu", "carmangerie-spinu"),
+    ("bistro-felix", "bistro-felix"),
+    ("extensii-gene-pacurari", "extensii-gene-pacurari"),
+    ("yssa-beauty", "yssa-beauty"),
+    ("andreea-lash", "andreea-lash"),
+    ("odaia-neagra", "odaia-neagra"),
+    ("magic-pets-house", "magic-pets-house"),
+    ("fevila-pet-spa", "fevila-pet-spa"),
+    ("star-service-auto", "star-service-auto"),
+    ("service-auto-paul-ion", "service-auto-paul-ion"),
+    ("service-la-pici", "service-la-pici"),
+    ("pro-masaj-domiciliu", "pro-masaj-domiciliu"),
+    ("acm-masaj", "acm-masaj"),
+    ("kineos-massage", "kineos-massage"),
     ("croitorie-grand-siraj", "croitorie-grand-siraj"),
     ("interventii-rapide", "interventii-rapide"),
     ("chei-targu-cucu", "chei-targu-cucu"),
@@ -78,6 +97,21 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("mb-cakes", "mb-cakes"),
 ]
 NOINDEX = '<meta name="robots" content="noindex, nofollow">'
+# Contador de aberturas (tracker das demos, ramo claude/tracker-demos-kx5ukf): só no index.html,
+# com o caminho fixo /demo/<curto>/ para contar igual em pachecost.com/demo/, demo.pachecost.com
+# e pachecost-demos.netlify.app. Sem cookies e sem script externo (um pedido de imagem ao GoatCounter).
+# Não conta navegadores automáticos (ponte, testes) nem quem abriu um link com #nao-contar
+# (o Tomás faz isso uma vez em cada telemóvel/PC para não contar as próprias visitas).
+CONTADOR = ('<script>(function(c){try{var L=localStorage;if(location.hash=="#nao-contar")'
+            '{L.setItem("skipgc","t");return}if(L.getItem("skipgc")=="t")return}catch(e){}'
+            'if(navigator.webdriver)return;'
+            # quem chega das páginas por nicho (/site-uri/, /sites/) não é o dono: conta à parte, em /nisa-demo/
+            'var b=/\\/(site-uri|sites)\\//.test(document.referrer)?"/nisa-demo/":"/demo/";'
+            'var q="p="+encodeURIComponent(b+c+"/")+"&t="+'
+            'encodeURIComponent(document.title)+"&r="+encodeURIComponent(document.referrer)+'
+            '"&rnd="+Math.random().toString(36).slice(2);'
+            '(new Image).src="https://pachecost.goatcounter.com/count?"+q})("%s")</script>')
+
 FONTE = re.compile(r"@font-face\s*\{[^}]*?url\(['\"]?data:[^}]*\}")
 
 
@@ -116,6 +150,8 @@ def gerar_demos():
             for n in htmls:
                 h = FONTE.sub("", htmls[n])
                 htmls[n] = re.sub(r"(<head[^>]*>)", r'\1<link rel="stylesheet" href="fontes.css">', h, count=1)
+        if "index.html" in htmls:
+            htmls["index.html"] = htmls["index.html"].replace("</body>", CONTADOR % curto + "</body>", 1)
         for nome, html in htmls.items():
             with open(os.path.join(dst, nome), "w", encoding="utf-8") as f:
                 f.write(html)
@@ -123,10 +159,23 @@ def gerar_demos():
             p = os.path.join(src, "media", f)
             if os.path.isfile(p) and f != "LEIA-ME.txt":
                 shutil.copy2(p, os.path.join(dst, "media", f))
+    # páginas por nicho e cidade (sites/paginas-nicho): indexáveis, servidas pelo pachecost.com e pelo
+    # ro.pachecost.com através das regras de gerar_site(); refazem-se a cada push, com as demos novas
+    # Se falharem, as demos publicam-se na mesma (são os links que já foram enviados aos donos).
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("paginas_nicho", os.path.join(SITES, "paginas-nicho", "gerar.py"))
+        paginas_nicho = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(paginas_nicho)
+        paginas_nicho.gerar(SITES, os.path.abspath(__file__), out)
+    except Exception as erro:  # noqa: BLE001
+        print("AVISO: páginas por nicho não geradas:", repr(erro))
     with open(os.path.join(out, "_redirects"), "w", encoding="utf-8") as f:
         f.write("/    https://pachecost.com/    302\n")
     with open(os.path.join(out, "_headers"), "w", encoding="utf-8") as f:
-        f.write("/*\n  X-Robots-Tag: noindex, nofollow\n/*/media/*\n  Cache-Control: public, max-age=604800\n")
+        # noindex só nas demos (as páginas por nicho têm de ser indexadas)
+        f.writelines(f"/{curto}/*\n  X-Robots-Tag: noindex, nofollow\n" for curto, _ in DEMOS)
+        f.write("/*/media/*\n  Cache-Control: public, max-age=604800\n")
     with open(os.path.join(out, "robots.txt"), "w", encoding="utf-8") as f:
         f.write("User-agent: *\nDisallow: /\n")
     tam = sum(os.path.getsize(os.path.join(r, x)) for r, _, fs in os.walk(out) for x in fs)
@@ -149,7 +198,13 @@ def gerar_site():
     assert os.path.exists(os.path.join(out, "index.html")) and not os.path.exists(os.path.join(out, "demo"))
     regras = [f"{HOST}/    https://pachecost.com/    302!",
               f"{HOST}/*    {DEMOS_URL}/:splat    200!",
-              f"/demo/*    {DEMOS_URL}/:splat    200!"]
+              f"/demo/*    {DEMOS_URL}/:splat    200!",
+              # páginas por nicho e cidade (vivem no projeto das demos, que se publica a cada push)
+              "https://ro.pachecost.com/sites/*    https://pachecost.com/sites/:splat    301!",
+              "https://pachecost.com/site-uri/*    https://ro.pachecost.com/site-uri/:splat    301!",
+              f"https://ro.pachecost.com/site-uri/*    {DEMOS_URL}/site-uri/:splat    200!",
+              f"/sites/*    {DEMOS_URL}/sites/:splat    200!",
+              f"/sitemap-nichos.xml    {DEMOS_URL}/sitemap-nichos.xml    200!"]
     # entra antes da secção 3 do site; a primeira regra que bate ganha
     rp = os.path.join(out, "_redirects")
     with open(rp, encoding="utf-8") as f:
@@ -165,7 +220,8 @@ def gerar_site():
     with open(os.path.join(out, "robots.txt"), encoding="utf-8") as f:
         rb = f.read()
     with open(os.path.join(out, "robots.txt"), "w", encoding="utf-8") as f:
-        f.write(rb.replace("Disallow: /p/\n", "Disallow: /p/\nDisallow: /demo/\n", 1))
+        rb = rb.replace("Disallow: /p/\n", "Disallow: /p/\nDisallow: /demo/\n", 1)
+        f.write(rb.rstrip("\n") + "\nSitemap: https://pachecost.com/sitemap-nichos.xml\n")
     zp = os.path.join(AQUI, "pachecost-com-netlify.zip")
     with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for raiz, _, fs in os.walk(out):
