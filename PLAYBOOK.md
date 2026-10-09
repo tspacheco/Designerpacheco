@@ -311,6 +311,7 @@ Decisão do Tomás, a aplicar em tudo o que a Pacheco Studios faz daqui para a f
 - **Oferta por ordem:** o Plano (20 min à mesa, PDF no mesmo dia) → o Piloto (1 automatização, 30 dias, 3 números combinados, saída com uma mensagem) → o Sistema → a Manutenção. Preço pelo desenho (caixas, contas ligadas, texto a aprovar), nunca pela palavra «IA». **Se uma proposta não tem desenho, não sai.**
 - **O assistente identifica-se sempre** (não só se perguntarem): o Regulamento da IA da UE obriga a partir de agosto de 2026 e a Roménia é UE. Mensagens de retorno e postări são marketing → consentimento + «STOP»; lembretes e confirmações são transacionais.
 - **Demo «Restaurantul Demo»** (WhatsApp Cloud API + n8n + Claude + Supabase): guião de 4 mensagens — olá (identifica-se) · mesa para 4 (marca) · pergunta fora da lista (passa a pessoa, o telemóvel do Tomás toca) · STOP (obedece). A passagem a pessoa é a prova, não a falha.
+- **Protótipo da rececionista (09/10/2026):** `agentes/rececionista/` (ramo claude/rececionista-ia-t561d9), página https://claude.ai/artifact/GjvzuuhAgFmnStHVKG3Snv. Telemóvel com chat, 3 negócios fictícios, RO/PT/EN, marca, passa ao dono, STOP. IA ao vivo no claude.ai, modo guião fora. Detalhe no LEIA-ME.md da pasta.
 - **Medir por mês:** conversas · desenhos à mesa (e quantos donos corrigiram o desenho) · demos experimentadas · pilotos · pilotos que viraram manutenção.
 - **Conteúdo:** um desenho por semana no Instagram («é isto que acontece quando…»), bastidores reais com autorização.
 
