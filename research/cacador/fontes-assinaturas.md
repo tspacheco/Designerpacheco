@@ -24,7 +24,7 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-09 | reparatii-termopane | Encode Sans Expanded | A janela que veda |
 | 2026-10-09 | dulce-de-acasa | Playpen Sans | O caderno de receitas |
 | 2026-10-09 | tapiterie-auto-iasi | Kumbh Sans | O pesponto |
-| 2026-10-09 | spaauto | Kode Mono | O elevador |
+| 2026-10-09 | spaauto | Kode Mono | O volante que se reveste |
 | 2026-10-09 | la-detaliu | Tilt Neon | A lâmpada de inspeção |
 | 2026-10-09 | ambiental-covoare | Domine | O tapete que se desenrola |
 | 2026-10-09 | vulcanizare-miroslava | Alumni Sans | O rasto do pneu |
