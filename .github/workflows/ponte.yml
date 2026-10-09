@@ -12,6 +12,7 @@
 #                                               <pasta>/v/NN.webp (recorte 9:16 a 72 % da largura, 720×1280) + info.txt
 #   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
+#   listamaps  <nome> <url>                     como pagina, mas desce a lista de resultados de uma pesquisa no Maps (até ~60)
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
@@ -36,7 +37,7 @@ jobs:
         run: |
           grep -qE '^\s*fotogramas\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
           python3 -m pip install --quiet pillow
-          if grep -qE '^\s*(pagina|fotosmaps)\s' .github/ponte.txt; then
+          if grep -qE '^\s*(pagina|fotosmaps|listamaps)\s' .github/ponte.txt; then
             python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
           fi
       - name: Pedidos
@@ -101,6 +102,8 @@ jobs:
                       paginas.append((p[1], p[2]))
                   elif op == "fotosmaps":
                       paginas.append((p[1], p[2], "fotos"))
+                  elif op == "listamaps":
+                      paginas.append((p[1], p[2], "lista"))
                   elif op == "testar":
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
@@ -121,7 +124,14 @@ jobs:
                           except Exception:
                               r = None  # páginas que nunca ficam quietas (Google Maps): segue com o que carregou
                           pg.wait_for_timeout(4000)
-                          if modo:  # fotosmaps: abre a galeria de fotos da ficha e desce para carregar mais
+                          if modo == ["lista"]:  # listamaps: desce a lista de resultados do Maps para carregar até ~60
+                              for _ in range(15):
+                                  try:
+                                      pg.locator('div[role="feed"]').first.evaluate("e => e.scrollBy(0, 4000)")
+                                  except Exception:
+                                      pg.mouse.move(300, 600); pg.mouse.wheel(0, 4000)
+                                  pg.wait_for_timeout(1200)
+                          elif modo:  # fotosmaps: abre a galeria de fotos da ficha e desce para carregar mais
                               for sel in ['button[aria-label^="Foto"]', 'button[aria-label*="foto"]', 'button[jsaction*="heroHeaderImage"]', 'img[decoding]']:
                                   try:
                                       pg.locator(sel).first.click(timeout=5000); break
