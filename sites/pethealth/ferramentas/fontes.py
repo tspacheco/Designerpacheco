@@ -8,7 +8,7 @@ UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
 PEDIDOS = {
   'mop-vet': 'https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,400..800;1,400..800&family=Literata:ital,opsz,wght@0,7..72,400..600;1,7..72,400&family=Cousine:wght@400;700&display=swap',
   'vet-point-of-care': 'https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Noto+Sans+Mono:wght@400..600&display=swap',
-  'pethealth': 'https://fonts.googleapis.com/css2?family=Kurale&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Pangolin&display=swap',
+  'pethealth': 'https://fonts.googleapis.com/css2?family=Kurale&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500..700&display=swap',
   'total-fauna': 'https://fonts.googleapis.com/css2?family=Sono:wght,MONO@200..800,0..1&family=Epilogue:ital,wght@0,400..700;1,400&display=swap',
 }
 SUBSETS = {'latin', 'latin-ext'}
