@@ -228,7 +228,7 @@ def cartao_setor(s, i, itens, rot, lang, autos, digitos):
     exemplos = (f'<div><h4 class="rotulo">{e(lab["exemplos"])}</h4><ul class="exemplos">'
                 + "".join(mini_quadrado(x, rot, lang, lab) for x in exs) + "</ul></div>") if exs else ""
     chips = " ".join(f'<a class="chip" href="#a-{e(k)}">{e(autos[k]["scurt"])}</a>' for k in s["combina"])
-    wa = f"https://wa.me/351{digitos}?text={quote(lab['cta_msg'] + s['titlu'])}"
+    wa = f"https://wa.me/{digitos}?text={quote(lab['cta_msg'] + s['titlu'])}"
     return f"""<details class="setor rv" name="setor" id="s-{e(s["id"])}" style="--i:{i}">
   <summary>
     <span class="setor-tipos">{e(s["tipos"])}</span>
@@ -381,7 +381,7 @@ def vista_automatizari(c, digitos, icones, casos, servicii):
         chat = "".join(f'<div class="msg {e(m["cine"])}"><small>{e(lab["client"] if m["cine"] == "client" else lab["asistent"] if m["cine"] == "asistent" else lab["tu_msg"])}</small>{e(m["t"])}</div>'
                        for m in x["exemplu"])
         chips = " ".join(f'<a class="chip" href="#a-{e(k)}">{e(por_id[k]["scurt"])}</a>' for k in x["leaga"] if k in por_id)
-        wa_demo = f"https://wa.me/351{digitos}?text={quote(lab['demo_msg'] + x['titlu'])}"
+        wa_demo = f"https://wa.me/{digitos}?text={quote(lab['demo_msg'] + x['titlu'])}"
 
         cards.append(f"""<details class="auto rv" name="auto" id="a-{e(x["id"])}" style="--i:{i}">
   <summary>
@@ -740,11 +740,7 @@ def contacto(c, d, wa, tel_legivel, digitos, com_site, lang="pt"):
     lab = k["labels"]
     ig = d["instagram"].lstrip("@")
     site = d["site_principal"]
-    wa_c, tel_c, tel_href = wa, tel_legivel, f"tel:+351{digitos}"
-    local = d.get("whatsapp_diagnostico", {}).get(lang)
-    if local:  # ro: o número romeno também nos contactos do fim da página (pedido do Tomás, 07/10)
-        n = re.sub(r"\D", "", local)
-        wa_c, tel_c, tel_href = f"https://wa.me/{n}?text={quote(k['mensagem_wa'])}", local, f"tel:+{n}"
+    wa_c, tel_c, tel_href = wa, tel_legivel, f"tel:+{digitos}"
     linhas = [(lab["whatsapp"], tel_c, wa_c, "chat"), (lab["telefon"], tel_c, tel_href, "telefone"),
               (lab["email"], d["email"], f"mailto:{d['email']}", "email"),
               (lab["instagram"], f"@{ig}", f"https://www.instagram.com/{ig}/", "instagram")]
@@ -1165,10 +1161,13 @@ def main():
         falta = glifos_em_falta(textos_de(c))
         print(f"  {lang}: {'todas as letras existem nas fontes' if not falta else '✗ letras sem glifo: ' + ''.join(falta)}")
         ok &= not falta
-        wa = f"https://wa.me/351{digitos}?text={quote(c['contact']['mensagem_wa'])}"
+        # o número desta língua, com indicativo: no ro.pachecost.com só aparece o romeno (pedido do Tomás, 09/10)
+        local = d.get("whatsapp_diagnostico", {}).get(lang)
+        num, tel_l = (re.sub(r"\D", "", local), local) if local else ("351" + digitos, tel_legivel)
+        wa = f"https://wa.me/{num}?text={quote(c['contact']['mensagem_wa'])}"
         og_img = f"https://{cfg['host']}/media/og-{lang}.png"
         jsonld = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Pacheco Studios", "url": cfg["url"],
-                  "image": og_img, "description": c["meta"]["description"], "telephone": tel_legivel, "email": d["email"],
+                  "image": og_img, "description": c["meta"]["description"], "telephone": tel_l, "email": d["email"],
                   "areaServed": [{"@type": "Country", "name": n} for n in cfg["areas"]],
                   "sameAs": [f"https://www.instagram.com/{d['instagram'].lstrip('@')}/"],
                   "founder": {"@type": "Person", "name": d["nome"]}}
@@ -1181,10 +1180,10 @@ def main():
             "SALTAR": e(cfg["saltar"]), "NAV_LABEL": e(cfg["nav"]), "LINGUAS": seletor(c, lang),
             "TAB_CONSULTANTA": e(c["topo"]["tabs"]["consultanta"]), "TAB_CAZURI": e(c["topo"]["tabs"]["cazuri"]),
             "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
-            "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, digitos),
-            "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
-            "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"], lang), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"], wa_diagnostico(d, lang)), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
+            "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, num),
+            "VISTA_AUTOMATIZARI": vista_automatizari(c, num, icones, casos, vista_servicii(c, portfolio, lang)),
+            "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, num),
+            "CONTACT": contacto(c, d, wa, tel_l, num, cfg["com_site"], lang), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"], wa_diagnostico(d, lang)), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
             "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }
         pagina = montar(src, valores)

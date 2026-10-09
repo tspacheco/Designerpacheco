@@ -408,6 +408,11 @@ const fs = require('fs');
     const [numTxt, numTel] = k === 'ro' ? ['+40 723 098 556', 'tel:+40723098556'] : ['+351 967 117 357', 'tel:+351967117357'];
     if (!cont.txt.includes(numTxt) || cont.tel !== numTel || !cont.wa.startsWith(numDiag)) mal(`${k}: contactos do fim da página ${JSON.stringify({ tel: cont.tel, wa: cont.wa && cont.wa.split('?')[0] })}`);
     else bem(`${k}: contactos do fim da página com ${numTxt}`);
+    // no ro.pachecost.com só o número romeno, em todos os botões e no JSON-LD (pedido do Tomás, 09/10)
+    const outro = await p.evaluate(n => { const h = document.documentElement.outerHTML;
+      return (h.match(new RegExp(n.join('|'), 'g')) || []).length; }, k === 'ro' ? ['351967117357', '967 117 357'] : ['40723098556', '723 098 556']);
+    if (outro) mal(`${k}: ${outro} vezes o número ${k === 'ro' ? 'português' : 'romeno'} na página`);
+    else bem(`${k}: só aparece o número ${k === 'ro' ? 'romeno' : 'português'} na página`);
     await p.evaluate(() => { const a = document.getElementById('diag-enviar'); a.addEventListener('click', e => e.preventDefault()); a.click(); });
     const avatar = await p.evaluate(() => !!document.querySelector('.diag-bot img'));
     if (!avatar) mal(`${k}: o fim do diagnóstico devia ter a foto do Tomás`);
