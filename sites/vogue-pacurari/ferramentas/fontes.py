@@ -6,7 +6,7 @@ import re, base64, urllib.request, os, sys
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36'}
 PEDIDOS = {
-  'vogue-pacurari': 'https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Bona+Nova:ital,wght@1,400&family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&display=swap',
+  'vogue-pacurari': 'https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Bona+Nova:ital,wght@1,400&family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&display=swap',
 }
 SUBSETS = {'latin', 'latin-ext'}
 out, vistos = [], {}
