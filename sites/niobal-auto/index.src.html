@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NIOBAL auto · Service auto, Bulevardul Chimiei 14, Iași</title>
+<meta name="description" content="NIOBAL auto, service auto pe Bulevardul Chimiei 14, Iași. 4,6 pe Google din 63 de recenzii. Ți s-a aprins un martor în bord? Află ce înseamnă și programează-te. Tel. 0743 671 575.">
+<meta name="theme-color" content="#0E1116">
+<meta property="og:title" content="NIOBAL auto · Service auto pe Bulevardul Chimiei">
+<meta property="og:description" content="Ți s-a aprins ceva în bord? Îți spunem ce e, apoi îl stingem. Sună: 0743 671 575.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/atelier.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E1116'/%3E%3Cpath d='M7 20h3v-5l3-3h7l2 2h3v7h-3l-2 2H12z' fill='none' stroke='%23FFA81F' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --hartie:#EEF0F2;   /* pagina din cartea mașinii */
+  --hartie-2:#E0E3E7;
+  --hartie-3:#C9CED5;
+  --alb:#FBFCFD;
+  --sticla:#0E1116;   /* sticla neagră a bordului */
+  --sticla-2:#161A21;
+  --sticla-3:#20262F;
+  --sticla-linie:#2E3540;
+  --cadran:#EDEFF2;
+  --chihlimbar:#FFA81F; /* martorul galben */
+  --chihlimbar-t:#8A5600; /* chihlimbar lizibil pe deschis */
+  --rosu:#F2382B; --rosu-t:#B5221A;
+  --verde:#2BD46B; --verde-t:#11753A;
+  --albastru:#3E83FF; --albastru-t:#1D4FC4;
+  --text:#16181D; --text-2:#454B55; --text-3:#666D78;
+  --f-disp:"Asap Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-text:"Asap",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --lat:min(1200px, 100% - 40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --sus:env(safe-area-inset-top,0px); --jos:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:80px;scroll-behavior:smooth}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
+body{margin:0;background:var(--hartie);color:var(--text);font:400 1.06rem/1.6 var(--f-text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--albastru-t);outline-offset:3px;border-radius:4px}
+.bord :focus-visible,.bara-sus :focus-visible,.rodape :focus-visible,.jos :focus-visible,.meniu :focus-visible{outline-color:var(--chihlimbar)}
+[tabindex="-1"]:focus{outline:none}
+.salt{position:absolute;left:12px;top:-60px;z-index:100;background:var(--sticla);color:#fff;padding:10px 14px;border-radius:6px}
+.salt:focus{top:12px}
+.lat{width:var(--lat);margin-inline:auto}
+h1,h2,h3{font-family:var(--f-disp);font-weight:800;line-height:.98;margin:0;letter-spacing:-.005em}
+p{margin:0 0 1em}
+.sectiune{padding:clamp(64px,8vw,108px) 0;position:relative}
+.bord{background:var(--sticla);color:#E3E7EC}
+
+/* „pagina din manual”: antetul fiecărei secțiuni */
+.pag{display:flex;align-items:center;gap:12px;font:600 .82rem/1 var(--f-disp);letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 16px}
+.pag svg{width:26px;height:26px;color:var(--chihlimbar-t)}
+.pag span{border-left:1px solid var(--hartie-3);padding-left:12px}
+.bord .pag{color:#9AA3AF}
+.bord .pag svg{color:var(--chihlimbar)}
+.bord .pag span{border-color:var(--sticla-linie)}
+.titlu{font-size:clamp(2.3rem,1.3rem + 3.6vw,4.2rem);text-transform:uppercase;margin-bottom:18px;text-wrap:balance}
+.titlu em{font-style:normal;color:var(--chihlimbar-t)}
+.bord .titlu em{color:var(--chihlimbar)}
+.lead{font-size:clamp(1.08rem,1rem + .35vw,1.22rem);max-width:58ch;color:var(--text-2)}
+.bord .lead{color:#AEB6C1}
+.confirmat{display:inline-flex;align-items:center;gap:7px;font:600 .76rem/1 var(--f-disp);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:4px;background:#FFF1D6;color:var(--chihlimbar-t);white-space:nowrap}
+.confirmat::before{content:"!";display:grid;place-items:center;width:14px;height:14px;border-radius:50%;background:var(--chihlimbar);color:#16181D;font-size:.66rem}
+.bord .confirmat{background:rgba(255,168,31,.12);color:var(--chihlimbar)}
+
+/* bandă + bară */
+.prezentare{background:var(--chihlimbar);color:#16181D;font:600 .74rem/1.35 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:7px 14px;padding-top:calc(7px + var(--sus))}
+.bara-sus{position:sticky;top:0;z-index:50;background:var(--sticla);color:#fff;transition:box-shadow .3s}
+.bara-sus.scrolled{box-shadow:0 10px 30px -12px rgba(0,0,0,.6)}
+.bara-in{display:flex;align-items:center;gap:16px;min-height:64px}
+.marca{display:flex;align-items:baseline;gap:6px;text-decoration:none;margin-right:auto;font:800 1.6rem/1 var(--f-disp);letter-spacing:.04em}
+.marca i{font-style:normal;font-weight:500;color:var(--chihlimbar);letter-spacing:.02em}
+.nav{display:flex;gap:2px}
+.nav a{display:flex;align-items:center;gap:8px;text-decoration:none;padding:9px 12px;border-radius:8px;font:600 1.02rem/1 var(--f-disp);letter-spacing:.04em;text-transform:uppercase;color:#AEB6C1;transition:background .2s,color .2s}
+.nav a svg{width:22px;height:22px;color:#3A424D;transition:color .25s,filter .25s}
+.nav a:hover{background:rgba(255,255,255,.06);color:#fff}
+.nav a[aria-current="true"]{color:#fff}
+.nav a[aria-current="true"] svg{color:var(--chihlimbar);filter:drop-shadow(0 0 6px rgba(255,168,31,.7))}
+.limbi{display:flex;border:1px solid var(--sticla-linie);border-radius:8px;padding:3px}
+.limbi button{background:none;border:0;cursor:pointer;font:600 .8rem/1 var(--f-disp);letter-spacing:.06em;padding:9px;border-radius:5px;color:#AEB6C1;min-width:38px;min-height:34px}
+.limbi button[aria-pressed="true"]{background:var(--chihlimbar);color:#16181D}
+.limbi .doar-rev{display:none}
+html.rev .limbi .doar-rev{display:block}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--sticla-linie);background:none;border-radius:8px;cursor:pointer;position:relative}
+.burger span,.burger span::before,.burger span::after{position:absolute;left:12px;right:12px;height:2px;background:#fff;content:""}
+.burger span{top:22px}.burger span::before{top:-7px;left:0;right:0}.burger span::after{top:7px;left:0;right:0}
+.meniu{position:fixed;inset:0;z-index:80;background:var(--sticla);color:#fff;padding:calc(24px + var(--sus)) 24px calc(24px + var(--jos));display:flex;flex-direction:column;visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s;overflow:auto}
+.meniu.deschis{visibility:visible;opacity:1}
+.meniu .inchide{align-self:flex-end;background:none;border:1px solid var(--sticla-linie);border-radius:8px;padding:10px 18px;cursor:pointer;color:#fff;font-weight:700;min-height:44px}
+.meniu ol{list-style:none;margin:24px 0 0;padding:0}
+.meniu li a{display:flex;align-items:center;gap:16px;text-decoration:none;font:800 2.1rem/1.1 var(--f-disp);text-transform:uppercase;padding:13px 0;border-bottom:1px solid var(--sticla-linie)}
+.meniu li a svg{width:30px;height:30px;color:var(--chihlimbar)}
+.meniu-tel{margin-top:auto;padding-top:24px;color:#AEB6C1}
+.meniu-tel a{color:#fff;font-weight:700}
+
+/* butoane */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:10px;border:0;font:700 1.1rem/1 var(--f-disp);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .18s var(--ease),background .2s,box-shadow .2s;touch-action:manipulation;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:active{transform:scale(.97)}
+.btn-galben{background:var(--chihlimbar);color:#16181D;box-shadow:0 0 0 0 rgba(255,168,31,.5)}
+.btn-galben:hover{background:#FFBC52;box-shadow:0 0 22px -2px rgba(255,168,31,.55)}
+.btn-negru{background:var(--sticla);color:#fff}
+.btn-negru:hover{background:var(--sticla-3)}
+.btn-contur{background:transparent;color:var(--text);box-shadow:inset 0 0 0 2px currentColor}
+.btn-contur:hover{background:rgba(22,24,29,.06)}
+.bord .btn-contur,.jos .btn-contur{color:#fff}
+.bord .btn-contur:hover{background:rgba(255,255,255,.07)}
+.btn-wa{background:#1F7A4D;color:#fff}
+.btn-wa:hover{background:#18653F}
+
+/* ===== EROU + BORDUL ===== */
+.erou{position:relative;background:var(--hartie);overflow:hidden}
+.erou-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(40px,6vw,80px) 0}
+.erou-in>*{min-width:0}
+.erou .pag{margin-bottom:20px}
+.erou h1{font-size:clamp(3.4rem,1.6rem + 6.6vw,7.6rem);line-height:.84;text-transform:uppercase;margin:0 0 20px;letter-spacing:-.01em}
+.erou h1 .r{display:block}
+.erou h1 .r:last-child{font-size:.56em;line-height:.9;margin-top:.04em}
+.erou h1 .r i{font-style:normal;font-weight:500;color:var(--chihlimbar-t);text-transform:lowercase;letter-spacing:.01em}
+.erou .zic{font:700 clamp(1.3rem,1.1rem + .8vw,1.7rem)/1.22 var(--f-text);max-width:24ch;margin:0 0 12px}
+.erou-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.nota{display:flex;align-items:center;gap:14px;margin-top:24px;flex-wrap:wrap}
+.nota b{font:800 2.4rem/1 var(--f-disp)}
+.nota .stele{display:flex;gap:2px;color:var(--chihlimbar-t)}
+.nota .stele svg{width:17px;height:17px}
+.nota small{display:block;font:600 .84rem/1.3 var(--f-disp);letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+
+.vedere{position:relative}
+.parbriz{position:relative;margin:0 4% -64px;aspect-ratio:16/9;border-radius:30px 30px 8px 8px;overflow:hidden;background:#20262F;clip-path:polygon(3% 0,97% 0,100% 100%,0 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+.parbriz img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.parbriz::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.18) 0 18%,transparent 18% 22%,rgba(255,255,255,.08) 22% 26%,transparent 26%),linear-gradient(0deg,rgba(14,17,22,.55),transparent 40%);pointer-events:none}
+.parbriz figcaption{position:absolute;left:5%;top:14px;font:600 .74rem/1.3 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(14,17,22,.7);padding:6px 10px;border-radius:6px;z-index:1}
+.js .parbriz img{opacity:0;transform:scale(1.08)}
+.gata .parbriz img{animation:parbriz 1.4s cubic-bezier(.2,.7,.2,1) .2s both}
+@keyframes parbriz{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:none}}
+.cluster{position:relative;z-index:1;background:linear-gradient(180deg,#1A1F27,#0B0D11 70%);border-radius:44px 44px 28px 28px;padding:22px 22px 18px;box-shadow:0 40px 60px -34px rgba(14,17,22,.8),inset 0 1px 0 rgba(255,255,255,.08);color:#E3E7EC}
+.cluster::before{content:"";position:absolute;left:8%;right:8%;top:-14px;height:30px;border-radius:50% 50% 0 0/100% 100% 0 0;background:#0E1116;z-index:-1}
+.cadrane{display:grid;grid-template-columns:1fr .78fr 1fr;align-items:center;gap:6px}
+.cadrane svg{width:100%;height:auto;display:block}
+.cadran-t{font:600 9px var(--f-disp);fill:#AEB6C1;letter-spacing:.04em}
+.cadran-n{font:700 13px var(--f-disp);fill:#EDEFF2}
+.ac{transform-box:view-box;transition:none}
+.mijloc{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.ecran{width:100%;background:#05070A;border-radius:12px;padding:10px 8px;box-shadow:inset 0 0 0 1px #232A33;min-height:96px;display:flex;flex-direction:column;justify-content:center}
+.ecran b{display:block;font:700 1.05rem/1.1 var(--f-disp);letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.ecran small{display:block;font:500 .74rem/1.3 var(--f-text);color:#9AA3AF;margin-top:4px}
+.odo{font:600 .8rem/1 var(--f-disp);letter-spacing:.14em;color:#9AA3AF;font-variant-numeric:tabular-nums}
+.martori{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-top:14px;padding-top:12px;border-top:1px solid #222831}
+.martori span{display:grid;place-items:center;height:30px}
+.martori svg{width:24px;height:24px;color:#232931;transition:color .12s,filter .12s}
+.martori .on svg{filter:drop-shadow(0 0 5px currentColor)}
+.martori .on.r svg{color:var(--rosu)}.martori .on.g svg{color:var(--chihlimbar)}.martori .on.v svg{color:var(--verde)}.martori .on.a svg{color:var(--albastru)}
+.martori .clipe svg{color:var(--chihlimbar);filter:drop-shadow(0 0 5px var(--chihlimbar));animation:clipeste 1.6s ease-in-out infinite}
+@keyframes clipeste{0%,100%{opacity:1}50%{opacity:.25}}
+.cheie{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;font:600 .78rem/1.3 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:#9AA3AF}
+.cheie button{display:inline-flex;align-items:center;gap:8px;background:#1C222B;color:#fff;border:0;border-radius:999px;padding:0 14px;min-height:40px;cursor:pointer;font:inherit;letter-spacing:.08em}
+.cheie button:hover{background:#28303B}
+.cheie button svg{width:18px;height:18px;color:var(--chihlimbar)}
+.cheie a{color:var(--chihlimbar);text-decoration:none}
+.cheie a:hover{text-decoration:underline}
+
+.js .erou .pag,.js .erou h1 .r,.js .erou .zic,.js .erou .lead,.js .erou-cta,.js .nota,.js .cluster{opacity:0}
+.gata .erou .pag{animation:sus .6s var(--ease) .05s both}
+.gata .erou h1 .r{animation:sus .7s var(--ease) both}
+.gata .erou h1 .r:nth-child(1){animation-delay:.12s}.gata .erou h1 .r:nth-child(2){animation-delay:.24s}
+.gata .erou .zic{animation:sus .7s var(--ease) .36s both}
+.gata .erou .lead{animation:sus .7s var(--ease) .44s both}
+.gata .erou-cta{animation:sus .7s var(--ease) .52s both}
+.gata .erou .nota{animation:sus .7s var(--ease) .6s both}
+.gata .cluster{animation:cluster .9s cubic-bezier(.16,.84,.3,1) .1s both}
+@keyframes sus{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes cluster{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:none}}
+
+/* bandă */
+.banda{background:var(--sticla);color:#E3E7EC;overflow:hidden;border-block:1px solid #222831}
+.banda-in{display:flex;width:max-content;animation:defilare 44s linear infinite}
+.banda span{display:inline-flex;align-items:center;gap:12px;padding:15px 24px;font:700 clamp(1rem,.95rem + .4vw,1.2rem)/1 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.banda span svg{width:22px;height:22px}
+.banda .r svg{color:var(--rosu)}.banda .g svg{color:var(--chihlimbar)}.banda .a svg{color:var(--albastru)}
+@keyframes defilare{to{transform:translateX(-50%)}}
+
+/* ===== DECODORUL DE MARTORI ===== */
+.dec{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:start;margin-top:36px}
+.dec>*{min-width:0}
+.legenda{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 16px;font:600 .84rem/1.3 var(--f-disp);letter-spacing:.06em;text-transform:uppercase;color:#AEB6C1}
+.legenda span{display:inline-flex;align-items:center;gap:8px}
+.legenda i{width:10px;height:10px;border-radius:50%}
+.panou{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;background:#05070A;border-radius:20px;padding:12px;box-shadow:inset 0 0 0 1px #232A33}
+.panou button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:5/4;border:0;border-radius:14px;background:#10141A;cursor:pointer;color:#66707D;transition:background .2s,color .2s,transform .15s}
+.panou button svg{width:46%;height:auto;max-width:44px;transition:filter .2s}
+.panou button small{font:600 .66rem/1.1 var(--f-disp);letter-spacing:.06em;text-transform:uppercase;color:#7D8794;max-width:92%;text-align:center}
+.panou button:hover{background:#171C24;color:#8B95A2}
+.panou button:active{transform:scale(.96)}
+.panou button[aria-pressed="true"]{background:#191E26}
+.panou button[aria-pressed="true"] small{color:#fff}
+.panou button.r[aria-pressed="true"]{color:var(--rosu)}.panou button.g[aria-pressed="true"]{color:var(--chihlimbar)}.panou button.a[aria-pressed="true"]{color:var(--albastru)}.panou button.v[aria-pressed="true"]{color:var(--verde)}
+.panou button[aria-pressed="true"] svg{filter:drop-shadow(0 0 8px currentColor)}
+.panou button:focus-visible{outline-offset:-3px}
+
+.fila{position:sticky;top:88px;background:var(--alb);color:var(--text);border-radius:6px 20px 20px 6px;padding:24px 24px 22px 30px;box-shadow:0 30px 50px -30px rgba(0,0,0,.7);border-left:8px solid var(--chihlimbar)}
+.fila.r{border-left-color:var(--rosu)}.fila.a{border-left-color:var(--albastru)}.fila.v{border-left-color:var(--verde)}
+.fila-cap{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.fila-ic{width:68px;height:68px;border-radius:16px;background:var(--sticla);display:grid;place-items:center;flex:none}
+.fila-ic svg{width:44px;height:44px;filter:drop-shadow(0 0 7px currentColor)}
+.fila.r .fila-ic{color:var(--rosu)}.fila.g .fila-ic{color:var(--chihlimbar)}.fila.a .fila-ic{color:var(--albastru)}.fila.v .fila-ic{color:var(--verde)}
+.fila h3{font-size:1.75rem;text-transform:uppercase}
+.fila .nivel{display:inline-flex;align-items:center;gap:7px;margin-top:6px;font:700 .8rem/1 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-radius:5px}
+.fila .nivel i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.fila.r .nivel{background:#FDE3E1;color:var(--rosu-t)}.fila.g .nivel{background:#FFF1D6;color:var(--chihlimbar-t)}.fila.a .nivel{background:#E1EBFF;color:var(--albastru-t)}.fila.v .nivel{background:#DDF6E7;color:var(--verde-t)}
+.fila dl{margin:0;display:grid;gap:12px}
+.fila dt{font:700 .8rem/1 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+.fila dd{margin:4px 0 0;font-size:1.02rem}
+.fila .act{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.fila .mic{font-size:.86rem;color:var(--text-3);margin:14px 0 0}
+.fila-nou{animation:fila .4s var(--ease)}
+@keyframes fila{from{opacity:.2;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ===== JURNALUL CLIENȚILOR ===== */
+.jurnal{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,72px);align-items:start}
+.jurnal>*{min-width:0}
+.bare{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:10px}
+.bare li{display:grid;grid-template-columns:44px 1fr 34px;gap:12px;align-items:center;font:700 1rem/1 var(--f-disp);font-variant-numeric:tabular-nums}
+.bare .tub{height:14px;border-radius:7px;background:var(--hartie-2);overflow:hidden;box-shadow:inset 0 0 0 1px var(--hartie-3)}
+.bare .tub i{display:block;height:100%;width:0;background:var(--sticla);border-radius:7px;transition:width 1s var(--ease)}
+.bare li:first-child .tub i{background:var(--chihlimbar)}
+.bare .vis .tub i{width:var(--w)}
+.bare li span:last-child{color:var(--text-3);text-align:right}
+.mare{display:flex;align-items:baseline;gap:12px;margin-top:6px}
+.mare b{font:800 5.4rem/.9 var(--f-disp)}
+.mare span{font:600 .9rem/1.3 var(--f-disp);letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.intrari{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.intrari li{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;background:var(--alb);border-radius:16px;padding:18px;box-shadow:inset 0 0 0 1px var(--hartie-2)}
+.intrari .ic{width:52px;height:52px;border-radius:12px;background:var(--sticla);display:grid;place-items:center;color:var(--verde)}
+.intrari .ic svg{width:30px;height:30px;filter:drop-shadow(0 0 5px currentColor)}
+.intrari b{display:block;font:800 1.3rem/1.1 var(--f-disp);text-transform:uppercase;margin-bottom:4px}
+.intrari p{margin:0;color:var(--text-2)}
+.intrari small{display:block;margin-top:8px;font:600 .74rem/1 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
+
+/* fotografii */
+.foto{position:relative;border-radius:16px;overflow:hidden;background:var(--sticla-3);margin:0}
+.foto>svg{position:absolute;inset:0;width:100%;height:100%}
+.foto img{position:relative;width:100%;height:100%;object-fit:cover}
+.foto figcaption{position:absolute;left:10px;bottom:10px;font:600 .78rem/1.3 var(--f-disp);letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(14,17,22,.82);padding:7px 10px;border-radius:6px;max-width:calc(100% - 20px)}
+.galerie{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;margin-top:36px}
+.galerie .foto{aspect-ratio:4/3}
+.galerie .foto:first-child{grid-row:span 2;aspect-ratio:auto}
+
+/* ===== PROGRAMARE ===== */
+.pg{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:start;margin-top:34px}
+.pg>*{min-width:0}
+fieldset{border:0;margin:0 0 28px;padding:0;min-width:0}
+legend{font:800 1.55rem/1.05 var(--f-disp);text-transform:uppercase;margin-bottom:6px;padding:0}
+.ajut{font-size:.96rem;color:var(--text-2);margin:0 0 12px}
+.camp{display:grid;gap:6px;margin-top:12px;min-width:0}
+.camp label{font:700 1.02rem/1.2 var(--f-disp);letter-spacing:.03em}
+.camp label small{font:400 .86rem/1 var(--f-text);color:var(--text-3)}
+.camp input,.camp select,.camp textarea{width:100%;min-height:50px;border-radius:10px;border:1.5px solid var(--hartie-3);background:var(--alb);padding:12px 14px;font-size:1.02rem}
+.camp textarea{min-height:84px;resize:vertical}
+.camp input:focus,.camp select:focus,.camp textarea:focus{border-color:var(--sticla);outline:none;box-shadow:0 0 0 3px rgba(255,168,31,.55)}
+.trei{display:grid;grid-template-columns:1.2fr 1.2fr .7fr;gap:12px}
+.trei>*{min-width:0}
+.mini-panou{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;background:var(--sticla);border-radius:14px;padding:8px}
+.mini-panou label{position:relative;display:grid;place-items:center;aspect-ratio:1;border-radius:9px;background:#10141A;color:#6B7582;cursor:pointer;transition:background .15s,color .15s}
+.mini-panou input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.mini-panou svg{width:56%;height:auto;max-width:30px}
+.mini-panou label:has(input:checked){background:#1C222B}
+.mini-panou label.r:has(input:checked){color:var(--rosu)}.mini-panou label.g:has(input:checked){color:var(--chihlimbar)}.mini-panou label.a:has(input:checked){color:var(--albastru)}.mini-panou label.v:has(input:checked){color:var(--verde)}
+.mini-panou label:has(input:checked) svg{filter:drop-shadow(0 0 5px currentColor)}
+.mini-panou label:has(input:focus-visible){outline:3px solid var(--chihlimbar);outline-offset:2px}
+.alese{min-height:1.5em;margin-top:8px;font:600 .9rem/1.4 var(--f-disp);letter-spacing:.04em;color:var(--text-2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.chip input:disabled{cursor:not-allowed}
+.chip>span{display:inline-flex;flex-direction:column;justify-content:center;min-height:48px;padding:7px 14px;border-radius:10px;background:var(--alb);box-shadow:inset 0 0 0 1.5px var(--hartie-3);font:700 1rem/1.15 var(--f-disp);letter-spacing:.03em;transition:background .15s,box-shadow .15s}
+.chip>span small{font:500 .74rem/1.2 var(--f-text);color:var(--text-3);letter-spacing:0}
+.chip>input:checked+span{background:var(--sticla);color:#fff;box-shadow:inset 0 -3px 0 var(--chihlimbar)}
+.chip>input:checked+span small{color:#C9CED5}
+.chip>input:disabled+span{opacity:.45;text-decoration:line-through}
+.chip>input:focus-visible+span{outline:3px solid var(--albastru-t);outline-offset:2px}
+.eroare{display:none;color:var(--rosu-t);font-size:.94rem;font-weight:700;margin-top:8px}
+.eroare.on{display:block}
+.trimite{display:flex;flex-wrap:wrap;gap:10px}
+.trimite .mic{flex-basis:100%;font-size:.92rem;color:var(--text-2);margin:6px 0 0}
+.fisa-wrap{position:sticky;top:88px}
+.fisa{background:var(--sticla);color:#E3E7EC;border-radius:20px;padding:20px;box-shadow:0 30px 50px -30px rgba(14,17,22,.8)}
+.fisa-cap{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--sticla-linie);margin-bottom:8px}
+.fisa-cap b{font:800 1.2rem/1 var(--f-disp);letter-spacing:.06em;text-transform:uppercase}
+.fisa-cap small{font:600 .72rem/1 var(--f-disp);letter-spacing:.1em;color:#9AA3AF;text-transform:uppercase}
+.fisa-l{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--sticla-linie)}
+.fisa-l>span:first-child{font:600 .76rem/1.4 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:#9AA3AF}
+.fisa-l>span:last-child{font-weight:600;word-break:break-word}
+.fisa-l .gol{color:#5F6874;font-weight:400}
+.fisa-l .ics{display:flex;flex-wrap:wrap;gap:6px}
+.fisa-l .ics svg{width:22px;height:22px;filter:drop-shadow(0 0 4px currentColor)}
+.fisa-l .ics .r{color:var(--rosu)}.fisa-l .ics .g{color:var(--chihlimbar)}.fisa-l .ics .a{color:var(--albastru)}.fisa-l .ics .v{color:var(--verde)}
+.fisa-sub{font-size:.86rem;color:#9AA3AF;margin:12px 0 0}
+
+/* program + contact */
+.ora{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.ora>*{min-width:0}
+.program{list-style:none;margin:0;padding:0}
+.program li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--sticla-linie);font:600 1.08rem/1.3 var(--f-disp);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.program li.azi{color:var(--chihlimbar)}
+.program li em{font-style:normal;margin-left:10px;padding:3px 7px;background:var(--chihlimbar);color:#16181D;font-size:.72rem;border-radius:4px;vertical-align:2px;letter-spacing:.08em;text-transform:uppercase}
+.program li .inc{color:#7D8794}
+.stare{display:inline-flex;align-items:center;gap:10px;font:700 .95rem/1.3 var(--f-disp);letter-spacing:.05em;text-transform:uppercase;padding:11px 15px;border-radius:10px;background:#05070A;box-shadow:inset 0 0 0 1px #232A33;margin:0 0 18px}
+.stare svg{width:22px;height:22px;color:#39414C}
+.stare.da svg{color:var(--verde);filter:drop-shadow(0 0 5px var(--verde))}
+.stare.nu svg{color:var(--rosu);filter:drop-shadow(0 0 5px var(--rosu))}
+.adresa{font:800 1.7rem/1.15 var(--f-disp);text-transform:uppercase;margin:0 0 6px}
+.repere{list-style:none;margin:18px 0 22px;padding:0;display:grid;gap:12px}
+.repere li{display:grid;grid-template-columns:28px 1fr;gap:12px;color:#AEB6C1}
+.repere svg{width:24px;height:24px;color:var(--chihlimbar);margin-top:2px}
+.repere b{color:#fff}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.harta{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;background:var(--sticla-3);margin-top:28px}
+.harta>svg{position:absolute;inset:0;width:100%;height:100%}
+.harta iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.harta .btn{position:absolute;left:50%;bottom:20px;transform:translateX(-50%)}
+.harta .btn:active{transform:translateX(-50%) scale(.97)}
+
+/* subsol */
+.rodape{background:#07090C;color:#9AA3AF;padding:64px 0 calc(110px + var(--jos))}
+.rodape-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+.rodape h2{font-size:2.4rem;color:#fff;margin-bottom:10px;text-transform:uppercase}
+.rodape h2 i{font-style:normal;font-weight:500;color:var(--chihlimbar)}
+.rodape h3{font:700 .8rem/1 var(--f-disp);letter-spacing:.14em;text-transform:uppercase;color:var(--chihlimbar);margin:0 0 14px}
+.rodape ul{list-style:none;padding:0;margin:0}
+.rodape li{padding:4px 0}
+.rodape a{color:#fff}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--sticla-linie);display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.86rem}
+.legal a{color:#9AA3AF}
+
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + var(--jos));background:rgba(14,17,22,.97);border-top:1px solid var(--sticla-linie);transform:translateY(110%);transition:transform .35s var(--ease)}
+.jos.vizibil{transform:none}
+.jos .btn{min-height:50px}
+
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .rv.vis{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}
+
+@media (max-width:1080px){
+  .nav{display:none}
+  .burger{display:block}
+}
+@media (max-width:900px){
+  .erou-in{grid-template-columns:1fr;gap:28px;padding-top:30px}
+  .dec,.jurnal,.pg,.ora{grid-template-columns:1fr}
+  .fila,.fisa-wrap{position:static}
+  .rodape-grid{grid-template-columns:1fr 1fr}
+  .rodape-grid>div:first-child{grid-column:1/-1}
+  .jos{display:grid}
+  .galerie{grid-template-columns:1fr 1fr}
+  .galerie .foto:first-child{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}
+}
+@media (max-width:560px){
+  .lat{width:min(1200px,100% - 32px)}
+  .erou h1{font-size:clamp(3.2rem,19vw,4.6rem)}
+  .cluster{padding:16px 12px 14px;border-radius:30px 30px 20px 20px}
+  .vedere{display:contents}
+  .parbriz{order:-1;margin:0 -16px -6px;border-radius:0;clip-path:none;aspect-ratio:16/10}
+  .erou-in{padding-top:0}
+  .cadrane{grid-template-columns:1fr 1fr}
+  .cadrane .mijloc{grid-column:1/-1;grid-row:2}
+  .ecran{min-height:80px}
+  .martori{grid-template-columns:repeat(8,1fr);gap:2px}
+  .martori svg{width:20px;height:20px}
+  .cheie{flex-wrap:wrap}
+  .panou{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:8px}
+  .panou button small{font-size:.58rem}
+  .mini-panou{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .trei{grid-template-columns:1fr 1fr}
+  .trei .camp:last-child{grid-column:1/-1}
+  .limbi button{min-width:34px;padding:9px 6px}
+  .trimite .btn{flex:1 1 100%}
+  .galerie{grid-template-columns:1fr}
+  .fisa-l{grid-template-columns:84px 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv,.js .parbriz img,.js .erou .pag,.js .erou h1 .r,.js .erou .zic,.js .erou .lead,.js .erou-cta,.js .nota,.js .cluster{opacity:1!important;transform:none!important}
+  .banda-in{transform:none}
+  .bare .tub i{width:var(--w)}
+}
+</style>
+</head>
+<body>
+<a class="salt" href="#continut">{{Sari la conținut|Skip to content|Saltar para o conteúdo}}</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4 5.2 5.2 0 0 0 3.2.7 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 4h16v12H8l-4 4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 9h8M8 12h5"/></symbol>
+    <symbol id="i-sag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-stea" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></symbol>
+    <symbol id="i-cheie" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="12" r="4.5"/><path d="M12.5 12H21M18 12v3M21 12v2"/></g></symbol>
+    <!-- martorii (simboluri ISO 2575, desenate simplificat) -->
+    <symbol id="m-motor" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M3 11v5M3 13.5h2M5 9.5h3V8h5v1.5h2l2 2h1.5V10H21v7h-2.5v-1.5H17L15 18H8l-3-3V9.5z"/></symbol>
+    <symbol id="m-ulei" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 11.5h3l1.5-1.5H11l1.5 1.5 6-3 2.5 1-6 7.5H6a1 1 0 0 1-1-1v-3.5z"/><path d="M9 10V8M7.5 8h3M3 11.5V10"/></g><path d="M21 13.5c0 1-.6 1.6-1.2 1.6s-1.2-.6-1.2-1.6 1.2-2.3 1.2-2.3 1.2 1.3 1.2 2.3z" fill="currentColor"/></symbol>
+    <symbol id="m-baterie" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="7" width="18" height="12" rx="1.5"/><path d="M6.5 7V5.5h3V7M14.5 7V5.5h3V7M6.5 13h4M15 13h4M17 11v4"/></g></symbol>
+    <symbol id="m-temp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 3v10"/><circle cx="12" cy="15.5" r="2.5"/><path d="M12 6h3.5M12 9h3.5M3 20c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0"/></g></symbol>
+    <symbol id="m-frana" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="6.5"/><path d="M4.2 6.5a10 10 0 0 0 0 11M19.8 6.5a10 10 0 0 1 0 11M12 8.5v4.5"/></g><circle cx="12" cy="15.6" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="m-airbag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5" r="2"/><path d="M8 8.5l-1 6h5l2 6M7.5 11l4 1.5M4.5 9l1 7.5 2.5 4"/><circle cx="17" cy="9.5" r="3.5"/></g></symbol>
+    <symbol id="m-volan" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="12" r="7"/><circle cx="11" cy="12" r="2"/><path d="M4.5 10.5h4.5M13 10.5h4.5M11 14v5M21 6v6"/></g><circle cx="21" cy="15.2" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="m-abs" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><path d="M3.5 6.5a10 10 0 0 0 0 11M20.5 6.5a10 10 0 0 1 0 11"/></g><text x="12" y="14.6" text-anchor="middle" font-family="Asap Condensed,Arial Narrow,sans-serif" font-weight="800" font-size="7" fill="currentColor">ABS</text></symbol>
+    <symbol id="m-esp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l1.5-4.5h11l1.5 4.5v3H5z"/><circle cx="8" cy="15.5" r="1.3"/><circle cx="16" cy="15.5" r="1.3"/><path d="M6 21c2-1.5 0-3 2-4.5M12 21c2-1.5 0-3 2-4.5M18 21c2-1.5 0-3 2-4.5"/></g></symbol>
+    <symbol id="m-tpms" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M5 5c-1.5 2.5-2 5-1 8.5.5 2 1 3 1 4.5h14c0-1.5.5-2.5 1-4.5 1-3.5.5-6-1-8.5"/><path d="M4 20h2M8 20h2M14 20h2M18 20h2M12 8v5"/></g><circle cx="12" cy="15.8" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="m-bujii" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M3 9h2.5M3 15h2.5M5.5 9c0-3 3-3 3 0s3 3 3 0 3-3 3 0 3 3 3 0v6c0 3-3 3-3 0s-3-3-3 0-3 3-3 0-3-3-3 0zM20.5 12H22"/></symbol>
+    <symbol id="m-dpf" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M2 12h2.5M19.5 12H22M4.5 7h15v10h-15z"/></g><g fill="currentColor"><circle cx="8" cy="10" r="1"/><circle cx="12" cy="10" r="1"/><circle cx="16" cy="10" r="1"/><circle cx="10" cy="14" r="1"/><circle cx="14" cy="14" r="1"/></g></symbol>
+    <symbol id="m-service" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M14.5 3.5a4.5 4.5 0 0 0-4 6.2L3.5 16.7a1.8 1.8 0 0 0 2.6 2.6l7-7a4.5 4.5 0 0 0 6.2-4L17 10.5l-3-1-1-3 2.2-2.3z"/></symbol>
+    <symbol id="m-placute" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="6"/><path d="M4.5 6.5a10 10 0 0 0 0 11M19.5 6.5a10 10 0 0 1 0 11" stroke-dasharray="2.2 2"/></g></symbol>
+    <symbol id="m-faza" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c4.5 0 7 2.5 7 6s-2.5 6-7 6c-1 0-1.5-2.5-1.5-6s.5-6 1.5-6z"/><path d="M3 8h5M3 11h5M3 14h5M3 17h5"/></g></symbol>
+    <symbol id="m-centura" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><path d="M8 21l1-12h6l1 12M9 9l6 6"/></g></symbol>
+    <symbol id="m-usa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 18V9l3-4h8v13zM15 7l5 2v9h-5"/><path d="M7 11h5"/></g></symbol>
+    <symbol id="m-ok" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5l5 5L20 6.5"/></symbol>
+  </defs>
+</svg>
+
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru NIOBAL auto|PACHECO STUDIOS PREVIEW · demo website for NIOBAL auto|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para a NIOBAL auto}}</div>
+
+<header class="bara-sus" id="bara">
+  <div class="lat bara-in">
+    <a class="marca" href="#acasa" aria-label="{{NIOBAL auto — sus|NIOBAL auto — top|NIOBAL auto — topo}}">NIOBAL<i>auto</i></a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#martori" data-sec="martori"><svg aria-hidden="true"><use href="#m-motor"/></svg>{{Martori|Warning lights|Luzes de aviso}}</a>
+      <a href="#clienti" data-sec="clienti"><svg aria-hidden="true"><use href="#m-ok"/></svg>{{Clienți|Customers|Clientes}}</a>
+      <a href="#programare" data-sec="programare"><svg aria-hidden="true"><use href="#m-service"/></svg>{{Programare|Booking|Marcação}}</a>
+      <a href="#contact" data-sec="contact"><svg aria-hidden="true"><use href="#i-pin"/></svg>{{Program și adresă|Hours and address|Horário e morada}}</a>
+    </nav>
+    <div class="limbi" role="group" aria-label="{{Limba|Language|Língua}}">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false" class="doar-rev">PT</button>
+    </div>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="{{Deschide meniul|Open menu|Abrir o menu}}"><span></span></button>
+  </div>
+</header>
+
+<div class="meniu" id="meniu" role="dialog" aria-modal="true" aria-label="{{Meniu|Menu|Menu}}">
+  <button class="inchide" type="button">{{Închide|Close|Fechar}} ×</button>
+  <ol>
+    <li><a href="#martori"><svg aria-hidden="true"><use href="#m-motor"/></svg>{{Martori|Warning lights|Luzes de aviso}}</a></li>
+    <li><a href="#clienti"><svg aria-hidden="true"><use href="#m-ok"/></svg>{{Clienți|Customers|Clientes}}</a></li>
+    <li><a href="#programare"><svg aria-hidden="true"><use href="#m-service"/></svg>{{Programare|Booking|Marcação}}</a></li>
+    <li><a href="#contact"><svg aria-hidden="true"><use href="#i-pin"/></svg>{{Program și adresă|Hours and address|Horário e morada}}</a></li>
+  </ol>
+  <p class="meniu-tel">{{Sună la NIOBAL:|Call NIOBAL:|Ligue para a NIOBAL:}} <a href="tel:+40743671575">0743 671 575</a></p>
+</div>
+
+<main id="continut">
+
+<!-- ================= EROU ================= -->
+<section class="erou" id="acasa" aria-labelledby="t-erou">
+  <div class="lat erou-in">
+    <div>
+      <p class="pag"><svg aria-hidden="true"><use href="#i-cheie"/></svg><span>{{Service auto · Bulevardul Chimiei 14, Iași|Car repair · Bulevardul Chimiei 14, Iași|Oficina auto · Bulevardul Chimiei 14, Iași}}</span></p>
+      <h1 id="t-erou"><span class="r">NIOBAL</span><span class="r"><i>auto</i></span></h1>
+      <p class="zic">{{Ți s-a aprins ceva în bord? Îți spunem ce e. Apoi îl stingem.|Something lit up on the dashboard? We tell you what it is. Then we switch it off.|Acendeu-se alguma coisa no painel? Dizemos o que é. Depois apagamo-la.}}</p>
+      <p class="lead">{{Atinge martorul pe care îl vezi la tine în bord și citești pe loc ce înseamnă și dacă poți merge cu mașina până la service.|Tap the light you see on your own dashboard and read straight away what it means and whether you can drive to the garage.|Toque na luz que vê no seu painel e leia logo o que significa e se pode conduzir até à oficina.}}</p>
+      <div class="erou-cta">
+        <a class="btn btn-negru" href="tel:+40743671575"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună · 0743 671 575|Call · 0743 671 575|Ligar · 0743 671 575}}</a>
+        <a class="btn btn-contur" href="#martori">{{Ce martor e aprins?|Which light is on?|Que luz está acesa?}}</a>
+      </div>
+      <div class="nota"><b>4,6</b><div><span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span><small>{{63 de recenzii pe Google|63 Google reviews|63 avaliações no Google}}</small></div></div>
+    </div>
+
+    <div class="vedere">
+    <figure class="parbriz"><img src="media/atelier.webp" alt="" data-alt="Atelierul NIOBAL: un BMW cu capota ridicată lângă elevatoarele albastre|The NIOBAL workshop: a BMW with its bonnet up by the blue lifts|A oficina NIOBAL: um BMW de capô aberto junto aos elevadores azuis" fetchpriority="high" onerror="this.remove()"><figcaption>{{prin parbriz: atelierul de pe Chimiei|through the windscreen: the workshop on Chimiei|pelo para-brisas: a oficina da Chimiei}}</figcaption></figure>
+    <div class="cluster" id="cluster" role="img" aria-label="{{Bordul unei mașini: la pornire se aprind toți martorii, apoi se sting|A car’s instrument cluster: all the lights come on at start-up, then go off|O painel de um carro: ao arrancar acendem-se todas as luzes, depois apagam-se}}">
+      <div class="cadrane">
+        <svg viewBox="0 0 200 200" aria-hidden="true" id="turometru"></svg>
+        <div class="mijloc">
+          <div class="ecran" id="ecran"><b>NIOBAL</b><small>{{cheia în contact…|key in the ignition…|chave na ignição…}}</small></div>
+          <span class="odo" id="odo">000000 km</span>
+        </div>
+        <svg viewBox="0 0 200 200" aria-hidden="true" id="vitezometru"></svg>
+      </div>
+      <div class="martori" id="martori-bord"></div>
+      <div class="cheie"><span id="cheie-txt">{{Verificarea becurilor la pornire|Bulb check at start-up|Verificação das luzes ao arrancar}}</span><button type="button" id="contact-btn"><svg aria-hidden="true"><use href="#i-cheie"/></svg>{{Pornește din nou|Start again|Ligar de novo}}</button></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="banda" aria-hidden="true"><div class="banda-in" id="banda-in"></div></div>
+
+<!-- ================= DECODOR ================= -->
+<section class="sectiune bord" id="martori" aria-labelledby="t-mart">
+  <div class="lat">
+    <p class="pag rv"><svg aria-hidden="true"><use href="#m-motor"/></svg><span>{{Cartea mașinii · martori de avertizare|The car manual · warning lights|O manual do carro · luzes de aviso}}</span></p>
+    <h2 class="titlu rv" id="t-mart">{{Ce martor <em>e aprins?</em>|Which light <em>is on?</em>|Que luz <em>está acesa?</em>}}</h2>
+    <p class="lead rv">{{Culoarea spune cât de grav e: roșu, oprește; galben, programează-te; verde și albastru, doar informează. Atinge simbolul pe care îl vezi.|The colour tells you how serious it is: red, stop; amber, book in; green and blue, just for information. Tap the symbol you can see.|A cor diz a gravidade: vermelho, pare; amarelo, marque oficina; verde e azul, só informam. Toque no símbolo que está a ver.}}</p>
+    <div class="dec">
+      <div class="rv">
+        <p class="legenda"><span><i style="background:var(--rosu)"></i>{{oprește|stop|pare}}</span><span><i style="background:var(--chihlimbar)"></i>{{programează-te|book in|marque}}</span><span><i style="background:var(--albastru)"></i>{{informare|information|informação}}</span></p>
+        <div class="panou" id="panou" role="group" aria-label="{{Martori de avertizare|Warning lights|Luzes de aviso}}"></div>
+      </div>
+      <div class="fila rv d1" id="fila" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLIENȚI ================= -->
+<section class="sectiune" id="clienti" aria-labelledby="t-cli">
+  <div class="lat jurnal">
+    <div>
+      <p class="pag rv"><svg aria-hidden="true"><use href="#m-ok"/></svg><span>{{Ce scriu clienții|What customers write|O que escrevem os clientes}}</span></p>
+      <h2 class="titlu rv" id="t-cli">{{Bec verde la <em>încredere.</em>|A green light <em>on trust.</em>|Luz verde na <em>confiança.</em>}}</h2>
+      <div class="mare rv"><b>4,6</b><span>{{din 63 de recenzii<br>pe Google|from 63 reviews<br>on Google|de 63 avaliações<br>no Google}}</span></div>
+      <ul class="bare" id="bare"></ul>
+    </div>
+    <div>
+      <ul class="intrari">
+        <li class="rv"><span class="ic"><svg aria-hidden="true"><use href="#m-ok"/></svg></span><div><b>{{Clienți de ani de zile|Customers for years|Clientes de há anos}}</b><p>{{Un client scrie că merge aici de vreo opt ani și că i-a trimis și pe prieteni. Încrederea a venit, zice el, din felul în care e tratat omul.|One customer writes that he has been coming here for about eight years and has sent his friends too. The trust, he says, came from how people are treated.|Um cliente escreve que vem cá há cerca de oito anos e que já mandou os amigos. A confiança, diz, veio da forma como as pessoas são tratadas.}}</p><small>{{recenzie Google · sens general|Google review · general sense|avaliação Google · sentido geral}}</small></div></li>
+        <li class="rv d1"><span class="ic"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><div><b>{{Vezi reparația pe telefon|See the repair on your phone|Veja a reparação no telemóvel}}</b><p>{{Altcineva povestește că a primit poze și filmulețe la fiecare etapă a reparației, pe WhatsApp, așa că știa tot timpul ce se lucrează.|Another tells how he got photos and short videos at every stage of the repair, on WhatsApp, so he always knew what was being done.|Outro conta que recebeu fotos e pequenos vídeos em cada fase da reparação, por WhatsApp, e assim sabia sempre o que se estava a fazer.}}</p><small>{{recenzie Google · sens general|Google review · general sense|avaliação Google · sentido geral}}</small></div></li>
+        <li class="rv d2"><span class="ic"><svg aria-hidden="true"><use href="#m-motor"/></svg></span><div><b>{{Găsit unde alții n-au găsit|Found where others didn’t|Encontrado onde outros não encontraram}}</b><p>{{Un al treilea scrie că aici i-au rezolvat o problemă pe care o plimbase pe la alte service-uri, după piese schimbate degeaba.|A third writes that they solved a problem here he had taken to other garages, after parts were swapped for nothing.|Um terceiro escreve que aqui lhe resolveram um problema que já tinha levado a outras oficinas, depois de peças trocadas em vão.}}</p><small>{{recenzie Google · sens general|Google review · general sense|avaliação Google · sentido geral}}</small></div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="lat galerie">
+    <figure class="foto rv"><svg viewBox="0 0 4 3" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="3" fill="#20262F"/></svg><img src="media/sub-elevator.webp" alt="" data-alt="Mecanic care lucrează la suspensia unei mașini ridicate pe elevator|A mechanic working on the suspension of a car up on the lift|Mecânico a trabalhar na suspensão de um carro no elevador" loading="lazy" onerror="this.remove()"><figcaption>{{sub mașină, pe elevator|under the car, on the lift|debaixo do carro, no elevador}}</figcaption></figure>
+    <figure class="foto rv d1"><svg viewBox="0 0 4 3" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="3" fill="#20262F"/></svg><img src="media/frana-disc.webp" alt="" data-alt="Mecanic care montează frâna pe butucul roții|A mechanic fitting the brake at the wheel hub|Mecânico a montar o travão no cubo da roda" loading="lazy" onerror="this.remove()"><figcaption>{{frâna, la butucul roții|the brake, at the wheel hub|o travão, no cubo da roda}}</figcaption></figure>
+    <figure class="foto rv d2"><svg viewBox="0 0 4 3" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="3" fill="#20262F"/></svg><img src="media/poarta.webp" alt="" data-alt="Hala service-ului cu poarta mare albastră, iarna|The workshop building with its big blue gate, in winter|O pavilhão da oficina com o grande portão azul, no inverno" loading="lazy" onerror="this.remove()"><figcaption>{{hala cu poarta mare albastră|the hall with the big blue gate|o pavilhão do grande portão azul}}</figcaption></figure>
+  </div>
+</section>
+
+<!-- ================= PROGRAMARE ================= -->
+<section class="sectiune" id="programare" aria-labelledby="t-prg" style="padding-top:0">
+  <div class="lat">
+    <p class="pag rv"><svg aria-hidden="true"><use href="#m-service"/></svg><span>{{Programare|Booking|Marcação}}</span></p>
+    <h2 class="titlu rv" id="t-prg">{{Spune-ne ce vezi <em>în bord.</em>|Tell us what you see <em>on the dash.</em>|Diga-nos o que vê <em>no painel.</em>}}</h2>
+    <p class="lead rv">{{Marca, modelul și martorul aprins. Cererea pleacă prin WhatsApp sau SMS ori o citești la telefon; atelierul îți confirmă ziua și ora.|Make, model and the light that’s on. The request goes by WhatsApp or SMS, or you read it out on the phone; the workshop confirms the day and time.|Marca, modelo e a luz acesa. O pedido segue por WhatsApp ou SMS, ou lê-o ao telefone; a oficina confirma o dia e a hora.}}</p>
+    <div class="pg">
+      <form id="f-prg" novalidate>
+        <fieldset>
+          <legend>{{Mașina|The car|O carro}}</legend>
+          <div class="trei">
+            <div class="camp"><label for="marca">{{Marca|Make|Marca}}</label><select id="marca"></select></div>
+            <div class="camp"><label for="model">{{Model|Model|Modelo}}</label><input id="model" autocomplete="off" data-ph="ex. Focus, Octavia|e.g. Focus, Octavia|ex. Focus, Octavia"></div>
+            <div class="camp"><label for="an">{{Anul|Year|Ano}} <small>({{opț.|opt.|opc.}})</small></label><input id="an" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="2012"></div>
+          </div>
+          <div class="camp" id="camp-alta" hidden><label for="marca-alta">{{Care marcă?|Which make?|Que marca?}}</label><input id="marca-alta" autocomplete="off"></div>
+          <p class="eroare" id="e-masina" role="alert">{{Scrie marca și modelul mașinii.|Add the car’s make and model.|Indique a marca e o modelo do carro.}}</p>
+        </fieldset>
+        <fieldset>
+          <legend>{{Ce martor e aprins?|Which light is on?|Que luz está acesa?}}</legend>
+          <p class="ajut">{{Atinge unul sau mai mulți. Niciunul? Descrie mai jos ce simți la mașină.|Tap one or more. None? Describe below what you notice.|Toque numa ou em várias. Nenhuma? Descreva abaixo o que nota.}}</p>
+          <div class="mini-panou" id="mini-panou"></div>
+          <p class="alese" id="alese" aria-live="polite"></p>
+          <div class="camp"><label for="desc">{{Ce face mașina|What the car does|O que o carro faz}} <small>({{opțional|optional|opcional}})</small></label><textarea id="desc" data-ph="ex. s-a aprins pe autostradă, clipește la accelerare|e.g. came on on the motorway, flashes when accelerating|ex. acendeu na autoestrada, pisca ao acelerar"></textarea></div>
+          <p class="eroare" id="e-mart" role="alert">{{Alege un martor sau descrie ce face mașina.|Pick a light or describe what the car does.|Escolha uma luz ou descreva o que o carro faz.}}</p>
+        </fieldset>
+        <fieldset>
+          <legend>{{Când poți veni|When you can come|Quando pode vir}}</legend>
+          <div class="chips" id="zile"></div>
+          <div class="camp" style="margin-top:18px"><label for="nume">{{Numele tău|Your name|O seu nome}}</label><input id="nume" autocomplete="given-name"></div>
+          <p class="eroare" id="e-nume" role="alert">{{Spune-ne cum te cheamă.|Tell us your name.|Diga-nos o seu nome.}}</p>
+        </fieldset>
+        <div class="trimite">
+          <button class="btn btn-wa" type="submit" data-canal="wa"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</button>
+          <button class="btn btn-contur" type="submit" data-canal="sms"><svg aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</button>
+          <p class="mic">{{Sau <a href="tel:+40743671575"><b>sună la 0743 671 575</b></a> și citește fișa.|Or <a href="tel:+40743671575"><b>call 0743 671 575</b></a> and read out the card.|Ou <a href="tel:+40743671575"><b>ligue para 0743 671 575</b></a> e leia a ficha.}}</p>
+        </div>
+      </form>
+      <aside class="fisa-wrap" aria-label="{{Fișa cererii|Request card|Ficha do pedido}}">
+        <div class="fisa">
+          <div class="fisa-cap"><b>{{Fișă de intrare|Check-in card|Ficha de entrada}}</b><small>NIOBAL auto</small></div>
+          <div id="fisa"></div>
+          <p class="fisa-sub">{{Nimic nu e rezervat până nu te sună atelierul. Ce scrie pe site despre martori e orientativ; diagnoza se face la mașină.|Nothing is booked until the workshop calls you. What the site says about warning lights is a rough guide; the diagnosis happens on the car.|Nada fica marcado até a oficina lhe ligar. O que o site diz sobre as luzes é orientativo; o diagnóstico faz-se no carro.}}</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAM + CONTACT ================= -->
+<section class="sectiune bord" id="contact" aria-labelledby="t-cont">
+  <div class="lat ora">
+    <div>
+      <p class="pag rv"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>{{Program și adresă|Hours and address|Horário e morada}}</span></p>
+      <h2 class="titlu rv" id="t-cont">{{Contactul e <em>pus.</em>|The ignition <em>is on.</em>|A ignição <em>está ligada.</em>}}</h2>
+      <p class="stare rv" data-stare><svg aria-hidden="true"><use href="#m-ok"/></svg><span></span></p>
+      <ul class="program rv" data-program></ul>
+    </div>
+    <div>
+      <p class="adresa rv">Bulevardul Chimiei 14<br>700293 Iași</p>
+      <ul class="repere rv">
+        <li><svg aria-hidden="true"><use href="#i-pin"/></svg><span>{{<b>În zona industrială de pe Chimiei</b>, la sud de râul Bahlui.|<b>In the industrial area on Chimiei</b>, south of the Bahlui river.|<b>Na zona industrial da Chimiei</b>, a sul do rio Bahlui.}}</span></li>
+        <li><svg aria-hidden="true"><use href="#m-usa"/></svg><span>{{<b>Hala cu poarta mare albastră</b>, ca în poze.|<b>The hall with the big blue gate</b>, as in the photos.|<b>O pavilhão do grande portão azul</b>, como nas fotos.}}</span></li>
+        <li><svg aria-hidden="true"><use href="#i-tel"/></svg><span>{{<b>0743 671 575</b> · sună înainte, ca să fie loc pe elevator.|<b>0743 671 575</b> · call ahead so there’s room on the lift.|<b>0743 671 575</b> · ligue antes, para haver lugar no elevador.}}</span></li>
+      </ul>
+      <div class="btns rv">
+        <a class="btn btn-galben" href="tel:+40743671575"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+        <a class="btn btn-contur" href="https://www.google.com/maps/search/?api=1&amp;query=NIOBAL%20auto%2C%20Bulevardul%20Chimiei%2014%2C%20Ia%C8%99i" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Google Maps</a>
+      </div>
+      <div class="harta rv" id="harta">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#161A21"/><path d="M-10 70 C80 90 150 60 230 80 S350 70 410 50" fill="none" stroke="#2C5D8F" stroke-width="16" stroke-linecap="round"/><text x="300" y="50" font-family="Asap Condensed,sans-serif" font-size="13" fill="#6FA2D8" letter-spacing="2">BAHLUI</text><path d="M-10 125 L410 108" stroke="#3A424D" stroke-width="12"/><text x="40" y="108" font-family="Asap Condensed,sans-serif" font-size="12" fill="#9AA3AF" letter-spacing="1.5">BD. CHIMIEI</text><g fill="#20262F"><rect x="40" y="150" width="70" height="50"/><rect x="250" y="150" width="90" height="60"/><rect x="130" y="210" width="80" height="50"/></g><circle cx="192" cy="150" r="15" fill="#FFA81F"/><circle cx="192" cy="150" r="5.5" fill="#0E1116"/><text x="192" y="190" text-anchor="middle" font-family="Asap Condensed,sans-serif" font-weight="800" font-size="16" fill="#fff">NIOBAL</text></svg>
+        <button class="btn btn-galben" type="button" id="arata-harta">{{Arată harta|Show the map|Mostrar o mapa}}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="lat">
+    <div class="rodape-grid">
+      <div>
+        <h2>NIOBAL <i>auto</i></h2>
+        <p>{{Service auto pe Bulevardul Chimiei, Iași. 4,6 pe Google din 63 de recenzii.|Car repair on Bulevardul Chimiei, Iași. 4.6 on Google from 63 reviews.|Oficina auto no Bulevardul Chimiei, Iași. 4,6 no Google em 63 avaliações.}}</p>
+      </div>
+      <div>
+        <h3>Service</h3>
+        <ul><li>Bulevardul Chimiei 14</li><li>700293 Iași, România</li><li><a href="tel:+40743671575">0743 671 575</a></li><li>{{Luni–vineri 08:00–17:30 · sâmbătă 08:00–13:00|Mon–Fri 8:00–17:30 · Sat 8:00–13:00|Seg–sex 08:00–17:30 · sáb 08:00–13:00}}</li></ul>
+      </div>
+      <div>
+        <h3>{{Pe site|On this site|Neste site}}</h3>
+        <ul><li><a href="#martori">{{Martori|Warning lights|Luzes de aviso}}</a></li><li><a href="#clienti">{{Clienți|Customers|Clientes}}</a></li><li><a href="#programare">{{Programare|Booking|Marcação}}</a></li><li><a href="#contact">{{Program și adresă|Hours and address|Horário e morada}}</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 NIOBAL auto · {{denumire firmă și CUI: de confirmat|company name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+      <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+    </div>
+  </div>
+</footer>
+
+<div class="jos" id="jos">
+  <a class="btn btn-galben" href="tel:+40743671575"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <a class="btn btn-contur" href="#programare">{{Programare|Booking|Marcação}}</a>
+</div>
+
+<noscript><p style="padding:16px;background:#fff">NIOBAL auto · Bulevardul Chimiei 14, 700293 Iași · Tel. 0743 671 575 · Luni–vineri 08:00–17:30, sâmbătă 08:00–13:00, duminică închis · 4,6 pe Google (63 de recenzii) · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AutoRepair","name":"NIOBAL auto","telephone":"+40743671575","address":{"@type":"PostalAddress","streetAddress":"Bulevardul Chimiei 14","postalCode":"700293","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1494407,"longitude":27.6343421},"aggregateRating":{"@type":"AggregateRating","ratingValue":4.6,"reviewCount":63,"bestRating":5},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"13:00"}],"amenityFeature":{"@type":"LocationFeatureSpecification","name":"Wheelchair-accessible entrance","value":true},"image":"media/atelier.webp","hasMap":"https://www.google.com/maps/search/?api=1&query=47.1494407%2C27.6343421"}
+</script>
+<script>
+(function(){
+  var html=document.documentElement;
+  var reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var L=function(){var l=html.dataset.lang;return l==='en'||l==='pt'?l:'ro'};
+  var t=function(ro,en,pt){var l=L();return l==='en'?en:l==='pt'?(pt||en):ro};
+  var t3=function(a){return t(a[0],a[1],a[2])};
+  var tr=function(s){return t3(s.split('|'))};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var ic=function(id,c){return '<svg aria-hidden="true"'+(c?' class="'+c+'"':'')+'><use href="#'+id+'"/></svg>'};
+  var $=function(id){return document.getElementById(id)};
+  var TEL='+40743671575', WA='40743671575';
+
+  /* ---------- martorii: c = culoare (r roșu, g galben, a albastru), mers = poți merge? ---------- */
+  var M=[
+    {id:'motor',c:'g',n:['Motor (check engine)','Engine (check engine)','Motor (check engine)'],s:['Calculatorul motorului a memorat o eroare: senzori, aprindere, emisii.','The engine computer has stored a fault: sensors, ignition, emissions.','A centralina do motor guardou um erro: sensores, ignição, emissões.'],m:['Da, cu grijă. Dacă clipește, oprește: motorul are rateuri.','Yes, carefully. If it flashes, stop: the engine is misfiring.','Sim, com cuidado. Se piscar, pare: o motor tem falhas.'],f:['Citim eroarea cu testerul și căutăm cauza, nu doar ștergem codul.','We read the fault with the scanner and look for the cause, not just clear the code.','Lemos o erro com o equipamento e procuramos a causa, não só apagamos o código.']},
+    {id:'ulei',c:'r',n:['Presiune ulei','Oil pressure','Pressão do óleo'],s:['Presiunea uleiului a scăzut: nivel prea mic, pompă sau senzor.','Oil pressure has dropped: level too low, the pump or the sensor.','A pressão do óleo baixou: nível baixo, bomba ou sensor.'],m:['Nu. Oprește motorul cât mai repede și sună.','No. Switch the engine off as soon as you can and call.','Não. Desligue o motor o mais depressa possível e ligue.'],f:['Verificăm nivelul, pompa și senzorul înainte să mai pornim motorul.','We check the level, the pump and the sensor before the engine runs again.','Verificamos o nível, a bomba e o sensor antes de voltar a ligar o motor.']},
+    {id:'temp',c:'r',n:['Temperatură motor','Engine temperature','Temperatura do motor'],s:['Motorul se supraîncălzește: lichid de răcire, termostat, pompă de apă, ventilator.','The engine is overheating: coolant, thermostat, water pump, fan.','O motor está a aquecer demais: líquido, termóstato, bomba de água, ventoinha.'],m:['Nu. Oprește și lasă motorul să se răcească; nu deschide vasul fierbinte.','No. Stop and let the engine cool; don’t open the hot tank.','Não. Pare e deixe arrefecer; não abra o depósito quente.'],f:['Căutăm scurgerea sau piesa care a cedat în circuitul de răcire.','We look for the leak or the failed part in the cooling circuit.','Procuramos a fuga ou a peça avariada no circuito de arrefecimento.']},
+    {id:'baterie',c:'r',n:['Încărcare baterie','Battery charging','Carga da bateria'],s:['Bateria nu se mai încarcă: alternator, curea sau cabluri.','The battery is no longer charging: alternator, belt or cables.','A bateria já não carrega: alternador, correia ou cabos.'],m:['Puțin: mergi direct la service, cu cât mai puțini consumatori.','Briefly: drive straight to the garage with as little switched on as possible.','Pouco: vá direto à oficina, com o mínimo de consumos ligados.'],f:['Măsurăm încărcarea și verificăm alternatorul și cureaua.','We measure the charging and check the alternator and the belt.','Medimos a carga e verificamos o alternador e a correia.']},
+    {id:'frana',c:'r',n:['Sistem de frânare','Brake system','Sistema de travagem'],s:['Frâna de mână e trasă, lichidul de frână e prea jos sau sistemul are o defecțiune.','The handbrake is on, brake fluid is too low, or the system has a fault.','O travão de mão está puxado, o líquido está baixo ou o sistema tem avaria.'],m:['Dacă frâna de mână e jos și martorul tot arde: nu. Sună.','If the handbrake is off and the light stays on: no. Call.','Se o travão de mão está em baixo e a luz continua: não. Ligue.'],f:['Verificăm lichidul, conductele, plăcuțele și senzorii.','We check the fluid, lines, pads and sensors.','Verificamos o líquido, tubagens, pastilhas e sensores.']},
+    {id:'airbag',c:'r',n:['Airbag','Airbag','Airbag'],s:['Sistemul de airbaguri are o eroare și s-ar putea să nu se declanșeze la impact.','The airbag system has a fault and may not deploy in a crash.','O sistema de airbags tem um erro e pode não disparar num embate.'],m:['Mașina merge, dar fără protecția airbagurilor. Programează-te repede.','The car drives, but without airbag protection. Book in soon.','O carro anda, mas sem a proteção dos airbags. Marque depressa.'],f:['Citim eroarea și verificăm mufele de sub scaune și spirala volanului.','We read the fault and check the connectors under the seats and the steering clock spring.','Lemos o erro e verificamos fichas debaixo dos bancos e a fita do volante.']},
+    {id:'volan',c:'r',n:['Direcție asistată','Power steering','Direção assistida'],s:['Asistența la volan e redusă sau lipsește.','Steering assistance is reduced or gone.','A assistência da direção está reduzida ou falha.'],m:['Cu grijă și încet: volanul va fi greu.','Carefully and slowly: the steering will be heavy.','Com cuidado e devagar: o volante vai ficar pesado.'],f:['Verificăm pompa sau motorul electric al direcției și senzorii.','We check the pump or the electric steering motor and sensors.','Verificamos a bomba ou o motor elétrico da direção e os sensores.']},
+    {id:'abs',c:'g',n:['ABS','ABS','ABS'],s:['ABS-ul e oprit: de obicei un senzor de roată sau inelul lui.','ABS is off: usually a wheel sensor or its ring.','O ABS está desligado: normalmente um sensor de roda ou o anel.'],m:['Da. Frâna merge, dar roțile se pot bloca la frânare bruscă.','Yes. The brakes work, but the wheels can lock under hard braking.','Sim. Trava, mas as rodas podem bloquear numa travagem brusca.'],f:['Găsim senzorul care nu dă semnal și îl înlocuim.','We find the sensor that has no signal and replace it.','Encontramos o sensor sem sinal e substituímo-lo.']},
+    {id:'esp',c:'g',n:['ESP / control tracțiune','ESP / traction control','ESP / controlo de tração'],s:['Dacă clipește scurt: sistemul tocmai a lucrat. Dacă stă aprins: defecțiune.','Brief flashing: the system just intervened. Staying on: a fault.','Se pisca: o sistema acabou de atuar. Se fica aceso: avaria.'],m:['Da, mai prudent pe ud și pe zăpadă.','Yes, more carefully on wet roads and snow.','Sim, com mais cuidado com chuva e neve.'],f:['Citim eroarea; adesea e legată de un senzor ABS sau de unghiul volanului.','We read the fault; often linked to an ABS sensor or the steering angle.','Lemos o erro; muitas vezes ligado a um sensor ABS ou ao ângulo do volante.']},
+    {id:'tpms',c:'g',n:['Presiune anvelope','Tyre pressure','Pressão dos pneus'],s:['Una dintre roți are presiune mai mică decât trebuie.','One of the tyres is below the right pressure.','Um dos pneus está abaixo da pressão certa.'],m:['Da, până la cea mai apropiată vulcanizare sau stație de aer.','Yes, to the nearest tyre shop or air pump.','Sim, até à borracharia ou bomba de ar mais próxima.'],f:['Verificăm presiunea și, după umflare, reinițializăm sistemul.','We check the pressures and reset the system after inflating.','Verificamos a pressão e, depois de encher, reiniciamos o sistema.']},
+    {id:'bujii',c:'g',n:['Bujii incandescente (diesel)','Glow plugs (diesel)','Velas de incandescência (diesel)'],s:['Normal 1–2 secunde la pornire. Dacă clipește în mers: eroare de motor diesel.','Normal for a second or two at start-up. Flashing while driving: a diesel engine fault.','Normal 1–2 segundos ao arrancar. Se piscar em andamento: erro do motor diesel.'],m:['Da, dar programează-te dacă clipește.','Yes, but book in if it flashes.','Sim, mas marque se piscar.'],f:['Verificăm bujiile, releul și eroarea memorată.','We check the glow plugs, the relay and the stored fault.','Verificamos as velas, o relé e o erro guardado.']},
+    {id:'dpf',c:'g',n:['Filtru de particule (DPF)','Particulate filter (DPF)','Filtro de partículas (DPF)'],s:['Filtrul s-a umplut cu funingine; are nevoie să se regenereze.','The filter is full of soot and needs to regenerate.','O filtro está cheio de fuligem e precisa de regenerar.'],m:['Da. Uneori ajută un drum lung, constant, pe autostradă.','Yes. Sometimes a long, steady motorway run helps.','Sim. Às vezes ajuda uma viagem longa e constante em autoestrada.'],f:['Verificăm gradul de încărcare și facem regenerarea sau curățarea.','We check how full it is and run a regeneration or cleaning.','Verificamos a carga e fazemos regeneração ou limpeza.']},
+    {id:'placute',c:'g',n:['Uzură plăcuțe frână','Brake pad wear','Desgaste das pastilhas'],s:['Plăcuțele de frână au ajuns la limita de uzură.','The brake pads have reached their wear limit.','As pastilhas chegaram ao limite de desgaste.'],m:['Da, dar programează-te în zilele următoare.','Yes, but book in within the next few days.','Sim, mas marque nos próximos dias.'],f:['Schimbăm plăcuțele și verificăm discurile.','We replace the pads and check the discs.','Trocamos as pastilhas e verificamos os discos.']},
+    {id:'service',c:'g',n:['Revizie (cheia)','Service due (spanner)','Revisão (chave)'],s:['Nu e o defecțiune: mașina îți amintește că a venit vremea reviziei.','Not a fault: the car is reminding you a service is due.','Não é avaria: o carro lembra que está na hora da revisão.'],m:['Da, fără grijă.','Yes, no worries.','Sim, sem preocupações.'],f:['Facem revizia și resetăm intervalul de service.','We do the service and reset the interval.','Fazemos a revisão e reiniciamos o intervalo.']},
+    {id:'faza',c:'a',n:['Faza lungă','High beam','Máximos'],s:['Ai faza lungă aprinsă. Atât.','Your high beams are on. That’s all.','Tem os máximos ligados. Só isso.'],m:['Da. Stinge-o când vine cineva din față.','Yes. Dip it when someone comes the other way.','Sim. Desligue quando vem alguém de frente.'],f:['Nimic de reparat, decât dacă nu se mai stinge.','Nothing to fix, unless it won’t switch off.','Nada a reparar, a não ser que não se apague.']}
+  ];
+  var NIV={r:['Oprește și sună','Stop and call','Pare e ligue'],g:['Programează-te','Book in','Marque oficina'],a:['Doar informare','Information only','Só informação'],v:['Totul e în regulă','All fine','Tudo bem']};
+  var cur='motor';
+  function panou(){
+    $('panou').innerHTML=M.map(function(x){return '<button type="button" class="'+x.c+'" data-m="'+x.id+'" aria-pressed="'+(x.id===cur)+'">'+ic('m-'+x.id)+'<small>'+esc(t3(x.n).replace(/ \(.*\)$/,''))+'</small></button>'}).join('');
+  }
+  function fila(anim){
+    var x=M.filter(function(m){return m.id===cur})[0],f=$('fila');
+    f.className='fila rv vis '+x.c+(anim&&!reduz?' fila-nou':'');
+    f.innerHTML='<div class="fila-cap"><span class="fila-ic">'+ic('m-'+x.id)+'</span><div><h3>'+esc(t3(x.n))+'</h3><span class="nivel"><i></i>'+esc(t3(NIV[x.c]))+'</span></div></div><dl><div><dt>'+t('Ce înseamnă','What it means','O que significa')+'</dt><dd>'+esc(t3(x.s))+'</dd></div><div><dt>'+t('Poți merge cu ea?','Can you drive?','Pode conduzir?')+'</dt><dd>'+esc(t3(x.m))+'</dd></div><div><dt>'+t('Ce facem noi','What we do','O que fazemos')+'</dt><dd>'+esc(t3(x.f))+'</dd></div></dl><div class="act">'+(x.c==='r'?'<a class="btn btn-negru" href="tel:'+TEL+'">'+ic('i-tel')+t('Sună acum','Call now','Ligar agora')+'</a>':'')+(x.c!=='a'?'<a class="btn '+(x.c==='r'?'btn-contur':'btn-negru')+'" href="#programare" data-prog="'+x.id+'">'+t('Programează-te cu martorul ăsta','Book in with this light','Marcar com esta luz')+'</a>':'')+'</div><p class="mic">'+t('Orientativ: același martor poate avea mai multe cauze. Pentru culoarea exactă, verifică și cartea mașinii tale.','A rough guide: the same light can have several causes. Check your own car’s manual for the exact colours.','Orientativo: a mesma luz pode ter várias causas. Confirme também no manual do seu carro.')+'</p>';
+  }
+  $('panou').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.m;$('panou').querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});fila(true)});
+  $('fila').addEventListener('click',function(e){var a=e.target.closest('[data-prog]');if(!a)return;st.m[a.dataset.prog]=true;miniPanou();fisa()});
+
+  /* ---------- bordul din erou ---------- */
+  function cadran(el,max,pas,et,unit){
+    var h='<circle cx="100" cy="100" r="96" fill="#0B0D11" stroke="#2A313B" stroke-width="2"/>';
+    var a0=-225,a1=45;
+    for(var v=0;v<=max;v+=pas/2){var a=(a0+(v/max)*(a1-a0))*Math.PI/180,mare=v%pas===0,r1=mare?74:80;
+      h+='<line x1="'+(100+r1*Math.cos(a)).toFixed(1)+'" y1="'+(100+r1*Math.sin(a)).toFixed(1)+'" x2="'+(100+88*Math.cos(a)).toFixed(1)+'" y2="'+(100+88*Math.sin(a)).toFixed(1)+'" stroke="'+(v>max*.8&&unit==='rpm'?'#F2382B':'#C9CED5')+'" stroke-width="'+(mare?2.4:1.2)+'"/>';
+      if(mare)h+='<text class="cadran-n" x="'+(100+60*Math.cos(a)).toFixed(1)+'" y="'+(104+60*Math.sin(a)).toFixed(1)+'" text-anchor="middle">'+(unit==='rpm'?v/1000:v)+'</text>'}
+    h+='<text class="cadran-t" x="100" y="138" text-anchor="middle">'+et+'</text>';
+    h+='<g class="ac" style="transform-origin:100px 100px;transform:rotate(-135deg)"><path d="M100 100 L98 104 L100 26 L102 104Z" fill="#FFA81F"/></g><circle cx="100" cy="100" r="9" fill="#1C222B" stroke="#3A424D"/>';
+    el.innerHTML=h;return el.querySelector('.ac');
+  }
+  var acT=cadran($('turometru'),7000,1000,'×1000 RPM','rpm'),acV=cadran($('vitezometru'),220,20,'KM/H','km');
+  var BORD=['ulei','baterie','temp','frana','airbag','motor','abs','esp','tpms','bujii','dpf','placute','volan','service','faza','centura'];
+  var CUL={ulei:'r',baterie:'r',temp:'r',frana:'r',airbag:'r',motor:'g',abs:'g',esp:'g',tpms:'g',bujii:'g',dpf:'g',placute:'g',volan:'r',service:'g',faza:'a',centura:'r'};
+  $('martori-bord').innerHTML=BORD.map(function(id){return '<span data-b="'+id+'" class="'+CUL[id]+'">'+ic('m-'+id)+'</span>'}).join('');
+  var lamps=[].slice.call($('martori-bord').children);
+  function ac(el,f){el.style.transform='rotate('+(-135+f*270).toFixed(1)+'deg)'}
+  var timere=[];
+  function ecran(a,b){$('ecran').innerHTML='<b>'+esc(a)+'</b><small>'+esc(b)+'</small>'}
+  function pornire(){
+    timere.forEach(clearTimeout);timere=[];
+    lamps.forEach(function(l){l.classList.remove('on','clipe')});
+    if(reduz){ac(acT,.12);ac(acV,0);lamps.forEach(function(l){if(l.dataset.b==='service')l.classList.add('clipe')});ecran(t('Totul în regulă','All clear','Tudo em ordem'),t('doar cheia: e vremea reviziei?','just the spanner: service due?','só a chave: revisão em dia?'));return}
+    ecran('NIOBAL',t('contact pus · verificare','ignition on · checking','ignição ligada · a verificar'));
+    lamps.forEach(function(l,i){timere.push(setTimeout(function(){l.classList.add('on')},i*35))});
+    var t0=performance.now();
+    (function sweep(ts){var p=Math.min(1,(ts-t0)/1500),f=p<.5?Math.sin(p*Math.PI):Math.sin(p*Math.PI);f=f*f*(3-2*f);ac(acT,f);ac(acV,f);if(p<1)requestAnimationFrame(sweep);else{ac(acT,.12);idle()}})(t0);
+    var ord=lamps.slice().sort(function(){return Math.random()-.5});
+    ord.forEach(function(l,i){timere.push(setTimeout(function(){l.classList.remove('on');if(i===ord.length-1){lamps.forEach(function(x){if(x.dataset.b==='service')x.classList.add('clipe')});ecran(t('Totul în regulă','All clear','Tudo em ordem'),t('doar cheia clipește: revizia?','only the spanner flashes: service?','só a chave pisca: revisão?'))}},1700+i*90))});
+    var km=0,odo=$('odo');timere.push(setTimeout(function c(){km+=7;odo.textContent=String(km).padStart(6,'0')+' km';if(km<63)timere.push(setTimeout(c,40))},1700));
+  }
+  var ralanti=0;
+  function idle(){if(reduz)return;var t0=performance.now();(function f(ts){if(!vizibil){ralanti=0;return}ralanti=requestAnimationFrame(f);ac(acT,.12+Math.sin((ts-t0)/180)*.004)})(t0)}
+  var vizibil=true;
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){vizibil=es[0].isIntersecting;if(vizibil&&!ralanti&&html.classList.contains('gata'))idle()}).observe($('cluster'));
+  $('contact-btn').addEventListener('click',pornire);
+
+  /* ---------- bandă ---------- */
+  function banda(){var it=['motor','ulei','abs','tpms','temp','dpf','baterie','faza'];var s=it.map(function(id){var x=M.filter(function(m){return m.id===id})[0];return '<span class="'+x.c+'">'+ic('m-'+id)+esc(t3(x.n))+'</span>'}).join('');$('banda-in').innerHTML=s+s}
+
+  /* ---------- barele cu recenziile (din fișa Google) ---------- */
+  var RC=[[5,49],[4,8],[3,4],[2,0],[1,2]];
+  $('bare').innerHTML=RC.map(function(r,i){return '<li class="rv'+(i?' d1':'')+'"><span>'+r[0]+' ★</span><span class="tub"><i style="--w:'+(r[1]/49*100).toFixed(1)+'%"></i></span><span>'+r[1]+'</span></li>'}).join('');
+  $('bare').setAttribute('aria-label','5★ 49 · 4★ 8 · 3★ 4 · 2★ 0 · 1★ 2');
+
+  /* ---------- program ---------- */
+  var PROG={1:[480,1050],2:[480,1050],3:[480,1050],4:[480,1050],5:[480,1050],6:[480,780]};
+  var ZILE={ro:['duminică','luni','marți','miercuri','joi','vineri','sâmbătă'],en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],pt:['domingo','segunda','terça','quarta','quinta','sexta','sábado']};
+  var ZS={ro:['dum','lun','mar','mie','joi','vin','sâm'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],pt:['dom','seg','ter','qua','qui','sex','sáb']};
+  function hmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+  function acum(){
+    try{var f=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Bucharest',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());var o={};f.forEach(function(p){o[p.type]=p.value});return {zi:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday],min:(+o.hour%24)*60+(+o.minute)}}
+    catch(e){var d=new Date();return {zi:d.getDay(),min:d.getHours()*60+d.getMinutes()}}
+  }
+  function urmDeschis(a){for(var i=1;i<=7;i++){var d=(a.zi+i)%7;if(PROG[d])return {d:d,i:i}}}
+  function program(){
+    var a=acum(),z=ZILE[L()];
+    document.querySelectorAll('[data-program]').forEach(function(ul){
+      ul.innerHTML=[1,2,3,4,5,6,0].map(function(d){var p=PROG[d];return '<li class="'+(d===a.zi?'azi':'')+'"><span>'+z[d].charAt(0).toUpperCase()+z[d].slice(1)+(d===a.zi?'<em>'+t('azi','today','hoje')+'</em>':'')+'</span><span'+(p?'':' class="inc"')+'>'+(p?hmm(p[0])+' – '+hmm(p[1]):t('închis','closed','fechado'))+'</span></li>'}).join('')});
+    var p=PROG[a.zi],txt,cls;
+    if(p&&a.min>=p[0]&&a.min<p[1]){cls='da';txt=t('Deschis acum · până la ','Open now · until ','Aberto agora · até às ')+hmm(p[1])}
+    else if(p&&a.min<p[0]){cls='nu';txt=t('Închis · deschide azi la ','Closed · opens today at ','Fechado · abre hoje às ')+hmm(p[0])}
+    else{var u=urmDeschis(a);cls='nu';txt=t('Închis · deschide ','Closed · opens ','Fechado · abre ')+(u.i===1?t('mâine','tomorrow','amanhã'):z[u.d])+' '+t('la','at','às')+' '+hmm(PROG[u.d][0])}
+    document.querySelectorAll('[data-stare]').forEach(function(s){s.classList.remove('da','nu');s.classList.add(cls);s.querySelector('span').textContent=txt});
+  }
+
+  /* ---------- programarea ---------- */
+  var MARCI=['Audi','BMW','Citroën','Dacia','Fiat','Ford','Honda','Hyundai','Kia','Mazda','Mercedes-Benz','Nissan','Opel','Peugeot','Renault','Seat','Škoda','Toyota','Volkswagen','Volvo'];
+  var st={m:{},zi:null};
+  function zile(){var a=new Date(),o=[];for(var i=0;i<8;i++){var d=new Date(a.getFullYear(),a.getMonth(),a.getDate()+i);o.push({k:d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(),w:d.getDay(),d:d.getDate(),m:d.getMonth()+1,i:i})}return o}
+  function miniPanou(){
+    $('mini-panou').innerHTML=M.map(function(x){return '<label class="'+x.c+'" title="'+esc(t3(x.n))+'"><input type="checkbox" value="'+x.id+'"'+(st.m[x.id]?' checked':'')+' aria-label="'+esc(t3(x.n))+'">'+ic('m-'+x.id)+'</label>'}).join('');
+    var al=M.filter(function(x){return st.m[x.id]}).map(function(x){return t3(x.n)});
+    $('alese').textContent=al.length?al.join(' · '):t('Niciun martor ales încă.','No light chosen yet.','Nenhuma luz escolhida ainda.');
+  }
+  function randForm(){
+    var sel=$('marca'),v=sel.value;
+    sel.innerHTML='<option value="">'+t('alege','choose','escolher')+'</option>'+MARCI.map(function(m){return '<option'+(m===v?' selected':'')+'>'+m+'</option>'}).join('')+'<option value="alta"'+(v==='alta'?' selected':'')+'>'+t('altă marcă','other make','outra marca')+'</option>';
+    miniPanou();
+    $('zile').innerHTML=zile().map(function(z){var p=PROG[z.w],nm=z.i===0?t('azi','today','hoje'):z.i===1?t('mâine','tomorrow','amanhã'):ZS[L()][z.w];return '<label class="chip"><input type="radio" name="zi" value="'+z.k+'"'+(st.zi===z.k?' checked':'')+(p?'':' disabled')+'><span>'+esc(nm)+' '+z.d+'.'+String(z.m).padStart(2,'0')+'<small>'+(p?hmm(p[0])+'–'+hmm(p[1]):t('închis','closed','fechado'))+'</small></span></label>'}).join('');
+  }
+  function marca(){var m=$('marca').value;return m==='alta'?$('marca-alta').value.trim():m}
+  function ziTxt(ro){if(!st.zi)return '';var z=zile().filter(function(x){return x.k===st.zi})[0];if(!z)return '';return (ro?ZILE.ro:ZILE[L()])[z.w]+' '+z.d+'.'+String(z.m).padStart(2,'0')}
+  function fisa(){
+    var al=M.filter(function(x){return st.m[x.id]});
+    var mas=[marca(),$('model').value.trim()].filter(Boolean).join(' ')+($('an').value.trim()?' · '+$('an').value.trim():'');
+    function l(et,v,raw){return '<div class="fisa-l"><span>'+et+'</span><span class="'+(v?'':'gol')+'">'+(v?(raw?v:esc(v)):'—')+'</span></div>'}
+    $('fisa').innerHTML=l(t('Mașina','Car','Carro'),mas)+l(t('Martori','Lights','Luzes'),al.length?'<span class="ics">'+al.map(function(x){return ic('m-'+x.id,x.c)}).join('')+'</span>':'',true)+l(t('Simptome','Symptoms','Sintomas'),$('desc').value.trim())+l(t('Ziua','Day','Dia'),ziTxt())+l(t('Nume','Name','Nome'),$('nume').value.trim());
+  }
+  $('marca').addEventListener('change',function(){$('camp-alta').hidden=this.value!=='alta';$('e-masina').classList.remove('on');fisa()});
+  ['model','an','marca-alta','nume','desc'].forEach(function(id){$(id).addEventListener('input',function(){if(id==='an')this.value=this.value.replace(/\D/g,'').slice(0,4);if(id==='nume')$('e-nume').classList.remove('on');if(id==='desc')$('e-mart').classList.remove('on');if(id==='model'||id==='marca-alta')$('e-masina').classList.remove('on');fisa()})});
+  $('mini-panou').addEventListener('change',function(e){st.m[e.target.value]=e.target.checked;$('e-mart').classList.remove('on');var al=M.filter(function(x){return st.m[x.id]}).map(function(x){return t3(x.n)});$('alese').textContent=al.length?al.join(' · '):t('Niciun martor ales încă.','No light chosen yet.','Nenhuma luz escolhida ainda.');fisa()});
+  $('zile').addEventListener('change',function(e){st.zi=e.target.value;fisa()});
+  function mesaj(){
+    var r='Bună ziua! Aș vrea o programare la NIOBAL auto.\n';
+    r+='Mașina: '+marca()+' '+$('model').value.trim()+($('an').value.trim()?' ('+$('an').value.trim()+')':'')+'\n';
+    var al=M.filter(function(x){return st.m[x.id]}).map(function(x){return x.n[0]});
+    if(al.length)r+='Martor aprins: '+al.join(', ')+'\n';
+    var d=$('desc').value.trim();if(d)r+='Ce face: '+d+'\n';
+    if(st.zi)r+='Aș putea veni: '+ziTxt(true)+'\n';
+    r+='Nume: '+$('nume').value.trim()+'\nMulțumesc!';
+    return r;
+  }
+  $('f-prg').addEventListener('submit',function(e){
+    e.preventDefault();var canal=(e.submitter&&e.submitter.dataset.canal)||'wa',bad=null;
+    if(!marca()||!$('model').value.trim()){$('e-masina').classList.add('on');bad=bad||(!marca()?($('marca').value==='alta'?$('marca-alta'):$('marca')):$('model'))}
+    if(!M.some(function(x){return st.m[x.id]})&&!$('desc').value.trim()){$('e-mart').classList.add('on');bad=bad||$('mini-panou').querySelector('input')}
+    if(!$('nume').value.trim()){$('e-nume').classList.add('on');bad=bad||$('nume')}
+    if(bad){bad.focus({preventScroll:true});bad.scrollIntoView({behavior:reduz?'auto':'smooth',block:'center'});return}
+    var msg=mesaj();
+    if(canal==='wa')window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener');
+    else location.href='sms:'+TEL+'?&body='+encodeURIComponent(msg);
+  });
+
+  /* ---------- nav: martorul secțiunii se aprinde ---------- */
+  var SEC=['martori','clienti','programare','contact'].map(function(id){return $(id)}),bara=$('bara'),jos=$('jos'),activ=null;
+  function onScroll(){
+    var y=innerHeight*.4,k=-1;SEC.forEach(function(e,i){if(e.getBoundingClientRect().top<=y)k=i});
+    if(k!==activ){activ=k;document.querySelectorAll('.nav a').forEach(function(a,i){a.setAttribute('aria-current',i===k?'true':'false')})}
+    bara.classList.toggle('scrolled',scrollY>8);jos.classList.toggle('vizibil',scrollY>innerHeight*.5);
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+
+  /* ---------- atribute + limbă ---------- */
+  function atrib(){
+    document.querySelectorAll('[data-aria]').forEach(function(e){e.setAttribute('aria-label',tr(e.dataset.aria))});
+    document.querySelectorAll('[data-ph]').forEach(function(e){e.setAttribute('placeholder',tr(e.dataset.ph))});
+    document.querySelectorAll('img[data-alt]').forEach(function(e){e.setAttribute('alt',tr(e.dataset.alt))});
+  }
+  var pornit=false;
+  function seteaza(l){
+    html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
+    try{localStorage.setItem('__LSKEY__',l)}catch(e){}
+    atrib();program();randForm();fisa();banda();panou();fila(false);
+    if(pornit&&!timere.length)ecran(t('Totul în regulă','All clear','Tudo em ordem'),t('doar cheia clipește: revizia?','only the spanner flashes: service?','só a chave pisca: revisão?'));
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+
+  /* ---------- meniu ---------- */
+  var burger=document.querySelector('.burger'),meniu=$('meniu'),inchide=meniu.querySelector('.inchide');
+  function deschide(d){meniu.classList.toggle('deschis',d);burger.setAttribute('aria-expanded',d?'true':'false');document.body.style.overflow=d?'hidden':'';(d?inchide:burger).focus()}
+  burger.addEventListener('click',function(){deschide(true)});
+  inchide.addEventListener('click',function(){deschide(false)});
+  meniu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){deschide(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&meniu.classList.contains('deschis'))deschide(false)});
+
+  /* ---------- hartă ---------- */
+  $('arata-harta').addEventListener('click',function(){
+    var h=$('harta'),f=document.createElement('iframe');
+    f.src='https://www.google.com/maps?q=47.1494407,27.6343421&z=17&output=embed';
+    f.title=t('Hartă: NIOBAL auto, Bulevardul Chimiei 14, Iași','Map: NIOBAL auto, Bulevardul Chimiei 14, Iași','Mapa: NIOBAL auto, Bulevardul Chimiei 14, Iași');
+    f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';h.innerHTML='';h.appendChild(f);
+  });
+
+  /* ---------- reveal ---------- */
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
+  document.querySelectorAll('.rv').forEach(function(x){if(io)io.observe(x);else x.classList.add('vis')});
+
+  /* ---------- pornire ---------- */
+  seteaza(L());onScroll();setInterval(program,30000);
+  function start(){html.classList.add('gata');pornit=true;setTimeout(function(){pornire();setTimeout(function(){timere=[]},3400)},reduz?0:700)}
+  if(document.fonts&&document.fonts.ready&&!reduz){var go=false;document.fonts.ready.then(function(){if(!go){go=true;start()}});setTimeout(function(){if(!go){go=true;start()}},700)}else start();
+})();
+</script>
+</body>
+</html>

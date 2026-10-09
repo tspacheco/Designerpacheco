@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Service Auto Reglare Unghiuri · Geometrie roți, Strada Ion Creangă 78, Iași</title>
+<meta name="description" content="Service Auto Reglare Unghiuri, Strada Ion Creangă 78, Iași: reglare unghiuri (geometrie), vulcanizare. 4,6 pe Google din 25 de recenzii. Deschis în fiecare zi. Tel. 0742 592 249.">
+<meta name="theme-color" content="#1E2124">
+<meta property="og:title" content="Reglare Unghiuri · Geometrie roți pe Ion Creangă, Iași">
+<meta property="og:description" content="Volanul strâmb? Mașina trage? Îndreptăm unghiurile. Sună: 0742 592 249.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/audi-pe-cric.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2124'/%3E%3Crect x='12' y='6' width='8' height='20' rx='3' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Cpath d='M16 1v30' stroke='%23E3262F' stroke-width='1.6'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --beton:#ECEEEF;    /* betonul din curte */
+  --beton-2:#DADDE0;
+  --beton-3:#C3C8CD;
+  --alb:#FFFFFF;
+  --asfalt:#1E2124;   /* cerneala și standul */
+  --asfalt-2:#15171A;
+  --asfalt-3:#2A2E33;
+  --asfalt-linie:#3A3F46;
+  --laser:#E3262F;    /* raza laser */
+  --laser-t:#BE1C24;  /* roșu lizibil pe deschis */
+  --ok:#22C373;       /* în toleranță (pe închis) */
+  --ok-t:#0B7A45;     /* în toleranță (pe deschis) */
+  --firma:#F5C842;    /* tabla galbenă de la poartă */
+  --firma-rosu:#B4231B;
+  --text:#1E2124; --text-2:#4A5058; --text-3:#686F78;
+  --pe-inchis:#E9ECEE; --pe-inchis-2:#A9B0B8;
+  --f-disp:"Danfo",Georgia,system-ui,sans-serif;
+  --f-text:"Overpass",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"Overpass Mono",ui-monospace,Menlo,Consolas,monospace;
+  --lat:min(1200px, 100% - 40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --arc:cubic-bezier(.34,1.56,.64,1);
+  --sus:env(safe-area-inset-top,0px); --jos:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
+body{margin:0;background:var(--beton);color:var(--text);font:400 1.06rem/1.6 var(--f-text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--laser-t);outline-offset:3px;border-radius:4px}
+.inchis :focus-visible,.bara-sus :focus-visible,.rodape :focus-visible,.jos :focus-visible,.meniu :focus-visible{outline-color:var(--firma)}
+[tabindex="-1"]:focus{outline:none}
+.salt{position:absolute;left:12px;top:-60px;z-index:100;background:var(--asfalt);color:#fff;padding:10px 14px;border-radius:6px}
+.salt:focus{top:12px}
+.lat{width:var(--lat);margin-inline:auto}
+h1,h2,h3{font-family:var(--f-disp);font-weight:400;line-height:1.06;margin:0}
+p{margin:0 0 1em}
+.inchis{background:var(--asfalt);color:var(--pe-inchis)}
+.sectiune{padding:clamp(64px,8vw,108px) 0;position:relative}
+/* reperul: linie laser + eticheta */
+.reper{display:flex;align-items:center;gap:12px;font:600 .8rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--laser-t);margin:0 0 18px}
+.reper::before{content:"";width:34px;height:2px;background:var(--laser);box-shadow:0 0 8px rgba(227,38,47,.7)}
+.inchis .reper{color:#FF6A70}
+.titlu{font-size:clamp(2.2rem,1.3rem + 3.4vw,3.9rem);margin-bottom:18px;text-wrap:balance}
+.titlu em{font-style:normal;color:var(--laser-t)}
+.inchis .titlu em{color:var(--ok)}
+.lead{font-size:clamp(1.08rem,1rem + .35vw,1.22rem);max-width:56ch;color:var(--text-2)}
+.inchis .lead{color:var(--pe-inchis-2)}
+.confirmat{display:inline-flex;align-items:center;gap:7px;font:600 .74rem/1 var(--f-mono);padding:6px 9px;border-radius:4px;background:#FFF4CC;color:#6E5400;white-space:nowrap}
+.confirmat::before{content:"±";font-weight:700}
+.inchis .confirmat{background:rgba(245,200,66,.12);color:var(--firma)}
+
+/* bandă + bară */
+.prezentare{background:var(--asfalt-2);color:var(--firma);font:600 .7rem/1.35 var(--f-mono);letter-spacing:.06em;text-align:center;padding:7px 14px;padding-top:calc(7px + var(--sus));border-bottom:1px solid var(--asfalt-linie)}
+.bara-sus{position:sticky;top:0;z-index:50;background:var(--asfalt);color:#fff;transition:box-shadow .3s}
+.bara-sus.scrolled{box-shadow:0 10px 30px -12px rgba(0,0,0,.6)}
+.bara-in{display:flex;align-items:center;gap:16px;min-height:64px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.marca .tabla{display:inline-grid;place-items:center;background:var(--firma);color:var(--firma-rosu);font:400 1.05rem/1 var(--f-disp);padding:8px 10px 6px;border-radius:3px;box-shadow:inset 0 0 0 2px #E2B32A}
+.marca small{font:600 .64rem/1.25 var(--f-mono);letter-spacing:.1em;color:var(--pe-inchis-2);text-transform:uppercase}
+.nav{display:flex;gap:2px}
+.nav a{text-decoration:none;padding:10px 13px;border-radius:6px;font:700 .98rem/1 var(--f-text);color:var(--pe-inchis-2);transition:background .2s,color .2s;position:relative}
+.nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav a[aria-current="true"]{color:#fff}
+.nav a[aria-current="true"]::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2px;background:var(--laser);box-shadow:0 0 8px var(--laser)}
+.limbi{display:flex;border:1px solid var(--asfalt-linie);border-radius:6px;padding:3px}
+.limbi button{background:none;border:0;cursor:pointer;font:600 .74rem/1 var(--f-mono);padding:9px;border-radius:4px;color:var(--pe-inchis-2);min-width:38px;min-height:34px}
+.limbi button[aria-pressed="true"]{background:var(--firma);color:var(--asfalt)}
+.limbi .doar-rev{display:none}
+html.rev .limbi .doar-rev{display:block}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--asfalt-linie);background:none;border-radius:8px;cursor:pointer;position:relative}
+.burger span,.burger span::before,.burger span::after{position:absolute;left:12px;right:12px;height:2px;background:#fff;content:""}
+.burger span{top:22px}.burger span::before{top:-7px;left:0;right:0}.burger span::after{top:7px;left:0;right:0}
+.meniu{position:fixed;inset:0;z-index:80;background:var(--asfalt-2);color:#fff;padding:calc(24px + var(--sus)) 24px calc(24px + var(--jos));display:flex;flex-direction:column;visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s;overflow:auto}
+.meniu.deschis{visibility:visible;opacity:1}
+.meniu .inchide{align-self:flex-end;background:none;border:1px solid var(--asfalt-linie);border-radius:8px;padding:10px 18px;cursor:pointer;color:#fff;font-weight:700;min-height:44px}
+.meniu ol{list-style:none;margin:24px 0 0;padding:0}
+.meniu li a{display:block;text-decoration:none;font:400 2rem/1.15 var(--f-disp);padding:13px 0;border-bottom:1px solid var(--asfalt-linie)}
+.meniu-tel{margin-top:auto;padding-top:24px;color:var(--pe-inchis-2)}
+.meniu-tel a{color:#fff;font-weight:700}
+
+/* butoane */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:8px;border:0;font:800 1.02rem/1 var(--f-text);text-decoration:none;cursor:pointer;transition:transform .18s var(--ease),background .2s,box-shadow .2s;touch-action:manipulation;white-space:nowrap}
+.btn .nr{padding-left:10px;border-left:1px solid rgba(255,255,255,.4);font-variant-numeric:tabular-nums}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:active{transform:scale(.97)}
+.btn-laser{background:var(--laser-t);color:#fff;box-shadow:0 12px 24px -14px var(--laser)}
+.btn-laser:hover{background:#A3161D}
+.btn-asfalt{background:var(--asfalt);color:#fff}
+.btn-asfalt:hover{background:var(--asfalt-3)}
+.btn-contur{background:transparent;color:var(--asfalt);box-shadow:inset 0 0 0 2px currentColor}
+.btn-contur:hover{background:rgba(30,33,36,.07)}
+.inchis .btn-contur,.jos .btn-contur{color:#fff}
+.inchis .btn-contur:hover{background:rgba(255,255,255,.08)}
+.btn-wa{background:#1F7A4D;color:#fff}
+.btn-wa:hover{background:#18653F}
+
+/* ===== EROU ===== */
+.erou{position:relative;overflow:hidden;background:var(--beton)}
+.erou-in{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,64px);align-items:center;padding:clamp(36px,5vw,72px) 0}
+.erou-in>*{min-width:0}
+.erou h1{font-size:clamp(3rem,1.2rem + 6.2vw,6.6rem);line-height:.9;margin:0 0 22px;letter-spacing:.005em}
+.erou h1 .r{display:block}
+.erou h1 .lit{display:inline-block;transform-origin:50% 90%;will-change:transform}
+.erou h1 .r2{color:var(--laser-t)}
+.erou .sub{font:700 1.02rem/1.4 var(--f-mono);letter-spacing:.04em;color:var(--text-2);margin:0 0 18px;display:flex;flex-wrap:wrap;gap:6px 14px}
+.erou .sub span{display:inline-flex;align-items:center;gap:8px}
+.erou .sub span+span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--laser)}
+.erou .zic{font:800 clamp(1.25rem,1.05rem + .8vw,1.6rem)/1.25 var(--f-text);max-width:26ch;margin:0 0 12px}
+.erou-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.nota{display:flex;align-items:center;gap:14px;margin-top:26px}
+.nota b{font:400 2.6rem/1 var(--f-disp)}
+.nota small{display:block;font:600 .8rem/1.35 var(--f-mono);color:var(--text-3)}
+.nota .stele{display:flex;gap:2px;color:#C79400}
+.nota .stele svg{width:16px;height:16px}
+
+.poza-erou{margin:0;position:relative;border-radius:22px;overflow:hidden;aspect-ratio:3/4;max-height:78svh;width:100%;background:var(--beton-2);box-shadow:0 40px 60px -40px rgba(30,33,36,.7)}
+.poza-erou img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+.poza-erou>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.laser-l{stroke:var(--laser);stroke-width:3;filter:drop-shadow(0 0 6px rgba(227,38,47,.95))}
+.laser-v{stroke:var(--ok);stroke-width:2.4;stroke-dasharray:12 10;filter:drop-shadow(0 0 5px rgba(34,195,115,.9))}
+.tinta{fill:none;stroke:#fff;stroke-width:3}
+.citire{position:absolute;left:14px;bottom:14px;right:14px;display:flex;flex-wrap:wrap;gap:8px}
+.citire>span{font:600 .78rem/1 var(--f-mono);letter-spacing:.04em;padding:9px 11px;border-radius:6px;background:rgba(21,23,26,.86);color:#fff;display:inline-flex;gap:8px;align-items:center}
+.citire>span i{font-style:normal;color:#FF6A70;transition:color .3s}
+.citire>span.ok i{color:var(--ok)}
+
+.js .erou .sub,.js .erou h1 .r,.js .erou .zic,.js .erou .lead,.js .erou-cta,.js .nota,.js .poza-erou,.js .citire>span,.js .laser-l,.js .laser-v,.js .tinta{opacity:0}
+.gata .erou .sub{animation:sus .6s var(--ease) .05s both}
+.gata .erou h1 .r{animation:sus .7s var(--ease) both}
+.gata .erou h1 .r:nth-child(1){animation-delay:.12s}.gata .erou h1 .r:nth-child(2){animation-delay:.24s}
+.gata .erou .zic{animation:sus .7s var(--ease) .5s both}
+.gata .erou .lead{animation:sus .7s var(--ease) .58s both}
+.gata .erou-cta{animation:sus .7s var(--ease) .66s both}
+.gata .erou .nota{animation:sus .7s var(--ease) .74s both}
+.gata .poza-erou{animation:scan 1.1s cubic-bezier(.65,0,.35,1) .1s both}
+.gata .laser-l{animation:baleiaj 1.3s var(--ease) .9s both}
+.gata .tinta{animation:apare .4s var(--ease) 1.9s both}
+.gata .laser-v{animation:apare .4s var(--ease) 2.2s both}
+.gata .citire>span{animation:sus .5s var(--ease) both;animation-delay:calc(2.2s + var(--i)*.12s)}
+@keyframes sus{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes apare{from{opacity:0}to{opacity:1}}
+@keyframes scan{from{opacity:1;clip-path:inset(0 0 100% 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes baleiaj{0%{opacity:1;transform:translateY(-1100px)}100%{opacity:1;transform:none}}
+
+/* bandă */
+.banda{background:var(--firma);color:var(--firma-rosu);overflow:hidden;border-block:2px solid #E2B32A}
+.banda-in{display:flex;width:max-content;animation:defilare 40s linear infinite}
+.banda span{display:inline-flex;align-items:center;gap:22px;padding:14px 22px;font:400 clamp(1.05rem,.95rem + .5vw,1.35rem)/1 var(--f-disp);white-space:nowrap}
+.banda span::after{content:"";width:22px;height:2px;background:var(--firma-rosu)}
+@keyframes defilare{to{transform:translateX(-50%)}}
+
+/* ===== STANDUL (semnătura) ===== */
+.stand{position:relative;height:300vh;background:var(--asfalt)}
+.stand-lipit{position:sticky;top:64px;height:calc(100vh - 64px);display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(20px,4vw,56px);align-items:center;overflow:hidden}
+.stand-lipit>*{min-width:0}
+.pasi{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:4px}
+.pasi li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:12px 14px;border-radius:10px;color:#79818B;transition:color .35s,background .35s}
+.pasi li b{display:block;font:800 1.1rem/1.25 var(--f-text);color:inherit}
+.pasi li span{font-size:.97rem}
+.pasi li i{width:12px;height:12px;border-radius:50%;margin-top:6px;border:2px solid #4A5058;transition:background .3s,border-color .3s,box-shadow .3s}
+.pasi li.activ{color:#fff;background:var(--asfalt-3)}
+.pasi li.activ i{background:var(--laser);border-color:var(--laser);box-shadow:0 0 10px var(--laser)}
+.pasi li.gata-p{color:#C5CBD2}
+.pasi li.gata-p i{background:var(--ok);border-color:var(--ok)}
+@media (min-width:901px) and (max-height:900px){.stand-lipit .titlu{font-size:clamp(2rem,1rem + 2.6vw,3.1rem);margin-bottom:10px}.stand-lipit .lead{font-size:1rem}.pasi{margin-top:12px;gap:0}.pasi li{padding:9px 14px}.pasi li span{font-size:.92rem}}
+.rig{position:relative;height:100%;max-height:760px;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:14px;padding:18px 0}
+.rig svg{width:100%;height:100%;min-height:0}
+.rig .caroserie{fill:none;stroke:#4E555E;stroke-width:3}
+.rig .roata{fill:#0E1012;stroke:#C5CBD2;stroke-width:3}
+.rig .fascicul{stroke:var(--laser);stroke-width:2.6;filter:drop-shadow(0 0 5px rgba(227,38,47,.9));transition:stroke .3s}
+.rig .fascicul.ok{stroke:var(--ok);filter:drop-shadow(0 0 5px rgba(34,195,115,.9))}
+.rig .ref{stroke:#5B636D;stroke-width:1.4;stroke-dasharray:6 8}
+.rig .eticheta{font:600 15px var(--f-mono);fill:#fff}
+.rig .val{font:600 15px var(--f-mono);fill:#FF6A70;transition:fill .3s}
+.rig .val.ok{fill:var(--ok)}
+.reglaj{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--asfalt-2);border-radius:12px;padding:12px 16px;box-shadow:inset 0 0 0 1px var(--asfalt-linie)}
+.reglaj label{font:600 .8rem/1.2 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--pe-inchis-2)}
+.reglaj output{font:600 .9rem/1 var(--f-mono);color:var(--firma);min-width:4.5ch;text-align:right}
+.reglaj input[type=range]{width:100%;accent-color:var(--laser);min-height:32px}
+.stare-rig{display:inline-flex;align-items:center;gap:10px;font:700 .9rem/1.2 var(--f-mono);padding:10px 14px;border-radius:8px;background:rgba(227,38,47,.14);color:#FF8A8F;margin-top:12px;transition:background .3s,color .3s}
+.stare-rig.ok{background:rgba(34,195,115,.14);color:var(--ok)}
+.stare-rig i{width:10px;height:10px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+
+/* unghiurile explicate */
+.unghiuri{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.u-card{background:var(--alb);border-radius:16px;padding:22px;box-shadow:inset 0 0 0 1px var(--beton-2);display:flex;flex-direction:column}
+.u-card svg{width:100%;height:120px;margin-bottom:12px}
+.u-card h3{font-size:1.6rem;line-height:1.15;margin-bottom:8px}
+.u-card .en{font:600 .74rem/1 var(--f-mono);letter-spacing:.08em;color:var(--text-3);text-transform:uppercase;margin-bottom:10px}
+.u-card p{color:var(--text-2);margin:0 0 10px;font-size:1rem}
+.u-card .semn{margin-top:auto;padding-top:12px;border-top:1px dashed var(--beton-3);font-size:.95rem}
+.u-card .semn b{color:var(--laser-t)}
+.u-card .u-linie{stroke:var(--laser);stroke-width:2;stroke-dasharray:5 5}
+.u-card .u-roata{fill:#2A2E33}
+.u-card .u-ref{stroke:var(--beton-3);stroke-width:1.5}
+.u-card .u-arc{fill:none;stroke:var(--laser-t);stroke-width:2}
+.u-card .u-txt{font:600 13px var(--f-mono);fill:var(--laser-t)}
+
+/* firma de la poartă + recenzii */
+.poarta{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.poarta>*{min-width:0}
+.foto{position:relative;border-radius:16px;overflow:hidden;background:var(--beton-2);margin:0}
+.foto>svg{position:absolute;inset:0;width:100%;height:100%}
+.foto img{position:relative;width:100%;height:100%;object-fit:cover}
+.foto figcaption{position:absolute;left:10px;bottom:10px;font:600 .76rem/1.3 var(--f-mono);color:#fff;background:rgba(21,23,26,.84);padding:7px 10px;border-radius:6px;max-width:calc(100% - 20px)}
+.foto-poarta{aspect-ratio:4/3}
+.tabla-mare{display:inline-block;background:var(--firma);color:var(--firma-rosu);border-radius:4px;padding:18px 22px 14px;box-shadow:inset 0 0 0 3px #E2B32A,0 20px 30px -24px rgba(0,0,0,.6);margin:6px 0 20px;transform:rotate(-1.2deg)}
+.tabla-mare b{display:block;font:400 clamp(1.5rem,1.2rem + 1.2vw,2.2rem)/1 var(--f-disp);margin-bottom:8px}
+.tabla-mare span{display:block;font:800 1.02rem/1.35 var(--f-text);letter-spacing:.06em;text-transform:uppercase}
+.recenzii{display:flex;gap:20px;align-items:center;margin-top:22px;flex-wrap:wrap}
+.recenzii .mare{font:400 4rem/.9 var(--f-disp)}
+.recenzii .sp{font:600 .86rem/1.4 var(--f-mono);color:var(--text-2)}
+.citat{margin:22px 0 0;padding:16px 18px;border-left:3px solid var(--ok-t);background:var(--alb);border-radius:0 12px 12px 0}
+.citat p{margin:0;font-size:1.05rem}
+.citat small{display:block;margin-top:6px;font:600 .74rem/1 var(--f-mono);color:var(--text-3);letter-spacing:.06em;text-transform:uppercase}
+
+/* programare */
+.pg{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:start;margin-top:34px}
+.pg>*{min-width:0}
+fieldset{border:0;margin:0 0 28px;padding:0;min-width:0}
+legend{font:400 1.55rem/1.05 var(--f-disp);margin-bottom:6px;padding:0}
+.ajut{font-size:.96rem;color:var(--pe-inchis-2);margin:0 0 12px}
+.camp{display:grid;gap:6px;margin-top:12px;min-width:0}
+.camp label{font:700 1rem/1.2 var(--f-text);color:#fff}
+.camp label small{font-weight:400;color:var(--pe-inchis-2)}
+.camp input,.camp select,.camp textarea{width:100%;min-height:50px;border-radius:8px;border:1.5px solid var(--asfalt-linie);background:var(--asfalt-2);color:#fff;padding:12px 14px;font-size:1.02rem}
+.camp select option{background:#fff;color:#1E2124}
+.camp textarea{min-height:84px;resize:vertical}
+.camp input::placeholder,.camp textarea::placeholder{color:#7D858F}
+.camp input:focus,.camp select:focus,.camp textarea:focus{border-color:var(--laser);outline:none;box-shadow:0 0 0 3px rgba(227,38,47,.35)}
+.trei{display:grid;grid-template-columns:1.2fr 1.2fr .7fr;gap:12px}
+.trei>*{min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.chip>span{display:inline-flex;flex-direction:column;justify-content:center;min-height:46px;padding:7px 14px;border-radius:8px;background:var(--asfalt-3);box-shadow:inset 0 0 0 1.5px var(--asfalt-linie);font:700 .98rem/1.15 var(--f-text);transition:background .15s,box-shadow .15s}
+.chip>span small{font:500 .7rem/1.2 var(--f-mono);color:var(--pe-inchis-2);margin-top:2px}
+.chip>input:checked+span{background:#fff;color:var(--asfalt);box-shadow:inset 3px 0 0 var(--laser)}
+.chip>input:checked+span small{color:var(--text-3)}
+.chip>input:focus-visible+span{outline:3px solid var(--firma);outline-offset:2px}
+.eroare{display:none;color:#FF8A8F;font-size:.94rem;font-weight:700;margin-top:8px}
+.eroare.on{display:block}
+.trimite{display:flex;flex-wrap:wrap;gap:10px}
+.trimite .mic{flex-basis:100%;font-size:.92rem;color:var(--pe-inchis-2);margin:6px 0 0}
+.trimite .mic a{color:#fff;font-weight:800}
+.raport-wrap{position:sticky;top:88px}
+.raport{background:#fff;color:var(--asfalt);border-radius:6px;padding:20px 20px 18px;font:400 .86rem/1.5 var(--f-mono);box-shadow:0 30px 50px -30px rgba(0,0,0,.8);position:relative}
+.raport::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:8px;background:radial-gradient(circle at 5px -1px,transparent 5px,#fff 5.5px) 0 0/10px 8px repeat-x}
+.rp-cap{display:flex;justify-content:space-between;gap:10px;border-bottom:2px solid var(--asfalt);padding-bottom:8px;margin-bottom:10px}
+.rp-cap b{font:400 1.1rem/1.1 var(--f-disp)}
+.rp-cap small{display:block;font-size:.66rem;color:var(--text-3);text-align:right}
+.rp-l{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dotted var(--beton-3);padding:4px 0}
+.rp-l span:first-child{color:var(--text-3);flex:none}
+.rp-l span:last-child{text-align:right;font-weight:600;word-break:break-word}
+.rp-l .gol{color:#A3AAB2;font-weight:400}
+.rp-t{width:100%;border-collapse:collapse;margin-top:12px;font-size:.78rem}
+.rp-t th,.rp-t td{border:1px solid var(--beton-2);padding:5px 6px;text-align:center}
+.rp-t th{background:var(--beton);font-weight:600}
+.rp-t td:first-child,.rp-t th:first-child{text-align:left}
+.rp-t td.g{color:#A3AAB2}
+.rp-sub{margin-top:12px;font-size:.72rem;color:var(--text-3)}
+
+/* program + contact */
+.ora{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.ora>*{min-width:0}
+.program{list-style:none;margin:0;padding:0;font-family:var(--f-mono)}
+.program li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--beton-2);font-variant-numeric:tabular-nums}
+.program li.azi{color:var(--laser-t);font-weight:600}
+.program li em{font-style:normal;margin-left:10px;padding:2px 7px;background:var(--laser-t);color:#fff;font-size:.68rem;border-radius:3px;vertical-align:2px}
+.stare{display:inline-flex;align-items:center;gap:10px;font:600 .9rem/1.3 var(--f-mono);padding:11px 15px;border-radius:8px;background:var(--alb);box-shadow:inset 0 0 0 1px var(--beton-2);margin:0 0 18px}
+.stare i{width:10px;height:10px;border-radius:50%;background:var(--beton-3)}
+.stare.da i{background:var(--ok-t);box-shadow:0 0 0 4px rgba(11,122,69,.18)}
+.stare.nu i{background:var(--laser);box-shadow:0 0 0 4px rgba(227,38,47,.18)}
+.sapte{font:800 1.05rem/1.4 var(--f-text);margin:0 0 16px}
+.sapte b{color:var(--ok-t)}
+.adresa{font:400 1.8rem/1.15 var(--f-disp);margin:0 0 8px}
+.repere{list-style:none;margin:16px 0 22px;padding:0;display:grid;gap:12px}
+.repere li{display:grid;grid-template-columns:28px 1fr;gap:12px;color:var(--text-2)}
+.repere svg{width:24px;height:24px;color:var(--laser-t);margin-top:2px}
+.repere b{color:var(--text)}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.harta{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10;background:var(--asfalt-3);margin-top:28px}
+.harta>svg{position:absolute;inset:0;width:100%;height:100%}
+.harta iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.harta .btn{position:absolute;left:50%;bottom:20px;transform:translateX(-50%)}
+.harta .btn:active{transform:translateX(-50%) scale(.97)}
+
+/* subsol */
+.rodape{background:var(--asfalt-2);color:var(--pe-inchis-2);padding:64px 0 calc(110px + var(--jos))}
+.rodape-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+.rodape h2{font-size:2rem;color:#fff;margin-bottom:10px}
+.rodape h3{font:600 .74rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--firma);margin:0 0 14px}
+.rodape ul{list-style:none;padding:0;margin:0}
+.rodape li{padding:4px 0}
+.rodape a{color:#fff}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--asfalt-linie);display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.86rem}
+.legal a{color:var(--pe-inchis-2)}
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + var(--jos));background:rgba(21,23,26,.97);border-top:1px solid var(--asfalt-linie);transform:translateY(110%);transition:transform .35s var(--ease)}
+.jos.vizibil{transform:none}
+.jos .btn{min-height:50px}
+
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .rv.vis{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}
+
+@media (max-width:1060px){
+  .nav{display:none}
+  .burger{display:block}
+}
+@media (max-width:900px){
+  .erou-in{grid-template-columns:1fr;gap:26px;padding-top:0}
+  .poza-erou{order:-1;margin:0 -20px;width:calc(100% + 40px);border-radius:0;aspect-ratio:4/3.4;max-height:none}
+  .stand{height:auto}
+  .stand-lipit{position:relative;top:0;height:auto;grid-template-columns:1fr;padding:56px 0}
+  .rig{height:auto;max-height:none}
+  .rig svg{height:auto;aspect-ratio:600/700;max-height:60svh}
+  .unghiuri{grid-template-columns:1fr}
+  .poarta,.pg,.ora{grid-template-columns:1fr}
+  .raport-wrap{position:static}
+  .rodape-grid{grid-template-columns:1fr 1fr}
+  .rodape-grid>div:first-child{grid-column:1/-1}
+  .jos{display:grid}
+}
+@media (max-width:560px){
+  .lat{width:min(1200px,100% - 32px)}
+  .poza-erou{margin:0 -16px;width:calc(100% + 32px)}
+  .erou h1{font-size:clamp(2.7rem,14.5vw,4rem)}
+  .trei{grid-template-columns:1fr 1fr}
+  .trei .camp:last-child{grid-column:1/-1}
+  .limbi button{min-width:34px;padding:9px 6px}
+  .marca small{display:none}
+  .trimite .btn{flex:1 1 100%}
+  .reglaj{grid-template-columns:1fr auto}
+  .reglaj label{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv,.js .erou .sub,.js .erou h1 .r,.js .erou .zic,.js .erou .lead,.js .erou-cta,.js .nota,.js .poza-erou,.js .citire>span,.js .laser-l,.js .laser-v,.js .tinta{opacity:1!important;transform:none!important;clip-path:none!important}
+  .banda-in{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="salt" href="#continut">{{Sari la conținut|Skip to content|Saltar para o conteúdo}}</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4 5.2 5.2 0 0 0 3.2.7 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 4h16v12H8l-4 4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 9h8M8 12h5"/></symbol>
+    <symbol id="i-sag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-stea" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></symbol>
+    <symbol id="i-ceas" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-poarta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="11" height="8" rx="1"/><path d="M8.5 12v9M16 8h5l-2 2 2 2h-5z"/></g></symbol>
+  </defs>
+</svg>
+
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru Service Auto Reglare Unghiuri|PACHECO STUDIOS PREVIEW · demo website for Service Auto Reglare Unghiuri|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para o Service Auto Reglare Unghiuri}}</div>
+
+<header class="bara-sus" id="bara">
+  <div class="lat bara-in">
+    <a class="marca" href="#acasa" aria-label="{{Service Auto Reglare Unghiuri — sus|Service Auto Reglare Unghiuri — top|Service Auto Reglare Unghiuri — topo}}"><span class="tabla">Reglare Unghiuri</span><small>Service auto<br>Ion Creangă 78</small></a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#stand" data-sec="stand">{{Standul|The rig|A bancada}}</a>
+      <a href="#unghiuri" data-sec="unghiuri">{{Cele 3 unghiuri|The 3 angles|Os 3 ângulos}}</a>
+      <a href="#programare" data-sec="programare">{{Programare|Booking|Marcação}}</a>
+      <a href="#contact" data-sec="contact">{{Program și adresă|Hours and address|Horário e morada}}</a>
+    </nav>
+    <div class="limbi" role="group" aria-label="{{Limba|Language|Língua}}">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false" class="doar-rev">PT</button>
+    </div>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="{{Deschide meniul|Open menu|Abrir o menu}}"><span></span></button>
+  </div>
+</header>
+
+<div class="meniu" id="meniu" role="dialog" aria-modal="true" aria-label="{{Meniu|Menu|Menu}}">
+  <button class="inchide" type="button">{{Închide|Close|Fechar}} ×</button>
+  <ol>
+    <li><a href="#stand">{{Standul|The rig|A bancada}}</a></li>
+    <li><a href="#unghiuri">{{Cele 3 unghiuri|The 3 angles|Os 3 ângulos}}</a></li>
+    <li><a href="#programare">{{Programare|Booking|Marcação}}</a></li>
+    <li><a href="#contact">{{Program și adresă|Hours and address|Horário e morada}}</a></li>
+  </ol>
+  <p class="meniu-tel">{{Sună la service:|Call the garage:|Ligue para a oficina:}} <a href="tel:+40742592249">0742 592 249</a></p>
+</div>
+
+<main id="continut">
+
+<!-- ================= EROU ================= -->
+<section class="erou" id="acasa" aria-labelledby="t-erou">
+  <div class="lat erou-in">
+    <div>
+      <p class="sub"><span>Service auto</span><span>Str. Ion Creangă 78, Iași</span></p>
+      <h1 id="t-erou"><span class="r" data-strimb>Reglare</span><span class="r r2" data-strimb>Unghiuri</span></h1>
+      <p class="zic">{{Volanul strâmb? Mașina trage într-o parte? Îndreptăm unghiurile.|Steering wheel off-centre? Car pulling to one side? We straighten the angles.|Volante torto? O carro puxa para um lado? Endireitamos os ângulos.}}</p>
+      <p class="lead">{{Geometria roților, la câțiva pași de Vasile Lupu. Deschis în fiecare zi a săptămânii, inclusiv duminica.|Wheel alignment a short walk from Vasile Lupu. Open every day of the week, Sundays included.|Alinhamento de direção a poucos passos da Vasile Lupu. Aberto todos os dias da semana, domingo incluído.}}</p>
+      <div class="erou-cta">
+        <a class="btn btn-laser" href="tel:+40742592249"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}<span class="nr">0742 592 249</span></a>
+        <a class="btn btn-contur" href="#programare">{{Programează geometria|Book an alignment|Marcar alinhamento}}<svg aria-hidden="true"><use href="#i-sag"/></svg></a>
+      </div>
+      <div class="nota"><b>4,6</b><div><span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span><small>{{25 de recenzii pe Google|25 Google reviews|25 avaliações no Google}}</small></div></div>
+    </div>
+    <figure class="poza-erou">
+      <img src="media/audi-pe-cric.webp" alt="" data-alt="Un Audi alb ridicat pe cricuri în curtea service-ului, cu o anvelopă scoasă alături|A white Audi up on jacks in the garage yard, a removed tyre beside it|Um Audi branco levantado em macacos no pátio da oficina, com um pneu retirado ao lado" fetchpriority="high" onerror="this.remove()">
+      <svg viewBox="0 0 1200 1800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <line class="laser-l" x1="-40" y1="1110" x2="1240" y2="1110"/>
+        <circle class="tinta" cx="697" cy="1110" r="150"/>
+        <circle class="tinta" cx="697" cy="1110" r="14"/>
+        <line class="laser-v" x1="697" y1="840" x2="697" y2="1380"/>
+      </svg>
+      <div class="citire" aria-hidden="true"><span style="--i:0" data-c="cam">CAMBER <i>−1°52′</i></span><span style="--i:1" data-c="conv">{{CONVERGENȚĂ|TOE|CONVERGÊNCIA}} <i>+0°41′</i></span></div>
+    </figure>
+  </div>
+</section>
+
+<div class="banda" aria-hidden="true"><div class="banda-in" id="banda-in"></div></div>
+
+<!-- ================= STANDUL ================= -->
+<section class="stand inchis" id="stand" aria-labelledby="t-stand">
+  <div class="lat stand-lipit">
+    <div>
+      <p class="reper">{{Pe stand|On the rig|Na bancada}}</p>
+      <h2 class="titlu" id="t-stand">{{De la strâmb la <em>drept.</em>|From crooked to <em>straight.</em>|Do torto ao <em>direito.</em>}}</h2>
+      <p class="lead">{{Coboară pe pagină și urmărește roțile: razele roșii arată cât deviază fiecare, linia punctată e drumul drept.|Scroll down and watch the wheels: the red beams show how far each one is off, the dotted line is straight ahead.|Desça na página e veja as rodas: os raios vermelhos mostram o desvio de cada uma, a linha tracejada é a direção certa.}}</p>
+      <ol class="pasi" id="pasi">
+        <li><i></i><div><b>{{Mașina urcă pe stand|The car goes up on the rig|O carro sobe à bancada}}</b><span>{{Roțile drepte, volanul la mijloc.|Wheels straight, steering wheel centred.|Rodas direitas, volante ao centro.}}</span></div></li>
+        <li><i></i><div><b>{{Se citesc unghiurile|The angles are read|Leem-se os ângulos}}</b><span>{{Camber, convergență, fugă: pentru fiecare roată.|Camber, toe, caster: for every wheel.|Camber, convergência, avanço: em cada roda.}}</span></div></li>
+        <li><i></i><div><b>{{Se reglează bara de direcție|The tie rods are adjusted|Afinam os tirantes}}</b><span>{{Până când valorile intră în toleranța mașinii.|Until the values are within the car’s tolerance.|Até os valores entrarem na tolerância do carro.}}</span></div></li>
+        <li><i></i><div><b>{{Volan drept, mașină dreaptă|Straight wheel, straight car|Volante direito, carro direito}}</b><span>{{Primești valorile de după reglaj.|You get the values after adjustment.|Recebe os valores depois da afinação.}}</span></div></li>
+      </ol>
+      <p class="stare-rig" id="stare-rig" aria-live="polite"><i></i><span></span></p>
+    </div>
+    <div class="rig">
+      <svg viewBox="0 0 600 700" aria-hidden="true" id="rig-svg">
+        <line class="ref" x1="150" y1="20" x2="150" y2="680"/><line class="ref" x1="450" y1="20" x2="450" y2="680"/>
+        <path class="caroserie" d="M210 110 Q300 70 390 110 L405 200 Q415 260 410 330 L410 520 Q410 600 380 630 Q300 655 220 630 Q190 600 190 520 L190 330 Q185 260 195 200Z"/>
+        <path class="caroserie" d="M225 250 Q300 230 375 250 L370 330 Q300 318 230 330Z M232 470 Q300 482 368 470 L372 540 Q300 556 228 540Z" style="stroke-width:2"/>
+        <line x1="150" y1="200" x2="450" y2="200" stroke="#3A3F46" stroke-width="3"/><line x1="150" y1="530" x2="450" y2="530" stroke="#3A3F46" stroke-width="3"/>
+        <g id="w0" data-x="150" data-y="200"><line class="fascicul" x1="150" y1="200" x2="150" y2="20"/><rect class="roata" x="130" y="155" width="40" height="90" rx="10"/></g>
+        <g id="w1" data-x="450" data-y="200"><line class="fascicul" x1="450" y1="200" x2="450" y2="20"/><rect class="roata" x="430" y="155" width="40" height="90" rx="10"/></g>
+        <g id="w2" data-x="150" data-y="530"><line class="fascicul" x1="150" y1="530" x2="150" y2="680"/><rect class="roata" x="130" y="485" width="40" height="90" rx="10"/></g>
+        <g id="w3" data-x="450" data-y="530"><line class="fascicul" x1="450" y1="530" x2="450" y2="680"/><rect class="roata" x="430" y="485" width="40" height="90" rx="10"/></g>
+        <text class="eticheta" x="22" y="300" data-l="FS|FL|FE">FS</text><text class="val" x="22" y="322" id="v0"></text>
+        <text class="eticheta" x="578" y="300" text-anchor="end" data-l="FD|FR|FD">FD</text><text class="val" x="578" y="322" text-anchor="end" id="v1"></text>
+        <text class="eticheta" x="22" y="420" data-l="SS|RL|TE">SS</text><text class="val" x="22" y="442" id="v2"></text>
+        <text class="eticheta" x="578" y="420" text-anchor="end" data-l="SD|RR|TD">SD</text><text class="val" x="578" y="442" text-anchor="end" id="v3"></text>
+      </svg>
+      <div class="reglaj">
+        <label for="reglaj">{{Cheia de reglaj|The adjusting spanner|A chave de afinação}}</label>
+        <input type="range" id="reglaj" min="0" max="100" value="0" step="1">
+        <output id="reglaj-o" for="reglaj">0%</output>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CELE 3 UNGHIURI ================= -->
+<section class="sectiune" id="unghiuri" aria-labelledby="t-ungh">
+  <div class="lat">
+    <p class="reper rv">{{Ce se reglează|What gets adjusted|O que se afina}}</p>
+    <h2 class="titlu rv" id="t-ungh">{{Trei unghiuri, <em>trei semne.</em>|Three angles, <em>three signs.</em>|Três ângulos, <em>três sinais.</em>}}</h2>
+    <p class="lead rv">{{Fiecare unghi greșit lasă o urmă pe care o poți vedea singur. Valorile corecte le dă fabricantul, pentru fiecare model.|Each wrong angle leaves a trace you can spot yourself. The correct values come from the manufacturer, model by model.|Cada ângulo errado deixa um sinal que pode ver sozinho. Os valores certos dá-os o fabricante, modelo a modelo.}}</p>
+    <div class="unghiuri">
+      <article class="u-card rv">
+        <svg viewBox="0 0 240 120" aria-hidden="true"><line class="u-ref" x1="120" y1="8" x2="120" y2="112"/><line class="u-ref" x1="20" y1="112" x2="220" y2="112"/><g transform="rotate(-9 120 112)"><rect class="u-roata" x="104" y="20" width="32" height="92" rx="8"/><line class="u-linie" x1="120" y1="0" x2="120" y2="112"/></g><path class="u-arc" d="M120 40 A72 72 0 0 0 108.7 41"/><text class="u-txt" x="150" y="40">−1°30′</text></svg>
+        <h3>Camber</h3><p class="en">{{înclinarea roții, văzută din față|wheel tilt, seen from the front|inclinação da roda, vista de frente}}</p>
+        <p>{{Cât de aplecată e roata spre interior sau spre exterior.|How far the wheel leans in or out at the top.|Quanto a roda se inclina para dentro ou para fora.}}</p>
+        <p class="semn">{{<b>Semnul:</b> anvelopa roasă doar pe o margine.|<b>The sign:</b> a tyre worn on one edge only.|<b>O sinal:</b> pneu gasto só numa borda.}}</p>
+      </article>
+      <article class="u-card rv d1">
+        <svg viewBox="0 0 240 120" aria-hidden="true"><line class="u-ref" x1="70" y1="6" x2="70" y2="114"/><line class="u-ref" x1="170" y1="6" x2="170" y2="114"/><g transform="rotate(7 70 60)"><rect class="u-roata" x="56" y="22" width="28" height="76" rx="7"/><line class="u-linie" x1="70" y1="0" x2="70" y2="120"/></g><g transform="rotate(-7 170 60)"><rect class="u-roata" x="156" y="22" width="28" height="76" rx="7"/><line class="u-linie" x1="170" y1="0" x2="170" y2="120"/></g><text class="u-txt" x="120" y="64" text-anchor="middle">+0°40′</text></svg>
+        <h3>{{Convergență|Toe|Convergência}}</h3><p class="en">{{roțile văzute de sus|wheels seen from above|rodas vistas de cima}}</p>
+        <p>{{Dacă roțile din față „se uită” una spre alta sau se depărtează.|Whether the front wheels point towards each other or apart.|Se as rodas da frente «olham» uma para a outra ou se afastam.}}</p>
+        <p class="semn">{{<b>Semnul:</b> volanul strâmb pe drum drept, uzură „în solzi”.|<b>The sign:</b> wheel off-centre on a straight road, feathered wear.|<b>O sinal:</b> volante torto em reta, desgaste «em escamas».}}</p>
+      </article>
+      <article class="u-card rv d2">
+        <svg viewBox="0 0 240 120" aria-hidden="true"><circle cx="120" cy="70" r="40" fill="none" stroke="#2A2E33" stroke-width="12"/><line class="u-ref" x1="120" y1="2" x2="120" y2="118"/><line class="u-linie" x1="104" y1="0" x2="136" y2="120"/><path class="u-arc" d="M120 22 A48 48 0 0 1 132 23.5"/><text class="u-txt" x="150" y="26">+6°</text><line class="u-ref" x1="20" y1="112" x2="220" y2="112"/></svg>
+        <h3>{{Fugă|Caster|Avanço}}</h3><p class="en">{{înclinarea pivotului, din lateral|pivot tilt, from the side|inclinação do pivô, de lado}}</p>
+        <p>{{Face volanul să revină singur la mijloc după viraj.|Makes the steering wheel return to centre by itself after a turn.|Faz o volante voltar sozinho ao centro depois da curva.}}</p>
+        <p class="semn">{{<b>Semnul:</b> mașina „plutește” sau trage la viteză.|<b>The sign:</b> the car wanders or pulls at speed.|<b>O sinal:</b> o carro «flutua» ou puxa em velocidade.}}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POARTA + RECENZII ================= -->
+<section class="sectiune" aria-labelledby="t-poarta" style="padding-top:0">
+  <div class="lat poarta">
+    <div>
+      <p class="reper rv">{{Firma de la poartă|The sign at the gate|A placa à entrada}}</p>
+      <h2 class="titlu rv" id="t-poarta">{{Ce scrie <em>pe tablă.</em>|What the sign <em>says.</em>|O que diz <em>a placa.</em>}}</h2>
+      <div class="tabla-mare rv" role="img" aria-label="Service rapid · Stație ITP · Reglare unghiuri · Vulcanizare"><b>Service rapid</b><span>Stație ITP</span><span>Reglare unghiuri</span><span>Vulcanizare</span></div>
+      <p class="rv" style="color:var(--text-2)">{{Așa apare tabla galbenă în poza de la intrare. Ce servicii se fac exact aici și la ce preț: <span class="confirmat">de confirmat</span>|That’s how the yellow sign appears in the photo of the entrance. Exactly which services are done here, and prices: <span class="confirmat">to be confirmed</span>|É assim que a placa amarela aparece na foto da entrada. Que serviços se fazem exatamente aqui e preços: <span class="confirmat">a confirmar</span>}}</p>
+      <div class="recenzii rv"><span class="mare">4,6</span><span class="sp">{{25 de recenzii pe Google<br>22 dintre ele cu 5 stele|25 reviews on Google<br>22 of them five stars|25 avaliações no Google<br>22 delas com 5 estrelas}}</span></div>
+      <blockquote class="citat rv"><p>{{Un client îi descrie ca foarte profesioniști și foarte amabili și îi recomandă cu încredere.|One customer describes them as very professional and very friendly, and recommends them with confidence.|Um cliente descreve-os como muito profissionais e muito simpáticos, e recomenda-os com confiança.}}</p><small>{{recenzie Google · sens general|Google review · general sense|avaliação Google · sentido geral}}</small></blockquote>
+    </div>
+    <div style="display:grid;gap:14px">
+      <figure class="foto foto-poarta rv"><svg viewBox="0 0 4 3" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="3" fill="#DADDE0"/></svg><img src="media/firma-poarta.webp" alt="" data-alt="Tabla galbenă de la intrare: Service rapid, Stație ITP, Reglare unghiuri, Vulcanizare|The yellow sign at the entrance: Service rapid, ITP station, wheel alignment, tyres|A placa amarela à entrada: Service rapid, inspeção ITP, alinhamento, pneus" loading="lazy" onerror="this.remove()"><figcaption>{{tabla de la intrare, pe Ion Creangă|the sign at the entrance on Ion Creangă|a placa à entrada, na Ion Creangă}}</figcaption></figure>
+      <figure class="foto rv d1" style="aspect-ratio:16/7.4"><svg viewBox="0 0 4 3" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="3" fill="#DADDE0"/></svg><img src="media/roata-bara.webp" alt="" data-alt="Roată și bara de direcție văzute de jos|A wheel and the tie rod seen from below|Uma roda e o tirante da direção vistos de baixo" loading="lazy" onerror="this.remove()"><figcaption>{{bara de direcție: aici se reglează convergența|the tie rod: this is where toe gets set|o tirante: é aqui que se afina a convergência}}</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAMARE ================= -->
+<section class="sectiune inchis" id="programare" aria-labelledby="t-prg">
+  <div class="lat">
+    <p class="reper rv">{{Programare geometrie|Alignment booking|Marcação de alinhamento}}</p>
+    <h2 class="titlu rv" id="t-prg">{{Spune-ne mașina. <em>Noi o îndreptăm.</em>|Tell us the car. <em>We straighten it.</em>|Diga-nos o carro. <em>Nós endireitamo-lo.</em>}}</h2>
+    <p class="lead rv">{{Cererea pleacă prin WhatsApp sau SMS; service-ul confirmă ora. Mai repede: suni și citești fișa.|The request goes by WhatsApp or SMS; the garage confirms the time. Quicker: call and read out the card.|O pedido segue por WhatsApp ou SMS; a oficina confirma a hora. Mais rápido: ligue e leia a ficha.}}</p>
+    <div class="pg">
+      <form id="f-prg" novalidate>
+        <fieldset>
+          <legend>{{Mașina|The car|O carro}}</legend>
+          <div class="trei">
+            <div class="camp"><label for="marca">{{Marca|Make|Marca}}</label><select id="marca"></select></div>
+            <div class="camp"><label for="model">{{Model|Model|Modelo}}</label><input id="model" autocomplete="off" data-ph="ex. A5, Duster, Passat|e.g. A5, Duster, Passat|ex. A5, Duster, Passat"></div>
+            <div class="camp"><label for="an">{{Anul|Year|Ano}} <small>({{opț.|opt.|opc.}})</small></label><input id="an" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="2017"></div>
+          </div>
+          <div class="camp" id="camp-alta" hidden><label for="marca-alta">{{Care marcă?|Which make?|Que marca?}}</label><input id="marca-alta" autocomplete="off"></div>
+          <p class="eroare" id="e-masina" role="alert">{{Scrie marca și modelul: valorile de reglaj diferă de la model la model.|Add the make and model: the alignment values differ from model to model.|Indique a marca e o modelo: os valores de afinação mudam de modelo para modelo.}}</p>
+        </fieldset>
+        <fieldset>
+          <legend>{{Ce simți la volan|What you feel at the wheel|O que sente ao volante}}</legend>
+          <p class="ajut">{{Alege tot ce se potrivește.|Pick everything that applies.|Escolha tudo o que se aplica.}}</p>
+          <div class="chips" id="simpt"></div>
+          <div class="camp"><label for="desc">{{Altceva de știut|Anything else|Mais alguma coisa}} <small>({{opțional|optional|opcional}})</small></label><textarea id="desc" data-ph="ex. am schimbat bieletele săptămâna trecută|e.g. I replaced the tie rod ends last week|ex. troquei as ponteiras da direção na semana passada"></textarea></div>
+          <p class="eroare" id="e-simpt" role="alert">{{Alege un simptom sau scrie de ce vrei geometria.|Pick a symptom or write why you want the alignment.|Escolha um sintoma ou escreva porque quer o alinhamento.}}</p>
+        </fieldset>
+        <fieldset>
+          <legend>{{Când vii|When you’ll come|Quando vem}}</legend>
+          <div class="chips" id="zile"></div>
+          <div class="chips" id="interval" style="margin-top:10px"></div>
+          <div class="camp" style="margin-top:18px"><label for="nume">{{Numele tău|Your name|O seu nome}}</label><input id="nume" autocomplete="given-name"></div>
+          <p class="eroare" id="e-nume" role="alert">{{Spune-ne cum te cheamă.|Tell us your name.|Diga-nos o seu nome.}}</p>
+        </fieldset>
+        <div class="trimite">
+          <button class="btn btn-wa" type="submit" data-canal="wa"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</button>
+          <button class="btn btn-contur" type="submit" data-canal="sms"><svg aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</button>
+          <p class="mic">{{Sau <a href="tel:+40742592249">sună la 0742 592 249</a>.|Or <a href="tel:+40742592249">call 0742 592 249</a>.|Ou <a href="tel:+40742592249">ligue para 0742 592 249</a>.}}</p>
+        </div>
+      </form>
+      <aside class="raport-wrap" aria-label="{{Fișa de geometrie|Alignment card|Ficha de alinhamento}}">
+        <div class="raport" id="raport"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAM + CONTACT ================= -->
+<section class="sectiune" id="contact" aria-labelledby="t-cont">
+  <div class="lat ora">
+    <div>
+      <p class="reper rv">{{Program|Hours|Horário}}</p>
+      <h2 class="titlu rv" id="t-cont">{{Șapte zile <em>din șapte.</em>|Seven days <em>out of seven.</em>|Sete dias <em>em sete.</em>}}</h2>
+      <p class="sapte rv">{{Luni–vineri <b>07:00–19:00</b>, sâmbătă și duminică <b>07:00–16:00</b>.|Mon–Fri <b>7:00–19:00</b>, Sat and Sun <b>7:00–16:00</b>.|Seg–sex <b>07:00–19:00</b>, sáb e dom <b>07:00–16:00</b>.}}</p>
+      <p class="stare rv" data-stare><i></i><span></span></p>
+      <ul class="program rv" data-program></ul>
+    </div>
+    <div>
+      <p class="reper rv">{{Adresa|Address|Morada}}</p>
+      <p class="adresa rv">Strada Ion Creangă 78<br>707252 Iași</p>
+      <ul class="repere rv">
+        <li><svg aria-hidden="true"><use href="#i-pin"/></svg><span>{{<b>Pe Ion Creangă, aproape de Strada Stejar</b>, la nord de Vasile Lupu.|<b>On Ion Creangă, near Strada Stejar</b>, north of Vasile Lupu.|<b>Na Ion Creangă, perto da Strada Stejar</b>, a norte da Vasile Lupu.}}</span></li>
+        <li><svg aria-hidden="true"><use href="#i-poarta"/></svg><span>{{<b>Tabla galbenă</b> la intrare și săgeata „Stație ITP”.|<b>The yellow sign</b> at the entrance and the “Stație ITP” arrow.|<b>A placa amarela</b> à entrada e a seta «Stație ITP».}}</span></li>
+      </ul>
+      <div class="btns rv">
+        <a class="btn btn-laser" href="tel:+40742592249"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+        <a class="btn btn-contur" href="https://www.google.com/maps/search/?api=1&amp;query=47.1610864%2C27.6155709" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Google Maps</a>
+      </div>
+      <div class="harta rv" id="harta">
+        <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="250" fill="#2A2E33"/><path d="M-10 60 L410 200" stroke="#4E555E" stroke-width="12"/><text x="40" y="58" font-family="Overpass Mono,monospace" font-size="11" fill="#A9B0B8" transform="rotate(18 40 58)">STR. ION CREANGĂ</text><path d="M120 -10 L250 260" stroke="#3A3F46" stroke-width="8"/><text x="250" y="240" font-family="Overpass Mono,monospace" font-size="11" fill="#A9B0B8">VASILE LUPU ↓</text><circle cx="205" cy="128" r="14" fill="#E3262F"/><circle cx="205" cy="128" r="5" fill="#fff"/></svg>
+        <button class="btn btn-laser" type="button" id="arata-harta">{{Arată harta|Show the map|Mostrar o mapa}}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="lat">
+    <div class="rodape-grid">
+      <div>
+        <h2>Reglare Unghiuri</h2>
+        <p>{{Service auto pe Strada Ion Creangă 78, Iași. 4,6 pe Google din 25 de recenzii.|Car repair on Strada Ion Creangă 78, Iași. 4.6 on Google from 25 reviews.|Oficina auto na Strada Ion Creangă 78, Iași. 4,6 no Google em 25 avaliações.}}</p>
+      </div>
+      <div>
+        <h3>Service</h3>
+        <ul><li>Strada Ion Creangă 78</li><li>707252 Iași, România</li><li><a href="tel:+40742592249">0742 592 249</a></li><li>{{L–V 07–19 · S–D 07–16|Mon–Fri 7–19 · Sat–Sun 7–16|Seg–sex 07–19 · sáb–dom 07–16}}</li></ul>
+      </div>
+      <div>
+        <h3>{{Pe site|On this site|Neste site}}</h3>
+        <ul><li><a href="#stand">{{Standul|The rig|A bancada}}</a></li><li><a href="#unghiuri">{{Cele 3 unghiuri|The 3 angles|Os 3 ângulos}}</a></li><li><a href="#programare">{{Programare|Booking|Marcação}}</a></li><li><a href="#contact">{{Program și adresă|Hours and address|Horário e morada}}</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Service Auto Reglare Unghiuri · {{denumire firmă și CUI: de confirmat|company name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+      <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+    </div>
+  </div>
+</footer>
+
+<div class="jos" id="jos">
+  <a class="btn btn-laser" href="tel:+40742592249"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <a class="btn btn-contur" href="#programare">{{Programare|Booking|Marcação}}</a>
+</div>
+
+<noscript><p style="padding:16px;background:#fff">Service Auto Reglare Unghiuri · Strada Ion Creangă 78, 707252 Iași · Tel. 0742 592 249 · Luni–vineri 07:00–19:00, sâmbătă–duminică 07:00–16:00 · 4,6 pe Google (25 de recenzii) · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AutoRepair","name":"Service Auto Reglare Unghiuri","telephone":"+40742592249","address":{"@type":"PostalAddress","streetAddress":"Strada Ion Creangă 78","postalCode":"707252","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1610864,"longitude":27.6155709},"aggregateRating":{"@type":"AggregateRating","ratingValue":4.6,"reviewCount":25,"bestRating":5},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"07:00","closes":"16:00"}],"amenityFeature":{"@type":"LocationFeatureSpecification","name":"Wheelchair-accessible entrance","value":true},"image":"media/audi-pe-cric.webp","hasMap":"https://www.google.com/maps/search/?api=1&query=47.1610864%2C27.6155709"}
+</script>
+<script>
+(function(){
+  var html=document.documentElement;
+  var reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var L=function(){var l=html.dataset.lang;return l==='en'||l==='pt'?l:'ro'};
+  var t=function(ro,en,pt){var l=L();return l==='en'?en:l==='pt'?(pt||en):ro};
+  var t3=function(a){return t(a[0],a[1],a[2])};
+  var tr=function(s){return t3(s.split('|'))};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var $=function(id){return document.getElementById(id)};
+  var TEL='+40742592249', WA='40742592249';
+  function gm(v){var s=v<0?'−':'+',a=Math.abs(v),g=Math.floor(a),m=Math.round((a-g)*60);if(m===60){g++;m=0}return s+g+'°'+String(m).padStart(2,'0')+'′'}
+
+  /* ---------- titlul strâmb care se îndreaptă ---------- */
+  var lit=[];
+  document.querySelectorAll('[data-strimb]').forEach(function(r){var tx=r.textContent;r.setAttribute('aria-label',tx);r.innerHTML=tx.split('').map(function(c){return '<span class="lit" aria-hidden="true">'+c+'</span>'}).join('');[].forEach.call(r.children,function(s){var a=(Math.random()*2-1)*9;if(Math.abs(a)<3)a=a<0?-4:4;lit.push({el:s,a:a,v:0});s.style.transform='rotate('+a.toFixed(1)+'deg)'})});
+  function indreapta(){
+    if(reduz){lit.forEach(function(o){o.el.style.transform='none'});return}
+    var t0=performance.now();
+    (function f(ts){var viu=false;lit.forEach(function(o,i){if(ts-t0<i*45)return viu=true;o.v+=(-o.a)*.18;o.v*=.72;o.a+=o.v;if(Math.abs(o.a)>.05||Math.abs(o.v)>.05)viu=true;o.el.style.transform='rotate('+o.a.toFixed(2)+'deg)'});if(viu)requestAnimationFrame(f);else lit.forEach(function(o){o.el.style.transform='none'})})(t0);
+  }
+
+  /* ---------- citirea din poza eroului se face verde ---------- */
+  function citireOk(){document.querySelectorAll('.citire > span').forEach(function(s,i){setTimeout(function(){s.classList.add('ok');s.querySelector('i').textContent=s.dataset.c==='cam'?'−0°38′':'+0°06′'},reduz?0:3200+i*300)})}
+
+  /* ---------- bandă ---------- */
+  function banda(){var w=[['reglare unghiuri','wheel alignment','alinhamento'],['vulcanizare','tyre service','pneus'],['stație ITP','ITP inspection station','inspeção ITP'],['service rapid','quick service','serviço rápido'],['deschis și duminica','open on Sundays','aberto ao domingo']];var s=w.map(function(x){return '<span>'+esc(t3(x))+'</span>'}).join('');$('banda-in').innerHTML=s+s}
+
+  /* ---------- standul: roțile se îndreaptă cu scroll-ul ---------- */
+  var ROTI=[{toe:5.2,cam:-1.9},{toe:-3.6,cam:-0.4},{toe:2.4,cam:-2.3},{toe:-1.6,cam:-1.1}];
+  var TOL=.25;
+  var gRoti=[0,1,2,3].map(function(i){return $('w'+i)});
+  var pasi=[].slice.call($('pasi').children);
+  var pCur=-1,manual=false;
+  function ease(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
+  function aplica(p){
+    p=Math.max(0,Math.min(1,p));if(Math.abs(p-pCur)<.002)return;pCur=p;
+    var e=ease(Math.max(0,Math.min(1,(p-.25)/.6)));
+    var toateOk=true;
+    gRoti.forEach(function(g,i){var r=ROTI[i],toe=r.toe*(1-e),cam=r.cam*(1-e)+(-.6)*e;g.setAttribute('transform','rotate('+toe.toFixed(2)+' '+g.dataset.x+' '+g.dataset.y+')');
+      var ok=Math.abs(toe)<TOL;if(!ok)toateOk=false;g.querySelector('.fascicul').classList.toggle('ok',ok);
+      var v=$('v'+i);v.textContent=t('conv ','toe ','conv ')+gm(toe/6);v.classList.toggle('ok',ok)});
+    var k=p<.18?0:p<.38?1:p<.85?2:toateOk&&p>.94?4:3;
+    pasi.forEach(function(li,i){li.classList.toggle('activ',i===k);li.classList.toggle('gata-p',i<k)});
+    var s=$('stare-rig');s.classList.toggle('ok',toateOk);var sv=toateOk?t('Toate patru roțile în toleranță','All four wheels within tolerance','As quatro rodas dentro da tolerância'):t('În afara toleranței: ','Out of tolerance: ','Fora da tolerância: ')+gRoti.filter(function(g){return !g.querySelector('.fascicul').classList.contains('ok')}).length+' '+t('roți','wheels','rodas');var ss=s.querySelector('span');if(ss.textContent!==sv)ss.textContent=sv;
+    $('reglaj').value=Math.round(p*100);$('reglaj-o').textContent=Math.round(p*100)+'%';
+  }
+  var stand=$('stand');
+  function pStand(){var r=stand.getBoundingClientRect(),h=r.height-innerHeight;if(h<=0){var c=(innerHeight-r.top)/(innerHeight+r.height);return Math.max(0,Math.min(1,(c-.2)/.5))}return -r.top/h}
+  $('reglaj').addEventListener('input',function(){manual=true;pCur=-1;aplica(this.value/100)});
+
+  /* ---------- program ---------- */
+  var PROG={0:[420,960],1:[420,1140],2:[420,1140],3:[420,1140],4:[420,1140],5:[420,1140],6:[420,960]};
+  var ZILE={ro:['duminică','luni','marți','miercuri','joi','vineri','sâmbătă'],en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],pt:['domingo','segunda','terça','quarta','quinta','sexta','sábado']};
+  var ZS={ro:['dum','lun','mar','mie','joi','vin','sâm'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],pt:['dom','seg','ter','qua','qui','sex','sáb']};
+  function hmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+  function acum(){
+    try{var f=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Bucharest',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());var o={};f.forEach(function(p){o[p.type]=p.value});return {zi:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday],min:(+o.hour%24)*60+(+o.minute)}}
+    catch(e){var d=new Date();return {zi:d.getDay(),min:d.getHours()*60+d.getMinutes()}}
+  }
+  function program(){
+    var a=acum(),z=ZILE[L()];
+    document.querySelectorAll('[data-program]').forEach(function(ul){ul.innerHTML=[1,2,3,4,5,6,0].map(function(d){var p=PROG[d];return '<li class="'+(d===a.zi?'azi':'')+'"><span>'+z[d].charAt(0).toUpperCase()+z[d].slice(1)+(d===a.zi?'<em>'+t('azi','today','hoje')+'</em>':'')+'</span><span>'+hmm(p[0])+' – '+hmm(p[1])+'</span></li>'}).join('')});
+    var p=PROG[a.zi],cls,txt;
+    if(a.min>=p[0]&&a.min<p[1]){cls='da';txt=t('Deschis acum · până la ','Open now · until ','Aberto agora · até às ')+hmm(p[1])}
+    else if(a.min<p[0]){cls='nu';txt=t('Închis · deschide azi la ','Closed · opens today at ','Fechado · abre hoje às ')+hmm(p[0])}
+    else{cls='nu';txt=t('Închis · deschide mâine la ','Closed · opens tomorrow at ','Fechado · abre amanhã às ')+hmm(PROG[(a.zi+1)%7][0])}
+    document.querySelectorAll('[data-stare]').forEach(function(s){s.classList.remove('da','nu');s.classList.add(cls);s.querySelector('span').textContent=txt});
+  }
+
+  /* ---------- programarea + fișa de geometrie ---------- */
+  var MARCI=['Audi','BMW','Citroën','Dacia','Fiat','Ford','Honda','Hyundai','Kia','Mazda','Mercedes-Benz','Mitsubishi','Nissan','Opel','Peugeot','Renault','Seat','Škoda','Suzuki','Toyota','Volkswagen','Volvo'];
+  var SIMPT=[['stanga',['Trage spre stânga','Pulls to the left','Puxa para a esquerda']],['dreapta',['Trage spre dreapta','Pulls to the right','Puxa para a direita']],['volan',['Volanul nu stă drept','Steering wheel off-centre','Volante torto']],['uzura',['Anvelope roase pe o parte','Tyres worn on one side','Pneus gastos de um lado']],['piese',['Am schimbat piese la direcție / punte','New steering / suspension parts','Peças novas de direção / suspensão']],['anvelope',['Anvelope noi','New tyres','Pneus novos']],['groapa',['Am lovit o groapă / bordură','Hit a pothole / kerb','Bati num buraco / passeio']],['4x4',['Mașină 4x4 / SUV','4x4 / SUV','4x4 / SUV']]];
+  var INT=[['dim',['dimineața','morning','de manhã']],['pranz',['la prânz','midday','hora de almoço']],['dupa',['după-amiaza','afternoon','à tarde']]];
+  var st={s:{},zi:null,int:null};
+  function zile(){var a=new Date(),o=[];for(var i=0;i<7;i++){var d=new Date(a.getFullYear(),a.getMonth(),a.getDate()+i);o.push({k:d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(),w:d.getDay(),d:d.getDate(),m:d.getMonth()+1,i:i})}return o}
+  function randForm(){
+    var sel=$('marca'),v=sel.value;
+    sel.innerHTML='<option value="">'+t('alege','choose','escolher')+'</option>'+MARCI.map(function(m){return '<option'+(m===v?' selected':'')+'>'+m+'</option>'}).join('')+'<option value="alta"'+(v==='alta'?' selected':'')+'>'+t('altă marcă','other make','outra marca')+'</option>';
+    $('simpt').innerHTML=SIMPT.map(function(p){return '<label class="chip"><input type="checkbox" value="'+p[0]+'"'+(st.s[p[0]]?' checked':'')+'><span>'+esc(t3(p[1]))+'</span></label>'}).join('');
+    $('zile').innerHTML=zile().map(function(z){var p=PROG[z.w],nm=z.i===0?t('azi','today','hoje'):z.i===1?t('mâine','tomorrow','amanhã'):ZS[L()][z.w];return '<label class="chip"><input type="radio" name="zi" value="'+z.k+'"'+(st.zi===z.k?' checked':'')+'><span>'+esc(nm)+' '+z.d+'.'+String(z.m).padStart(2,'0')+'<small>'+hmm(p[0])+'–'+hmm(p[1])+'</small></span></label>'}).join('');
+    $('interval').innerHTML=INT.map(function(x){return '<label class="chip"><input type="radio" name="int" value="'+x[0]+'"'+(st.int===x[0]?' checked':'')+'><span>'+esc(t3(x[1]))+'</span></label>'}).join('');
+  }
+  function marca(){var m=$('marca').value;return m==='alta'?$('marca-alta').value.trim():m}
+  function ziTxt(ro){if(!st.zi)return '';var z=zile().filter(function(x){return x.k===st.zi})[0];if(!z)return '';return (ro?ZILE.ro:ZILE[L()])[z.w]+' '+z.d+'.'+String(z.m).padStart(2,'0')}
+  function raport(){
+    var ss=SIMPT.filter(function(p){return st.s[p[0]]}).map(function(p){return t3(p[1]).toLowerCase()});
+    var iv=INT.filter(function(x){return x[0]===st.int})[0];
+    var mas=[marca(),$('model').value.trim()].filter(Boolean).join(' ')+($('an').value.trim()?' · '+$('an').value.trim():'');
+    function l(a,v){return '<div class="rp-l"><span>'+a+'</span><span class="'+(v?'':'gol')+'">'+(v?esc(v):'—')+'</span></div>'}
+    var h='<div class="rp-cap"><div><b>'+t('Fișă de geometrie','Alignment card','Ficha de alinhamento')+'</b><div style="font-size:.68rem;color:var(--text-3)">REGLARE UNGHIURI · ION CREANGĂ 78</div></div><div><small>0742 592 249</small><small>'+t('cerere','request','pedido')+'</small></div></div>';
+    h+=l(t('Mașina','Car','Carro'),mas)+l(t('Simptome','Symptoms','Sintomas'),ss.join(', '))+l(t('Detalii','Details','Detalhes'),$('desc').value.trim())+l(t('Vin','Coming','Venho'),[ziTxt(),iv?t3(iv[1]):''].filter(Boolean).join(', '))+l(t('Nume','Name','Nome'),$('nume').value.trim());
+    h+='<table class="rp-t"><thead><tr><th></th><th>'+t('înainte','before','antes')+'</th><th>'+t('după','after','depois')+'</th></tr></thead><tbody><tr><td>Camber</td><td class="g">—</td><td class="g">—</td></tr><tr><td>'+t('Convergență','Toe','Convergência')+'</td><td class="g">—</td><td class="g">—</td></tr><tr><td>'+t('Fugă','Caster','Avanço')+'</td><td class="g">—</td><td class="g">—</td></tr></tbody></table>';
+    h+='<p class="rp-sub">'+t('Valorile se completează pe stand. Nimic nu e rezervat până nu confirmă service-ul.','The values are filled in on the rig. Nothing is booked until the garage confirms.','Os valores preenchem-se na bancada. Nada fica marcado até a oficina confirmar.')+'</p>';
+    $('raport').innerHTML=h;
+  }
+  $('marca').addEventListener('change',function(){$('camp-alta').hidden=this.value!=='alta';$('e-masina').classList.remove('on');raport()});
+  ['model','an','marca-alta','nume','desc'].forEach(function(id){$(id).addEventListener('input',function(){if(id==='an')this.value=this.value.replace(/\D/g,'').slice(0,4);if(id==='nume')$('e-nume').classList.remove('on');if(id==='desc')$('e-simpt').classList.remove('on');if(id==='model'||id==='marca-alta')$('e-masina').classList.remove('on');raport()})});
+  $('simpt').addEventListener('change',function(e){st.s[e.target.value]=e.target.checked;$('e-simpt').classList.remove('on');raport()});
+  $('zile').addEventListener('change',function(e){st.zi=e.target.value;raport()});
+  $('interval').addEventListener('change',function(e){st.int=e.target.value;raport()});
+  function mesaj(){
+    var r='Bună ziua! Aș vrea o programare la geometrie (reglare unghiuri).\n';
+    r+='Mașina: '+marca()+' '+$('model').value.trim()+($('an').value.trim()?' ('+$('an').value.trim()+')':'')+'\n';
+    var ss=SIMPT.filter(function(p){return st.s[p[0]]}).map(function(p){return p[1][0].toLowerCase()});if(ss.length)r+='Ce simt: '+ss.join(', ')+'\n';
+    var d=$('desc').value.trim();if(d)r+='Detalii: '+d+'\n';
+    var iv=INT.filter(function(x){return x[0]===st.int})[0];if(st.zi)r+='Aș putea veni: '+ziTxt(true)+(iv?', '+iv[1][0]:'')+'\n';
+    r+='Nume: '+$('nume').value.trim()+'\nMulțumesc!';return r;
+  }
+  $('f-prg').addEventListener('submit',function(e){
+    e.preventDefault();var canal=(e.submitter&&e.submitter.dataset.canal)||'wa',bad=null;
+    if(!marca()||!$('model').value.trim()){$('e-masina').classList.add('on');bad=bad||(!marca()?($('marca').value==='alta'?$('marca-alta'):$('marca')):$('model'))}
+    if(!SIMPT.some(function(p){return st.s[p[0]]})&&!$('desc').value.trim()){$('e-simpt').classList.add('on');bad=bad||$('simpt').querySelector('input')}
+    if(!$('nume').value.trim()){$('e-nume').classList.add('on');bad=bad||$('nume')}
+    if(bad){bad.focus({preventScroll:true});bad.scrollIntoView({behavior:reduz?'auto':'smooth',block:'center'});return}
+    var msg=mesaj();
+    if(canal==='wa')window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener');
+    else location.href='sms:'+TEL+'?&body='+encodeURIComponent(msg);
+  });
+
+  /* ---------- scroll: bară, nav, stand ---------- */
+  var bara=$('bara'),jos=$('jos'),SEC=['stand','unghiuri','programare','contact'].map(function(id){return $(id)}),activ=null,tick=false;
+  function onScroll(){
+    if(tick)return;tick=true;
+    requestAnimationFrame(function(){tick=false;
+      bara.classList.toggle('scrolled',scrollY>8);jos.classList.toggle('vizibil',scrollY>innerHeight*.5);
+      var y=innerHeight*.4,k=-1;SEC.forEach(function(e,i){if(e.getBoundingClientRect().top<=y)k=i});
+      if(k!==activ){activ=k;document.querySelectorAll('.nav a').forEach(function(a,i){a.setAttribute('aria-current',i===k?'true':'false')})}
+      if(!manual&&!reduz)aplica(pStand());
+    });
+  }
+  addEventListener('scroll',function(){manual=false;onScroll()},{passive:true});
+  addEventListener('resize',onScroll);
+
+  /* ---------- limbă ---------- */
+  function atrib(){
+    document.querySelectorAll('[data-aria]').forEach(function(e){e.setAttribute('aria-label',tr(e.dataset.aria))});
+    document.querySelectorAll('[data-ph]').forEach(function(e){e.setAttribute('placeholder',tr(e.dataset.ph))});
+    document.querySelectorAll('[data-l]').forEach(function(e){e.textContent=tr(e.dataset.l)});
+    document.querySelectorAll('img[data-alt]').forEach(function(e){e.setAttribute('alt',tr(e.dataset.alt))});
+  }
+  function seteaza(l){
+    html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
+    try{localStorage.setItem('__LSKEY__',l)}catch(e){}
+    atrib();program();randForm();raport();banda();var p=pCur;pCur=-1;aplica(p<0?(reduz?1:0):p);
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+
+  /* ---------- meniu + hartă ---------- */
+  var burger=document.querySelector('.burger'),meniu=$('meniu'),inchide=meniu.querySelector('.inchide');
+  function deschide(d){meniu.classList.toggle('deschis',d);burger.setAttribute('aria-expanded',d?'true':'false');document.body.style.overflow=d?'hidden':'';(d?inchide:burger).focus()}
+  burger.addEventListener('click',function(){deschide(true)});
+  inchide.addEventListener('click',function(){deschide(false)});
+  meniu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){deschide(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&meniu.classList.contains('deschis'))deschide(false)});
+  $('arata-harta').addEventListener('click',function(){
+    var h=$('harta'),f=document.createElement('iframe');
+    f.src='https://www.google.com/maps?q=47.1610864,27.6155709&z=17&output=embed';
+    f.title=t('Hartă: Service Auto Reglare Unghiuri, Strada Ion Creangă 78','Map: Service Auto Reglare Unghiuri, Strada Ion Creangă 78','Mapa: Service Auto Reglare Unghiuri, Strada Ion Creangă 78');
+    f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';h.innerHTML='';h.appendChild(f);
+  });
+
+  /* ---------- reveal ---------- */
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
+  document.querySelectorAll('.rv').forEach(function(x){if(io)io.observe(x);else x.classList.add('vis')});
+
+  /* ---------- pornire ---------- */
+  seteaza(L());onScroll();setInterval(program,30000);
+  function start(){html.classList.add('gata');setTimeout(indreapta,reduz?0:1150);citireOk()}
+  if(document.fonts&&document.fonts.ready&&!reduz){var go=false;document.fonts.ready.then(function(){if(!go){go=true;start()}});setTimeout(function(){if(!go){go=true;start()}},700)}else start();
+})();
+</script>
+</body>
+</html>
