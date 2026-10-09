@@ -12,6 +12,8 @@
 #                                               <pasta>/v/NN.webp (recorte 9:16 a 72 % da largura, 720×1280) + info.txt
 #   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
+#   listamaps  <nome> <url>                     como pagina, mas desce a lista de resultados de uma pesquisa no Maps (até ~60)
+#   fichamaps  <nome> <url>                     ficha do Maps (.html/.txt da ficha) + fotos da galeria (.imagens.txt) num só pedido
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
@@ -25,7 +27,7 @@ permissions:
 jobs:
   ponte:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - name: Há pedidos?
@@ -36,14 +38,14 @@ jobs:
         run: |
           grep -qE '^\s*fotogramas\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
           python3 -m pip install --quiet pillow
-          if grep -qE '^\s*pagina\s' .github/ponte.txt; then
+          if grep -qE '^\s*(pagina|fotosmaps|listamaps|fichamaps)\s' .github/ponte.txt; then
             python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
           fi
       - name: Pedidos
         if: steps.ha.outputs.n != '0'
         run: |
           python3 - <<'EOF'
-          import io, os, shlex, subprocess, urllib.request
+          import io, os, re, shlex, subprocess, urllib.request
           from PIL import Image
           UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
           os.makedirs("ponte", exist_ok=True)
@@ -99,6 +101,12 @@ jobs:
                       rel.append(f"ok  fotogramas {dest} " + " · ".join(info.split("\n")))
                   elif op == "pagina":
                       paginas.append((p[1], p[2]))
+                  elif op == "fotosmaps":
+                      paginas.append((p[1], p[2], "fotos"))
+                  elif op == "listamaps":
+                      paginas.append((p[1], p[2], "lista"))
+                  elif op == "fichamaps":
+                      paginas.append((p[1], p[2], "ficha"))
                   elif op == "testar":
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
@@ -111,14 +119,48 @@ jobs:
               from playwright.sync_api import sync_playwright
               with sync_playwright() as pw:
                   b = pw.chromium.launch()
-                  for nome, url in paginas:
+                  for nome, url, *modo in paginas:
                       try:
                           pg = b.new_page(viewport={"width": 1280, "height": 900}, user_agent=UA)
-                          r = pg.goto(url, wait_until="networkidle", timeout=60000)
-                          pg.wait_for_timeout(1500)
-                          open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
-                          open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
-                          pg.screenshot(path=f"ponte/{nome}.jpg", full_page=True, type="jpeg", quality=70)
+                          try:
+                              r = pg.goto(url, wait_until="networkidle", timeout=30000)
+                          except Exception:
+                              r = None  # páginas que nunca ficam quietas (Google Maps): segue com o que carregou
+                          pg.wait_for_timeout(4000)
+                          if modo == ["lista"]:  # listamaps: desce a lista de resultados do Maps para carregar até ~60
+                              for _ in range(15):
+                                  try:
+                                      pg.locator('div[role="feed"]').first.evaluate("e => e.scrollBy(0, 4000)")
+                                  except Exception:
+                                      pg.mouse.move(300, 600); pg.mouse.wheel(0, 4000)
+                                  pg.wait_for_timeout(1200)
+                          elif modo:  # fotosmaps: abre a galeria de fotos da ficha e desce para carregar mais
+                              if modo == ["ficha"]:  # fichamaps: grava a ficha (site, telefone, horário) antes de abrir a galeria
+                                  open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
+                                  open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
+                              for sel in ['button[aria-label^="Foto"]', 'button[aria-label*="foto"]', 'button[jsaction*="heroHeaderImage"]', 'img[decoding]']:
+                                  try:
+                                      pg.locator(sel).first.click(timeout=5000); break
+                                  except Exception:
+                                      pass
+                              pg.wait_for_timeout(4000)
+                              for _ in range(12):
+                                  pg.mouse.move(250, 500); pg.mouse.wheel(0, 2500); pg.wait_for_timeout(900)
+                          imgs = pg.evaluate("""() => { const s = new Set();
+                              document.querySelectorAll('img').forEach(i => i.currentSrc && s.add(i.currentSrc));
+                              document.querySelectorAll('*').forEach(e => { const m = getComputedStyle(e).backgroundImage.match(/url\\("?([^")]+)/); if (m) s.add(m[1]); });
+                              return [...s]; }""")
+                          imgs += sorted(set(re.findall(r'https://lh[0-9]\.googleusercontent\.com/[A-Za-z0-9_/.=-]+', pg.content())))
+                          vids = pg.evaluate("""() => [...document.querySelectorAll('video, video source')].map(v => v.currentSrc || v.src).filter(Boolean)""")
+                          vids += sorted(set(re.findall(r'https://[a-z0-9.-]*googlevideo\.com/[^"\'\\s<>]+', pg.content())))
+                          if vids:
+                              open(f"ponte/{nome}.videos.txt", "w", encoding="utf-8").write("\n".join(dict.fromkeys(v.replace("\\u0026", "&") for v in vids)))
+                          open(f"ponte/{nome}.imagens.txt", "w", encoding="utf-8").write("\n".join(dict.fromkeys(imgs)))
+                          if modo != ["ficha"]:
+                              open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
+                              open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
+                          if not modo:
+                              pg.screenshot(path=f"ponte/{nome}.jpg", full_page=True, type="jpeg", quality=70)
                           rel.append(f"ok  pagina {nome} {r.status if r else '?'} {url}")
                           pg.close()
                       except Exception as ex:
@@ -136,5 +178,8 @@ jobs:
           git reset -q -- .github/ponte.txt
           if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
           git commit -q -m "Ponte: pedidos de .github/ponte.txt"
-          git pull -q --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          # pedidos em paralelo no mesmo ramo escrevem todos ponte/relatorio.txt: em conflito fica o desta corrida
+          for i in 1 2 3 4; do
+            git pull -q --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break
+            sleep $((i * 5))
+          done
