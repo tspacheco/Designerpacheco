@@ -47,3 +47,11 @@ Se uma corrida não fechar as 25, as que faltarem ficam «por fazer» no `.tsv` 
 - Mudar o texto da mensagem: é o de `mensagens.py` (10% a 30% mais clientes, desde 08/10), igual ao do `LOTE4-IASI.md`.
 - Pôr preço na mensagem (o preço fala-se depois: 500 € ≈ 2.500 lei + 75 €/mês ≈ 375 lei, auditoria grátis incluída).
 - Push noutro ramo que não o do caçador, exceto a publicação descrita no passo 10.
+
+## Lições da 1.ª corrida (09/10)
+
+- Ferramentas no ramo: `excluir.py` (lista de exclusão), `fichas.py` (lê as fichas da ponte → TSV), `fotos.py` (pedidos `imagem` a partir de `fotosmaps`), `publicar.sh` (copia para o ramo das demos e junta a `DEMOS`), `trabalhador.md` (brief dos construtores).
+- A ponte deste ramo aceita pedidos em paralelo (push de vários `.github/ponte.txt` seguidos) e tem `listamaps`, que desce a lista do Maps (até ~60 resultados em vez de 7).
+- Rendimento: ~45 % das fichas abertas não têm site; para 50 abrir ~115. Sobram os de reserva no `vistos.tsv` («sem site (reserva)»): usar primeiro no dia seguinte.
+- 7 construtores em paralelo (3 a 4 sites cada) fizeram as 25 em ~45 min depois das fotos; a corrida A demorou ~3 h no total.
+- O motor das demos não copia subpastas de `media/`: o HTML só pode usar `media/<ficheiro>` (`sem-subpastas.sh` corrige).
