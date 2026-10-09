@@ -114,19 +114,31 @@ html.rev .limbi .doar-rev{display:block}
 .erou h1{font-size:clamp(3.3rem,1.4rem + 10vw,11rem);font-weight:500;line-height:.92;letter-spacing:-.035em}
 .erou h1 em{font-style:italic;font-weight:300;color:var(--baga-2)}
 .moto{font:600 .86rem/1 var(--f-text);letter-spacing:.42em;text-transform:uppercase;color:var(--baga-2);margin:6px 0 0}
-.erou-jos{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,5vw,72px);align-items:end;margin-top:clamp(20px,3vw,36px)}
+.erou-jos{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,5vw,72px);align-items:center;margin-top:clamp(20px,3vw,36px)}
 .erou .lead{margin-bottom:26px}
 .erou-cta{display:flex;flex-wrap:wrap;gap:12px}
 .indiciu{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--text-3);margin:16px 0 0}
 .indiciu svg{width:22px;height:22px;color:var(--baga)}
-.nota-c{background:var(--pudra-3);border-radius:22px;padding:22px 24px}
-.nota-c b{font:500 3.4rem/1 var(--f-disp);letter-spacing:-.03em;display:block}
+.sigla-e{margin:0;position:relative}
+.sigla-f{position:relative;aspect-ratio:16/10;border-radius:24px 24px 24px 4px;overflow:hidden;background:#1D1E22;box-shadow:0 30px 60px -34px rgba(29,36,48,.75)}
+.sigla-f svg,.sigla-f img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%}
+.sigla-f img{scale:.84}
+.sigla-f::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,230,180,.22) 48%,transparent 62%);transform:translateX(-120%);pointer-events:none}
+.sigla-e{margin-bottom:64px}
+.nota-c{position:absolute;right:-10px;bottom:-84px;background:var(--pudra-3);border-radius:18px;padding:14px 18px;box-shadow:0 18px 40px -22px rgba(29,36,48,.6);max-width:250px}
+.nota-c b{font:500 2.4rem/1 var(--f-disp);letter-spacing:-.03em;display:block}
 .nota-c .stele{display:flex;gap:3px;color:var(--baga);margin:8px 0 6px}
 .nota-c .stele svg{width:17px;height:17px}
-.nota-c p{margin:0;color:var(--text-2);font-size:.95rem}
+.nota-c p{margin:0;color:var(--text-2);font-size:.86rem;line-height:1.35}
+.js .sigla-f{clip-path:inset(0 100% 0 0 round 24px 24px 24px 4px)}
+.js .sigla-f img{transform:scale(1.15)}
+.gata .sigla-f{clip-path:inset(0 0 0 0 round 24px 24px 24px 4px);transition:clip-path 1.1s cubic-bezier(.7,0,.2,1) 1.1s}
+.gata .sigla-f img{transform:none;transition:transform 1.8s var(--ease) 1.1s}
+.gata .sigla-f::after{transform:translateX(120%);transition:transform 1.4s var(--ease) 2.1s}
+@media (max-width:760px){.sigla-e{margin-bottom:84px}.nota-c{right:10px}}
 .js .erou .lead,.js .erou-cta,.js .nota-c,.js .indiciu{opacity:0;transform:translateY(14px)}
 .gata .erou .lead,.gata .erou-cta,.gata .nota-c,.gata .indiciu{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .9s var(--ease)}
-.gata .erou .lead{transition-delay:1.5s}.gata .erou-cta{transition-delay:1.65s}.gata .nota-c{transition-delay:1.8s}.gata .indiciu{transition-delay:2.1s}
+.gata .erou .lead{transition-delay:1.5s}.gata .erou-cta{transition-delay:1.65s}.gata .nota-c{transition-delay:2s}.gata .indiciu{transition-delay:2.1s}
 
 .banda{background:var(--cerneala);color:#E8EDF2;overflow:hidden;padding:16px 0}
 .banda-in{display:flex;gap:36px;width:max-content;animation:curge 48s linear infinite;font:italic 300 1.55rem/1 var(--f-disp);white-space:nowrap}
@@ -248,6 +260,7 @@ html:not(.js) .rv{opacity:1;transform:none}
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .rv,.js .erou .lead,.js .erou-cta,.js .nota-c,.js .indiciu{opacity:1!important;transform:none!important}
   .lit{transform:none!important}
+  .js .sigla-f{clip-path:none!important}.js .sigla-f img{transform:none!important}.sigla-f::after{display:none}
 }
 </style>
 </head>
@@ -318,11 +331,17 @@ html:not(.js) .rv{opacity:1;transform:none}
           </div>
           <p class="indiciu"><svg aria-hidden="true"><use href="#i-maini"/></svg>{{Trage pieptenele peste nume.|Drag the comb across the name.|Arraste o pente sobre o nome.}}</p>
         </div>
-        <div class="nota-c">
-          <b>4,8</b>
-          <span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span>
-          <p>{{26 de recenzii pe Google, 25 dintre ele de cinci stele.|26 reviews on Google, 25 of them five stars.|26 avaliações no Google, 25 delas de cinco estrelas.}}</p>
-        </div>
+        <figure class="sigla-e">
+          <div class="sigla-f">
+            <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="260" fill="#1D1E22"/><text x="200" y="150" text-anchor="middle" font-family="Trirong,Georgia,serif" font-size="92" fill="#D4AE62">SUCH</text><text x="200" y="185" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="8" fill="#D4AE62">IS THE NEW SHIC</text></svg>
+            <img src="media/sigla-such.webp" width="735" height="735" alt="Sigla Such Salon, aurie pe negru: „SUCH · is the new shic”" aria-label="{{Sigla Such Salon, aurie pe negru: „SUCH · is the new shic”|The Such Salon logo, gold on black: “SUCH · is the new shic”|O logótipo do Such Salon, dourado sobre preto: «SUCH · is the new shic»}}" fetchpriority="high" onerror="this.remove()">
+          </div>
+          <figcaption class="nota-c">
+            <b>4,8</b>
+            <span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span>
+            <p>{{26 de recenzii pe Google, 25 dintre ele de cinci stele.|26 reviews on Google, 25 of them five stars.|26 avaliações no Google, 25 delas de cinco estrelas.}}</p>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -426,7 +445,6 @@ html:not(.js) .rv{opacity:1;transform:none}
         <a class="btn btn-negru" href="https://www.google.com/maps/dir/?api=1&amp;destination=47.1799283%2C27.5258903" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>{{Indicații în Google Maps|Directions in Google Maps|Direções no Google Maps}}</a>
       </div>
       <div>
-        <figure class="foto rv"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#BFD3DE"/><path d="M90 140 L200 70 L310 140 V260 H90Z" fill="#EEF3F6"/><path d="M80 146 L200 66 L320 146" fill="none" stroke="#8F4E14" stroke-width="8" stroke-linejoin="round"/><rect x="120" y="160" width="40" height="34" fill="#9FB6C3"/><rect x="240" y="160" width="40" height="34" fill="#9FB6C3"/><rect x="185" y="190" width="30" height="70" fill="#4A2A14"/><rect y="250" width="400" height="50" fill="#8E9AA5"/><path d="M0 230h400" stroke="#6E5B4A" stroke-width="3"/><path d="M10 230v30M40 230v30M70 230v30M330 230v30M360 230v30M390 230v30" stroke="#6E5B4A" stroke-width="3"/></svg><img src="media/sigla-such.webp" loading="lazy" alt="Sigla Such Salon, aurie pe negru: „SUCH · is the new shic”" data-alt="Sigla Such Salon, aurie pe negru: „SUCH · is the new shic”|The Such Salon logo, gold on black: “SUCH · is the new shic”|O logótipo do Such Salon, dourado sobre preto: «SUCH · is the new shic»" onerror="this.remove()" style="object-fit:contain;background:#1D2024"></figure>
         <div class="harta" id="harta">
           <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="250" fill="#CCDAE1"/><path d="M0 110h400M150 0l30 250M300 0l-20 250" stroke="#FFFFFF" stroke-width="12"/><circle cx="170" cy="110" r="10" fill="#8F4E14"/></svg>
           <button class="btn btn-baga" type="button" id="arata-harta"><svg aria-hidden="true"><use href="#i-pin"/></svg>{{Arată harta|Show the map|Mostrar o mapa}}</button>

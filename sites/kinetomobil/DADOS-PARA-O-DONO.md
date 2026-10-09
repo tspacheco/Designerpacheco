@@ -9,10 +9,10 @@ Tudo o que falta aparece no site com o selo **„de confirmat”**.
 5. **WhatsApp:** o 0748 979 194 tem WhatsApp? Hoje o botão principal é «Sună» e o pedido sai por WhatsApp ou SMS.
 6. **Quem são os terapeutas:** nome, formação, nº do aviz de liberă practică / registo no Colegiul Fizioterapeuților. Num serviço de saúde isto dá confiança e é a primeira coisa a acrescentar.
 7. **Casas de saúde / reembolso:** trabalham com casa de asigurări ou só privado?
-8. **Fotos reais** (terapeuta com paciente, com autorização; equipamento que levam) — hoje o site é só ilustrado. Ver `media/LEIA-ME.txt`.
+8. **Fotos reais** (terapeuta com paciente, com autorização; equipamento que levam) — hoje o site usa a única foto real da ficha (minge, rolă e cadru de mers, acasă la un pacient). Ver `media/LEIA-ME.txt`.
 9. **Rodapé legal:** denominação da empresa (SRL/PFA/cabinet), CUI.
 10. **Domínio:** p. ex. kinetomobil.ro (verificar se está livre).
 
 O lema «Ne mișcăm pentru tine.» e a lista de serviços (incl. masaj de relaxare, Deep Tissue, Trigger Point) vêm das imagens da própria ficha. A cor escura do site segue o azul-ardósia do logótipo; o laranja é acento.
 
-O gráfico de recuperação do site é um desenho sem números (o próprio site diz isso); não promete resultados.
+O site não tem gráficos de resultados nem imagens ilustrativas; não promete resultados.

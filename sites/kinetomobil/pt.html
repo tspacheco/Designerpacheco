@@ -170,15 +170,29 @@ main{position:relative}
 .repere li{display:flex;align-items:center;gap:10px;background:var(--alb);border:1.5px solid var(--hartie-2);border-radius:12px;padding:10px 14px;font-size:.98rem}
 .repere b{font-family:var(--f-disp)}
 .repere svg{width:20px;height:20px;flex:none;color:var(--verde)}
-.mers{position:relative;align-self:stretch;display:flex;flex-direction:column}
-.mers svg{height:clamp(440px,64vh,620px);width:100%}
-@media (max-width:960px){.mers svg{height:auto}}
-@media (max-width:960px){.erou-grid{grid-template-columns:1fr}.mers{margin-top:36px}.mers-et{flex-direction:row;justify-content:space-between}}
-.mers svg{display:block;overflow:visible}
-.mers-et{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;font:600 .82rem/1.3 var(--f-disp);color:var(--gri);margin-top:8px;letter-spacing:.02em}
-.mers-et span:last-child{color:var(--verde)}
-@media (min-width:961px){.mers-et span:last-child{position:absolute;top:-30px;left:0;right:0}}
-.casa{fill:none;stroke:var(--carbune);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.foto-erou{margin:0;position:relative;align-self:stretch;display:flex;flex-direction:column}
+.fe-cadru{position:relative;height:clamp(560px,80vh,700px);border-radius:28px 28px 120px 28px;overflow:hidden;background:var(--carbune);isolation:isolate}
+.fe-fond{position:absolute;inset:0;width:100%;height:100%}
+.fe-img{position:absolute;left:0;right:0;bottom:0;aspect-ratio:900/2030;transform:translateY(8%)}
+.fe-img img{width:100%;height:100%;object-fit:cover;transform-origin:50% 70%}
+.pct{position:absolute;left:var(--x);top:var(--y);z-index:2;width:0;height:0}
+.pct i{position:absolute;left:-9px;top:-9px;width:18px;height:18px;border-radius:50%;background:var(--port);box-shadow:0 0 0 4px rgba(255,255,255,.9),0 4px 14px rgba(0,0,0,.35)}
+.pct b{position:absolute;top:-17px;white-space:nowrap;background:#fff;color:var(--carbune);font:700 .86rem/1 var(--f-disp);letter-spacing:.01em;padding:9px 12px;border-radius:999px;box-shadow:0 6px 18px -6px rgba(0,0,0,.45)}
+.pct.dr b{left:18px}.pct.st b{right:18px}
+.pct.tu i{background:var(--verde)}.pct.tu b{background:var(--verde);color:#fff}
+.fara .pct{display:none}
+.fe-et{font-size:.9rem;color:var(--gri);margin-top:12px;max-width:44ch}
+.fe-et b{color:var(--carbune);font-family:var(--f-disp)}
+.js .fe-cadru{clip-path:inset(100% 0 0 0 round 28px 28px 120px 28px)}
+.js .fe-img img{transform:scale(1.12)}
+.js .pct i{transform:scale(0)}
+.js .pct b{opacity:0;transform:translateX(var(--dx,-8px))}
+.pct.st{--dx:8px}
+.pornit .fe-cadru{clip-path:inset(0 0 0 0 round 28px 28px 120px 28px);transition:clip-path 1.1s cubic-bezier(.7,0,.2,1) .25s}
+.pornit .fe-img img{transform:none;transition:transform 2s var(--ease) .25s}
+.pornit .pct i{transform:none;transition:transform .45s cubic-bezier(.3,1.6,.5,1) calc(1.25s + var(--i)*.22s)}
+.pornit .pct b{opacity:1;transform:none;transition:opacity .45s var(--ease) calc(1.38s + var(--i)*.22s),transform .45s var(--ease) calc(1.38s + var(--i)*.22s)}
+@media (max-width:960px){.erou{padding-top:20px}.erou-grid{grid-template-columns:1fr}.foto-erou{order:-1;margin-bottom:8px}.fe-cadru{height:min(420px,108vw);border-radius:22px 22px 80px 22px}.js .fe-cadru{clip-path:inset(100% 0 0 0 round 22px 22px 80px 22px)}.pornit .fe-cadru{clip-path:inset(0 0 0 0 round 22px 22px 80px 22px)}.fe-img{transform:translateY(5%)}.fe-et{display:none}.pct.sus{display:none}.pct b{font-size:.8rem;padding:8px 10px}}
 
 /* argumente */
 .doua{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px);margin-top:36px}
@@ -199,27 +213,15 @@ main{position:relative}
 .cine{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 .cine span{background:var(--menta);color:var(--verde);font-weight:700;border-radius:999px;padding:8px 16px;font-size:.95rem}
 
-/* grafic */
+/* pași */
 .banda-m{background:var(--menta)}
-.grafic-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,4vw,64px);align-items:center;margin-top:30px}
-.pasi-ol{list-style:none;counter-reset:p;margin:0;padding:0;display:grid;gap:18px}
-.pasi-ol li{counter-increment:p;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
-.pasi-ol li::before{content:counter(p);width:48px;height:48px;border-radius:14px;background:var(--carbune);color:#fff;display:grid;place-items:center;font:800 1.2rem/1 var(--f-disp)}
-.pasi-ol b{display:block;font:700 1.18rem/1.25 var(--f-disp);margin-bottom:2px}
+.pasi-ol{list-style:none;counter-reset:p;margin:34px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.pasi-ol li{counter-increment:p;background:rgba(255,255,255,.55);border-radius:20px;padding:22px 20px}
+.pasi-ol li::before{content:counter(p);width:48px;height:48px;border-radius:14px;background:var(--carbune);color:#fff;display:grid;place-items:center;font:800 1.2rem/1 var(--f-disp);margin-bottom:16px}
+.pasi-ol b{display:block;font:700 1.18rem/1.25 var(--f-disp);margin-bottom:4px}
 .pasi-ol p{margin:0;color:#2F4A3F;font-size:1rem}
-.grafic{background:var(--alb);border-radius:22px;padding:22px 20px 16px}
-.grafic svg{width:100%;height:auto;display:block}
-.grafic .ax{fill:none;stroke:#C7CDD2;stroke-width:1.5}
-.grafic .gr{fill:none;stroke:#E4E7E1;stroke-width:1}
-.grafic .linie{fill:none;stroke:var(--port);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
-.grafic .zona{fill:var(--port-p)}
-.grafic text{font:600 13px var(--f-text);fill:var(--gri)}
-.js .grafic .linie{stroke-dasharray:1;stroke-dashoffset:1}
-.grafic.vis .linie{stroke-dashoffset:0;transition:stroke-dashoffset 2.6s cubic-bezier(.45,.05,.25,1)}
-.js .grafic .zona{opacity:0}
-.grafic.vis .zona{opacity:1;transition:opacity 1.2s 1.6s}
-.grafic figcaption{font-size:.9rem;color:var(--gri);margin-top:10px}
-@media (max-width:860px){.grafic-grid{grid-template-columns:1fr}}
+@media (max-width:960px){.pasi-ol{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.pasi-ol{grid-template-columns:1fr}}
 
 /* formular */
 .cerere{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(24px,4vw,48px);margin-top:34px;align-items:start}
@@ -294,7 +296,6 @@ legend small{display:block;font:400 .92rem/1.4 var(--f-text);color:var(--gri);ma
 .js .rv.vis{opacity:1;transform:none}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
 
-@media (max-width:960px){.mers-et{flex-direction:row;justify-content:space-between}}
 
 @media (max-width:440px){.limbi button{min-width:34px;padding:0 7px}.bara-in{gap:8px}html.rev .marca small,html.rev .marca>span>small{display:none}}
 
@@ -303,7 +304,7 @@ legend small{display:block;font:400 .92rem/1.4 var(--f-text);color:var(--gri);ma
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .in,.js .rv{opacity:1;transform:none}
   .urma{opacity:1}
-  .js .grafic .linie{stroke-dashoffset:0}.js .grafic .zona{opacity:1}
+  .js .fe-cadru{clip-path:none}.js .fe-img img,.js .pct i,.js .pct b{transform:none;opacity:1}
 }
 </style>
 </head>
@@ -387,10 +388,20 @@ legend small{display:block;font:400 .92rem/1.4 var(--f-text);color:var(--gri);ma
       <li><svg aria-hidden="true"><use href="#i-casa"/></svg><span><span lang="ro">Adulți și copii</span><span lang="en">Adults and children</span><span lang="pt">Adultos e crianças</span></span></li>
     </ul>
     </div>
-    <div class="mers in d4" id="mers">
-      <svg viewBox="0 0 1000 150" aria-hidden="true" id="mers-svg"><g id="mers-pasi"></g><g id="casa"><path class="casa" d="M0 40V14L22 -4 44 14v26zM16 40V24h12v16"/></g></svg>
-      <div class="mers-et" aria-hidden="true"><span><span lang="ro">prima ședință</span><span lang="en">first session</span><span lang="pt">primeira sessão</span></span><span><span lang="ro">acasă, pe picioarele tale</span><span lang="en">at home, on your own feet</span><span lang="pt">em casa, pelo próprio pé</span></span></div>
-    </div>
+    <figure class="foto-erou" id="foto-erou">
+      <div class="fe-cadru">
+        <svg class="fe-fond" viewBox="0 0 40 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="40" height="70" fill="#1C3340"/><circle cx="20" cy="26" r="11" fill="#28434F"/><rect x="15" y="37" width="10" height="20" rx="2" fill="#3D5866"/></svg>
+        <div class="fe-img">
+          <img src="media/acasa-kinetomobil.webp" width="900" height="2030" alt="Ședință KinetoMobil acasă la un pacient: minge de exerciții cu benzi elastice, așezată pe o rolă, în interiorul unui cadru de mers." aria-label="Ședință KinetoMobil acasă la un pacient: minge de exerciții cu benzi elastice, așezată pe o rolă, în interiorul unui cadru de mers, pe covorul din sufragerie." data-aria="Ședință KinetoMobil acasă la un pacient: minge de exerciții cu benzi elastice, așezată pe o rolă, în interiorul unui cadru de mers, pe covorul din sufragerie.|A KinetoMobil session at a patient’s home: an exercise ball with resistance bands, resting on a foam roller inside a walking frame, on the living-room rug.|Uma sessão KinetoMobil em casa de um paciente: bola de exercício com bandas elásticas, pousada num rolo dentro de um andarilho, no tapete da sala." fetchpriority="high" onerror="this.closest('.fe-cadru').classList.add('fara');this.remove()">
+          <span class="pct dr sus" style="--x:52%;--y:23%;--i:0" aria-hidden="true"><i></i><b><span lang="ro">benzi elastice</span><span lang="en">resistance bands</span><span lang="pt">bandas elásticas</span></b></span>
+          <span class="pct dr" style="--x:38%;--y:46%;--i:1" aria-hidden="true"><i></i><b><span lang="ro">minge de exerciții</span><span lang="en">exercise ball</span><span lang="pt">bola de exercício</span></b></span>
+          <span class="pct dr" style="--x:52%;--y:62%;--i:2" aria-hidden="true"><i></i><b><span lang="ro">rolă</span><span lang="en">foam roller</span><span lang="pt">rolo</span></b></span>
+          <span class="pct st" style="--x:84%;--y:72.5%;--i:3" aria-hidden="true"><i></i><b><span lang="ro">cadru de mers</span><span lang="en">walking frame</span><span lang="pt">andarilho</span></b></span>
+          <span class="pct dr tu" style="--x:50%;--y:87%;--i:4" aria-hidden="true"><i></i><b><span lang="ro">pașii tăi</span><span lang="en">your steps</span><span lang="pt">os seus passos</span></b></span>
+        </div>
+      </div>
+      <figcaption class="fe-et"><b><span lang="ro">Fotografie KinetoMobil.</span><span lang="en">KinetoMobil photo.</span><span lang="pt">Fotografia KinetoMobil.</span></b> <span lang="ro">Ședința are loc acasă la pacient, pe covorul din sufragerie, cu cadrul de mers la îndemână.</span><span lang="en">The session happens at the patient’s home, on the living-room rug, with the walking frame close by.</span><span lang="pt">A sessão decorre em casa do paciente, no tapete da sala, com o andarilho à mão.</span></figcaption>
+    </figure>
     </div>
   </section>
 
@@ -424,26 +435,12 @@ legend small{display:block;font:400 .92rem/1.4 var(--f-text);color:var(--gri);ma
   <section class="sectiune banda-m" id="cum" aria-labelledby="cum-t">
     <p class="sedinta rv"><span lang="ro">Cum lucrăm</span><span lang="en">How it works</span><span lang="pt">Como funciona</span></p>
     <h2 class="titlu rv d1" id="cum-t"><span lang="ro">Pas cu pas, <em>ședință cu ședință</em>.</span><span lang="en">Step by step, <em>session by session</em>.</span><span lang="pt">Passo a passo, <em>sessão a sessão</em>.</span></h2>
-    <div class="grafic-grid">
-      <ol class="pasi-ol">
+    <ol class="pasi-ol">
         <li class="rv"><div><b><span lang="ro">Suni sau trimiți cererea</span><span lang="en">Call or send a request</span><span lang="pt">Ligue ou envie o pedido</span></b><p><span lang="ro">Spui ce te doare, unde stai și când ți-ar fi bine.</span><span lang="en">Tell us what hurts, where you live and when suits you.</span><span lang="pt">Diga o que dói, onde mora e quando lhe convém.</span></p></div></li>
         <li class="rv d1"><div><b><span lang="ro">Evaluarea, la tine acasă</span><span lang="en">The assessment, at your home</span><span lang="pt">A avaliação, em sua casa</span></b><p><span lang="ro">Kinetoterapeutul vede mișcarea, durerea și casa în care te recuperezi.</span><span lang="en">The physiotherapist looks at your movement, your pain and the home you’ll recover in.</span><span lang="pt">O fisioterapeuta observa o movimento, a dor e a casa onde vai recuperar.</span></p></div></li>
         <li class="rv d2"><div><b><span lang="ro">Planul tău de ședințe</span><span lang="en">Your session plan</span><span lang="pt">O seu plano de sessões</span></b><p><span lang="ro">Exerciții personalizate, cu ritmul tău.</span><span lang="en">Personalised exercises, at your pace.</span><span lang="pt">Exercícios personalizados, ao seu ritmo.</span></p></div></li>
         <li class="rv d3"><div><b><span lang="ro">Pașii devin siguri</span><span lang="en">Your steps get steady</span><span lang="pt">Os passos ficam firmes</span></b><p><span lang="ro">Ca urmele de pe marginea paginii: la început tremurate, apoi drepte.</span><span lang="en">Like the footprints down the edge of this page: shaky at first, then straight.</span><span lang="pt">Como as pegadas na margem desta página: tremidas ao início, depois direitas.</span></p></div></li>
       </ol>
-      <figure class="grafic rv" id="grafic" style="margin:0">
-        <svg viewBox="0 0 520 300" role="img" aria-label="Desen orientativ: linia siguranței la mers urcă neregulat la început și se netezește pe măsură ce trec ședințele. Nu reprezintă date reale." data-aria="Desen orientativ: linia siguranței la mers urcă neregulat la început și se netezește pe măsură ce trec ședințele. Nu reprezintă date reale.|Illustrative drawing: the walking-confidence line rises unevenly at first and smooths out as sessions go by. Not real data.|Desenho ilustrativo: a linha de confiança na marcha sobe irregular no início e estabiliza com as sessões. Não são dados reais.">
-          <g class="gr"><path d="M50 60H500M50 120H500M50 180H500"/></g>
-          <path class="ax" d="M50 20V250H500"/>
-          <path class="zona" d="M50 250L50 228C70 214 82 236 98 206S124 214 140 182S168 196 184 160S214 160 232 132S266 128 290 106S334 92 364 80S420 66 460 60L500 58V250Z" opacity=".55"/>
-          <path class="linie" pathLength="1" d="M50 228C70 214 82 236 98 206S124 214 140 182S168 196 184 160S214 160 232 132S266 128 290 106S334 92 364 80S420 66 460 60L500 58"/>
-          <text x="50" y="276" lang="ro">ședința 1</text><text x="50" y="276" lang="en">session 1</text><text x="50" y="276" lang="pt">sessão 1</text>
-          <text x="500" y="276" text-anchor="end" lang="ro">ședințele următoare →</text><text x="500" y="276" text-anchor="end" lang="en">later sessions →</text><text x="500" y="276" text-anchor="end" lang="pt">sessões seguintes →</text>
-          <text x="58" y="40" lang="ro">siguranța la mers ↑</text><text x="58" y="40" lang="en">walking confidence ↑</text><text x="58" y="40" lang="pt">confiança na marcha ↑</text>
-        </svg>
-        <figcaption><span lang="ro">Desen orientativ, fără cifre: fiecare recuperare are ritmul ei, iar numărul de ședințe îl stabilește kinetoterapeutul după evaluare.</span><span lang="en">An illustration, without numbers: every recovery has its own pace, and the physiotherapist sets the number of sessions after the assessment.</span><span lang="pt">Desenho ilustrativo, sem números: cada recuperação tem o seu ritmo e o número de sessões é definido pela fisioterapeuta após a avaliação.</span></figcaption>
-      </figure>
-    </div>
   </section>
 
   <section class="sectiune" id="cerere" aria-labelledby="cer-t">
@@ -563,20 +560,6 @@ legend small{display:block;font:400 .92rem/1.4 var(--f-text);color:var(--gri);ma
     var us=document.createElementNS(NS,'use');us.setAttribute('href','#talpa');us.setAttribute('x',-14);us.setAttribute('y',-26);us.setAttribute('width',28);us.setAttribute('height',52);
     u.appendChild(us);g.appendChild(u);return u;
   }
-  /* erou: mers spre casă (vertical pe desktop, orizontal pe mobil) */
-  var mers=$('mers-pasi'),urmeMers=[],mersV=null;
-  function genMers(){
-    var v=innerWidth>960;if(v===mersV)return;mersV=v;mers.innerHTML='';urmeMers=[];
-    var sv=$('mers-svg'),r=rnd(7),N=v?12:8;
-    sv.setAttribute('viewBox',v?'0 0 300 620':'0 0 600 180');
-    $('casa').setAttribute('transform',v?'translate(128 8) scale(1.1)':'translate(546 62)');
-    for(var i=0;i<N;i++){var p=i/(N-1),w=Math.pow(1-p,1.3),stg=i%2===0,x,y,rot;
-      if(v){x=150+(stg?-20:20)+w*(r()-.5)*170;y=590-i*46+w*(r()-.5)*36;rot=(stg?-5:5)+w*(r()-.5)*110}
-      else{x=34+i*68+w*(r()-.5)*40;y=92+(stg?-20:20)+w*(r()-.5)*80;rot=90+(stg?-5:5)+w*(r()-.5)*110}
-      urmeMers.push(urma(mers,x,y,rot,1.05-w*.25*r(),stg,culoare(p)))}
-    if(porn)urmeMers.forEach(function(u){u.classList.add('pusa')});
-  }
-  var porn=false;
   /* pista verticală */
   var pistaSvg=$('pista-svg'),urmePista=[];
   function genPista(){
@@ -635,9 +618,9 @@ legend small{display:block;font:400 .92rem/1.4 var(--f-text);color:var(--gri);ma
   var bara=$('bara'),jos=$('jos'),tick=false;
   function onScroll(){bara.classList.toggle('scrolled',scrollY>8);jos.classList.toggle('vizibil',scrollY>innerHeight*.5);pune()}
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;onScroll()})}},{passive:true});
-  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){genMers();genPista()},200)});
+  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(genPista,200)});
   var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'}):null;
-  document.querySelectorAll('.rv,.grafic').forEach(function(x){if(io)io.observe(x);else x.classList.add('vis')});
+  document.querySelectorAll('.rv').forEach(function(x){if(io)io.observe(x);else x.classList.add('vis')});
 
   /* ---------- limba ---------- */
   function atrib(){
@@ -660,12 +643,9 @@ legend small{display:block;font:400 .92rem/1.4 var(--f-text);color:var(--gri);ma
   meniu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){deschide(false)})});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&meniu.classList.contains('deschis'))deschide(false)});
 
-  /* ---------- pornire: pașii din erou se pun unul câte unul ---------- */
+  /* ---------- pornire: fotografia se ridică, apoi apar etichetele ---------- */
   seteaza(L());
   requestAnimationFrame(function(){html.classList.add('pornit')});
-  genMers();
-  urmeMers.forEach(function(u,i){setTimeout(function(){u.classList.add('pusa')},reduz?0:700+i*160)});
-  setTimeout(function(){porn=true},reduz?0:700+urmeMers.length*160);
   genPista();
   addEventListener('load',genPista);
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(genPista);
