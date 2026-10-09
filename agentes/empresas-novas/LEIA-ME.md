@@ -42,6 +42,7 @@ ficar com as da zona dele e preparar a mensagem «abriste agora, aqui está um s
 
 - Telefone vem do registo: pode ser do contabilista; WhatsApp sempre «?» (regra do PLAYBOOK §11.8). Fixo → só chamada.
 - A sede muitas vezes é casa ou escritório do advogado/contabilista: visita só se o Maps mostrar o espaço.
+- Muitas empresas chegam sem CAEN e ficam assim semanas: o lista.py tira o ramo do nome (ex.: «Şurub Auto Service»), nunca de nomes de pessoa (PFA/II).
 - PFA/II/IF têm o nome do dono: a mensagem diz «firma dumneavoastră», nunca o nome da pessoa como marca.
 - Sem preço na mensagem (500 € ≈ 2.500 lei + 75 €/mês ≈ 375 lei fala-se depois). Sem números inventados.
 - Não fazer push no ramo das demos. Demo própria para uma empresa nova: pedir ao coordenador (passa ao caçador).

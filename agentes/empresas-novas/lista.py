@@ -51,6 +51,31 @@ def ramo(caen):
     return None
 
 
+# Empresas acabadas de registar vêm muitas vezes sem CAEN na ANAF: o ramo tira-se do nome (marcado na lista)
+NOMES = [
+    (r"AUTO ?SERVICE|SERVICE AUTO|VULCANIZ|DETAILING|CAR ?WASH|SPALATORIE AUTO", "4520"),
+    (r"ORTOPED|TERAPEUT|KINETO|CLINIC|DENT|STOMATO|\bMEDICAL\b|OPTIC", "8690"),
+    (r"BEAUTY|NAIL|LASH|BROW|COAFUR|SALON|ESTETIC", "9622"),
+    (r"BARBER|FRIZER|HAIR", "9621"),
+    (r"MASAJ|MASSAGE|\bSPA\b|WELLNESS", "9623"),
+    (r"PIZZ|BISTRO|BURGER|SHAORM|SHAWARM|GRILL|RESTAURANT|FOOD|KEBAB", "5610"),
+    (r"CAFE|COFFEE|CAFENEA|\bBAR\b|PUB\b|LOUNGE", "5630"),
+    (r"PATISER|COFETAR|BAKERY|BRUTAR|CAKE|DESERT", "1071"),
+    (r"FLOR|FLOWER", "4776"),
+    (r"\bPET|VET|GROOM", "9609"),
+    (r"FITNESS|\bGYM\b|CROSSFIT|PILATES|YOGA", "9313"),
+    (r"TATTOO|TATUA", "9609"),
+    (r"SHOP|STORE|BOUTIQUE|MAGAZIN|FASHION", "4771"),
+]
+
+
+def caen_pelo_nome(den):
+    for padrao, caen in NOMES:
+        if re.search(padrao, den or "", flags=re.I):
+            return caen
+    return None
+
+
 def data(s):
     try:
         return datetime.date.fromisoformat(str(s)[:10])
@@ -118,10 +143,13 @@ def main():
     for c, x in empresas.items():
         d = data(x.get("data_inregistrare"))
         r = ramo(x.get("caen"))
+        if not x.get("caen") and not r and not nome_curto(x.get("denumire") or "")[1]:  # PFA/II têm nome de pessoa
+            r = ramo(caen_pelo_nome(x.get("denumire")))
+            x = dict(x, caen=None, pelo_nome=bool(r))
         if c in listadas or not d or not r or (hoje - d).days > a.dias:
             continue
-        if not x.get("nrRegCom") and "SEDIU SECUNDAR" not in (x.get("denumire") or "").upper():
-            continue  # sem número do Registo Comercial = profissão liberal (médico colaborador, assistente…), não é loja
+        if not x.get("nrRegCom") and not re.search(r"S\.?R\.?L|SEDIU SECUNDAR|PERSOAN|NTREPRINDERE|P\.F\.A", x.get("denumire") or "", flags=re.I):
+            continue  # sem n.º do Registo Comercial e sem forma de empresa = profissão liberal (médico colaborador, avocat…)
         if "RADIERE" in (x.get("stare") or "").upper() or "INACTIV" in (x.get("stare") or "").upper():
             continue
         tel, tipo = telefone(x.get("telefon"))
@@ -148,7 +176,8 @@ def main():
             pt = pt + " (novo espaço de uma empresa que já existe: ver antes se já tem site)"
         morada = x.get("adresa") or ""
         L.append(f"### {nome}" + (" (PFA/II, nome do dono)" if pessoa else ""))
-        L.append(f"{pt.capitalize()} · CAEN {x.get('caen')} · registada a {d.strftime('%d/%m')} · CUI {c}  ")
+        cae = f"CAEN {x.get('caen')}" if x.get("caen") else "ramo pelo nome (sem CAEN ainda)"
+        L.append(f"{pt.capitalize()} · {cae} · registada a {d.strftime('%d/%m')} · CUI {c}  ")
         L.append(f"Firma: {x['denumire']} ({x.get('nrRegCom') or '?'})  ")
         L.append(f"Sede: [{morada.title()}](https://www.google.com/maps/search/?api=1&query={urllib.parse.quote(morada)})  ")
         if tel:
