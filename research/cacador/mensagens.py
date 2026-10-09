@@ -44,6 +44,10 @@ def main(caminho):
           "com a demo aberta. Depois diz-me quais falharam.\n")
     print("**Envio:** no mínimo **1 minuto** entre mensagens (a 09/10 o WhatsApp bloqueou um dia por envios de 10 em 10 s). "
           "A saudação já vem variada de mensagem para mensagem; não envies duas iguais seguidas.\n")
+    if any(l["corrida"] == "A" and l["estado"].strip() == "publicada" for l in linhas) and not any(
+            l["corrida"] == "B" and l["estado"].strip() == "publicada" for l in linhas):
+        print("**Atenção:** as demos da corrida A só ficam no ar depois do deploy da corrida B (11h30, um deploy por dia). "
+              "Envia as mensagens depois da entrega da corrida B.\n")
     ordem = 0
     for corrida in ("A", "B"):
         grupo = [l for l in pub if l["corrida"] == corrida]
