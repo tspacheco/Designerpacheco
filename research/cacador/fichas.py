@@ -5,7 +5,7 @@ slug nome categoria nota avaliacoes site tel morada horario presenca whatsapp
 site: domínio próprio (→ sai) ou vazio; presenca: facebook/instagram/mero/... quando o «Site» aponta para lá."""
 import glob, html, os, re, sys
 
-REDES = ("facebook.", "instagram.", "mero.ro", "diago.ro", "linktr.ee", "tiktok.", "wa.me", "booksy", "fresha", "business.site", "g.page", "google.com", "alteg.io", "linkr", "beacons.ai", "bio.link")
+REDES = ("facebook.", "instagram.", "mero.ro", "diago.ro", "linktr.ee", "tiktok.", "wa.me", "booksy", "fresha", "business.site", "g.page", "google.com", "alteg.io", "linkr", "beacons.ai", "bio.link", "stailer.ro", "ontimeagenda", "fb.com")
 
 
 def ficha(f):
