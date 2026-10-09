@@ -24,7 +24,9 @@ ficar com as da zona dele e preparar a mensagem «abriste agora, aqui está um s
 | `lista.py` | Faz `listas/AAAA-MM-DD.md` para o Tomás: filtra Iași, últimos 14 dias, ativas, com n.º do Registo Comercial e CAEN de negócio local; mensagem em romeno + PT, demo de exemplo do mesmo ramo, WhatsApp/SMS. |
 | `listas/listadas.txt` | CUI já postos numa lista (cada empresa aparece uma vez). |
 
-## Corrida diária (rotina, seg–sex 9h00 de Iași)
+## Corrida diária (rotina, seg–sex 16h47 de Iași)
+
+Às 8h47 a ANAF ainda não tem as empresas do dia anterior (09/10: só 50 CUI novos no país, 0 em Iași); a meio da tarde já tem as do próprio dia (08/10 às 16h: registadas a 08/10 presentes).
 
 1. `git fetch origin claude/empresas-novas-43xm0c && git checkout claude/empresas-novas-43xm0c && git pull`.
 2. Mudar a linha de comentário com a data em `.github/empresas-novas.txt` (argumentos vazios = continuar do estado),
