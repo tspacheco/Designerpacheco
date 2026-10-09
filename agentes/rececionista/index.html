@@ -396,7 +396,7 @@ const S = {
   alertas:[],           // {id,resumo,feito}
   parado:false, ocupado:false,
   guiao:{},             // estado do motor de guião
-  sample:null, iaOk:false, preferirIA:true
+  sample:null, cerebro:null, iaOk:false, preferirIA:true, saudacao:""
 };
 const $ = id => document.getElementById(id);
 const biz = () => NEGOCIOS[S.biz];
@@ -593,6 +593,29 @@ async function responderIA(texto){
   const partes=limpo.split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean);
   registar(t().reg.respondeu+" · "+((performance.now()-t0)/1000).toFixed(1)+" s");
   return partes.length?partes:[limpo];
+}
+
+/* ================= CÉREBRO 1B: IA AO VIVO NUM SITE (função Netlify com a API da Claude) ================= */
+const API = (document.querySelector('meta[name="rececionista-api"]')||{}).content || "/api/rececionista";
+async function responderAPI(){
+  const b=biz(), agora=new Date();
+  const corpo={
+    negocio:{id:S.biz,nome:b.nome,tipo:b.tipo.pt,morada:b.morada,horario:b.horario,passo:b.passo,pessoas:b.pessoas,maxPessoas:b.maxPessoas,duracao:b.duracao,
+      servicos:b.servicos.map(x=>({id:x.id,nome:x.nome,preco:x.preco,min:x.min})),faq:b.faq.map(f=>({tema:f.tema,r:f.r}))},
+    lingua:S.lang, agora:{data:iso(agora),hora:hm(agora)}, saudacao:S.saudacao,
+    marcacoes:S.marcacoes.filter(m=>m.biz===S.biz), historico:S.turnos.slice(-20)
+  };
+  const t0=performance.now();
+  const r=await fetch(API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(corpo)});
+  const j=await r.json().catch(()=>({erro:"resposta"}));
+  if(!r.ok||j.erro||!j.partes||!j.partes.length) throw {code:j.erro||("http_"+r.status)};
+  for(const ev of j.eventos||[]){
+    if(ev.tipo==="agenda") registar(t().reg.agenda+" "+diaBonito(ev.data)+": "+(ev.aberto?ev.livres:"—"), true);
+    if(ev.tipo==="marcacao"){ const m={...ev.marcacao, biz:S.biz}; S.marcacoes.push(m); fezMarcacao(m); }
+    if(ev.tipo==="pessoa"){ pendentePessoa=true; passarAPessoa(ev.resumo); }
+  }
+  registar(t().reg.respondeu+" · "+((performance.now()-t0)/1000).toFixed(1)+" s");
+  return j.partes;
 }
 
 /* ================= CÉREBRO 2: GUIÃO (sem IA, sem custo) ================= */
@@ -885,10 +908,10 @@ async function processar(texto){
   pendenteMarc=null; pendentePessoa=false;
   let partes=null;
   if(S.iaOk && S.preferirIA){
-    try{ partes=await responderIA(texto); }
+    try{ partes = S.cerebro==="api" ? await responderAPI() : await responderIA(texto); }
     catch(e){
       const code=e&&e.code;
-      if(["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed","tools_unavailable"].includes(code)){ S.iaOk=false; atualizarModo(); registar(t().reg.semIA); }
+      if(["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed","tools_unavailable","sem_chave","chave_invalida"].includes(code)){ S.cerebro=null; S.iaOk=false; atualizarModo(); registar(t().reg.semIA); }
       else registar(t().reg.erro+(code?" ("+code+")":""));
       if(pendenteMarc||pendentePessoa){ partes=null; }
     }
@@ -927,7 +950,7 @@ async function comecar(){
   registar(T.reg.inicio);
   await espera(500); if(g!==geracao) return;
   digitar(true); await espera(1300); if(g!==geracao) return; digitar(false);
-  const s=saudacao(S.lang); bolha(s,"in");
+  const s=saudacao(S.lang); bolha(s,"in"); S.saudacao=s;
   S.turnos=[{role:"assistant",content:s}];
 }
 function aplicarTextos(){
@@ -979,7 +1002,15 @@ aplicarTextos(); ajustar(); comecar();
     if(!sample) return;
     const lim=await sample.limits().catch(()=>null);
     if(!lim||!lim.tools) return;
-    S.sample=sample; S.iaOk=true; atualizarModo();
+    S.sample=sample; S.cerebro="sample"; S.iaOk=true; atualizarModo();
+  }catch(_){}
+})();
+// Fora do claude.ai: liga a IA se o site tiver a função com a chave
+(async()=>{
+  if(window.claude || !/^https?:$/.test(location.protocol)) return;
+  try{
+    const r=await fetch(API,{method:"GET"}); if(!r.ok) return;
+    const j=await r.json(); if(j&&j.ligada&&!S.cerebro){ S.cerebro="api"; S.iaOk=true; atualizarModo(); }
   }catch(_){}
 })();
 </script>
