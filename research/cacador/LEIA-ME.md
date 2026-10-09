@@ -56,6 +56,8 @@ Se uma corrida não fechar as 25, as que faltarem ficam «por fazer» no `.tsv` 
 
 ## O que nunca fazer
 
+- Responder ao Tomás noutra língua que não PT-PT (Língua das respostas: reler cada reply antes de enviar; 09/10 saíram três em inglês).
+
 - Construir sem ler o campo «Site» da ficha (Gist e Salon Monne, 07/10).
 - Inventar notas, preços, horários, citações ou provas de WhatsApp.
 - Usar emojis ou imagens ilustrativas/geradas nos sites: só fotos reais do negócio (09/10).
