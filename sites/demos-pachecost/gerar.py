@@ -110,6 +110,9 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("ambiental-covoare", "ambiental-covoare"),
     ("vulcanizare-miroslava", "vulcanizare-miroslava"),
     ("anton-giovani", "anton-giovani"),
+    ("vfishing", "vfishing"),
+    ("dulce-de-acasa", "dulce-de-acasa"),
+    ("reparatii-termopane", "reparatii-termopane"),
 ]
 NOINDEX = '<meta name="robots" content="noindex, nofollow">'
 # Contador de aberturas (tracker das demos, ramo claude/tracker-demos-kx5ukf): só no index.html,
