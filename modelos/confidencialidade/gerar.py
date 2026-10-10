@@ -23,9 +23,9 @@ TEXTOS = {
         "sub": "reciproc",
         "partes_intro": "Încheiat între:",
         "parte_a": (
-            "<b>Pacheco Studios</b>, reprezentată de <b>Tomás Pacheco</b>, "
-            "CUI / NIF [[CUI / NIF|11em]], cu sediul în [[adresă|20em]] "
-            "(„<b>Pacheco Studios</b>”);"
+            "<b>Tomás Pacheco</b>, persoană fizică, cod de identificare fiscală "
+            "[[nr. fiscal personal|10em]], cu domiciliul în [[adresă|20em]], care "
+            "activează sub marca Pacheco Studios („<b>Pacheco Studios</b>”);"
         ),
         "parte_b": (
             "[[denumirea firmei|22em]], CUI [[CUI|9em]], nr. Registrul Comerțului "
@@ -119,7 +119,7 @@ TEXTOS = {
             ]),
         ],
         "local_data": "Încheiat la [[localitate|10em]], la data de [[__ / __ / ____|8em]].",
-        "assin_a": "Pentru Pacheco Studios",
+        "assin_a": "Tomás Pacheco · Pacheco Studios",
         "assin_b": "Pentru Client",
         "nome": "Nume",
         "assinatura": "Semnătură",
@@ -132,9 +132,9 @@ TEXTOS = {
         "sub": "mútuo",
         "partes_intro": "Celebrado entre:",
         "parte_a": (
-            "<b>Pacheco Studios</b>, representada por <b>Tomás Pacheco</b>, "
-            "NIF [[NIF|9em]], com morada em [[morada|22em]] "
-            "(«<b>Pacheco Studios</b>»);"
+            "<b>Tomás Pacheco</b>, pessoa singular, NIF [[NIF pessoal|9em]], "
+            "residente em [[morada|22em]], que trabalha sob a marca Pacheco "
+            "Studios («<b>Pacheco Studios</b>»);"
         ),
         "parte_b": (
             "[[denominação|22em]], NIPC / NIF [[NIPC|9em]], com sede em "
@@ -228,7 +228,7 @@ TEXTOS = {
             ]),
         ],
         "local_data": "Feito em [[localidade|10em]], a [[__ / __ / ____|8em]].",
-        "assin_a": "Pela Pacheco Studios",
+        "assin_a": "Tomás Pacheco · Pacheco Studios",
         "assin_b": "Pelo Cliente",
         "nome": "Nome",
         "assinatura": "Assinatura",
@@ -241,9 +241,9 @@ TEXTOS = {
         "sub": "mutual",
         "partes_intro": "Made between:",
         "parte_a": (
-            "<b>Pacheco Studios</b>, represented by <b>Tomás Pacheco</b>, "
-            "tax no. [[tax no.|9em]], of [[address|22em]] "
-            "(“<b>Pacheco Studios</b>”); and"
+            "<b>Tomás Pacheco</b>, an individual, personal tax no. "
+            "[[personal tax no.|9em]], residing at [[address|22em]], trading as "
+            "Pacheco Studios (“<b>Pacheco Studios</b>”); and"
         ),
         "parte_b": (
             "[[company name|22em]], company / tax no. [[number|9em]], registered "
@@ -335,7 +335,7 @@ TEXTOS = {
             ]),
         ],
         "local_data": "Signed in [[place|10em]] on [[__ / __ / ____|8em]].",
-        "assin_a": "For Pacheco Studios",
+        "assin_a": "Tomás Pacheco · Pacheco Studios",
         "assin_b": "For the Client",
         "nome": "Name",
         "assinatura": "Signature",
