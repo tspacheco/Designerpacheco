@@ -23,6 +23,16 @@ MSG = ("{saudacao}\n\n"
        "Iată soluția pe care am creat-o după ce m-am uitat la afacerea dumneavoastră:\n{demo}\n\n"
        "Poate nu înțelegeți încă, dar credeți-mă, așa va fi. Haideți să stabilim o oră ca să implementăm această soluție.\n\nVoi fi pregătit.")
 
+# Corrida B (texto do Tomás, 10/10, igual a sites/demos-pachecost/DESCRICAO-CORRIDA-B.md do ramo das demos). Sem preço.
+# [nume] = coluna «dono» do TSV quando se sabe; senão a saudação fica sem nome. [Compania] = nome do negócio.
+MSG_B = ("Bună ziua{dono}! Sunt Tomás, de la Pacheco Studios.\n\n"
+         "Am creat o scurtă demonstrație pentru {nome}, care arată o posibilă îmbunătățire a modului în care clienții "
+         "potențiali trec prin site-ul dumneavoastră: {demo}\n\n"
+         "Analizăm unde se blochează clienții potențiali, deciziile și livrarea, apoi proiectăm sisteme AI cu reguli clare "
+         "care rezolvă blocajul cu cea mai mare valoare.\n\n"
+         "Ați fi deschis la o întâlnire ca să discutăm despre oportunitate și despre impactul ei potențial?\n\n"
+         "Voi fi pregătit.")
+
 
 def numero(tel):
     d = "".join(c for c in tel if c.isdigit())
@@ -56,7 +66,11 @@ def main(caminho):
             print(f"### {zona}\n")
             for l in (x for x in grupo if x["zona"] == zona):
                 demo = f"https://pachecost.com/demo/{l['slug']}/"
-                texto = MSG.format(saudacao=SAUDACOES[ordem % len(SAUDACOES)].format(nome=l["nome"]), demo=demo)
+                if corrida == "B":
+                    dono = (l.get("dono") or "").strip()
+                    texto = MSG_B.format(dono=f" {dono}" if dono else "", nome=l["nome"], demo=demo)
+                else:
+                    texto = MSG.format(saudacao=SAUDACOES[ordem % len(SAUDACOES)].format(nome=l["nome"]), demo=demo)
                 ordem += 1
                 q = urllib.parse.quote
                 mapa = "https://www.google.com/maps/search/?api=1&query=" + q(f"{l['nome']}, {l['morada']}, Iași")
