@@ -235,12 +235,18 @@ def slide(s, i, total):
 # No vídeo não se desliza: os textos «glisează» mudam (video.js lê carrossel-ro-video.html)
 VIDEO = {"GLISEAZĂ CA SĂ VEZI CE GĂSIM →": "URMĂREȘTE CE GĂSIM",
          "GLISEAZĂ · VEZI CUM ARATĂ FIECARE RUPTURĂ": "URMEAZĂ: CUM ARATĂ FIECARE RUPTURĂ"}
+# O vídeo vai para todos os grupos (Tomás, 11/10 19h35): o último slide fecha com uma pergunta, sem «AUDIT»
+VIDEO_FIM = {"eyebrow": "ÎNAINTE SĂ AUTOMATIZEZI", "marca": "PACHECO STUDIOS",
+             "sub": "La tine, unde se pierde cel mai des o cerere: la primul răspuns, la follow-up sau la predarea către echipă?",
+             "botao": "RĂSPUNDE ÎN COMENTARII"}
 
 
 def main():
     os.makedirs(os.path.join(AQUI, "saida"), exist_ok=True)
     for nome, troca in (("carrossel-ro.html", {}), ("carrossel-ro-video.html", VIDEO)):
         slides = [{k: troca.get(v, v) if isinstance(v, str) else v for k, v in s.items()} for s in SLIDES]
+        if troca:
+            slides[-1].update(VIDEO_FIM)
         corpo = "\n".join(slide(s, i, len(slides)) for i, s in enumerate(slides, 1))
         caminho = os.path.join(AQUI, "saida", nome)
         with open(caminho, "w", encoding="utf-8") as f:
