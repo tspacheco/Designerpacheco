@@ -263,63 +263,43 @@ if __name__ == "__main__":
     print(followup(exemplo))
 
 
-# ── Triagem proativa por setor (playbook de 11/10): leads de negócio direto ──────────────────────────
-# Hipótese do setor como pergunta, 3 perguntas-isca do Tomás adaptadas, fecho «faceți o triere cu noi».
-# O Micro System Print é oferecido (não se diz que já está feito); gera-se quando o lead responde.
-SETORES_RO = {
-    "restauracao": {
-        "titulo": "Nicio rezervare fără responsabil",
-        "hipotese": "La restaurantele care primesc cereri pe telefon, Instagram, Google și pentru evenimente, "
-                    "întrebarea care contează e simplă: cine preia fiecare cerere și ce informație ajunge la sală și la bucătărie?",
-        "perguntas": "aveți azi o IA care răspunde la întrebările frecvente (program, meniu, evenimente) după regulile voastre? "
-                     "Fiecare cerere de rezervare sau de eveniment ajunge la un singur responsabil și vă cere decizia doar unde contează? "
-                     "Telefonul și mesajele vă costă mai puțin de o oră pe zi?",
-        "assunto": "{nome}: cine preia fiecare rezervare?",
-    },
-    "marcacao": {
-        "titulo": "O programare nu e un sistem",
-        "hipotese": "La afacerile care lucrează pe programări, programarea în sine e doar un pas; "
-                    "întrebarea e ce se întâmplă înainte și după ea: confirmare, reamintire, reprogramare și revenire.",
-        "perguntas": "aveți azi o IA care răspunde la întrebările frecvente (prețuri orientative, program, pregătire) după regulile voastre? "
-                     "Cererile din telefon, e-mail și formular sunt captate, calificate și filtrate, și vi se cere decizia doar unde contează? "
-                     "Recepția și mesajele vă costă mai puțin de o oră pe zi?",
-        "assunto": "{nome}: ce se întâmplă după o cerere de programare?",
-    },
-    "construcao": {
-        "titulo": "O cerere de ofertă are nevoie de un responsabil",
-        "hipotese": "La firmele care lucrează pe ofertă, drumul de la prima cerere la contract trece prin mai mulți oameni; "
-                    "întrebarea e cine deține fiecare cerere până la răspuns și ce informație trebuie să ajungă la vizită și la deviz.",
-        "perguntas": "aveți azi o IA care răspunde la întrebările frecvente (zone, termene, ce include oferta) după regulile voastre? "
-                     "Cererile de ofertă sunt captate, calificate și filtrate, și vi se cere decizia doar la cele care merită? "
-                     "Telefonul și e-mailurile vă costă mai puțin de o oră pe zi?",
-        "assunto": "{nome}: drumul unei cereri de ofertă",
-    },
+# ── E-mail curto por setor (feedback do especialista, 11/10): 3 coisas que se fixam ──────────────────
+# 1) um facto sobre ELES  2) UMA pergunta  3) UM passo: «faceți o triere cu noi». Sem minutos, sem preço.
+# O Micro System Print é oferecido como «o vosso parcurs pe o pagină», nunca como já feito.
+PERGUNTA_RO = {
+    "restauracao": "când intră o rezervare sau o cerere de eveniment, știe cineva exact cine o preia și ce urmează?",
+    "marcacao": "când cineva cere o programare, știți exact cine răspunde, confirmă și reamintește?",
+    "construcao": "când intră o cerere de ofertă, știe cineva exact cine o preia până primește răspuns?",
+    "servicos": "când intră o cerere nouă, știe cineva exact cine o preia și ce urmează?",
 }
-
+ASSUNTO_RO = {
+    "restauracao": "{nome}: cine preia fiecare rezervare?",
+    "marcacao": "{nome}: cine răspunde primul la o programare?",
+    "construcao": "{nome}: cine preia cererea de ofertă?",
+    "servicos": "{nome}: cine preia cererea nouă?",
+}
+RODAPE_RO = ("Tomás Pacheco · Pacheco Studios · ro.pachecost.com · WhatsApp +40 723 098 556\n"
+             "Răspundeți «STOP» dacă nu doriți alte mesaje.")
 CADENCIA_RO = {
-    "d3": "{saud}, o observație în plus pentru {nome}: din ce se vede public, cererile pot intra pe mai multe canale (telefon, e-mail, formular, rețele). "
-          "Nu știu cum le gestionați intern, de aceea vă întreb, nu presupun. Micro System Print-ul de o pagină e gata de trimis. Voi fi pregătit.",
-    "d7": "{saud}, o întrebare scurtă cu da sau nu: are fiecare cerere nouă un responsabil clar până primește răspuns? "
-          "Dacă răspunsul e «nu sunt sigur», faceți o triere cu noi. Voi fi pregătit.",
-    "d12": "{saud}, închid aici ca să nu insist. Dacă la un moment dat vreți să vedeți unde se pot pierde cererile, "
-           "faceți o triere cu noi; Micro System Print-ul rămâne disponibil. Voi fi pregătit.",
+    "d3": "Bună ziua, revin cu o singură întrebare: are fiecare cerere nouă un responsabil clar până primește răspuns? Voi fi pregătit.",
+    "d7": "Bună ziua, un răspuns scurt, da sau nu: faceți o triere cu noi? Voi fi pregătit.",
+    "d12": "Bună ziua, închid aici ca să nu insist. Dacă vreți vreodată o triere, scrieți-mi. Voi fi pregătit.",
 }
 
 
 def mensagem_setor(conta):
-    s = SETORES_RO[conta["setor"]]
-    texto = ("Bună ziua! Sunt Tomás, de la Pacheco Studios. {gancho} {hip} "
-             "Nu afirm că e o problemă la voi; e o ipoteză pornind de la ce se vede public ({percurso}). "
-             "Trei întrebări rapide: {perg} "
-             "Dacă la vreuna răspunsul e «nu», faceți o triere cu noi: vă trimit un Micro System Print de o pagină "
-             "cu declanșatorul, responsabilul, regula și predarea pentru parcursul vostru, iar apoi îl validăm împreună într-o întâlnire.").format(
-        gancho=conta["gancho_ro"].strip(), hip=s["hipotese"], percurso=conta["percurso_ro"], perg=s["perguntas"])
-    return _fechar(" ".join(texto.split()), "ro") + "\n\n" + MODELOS["ro"]["rodape"]
+    pergunta = PERGUNTA_RO[conta["setor"]]
+    corpo = ("Bună ziua! Sunt Tomás, de la Pacheco Studios.\n\n"
+             "%s\n\n"
+             "O singură întrebare: %s\n\n"
+             "Dacă nu sunteți sigur, faceți o triere cu noi: vă trimit parcursul vostru pe o pagină, fără obligații.\n\n"
+             "Voi fi pregătit.") % (conta["gancho_ro"].strip(), pergunta)
+    return corpo + "\n\n" + RODAPE_RO
 
 
 def assunto_setor(conta):
-    return SETORES_RO[conta["setor"]]["assunto"].format(nome=conta["empresa"])
+    return ASSUNTO_RO[conta["setor"]].format(nome=conta.get("nome_curto") or conta["empresa"])
 
 
 def cadencia_setor(conta, passo):
-    return CADENCIA_RO[passo].format(saud="Bună ziua", nome=conta["empresa"])
+    return CADENCIA_RO[passo]
