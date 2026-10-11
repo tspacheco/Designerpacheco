@@ -39,7 +39,7 @@ Decisão do Tomás a 11/10/2026, com as palavras dele:
 3. A regra e o limite que tornam o sistema confiável.
 4. A evidência que torna a mudança tangível e mensurável.
 
-**Não negociável: a auditoria é a porta de entrada.** Nunca abrir com «fazemos sites», «fazemos automações» ou «usamos IA». Começa-se pela falha operacional; só depois se recomenda a menor intervenção que pode provar valor.
+**Não negociável: a auditoria é a porta de entrada da consultoria, mas nunca é pública.** A entrada pública é a **triagem** (A.12); a auditoria só depois de o cliente gostar da triagem. Nunca abrir com «fazemos sites», «fazemos automações» ou «usamos IA». Começa-se pela falha operacional; só depois se recomenda a menor intervenção que pode provar valor.
 
 ## A.2 IDENTIDADE
 
@@ -151,7 +151,7 @@ Os esquemas «Ver o esquema» do pachecost.com (secção 16, estilo proposta Be 
 
 ## A.7 AUTORIDADE (CONTEÚDO)
 
-Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapear e pede a auditoria.
+Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapear e pede a triagem (a auditoria vem depois). «DM AUDIT» abre a triagem, não dá a auditoria.
 
 - **Mistura:** 50 % diagnóstico (nomear a fuga) · 30 % prova (caso, System Print, regra, resultado) · 20 % oferta (auditoria, elegibilidade, entregáveis, próximo passo, sem urgência artificial).
 - **Três formatos:** (1) *O achado de auditoria* — «Uma marcação não é um sistema.» + System Print; CTA «DM AUDIT». (2) *Desmontagem de sistema* — situação → fluxo atual → regra → handoff → resultado ou plano de medição. (3) *O que não automatizaríamos* — reclamação, pedido fora do padrão, exceção de preço.
@@ -179,7 +179,7 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 
 | Período | Prioridade | Resultado visível |
 |---|---|---|
-| Dias 1–30 (até 10/11) | Tornar visível a categoria e a auditoria | Bio e site atualizados; landing da auditoria; candidatura curta; template de relatório/proposta; 5 templates de System Print; 3 conteúdos fixados |
+| Dias 1–30 (até 10/11) | Tornar visível a categoria e a auditoria | Bio e site atualizados; página da triagem com a diferença triagem/auditoria explicada; candidatura curta; template de relatório/proposta; 5 templates de System Print; 3 conteúdos fixados |
 | Dias 31–60 (até 10/12) | Criar prova à volta do método | 2 casos com autorização; 3 peças de diagnóstico/prova por semana; scorecard público; percurso rastreado de DM AUDIT e link do perfil |
 | Dias 61–90 (até 09/01/2027) | Converter prova em pipeline | Sequência de outreach para auditoria; parceiros de indicação; chamadas; pilotos com linha de base; revisão semanal de evidência e linguagem |
 
@@ -200,13 +200,14 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 - **Secção 11** (demo de site como produto, «está invisível fora do Google Maps»): a demo continua como abertura, mas o pedido é a reunião e a conversa vai para a fuga operacional.
 - **Secção 16 «os sites são a porta, as automatizações o segundo passo»** e a oferta «Plano 20 min → Piloto → Sistema → Manutenção»: substituídos pela arquitetura de oferta A.5. Mantêm-se «construir a prova antes de pedir o sim», «a IA é ingrediente», a explicação da IA ao dono e o assistente que se identifica.
 - **Secção 17 processo de 5 passos e «conversa de 20 min»**: substituído pelo Método Pacheco (A.4). Nunca «20 minutos»: pede-se «uma reunião».
-- **Separador «Sites» do pachecost.com e a entrada direta por `utm_content=web-…`**: a rever no plano dos dias 1–30 (landing da auditoria).
+- **Separador «Sites» do pachecost.com e a entrada direta por `utm_content=web-…`**: a rever no plano dos dias 1–30 (página da triagem).
 
 ## A.12 DECISÕES QUE FECHARAM AS PERGUNTAS (Tomás, 11/10/2026 18h26)
 
 - **1.ª proposta = a auditoria**, também em Iași (substitui «1.ª proposta é só o site, em RON»). Chega-se lá depois de levar a triagem proativa ao lead (A.14), quando a necessidade e a solução já estão à vista.
 - **Mensalidades de site atuais não mexem** (Grupo Naval, Catarina, Bravus, Magic Key e outros contratos já fechados ficam como estão). A regra «sites e mensalidades dentro da implementação» vale só para clientes novos.
 - **CTA «AUDIT» igual** em PT, RO e EN.
+- **A auditoria não é pública (Tomás, 18h43, thread do site):** ninguém a obtém por entrar no site e clicar. A entrada pública é a **triagem** (no pachecost.com, «Conhece-nos» abre a triagem; «DM AUDIT» também leva à triagem). Só se o cliente gostar da triagem se avança para a **auditoria**, que já inclui saber exatamente tudo (acesso aos dados, mapa completo, System Print futuro, plano de 90 dias). O site leva uma descrição curta que distingue as duas. Toda a CTA pública pede triagem; a auditoria é sempre o passo seguinte.
 
 ## A.13 DINHEIRO: AUDITORIA, TICKET E PARCEIROS (decisão do Tomás, 11/10/2026)
 
