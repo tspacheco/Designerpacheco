@@ -152,6 +152,9 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("cofetarie-patiserie-la", "cofetarie-patiserie-la"),
     ("laborator-blanca", "laborator-blanca"),
     ("cofetaria-bucate-alintate", "cofetaria-bucate-alintate"),
+    ("cofetaria-la-rosa", "cofetaria-la-rosa"),
+    ("luv-bakery", "luv-bakery"),
+    ("adorable-flowers-events", "adorable-flowers-events"),
 ]
 NOINDEX = '<meta name="robots" content="noindex, nofollow">'
 # Páginas soltas (não são demos de site): copiadas tal como estão, sem faixa, sem contador e fora das
