@@ -12,7 +12,7 @@ def bloco(num, titulo, quem, nota, perguntas, cont):
     for ess, pt, ro, dica in perguntas:
         cont[0] += 1
         li.append(f"""<li class="q{' ess' if ess else ''}"><span class="n">{cont[0]:02d}</span><div class="corpo">
-<p class="pt">{e(pt)}</p><p class="ro" lang="ro">{e(ro)}</p>{f'<p class="dica">{e(dica)}</p>' if dica else ''}
+<p class="pt">{e(pt)}</p><p class="ro" lang="en">{e(ro)}</p>{f'<p class="dica">{e(dica)}</p>' if dica else ''}
 <div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li>""")
     return f"""<section class="bloco"><header class="bloco-cab"><span class="bn">{e(num)}</span>
 <div><h2>{e(titulo)}</h2><p class="quem">{e(quem)}</p></div></header>
@@ -33,7 +33,7 @@ def gerar():
 <div class="capa-meio"><p class="kicker">Auditoria de sistemas com IA · plano de perguntas</p>
 <h1>Magic Key<br>chei auto</h1><p class="sub">Iași · Selgros, Șos. Nicolina 57A</p></div>
 <dl class="capa-dados"><div><dt>Para</dt><dd>Tomás Pacheco (uso interno)</dd></div><div><dt>Data</dt><dd>outubro de 2026</dd></div>
-<div><dt>Perguntas</dt><dd>{na + nb} · {ess} essenciais ★</dd></div><div><dt>Línguas</dt><dd>PT para ti, RO para o dono</dd></div></dl></section>
+<div><dt>Perguntas</dt><dd>{na + nb} · {ess} essenciais ★</dd></div><div><dt>Línguas</dt><dd>PT para ti, EN para perguntar</dd></div></dl></section>
 
 <section class="pagina intro"><h2 class="titulo">Como usar</h2>
 <p class="honesto"><b>Estado da Parte A.</b> A transcrição do vídeo de 2 horas ainda não foi obtida: o YouTube bloqueia as legendas nesta sessão. A Parte A foi reconstruída dos artigos do autor (Andrew Dunn) e do guião que já usámos no Society Salon. Quando tivermos a transcrição, confirma-se palavra a palavra e acrescenta-se o que o vídeo diga a mais.</p>
@@ -42,7 +42,7 @@ def gerar():
 <ul class="pts"><li><b>Parte A, o método.</b> Perguntas que servem em qualquer auditoria. Ordem do vídeo: objetivo, o dia de ontem, os três motores, o fecho.</li>
 <li><b>Parte B, Magic Key.</b> Perguntas só deste negócio, com o que já sabemos (ficha Google, lista de preços do stand, os 3 quick wins).</li>
 <li><b>★</b> marca as essenciais. Pouco tempo? Faz só essas.</li>
-<li>Cada pergunta tem a versão em romeno para ler ao dono e linhas para as respostas.</li></ul>
+<li>Cada pergunta tem a versão em inglês para ler ao dono e linhas para as respostas.</li></ul>
 <h3>Regras da conversa</h3>
 <ul class="pts"><li><b>Pedir para gravar</b> (com autorização e o acordo de confidencialidade assinado) e transcrever depois.</li>
 <li><b>Perguntar sempre «e depois?»</b> até a tarefa não dar para partir mais.</li>
@@ -51,7 +51,7 @@ def gerar():
 <li>Dado não confirmado fica «a confirmar». Nada de números inventados.</li></ul></div>
 <div><h3>Abertura (dizer assim)</h3><blockquote>
 <p>«Isto não é uma venda. Vou fazer-te perguntas sobre como o stand funciona no dia a dia. Depois volto com o mapa de onde se perdem pedidos, tempo e dinheiro e o que vale a pena fazer primeiro, com as contas. Decides tu.»</p>
-<p lang="ro" class="ro">„Nu e o vânzare. Îți pun întrebări despre cum funcționează standul zi de zi. Apoi revin cu harta locurilor unde se pierd cereri, timp și bani și ce merită făcut mai întâi, cu cifrele. Decizi tu."</p></blockquote>
+<p lang="en" class="ro">"This is not a sales pitch. I'll ask you how the stand works day to day. Then I'll come back with a map of where requests, time and money get lost and what is worth doing first, with the numbers. You decide."</p></blockquote>
 <h3>O que desenhas a seguir</h3><div class="motores"><div><b>Clientes novos</b><span>como os encontram</span></div><div><b>O trabalho</b><span>o pedido e a chave</span></div><div><b>Retorno</b><span>avaliações e indicações</span></div></div>
 <p class="leg"><span class="tag t">Tempo</span> manual e repetitivo · <span class="tag r">Risco</span> onde há erros</p>
 <h3>Antes de ir</h3><ul class="pts"><li>Levar a foto da lista de preços de 09/10 e a Parte 1 da auditoria (vista de fora).</li><li>Confirmar no telemóvel as avaliações do Google (4,5 em 53 na última leitura).</li><li>Acordo de confidencialidade assinado antes de gravar.</li></ul></div></div></section>

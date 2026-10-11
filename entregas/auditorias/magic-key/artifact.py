@@ -8,7 +8,7 @@ def parte(titulo, grupos, c):
         li = ""
         for ess, pt, ro, dica in qs:
             c[0] += 1
-            li += f"<li><span class='n'>{c[0]:02d}{' ★' if ess else ''}</span><p class='pt'>{e(pt)}</p><p class='ro' lang='ro'>{e(ro)}</p>{f'<p class=dica>{e(dica)}</p>' if dica else ''}</li>"
+            li += f"<li><span class='n'>{c[0]:02d}{' ★' if ess else ''}</span><p class='pt'>{e(pt)}</p><p class='ro' lang='en'>{e(ro)}</p>{f'<p class=dica>{e(dica)}</p>' if dica else ''}</li>"
         out.append(f"<details open><summary><b>{e(num)}</b> {e(tit)}<small>{e(quem)}</small></summary>{f'<p class=nota>{e(nota)}</p>' if nota else ''}<ol>{li}</ol></details>")
     return "".join(out)
 c = [0]
@@ -37,7 +37,7 @@ table{{border-collapse:collapse;width:100%;font-size:14px}} td,th{{border-bottom
 .wrap{{overflow-x:auto}} ul{{padding-left:18px}}
 </style>
 <h1>Magic Key, plano de perguntas</h1>
-<p class="sub">Auditoria · Iași · {c[0]} perguntas, ★ = essenciais · PT para ti, RO para o dono</p>
+<p class="sub">Auditoria · Iași · {c[0]} perguntas, ★ = essenciais · PT para ti, EN para perguntar</p>
 <p class="aviso"><b>Parte A por confirmar.</b> A transcrição do vídeo de 2 horas ainda não foi obtida (o YouTube bloqueia as legendas). A Parte A vem dos artigos do autor e do guião do Society Salon; confirma-se quando houver a transcrição.</p>
 {a}{b}
 <h2 class="parte">System Print a validar</h2><div class="wrap"><table>{sp}</table></div>
