@@ -183,6 +183,12 @@ h2 small{font-family:SM,monospace;font-size:7.4pt;font-weight:400;letter-spacing
 .ct{display:grid;gap:1.2mm;text-align:right}
 .ct div{font-family:SM,monospace;font-size:9.4pt}
 .ct div span{display:block;font-size:6.6pt;letter-spacing:.12em;text-transform:uppercase;color:var(--sec)}
+.p2 h2{margin:5.5mm 0 3mm;padding-top:3mm}
+.p2 .ex li{font-size:9.2pt;margin-bottom:1.5mm}
+.p2 .nu li{font-size:9.6pt;margin-bottom:1.5mm}
+.p2 .cta{margin-top:3.5mm;padding:3mm 4mm}
+.p2 .cine p{font-size:10pt;max-width:108mm}
+.p2 .motto{font-size:15pt}
 .foot{position:absolute;left:16mm;right:16mm;bottom:9mm;display:flex;justify-content:space-between;gap:6mm;font-family:SM,monospace;font-size:6.6pt;color:var(--sec);letter-spacing:.03em;border-top:.6pt solid var(--secc);padding-top:2mm}
 .foot .srs{max-width:150mm;line-height:1.35}
 .dot{display:inline-block;width:2.2mm;height:2.2mm;background:var(--l);border-radius:50%;vertical-align:baseline;margin-left:.6mm}
@@ -231,7 +237,7 @@ def pagina2(t):
     nu = "".join(f"<li>{E(x)}</li>" for x in t["nu"])
     ct = "".join(f'<div><span>{E(a)}</span>{E(b)}</div>' for a, b in t["contacte"])
     m1, m2 = t["motto"]
-    return f"""<section class="pg">
+    return f"""<section class="pg p2">
 <h2 style="margin-top:0;border-top:0;padding-top:0">{E(t["s3"])}<small>03</small></h2>
 <div class="etape">{etape}</div>
 <h2>{E(t["s4"])}<small>04</small></h2>
