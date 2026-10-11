@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-"""Kit de parceiro (4 páginas A4): o documento a enviar ao parceiro, com as regras de 11/10/2026 (posicionamento de consultoria com IA).
+"""Kit de parceiro em duas peças (regras do Tomás, 11/10/2026 14h38), em RO/EN/PT:
 
-  python3 research/parceiros/kit/gerar.py                 # kit-ro, kit-en, kit-pt (sem nome do parceiro)
-  python3 research/parceiros/kit/gerar.py "Finova Expert" # o mesmo, com «Pregătit pentru: Finova Expert» na capa
+  1) incentivo-{ro,en,pt}.pdf          4 páginas: os 3 quick wins grátis, quanto pode ganhar (cenários), porquê, como apresentar.
+  2) proposta-parceria-{ro,en,pt}.pdf  2 páginas: o que cada parte dá, comissões, regras e assinaturas. Vai só depois do incentivo.
 
-Regras (Tomás, 11/10 14h17, thread «Playbook de consultoria de IA»): a auditoria não se cobra à parte, fica creditada na
-implementação; o parceiro ganha comissão sobre a implementação (quando começamos a trabalhar com o negócio indicado) e,
-enquanto o cliente ficar connosco, 10 % a cada 3 meses. Sem comissão sobre a auditoria. Nunca um preço fixo (o ticket vai de
-2.000 € a 100.000 € consoante o impacto). Sem quick wins grátis para o parceiro até o Tomás decidir.
-Percentagem sobre a implementação: 10 % por omissão (o Tomás só fixou os 10 % trimestrais), a confirmar.
-Playbook: /mnt/project-files/playbook/pacheco-studios-playbook-consultoria-ia-pt.md. Precisa de segno e do Chromium.
+  python3 research/parceiros/kit/gerar.py                 # sem nome do parceiro
+  python3 research/parceiros/kit/gerar.py "Finova Expert" # com o nome na capa e na proposta (sufixo no ficheiro)
+
+Regras: 3 quick wins sem custo ao parceiro (a triagem levada até ele já mostra pelo menos 1); 15 % do valor de implementação de
+cada negócio apresentado; 5 % trimestral (do que esse negócio nos paga no trimestre) enquanto trabalharmos com ele; auditoria
+creditada na implementação; sites e mensalidades entram no preço de implementação. Nunca valores fixos: os cenários usam os
+exemplos do Tomás (50.000 lei/mês → ~20.000 lei; 1.000.000 lei/mês → ~100.000 lei), em € à razão de 5 lei = 1 € no PT.
+Valores por omissão a confirmar pelo Tomás: 180 dias, 12 meses renováveis, 30 dias de aviso.
+Playbook: /mnt/project-files/playbook/. Precisa de segno e do Chromium.
 """
 import base64, html, os, re, subprocess, sys
 import segno
@@ -21,190 +24,228 @@ PARCEIRO = sys.argv[1] if len(sys.argv) > 1 else ""
 
 T = {
  "ro": dict(
-  lang="ro", data="Octombrie 2026", tel="+40 723 098 556", wa="40723098556", site="ro.pachecost.com", funcao="Fondator",
-  titulo="Program de parteneri — Pacheco Studios", pagina="Pagina",
-  c_supra="Program de parteneri", c_h1="Recomandați<br>o afacere.<br><em>Noi dovedim<br>valoarea.</em>",
-  c_lead="Pacheco Studios este o consultanță în sisteme cu AI. Găsim unde o afacere pierde cereri, timp și bani, proiectăm sistemul "
-         "care rezolvă problema și dovedim impactul înainte de a crește. Programul este pentru cei care lucrează zilnic cu firme: "
-         "contabili, consultanți, tipografii, agenți imobiliari, furnizori.",
+  lang="ro", data="Octombrie 2026", tel="+40 723 098 556", wa="40723098556", site="ro.pachecost.com", funcao="Fondator", pagina="Pagina",
+  # 1) incentivo
+  i_titulo="Cât puteți câștiga — Pacheco Studios", c_supra="Program de parteneri",
+  c_h1="Recomandați<br>afaceri.<br><em>Câștigați din<br>fiecare.</em>",
+  c_lead="Pacheco Studios este o consultanță în sisteme cu AI: găsim unde o afacere pierde cereri, timp și bani și construim sistemul "
+         "care rezolvă problema. Partenerii noștri sunt oameni care lucrează zilnic cu firme și ne prezintă celor care au nevoie.",
   c_para="Pregătit pentru", c_vazio="numele partenerului",
-  c_tres=[("0 lei", "auditul nu se plătește separat: se scade din implementare"),
-          ("10%", "din implementare, când începem să lucrăm cu afacerea recomandată"),
-          ("10%", "la fiecare 3 luni, cât timp afacerea rămâne cu noi")],
-  p2_et="01 · Cum funcționează", p2_h="Clientul vede valoarea înainte să plătească. Partenerul câștigă când începe lucrul.",
-  pasos=[("Ne recomandați", "Cunoașteți o afacere care pierde cereri, timp sau bani? Ne prezentați proprietarului sau celui care decide, cu acordul lui.", "Dumneavoastră"),
-         ("Facem auditul", "Analizăm operațiunile, găsim pierderea cea mai valoroasă și arătăm sistemul care o rezolvă. Afacerea nu plătește auditul separat.", "Fără cost separat"),
-         ("Începe implementarea", "Dacă afacerea decide să continue, auditul devine parte din implementare. În acel moment primiți 10% din valoarea implementării.", "10%"),
-         ("Rămânem cu clientul", "Cât timp afacerea continuă să lucreze cu noi, primiți 10% din ce ne plătește, la fiecare 3 luni.", "10% / trimestru")],
-  aud_t="Ce primește din audit afacerea recomandată",
-  aud_nota="Întâi diagnosticul, apoi instrumentele. Un site, un asistent pe WhatsApp sau o automatizare intră doar dacă sunt răspunsul potrivit.",
-  aud=[("Diagnostic pe o pagină", "Simptomul, cauza, cifra de pornire și prima recomandare."),
-       ("Harta operațiunilor", "Canale, oameni, instrumente, întârzieri și punctele unde se pierd cererile."),
-       ("Priorități", "Impact, fezabilitate, risc și timp până la rezultat, ca să alegem o singură intervenție."),
-       ("Plan pe 90 de zile", "Ce măsurăm, ce testăm într-un pilot, cine aprobă și ce decizie iese din pilot."),
-       ("System Print", "Sistemul viitor într-o singură imagine: ce îl declanșează, cine răspunde, ce regulă urmează și când intervine un om.")],
-  p3_et="02 · Pe cine să ne recomandați", p3_h="Afaceri care vând deja, dar pierd pe drum.",
-  sinais_t="Semnele unei pierderi operaționale",
-  sinais=["Cereri care vin pe WhatsApp, telefon și e-mail și rămân fără răspuns sau fără responsabil",
-          "Proprietarul răspunde zilnic la aceleași întrebări și nu mai are timp să conducă",
-          "Programări ratate, clienți care nu revin, oferte pe care nu le urmărește nimeni",
-          "Echipa copiază date între tabele, programe și mesaje",
-          "Afacerea crește, iar operațiunile nu mai țin pasul"],
-  cliente_t="Ce primește afacerea recomandată",
-  cliente=["Un audit al operațiunilor, fără cost separat: se scade din implementare dacă merge mai departe",
-           "Pierderea cea mai valoroasă, numită și măsurată de la început",
-           "Un pilot măsurat, înainte de orice angajament mai mare",
-           "Conturile și datele rămân pe numele afacerii; deciziile importante rămân la oameni"],
-  como_t="Cum faceți o recomandare (alegeți una)",
-  como=[("Grup pe WhatsApp", "Faceți un grup cu proprietarul și cu noi și ne prezentați în două rânduri."),
-        ("Contactul, cu acordul lui", "Ne trimiteți numele afacerii și telefonul, după ce i-ați spus că vă sunăm."),
+  c_tres=[("3", "soluții rapide implementate gratuit în afacerea dumneavoastră"), ("15%", "din valoarea implementării, pentru fiecare afacere recomandată"),
+          ("5%", "la fiecare 3 luni, cât timp lucrăm cu afacerea recomandată")],
+  p2_et="01 · Întâi primiți", p2_h="Înainte să vorbim de comisioane, vă îmbunătățim afacerea.",
+  qw_t="3 soluții rapide, gratuit", qw_nota="Le alegem împreună după triaj; triajul pe care vi-l aducem arată deja cel puțin una. Câteva exemple:",
+  qw=[("Afiș QR pentru recenzii Google", "Clienții mulțumiți lasă recenzia în 20 de secunde."),
+      ("Fișa Google completă", "Program, servicii, poze reale și buton de contact."),
+      ("Răspunsuri rapide pe WhatsApp", "Întrebările care se repetă primesc răspuns corect dintr-o atingere."),
+      ("Formular de cerere", "Cererea ajunge completă, fără cinci mesaje dus-întors."),
+      ("Mesaj automat după serviciu", "Cere recenzia la momentul potrivit."),
+      ("Tabel comun de cereri", "Fiecare cerere are un responsabil și un stadiu.")],
+  fluxo_t="Apoi, pentru fiecare afacere pe care ne-o prezentați",
+  pasos=[("Ne prezentați", "Unei afaceri care pierde cereri, timp sau bani, cu acordul proprietarului.", "Dumneavoastră"),
+         ("Triaj și audit", "Găsim pierderea cea mai valoroasă. Auditul nu se plătește separat: se scade din implementare.", "Fără cost separat"),
+         ("Începe implementarea", "Afacerea decide să lucreze cu noi. Primiți 15% din valoarea implementării.", "15%"),
+         ("Rămânem cu clientul", "Cât timp lucrăm cu afacerea, primiți 5% din ce ne plătește, la fiecare 3 luni.", "5% / trimestru")],
+  p3_et="02 · Cât puteți câștiga", p3_h="Fiecare afacere e diferită. De aceea comisionul e un procent, nu o sumă fixă.",
+  cen_nota="Valoarea implementării depinde de mărimea afacerii și de impactul pe care îl dovedim. Două exemple:",
+  cen=[("Afacere de 50.000 lei / lună", "≈ 20.000 lei", "3.000 lei"), ("Afacere de 1.000.000 lei / lună", "≈ 100.000 lei", "15.000 lei")],
+  cen_rot=("Implementare estimată", "Primiți 15%", "Apoi, la fiecare 3 luni", "5% din ce ne plătește"),
+  tri_t="Partea trimestrială",
+  tri=[("La fiecare 10.000 lei", "500 lei", "plătiți de client într-un trimestru"), ("Cât timp lucrăm", "5%", "cu afacerea recomandată, fără termen"),
+       ("La fiecare 3 luni", "Raport", "cu ce a plătit clientul și comisionul")],
+  ano="<b>Un an posibil:</b> o afacere mică și una mare recomandate = <b>18.000 lei</b> doar din implementare, plus partea trimestrială.",
+  calc_n="Exemple de calcul cu valori aproximative, nu promisiuni și nici prețuri.",
+  p4_et="03 · De ce merită", p4_h="Câștigați fără să executați. Clienții dumneavoastră primesc un sistem care funcționează.",
+  porque_t="Ce câștigați",
+  porque=["Comision real din fiecare implementare, nu o sumă simbolică", "Venit la fiecare 3 luni, cât timp clientul rămâne cu noi",
+          "Clienții dumneavoastră vă mulțumesc pentru recomandare", "Noi ne ocupăm de tot: triaj, audit, implementare, suport",
+          "Nu costă nimic și nu există exclusivitate"],
+  quem_t="Pe cine să ne prezentați",
+  quem=["Afaceri care primesc cereri pe WhatsApp, telefon și e-mail", "Proprietari care răspund zilnic la aceleași întrebări",
+        "Afaceri care cresc și nu mai țin pasul", "Echipe care copiază date între tabele și programe"],
+  como_t="Cum ne prezentați (alegeți una)",
+  como=[("Grup pe WhatsApp", "Un grup cu proprietarul și cu noi, și ne prezentați în două rânduri."),
+        ("Contactul, cu acord", "Ne trimiteți numele și telefonul, după ce i-ați spus că vă sunăm."),
         ("Numele dumneavoastră", "Îi dați numărul nostru; ne spune că vine de la dumneavoastră.")],
   fwd_t="Mesaj gata de trimis proprietarului",
-  fwd="Bună! Îți recomand Pacheco Studios, firma lui Tomás. Îți fac un audit al operațiunilor: arată unde se pierd cereri, timp și bani "
-      "și ce merită rezolvat primul. Auditul nu se plătește separat. Îți las numărul lui: +40 723 098 556.",
-  ex_t="Cereți auditul", ex="Scanați: se deschide WhatsApp cu «AUDIT».",
-  princ_t="Cum proiectăm fiecare sistem",
-  princ=[("Trigger", "Ce s-a întâmplat: o cerere, o rezervare, o plată."), ("Responsabil", "Cine preia pasul următor. Niciodată o căsuță fără nume."),
-         ("Regulă", "Ce poate și ce nu poate face sistemul."), ("Predare", "Când intervine un om: întrebare, reclamație, decizie.")],
-  princ_n="Găsim pierderea. Proiectăm sistemul. Dovedim impactul.",
-  p4_et="03 · Termenii, pe scurt", p4_h="Clar de la început, plătit la timp.",
-  tab_cab=("Etapa clientului", "Clientul plătește", "Partenerul primește"),
-  tab=[("Audit", "Se scade din implementare", "—"), ("Implementare", "Valoarea agreată cu clientul", "10%"),
-       ("Însoțire", "Cât timp rămâne cu noi", "10% / 3 luni")],
-  tab_nota="Fiecare proiect are propria valoare, stabilită după impactul în afacere. Nu există listă de prețuri: comisionul este mereu "
-           "un procent din ce plătește efectiv clientul.",
-  regras_t="Regulile", regras=[
-   ("Când se plătește", "Implementare: în 7 zile de la plata clientului. Însoțire: la fiecare 3 luni, în 7 zile de la închiderea trimestrului. Prin transfer bancar, pe factură (firmă) sau contract de colaborare (persoană fizică)."),
-   ("Ce înseamnă o recomandare", "Ne prezentați direct proprietarului sau celui care decide; afacerea știe și e de acord; nu era deja în discuție cu noi; implementarea începe în cel mult 180 de zile."),
-   ("Fără limită", "Nu există un minim de recomandări și nici o limită. Fiecare implementare care pornește de la dumneavoastră contează."),
-   ("Transparență", "Dacă vorbiți public despre noi după ce parteneriatul e activ, menționați că este un parteneriat. Nu cerem liste de contacte și nu contactăm pe nimeni fără acord."),
-   ("Ce nu promitem", "Nu promitem rezultate înainte de a le măsura. Fiecare audit pornește de la o cifră de bază și fiecare pilot arată înainte și după.")],
-  acordo_t="Acord de principiu", acordo_txt="Am citit termenii de mai sus și vrem să începem să recomandăm afaceri. Detaliile se trec într-un acord simplu, semnat de ambele părți.",
-  ass=("Partener", "Pacheco Studios"), ass_campos=("Nume", "Data", "Semnătura"),
+  fwd="Bună! Îți recomand Pacheco Studios, firma lui Tomás. Se uită la cum intră cererile în afacerea ta și îți arată, pe o pagină, "
+      "unde s-ar putea pierde și ce merită verificat. Fă un triaj cu ei: +40 723 098 556.",
+  ex_t="Cereți triajul", ex="Scanați: se deschide WhatsApp cu «AUDIT».",
+  prox_t="Pasul următor", prox="Dacă are sens pentru dumneavoastră, vă trimitem propunerea de parteneriat, cu regulile și comisioanele în scris, pentru semnat.",
+  # 2) proposta
+  p_titulo="Propunere de parteneriat — Pacheco Studios", p_et="Propunere de parteneriat",
+  p_h="Parteneriat între {p} și Pacheco Studios", p_vazio="……………………",
+  da_t="Ce oferă Pacheco Studios",
+  da=["3 soluții rapide în afacerea partenerului, gratuit, alese după triaj",
+      "15% din valoarea implementării pentru fiecare afacere recomandată",
+      "5% din ce plătește afacerea recomandată, la fiecare 3 luni, cât timp lucrăm cu ea",
+      "Raport la fiecare 3 luni cu recomandările, plățile și comisioanele",
+      "Plata comisionului în 7 zile de la plata clientului"],
+  faz_t="Ce face partenerul",
+  faz=["O recomandare scrisă sau video, după ce soluțiile rapide funcționează",
+       "O postare pe lună despre Pacheco Studios, cu @pachecostudiospt",
+       "Ne prezintă afaceri doar cu acordul proprietarului",
+       "Spune că este un parteneriat când vorbește public despre noi"],
+  tab_cab=("Etapa", "Partenerul primește", "Când"),
+  tab=[("Soluții rapide", "3, gratuit", "La început"), ("Audit", "—", "Se scade din implementare"),
+       ("Implementare", "15%", "În 7 zile de la plata clientului"), ("Însoțire", "5%", "La fiecare 3 luni, în 7 zile de la închidere")],
+  regras_t="Regulile",
+  regras=[("Ce înseamnă o recomandare", "Ne prezentați direct proprietarului sau celui care decide; afacerea știe și e de acord; nu era deja în discuție cu noi; implementarea începe în cel mult 180 de zile."),
+          ("Baza de calcul", "Comisionul se calculează din ce plătește efectiv clientul. Site-ul, asistentul, automatizările și abonamentele fac parte din prețul implementării, nu se plătesc separat."),
+          ("Fără sume fixe", "Fiecare implementare are propria valoare, stabilită după mărimea afacerii și impactul dovedit."),
+          ("Durată", "12 luni, cu reînnoire automată. Oricare parte poate încheia parteneriatul în scris, cu 30 de zile înainte; comisioanele pentru afacerile deja recomandate se plătesc în continuare."),
+          ("Date și încredere", "Nu cerem liste de contacte și nu contactăm pe nimeni fără acord. Conturile și datele clienților rămân pe numele lor."),
+          ("Ce nu promitem", "Nu promitem rezultate înainte de a le măsura. Fiecare audit pornește de la o cifră de bază.")],
+  plata="Plata: prin transfer bancar, pe factură (firmă) sau contract de colaborare (persoană fizică).",
+  ass_t="Semnături", ass=("Partener", "Pacheco Studios"), ass_campos=("Nume", "Data", "Semnătura"),
  ),
  "en": dict(
-  lang="en", data="October 2026", tel="+40 723 098 556", wa="40723098556", site="ro.pachecost.com", funcao="Founder",
-  titulo="Partner Programme — Pacheco Studios", pagina="Page",
-  c_supra="Partner programme", c_h1="Introduce<br>a business.<br><em>We prove<br>the value.</em>",
-  c_lead="Pacheco Studios is an AI systems consultancy. We find where a business loses requests, time and money, design the system "
-         "that fixes it, and prove the impact before scaling. This programme is for people who work with companies every day: "
-         "accountants, consultants, print shops, estate agents, suppliers.",
+  lang="en", data="October 2026", tel="+40 723 098 556", wa="40723098556", site="ro.pachecost.com", funcao="Founder", pagina="Page",
+  i_titulo="What you can earn — Pacheco Studios", c_supra="Partner programme",
+  c_h1="Introduce<br>businesses.<br><em>Earn from<br>each one.</em>",
+  c_lead="Pacheco Studios is an AI systems consultancy: we find where a business loses requests, time and money, and build the system "
+         "that fixes it. Our partners are people who work with companies every day and introduce us to the ones who need it.",
   c_para="Prepared for", c_vazio="partner name",
-  c_tres=[("€0", "the audit is not charged separately: it is credited to the implementation"),
-          ("10%", "of the implementation, when we start working with the business you introduced"),
-          ("10%", "every 3 months, for as long as that business stays with us")],
-  p2_et="01 · How it works", p2_h="The client sees value before paying. The partner earns when the work starts.",
-  pasos=[("You introduce us", "Know a business losing requests, time or money? Introduce us to the owner or decision-maker, with their consent.", "You"),
-         ("We run the audit", "We map the operation, find the most valuable leak and show the system that fixes it. The business does not pay for the audit separately.", "No separate cost"),
-         ("Implementation starts", "If the business decides to go ahead, the audit becomes part of the implementation. At that point you earn 10% of the implementation value.", "10%"),
-         ("We stay with the client", "For as long as the business keeps working with us, you receive 10% of what it pays us, every 3 months.", "10% / quarter")],
-  aud_t="What the audit gives the business you introduce",
-  aud_nota="Diagnosis before tools. A website, a WhatsApp assistant or an automation only comes in if it is the right answer.",
-  aud=[("One-page diagnosis", "Symptom, root cause, baseline number and first recommendation."),
-       ("Operations map", "Channels, people, tools, delays and the points where requests get lost."),
-       ("Priorities", "Impact, feasibility, risk and time to value, to choose a single intervention."),
-       ("90-day plan", "What to measure, what to pilot, who approves and which decision comes out of the pilot."),
-       ("System Print", "The future system in one visual: what triggers it, who owns it, which rule it follows and when a person steps in.")],
-  p3_et="02 · Who to introduce", p3_h="Businesses that already sell, but leak along the way.",
-  sinais_t="Signs of an operational leak",
-  sinais=["Requests arrive by WhatsApp, phone and e-mail and sit unanswered or with no owner",
-          "The owner answers the same questions every day and has no time left to manage",
-          "Missed bookings, clients who do not return, quotes nobody follows up",
-          "The team copies data between spreadsheets, tools and messages",
-          "The business is growing and operations can no longer keep up"],
-  cliente_t="What the introduced business gets",
-  cliente=["An audit of its operations, with no separate cost: credited if it goes ahead",
-           "Its most valuable leak named, with a baseline number",
-           "A measured pilot before any larger commitment",
-           "Accounts and data always in the business's name; important decisions stay with people"],
+  c_tres=[("3", "quick wins implemented in your business, at no cost"), ("15%", "of the implementation value, for every business you introduce"),
+          ("5%", "every 3 months, for as long as we work with that business")],
+  p2_et="01 · You receive first", p2_h="Before we talk about commissions, we improve your business.",
+  qw_t="3 quick wins, at no cost", qw_nota="We choose them together after the triage; the triage we bring you already shows at least one. Some examples:",
+  qw=[("QR poster for Google reviews", "Happy clients leave a review in 20 seconds."),
+      ("Complete Google Business Profile", "Hours, services, real photos and a contact button."),
+      ("Quick replies on WhatsApp", "Repeated questions get the right answer in one tap."),
+      ("Request form", "Requests arrive complete, without five back-and-forth messages."),
+      ("Automatic message after the service", "Asks for the review at the right moment."),
+      ("Shared request tracker", "Every request has an owner and a status.")],
+  fluxo_t="Then, for every business you introduce",
+  pasos=[("You introduce us", "To a business losing requests, time or money, with the owner's consent.", "You"),
+         ("Triage and audit", "We find the most valuable leak. The audit is not charged separately: it is credited to the implementation.", "No separate cost"),
+         ("Implementation starts", "The business decides to work with us. You receive 15% of the implementation value.", "15%"),
+         ("We stay with the client", "For as long as we work with the business, you receive 5% of what it pays us, every 3 months.", "5% / quarter")],
+  p3_et="02 · What you can earn", p3_h="Every business is different. That is why the commission is a percentage, not a fixed amount.",
+  cen_nota="The implementation value depends on the size of the business and the impact we prove. Two examples (in Romanian lei):",
+  cen=[("A business turning over 50,000 lei / month", "≈ 20,000 lei", "3,000 lei"), ("A business turning over 1,000,000 lei / month", "≈ 100,000 lei", "15,000 lei")],
+  cen_rot=("Estimated implementation", "You receive 15%", "Then, every 3 months", "5% of what it pays us"),
+  tri_t="The quarterly share",
+  tri=[("For every 10,000 lei", "500 lei", "paid by the client in a quarter"), ("While we work", "5%", "with the business you introduced, no end date"),
+       ("Every 3 months", "Report", "with what the client paid and your commission")],
+  ano="<b>One possible year:</b> one small and one large business introduced = <b>18,000 lei</b> from implementation alone, plus the quarterly share.",
+  calc_n="Worked examples with approximate values, not promises or prices.",
+  p4_et="03 · Why it is worth it", p4_h="You earn without delivering. Your clients get a system that works.",
+  porque_t="What you gain",
+  porque=["A real commission on every implementation, not a token amount", "Income every 3 months, while the client stays with us",
+          "Your clients thank you for the introduction", "We handle everything: triage, audit, implementation, support",
+          "It costs nothing and there is no exclusivity"],
+  quem_t="Who to introduce",
+  quem=["Businesses receiving requests by WhatsApp, phone and e-mail", "Owners answering the same questions every day",
+        "Businesses growing faster than their operations", "Teams copying data between spreadsheets and tools"],
   como_t="How to introduce us (pick one)",
-  como=[("WhatsApp group", "Create a group with the owner and us, and introduce us in two lines."),
-        ("The contact, with consent", "Send us the business name and phone after telling the owner we will call."),
+  como=[("WhatsApp group", "A group with the owner and us, and you introduce us in two lines."),
+        ("The contact, with consent", "Send us the name and phone after telling the owner we will call."),
         ("Your name", "Give them our number; they tell us you sent them.")],
   fwd_t="Message ready to forward to the owner",
-  fwd="Hi! I recommend Pacheco Studios (Tomás). They audit your operations: they show where requests, time and money are lost, "
-      "and what to fix first. The audit is not charged separately. Here is his number: +40 723 098 556.",
-  ex_t="Request the audit", ex="Scan: WhatsApp opens with «AUDIT».",
-  princ_t="How we design every system",
-  princ=[("Trigger", "What happened: a request, a booking, a payment."), ("Owner", "Who takes the next action. Never an inbox with no name."),
-         ("Rule", "What the system can and cannot do."), ("Handoff", "When a person steps in: a question, a complaint, a decision.")],
-  princ_n="We find the leak. We design the system. We prove the impact.",
-  p4_et="03 · The terms, in short", p4_h="Clear from the start, paid on time.",
-  tab_cab=("Client stage", "The client pays", "The partner receives"),
-  tab=[("Audit", "Credited to the implementation", "—"), ("Implementation", "Value agreed with the client", "10%"),
-       ("Ongoing support", "For as long as it stays with us", "10% / 3 months")],
-  tab_nota="Each project has its own value, set by its impact on the business. There is no price list: the commission is always "
-           "a percentage of what the client actually pays.",
-  regras_t="The rules", regras=[
-   ("When it is paid", "Implementation: within 7 days of the client's payment. Ongoing support: every 3 months, within 7 days of the quarter's close. By bank transfer, against an invoice (company) or a simple collaboration agreement (individual)."),
-   ("What counts as an introduction", "You introduce us directly to the owner or decision-maker; the business knows and agrees; it was not already talking to us; implementation starts within 180 days."),
-   ("No limits", "No minimum number of introductions and no cap. Every implementation that starts from you counts."),
-   ("Transparency", "If you talk about us publicly once the partnership is active, mention that it is a partnership. We never ask for contact lists and never contact anyone without consent."),
-   ("What we do not promise", "We do not promise results before measuring them. Every audit starts from a baseline and every pilot shows the before and after.")],
-  acordo_t="Agreement in principle", acordo_txt="We have read the terms above and want to start introducing businesses. The details go into a simple agreement signed by both parties.",
-  ass=("Partner", "Pacheco Studios"), ass_campos=("Name", "Date", "Signature"),
+  fwd="Hi! I recommend Pacheco Studios (Tomás). They look at how requests come into your business and show you, on one page, "
+      "where they might get lost and what is worth checking. Do a triage with them: +40 723 098 556.",
+  ex_t="Request the triage", ex="Scan: WhatsApp opens with «AUDIT».",
+  prox_t="Next step", prox="If it makes sense to you, we send the partnership proposal, with the rules and commissions in writing, to sign.",
+  p_titulo="Partnership proposal — Pacheco Studios", p_et="Partnership proposal",
+  p_h="Partnership between {p} and Pacheco Studios", p_vazio="……………………",
+  da_t="What Pacheco Studios gives",
+  da=["3 quick wins in the partner's business, at no cost, chosen after the triage",
+      "15% of the implementation value for every business introduced",
+      "5% of what the introduced business pays, every 3 months, while we work with it",
+      "A report every 3 months with introductions, payments and commissions",
+      "Commission paid within 7 days of the client's payment"],
+  faz_t="What the partner does",
+  faz=["A written or video testimonial, once the quick wins are working",
+       "One post a month about Pacheco Studios, tagging @pachecostudiospt",
+       "Introduces businesses only with the owner's consent",
+       "Says it is a partnership when talking about us publicly"],
+  tab_cab=("Stage", "The partner receives", "When"),
+  tab=[("Quick wins", "3, at no cost", "At the start"), ("Audit", "—", "Credited to the implementation"),
+       ("Implementation", "15%", "Within 7 days of the client's payment"), ("Ongoing support", "5%", "Every 3 months, within 7 days of the close")],
+  regras_t="The rules",
+  regras=[("What counts as an introduction", "You introduce us directly to the owner or decision-maker; the business knows and agrees; it was not already talking to us; implementation starts within 180 days."),
+          ("Basis of calculation", "The commission is calculated on what the client actually pays. Website, assistant, automations and monthly fees are part of the implementation price, not charged separately."),
+          ("No fixed amounts", "Each implementation has its own value, set by the size of the business and the proven impact."),
+          ("Duration", "12 months, renewing automatically. Either party can end the partnership in writing with 30 days' notice; commissions on businesses already introduced keep being paid."),
+          ("Data and trust", "We never ask for contact lists and never contact anyone without consent. Client accounts and data stay in their name."),
+          ("What we do not promise", "We do not promise results before measuring them. Every audit starts from a baseline.")],
+  plata="Payment: by bank transfer, against an invoice (company) or a collaboration agreement (individual).",
+  ass_t="Signatures", ass=("Partner", "Pacheco Studios"), ass_campos=("Name", "Date", "Signature"),
  ),
  "pt": dict(
-  lang="pt-PT", data="Outubro 2026", tel="+351 967 117 357", wa="351967117357", site="pachecost.com", funcao="Fundador",
-  titulo="Programa de parceiros — Pacheco Studios", pagina="Página",
-  c_supra="Programa de parceiros", c_h1="Apresente<br>um negócio.<br><em>Nós provamos<br>o valor.</em>",
-  c_lead="A Pacheco Studios é uma consultora de sistemas com IA. Encontramos onde um negócio perde pedidos, tempo e dinheiro, "
-         "desenhamos o sistema que resolve e provamos o impacto antes de crescer. Este programa é para quem trabalha todos os dias "
-         "com empresas: contabilistas, consultores, gráficas, imobiliárias, fornecedores.",
+  lang="pt-PT", data="Outubro 2026", tel="+351 967 117 357", wa="351967117357", site="pachecost.com", funcao="Fundador", pagina="Página",
+  i_titulo="Quanto pode ganhar — Pacheco Studios", c_supra="Programa de parceiros",
+  c_h1="Apresente<br>negócios.<br><em>Ganhe com<br>cada um.</em>",
+  c_lead="A Pacheco Studios é uma consultora de sistemas com IA: encontramos onde um negócio perde pedidos, tempo e dinheiro e construímos "
+         "o sistema que resolve. Os nossos parceiros são pessoas que trabalham todos os dias com empresas e nos apresentam às que precisam.",
   c_para="Preparado para", c_vazio="nome do parceiro",
-  c_tres=[("0 €", "a auditoria não se paga à parte: fica creditada na implementação"),
-          ("10 %", "da implementação, quando começamos a trabalhar com o negócio que nos apresentou"),
-          ("10 %", "a cada 3 meses, enquanto esse negócio continuar connosco")],
-  p2_et="01 · Como funciona", p2_h="O cliente vê o valor antes de pagar. O parceiro ganha quando o trabalho começa.",
-  pasos=[("Apresenta-nos", "Conhece um negócio que perde pedidos, tempo ou dinheiro? Apresenta-nos ao dono ou a quem decide, com o acordo dele.", "Você"),
-         ("Fazemos a auditoria", "Mapeamos a operação, encontramos a fuga de maior valor e mostramos o sistema que a resolve. O negócio não paga a auditoria à parte.", "Sem custo à parte"),
-         ("Começa a implementação", "Se o negócio decidir avançar, a auditoria passa a fazer parte da implementação. Nesse momento recebe 10 % do valor da implementação.", "10 %"),
-         ("Ficamos com o cliente", "Enquanto o negócio continuar a trabalhar connosco, recebe 10 % do que ele nos paga, a cada 3 meses.", "10 % / trimestre")],
-  aud_t="O que a auditoria entrega ao negócio que apresentar",
-  aud_nota="Primeiro o diagnóstico, depois as ferramentas. Um site, um assistente no WhatsApp ou uma automação só entram se forem a resposta certa.",
-  aud=[("Diagnóstico de uma página", "Sintoma, causa, número de partida e primeira recomendação."),
-       ("Mapa da operação", "Canais, pessoas, ferramentas, atrasos e os pontos onde os pedidos se perdem."),
-       ("Prioridades", "Impacto, viabilidade, risco e tempo até ao resultado, para escolher uma só intervenção."),
-       ("Plano de 90 dias", "O que medir, o que testar num piloto, quem aprova e que decisão sai do piloto."),
-       ("System Print", "O sistema futuro num só visual: o que o dispara, quem é dono, que regra segue e quando entra uma pessoa.")],
-  p3_et="02 · Quem nos apresentar", p3_h="Negócios que já vendem, mas perdem pelo caminho.",
-  sinais_t="Sinais de uma fuga operacional",
-  sinais=["Pedidos que chegam por WhatsApp, telefone e e-mail e ficam sem resposta ou sem dono",
-          "O dono responde às mesmas perguntas todos os dias e já não tem tempo para gerir",
-          "Marcações que falham, clientes que não voltam, orçamentos que ninguém segue",
-          "A equipa copia dados entre folhas, programas e mensagens",
-          "O negócio está a crescer e a operação já não acompanha"],
-  cliente_t="O que recebe o negócio apresentado",
-  cliente=["Uma auditoria à operação, sem custo à parte: fica creditada se avançar",
-           "A fuga de maior valor nomeada, com um número de partida",
-           "Um piloto medido antes de qualquer compromisso maior",
-           "Contas e dados sempre em nome do negócio; as decisões importantes ficam com pessoas"],
+  c_tres=[("3", "soluções rápidas implementadas no seu negócio, sem custo"), ("15 %", "do valor de implementação, por cada negócio que apresentar"),
+          ("5 %", "a cada 3 meses, enquanto trabalharmos com esse negócio")],
+  p2_et="01 · Primeiro recebe", p2_h="Antes de falarmos de comissões, melhoramos o seu negócio.",
+  qw_t="3 soluções rápidas, sem custo", qw_nota="Escolhemo-las consigo depois da triagem; a triagem que lhe trazemos já mostra pelo menos uma. Alguns exemplos:",
+  qw=[("Cartaz QR para avaliações Google", "Os clientes satisfeitos deixam a avaliação em 20 segundos."),
+      ("Ficha Google completa", "Horário, serviços, fotos reais e botão de contacto."),
+      ("Respostas rápidas no WhatsApp", "As perguntas repetidas têm a resposta certa num toque."),
+      ("Formulário de pedido", "O pedido chega completo, sem cinco mensagens de ida e volta."),
+      ("Mensagem automática depois do serviço", "Pede a avaliação no momento certo."),
+      ("Folha partilhada de pedidos", "Cada pedido tem um responsável e um estado.")],
+  fluxo_t="Depois, por cada negócio que nos apresentar",
+  pasos=[("Apresenta-nos", "A um negócio que perde pedidos, tempo ou dinheiro, com o acordo do dono.", "Você"),
+         ("Triagem e auditoria", "Encontramos a fuga de maior valor. A auditoria não se paga à parte: fica creditada na implementação.", "Sem custo à parte"),
+         ("Começa a implementação", "O negócio decide trabalhar connosco. Recebe 15 % do valor de implementação.", "15 %"),
+         ("Ficamos com o cliente", "Enquanto trabalharmos com o negócio, recebe 5 % do que ele nos paga, a cada 3 meses.", "5 % / trimestre")],
+  p3_et="02 · Quanto pode ganhar", p3_h="Cada negócio é diferente. Por isso a comissão é uma percentagem, não um valor fixo.",
+  cen_nota="O valor de implementação depende da dimensão do negócio e do impacto que provamos. Dois exemplos:",
+  cen=[("Negócio que fatura 10.000 € / mês", "≈ 4.000 €", "600 €"), ("Negócio que fatura 200.000 € / mês", "≈ 20.000 €", "3.000 €")],
+  cen_rot=("Implementação estimada", "Recebe 15 %", "Depois, a cada 3 meses", "5 % do que nos paga"),
+  tri_t="A parte trimestral",
+  tri=[("Por cada 2.000 €", "100 €", "pagos pelo cliente num trimestre"), ("Enquanto trabalharmos", "5 %", "com o negócio que apresentou, sem prazo"),
+       ("A cada 3 meses", "Relatório", "com o que o cliente pagou e a sua comissão")],
+  ano="<b>Um ano possível:</b> um negócio pequeno e um grande apresentados = <b>3.600 €</b> só em implementação, mais a parte trimestral.",
+  calc_n="Exemplos de cálculo com valores aproximados, não promessas nem preços.",
+  p4_et="03 · Porque vale a pena", p4_h="Ganha sem executar. Os seus clientes ficam com um sistema que funciona.",
+  porque_t="O que ganha",
+  porque=["Uma comissão real em cada implementação, não um valor simbólico", "Rendimento a cada 3 meses, enquanto o cliente ficar connosco",
+          "Os seus clientes agradecem-lhe a apresentação", "Tratamos de tudo: triagem, auditoria, implementação, suporte",
+          "Não custa nada e não há exclusividade"],
+  quem_t="Quem nos apresentar",
+  quem=["Negócios que recebem pedidos por WhatsApp, telefone e e-mail", "Donos que respondem às mesmas perguntas todos os dias",
+        "Negócios a crescer mais depressa do que a operação", "Equipas que copiam dados entre folhas e programas"],
   como_t="Como nos apresentar (escolha uma)",
-  como=[("Grupo no WhatsApp", "Cria um grupo com o dono e connosco e apresenta-nos em duas linhas."),
-        ("O contacto, com autorização", "Envia-nos o nome do negócio e o telefone, depois de avisar o dono que vamos ligar."),
+  como=[("Grupo no WhatsApp", "Um grupo com o dono e connosco, e apresenta-nos em duas linhas."),
+        ("O contacto, com autorização", "Envia-nos o nome e o telefone, depois de avisar o dono que vamos ligar."),
         ("O seu nome", "Dá-lhe o nosso número; ele diz-nos que vem da sua parte.")],
   fwd_t="Mensagem pronta a enviar ao dono",
-  fwd="Olá! Recomendo-te a Pacheco Studios, do Tomás. Fazem uma auditoria à tua operação: mostram onde se perdem pedidos, tempo e "
-      "dinheiro, e o que resolver primeiro. A auditoria não se paga à parte. Fica o contacto dele: +351 967 117 357.",
-  ex_t="Pedir a auditoria", ex="Aponte a câmara: abre o WhatsApp com «AUDIT».",
-  princ_t="Como desenhamos cada sistema",
-  princ=[("Trigger", "O que aconteceu: um pedido, uma reserva, um pagamento."), ("Dono", "Quem fica com a próxima ação. Nunca uma caixa sem nome."),
-         ("Regra", "O que o sistema pode e não pode fazer."), ("Handoff", "Quando entra uma pessoa: dúvida, queixa, decisão.")],
-  princ_n="Encontramos a fuga. Desenhamos o sistema. Provamos o impacto.",
-  p4_et="03 · Os termos, em resumo", p4_h="Claro desde o início, pago a tempo.",
-  tab_cab=("Fase do cliente", "O cliente paga", "O parceiro recebe"),
-  tab=[("Auditoria", "Creditada na implementação", "—"), ("Implementação", "Valor acordado com o cliente", "10 %"),
-       ("Acompanhamento", "Enquanto continuar connosco", "10 % / 3 meses")],
-  tab_nota="Cada projeto tem um valor próprio, definido pelo impacto no negócio. Não há tabela de preços: a comissão é sempre "
-           "uma percentagem do que o cliente paga de facto.",
-  regras_t="As regras", regras=[
-   ("Quando se paga", "Implementação: até 7 dias depois de o cliente pagar. Acompanhamento: a cada 3 meses, até 7 dias depois do fecho do trimestre. Por transferência, contra fatura (empresa) ou contrato de colaboração simples (particular)."),
-   ("O que conta como apresentação", "Apresenta-nos diretamente ao dono ou a quem decide; o negócio sabe e concorda; não estava já a falar connosco; a implementação começa até 180 dias depois."),
-   ("Sem limites", "Não há mínimo de apresentações nem teto. Cada implementação que comece por si conta."),
-   ("Transparência", "Se falar de nós em público com a parceria ativa, diga que é uma parceria. Nunca pedimos listas de contactos nem contactamos ninguém sem autorização."),
-   ("O que não prometemos", "Não prometemos resultados antes de os medir. Cada auditoria parte de um número de base e cada piloto mostra o antes e o depois.")],
-  acordo_t="Acordo de princípio", acordo_txt="Lemos os termos acima e queremos começar a apresentar negócios. Os detalhes passam para um acordo simples, assinado pelas duas partes.",
-  ass=("Parceiro", "Pacheco Studios"), ass_campos=("Nome", "Data", "Assinatura"),
+  fwd="Olá! Recomendo-te a Pacheco Studios, do Tomás. Olham para a forma como os pedidos entram no teu negócio e mostram-te, numa página, "
+      "onde se podem perder e o que vale a pena validar. Faz uma triagem com eles: +351 967 117 357.",
+  ex_t="Pedir a triagem", ex="Aponte a câmara: abre o WhatsApp com «AUDIT».",
+  prox_t="Próximo passo", prox="Se fizer sentido para si, enviamos a proposta de parceria, com as regras e as comissões por escrito, para assinar.",
+  p_titulo="Proposta de parceria — Pacheco Studios", p_et="Proposta de parceria",
+  p_h="Parceria entre {p} e a Pacheco Studios", p_vazio="……………………",
+  da_t="O que a Pacheco Studios dá",
+  da=["3 soluções rápidas no negócio do parceiro, sem custo, escolhidas depois da triagem",
+      "15 % do valor de implementação por cada negócio apresentado",
+      "5 % do que o negócio apresentado pagar, a cada 3 meses, enquanto trabalharmos com ele",
+      "Relatório a cada 3 meses com apresentações, pagamentos e comissões",
+      "Pagamento da comissão até 7 dias depois de o cliente pagar"],
+  faz_t="O que o parceiro faz",
+  faz=["Um testemunho escrito ou em vídeo, depois de as soluções rápidas estarem a funcionar",
+       "Uma publicação por mês sobre a Pacheco Studios, com @pachecostudiospt",
+       "Apresenta negócios só com o acordo do dono",
+       "Diz que é uma parceria quando fala de nós em público"],
+  tab_cab=("Fase", "O parceiro recebe", "Quando"),
+  tab=[("Soluções rápidas", "3, sem custo", "No início"), ("Auditoria", "—", "Creditada na implementação"),
+       ("Implementação", "15 %", "Até 7 dias depois de o cliente pagar"), ("Acompanhamento", "5 %", "A cada 3 meses, até 7 dias depois do fecho")],
+  regras_t="As regras",
+  regras=[("O que conta como apresentação", "Apresenta-nos diretamente ao dono ou a quem decide; o negócio sabe e concorda; não estava já a falar connosco; a implementação começa até 180 dias depois."),
+          ("Base de cálculo", "A comissão calcula-se sobre o que o cliente paga de facto. Site, assistente, automações e mensalidades fazem parte do preço de implementação, não se pagam à parte."),
+          ("Sem valores fixos", "Cada implementação tem um valor próprio, definido pela dimensão do negócio e pelo impacto provado."),
+          ("Duração", "12 meses, renováveis automaticamente. Qualquer parte pode terminar a parceria por escrito com 30 dias de aviso; as comissões dos negócios já apresentados continuam a ser pagas."),
+          ("Dados e confiança", "Nunca pedimos listas de contactos nem contactamos ninguém sem autorização. As contas e os dados dos clientes ficam em nome deles."),
+          ("O que não prometemos", "Não prometemos resultados antes de os medir. Cada auditoria parte de um número de base.")],
+  plata="Pagamento: por transferência, contra fatura (empresa) ou contrato de colaboração (particular).",
+  ass_t="Assinaturas", ass=("Parceiro", "Pacheco Studios"), ass_campos=("Nome", "Data", "Assinatura"),
  ),
 }
 
@@ -345,33 +386,87 @@ td:last-child{white-space:nowrap}
 """
 
 
+CSS += """
+.pasos{grid-template-columns:1fr 1fr;margin-bottom:0}
+.pasos li{padding:4.5mm}.pasos b{margin:3.5mm 0 1.5mm}
+.qw{list-style:none;margin:0 0 8mm;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:3mm 5mm}
+.qw li{display:flex;gap:3mm;align-items:flex-start;padding:3.6mm 4mm;border-radius:8px;background:var(--o2);box-shadow:inset 0 0 0 1px var(--li)}
+.qw .ok{flex:none;width:4.6mm;height:4.6mm;border-radius:50%;background:var(--l);margin-top:.3mm;position:relative}
+.qw .ok::after{content:'';position:absolute;left:1.5mm;top:.9mm;width:1.2mm;height:2.2mm;border:solid var(--c);border-width:0 1.6px 1.6px 0;transform:rotate(45deg)}
+.qw b{display:block;font-weight:600;font-size:10pt;margin-bottom:.6mm}
+.qw span{font-size:9pt;color:var(--so);line-height:1.4}
+.cen{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin:0 0 8mm}
+.cen > div{border-radius:12px;background:var(--o2);box-shadow:inset 0 0 0 1px var(--li);padding:6mm}
+.cen > div:last-child{background:var(--c);color:var(--o);box-shadow:inset 0 0 0 1.5px var(--l)}
+.cen .mono{color:var(--lt);display:block;margin-bottom:4mm;line-height:1.4}
+.cen > div:last-child .mono{color:var(--l)}
+.cen dl{margin:0;display:grid;gap:3.2mm}
+.cen dt{font-size:8.6pt;color:var(--so)}.cen > div:last-child dt{color:var(--sc)}
+.cen dd{margin:.6mm 0 0;font:400 13pt/1.1 'Archivo Black'}
+.cen dd.big{font-size:27pt;color:var(--lt)}.cen > div:last-child dd.big{color:var(--l)}
+.cen dd.sm{font:600 10pt/1.3 'Inter'}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-bottom:6mm}
+.tri div{border-top:2px solid var(--c);padding-top:3mm}
+.tri .mono{color:var(--so)}
+.tri b{display:block;font:400 17pt/1 'Archivo Black';color:var(--lt);margin:2.5mm 0 1.5mm;white-space:nowrap}
+.tri span{font-size:9pt;color:var(--so)}
+.ano{background:var(--c);color:var(--o);border-radius:10px;padding:5mm 6mm;font-size:11pt;line-height:1.45}
+.ano b{color:var(--l);font-weight:600}
+.pequena{font-size:8.4pt;color:var(--so);margin:3mm 0 0}
+.prox{margin-top:auto;margin-bottom:8mm;display:grid;grid-template-columns:1fr auto;gap:6mm;align-items:center;background:var(--l);color:var(--c);border-radius:10px;padding:5.5mm 6.5mm}
+.prox .mono{display:block;margin-bottom:2mm}
+.prox p{margin:0;font:600 11pt/1.4 'Inter'}
+.prox b{font:400 22pt/1 'Archivo Black'}
+.duas2{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-bottom:7mm}
+.p4 h2{margin-bottom:7mm}.p4 .como{margin-bottom:6mm}
+/* proposta */
+.ptop{background:var(--c);color:var(--o);padding:11mm 16mm 9mm}
+.ptop .topo{display:flex;justify-content:space-between;align-items:center}.ptop .topo .mono{color:var(--sc)}
+.ptop .mono.l{color:var(--l);margin:9mm 0 3mm;display:block}
+.ptop h1{font:400 21pt/1.15 'Archivo Black';text-transform:uppercase;margin:0}
+.ptop h1 em{font-style:normal;color:var(--l)}
+.ptop p{margin:3mm 0 0;font-size:9pt;color:var(--sc)}
+.compromissos{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-bottom:7mm}
+.compromissos .lista li{font-size:9.6pt}
+.regras li{grid-template-columns:42mm 1fr}
+.pp .acordo{margin-top:8mm;margin-bottom:auto}.pp .compromissos{margin-bottom:5mm}.ptop{padding:10mm 16mm 7mm}.ptop .mono.l{margin:6mm 0 3mm}.pp .corpo{padding-top:7mm}.pp td{padding:2.4mm 0}.pp .corpo{padding-bottom:6mm}
+.local{display:flex;gap:6mm;margin-bottom:5mm}.local .campo{flex:1;margin:0}
+"""
+
+
 def esc(s):
     return html.escape(s, quote=False)
 
 
-def pagina_html(t):
+def comum(t):
     wa = f"https://wa.me/{t['wa']}?text=AUDIT"
     qr = segno.make(wa, error="m").svg_inline(scale=3, dark="#141210", light="#EFEAE3", border=2)
-    rod = lambda n: (f'<footer class="rod"><span class="marca">Pacheco Studios<i></i></span>'
-                     f'<span>Tomás Pacheco · {t["tel"]} · {t["site"]}</span>'
-                     f'<span class="mono">{t["pagina"]} {n}/4</span></footer>')
-    cab = lambda: f'<header class="cab"><span class="marca">Pacheco Studios<i></i></span><span class="mono">{t["c_supra"]} · {t["data"]}</span></header>'
+    rod = lambda n, total: (f'<footer class="rod"><span class="marca">Pacheco Studios<i></i></span>'
+                            f'<span>Tomás Pacheco · {t["tel"]} · {t["site"]}</span>'
+                            f'<span class="mono">{t["pagina"]} {n}/{total}</span></footer>')
+    cab = lambda sub: f'<header class="cab"><span class="marca">Pacheco Studios<i></i></span><span class="mono">{sub} · {t["data"]}</span></header>'
+    return wa, qr, rod, cab
+
+
+def incentivo_html(t):
+    wa, qr, rod, cab = comum(t)
     para = (f'<strong>{esc(PARCEIRO)}</strong>' if PARCEIRO else f'<strong class="vazio">{t["c_vazio"]}</strong>')
     tres = "".join(f"<div><b>{a}</b><span>{b}</span></div>" for a, b in t["c_tres"])
+    qw = "".join(f'<li><i class="ok"></i><div><b>{a}</b><span>{b}</span></div></li>' for a, b in t["qw"])
     pasos = "".join(f'<li class="{"forte" if i >= 2 else ""}"><span class="n">0{i+1}</span><span class="tag">{c}</span><b>{a}</b><span>{b}</span></li>'
                     for i, (a, b, c) in enumerate(t["pasos"]))
-    aud = "".join(f'<li><i class="nr">0{i+1}</i><div><b>{a}</b><span>{b}</span></div></li>' for i, (a, b) in enumerate(t["aud"]))
-    sinais = "".join(f"<li>{x}</li>" for x in t["sinais"])
-    cliente = "".join(f"<li>{x}</li>" for x in t["cliente"])
+    r = t["cen_rot"]
+    cen = "".join(f'<div><span class="mono">{nome}</span><dl><div><dt>{r[0]}</dt><dd>{impl}</dd></div>'
+                  f'<div><dt>{r[1]}</dt><dd class="big">{com}</dd></div><div><dt>{r[2]}</dt><dd class="sm">{r[3]}</dd></div></dl></div>'
+                  for nome, impl, com in t["cen"])
+    tri = "".join(f'<div><span class="mono">{a}</span><b>{b}</b><span>{c}</span></div>' for a, b, c in t["tri"])
+    porque = "".join(f"<li>{x}</li>" for x in t["porque"])
+    quem = "".join(f"<li>{x}</li>" for x in t["quem"])
     como = "".join(f"<li><b>{a}</b><span>{b}</span></li>" for a, b in t["como"])
-    linhas = "".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>" for a, b, c in t["tab"])
-    princ = "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a, b in t["princ"])
-    regras = "".join(f"<li><b>{a}</b><span>{b}</span></li>" for a, b in t["regras"])
-    campos = "".join(f'<div class="campo">{c}<i></i></div>' for c in t["ass_campos"])
-    ass = "".join(f'<div><span class="mono">{p}</span>{campos}</div>' for p in t["ass"])
+    sub = t["c_supra"]
     return f"""<!doctype html>
 <html lang="{t['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(t['titulo'])}</title><style>{FONTES}{CSS}</style></head><body>
+<title>{esc(t['i_titulo'])}</title><style>{FONTES}{CSS}</style></head><body>
 <section class="pag capa">
   <div class="topo"><span class="marca">Pacheco Studios<i></i></span><span class="mono">{t['data']}</span></div>
   <p class="mono supra">{t['c_supra']}</p>
@@ -382,37 +477,81 @@ def pagina_html(t):
   <div class="para"><div><span class="mono">{t['c_para']}</span>{para}</div>
     <div class="quem"><b>Tomás Pacheco</b>{t['funcao']} · Pacheco Studios<br>{t['tel']}</div></div>
 </section>
-<section class="pag">{cab()}<div class="corpo">
+<section class="pag">{cab(sub)}<div class="corpo">
   <p class="mono et">{t['p2_et']}</p><h2>{t['p2_h']}</h2>
+  <h3>{t['qw_t']}</h3><p class="nota">{t['qw_nota']}</p>
+  <ul class="qw">{qw}</ul>
+  <h3>{t['fluxo_t']}</h3>
   <ol class="pasos">{pasos}</ol>
-  <h3>{t['aud_t']}</h3><p class="nota">{t['aud_nota']}</p>
-  <ul class="menu">{aud}</ul>
-</div>{rod(2)}</section>
-<section class="pag p3">{cab()}<div class="corpo">
+</div>{rod(2, 4)}</section>
+<section class="pag">{cab(sub)}<div class="corpo">
   <p class="mono et">{t['p3_et']}</p><h2>{t['p3_h']}</h2>
-  <div class="duas"><div><h3>{t['sinais_t']}</h3><ul class="lista">{sinais}</ul></div>
-    <div class="escuro"><h3>{t['cliente_t']}</h3><ul class="lista">{cliente}</ul></div></div>
+  <p class="nota">{t['cen_nota']}</p>
+  <div class="cen">{cen}</div>
+  <h3>{t['tri_t']}</h3><div class="tri">{tri}</div>
+  <div class="ano">{t['ano']}</div>
+  <p class="pequena">{t['calc_n']}</p>
+</div>{rod(3, 4)}</section>
+<section class="pag p4">{cab(sub)}<div class="corpo">
+  <p class="mono et">{t['p4_et']}</p><h2>{t['p4_h']}</h2>
+  <div class="duas2"><div><h3>{t['porque_t']}</h3><ul class="lista">{porque}</ul></div>
+    <div class="escuro"><h3>{t['quem_t']}</h3><ul class="lista">{quem}</ul></div></div>
   <h3>{t['como_t']}</h3><ul class="como">{como}</ul>
   <h3>{t['fwd_t']}</h3>
   <div class="fwd"><div class="bolha">{t['fwd']}</div>
     <div class="ex">{qr}<b>{t['ex_t']}</b><br>{t['ex']}<a href="{wa}">wa.me/{t['wa']}</a></div></div>
-  <div class="princ"><h3>{t['princ_t']}</h3><div class="tiles">{princ}</div><p>{t['princ_n']}</p></div>
-</div>{rod(3)}</section>
-<section class="pag">{cab()}<div class="corpo">
-  <p class="mono et">{t['p4_et']}</p><h2>{t['p4_h']}</h2>
-  <table><thead><tr><th>{t['tab_cab'][0]}</th><th>{t['tab_cab'][1]}</th><th>{t['tab_cab'][2]}</th></tr></thead><tbody>{linhas}</tbody></table>
-  <p class="nota">{t['tab_nota']}</p>
-  <h3>{t['regras_t']}</h3><ul class="regras">{regras}</ul>
-  <div class="acordo"><h3>{t['acordo_t']}</h3><p>{t['acordo_txt']}</p><div class="ass">{ass}</div></div>
-</div>{rod(4)}</section>
+  <div class="prox"><div><span class="mono">{t['prox_t']}</span><p>{t['prox']}</p></div><b>→</b></div>
+</div>{rod(4, 4)}</section>
 </body></html>"""
+
+
+def proposta_html(t):
+    wa, qr, rod, cab = comum(t)
+    nome = f"<em>{esc(PARCEIRO)}</em>" if PARCEIRO else t["p_vazio"]
+    da = "".join(f"<li>{x}</li>" for x in t["da"])
+    faz = "".join(f"<li>{x}</li>" for x in t["faz"])
+    linhas = "".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>" for a, b, c in t["tab"])
+    regras1 = "".join(f"<li><b>{a}</b><span>{b}</span></li>" for a, b in t["regras"][:3])
+    regras2 = "".join(f"<li><b>{a}</b><span>{b}</span></li>" for a, b in t["regras"][3:])
+    campos = "".join(f'<div class="campo">{c}<i></i></div>' for c in t["ass_campos"])
+    ass = "".join(f'<div><span class="mono">{p}</span>{campos}</div>' for p in t["ass"])
+    return f"""<!doctype html>
+<html lang="{t['lang']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{esc(t['p_titulo'])}</title><style>{FONTES}{CSS}</style></head><body>
+<section class="pag pp">
+  <div class="ptop"><div class="topo"><span class="marca">Pacheco Studios<i></i></span><span class="mono">{t['data']}</span></div>
+    <span class="mono l">{t['p_et']}</span><h1>{t['p_h'].format(p=nome)}</h1></div>
+  <div class="corpo">
+  <div class="compromissos"><div class="escuro"><h3>{t['da_t']}</h3><ul class="lista">{da}</ul></div>
+    <div><h3>{t['faz_t']}</h3><ul class="lista">{faz}</ul></div></div>
+  <table class="tp"><thead><tr><th>{t['tab_cab'][0]}</th><th>{t['tab_cab'][1]}</th><th>{t['tab_cab'][2]}</th></tr></thead><tbody>{linhas}</tbody></table>
+  <p class="nota">{t['plata']}</p>
+  <h3>{t['regras_t']}</h3><ul class="regras">{regras1}</ul>
+  </div>{rod(1, 2)}</section>
+<section class="pag pp">{cab(t['p_et'])}<div class="corpo">
+  <ul class="regras">{regras2}</ul>
+  <div class="acordo"><h3>{t['ass_t']}</h3><div class="ass">{ass}</div></div>
+</div>{rod(2, 2)}</section>
+</body></html>"""
+
+
+CSS += """
+.tp td:nth-child(2),.tp th:nth-child(2){text-align:left;padding-right:4mm}
+.tp td:last-child{font:400 9.4pt/1.35 'Inter';color:var(--so);white-space:normal}
+.tp td:nth-child(2){font:400 12pt/1.2 'Archivo Black';color:var(--lt)}
+"""
+
+
+def pdf(nome, conteudo):
+    h = os.path.join(AQUI, nome + ".html")
+    open(h, "w", encoding="utf-8").write(conteudo)
+    p = h[:-5] + ".pdf"
+    subprocess.run([CHROMIUM, "--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer",
+                    f"--print-to-pdf={p}", "file://" + h], check=True, capture_output=True)
+    print("ok", os.path.relpath(p, RAIZ), os.path.getsize(p) // 1024, "KB")
 
 
 sufixo = ("-" + re.sub(r"[^a-z0-9]+", "-", PARCEIRO.lower()).strip("-")) if PARCEIRO else ""
 for lingua, t in T.items():
-    h = os.path.join(AQUI, f"kit-parceiro-{lingua}{sufixo}.html")
-    open(h, "w", encoding="utf-8").write(pagina_html(t))
-    pdf = h[:-5] + ".pdf"
-    subprocess.run([CHROMIUM, "--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer",
-                    f"--print-to-pdf={pdf}", "file://" + h], check=True, capture_output=True)
-    print("ok", os.path.relpath(pdf, RAIZ), os.path.getsize(pdf) // 1024, "KB")
+    pdf(f"incentivo-{lingua}{sufixo}", incentivo_html(t))
+    pdf(f"proposta-parceria-{lingua}{sufixo}", proposta_html(t))
