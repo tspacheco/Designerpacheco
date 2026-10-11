@@ -427,7 +427,7 @@ def escala_auditoria(x):
     </div>"""
 
 
-def vista_auditoria(c, wa):
+def vista_auditoria(c, wa, ig):
     """Auditoria de Sistemas com IA. Não se pede num botão (Tomás, 11/10): primeiro a triagem («Conhece-nos»), depois a
     auditoria, só se ambos virmos que vale a pena. O princípio (4 peças), o método em 7 passos, o que se recebe,
     para quem é e não é, e o pedido (abre a candidatura). Sem preços no site."""
@@ -470,7 +470,8 @@ def vista_auditoria(c, wa):
 {entregas}
       </ol></div>
       <div class="aud-para"><h3 class="rotulo">{e(a["para_t"])}</h3><ul class="sim">{para}</ul>
-      <h3 class="rotulo">{e(a["nao_t"])}</h3><ul class="nao">{nao}</ul></div>
+      <h3 class="rotulo">{e(a["nao_t"])}</h3><ul class="nao">{nao}</ul>
+      <a class="botao contorno" href="https://ig.me/m/{e(ig.lstrip("@"))}" target="_blank" rel="noopener">{I["instagram"]}{e(a["nao_cta"])}</a></div>
     </div>
     <div class="aud-cta">
       <p class="afirmacao">{e(a["cta_t"])}</p>
@@ -617,7 +618,7 @@ def vista_consultanta(c, casos, lang, wa):
     vd = k["veredito"]
     if vd["caso"] not in {x["id"] for x in tx}:
         raise SystemExit(f"conteudo/{lang}.json: o veredito aponta para o caso «{vd['caso']}», que não existe")
-    # sem a linha do autor (Tomás, 11/10): só a frase e o botão para o caso
+    # sem a linha do autor (Tomás, 11/10): só a frase, de onde é o caso e o botão
     ia = k["ia"]
     frases = "".join(f'<li class="rv" style="--i:{i}">{e(f)}</li>' for i, f in enumerate(c["automatizari"]["labels"]["ai"]))
     cs = k["casos"]
@@ -656,6 +657,7 @@ def vista_consultanta(c, casos, lang, wa):
         <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
         <blockquote><p>{e(vd["quote"])}</p></blockquote>
         <figcaption>
+          <span class="v-origem">{e(vd["origem"])}</span>
           <a class="botao escuro" href="#caso-{e(vd["caso"])}">{e(vd["ver"])}{I["seta"]}</a>
         </figcaption>
       </figure>
@@ -1324,7 +1326,7 @@ def main():
             "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa),
             "VISTA_CAZURI": vista_cazuri(c, casos, lang, num, vista_proiecte(c, portfolio, lang, num)),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, num, icones, casos, vista_servicii(c, portfolio, lang), lang),
-            "VISTA_AUDITORIA": vista_auditoria(c, wa),
+            "VISTA_AUDITORIA": vista_auditoria(c, wa, d["instagram"]),
             "CONTACT": contacto(c, d, wa, tel_l, num, cfg["com_site"], lang), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"], wa_diagnostico(d, lang)), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
             "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }

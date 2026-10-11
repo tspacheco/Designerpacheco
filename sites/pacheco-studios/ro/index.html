@@ -431,8 +431,9 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 .aud-para ul{display:grid;gap:.45rem;margin-bottom:.9rem}
 .aud-para li{position:relative;padding-left:1.4rem;font-size:.9375rem}
 .aud-para .sim li::before{content:"";position:absolute;left:.1rem;top:.35rem;width:.6rem;height:.35rem;border:solid var(--laranja);border-width:0 0 2px 2px;transform:rotate(-45deg)}
-.aud-para .nao li{color:var(--osso-2)}
-.aud-para .nao li::before{content:"";position:absolute;left:.05rem;top:.65rem;width:.7rem;height:2px;background:var(--osso-2)}
+.aud-para .nao li::before{content:"";position:absolute;left:0;top:.5rem;width:.5rem;height:.5rem;border-radius:50%;border:2px solid var(--laranja)}
+.aud-para .botao{justify-self:start;margin-top:.2rem}
+.aud-para .botao svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:2}
 .aud-cta{margin-top:clamp(3rem,10vw,5rem);padding-top:clamp(2rem,6vw,3rem);border-top:1px solid var(--linha-e);display:grid;gap:1.25rem;justify-items:start}
 .aud-cta .afirmacao{font:400 clamp(1.5rem,5vw,2.4rem)/1.05 var(--display);text-transform:uppercase;max-width:22ch;text-wrap:balance}
 .aud-cta .nota{color:var(--osso-2);font-size:.9375rem}
@@ -599,6 +600,7 @@ html.intro-vai .intro{display:grid}
 .aspas{position:absolute;left:clamp(1.1rem,4vw,2.4rem);top:clamp(1.1rem,3vw,1.6rem);width:2.6rem;fill:rgba(232,98,44,.55)}
 .cartao-v blockquote{margin:0}
 .cartao-v blockquote p{font:400 clamp(1.25rem,4.4vw,1.85rem)/1.42 var(--texto);letter-spacing:-.01em;color:var(--osso);text-wrap:pretty}
+.v-origem{font:700 .75rem/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso-2)}
 .cartao-v figcaption{margin-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.1rem}
 .v-quem{display:flex;align-items:center;gap:.9rem;min-width:0}
 .v-marca{flex:none;width:3rem;height:3rem;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F2773F,#A64923);
@@ -1514,7 +1516,8 @@ dialog.diag.fim .diag-ficha{display:block}
 <li>Un plan de 90 de zile: ce măsurăm, ce pilotăm, cine aprobă și ce decizie urmează după pilot.</li>
       </ol></div>
       <div class="aud-para"><h3 class="rotulo">Pentru cine e</h3><ul class="sim"><li>Afaceri de servicii cu cereri, programări, oferte de preț sau clienți care revin.</li><li>Un decident care poate schimba felul în care se lucrează.</li><li>O scurgere reală, măsurabilă: cereri pierdute, răspunsuri lente, neprezentări, hârțogărie.</li><li>Volum suficient ca rezultatul să conteze.</li></ul>
-      <h3 class="rotulo">Pentru cine nu e (încă)</h3><ul class="nao"><li>Cine vrea doar „un chatbot” sau un site fără un proces în spate.</li><li>O automatizare fără nimeni responsabil de rezultat.</li><li>Cine caută o promisiune de transformare fără să măsoare nimic.</li></ul></div>
+      <h3 class="rotulo">Trimite DM pentru ofertă</h3><ul class="nao"><li>Pentru cine vrea doar un chatbot.</li><li>Cine caută doar 1 automatizare anume.</li><li>Cine vrea doar să rezolve 1 problemă.</li></ul>
+      <a class="botao contorno" href="https://ig.me/m/pachecostudiospt" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>Trimite DM pe Instagram</a></div>
     </div>
     <div class="aud-cta">
       <p class="afirmacao">Găsim scurgerea. Proiectăm sistemul. Dovedim impactul.</p>
@@ -1550,6 +1553,7 @@ dialog.diag.fim .diag-ficha{display:block}
         <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
         <blockquote><p>Azi AI-ul răspunde 24 de ore din 24. (…) Clientul vede deja catalogul, alege produsul și ajunge în magazin practic gata să cumpere.</p></blockquote>
         <figcaption>
+          <span class="v-origem">Caz real · Brazilia</span>
           <a class="botao escuro" href="#caso-carioca">Vezi cazul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </figcaption>
       </figure>
