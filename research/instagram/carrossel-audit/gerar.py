@@ -232,13 +232,20 @@ def slide(s, i, total):
 </section>"""
 
 
+# No vídeo não se desliza: os textos «glisează» mudam (video.js lê carrossel-ro-video.html)
+VIDEO = {"GLISEAZĂ CA SĂ VEZI CE GĂSIM →": "URMĂREȘTE CE GĂSIM",
+         "GLISEAZĂ · VEZI CUM ARATĂ FIECARE RUPTURĂ": "URMEAZĂ: CUM ARATĂ FIECARE RUPTURĂ"}
+
+
 def main():
-    corpo = "\n".join(slide(s, i, len(SLIDES)) for i, s in enumerate(SLIDES, 1))
     os.makedirs(os.path.join(AQUI, "saida"), exist_ok=True)
-    caminho = os.path.join(AQUI, "saida", "carrossel-ro.html")
-    with open(caminho, "w", encoding="utf-8") as f:
-        f.write(f'<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>Carusel Audit de Sisteme cu AI</title><style>{CSS}</style></head><body>{corpo}</body></html>')
-    print(caminho)
+    for nome, troca in (("carrossel-ro.html", {}), ("carrossel-ro-video.html", VIDEO)):
+        slides = [{k: troca.get(v, v) if isinstance(v, str) else v for k, v in s.items()} for s in SLIDES]
+        corpo = "\n".join(slide(s, i, len(slides)) for i, s in enumerate(slides, 1))
+        caminho = os.path.join(AQUI, "saida", nome)
+        with open(caminho, "w", encoding="utf-8") as f:
+            f.write(f'<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>Carusel Audit de Sisteme cu AI</title><style>{CSS}</style></head><body>{corpo}</body></html>')
+        print(caminho)
 
 
 if __name__ == "__main__":
