@@ -13,6 +13,8 @@
 #   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
+#   legendas   <nome> <url do YouTube>          transcrição (legendas manuais ou automáticas, PT/EN/ES/RO) em
+#                                               ponte/<nome>.txt com marcas de tempo [hh:mm:ss] + ponte/<nome>.info.txt
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
 # fotogramas de herói.
@@ -36,6 +38,9 @@ jobs:
         run: |
           grep -qE '^\s*fotogramas\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
           python3 -m pip install --quiet pillow
+          if grep -qE '^\s*legendas\s' .github/ponte.txt; then
+            python3 -m pip install --quiet -U yt-dlp youtube-transcript-api
+          fi
           if grep -qE '^\s*pagina\s' .github/ponte.txt; then
             python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
           fi
@@ -58,6 +63,61 @@ jobs:
               if d:
                   os.makedirs(d, exist_ok=True)
           paginas = []
+          def legendas(url):
+              import glob, json, re
+              def hms(t):
+                  t = int(t); return f"{t//3600:02d}:{t%3600//60:02d}:{t%60:02d}"
+              erros = []
+              # 1) yt-dlp: metadados + legendas (manuais primeiro, depois automáticas) em json3
+              try:
+                  subprocess.run(["rm", "-rf", "/tmp/leg"], check=True)
+                  r = subprocess.run(["yt-dlp", "--skip-download", "--write-info-json", "--write-subs", "--write-auto-subs",
+                                      "--sub-format", "json3", "--sub-langs", "pt.*,pt,en.*,en,es.*,ro.*,-live_chat",
+                                      "-o", "/tmp/leg/v.%(ext)s", url], capture_output=True, text=True, timeout=300)
+                  info = ""
+                  if os.path.exists("/tmp/leg/v.info.json"):
+                      j = json.load(open("/tmp/leg/v.info.json"))
+                      info = "\n".join(f"{k}: {j.get(k)}" for k in ("title", "channel", "upload_date", "duration_string", "language")) + \
+                             "\n\ncapítulos:\n" + "\n".join(f"[{hms(c['start_time'])}] {c['title']}" for c in (j.get("chapters") or [])) + \
+                             "\n\ndescrição:\n" + (j.get("description") or "")
+                  subs = sorted(glob.glob("/tmp/leg/v.*.json3"), key=lambda f: (not re.search(r"\.pt", f), "orig" not in f, f))
+                  if subs:
+                      ev = json.load(open(subs[0])).get("events", [])
+                      linhas, ult = [], -60
+                      for e in ev:
+                          t = "".join(s.get("utf8", "") for s in e.get("segs", []) or []).replace("\n", " ").strip()
+                          if not t:
+                              continue
+                          seg = e.get("tStartMs", 0) / 1000
+                          if seg - ult >= 30:
+                              linhas.append(f"\n[{hms(seg)}]"); ult = seg
+                          linhas.append(t)
+                      return {"texto": " ".join(linhas).strip() + "\n", "info": info + f"\n\nlegenda usada: {os.path.basename(subs[0])}\n", "via": "yt-dlp"}
+                  erros.append("yt-dlp sem legendas: " + (r.stderr or "")[-400:])
+              except Exception as ex:
+                  erros.append(f"yt-dlp: {ex}")
+              # 2) youtube-transcript-api
+              try:
+                  from youtube_transcript_api import YouTubeTranscriptApi
+                  vid = re.search(r"(?:v=|youtu\.be/|shorts/|live/|embed/)([\w-]{11})", url).group(1)
+                  api = YouTubeTranscriptApi()
+                  lst = api.list(vid)
+                  tr = None
+                  for f in (lst.find_manually_created_transcript, lst.find_generated_transcript):
+                      try:
+                          tr = f(["pt", "pt-PT", "pt-BR", "en", "es", "ro"]); break
+                      except Exception:
+                          pass
+                  tr = tr or next(iter(lst))
+                  linhas, ult = [], -60
+                  for s in tr.fetch():
+                      if s.start - ult >= 30:
+                          linhas.append(f"\n[{hms(s.start)}]"); ult = s.start
+                      linhas.append(s.text.replace("\n", " "))
+                  return {"texto": " ".join(linhas).strip() + "\n", "info": f"língua: {tr.language_code}\n" + "\n".join(erros), "via": "youtube-transcript-api"}
+              except Exception as ex:
+                  erros.append(f"youtube-transcript-api: {ex}")
+              raise RuntimeError(" | ".join(erros))
           for n, linha in enumerate(open(".github/ponte.txt", encoding="utf-8"), 1):
               linha = linha.strip()
               if not linha or linha.startswith("#"):
@@ -99,6 +159,12 @@ jobs:
                       rel.append(f"ok  fotogramas {dest} " + " · ".join(info.split("\n")))
                   elif op == "pagina":
                       paginas.append((p[1], p[2]))
+                  elif op == "legendas":
+                      nome, url = p[1], p[2]
+                      txt = legendas(url)
+                      open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(txt["texto"])
+                      open(f"ponte/{nome}.info.txt", "w", encoding="utf-8").write(txt["info"])
+                      rel.append(f"ok  legendas {nome} via {txt['via']} · {len(txt['texto'].split())} palavras · {url}")
                   elif op == "testar":
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
