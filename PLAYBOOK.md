@@ -224,8 +224,9 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 
 **Parceiros de indicação (Tomás, 11/10 14h38):**
 
-- **Primeiro o incentivo, depois as regras.** Passo 1: o parceiro percebe quanto pode ganhar connosco. Passo 2, só depois do «sim»: proposta com assinaturas e as obrigações dele (testemunho; 1 publicação por mês sobre nós).
+- **Primeiro o incentivo, depois as regras.** Passo 1: o parceiro percebe quanto pode ganhar connosco. Passo 2, só depois do «sim»: proposta com assinaturas e as obrigações dele (recomendação boca a boca; 1 conteúdo por mês sobre nós). O testemunho online chega antes, na entrega dos quick wins.
 - **3 quick wins ao parceiro, mantêm-se.** A própria triagem proativa (A.14) levada ao parceiro já lhe mostra pelo menos 1 dos quick wins que teria connosco, para que a resposta dele seja logo um sim ou um não.
+- **A contrapartida do parceiro, em três tempos (Tomás, 11/10 14h44):** (1) **no momento em que aplicamos os 3 quick wins**, o parceiro dá o primeiro testemunho online e a primeira recomendação, como agradecimento; (2) depois recomenda-nos **boca a boca** aos negócios que conhece; (3) e **todos os meses mostra-nos nos conteúdos dele, 1 vez por mês**. O testemunho inicial pede-se na entrega dos quick wins, não na proposta assinada; a proposta formaliza os pontos 2 e 3 e a comissão.
 - **Comissão:** **15 % do valor da implementação** do cliente indicado (paga quando começamos a trabalhar com esse cliente) **+ 5 % trimestral** enquanto continuarmos a trabalhar com ele. Base dos 5 %: o que faturamos a esse cliente no trimestre (otimização, novas implementações). *(Base a confirmar pelo Tomás; é a leitura mais simples de explicar ao parceiro.)*
 - **Como mostrar o ganho sem fixar um valor (a solução):** a implementação não tem preço de tabela porque depende da faturação do cliente e do crescimento que lhe trazemos. Ao parceiro mostra-se a **percentagem fixa e três cenários reais em RON**, sempre com «exemplo» por cima e sem promessa:
 
