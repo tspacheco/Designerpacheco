@@ -62,9 +62,9 @@ Se uma corrida não fechar as 25, as que faltarem ficam «por fazer» no `.tsv` 
 - Construir sem ler o campo «Site» da ficha (Gist e Salon Monne, 07/10).
 - Inventar notas, preços, horários, citações ou provas de WhatsApp.
 - Usar emojis ou imagens ilustrativas/geradas nos sites: só fotos reais do negócio (09/10).
-- Mudar o texto da mensagem: é o de `mensagens.py` (10% a 30% mais clientes, desde 08/10), igual ao do `LOTE4-IASI.md`, a fechar com «Voi fi pregătit.» (pedido do Tomás, 09/10). Só a saudação roda entre 4 variantes. **Corrida B (desde 10/10):** texto novo do Tomás (`MSG_B` em `mensagens.py`, igual a `DESCRICAO-CORRIDA-B.md` do ramo das demos): demo para [Compania], auditoria de onde se bloqueiam clientes, pedido de uma reunião, «Voi fi pregătit.»; nome do dono na coluna opcional `dono` do TSV.
+- Mudar o texto da mensagem: é o de `mensagens.py` (10% a 30% mais clientes, desde 08/10), igual ao do `LOTE4-IASI.md`, a fechar com «Voi fi pregătit.» (pedido do Tomás, 09/10). **Desde 11/10 as duas corridas usam o texto novo** (o antigo «10% a 30%… soluția» já não se usa). **Texto (desde 10/10):** texto novo do Tomás (`MSG_B` em `mensagens.py`, igual a `DESCRICAO-CORRIDA-B.md` do ramo das demos): demo para [Compania], auditoria de onde se bloqueiam clientes, pedido de uma reunião, «Voi fi pregătit.»; nome do dono na coluna opcional `dono` do TSV.
 - Esquecer a regra de envio na lista: **mínimo 1 minuto entre mensagens** e textos não idênticos seguidos (09/10: o WhatsApp bloqueou o Tomás um dia por spam, a enviar de 10 em 10 s). O `mensagens.py` já põe o aviso e varia a saudação.
-- Pôr preço na mensagem (o preço fala-se depois: 500 € ≈ 2.500 lei + 75 €/mês ≈ 375 lei, auditoria grátis incluída).
+- Pôr preço na mensagem ou vender o site. Desde 11/10 a Pacheco Studios é consultora de sistemas com IA (playbook em `/mnt/project-files/playbook/pacheco-studios-playbook-consultoria-ia-pt.md`): a demo é só o gatilho, com um quick win, para marcar uma reunião sobre onde se perdem clientes, decisões e entrega. O preço antigo do site (500 € + 75 €/mês) caducou e nenhuma mensagem leva preço.
 - Push noutro ramo que não o do caçador, exceto a publicação descrita no passo 10.
 
 ## Lições da 1.ª corrida (09/10)

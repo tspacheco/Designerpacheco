@@ -69,7 +69,7 @@ def main(caminho):
             print(f"### {zona}\n")
             for l in (x for x in grupo if x["zona"] == zona):
                 demo = f"https://pachecost.com/demo/{l['slug']}/"
-                if corrida == "B" or NOVO:
+                if True:  # desde 11/10 as duas corridas usam MSG_B (consultoria de sistemas com IA; a demo é o gatilho)
                     dono = (l.get("dono") or "").strip()
                     texto = MSG_B.format(dono=f" {dono}" if dono else "", nome=l["nome"], demo=demo)
                 else:
