@@ -5,11 +5,13 @@ Para chegar ao decisor das empresas do lote 1 e das próximas. Ficheiros: `saida
 ## A ideia em 3 frases (dizer sempre igual)
 1. A mudança da IA está a acontecer agora: empresas dos EUA e da China já conduzem operações com sistemas de IA com regras claras e uma pessoa na decisão.
 2. Na Roménia só 5% das empresas usam IA (Eurostat, 2025). Quem começa hoje fica à frente dos outros 95%.
-3. Nós damos clareza, caminho e estrutura a partir da situação de hoje: um mapa, 3 soluções rápidas sem custo e, depois, a auditoria com um piloto de 30 dias medido.
+3. Nós damos clareza, caminho e estrutura a partir da situação de hoje: 3 soluções rápidas sem custo como ponto de partida, uma triagem curta e a Auditoria de Sistemas com IA como porta de entrada; depois o sprint de desenho e um piloto medido.
+
+**Linha de posicionamento (playbook 11/10):** «Encontramos a fuga. Desenhamos o sistema. Provamos o impacto.» Em romeno: «Găsim scurgerea. Desenăm sistemul. Dovedim impactul.» Nunca «fazemos sites» nem «fazemos automações».
 
 ## As 3 provas que levas
 1. **O brief** (2 páginas, RO). Só números com fonte: Stanford AI Index 2025, Eurostat 2025, Klarna fev. 2024. Envia-se quando respondem ou quando pedem «o documento».
-2. **O mini-mapa da empresa** (1 página). Percurso público → hipótese em pergunta → limite humano → prioridade 30 dias. Faz-se em 30 minutos antes da reunião, com o gerador (`gerador.html`, tipo de negócio) e a secção 02 do brief como modelo.
+2. **O mini-mapa da empresa** (1 página). É o System Print do playbook: título com o sintoma em linguagem humana, trigger, fluxo de 3 a 6 passos, regra, dono, handoff e métrica. Percurso público → hipótese em pergunta → limite humano → prioridade 30 dias. Faz-se em 30 minutos antes da reunião, com o gerador (`gerador.html`, tipo de negócio) e a secção 02 do brief como modelo.
 3. **Um quick win feito à frente deles.** Exemplos: cartaz QR de avaliações gerado na hora (/afis), as 5 respostas rápidas escritas em 10 minutos, o formulário de pedido com as perguntas certas. Prova que «implementamos em dias» é verdade.
 
 ## O caminho até à mesa numa empresa grande
@@ -17,7 +19,7 @@ Para chegar ao decisor das empresas do lote 1 e das próximas. Ficheiros: `saida
 2. **Dias 2–3, em paralelo:** LinkedIn ao dono da função. Funções a procurar: Director Operațiuni, Head of Customer Experience, Director Transformare Digitală, Head of E-commerce, Head of Marketplace; nas agências, fundador ou COO. Mensagem de 4 linhas (abaixo) com o brief anexado.
 3. **Resposta:** enviar o mini-mapa e pedir uma hora com quem conhece o percurso.
 4. **Reunião (45 min):** 10 min a ouvir («conta-me como foi ontem um pedido típico», e depois «e depois?»), 10 min do mapa, 15 min a escolher os 3 quick wins, 5 min a combinar o dia 0 e quem é o responsável do lado deles.
-5. **Até 10 dias:** 3 quick wins entregues e medidos. Só então a proposta da AI Systems Audit com preço, e o piloto de 30 dias.
+5. **Depois da reunião, a escada do playbook:** triagem (as 8 perguntas da secção 7 do playbook; na DM usam-se 3) → 3 quick wins entregues em 10 dias e medidos → proposta da Auditoria de Sistemas com IA, com preço (ticket entre 2.000 € e 100.000 € conforme o negócio; nunca numa DM) → sprint de desenho → piloto controlado com base medida no dia 0 → otimização.
 
 ### Mensagem de LinkedIn (RO, 4 linhas)
 > Bună ziua, [Nume]! Sunt Tomás, de la Pacheco Studios, din Iași. Am parcurs traseul public al unui client [Companie] ([percurso]) și am o ipoteză de diagnostic, nu o concluzie: [pergunta]. Am pus-o pe o mini-hartă de o pagină și pot implementa fără cost 3 soluții rapide ca să o testăm. Atașez un document scurt despre ce înseamnă un sistem AI în operațiuni, azi. Ați fi deschis la o întâlnire scurtă? Voi fi pregătit.
@@ -33,7 +35,8 @@ Para chegar ao decisor das empresas do lote 1 e das próximas. Ficheiros: `saida
 | «Avem departament IT / un integrator.» | «Nu înlocuim IT-ul. Noi desenăm predările și regulile; implementează IT-ul sau implementăm noi împreună cu ei. Harta e utilă oricum.» |
 | «Suntem într-un sector reglementat.» | «Nu atingem decizii clinice, de credit sau juridice. Lucrăm pe partea administrativă, cu om la limită și cu trasabilitate.» |
 | «De ce o firmă mică din Iași?» | «Pentru că pornim de la traseul vostru public, arătăm în 10 zile, nu în 10 luni, și nu cerem nimic până atunci. Nu promitem. Arătăm.» |
-| «Cât costă?» | «Prima lună, harta și cele 3 soluții, nu costă. Auditul are preț și vi-l spun după ce vedeți cele 3 soluții.» (Nunca preço por DM.) |
+| «Cât costă?» | «Cele 3 soluții și triajul nu costă. Auditul are preț și vi-l spun după triaj, când știm ce blocaj atacăm.» (Nunca preço por DM.) |
+| «Vrem doar un site.» | «Un site poate fi una dintre cele 3 soluții rapide, dacă rezolvă un blocaj real. Dar nu începem de acolo: începem de la locul unde se pierde clientul.» |
 | «Trimiteți un e-mail.» | «Trimit, cu harta. Cui ar fi cel mai util să ajungă?» (obter o nome) |
 | «Folosim deja AI.» | «Perfect. Atunci întrebarea e unde se pierde contextul între unelte și echipe. Exact asta arată harta.» |
 | «Nu e momentul.» | «Înțeleg. Vă las documentul. Când apare un proiect nou, harta se face în câteva zile.» |
@@ -47,6 +50,9 @@ Para chegar ao decisor das empresas do lote 1 e das próximas. Ficheiros: `saida
 6. DM pelo gerador, linha no Excel, follow-up em 4 dias.
 
 ## Regras que não se quebram
+- O site nunca é o produto nem a manchete. No máximo é um quick win que leva à reunião. Sem parcerias para sites.
+- CTA pública (bio, reels, posts): «DM AUDIT». Nas DMs de saída o pedido é a reunião, e a resposta recebe a mensagem «Triagem» do gerador.
+- Comissões a parceiros: suspensas até o Tomás decidir.
 - Sem preço e sem minutos na 1.ª mensagem; sem emojis; em romeno «Voi fi pregătit.»
 - Hipótese, nunca acusação. Só números com fonte e data.
 - Sector regulado: nada de decisões clínicas, de crédito ou jurídicas na proposta.

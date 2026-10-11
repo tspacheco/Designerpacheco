@@ -17,7 +17,7 @@ FONTES = "../../../../marca/fontes"  # relativo a saida/
 TEXTO = {
     "ro": {
         "lang": "ro", "data": "11 octombrie 2026",
-        "eyebrow": "Pacheco Studios · Iași · Sisteme AI pentru operațiuni",
+        "eyebrow": "Pacheco Studios · Iași · Consultanță de sisteme cu AI",
         "titlu": "AI în operațiuni",
         "sub": "Ce au deja companiile din SUA și China. Ce poate avea compania ta, de azi.",
         "pentru": "Pregătit pentru",
@@ -31,18 +31,19 @@ TEXTO = {
         "s1_nota": "Diferența nu e tehnologia. Companiile care obțin rezultate au pus AI-ul pe predările dintre oameni, canale și echipe, cu reguli scrise și cu un om la decizie.",
         "s2": "Ce înseamnă un sistem AI în operațiuni",
         "s2_sub": "Nu un chatbot. Un traseu cu reguli, de la prima cerere până la pasul următor.",
-        "pasi": ["Intrare", "Context", "Decizie", "Predare", "Livrare", "Pasul următor"],
+        "pasi": ["Trigger", "Context", "Decizie", "Predare", "Livrare", "Pasul următor"],
         "reguli": [
-            ("Contextul călătorește cu cererea.", "Clientul nu repetă. Echipa următoare primește tot ce s-a aflat până la ea."),
-            ("Un singur responsabil pe pas.", "Se știe mereu cine face următoarea acțiune și până când."),
-            ("Regula de decizie e scrisă.", "AI-ul aplică regula. La limită decide un om, nu un model."),
-            ("Totul e trasabil.", "Se vede cine, ce, când și de ce. Se poate audita, se poate corecta."),
+            ("Trigger: ce s-a întâmplat?", "Un eveniment real pornește fluxul: o cerere, o rezervare, un bon, un semnal. Contextul lui călătorește mai departe, clientul nu repetă."),
+            ("Responsabil: cine face pasul următor?", "O persoană anume, cu termen. Niciodată un inbox fără nume."),
+            ("Regula: ce poate și ce nu poate face sistemul?", "Sursă, limite, timp și aprobare, scrise. AI-ul aplică regula; totul rămâne trasabil."),
+            ("Predarea la om: când intră o persoană?", "Excepție, dubiu, reclamație sau decizie importantă. La limită decide un om, nu un model."),
         ],
-        "s3": "Ce se întâmplă în prima lună",
+        "s3": "Drumul: de la 3 soluții rapide la un sistem",
         "etape": [
-            ("1", "Harta", "O pagină: traseul public al unui client, 3–5 predări, o ipoteză de îmbunătățire, limita umană și prioritatea pe 30 de zile. O oră cu persoana care cunoaște traseul."),
-            ("2", "3 soluții rapide, fără cost", "Implementate în zile, nu în luni, alese din situația de azi. Se văd din afară și se măsoară."),
-            ("3", "AI Systems Audit și pilot de 30 de zile", "Punct de plecare măsurat în ziua 0, rezultat în ziua 30. Abia apoi vorbim de implementare mai largă."),
+            ("1", "3 soluții rapide, fără cost", "Alese din situația de azi, implementate în zile, nu în luni. Se văd din afară și se măsoară. Sunt punctul de plecare, nu produsul."),
+            ("2", "Triaj scurt", "Trei întrebări: ce rezultat operațional contează în 90 de zile, unde se blochează cererea, cine e responsabil de pasul următor. Dacă o soluție simplă e mai bună, o spunem."),
+            ("3", "Audit de Sisteme cu AI", "Harta sistemului actual, blocajele în ordinea valorii, System Print-ul viitor, note de risc și responsabilitate, plan pe 90 de zile."),
+            ("4", "Sprint de design și pilot", "Specificație aprobată, apoi un pilot controlat: bază măsurată în ziua 0, rezultat, registru de excepții, predare către echipă."),
         ],
         "s4": "Exemple de soluții rapide",
         "exemple": [
@@ -52,13 +53,15 @@ TEXTO = {
         ],
         "s5": "Ce nu facem",
         "nu": [
+            "Nu începem cu „facem site-uri” sau „facem automatizări”. Începem cu blocajul și recomandăm cea mai mică intervenție care poate dovedi valoare.",
             "Nu luăm decizii medicale, de credit sau juridice. Acolo decide mereu un om.",
             "Nu promitem „automatizare totală”. Diferența noastră e metoda: reguli, responsabil, predare umană.",
             "Nu deducem probleme interne din ce e public. Lucrăm cu ipoteze de validat împreună.",
             "Nu folosim date private fără acord scris.",
         ],
         "s6": "Cine suntem",
-        "cine": "Pacheco Studios, Iași. Web design și sisteme AI pentru operațiuni, pentru companii din România, Portugalia și Brazilia. Fondator: Tomás Pacheco.",
+        "cine": "Pacheco Studios, Iași. Consultanță de sisteme cu AI pentru afaceri de servicii din România, Portugalia și Brazilia. Găsim scurgerea. Desenăm sistemul. Dovedim impactul. Fondator: Tomás Pacheco.",
+        "cta": ("Scrie AUDIT", "în DM pe Instagram @pachecostudiospt și primești întrebările de diagnostic. Sau direct pe WhatsApp."),
         "motto": ("Nu promitem.", "Arătăm."),
         "contacte": [("WhatsApp", "+40 723 098 556"), ("Site", "ro.pachecost.com"), ("Instagram", "@pachecostudiospt")],
         "surse_t": "Surse",
@@ -66,7 +69,7 @@ TEXTO = {
     },
     "pt": {
         "lang": "pt-PT", "data": "11 de outubro de 2026",
-        "eyebrow": "Pacheco Studios · Iași · Sistemas de IA para operações",
+        "eyebrow": "Pacheco Studios · Iași · Consultoria de sistemas com IA",
         "titulo": "IA nas operações",
         "sub": "O que as empresas dos EUA e da China já têm. O que a tua empresa pode ter, a partir de hoje.",
         "pentru": "Preparado para",
@@ -80,18 +83,19 @@ TEXTO = {
         "s1_nota": "A diferença não é a tecnologia. As empresas com resultados puseram a IA nas passagens entre pessoas, canais e equipas, com regras escritas e uma pessoa na decisão.",
         "s2": "O que é um sistema de IA nas operações",
         "s2_sub": "Não é um chatbot. É um percurso com regras, do primeiro pedido ao passo seguinte.",
-        "pasi": ["Entrada", "Contexto", "Decisão", "Passagem", "Entrega", "Próximo passo"],
+        "pasi": ["Trigger", "Contexto", "Decisão", "Handoff", "Entrega", "Próximo passo"],
         "reguli": [
-            ("O contexto viaja com o pedido.", "O cliente não repete. A equipa seguinte recebe tudo o que já se sabe."),
-            ("Um só responsável por passo.", "Sabe-se sempre quem faz a próxima ação e até quando."),
-            ("A regra de decisão está escrita.", "A IA aplica a regra. No limite decide uma pessoa, não um modelo."),
-            ("Tudo fica rastreável.", "Vê-se quem, o quê, quando e porquê. Pode auditar-se e corrigir-se."),
+            ("Trigger: o que aconteceu?", "Um evento real inicia o fluxo: um pedido, uma reserva, um recibo, um sinal. O contexto viaja com ele, o cliente não repete."),
+            ("Dono: quem faz a próxima ação?", "Uma pessoa concreta, com prazo. Nunca uma caixa de entrada sem nome."),
+            ("Regra: o que o sistema pode e não pode fazer?", "Fonte, limites, timing e aprovação, por escrito. A IA aplica a regra; tudo fica rastreável."),
+            ("Handoff: quando entra uma pessoa?", "Exceção, dúvida, reclamação ou decisão material. No limite decide uma pessoa, não um modelo."),
         ],
-        "s3": "O que acontece no primeiro mês",
+        "s3": "O caminho: de 3 soluções rápidas a um sistema",
         "etape": [
-            ("1", "O mapa", "Uma página: o percurso público de um cliente, 3 a 5 passagens, uma hipótese de melhoria, o limite humano e a prioridade para 30 dias. Uma hora com quem conhece o percurso."),
-            ("2", "3 soluções rápidas, sem custo", "Implementadas em dias, não em meses, escolhidas pela situação de hoje. Vêem-se de fora e medem-se."),
-            ("3", "AI Systems Audit e piloto de 30 dias", "Ponto de partida medido no dia 0, resultado no dia 30. Só depois se fala de implementação mais larga."),
+            ("1", "3 soluções rápidas, sem custo", "Escolhidas pela situação de hoje, implementadas em dias, não em meses. Vêem-se de fora e medem-se. São o ponto de partida, não o produto."),
+            ("2", "Triagem curta", "Três perguntas: que resultado operacional conta nos próximos 90 dias, onde abranda o pedido, quem é dono do próximo passo. Se uma solução simples for melhor, dizemo-lo."),
+            ("3", "Auditoria de Sistemas com IA", "Mapa do sistema atual, fugas por ordem de valor, System Print futuro, notas de risco e propriedade, plano de 90 dias."),
+            ("4", "Sprint de desenho e piloto", "Especificação aprovada, depois um piloto controlado: base medida no dia 0, resultado, registo de exceções, handover à equipa."),
         ],
         "s4": "Exemplos de soluções rápidas",
         "exemple": [
@@ -101,13 +105,15 @@ TEXTO = {
         ],
         "s5": "O que não fazemos",
         "nu": [
+            "Não começamos por «fazemos sites» ou «fazemos automações». Começamos pelo gargalo e recomendamos a menor intervenção que prove valor.",
             "Não tomamos decisões médicas, de crédito ou jurídicas. Aí decide sempre uma pessoa.",
             "Não prometemos «automação total». A nossa diferença é o método: regras, responsável, passagem humana.",
             "Não deduzimos problemas internos a partir do que é público. Trabalhamos com hipóteses a validar em conjunto.",
             "Não usamos dados privados sem acordo escrito.",
         ],
         "s6": "Quem somos",
-        "cine": "Pacheco Studios, Iași. Web design e sistemas de IA para operações, para empresas da Roménia, de Portugal e do Brasil. Fundador: Tomás Pacheco.",
+        "cine": "Pacheco Studios, Iași. Consultoria de sistemas com IA para negócios de serviços da Roménia, de Portugal e do Brasil. Encontramos a fuga. Desenhamos o sistema. Provamos o impacto. Fundador: Tomás Pacheco.",
+        "cta": ("Escreve AUDIT", "por DM no Instagram @pachecostudiospt e recebes as perguntas de diagnóstico. Ou diretamente pelo WhatsApp."),
         "motto": ("Não prometemos.", "Mostramos."),
         "contacte": [("WhatsApp", "+351 967 117 357"), ("Site", "pachecost.com"), ("Instagram", "@pachecostudiospt")],
         "surse_t": "Fontes",
@@ -154,11 +160,14 @@ h2 small{font-family:SM,monospace;font-size:7.4pt;font-weight:400;letter-spacing
 .reg i{font-style:normal;font-family:SM,monospace;font-weight:700;font-size:8pt;color:var(--lt);padding-top:.5mm}
 .reg b{display:block;font-weight:650;font-size:11pt}
 .reg p{font-size:10.2pt;color:var(--sec);line-height:1.38}
-.etape{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
-.et{background:#fff;border:1pt solid #D6CFC5;padding:4.5mm 5mm 5mm}
+.etape{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+.cta{margin-top:5mm;display:grid;grid-template-columns:auto 1fr;gap:4mm;align-items:center;background:var(--c);color:var(--o);padding:3.5mm 5mm}
+.cta b{font-family:AB,Impact,sans-serif;font-size:14pt;text-transform:uppercase;color:var(--l);white-space:nowrap}
+.cta p{font-size:10.4pt;line-height:1.38}
+.et{background:#fff;border:1pt solid #D6CFC5;padding:3.5mm 3.5mm 4mm}
 .et i{font-style:normal;display:inline-block;font-family:AB,Impact,sans-serif;font-size:20pt;color:var(--l);line-height:1;margin-bottom:1.5mm}
-.et b{display:block;font-size:11pt;font-weight:650;margin-bottom:1.6mm;text-wrap:balance}
-.et p{font-size:10pt;color:var(--sec);line-height:1.38}
+.et b{display:block;font-size:10pt;font-weight:650;margin-bottom:1.4mm;text-wrap:balance}
+.et p{font-size:9pt;color:var(--sec);line-height:1.36}
 .ex{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
 .ex h3{font-family:SM,monospace;font-size:8pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lt);margin-bottom:1.8mm;padding-bottom:1.2mm;border-bottom:1pt solid var(--tr)}
 .ex ul{list-style:none}
@@ -229,6 +238,7 @@ def pagina2(t):
 <div class="ex">{ex}</div>
 <h2>{E(t["s5"])}<small>05</small></h2>
 <ul class="nu">{nu}</ul>
+<div class="cta"><b>{E(t["cta"][0])}</b><p>{E(t["cta"][1])}</p></div>
 <h2>{E(t["s6"])}<small>06</small></h2>
 <div class="cine"><div><p>{E(t["cine"])}</p><div class="motto">{E(m1)} <i>{E(m2)}</i></div></div><div class="ct">{ct}</div></div>
 <div class="foot"><div class="srs">{E(t["surse_t"])}: {E(t["surse"])}</div><div>2 / 2</div></div>

@@ -25,13 +25,13 @@ A mudança da IA está a acontecer agora: empresas dos EUA e da China já conduz
 ## Primeiro passo por categoria
 | Categoria | Canal | Ativo | Pedido |
 |---|---|---|---|
-| Influenciador / operador | DM | 3 quick wins implementados sem custo (escolhidos a partir do mapa da operação) | Conversa curta |
-| Grande negócio | DM + LinkedIn do decisor | Mini-mapa de uma página de um percurso público | Quem na equipa valida (operações, CX, transformação) |
-| PME / parceiro | DM ao fundador | 3 quick wins na operação da agência + mini-mapa de um cliente-tipo | Reunião de complementaridade |
+| Influenciador / operador | DM | 3 quick wins sem custo + mapa | Conversa curta → triagem |
+| Grande negócio | DM + LinkedIn do decisor | Mini-mapa (System Print) + 3 quick wins | Quem valida (operações, CX, transformação) → triagem → auditoria |
+| PME / parceiro | DM ao fundador | 3 quick wins na operação da agência + mini-mapa de um cliente-tipo | Reunião → triagem → auditoria |
 | Página / comunidade | Comentários em 2–3 posts, depois DM | Contribuição pública útil | Tema para artigo, workshop ou evento |
 
-## Comissão de parceiros
-Depois dos 3 quick wins: pedem-se a menção ao nosso nome e as recomendações; 15 % do valor de cada trabalho recomendado (mensalidades fora). Detalhe e menu de quick wins em `COMISSAO-PARCEIROS.md`; mensagem «Parceria» no gerador.
+## Escada comercial (playbook de consultoria, 11/10)
+3 quick wins sem custo (gatilho) → triagem curta → Auditoria de Sistemas com IA (porta de entrada) → sprint de desenho → piloto controlado → otimização. Ticket 2.000 € a 100.000 €, nunca escrito numa DM. Sem venda de sites: um site é no máximo um quick win que leva à reunião. Comissões a parceiros: suspensas até o Tomás decidir (mensagens «Parceria» em `MENSAGENS_SUSPENSAS`). Playbook: `/mnt/project-files/playbook/`.
 
 ## Regras de envio
 - 1 minuto entre mensagens; saudação diferente em cada uma; sem emojis; sem preço; em romeno fecha com «Voi fi pregătit.»

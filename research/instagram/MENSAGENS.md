@@ -8,7 +8,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **Primeiro passo:** DM personalizada a oferecer 3 soluções rápidas implementadas sem custo, a partir do mapa da operação dele.
 
-**Intuito:** Conversa → 3 quick wins implementados → mostram o nosso nome por gratidão → recomendam, com 15% de cada trabalho que vier deles.
+**Intuito:** Conversa → 3 quick wins → triagem curta → Auditoria de Sistemas com IA; indicações consentidas depois (comissão a decidir pelo Tomás).
 
 **Registo em romeno:** tu
 
@@ -22,9 +22,9 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Revin pe scurt, cu un lucru concret: {valor} Oferta celor 3 soluții rămâne valabilă, fără nicio obligație. Dacă acum nu e momentul, înțeleg perfect. Voi fi pregătit.
 
-**Parceria (depois dos 3 quick wins)**
+**Triagem (depois da resposta)**
 
-> {saudacao} Mă bucur că cele 3 soluții merg deja la tine. Am o propunere simplă de parteneriat. Dacă ți se pare corect, menționează Pacheco Studios ca pe cei care te-au ajutat: o postare sau un story cu @pachecostudiospt și un rând pe site. Apoi, când întâlnești o afacere care se blochează în același loc, ne faci o introducere, cu acordul ei. Pentru fiecare lucrare care vine din recomandarea ta primești 15% din valoarea ei, plătit în 7 zile de la plata clientului. Voi fi pregătit.
+> {saudacao} Mulțumesc pentru răspuns. Ca să nu vă ocup timpul, trei întrebări scurte de triaj: ce rezultat operațional vreți să îmbunătățiți în următoarele 90 de zile; unde intră azi cererea și unde se blochează sau cere pe cineva să alerge după ea; cine e responsabil de pasul următor. Cu răspunsurile pregătesc harta și cele 3 soluții rapide. Apoi decidem împreună dacă are sens un Audit de Sisteme cu AI. Voi fi pregătit.
 
 ### Português
 
@@ -36,9 +36,9 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Volto só com uma coisa concreta: {valor} A oferta das 3 soluções mantém-se, sem compromisso. Se agora não é o momento, percebo perfeitamente. Vou estar preparado.
 
-**Parceria (depois dos 3 quick wins)**
+**Triagem (depois da resposta)**
 
-> {saudacao} Fico contente por as 3 soluções já estarem a funcionar contigo. Tenho uma proposta simples de parceria. Se te parecer justo, menciona a Pacheco Studios como quem te ajudou: um post ou story com @pachecostudiospt e uma linha no site. Depois, quando conheceres um negócio que encrava no mesmo sítio, apresentas-nos, com o acordo dele. Por cada trabalho que vier da tua recomendação recebes 15% do valor, pago até 7 dias depois de o cliente pagar. Vou estar preparado.
+> {saudacao} Obrigado pela resposta. Para não vos ocupar tempo, três perguntas curtas de triagem: que resultado operacional querem melhorar nos próximos 90 dias; onde entra hoje o pedido e onde abranda ou obriga alguém a correr atrás dele; quem é dono do próximo passo. Com as respostas preparo o mapa e as 3 soluções rápidas. Depois decidimos juntos se faz sentido uma Auditoria de Sistemas com IA. Vou estar preparado.
 
 ### Inglês
 
@@ -50,15 +50,15 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} A quick follow-up with one concrete thing: {valor} The offer of the 3 quick wins still stands, no strings attached. If now isn't the right time, completely understood. I'll come prepared.
 
-**Parceria (depois dos 3 quick wins)**
+**Triagem (depois da resposta)**
 
-> {saudacao} Glad the 3 quick wins are already working for you. I have a simple partnership proposal. If it feels fair, mention Pacheco Studios as the team that helped you: a post or story tagging @pachecostudiospt and a line on your site. Then, when you meet a business stuck in the same place, introduce us, with their consent. For every job that comes from your referral you get 15% of its value, paid within 7 days of the client paying. I'll come prepared.
+> {saudacao} Thanks for getting back to me. To keep it short, three triage questions: which operational result do you want to improve in the next 90 days; where does a request come in today and where does it slow down or need someone chasing it; who owns the next step. With your answers I prepare the map and the 3 quick wins. Then we decide together whether an AI Systems Audit makes sense. I'll come prepared.
 
 ## Grande negócio
 
 **Primeiro passo:** DM, e-mail ou LinkedIn a pedir encaminhamento para o dono de operações, CX ou transformação; levar mini-mapa.
 
-**Intuito:** Encaminhamento para o dono do processo ou reunião de descoberta que converta numa AI Systems Audit.
+**Intuito:** Encaminhamento para o dono do processo → triagem curta → Auditoria de Sistemas com IA → sprint de desenho → piloto controlado.
 
 **Registo em romeno:** dumneavoastră
 
@@ -72,6 +72,10 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Revin cu mini-harta despre traseul clientului {empresa}. Am adăugat un singur punct: {valor} Dacă îmi puteți indica persoana potrivită, îi trimit direct harta. Voi fi pregătit.
 
+**Triagem (depois da resposta)**
+
+> {saudacao} Mulțumesc pentru răspuns. Ca să nu vă ocup timpul, trei întrebări scurte de triaj: ce rezultat operațional vreți să îmbunătățiți în următoarele 90 de zile; unde intră azi cererea și unde se blochează sau cere pe cineva să alerge după ea; cine e responsabil de pasul următor. Cu răspunsurile pregătesc harta și cele 3 soluții rapide. Apoi decidem împreună dacă are sens un Audit de Sisteme cu AI. Voi fi pregătit.
+
 ### Português
 
 **DM 1**
@@ -81,6 +85,10 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 **Follow-up**
 
 > {saudacao} Volto ao mini-mapa sobre o percurso do cliente {empresa}. Acrescentei um único ponto: {valor} Se me puderem indicar a pessoa certa, envio-lhe o mapa diretamente. Vou estar preparado.
+
+**Triagem (depois da resposta)**
+
+> {saudacao} Obrigado pela resposta. Para não vos ocupar tempo, três perguntas curtas de triagem: que resultado operacional querem melhorar nos próximos 90 dias; onde entra hoje o pedido e onde abranda ou obriga alguém a correr atrás dele; quem é dono do próximo passo. Com as respostas preparo o mapa e as 3 soluções rápidas. Depois decidimos juntos se faz sentido uma Auditoria de Sistemas com IA. Vou estar preparado.
 
 ### Inglês
 
@@ -92,11 +100,15 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Following up on the mini-map of the {empresa} customer journey. I added one point: {valor} If you can point me to the right person, I'll send the map to them directly. I'll come prepared.
 
+**Triagem (depois da resposta)**
+
+> {saudacao} Thanks for getting back to me. To keep it short, three triage questions: which operational result do you want to improve in the next 90 days; where does a request come in today and where does it slow down or need someone chasing it; who owns the next step. With your answers I prepare the map and the 3 quick wins. Then we decide together whether an AI Systems Audit makes sense. I'll come prepared.
+
 ## PME / parceiro de indicação
 
 **Primeiro passo:** Mensagem de complementaridade: uma operação típica onde a Pacheco protege o resultado que a agência já gera.
 
-**Intuito:** 3 quick wins → mostram o nosso nome → recomendam clientes, com 15% de cada trabalho que vier deles; co-entrega quando fizer sentido.
+**Intuito:** 3 quick wins → triagem → auditoria na operação deles ou de um cliente; indicações e co-entrega depois (comissão a decidir pelo Tomás).
 
 **Registo em romeno:** dumneavoastră
 
@@ -110,9 +122,9 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Revin cu un exemplu concret de colaborare: {valor} Voi păstrați relația și serviciul, noi intrăm doar pe partea operațională. Voi fi pregătit.
 
-**Parceria (depois dos 3 quick wins)**
+**Triagem (depois da resposta)**
 
-> {saudacao} Mă bucur că cele 3 soluții funcționează deja în echipa voastră. Vă propun un parteneriat simplu. Dacă vi se pare corect, menționați Pacheco Studios ca pe cei care v-au ajutat: o postare cu @pachecostudiospt și un rând pe site. Apoi, când un client de-al vostru se blochează după lead, ne faceți o introducere, cu acordul lui. Voi păstrați clientul și serviciul. Pentru fiecare lucrare care vine din recomandarea voastră primiți 15% din valoarea ei, plătit în 7 zile de la plata clientului. Voi fi pregătit.
+> {saudacao} Mulțumesc pentru răspuns. Ca să nu vă ocup timpul, trei întrebări scurte de triaj: ce rezultat operațional vreți să îmbunătățiți în următoarele 90 de zile; unde intră azi cererea și unde se blochează sau cere pe cineva să alerge după ea; cine e responsabil de pasul următor. Cu răspunsurile pregătesc harta și cele 3 soluții rapide. Apoi decidem împreună dacă are sens un Audit de Sisteme cu AI. Voi fi pregătit.
 
 ### Português
 
@@ -124,9 +136,9 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Volto com um exemplo concreto de colaboração: {valor} Vocês mantêm a relação e o serviço, nós entramos só na parte operacional. Vou estar preparado.
 
-**Parceria (depois dos 3 quick wins)**
+**Triagem (depois da resposta)**
 
-> {saudacao} Fico contente por as 3 soluções já estarem a funcionar na vossa equipa. Proponho uma parceria simples. Se vos parecer justo, mencionem a Pacheco Studios como quem vos ajudou: um post com @pachecostudiospt e uma linha no site. Depois, quando um cliente vosso encravar depois do lead, apresentam-nos, com o acordo dele. Vocês mantêm o cliente e o serviço. Por cada trabalho que vier da vossa recomendação recebem 15% do valor, pago até 7 dias depois de o cliente pagar. Vou estar preparado.
+> {saudacao} Obrigado pela resposta. Para não vos ocupar tempo, três perguntas curtas de triagem: que resultado operacional querem melhorar nos próximos 90 dias; onde entra hoje o pedido e onde abranda ou obriga alguém a correr atrás dele; quem é dono do próximo passo. Com as respostas preparo o mapa e as 3 soluções rápidas. Depois decidimos juntos se faz sentido uma Auditoria de Sistemas com IA. Vou estar preparado.
 
 ### Inglês
 
@@ -138,15 +150,15 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Following up with one concrete collaboration example: {valor} You keep the relationship and the service; we only step into the operational side. I'll come prepared.
 
-**Parceria (depois dos 3 quick wins)**
+**Triagem (depois da resposta)**
 
-> {saudacao} Glad the 3 quick wins are already working for your team. I'd like to propose a simple partnership. If it feels fair, mention Pacheco Studios as the team that helped you: a post tagging @pachecostudiospt and a line on your site. Then, when one of your clients gets stuck after the lead, introduce us, with their consent. You keep the client and the service. For every job that comes from your referral you get 15% of its value, paid within 7 days of the client paying. I'll come prepared.
+> {saudacao} Thanks for getting back to me. To keep it short, three triage questions: which operational result do you want to improve in the next 90 days; where does a request come in today and where does it slow down or need someone chasing it; who owns the next step. With your answers I prepare the map and the 3 quick wins. Then we decide together whether an AI Systems Audit makes sense. I'll come prepared.
 
 ## Página / comunidade B2B
 
 **Primeiro passo:** Comentário útil no post atual; 2 a 3 interações antes de pedir contacto.
 
-**Intuito:** Familiaridade perante a audiência → DM ou introdução → conteúdo, evento ou referência.
+**Intuito:** Familiaridade perante a audiência → DM ou introdução → conteúdo de diagnóstico, evento ou pedidos AUDIT.
 
 **Registo em romeno:** tu
 
