@@ -209,7 +209,6 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 - Em Iași a regra era «1.ª proposta é só o site, em RON»: passa a ser «1.ª proposta é a auditoria»?
 - Contas atuais de mensalidade de site (Grupo Naval, Catarina, Bravus, Magic Key): mantêm-se ou migram para otimização mensal?
 - CTA «DM AUDIT»: palavra igual em PT, RO e EN?
-- O playbook de triagem pede «15 minutos para validar»; a regra de 09/10 era nunca dizer minutos («uma reunião»). Qual fica?
 
 ## A.13 DINHEIRO: AUDITORIA, TICKET E PARCEIROS (decisão do Tomás, 11/10/2026)
 
@@ -232,6 +231,8 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 
 ## A.14 TRIAGEM PROATIVA E «AUDIT HOOK BY DEMO» (Tomás, 11/10/2026, playbook de triagem v1.0)
 
+**Sem minutos (Tomás, 11/10 14h28):** o PDF diz «15 minutos»; nas nossas mensagens pede-se sempre «uma reunião» ou «uma validação», nunca minutos, porque o nosso tempo também é valioso. Aplica-se a todos os exemplos abaixo.
+
 **Mudança de método:** a triagem deixa de ser um pedido ao cliente. A Pacheco observa primeiro o percurso público, prepara uma **hipótese** e um **Micro System Print de uma página**, e só pede ao decisor que confirme ou corrija o mapa. Nunca um formulário. Promessa: *«Eu já preparei o que validaria no vosso caso.»* Frase-chave: *«Não estou a afirmar que têm uma falha. Estou a mostrar a primeira coisa que validaria no vosso percurso.»*
 
 **A isca (palavras do Tomás):** levar a triagem ao cliente mostrando-lhe o que já é possível, e fechar com o convite. Exemplos a adaptar por nicho:
@@ -250,9 +251,9 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 | «Preparei uma hipótese de fluxo para validar.» | «Fiz uma auditoria completa à vossa empresa.» |
 | «Se a hipótese estiver errada, fica uma boa prática útil.» | «Garanto que vão poupar X horas.» |
 
-**Método de 4 passos:** 1. **Observar** (10–15 min no percurso público: Google, site, formulário, chamada, WhatsApp, Instagram, e-mail, política de reservas, reviews; só factos) → 2. **Hipotetizar** (uma fuga provável do setor, como pergunta operacional: «Quando entra por três canais, quem fica dono da próxima ação?») → 3. **Mostrar** (Micro System Print) → 4. **Validar** (reunião curta conduzida pela Pacheco; há problema → Auditoria; não há → fecha-se sem forçar).
+**Método de 4 passos:** 1. **Observar** (10–15 min no percurso público: Google, site, formulário, chamada, WhatsApp, Instagram, e-mail, política de reservas, reviews; só factos) → 2. **Hipotetizar** (uma fuga provável do setor, como pergunta operacional: «Quando entra por três canais, quem fica dono da próxima ação?») → 3. **Mostrar** (Micro System Print) → 4. **Validar** (uma reunião conduzida pela Pacheco; há problema → Auditoria; não há → fecha-se sem forçar).
 
-**Micro System Print (1 página):** cabeçalho com empresa + setor + uma pergunta de diagnóstico · percurso atual só com canais observados, transição de risco marcada «a validar» · fluxo futuro trigger → dono → regra → handoff (nunca uma IA a decidir sem limite) · 3 perguntas que um decisor responde em 15 min · 1–2 métricas ligadas à fuga · próximo passo: «Validar este mapa. Se não houver problema, fica como referência; se houver, definimos a Auditoria.» **Checklist antes de enviar:** ≥ 2 sinais públicos reais registados · hipótese, não acusação · específico para a empresa · o valor prometido é clareza, não ferramenta nem resultado inventado · CTA para validar com o decisor, sem formulário.
+**Micro System Print (1 página):** cabeçalho com empresa + setor + uma pergunta de diagnóstico · percurso atual só com canais observados, transição de risco marcada «a validar» · fluxo futuro trigger → dono → regra → handoff (nunca uma IA a decidir sem limite) · 3 perguntas que um decisor responde de cabeça · 1–2 métricas ligadas à fuga · próximo passo: «Validar este mapa. Se não houver problema, fica como referência; se houver, definimos a Auditoria.» **Checklist antes de enviar:** ≥ 2 sinais públicos reais registados · hipótese, não acusação · específico para a empresa · o valor prometido é clareza, não ferramenta nem resultado inventado · CTA para validar com o decisor, sem formulário.
 
 **Três setores prioritários** (fricção repetida e mensurável, não «setor de IA»):
 
