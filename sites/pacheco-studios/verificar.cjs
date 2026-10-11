@@ -410,7 +410,7 @@ const fs = require('fs');
     else bem(`${k}: contactos do fim da página com ${numTxt}`);
     // o email do fim da página: o do Robert no RO (pedido do Tomás, 11/10), o principal no resto
     const mail = await p.evaluate(() => (document.querySelector('#contact a[href^="mailto:"]') || {}).href);
-    const mailOk = k === 'ro' ? 'mailto:robert@teampachecostudios.com' : 'mailto:tomas@pachecost.com';
+    const mailOk = 'mailto:robert@teampachecostudios.com'; // o do Robert nas 3 línguas (pedido do Tomás, 11/10)
     if (mail !== mailOk) mal(`${k}: email dos contactos ${mail}, devia ser ${mailOk}`);
     else bem(`${k}: email dos contactos ${mailOk.slice(7)}`);
     // no ro.pachecost.com só o número romeno, em todos os botões e no JSON-LD (pedido do Tomás, 09/10)
@@ -846,6 +846,20 @@ const fs = require('fs');
       await p.close();
     }
     await ctx.close();
+  }
+
+  // logótipo nos links partilhados (email, WhatsApp, Google): ficheiros reais em cada domínio, não só o data URI (Tomás, 11/10)
+  console.log('\nLOGÓTIPO NOS LINKS');
+  for (const lg of ['pt', 'en', 'ro']) {
+    const base = LINGUAS[lg].url;
+    const html = responder(base).body.toString();
+    const og = (html.match(/<meta property="og:image" content="([^"]+)"/) || [])[1];
+    const caminhos = ['/favicon.ico', '/favicon.svg', '/apple-touch-icon.png', '/icon-512.png', og && new URL(og).pathname];
+    const maus = caminhos.filter(c => { if (!c) return true; const r = responder(new URL(c, base).href);
+      return r.status !== 200 || r.body.length < 100 || /^\s*</.test(r.body.slice(0, 20).toString()) && !c.endsWith('.svg'); });
+    const links = /rel="apple-touch-icon" href="\/apple-touch-icon.png"/.test(html) && /rel="icon" href="\/favicon.ico"/.test(html);
+    if (maus.length || !links || !og || !og.startsWith(base.replace(/\/(en\/)?$/, ''))) mal(`${lg}: logótipo nos links: ${maus.join(' ')} ${links ? '' : 'faltam <link> dos ícones'} og:image ${og}`);
+    else bem(`${lg}: ${base} serve favicon.ico, ícones PNG e a imagem de pré-visualização`);
   }
 
   await browser.close();

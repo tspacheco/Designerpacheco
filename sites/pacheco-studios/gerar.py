@@ -1010,6 +1010,24 @@ const { chromium } = require('playwright');
     os.remove(tmp)
 
 
+def icones_png():
+    """O símbolo do logótipo em ficheiros reais na raiz (favicon.ico, favicon.svg, PNG 48/192/512, apple-touch-icon).
+    Os clientes de email, o Google e o WhatsApp vão buscar /favicon.ico ou estes PNG ao próprio domínio e não leem
+    o ícone em data URI: era por isso que o logótipo não aparecia nos links do ro.pachecost.com (Tomás, 11/10)."""
+    open(os.path.join(DIST, "favicon.svg"), "w", encoding="utf-8").write(FAVICON_SVG)
+    tamanhos = {"favicon-48.png": 48, "apple-touch-icon.png": 180, "icon-192.png": 192, "icon-512.png": 512}
+    for nome, px in tamanhos.items():
+        subprocess.run(["node", "-e", """
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const n = +process.argv[3];
+  const p = await b.newPage({ viewport: { width: n, height: n } });
+  await p.setContent('<html><body style="margin:0;background:transparent">' + process.argv[1].replace('<svg ', '<svg width="' + n + '" height="' + n + '" style="display:block" ') + '</body></html>');
+  await p.screenshot({ path: process.argv[2], omitBackground: true }); await b.close(); })();
+""", FAVICON_SVG, os.path.join(DIST, nome), str(px)], check=True, env=NODE_ENV)
+    from PIL import Image
+    Image.open(os.path.join(DIST, "icon-512.png")).save(os.path.join(DIST, "favicon.ico"), sizes=[(16, 16), (32, 32), (48, 48)])
+
+
 def cabeca_simples(lang, titulo, estilo, extra=""):
     return f"""<!DOCTYPE html>
 <html lang="{LINGUAS[lang]["hreflang"]}">
@@ -1018,7 +1036,9 @@ def cabeca_simples(lang, titulo, estilo, extra=""):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{e(titulo)} — Pacheco Studios</title>
 <meta name="theme-color" content="#141210">
-<link rel="icon" href="{FAVICON}">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {extra}{estilo}
 </head>"""
 
@@ -1204,7 +1224,7 @@ def main():
                   "image": og_img, "description": c["meta"]["description"], "telephone": tel_l, "email": email_de(d, lang),
                   "areaServed": [{"@type": "Country", "name": n} for n in cfg["areas"]],
                   "sameAs": [f"https://www.instagram.com/{d['instagram'].lstrip('@')}/"],
-                  "founder": {"@type": "Person", "name": d["nome"]}}
+                  "founder": {"@type": "Person", "name": d["nome"]}, "logo": f"https://{cfg['host']}/icon-512.png"}
         valores = {
             "LINGUA": cfg["hreflang"], "TITLE": e(c["meta"]["title"]), "DESCRIPTION": e(c["meta"]["description"]),
             "OG_TITLE": e(c["meta"]["og_title"]), "OG_LOCALE": cfg["og_locale"], "OG_IMAGE": og_img,
@@ -1297,6 +1317,7 @@ def main():
     n = copiar_sites(portfolio, linguas)
     for lang, c in linguas.items():
         og_png(fontes, c["og"], os.path.join(DIST, "media", f"og-{lang}.png"))
+    icones_png()
     # os três carros da intro (fotografias recortadas, frente à direita, WebP com transparência)
     for i in (1, 2, 3):
         carro = os.path.join(AQUI, "media", f"intro-{i}.webp")
