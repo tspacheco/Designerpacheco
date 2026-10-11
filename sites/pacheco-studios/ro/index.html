@@ -384,7 +384,15 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 .print dt{font:700 .75rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--osso-2)}
 .print dd{margin:0;font-size:.9375rem}
 
-/* ═══ Auditoria ═══ */
+/* ═══ Auditoria: primeiro a triagem, depois a auditoria ═══ */
+.aud-etapas{margin-top:clamp(2rem,7vw,3rem)}
+.aud-etapas ol{display:grid;gap:1rem}
+.aud-etapas li{display:grid;gap:.35rem;padding:1.1rem 1.2rem;border-radius:1rem;border:1px solid var(--linha-e)}
+.aud-etapas li:first-child{border-color:var(--laranja)}
+.aud-etapas .quando{font:700 .75rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--laranja)}
+.aud-etapas li+li .quando{color:var(--osso-2)}
+.aud-etapas h4{font:400 1.375rem/1.1 var(--display);text-transform:uppercase}
+.aud-etapas p{color:var(--osso-2);font-size:.9375rem;max-width:52ch}
 .aud-principio{margin-top:clamp(2rem,7vw,3.5rem);padding:clamp(1.25rem,4vw,2rem);border-radius:1rem;background:var(--carvao-2);border:1px solid var(--linha-e)}
 .aud-principio h3{font-size:clamp(1.4rem,4.5vw,2rem)}
 .aud-principio>p{margin-top:.75rem;max-width:52ch;color:var(--osso-2)}
@@ -415,6 +423,7 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 @media (min-width:48rem){
   .aud-pecas{grid-template-columns:repeat(4,minmax(0,1fr))}
   .aud-dois{grid-template-columns:1.4fr 1fr;gap:3rem}
+  .aud-etapas ol{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 /* ═══ contacto ═══ */
@@ -1332,7 +1341,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex neutro" href="https://jasmim2marisqueira.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Jasmim 2</span><span class="ex-meta">Fructe de mare · Manta Rota</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex" href="https://hanamquarteira.com" style="--bg:#15110E;--ink:#F5EDE2;--ac:#C3392B;--f:'Bungee';--w:400" target="_blank" rel="noopener"><span class="ex-nome">HANAM</span><span class="ex-meta">Grătar coreean · Quarteira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex" href="https://gruponaval.online" style="--bg:#0A1C2E;--ink:#F2EDE2;--ac:#C9A227;--f:'Sora';--w:800" target="_blank" rel="noopener"><span class="ex-nome">Grupo Naval</span><span class="ex-meta">Restaurant · Olhão</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex neutro" href="https://bompaladar.pt" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Simona&#x27;s O Bom Paladar</span><span class="ex-meta">Restaurant · Almancil</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex neutro" href="https://ginasioclubetavira.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Ginásio Clube Tavira</span><span class="ex-meta">Restaurantul clubului · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li><li><a class="ex neutro" href="https://sao-martinho.com/" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">São Martinho</span><span class="ex-meta">Fructe de mare · Guia</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li></ul></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-receptionist">Recepționist AI</a> <a class="chip" href="#a-recenzii">Recenzii Google</a> <a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
-    <div class="demo"><p>Vrei să afli dacă scurgerea afacerii tale e site-ul?</p><a class="botao secundario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20cer%20auditul%20pentru%20afacerea%20mea%3A%20Restaurante" data-diagnostico><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere auditul</a></div>
+    <div class="demo"><p>Vrei să afli dacă scurgerea afacerii tale e site-ul?</p><a class="botao secundario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20fac%20triajul%20pentru%20afacerea%20mea%3A%20Restaurante" data-diagnostico><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cunoaște-ne</a></div>
   </div>
 </details>
 <details class="setor rv" name="setor" id="s-cafes" style="--i:1">
@@ -1352,7 +1361,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex neutro" href="https://gelatariamuxagata.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Gelataria Muxagata</span><span class="ex-meta">Gelaterie artizanală · Tavira</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li></ul></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-social">Postări</a> <a class="chip" href="#a-recenzii">Recenzii Google</a></div></div>
-    <div class="demo"><p>Vrei să afli dacă scurgerea afacerii tale e site-ul?</p><a class="botao secundario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20cer%20auditul%20pentru%20afacerea%20mea%3A%20Cafenele%2C%20cofet%C4%83rii%20%C8%99i%20gelaterii" data-diagnostico><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere auditul</a></div>
+    <div class="demo"><p>Vrei să afli dacă scurgerea afacerii tale e site-ul?</p><a class="botao secundario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20fac%20triajul%20pentru%20afacerea%20mea%3A%20Cafenele%2C%20cofet%C4%83rii%20%C8%99i%20gelaterii" data-diagnostico><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cunoaște-ne</a></div>
   </div>
 </details>
 <details class="setor rv" name="setor" id="s-lojas" style="--i:2">
@@ -1373,7 +1382,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex" href="/p/toda-chic/" style="--bg:#F8EFEA;--ink:#2B1D21;--ac:#B5776A;--f:'Italiana';--w:400"><span class="ex-nome">Toda Chic</span><span class="ex-meta">Magazin de haine online · Portugalia</span></a></li></ul></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-lead">Răspuns rapid</a> <a class="chip" href="#a-revenire">Clienți care revin</a></div></div>
-    <div class="demo"><p>Vrei să afli dacă scurgerea afacerii tale e site-ul?</p><a class="botao secundario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20cer%20auditul%20pentru%20afacerea%20mea%3A%20Magazine%20online" data-diagnostico><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere auditul</a></div>
+    <div class="demo"><p>Vrei să afli dacă scurgerea afacerii tale e site-ul?</p><a class="botao secundario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20fac%20triajul%20pentru%20afacerea%20mea%3A%20Magazine%20online" data-diagnostico><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cunoaște-ne</a></div>
   </div>
 </details>
 <details class="setor rv" name="setor" id="s-marcacoes" style="--i:3">
@@ -1393,7 +1402,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </dl></div>
     <div><h4 class="rotulo">Site-uri făcute de noi</h4><ul class="exemplos"><li><a class="ex neutro" href="https://barbeariadocao.com" style="--bg:#141210;--ink:#EFEAE3;--ac:#E8622C;--f:'Space Mono';--w:700" target="_blank" rel="noopener"><span class="ex-nome">Barbearia do Cão</span><span class="ex-meta">Salon canin · Loulé</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="so-leitor"> (se deschide într-o filă nouă)</span></a></li></ul></div>
     <div><h4 class="rotulo">Merge bine cu</h4><div class="chips"><a class="chip" href="#a-programari">Programări</a> <a class="chip" href="#a-recenzii">Recenzii Google</a></div></div>
-    <div class="demo"><p>Vrei să afli dacă scurgerea afacerii tale e site-ul?</p><a class="botao secundario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20cer%20auditul%20pentru%20afacerea%20mea%3A%20Servicii%20cu%20programare" data-diagnostico><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cere auditul</a></div>
+    <div class="demo"><p>Vrei să afli dacă scurgerea afacerii tale e site-ul?</p><a class="botao secundario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20fac%20triajul%20pentru%20afacerea%20mea%3A%20Servicii%20cu%20programare" data-diagnostico><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Cunoaște-ne</a></div>
   </div>
 </details>
       </div>
@@ -1429,7 +1438,14 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="envolver seccao">
     <p class="eyebrow">Auditul de sisteme cu AI</p>
     <h2 id="t-auditoria" class="afirmacao">Găsim blocajul înainte să mai cumperi un instrument.</h2>
-    <p class="lead">Auditul e ușa de intrare. Îl conducem noi; tu dai contextul și confirmi faptele. La final ai o decizie bazată pe dovezi, nu o listă de instrumente.</p>
+    <p class="lead">Auditul nu se comandă dintr-un buton. Începe cu un triaj: dacă există o scurgere care merită rezolvată și vrei să mergem mai departe, intrăm în profunzimea afacerii tale.</p>
+    <div class="aud-etapas">
+      <h3 class="rotulo">Întâi triajul. Apoi, auditul.</h3>
+      <ol>
+<li class="rv" style="--i:0"><span class="quando">Acum, fără obligații</span><h4>Triaj</h4><p>O discuție cu Tomás: 8 întrebări și o întâlnire. Vedem dacă există o scurgere care merită rezolvată și îți spunem sincer dacă are sens să continuăm.</p></li>
+<li class="rv" style="--i:1"><span class="quando">Doar dacă mergem mai departe împreună</span><h4>Audit</h4><p>Intrăm în profunzimea afacerii tale: vorbim cu cine răspunde clienților, urmărim fiecare cerere și cartografiem tot sistemul. La final știi exact unde e scurgerea, cât costă și ce faci primul.</p></li>
+      </ol>
+    </div>
     <div class="aud-principio">
       <h3 class="afirmacao">Un instrument nu e un sistem.</h3>
       <p>Există sistem atunci când un eveniment real produce o acțiune următoare controlată. Fiecare sistem pe care îl proiectăm are patru piese la vedere:</p>
@@ -1463,8 +1479,8 @@ dialog.diag.fim .diag-ficha{display:block}
     </div>
     <div class="aud-cta">
       <p class="afirmacao">Găsim scurgerea. Proiectăm sistemul. Dovedim impactul.</p>
-      <a class="botao primario grande" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20cer%20auditul%20de%20sisteme%20cu%20AI%20pentru%20afacerea%20mea%3A%20" data-diagnostico data-auditoria>Cere auditul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <p class="nota">Fără obligații. Dacă o soluție simplă e suficientă, îți spunem de la început.</p>
+      <a class="botao primario grande" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20fac%20triajul%20pentru%20afacerea%20mea%3A%20" data-diagnostico data-auditoria>Cunoaște-ne<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="nota">Triajul e fără obligații. Auditul începe doar dacă amândoi vedem că merită.</p>
     </div>
   </div>
 </section>
@@ -1479,10 +1495,10 @@ dialog.diag.fim .diag-ficha{display:block}
       <p class="heroi-passo">Dovedim impactul.</p>
       <p class="lead heroi-lead">Auditam unde se rup cererile, deciziile și livrarea în afacerea ta. Începem cu blocajul, nu cu instrumentul.</p>
       <div class="heroi-acoes">
-        <a class="botao primario grande" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20cer%20auditul%20de%20sisteme%20cu%20AI%20pentru%20afacerea%20mea%3A%20" data-diagnostico>Cere auditul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="botao contorno grande" href="#auditoria">Cum funcționează auditul</a>
+        <a class="botao primario grande" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20fac%20triajul%20pentru%20afacerea%20mea%3A%20" data-diagnostico>Cunoaște-ne<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="botao contorno grande" href="#auditoria">Cum lucrăm</a>
       </div>
-      <p class="heroi-adere">Un plan de 90 de zile înainte de orice instrument.</p>
+      <p class="heroi-adere">Întâi un triaj. Auditul doar dacă are sens.</p>
     </div>
    </div>
   </div>
@@ -1548,11 +1564,11 @@ dialog.diag.fim .diag-ficha{display:block}
 <section id="contact" class="seccao" aria-labelledby="t-contact">
   <div class="envolver">
     <p class="eyebrow">Primul pas</p>
-    <h2 id="t-contact" class="afirmacao">Primul pas e auditul.</h2>
-    <p class="lead">8 întrebări, sub 3 minute. Vedem dacă există un blocaj care merită auditat și vorbim pe WhatsApp.</p>
-    <a class="botao primario grande" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20cer%20auditul%20de%20sisteme%20cu%20AI%20pentru%20afacerea%20mea%3A%20" data-diagnostico>Cere auditul<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <h2 id="t-contact" class="afirmacao">Primul pas e un triaj.</h2>
+    <p class="lead">8 întrebări și o discuție pe WhatsApp. Dacă există o scurgere care merită auditată, îți spunem. Dacă nu, îți spunem și asta.</p>
+    <a class="botao primario grande" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20fac%20triajul%20pentru%20afacerea%20mea%3A%20" data-diagnostico>Cunoaște-ne<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <ul class="contactos">
-<li><a href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20cer%20auditul%20de%20sisteme%20cu%20AI%20pentru%20afacerea%20mea%3A%20" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="txt"><span class="qual">WhatsApp</span><span class="valor">+40 723 098 556</span></span></a></li>
+<li><a href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20fac%20triajul%20pentru%20afacerea%20mea%3A%20" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="txt"><span class="qual">WhatsApp</span><span class="valor">+40 723 098 556</span></span></a></li>
 <li><a href="tel:+40723098556"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="txt"><span class="qual">Telefon</span><span class="valor">+40 723 098 556</span></span></a></li>
 <li><a href="mailto:robert@teampachecostudios.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg><span class="txt"><span class="qual">Email</span><span class="valor">robert@teampachecostudios.com</span></span></a></li>
 <li><a href="https://www.instagram.com/pachecostudiospt/" rel=noopener><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg><span class="txt"><span class="qual">Instagram</span><span class="valor">@pachecostudiospt</span></span></a></li>
@@ -1572,18 +1588,18 @@ dialog.diag.fim .diag-ficha{display:block}
 </footer>
 
 <div class="barra" id="barra" inert>
-  <a class="botao primario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20cer%20auditul%20de%20sisteme%20cu%20AI%20pentru%20afacerea%20mea%3A%20" data-diagnostico>Cere auditul</a>
+  <a class="botao primario" href="https://wa.me/40723098556?text=Bun%C4%83%2C%20Tom%C3%A1s%21%20Vreau%20s%C4%83%20fac%20triajul%20pentru%20afacerea%20mea%3A%20" data-diagnostico>Cunoaște-ne</a>
 </div>
 
 
 <dialog class="diag" id="diagnostico" aria-labelledby="diag-t">
   <div class="diag-topo">
-    <p class="diag-marca"><svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg><span>Cerere de audit</span></p>
+    <p class="diag-marca"><svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#0D0B08"/><circle cx="50" cy="50" r="46" fill="none" stroke="#C9A256" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/><path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg><span>Triaj Pacheco Studios</span></p>
     <p class="diag-cont" aria-hidden="true"><b id="diag-n">00</b><span>/08</span></p>
     <button class="diag-x" type="button" data-fechar-diag aria-label="Închide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
   <div class="diag-barra" aria-hidden="true"><i id="diag-barra"></i></div>
-  <h2 id="diag-t" class="so-leitor">Cerere de audit</h2>
+  <h2 id="diag-t" class="so-leitor">Triaj Pacheco Studios</h2>
   <div class="diag-corpo">
     <div class="diag-palco" id="diag-palco" aria-live="polite"></div>
     <aside class="diag-ficha" aria-label="Fișa afacerii tale">
@@ -1593,7 +1609,7 @@ dialog.diag.fim .diag-ficha{display:block}
     </aside>
   </div>
   <p class="diag-pe">Continuând, ești de acord cu <a href="/confidentialitate.html">Politica de confidențialitate</a>. Răspunsurile pleacă de pe telefonul tău doar când apeși pe trimite.</p>
-  <script type="application/json" id="diag-dados">{"abertura": ["Înainte să vorbim despre instrumente, vreau să înțeleg unde pierde afacerea ta cereri, timp sau clienți.", "Sunt 8 întrebări, sub 3 minute. Cum te cheamă?"], "perguntas": [{"id": "nome", "tipo": "texto", "rotulo": "Numele tău", "ph": "Nume și prenume", "wa": "Nume", "msg": "Cum te cheamă?"}, {"id": "negocio", "tipo": "texto", "msg": "Încântat, {nome}! Cum se numește afacerea ta?", "rotulo": "Numele afacerii", "ph": "Ex.: Cafeneaua Centrală", "wa": "Afacere"}, {"id": "email", "tipo": "email", "msg": "Care e adresa ta de e-mail?", "rotulo": "E-mailul tău", "ph": "nume@exemplu.ro", "wa": "E-mail", "gancho_de": "negocio", "gancho": {"*": "{negocio}, îmi place numele. Așa pot deja să văd cum apare afacerea ta online înainte să vorbim."}}, {"id": "resultado", "tipo": "opcoes", "msg": "Ce rezultat vrei să îmbunătățești în următoarele 90 de zile?", "opcoes": ["Mai mulți clienți sau programări", "Răspunsuri mai rapide", "Mai puține neprezentări și anulări", "Clienți care revin", "Mai puține ore de administrare", "Cifrele afacerii la timp"], "wa": "Rezultat în 90 de zile", "gancho_de": "email", "gancho": {"*": "Mulțumesc. Pornim mereu de la rezultatul pe care îl vrei, nu de la un instrument."}}, {"id": "dor", "tipo": "multi", "msg": "Unde încetinește sau se pierde azi o cerere? Poți alege mai multe.", "opcoes": ["Mesaje și apeluri fără răspuns", "Cereri fără responsabil: nimeni nu știe cine răspunde", "Programări, neprezentări și reprogramări", "Oferte și reveniri uitate", "Hârțoage, facturi și bonuri", "Nu știu, și asta mă îngrijorează"], "wa": "Unde se pierde", "gancho_de": "resultado", "gancho": {"0": "Mai mulți clienți rar înseamnă mai multă reclamă: înseamnă să nu-i pierzi pe cei care te caută deja.", "1": "Viteza de răspuns e una dintre scurgerile cel mai ușor de măsurat: minute până la primul răspuns.", "2": "Neprezentările se măsoară pe săptămână. E unul dintre locurile unde un sistem simplu arată rezultate cel mai repede.", "3": "Să aduci înapoi pe cine te cunoaște deja costă mult mai puțin decât un client nou.", "4": "Orele de administrare sunt ore în afara afacerii. Se pot măsura și ele.", "5": "Cifrele la timp schimbă deciziile. Mai întâi, să știi unde sunt.", "*": "Înțeleg."}}, {"id": "canais", "tipo": "multi", "msg": "Pe unde îți vin azi cererile?", "opcoes": ["Google și Maps", "Instagram sau Facebook", "WhatsApp", "Telefon", "Trec pe lângă", "Recomandări", "Platforme (Glovo, Booking…)"], "wa": "Vin prin", "gancho_de": "dor", "gancho": {"0": "E una dintre cele mai comune scurgeri: clientul scrie, nimeni nu răspunde la timp și merge la vecini.", "1": "O cerere fără responsabil e problema cea mai scumpă și cea mai ușor de ascuns. În audit îi dăm un nume.", "2": "Confirmările și o listă de așteptare închid scurgerea asta, cu reguli aprobate de tine.", "3": "O revenire în ziua potrivită valorează mai mult decât zece mesaje. Poate avea responsabil și termen.", "4": "Bonurile și facturile pot ajunge ordonate la contabil, fără să pierzi o după-amiază.", "5": "Pentru asta e auditul: cartografiem înainte să mai cumperi un instrument.", "*": "Înțeleg. Are rezolvare."}}, {"id": "faturacao", "tipo": "opcoes", "msg": "Ca să măsurăm impactul: cât încasează afacerea pe lună, aproximativ?", "opcoes": ["Sub 12.500 lei", "12.500 – 25.000 lei", "25.000 – 50.000 lei", "50.000 – 100.000 lei", "100.000 – 175.000 lei", "175.000 – 250.000 lei", "Peste 250.000 lei", "Prefer să nu spun"], "wa": "Încasări/lună", "gancho_de": "canais", "gancho": {"*": "Cu cât sunt mai multe canale, cu atât sunt mai multe locuri unde se pierde contextul clientului."}}, {"id": "decisor", "tipo": "opcoes", "msg": "Ultimul pas: cine decide și aprobă un pilot în afacere?", "opcoes": ["Eu", "Eu, cu un asociat", "Altcineva din firmă"], "wa": "Cine decide", "gancho_de": "faturacao", "gancho": {"7": "Nicio problemă, rămâne între noi.", "*": "Mulțumesc. E doar ca să măsurăm impactul în bani, nu în promisiuni."}}], "continuar": "Continuă", "obrigatorio": "Scrie cel puțin 2 litere.", "escolhe": "Alege cel puțin una.", "fim": ["Mulțumesc, {nome}! Cu asta văd deja dacă există un blocaj care merită auditat.", "Apasă pe trimite: discuția continuă pe WhatsApp."], "enviar": "Trimite pe WhatsApp", "recomecar": "Ia-o de la capăt", "wa_intro": "Bună, Tomás! Am trimis cererea de audit de pe site:", "comecar": "Începe", "anterior": "Înapoi", "seguinte": "Mai departe", "pergunta": "Întrebarea", "meta": "8 întrebări · sub 3 minute · fără obligații", "intro_t": "Unde pierde afacerea ta clienți?", "quem_nome": "Tomás Pacheco", "quem_papel": "Fondator Pacheco Studios", "quem_alt": "Pacheco Studios", "pensa": "Tomás scrie…", "mudar": "Atinge ca să schimbi răspunsul", "enviar_msg": "Trimite", "email_invalido": "Verifică e-mailul (ex.: nume@exemplu.ro).", "foto": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='50'%20fill='%230D0B08'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='46'%20fill='none'%20stroke='%23C9A256'%20stroke-width='3'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='40'%20fill='none'%20stroke='%23C8612A'%20stroke-width='1.6'%20stroke-dasharray='5%203'/%3E%3Cpath%20fill='%23EDE8D8'%20d='M33%2074v-3l5-1.2V30.2L33%2029v-3h21c11%200%2018%205.6%2018%2014.4S65%2055%2054%2055h-6v14.8l6%201.2v3zm15-24h4.5c6%200%209.5-3.6%209.5-9.6S58.5%2031%2052.5%2031H48z'/%3E%3C/svg%3E", "wa": "https://wa.me/40723098556"}</script>
+  <script type="application/json" id="diag-dados">{"abertura": ["Înainte să vorbim despre instrumente, vreau să înțeleg unde pierde afacerea ta cereri, timp sau clienți.", "Sunt 8 întrebări. Cum te cheamă?"], "perguntas": [{"id": "nome", "tipo": "texto", "rotulo": "Numele tău", "ph": "Nume și prenume", "wa": "Nume", "msg": "Cum te cheamă?"}, {"id": "negocio", "tipo": "texto", "msg": "Încântat, {nome}! Cum se numește afacerea ta?", "rotulo": "Numele afacerii", "ph": "Ex.: Cafeneaua Centrală", "wa": "Afacere"}, {"id": "email", "tipo": "email", "msg": "Care e adresa ta de e-mail?", "rotulo": "E-mailul tău", "ph": "nume@exemplu.ro", "wa": "E-mail", "gancho_de": "negocio", "gancho": {"*": "{negocio}, îmi place numele. Așa pot deja să văd cum apare afacerea ta online înainte să vorbim."}}, {"id": "resultado", "tipo": "opcoes", "msg": "Ce rezultat vrei să îmbunătățești în următoarele 90 de zile?", "opcoes": ["Mai mulți clienți sau programări", "Răspunsuri mai rapide", "Mai puține neprezentări și anulări", "Clienți care revin", "Mai puține ore de administrare", "Cifrele afacerii la timp"], "wa": "Rezultat în 90 de zile", "gancho_de": "email", "gancho": {"*": "Mulțumesc. Pornim mereu de la rezultatul pe care îl vrei, nu de la un instrument."}}, {"id": "dor", "tipo": "multi", "msg": "Unde încetinește sau se pierde azi o cerere? Poți alege mai multe.", "opcoes": ["Mesaje și apeluri fără răspuns", "Cereri fără responsabil: nimeni nu știe cine răspunde", "Programări, neprezentări și reprogramări", "Oferte și reveniri uitate", "Hârțoage, facturi și bonuri", "Nu știu, și asta mă îngrijorează"], "wa": "Unde se pierde", "gancho_de": "resultado", "gancho": {"0": "Mai mulți clienți rar înseamnă mai multă reclamă: înseamnă să nu-i pierzi pe cei care te caută deja.", "1": "Viteza de răspuns e una dintre scurgerile cel mai ușor de măsurat: minute până la primul răspuns.", "2": "Neprezentările se măsoară pe săptămână. E unul dintre locurile unde un sistem simplu arată rezultate cel mai repede.", "3": "Să aduci înapoi pe cine te cunoaște deja costă mult mai puțin decât un client nou.", "4": "Orele de administrare sunt ore în afara afacerii. Se pot măsura și ele.", "5": "Cifrele la timp schimbă deciziile. Mai întâi, să știi unde sunt.", "*": "Înțeleg."}}, {"id": "canais", "tipo": "multi", "msg": "Pe unde îți vin azi cererile?", "opcoes": ["Google și Maps", "Instagram sau Facebook", "WhatsApp", "Telefon", "Trec pe lângă", "Recomandări", "Platforme (Glovo, Booking…)"], "wa": "Vin prin", "gancho_de": "dor", "gancho": {"0": "E una dintre cele mai comune scurgeri: clientul scrie, nimeni nu răspunde la timp și merge la vecini.", "1": "O cerere fără responsabil e problema cea mai scumpă și cea mai ușor de ascuns. În audit îi dăm un nume.", "2": "Confirmările și o listă de așteptare închid scurgerea asta, cu reguli aprobate de tine.", "3": "O revenire în ziua potrivită valorează mai mult decât zece mesaje. Poate avea responsabil și termen.", "4": "Bonurile și facturile pot ajunge ordonate la contabil, fără să pierzi o după-amiază.", "5": "Pentru asta e auditul: cartografiem înainte să mai cumperi un instrument.", "*": "Înțeleg. Are rezolvare."}}, {"id": "faturacao", "tipo": "opcoes", "msg": "Ca să măsurăm impactul: cât încasează afacerea pe lună, aproximativ?", "opcoes": ["Sub 12.500 lei", "12.500 – 25.000 lei", "25.000 – 50.000 lei", "50.000 – 100.000 lei", "100.000 – 175.000 lei", "175.000 – 250.000 lei", "Peste 250.000 lei", "Prefer să nu spun"], "wa": "Încasări/lună", "gancho_de": "canais", "gancho": {"*": "Cu cât sunt mai multe canale, cu atât sunt mai multe locuri unde se pierde contextul clientului."}}, {"id": "decisor", "tipo": "opcoes", "msg": "Ultimul pas: cine decide și aprobă un pilot în afacere?", "opcoes": ["Eu", "Eu, cu un asociat", "Altcineva din firmă"], "wa": "Cine decide", "gancho_de": "faturacao", "gancho": {"7": "Nicio problemă, rămâne între noi.", "*": "Mulțumesc. E doar ca să măsurăm impactul în bani, nu în promisiuni."}}], "continuar": "Continuă", "obrigatorio": "Scrie cel puțin 2 litere.", "escolhe": "Alege cel puțin una.", "fim": ["Mulțumesc, {nome}! Cu asta văd deja dacă există un blocaj care merită auditat.", "Apasă pe trimite: discuția continuă pe WhatsApp."], "enviar": "Trimite pe WhatsApp", "recomecar": "Ia-o de la capăt", "wa_intro": "Bună, Tomás! Am făcut triajul pe site:", "comecar": "Începe", "anterior": "Înapoi", "seguinte": "Mai departe", "pergunta": "Întrebarea", "meta": "8 întrebări · fără obligații", "intro_t": "Unde pierde afacerea ta clienți?", "quem_nome": "Tomás Pacheco", "quem_papel": "Fondator Pacheco Studios", "quem_alt": "Pacheco Studios", "pensa": "Tomás scrie…", "mudar": "Atinge ca să schimbi răspunsul", "enviar_msg": "Trimite", "email_invalido": "Verifică e-mailul (ex.: nume@exemplu.ro).", "foto": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='50'%20fill='%230D0B08'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='46'%20fill='none'%20stroke='%23C9A256'%20stroke-width='3'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='40'%20fill='none'%20stroke='%23C8612A'%20stroke-width='1.6'%20stroke-dasharray='5%203'/%3E%3Cpath%20fill='%23EDE8D8'%20d='M33%2074v-3l5-1.2V30.2L33%2029v-3h21c11%200%2018%205.6%2018%2014.4S65%2055%2054%2055h-6v14.8l6%201.2v3zm15-24h4.5c6%200%209.5-3.6%209.5-9.6S58.5%2031%2052.5%2031H48z'/%3E%3C/svg%3E", "wa": "https://wa.me/40723098556"}</script>
 </dialog>
 
 <script>
@@ -1888,7 +1904,7 @@ dialog.diag.fim .diag-ficha{display:block}
   agenda();
 })();
 
-/* diagnóstico: «Conhece-nos» abre-o. Uma conversa com o Tomás: depois de cada resposta, «a escrever…» (1 a 2 s) e uma
+/* diagnóstico (a triagem): «Conhece-nos» abre-o; a auditoria só vem depois. Uma conversa com o Tomás: depois de cada resposta, «a escrever…» (1 a 2 s) e uma
    mensagem que reage ao que o visitante disse (gancho) antes da pergunta seguinte. A ficha do negócio enche-se ao lado. No
    fim, a ficha vai para o WhatsApp numa mensagem que o próprio visitante envia (nada é guardado). Sem JavaScript, os
    botões vão ao WhatsApp. */
@@ -2063,7 +2079,7 @@ dialog.diag.fim .diag-ficha{display:block}
     a.insertAdjacentHTML('beforeend', SETA);
     a.addEventListener('click', function () {
       gc({ path: 'diagnostico/enviado', title: 'diagnóstico: enviado para o WhatsApp', event: true });
-      gc({ path: 'auditoria/pedido', title: 'auditoria: pedido enviado', event: true });
+      gc({ path: 'triagem/enviada', title: 'triagem: enviada para o WhatsApp', event: true });
       try { if (window.fbq) window.fbq('track', 'Lead', { origem: 'diagnostico', faturacao: r.faturacao || '' }); } catch (e) {}
     });
     var b = botao('contorno', D.recomecar); b.addEventListener('click', function () { r = {}; passo = 0; mostrar(false); });
@@ -2085,7 +2101,7 @@ dialog.diag.fim .diag-ficha{display:block}
   }
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest && ev.target.closest('[data-diagnostico]');
-    if (a) { ev.preventDefault(); if (a.hasAttribute('data-auditoria')) gc({ path: 'auditoria/botao', title: 'auditoria: botão do separador', event: true }); abrir(a); return; }
+    if (a) { ev.preventDefault(); if (a.hasAttribute('data-auditoria')) gc({ path: 'triagem/do-separador-auditoria', title: 'triagem: aberta no separador Auditoria', event: true }); abrir(a); return; }
     if (ev.target.closest && ev.target.closest('[data-fechar-diag]')) d.close();
   });
   // ligação direta, para os anúncios: #diagnostico ou ?utm_content=diag-… abre o diagnóstico logo ao chegar

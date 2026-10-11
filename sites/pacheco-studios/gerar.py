@@ -405,7 +405,8 @@ def system_print(x, lab):
 
 
 def vista_auditoria(c, wa):
-    """Auditoria de Sistemas com IA: a porta de entrada. O princípio (4 peças), o método em 7 passos, o que se recebe,
+    """Auditoria de Sistemas com IA. Não se pede num botão (Tomás, 11/10): primeiro a triagem («Conhece-nos»), depois a
+    auditoria, só se ambos virmos que vale a pena. O princípio (4 peças), o método em 7 passos, o que se recebe,
     para quem é e não é, e o pedido (abre a candidatura). Sem preços no site."""
     a = c["auditoria"]
     if len(a["passos"]) != 7 or len(a["pecas"]) != 4:
@@ -413,6 +414,8 @@ def vista_auditoria(c, wa):
     pecas = "\n".join(f'<li class="rv" style="--i:{i}"><b>{e(t)}</b><span>{e(d)}</span></li>' for i, (t, d) in enumerate(a["pecas"]))
     passos = "\n".join(f'<li class="rv" style="--i:{i % 4}"><span class="pn">{i + 1:02d}</span><h3>{e(t)}</h3><p>{e(d)}</p></li>'
                        for i, (t, d) in enumerate(a["passos"]))
+    etapas = "\n".join(f'<li class="rv" style="--i:{i}"><span class="quando">{e(q)}</span><h4>{e(t)}</h4><p>{e(d)}</p></li>'
+                       for i, (t, q, d) in enumerate(a["etapas"]))
     entregas = "\n".join(f'<li>{e(x)}</li>' for x in a["entregas"])
     para = "".join(f'<li>{e(x)}</li>' for x in a["para"])
     nao = "".join(f'<li>{e(x)}</li>' for x in a["nao"])
@@ -421,6 +424,12 @@ def vista_auditoria(c, wa):
     <p class="eyebrow">{e(a["eyebrow"])}</p>
     <h2 id="t-auditoria" class="afirmacao">{e(a["titlu"])}</h2>
     <p class="lead">{e(a["intro"])}</p>
+    <div class="aud-etapas">
+      <h3 class="rotulo">{e(a["etapas_t"])}</h3>
+      <ol>
+{etapas}
+      </ol>
+    </div>
     <div class="aud-principio">
       <h3 class="afirmacao">{e(a["principio_t"])}</h3>
       <p>{e(a["principio"])}</p>

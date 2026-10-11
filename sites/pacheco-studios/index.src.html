@@ -378,7 +378,15 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 .print dt{font:700 .75rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--osso-2)}
 .print dd{margin:0;font-size:.9375rem}
 
-/* ═══ Auditoria ═══ */
+/* ═══ Auditoria: primeiro a triagem, depois a auditoria ═══ */
+.aud-etapas{margin-top:clamp(2rem,7vw,3rem)}
+.aud-etapas ol{display:grid;gap:1rem}
+.aud-etapas li{display:grid;gap:.35rem;padding:1.1rem 1.2rem;border-radius:1rem;border:1px solid var(--linha-e)}
+.aud-etapas li:first-child{border-color:var(--laranja)}
+.aud-etapas .quando{font:700 .75rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--laranja)}
+.aud-etapas li+li .quando{color:var(--osso-2)}
+.aud-etapas h4{font:400 1.375rem/1.1 var(--display);text-transform:uppercase}
+.aud-etapas p{color:var(--osso-2);font-size:.9375rem;max-width:52ch}
 .aud-principio{margin-top:clamp(2rem,7vw,3.5rem);padding:clamp(1.25rem,4vw,2rem);border-radius:1rem;background:var(--carvao-2);border:1px solid var(--linha-e)}
 .aud-principio h3{font-size:clamp(1.4rem,4.5vw,2rem)}
 .aud-principio>p{margin-top:.75rem;max-width:52ch;color:var(--osso-2)}
@@ -409,6 +417,7 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 @media (min-width:48rem){
   .aud-pecas{grid-template-columns:repeat(4,minmax(0,1fr))}
   .aud-dois{grid-template-columns:1.4fr 1fr;gap:3rem}
+  .aud-etapas ol{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 /* ═══ contacto ═══ */
@@ -1126,7 +1135,7 @@ dialog.diag.fim .diag-ficha{display:block}
   agenda();
 })();
 
-/* diagnóstico: «Conhece-nos» abre-o. Uma conversa com o Tomás: depois de cada resposta, «a escrever…» (1 a 2 s) e uma
+/* diagnóstico (a triagem): «Conhece-nos» abre-o; a auditoria só vem depois. Uma conversa com o Tomás: depois de cada resposta, «a escrever…» (1 a 2 s) e uma
    mensagem que reage ao que o visitante disse (gancho) antes da pergunta seguinte. A ficha do negócio enche-se ao lado. No
    fim, a ficha vai para o WhatsApp numa mensagem que o próprio visitante envia (nada é guardado). Sem JavaScript, os
    botões vão ao WhatsApp. */
@@ -1301,7 +1310,7 @@ dialog.diag.fim .diag-ficha{display:block}
     a.insertAdjacentHTML('beforeend', SETA);
     a.addEventListener('click', function () {
       gc({ path: 'diagnostico/enviado', title: 'diagnóstico: enviado para o WhatsApp', event: true });
-      gc({ path: 'auditoria/pedido', title: 'auditoria: pedido enviado', event: true });
+      gc({ path: 'triagem/enviada', title: 'triagem: enviada para o WhatsApp', event: true });
       try { if (window.fbq) window.fbq('track', 'Lead', { origem: 'diagnostico', faturacao: r.faturacao || '' }); } catch (e) {}
     });
     var b = botao('contorno', D.recomecar); b.addEventListener('click', function () { r = {}; passo = 0; mostrar(false); });
@@ -1323,7 +1332,7 @@ dialog.diag.fim .diag-ficha{display:block}
   }
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest && ev.target.closest('[data-diagnostico]');
-    if (a) { ev.preventDefault(); if (a.hasAttribute('data-auditoria')) gc({ path: 'auditoria/botao', title: 'auditoria: botão do separador', event: true }); abrir(a); return; }
+    if (a) { ev.preventDefault(); if (a.hasAttribute('data-auditoria')) gc({ path: 'triagem/do-separador-auditoria', title: 'triagem: aberta no separador Auditoria', event: true }); abrir(a); return; }
     if (ev.target.closest && ev.target.closest('[data-fechar-diag]')) d.close();
   });
   // ligação direta, para os anúncios: #diagnostico ou ?utm_content=diag-… abre o diagnóstico logo ao chegar

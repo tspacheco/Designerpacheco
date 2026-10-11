@@ -302,13 +302,15 @@ const fs = require('fs');
     // Auditoria: separador próprio, 4 peças, 7 passos, 5 entregas, e o botão abre a candidatura
     await p.click('.tabs a[href="#auditoria"]');
     if (!(await vis('auditoria')) || await vis('cazuri')) mal(`${k}: separador da auditoria falhou`);
-    const aud = await p.evaluate(() => ({ pecas: document.querySelectorAll('.aud-pecas li').length, passos: document.querySelectorAll('.aud-passos li').length,
+    const aud = await p.evaluate(() => ({ etapas: document.querySelectorAll('.aud-etapas li').length, pecas: document.querySelectorAll('.aud-pecas li').length, passos: document.querySelectorAll('.aud-passos li').length,
       ent: document.querySelectorAll('.aud-entregas li').length, cta: document.querySelectorAll('#auditoria [data-diagnostico]').length,
       preco: /€|RON|lei\b|\$/.test(document.getElementById('auditoria').innerText) }));
-    if (aud.pecas !== 4 || aud.passos !== 7 || aud.ent !== 5 || aud.cta !== 1 || aud.preco) mal(`${k}: auditoria mal montada ${JSON.stringify(aud)}`);
+    if (aud.etapas !== 2 || aud.pecas !== 4 || aud.passos !== 7 || aud.ent !== 5 || aud.cta !== 1 || aud.preco) mal(`${k}: auditoria mal montada ${JSON.stringify(aud)}`);
     await p.click('#auditoria [data-diagnostico]');
-    if (!(await p.$eval('#diagnostico', d => d.open))) mal(`${k}: «Pedir auditoria» não abriu a candidatura`);
+    if (!(await p.$eval('#diagnostico', d => d.open))) mal(`${k}: «Conhece-nos» da Auditoria não abriu a triagem`);
     await p.keyboard.press('Escape');
+    // a auditoria não se pede num botão (Tomás, 11/10): todos os botões dizem «Conhece-nos» e abrem a triagem
+    if (/Pedir auditoria|Request an audit|Cere auditul/.test(await p.evaluate(() => document.body.innerText))) mal(`${k}: ainda há um botão para pedir a auditoria`);
     // os sites vivem dentro de Casos
     if (await p.$('.tabs a[href="#proiecte"]')) mal(`${k}: ainda há separador dos sites`);
     await p.click('.tabs a[href="#cazuri"]');
