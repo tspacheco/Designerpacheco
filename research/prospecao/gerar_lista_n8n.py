@@ -31,7 +31,7 @@ def main(entrada, saida, primeiro):
             "romania-2026-%03d" % (primeiro + i), l.get("cidade", "Iași"), l.get("cidade", "Iași"), l["empresa"],
             NOME_SETOR[l["setor"]], l["email"], l["website"], M.assunto_setor(l), M.mensagem_setor(l),
             "Pronto para envio", "a confirmar", "a confirmar", l.get("fonte", ""), l["fonte_email"],
-            l.get("notas", ""), l.get("subsetor", ""), l.get("sinais", ""), l["percurso_ro"],
+            l.get("notas", ""), l.get("subsetor", ""), "; ".join(l["sinais"]) if isinstance(l.get("sinais"), list) else l.get("sinais", ""), l["percurso_ro"],
             M.cadencia_setor(l, "d3"), M.cadencia_setor(l, "d7"), M.cadencia_setor(l, "d12"),
         ])
     for col, w in zip("ABCDEFGHI", (18, 10, 10, 28, 22, 28, 28, 34, 80)):
