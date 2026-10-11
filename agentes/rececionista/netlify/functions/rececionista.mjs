@@ -3,7 +3,7 @@
 // A agenda é fictícia e determinística: estas funções têm de dar o mesmo resultado que as do index.html.
 import Anthropic from "@anthropic-ai/sdk";
 
-const MODELO = process.env.RECECIONISTA_MODELO || "claude-opus-5-5";
+const MODELO = process.env.RECECIONISTA_MODELO || "claude-sonnet-5-5";
 const LIMITE_HORA = Number(process.env.RECECIONISTA_LIMITE || 30); // mensagens por visitante por hora
 const ORIGENS = ["https://pachecost.com", "https://www.pachecost.com", "https://ro.pachecost.com"];
 

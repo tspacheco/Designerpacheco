@@ -17,7 +17,7 @@ Página: https://claude.ai/artifact/GjvzuuhAgFmnStHVKG3Snv (ficheiro: `index.htm
 ## IA ao vivo num site (função Netlify)
 - `netlify/functions/rececionista.mjs` (SDK `@anthropic-ai/sdk`, `package.json` nesta pasta) responde em `/api/rececionista`. A página pergunta por GET se a chave está posta e, se estiver, passa a «IA ao vivo».
 - O ciclo das ferramentas corre na função; a agenda fictícia é igual à da página (se mudares uma, muda a outra).
-- Modelo: `claude-opus-5-5` (esforço baixo), ou o que estiver em `RECECIONISTA_MODELO`. Limite: 30 mensagens por visitante por hora (`RECECIONISTA_LIMITE`).
+- Modelo: `claude-sonnet-5-5` (esforço baixo; decisão do Tomás, 11/10), ou o que estiver em `RECECIONISTA_MODELO`. Limite: 30 mensagens por visitante por hora (`RECECIONISTA_LIMITE`).
 - Chave: variável `ANTHROPIC_API_KEY` no Netlify. Nunca no repositório.
 - O pachecost.com sobe por zip e aí as funções não correm; o mini telemóvel do site chama a função deste projeto (CORS já aceita pachecost.com e ro.pachecost.com) com `<meta name="rececionista-api" content="https://<projeto>.netlify.app/api/rececionista">`.
 
