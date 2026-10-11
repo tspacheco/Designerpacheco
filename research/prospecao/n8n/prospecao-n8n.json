@@ -1,0 +1,418 @@
+{
+  "name": "Pacheco Studios · Prospeção (e-mail + fila de Instagram)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 10 * * 1-5"
+            }
+          ]
+        }
+      },
+      "name": "Dias úteis 10h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "COLAR_URL_DA_FOLHA"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospeção"
+        },
+        "options": {}
+      },
+      "name": "Ler base",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        300
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const hoje = new Date(); hoje.setHours(0,0,0,0);\nfunction dataPT(v) {\n  if (!v) return null;\n  if (typeof v === 'number') { const d = new Date(Date.UTC(1899,11,30) + v*86400000); d.setHours(0,0,0,0); return d; }\n  const m = String(v).match(/^(\\d{1,2})\\/(\\d{1,2})\\/(\\d{4})/);\n  if (m) return new Date(+m[3], +m[2]-1, +m[1]);\n  const d = new Date(v); return isNaN(d) ? null : d;\n}\nfunction fmt(d) { return String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + d.getFullYear(); }\nfunction mais(dias) { const d = new Date(hoje); d.setDate(d.getDate()+dias); return fmt(d); }\nconst linhas = $input.all().map(i => i.json);\n\n// E-mails novos (Validado, prioridade 4–5) e follow-ups vencidos. Máx. 15 por dia.\nconst novos = linhas.filter(r => r['Estado'] === 'Validado' && r['Canal'] === 'E-mail' && r['E-mail'] && Number(r['Prioridade']) >= 4)\n  .sort((a,b) => Number(b['Score']) - Number(a['Score']))\n  .map(r => ({ ID: r['ID'], para: r['E-mail'], assunto: r['Assunto e-mail'], corpo: r['Mensagem'],\n               estado: 'Contactado', acao: 'Follow-up por e-mail', proxima: mais(5), contacto: fmt(hoje) }));\nconst follow = linhas.filter(r => r['Estado'] === 'Contactado' && r['Canal'] === 'E-mail' && r['E-mail'] && r['Follow-up']\n    && dataPT(r['Data próxima acção']) && dataPT(r['Data próxima acção']) <= hoje)\n  .map(r => ({ ID: r['ID'], para: r['E-mail'], assunto: 'Re: ' + r['Assunto e-mail'], corpo: r['Follow-up'],\n               estado: 'Sem resposta', acao: 'Parar; voltar só com motivo novo', proxima: '', contacto: r['Data contacto'] || fmt(hoje) }));\nreturn follow.concat(novos).slice(0, 15).map(j => ({ json: j }));"
+      },
+      "name": "Escolher e-mails",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Um de cada vez",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        680,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.para }}",
+        "subject": "={{ $json.assunto }}",
+        "emailType": "text",
+        "message": "={{ $json.corpo }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "name": "Enviar e-mail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        900,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "COLAR_URL_DA_FOLHA"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospeção"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $('Um de cada vez').item.json.ID }}",
+            "Estado": "={{ $('Um de cada vez').item.json.estado }}",
+            "Data contacto": "={{ $('Um de cada vez').item.json.contacto }}",
+            "Próxima acção": "={{ $('Um de cada vez').item.json.acao }}",
+            "Data próxima acção": "={{ $('Um de cada vez').item.json.proxima }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data contacto",
+              "displayName": "Data contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Próxima acção",
+              "displayName": "Próxima acção",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data próxima acção",
+              "displayName": "Data próxima acção",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Marcar enviado",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1120,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 60
+      },
+      "name": "Esperar 1 minuto",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1340,
+        200
+      ],
+      "webhookId": "b3c1e0de-6a1f-4c55-9a7e-1f0a2d9c4e11"
+    },
+    {
+      "parameters": {
+        "jsCode": "const hoje = new Date(); hoje.setHours(0,0,0,0);\nfunction dataPT(v) {\n  if (!v) return null;\n  if (typeof v === 'number') { const d = new Date(Date.UTC(1899,11,30) + v*86400000); d.setHours(0,0,0,0); return d; }\n  const m = String(v).match(/^(\\d{1,2})\\/(\\d{1,2})\\/(\\d{4})/);\n  if (m) return new Date(+m[3], +m[2]-1, +m[1]);\n  const d = new Date(v); return isNaN(d) ? null : d;\n}\nfunction fmt(d) { return String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + d.getFullYear(); }\nfunction mais(dias) { const d = new Date(hoje); d.setDate(d.getDate()+dias); return fmt(d); }\nconst linhas = $input.all().map(i => i.json);\n\n// Instagram não permite DMs automáticas a quem não escreveu primeiro: o n8n prepara a fila e o Tomás envia do telemóvel.\nconst dms = linhas.filter(r => r['Estado'] === 'Validado' && r['Canal'] === 'DM' && r['Link DM'] && Number(r['Prioridade']) >= 3)\n  .sort((a,b) => Number(b['Score']) - Number(a['Score'])).slice(0, 10);\nconst follow = linhas.filter(r => r['Estado'] === 'Contactado' && r['Canal'] === 'DM' && r['Follow-up']\n    && dataPT(r['Data próxima acção']) && dataPT(r['Data próxima acção']) <= hoje);\nconst coms = linhas.filter(r => r['Canal'] === 'Comentário' && ['Validado','Contactado'].includes(r['Estado'])).slice(0, 5);\nif (!dms.length && !follow.length && !coms.length) return [];\nconst bloco = (r, txt) => `${r['Nome']} (${r['Instagram']}) · prioridade ${r['Prioridade']}\\nAbrir DM: ${r['Link DM']}\\n\\n${txt}\\n\\n————————\\n`;\nlet corpo = `Fila de hoje (${fmt(hoje)}). Envia 1 por minuto e marca «Contactado» na folha.\\n\\n`;\nif (dms.length) corpo += `DMs NOVAS (${dms.length})\\n\\n` + dms.map(r => bloco(r, r['Mensagem'])).join('\\n');\nif (follow.length) corpo += `\\nFOLLOW-UPS (${follow.length}) — depois marca «Sem resposta» se não responderem\\n\\n` + follow.map(r => bloco(r, r['Follow-up'])).join('\\n');\nif (coms.length) corpo += `\\nCOMENTAR (${coms.length}) — um comentário útil no post de hoje; arranques na aba «Comentários»\\n\\n` +\n  coms.map(r => `${r['Nome']} · ${r['URL Instagram'] || r['Instagram']}`).join('\\n');\nreturn [{ json: { assunto: `Instagram: ${dms.length} DMs, ${follow.length} follow-ups, ${coms.length} comentários`, corpo } }];"
+      },
+      "name": "Fila de DMs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "COLAR_O_TEU_EMAIL",
+        "subject": "={{ $json.assunto }}",
+        "emailType": "text",
+        "message": "={{ $json.corpo }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "name": "Enviar fila ao Tomás",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        680,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const hoje = new Date(); hoje.setHours(0,0,0,0);\nfunction dataPT(v) {\n  if (!v) return null;\n  if (typeof v === 'number') { const d = new Date(Date.UTC(1899,11,30) + v*86400000); d.setHours(0,0,0,0); return d; }\n  const m = String(v).match(/^(\\d{1,2})\\/(\\d{1,2})\\/(\\d{4})/);\n  if (m) return new Date(+m[3], +m[2]-1, +m[1]);\n  const d = new Date(v); return isNaN(d) ? null : d;\n}\nfunction fmt(d) { return String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + d.getFullYear(); }\nfunction mais(dias) { const d = new Date(hoje); d.setDate(d.getDate()+dias); return fmt(d); }\nconst linhas = $input.all().map(i => i.json);\n\n// DMs que o Tomás marcou «Contactado» sem data: data de hoje e follow-up a 5 dias.\nreturn linhas.filter(r => r['Estado'] === 'Contactado' && r['Canal'] === 'DM' && !r['Data contacto'])\n  .map(r => ({ json: { ID: r['ID'], contacto: fmt(hoje), proxima: mais(5), acao: 'Follow-up por DM' } }));"
+      },
+      "name": "Datar DMs enviadas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "COLAR_URL_DA_FOLHA"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospeção"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $json.ID }}",
+            "Data contacto": "={{ $json.contacto }}",
+            "Próxima acção": "={{ $json.acao }}",
+            "Data próxima acção": "={{ $json.proxima }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data contacto",
+              "displayName": "Data contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Próxima acção",
+              "displayName": "Próxima acção",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data próxima acção",
+              "displayName": "Data próxima acção",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Gravar datas das DMs",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        680,
+        560
+      ]
+    }
+  ],
+  "connections": {
+    "Dias úteis 10h": {
+      "main": [
+        [
+          {
+            "node": "Ler base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler base": {
+      "main": [
+        [
+          {
+            "node": "Escolher e-mails",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fila de DMs",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Datar DMs enviadas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escolher e-mails": {
+      "main": [
+        [
+          {
+            "node": "Um de cada vez",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Um de cada vez": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Enviar e-mail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar e-mail": {
+      "main": [
+        [
+          {
+            "node": "Marcar enviado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Marcar enviado": {
+      "main": [
+        [
+          {
+            "node": "Esperar 1 minuto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Esperar 1 minuto": {
+      "main": [
+        [
+          {
+            "node": "Um de cada vez",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fila de DMs": {
+      "main": [
+        [
+          {
+            "node": "Enviar fila ao Tomás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datar DMs enviadas": {
+      "main": [
+        [
+          {
+            "node": "Gravar datas das DMs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Bucharest"
+  },
+  "active": false
+}
