@@ -1,4 +1,4 @@
-# Prospeção por e-mail (ligada ao n8n)
+# Prospeção por e-mail e Instagram (ligada ao n8n)
 
 Estado: à espera do plano do Tomás (11/10/2026).
 
@@ -9,10 +9,12 @@ Estado: à espera do plano do Tomás (11/10/2026).
 - Sites de clientes lêem-se pela PONTE (`.github/ponte.txt` → `ponte/relatorio.txt`).
 
 ## Formato das listas (o n8n lê o CSV pelo link raw do GitHub)
-`negocio,cidade,nicho,site,email,fonte_email,lingua,demo,estado`
+`negocio,cidade,nicho,site,email,fonte_email,instagram,fonte_instagram,lingua,demo,estado`
 
 - `email`: só endereços publicados pelo próprio negócio (site, Google, página pública). Sem prova → vazio.
 - `fonte_email`: URL onde o e-mail aparece.
+- `instagram`: @conta do negócio, só com prova pública (link no site, Google ou Facebook). O container não lê o Instagram: confirmação pelo Tomás ou pela fonte que o plano indicar.
+- `fonte_instagram`: URL onde a conta aparece.
 - `estado`: `por-enviar` | `enviado` | `respondeu` | `nao-enviar`.
 
 ## Regras
