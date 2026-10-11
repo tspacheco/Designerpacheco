@@ -44,6 +44,9 @@ def fixo(tel):
     return d.startswith("02") or d.startswith("03")
 
 
+NOVO = False  # «novo» como 2.º argumento: texto da corrida B também na A (pedido de 11/10)
+
+
 def main(caminho):
     linhas = list(csv.DictReader(open(caminho, encoding="utf-8"), delimiter="\t"))
     data = caminho.rsplit("/", 1)[-1].split(".")[0]
@@ -66,7 +69,7 @@ def main(caminho):
             print(f"### {zona}\n")
             for l in (x for x in grupo if x["zona"] == zona):
                 demo = f"https://pachecost.com/demo/{l['slug']}/"
-                if corrida == "B":
+                if corrida == "B" or NOVO:
                     dono = (l.get("dono") or "").strip()
                     texto = MSG_B.format(dono=f" {dono}" if dono else "", nome=l["nome"], demo=demo)
                 else:
@@ -91,4 +94,5 @@ def main(caminho):
 
 
 if __name__ == "__main__":
+    NOVO = sys.argv[2:3] == ["novo"]
     main(sys.argv[1])
