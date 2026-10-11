@@ -1,28 +1,20 @@
 #!/usr/bin/env python3
-"""Agente 3 · auditoria grátis a sites fracos (Pacheco Studios).
+"""Agente 3 · biblioteca e ranking (Pacheco Studios).
 
-Lê o que a PONTE mediu (auditorias/dados/<slug>.json, operação «auditar») e os dados das fichas Google
-(candidatos.csv) e produz:
+Lê o que a PONTE mediu (auditorias/dados/<slug>.json, operação «auditar») e as fichas Google (candidatos.csv).
 
-  python3 gerar.py ranking          auditorias/RANKING.md: todos os sites medidos, do mais fraco ao mais forte
-  python3 gerar.py <slug> [<slug>]  auditorias/<slug>/: apresentação ao dono em RO e versão PT para o Tomás
-  python3 gerar.py --top 10         as 10 primeiras do ranking (com nota Google ≥ 4,4)
+  python3 gerar.py        auditorias/RANKING.md: todos os sites medidos, do mais fraco ao mais forte
 
-Cada apresentação sai em HTML e em PDF (o PDF é o que se manda pelo WhatsApp). Tudo o que aparece com números foi
-medido no próprio dia (Lighthouse móvel + Chromium com ecrã de iPhone). A única estatística de fora é a da Google
-sobre velocidade e abandono, com a fonte escrita na página.
+As páginas para os donos (Raio-X do primeiro contacto, o gatilho grátis da consultoria) saem de raiox.py, que usa
+as funções daqui.
 """
-import base64, csv, html, io, json, os, re, sys, datetime
-from urllib.parse import urlparse
+import base64, csv, io, json, os, re, datetime
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.abspath(os.path.join(AQUI, "..", ".."))
 DADOS = os.path.join(RAIZ, "auditorias", "dados")
 SAIDA = os.path.join(RAIZ, "auditorias")
 RAMO = "claude/auditoria-sites-fracos-fpyd0h"
-RAW = f"https://github.com/tspacheco/Designerpacheco/raw/{RAMO}/auditorias"
-WHATSAPP_RO = "+40 723 098 556"
-WA_LINK = "https://wa.me/40723098556"
 ANO = datetime.date.today().year
 
 # Demo nossa medida com a mesma ferramenta, por tipo de negócio («o que podia ser»).
@@ -46,92 +38,6 @@ EXCLUIR = {"magazin-aurora-iasi-calea-gala"}
 # quando o carregamento passa de 1 s para X s, a probabilidade de o visitante sair (bounce) aumenta Y %.
 GOOGLE_ABANDONO = [(10, 123), (6, 106), (5, 90), (3, 32)]
 FONTE_GOOGLE = "Think with Google, 2017 — «Find out how you stack up to new industry benchmarks for mobile page speed»"
-
-T = {
-    "ro": {
-        "lang": "ro", "titulo": "Auditul site-ului", "gratis": "Audit gratuit",
-        "medido": "Măsurat pe {d}, pe telefon (Lighthouse, motorul Google PageSpeed, + iPhone simulat).",
-        "elogio": "{nota}★ pe Google{aval}. Clienții vă apreciază. Site-ul încă nu vă ajută cât ar putea.",
-        "aval": " din {n} de recenzii",
-        "hoje": "Site-ul tău azi", "podia": "Ce ar putea fi", "podia_sub": "un site făcut de noi ({demo}), măsurat la fel, în aceeași zi",
-        "cats": {"performance": "Viteză", "accessibility": "Accesibilitate", "best-practices": "Bune practici", "seo": "Google (SEO)"},
-        "de100": "din 100",
-        "tempos": "Ce vede clientul pe telefon",
-        "fcp": "Apare primul lucru pe ecran", "lcp": "Apare conținutul principal", "peso": "Cât descarcă telefonul",
-        "pedidos": "Fișiere încărcate",
-        "achados": "Ce am găsit", "sim": "Da", "nao": "Nu",
-        "chk": {
-            "https": "Conexiune securizată (lacătul din browser)",
-            "viewport": "Făcut pentru ecranul de telefon",
-            "cabe": "Încape pe ecran, fără să alunece în lateral",
-            "tel": "Buton «Sună» care formează numărul",
-            "tel1": "Telefonul vizibil din primul ecran",
-            "whatsapp": "WhatsApp cu o apăsare",
-            "marcacao": "Programare sau rezervare online",
-            "mapa": "Hartă / «Cum ajungi»",
-            "jsonld": "Fișa pentru Google (program, adresă, tip de afacere)",
-            "descricao": "Textul care apare sub numele tău în Google",
-            "ano": "Anul din subsol e la zi",
-        },
-        "ganhos": "3 câștiguri rapide", "ganhos_sub": "Primele lucruri pe care le-am face. Fiecare se vede din prima zi.",
-        "g_hoje": "Azi", "g_muda": "Ce schimbăm", "g_ganha": "Ce câștigi",
-        "clientes": "Ce înseamnă în clienți",
-        "abandono": "Google a măsurat că, atunci când o pagină se încarcă în {x} s în loc de 1 s, șansa ca omul să plece înainte să vadă ceva crește cu {p} %.",
-        "abandono_ok": "Viteza nu e problema principală: conținutul apare în {x} s. Câștigul e în ce găsește clientul când ajunge.",
-        "teu_lcp": "Site-ul tău: conținutul principal apare după {x} s.", "nosso_lcp": "Site-ul nostru: după {y} s.",
-        "passos": "Ca să te sune azi: {a}. Cu site-ul nou: o apăsare pe «Sună» sau «WhatsApp», din primul ecran.",
-        "passos_sem": "găsește numărul, ține apăsat, copiază, deschide telefonul, lipește",
-        "passos_long": "derulează până la număr, apasă pe el",
-        "fonte": "Sursa", "cta_t": "Vrei să vezi cum ar arăta site-ul tău?",
-        "cta": "Îți arătăm în 20 de minute, la tine sau la telefon. Fără costuri și fără obligații.",
-        "cta_wa": "Scrie-ne pe WhatsApp", "assin": "Tomás Pacheco · Pacheco Studios · ro.pachecost.com",
-        "nota_honesta": "Toate cifrele de mai sus au fost măsurate pe site-ul tău, în ziua auditului. Nu am inventat nimic.",
-        "nota_demo": "Site-ul nostru de exemplu e ascuns de Google intenționat; nota lui SEO e măsurată fără acea verificare.",
-        "pag": "Pagina",
-    },
-    "pt": {
-        "lang": "pt-PT", "titulo": "Auditoria do site", "gratis": "Auditoria grátis",
-        "medido": "Medido a {d}, no telemóvel (Lighthouse, o motor do Google PageSpeed, + iPhone simulado).",
-        "elogio": "{nota}★ no Google{aval}. Os clientes gostam. O site ainda não ajuda o que podia.",
-        "aval": " em {n} avaliações",
-        "hoje": "O teu site hoje", "podia": "O que podia ser", "podia_sub": "um site feito por nós ({demo}), medido da mesma forma, no mesmo dia",
-        "cats": {"performance": "Velocidade", "accessibility": "Acessibilidade", "best-practices": "Boas práticas", "seo": "Google (SEO)"},
-        "de100": "em 100",
-        "tempos": "O que o cliente vê no telemóvel",
-        "fcp": "Aparece a primeira coisa no ecrã", "lcp": "Aparece o conteúdo principal", "peso": "Quanto o telemóvel descarrega",
-        "pedidos": "Ficheiros carregados",
-        "achados": "O que encontrámos", "sim": "Sim", "nao": "Não",
-        "chk": {
-            "https": "Ligação segura (o cadeado do browser)",
-            "viewport": "Feito para ecrã de telemóvel",
-            "cabe": "Cabe no ecrã, sem deslizar para o lado",
-            "tel": "Botão «Ligar» que marca o número",
-            "tel1": "Telefone visível no primeiro ecrã",
-            "whatsapp": "WhatsApp com um toque",
-            "marcacao": "Marcação ou reserva online",
-            "mapa": "Mapa / «Como chegar»",
-            "jsonld": "Ficha para o Google (horário, morada, tipo de negócio)",
-            "descricao": "O texto que aparece debaixo do nome no Google",
-            "ano": "O ano do rodapé está atualizado",
-        },
-        "ganhos": "3 vitórias rápidas", "ganhos_sub": "As primeiras coisas que faríamos. Cada uma vê-se no primeiro dia.",
-        "g_hoje": "Hoje", "g_muda": "O que mudamos", "g_ganha": "O que ganhas",
-        "clientes": "O que isto quer dizer em clientes",
-        "abandono": "A Google mediu que, quando uma página carrega em {x} s em vez de 1 s, a probabilidade de a pessoa sair antes de ver alguma coisa aumenta {p} %.",
-        "abandono_ok": "A velocidade não é o problema principal: o conteúdo aparece em {x} s. O ganho está no que o cliente encontra quando chega.",
-        "teu_lcp": "O teu site: o conteúdo principal aparece ao fim de {x} s.", "nosso_lcp": "O nosso: ao fim de {y} s.",
-        "passos": "Para te ligar hoje: {a}. Com o site novo: um toque em «Ligar» ou «WhatsApp», logo no primeiro ecrã.",
-        "passos_sem": "encontra o número, carrega sem largar, copia, abre o telefone, cola",
-        "passos_long": "desce até ao número e carrega nele",
-        "fonte": "Fonte", "cta_t": "Queres ver como ficaria o teu site?",
-        "cta": "Mostramos-te em 20 minutos, aí ou ao telefone. Sem custo e sem compromisso.",
-        "cta_wa": "Fala connosco no WhatsApp", "assin": "Tomás Pacheco · Pacheco Studios · pachecost.com",
-        "nota_honesta": "Todos os números acima foram medidos no teu site, no dia da auditoria. Nada foi inventado.",
-        "nota_demo": "O nosso site de exemplo está escondido do Google de propósito; a nota SEO dele é medida sem essa verificação.",
-        "pag": "Página",
-    },
-}
-
 
 def ler_candidatos():
     return {r["slug"]: r for r in csv.DictReader(open(os.path.join(AQUI, "candidatos.csv"), encoding="utf-8"))}
@@ -252,71 +158,6 @@ def escrever_ranking(cands):
     return linhas
 
 
-# ---------------------------------------------------------------- vitórias rápidas
-
-def vitorias(d, c, demo, L):
-    """Lista ordenada de (titulo, hoje, muda, ganha). As 3 primeiras vão para a apresentação."""
-    ro = L["lang"] == "ro"
-    p = d.get("pagina") or {}
-    chk = dict(verificacoes(d, c))
-    lcp, lcp_d = seg(aud(d, "largest-contentful-paint")), seg(aud(demo, "largest-contentful-paint"))
-    peso = aud(d, "total-byte-weight")
-    img_poupa = sum((aud(d, k, "poupa_bytes") or 0) for k in ("uses-optimized-images", "modern-image-formats", "uses-responsive-images", "offscreen-images"))
-    v = []
-    if chk.get("viewport") is False or chk.get("cabe") is False:
-        v.append(("Site-ul nu e făcut pentru telefon" if ro else "O site não está feito para telemóvel",
-                  ("Pe telefon textul iese din ecran și trebuie mărit cu degetele." if ro else "No telemóvel o texto sai do ecrã e é preciso ampliar com os dedos")
-                  if chk.get("cabe") is False else ("Pagina se afișează ca pe calculator, micșorată." if ro else "A página aparece como no computador, encolhida."),
-                  "Reconstruim pagina pentru ecranul de telefon, unde vin majoritatea clienților din Google Maps." if ro else "Refazemos a página para o ecrã do telemóvel, de onde vem a maioria dos clientes do Google Maps.",
-                  "Se citește fără zoom, din prima secundă." if ro else "Lê-se sem zoom, desde o primeiro segundo."))
-    if lcp and lcp_d and lcp - lcp_d >= 1.5:
-        mb = f"{peso / 1048576:.1f} MB" if peso else ""
-        hoje = (f"Conținutul principal apare după {lcp} s; telefonul descarcă {mb}." if ro else f"O conteúdo principal aparece ao fim de {lcp} s; o telemóvel descarrega {mb}.")
-        muda = ((f"Pozele comprimate corect ({img_poupa / 1048576:.1f} MB economisiți doar din imagini) și pagina fără scripturi inutile." if ro else
-                 f"Fotos comprimadas como deve ser ({img_poupa / 1048576:.1f} MB poupados só nas imagens) e página sem scripts a mais.")
-                if img_poupa > 200_000 else ("Pagina rescrisă ușoară: fără scripturi inutile, poze în format modern." if ro else "Página reescrita leve: sem scripts a mais, fotos em formato moderno."))
-        v.append(("Pagina se încarcă greu pe telefon" if ro else "A página demora a carregar no telemóvel", hoje, muda,
-                  (f"{round(lcp - lcp_d, 1)} s mai repede: {lcp_d} s în loc de {lcp} s, măsurat la fel." if ro else f"{round(lcp - lcp_d, 1)} s mais rápido: {lcp_d} s em vez de {lcp} s, medido da mesma forma.")))
-    if chk.get("tel") is False or chk.get("tel1") is False:
-        v.append(("Clientul nu te poate suna cu o apăsare" if ro else "O cliente não te consegue ligar com um toque",
-                  (("Numărul e scris ca text: trebuie copiat și lipit." if ro else "O número está escrito como texto: tem de ser copiado e colado.") if chk.get("tel") is False
-                   else ("Butonul de apel există, dar nu apare în primul ecran." if ro else "O botão de ligar existe, mas não aparece no primeiro ecrã.")),
-                  "Buton «Sună» fix, vizibil pe tot site-ul." if ro else "Botão «Ligar» fixo, visível em todo o site.",
-                  "O apăsare până la apel, de pe orice pagină." if ro else "Um toque até à chamada, de qualquer página."))
-    if chk.get("marcacao") is False:
-        v.append(("Nu se poate face programare online" if ro else "Não dá para marcar online",
-                  "Clientul trebuie să sune în programul tău ca să-și facă programare." if ro else "O cliente tem de ligar dentro do horário para marcar.",
-                  "Buton de programare legat de agenda ta (MERO sau alt sistem), 24 de ore din 24." if ro else "Botão de marcação ligado à tua agenda (MERO ou outro sistema), 24 horas por dia.",
-                  "Programări și seara, când ești închis, fără să răspunzi la telefon." if ro else "Marcações também à noite, com a porta fechada, sem atender o telefone."))
-    if chk.get("whatsapp") is False:
-        v.append(("Lipsește WhatsApp" if ro else "Falta o WhatsApp",
-                  "Nu există un buton de WhatsApp pe site." if ro else "Não há botão de WhatsApp no site.",
-                  "Buton WhatsApp cu mesajul deja scris («Bună ziua, aș dori…»)." if ro else "Botão de WhatsApp com a mensagem já escrita («Olá, queria…»).",
-                  "Cine nu vrea să sune îți scrie în 2 secunde, și ai mesajul în scris." if ro else "Quem não quer ligar escreve-te em 2 segundos, e fica tudo por escrito."))
-    if chk.get("https") is False:
-        v.append(("Chrome afișează «Nesigur»" if ro else "O Chrome mostra «Não seguro»",
-                  "Site-ul se deschide fără lacăt (http)." if ro else "O site abre sem cadeado (http).",
-                  "Certificat de securitate inclus." if ro else "Certificado de segurança incluído.",
-                  "Fără avertismentul care sperie clientul înainte să citească ceva." if ro else "Sem o aviso que assusta o cliente antes de ler alguma coisa."))
-    if chk.get("ano") is False:
-        an = p.get("ano_copyright")
-        v.append((f"© {an} în subsol" if ro else f"© {an} no rodapé",
-                  f"Subsolul spune {an}. Clientul se întreabă dacă mai sunteți deschiși." if ro else f"O rodapé diz {an}. O cliente pergunta-se se ainda estão abertos.",
-                  "Site întreținut lunar: anul, programul și prețurile mereu la zi." if ro else "Site mantido todos os meses: ano, horário e preços sempre em dia.",
-                  "Arată că afacerea e vie." if ro else "Mostra que o negócio está vivo."))
-    if chk.get("jsonld") is False:
-        v.append(("Google nu știe exact ce ești" if ro else "O Google não sabe bem o que és",
-                  "Site-ul nu are fișa tehnică pentru Google (tip de afacere, program, adresă, telefon)." if ro else "O site não tem a ficha técnica para o Google (tipo de negócio, horário, morada, telefone).",
-                  "Adăugăm fișa, legată de profilul tău Google Maps." if ro else "Juntamos a ficha, ligada ao teu perfil do Google Maps.",
-                  "Google îți poate arăta programul și adresa direct în rezultate." if ro else "O Google pode mostrar o horário e a morada diretamente nos resultados."))
-    if chk.get("descricao") is False:
-        v.append(("Textul din Google e ales la întâmplare" if ro else "O texto do Google é escolhido ao acaso",
-                  "Nu există descriere pentru Google; el ia o bucată oarecare din pagină." if ro else "Não há descrição para o Google; ele usa um pedaço qualquer da página.",
-                  "Scriem 2 rânduri care spun ce faci, unde și cum te contactează." if ro else "Escrevemos 2 linhas que dizem o que fazes, onde e como te contactam.",
-                  "Mai mulți oameni apasă pe tine în loc de concurent." if ro else "Mais pessoas carregam em ti em vez de no concorrente."))
-    return v
-
-
 def b64img(path, largura=520):
     from PIL import Image
     im = Image.open(path).convert("RGB")
@@ -325,17 +166,6 @@ def b64img(path, largura=520):
     buf = io.BytesIO()
     im.save(buf, "JPEG", quality=80, optimize=True)
     return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
-
-
-def cor_nota(n):
-    return "var(--mau)" if n < 50 else ("var(--medio)" if n < 90 else "var(--bom)")
-
-
-def anel(n, rot):
-    c = 2 * 3.14159 * 26
-    return (f'<div class="anel"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" class="trilho"/>'
-            f'<circle cx="32" cy="32" r="26" class="arco" style="stroke:{cor_nota(n)};stroke-dasharray:{c * n / 100:.1f} {c:.1f}"/></svg>'
-            f'<b style="color:{cor_nota(n)}">{n}</b><span>{html.escape(rot)}</span></div>')
 
 
 CSS = """
@@ -427,101 +257,6 @@ def nome_curto(c):
     return n if len(n) <= 40 else n[:38].rsplit(" ", 1)[0]
 
 
-def mensagem_ro(c, slug):
-    return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Am văzut că {nome_curto(c)} are {c.get('nota')}★ pe Google, "
-            f"așa că v-am făcut gratuit un audit al site-ului, măsurat pe telefon: viteza, ce găsește clientul și ce i-ar lipsi ca să vă sune. "
-            f"Vi-l trimit aici în PDF (3 pagini). Dacă vreți, vă arăt în 20 de minute cum ar arăta site-ul refăcut. Mulțumesc!")
-
-
-def apresentacao(slug, c, lang, cand_pt=False):
-    L = T[lang]
-    d = ler(slug)
-    demo_slug, demo_nome = demo_para(c)
-    dm = ler(f"demo-{demo_slug}")
-    if not d or not dm:
-        raise SystemExit(f"Faltam medições: {slug if not d else 'demo-' + demo_slug}")
-    n, nd = d.get("notas") or {}, dm.get("notas") or {}
-    data = (d.get("medido_em") or "")[:10]
-    data_fmt = ".".join(reversed(data.split("-"))) if data else "?"
-    aval = L["aval"].format(n=c["avaliacoes"]) if c.get("avaliacoes") else ""
-    dom = urlparse(c["site"]).netloc.replace("www.", "")
-    shot = os.path.join(DADOS, f"{slug}.jpg")
-    shot_d = os.path.join(DADOS, f"demo-{demo_slug}.jpg")
-    img = f'<img src="{b64img(shot)}" alt="">' if os.path.exists(shot) else ""
-    img_d = f'<img src="{b64img(shot_d)}" alt="">' if os.path.exists(shot_d) else ""
-
-    def lado(dd, nn, cls, titulo, sub, im):
-        lcp, fcp, peso = seg(aud(dd, "largest-contentful-paint")), seg(aud(dd, "first-contentful-paint")), aud(dd, "total-byte-weight")
-        return (f'<div class="lado {cls}"><div><h3>{titulo}</h3></div><p class="sub">{sub}</p>'
-                f'<div class="tel">{im}</div><div class="aneis">' + "".join(anel(nn.get(k, 0), L["cats"][k]) for k in L["cats"]) + "</div>"
-                f'<div class="tempos"><div><span>{L["fcp"]}</span><b>{fcp} s</b></div><div><span>{L["lcp"]}</span><b>{lcp} s</b></div>'
-                f'<div><span>{L["peso"]}</span><b>{(peso or 0) / 1048576:.1f} MB</b></div></div></div>')
-
-    topo = (f'<div class="topo"><span class="marca">{logo_mini()}Pacheco Studios</span><span>{L["titulo"]} · {html.escape(dom)}</span></div>')
-    p1 = (f'<section class="folha">{topo}<span class="etiqueta">{L["gratis"]}</span>'
-          f'<h1 style="font-size:{30 if len(nome_curto(c)) <= 18 else 24}pt">{html.escape(nome_curto(c))}</h1><p class="dominio">{html.escape(dom)}</p>'
-          f'<p class="elogio">{L["elogio"].format(nota=c.get("nota"), aval=aval)}</p><p class="medido">{L["medido"].format(d=data_fmt)}</p>'
-          f'<div class="duelo">{lado(d, n, "teu", L["hoje"], "", img)}{lado(dm, nd, "nosso", L["podia"], L["podia_sub"].format(demo=demo_nome) + ". " + L["nota_demo"], img_d)}</div>'
-          f'<div class="rodape"><span>{L["nota_honesta"]}</span><span>{L["pag"]} 1/3</span></div></section>')
-
-    chk = verificacoes(d, c)
-    tabela = "".join(f'<tr><td>{L["chk"][k]}</td><td class="r"><span class="pill {"s" if ok else "n"}">{L["sim"] if ok else L["nao"]}</span></td></tr>' for k, ok in chk)
-    lcp, lcp_d = seg(aud(d, "largest-contentful-paint")), seg(aud(dm, "largest-contentful-paint"))
-    peso, peso_d = aud(d, "total-byte-weight") or 0, aud(dm, "total-byte-weight") or 0
-    req, req_d = aud(d, "network-requests") or 0, aud(dm, "network-requests") or 0
-    num = [(f"{n.get('performance', 0)}/100", L["cats"]["performance"], f"{nd.get('performance')} {('la noi' if lang == 'ro' else 'no nosso')}"),
-           (f"{lcp} s", L["lcp"], f"{lcp_d} s {('la noi' if lang == 'ro' else 'no nosso')}"),
-           (f"{peso / 1048576:.1f} MB", L["peso"], f"{peso_d / 1048576:.1f} MB {('la noi' if lang == 'ro' else 'no nosso')}"),
-           (f"{req}", L["pedidos"], f"{req_d} {('la noi' if lang == 'ro' else 'no nosso')}")]
-    numeros = "".join(f"<div><b>{a}</b><span>{b}</span><i>{c_}</i></div>" for a, b, c_ in num)
-    vs = vitorias(d, c, dm, L)[:3]
-    vit = "".join(f'<div class="v"><div class="n">{i}</div><div><h3>{html.escape(t)}</h3><dl><dt>{L["g_hoje"]}</dt><dd>{html.escape(h)}</dd>'
-                  f'<dt>{L["g_muda"]}</dt><dd>{html.escape(m)}</dd><dt>{L["g_ganha"]}</dt><dd class="g">{html.escape(g)}</dd></dl></div></div>'
-                  for i, (t, h, m, g) in enumerate(vs, 1))
-    pct = next((p for lim, p in GOOGLE_ABANDONO if lcp and lcp >= lim), None)
-    lim = next((lim for lim, p in GOOGLE_ABANDONO if lcp and lcp >= lim), None)
-    p_ = (d.get("pagina") or {})
-    passos = L["passos_sem"] if not p_.get("tel") else (L["passos_long"] if not p_.get("tel_no_1o_ecra") else None)
-    linhas = []
-    if pct:
-        linhas.append(f'<p class="grande">{L["abandono"].format(x=lim, p=pct)}</p><p>{L["teu_lcp"].format(x=lcp)} {L["nosso_lcp"].format(y=lcp_d)}</p>'
-                      f'<p class="fonte">{L["fonte"]}: {FONTE_GOOGLE}.</p>')
-    else:
-        linhas.append(f'<p class="grande">{L["abandono_ok"].format(x=lcp)}</p>')
-    if passos:
-        linhas.append(f"<p>{L['passos'].format(a=passos)}</p>")
-    p2 = (f'<section class="folha">{topo}<h2>{L["achados"]}</h2><div class="numeros">{numeros}</div>'
-          f'<table class="chk">{tabela}</table>'
-          f'<h2 style="margin-top:8mm">{L["clientes"]}</h2><div class="clientes">{"".join(linhas)}</div>'
-          f'<div class="rodape" style="margin-top:auto"><span>{L["nota_honesta"]}</span><span>{L["pag"]} 2/3</span></div></section>')
-
-    p3 = (f'<section class="folha">{topo}<h2>{L["ganhos"]}</h2><p style="margin:-2mm 0 5mm;color:var(--cinza)">{L["ganhos_sub"]}</p>'
-          f'<div class="vit">{vit}</div>'
-          f'<div class="cta"><div><h3>{L["cta_t"]}</h3><p>{L["cta"]}</p></div><a href="{WA_LINK}">{L["cta_wa"]}<small>{WHATSAPP_RO}</small></a></div>'
-          f'<div class="rodape"><span>{L["assin"]}</span><span>{L["pag"]} 3/3</span></div></section>')
-
-    p4 = ""
-    if cand_pt:
-        wa = whatsapp(c)
-        p4 = (f'<section class="folha">{topo}<h2>Notas para o Tomás</h2><div class="notas">'
-              f'<p><b>{html.escape(c["nome"])}</b> · {html.escape(c.get("categoria", ""))} · {html.escape(c.get("morada", "") or "morada a confirmar")}</p>'
-              f'<p>Telefone {html.escape(c.get("telefone", ""))} · WhatsApp: {wa}  · Google {c.get("nota")}{" · " + c["avaliacoes"] + " avaliações" if c.get("avaliacoes") else ""}</p>'
-              f'<p>Fraqueza {fraqueza(d, c)}/100 · demo de comparação: {demo_nome} (pachecost.com/demo/{demo_slug}/)</p>'
-              f'<h3>Mensagem (RO), mandar com o PDF romeno</h3><pre>{html.escape(mensagem_ro(c, slug))}</pre>'
-              f'<h3>PDF para o dono</h3><pre>{RAW}/{slug}/auditie-{slug}-ro.pdf</pre>'
-              f'<h3>Na reunião (20 min)</h3><pre>1. Abrir o site deles no telemóvel deles e cronometrar.\n2. Mostrar a demo {demo_nome} ao lado.\n'
-              f'3. Perguntar: quantas visitas tem o site por mês (Google Business Profile → Desempenho) e quanto vale um cliente novo. '
-              f'Com esses dois números faz-se a conta à frente dele.\n4. Proposta só do site, em RON (regra de Iași).</pre></div>'
-              f'<div class="rodape"><span>Interno · não enviar</span><span>4/4</span></div></section>')
-
-    titulo = f'{L["titulo"]} · {c["nome"]}'
-    return (f'<!doctype html><html lang="{L["lang"]}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            f'<meta name="robots" content="noindex"><title>{html.escape(titulo)}</title>'
-            '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-            '<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">'
-            f'<style>{CSS}</style></head><body>{p1}{p2}{p3}{p4}</body></html>')
-
-
 def pdf(html_path, pdf_path):
     try:
         from playwright.sync_api import sync_playwright
@@ -537,63 +272,10 @@ def pdf(html_path, pdf_path):
     return True
 
 
-def gerar(slug, cands):
-    c = cands[slug]
-    pasta = os.path.join(SAIDA, slug)
-    os.makedirs(pasta, exist_ok=True)
-    for lang, nome, pt in (("ro", f"auditie-{slug}-ro", False), ("pt", f"auditoria-{slug}-pt", True)):
-        h = os.path.join(pasta, nome + ".html")
-        open(h, "w", encoding="utf-8").write(apresentacao(slug, c, lang, cand_pt=pt))
-        pdf(h, os.path.join(pasta, nome + ".pdf"))
-    print("ok", slug)
-
-
-def mensagem_morto(c):
-    dom = urlparse(c["site"]).netloc.replace("www.", "")
-    return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Am văzut că {c['nome']} are {c.get('nota')}★ pe Google. "
-            f"Vă scriu pentru că linkul de site din profilul vostru Google ({dom}) nu se mai deschide: cine apasă pe el ajunge la o eroare. "
-            f"Dacă vreți, vă arăt în 20 de minute un site nou pentru voi, gata de pus în loc. Mulțumesc!")
-
-
-def escrever_envio(escolhidos, cands):
-    data = datetime.date.today().strftime("%d/%m/%Y")
-    out = [f"# Agente 3 · auditorias para enviar ({data})", "",
-           "Mandar pelo WhatsApp Business RO: mensagem + PDF romeno (link raw abaixo, descarrega no telemóvel). "
-           "WhatsApp dos donos: «?» nos telemóveis (sem prova pública), «não» nos fixos. Se a mensagem não entregar, ligar ou visitar com a morada; nos fixos, ligar e pedir um WhatsApp ou e-mail para mandar o PDF.", ""]
-    for i, s in enumerate(escolhidos, 1):
-        c = cands[s]
-        out += [f"## {i}. {c['nome']} · {c.get('categoria', '')}", "",
-                f"- Telefone {c.get('telefone')} · WhatsApp: {whatsapp(c)} · Google {c.get('nota')}{' · ' + c['avaliacoes'] + ' avaliações' if c.get('avaliacoes') else ''}",
-                f"- Morada: {c.get('morada') or 'a confirmar'} · site {c['site']}",
-                f"- PDF RO (dono): {RAW}/{s}/auditie-{s}-ro.pdf",
-                f"- PDF PT (Tomás): {RAW}/{s}/auditoria-{s}-pt.pdf", "", "```", mensagem_ro(c, s), "```", ""]
-    mortos = [(s, c) for s, c in cands.items() if (ler(s) or {}).get("erro_pagina") and not (ler(s) or {}).get("notas")]
-    if mortos:
-        out += ["## Sites que já não abrem (o Google manda os clientes para um erro)", "",
-                "O link do site na ficha Google dá erro (o domínio não existe). É o argumento mais forte: não precisa de PDF.", ""]
-        for s, c in mortos:
-            out += [f"### {c['nome']} · {c.get('categoria', '')}", "",
-                    f"- Telefone {c.get('telefone')} · WhatsApp: {whatsapp(c)} · Google {c.get('nota')} · morada {c.get('morada') or 'a confirmar'}",
-                    f"- Erro medido: {(ler(s).get('erro_pagina') or '').splitlines()[0][:120]}", "", "```", mensagem_morto(c), "```", ""]
-    open(os.path.join(SAIDA, "ENVIAR.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
-
-
 def main():
-    cands = ler_candidatos()
-    a = sys.argv[1:]
-    if not a or a[0] == "ranking":
-        for i, (fr, slug, c, d, n) in enumerate(escrever_ranking(cands)[:25], 1):
-            print(i, fr, slug, n.get("performance"), c.get("nota"))
-        return
-    if a[0] == "--top":
-        k = int(a[1])
-        escolhidos = [s for fr, s, c, d, n in escrever_ranking(cands) if s not in EXCLUIR and nota_num(c) >= 4.4 and d.get("notas") and aud(d, "largest-contentful-paint") is not None][:k]
-    else:
-        escolhidos = a
-    for s in escolhidos:
-        gerar(s, cands)
-    if a[0] == "--top":
-        escrever_envio(escolhidos, cands)
+    """Só o ranking; as páginas para os donos geram-se com raiox.py (Raio-X do primeiro contacto)."""
+    for i, (fr, slug, c, d, n) in enumerate(escrever_ranking(ler_candidatos())[:25], 1):
+        print(i, fr, slug, n.get("performance"), c.get("nota"))
 
 
 if __name__ == "__main__":
