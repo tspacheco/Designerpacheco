@@ -1,41 +1,37 @@
-# Comissão dos parceiros — proposta por omissão (08/10/2026)
+# Comissão dos parceiros (decisão do Tomás, 11/10/2026)
 
-A decisão é do Tomás. Até ele dizer outra coisa, a proposta usa isto (valores em `proposta/gerar.py`, `VALORES`).
+O texto mestre do acordo é `/mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md` (thread da prospeção no Instagram). Vale também para os parceiros deste agente. Este ficheiro só resume e faz as contas em lei. Substitui a proposta de 08/10 (500 lei / 100 € fixos e 1.º mês grátis ao cliente).
 
-## A regra
+## O acordo
 
-**20 % da primeira fatura, paga até 7 dias depois de o cliente pagar.**
+1. **Damos primeiro:** implementamos sem custo **3 soluções rápidas** (quick wins), escolhidas pela situação atual do parceiro, a partir do menu abaixo.
+2. **O parceiro mostra o nosso nome**, como gratidão: um post ou story com @pachecostudiospt, uma linha no site («Sistemas: Pacheco Studios» / «Sisteme: Pacheco Studios») e, se aceitar, um testemunho.
+3. **O parceiro recomenda:** **15 % do valor de cada trabalho** que vier da recomendação, pago até 7 dias depois de o cliente pagar.
 
-| | Iași (lei) | Algarve (€) |
-|---|---|---|
-| Por cada site vendido | 500 lei | 100 € |
-| Por cada sistema de IA vendido ao mesmo cliente | 250 lei | 50 € |
-| Oferta ao cliente indicado: 1.º mês de manutenção grátis | 375 lei | 75 € |
+Regras: os 15 % contam sobre o valor da implementação, e as mensalidades ficam de fora. Só conta uma apresentação consentida (o negócio sabe quem nos apresenta). A 1.ª mensagem oferece só os quick wins; a comissão e o PDF vão depois de os quick wins estarem entregues.
 
-## A conta de um cliente indicado (Iași, 1.º ano)
+## Contas
 
-- O cliente paga: 2.500 lei (site) + 11 × 375 lei (o 1.º mês é grátis) = **6.625 lei**
-- Comissão ao parceiro: **− 500 lei**
-- Fica para a Pacheco Studios: **6.125 lei** (≈ 1.225 €)
-- Custo total de angariação: 500 + 375 = 875 lei, 12,5 % do que um cliente normal paga no 1.º ano (7.000 lei).
+| Trabalho recomendado | Valor | 15 % ao parceiro | Fica para nós |
+|---|---|---|---|
+| Site | 2.500 lei / 500 € | 375 lei / 75 € | 2.125 lei / 425 € + 375 lei/mês (75 €/mês) inteiros |
+| Sistema de IA | ~1.250 lei / 250 € | ~190 lei / 37,50 € | ~1.060 lei / 212,50 € + mensalidade |
+| Projeto de 1.000 € | 5.000 lei / 1.000 € | 750 lei / 150 € | 4.250 lei / 850 € |
 
-No Algarve é a mesma conta em euros: 500 + 11 × 75 = 1.325 €; − 100 € → **1.225 €** para nós.
+Um site recomendado, no 1.º ano: 2.500 + 12 × 375 = 7.000 lei; menos 375 de comissão = **6.625 lei** para nós.
 
-## Se correr bem
+O custo de entrada é o tempo dos 3 quick wins (são pequenos e ficam a funcionar no próprio dia). Paga-se com o 1.º site recomendado.
 
-6 parceiros ativos, cada um com 1 cliente por mês:
+## Menu de quick wins (escolher 3)
 
-- Comissões: 6 × 500 = **3.000 lei/mês** pagos aos parceiros
-- Entradas de sites: 6 × 2.500 = **15.000 lei/mês**
-- Mensalidades: sobem 6 × 375 = **+2.250 lei/mês** a cada mês (ao fim de 6 meses, 36 clientes → 13.500 lei/mês, menos os meses grátis)
-
-## Porquê esta e não outra
-
-- **Valor fixo e redondo.** «500 de lei pe client» diz-se numa frase ao balcão. Uma percentagem da mensalidade obriga o parceiro a fazer contas e a confiar em relatórios.
-- **Só depois de o cliente pagar.** Nunca sai dinheiro sem entrar primeiro.
-- **O mês grátis ao cliente** faz da indicação um favor do parceiro ao cliente dele, não uma venda. É o que o contabilista quer: parecer bem com o cliente.
-- **Alternativa mais agressiva**, se ao fim de 30 dias nenhum parceiro tiver indicado ninguém: 500 lei + 10 % da mensalidade durante 12 meses (+450 lei por cliente). Fica 5.675 lei para nós; continua a fechar positivo.
+- Cartaz QR para avaliações Google (já existe: /cartaz, /afis).
+- Ficha Google completa: horário, serviços, fotos reais, botão de marcação.
+- Respostas rápidas no WhatsApp Business e no Instagram para as 5 perguntas mais repetidas.
+- Formulário de pedido ou marcação com as perguntas certas, que chega já arrumado à equipa.
+- Link na bio com uma página simples: serviços, marcação, contacto.
+- Mensagem automática de seguimento depois do serviço a pedir avaliação.
+- Folha partilhada de pedidos com estado e responsável de cada pedido.
 
 ## Pagamento
 
-Transferência bancária. Parceiro com firma: fatura de «servicii de intermediere / comision de recomandare». Pessoa singular: contrato de colaboração simples. O registo de cada indicação e de cada comissão fica em `comissoes.tsv`.
+Transferência bancária. Parceiro com firma: fatura de «servicii de intermediere / comision de recomandare». Pessoa singular: contrato de colaboração simples. Cada indicação e cada comissão ficam em `comissoes.tsv`.

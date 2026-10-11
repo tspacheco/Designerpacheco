@@ -4,6 +4,7 @@
   python3 research/parceiros/proposta/gerar.py
 
 Gera parceria-ro.html/.pdf (Iași, lei), parceria-pt-iasi (a mesma em PT, para o Tomás) e parceria-pt-faro (€).
+Mostra-se ao parceiro depois de entregues os 3 quick wins (a comissão não vai na 1.ª mensagem).
 Os valores vêm de VALORES; mudar a comissão é mudar aí e correr outra vez. Precisa de segno (QR) e do Chromium.
 """
 import base64, html, os, subprocess, sys
@@ -14,73 +15,66 @@ RAIZ = os.path.abspath(os.path.join(AQUI, "..", "..", ".."))
 CHROMIUM = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 DEMO = "https://pachecost.com/demo/la-gioia/"
 
-# Comissão por omissão (proposta a 08/10/2026; decisão final é do Tomás): 20 % da primeira fatura.
+# Acordo decidido pelo Tomás a 11/10/2026 (fonte: /mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md):
+# 3 quick wins grátis → o parceiro mostra o nosso nome → 15 % de cada trabalho recomendado (mensalidades fora).
 VALORES = {
-    "lei": dict(site="2.500", mes="375", com_site="500", com_sis="250", moeda="lei"),
-    "eur": dict(site="500", mes="75", com_site="100", com_sis="50", moeda="€"),
+    "lei": dict(site="2.500", com_site="375", proj="5.000", com_proj="750", mes="375", moeda="lei"),
+    "eur": dict(site="500", com_site="75", proj="1.000", com_proj="150", mes="75", moeda="€"),
 }
+
+MENU_RO = ["Afiș cu cod QR pentru recenzii Google", "Fișa Google completă: program, servicii, poze reale, buton de programare",
+           "Răspunsuri rapide pe WhatsApp Business și Instagram la cele 5 întrebări care se repetă",
+           "Formular de cerere sau programare care ajunge deja ordonat la echipă", "Pagină simplă pentru link-ul din bio: servicii, programare, contact",
+           "Mesaj automat după serviciu, care cere o recenzie", "Tabel comun de cereri, cu stadiul și responsabilul fiecăreia"]
+MENU_PT = ["Cartaz com QR para avaliações Google", "Ficha Google completa: horário, serviços, fotos reais, botão de marcação",
+           "Respostas rápidas no WhatsApp Business e no Instagram às 5 perguntas mais repetidas",
+           "Formulário de pedido ou marcação que chega já arrumado à equipa", "Página simples para o link da bio: serviços, marcação, contacto",
+           "Mensagem automática depois do serviço a pedir avaliação", "Folha partilhada de pedidos, com estado e responsável de cada um"]
+
+_PT = dict(
+    lang="pt-PT", data="11.10.2026",
+    h1="Nós ajudamos primeiro.<br><em>Depois recomenda-nos.</em>",
+    lead="Implementamos sem custo <strong>3 soluções rápidas</strong> no seu negócio. Em troca, diz quem o ajudou "
+         "e recomenda-nos: recebe <strong>15 %</strong> de cada trabalho que vier da sua parte.",
+    et_pasi="Como funciona",
+    pasi=[("Damos primeiro", "Escolhemos consigo 3 soluções rápidas e deixamo-las a funcionar. Não paga nada."),
+          ("Mostra o nosso nome", "Um post ou story com @pachecostudiospt e uma linha no seu site: «Sistemas: Pacheco Studios»."),
+          ("Recomenda-nos", "Por cada trabalho que vier da sua recomendação recebe 15 %, até 7 dias depois de o cliente pagar.")],
+    et_cine="O acordo",
+    voi_t="O parceiro recebe", voi=["<b>3 soluções rápidas</b> implementadas, sem custo",
+                                   "<b>15 %</b> de cada trabalho recomendado: site de {site} {moeda} → <b>{com_site} {moeda}</b>; projeto de {proj} {moeda} → <b>{com_proj} {moeda}</b>",
+                                   "Pagamento por transferência, até 7 dias depois de o cliente pagar", "Sem limite de recomendações e sem obrigações"],
+    ei_t="As 3 soluções saem daqui", ei=MENU_PT,
+    ce_t="Como se conta", ce="Os 15 % contam sobre o valor da implementação; as mensalidades ficam de fora. Só conta uma apresentação feita com o "
+                            "conhecimento do negócio (sabe quem nos apresenta). Site profissional: <b>{site} {moeda}</b> uma vez + {mes} {moeda}/mês.",
+    demo_t="Um exemplo", demo="Demonstração feita para um negócio de Iași, antes de o dono nos conhecer.",
+    functie="Fundador", wa_t="WhatsApp", wa="+40 723 098 556", mail="tomas@pachecost.com", site_t="Site", site="ro.pachecost.com",
+)
 
 T = {
     "ro": dict(
-        lang="ro", v="lei", data="08.10.2026", supra="Program de parteneri · Iași",
-        h1="Recomandați-ne o afacere.<br><em>Primiți {com_site} {moeda}.</em>",
-        lead="Vedeți în fiecare săptămână firme care abia încep: deschid, închiriază un spațiu, își fac cărți de vizită. "
-             "Multe nu au încă site. Noi îl facem; dumneavoastră primiți <strong>{com_site} {moeda}</strong> pentru fiecare client care plătește.",
+        lang="ro", v="lei", data="11.10.2026", supra="Program de parteneri · Iași",
+        h1="Vă ajutăm noi primii.<br><em>Apoi ne recomandați.</em>",
+        lead="Implementăm gratuit <strong>3 soluții rapide</strong> în afacerea dumneavoastră. În schimb, spuneți cine v-a ajutat "
+             "și ne recomandați: primiți <strong>15%</strong> din fiecare lucrare care vine de la dumneavoastră.",
         et_pasi="Cum funcționează",
-        pasi=[("Ne trimiteți un contact", "Numele afacerii și telefonul, pe WhatsApp. Sau le dați numărul nostru și ne spun că vin de la dumneavoastră."),
-              ("Le arătăm site-ul lor", "Facem gratuit o demonstrație cu numele afacerii, înainte să plătească ceva. Nu insistăm."),
-              ("Primiți comisionul", "{com_site} {moeda} prin transfer bancar, în 7 zile de la plata clientului.")],
-        et_cine="Ce primește fiecare",
-        voi_t="Dumneavoastră", voi=["<b>{com_site} {moeda}</b> pentru fiecare site vândut", "<b>{com_sis} {moeda}</b> pentru fiecare sistem AI vândut aceluiași client",
-                                   "Fără limită de clienți și fără obligații", "Lista clienților recomandați și stadiul lor, oricând cereți"],
-        ei_t="Clientul recomandat", ei=["<b>Prima lună de întreținere gratuită</b> ({mes} {moeda}): recomandarea dumneavoastră chiar valorează ceva",
-                                        "Demonstrația gratuită, înainte de orice plată", "Auditul complet al afacerii, inclus"],
-        ce_t="Ce vindem", ce="Site profesional: <b>{site} {moeda}</b> o singură dată + <b>{mes} {moeda}/lună</b> (domeniu, găzduire, modificări, suport). "
-                             "Apoi, dacă proprietarul vrea, sisteme AI: programări, răspunsuri automate, recenzii Google.",
-        reciproc="<b>Și noi recomandăm.</b> Clienții noștri au nevoie de contabil, tipografie, spațiu, casă de marcat. Partenerii noștri sunt primii pe listă.",
+        pasi=[("Noi oferim primii", "Alegem împreună 3 soluții rapide și le lăsăm funcționale. Nu plătiți nimic."),
+              ("Ne arătați numele", "O postare sau un story cu @pachecostudiospt și un rând pe site-ul dumneavoastră: «Sisteme: Pacheco Studios»."),
+              ("Ne recomandați", "Pentru fiecare lucrare care vine din recomandarea dumneavoastră primiți 15%, în 7 zile de la plata clientului.")],
+        et_cine="Acordul",
+        voi_t="Partenerul primește", voi=["<b>3 soluții rapide</b> implementate, gratuit",
+                                         "<b>15%</b> din fiecare lucrare recomandată: site de {site} {moeda} → <b>{com_site} {moeda}</b>; proiect de {proj} {moeda} → <b>{com_proj} {moeda}</b>",
+                                         "Plata prin transfer bancar, în 7 zile de la plata clientului", "Fără limită de recomandări și fără obligații"],
+        ei_t="Cele 3 soluții se aleg de aici", ei=MENU_RO,
+        ce_t="Cum se calculează", ce="Cei 15% se calculează din valoarea implementării; abonamentul lunar nu intră. Contează doar o prezentare făcută cu "
+                                    "acordul afacerii (știe cine ne prezintă). Site profesional: <b>{site} {moeda}</b> o singură dată + {mes} {moeda}/lună.",
         demo_t="Un exemplu", demo="Demonstrație făcută pentru o afacere din Iași, înainte ca proprietarul să ne cunoască.",
         functie="Fondator", wa_t="WhatsApp", wa="+40 723 098 556", mail="tomas@pachecost.com", site_t="Site", site="ro.pachecost.com",
         titlu="Program de parteneri — Pacheco Studios"),
-    "pt-iasi": dict(
-        lang="pt-PT", v="lei", data="08.10.2026", supra="Programa de parceiros · Iași",
-        h1="Recomende-nos um negócio.<br><em>Recebe {com_site} {moeda}.</em>",
-        lead="Vê todas as semanas empresas que estão a começar: abrem, arrendam um espaço, fazem cartões de visita. "
-             "Muitas ainda não têm site. Nós fazemo-lo; o senhor recebe <strong>{com_site} {moeda}</strong> por cada cliente que paga.",
-        et_pasi="Como funciona",
-        pasi=[("Envia-nos um contacto", "Nome do negócio e telefone, por WhatsApp. Ou dá-lhes o nosso número e dizem que vêm da sua parte."),
-              ("Mostramos-lhes o site deles", "Fazemos grátis uma demonstração com o nome do negócio, antes de pagarem o que quer que seja. Sem insistir."),
-              ("Recebe a comissão", "{com_site} {moeda} por transferência, até 7 dias depois de o cliente pagar.")],
-        et_cine="O que recebe cada um",
-        voi_t="O parceiro", voi=["<b>{com_site} {moeda}</b> por cada site vendido", "<b>{com_sis} {moeda}</b> por cada sistema de IA vendido ao mesmo cliente",
-                                "Sem limite de clientes e sem obrigações", "Lista dos clientes indicados e do estado de cada um, sempre que pedir"],
-        ei_t="O cliente indicado", ei=["<b>Primeiro mês de manutenção grátis</b> ({mes} {moeda}): a sua recomendação vale mesmo alguma coisa",
-                                       "Demonstração grátis, antes de qualquer pagamento", "Auditoria completa do negócio, incluída"],
-        ce_t="O que vendemos", ce="Site profissional: <b>{site} {moeda}</b> uma vez + <b>{mes} {moeda}/mês</b> (domínio, alojamento, alterações, suporte). "
-                                  "Depois, se o dono quiser, sistemas de IA: marcações, respostas automáticas, avaliações Google.",
-        reciproc="<b>Nós também recomendamos.</b> Os nossos clientes precisam de contabilista, gráfica, espaço, máquina registadora. Os parceiros são os primeiros da lista.",
-        demo_t="Um exemplo", demo="Demonstração feita para um negócio de Iași, antes de o dono nos conhecer.",
-        functie="Fundador", wa_t="WhatsApp", wa="+40 723 098 556", mail="tomas@pachecost.com", site_t="Site", site="ro.pachecost.com",
-        titlu="Programa de parceiros — Pacheco Studios (versão PT de Iași)"),
-    "pt-faro": dict(
-        lang="pt-PT", v="eur", data="08.10.2026", supra="Programa de parceiros · Algarve",
-        h1="Recomende-nos um negócio.<br><em>Recebe {com_site} {moeda}.</em>",
-        lead="Vê todas as semanas empresas que estão a começar: abrem, arrendam um espaço, fazem cartões de visita. "
-             "Muitas ainda não têm site. Nós fazemo-lo; o senhor recebe <strong>{com_site} {moeda}</strong> por cada cliente que paga.",
-        et_pasi="Como funciona",
-        pasi=[("Envia-nos um contacto", "Nome do negócio e telefone, por WhatsApp. Ou dá-lhes o nosso número e dizem que vêm da sua parte."),
-              ("Mostramos-lhes o site deles", "Fazemos grátis uma demonstração com o nome do negócio, antes de pagarem o que quer que seja. Sem insistir."),
-              ("Recebe a comissão", "{com_site} {moeda} por transferência, até 7 dias depois de o cliente pagar.")],
-        et_cine="O que recebe cada um",
-        voi_t="O parceiro", voi=["<b>{com_site} {moeda}</b> por cada site vendido", "<b>{com_sis} {moeda}</b> por cada sistema de IA vendido ao mesmo cliente",
-                                "Sem limite de clientes e sem obrigações", "Lista dos clientes indicados e do estado de cada um, sempre que pedir"],
-        ei_t="O cliente indicado", ei=["<b>Primeiro mês de manutenção grátis</b> ({mes} {moeda}): a sua recomendação vale mesmo alguma coisa",
-                                       "Demonstração grátis, antes de qualquer pagamento", "Auditoria completa do negócio, incluída"],
-        ce_t="O que vendemos", ce="Site profissional: <b>{site} {moeda}</b> uma vez + <b>{mes} {moeda}/mês</b> (domínio, alojamento, alterações, suporte). "
-                                  "Depois, se o dono quiser, sistemas de IA: marcações, respostas automáticas, avaliações Google.",
-        reciproc="<b>Nós também recomendamos.</b> Os nossos clientes precisam de contabilista, gráfica, espaço, software de faturação. Os parceiros são os primeiros da lista.",
-        demo_t="Um exemplo", demo="Demonstração feita para um negócio do Algarve, antes de o dono nos conhecer.", url_demo="https://pachecost.com/demo/sos-car/",
-        functie="Fundador", wa_t="WhatsApp", wa="+351 967 117 357", mail="tomas@pachecost.com", site_t="Site", site="pachecost.com",
-        titlu="Programa de parceiros — Pacheco Studios (Algarve)"),
+    "pt-iasi": dict(_PT, v="lei", supra="Programa de parceiros · Iași", titlu="Programa de parceiros — Pacheco Studios (versão PT de Iași)"),
+    "pt-faro": dict(_PT, v="eur", supra="Programa de parceiros · Algarve", wa="+351 967 117 357", site="pachecost.com",
+                    demo="Demonstração feita para um negócio do Algarve, antes de o dono nos conhecer.", url_demo="https://pachecost.com/demo/sos-car/",
+                    titlu="Programa de parceiros — Pacheco Studios (Algarve)"),
 }
 
 
@@ -103,7 +97,7 @@ body{background:#6d6862;font:400 9.6pt/1.45 'Inter',system-ui,sans-serif;color:v
 @media print{body{background:none}}
 .mono{font:700 7.4pt/1 'Space Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
 /* cabeçalho */
-.cab{background:var(--carvao);color:var(--osso);padding:12mm 15mm 11mm;position:relative;overflow:hidden}
+.cab{flex:none;background:var(--carvao);color:var(--osso);padding:12mm 15mm 11mm;position:relative;overflow:hidden}
 .cab .topo{display:flex;justify-content:space-between;align-items:center;margin-bottom:10mm}
 .marca{font:400 10pt/1 'Archivo Black';letter-spacing:.06em;text-transform:uppercase}
 .marca i{display:inline-block;width:.42em;height:.42em;border-radius:50%;background:var(--laranja);margin-left:.12em}
@@ -133,6 +127,7 @@ h1 em{font-style:normal;color:var(--laranja)}
 .cx li::before{content:'';position:absolute;left:0;top:.5em;width:5px;height:5px;border-radius:50%;background:var(--laranja)}
 .cx.forte li{color:#D9D3CA}.cx.forte li b{color:#fff;font-weight:600}
 .cx li b{font-weight:600}
+.cx.menu ul{gap:1.6mm}.cx.menu li{font-size:8.6pt;line-height:1.35}
 .ce{font-size:9.2pt;line-height:1.5;margin:0;color:var(--sec-o)}
 .ce b{color:var(--carvao);font-weight:600}
 .rec{margin:0;padding:4mm 5mm;border-left:3px solid var(--laranja);background:#F7F3EE;font-size:9.2pt;color:var(--sec-o)}
@@ -172,9 +167,8 @@ def pagina(t):
   <section><p class="mono et">{t['et_pasi']}</p><ol class="pasi">{pasi}</ol></section>
   <section><p class="mono et">{t['et_cine']}</p>
     <div class="duas"><div class="cx forte"><h2>{t['voi_t']}</h2><ul>{voi}</ul></div>
-    <div class="cx"><h2>{t['ei_t']}</h2><ul>{ei}</ul></div></div></section>
+    <div class="cx menu"><h2>{t['ei_t']}</h2><ul>{ei}</ul></div></div></section>
   <section><p class="mono et">{t['ce_t']}</p><p class="ce">{f(t['ce'])}</p></section>
-  <p class="rec">{t['reciproc']}</p>
   <section><p class="mono et">{t['demo_t']}</p>
     <div class="demo">{qr}<p>{t['demo']}<a href="{demo}">{demo.replace('https://', '')}</a></p></div></section>
 </div>

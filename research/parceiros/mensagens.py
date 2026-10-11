@@ -7,28 +7,38 @@ Lê research/parceiros/parceiros.tsv. Colunas: semana cidade tipo nome nota aval
   cidade    Iași ou Faro (decide a língua e o valor da comissão)
   tipo      contabil · infiintare · tipografie · reclame · case-marcat · imobiliare · fonduri · horeca
   whatsapp  sim / ? / não (sim só com prova pública: PLAYBOOK §11 ponto 8)
-  estado    por contactar / contactado AAAA-MM-DD / aceitou / recusou / sem resposta
-Só os «por contactar» e os «contactado» há 7+ dias levam mensagem; o resto vai para a tabela do fim.
+  estado    por contactar / contactado AAAA-MM-DD / quick wins em curso / quick wins entregues / parceiro / recusou / sem resposta
+Levam mensagem: «por contactar» (oferta dos 3 quick wins), «contactado» há 7+ dias (lembrete) e «quick wins entregues»
+(a parceria: nome + 15 %, com o PDF). O resto vai para a tabela do fim.
 """
 import csv, datetime, os, sys, urllib.parse
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAW = "https://github.com/tspacheco/Designerpacheco/raw/claude/parceiros-indicam-4kcnrc/research/parceiros/proposta/"
 
-RO = ("Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios. Facem site-uri pentru afaceri locale din Iași "
+# Acordo de 11/10/2026 (fonte: /mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md): a 1.ª mensagem oferece
+# os 3 quick wins grátis e não fala de comissão; os 15 % só se apresentam depois de entregues (mensagem PARCERIA).
+RO = ("Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios. Facem site-uri și sisteme simple pentru afaceri locale din Iași "
       "(un exemplu: https://pachecost.com/demo/la-gioia/).\n\n{gancho}\n\n"
-      "Vă propun un parteneriat simplu: pentru fiecare client pe care ni-l recomandați și care își face site-ul cu noi, "
-      "primiți 500 de lei. Clientul primește prima lună de întreținere gratuită. Vă trimit și o pagină cu detaliile.\n\n"
+      "Aș vrea să încep prin a vă ajuta pe dumneavoastră: implementăm gratuit 3 soluții rapide alese pentru afacerea dumneavoastră "
+      "(de exemplu fișa Google completă, un afiș QR pentru recenzii sau răspunsuri rapide pe WhatsApp). Nu plătiți nimic.\n\n"
       "Pot trece pe la dumneavoastră 10 minute săptămâna aceasta?")
-RO_LEMBRETE = ("Bună ziua! Revin la propunerea de parteneriat de săptămâna trecută (500 de lei pentru fiecare client recomandat). "
+RO_LEMBRETE = ("Bună ziua! Revin la mesajul de săptămâna trecută: cele 3 soluții rapide gratuite pentru afacerea dumneavoastră. "
                "Dacă vă interesează, trec pe la dumneavoastră când vă convine. Mulțumesc!")
-PT = ("Bom dia! Sou o Tomás Pacheco, da Pacheco Studios. Fazemos sites para negócios locais do Algarve "
+RO_PARCERIA = ("Bună ziua! Mă bucur că cele 3 soluții funcționează. Am două rugăminți: o postare sau un story cu @pachecostudiospt "
+               "și un rând pe site-ul dumneavoastră («Sisteme: Pacheco Studios»). Iar când cunoașteți o afacere care are nevoie de ceva "
+               "asemănător, ne prezentați: pentru fiecare lucrare care vine de la dumneavoastră primiți 15%, în 7 zile de la plata clientului. "
+               "Vă trimit pagina cu detaliile.")
+PT = ("Bom dia! Sou o Tomás Pacheco, da Pacheco Studios. Fazemos sites e sistemas simples para negócios locais do Algarve "
       "(um exemplo: https://pachecost.com/demo/sos-car/).\n\n{gancho}\n\n"
-      "Proponho-lhe uma parceria simples: por cada cliente que nos indicar e que faça o site connosco, recebe 100 €. "
-      "O cliente fica com o primeiro mês de manutenção grátis. Envio-lhe também uma página com os detalhes.\n\n"
+      "Queria começar por ajudá-lo a si: implementamos sem custo 3 soluções rápidas escolhidas para o seu negócio "
+      "(por exemplo a ficha Google completa, um cartaz QR para avaliações ou respostas rápidas no WhatsApp). Não paga nada.\n\n"
       "Posso passar aí 10 minutos esta semana?")
-PT_LEMBRETE = ("Bom dia! Volto à proposta de parceria da semana passada (100 € por cada cliente indicado). "
+PT_LEMBRETE = ("Bom dia! Volto à mensagem da semana passada: as 3 soluções rápidas sem custo para o seu negócio. "
                "Se lhe interessar, passo aí quando lhe der jeito. Obrigado!")
+PT_PARCERIA = ("Bom dia! Fico contente por as 3 soluções estarem a funcionar. Tenho dois pedidos: um post ou story com @pachecostudiospt "
+               "e uma linha no seu site («Sistemas: Pacheco Studios»). E quando conhecer um negócio que precise de algo parecido, apresente-nos: "
+               "por cada trabalho que vier da sua parte recebe 15 %, até 7 dias depois de o cliente pagar. Envio-lhe a página com os detalhes.")
 
 GANCHO_RO = {
     "contabil": "Știu că vedeți în fiecare lună firme noi care abia pornesc. Multe nu au încă site, iar unele vă întreabă cine le poate face unul.",
@@ -72,21 +82,24 @@ def dias_desde(estado):
 
 
 def ativo(l):
-    return l["estado"] == "por contactar" or (l["estado"].startswith("contactado") and (dias_desde(l["estado"]) or 0) >= 7)
+    return l["estado"] in ("por contactar", "quick wins entregues") or (l["estado"].startswith("contactado") and (dias_desde(l["estado"]) or 0) >= 7)
 
 
 def main():
     linhas = list(csv.DictReader(open(os.path.join(AQUI, "parceiros.tsv"), encoding="utf-8"), delimiter="\t"))
     q = lambda s: urllib.parse.quote(s, safe="/:")
     print("# Parceiros que indicam\n")
-    print("Proposta para mandar a seguir à mensagem (PDF, 1 página): "
+    print("**O acordo (11/10):** 1) damos 3 soluções rápidas sem custo; 2) o parceiro mostra o nosso nome (post ou story com "
+          "@pachecostudiospt e uma linha no site); 3) recomenda-nos e recebe 15 % de cada trabalho que vier dele (mensalidades fora). "
+          "A 1.ª mensagem só oferece as 3 soluções; os 15 % e a proposta em PDF vão depois de entregues.  ")
+    print("Proposta em PDF (1 página, para depois dos quick wins): "
           f"[romeno]({RAW}parceria-ro.pdf) · [PT Algarve]({RAW}parceria-pt-faro.pdf) · [PT de Iași, para ti]({RAW}parceria-pt-iasi.pdf).  ")
-    print("Os escritórios convertem melhor ao vivo: em Iași, passa com a proposta impressa e a demo aberta no telemóvel. "
-          "Diz-me quem aceitou, quem recusou e quem não respondeu.\n")
+    print("Os escritórios convertem melhor ao vivo: em Iași, passa lá com a demo aberta no telemóvel. "
+          "Diz-me quem aceitou, que 3 soluções escolheu cada um e quando ficaram entregues.\n")
     print("<details><summary>O que diz a mensagem romena (PT)</summary>\n")
-    print("> " + PT.replace("do Algarve", "de Iași").replace("sos-car", "la-gioia").replace("100 €", "500 lei")
+    print("> " + PT.replace("do Algarve", "de Iași").replace("sos-car", "la-gioia")
           .format(gancho="[uma frase sobre o que esse parceiro vê todos os dias: as mesmas frases da versão PT, por tipo]")
-          .replace("\n", "\n> ").replace("> \n", ">\n") + "\n\n</details>\n")
+          .replace("\n", "\n> ").replace("> \n", ">\n") + "\n\nDepois dos quick wins:\n\n> " + PT_PARCERIA + "\n\n</details>\n")
     for cidade in ("Iași", "Faro"):
         grupo = [l for l in linhas if l["cidade"] == cidade]
         ativos = [l for l in grupo if ativo(l)]
@@ -99,6 +112,8 @@ def main():
                 ro = cidade == "Iași"
                 if l["estado"] == "por contactar":
                     texto = (RO if ro else PT).format(gancho=(GANCHO_RO if ro else GANCHO_PT)[tipo])
+                elif l["estado"] == "quick wins entregues":
+                    texto = RO_PARCERIA if ro else PT_PARCERIA
                 else:
                     texto = RO_LEMBRETE if ro else PT_LEMBRETE
                 nota = (f" · Google {l['nota']}" + (f" ({l['avaliacoes']} avaliações)" if l["avaliacoes"] else "")) if l["nota"] else ""
