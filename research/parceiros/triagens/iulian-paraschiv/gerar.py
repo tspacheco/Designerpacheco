@@ -17,7 +17,7 @@ T = {
  "ro": dict(
   lang="ro", supra="Triaj · Micro System Print", data="Octombrie 2026", tel="+40 723 098 556", site="ro.pachecost.com",
   h1="Iulian Paraschiv<br><em>Drumul unei cereri, de la primul mesaj la următorul spectacol.</em>",
-  aviso="Nu e un diagnostic al afacerii tale: e drumul pe care l-ar construi Pacheco Studios, eficient la fiecare pas. Fiecare om lucrează în felul lui, așa că alege ce ți se potrivește.",
+  aviso="Nu e un diagnostic al afacerii tale: e drumul pe care l-am construi noi, Pacheco Studios, eficient la fiecare pas. Fiecare om lucrează în felul lui, așa că alege ce ți se potrivește.",
   etapas_t="Drumul Pacheco Studios, pas cu pas", ou="Sau, dacă preferi:",
   etapas=[("Cererea", "Toate canalele (DM, WhatsApp, telefon) ajung într-un singur loc, cu răspuns imediat și cererea înregistrată.",
            "răspuns automat doar noaptea sau în timpul spectacolelor; restul răspunzi tu."),
@@ -31,7 +31,7 @@ T = {
            "doar o listă de verificare (material, drum, contact) în ziua spectacolului."),
           ("După", "Ceri deja recenzii. Pasul următor: fiecare testimonial devine conținut, iar organizatorul e întrebat de următoarea dată sau de un contact.",
            "reamintire anuală pentru același client (aniversare, petrecerea firmei de anul viitor).")],
-  qw_t="3 soluții rapide propuse",
+  qw_t="Cele 3 sugestii ale noastre",
   qw=[("Răspuns automat", "Cererea și întrebările de la pașii 1 și 2: răspuns imediat, chiar în timpul spectacolului, cu agenda verificată."),
       ("Gestionarea clienților", "O singură listă cu fiecare cerere, de la primul mesaj până după spectacol, cu reamintiri."),
       ("Facturi și avansuri", "Pasul 4: link de plată, factură și contract, iar data se blochează singură.")],
@@ -41,36 +41,36 @@ T = {
         "Ce pas îți ia cel mai mult timp astăzi?",
         "De unde ai vrea mai multe cereri: nunți, firme, petreceri private?"],
   met_t="Ce măsurăm", met=["Timpul până la primul răspuns", "Cereri → ofertă → avans", "Spectacole din recomandări"],
-  prox="Pasul următor: alegi ce ți se potrivește și implementăm cele 3 soluții fără cost.",
+  prox="Pasul următor: poți alege 3 dintre aceste direcții și le implementăm fără niciun cost.<small>Scopul e să-ți dovedim valoarea noastră și, când apare ocazia să ne recomanzi, să se întâmple.</small>",
  ),
  "pt": dict(
   lang="pt-PT", supra="Triagem · Micro System Print", data="Outubro 2026", tel="+351 967 117 357", site="pachecost.com",
   h1="Iulian Paraschiv<br><em>O caminho de um pedido, da primeira mensagem ao próximo espetáculo.</em>",
-  aviso="Não é um diagnóstico: é o caminho que a Pacheco Studios montaria, eficiente em cada passo. Cada dono trabalha à sua maneira; ele escolhe o que lhe serve.",
-  etapas_t="O caminho Pacheco Studios, passo a passo", ou="Ou, se preferir:",
+  aviso="Não é um diagnóstico do teu negócio: é o caminho que nós, Pacheco Studios, montaríamos, eficiente em cada passo. Cada um trabalha à sua maneira; escolhe o que te serve.",
+  etapas_t="O caminho Pacheco Studios, passo a passo", ou="Ou, se preferires:",
   etapas=[("Pedido", "Todos os canais (DM, WhatsApp, telefone) caem num só sítio, com resposta imediata e o pedido registado.",
-           "resposta automática só à noite ou durante os espetáculos; o resto responde ele."),
+           "resposta automática só à noite ou durante os espetáculos; o resto respondes tu."),
           ("Perguntas", "Um assistente recolhe data, tipo de evento, convidados, local e orçamento, e verifica a agenda.",
-           "recebe tudo resumido e faz ele a conversa, já com os dados na mão."),
+           "recebes tudo resumido e fazes tu a conversa, já com os dados na mão."),
           ("Orçamento", "A proposta sai de pacotes (duração, zona, extras) e é enviada no mesmo dia.",
-           "o sistema prepara o rascunho e ele ajusta e assina cada orçamento."),
+           "o sistema prepara o rascunho e tu ajustas e assinas cada orçamento."),
           ("Sinal", "Link de pagamento do sinal; a data fica bloqueada quando o sinal entra, com fatura e contrato automáticos.",
            "lembrete automático ao cliente se o sinal não entrar até à data combinada."),
           ("Espetáculo", "Na semana do evento: confirmação de hora, local e contacto; a ficha do evento no telemóvel.",
            "só uma checklist (material, viagem, contacto) no dia do espetáculo."),
-          ("Depois", "Ele já pede avaliações. Passo seguinte: cada testemunho vira conteúdo e o organizador é convidado a marcar a próxima data.",
+          ("Depois", "Já pedes avaliações. Passo seguinte: cada testemunho vira conteúdo e o organizador é convidado a marcar a próxima data.",
            "lembrete anual ao mesmo cliente (aniversário, festa de empresa do ano seguinte).")],
-  qw_t="3 soluções rápidas propostas",
+  qw_t="As nossas 3 sugestões",
   qw=[("Atendimento automático", "Passos 1 e 2: resposta imediata, mesmo durante o espetáculo, com a agenda verificada."),
       ("Gestão de clientes", "Uma só lista com cada pedido, da primeira mensagem até depois do espetáculo, com lembretes."),
       ("Faturas e sinais", "Passo 4: link de pagamento, fatura e contrato, e a data bloqueia-se sozinha.")],
-  alt="Outras hipóteses: plano para escalar fontes de leads (organizadores de casamentos, salas de eventos, empresas para team building) · conteúdo a partir das avaliações que ele já recolhe.",
-  perg_t="3 perguntas para ele",
-  perg=["Que passos gosta de fazer pessoalmente?",
-        "Que passo lhe ocupa mais tempo hoje?",
-        "De onde quer mais pedidos: casamentos, empresas, festas?"],
+  alt="Outras vertentes: plano para escalar fontes de leads (organizadores de casamentos, salas de eventos, empresas para team building) · conteúdo a partir das avaliações que já recolhes.",
+  perg_t="3 perguntas para ti",
+  perg=["Que passos gostas de fazer pessoalmente?",
+        "Que passo te ocupa mais tempo hoje?",
+        "De onde queres mais pedidos: casamentos, empresas, festas?"],
   met_t="O que medimos", met=["Tempo até à primeira resposta", "Pedidos → orçamento → sinal", "Espetáculos vindos de recomendações"],
-  prox="Próximo passo: ele escolhe o que lhe serve e implementamos as 3 soluções sem custo.",
+  prox="Próximo passo: tu podes escolher 3 destas vertentes e implementamos sem qualquer custo.<small>O intuito é provar o nosso valor e, quando houver oportunidade de nos recomendares, fazer acontecer.</small>",
  ),
 }
 
@@ -121,7 +121,7 @@ h3::after{content:'';flex:1;height:1px;background:var(--li)}
 .etapas em strong{color:var(--o);font-weight:600}
 .topo{padding:7mm 14mm 6mm}.topo .sup{margin:5mm 0 2mm}h1{font-size:18pt}h1 em{font-size:12.5pt}
 .corpo{gap:3.6mm;padding-top:5mm}.etapas div{padding:3mm}.etapas span{font-size:8pt}.etapas em{font-size:7.6pt}
-.qw div{padding:3mm}.qw span{font-size:8pt}.prox{margin-bottom:5mm;padding:3.5mm 5mm}
+.qw div{padding:3mm}.qw span{font-size:8pt}.prox{margin-bottom:5mm;padding:3.5mm 5mm}.prox small{display:block;font:400 8.8pt/1.4 'Inter';margin-top:1.2mm}
 .qw{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
 .qw div{background:var(--o2);box-shadow:inset 0 0 0 1px var(--li);border-radius:8px;padding:3.5mm}
 .qw b{display:block;font-weight:600;font-size:9.6pt;margin:1.5mm 0 1mm}.qw span{font-size:8.3pt;color:var(--so)}
