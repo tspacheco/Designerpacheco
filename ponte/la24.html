@@ -1,0 +1,1104 @@
+<!DOCTYPE html><html lang="ro" class="hydrated"><head><style>@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+        <meta charset="utf-8"><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style>
+        <meta http-equiv="lang" content="ro">
+        <meta http-equiv="language" content="ro">
+        <meta http-equiv="content-language" content="ro">
+        <meta http-equiv="X-Dns-Prefetch-Control" content="on">
+
+                <meta name="viewport" content="width=device-width" initial-scale="1.0" shrink-to-fit="yes">
+        <meta name="theme-color" content="#0c9cec">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Evolsis Energy">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#0c9cec">
+        <meta name="apple-mobile-web-app-title" content="Evolsis Energy">
+        <meta name="msapplication-TileImage" content="data/media/icon.png">
+        <meta name="msapplication-TileColor" content="#0c9cec">
+        <link rel="icon" sizes="192x192" type="image/png" href="data/media/icon.png">
+        <link rel="apple-touch-icon" href="data/media/icon.png">
+
+        <meta name="distribution" content="global">
+        <base href="https://www.evolsis.ro/">
+        <link rel="preconnect" href="https://cdn.darkhound.ro" crossorigin="">
+
+                <link rel="preload" href="https://cdn.darkhound.ro/js/jquery.min.js" as="script">
+        <link rel="modulepreload" href="https://cdn.darkhound.ro/ionicons/ionicons.esm.js">
+
+                <script type="text/javascript" src="https://cdn.darkhound.ro/js/jquery.min.js"></script>
+        <script type="module" src="https://cdn.darkhound.ro/ionicons/ionicons.esm.js" defer=""></script>
+
+                <link rel="preload" href="https://cdn.darkhound.ro/ang/angular.min.js" as="script">
+<script type="text/javascript" src="https://cdn.darkhound.ro/ang/angular.min.js"></script>
+ <script type="text/javascript" src="https://cdn.darkhound.ro/ang/angular-sanitize.min.js" defer=""></script>  <script type="text/javascript" src="https://cdn.darkhound.ro/ang/angular-route.min.js" defer=""></script>  <script type="text/javascript" src="https://cdn.darkhound.ro/ang/angular-animate.min.js" defer=""></script>  <script type="text/javascript" src="https://cdn.darkhound.ro/ang/angular-filter.min.js" defer=""></script> <script> var platform = angular.module('core', ['ngSanitize','ngRoute','ngAnimate','angular.filter',]); </script>
+<script src="https://cdn.darkhound.ro/ang/i18n/angular-locale_ro.js"></script>
+
+<script>
+    /** Global variable to export some backend values */
+    var app_global = [];
+
+    app_global['site_url'] = 'https://www.evolsis.ro';
+    app_global['lang'] = 'ro';
+    app_global['languages'] = ["ro"];
+    app_global['browser'] = 'chrome';
+    app_global['browser_check'] = true;
+
+    (function () {
+        "use strict";
+
+        if(app_global.browser == 'unknown'){
+            if(!!window.chrome && !!window.chrome.webstore) app_global.browser = 'chrome';
+            else if(false || !!document.documentMode) app_global.browser = 'ie';
+            else if(!!window.StyleMedia) app_global.browser = 'edge';
+        }
+
+        if (!window.EventSource) {
+            console.log('Server events are not supported');
+            app_global.browser_check = false;
+        }
+
+        if (!window.Worker) {
+            console.log('Service worker is not supported');
+            app_global.browser_check = false;
+        }
+
+        if (!window.Storage) {
+            console.log('LocalStorage is not supported');
+            app_global.browser_check = false;
+        }
+
+        if (!window.Notification) {
+            console.log('Notification is not supported');
+            app_global.browser_check = false;
+        }
+
+        if (app_global.browser_check == false) console.warn('Some of the new features used by this application work better on modern browsers like Edge, Chrome, Opera or Mozilla');
+    })();
+</script>
+
+<script type="text/javascript" src="core/res/js/utilities.js" defer=""></script>
+<script type="text/javascript" src="core/res/js/services.ang.js" defer=""></script>
+<script type="text/javascript" src="core/res/js/directives.ang.js" defer=""></script>
+<script type="text/javascript" src="core/res/js/platform.ang.js" defer=""></script>
+
+<script>
+    /** Config **/
+    platform.constant('config', {
+        'currency': 'EUR',
+        'site_url': 'https://www.evolsis.ro',
+        'app_name': 'evolsis-energy',
+        'modules': {"app":true,"content":true,"customers":true,"finance":true,"management":true,"marketing":true,"media":true,"office":true,"payment":true,"privacy":true,"production":true,"reservations":true,"seo":true,"shop":true,"users":true,"evolsis-energy":true}    });
+
+    platform.value('labels', {
+        success: {"action":"Ac\u021biunea a fost finalizata cu succes.","password":"Parol\u0103 schimbat\u0103","login":"Bine ai venit "},
+        error: {"server_error":"Eroare server! V\u0103 rug\u0103m reincerca\u021bi","permission_error":"Nu ave\u021bi permisiunile necesare pentru aceast\u0103 ac\u021biune.","wrong_email":"Adresa de email inexistent\u0103","login_validation":"Numele \u0219i parola sunt obligatorii","username_disabled":"Utilizator dezactivat","wrong_username":"Nume utilizator incorect","wrong_password":"Parol\u0103 incorect\u0103","database_error":"Conexiunea la baza de date nu aputut fi deschisa","capcha_error":"Codul de verificare a fost introdus gre\u0219it. Re\u00eencerca\u021bi!","system_config":"Eroare in configurarea sistemului<br \/>Contactati divizia tehnic\u0103","link_expired":"Acest link nu este valid.","restricted":"Resursele solicitate sunt restric\u021bionate","template_config":"Pentru a descarca \u00een format PDF configura\u021bi tempate-ul."}    });
+
+    platform.run(function($rootScope, config, labels) {
+        // Set a global value on $rootScope
+        $rootScope.config = config;
+        $rootScope.labels = labels;
+    })
+</script>
+
+        
+        <style>
+            :root {
+                --primary: #0c9cec;
+                --primary-rgb: 12,156,236;
+                --secondary: #fccc06;
+                --secondary-rgb:  252,204,6;
+                --accent: #A9D8D9;
+                --accent-rgb:  169,216,217;
+                --complementary: #4359e9;
+                --complementary-rgb:  67,89,233;
+
+                --primary-contrast: #000000;
+                --primary-contrast-rgb: 0,0,0;
+                --secondary-contrast: #000000;
+                --secondary-contrast-rgb: 0,0,0;
+                --accent-contrast: #000000;
+                --accent-contrast-rgb: 0,0,0;
+                --complementary-contrast: #ffffff;
+                --complementary-contrast-rgb: 255,255,255;
+
+                                --random: #00ce7d;
+                --random-rgb: 0,206,125;
+                --random-contrast: #000000;
+                --random-contrast-rgb: 0,0,0;
+            }
+        </style>
+        <meta property="og:url" content="https://www.evolsis.ro/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.evolsis.ro/data/media/icon.png">
+    <meta property="og:title" content="Acasa - Evolsis Energy - Panouri Fotovoltaice &amp; Solutii Energie Solara Iasi">
+    <meta property="og:description" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="https://www.evolsis.ro">
+    <meta name="twitter:url" content="https://www.evolsis.ro/">
+    <meta name="twitter:image" content="https://www.evolsis.ro/data/media/icon.png">
+    <meta name="twitter:title" content="Acasa - Evolsis Energy - Panouri Fotovoltaice &amp; Solutii Energie Solara Iasi">
+    <meta name="twitter:description" content="">
+
+        <title>Acasa - Evolsis Energy - Panouri Fotovoltaice &amp; Solutii Energie Solara Iasi</title>
+    <meta name="keywords" content="panouri fotovoltaice iasi, sisteme fotovoltaice, energie solară, instalatii electrice, baterii solare, invertor, prosumator, evolsis">
+    <meta name="description" content="">
+            <meta name="robots" content="index, follow">
+    <meta name="DownloadOptions" content="nosave">
+    <meta name="google" content="translate">
+    <meta name="googlebot" content="index, follow, noarchive">
+    <meta name="freshbot" content="revisit-after 1 day">
+    <meta name="frooglebot" content="index, follow, noarchive, revisit-after 7 days">
+    <meta name="mssmarttagspreventparsing" content="true">
+    <meta name="copyright" content="Acest site sau parti din continutul acestuia sunt proprietatea Evolsis Energy SRL.">
+    <meta name="author" content="https://www.darkhound.ro">
+    <meta lang="ro" name="AUTHOR" content="DarkHound">
+    <meta lang="ro" name="COPYRIGHT" content="Copyright Evolsis Energy SRL">
+    <link rel="publisher" href="https://www.evolsis.ro">
+
+        
+    <script type="text/javascript" src="core/res/js/utilities.js"></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"#website","url":"https://www.evolsis.ro","name":"Evolsis Energy","headline":"Evolsis Energy - Panouri Fotovoltaice & Soluții Energie Solară Iași","description":"Evolsis Energy oferă soluții complete pentru energie solară: panouri fotovoltaice, baterii și instalare sisteme eficiente pentru locuințe și companii.","keywords":["panouri fotovoltaice iasi","sisteme fotovoltaice","energie solară","instalatii electrice","baterii solare","invertor","prosumator","evolsis"],"potentialAction":{"@type":"SearchAction","target":"https://www.evolsis.ro/search?q={item}","query-input":"required name=item"},"about":{"@type":"Store","name":"Evolsis Energy","telephone":"0740 831 444","address":"DJ248 nr. 30 intersecție cu, Strada Editurii"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.evolsis.ro/#webpage","url":"https://www.evolsis.ro/","name":"acasa","description":"Pagina de preluare a codurilor prmotionale de pe spotul VIVAFM","inLanguage":"ro-RO","isPartOf":{"@type":"WebSite","url":"https://www.evolsis.ro","name":"Evolsis Energy"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Evolsis Energy","legalName":"Evolsis Energy SRL","telephone":"0740 831 444","priceRange":"2000 - 50000 EUR","hasMap":"https://www.google.com/maps/place/Evolsis+Energy+SRL/@47.1007441,27.5605005,17z/data=!4m6!3m5!1s0x40cafbc095cde28f:0xe144c7158bd163f9!8m2!3d47.1005267!4d27.5596089!16s%2Fg%2F11ggr0d9x2?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D","openingHours":"[\"Mo-Fr 09:00-18:00\",\"Sa 09:00-14:00\",\"Su inchis\"]","geo":{"@type":"GeoCoordinates","latitude":"47.100629","longitude":"27.559652"},"contactPoint":[{"@type":"ContactPoint","telephone":"0740 831 444","contactType":"customer service"}],"logo":{"@type":"ImageObject","url":"https://www.evolsis.ro/data/media/icon.png"},"image":{"@type":"ImageObject","url":"https://www.evolsis.ro/data/media/logo.png"},"url":"https://www.evolsis.ro","sameAs":"https://www.evolsis.ro","taxID":"RO19616614","vatID":21,"address":{"@type":"PostalAddress","streetAddress":"DJ248 nr. 30 intersecție cu, Strada Editurii","addressLocality":"Lunca Cetățuii","addressRegion":"Iasi","postalCode":"707085","addressCountry":"Romania"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","legalName":"Evolsis Energy SRL","name":"Evolsis Energy","url":"https://www.evolsis.ro","contactPoint":[{"@type":"ContactPoint","telephone":"0740 831 444","contactType":"customer service"}],"logo":"https://www.evolsis.ro/data/media/icon.png","sameAs":["https://www.facebook.com/evolsis","https://www.instagram.com/evolsis/","https://www.youtube.com/@evolsisenergy2699","https://wa.me/0040740831444","https://www.tiktok.com/@evolsis"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Place","name":"Evolsis Energy SRL","sameAs":"https://www.evolsis.ro","address":{"@type":"PostalAddress","streetAddress":"DJ248 nr. 30 intersecție cu, Strada Editurii","addressLocality":"Lunca Cetățuii","addressRegion":"Iasi","postalCode":"707085","addressCountry":"Romania"},"geo":{"@type":"GeoCoordinates","latitude":"47.100629","longitude":"27.559652"},"url":"https://www.evolsis.ro","telephone":"0740 831 444","hasMap":"https://www.google.com/maps/place/Evolsis+Energy+SRL/@47.1007441,27.5605005,17z/data=!4m6!3m5!1s0x40cafbc095cde28f:0xe144c7158bd163f9!8m2!3d47.1005267!4d27.5596089!16s%2Fg%2F11ggr0d9x2?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D","logo":"https://www.evolsis.ro/data/media/icon.png","image":"https://www.evolsis.ro/data/media/logo.png"}</script><link rel="canonical" href="https://www.evolsis.ro/"><link rel="alternate" href="https://www.evolsis.ro/acasa" hreflang="x-default"><link rel="manifest" href="data/app/assets/manifest.webmanifest"><link rel="stylesheet" href="modules/marketing/res/css/marketing.css"><script type="text/javascript" src="modules/marketing/res/js/marketing.ang.js" defer=""></script><link rel="stylesheet" href="theme/highlight/res/css/media/media.css"><script type="text/javascript" src="modules/media/res/js/media.ang.js" defer=""></script><link rel="stylesheet" href="modules/office/res/css/office.css"><link rel="stylesheet" href="modules/payment/res/css/payment.css"><script type="text/javascript" src="modules/payment/res/js/payment.ang.js" defer=""></script><link rel="stylesheet" href="modules/privacy/res/css/privacy.css"><script type="text/javascript" src="modules/privacy/res/js/privacy.ang.js" defer=""></script><link rel="stylesheet" href="theme/highlight/res/css/shop/shop.css"><script type="text/javascript" src="modules/shop/res/js/shop.ang.js" defer=""></script></head>
+<body id="body" ng-app="core" class="ng-scope">
+    <link rel="preload" as="style" href="theme/highlight/res/css/theme.css"><link rel="stylesheet" type="text/css" href="theme/highlight/res/css/theme.css" media="all" onload="this.media='all'"><link rel="preload" as="style" href="data/_main/res/css/data.css"><link rel="stylesheet" type="text/css" href="data/_main/res/css/data.css"><script type="text/javascript" src="modules/shop/res/js/store.ang.js" defer=""></script><link href="modules/media/lib/lightbox/assets/lightbox.css" rel="stylesheet">
+<script src="modules/media/lib/lightbox/simple-lightbox.js"></script>
+
+<link rel="stylesheet" href="modules/media/lib/owlcarousel/assets/owl.carousel.min.css">
+<script src="modules/media/lib/owlcarousel/owl.carousel.min.js" defer=""></script>
+
+<link href="modules/media/component/widget/phone/res/css/phone.css" rel="stylesheet">
+<div class="widget-animated bounce phone-widget">
+    <a aria-label="call" class="btn btn-circle shadow" href="tel:0740 831 444">
+        <ion-icon name="call-sharp" size="large" aria-label="call sharp" role="img" class="md icon-large hydrated"></ion-icon>
+    </a>
+</div><script>
+    app_global['methods'] = [{"key":5311,"title":"Numerar","label":"Plata prin numerar"},{"key":5125,"title":"Card","label":"Plata prin card bancar sau POS"},{"key":5121,"title":"Transfer bancar","label":"Plata prin transfer bancar"},{"key":"offline","title":"Ordin de plata","label":"Plata prin ordin de plata"},{"key":"netopia_card","title":"Card Netopia","label":"Plata Netopia online prin card de credit"},{"key":"netopia_sms","title":"SMS Netopia","label":"Plata Netopia online prin credit SMS"},{"key":"stripe","title":"Card Stripe","label":"Plata Stripe online prin card de credit"},{"key":"paypal","title":"Card PayPal","label":"Plata PayPal online prin card de credit"},{"key":"ing_webpay","title":"Card ING webPay","label":"Plata ING webPay online prin card de credit"}]; 
+
+    platform.run(function(config) {
+        angular.extend(config, {"vat":21}        );
+    });
+</script><script type="text/javascript" src="modules/reservations/res/js/utilities.ang.js"></script>
+<script type="text/javascript" src="modules/office/res/js/utilities.ang.js"></script>
+
+<script type="text/javascript" src="modules/reservations/res/js/reservations.ang.js"></script>
+
+<script>
+    app_global['booking_range'] = 60; 
+    app_global['booking_program_start'] = 600; 
+    app_global['booking_program_end'] = 1200; 
+    app_global['booking_window_min'] = 2; 
+    app_global['booking_window_max'] = 60; 
+    app_global['reservation_mode'] = 'appointment'; 
+</script>
+<link href="modules/app/res/css/pwa.css" rel="stylesheet">
+<button id="pwa_accept" aria-label="install" style="display: none;">
+    <label>Deschide in aplicatie</label>
+    <ion-icon name="logo-pwa" size="large" aria-label="logo pwa" role="img" class="md icon-large hydrated"></ion-icon>
+</button>
+<script type="text/javascript">﻿const pwaInstall = document.querySelector('#pwa_accept');
+pwaInstall.style.display = 'none';
+
+window.addEventListener('beforeinstallprompt', function(e) {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  var deferredPrompt = e;
+  // Update UI to notify the user they can add to home screen
+  pwaInstall.style.display = 'inline-flex';
+
+  pwaInstall.addEventListener('click', function(e) {
+    // Show the prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then(function(choiceResult){
+      if (choiceResult.outcome === 'accepted') {
+        // hide our user interface that shows our A2HS button
+        pwaInstall.style.display = 'none';
+      } 
+      else
+      {
+        // Update UI to notify the user they can add to home screen
+        pwaInstall.style.display = 'inline-flex';
+      }
+      deferredPrompt = null;
+    });
+  }, { once: true }); // Listener is added once to prevent multiple instances
+});
+
+function reloadOnce() {
+  if (sessionStorage.getItem('sw-reloaded')) return;
+  sessionStorage.setItem('sw-reloaded', '1');
+  location.reload();
+}
+
+(function () {
+  'use strict';
+
+  platform.service('notificationService', function() {
+    const pwa = navigator.serviceWorker;
+    let responseCallback;
+    let active;
+
+    this.init = function(callback) {
+        if (window.ServiceWorker) {
+          responseCallback = callback;
+
+          pwa.register("/contul-meu/sw", { scope: '/contul-meu/' })
+          .then(function (registration) {
+            active = registration.active;
+            if (pwa.controller && registration.waiting) registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+              
+            registration.addEventListener('updatefound', () => {
+              const installing = registration.installing;
+              if (!installing) return;
+
+              installing.addEventListener('statechange', () => {
+                if (installing.state === 'installed' && pwa.controller) installing.postMessage({ type: 'SKIP_WAITING' });
+              });
+            });
+      
+            const ping = () => registration.update();
+            window.addEventListener('focus', ping);
+            document.addEventListener('visibilitychange', () => { if (!document.hidden) ping(); });
+      
+            if ('periodicSync' in registration) {
+              registration.periodicSync.register('sw-update', { minInterval: 24 * 3600 * 1000 }).catch(err => console.warn('periodic sync', err));
+            }
+
+            // One-shot reload when the new SW takes control of this tab
+            pwa.addEventListener('controllerchange', reloadOnce);
+            pwa.addEventListener('message', function(event) {
+              if (event.data && event.data.type === 'RELOAD_NOW') reloadOnce();
+              if (responseCallback && pwa) responseCallback(event);
+            });
+
+            active.postMessage({type: 'fetch'});
+          })
+          .catch(function(error) {
+            console.error("Registration failed: ", error);
+          });
+      }
+    };
+
+    this.push = function(content, title=app_global.site_url, link='login', icon=null, tag=null) {
+        if (!window.Notification) {
+            alert('Notificarile nu sunt disponibile pe dispozitivul dumneavoastra.');
+            return;
+        }
+
+        const send = () => this.post({ 'title': title, 'body': content, 'icon': icon, 'tag': tag, 'action': link, 'type': 'push' });
+
+        if (Notification.permission === 'granted') send();
+          else if (Notification.permission !== 'denied') Notification.requestPermission().then(access => { if (access === 'granted') send(); });
+      };
+
+      this.post = function(msg) {
+          if (responseCallback && active) active.postMessage(msg);
+          else console.error('Response callback is not set.');
+      }
+    });
+})();
+</script><script type="text/javascript" src="modules/office/res/js/utilities.ang.js"></script>
+<script type="text/javascript" src="modules/office/res/js/office.ang.js"></script>
+
+<script>
+    // Extend the global object with new properties during app initialization
+    platform.run(function(labels) {
+        angular.extend(labels, {"calendar":{"days":["Luni","Mar\u021bi","Miercuri","Joi","Vineri","S\u00e2mb\u0103t\u0103","Duminic\u0103"],"months":["Ianuarie","Februarie","Martie","Aprilie","Mai","Iunie","Iulie","August","Septembrie","Octombrie","Noiembrie","Decembrie"],"no_booking":"Pauza","month":"Luna","week":"Sapt","day":"Zi","allDay":"Toata Ziua"}});
+    });
+</script>
+<div class="gdpr-wrapper ng-scope open" ng-controller="privacyController" ng-class="{'open':gdprOpen}">
+    <div class="gdpr container" role="document">
+        <div class="gdpr-header">
+            <p class="gdpr-title">Acest site foloseste elemente de tip cookie</p>
+            <button type="button" aria-label="Close" ng-click="gdprOpen=false">
+                <ion-icon name="close" aria-label="close" role="img" class="md hydrated"></ion-icon>
+            </button>
+        </div>
+        <div class="gdpr-content">
+            <div class="gdpr-info">
+                <p>Folosim cookie-uri pentru a personaliza conținutul și anunțurile, pentru a oferi funcții de social media și pentru a analiza traficul nostru. De asemenea, împărtășim informații despre utilizarea site-ului nostru cu partenerii noștri de socializare, publicitate și analiză, care îl pot combina cu alte informații pe care le-ați furnizat-o sau pe care le-au colectat din utilizarea serviciilor lor.</p>
+            </div>
+            <div class="gdpr-actions" ng-init="showDetails=false">
+                <button class="btn btn-sm btn-primary" ng-click="showDetails=!showDetails">
+                    <!-- ngIf: !showDetails --><span ng-if="!showDetails" class="ng-scope">Personalizeaza</span><!-- end ngIf: !showDetails -->
+                    <!-- ngIf: showDetails -->
+                </button>
+                <button class="btn btn-sm btn-outline btn-danger" ng-click="setOptions(2)">
+                    Refuza toate                </button>
+                <button class="btn btn-sm btn-success" id="gdpr_confirm" name="gdpr" ng-click="setOptions(1);">
+                    Accepta toate                </button>
+            </div>
+        </div>
+                <div class="gdpr-footer" ng-class="{'open':showDetails}">
+            <div class="gdpr-footer-tabs">
+                <button type="button" ng-click="cookieSelector='necessary'">
+                    Necesare                </button>
+                <button type="button" ng-click="cookieSelector = 'marketing'">
+                    Marketing                </button>
+                <button type="button" ng-click="cookieSelector = 'statistics'">
+                    Statistice                </button>
+                <button type="button" ng-click="cookieSelector = 'preferences'">
+                    Preferinte                </button>
+            </div>
+            <div class="gdpr-footer-content" ng-init="cookieSelector='necessary'">
+                <div class="gdpr-tab open" ng-class="{'open': cookieSelector == 'necessary', 'closed': cookieSelector != 'necessary'}">
+                    <label class="form-check" for="necessary">
+                        <input disabled="" checked="" type="checkbox" id="necessary" name="necessary">
+                        <span class="checkmark"></span>
+                        Necesare                    </label>
+                    <p><b><span style="font-size: 12px;">PHPSSID</span></b><br><span style="font-size: 12px;">identifica sesiunea unica de client pentru comunicarea cu serverul</span><br><span style="font-size: 12px;">cookie stric necesar pentru operarea site-ului</span><br><span style="font-size: 12px;">stocat pana la inchiderea navigatorilui</span><br><span style="font-size: 12px;">domeniul: evolsis.ro</span></p><p><b><span style="font-size: 12px;">GDPR</span></b><br><span style="font-size: 12px;">stocheaza acceptul termenilor si condițiilor</span><br><span style="font-size: 12px;">strict necesar pentru operarea site-ului</span><br><span style="font-size: 12px;">stocat timp de 30 zile</span><br><span style="font-size: 12px;">domeniul:&nbsp;</span><span style="font-size: 12px;">evolsis.ro</span></p>                </div>
+                <div class="gdpr-tab closed" ng-class="{'open': cookieSelector == 'marketing', 'closed': cookieSelector != 'marketing'}">
+                    <label class="form-check" for="marketing">
+                        <input type="checkbox" id="marketing" name="marketing" ng-click="gdprSelect('marketing');">
+                        <span class="checkmark"></span>
+                        Marketing                    </label>
+                    <p><b><span style="font-size: 12px;">_gat_gtag_UA_1********_1</span></b><br><span style="font-size: 12px;">analizeaza si monitorizareaza numarul vizitatorilor</span><br><span style="font-size: 12px;">colectarea de date anonime</span><br><span style="font-size: 12px;">stocat timp de 1 minut</span><br><span style="font-size: 12px;">domeniul google.com</span></p><p><br></p>                </div>
+                <div class="gdpr-tab closed" ng-class="{'open': cookieSelector == 'statistics', 'closed': cookieSelector != 'statistics'}">
+                    <label class="form-check" for="statistics">
+                        <input type="checkbox" id="statistics" name="statistics" ng-click="gdprSelect('statistics');">
+                        <span class="checkmark"></span>
+                        Statistice                    </label>
+                    <p style="margin-bottom: 1rem; color: rgb(51, 51, 51); font-size: small;"><span style="font-weight: bolder; font-size: 12px;">_gid</span><br><span style="font-size: 12px;">analizeaza si monitorizareaza modul de utilizare a site-ului</span><br><span style="font-size: 12px;">colectarea de date statistice anonime</span><br><span style="font-size: 12px;">stocat timp de 24 ore</span><br><span style="font-size: 12px;">domeniul google.com</span></p><p style="margin-bottom: 1rem; color: rgb(51, 51, 51); font-size: small;"><span style="font-weight: bolder; font-size: 12px;">_ga</span><br><span style="font-size: 12px;">analizeaza si monitorizareaza modul de utilizare a site-ului</span><br><span style="font-size: 12px;">colectarea de date statistice anonime</span><br><span style="font-size: 12px;">stocat timp de 2 ani</span><br><span style="font-size: 12px;">domeniul google.com</span></p>                </div>
+                <div class="gdpr-tab closed" ng-class="{'open': cookieSelector == 'preferences', 'closed': cookieSelector != 'preferences'}">
+                    <label class="form-check" for="preferences">
+                        <input type="checkbox" id="preferences" name="preferences" ng-click="gdprSelect('preferences');">
+                        <span class="checkmark"></span>
+                        Preferinte                    </label>
+                    <p><b><span style="font-size: 12px;">init.min.js</span></b><br><span style="font-size: 12px;">necesar pentru a inbunatati performanta site-ului</span><br><span style="font-size: 12px;">stocat timp de 30 zile</span><br><span style="font-size: 12px;">domeniul: https://www.evolsis.ro</span></p>                </div>
+            </div>
+            <div class="gdpr-footer-actions">
+                <button class="btn btn-sm btn-success" id="gdpr_confirm" name="gdpr" ng-click="setOptions(0);">
+                    <span class="shine"></span>Accepta selectia                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="modules/users/res/js/users.ang.js"></script><script type="text/javascript" src="core/lib/toastr/toastr.min.js"></script> 
+<script>
+
+    /* Project wide alert configuration*/
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": true,
+        "onclick": null,
+        "showDuration": "1500",
+        "hideDuration": "1250",
+        "timeOut": "8000",
+        "extendedTimeOut": "2000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+
+    </script>
+    <div class="wrapper home" id="main">
+    
+<noscript>
+    <div class="container" style="position: fixed; bottom: 5%; z-index: 9999; max-width: 100%;">
+        <div class="card">
+            <div class="card-title p-2 text-white bg-danger">
+                Atentie JavaScript nu rulează!            </div>
+            <div class="card-body text-black bg-white">
+                <p class="card-text">
+                    Acest site are nevoie de javascript pentru a rula. Momentan javascript este dezactivat pe dispozitivul dumneavoastra.                </p>
+            </div>
+        </div>
+    </div>
+    </noscript>
+
+<div class="modal-wrapper" ng-init="ModalOpen['contact-modal']=false">
+    <div class="modal" tabindex="-1" aria-hidden="true" ng-class="{'open':ModalOpen['contact-modal']}">
+        <div class="modal-header">
+            <button type="button" ng-click="ModalOpen['contact-modal']=false" class="modal-close" aria-label="Close">
+                <ion-icon name="close-circle-outline" aria-label="close circle outline" role="img" class="md hydrated"></ion-icon>
+            </button>
+        </div>
+        <div class="modal-body">
+            
+<div class="basis-full ">
+    
+    <form class="flex flex-row flex-wrap ng-pristine ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-valid-pattern ng-valid-email" method="post" name="contactForm" id="contactForm" action="">
+        <input type="text" name="firstname" class="hide-bot">
+        <div class="form-group basis-full sm:basis-1/2" id="name">
+            <!--Name-->
+            <label for="name">Nume</label>
+            <input type="text" name="na652ab" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" ng-model="na652ab" placeholder="Nume" minlength="3" maxlength="32" required="">
+        </div>
+        <div class="form-group basis-full sm:basis-1/2" id="surname">
+            <!--Prenume-->
+            <label for="surname">Prenume</label>
+            <input type="text" name="sur652ab" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" ng-model="sur652ab" placeholder="Prenume" minlength="3" maxlength="32" required="">
+        </div>
+        <div class="form-group basis-full sm:basis-1/2" id="phone">
+            <!--Telefon-->
+            <label for="name">Telefon</label>
+            <input type="phone" name="ph652ab" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength" ng-model="ph652ab" placeholder="Telefon" minlength="9" maxlength="16" pattern="\d{8,16}" required="">
+        </div>
+        <div class="form-group basis-full sm:basis-1/2 " id="email">
+            <!--Email-->
+            <label for="name">Email</label>
+            <input type="email" name="em652ab" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" ng-model="em652ab" placeholder="Email" minlength="3" maxlength="256" required="">
+        </div>
+                <div class="form-group basis-full h-auto" id="mesaj">
+            <!--Mesaj-->
+            <label for="name">Detalii</label>
+            <textarea class="form-control w-full h-24 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="mes652ab" cols="30" rows="10" ng-model="mes652ab" placeholder="Detalii" required=""></textarea>
+        </div>
+        <!-- Form extend -->
+        <input type="hidden" name="tracking[url]" value="Acasa" autocomplete="off"><div class="consent">
+    <div class="form-group">
+        <label class="form-check">
+            <input type="checkbox" class="check ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="consent.privacy" name="consent[privacy]" required="">
+            <span class="checkmark"></span>
+            Sunt de acord cu            <a href="https://www.evolsis.ro/termeni-si-conditii" target="_blank">
+                Termeni si conditii.
+            </a>
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check">
+            <input type="checkbox" class="check ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="consent.terms" name="consent[terms]" required="">
+            <span class="checkmark"></span>
+            Am citit si am inteles            <a href="https://www.evolsis.ro/politica-confidentialitate" target="_blank">
+                Politica confidentialitate.
+            </a>
+        </label>
+    </div>
+</div>
+        <div class="basis-full pt-4">
+                    </div>
+        <button class="btn btn-primary mt-4" type="submit" name="send_contact" ng-disabled="contactForm.$invalid" disabled="disabled">Trimite</button>
+    </form>
+</div>
+
+        </div>
+    </div>
+</div>
+<div class="topbar-wrapper">
+    <div class="topbar ">
+        <div class="social-links">
+                <a href="https://www.facebook.com/evolsis" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-facebook" class="logo-facebook md hydrated" aria-label="logo facebook" role="img"></ion-icon>
+    </a>
+                <a href="https://www.instagram.com/evolsis/" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-instagram" class="logo-instagram md hydrated" aria-label="logo instagram" role="img"></ion-icon>
+    </a>
+                <a href="https://www.youtube.com/@evolsisenergy2699" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-youtube" class="logo-youtube md hydrated" aria-label="logo youtube" role="img"></ion-icon>
+    </a>
+                <a href="https://wa.me/0040740831444" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-whatsapp" class="logo-whatsapp md hydrated" aria-label="logo whatsapp" role="img"></ion-icon>
+    </a>
+                <a href="https://www.tiktok.com/@evolsis" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-tiktok" class="logo-tiktok md hydrated" aria-label="logo tiktok" role="img"></ion-icon>
+    </a>
+    </div>
+<div class="flex h-full gap-2">
+    <a class="btn btn-link btn-dark btn-sm max-md:hidden" href="https://www.evolsis.ro/intrebari-frecvente">Intrebari frecvente</a>
+    <a class="btn btn-link btn-dark btn-sm max-md:hidden" href="https://www.evolsis.ro/despre">Despre</a>
+    <a class="flex items-center justify-center h-full px-8 bg-secondary text-dark font-semibold font-sans" href="tel:0740 831 444">0740 831 444</a>
+</div>    </div>
+</div>
+<nav class="navbar-wrapper" ng-class="{'open':navOpen}" id="sticky" ng-init="navOpen=false">
+    <div class="navbar navbar-outer container">
+        <button class="navbar-toggler" type="button" ng-click="navOpen=!navOpen">
+            <ion-icon name="menu" aria-label="menu" role="img" class="md hydrated"></ion-icon>        </button>
+                <div class="navbar-inner">
+            <button class="navbar-close" type="button" ng-click="navOpen=false">
+                <ion-icon name="close" aria-label="close" role="img" class="md hydrated"></ion-icon>            </button>
+            <a href="/" class="logo" aria-label="Evolsis Energy" target="_self">
+    <img src="data/media/logo.png" alt="Evolsis Energy">
+</a><ul class="navbar-links">
+        <li class="navbar-link active">
+                <a href="https://www.evolsis.ro/" target="_self" title="Acasa">
+            Acasa        </a>
+    </li>
+        <li class="navbar-link ">
+                <a href="https://www.evolsis.ro/magazin" target="_self" title="Magazin">
+            Magazin        </a>
+    </li>
+    <li class="navbar-link md:hidden">
+    <a href="https://www.evolsis.ro/despre" target="_self">Despre</a>
+</li>
+<li class="navbar-link md:hidden">
+    <a href="https://www.evolsis.ro/intrebari-frecvente" target="_self">Intrebari frecvente</a>
+</li>    <li class="navbar-link ">
+                <a href="https://www.evolsis.ro/portofoliu" target="_self" title="Portofoliu">
+            Portofoliu        </a>
+    </li>
+        <li class="navbar-link ">
+                <a href="https://www.evolsis.ro/servicii" target="_self" title="Servicii">
+            Servicii        </a>
+    </li>
+        <li class="navbar-link ">
+                <a href="https://www.evolsis.ro/contact" target="_self" title="Contact">
+            Contact        </a>
+    </li>
+    </ul>
+        </div>
+    </div>
+</nav>
+<script> sticky(); </script>
+<section class="section-media py-8 md:py-20 px-0 max-md:bg-light/40">
+        <img src="data/media/banner/home.jpg" class="w-[80%] right-0 left-[unset]">
+        <div class="container px-4 md:px-8 lg:px-12">
+        <div class="editor-content ">
+        <div>
+    <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl">Panouri Fotovoltaice, Baterii Pompe de caldură</h1>
+    <p class="mb-4 text-lg sm:text-xl mb-8">Evolsis Energy</p>
+
+    <img loading="lazy" class="h-40 w-40 lg:h-60 lg:w-60 mb-12" width="220" height="220" src="data/media/image/Fronius-System-Partner-Logo.jpg" alt="" title="Fronius System Partner Logo">
+
+    <div class="sm:w-[80%] lg:w-[60%]">
+        <h4 class="font-serif font-semibold text-xl sm:text-2xl md:text-3xl">Evolsis Energy este Fronius System Partner</h4>
+        <p class="mb-8">Fronius Solar Energy de 30 de ani au dezvoltat produse inovatoare, soluții și instrumente digitale pentru a genera, stoca, distribui și consuma energie solară în mod eficient și inteligent din punct de vedere al costurilor.</p>
+
+        <h4 class="font-serif font-semibold text-xl sm:text-2xl md:text-3xl">Evolsis Energy</h4>
+        <p>Noi înțelegem că fiecare client are cerințe unice și dorința de a avea o sursă de energie durabilă și eficientă. De aceea, echipa noastră de specialiști vă oferă consultanță personalizată pentru a vă ghida în alegerea soluției potrivite. Indiferent de dimensiunea proiectului dvs., suntem pregătiți să vă oferim cele mai inovatoare și fiabile produse de pe piață.</p>
+
+        <p class="mb-8">Cu tehnologii de ultimă generație și parteneriate solide cu producătorii de top din industrie, vă asigurăm că veți beneficia de cele mai eficiente și durabile soluții solare. Echipa E volsis Energy de instalatori experimentați va asigura montajul și integrarea sistemului în mod profesionist, garantându-vă performanțe optime și economii semnificative pe termen lung.</p>
+    </div>
+
+    <div class="flex gap-2 sm:gap-4">
+        <a class="btn btn-primary" href="sisteme">Sisteme</a>
+        <a class="btn btn-secondary" href="contact">Contact</a>
+    </div>
+</div></div>    </div>
+</section>
+<section class="py-8 md:py-20 px-0 bg-slate-100" id="section-f74021d4064f2aab">
+    <div class="container px-4 md:px-8 lg:px-12">
+        <div class="editor-content ">
+        <video controls="" class="w-full">
+    <source type="video/mp4" src="data/media/video/Untitled.mp4">
+</video></div>    </div>
+</section><section class="container" id="section-abf4f89a42534efc">
+    <div class="m-4 p-4">
+        <div class="slider-wrapper">
+        <dh-slider class="slider owl-carousel owl-theme owl-loaded owl-drag" data-options="{loop:true,margin:40,autostart:true, responsive:{0:{items:1},816:{items:2},1360:{items:3}}}">
+                        
+                        
+                        
+                        
+                        
+                        
+            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1716px, 0px, 0px); transition: all; width: 6864px;"><div class="owl-item cloned" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/Proiect-nou.png" loading="lazy" alt="" src="data/media/sliders/partners/Proiect-nou.png">
+                    </div>
+                                    </div></div><div class="owl-item cloned" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/trina-Solar.jpg" loading="lazy" alt="" src="data/media/sliders/partners/trina-Solar.jpg">
+                    </div>
+                                    </div></div><div class="owl-item cloned" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/victron-energy-bv-logo-vector.png" loading="lazy" alt="" src="data/media/sliders/partners/victron-energy-bv-logo-vector.png">
+                    </div>
+                                    </div></div><div class="owl-item active" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/Fronius-Logo.png" loading="lazy" alt="" src="data/media/sliders/partners/Fronius-Logo.png">
+                    </div>
+                                    </div></div><div class="owl-item active" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/HUAWEI-logo.png" loading="lazy" alt="" src="data/media/sliders/partners/HUAWEI-logo.png">
+                    </div>
+                                    </div></div><div class="owl-item" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/Proiect-nou-1.png" loading="lazy" alt="" src="data/media/sliders/partners/Proiect-nou-1.png">
+                    </div>
+                                    </div></div><div class="owl-item" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/Proiect-nou.png" loading="lazy" alt="" src="data/media/sliders/partners/Proiect-nou.png">
+                    </div>
+                                    </div></div><div class="owl-item" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/trina-Solar.jpg" loading="lazy" alt="" src="data/media/sliders/partners/trina-Solar.jpg">
+                    </div>
+                                    </div></div><div class="owl-item" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/victron-energy-bv-logo-vector.png" loading="lazy" alt="" src="data/media/sliders/partners/victron-energy-bv-logo-vector.png">
+                    </div>
+                                    </div></div><div class="owl-item cloned" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/Fronius-Logo.png" loading="lazy" alt="" src="data/media/sliders/partners/Fronius-Logo.png">
+                    </div>
+                                    </div></div><div class="owl-item cloned" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/HUAWEI-logo.png" loading="lazy" alt="" src="data/media/sliders/partners/HUAWEI-logo.png">
+                    </div>
+                                    </div></div><div class="owl-item cloned" style="width: 532px; margin-right: 40px;"><div slider-item="" class="item">
+                    <div class="slider-item-img">
+                        <img ng-src="data/media/sliders/partners/Proiect-nou-1.png" loading="lazy" alt="" src="data/media/sliders/partners/Proiect-nou-1.png">
+                    </div>
+                                    </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><ion-icon name="chevron-back" aria-label="chevron back" role="img" class="md hydrated"></ion-icon></button><button type="button" role="presentation" class="owl-next"><ion-icon name="chevron-forward" aria-label="chevron forward" role="img" class="md hydrated"></ion-icon></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></dh-slider>
+    </div>
+    </div>
+</section><section class="section-split py-8 md:py-20 px-0">
+    <div class="container px-4 md:px-8 lg:px-12">
+        <div class="editor-content p-6 flex items-center flex-wrap content-center">
+        <h1 class="text-6xl font-serif text-primary font-bold mb-4 dots-bg">Panouri Solare</h1>
+
+<h3 class="text-2xl mb-8">Esti pregatit sa devii prosumator?</h3>
+<p class="text-xl mb-8">Alege să îți alimentezi viața cu energie 100% regenerabilă și ajuți la reducerea amprentei de carbon. Vei reduce dependența față de combustibilii fosili și produsele petroliere pe bază de țiței.</p>
+
+<p><a href="portofoliu" class="btn btn-secondary mt-4 md:mt-16">Portofoliu</a></p></div><div class="p-6 lg:p-12">
+    <img loading="lazy" decoding="async" style="object-fit:cover" class="w-full h-full block" src="data/media/image/sisteme-fotovoltaice-panouri-foto.jpg" role="presentation" title="">
+    </div>    </div>
+</section><section class="py-8 px-0" id="section-90c84bb9112b858d">
+    <div class="container px-4 md:px-8 lg:px-12">
+        <div class="flex flex-row flex-wrap">
+    <div class="basis-full md:basis-1/2 p-6">
+        <div class="bg-complementary h-full text-complementary-contrast text-center p-8">
+            <img loading="lazy" width="128" height="128" src="data/media/image/green-energy-icon-17-2.png" alt="" class="w-32 h-32 block mx-auto">
+            <div class="mt-8">
+                <h4 class="font-serif text-4xl font-semibold ">ONGRID</h4>
+                <p>Cu ajutorul Kit-urilor noastre, produci energie electrică, o utilizezi pentru consumul propriu, iar surplusul rezultat va fi compensat cantitativ sau vândut către furnizorul de energie electrică.</p>
+                <button type="button" ng-click="ModalOpen['offerModal'] = true" class="btn btn-light mt-6 mx-auto">Cere oferta</button>
+            </div>
+        </div>
+    </div>
+    <div class="basis-full md:basis-1/2 p-6">
+        <div class="bg-complementary h-full text-complementary-contrast text-center p-8">
+            <img loading="lazy" width="128" height="128" src="data/media/image/green-energy-icon-15-2.png" alt="" class="w-32 h-32 block mx-auto">
+            <div class="mt-8">
+                <h4 class="font-serif text-4xl font-semibold ">OFFGRID</h4>
+                <p>Kit-urile noastre fotovoltaice Off Grid, cu baterii de stocare, îți asigură energia electrică, atât ziua, când panourile sunt luminate, cât și noaptea sau în momentele cu vreme nefavorabilă</p>
+                <button type="button" ng-click="ModalOpen['offerModal'] = true" class="btn btn-light mt-6 mx-auto">Cere oferta</button>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+</section><section class="section-media pt-8 md:pt-20 px-0">
+        <img src="data/media/image/20220905_125434_02-scaled.jpg" class="">
+        <div class="container px-4 md:px-8 lg:px-12">
+        <div class="editor-content w-[90%] sm:w-3/4 lg:w-1/2 block mx-auto bg-white p-16 -mb-20 text-center shadow-2xl">
+        <p><img class="w-40 h-auto block mx-auto" src="data/media/image/green-energy-icon-18-2.png">
+</p>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-8 sm:mb-16">Bucură-te de soare zi și noapte.</h2>
+<div class="flex flex-col mx-auto justifi-center items-center gap-2">
+    <a class="btn btn-primary btn-outline" href="contact">Discuta cu un consultant</a>
+    <a class="btn btn-secondary" href="magazin">Mergi la magazin</a>
+</div></div>    </div>
+</section>
+<section class="py-8 md:py-20 px-0 mt-32" id="section-063b651173ebed97">
+    <div class="container px-4 md:px-8 lg:px-12">
+        <div class="editor-content ">
+        <h2 class="text-5xl font-serif font-light mb-16">FAQ</h2></div>
+<div class="accordion-content " ng-init="accordionc19061=-1">
+            <div class="accordion-wrapper">
+            <button class="accordion-header" ng-click="accordionc19061==0?accordionc19061=-1:accordionc19061=0">
+                <p>Se asigura montajul in pret?</p>
+                <div>
+                    <ion-icon class="text-2xl font-bold md hydrated" ng-class="{'hidden':accordionc19061==0}" name="add" aria-label="add" role="img"></ion-icon>
+                    <ion-icon class="text-2xl font-bold hidden md hydrated" ng-class="{'hidden':accordionc19061!=0}" name="remove" aria-label="remove" role="img"></ion-icon>
+                </div>
+            </button>
+            <div class="accordion" var-height="accordion-item-height" ng-class="{'open': accordionc19061==0}" style="--accordion-item-height: 58px !important;">  
+                <p class="py-2">
+                    Poti achizitiona sistemele fotovoltaice fara montaj, iar daca doresti montaj, pretul acestuia este calculat pe pagina produsului in functie de tipul de acoperit si locatia de instalare.                </p>
+            </div>
+        </div>
+            <div class="accordion-wrapper">
+            <button class="accordion-header" ng-click="accordionc19061==1?accordionc19061=-1:accordionc19061=1">
+                <p>Sistemele fototovoltaice au garantie?</p>
+                <div>
+                    <ion-icon class="text-2xl font-bold md hydrated" ng-class="{'hidden':accordionc19061==1}" name="add" aria-label="add" role="img"></ion-icon>
+                    <ion-icon class="text-2xl font-bold hidden md hydrated" ng-class="{'hidden':accordionc19061!=1}" name="remove" aria-label="remove" role="img"></ion-icon>
+                </div>
+            </button>
+            <div class="accordion" var-height="accordion-item-height" ng-class="{'open': accordionc19061==1}" style="--accordion-item-height: 77px !important;">  
+                <p class="py-2">
+                    Toate sistemele noastre au panouri cu garantie de 10 ani atat pentru persoane fizice, cat si pentru persoane juridice. Invertoarele de la Fronius au garantie oferita de producator de 7 ani cu posibilitatea extinderii pana la 20 de ani contra cost, invertoarele de la Huawei ofera o garantie de 10 ani, iar la invertoarele Victron ofera o garantie de 5 ani.                </p>
+            </div>
+        </div>
+            <div class="accordion-wrapper">
+            <button class="accordion-header" ng-click="accordionc19061==2?accordionc19061=-1:accordionc19061=2">
+                <p>Sunteti firma acreditata?</p>
+                <div>
+                    <ion-icon class="text-2xl font-bold md hydrated" ng-class="{'hidden':accordionc19061==2}" name="add" aria-label="add" role="img"></ion-icon>
+                    <ion-icon class="text-2xl font-bold hidden md hydrated" ng-class="{'hidden':accordionc19061!=2}" name="remove" aria-label="remove" role="img"></ion-icon>
+                </div>
+            </button>
+            <div class="accordion" var-height="accordion-item-height" ng-class="{'open': accordionc19061==2}" style="--accordion-item-height: 39px !important;">  
+                <p class="py-2">
+                    Suntem firma Atestata A.N.R.E grad B                </p>
+            </div>
+        </div>
+            <div class="accordion-wrapper">
+            <button class="accordion-header" ng-click="accordionc19061==3?accordionc19061=-1:accordionc19061=3">
+                <p>Unde aveti sediul?</p>
+                <div>
+                    <ion-icon class="text-2xl font-bold md hydrated" ng-class="{'hidden':accordionc19061==3}" name="add" aria-label="add" role="img"></ion-icon>
+                    <ion-icon class="text-2xl font-bold hidden md hydrated" ng-class="{'hidden':accordionc19061!=3}" name="remove" aria-label="remove" role="img"></ion-icon>
+                </div>
+            </button>
+            <div class="accordion" var-height="accordion-item-height" ng-class="{'open': accordionc19061==3}" style="--accordion-item-height: 39px !important;">  
+                <p class="py-2">
+                    Sediul nostru este in Iasi, DJ248 nr. 30 intersecție cu Strada Editurii, Lunca Cetățuii 707085                </p>
+            </div>
+        </div>
+    </div><div class="p-4 sm:p-8 md:p-16 bg-white flex flex-row flex-wrap shadow-2xl">
+    <div class="basis-full md:basis-1/2 lg:basis-1/3 p-4 md:p-6">
+        <img loading="lazy" width="64" height="64" src="data/media/image/green-energy-icon-11-1.png" alt="" class="w-20 h-20 object-contain block mx-auto mb-12">
+        <h4 class="text-2xl font-semibold"><span>Montaj Panouri Solare</span></h4>
+        <div class="mb-4 leading-7">
+            <p><span>De la evaluarea inițială a locației și necesităților dumneavoastră, până la proiectarea și instalarea panourilor solare, echipa noastră de specialiști vă va ghida cu profesionalism și experiență. Avem cunoștințe avansate în tehnologia panourilor solare și în soluțiile de stocare a energiei, astfel încât să putem dezvolta un sistem personalizat care să se potrivească perfect cu cerințele dumneavoastră specifice.</span></p>
+        </div>
+    </div>
+    <div class="basis-full md:basis-1/2 lg:basis-1/3 p-4 md:p-6">
+        <img loading="lazy" width="64" height="64" src="data/media/image/green-energy-icon-1.png" alt="" class="w-20 h-20 object-contain block mx-auto mb-12">
+        <h4 class="text-2xl font-semibold"><span>Sisteme Fotovoltaice</span></h4>
+        <div class="mb-4 leading-7">
+            <p>Contactați-ne astăzi pentru a iniția procesul și pentru a descoperi cum putem transforma energia solară în economii durabile și profitabile pentru dumneavoastră.</p>
+        </div>
+    </div>
+    <div class="basis-full lg:basis-1/3 p-4 md:p-6">
+        <h3 class="font-serif text-4xl font-light mb-6">10+ ANI EXPERIENTA</h3>
+        <p class="mb-4 leading-7"><span>Ne mândrim cu faptul că am contribuit la transformarea modului în care oamenii utilizează energia în viața de zi cu zi, oferind soluții ecologice și eficiente energetic. Echipa noastră de specialiști calificați este dedicată să ofere cele mai avansate și fiabile tehnologii solare, adaptate nevoilor și cerințelor fiecărui client.</span></p>
+        <a class="btn btn-primary" href="https://www.evolsis.ro/despre">DESPRE NOI</a>
+    </div>
+</div>
+<img src="data/media/image/green-energy-23.png" class="block mx-auto w-1/2" alt="">    </div>
+</section><section class="py-8 md:py-20 px-0" id="section-f970c1707e6ce21e">
+    <div class="container px-4 md:px-8 lg:px-12">
+        <link rel="stylesheet" href="modules/media/lib/owlcarousel/assets/owl.carousel.min.css">
+<script src="modules/media/lib/owlcarousel/owl.carousel.min.js" defer=""></script>
+
+<dh-slider class="testimonial-carousel owl-carousel owl-theme owl-loaded owl-drag" data-options="{responsive:{0:{items:1},816:{items:2},1360:{items:3}},dots:true,nav:false}">
+    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 3180px;"><div class="owl-item active" style="width: 510px; margin-right: 20px;"><div slider-item="" class="testimonial-card-wrapper">
+    <div class="testimonial-card">
+        <div class="testimonial-author">
+            <svg id="OBJECTS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><circle cx="250" cy="250" r="250" transform="translate(-103.55 250) rotate(-45)" style="fill:rgb(var(--primary-rgb), 0.8)"></circle>
+    <path d="M166.12,204.69S178,243.38,155,284.94c0,0,46.86,18.57,91.07,0Z" style="fill:#383838"></path><path d="M336.49,204.69s-11.86,38.69,11.13,80.25c0,0-46.86,18.57-91.07,0Z" style="fill:#383838"></path>
+    <path d="M407,404.5a92.77,92.77,0,0,0-63.84-64.09L286,324.12H214l-57.11,16.29A92.77,92.77,0,0,0,93.05,404.5L77.34,430.7a249.74,249.74,0,0,0,345.32,0Z" style="fill:var(--secondary)"></path>
+    <path d="M283.65,278.17h-67.3l-10.6,55.51s19,19.9,44.25,20.95c25.27-1.05,44.25-20.95,44.25-20.95Z" style="fill:#f0f2f2"></path>
+    <path d="M325.27,200.27c0,45.5-33.7,106.44-75.27,106.44s-75.27-60.94-75.27-106.44,33.7-82.38,75.27-82.38S325.27,154.77,325.27,200.27Z" style="fill:#fff"></path>
+    <path d="M288.94,129.75s-103.89-11.86-108.4,106c0,0-28.2-37-13.61-82.1S226.6,80,263.11,89.85C303.53,100.74,288.94,129.75,288.94,129.75Z" style="fill:#383838"></path>
+    <path d="M269.05,121.8l19.89,8s-4.86,63.88,33.47,108.67c0,0,61.59-76.32-28.16-120.53C237.23,89.8,269.05,121.8,269.05,121.8Z" style="fill:#383838"></path>
+</svg>            <p class="name">Diana Nina Alexandru</p>
+            <p class="detail"></p>
+        </div>
+        <div class="testimonial-score">
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                    </div>
+        <div class="testimonial-content">
+            Servicii de calitate și produse profesionale. Va recomand cu drag !        </div>
+    </div>
+</div></div><div class="owl-item active" style="width: 510px; margin-right: 20px;"><div slider-item="" class="testimonial-card-wrapper">
+    <div class="testimonial-card">
+        <div class="testimonial-author">
+            <svg id="OBJECTS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><circle cx="250" cy="250" r="250" transform="translate(-103.55 250) rotate(-45)" style="fill:rgb(var(--primary-rgb), 0.8)"></circle>
+    <path d="M166.12,204.69S178,243.38,155,284.94c0,0,46.86,18.57,91.07,0Z" style="fill:#383838"></path><path d="M336.49,204.69s-11.86,38.69,11.13,80.25c0,0-46.86,18.57-91.07,0Z" style="fill:#383838"></path>
+    <path d="M407,404.5a92.77,92.77,0,0,0-63.84-64.09L286,324.12H214l-57.11,16.29A92.77,92.77,0,0,0,93.05,404.5L77.34,430.7a249.74,249.74,0,0,0,345.32,0Z" style="fill:var(--secondary)"></path>
+    <path d="M283.65,278.17h-67.3l-10.6,55.51s19,19.9,44.25,20.95c25.27-1.05,44.25-20.95,44.25-20.95Z" style="fill:#f0f2f2"></path>
+    <path d="M325.27,200.27c0,45.5-33.7,106.44-75.27,106.44s-75.27-60.94-75.27-106.44,33.7-82.38,75.27-82.38S325.27,154.77,325.27,200.27Z" style="fill:#fff"></path>
+    <path d="M288.94,129.75s-103.89-11.86-108.4,106c0,0-28.2-37-13.61-82.1S226.6,80,263.11,89.85C303.53,100.74,288.94,129.75,288.94,129.75Z" style="fill:#383838"></path>
+    <path d="M269.05,121.8l19.89,8s-4.86,63.88,33.47,108.67c0,0,61.59-76.32-28.16-120.53C237.23,89.8,269.05,121.8,269.05,121.8Z" style="fill:#383838"></path>
+</svg>            <p class="name">Monica Penisoara</p>
+            <p class="detail"></p>
+        </div>
+        <div class="testimonial-score">
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                    </div>
+        <div class="testimonial-content">
+            Recomand cu încredere! Servicii top la preț decent !        </div>
+    </div>
+</div></div><div class="owl-item" style="width: 510px; margin-right: 20px;"><div slider-item="" class="testimonial-card-wrapper">
+    <div class="testimonial-card">
+        <div class="testimonial-author">
+            <svg id="OBJECTS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><circle cx="250" cy="250" r="250" style="fill:rgb(var(--primary-rgb), 0.8)"></circle>
+<path d="M407,404.5a92.77,92.77,0,0,0-63.84-64.09L286,324.12H214l-57.11,16.29A92.77,92.77,0,0,0,93.05,404.5L77.34,430.7a249.74,249.74,0,0,0,345.32,0Z" style="fill:var(--secondary)"></path><path d="M283.65,278.17h-67.3l-10.6,55.51s19,19.9,44.25,20.95c25.27-1.05,44.25-20.95,44.25-20.95Z" style="fill:#f0f2f2"></path><path d="M325.27,200.27c0,45.5-33.7,106.44-75.27,106.44s-75.27-60.94-75.27-106.44,33.7-82.38,75.27-82.38S325.27,154.77,325.27,200.27Z" style="fill:#fff"></path><path d="M184.26,206.63c-.35,8.89-5.65,20.6-11.58,20.36s-10.27-12.34-9.91-21.23,5.46-15.9,11.39-15.66S184.62,197.74,184.26,206.63Z" style="fill:#fff"></path><path d="M335.84,205.83c.3,8.9-4.1,21-10,21.17s-11.15-11.54-11.45-20.44,4.26-16.26,10.2-16.47S335.54,196.94,335.84,205.83Z" style="fill:#fff"></path><path d="M281.62,145a11.85,11.85,0,0,0,5.53,6.05,50.27,50.27,0,0,0,7.73,3.19,31.35,31.35,0,0,1,9.07,4.81,14.35,14.35,0,0,1,5.31,8.57" style="fill:none"></path><path d="M191.89,121.05c-12.88,29.39,39.61,27.83,54.36,26.08,3.69-.44,7.74-1.66,11.38-1,4,.7,8,2.82,12.23,3.47a60.14,60.14,0,0,0,27.53-2.14c2-.66,4.28-1.41,6.19-.47a7.49,7.49,0,0,1,2.68,2.71c3.47,5,6.69,10.29,8.28,16.16,2.25,8.31,1.09,17.1.64,25.7-.28,5.33-.66,24.22,6.24,25.48,1.06-8.94,2.09-17.95,3.13-26.92,0,0,7.47-27,4.84-41.18-4.12-22.11-20.13-49.5-84-48.82C200.91,100.56,191.92,121,191.89,121.05Z" style="fill:#383838"></path><path d="M210.24,136.62a3.74,3.74,0,0,1-1.09,2c-1.53,1.55-3.83,2-5.86,2.74-6.47,2.49-10.44,8.86-13.95,14.83-2.26,3.84-4.58,7.86-4.86,12.3-.38,6.08,3,11.4,3.82,17.27.64,4.63-.46,8.87-1.73,13.28-.6,2.06-5.09,19.78-8.74,18l-3.12-26.9s-7.48-27-4.84-41.18c2.55-13.68,9.31-30.32,26.32-25.68C199.67,124.18,211.19,131.34,210.24,136.62Z" style="fill:#383838"></path></svg>            <p class="name">Ciorpac Andrei</p>
+            <p class="detail"></p>
+        </div>
+        <div class="testimonial-score">
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                    </div>
+        <div class="testimonial-content">
+            Baieti seriosi . Lucreaza cu echipamente profesionale . Preturi / promotii incredibile        </div>
+    </div>
+</div></div><div class="owl-item" style="width: 510px; margin-right: 20px;"><div slider-item="" class="testimonial-card-wrapper">
+    <div class="testimonial-card">
+        <div class="testimonial-author">
+            <svg id="OBJECTS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><circle cx="250" cy="250" r="250" style="fill:rgb(var(--primary-rgb), 0.8)"></circle>
+    <path d="M407,404.5a92.77,92.77,0,0,0-63.84-64.09L286,324.12H214l-57.11,16.29A92.77,92.77,0,0,0,93.05,404.5L77.34,430.7a249.74,249.74,0,0,0,345.32,0Z" style="fill:var(--secondary)"></path>
+    <path d="M283.65,278.17h-67.3l-10.6,55.51s19,19.9,44.25,20.95c25.27-1.05,44.25-20.95,44.25-20.95Z" style="fill:#f0f2f2"></path>
+    <path d="M325.27,200.27c0,45.5-33.7,106.44-75.27,106.44s-75.27-60.94-75.27-106.44,33.7-82.38,75.27-82.38S325.27,154.77,325.27,200.27Z" style="fill:#fff"></path>
+    <path d="M184.26,206.63c-.35,8.89-5.64,20.6-11.58,20.36s-10.27-12.34-9.91-21.23,5.46-15.9,11.39-15.66S184.62,197.74,184.26,206.63Z" style="fill:#fff"></path>
+    <path d="M335.84,205.83c.3,8.9-4.1,21-10,21.17s-11.15-11.54-11.45-20.44,4.26-16.26,10.2-16.47S335.54,196.94,335.84,205.83Z" style="fill:#fff"></path>
+    <path d="M264.84,171.53c17.35,7.57,24.88,14.56,43.77,15.64,15,34,5.62,74.63-20,101.46,19.15,9,46,5,59.08-11.63C376,241,356,178.23,334.41,143.71c-18.17-29-47.59-51.85-81.32-57.58-8.38-1.42-17.46-1.69-24.9,2.44-9.25,5.13-14,16.18-14.34,26.75C212.82,143.27,239.28,160.39,264.84,171.53Z" style="fill:#383838"></path>
+    <path d="M237.65,137.71s-29.47,11.9-44.88,30.95c-30,37.1-8.49,89.09,9.39,109.51,0,0-44.18,35.55-66-16.73C103.69,183.47,178.63,90,231,111.19,295,137.11,237.65,137.71,237.65,137.71Z" style="fill:#383838"></path>
+</svg>            <p class="name">Aurel D.</p>
+            <p class="detail"></p>
+        </div>
+        <div class="testimonial-score">
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                    </div>
+        <div class="testimonial-content">
+            EVOLSIS - calitate/preț foarte buni. Înainte să aleg un instalator, am primit 7-8 oferte, însă a lor a fost cea mai transparentă si mai rezonabilă. Oamenii își asumă calitatea lucrării și finalizarea documentației, sunt profesionisti și se mișcă repede. Eu și incă un prieten suntem foarte multumiți 😎        </div>
+    </div>
+</div></div><div class="owl-item" style="width: 510px; margin-right: 20px;"><div slider-item="" class="testimonial-card-wrapper">
+    <div class="testimonial-card">
+        <div class="testimonial-author">
+            <svg id="OBJECTS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><circle cx="250" cy="250" r="250" style="fill:rgb(var(--primary-rgb), 0.8)"></circle>
+<path d="M407,404.5a92.77,92.77,0,0,0-63.84-64.09L286,324.12H214l-57.11,16.29A92.77,92.77,0,0,0,93.05,404.5L77.34,430.7a249.74,249.74,0,0,0,345.32,0Z" style="fill:var(--secondary)"></path>
+<path d="M283.65,278.17h-67.3l-10.6,55.51s19,19.9,44.25,20.95c25.27-1.05,44.25-20.95,44.25-20.95Z" style="fill:#f0f2f2"></path>
+<path d="M325.27,200.27c0,45.5-33.7,106.44-75.27,106.44s-75.27-60.94-75.27-106.44,33.7-82.38,75.27-82.38S325.27,154.77,325.27,200.27Z" style="fill:#fff"></path>
+<path d="M184.26,206.63c-.35,8.89-5.65,20.6-11.58,20.36s-10.27-12.34-9.91-21.23,5.46-15.9,11.39-15.66S184.62,197.74,184.26,206.63Z" style="fill:#fff"></path>
+<path d="M335.84,205.83c.3,8.9-4.1,21-10,21.17s-11.15-11.54-11.45-20.44,4.26-16.26,10.2-16.47S335.54,196.94,335.84,205.83Z" style="fill:#fff"></path>
+<path d="M330,187.47c-.51-3-.74-6.07-1-9.12-.5-6.21-1.25-12.4-4.09-18a60,60,0,0,0-6.84-10.49c-2.2-2.72-4-6.19-6.54-8.54L306.88,144a6.3,6.3,0,0,0-1.64,1.2,3.72,3.72,0,0,0-.34.47c-1.37,2.27.33,5.6-.49,8.27-.63,2-2.68,3.53-2.79,5.65a6.56,6.56,0,0,0,1.17,3.47c5.69,10.09,11.4,22,10.92,33.86-.26,6.45-1.52,11.81-.4,18.19,1.08,6.17,1.45,13-2.23,18.48-1.43,2.1-3.38,3.84-4.63,6.06-1.47,2.6-1.86,5.65-2.61,8.55A34.44,34.44,0,0,1,295,263.83c-.95,1-2.05,2.05-2,3.41,0,.65.27,1.28.3,1.93a5.21,5.21,0,0,1-1.07,2.94,59.33,59.33,0,0,1-19,18.49,9.9,9.9,0,0,0,1.7-4.59,5.78,5.78,0,0,1,.23-1.44c.33-.92,1.22-1.51,1.83-2.28,1.24-1.58,1.23-3.8.88-5.78s-1-4-.76-6l.48.58a10.32,10.32,0,0,0,.67-6.19c-.1-.57-2.24-7.57-3.17-6.85a48.5,48.5,0,0,1,11.86-6.79,48.88,48.88,0,0,1-12.19-3.06,2.42,2.42,0,0,0,1.22-1.39c-2.51.09-4.27-1.25-6.36-2.36-3.39-1.79-7.17-3.39-11.08-2.82l1.18-.72c-2.42-1.1-5.08,1.21-7.74,1.12a7.29,7.29,0,0,1-1.95-.41h0a7.29,7.29,0,0,1-1.95.41c-2.66.09-5.32-2.22-7.74-1.12l1.18.72c-3.91-.57-7.69,1-11.08,2.82-2.09,1.11-3.85,2.45-6.36,2.36a2.42,2.42,0,0,0,1.22,1.39,48.88,48.88,0,0,1-12.19,3.06,48.5,48.5,0,0,1,11.86,6.79c-.93-.72-3.07,6.28-3.17,6.85a10.32,10.32,0,0,0,.67,6.19l.48-.58c.22,2-.41,4-.76,6s-.36,4.2.88,5.78c.61.77,1.5,1.36,1.83,2.28a5.78,5.78,0,0,1,.23,1.44,9.79,9.79,0,0,0,1.7,4.59,59.33,59.33,0,0,1-19-18.49,5.21,5.21,0,0,1-1.07-2.94c0-.65.3-1.28.3-1.93,0-1.36-1.09-2.44-2.05-3.41a34.51,34.51,0,0,1-8.84-15.59c-.75-2.9-1.14-6-2.61-8.55-1.25-2.22-3.2-4-4.63-6.06-3.68-5.44-3.31-12.31-2.23-18.48,1.12-6.38-.14-11.74-.4-18.19-.48-11.89,5.23-23.77,10.92-33.86a6.56,6.56,0,0,0,1.17-3.47c-.11-2.12-2.16-3.62-2.79-5.65-.82-2.67.88-6-.49-8.27a3.72,3.72,0,0,0-.34-.47,6.3,6.3,0,0,0-1.64-1.2l-4.71-2.75c-2.55,2.35-4.34,5.82-6.54,8.54A60,60,0,0,0,175,160.32c-2.84,5.63-3.59,11.82-4.09,18-.24,3.05-.47,6.1-1,9.12-.1.56-1.08,3.94-.52,4.08.18,0,.75-.36.93-.44a8.82,8.82,0,0,1,1.12-.41,9.61,9.61,0,0,1,2.25-.42,3.24,3.24,0,0,1,2,.35,4.93,4.93,0,0,1,1.48,2,8.28,8.28,0,0,1,.65,2.69,28.87,28.87,0,0,1-.23,5.65c-.77,8.11-.07,16.3,1,24.35.35,2.57,1.88,5.46,1.77,7.94-.13,3.06-3.26,5.28-2.82,8.56.27,2,1.95,3.77,1.86,5.82-.07,1.59-1.2,3.11-.78,4.63a6.91,6.91,0,0,0,1.9,2.49c2.44,2.68,2.75,6.63,4.08,10,2.2,5.55,7.11,9.47,11.21,13.81s7.7,10.19,6.25,16a58.88,58.88,0,0,1,16.76,8.13,32.66,32.66,0,0,0,6.57,4.07,25.48,25.48,0,0,0,7,1.3l12.32,1.13c-.06.26-.09.53-.16.79l4.42-.4.94.08h0l.94-.08,4.42.4c-.07-.26-.1-.53-.16-.79l12.32-1.13a25.48,25.48,0,0,0,7-1.3,32.66,32.66,0,0,0,6.57-4.07,59,59,0,0,1,16.75-8.13c-1.44-5.8,2.16-11.64,6.26-16s9-8.26,11.21-13.81c1.33-3.38,1.64-7.33,4.08-10a6.91,6.91,0,0,0,1.9-2.49c.42-1.52-.71-3-.78-4.63-.09-2,1.59-3.78,1.86-5.82.44-3.28-2.69-5.5-2.82-8.56-.11-2.48,1.42-5.37,1.77-7.94,1.11-8,1.81-16.24,1-24.35a28.87,28.87,0,0,1-.23-5.65,8.28,8.28,0,0,1,.65-2.69,4.93,4.93,0,0,1,1.48-2,3.24,3.24,0,0,1,2-.35,9.61,9.61,0,0,1,2.25.42,9.42,9.42,0,0,1,1.12.41c.18.08.75.49.93.44C331.12,191.41,330.14,188,330,187.47Zm-60.51,90.34a2,2,0,0,1,.9-.82c.63,1.15-.69,2.43-.77,3.73a7.56,7.56,0,0,0,.82,2.68,5.86,5.86,0,0,1-.67,4.57,10.87,10.87,0,0,1-3.61,3.56c-1.42,1-2.66,2.24-4.11,3.21a63.93,63.93,0,0,1-9.9,5.11c-.39.17-.82.33-1.25.47L250,300h0l-.94.35c-.43-.14-.86-.3-1.25-.47a63.93,63.93,0,0,1-9.9-5.11c-1.45-1-2.69-2.22-4.11-3.21a10.87,10.87,0,0,1-3.61-3.56,5.86,5.86,0,0,1-.67-4.57,7.56,7.56,0,0,0,.82-2.68c-.08-1.3-1.4-2.58-.77-3.73a2,2,0,0,1,.9.82c.74-1.87.16-4-.52-5.88s-1.46-3.88-1.1-5.86l1.22.86a5.82,5.82,0,0,0-.32-4.32,4.72,4.72,0,0,1-.43-1.55,3,3,0,0,1,1.13-2.25c2.37-2,5.45-2.82,8.28-4.15a59.21,59.21,0,0,0,8.91-5.2c.49-.34,1-.72,1.42-1.11.3.26.62.5.94.74h0c.32-.24.64-.48.94-.74.46.39.93.77,1.42,1.11a59.21,59.21,0,0,0,8.91,5.2c2.83,1.33,5.91,2.12,8.28,4.15a3,3,0,0,1,1.13,2.25,5,5,0,0,1-.43,1.55,5.82,5.82,0,0,0-.32,4.32l1.22-.86c.36,2-.43,4-1.1,5.86S268.79,275.94,269.53,277.81Z" style="fill:#383838"></path>
+</svg>            <p class="name">giflc</p>
+            <p class="detail"></p>
+        </div>
+        <div class="testimonial-score">
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                    </div>
+        <div class="testimonial-content">
+            Diferența dintre ordinar și extraordinar este acel extra . Voi sunteti extra . Multumesc pentru serviciile acordate        </div>
+    </div>
+</div></div><div class="owl-item" style="width: 510px; margin-right: 20px;"><div slider-item="" class="testimonial-card-wrapper">
+    <div class="testimonial-card">
+        <div class="testimonial-author">
+                        <img src="data/media/sliders/testimonials/green-energy-08.jpg" alt="Leonte Constantin" width="400" on-error="">
+                        <p class="name">Leonte Constantin</p>
+            <p class="detail"></p>
+        </div>
+        <div class="testimonial-score">
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                            <ion-icon class="score-icon active md hydrated" name="star-sharp" aria-label="star sharp" role="img"></ion-icon>
+                    </div>
+        <div class="testimonial-content">
+            Recomand cu incredere firma, mi-am pus si eu un sistem de 7 kw cu ei si sunt foarte multumit de calitatea produselor si montaj de asemenea si de preturile foarte avantajoase fata de alte firme, succes baieti.        </div>
+    </div>
+</div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><ion-icon name="chevron-back" aria-label="chevron back" role="img" class="md hydrated"></ion-icon></button><button type="button" role="presentation" class="owl-next"><ion-icon name="chevron-forward" aria-label="chevron forward" role="img" class="md hydrated"></ion-icon></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></dh-slider>
+    </div>
+</section>
+<div class="modal-wrapper" ng-init="ModalOpen['offerModal']=false">
+    <div class="modal " tabindex="-1" aria-hidden="true" ng-class="{'open':ModalOpen['offerModal']}">
+        <div class="modal-header">
+            <h2 class="modal-title">
+                <div class="editor-content ">
+        <h1 class="font-serif text-3xl font-medium">Ai nevoie de o oferta personalizata?</h1></div>            </h2>
+            <button type="button" ng-click="ModalOpen['offerModal']=!ModalOpen['offerModal']" class="modal-close"><ion-icon name="close-circle-outline" aria-label="close circle outline" role="img" class="md hydrated"></ion-icon></button>
+        </div>
+        <div class="modal-body">
+            <form class="flex flex-row flex-wrap ng-pristine ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-valid-email" method="post" name="offerForm" id="offerForm" action="">     <input type="text" name="firstname" class="hide-bot">
+    <div class="form-group basis-full sm:basis-1/2" id="name">
+        <!--Name-->
+        <label for="name">Nume</label>
+        <input type="text" name="na652ab" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" ng-model="na652ab" placeholder="Nume" minlength="3" maxlength="32" required="">
+    </div>
+    <div class="form-group basis-full sm:basis-1/2" id="surname">
+        <!--Prenume-->
+        <label for="surname">Prenume</label>
+        <input type="text" name="sur652ab" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" ng-model="sur652ab" placeholder="Prenume" minlength="3" maxlength="32" required="">
+    </div>
+    <!-- <div class="form-group basis-full sm:basis-1/2" id="phone">
+        <label for="name">Telefon</label>
+        <input type="phone" name="ph652ab" class="form-control" ng-model="ph652ab" placeholder="Telefon"  minlength="9" maxlength="16" pattern="\d{8,16}" required />
+    </div> -->
+    <div class="form-group basis-full sm:basis-1/2 " id="email">
+        <!--Email-->
+        <label for="name">Email</label>
+        <input type="email" name="em652ab" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" ng-model="em652ab" placeholder="Email" minlength="3" maxlength="256" required="">
+    </div>
+        <div class="form-group-radio title-oneline px-3">
+        <p class="form-group-radio-label">Alege sistemul</p>
+        <label class="form-radio">
+            <input type="radio" name="sys652ab" value="ON Grid">
+            <span class="checkmark"></span>
+            ON Grid
+        </label>
+        <label class="form-radio">
+            <input type="radio" name="sys652ab" value="OFF Grid">
+            <span class="checkmark"></span>
+            OFF Grid
+        </label>
+    </div>
+    <div class="form-group basis-full h-auto" id="mesaj">
+        <!--Mesaj-->
+        <label for="name">Detalii sistem:</label>
+        <textarea class="form-control w-full h-24 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="mes652ab" cols="30" rows="10" ng-model="mes652ab" placeholder="Detalii sistem:" required=""></textarea>
+    </div>
+    <!-- Form extend -->
+    <input type="hidden" name="tracking[url]" value="Acasa" autocomplete="off"><div class="consent">
+    <div class="form-group">
+        <label class="form-check">
+            <input type="checkbox" class="check ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="consent.privacy" name="consent[privacy]" required="">
+            <span class="checkmark"></span>
+            Sunt de acord cu            <a href="https://www.evolsis.ro/termeni-si-conditii" target="_blank">
+                Termeni si conditii.
+            </a>
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check">
+            <input type="checkbox" class="check ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="consent.terms" name="consent[terms]" required="">
+            <span class="checkmark"></span>
+            Am citit si am inteles            <a href="https://www.evolsis.ro/politica-confidentialitate" target="_blank">
+                Politica confidentialitate.
+            </a>
+        </label>
+    </div>
+</div>
+    <div class="basis-full pt-4">
+            </div>
+    <button class="btn btn-primary mt-4" type="submit" name="send_offer" ng-disabled="offerForm.$invalid" disabled="disabled">Trimite</button>
+</form>
+        </div>
+        <div class="modal-footer">
+                    </div>
+    </div>
+</div>    </div>
+        <footer class="footer-wrapper" style="background-image:url('')">
+    <div class="footer container">
+                    <div class="footer-item">
+               <div class="mb-4">
+    <a href="https://www.evolsis.ro/" class="block">
+        <img loading="lazy" class="w-48 h-auto" src="data/media/Transparent-Logo.png" alt="evolsis-energy">
+    </a>
+</div><div class="social-links">
+    <p class="footer-subtitle">
+        Retele sociale    </p>
+                <a href="https://www.facebook.com/evolsis" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-facebook" class="logo-facebook md hydrated" aria-label="logo facebook" role="img"></ion-icon>
+    </a>
+                <a href="https://www.instagram.com/evolsis/" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-instagram" class="logo-instagram md hydrated" aria-label="logo instagram" role="img"></ion-icon>
+    </a>
+                <a href="https://www.youtube.com/@evolsisenergy2699" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-youtube" class="logo-youtube md hydrated" aria-label="logo youtube" role="img"></ion-icon>
+    </a>
+                <a href="https://wa.me/0040740831444" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-whatsapp" class="logo-whatsapp md hydrated" aria-label="logo whatsapp" role="img"></ion-icon>
+    </a>
+                <a href="https://www.tiktok.com/@evolsis" target="_blank" rel="noreferrer noopener" class="social-link">
+        <ion-icon name="logo-tiktok" class="logo-tiktok md hydrated" aria-label="logo tiktok" role="img"></ion-icon>
+    </a>
+    </div>
+            </div>
+                    <div class="footer-item">
+               
+<p class="footer-subtitle">
+Servicii clienti</p>
+<ul class="footer-list">
+    <li>
+        <a title="Protectia consumatorilor - A.N.P.C." href="https://anpc.ro/ " rel="noreferrer noopener" target="_blank">
+        Protectia consumatorilor - A.N.P.C.        </a>
+    </li>
+    <li>
+        <a title="Protectia consumatorilor - A.N.P.C. - SAL &lt;br&gt; (Solutionarea Alternativa a Litigiilor)" href="https://reclamatiisal.anpc.ro/" rel="noreferrer noopener" target="_blank">
+        Protectia consumatorilor - A.N.P.C. - SAL <br> (Solutionarea Alternativa a Litigiilor)        </a>
+    </li>
+    <li>
+        <a title="Protecția consumatorilor | Comisia Europeană | RO" href="https://consumer-redress.ec.europa.eu/index_ro" target="_blank" rel="noreferrer noopener">
+        Protecția consumatorilor | Comisia Europeană | RO        </a>
+    </li>
+</ul>
+
+<div class="mt-4">
+    <img class="w-48 h-auto" loading="lazy" src="data/media/image/evolsis-autorizata-anre.png" alt="evolsis-autorizata-anre">
+</div>
+            </div>
+                    <div class="footer-item">
+               <p class="footer-subtitle">
+    Politici</p> 
+<ul class="footer-list">
+    <li>
+        <a href="https://www.evolsis.ro/politica-confidentialitate" target="_self">
+            Politica confidentialitate        </a>
+    </li>
+    <li>
+        <a href="https://www.evolsis.ro/politica-cookie" target="_self">
+            Politica cookie        </a>
+    </li>
+    <li>
+        <a href="https://www.evolsis.ro/termeni-si-conditii" target="_self">
+            Termeni si conditii        </a>
+    </li>
+</ul><p class="footer-subtitle">
+    Companie</p> 
+<ul class="footer-list">
+    <li>
+        <p>Evolsis Energy SRL</p>
+    </li>
+    <li>
+        <p>Romania, Iasi, Lunca Cetățuii, DJ248 nr. 30 intersecție cu, Strada Editurii</p>
+    </li>
+        <li>
+        <p>Cod înreg. | CUI: RO19616614</p>
+    </li>
+            <li>
+        <p>Reg. Comerț: J22/3079/2006</p>
+    </li>
+    </ul>            </div>
+                    <div class="footer-item">
+               <div class="anpc">
+    <a href="https://reclamatiisal.anpc.ro/" target="_blank" rel="noreferrer noopener">
+        <img src="https://cdn.darkhound.ro/img/anpc-sal.png" alt="SAL" loading="lazy">
+    </a>
+    <a href="https://consumer-redress.ec.europa.eu/index_en" target="_blank" rel="noreferrer noopener">
+        <img src="https://cdn.darkhound.ro/img/anpc-sol.png" alt="SOL" loading="lazy">
+    </a>
+
+    </div><div class="copyright">
+    <small>
+        Evolsis Energy<sup>©</sup> 2026    </small>
+</div><div id="scroll-top">
+    <button onclick="ScrollTop()" aria-label="top">
+        <svg viewBox="0 0 36 36">
+            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+        </svg>
+        <ion-icon name="chevron-up-sharp" aria-label="chevron up sharp" role="img" class="md hydrated"></ion-icon>
+    </button>
+</div>
+<script>
+    scrollTop = document.getElementById("scroll-top");
+    window.addEventListener('scroll', scrollFunction);
+
+    function scrollFunction() {
+        if(Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ) > 2 * screen.height){
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollTop.style.display = "block";
+            } else {
+                scrollTop.style.display = "none";
+            }
+        }
+    }
+
+    function ScrollTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+            </div>
+            </div>
+</footer>
+    
+
+</body></html>
