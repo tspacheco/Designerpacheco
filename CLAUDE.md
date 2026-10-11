@@ -4,7 +4,7 @@
 
 ## Posicionamento (desde 11/10/2026 — PLAYBOOK parte A)
 
-- A Pacheco Studios é uma **consultora de sistemas com IA**. Produto de entrada: **Auditoria de Sistemas com IA**. Ticket médio 2.000 € a 100.000 €.
+- A Pacheco Studios é uma **consultora de sistemas com IA**. Produto de entrada: **Auditoria de Sistemas com IA**. Ticket médio 2.000 € (3 quick wins) a 100.000 € (acompanhar empresas de 50–500 mil €/mês a crescer 3×–10×); preço pelo valor agregado. Auditoria creditada na implementação. Parceiros: comissão na implementação + 10 % a cada 3 meses enquanto o cliente ficar (PLAYBOOK A.13).
 - **Não se vendem websites nem parcerias para websites.** Um site (ou outra demo) é só gatilho e oferta: 1 quick win para chegar a uma reunião e a uma possível parceria.
 - Nunca abrir com «fazemos sites / automações / IA»: começar pela fuga operacional (trigger, dono, regra, handoff).
 

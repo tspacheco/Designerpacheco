@@ -20,7 +20,8 @@ Decisão do Tomás a 11/10/2026, com as palavras dele:
 
 - **A Pacheco Studios atua como consultora de IA (AI Consultant).**
 - **Já não se vendem websites nem parcerias para websites.** O site é, no máximo, um **gatilho e uma oferta**: um produto simples que traz **1 quick win** e serve para chegar a uma **reunião** e a uma possível **parceria**.
-- **Ticket médio: 2.000 € a 100.000 €**, conforme a parceria e o negócio.
+- **Ticket médio: 2.000 € a 100.000 €**, conforme a parceria e o negócio (detalhe em A.13).
+- **Foco na prova de valor, não no ticket:** o pagamento acompanha o valor agregado e o impacto na faturação de cada cliente.
 - O verdadeiro produto é a consultoria: auditar, desenhar, implementar e governar sistemas com IA.
 
 > **A decisão de posicionamento:** Auditamos onde os leads, as decisões e a entrega se partem — depois desenhamos o sistema de IA governado que resolve o gargalo de maior valor.
@@ -194,21 +195,39 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 
 - **Preços de site** (500 € / 500 € + 50–75 €/mês / desconto de grupo 400 € + 40 €/mês / 2.500 lei + 375 lei/mês): já não se oferecem a clientes novos. Ficam só como registo dos contratos já fechados (Grupo Naval, Catarina).
 - **«Website + manutenção» como produto** e **parcerias para websites**: acabaram. O site passa a gatilho (A.5).
-- **Comissão de 15 % a parceiros por trabalhos de site**: caduca com a venda de sites. Os parceiros de indicação continuam no plano (dias 61–90); falta decidir a comissão sobre auditorias e implementações.
+- **Comissão de 15 % a parceiros por trabalhos de site**: caduca com a venda de sites. Substituída pela comissão sobre a implementação (A.13).
 - **Secção 3-A «site de 10.000 € vendido a 500 €»**: o padrão de qualidade mantém-se, o argumento de preço não.
 - **Secção 11** (demo de site como produto, «está invisível fora do Google Maps»): a demo continua como abertura, mas o pedido é a reunião e a conversa vai para a fuga operacional.
 - **Secção 16 «os sites são a porta, as automatizações o segundo passo»** e a oferta «Plano 20 min → Piloto → Sistema → Manutenção»: substituídos pela arquitetura de oferta A.5. Mantêm-se «construir a prova antes de pedir o sim», «a IA é ingrediente», a explicação da IA ao dono e o assistente que se identifica.
 - **Secção 17 processo de 5 passos e «conversa de 20 min»**: substituído pelo Método Pacheco (A.4). Nunca «20 minutos»: pede-se «uma reunião».
 - **Separador «Sites» do pachecost.com e a entrada direta por `utm_content=web-…`**: a rever no plano dos dias 1–30 (landing da auditoria).
 
-## A.12 PERGUNTAS EM ABERTO (o playbook de consultoria não resolve)
+## A.12 PERGUNTAS EM ABERTO
 
-- Preço da Auditoria de Sistemas com IA (grátis como gatilho, paga e creditada na implementação, ou paga sempre?) e preço «desde» do sprint de desenho e do piloto.
-- Como se reparte o ticket 2.000–100.000 €: por oferta, por mensalidade de otimização, por percentagem do valor recuperado?
-- Comissão dos parceiros de indicação sobre auditorias e implementações.
+- Percentagem da comissão do parceiro sobre a implementação (a decisão de 11/10 de manhã era 15 %; mantém-se?).
+- Os 10 % trimestrais ao parceiro calculam-se sobre o que o cliente nos paga nesse trimestre?
 - Em Iași a regra era «1.ª proposta é só o site, em RON»: passa a ser «1.ª proposta é a auditoria»?
-- Contas atuais de mensalidade de site (Grupo Naval, Catarina, Bravus, Magic Key): mantêm-se como estão ou migram para otimização mensal?
+- Contas atuais de mensalidade de site (Grupo Naval, Catarina, Bravus, Magic Key): mantêm-se ou migram para otimização mensal?
 - CTA «DM AUDIT»: palavra igual em PT, RO e EN?
+
+## A.13 DINHEIRO: AUDITORIA, TICKET E PARCEIROS (decisão do Tomás, 11/10/2026)
+
+**Auditoria creditada na implementação (por enquanto).** Na prática é uma auditoria grátis durante a execução: dá margem para mostrar valor ao cliente antes de ele ter de pagar. Quando se transforma em prova e em início de trabalho, passa a paga, abatida no valor da implementação. Nas mensagens: «a auditoria é creditada na implementação», nunca «grátis» sem contexto.
+
+**Ticket médio — os dois extremos:**
+
+| Ponta | O que entregamos |
+|---|---|
+| **≈ 2.000 €** | **3 quick wins** implementados, baseados em problemas atuais do negócio |
+| **até 100.000 €** | Acompanhamento de uma empresa que fatura **50 mil a 500 mil €/mês**: estruturamos o crescimento a partir de um sistema baseado em IA, com objetivo de **3× a 10×**. Resultados variáveis, preço variável |
+
+**Regra de preço:** o foco não é o ticket, é a **prova de valor em cada cliente em específico**. O nosso pagamento baseia-se no **valor agregado** e no **impacto na faturação** daquela empresa. Por isso cada proposta mede a base (dia 0) antes de prometer e nunca promete 3×–10× como garantia: é objetivo, com resultados variáveis (HONEST-DATA).
+
+**Parceiros de indicação:**
+
+- Recebem comissão **sobre a implementação**, isto é, quando começamos a trabalhar com o negócio que indicaram (auditoria sozinha não conta).
+- Se continuarmos a trabalhar com esse cliente, o parceiro recebe **10 % a cada 3 meses** enquanto a relação durar.
+- Mantém-se a escada de 11/10 de manhã: primeiro damos ao parceiro 3 quick wins implementados; ele mostra o nosso nome e recomenda-nos; só se fala em comissão depois dos quick wins.
 
 ---
 
@@ -225,7 +244,7 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 ## 2. MODELO DE PREÇOS
 
 - **Ticket médio: 2.000 € a 100.000 €** por parceria, conforme o negócio e o que a auditoria encontrar (A.1). Preço pelo desenho e pelo valor do gargalo, nunca pela palavra «IA».
-- Preços da auditoria, sprint e piloto: **a decidir** (A.12).
+- Auditoria creditada na implementação; preço pelo valor agregado e impacto na faturação (A.13).
 - Sites: não se vendem a clientes novos. Os preços antigos (500 € + 50 €/mês; grupo 400 € + 40 €/mês) ficam só para os contratos já fechados (A.11).
 - Setup sistema faturas WhatsApp (secção 9): 150–300 € + 39–59 €/mês — referência de custo, a reenquadrar como intervenção dentro da auditoria.
 
