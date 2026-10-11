@@ -617,7 +617,7 @@ def vista_consultanta(c, casos, lang, wa):
     vd = k["veredito"]
     if vd["caso"] not in {x["id"] for x in tx}:
         raise SystemExit(f"conteudo/{lang}.json: o veredito aponta para o caso «{vd['caso']}», que não existe")
-    trad = f'<small class="trad">{e(vd["traducao"])}</small>' if vd["traducao"] else ""
+    # sem a linha do autor (Tomás, 11/10): só a frase e o botão para o caso
     ia = k["ia"]
     frases = "".join(f'<li class="rv" style="--i:{i}">{e(f)}</li>' for i, f in enumerate(c["automatizari"]["labels"]["ai"]))
     cs = k["casos"]
@@ -656,7 +656,6 @@ def vista_consultanta(c, casos, lang, wa):
         <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
         <blockquote><p>{e(vd["quote"])}</p></blockquote>
         <figcaption>
-          <span class="v-quem"><span class="v-marca" aria-hidden="true"></span><span><b>{e(vd["quem"])}</b><small>{e(vd["fonte"])}</small>{trad}</span></span>
           <a class="botao escuro" href="#caso-{e(vd["caso"])}">{e(vd["ver"])}{I["seta"]}</a>
         </figcaption>
       </figure>
