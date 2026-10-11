@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AlfaBike Iași · Atelier de reparații biciclete, Bd. Regele Mihai I 22</title>
+<meta name="description" content="AlfaBike, atelier de reparații biciclete pe Bulevardul Regele Mihai I 22, Iași. Pane, frâne, schimbătoare, roți. 4,3 pe Google din 52 de recenzii. Tel. 0740 783 324.">
+<meta name="theme-color" content="#17191B">
+<meta property="og:title" content="AlfaBike Iași · Atelier de reparații biciclete">
+<meta property="og:description" content="Spune ce s-a stricat. Sună: 0740 783 324.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/mecanic-roata.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317191B'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23E8E9E4' stroke-width='2.4'/%3E%3Cpath d='M16 6v20M6 16h20M9 9l14 14M23 9 9 23' stroke='%23E2561F' stroke-width='1.2'/%3E%3Ccircle cx='16' cy='16' r='2.6' fill='%23E2561F'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --beton:#E8E9E4; --beton-2:#DCDED8; --beton-3:#F4F5F1; --alb:#FFFFFF;
+  --cerneala:#17191B; --cerneala-2:#25282B; --cerneala-3:#34383C;
+  --text:#17191B; --text-2:#474C51; --text-3:#6B7177;
+  --cadru:#E2561F; --cadru-t:#B23C0E; --cadru-p:#FBE3D8;
+  --frunza:#2F5B3B; --crom:#C7CCD1; --crom-2:#9AA1A8;
+  --f-disp:"Spectral",Georgia,"Times New Roman",serif;
+  --f-text:"Overpass",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --lat:min(1200px, 100% - 40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --sus:env(safe-area-inset-top,0px); --jos:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px;scroll-behavior:smooth}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
+body{margin:0;background:var(--beton);color:var(--text);font:400 1.06rem/1.62 var(--f-text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--cadru-t);outline-offset:3px;border-radius:3px}
+.inchis :focus-visible,.bara :focus-visible,.rodape :focus-visible,.jos :focus-visible{outline-color:var(--cadru)}
+[tabindex="-1"]:focus{outline:none}
+.salt{position:absolute;left:12px;top:-60px;z-index:100;background:var(--cerneala);color:#fff;padding:10px 14px;border-radius:6px}
+.salt:focus{top:12px}
+.lat{width:var(--lat);margin-inline:auto}
+h1,h2,h3{font-family:var(--f-disp);font-weight:800;line-height:1.02;letter-spacing:-.015em;margin:0}
+p{margin:0 0 1em}
+.ochi{font:700 .74rem/1.3 var(--f-text);letter-spacing:.16em;text-transform:uppercase;margin:0 0 16px;color:var(--cadru-t);display:flex;align-items:center;gap:10px}
+.ochi::before{content:"";width:22px;height:2px;background:currentColor}
+.inchis .ochi{color:var(--cadru)}
+.titlu{font-size:clamp(2.1rem,1.2rem + 3.4vw,3.9rem);margin-bottom:18px;text-wrap:balance}
+.titlu em{font-style:italic;font-weight:400;color:var(--cadru-t)}
+.inchis .titlu em{color:var(--cadru)}
+.lead{font-size:clamp(1.08rem,1rem + .35vw,1.22rem);max-width:56ch;color:var(--text-2)}
+.inchis .lead{color:#C2C7CC}
+.sectiune{padding:clamp(64px,9vw,120px) 0}
+.inchis{background:var(--cerneala);color:#ECEEEA}
+.confirmat{display:inline-flex;align-items:center;gap:6px;font:700 .7rem/1 var(--f-text);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px 5px;border-radius:999px;background:var(--cadru-p);color:#8A2E09;white-space:nowrap;vertical-align:middle}
+.inchis .confirmat{background:rgba(226,86,31,.16);color:#FFB592}
+
+/* bandă + bară */
+.prezentare{background:var(--cadru-t);color:#fff;font:700 .68rem/1.35 var(--f-text);letter-spacing:.08em;text-align:center;padding:7px 14px;padding-top:calc(7px + var(--sus))}
+.bara{position:sticky;top:0;z-index:50;background:var(--cerneala);color:#fff;transition:box-shadow .3s}
+.bara.scrolled{box-shadow:0 10px 30px -14px rgba(0,0,0,.7)}
+.bara-in{display:flex;align-items:center;gap:16px;min-height:64px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.marca svg{width:34px;height:34px;flex:none}
+.marca b{font:italic 600 1.45rem/1 var(--f-disp);letter-spacing:-.01em}
+.marca b span{font-style:normal;font-weight:800;color:var(--cadru)}
+.nav{display:flex;gap:2px}
+.nav a{text-decoration:none;padding:10px 12px;border-radius:6px;font-weight:600;font-size:.95rem;color:#C2C7CC;transition:background .2s,color .2s}
+.nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+.limbi{display:flex;border:1px solid var(--cerneala-3);border-radius:999px;padding:3px}
+.limbi button{background:none;border:0;cursor:pointer;font:700 .72rem/1 var(--f-text);letter-spacing:.06em;padding:9px 10px;border-radius:999px;color:#AEB4BA;min-width:38px;min-height:34px}
+.limbi button[aria-pressed="true"]{background:var(--cadru);color:var(--cerneala)}
+.limbi .doar-rev{display:none}
+html.rev .limbi .doar-rev{display:block}
+.tel-sus{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;padding:10px 14px;border-radius:999px;background:var(--cadru);color:var(--cerneala);min-height:44px}
+.tel-sus svg{width:18px;height:18px}
+
+/* butoane */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:999px;border:0;font:700 1rem/1 var(--f-text);text-decoration:none;cursor:pointer;transition:transform .18s var(--ease),background .2s,box-shadow .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:active{transform:scale(.97)}
+.btn-cadru{background:var(--cadru);color:var(--cerneala)}
+.btn-cadru:hover{background:#F0682F}
+.btn-negru{background:var(--cerneala);color:#fff}
+.btn-negru:hover{background:var(--cerneala-3)}
+.btn-contur{background:transparent;color:var(--cerneala);box-shadow:inset 0 0 0 2px currentColor}
+.btn-contur:hover{background:rgba(23,25,27,.06)}
+.inchis .btn-contur,.jos .btn-contur{color:#fff}
+.btn-wa{background:#1E7A4C;color:#fff}
+.btn-wa:hover{background:#17653E}
+
+/* ===== EROU ===== */
+.erou{position:relative;overflow:hidden;background:var(--beton)}
+.erou-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center;padding:clamp(40px,6vw,84px) 0 clamp(56px,7vw,96px)}
+.erou h1{font-size:clamp(2.7rem,1.2rem + 5vw,5.6rem);line-height:.96;letter-spacing:-.03em;margin:0 0 22px}
+.erou h1 .r{display:block;overflow:hidden;padding-bottom:.06em}
+.erou h1 .r>span{display:block}
+.erou h1 em{font-style:italic;font-weight:400;color:var(--cadru-t)}
+.erou .lead{max-width:44ch}
+.erou-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.nota{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:10px 16px 10px 12px;border-radius:999px;background:var(--beton-3);box-shadow:inset 0 0 0 1px var(--beton-2);font-size:.9rem;color:var(--text-2);text-decoration:none}
+.nota b{font:800 1.5rem/1 var(--f-disp);color:var(--text)}
+.stele{display:flex;gap:2px;color:var(--cadru-t)}
+.stele svg{width:15px;height:15px}
+.erou-foto{position:relative;justify-self:center;width:min(100%,460px)}
+.erou-foto .foto{aspect-ratio:4/5.4;border-radius:220px 220px 18px 18px}
+.erou-foto .foto img{object-position:58% 40%}
+.roata-erou{position:absolute;width:62%;aspect-ratio:1;left:-24%;bottom:-12%;pointer-events:none;color:var(--cerneala)}
+.roata-erou svg{width:100%;height:100%;overflow:visible}
+.eticheta-e{position:absolute;right:-18px;bottom:9%;background:var(--alb);border-radius:10px;padding:24px 14px 11px;font-size:.8rem;line-height:1.35;box-shadow:0 18px 30px -18px rgba(0,0,0,.45);max-width:190px;transform-origin:50% -26px}
+.eticheta-e::before{content:"";position:absolute;left:50%;top:-26px;width:1px;height:26px;background:var(--text-3)}
+.eticheta-e::after{content:"";position:absolute;left:calc(50% - 5px);top:6px;width:10px;height:10px;border-radius:50%;background:var(--beton);box-shadow:inset 0 0 0 2px var(--text-3)}
+.eticheta-e b{display:block;font:italic 600 1.05rem/1.15 var(--f-disp);margin-top:8px}
+.eticheta-e small{color:var(--text-3);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.64rem}
+
+/* foto + fundal desenat */
+.foto{position:relative;margin:0;overflow:hidden;background:var(--cerneala-2)}
+.foto>svg{position:absolute;inset:0;width:100%;height:100%}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.foto figcaption{position:absolute;left:12px;bottom:12px;right:12px;font-size:.78rem;font-weight:600;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+
+/* coreografia eroului */
+.js .erou h1 .r>span{transform:translateY(105%)}
+.js .erou .anim{opacity:0;transform:translateY(16px)}
+.js .erou-foto .foto{clip-path:inset(100% 0 0 0 round 220px 220px 18px 18px)}
+.js .eticheta-e{opacity:0;transform:rotate(-14deg)}
+.gata .erou h1 .r>span{transform:none;transition:transform .9s var(--ease)}
+.gata .erou h1 .r:nth-child(2)>span{transition-delay:.12s}
+.gata .erou .anim{opacity:1;transform:none;transition:opacity .7s .45s,transform .7s .45s var(--ease)}
+.gata .erou .anim.a2{transition-delay:.6s}
+.gata .erou-foto .foto{clip-path:inset(0 0 0 0 round 220px 220px 18px 18px);transition:clip-path 1.1s .15s var(--ease)}
+.gata .eticheta-e{opacity:1;transform:rotate(3deg);transition:opacity .4s 1.5s,transform 1.2s 1.5s cubic-bezier(.3,1.6,.5,1)}
+.spita{stroke-dasharray:1;stroke-dashoffset:1}
+.gata .spita{stroke-dashoffset:0;transition:stroke-dashoffset .5s var(--ease)}
+
+/* bandă de cuvinte */
+.banda{background:var(--cerneala);color:#ECEEEA;overflow:hidden;border-block:1px solid var(--cerneala-3)}
+.banda-in{display:flex;gap:42px;white-space:nowrap;padding:16px 0;width:max-content;animation:curge 38s linear infinite;font:italic 400 1.25rem/1 var(--f-disp)}
+.banda-in span{display:inline-flex;align-items:center;gap:42px}
+.banda-in span::after{content:"";width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 2px var(--cadru)}
+@keyframes curge{to{transform:translateX(-50%)}}
+
+/* ===== ROATA DE SERVICII (semnătura) ===== */
+.servicii-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,80px);align-items:center;margin-top:40px}
+.lista-s{list-style:none;margin:0;padding:0;border-top:1px solid var(--cerneala-3)}
+.lista-s button{width:100%;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;text-align:left;background:none;border:0;border-bottom:1px solid var(--cerneala-3);padding:15px 4px;cursor:pointer;color:#C2C7CC;transition:color .2s,background .2s}
+.lista-s button:hover{color:#fff;background:rgba(255,255,255,.03)}
+.lista-s button svg{width:26px;height:26px}
+.lista-s b{font:600 1.32rem/1.15 var(--f-disp)}
+.lista-s small{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--crom-2)}
+.lista-s button[aria-pressed="true"]{color:#fff}
+.lista-s button[aria-pressed="true"] b{font-style:italic;color:var(--cadru)}
+.lista-s button[aria-pressed="true"] svg{color:var(--cadru)}
+.roata-mare{position:relative;width:min(100%,520px);margin-inline:auto}
+.roata-mare svg{display:block;width:100%;height:auto;overflow:visible}
+.ventil{position:absolute;left:50%;top:-14px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cadru)}
+.ventil::after{content:"";width:0;height:0;border:8px solid transparent;border-top:12px solid var(--cadru);border-bottom:0}
+.panou{margin-top:22px;background:var(--cerneala-2);border-radius:18px;padding:22px 22px 20px;box-shadow:inset 0 0 0 1px var(--cerneala-3)}
+.panou h3{font-size:1.6rem;margin-bottom:8px}
+.panou h3 em{font-weight:400;color:var(--cadru)}
+.panou p{color:#C2C7CC;margin-bottom:14px}
+.panou .r-jos{display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between}
+.panou .btn{min-height:46px;padding:0 18px;font-size:.92rem}
+.panou-in{transition:opacity .25s,transform .25s var(--ease)}
+.panou-in.schimba{opacity:0;transform:translateY(6px)}
+
+/* ===== ATELIERUL ===== */
+.atelier-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:40px}
+.atelier-grid .foto{border-radius:14px}
+.g1{grid-column:1/8;aspect-ratio:3/2}
+.g2{grid-column:8/13;grid-row:span 2}
+.g3{grid-column:1/5;aspect-ratio:1}
+.g4{grid-column:5/8;aspect-ratio:3/4}
+.g5{grid-column:1/6;aspect-ratio:3/2}
+.g6{grid-column:6/13;aspect-ratio:16/9}
+.atelier-nota{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.atelier-nota p{margin:0;padding:18px 0 0;border-top:2px solid var(--cerneala);font-size:.98rem;color:var(--text-2)}
+.atelier-nota b{display:block;font:italic 600 1.3rem/1.2 var(--f-disp);color:var(--text);margin-bottom:6px}
+
+/* ===== FIȘA DE REPARAȚIE ===== */
+.fisa-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:start;margin-top:36px}
+.formular{background:var(--alb);border-radius:22px;padding:clamp(20px,3vw,34px);box-shadow:0 30px 60px -40px rgba(23,25,27,.5)}
+fieldset{border:0;margin:0 0 24px;padding:0;min-width:0}
+legend,.et{display:block;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);margin-bottom:12px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;background:var(--beton-3);box-shadow:inset 0 0 0 1.5px var(--beton-2);font-weight:600;font-size:.95rem;transition:background .2s,box-shadow .2s,color .2s;cursor:pointer}
+.chip span svg{width:18px;height:18px}
+.chip input:checked+span{background:var(--cerneala);color:#fff;box-shadow:none}
+.chip input:focus-visible+span{outline:3px solid var(--cadru-t);outline-offset:2px}
+.chip:hover span{box-shadow:inset 0 0 0 1.5px var(--text-3)}
+.rand2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.camp label{display:block;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);margin-bottom:8px}
+.camp input,.camp textarea{width:100%;min-height:50px;border-radius:12px;border:1.5px solid var(--beton-2);background:var(--beton-3);padding:12px 14px;font-size:1rem;transition:border-color .2s,background .2s}
+.camp input:focus,.camp textarea:focus{border-color:var(--cerneala);background:#fff;outline:none}
+.camp textarea{min-height:96px;resize:vertical}
+.ajutor{font-size:.84rem;color:var(--text-3);margin:8px 0 0}
+.ajutor.atentie{color:var(--cadru-t);font-weight:600}
+.eroare{color:#A3260A;font-weight:600;font-size:.9rem;margin:10px 0 0}
+/* eticheta de service (previzualizare) */
+.eticheta{position:sticky;top:96px;background:#F3E6CF;color:#2B2418;border-radius:12px 12px 18px 18px;padding:46px 24px 24px;box-shadow:0 30px 50px -30px rgba(43,36,24,.6);transform:rotate(1.2deg);background-image:repeating-linear-gradient(transparent 0 31px,rgba(43,36,24,.12) 31px 32px);background-position:0 6px}
+.eticheta::before{content:"";position:absolute;left:50%;top:14px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--beton);box-shadow:inset 0 0 0 3px #B79E73}
+.eticheta h3{font:italic 600 1.5rem/1.1 var(--f-disp);margin:0 0 4px}
+.eticheta .nr{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7A6748}
+.eticheta dl{margin:16px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.95rem}
+.eticheta dt{font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#7A6748;padding-top:4px}
+.eticheta dd{margin:0;font-family:var(--f-disp);font-size:1.08rem;line-height:1.3;min-height:1.3em}
+.eticheta dd.gol{color:#9B8865;font-style:italic}
+.eticheta .trimite{display:grid;gap:10px;margin-top:22px}
+.eticheta .btn{min-height:50px}
+.eticheta .mic{font-size:.82rem;color:#5E5139;margin:12px 0 0}
+.puls{animation:puls .5s var(--ease)}
+@keyframes puls{40%{transform:scale(1.03) rotate(1.2deg)}}
+
+/* ===== RECENZII ===== */
+.recenzii{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.recenzie{background:var(--cerneala-2);border-radius:18px;padding:24px;box-shadow:inset 0 0 0 1px var(--cerneala-3);display:flex;flex-direction:column}
+.recenzie p{font:italic 400 1.22rem/1.4 var(--f-disp);color:#ECEEEA;flex:1}
+.recenzie footer{font-size:.84rem;color:var(--crom-2);font-weight:600}
+.recenzie .stele{color:var(--cadru);margin-bottom:14px}
+.mare-nota{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.mare-nota b{font:800 clamp(4rem,3rem + 4vw,6.5rem)/.9 var(--f-disp);color:#fff;letter-spacing:-.04em}
+.mare-nota span{color:#C2C7CC}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:36px;align-items:start}
+.date{list-style:none;margin:0;padding:0}
+.date li{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--beton-2)}
+.date li>span:first-child{font-weight:700;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding-top:3px}
+.date a{font-weight:700}
+.program{list-style:none;margin:0;padding:0}
+.program li{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
+.program li.azi{font-weight:700;color:var(--cadru-t)}
+.harta{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:var(--cerneala-2);display:grid;place-items:center}
+.harta>svg{position:absolute;inset:0;width:100%;height:100%}
+.harta iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.harta .btn{position:relative}
+
+/* rodapé */
+.rodape{background:var(--cerneala);color:#C2C7CC;padding:56px 0 calc(110px + var(--jos));font-size:.94rem}
+.rodape-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+.rodape h2{font:italic 600 1.8rem/1 var(--f-disp);color:#fff;margin-bottom:12px}
+.rodape h3{font:700 .74rem/1 var(--f-text);letter-spacing:.14em;text-transform:uppercase;color:var(--cadru);margin-bottom:14px}
+.rodape ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:#fff;text-decoration:underline}
+.legal{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:40px;padding-top:22px;border-top:1px solid var(--cerneala-3);font-size:.84rem;color:#AEB4BA}
+.legal a{text-decoration:underline;min-height:24px}
+
+/* bara de jos (mobil) */
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;padding:10px 14px calc(10px + var(--jos));background:rgba(23,25,27,.96);transform:translateY(110%);transition:transform .35s var(--ease)}
+.jos.vizibil{transform:none}
+.jos .btn{flex:1;min-height:50px;padding:0 12px}
+
+/* revelare */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.vis{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+
+@media (max-width:960px){
+  .nav{display:none}
+  .erou-in{grid-template-columns:1fr}
+  .erou-foto{order:-1;width:min(100%,420px)}
+  .servicii-grid,.fisa-grid,.contact-grid{grid-template-columns:1fr}
+  .roata-mare{width:min(100%,400px)}
+  .eticheta{position:relative;top:0}
+  .recenzii{grid-template-columns:1fr}
+  .rodape-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  .tel-sus span{display:none}
+  .tel-sus{padding:10px 12px}
+  .marca b{font-size:1.25rem}
+  .erou-in{padding-top:22px}
+  .erou-foto .foto{aspect-ratio:1/1}
+  .erou-foto{margin-bottom:34px}
+  .roata-erou{width:42%;left:-5%;bottom:-11%}
+  .eticheta-e{right:-4px;bottom:7%;max-width:150px;font-size:.72rem;padding:10px 12px 9px}
+  .eticheta-e b{font-size:.92rem}
+  .atelier-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .g1,.g6{grid-column:1/-1}
+  .g2{grid-column:1/2;grid-row:auto;aspect-ratio:3/4}
+  .g3{grid-column:2/3;aspect-ratio:3/4}
+  .g4,.g5{grid-column:auto;aspect-ratio:1}
+  .atelier-nota{grid-template-columns:1fr}
+  .rand2{grid-template-columns:1fr}
+  .date li{grid-template-columns:1fr;gap:4px}
+  .rodape-grid{grid-template-columns:1fr}
+  .jos{display:flex}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rv,.js .erou .anim,.js .eticheta-e{opacity:1!important;transform:none!important}
+  .js .erou h1 .r>span{transform:none!important}
+  .js .erou-foto .foto{clip-path:none!important}
+  .spita{stroke-dashoffset:0!important}
+}
+</style>
+</head>
+<body>
+<a class="salt" href="#continut">{{Sari la conținut|Skip to content|Saltar para o conteúdo}}</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></symbol>
+  <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-sag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></symbol>
+  <symbol id="i-stea" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></symbol>
+  <symbol id="i-stea-j" viewBox="0 0 24 24"><defs><linearGradient id="jum"><stop offset=".3" stop-color="currentColor"/><stop offset=".3" stop-color="currentColor" stop-opacity=".25"/></linearGradient></defs><path fill="url(#jum)" d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></symbol>
+  <!-- iconițe de linie pentru avarii -->
+  <symbol id="s-pana" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5.5"/><path d="M12 3.5v2"/></g></symbol>
+  <symbol id="s-frana" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 6.5v1.5M17.5 12H16M12 17.5V16M6.5 12H8"/><path d="M16 3.5c2.4 1 4 3 4.6 5.4" stroke-width="3"/></g></symbol>
+  <symbol id="s-lant" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="8.5" width="9" height="7" rx="3.5"/><rect x="12.5" y="8.5" width="9" height="7" rx="3.5"/><path d="M9 12h6"/></g></symbol>
+  <symbol id="s-roata" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></g></symbol>
+  <symbol id="s-revizie" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5a4 4 0 0 0 5 5L12 18a2.1 2.1 0 0 1-3-3l7.5-7.5"/><path d="M4 20l3-3"/></g></symbol>
+  <symbol id="s-electrica" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M13 2.5 5 13.5h6l-1 8 8-11h-6z"/></symbol>
+  <symbol id="s-accesorii" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9h7l2 3-2 3H4z"/><path d="M16 9.5l4-2M16 12h5M16 14.5l4 2"/></g></symbol>
+</svg>
+
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru AlfaBike Iași|PACHECO STUDIOS PREVIEW · demo website for AlfaBike Iași|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para a AlfaBike Iași}}</div>
+
+<header class="bara" id="bara">
+  <div class="lat bara-in">
+    <a class="marca" href="#erou" aria-label="{{AlfaBike, începutul paginii|AlfaBike, top of page|AlfaBike, início da página}}">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="14" fill="none" stroke="#E8E9E4" stroke-width="2.6"/><g stroke="#E2561F" stroke-width="1.1"><path d="M17 4v26M4 17h26M7.8 7.8l18.4 18.4M26.2 7.8 7.8 26.2"/></g><circle cx="17" cy="17" r="3" fill="#E2561F"/></svg>
+      <b><span>Alfa</span>Bike</b>
+    </a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#servicii">{{Avarii|Repairs|Avarias}}</a>
+      <a href="#atelier">{{Atelierul|The workshop|A oficina}}</a>
+      <a href="#fisa">{{Programare|Book a repair|Marcação}}</a>
+      <a href="#contact">{{Contact|Contact|Contactos}}</a>
+    </nav>
+    <div class="limbi" role="group" aria-label="{{Limba|Language|Idioma}}">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false" class="doar-rev">PT</button>
+    </div>
+    <a class="tel-sus" href="tel:+40740783324"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>{{Sună|Call|Ligar}}</span></a>
+  </div>
+</header>
+
+<main id="continut">
+  <section class="erou" id="erou">
+    <div class="lat erou-in">
+      <div>
+        <p class="ochi anim">{{Atelier de reparații biciclete · Iași|Bicycle repair workshop · Iași|Oficina de reparação de bicicletas · Iași}}</p>
+        <h1><span class="r"><span>{{Spune ce scârțâie.|Tell us what squeaks.|Diga o que range.}}</span></span><span class="r"><span><em>{{Noi o facem să meargă.|We make it ride again.|Nós pomo-la a andar.}}</em></span></span></h1>
+        <p class="lead anim">{{Pană, frâne care nu prind, lanț care sare, roată strâmbă: aduci bicicleta pe Bulevardul Regele Mihai I 22 și pleci pe ea.|A flat, brakes that won't bite, a chain that skips, a buckled wheel: bring the bike to Bulevardul Regele Mihai I 22 and ride it home.|Furo, travões que não prendem, corrente que salta, roda empenada: traga a bicicleta ao Bulevardul Regele Mihai I 22 e volte a pedalar.}}</p>
+        <div class="erou-cta anim a2">
+          <a class="btn btn-negru" href="tel:+40740783324"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună · 0740 783 324|Call · 0740 783 324|Ligar · 0740 783 324}}</a>
+          <a class="btn btn-contur" href="#fisa">{{Spune ce s-a stricat|Describe the problem|Descrever a avaria}}</a>
+        </div>
+        <a class="nota anim a2" href="#recenzii"><b>4,3</b><span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea-j"/></svg></span><span>{{52 de recenzii pe Google|52 Google reviews|52 avaliações no Google}}</span></a>
+      </div>
+      <div class="erou-foto">
+        <figure class="foto">
+          <svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="540" fill="#3A3F44"/><rect y="330" width="400" height="210" fill="#8D8A82"/><circle cx="250" cy="250" r="120" fill="none" stroke="#1E2124" stroke-width="16"/><path d="M250 130v240M130 250h240" stroke="#9AA1A8" stroke-width="2"/></svg>
+          <img src="media/mecanic-roata.webp" fetchpriority="high" alt="Mecanic AlfaBike la lucru pe o bicicletă roșie prinsă în stand, cu roata din față în mână" data-alt="Mecanic AlfaBike la lucru pe o bicicletă roșie prinsă în stand, cu roata din față în mână|An AlfaBike mechanic working on a red bike in the repair stand, holding the front wheel|Mecânico da AlfaBike a trabalhar numa bicicleta vermelha presa no suporte, com a roda da frente na mão" onerror="this.remove()">
+        </figure>
+        <div class="roata-erou" aria-hidden="true"><svg viewBox="-200 -200 400 400" id="roata-erou"></svg></div>
+        <div class="eticheta-e" aria-hidden="true"><small>{{Fișă de service|Service tag|Ficha de serviço}}</small><b>{{„Roata din față — centrare”|“Front wheel — truing”|«Roda da frente — centragem»}}</b></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="banda" aria-hidden="true"><div class="banda-in" id="banda"></div></div>
+
+  <section class="sectiune inchis" id="servicii" aria-labelledby="t-serv">
+    <div class="lat">
+      <p class="ochi rv">{{Roata avariilor|The repair wheel|A roda das avarias}}</p>
+      <h2 class="titlu rv d1" id="t-serv">{{Fiecare spiță, <em>o reparație.</em>|Every spoke, <em>a repair.</em>|Cada raio, <em>uma reparação.</em>}}</h2>
+      <p class="lead rv d2">{{Alege ce te supără. Roata se întoarce până la ventil și îți arată ce facem. Prețurile se spun la telefon, după ce vedem bicicleta.|Pick what's bothering you. The wheel turns to the valve and shows what we do. Prices are given on the phone, once we see the bike.|Escolha o que o incomoda. A roda gira até à válvula e mostra o que fazemos. Os preços dizem-se ao telefone, depois de ver a bicicleta.}}</p>
+      <div class="servicii-grid">
+        <div class="rv">
+          <ul class="lista-s" id="lista-s"></ul>
+        </div>
+        <div class="rv d1">
+          <div class="roata-mare">
+            <span class="ventil" aria-hidden="true">{{ventil|valve|válvula}}</span>
+            <svg viewBox="-210 -210 420 420" id="roata-mare" aria-hidden="true"></svg>
+          </div>
+          <div class="panou" aria-live="polite"><div class="panou-in" id="panou"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectiune" id="atelier" aria-labelledby="t-atel">
+    <div class="lat">
+      <p class="ochi rv">{{Atelierul|The workshop|A oficina}}</p>
+      <h2 class="titlu rv d1" id="t-atel">{{Între blocuri, <em>sub copaci.</em>|Between the blocks, <em>under the trees.</em>|Entre os prédios, <em>debaixo das árvores.</em>}}</h2>
+      <p class="lead rv d2">{{Când e frumos afară, bicicletele se repară în curte, pe stand. Înăuntru stau jantele pe țeavă, discurile de frână pe raft și cursierele agățate de tavan.|When the weather's good, bikes get fixed in the yard, on the stand. Inside, rims hang on the pipe, brake rotors line the shelf and road bikes hang from the ceiling.|Com bom tempo, as bicicletas arranjam-se no pátio, no suporte. Lá dentro, as jantes estão penduradas no tubo, os discos de travão na prateleira e as bicicletas de estrada no teto.}}</p>
+      <div class="atelier-grid">
+        <figure class="foto g1 rv"><svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="200" fill="#5C6A55"/><rect y="130" width="300" height="70" fill="#A7A398"/></svg><img src="media/atelier-curte.webp" loading="lazy" alt="Curtea atelierului: doi mecanici lucrează la biciclete, alte biciclete așteaptă rezemate" data-alt="Curtea atelierului: doi mecanici lucrează la biciclete, alte biciclete așteaptă rezemate|The workshop yard: two mechanics at work, more bikes waiting their turn|O pátio da oficina: dois mecânicos a trabalhar, outras bicicletas à espera" onerror="this.remove()"><figcaption>{{În curte, pe stand|In the yard, on the stand|No pátio, no suporte}}</figcaption></figure>
+        <figure class="foto g2 rv d1"><svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="300" fill="#4E5A47"/><rect y="200" width="200" height="100" fill="#9C978C"/></svg><img src="media/bicicleta-electrica.webp" loading="lazy" alt="Bicicletă electrică neagră cu anvelope Maxxis, parcată pe aleea din fața atelierului" data-alt="Bicicletă electrică neagră cu anvelope Maxxis, parcată pe aleea din fața atelierului|Black e-bike on Maxxis tyres, parked on the path outside the workshop|Bicicleta elétrica preta com pneus Maxxis, estacionada no caminho em frente à oficina" onerror="this.remove()"><figcaption>{{Și electrice, la rând|E-bikes too, waiting their turn|Também elétricas, na fila}}</figcaption></figure>
+        <figure class="foto g3 rv"><svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="200" fill="#6E5A3E"/></svg><img src="media/discuri-frana.webp" loading="lazy" alt="Raft de lemn cu discuri de frână și plăcuțe în ambalaj" data-alt="Raft de lemn cu discuri de frână și plăcuțe în ambalaj|Wooden rack of packaged brake rotors and pads|Expositor de madeira com discos e pastilhas de travão embalados" onerror="this.remove()"><figcaption>{{Discuri și plăcuțe|Rotors and pads|Discos e pastilhas}}</figcaption></figure>
+        <figure class="foto g4 rv d1"><svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="260" fill="#D8D6D0"/></svg><img src="media/raft-accesorii.webp" loading="lazy" alt="O roată pe perete deasupra unui raft cu lumini, sonerii și un computer de bord" data-alt="O roată pe perete deasupra unui raft cu lumini, sonerii și un computer de bord|A wheel on the wall above a shelf of lights, bells and a bike computer|Uma roda na parede por cima de uma prateleira com luzes, campainhas e um conta-quilómetros" onerror="this.remove()"><figcaption>{{Lumini, sonerii, computere|Lights, bells, computers|Luzes, campainhas, conta-km}}</figcaption></figure>
+        <figure class="foto g5 rv"><svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="200" fill="#CFCAC0"/></svg><img src="media/jante-agatate.webp" loading="lazy" alt="Jante noi agățate pe o țeavă sub tavanul atelierului" data-alt="Jante noi agățate pe o țeavă sub tavanul atelierului|New rims hanging from a pipe under the workshop ceiling|Jantes novas penduradas num tubo junto ao teto da oficina" onerror="this.remove()"><figcaption>{{Jante pe țeavă|Rims on the rail|Jantes no tubo}}</figcaption></figure>
+        <figure class="foto g6 rv d1"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="180" fill="#E2E0DA"/></svg><img src="media/cursiera-suspendata.webp" loading="lazy" alt="Cursieră albă suspendată de tavan, deasupra altor biciclete din atelier" data-alt="Cursieră albă suspendată de tavan, deasupra altor biciclete din atelier|A white road bike hanging from the ceiling above other bikes in the workshop|Bicicleta de estrada branca suspensa do teto, por cima de outras bicicletas" onerror="this.remove()"><figcaption>{{Cursiere, sus|Road bikes, up top|Bicicletas de estrada, lá em cima}}</figcaption></figure>
+        <div class="atelier-nota">
+          <p class="rv"><b>{{Cu glumă, cu implicare|A joke and real care|Com piada e empenho}}</b>{{Așa descriu clienții atelierul: oameni care se apucă serios de problema ta.|That's how customers describe the place: people who take your problem seriously.|É assim que os clientes descrevem a oficina: gente que leva o problema a sério.}}</p>
+          <p class="rv d1"><b>{{Familii întregi|Whole families|Famílias inteiras}}</b>{{O familie cu patru bicicliști scrie că toți au trecut pe aici și au rămas clienți.|One family of four cyclists writes that all of them came through here and stayed.|Uma família de quatro ciclistas conta que todos passaram por aqui e ficaram clientes.}}</p>
+          <p class="rv d2"><b>{{Orice bicicletă|Any bike|Qualquer bicicleta}}</b>{{De la cruiserul galben cu coș la electrice și cursiere: în poze se văd toate.|From the yellow cruiser with a basket to e-bikes and road bikes: they're all in the photos.|Do cruiser amarelo com cesto às elétricas e de estrada: estão todas nas fotos.}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectiune" id="fisa" style="padding-top:0" aria-labelledby="t-fisa">
+    <div class="lat">
+      <p class="ochi rv">{{Programare|Book a repair|Marcação}}</p>
+      <h2 class="titlu rv d1" id="t-fisa">{{Completează <em>fișa de service.</em>|Fill in <em>the service tag.</em>|Preencha <em>a ficha de serviço.</em>}}</h2>
+      <p class="lead rv d2">{{Trei atingeri și eticheta e gata. O trimiți pe WhatsApp sau prin SMS și îți răspundem cu ziua și prețul.|Three taps and the tag is ready. Send it by WhatsApp or SMS and you'll get a day and a price back.|Três toques e a ficha fica pronta. Envie-a por WhatsApp ou SMS e recebe resposta com o dia e o preço.}}</p>
+      <div class="fisa-grid">
+        <form class="formular rv" id="form" novalidate>
+          <fieldset>
+            <legend>{{1 · Ce bicicletă ai?|1 · What bike is it?|1 · Que bicicleta é?}}</legend>
+            <div class="chips" id="c-tip"></div>
+          </fieldset>
+          <fieldset>
+            <legend>{{2 · Ce s-a stricat? (poți alege mai multe)|2 · What's wrong? (pick several if needed)|2 · O que avariou? (pode escolher várias)}}</legend>
+            <div class="chips" id="c-av"></div>
+          </fieldset>
+          <div class="camp" style="margin-bottom:20px">
+            <label for="f-desc">{{3 · Spune pe scurt|3 · In a few words|3 · Em poucas palavras}}</label>
+            <textarea id="f-desc" maxlength="400" data-ph="ex.: frâna din spate scârțâie și nu prinde|e.g. rear brake squeals and won't grip|ex.: o travão de trás chia e não prende"></textarea>
+          </div>
+          <div class="rand2">
+            <div class="camp">
+              <label for="f-zi">{{Când o aduci?|When will you bring it?|Quando a traz?}}</label>
+              <input id="f-zi" type="date">
+              <p class="ajutor" id="zi-ajutor">{{Duminica e închis. Luni deschidem la 12:00.|Closed on Sundays. Monday we open at 12:00.|Fechado ao domingo. À segunda abrimos às 12:00.}}</p>
+            </div>
+            <div class="camp">
+              <label for="f-nume">{{Numele tău|Your name|O seu nome}}</label>
+              <input id="f-nume" type="text" autocomplete="given-name" maxlength="40">
+            </div>
+          </div>
+          <p class="eroare" id="f-err" role="alert" hidden></p>
+        </form>
+        <aside class="eticheta rv d1" id="eticheta" aria-labelledby="et-t">
+          <p class="nr">{{AlfaBike · fișă de service|AlfaBike · service tag|AlfaBike · ficha de serviço}}</p>
+          <h3 id="et-t">{{Bicicleta ta|Your bike|A sua bicicleta}}</h3>
+          <dl>
+            <dt>{{Tip|Type|Tipo}}</dt><dd id="e-tip" class="gol"></dd>
+            <dt>{{Avarie|Problem|Avaria}}</dt><dd id="e-av" class="gol"></dd>
+            <dt>{{Zi|Day|Dia}}</dt><dd id="e-zi" class="gol"></dd>
+            <dt>{{Preț|Price|Preço}}</dt><dd><span class="confirmat">{{de confirmat|to be confirmed|a confirmar}}</span></dd>
+          </dl>
+          <div class="trimite">
+            <a class="btn btn-wa" id="t-wa" href="https://wa.me/40740783324" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</a>
+            <a class="btn btn-negru" id="t-sms" href="sms:+40740783324"><svg aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</a>
+          </div>
+          <p class="mic">{{Grăbit? Sună direct:|In a hurry? Call:|Com pressa? Ligue:}} <a href="tel:+40740783324"><b>0740 783 324</b></a></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectiune inchis" id="recenzii" aria-labelledby="t-rec">
+    <div class="lat">
+      <p class="ochi rv">{{Ce spun bicicliștii|What riders say|O que dizem os ciclistas}}</p>
+      <div class="mare-nota rv d1"><b>4,3</b><span>{{din 5 · 52 de recenzii pe Google|out of 5 · 52 Google reviews|em 5 · 52 avaliações no Google}}</span></div>
+      <h2 class="titlu rv d1" id="t-rec" style="margin-top:14px">{{Clienți fideli, <em>de ani buni.</em>|Loyal customers, <em>for years now.</em>|Clientes fiéis, <em>há anos.</em>}}</h2>
+      <div class="recenzii">
+        <article class="recenzie rv"><span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span><p>{{Un service „de nota 10”, pe care îl recomandă fără rezerve.|A “top marks” service he recommends without reservation.|Um serviço «de nota 10», que recomenda sem reservas.}}</p><footer>Codrin · Google · {{acum 3 luni|3 months ago|há 3 meses}}</footer></article>
+        <article class="recenzie rv d1"><span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span><p>{{Băieți buni, care te ajută cu orice problemă ai la bicicletă.|Great guys who'll help with any problem your bike has.|Malta porreira, que ajuda em qualquer problema da bicicleta.}}</p><footer>Marius · Google · {{acum 2 ani|2 years ago|há 2 anos}}</footer></article>
+        <article class="recenzie rv d2"><span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span><p>{{Patru bicicliști într-o familie, toți trecuți pe la Daniel. Copiii ajung singuri la atelier când mai e ceva de reparat.|Four cyclists in one family, all of them regulars at Daniel's. The kids drop by on their own whenever something needs fixing.|Quatro ciclistas na mesma família, todos clientes do Daniel. Os filhos já lá vão sozinhos quando há algo para arranjar.}}</p><footer>Catalina · Google · {{acum 2 ani|2 years ago|há 2 anos}}</footer></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectiune" id="contact" aria-labelledby="t-con">
+    <div class="lat">
+      <p class="ochi rv">{{Unde ne găsești|Where to find us|Onde estamos}}</p>
+      <h2 class="titlu rv d1" id="t-con">{{Regele Mihai I 22, <em>lângă Copou.</em>|Regele Mihai I 22, <em>near Copou.</em>|Regele Mihai I 22, <em>perto do Copou.</em>}}</h2>
+      <div class="contact-grid">
+        <div class="rv">
+          <ul class="date">
+            <li><span>{{Adresă|Address|Morada}}</span><span>Bulevardul Regele Mihai I al României 22<br>700164 Iași</span></li>
+            <li><span>{{Telefon|Phone|Telefone}}</span><span><a href="tel:+40740783324">0740 783 324</a></span></li>
+            <li><span>{{Program|Hours|Horário}}</span><ul class="program" id="program"></ul></li>
+            <li><span>Plus Code</span><span>5H2W+X5 Iași</span></li>
+          </ul>
+          <div class="erou-cta">
+            <a class="btn btn-negru" href="tel:+40740783324"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+            <a class="btn btn-contur" href="https://www.google.com/maps/search/?api=1&amp;query=47.1524344%2C27.5954553" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-sag"/></svg>{{Deschide în Google Maps|Open in Google Maps|Abrir no Google Maps}}</a>
+          </div>
+        </div>
+        <div class="harta rv d1" id="harta">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#25282B"/><path d="M-20 210 C 90 180, 180 200, 420 120" stroke="#3B4045" stroke-width="22" fill="none"/><path d="M140 -10 L 210 320" stroke="#3B4045" stroke-width="12"/><circle cx="196" cy="186" r="11" fill="#E2561F"/><circle cx="196" cy="186" r="24" fill="none" stroke="#E2561F" stroke-opacity=".4" stroke-width="2"/></svg>
+          <button class="btn btn-cadru" type="button" id="arata-harta">{{Arată harta|Show the map|Mostrar o mapa}}</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="lat">
+    <div class="rodape-grid">
+      <div>
+        <h2>AlfaBike</h2>
+        <p>{{Atelier de reparații biciclete pe Bulevardul Regele Mihai I 22, Iași.|Bicycle repair workshop on Bulevardul Regele Mihai I 22, Iași.|Oficina de reparação de bicicletas no Bulevardul Regele Mihai I 22, Iași.}}</p>
+      </div>
+      <div>
+        <h3>{{Atelier|Workshop|Oficina}}</h3>
+        <ul><li>Bd. Regele Mihai I 22</li><li>700164 Iași, România</li><li><a href="tel:+40740783324">0740 783 324</a></li><li>{{Luni de la 12:00 · duminică închis · rest: de confirmat|Mon from 12:00 · Sun closed · rest: to be confirmed|Seg. a partir das 12:00 · dom. fechado · resto: a confirmar}}</li></ul>
+      </div>
+      <div>
+        <h3>{{Pagină|Page|Página}}</h3>
+        <ul><li><a href="#servicii">{{Avarii|Repairs|Avarias}}</a></li><li><a href="#atelier">{{Atelierul|The workshop|A oficina}}</a></li><li><a href="#fisa">{{Programare|Book a repair|Marcação}}</a></li><li><a href="#contact">{{Contact|Contact|Contactos}}</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 AlfaBike · {{denumire firmă și CUI: de confirmat|company name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+      <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+    </div>
+  </div>
+</footer>
+
+<div class="jos" id="jos">
+  <a class="btn btn-cadru" href="tel:+40740783324"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <a class="btn btn-contur" href="#fisa">{{Fișa de service|Service tag|Ficha de serviço}}</a>
+</div>
+
+<noscript><p style="padding:16px;background:#fff">AlfaBike · Bulevardul Regele Mihai I al României 22, 700164 Iași · Tel. 0740 783 324 · Luni de la 12:00, duminică închis, restul programului: de confirmat · 4,3 pe Google (52 de recenzii) · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BikeStore","name":"AlfaBike","description":"Atelier de reparații biciclete în Iași.","telephone":"+40740783324","address":{"@type":"PostalAddress","streetAddress":"Bulevardul Regele Mihai I al României 22","postalCode":"700164","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1524344,"longitude":27.5954553},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.3","reviewCount":"52","bestRating":"5"},"image":"media/mecanic-roata.webp","hasMap":"https://www.google.com/maps/search/?api=1&query=47.1524344%2C27.5954553"}
+</script>
+<script>
+(function(){
+  var html=document.documentElement,$=function(i){return document.getElementById(i)};
+  var reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TEL='+40740783324',WA='40740783324';
+  var L=function(){var l=html.dataset.lang;return l==='en'||l==='pt'?l:'ro'};
+  var t=function(ro,en,pt){var l=L();return l==='en'?en:l==='pt'?pt:ro};
+  var tr=function(s){var p=s.split('|');return t(p[0],p[1],p[2])};
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+
+  /* ---------- date ---------- */
+  var SERV=[
+    {id:'pana',ic:'s-pana',n:['Pană și camere','Flats and tubes','Furos e câmaras'],k:['cea mai des','most common','a mais comum'],d:['Cameră nouă sau reparată, anvelopa verificată pe dinăuntru de cioburi și sârme, presiunea pusă cum trebuie.','A new or patched tube, the tyre checked inside for glass and wire, pressure set right.','Câmara nova ou remendada, pneu verificado por dentro (vidros, arames) e pressão certa.']},
+    {id:'frane',ic:'s-frana',n:['Frâne','Brakes','Travões'],k:['disc și V-brake','disc and rim','disco e V-brake'],d:['Frâne care scârțâie, nu prind sau freacă: reglaj, plăcuțe, discuri. Pe raft se văd discurile și plăcuțele.','Brakes that squeal, won\'t bite or rub: adjustment, pads, rotors. Rotors and pads are right there on the shelf.','Travões que chiam, não prendem ou roçam: afinação, pastilhas, discos. Os discos e pastilhas estão na prateleira.']},
+    {id:'lant',ic:'s-lant',n:['Schimbător și lanț','Gears and chain','Mudanças e corrente'],k:['sare, nu urcă','skipping, won\'t shift','salta, não sobe'],d:['Lanțul sare, viteza nu intră, se aude un clănțănit: reglaj de schimbător, lanț verificat de uzură.','Chain skipping, gears won\'t engage, a clicking noise: derailleur adjustment and a chain-wear check.','A corrente salta, a mudança não entra, ouve-se um estalido: afinação do desviador e verificação do desgaste.']},
+    {id:'roti',ic:'s-roata',n:['Roți și spițe','Wheels and spokes','Rodas e raios'],k:['centrare','truing','centragem'],d:['Roata „bate”, o spiță s-a rupt, janta e strâmbă: centrare, spițe, jante. Jantele noi stau agățate în atelier.','A wobbling wheel, a broken spoke, a bent rim: truing, spokes, rims. New rims hang right in the workshop.','A roda abana, partiu-se um raio, a jante empenou: centragem, raios, jantes. As jantes novas estão penduradas na oficina.']},
+    {id:'revizie',ic:'s-revizie',n:['Revizie completă','Full service','Revisão completa'],k:['de sezon','seasonal','de época'],d:['Bicicleta a stat iarna pe balcon? O verificăm cap-coadă: frâne, schimbător, roți, rulmenți, șuruburi.','Bike spent the winter on the balcony? We check it end to end: brakes, gears, wheels, bearings, bolts.','A bicicleta passou o inverno na varanda? Verificamos tudo: travões, mudanças, rodas, rolamentos, parafusos.']},
+    {id:'electrice',ic:'s-electrica',n:['Biciclete electrice','E-bikes','Bicicletas elétricas'],k:['de confirmat','to be confirmed','a confirmar'],d:['În curtea atelierului apar și electrice. Ce intervenții se fac pe partea electrică: de confirmat la telefon.','E-bikes show up in the yard too. Which electrical jobs are done: to be confirmed by phone.','Também aparecem elétricas no pátio. Que intervenções se fazem na parte elétrica: a confirmar ao telefone.']},
+    {id:'accesorii',ic:'s-accesorii',n:['Accesorii și montaj','Accessories and fitting','Acessórios e montagem'],k:['lumini, sonerii','lights, bells','luzes, campainhas'],d:['Lumini, sonerii, computere de bord: pe raft se văd câteva. Le montezi pe loc.','Lights, bells, bike computers: a few are on the shelf. Fitted on the spot.','Luzes, campainhas, conta-quilómetros: alguns estão na prateleira. Montados na hora.']}
+  ];
+  var TIPURI=[['oras','De oraș','City','Cidade'],['mtb','MTB','MTB','BTT'],['cursiera','Cursieră','Road bike','Estrada'],['electrica','Electrică','E-bike','Elétrica'],['copii','De copii','Kids\' bike','Criança'],['alta','Alta','Other','Outra']];
+
+  /* ---------- roțile ---------- */
+  function roata(svg,R,n,tip){
+    var g=el('g',{},svg);
+    el('circle',{r:R+12,fill:'none',stroke:tip==='mare'?'#0E1011':'#17191B','stroke-width':tip==='mare'?22:16},g);
+    if(tip==='mare'){for(var i=0;i<72;i++){var a=i*5*Math.PI/180;el('line',{x1:Math.cos(a)*(R+3),y1:Math.sin(a)*(R+3),x2:Math.cos(a)*(R+21),y2:Math.sin(a)*(R+21),stroke:'#2A2E31','stroke-width':3},g)}}
+    el('circle',{r:R,fill:'none',stroke:'#C7CCD1','stroke-width':tip==='mare'?6:5},g);
+    el('circle',{r:R-9,fill:'none',stroke:'#9AA1A8','stroke-width':1.5},g);
+    var sp=[];
+    for(var j=0;j<n;j++){
+      var ang=j*2*Math.PI/n,off=(j%2?1:-1)*0.42,hr=tip==='mare'?20:14;
+      var x1=Math.cos(ang+off)*hr,y1=Math.sin(ang+off)*hr,x2=Math.cos(ang)*(R-9),y2=Math.sin(ang)*(R-9);
+      sp.push(el('line',{x1:x1.toFixed(2),y1:y1.toFixed(2),x2:x2.toFixed(2),y2:y2.toFixed(2),stroke:'#C7CCD1','stroke-width':tip==='mare'?1.6:1.3,'stroke-linecap':'round',pathLength:1,class:'spita'},g));
+    }
+    el('circle',{r:tip==='mare'?26:19,fill:'#25282B',stroke:'#C7CCD1','stroke-width':2},g);
+    el('circle',{r:tip==='mare'?8:6,fill:'#E2561F'},g);
+    if(tip==='mare'){el('rect',{x:-4,y:-(R+2),width:8,height:16,rx:2,fill:'#E2561F'},g)}
+    return {g:g,sp:sp};
+  }
+  var re=roata($('roata-erou'),160,32,'erou');
+  re.sp.forEach(function(s,i){s.style.transitionDelay=(0.35+i*0.03)+'s'});
+  var rm=roata($('roata-mare'),180,28,'mare');
+  rm.sp.forEach(function(s){s.style.strokeDashoffset=0});
+
+  /* ---------- lista + rotația ---------- */
+  var curS=0,unghi=0,scrollUnghi=0;
+  var lista=$('lista-s');
+  SERV.forEach(function(s,i){
+    var li=document.createElement('li'),b=document.createElement('button');
+    b.type='button';b.dataset.i=i;b.setAttribute('aria-pressed',i===0?'true':'false');
+    b.innerHTML='<svg aria-hidden="true"><use href="#'+s.ic+'"/></svg><b></b><small></small>';
+    b.addEventListener('click',function(){alege(i,true)});
+    li.appendChild(b);lista.appendChild(li);
+  });
+  function textLista(){lista.querySelectorAll('button').forEach(function(b,i){var s=SERV[i];b.querySelector('b').textContent=t(s.n[0],s.n[1],s.n[2]);b.querySelector('small').textContent=t(s.k[0],s.k[1],s.k[2])})}
+  function vopseste(){rm.sp.forEach(function(s,j){var on=Math.floor(j/4)===curS;s.setAttribute('stroke',on?'#E2561F':'#C7CCD1');s.setAttribute('stroke-width',on?3:1.6)})}
+  function panou(anim){
+    var s=SERV[curS],p=$('panou');
+    var fa=function(){
+      p.innerHTML='<h3></h3><p></p><div class="r-jos"><span class="confirmat"></span><a class="btn btn-cadru" href="#fisa"></a></div>';
+      p.querySelector('h3').innerHTML=t(s.n[0],s.n[1],s.n[2]).replace(/^(\S+)/,'<em>$1</em>');
+      p.querySelector('p').textContent=t(s.d[0],s.d[1],s.d[2]);
+      p.querySelector('.confirmat').textContent=t('preț: de confirmat','price: to be confirmed','preço: a confirmar');
+      var a=p.querySelector('a');a.textContent=t('Programează pentru asta','Book this repair','Marcar esta reparação');
+      a.addEventListener('click',function(){var c=document.querySelector('#c-av input[value="'+s.id+'"]');if(c&&!c.checked){c.checked=true;eticheta()}});
+      p.classList.remove('schimba');
+    };
+    if(anim&&!reduz){p.classList.add('schimba');setTimeout(fa,180)}else fa();
+  }
+  function alege(i,anim){
+    curS=i;
+    lista.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
+    // grupul i are spițele 4i..4i+3, centrul la (4i+1.5)*360/28 grade de la axa x; ventilul e sus (-90)
+    var tinta=-90-(4*i+1.5)*360/28;
+    var d=((tinta-unghi)%360+540)%360-180;unghi+=d;
+    vopseste();panou(anim);roteste();
+  }
+  function roteste(){rm.g.style.transform='rotate('+(unghi+scrollUnghi)+'deg)'}
+  rm.g.style.transition=reduz?'none':'transform .9s cubic-bezier(.3,1.25,.4,1)';
+
+  /* ---------- scroll ---------- */
+  var bara=$('bara'),jos=$('jos'),ticking=false;
+  function onScroll(){
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(function(){
+      ticking=false;
+      bara.classList.toggle('scrolled',scrollY>8);
+      jos.classList.toggle('vizibil',scrollY>innerHeight*.5);
+      if(!reduz){re.g.style.transform='rotate('+(scrollY*0.35)+'deg)';}
+    });
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
+  document.querySelectorAll('.rv').forEach(function(x){if(io)io.observe(x);else x.classList.add('vis')});
+
+  /* ---------- formular / eticheta ---------- */
+  var cTip=$('c-tip'),cAv=$('c-av');
+  TIPURI.forEach(function(x,i){var l=document.createElement('label');l.className='chip';l.innerHTML='<input type="radio" name="tip" value="'+x[0]+'"><span></span>';cTip.appendChild(l)});
+  SERV.forEach(function(s){var l=document.createElement('label');l.className='chip';l.innerHTML='<input type="checkbox" name="av" value="'+s.id+'"><span><svg aria-hidden="true"><use href="#'+s.ic+'"/></svg><i></i></span>';cAv.appendChild(l)});
+  function textChips(){
+    cTip.querySelectorAll('.chip').forEach(function(l,i){l.querySelector('span').textContent=t(TIPURI[i][1],TIPURI[i][2],TIPURI[i][3])});
+    cAv.querySelectorAll('.chip').forEach(function(l,i){l.querySelector('i').textContent=t(SERV[i].n[0],SERV[i].n[1],SERV[i].n[2]);l.querySelector('i').style.fontStyle='normal'});
+  }
+  var ZILE={ro:['duminică','luni','marți','miercuri','joi','vineri','sâmbătă'],en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],pt:['domingo','segunda','terça','quarta','quinta','sexta','sábado']};
+  var LUNI={ro:['ian.','feb.','mar.','apr.','mai','iun.','iul.','aug.','sept.','oct.','nov.','dec.'],en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],pt:['jan.','fev.','mar.','abr.','maio','jun.','jul.','ago.','set.','out.','nov.','dez.']};
+  var azi=new Date();var iso=function(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+  $('f-zi').min=iso(azi);
+  function dataText(v){if(!v)return '';var p=v.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]),l=L();return ZILE[l][d.getDay()]+', '+d.getDate()+' '+LUNI[l][d.getMonth()]}
+  function stare(){
+    var tip=cTip.querySelector('input:checked'),av=[].slice.call(cAv.querySelectorAll('input:checked')).map(function(x){var s=SERV.filter(function(y){return y.id===x.value})[0];return t(s.n[0],s.n[1],s.n[2])});
+    var ti=tip?TIPURI.filter(function(x){return x[0]===tip.value})[0]:null;
+    return {tip:ti?t(ti[1],ti[2],ti[3]):'',av:av,desc:$('f-desc').value.trim(),zi:$('f-zi').value,nume:$('f-nume').value.trim()};
+  }
+  function seteazaDD(id,v,gol){var d=$(id);d.textContent=v||gol;d.classList.toggle('gol',!v)}
+  var ultim='';
+  function eticheta(){
+    var s=stare(),gol=t('— alege mai sus','— pick above','— escolha acima');
+    seteazaDD('e-tip',s.tip,gol);seteazaDD('e-av',s.av.join(', ')+(s.desc?(s.av.length?' · ':'')+'„'+s.desc+'”':''),gol);seteazaDD('e-zi',dataText(s.zi),t('— când vrei','— whenever suits you','— quando quiser'));
+    var zp=$('zi-ajutor');
+    if(s.zi){var p=s.zi.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);
+      if(d.getDay()===0){zp.textContent=t('Duminica atelierul e închis. Alege altă zi.','The workshop is closed on Sundays. Pick another day.','Ao domingo a oficina está fechada. Escolha outro dia.');zp.classList.add('atentie')}
+      else if(d.getDay()===1){zp.textContent=t('Luni deschidem la 12:00.','On Mondays we open at 12:00.','À segunda abrimos às 12:00.');zp.classList.remove('atentie')}
+      else{zp.textContent=t('Ora pentru această zi: de confirmat.','Hours for that day: to be confirmed.','Horário desse dia: a confirmar.');zp.classList.remove('atentie')}
+    }else{zp.textContent=t('Duminica e închis. Luni deschidem la 12:00.','Closed on Sundays. Monday we open at 12:00.','Fechado ao domingo. À segunda abrimos às 12:00.');zp.classList.remove('atentie')}
+    var cheie=s.tip+s.av.join()+s.zi;
+    if(cheie!==ultim&&!reduz){var e=$('eticheta');e.classList.remove('puls');void e.offsetWidth;e.classList.add('puls')}
+    ultim=cheie;
+    var msg=mesaj(s);$('t-wa').href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);$('t-sms').href='sms:'+TEL+'?&body='+encodeURIComponent(msg);
+  }
+  function mesaj(s){
+    var r=['Bună ziua! Aș vrea să aduc bicicleta la AlfaBike.'];
+    if(s.tip)r.push('Tip: '+s.tip);
+    if(s.av.length)r.push('Problema: '+s.av.join(', '));
+    if(s.desc)r.push('Detalii: '+s.desc);
+    if(s.zi){var p=s.zi.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);r.push('Aș putea veni: '+ZILE.ro[d.getDay()]+', '+d.getDate()+' '+LUNI.ro[d.getMonth()])}
+    if(s.nume)r.push('Nume: '+s.nume);
+    r.push('Cât ar costa și când o pot aduce?');
+    return r.join('\n');
+  }
+  $('form').addEventListener('input',eticheta);$('form').addEventListener('change',eticheta);
+  function verifica(e){
+    var s=stare(),err=$('f-err');
+    if(!s.av.length&&!s.desc){e.preventDefault();err.hidden=false;err.textContent=t('Alege cel puțin o avarie sau descrie problema la pasul 3.','Pick at least one problem or describe it in step 3.','Escolha pelo menos uma avaria ou descreva-a no passo 3.');var c=cAv.querySelector('input');if(c)c.focus();return}
+    err.hidden=true;
+  }
+  $('t-wa').addEventListener('click',verifica);$('t-sms').addEventListener('click',verifica);
+
+  /* ---------- program ---------- */
+  function program(){
+    var u=$('program'),d=new Date().getDay(),rows=[[1,t('Luni','Monday','Segunda'),t('de la 12:00 · închidere de confirmat','from 12:00 · closing to be confirmed','a partir das 12:00 · fecho a confirmar')],[2,t('Marți – sâmbătă','Tuesday – Saturday','Terça – sábado'),t('de confirmat','to be confirmed','a confirmar')],[0,t('Duminică','Sunday','Domingo'),t('închis','closed','fechado')]];
+    u.innerHTML='';rows.forEach(function(r){var li=document.createElement('li');var azi=r[0]===d||(r[0]===2&&d>=2&&d<=6);if(azi)li.className='azi';li.innerHTML='<span></span><span></span>';li.children[0].textContent=r[1];li.children[1].textContent=r[2];u.appendChild(li)});
+  }
+
+  /* ---------- bandă ---------- */
+  function banda(){
+    var w=[t('Pane','Flats','Furos'),t('Frâne','Brakes','Travões'),t('Schimbătoare','Gears','Mudanças'),t('Centrare roți','Wheel truing','Centragem de rodas'),t('Spițe','Spokes','Raios'),t('Lanțuri','Chains','Correntes'),t('Revizii','Services','Revisões'),t('Accesorii','Accessories','Acessórios')];
+    var h='<span>'+w.join('</span><span>')+'</span>';$('banda').innerHTML=h+h;
+  }
+
+  /* ---------- limba ---------- */
+  function seteaza(l){
+    html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
+    try{localStorage.setItem('__LSKEY__',l)}catch(e){}
+    document.querySelectorAll('img[data-alt]').forEach(function(e){e.setAttribute('alt',tr(e.dataset.alt))});
+    document.querySelectorAll('[data-aria]').forEach(function(e){e.setAttribute('aria-label',tr(e.dataset.aria))});
+    document.querySelectorAll('[data-ph]').forEach(function(e){e.setAttribute('placeholder',tr(e.dataset.ph))});
+    document.title=t('AlfaBike Iași · Atelier de reparații biciclete, Bd. Regele Mihai I 22','AlfaBike Iași · Bicycle repair workshop, Bd. Regele Mihai I 22','AlfaBike Iași · Oficina de reparação de bicicletas, Bd. Regele Mihai I 22');
+    textLista();textChips();panou(false);eticheta();program();banda();
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+
+  /* ---------- harta ---------- */
+  $('arata-harta').addEventListener('click',function(){
+    var h=$('harta'),f=document.createElement('iframe');
+    f.src='https://www.google.com/maps?q=47.1524344,27.5954553&z=17&output=embed';
+    f.title=t('Hartă: AlfaBike, Bd. Regele Mihai I 22, Iași','Map: AlfaBike, Bd. Regele Mihai I 22, Iași','Mapa: AlfaBike, Bd. Regele Mihai I 22, Iași');
+    f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';h.innerHTML='';h.appendChild(f);
+  });
+
+  /* ---------- pornire ---------- */
+  seteaza(L());alege(0,false);onScroll();
+  function porneste(){html.classList.add('gata')}
+  if(reduz)porneste();
+  else if(document.fonts&&document.fonts.ready){var go=false;document.fonts.ready.then(function(){if(!go){go=true;requestAnimationFrame(porneste)}});setTimeout(function(){if(!go){go=true;porneste()}},700)}
+  else porneste();
+})();
+</script>
+</body>
+</html>
