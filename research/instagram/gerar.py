@@ -153,7 +153,8 @@ def excel(contas):
 
 ROTULO = {"dm1": "D0: DM 1", "fu": "D4: observação nova", "d7": "D7: pergunta sim ou não", "d12": "D12: fecho limpo",
           "c1": "Comentário: ponto", "c2": "Comentário: acréscimo", "c3": "Comentário: pergunta",
-          "triagem": "Triagem (quando respondem, com o Micro System Print)", "parceria": "Parceria (depois dos 3 quick wins)"}
+          "triagem": "Triagem (quando respondem, com o Micro System Print)", "parceria": "Parceria (antes de aplicar os 3 quick wins: incentivo primeiro)",
+          "testemunho": "Testemunho (no dia em que os 3 quick wins ficam a funcionar)"}
 
 
 def markdown():

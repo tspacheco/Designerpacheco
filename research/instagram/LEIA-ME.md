@@ -4,7 +4,7 @@ Base: guia «Pesquisa de Instagram e Prospecção Estratégica» do Tomás (10/1
 
 ## Ficheiros
 - `prospecao-instagram.xlsx` — base de dados. Folhas: Prospeção (nota e prioridade por fórmula, listas de Categoria, Estado, Canal e Língua), Categorias, Mensagens, Percursos, Queries, Estados, Linguagem.
-- `gerador.html` — página para o telemóvel: escolher o tipo de conta e o tipo de negócio, escrever o gancho, e sai o Micro System Print de uma página, a DM com a isca, a cadência D4, D7 e D12, a «Triagem» e a «Parceria» (e os comentários, nas comunidades), já com as regras. Botão «Copiar linha p/ Excel».
+- `gerador.html` — página para o telemóvel: escolher o tipo de conta e o tipo de negócio, escrever o gancho, e sai o Micro System Print de uma página, a DM com a isca, a cadência D4, D7 e D12, a «Triagem», a «Parceria» e o «Testemunho» (e os comentários, nas comunidades), já com as regras. Botão «Copiar linha p/ Excel».
 - `MENSAGENS.md` — todos os modelos, por categoria e língua.
 - `contas.json` — contas da pesquisa (entrada do `gerar.py`).
 - `dados.py` — fonte única de modelos, percursos e queries. Mudar aqui e correr `python3 gerar.py`.
@@ -36,7 +36,7 @@ A triagem é a isca e é conduzida por nós: observar o percurso público, levar
 | Página / comunidade | Comentários em 2–3 posts, depois DM | Contribuição pública útil | Tema para artigo, workshop ou evento |
 
 ## Escada comercial (playbook de consultoria, 11/10)
-Triagem conduzida por nós (print + validação) → 3 quick wins sem custo → Auditoria de Sistemas com IA (porta de entrada; **creditada na implementação**: grátis na execução, paga quando vira prova e início de trabalho) → sprint de desenho → piloto controlado → otimização. Ticket 2.000 € (3 quick wins sobre problemas atuais) a 100.000 € (acompanhamento de crescimento 3x a 10x, pago pelo valor agregado); foco na prova de valor, nunca escrito numa DM. Sites e mensalidades só existem dentro da implementação. Parceiros (decisão 14h38): 3 quick wins sem custo; 15 % do valor da implementação do negócio indicado e 5 % de 3 em 3 meses enquanto trabalharmos com ele; primeiro o incentivo, depois a proposta escrita com testemunho e 1 post por mês (mensagem «Parceria» no gerador, só depois dos quick wins; detalhe em `COMISSAO-PARCEIROS.md`). Playbook: `/mnt/project-files/playbook/`.
+Triagem conduzida por nós (print + validação) → 3 quick wins sem custo → Auditoria de Sistemas com IA (porta de entrada; **creditada na implementação**: grátis na execução, paga quando vira prova e início de trabalho) → sprint de desenho → piloto controlado → otimização. Ticket 2.000 € (3 quick wins sobre problemas atuais) a 100.000 € (acompanhamento de crescimento 3x a 10x, pago pelo valor agregado); foco na prova de valor, nunca escrito numa DM. Sites e mensalidades só existem dentro da implementação. Parceiros (decisões 14h38 e 14h44): 3 quick wins sem custo; 15 % do valor da implementação do negócio indicado e 5 % de 3 em 3 meses enquanto trabalharmos com ele; primeiro o incentivo e a proposta assinada (mensagem «Parceria», antes de aplicar os quick wins); contrapartida por ordem: testemunho online e recomendação no dia em que os quick wins funcionam (mensagem «Testemunho»), boca a boca, 1 menção por mês. Nada se envia a influenciadores sem o Tomás confirmar os @ e o texto. Detalhe em `COMISSAO-PARCEIROS.md`. Playbook: `/mnt/project-files/playbook/`.
 
 ## Regras de envio
 - 1 minuto entre mensagens; saudação diferente em cada uma; sem emojis; sem preço; em romeno fecha com «Voi fi pregătit.»
