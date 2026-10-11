@@ -1,6 +1,6 @@
 # Prospeção por Instagram e e-mail (ligada ao n8n)
 
-Base: guia «Pesquisa de Instagram e Prospecção Estratégica» do Tomás (10/10/2026). Quatro categorias, cada uma com a sua abordagem e o seu intuito; nota 0–10 que dá a prioridade 1–5; estados do pipeline.
+Base: guia «Pesquisa de Instagram e Prospecção Estratégica» do Tomás (10/10/2026) e o playbook de consultoria de IA (11/10): as mensagens convidam para uma reunião ou Auditoria de Sistemas com IA sobre onde os leads, as decisões e a entrega se partem, nunca para um site; os mapas chamam-se System Print (gatilho, dono, regra, handoff). Quatro categorias, cada uma com a sua abordagem e o seu intuito; nota 0–10 que dá a prioridade 1–5; estados do pipeline.
 
 ## Onde está cada coisa
 - **Base de dados (Excel):** `/mnt/project-files/prospecao/prospecao-base.xlsx` (pasta privada do projeto). Tem e-mails de negócios, por isso **nunca vai para este repositório** (é público).

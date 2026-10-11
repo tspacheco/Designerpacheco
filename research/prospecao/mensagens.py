@@ -24,15 +24,15 @@ CANAL = {
 }
 
 ABORDAGEM = {
-    "influenciador": "DM personalizada: 20 min para mostrar o Partner Systems Opportunity Map",
-    "grande": "Pedir encaminhamento para operações/CX/transformação; levar mini-mapa de um percurso público",
-    "pme_parceiro": "Complementaridade: eles geram o lead, a Pacheco protege o que acontece depois; mini-mapa de um cliente-tipo",
+    "influenciador": "DM personalizada: 20 min para mostrar o System Print da operação dele (trigger, dono, regra, handoff)",
+    "grande": "Pedir encaminhamento para operações/CX/transformação; levar o System Print de um percurso público; convidar para a Auditoria de Sistemas com IA",
+    "pme_parceiro": "Complementaridade: eles geram o lead, a Pacheco protege o que acontece depois; System Print de um cliente-tipo",
     "comunidade": "Comentário útil no post atual, 2–3 publicações; só depois DM com proposta editorial",
 }
 
 INTUITO = {
-    "influenciador": "Chamada de 20 min → entregar mapa → confiança → introduções consentidas",
-    "grande": "Chegar ao dono do processo → reunião de descoberta → AI Systems Audit",
+    "influenciador": "Chamada de 20 min → entregar System Print → confiança → introduções consentidas",
+    "grande": "Chegar ao dono do processo → reunião → Auditoria de Sistemas com IA",
     "pme_parceiro": "Co-entrega, introdução mútua ou workshop → referrals qualificados",
     "comunidade": "Familiaridade com a audiência → DM/introdução → conteúdo, evento ou referência",
 }
@@ -45,23 +45,23 @@ MODELOS = {
             "{saud}, {nome}! Sunt Tomás, de la Pacheco Studios. {gancho} "
             "Lucrez pe partea operațională a afacerilor: ce se întâmplă după ce intră o cerere, "
             "cine o preia și ce context ajunge la următorul om. "
-            "Aș vrea să vă ofer o hartă scurtă pentru propria operațiune ({percurso}): 3–5 predări între oameni, "
-            "o ipoteză de îmbunătățire, unde rămâne decizia umană și o prioritate pe 30 de zile. "
+            "Aș vrea să vă arăt un System Print al propriei operațiuni ({percurso}): ce declanșează fiecare pas, cine îl deține, "
+            "ce regulă decide și unde se face predarea între oameni, plus o prioritate pe 30 de zile. "
             "Ați avea 20 de minute să v-o arăt?"
         ),
         "grande": (
             "{saud}! Sunt Tomás, de la Pacheco Studios. {gancho} "
-            "Am schițat o mini-hartă a unui parcurs public al {nome} ({percurso}), doar din ce se vede din afară. "
+            "Am pregătit un System Print al unui parcurs public al {nome} ({percurso}), doar din ce se vede din afară: declanșator, responsabil, regulă și predare. "
             "E o ipoteză de validat, nu o concluzie: ce context trebuie să meargă cu fiecare cerere "
             "și cine deține pasul următor. "
             "Cine din echipă se ocupă de operațiuni sau de experiența clienților? "
-            "Aș vrea să-i arăt harta într-o discuție de 20–30 de minute."
+            "Aș vrea să i-l arăt într-o întâlnire scurtă despre unde se pierd lead-urile, deciziile și livrarea."
         ),
         "pme_parceiro": (
             "{saud}, {nome}! Sunt Tomás, de la Pacheco Studios. {gancho} "
             "Voi aduceți cererile; noi lucrăm pe ce se întâmplă după lead: date, echipă, decizii și livrare, "
             "ca rezultatul muncii voastre să nu se piardă pe drum. Nu concurăm cu ce faceți, completăm. "
-            "Vă pot arăta o mini-hartă pentru un client-tip de-al vostru ({percurso}) "
+            "Vă pot arăta un System Print pentru un client-tip de-al vostru ({percurso}) "
             "și cum am putea lucra împreună sau să ne recomandăm reciproc. "
             "Ați fi deschiși la o discuție scurtă?"
         ),
@@ -79,11 +79,11 @@ MODELOS = {
         ],
         "followup": (
             "{saud}, revin scurt la mesajul de mai sus pentru {nome}. "
-            "Dacă nu e momentul potrivit, nicio problemă; harta rămâne disponibilă oricând."
+            "Dacă nu e momentul potrivit, nicio problemă; System Print-ul rămâne disponibil oricând."
         ),
         "assunto": {
-            "influenciador": "O hartă pentru operațiunea {nome}",
-            "grande": "{nome}: mini-hartă a unui parcurs public",
+            "influenciador": "System Print pentru operațiunea {nome}",
+            "grande": "{nome}: unde se pot pierde lead-urile și deciziile",
             "pme_parceiro": "{nome} × Pacheco Studios: colaborare",
             "comunidade": "Contribuție pentru comunitatea {nome}",
         },
@@ -95,23 +95,23 @@ MODELOS = {
             "{saud}, {nome}! Sou o Tomás, da Pacheco Studios. {gancho} "
             "Trabalho a parte operacional dos negócios: o que acontece depois de entrar um pedido, "
             "quem o pega e que contexto chega à pessoa seguinte. "
-            "Queria oferecer-lhe um mapa curto da sua própria operação ({percurso}): 3–5 passagens entre pessoas, "
-            "uma hipótese de melhoria, onde fica a decisão humana e uma prioridade a 30 dias. "
+            "Queria mostrar-lhe um System Print da sua própria operação ({percurso}): o que dispara cada passo, quem é o dono, "
+            "que regra decide e onde há passagem entre pessoas, mais uma prioridade a 30 dias. "
             "Tem 20 minutos para eu lho mostrar?"
         ),
         "grande": (
             "{saud}! Sou o Tomás, da Pacheco Studios. {gancho} "
-            "Desenhei um mini-mapa de um percurso público da {nome} ({percurso}), só com o que se vê de fora. "
+            "Preparei um System Print de um percurso público da {nome} ({percurso}), só com o que se vê de fora: gatilho, dono, regra e passagem. "
             "É uma hipótese a validar, não uma conclusão: que contexto tem de viajar com cada pedido "
             "e quem é dono do passo seguinte. "
             "Quem na equipa trata de operações ou experiência de cliente? "
-            "Gostava de lhe mostrar o mapa numa conversa de 20–30 minutos."
+            "Gostava de o mostrar numa reunião curta sobre onde os leads, as decisões e a entrega se partem."
         ),
         "pme_parceiro": (
             "{saud}, {nome}! Sou o Tomás, da Pacheco Studios. {gancho} "
             "Vocês trazem os pedidos; nós trabalhamos o que acontece depois do lead: dados, equipa, decisões e entrega, "
             "para o resultado do vosso trabalho não se perder pelo caminho. Não concorremos, complementamos. "
-            "Posso mostrar-vos um mini-mapa de um cliente-tipo vosso ({percurso}) "
+            "Posso mostrar-vos um System Print de um cliente-tipo vosso ({percurso}) "
             "e como podíamos trabalhar juntos ou indicar-nos mutuamente. "
             "Estão abertos a uma conversa curta?"
         ),
@@ -129,11 +129,11 @@ MODELOS = {
         ],
         "followup": (
             "{saud}, volto só à mensagem acima sobre a {nome}. "
-            "Se não for o momento, sem problema; o mapa fica disponível quando quiser."
+            "Se não for o momento, sem problema; o System Print fica disponível quando quiser."
         ),
         "assunto": {
-            "influenciador": "Um mapa para a operação da {nome}",
-            "grande": "{nome}: mini-mapa de um percurso público",
+            "influenciador": "System Print para a operação da {nome}",
+            "grande": "{nome}: onde os leads e as decisões se podem perder",
             "pme_parceiro": "{nome} × Pacheco Studios: parceria",
             "comunidade": "Contributo para a comunidade {nome}",
         },
@@ -145,23 +145,23 @@ MODELOS = {
             "{saud} {nome}! I'm Tomás from Pacheco Studios. {gancho} "
             "I work on the operational side of businesses: what happens after a request comes in, "
             "who picks it up and what context reaches the next person. "
-            "I'd like to give you a short map of your own operation ({percurso}): 3–5 handoffs, "
-            "one improvement hypothesis, where the human decision stays and a 30-day priority. "
+            "I'd like to show you a System Print of your own operation ({percurso}): what triggers each step, who owns it, "
+            "which rule decides and where the handoff happens, plus a 30-day priority. "
             "Would you have 20 minutes for me to walk you through it?"
         ),
         "grande": (
             "{saud}! I'm Tomás from Pacheco Studios. {gancho} "
-            "I sketched a mini-map of one public journey at {nome} ({percurso}), using only what is visible from outside. "
+            "I prepared a System Print of one public journey at {nome} ({percurso}), using only what is visible from outside: trigger, owner, rule and handoff. "
             "It is a hypothesis to validate, not a conclusion: what context has to travel with each request "
             "and who owns the next step. "
             "Who on the team looks after operations or customer experience? "
-            "I'd like to show them the map in a 20–30 minute conversation."
+            "I'd like to walk them through it in a short meeting about where leads, decisions and delivery break."
         ),
         "pme_parceiro": (
             "{saud} {nome}! I'm Tomás from Pacheco Studios. {gancho} "
             "You bring in the demand; we work on what happens after the lead: data, team, decisions and delivery, "
             "so the result of your work isn't lost along the way. We don't compete, we complement. "
-            "I can show you a mini-map for one of your typical clients ({percurso}) "
+            "I can show you a System Print for one of your typical clients ({percurso}) "
             "and how we could co-deliver or refer each other. "
             "Open to a short call?"
         ),
@@ -179,11 +179,11 @@ MODELOS = {
         ],
         "followup": (
             "{saud}, just following up on the message above about {nome}. "
-            "If the timing isn't right, no problem; the map stays available whenever you want it."
+            "If the timing isn't right, no problem; the System Print stays available whenever you want it."
         ),
         "assunto": {
-            "influenciador": "A map for {nome}'s operation",
-            "grande": "{nome}: mini-map of one public journey",
+            "influenciador": "A System Print for {nome}'s operation",
+            "grande": "{nome}: where leads and decisions can break",
             "pme_parceiro": "{nome} × Pacheco Studios: partnership",
             "comunidade": "A contribution for the {nome} community",
         },
