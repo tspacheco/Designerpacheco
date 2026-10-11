@@ -202,11 +202,11 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 - **Secção 17 processo de 5 passos e «conversa de 20 min»**: substituído pelo Método Pacheco (A.4). Nunca «20 minutos»: pede-se «uma reunião».
 - **Separador «Sites» do pachecost.com e a entrada direta por `utm_content=web-…`**: a rever no plano dos dias 1–30 (landing da auditoria).
 
-## A.12 PERGUNTAS EM ABERTO
+## A.12 DECISÕES QUE FECHARAM AS PERGUNTAS (Tomás, 11/10/2026 18h26)
 
-- Em Iași a regra era «1.ª proposta é só o site, em RON»: passa a ser «1.ª proposta é a auditoria»?
-- Contas atuais de mensalidade de site (Grupo Naval, Catarina, Bravus, Magic Key): mantêm-se até ao fim do contrato ou renegoceiam-se para implementação + otimização?
-- CTA «DM AUDIT»: palavra igual em PT, RO e EN?
+- **1.ª proposta = a auditoria**, também em Iași (substitui «1.ª proposta é só o site, em RON»). Chega-se lá depois de levar a triagem proativa ao lead (A.14), quando a necessidade e a solução já estão à vista.
+- **Mensalidades de site atuais não mexem** (Grupo Naval, Catarina, Bravus, Magic Key e outros contratos já fechados ficam como estão). A regra «sites e mensalidades dentro da implementação» vale só para clientes novos.
+- **CTA «AUDIT» igual** em PT, RO e EN.
 
 ## A.13 DINHEIRO: AUDITORIA, TICKET E PARCEIROS (decisão do Tomás, 11/10/2026)
 
