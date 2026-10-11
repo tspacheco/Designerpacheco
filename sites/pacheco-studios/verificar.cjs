@@ -230,7 +230,7 @@ const fs = require('fs');
 
   // ——— 2. acessibilidade: 3 línguas × 4 vistas × 3 larguras ———
   for (const [k, v] of Object.entries(LINGUAS)) {
-    for (const vista of ['consultanta', 'cazuri', 'automatizari', 'proiecte']) {
+    for (const vista of ['consultanta', 'cazuri', 'automatizari', 'auditoria']) {
       const linhas = [];
       for (const [nome, vp] of [['360', { width: 360, height: 780 }], ['390', { width: 390, height: 844 }], ['1280', { width: 1280, height: 800 }]]) {
         const ctx = await contexto({ viewport: vp, deviceScaleFactor: 2, reducedMotion: 'reduce' });
@@ -262,7 +262,7 @@ const fs = require('fs');
     await p.goto(v.url);
     const vis = id => p.$eval('#' + id, el => getComputedStyle(el).display !== 'none');
     const falhasAntes = falhas;
-    if (!(await vis('consultanta')) || await vis('cazuri') || await vis('automatizari') || await vis('proiecte')) mal(`${k}: estado inicial devia mostrar só #consultanta`);
+    if (!(await vis('consultanta')) || await vis('cazuri') || await vis('automatizari') || await vis('auditoria')) mal(`${k}: estado inicial devia mostrar só #consultanta`);
     if (await p.$eval('.tabs a[href="#consultanta"]', a => a.getAttribute('aria-current')) !== 'page') mal(`${k}: a Consultoria não está marcada no início`);
     // consultoria: um só botão de diagnóstico no herói, que vai ao WhatsApp, e três números que levam a casos que existem
     const heroi = await p.$$eval('.heroi a.botao[href^="https://wa.me/"]', as => as.length);
@@ -285,7 +285,7 @@ const fs = require('fs');
     if (comNome.length) mal(`${k}: o site mostra o nome de empresas dos casos: ${comNome.join(', ')}`);
     if (await p.$('.caso.vazio')) mal(`${k}: ainda há a caixa «o próximo caso»`);
     await p.click('.tabs a[href="#automatizari"]');
-    if (!(await vis('automatizari')) || await vis('proiecte')) mal(`${k}: separador das automatizações não trocou a vista`);
+    if (!(await vis('automatizari')) || await vis('auditoria')) mal(`${k}: separador das automatizações não trocou a vista`);
     if (await p.$eval('.tabs a[href="#automatizari"]', a => a.getAttribute('aria-current')) !== 'page') mal(`${k}: aria-current não passou`);
     const n = await p.$$eval('details.auto', ds => ds.length);
     if (n !== 8) mal(`${k}: esperava 8 automatizações, encontrei ${n}`);
@@ -296,8 +296,23 @@ const fs = require('fs');
     if (!(await p.evaluate(() => { const d = document.querySelector(location.hash); return d && d.tagName === 'DETAILS' && d.open; }))) mal(`${k}: ligação entre automatizações não abriu a apontada`);
     // «O que mais fazemos» vive no fim das Soluções
     if (!(await p.$('#automatizari #servicii .svc'))) mal(`${k}: «O que mais fazemos» não está no fim das Soluções`);
-    await p.click('.tabs a[href="#proiecte"]');
-    if (!(await vis('proiecte')) || await vis('consultanta')) mal(`${k}: separador dos sites falhou`);
+    // System Print em cada solução: gatilho, dono, regra, passa a uma pessoa, métrica
+    const prints = await p.$$eval('details.auto', ds => ds.map(d => d.querySelectorAll('.print dd').length));
+    if (prints.some(x => x !== 5)) mal(`${k}: System Print incompleto ${JSON.stringify(prints)}`);
+    // Auditoria: separador próprio, 4 peças, 7 passos, 5 entregas, e o botão abre a candidatura
+    await p.click('.tabs a[href="#auditoria"]');
+    if (!(await vis('auditoria')) || await vis('cazuri')) mal(`${k}: separador da auditoria falhou`);
+    const aud = await p.evaluate(() => ({ pecas: document.querySelectorAll('.aud-pecas li').length, passos: document.querySelectorAll('.aud-passos li').length,
+      ent: document.querySelectorAll('.aud-entregas li').length, cta: document.querySelectorAll('#auditoria [data-diagnostico]').length,
+      preco: /€|RON|lei\b|\$/.test(document.getElementById('auditoria').innerText) }));
+    if (aud.pecas !== 4 || aud.passos !== 7 || aud.ent !== 5 || aud.cta !== 1 || aud.preco) mal(`${k}: auditoria mal montada ${JSON.stringify(aud)}`);
+    await p.click('#auditoria [data-diagnostico]');
+    if (!(await p.$eval('#diagnostico', d => d.open))) mal(`${k}: «Pedir auditoria» não abriu a candidatura`);
+    await p.keyboard.press('Escape');
+    // os sites vivem dentro de Casos
+    if (await p.$('.tabs a[href="#proiecte"]')) mal(`${k}: ainda há separador dos sites`);
+    await p.click('.tabs a[href="#cazuri"]');
+    if (!(await vis('proiecte')) || !(await p.$('#cazuri #proiecte'))) mal(`${k}: os sites não estão dentro de Casos`);
     // sites em destaque, sites dentro de cada tipo de negócio e exemplos: cada ligação interna tem de existir
     const hrefs = await p.$$eval('.grelha .q, .grelha-mais .q, .exemplos a, .link-ex', as => as.map(a => a.getAttribute('href')));
     const semSep = await p.$$eval('.grelha .q[href^=http], .grelha-mais .q[href^=http], .exemplos a[href^=http]', as => as.filter(a => a.target !== '_blank').length);
@@ -314,13 +329,13 @@ const fs = require('fs');
     const mais = await p.$$eval('.grelha-mais .q', as => as.map(a => a.getAttribute('href')));
     if (mais.length !== ativos.length - 3 || await p.$('.grelha-mais .teu')) mal(`${k}: «Mais sites» com ${mais.length} sites (esperava ${ativos.length - 3})`);
     // «Combina com» leva à automação e abre-a
-    await p.click('.tabs a[href="#proiecte"]');
+    await p.click('.tabs a[href="#cazuri"]');
     await p.click('#s-restauracao summary');
     await p.click('#s-restauracao .chips a');
     await p.waitForTimeout(250);
     if (!(await p.evaluate(() => { const d = document.querySelector(location.hash); return d && d.tagName === 'DETAILS' && d.open && !!d.closest('#automatizari'); })))
       mal(`${k}: «Combina com» não abriu a automação`);
-    await p.click('.tabs a[href="#proiecte"]');
+    await p.click('.tabs a[href="#cazuri"]');
     if (semSep) mal(`${k}: ${semSep} ligações externas sem target=_blank`);
     for (const h of hrefs) {
       if (h.startsWith('#') || /^https?:/.test(h)) continue;
@@ -438,7 +453,7 @@ const fs = require('fs');
   await p.goto(LINGUAS.ro.url + '?utm_source=meta&utm_content=web-bolta');
   await p.waitForTimeout(200);
   const doAnuncio = await p.evaluate(() => ({ h: location.hash, s: getComputedStyle(document.getElementById('proiecte')).display !== 'none' }));
-  if (doAnuncio.h !== '#proiecte' || !doAnuncio.s) mal(`anúncio de sites: ${JSON.stringify(doAnuncio)}`); else bem('anúncio de sites (utm_content=web-…): abre nos Sites');
+  if (doAnuncio.h !== '#proiecte' || !doAnuncio.s) mal(`anúncio de sites: ${JSON.stringify(doAnuncio)}`); else bem('anúncio de sites (utm_content=web-…): abre nos sites, dentro de Casos');
 
   // barra fixa
   await p.goto(LINGUAS.pt.url);
@@ -785,11 +800,11 @@ const fs = require('fs');
     const q = await c.newPage();
     await q.goto(LINGUAS[lg].url);
     await q.waitForTimeout(300);
-    for (const v of ['automatizari', 'cazuri', 'proiecte', 'consultanta']) { await q.click(`.tabs a[data-vista="${v}"]`); await q.waitForTimeout(50); }
+    for (const v of ['automatizari', 'cazuri', 'auditoria', 'consultanta']) { await q.click(`.tabs a[data-vista="${v}"]`); await q.waitForTimeout(50); }
     const r = await q.evaluate(() => ({ base: location.host + location.pathname, gc: window.__gc.filter(x => !x.includes('/') || x.startsWith(location.host)) }));
-    const esperado = ['inicio', 'solucoes', 'casos', 'sites', 'inicio'].map(n => r.base + n);
+    const esperado = ['inicio', 'solucoes', 'casos', 'auditoria', 'inicio'].map(n => r.base + n);
     if (JSON.stringify(r.gc) !== JSON.stringify(esperado)) mal(`${lg}: separadores no GoatCounter ${JSON.stringify(r.gc)}`);
-    else bem(`${lg}: cada separador conta como página no GoatCounter (${r.base}inicio, solucoes, casos, sites)`);
+    else bem(`${lg}: cada separador conta como página no GoatCounter (${r.base}inicio, solucoes, casos, auditoria)`);
     await c.close();
   }
 

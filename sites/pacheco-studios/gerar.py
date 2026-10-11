@@ -243,7 +243,7 @@ def cartao_setor(s, i, itens, rot, lang, autos, digitos):
     </dl></div>
     {exemplos}
     <div><h4 class="rotulo">{e(lab["combina"])}</h4><div class="chips">{chips}</div></div>
-    <div class="demo"><p>{e(lab["cta_t"])}</p><a class="botao secundario" href="{e(wa)}">{I["chat"]}{e(lab["cta"])}</a></div>
+    <div class="demo"><p>{e(lab["cta_t"])}</p><a class="botao secundario" href="{e(wa)}" data-diagnostico>{I["chat"]}{e(lab["cta"])}</a></div>
   </div>
 </details>"""
 
@@ -272,7 +272,7 @@ def vista_proiecte(c, portfolio, lang, digitos):
     cu = p["cuidado"]
     compromissos = "\n".join(f'<li class="rv" style="--i:{i}"><h3>{e(x["t"])}</h3><p>{e(x["d"])}</p></li>'
                              for i, x in enumerate(cu["itens"]))
-    return f"""<section id="proiecte" class="vista" aria-labelledby="t-proiecte">
+    return f"""<section id="proiecte" class="sub-proiecte" aria-labelledby="t-proiecte">
   <div class="envolver seccao">
     <p class="eyebrow">{e(p["eyebrow"])}</p>
     <h2 id="t-proiecte" class="afirmacao">{e(p["titlu"])}</h2>
@@ -395,6 +395,59 @@ def rececionista(a, digitos, lang):
     </section>"""
 
 
+def system_print(x, lab):
+    """O System Print da solução (playbook de 11/10): gatilho, dono, regra, passa a uma pessoa e métrica, à vista."""
+    pl, pr = lab["print"], x["print"]
+    linhas = [("gatilho", x["fluxo"][0]["t"]), ("dono", pr["dono"]), ("regra", x["reguli"][0]),
+              ("handoff", pr["handoff"]), ("metrica", pr["metrica"])]
+    dl = "".join(f'<div><dt>{e(pl[k])}</dt><dd>{e(v)}</dd></div>' for k, v in linhas)
+    return f'<div class="print"><h4 class="rotulo">{e(pl["t"])}</h4><dl>{dl}</dl></div>'
+
+
+def vista_auditoria(c, wa):
+    """Auditoria de Sistemas com IA: a porta de entrada. O princípio (4 peças), o método em 7 passos, o que se recebe,
+    para quem é e não é, e o pedido (abre a candidatura). Sem preços no site."""
+    a = c["auditoria"]
+    if len(a["passos"]) != 7 or len(a["pecas"]) != 4:
+        raise SystemExit("conteudo: a auditoria leva 7 passos e 4 peças")
+    pecas = "\n".join(f'<li class="rv" style="--i:{i}"><b>{e(t)}</b><span>{e(d)}</span></li>' for i, (t, d) in enumerate(a["pecas"]))
+    passos = "\n".join(f'<li class="rv" style="--i:{i % 4}"><span class="pn">{i + 1:02d}</span><h3>{e(t)}</h3><p>{e(d)}</p></li>'
+                       for i, (t, d) in enumerate(a["passos"]))
+    entregas = "\n".join(f'<li>{e(x)}</li>' for x in a["entregas"])
+    para = "".join(f'<li>{e(x)}</li>' for x in a["para"])
+    nao = "".join(f'<li>{e(x)}</li>' for x in a["nao"])
+    return f"""<section id="auditoria" class="vista" aria-labelledby="t-auditoria">
+  <div class="envolver seccao">
+    <p class="eyebrow">{e(a["eyebrow"])}</p>
+    <h2 id="t-auditoria" class="afirmacao">{e(a["titlu"])}</h2>
+    <p class="lead">{e(a["intro"])}</p>
+    <div class="aud-principio">
+      <h3 class="afirmacao">{e(a["principio_t"])}</h3>
+      <p>{e(a["principio"])}</p>
+      <ul class="aud-pecas">
+{pecas}
+      </ul>
+    </div>
+    <h3 class="rotulo aud-sub">{e(a["metodo_t"])}</h3>
+    <ol class="aud-passos">
+{passos}
+    </ol>
+    <div class="aud-dois">
+      <div><h3 class="rotulo aud-sub">{e(a["entrega_t"])}</h3><ol class="aud-entregas">
+{entregas}
+      </ol></div>
+      <div class="aud-para"><h3 class="rotulo">{e(a["para_t"])}</h3><ul class="sim">{para}</ul>
+      <h3 class="rotulo">{e(a["nao_t"])}</h3><ul class="nao">{nao}</ul></div>
+    </div>
+    <div class="aud-cta">
+      <p class="afirmacao">{e(a["cta_t"])}</p>
+      <a class="botao primario grande" href="{e(wa)}" data-diagnostico data-auditoria>{e(c["consultanta"]["conhece"])}{I["seta"]}</a>
+      <p class="nota">{e(a["nota"])}</p>
+    </div>
+  </div>
+</section>"""
+
+
 def vista_automatizari(c, digitos, icones, casos, servicii, lang="pt"):
     a = c["automatizari"]
     lab = a["labels"]
@@ -419,6 +472,7 @@ def vista_automatizari(c, digitos, icones, casos, servicii, lang="pt"):
   </summary>
   <div class="corpo">
     {botao_esquema(x, lab)}
+    {system_print(x, lab)}
     <div class="obtii"><h4 class="rotulo">{e(lab["obtii"])}</h4>{e(x["obtii"])}</div>
     <div><h4 class="rotulo">{e(lab["reguli"])}</h4><ul class="reguli">
 {reguli}
@@ -554,7 +608,7 @@ def vista_consultanta(c, casos, lang, wa):
       <p class="lead heroi-lead">{e(k["lead"])}</p>
       <div class="heroi-acoes">
         <a class="botao primario grande" href="{e(wa)}" data-diagnostico>{e(k["conhece"])}{I["seta"]}</a>
-        <a class="botao contorno grande" href="#automatizari">{e(k["ver_solucoes"])}</a>
+        <a class="botao contorno grande" href="#auditoria">{e(k["ver_solucoes"])}</a>
       </div>
       <p class="heroi-adere">{e(k["adere"])}</p>
     </div>
@@ -702,7 +756,7 @@ def diagnostico(c, url_priv, wa_diag=""):
 </dialog>"""
 
 
-def vista_cazuri(c, casos, lang, digitos):
+def vista_cazuri(c, casos, lang, digitos, proiecte=""):
     """Casos: só o depoimento e os resultados (sem nome nem tipo de negócio, decisão de 03/10). As fontes ficam em
     conteudo/casos.json, fora do site."""
     z = c["cazuri"]
@@ -737,6 +791,7 @@ def vista_cazuri(c, casos, lang, digitos):
       </ol>
     </div>
   </div>
+{proiecte}
 </section>"""
 
 
@@ -1233,10 +1288,11 @@ def main():
             "GOATCOUNTER": e(medicao.get("goatcounter", "")), "PIXEL": pixel_de(medicao, lang),
             "SALTAR": e(cfg["saltar"]), "NAV_LABEL": e(cfg["nav"]), "LINGUAS": seletor(c, lang),
             "TAB_CONSULTANTA": e(c["topo"]["tabs"]["consultanta"]), "TAB_CAZURI": e(c["topo"]["tabs"]["cazuri"]),
-            "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
-            "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, num),
+            "TAB_AUDITORIA": e(c["topo"]["tabs"]["auditoria"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
+            "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa),
+            "VISTA_CAZURI": vista_cazuri(c, casos, lang, num, vista_proiecte(c, portfolio, lang, num)),
             "VISTA_AUTOMATIZARI": vista_automatizari(c, num, icones, casos, vista_servicii(c, portfolio, lang), lang),
-            "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, num),
+            "VISTA_AUDITORIA": vista_auditoria(c, wa),
             "CONTACT": contacto(c, d, wa, tel_l, num, cfg["com_site"], lang), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"], wa_diagnostico(d, lang)), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
             "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }

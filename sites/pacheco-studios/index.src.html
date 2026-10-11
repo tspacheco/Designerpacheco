@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- Pacheco Studios — pachecost.com (PT, e /en/) e ro.pachecost.com (RO, para onde aponta o QR do cartão: /C → /).
-     Quatro vistas na mesma página, trocadas por #consultanta (a de entrada) / #cazuri / #automatizari / #proiecte
+     Quatro vistas na mesma página, trocadas por #consultanta (a de entrada) / #cazuri / #automatizari / #auditoria
+     (os sites vivem dentro de #cazuri, em #proiecte)
      (funciona sem JavaScript). «O que mais fazemos» (#servicii) vive no fim de #automatizari.
      NÃO editar index.html: é gerado por gerar.py a partir deste ficheiro, de conteudo/<língua>.json, de portfolio.json
      e de ../../marca/dados.json. -->
@@ -86,7 +87,7 @@ svg{flex:none}
 .tabs a[href="#consultanta"],
 body:has(#cazuri:target,#cazuri :target) .tabs a[href="#cazuri"],
 body:has(#automatizari:target,#automatizari :target) .tabs a[href="#automatizari"],
-body:has(#proiecte:target,#proiecte :target) .tabs a[href="#proiecte"]{color:var(--osso);border-color:var(--laranja)}
+body:has(#auditoria:target,#auditoria :target) .tabs a[href="#auditoria"]{color:var(--osso);border-color:var(--laranja)}
 body:has(.vista:target,.vista :target) .tabs a[href="#consultanta"]{color:var(--osso-2);border-color:transparent}
 body:has(#consultanta:target,#consultanta :target) .tabs a[href="#consultanta"]{color:var(--osso);border-color:var(--laranja)}
 
@@ -367,6 +368,48 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
   text-transform:uppercase;color:var(--carvao);text-decoration:none;text-underline-offset:.3em}
 .link-ex:hover{text-decoration:underline}
 .link-ex svg{width:1rem;height:1rem;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ═══ System Print: a ficha técnica de cada solução, como um talão impresso ═══ */
+.print{padding:1rem 1.1rem 1.1rem;border:1px dashed var(--contorno);border-radius:.75rem;background:var(--carvao)}
+.print .rotulo{color:var(--laranja)}
+.print dl{margin:0;display:grid;gap:.55rem}
+.print div{display:grid;grid-template-columns:7.5rem 1fr;gap:.7rem;align-items:baseline;padding-top:.55rem;border-top:1px dashed var(--linha-e)}
+.print div:first-child{border-top:0;padding-top:0}
+.print dt{font:700 .75rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--osso-2)}
+.print dd{margin:0;font-size:.9375rem}
+
+/* ═══ Auditoria ═══ */
+.aud-principio{margin-top:clamp(2rem,7vw,3.5rem);padding:clamp(1.25rem,4vw,2rem);border-radius:1rem;background:var(--carvao-2);border:1px solid var(--linha-e)}
+.aud-principio h3{font-size:clamp(1.4rem,4.5vw,2rem)}
+.aud-principio>p{margin-top:.75rem;max-width:52ch;color:var(--osso-2)}
+.aud-pecas{margin-top:1.5rem;display:grid;gap:1rem;counter-reset:peca}
+.aud-pecas li{display:grid;gap:.3rem;padding-top:.8rem;border-top:2px solid var(--laranja)}
+.aud-pecas b{font:700 .8125rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.aud-pecas span{color:var(--osso-2);font-size:.9375rem}
+.aud-sub{margin-top:clamp(2.5rem,8vw,4rem)}
+.aud-passos{display:grid;gap:0;border-top:1px solid var(--linha-e)}
+.aud-passos li{display:grid;grid-template-columns:3rem 1fr;gap:.2rem 1rem;padding-block:1rem;border-bottom:1px solid var(--linha-e)}
+.aud-passos .pn{grid-row:span 2;font:700 1rem/1.4 var(--mono);color:var(--laranja)}
+.aud-passos h3{font:600 1.125rem/1.3 var(--texto)}
+.aud-passos p{color:var(--osso-2);font-size:.9375rem;max-width:56ch}
+.aud-dois{display:grid;gap:2rem}
+.aud-entregas{display:grid;gap:.75rem;counter-reset:ent}
+.aud-entregas li{counter-increment:ent;display:grid;grid-template-columns:2.25rem 1fr;gap:.5rem;font-size:.9375rem}
+.aud-entregas li::before{content:counter(ent,decimal-leading-zero);font:700 .8125rem/1.6 var(--mono);color:var(--laranja)}
+.aud-para{padding:1.25rem;border-radius:1rem;border:1px solid var(--linha-e);display:grid;gap:.6rem;align-content:start;margin-top:clamp(2.5rem,8vw,4rem)}
+.aud-para ul{display:grid;gap:.45rem;margin-bottom:.9rem}
+.aud-para li{position:relative;padding-left:1.4rem;font-size:.9375rem}
+.aud-para .sim li::before{content:"";position:absolute;left:.1rem;top:.35rem;width:.6rem;height:.35rem;border:solid var(--laranja);border-width:0 0 2px 2px;transform:rotate(-45deg)}
+.aud-para .nao li{color:var(--osso-2)}
+.aud-para .nao li::before{content:"";position:absolute;left:.05rem;top:.65rem;width:.7rem;height:2px;background:var(--osso-2)}
+.aud-cta{margin-top:clamp(3rem,10vw,5rem);padding-top:clamp(2rem,6vw,3rem);border-top:1px solid var(--linha-e);display:grid;gap:1.25rem;justify-items:start}
+.aud-cta .afirmacao{font:400 clamp(1.5rem,5vw,2.4rem)/1.05 var(--display);text-transform:uppercase;max-width:22ch;text-wrap:balance}
+.aud-cta .nota{color:var(--osso-2);font-size:.9375rem}
+.sub-proiecte{border-top:1px solid var(--linha-e)}
+@media (min-width:48rem){
+  .aud-pecas{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .aud-dois{grid-template-columns:1.4fr 1fr;gap:3rem}
+}
 
 /* ═══ contacto ═══ */
 .botao{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:3.25rem;padding:.85rem 1.45rem;
@@ -770,14 +813,14 @@ dialog.diag.fim .diag-ficha{display:block}
     <li><a href="#consultanta" data-vista="consultanta" aria-current="page">{{TAB_CONSULTANTA}}</a></li>
     <li><a href="#cazuri" data-vista="cazuri">{{TAB_CAZURI}}</a></li>
     <li><a href="#automatizari" data-vista="automatizari">{{TAB_AUTOMATIZARI}}</a></li>
-    <li><a href="#proiecte" data-vista="proiecte">{{TAB_PROIECTE}}</a></li>
+    <li><a href="#auditoria" data-vista="auditoria">{{TAB_AUDITORIA}}</a></li>
   </ul>
 </nav>
 
 <main id="conteudo">
 {{VISTA_AUTOMATIZARI}}
 {{VISTA_CAZURI}}
-{{VISTA_PROIECTE}}
+{{VISTA_AUDITORIA}}
 {{VISTA_CONSULTANTA}}
 {{CONTACT}}
 </main>
@@ -934,9 +977,9 @@ dialog.diag.fim .diag-ficha{display:block}
     else alvo.scrollIntoView({ block: 'start' });
   }
   function vista() { ir(location.hash.slice(1), !!location.hash); }
-  // cada separador conta como página no GoatCounter: pachecost.com/inicio, /en/casos, ro.pachecost.com/sites…
+  // cada separador conta como página no GoatCounter: pachecost.com/inicio, /en/casos, ro.pachecost.com/auditoria…
   // (o count.js chega depois, por isso a 1.ª vista espera pelo load)
-  var NOMES = { consultanta: 'inicio', automatizari: 'solucoes', cazuri: 'casos', proiecte: 'sites' };
+  var NOMES = { consultanta: 'inicio', automatizari: 'solucoes', cazuri: 'casos', auditoria: 'auditoria' };
   function contarVista(v) {
     var o = { path: location.host + location.pathname + NOMES[v], title: 'separador: ' + NOMES[v] };
     function vai() { try { if (window.goatcounter && window.goatcounter.count) { window.goatcounter.count(o); return true; } } catch (e) {} return false; }
@@ -980,7 +1023,7 @@ dialog.diag.fim .diag-ficha{display:block}
     });
   });
 
-  // quem chega de um anúncio de sites (utm_content=web-…) entra direto nos Sites, que é o que o anúncio mostrou
+  // quem chega de um anúncio de sites (utm_content=web-…) entra nos sites, agora dentro de Casos
   if (!location.hash && /[?&]utm_content=web-/.test(location.search)) { try { history.replaceState(null, '', '#proiecte'); } catch (e) {} }
   window.addEventListener('hashchange', vista);
   vista();
@@ -1258,6 +1301,7 @@ dialog.diag.fim .diag-ficha{display:block}
     a.insertAdjacentHTML('beforeend', SETA);
     a.addEventListener('click', function () {
       gc({ path: 'diagnostico/enviado', title: 'diagnóstico: enviado para o WhatsApp', event: true });
+      gc({ path: 'auditoria/pedido', title: 'auditoria: pedido enviado', event: true });
       try { if (window.fbq) window.fbq('track', 'Lead', { origem: 'diagnostico', faturacao: r.faturacao || '' }); } catch (e) {}
     });
     var b = botao('contorno', D.recomecar); b.addEventListener('click', function () { r = {}; passo = 0; mostrar(false); });
@@ -1279,7 +1323,7 @@ dialog.diag.fim .diag-ficha{display:block}
   }
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest && ev.target.closest('[data-diagnostico]');
-    if (a) { ev.preventDefault(); abrir(a); return; }
+    if (a) { ev.preventDefault(); if (a.hasAttribute('data-auditoria')) gc({ path: 'auditoria/botao', title: 'auditoria: botão do separador', event: true }); abrir(a); return; }
     if (ev.target.closest && ev.target.closest('[data-fechar-diag]')) d.close();
   });
   // ligação direta, para os anúncios: #diagnostico ou ?utm_content=diag-… abre o diagnóstico logo ao chegar
