@@ -54,3 +54,28 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-09 | niobal-auto | Asap Condensed | O painel de bordo |
 | 2026-10-09 | reglare-unghiuri | Danfo | A geometria |
 | 2026-10-09 | vulcanizarea-galata | Climate Crisis | O manómetro |
+| 2026-10-11 | washandshine | Big Shoulders Display | Fichas de lavagem: um contador de minutos/fichas que cai como moedas no painel do box |
+| 2026-10-11 | arena-play | Bricolage Grotesque | Peças de blocos que se encaixam ao fazer scroll, cores tiradas das fotos do espaço |
+| 2026-10-11 | cofetarie-patiserie-la | Gloock | A vitrine refrigerada: prateleiras de vidro que acendem e mostram os produtos reais |
+| 2026-10-11 | nicolina-copy-center | Sofia Sans Extra Condensed | Folha que sai da impressora linha a linha (o hero imprime-se) |
+| 2026-10-11 | laborator-blanca | Fraunces | Saco de pasteleiro a escrever o título em creme |
+| 2026-10-11 | sano-cabinet-oftalmologic | Source Serif 4 | Tabela de Snellen: letras que ganham nitidez com o scroll |
+| 2026-10-11 | prim-center-copy | Red Hat Display | Marcas de corte e registo de gráfica nas margens, que se alinham |
+| 2026-10-11 | adorable-flowers-events | Cormorant Infant | Arco floral de evento que se monta peça a peça sobre a foto real |
+| 2026-10-11 | cofetaria-bucate-alintate | Alegreya | Caderno de receitas da avó com páginas que viram |
+| 2026-10-11 | cofetaria-la-rosa | Playfair Display SC | Rosa de creme que desabrocha camada a camada |
+| 2026-10-11 | luv-bakery | Bitter | Fornada: o pão cresce e doura com o scroll, temporizador de forno |
+| 2026-10-11 | klass-dental | Radio Canada | Sorriso em linha que se alinha dente a dente (aparelho que fecha) |
+| 2026-10-11 | forma-atelier-rochii | Bodoni Moda | Molde de costura em papel com linhas de corte e a fita métrica |
+| 2026-10-11 | asl-copy-center | Lexend Mega | Contador de cópias de fotocopiadora (display de 7 segmentos) |
+| 2026-10-11 | aspire-salon | Noticia Text | Espelho de salão com luzes à volta que acendem em sequência |
+| 2026-10-11 | master-sulk | Unbounded | Corrente de bicicleta que corre pelas secções, mudanças que engrenam |
+| 2026-10-11 | fabo-rame-inramari | Texturina | Molduras reais que se montam à volta das secções (canto a canto) |
+| 2026-10-11 | frizerie-la-lucik | Oswald | Pente com régua de mm: o comprimento escolhido muda o corte |
+| 2026-10-11 | elite-tuning-service | Syne | Painel de carroçaria: o amolgado desaparece com o scroll (PDR) |
+| 2026-10-11 | livkey-deschideri-auto | DM Serif Display | Fechadura com pinos que se alinham e a porta abre |
+| 2026-10-11 | alfabike | Spectral | Rodas raiadas que giram ao scroll, cada raio um serviço |
+| 2026-10-11 | micibau | Jost | Coleira com plaquinha gravada com o nome do animal |
+| 2026-10-11 | baby-smile | Cormorant | Álbum de bebé com fotos coladas e datas manuscritas |
+| 2026-10-11 | takt-studio | Sofia Sans Semi Condensed | Forma de onda e medidores VU que reagem ao scroll |
+| 2026-10-11 | gentes-pilates | Faustina | Reformer: a barra desliza e a mola estica com o scroll |
