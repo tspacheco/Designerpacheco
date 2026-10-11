@@ -16,6 +16,9 @@ import csv, datetime, os, sys, urllib.parse
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAW = "https://github.com/tspacheco/Designerpacheco/raw/claude/parceiros-indicam-4kcnrc/research/parceiros/proposta/"
 KIT = "https://github.com/tspacheco/Designerpacheco/raw/claude/parceiros-indicam-4kcnrc/research/parceiros/kit/"
+# 11/10/2026 14h: a Pacheco Studios passou a consultora de sistemas com IA. Mensagens, kit e 15 % sobre sites caducaram;
+# até o Tomás decidir a comissão sobre auditorias/implementações, a lista sai sem mensagens (só pesquisa).
+SUSPENSO = True
 
 # Acordo de 11/10/2026 (fonte: /mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md): a 1.ª mensagem oferece
 # os 3 quick wins grátis e não fala de comissão; os 15 % só se apresentam depois de entregues (mensagem PARCERIA).
@@ -90,6 +93,15 @@ def main():
     linhas = list(csv.DictReader(open(os.path.join(AQUI, "parceiros.tsv"), encoding="utf-8"), delimiter="\t"))
     q = lambda s: urllib.parse.quote(s, safe="/:")
     print("# Parceiros que indicam\n")
+    if SUSPENSO:
+        print("**Mensagens suspensas (11/10, 14h).** A Pacheco Studios passou a consultora de sistemas com IA: o kit, a proposta e os 15 % "
+              "sobre sites caducaram. Não contactar ninguém até o Tomás decidir a comissão sobre auditorias e implementações "
+              "(thread «Playbook de consultoria de IA»). A lista abaixo é só pesquisa.\n")
+        print("| Cidade | Parceiro | Tipo | Google | Tel. | WhatsApp | Morada | Estado |\n|---|---|---|---|---|---|---|---|")
+        for l in linhas:
+            print(f"| {l['cidade']} | {l['nome']} | {l['tipo']} | {l['nota'] or '—'} | {l['tel'] or 'a confirmar'} | {l['whatsapp']} | "
+                  f"[{l['morada'] or 'Maps'}]({l['maps']}) | {l['estado']} |")
+        return
     print("**O acordo (11/10):** 1) damos 3 soluções rápidas sem custo; 2) o parceiro mostra o nosso nome (post ou story com "
           "@pachecostudiospt e uma linha no site); 3) recomenda-nos e recebe 15 % de cada trabalho que vier dele (mensalidades fora). "
           "A 1.ª mensagem só oferece as 3 soluções; os 15 % e a proposta em PDF vão depois de entregues.  ")

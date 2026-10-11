@@ -1,5 +1,7 @@
 # Comissão dos parceiros (decisão do Tomás, 11/10/2026)
 
+> **SUSPENSO desde 11/10/2026, 14h.** O Tomás posicionou a Pacheco Studios como consultora de sistemas com IA (playbook em `/mnt/project-files/playbook/pacheco-studios-playbook-consultoria-ia-pt.md`). Já não se vendem sites nem parcerias para sites: o acordo abaixo (3 quick wins + 15 %), o kit, a proposta e as mensagens caducaram. A corrida de segunda faz **só pesquisa** (`SUSPENSO = True` em `mensagens.py`). Não contactar parceiros. O kit só se refaz quando o Tomás decidir, no thread «Playbook de consultoria de IA», se os parceiros têm comissão sobre auditorias e implementações (o playbook põe os parceiros de indicação nos dias 61–90, a gerar pedidos de auditoria).
+
 O texto mestre do acordo é `/mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md` (thread da prospeção no Instagram). Vale também para os parceiros deste agente. Este ficheiro só resume e faz as contas em lei. Substitui a proposta de 08/10 (500 lei / 100 € fixos e 1.º mês grátis ao cliente).
 
 ## O acordo

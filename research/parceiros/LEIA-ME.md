@@ -1,5 +1,7 @@
 # Parceiros que indicam (agente 6)
 
+> **SUSPENSO desde 11/10/2026, 14h.** O Tomás posicionou a Pacheco Studios como consultora de sistemas com IA (playbook em `/mnt/project-files/playbook/pacheco-studios-playbook-consultoria-ia-pt.md`). Já não se vendem sites nem parcerias para sites: o acordo abaixo (3 quick wins + 15 %), o kit, a proposta e as mensagens caducaram. A corrida de segunda faz **só pesquisa** (`SUSPENSO = True` em `mensagens.py`). Não contactar parceiros. O kit só se refaz quando o Tomás decidir, no thread «Playbook de consultoria de IA», se os parceiros têm comissão sobre auditorias e implementações (o playbook põe os parceiros de indicação nos dias 61–90, a gerar pedidos de auditoria).
+
 Pedido do Tomás (08/10/2026): encontrar quem vê negócios novos todos os dias (contabilistas, quem abre firmas, gráficas, reclamos luminosos, máquinas registadoras, imobiliárias de espaços comerciais, consultores de fundos, fornecedores HoReCa) em Iași e Faro, e propor-lhes uma parceria, com uma demo como exemplo. **Acordo decidido pelo Tomás a 11/10/2026:** damos primeiro 3 quick wins sem custo; o parceiro mostra o nosso nome (post/story @pachecostudiospt + linha no site); cada trabalho que vier da recomendação dele dá-lhe 15 % do valor da implementação (mensalidades fora), pago até 7 dias depois de o cliente pagar. Texto mestre: `/mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md` (não reescrever; alinhar com ele). Ramo: `claude/parceiros-indicam-4kcnrc`.
 
 ## Ficheiros
