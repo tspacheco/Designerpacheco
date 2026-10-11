@@ -10,6 +10,7 @@ Pedido do Tomás (08/10/2026): encontrar quem vê negócios novos todos os dias 
 | `PARCEIROS.md` | Lista para o Tomás, gerada: `python3 research/parceiros/mensagens.py > research/parceiros/PARCEIROS.md` |
 | `COMISSAO.md` | O acordo (3 quick wins + nome + 15 %), as contas em lei e o menu de quick wins. |
 | `comissoes.tsv` | Cada cliente indicado: parceiro, estado, comissão devida e paga. |
+| `kit/gerar.py` | **Kit do parceiro** (4 páginas A4, RO/EN/PT): capa, como funciona + 7 quick wins para marcar 3, quem recomendar + mensagem pronta + contas, termos + acordo de princípio para assinar. Adaptado do «Playbook de parcerias» (11/10). `python3 research/parceiros/kit/gerar.py "Nome do parceiro"` põe o nome na capa. É o documento a enviar. |
 | `proposta/gerar.py` | Proposta A4 (RO, PT Iași, PT Algarve) em HTML e PDF, para mostrar depois dos quick wins. Valores em `VALORES`. |
 
 ## Corrida semanal (segunda, 9h53 de Iași)

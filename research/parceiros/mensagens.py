@@ -15,6 +15,7 @@ import csv, datetime, os, sys, urllib.parse
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAW = "https://github.com/tspacheco/Designerpacheco/raw/claude/parceiros-indicam-4kcnrc/research/parceiros/proposta/"
+KIT = "https://github.com/tspacheco/Designerpacheco/raw/claude/parceiros-indicam-4kcnrc/research/parceiros/kit/"
 
 # Acordo de 11/10/2026 (fonte: /mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md): a 1.ª mensagem oferece
 # os 3 quick wins grátis e não fala de comissão; os 15 % só se apresentam depois de entregues (mensagem PARCERIA).
@@ -92,8 +93,11 @@ def main():
     print("**O acordo (11/10):** 1) damos 3 soluções rápidas sem custo; 2) o parceiro mostra o nosso nome (post ou story com "
           "@pachecostudiospt e uma linha no site); 3) recomenda-nos e recebe 15 % de cada trabalho que vier dele (mensalidades fora). "
           "A 1.ª mensagem só oferece as 3 soluções; os 15 % e a proposta em PDF vão depois de entregues.  ")
-    print("Proposta em PDF (1 página, para depois dos quick wins): "
-          f"[romeno]({RAW}parceria-ro.pdf) · [PT Algarve]({RAW}parceria-pt-faro.pdf) · [PT de Iași, para ti]({RAW}parceria-pt-iasi.pdf).  ")
+    print("**Kit do parceiro** (4 páginas, o documento a enviar ou levar impresso; tem as 7 soluções para marcar 3 e o acordo para assinar): "
+          f"[romeno]({KIT}kit-parceiro-ro.pdf) · [inglês]({KIT}kit-parceiro-en.pdf) · [PT]({KIT}kit-parceiro-pt.pdf). "
+          "Com o nome do parceiro na capa: `python3 research/parceiros/kit/gerar.py \"Nome\"`.  ")
+    print("Resumo de 1 página: "
+          f"[romeno]({RAW}parceria-ro.pdf) · [PT Algarve]({RAW}parceria-pt-faro.pdf) · [PT de Iași]({RAW}parceria-pt-iasi.pdf).  ")
     print("Os escritórios convertem melhor ao vivo: em Iași, passa lá com a demo aberta no telemóvel. "
           "Diz-me quem aceitou, que 3 soluções escolheu cada um e quando ficaram entregues.\n")
     print("<details><summary>O que diz a mensagem romena (PT)</summary>\n")
