@@ -2,6 +2,12 @@
 
 **Lê `PLAYBOOK.md` no início de cada sessão de trabalho.** É a fonte de verdade: contexto, preços, engine dos sites, catálogo, pendentes e método de prospeção. Não repitas contexto que já lá está.
 
+## Posicionamento (desde 11/10/2026 — PLAYBOOK parte A)
+
+- A Pacheco Studios é uma **consultora de sistemas com IA**. Produto de entrada: **Auditoria de Sistemas com IA**. Ticket médio 2.000 € a 100.000 €.
+- **Não se vendem websites nem parcerias para websites.** Um site (ou outra demo) é só gatilho e oferta: 1 quick win para chegar a uma reunião e a uma possível parceria.
+- Nunca abrir com «fazemos sites / automações / IA»: começar pela fuga operacional (trigger, dono, regra, handoff).
+
 ## Regras essenciais (resumo — o detalhe está no PLAYBOOK.md)
 
 - Responder **sempre em PT-PT**, tom direto, sem enchimento, respostas curtas (leitura em telemóvel).
@@ -12,7 +18,7 @@
 
 ## Padrão de qualidade: NÍVEL 10K
 
-Cada site entregue tem de ter qualidade percebida de 10 000 €, mesmo vendido a 500 €. Processo obrigatório por site:
+Cada demo ou site tem de ter qualidade percebida de 10 000 €: é a primeira prova do nosso juízo. Processo obrigatório por site:
 
 1. **Usar o skill `frontend-design`** para a direção estética — brainstorm, direções alternativas, crítica antes e depois de construir. Uma assinatura visual **nova** por site (ver secção 5 do playbook — nunca repetir) e uma fonte display **nova** (secção 6).
 2. **Usar o skill `ui-ux-pro-max`** para gerar o design system do tipo de negócio (paleta, par tipográfico, estilo) e adaptá-lo criticamente — nunca aceitar o output cru.
