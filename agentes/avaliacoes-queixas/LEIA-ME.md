@@ -3,7 +3,7 @@
 Pedido do Tomás (08/10/2026, ideia 8 do thread «Ideias de agentes para leads»): encontrar negócios cujos clientes
 se queixam, nas avaliações Google, de **telefone sem resposta**, **mensagens sem resposta** ou **marcações/encomendas
 que falham**, e preparar a mensagem da consultoria de IA a citar essa queixa real. São leads para a **Auditoria de
-Sistemas com IA** (entrada da consultoria, Playbook de 11/10/2026): a mensagem pede 20 minutos de triagem, não vende site. Ramo: `claude/avaliacoes-queixas-m7qdst`.
+Sistemas com IA** (entrada da consultoria, Playbook de 11/10/2026): a mensagem pede uma reunião de triagem (nunca indicar minutos), não vende site. Ramo: `claude/avaliacoes-queixas-m7qdst`.
 
 ## Peças
 

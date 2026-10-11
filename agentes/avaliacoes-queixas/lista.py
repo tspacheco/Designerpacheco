@@ -36,14 +36,14 @@ MSG_RO = ("Bună ziua! Sunt Tomás, de la Pacheco Studios, din Iași. Lucrez cu 
           "care fac ca nicio cerere de client să nu rămână fără răspuns.\n\n"
           "{elogio_ro}Citind recenziile de pe Google pentru {nome}, am dat peste asta ({data}):\n„{citacao}”\n\n"
           "Nu vă scriu ca să vă critic. {solucao_ro}\n\n"
-          "Vă propun 20 de minute: vă arăt unde se pierd aceste cereri și care ar fi primul pas cu cel mai mare impact. "
+          "V-aș propune o întâlnire în care să vă arăt unde se pierd aceste cereri și care ar fi primul pas cu cel mai mare impact. "
           "Când v-ar fi bine săptămâna aceasta?\n\n"
           "Mai multe despre noi: ro.pachecost.com")
 MSG_PT = ("Bom dia! Sou o Tomás, da Pacheco Studios, de Iași. Trabalho com negócios de serviços nos sistemas com IA "
           "que fazem com que nenhum pedido de cliente fique sem resposta.\n\n"
           "{elogio_pt}A ler as avaliações de {nome} no Google, encontrei isto ({data_pt}):\n«{citacao_pt}»\n\n"
           "Não vos escrevo para criticar. {solucao_pt}\n\n"
-          "Proponho-vos 20 minutos: mostro-vos onde se perdem estes pedidos e qual seria o primeiro passo com mais impacto. "
+          "Proponho-vos uma reunião em que vos mostro onde se perdem estes pedidos e qual seria o primeiro passo com mais impacto. "
           "Quando vos dá jeito esta semana?\n\n"
           "Mais sobre nós: ro.pachecost.com")
 
@@ -125,7 +125,7 @@ def main(caminho):
     out = [f"# Avaliações com queixas — Iași, {data}\n",
            f"{len(leads)} negócios com clientes a queixarem-se de telefone, mensagens ou marcações nas avaliações "
            f"Google ({sum(len(f.get('avaliacoes', [])) for f in fichas)} avaliações lidas em {len(fichas)} fichas). "
-           "Mais fortes primeiro. Cada mensagem cita a frase real do cliente, nomeia a fuga e pede 20 minutos (triagem para a Auditoria de Sistemas com IA; sem preço). "
+           "Mais fortes primeiro. Cada mensagem cita a frase real do cliente, nomeia a fuga e pede uma reunião (triagem para a Auditoria de Sistemas com IA; sem preço). "
            "WhatsApp «?» = sem prova: toca em **Abrir no WhatsApp**; se não estiver registado, **Enviar por SMS** "
            "ou passa lá. Depois diz-me quais responderam e quais falharam.\n"]
     for i, l in enumerate(leads, 1):
