@@ -1,7 +1,13 @@
 # Agente 7: empresas acabadas de abrir em Iași
 
 Pedido do Tomás (08/10/2026, ideia 7 do thread «Ideias de agentes para leads»): ler os registos de empresas novas,
-ficar com as da zona dele e preparar a mensagem «abriste agora, aqui está um site para ti». Ramo `claude/empresas-novas-43xm0c`.
+ficar com as da zona dele e preparar a primeira mensagem. Ramo `claude/empresas-novas-43xm0c`.
+
+**Desde 11/10/2026 a Pacheco Studios é consultora de sistemas com IA** (playbook em
+`/mnt/project-files/playbook/pacheco-studios-playbook-consultoria-ia-pt.md`). Não se vendem sites. A mensagem às empresas
+novas convida para uma conversa de 20 minutos sobre como vão receber e seguir os pedidos dos clientes desde o início
+(porta para a triagem e a Auditoria de Sistemas com IA). Sem link de demo, sem preço, sem números não medidos
+(a frase dos 40 % saiu).
 
 ## Fonte (testada a 08/10)
 
@@ -21,7 +27,7 @@ ficar com as da zona dele e preparar a mensagem «abriste agora, aqui está um s
 |---|---|
 | `recolher.py` | Corre no GitHub (`.github/workflows/empresas-novas.yml`): lê a fila de CUI desde a última corrida, guarda Iași em `dados/iasi-AAAA-MM-DD.json`. |
 | `dados/estado.json` · `dados/vistos.txt` | Último CUI lido e CUI já vistos (não repetir). |
-| `lista.py` | Faz `listas/AAAA-MM-DD.md` para o Tomás: filtra Iași, últimos 14 dias, ativas, com n.º do Registo Comercial e CAEN de negócio local; mensagem em romeno + PT, demo de exemplo do mesmo ramo, WhatsApp/SMS. |
+| `lista.py` | Faz `listas/AAAA-MM-DD.md` para o Tomás: filtra Iași, últimos 14 dias, ativas, com n.º do Registo Comercial e CAEN de negócio local; mensagem em romeno + PT (convite para conversa), WhatsApp/SMS. |
 | `listas/listadas.txt` | CUI já postos numa lista (cada empresa aparece uma vez). |
 
 ## Corrida diária (rotina, seg–sex 16h47 de Iași)
@@ -44,5 +50,5 @@ ficar com as da zona dele e preparar a mensagem «abriste agora, aqui está um s
 - A sede muitas vezes é casa ou escritório do advogado/contabilista: visita só se o Maps mostrar o espaço.
 - Muitas empresas chegam sem CAEN e ficam assim semanas: o lista.py tira o ramo do nome (ex.: «Şurub Auto Service»), nunca de nomes de pessoa (PFA/II).
 - PFA/II/IF têm o nome do dono: a mensagem diz «firma dumneavoastră», nunca o nome da pessoa como marca.
-- Sem preço na mensagem (500 € ≈ 2.500 lei + 75 €/mês ≈ 375 lei fala-se depois). Sem números inventados.
-- Não fazer push no ramo das demos. Demo própria para uma empresa nova: pedir ao coordenador (passa ao caçador).
+- Sem preço na mensagem até o Tomás fechar os preços do playbook de consultoria. Sem números inventados nem promessas de resultado.
+- Sem site na abertura: um site só aparece depois, como quick win para levar a reunião, e decidido com o Tomás.

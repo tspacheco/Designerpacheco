@@ -5,7 +5,8 @@
 
 Fica com as empresas do distrito de Iași registadas nos últimos <dias>, ativas, com CAEN de negócio local
 (clientes à porta ou serviços ao domicílio) e ainda não listadas (listas/listadas.txt). Para cada uma: mensagem
-em romeno com uma demo do mesmo ramo como exemplo, links WhatsApp e SMS e a morada do registo.
+em romeno (convite para uma conversa de 20 min sobre como entram e se seguem os pedidos; sem site nem preço),
+links WhatsApp e SMS e a morada do registo.
 """
 import argparse, datetime, glob, json, os, re, urllib.parse
 
@@ -107,23 +108,35 @@ def nome_curto(den):
 
 
 def mensagem(nome, ramo_ro, demo, pessoa=False, filial=False):
+    """Consultoria de sistemas com IA (decisão do Tomás, 11/10): convite para uma conversa, sem site, sem preço,
+    sem números não medidos. `demo` fica por compatibilidade e não entra no texto."""
     quem = "firma dumneavoastră" if pessoa else nome
-    abre = (f"Am văzut că {quem} deschide un nou punct de lucru în Iași. Felicitări și mult succes!" if filial else
-            f"Am văzut că {quem} s-a înregistrat de curând. Felicitări și mult succes la început de drum!")
+    if filial:
+        abre = (f"Am văzut că {quem} deschide un nou punct de lucru în Iași. Felicitări și mult succes!\n\n"
+                f"Cu mai multe locații, cererile clienților, programările și răspunsurile se împart ușor între oameni și canale, "
+                f"și acolo se pierd clienți fără să se vadă.")
+    else:
+        abre = (f"Am văzut că {quem} s-a înregistrat de curând. Felicitări și mult succes la început de drum!\n\n"
+                f"Lucrăm cu afaceri de servicii din Iași la felul în care intră cererile clienților, cine răspunde și cum se "
+                f"livrează, ca să nu se piardă nimic pe drum. La început e cel mai ușor de pus bine.")
     return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios.\n\n{abre}\n\n"
-            f"În acest moment sunt firme care își reduc costurile/își măresc eficiența cu 40% cu IA. "
-            f"Noi începem cu un site profesional. Uitați un exemplu făcut pentru o afacere din Iași:\n{DEMO.format(demo)}\n\n"
-            f"Vă pot pregăti unul la fel pentru {quem}, ca să vă găsească clienții pe Google din prima zi. "
-            f"Aș vrea să stabilim o oră să ne întâlnim, dacă vă interesează.\n\n"
-            f"Puteți vedea mais multe pe ro.pachecost.com").replace("mais multe", "mai multe")
+            f"V-ar interesa o discuție de 20 de minute? Vă arăt unde se pierd de obicei cererile în primele luni "
+            f"la o afacere ca a dumneavoastră și cum se organizează din prima zi.\n\n"
+            f"Mai multe pe ro.pachecost.com")
 
 
-def mensagem_pt(nome, ramo_pt, pessoa=False):
+def mensagem_pt(nome, ramo_pt, pessoa=False, filial=False):
     quem = "a vossa empresa" if pessoa else f"a {nome}"
-    return (f"Olá! Sou o Tomás, da Pacheco Studios. Vi que {quem} foi registada há pouco. Parabéns e boa sorte neste início! "
-            f"Neste momento há empresas que reduzem custos/aumentam a eficiência em 40% com IA. Nós começamos por um site profissional. "
-            f"Aqui está um exemplo feito para um negócio de Iași: [demo]. Posso preparar-vos um igual, para os clientes vos encontrarem "
-            f"no Google desde o primeiro dia. Gostava de marcar uma hora para nos encontrarmos, se tiverem interesse. Mais em ro.pachecost.com")
+    if filial:
+        abre = (f"Vi que {quem} abriu um novo espaço em Iași. Parabéns e boa sorte! Com mais de um espaço, pedidos, marcações "
+                f"e respostas dividem-se entre pessoas e canais, e é aí que se perdem clientes sem se ver.")
+    else:
+        abre = (f"Vi que {quem} foi registada há pouco. Parabéns e boa sorte neste início! Trabalhamos com negócios de serviços "
+                f"de Iași na forma como entram os pedidos dos clientes, quem responde e como se entrega, para nada se perder "
+                f"pelo caminho. No início é quando é mais fácil pôr isto bem.")
+    return (f"Olá! Sou o Tomás, da Pacheco Studios. {abre} Teriam interesse numa conversa de 20 minutos? Mostro onde "
+            f"costumam perder-se os pedidos nos primeiros meses num negócio como o vosso e como se organiza desde o "
+            f"primeiro dia. Mais em ro.pachecost.com")
 
 
 def main():
@@ -191,7 +204,7 @@ def main():
                 L.append(f"Tel.: {fone} (fixo, só chamada) · WhatsApp: não (fixo)")
         else:
             L.append("Tel.: sem telefone no registo · procurar no Google/Facebook pelo nome antes de enviar")
-        L += ["", "> " + msg.replace("\n", "\n> "), "", f"<details><summary>PT</summary>{mensagem_pt(nome, pt, pessoa)}</details>", ""]
+        L += ["", "> " + msg.replace("\n", "\n> "), "", f"<details><summary>PT</summary>{mensagem_pt(nome, pt, pessoa, filial)}</details>", ""]
     open(saida, "w").write("\n".join(L) + "\n")
     with open(LISTADAS, "a") as f:
         f.write("".join(f"{c[3]}\n" for c in cand))
