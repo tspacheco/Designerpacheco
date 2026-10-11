@@ -16,7 +16,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **DM 1**
 
-> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho} și m-am gândit la partea din spate a operațiunii tale: {percurso}. Vreau să-ți ofer ceva concret, fără cost: pornind de la situația ta de acum, implementăm 3 soluții rapide în operațiunea ta. Întrebarea de la care pornesc: {pergunta} Ai fi deschis la o scurtă întâlnire ca să alegem împreună cele 3 soluții? Voi fi pregătit.
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho} și m-am gândit la partea din spate a operațiunii tale: {percurso}. Companii din SUA și China rezolvă exact asta cu sisteme AI cu reguli clare și cu un om la decizie; în România, doar 5% dintre firme folosesc AI (Eurostat, 2025). Vreau să-ți ofer ceva concret, fără cost: pornind de la situația ta de acum, implementăm 3 soluții rapide în operațiunea ta. Întrebarea de la care pornesc: {pergunta} Ai fi deschis la o scurtă întâlnire ca să alegem împreună cele 3 soluții? Voi fi pregătit.
 
 **Follow-up**
 
@@ -30,7 +30,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **DM 1**
 
-> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho} e fiquei a pensar na parte de trás da tua operação: {percurso}. Quero oferecer-te uma coisa concreta, sem custo: a partir da tua situação atual, implementamos 3 soluções rápidas na tua operação. A pergunta de onde parto: {pergunta} Estarias aberto a uma conversa curta para escolhermos juntos as 3 soluções? Vou estar preparado.
+> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho} e fiquei a pensar na parte de trás da tua operação: {percurso}. Empresas dos EUA e da China resolvem exatamente isto com sistemas de IA com regras claras e uma pessoa na decisão; na Roménia, só 5% das empresas usam IA (Eurostat, 2025). Quero oferecer-te uma coisa concreta, sem custo: a partir da tua situação atual, implementamos 3 soluções rápidas na tua operação. A pergunta de onde parto: {pergunta} Estarias aberto a uma conversa curta para escolhermos juntos as 3 soluções? Vou estar preparado.
 
 **Follow-up**
 
@@ -44,7 +44,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **DM 1**
 
-> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho} and started thinking about the back end of your operation: {percurso}. I'd like to offer you something concrete, at no cost: based on where your operation is today, we implement 3 quick wins in it. The question I start from: {pergunta} Would you be open to a short call to pick the 3 together? I'll come prepared.
+> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho} and started thinking about the back end of your operation: {percurso}. Companies in the US and China already solve exactly this with AI systems with clear rules and a human at the decision point; in Romania, only 5% of companies use AI (Eurostat, 2025). I'd like to offer you something concrete, at no cost: based on where your operation is today, we implement 3 quick wins in it. The question I start from: {pergunta} Would you be open to a short call to pick the 3 together? I'll come prepared.
 
 **Follow-up**
 
@@ -66,7 +66,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **DM 1**
 
-> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am parcurs traseul public al unui client {empresa}: {percurso}. Pe baza a ceea ce este public, am o ipoteză de diagnostic, nu o concluzie: {pergunta} Am pus-o pe o mini-hartă de o pagină. Cu cine din echipă ar fi potrivit să o validez: operațiuni, experiența clienților sau transformare digitală? O întâlnire scurtă de explorare ar fi suficientă. Voi fi pregătit.
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Companii din SUA și China își conduc deja operațiunile cu sisteme AI cu reguli clare și cu un om la decizie; în România, doar 5% dintre firme folosesc AI (Eurostat, 2025). Am parcurs traseul public al unui client {empresa}: {percurso}. Pe baza a ceea ce este public, am o ipoteză de diagnostic, nu o concluzie: {pergunta} Am pus-o pe o mini-hartă de o pagină și pot implementa fără cost 3 soluții rapide ca să o testăm. Cu cine din echipă ar fi potrivit să o validez: operațiuni, experiența clienților sau transformare digitală? O întâlnire scurtă de explorare ar fi suficientă. Voi fi pregătit.
 
 **Follow-up**
 
@@ -76,7 +76,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **DM 1**
 
-> {saudacao} Sou o Tomás, da Pacheco Studios. Percorri o percurso público de um cliente {empresa}: {percurso}. Com base no que é público, tenho uma hipótese de diagnóstico, não uma conclusão: {pergunta} Pus isto num mini-mapa de uma página. Quem na equipa seria a pessoa certa para o validar: operações, experiência do cliente ou transformação digital? Uma conversa exploratória curta chega. Vou estar preparado.
+> {saudacao} Sou o Tomás, da Pacheco Studios. Empresas dos EUA e da China já conduzem as operações com sistemas de IA com regras claras e uma pessoa na decisão; na Roménia, só 5% das empresas usam IA (Eurostat, 2025). Percorri o percurso público de um cliente {empresa}: {percurso}. Com base no que é público, tenho uma hipótese de diagnóstico, não uma conclusão: {pergunta} Pus isto num mini-mapa de uma página e posso implementar sem custo 3 soluções rápidas para a testarmos. Quem na equipa seria a pessoa certa para o validar: operações, experiência do cliente ou transformação digital? Uma conversa exploratória curta chega. Vou estar preparado.
 
 **Follow-up**
 
@@ -86,7 +86,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **DM 1**
 
-> {saudacao} I'm Tomás from Pacheco Studios. I walked through the public journey of a {empresa} customer: {percurso}. Based only on what's public, I have a diagnostic hypothesis, not a conclusion: {pergunta} I've put it on a one-page mini-map. Who on the team would be the right person to validate it: operations, customer experience or digital transformation? A short exploratory call would be enough. I'll come prepared.
+> {saudacao} I'm Tomás from Pacheco Studios. Companies in the US and China already run their operations on AI systems with clear rules and a human at the decision point; in Romania, only 5% of companies use AI (Eurostat, 2025). I walked through the public journey of a {empresa} customer: {percurso}. Based only on what's public, I have a diagnostic hypothesis, not a conclusion: {pergunta} I've put it on a one-page mini-map and can implement 3 quick wins at no cost so we can test it. Who on the team would be the right person to validate it: operations, customer experience or digital transformation? A short exploratory call would be enough. I'll come prepared.
 
 **Follow-up**
 
@@ -104,7 +104,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **DM 1**
 
-> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho}. Voi aduceți cererea; noi lucrăm în stratul de după lead: cum ajunge cererea la echipă, ce context o însoțește, cine decide și cum se livrează. Nu înlocuim marketingul sau brandingul, protejăm rezultatul pe care îl generați deja. Am schițat o mini-hartă pentru un client tipic de-al vostru: {percurso}. Ca să vedeți cum lucrăm, implementăm fără cost 3 soluții rapide în propria voastră operațiune. Ați fi deschis la o întâlnire ca să vedem dacă are sens să lucrăm împreună? Voi fi pregătit.
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho}. Companii din SUA și China își conduc deja operațiunile cu sisteme AI cu reguli clare și cu un om la decizie; în România, doar 5% dintre firme folosesc AI (Eurostat, 2025). Voi aduceți cererea; noi lucrăm în stratul de după lead: cum ajunge cererea la echipă, ce context o însoțește, cine decide și cum se livrează. Nu înlocuim marketingul sau brandingul, protejăm rezultatul pe care îl generați deja. Am schițat o mini-hartă pentru un client tipic de-al vostru: {percurso}. Ca să vedeți cum lucrăm, implementăm fără cost 3 soluții rapide în propria voastră operațiune. Ați fi deschis la o întâlnire ca să vedem dacă are sens să lucrăm împreună? Voi fi pregătit.
 
 **Follow-up**
 
@@ -118,7 +118,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **DM 1**
 
-> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho}. Vocês trazem a procura; nós trabalhamos na camada depois do lead: como o pedido chega à equipa, que contexto leva, quem decide e como se entrega. Não substituímos o marketing nem a marca, protegemos o resultado que vocês já geram. Esbocei um mini-mapa para um cliente típico vosso: {percurso}. Para verem como trabalhamos, implementamos sem custo 3 soluções rápidas na vossa própria operação. Estariam abertos a uma reunião para ver se faz sentido trabalharmos juntos? Vou estar preparado.
+> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho}. Empresas dos EUA e da China já conduzem as operações com sistemas de IA com regras claras e uma pessoa na decisão; na Roménia, só 5% das empresas usam IA (Eurostat, 2025). Vocês trazem a procura; nós trabalhamos na camada depois do lead: como o pedido chega à equipa, que contexto leva, quem decide e como se entrega. Não substituímos o marketing nem a marca, protegemos o resultado que vocês já geram. Esbocei um mini-mapa para um cliente típico vosso: {percurso}. Para verem como trabalhamos, implementamos sem custo 3 soluções rápidas na vossa própria operação. Estariam abertos a uma reunião para ver se faz sentido trabalharmos juntos? Vou estar preparado.
 
 **Follow-up**
 
@@ -132,7 +132,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **DM 1**
 
-> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho}. You bring in the demand; we work on the layer after the lead: how the request reaches the team, what context travels with it, who decides and how it gets delivered. We don't replace marketing or branding, we protect the result you already generate. I sketched a mini-map for one of your typical clients: {percurso}. To show you how we work, we implement 3 quick wins in your own operation at no cost. Would you be open to a meeting to see whether it makes sense to work together? I'll come prepared.
+> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho}. Companies in the US and China already run their operations on AI systems with clear rules and a human at the decision point; in Romania, only 5% of companies use AI (Eurostat, 2025). You bring in the demand; we work on the layer after the lead: how the request reaches the team, what context travels with it, who decides and how it gets delivered. We don't replace marketing or branding, we protect the result you already generate. I sketched a mini-map for one of your typical clients: {percurso}. To show you how we work, we implement 3 quick wins in your own operation at no cost. Would you be open to a meeting to see whether it makes sense to work together? I'll come prepared.
 
 **Follow-up**
 

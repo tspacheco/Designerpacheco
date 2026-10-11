@@ -19,6 +19,9 @@ Base: guia «Pesquisa de Instagram e Prospecção Estratégica» do Tomás (10/1
 7. **Tom e língua.** Influenciadores e comunidades: «tu». Grandes negócios e agências: formal. Língua da conta.
 8. **Mensagem.** O gerador junta saudação (roda), gancho, percurso, pergunta e o pedido proporcional da categoria. Verifica campos em falta e palavras a evitar.
 
+## Ângulo (11/10)
+A mudança da IA está a acontecer agora: empresas dos EUA e da China já conduzem operações com sistemas de IA com regras claras e uma pessoa na decisão; na Roménia só 5% das empresas usam IA (Eurostat, 2025). Damos clareza, caminho e estrutura a partir da situação de hoje, com 3 quick wins sem custo. Prova: `autoridade/saida/brief-ro.pdf` (números com fonte) e `autoridade/GUIAO-MESA.md` (caminho até ao decisor, objeções, checklist para as próximas empresas).
+
 ## Primeiro passo por categoria
 | Categoria | Canal | Ativo | Pedido |
 |---|---|---|---|
