@@ -26,11 +26,15 @@ MSG = ("{saudacao}\n\n"
 # Corrida B (texto do Tomás, 10/10, igual a sites/demos-pachecost/DESCRICAO-CORRIDA-B.md do ramo das demos). Sem preço.
 # [nume] = coluna «dono» do TSV quando se sabe; senão a saudação fica sem nome. [Compania] = nome do negócio.
 MSG_B = ("Bună ziua{dono}! Sunt Tomás, de la Pacheco Studios.\n\n"
-         "Am creat o scurtă demonstrație pentru {nome}, care arată o posibilă îmbunătățire a modului în care clienții "
-         "potențiali trec prin site-ul dumneavoastră: {demo}\n\n"
-         "Analizăm unde se blochează clienții potențiali, deciziile și livrarea, apoi proiectăm sisteme AI cu reguli clare "
-         "care rezolvă blocajul cu cea mai mare valoare.\n\n"
-         "Ați fi deschis la o întâlnire ca să discutăm despre oportunitate și despre impactul ei potențial?\n\n"
+         "Am pornit de la ce vede public un client când caută {nome} (fișa de pe Google și telefonul) "
+         "și am pregătit, ca prim pas, o scurtă demonstrație: {demo}\n\n"
+         "Nu am acces la programul sau la mesajele dumneavoastră, așa că este o ipoteză, nu un diagnostic. "
+         "Aș valida trei lucruri:\n"
+         "– Astăzi aveți un asistent AI care răspunde la întrebările frecvente, după regulile scrise ale afacerii?\n"
+         "– Sistemul preia, califică și filtrează toate mesajele și e-mailurile și vă cere decizia doar unde contează?\n"
+         "– Comunicarea cu clienții vă costă mai puțin de o oră pe zi?\n\n"
+         "Dacă nu, vă propun un triaj împreună cu noi: o discuție scurtă în care confirmăm unde se blochează cererile "
+         "și ce sistem s-ar potrivi modului dumneavoastră de lucru. Nu trebuie să completați niciun formular.\n\n"
          "Voi fi pregătit.")
 
 
@@ -69,7 +73,7 @@ def main(caminho):
             print(f"### {zona}\n")
             for l in (x for x in grupo if x["zona"] == zona):
                 demo = f"https://pachecost.com/demo/{l['slug']}/"
-                if True:  # desde 11/10 as duas corridas usam MSG_B (consultoria de sistemas com IA; a demo é o gatilho)
+                if True:  # desde 11/10 as duas corridas usam MSG_B («Audit Hook by Demo»: a demo é o trabalho inicial, a triagem é a isca)
                     dono = (l.get("dono") or "").strip()
                     texto = MSG_B.format(dono=f" {dono}" if dono else "", nome=l["nome"], demo=demo)
                 else:
