@@ -1,0 +1,27 @@
+# Leitura rápida de sites para a prospeção por e-mail (complemento da PONTE, sem navegador, em paralelo).
+# Pedidos em .github/emails.txt («# lote: nome» e depois «<id> <url>» por linha), push, e ao fim de 1–3 min
+# há ponte/emails-<lote>.enc no mesmo ramo. O resultado vem CIFRADO (certificado em .github/ponte-cert.pem):
+# o repositório é público e não deve ter e-mails de negócios legíveis. Detalhe em .github/scripts/emails.py.
+name: emails
+on:
+  push:
+    paths: ['.github/emails.txt']
+permissions:
+  contents: write
+jobs:
+  emails:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ler sites
+        run: python3 .github/scripts/emails.py
+      - name: Publicar no mesmo ramo
+        run: |
+          git config user.name "ponte"
+          git config user.email "ponte@users.noreply.github.com"
+          git add -f ponte
+          if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
+          git commit -q -m "Emails: leitura de sites (cifrada)"
+          git pull -q --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
