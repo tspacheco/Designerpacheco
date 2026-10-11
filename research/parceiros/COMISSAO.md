@@ -9,7 +9,7 @@ Substitui os 15 % sobre sites (11/10 13h) e os 10 % + 10 % (11/10 14h17). A Pach
 | Implementação (começamos a trabalhar com o negócio) | 15 % do valor de implementação, até 7 dias depois de o cliente pagar |
 | Acompanhamento (enquanto trabalharmos com o negócio) | 5 % do que o negócio nos pagar, a cada 3 meses, até 7 dias depois do fecho do trimestre |
 
-O parceiro compromete-se a: 1 testemunho (escrito ou vídeo) depois dos quick wins; 1 publicação por mês sobre nós com @pachecostudiospt; apresentar só com o acordo do dono; dizer que é parceria quando fala de nós.
+Contrapartida do parceiro, por esta ordem (Tomás, 14h44): 1) no momento em que aplicamos as 3 quick wins, o primeiro testemunho online e a recomendação, como agradecimento; 2) depois, recomendação boca a boca; 3) todos os meses, mostra-nos nos seus conteúdos 1 vez por mês (@pachecostudiospt). Além disso: apresentar só com o acordo do dono e dizer que é parceria quando fala de nós.
 
 **Nunca valores fixos.** A implementação varia com o negócio (exemplos do Tomás: 50.000 lei/mês → cerca de 20.000 lei; 1.000.000 lei/mês → cerca de 100.000 lei). Os cenários do kit usam estes exemplos, em € no PT à razão de 5 lei = 1 €.
 

@@ -82,10 +82,12 @@ T = {
       "Raport la fiecare 3 luni cu recomandările, plățile și comisioanele",
       "Plata comisionului în 7 zile de la plata clientului"],
   faz_t="Ce face partenerul",
-  faz=["O recomandare scrisă sau video, după ce soluțiile rapide funcționează",
-       "O postare pe lună despre Pacheco Studios, cu @pachecostudiospt",
+  faz=["<b>1.</b> Când aplicăm cele 3 soluții rapide: prima recomandare online, ca mulțumire",
+       "<b>2.</b> Apoi: ne recomandă din gură în gură celor care au nevoie",
+       "<b>3.</b> Lunar: ne arată în conținutul său o dată pe lună, cu @pachecostudiospt",
        "Ne prezintă afaceri doar cu acordul proprietarului",
        "Spune că este un parteneriat când vorbește public despre noi"],
+  troca="<b>În schimb, în această ordine:</b> 1) când aplicăm cele 3 soluții, prima recomandare online, ca mulțumire; 2) apoi recomandarea din gură în gură; 3) o dată pe lună, ne arătați în conținutul dumneavoastră.",
   tab_cab=("Etapa", "Partenerul primește", "Când"),
   tab=[("Soluții rapide", "3, gratuit", "La început"), ("Audit", "—", "Se scade din implementare"),
        ("Implementare", "15%", "În 7 zile de la plata clientului"), ("Însoțire", "5%", "La fiecare 3 luni, în 7 zile de la închidere")],
@@ -156,10 +158,12 @@ T = {
       "A report every 3 months with introductions, payments and commissions",
       "Commission paid within 7 days of the client's payment"],
   faz_t="What the partner does",
-  faz=["A written or video testimonial, once the quick wins are working",
-       "One post a month about Pacheco Studios, tagging @pachecostudiospt",
+  faz=["<b>1.</b> When we apply the 3 quick wins: a first online testimonial and recommendation, as a thank-you",
+       "<b>2.</b> Then: recommends us by word of mouth to those who need it",
+       "<b>3.</b> Monthly: features us in their content once a month, tagging @pachecostudiospt",
        "Introduces businesses only with the owner's consent",
        "Says it is a partnership when talking about us publicly"],
+  troca="<b>In return, in this order:</b> 1) when we apply the 3 quick wins, a first online testimonial and recommendation, as a thank-you; 2) then word-of-mouth recommendations; 3) once a month, you feature us in your content.",
   tab_cab=("Stage", "The partner receives", "When"),
   tab=[("Quick wins", "3, at no cost", "At the start"), ("Audit", "—", "Credited to the implementation"),
        ("Implementation", "15%", "Within 7 days of the client's payment"), ("Ongoing support", "5%", "Every 3 months, within 7 days of the close")],
@@ -230,10 +234,12 @@ T = {
       "Relatório a cada 3 meses com apresentações, pagamentos e comissões",
       "Pagamento da comissão até 7 dias depois de o cliente pagar"],
   faz_t="O que o parceiro faz",
-  faz=["Um testemunho escrito ou em vídeo, depois de as soluções rápidas estarem a funcionar",
-       "Uma publicação por mês sobre a Pacheco Studios, com @pachecostudiospt",
+  faz=["<b>1.</b> Quando aplicamos as 3 soluções rápidas: o primeiro testemunho online e a recomendação, como agradecimento",
+       "<b>2.</b> Depois: recomenda-nos boca a boca a quem precisar",
+       "<b>3.</b> Todos os meses: mostra-nos nos seus conteúdos 1 vez por mês, com @pachecostudiospt",
        "Apresenta negócios só com o acordo do dono",
        "Diz que é uma parceria quando fala de nós em público"],
+  troca="<b>Em troca, por esta ordem:</b> 1) quando aplicamos as 3 soluções, o primeiro testemunho online e a recomendação, como agradecimento; 2) depois, a recomendação boca a boca; 3) uma vez por mês, mostra-nos nos seus conteúdos.",
   tab_cab=("Fase", "O parceiro recebe", "Quando"),
   tab=[("Soluções rápidas", "3, sem custo", "No início"), ("Auditoria", "—", "Creditada na implementação"),
        ("Implementação", "15 %", "Até 7 dias depois de o cliente pagar"), ("Acompanhamento", "5 %", "A cada 3 meses, até 7 dias depois do fecho")],
@@ -389,6 +395,8 @@ td:last-child{white-space:nowrap}
 CSS += """
 .pasos{grid-template-columns:1fr 1fr;margin-bottom:0}
 .pasos li{padding:4.5mm}.pasos b{margin:3.5mm 0 1.5mm}
+.troca{margin:-4mm 0 8mm;font-size:9.6pt;line-height:1.5;padding:4mm 5mm;border-left:3px solid var(--l);background:var(--o2)}
+.troca b{font-weight:600}
 .qw{list-style:none;margin:0 0 8mm;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:3mm 5mm}
 .qw li{display:flex;gap:3mm;align-items:flex-start;padding:3.6mm 4mm;border-radius:8px;background:var(--o2);box-shadow:inset 0 0 0 1px var(--li)}
 .qw .ok{flex:none;width:4.6mm;height:4.6mm;border-radius:50%;background:var(--l);margin-top:.3mm;position:relative}
@@ -427,7 +435,7 @@ CSS += """
 .ptop h1 em{font-style:normal;color:var(--l)}
 .ptop p{margin:3mm 0 0;font-size:9pt;color:var(--sc)}
 .compromissos{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-bottom:7mm}
-.compromissos .lista li{font-size:9.6pt}
+.compromissos .lista li{font-size:9.4pt}.compromissos .lista b{color:var(--l)}.compromissos > div:last-child .lista b{color:var(--lt)}
 .regras li{grid-template-columns:42mm 1fr}
 .pp .acordo{margin-top:8mm;margin-bottom:auto}.pp .compromissos{margin-bottom:5mm}.ptop{padding:10mm 16mm 7mm}.ptop .mono.l{margin:6mm 0 3mm}.pp .corpo{padding-top:7mm}.pp td{padding:2.4mm 0}.pp .corpo{padding-bottom:6mm}
 .local{display:flex;gap:6mm;margin-bottom:5mm}.local .campo{flex:1;margin:0}
@@ -481,6 +489,7 @@ def incentivo_html(t):
   <p class="mono et">{t['p2_et']}</p><h2>{t['p2_h']}</h2>
   <h3>{t['qw_t']}</h3><p class="nota">{t['qw_nota']}</p>
   <ul class="qw">{qw}</ul>
+  <p class="troca">{t['troca']}</p>
   <h3>{t['fluxo_t']}</h3>
   <ol class="pasos">{pasos}</ol>
 </div>{rod(2, 4)}</section>
