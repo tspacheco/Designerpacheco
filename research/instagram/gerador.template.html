@@ -159,7 +159,7 @@ details[open] summary{margin-bottom:10px}
 
 <script>
 const D = /*__DADOS__*/{};
-const ROT = {dm1:"DM 1", fu:"Follow-up (4 dias depois)", c1:"Comentário · ponto", c2:"Comentário · acréscimo", c3:"Comentário · pergunta", triagem:"Triagem (quando respondem)"};
+const ROT = {dm1:"DM 1", fu:"Follow-up (4 dias depois)", c1:"Comentário · ponto", c2:"Comentário · acréscimo", c3:"Comentário · pergunta", triagem:"Triagem (quando respondem)", parceria:"Parceria (só depois dos 3 quick wins entregues)"};
 const CRIT = [["e","Encaixe com a auditoria","percurso multietapa, repetitivo e com valor?",3],["a","Acesso ao decisor","chega-se a fundador, operações ou CX?",2],["c","Complexidade pública","canais, equipas, reservas, entrega, volume?",3],["p","Prova / referência","pode dar caso, parceria ou introduções?",2]];
 const EVITAR = [/falh|failing|eșu|esu[ăa]/i,/perd(er|em) dinheiro|pierd|losing money/i,/autom[aá]tic|automat(ion|izare) (pronta|ready|gata)/i,/resolve tudo|rezolv[ăa] tot/i,/\d+\s?(€|eur|lei|ron)\b|preț|pret\b|preço|price/i,/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u];
 const EXEMPLO = {cat:"pme_parceiro",nome:"echipa Sinaps",empresa:"Sinaps",handle:"",lingua:"ro",registo:"dumneavoastră",tipo:6,gancho:"că ați deschis biroul din București, pe lângă Iași, Cluj, Constanța și Brașov",percurso:"",pergunta:"",tema:"",valor:"o hartă pentru un client e-commerce, cu ce se întâmplă cu un lead bun în primele 2 ore",score:{e:3,a:1,c:3,p:2},cidade:"Iași",seguidores:"a confirmar",sinais:"47 especialistas; Google Premier Partner; Meta Business Partner; 5 escritórios",evidencia:"https://www.revistabiz.ro/agentia-de-digital-marketing-sinaps-a-deschis-un-birou-la-bucuresti/",razao:"Agência com volume B2B: cada cliente dela é um percurso depois do lead",exemplo:true};
@@ -253,7 +253,8 @@ function mensagens(){
   if(S.gancho && S.gancho.length<20) li.push(["w","O gancho está curto: um facto concreto prova que viste a conta."]);
   if(S.cat==="comunidade") li.push(["","Comentar em 2 a 3 posts antes da DM. Nada de proposta nos comentários."]);
   if(S.cat==="grande") li.push(["","Mandar também ao decisor no LinkedIn com a mesma hipótese."]);
-  li.push(["","Escada: 3 quick wins → triagem → Auditoria de Sistemas com IA → sprint → piloto. Preço só depois da triagem."]);
+  li.push(["","Escada: 3 quick wins → triagem → Auditoria de Sistemas com IA (creditada na implementação) → sprint → piloto. Preço só depois da triagem."]);
+  if(S.cat!=="grande"&&S.cat!=="comunidade") li.push(["w","«Sem custo» em espera: até o Tomás confirmar se os 3 quick wins continuam grátis para parceiros, não enviar DMs novas além do lote 1."]);
   if(S._prio<=1) li.push(["w","Nota 0 a 1: deixar em observação em vez de contactar."]);
   $("checks").innerHTML=li.map(([c,t])=>"<li class='"+c+"'>"+t+"</li>").join("");
 }

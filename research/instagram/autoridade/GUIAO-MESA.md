@@ -19,7 +19,7 @@ Para chegar ao decisor das empresas do lote 1 e das próximas. Ficheiros: `saida
 2. **Dias 2–3, em paralelo:** LinkedIn ao dono da função. Funções a procurar: Director Operațiuni, Head of Customer Experience, Director Transformare Digitală, Head of E-commerce, Head of Marketplace; nas agências, fundador ou COO. Mensagem de 4 linhas (abaixo) com o brief anexado.
 3. **Resposta:** enviar o mini-mapa e pedir uma hora com quem conhece o percurso.
 4. **Reunião (45 min):** 10 min a ouvir («conta-me como foi ontem um pedido típico», e depois «e depois?»), 10 min do mapa, 15 min a escolher os 3 quick wins, 5 min a combinar o dia 0 e quem é o responsável do lado deles.
-5. **Depois da reunião, a escada do playbook:** triagem (as 8 perguntas da secção 7 do playbook; na DM usam-se 3) → 3 quick wins entregues em 10 dias e medidos → proposta da Auditoria de Sistemas com IA, com preço (ticket entre 2.000 € e 100.000 € conforme o negócio; nunca numa DM) → sprint de desenho → piloto controlado com base medida no dia 0 → otimização.
+5. **Depois da reunião, a escada do playbook:** triagem (as 8 perguntas da secção 7 do playbook; na DM usam-se 3) → 3 quick wins entregues em 10 dias e medidos → Auditoria de Sistemas com IA, **creditada na implementação** (não se paga à parte; desconta-se quando começamos o trabalho) → sprint de desenho → piloto controlado com base medida no dia 0 → otimização. Ticket: 2.000 € (3 quick wins sobre problemas atuais) a 100.000 € (acompanhar uma empresa de 50 a 500 mil €/mês num crescimento de 3x a 10x, pago pelo valor agregado e pelo impacto na faturação). O foco é a prova de valor em cada cliente, não o ticket. Nunca numa DM.
 
 ### Mensagem de LinkedIn (RO, 4 linhas)
 > Bună ziua, [Nume]! Sunt Tomás, de la Pacheco Studios, din Iași. Am parcurs traseul public al unui client [Companie] ([percurso]) și am o ipoteză de diagnostic, nu o concluzie: [pergunta]. Am pus-o pe o mini-hartă de o pagină și pot implementa fără cost 3 soluții rapide ca să o testăm. Atașez un document scurt despre ce înseamnă un sistem AI în operațiuni, azi. Ați fi deschis la o întâlnire scurtă? Voi fi pregătit.
@@ -35,7 +35,7 @@ Para chegar ao decisor das empresas do lote 1 e das próximas. Ficheiros: `saida
 | «Avem departament IT / un integrator.» | «Nu înlocuim IT-ul. Noi desenăm predările și regulile; implementează IT-ul sau implementăm noi împreună cu ei. Harta e utilă oricum.» |
 | «Suntem într-un sector reglementat.» | «Nu atingem decizii clinice, de credit sau juridice. Lucrăm pe partea administrativă, cu om la limită și cu trasabilitate.» |
 | «De ce o firmă mică din Iași?» | «Pentru că pornim de la traseul vostru public, arătăm în 10 zile, nu în 10 luni, și nu cerem nimic până atunci. Nu promitem. Arătăm.» |
-| «Cât costă?» | «Cele 3 soluții și triajul nu costă. Auditul are preț și vi-l spun după triaj, când știm ce blocaj atacăm.» (Nunca preço por DM.) |
+| «Cât costă?» | «Auditul nu îl plătiți separat: se creditează în implementare, deci plătiți doar când devine dovadă și început de lucru. Prețul implementării depinde de valoarea pe care o dovedim la voi; începem mic.» (Nunca preço por DM.) |
 | «Vrem doar un site.» | «Un site poate fi una dintre cele 3 soluții rapide, dacă rezolvă un blocaj real. Dar nu începem de acolo: începem de la locul unde se pierde clientul.» |
 | «Trimiteți un e-mail.» | «Trimit, cu harta. Cui ar fi cel mai util să ajungă?» (obter o nome) |
 | «Folosim deja AI.» | «Perfect. Atunci întrebarea e unde se pierde contextul între unelte și echipe. Exact asta arată harta.» |
@@ -52,7 +52,8 @@ Para chegar ao decisor das empresas do lote 1 e das próximas. Ficheiros: `saida
 ## Regras que não se quebram
 - O site nunca é o produto nem a manchete. No máximo é um quick win que leva à reunião. Sem parcerias para sites.
 - CTA pública (bio, reels, posts): «DM AUDIT». Nas DMs de saída o pedido é a reunião, e a resposta recebe a mensagem «Triagem» do gerador.
-- Comissões a parceiros: suspensas até o Tomás decidir.
+- Comissões a parceiros (decisão 11/10 14h17): 10 % do que faturamos ao negócio indicado, de 3 em 3 meses, enquanto a colaboração durar. Só se fala depois dos 3 quick wins entregues (mensagem «Parceria»).
+- Até o Tomás confirmar se os 3 quick wins continuam sem custo para parceiros, não prometer «sem custo» em DMs novas (o lote 1 mantém-se).
 - Sem preço e sem minutos na 1.ª mensagem; sem emojis; em romeno «Voi fi pregătit.»
 - Hipótese, nunca acusação. Só números com fonte e data.
 - Sector regulado: nada de decisões clínicas, de crédito ou jurídicas na proposta.

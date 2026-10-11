@@ -42,7 +42,7 @@ TEXTO = {
         "etape": [
             ("1", "3 soluții rapide, fără cost", "Alese din situația de azi, implementate în zile, nu în luni. Se văd din afară și se măsoară. Sunt punctul de plecare, nu produsul."),
             ("2", "Triaj scurt", "Trei întrebări: ce rezultat operațional contează în 90 de zile, unde se blochează cererea, cine e responsabil de pasul următor. Dacă o soluție simplă e mai bună, o spunem."),
-            ("3", "Audit de Sisteme cu AI", "Harta sistemului actual, blocajele în ordinea valorii, System Print-ul viitor, note de risc și responsabilitate, plan pe 90 de zile."),
+            ("3", "Audit de Sisteme cu AI", "Harta sistemului actual, blocajele în ordinea valorii, System Print-ul viitor, plan pe 90 de zile. Se creditează în implementare: îl plătiți doar când devine dovadă și început de lucru."),
             ("4", "Sprint de design și pilot", "Specificație aprobată, apoi un pilot controlat: bază măsurată în ziua 0, rezultat, registru de excepții, predare către echipă."),
         ],
         "s4": "Exemple de soluții rapide",
@@ -94,7 +94,7 @@ TEXTO = {
         "etape": [
             ("1", "3 soluções rápidas, sem custo", "Escolhidas pela situação de hoje, implementadas em dias, não em meses. Vêem-se de fora e medem-se. São o ponto de partida, não o produto."),
             ("2", "Triagem curta", "Três perguntas: que resultado operacional conta nos próximos 90 dias, onde abranda o pedido, quem é dono do próximo passo. Se uma solução simples for melhor, dizemo-lo."),
-            ("3", "Auditoria de Sistemas com IA", "Mapa do sistema atual, fugas por ordem de valor, System Print futuro, notas de risco e propriedade, plano de 90 dias."),
+            ("3", "Auditoria de Sistemas com IA", "Mapa do sistema atual, fugas por ordem de valor, System Print futuro, plano de 90 dias. É creditada na implementação: paga-se só quando vira prova e início de trabalho."),
             ("4", "Sprint de desenho e piloto", "Especificação aprovada, depois um piloto controlado: base medida no dia 0, resultado, registo de exceções, handover à equipa."),
         ],
         "s4": "Exemplos de soluções rápidas",

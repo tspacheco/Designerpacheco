@@ -31,7 +31,7 @@ A mudança da IA está a acontecer agora: empresas dos EUA e da China já conduz
 | Página / comunidade | Comentários em 2–3 posts, depois DM | Contribuição pública útil | Tema para artigo, workshop ou evento |
 
 ## Escada comercial (playbook de consultoria, 11/10)
-3 quick wins sem custo (gatilho) → triagem curta → Auditoria de Sistemas com IA (porta de entrada) → sprint de desenho → piloto controlado → otimização. Ticket 2.000 € a 100.000 €, nunca escrito numa DM. Sem venda de sites: um site é no máximo um quick win que leva à reunião. Comissões a parceiros: suspensas até o Tomás decidir (mensagens «Parceria» em `MENSAGENS_SUSPENSAS`). Playbook: `/mnt/project-files/playbook/`.
+3 quick wins (gatilho) → triagem curta → Auditoria de Sistemas com IA (porta de entrada; **creditada na implementação**: grátis na execução, paga quando vira prova e início de trabalho) → sprint de desenho → piloto controlado → otimização. Ticket 2.000 € (3 quick wins sobre problemas atuais) a 100.000 € (acompanhamento de crescimento 3x a 10x, pago pelo valor agregado); foco na prova de valor, nunca escrito numa DM. Sem venda de sites. Parceiros: 10 % do que faturamos ao negócio indicado, de 3 em 3 meses, enquanto durar (decisão 14h17; mensagem «Parceria» no gerador, só depois dos quick wins; detalhe em `COMISSAO-PARCEIROS.md`). **Em aberto:** se os 3 quick wins continuam sem custo para parceiros ou passam a ser o ticket de 2.000 €; até lá, não enviar DMs novas com «sem custo» além das 19 do lote 1. Playbook: `/mnt/project-files/playbook/`.
 
 ## Regras de envio
 - 1 minuto entre mensagens; saudação diferente em cada uma; sem emojis; sem preço; em romeno fecha com «Voi fi pregătit.»

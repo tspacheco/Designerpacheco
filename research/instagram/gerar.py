@@ -144,7 +144,7 @@ def excel(contas):
 
 
 ROTULO = {"dm1": "DM 1", "fu": "Follow-up", "c1": "Comentário: ponto", "c2": "Comentário: acréscimo",
-          "c3": "Comentário: pergunta", "triagem": "Triagem (depois da resposta)"}
+          "c3": "Comentário: pergunta", "triagem": "Triagem (depois da resposta)", "parceria": "Parceria (depois dos 3 quick wins)"}
 
 
 def markdown():

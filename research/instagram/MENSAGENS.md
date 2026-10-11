@@ -8,7 +8,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **Primeiro passo:** DM personalizada a oferecer 3 soluções rápidas implementadas sem custo, a partir do mapa da operação dele.
 
-**Intuito:** Conversa → 3 quick wins → triagem curta → Auditoria de Sistemas com IA; indicações consentidas depois (comissão a decidir pelo Tomás).
+**Intuito:** Conversa → 3 quick wins → triagem curta → Auditoria de Sistemas com IA; indicações consentidas depois: 10% do que faturamos ao negócio indicado, de 3 em 3 meses, enquanto durar.
 
 **Registo em romeno:** tu
 
@@ -26,6 +26,10 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Mulțumesc pentru răspuns. Ca să nu vă ocup timpul, trei întrebări scurte de triaj: ce rezultat operațional vreți să îmbunătățiți în următoarele 90 de zile; unde intră azi cererea și unde se blochează sau cere pe cineva să alerge după ea; cine e responsabil de pasul următor. Cu răspunsurile pregătesc harta și cele 3 soluții rapide. Apoi decidem împreună dacă are sens un Audit de Sisteme cu AI. Voi fi pregătit.
 
+**Parceria (depois dos 3 quick wins)**
+
+> {saudacao} Mă bucur că cele 3 soluții merg deja la tine. Am o propunere simplă de parteneriat. Dacă ți se pare corect, menționează Pacheco Studios ca pe cei care te-au ajutat: o postare sau un story cu @pachecostudiospt și un rând pe site. Apoi, când întâlnești o afacere care se blochează în același loc, ne faci o introducere, cu acordul ei. Dacă ajungem să lucrăm cu acea afacere, primești 10% din ce facturăm acolo, plătit la fiecare 3 luni, cât timp colaborarea continuă. Voi fi pregătit.
+
 ### Português
 
 **DM 1**
@@ -40,6 +44,10 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Obrigado pela resposta. Para não vos ocupar tempo, três perguntas curtas de triagem: que resultado operacional querem melhorar nos próximos 90 dias; onde entra hoje o pedido e onde abranda ou obriga alguém a correr atrás dele; quem é dono do próximo passo. Com as respostas preparo o mapa e as 3 soluções rápidas. Depois decidimos juntos se faz sentido uma Auditoria de Sistemas com IA. Vou estar preparado.
 
+**Parceria (depois dos 3 quick wins)**
+
+> {saudacao} Fico contente por as 3 soluções já estarem a funcionar contigo. Tenho uma proposta simples de parceria. Se te parecer justo, menciona a Pacheco Studios como quem te ajudou: um post ou story com @pachecostudiospt e uma linha no site. Depois, quando conheceres um negócio que encrava no mesmo sítio, apresentas-nos, com o acordo dele. Se chegarmos a trabalhar com esse negócio, recebes 10% do que faturamos lá, pago de 3 em 3 meses, enquanto a colaboração durar. Vou estar preparado.
+
 ### Inglês
 
 **DM 1**
@@ -53,6 +61,10 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 **Triagem (depois da resposta)**
 
 > {saudacao} Thanks for getting back to me. To keep it short, three triage questions: which operational result do you want to improve in the next 90 days; where does a request come in today and where does it slow down or need someone chasing it; who owns the next step. With your answers I prepare the map and the 3 quick wins. Then we decide together whether an AI Systems Audit makes sense. I'll come prepared.
+
+**Parceria (depois dos 3 quick wins)**
+
+> {saudacao} Glad the 3 quick wins are already working for you. I have a simple partnership proposal. If it feels fair, mention Pacheco Studios as the team that helped you: a post or story tagging @pachecostudiospt and a line on your site. Then, when you meet a business stuck in the same place, introduce us, with their consent. If we end up working with that business, you get 10% of what we bill there, paid every 3 months for as long as the collaboration lasts. I'll come prepared.
 
 ## Grande negócio
 
@@ -108,7 +120,7 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **Primeiro passo:** Mensagem de complementaridade: uma operação típica onde a Pacheco protege o resultado que a agência já gera.
 
-**Intuito:** 3 quick wins → triagem → auditoria na operação deles ou de um cliente; indicações e co-entrega depois (comissão a decidir pelo Tomás).
+**Intuito:** 3 quick wins → triagem → auditoria na operação deles ou de um cliente; indicações e co-entrega depois: 10% do que faturamos ao cliente indicado, de 3 em 3 meses, enquanto durar.
 
 **Registo em romeno:** dumneavoastră
 
@@ -126,6 +138,10 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Mulțumesc pentru răspuns. Ca să nu vă ocup timpul, trei întrebări scurte de triaj: ce rezultat operațional vreți să îmbunătățiți în următoarele 90 de zile; unde intră azi cererea și unde se blochează sau cere pe cineva să alerge după ea; cine e responsabil de pasul următor. Cu răspunsurile pregătesc harta și cele 3 soluții rapide. Apoi decidem împreună dacă are sens un Audit de Sisteme cu AI. Voi fi pregătit.
 
+**Parceria (depois dos 3 quick wins)**
+
+> {saudacao} Mă bucur că cele 3 soluții funcționează deja în echipa voastră. Vă propun un parteneriat simplu. Dacă vi se pare corect, menționați Pacheco Studios ca pe cei care v-au ajutat: o postare cu @pachecostudiospt și un rând pe site. Apoi, când un client de-al vostru se blochează după lead, ne faceți o introducere, cu acordul lui. Voi păstrați clientul și serviciul. Dacă ajungem să lucrăm cu acel client, primiți 10% din ce facturăm acolo, plătit la fiecare 3 luni, cât timp colaborarea continuă. Voi fi pregătit.
+
 ### Português
 
 **DM 1**
@@ -140,6 +156,10 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > {saudacao} Obrigado pela resposta. Para não vos ocupar tempo, três perguntas curtas de triagem: que resultado operacional querem melhorar nos próximos 90 dias; onde entra hoje o pedido e onde abranda ou obriga alguém a correr atrás dele; quem é dono do próximo passo. Com as respostas preparo o mapa e as 3 soluções rápidas. Depois decidimos juntos se faz sentido uma Auditoria de Sistemas com IA. Vou estar preparado.
 
+**Parceria (depois dos 3 quick wins)**
+
+> {saudacao} Fico contente por as 3 soluções já estarem a funcionar na vossa equipa. Proponho uma parceria simples. Se vos parecer justo, mencionem a Pacheco Studios como quem vos ajudou: um post com @pachecostudiospt e uma linha no site. Depois, quando um cliente vosso encravar depois do lead, apresentam-nos, com o acordo dele. Vocês mantêm o cliente e o serviço. Se chegarmos a trabalhar com esse cliente, recebem 10% do que faturamos lá, pago de 3 em 3 meses, enquanto a colaboração durar. Vou estar preparado.
+
 ### Inglês
 
 **DM 1**
@@ -153,6 +173,10 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 **Triagem (depois da resposta)**
 
 > {saudacao} Thanks for getting back to me. To keep it short, three triage questions: which operational result do you want to improve in the next 90 days; where does a request come in today and where does it slow down or need someone chasing it; who owns the next step. With your answers I prepare the map and the 3 quick wins. Then we decide together whether an AI Systems Audit makes sense. I'll come prepared.
+
+**Parceria (depois dos 3 quick wins)**
+
+> {saudacao} Glad the 3 quick wins are already working for your team. I'd like to propose a simple partnership. If it feels fair, mention Pacheco Studios as the team that helped you: a post tagging @pachecostudiospt and a line on your site. Then, when one of your clients gets stuck after the lead, introduce us, with their consent. You keep the client and the service. If we end up working with that client, you get 10% of what we bill there, paid every 3 months for as long as the collaboration lasts. I'll come prepared.
 
 ## Página / comunidade B2B
 

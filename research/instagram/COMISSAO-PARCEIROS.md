@@ -1,12 +1,18 @@
-# Parceiros: quick wins sim, comissão suspensa (11/10/2026, 14h)
+# Comissão de parceiros (decisão do Tomás, 11/10/2026, 14h17)
 
-**Caducou** a decisão das 12h58 (15 % de cada trabalho recomendado). Com o playbook de consultoria de IA (11/10, 13h57) a Pacheco Studios deixa de vender sites e de fazer parcerias para sites; a comissão a parceiros fica **a decidir pelo Tomás** no thread «Playbook de consultoria de IA». Até lá, as mensagens «Parceria» estão em `MENSAGENS_SUSPENSAS` em `dados.py` e não aparecem no gerador.
+Substitui os 15 % das 12h58. O kit dos parceiros (proposta em PDF, PARCEIROS.md) é refeito pelo thread «Parceiros que indicam clientes»; aqui fica a regra e a mensagem «Parceria» do gerador.
+
+## A regra
+- **Comissão sobre a implementação:** só conta quando começamos a trabalhar com o negócio indicado.
+- **Se nos mantivermos com esse cliente, o parceiro recebe 10 % a cada 3 meses.** Leitura usada nas mensagens: 10 % do que faturamos a esse cliente, pago trimestralmente, enquanto a colaboração durar. Base exata a confirmar pelo Tomás.
+- **Auditoria creditada na implementação:** grátis durante a execução; paga quando vira prova e início de trabalho.
+- **Ticket:** 2.000 € (3 quick wins sobre problemas atuais) a 100.000 € (acompanhar uma empresa de 50 a 500 mil €/mês num crescimento de 3x a 10x; pagamento pelo valor agregado e impacto na faturação). Foco na prova de valor em cada cliente, não no ticket. Nunca numa DM.
+- **Em aberto:** se os 3 quick wins continuam sem custo para parceiros ou passam a ser o ticket de 2.000 € (perguntado ao Tomás no thread do playbook). Até lá, não enviar DMs novas com «sem custo» além das 19 do lote 1.
 
 ## O que se mantém
-- **Damos primeiro:** 3 soluções rápidas (quick wins) sem custo, escolhidas pela situação atual. São o gatilho para a reunião, nunca o produto.
-- **A escada:** quick wins → triagem curta → Auditoria de Sistemas com IA → sprint de desenho → piloto controlado → otimização.
-- **A menção ao nosso nome** (post ou story com @pachecostudiospt) pede-se como gratidão, sem contrapartida escrita.
-- **Indicações** só com o acordo do negócio indicado. Nada de listas de contactos.
+- A escada: quick wins → triagem curta → Auditoria de Sistemas com IA → sprint de desenho → piloto controlado → otimização.
+- A menção ao nosso nome (post ou story com @pachecostudiospt) pede-se como gratidão, depois dos quick wins; a comissão apresenta-se só nessa altura (mensagem «Parceria»).
+- Indicações só com o acordo do negócio indicado. Nada de listas de contactos.
 
 ## Menu de quick wins (escolher 3)
 Cada um é pequeno, fica a funcionar em dias e vê-se de fora. Nenhum é um site.
