@@ -34,13 +34,16 @@ T = {
   c_tres=[("3", "soluții rapide implementate gratuit în afacerea dumneavoastră"), ("15%", "din valoarea implementării, pentru fiecare afacere recomandată"),
           ("5%", "la fiecare 3 luni, cât timp lucrăm cu afacerea recomandată")],
   p2_et="01 · Întâi primiți", p2_h="Înainte să vorbim de comisioane, vă îmbunătățim afacerea.",
-  qw_t="3 soluții rapide, gratuit", qw_nota="Le alegem împreună după triaj; triajul pe care vi-l aducem arată deja cel puțin una. Câteva exemple:",
-  qw=[("Afiș QR pentru recenzii Google", "Clienții mulțumiți lasă recenzia în 20 de secunde."),
-      ("Fișa Google completă", "Program, servicii, poze reale și buton de contact."),
-      ("Răspunsuri rapide pe WhatsApp", "Întrebările care se repetă primesc răspuns corect dintr-o atingere."),
-      ("Formular de cerere", "Cererea ajunge completă, fără cinci mesaje dus-întors."),
-      ("Mesaj automat după serviciu", "Cere recenzia la momentul potrivit."),
-      ("Tabel comun de cereri", "Fiecare cerere are un responsabil și un stadiu.")],
+  qw_t='3 soluții rapide, gratuit', qw_nota='Le alegem împreună după triaj, din oricare dintre aceste zone. Fiecare zonă are mai multe soluții posibile, după situația dumneavoastră.',
+  qw=[('Atragerea clienților', 'Cum ajung clienții noi la dumneavoastră și ce se întâmplă cu fiecare contact.'),
+      ('Gestionarea clienților', 'Unde e fiecare client, în ce etapă și care e pasul următor.'),
+      ('Facturi și plăți', 'Facturare, încasări și reamintiri fără să alergați după nimeni.'),
+      ('Răspuns automat', 'DM, WhatsApp și e-mail cu răspuns imediat, iar dumneavoastră preluați când contează.'),
+      ('Recenzii după serviciu', 'Un flux care cere recenzia sau mărturia la momentul potrivit.'),
+      ('Plan pentru surse de clienți', 'Ce canale aduc clienți, pe care le creștem și cum le măsurăm.'),
+      ('Colaborări și oferte', 'Cererile de la branduri și ofertele, ordonate, cu răspuns și preț după reguli.'),
+      ('Conținut și calendar', 'Idei, producție și publicare într-un flux cu termene și responsabil.'),
+      ('Cifrele afacerii', 'Un panou simplu cu ce intră, ce iese și ce funcționează.')],
   fluxo_t="Apoi, pentru fiecare afacere pe care ne-o prezentați",
   pasos=[("Ne prezentați", "Unei afaceri care pierde cereri, timp sau bani, cu acordul proprietarului.", "Dumneavoastră"),
          ("Triaj și audit", "Găsim pierderea cea mai valoroasă. Auditul nu se plătește separat: se scade din implementare.", "Fără cost separat"),
@@ -67,10 +70,7 @@ T = {
   como=[("Grup pe WhatsApp", "Un grup cu proprietarul și cu noi, și ne prezentați în două rânduri."),
         ("Contactul, cu acord", "Ne trimiteți numele și telefonul, după ce i-ați spus că vă sunăm."),
         ("Numele dumneavoastră", "Îi dați numărul nostru; ne spune că vine de la dumneavoastră.")],
-  fwd_t="Mesaj gata de trimis proprietarului",
-  fwd="Bună! Îți recomand Pacheco Studios, firma lui Tomás. Se uită la cum intră cererile în afacerea ta și îți arată, pe o pagină, "
-      "unde s-ar putea pierde și ce merită verificat. Fă un triaj cu ei: +40 723 098 556.",
-  ex_t="Cereți triajul", ex="Scanați: se deschide WhatsApp cu «AUDIT».",
+  livre="Fără text impus: vorbiți despre noi cu cuvintele dumneavoastră, despre ce ați văzut că funcționează.",
   prox_t="Pasul următor", prox="Dacă are sens pentru dumneavoastră, vă trimitem propunerea de parteneriat, cu regulile și comisioanele în scris, pentru semnat.",
   # 2) proposta
   p_titulo="Propunere de parteneriat — Pacheco Studios", p_et="Propunere de parteneriat",
@@ -110,14 +110,17 @@ T = {
   c_para="Prepared for", c_vazio="partner name",
   c_tres=[("3", "quick wins implemented in your business, at no cost"), ("15%", "of the implementation value, for every business you introduce"),
           ("5%", "every 3 months, for as long as we work with that business")],
-  p2_et="01 · You receive first", p2_h="Before we talk about commissions, we improve your business.",
-  qw_t="3 quick wins, at no cost", qw_nota="We choose them together after the triage; the triage we bring you already shows at least one. Some examples:",
-  qw=[("QR poster for Google reviews", "Happy clients leave a review in 20 seconds."),
-      ("Complete Google Business Profile", "Hours, services, real photos and a contact button."),
-      ("Quick replies on WhatsApp", "Repeated questions get the right answer in one tap."),
-      ("Request form", "Requests arrive complete, without five back-and-forth messages."),
-      ("Automatic message after the service", "Asks for the review at the right moment."),
-      ("Shared request tracker", "Every request has an owner and a status.")],
+  p2_et="01 · You receive first", p2_h="Before any commission, we improve your business.",
+  qw_t='3 quick wins, at no cost', qw_nota='We choose them together after the triage, from any of these areas. Each area has several possible solutions, depending on your situation.',
+  qw=[('Client acquisition', 'How new clients reach you and what happens to every contact.'),
+      ('Client management', 'Where each client is, at what stage, and what the next step is.'),
+      ('Invoices and payments', 'Invoicing, collecting and payment reminders without chasing anyone.'),
+      ('Automatic replies', 'DMs, WhatsApp and e-mail answered at once, handed to you when it matters.'),
+      ('Reviews after the service', 'A workflow that asks for the review or testimonial at the right moment.'),
+      ('Plan to scale lead sources', 'Which channels bring clients, which to grow and how to measure them.'),
+      ('Brand deals and proposals', 'Brand requests and proposals organised, with replies and pricing by rule.'),
+      ('Content and calendar', 'Ideas, production and publishing in one flow with deadlines and an owner.'),
+      ('Business numbers', 'A simple dashboard of what comes in, what goes out and what works.')],
   fluxo_t="Then, for every business you introduce",
   pasos=[("You introduce us", "To a business losing requests, time or money, with the owner's consent.", "You"),
          ("Triage and audit", "We find the most valuable leak. The audit is not charged separately: it is credited to the implementation.", "No separate cost"),
@@ -144,10 +147,7 @@ T = {
   como=[("WhatsApp group", "A group with the owner and us, and you introduce us in two lines."),
         ("The contact, with consent", "Send us the name and phone after telling the owner we will call."),
         ("Your name", "Give them our number; they tell us you sent them.")],
-  fwd_t="Message ready to forward to the owner",
-  fwd="Hi! I recommend Pacheco Studios (Tomás). They look at how requests come into your business and show you, on one page, "
-      "where they might get lost and what is worth checking. Do a triage with them: +40 723 098 556.",
-  ex_t="Request the triage", ex="Scan: WhatsApp opens with «AUDIT».",
+  livre="No script: talk about us in your own words, about what you saw working.",
   prox_t="Next step", prox="If it makes sense to you, we send the partnership proposal, with the rules and commissions in writing, to sign.",
   p_titulo="Partnership proposal — Pacheco Studios", p_et="Partnership proposal",
   p_h="Partnership between {p} and Pacheco Studios", p_vazio="……………………",
@@ -187,13 +187,16 @@ T = {
   c_tres=[("3", "soluções rápidas implementadas no seu negócio, sem custo"), ("15 %", "do valor de implementação, por cada negócio que apresentar"),
           ("5 %", "a cada 3 meses, enquanto trabalharmos com esse negócio")],
   p2_et="01 · Primeiro recebe", p2_h="Antes de falarmos de comissões, melhoramos o seu negócio.",
-  qw_t="3 soluções rápidas, sem custo", qw_nota="Escolhemo-las consigo depois da triagem; a triagem que lhe trazemos já mostra pelo menos uma. Alguns exemplos:",
-  qw=[("Cartaz QR para avaliações Google", "Os clientes satisfeitos deixam a avaliação em 20 segundos."),
-      ("Ficha Google completa", "Horário, serviços, fotos reais e botão de contacto."),
-      ("Respostas rápidas no WhatsApp", "As perguntas repetidas têm a resposta certa num toque."),
-      ("Formulário de pedido", "O pedido chega completo, sem cinco mensagens de ida e volta."),
-      ("Mensagem automática depois do serviço", "Pede a avaliação no momento certo."),
-      ("Folha partilhada de pedidos", "Cada pedido tem um responsável e um estado.")],
+  qw_t='3 soluções rápidas, sem custo', qw_nota='Escolhemo-las consigo depois da triagem, em qualquer uma destas áreas. Cada área tem várias soluções possíveis, conforme a sua situação.',
+  qw=[('Aquisição de clientes', 'Como chegam novos clientes e o que acontece a cada contacto.'),
+      ('Gestão de clientes', 'Onde está cada cliente, em que fase e qual é o próximo passo.'),
+      ('Faturas e pagamentos', 'Faturar, cobrar e lembrar pagamentos sem andar atrás de ninguém.'),
+      ('Atendimento automático', 'DMs, WhatsApp e e-mail com resposta imediata, e passagem para si quando importa.'),
+      ('Avaliações após o serviço', 'Um fluxo que pede a avaliação ou o testemunho no momento certo.'),
+      ('Plano para escalar fontes de leads', 'Que canais trazem clientes, quais crescer e como medir.'),
+      ('Parcerias de marca e propostas', 'Pedidos de marcas e propostas organizados, com resposta e preço por regra.'),
+      ('Conteúdo e calendário', 'Ideias, produção e publicação num fluxo com prazos e dono.'),
+      ('Números do negócio', 'Um painel simples com o que entra, o que sai e o que funciona.')],
   fluxo_t="Depois, por cada negócio que nos apresentar",
   pasos=[("Apresenta-nos", "A um negócio que perde pedidos, tempo ou dinheiro, com o acordo do dono.", "Você"),
          ("Triagem e auditoria", "Encontramos a fuga de maior valor. A auditoria não se paga à parte: fica creditada na implementação.", "Sem custo à parte"),
@@ -220,10 +223,7 @@ T = {
   como=[("Grupo no WhatsApp", "Um grupo com o dono e connosco, e apresenta-nos em duas linhas."),
         ("O contacto, com autorização", "Envia-nos o nome e o telefone, depois de avisar o dono que vamos ligar."),
         ("O seu nome", "Dá-lhe o nosso número; ele diz-nos que vem da sua parte.")],
-  fwd_t="Mensagem pronta a enviar ao dono",
-  fwd="Olá! Recomendo-te a Pacheco Studios, do Tomás. Olham para a forma como os pedidos entram no teu negócio e mostram-te, numa página, "
-      "onde se podem perder e o que vale a pena validar. Faz uma triagem com eles: +351 967 117 357.",
-  ex_t="Pedir a triagem", ex="Aponte a câmara: abre o WhatsApp com «AUDIT».",
+  livre="Sem guião: fale de nós com as suas palavras, sobre o que viu a funcionar.",
   prox_t="Próximo passo", prox="Se fizer sentido para si, enviamos a proposta de parceria, com as regras e as comissões por escrito, para assinar.",
   p_titulo="Proposta de parceria — Pacheco Studios", p_et="Proposta de parceria",
   p_h="Parceria entre {p} e a Pacheco Studios", p_vazio="……………………",
@@ -397,8 +397,11 @@ CSS += """
 .pasos li{padding:4.5mm}.pasos b{margin:3.5mm 0 1.5mm}
 .troca{margin:-4mm 0 8mm;font-size:9.6pt;line-height:1.5;padding:4mm 5mm;border-left:3px solid var(--l);background:var(--o2)}
 .troca b{font-weight:600}
-.qw{list-style:none;margin:0 0 8mm;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:3mm 5mm}
-.qw li{display:flex;gap:3mm;align-items:flex-start;padding:3.6mm 4mm;border-radius:8px;background:var(--o2);box-shadow:inset 0 0 0 1px var(--li)}
+.qw{list-style:none;margin:0 0 8mm;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:3mm 4mm}
+.p2 .pasos{grid-template-columns:repeat(4,1fr);gap:3.5mm}.p2 .pasos li{padding:4mm}.p2 .pasos b{font-size:10pt;margin:3mm 0 1.5mm}.p2 .pasos span{font-size:8.6pt;line-height:1.42}.p2 .pasos .tag{float:none;display:block;margin-top:2.5mm;padding:0}
+.p2 h2{margin-bottom:6mm}.p2 .qw li{padding:3.4mm 4mm;gap:2mm}.p2 .qw span{font-size:8.6pt}.p2 .troca{margin:-4mm 0 6mm}
+.livre{font:400 15pt/1.3 'Archivo Black';text-transform:uppercase;margin:4mm 0 0;max-width:165mm}
+.qw li{display:flex;flex-direction:column;gap:2.5mm;align-items:flex-start;padding:4mm;border-radius:8px;background:var(--o2);box-shadow:inset 0 0 0 1px var(--li)}
 .qw .ok{flex:none;width:4.6mm;height:4.6mm;border-radius:50%;background:var(--l);margin-top:.3mm;position:relative}
 .qw .ok::after{content:'';position:absolute;left:1.5mm;top:.9mm;width:1.2mm;height:2.2mm;border:solid var(--c);border-width:0 1.6px 1.6px 0;transform:rotate(45deg)}
 .qw b{display:block;font-weight:600;font-size:10pt;margin-bottom:.6mm}
@@ -485,7 +488,7 @@ def incentivo_html(t):
   <div class="para"><div><span class="mono">{t['c_para']}</span>{para}</div>
     <div class="quem"><b>Tomás Pacheco</b>{t['funcao']} · Pacheco Studios<br>{t['tel']}</div></div>
 </section>
-<section class="pag">{cab(sub)}<div class="corpo">
+<section class="pag p2">{cab(sub)}<div class="corpo">
   <p class="mono et">{t['p2_et']}</p><h2>{t['p2_h']}</h2>
   <h3>{t['qw_t']}</h3><p class="nota">{t['qw_nota']}</p>
   <ul class="qw">{qw}</ul>
@@ -506,9 +509,7 @@ def incentivo_html(t):
   <div class="duas2"><div><h3>{t['porque_t']}</h3><ul class="lista">{porque}</ul></div>
     <div class="escuro"><h3>{t['quem_t']}</h3><ul class="lista">{quem}</ul></div></div>
   <h3>{t['como_t']}</h3><ul class="como">{como}</ul>
-  <h3>{t['fwd_t']}</h3>
-  <div class="fwd"><div class="bolha">{t['fwd']}</div>
-    <div class="ex">{qr}<b>{t['ex_t']}</b><br>{t['ex']}<a href="{wa}">wa.me/{t['wa']}</a></div></div>
+  <p class="livre">{t['livre']}</p>
   <div class="prox"><div><span class="mono">{t['prox_t']}</span><p>{t['prox']}</p></div><b>→</b></div>
 </div>{rod(4, 4)}</section>
 </body></html>"""

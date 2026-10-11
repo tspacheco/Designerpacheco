@@ -12,7 +12,7 @@ Pedido do Tomás (08/10/2026): encontrar quem vê negócios todos os dias (conta
 | `PARCEIROS.md` | Lista para o Tomás, gerada: `python3 research/parceiros/mensagens.py > research/parceiros/PARCEIROS.md` |
 | `COMISSAO.md` | As regras (3 quick wins, 15 % da implementação, 5 % por trimestre, compromissos do parceiro). |
 | `comissoes.tsv` | Cada negócio indicado: parceiro, fase, comissão de 15 % e os 5 % de cada trimestre. |
-| `kit/gerar.py` | Kit em duas peças, RO/EN/PT: **incentivo** (4 páginas: 3 quick wins, cenários de quanto pode ganhar, porquê, como apresentar) e **proposta para assinar** (2 páginas: compromissos, comissões, regras, assinaturas). `python3 research/parceiros/kit/gerar.py "Nome"` põe o nome do parceiro. |
+| `kit/gerar.py` | Kit em duas peças, RO/EN/PT: **incentivo** (4 páginas: 3 quick wins à escolha em 9 áreas amplas, cenários de quanto pode ganhar, porquê, como apresentar; sem mensagem pronta, o parceiro fala com as suas palavras) e **proposta para assinar** (2 páginas: compromissos, comissões, regras, assinaturas). `python3 research/parceiros/kit/gerar.py "Nome"` põe o nome do parceiro. |
 | `proposta/` | Caducada a 11/10 (15 % e preços de sites). Não usar. |
 
 ## Corrida semanal (segunda, 9h53 de Iași)
