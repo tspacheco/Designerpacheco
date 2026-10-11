@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cofetăria La Ana · Cofetărie și patiserie în Valea Lupului</title>
+<meta name="description" content="Cofetăria La Ana, Strada Anton Pann, Valea Lupului (Iași): torturi aniversare, prăjituri, fursecuri și colaci. Comenzi de tort la telefon: 0745 374 165.">
+<meta name="theme-color" content="#2A0E3F">
+<meta property="og:title" content="Cofetăria La Ana · Valea Lupului">
+<meta property="og:description" content="Îndulcește fiecare moment! Torturi la comandă: 0745 374 165.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/interior-vitrine.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233B1356'/%3E%3Crect x='6' y='9' width='20' height='2.4' rx='1.2' fill='%23F4FBFF'/%3E%3Cpath d='M9 24c0-5 3-8 7-8s7 3 7 8z' fill='%231E8A44'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --noapte:#1C0A2A; --violet:#2A0E3F; --violet-2:#3B1356; --mov:#5A1E86; --lila:#C9B3E6; --lila-p:#EEE7F7;
+  --verde:#1A7A3C; --verde-2:#136030; --verde-l:#9FE0B4;
+  --sticla:#DDF1F4; --tub:#F4FBFF; --hartie:#F6F5FA; --alb:#FFFFFF;
+  --text:#1F1027; --text-2:#4D3F5C; --text-3:#6E6180;
+  --f-disp:"Gloock",Georgia,serif;
+  --f-text:"Gantari",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-eti:"Cousine",ui-monospace,Menlo,Consolas,monospace;
+  --lat:min(1180px, 100% - 40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --jos:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px;scroll-behavior:smooth}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
+body{margin:0;background:var(--hartie);color:var(--text);font:400 17px/1.6 var(--f-text);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--verde-l);outline-offset:3px;border-radius:4px}
+.lat{width:var(--lat);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+svg.i{width:20px;height:20px;flex:none}
+
+.prezentare{background:var(--verde);color:#fff;font:700 11.5px/1.3 var(--f-eti);letter-spacing:.08em;text-align:center;padding:7px 14px;text-transform:uppercase}
+
+/* bara */
+.bara{position:sticky;top:0;z-index:40;background:rgba(28,10,42,.0);transition:background .3s,box-shadow .3s}
+.bara.scrolled{background:var(--violet);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.bara-in{display:flex;align-items:center;gap:18px;height:68px}
+.marca{white-space:nowrap;display:flex;align-items:baseline;gap:10px;text-decoration:none;color:#fff;margin-right:auto}
+.marca b{font:400 30px/1 var(--f-disp)}
+.marca small{font:700 10.5px/1.2 var(--f-eti);letter-spacing:.12em;text-transform:uppercase;color:var(--lila)}
+.nav{display:flex;gap:4px}
+.nav a{color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:10px 12px;border-radius:999px;transition:background .2s}
+.nav a:hover{background:rgba(255,255,255,.1)}
+.limbi{display:flex;gap:2px;background:rgba(255,255,255,.1);border-radius:999px;padding:3px}
+.limbi button{border:0;background:none;color:#fff;font:700 12px/1 var(--f-eti);padding:9px 10px;border-radius:999px;cursor:pointer;min-width:40px;min-height:34px}
+.limbi button[aria-pressed="true"]{background:var(--tub);color:var(--violet)}
+.limbi .doar-rev{display:none}
+html.rev .limbi .doar-rev{display:block}
+.burger{display:none;width:46px;height:46px;border:0;background:rgba(255,255,255,.1);border-radius:12px;cursor:pointer;position:relative}
+.burger span,.burger span::before,.burger span::after{position:absolute;left:13px;width:20px;height:2px;background:#fff;content:"";transition:transform .25s}
+.burger span{top:22px}.burger span::before{top:-6px;left:0}.burger span::after{top:6px;left:0}
+.meniu{position:fixed;inset:0;z-index:60;background:var(--violet);color:#fff;padding:24px 24px calc(24px + var(--jos));display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.meniu.deschis{opacity:1;visibility:visible}
+.meniu .inchide{align-self:flex-end;border:0;background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer}
+.meniu ol{list-style:none;margin:28px 0 0;padding:0}
+.meniu li a{display:block;font:400 42px/1.15 var(--f-disp);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+@media (max-width:860px){.nav{display:none}.burger{display:block}}
+@media (max-width:420px){.marca small{display:none}}
+
+/* erou */
+.erou{position:relative;background:var(--noapte);color:#fff;margin-top:-68px;padding-top:68px;overflow:hidden;isolation:isolate}
+.erou::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 70% at 75% 0%,#3B1356 0%,transparent 60%),radial-gradient(80% 60% at 0% 100%,#2A0E3F 0%,transparent 70%);z-index:-1}
+.erou-in{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;min-height:min(820px,calc(100svh - 30px));padding-block:40px 64px}
+.eyebrow{font:700 12.5px/1.3 var(--f-eti);letter-spacing:.14em;text-transform:uppercase;color:var(--verde-l);display:flex;align-items:center;gap:10px;margin:0 0 18px}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
+h1{font:400 clamp(84px,13vw,176px)/.86 var(--f-disp);margin:0;letter-spacing:-.02em}
+h1 .cuv{display:inline-block}
+h1 .sub{display:block;font:600 clamp(17px,2vw,21px)/1.35 var(--f-text);letter-spacing:.02em;color:var(--lila);margin-top:22px}
+.slogan{font:italic 400 clamp(22px,2.6vw,30px)/1.25 var(--f-disp);margin:26px 0 0;color:var(--tub)}
+.slogan small{display:block;font:400 13px/1.5 var(--f-eti);color:var(--lila);margin-top:6px;font-style:normal;letter-spacing:.04em}
+.erou-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;border:2px solid transparent;font-weight:700;font-size:16.5px;text-decoration:none;cursor:pointer;transition:transform .18s var(--ease),background .2s,border-color .2s,color .2s;touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.btn-verde{background:var(--verde);color:#fff}
+.btn-verde:hover{background:var(--verde-2)}
+.btn-tub{background:var(--tub);color:var(--violet)}
+.btn-tub:hover{background:#fff}
+.btn-contur{border-color:rgba(255,255,255,.45);color:#fff;background:transparent}
+.btn-contur:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-mov{border-color:var(--violet-2);color:var(--violet-2);background:transparent}
+.btn-mov:hover{background:var(--violet-2);color:#fff}
+.nota{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14.5px;color:var(--lila)}
+.nota b{color:#fff;font:400 22px/1 var(--f-disp)}
+.nota svg{width:16px;height:16px;fill:#F7C948}
+
+/* vitrina din erou */
+.cabinet{position:relative;border-radius:18px 18px 8px 8px;padding:16px 14px 18px;background:linear-gradient(#2b1a36,#160a20);box-shadow:0 40px 80px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.07)}
+.cabinet .tub{height:7px;border-radius:7px;background:var(--tub);margin:0 18px 14px;box-shadow:0 0 18px 4px rgba(214,240,255,.55),0 0 60px 14px rgba(214,240,255,.18);opacity:.08}
+.cabinet .geam{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/5;background:#21122c}
+.cabinet .geam>svg{position:absolute;inset:0;width:100%;height:100%}
+.cabinet .geam img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.22) saturate(.5);transform:scale(1.04)}
+.cabinet .luciu{position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.28) 42%,rgba(255,255,255,.06) 48%,transparent 56%);transform:translateX(-120%);pointer-events:none}
+.cabinet .muchie{position:absolute;left:0;right:0;bottom:0;height:16px;background:linear-gradient(rgba(221,241,244,.0),rgba(221,241,244,.35));border-top:1px solid rgba(221,241,244,.6)}
+.cabinet figcaption{font:400 12px/1.4 var(--f-eti);color:var(--lila);margin-top:12px;display:flex;justify-content:space-between;gap:12px}
+.erou.aprins .cabinet .tub{animation:palpaie 1s steps(1,end) forwards}
+.erou.aprins .cabinet .geam img{transition:filter 1.4s .55s var(--ease),transform 2.4s .55s var(--ease);filter:none;transform:none}
+.erou.aprins .cabinet .luciu{animation:luciu 1.5s 1.1s var(--ease) forwards}
+@keyframes palpaie{0%{opacity:.08}10%{opacity:.9}16%{opacity:.15}30%{opacity:1}36%{opacity:.35}50%,100%{opacity:1}}
+@keyframes luciu{to{transform:translateX(120%)}}
+.js .erou h1 .cuv,.js .erou .sub,.js .erou .eyebrow,.js .erou .slogan,.js .erou .erou-cta,.js .erou .nota{opacity:0;transform:translateY(22px)}
+.erou.aprins h1 .cuv,.erou.aprins .sub,.erou.aprins .eyebrow,.erou.aprins .slogan,.erou.aprins .erou-cta,.erou.aprins .nota{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .9s var(--ease)}
+.erou.aprins .eyebrow{transition-delay:.25s}
+.erou.aprins h1 .cuv:nth-child(1){transition-delay:.55s}
+.erou.aprins h1 .cuv:nth-child(2){transition-delay:.68s}
+.erou.aprins .sub{transition-delay:.85s}
+.erou.aprins .slogan{transition-delay:1.05s}
+.erou.aprins .erou-cta{transition-delay:1.2s}
+.erou.aprins .nota{transition-delay:1.32s}
+
+@media (max-width:860px){
+  .erou-in{grid-template-columns:1fr;gap:28px;padding-block:24px 48px;min-height:0}
+  .cabinet{order:-1;max-width:440px;width:100%;margin-inline:auto}
+  .cabinet .geam{aspect-ratio:5/4}
+  h1{font-size:clamp(76px,24vw,120px)}
+}
+
+/* banda */
+.banda{background:var(--verde);color:#fff;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(255,255,255,.2)}
+.banda-in{display:inline-flex;gap:0;padding:14px 0;animation:banda 38s linear infinite}
+.banda-in>span{font:400 22px/1 var(--f-disp);padding:0 22px;display:inline-flex;align-items:center;gap:22px}
+.banda-in>span::after{content:"";width:22px;height:4px;border-radius:4px;background:var(--tub);box-shadow:0 0 10px rgba(255,255,255,.7)}
+@keyframes banda{to{transform:translateX(-50%)}}
+
+/* sectiuni */
+.sec{padding:clamp(72px,9vw,120px) 0}
+.sec-cap{max-width:700px;margin-bottom:44px}
+.sec-cap .eyebrow{color:var(--verde)}
+h2{font:400 clamp(40px,5.6vw,68px)/1 var(--f-disp);margin:0;letter-spacing:-.01em}
+.sec-cap p{color:var(--text-2);font-size:18px;margin:16px 0 0}
+
+/* VITRINA */
+.vitrina{background:linear-gradient(var(--hartie),var(--lila-p))}
+.dulap{position:relative;background:linear-gradient(180deg,#26132f,#1a0c24);border-radius:22px 22px 12px 12px;padding:22px clamp(14px,3vw,34px) 30px;box-shadow:0 30px 70px rgba(42,14,63,.35),inset 0 0 0 1px rgba(255,255,255,.06)}
+.dulap::after{content:"";position:absolute;left:-10px;right:-10px;bottom:-26px;height:30px;border-radius:0 0 18px 18px;background:linear-gradient(var(--lila),#b49bd6);box-shadow:inset 0 2px 0 rgba(255,255,255,.4)}
+.dulap-sus{display:flex;justify-content:space-between;align-items:center;gap:14px;color:var(--lila);font:400 12px/1.3 var(--f-eti);letter-spacing:.08em;text-transform:uppercase;padding:0 4px 14px}
+.dulap-sus .temp{display:inline-flex;align-items:center;gap:8px;background:#0e0615;color:#7CF2B0;border-radius:6px;padding:6px 10px;letter-spacing:.04em}
+.raft{position:relative;padding:20px 6px 0}
+.raft+.raft{margin-top:14px}
+.raft .tub{height:5px;border-radius:5px;background:var(--tub);margin:0 10px 22px;opacity:.06;box-shadow:0 0 16px 3px rgba(214,240,255,.5),0 30px 90px 30px rgba(214,240,255,.07)}
+.raft.aprins .tub{animation:palpaie .9s steps(1,end) forwards}
+.raft-titlu{position:absolute;top:6px;left:12px;font:400 11px/1 var(--f-eti);letter-spacing:.12em;color:#a99abb;text-transform:uppercase}
+.produse{display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:clamp(12px,2.4vw,28px);align-items:start;padding:0 6px}
+.prod{position:relative;margin:0;display:flex;flex-direction:column;align-items:center}
+.prod .poza{position:relative;width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;background:#2e1a3a;transition:transform .35s var(--ease),box-shadow .35s}
+.prod.rotund .poza{border-radius:50%}
+.prod .poza svg{position:absolute;inset:0;width:100%;height:100%}
+.prod .poza img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.18) saturate(.4);transition:filter 1s var(--ease)}
+.raft.aprins .prod .poza img{filter:none}
+.raft.aprins .prod:nth-child(2) .poza img{transition-delay:.15s}
+.raft.aprins .prod:nth-child(3) .poza img{transition-delay:.3s}
+.prod .refl{width:92%;height:26px;margin-top:2px;border-radius:0 0 50% 50%;background:radial-gradient(60% 100% at 50% 0,rgba(214,240,255,.18),transparent 70%);opacity:0;transition:opacity 1s .4s}
+.raft.aprins .prod .refl{opacity:1}
+.eticheta{margin-top:-4px;background:#fff;color:var(--text);border-radius:4px;padding:8px 10px 9px;font:400 12.5px/1.35 var(--f-eti);box-shadow:0 6px 16px rgba(0,0,0,.35);transform:rotate(var(--r,-1.5deg));width:min(100%,220px);text-align:left}
+.eticheta b{display:block;font:700 13px/1.3 var(--f-eti);text-transform:uppercase;letter-spacing:.02em}
+.eticheta .pret{color:var(--text-3)}
+.eticheta button{all:unset;display:inline-flex;align-items:center;gap:6px;margin-top:6px;color:var(--verde);font:700 12.5px/1.2 var(--f-eti);cursor:pointer;min-height:30px;border-radius:3px}
+.eticheta button:focus-visible{outline:2px solid var(--verde);outline-offset:2px}
+.eticheta button svg{width:14px;height:14px;transition:transform .2s}
+.eticheta button:hover svg{transform:translateX(3px)}
+.prod:hover .poza{transform:translateY(-5px);box-shadow:0 16px 30px rgba(0,0,0,.4)}
+.prod.ales .poza{box-shadow:0 0 0 3px var(--verde-l),0 16px 30px rgba(0,0,0,.4)}
+.sticla{height:12px;margin:18px -6px 0;border-radius:3px;background:linear-gradient(180deg,rgba(221,241,244,.55),rgba(221,241,244,.12) 40%,rgba(221,241,244,.3));border-top:1px solid rgba(255,255,255,.75);box-shadow:0 10px 24px rgba(0,0,0,.4)}
+.vitrina-nota{margin:44px 0 0;color:var(--text-2);font-size:15.5px;max-width:720px}
+@media (max-width:640px){
+  .produse{gap:8px;padding:0}
+  .eticheta{font-size:10.5px;padding:6px 6px 7px;margin-top:-2px}
+  .eticheta b{font-size:10.5px}
+  .eticheta .pret{display:none}
+  .eticheta br{display:none}
+  .eticheta button{display:flex;font-size:10.5px;margin-top:4px;gap:3px}
+  .eticheta button svg{width:11px;height:11px}
+  .raft-titlu{font-size:10px}
+  .dulap{padding-inline:10px}
+  .eyebrow{letter-spacing:.1em}
+}
+
+/* COMANDA */
+.comanda{background:var(--violet);color:#fff;position:relative;overflow:hidden}
+.comanda .sec-cap .eyebrow{color:var(--verde-l)}
+.comanda .sec-cap p{color:var(--lila)}
+.com-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:start}
+.formular{background:var(--alb);color:var(--text);border-radius:20px;padding:clamp(22px,3.4vw,36px)}
+fieldset{border:0;margin:0 0 26px;padding:0}
+legend,.lbl{display:block;font-weight:700;font-size:15.5px;margin-bottom:10px;padding:0}
+legend span.pas,.lbl span.pas{font:700 12px/1 var(--f-eti);color:var(--verde);letter-spacing:.08em;margin-right:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chips label>span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid #D5CCE2;font-weight:600;font-size:15px;transition:background .2s,border-color .2s,color .2s}
+.chips input:checked+span{background:var(--violet-2);border-color:var(--violet-2);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--verde);outline-offset:2px}
+.chips label:hover>span{border-color:var(--violet-2)}
+.cantar{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+input[type=range]{width:100%;accent-color:var(--verde);height:44px;cursor:pointer}
+.ecran{background:#0f1a12;color:#7CF2B0;font:700 26px/1 var(--f-eti);padding:12px 14px;border-radius:8px;min-width:118px;text-align:right;box-shadow:inset 0 2px 8px rgba(0,0,0,.5)}
+.ecran small{font-size:13px;margin-left:4px}
+.ajutor{font-size:14px;color:var(--text-3);margin:8px 0 0}
+.camp{margin-bottom:18px}
+.camp input,.camp textarea{width:100%;min-height:50px;border:1.5px solid #D5CCE2;border-radius:12px;padding:12px 14px;background:#fff;font-size:16px;transition:border-color .2s}
+.camp textarea{min-height:84px;resize:vertical}
+.camp input:focus,.camp textarea:focus{border-color:var(--violet-2);outline:none;box-shadow:0 0 0 3px rgba(90,30,134,.18)}
+.camp .eroare{color:#B3261E;font-size:14px;font-weight:600;margin:6px 0 0}
+.camp.gresit input{border-color:#B3261E}
+.doua{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.model{display:flex;align-items:center;gap:12px;background:var(--lila-p);border-radius:12px;padding:10px 12px;margin-bottom:18px;font-size:15px}
+.model img{width:48px;height:48px;border-radius:8px;object-fit:cover}
+.model button{margin-left:auto;border:0;background:none;color:var(--violet-2);font-weight:700;cursor:pointer;min-height:44px;padding:0 6px;text-decoration:underline}
+.bon{position:sticky;top:96px;background:#FCFCFA;color:#222;border-radius:4px;padding:26px 22px 30px;font:400 14px/1.55 var(--f-eti);box-shadow:0 30px 60px rgba(0,0,0,.35);--z:radial-gradient(circle at 8px 0,transparent 7px,#FCFCFA 7.5px)}
+.bon::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:radial-gradient(circle at 8px 0,#FCFCFA 7px,transparent 7.5px) 0 0/16px 10px repeat-x}
+.bon h3{font:700 13px/1.3 var(--f-eti);text-transform:uppercase;letter-spacing:.12em;text-align:center;margin:0 0 4px}
+.bon .cap{text-align:center;color:#666;font-size:12.5px;margin:0 0 14px;border-bottom:1px dashed #bbb;padding-bottom:12px}
+.bon pre{white-space:pre-wrap;word-break:break-word;font:inherit;margin:0;min-height:150px}
+.bon .lin{border-top:1px dashed #bbb;margin:14px 0}
+.bon .trimite{display:grid;gap:10px}
+.bon .trimite .btn{width:100%;font-family:var(--f-text)}
+.bon .mic{font-size:12px;color:#666;margin:10px 0 0;text-align:center}
+.btn-wa{background:#fff;border-color:var(--verde);color:var(--verde-2)}
+.btn-wa:hover{background:#EAF7EF}
+.btn-sms{background:#fff;border-color:var(--violet-2);color:var(--violet-2)}
+.btn-sms:hover{background:var(--lila-p)}
+@media (max-width:900px){.com-grid{grid-template-columns:1fr}.bon{position:relative;top:0}}
+@media (max-width:480px){.doua{grid-template-columns:1fr}}
+
+/* LOCUL */
+.locul-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.foto{position:relative;margin:0;border-radius:16px;overflow:hidden;background:var(--lila-p)}
+.foto>svg{position:absolute;inset:0;width:100%;height:100%}
+.foto img{position:relative;width:100%;height:100%;object-fit:cover}
+.foto figcaption{position:absolute;left:12px;bottom:12px;background:rgba(28,10,42,.82);color:#fff;font:400 12.5px/1.3 var(--f-eti);padding:7px 10px;border-radius:6px}
+.l-a{grid-column:span 5;aspect-ratio:4/5}
+.l-b{grid-column:span 7;display:flex;flex-direction:column;gap:20px}
+.l-b .foto{aspect-ratio:16/9}
+.fapte{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.fapte li{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 1px 0 #e6e0ee}
+.fapte svg{width:24px;height:24px;color:var(--verde);flex:none;margin-top:2px}
+.fapte b{display:block}
+.fapte div>span{color:var(--text-2);font-size:15.5px}
+@media (max-width:820px){.l-a,.l-b{grid-column:1/-1}.l-a{aspect-ratio:4/3}}
+
+/* PROGRAM / CONTACT */
+.contact{background:var(--noapte);color:#fff}
+.contact .eyebrow{color:var(--verde-l)}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+.zile{list-style:none;margin:0;padding:0;font:400 15px/1 var(--f-eti)}
+.zile li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.zile li.azi{color:#7CF2B0}
+.zile li .dc{color:var(--lila)}
+.stare{display:inline-flex;align-items:center;gap:10px;margin:18px 0 0;font-size:15px;color:var(--lila)}
+.stare i{width:10px;height:10px;border-radius:50%;background:#7a6d8a}
+.stare.deschis i{background:#7CF2B0;box-shadow:0 0 0 4px rgba(124,242,176,.2)}
+.adr{font:400 clamp(26px,3vw,34px)/1.15 var(--f-disp);margin:0 0 14px}
+.ct-linii{display:grid;gap:10px;margin:22px 0}
+.ct-linii a{display:inline-flex;align-items:center;gap:12px;color:#fff;text-decoration:none;min-height:44px;font-weight:600}
+.ct-linii a:hover{color:var(--verde-l)}
+.harta{margin-top:20px;border-radius:16px;overflow:hidden;background:#2a1a36;aspect-ratio:16/10;position:relative;display:grid;place-items:center}
+.harta iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (max-width:820px){.ct-grid{grid-template-columns:1fr}}
+
+footer{background:#12061C;color:#cbbfd8;padding:40px 0 calc(110px + var(--jos));font-size:14px}
+.legal{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center}
+.legal a{color:#e6dcf0;min-height:44px;display:inline-flex;align-items:center}
+@media (min-width:861px){footer{padding-bottom:40px}}
+
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:10px;padding:10px 14px calc(10px + var(--jos));background:rgba(28,10,42,.96);transform:translateY(110%);transition:transform .3s var(--ease)}
+.jos.vizibil{transform:none}
+.jos .btn{flex:1;min-height:50px}
+@media (max-width:860px){.jos{display:flex}}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.vis{opacity:1;transform:none}
+.no-js .rv,html:not(.js) .rv{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .cabinet .tub,.raft .tub{opacity:1!important}
+  .cabinet .geam img,.prod .poza img{filter:none!important;transform:none!important}
+  .prod .refl{opacity:1}
+  .js .erou h1 .cuv,.js .erou .sub,.js .erou .eyebrow,.js .erou .slogan,.js .erou .erou-cta,.js .erou .nota,.rv{opacity:1!important;transform:none!important}
+  .banda-in{animation:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 1.8.8"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></symbol>
+    <symbol id="i-sag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 21s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></symbol>
+    <symbol id="i-stea" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></symbol>
+    <symbol id="i-tort" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 20V12h16v8M3 20h18M4 15c2 1.5 4 1.5 5.3 0 1.4 1.5 4 1.5 5.4 0 1.3 1.5 3.3 1.5 5.3 0M12 12V8"/><path d="M12 4.5c.9 1 .9 2.2 0 3-.9-.8-.9-2 0-3z"/></g></symbol>
+    <symbol id="i-fem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></g></symbol>
+    <symbol id="i-ceas" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  </defs>
+</svg>
+
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru Cofetăria La Ana|PACHECO STUDIOS PREVIEW · demo website for Cofetăria La Ana|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para a Cofetăria La Ana}}</div>
+
+<header class="bara" id="bara">
+  <div class="lat bara-in">
+    <a class="marca" href="#sus" aria-label="{{Cofetăria La Ana — sus|Cofetăria La Ana — top|Cofetăria La Ana — topo}}"><b>La Ana</b><small>{{Cofetărie · Patiserie|Pastry shop|Pastelaria}}</small></a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#vitrina">{{Vitrina|The display|A vitrine}}</a>
+      <a href="#comanda">{{Comandă un tort|Order a cake|Encomendar bolo}}</a>
+      <a href="#locul">{{Cofetăria|The shop|A pastelaria}}</a>
+      <a href="#contact">{{Program și contact|Hours & contact|Horário e contactos}}</a>
+    </nav>
+    <div class="limbi" role="group" aria-label="{{Limba|Language|Língua}}">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false" class="doar-rev">PT</button>
+    </div>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="{{Deschide meniul|Open menu|Abrir o menu}}"><span></span></button>
+  </div>
+</header>
+
+<div class="meniu" id="meniu" role="dialog" aria-modal="true" aria-label="{{Meniu|Menu|Menu}}">
+  <button class="inchide" type="button">{{Închide|Close|Fechar}} ×</button>
+  <ol>
+    <li><a href="#vitrina">{{Vitrina|The display|A vitrine}}</a></li>
+    <li><a href="#comanda">{{Comandă un tort|Order a cake|Encomendar bolo}}</a></li>
+    <li><a href="#locul">{{Cofetăria|The shop|A pastelaria}}</a></li>
+    <li><a href="#contact">{{Program și contact|Hours & contact|Horário e contactos}}</a></li>
+  </ol>
+</div>
+
+<main id="sus">
+<section class="erou" id="erou">
+  <div class="lat erou-in">
+    <div>
+      <p class="eyebrow">{{Valea Lupului · lângă Iași|Valea Lupului · next to Iași|Valea Lupului · junto a Iași}}</p>
+      <h1><span class="cuv">La</span> <span class="cuv">Ana</span><span class="sub">{{Cofetărie și patiserie: torturi aniversare, prăjituri, fursecuri și colaci.|Pastry shop and bakery: birthday cakes, pastries, cookies and braided “colaci”.|Pastelaria: bolos de aniversário, bolos à fatia, biscoitos e «colaci» entrançados.}}</span></h1>
+      <p class="slogan">„Îndulcește fiecare moment!”<small>{{— scrie pe afișul din cofetărie|— as the poster in the shop says|— como diz o cartaz da pastelaria}}</small></p>
+      <div class="erou-cta">
+        <a class="btn btn-verde" href="tel:+40745374165"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{Sună: 0745 374 165|Call: 0745 374 165|Ligar: 0745 374 165}}</a>
+        <a class="btn btn-contur" href="#comanda"><svg class="i" aria-hidden="true"><use href="#i-tort"/></svg>{{Comandă un tort|Order a cake|Encomendar um bolo}}</a>
+      </div>
+      <p class="nota"><svg aria-hidden="true"><use href="#i-stea"/></svg><b>4,3</b>{{pe Google|on Google|no Google}}</p>
+    </div>
+    <figure class="cabinet" style="margin:0">
+      <div class="tub" aria-hidden="true"></div>
+      <div class="geam">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="500" fill="#2E1A3A"/><rect y="320" width="400" height="180" fill="#3B2546"/><rect x="30" y="180" width="160" height="120" rx="6" fill="#4A3256"/><rect x="220" y="180" width="150" height="120" rx="6" fill="#4A3256"/></svg>
+        <img src="media/interior-vitrine.webp" width="1600" height="2000" alt="Interiorul cofetăriei La Ana: vitrinele frigorifice pline cu prăjituri, rafturile cu cozonaci și tejgheaua mov" data-alt="Interiorul cofetăriei La Ana: vitrinele frigorifice pline cu prăjituri, rafturile cu cozonaci și tejgheaua mov|Inside La Ana: refrigerated display cases full of pastries, shelves of sweet bread and the lilac counter|O interior da La Ana: vitrines refrigeradas cheias de bolos, prateleiras de pão doce e o balcão lilás" fetchpriority="high" onerror="this.remove()">
+        <div class="luciu" aria-hidden="true"></div>
+        <div class="muchie" aria-hidden="true"></div>
+      </div>
+      <figcaption><span>{{Interiorul cofetăriei|Inside the shop|O interior da loja}}</span><span>Str. Anton Pann</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="banda" aria-hidden="true"><div class="banda-in" id="banda-in">
+  <span>{{Torturi aniversare|Birthday cakes|Bolos de aniversário}}</span><span>{{Prăjituri|Pastries|Bolos à fatia}}</span><span>{{Fursecuri|Cookies|Biscoitos}}</span><span>{{Colaci|Colaci|Colaci}}</span><span>{{Tarte cu fructe|Fruit tarts|Tartes de fruta}}</span><span>{{Comenzi pentru ocazii|Orders for occasions|Encomendas para ocasiões}}</span>
+</div></div>
+
+<section class="sec vitrina" id="vitrina" aria-labelledby="vit-t">
+  <div class="lat">
+    <div class="sec-cap rv">
+      <p class="eyebrow">{{Trei rafturi, lumina se aprinde pe rând|Three shelves, the lights come on one by one|Três prateleiras, a luz acende uma a uma}}</p>
+      <h2 id="vit-t">{{Din vitrina La Ana|From La Ana’s display case|Da vitrine da La Ana}}</h2>
+      <p>{{Fotografii reale cu ce s-a făcut aici. Ce e în vitrină azi se schimbă de la o zi la alta: sună și întreabă.|Real photos of what has been made here. What’s in the case today changes daily: call and ask.|Fotografias reais do que se faz aqui. O que está hoje na vitrine muda de dia para dia: ligue e pergunte.}}</p>
+    </div>
+
+    <div class="dulap">
+      <div class="dulap-sus"><span>{{Vitrină frigorifică|Refrigerated case|Vitrine refrigerada}}</span><span class="temp" aria-hidden="true">+4°C</span></div>
+
+      <div class="raft" data-raft>
+        <span class="raft-titlu">{{Raftul 1 · Torturi|Shelf 1 · Cakes|Prateleira 1 · Bolos}}</span>
+        <div class="tub" aria-hidden="true"></div>
+        <div class="produse">
+          <figure class="prod" data-id="portocala">
+            <div class="poza"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#5A1E2E"/></svg><img src="media/tort-portocala.webp" loading="lazy" alt="Tort cu glazură roșie, felii de portocală, fluturi de ciocolată și „La mulți ani” scris pe glazură" data-alt="Tort cu glazură roșie, felii de portocală, fluturi de ciocolată și „La mulți ani” scris pe glazură|Cake with red glaze, orange slices, chocolate butterflies and “La mulți ani” written on top|Bolo com cobertura vermelha, laranja, borboletas de chocolate e «La mulți ani» escrito por cima" onerror="this.remove()"></div>
+            <div class="refl" aria-hidden="true"></div>
+            <figcaption class="eticheta" style="--r:-2deg"><b>{{Tort cu portocală|Orange cake|Bolo de laranja}}</b><span class="pret">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span><br><button type="button" data-alege="portocala">{{Vreau la fel|Same for me|Quero igual}}<svg aria-hidden="true"><use href="#i-sag"/></svg></button></figcaption>
+          </figure>
+          <figure class="prod" data-id="mure">
+            <div class="poza"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#3A2630"/></svg><img src="media/tort-mure.webp" loading="lazy" alt="Tort cu mure întregi și bucle de ciocolată pe margini" data-alt="Tort cu mure întregi și bucle de ciocolată pe margini|Cake topped with blackberries and chocolate curls on the sides|Bolo com amoras e raspas de chocolate nas laterais" onerror="this.remove()"></div>
+            <div class="refl" aria-hidden="true"></div>
+            <figcaption class="eticheta" style="--r:1.5deg"><b>{{Tort cu mure|Blackberry cake|Bolo de amoras}}</b><span class="pret">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span><br><button type="button" data-alege="mure">{{Vreau la fel|Same for me|Quero igual}}<svg aria-hidden="true"><use href="#i-sag"/></svg></button></figcaption>
+          </figure>
+          <figure class="prod" data-id="dinozaur">
+            <div class="poza"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#2F4A35"/></svg><img src="media/tort-dinozaur.webp" loading="lazy" alt="Tort pentru copii cu dinozauri verzi din pastă de zahăr" data-alt="Tort pentru copii cu dinozauri verzi din pastă de zahăr|Kids’ cake with green sugar-paste dinosaurs|Bolo infantil com dinossauros verdes de pasta de açúcar" onerror="this.remove()"></div>
+            <div class="refl" aria-hidden="true"></div>
+            <figcaption class="eticheta" style="--r:-1deg"><b>{{Tort cu dinozauri|Dinosaur cake|Bolo de dinossauros}}</b><span class="pret">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span><br><button type="button" data-alege="dinozaur">{{Vreau la fel|Same for me|Quero igual}}<svg aria-hidden="true"><use href="#i-sag"/></svg></button></figcaption>
+          </figure>
+        </div>
+        <div class="sticla" aria-hidden="true"></div>
+      </div>
+
+      <div class="raft" data-raft>
+        <span class="raft-titlu">{{Raftul 2 · Prăjituri|Shelf 2 · Pastries|Prateleira 2 · Bolos à fatia}}</span>
+        <div class="tub" aria-hidden="true"></div>
+        <div class="produse">
+          <figure class="prod">
+            <div class="poza"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#6B4A3A"/></svg><img src="media/prajituri-glazura.webp" loading="lazy" alt="Prăjituri tip mousse cu glazură piersică care curge și decor de ciocolată albă" data-alt="Prăjituri tip mousse cu glazură piersică care curge și decor de ciocolată albă|Mousse pastries with dripping peach glaze and white-chocolate discs|Bolos de mousse com cobertura de pêssego a escorrer e discos de chocolate branco" onerror="this.remove()"></div>
+            <div class="refl" aria-hidden="true"></div>
+            <figcaption class="eticheta" style="--r:1deg"><b>{{Prăjituri mousse|Mousse pastries|Bolos de mousse}}</b><span class="pret">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span></figcaption>
+          </figure>
+          <figure class="prod">
+            <div class="poza"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#4A3A30"/></svg><img src="media/prajituri-frisca.webp" loading="lazy" alt="Felii de prăjitură cu cremă, frișcă și biscuiți pe tavă neagră" data-alt="Felii de prăjitură cu cremă, frișcă și biscuiți pe tavă neagră|Cream slices topped with whipped cream and biscuits on a black tray|Fatias com creme, chantilly e bolacha num tabuleiro preto" onerror="this.remove()"></div>
+            <div class="refl" aria-hidden="true"></div>
+            <figcaption class="eticheta" style="--r:-1.8deg"><b>{{Felii cu frișcă|Cream slices|Fatias com chantilly}}</b><span class="pret">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span></figcaption>
+          </figure>
+          <figure class="prod rotund">
+            <div class="poza"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#8A6A2A"/></svg><img src="media/tarte-fructe.webp" loading="lazy" alt="Tarte mici cu cremă de vanilie, căpșuni, zmeură și afine" data-alt="Tarte mici cu cremă de vanilie, căpșuni, zmeură și afine|Small tarts with vanilla cream, strawberries, raspberries and blueberries|Tartes pequenas com creme de baunilha, morangos, framboesas e mirtilos" onerror="this.remove()"></div>
+            <div class="refl" aria-hidden="true"></div>
+            <figcaption class="eticheta" style="--r:1.2deg"><b>{{Tarte cu fructe|Fruit tarts|Tartes de fruta}}</b><span class="pret">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span></figcaption>
+          </figure>
+        </div>
+        <div class="sticla" aria-hidden="true"></div>
+      </div>
+
+      <div class="raft" data-raft>
+        <span class="raft-titlu">{{Raftul 3 · Fursecuri și colaci|Shelf 3 · Cookies & colaci|Prateleira 3 · Biscoitos e colaci}}</span>
+        <div class="tub" aria-hidden="true"></div>
+        <div class="produse">
+          <figure class="prod">
+            <div class="poza"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#8A6A3A"/></svg><img src="media/fursecuri.webp" loading="lazy" alt="Fursecuri spritate, unele cu ciocolată și cocos, altele cu glazură roz" data-alt="Fursecuri spritate, unele cu ciocolată și cocos, altele cu glazură roz|Piped butter cookies, some dipped in chocolate and coconut, some in pink glaze|Biscoitos de manteiga, uns com chocolate e coco, outros com cobertura cor-de-rosa" onerror="this.remove()"></div>
+            <div class="refl" aria-hidden="true"></div>
+            <figcaption class="eticheta" style="--r:-1.4deg"><b>{{Fursecuri|Cookies|Biscoitos}}</b><span class="pret">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span></figcaption>
+          </figure>
+          <figure class="prod rotund" data-id="cirese">
+            <div class="poza"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#3A2420"/></svg><img src="media/tort-ciocolata-cirese.webp" loading="lazy" alt="Tort de ciocolată tăiat felii, cu frișcă și cireșe confiate" data-alt="Tort de ciocolată tăiat felii, cu frișcă și cireșe confiate|Sliced chocolate cake with cream swirls and candied cherries|Bolo de chocolate às fatias com chantilly e cerejas cristalizadas" onerror="this.remove()"></div>
+            <div class="refl" aria-hidden="true"></div>
+            <figcaption class="eticheta" style="--r:1.6deg"><b>{{Tort de ciocolată|Chocolate cake|Bolo de chocolate}}</b><span class="pret">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span><br><button type="button" data-alege="cirese">{{Vreau la fel|Same for me|Quero igual}}<svg aria-hidden="true"><use href="#i-sag"/></svg></button></figcaption>
+          </figure>
+          <figure class="prod rotund">
+            <div class="poza"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#B08A4A"/></svg><img src="media/colac.webp" loading="lazy" alt="Colac împletit cu mac" data-alt="Colac împletit cu mac|Braided colac with poppy seeds|Colac entrançado com sementes de papoila" onerror="this.remove()"></div>
+            <div class="refl" aria-hidden="true"></div>
+            <figcaption class="eticheta" style="--r:-1deg"><b>{{Colac cu mac|Poppy-seed colac|Colac com papoila}}</b><span class="pret">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span></figcaption>
+          </figure>
+        </div>
+        <div class="sticla" aria-hidden="true"></div>
+      </div>
+    </div>
+    <p class="vitrina-nota rv">{{Prețurile și sortimentul zilei: de confirmat cu cofetăria. La torturi, eticheta are „Vreau la fel”: alegi modelul și treci direct la comandă.|Prices and today’s selection: to be confirmed with the shop. Cake labels have “Same for me”: pick the model and go straight to the order.|Preços e sortido do dia: a confirmar com a pastelaria. Nas etiquetas dos bolos há «Quero igual»: escolhe o modelo e passa logo à encomenda.}}</p>
+  </div>
+</section>
+
+<section class="sec comanda" id="comanda" aria-labelledby="com-t">
+  <div class="lat">
+    <div class="sec-cap rv">
+      <p class="eyebrow">{{Tort la comandă|Cake to order|Bolo por encomenda}}</p>
+      <h2 id="com-t">{{Ocazia, kilogramele și ziua.|The occasion, the weight and the day.|A ocasião, o peso e o dia.}}</h2>
+      <p>{{Completezi trei lucruri și bonul se scrie singur. Îl trimiți pe WhatsApp sau SMS, sau suni direct.|Fill in three things and the slip writes itself. Send it by WhatsApp or SMS, or just call.|Preencha três coisas e o talão escreve-se sozinho. Envie por WhatsApp ou SMS, ou ligue.}}</p>
+    </div>
+    <div class="com-grid">
+      <form class="formular" id="form" novalidate>
+        <div class="model" id="model" hidden><img id="model-img" src="" alt=""><span><b>{{Model ales:|Chosen model:|Modelo escolhido:}}</b> <span id="model-nume"></span></span><button type="button" id="model-x">{{Scoate|Remove|Retirar}}</button></div>
+        <fieldset>
+          <legend><span class="pas">1</span>{{Pentru ce ocazie?|What’s the occasion?|Para que ocasião?}}</legend>
+          <div class="chips" id="ocazii">
+            <label><input type="radio" name="oc" value="0" checked><span>{{Zi de naștere|Birthday|Aniversário}}</span></label>
+            <label><input type="radio" name="oc" value="1"><span>{{Botez|Christening|Batizado}}</span></label>
+            <label><input type="radio" name="oc" value="2"><span>{{Nuntă sau logodnă|Wedding or engagement|Casamento ou noivado}}</span></label>
+            <label><input type="radio" name="oc" value="3"><span>{{Onomastică|Name day|Dia do santo}}</span></label>
+            <label><input type="radio" name="oc" value="4"><span>{{Altă ocazie|Something else|Outra ocasião}}</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend><span class="pas">2</span>{{Cât de mare?|How big?|Que tamanho?}}</legend>
+          <div class="cantar">
+            <input type="range" id="kg" min="1" max="5" step="0.5" value="2" aria-describedby="kg-aj" aria-label="{{Greutatea tortului în kilograme|Cake weight in kilograms|Peso do bolo em quilos}}">
+            <output class="ecran" id="kg-ecran" for="kg" aria-live="polite">2,0<small>kg</small></output>
+          </div>
+          <p class="ajutor" id="kg-aj"></p>
+        </fieldset>
+        <fieldset>
+          <legend><span class="pas">3</span>{{Pentru ce zi?|For which day?|Para que dia?}}</legend>
+          <div class="camp" id="camp-zi">
+            <label class="sr" for="zi">{{Data ridicării|Pick-up date|Data de levantamento}}</label>
+            <input type="date" id="zi" required aria-describedby="zi-aj zi-er">
+            <p class="ajutor" id="zi-aj"></p>
+            <p class="eroare" id="zi-er" role="alert" hidden>{{Alege ziua în care ridici tortul.|Choose the day you’ll pick up the cake.|Escolha o dia em que levanta o bolo.}}</p>
+          </div>
+        </fieldset>
+        <div class="camp">
+          <label class="lbl" for="mesaj">{{Mesaj pe tort (opțional)|Message on the cake (optional)|Mensagem no bolo (opcional)}}</label>
+          <input type="text" id="mesaj" maxlength="40" placeholder="La mulți ani, Maria!">
+        </div>
+        <div class="doua">
+          <div class="camp"><label class="lbl" for="nume">{{Numele tău|Your name|O seu nome}}</label><input type="text" id="nume" autocomplete="name"></div>
+          <div class="camp"><label class="lbl" for="obs">{{Alte detalii|Other details|Outros detalhes}}</label><input type="text" id="obs" placeholder="fără nuci, culoare roz…" data-ph="fără nuci, culoare roz…|no nuts, pink colour…|sem nozes, cor-de-rosa…"></div>
+        </div>
+      </form>
+      <aside class="bon" aria-labelledby="bon-t">
+        <h3 id="bon-t">{{Bon de comandă|Order slip|Talão de encomenda}}</h3>
+        <p class="cap">La Ana · Cofetărie Patiserie<br>0745 374 165</p>
+        <pre id="bon-txt" aria-live="polite"></pre>
+        <div class="lin"></div>
+        <div class="trimite">
+          <a class="btn btn-verde" href="tel:+40745374165"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{Sună și citește bonul|Call and read the slip|Ligar e ler o talão}}</a>
+          <a class="btn btn-wa" id="trimite-wa" href="https://wa.me/40745374165" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</a>
+          <a class="btn btn-sms" id="trimite-sms" href="sms:+40745374165"><svg class="i" aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</a>
+        </div>
+        <p class="mic">{{Bonul pleacă în română. Comanda e confirmată doar când răspunde cofetăria.|The slip is sent in Romanian. The order is confirmed only when the shop replies.|O talão segue em romeno. A encomenda só fica confirmada quando a pastelaria responder.}}</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="locul" aria-labelledby="loc-t">
+  <div class="lat">
+    <div class="sec-cap rv">
+      <p class="eyebrow">{{Cofetăria|The shop|A pastelaria}}</p>
+      <h2 id="loc-t">{{Cofetăria din Valea Lupului|The pastry shop in Valea Lupului|A pastelaria de Valea Lupului}}</h2>
+      <p>{{Vitrine frigorifice, rafturi cu cozonaci și o tejghea mov. Afișul de la intrare spune tot: prăjituri, torturi aniversare, colaci.|Refrigerated cases, shelves of sweet bread and a lilac counter. The poster by the door says it all: pastries, birthday cakes, colaci.|Vitrines refrigeradas, prateleiras de pão doce e um balcão lilás. O cartaz à entrada diz tudo: bolos, bolos de aniversário, colaci.}}</p>
+    </div>
+    <div class="locul-grid">
+      <figure class="foto l-a rv"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#5A1E86"/><rect y="6" width="10" height="4" fill="#1A7A3C"/></svg><img src="media/afis-comanda.webp" loading="lazy" alt="Afișul cofetăriei: „Comandă aici produsele preferate” — prăjituri, torturi aniversare, colaci, „Îndulcește fiecare moment!”" data-alt="Afișul cofetăriei: „Comandă aici produsele preferate” — prăjituri, torturi aniversare, colaci, „Îndulcește fiecare moment!”|The shop’s poster: “Order your favourites here” — pastries, birthday cakes, colaci, “Sweeten every moment!”|O cartaz da pastelaria: «Encomende aqui os seus preferidos» — bolos, bolos de aniversário, colaci, «Adoce cada momento!»" onerror="this.remove()"><figcaption>{{Afișul de comenzi|The order poster|O cartaz de encomendas}}</figcaption></figure>
+      <div class="l-b">
+        <figure class="foto rv"><svg viewBox="0 0 16 9" preserveAspectRatio="none" aria-hidden="true"><rect width="16" height="9" fill="#9CC3E6"/><rect y="4" width="16" height="5" fill="#E8E4DC"/></svg><img src="media/fatada-market.webp" loading="lazy" alt="Clădirea cu inscripția „Market la Ana” din Valea Lupului" data-alt="Clădirea cu inscripția „Market la Ana” din Valea Lupului|The building marked “Market la Ana” in Valea Lupului|O edifício com a inscrição «Market la Ana» em Valea Lupului" onerror="this.remove()"><figcaption>Market la Ana · Valea Lupului</figcaption></figure>
+        <ul class="fapte rv">
+          <li><svg aria-hidden="true"><use href="#i-fem"/></svg><div><b>{{Afacere condusă de o femeie|Woman-owned business|Negócio gerido por uma mulher}}</b><span>{{Așa se prezintă cofetăria pe Google.|That’s how the shop describes itself on Google.|É assim que a pastelaria se apresenta no Google.}}</span></div></li>
+          <li><svg aria-hidden="true"><use href="#i-tort"/></svg><div><b>{{Torturi pentru ocazii|Cakes for occasions|Bolos para ocasiões}}</b><span>{{Aniversări, botezuri, torturi pentru copii. Termenul de comandă: de confirmat.|Birthdays, christenings, kids’ cakes. Order lead time: to be confirmed.|Aniversários, batizados, bolos infantis. Prazo de encomenda: a confirmar.}}</span></div></li>
+          <li><svg aria-hidden="true"><use href="#i-fb"/></svg><div><b>Facebook</b><span><a href="https://www.facebook.com/Cofetaria.La.Ana.VL" target="_blank" rel="noopener">@Cofetaria.La.Ana.VL</a></span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="contact" aria-labelledby="ct-t">
+  <div class="lat ct-grid">
+    <div class="rv">
+      <p class="eyebrow">{{Program|Opening hours|Horário}}</p>
+      <h2 id="ct-t">{{Când e lumina aprinsă|When the lights are on|Quando a luz está acesa}}</h2>
+      <ul class="zile" id="zile" style="margin-top:28px"></ul>
+      <p class="stare" id="stare"><i></i><span id="stare-t"></span></p>
+    </div>
+    <div class="rv">
+      <p class="eyebrow">{{Adresa|Address|Morada}}</p>
+      <p class="adr">Strada Anton Pann<br>707410 Valea Lupului</p>
+      <div class="ct-linii">
+        <a href="tel:+40745374165"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>0745 374 165</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=47.1853502,27.5143882" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>{{Deschide în Google Maps|Open in Google Maps|Abrir no Google Maps}}</a>
+      </div>
+      <div class="harta" id="harta"><button class="btn btn-tub" type="button" id="arata-harta"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>{{Arată harta|Show the map|Mostrar o mapa}}</button></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="lat legal">
+    <span>© 2026 Cofetăria La Ana · {{denumire firmă și CUI: de confirmat|company name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+    <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+    <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+    <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+  </div>
+</footer>
+
+<div class="jos" id="jos">
+  <a class="btn btn-verde" href="tel:+40745374165"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <a class="btn btn-contur" href="#comanda"><svg class="i" aria-hidden="true"><use href="#i-tort"/></svg>{{Comandă|Order|Encomendar}}</a>
+</div>
+
+<noscript><p style="padding:16px;background:#fff">Cofetăria La Ana · Strada Anton Pann, 707410 Valea Lupului · Tel. 0745 374 165 · Duminică 08:00–19:00, restul programului: de confirmat · 4,3 pe Google · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Bakery","name":"Cofetăria La Ana","description":"Cofetărie și patiserie în Valea Lupului: torturi aniversare, prăjituri, fursecuri, colaci.","telephone":"+40745374165","address":{"@type":"PostalAddress","streetAddress":"Strada Anton Pann","postalCode":"707410","addressLocality":"Valea Lupului","addressRegion":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1853502,"longitude":27.5143882},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"https://schema.org/Sunday","opens":"08:00","closes":"19:00"}],"sameAs":["https://www.facebook.com/Cofetaria.La.Ana.VL"],"image":"media/interior-vitrine.webp"}
+</script>
+<script>
+(function(){
+  var html=document.documentElement,$=function(i){return document.getElementById(i)};
+  var reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var L=function(){var l=html.dataset.lang;return l==='en'||l==='pt'?l:'ro'};
+  var IX={ro:0,en:1,pt:2};
+  var t=function(a){return a[IX[L()]]};
+
+  /* alt-uri */
+  function atrib(){document.querySelectorAll('[data-alt]').forEach(function(e){e.alt=e.dataset.alt.split('|')[IX[L()]]});document.querySelectorAll('[data-ph]').forEach(function(e){e.placeholder=e.dataset.ph.split('|')[IX[L()]]});document.querySelectorAll('[data-aria]').forEach(function(e){e.setAttribute('aria-label',e.dataset.aria.split('|')[IX[L()]])})}
+
+  /* banda dublata */
+  var b=$('banda-in');b.innerHTML+=b.innerHTML;
+
+  /* erou: lumina se aprinde */
+  var erou=$('erou');
+  requestAnimationFrame(function(){setTimeout(function(){erou.classList.add('aprins')},reduz?0:250)});
+
+  /* bara */
+  var bara=$('bara'),jos=$('jos');
+  function onScroll(){bara.classList.toggle('scrolled',scrollY>20);jos.classList.toggle('vizibil',scrollY>innerHeight*.5)}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* reveal + rafturi */
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add(e.target.hasAttribute('data-raft')?'aprins':'vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -18% 0px'}):null;
+  document.querySelectorAll('.rv,[data-raft]').forEach(function(x){if(io&&!reduz)io.observe(x);else x.classList.add(x.hasAttribute('data-raft')?'aprins':'vis')});
+
+  /* meniu */
+  var burger=document.querySelector('.burger'),meniu=$('meniu'),inch=meniu.querySelector('.inchide');
+  function deschide(d){meniu.classList.toggle('deschis',d);burger.setAttribute('aria-expanded',d?'true':'false');document.body.style.overflow=d?'hidden':'';(d?inch:burger).focus()}
+  burger.addEventListener('click',function(){deschide(true)});
+  inch.addEventListener('click',function(){deschide(false)});
+  meniu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){deschide(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&meniu.classList.contains('deschis'))deschide(false)});
+
+  /* ---------- comanda ---------- */
+  var OC=[['Zi de naștere','Birthday','Aniversário'],['Botez','Christening','Batizado'],['Nuntă sau logodnă','Wedding or engagement','Casamento ou noivado'],['Onomastică','Name day','Dia do santo'],['Altă ocazie','Other occasion','Outra ocasião']];
+  var MOD={portocala:{img:'media/tort-portocala.webp',n:['tortul cu portocală și glazură roșie','the orange cake with red glaze','o bolo de laranja com cobertura vermelha']},mure:{img:'media/tort-mure.webp',n:['tortul cu mure și bucle de ciocolată','the blackberry cake with chocolate curls','o bolo de amoras com raspas de chocolate']},dinozaur:{img:'media/tort-dinozaur.webp',n:['tortul cu dinozauri','the dinosaur cake','o bolo de dinossauros']},cirese:{img:'media/tort-ciocolata-cirese.webp',n:['tortul de ciocolată cu cireșe','the chocolate cake with cherries','o bolo de chocolate com cerejas']}};
+  var ZILE=[['duminică','Sunday','domingo'],['luni','Monday','segunda'],['marți','Tuesday','terça'],['miercuri','Wednesday','quarta'],['joi','Thursday','quinta'],['vineri','Friday','sexta'],['sâmbătă','Saturday','sábado']];
+  var LUNI=['ianuarie','februarie','martie','aprilie','mai','iunie','iulie','august','septembrie','octombrie','noiembrie','decembrie'];
+  var model=null,atins=false;
+  var kg=$('kg'),zi=$('zi');
+  var d0=new Date();d0.setDate(d0.getDate()+1);
+  var iso=function(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+  zi.min=iso(d0);
+  function fmtKg(v){return (+v).toFixed(1).replace('.',',')}
+  function dataRo(s){if(!s)return '';var p=s.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);return ZILE[d.getDay()][0]+', '+d.getDate()+' '+LUNI[d.getMonth()]+' '+d.getFullYear()}
+  function dataUI(s){if(!s)return '';var p=s.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);return ZILE[d.getDay()][IX[L()]]+' · '+d.toLocaleDateString(L()==='pt'?'pt-PT':L()==='en'?'en-GB':'ro-RO',{day:'numeric',month:'long'})}
+  function oc(){var r=document.querySelector('input[name=oc]:checked');return r?+r.value:0}
+  function textBon(){
+    var v=+kg.value,f1=Math.round(v*8),f2=Math.round(v*10);
+    var l=['Bună ziua! Aș dori să comand un tort la Cofetăria La Ana.','','Ocazie: '+OC[oc()][0],'Greutate: '+fmtKg(v)+' kg (cca '+f1+'–'+f2+' felii)','Ziua: '+(zi.value?dataRo(zi.value):'(de ales)')];
+    if(model)l.push('Model: ca '+MOD[model].n[0]+' din vitrina de pe site');
+    var m=$('mesaj').value.trim();if(m)l.push('Mesaj pe tort: „'+m+'”');
+    var o=$('obs').value.trim();if(o)l.push('Detalii: '+o);
+    var n=$('nume').value.trim();if(n)l.push('','Nume: '+n);
+    l.push('','Mulțumesc!');
+    return l.join('\n');
+  }
+  function rand(){
+    var v=+kg.value;
+    $('kg-ecran').innerHTML=fmtKg(v)+'<small>kg</small>';
+    $('kg-aj').textContent=t(['Orientativ: cca '+Math.round(v*8)+'–'+Math.round(v*10)+' felii (regula de 8–10 felii la kilogram). Greutatea finală o stabilești cu cofetăria.','Rough guide: about '+Math.round(v*8)+'–'+Math.round(v*10)+' slices (8–10 slices per kilo). Final weight agreed with the shop.','Orientativo: cerca de '+Math.round(v*8)+'–'+Math.round(v*10)+' fatias (8–10 fatias por quilo). O peso final combina-se com a pastelaria.']);
+    $('zi-aj').textContent=zi.value?t(['Ridici '+dataUI(zi.value)+'. Termenul minim de comandă: de confirmat.','Pick-up '+dataUI(zi.value)+'. Minimum notice: to be confirmed.','Levantamento '+dataUI(zi.value)+'. Antecedência mínima: a confirmar.']):t(['Termenul minim de comandă: de confirmat cu cofetăria.','Minimum notice: to be confirmed with the shop.','Antecedência mínima: a confirmar com a pastelaria.']);
+    var txt=textBon();$('bon-txt').textContent=txt;
+    var enc=encodeURIComponent(txt);
+    $('trimite-wa').href='https://wa.me/40745374165?text='+enc;
+    $('trimite-sms').href='sms:+40745374165?&body='+enc;
+    if(model){$('model').hidden=false;$('model-img').src=MOD[model].img;$('model-nume').textContent=MOD[model].n[IX[L()]]}else $('model').hidden=true;
+  }
+  function valid(){var ok=!!zi.value&&zi.value>=zi.min;$('zi-er').hidden=ok;$('camp-zi').classList.toggle('gresit',!ok);return ok}
+  $('form').addEventListener('input',function(e){if(e.target===zi&&atins)valid();rand()});
+  zi.addEventListener('blur',function(){atins=true;valid()});
+  $('form').addEventListener('submit',function(e){e.preventDefault()});
+  ['trimite-wa','trimite-sms'].forEach(function(id){$(id).addEventListener('click',function(e){atins=true;if(!valid()){e.preventDefault();zi.focus()}})});
+  document.querySelectorAll('[data-alege]').forEach(function(bt){bt.addEventListener('click',function(){
+    model=bt.dataset.alege;document.querySelectorAll('.prod').forEach(function(p){p.classList.toggle('ales',p.dataset.id===model)});rand();
+    $('comanda').scrollIntoView({behavior:reduz?'auto':'smooth'});setTimeout(function(){zi.focus({preventScroll:true})},reduz?0:700);
+  })});
+  $('model-x').addEventListener('click',function(){model=null;document.querySelectorAll('.prod.ales').forEach(function(p){p.classList.remove('ales')});rand()});
+
+  /* ---------- program ---------- */
+  function program(){
+    var ord=[1,2,3,4,5,6,0],azi=new Date().getDay(),h='';
+    ord.forEach(function(d){h+='<li'+(d===azi?' class="azi"':'')+'><span>'+ZILE[d][IX[L()]]+(d===azi?' · '+t(['azi','today','hoje']):'')+'</span>'+(d===0?'<span>08:00–19:00</span>':'<span class="dc">'+t(['de confirmat','to be confirmed','a confirmar'])+'</span>')+'</li>'});
+    $('zile').innerHTML=h;
+    var st=$('stare'),now=new Date(),m=now.getHours()*60+now.getMinutes();
+    if(azi===0){var on=m>=480&&m<1140;st.classList.toggle('deschis',on);$('stare-t').textContent=on?t(['Acum: deschis, până la 19:00','Open now, until 19:00','Agora: aberto, até às 19:00']):t(['Acum: închis','Closed now','Agora: fechado'])}
+    else{st.classList.remove('deschis');$('stare-t').textContent=t(['Program pentru azi: de confirmat — sună înainte.','Today’s hours: to be confirmed — call ahead.','Horário de hoje: a confirmar — ligue antes.'])}
+  }
+
+  /* harta */
+  $('arata-harta').addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.google.com/maps?q=47.1853502,27.5143882&z=16&output=embed';f.title=t(['Harta: Cofetăria La Ana','Map: Cofetăria La Ana','Mapa: Cofetăria La Ana']);f.loading='lazy';$('harta').innerHTML='';$('harta').appendChild(f)});
+
+  /* limba */
+  function seteaza(l){
+    html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
+    try{localStorage.setItem('__LSKEY__',l)}catch(e){}
+    atrib();rand();program();
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+  seteaza(L());
+})();
+</script>
+</body>
+</html>

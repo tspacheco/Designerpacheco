@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laborator Blanca · Torturi și prăjituri la comandă, Egros Iași</title>
+<meta name="description" content="Laborator Blanca, Calea Chișinăului 29 (Egros Shopping), Iași: torturi personalizate, mini-prăjituri pentru evenimente. 4,5 pe Google din 260 de recenzii. Tel. 0747 507 177.">
+<meta name="theme-color" content="#24140E">
+<meta property="og:title" content="Laborator Blanca · Iași">
+<meta property="og:description" content="Torturi cu mesajul tău scris în cremă. Comenzi: 0747 507 177.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/tort-75-bunica.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2324140E'/%3E%3Cpath d='M8 22c3-9 6-12 8-12s2 4-1 6 5-3 7 0-4 6-9 6' fill='none' stroke='%23F6EBDC' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --ciocolata:#24140E; --cacao:#331C13; --ganache:#4A2A1C; --glazura:#6B3F2A;
+  --crema:#F6EBDC; --crema-2:#EADBC4; --crema-3:#FBF5EC;
+  --aur:#C99A3B; --aur-2:#E2BF6E; --zmeura:#A3243A;
+  --text:#2A1810; --text-2:#5A4234; --text-3:#7A6252;
+  --f-disp:"Fraunces",Georgia,serif;
+  --f-text:"Reddit Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --lat:min(1180px, 100% - 40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --jos:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px;scroll-behavior:smooth}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
+body{margin:0;background:var(--crema-3);color:var(--text);font:400 17px/1.6 var(--f-text);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--aur-2);outline-offset:3px;border-radius:4px}
+.lat{width:var(--lat);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+svg.i{width:20px;height:20px;flex:none}
+
+.prezentare{background:var(--aur);color:var(--ciocolata);font:700 11.5px/1.3 var(--f-text);letter-spacing:.12em;text-align:center;padding:7px 14px;text-transform:uppercase}
+
+.bara{position:sticky;top:0;z-index:40;transition:background .3s,box-shadow .3s}
+.bara.scrolled{background:var(--ciocolata);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.bara-in{display:flex;align-items:center;gap:18px;height:68px}
+.marca{display:flex;flex-direction:column;text-decoration:none;color:var(--crema);margin-right:auto;white-space:nowrap}
+.marca small{font:600 10.5px/1 var(--f-text);letter-spacing:.24em;text-transform:uppercase;color:var(--aur-2)}
+.marca b{font:italic 600 28px/1.05 var(--f-disp);font-variation-settings:"SOFT" 100,"opsz" 72}
+.nav{display:flex;gap:4px}
+.nav a{color:var(--crema);text-decoration:none;font-weight:600;font-size:15px;padding:10px 12px;border-radius:8px;transition:background .2s}
+.nav a:hover{background:rgba(246,235,220,.1)}
+.limbi{display:flex;gap:2px;border:1px solid rgba(246,235,220,.25);border-radius:10px;padding:3px}
+.limbi button{border:0;background:none;color:var(--crema);font:700 12.5px/1 var(--f-text);padding:9px 10px;border-radius:7px;cursor:pointer;min-width:40px;min-height:34px}
+.limbi button[aria-pressed="true"]{background:var(--crema);color:var(--ciocolata)}
+.limbi .doar-rev{display:none}
+html.rev .limbi .doar-rev{display:block}
+.burger{display:none;width:46px;height:46px;border:0;background:rgba(246,235,220,.1);border-radius:12px;cursor:pointer;position:relative}
+.burger span,.burger span::before,.burger span::after{position:absolute;left:13px;width:20px;height:2px;background:var(--crema);content:""}
+.burger span{top:22px}.burger span::before{top:-6px;left:0}.burger span::after{top:6px;left:0}
+.meniu{position:fixed;inset:0;z-index:60;background:var(--ciocolata);color:var(--crema);padding:24px 24px calc(24px + var(--jos));display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.meniu.deschis{opacity:1;visibility:visible}
+.meniu .inchide{align-self:flex-end;border:0;background:rgba(246,235,220,.12);color:var(--crema);border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
+.meniu ol{list-style:none;margin:28px 0 0;padding:0}
+.meniu li a{display:block;font:italic 500 40px/1.15 var(--f-disp);font-variation-settings:"SOFT" 100;text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(246,235,220,.12)}
+@media (max-width:860px){.nav{display:none}.burger{display:block}}
+
+/* EROU */
+.erou{position:relative;background:var(--ciocolata);color:var(--crema);margin-top:-68px;padding-top:68px;isolation:isolate}
+.erou::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 60% at 80% 30%,#4A2A1C 0%,transparent 70%),radial-gradient(50% 50% at 10% 90%,#331C13 0%,transparent 70%)}
+.erou-in{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:36px 120px;min-height:min(800px,calc(100svh - 30px))}
+.eyebrow{font:700 12.5px/1.3 var(--f-text);letter-spacing:.2em;text-transform:uppercase;color:var(--aur-2);margin:0 0 6px}
+h1{margin:0;line-height:1}
+.scris{display:block;width:100%;max-width:640px;height:auto;overflow:visible}
+.scris text{font-family:var(--f-disp);font-style:italic;font-weight:600;font-variation-settings:"SOFT" 100,"opsz" 144}
+.duya{transition:opacity .4s}
+.sub{font:400 clamp(18px,1.9vw,21px)/1.5 var(--f-text);color:var(--crema-2);max-width:520px;margin:10px 0 0}
+.sub b{color:var(--crema);font-weight:600}
+.erou-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:12px;border:2px solid transparent;font-weight:700;font-size:16.5px;text-decoration:none;cursor:pointer;transition:transform .18s var(--ease),background .2s,border-color .2s,color .2s;touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.btn-crema{background:var(--crema);color:var(--ciocolata)}
+.btn-crema:hover{background:#fff}
+.btn-contur{border-color:rgba(246,235,220,.4);color:var(--crema)}
+.btn-contur:hover{border-color:var(--crema);background:rgba(246,235,220,.06)}
+.btn-ciocolata{background:var(--ciocolata);color:var(--crema)}
+.btn-ciocolata:hover{background:var(--ganache)}
+.btn-c2{border-color:var(--ganache);color:var(--ganache);background:transparent}
+.btn-c2:hover{background:var(--ganache);color:var(--crema)}
+.nota{display:flex;align-items:center;gap:10px;margin-top:26px;color:var(--crema-2);font-size:15px}
+.nota .stele{display:flex;gap:2px;color:var(--aur-2)}
+.nota .stele svg{width:16px;height:16px;fill:currentColor}
+.nota b{font:italic 600 24px/1 var(--f-disp);color:var(--crema)}
+
+.platou{position:relative;margin:0;justify-self:center;width:min(100%,500px)}
+.platou .farfurie{position:relative;aspect-ratio:1;filter:drop-shadow(0 40px 50px rgba(0,0,0,.55))}
+.platou .farfurie>svg.bord{position:absolute;inset:0;width:100%;height:100%}
+.platou .poza{position:absolute;inset:7%;border-radius:50%;overflow:hidden;background:var(--ganache)}
+.platou .poza>svg{position:absolute;inset:0;width:100%;height:100%}
+.platou .poza img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.platou figcaption{position:absolute;right:-6px;bottom:8%;background:var(--crema);color:var(--ciocolata);font:italic 500 16px/1.2 var(--f-disp);padding:10px 14px;border-radius:10px;transform:rotate(-3deg);box-shadow:0 10px 24px rgba(0,0,0,.35);max-width:220px}
+.js .erou .platou{opacity:0;transform:translateY(30px) rotate(-8deg) scale(.96)}
+.erou.gata .platou{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1.3s var(--ease)}
+.js .erou .sub,.js .erou .erou-cta,.js .erou .nota,.js .erou .eyebrow{opacity:0;transform:translateY(16px)}
+.erou.scris-gata .sub,.erou.scris-gata .erou-cta,.erou.scris-gata .nota,.erou.gata .eyebrow{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .8s var(--ease)}
+.erou.scris-gata .erou-cta{transition-delay:.12s}
+.erou.scris-gata .nota{transition-delay:.24s}
+.picurat{position:absolute;left:0;right:0;bottom:-1px;height:90px;display:block;width:100%}
+@media (max-width:860px){
+  .erou-in{grid-template-columns:1fr;gap:12px;padding-block:20px 100px;min-height:0}
+  .platou{order:-1;width:min(78%,360px)}
+  .platou figcaption{font-size:14px;right:-10px}
+}
+
+/* SECTIUNI */
+.sec{padding:clamp(72px,9vw,120px) 0}
+.sec-cap{max-width:720px;margin-bottom:46px}
+.sec-cap .eyebrow{color:var(--glazura)}
+h2{font:italic 600 clamp(40px,5.4vw,66px)/1.02 var(--f-disp);font-variation-settings:"SOFT" 100,"opsz" 144;margin:0;letter-spacing:-.01em}
+.sec-cap p{color:var(--text-2);font-size:18px;margin:16px 0 0}
+
+/* MESAJE */
+.mesaje-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.tort{position:relative;margin:0;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 1px 0 var(--crema-2),0 18px 40px rgba(42,24,16,.08);display:flex;flex-direction:column}
+.tort .p{position:relative;overflow:hidden;background:var(--crema-2)}
+.tort .p>svg{position:absolute;inset:0;width:100%;height:100%}
+.tort .p img{position:relative;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.tort:hover .p img{transform:scale(1.04)}
+.tort figcaption{padding:16px 18px 18px}
+.tort q{display:block;font:italic 500 23px/1.2 var(--f-disp);font-variation-settings:"SOFT" 100;color:var(--ganache);quotes:"„" "”"}
+.tort figcaption span{display:block;font-size:14.5px;color:var(--text-3);margin-top:6px}
+.t1{grid-column:span 7}.t1 .p{flex:1;min-height:320px}
+.t2{grid-column:span 5}.t2 .p{aspect-ratio:4/5;flex:1}
+.t3{grid-column:span 4}.t3 .p{aspect-ratio:3/4}
+.t4{grid-column:span 4}.t4 .p{aspect-ratio:3/4}
+.t5{grid-column:span 4}.t5 .p{aspect-ratio:3/4}
+@media (max-width:820px){.t1,.t2{grid-column:1/-1}.t3,.t4,.t5{grid-column:span 6}.t5{grid-column:1/-1}.t5 .p{aspect-ratio:4/3}}
+@media (max-width:520px){.t3,.t4{grid-column:1/-1}.t3 .p,.t4 .p{aspect-ratio:4/3}}
+
+/* MINI */
+.mini{background:var(--ciocolata);color:var(--crema);position:relative;overflow:hidden}
+.mini .eyebrow{color:var(--aur-2)}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.mini-foto{position:relative;margin:0;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:var(--ganache)}
+.mini-foto>svg{position:absolute;inset:0;width:100%;height:100%}
+.mini-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mini p{color:var(--crema-2);font-size:18px}
+.mini ul{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.mini li{display:flex;gap:14px;align-items:flex-start;border-top:1px solid rgba(246,235,220,.14);padding-top:12px}
+.mini li svg{width:22px;height:22px;color:var(--aur-2);flex:none;margin-top:3px}
+@media (max-width:820px){.mini-grid{grid-template-columns:1fr}.mini-foto{aspect-ratio:4/3}}
+
+/* COMANDA */
+.comanda{background:var(--crema)}
+.com-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:start}
+.formular{background:#fff;border-radius:22px;padding:clamp(22px,3.4vw,38px);box-shadow:0 24px 60px rgba(42,24,16,.1)}
+fieldset{border:0;margin:0 0 26px;padding:0}
+legend,.lbl{display:block;font-weight:700;font-size:15.5px;margin-bottom:10px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chips label>span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:10px;border:1.5px solid var(--crema-2);font-weight:600;font-size:15px;background:var(--crema-3);transition:background .2s,border-color .2s,color .2s}
+.chips input:checked+span{background:var(--ganache);border-color:var(--ganache);color:var(--crema)}
+.chips input:focus-visible+span{outline:3px solid var(--aur);outline-offset:2px}
+.chips label:hover>span{border-color:var(--ganache)}
+.pas{display:flex;align-items:center;gap:0;width:max-content;border:1.5px solid var(--crema-2);border-radius:14px;overflow:hidden}
+.pas button{width:52px;height:56px;border:0;background:var(--crema-3);font-size:24px;font-weight:700;cursor:pointer;color:var(--ganache)}
+.pas button:hover{background:var(--crema-2)}
+.pas output{min-width:96px;text-align:center;font:italic 600 30px/56px var(--f-disp);font-variation-settings:"SOFT" 100;color:var(--ciocolata)}
+.ajutor{font-size:14px;color:var(--text-3);margin:8px 0 0}
+.camp{margin-bottom:18px}
+.camp input{width:100%;min-height:50px;border:1.5px solid var(--crema-2);border-radius:12px;padding:12px 14px;background:#fff;font-size:16px}
+.camp input:focus{border-color:var(--ganache);outline:none;box-shadow:0 0 0 3px rgba(74,42,28,.18)}
+.camp .eroare{color:#A3243A;font-size:14px;font-weight:600;margin:6px 0 0}
+.camp.gresit input{border-color:#A3243A}
+.doua{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bifa{display:flex;gap:12px;align-items:center;min-height:44px;cursor:pointer;font-weight:600}
+.bifa input{width:22px;height:22px;accent-color:var(--ganache)}
+
+.placuta-wrap{position:sticky;top:96px}
+.placuta-scena{background:var(--ciocolata);border-radius:22px;padding:28px 22px 24px;color:var(--crema);box-shadow:0 30px 60px rgba(36,20,14,.35)}
+.placuta-scena h3{font:700 12.5px/1.3 var(--f-text);letter-spacing:.2em;text-transform:uppercase;color:var(--aur-2);margin:0 0 16px}
+.placuta{display:block;width:100%;height:auto}
+.placuta text{font-family:var(--f-disp);font-style:italic;font-weight:600;font-variation-settings:"SOFT" 100,"opsz" 72}
+.rezumat{margin:18px 0 0;padding:16px 0 0;border-top:1px dashed rgba(246,235,220,.25);font-size:15px;color:var(--crema-2);white-space:pre-wrap;min-height:110px}
+.trimite{display:grid;gap:10px;margin-top:18px}
+.trimite .btn{width:100%}
+.btn-wa{border-color:rgba(246,235,220,.4);color:var(--crema)}
+.btn-wa:hover{border-color:var(--crema);background:rgba(246,235,220,.06)}
+.mic{font-size:13px;color:var(--crema-2);opacity:.85;margin:12px 0 0;text-align:center}
+@media (max-width:900px){.com-grid{grid-template-columns:1fr}.placuta-wrap{position:relative;top:0}}
+@media (max-width:480px){.doua{grid-template-columns:1fr}}
+
+/* LOCUL */
+.loc-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,56px);align-items:start}
+.loc-foto{position:relative;margin:0;border-radius:20px;overflow:hidden;aspect-ratio:16/10;background:var(--crema-2)}
+.loc-foto>svg{position:absolute;inset:0;width:100%;height:100%}
+.loc-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.loc-foto figcaption{position:absolute;left:12px;bottom:12px;background:rgba(36,20,14,.85);color:var(--crema);font-size:13px;padding:7px 11px;border-radius:8px}
+.adr{font:italic 600 clamp(26px,3vw,34px)/1.15 var(--f-disp);font-variation-settings:"SOFT" 100;margin:0 0 6px}
+.adr-sub{color:var(--text-2);margin:0 0 18px}
+.zile{list-style:none;margin:0;padding:0}
+.zile li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--crema-2);font-size:15.5px}
+.zile li.azi{font-weight:700;color:var(--ganache)}
+.zile .dc{color:var(--text-3)}
+.stare{display:flex;align-items:center;gap:10px;margin:14px 0 0;font-size:15px;color:var(--text-2)}
+.stare i{width:10px;height:10px;border-radius:50%;background:#B8A898}
+.stare.deschis i{background:#2E8B57;box-shadow:0 0 0 4px rgba(46,139,87,.18)}
+.ct-linii{display:grid;gap:6px;margin:20px 0}
+.ct-linii a{display:inline-flex;align-items:center;gap:12px;text-decoration:none;min-height:44px;font-weight:600;color:var(--ganache)}
+.ct-linii a:hover{text-decoration:underline}
+.harta{margin-top:22px;border-radius:20px;overflow:hidden;background:var(--crema-2);aspect-ratio:16/9;position:relative;display:grid;place-items:center}
+.harta iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (max-width:820px){.loc-grid{grid-template-columns:1fr}}
+
+footer{background:var(--ciocolata);color:var(--crema-2);padding:40px 0 calc(110px + var(--jos));font-size:14px}
+.legal{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center}
+.legal a{color:var(--crema);min-height:44px;display:inline-flex;align-items:center}
+@media (min-width:861px){footer{padding-bottom:40px}}
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:10px;padding:10px 14px calc(10px + var(--jos));background:rgba(36,20,14,.96);transform:translateY(110%);transition:transform .3s var(--ease)}
+.jos.vizibil{transform:none}
+.jos .btn{flex:1;min-height:50px}
+@media (max-width:860px){.jos{display:flex}}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.vis{opacity:1;transform:none}
+html:not(.js) .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .erou .platou,.js .erou .sub,.js .erou .erou-cta,.js .erou .nota,.js .erou .eyebrow,.rv{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 1.8.8"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 21s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-stea" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></symbol>
+    <symbol id="i-pos" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M4 4l8 3 4 10-4 3-8-16z"/><path d="M16 17l3 3M12 7l3-1"/></g></symbol>
+    <symbol id="i-oameni" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 19c.5-3.5 3-5 6-5s5.5 1.5 6 5M15 14.5c2.8-.4 5 1 5.5 4"/></g></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></g></symbol>
+  </defs>
+</svg>
+
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru Laborator Blanca|PACHECO STUDIOS PREVIEW · demo website for Laborator Blanca|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para o Laborator Blanca}}</div>
+
+<header class="bara" id="bara">
+  <div class="lat bara-in">
+    <a class="marca" href="#sus" aria-label="{{Laborator Blanca — sus|Laborator Blanca — top|Laborator Blanca — topo}}"><small>Laborator</small><b>Blanca</b></a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#mesaje">{{Torturi|Cakes|Bolos}}</a>
+      <a href="#mini">{{Mini-prăjituri|Mini desserts|Mini-sobremesas}}</a>
+      <a href="#comanda">{{Comandă pentru eveniment|Event order|Encomenda para evento}}</a>
+      <a href="#loc">{{Unde suntem|Find us|Onde estamos}}</a>
+    </nav>
+    <div class="limbi" role="group" aria-label="{{Limba|Language|Língua}}">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false" class="doar-rev">PT</button>
+    </div>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="{{Deschide meniul|Open menu|Abrir o menu}}"><span></span></button>
+  </div>
+</header>
+<div class="meniu" id="meniu" role="dialog" aria-modal="true" aria-label="{{Meniu|Menu|Menu}}">
+  <button class="inchide" type="button">{{Închide|Close|Fechar}} ×</button>
+  <ol>
+    <li><a href="#mesaje">{{Torturi|Cakes|Bolos}}</a></li>
+    <li><a href="#mini">{{Mini-prăjituri|Mini desserts|Mini-sobremesas}}</a></li>
+    <li><a href="#comanda">{{Comandă pentru eveniment|Event order|Encomenda para evento}}</a></li>
+    <li><a href="#loc">{{Unde suntem|Find us|Onde estamos}}</a></li>
+  </ol>
+</div>
+
+<main id="sus">
+<section class="erou" id="erou">
+  <div class="lat erou-in">
+    <div>
+      <p class="eyebrow">{{Laborator de cofetărie · Iași|Pastry laboratory · Iași|Laboratório de pastelaria · Iași}}</p>
+      <h1><span class="sr">Laborator Blanca</span>
+        <svg class="scris" id="scris" viewBox="0 0 640 230" aria-hidden="true">
+          <defs>
+            <mask id="m-scris" maskUnits="userSpaceOnUse" x="-40" y="-40" width="720" height="320"><path id="cale" d="" fill="none" stroke="#fff" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/></mask>
+            <filter id="relief" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="3" flood-color="#000" flood-opacity=".45"/></filter>
+          </defs>
+          <g mask="url(#m-scris)" filter="url(#relief)">
+            <text x="8" y="182" font-size="196" fill="#F6EBDC" stroke="#E6D3B8" stroke-width="2.2" letter-spacing="-2">Blanca</text>
+            <text x="8" y="182" font-size="196" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.4" transform="translate(-1.5 -2)" letter-spacing="-2">Blanca</text>
+          </g>
+          <g id="duya" class="duya" opacity="0">
+            <g transform="rotate(-28)">
+              <path d="M-7 -6 L0 6 L7 -6 Z" fill="#C99A3B"/>
+              <path d="M-26 -78 Q0 -86 26 -78 L8 -8 L-8 -8 Z" fill="#F6EBDC" fill-opacity=".14" stroke="#F6EBDC" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M-26 -78 Q0 -70 26 -78" fill="none" stroke="#F6EBDC" stroke-width="2.4"/>
+            </g>
+          </g>
+        </svg>
+      </h1>
+      <p class="sub">{{Torturi cu mesajul tău scris în cremă și mini-prăjituri pentru evenimente. <b>În Egros Shopping, Calea Chișinăului 29.</b>|Cakes with your message piped in cream, and mini desserts for events. <b>Inside Egros Shopping, Calea Chișinăului 29.</b>|Bolos com a sua mensagem escrita em creme e mini-sobremesas para eventos. <b>No Egros Shopping, Calea Chișinăului 29.</b>}}</p>
+      <div class="erou-cta">
+        <a class="btn btn-crema" href="tel:+40747507177"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{Sună: 0747 507 177|Call: 0747 507 177|Ligar: 0747 507 177}}</a>
+        <a class="btn btn-contur" href="#comanda"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>{{Comandă pentru eveniment|Order for an event|Encomendar para evento}}</a>
+      </div>
+      <p class="nota"><span class="stele" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span><b>4,5</b>{{din 260 de recenzii pe Google|from 260 Google reviews|em 260 avaliações no Google}}</p>
+    </div>
+    <figure class="platou">
+      <div class="farfurie">
+        <svg class="bord" viewBox="0 0 200 200" aria-hidden="true"><path id="bord-p" fill="#120A07" d=""/><circle cx="100" cy="100" r="90" fill="none" stroke="#2A1A12" stroke-width="1"/></svg>
+        <div class="poza">
+          <svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#4A2A1C"/><rect y="5" width="10" height="5" fill="#2A1810"/></svg>
+          <img src="media/tort-75-bunica.webp" width="1600" height="1548" alt="Tort cu glazură de ciocolată, cifrele 75, stele aurii și plăcuța „La mulți ani Bunica!” scrisă cu ciocolată" data-alt="Tort cu glazură de ciocolată, cifrele 75, stele aurii și plăcuța „La mulți ani Bunica!” scrisă cu ciocolată|Chocolate-glazed cake with the number 75, gold stars and a plaque piped with “La mulți ani Bunica!” (Happy birthday, Grandma!)|Bolo com cobertura de chocolate, o número 75, estrelas douradas e a placa «La mulți ani Bunica!» (Parabéns, avó!) escrita com chocolate" fetchpriority="high" onerror="this.remove()">
+        </div>
+      </div>
+      <figcaption>„La mulți ani, Bunica!” <span style="font-style:normal;font-family:var(--f-text);font-size:12px;display:block;opacity:.75;margin-top:2px">{{— scris pe un tort de 75 de ani|— piped on a 75th-birthday cake|— escrito num bolo de 75 anos}}</span></figcaption>
+    </figure>
+  </div>
+  <svg class="picurat" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="#FBF5EC" d="M0 90V40c40 0 52 34 70 34s22-30 48-30 30 18 60 18 34-38 74-38 30 46 66 46 30-30 70-30 40 12 74 12 26-28 64-28 44 40 80 40 34-26 66-26 36 18 70 18 38-34 76-34 40 30 72 30 30-16 64-16 38 26 70 26 34-40 74-40 44 30 80 30 30-20 64-20 36 14 72 14 32-26 64-26 50 22 80 22V90z"/></svg>
+</section>
+
+<section class="sec" id="mesaje" aria-labelledby="mes-t">
+  <div class="lat">
+    <div class="sec-cap rv">
+      <p class="eyebrow">{{Scris de mână, pe tort|Hand-piped, on the cake|Escrito à mão, no bolo}}</p>
+      <h2 id="mes-t">{{Fiecare tort are o propoziție.|Every cake has a sentence.|Cada bolo tem uma frase.}}</h2>
+      <p>{{Ciocolată turnată, frunze de aur, cifre și o plăcuță scrisă cu mâna. Iată ce au scris până acum, din fotografiile lor.|Poured chocolate, gold flakes, numbers and a hand-written plaque. Here is what they have written so far, from their own photos.|Chocolate derramado, folha de ouro, números e uma placa escrita à mão. Eis o que já escreveram, nas fotografias deles.}}</p>
+    </div>
+    <div class="mesaje-grid">
+      <figure class="tort t1 rv"><div class="p"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#4A2A1C"/></svg><img src="media/tort-la-multi-ani.webp" loading="lazy" alt="Tort de ciocolată cu ganache care curge, frunze aurii și plăcuță rotundă „La mulți ani!”" data-alt="Tort de ciocolată cu ganache care curge, frunze aurii și plăcuță rotundă „La mulți ani!”|Chocolate cake with dripping ganache, gold leaves and a round “La mulți ani!” plaque|Bolo de chocolate com ganache a escorrer, folhas douradas e placa redonda «La mulți ani!»" onerror="this.remove()"></div><figcaption><q>La mulți ani!</q><span>{{Ganache, frunze aurii, plăcuță rotundă.|Ganache, gold leaves, round plaque.|Ganache, folhas douradas, placa redonda.}}</span></figcaption></figure>
+      <figure class="tort t2 rv"><div class="p"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#EADBC4"/></svg><img src="media/tort-55-zmeura.webp" loading="lazy" alt="Tort alb cu zmeură, cifrele 55 aurii și „La mulți ani Valeria!”" data-alt="Tort alb cu zmeură, cifrele 55 aurii și „La mulți ani Valeria!”|White cake with raspberries, gold 55 numbers and “La mulți ani Valeria!”|Bolo branco com framboesas, números 55 dourados e «La mulți ani Valeria!»" onerror="this.remove()"></div><figcaption><q>La mulți ani, Valeria!</q><span>{{Zmeură, cifre aurii, 55 de ani.|Raspberries, gold numbers, 55 years.|Framboesas, números dourados, 55 anos.}}</span></figcaption></figure>
+      <figure class="tort t3 rv"><div class="p"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#D9CDBA"/></svg><img src="media/tort-bancnote.webp" loading="lazy" alt="Tort cu bancnote decorative, baloane aurii și „La mulți ani jumătatea mea mai bună!”" data-alt="Tort cu bancnote decorative, baloane aurii și „La mulți ani jumătatea mea mai bună!”|Cake with decorative banknotes, gold balloons and “Happy birthday, my better half!”|Bolo com notas decorativas, balões dourados e «Parabéns, minha cara-metade!»" onerror="this.remove()"></div><figcaption><q>La mulți ani, jumătatea mea mai bună!</q><span>{{Cu bancnote de decor.|With decorative banknotes.|Com notas decorativas.}}</span></figcaption></figure>
+      <figure class="tort t4 rv"><div class="p"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#C9D9E6"/></svg><img src="media/tort-ursulet.webp" loading="lazy" alt="Tort de un an cu ursuleț albastru, stele, cifra 1 și numele Alexandru" data-alt="Tort de un an cu ursuleț albastru, stele, cifra 1 și numele Alexandru|First-birthday cake with a blue teddy bear, stars, the number 1 and the name Alexandru|Bolo de primeiro aniversário com ursinho azul, estrelas, o número 1 e o nome Alexandru" onerror="this.remove()"></div><figcaption><q>Alexandru</q><span>{{Primul an, cu ursuleț.|First birthday, with a teddy bear.|Primeiro ano, com ursinho.}}</span></figcaption></figure>
+      <figure class="tort t5 rv"><div class="p"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#F1E4EC"/></svg><img src="media/torturi-copii.webp" loading="lazy" alt="Raft cu un tort curcubeu cu ponei și un tort alb cu botoșei de bebeluș" data-alt="Raft cu un tort curcubeu cu ponei și un tort alb cu botoșei de bebeluș|Shelf with a rainbow pony cake and a white cake with baby booties|Prateleira com um bolo arco-íris com póneis e um bolo branco com sapatinhos de bebé" onerror="this.remove()"></div><figcaption><q>Welcome</q><span>{{Torturi pentru copii și botez.|Cakes for kids and christenings.|Bolos para crianças e batizados.}}</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec mini" id="mini" aria-labelledby="mini-t">
+  <div class="lat mini-grid">
+    <figure class="mini-foto rv"><svg viewBox="0 0 10 10" preserveAspectRatio="none" aria-hidden="true"><rect width="10" height="10" fill="#4A2A1C"/></svg><img src="media/mini-prajituri.webp" loading="lazy" alt="Zeci de mini-prăjituri glazurate cu ciocolată, cu mure, zmeură și coacăze, aliniate pe masa de lucru" data-alt="Zeci de mini-prăjituri glazurate cu ciocolată, cu mure, zmeură și coacăze, aliniate pe masa de lucru|Dozens of chocolate-glazed mini cakes with blackberries, raspberries and redcurrants lined up on the work table|Dezenas de mini-bolos com cobertura de chocolate, amoras, framboesas e groselhas alinhados na bancada" onerror="this.remove()"></figure>
+    <div class="rv">
+      <p class="eyebrow">{{Pentru evenimente|For events|Para eventos}}</p>
+      <h2 id="mini-t">{{Zeci de bucăți, toate la fel.|Dozens of pieces, all alike.|Dezenas de peças, todas iguais.}}</h2>
+      <p>{{Pe masa laboratorului: mini-prăjituri cu glazură de ciocolată, mure, zmeură și coacăze, aliniate pentru un eveniment.|On the lab table: chocolate-glazed mini cakes with blackberries, raspberries and redcurrants, lined up for an event.|Na bancada do laboratório: mini-bolos com cobertura de chocolate, amoras, framboesas e groselhas, alinhados para um evento.}}</p>
+      <ul>
+        <li><svg aria-hidden="true"><use href="#i-oameni"/></svg><span>{{Spui câte persoane vin; cantitatea o calculează laboratorul.|Tell them how many guests; the lab works out the quantity.|Diga quantas pessoas vêm; o laboratório calcula a quantidade.}}</span></li>
+        <li><svg aria-hidden="true"><use href="#i-pos"/></svg><span>{{Tort, mini-prăjituri sau amândouă, cu același decor.|Cake, mini desserts or both, with matching decoration.|Bolo, mini-sobremesas ou ambos, com a mesma decoração.}}</span></li>
+        <li><svg aria-hidden="true"><use href="#i-cal"/></svg><span>{{Termen minim de comandă și prețuri: de confirmat la telefon.|Minimum notice and prices: to be confirmed by phone.|Antecedência mínima e preços: a confirmar por telefone.}}</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec comanda" id="comanda" aria-labelledby="com-t">
+  <div class="lat">
+    <div class="sec-cap rv">
+      <p class="eyebrow">{{Comandă pentru eveniment|Event order|Encomenda para evento}}</p>
+      <h2 id="com-t">{{Câte persoane, ce zi, ce scriem?|How many guests, which day, what do we write?|Quantas pessoas, que dia, o que escrevemos?}}</h2>
+      <p>{{Scrie mesajul și îl vezi trecut cu cremă pe plăcuță. Apoi îl trimiți laboratorului.|Type the message and watch it piped onto the plaque. Then send it to the lab.|Escreva a mensagem e veja-a escrita em creme na placa. Depois envie-a ao laboratório.}}</p>
+    </div>
+    <div class="com-grid">
+      <form class="formular" id="form" novalidate>
+        <fieldset>
+          <legend>{{Evenimentul|The event|O evento}}</legend>
+          <div class="chips">
+            <label><input type="radio" name="ev" value="0" checked><span>{{Zi de naștere|Birthday|Aniversário}}</span></label>
+            <label><input type="radio" name="ev" value="1"><span>{{Nuntă|Wedding|Casamento}}</span></label>
+            <label><input type="radio" name="ev" value="2"><span>{{Botez|Christening|Batizado}}</span></label>
+            <label><input type="radio" name="ev" value="3"><span>{{Petrecere de firmă|Company party|Festa de empresa}}</span></label>
+            <label><input type="radio" name="ev" value="4"><span>{{Alt eveniment|Other event|Outro evento}}</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend id="pers-l">{{Câte persoane?|How many guests?|Quantas pessoas?}}</legend>
+          <div class="pas" role="group" aria-labelledby="pers-l">
+            <button type="button" id="minus" aria-label="{{Mai puține persoane|Fewer guests|Menos pessoas}}">−</button>
+            <output id="pers" aria-live="polite">20</output>
+            <button type="button" id="plus" aria-label="{{Mai multe persoane|More guests|Mais pessoas}}">+</button>
+          </div>
+          <p class="ajutor">{{Între 4 și 300. Cantitatea exactă o stabilește laboratorul.|Between 4 and 300. The lab sets the exact quantity.|Entre 4 e 300. O laboratório define a quantidade exata.}}</p>
+        </fieldset>
+        <fieldset>
+          <legend>{{Ce comanzi?|What would you like?|O que vai encomendar?}}</legend>
+          <div class="chips">
+            <label><input type="radio" name="ce" value="0" checked><span>{{Tort|Cake|Bolo}}</span></label>
+            <label><input type="radio" name="ce" value="1"><span>{{Mini-prăjituri|Mini desserts|Mini-sobremesas}}</span></label>
+            <label><input type="radio" name="ce" value="2"><span>{{Tort și mini-prăjituri|Cake and mini desserts|Bolo e mini-sobremesas}}</span></label>
+          </div>
+        </fieldset>
+        <div class="camp" id="camp-zi">
+          <label class="lbl" for="zi">{{Data evenimentului|Event date|Data do evento}}</label>
+          <input type="date" id="zi" required aria-describedby="zi-er">
+          <p class="eroare" id="zi-er" role="alert" hidden>{{Alege data evenimentului.|Choose the event date.|Escolha a data do evento.}}</p>
+        </div>
+        <div class="camp">
+          <label class="lbl" for="mesaj">{{Mesajul de pe plăcuță|Message for the plaque|Mensagem para a placa}}</label>
+          <input type="text" id="mesaj" maxlength="32" value="La mulți ani!">
+          <p class="ajutor">{{Maximum 32 de caractere.|Up to 32 characters.|Até 32 caracteres.}}</p>
+        </div>
+        <div class="doua">
+          <div class="camp"><label class="lbl" for="nume">{{Numele tău|Your name|O seu nome}}</label><input type="text" id="nume" autocomplete="name"></div>
+          <div class="camp"><label class="lbl" for="obs">{{Gust, culori, alergii|Flavour, colours, allergies|Sabor, cores, alergias}}</label><input type="text" id="obs"></div>
+        </div>
+        <label class="bifa"><input type="checkbox" id="livrare">{{Întreb și de livrare (de confirmat)|Also ask about delivery (to be confirmed)|Perguntar também pela entrega (a confirmar)}}</label>
+      </form>
+      <div class="placuta-wrap">
+        <div class="placuta-scena" aria-labelledby="pl-t">
+          <h3 id="pl-t">{{Plăcuța ta|Your plaque|A sua placa}}</h3>
+          <svg class="placuta" id="placuta" viewBox="0 0 400 190" role="img" aria-label="{{Previzualizarea plăcuței|Plaque preview|Pré-visualização da placa}}">
+            <defs>
+              <mask id="m-pl" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="190"><path id="cale-pl" d="" fill="none" stroke="#fff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/></mask>
+              <radialGradient id="g-pl" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#FFFDF8"/><stop offset="1" stop-color="#EADBC4"/></radialGradient>
+            </defs>
+            <ellipse cx="200" cy="100" rx="186" ry="80" fill="#120A07" opacity=".5"/>
+            <ellipse cx="200" cy="94" rx="182" ry="78" fill="url(#g-pl)"/>
+            <ellipse cx="200" cy="94" rx="168" ry="66" fill="none" stroke="#C99A3B" stroke-width="1.5" stroke-dasharray="2 6" stroke-linecap="round"/>
+            <g mask="url(#m-pl)"><text id="pl-text" x="200" y="108" text-anchor="middle" font-size="40" fill="#4A2A1C" stroke="#3A2016" stroke-width=".8">La mulți ani!</text></g>
+            <g id="duya-pl" opacity="0"><g transform="rotate(-28) scale(.55)"><path d="M-7 -6 L0 6 L7 -6 Z" fill="#C99A3B"/><path d="M-26 -78 Q0 -86 26 -78 L8 -8 L-8 -8 Z" fill="#24140E" fill-opacity=".12" stroke="#24140E" stroke-width="3"/></g></g>
+          </svg>
+          <p class="rezumat" id="rezumat" aria-live="polite"></p>
+          <div class="trimite">
+            <a class="btn btn-crema" href="tel:+40747507177"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{Sună: 0747 507 177|Call: 0747 507 177|Ligar: 0747 507 177}}</a>
+            <a class="btn btn-wa" id="trimite-wa" href="https://wa.me/40747507177" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</a>
+            <a class="btn btn-wa" id="trimite-sms" href="sms:+40747507177"><svg class="i" aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</a>
+          </div>
+          <p class="mic">{{Mesajul pleacă în română. Comanda e confirmată doar când răspunde laboratorul.|The message is sent in Romanian. The order is confirmed only when the lab replies.|A mensagem segue em romeno. A encomenda só fica confirmada quando o laboratório responder.}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="loc" aria-labelledby="loc-t">
+  <div class="lat loc-grid">
+    <div class="rv">
+      <figure class="loc-foto"><svg viewBox="0 0 16 10" preserveAspectRatio="none" aria-hidden="true"><rect width="16" height="10" fill="#D8CCBC"/><rect x="8" y="3" width="8" height="5" fill="#8A7A6A"/></svg><img src="media/vitrina-egros.webp" loading="lazy" alt="Vitrina Laborator Blanca din Egros Shopping: frigidere cu prăjituri și tejghea de lemn" data-alt="Vitrina Laborator Blanca din Egros Shopping: frigidere cu prăjituri și tejghea de lemn|Laborator Blanca’s counter in Egros Shopping: chilled cases of pastries and a wooden counter|O balcão do Laborator Blanca no Egros Shopping: vitrines refrigeradas com bolos e balcão de madeira" onerror="this.remove()"><figcaption>{{Vitrina din Egros Shopping|The counter in Egros Shopping|O balcão no Egros Shopping}}</figcaption></figure>
+      <div class="harta" id="harta"><button class="btn btn-ciocolata" type="button" id="arata-harta"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>{{Arată harta|Show the map|Mostrar o mapa}}</button></div>
+    </div>
+    <div class="rv">
+      <p class="eyebrow" style="color:var(--glazura)">{{Unde suntem|Find us|Onde estamos}}</p>
+      <h2 id="loc-t" style="margin-bottom:22px">Egros Shopping</h2>
+      <p class="adr">Calea Chișinăului nr. 29</p>
+      <p class="adr-sub">700177 Iași</p>
+      <ul class="zile" id="zile"></ul>
+      <p class="stare" id="stare"><i></i><span id="stare-t"></span></p>
+      <div class="ct-linii">
+        <a href="tel:+40747507177"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>0747 507 177</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=47.1481996,27.6115586" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>{{Deschide în Google Maps|Open in Google Maps|Abrir no Google Maps}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="lat legal">
+    <span>© 2026 Laborator Blanca · {{denumire firmă și CUI: de confirmat|company name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+    <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+    <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+    <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+  </div>
+</footer>
+
+<div class="jos" id="jos">
+  <a class="btn btn-crema" href="tel:+40747507177"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <a class="btn btn-contur" href="#comanda"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>{{Comandă|Order|Encomendar}}</a>
+</div>
+
+<noscript><p style="padding:16px;background:#fff">Laborator Blanca · Calea Chișinăului nr. 29 (Egros Shopping), 700177 Iași · Tel. 0747 507 177 · Duminică 09:00–18:00, restul programului: de confirmat · 4,5 pe Google (260 recenzii) · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Bakery","name":"Laborator Blanca","description":"Laborator de cofetărie în Iași: torturi personalizate și mini-prăjituri pentru evenimente.","telephone":"+40747507177","address":{"@type":"PostalAddress","streetAddress":"Calea Chișinăului nr. 29, Egros Shopping","postalCode":"700177","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1481996,"longitude":27.6115586},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"260"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"https://schema.org/Sunday","opens":"09:00","closes":"18:00"}],"image":"media/tort-75-bunica.webp"}
+</script>
+<script>
+(function(){
+  var html=document.documentElement,$=function(i){return document.getElementById(i)};
+  var reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var L=function(){var l=html.dataset.lang;return l==='en'||l==='pt'?l:'ro'};
+  var IX={ro:0,en:1,pt:2},t=function(a){return a[IX[L()]]};
+  function atrib(){document.querySelectorAll('[data-alt]').forEach(function(e){e.alt=e.dataset.alt.split('|')[IX[L()]]});document.querySelectorAll('[data-aria]').forEach(function(e){e.setAttribute('aria-label',e.dataset.aria.split('|')[IX[L()]])})}
+
+  /* bordul festonat al platoului (ca platourile negre din poze) */
+  (function(){var n=28,R=96,r=90,d='';for(var i=0;i<=n*8;i++){var a=i/(n*8)*Math.PI*2,rr=r+(R-r)*Math.abs(Math.cos(a*n/2));d+=(i?'L':'M')+(100+rr*Math.cos(a)).toFixed(2)+' '+(100+rr*Math.sin(a)).toFixed(2)}$('bord-p').setAttribute('d',d+'Z')})();
+
+  /* ---------- posul care scrie ---------- */
+  function zigzag(x0,x1,yTop,yBot,pas){var d='M'+x0+' '+yTop,x=x0,sus=false;while(x<x1){x+=pas;d+=' L'+x+' '+(sus?yTop:yBot);sus=!sus}return d}
+  function scrie(cale,duya,ms,gata){
+    var len=cale.getTotalLength();
+    cale.style.strokeDasharray=len;cale.style.strokeDashoffset=reduz?0:len;
+    if(reduz){duya.setAttribute('opacity',0);gata&&gata();return function(){}}
+    var t0=null,stop=false;duya.setAttribute('opacity',1);
+    function f(ts){if(stop)return;if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/ms),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2,l=len*e;
+      cale.style.strokeDashoffset=len-l;var p=cale.getPointAtLength(l);duya.setAttribute('transform','translate('+p.x.toFixed(1)+' '+p.y.toFixed(1)+')');
+      if(k<1)requestAnimationFrame(f);else{duya.setAttribute('opacity',0);gata&&gata()}}
+    requestAnimationFrame(f);return function(){stop=true}
+  }
+  var erou=$('erou'),cale=$('cale');
+  cale.setAttribute('d',zigzag(-10,650,10,215,30));
+  requestAnimationFrame(function(){erou.classList.add('gata');setTimeout(function(){scrie(cale,$('duya'),2300,function(){erou.classList.add('scris-gata')})},reduz?0:450)});
+
+  /* placuta */
+  var plText=$('pl-text'),calePl=$('cale-pl'),opreste=function(){},tmr;
+  function placuta(anim){
+    var m=$('mesaj').value.trim()||' ';plText.textContent=m;
+    var fs=m.length>22?26:m.length>14?32:40;plText.setAttribute('font-size',fs);
+    var bb;try{bb=plText.getBBox()}catch(e){bb={x:60,width:280,y:70,height:50}}
+    calePl.setAttribute('d',zigzag(Math.floor(bb.x)-6,Math.ceil(bb.x+bb.width)+8,bb.y-4,bb.y+bb.height+6,13));
+    opreste();if(anim)opreste=scrie(calePl,$('duya-pl'),Math.min(2600,700+m.length*60));else{calePl.style.strokeDasharray='none';calePl.style.strokeDashoffset=0}
+  }
+  var plVazut=false,murdar=false,vizPl=false;
+  if('IntersectionObserver' in window){var po=new IntersectionObserver(function(es){vizPl=es[0].isIntersecting;if(vizPl&&(!plVazut||murdar)){plVazut=true;murdar=false;placuta(true)}},{threshold:.5});po.observe($('placuta'))}
+
+  /* bara + reveal */
+  var bara=$('bara'),jos=$('jos');
+  function onScroll(){bara.classList.toggle('scrolled',scrollY>20);jos.classList.toggle('vizibil',scrollY>innerHeight*.5)}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'}):null;
+  document.querySelectorAll('.rv').forEach(function(x){if(io&&!reduz)io.observe(x);else x.classList.add('vis')});
+
+  /* meniu */
+  var burger=document.querySelector('.burger'),meniu=$('meniu'),inch=meniu.querySelector('.inchide');
+  function deschide(d){meniu.classList.toggle('deschis',d);burger.setAttribute('aria-expanded',d?'true':'false');document.body.style.overflow=d?'hidden':'';(d?inch:burger).focus()}
+  burger.addEventListener('click',function(){deschide(true)});inch.addEventListener('click',function(){deschide(false)});
+  meniu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){deschide(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&meniu.classList.contains('deschis'))deschide(false)});
+
+  /* ---------- comanda ---------- */
+  var EV=[['Zi de naștere','Birthday','Aniversário'],['Nuntă','Wedding','Casamento'],['Botez','Christening','Batizado'],['Petrecere de firmă','Company party','Festa de empresa'],['Alt eveniment','Other event','Outro evento']];
+  var CE=[['Tort','Cake','Bolo'],['Mini-prăjituri','Mini desserts','Mini-sobremesas'],['Tort și mini-prăjituri','Cake and mini desserts','Bolo e mini-sobremesas']];
+  var ZILE=[['duminică','Sunday','domingo'],['luni','Monday','segunda'],['marți','Tuesday','terça'],['miercuri','Wednesday','quarta'],['joi','Thursday','quinta'],['vineri','Friday','sexta'],['sâmbătă','Saturday','sábado']];
+  var LUNI=['ianuarie','februarie','martie','aprilie','mai','iunie','iulie','august','septembrie','octombrie','noiembrie','decembrie'];
+  var pers=20,zi=$('zi'),atins=false;
+  var d0=new Date();d0.setDate(d0.getDate()+1);zi.min=d0.getFullYear()+'-'+String(d0.getMonth()+1).padStart(2,'0')+'-'+String(d0.getDate()).padStart(2,'0');
+  function val(n){var r=document.querySelector('input[name='+n+']:checked');return r?+r.value:0}
+  function dRo(s){var p=s.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);return ZILE[d.getDay()][0]+', '+d.getDate()+' '+LUNI[d.getMonth()]+' '+d.getFullYear()}
+  function dUI(s){var p=s.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);return d.toLocaleDateString(L()==='pt'?'pt-PT':L()==='en'?'en-GB':'ro-RO',{weekday:'long',day:'numeric',month:'long'})}
+  function textRo(){
+    var l=['Bună ziua! Aș dori o comandă pentru un eveniment la Laborator Blanca.','','Eveniment: '+EV[val('ev')][0],'Persoane: '+pers,'Comand: '+CE[val('ce')][0],'Data: '+(zi.value?dRo(zi.value):'(de ales)')];
+    var m=$('mesaj').value.trim();if(m)l.push('Mesaj pe plăcuță: „'+m+'”');
+    var o=$('obs').value.trim();if(o)l.push('Detalii: '+o);
+    if($('livrare').checked)l.push('Aș vrea să întreb și de livrare.');
+    var n=$('nume').value.trim();if(n)l.push('','Nume: '+n);
+    l.push('','Mulțumesc!');return l.join('\n');
+  }
+  function rand(){
+    $('pers').textContent=pers;
+    $('rezumat').textContent=t(EV[val('ev')])+' · '+pers+' '+t(['persoane','guests','pessoas'])+' · '+t(CE[val('ce')])+'\n'+(zi.value?dUI(zi.value):t(['Data: de ales','Date: not chosen yet','Data: por escolher']))+($('livrare').checked?'\n'+t(['+ întrebare despre livrare','+ ask about delivery','+ pergunta sobre entrega']):'');
+    var enc=encodeURIComponent(textRo());
+    $('trimite-wa').href='https://wa.me/40747507177?text='+enc;$('trimite-sms').href='sms:+40747507177?&body='+enc;
+  }
+  function valid(){var ok=!!zi.value&&zi.value>=zi.min;$('zi-er').hidden=ok;$('camp-zi').classList.toggle('gresit',!ok);return ok}
+  $('minus').addEventListener('click',function(){pers=Math.max(4,pers-(pers>50?10:pers>20?5:1));rand()});
+  $('plus').addEventListener('click',function(){pers=Math.min(300,pers+(pers>=50?10:pers>=20?5:1));rand()});
+  $('form').addEventListener('input',function(e){if(e.target===zi&&atins)valid();if(e.target.id==='mesaj'){clearTimeout(tmr);placuta(false);if(vizPl)tmr=setTimeout(function(){placuta(true)},550);else murdar=true}rand()});
+  zi.addEventListener('blur',function(){atins=true;valid()});
+  $('form').addEventListener('submit',function(e){e.preventDefault()});
+  ['trimite-wa','trimite-sms'].forEach(function(id){$(id).addEventListener('click',function(e){atins=true;if(!valid()){e.preventDefault();zi.focus()}})});
+
+  /* program */
+  function program(){
+    var ord=[1,2,3,4,5,6,0],azi=new Date().getDay(),h='';
+    ord.forEach(function(d){h+='<li'+(d===azi?' class="azi"':'')+'><span>'+ZILE[d][IX[L()]]+(d===azi?' · '+t(['azi','today','hoje']):'')+'</span>'+(d===0?'<span>09:00–18:00</span>':'<span class="dc">'+t(['de confirmat','to be confirmed','a confirmar'])+'</span>')+'</li>'});
+    $('zile').innerHTML=h;
+    var st=$('stare'),n=new Date(),m=n.getHours()*60+n.getMinutes();
+    if(azi===0){var on=m>=540&&m<1080;st.classList.toggle('deschis',on);$('stare-t').textContent=on?t(['Acum: deschis, până la 18:00','Open now, until 18:00','Agora: aberto, até às 18:00']):t(['Acum: închis','Closed now','Agora: fechado'])}
+    else{st.classList.remove('deschis');$('stare-t').textContent=t(['Program pentru azi: de confirmat — sună înainte.','Today’s hours: to be confirmed — call ahead.','Horário de hoje: a confirmar — ligue antes.'])}
+  }
+  $('arata-harta').addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.google.com/maps?q=47.1481996,27.6115586&z=16&output=embed';f.title=t(['Harta: Laborator Blanca','Map: Laborator Blanca','Mapa: Laborator Blanca']);f.loading='lazy';$('harta').innerHTML='';$('harta').appendChild(f)});
+
+  function seteaza(l){
+    html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
+    try{localStorage.setItem('__LSKEY__',l)}catch(e){}
+    atrib();rand();program();
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+  seteaza(L());
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){placuta(!plVazut?false:true)});else placuta(false);
+})();
+</script>
+</body>
+</html>
