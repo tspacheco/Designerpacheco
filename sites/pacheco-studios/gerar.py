@@ -404,6 +404,29 @@ def system_print(x, lab):
     return f'<div class="print"><h4 class="rotulo">{e(pl["t"])}</h4><dl>{dl}</dl></div>'
 
 
+def escala_auditoria(x):
+    """Dois tamanhos de empresa (Tomás, 11/10): 5–50 pessoas querem ganhos rápidos; 100–500 querem direção e mudança na
+    empresa toda. Sem preços."""
+    cartoes = []
+    for i, k in enumerate(x["itens"]):
+        lis = "".join(f"<li>{e(p)}</li>" for p in k["precisa"])
+        cartoes.append(f"""<li class="esc rv" style="--i:{i}">
+        <p class="esc-tam">{e(k["tam"])}</p>
+        <h4>{e(k["nome"])}</h4>
+        <q>{e(k["voz"])}</q>
+        <h5 class="rotulo">{e(k["precisa_t"])}</h5><ul>{lis}</ul>
+        <h5 class="rotulo">{e(k["forma_t"])}</h5><p>{e(k["forma"])}</p>
+        <p class="esc-ex">{e(k["ex"])}</p>
+      </li>""")
+    return f"""<div class="aud-escala">
+      <h3 class="afirmacao">{e(x["t"])}</h3>
+      <p class="lead">{e(x["i"])}</p>
+      <ul>
+      {"".join(cartoes)}
+      </ul>
+    </div>"""
+
+
 def vista_auditoria(c, wa):
     """Auditoria de Sistemas com IA. Não se pede num botão (Tomás, 11/10): primeiro a triagem («Conhece-nos»), depois a
     auditoria, só se ambos virmos que vale a pena. O princípio (4 peças), o método em 7 passos, o que se recebe,
@@ -430,6 +453,7 @@ def vista_auditoria(c, wa):
 {etapas}
       </ol>
     </div>
+    {escala_auditoria(a["escala"])}
     <div class="aud-principio">
       <h3 class="afirmacao">{e(a["principio_t"])}</h3>
       <p>{e(a["principio"])}</p>

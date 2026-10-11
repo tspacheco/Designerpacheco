@@ -384,6 +384,23 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 .print dt{font:700 .75rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--osso-2)}
 .print dd{margin:0;font-size:.9375rem}
 
+/* ═══ Auditoria: dois tamanhos de empresa ═══ */
+.aud-escala{margin-top:clamp(2.5rem,8vw,4rem)}
+.aud-escala h3{font-size:clamp(1.4rem,4.5vw,2rem)}
+.aud-escala>ul{margin-top:1.5rem;display:grid;gap:1rem}
+.esc{display:grid;gap:.6rem;align-content:start;padding:1.25rem;border-radius:1rem;background:var(--carvao-2);border-top:3px solid var(--osso-2)}
+.esc+.esc{border-top-color:var(--laranja)}
+.esc-tam{font:700 .75rem/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--osso-2)}
+.esc+.esc .esc-tam{color:var(--laranja)}
+.esc h4{font:400 1.375rem/1.1 var(--display);text-transform:uppercase}
+.esc q{display:block;padding:.7rem .9rem;border-radius:.6rem;background:var(--carvao);font-style:italic;font-size:.9375rem}
+.esc h5{margin:.5rem 0 0}
+.esc ul{display:grid;gap:.35rem}
+.esc ul li{position:relative;padding-left:1.3rem;font-size:.9375rem}
+.esc ul li::before{content:"";position:absolute;left:0;top:.5rem;width:.5rem;height:.5rem;border-radius:50%;background:var(--laranja)}
+.esc>p:not([class]){font-size:.9375rem;color:var(--osso-2)}
+.esc-ex{margin-top:.4rem;padding-top:.7rem;border-top:1px solid var(--linha-e);font-size:.875rem;color:var(--osso-2)}
+
 /* ═══ Auditoria: primeiro a triagem, depois a auditoria ═══ */
 .aud-etapas{margin-top:clamp(2rem,7vw,3rem)}
 .aud-etapas ol{display:grid;gap:1rem}
@@ -424,6 +441,7 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
   .aud-pecas{grid-template-columns:repeat(4,minmax(0,1fr))}
   .aud-dois{grid-template-columns:1.4fr 1fr;gap:3rem}
   .aud-etapas ol{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .aud-escala>ul{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 /* ═══ contacto ═══ */
@@ -1445,6 +1463,27 @@ dialog.diag.fim .diag-ficha{display:block}
 <li class="rv" style="--i:0"><span class="quando">Agora, sem compromisso</span><h4>Triagem</h4><p>Uma conversa com o Tomás: 8 perguntas e uma reunião. Vemos se há uma fuga que vale a pena resolver e dizemos-te com franqueza se faz sentido continuar.</p></li>
 <li class="rv" style="--i:1"><span class="quando">Só se avançarmos juntos</span><h4>Auditoria</h4><p>Entramos a fundo no teu negócio: falamos com quem atende, seguimos cada pedido e mapeamos o sistema inteiro. No fim sabes exatamente onde está a fuga, quanto custa e o que fazer primeiro.</p></li>
       </ol>
+    </div>
+    <div class="aud-escala">
+      <h3 class="afirmacao">Dois tamanhos de empresa, dois caminhos.</h3>
+      <p class="lead">Trabalhamos com os dois. O que muda é o que a empresa precisa primeiro.</p>
+      <ul>
+      <li class="esc rv" style="--i:0">
+        <p class="esc-tam">5 a 50 pessoas</p>
+        <h4>Pequenas empresas</h4>
+        <q>Preciso de resultados rápidos, que se vejam nas contas.</q>
+        <h5 class="rotulo">O que precisam</h5><ul><li>As ferramentas de IA certas para o negócio</li><li>Fluxos de trabalho mais rápidos</li><li>Retorno visível desde o início</li></ul>
+        <h5 class="rotulo">Como trabalhamos</h5><p>Intervenções curtas, uma fuga de cada vez, começando pelos ganhos rápidos.</p>
+        <p class="esc-ex">Restaurantes, salões, clínicas, oficinas e lojas.</p>
+      </li><li class="esc rv" style="--i:1">
+        <p class="esc-tam">100 a 500 pessoas</p>
+        <h4>Empresas médias</h4>
+        <q>Precisamos de direção e de mudar a forma de trabalhar na empresa toda.</q>
+        <h5 class="rotulo">O que precisam</h5><ul><li>Formação da liderança em IA</li><li>Mudança na forma de trabalhar das equipas</li><li>Um roteiro completo, por áreas</li></ul>
+        <h5 class="rotulo">Como trabalhamos</h5><p>Uma auditoria mais funda, com várias equipas, e um plano para a empresa inteira.</p>
+        <p class="esc-ex">Saúde, indústria, logística e distribuição.</p>
+      </li>
+      </ul>
     </div>
     <div class="aud-principio">
       <h3 class="afirmacao">Uma ferramenta não é um sistema.</h3>
