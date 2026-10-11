@@ -1,0 +1,289 @@
+<title>Abordagem Instagram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: uma coluna de ferramenta no telemóvel; em ecrã largo, ficha à esquerda e mensagens à direita (fixas). */
+:root{
+  --carvao:#141210; --osso:#EFEAE3; --laranja:#E8622C;
+  --bg:#EFEAE3; --fg:#141210; --muted:#4D4A47; --line:#D6CFC5; --panel:#F7F3EE; --accent:#A64923; --accent-fill:#E8622C; --on-accent:#141210;
+  --ok:#2F6B45; --warn:#9A5B00;
+  --f-display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141210; --fg:#EFEAE3; --muted:#A5A19B; --line:#2E2A26; --panel:#1C1916; --accent:#F08A5D; --accent-fill:#E8622C; --on-accent:#141210; --ok:#7CC49A; --warn:#E3A84A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141210; --fg:#EFEAE3; --muted:#A5A19B; --line:#2E2A26; --panel:#1C1916; --accent:#F08A5D; --accent-fill:#E8622C; --on-accent:#141210; --ok:#7CC49A; --warn:#E3A84A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--f-body);padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:24px}
+header h1{font:28px/1.05 var(--f-display);text-transform:uppercase;letter-spacing:.01em;margin:0;text-wrap:balance}
+header h1 i{font-style:normal;color:var(--accent)}
+header p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+.grid{display:grid;gap:24px;grid-template-columns:1fr}
+@media (min-width:920px){.grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} .out{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);align-self:start}}
+section{display:grid;gap:14px;min-width:0}
+.step{display:flex;gap:10px;align-items:baseline;font:700 11px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.step b{color:var(--accent)}
+.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cat{border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:6px;padding:10px 12px;text-align:left;font:600 14px/1.25 var(--f-body);cursor:pointer;min-height:56px}
+.cat small{display:block;font:400 12px/1.3 var(--f-body);color:var(--muted);margin-top:3px}
+.cat[aria-pressed="true"]{border-color:var(--accent-fill);box-shadow:inset 0 0 0 1px var(--accent-fill)}
+.intuito{font-size:13px;color:var(--muted);margin:0}
+.intuito strong{color:var(--fg);font-weight:600}
+.row{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+label{display:grid;gap:4px;font:600 12px/1.2 var(--f-body);color:var(--muted);min-width:0}
+label em{font-style:normal;font-weight:400}
+input,select,textarea{font:15px/1.4 var(--f-body);color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;min-width:0}
+textarea{resize:vertical;min-height:64px}
+.seg{display:flex;gap:4px;flex-wrap:wrap}
+.seg button{font:700 13px/1 var(--f-mono);min-width:38px;padding:9px 8px;border-radius:5px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent-fill);border-color:var(--accent-fill);color:var(--on-accent)}
+.score{display:grid;gap:10px}
+.crit{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font-size:13px}
+.crit span small{display:block;color:var(--muted);font-size:12px}
+.total{display:flex;gap:14px;align-items:center;font:700 13px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em}
+.total .n{font:34px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.pill{padding:6px 10px;border-radius:99px;border:1px solid currentColor}
+.p5,.p4{color:var(--ok)} .p3{color:var(--warn)} .p2,.p1{color:var(--muted)}
+details{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--panel)}
+details summary{cursor:pointer;font-weight:600}
+details[open] summary{margin-bottom:10px}
+.out .msg{border:1px solid var(--line);border-radius:6px;background:var(--panel);overflow:hidden}
+.msg h3{margin:0;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);font:700 11px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.msg h3 span{font-weight:400;letter-spacing:.04em}
+.msg p{margin:0;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg mark{background:transparent;color:var(--accent);font-weight:600;border-bottom:1px dashed currentColor}
+.acts{display:flex;gap:8px;flex-wrap:wrap;padding:0 12px 12px}
+.btn{font:700 12px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em;padding:11px 14px;border-radius:5px;border:1px solid var(--fg);background:transparent;color:var(--fg);cursor:pointer}
+.btn.primary{background:var(--accent-fill);border-color:var(--accent-fill);color:var(--on-accent)}
+.btn:focus-visible,.cat:focus-visible,.seg button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent-fill);outline-offset:2px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13px}
+.checks li{display:flex;gap:8px}
+.checks li::before{content:"";flex:0 0 8px;height:8px;margin-top:6px;border-radius:50%;background:var(--ok)}
+.checks li.w::before{background:var(--warn)}
+.note{font-size:12px;color:var(--muted);margin:0}
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:6px;font:700 12px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em}
+.ex{font:700 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid currentColor;border-radius:3px;padding:3px 5px;margin-left:8px;vertical-align:middle}
+@media (prefers-reduced-motion:no-preference){.msg{transition:border-color .2s}.msg.flash{border-color:var(--accent-fill)}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Abordagem <i>Instagram</i></h1>
+    <p>Escolhe o tipo de conta, escreve o que viste no perfil e a mensagem monta-se sozinha, já com a regra do guia: hipótese a validar, nunca acusação, sem preço.</p>
+  </header>
+
+  <div class="grid">
+    <form id="ficha" class="ficha" autocomplete="off">
+      <section>
+        <div class="step"><b>1</b> Tipo de conta</div>
+        <div class="cats" id="cats" role="group" aria-label="Categoria"></div>
+        <p class="intuito" id="intuito"></p>
+      </section>
+
+      <section>
+        <div class="step"><b>2</b> Conta</div>
+        <div class="row">
+          <label for="nome">Nome a tratar <em>(primeiro nome ou marca)</em><input id="nome"></label>
+          <label for="empresa">Empresa / marca<input id="empresa"></label>
+        </div>
+        <div class="row">
+          <label for="handle">@ no Instagram<input id="handle" placeholder="@conta"></label>
+          <label>Língua
+            <span class="seg" id="lingua" role="group" aria-label="Língua"></span>
+          </label>
+          <label>Tratamento
+            <span class="seg" id="registo" role="group" aria-label="Tratamento"></span>
+          </label>
+        </div>
+      </section>
+
+      <section>
+        <div class="step"><b>3</b> Análise da conta</div>
+        <label for="tipo">Tipo de negócio <em>(preenche percurso e pergunta; depois ajusta)</em>
+          <select id="tipo"></select>
+        </label>
+        <label for="gancho">Gancho <em>· um facto público e concreto que viste (post, serviço, evento)</em>
+          <textarea id="gancho" rows="2"></textarea>
+        </label>
+        <label for="percurso">Percurso a validar <em>· entrada → contexto → decisão → handoff → entrega</em>
+          <textarea id="percurso" rows="2"></textarea>
+        </label>
+        <label for="pergunta">Pergunta de hipótese <em>· em forma de pergunta, nunca uma certeza</em>
+          <textarea id="pergunta" rows="2"></textarea>
+        </label>
+        <label for="tema" id="tema-l">Tema do post <em>· para comentários e DM à comunidade</em>
+          <input id="tema">
+        </label>
+        <label for="valor">Novidade para o follow-up <em>· uma coisa útil e nova, não «só a lembrar»</em>
+          <textarea id="valor" rows="2"></textarea>
+        </label>
+      </section>
+
+      <section>
+        <div class="step"><b>4</b> Nota de encaixe</div>
+        <div class="score" id="score"></div>
+        <div class="total"><span class="n" id="total">0</span><span>/ 10</span><span class="pill" id="prio"></span></div>
+      </section>
+
+      <section>
+        <details id="extra">
+          <summary>Dados para a folha Excel</summary>
+          <div class="row">
+            <label for="cidade">Cidade<input id="cidade"></label>
+            <label for="seguidores">Seguidores<input id="seguidores" placeholder="a confirmar"></label>
+          </div>
+          <label for="sinais">Sinais públicos<textarea id="sinais" rows="2"></textarea></label>
+          <label for="evidencia">Evidência (link da fonte)<input id="evidencia"></label>
+          <label for="razao">Razão de encaixe<input id="razao"></label>
+        </details>
+      </section>
+    </form>
+
+    <section class="out" aria-live="polite">
+      <div class="step"><b>5</b> Mensagens <span class="ex" id="exflag">Exemplo</span></div>
+      <div id="msgs" style="display:grid;gap:12px"></div>
+      <ul class="checks" id="checks"></ul>
+      <div class="acts" style="padding:0">
+        <button type="button" class="btn" id="nova">Outra saudação</button>
+        <button type="button" class="btn" id="linha">Copiar linha p/ Excel</button>
+        <button type="button" class="btn" id="limpar">Limpar ficha</button>
+      </div>
+      <p class="note">A linha cola-se na folha «Prospeção», na coluna A da 1.ª linha vazia: vai do ID até às Notas e deixa as fórmulas da nota intactas. Envio: 1 minuto entre mensagens e saudação diferente em cada uma.</p>
+    </section>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const D = /*__DADOS__*/{};
+const ROT = {dm1:"DM 1", fu:"Follow-up (4 dias depois)", c1:"Comentário · ponto", c2:"Comentário · acréscimo", c3:"Comentário · pergunta"};
+const CRIT = [["e","Encaixe com a auditoria","percurso multietapa, repetitivo e com valor?",3],["a","Acesso ao decisor","chega-se a fundador, operações ou CX?",2],["c","Complexidade pública","canais, equipas, reservas, entrega, volume?",3],["p","Prova / referência","pode dar caso, parceria ou introduções?",2]];
+const EVITAR = [/falh|failing|eșu|esu[ăa]/i,/perd(er|em) dinheiro|pierd|losing money/i,/autom[aá]tic|automat(ion|izare) (pronta|ready|gata)/i,/resolve tudo|rezolv[ăa] tot/i,/\d+\s?(€|eur|lei|ron)\b|preț|pret\b|preço|price/i,/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u];
+const EXEMPLO = {cat:"pme_parceiro",nome:"echipa Sinaps",empresa:"Sinaps",handle:"",lingua:"ro",registo:"dumneavoastră",tipo:6,gancho:"că ați deschis biroul din București, pe lângă Iași, Cluj, Constanța și Brașov",percurso:"",pergunta:"",tema:"",valor:"o hartă pentru un client e-commerce, cu ce se întâmplă cu un lead bun în primele 2 ore",score:{e:3,a:1,c:3,p:2},cidade:"Iași",seguidores:"a confirmar",sinais:"47 especialistas; Google Premier Partner; Meta Business Partner; 5 escritórios",evidencia:"https://www.revistabiz.ro/agentia-de-digital-marketing-sinaps-a-deschis-un-birou-la-bucuresti/",razao:"Agência com volume B2B: cada cliente dela é um percurso depois do lead",exemplo:true};
+let S, rodar = 0;
+const $ = id => document.getElementById(id);
+const CAMPOS = ["nome","empresa","handle","gancho","percurso","pergunta","tema","valor","cidade","seguidores","sinais","evidencia","razao"];
+
+function cat(){return D.categorias.find(c=>c.id===S.cat)}
+function guardar(){try{localStorage.setItem("abordagem-ig",JSON.stringify(S))}catch(e){}}
+function carregar(){try{const s=JSON.parse(localStorage.getItem("abordagem-ig"));if(s&&s.cat)return s}catch(e){}return null}
+
+function preencherPercurso(){
+  const p = D.percursos[S.tipo]; if(!p) return;
+  S.percurso = p[S.lingua]; S.pergunta = p.pergunta[S.lingua];
+  $("percurso").value = S.percurso; $("pergunta").value = S.pergunta;
+}
+
+function seg(el, opts, val, cb){
+  el.innerHTML = "";
+  opts.forEach(([v,t])=>{const b=document.createElement("button");b.type="button";b.textContent=t;b.setAttribute("aria-pressed",String(v===val));b.onclick=()=>cb(v);el.appendChild(b)});
+}
+
+function desenhar(){
+  $("cats").innerHTML = "";
+  D.categorias.forEach(c=>{
+    const b=document.createElement("button");b.type="button";b.className="cat";b.setAttribute("aria-pressed",String(c.id===S.cat));
+    b.innerHTML = c.nome+"<small>"+c.foco+"</small>";
+    b.onclick=()=>{S.cat=c.id;S.registo=c.registo_ro;S.exemplo=false;desenhar();};
+    $("cats").appendChild(b);
+  });
+  const c = cat();
+  $("intuito").innerHTML = "<strong>Primeiro passo:</strong> "+c.primeiro_passo+"<br><strong>Intuito:</strong> "+c.intuito;
+  seg($("lingua"),[["ro","RO"],["pt","PT"],["en","EN"]],S.lingua,v=>{S.lingua=v;S.exemplo=false;preencherPercurso();desenhar();});
+  seg($("registo"),[["tu","tu"],["dumneavoastră","formal"]],S.registo,v=>{S.registo=v;desenhar();});
+  $("tema-l").hidden = S.cat!=="comunidade";
+  $("score").innerHTML="";
+  CRIT.forEach(([k,t,d,mx])=>{
+    const r=document.createElement("div");r.className="crit";
+    r.innerHTML="<span>"+t+"<small>"+d+"</small></span>";
+    const s=document.createElement("span");s.className="seg";
+    seg(s,Array.from({length:mx+1},(_,i)=>[i,String(i)]),S.score[k],v=>{S.score[k]=v;desenhar();});
+    r.appendChild(s);$("score").appendChild(r);
+  });
+  const t = Object.values(S.score).reduce((a,b)=>a+b,0);
+  const pr = t>=8?5:t>=6?4:t>=4?3:t>=2?2:1;
+  $("total").textContent=t;
+  $("prio").className="pill p"+pr;
+  $("prio").textContent = pr===1?"Descartar / observar":"Prioridade "+pr;
+  S._score=t;S._prio=pr;
+  $("exflag").hidden=!S.exemplo;
+  mensagens();guardar();
+}
+
+function saudacao(i){
+  const l = D.saudacoes[S.lingua][S.registo==="tu"?"tu":"dumneavoastră"];
+  return l[(i+rodar)%l.length].replace("{nome}", S.nome||"[nome]").replace(/, \[nome\]|\s\[nome\]/,"");
+}
+
+function montar(tpl,i){
+  const v = {saudacao:saudacao(i),nome:S.nome,empresa:S.empresa||S.nome,gancho:S.gancho,percurso:S.percurso,pergunta:S.pergunta,tema:S.tema,valor:S.valor,fecho:D.fecho[S.lingua]};
+  const falta=[];
+  ["valor","pergunta","gancho"].forEach(k=>{if(k!=="gancho"&&v[k]&&!/[.?!…]$/.test(v[k].trim()))v[k]=v[k].trim()+(k==="pergunta"?"?":".")});
+  const txt = tpl.replace(/\{(\w+)\}/g,(m,k)=>{const x=(v[k]||"").trim();if(!x){falta.push(k);return "\u0000"+k+"\u0001"}return x});
+  return {txt:txt.replace(/\u0000(\w+)\u0001/g,"[$1]"),falta};
+}
+
+function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"})[c])}
+
+let ULT = {};
+function mensagens(){
+  const M = D.mensagens[S.cat][S.lingua];
+  const ordem = S.cat==="comunidade"?["c1","c2","c3","dm1","fu"]:["dm1","fu"];
+  $("msgs").innerHTML=""; ULT={};
+  const faltas=new Set(); let avisos=[];
+  ordem.forEach((k,i)=>{
+    const {txt,falta}=montar(M[k],i); ULT[k]=txt; falta.forEach(f=>faltas.add(f));
+    const box=document.createElement("div");box.className="msg";
+    const html=esc(txt).replace(/\[(\w+)\]/g,"<mark>[$1]</mark>");
+    box.innerHTML="<h3>"+ROT[k]+"<span>"+txt.length+" car.</span></h3><p>"+html+"</p>";
+    const a=document.createElement("div");a.className="acts";
+    const b=document.createElement("button");b.type="button";b.className="btn primary";b.textContent="Copiar";
+    b.onclick=()=>copiar(txt,"Copiado",box);a.appendChild(b);box.appendChild(a);
+    $("msgs").appendChild(box);
+    EVITAR.forEach(re=>{if(re.test(txt))avisos.push(k)});
+  });
+  const li=[];
+  if(faltas.size) li.push(["w","Falta preencher: "+[...faltas].join(", ")+"."]);
+  else li.push(["","Todos os campos preenchidos."]);
+  if(avisos.length) li.push(["w","Há uma palavra a evitar (falha, perder dinheiro, automação pronta, preço ou emoji). Reescreve como hipótese."]);
+  else li.push(["","Sem preço, sem emojis, sem acusação."]);
+  if(S.gancho && S.gancho.length<20) li.push(["w","O gancho está curto: um facto concreto prova que viste a conta."]);
+  if(S.cat==="comunidade") li.push(["","Comentar em 2 a 3 posts antes da DM. Nada de proposta nos comentários."]);
+  if(S.cat==="grande") li.push(["","Mandar também ao decisor no LinkedIn com a mesma hipótese."]);
+  if(S._prio<=1) li.push(["w","Nota 0 a 1: deixar em observação em vez de contactar."]);
+  $("checks").innerHTML=li.map(([c,t])=>"<li class='"+c+"'>"+t+"</li>").join("");
+}
+
+function toast(t){const el=$("toast");el.textContent=t;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,1600)}
+function copiar(txt,msg,box){
+  const ok=()=>{toast(msg);if(box){box.classList.add("flash");setTimeout(()=>box.classList.remove("flash"),600)}};
+  try{navigator.clipboard.writeText(txt).then(ok,()=>fallback(txt,ok))}catch(e){fallback(txt,ok)}
+}
+function fallback(txt,ok){const t=document.createElement("textarea");t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand("copy");ok()}catch(e){toast("Seleciona e copia à mão")}t.remove()}
+
+function linhaExcel(){
+  const c=cat(), h=(S.handle||"").replace(/^@/,"").trim();
+  const limpa=s=>(s||"").replace(/[\t\n\r]+/g," ").trim();
+  const cols=["",c.nome,S.empresa||S.nome,h?"@"+h:"a confirmar",h?"https://www.instagram.com/"+h+"/":"",S.cidade,S.lingua,S.seguidores||"a confirmar",S.sinais,S.evidencia,S.percurso,S.razao,c.primeiro_passo,c.intuito,S.score.e,S.score.a,S.score.c,S.score.p,S.cat==="comunidade"?"Comentário":"DM",S.gancho,S.cat==="comunidade"?ULT.c1:ULT.dm1,ULT.fu,"Validado","",S.cat==="comunidade"?"Comentar o post atual":"Enviar DM","",""];
+  return cols.map(x=>limpa(String(x??""))).join("\t");
+}
+
+function ligar(){
+  CAMPOS.forEach(k=>{$(k).value=S[k]||"";$(k).oninput=e=>{S[k]=e.target.value;S.exemplo=false;$("exflag").hidden=true;mensagens();guardar();}});
+  $("tipo").innerHTML=D.percursos.map((p,i)=>"<option value='"+i+"'>"+p.tipo+"</option>").join("");
+  $("tipo").value=S.tipo;
+  $("tipo").onchange=e=>{S.tipo=+e.target.value;preencherPercurso();mensagens();guardar();};
+  $("nova").onclick=()=>{rodar++;mensagens();};
+  $("linha").onclick=()=>copiar(linhaExcel(),"Linha copiada");
+  $("limpar").onclick=()=>{const c=S.cat,l=S.lingua;S=novo(c,l);ligar();preencherPercurso();desenhar();};
+}
+function novo(c,l){const cc=D.categorias.find(x=>x.id===c)||D.categorias[0];return {cat:cc.id,lingua:l||"ro",registo:cc.registo_ro,tipo:0,score:{e:0,a:0,c:0,p:0},exemplo:false}}
+
+S = carregar() || JSON.parse(JSON.stringify(EXEMPLO));
+ligar();
+if(!S.percurso){preencherPercurso()}
+desenhar();
+</script>

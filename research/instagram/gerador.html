@@ -1,0 +1,289 @@
+<title>Abordagem Instagram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: uma coluna de ferramenta no telemóvel; em ecrã largo, ficha à esquerda e mensagens à direita (fixas). */
+:root{
+  --carvao:#141210; --osso:#EFEAE3; --laranja:#E8622C;
+  --bg:#EFEAE3; --fg:#141210; --muted:#4D4A47; --line:#D6CFC5; --panel:#F7F3EE; --accent:#A64923; --accent-fill:#E8622C; --on-accent:#141210;
+  --ok:#2F6B45; --warn:#9A5B00;
+  --f-display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141210; --fg:#EFEAE3; --muted:#A5A19B; --line:#2E2A26; --panel:#1C1916; --accent:#F08A5D; --accent-fill:#E8622C; --on-accent:#141210; --ok:#7CC49A; --warn:#E3A84A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141210; --fg:#EFEAE3; --muted:#A5A19B; --line:#2E2A26; --panel:#1C1916; --accent:#F08A5D; --accent-fill:#E8622C; --on-accent:#141210; --ok:#7CC49A; --warn:#E3A84A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--f-body);padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:24px}
+header h1{font:28px/1.05 var(--f-display);text-transform:uppercase;letter-spacing:.01em;margin:0;text-wrap:balance}
+header h1 i{font-style:normal;color:var(--accent)}
+header p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+.grid{display:grid;gap:24px;grid-template-columns:1fr}
+@media (min-width:920px){.grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} .out{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);align-self:start}}
+section{display:grid;gap:14px;min-width:0}
+.step{display:flex;gap:10px;align-items:baseline;font:700 11px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.step b{color:var(--accent)}
+.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cat{border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:6px;padding:10px 12px;text-align:left;font:600 14px/1.25 var(--f-body);cursor:pointer;min-height:56px}
+.cat small{display:block;font:400 12px/1.3 var(--f-body);color:var(--muted);margin-top:3px}
+.cat[aria-pressed="true"]{border-color:var(--accent-fill);box-shadow:inset 0 0 0 1px var(--accent-fill)}
+.intuito{font-size:13px;color:var(--muted);margin:0}
+.intuito strong{color:var(--fg);font-weight:600}
+.row{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+label{display:grid;gap:4px;font:600 12px/1.2 var(--f-body);color:var(--muted);min-width:0}
+label em{font-style:normal;font-weight:400}
+input,select,textarea{font:15px/1.4 var(--f-body);color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;min-width:0}
+textarea{resize:vertical;min-height:64px}
+.seg{display:flex;gap:4px;flex-wrap:wrap}
+.seg button{font:700 13px/1 var(--f-mono);min-width:38px;padding:9px 8px;border-radius:5px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent-fill);border-color:var(--accent-fill);color:var(--on-accent)}
+.score{display:grid;gap:10px}
+.crit{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font-size:13px}
+.crit span small{display:block;color:var(--muted);font-size:12px}
+.total{display:flex;gap:14px;align-items:center;font:700 13px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em}
+.total .n{font:34px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.pill{padding:6px 10px;border-radius:99px;border:1px solid currentColor}
+.p5,.p4{color:var(--ok)} .p3{color:var(--warn)} .p2,.p1{color:var(--muted)}
+details{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--panel)}
+details summary{cursor:pointer;font-weight:600}
+details[open] summary{margin-bottom:10px}
+.out .msg{border:1px solid var(--line);border-radius:6px;background:var(--panel);overflow:hidden}
+.msg h3{margin:0;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);font:700 11px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.msg h3 span{font-weight:400;letter-spacing:.04em}
+.msg p{margin:0;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg mark{background:transparent;color:var(--accent);font-weight:600;border-bottom:1px dashed currentColor}
+.acts{display:flex;gap:8px;flex-wrap:wrap;padding:0 12px 12px}
+.btn{font:700 12px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em;padding:11px 14px;border-radius:5px;border:1px solid var(--fg);background:transparent;color:var(--fg);cursor:pointer}
+.btn.primary{background:var(--accent-fill);border-color:var(--accent-fill);color:var(--on-accent)}
+.btn:focus-visible,.cat:focus-visible,.seg button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent-fill);outline-offset:2px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13px}
+.checks li{display:flex;gap:8px}
+.checks li::before{content:"";flex:0 0 8px;height:8px;margin-top:6px;border-radius:50%;background:var(--ok)}
+.checks li.w::before{background:var(--warn)}
+.note{font-size:12px;color:var(--muted);margin:0}
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:6px;font:700 12px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em}
+.ex{font:700 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid currentColor;border-radius:3px;padding:3px 5px;margin-left:8px;vertical-align:middle}
+@media (prefers-reduced-motion:no-preference){.msg{transition:border-color .2s}.msg.flash{border-color:var(--accent-fill)}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Abordagem <i>Instagram</i></h1>
+    <p>Escolhe o tipo de conta, escreve o que viste no perfil e a mensagem monta-se sozinha, já com a regra do guia: hipótese a validar, nunca acusação, sem preço.</p>
+  </header>
+
+  <div class="grid">
+    <form id="ficha" class="ficha" autocomplete="off">
+      <section>
+        <div class="step"><b>1</b> Tipo de conta</div>
+        <div class="cats" id="cats" role="group" aria-label="Categoria"></div>
+        <p class="intuito" id="intuito"></p>
+      </section>
+
+      <section>
+        <div class="step"><b>2</b> Conta</div>
+        <div class="row">
+          <label for="nome">Nome a tratar <em>(primeiro nome ou marca)</em><input id="nome"></label>
+          <label for="empresa">Empresa / marca<input id="empresa"></label>
+        </div>
+        <div class="row">
+          <label for="handle">@ no Instagram<input id="handle" placeholder="@conta"></label>
+          <label>Língua
+            <span class="seg" id="lingua" role="group" aria-label="Língua"></span>
+          </label>
+          <label>Tratamento
+            <span class="seg" id="registo" role="group" aria-label="Tratamento"></span>
+          </label>
+        </div>
+      </section>
+
+      <section>
+        <div class="step"><b>3</b> Análise da conta</div>
+        <label for="tipo">Tipo de negócio <em>(preenche percurso e pergunta; depois ajusta)</em>
+          <select id="tipo"></select>
+        </label>
+        <label for="gancho">Gancho <em>· um facto público e concreto que viste (post, serviço, evento)</em>
+          <textarea id="gancho" rows="2"></textarea>
+        </label>
+        <label for="percurso">Percurso a validar <em>· entrada → contexto → decisão → handoff → entrega</em>
+          <textarea id="percurso" rows="2"></textarea>
+        </label>
+        <label for="pergunta">Pergunta de hipótese <em>· em forma de pergunta, nunca uma certeza</em>
+          <textarea id="pergunta" rows="2"></textarea>
+        </label>
+        <label for="tema" id="tema-l">Tema do post <em>· para comentários e DM à comunidade</em>
+          <input id="tema">
+        </label>
+        <label for="valor">Novidade para o follow-up <em>· uma coisa útil e nova, não «só a lembrar»</em>
+          <textarea id="valor" rows="2"></textarea>
+        </label>
+      </section>
+
+      <section>
+        <div class="step"><b>4</b> Nota de encaixe</div>
+        <div class="score" id="score"></div>
+        <div class="total"><span class="n" id="total">0</span><span>/ 10</span><span class="pill" id="prio"></span></div>
+      </section>
+
+      <section>
+        <details id="extra">
+          <summary>Dados para a folha Excel</summary>
+          <div class="row">
+            <label for="cidade">Cidade<input id="cidade"></label>
+            <label for="seguidores">Seguidores<input id="seguidores" placeholder="a confirmar"></label>
+          </div>
+          <label for="sinais">Sinais públicos<textarea id="sinais" rows="2"></textarea></label>
+          <label for="evidencia">Evidência (link da fonte)<input id="evidencia"></label>
+          <label for="razao">Razão de encaixe<input id="razao"></label>
+        </details>
+      </section>
+    </form>
+
+    <section class="out" aria-live="polite">
+      <div class="step"><b>5</b> Mensagens <span class="ex" id="exflag">Exemplo</span></div>
+      <div id="msgs" style="display:grid;gap:12px"></div>
+      <ul class="checks" id="checks"></ul>
+      <div class="acts" style="padding:0">
+        <button type="button" class="btn" id="nova">Outra saudação</button>
+        <button type="button" class="btn" id="linha">Copiar linha p/ Excel</button>
+        <button type="button" class="btn" id="limpar">Limpar ficha</button>
+      </div>
+      <p class="note">A linha cola-se na folha «Prospeção», na coluna A da 1.ª linha vazia: vai do ID até às Notas e deixa as fórmulas da nota intactas. Envio: 1 minuto entre mensagens e saudação diferente em cada uma.</p>
+    </section>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const D = {"categorias": [{"id": "influenciador", "nome": "Influenciador / operador", "foco": "Parceria de prova e indicações qualificadas.", "perfil": "Founder, operador ou criador de negócio com menos de 50 mil seguidores, credível junto de donos de negócio e com operação própria.", "primeiro_passo": "DM personalizada a pedir uma conversa curta para mostrar o Partner Systems Opportunity Map.", "ativo": "Partner Systems Opportunity Map: 3 a 5 handoffs, uma hipótese de melhoria, um limite humano e uma prioridade de 30 dias.", "intuito": "Conversa curta → entregar o mapa → confiança → introduções consentidas a negócios com gargalo operacional.", "abordagem": "DM", "registo_ro": "tu", "excluir": "Criadores de entretenimento; contas sem @ verificável ou sem mercado; perfis cuja única razão é o número de seguidores."}, {"id": "grande", "nome": "Grande negócio", "foco": "Abrir uma oportunidade com o decisor funcional.", "perfil": "Operação multicanal com volume, vários handoffs e transformação ou serviço visível.", "primeiro_passo": "DM, e-mail ou LinkedIn a pedir encaminhamento para o dono de operações, CX ou transformação; levar mini-mapa.", "ativo": "Mini-mapa de uma página de um percurso público do cliente.", "intuito": "Encaminhamento para o dono do processo ou reunião de descoberta que converta numa AI Systems Audit.", "abordagem": "DM + LinkedIn do decisor", "registo_ro": "dumneavoastră", "excluir": "Sem operação de serviço ou percurso multietapa; contacto genérico quando já há decisor identificável; alegações de falha, risco ou ROI sem evidência."}, {"id": "pme_parceiro", "nome": "PME / parceiro de indicação", "foco": "Co-entrega ou referência mútua.", "perfil": "Agência, consultora, software ou serviço complementar com clientes B2B, equipa e processo.", "primeiro_passo": "Mensagem de complementaridade: uma operação típica onde a Pacheco protege o resultado que a agência já gera.", "ativo": "Mini-mapa de um fluxo conjunto ou de um cliente-tipo da agência.", "intuito": "Co-entrega, introdução mútua ou workshop; referrals qualificados e casos partilháveis.", "abordagem": "DM ao fundador", "registo_ro": "dumneavoastră", "excluir": "Concorrentes que vendem auditorias de sistemas de IA; parceiros sem clientes B2B reais; pedidos de parceria vagos."}, {"id": "comunidade", "nome": "Página / comunidade B2B", "foco": "Ganhar relevância perante uma audiência qualificada.", "perfil": "Evento, media, comunidade, aceleradora ou podcast que concentra founders, decisores e profissionais.", "primeiro_passo": "Comentário útil no post atual; 2 a 3 interações antes de pedir contacto.", "ativo": "Contribuição pública: observação ou pergunta prática ligada ao post.", "intuito": "Familiaridade perante a audiência → DM ou introdução → conteúdo, evento ou referência.", "abordagem": "Comentários, depois DM", "registo_ro": "tu", "excluir": "Páginas inativas ou sem audiência de negócio; comentários genéricos ou comerciais; DM antes de qualquer contribuição."}], "saudacoes": {"ro": {"tu": ["Bună, {nome}!", "Salut, {nome}!", "Bună ziua, {nome}!", "Bună seara, {nome}!"], "dumneavoastră": ["Bună ziua, {nome}!", "Bună ziua!", "Bună seara, {nome}!", "Bună dimineața, {nome}!"]}, "pt": {"tu": ["Olá, {nome}!", "Boa tarde, {nome}!", "Bom dia, {nome}!", "Olá {nome}, tudo bem?"], "dumneavoastră": ["Bom dia, {nome}.", "Boa tarde, {nome}.", "Olá, {nome}.", "Boa tarde."]}, "en": {"tu": ["Hi {nome},", "Hey {nome},", "Hello {nome},", "Good afternoon {nome},"], "dumneavoastră": ["Hello {nome},", "Good morning {nome},", "Good afternoon {nome},", "Hello,"]}}, "fecho": {"ro": "Voi fi pregătit.", "pt": "Vou estar preparado.", "en": "I'll come prepared."}, "mensagens": {"influenciador": {"ro": {"dm1": "{saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho} și m-am gândit la partea din spate a operațiunii tale: {percurso}. Am pregătit ceva util pentru tine, fără cost: o hartă scurtă cu 3–5 predări între oameni și sisteme, o ipoteză de îmbunătățire, punctul unde decide un om și prioritatea pentru următoarele 30 de zile. Întrebarea de la care pornesc: {pergunta} Ai fi deschis la o scurtă întâlnire ca să ți-o arăt? {fecho}", "fu": "{saudacao} Revin pe scurt, cu un lucru concret: {valor} Harta rămâne pregătită pentru tine, fără nicio obligație. Dacă acum nu e momentul, înțeleg perfect. {fecho}"}, "pt": {"dm1": "{saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho} e fiquei a pensar na parte de trás da tua operação: {percurso}. Preparei uma coisa útil para ti, sem custo: um mapa curto com 3 a 5 passagens entre pessoas e sistemas, uma hipótese de melhoria, o ponto onde decide uma pessoa e a prioridade para os próximos 30 dias. A pergunta de onde parto: {pergunta} Estarias aberto a uma conversa curta para te mostrar? {fecho}", "fu": "{saudacao} Volto só com uma coisa concreta: {valor} O mapa continua preparado para ti, sem compromisso. Se agora não é o momento, percebo perfeitamente. {fecho}"}, "en": {"dm1": "{saudacao} I'm Tomás from Pacheco Studios. I saw {gancho} and started thinking about the back end of your operation: {percurso}. I put together something useful for you, at no cost: a short map with 3 to 5 handoffs between people and systems, one improvement hypothesis, the point where a human decides, and a 30-day priority. The question I start from: {pergunta} Would you be open to a short call so I can walk you through it? {fecho}", "fu": "{saudacao} A quick follow-up with one concrete thing: {valor} The map is still ready for you, no strings attached. If now isn't the right time, completely understood. {fecho}"}}, "grande": {"ro": {"dm1": "{saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am parcurs traseul public al unui client {empresa}: {percurso}. Pe baza a ceea ce este public, am o ipoteză de diagnostic, nu o concluzie: {pergunta} Am pus-o pe o mini-hartă de o pagină. Cu cine din echipă ar fi potrivit să o validez: operațiuni, experiența clienților sau transformare digitală? O întâlnire scurtă de explorare ar fi suficientă. {fecho}", "fu": "{saudacao} Revin cu mini-harta despre traseul clientului {empresa}. Am adăugat un singur punct: {valor} Dacă îmi puteți indica persoana potrivită, îi trimit direct harta. {fecho}"}, "pt": {"dm1": "{saudacao} Sou o Tomás, da Pacheco Studios. Percorri o percurso público de um cliente {empresa}: {percurso}. Com base no que é público, tenho uma hipótese de diagnóstico, não uma conclusão: {pergunta} Pus isto num mini-mapa de uma página. Quem na equipa seria a pessoa certa para o validar: operações, experiência do cliente ou transformação digital? Uma conversa exploratória curta chega. {fecho}", "fu": "{saudacao} Volto ao mini-mapa sobre o percurso do cliente {empresa}. Acrescentei um único ponto: {valor} Se me puderem indicar a pessoa certa, envio-lhe o mapa diretamente. {fecho}"}, "en": {"dm1": "{saudacao} I'm Tomás from Pacheco Studios. I walked through the public journey of a {empresa} customer: {percurso}. Based only on what's public, I have a diagnostic hypothesis, not a conclusion: {pergunta} I've put it on a one-page mini-map. Who on the team would be the right person to validate it: operations, customer experience or digital transformation? A short exploratory call would be enough. {fecho}", "fu": "{saudacao} Following up on the mini-map of the {empresa} customer journey. I added one point: {valor} If you can point me to the right person, I'll send the map to them directly. {fecho}"}}, "pme_parceiro": {"ro": {"dm1": "{saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho}. Voi aduceți cererea; noi lucrăm în stratul de după lead: cum ajunge cererea la echipă, ce context o însoțește, cine decide și cum se livrează. Nu înlocuim marketingul sau brandingul, protejăm rezultatul pe care îl generați deja. Am schițat o mini-hartă pentru un client tipic de-al vostru: {percurso}. Ați fi deschis la o întâlnire ca să vedem dacă are sens să lucrăm împreună? {fecho}", "fu": "{saudacao} Revin cu un exemplu concret de colaborare: {valor} Voi păstrați relația și serviciul, noi intrăm doar pe partea operațională. {fecho}"}, "pt": {"dm1": "{saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho}. Vocês trazem a procura; nós trabalhamos na camada depois do lead: como o pedido chega à equipa, que contexto leva, quem decide e como se entrega. Não substituímos o marketing nem a marca, protegemos o resultado que vocês já geram. Esbocei um mini-mapa para um cliente típico vosso: {percurso}. Estariam abertos a uma reunião para ver se faz sentido trabalharmos juntos? {fecho}", "fu": "{saudacao} Volto com um exemplo concreto de colaboração: {valor} Vocês mantêm a relação e o serviço, nós entramos só na parte operacional. {fecho}"}, "en": {"dm1": "{saudacao} I'm Tomás from Pacheco Studios. I saw {gancho}. You bring in the demand; we work on the layer after the lead: how the request reaches the team, what context travels with it, who decides and how it gets delivered. We don't replace marketing or branding, we protect the result you already generate. I sketched a mini-map for one of your typical clients: {percurso}. Would you be open to a meeting to see whether it makes sense to work together? {fecho}", "fu": "{saudacao} Following up with one concrete collaboration example: {valor} You keep the relationship and the service; we only step into the operational side. {fecho}"}}, "comunidade": {"ro": {"c1": "Punctul despre {tema} mi se pare esențial. În operațiunile pe care le analizez, întrebarea care schimbă cel mai mult este: {pergunta}", "c2": "Bună observație. Aș adăuga un detaliu din practică: {valor}", "c3": "O întrebare sinceră pentru cei care au trecut prin asta: {pergunta}", "dm1": "{saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am comentat în ultimele săptămâni la postările voastre despre {tema}. Lucrez pe sisteme cu AI pentru operațiuni: unde stă contextul, cine răspunde de pasul următor și unde decide un om. Cred că publicul vostru ar găsi util un subiect ca acesta: {gancho}, ca articol, workshop scurt sau discuție la un eveniment. Ați fi deschis la o întâlnire scurtă? {fecho}", "fu": "{saudacao} Revin cu propunerea de subiect, acum mai concretă: {valor} Mă adaptez formatului care vă ajută cel mai mult. {fecho}"}, "pt": {"c1": "O ponto sobre {tema} parece-me essencial. Nas operações que analiso, a pergunta que mais muda o resultado é: {pergunta}", "c2": "Boa observação. Acrescentava um detalhe da prática: {valor}", "c3": "Uma pergunta sincera para quem já passou por isto: {pergunta}", "dm1": "{saudacao} Sou o Tomás, da Pacheco Studios. Tenho comentado nas vossas publicações sobre {tema}. Trabalho em sistemas com IA para operações: onde fica o contexto, quem é dono do próximo passo e onde decide uma pessoa. Acho que a vossa audiência ia achar útil um tema como este: {gancho}, em artigo, workshop curto ou conversa num evento. Estariam abertos a uma reunião curta? {fecho}", "fu": "{saudacao} Volto à proposta de tema, agora mais concreta: {valor} Adapto-me ao formato que mais vos ajudar. {fecho}"}, "en": {"c1": "The point about {tema} is key. In the operations I map, the question that changes the most is: {pergunta}", "c2": "Good point. One detail from practice I'd add: {valor}", "c3": "An honest question for anyone who's been through this: {pergunta}", "dm1": "{saudacao} I'm Tomás from Pacheco Studios. I've been commenting on your posts about {tema}. I work on AI systems for operations: where context lives, who owns the next step and where a human decides. I think your audience would find a topic like this useful: {gancho}, as an article, a short workshop or a talk at an event. Would you be open to a short meeting? {fecho}", "fu": "{saudacao} Following up on the topic idea, now more concrete: {valor} Happy to fit whatever format helps you most. {fecho}"}}}, "percursos": [{"tipo": "Hotel / alojamento", "ro": "cerere de rezervare pe Instagram sau site → verificare disponibilitate → ofertă → plată → check-in → recenzie", "pt": "pedido de reserva no Instagram ou site → ver disponibilidade → proposta → pagamento → check-in → avaliação", "en": "booking request via Instagram or site → availability check → offer → payment → check-in → review", "pergunta": {"ro": "Ce context trebuie să ajungă de la mesajul inițial la recepție, ca oaspetele să nu repete totul?", "pt": "Que contexto tem de chegar da primeira mensagem à receção para o hóspede não repetir tudo?", "en": "What context has to travel from the first message to the front desk so the guest doesn't repeat everything?"}}, {"tipo": "Clínica / várias unidades", "ro": "mesaj sau apel → triere → programare în unitatea potrivită → consultație → plan de tratament → revenire", "pt": "mensagem ou chamada → triagem → marcação na unidade certa → consulta → plano de tratamento → regresso", "en": "message or call → triage → booking at the right location → appointment → treatment plan → return visit", "pergunta": {"ro": "Cine decide unitatea și ora potrivită, și ce informație administrativă trebuie să aibă la momentul acela?", "pt": "Quem decide a unidade e a hora certas, e que informação administrativa precisa de ter nesse momento?", "en": "Who decides the right location and slot, and what administrative information do they need at that moment?"}}, {"tipo": "Ginásio / estúdio", "ro": "întrebare pe DM → ședință de probă → abonament → plan de antrenament → prezență → reînnoire", "pt": "pergunta por DM → aula experimental → inscrição → plano de treino → presença → renovação", "en": "DM inquiry → trial session → membership → training plan → attendance → renewal", "pergunta": {"ro": "Cine observă primul că un membru nu mai vine și ce urmează după acel semnal?", "pt": "Quem repara primeiro que um membro deixou de vir e o que acontece depois desse sinal?", "en": "Who notices first that a member has stopped coming, and what happens after that signal?"}}, {"tipo": "Restaurante / hospitality", "ro": "rezervare sau cerere de eveniment → confirmare → detalii (meniu, alergii, număr) → servire → feedback", "pt": "reserva ou pedido de evento → confirmação → detalhes (menu, alergias, número) → serviço → feedback", "en": "reservation or event request → confirmation → details (menu, allergies, headcount) → service → feedback", "pergunta": {"ro": "Unde stă informația despre un eveniment privat între primul mesaj și seara în care are loc?", "pt": "Onde fica a informação de um evento privado entre a primeira mensagem e a noite em que acontece?", "en": "Where does the information about a private event live between the first message and the night it happens?"}}, {"tipo": "Imobiliária", "ro": "lead din anunț → calificare → vizionare → ofertă → acte → predare", "pt": "lead do anúncio → qualificação → visita → proposta → documentação → entrega", "en": "listing lead → qualification → viewing → offer → paperwork → handover", "pergunta": {"ro": "Ce criterii decid ce lead primește prima vizionare și cine le aplică?", "pt": "Que critérios decidem que lead tem a primeira visita e quem os aplica?", "en": "What criteria decide which lead gets the first viewing, and who applies them?"}}, {"tipo": "E-commerce / retalho com app", "ro": "comandă (site, app, magazin) → confirmare → pregătire → livrare → suport → retur", "pt": "encomenda (site, app, loja) → confirmação → preparação → entrega → apoio → devolução", "en": "order (site, app, store) → confirmation → picking → delivery → support → return", "pergunta": {"ro": "Când un client scrie la suport, ce context despre comandă are deja echipa în față?", "pt": "Quando um cliente escreve ao apoio, que contexto da encomenda a equipa já tem à frente?", "en": "When a customer contacts support, what order context does the team already have in front of them?"}}, {"tipo": "Agência de marketing / web", "ro": "lead generat pentru client → răspuns → calificare → ofertă → livrare → raportare", "pt": "lead gerado para o cliente → resposta → qualificação → proposta → entrega → relatório", "en": "lead generated for the client → response → qualification → proposal → delivery → reporting", "pergunta": {"ro": "Ce se întâmplă cu un lead bun în primele ore după ce ajunge la clientul vostru?", "pt": "O que acontece a um bom lead nas primeiras horas depois de chegar ao vosso cliente?", "en": "What happens to a good lead in the first hours after it reaches your client?"}}, {"tipo": "Consultora / software B2B", "ro": "cerere de demo → calificare → ofertă → onboarding → suport → extindere", "pt": "pedido de demo → qualificação → proposta → onboarding → apoio → expansão", "en": "demo request → qualification → proposal → onboarding → support → expansion", "pergunta": {"ro": "Ce informație din vânzare ajunge la echipa de onboarding și ce trebuie cerut din nou clientului?", "pt": "Que informação da venda chega à equipa de onboarding e o que tem de ser pedido de novo ao cliente?", "en": "What information from the sale reaches the onboarding team, and what has to be asked again?"}}, {"tipo": "Evento / comunidade", "ro": "înscriere → selecție → confirmare → participare → follow-up → următorul eveniment", "pt": "inscrição → seleção → confirmação → participação → follow-up → próximo evento", "en": "registration → selection → confirmation → attendance → follow-up → next event", "pergunta": {"ro": "Ce se întâmplă cu contactele făcute la eveniment în săptămâna de după?", "pt": "O que acontece aos contactos feitos no evento na semana seguinte?", "en": "What happens to the connections made at the event in the following week?"}}, {"tipo": "Criador / founder com operação", "ro": "mesaj de la public → calificare → apel sau ofertă → livrare (curs, consultanță, produs) → comunitate", "pt": "mensagem do público → qualificação → chamada ou proposta → entrega (curso, consultoria, produto) → comunidade", "en": "message from audience → qualification → call or offer → delivery (course, consulting, product) → community", "pergunta": {"ro": "Ce mesaje din DM merită un om, care pot primi un răspuns standard, și cine decide diferența?", "pt": "Que mensagens por DM merecem uma pessoa, quais podem ter resposta padrão, e quem decide a diferença?", "en": "Which DMs deserve a human, which can get a standard reply, and who decides the difference?"}}], "evitar": [["Há uma questão operacional que vale a pena mapear.", "Vimos que o vosso processo está a falhar."], ["Hipótese de diagnóstico baseada no percurso público.", "Sabemos onde estão a perder dinheiro."], ["Onde deve ficar o contexto, o dono e a regra de decisão?", "A IA resolve tudo automaticamente."], ["Vamos validar antes de sugerir ferramenta.", "Temos uma automação pronta para instalar."]]};
+const ROT = {dm1:"DM 1", fu:"Follow-up (4 dias depois)", c1:"Comentário · ponto", c2:"Comentário · acréscimo", c3:"Comentário · pergunta"};
+const CRIT = [["e","Encaixe com a auditoria","percurso multietapa, repetitivo e com valor?",3],["a","Acesso ao decisor","chega-se a fundador, operações ou CX?",2],["c","Complexidade pública","canais, equipas, reservas, entrega, volume?",3],["p","Prova / referência","pode dar caso, parceria ou introduções?",2]];
+const EVITAR = [/falh|failing|eșu|esu[ăa]/i,/perd(er|em) dinheiro|pierd|losing money/i,/autom[aá]tic|automat(ion|izare) (pronta|ready|gata)/i,/resolve tudo|rezolv[ăa] tot/i,/\d+\s?(€|eur|lei|ron)\b|preț|pret\b|preço|price/i,/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u];
+const EXEMPLO = {cat:"pme_parceiro",nome:"echipa Sinaps",empresa:"Sinaps",handle:"",lingua:"ro",registo:"dumneavoastră",tipo:6,gancho:"că ați deschis biroul din București, pe lângă Iași, Cluj, Constanța și Brașov",percurso:"",pergunta:"",tema:"",valor:"o hartă pentru un client e-commerce, cu ce se întâmplă cu un lead bun în primele 2 ore",score:{e:3,a:1,c:3,p:2},cidade:"Iași",seguidores:"a confirmar",sinais:"47 especialistas; Google Premier Partner; Meta Business Partner; 5 escritórios",evidencia:"https://www.revistabiz.ro/agentia-de-digital-marketing-sinaps-a-deschis-un-birou-la-bucuresti/",razao:"Agência com volume B2B: cada cliente dela é um percurso depois do lead",exemplo:true};
+let S, rodar = 0;
+const $ = id => document.getElementById(id);
+const CAMPOS = ["nome","empresa","handle","gancho","percurso","pergunta","tema","valor","cidade","seguidores","sinais","evidencia","razao"];
+
+function cat(){return D.categorias.find(c=>c.id===S.cat)}
+function guardar(){try{localStorage.setItem("abordagem-ig",JSON.stringify(S))}catch(e){}}
+function carregar(){try{const s=JSON.parse(localStorage.getItem("abordagem-ig"));if(s&&s.cat)return s}catch(e){}return null}
+
+function preencherPercurso(){
+  const p = D.percursos[S.tipo]; if(!p) return;
+  S.percurso = p[S.lingua]; S.pergunta = p.pergunta[S.lingua];
+  $("percurso").value = S.percurso; $("pergunta").value = S.pergunta;
+}
+
+function seg(el, opts, val, cb){
+  el.innerHTML = "";
+  opts.forEach(([v,t])=>{const b=document.createElement("button");b.type="button";b.textContent=t;b.setAttribute("aria-pressed",String(v===val));b.onclick=()=>cb(v);el.appendChild(b)});
+}
+
+function desenhar(){
+  $("cats").innerHTML = "";
+  D.categorias.forEach(c=>{
+    const b=document.createElement("button");b.type="button";b.className="cat";b.setAttribute("aria-pressed",String(c.id===S.cat));
+    b.innerHTML = c.nome+"<small>"+c.foco+"</small>";
+    b.onclick=()=>{S.cat=c.id;S.registo=c.registo_ro;S.exemplo=false;desenhar();};
+    $("cats").appendChild(b);
+  });
+  const c = cat();
+  $("intuito").innerHTML = "<strong>Primeiro passo:</strong> "+c.primeiro_passo+"<br><strong>Intuito:</strong> "+c.intuito;
+  seg($("lingua"),[["ro","RO"],["pt","PT"],["en","EN"]],S.lingua,v=>{S.lingua=v;S.exemplo=false;preencherPercurso();desenhar();});
+  seg($("registo"),[["tu","tu"],["dumneavoastră","formal"]],S.registo,v=>{S.registo=v;desenhar();});
+  $("tema-l").hidden = S.cat!=="comunidade";
+  $("score").innerHTML="";
+  CRIT.forEach(([k,t,d,mx])=>{
+    const r=document.createElement("div");r.className="crit";
+    r.innerHTML="<span>"+t+"<small>"+d+"</small></span>";
+    const s=document.createElement("span");s.className="seg";
+    seg(s,Array.from({length:mx+1},(_,i)=>[i,String(i)]),S.score[k],v=>{S.score[k]=v;desenhar();});
+    r.appendChild(s);$("score").appendChild(r);
+  });
+  const t = Object.values(S.score).reduce((a,b)=>a+b,0);
+  const pr = t>=8?5:t>=6?4:t>=4?3:t>=2?2:1;
+  $("total").textContent=t;
+  $("prio").className="pill p"+pr;
+  $("prio").textContent = pr===1?"Descartar / observar":"Prioridade "+pr;
+  S._score=t;S._prio=pr;
+  $("exflag").hidden=!S.exemplo;
+  mensagens();guardar();
+}
+
+function saudacao(i){
+  const l = D.saudacoes[S.lingua][S.registo==="tu"?"tu":"dumneavoastră"];
+  return l[(i+rodar)%l.length].replace("{nome}", S.nome||"[nome]").replace(/, \[nome\]|\s\[nome\]/,"");
+}
+
+function montar(tpl,i){
+  const v = {saudacao:saudacao(i),nome:S.nome,empresa:S.empresa||S.nome,gancho:S.gancho,percurso:S.percurso,pergunta:S.pergunta,tema:S.tema,valor:S.valor,fecho:D.fecho[S.lingua]};
+  const falta=[];
+  ["valor","pergunta","gancho"].forEach(k=>{if(k!=="gancho"&&v[k]&&!/[.?!…]$/.test(v[k].trim()))v[k]=v[k].trim()+(k==="pergunta"?"?":".")});
+  const txt = tpl.replace(/\{(\w+)\}/g,(m,k)=>{const x=(v[k]||"").trim();if(!x){falta.push(k);return "\u0000"+k+"\u0001"}return x});
+  return {txt:txt.replace(/\u0000(\w+)\u0001/g,"[$1]"),falta};
+}
+
+function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"})[c])}
+
+let ULT = {};
+function mensagens(){
+  const M = D.mensagens[S.cat][S.lingua];
+  const ordem = S.cat==="comunidade"?["c1","c2","c3","dm1","fu"]:["dm1","fu"];
+  $("msgs").innerHTML=""; ULT={};
+  const faltas=new Set(); let avisos=[];
+  ordem.forEach((k,i)=>{
+    const {txt,falta}=montar(M[k],i); ULT[k]=txt; falta.forEach(f=>faltas.add(f));
+    const box=document.createElement("div");box.className="msg";
+    const html=esc(txt).replace(/\[(\w+)\]/g,"<mark>[$1]</mark>");
+    box.innerHTML="<h3>"+ROT[k]+"<span>"+txt.length+" car.</span></h3><p>"+html+"</p>";
+    const a=document.createElement("div");a.className="acts";
+    const b=document.createElement("button");b.type="button";b.className="btn primary";b.textContent="Copiar";
+    b.onclick=()=>copiar(txt,"Copiado",box);a.appendChild(b);box.appendChild(a);
+    $("msgs").appendChild(box);
+    EVITAR.forEach(re=>{if(re.test(txt))avisos.push(k)});
+  });
+  const li=[];
+  if(faltas.size) li.push(["w","Falta preencher: "+[...faltas].join(", ")+"."]);
+  else li.push(["","Todos os campos preenchidos."]);
+  if(avisos.length) li.push(["w","Há uma palavra a evitar (falha, perder dinheiro, automação pronta, preço ou emoji). Reescreve como hipótese."]);
+  else li.push(["","Sem preço, sem emojis, sem acusação."]);
+  if(S.gancho && S.gancho.length<20) li.push(["w","O gancho está curto: um facto concreto prova que viste a conta."]);
+  if(S.cat==="comunidade") li.push(["","Comentar em 2 a 3 posts antes da DM. Nada de proposta nos comentários."]);
+  if(S.cat==="grande") li.push(["","Mandar também ao decisor no LinkedIn com a mesma hipótese."]);
+  if(S._prio<=1) li.push(["w","Nota 0 a 1: deixar em observação em vez de contactar."]);
+  $("checks").innerHTML=li.map(([c,t])=>"<li class='"+c+"'>"+t+"</li>").join("");
+}
+
+function toast(t){const el=$("toast");el.textContent=t;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,1600)}
+function copiar(txt,msg,box){
+  const ok=()=>{toast(msg);if(box){box.classList.add("flash");setTimeout(()=>box.classList.remove("flash"),600)}};
+  try{navigator.clipboard.writeText(txt).then(ok,()=>fallback(txt,ok))}catch(e){fallback(txt,ok)}
+}
+function fallback(txt,ok){const t=document.createElement("textarea");t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand("copy");ok()}catch(e){toast("Seleciona e copia à mão")}t.remove()}
+
+function linhaExcel(){
+  const c=cat(), h=(S.handle||"").replace(/^@/,"").trim();
+  const limpa=s=>(s||"").replace(/[\t\n\r]+/g," ").trim();
+  const cols=["",c.nome,S.empresa||S.nome,h?"@"+h:"a confirmar",h?"https://www.instagram.com/"+h+"/":"",S.cidade,S.lingua,S.seguidores||"a confirmar",S.sinais,S.evidencia,S.percurso,S.razao,c.primeiro_passo,c.intuito,S.score.e,S.score.a,S.score.c,S.score.p,S.cat==="comunidade"?"Comentário":"DM",S.gancho,S.cat==="comunidade"?ULT.c1:ULT.dm1,ULT.fu,"Validado","",S.cat==="comunidade"?"Comentar o post atual":"Enviar DM","",""];
+  return cols.map(x=>limpa(String(x??""))).join("\t");
+}
+
+function ligar(){
+  CAMPOS.forEach(k=>{$(k).value=S[k]||"";$(k).oninput=e=>{S[k]=e.target.value;S.exemplo=false;$("exflag").hidden=true;mensagens();guardar();}});
+  $("tipo").innerHTML=D.percursos.map((p,i)=>"<option value='"+i+"'>"+p.tipo+"</option>").join("");
+  $("tipo").value=S.tipo;
+  $("tipo").onchange=e=>{S.tipo=+e.target.value;preencherPercurso();mensagens();guardar();};
+  $("nova").onclick=()=>{rodar++;mensagens();};
+  $("linha").onclick=()=>copiar(linhaExcel(),"Linha copiada");
+  $("limpar").onclick=()=>{const c=S.cat,l=S.lingua;S=novo(c,l);ligar();preencherPercurso();desenhar();};
+}
+function novo(c,l){const cc=D.categorias.find(x=>x.id===c)||D.categorias[0];return {cat:cc.id,lingua:l||"ro",registo:cc.registo_ro,tipo:0,score:{e:0,a:0,c:0,p:0},exemplo:false}}
+
+S = carregar() || JSON.parse(JSON.stringify(EXEMPLO));
+ligar();
+if(!S.percurso){preencherPercurso()}
+desenhar();
+</script>

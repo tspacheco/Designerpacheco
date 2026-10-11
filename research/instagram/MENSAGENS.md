@@ -1,0 +1,202 @@
+# Mensagens de abordagem no Instagram
+
+Gerado por `gerar.py` a partir de `dados.py`. Não editar à mão: mudar `dados.py` e correr de novo.
+
+Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` (facto público e concreto da conta) · `{percurso}` · `{pergunta}` (hipótese em forma de pergunta) · `{tema}` (tema do post) · `{valor}` (algo novo e útil no follow-up).
+
+## Influenciador / operador
+
+**Primeiro passo:** DM personalizada a pedir uma conversa curta para mostrar o Partner Systems Opportunity Map.
+
+**Intuito:** Conversa curta → entregar o mapa → confiança → introduções consentidas a negócios com gargalo operacional.
+
+**Registo em romeno:** tu
+
+### Romeno
+
+**DM 1**
+
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho} și m-am gândit la partea din spate a operațiunii tale: {percurso}. Am pregătit ceva util pentru tine, fără cost: o hartă scurtă cu 3–5 predări între oameni și sisteme, o ipoteză de îmbunătățire, punctul unde decide un om și prioritatea pentru următoarele 30 de zile. Întrebarea de la care pornesc: {pergunta} Ai fi deschis la o scurtă întâlnire ca să ți-o arăt? Voi fi pregătit.
+
+**Follow-up**
+
+> {saudacao} Revin pe scurt, cu un lucru concret: {valor} Harta rămâne pregătită pentru tine, fără nicio obligație. Dacă acum nu e momentul, înțeleg perfect. Voi fi pregătit.
+
+### Português
+
+**DM 1**
+
+> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho} e fiquei a pensar na parte de trás da tua operação: {percurso}. Preparei uma coisa útil para ti, sem custo: um mapa curto com 3 a 5 passagens entre pessoas e sistemas, uma hipótese de melhoria, o ponto onde decide uma pessoa e a prioridade para os próximos 30 dias. A pergunta de onde parto: {pergunta} Estarias aberto a uma conversa curta para te mostrar? Vou estar preparado.
+
+**Follow-up**
+
+> {saudacao} Volto só com uma coisa concreta: {valor} O mapa continua preparado para ti, sem compromisso. Se agora não é o momento, percebo perfeitamente. Vou estar preparado.
+
+### Inglês
+
+**DM 1**
+
+> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho} and started thinking about the back end of your operation: {percurso}. I put together something useful for you, at no cost: a short map with 3 to 5 handoffs between people and systems, one improvement hypothesis, the point where a human decides, and a 30-day priority. The question I start from: {pergunta} Would you be open to a short call so I can walk you through it? I'll come prepared.
+
+**Follow-up**
+
+> {saudacao} A quick follow-up with one concrete thing: {valor} The map is still ready for you, no strings attached. If now isn't the right time, completely understood. I'll come prepared.
+
+## Grande negócio
+
+**Primeiro passo:** DM, e-mail ou LinkedIn a pedir encaminhamento para o dono de operações, CX ou transformação; levar mini-mapa.
+
+**Intuito:** Encaminhamento para o dono do processo ou reunião de descoberta que converta numa AI Systems Audit.
+
+**Registo em romeno:** dumneavoastră
+
+### Romeno
+
+**DM 1**
+
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am parcurs traseul public al unui client {empresa}: {percurso}. Pe baza a ceea ce este public, am o ipoteză de diagnostic, nu o concluzie: {pergunta} Am pus-o pe o mini-hartă de o pagină. Cu cine din echipă ar fi potrivit să o validez: operațiuni, experiența clienților sau transformare digitală? O întâlnire scurtă de explorare ar fi suficientă. Voi fi pregătit.
+
+**Follow-up**
+
+> {saudacao} Revin cu mini-harta despre traseul clientului {empresa}. Am adăugat un singur punct: {valor} Dacă îmi puteți indica persoana potrivită, îi trimit direct harta. Voi fi pregătit.
+
+### Português
+
+**DM 1**
+
+> {saudacao} Sou o Tomás, da Pacheco Studios. Percorri o percurso público de um cliente {empresa}: {percurso}. Com base no que é público, tenho uma hipótese de diagnóstico, não uma conclusão: {pergunta} Pus isto num mini-mapa de uma página. Quem na equipa seria a pessoa certa para o validar: operações, experiência do cliente ou transformação digital? Uma conversa exploratória curta chega. Vou estar preparado.
+
+**Follow-up**
+
+> {saudacao} Volto ao mini-mapa sobre o percurso do cliente {empresa}. Acrescentei um único ponto: {valor} Se me puderem indicar a pessoa certa, envio-lhe o mapa diretamente. Vou estar preparado.
+
+### Inglês
+
+**DM 1**
+
+> {saudacao} I'm Tomás from Pacheco Studios. I walked through the public journey of a {empresa} customer: {percurso}. Based only on what's public, I have a diagnostic hypothesis, not a conclusion: {pergunta} I've put it on a one-page mini-map. Who on the team would be the right person to validate it: operations, customer experience or digital transformation? A short exploratory call would be enough. I'll come prepared.
+
+**Follow-up**
+
+> {saudacao} Following up on the mini-map of the {empresa} customer journey. I added one point: {valor} If you can point me to the right person, I'll send the map to them directly. I'll come prepared.
+
+## PME / parceiro de indicação
+
+**Primeiro passo:** Mensagem de complementaridade: uma operação típica onde a Pacheco protege o resultado que a agência já gera.
+
+**Intuito:** Co-entrega, introdução mútua ou workshop; referrals qualificados e casos partilháveis.
+
+**Registo em romeno:** dumneavoastră
+
+### Romeno
+
+**DM 1**
+
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho}. Voi aduceți cererea; noi lucrăm în stratul de după lead: cum ajunge cererea la echipă, ce context o însoțește, cine decide și cum se livrează. Nu înlocuim marketingul sau brandingul, protejăm rezultatul pe care îl generați deja. Am schițat o mini-hartă pentru un client tipic de-al vostru: {percurso}. Ați fi deschis la o întâlnire ca să vedem dacă are sens să lucrăm împreună? Voi fi pregătit.
+
+**Follow-up**
+
+> {saudacao} Revin cu un exemplu concret de colaborare: {valor} Voi păstrați relația și serviciul, noi intrăm doar pe partea operațională. Voi fi pregătit.
+
+### Português
+
+**DM 1**
+
+> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho}. Vocês trazem a procura; nós trabalhamos na camada depois do lead: como o pedido chega à equipa, que contexto leva, quem decide e como se entrega. Não substituímos o marketing nem a marca, protegemos o resultado que vocês já geram. Esbocei um mini-mapa para um cliente típico vosso: {percurso}. Estariam abertos a uma reunião para ver se faz sentido trabalharmos juntos? Vou estar preparado.
+
+**Follow-up**
+
+> {saudacao} Volto com um exemplo concreto de colaboração: {valor} Vocês mantêm a relação e o serviço, nós entramos só na parte operacional. Vou estar preparado.
+
+### Inglês
+
+**DM 1**
+
+> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho}. You bring in the demand; we work on the layer after the lead: how the request reaches the team, what context travels with it, who decides and how it gets delivered. We don't replace marketing or branding, we protect the result you already generate. I sketched a mini-map for one of your typical clients: {percurso}. Would you be open to a meeting to see whether it makes sense to work together? I'll come prepared.
+
+**Follow-up**
+
+> {saudacao} Following up with one concrete collaboration example: {valor} You keep the relationship and the service; we only step into the operational side. I'll come prepared.
+
+## Página / comunidade B2B
+
+**Primeiro passo:** Comentário útil no post atual; 2 a 3 interações antes de pedir contacto.
+
+**Intuito:** Familiaridade perante a audiência → DM ou introdução → conteúdo, evento ou referência.
+
+**Registo em romeno:** tu
+
+### Romeno
+
+**Comentário: ponto**
+
+> Punctul despre {tema} mi se pare esențial. În operațiunile pe care le analizez, întrebarea care schimbă cel mai mult este: {pergunta}
+
+**Comentário: acréscimo**
+
+> Bună observație. Aș adăuga un detaliu din practică: {valor}
+
+**Comentário: pergunta**
+
+> O întrebare sinceră pentru cei care au trecut prin asta: {pergunta}
+
+**DM 1**
+
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am comentat în ultimele săptămâni la postările voastre despre {tema}. Lucrez pe sisteme cu AI pentru operațiuni: unde stă contextul, cine răspunde de pasul următor și unde decide un om. Cred că publicul vostru ar găsi util un subiect ca acesta: {gancho}, ca articol, workshop scurt sau discuție la un eveniment. Ați fi deschis la o întâlnire scurtă? Voi fi pregătit.
+
+**Follow-up**
+
+> {saudacao} Revin cu propunerea de subiect, acum mai concretă: {valor} Mă adaptez formatului care vă ajută cel mai mult. Voi fi pregătit.
+
+### Português
+
+**Comentário: ponto**
+
+> O ponto sobre {tema} parece-me essencial. Nas operações que analiso, a pergunta que mais muda o resultado é: {pergunta}
+
+**Comentário: acréscimo**
+
+> Boa observação. Acrescentava um detalhe da prática: {valor}
+
+**Comentário: pergunta**
+
+> Uma pergunta sincera para quem já passou por isto: {pergunta}
+
+**DM 1**
+
+> {saudacao} Sou o Tomás, da Pacheco Studios. Tenho comentado nas vossas publicações sobre {tema}. Trabalho em sistemas com IA para operações: onde fica o contexto, quem é dono do próximo passo e onde decide uma pessoa. Acho que a vossa audiência ia achar útil um tema como este: {gancho}, em artigo, workshop curto ou conversa num evento. Estariam abertos a uma reunião curta? Vou estar preparado.
+
+**Follow-up**
+
+> {saudacao} Volto à proposta de tema, agora mais concreta: {valor} Adapto-me ao formato que mais vos ajudar. Vou estar preparado.
+
+### Inglês
+
+**Comentário: ponto**
+
+> The point about {tema} is key. In the operations I map, the question that changes the most is: {pergunta}
+
+**Comentário: acréscimo**
+
+> Good point. One detail from practice I'd add: {valor}
+
+**Comentário: pergunta**
+
+> An honest question for anyone who's been through this: {pergunta}
+
+**DM 1**
+
+> {saudacao} I'm Tomás from Pacheco Studios. I've been commenting on your posts about {tema}. I work on AI systems for operations: where context lives, who owns the next step and where a human decides. I think your audience would find a topic like this useful: {gancho}, as an article, a short workshop or a talk at an event. Would you be open to a short meeting? I'll come prepared.
+
+**Follow-up**
+
+> {saudacao} Following up on the topic idea, now more concrete: {valor} Happy to fit whatever format helps you most. I'll come prepared.
+
+## Saudações (rodam sozinhas no gerador)
+
+- RO · tu: Bună, {nome}! / Salut, {nome}! / Bună ziua, {nome}! / Bună seara, {nome}!
+- RO · dumneavoastră: Bună ziua, {nome}! / Bună ziua! / Bună seara, {nome}! / Bună dimineața, {nome}!
+- PT · tu: Olá, {nome}! / Boa tarde, {nome}! / Bom dia, {nome}! / Olá {nome}, tudo bem?
+- PT · dumneavoastră: Bom dia, {nome}. / Boa tarde, {nome}. / Olá, {nome}. / Boa tarde.
+- EN · tu: Hi {nome}, / Hey {nome}, / Hello {nome}, / Good afternoon {nome},
+- EN · dumneavoastră: Hello {nome}, / Good morning {nome}, / Good afternoon {nome}, / Hello,
