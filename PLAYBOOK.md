@@ -366,6 +366,6 @@ Gatilho grátis da consultoria de IA (decisão do Tomás de 11/10: não há vend
 
 - **Não é a auditoria** (produto pago) nem vende site. Chama-se «Raio-X do primeiro contacto» (RO «Radiografia primului contact»).
 - **Medir:** a PONTE tem `auditar <slug> <url>` (Lighthouse móvel + iPhone simulado: botão de chamada, WhatsApp, marcação, JSON-LD, ano do ©).
-- **PDF de 3 páginas:** o caminho do cliente novo (Google Maps → página → contacto → marcação → quem responde, este a cinzento porque não se vê de fora), o que medimos, UMA vitória rápida como System Print (trigger, fluxo, regra, dono, passagem a pessoa, métrica), 3 perguntas e o pedido de 20 minutos de triagem. Sem preço.
+- **PDF de 3 páginas:** o caminho do cliente novo (Google Maps → página → contacto → marcação → quem responde, este a cinzento porque não se vê de fora), o que medimos, UMA vitória rápida como System Print (trigger, fluxo, regra, dono, passagem a pessoa, métrica), 3 perguntas e o pedido de uma conversa de triagem (sem indicar minutos). Sem preço.
 - **Gerar:** `gerar.py` (ranking) e `raiox.py --top 10` → `raio-x/` com PDFs RO/PT e `ENVIAR.md`.
 - **1.º lote (Iași):** 91 sites medidos a 08/10, 10 Raio-X, 3 sites cujo link no Google dá erro (Trimite Flori, La Dolce Vita, Tudor Saloon: mensagem própria, sem PDF).

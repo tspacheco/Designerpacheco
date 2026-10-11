@@ -3,7 +3,7 @@
 
 Não é uma auditoria (essa é o produto pago) nem vende um site. Mostra, com o que se mede de fora, onde um cliente
 novo se perde entre o Google e a primeira mensagem ao negócio, propõe UMA vitória rápida desenhada como System Print
-(trigger, fluxo, regra, dono, passagem a uma pessoa, métrica) e pede 20 minutos para ver o que não se vê de fora.
+(trigger, fluxo, regra, dono, passagem a uma pessoa, métrica) e pede uma conversa de triagem para ver o que não se vê de fora (sem indicar minutos: regra do Tomás de 10/10).
 
   python3 raiox.py --top 10      os 10 primeiros do ranking (nota Google ≥ 4,4, sem cadeias)
   python3 raiox.py <slug> …      só esses
@@ -60,7 +60,7 @@ T = {
         "naovemos": "Ce nu se vede din afară",
         "perg": ["Ce se întâmplă cu un mesaj primit la 21:00?", "Cine răspunde la cererile noi și, de obicei, în cât timp?",
                  "Câte cereri noi aveți pe săptămână și câte devin clienți?"],
-        "cta_t": "20 de minute, gratuit", "cta": "Ne spuneți cum lucrați azi. Vă spunem sincer dacă merită mers mai departe și de unde am începe.",
+        "cta_t": "O discuție de triaj, gratuită", "cta": "Ne spuneți cum lucrați azi. Vă spunem sincer dacă merită mers mai departe și de unde am începe.",
         "cta_wa": "Scrieți-ne pe WhatsApp", "assin": "Pacheco Studios · sisteme cu IA pentru afaceri de servicii · ro.pachecost.com",
         "marca": "Găsim unde se pierde. Desenăm sistemul. Dovedim impactul.",
         "honesta": "Totul a fost măsurat pe pagina voastră, în ziua indicată. Ce nu se poate măsura din afară e marcat ca atare.",
@@ -103,7 +103,7 @@ T = {
         "naovemos": "O que não se vê de fora",
         "perg": ["O que acontece a uma mensagem que chega às 21h?", "Quem responde aos pedidos novos e, normalmente, em quanto tempo?",
                  "Quantos pedidos novos têm por semana e quantos viram clientes?"],
-        "cta_t": "20 minutos, sem custo", "cta": "Contam-nos como trabalham hoje. Dizemos com franqueza se vale a pena avançar e por onde começaríamos.",
+        "cta_t": "Uma conversa de triagem, sem custo", "cta": "Contam-nos como trabalham hoje. Dizemos com franqueza se vale a pena avançar e por onde começaríamos.",
         "cta_wa": "Falem connosco no WhatsApp", "assin": "Pacheco Studios · sistemas com IA para negócios de serviços · pachecost.com",
         "marca": "Encontramos a fuga. Desenhamos o sistema. Provamos o impacto.",
         "honesta": "Tudo foi medido na vossa página, no dia indicado. O que não se mede de fora está marcado como tal.",
@@ -258,14 +258,14 @@ def system_print(v, L):
 def mensagem_ro(c):
     return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). {nome_curto(c)} are {c.get('nota')}★ pe Google, așa că am urmărit pe telefon "
             f"drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). "
-            f"Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!")
+            f"Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!")
 
 
 def mensagem_morto(c):
     dom = urlparse(c["site"]).netloc.replace("www.", "")
     return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). {nome_curto(c)} are {c.get('nota')}★ pe Google. "
             f"Vă scriu pentru că linkul de site din fișa voastră Google ({dom}) duce la o eroare, deci clienții noi care apasă pe el se pierd chiar la primul pas. "
-            f"Dacă vreți, discutăm 20 de minute despre cum ajung azi clienții noi la voi și unde se pierd. Mulțumesc!")
+            f"Dacă vreți, stăm de vorbă despre cum ajung azi clienții noi la voi și unde se pierd. Mulțumesc!")
 
 
 def pagina(slug, c, lang, notas=False):
@@ -319,11 +319,11 @@ def pagina(slug, c, lang, notas=False):
               f'{" · " + c["avaliacoes"] + " avaliações" if c.get("avaliacoes") else ""} · fraqueza do site {fraqueza(d, c)}/100</p>'
               f'<h3>Mensagem (RO), com o PDF romeno</h3><pre>{html.escape(mensagem_ro(c))}</pre>'
               f'<h3>PDF para o dono</h3><pre>{RAW}/{slug}/radiografie-{slug}-ro.pdf</pre>'
-              f'<h3>Os 20 minutos (triagem curta, playbook §4)</h3><pre>O objetivo é decidir se há um problema vivo que justifique a Auditoria de Sistemas com IA.\n'
+              f'<h3>A conversa de triagem (playbook §4)</h3><pre>O objetivo é decidir se há um problema vivo que justifique a Auditoria de Sistemas com IA.\n'
               f'1. Seguir o caminho do PDF no telemóvel do dono e parar no ponto cinzento: o que acontece depois de a mensagem chegar?\n'
               f'2. Perguntas de qualificação: resultado a melhorar em 90 dias; onde entra o pedido; onde abranda ou desaparece; quem é dono da próxima ação; '
               f'o que já se mede; quem aprova.\n3. Se houver fuga viva: propor a auditoria. Se não houver: dizê-lo com franqueza.\n'
-              f'4. Nada de preço por mensagem. Não falar de site novo: a vitória rápida é o gatilho, não o produto.</pre></div>'
+              f'4. Nada de preço por mensagem. Não indicar minutos. Não falar de site novo: a vitória rápida é o gatilho, não o produto.</pre></div>'
               f'<div class="rodape" style="margin-top:auto"><span>Interno · não enviar</span><span>4/4</span></div></section>')
 
     titulo = f'{L["nome"]} · {nome_curto(c)}'
@@ -347,7 +347,7 @@ def gerar(slug, cands):
 def escrever_envio(escolhidos, cands):
     data = datetime.date.today().strftime("%d/%m/%Y")
     out = [f"# Agente 3 · Raio-X do primeiro contacto para enviar ({data})", "",
-           "Gatilho grátis da consultoria: mostra onde um cliente novo se perde entre o Google e a primeira mensagem e pede 20 minutos "
+           "Gatilho grátis da consultoria: mostra onde um cliente novo se perde entre o Google e a primeira mensagem e pede uma conversa de triagem "
            "(triagem curta). Não é a auditoria paga e não vende site. Sem preço.", "",
            "Mandar pelo WhatsApp Business RO: mensagem + PDF romeno (link raw, descarrega no telemóvel). WhatsApp dos donos: «?» nos telemóveis "
            "(sem prova pública), «não» nos fixos. Se a mensagem não entregar, ligar ou visitar com a morada; nos fixos, ligar e pedir onde mandar o PDF.", ""]

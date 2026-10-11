@@ -1,6 +1,6 @@
 # Agente 3 · Raio-X do primeiro contacto para enviar (11/10/2026)
 
-Gatilho grátis da consultoria: mostra onde um cliente novo se perde entre o Google e a primeira mensagem e pede 20 minutos (triagem curta). Não é a auditoria paga e não vende site. Sem preço.
+Gatilho grátis da consultoria: mostra onde um cliente novo se perde entre o Google e a primeira mensagem e pede uma conversa de triagem (triagem curta). Não é a auditoria paga e não vende site. Sem preço.
 
 Mandar pelo WhatsApp Business RO: mensagem + PDF romeno (link raw, descarrega no telemóvel). WhatsApp dos donos: «?» nos telemóveis (sem prova pública), «não» nos fixos. Se a mensagem não entregar, ligar ou visitar com a morada; nos fixos, ligar e pedir onde mandar o PDF.
 
@@ -13,7 +13,7 @@ Mandar pelo WhatsApp Business RO: mensagem + PDF romeno (link raw, descarrega no
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/cabinet-veterinar-dr-ludovic/raio-x-cabinet-veterinar-dr-ludovic-pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cabinet veterinar Dr. Ludovic BACUSCA are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cabinet veterinar Dr. Ludovic BACUSCA are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## 2. ERIS VET · Cabinet medical
@@ -25,7 +25,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cabinet veterinar Dr. Lu
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/eris-vet/raio-x-eris-vet-pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). ERIS VET are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). ERIS VET are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## 3. Trai Restaurant Iași · Restaurant
@@ -37,7 +37,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). ERIS VET are 4,8★ pe G
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/trai-restaurant-iasi/raio-x-trai-restaurant-iasi-pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Trai Restaurant Iași are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Trai Restaurant Iași are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## 4. Vetis Cabinet Veterinar · Medic veterinar
@@ -49,7 +49,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Trai Restaurant Iași ar
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/vetis-cabinet-veterinar/raio-x-vetis-cabinet-veterinar-pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Vetis Cabinet Veterinar are 5,0★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Vetis Cabinet Veterinar are 5,0★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## 5. Tasha Beauty Center · Salon de înfrumusețare
@@ -61,7 +61,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Vetis Cabinet Veterinar 
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/tasha-beauty-center-masaj-remo/raio-x-tasha-beauty-center-masaj-remo-pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Tasha Beauty Center are 4,7★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Tasha Beauty Center are 4,7★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## 6. Cofetaria de acasa · Cofetărie
@@ -73,7 +73,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Tasha Beauty Center are 
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/cofetaria-de-acasa/raio-x-cofetaria-de-acasa-pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cofetaria de acasa are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cofetaria de acasa are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## 7. Cabinet veterinar · Medic veterinar
@@ -85,7 +85,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cofetaria de acasa are 4
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/cabinet-veterinar-centru-de-/raio-x-cabinet-veterinar-centru-de--pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cabinet veterinar are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cabinet veterinar are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## 8. Geamgeria · Furnizor de ferestre
@@ -97,7 +97,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cabinet veterinar are 4,
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/geamgeria/raio-x-geamgeria-pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Geamgeria are 4,9★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Geamgeria are 4,9★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## 9. One Beauty Concept · Salon de înfrumusețare
@@ -109,7 +109,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Geamgeria are 4,9★ pe 
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/one-beauty-concept/raio-x-one-beauty-concept-pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). One Beauty Concept are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). One Beauty Concept are 4,8★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## 10. Gist Specialty Coffee Shop · Cafenea
@@ -121,7 +121,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). One Beauty Concept are 4
 - PDF PT (Tomás): https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/gist-specialty-coffee-shop/raio-x-gist-specialty-coffee-shop-pt.pdf
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Gist Specialty Coffee Shop are 4,7★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, discutăm 20 de minute. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Gist Specialty Coffee Shop are 4,7★ pe Google, așa că am urmărit pe telefon drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!
 ```
 
 ## O link do Google dá erro (o cliente novo perde-se no primeiro passo)
@@ -134,7 +134,7 @@ Sem PDF: a mensagem chega.
 - Erro medido: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.trimiteflorilaiasi.ro/
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Trimite Flori La Iasi are 4,8★ pe Google. Vă scriu pentru că linkul de site din fișa voastră Google (trimiteflorilaiasi.ro) duce la o eroare, deci clienții noi care apasă pe el se pierd chiar la primul pas. Dacă vreți, discutăm 20 de minute despre cum ajung azi clienții noi la voi și unde se pierd. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Trimite Flori La Iasi are 4,8★ pe Google. Vă scriu pentru că linkul de site din fișa voastră Google (trimiteflorilaiasi.ro) duce la o eroare, deci clienții noi care apasă pe el se pierd chiar la primul pas. Dacă vreți, stăm de vorbă despre cum ajung azi clienții noi la voi și unde se pierd. Mulțumesc!
 ```
 
 ### Cofetaria La Dolce Vita · Patiserie
@@ -143,7 +143,7 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Trimite Flori La Iasi ar
 - Erro medido: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://ladolcevita.ro/
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cofetaria La Dolce Vita are 4,8★ pe Google. Vă scriu pentru că linkul de site din fișa voastră Google (ladolcevita.ro) duce la o eroare, deci clienții noi care apasă pe el se pierd chiar la primul pas. Dacă vreți, discutăm 20 de minute despre cum ajung azi clienții noi la voi și unde se pierd. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cofetaria La Dolce Vita are 4,8★ pe Google. Vă scriu pentru că linkul de site din fișa voastră Google (ladolcevita.ro) duce la o eroare, deci clienții noi care apasă pe el se pierd chiar la primul pas. Dacă vreți, stăm de vorbă despre cum ajung azi clienții noi la voi și unde se pierd. Mulțumesc!
 ```
 
 ### Tudor Saloon · Salon de înfrumusețare
@@ -152,6 +152,6 @@ Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Cofetaria La Dolce Vita 
 - Erro medido: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.tudorsaloon.ro/
 
 ```
-Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Tudor Saloon are 4,8★ pe Google. Vă scriu pentru că linkul de site din fișa voastră Google (tudorsaloon.ro) duce la o eroare, deci clienții noi care apasă pe el se pierd chiar la primul pas. Dacă vreți, discutăm 20 de minute despre cum ajung azi clienții noi la voi și unde se pierd. Mulțumesc!
+Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). Tudor Saloon are 4,8★ pe Google. Vă scriu pentru că linkul de site din fișa voastră Google (tudorsaloon.ro) duce la o eroare, deci clienții noi care apasă pe el se pierd chiar la primul pas. Dacă vreți, stăm de vorbă despre cum ajung azi clienții noi la voi și unde se pierd. Mulțumesc!
 ```
 
