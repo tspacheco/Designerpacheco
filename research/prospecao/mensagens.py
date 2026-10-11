@@ -24,14 +24,14 @@ CANAL = {
 }
 
 ABORDAGEM = {
-    "influenciador": "DM personalizada: 20 min para mostrar o System Print da operação dele (trigger, dono, regra, handoff)",
-    "grande": "Pedir encaminhamento para operações/CX/transformação; levar o System Print de um percurso público; convidar para a Auditoria de Sistemas com IA",
+    "influenciador": "DM com hipótese + Micro System Print de 1 página + 3 perguntas; fecho: triagem connosco",
+    "grande": "Pedir encaminhamento para operações/CX/transformação; Micro System Print de 1 página + 3 perguntas; fecho: triagem connosco",
     "pme_parceiro": "Complementaridade: eles geram o lead, a Pacheco protege o que acontece depois; System Print de um cliente-tipo",
     "comunidade": "Comentário útil no post atual, 2–3 publicações; só depois DM com proposta editorial",
 }
 
 INTUITO = {
-    "influenciador": "Chamada de 20 min → entregar System Print → confiança → introduções consentidas",
+    "influenciador": "Triagem → entregar System Print → confiança → introduções consentidas",
     "grande": "Chegar ao dono do processo → reunião → Auditoria de Sistemas com IA",
     "pme_parceiro": "Co-entrega, introdução mútua ou workshop → referrals qualificados",
     "comunidade": "Familiaridade com a audiência → DM/introdução → conteúdo, evento ou referência",
@@ -42,34 +42,36 @@ TOM = {"influenciador": "informal", "grande": "formal", "pme_parceiro": "informa
 MODELOS = {
     "ro": {
         "influenciador": (
-            "{saud}, {nome}! Sunt Tomás, de la Pacheco Studios. {gancho} "
-            "Lucrez pe partea operațională a afacerilor: ce se întâmplă după ce intră o cerere, "
-            "cine o preia și ce context ajunge la următorul om. "
-            "Aș vrea să vă arăt un System Print al propriei operațiuni ({percurso}): ce declanșează fiecare pas, cine îl deține, "
-            "ce regulă decide și unde se face predarea între oameni, plus o prioritate pe 30 de zile. "
-            "Ați avea 20 de minute să v-o arăt?"
+            '{saud}, {nome}! Sunt Tomás, de la Pacheco Studios. {gancho} '
+            'Lucrez pe partea operațională: ce se întâmplă după ce intră o cerere, cine o preia și unde se blochează. '
+            'Am pregătit un Micro System Print de o pagină pentru propria operațiune ({percurso}): declanșator, responsabil, regulă și predare. '
+            'Trei întrebări rapide: aveți azi o IA care răspunde la întrebările frecvente după regulile voastre? '
+            'Sistemul vostru captează, califică și filtrează mesajele și vă cere decizia doar unde contează? '
+            'Relația cu clienții vă costă mai puțin de o oră pe zi? '
+            'Dacă la vreuna răspunsul e «nu», faceți o triere cu noi.'
         ),
         "grande": (
-            "{saud}! Sunt Tomás, de la Pacheco Studios. {gancho} "
-            "Am pregătit un System Print al unui parcurs public al {nome} ({percurso}), doar din ce se vede din afară: declanșator, responsabil, regulă și predare. "
-            "E o ipoteză de validat, nu o concluzie: ce context trebuie să meargă cu fiecare cerere "
-            "și cine deține pasul următor. "
-            "Cine din echipă se ocupă de operațiuni sau de experiența clienților? "
-            "Aș vrea să i-l arăt într-o întâlnire scurtă despre unde se pierd lead-urile, deciziile și livrarea."
+            '{saud}! Sunt Tomás, de la Pacheco Studios. {gancho} '
+            'Am pregătit un Micro System Print de o pagină al unui parcurs public al {nome} ({percurso}), doar din ce se vede din afară: declanșator, responsabil, regulă și predare. '
+            'E o ipoteză de validat, nu o concluzie. '
+            'Trei întrebări: aveți azi o IA care răspunde la întrebările frecvente după regulile voastre? '
+            'Sistemul vostru captează, califică și filtrează e-mailurile și cere decizia echipei doar unde contează? '
+            'Relația cu clienții costă mai puțin de o oră pe zi? '
+            'Cine din echipă se ocupă de operațiuni sau de experiența clienților? Faceți o triere cu noi.'
         ),
         "pme_parceiro": (
-            "{saud}, {nome}! Sunt Tomás, de la Pacheco Studios. {gancho} "
-            "Voi aduceți cererile; noi lucrăm pe ce se întâmplă după lead: date, echipă, decizii și livrare, "
-            "ca rezultatul muncii voastre să nu se piardă pe drum. Nu concurăm cu ce faceți, completăm. "
-            "Vă pot arăta un System Print pentru un client-tip de-al vostru ({percurso}) "
-            "și cum am putea lucra împreună sau să ne recomandăm reciproc. "
-            "Ați fi deschiși la o discuție scurtă?"
+            '{saud}, {nome}! Sunt Tomás, de la Pacheco Studios. {gancho} '
+            'Voi aduceți cererile; noi lucrăm pe ce se întâmplă după lead: cine răspunde, cum se califică și unde se ia decizia, '
+            'ca rezultatul muncii voastre să nu se piardă pe drum. Nu concurăm cu ce faceți, completăm. '
+            'Am pregătit un Micro System Print de o pagină pentru un client-tip de-al vostru ({percurso}). '
+            'O întrebare pentru clienții voștri: sistemul lor captează, califică și filtrează mesajele și cere decizia omului doar unde contează? '
+            'Dacă nu, faceți o triere cu noi și vedem împreună cum am putea lucra sau să ne recomandăm reciproc.'
         ),
         "comunidade": (
             "{saud}! Sunt Tomás, de la Pacheco Studios; am urmărit și am comentat la postările {nome}. {gancho} "
             "Lucrez cu firme pe procese și IA cu reguli clare: cine deține pasul următor după un lead "
             "și unde rămâne decizia umană. "
-            "Aș putea contribui cu ceva practic pentru comunitate: un studiu de caz sau un mini-atelier de 30 de minute. "
+            "Aș putea contribui cu ceva practic pentru comunitate: un studiu de caz sau un mini-atelier. "
             "V-ar interesa?"
         ),
         "comentario": [
@@ -78,8 +80,8 @@ MODELOS = {
             "Bun punct. Ce ar trebui măsurat în prima lună ca să știi că {tema} chiar funcționează?",
         ],
         "followup": (
-            "{saud}, revin scurt la mesajul de mai sus pentru {nome}. "
-            "Dacă nu e momentul potrivit, nicio problemă; System Print-ul rămâne disponibil oricând."
+            '{saud}, revin scurt la mesajul de mai sus. '
+            'Micro System Print-ul rămâne pregătit; dacă vreți, faceți o triere cu noi când vă potrivește.'
         ),
         "assunto": {
             "influenciador": "System Print pentru operațiunea {nome}",
@@ -92,34 +94,36 @@ MODELOS = {
     },
     "pt": {
         "influenciador": (
-            "{saud}, {nome}! Sou o Tomás, da Pacheco Studios. {gancho} "
-            "Trabalho a parte operacional dos negócios: o que acontece depois de entrar um pedido, "
-            "quem o pega e que contexto chega à pessoa seguinte. "
-            "Queria mostrar-lhe um System Print da sua própria operação ({percurso}): o que dispara cada passo, quem é o dono, "
-            "que regra decide e onde há passagem entre pessoas, mais uma prioridade a 30 dias. "
-            "Tem 20 minutos para eu lho mostrar?"
+            '{saud}, {nome}! Sou o Tomás, da Pacheco Studios. {gancho} '
+            'Trabalho a parte operacional: o que acontece depois de entrar um pedido, quem o pega e onde encrava. '
+            'Preparei um Micro System Print de 1 página da sua própria operação ({percurso}): gatilho, dono, regra e passagem. '
+            'Três perguntas rápidas: hoje tem uma IA que responde às FAQ da sua diretriz? '
+            'O seu sistema capta, qualifica e filtra os e-mails e só pede a sua decisão no que importa? '
+            'O atendimento custa-lhe menos de 1 hora por dia? '
+            'Se alguma resposta for «não», faça uma triagem connosco.'
         ),
         "grande": (
-            "{saud}! Sou o Tomás, da Pacheco Studios. {gancho} "
-            "Preparei um System Print de um percurso público da {nome} ({percurso}), só com o que se vê de fora: gatilho, dono, regra e passagem. "
-            "É uma hipótese a validar, não uma conclusão: que contexto tem de viajar com cada pedido "
-            "e quem é dono do passo seguinte. "
-            "Quem na equipa trata de operações ou experiência de cliente? "
-            "Gostava de o mostrar numa reunião curta sobre onde os leads, as decisões e a entrega se partem."
+            '{saud}! Sou o Tomás, da Pacheco Studios. {gancho} '
+            'Preparei um Micro System Print de 1 página de um percurso público da {nome} ({percurso}), só com o que se vê de fora: gatilho, dono, regra e passagem. '
+            'É uma hipótese a validar, não uma conclusão. '
+            'Três perguntas: hoje têm uma IA que responde às FAQ da vossa diretriz? '
+            'O vosso sistema capta, qualifica e filtra os e-mails e só pede a decisão da equipa no que importa? '
+            'O atendimento custa menos de 1 hora por dia? '
+            'Quem na equipa trata de operações ou experiência de cliente? Façam uma triagem connosco.'
         ),
         "pme_parceiro": (
-            "{saud}, {nome}! Sou o Tomás, da Pacheco Studios. {gancho} "
-            "Vocês trazem os pedidos; nós trabalhamos o que acontece depois do lead: dados, equipa, decisões e entrega, "
-            "para o resultado do vosso trabalho não se perder pelo caminho. Não concorremos, complementamos. "
-            "Posso mostrar-vos um System Print de um cliente-tipo vosso ({percurso}) "
-            "e como podíamos trabalhar juntos ou indicar-nos mutuamente. "
-            "Estão abertos a uma conversa curta?"
+            '{saud}, {nome}! Sou o Tomás, da Pacheco Studios. {gancho} '
+            'Vocês trazem os pedidos; nós trabalhamos o que acontece depois do lead: quem responde, como se qualifica e onde se decide, '
+            'para o resultado do vosso trabalho não se perder pelo caminho. Não concorremos, complementamos. '
+            'Preparei um Micro System Print de 1 página de um cliente-tipo vosso ({percurso}). '
+            'Uma pergunta sobre os vossos clientes: o sistema deles capta, qualifica e filtra os e-mails e só pede a decisão no que importa? '
+            'Se não, façam uma triagem connosco e vemos como trabalhar juntos ou indicar-nos mutuamente.'
         ),
         "comunidade": (
             "{saud}! Sou o Tomás, da Pacheco Studios; tenho acompanhado e comentado as publicações da {nome}. {gancho} "
             "Trabalho com empresas em processos e IA com regras claras: quem é dono do passo seguinte depois de um lead "
             "e onde fica a decisão humana. "
-            "Podia contribuir com algo prático para a comunidade: um caso de estudo ou um mini-workshop de 30 minutos. "
+            "Podia contribuir com algo prático para a comunidade: um caso de estudo ou um mini-workshop. "
             "Interessa-vos?"
         ),
         "comentario": [
@@ -128,8 +132,8 @@ MODELOS = {
             "Bom ponto. O que mediriam no primeiro mês para saber que {tema} está mesmo a funcionar?",
         ],
         "followup": (
-            "{saud}, volto só à mensagem acima sobre a {nome}. "
-            "Se não for o momento, sem problema; o System Print fica disponível quando quiser."
+            '{saud}, volto só à mensagem acima. '
+            'O Micro System Print continua preparado; quando fizer sentido, faça uma triagem connosco.'
         ),
         "assunto": {
             "influenciador": "System Print para a operação da {nome}",
@@ -143,33 +147,35 @@ MODELOS = {
     "en": {
         "influenciador": (
             "{saud} {nome}! I'm Tomás from Pacheco Studios. {gancho} "
-            "I work on the operational side of businesses: what happens after a request comes in, "
-            "who picks it up and what context reaches the next person. "
-            "I'd like to show you a System Print of your own operation ({percurso}): what triggers each step, who owns it, "
-            "which rule decides and where the handoff happens, plus a 30-day priority. "
-            "Would you have 20 minutes for me to walk you through it?"
+            'I work on the operational side: what happens after a request comes in, who picks it up and where it gets stuck. '
+            'I prepared a one-page Micro System Print of your own operation ({percurso}): trigger, owner, rule and handoff. '
+            'Three quick questions: do you have an AI today that answers FAQs following your own guidelines? '
+            'Does your system capture, qualify and filter emails and only ask for your decision where it matters? '
+            'Does customer service cost you less than an hour a day? '
+            'If any answer is no, do a triage with us.'
         ),
         "grande": (
             "{saud}! I'm Tomás from Pacheco Studios. {gancho} "
-            "I prepared a System Print of one public journey at {nome} ({percurso}), using only what is visible from outside: trigger, owner, rule and handoff. "
-            "It is a hypothesis to validate, not a conclusion: what context has to travel with each request "
-            "and who owns the next step. "
-            "Who on the team looks after operations or customer experience? "
-            "I'd like to walk them through it in a short meeting about where leads, decisions and delivery break."
+            'I prepared a one-page Micro System Print of one public journey at {nome} ({percurso}), using only what is visible from outside: trigger, owner, rule and handoff. '
+            'It is a hypothesis to validate, not a conclusion. '
+            'Three questions: do you have an AI today that answers FAQs following your guidelines? '
+            'Does your system capture, qualify and filter emails and only ask the team to decide where it matters? '
+            'Does customer service cost less than an hour a day? '
+            'Who on the team looks after operations or customer experience? Do a triage with us.'
         ),
         "pme_parceiro": (
             "{saud} {nome}! I'm Tomás from Pacheco Studios. {gancho} "
-            "You bring in the demand; we work on what happens after the lead: data, team, decisions and delivery, "
+            'You bring in the demand; we work on what happens after the lead: who answers, how it is qualified and where decisions are made, '
             "so the result of your work isn't lost along the way. We don't compete, we complement. "
-            "I can show you a System Print for one of your typical clients ({percurso}) "
-            "and how we could co-deliver or refer each other. "
-            "Open to a short call?"
+            'I prepared a one-page Micro System Print for one of your typical clients ({percurso}). '
+            'One question about your clients: does their system capture, qualify and filter emails and only ask for a decision where it matters? '
+            "If not, do a triage with us and let's see how we could co-deliver or refer each other."
         ),
         "comunidade": (
             "{saud}! I'm Tomás from Pacheco Studios; I've been following and commenting on {nome}'s posts. {gancho} "
             "I work with companies on processes and AI with clear rules: who owns the next step after a lead "
             "and where the human decision stays. "
-            "I could contribute something practical for the community: a case study or a 30-minute mini-workshop. "
+            "I could contribute something practical for the community: a case study or a short mini-workshop. "
             "Would that be of interest?"
         ),
         "comentario": [
@@ -178,8 +184,8 @@ MODELOS = {
             "Good point. What would you measure in the first month to know {tema} is actually working?",
         ],
         "followup": (
-            "{saud}, just following up on the message above about {nome}. "
-            "If the timing isn't right, no problem; the System Print stays available whenever you want it."
+            '{saud}, just following up on the message above. '
+            'The Micro System Print is still ready; whenever it makes sense, do a triage with us.'
         ),
         "assunto": {
             "influenciador": "A System Print for {nome}'s operation",
