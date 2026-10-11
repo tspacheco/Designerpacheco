@@ -137,7 +137,7 @@ B = [
     (1, "Já pediste avaliações aos clientes? Como e com que resultado?",
         "Have you ever asked customers for reviews? How, and with what result?", ""),
     (0, "Quantos clientes novos te dizem «vi no Google» e quantos «recomendou-me alguém»? Perguntas-lhes?",
-        "How many new customers tell you "I saw you on Google" and how many "someone recommended you"? Do you ask them?", ""),
+        "How many new customers tell you 'I saw you on Google' and how many 'someone recommended you'? Do you ask them?", ""),
     (0, "Respondes às avaliações? Quem tem acesso à ficha Google? Podes tu ou alguém editar o horário e a categoria?",
         "Do you reply to reviews? Who has access to the Google listing? Can you or anyone else edit the hours and the category?", "Sem acesso, a ficha não se muda."),
     (0, "Aceitas um cartaz com QR no balcão e uma mensagem enviada depois de cada trabalho?",
