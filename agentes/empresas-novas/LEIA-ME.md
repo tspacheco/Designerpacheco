@@ -5,7 +5,7 @@ ficar com as da zona dele e preparar a primeira mensagem. Ramo `claude/empresas-
 
 **Desde 11/10/2026 a Pacheco Studios é consultora de sistemas com IA** (playbook em
 `/mnt/project-files/playbook/pacheco-studios-playbook-consultoria-ia-pt.md`). Não se vendem sites. A mensagem às empresas
-novas convida para uma conversa de 20 minutos sobre como vão receber e seguir os pedidos dos clientes desde o início
+novas convida para uma conversa (sem indicar minutos, regra de 10/10) sobre como vão receber e seguir os pedidos dos clientes desde o início
 (porta para a triagem e a Auditoria de Sistemas com IA). Sem link de demo, sem preço, sem números não medidos
 (a frase dos 40 % saiu).
 

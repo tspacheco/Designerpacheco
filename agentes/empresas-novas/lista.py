@@ -5,7 +5,7 @@
 
 Fica com as empresas do distrito de Iași registadas nos últimos <dias>, ativas, com CAEN de negócio local
 (clientes à porta ou serviços ao domicílio) e ainda não listadas (listas/listadas.txt). Para cada uma: mensagem
-em romeno (convite para uma conversa de 20 min sobre como entram e se seguem os pedidos; sem site nem preço),
+em romeno (convite para uma conversa sobre como entram e se seguem os pedidos; sem site nem preço),
 links WhatsApp e SMS e a morada do registo.
 """
 import argparse, datetime, glob, json, os, re, urllib.parse
@@ -120,7 +120,7 @@ def mensagem(nome, ramo_ro, demo, pessoa=False, filial=False):
                 f"Lucrăm cu afaceri de servicii din Iași la felul în care intră cererile clienților, cine răspunde și cum se "
                 f"livrează, ca să nu se piardă nimic pe drum. La început e cel mai ușor de pus bine.")
     return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios.\n\n{abre}\n\n"
-            f"V-ar interesa o discuție de 20 de minute? Vă arăt unde se pierd de obicei cererile în primele luni "
+            f"V-ar interesa o discuție? Vă arăt unde se pierd de obicei cererile în primele luni "
             f"la o afacere ca a dumneavoastră și cum se organizează din prima zi.\n\n"
             f"Mai multe pe ro.pachecost.com")
 
@@ -134,7 +134,7 @@ def mensagem_pt(nome, ramo_pt, pessoa=False, filial=False):
         abre = (f"Vi que {quem} foi registada há pouco. Parabéns e boa sorte neste início! Trabalhamos com negócios de serviços "
                 f"de Iași na forma como entram os pedidos dos clientes, quem responde e como se entrega, para nada se perder "
                 f"pelo caminho. No início é quando é mais fácil pôr isto bem.")
-    return (f"Olá! Sou o Tomás, da Pacheco Studios. {abre} Teriam interesse numa conversa de 20 minutos? Mostro onde "
+    return (f"Olá! Sou o Tomás, da Pacheco Studios. {abre} Teriam interesse numa conversa? Mostro onde "
             f"costumam perder-se os pedidos nos primeiros meses num negócio como o vosso e como se organiza desde o "
             f"primeiro dia. Mais em ro.pachecost.com")
 
