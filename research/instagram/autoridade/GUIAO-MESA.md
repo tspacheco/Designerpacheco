@@ -63,7 +63,7 @@ Para chegar ao decisor das empresas do lote 1 e das próximas. Ficheiros: `saida
 - Hipótese, nunca acusação: nada de «perdem leads», «têm faltas» ou «demoram X horas» sem dados. Só números com fonte e data.
 - O site nunca é o produto nem a manchete. Sites e mensalidades só existem dentro da implementação. Sem parcerias para sites.
 - CTA pública (bio, reels, posts): «DM AUDIT». Nas DMs de saída o fecho é «faceți un triaj cu noi».
-- Parceiros (decisões 11/10 14h38 e 14h44): 3 quick wins sem custo; 15 % do valor da implementação do negócio indicado e 5 % de 3 em 3 meses enquanto trabalharmos com ele; primeiro o incentivo, depois a proposta assinada. Contrapartida por ordem: testemunho online e recomendação no dia em que os quick wins funcionam, boca a boca, 1 menção por mês. Nada se envia a influenciadores sem o Tomás confirmar os @ e o texto. Detalhe em `../COMISSAO-PARCEIROS.md`.
+- Parceiros (decisões 11/10 14h38 e 14h44): 3 quick wins sem custo; 15 % do valor da implementação do negócio indicado e, no fim de cada trimestre, 5 % dos nossos ganhos com ele enquanto trabalharmos juntos; primeiro o incentivo, depois a proposta assinada. Contrapartida por ordem: testemunho online e recomendação no dia em que os quick wins funcionam, boca a boca, 1 menção por mês. Nada se envia a influenciadores sem o Tomás confirmar os @ e o texto. Detalhe em `../COMISSAO-PARCEIROS.md`.
 - Sem preço na 1.ª mensagem; sem emojis; em romeno «Voi fi pregătit.»
 - Sector regulado: nada de decisões clínicas, de crédito ou jurídicas na proposta.
 - Cadência D0, D4, D7, D12 e parar. Voltar só com motivo novo.
