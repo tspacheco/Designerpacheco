@@ -138,10 +138,10 @@ def dia(data):
         r = ficha(f)
         s = os.path.basename(f).split("-x-", 1)[1][:-5]
         c = cand.get(s, {})
-        aval = int((r[4] or "0").replace(".", ""))
+        aval = int((r[4] or c.get("avaliacoes") or "0").replace(".", ""))  # a ficha nem sempre mostra a contagem
         nota = float((r[3] or "0").replace(",", "."))
         res = ("site próprio" if r[5] else "sem contacto/fora" if not r[6] else
-               "fora (nota/avaliações)" if nota < 4.3 or aval < 15 else "sem site")
+               "fora (nota/avaliações)" if nota < 4.3 or 0 < aval < 15 else "sem site")
         if s not in vistos:
             novos.append([d, s, r[1] or c.get("nome", ""), r[2] or c.get("categoria", ""), r[3], r[4], r[5], res, c.get("ficha", "")])
         if res == "sem site":
