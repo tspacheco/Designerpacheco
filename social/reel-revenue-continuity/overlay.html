@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reel · Revenue leaks after the yes · overlay</title>
+<!-- Camada de texto do reel «Revenue leaks after the yes» (Pacheco Studios, 11/10/2026). Por baixo fica o clip 3D do Higgsfield
+     (personagem escura com a esfera laranja do cliente), já limpo das legendas antigas (limpar.py). Esta página desenha só o
+     texto com fundo transparente; render.cjs captura 30 fps em PNG com alfa e o ffmpeg sobrepõe ao vídeo e junta o som de som.py.
+     35 s, 7 planos de 5 s (cortes a 5,1 · 9,9 · 15,0 · 20,1 · 24,9 · 30,0). Cada bloco de texto entra no corte, fica na zona que
+     o plano deixa livre (topo nos planos abertos, peito no grande plano 25–30) e sai antes do corte seguinte.
+     Nos 3 planos da esfera (0, 15, 30) a câmara recua nos primeiros 3 s: o título assenta com ela (escala 1,06 → 1).
+     Identidade: Chakra Petch Bold (título, nova na série; quadrada e técnica como os ícones 3D) + IBM Plex Mono (etiquetas e cadeias), osso e laranja Pacheco.
+     Zona segura do Instagram: texto essencial entre y 250 e ~1580. -->
+<style>
+@font-face{font-family:CP;src:url(fontes/chakra-petch-700.woff2) format("woff2");font-weight:700}
+@font-face{font-family:PM;src:url(fontes/plexmono-500.woff2) format("woff2");font-weight:500}
+@font-face{font-family:PM;src:url(fontes/plexmono-600.woff2) format("woff2");font-weight:600}
+:root{--bone:#F1ECE4;--or:#F07A3A;--mute:rgba(241,236,228,.66)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
+#s{position:absolute;inset:0;overflow:hidden;font-family:PM,monospace;color:var(--bone)}
+.shade{position:absolute;left:0;right:0;top:0;height:720px;background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.42) 45%,rgba(0,0,0,0) 100%)}
+.glow{position:absolute;left:60px;right:60px;top:1060px;height:560px;border-radius:260px;background:radial-gradient(ellipse at center,rgba(0,0,0,.55) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 72%)}
+.blk{position:absolute;left:72px;right:72px;top:262px;transform-origin:0 0}
+.blk.center{text-align:center;top:1150px}
+.tag{display:flex;align-items:center;gap:16px;font:600 27px/1 PM;letter-spacing:.2em;text-transform:uppercase;color:var(--or)}
+.blk.center .tag{justify-content:center}
+.tag i{display:inline-block;width:14px;height:14px;background:var(--or);border-radius:3px;box-shadow:0 0 14px rgba(240,122,58,.8)}
+.tag b{font-weight:600;color:var(--mute)}
+.h{font:700 96px/1.0 CP;letter-spacing:.005em;text-transform:uppercase;margin-top:26px;text-shadow:0 2px 10px rgba(0,0,0,.7),0 0 46px rgba(0,0,0,.6)}
+.h.s3{font-size:86px}
+.h em{font-style:normal;color:var(--or)}
+.sub{font:500 29px/1.4 PM;color:var(--mute);margin-top:26px;max-width:900px;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.blk.center .sub{margin-left:auto;margin-right:auto}
+.sub b{font-weight:600;color:var(--bone)}
+.chain{position:absolute;left:72px;top:1440px;display:flex;align-items:center;gap:0;font:600 26px/1 PM;letter-spacing:.14em;text-transform:uppercase}
+.chain.center{left:0;right:0;justify-content:center;top:1500px}
+.chain .n{display:flex;align-items:center;gap:14px;color:var(--mute);text-shadow:0 2px 8px rgba(0,0,0,.85)}
+.chain .n i{width:18px;height:18px;border-radius:50%;background:rgba(241,236,228,.25);box-shadow:none;flex:none}
+.chain .n.on{color:var(--bone)}
+.chain .n.on i{background:var(--or);box-shadow:0 0 18px rgba(240,122,58,.95),0 0 40px rgba(240,122,58,.5)}
+.chain .l{width:54px;height:2px;margin:0 16px;background:rgba(241,236,228,.22)}
+.chain .l.on{background:linear-gradient(90deg,var(--or),rgba(240,122,58,.35))}
+.step{position:absolute;right:72px;top:268px;font:600 26px/1 PM;letter-spacing:.2em;color:var(--mute)}
+.site{position:absolute;left:72px;top:1440px;font:600 26px/1 PM;letter-spacing:.1em;color:var(--mute);text-shadow:0 2px 8px rgba(0,0,0,.85)}
+.site b{color:var(--bone);font-weight:600}
+.site em{font-style:normal;color:var(--or)}
+</style>
+</head>
+<body>
+<div id="s"></div>
+<script>
+const DUR=35.0;
+// cortes do clip (medidos no vídeo): cada bloco entra no corte e sai 0,25 s antes do seguinte
+const CUT=[0,5.1,9.9,15.0,20.1,24.9,30.0,35.0];
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const EO=x=>1-Math.pow(1-cl(x),3), EI=x=>Math.pow(cl(x),3);
+const fi=(t,a,d=.3)=>EO((t-a)/d);
+// entra a subir, sai a subir mais um pouco e a desfocar; «settle» acompanha o recuo da câmara nos planos da esfera
+const rise=(t,a,b,d=.3,dout=.25,settle=0)=>{
+  const i=fi(t,a,d), o=EI((t-(b-dout))/dout);
+  const y=(1-i)*44 - o*30, op=i*(1-o), bl=o*10;
+  let s='';
+  if(settle){ const k=1+ .06*(1-EO((t-a)/settle)); s=` scale(${k.toFixed(4)})`; }
+  return `opacity:${op.toFixed(3)};transform:translateY(${y.toFixed(1)}px)${s};filter:blur(${bl.toFixed(1)}px)`;
+};
+const SHOTS=[
+ {a:0,   b:5.1,  pre:true, settle:2.6, tag:'Revenue continuity', h:'Revenue leaks<br>after the yes.', sub:'Five leaks. One owner and one rule for each.'},
+ {a:5.1, b:9.9,  step:'01 / 05', tag:'Leak 01 <b>· the no-show</b>', h:'No reminder,<br>no show.', sub:'<b>Rule:</b> every booking gets a reminder and a named owner.', chain:['Booking','Reminder','Confirmed']},
+ {a:9.9, b:15.0, step:'02 / 05', tag:'Leak 02 <b>· feedback</b>', h3:'Praise and<br>complaints need<br>different doors.', sub:'<b>Rule:</b> praise goes public, complaints go to a person. Today.', chain:['Review','Route','Reply']},
+ {a:15.0,b:20.1, settle:2.6, step:'03 / 05', tag:'Leak 03 <b>· the quiet customer</b>', h:'Silence is<br>a signal.', sub:'<b>Rule:</b> 60 days without a visit triggers one message with one offer.'},
+ {a:20.1,b:24.9, step:'04 / 05', tag:'Leak 04 <b>· the day</b>', h3:'See the day<br>before it<br>runs you.', sub:'<b>Rule:</b> one screen, every morning, before the first client.', chain:['Bookings','Exceptions','Unanswered'], sep:'·'},
+ {a:24.9,b:30.0, center:true, step:'05 / 05', tag:'Leak 05 <b>· the paperwork</b>', h:'Receipts<br>at midnight.', sub:'<b>Rule:</b> capture, check and send. Same day.', chain:['Receipt','Check','Accountant']},
+ {a:30.0,b:32.5, settle:2.6, tag:'The method', h3:'One event.<br>One owner.<br>One next action.', sub:'Trigger · Owner · Rule · Handoff'},
+ {a:32.5,b:35.4, tag:'Pacheco Studios', h:'DM <em>“audit”</em>', sub:'We map where your leads, decisions and delivery break. Before you buy another tool.', site:true}
+];
+window.SFX={style:'orbit',dur:DUR,cuts:CUT.slice(1,7),blocks:SHOTS.map(s=>s.a),chains:SHOTS.filter(s=>s.chain).map(s=>s.a+1.0),end:32.5};
+function render(t){
+  let h='<div class="shade"></div>';
+  SHOTS.forEach(s=>{
+    if(t<s.a-.05||t>s.b+.05) return;
+    const a=s.pre?s.a-.6:s.a,b=s.b;   // pre: o gancho já está visível no 1.º fotograma
+    if(s.center) h+=`<div class="glow" style="opacity:${(fi(t,a,.4)*(1-EI((t-(b-.25))/.25))).toFixed(3)}"></div>`;
+    h+=`<div class="blk ${s.center?'center':''}">
+      <div class="tag" style="${rise(t,a,b,.26,.22)}"><i></i><span>${s.tag}</span></div>
+      <div class="h ${s.h3?'s3':''}" style="${rise(t,a+.06,b,.34,.25,s.settle||0)}">${s.h||s.h3}</div>
+      ${s.sub?`<div class="sub" style="${rise(t,a+.22,b,.34,.25)}">${s.sub}</div>`:''}
+    </div>`;
+    if(s.step) h+=`<div class="step" style="${rise(t,a+.1,b,.3,.22)}">${s.step}</div>`;
+    if(s.chain){
+      const t0=a+1.0; // os nós acendem um a um depois do título
+      let c=`<div class="chain ${s.center?'center':''}" style="${rise(t,a+.5,b,.3,.22)}">`;
+      s.chain.forEach((n,i)=>{
+        const on=t>=t0+i*.45;
+        if(i) c+=s.sep?`<span class="l ${on?'on':''}"></span>`:`<span class="l ${on?'on':''}"></span>`;
+        c+=`<span class="n ${on?'on':''}"><i></i>${n}</span>`;
+      });
+      h+=c+'</div>';
+    }
+    if(s.site) h+=`<div class="site" style="${rise(t,a+.45,b,.3,.22)}"><b>pachecost<em>.</em>com</b>&nbsp;&nbsp;·&nbsp;&nbsp;Portugal based · Acting worldwide</div>`;
+  });
+  document.getElementById('s').innerHTML=h;
+}
+window.render=render; window.DUR=DUR;
+render(0);
+</script>
+</body>
+</html>
