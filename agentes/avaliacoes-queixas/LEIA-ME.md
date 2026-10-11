@@ -2,8 +2,8 @@
 
 Pedido do Tomás (08/10/2026, ideia 8 do thread «Ideias de agentes para leads»): encontrar negócios cujos clientes
 se queixam, nas avaliações Google, de **telefone sem resposta**, **mensagens sem resposta** ou **marcações/encomendas
-que falham**, e preparar a mensagem da consultoria de IA a citar essa queixa real. São leads para a **auditoria
-grátis** e a reunião de 20 minutos, não para o site. Ramo: `claude/avaliacoes-queixas-m7qdst`.
+que falham**, e preparar a mensagem da consultoria de IA a citar essa queixa real. São leads para a **Auditoria de
+Sistemas com IA** (entrada da consultoria, Playbook de 11/10/2026): a mensagem pede 20 minutos de triagem, não vende site. Ramo: `claude/avaliacoes-queixas-m7qdst`.
 
 ## Peças
 
@@ -27,7 +27,8 @@ grátis** e a reunião de 20 minutos, não para o site. Ramo: `claude/avaliacoes
 ## Regras
 
 - Citar só frases reais, palavra por palavra, com a data relativa que o Google mostra. Nunca o nome de quem escreveu.
-- Sem números inventados nem preços na mensagem (o preço fala-se na reunião: sistemas ~250 € + ~50 €/mês, site 500 € + 75 €/mês).
+- Desde 11/10/2026 a Pacheco Studios é consultora de sistemas com IA (playbook em /mnt/project-files/playbook/). A queixa é sinal de fuga operacional (resposta, marcação, entrega); a mensagem nomeia a fuga e o sistema (quem responde, em quanto tempo, o que acontece à exceção), sem abrir com ferramenta (chatbot, assistente, site).
+- Sem números inventados, sem preços e sem «grátis» até o Tomás fechar a tabela da auditoria.
 - WhatsApp «sim» só com link wa.me na ficha; senão «?» (link WhatsApp + SMS); fixo (02…/03…) → ligar ou visita.
 - Negócios com site fraco também servem: aqui a venda é a auditoria.
 - Excluir cadeias e franchisings (o dono não está em Iași).

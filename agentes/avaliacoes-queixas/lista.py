@@ -15,39 +15,36 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 PRIORIDADE = {"telefon": 0, "mesaje": 1, "marcacoes": 2}
 MAX_MESES = 24  # queixas mais antigas não se citam
 
-# Cada dor tem a sua frase de solução (RO, PT). Sem números: os números saem da auditoria.
+# Cada dor descreve a fuga operacional (RO, PT), sem ferramenta nem preço: a ferramenta sai da auditoria
+# (Playbook de consultoria de IA, 11/10/2026: «primeiro mostrar a fuga, a regra e a ação seguinte»).
 SOLUCAO = {
-    "telefon": ("Se întâmplă des la firmele care au mult de lucru: telefonul sună exact când toată lumea e ocupată. "
-                "Azi se poate rezolva cu un asistent IA care preia apelurile pierdute, răspunde imediat pe SMS sau "
-                "WhatsApp și preia programarea, rezervarea sau comanda în locul dumneavoastră.",
-                "Acontece muito em negócios com muito trabalho: o telefone toca precisamente quando estão todos "
-                "ocupados. Hoje resolve-se com um assistente de IA que apanha as chamadas perdidas, responde logo por "
-                "SMS ou WhatsApp e regista a marcação, a reserva ou a encomenda por vocês."),
-    "mesaje": ("Se întâmplă des la firmele care au mult de lucru: mesajele se adună și răspunsul vine prea târziu. "
-               "Azi se poate rezolva cu un asistent IA care răspunde în câteva secunde pe WhatsApp, Facebook și "
-               "Instagram, cu informațiile dumneavoastră, și vă lasă doar ce are nevoie de un om.",
-               "Acontece muito em negócios com muito trabalho: as mensagens acumulam-se e a resposta chega tarde. "
-               "Hoje resolve-se com um assistente de IA que responde em segundos no WhatsApp, Facebook e Instagram, "
-               "com as vossas informações, e só vos passa o que precisa de uma pessoa."),
-    "marcacoes": ("Se întâmplă des la firmele care au mult de lucru: programările și comenzile trec prin prea multe "
-                  "mâini. Azi se poate rezolva cu un sistem care primește programarea sau comanda online, o confirmă "
-                  "și trimite singur reamintirea, fără nimic scris pe hârtie.",
-                  "Acontece muito em negócios com muito trabalho: as marcações e encomendas passam por demasiadas "
-                  "mãos. Hoje resolve-se com um sistema que recebe a marcação ou a encomenda online, confirma-a e "
-                  "envia sozinho o lembrete, sem nada escrito em papel."),
+    "telefon": ("Când telefonul sună și toată lumea e ocupată, clientul sună la altcineva și nimeni nu află. "
+                "Nu e o problemă de oameni, ci de sistem: cine răspunde, în cât timp și ce se întâmplă cu apelul pierdut.",
+                "Quando o telefone toca e estão todos ocupados, o cliente liga a outro e ninguém fica a saber. "
+                "Não é um problema de pessoas, é de sistema: quem atende, em quanto tempo e o que acontece à chamada perdida."),
+    "mesaje": ("Când mesajele vin pe WhatsApp, Facebook și e-mail fără un responsabil clar, răspunsul întârzie și clientul pleacă. "
+               "Nu e o problemă de oameni, ci de sistem: cine răspunde, în cât timp și cine preia ce rămâne în urmă.",
+               "Quando as mensagens chegam por WhatsApp, Facebook e e-mail sem um responsável claro, a resposta atrasa e o cliente vai-se. "
+               "Não é um problema de pessoas, é de sistema: quem responde, em quanto tempo e quem pega no que fica para trás."),
+    "marcacoes": ("Când programările și comenzile trec prin mai multe mâini fără reguli clare, se pierd sau se încurcă. "
+                  "Nu e o problemă de oameni, ci de sistem: cine confirmă, cum se verifică și ce se întâmplă când ceva se schimbă.",
+                  "Quando as marcações e encomendas passam por várias mãos sem regras claras, perdem-se ou trocam-se. "
+                  "Não é um problema de pessoas, é de sistema: quem confirma, como se verifica e o que acontece quando algo muda."),
 }
 
-MSG_RO = ("Bună ziua! Sunt Tomás, de la Pacheco Studios, din Iași.\n\n"
+MSG_RO = ("Bună ziua! Sunt Tomás, de la Pacheco Studios, din Iași. Lucrez cu firme de servicii pe sistemele cu IA "
+          "care fac ca nicio cerere de client să nu rămână fără răspuns.\n\n"
           "{elogio_ro}Citind recenziile de pe Google pentru {nome}, am dat peste asta ({data}):\n„{citacao}”\n\n"
           "Nu vă scriu ca să vă critic. {solucao_ro}\n\n"
-          "Vă propun o auditare gratuită a firmei: unde se pierd clienți și ce se poate automatiza, cu IA. "
-          "Aveți 20 de minute săptămâna aceasta să ne vedem?\n\n"
+          "Vă propun 20 de minute: vă arăt unde se pierd aceste cereri și care ar fi primul pas cu cel mai mare impact. "
+          "Când v-ar fi bine săptămâna aceasta?\n\n"
           "Mai multe despre noi: ro.pachecost.com")
-MSG_PT = ("Bom dia! Sou o Tomás, da Pacheco Studios, de Iași.\n\n"
+MSG_PT = ("Bom dia! Sou o Tomás, da Pacheco Studios, de Iași. Trabalho com negócios de serviços nos sistemas com IA "
+          "que fazem com que nenhum pedido de cliente fique sem resposta.\n\n"
           "{elogio_pt}A ler as avaliações de {nome} no Google, encontrei isto ({data_pt}):\n«{citacao_pt}»\n\n"
           "Não vos escrevo para criticar. {solucao_pt}\n\n"
-          "Proponho-vos uma auditoria grátis ao negócio: onde se perdem clientes e o que se pode automatizar, com IA. "
-          "Têm 20 minutos esta semana para nos vermos?\n\n"
+          "Proponho-vos 20 minutos: mostro-vos onde se perdem estes pedidos e qual seria o primeiro passo com mais impacto. "
+          "Quando vos dá jeito esta semana?\n\n"
           "Mais sobre nós: ro.pachecost.com")
 
 DATA_PT = [("acum o zi", "há um dia"), ("acum o săptămână", "há uma semana"), ("acum o lună", "há um mês"),
@@ -128,7 +125,7 @@ def main(caminho):
     out = [f"# Avaliações com queixas — Iași, {data}\n",
            f"{len(leads)} negócios com clientes a queixarem-se de telefone, mensagens ou marcações nas avaliações "
            f"Google ({sum(len(f.get('avaliacoes', [])) for f in fichas)} avaliações lidas em {len(fichas)} fichas). "
-           "Mais fortes primeiro. Cada mensagem cita a frase real do cliente e propõe a auditoria grátis e 20 minutos. "
+           "Mais fortes primeiro. Cada mensagem cita a frase real do cliente, nomeia a fuga e pede 20 minutos (triagem para a Auditoria de Sistemas com IA; sem preço). "
            "WhatsApp «?» = sem prova: toca em **Abrir no WhatsApp**; se não estiver registado, **Enviar por SMS** "
            "ou passa lá. Depois diz-me quais responderam e quais falharam.\n"]
     for i, l in enumerate(leads, 1):
