@@ -8,8 +8,8 @@ DEM=claude/dez-negocios-dez-websites-7gevwu; WT=${TMPDIR:-/tmp}/wt-demos
 git -C "$R" fetch -q origin $DEM
 [ -d "$WT" ] || git -C "$R" worktree add -q "$WT" origin/$DEM
 cd "$WT" && git checkout -q --detach origin/$DEM && git reset -q --hard origin/$DEM
-echo "$DATA $(TZ=Europe/Bucharest date +%H:%M) — caçador corrida B" >> sites/demos-pachecost/PUBLICAR.txt
+echo "$DATA $(TZ=Europe/Bucharest date +%H:%M) — caçador (ordem do Tomás: «publica»)" >> sites/demos-pachecost/PUBLICAR.txt
 git add sites/demos-pachecost/PUBLICAR.txt
-git commit -qm "Caçador $DATA: deploy do dia (corrida B)"
+git commit -qm "Caçador $DATA: deploy do dia (ordem do Tomás)"
 for i in 1 2 3 4; do git pull -q --rebase origin $DEM && git push -q origin HEAD:$DEM && break; sleep $((i*2)); done
 git log --oneline -1
