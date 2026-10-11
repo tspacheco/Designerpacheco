@@ -95,8 +95,64 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("faisca-henriques", "faisca-henriques"),
     ("sos-car", "sos-car"),
     ("mb-cakes", "mb-cakes"),
+    # caçador 2026-10-09
+    ("atractiv-barber", "atractiv-barber"),
+    ("frizeria-magnific", "frizeria-magnific"),
+    ("salon-manier", "salon-manier"),
+    ("lisnic-barbershop", "lisnic-barbershop"),
+    ("ego-hair-studio", "ego-hair-studio"),
+    ("beauty-wow", "beauty-wow"),
+    ("salon-michelle", "salon-michelle"),
+    ("salon-venus", "salon-venus"),
+    ("origins-coffee", "origins-coffee"),
+    ("petale-coffee", "petale-coffee"),
+    ("kinetomobil", "kinetomobil"),
+    ("ambiental-covoare", "ambiental-covoare"),
+    ("vulcanizare-miroslava", "vulcanizare-miroslava"),
+    ("anton-giovani", "anton-giovani"),
+    ("vfishing", "vfishing"),
+    ("dulce-de-acasa", "dulce-de-acasa"),
+    ("reparatii-termopane", "reparatii-termopane"),
+    ("ami-salon", "ami-salon"),
+    ("svl-salon", "svl-salon"),
+    ("identity-marius-timofte", "identity-marius-timofte"),
+    ("such-salon", "such-salon"),
+    ("fade-society", "fade-society"),
+    ("la-detaliu", "la-detaliu"),
+    ("tapiterie-auto-iasi", "tapiterie-auto-iasi"),
+    ("spaauto", "spaauto"),
+    ("idalia", "idalia"),
+    ("atelier-madi", "atelier-madi"),
+    ("pescaria-galata", "pescaria-galata"),
+    ("pescaria-noastra", "pescaria-noastra"),
+    ("piscicola", "piscicola"),
+    ("dynamite-pacurari", "dynamite-pacurari"),
+    ("roxette", "roxette"),
+    ("vogue-pacurari", "vogue-pacurari"),
+    ("cosmetica-pacurari", "cosmetica-pacurari"),
+    ("mop-vet", "mop-vet"),
+    ("vet-point-of-care", "vet-point-of-care"),
+    ("pethealth", "pethealth"),
+    ("total-fauna", "total-fauna"),
+    ("be3concept", "be3concept"),
+    ("elephant-car-wash", "elephant-car-wash"),
+    ("crys-grill", "crys-grill"),
+    ("beer-house", "beer-house"),
+    ("pilates-fusion", "pilates-fusion"),
+    ("swallow-pilates", "swallow-pilates"),
+    ("status-coffee", "status-coffee"),
+    ("fresco-jugo", "fresco-jugo"),
+    ("polar-cars", "polar-cars"),
+    ("niobal-auto", "niobal-auto"),
+    ("reglare-unghiuri", "reglare-unghiuri"),
+    ("vulcanizarea-galata", "vulcanizarea-galata"),
 ]
 NOINDEX = '<meta name="robots" content="noindex, nofollow">'
+# Páginas soltas (não são demos de site): copiadas tal como estão, sem faixa, sem contador e fora das
+# páginas por nicho; só levam noindex. (endereço curto, ficheiro em sites/)
+PAGINAS_SOLTAS = [
+    ("magic-key-asistent", "magic-key/rececionista/index.html"),  # rececionista de IA simulada (09/10)
+]
 # Contador de aberturas (tracker das demos, ramo claude/tracker-demos-kx5ukf): só no index.html,
 # com o caminho fixo /demo/<curto>/ para contar igual em pachecost.com/demo/, demo.pachecost.com
 # e pachecost-demos.netlify.app. Sem cookies e sem script externo (um pedido de imagem ao GoatCounter).
@@ -172,9 +228,15 @@ def gerar_demos():
         print("AVISO: páginas por nicho não geradas:", repr(erro))
     with open(os.path.join(out, "_redirects"), "w", encoding="utf-8") as f:
         f.write("/    https://pachecost.com/    302\n")
+    for curto, ficheiro in PAGINAS_SOLTAS:
+        os.makedirs(os.path.join(out, curto))
+        with open(os.path.join(SITES, ficheiro), encoding="utf-8") as f:
+            h = com_noindex(f.read())
+        with open(os.path.join(out, curto, "index.html"), "w", encoding="utf-8") as f:
+            f.write(h)
     with open(os.path.join(out, "_headers"), "w", encoding="utf-8") as f:
         # noindex só nas demos (as páginas por nicho têm de ser indexadas)
-        f.writelines(f"/{curto}/*\n  X-Robots-Tag: noindex, nofollow\n" for curto, _ in DEMOS)
+        f.writelines(f"/{curto}/*\n  X-Robots-Tag: noindex, nofollow\n" for curto, _ in DEMOS + PAGINAS_SOLTAS)
         f.write("/*/media/*\n  Cache-Control: public, max-age=604800\n")
     with open(os.path.join(out, "robots.txt"), "w", encoding="utf-8") as f:
         f.write("User-agent: *\nDisallow: /\n")

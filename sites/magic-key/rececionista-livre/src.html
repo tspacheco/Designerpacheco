@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1C1F22">
+<title>Magic Key · asistent virtual</title>
+<meta name="description" content="Demonstrație: asistentul virtual Magic Key pe WhatsApp, scrieți orice întrebare. Răspunde pe reguli, fără inteligență artificială.">
+<style>
+{{FONTES}}
+:root{
+  --grafit:#1C1F22;--grafit-2:#272B30;--hartie:#EFF2EC;--verde:#3BAA35;--verde-txt:#23801F;--verde-dsc:#86DC78;--ambra:#FFB020;
+  --text:#121416;--chat-fundo:#EDE6DC;--bolha-in:#FFFFFF;--bolha-out:#D9F7CF;--meta:#59625A;--link:#0E6A84;
+  --f-disp:'Tomorrow',Arial,sans-serif;--f-txt:'Red Hat Text',system-ui,-apple-system,sans-serif;--f-mono:'Xanh Mono',ui-monospace,monospace;
+  --app-h:100dvh;color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:radial-gradient(120% 80% at 50% 0%,#2A2F34 0%,#16191B 60%,#101213 100%) fixed;color:var(--text);font:500 15px/1.45 var(--f-txt);-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--verde-txt);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.scena{height:var(--app-h);display:grid;place-items:center;align-content:center;gap:14px;padding:18px 16px}
+.tel{width:min(410px,100%);height:min(880px,calc(var(--app-h) - 72px));background:#0B0D0E;border-radius:52px;padding:11px;
+  box-shadow:0 50px 90px -40px rgba(0,0,0,.85),0 0 0 1px #2E3338,inset 0 0 0 1.5px #3A3F45,inset 0 0 0 5px #0B0D0E,inset 0 0 0 6px #23272B;position:relative}
+.tel::before{content:"";position:absolute;top:22px;left:50%;width:96px;height:27px;margin-left:-48px;background:#000;border-radius:20px;z-index:4}
+.ecra{height:100%;border-radius:42px;overflow:hidden;background:var(--chat-fundo);display:flex;flex-direction:column;position:relative}
+.estado{display:flex;justify-content:space-between;align-items:center;padding:17px 30px 8px;background:var(--grafit);color:#fff;font:600 14px/1 var(--f-txt);font-variant-numeric:tabular-nums}
+.estado .ico{display:flex;gap:3px;align-items:flex-end}
+.estado .ico i{display:block;background:#fff;border-radius:1px;width:3px}
+.estado .ico i.bat{width:22px;height:11px;border-radius:3px;margin-left:5px;background:linear-gradient(90deg,#fff 72%,#666 72%)}
+.cab{display:flex;align-items:center;gap:10px;padding:8px 10px 10px 8px;background:var(--grafit);color:#fff}
+.cab .inapoi{width:22px;height:22px;flex:none;opacity:.85}
+.cab .av{width:40px;height:40px;border-radius:50%;background:var(--verde) center/cover;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.12)}
+.cab .id{flex:1;min-width:0}
+.cab .nm{font:600 16.5px/1.15 var(--f-disp);letter-spacing:-.01em;display:flex;align-items:center;gap:6px}
+.cab .nm svg{width:15px;height:15px;flex:none}
+.cab .sb{font-size:12.5px;color:#BFC8BE;transition:color .2s}
+.cab .sb.scrie{color:var(--verde-dsc)}
+.reset{width:40px;height:40px;border-radius:50%;border:0;background:transparent;display:grid;place-items:center;flex:none;color:#D8DED7;transition:background .2s,transform .4s}
+.reset:hover{background:rgba(255,255,255,.08)}
+.reset:active{transform:rotate(-120deg)}
+.reset svg{width:20px;height:20px}
+.conv>*{flex:none}
+.conv{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:12px 10px 10px;display:flex;flex-direction:column;gap:4px;
+  background-color:var(--chat-fundo);background-image:radial-gradient(rgba(28,31,34,.055) 1px,transparent 1.3px);background-size:15px 15px}
+.dia{align-self:center;background:#FFFFFFD9;border-radius:8px;padding:5px 10px;font-size:12px;color:var(--meta);margin:2px 0 6px;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.sis{align-self:center;max-width:88%;text-align:center;background:#FFF3CC;color:#4D3900;border-radius:8px;padding:6px 10px;font-size:12.5px;line-height:1.35;margin:0 0 8px}
+.b{max-width:84%;padding:7px 9px 5px;border-radius:10px;font-size:15px;line-height:1.4;box-shadow:0 1px 0 rgba(0,0,0,.08);position:relative;overflow-wrap:anywhere}
+.b.in{align-self:flex-start;background:var(--bolha-in);border-top-left-radius:3px}
+.b.out{align-self:flex-end;background:var(--bolha-out);border-top-right-radius:3px}
+.b.in+.b.in,.b.out+.b.out{border-radius:10px}
+.b .ora{float:right;margin:7px 0 -3px 10px;font-size:11px;color:var(--meta);display:inline-flex;gap:3px;align-items:center;font-variant-numeric:tabular-nums}
+.b .ora svg{color:#2B88C6}
+.b a{color:var(--link);font-weight:700}
+.b b{font-weight:700}
+.b.foto{padding:4px 4px 5px;width:64%}
+.b.foto img{display:block;width:100%;border-radius:7px;aspect-ratio:4/5;object-fit:cover;background:#ddd}
+.b.foto p{margin:5px 5px 0}
+.chips{align-self:stretch;display:flex;flex-wrap:wrap;gap:6px;padding:4px 0 6px 4px}
+.chips button{border:0;background:#fff;color:var(--link);font-weight:700;font-size:14px;line-height:1.25;padding:9px 13px;border-radius:18px;box-shadow:0 1px 0 rgba(0,0,0,.1),inset 0 0 0 1px rgba(14,106,132,.18);text-align:left;transition:background .15s,transform .15s}
+.chips button:hover{background:#F1FAF8}
+.chips button:active{transform:scale(.97)}
+.chips button.om{color:#6A4A00;box-shadow:0 1px 0 rgba(0,0,0,.1),inset 0 0 0 1px rgba(154,100,0,.35)}
+.chips.folosit button{opacity:.72;pointer-events:none}
+.chips.folosit button.ales{opacity:1;background:var(--link);color:#fff}
+.card{align-self:flex-start;width:86%;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.08);font-size:14px;margin:2px 0}
+.card .top{background:var(--grafit);color:#fff;padding:9px 12px;font:600 14px/1.2 var(--f-disp);display:flex;gap:8px;align-items:center}
+.card .top svg{width:17px;height:17px;flex:none}
+.card .top.ok{background:var(--verde-txt)}
+.card .top.om{background:#7A5600}
+.card dl{margin:0;padding:9px 12px 10px;display:grid;grid-template-columns:auto 1fr;gap:5px 12px}
+.card dt{color:var(--meta);font-size:12.5px;padding-top:1px}
+.card dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.card dd.gol{color:#7A5600;font-weight:700}
+.card .jos{padding:8px 12px;border-top:1px solid #ECEEE9;font-size:12.5px;color:var(--meta);font-family:var(--f-mono)}
+.card a.harta{display:block;text-align:center;padding:10px;border-top:1px solid #ECEEE9;color:var(--link);font-weight:700;text-decoration:none}
+.tipar{align-self:flex-start;background:#fff;border-radius:10px;border-top-left-radius:3px;padding:11px 13px;display:flex;gap:4px;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.tipar i{width:7px;height:7px;border-radius:50%;background:#9AA39A;animation:p 1s infinite}
+.tipar i:nth-child(2){animation-delay:.15s}.tipar i:nth-child(3){animation-delay:.3s}
+@keyframes p{0%,60%,100%{opacity:.35;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.scrie{display:flex;gap:7px;padding:7px 8px 10px;align-items:flex-end;background:var(--chat-fundo)}
+.scrie .camp{flex:1;min-width:0;display:flex;align-items:center;background:#fff;border-radius:24px;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.scrie input{flex:1;min-width:0;border:0;background:transparent;border-radius:24px;padding:12px 16px;font:500 16px/1.2 var(--f-txt);color:var(--text)}
+.scrie input:focus{outline:none}
+.scrie .camp:focus-within{box-shadow:0 1px 0 rgba(0,0,0,.08),0 0 0 2px var(--verde-txt)}
+.scrie input::placeholder{color:#6E766E}
+.scrie button{width:46px;height:46px;border-radius:50%;border:0;background:var(--verde-txt);display:grid;place-items:center;flex:none;transition:transform .15s,background .2s}
+.scrie button:hover{background:#1D6E1A}
+.scrie button:active{transform:scale(.92)}
+.scrie button svg{width:20px;height:20px;fill:#fff;margin-left:2px}
+.linha{margin:0;color:#A9B1A8;font-size:12.5px;text-align:center;line-height:1.4;max-width:410px}
+.linha b{color:#DCE2DB;font-weight:600}
+@keyframes intra{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+.intra{animation:intra .28s cubic-bezier(.2,.8,.3,1) both}
+.b.out.intra{transform-origin:100% 100%}
+.b.in.intra{transform-origin:0 0}
+/* entrada coreografada */
+.tel{animation:tel .7s cubic-bezier(.2,.8,.2,1) both}
+.linha{animation:fade .6s .35s both}
+@keyframes tel{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+/* telemóvel real: ecrã inteiro, sem moldura */
+@media (max-width:520px){
+  body{background:var(--grafit)}
+  .scena{padding:0;gap:0;display:block}
+  .tel{width:100%;height:var(--app-h);border-radius:0;padding:0;box-shadow:none;background:none;animation:none}
+  .tel::before,.estado,.linha{display:none}
+  .ecra{border-radius:0}
+  .cab{padding-top:calc(10px + env(safe-area-inset-top,0px))}
+  .scrie{padding-bottom:calc(9px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-height:640px) and (min-width:521px){.linha{display:none}.tel{height:calc(var(--app-h) - 24px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="scena">
+  <h1 class="sr">Asistentul virtual Magic Key pe WhatsApp</h1>
+  <div class="tel">
+    <div class="ecra">
+      <div class="estado" aria-hidden="true"><span id="ceas">09:41</span><span class="ico"><i style="height:5px"></i><i style="height:8px"></i><i style="height:11px"></i><i class="bat"></i></span></div>
+      <div class="cab">
+        <svg class="inapoi" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="av" role="img" aria-label="Standul Magic Key" style="background-image:url({{IMG:stand-magic-key}})"></div>
+        <div class="id">
+          <div class="nm">Magic Key <svg viewBox="0 0 24 24" aria-label="cont business"><circle cx="12" cy="12" r="11" fill="#3BAA35"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="sb" id="sub" aria-live="off">asistent virtual</div>
+        </div>
+        <button class="reset" id="reset" type="button" aria-label="Reîncepe conversația" title="Reîncepe conversația"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 3.5v5h5"/></svg></button>
+      </div>
+      <div class="conv" id="conv" role="log" aria-live="polite" aria-label="Conversație"></div>
+      <form class="scrie" id="form" autocomplete="off">
+        <div class="camp"><label for="msg" class="sr">Mesaj</label><input id="msg" placeholder="Scrieți un mesaj" enterkeyhint="send" autocapitalize="sentences" spellcheck="false"></div>
+        <button type="submit" aria-label="Trimite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20.5 21.5 12 3 3.5l.01 6.6L16 12 3.01 13.9z"/></svg></button>
+      </form>
+    </div>
+  </div>
+  <p class="linha"><b>Scrieți orice întrebare</b>, ca un client pe WhatsApp. Asistentul răspunde pe reguli, fără inteligență artificială.</p>
+</main>
+<script>
+(function(){
+"use strict";
+/* ===== DATE REALE (profil Google, stand) ===== */
+var TEL="0747 979 810",TEL_L="tel:+40747979810";
+var ADRESA="incinta Selgros, Șos. Nicolina nr. 57A, Iași";
+var MAPS="https://www.google.com/maps/search/?api=1&query=Magic+Key+chei+auto+Selgros+Nicolina+Iasi";
+var ORAR={0:null,1:[9,17],2:[9,17],3:[9,17],4:[9,17],5:[9,17],6:[9,14]}; /* 0 = duminică */
+var FOTO={toyota:"{{IMG:cheie-toyota}}",vw:"{{IMG:cheie-vw-touran}}",renault:"{{IMG:card-renault-megane}}",opel:"{{IMG:cheie-opel}}",mercedes:"{{IMG:cheie-mercedes-vito}}",jeep:"{{IMG:cheie-jeep}}",citroen:"{{IMG:cheie-citroen-jumper}}",ssangyong:"{{IMG:cheie-ssangyong}}"};
+var MARCI={dacia:["Dacia",["logan","sandero","duster","spring","dokker","lodgy","jogger","solenza"]],vw:["Volkswagen",["golf","passat","polo","touran","tiguan","jetta","caddy","transporter","sharan","touareg","bora","up","arteon","crafter","t5","t6"]],
+ skoda:["Skoda",["octavia","fabia","superb","rapid","kodiaq","karoq","yeti","roomster","scala","kamiq"]],renault:["Renault",["megane","clio","scenic","laguna","kangoo","captur","master","trafic","kadjar","talisman","fluence","symbol","thalia","espace","koleos"]],
+ ford:["Ford",["focus","fiesta","mondeo","kuga","transit","fusion","galaxy","s-max","c-max","ecosport","puma","ka"]],opel:["Opel",["astra","corsa","insignia","zafira","vectra","meriva","mokka","vivaro","antara","combo","agila","signum"]],
+ toyota:["Toyota",["yaris","corolla","auris","rav4","avensis","aygo","c-hr","chr","hilux","prius","land"]],mercedes:["Mercedes",["vito","sprinter","viano","clasa","sl","ml","gla","glc","gle","cla","citan"]],
+ bmw:["BMW",["seria","x1","x3","x5","x6","e46","e90","e60","f10","f30"]],audi:["Audi",["a3","a4","a5","a6","a8","q3","q5","q7","a1","tt"]],peugeot:["Peugeot",["206","207","208","307","308","407","508","2008","3008","5008","partner","boxer","expert"]],
+ citroen:["Citroën",["c3","c4","c5","berlingo","jumper","jumpy","xsara","picasso","c-elysee","c1","c2","ds"]],hyundai:["Hyundai",["i10","i20","i30","tucson","santa","ix35","accent","getz","elantra","kona"]],kia:["Kia",["ceed","sportage","rio","picanto","sorento","cerato","venga","niro","stonic"]],
+ nissan:["Nissan",["qashqai","juke","micra","note","navara","x-trail","primera","almera","leaf"]],fiat:["Fiat",["punto","doblo","ducato","panda","bravo","stilo","linea","tipo","500","grande"]],seat:["Seat",["leon","ibiza","altea","toledo","ateca","arona","alhambra","cordoba"]],
+ honda:["Honda",["civic","cr-v","crv","jazz","accord","hr-v"]],mazda:["Mazda",["mazda3","mazda6","cx-5","cx5","cx-3","626"]],suzuki:["Suzuki",["vitara","swift","sx4","jimny","ignis","baleno"]],volvo:["Volvo",["xc60","xc90","xc40","v40","v60","s60","s80","v70"]],
+ mitsubishi:["Mitsubishi",["lancer","outlander","pajero","l200","asx","colt"]],jeep:["Jeep",["cherokee","compass","renegade","wrangler","patriot"]],ssangyong:["SsangYong",["rexton","kyron","korando","tivoli","actyon"]],chevrolet:["Chevrolet",["aveo","spark","cruze","captiva","lacetti"]],
+ mini:["Mini",["cooper","countryman"]],lexus:["Lexus",[]],porsche:["Porsche",["cayenne","macan"]],landrover:["Land Rover",["range","discovery","freelander","evoque"]],alfa:["Alfa Romeo",["giulietta","159","147","mito"]],lancia:["Lancia",[]],smart:["Smart",["fortwo"]]};
+var ALIAS={volkswagen:"vw",wv:"vw",volksvagen:"vw",folcs:"vw",mercedes:"mercedes",merţan:"mercedes",mertan:"mercedes",benz:"mercedes",citroen:"citroen",ssang:"ssangyong",land:"landrover",rover:"landrover",alfa:"alfa",romeo:"alfa"};
+var LUCRARI=["toyota","jeep","renault","mercedes","opel","vw","citroen","ssangyong"]; /* mărci din lucrările recente (fotos) */
+var ZI=["duminică","luni","marți","miercuri","joi","vineri","sâmbătă"];
+
+/* ===== utilitare ===== */
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var $=function(id){return document.getElementById(id)};
+var conv=$("conv"),inp=$("msg");
+function acum(){try{return new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Bucharest"}))}catch(e){return new Date()}}
+function pad(n){return (n<10?"0":"")+n}
+function hm(d){return pad(d.getHours())+":"+pad(d.getMinutes())}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function sem(s){return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")}
+function norm(s){return " "+sem(s).replace(/[^a-z0-9:+\-]+/g," ").replace(/\s+/g," ").trim()+" "}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function lev(a,b){if(a===b)return 0;var m=a.length,n=b.length,d=[],i,j;for(i=0;i<=m;i++)d[i]=[i];for(j=0;j<=n;j++)d[0][j]=j;
+  for(i=1;i<=m;i++)for(j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n]}
+/* chave: "a b" = expressão; "=x" = palavra exata; "~x" = prefixo com 1 erro tolerado; "x" = prefixo */
+function bate(tok,k){
+  if(k[0]==="=")return tok===k.slice(1);
+  if(k[0]==="~"){k=k.slice(1);if(tok.indexOf(k)===0)return true;return tok.length>=k.length-1&&lev(tok.slice(0,k.length),k)<=1}
+  return tok.indexOf(k)===0}
+function tem(n,lista){var toks=n.trim().split(" ");return lista.some(function(k){if(k.indexOf(" ")>=0)return n.indexOf(" "+k.replace(/^[=~]/,"")+" ")>=0;return toks.some(function(t){return bate(t,k)})})}
+function juntar(l){return l.length>1?l.slice(0,-1).join(", ")+" sau "+l[l.length-1]:l[0]}
+
+/* ===== vocabular ===== */
+var K={
+  om:["~proprietar","patron","=sef","=sefu","=seful","=george","om real","un om","=operator","persoana reala","vorbesc cu","vreau sa vorbesc","sa vorbesc","cineva de la","cu cineva","sunati-ma","sunati ma","ma sunati","ma suna"],
+  reclam:["~reclamatie","nemultumit","plangere","=teapa","bataie de joc","=nasol","=dezamagit"],
+  robot:["=robot","=bot","=chatbot","esti om","sunteti om","esti real","inteligenta artificiala","=automat"],
+  pret:["=cost","=costa","=costul","=costuri","~pretul","=pret","=preturi","=preturile","~tarif","=lei","=bani","=scump","=ieftin","cat ma","cat iese","cat da","=ron","cat e o","cat este"],
+  orar:["=program","=programul","=progam","=programu","=orar","=orarul","~deschis","=deschideti","~inchis","=inchideti","=lucrati","pana la ce ora","pana la cat","la ce ora","de la ce ora","ce ore","cand sunteti","cand lucrati","=sarbatori","=sarbatoare","sunteti acolo"],
+  adresa:["=unde","~adresa","~adresa","~locatie","~localizare","=gasesc","va gasesc","=ajung","cum ajung","=selgros","=nicolina","=harta","=maps","=pozitie","=locatia","=situati","=sediu","=sediul"],
+  tel:["=telefon","=telefonul","=numar","=numarul","=nr","de contact","=contact","=sun","sa sun","pot suna","=whatsapp"],
+  durata:["=dureaza","cat timp","in cat timp","cat dureaza","=astept","pe loc","pe moment","=repede","cat de repede","=urgent"],
+  plata:["=plata","=platesc","=plati","=cash","=numerar","cu cardul","=factura","=chitanta","=transfer"],
+  depl:["~deplasare","~deplasati","~deplasa","veniti la","veniti acasa","la domiciliu","nu porneste","=tractare","=tractez","la mine","pana la mine","veniti voi","puteti veni","venit la masina","la locul"],
+  recenzii:["~recenzii","=rating","=pareri","=nota","=stele","=review","=reviews"],
+  interfon:["~interfon","~interfonul","~cartela","~cartele","=cartelei","=breloc","=brelocul","=tag","card de acces","cartela de acces","card acces","~acces"],
+  poarta:["=poarta","=porti","=portii","=poartei","=garaj","=garajul","=bariera","=barierei","=bariere","=automatizare"],
+  baterie:["~baterie","~baterii","~bateria","=pila","=pile","~acumulator"],
+  telec:["~telecomanda","~telecomenzi","~telecomenzii","~telecomenda","=telecomand","=telecomanzi","=butoane","=butonul","=carcasa","=carcasei","=tocite","nu mai merge","nu mai deschide","nu mai raspunde","=stricata","=stricat","=rupta","=reparatie","=reparati","=repara","~reparatii"],
+  casa:["=casa","=casei","=yala","=yale","=butuc","=butucul","=usa","=usii","=lacat","=lacatul","=apartament","=apartamentului","=interior","=birou","cutia postala"],
+  cheie:["=cheie","=cheia","=chei","=cheile","=cheii","=chee","=cheiea","=cheia","=chie","=chieie","=cheiei","~duplicat","=dublura","=copie","=copiez","=copia","=copiat","=rezerva","de rezerva","in plus","=cip","=cipul","=chip","=briceag","=transponder","=lama","card renault","=imobilizator"],
+  pierd:["~pierdut","=pierdut","=pierd","=pierdute","=pierdusem","=furat","=furata","=furate","nu mai am","=ratacit","~ratacita","=disparut","=nu gasesc"],
+  plus:["in plus","=rezerva","inca o","=dublura","~duplicat","=copie","=a doua","inca una","de rezerva"],
+  auto:["~masina","=masini","~masinii","=auto","=autoturism","=duba","=camion","=dubita","=microbuz","=moto","=motocicleta","=scuter"],
+  programare:["~programare","~programarea","=programari","=programez","=programeaza","=programati","=programa","=programeze","=rezerv","=rezervare","=rezervati","pot veni","pot sa vin","pot trece","sa vin","sa trec","trec pe la","vin pe la","o ora libera","ora libera","=liber","sa venim","=vin"],
+  marci:["ce marci","=marci","=marca","=marcile","ce masini","pentru ce masini","faceti pentru","lucrati pe","merge pentru","faceti la","aveti pentru"],
+  multum:["~multumesc","=mersi","=merci","=multam","=mltm","multumesc frumos"],
+  pa:["=pa","o zi buna","=la revedere","=noapte buna","=pe curand"],
+  salut:["=buna","=salut","=salutare","=hello","=hei","=hey","=neata","=servus","buna ziua","buna seara","=ziua","=sarut-mana","=hi"],
+  da:["=da","=ok","=okay","=sigur","=desigur","=bine","=perfect","=dap","=yes","=vreau","=corect","=exact","=transmite","=transmite-i","=transmiteti"],
+  nu:["=nu","=nup","nu acum","=renunt","=anuleaza","=anulez","lasa","nu mai","=no"]
+};
+var PRIMA=/^ ?(cat|cand|unde|ce|care|cum|faceti|aveti|lucrati|se poate|sunteti|pot|este|e |exista|ati)/;
+
+/* ===== extracções ===== */
+function veic(n){
+  var toks=n.trim().split(" "),r={};
+  toks.forEach(function(t,i){
+    var k=ALIAS[t]||(MARCI[t]?t:null);
+    if(!k){for(var m in MARCI){if(t.length>=5&&lev(t,m)<=1&&m.length>=5){k=m;break}}}
+    if(k&&!r.marca)r.marca=k;
+    for(var mm in MARCI){var mods=MARCI[mm][1];var j=mods.indexOf(t);if(j<0&&t.length>=5)for(var q=0;q<mods.length;q++){if(mods[q].length>=5&&lev(t,mods[q])<=1){j=q;break}}
+      if(j>=0&&!r.model&&!(/^\d+$/.test(t)&&!r.marca&&mm!=="peugeot")&&!(t==="land"&&mm==="toyota"&&toks[i+1]==="rover")){if(!r.marca||r.marca===mm){r.model=mods[j];if(!r.marca)r.marca=mm}}}
+  });
+  var an=n.match(/ (19[89]\d|20[0-3]\d) /);if(an)r.an=an[1];
+  var an2=!r.an&&n.match(/ din (\d{2}) /);if(an2){var y=+an2[1];r.an=String(y<40?2000+y:1900+y)}
+  return r}
+function veicTxt(v){if(!v)return"";var s=[];if(v.marca)s.push(MARCI[v.marca][0]);if(v.model)s.push(v.model.length<=3?v.model.toUpperCase():cap(v.model));if(v.an)s.push(v.an);return s.join(" ")}
+var ZILE={duminica:0,dum:0,luni:1,marti:2,miercuri:3,mier:3,joi:4,vineri:5,vin:5,sambata:6,sam:6,simbata:6,sambta:6};
+function cand(n){
+  var r={},az=acum();az.setHours(0,0,0,0);
+  var toks=n.trim().split(" ");
+  toks.forEach(function(t){
+    if(r.data)return;
+    if(t==="azi"||t==="astazi"||t==="acum")r.data=new Date(az);
+    else if(t==="maine"||t==="mine")r.data=new Date(az.getTime()+864e5);
+    else if(t==="poimaine")r.data=new Date(az.getTime()+2*864e5);
+    else{var dz=null;for(var z in ZILE){if(t===z||(z.length>=6&&t.length>=5&&lev(t,z)<=1)){dz=ZILE[z];break}}
+      if(dz!=null&&!(t==="vin"&&/ (pot|sa|o sa|cand|la) vin /.test(n))&&t!=="vin"&&t!=="sam"&&t!=="dum"&&t!=="mier"){var d=new Date(az);while(d.getDay()!==dz)d.setDate(d.getDate()+1);r.data=d}}
+  });
+  var m=n.match(/ (?:la|ora|orele|pe la|in jur de|dupa|catre|pe|de la) (\d{1,2})(?:[:.h ](\d{2}))? /)||n.match(/ (\d{1,2})[:.](\d{2}) /)||n.match(/ (\d{1,2}) ?(?:si jumatate|si un sfert|fix) /);
+  if(m){var h=+m[1],mi=m[2]?+m[2]:0;if(/ si jumatate /.test(n))mi=30;if(h>=1&&h<=7)h+=12;if(h<24&&mi<60)r.ora=pad(h)+":"+pad(mi)}
+  if(!r.ora){if(/ dimineat| devreme /.test(n))r.per="dimineața";else if(/ dupa ?-?amiaz| dupa masa| dupamasa| pranz /.test(n))r.per="după-amiaza"}
+  return r}
+function eticheta(d){var az=acum();az.setHours(0,0,0,0);var dif=Math.round((d-az)/864e5);
+  var s=d.toLocaleDateString("ro-RO",{weekday:"long",day:"numeric",month:"short"}).replace(/\./g,"");
+  return dif===0?"azi, "+s:dif===1?"mâine, "+s:s}
+function zileDeschise(k){var r=[],az=acum(),d=new Date(az);d.setHours(0,0,0,0);
+  for(var i=0;r.length<k&&i<10;i++){var x=new Date(d.getTime()+i*864e5);var o=ORAR[x.getDay()];if(!o)continue;if(i===0&&az.getHours()>=o[1]-1)continue;r.push(x)}return r}
+function telefon(raw){var m=raw.replace(/[\s.\-()]/g,"").match(/(?:\+40|0040|0)7\d{8}/);
+  if(!m)return null;var d=m[0].replace(/^(\+40|0040|40)/,"0");return d.slice(0,4)+" "+d.slice(4,7)+" "+d.slice(7)}
+function nume(raw,cerut){
+  var t=raw.trim().replace(/[.!]+$/,"");
+  var m=t.match(cerut?/(?:m[aă] numesc|numele (?:meu )?(?:e|este)|eu sunt|sunt|m[aă] cheam[aă])\s+([A-Za-zĂÂÎȘȚăâîșțşţ\-]+(?:\s+[A-Za-zĂÂÎȘȚăâîșțşţ\-]+)?)/i:/(?:m[aă] numesc|numele (?:meu )?(?:e|este)|m[aă] cheam[aă])\s+([A-Za-zĂÂÎȘȚăâîșțşţ\-]+(?:\s+[A-Za-zĂÂÎȘȚăâîșțşţ\-]+)?)/i);
+  if(m&&!/^(de|la|in|în|din|interesat|interesata|acolo|aici|pe|un|o|bine|ok|gata|foarte)$/i.test(m[1].split(" ")[0]))return m[1].split(/\s+/).map(cap).join(" ");
+  if(cerut){var s=t.replace(/[,;].*$/,"").replace(/(?:\+?40|0)7[\d\s.\-]{8,}/,"").trim();
+    if(s&&!/\d|\?/.test(s)&&s.split(/\s+/).length<=3&&!tem(norm(s),K.da.concat(K.nu,["=nu stiu"])))return s.split(/\s+/).map(cap).join(" ")}
+  return null}
+
+/* ===== ecrã ===== */
+var gen=0,ocupado=false,fila=[];
+function jos(){conv.scrollTop=conv.scrollHeight}
+var BIFA='<svg viewBox="0 0 18 12" width="16" height="11" aria-hidden="true"><path d="M1 6.5l3 3L10 3M7 9.5l1 0L15 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function add(el){el.classList.add("intra");conv.appendChild(el);jos();setTimeout(jos,320);return el}
+function bula(html,lado){var d=document.createElement("div");d.className="b "+lado;d.innerHTML=html+'<span class="ora">'+hm(acum())+(lado==="out"?BIFA:"")+"</span>";return add(d)}
+function espera(ms){var g=gen;return new Promise(function(res,rej){setTimeout(function(){g===gen?res():rej("reset")},reduce?Math.min(ms,150):ms)})}
+async function tipar(ms){var t=document.createElement("div");t.className="tipar";t.setAttribute("aria-label","scrie");t.innerHTML="<i></i><i></i><i></i>";add(t);
+  var sb=$("sub");sb.textContent="scrie…";sb.classList.add("scrie");
+  try{await espera(ms)}finally{t.remove();sb.textContent="asistent virtual";sb.classList.remove("scrie")}}
+async function bot(html){await tipar(Math.min(1500,520+html.replace(/<[^>]+>/g,"").length*11));bula(html,"in")}
+function fecharChips(){[].forEach.call(conv.querySelectorAll(".chips:not(.folosit)"),function(c){c.classList.add("folosit")})}
+function chips(lista){
+  var d=document.createElement("div");d.className="chips";d.setAttribute("role","group");d.setAttribute("aria-label","Răspunsuri rapide");
+  lista.forEach(function(t){var b=document.createElement("button");b.type="button";b.textContent=t;if(/proprietar/i.test(t))b.className="om";
+    b.addEventListener("click",function(){if(d.classList.contains("folosit"))return;b.classList.add("ales");trimite(t)});d.appendChild(b)});
+  add(d);return d}
+async function card(tip,titlu,rows,jos2,extra){
+  await tipar(700);
+  var ic=tip==="om"?'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-8-6 16-2.5-6.5z"/></svg>'
+    :tip==="harta"?'<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>'
+    :'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  var d=document.createElement("div");d.className="card";
+  d.innerHTML='<div class="top '+(tip==="om"?"om":tip==="ok"?"ok":"")+'">'+ic+esc(titlu)+'</div><dl>'+rows.map(function(r){return"<dt>"+esc(r[0])+'</dt><dd'+(r[2]?' class="gol"':"")+">"+esc(r[1])+"</dd>"}).join("")+"</dl>"+(jos2?'<div class="jos">'+esc(jos2)+"</div>":"")+(extra||"");
+  add(d)}
+async function foto(marca,text){await tipar(800);var d=document.createElement("div");d.className="b in foto";
+  d.innerHTML='<img alt="Cheie '+esc(MARCI[marca][0])+' făcută la standul Magic Key" src="'+FOTO[marca]+'"><p>'+esc(text)+'<span class="ora">'+hm(acum())+"</span></p>";add(d);d.querySelector("img").addEventListener("load",jos)}
+
+/* ===== estado ===== */
+var S;
+function novo(){S={fails:0,flow:null,step:null,d:{},nume:null,tel:null,oferta:null,necunoscut:[],fotoAratat:{},salutat:false,predat:false}}
+
+/* ===== respostas ===== */
+function orarTxt(){return "luni–vineri 09:00–17:00, sâmbătă 09:00–14:00, duminică închis"}
+function acumTxt(){var a=acum(),o=ORAR[a.getDay()],h=a.getHours()+a.getMinutes()/60;
+  if(o&&h>=o[0]&&h<o[1])return "Acum suntem deschiși, până la "+pad(o[1])+":00.";
+  var z=zileDeschise(2),d=new Date(a);d.setHours(0,0,0,0);var urm=z.find(function(x){return x>d||(o&&h<o[0]&&x.getTime()===d.getTime())})||z[0];
+  if(o&&h<o[0])return "Acum e închis; deschidem azi la "+pad(o[0])+":00.";
+  return "Acum e închis; redeschidem "+eticheta(urm).split(",")[0]+" la 09:00."}
+async function rOrar(n){
+  var c=cand(n);
+  if(c.data){var o=ORAR[c.data.getDay()],zn=eticheta(c.data);
+    if(!o)return bot(cap(zn.split(",")[0])+" standul e închis. Suntem deschiși "+orarTxt().replace(", duminică închis","")+".");
+    if(c.ora){var hh=+c.ora.slice(0,2);if(hh<o[0]||hh>=o[1])return bot("La "+c.ora+" e închis. "+cap(zn.split(",")[0])+" suntem deschiși "+pad(o[0])+":00–"+pad(o[1])+":00.");return bot("Da, "+zn.split(",")[0]+" la "+c.ora+" suntem deschiși (programul zilei: "+pad(o[0])+":00–"+pad(o[1])+":00).")}
+    var zw=ZI[c.data.getDay()],zr=zn.split(",")[0];return bot(cap(zw)+(zr!==zw?" ("+zr+")":"")+" suntem deschiși "+pad(o[0])+":00–"+pad(o[1])+":00.")}
+  var s="Programul standului: "+orarTxt()+". "+acumTxt();
+  if(tem(n,["=sarbatori","=sarbatoare","=craciun","=paste","=revelion","1 decembrie","=liber"]))s+=" În zilele de sărbătoare, programul vi-l confirmă proprietarul.";
+  return bot(s)}
+async function rAdresa(){await bot("Ne găsiți la standul Magic Key din "+ADRESA+".");
+  await card("harta","Magic Key · Selgros Nicolina",[["Adresă","Șos. Nicolina nr. 57A, Iași"],["Program","L–V 09–17, S 09–14"],["Telefon",TEL]],null,'<a class="harta" href="'+MAPS+'" target="_blank" rel="noopener">Deschide în Google Maps</a>')}
+async function rTel(){return bot('Numărul standului: <a href="'+TEL_L+'">'+TEL+"</a>. Puteți suna în program ("+orarTxt()+"), sau scrieți-mi aici.")}
+async function rPretGeneral(n){
+  if(tem(n,K.interfon))return bot("Prețul unei cartele de interfon vi-l confirmă proprietarul; nu vreau să vă dau o cifră greșită. Aduceți cartela sau brelocul pe care îl aveți la stand, în program.");
+  if(tem(n,K.casa)&&!tem(n,K.auto))return bot("Prețul unei chei de casă depinde de profil; vi-l confirmă proprietarul la stand. Aduceți cheia pe care o aveți.");
+  if(tem(n,K.poarta))return bot("Prețul unei telecomenzi de poartă depinde de model; vi-l confirmă proprietarul. Aduceți telecomanda pe care o aveți.");
+  return bot("Prețul depinde de marcă, model, an și tipul cheii (cu cip, cu telecomandă, briceag). Nu vă dau o cifră la întâmplare: prețul exact vi-l confirmă proprietarul.")}
+async function rInterfon(n){await bot("Da, copiem cartele de acces și de interfon, după cartela sau brelocul pe care îl aveți deja. Aduceți-l la stand, în program.");
+  if(tem(n,K.pret))await bot("Prețul vi-l confirmă proprietarul, în funcție de tipul cartelei.")}
+async function rPoarta(n){await bot("Da, copiem telecomenzi pentru poarta de acasă, garaj sau bariera de la bloc. Aduceți telecomanda pe care o aveți; dacă se poate copia modelul dvs. vă confirmă proprietarul pe loc.");
+  if(tem(n,K.pret))await bot("Prețul depinde de model și vi-l confirmă proprietarul.")}
+async function rBaterie(){await bot("Pentru o telecomandă auto care nu mai răspunde (baterie, butoane tocite, carcasă ruptă), aduceți cheia la stand, în program, și se verifică. Ce trebuie schimbat și prețul vi le confirmă proprietarul.")}
+async function rCasa(n){await bot("Da, facem duplicate pentru chei de casă, de butuc sau de lacăt, după cheia dvs. Aduceți cheia la stand. Dacă profilul e mai rar, sunați întâi la "+TEL+" ca să vedeți dacă îl avem.")}
+async function rDurata(){await bot("Durata depinde de cheie și de mașină. Timpul exact vi-l spune proprietarul când vede cheia sau mașina.")}
+async function rPlata(){await bot("Plata se face la stand. Dacă se poate plăti și cu cardul vă confirmă proprietarul.")}
+async function rRecenzii(){await bot("Pe Google, Magic Key are nota 4,5 din 53 de recenzii.")}
+async function rRobot(){await bot("Sunt asistentul virtual automat al Magic Key: răspund la întrebările obișnuite și notez cererile pentru chei. Pentru orice altceva vă pun în legătură cu proprietarul.")}
+async function rDepl(){await bot("Dacă venim la mașină și cu ce cost se stabilește de la caz la caz, cu proprietarul. Vreți să-i transmit cererea?");
+  S.oferta=function(){S.d.motiv=["Cere deplasare la mașină"];return handoff("Clientul cere deplasare la mașină")};
+  chips(["Da, transmite-i","Pot veni eu la stand"])}
+async function rMarci(n){
+  var v=veic(n);
+  if(v.marca){var nm=MARCI[v.marca][0];
+    if(LUCRARI.indexOf(v.marca)>=0){await bot("Da, am făcut recent chei pentru "+nm+". Pentru modelul și anul dvs. vă confirmă proprietarul.");if(FOTO[v.marca]&&!S.fotoAratat[v.marca]){S.fotoAratat[v.marca]=1;await foto(v.marca,"O cheie "+nm+" făcută la stand.")}}
+    else await bot("Pentru "+nm+" vă confirmă proprietarul dacă are cheia și programarea pentru modelul dvs.");
+    await bot("Vreți să notez o cerere pentru cheie?");S.oferta=function(){return startCheie("",norm(n),true)};return chips(["Da, notează","Nu acum"])}
+  return bot("Din lucrările recente: Toyota, Jeep, Renault, Mercedes, Opel, Volkswagen, Citroën și SsangYong. Pentru altă marcă, scrieți-mi marca, modelul și anul și vă confirmă proprietarul.")}
+
+/* ===== intenções ===== */
+function detecta(n,raw){
+  var f=function(k){return tem(n,K[k])};
+  var c=cand(n),v=veic(n);
+  var auto=f("auto")||!!v.marca||!!v.model;
+  var x={c:c,v:v};
+  if(f("om")||f("reclam"))return{id:"om",x:x};
+  if(f("robot"))return{id:"robot",x:x};
+  if(f("interfon"))return{id:"interfon",x:x};
+  if(f("poarta"))return{id:"poarta",x:x};
+  if(f("baterie"))return{id:"baterie",x:x};
+  if(f("casa")&&!auto&&!f("depl"))return{id:"casa",x:x};
+  if(f("depl"))return{id:"depl",x:x};
+  if(f("pret"))return{id:"pret",x:x,auto:auto||f("cheie")||f("telec")};
+  if(f("marci")&&(v.marca||/marc|masini/.test(n))&&!f("pierd"))return{id:"marci",x:x};
+  if(f("telec"))return{id:"telec",x:x};
+  if(f("cheie")||f("pierd")&&(auto||/ (le|o|l)? ?am pierdut /.test(n))||(v.marca||v.model)&&!f("programare"))return{id:"cheie",x:x,auto:auto};
+  if(f("programare")||(c.data||c.ora)&&!f("orar"))return{id:"programare",x:x};
+  if(f("orar"))return{id:"orar",x:x};
+  if(f("adresa"))return{id:"adresa",x:x};
+  if(f("tel"))return{id:"tel",x:x};
+  if(f("durata"))return{id:"durata",x:x};
+  if(f("plata"))return{id:"plata",x:x};
+  if(f("recenzii"))return{id:"recenzii",x:x};
+  if(f("marci"))return{id:"marci",x:x};
+  if(f("multum"))return{id:"multum",x:x};
+  if(f("pa"))return{id:"pa",x:x};
+  if(f("da"))return{id:"da",x:x};
+  if(f("nu"))return{id:"nu",x:x};
+  if(f("salut"))return{id:"salut",x:x};
+  if(f("auto"))return{id:"cheie",x:x,auto:true};
+  return null}
+
+/* sugestões: chips mais próximos do que foi escrito */
+var SUG=[
+  {t:"Cât costă o cheie auto?",k:["pret","cheie","auto"]},
+  {t:"Care e programul?",k:["orar"]},
+  {t:"Unde vă găsesc?",k:["adresa"]},
+  {t:"Am pierdut cheia mașinii",k:["pierd","cheie","auto"]},
+  {t:"Vreau o cheie auto în plus",k:["plus","cheie"]},
+  {t:"Faceți cartele de interfon?",k:["interfon"]},
+  {t:"Telecomandă pentru poartă",k:["poarta"]},
+  {t:"Telecomanda mașinii nu merge",k:["telec","baterie"]},
+  {t:"Faceți chei de casă?",k:["casa"]},
+  {t:"Vreau o programare",k:["programare"]},
+  {t:"Veniți la mașină?",k:["depl"]}
+];
+function bigr(s){var r={};s=s.replace(/ /g,"");for(var i=0;i<s.length-1;i++)r[s.substr(i,2)]=1;return r}
+function sim(a,b){var A=bigr(a),B=bigr(b),i=0,na=0,nb=0,k;for(k in A){na++;if(B[k])i++}for(k in B)nb++;return na+nb?2*i/(na+nb):0}
+function sugestii(n){
+  var toks=n.trim().split(" ").filter(function(t){return t.length>=3});
+  var sc=SUG.map(function(s,i){var p=0;
+    s.k.forEach(function(g){K[g].forEach(function(w){var ww=w.replace(/^[=~]/,"");toks.forEach(function(t){if(bate(t,w))p+=2;else if(ww.length>=4&&t.length>=4){var q=sim(t,ww);if(q>=.55)p+=q}})})});
+    p+=sim(n,norm(s.t))*.6;return{t:s.t,p:p,i:i}});
+  sc.sort(function(a,b){return b.p-a.p||a.i-b.i});
+  var top=sc.filter(function(s){return s.p>=1}).slice(0,4);
+  var base=[0,1,2,9].map(function(i){return{t:SUG[i].t}});
+  while(top.length<4){var nx=base.shift();if(!nx)break;if(!top.some(function(s){return s.t===nx.t}))top.push(nx)}
+  return top.slice(0,4).map(function(s){return s.t}).concat(["Vorbesc cu proprietarul"])}
+
+/* ===== fluxos ===== */
+function cereFlux(id,d){S.flow=id;S.d=d||{};S.step=null}
+async function startCheie(raw,n,dinOferta){
+  var v=veic(n),c=cand(n),d={};
+  if(v.marca||v.model||v.an)d.v=v;
+  if(tem(n,K.pierd))d.sit="pierdut";else if(tem(n,K.plus))d.sit="plus";else if(tem(n,K.telec))d.sit="telec";
+  if(c.data||c.ora||c.per)d.c=c;
+  if(tem(n,K.programare))d.vreaProg=true;
+  var nm=nume(raw,false);if(nm)S.nume=nm;var t=telefon(raw);if(t)S.tel=t;
+  cereFlux("cheie",d);
+  if(!dinOferta){
+    if(d.sit==="pierdut")await bot("Îmi pare rău, se întâmplă des. Facem cheie nouă, cu lama tăiată și cipul programat pe mașină"+(d.v?", și pentru "+veicTxt(d.v):"")+".");
+    else if(d.sit==="plus")await bot("Sigur, facem cheie în plus, cu lama tăiată și cipul programat"+(d.v?", pentru "+veicTxt(d.v):"")+".");
+    else if(d.sit==="telec")await bot("Da: facem telecomenzi auto noi, învățate de mașină, și reparăm cheile vechi (butoane tocite, carcasă ruptă).");
+    else if(d.v)await bot("Facem chei auto cu cip și telecomandă"+(d.v?" pentru "+veicTxt(d.v):"")+". Vă notez o cerere, pas cu pas.");
+    else await bot("Facem chei auto cu cip și telecomandă: cheie în plus, cheie nouă când le-ați pierdut pe toate, telecomenzi și reparații.");
+  }
+  return pas()}
+async function startProg(raw,n){
+  var c=cand(n),d={};if(c.data||c.ora||c.per)d.c=c;
+  var nm=nume(raw,false);if(nm)S.nume=nm;var t=telefon(raw);if(t)S.tel=t;
+  cereFlux("prog",d);
+  return pas()}
+async function handoff(motiv){
+  if(S.flow!=="om"){S.d={motiv:S.d&&S.d.motiv||[]};}
+  if(motiv&&S.d.motiv.indexOf(motiv)<0)S.d.motiv.push(motiv);
+  S.flow="om";S.step=null;S.fails=0;
+  await bot("Vă pun în legătură cu proprietarul: vă răspunde personal, aici sau la telefon.");
+  return pas()}
+
+/* um passo do fluxo ativo: pergunta o que falta */
+async function pas(){
+  var d=S.d;
+  if(S.flow==="cheie"){
+    if(!d.v){S.step="masina";return bot("Pentru ce mașină e? Scrieți marca, modelul și anul (de ex. Dacia Logan 2012).")}
+    if(d.v.marca&&FOTO[d.v.marca]&&LUCRARI.indexOf(d.v.marca)>=0&&!S.fotoAratat[d.v.marca]){S.fotoAratat[d.v.marca]=1;await foto(d.v.marca,"O cheie "+MARCI[d.v.marca][0]+" făcută recent la stand.")}
+    if(!d.v.an&&!d.v.raw&&!d.anCerut){d.anCerut=1;S.step="an";await bot("Ce an de fabricație are mașina?");return chips(["Nu știu sigur"])}
+    if(!d.sit){S.step="sit";await bot("Ce s-a întâmplat?");return chips(["Am pierdut toate cheile","Vreau o cheie în plus","Telecomanda nu mai merge"])}
+    if(d.sit==="pierdut"&&d.aduce==null){S.step="aduce";await bot("Când nu mai e nicio cheie, cea nouă se programează direct pe mașină. Pregătiți talonul și buletinul (ce alte acte mai trebuie vă confirmă proprietarul).");await bot("Puteți aduce mașina la stand, în parcarea Selgros?");return chips(["Da, vin cu mașina","Nu pornește"])}
+    if(!d.c||(!d.c.ora&&!d.c.per&&!d.c.raw)){return cereCand()}
+    if(!S.nume){S.step="nume";return bot("Pe ce nume trec cererea?")}
+    if(!S.tel){return cereTel()}
+    return gataCheie()}
+  if(S.flow==="prog"){
+    if(!d.serv){S.step="serv";await bot("Sigur. Pentru ce aveți nevoie?");return chips(["Cheie auto","Telecomandă auto","Cartelă interfon","Chei de casă"])}
+    if(!d.c||(!d.c.ora&&!d.c.per&&!d.c.raw)){return cereCand()}
+    if(!S.nume){S.step="nume";return bot("Pe ce nume fac programarea?")}
+    if(!S.tel){return cereTel()}
+    return gataProg()}
+  if(S.flow==="om"){
+    if(!S.nume){S.step="nume";return bot("Ca să vă poată răspunde: cum vă numiți?")}
+    if(!S.tel){return cereTel()}
+    return gataOm()}
+}
+async function cereCand(){
+  S.step="cand";var d=S.d;
+  if(d.c&&d.c.data&&!d.c.ora){var o=ORAR[d.c.data.getDay()];var zl=eticheta(d.c.data).split(",")[0];
+    await bot("La ce oră "+zl+"? Suntem deschiși "+pad(o[0])+":00–"+pad(o[1])+":00.");
+    return chips(o[1]-o[0]>6?["10:00","12:30","15:00"]:["10:00","11:30","13:00"])}
+  var z=zileDeschise(2);
+  await bot("Când ați putea veni la stand? Suntem deschiși "+orarTxt()+".");
+  var az=acum();return chips(z.map(function(x,i){var h=i?12:10;if(x.toDateString()===az.toDateString())h=Math.max(h,az.getHours()+1);return cap(eticheta(x).split(",")[0])+" la "+pad(h)+":00"}).concat(["Nu știu încă"]))}
+async function cereTel(){S.step="tel";await bot("Și un număr la care vă poate suna proprietarul? Dacă e cel de pe WhatsApp, scrieți «acesta».");return chips(["Acesta, de pe WhatsApp"])}
+function candTxt(c){if(!c)return"de stabilit";if(c.raw)return c.raw;var s=c.data?eticheta(c.data):"";if(c.ora)s+=(s?", ora ":"ora ")+c.ora;else if(c.per)s+=(s?", ":"")+c.per;return cap(s||"de stabilit")}
+var SIT={pierdut:"Toate cheile pierdute",plus:"Cheie în plus (are o cheie)",telec:"Telecomandă / cheie de reparat"};
+async function gataCheie(){var d=S.d;
+  var rows=[["Mașină",veicTxt(d.v)||d.v.raw||"de confirmat"],["Situație",SIT[d.sit]||d.sit]];
+  if(d.depl&&d.sit!=="pierdut")rows.push(["Deplasare","cerută · de confirmat",true]);
+  if(d.sit==="pierdut")rows.push(["La stand",d.aduce?"vine cu mașina":"mașina nu pornește · deplasare de confirmat",!d.aduce]);
+  rows.push(["Când",candTxt(d.c)],["Nume",S.nume],["Telefon",S.tel],["Preț","îl confirmă proprietarul",true]);
+  await bot("Gata, am notat tot.");
+  await card("ok","Cerere cheie auto · transmisă",rows,"Proprietarul vă confirmă prețul și ora.");
+  S.flow=null;S.step=null;S.d={};
+  await bot(d.sit==="plus"?"Când veniți, aduceți mașina și cheia pe care o aveți. Vă mai pot ajuta cu ceva?":"Vă mai pot ajuta cu ceva?")}
+async function gataProg(){var d=S.d;
+  await bot("Perfect, am notat programarea.");
+  await card("ok","Programare înregistrată",[["Pentru",d.serv],["Când",candTxt(d.c)],["Nume",S.nume],["Telefon",S.tel],["Unde","Stand Magic Key, Selgros Nicolina"]].concat(d.depl?[["Deplasare","cerută · de confirmat",true]]:[]),"Proprietarul vă confirmă ora pe WhatsApp.");
+  S.flow=null;S.step=null;S.d={};
+  await bot("Vă mai pot ajuta cu ceva?")}
+async function gataOm(){var d=S.d;S.predat=true;
+  await card("om","Transmis proprietarului",[["Mesaj",d.motiv.length?d.motiv.join(" · "):"Clientul vrea să vorbească cu proprietarul"],["Nume",S.nume],["Telefon",S.tel]],"Vă răspunde personal, în programul standului.");
+  S.flow=null;S.step=null;S.d={};
+  await bot("I-am transmis mesajul. Între timp, vă pot spune programul, adresa sau pot nota o cerere pentru cheie.")}
+
+/* resposta dentro de um fluxo: devolve true se tratou */
+async function inFlux(raw,n){
+  var d=S.d,st=S.step;
+  var t=telefon(raw);if(t&&st!=="tel")S.tel=t;
+  /* sair do fluxo */
+  if(/^ (nu acum|renunt|anuleaza|anulez|lasa|lasa balta|nu mai vreau|nu multumesc|nu mersi|nu) $/.test(n)&&st!=="aduce"&&st!=="an"){
+    S.flow=null;S.step=null;S.d={};await bot("În regulă, am lăsat cererea deoparte. Vă mai pot ajuta cu ceva?");return true}
+  /* pedido de pessoa: passa já, levando o que se sabe */
+  if(S.flow!=="om"&&(tem(n,K.om)||tem(n,K.reclam))){var mot=[];if(S.flow==="cheie")mot.push("Cerere cheie "+(veicTxt(d.v)||"").trim());mot.push("«"+raw.slice(0,90)+"»");S.d={motiv:mot};S.flow=null;await handoff(null);return true}
+  /* pergunta lateral: responde e volta ao passo */
+  var it=detecta(n,raw);
+  var intrebare=/\?/.test(raw)||PRIMA.test(n);
+  var lat=it&&["orar","adresa","tel","durata","plata","recenzii","robot","interfon","poarta","casa","baterie","pret","depl"].indexOf(it.id)>=0;
+  if(lat&&(intrebare||st==="nume"||st==="tel")&&!(st==="cand"&&(it.x.c.data||it.x.c.ora))&&!(st==="masina"&&(it.x.v.marca||it.x.v.model))){
+    if(it.id==="depl"){if(S.flow==="om"){if(d.motiv.indexOf("Cere deplasare la mașină")<0)d.motiv.push("Cere deplasare la mașină")}else d.depl=true;await bot("Deplasarea la mașină și costul ei se stabilesc cu proprietarul; o trec în cerere.");S.fails=0;await pas();return true}
+    if(it.id==="pret")await bot("Prețul depinde de mașină și de cheie; vi-l confirmă proprietarul, pe baza acestei cereri.");else await raspunde(it,raw,n);
+    await bot("Revenind la cerere:");S.fails=0;await pas();return true}
+  S.fails=0;
+  if(it&&it.id==="programare"&&S.flow==="cheie"&&st!=="cand"&&st!=="nume"&&st!=="tel"){var c0=it.x.c;if(c0.data||c0.ora||c0.per)d.c=c0;await bot("Includ și programarea în aceeași cerere.");await pas();return true}
+  if(st==="masina"){var v=veic(n);if(v.marca||v.model||v.an)d.v=v;else d.v={raw:raw.trim().slice(0,40)};
+    if(!d.sit){if(tem(n,K.pierd))d.sit="pierdut";else if(tem(n,K.plus))d.sit="plus";else if(tem(n,K.telec))d.sit="telec"}
+    var c=cand(n);if(c.data||c.ora)d.c=c;return pas().then(function(){return true})}
+  if(st==="an"){var v2=veic(n);if(v2.an)d.v.an=v2.an;else if(/\d{2}/.test(n)){var y=n.match(/(\d{2,4})/)[1];d.v.an=y.length===2?(+y<40?"20"+y:"19"+y):y}
+    else if(!/ nu stiu /.test(n)&&!tem(n,K.da.concat(K.nu))&&!d.sit){if(tem(n,K.pierd))d.sit="pierdut";else if(tem(n,K.plus))d.sit="plus";else if(tem(n,K.telec))d.sit="telec"}
+    return pas().then(function(){return true})}
+  if(st==="sit"){if(tem(n,K.pierd))d.sit="pierdut";else if(tem(n,K.plus)||tem(n,["=una","=alta","inca"]))d.sit="plus";else if(tem(n,K.telec)||tem(n,K.baterie))d.sit="telec";else d.sit=raw.trim().slice(0,60);return pas().then(function(){return true})}
+  if(st==="aduce"){d.aduce=!(/ nu /.test(n)||/porneste|tractare|nu pot|imposibil/.test(n));if(!d.aduce)await bot("Am înțeles. Deplasarea la mașină se stabilește cu proprietarul; o trec în cerere.");return pas().then(function(){return true})}
+  if(st==="cand"){var cc=cand(n);
+    if(!cc.data&&!cc.ora&&!cc.per){
+      if(d.c&&d.c.data&&/ (\d{1,2}) /.test(n)){var hx=+n.match(/ (\d{1,2}) /)[1];if(hx>=1&&hx<=7)hx+=12;cc={ora:pad(hx)+":00"}}
+      else if(/(nu stiu|oricand|nu inca|mai vedem|cand pot|nu sunt sigur)/.test(n)){d.c={raw:"de stabilit cu proprietarul"};return pas().then(function(){return true})}
+      else{d.c={raw:raw.trim().slice(0,50)};return pas().then(function(){return true})}}
+    var nc={data:cc.data||(d.c&&d.c.data)||null,ora:cc.ora||null,per:cc.per||null};
+    if(nc.data){var o=ORAR[nc.data.getDay()];
+      if(!o){d.c=null;await bot(cap(eticheta(nc.data).split(",")[0])+" standul e închis.");return cereCand().then(function(){return true})}
+      if(nc.ora&&nc.data.toDateString()===acum().toDateString()&&+nc.ora.slice(0,2)<=acum().getHours()){d.c={data:nc.data};await bot("Ora "+nc.ora+" a trecut deja azi.");return cereCand().then(function(){return true})}
+      if(nc.ora){var h=+nc.ora.slice(0,2);if(h<o[0]||h>=o[1]){d.c={data:nc.data};await bot("La "+nc.ora+" e închis: "+eticheta(nc.data).split(",")[0]+" suntem deschiși "+pad(o[0])+":00–"+pad(o[1])+":00.");return cereCand().then(function(){return true})}}}
+    else if(nc.ora){var hh=+nc.ora.slice(0,2);if(hh<9||hh>=17){await bot("La "+nc.ora+" e închis. Programul: "+orarTxt()+".");return cereCand().then(function(){return true})}}
+    d.c=nc;return pas().then(function(){return true})}
+  if(st==="serv"){var s=tem(n,K.interfon)?"Cartelă interfon":tem(n,K.poarta)?"Telecomandă poartă":tem(n,K.casa)?"Chei de casă":tem(n,K.telec)||tem(n,K.baterie)?"Telecomandă auto":(tem(n,K.cheie)||tem(n,K.auto)||veic(n).marca)?"Cheie auto":raw.trim().slice(0,50);
+    if(s==="Cheie auto"||s==="Telecomandă auto"){var nd={c:d.c};var vv=veic(n);if(vv.marca||vv.model||vv.an)nd.v=vv;if(s==="Telecomandă auto")nd.sit="telec";else if(tem(n,K.pierd))nd.sit="pierdut";else if(tem(n,K.plus))nd.sit="plus";cereFlux("cheie",nd);await pas();return true}
+    d.serv=s;return pas().then(function(){return true})}
+  if(st==="nume"){var nm=nume(raw,true);if(nm){S.nume=nm;return pas().then(function(){return true})}
+    if(S.tel&&t){return pas().then(function(){return true})}
+    await bot("Scrieți-mi doar numele, vă rog (de ex. Andrei Popescu).");return true}
+  if(st==="tel"){if(t){S.tel=t}else if(/(acesta|asta|acelasi|aceasta|whatsapp)/.test(n)||tem(n,K.da)){S.tel="numărul de pe WhatsApp"}
+    else if(tem(n,K.nu)){S.tel="doar pe WhatsApp"}
+    else{await bot("Nu am găsit un număr valid. Scrieți-l ca 07xx xxx xxx, sau «acesta» pentru numărul de pe WhatsApp.");return true}
+    var nm2=nume(raw,false);if(nm2&&!S.nume)S.nume=nm2;
+    return pas().then(function(){return true})}
+  return false}
+
+async function raspunde(it,raw,n){
+  switch(it.id){
+    case"om":var mot=S.necunoscut.slice(-2).map(function(x){return"«"+x.slice(0,80)+"»"});if(!/proprietar/i.test(raw)||!mot.length)mot.push("«"+raw.slice(0,80)+"»");S.d={motiv:mot};S.flow=null;return handoff(null);
+    case"robot":return rRobot();
+    case"interfon":return rInterfon(n);
+    case"poarta":return rPoarta(n);
+    case"baterie":return rBaterie();
+    case"casa":return rCasa(n);
+    case"depl":return rDepl();
+    case"pret":await rPretGeneral(n);
+      if(it.auto&&!tem(n,K.interfon)&&!tem(n,K.poarta)){await bot("Vă notez cererea și proprietarul vă răspunde cu prețul exact.");return startCheie(raw,n,true)}
+      if(!tem(n,K.interfon)&&!tem(n,K.poarta)&&!tem(n,K.casa)){await bot("Pentru ce vă interesează prețul?");return chips(["Cheie auto","Cartelă interfon","Chei de casă","Telecomandă pentru poartă"])}
+      return;
+    case"marci":return rMarci(n);
+    case"telec":return startCheie(raw,n,false);
+    case"cheie":
+      if(!it.auto&&!tem(n,K.pierd)&&!tem(n,["=cip","=chip","=briceag","=transponder","=imobilizator"])){await bot("Facem chei auto (cu cip și telecomandă) și duplicate de chei de casă. Pentru ce cheie?");return chips(["Cheie auto","Chei de casă"])}
+      return startCheie(raw,n,false);
+    case"programare":return startProg(raw,n);
+    case"orar":return rOrar(n);
+    case"adresa":return rAdresa();
+    case"tel":return rTel();
+    case"durata":return rDurata();
+    case"plata":return rPlata();
+    case"recenzii":return rRecenzii();
+    case"multum":return bot("Cu plăcere! Vă așteptăm la stand. O zi bună!");
+    case"pa":return bot("O zi bună! Ne găsiți la Selgros Nicolina, "+orarTxt()+".");
+    case"da":if(S.oferta){var f=S.oferta;S.oferta=null;return f()}return bot("Bine. Cu ce vă pot ajuta?");
+    case"nu":if(S.oferta){S.oferta=null;return bot("În regulă. Dacă mai aveți întrebări, scrieți-mi aici.")}return bot("În regulă. Dacă mai aveți întrebări, scrieți-mi aici.");
+    case"salut":return bot(S.salutat?"Bună! Cu ce vă pot ajuta?":"Bună ziua! Cu ce vă pot ajuta?");
+  }}
+
+async function nuInteleg(raw,n){
+  S.fails++;S.necunoscut.push(raw);
+  if(S.fails>=2){var mot=S.necunoscut.slice(-2).map(function(x){return"«"+x.slice(0,80)+"»"});S.d={motiv:mot};S.flow=null;return handoff(null)}
+  await bot("Nu sunt sigur că am înțeles. Vă pot răspunde imediat la una dintre acestea:");
+  chips(sugestii(n))}
+
+async function proceseaza(raw){
+  var n=norm(raw);
+  if(S.predat&&!S.flow){/* depois da passagem ao dono, o que não entende junta-se ao recado */}
+  /* chip «Pot veni eu la stand» / respostas a ofertas */
+  if(S.oferta&&/ pot veni eu /.test(n)){S.oferta=null;S.fails=0;return startProg(raw,n)}
+  if(S.oferta&&/ (da|transmite|noteaza|sigur|ok|vreau) /.test(n)&&n.trim().split(" ").length<=4){var f=S.oferta;S.oferta=null;S.fails=0;return f()}
+  if(S.oferta&&/^ (nu|nu acum|nu multumesc|nu mersi) $/.test(n)){S.oferta=null;return bot("În regulă. Dacă mai aveți întrebări, scrieți-mi aici.")}
+  S.oferta=null;
+  if(S.flow){var ok=await inFlux(raw,n);if(ok)return}
+  var it=detecta(n,raw);
+  var tf=telefon(raw);if(!it&&tf){S.tel=tf;S.fails=0;return bot("Am notat numărul "+tf+". Cu ce vă pot ajuta?")}
+  if(!it){
+    if(S.predat){S.necunoscut.push(raw);return bot("Am adăugat și asta la mesajul pentru proprietar. Vă răspunde personal.")}
+    return nuInteleg(raw,n)}
+  S.fails=0;
+  /* saudação junto com pergunta: cumprimenta primeiro */
+  if(it.id!=="salut"&&tem(n,K.salut)&&!S.salutat){S.salutat=true;await bot("Bună ziua!")}
+  if(it.id==="salut")S.salutat=true;
+  return raspunde(it,raw,n)}
+
+/* ===== envio ===== */
+function trimite(txt){
+  txt=String(txt).trim();if(!txt)return;
+  fecharChips();bula(esc(txt),"out");
+  fila.push(txt);if(!ocupado)corre()}
+async function corre(){
+  ocupado=true;var g=gen;
+  while(fila.length&&g===gen){var t=fila.shift();try{await espera(280);await proceseaza(t)}catch(e){if(e!=="reset"){console.error(e)}}}
+  if(g===gen)ocupado=false}
+$("form").addEventListener("submit",function(e){e.preventDefault();var v=inp.value;inp.value="";trimite(v);inp.focus({preventScroll:true})});
+
+async function start(){
+  gen++;fila=[];ocupado=false;novo();conv.innerHTML="";
+  var g=gen;
+  var d=document.createElement("div");d.className="dia";d.textContent="Astăzi";conv.appendChild(d);
+  var s=document.createElement("div");s.className="sis";s.textContent="Demonstrație: scrieți orice, ca un client. Răspunsuri automate, pe reguli.";conv.appendChild(s);
+  ocupado=true;
+  try{await espera(450);await bot("Bună ziua! Sunt asistentul virtual Magic Key, atelierul de chei auto din Selgros Nicolina.");
+    await bot("Întrebați-mă orice: program, adresă, chei auto cu cip, telecomenzi, cartele de interfon sau o programare la stand.");S.salutat=true}catch(e){}
+  if(g===gen){ocupado=false;if(fila.length)corre()}}
+$("reset").addEventListener("click",function(){start();inp.focus({preventScroll:true})});
+
+/* ===== teclado e altura real ===== */
+function altura(){var vv=window.visualViewport;var h=vv?vv.height:window.innerHeight;document.documentElement.style.setProperty("--app-h",h+"px");if(vv&&window.innerWidth<=520){window.scrollTo(0,0)}jos()}
+if(window.visualViewport){visualViewport.addEventListener("resize",altura);visualViewport.addEventListener("scroll",function(){if(window.innerWidth<=520)window.scrollTo(0,0)})}
+window.addEventListener("resize",altura);altura();
+function relogio(){$("ceas").textContent=hm(acum())}relogio();setInterval(relogio,15000);
+window.__mk={trimite:trimite,stare:function(){return S},ocupat:function(){return ocupado||fila.length>0}};
+start();
+})();
+</script>
+</body>
+</html>
