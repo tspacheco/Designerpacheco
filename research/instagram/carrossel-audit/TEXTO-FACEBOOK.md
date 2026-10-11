@@ -11,7 +11,17 @@ Vídeo (pedido do Tomás, 11/10 19h03): `saida/video/pacheco-audit-ro.mp4`, 51 s
 - A quem comentar: responder com uma pergunta sobre o percurso dele, nunca com preço. A conversa privada só começa se a pessoa pedir.
 - O carrossel em JPG (`saida/ro/`) mantém o «AUDIT» no slide 10: fica para o Instagram, não para os grupos.
 
-## Texto para todos os grupos
+## Descrição curta (a que o Tomás pediu às 19h49, para o vídeo)
+
+Știi că ai nevoie de IA, dar nu știi cine și cum.
+
+Problema nu e AI-ul. E locul unde lead-urile, deciziile și livrarea se rup: cereri fără pas următor, context împrăștiat între WhatsApp și e-mail, decizii fără regulă, predări fără responsabil.
+
+În România, doar 5% dintre firme folosesc AI (Eurostat, 2025). Nu începe cu o unealtă nouă. Începe cu blocajul potrivit.
+
+La voi, unde se pierde cel mai des o cerere? Citesc fiecare răspuns.
+
+## Texto longo para todos os grupos
 
 Știi că ai nevoie de IA, dar nu știi cine și cum.
 
