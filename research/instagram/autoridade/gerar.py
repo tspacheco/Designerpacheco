@@ -49,7 +49,7 @@ TEXTO = {
         "exemple": [
             ("Companie mare", ["Formular de cerere care ajunge structurat la echipa potrivită, cu contextul inclus.", "Triere a mesajelor repetitive după o regulă scrisă, cu predare la om la limită.", "Registru al excepțiilor: responsabil, termen, stare."]),
             ("Agenție / servicii B2B", ["Brief care se păstrează intact de la vânzare la producție și la raportare.", "Răspunsuri rapide pentru cele mai frecvente 5 cereri ale clienților.", "Fișă de predare client → echipă, cu cine decide ce."]),
-            ("Fondator / afacere locală", ["Răspunsuri rapide pe WhatsApp și Instagram, cu regulă pentru când preia un om.", "Fișă Google completă, cu programare, și afiș QR pentru recenzii.", "Mesaj de urmărire după serviciu, cu cerere de recenzie."]),
+            ("Fondator / afacere locală", ["Răspunsuri rapide pe WhatsApp și Instagram, cu regulă pentru când preia un om.", "Facturi, încasări și reamintiri de plată, fără să alergați după nimeni.", "Flux automat care cere recenzia sau testimonialul după serviciu, la momentul potrivit."]),
         ],
         "s5": "Ce nu facem",
         "nu": [
@@ -101,7 +101,7 @@ TEXTO = {
         "exemple": [
             ("Grande empresa", ["Formulário de pedido que chega estruturado à equipa certa, com o contexto incluído.", "Triagem das mensagens repetitivas por uma regra escrita, com passagem a uma pessoa no limite.", "Registo das exceções: responsável, prazo, estado."]),
             ("Agência / serviços B2B", ["Briefing que se mantém intacto da venda à produção e ao relatório.", "Respostas rápidas para os 5 pedidos mais frequentes dos clientes.", "Ficha de passagem cliente → equipa, com quem decide o quê."]),
-            ("Fundador / negócio local", ["Respostas rápidas no WhatsApp e no Instagram, com regra para quando entra uma pessoa.", "Ficha Google completa, com marcação, e cartaz QR para avaliações.", "Mensagem de seguimento depois do serviço, com pedido de avaliação."]),
+            ("Fundador / negócio local", ["Respostas rápidas no WhatsApp e no Instagram, com regra para quando entra uma pessoa.", "Faturas, cobranças e lembretes de pagamento, sem andar atrás de ninguém.", "Fluxo automático que pede a avaliação ou o testemunho depois do serviço, no momento certo."]),
         ],
         "s5": "O que não fazemos",
         "nu": [

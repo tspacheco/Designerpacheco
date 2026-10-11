@@ -38,11 +38,11 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **Parceria (antes de aplicar os 3 quick wins: incentivo primeiro)**
 
-> {saudacao} Înainte să aplicăm cele 3 soluții, vreau să-ți arăt ce poți câștiga dacă lucrăm și mai departe împreună. Când ne prezinți o afacere care se blochează în același loc, cu acordul ei, și ajungem să lucrăm cu ea, primești 15% din valoarea implementării și apoi 5% din ce câștigăm noi cu ea, plătit la sfârșitul fiecărui trimestru, cât timp lucrăm cu ea. Valoarea depinde de afacere: cu cât firma e mai mare, cu atât implementarea e mai mare, și la fel partea ta. În schimb îți cerem trei lucruri, în ordinea asta: în ziua în care cele 3 soluții funcționează, un prim testimonial online și o recomandare, ca mulțumire; apoi recomandări din gură în gură; apoi o mențiune pe lună în conținutul tău. Dacă ți se pare corect, îți trimit propunerea scrisă, de semnat. Voi fi pregătit.
+> {saudacao} Înainte să aplicăm cele 3 soluții, vreau să-ți arăt ce poți câștiga dacă lucrăm și mai departe împreună. Soluțiile le alegem din 9 zone largi, de la clienți și facturi la răspuns automat și recenzii, după situația ta. Când ne prezinți o afacere care se blochează în același loc, cu acordul ei, și ajungem să lucrăm cu ea, primești 15% din valoarea implementării și apoi 5% din ce câștigăm noi cu ea, plătit la sfârșitul fiecărui trimestru, cât timp lucrăm cu ea. Cu cât afacerea e mai mare, cu atât implementarea și partea ta sunt mai mari. În schimb îți cerem trei lucruri, în ordinea asta: în ziua în care cele 3 soluții funcționează, un prim testimonial online și o recomandare, ca mulțumire; apoi recomandări din gură în gură; apoi o mențiune pe lună în conținutul tău. Dacă ți se pare corect, îți trimit propunerea scrisă, de semnat. Voi fi pregătit.
 
 **Testemunho (no dia em que os 3 quick wins ficam a funcionar)**
 
-> {saudacao} Cele 3 soluții funcționează de azi. Mulțumesc pentru încredere. Cum am vorbit, dacă ești mulțumit, un prim testimonial online ar însemna mult pentru noi: o postare sau un story cu @pachecostudiospt, în cuvintele tale, despre ce s-a schimbat, și o recomandare. Voi fi pregătit.
+> {saudacao} Cele 3 soluții funcționează de azi. Mulțumesc pentru încredere. Cum am vorbit, dacă ești mulțumit, un prim testimonial online și o recomandare ar însemna mult pentru noi. Fără scenariu și fără text de la noi: vorbește despre noi cu cuvintele tale, despre ce ai văzut funcționând, unde vrei, cu @pachecostudiospt. Voi fi pregătit.
 
 ### Português
 
@@ -68,11 +68,11 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **Parceria (antes de aplicar os 3 quick wins: incentivo primeiro)**
 
-> {saudacao} Antes de aplicarmos as 3 soluções, quero mostrar-te o que podes ganhar se continuarmos a trabalhar juntos. Quando nos apresentares um negócio que encrava no mesmo sítio, com o acordo dele, e chegarmos a trabalhar com ele, recebes 15% do valor da implementação e depois 5% do que ganhamos com ele, pago no fim de cada trimestre, enquanto trabalharmos com ele. O valor depende do negócio: quanto maior a empresa, maior a implementação, e maior a tua parte. Em troca pedimos três coisas, por esta ordem: no dia em que as 3 soluções ficam a funcionar, um primeiro testemunho online e uma recomendação, como agradecimento; depois, recomendações boca a boca; depois, uma menção por mês nos teus conteúdos. Se te parecer justo, envio a proposta escrita para assinar. Vou estar preparado.
+> {saudacao} Antes de aplicarmos as 3 soluções, quero mostrar-te o que podes ganhar se continuarmos a trabalhar juntos. As soluções escolhem-se em 9 áreas amplas, de clientes e faturas a atendimento automático e avaliações, conforme a tua situação. Quando nos apresentares um negócio que encrava no mesmo sítio, com o acordo dele, e chegarmos a trabalhar com ele, recebes 15% do valor da implementação e depois 5% do que ganhamos com ele, pago no fim de cada trimestre, enquanto trabalharmos com ele. Quanto maior o negócio, maior a implementação e a tua parte. Em troca pedimos três coisas, por esta ordem: no dia em que as 3 soluções ficam a funcionar, um primeiro testemunho online e uma recomendação, como agradecimento; depois, recomendações boca a boca; depois, uma menção por mês nos teus conteúdos. Se te parecer justo, envio a proposta escrita para assinar. Vou estar preparado.
 
 **Testemunho (no dia em que os 3 quick wins ficam a funcionar)**
 
-> {saudacao} As 3 soluções estão a funcionar desde hoje. Obrigado pela confiança. Como combinámos, se estiveres satisfeito, um primeiro testemunho online significava muito para nós: um post ou story com @pachecostudiospt, nas tuas palavras, sobre o que mudou, e uma recomendação. Vou estar preparado.
+> {saudacao} As 3 soluções estão a funcionar desde hoje. Obrigado pela confiança. Como combinámos, se estiveres satisfeito, um primeiro testemunho online e uma recomendação significavam muito para nós. Sem guião e sem texto nosso: fala de nós com as tuas palavras, sobre o que viste a funcionar, onde quiseres, com @pachecostudiospt. Vou estar preparado.
 
 ### Inglês
 
@@ -98,11 +98,11 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **Parceria (antes de aplicar os 3 quick wins: incentivo primeiro)**
 
-> {saudacao} Before we apply the 3 quick wins, I want to show you what you can earn if we keep working together. When you introduce us to a business stuck in the same place, with their consent, and we end up working with them, you get 15% of the implementation value and then 5% of what we earn with them, paid at the end of every quarter, for as long as we work with them. The value depends on the business: the bigger the company, the bigger the implementation, and the bigger your share. In return we ask for three things, in this order: on the day the 3 quick wins go live, a first online testimonial and a recommendation, as a thank-you; then word-of-mouth recommendations; then one mention a month in your content. If that feels fair, I'll send the written proposal to sign. I'll come prepared.
+> {saudacao} Before we apply the 3 quick wins, I want to show you what you can earn if we keep working together. We pick them from 9 broad areas, from clients and invoices to automatic replies and reviews, depending on your situation. When you introduce us to a business stuck in the same place, with their consent, and we end up working with them, you get 15% of the implementation value and then 5% of what we earn with them, paid at the end of every quarter, for as long as we work with them. The bigger the business, the bigger the implementation and your share. In return we ask for three things, in this order: on the day the 3 quick wins go live, a first online testimonial and a recommendation, as a thank-you; then word-of-mouth recommendations; then one mention a month in your content. If that feels fair, I'll send the written proposal to sign. I'll come prepared.
 
 **Testemunho (no dia em que os 3 quick wins ficam a funcionar)**
 
-> {saudacao} The 3 quick wins are live as of today. Thank you for the trust. As agreed, if you're happy, a first online testimonial would mean a lot to us: a post or story tagging @pachecostudiospt, in your own words, about what changed, plus a recommendation. I'll come prepared.
+> {saudacao} The 3 quick wins are live as of today. Thank you for the trust. As agreed, if you're happy, a first online testimonial and a recommendation would mean a lot to us. No script and no text from us: talk about us in your own words, about what you saw working, wherever you like, tagging @pachecostudiospt. I'll come prepared.
 
 ## Grande negócio
 
@@ -210,11 +210,11 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **Parceria (antes de aplicar os 3 quick wins: incentivo primeiro)**
 
-> {saudacao} Înainte să aplicăm cele 3 soluții, vreau să vă arăt ce puteți câștiga dacă lucrăm și mai departe împreună. Când un client de-al vostru se blochează după lead și ne faceți o introducere, cu acordul lui, voi păstrați clientul și serviciul. Dacă ajungem să lucrăm cu el, primiți 15% din valoarea implementării și apoi 5% din ce câștigăm noi cu el, plătit la sfârșitul fiecărui trimestru, cât timp lucrăm cu el. Valoarea depinde de client: cu cât firma e mai mare, cu atât implementarea e mai mare, și la fel partea voastră. În schimb vă cerem trei lucruri, în ordinea asta: în ziua în care cele 3 soluții funcționează, un prim testimonial online și o recomandare, ca mulțumire; apoi recomandări din gură în gură; apoi o mențiune pe lună în conținutul vostru. Dacă vi se pare corect, vă trimit propunerea scrisă, de semnat. Voi fi pregătit.
+> {saudacao} Înainte să aplicăm cele 3 soluții, vreau să vă arăt ce puteți câștiga dacă lucrăm și mai departe împreună. Soluțiile le alegem din 9 zone largi, de la clienți și facturi la răspuns automat și recenzii, după situația voastră. Când un client de-al vostru se blochează după lead și ne faceți o introducere, cu acordul lui, voi păstrați clientul și serviciul. Dacă ajungem să lucrăm cu el, primiți 15% din valoarea implementării și apoi 5% din ce câștigăm noi cu el, plătit la sfârșitul fiecărui trimestru, cât timp lucrăm cu el. Cu cât clientul e mai mare, cu atât implementarea și partea voastră sunt mai mari. În schimb vă cerem trei lucruri, în ordinea asta: în ziua în care cele 3 soluții funcționează, un prim testimonial online și o recomandare, ca mulțumire; apoi recomandări din gură în gură; apoi o mențiune pe lună în conținutul vostru. Dacă vi se pare corect, vă trimit propunerea scrisă, de semnat. Voi fi pregătit.
 
 **Testemunho (no dia em que os 3 quick wins ficam a funcionar)**
 
-> {saudacao} Cele 3 soluții funcționează de azi în echipa voastră. Mulțumesc pentru încredere. Cum am vorbit, dacă sunteți mulțumiți, un prim testimonial online ar însemna mult pentru noi: o postare cu @pachecostudiospt, în cuvintele voastre, despre ce s-a schimbat, și o recomandare. Voi fi pregătit.
+> {saudacao} Cele 3 soluții funcționează de azi în echipa voastră. Mulțumesc pentru încredere. Cum am vorbit, dacă sunteți mulțumiți, un prim testimonial online și o recomandare ar însemna mult pentru noi. Fără scenariu și fără text de la noi: vorbiți despre noi cu cuvintele voastre, despre ce ați văzut funcționând, cu @pachecostudiospt. Voi fi pregătit.
 
 ### Português
 
@@ -240,11 +240,11 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **Parceria (antes de aplicar os 3 quick wins: incentivo primeiro)**
 
-> {saudacao} Antes de aplicarmos as 3 soluções, quero mostrar-vos o que podem ganhar se continuarmos a trabalhar juntos. Quando um cliente vosso encravar depois do lead e nos apresentarem, com o acordo dele, vocês mantêm o cliente e o serviço. Se chegarmos a trabalhar com ele, recebem 15% do valor da implementação e depois 5% do que ganhamos com ele, pago no fim de cada trimestre, enquanto trabalharmos com ele. O valor depende do cliente: quanto maior a empresa, maior a implementação, e maior a vossa parte. Em troca pedimos três coisas, por esta ordem: no dia em que as 3 soluções ficam a funcionar, um primeiro testemunho online e uma recomendação, como agradecimento; depois, recomendações boca a boca; depois, uma menção por mês nos vossos conteúdos. Se vos parecer justo, envio a proposta escrita para assinar. Vou estar preparado.
+> {saudacao} Antes de aplicarmos as 3 soluções, quero mostrar-vos o que podem ganhar se continuarmos a trabalhar juntos. As soluções escolhem-se em 9 áreas amplas, de clientes e faturas a atendimento automático e avaliações, conforme a vossa situação. Quando um cliente vosso encravar depois do lead e nos apresentarem, com o acordo dele, vocês mantêm o cliente e o serviço. Se chegarmos a trabalhar com ele, recebem 15% do valor da implementação e depois 5% do que ganhamos com ele, pago no fim de cada trimestre, enquanto trabalharmos com ele. Quanto maior o cliente, maior a implementação e a vossa parte. Em troca pedimos três coisas, por esta ordem: no dia em que as 3 soluções ficam a funcionar, um primeiro testemunho online e uma recomendação, como agradecimento; depois, recomendações boca a boca; depois, uma menção por mês nos vossos conteúdos. Se vos parecer justo, envio a proposta escrita para assinar. Vou estar preparado.
 
 **Testemunho (no dia em que os 3 quick wins ficam a funcionar)**
 
-> {saudacao} As 3 soluções estão a funcionar desde hoje na vossa equipa. Obrigado pela confiança. Como combinámos, se estiverem satisfeitos, um primeiro testemunho online significava muito para nós: um post com @pachecostudiospt, nas vossas palavras, sobre o que mudou, e uma recomendação. Vou estar preparado.
+> {saudacao} As 3 soluções estão a funcionar desde hoje na vossa equipa. Obrigado pela confiança. Como combinámos, se estiverem satisfeitos, um primeiro testemunho online e uma recomendação significavam muito para nós. Sem guião e sem texto nosso: falem de nós com as vossas palavras, sobre o que viram a funcionar, com @pachecostudiospt. Vou estar preparado.
 
 ### Inglês
 
@@ -270,11 +270,11 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 **Parceria (antes de aplicar os 3 quick wins: incentivo primeiro)**
 
-> {saudacao} Before we apply the 3 quick wins, I want to show you what you can earn if we keep working together. When one of your clients gets stuck after the lead and you introduce us, with their consent, you keep the client and the service. If we end up working with them, you get 15% of the implementation value and then 5% of what we earn with them, paid at the end of every quarter, for as long as we work with them. The value depends on the client: the bigger the company, the bigger the implementation, and the bigger your share. In return we ask for three things, in this order: on the day the 3 quick wins go live, a first online testimonial and a recommendation, as a thank-you; then word-of-mouth recommendations; then one mention a month in your content. If that feels fair, I'll send the written proposal to sign. I'll come prepared.
+> {saudacao} Before we apply the 3 quick wins, I want to show you what you can earn if we keep working together. We pick them from 9 broad areas, from clients and invoices to automatic replies and reviews, depending on your situation. When one of your clients gets stuck after the lead and you introduce us, with their consent, you keep the client and the service. If we end up working with them, you get 15% of the implementation value and then 5% of what we earn with them, paid at the end of every quarter, for as long as we work with them. The bigger the client, the bigger the implementation and your share. In return we ask for three things, in this order: on the day the 3 quick wins go live, a first online testimonial and a recommendation, as a thank-you; then word-of-mouth recommendations; then one mention a month in your content. If that feels fair, I'll send the written proposal to sign. I'll come prepared.
 
 **Testemunho (no dia em que os 3 quick wins ficam a funcionar)**
 
-> {saudacao} The 3 quick wins are live in your team as of today. Thank you for the trust. As agreed, if you're happy, a first online testimonial would mean a lot to us: a post tagging @pachecostudiospt, in your own words, about what changed, plus a recommendation. I'll come prepared.
+> {saudacao} The 3 quick wins are live in your team as of today. Thank you for the trust. As agreed, if you're happy, a first online testimonial and a recommendation would mean a lot to us. No script and no text from us: talk about us in your own words, about what you saw working, tagging @pachecostudiospt. I'll come prepared.
 
 ## Página / comunidade B2B
 

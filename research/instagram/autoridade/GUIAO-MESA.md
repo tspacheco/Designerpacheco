@@ -14,7 +14,7 @@ Para chegar ao decisor das empresas do lote 1 e das próximas. Ficheiros: `saida
 ## As 3 provas que levas
 1. **O brief** (2 páginas, RO). Só números com fonte: Stanford AI Index 2025, Eurostat 2025, Klarna fev. 2024. Envia-se quando respondem ou quando pedem «o documento».
 2. **O Micro System Print** (1 página, sai do gerador). Cabeçalho com empresa e uma pergunta de diagnóstico · percurso atual só com os canais que viste · passo de risco marcado «de validat» · fluxo trigger → responsável → regra → passagem a uma pessoa · 3 perguntas que o decisor responde de cabeça · 1 ou 2 métricas · próximo passo «validamos o mapa; se não houver problema, fica como referência». Tem sempre pelo menos 1 quick win à vista. No Instagram vai como captura de ecrã.
-3. **Um quick win feito à frente deles.** Exemplos: cartaz QR de avaliações gerado na hora (/afis), as 5 respostas aprovadas escritas na reunião, a confirmação por mensagem com regra de passagem. Prova que «implementamos em dias» é verdade.
+3. **Um quick win feito à frente deles.** Escolhido nas 9 áreas do menu (ver `../COMISSAO-PARCEIROS.md`). Exemplos: as respostas aprovadas às perguntas repetidas escritas na reunião (atendimento automático), o fluxo que pede o testemunho depois do serviço desenhado à frente deles, a regra de lembrete de pagamento. Nada de fichas Google nem cartazes de avaliações. Prova que «implementamos em dias» é verdade.
 
 **Checklist antes de enviar o print:** pelo menos 2 sinais públicos reais registados · hipótese, não acusação · específico da empresa, não do setor · o valor prometido é clareza, não uma ferramenta nem um resultado inventado · pede a validação com o decisor, sem formulário e sem minutos.
 
