@@ -79,3 +79,5 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-11 | baby-smile | Cormorant | Álbum de bebé com fotos coladas e datas manuscritas |
 | 2026-10-11 | takt-studio | Sofia Sans Semi Condensed | Forma de onda e medidores VU que reagem ao scroll |
 | 2026-10-11 | gentes-pilates | Faustina | Reformer: a barra desliza e a mola estica com o scroll |
+| 2026-10-11 | venezia-showroom | Cardo | Mosaico que assenta |
+| 2026-10-11 | servisare-la-piticu | Alegreya Sans SC | Elevador de oficina |
