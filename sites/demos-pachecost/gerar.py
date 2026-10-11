@@ -241,7 +241,7 @@ def gerar_demos():
             p = os.path.join(src, "media", f)
             if os.path.isfile(p) and f != "LEIA-ME.txt":
                 shutil.copy2(p, os.path.join(dst, "media", f))
-    # páginas por nicho e cidade (sites/paginas-nicho): indexáveis, servidas pelo pachecost.com e pelo
+    # páginas por nicho e cidade (sites/paginas-nicho): noindex desde 11/10 (são exemplos da consultoria, não vitrine de sites); servidas pelo pachecost.com e pelo
     # ro.pachecost.com através das regras de gerar_site(); refazem-se a cada push, com as demos novas
     # Se falharem, as demos publicam-se na mesma (são os links que já foram enviados aos donos).
     try:
@@ -261,8 +261,9 @@ def gerar_demos():
         with open(os.path.join(out, curto, "index.html"), "w", encoding="utf-8") as f:
             f.write(h)
     with open(os.path.join(out, "_headers"), "w", encoding="utf-8") as f:
-        # noindex só nas demos (as páginas por nicho têm de ser indexadas)
+        # noindex nas demos e nas páginas por nicho (exemplos de apoio à auditoria, desde 11/10)
         f.writelines(f"/{curto}/*\n  X-Robots-Tag: noindex, nofollow\n" for curto, _ in DEMOS + PAGINAS_SOLTAS)
+        f.write("/sites/*\n  X-Robots-Tag: noindex, nofollow\n/site-uri/*\n  X-Robots-Tag: noindex, nofollow\n")
         f.write("/*/media/*\n  Cache-Control: public, max-age=604800\n")
     with open(os.path.join(out, "robots.txt"), "w", encoding="utf-8") as f:
         f.write("User-agent: *\nDisallow: /\n")

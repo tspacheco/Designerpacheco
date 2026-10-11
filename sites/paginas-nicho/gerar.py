@@ -293,7 +293,7 @@ def cabeca(ui, cid, titulo, desc, url, ld, pixel_id):
 <title>{e(titulo)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{e(url)}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#141210">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="{ui['og']}">
