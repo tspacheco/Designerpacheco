@@ -125,7 +125,7 @@ Guião prático já existente: entrevistas «conta-me ontem» → «e depois?»,
 
 **Entregáveis da auditoria:** diagnóstico executivo de 1 página (sintoma, causa-raiz, base, 1.ª recomendação) · mapa do sistema atual · matriz de prioridade (impacto, viabilidade, risco, dependências, tempo até valor) · System Print futuro · plano de 90 dias (o que medir, pilotar, quem aprova, que decisão sai do piloto).
 
-**Onde entra o site agora (gatilho):** a demo de site, a ferramenta grátis (cartaz QR de avaliações), a auditoria grátis a um site fraco ou a rececionista de demonstração são **ofertas de entrada**: entregam 1 quick win visível e servem para pedir **uma reunião** (triagem). Nunca se vendem como produto final nem com preço de site. A conversa passa sempre para a fuga operacional e para a auditoria.
+**Onde entra o site agora (gatilho, ver A.14 «Audit Hook by Demo»):** a demo de site, a ferramenta grátis (cartaz QR de avaliações), a auditoria grátis a um site fraco ou a rececionista de demonstração são **ofertas de entrada**: entregam 1 quick win visível e servem para pedir **uma reunião** (triagem). Nunca se vendem como produto final nem com preço de site. A conversa passa sempre para a fuga operacional e para a auditoria.
 
 ## A.6 TANGIBILIZAÇÃO — O «SYSTEM PRINT»
 
@@ -209,6 +209,7 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 - Em Iași a regra era «1.ª proposta é só o site, em RON»: passa a ser «1.ª proposta é a auditoria»?
 - Contas atuais de mensalidade de site (Grupo Naval, Catarina, Bravus, Magic Key): mantêm-se ou migram para otimização mensal?
 - CTA «DM AUDIT»: palavra igual em PT, RO e EN?
+- O playbook de triagem pede «15 minutos para validar»; a regra de 09/10 era nunca dizer minutos («uma reunião»). Qual fica?
 
 ## A.13 DINHEIRO: AUDITORIA, TICKET E PARCEIROS (decisão do Tomás, 11/10/2026)
 
@@ -228,6 +229,50 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 - Recebem comissão **sobre a implementação**, isto é, quando começamos a trabalhar com o negócio que indicaram (auditoria sozinha não conta).
 - Se continuarmos a trabalhar com esse cliente, o parceiro recebe **10 % a cada 3 meses** enquanto a relação durar.
 - Mantém-se a escada de 11/10 de manhã: primeiro damos ao parceiro 3 quick wins implementados; ele mostra o nosso nome e recomenda-nos; só se fala em comissão depois dos quick wins.
+
+## A.14 TRIAGEM PROATIVA E «AUDIT HOOK BY DEMO» (Tomás, 11/10/2026, playbook de triagem v1.0)
+
+**Mudança de método:** a triagem deixa de ser um pedido ao cliente. A Pacheco observa primeiro o percurso público, prepara uma **hipótese** e um **Micro System Print de uma página**, e só pede ao decisor que confirme ou corrija o mapa. Nunca um formulário. Promessa: *«Eu já preparei o que validaria no vosso caso.»* Frase-chave: *«Não estou a afirmar que têm uma falha. Estou a mostrar a primeira coisa que validaria no vosso percurso.»*
+
+**A isca (palavras do Tomás):** levar a triagem ao cliente mostrando-lhe o que já é possível, e fechar com o convite. Exemplos a adaptar por nicho:
+
+- «Os seus leads são tratados automaticamente e ficam-lhe só com a parte operacional? Hoje tem uma IA que responde a toda a FAQ escrita na diretriz da sua empresa?»
+- «Hoje o seu sistema capta todos os e-mails, qualifica, filtra, responde ao que está nas suas diretrizes e pede a sua decisão só no que realmente merece o seu tempo?»
+- «Hoje o seu atendimento a clientes custa-lhe menos de 1 hora por dia?»
+- Fecho: «Se não, faça uma triagem connosco: nós entregamos isso ao seu método de trabalho e ao seu sistema operacional.»
+
+**Limite ético e comercial (HONEST-DATA aplicado ao outbound):** a hipótese não é um facto interno. Nunca dizer «perdem leads», «têm no-shows» ou «demoram X horas» sem dados.
+
+| Dizer | Não dizer |
+|---|---|
+| «No percurso público vejo [canal A], [canal B], [canal C].» | «Sei que deixam perder mensagens.» |
+| «Em operações deste tipo, é aqui que o contexto costuma partir-se.» | «A vossa equipa responde mal.» |
+| «Preparei uma hipótese de fluxo para validar.» | «Fiz uma auditoria completa à vossa empresa.» |
+| «Se a hipótese estiver errada, fica uma boa prática útil.» | «Garanto que vão poupar X horas.» |
+
+**Método de 4 passos:** 1. **Observar** (10–15 min no percurso público: Google, site, formulário, chamada, WhatsApp, Instagram, e-mail, política de reservas, reviews; só factos) → 2. **Hipotetizar** (uma fuga provável do setor, como pergunta operacional: «Quando entra por três canais, quem fica dono da próxima ação?») → 3. **Mostrar** (Micro System Print) → 4. **Validar** (reunião curta conduzida pela Pacheco; há problema → Auditoria; não há → fecha-se sem forçar).
+
+**Micro System Print (1 página):** cabeçalho com empresa + setor + uma pergunta de diagnóstico · percurso atual só com canais observados, transição de risco marcada «a validar» · fluxo futuro trigger → dono → regra → handoff (nunca uma IA a decidir sem limite) · 3 perguntas que um decisor responde em 15 min · 1–2 métricas ligadas à fuga · próximo passo: «Validar este mapa. Se não houver problema, fica como referência; se houver, definimos a Auditoria.» **Checklist antes de enviar:** ≥ 2 sinais públicos reais registados · hipótese, não acusação · específico para a empresa · o valor prometido é clareza, não ferramenta nem resultado inventado · CTA para validar com o decisor, sem formulário.
+
+**Três setores prioritários** (fricção repetida e mensurável, não «setor de IA»):
+
+| Setor | Hipótese para validar | Sistema de entrada provável | Métricas |
+|---|---|---|---|
+| 1. Restauração e hospitalidade | «Quando entra uma reserva ou pedido, existe um único dono e um estado visível até à confirmação?» Título: «Nenhuma reserva sem dono.» | Reserva com dono: captação, confirmação, lembretes, exceção/handoff, preenchimento de vaga | Tempo até 1.ª resposta, % reservas confirmadas, no-shows, vagas recuperadas, mensagens sem dono |
+| 2. Serviços por marcação (clínicas, estética, salões, barbearias, ginásios, pet) | «A sua agenda é um sistema de decisão ou só uma lista de horas?» Título: «Uma marcação não é um sistema.» | Receção de marcação: FAQ aprovada, confirmação, lembrete, remarcação, handoff, reativação | Pedidos convertidos em marcação, confirmações, no-shows, tempo de atendimento, horas humanas em FAQ |
+| 3. Construção e serviços de campo por orçamento | «A equipa devia estar em obra; o sistema devia segurar o próximo passo.» Título: «Um lead sem próxima ação vira um orçamento esquecido.» | Lead a orçamento: acolhimento, 4–6 perguntas de qualificação, dono, visita, orçamento, follow-up, estado único | Tempo de 1.ª resposta, % qualificados, visitas convertidas, orçamentos, follow-ups, valor ganho/perdido |
+
+Ordem: começar por restauração e marcação (prova já reconhecível); construção eleva o ticket. Os exemplos do PDF (mensagens PT/EN por setor, sinais públicos, 3 validações) são **base**, não texto a copiar: cada abordagem adapta-se ao cliente, à situação e ao nicho. Original em `/mnt/project-files/playbook/pacheco-studios-playbook-triagem-proativa.pdf` (texto em `.txt` ao lado).
+
+**Cadência:** D0 mensagem curta + Micro System Print (ou pedir permissão para o enviar) → D3 uma observação adicional ou uma frame ampliada («o que acontece a este pedido depois de entrar?») → D7 pergunta binária («isto já está resolvido de ponta a ponta ou vale validar?») → D12 fecho limpo («deixo o Print convosco; se se tornar prioridade, validamos») → **chamada de validação** conduzida pela Pacheco: «Este percurso está certo? Onde se parte? Quem devia assumir a próxima ação? O que medem hoje?» Duas ou mais respostas com fuga sem dono, sem regra ou sem base → propor a Auditoria. Fecho: «Não precisam de uma lista de ferramentas. Precisam de saber qual é a primeira fuga que vale a pena resolver.»
+
+**Objeções:** «Já temos CRM/agenda/WhatsApp» → a triagem não substitui sistemas, vê se o contexto os atravessa sem perder dono, regra e próxima ação · «Não temos tempo» → por isso a validação é curta e trazemos o primeiro mapa; sem sinal forte não propomos mais nada · «Já usamos IA» → a pergunta é se resolve uma fuga com regras aprovadas, handoff e impacto medido · «Mande uma proposta» → primeiro a página de hipótese; a proposta só depois de validar · «Não temos problema» → então o Print prova que o sistema está saudável; se um elemento falhar, já sabemos onde olhar.
+
+**«Audit Hook by Demo» — a abordagem de Iași.** Em Iași mantém-se o envio de demos (caçador diário, tracker das demos), mas **só nesta abordagem específica** e com este nome: a demo é o **trabalho inicial** que acompanha a hipótese e identifica um gargalo de uma triagem já feita. A demo não é o produto: é o Micro System Print em forma de página viva. Regras:
+
+- A mensagem que acompanha a demo segue a triagem proativa (sinais públicos, hipótese, pedido de validação), nunca «fizemos-lhe um site».
+- O tracker das demos passa a medir esta abordagem: enviados → abriram → responderam → validação marcada → Auditoria. Métrica central: pedidos de auditoria qualificados por 1.000 contactos.
+- Fora de Iași (e-mail, Instagram, parceiros), a isca é o Micro System Print sem demo.
 
 ---
 
