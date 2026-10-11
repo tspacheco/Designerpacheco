@@ -367,7 +367,35 @@ def botao_esquema(x, lab):
             f'<span class="txt"><b>{e(lab["esquema_cta"])}</b><small>{e(lab["esquema_nota"])}</small></span>{I["seta"]}</a>')
 
 
-def vista_automatizari(c, digitos, icones, casos, servicii):
+def rececionista(a, digitos, lang):
+    """Entrada das Soluções: a rececionista de IA num mini telemóvel (iframe da cópia em ferramentas/rececionista.html,
+    modo guião, sem IA paga); os botões trocam o negócio de exemplo. Pedido do Tomás, 11/10."""
+    r = a["rececionista"]
+    pontos = "".join(f"<li>{e(x)}</li>" for x in r["pontos"])
+    negs = "".join(f'<button type="button" data-negocio="{k}" aria-pressed="{"true" if i == 0 else "false"}">{e(v)}</button>'
+                   for i, (k, v) in enumerate(r["negocios"].items()))
+    src = f"/rececionista.html?embed=1&amp;lang={lang}&amp;negocio="
+    return f"""<section class="rec" id="rececionista" aria-labelledby="t-rec">
+      <div class="rec-txt">
+        <p class="eyebrow">{e(r["eyebrow"])}</p>
+        <h2 id="t-rec" class="afirmacao">{e(r["titlu"])}</h2>
+        <p class="lead">{e(r["text"])}</p>
+        <ul class="rec-pontos">{pontos}</ul>
+        <p class="rotulo" id="rec-escolhe">{e(r["escolhe"])}</p>
+        <div class="rec-neg" role="group" aria-labelledby="rec-escolhe">{negs}</div>
+        <p class="rec-nota">{e(r["nota"])}</p>
+        <div class="rec-acoes">
+          <a class="botao primario" href="https://wa.me/{digitos}" data-diagnostico>{I["chat"]}{e(r["cta"])}</a>
+          <a class="rec-abrir" href="/rececionista.html?lang={lang}" target="_blank" rel="noopener">{e(r["abrir"])}</a>
+        </div>
+      </div>
+      <div class="rec-tel">
+        <iframe src="{src}{next(iter(r["negocios"]))}" data-base="{src}" title="{e(r["iframe"])}" loading="lazy" width="376" height="672"></iframe>
+      </div>
+    </section>"""
+
+
+def vista_automatizari(c, digitos, icones, casos, servicii, lang="pt"):
     a = c["automatizari"]
     lab = a["labels"]
     por_id = {x["id"]: x for x in a["itens"]}
@@ -411,6 +439,7 @@ def vista_automatizari(c, digitos, icones, casos, servicii):
         drumuri.append(f'<li class="drum"><span class="drum-t">{e(d["t"])}</span><span class="drum-c">{cadeia}</span></li>')
     return f"""<section id="automatizari" class="vista" aria-labelledby="t-automatizari">
   <div class="envolver seccao">
+    {rececionista(a, digitos, lang)}
     <div class="autos-grelha">
       <div class="cab">
         <p class="eyebrow">{e(a["eyebrow"])}</p>
@@ -735,6 +764,11 @@ def vista_servicii(c, portfolio, lang):
 </div>"""
 
 
+def email_de(d, lang):
+    """O email mostrado nesta língua (marca/dados.json → email_lingua; ro: o do Robert, pedido do Tomás 11/10); sem entrada, o principal."""
+    return d.get("email_lingua", {}).get(lang) or d["email"]
+
+
 def contacto(c, d, wa, tel_legivel, digitos, com_site, lang="pt"):
     k = c["contact"]
     lab = k["labels"]
@@ -742,7 +776,7 @@ def contacto(c, d, wa, tel_legivel, digitos, com_site, lang="pt"):
     site = d["site_principal"]
     wa_c, tel_c, tel_href = wa, tel_legivel, f"tel:+{digitos}"
     linhas = [(lab["whatsapp"], tel_c, wa_c, "chat"), (lab["telefon"], tel_c, tel_href, "telefone"),
-              (lab["email"], d["email"], f"mailto:{d['email']}", "email"),
+              (lab["email"], email_de(d, lang), f"mailto:{email_de(d, lang)}", "email"),
               (lab["instagram"], f"@{ig}", f"https://www.instagram.com/{ig}/", "instagram")]
     if com_site:  # na página romena, o site principal; em pachecost.com seria uma ligação para a própria página
         linhas.append((lab["site"], site, f"https://{site}/", "site"))
@@ -821,7 +855,7 @@ def intro(c):
 </div>'''
 
 
-FERRAMENTAS = [("cartaz.html", "cartaz.html"), ("afis.html", "ro/afis.html"), ("poster.html", "en/poster.html")]
+FERRAMENTAS = [("rececionista.html", "rececionista.html"), ("cartaz.html", "cartaz.html"), ("afis.html", "ro/afis.html"), ("poster.html", "en/poster.html")]
 CARTAZ = {"pt": "/cartaz", "en": "/en/poster", "ro": "/afis"}  # o endereço do cartaz grátis a partir de cada língua
 
 
@@ -1167,7 +1201,7 @@ def main():
         wa = f"https://wa.me/{num}?text={quote(c['contact']['mensagem_wa'])}"
         og_img = f"https://{cfg['host']}/media/og-{lang}.png"
         jsonld = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Pacheco Studios", "url": cfg["url"],
-                  "image": og_img, "description": c["meta"]["description"], "telephone": tel_l, "email": d["email"],
+                  "image": og_img, "description": c["meta"]["description"], "telephone": tel_l, "email": email_de(d, lang),
                   "areaServed": [{"@type": "Country", "name": n} for n in cfg["areas"]],
                   "sameAs": [f"https://www.instagram.com/{d['instagram'].lstrip('@')}/"],
                   "founder": {"@type": "Person", "name": d["nome"]}}
@@ -1181,7 +1215,7 @@ def main():
             "TAB_CONSULTANTA": e(c["topo"]["tabs"]["consultanta"]), "TAB_CAZURI": e(c["topo"]["tabs"]["cazuri"]),
             "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
             "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, num),
-            "VISTA_AUTOMATIZARI": vista_automatizari(c, num, icones, casos, vista_servicii(c, portfolio, lang)),
+            "VISTA_AUTOMATIZARI": vista_automatizari(c, num, icones, casos, vista_servicii(c, portfolio, lang), lang),
             "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, num),
             "CONTACT": contacto(c, d, wa, tel_l, num, cfg["com_site"], lang), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"], wa_diagnostico(d, lang)), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
             "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
@@ -1197,7 +1231,7 @@ def main():
     for lang, c in linguas.items():
         cfg = LINGUAS[lang]
         extras[f"{cfg['pasta'] + '/' if cfg['pasta'] else ''}404.html"] = pagina_404(c, estilo, lang)
-        extras[cfg["privacidade"].lstrip("/")] = pagina_privacidade(c, estilo, lang, d["email"])
+        extras[cfg["privacidade"].lstrip("/")] = pagina_privacidade(c, estilo, lang, email_de(d, lang))
         extras[cfg["cookies"].lstrip("/")] = pagina_cookies(c, estilo, lang, bool(pixel_de(medicao, lang)))
     for nome, h in extras.items():
         open(os.path.join(DIST, nome), "w", encoding="utf-8").write(h)

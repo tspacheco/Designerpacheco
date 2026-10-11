@@ -408,6 +408,11 @@ const fs = require('fs');
     const [numTxt, numTel] = k === 'ro' ? ['+40 723 098 556', 'tel:+40723098556'] : ['+351 967 117 357', 'tel:+351967117357'];
     if (!cont.txt.includes(numTxt) || cont.tel !== numTel || !cont.wa.startsWith(numDiag)) mal(`${k}: contactos do fim da página ${JSON.stringify({ tel: cont.tel, wa: cont.wa && cont.wa.split('?')[0] })}`);
     else bem(`${k}: contactos do fim da página com ${numTxt}`);
+    // o email do fim da página: o do Robert no RO (pedido do Tomás, 11/10), o principal no resto
+    const mail = await p.evaluate(() => (document.querySelector('#contact a[href^="mailto:"]') || {}).href);
+    const mailOk = k === 'ro' ? 'mailto:robert@teampachecostudios.com' : 'mailto:tomas@pachecost.com';
+    if (mail !== mailOk) mal(`${k}: email dos contactos ${mail}, devia ser ${mailOk}`);
+    else bem(`${k}: email dos contactos ${mailOk.slice(7)}`);
     // no ro.pachecost.com só o número romeno, em todos os botões e no JSON-LD (pedido do Tomás, 09/10)
     const outro = await p.evaluate(n => { const h = document.documentElement.outerHTML;
       return (h.match(new RegExp(n.join('|'), 'g')) || []).length; }, k === 'ro' ? ['351967117357', '967 117 357'] : ['40723098556', '723 098 556']);
@@ -738,6 +743,37 @@ const fs = require('fs');
       ok = await q.evaluate(() => !document.getElementById('diagnostico').open && location.hash === ''); }
     if (!ok) mal(`ligação direta ao diagnóstico (${lg} ${sufixo}): ${JSON.stringify(r)}`);
     else bem(`${lg}: ${sufixo} abre o diagnóstico com a foto, o nome logo no 1.º ecrã; conta «aberto» e «começou» no GoatCounter; fechar limpa o endereço`);
+    await c.close();
+  }
+
+  // rececionista de IA nas Soluções (pedido do Tomás, 11/10): o mini telemóvel responde e os botões trocam o negócio
+  for (const lg of ['pt', 'en', 'ro']) {
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    const q = await c.newPage();
+    await q.goto(LINGUAS[lg].url.replace(/\/$/, '') + '/#rececionista');
+    await q.waitForTimeout(400);
+    const fr = q.frameLocator('.rec-tel iframe');
+    let ok = await q.locator('.rec-tel iframe').isVisible();
+    let det = '';
+    try {
+      await fr.locator('#caixa').waitFor({ timeout: 5000 });
+      const antes = await fr.locator('#conversa > *').count();
+      await fr.locator('#caixa').fill(lg === 'ro' ? 'Cât costă tuns + barbă?' : lg === 'en' ? 'How much is haircut + beard?' : 'Quanto custa corte e barba?');
+      await fr.locator('#enviar').click();
+      await q.waitForTimeout(3500);
+      const depois = await fr.locator('#conversa > *').count();
+      const vis = await fr.locator('.dono').isVisible();
+      if (depois < antes + 2 || vis) { ok = false; det = `conversa ${antes}→${depois}, painel do dono visível: ${vis}`; }
+      await q.click('.rec-neg button[data-negocio="oficina"]');
+      await q.waitForTimeout(800);
+      const src = await q.getAttribute('.rec-tel iframe', 'src');
+      const nome = await fr.locator('#biz-nome').textContent();
+      if (!src.endsWith('negocio=oficina') || !/Demo|Service|Oficina|Garage/.test(nome)) { ok = false; det += ` troca de negócio: ${src} ${nome}`; }
+      const lang = await fr.locator('html').getAttribute('lang');
+      if (lang !== { pt: 'pt-PT', en: 'en', ro: 'ro' }[lg]) { ok = false; det += ` língua do telemóvel ${lang}`; }
+    } catch (err) { ok = false; det += ' ' + err.message.split('\n')[0]; }
+    if (!ok) mal(`${lg}: rececionista nas Soluções: ${det}`);
+    else bem(`${lg}: rececionista nas Soluções responde no mini telemóvel, na língua certa, e troca de negócio`);
     await c.close();
   }
 

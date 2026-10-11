@@ -312,6 +312,23 @@ html:not(.js) dialog.esquema:target{display:block;position:fixed;inset:.75rem;z-
 
 /* ligam-se entre si: três caminhos, nada mais */
 .combos{margin-top:clamp(3rem,10vw,5rem);max-width:48rem}
+.rec{display:grid;gap:2rem;align-items:center;padding-bottom:clamp(3rem,9vw,5rem);margin-bottom:clamp(3rem,9vw,5rem);border-bottom:1px solid var(--linha-e)}
+.rec-txt{min-width:0}
+.rec .afirmacao{margin-bottom:1rem}
+.rec-pontos{list-style:none;margin:1.25rem 0 1.75rem;padding:0;display:grid;gap:.55rem}
+.rec-pontos li{display:flex;gap:.7rem;align-items:baseline}
+.rec-pontos li::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--laranja);flex:none;transform:translateY(-.1rem)}
+.rec-neg{display:flex;flex-wrap:wrap;gap:.5rem}
+.rec-neg button{min-height:2.75rem;padding:.45rem 1rem;border:2px solid var(--linha-e);border-radius:999px;background:transparent;color:var(--osso-2);
+  font:700 .75rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.rec-neg button:hover{color:var(--osso);border-color:var(--contorno)}
+.rec-neg button[aria-pressed="true"]{background:var(--osso);color:var(--carvao);border-color:var(--osso)}
+.rec-nota{color:var(--osso-2);font-size:.9rem;margin:1rem 0 1.5rem}
+.rec-acoes{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center}
+.rec-abrir{display:inline-flex;align-items:center;min-height:2.75rem;color:var(--osso);font-weight:600;text-underline-offset:.25em}
+.rec-tel{display:flex;justify-content:center;min-width:0}
+.rec-tel iframe{display:block;width:100%;max-width:376px;height:672px;border:0;background:transparent;color-scheme:normal}
+@media (min-width:64rem){.rec{grid-template-columns:minmax(0,1fr) minmax(0,376px);column-gap:clamp(3rem,6vw,5rem)}}
 .drumuri{margin-top:1.5rem;display:grid;gap:1.1rem}
 .drum{display:grid;gap:.6rem;padding:1rem 1.1rem;border-radius:1rem;background:var(--carvao-2);border:1px solid var(--linha-e)}
 .drum-t{font:600 1rem/1.3 var(--texto)}
@@ -726,7 +743,7 @@ dialog.diag.fim .diag-ficha{display:block}
   <h1 class="afirmacao">Politica de confidențialitate</h1>
   <p class="lead">Ce date personale colectăm pe pachecost.com și ro.pachecost.com, de ce, și cum poți cere să le vezi sau să le ștergi.</p>
 <h2>Cine suntem</h2>
-<p>Site-urile pachecost.com și ro.pachecost.com aparțin Pacheco Studios, studio digital fondat de Tomás Pacheco, în Portugalia. Pentru orice întrebare despre confidențialitate, scrie la <a href="mailto:tomas@pachecost.com">tomas@pachecost.com</a>.</p>
+<p>Site-urile pachecost.com și ro.pachecost.com aparțin Pacheco Studios, studio digital fondat de Tomás Pacheco, în Portugalia. Pentru orice întrebare despre confidențialitate, scrie la <a href="mailto:robert@teampachecostudios.com">robert@teampachecostudios.com</a>.</p>
 <h2>Ce date colectăm</h2>
 <p>Site-ul e static: nu are conturi, formulare sau cookie-uri proprii. Prelucrăm date personale doar când ne contactezi din proprie inițiativă, pe WhatsApp, la telefon sau pe email: numele, datele de contact și ce ne scrii, folosite doar ca să-ți răspundem și să ne ocupăm de cererea ta.</p>
 <h2>Găzduire</h2>
@@ -740,7 +757,7 @@ dialog.diag.fim .diag-ficha{display:block}
 <h2>Cât timp păstrăm datele</h2>
 <p>Mesajele rămân păstrate doar cât e nevoie ca să ne ocupăm de cererea ta sau ca să respectăm obligațiile legale, cum ar fi facturarea. Nu vindem și nu cedăm date terților.</p>
 <h2>Drepturile tale</h2>
-<p>Poți cere oricând acces, corectare, o copie sau ștergerea datelor tale: scrie la <a href="mailto:tomas@pachecost.com">tomas@pachecost.com</a>. Poți depune și o plângere la autoritatea de protecție a datelor din România (ANSPDCP) sau la CNPD, în Portugalia. <a href="https://www.dataprotection.ro/" rel="noopener">dataprotection.ro</a></p>
+<p>Poți cere oricând acces, corectare, o copie sau ștergerea datelor tale: scrie la <a href="mailto:robert@teampachecostudios.com">robert@teampachecostudios.com</a>. Poți depune și o plângere la autoritatea de protecție a datelor din România (ANSPDCP) sau la CNPD, în Portugalia. <a href="https://www.dataprotection.ro/" rel="noopener">dataprotection.ro</a></p>
   <p class="nota">Ultima actualizare: octombrie 2026.</p>
   <a class="botao secundario" href="/">Înapoi la site</a>
 </main>
