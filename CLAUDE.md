@@ -4,7 +4,7 @@
 
 ## Posicionamento (desde 11/10/2026 — PLAYBOOK parte A)
 
-- A Pacheco Studios é uma **consultora de sistemas com IA**. Produto de entrada: **Auditoria de Sistemas com IA**. Ticket médio 2.000 € (3 quick wins) a 100.000 € (acompanhar empresas de 50–500 mil €/mês a crescer 3×–10×); preço pelo valor agregado. Auditoria creditada na implementação. Parceiros: comissão na implementação + 10 % a cada 3 meses enquanto o cliente ficar (PLAYBOOK A.13).
+- A Pacheco Studios é uma **consultora de sistemas com IA**. Produto de entrada: **Auditoria de Sistemas com IA**. Ticket médio 2.000 € (3 quick wins) a 100.000 € (acompanhar empresas de 50–500 mil €/mês a crescer 3×–10×); preço pelo valor agregado. Auditoria creditada na implementação. Sites e mensalidades entram no preço de implementação, nunca à parte. Parceiros: 3 quick wins, depois 15 % da implementação + 5 % trimestral; primeiro o incentivo (percentagem + 3 cenários em RON), depois a proposta assinada (PLAYBOOK A.13).
 - **Não se vendem websites nem parcerias para websites.** Um site (ou outra demo) é só gatilho e oferta: 1 quick win para chegar a uma reunião e a uma possível parceria.
 - Nunca abrir com «fazemos sites / automações / IA»: começar pela fuga operacional (trigger, dono, regra, handoff).
 - **Outbound = triagem proativa (PLAYBOOK A.14):** observar o percurso público, levar uma hipótese e um Micro System Print de 1 página, pedir só a validação com o decisor («uma reunião», nunca minutos); nunca formulário, nunca afirmar falhas internas sem dados. Em Iași as demos continuam só como «Audit Hook by Demo».

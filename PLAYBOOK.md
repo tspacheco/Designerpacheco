@@ -195,7 +195,7 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 
 - **Preços de site** (500 € / 500 € + 50–75 €/mês / desconto de grupo 400 € + 40 €/mês / 2.500 lei + 375 lei/mês): já não se oferecem a clientes novos. Ficam só como registo dos contratos já fechados (Grupo Naval, Catarina).
 - **«Website + manutenção» como produto** e **parcerias para websites**: acabaram. O site passa a gatilho (A.5).
-- **Comissão de 15 % a parceiros por trabalhos de site**: caduca com a venda de sites. Substituída pela comissão sobre a implementação (A.13).
+- **Comissão de 15 % a parceiros por trabalhos de site**: passa a 15 % da implementação + 5 % trimestral (A.13).
 - **Secção 3-A «site de 10.000 € vendido a 500 €»**: o padrão de qualidade mantém-se, o argumento de preço não.
 - **Secção 11** (demo de site como produto, «está invisível fora do Google Maps»): a demo continua como abertura, mas o pedido é a reunião e a conversa vai para a fuga operacional.
 - **Secção 16 «os sites são a porta, as automatizações o segundo passo»** e a oferta «Plano 20 min → Piloto → Sistema → Manutenção»: substituídos pela arquitetura de oferta A.5. Mantêm-se «construir a prova antes de pedir o sim», «a IA é ingrediente», a explicação da IA ao dono e o assistente que se identifica.
@@ -204,10 +204,9 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 
 ## A.12 PERGUNTAS EM ABERTO
 
-- Percentagem da comissão do parceiro sobre a implementação (a decisão de 11/10 de manhã era 15 %; mantém-se?).
-- Os 10 % trimestrais ao parceiro calculam-se sobre o que o cliente nos paga nesse trimestre?
+- Base dos 5 % trimestrais ao parceiro: o que faturamos ao cliente nesse trimestre? (assumido em A.13)
 - Em Iași a regra era «1.ª proposta é só o site, em RON»: passa a ser «1.ª proposta é a auditoria»?
-- Contas atuais de mensalidade de site (Grupo Naval, Catarina, Bravus, Magic Key): mantêm-se ou migram para otimização mensal?
+- Contas atuais de mensalidade de site (Grupo Naval, Catarina, Bravus, Magic Key): mantêm-se até ao fim do contrato ou renegoceiam-se para implementação + otimização?
 - CTA «DM AUDIT»: palavra igual em PT, RO e EN?
 
 ## A.13 DINHEIRO: AUDITORIA, TICKET E PARCEIROS (decisão do Tomás, 11/10/2026)
@@ -223,11 +222,21 @@ Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapea
 
 **Regra de preço:** o foco não é o ticket, é a **prova de valor em cada cliente em específico**. O nosso pagamento baseia-se no **valor agregado** e no **impacto na faturação** daquela empresa. Por isso cada proposta mede a base (dia 0) antes de prometer e nunca promete 3×–10× como garantia: é objetivo, com resultados variáveis (HONEST-DATA).
 
-**Parceiros de indicação:**
+**Parceiros de indicação (Tomás, 11/10 14h38):**
 
-- Recebem comissão **sobre a implementação**, isto é, quando começamos a trabalhar com o negócio que indicaram (auditoria sozinha não conta).
-- Se continuarmos a trabalhar com esse cliente, o parceiro recebe **10 % a cada 3 meses** enquanto a relação durar.
-- Mantém-se a escada de 11/10 de manhã: primeiro damos ao parceiro 3 quick wins implementados; ele mostra o nosso nome e recomenda-nos; só se fala em comissão depois dos quick wins.
+- **Primeiro o incentivo, depois as regras.** Passo 1: o parceiro percebe quanto pode ganhar connosco. Passo 2, só depois do «sim»: proposta com assinaturas e as obrigações dele (testemunho; 1 publicação por mês sobre nós).
+- **3 quick wins ao parceiro, mantêm-se.** A própria triagem proativa (A.14) levada ao parceiro já lhe mostra pelo menos 1 dos quick wins que teria connosco, para que a resposta dele seja logo um sim ou um não.
+- **Comissão:** **15 % do valor da implementação** do cliente indicado (paga quando começamos a trabalhar com esse cliente) **+ 5 % trimestral** enquanto continuarmos a trabalhar com ele. Base dos 5 %: o que faturamos a esse cliente no trimestre (otimização, novas implementações). *(Base a confirmar pelo Tomás; é a leitura mais simples de explicar ao parceiro.)*
+- **Como mostrar o ganho sem fixar um valor (a solução):** a implementação não tem preço de tabela porque depende da faturação do cliente e do crescimento que lhe trazemos. Ao parceiro mostra-se a **percentagem fixa e três cenários reais em RON**, sempre com «exemplo» por cima e sem promessa:
+
+| Cenário (cliente indicado) | Implementação (exemplo) | Parceiro recebe no arranque (15 %) | Se o cliente ficar e crescer |
+|---|---|---|---|
+| Fatura 50.000 RON/mês | ≈ 20.000 RON | ≈ 3.000 RON | 5 % de cada trimestre faturado; o objetivo é levá-lo a 250.000 RON/mês, e a faturação nossa (e a parte dele) cresce com isso |
+| Fatura 1.000.000 RON/mês | ≈ 100.000 RON | ≈ 15.000 RON | 5 % trimestral; objetivo 3.000.000 RON/mês |
+| Pequeno negócio (3 quick wins) | ≈ 10.000 RON (≈ 2.000 €) | ≈ 1.500 RON | 5 % trimestral se houver otimização mensal |
+
+  A frase para o parceiro: *«Não te posso dizer um valor fixo porque cobramos pelo valor que criamos. Posso dizer-te a percentagem, que é sempre a mesma, e mostrar-te três casos típicos.»* Os números são exemplos de cálculo, nunca previsões de ganho (HONEST-DATA). Entregável: uma página «Quanto ganha um parceiro» com a percentagem, os três cenários e a regra dos 3 quick wins; a proposta assinada só depois.
+- **Sites e mensalidades dentro da implementação:** o site e a antiga mensalidade deixam de ter preço separado. O site é o **primeiro produto tangível da execução** e entra no preço de implementação; a manutenção entra na otimização mensal. Não há mais «500 € + 50 €/mês».
 
 ## A.14 TRIAGEM PROATIVA E «AUDIT HOOK BY DEMO» (Tomás, 11/10/2026, playbook de triagem v1.0)
 
@@ -291,7 +300,7 @@ Ordem: começar por restauração e marcação (prova já reconhecível); constr
 
 - **Ticket médio: 2.000 € a 100.000 €** por parceria, conforme o negócio e o que a auditoria encontrar (A.1). Preço pelo desenho e pelo valor do gargalo, nunca pela palavra «IA».
 - Auditoria creditada na implementação; preço pelo valor agregado e impacto na faturação (A.13).
-- Sites: não se vendem a clientes novos. Os preços antigos (500 € + 50 €/mês; grupo 400 € + 40 €/mês) ficam só para os contratos já fechados (A.11).
+- Sites: não se vendem à parte. O site é o primeiro produto tangível da execução e entra no preço de implementação; a manutenção entra na otimização mensal (A.13). Os preços antigos (500 € + 50 €/mês) ficam só nos contratos já fechados.
 - Setup sistema faturas WhatsApp (secção 9): 150–300 € + 39–59 €/mês — referência de custo, a reenquadrar como intervenção dentro da auditoria.
 
 ## 3. ENGINE DOS SITES — REGRAS OBRIGATÓRIAS
