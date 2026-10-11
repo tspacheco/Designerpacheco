@@ -83,6 +83,16 @@ Consultora de sistemas com IA para negócios de serviços. Encontra onde se perd
 - Gargalo vivo e mensurável: pedidos perdidos, respostas lentas, no-shows, leads sem dono, registos fragmentados, reporting reativo, administração repetitiva.
 - Volume suficiente para o impacto importar e acesso para medir a base.
 
+**Dois segmentos que trabalham connosco (Tomás, 11/10 18h51; referência: diapositivo «Big Smalls vs Small Smalls» de Liam Ottley, Morningside):** a auditoria explica esta distinção ao cliente.
+
+| | Empresas de 5–50 empregados | Empresas de 100–500 empregados |
+|---|---|---|
+| O que pedem | «Preciso de quick wins e retorno tangível, depressa.» | «Precisamos de direção estratégica e de transformar a organização inteira.» |
+| Necessidades | Ferramentas de IA certas, otimizações rápidas de fluxo, foco no retorno imediato | Formação da liderança, mudança de cultura, roteiros completos |
+| Ritmo | Trabalhos curtos | Mergulhos de 4+ semanas |
+
+Os preços do diapositivo não são os nossos: o preço segue A.13 (valor agregado). As duas pontas encaixam no ticket: 3 quick wins para as pequenas, acompanhamento de crescimento para as maiores.
+
 **Não é prioridade:** quem pede só «um chatbot», um site genérico, uma peça isolada de social media ou uma automação sem dono de processo. Podem vir depois; não ditam a entrada.
 
 **Linha de posicionamento:** *Encontramos a fuga. Desenhamos o sistema. Provamos o impacto.*
