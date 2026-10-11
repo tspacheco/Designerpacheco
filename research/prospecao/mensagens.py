@@ -8,7 +8,7 @@ Regra do Tomás: em romeno, todas as mensagens fecham com «Voi fi pregătit.»
 """
 
 SAUDACOES = {
-    "ro": {"formal": ["Bună ziua", "Bună ziua", "Bună"], "informal": ["Salut", "Bună", "Bună ziua"]},
+    "ro": {"formal": ["Bună ziua"], "informal": ["Salut", "Bună", "Bună ziua"]},
     "pt": {"formal": ["Bom dia", "Olá", "Boa tarde"], "informal": ["Olá", "Boas", "Olá"]},
     "en": {"formal": ["Hello", "Hi", "Good morning"], "informal": ["Hi", "Hey", "Hello"]},
 }
@@ -193,8 +193,8 @@ MODELOS = {
 }
 
 
-def _saud(lingua, categoria, i):
-    lista = SAUDACOES[lingua][TOM[categoria]]
+def _saud(lingua, categoria, i, tom=None):
+    lista = SAUDACOES[lingua][tom or TOM[categoria]]
     return lista[i % len(lista)]
 
 
@@ -216,7 +216,7 @@ def mensagem(conta, i=0):
     cat = conta["categoria"]
     m = MODELOS[lingua]
     texto = m[cat].format(
-        saud=_saud(lingua, cat, i),
+        saud=_saud(lingua, cat, i, conta.get("tom")),
         nome=conta.get("nome_curto") or conta["nome"],
         gancho=(conta.get("gancho") or "").strip(),
         percurso=conta.get("percurso") or conta.get("foco") or "",
@@ -245,7 +245,7 @@ def followup(conta, i=1):
     lingua = conta.get("lingua") or "ro"
     cat = conta["categoria"]
     texto = MODELOS[lingua]["followup"].format(
-        saud=_saud(lingua, cat, i), nome=conta.get("nome_curto") or conta["nome"])
+        saud=_saud(lingua, cat, i, conta.get("tom")), nome=conta.get("nome_curto") or conta["nome"])
     return _fechar(texto, lingua)
 
 
