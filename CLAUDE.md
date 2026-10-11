@@ -2,6 +2,13 @@
 
 **Lê `PLAYBOOK.md` no início de cada sessão de trabalho.** É a fonte de verdade: contexto, preços, engine dos sites, catálogo, pendentes e método de prospeção. Não repitas contexto que já lá está.
 
+## Posicionamento (desde 11/10/2026 — PLAYBOOK parte A)
+
+- A Pacheco Studios é uma **consultora de sistemas com IA**. Produto de entrada: **Auditoria de Sistemas com IA**, nunca pública: toda a CTA pública (site «Conhece-nos», «DM AUDIT») pede a **triagem**; a auditoria só depois de o cliente gostar dela. Ticket médio 2.000 € (3 quick wins) a 100.000 € (acompanhar empresas de 50–500 mil €/mês a crescer 3×–10×); preço pelo valor agregado. Auditoria creditada na implementação. Sites e mensalidades entram no preço de implementação, nunca à parte. Parceiros: 3 quick wins, depois 15 % da implementação + 5 % trimestral; primeiro o incentivo (percentagem + 3 cenários em RON), depois a proposta assinada (PLAYBOOK A.13).
+- **Não se vendem websites nem parcerias para websites.** Um site (ou outra demo) é só gatilho e oferta: 1 quick win para chegar a uma reunião e a uma possível parceria.
+- Nunca abrir com «fazemos sites / automações / IA»: começar pela fuga operacional (trigger, dono, regra, handoff).
+- **Outbound = triagem proativa (PLAYBOOK A.14):** observar o percurso público, levar uma hipótese e um Micro System Print de 1 página, pedir só a validação com o decisor («uma reunião», nunca minutos); nunca formulário, nunca afirmar falhas internas sem dados. Em Iași as demos continuam só como «Audit Hook by Demo».
+
 ## Regras essenciais (resumo — o detalhe está no PLAYBOOK.md)
 
 - Responder **sempre em PT-PT**, tom direto, sem enchimento, respostas curtas (leitura em telemóvel).
@@ -12,7 +19,7 @@
 
 ## Padrão de qualidade: NÍVEL 10K
 
-Cada site entregue tem de ter qualidade percebida de 10 000 €, mesmo vendido a 500 €. Processo obrigatório por site:
+Cada demo ou site tem de ter qualidade percebida de 10 000 €: é a primeira prova do nosso juízo. Processo obrigatório por site:
 
 1. **Usar o skill `frontend-design`** para a direção estética — brainstorm, direções alternativas, crítica antes e depois de construir. Uma assinatura visual **nova** por site (ver secção 5 do playbook — nunca repetir) e uma fonte display **nova** (secção 6).
 2. **Usar o skill `ui-ux-pro-max`** para gerar o design system do tipo de negócio (paleta, par tipográfico, estilo) e adaptá-lo criticamente — nunca aceitar o output cru.

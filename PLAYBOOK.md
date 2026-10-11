@@ -1,39 +1,312 @@
 # PACHECO STUDIOS — PLAYBOOK MESTRE
 
 > Fonte de verdade da Pacheco Studios. Substitui todo o histórico de chats.
-> Última atualização: 02/10/2026 (consultoria de IA — secção 17)
+> Última atualização: 11/10/2026 — **Consultoria de Sistemas com IA** (parte A, a partir do playbook de consultoria v1.0 do Tomás). A parte A manda sobre tudo o resto; o que caducou está na secção A.11.
 
 ## 0. COMO USAR
 
-- Este playbook vive neste repositório e é carregado automaticamente em cada sessão (via `CLAUDE.md`). Já não é preciso anexar PDF.
-- Sessão nova → escreve só o que queres desta sessão. Exemplo: *"Cria sites para: Casa da Igreja (Cacela Velha) e Pizzadela (VNC). Segue o engine."*
-- **Regra de ouro:** um chat = um lote (máx. 5-6 sites). Depois disso, chat novo.
-- Conversas longas consomem créditos exponencialmente — o contexto inteiro é reprocessado a cada mensagem.
+- Este playbook vive neste repositório e é carregado em cada sessão (via `CLAUDE.md`).
+- **Antes de qualquer publicação, reunião, proposta, demo ou sistema, ler a parte A.** As secções 3 em diante continuam válidas como regras de execução (sites, PONTE, marca, e-commerce), mas sempre ao serviço da parte A.
+- Sessão nova → escreve só o que queres desta sessão. Pesquisa uma vez por zona, guardada em `research/`.
+- **Regra de ouro:** um chat = um lote. Conversas longas consomem créditos exponencialmente.
+
+---
+
+# PARTE A — POSICIONAMENTO E MÉTODO (11/10/2026)
+
+## A.1 A DECISÃO
+
+Decisão do Tomás a 11/10/2026, com as palavras dele:
+
+- **A Pacheco Studios atua como consultora de IA (AI Consultant).**
+- **Já não se vendem websites nem parcerias para websites.** O site é, no máximo, um **gatilho e uma oferta**: um produto simples que traz **1 quick win** e serve para chegar a uma **reunião** e a uma possível **parceria**.
+- **Ticket médio: 2.000 € a 100.000 €**, conforme a parceria e o negócio (detalhe em A.13).
+- **Foco na prova de valor, não no ticket:** o pagamento acompanha o valor agregado e o impacto na faturação de cada cliente.
+- O verdadeiro produto é a consultoria: auditar, desenhar, implementar e governar sistemas com IA.
+
+> **A decisão de posicionamento:** Auditamos onde os leads, as decisões e a entrega se partem — depois desenhamos o sistema de IA governado que resolve o gargalo de maior valor.
+
+| | |
+|---|---|
+| **Categoria** | Consultoria de Sistemas com IA (AI Systems Consultancy) |
+| **Produto de entrada** | Auditoria de Sistemas com IA (AI Systems Audit) |
+| **Mercado principal** | Negócios de serviços com fricção operacional |
+
+**Quatro pontos a confirmar antes de qualquer peça** (publicação, reunião, proposta, demo, sistema):
+
+1. O problema real de negócio — não a ferramenta vendida.
+2. O dono da próxima ação — não apenas uma tarefa automática.
+3. A regra e o limite que tornam o sistema confiável.
+4. A evidência que torna a mudança tangível e mensurável.
+
+**Não negociável: a auditoria é a porta de entrada da consultoria, mas nunca é pública.** A entrada pública é a **triagem** (A.12); a auditoria só depois de o cliente gostar da triagem. Nunca abrir com «fazemos sites», «fazemos automações» ou «usamos IA». Começa-se pela falha operacional; só depois se recomenda a menor intervenção que pode provar valor.
+
+## A.2 IDENTIDADE
+
+Consultora de sistemas com IA para negócios de serviços. Encontra onde se perde o contexto do cliente, onde as decisões atrasam e onde a entrega quebra; depois desenha, implementa e melhora sistemas governados que fazem a próxima ação avançar.
+
+**Numa frase:** Transformamos fugas operacionais em fluxos com dono e resultado mensurável. O objetivo não é acrescentar IA por novidade; é tornar o negócio mais rápido, fiável e visível, sem retirar julgamento humano onde ele é necessário.
+
+**Princípio operacional — uma ferramenta não é um sistema.** Há sistema quando um evento real produz uma próxima ação controlada. Cada solução torna explícitos:
+
+| Componente | Pergunta |
+|---|---|
+| **Trigger** | O que aconteceu? Chegou um pedido, reserva, recibo ou sinal. |
+| **Dono** | Quem fica responsável pela próxima ação? Nunca uma caixa de entrada sem nome. |
+| **Regra** | O que o sistema pode e não pode fazer? Fonte, limites, timing, aprovação. |
+| **Handoff** | Quando entra uma pessoa? Exceção, dúvida, reclamação, decisão material. |
+
+**O que não somos → o que somos:**
+
+| Não é | É |
+|---|---|
+| Revendedor de ferramentas de IA | Operador independente que diagnostica o gargalo antes de recomendar uma ferramenta |
+| Agência digital generalista | Parceiro de sistemas, responsável por uma melhoria operacional específica |
+| Fornecedor de chatbots | Designer de fluxos de cliente, regras de decisão, dados e handoffs humanos |
+| Automações «caixa-preta» | Implementação transparente: contas do cliente, regras explícitas, registos, aprovações |
+| Promessa vaga de transformação digital | Intervenção medida: base, piloto, resultado e próxima decisão |
+
+## A.3 POSICIONAMENTO
+
+| Camada | Decisão |
+|---|---|
+| Categoria externa | Consultoria de Sistemas com IA |
+| Produto de entrada | Auditoria de Sistemas com IA |
+| Promessa de entrada | Encontrar o gargalo antes de comprar mais uma ferramenta |
+| Promessa de entrega | Sistemas de IA governados, com dono visível, regras e passagem para humano |
+| Promessa de prova | Mostrar o sistema, a decisão e o impacto medido — não só uma interface bonita |
+
+**Cliente ideal** (define-se por fricção operacional, não por querer «IA»):
+
+- Negócios de serviços com pedidos, marcações, orçamentos, follow-up ou retorno de clientes: hospitalidade, clínicas, salões, retalho, serviços de casa, construção, multi-local, B2B orientado ao cliente.
+- Decisor com poder para mudar a forma de trabalho.
+- Gargalo vivo e mensurável: pedidos perdidos, respostas lentas, no-shows, leads sem dono, registos fragmentados, reporting reativo, administração repetitiva.
+- Volume suficiente para o impacto importar e acesso para medir a base.
+
+**Não é prioridade:** quem pede só «um chatbot», um site genérico, uma peça isolada de social media ou uma automação sem dono de processo. Podem vir depois; não ditam a entrada.
+
+**Linha de posicionamento:** *Encontramos a fuga. Desenhamos o sistema. Provamos o impacto.*
+
+| Dizer | Evitar |
+|---|---|
+| «Auditamos onde os leads, as decisões e a entrega se partem.» | «Fazemos tudo com IA.» |
+| «Começamos pelo gargalo, não pela ferramenta.» | «Automatizamos o teu negócio.» |
+| «O cliente controla as contas, aprovações e dados.» | «A nossa IA faz tudo.» |
+| «Cada exceção tem passagem para uma pessoa.» | «Totalmente autónomo.» |
+| «Um plano de 90 dias antes de uma lista de ferramentas.» | «As últimas ferramentas para a tua empresa.» |
+
+## A.4 MÉTODO PACHECO DE SISTEMAS
+
+A auditoria é conduzida pela Pacheco, com o cliente a dar contexto e validar factos — não é um questionário longo delegado ao cliente. Cada etapa deixa um artefacto que se aprova, mede e reutiliza.
+
+1. **Qualificar** — problema operacional vivo, decisor, volume, fonte de dados, urgência. Se uma solução simples existente for melhor, diz-se.
+2. **Encontrar** — caminho do trigger à conclusão: atrasos, duplicação, handoffs sem dono, contexto perdido, exceções valiosas.
+3. **Mapear** — sistema atual: canais, pessoas, ferramentas, dados, regras, falhas, métricas-base. Nomear o gargalo de maior valor.
+4. **Decidir** — pontuar impacto, viabilidade, risco e tempo até valor. Escolher uma intervenção; recusar automações de menor valor.
+5. **Desenhar** — fluxo futuro: trigger, dono, aprovações, dados, mensagens, limites de escalamento, painel, rollback.
+6. **Pilotar** — versão mínima controlada, base registada, casos-limite reais, observar e ajustar.
+7. **Governar** — reportar a mudança, o dono, o que se monitoriza e a próxima decisão. Escalar só depois de o piloto provar valor.
+
+**Lentes da auditoria:** Entrada e procura (onde entram pedidos e qual a fuga) · Contexto e dados (o que se perde ou duplica) · Regras de decisão (o que é repetível e seguro de assistir) · Entrega e handoff (onde espera por uma pessoa, e quando deve esperar) · Exceções e risco (o que não se automatiza e quem recebe cada exceção) · Economia e base (que número prova o resultado).
+
+Guião prático já existente: entrevistas «conta-me ontem» → «e depois?», mapa, filtro, matriz 2×2, ROI, validação e PDF de 90 dias (Society Salon, ramo `claude/execucao-video-diagnostico-v6oy1d`, `entregas/society-salon-auditoria/`). Usar como base e alinhar com estas 7 etapas.
+
+## A.5 ARQUITETURA DE OFERTA
+
+| Oferta | Objetivo | O cliente recebe |
+|---|---|---|
+| 1. Triagem curta | Decidir se há problema vivo que justifique auditoria | Resposta clara de adequação e próximo passo |
+| 2. Auditoria de Sistemas com IA | Perceber a operação, quantificar o gargalo, escolher a 1.ª intervenção | Mapa atual, fugas priorizadas, System Print, notas de risco/propriedade, plano de 90 dias |
+| 3. Sprint de desenho | Transformar a intervenção numa especificação aprovada | Fluxo futuro, regras, handoff, plano de implementação, medidas, escopo do piloto |
+| 4. Piloto controlado | Provar a intervenção em contexto real e limitado | Sistema funcional, relatório base vs. piloto, registo de exceções, handover |
+| 5. Otimização / escala | Melhorar, governar e expandir o que provou valor | Revisão mensal, ajustes, novas prioridades, workflows escalados |
+
+**Disciplina comercial: não prescrever antes de conseguir explicar o problema.** Site, assistente de WhatsApp, dashboard ou automação podem ser a resposta; nenhum é a recomendação de abertura.
+
+**Entregáveis da auditoria:** diagnóstico executivo de 1 página (sintoma, causa-raiz, base, 1.ª recomendação) · mapa do sistema atual · matriz de prioridade (impacto, viabilidade, risco, dependências, tempo até valor) · System Print futuro · plano de 90 dias (o que medir, pilotar, quem aprova, que decisão sai do piloto).
+
+**Onde entra o site agora (gatilho, ver A.14 «Audit Hook by Demo»):** a demo de site, a ferramenta grátis (cartaz QR de avaliações), a auditoria grátis a um site fraco ou a rececionista de demonstração são **ofertas de entrada**: entregam 1 quick win visível e servem para pedir **uma reunião** (triagem). Nunca se vendem como produto final nem com preço de site. A conversa passa sempre para a fuga operacional e para a auditoria.
+
+## A.6 TANGIBILIZAÇÃO — O «SYSTEM PRINT»
+
+A consultoria fica credível quando o decisor vê o que muda antes da implementação. Em cada auditoria, piloto e peça de autoridade cria-se um **System Print**: diagrama, recorte do sistema ou frame de dashboard simplificada que expõe o mecanismo, não uma lista de funcionalidades.
+
+| Elemento | O que mostra |
+|---|---|
+| Título | O sintoma em linguagem humana: «Nenhuma marcação sem dono.» |
+| Trigger | O evento que inicia o fluxo |
+| Fluxo | 3–6 movimentos, pela ordem certa |
+| Regra | O que o sistema pode e não pode fazer; timing, fonte, aprovações |
+| Dono | Quem assume a exceção e o resultado |
+| Handoff | A condição que envia o caso para uma pessoa |
+| Métrica | O número que decide se funcionou |
+
+**Onde usar:** relatório de auditoria (print atual + futuro) · proposta (peça central, antes do escopo técnico) · reel (recorte legível, nunca fundo decorativo) · carrossel (um print por slide, último com o fluxo completo) · caso de estudo (mapa antes, regra aprovada, métrica depois) · handover (referência do operador).
+
+**Regra de conteúdo: o visual tem de ganhar o seu lugar.** Se tirar o visual não muda o entendimento, é decoração.
+
+Os esquemas «Ver o esquema» do pachecost.com (secção 16, estilo proposta Be Legend) são o ponto de partida visual dos System Prints.
+
+**Hierarquia de prova:** 1. verdade observada (sintoma nomeado pelo negócio) → 2. verdade do sistema (fluxo, regra, handoff) → 3. verdade da decisão (porquê esta intervenção) → 4. verdade medida (base e resultado com período) → 5. verdade do cliente (citação autorizada, case com responsável). HONEST-DATA aplica-se a todos os níveis: nunca números, casos ou citações inventados.
+
+## A.7 AUTORIDADE (CONTEÚDO)
+
+Objetivo: o decisor certo reconhece uma fuga, percebe que a Pacheco a sabe mapear e pede a triagem (a auditoria vem depois). «DM AUDIT» abre a triagem, não dá a auditoria.
+
+- **Mistura:** 50 % diagnóstico (nomear a fuga) · 30 % prova (caso, System Print, regra, resultado) · 20 % oferta (auditoria, elegibilidade, entregáveis, próximo passo, sem urgência artificial).
+- **Três formatos:** (1) *O achado de auditoria* — «Uma marcação não é um sistema.» + System Print; CTA «DM AUDIT». (2) *Desmontagem de sistema* — situação → fluxo atual → regra → handoff → resultado ou plano de medição. (3) *O que não automatizaríamos* — reclamação, pedido fora do padrão, exceção de preço.
+- **Reel de autoridade:** 0–3 s sintoma + System Print real · 3–10 s um dono, regra ou handoff · 10–18 s antes/depois ou evidência · 18–25 s decisão ou prova (o que mudou, mediu, recusou) · fecho com uma só CTA (DM AUDIT, candidatura ou caso). Mantêm-se as regras dos reels: máx. 5 hashtags, legenda curta.
+- **Métrica central:** pedidos de auditoria qualificados por 1.000 contas alcançadas. Funil: alcance → visitas ao perfil → cliques / DMs «AUDIT» → candidaturas → chamadas qualificadas → propostas → projetos ganhos.
+
+## A.8 VENDA E ENTREGA
+
+**8 perguntas de qualificação:**
+
+1. Que resultado operacional precisam de melhorar nos próximos 90 dias?
+2. Onde entra hoje o pedido, reserva, informação ou decisão?
+3. Onde abranda, desaparece ou exige alguém a perseguir o caso?
+4. Quem é hoje dono da próxima ação e quando fica ambíguo?
+5. Que sistemas, canais e contas têm o contexto do cliente?
+6. O que se mede já: tempo de resposta, no-shows, conversão, retorno, backlog, horas, receita?
+7. O que deve continuar decisão humana ou pedir aprovação explícita?
+8. Quem aprova um piloto, assume o sistema e dá acesso à linha de base?
+
+**Propostas:** começar pelo diagnóstico, não por um menu · separar linha de base e hipótese, nunca prometer resultado não medido · System Print antes da arquitetura e das ferramentas · nomear dependências, aprovações, propriedade dos dados, handoffs, limites e rollback · definir a decisão do piloto (que evidência leva a continuar, alterar ou parar). Continua: contas concretas, nunca a fechar no vermelho.
+
+**Implementação:** o cliente mantém WhatsApp, agenda, Google, CRM e contas nucleares · nenhuma resposta, preço, alteração de marcação ou ação pública fora de regras aprovadas · cada interação registada, exceções para uma pessoa · consentimento, dados, acessos e retenção decididos antes de ativar · handover à equipa (o que faz, o que não faz, o que verificar por semana). O assistente identifica-se sempre (Regulamento da IA da UE, secção 16).
+
+## A.9 PLANO DE 90 DIAS (a partir de 11/10/2026)
+
+| Período | Prioridade | Resultado visível |
+|---|---|---|
+| Dias 1–30 (até 10/11) | Tornar visível a categoria e a auditoria | Bio e site atualizados; página da triagem com a diferença triagem/auditoria explicada; candidatura curta; template de relatório/proposta; 5 templates de System Print; 3 conteúdos fixados |
+| Dias 31–60 (até 10/12) | Criar prova à volta do método | 2 casos com autorização; 3 peças de diagnóstico/prova por semana; scorecard público; percurso rastreado de DM AUDIT e link do perfil |
+| Dias 61–90 (até 09/01/2027) | Converter prova em pipeline | Sequência de outreach para auditoria; parceiros de indicação; chamadas; pilotos com linha de base; revisão semanal de evidência e linguagem |
+
+**Cadência semanal:** segunda — rever leads, DMs, candidaturas, ações abertas, evidência · terça — publicar diagnóstico ou System Print; abrir conversas com uma pergunta precisa · quarta — mapas de auditoria, prova, casos, autorizações · quinta — publicar prova/caso; follow-up de candidaturas e indicações · sexta — conteúdo de oferta; rever funil; escolher um teste para a semana seguinte · mensal — pedidos de auditoria por 1.000 alcançados, ganhos/perdas, verticais com padrão mais forte.
+
+## A.10 TESTE FINAL E VERSÃO EXTERNA
+
+**Antes de publicar, vender ou construir:** o cliente certo vê a fuga operacional, entende quem é dono da próxima ação e acredita que a Pacheco pode provar um sistema melhor? Se não, tornar o sistema mais visível e a mensagem mais específica.
+
+**Versão externa curta:** *Encontramos onde a tua operação está a perder tempo e dinheiro. Depois desenhamos o sistema de IA governado que resolve o gargalo de maior valor — com regras claras, handoffs humanos e um plano mensurável.*
+
+## A.11 O QUE CADUCOU A 11/10/2026
+
+- **Preços de site** (500 € / 500 € + 50–75 €/mês / desconto de grupo 400 € + 40 €/mês / 2.500 lei + 375 lei/mês): já não se oferecem a clientes novos. Ficam só como registo dos contratos já fechados (Grupo Naval, Catarina).
+- **«Website + manutenção» como produto** e **parcerias para websites**: acabaram. O site passa a gatilho (A.5).
+- **Comissão de 15 % a parceiros por trabalhos de site**: passa a 15 % da implementação + 5 % trimestral (A.13).
+- **Secção 3-A «site de 10.000 € vendido a 500 €»**: o padrão de qualidade mantém-se, o argumento de preço não.
+- **Secção 11** (demo de site como produto, «está invisível fora do Google Maps»): a demo continua como abertura, mas o pedido é a reunião e a conversa vai para a fuga operacional.
+- **Secção 16 «os sites são a porta, as automatizações o segundo passo»** e a oferta «Plano 20 min → Piloto → Sistema → Manutenção»: substituídos pela arquitetura de oferta A.5. Mantêm-se «construir a prova antes de pedir o sim», «a IA é ingrediente», a explicação da IA ao dono e o assistente que se identifica.
+- **Secção 17 processo de 5 passos e «conversa de 20 min»**: substituído pelo Método Pacheco (A.4). Nunca «20 minutos»: pede-se «uma reunião».
+- **Separador «Sites» do pachecost.com e a entrada direta por `utm_content=web-…`**: a rever no plano dos dias 1–30 (página da triagem).
+
+## A.12 DECISÕES QUE FECHARAM AS PERGUNTAS (Tomás, 11/10/2026 18h26)
+
+- **1.ª proposta = a auditoria**, também em Iași (substitui «1.ª proposta é só o site, em RON»). Chega-se lá depois de levar a triagem proativa ao lead (A.14), quando a necessidade e a solução já estão à vista.
+- **Mensalidades de site atuais não mexem** (Grupo Naval, Catarina, Bravus, Magic Key e outros contratos já fechados ficam como estão). A regra «sites e mensalidades dentro da implementação» vale só para clientes novos.
+- **CTA «AUDIT» igual** em PT, RO e EN.
+- **A auditoria não é pública (Tomás, 18h43, thread do site):** ninguém a obtém por entrar no site e clicar. A entrada pública é a **triagem** (no pachecost.com, «Conhece-nos» abre a triagem; «DM AUDIT» também leva à triagem). Só se o cliente gostar da triagem se avança para a **auditoria**, que já inclui saber exatamente tudo (acesso aos dados, mapa completo, System Print futuro, plano de 90 dias). O site leva uma descrição curta que distingue as duas. Toda a CTA pública pede triagem; a auditoria é sempre o passo seguinte.
+
+## A.13 DINHEIRO: AUDITORIA, TICKET E PARCEIROS (decisão do Tomás, 11/10/2026)
+
+**Auditoria creditada na implementação (por enquanto).** Na prática é uma auditoria grátis durante a execução: dá margem para mostrar valor ao cliente antes de ele ter de pagar. Quando se transforma em prova e em início de trabalho, passa a paga, abatida no valor da implementação. Nas mensagens: «a auditoria é creditada na implementação», nunca «grátis» sem contexto.
+
+**Ticket médio — os dois extremos:**
+
+| Ponta | O que entregamos |
+|---|---|
+| **≈ 2.000 €** | **3 quick wins** implementados, baseados em problemas atuais do negócio |
+| **até 100.000 €** | Acompanhamento de uma empresa que fatura **50 mil a 500 mil €/mês**: estruturamos o crescimento a partir de um sistema baseado em IA, com objetivo de **3× a 10×**. Resultados variáveis, preço variável |
+
+**Regra de preço:** o foco não é o ticket, é a **prova de valor em cada cliente em específico**. O nosso pagamento baseia-se no **valor agregado** e no **impacto na faturação** daquela empresa. Por isso cada proposta mede a base (dia 0) antes de prometer e nunca promete 3×–10× como garantia: é objetivo, com resultados variáveis (HONEST-DATA).
+
+**Parceiros de indicação (Tomás, 11/10 14h38):**
+
+- **Primeiro o incentivo, depois as regras.** Passo 1: o parceiro percebe quanto pode ganhar connosco. Passo 2, só depois do «sim»: proposta com assinaturas e as obrigações dele (recomendação boca a boca; 1 conteúdo por mês sobre nós). O testemunho online chega antes, na entrega dos quick wins.
+- **3 quick wins ao parceiro, mantêm-se.** A própria triagem proativa (A.14) levada ao parceiro já lhe mostra pelo menos 1 dos quick wins que teria connosco, para que a resposta dele seja logo um sim ou um não.
+- **A contrapartida do parceiro, em três tempos (Tomás, 11/10 14h44):** (1) **no momento em que aplicamos os 3 quick wins**, o parceiro dá o primeiro testemunho online e a primeira recomendação, como agradecimento; (2) depois recomenda-nos **boca a boca** aos negócios que conhece; (3) e **todos os meses mostra-nos nos conteúdos dele, 1 vez por mês**. O testemunho inicial pede-se na entrega dos quick wins, não na proposta assinada; a proposta formaliza os pontos 2 e 3 e a comissão.
+- **Comissão:** **15 % do valor da implementação** do cliente indicado (paga quando começamos a trabalhar com esse cliente) **+ 5 % trimestral** enquanto continuarmos a trabalhar com ele. Base dos 5 % (Tomás, 11/10 14h47): **5 % do que ganhamos com essa empresa no trimestre**, pago **no fim de cada 3 meses**.
+- **Como mostrar o ganho sem fixar um valor (a solução):** a implementação não tem preço de tabela porque depende da faturação do cliente e do crescimento que lhe trazemos. Ao parceiro mostra-se a **percentagem fixa e três cenários reais em RON**, sempre com «exemplo» por cima e sem promessa:
+
+| Cenário (cliente indicado) | Implementação (exemplo) | Parceiro recebe no arranque (15 %) | Se o cliente ficar e crescer |
+|---|---|---|---|
+| Fatura 50.000 RON/mês | ≈ 20.000 RON | ≈ 3.000 RON | 5 % de cada trimestre faturado; o objetivo é levá-lo a 250.000 RON/mês, e a faturação nossa (e a parte dele) cresce com isso |
+| Fatura 1.000.000 RON/mês | ≈ 100.000 RON | ≈ 15.000 RON | 5 % trimestral; objetivo 3.000.000 RON/mês |
+| Pequeno negócio (3 quick wins) | ≈ 10.000 RON (≈ 2.000 €) | ≈ 1.500 RON | 5 % trimestral se houver otimização mensal |
+
+  A frase para o parceiro: *«Não te posso dizer um valor fixo porque cobramos pelo valor que criamos. Posso dizer-te a percentagem, que é sempre a mesma, e mostrar-te três casos típicos.»* Os números são exemplos de cálculo, nunca previsões de ganho (HONEST-DATA). Entregável: uma página «Quanto ganha um parceiro» com a percentagem, os três cenários e a regra dos 3 quick wins; a proposta assinada só depois.
+- **Sites e mensalidades dentro da implementação:** o site e a antiga mensalidade deixam de ter preço separado. O site é o **primeiro produto tangível da execução** e entra no preço de implementação; a manutenção entra na otimização mensal. Não há mais «500 € + 50 €/mês».
+
+## A.14 TRIAGEM PROATIVA E «AUDIT HOOK BY DEMO» (Tomás, 11/10/2026, playbook de triagem v1.0)
+
+**Sem minutos (Tomás, 11/10 14h28):** o PDF diz «15 minutos»; nas nossas mensagens pede-se sempre «uma reunião» ou «uma validação», nunca minutos, porque o nosso tempo também é valioso. Aplica-se a todos os exemplos abaixo.
+
+**Mudança de método:** a triagem deixa de ser um pedido ao cliente. A Pacheco observa primeiro o percurso público, prepara uma **hipótese** e um **Micro System Print de uma página**, e só pede ao decisor que confirme ou corrija o mapa. Nunca um formulário. Promessa: *«Eu já preparei o que validaria no vosso caso.»* Frase-chave: *«Não estou a afirmar que têm uma falha. Estou a mostrar a primeira coisa que validaria no vosso percurso.»*
+
+**A isca (palavras do Tomás):** levar a triagem ao cliente mostrando-lhe o que já é possível, e fechar com o convite. Exemplos a adaptar por nicho:
+
+- «Os seus leads são tratados automaticamente e ficam-lhe só com a parte operacional? Hoje tem uma IA que responde a toda a FAQ escrita na diretriz da sua empresa?»
+- «Hoje o seu sistema capta todos os e-mails, qualifica, filtra, responde ao que está nas suas diretrizes e pede a sua decisão só no que realmente merece o seu tempo?»
+- «Hoje o seu atendimento a clientes custa-lhe menos de 1 hora por dia?»
+- Fecho: «Se não, faça uma triagem connosco: nós entregamos isso ao seu método de trabalho e ao seu sistema operacional.»
+
+**Limite ético e comercial (HONEST-DATA aplicado ao outbound):** a hipótese não é um facto interno. Nunca dizer «perdem leads», «têm no-shows» ou «demoram X horas» sem dados.
+
+| Dizer | Não dizer |
+|---|---|
+| «No percurso público vejo [canal A], [canal B], [canal C].» | «Sei que deixam perder mensagens.» |
+| «Em operações deste tipo, é aqui que o contexto costuma partir-se.» | «A vossa equipa responde mal.» |
+| «Preparei uma hipótese de fluxo para validar.» | «Fiz uma auditoria completa à vossa empresa.» |
+| «Se a hipótese estiver errada, fica uma boa prática útil.» | «Garanto que vão poupar X horas.» |
+
+**Método de 4 passos:** 1. **Observar** (10–15 min no percurso público: Google, site, formulário, chamada, WhatsApp, Instagram, e-mail, política de reservas, reviews; só factos) → 2. **Hipotetizar** (uma fuga provável do setor, como pergunta operacional: «Quando entra por três canais, quem fica dono da próxima ação?») → 3. **Mostrar** (Micro System Print) → 4. **Validar** (uma reunião conduzida pela Pacheco; há problema → Auditoria; não há → fecha-se sem forçar).
+
+**Micro System Print (1 página):** cabeçalho com empresa + setor + uma pergunta de diagnóstico · percurso atual só com canais observados, transição de risco marcada «a validar» · fluxo futuro trigger → dono → regra → handoff (nunca uma IA a decidir sem limite) · 3 perguntas que um decisor responde de cabeça · 1–2 métricas ligadas à fuga · próximo passo: «Validar este mapa. Se não houver problema, fica como referência; se houver, definimos a Auditoria.» **Checklist antes de enviar:** ≥ 2 sinais públicos reais registados · hipótese, não acusação · específico para a empresa · o valor prometido é clareza, não ferramenta nem resultado inventado · CTA para validar com o decisor, sem formulário.
+
+**Três setores prioritários** (fricção repetida e mensurável, não «setor de IA»):
+
+| Setor | Hipótese para validar | Sistema de entrada provável | Métricas |
+|---|---|---|---|
+| 1. Restauração e hospitalidade | «Quando entra uma reserva ou pedido, existe um único dono e um estado visível até à confirmação?» Título: «Nenhuma reserva sem dono.» | Reserva com dono: captação, confirmação, lembretes, exceção/handoff, preenchimento de vaga | Tempo até 1.ª resposta, % reservas confirmadas, no-shows, vagas recuperadas, mensagens sem dono |
+| 2. Serviços por marcação (clínicas, estética, salões, barbearias, ginásios, pet) | «A sua agenda é um sistema de decisão ou só uma lista de horas?» Título: «Uma marcação não é um sistema.» | Receção de marcação: FAQ aprovada, confirmação, lembrete, remarcação, handoff, reativação | Pedidos convertidos em marcação, confirmações, no-shows, tempo de atendimento, horas humanas em FAQ |
+| 3. Construção e serviços de campo por orçamento | «A equipa devia estar em obra; o sistema devia segurar o próximo passo.» Título: «Um lead sem próxima ação vira um orçamento esquecido.» | Lead a orçamento: acolhimento, 4–6 perguntas de qualificação, dono, visita, orçamento, follow-up, estado único | Tempo de 1.ª resposta, % qualificados, visitas convertidas, orçamentos, follow-ups, valor ganho/perdido |
+
+Ordem: começar por restauração e marcação (prova já reconhecível); construção eleva o ticket. Os exemplos do PDF (mensagens PT/EN por setor, sinais públicos, 3 validações) são **base**, não texto a copiar: cada abordagem adapta-se ao cliente, à situação e ao nicho. Original em `/mnt/project-files/playbook/pacheco-studios-playbook-triagem-proativa.pdf` (texto em `.txt` ao lado).
+
+**Cadência:** D0 mensagem curta + Micro System Print (ou pedir permissão para o enviar) → D3 uma observação adicional ou uma frame ampliada («o que acontece a este pedido depois de entrar?») → D7 pergunta binária («isto já está resolvido de ponta a ponta ou vale validar?») → D12 fecho limpo («deixo o Print convosco; se se tornar prioridade, validamos») → **chamada de validação** conduzida pela Pacheco: «Este percurso está certo? Onde se parte? Quem devia assumir a próxima ação? O que medem hoje?» Duas ou mais respostas com fuga sem dono, sem regra ou sem base → propor a Auditoria. Fecho: «Não precisam de uma lista de ferramentas. Precisam de saber qual é a primeira fuga que vale a pena resolver.»
+
+**Objeções:** «Já temos CRM/agenda/WhatsApp» → a triagem não substitui sistemas, vê se o contexto os atravessa sem perder dono, regra e próxima ação · «Não temos tempo» → por isso a validação é curta e trazemos o primeiro mapa; sem sinal forte não propomos mais nada · «Já usamos IA» → a pergunta é se resolve uma fuga com regras aprovadas, handoff e impacto medido · «Mande uma proposta» → primeiro a página de hipótese; a proposta só depois de validar · «Não temos problema» → então o Print prova que o sistema está saudável; se um elemento falhar, já sabemos onde olhar.
+
+**«Audit Hook by Demo» — a abordagem de Iași.** Em Iași mantém-se o envio de demos (caçador diário, tracker das demos), mas **só nesta abordagem específica** e com este nome: a demo é o **trabalho inicial** que acompanha a hipótese e identifica um gargalo de uma triagem já feita. A demo não é o produto: é o Micro System Print em forma de página viva. Regras:
+
+- A mensagem que acompanha a demo segue a triagem proativa (sinais públicos, hipótese, pedido de validação), nunca «fizemos-lhe um site».
+- O tracker das demos passa a medir esta abordagem: enviados → abriram → responderam → validação marcada → Auditoria. Métrica central: pedidos de auditoria qualificados por 1.000 contactos.
+- Fora de Iași (e-mail, Instagram, parceiros), a isca é o Micro System Print sem demo.
+
+---
+
+# PARTE B — EXECUÇÃO (regras que continuam válidas)
 
 ## 1. CONTEXTO
 
-- **Tomás Pacheco**, fundador da Pacheco Studios — agência solo de web design + marketing digital, Algarve.
+- **Tomás Pacheco**, fundador da Pacheco Studios — consultora de sistemas com IA (desde 11/10/2026; antes agência solo de web design + marketing digital), Algarve e Iași.
 - Estudante de Economia na UAlg (campus de Gambelas).
 - Responder **SEMPRE em PT-PT**, tom direto, sem enchimento. Respostas curtas (leitura em telemóvel).
-- **Método:** sites de demonstração criados antes da abordagem, apresentados presencialmente no telemóvel/tablet.
-- **Stack:** HTML single-file → Netlify (drag & drop do zip) ou Hostinger (zip sem `netlify.toml`, extrair em `public_html`).
+- **Método de abordagem:** a demo (site, ferramenta ou sistema) é feita antes do contacto e serve para pedir uma reunião; a venda é a auditoria e o que dela sai (parte A).
+- **Stack dos sites:** HTML single-file → Netlify (drag & drop do zip) ou Hostinger (zip sem `netlify.toml`, extrair em `public_html`).
 
 ## 2. MODELO DE PREÇOS
 
-| Modalidade | Preço |
-|---|---|
-| Website avulso | 500 € (pagamento único) |
-| Website + manutenção | 500 € + 50 €/mês |
-| Desconto de grupo (2+ casas do mesmo dono) | 400 € + 40 €/mês |
-| Setup sistema faturas WhatsApp | 150-300 € + 39-59 €/mês |
-
-Incluído na mensalidade: manutenção (site sempre online), domínio pago por nós, alterações garantidas em 1 semana, suporte direto, sem custos escondidos.
-
-Contacto nas propostas: tspacheco26@gmail.com *(falta acrescentar telefone)*
-
-**Posicionamento de produto:** o preço de venda é o da tabela, mas a qualidade entregue é de site de 10 000 € — ver secção 3-A. É esse contraste que fecha vendas.
+- **Ticket médio: 2.000 € a 100.000 €** por parceria, conforme o negócio e o que a auditoria encontrar (A.1). Preço pelo desenho e pelo valor do gargalo, nunca pela palavra «IA».
+- Auditoria creditada na implementação; preço pelo valor agregado e impacto na faturação (A.13).
+- Sites: não se vendem à parte. O site é o primeiro produto tangível da execução e entra no preço de implementação; a manutenção entra na otimização mensal (A.13). Os preços antigos (500 € + 50 €/mês) ficam só nos contratos já fechados.
+- Setup sistema faturas WhatsApp (secção 9): 150–300 € + 39–59 €/mês — referência de custo, a reenquadrar como intervenção dentro da auditoria.
 
 ## 3. ENGINE DOS SITES — REGRAS OBRIGATÓRIAS
+
+> Desde 11/10/2026 os sites são gatilho e oferta (A.5), não produto. As regras de execução mantêm-se em cada demo e site entregue.
 
 ### Estrutura
 
@@ -74,7 +347,7 @@ Foto/cena de fundo + `.hero-shade` com gradiente escuro reforçado abaixo dos 68
 
 ## 3-A. PADRÃO NÍVEL 10K (novo — 30/07/2026)
 
-O que separa um site de 500 € de um de 10 000 €, e que passa a ser obrigatório em cada demo:
+Qualidade percebida de 10 000 € em cada demo e site, porque é a primeira prova do nosso juízo (o argumento «vendido a 500 €» caducou a 11/10, ver A.11):
 
 1. **Direção de arte por cliente, não template.** Cada site parte do mundo real do negócio (materiais, gestos, vernáculo — as brasas, a cataplana, o presunto pendurado) e assume **um risco estético justificável**. Usar o skill `frontend-design` como processo: brainstorm → explorar direções → plano → crítica → construir → crítica final.
 2. **Design system consciente.** Antes de escrever CSS, correr o skill `ui-ux-pro-max` para o tipo de produto (paleta, par tipográfico, estilo) e adaptar — nunca aceitar o primeiro resultado sem crítica.
@@ -223,6 +496,8 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 
 ## 10. PENDENTES
 
+> 11/10/2026: os pendentes de «site por criar» passam a gatilhos para pedir reunião; nenhum se fecha com preço de site (A.11).
+
 - [ ] **Sítio dos Presuntos** (Gambelas/Montenegro) — site por criar. Tasca beirã, donos de Viseu, R. Aquilino Ribeiro (nº 122 vs 212 a confirmar), tel 917 823 784 (TA) / 919 869 212 (booktables), Google 4,3/~1.220, até às 23:00. Pratos: presunto, leitão, tamboril, lula grelhada, sopa de feijão verde. Identidade planeada: Bevan, presuntos pendurados a balançar.
 - [ ] **O Caseiro2** (ex-"O Bandeira", Montenegro) — 4,6★/438, menu de almoço ~12 €, fecha 2.ª feira. Site se houver interesse.
 - [ ] **2.º lote VNC/Manta Rota:** Casa da Igreja (Cacela Velha, 289 952 126, 4,3★/329, ostras) · Pizzadela (963 350 428, 4,7★/254) · Bela Vista (4,4★/107, porco preto) · O Ligério (281 951 372) · Casa Velha (281 952 297) · Restaurante Manta Rota · O Finalmente. *(Chá com Água Salgada já tem site — excluir.)*
@@ -239,6 +514,8 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 - [ ] **Toda Chic** — pedir à dona: (1) fotos individuais sem preço nem faixa das 6 peças que só existem em fichas (calções de linho, saia, blusas sem alça, vestido preto/branco, pantalona, conjunto vermelho); (2) preço das calças clássicas em 4 cores e das sandálias com laços; (3) tamanhos das ~20 peças sem indicação; (4) identificação da empresa (nome, NIF, morada), e-mail, portes/transportadora, software de faturação. Depois: mostrar a demo, fechar orçamento por referências, montar WooCommerce + ifthenpay.
 
 ## 11. PROSPEÇÃO — MÉTODO QUE FUNCIONA
+
+> Revisto a 11/10/2026: a pesquisa e as demos continuam, mas o pedido é **uma reunião** e a conversa vai para a fuga operacional e a auditoria (A.4, A.5, A.8). O ângulo do ponto 6 serve como gancho, não como venda de site.
 
 1. Pesquisa prévia da zona → lista de negócios sem site com rating ≥4,2 e dezenas/centenas de avaliações.
 2. Dividir em **Lista A (visitar)** — montra aberta, porta-a-porta — e **Lista B (ligar)** — negócios de marcação.
@@ -303,6 +580,8 @@ Identidade já usada no Instagram (@pachecostudiospt), agora também no cartão 
 
 ## 16. DIREÇÃO DE MERCADO: MOSTRAR A MÁQUINA (novo — 26/09/2026)
 
+> 11/10/2026: o funil «sites → automatizações» e a oferta «Plano → Piloto → Sistema → Manutenção» foram substituídos pela parte A (A.5). O resto desta secção continua válido e alimenta o System Print (A.6).
+
 Decisão do Tomás, a aplicar em tudo o que a Pacheco Studios faz daqui para a frente. Para apresentar: `research/direcao-confianca.pdf`. O raciocínio inteiro (fundamentos, riscos, Roménia, demo, métricas, plano a 90 dias, decisões pendentes): `research/mostrar-a-maquina-analise.md` (também em PDF). **Reler antes de mexer em posicionamento, propostas ou na página das automatizações.**
 
 - **A regra-mãe: construir a prova antes de pedir o sim.** Os sites já se vendem assim (demo antes da abordagem). Para cada produto, escolher a prova mais barata que ainda convence e fazê-la antes de vender: site → a demo; automatização → o fluxo desenhado + regras + demo genérica que responde + diário; loja → a demo Toda Chic; sistema à medida → o desenho + painel de exemplo.
@@ -322,6 +601,8 @@ Decisão do Tomás, a aplicar em tudo o que a Pacheco Studios faz daqui para a f
 - **Onde se aplica:** pachecost.com em PT · EN · RO (`sites/pacheco-studios/`) — **aplicado a 26/09, esquemas redesenhados a 27/09:** cada automatização abre com o botão «Ver o esquema» (EN «See the diagram», RO «Vezi schema»), que mostra num cartão no meio do ecrã o fluxo **desenhado como a proposta Be Legend**: tela pontilhada, uma caixa branca por passo com ícone e portas, gatilho a âmbar, pessoa a verde, decisão tracejada com os ramos em pílulas azul-escuras, esperas a bege e legenda. No telemóvel os ramos descem em árvore; no computador ficam lado a lado, como as situações da proposta. Depois vêm «As regras dela», «Quem decide o quê» (tu · o sistema · nós), «O que o cliente vê» e o pedido de demonstração no WhatsApp; o botão para experimentar entra quando a demo viva existir. **Link direto para mandar a um dono:** `pachecost.com/#esquema-<id>` (ou `ro.pachecost.com/#esquema-<id>`), ids em `sites/pacheco-studios/LEIA-ME.md`; pachecost.com (secção «como é feito», ver `research/pachecost-fraquezas.pdf`), cartão (a frase «Nu promitem. Arătăm.» já está nesta linha), conversas de venda (ouvir a dor → desenhar o fluxo à frente do dono → demo no telemóvel dele → piloto).
 
 ## 17. POSICIONAMENTO: CONSULTORIA DE IA (novo — 02/10/2026)
+
+> 11/10/2026: o processo de 5 passos e a «conversa de 20 min» foram substituídos pelo Método Pacheco (A.4). Mantêm-se as regras do site, dos casos (HONEST-DATA) e da PONTE.
 
 Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que vende produtos (sites, automações) e passa a ser uma **consultoria de IA para negócios locais**. Começa pelo objetivo do dono, faz o diagnóstico, desenha, implementa e acompanha. Pesquisa: `research/consultoria-ia-referencias.md` (Viver de IA + 8 consultoras).
 
