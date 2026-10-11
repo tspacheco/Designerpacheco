@@ -247,7 +247,7 @@ Twilio (nunca Evolution/Baileys — banimento Meta) → n8n → ler QR Code da A
 5. Evitar cadeias e franchisings (decisão não é local). Verificar sempre se já têm site antes de investir tempo.
 6. Ângulo que fecha: **"tem 4,5 estrelas e centenas de avaliações — e está invisível fora do Google Maps."**
 7. Quem já tem site (Tavont, Ita Trattoria): **"elevar, não substituir"** — mostrar 3 falhas concretas do site atual.
-8. **Parceiros que indicam (08/10/2026; acordo decidido a 11/10):** contabilistas, quem abre firmas, gráficas, reclamos luminosos, máquinas registadoras, imobiliárias de espaços comerciais, consultores de fundos e HoReCa. Damos primeiro 3 quick wins sem custo; eles mostram o nosso nome (post/story @pachecostudiospt + linha no site); cada trabalho recomendado dá-lhes 15 % da implementação (mensalidades fora), pago até 7 dias depois de o cliente pagar. A comissão só se fala depois dos quick wins. Tudo em `research/parceiros/` (ramo `claude/parceiros-indicam-4kcnrc`); corrida semanal às segundas, 9h53 de Iași.
+8. **Parceiros que indicam (08/10/2026; regras de 11/10, consultoria com IA):** contabilistas, quem abre firmas, gráficas, reclamos luminosos, máquinas registadoras, imobiliárias de espaços comerciais, consultores de fundos e HoReCa. O parceiro apresenta um negócio; a auditoria não se paga à parte (fica creditada na implementação); quando começamos a trabalhar com o negócio, o parceiro recebe 10 % da implementação e 10 % a cada 3 meses enquanto o cliente ficar connosco. Sem preços fixos nem sites. Nada se envia sem o «envia» do Tomás. Tudo em `research/parceiros/` (ramo `claude/parceiros-indicam-4kcnrc`); corrida semanal às segundas, 9h53 de Iași.
 
 ## 12. ECONOMIA DE CRÉDITOS
 

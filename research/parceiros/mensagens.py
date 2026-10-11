@@ -4,65 +4,55 @@
   python3 research/parceiros/mensagens.py > research/parceiros/PARCEIROS.md
 
 Lê research/parceiros/parceiros.tsv. Colunas: semana cidade tipo nome nota avaliacoes tel whatsapp morada maps estado notas
-  cidade    Iași ou Faro (decide a língua e o valor da comissão)
+  cidade    Iași ou Faro (decide a língua)
   tipo      contabil · infiintare · tipografie · reclame · case-marcat · imobiliare · fonduri · horeca
   whatsapp  sim / ? / não (sim só com prova pública: PLAYBOOK §11 ponto 8)
-  estado    por contactar / contactado AAAA-MM-DD / quick wins em curso / quick wins entregues / parceiro / recusou / sem resposta
-Levam mensagem: «por contactar» (oferta dos 3 quick wins), «contactado» há 7+ dias (lembrete) e «quick wins entregues»
-(a parceria: nome + 15 %, com o PDF). O resto vai para a tabela do fim.
+  estado    por contactar / contactado AAAA-MM-DD / reunião marcada / parceiro / recusou / sem resposta
+Levam mensagem: «por contactar» (convite para o programa e pedido de reunião) e «contactado» há 7+ dias (lembrete).
+Regras de 11/10/2026 (posicionamento de consultoria com IA): a auditoria fica creditada na implementação; o parceiro recebe
+10 % da implementação e 10 % a cada 3 meses enquanto o cliente ficar connosco; sem preços fixos, sem sites, sem quick wins grátis.
 """
 import csv, datetime, os, sys, urllib.parse
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-RAW = "https://github.com/tspacheco/Designerpacheco/raw/claude/parceiros-indicam-4kcnrc/research/parceiros/proposta/"
 KIT = "https://github.com/tspacheco/Designerpacheco/raw/claude/parceiros-indicam-4kcnrc/research/parceiros/kit/"
-# 11/10/2026 14h: a Pacheco Studios passou a consultora de sistemas com IA. Mensagens, kit e 15 % sobre sites caducaram;
-# até o Tomás decidir a comissão sobre auditorias/implementações, a lista sai sem mensagens (só pesquisa).
-SUSPENSO = True
+# Nada se envia a parceiros até o Tomás dizer «envia» (11/10/2026).
+ENVIAR = False
 
-# Acordo de 11/10/2026 (fonte: /mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md): a 1.ª mensagem oferece
-# os 3 quick wins grátis e não fala de comissão; os 15 % só se apresentam depois de entregues (mensagem PARCERIA).
-RO = ("Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios. Facem site-uri și sisteme simple pentru afaceri locale din Iași "
-      "(un exemplu: https://pachecost.com/demo/la-gioia/).\n\n{gancho}\n\n"
-      "Aș vrea să încep prin a vă ajuta pe dumneavoastră: implementăm gratuit 3 soluții rapide alese pentru afacerea dumneavoastră "
-      "(de exemplu fișa Google completă, un afiș QR pentru recenzii sau răspunsuri rapide pe WhatsApp). Nu plătiți nimic.\n\n"
-      "Pot trece pe la dumneavoastră 10 minute săptămâna aceasta?")
-RO_LEMBRETE = ("Bună ziua! Revin la mesajul de săptămâna trecută: cele 3 soluții rapide gratuite pentru afacerea dumneavoastră. "
-               "Dacă vă interesează, trec pe la dumneavoastră când vă convine. Mulțumesc!")
-RO_PARCERIA = ("Bună ziua! Mă bucur că cele 3 soluții funcționează. Am două rugăminți: o postare sau un story cu @pachecostudiospt "
-               "și un rând pe site-ul dumneavoastră («Sisteme: Pacheco Studios»). Iar când cunoașteți o afacere care are nevoie de ceva "
-               "asemănător, ne prezentați: pentru fiecare lucrare care vine de la dumneavoastră primiți 15%, în 7 zile de la plata clientului. "
-               "Vă trimit pagina cu detaliile.")
-PT = ("Bom dia! Sou o Tomás Pacheco, da Pacheco Studios. Fazemos sites e sistemas simples para negócios locais do Algarve "
-      "(um exemplo: https://pachecost.com/demo/sos-car/).\n\n{gancho}\n\n"
-      "Queria começar por ajudá-lo a si: implementamos sem custo 3 soluções rápidas escolhidas para o seu negócio "
-      "(por exemplo a ficha Google completa, um cartaz QR para avaliações ou respostas rápidas no WhatsApp). Não paga nada.\n\n"
-      "Posso passar aí 10 minutos esta semana?")
-PT_LEMBRETE = ("Bom dia! Volto à mensagem da semana passada: as 3 soluções rápidas sem custo para o seu negócio. "
-               "Se lhe interessar, passo aí quando lhe der jeito. Obrigado!")
-PT_PARCERIA = ("Bom dia! Fico contente por as 3 soluções estarem a funcionar. Tenho dois pedidos: um post ou story com @pachecostudiospt "
-               "e uma linha no seu site («Sistemas: Pacheco Studios»). E quando conhecer um negócio que precise de algo parecido, apresente-nos: "
-               "por cada trabalho que vier da sua parte recebe 15 %, até 7 dias depois de o cliente pagar. Envio-lhe a página com os detalhes.")
+RO = ("Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios, o consultanță în sisteme cu AI din Iași: găsim unde o afacere pierde "
+      "cereri, timp și bani și proiectăm sistemul care rezolvă problema.\n\n{gancho}\n\n"
+      "Avem un program de parteneri: pentru fiecare afacere pe care ne-o prezentați și cu care începem să lucrăm, primiți 10% din "
+      "implementare și apoi 10% la fiecare 3 luni, cât timp rămâne cu noi. Afacerea recomandată nu plătește auditul separat.\n\n"
+      "Putem stabili o întâlnire săptămâna aceasta?")
+RO_LEMBRETE = ("Bună ziua! Revin la mesajul de săptămâna trecută despre programul de parteneri Pacheco Studios. "
+               "Dacă vă interesează, stabilim o întâlnire când vă convine. Mulțumesc!")
+PT = ("Bom dia! Sou o Tomás Pacheco, da Pacheco Studios, uma consultora de sistemas com IA: encontramos onde um negócio perde "
+      "pedidos, tempo e dinheiro e desenhamos o sistema que resolve.\n\n{gancho}\n\n"
+      "Temos um programa de parceiros: por cada negócio que nos apresentar e com quem comecemos a trabalhar, recebe 10 % da "
+      "implementação e depois 10 % a cada 3 meses, enquanto ficar connosco. O negócio apresentado não paga a auditoria à parte.\n\n"
+      "Podemos marcar uma reunião esta semana?")
+PT_LEMBRETE = ("Bom dia! Volto à mensagem da semana passada sobre o programa de parceiros da Pacheco Studios. "
+               "Se lhe interessar, marcamos uma reunião quando lhe der jeito. Obrigado!")
 
 GANCHO_RO = {
-    "contabil": "Știu că vedeți în fiecare lună firme noi care abia pornesc. Multe nu au încă site, iar unele vă întreabă cine le poate face unul.",
-    "infiintare": "Ajutați în fiecare lună oameni să-și deschidă firma. Imediat după, au nevoie de site și de o fișă Google, și de cineva de încredere care să le facă.",
-    "tipografie": "Cine își comandă cărți de vizită, flyere sau meniuri de multe ori abia a deschis și nu are încă un site la care să ducă codul QR.",
-    "reclame": "Cine își comandă firma sau reclama luminoasă tocmai deschide un local. E exact momentul în care are nevoie și de site și de Google.",
-    "case-marcat": "Orice afacere nouă trece pe la dumneavoastră pentru casa de marcat, de obicei în prima săptămână. E și momentul în care are nevoie de site.",
-    "imobiliare": "Cine închiriază un spațiu comercial prin dumneavoastră deschide o afacere în câteva săptămâni și are nevoie de site și de Google.",
-    "fonduri": "Pentru clienții dumneavoastră din Start-Up Nation, site-ul de prezentare și magazinul online sunt cheltuieli eligibile. Le facem cu factură, iar dumneavoastră aveți un furnizor de încredere pentru partea digitală.",
-    "horeca": "Cine își cumpără echipamente pentru un local nou deschide în curând și are nevoie de site, meniu online și Google.",
+    "contabil": "Vedeți din interior cum lucrează firmele clienților dumneavoastră: unde pierd timp, cereri și bani. De multe ori sunteți primul căruia îi spun.",
+    "infiintare": "Ajutați în fiecare lună oameni să-și deschidă firma. Cei care cresc repede ajung curând să piardă cereri și timp și caută pe cineva de încredere.",
+    "tipografie": "Lucrați zilnic cu afaceri locale care își fac reclamă. Multe dintre ele pierd apoi cererile care vin din acea reclamă.",
+    "reclame": "Cine își comandă firma luminoasă deschide sau extinde un local. Atunci apar și cererile pe care nu le preia nimeni la timp.",
+    "case-marcat": "Orice afacere trece pe la dumneavoastră pentru casa de marcat sau facturare. Vedeți primii cum își organizează vânzările și unde se blochează.",
+    "imobiliare": "Cine închiriază un spațiu comercial prin dumneavoastră deschide sau se extinde. Exact atunci operațiunile nu mai țin pasul.",
+    "fonduri": "Clienții dumneavoastră cu finanțare aprobată au buget pentru digitalizare. Le arătăm întâi unde pierd bani, ca investiția să meargă acolo unde contează.",
+    "horeca": "Cine își cumpără echipamente pentru un local nou sau mai mare are curând mai multe rezervări și comenzi decât poate gestiona pe WhatsApp.",
 }
 GANCHO_PT = {
-    "contabil": "Sei que vê todos os meses empresas novas a começar. Muitas ainda não têm site, e algumas perguntam-lhe quem lhes pode fazer um.",
-    "infiintare": "Ajuda todos os meses pessoas a abrir empresa. Logo a seguir precisam de site e de ficha no Google, e de alguém de confiança que lhes faça.",
-    "tipografie": "Quem encomenda cartões de visita, flyers ou ementas muitas vezes acabou de abrir e ainda não tem um site para onde levar o QR.",
-    "reclame": "Quem encomenda o reclamo luminoso está a abrir um espaço. É exatamente quando precisa também de site e de Google.",
-    "case-marcat": "Todos os negócios novos passam por si para a máquina registadora ou o software de faturação, normalmente na primeira semana. É também quando precisam de site.",
-    "imobiliare": "Quem arrenda ou trespassa um espaço comercial convosco abre um negócio em poucas semanas e precisa de site e de Google.",
-    "fonduri": "Para os seus clientes com candidaturas aprovadas, o site e a loja online costumam ser despesa elegível. Fazemo-los com fatura, e o senhor tem um fornecedor de confiança para a parte digital.",
-    "horeca": "Quem compra equipamento para um restaurante novo abre em breve e precisa de site, menu online e Google.",
+    "contabil": "Vê por dentro como trabalham as empresas dos seus clientes: onde perdem tempo, pedidos e dinheiro. Muitas vezes é o primeiro a quem o contam.",
+    "infiintare": "Ajuda todos os meses pessoas a abrir empresa. As que crescem depressa começam cedo a perder pedidos e tempo, e procuram alguém de confiança.",
+    "tipografie": "Trabalha todos os dias com negócios locais que fazem publicidade. Muitos perdem depois os pedidos que essa publicidade traz.",
+    "reclame": "Quem encomenda o reclamo luminoso está a abrir ou a crescer. É aí que aparecem os pedidos que ninguém atende a tempo.",
+    "case-marcat": "Todos os negócios passam por si para a faturação. Vê antes de todos como organizam as vendas e onde encravam.",
+    "imobiliare": "Quem arrenda um espaço comercial convosco está a abrir ou a expandir. É exatamente aí que a operação deixa de acompanhar.",
+    "fonduri": "Os seus clientes com candidaturas aprovadas têm orçamento para digitalização. Mostramos-lhes primeiro onde perdem dinheiro, para o investimento ir para onde conta.",
+    "horeca": "Quem compra equipamento para um restaurante novo ou maior tem em breve mais reservas e pedidos do que consegue gerir no WhatsApp.",
 }
 
 
@@ -86,36 +76,26 @@ def dias_desde(estado):
 
 
 def ativo(l):
-    return l["estado"] in ("por contactar", "quick wins entregues") or (l["estado"].startswith("contactado") and (dias_desde(l["estado"]) or 0) >= 7)
+    return l["estado"] == "por contactar" or (l["estado"].startswith("contactado") and (dias_desde(l["estado"]) or 0) >= 7)
 
 
 def main():
     linhas = list(csv.DictReader(open(os.path.join(AQUI, "parceiros.tsv"), encoding="utf-8"), delimiter="\t"))
     q = lambda s: urllib.parse.quote(s, safe="/:")
     print("# Parceiros que indicam\n")
-    if SUSPENSO:
-        print("**Mensagens suspensas (11/10, 14h).** A Pacheco Studios passou a consultora de sistemas com IA: o kit, a proposta e os 15 % "
-              "sobre sites caducaram. Não contactar ninguém até o Tomás decidir a comissão sobre auditorias e implementações "
-              "(thread «Playbook de consultoria de IA»). A lista abaixo é só pesquisa.\n")
-        print("| Cidade | Parceiro | Tipo | Google | Tel. | WhatsApp | Morada | Estado |\n|---|---|---|---|---|---|---|---|")
-        for l in linhas:
-            print(f"| {l['cidade']} | {l['nome']} | {l['tipo']} | {l['nota'] or '—'} | {l['tel'] or 'a confirmar'} | {l['whatsapp']} | "
-                  f"[{l['morada'] or 'Maps'}]({l['maps']}) | {l['estado']} |")
-        return
-    print("**O acordo (11/10):** 1) damos 3 soluções rápidas sem custo; 2) o parceiro mostra o nosso nome (post ou story com "
-          "@pachecostudiospt e uma linha no site); 3) recomenda-nos e recebe 15 % de cada trabalho que vier dele (mensalidades fora). "
-          "A 1.ª mensagem só oferece as 3 soluções; os 15 % e a proposta em PDF vão depois de entregues.  ")
-    print("**Kit do parceiro** (4 páginas, o documento a enviar ou levar impresso; tem as 7 soluções para marcar 3 e o acordo para assinar): "
+    if not ENVIAR:
+        print("**Rascunho: não enviar nada até o Tomás dizer «envia».**\n")
+    print("**Programa (11/10):** o parceiro apresenta um negócio; fazemos a auditoria, que não se paga à parte (fica creditada na "
+          "implementação); quando começamos a trabalhar com esse negócio, o parceiro recebe 10 % da implementação e, enquanto o cliente "
+          "ficar connosco, 10 % a cada 3 meses. Sem preços fixos.  ")
+    print("**Kit do parceiro** (4 páginas, para enviar ou levar impresso, com o acordo para assinar): "
           f"[romeno]({KIT}kit-parceiro-ro.pdf) · [inglês]({KIT}kit-parceiro-en.pdf) · [PT]({KIT}kit-parceiro-pt.pdf). "
           "Com o nome do parceiro na capa: `python3 research/parceiros/kit/gerar.py \"Nome\"`.  ")
-    print("Resumo de 1 página: "
-          f"[romeno]({RAW}parceria-ro.pdf) · [PT Algarve]({RAW}parceria-pt-faro.pdf) · [PT de Iași]({RAW}parceria-pt-iasi.pdf).  ")
-    print("Os escritórios convertem melhor ao vivo: em Iași, passa lá com a demo aberta no telemóvel. "
-          "Diz-me quem aceitou, que 3 soluções escolheu cada um e quando ficaram entregues.\n")
+    print("Os escritórios convertem melhor ao vivo: em Iași, passa lá com o kit. Diz-me quem marcou reunião e quem aceitou.\n")
     print("<details><summary>O que diz a mensagem romena (PT)</summary>\n")
-    print("> " + PT.replace("do Algarve", "de Iași").replace("sos-car", "la-gioia")
+    print("> " + PT.replace("consultora de sistemas com IA", "consultora de sistemas com IA de Iași")
           .format(gancho="[uma frase sobre o que esse parceiro vê todos os dias: as mesmas frases da versão PT, por tipo]")
-          .replace("\n", "\n> ").replace("> \n", ">\n") + "\n\nDepois dos quick wins:\n\n> " + PT_PARCERIA + "\n\n</details>\n")
+          .replace("\n", "\n> ").replace("> \n", ">\n") + "\n\n</details>\n")
     for cidade in ("Iași", "Faro"):
         grupo = [l for l in linhas if l["cidade"] == cidade]
         ativos = [l for l in grupo if ativo(l)]
@@ -128,8 +108,6 @@ def main():
                 ro = cidade == "Iași"
                 if l["estado"] == "por contactar":
                     texto = (RO if ro else PT).format(gancho=(GANCHO_RO if ro else GANCHO_PT)[tipo])
-                elif l["estado"] == "quick wins entregues":
-                    texto = RO_PARCERIA if ro else PT_PARCERIA
                 else:
                     texto = RO_LEMBRETE if ro else PT_LEMBRETE
                 nota = (f" · Google {l['nota']}" + (f" ({l['avaliacoes']} avaliações)" if l["avaliacoes"] else "")) if l["nota"] else ""

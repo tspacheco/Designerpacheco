@@ -1,8 +1,8 @@
 # Parceiros que indicam (agente 6)
 
-> **SUSPENSO desde 11/10/2026, 14h.** O Tomás posicionou a Pacheco Studios como consultora de sistemas com IA (playbook em `/mnt/project-files/playbook/pacheco-studios-playbook-consultoria-ia-pt.md`). Já não se vendem sites nem parcerias para sites: o acordo abaixo (3 quick wins + 15 %), o kit, a proposta e as mensagens caducaram. A corrida de segunda faz **só pesquisa** (`SUSPENSO = True` em `mensagens.py`). Não contactar parceiros. O kit só se refaz quando o Tomás decidir, no thread «Playbook de consultoria de IA», se os parceiros têm comissão sobre auditorias e implementações (o playbook põe os parceiros de indicação nos dias 61–90, a gerar pedidos de auditoria).
+Pedido do Tomás (08/10/2026): encontrar quem vê negócios todos os dias (contabilistas, quem abre firmas, gráficas, reclamos luminosos, máquinas registadoras, imobiliárias de espaços comerciais, consultores de fundos, fornecedores HoReCa) em Iași e Faro, e convidá-los para o programa de parceiros. **Regras desde 11/10/2026 (consultoria de sistemas com IA):** o parceiro apresenta um negócio; a auditoria não se paga à parte (fica creditada na implementação); quando começamos a trabalhar com o negócio, o parceiro recebe 10 % da implementação e, enquanto o cliente ficar connosco, 10 % a cada 3 meses. Sem preços fixos, sem sites, sem quick wins grátis prometidos. Detalhe em `COMISSAO.md`. Ramo: `claude/parceiros-indicam-4kcnrc`.
 
-Pedido do Tomás (08/10/2026): encontrar quem vê negócios novos todos os dias (contabilistas, quem abre firmas, gráficas, reclamos luminosos, máquinas registadoras, imobiliárias de espaços comerciais, consultores de fundos, fornecedores HoReCa) em Iași e Faro, e propor-lhes uma parceria, com uma demo como exemplo. **Acordo decidido pelo Tomás a 11/10/2026:** damos primeiro 3 quick wins sem custo; o parceiro mostra o nosso nome (post/story @pachecostudiospt + linha no site); cada trabalho que vier da recomendação dele dá-lhe 15 % do valor da implementação (mensalidades fora), pago até 7 dias depois de o cliente pagar. Texto mestre: `/mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md` (não reescrever; alinhar com ele). Ramo: `claude/parceiros-indicam-4kcnrc`.
+**Nada se envia a parceiros até o Tomás dizer «envia»** (`ENVIAR = False` em `mensagens.py`). Até lá, a corrida de segunda só pesquisa.
 
 ## Ficheiros
 
@@ -10,10 +10,10 @@ Pedido do Tomás (08/10/2026): encontrar quem vê negócios novos todos os dias 
 |---|---|
 | `parceiros.tsv` | Todos os parceiros, um por linha, com estado. Nunca contactar duas vezes o mesmo. |
 | `PARCEIROS.md` | Lista para o Tomás, gerada: `python3 research/parceiros/mensagens.py > research/parceiros/PARCEIROS.md` |
-| `COMISSAO.md` | O acordo (3 quick wins + nome + 15 %), as contas em lei e o menu de quick wins. |
-| `comissoes.tsv` | Cada cliente indicado: parceiro, estado, comissão devida e paga. |
-| `kit/gerar.py` | **Kit do parceiro** (4 páginas A4, RO/EN/PT): capa, como funciona + 7 quick wins para marcar 3, quem recomendar + mensagem pronta + contas, termos + acordo de princípio para assinar. Adaptado do «Playbook de parcerias» (11/10). `python3 research/parceiros/kit/gerar.py "Nome do parceiro"` põe o nome na capa. É o documento a enviar. |
-| `proposta/gerar.py` | Proposta A4 (RO, PT Iași, PT Algarve) em HTML e PDF, para mostrar depois dos quick wins. Valores em `VALORES`. |
+| `COMISSAO.md` | As regras da comissão (auditoria creditada, 10 % da implementação, 10 % por trimestre). |
+| `comissoes.tsv` | Cada negócio indicado: parceiro, fase, comissão da implementação e trimestres pagos. |
+| `kit/gerar.py` | **Kit do parceiro** (4 páginas A4, RO/EN/PT): capa, como funciona + o que a auditoria entrega, quem apresentar + mensagem pronta + QR para «AUDIT» no WhatsApp + Trigger/Dono/Regra/Handoff, termos + acordo de princípio. `python3 research/parceiros/kit/gerar.py "Nome do parceiro"` põe o nome na capa. |
+| `proposta/` | Caducada a 11/10 (15 % e preços de sites). Não usar. |
 
 ## Corrida semanal (segunda, 9h53 de Iași)
 
@@ -22,18 +22,19 @@ Pedido do Tomás (08/10/2026): encontrar quem vê negócios novos todos os dias 
 3. **PONTE.** Pedidos em `.github/ponte.txt`, commit, push, esperar o commit «Ponte: …» (as pesquisas do Maps levam 1 a 2 min cada). Tirar nome, nota e link de cada resultado (`.html`: `a[href*="/maps/place/"]` com `aria-label`).
 4. **Fichas.** Abrir as candidatas novas (até 25 por ronda) para ler telefone, morada, site e prova de WhatsApp (`aria-label="Telefon: …"`, `Adresă: …`, `Site: …`). Preferir: nota ≥ 4,3, dezenas de avaliações ou mais, escritório independente (não cadeias nem bancos). WhatsApp «sim» só com prova pública; fixo (02…/03… em RO, 2… em PT) → «não (fixo)».
 5. **Juntar 10 novos** a `parceiros.tsv` com estado «por contactar» e gerar `PARCEIROS.md`.
-6. **Seguimento.** Quem está «contactado AAAA-MM-DD» há 7 dias ou mais aparece com a mensagem de lembrete (ao 2.º lembrete sem resposta, passa a «sem resposta»). Quem está «quick wins entregues» aparece com a mensagem da parceria (nome + 15 %, com o PDF). A 1.ª mensagem nunca fala de comissão.
-7. **Commit + push** e responder no thread: quantos novos, que quick wins estão por entregar, o link `https://github.com/tspacheco/Designerpacheco/blob/claude/parceiros-indicam-4kcnrc/research/parceiros/PARCEIROS.md`, quantos lembretes, e o estado de `comissoes.tsv` (indicações, clientes que pagaram, comissões a pagar).
+6. **Seguimento.** Quem está «contactado AAAA-MM-DD» há 7 dias ou mais aparece com a mensagem de lembrete (ao 2.º lembrete sem resposta, passa a «sem resposta»). Só com `ENVIAR = True`.
+7. **Commit + push** e responder no thread: quantos novos, o link `https://github.com/tspacheco/Designerpacheco/blob/claude/parceiros-indicam-4kcnrc/research/parceiros/PARCEIROS.md`, quantos lembretes, e o estado de `comissoes.tsv` (indicações, implementações, comissões a pagar).
 
 ## Quando o Tomás diz alguma coisa
 
-- «X aceitou» → estado «quick wins em curso» e anotar em `notas` as 3 soluções escolhidas; «entreguei a X» → «quick wins entregues»; depois de ele mostrar o nome → «parceiro». «Recusou / não respondeu» → esse estado. Gerar `PARCEIROS.md` a seguir.
-- «X indicou-me Y» → linha em `comissoes.tsv` (estado «indicado»); o cliente indicado entra no caçador como prioridade (demo própria no ramo das demos, pelo coordenador).
-- Mudar o acordo → primeiro confirmar o texto mestre em `/mnt/project-files/prospecao-instagram/COMISSAO-PARCEIROS.md`; depois `VALORES` e textos em `proposta/gerar.py`, `COMISSAO.md` e as mensagens de `mensagens.py`.
+- «Envia» → `ENVIAR = True` em `mensagens.py` e gerar `PARCEIROS.md`.
+- «X marcou reunião» → «reunião marcada»; «X aceitou» → «parceiro» (kit com o nome dele na capa). «Recusou / não respondeu» → esse estado.
+- «X indicou-me Y» → linha em `comissoes.tsv` (fase «indicado»); Y entra na auditoria como prioridade, pelo coordenador.
+- Mudar as regras → `COMISSAO.md`, os textos de `kit/gerar.py` e as mensagens de `mensagens.py`, no mesmo commit.
 
 ## O que nunca fazer
 
 - Inventar notas, telefones, nomes de responsáveis ou provas de WhatsApp.
-- Prometer prazos de entrega ou resultados na proposta.
-- Falar de comissão antes de os 3 quick wins estarem entregues.
+- Pôr preços fixos, prometer resultados ou prazos, ou falar de sites como produto.
+- Prometer quick wins grátis ao parceiro enquanto o Tomás não decidir.
 - Push noutro ramo que não este.
