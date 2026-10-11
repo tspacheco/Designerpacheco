@@ -1,8 +1,12 @@
 // Mini-vídeo do carrossel: cada slide entra por partes (topo, título, texto, diagrama, cartões),
 // fica o tempo de leitura e sai em fade para o seguinte. Fotograma a fotograma, sem relógio real.
 // Uso: NODE_PATH=$(npm root -g) node video.js saida/carrossel-ro-video.html pasta-fotogramas [fps]
-// MP4: ffmpeg -framerate 30 -i pasta/%05d.jpg -f lavfi -i anullsrc=r=48000:cl=stereo -shortest -c:v libx264 -preset slow
-//      -crf 19 -pix_fmt yuv420p -c:a aac -b:a 64k -movflags +faststart saida/video/pacheco-audit-ro.mp4
+// MP4 (4:5): ffmpeg -framerate 30 -i pasta/%05d.jpg -f lavfi -i anullsrc=r=48000:cl=stereo
+//   -vf "scale=1080:1350:out_color_matrix=bt709:out_range=tv,format=yuv420p" -c:v libx264 -preset slow -crf 19
+//   -profile:v high -level 4.1 -colorspace bt709 -color_primaries bt709 -color_trc bt709 -g 60 -sc_threshold 0
+//   -c:a aac -b:a 128k -shortest -movflags +faststart saida/video/pacheco-audit-ro.mp4
+// 9:16: o mesmo com -filter_complex "[0:v]split[a][b];[a]scale=1536:1920,crop=1080:1920,boxblur=40:2,
+//   eq=brightness=-0.12:saturation=0.9[bg];[bg][b]overlay=0:285,..." → saida/video/pacheco-audit-ro-9x16.mp4
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
