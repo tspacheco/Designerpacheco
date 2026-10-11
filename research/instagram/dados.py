@@ -8,9 +8,9 @@ CATEGORIAS = [
         "nome": "Influenciador / operador",
         "foco": "Parceria de prova e indicações qualificadas.",
         "perfil": "Founder, operador ou criador de negócio com menos de 50 mil seguidores, credível junto de donos de negócio e com operação própria.",
-        "primeiro_passo": "DM personalizada a pedir uma conversa curta para mostrar o Partner Systems Opportunity Map.",
-        "ativo": "Partner Systems Opportunity Map: 3 a 5 handoffs, uma hipótese de melhoria, um limite humano e uma prioridade de 30 dias.",
-        "intuito": "Conversa curta → entregar o mapa → confiança → introduções consentidas a negócios com gargalo operacional.",
+        "primeiro_passo": "DM personalizada a oferecer 3 soluções rápidas implementadas sem custo, a partir do mapa da operação dele.",
+        "ativo": "3 quick wins implementados sem custo, escolhidos pela situação atual (mapa com 3 a 5 handoffs como base).",
+        "intuito": "Conversa → 3 quick wins implementados → mostram o nosso nome por gratidão → recomendam, com 15% de cada trabalho que vier deles.",
         "abordagem": "DM",
         "registo_ro": "tu",
         "excluir": "Criadores de entretenimento; contas sem @ verificável ou sem mercado; perfis cuja única razão é o número de seguidores.",
@@ -33,8 +33,8 @@ CATEGORIAS = [
         "foco": "Co-entrega ou referência mútua.",
         "perfil": "Agência, consultora, software ou serviço complementar com clientes B2B, equipa e processo.",
         "primeiro_passo": "Mensagem de complementaridade: uma operação típica onde a Pacheco protege o resultado que a agência já gera.",
-        "ativo": "Mini-mapa de um fluxo conjunto ou de um cliente-tipo da agência.",
-        "intuito": "Co-entrega, introdução mútua ou workshop; referrals qualificados e casos partilháveis.",
+        "ativo": "3 quick wins implementados sem custo na operação da agência; mini-mapa de um cliente-tipo.",
+        "intuito": "3 quick wins → mostram o nosso nome → recomendam clientes, com 15% de cada trabalho que vier deles; co-entrega quando fizer sentido.",
         "abordagem": "DM ao fundador",
         "registo_ro": "dumneavoastră",
         "excluir": "Concorrentes que vendem auditorias de sistemas de IA; parceiros sem clientes B2B reais; pedidos de parceria vagos.",
@@ -74,16 +74,19 @@ FECHO = {"ro": "Voi fi pregătit.", "pt": "Vou estar preparado.", "en": "I'll co
 MENSAGENS = {
     "influenciador": {
         "ro": {
-            "dm1": "{saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho} și m-am gândit la partea din spate a operațiunii tale: {percurso}. Am pregătit ceva util pentru tine, fără cost: o hartă scurtă cu 3–5 predări între oameni și sisteme, o ipoteză de îmbunătățire, punctul unde decide un om și prioritatea pentru următoarele 30 de zile. Întrebarea de la care pornesc: {pergunta} Ai fi deschis la o scurtă întâlnire ca să ți-o arăt? {fecho}",
-            "fu": "{saudacao} Revin pe scurt, cu un lucru concret: {valor} Harta rămâne pregătită pentru tine, fără nicio obligație. Dacă acum nu e momentul, înțeleg perfect. {fecho}",
+            "dm1": "{saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho} și m-am gândit la partea din spate a operațiunii tale: {percurso}. Vreau să-ți ofer ceva concret, fără cost: pornind de la situația ta de acum, implementăm 3 soluții rapide în operațiunea ta. Întrebarea de la care pornesc: {pergunta} Ai fi deschis la o scurtă întâlnire ca să alegem împreună cele 3 soluții? {fecho}",
+            "fu": "{saudacao} Revin pe scurt, cu un lucru concret: {valor} Oferta celor 3 soluții rămâne valabilă, fără nicio obligație. Dacă acum nu e momentul, înțeleg perfect. {fecho}",
+            "parceria": "{saudacao} Mă bucur că cele 3 soluții merg deja la tine. Am o propunere simplă de parteneriat. Dacă ți se pare corect, menționează Pacheco Studios ca pe cei care te-au ajutat: o postare sau un story cu @pachecostudiospt și un rând pe site. Apoi, când întâlnești o afacere care se blochează în același loc, ne faci o introducere, cu acordul ei. Pentru fiecare lucrare care vine din recomandarea ta primești 15% din valoarea ei, plătit în 7 zile de la plata clientului. {fecho}",
         },
         "pt": {
-            "dm1": "{saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho} e fiquei a pensar na parte de trás da tua operação: {percurso}. Preparei uma coisa útil para ti, sem custo: um mapa curto com 3 a 5 passagens entre pessoas e sistemas, uma hipótese de melhoria, o ponto onde decide uma pessoa e a prioridade para os próximos 30 dias. A pergunta de onde parto: {pergunta} Estarias aberto a uma conversa curta para te mostrar? {fecho}",
-            "fu": "{saudacao} Volto só com uma coisa concreta: {valor} O mapa continua preparado para ti, sem compromisso. Se agora não é o momento, percebo perfeitamente. {fecho}",
+            "dm1": "{saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho} e fiquei a pensar na parte de trás da tua operação: {percurso}. Quero oferecer-te uma coisa concreta, sem custo: a partir da tua situação atual, implementamos 3 soluções rápidas na tua operação. A pergunta de onde parto: {pergunta} Estarias aberto a uma conversa curta para escolhermos juntos as 3 soluções? {fecho}",
+            "fu": "{saudacao} Volto só com uma coisa concreta: {valor} A oferta das 3 soluções mantém-se, sem compromisso. Se agora não é o momento, percebo perfeitamente. {fecho}",
+            "parceria": "{saudacao} Fico contente por as 3 soluções já estarem a funcionar contigo. Tenho uma proposta simples de parceria. Se te parecer justo, menciona a Pacheco Studios como quem te ajudou: um post ou story com @pachecostudiospt e uma linha no site. Depois, quando conheceres um negócio que encrava no mesmo sítio, apresentas-nos, com o acordo dele. Por cada trabalho que vier da tua recomendação recebes 15% do valor, pago até 7 dias depois de o cliente pagar. {fecho}",
         },
         "en": {
-            "dm1": "{saudacao} I'm Tomás from Pacheco Studios. I saw {gancho} and started thinking about the back end of your operation: {percurso}. I put together something useful for you, at no cost: a short map with 3 to 5 handoffs between people and systems, one improvement hypothesis, the point where a human decides, and a 30-day priority. The question I start from: {pergunta} Would you be open to a short call so I can walk you through it? {fecho}",
-            "fu": "{saudacao} A quick follow-up with one concrete thing: {valor} The map is still ready for you, no strings attached. If now isn't the right time, completely understood. {fecho}",
+            "dm1": "{saudacao} I'm Tomás from Pacheco Studios. I saw {gancho} and started thinking about the back end of your operation: {percurso}. I'd like to offer you something concrete, at no cost: based on where your operation is today, we implement 3 quick wins in it. The question I start from: {pergunta} Would you be open to a short call to pick the 3 together? {fecho}",
+            "fu": "{saudacao} A quick follow-up with one concrete thing: {valor} The offer of the 3 quick wins still stands, no strings attached. If now isn't the right time, completely understood. {fecho}",
+            "parceria": "{saudacao} Glad the 3 quick wins are already working for you. I have a simple partnership proposal. If it feels fair, mention Pacheco Studios as the team that helped you: a post or story tagging @pachecostudiospt and a line on your site. Then, when you meet a business stuck in the same place, introduce us, with their consent. For every job that comes from your referral you get 15% of its value, paid within 7 days of the client paying. {fecho}",
         },
     },
     "grande": {
@@ -102,16 +105,19 @@ MENSAGENS = {
     },
     "pme_parceiro": {
         "ro": {
-            "dm1": "{saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho}. Voi aduceți cererea; noi lucrăm în stratul de după lead: cum ajunge cererea la echipă, ce context o însoțește, cine decide și cum se livrează. Nu înlocuim marketingul sau brandingul, protejăm rezultatul pe care îl generați deja. Am schițat o mini-hartă pentru un client tipic de-al vostru: {percurso}. Ați fi deschis la o întâlnire ca să vedem dacă are sens să lucrăm împreună? {fecho}",
+            "dm1": "{saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho}. Voi aduceți cererea; noi lucrăm în stratul de după lead: cum ajunge cererea la echipă, ce context o însoțește, cine decide și cum se livrează. Nu înlocuim marketingul sau brandingul, protejăm rezultatul pe care îl generați deja. Am schițat o mini-hartă pentru un client tipic de-al vostru: {percurso}. Ca să vedeți cum lucrăm, implementăm fără cost 3 soluții rapide în propria voastră operațiune. Ați fi deschis la o întâlnire ca să vedem dacă are sens să lucrăm împreună? {fecho}",
             "fu": "{saudacao} Revin cu un exemplu concret de colaborare: {valor} Voi păstrați relația și serviciul, noi intrăm doar pe partea operațională. {fecho}",
+            "parceria": "{saudacao} Mă bucur că cele 3 soluții funcționează deja în echipa voastră. Vă propun un parteneriat simplu. Dacă vi se pare corect, menționați Pacheco Studios ca pe cei care v-au ajutat: o postare cu @pachecostudiospt și un rând pe site. Apoi, când un client de-al vostru se blochează după lead, ne faceți o introducere, cu acordul lui. Voi păstrați clientul și serviciul. Pentru fiecare lucrare care vine din recomandarea voastră primiți 15% din valoarea ei, plătit în 7 zile de la plata clientului. {fecho}",
         },
         "pt": {
-            "dm1": "{saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho}. Vocês trazem a procura; nós trabalhamos na camada depois do lead: como o pedido chega à equipa, que contexto leva, quem decide e como se entrega. Não substituímos o marketing nem a marca, protegemos o resultado que vocês já geram. Esbocei um mini-mapa para um cliente típico vosso: {percurso}. Estariam abertos a uma reunião para ver se faz sentido trabalharmos juntos? {fecho}",
+            "dm1": "{saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho}. Vocês trazem a procura; nós trabalhamos na camada depois do lead: como o pedido chega à equipa, que contexto leva, quem decide e como se entrega. Não substituímos o marketing nem a marca, protegemos o resultado que vocês já geram. Esbocei um mini-mapa para um cliente típico vosso: {percurso}. Para verem como trabalhamos, implementamos sem custo 3 soluções rápidas na vossa própria operação. Estariam abertos a uma reunião para ver se faz sentido trabalharmos juntos? {fecho}",
             "fu": "{saudacao} Volto com um exemplo concreto de colaboração: {valor} Vocês mantêm a relação e o serviço, nós entramos só na parte operacional. {fecho}",
+            "parceria": "{saudacao} Fico contente por as 3 soluções já estarem a funcionar na vossa equipa. Proponho uma parceria simples. Se vos parecer justo, mencionem a Pacheco Studios como quem vos ajudou: um post com @pachecostudiospt e uma linha no site. Depois, quando um cliente vosso encravar depois do lead, apresentam-nos, com o acordo dele. Vocês mantêm o cliente e o serviço. Por cada trabalho que vier da vossa recomendação recebem 15% do valor, pago até 7 dias depois de o cliente pagar. {fecho}",
         },
         "en": {
-            "dm1": "{saudacao} I'm Tomás from Pacheco Studios. I saw {gancho}. You bring in the demand; we work on the layer after the lead: how the request reaches the team, what context travels with it, who decides and how it gets delivered. We don't replace marketing or branding, we protect the result you already generate. I sketched a mini-map for one of your typical clients: {percurso}. Would you be open to a meeting to see whether it makes sense to work together? {fecho}",
+            "dm1": "{saudacao} I'm Tomás from Pacheco Studios. I saw {gancho}. You bring in the demand; we work on the layer after the lead: how the request reaches the team, what context travels with it, who decides and how it gets delivered. We don't replace marketing or branding, we protect the result you already generate. I sketched a mini-map for one of your typical clients: {percurso}. To show you how we work, we implement 3 quick wins in your own operation at no cost. Would you be open to a meeting to see whether it makes sense to work together? {fecho}",
             "fu": "{saudacao} Following up with one concrete collaboration example: {valor} You keep the relationship and the service; we only step into the operational side. {fecho}",
+            "parceria": "{saudacao} Glad the 3 quick wins are already working for your team. I'd like to propose a simple partnership. If it feels fair, mention Pacheco Studios as the team that helped you: a post tagging @pachecostudiospt and a line on your site. Then, when one of your clients gets stuck after the lead, introduce us, with their consent. You keep the client and the service. For every job that comes from your referral you get 15% of its value, paid within 7 days of the client paying. {fecho}",
         },
     },
     "comunidade": {

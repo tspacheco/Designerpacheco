@@ -22,10 +22,13 @@ Base: guia «Pesquisa de Instagram e Prospecção Estratégica» do Tomás (10/1
 ## Primeiro passo por categoria
 | Categoria | Canal | Ativo | Pedido |
 |---|---|---|---|
-| Influenciador / operador | DM | Partner Systems Opportunity Map (3–5 handoffs, 1 hipótese, limite humano, prioridade 30 dias), sem custo | Conversa curta |
+| Influenciador / operador | DM | 3 quick wins implementados sem custo (escolhidos a partir do mapa da operação) | Conversa curta |
 | Grande negócio | DM + LinkedIn do decisor | Mini-mapa de uma página de um percurso público | Quem na equipa valida (operações, CX, transformação) |
-| PME / parceiro | DM ao fundador | Mini-mapa de um cliente-tipo da agência | Reunião de complementaridade |
+| PME / parceiro | DM ao fundador | 3 quick wins na operação da agência + mini-mapa de um cliente-tipo | Reunião de complementaridade |
 | Página / comunidade | Comentários em 2–3 posts, depois DM | Contribuição pública útil | Tema para artigo, workshop ou evento |
+
+## Comissão de parceiros
+Depois dos 3 quick wins: pedem-se a menção ao nosso nome e as recomendações; 15 % do valor de cada trabalho recomendado (mensalidades fora). Detalhe e menu de quick wins em `COMISSAO-PARCEIROS.md`; mensagem «Parceria» no gerador.
 
 ## Regras de envio
 - 1 minuto entre mensagens; saudação diferente em cada uma; sem emojis; sem preço; em romeno fecha com «Voi fi pregătit.»
