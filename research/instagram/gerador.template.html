@@ -33,7 +33,8 @@ section{display:grid;gap:14px;min-width:0}
 .intuito{font-size:13px;color:var(--muted);margin:0}
 .intuito strong{color:var(--fg);font-weight:600}
 .row{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
-label{display:grid;gap:4px;font:600 12px/1.2 var(--f-body);color:var(--muted);min-width:0}
+/* Os grupos de botões ficam fora de <label>: um clique num botão redesenhado fazia o label reenviar o clique ao 1.º botão. */
+label,.lbl{display:grid;gap:4px;font:600 12px/1.2 var(--f-body);color:var(--muted);min-width:0}
 label em{font-style:normal;font-weight:400}
 input,select,textarea{font:15px/1.4 var(--f-body);color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;min-width:0}
 textarea{resize:vertical;min-height:64px}
@@ -72,7 +73,7 @@ details[open] summary{margin-bottom:10px}
 <div class="wrap">
   <header>
     <h1>Abordagem <i>Instagram</i></h1>
-    <p>Escolhe o tipo de conta, escreve o que viste no perfil e a mensagem monta-se sozinha, já com a regra do guia: hipótese a validar, nunca acusação, sem preço.</p>
+    <p>Escolhe o tipo de conta e o tipo de negócio, escreve o que viste no percurso público e sai a DM com a isca, o Micro System Print de uma página e a cadência D4, D7 e D12. A triagem é conduzida por nós: hipótese a validar, nunca acusação, nunca formulário, sem preço e sem minutos.</p>
   </header>
 
   <div class="grid">
@@ -91,12 +92,12 @@ details[open] summary{margin-bottom:10px}
         </div>
         <div class="row">
           <label for="handle">@ no Instagram<input id="handle" placeholder="@conta"></label>
-          <label>Língua
+          <div class="lbl">Língua
             <span class="seg" id="lingua" role="group" aria-label="Língua"></span>
-          </label>
-          <label>Tratamento
+          </div>
+          <div class="lbl">Tratamento
             <span class="seg" id="registo" role="group" aria-label="Tratamento"></span>
-          </label>
+          </div>
         </div>
       </section>
 
@@ -114,10 +115,13 @@ details[open] summary{margin-bottom:10px}
         <label for="pergunta">Pergunta de hipótese <em>· em forma de pergunta, nunca uma certeza</em>
           <textarea id="pergunta" rows="2"></textarea>
         </label>
+        <label for="isca">Isca <em>· o que já é possível hoje, em pergunta («Hoje tem…?»); nunca afirma uma falha</em>
+          <textarea id="isca" rows="2"></textarea>
+        </label>
         <label for="tema" id="tema-l">Tema do post <em>· para comentários e DM à comunidade</em>
           <input id="tema">
         </label>
-        <label for="valor">Novidade para o follow-up <em>· uma coisa útil e nova, não «só a lembrar»</em>
+        <label for="valor">Observação nova para o D4 <em>· um sinal público a mais ou uma frame ampliada do print, não «só a lembrar»</em>
           <textarea id="valor" rows="2"></textarea>
         </label>
       </section>
@@ -159,22 +163,22 @@ details[open] summary{margin-bottom:10px}
 
 <script>
 const D = /*__DADOS__*/{};
-const ROT = {dm1:"DM 1", fu:"Follow-up (4 dias depois)", c1:"Comentário · ponto", c2:"Comentário · acréscimo", c3:"Comentário · pergunta", triagem:"Triagem (quando respondem)", parceria:"Parceria (só depois dos 3 quick wins entregues)"};
+const ROT = {print:"Micro System Print · 1 página (com a DM ou quando respondem)", dm1:"D0 · DM 1", fu:"D4 · observação nova", d7:"D7 · pergunta sim ou não", d12:"D12 · fecho limpo", c1:"Comentário · ponto", c2:"Comentário · acréscimo", c3:"Comentário · pergunta", triagem:"Triagem (quando respondem: vai com o print)", parceria:"Parceria (só depois dos 3 quick wins entregues)"};
 const CRIT = [["e","Encaixe com a auditoria","percurso multietapa, repetitivo e com valor?",3],["a","Acesso ao decisor","chega-se a fundador, operações ou CX?",2],["c","Complexidade pública","canais, equipas, reservas, entrega, volume?",3],["p","Prova / referência","pode dar caso, parceria ou introduções?",2]];
-const EVITAR = [/falh|failing|eșu|esu[ăa]/i,/perd(er|em) dinheiro|pierd|losing money/i,/autom[aá]tic|automat(ion|izare) (pronta|ready|gata)/i,/resolve tudo|rezolv[ăa] tot/i,/\d+\s?(€|eur|lei|ron)\b|preț|pret\b|preço|price/i,/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u];
-const EXEMPLO = {cat:"pme_parceiro",nome:"echipa Sinaps",empresa:"Sinaps",handle:"",lingua:"ro",registo:"dumneavoastră",tipo:6,gancho:"că ați deschis biroul din București, pe lângă Iași, Cluj, Constanța și Brașov",percurso:"",pergunta:"",tema:"",valor:"o hartă pentru un client e-commerce, cu ce se întâmplă cu un lead bun în primele 2 ore",score:{e:3,a:1,c:3,p:2},cidade:"Iași",seguidores:"a confirmar",sinais:"47 especialistas; Google Premier Partner; Meta Business Partner; 5 escritórios",evidencia:"https://www.revistabiz.ro/agentia-de-digital-marketing-sinaps-a-deschis-un-birou-la-bucuresti/",razao:"Agência com volume B2B: cada cliente dela é um percurso depois do lead",exemplo:true};
+const EVITAR = [/falh|failing|eșu|esu[ăa]/i,/perd(er|em) (dinheiro|leads|clientes)|pierde(ți|ti)? (bani|clien[țt]i|lead)|losing (money|leads|customers)/i,/\b\d+\s?(min\b|minut|minute)/i,/preench|fill (in|out)|completați|completeaza|completează/i,/automação (pronta|total)|automat(ion|izare) (pronta|ready|gata|total)|full automation|automatizamos/i,/resolve tudo|rezolv[ăa] tot/i,/\d[\d.,]*\s?(€|eur|euro|lei|ron)\b|€\s?\d/i,/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u];
+const EXEMPLO = {cat:"pme_parceiro",nome:"echipa Sinaps",empresa:"Sinaps",handle:"",lingua:"ro",registo:"dumneavoastră",tipo:8,gancho:"că ați deschis biroul din București, pe lângă Iași, Cluj, Constanța și Brașov",percurso:"",pergunta:"",isca:"",tema:"",valor:"o hartă pentru un client e-commerce, cu ce se întâmplă cu un lead bun în primele 2 ore",score:{e:3,a:1,c:3,p:2},cidade:"Iași",seguidores:"a confirmar",sinais:"47 especialistas; Google Premier Partner; Meta Business Partner; 5 escritórios",evidencia:"https://www.revistabiz.ro/agentia-de-digital-marketing-sinaps-a-deschis-un-birou-la-bucuresti/",razao:"Agência com volume B2B: cada cliente dela é um percurso depois do lead",exemplo:true};
 let S, rodar = 0;
 const $ = id => document.getElementById(id);
-const CAMPOS = ["nome","empresa","handle","gancho","percurso","pergunta","tema","valor","cidade","seguidores","sinais","evidencia","razao"];
+const CAMPOS = ["nome","empresa","handle","gancho","percurso","pergunta","isca","tema","valor","cidade","seguidores","sinais","evidencia","razao"];
 
 function cat(){return D.categorias.find(c=>c.id===S.cat)}
-function guardar(){try{localStorage.setItem("abordagem-ig",JSON.stringify(S))}catch(e){}}
-function carregar(){try{const s=JSON.parse(localStorage.getItem("abordagem-ig"));if(s&&s.cat)return s}catch(e){}return null}
+function guardar(){try{localStorage.setItem("abordagem-ig-2",JSON.stringify(S))}catch(e){}}
+function carregar(){try{const s=JSON.parse(localStorage.getItem("abordagem-ig-2"));if(s&&s.cat)return s}catch(e){}return null}
 
 function preencherPercurso(){
   const p = D.percursos[S.tipo]; if(!p) return;
-  S.percurso = p[S.lingua]; S.pergunta = p.pergunta[S.lingua];
-  $("percurso").value = S.percurso; $("pergunta").value = S.pergunta;
+  S.percurso = p[S.lingua]; S.pergunta = p.pergunta[S.lingua]; S.isca = p.isca[S.lingua];
+  $("percurso").value = S.percurso; $("pergunta").value = S.pergunta; $("isca").value = S.isca;
 }
 
 function seg(el, opts, val, cb){
@@ -219,11 +223,17 @@ function saudacao(i){
 }
 
 function montar(tpl,i){
-  const v = {saudacao:saudacao(i),nome:S.nome,empresa:S.empresa||S.nome,gancho:S.gancho,percurso:S.percurso,pergunta:S.pergunta,tema:S.tema,valor:S.valor,fecho:D.fecho[S.lingua]};
+  const v = Object.assign({saudacao:saudacao(i),nome:S.nome,empresa:S.empresa||S.nome,gancho:S.gancho,percurso:S.percurso,pergunta:S.pergunta,isca:S.isca,tema:S.tema,valor:S.valor,fecho:D.fecho[S.lingua]}, printVars());
   const falta=[];
-  ["valor","pergunta","gancho"].forEach(k=>{if(k!=="gancho"&&v[k]&&!/[.?!…]$/.test(v[k].trim()))v[k]=v[k].trim()+(k==="pergunta"?"?":".")});
+  ["valor","pergunta","isca"].forEach(k=>{if(v[k]&&!/[.?!…]$/.test(v[k].trim()))v[k]=v[k].trim()+(k==="valor"?".":"?")});
   const txt = tpl.replace(/\{(\w+)\}/g,(m,k)=>{const x=(v[k]||"").trim();if(!x){falta.push(k);return "\u0000"+k+"\u0001"}return x});
   return {txt:txt.replace(/\u0000(\w+)\u0001/g,"[$1]"),falta};
+}
+
+// Blocos do Micro System Print: vêm do tipo de negócio, na língua da ficha.
+function printVars(){
+  const p = D.percursos[S.tipo]||D.percursos[0], l = S.lingua, val = p.validacoes[l];
+  return {titulo:p.titulo[l], risco:p.risco[l], v1:val[0], v2:val[1], v3:val[2], metrica:p.metrica[l], quickwin:p.quickwin[l]};
 }
 
 function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"})[c])}
@@ -231,11 +241,11 @@ function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"
 let ULT = {};
 function mensagens(){
   const M = D.mensagens[S.cat][S.lingua];
-  const ordem = S.cat==="comunidade"?["c1","c2","c3","dm1","fu"]:Object.keys(M);
+  const ordem = S.cat==="comunidade"?["c1","c2","c3","dm1","fu"]:["print"].concat(Object.keys(M));
   $("msgs").innerHTML=""; ULT={};
-  const faltas=new Set(); let avisos=[];
+  const faltas=new Set(); let avisos=[], longas=[];
   ordem.forEach((k,i)=>{
-    const {txt,falta}=montar(M[k],i); ULT[k]=txt; falta.forEach(f=>faltas.add(f));
+    const {txt,falta}=montar(k==="print"?D.micro[S.lingua]:M[k],i); ULT[k]=txt; falta.forEach(f=>faltas.add(f));
     const box=document.createElement("div");box.className="msg";
     const html=esc(txt).replace(/\[(\w+)\]/g,"<mark>[$1]</mark>");
     box.innerHTML="<h3>"+ROT[k]+"<span>"+txt.length+" car.</span></h3><p>"+html+"</p>";
@@ -244,17 +254,23 @@ function mensagens(){
     b.onclick=()=>copiar(txt,"Copiado",box);a.appendChild(b);box.appendChild(a);
     $("msgs").appendChild(box);
     EVITAR.forEach(re=>{if(re.test(txt))avisos.push(k)});
+    if(k!=="print"&&txt.length>1000) longas.push(ROT[k]);
   });
   const li=[];
   if(faltas.size) li.push(["w","Falta preencher: "+[...faltas].join(", ")+"."]);
   else li.push(["","Todos os campos preenchidos."]);
-  if(avisos.length) li.push(["w","Há uma palavra a evitar (falha, perder dinheiro, automação pronta, preço ou emoji). Reescreve como hipótese."]);
-  else li.push(["","Sem preço, sem emojis, sem acusação."]);
+  if(avisos.length) li.push(["w","Há uma palavra a evitar (falha, perder leads ou dinheiro, automação pronta, preço, minutos, preencher formulário ou emoji). Reescreve como hipótese."]);
+  else li.push(["","Sem preço, sem minutos, sem formulário, sem emojis, sem acusação."]);
+  if(longas.length) li.push(["w","Passa dos 1000 caracteres de uma DM: "+longas.join(", ")+". Encurta o gancho, o percurso ou a observação."]);
+  if(S.cat!=="comunidade") li.push(["","O print não cabe numa DM: envia-o como captura de ecrã do cartão, ou cola-o em duas mensagens."]);
   if(S.gancho && S.gancho.length<20) li.push(["w","O gancho está curto: um facto concreto prova que viste a conta."]);
   if(S.cat==="comunidade") li.push(["","Comentar em 2 a 3 posts antes da DM. Nada de proposta nos comentários."]);
   if(S.cat==="grande") li.push(["","Mandar também ao decisor no LinkedIn com a mesma hipótese."]);
-  li.push(["","Escada: 3 quick wins → triagem → Auditoria de Sistemas com IA (creditada na implementação) → sprint → piloto. Preço só depois da triagem."]);
-  if(S.cat!=="grande"&&S.cat!=="comunidade") li.push(["w","«Sem custo» em espera: até o Tomás confirmar se os 3 quick wins continuam grátis para parceiros, não enviar DMs novas além do lote 1."]);
+  if(S.cat!=="comunidade"){
+    li.push(["","Antes de enviar: pelo menos 2 sinais públicos reais na ficha; no print só canais que viste, com o passo de risco «de validat / a validar»."]);
+    li.push(["","Cadência: D0 DM (com o print ou a pedir para o enviar) → D4 observação nova → D7 pergunta sim ou não → D12 fecho limpo. Respondeu → «Triagem» com o print."]);
+    li.push(["","Escada: triagem conduzida por nós (print + validação com o decisor) → 3 quick wins sem custo → Auditoria de Sistemas com IA (creditada na implementação) → sprint → piloto. Preço nunca por DM."]);
+  }
   if(S._prio<=1) li.push(["w","Nota 0 a 1: deixar em observação em vez de contactar."]);
   $("checks").innerHTML=li.map(([c,t])=>"<li class='"+c+"'>"+t+"</li>").join("");
 }

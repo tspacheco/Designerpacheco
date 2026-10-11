@@ -30,7 +30,7 @@ COLUNAS = [  # (cabeçalho, largura)
     ("Prova 0-2", 8), ("Canal", 11), ("Gancho", 34), ("Mensagem 1", 60), ("Follow-up", 50),
     ("Estado", 16), ("Data contacto", 12), ("Próxima ação", 28), ("Data próxima ação", 12), ("Notas", 34),
     # Fórmulas no fim: a linha copiada no gerador cola-se de A até Notas sem as apagar.
-    ("Score", 7), ("Prioridade", 9), ("Data follow-up", 12),
+    ("Score", 7), ("Prioridade", 9), ("Data follow-up", 12), ("Data D7", 12), ("Data D12", 12),
 ]
 COL = {h: i + 1 for i, (h, _) in enumerate(COLUNAS)}
 
@@ -88,10 +88,15 @@ def folha_prospecao(wb, contas):
                 value=f'=IF({s}="","",IF({s}>=8,5,IF({s}>=6,4,IF({s}>=4,3,IF({s}>=2,2,1)))))')
         dc = L("Data contacto") + str(r)
         cat = L("Categoria") + str(r)
-        # Follow-up: 4 dias depois do contacto (comunidades: 7 dias entre interações)
+        # Cadência da triagem proativa: D4 observação nova, D7 pergunta sim ou não, D12 fecho limpo
+        # (comunidades: 7 dias entre interações, sem D7 nem D12)
         ws.cell(row=r, column=COL["Data follow-up"],
                 value=f'=IF({dc}="","",{dc}+IF({cat}="Página / comunidade B2B",7,4))')
-        for h in ("Data contacto", "Data follow-up", "Data próxima ação"):
+        ws.cell(row=r, column=COL["Data D7"],
+                value=f'=IF(OR({dc}="",{cat}="Página / comunidade B2B"),"",{dc}+7)')
+        ws.cell(row=r, column=COL["Data D12"],
+                value=f'=IF(OR({dc}="",{cat}="Página / comunidade B2B"),"",{dc}+12)')
+        for h in ("Data contacto", "Data follow-up", "Data D7", "Data D12", "Data próxima ação"):
             ws.cell(row=r, column=COL[h]).number_format = "DD/MM/YYYY"
     fim = n_linhas + 1
     for lista, h in ((NOMES_CAT, "Categoria"), (ESTADOS, "Estado"), (CANAIS, "Canal"), (["ro", "pt", "en"], "Língua")):
@@ -131,9 +136,12 @@ def excel(contas):
             for k, t in D.MENSAGENS[c["id"]][lg].items():
                 linhas.append((c["nome"], lg, ROTULO[k], t.replace("{fecho}", D.FECHO[lg])))
     folha_simples(wb, "Mensagens", [("Categoria", 22), ("Língua", 7), ("Tipo", 18), ("Modelo", 110)], linhas)
-    folha_simples(wb, "Percursos", [("Tipo de negócio", 24), ("Percurso RO", 50), ("Pergunta RO", 50),
-                                    ("Percurso PT", 50), ("Pergunta PT", 50)],
-                  [(p["tipo"], p["ro"], p["pergunta"]["ro"], p["pt"], p["pergunta"]["pt"]) for p in D.PERCURSOS])
+    folha_simples(wb, "Percursos", [("Tipo de negócio", 24), ("Percurso RO", 50), ("Pergunta RO", 50), ("Isca RO", 50),
+                                    ("Percurso PT", 50), ("Pergunta PT", 50), ("Isca PT", 50), ("Título do print PT", 34),
+                                    ("Passo a validar PT", 44), ("3 validações PT", 60), ("Métrica PT", 44), ("Quick win PT", 44)],
+                  [(p["tipo"], p["ro"], p["pergunta"]["ro"], p["isca"]["ro"], p["pt"], p["pergunta"]["pt"], p["isca"]["pt"],
+                    p["titulo"]["pt"], p["risco"]["pt"], " / ".join(p["validacoes"]["pt"]), p["metrica"]["pt"], p["quickwin"]["pt"])
+                   for p in D.PERCURSOS])
     folha_simples(wb, "Queries", [("Categoria", 24), ("Queries de partida", 100)],
                   list(D.QUERIES) + [("", "")] + [("Termos: " + a, b) for a, b in D.TERMOS])
     folha_simples(wb, "Estados", [("Estado", 24), ("Significado", 70)], D.ESTADOS)
@@ -143,15 +151,20 @@ def excel(contas):
     return saida
 
 
-ROTULO = {"dm1": "DM 1", "fu": "Follow-up", "c1": "Comentário: ponto", "c2": "Comentário: acréscimo",
-          "c3": "Comentário: pergunta", "triagem": "Triagem (depois da resposta)", "parceria": "Parceria (depois dos 3 quick wins)"}
+ROTULO = {"dm1": "D0: DM 1", "fu": "D4: observação nova", "d7": "D7: pergunta sim ou não", "d12": "D12: fecho limpo",
+          "c1": "Comentário: ponto", "c2": "Comentário: acréscimo", "c3": "Comentário: pergunta",
+          "triagem": "Triagem (quando respondem, com o Micro System Print)", "parceria": "Parceria (depois dos 3 quick wins)"}
 
 
 def markdown():
     out = ["# Mensagens de abordagem no Instagram", "",
            "Gerado por `gerar.py` a partir de `dados.py`. Não editar à mão: mudar `dados.py` e correr de novo.", "",
            "Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` (facto público e concreto da conta) · "
-           "`{percurso}` · `{pergunta}` (hipótese em forma de pergunta) · `{tema}` (tema do post) · `{valor}` (algo novo e útil no follow-up).", ""]
+           "`{percurso}` · `{pergunta}` (hipótese em forma de pergunta) · `{isca}` (o que já é possível hoje, em pergunta; vem do tipo de negócio) · "
+           "`{tema}` (tema do post) · `{valor}` (observação nova para o D4).", "",
+           "**Triagem proativa (playbook 11/10, secção A.14):** a triagem é conduzida por nós. Observar o percurso público, levar uma hipótese "
+           "e um Micro System Print de uma página, pedir só a validação com o decisor. Nunca formulário, nunca minutos, nunca afirmar falhas internas. "
+           "Cadência: D0 DM → D4 observação nova → D7 pergunta sim ou não → D12 fecho limpo. Quem responde recebe a «Triagem» com o print.", ""]
     for c in D.CATEGORIAS:
         out += ["## " + c["nome"], "", "**Primeiro passo:** " + c["primeiro_passo"], "",
                 "**Intuito:** " + c["intuito"], "", "**Registo em romeno:** " + c["registo_ro"], ""]
@@ -160,6 +173,11 @@ def markdown():
             out.append("")
             for k, t in D.MENSAGENS[c["id"]][lg].items():
                 out += ["**" + ROTULO[k] + "**", "", "> " + t.replace("{fecho}", D.FECHO[lg]), ""]
+    out += ["## Micro System Print (1 página)", "",
+            "O gerador preenche-o com o tipo de negócio (título, passo a validar, 3 validações, métrica, quick win). "
+            "Ajustar ao que se viu: só canais observados e o passo de risco marcado «a validar».", ""]
+    for lg, nome in (("ro", "Romeno"), ("pt", "Português"), ("en", "Inglês")):
+        out += ["### " + nome, "", "```", D.MICRO_PRINT[lg], "```", ""]
     out += ["## Saudações (rodam sozinhas no gerador)", ""]
     for lg, regs in D.SAUDACOES.items():
         for reg, lst in regs.items():
@@ -171,7 +189,7 @@ def markdown():
 
 def html():
     dados = {"categorias": D.CATEGORIAS, "saudacoes": D.SAUDACOES, "fecho": D.FECHO,
-             "mensagens": D.MENSAGENS, "percursos": D.PERCURSOS, "evitar": D.EVITAR}
+             "mensagens": D.MENSAGENS, "percursos": D.PERCURSOS, "evitar": D.EVITAR, "micro": D.MICRO_PRINT}
     with open(os.path.join(AQUI, "gerador.template.html"), encoding="utf-8") as f:
         modelo = f.read()
     js = json.dumps(dados, ensure_ascii=False).replace("</", "<\\/")

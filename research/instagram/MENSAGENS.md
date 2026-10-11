@@ -2,181 +2,255 @@
 
 Gerado por `gerar.py` a partir de `dados.py`. Não editar à mão: mudar `dados.py` e correr de novo.
 
-Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` (facto público e concreto da conta) · `{percurso}` · `{pergunta}` (hipótese em forma de pergunta) · `{tema}` (tema do post) · `{valor}` (algo novo e útil no follow-up).
+Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` (facto público e concreto da conta) · `{percurso}` · `{pergunta}` (hipótese em forma de pergunta) · `{isca}` (o que já é possível hoje, em pergunta; vem do tipo de negócio) · `{tema}` (tema do post) · `{valor}` (observação nova para o D4).
+
+**Triagem proativa (playbook 11/10, secção A.14):** a triagem é conduzida por nós. Observar o percurso público, levar uma hipótese e um Micro System Print de uma página, pedir só a validação com o decisor. Nunca formulário, nunca minutos, nunca afirmar falhas internas. Cadência: D0 DM → D4 observação nova → D7 pergunta sim ou não → D12 fecho limpo. Quem responde recebe a «Triagem» com o print.
 
 ## Influenciador / operador
 
-**Primeiro passo:** DM personalizada a oferecer 3 soluções rápidas implementadas sem custo, a partir do mapa da operação dele.
+**Primeiro passo:** DM com hipótese do percurso público, a isca («hoje tens…?») e o Micro System Print de uma página com pelo menos 1 quick win; fecho «faz uma triagem connosco».
 
-**Intuito:** Conversa → 3 quick wins → triagem curta → Auditoria de Sistemas com IA; indicações consentidas depois: 10% do que faturamos ao negócio indicado, de 3 em 3 meses, enquanto durar.
+**Intuito:** Triagem conduzida por nós (print + validação) → 3 quick wins → Auditoria de Sistemas com IA; indicações consentidas depois: 15% da implementação + 5% de 3 em 3 meses enquanto trabalharmos com o indicado.
 
 **Registo em romeno:** tu
 
 ### Romeno
 
-**DM 1**
+**D0: DM 1**
 
-> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho} și m-am gândit la partea din spate a operațiunii tale: {percurso}. Companii din SUA și China rezolvă exact asta cu sisteme AI cu reguli clare și cu un om la decizie; în România, doar 5% dintre firme folosesc AI (Eurostat, 2025). Vreau să-ți ofer ceva concret, fără cost: pornind de la situația ta de acum, implementăm 3 soluții rapide în operațiunea ta. Întrebarea de la care pornesc: {pergunta} Ai fi deschis la o scurtă întâlnire ca să alegem împreună cele 3 soluții? Voi fi pregătit.
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho} și m-am uitat la traseul public: {percurso}. Nu am acces în interior, deci nu presupun nicio problemă. Întrebarea pe care aș valida-o: {pergunta} {isca} Companiile din SUA și China lucrează deja așa; în România, 5% dintre firme (Eurostat, 2025). Dacă nu, fă un triaj cu noi: am pregătit o pagină (Micro System Print) cu ce aș valida și o soluție rapidă aplicabilă imediat, și o validăm împreună. Voi fi pregătit.
 
-**Follow-up**
+**D4: observação nova**
 
-> {saudacao} Revin pe scurt, cu un lucru concret: {valor} Oferta celor 3 soluții rămâne valabilă, fără nicio obligație. Dacă acum nu e momentul, înțeleg perfect. Voi fi pregătit.
+> {saudacao} Revin cu o singură observație, nu cu o ofertă: {valor} Întrebarea pe care aș valida-o cu tine: ce se întâmplă cu o cerere după ce intră? Pagina e gata; dacă vrei, fă un triaj cu noi. Voi fi pregătit.
 
-**Triagem (depois da resposta)**
+**D7: pergunta sim ou não**
 
-> {saudacao} Mulțumesc pentru răspuns. Ca să nu vă ocup timpul, trei întrebări scurte de triaj: ce rezultat operațional vreți să îmbunătățiți în următoarele 90 de zile; unde intră azi cererea și unde se blochează sau cere pe cineva să alerge după ea; cine e responsabil de pasul următor. Cu răspunsurile pregătesc harta și cele 3 soluții rapide. Apoi decidem împreună dacă are sens un Audit de Sisteme cu AI. Voi fi pregătit.
+> {saudacao} O întrebare simplă, ca să nu-ți ocup timpul: pasul acesta e deja rezolvat cap-coadă la tine, sau merită să validăm harta împreună? Un da sau un nu e suficient. Voi fi pregătit.
+
+**D12: fecho limpo**
+
+> {saudacao} Închid subiectul pentru acum. Îți las Micro System Print-ul; dacă punctul acesta devine prioritate, validăm harta când vrei tu. Voi fi pregătit.
+
+**Triagem (quando respondem, com o Micro System Print)**
+
+> {saudacao} Mulțumesc pentru răspuns. Îți trimit Micro System Print-ul de o pagină: traseul public pe care l-am văzut, pasul marcat „de validat” și fluxul pe care l-aș propune, cu responsabil, regulă și predare la om. Nu afirm că ai o problemă: e primul lucru pe care l-aș valida. Facem triajul împreună, într-o întâlnire scurtă în care conduc eu întrebările, fără formulare. Dacă harta se confirmă, implementăm 3 soluții rapide, fără cost, ca să vezi cum lucrăm; pasul următor e Auditul de Sisteme cu AI, creditat în implementare. Dacă nu se confirmă, pagina rămâne la tine ca referință. Când îți convine? Voi fi pregătit.
 
 **Parceria (depois dos 3 quick wins)**
 
-> {saudacao} Mă bucur că cele 3 soluții merg deja la tine. Am o propunere simplă de parteneriat. Dacă ți se pare corect, menționează Pacheco Studios ca pe cei care te-au ajutat: o postare sau un story cu @pachecostudiospt și un rând pe site. Apoi, când întâlnești o afacere care se blochează în același loc, ne faci o introducere, cu acordul ei. Dacă ajungem să lucrăm cu acea afacere, primești 10% din ce facturăm acolo, plătit la fiecare 3 luni, cât timp colaborarea continuă. Voi fi pregătit.
+> {saudacao} Mă bucur că cele 3 soluții merg deja la tine. Am o propunere simplă de parteneriat, și încep cu partea care contează pentru tine: când întâlnești o afacere care se blochează în același loc, ne faci o introducere, cu acordul ei. Dacă ajungem să lucrăm cu acea afacere, primești 15% din valoarea implementării și apoi 5% la fiecare 3 luni, cât timp lucrăm cu ea. Valoarea depinde de afacere: la o firmă mai mare, implementarea e mai mare, și la fel partea ta. Dacă ți se pare corect, îți trimit propunerea scrisă, cu regulile simple: un testimonial de la tine și o postare pe lună despre noi, cu @pachecostudiospt. Voi fi pregătit.
 
 ### Português
 
-**DM 1**
+**D0: DM 1**
 
-> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho} e fiquei a pensar na parte de trás da tua operação: {percurso}. Empresas dos EUA e da China resolvem exatamente isto com sistemas de IA com regras claras e uma pessoa na decisão; na Roménia, só 5% das empresas usam IA (Eurostat, 2025). Quero oferecer-te uma coisa concreta, sem custo: a partir da tua situação atual, implementamos 3 soluções rápidas na tua operação. A pergunta de onde parto: {pergunta} Estarias aberto a uma conversa curta para escolhermos juntos as 3 soluções? Vou estar preparado.
+> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho} e olhei para o percurso público: {percurso}. Não tenho acesso ao interior, por isso não presumo nenhum problema. A pergunta que validaria: {pergunta} {isca} As empresas dos EUA e da China já trabalham assim; na Roménia, 5% das empresas (Eurostat, 2025). Se não, faz uma triagem connosco: preparei uma página (Micro System Print) com o que validaria e uma solução rápida que podes aplicar já, e validamo-la juntos. Vou estar preparado.
 
-**Follow-up**
+**D4: observação nova**
 
-> {saudacao} Volto só com uma coisa concreta: {valor} A oferta das 3 soluções mantém-se, sem compromisso. Se agora não é o momento, percebo perfeitamente. Vou estar preparado.
+> {saudacao} Volto com uma única observação, não com uma oferta: {valor} A pergunta que validaria contigo: o que acontece a um pedido depois de entrar? A página está pronta; se quiseres, faz uma triagem connosco. Vou estar preparado.
 
-**Triagem (depois da resposta)**
+**D7: pergunta sim ou não**
 
-> {saudacao} Obrigado pela resposta. Para não vos ocupar tempo, três perguntas curtas de triagem: que resultado operacional querem melhorar nos próximos 90 dias; onde entra hoje o pedido e onde abranda ou obriga alguém a correr atrás dele; quem é dono do próximo passo. Com as respostas preparo o mapa e as 3 soluções rápidas. Depois decidimos juntos se faz sentido uma Auditoria de Sistemas com IA. Vou estar preparado.
+> {saudacao} Uma pergunta simples, para não te ocupar: este passo já está resolvido de ponta a ponta aí, ou vale a pena validarmos o mapa juntos? Um sim ou um não chega. Vou estar preparado.
+
+**D12: fecho limpo**
+
+> {saudacao} Fecho o assunto por agora. Deixo-te o Micro System Print; se este ponto se tornar prioridade, validamos o mapa quando quiseres. Vou estar preparado.
+
+**Triagem (quando respondem, com o Micro System Print)**
+
+> {saudacao} Obrigado pela resposta. Envio-te o Micro System Print de uma página: o percurso público que vi, o passo marcado «a validar» e o fluxo que proporia, com dono, regra e passagem a uma pessoa. Não afirmo que tens um problema: é a primeira coisa que validaria. Fazemos a triagem juntos, numa conversa curta em que eu conduzo as perguntas, sem formulários. Se o mapa se confirmar, implementamos 3 soluções rápidas, sem custo, para veres como trabalhamos; o passo seguinte é a Auditoria de Sistemas com IA, creditada na implementação. Se não se confirmar, a página fica contigo como referência. Quando te dá jeito? Vou estar preparado.
 
 **Parceria (depois dos 3 quick wins)**
 
-> {saudacao} Fico contente por as 3 soluções já estarem a funcionar contigo. Tenho uma proposta simples de parceria. Se te parecer justo, menciona a Pacheco Studios como quem te ajudou: um post ou story com @pachecostudiospt e uma linha no site. Depois, quando conheceres um negócio que encrava no mesmo sítio, apresentas-nos, com o acordo dele. Se chegarmos a trabalhar com esse negócio, recebes 10% do que faturamos lá, pago de 3 em 3 meses, enquanto a colaboração durar. Vou estar preparado.
+> {saudacao} Fico contente por as 3 soluções já estarem a funcionar contigo. Tenho uma proposta simples de parceria, e começo pela parte que te interessa: quando conheceres um negócio que encrava no mesmo sítio, apresentas-nos, com o acordo dele. Se chegarmos a trabalhar com esse negócio, recebes 15% do valor da implementação e depois 5% de 3 em 3 meses, enquanto trabalharmos com ele. O valor depende do negócio: numa empresa maior, a implementação é maior, e a tua parte também. Se te parecer justo, envio-te a proposta escrita, com as regras simples: um testemunho teu e um post por mês sobre nós, com @pachecostudiospt. Vou estar preparado.
 
 ### Inglês
 
-**DM 1**
+**D0: DM 1**
 
-> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho} and started thinking about the back end of your operation: {percurso}. Companies in the US and China already solve exactly this with AI systems with clear rules and a human at the decision point; in Romania, only 5% of companies use AI (Eurostat, 2025). I'd like to offer you something concrete, at no cost: based on where your operation is today, we implement 3 quick wins in it. The question I start from: {pergunta} Would you be open to a short call to pick the 3 together? I'll come prepared.
+> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho} and looked at the public journey: {percurso}. I can't see the inside, so I'm not assuming a problem. The question I'd validate: {pergunta} {isca} Companies in the US and China already work this way; in Romania, 5% of companies do (Eurostat, 2025). If not, run a triage with us: I've prepared a page (Micro System Print) with what I'd validate and a quick win you can apply right away, and we validate it together. I'll come prepared.
 
-**Follow-up**
+**D4: observação nova**
 
-> {saudacao} A quick follow-up with one concrete thing: {valor} The offer of the 3 quick wins still stands, no strings attached. If now isn't the right time, completely understood. I'll come prepared.
+> {saudacao} Back with a single observation, not an offer: {valor} The question I'd validate with you: what happens to a request after it comes in? The page is ready; if you want, run a triage with us. I'll come prepared.
 
-**Triagem (depois da resposta)**
+**D7: pergunta sim ou não**
 
-> {saudacao} Thanks for getting back to me. To keep it short, three triage questions: which operational result do you want to improve in the next 90 days; where does a request come in today and where does it slow down or need someone chasing it; who owns the next step. With your answers I prepare the map and the 3 quick wins. Then we decide together whether an AI Systems Audit makes sense. I'll come prepared.
+> {saudacao} One simple question, so I don't take your time: is this step already solved end to end on your side, or is it worth validating the map together? A yes or a no is enough. I'll come prepared.
+
+**D12: fecho limpo**
+
+> {saudacao} Closing this for now. I'll leave the Micro System Print with you; if this point becomes a priority, we validate the map whenever suits you. I'll come prepared.
+
+**Triagem (quando respondem, com o Micro System Print)**
+
+> {saudacao} Thanks for getting back to me. I'm sending you the one-page Micro System Print: the public journey I saw, the step marked "to validate" and the flow I'd propose, with an owner, a rule and a human handoff. I'm not claiming you have a problem: it's the first thing I would validate. We run the triage together, in a short call where I lead the questions, no forms. If the map holds, we implement 3 quick wins at no cost so you see how we work; the next step is the AI Systems Audit, credited against implementation. If it doesn't hold, the page stays with you as a reference. When suits you? I'll come prepared.
 
 **Parceria (depois dos 3 quick wins)**
 
-> {saudacao} Glad the 3 quick wins are already working for you. I have a simple partnership proposal. If it feels fair, mention Pacheco Studios as the team that helped you: a post or story tagging @pachecostudiospt and a line on your site. Then, when you meet a business stuck in the same place, introduce us, with their consent. If we end up working with that business, you get 10% of what we bill there, paid every 3 months for as long as the collaboration lasts. I'll come prepared.
+> {saudacao} Glad the 3 quick wins are already working for you. I have a simple partnership proposal, starting with the part that matters to you: when you meet a business stuck in the same place, introduce us, with their consent. If we end up working with that business, you get 15% of the implementation value and then 5% every 3 months for as long as we work with them. The value depends on the business: a bigger company means a bigger implementation, and a bigger share for you. If that feels fair, I'll send you the written proposal with the simple rules: a testimonial from you and one post a month about us, tagging @pachecostudiospt. I'll come prepared.
 
 ## Grande negócio
 
-**Primeiro passo:** DM, e-mail ou LinkedIn a pedir encaminhamento para o dono de operações, CX ou transformação; levar mini-mapa.
+**Primeiro passo:** DM e LinkedIn com hipótese do percurso público e a isca; Micro System Print de uma página; pedir quem valida (operações, CX ou transformação).
 
-**Intuito:** Encaminhamento para o dono do processo → triagem curta → Auditoria de Sistemas com IA → sprint de desenho → piloto controlado.
+**Intuito:** Encaminhamento para o dono do processo → validação do print (triagem conduzida por nós) → 3 quick wins → Auditoria de Sistemas com IA → sprint de desenho → piloto controlado.
 
 **Registo em romeno:** dumneavoastră
 
 ### Romeno
 
-**DM 1**
+**D0: DM 1**
 
-> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Companii din SUA și China își conduc deja operațiunile cu sisteme AI cu reguli clare și cu un om la decizie; în România, doar 5% dintre firme folosesc AI (Eurostat, 2025). Am parcurs traseul public al unui client {empresa}: {percurso}. Pe baza a ceea ce este public, am o ipoteză de diagnostic, nu o concluzie: {pergunta} Am pus-o pe o mini-hartă de o pagină și pot implementa fără cost 3 soluții rapide ca să o testăm. Cu cine din echipă ar fi potrivit să o validez: operațiuni, experiența clienților sau transformare digitală? O întâlnire scurtă de explorare ar fi suficientă. Voi fi pregătit.
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am parcurs traseul public al unui client {empresa}: {percurso}. Nu am acces la operațiunea internă, deci nu presupun nicio problemă. Întrebarea pe care aș valida-o: {pergunta} {isca} Companiile din SUA și China lucrează deja așa; în România, 5% dintre firme (Eurostat, 2025). Am pregătit o pagină (Micro System Print) cu ce aș valida. Dacă nu e rezolvat cap-coadă, faceți un triaj cu noi: cine ar fi persoana potrivită, din operațiuni, experiența clienților sau transformare digitală? Voi fi pregătit.
 
-**Follow-up**
+**D4: observação nova**
 
-> {saudacao} Revin cu mini-harta despre traseul clientului {empresa}. Am adăugat un singur punct: {valor} Dacă îmi puteți indica persoana potrivită, îi trimit direct harta. Voi fi pregătit.
+> {saudacao} Revin cu o singură observație despre traseul clientului {empresa}, nu cu o ofertă: {valor} Întrebarea pe care aș valida-o: după ce o cerere intră, cine rămâne responsabil până la confirmare? Dacă îmi puteți indica persoana potrivită, îi trimit direct pagina. Voi fi pregătit.
 
-**Triagem (depois da resposta)**
+**D7: pergunta sim ou não**
 
-> {saudacao} Mulțumesc pentru răspuns. Ca să nu vă ocup timpul, trei întrebări scurte de triaj: ce rezultat operațional vreți să îmbunătățiți în următoarele 90 de zile; unde intră azi cererea și unde se blochează sau cere pe cineva să alerge după ea; cine e responsabil de pasul următor. Cu răspunsurile pregătesc harta și cele 3 soluții rapide. Apoi decidem împreună dacă are sens un Audit de Sisteme cu AI. Voi fi pregătit.
+> {saudacao} O întrebare simplă, ca să nu vă ocup timpul: pasul acesta e deja rezolvat cap-coadă la {empresa}, sau merită o validare scurtă cu persoana responsabilă? Un da sau un nu e suficient. Voi fi pregătit.
+
+**D12: fecho limpo**
+
+> {saudacao} Închid subiectul pentru acum. Vă las Micro System Print-ul despre traseul clientului {empresa}; dacă punctul acesta devine prioritate, validăm harta cu persoana potrivită. Voi fi pregătit.
+
+**Triagem (quando respondem, com o Micro System Print)**
+
+> {saudacao} Mulțumesc pentru răspuns. Vă trimit Micro System Print-ul de o pagină: traseul public al unui client {empresa}, pasul marcat „de validat” și fluxul pe care l-aș propune, cu responsabil, regulă și predare la om. Nu afirm că există o problemă: e primul lucru pe care l-aș valida. Propun un triaj condus de noi, într-o întâlnire scurtă cu persoana care cunoaște traseul, fără formulare. Dacă harta se confirmă, alegem împreună 3 soluții rapide, fără cost, ca să o testăm; pasul următor e Auditul de Sisteme cu AI, creditat în implementare. Dacă nu, pagina rămâne ca referință. Cui i-ar fi cel mai util să ajungă? Voi fi pregătit.
 
 ### Português
 
-**DM 1**
+**D0: DM 1**
 
-> {saudacao} Sou o Tomás, da Pacheco Studios. Empresas dos EUA e da China já conduzem as operações com sistemas de IA com regras claras e uma pessoa na decisão; na Roménia, só 5% das empresas usam IA (Eurostat, 2025). Percorri o percurso público de um cliente {empresa}: {percurso}. Com base no que é público, tenho uma hipótese de diagnóstico, não uma conclusão: {pergunta} Pus isto num mini-mapa de uma página e posso implementar sem custo 3 soluções rápidas para a testarmos. Quem na equipa seria a pessoa certa para o validar: operações, experiência do cliente ou transformação digital? Uma conversa exploratória curta chega. Vou estar preparado.
+> {saudacao} Sou o Tomás, da Pacheco Studios. Percorri o percurso público de um cliente {empresa}: {percurso}. Não tenho acesso à operação interna, por isso não presumo nenhum problema. A pergunta que validaria: {pergunta} {isca} As empresas dos EUA e da China já trabalham assim; na Roménia, 5% das empresas (Eurostat, 2025). Preparei uma página (Micro System Print) com o que validaria. Se não estiver resolvido de ponta a ponta, façam uma triagem connosco: quem seria a pessoa certa, em operações, experiência do cliente ou transformação digital? Vou estar preparado.
 
-**Follow-up**
+**D4: observação nova**
 
-> {saudacao} Volto ao mini-mapa sobre o percurso do cliente {empresa}. Acrescentei um único ponto: {valor} Se me puderem indicar a pessoa certa, envio-lhe o mapa diretamente. Vou estar preparado.
+> {saudacao} Volto com uma única observação sobre o percurso do cliente {empresa}, não com uma oferta: {valor} A pergunta que validaria: depois de um pedido entrar, quem fica dono dele até à confirmação? Se me indicarem a pessoa certa, envio-lhe a página diretamente. Vou estar preparado.
 
-**Triagem (depois da resposta)**
+**D7: pergunta sim ou não**
 
-> {saudacao} Obrigado pela resposta. Para não vos ocupar tempo, três perguntas curtas de triagem: que resultado operacional querem melhorar nos próximos 90 dias; onde entra hoje o pedido e onde abranda ou obriga alguém a correr atrás dele; quem é dono do próximo passo. Com as respostas preparo o mapa e as 3 soluções rápidas. Depois decidimos juntos se faz sentido uma Auditoria de Sistemas com IA. Vou estar preparado.
+> {saudacao} Uma pergunta simples, para não vos ocupar: este passo já está resolvido de ponta a ponta na {empresa}, ou vale uma validação curta com a pessoa responsável? Um sim ou um não chega. Vou estar preparado.
+
+**D12: fecho limpo**
+
+> {saudacao} Fecho o assunto por agora. Deixo-vos o Micro System Print sobre o percurso do cliente {empresa}; se este ponto se tornar prioridade, validamos o mapa com a pessoa certa. Vou estar preparado.
+
+**Triagem (quando respondem, com o Micro System Print)**
+
+> {saudacao} Obrigado pela resposta. Envio o Micro System Print de uma página: o percurso público de um cliente {empresa}, o passo marcado «a validar» e o fluxo que proporia, com dono, regra e passagem a uma pessoa. Não afirmo que existe um problema: é a primeira coisa que validaria. Proponho uma triagem conduzida por nós, numa conversa curta com quem conhece o percurso, sem formulários. Se o mapa se confirmar, escolhemos juntos 3 soluções rápidas, sem custo, para o testar; o passo seguinte é a Auditoria de Sistemas com IA, creditada na implementação. Se não, a página fica como referência. A quem seria mais útil chegar? Vou estar preparado.
 
 ### Inglês
 
-**DM 1**
+**D0: DM 1**
 
-> {saudacao} I'm Tomás from Pacheco Studios. Companies in the US and China already run their operations on AI systems with clear rules and a human at the decision point; in Romania, only 5% of companies use AI (Eurostat, 2025). I walked through the public journey of a {empresa} customer: {percurso}. Based only on what's public, I have a diagnostic hypothesis, not a conclusion: {pergunta} I've put it on a one-page mini-map and can implement 3 quick wins at no cost so we can test it. Who on the team would be the right person to validate it: operations, customer experience or digital transformation? A short exploratory call would be enough. I'll come prepared.
+> {saudacao} I'm Tomás from Pacheco Studios. I walked through the public journey of a {empresa} customer: {percurso}. I can't see the internal operation, so I'm not assuming a problem. The question I'd validate: {pergunta} {isca} Companies in the US and China already work this way; in Romania, 5% of companies do (Eurostat, 2025). I've prepared a page (Micro System Print) with what I'd validate. If it isn't solved end to end, run a triage with us: who would be the right person, in operations, customer experience or digital transformation? I'll come prepared.
 
-**Follow-up**
+**D4: observação nova**
 
-> {saudacao} Following up on the mini-map of the {empresa} customer journey. I added one point: {valor} If you can point me to the right person, I'll send the map to them directly. I'll come prepared.
+> {saudacao} Back with a single observation about the {empresa} customer journey, not an offer: {valor} The question I'd validate: after a request comes in, who owns it until it's confirmed? If you can point me to the right person, I'll send them the page directly. I'll come prepared.
 
-**Triagem (depois da resposta)**
+**D7: pergunta sim ou não**
 
-> {saudacao} Thanks for getting back to me. To keep it short, three triage questions: which operational result do you want to improve in the next 90 days; where does a request come in today and where does it slow down or need someone chasing it; who owns the next step. With your answers I prepare the map and the 3 quick wins. Then we decide together whether an AI Systems Audit makes sense. I'll come prepared.
+> {saudacao} One simple question, so I don't take your time: is this step already solved end to end at {empresa}, or is it worth a short validation with the person in charge? A yes or a no is enough. I'll come prepared.
+
+**D12: fecho limpo**
+
+> {saudacao} Closing this for now. I'll leave the Micro System Print on the {empresa} customer journey with you; if this point becomes a priority, we validate the map with the right person. I'll come prepared.
+
+**Triagem (quando respondem, com o Micro System Print)**
+
+> {saudacao} Thanks for getting back to me. I'm sending the one-page Micro System Print: the public journey of a {empresa} customer, the step marked "to validate" and the flow I'd propose, with an owner, a rule and a human handoff. I'm not claiming there is a problem: it's the first thing I would validate. I propose a triage led by us, in a short call with the person who knows the journey, no forms. If the map holds, we pick 3 quick wins together, at no cost, to test it; the next step is the AI Systems Audit, credited against implementation. If not, the page stays as a reference. Who would it be most useful to reach? I'll come prepared.
 
 ## PME / parceiro de indicação
 
-**Primeiro passo:** Mensagem de complementaridade: uma operação típica onde a Pacheco protege o resultado que a agência já gera.
+**Primeiro passo:** DM de complementaridade com hipótese sobre o passo depois do lead, a isca e o Micro System Print de um cliente-tipo; fecho «façam uma triagem connosco».
 
-**Intuito:** 3 quick wins → triagem → auditoria na operação deles ou de um cliente; indicações e co-entrega depois: 10% do que faturamos ao cliente indicado, de 3 em 3 meses, enquanto durar.
+**Intuito:** Triagem conduzida por nós → 3 quick wins → auditoria na operação deles ou de um cliente; indicações e co-entrega depois: 15% da implementação + 5% de 3 em 3 meses enquanto trabalharmos com o indicado.
 
 **Registo em romeno:** dumneavoastră
 
 ### Romeno
 
-**DM 1**
+**D0: DM 1**
 
-> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho}. Companii din SUA și China își conduc deja operațiunile cu sisteme AI cu reguli clare și cu un om la decizie; în România, doar 5% dintre firme folosesc AI (Eurostat, 2025). Voi aduceți cererea; noi lucrăm în stratul de după lead: cum ajunge cererea la echipă, ce context o însoțește, cine decide și cum se livrează. Nu înlocuim marketingul sau brandingul, protejăm rezultatul pe care îl generați deja. Am schițat o mini-hartă pentru un client tipic de-al vostru: {percurso}. Ca să vedeți cum lucrăm, implementăm fără cost 3 soluții rapide în propria voastră operațiune. Ați fi deschis la o întâlnire ca să vedem dacă are sens să lucrăm împreună? Voi fi pregătit.
+> {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am văzut {gancho}. Voi aduceți cererea; noi lucrăm în stratul de după lead. Traseul unui client tipic de-al vostru: {percurso}. Nu presupun nicio problemă; întrebarea pe care aș valida-o: {pergunta} {isca} Companiile din SUA și China lucrează deja așa; în România, 5% dintre firme (Eurostat, 2025). Dacă nu, faceți un triaj cu noi: am pregătit o pagină (Micro System Print) cu ce aș valida și o soluție rapidă aplicabilă imediat, și o validăm împreună. Voi fi pregătit.
 
-**Follow-up**
+**D4: observação nova**
 
-> {saudacao} Revin cu un exemplu concret de colaborare: {valor} Voi păstrați relația și serviciul, noi intrăm doar pe partea operațională. Voi fi pregătit.
+> {saudacao} Revin cu o singură observație, nu cu o ofertă: {valor} Voi păstrați relația și serviciul; noi intrăm doar pe partea operațională. Dacă are sens, faceți un triaj cu noi: pagina e gata. Voi fi pregătit.
 
-**Triagem (depois da resposta)**
+**D7: pergunta sim ou não**
 
-> {saudacao} Mulțumesc pentru răspuns. Ca să nu vă ocup timpul, trei întrebări scurte de triaj: ce rezultat operațional vreți să îmbunătățiți în următoarele 90 de zile; unde intră azi cererea și unde se blochează sau cere pe cineva să alerge după ea; cine e responsabil de pasul următor. Cu răspunsurile pregătesc harta și cele 3 soluții rapide. Apoi decidem împreună dacă are sens un Audit de Sisteme cu AI. Voi fi pregătit.
+> {saudacao} O întrebare simplă, ca să nu vă ocup timpul: pasul de după lead e deja rezolvat cap-coadă la clienții voștri, sau merită să validăm harta împreună? Un da sau un nu e suficient. Voi fi pregătit.
+
+**D12: fecho limpo**
+
+> {saudacao} Închid subiectul pentru acum. Vă las Micro System Print-ul; dacă punctul acesta devine prioritate pentru voi sau pentru un client, validăm harta împreună. Voi fi pregătit.
+
+**Triagem (quando respondem, com o Micro System Print)**
+
+> {saudacao} Mulțumesc pentru răspuns. Vă trimit Micro System Print-ul de o pagină: traseul unui client tipic de-al vostru, pasul marcat „de validat” și fluxul pe care l-aș propune, cu responsabil, regulă și predare la om. Nu afirm că există o problemă: e primul lucru pe care l-aș valida. Facem triajul împreună, într-o întâlnire scurtă în care conduc eu întrebările, fără formulare. Dacă harta se confirmă, implementăm 3 soluții rapide, fără cost, în operațiunea voastră, ca să vedeți cum lucrăm; pasul următor e Auditul de Sisteme cu AI, creditat în implementare, la voi sau la un client. Dacă nu se confirmă, pagina rămâne ca referință. Când v-ar conveni? Voi fi pregătit.
 
 **Parceria (depois dos 3 quick wins)**
 
-> {saudacao} Mă bucur că cele 3 soluții funcționează deja în echipa voastră. Vă propun un parteneriat simplu. Dacă vi se pare corect, menționați Pacheco Studios ca pe cei care v-au ajutat: o postare cu @pachecostudiospt și un rând pe site. Apoi, când un client de-al vostru se blochează după lead, ne faceți o introducere, cu acordul lui. Voi păstrați clientul și serviciul. Dacă ajungem să lucrăm cu acel client, primiți 10% din ce facturăm acolo, plătit la fiecare 3 luni, cât timp colaborarea continuă. Voi fi pregătit.
+> {saudacao} Mă bucur că cele 3 soluții funcționează deja în echipa voastră. Vă propun un parteneriat simplu și încep cu partea care contează pentru voi: când un client de-al vostru se blochează după lead, ne faceți o introducere, cu acordul lui. Voi păstrați clientul și serviciul. Dacă ajungem să lucrăm cu acel client, primiți 15% din valoarea implementării și apoi 5% la fiecare 3 luni, cât timp lucrăm cu el. Valoarea depinde de client: la o firmă mai mare, implementarea e mai mare, și la fel partea voastră. Dacă vi se pare corect, vă trimit propunerea scrisă, cu regulile simple: un testimonial din partea voastră și o postare pe lună despre noi, cu @pachecostudiospt. Voi fi pregătit.
 
 ### Português
 
-**DM 1**
+**D0: DM 1**
 
-> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho}. Empresas dos EUA e da China já conduzem as operações com sistemas de IA com regras claras e uma pessoa na decisão; na Roménia, só 5% das empresas usam IA (Eurostat, 2025). Vocês trazem a procura; nós trabalhamos na camada depois do lead: como o pedido chega à equipa, que contexto leva, quem decide e como se entrega. Não substituímos o marketing nem a marca, protegemos o resultado que vocês já geram. Esbocei um mini-mapa para um cliente típico vosso: {percurso}. Para verem como trabalhamos, implementamos sem custo 3 soluções rápidas na vossa própria operação. Estariam abertos a uma reunião para ver se faz sentido trabalharmos juntos? Vou estar preparado.
+> {saudacao} Sou o Tomás, da Pacheco Studios. Vi {gancho}. Vocês trazem a procura; nós trabalhamos na camada depois do lead. O percurso de um cliente típico vosso: {percurso}. Não presumo nenhum problema; a pergunta que validaria: {pergunta} {isca} As empresas dos EUA e da China já trabalham assim; na Roménia, 5% das empresas (Eurostat, 2025). Se não, façam uma triagem connosco: preparei uma página (Micro System Print) com o que validaria e uma solução rápida aplicável já, e validamo-la juntos. Vou estar preparado.
 
-**Follow-up**
+**D4: observação nova**
 
-> {saudacao} Volto com um exemplo concreto de colaboração: {valor} Vocês mantêm a relação e o serviço, nós entramos só na parte operacional. Vou estar preparado.
+> {saudacao} Volto com uma única observação, não com uma oferta: {valor} Vocês mantêm a relação e o serviço; nós entramos só na parte operacional. Se fizer sentido, façam uma triagem connosco: a página está pronta. Vou estar preparado.
 
-**Triagem (depois da resposta)**
+**D7: pergunta sim ou não**
 
-> {saudacao} Obrigado pela resposta. Para não vos ocupar tempo, três perguntas curtas de triagem: que resultado operacional querem melhorar nos próximos 90 dias; onde entra hoje o pedido e onde abranda ou obriga alguém a correr atrás dele; quem é dono do próximo passo. Com as respostas preparo o mapa e as 3 soluções rápidas. Depois decidimos juntos se faz sentido uma Auditoria de Sistemas com IA. Vou estar preparado.
+> {saudacao} Uma pergunta simples, para não vos ocupar: o passo depois do lead já está resolvido de ponta a ponta nos vossos clientes, ou vale a pena validarmos o mapa juntos? Um sim ou um não chega. Vou estar preparado.
+
+**D12: fecho limpo**
+
+> {saudacao} Fecho o assunto por agora. Deixo-vos o Micro System Print; se este ponto se tornar prioridade para vocês ou para um cliente, validamos o mapa juntos. Vou estar preparado.
+
+**Triagem (quando respondem, com o Micro System Print)**
+
+> {saudacao} Obrigado pela resposta. Envio o Micro System Print de uma página: o percurso de um cliente típico vosso, o passo marcado «a validar» e o fluxo que proporia, com dono, regra e passagem a uma pessoa. Não afirmo que existe um problema: é a primeira coisa que validaria. Fazemos a triagem juntos, numa conversa curta em que eu conduzo as perguntas, sem formulários. Se o mapa se confirmar, implementamos 3 soluções rápidas, sem custo, na vossa operação, para verem como trabalhamos; o passo seguinte é a Auditoria de Sistemas com IA, creditada na implementação, em vocês ou num cliente. Se não se confirmar, a página fica como referência. Quando vos dá jeito? Vou estar preparado.
 
 **Parceria (depois dos 3 quick wins)**
 
-> {saudacao} Fico contente por as 3 soluções já estarem a funcionar na vossa equipa. Proponho uma parceria simples. Se vos parecer justo, mencionem a Pacheco Studios como quem vos ajudou: um post com @pachecostudiospt e uma linha no site. Depois, quando um cliente vosso encravar depois do lead, apresentam-nos, com o acordo dele. Vocês mantêm o cliente e o serviço. Se chegarmos a trabalhar com esse cliente, recebem 10% do que faturamos lá, pago de 3 em 3 meses, enquanto a colaboração durar. Vou estar preparado.
+> {saudacao} Fico contente por as 3 soluções já estarem a funcionar na vossa equipa. Proponho uma parceria simples e começo pela parte que vos interessa: quando um cliente vosso encravar depois do lead, apresentam-nos, com o acordo dele. Vocês mantêm o cliente e o serviço. Se chegarmos a trabalhar com esse cliente, recebem 15% do valor da implementação e depois 5% de 3 em 3 meses, enquanto trabalharmos com ele. O valor depende do cliente: numa empresa maior, a implementação é maior, e a vossa parte também. Se vos parecer justo, envio a proposta escrita, com as regras simples: um testemunho vosso e um post por mês sobre nós, com @pachecostudiospt. Vou estar preparado.
 
 ### Inglês
 
-**DM 1**
+**D0: DM 1**
 
-> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho}. Companies in the US and China already run their operations on AI systems with clear rules and a human at the decision point; in Romania, only 5% of companies use AI (Eurostat, 2025). You bring in the demand; we work on the layer after the lead: how the request reaches the team, what context travels with it, who decides and how it gets delivered. We don't replace marketing or branding, we protect the result you already generate. I sketched a mini-map for one of your typical clients: {percurso}. To show you how we work, we implement 3 quick wins in your own operation at no cost. Would you be open to a meeting to see whether it makes sense to work together? I'll come prepared.
+> {saudacao} I'm Tomás from Pacheco Studios. I saw {gancho}. You bring in the demand; we work on the layer after the lead. The journey of one of your typical clients: {percurso}. I'm not assuming a problem; the question I'd validate: {pergunta} {isca} Companies in the US and China already work this way; in Romania, 5% of companies do (Eurostat, 2025). If not, run a triage with us: I've prepared a page (Micro System Print) with what I'd validate and a quick win you can apply right away, and we validate it together. I'll come prepared.
 
-**Follow-up**
+**D4: observação nova**
 
-> {saudacao} Following up with one concrete collaboration example: {valor} You keep the relationship and the service; we only step into the operational side. I'll come prepared.
+> {saudacao} Back with a single observation, not an offer: {valor} You keep the relationship and the service; we only step into the operational side. If it makes sense, run a triage with us: the page is ready. I'll come prepared.
 
-**Triagem (depois da resposta)**
+**D7: pergunta sim ou não**
 
-> {saudacao} Thanks for getting back to me. To keep it short, three triage questions: which operational result do you want to improve in the next 90 days; where does a request come in today and where does it slow down or need someone chasing it; who owns the next step. With your answers I prepare the map and the 3 quick wins. Then we decide together whether an AI Systems Audit makes sense. I'll come prepared.
+> {saudacao} One simple question, so I don't take your time: is the step after the lead already solved end to end for your clients, or is it worth validating the map together? A yes or a no is enough. I'll come prepared.
+
+**D12: fecho limpo**
+
+> {saudacao} Closing this for now. I'll leave the Micro System Print with you; if this point becomes a priority for you or for a client, we validate the map together. I'll come prepared.
+
+**Triagem (quando respondem, com o Micro System Print)**
+
+> {saudacao} Thanks for getting back to me. I'm sending the one-page Micro System Print: the journey of one of your typical clients, the step marked "to validate" and the flow I'd propose, with an owner, a rule and a human handoff. I'm not claiming there is a problem: it's the first thing I would validate. We run the triage together, in a short call where I lead the questions, no forms. If the map holds, we implement 3 quick wins at no cost in your own operation so you see how we work; the next step is the AI Systems Audit, credited against implementation, for you or for a client. If it doesn't hold, the page stays as a reference. When suits you? I'll come prepared.
 
 **Parceria (depois dos 3 quick wins)**
 
-> {saudacao} Glad the 3 quick wins are already working for your team. I'd like to propose a simple partnership. If it feels fair, mention Pacheco Studios as the team that helped you: a post tagging @pachecostudiospt and a line on your site. Then, when one of your clients gets stuck after the lead, introduce us, with their consent. You keep the client and the service. If we end up working with that client, you get 10% of what we bill there, paid every 3 months for as long as the collaboration lasts. I'll come prepared.
+> {saudacao} Glad the 3 quick wins are already working for your team. I'd like to propose a simple partnership, starting with the part that matters to you: when one of your clients gets stuck after the lead, introduce us, with their consent. You keep the client and the service. If we end up working with that client, you get 15% of the implementation value and then 5% every 3 months for as long as we work with them. The value depends on the client: a bigger company means a bigger implementation, and a bigger share for you. If that feels fair, I'll send the written proposal with the simple rules: a testimonial from you and one post a month about us, tagging @pachecostudiospt. I'll come prepared.
 
 ## Página / comunidade B2B
 
@@ -200,11 +274,11 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > O întrebare sinceră pentru cei care au trecut prin asta: {pergunta}
 
-**DM 1**
+**D0: DM 1**
 
 > {saudacao} Sunt Tomás, de la Pacheco Studios, din Iași. Am comentat în ultimele săptămâni la postările voastre despre {tema}. Lucrez pe sisteme cu AI pentru operațiuni: unde stă contextul, cine răspunde de pasul următor și unde decide un om. Cred că publicul vostru ar găsi util un subiect ca acesta: {gancho}, ca articol, workshop scurt sau discuție la un eveniment. Ați fi deschis la o întâlnire scurtă? Voi fi pregătit.
 
-**Follow-up**
+**D4: observação nova**
 
 > {saudacao} Revin cu propunerea de subiect, acum mai concretă: {valor} Mă adaptez formatului care vă ajută cel mai mult. Voi fi pregătit.
 
@@ -222,11 +296,11 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > Uma pergunta sincera para quem já passou por isto: {pergunta}
 
-**DM 1**
+**D0: DM 1**
 
 > {saudacao} Sou o Tomás, da Pacheco Studios. Tenho comentado nas vossas publicações sobre {tema}. Trabalho em sistemas com IA para operações: onde fica o contexto, quem é dono do próximo passo e onde decide uma pessoa. Acho que a vossa audiência ia achar útil um tema como este: {gancho}, em artigo, workshop curto ou conversa num evento. Estariam abertos a uma reunião curta? Vou estar preparado.
 
-**Follow-up**
+**D4: observação nova**
 
 > {saudacao} Volto à proposta de tema, agora mais concreta: {valor} Adapto-me ao formato que mais vos ajudar. Vou estar preparado.
 
@@ -244,13 +318,89 @@ Marcadores: `{saudacao}` varia sozinha · `{nome}` · `{empresa}` · `{gancho}` 
 
 > An honest question for anyone who's been through this: {pergunta}
 
-**DM 1**
+**D0: DM 1**
 
 > {saudacao} I'm Tomás from Pacheco Studios. I've been commenting on your posts about {tema}. I work on AI systems for operations: where context lives, who owns the next step and where a human decides. I think your audience would find a topic like this useful: {gancho}, as an article, a short workshop or a talk at an event. Would you be open to a short meeting? I'll come prepared.
 
-**Follow-up**
+**D4: observação nova**
 
 > {saudacao} Following up on the topic idea, now more concrete: {valor} Happy to fit whatever format helps you most. I'll come prepared.
+
+## Micro System Print (1 página)
+
+O gerador preenche-o com o tipo de negócio (título, passo a validar, 3 validações, métrica, quick win). Ajustar ao que se viu: só canais observados e o passo de risco marcado «a validar».
+
+### Romeno
+
+```
+MICRO SYSTEM PRINT · {empresa}
+{titulo}
+
+Ipoteză de validat: {pergunta}
+Traseul public observat: {percurso}
+Pasul de validat: {risco}
+
+Fluxul propus: declanșator → responsabil → regulă scrisă → predare la om → livrare → pasul următor. AI-ul aplică regula; la excepție decide o persoană.
+Soluție rapidă aplicabilă imediat: {quickwin}
+
+Trei întrebări pentru validare:
+1) {v1}
+2) {v2}
+3) {v3}
+Ce s-ar măsura: {metrica}.
+
+Pasul următor: validăm harta împreună, într-o întâlnire scurtă. Dacă nu există problemă, pagina rămâne ca referință; dacă există, definim Auditul de Sisteme cu AI.
+Nu afirm că există o problemă: e primul lucru pe care l-aș valida în traseul vostru.
+Pacheco Studios · Tomás Pacheco · @pachecostudiospt
+```
+
+### Português
+
+```
+MICRO SYSTEM PRINT · {empresa}
+{titulo}
+
+Hipótese a validar: {pergunta}
+Percurso público observado: {percurso}
+Passo a validar: {risco}
+
+Fluxo proposto: trigger → dono → regra escrita → passagem a uma pessoa → entrega → próximo passo. A IA aplica a regra; na exceção decide uma pessoa.
+Solução rápida aplicável já: {quickwin}
+
+Três perguntas de validação:
+1) {v1}
+2) {v2}
+3) {v3}
+O que se mediria: {metrica}.
+
+Próximo passo: validamos o mapa juntos, numa conversa curta. Se não houver problema, a página fica como referência; se houver, definimos a Auditoria de Sistemas com IA.
+Não afirmo que existe um problema: é a primeira coisa que validaria no vosso percurso.
+Pacheco Studios · Tomás Pacheco · @pachecostudiospt
+```
+
+### Inglês
+
+```
+MICRO SYSTEM PRINT · {empresa}
+{titulo}
+
+Hypothesis to validate: {pergunta}
+Public journey observed: {percurso}
+Step to validate: {risco}
+
+Proposed flow: trigger → owner → written rule → human handoff → delivery → next step. The AI applies the rule; a person decides on exceptions.
+Quick win you can apply right away: {quickwin}
+
+Three validation questions:
+1) {v1}
+2) {v2}
+3) {v3}
+What we would measure: {metrica}.
+
+Next step: we validate the map together in a short call. If there is no problem, the page stays as a reference; if there is, we define the AI Systems Audit.
+I'm not claiming there is a problem: it's the first thing I would validate in your journey.
+Pacheco Studios · Tomás Pacheco · @pachecostudiospt
+```
 
 ## Saudações (rodam sozinhas no gerador)
 
