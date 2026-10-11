@@ -140,7 +140,9 @@ def dia(data):
         c = cand.get(s, {})
         aval = int((r[4] or c.get("avaliacoes") or "0").replace(".", ""))  # a ficha nem sempre mostra a contagem
         nota = float((r[3] or "0").replace(",", "."))
-        res = ("site próprio" if r[5] else "sem contacto/fora" if not r[6] else
+        txt = open(f[:-5] + ".txt", encoding="utf-8").read() if os.path.exists(f[:-5] + ".txt") else ""
+        res = ("fechado temporariamente" if "Închisă temporar" in txt or "Închis temporar" in txt else
+               "site próprio" if r[5] else "sem contacto/fora" if not r[6] else
                "fora (nota/avaliações)" if nota < 4.3 or 0 < aval < 15 else "sem site")
         if s not in vistos:
             novos.append([d, s, r[1] or c.get("nome", ""), r[2] or c.get("categoria", ""), r[3], r[4], r[5], res, c.get("ficha", "")])
