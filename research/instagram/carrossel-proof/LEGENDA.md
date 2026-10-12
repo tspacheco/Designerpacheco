@@ -29,9 +29,11 @@ reconhece que o negócio já funciona, não fala de «mais uma ferramenta» (pre
 mostra como trabalhamos (triagem primeiro, desenho antes de construir, regras aprovadas, exceções a pessoas,
 contas e dados deles, medido do ponto de partida). O caso continua «real case», sem «nós fizemos».
 
-Your business already works. Now you're thinking about AI, and you're not sure who to trust with it.
+The business that chose AI before the market forced it to.
 
-Then don't start with a tool. Start by seeing how it works inside a real business, with the numbers.
+It didn't start with a tool. It started with one next action after every enquiry.
+
+Your business already works. Now you're thinking about AI, and you're not sure who to trust with it. Then start by seeing how it works inside a real business, with the numbers.
 
 This carousel walks through one real case, step by step: where requests came in, who owned the next action, the rule written before any automation, what the AI handled, and what stayed with the team.
 
@@ -55,6 +57,6 @@ DM "AUDIT" and tell us what your business does. We'll tell you where the first l
 
 ### Capa
 
-Desde 12/10 22h43 (Tomás: «Muda»): «This business did not start / with an AI tool.» + «It started with one next
-action after every enquiry.» O título do plano («A business did not need another AI tool.») falava a quem já
-experimentou ferramentas; o nosso público ainda não tem nenhuma.
+Desde 12/10 22h47 (frase do Tomás): «The business that chose AI / before the market forced it to.» + «It didn't start
+with a tool. It started with one next action after every enquiry.» Sem «revolution»: lê-se como hype para um
+público cauteloso; se o Tomás quiser, entra.

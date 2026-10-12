@@ -301,8 +301,8 @@ def caso_real():
 
 SLIDES = [
     {"tema": "esc", "eyebrow": "PROOF · A REAL SYSTEM BREAKDOWN", "marca": "PACHECO STUDIOS",
-     "h1": "This business did not start<br>[[with an AI tool.]]", "h1px": 84,
-     "sub": "It started with **one next action** after every enquiry.",
+     "h1": "The business that chose AI<br>[[before the market forced it to.]]", "h1px": 76,
+     "sub": "It didn’t start with a tool. It started with **one next action** after every enquiry.",
      "html": curva_capa(),
      "pill": "SWIPE TO SEE THE SYSTEM BREAKDOWN →",
      "rodape": "Every system we build starts with the path, not the tool."},
