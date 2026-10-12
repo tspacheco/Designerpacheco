@@ -81,3 +81,28 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-11 | gentes-pilates | Faustina | Reformer: a barra desliza e a mola estica com o scroll |
 | 2026-10-11 | venezia-showroom | Cardo | Mosaico que assenta |
 | 2026-10-11 | servisare-la-piticu | Alegreya Sans SC | Elevador de oficina |
+| 2026-10-12 | hair-studio-dxs | League Gothic | Etiqueta de cadeira de barbeiro: número do lugar que roda com o scroll e a tesoura que corta o título |
+| 2026-10-12 | roxana-irimia-concept | Cormorant SC | Linha de luz fina que varre a pele e desenha as secções (feixe do laser) |
+| 2026-10-12 | stefan-art | Abhaya Libre | Assinatura manuscrita de assinatura de artista que se traça e assina cada secção |
+| 2026-10-12 | salonul-albastru | Alike | Azulejo e azul profundo: luz de espelho de salão que acende por camadas sobre a foto |
+| 2026-10-12 | salon-carmen | Libre Baskerville | Bobine e rolos de cabelo que se enrolam, cachos que se soltam ao scroll |
+| 2026-10-12 | dao-center | Teko | Marcador de ginásio: placas de peso que se empilham ao scroll, contador de sessões |
+| 2026-10-12 | underground-barber-shop | Stick No Bills | Estêncil de cartaz de rua (grafite) com pistas de metro: «linha» por serviço |
+| 2026-10-12 | raf-gym | Saira Extra Condensed | Barra com discos que se carrega ao scroll, cada disco um plano de treino |
+| 2026-10-12 | luxury-dental-clinique | Besley | Dossel de consultório: luz suave e linha de esmalte que desenha o sorriso |
+| 2026-10-12 | versatil-frizerie-manichiura | Lexend Deca | Paleta de três serviços em cartões que se baralham e escolhem |
+| 2026-10-12 | utopia-open-for | Pathway Extreme | Horizonte utópico: camadas de cor do salão como postal que se abre |
+| 2026-10-12 | umano-beauty-studio | Roboto Serif | Pétala e pincel de maquilhagem que traça a linha do título |
+| 2026-10-12 | dynamite-copou | Rokkitt | Rastilho que queima ao longo da página e acende cada secção |
+| 2026-10-12 | sofia-pets-coafor | Bellota | Pegadas que atravessam a página e a toalha/escova que alisa o pelo |
+| 2026-10-12 | junior-family-dental | Gluten | Cadeira pequena e grande lado a lado: família que se alinha como dentes |
+| 2026-10-12 | insmile-cabinet-stomatologie | Fanwood Text | Diário de consulta: ficha dentária com dentes desenhados em linha que se preenchem |
+| 2026-10-12 | noblesse | Gowun Batang | Cartão de visita dourado e tecido: monograma N que se borda |
+| 2026-10-12 | offcut-barbershop | Chivo | Etiqueta de produção: «offcut» do corte, régua de mm e tags numeradas |
+| 2026-10-12 | cmi-ichim-lucian | Noto Serif | Receituário de consultório: papel timbrado limpo com sublinhados a desenhar-se |
+| 2026-10-12 | inkcultura-tattoo-piercing | Rubik Dirt | Tinta que se espalha: manchas e flash-sheet de estúdio com os trabalhos reais |
+| 2026-10-12 | elu-by-alina | Cormorant Unicase | Frasco e batom em linha que se montam como mesa de maquilhagem |
+| 2026-10-12 | brilliant-partner-mounir | Fira Sans Extra Condensed | Lente de brilho: reflexo que passa por cima das fotos, facetas que acendem |
+| 2026-10-12 | salon-any-mary | Merienda | Caderno de cliente com notas manuscritas e coração/laço que se desenha |
+| 2026-10-12 | fitness-fight | Big Shoulders Text | Cronómetro de ringue e luvas: rondas que contam ao scroll |
+| 2026-10-12 | basarabi-beauty-style | Ruda | Mapa do bairro (Basarabi) em linhas que se desenham até ao salão |
