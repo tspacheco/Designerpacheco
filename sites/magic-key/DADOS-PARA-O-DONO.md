@@ -12,3 +12,14 @@ Tudo o que falta aparece no site com o selo **„de confirmat”**.
 - **Diplomas/certificados** visíveis no balcão: se quiser, mencionar no site (com foto nítida).
 - **Fotos:** ver `media/LEIA-ME.txt`. Não usadas: foto noturna, banner com contactos e placa de horário (só serviram de fonte).
 - **Domínio:** p. ex. magickey.ro ou cheiauto-iasi.ro (verificar se está livre).
+
+## 13/10 — depois do SEO: o que o George deve confirmar
+
+O site passou a responder às pesquisas reais de Iași (ver Magic-Key-SEO-Iasi.pdf na pasta das auditorias). Estas afirmações vieram da entrevista ou são práticas normais do ofício; o George confirma ou corrige:
+
+- **Marcas:** a secção «Mărci» lista 22 marcas. As 9 a verde vêm dos trabalhos fotografados e da entrevista (Dacia, Renault, Toyota, Opel, VW, Mercedes, Citroën, Jeep, SsangYong); as outras 13 (Ford, Skoda, Peugeot, Fiat, Hyundai, Kia, Nissan, Audi, Seat, Honda, Mazda, Suzuki, Chevrolet) assentam no «para a maioria dos carros da rua tenho o que é preciso». Tirar as que não faz.
+- **Perguntas frequentes:** «com mașina de față și cu actele ei» (chave nova quando se perderam todas); «programarea se face pe mașină, în parcarea Selgros»; «majoritatea cartelelor de interfon se copiază, cele criptate nu»; «chei auto la domiciliu în Iași și împrejurimi, ≈ 120 lei + lucrarea».
+- **Tempos:** 2–3 minutos chave de casa; 10–15 minutos a 2–3 horas chave auto (palavras dele na entrevista).
+- **BMW, Range Rover, Jaguar:** o site diz «baterii, acumulatori și carcase, da; cheie nouă depinde de model, sună întâi». Confirmar que é assim que quer que se diga.
+- **Zona:** «Șos. Nicolina 57A (zona Nicolina–CUG)». Confirmar o nome da zona como os clientes lhe chamam.
+- **Horário nos feriados** (o Selgros fecha?): continua por confirmar.
