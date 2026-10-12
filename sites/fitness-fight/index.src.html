@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fitness Fight Iași · Karate, BJJ, MMA · Strada Sf. Vasile 22</title>
+<meta name="description" content="Fitness Fight, club sportiv în Iași, Strada Sf. Vasile 22: Karate, BJJ și MMA. 4,9 pe Google (77 de recenzii). Tel. 0732 740 505. Cere un antrenament de probă.">
+<meta name="theme-color" content="#0E0F12">
+<meta property="og:title" content="Fitness Fight Iași · Simplitate. Respect. Disciplină.">
+<meta property="og:description" content="Karate, BJJ, MMA. Cere un antrenament de probă: 0732 740 505.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/g-01.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E0F12'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%23D8281F'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --ink:#0E0F12;--carvao:#17191E;--carvao2:#22252C;--gi:#F4F1EA;--gi2:#B9B6AF;
+  --verm:#D8281F;--verm-l:#FF5A4E;--azul:#2B6CB0;--azul-l:#6FA6E0;--coral:#EE8A78;
+  --f-d:'Big Shoulders Text','Arial Narrow',Impact,sans-serif;
+  --f-c:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-m:'DM Mono',ui-monospace,Menlo,monospace;
+  --hud:34px;
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:108px;-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--gi);font:400 17px/1.6 var(--f-c);overflow-x:hidden;padding-bottom:76px}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
+:focus-visible{outline:3px solid var(--verm-l);outline-offset:3px;border-radius:3px}
+.salt{position:absolute;left:12px;top:-60px;background:var(--verm);color:#fff;padding:8px 14px;z-index:300}
+.salt:focus{top:12px}
+.lat{max-width:1180px;margin:0 auto;padding:0 20px}
+
+.prezentare{background:var(--verm);color:#fff;text-align:center;font:700 12px/1.3 var(--f-c);letter-spacing:.1em;padding:9px 14px;text-transform:uppercase}
+
+/* cap: nav + HUD */
+.cap{position:sticky;top:0;z-index:80;background:rgba(14,15,18,.0);transition:background .25s}
+.cap.scrolled{background:var(--ink);box-shadow:0 10px 30px -14px #000}
+.bara-in{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:56px}
+.marca{white-space:nowrap;display:flex;align-items:center;gap:10px;text-decoration:none;font:900 22px/1 var(--f-d);letter-spacing:.04em;text-transform:uppercase}
+.marca svg{width:30px;height:30px}
+.nav{display:none;gap:2px}
+.nav a{padding:10px 14px;text-decoration:none;font:700 15px/1 var(--f-d);letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.nav a:hover{color:var(--verm-l)}
+.dr{display:flex;align-items:center;gap:10px}
+.limbi{display:flex;border:1.5px solid var(--gi2);border-radius:2px;overflow:hidden}
+.limbi button{background:none;border:0;padding:0 10px;min-height:34px;min-width:38px;font:800 13px/1 var(--f-d);cursor:pointer;letter-spacing:.08em}
+.limbi button[aria-pressed="true"]{background:var(--gi);color:var(--ink)}
+.limbi .doar-rev{display:none}
+html.rev .limbi .doar-rev{display:block}
+.tel-hdr{display:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:2px solid var(--gi);border-radius:2px;font:800 18px/1 var(--f-d);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;background:transparent;color:var(--gi);transition:transform .2s,background .2s,color .2s,border-color .2s;position:relative}
+.btn svg{width:22px;height:22px;flex:none}
+.btn-v{background:var(--verm);border-color:var(--verm);color:#fff}
+.btn-v:hover{background:var(--verm-l);border-color:var(--verm-l);color:var(--ink);transform:translateY(-2px)}
+.btn-o:hover{background:var(--gi);color:var(--ink)}
+.btn-wa{background:#1F8A52;border-color:#1F8A52;color:#fff}
+.btn-wa:hover{transform:translateY(-2px);background:#26A662}
+.btn-sms{background:var(--azul);border-color:var(--azul);color:#fff}
+.btn-sms:hover{transform:translateY(-2px);background:#3A7FCB}
+.btn[aria-disabled="true"]{opacity:.35;pointer-events:none}
+.btn-mic{min-height:40px;padding:0 16px;font-size:15px}
+
+.hud{height:var(--hud);display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;font:500 13px/1 var(--f-m);letter-spacing:.06em;background:var(--carvao);border-block:1px solid #2C3037;padding:0 max(20px,calc((100% - 1180px)/2 + 20px))}
+.hud-r{display:flex;align-items:center;gap:8px;font:800 15px/1 var(--f-d);letter-spacing:.14em;text-transform:uppercase;min-width:0}
+.hud-r svg{width:20px;height:20px;color:var(--verm-l);flex:none}
+.hud-r span.n{display:inline-block;min-width:3.4ch;color:var(--gi)}
+.hud-r .nm{color:var(--gi2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hud-c{font:500 18px/1 var(--f-m);letter-spacing:.08em;color:var(--gi);font-variant-numeric:tabular-nums}
+.hud-c.sfarsit{color:var(--verm-l)}
+.hud-b{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:transparent}
+.hud-b i{display:block;height:100%;background:var(--verm);transform-origin:left;transform:scaleX(0);will-change:transform}
+.hud.gong{animation:gong .9s ease-out}
+.hud.gong .hud-r .n{animation:tic .5s cubic-bezier(.3,1.5,.5,1)}
+@keyframes gong{0%{background:var(--verm)}100%{background:var(--carvao)}}
+@keyframes tic{0%{transform:translateY(-100%);opacity:0}100%{transform:none;opacity:1}}
+
+/* saltele */
+.saltele{height:22px;background:conic-gradient(var(--azul) 25%,var(--coral) 0 50%,var(--azul) 0 75%,var(--coral) 0) 0 0/44px 44px;position:relative}
+.saltele::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink),transparent 20%,transparent 80%,var(--ink));opacity:.35}
+
+/* revelare */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* erou */
+.erou{position:relative;min-height:calc(100svh - 56px - var(--hud) - 40px);min-height:min(820px,max(560px,calc(100svh - 130px)));display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;background:var(--carvao)}
+.erou-fundo{position:absolute;inset:0;z-index:-2}
+.erou-fundo svg{position:absolute;inset:0;width:100%;height:100%}
+.erou-fundo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 36%}
+.js .erou-fundo{clip-path:inset(0 0 100% 0);animation:cortina 1s cubic-bezier(.7,0,.2,1) .15s forwards}
+.js .erou-fundo img{transform:scale(1.18);animation:zoom 3s cubic-bezier(.2,.6,.2,1) .15s forwards}
+@keyframes cortina{to{clip-path:inset(0)}}
+@keyframes zoom{to{transform:scale(1)}}
+.erou::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(14,15,18,.97) 0,rgba(14,15,18,.82) 30%,rgba(14,15,18,.25) 62%,rgba(14,15,18,.55) 100%)}
+.gong-banda{position:absolute;top:0;bottom:0;left:0;width:100%;background:var(--verm);z-index:3;transform:translateX(-101%);pointer-events:none}
+.js .gong-banda{animation:varre .8s cubic-bezier(.7,0,.3,1) .85s forwards}
+@keyframes varre{0%{transform:translateX(-101%)}50%{transform:none}100%{transform:translateX(101%)}}
+html:not(.js) .gong-banda{display:none}
+.erou-in{width:100%;padding-top:80px;padding-bottom:44px}
+.eticheta{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font:800 15px/1 var(--f-d);letter-spacing:.2em;text-transform:uppercase;color:var(--gi);margin-bottom:12px}
+.eticheta b{background:var(--verm);color:#fff;padding:5px 9px 4px;letter-spacing:.14em}
+h1{font:900 clamp(78px,23vw,230px)/.84 var(--f-d);letter-spacing:-.005em;text-transform:uppercase;margin-bottom:22px}
+h1 .cuv{display:block;overflow:hidden;padding-top:.04em}
+h1 .cuv span{display:block}
+h1 .cuv.c2 span{color:transparent;-webkit-text-stroke:2px var(--gi)}
+.js h1 .cuv span{transform:translateY(105%);animation:urca .75s cubic-bezier(.2,.8,.2,1) forwards}
+.js h1 .c1 span{animation-delay:1.25s}.js h1 .c2 span{animation-delay:1.4s}
+@keyframes urca{to{transform:none}}
+.disc{display:flex;flex-wrap:wrap;gap:8px 18px;font:800 clamp(22px,5.5vw,34px)/1 var(--f-d);letter-spacing:.14em;text-transform:uppercase;margin-bottom:26px;align-items:center}
+.disc i{display:inline-block;width:10px;height:10px;background:var(--verm);transform:rotate(45deg)}
+.erou-r{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin-bottom:28px;font-weight:600}
+.nota{display:inline-flex;align-items:center;gap:10px;font:800 28px/1 var(--f-d);letter-spacing:.04em}
+.nota svg{width:22px;height:22px;color:#FFC24A}
+.nota small{font:600 15px/1.2 var(--f-c);color:var(--gi2);letter-spacing:0}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.in1{opacity:0;transform:translateY(18px);animation:intra .7s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes intra{to{opacity:1;transform:none}}
+html:not(.js) .in1{opacity:1;transform:none}
+
+/* panglica */
+.panglica{background:var(--verm);color:#fff;overflow:hidden;padding:13px 0;font:900 clamp(24px,5vw,34px)/1 var(--f-d);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.banda-in{display:flex;width:max-content;animation:rula 30s linear infinite}
+.banda-in span{padding:0 20px;display:inline-flex;align-items:center;gap:40px}
+.banda-in i{display:inline-block;width:12px;height:12px;background:var(--ink);transform:rotate(45deg)}
+@keyframes rula{to{transform:translateX(-50%)}}
+
+/* sectiuni */
+.sec{padding:76px 0 84px;position:relative}
+.sec h2{font:900 clamp(46px,11vw,104px)/.9 var(--f-d);letter-spacing:.005em;text-transform:uppercase;margin-bottom:26px}
+.sec h2 em{font-style:normal;color:var(--verm-l)}
+.rk{display:flex;align-items:center;gap:12px;font:800 16px/1 var(--f-d);letter-spacing:.22em;text-transform:uppercase;color:var(--verm-l);margin-bottom:16px}
+.rk::before{content:"";width:34px;height:3px;background:var(--verm-l)}
+.lead{font-size:clamp(18px,2.4vw,22px);line-height:1.55;max-width:46ch;color:#DAD6CE}
+.trei{display:grid;gap:0;margin:36px 0 10px}
+.trei div{font:900 clamp(56px,16vw,150px)/.92 var(--f-d);text-transform:uppercase;letter-spacing:.005em;border-top:1px solid #2C3037;padding:6px 0 0;display:flex;align-items:baseline;gap:18px;overflow:hidden}
+.trei div:last-child{border-bottom:1px solid #2C3037}
+.trei span{display:inline-block;transform:translateX(-30px);opacity:0;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
+.trei.vis span{transform:none;opacity:1}
+.trei div:nth-child(2) span{transition-delay:.18s}.trei div:nth-child(3) span{transition-delay:.36s}
+.trei small{font:500 13px/1.3 var(--f-m);color:var(--gi2);letter-spacing:.04em;text-transform:none;max-width:22ch}
+.trei div:nth-child(1) span:first-child{color:var(--gi)}
+.trei div:nth-child(2) span:first-child{color:transparent;-webkit-text-stroke:2px var(--gi)}
+.trei div:nth-child(3) span:first-child{color:var(--verm-l)}
+
+/* discipline */
+.carduri{display:grid;gap:18px;margin-top:34px}
+.card{position:relative;background:var(--carvao);border:1px solid #2C3037;padding:26px 24px 28px;overflow:hidden;transition:transform .3s,border-color .3s,background .3s}
+.card::before{content:attr(data-n);position:absolute;right:14px;top:-8px;font:900 130px/1 var(--f-d);color:#1F2228;pointer-events:none;transition:color .3s}
+.card:hover{transform:translateY(-4px);border-color:var(--verm);background:#1C1E24}
+.card:hover::before{color:#2A1F22}
+.card h3{font:900 clamp(54px,12vw,80px)/.9 var(--f-d);text-transform:uppercase;margin-bottom:14px;position:relative}
+.card p{color:#CFCBC3;position:relative;max-width:40ch}
+.card .eti{display:inline-block;margin-top:16px;font:500 12px/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase;border:1px solid #3A3E47;padding:7px 9px;color:var(--gi2)}
+
+/* galerie */
+.gal{columns:2;column-gap:12px;margin-top:34px}
+.gal figure{break-inside:avoid;margin:0 0 12px;position:relative;background:var(--carvao2);overflow:hidden}
+.gal .poza{position:relative;overflow:hidden;background:linear-gradient(135deg,#22252C,#1A1C21)}
+.gal svg.fundo{position:absolute;inset:0;width:100%;height:100%}
+.gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
+.gal figure:hover img{transform:scale(1.05)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 12px 10px;background:linear-gradient(0deg,rgba(14,15,18,.92),transparent);font:700 12px/1.3 var(--f-m);letter-spacing:.03em;color:#fff}
+.gal .tag{position:absolute;top:0;left:0;background:var(--verm);color:#fff;font:800 14px/1 var(--f-d);letter-spacing:.12em;padding:6px 9px 5px;z-index:2}
+.gal figure::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.0);transition:border-color .3s;pointer-events:none}
+.gal figure:hover::after{border-color:rgba(255,255,255,.5)}
+
+/* fisa arbitrului */
+.fise{display:grid;gap:14px;margin-top:40px}
+.fisa-a{background:var(--gi);color:var(--ink);padding:24px 22px 22px;position:relative;clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%)}
+.fisa-a .sc{position:absolute;right:16px;top:12px;font:900 54px/1 var(--f-d);color:var(--verm);letter-spacing:.02em}
+.fisa-a p{font-size:17px;line-height:1.5;max-width:34ch;padding-right:68px}
+.fisa-a footer{margin-top:14px;font:600 12px/1.3 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:#4A4D55}
+.sub-nota{margin-top:16px;font:500 13px/1.5 var(--f-m);color:var(--gi2);max-width:60ch}
+
+/* proba */
+.proba{background:var(--carvao);border-block:1px solid #2C3037}
+.proba-g{display:grid;gap:36px}
+.fisa{background:var(--ink);border:1px solid #343841;padding:26px 20px 28px;position:relative}
+.fisa::before{content:"";position:absolute;left:-1px;top:-1px;width:56px;height:6px;background:var(--verm)}
+fieldset{border:0;margin:0 0 26px;min-width:0}
+legend{font:900 24px/1 var(--f-d);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;padding:0;display:flex;align-items:center;gap:10px}
+legend span.pas{display:inline-grid;place-items:center;width:28px;height:28px;background:var(--verm);color:#fff;font:800 16px/1 var(--f-d);letter-spacing:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0;width:100%;height:100%}
+.chip span{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border:1.5px solid #4A4F59;font:800 19px/1 var(--f-d);letter-spacing:.1em;text-transform:uppercase;background:var(--carvao);transition:background .15s,border-color .15s,color .15s,transform .15s}
+.chip:hover span{border-color:var(--gi)}
+.chip input:checked+span{background:var(--verm);border-color:var(--verm);color:#fff;transform:translateY(-2px)}
+.chip input:focus-visible+span{outline:3px solid var(--gi);outline-offset:3px}
+.camp{display:block;width:100%;max-width:360px;min-height:50px;padding:0 14px;border:1.5px solid #4A4F59;background:var(--carvao);font:500 17px/1 var(--f-c);border-radius:0}
+.camp::placeholder{color:#7C818B}
+.camp:focus{outline:none;border-color:var(--verm-l)}
+.camp:focus-visible{outline:3px solid var(--verm-l);outline-offset:2px}
+.camp+.camp{margin-top:10px}
+.bilet{border:1.5px dashed #5A5F69;padding:18px 18px 16px;margin:4px 0 20px;background:#101216;position:relative}
+.bilet .ceas{display:flex;align-items:center;justify-content:space-between;gap:10px;font:800 15px/1 var(--f-d);letter-spacing:.16em;text-transform:uppercase;color:var(--verm-l);margin-bottom:10px}
+.bilet .ceas b{font:500 22px/1 var(--f-m);color:var(--gi);letter-spacing:.06em}
+.bilet p{font:500 15px/1.6 var(--f-m);color:var(--gi);overflow-wrap:anywhere}
+.bilet p.gol{color:#7C818B}
+.bilet.gata .ceas b{animation:puls 1.1s ease-out}
+@keyframes puls{0%{color:var(--verm-l);transform:scale(1.18)}100%{color:var(--gi);transform:none}}
+.trimite{display:flex;flex-wrap:wrap;gap:12px}
+.indiciu{font:500 13px/1.5 var(--f-m);color:var(--gi2);margin-top:14px}
+.indiciu.ok{color:#6FE3A5}
+
+.orar{margin-top:26px;border:1px solid #2C3037}
+.orar div{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid #2C3037;font:500 14px/1.3 var(--f-m)}
+.orar div:last-child{border:0}
+.orar div.azi{background:rgba(216,40,31,.16)}
+.orar b{font:800 18px/1 var(--f-d);letter-spacing:.14em;text-transform:uppercase}
+.de-conf{font:500 12px/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:#FFC24A;border:1px solid #6A5426;padding:3px 6px;margin-left:6px}
+.tel-mare{display:inline-block;font:900 clamp(44px,11vw,76px)/1 var(--f-d);letter-spacing:.02em;text-decoration:none;color:var(--verm-l);transition:color .2s}
+.tel-mare:hover{color:#fff}
+.harta{margin-top:26px;aspect-ratio:16/10;background:var(--carvao2);border:1px solid #343841;display:grid;place-items:center;overflow:hidden}
+.harta iframe{width:100%;height:100%;border:0;filter:grayscale(.4) contrast(1.05)}
+
+/* rodape */
+.rodape{background:#08090B;padding:56px 0 34px;font-size:15px;line-height:1.7;color:#C8C4BC}
+.rodape h2{font:900 30px/1 var(--f-d);letter-spacing:.06em;text-transform:uppercase;color:var(--gi);margin-bottom:8px}
+.rodape h3{font:800 15px/1 var(--f-d);letter-spacing:.2em;text-transform:uppercase;color:var(--verm-l);margin-bottom:10px}
+.rodape ul{list-style:none}
+.rodape a{color:#fff;text-underline-offset:3px}
+.rodape-g{display:grid;gap:28px}
+.legal{margin-top:34px;padding-top:20px;border-top:1px solid #23262C;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13px;color:#9A968F}
+.legal a{min-height:32px;display:inline-flex;align-items:center}
+
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(14,15,18,.97);border-top:1px solid #343841}
+.jos .btn{flex:1;min-height:50px;padding:0 10px;font-size:17px}
+
+@media(min-width:760px){
+  body{font-size:18px;padding-bottom:0}
+  .jos{display:none}
+  .nav{display:flex}
+  .tel-hdr{display:inline-flex}
+  .carduri{grid-template-columns:repeat(3,1fr)}
+  .gal{columns:3;column-gap:14px}
+  .gal figure{margin-bottom:14px}
+  .fise{grid-template-columns:repeat(3,1fr)}
+  .proba-g{grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+  .rodape-g{grid-template-columns:1.4fr 1fr 1fr}
+  .fisa{padding:34px 34px 36px}
+}
+@media(max-width:420px){
+  .marca{font-size:19px}.marca svg{width:26px;height:26px}.limbi button{min-width:34px;padding:0 8px}
+  .lat{padding:0 16px}
+  .hud{padding:0 16px}
+  .hud-r .nm{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv,.in1,.trei span{opacity:1!important;transform:none!important}
+  .erou-fundo{clip-path:none!important}.erou-fundo img{transform:none!important}
+  h1 .cuv span{transform:none!important}.gong-banda{display:none}
+}
+</style>
+</head>
+<body>
+<a class="salt" href="#continut">{{Sari la conținut|Skip to content|Saltar para o conteúdo}}</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.7-.3z"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-1-2z"/><path d="M8 10.500h.01M12 10.500h.01M16 10.500h.01" stroke="currentColor" stroke-width="2.600" stroke-linecap="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 21s-7-6.200-7-11.500a7 7 0 0 1 14 0C19 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500" fill="currentColor"/></symbol>
+    <symbol id="i-stea" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.800l2.800 5.900 6.400.8-4.700 4.400 1.200 6.400L12 17.200l-5.700 3.100 1.200-6.400L2.800 9.500l6.400-.8z"/></symbol>
+    <symbol id="i-manusa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6.500 11C6.500 6.500 8.500 4 12.500 4S19 6.500 19 11v3.500c0 1.800-1 2.500-2.200 2.500H9.500C8 17 6.500 15.500 6.500 13z"/><path d="M6.500 11C4.800 11 3.800 12 3.800 13.500S5 16 6.500 16"/><path d="M9 17v4h8v-4M9 19h8M13 4v6"/></g></symbol>
+    <symbol id="i-ceas" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  </defs>
+</svg>
+
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru Fitness Fight|PACHECO STUDIOS PREVIEW · demo website for Fitness Fight|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para o Fitness Fight}}</div>
+
+<header class="cap" id="cap">
+  <div class="lat bara-in">
+    <a class="marca" href="#acasa" aria-label="{{Fitness Fight — acasă|Fitness Fight — home|Fitness Fight — início}}">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#D8281F"/><path d="M9 16h14M16 9v14" stroke="#F4F1EA" stroke-width="3" stroke-linecap="square"/></svg>
+      <span>Fitness Fight</span>
+    </a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#discipline">{{Discipline|Disciplines|Disciplinas}}</a>
+      <a href="#sala">{{Sala|The gym|A sala}}</a>
+      <a href="#proba">{{Antrenament de probă|Trial session|Treino experimental}}</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="dr">
+      <div class="limbi" role="group" aria-label="{{Limba|Language|Idioma}}">
+        <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="doar-rev" data-set-lang="pt" aria-pressed="false">PT</button>
+      </div>
+      <a class="btn btn-v btn-mic tel-hdr" href="tel:+40732740505"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+    </div>
+  </div>
+  <div class="hud" id="hud" role="timer" aria-label="{{Cronometru de rundă, urmărește derularea paginii|Round timer, follows the page scroll|Cronómetro de ronda, acompanha o scroll da página}}">
+    <div class="hud-r"><svg aria-hidden="true"><use href="#i-manusa"/></svg><span id="h-lab">{{Runda|Round|Ronda}}</span><span class="n" id="h-n">1/4</span><span class="nm" id="h-nm"></span></div>
+    <div class="hud-c" id="h-t" aria-hidden="true">03:00</div>
+    <div class="hud-b"><i id="h-b"></i></div>
+  </div>
+</header>
+
+<main id="continut">
+
+<div class="runda" data-r="1">
+  <section class="erou" id="acasa">
+    <div class="erou-fundo" aria-hidden="false">
+      <svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="160" height="100" fill="#17191E"/><path d="M0 78h160v22H0z" fill="#2B2118"/><path d="M0 60h160v18H0z" fill="#1E2A38"/></svg>
+      <img src="media/g-01.webp" alt="{{Echipa Fitness Fight, opt oameni în hanorace negre, în sala de sport|The Fitness Fight team, eight people in black hoodies, in the sports hall|A equipa do Fitness Fight, oito pessoas de camisola preta, no pavilhão}}" width="1600" height="1556" fetchpriority="high" onerror="this.remove()">
+    </div>
+    <div class="gong-banda" aria-hidden="true"></div>
+    <div class="lat erou-in">
+      <p class="eticheta in1" style="animation-delay:1.6s"><b>{{Club sportiv|Sports club|Clube desportivo}}</b><span>Strada Sf. Vasile 22 · Iași</span></p>
+      <h1><span class="cuv c1"><span>Fitness</span></span><span class="cuv c2"><span>Fight</span></span></h1>
+      <p class="disc in1" style="animation-delay:1.75s"><span>Karate</span><i></i><span>BJJ</span><i></i><span>MMA</span></p>
+      <div class="erou-r in1" style="animation-delay:1.9s">
+        <span class="nota"><svg aria-hidden="true"><use href="#i-stea"/></svg>4,9 <small>{{pe Google · 77 de recenzii|on Google · 77 reviews|no Google · 77 avaliações}}</small></span>
+        <span>{{Simplitate · Respect · Disciplină|Simplicity · Respect · Discipline|Simplicidade · Respeito · Disciplina}}</span>
+      </div>
+      <div class="cta in1" style="animation-delay:2.05s">
+        <a class="btn btn-v" href="tel:+40732740505"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}} 0732 740 505</a>
+        <a class="btn btn-o" href="#proba">{{Antrenament de probă|Trial session|Treino experimental}}</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="saltele" aria-hidden="true"></div>
+
+  <section class="sec" id="despre">
+    <div class="lat">
+      <p class="rk rv">{{Clubul|The club|O clube}}</p>
+      <h2 class="rv d1">{{Aici se învață mai mult decât <em>lovituri</em>|Here you learn more than <em>strikes</em>|Aqui aprende-se mais do que <em>golpes</em>}}</h2>
+      <p class="lead rv d2">{{Club sportiv pe Strada Sf. Vasile 22, în Iași. În recenziile publice, părinții scriu despre copii care vin cu drag la antrenament, antrenori răbdători și rezultate la competiții.|Sports club at Strada Sf. Vasile 22, in Iași. In the public reviews, parents write about kids who come to training gladly, patient coaches and results at competitions.|Clube desportivo na Strada Sf. Vasile 22, em Iași. Nas avaliações públicas, os pais escrevem sobre crianças que vêm com gosto aos treinos, treinadores pacientes e resultados em competições.}}</p>
+      <div class="trei" id="trei" role="list">
+        <div role="listitem"><span>Simplitate</span></div>
+        <div role="listitem"><span>Respect</span></div>
+        <div role="listitem"><span>Disciplină</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="panglica" aria-hidden="true"><div class="banda-in"><span>Karate<i></i></span><span>BJJ<i></i></span><span>MMA<i></i></span><span>Simplitate<i></i></span><span>Respect<i></i></span><span>Disciplină<i></i></span><span>Karate<i></i></span><span>BJJ<i></i></span><span>MMA<i></i></span><span>Simplitate<i></i></span><span>Respect<i></i></span><span>Disciplină<i></i></span></div></div>
+
+<div class="runda" data-r="2">
+  <section class="sec" id="discipline">
+    <div class="lat">
+      <p class="rk rv">{{Pe afișul clubului|On the club's poster|No cartaz do clube}}</p>
+      <h2 class="rv d1">{{Trei <em>discipline</em>, o sală|Three <em>disciplines</em>, one gym|Três <em>disciplinas</em>, uma sala}}</h2>
+      <div class="carduri">
+        <article class="card rv" data-n="01">
+          <h3>Karate</h3>
+          <p>{{Kimono alb, centură, salut. Karate se vede în aproape toate fotografiile clubului, iar părinții scriu despre medalii și competiții.|White gi, belt, bow. Karate shows up in nearly every photo of the club, and parents write about medals and competitions.|Kimono branco, cinto, saudação. O karaté vê-se em quase todas as fotografias do clube e os pais escrevem sobre medalhas e competições.}}</p>
+          <span class="eti">{{grupe și nivel: de confirmat|groups and level: to be confirmed|grupos e nível: a confirmar}}</span>
+        </article>
+        <article class="card rv d1" data-n="02">
+          <h3>BJJ</h3>
+          <p>{{Jiu-jitsu brazilian: lupta la sol, cu tehnică și răbdare. Un părinte scrie că aici copilul învață BJJ și, odată cu el, respectul.|Brazilian jiu-jitsu: ground fighting, with technique and patience. A parent writes that here the child learns BJJ and, along with it, respect.|Jiu-jitsu brasileiro: luta no solo, com técnica e paciência. Um pai escreve que aqui o filho aprende BJJ e, com ele, o respeito.}}</p>
+          <span class="eti">{{grupe și nivel: de confirmat|groups and level: to be confirmed|grupos e nível: a confirmar}}</span>
+        </article>
+        <article class="card rv d2" data-n="03">
+          <h3>MMA</h3>
+          <p>{{Arte marțiale mixte, trecute pe afiș lângă Karate și BJJ. Pentru cine vrea mai mult contact și mai multă forță în același loc.|Mixed martial arts, listed on the poster next to Karate and BJJ. For those who want more contact and more strength in the same place.|Artes marciais mistas, no cartaz ao lado do Karaté e do BJJ. Para quem quer mais contacto e mais força no mesmo sítio.}}</p>
+          <span class="eti">{{grupe și nivel: de confirmat|groups and level: to be confirmed|grupos e nível: a confirmar}}</span>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="saltele" aria-hidden="true"></div>
+
+<div class="runda" data-r="3">
+  <section class="sec" id="sala">
+    <div class="lat">
+      <p class="rk rv">{{Din sală|From the gym|Da sala}}</p>
+      <h2 class="rv d1">{{Saltele, kimono, <em>medalii</em>|Mats, gis, <em>medals</em>|Tatames, kimonos, <em>medalhas</em>}}</h2>
+      <div class="gal">
+        <figure class="rv"><span class="tag">01</span><div class="poza" style="aspect-ratio:1080/1920"><svg class="fundo" viewBox="0 0 10 18" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="10" height="18" fill="#1E2A38"/><rect y="11" width="10" height="7" fill="#EE8A78" opacity=".5"/></svg><img src="media/g-02.webp" alt="{{Doi tineri în kimono alb, față în față, pe saltele albastre și roz|Two young people in white gis, face to face, on blue and pink mats|Dois jovens de kimono branco, frente a frente, em tatames azuis e rosa}}" width="1080" height="1920" loading="lazy" onerror="this.remove()"></div><figcaption>{{Pe saltele, față în față|On the mats, face to face|Nos tatames, frente a frente}}</figcaption></figure>
+        <figure class="rv d1"><span class="tag">02</span><div class="poza" style="aspect-ratio:1600/1186"><svg class="fundo" viewBox="0 0 16 12" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="16" height="12" fill="#1E2A38"/><rect y="7" width="16" height="5" fill="#2B6CB0" opacity=".6"/></svg><img src="media/g-03.webp" alt="{{Copii așezați pe saltele albastre și roz, în sala de antrenament|Children sitting on blue and pink mats in the training hall|Crianças sentadas em tatames azuis e rosa, na sala de treino}}" width="1600" height="1186" loading="lazy" onerror="this.remove()"></div><figcaption>{{Început de antrenament|Start of training|Início do treino}}</figcaption></figure>
+        <figure class="rv"><span class="tag">03</span><div class="poza" style="aspect-ratio:1600/2133"><svg class="fundo" viewBox="0 0 12 16" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="12" height="16" fill="#22252C"/><rect y="11" width="12" height="5" fill="#8A5A2E" opacity=".6"/></svg><img src="media/g-04.webp" alt="{{Doi băieți în kimono, cu centuri albastre, într-o sală de sport|Two boys in gis with blue belts in a sports hall|Dois rapazes de kimono, com cintos azuis, num pavilhão}}" width="1600" height="2133" loading="lazy" onerror="this.remove()"></div><figcaption>{{Centuri albastre|Blue belts|Cintos azuis}}</figcaption></figure>
+        <figure class="rv d1"><span class="tag">04</span><div class="poza" style="aspect-ratio:1600/2133"><svg class="fundo" viewBox="0 0 12 16" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="12" height="16" fill="#17191E"/><rect y="11" width="12" height="5" fill="#8A5A2E" opacity=".6"/></svg><img src="media/g-05.webp" alt="{{Doi karateka lângă bannerul Fitness Fight cu textul Karate, BJJ, MMA|Two karateka beside the Fitness Fight banner reading Karate, BJJ, MMA|Dois karatecas ao lado do banner do Fitness Fight com o texto Karate, BJJ, MMA}}" width="1600" height="2133" loading="lazy" onerror="this.remove()"></div><figcaption>{{Lângă bannerul clubului|Beside the club banner|Junto ao banner do clube}}</figcaption></figure>
+        <figure class="rv"><span class="tag">05</span><div class="poza" style="aspect-ratio:1600/1200"><svg class="fundo" viewBox="0 0 16 12" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="16" height="12" fill="#22252C"/><rect y="8" width="16" height="4" fill="#EE8A78" opacity=".5"/></svg><img src="media/g-07.webp" alt="{{Copii în kimono aliniați pe saltele, cu o sală luminoasă în spate|Children in gis lined up on the mats in a bright hall|Crianças de kimono alinhadas nos tatames, numa sala iluminada}}" width="1600" height="1200" loading="lazy" onerror="this.remove()"></div><figcaption>{{Aliniați pentru salut|Lined up for the bow|Alinhados para a saudação}}</figcaption></figure>
+        <figure class="rv d1"><span class="tag">06</span><div class="poza" style="aspect-ratio:452/720"><svg class="fundo" viewBox="0 0 10 16" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="10" height="16" fill="#1B1D23"/><rect y="11" width="10" height="5" fill="#2B6CB0" opacity=".5"/></svg><img src="media/g-06.webp" alt="{{Un tânăr cu medalie și diplomă lângă un antrenor, în fața bannerului JKA România|A young man with a medal and certificate beside a coach in front of the JKA Romania banner|Um jovem com medalha e diploma ao lado de um treinador, em frente ao banner da JKA Roménia}}" width="452" height="720" loading="lazy" onerror="this.remove()"></div><figcaption>{{Medalie și diplomă|Medal and certificate|Medalha e diploma}}</figcaption></figure>
+        <figure class="rv"><span class="tag">07</span><div class="poza" style="aspect-ratio:1600/1200"><svg class="fundo" viewBox="0 0 16 12" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="16" height="12" fill="#22252C"/><rect y="8" width="16" height="4" fill="#EE8A78" opacity=".5"/></svg><img src="media/g-08.webp" alt="{{Sala cu saltele roșii și albastre și mingi colorate de gimnastică în fundal|The hall with red and blue mats and colourful exercise balls in the background|A sala com tatames vermelhos e azuis e bolas de ginástica coloridas ao fundo}}" width="1600" height="1200" loading="lazy" onerror="this.remove()"></div><figcaption>{{Sala, cu mingi și saltele|The hall, with balls and mats|A sala, com bolas e tatames}}</figcaption></figure>
+      </div>
+
+      <div class="fise" aria-label="{{Ce spun părinții|What parents say|O que dizem os pais}}">
+        <article class="fisa-a rv"><span class="sc">10</span><p>{{Un părinte: pentru copilul lui, clubul e „o adevărată școală de viață”. Învață BJJ, dar și respect, disciplină și simplitate.|A parent: for their child, the club is “a real school of life”. They learn BJJ, but also respect, discipline and simplicity.|Um pai: para o filho, o clube é “uma verdadeira escola de vida”. Aprende BJJ, mas também respeito, disciplina e simplicidade.}}</p><footer>{{recenzie Google|Google review|avaliação Google}}</footer></article>
+        <article class="fisa-a rv d1"><span class="sc">10</span><p>{{Un tată: băiatul se antrenează aici, antrenorul e dedicat și răbdător și îmbină disciplina cu distracția, așa că cel mic vine mereu cu drag.|A father: his son trains here, the coach is dedicated and patient and mixes discipline with fun, so the little one always comes gladly.|Um pai: o filho treina aqui, o treinador é dedicado e paciente e junta disciplina com diversão, por isso o pequeno vem sempre com gosto.}}</p><footer>{{recenzie Google|Google review|avaliação Google}}</footer></article>
+        <article class="fisa-a rv d2"><span class="sc">10</span><p>{{O mamă: antrenorii lucrează cu profesionalism și dedicare și dezvoltă atât performanța sportivă, cât și încrederea copiilor în forțele proprii.|A mother: the coaches work with professionalism and dedication and build both sporting performance and the children's self-confidence.|Uma mãe: os treinadores trabalham com profissionalismo e dedicação e desenvolvem tanto o desempenho desportivo como a confiança das crianças.}}</p><footer>{{recenzie Google|Google review|avaliação Google}}</footer></article>
+      </div>
+      <p class="sub-nota">{{Texte rezumate din recenziile publice de pe Google. Nota 4,9 vine din 77 de recenzii.|Texts summarised from the public Google reviews. The 4.9 score comes from 77 reviews.|Textos resumidos das avaliações públicas do Google. A nota 4,9 vem de 77 avaliações.}}</p>
+    </div>
+  </section>
+</div>
+
+<div class="saltele" aria-hidden="true"></div>
+
+<div class="runda" data-r="4">
+  <section class="sec proba" id="proba">
+    <div class="lat">
+      <div class="proba-g">
+        <div>
+          <p class="rk rv">{{Ultima rundă|Final round|Última ronda}}</p>
+          <h2 class="rv d1">{{Încearcă o <em>oră</em>|Try a <em>session</em>|Experimenta um <em>treino</em>}}</h2>
+          <p class="lead rv d2" style="margin-bottom:30px">{{Alegi disciplina, pentru cine e și ziua. Mesajul pleacă scris, pe WhatsApp sau SMS, către club. Clubul îți răspunde cu ora și grupa potrivite.|Pick the discipline, who it's for and the day. The message goes out written, on WhatsApp or SMS, to the club. The club replies with the right time and group.|Escolhe a disciplina, para quem é e o dia. A mensagem segue escrita, por WhatsApp ou SMS, para o clube. O clube responde com a hora e o grupo certos.}}</p>
+          <div class="orar rv d3" id="orar">
+            <div data-d="1"><b>{{Luni|Monday|Segunda}}</b><span>17:30 – 21:30</span></div>
+            <div><b>{{Restul zilelor|Other days|Restantes dias}}</b><span><span class="de-conf">{{de confirmat|to be confirmed|a confirmar}}</span></span></div>
+          </div>
+        </div>
+        <form class="fisa rv d1" id="fisa" novalidate autocomplete="off">
+          <fieldset>
+            <legend><span class="pas">1</span>{{Disciplina|Discipline|Disciplina}}</legend>
+            <div class="chips" id="c-disc"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="pas">2</span>{{Pentru cine?|Who is it for?|Para quem?}}</legend>
+            <div class="chips" id="c-cine"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="pas">3</span>{{Ziua preferată|Preferred day|Dia preferido}}</legend>
+            <div class="chips" id="c-zi"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="pas">4</span>{{Nume și vârstă (opțional)|Name and age (optional)|Nome e idade (opcional)}}</legend>
+            <label for="nume" style="position:absolute;left:-9999px">{{Nume|Name|Nome}}</label>
+            <input class="camp" id="nume" type="text" maxlength="40" autocomplete="given-name">
+            <label for="varsta" style="position:absolute;left:-9999px">{{Vârstă|Age|Idade}}</label>
+            <input class="camp" id="varsta" type="text" inputmode="numeric" maxlength="3">
+          </fieldset>
+          <div class="bilet" id="bilet" aria-live="polite">
+            <div class="ceas"><span id="b-lab"></span><b id="b-t">03:00</b></div>
+            <p id="bilet-t" class="gol"></p>
+          </div>
+          <div class="trimite">
+            <a class="btn btn-wa" id="b-wa" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+            <a class="btn btn-sms" id="b-sms" href="#" aria-disabled="true"><svg aria-hidden="true"><use href="#i-sms"/></svg>SMS</a>
+            <a class="btn btn-o" href="tel:+40732740505"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+          </div>
+          <p class="indiciu" id="indiciu"></p>
+          <p class="indiciu">{{Ziua e o dorință, nu o rezervare: ora și grupa le confirmă clubul. Programul complet și grupele: de confirmat.|The day is a wish, not a booking: the club confirms the time and group. Full schedule and groups: to be confirmed.|O dia é um pedido, não uma reserva: o clube confirma a hora e o grupo. Horário completo e grupos: a confirmar.}}</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="lat">
+      <p class="rk rv">Contact</p>
+      <h2 class="rv d1">{{Gong. <em>Te așteptăm.</em>|Gong. <em>We are waiting.</em>|Gong. <em>Esperamos por si.</em>}}</h2>
+      <div class="proba-g" style="gap:30px">
+        <div class="rv d2">
+          <p style="font-size:20px">Strada Sf. Vasile 22<br>700732 Iași, România</p>
+          <p style="margin:22px 0"><a class="tel-mare" href="tel:+40732740505">0732 740 505</a></p>
+          <p style="color:var(--gi2)">{{Persoană de contact pe afișul clubului: Dan Stoian.|Contact person on the club's poster: Dan Stoian.|Pessoa de contacto no cartaz do clube: Dan Stoian.}}</p>
+        </div>
+        <div class="rv d3">
+          <div class="harta" id="harta"><button class="btn btn-o" type="button" id="arata-harta"><svg aria-hidden="true"><use href="#i-pin"/></svg>{{Arată harta|Show the map|Mostrar o mapa}}</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer class="rodape" id="final">
+  <div class="lat">
+    <div class="rodape-g">
+      <div>
+        <h2>Fitness Fight</h2>
+        <p>{{Club sportiv: Karate, BJJ, MMA. Strada Sf. Vasile 22, Iași.|Sports club: Karate, BJJ, MMA. Strada Sf. Vasile 22, Iași.|Clube desportivo: Karate, BJJ, MMA. Strada Sf. Vasile 22, Iași.}}</p>
+      </div>
+      <div>
+        <h3>Club</h3>
+        <ul><li>Strada Sf. Vasile 22</li><li>700732 Iași, România</li><li><a href="tel:+40732740505">0732 740 505</a></li><li>{{Luni 17:30–21:30 · restul: de confirmat|Monday 17:30–21:30 · other days: to be confirmed|Segunda 17:30–21:30 · restantes: a confirmar}}</li></ul>
+      </div>
+      <div>
+        <h3>{{Pagini|Pages|Páginas}}</h3>
+        <ul><li><a href="#discipline">{{Discipline|Disciplines|Disciplinas}}</a></li><li><a href="#sala">{{Sala|The gym|A sala}}</a></li><li><a href="#proba">{{Antrenament de probă|Trial session|Treino experimental}}</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Fitness Fight · {{denumire și CUI: de confirmat|name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+      <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+    </div>
+  </div>
+</footer>
+
+<div class="jos" id="jos">
+  <a class="btn btn-v" href="tel:+40732740505"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <a class="btn btn-o" href="#proba">{{Probă|Trial|Treino}}</a>
+</div>
+
+<noscript><p style="padding:16px;background:#fff;color:#000">Fitness Fight · club sportiv (Karate, BJJ, MMA) · Strada Sf. Vasile 22, 700732 Iași · Tel. 0732 740 505 · 4,9 pe Google (77 de recenzii) · Luni 17:30–21:30, restul programului: de confirmat · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SportsActivityLocation","name":"Fitness Fight","description":"Club sportiv în Iași: Karate, BJJ, MMA.","telephone":"+40732740505","address":{"@type":"PostalAddress","streetAddress":"Strada Sf. Vasile 22","postalCode":"700732","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1392482,"longitude":27.5743327},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"77"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Monday","opens":"17:30","closes":"21:30"}],"image":"media/g-01.webp","hasMap":"https://www.google.com/maps/search/?api=1&query=47.1392482%2C27.5743327"}
+</script>
+<script>
+(function(){
+  var html=document.documentElement,$=function(i){return document.getElementById(i)};
+  var L=function(){var l=html.dataset.lang;return l==='en'||l==='pt'?l:'ro'};
+  var t=function(a,b,c){var l=L();return l==='en'?b:l==='pt'?c:a};
+  var reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TEL='40732740505';
+
+  /* ---------- formular ---------- */
+  var DISC=[['Karate','Karate','Karate'],['BJJ','BJJ','BJJ'],['MMA','MMA','MMA'],['Nu știu încă','Not sure yet','Ainda não sei']];
+  var CINE=[['un copil','a child','uma criança','copil'],['un adolescent','a teenager','um adolescente','adolescent'],['un adult','an adult','um adulto','adult']];
+  var CINEL=[['Copil','Child','Criança'],['Adolescent','Teenager','Adolescente'],['Adult','Adult','Adulto']];
+  var ZI=[['Luni','Mon','Seg','luni'],['Marți','Tue','Ter','marți'],['Miercuri','Wed','Qua','miercuri'],['Joi','Thu','Qui','joi'],['Vineri','Fri','Sex','vineri'],['Sâmbătă','Sat','Sáb','sâmbătă'],['Oricând','Any day','Qualquer dia','în orice zi']];
+  var al={d:null,c:null,z:null};
+  function chip(grp,i,txt,on){var l=document.createElement('label');l.className='chip';l.innerHTML='<input type="radio" name="'+grp+'" value="'+i+'"'+(on?' checked':'')+'><span>'+txt+'</span>';return l}
+  function randare(){
+    var a=$('c-disc'),b=$('c-cine'),c=$('c-zi');a.innerHTML='';b.innerHTML='';c.innerHTML='';
+    DISC.forEach(function(x,i){a.appendChild(chip('disc',i,t(x[0],x[1],x[2]),al.d===i))});
+    CINEL.forEach(function(x,i){b.appendChild(chip('cine',i,t(x[0],x[1],x[2]),al.c===i))});
+    ZI.forEach(function(x,i){c.appendChild(chip('zi',i,t(x[0],x[1],x[2]),al.z===i))});
+    [['disc','d'],['cine','c'],['zi','z']].forEach(function(p){document.querySelectorAll('input[name="'+p[0]+'"]').forEach(function(r){r.addEventListener('change',function(){al[p[1]]=+r.value;mesaj()})})});
+  }
+  var bilet=$('bilet'),bt=$('bilet-t'),bw=$('b-wa'),bs=$('b-sms'),ind=$('indiciu');
+  function msg(){
+    var n=$('nume').value.trim(),v=$('varsta').value.trim().replace(/[^0-9]/g,'');
+    var m='Bună ziua! Aș dori un antrenament de probă la Fitness Fight, pentru '+CINE[al.c][0]+(v?' (vârsta '+v+' ani)':'')+', la '+(al.d===3?'una dintre discipline (Karate, BJJ sau MMA, nu știu încă)':DISC[al.d][0])+'. Ziua preferată: '+ZI[al.z][3]+'.';
+    if(n)m+=' Mă numesc '+n+'.';
+    return m+' Vă rog să-mi spuneți ce grupă și ce oră se potrivesc. Mulțumesc!';
+  }
+  function mesaj(){
+    $('b-lab').textContent=t('Runda de probă','Trial round','Ronda experimental');
+    var gata=al.d!==null&&al.c!==null&&al.z!==null;
+    if(!gata){
+      var f=[];if(al.d===null)f.push(t('disciplina','the discipline','a disciplina'));if(al.c===null)f.push(t('pentru cine','who it is for','para quem'));if(al.z===null)f.push(t('ziua','the day','o dia'));
+      bt.className='gol';bt.textContent=t('Mesajul tău apare aici, gata de trimis.','Your message shows up here, ready to send.','A sua mensagem aparece aqui, pronta a enviar.');
+      bilet.classList.remove('gata');ind.className='indiciu';ind.textContent=t('Mai alege: ','Still to choose: ','Falta escolher: ')+f.join(', ')+'.';
+      [bw,bs].forEach(function(a){a.setAttribute('aria-disabled','true');a.href='#'});return;
+    }
+    var m=msg();bt.className='';bt.textContent=m;
+    if(!bilet.classList.contains('gata')){bilet.classList.add('gata')}
+    bw.href='https://wa.me/'+TEL+'?text='+encodeURIComponent(m);bs.href='sms:+'+TEL+'?&body='+encodeURIComponent(m);
+    [bw,bs].forEach(function(a){a.removeAttribute('aria-disabled')});
+    ind.className='indiciu ok';ind.textContent=t('Gata. Trimite și așteaptă răspunsul clubului.','Done. Send it and wait for the club to reply.','Pronto. Envie e aguarde a resposta do clube.');
+  }
+  ['nume','varsta'].forEach(function(i){$(i).addEventListener('input',function(){if(al.d!==null&&al.c!==null&&al.z!==null)mesaj()})});
+  [bw,bs].forEach(function(a){a.addEventListener('click',function(e){if(a.getAttribute('aria-disabled')==='true')e.preventDefault()})});
+  $('fisa').addEventListener('submit',function(e){e.preventDefault()});
+  // ceasul din bilet: numără în jos cât timp ai ales (3:00 -> 0:00 în 3 alegeri)
+  function ceasBilet(){var n=(al.d!==null)+(al.c!==null)+(al.z!==null);$('b-t').textContent=['03:00','02:00','01:00','00:00'][n]}
+  document.querySelectorAll('#fisa').forEach(function(f){f.addEventListener('change',ceasBilet)});
+
+  /* ---------- limba ---------- */
+  function seteaza(l){
+    html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
+    document.querySelectorAll('[data-aria]').forEach(function(e){var p=e.dataset.aria.split('|');e.setAttribute('aria-label',p[l==='en'?1:l==='pt'?2:0])});
+        try{localStorage.setItem('__LSKEY__',l)}catch(e){}
+    $('nume').placeholder=t('Prenume','First name','Nome próprio');$('varsta').placeholder=t('Vârsta (ani)','Age (years)','Idade (anos)');
+    randare();mesaj();ceasBilet();rundaTxt();
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+
+  /* ---------- cronometru de rundă ---------- */
+  var runde=[].slice.call(document.querySelectorAll('.runda')),hud=$('hud'),hN=$('h-n'),hT=$('h-t'),hB=$('h-b'),hNm=$('h-nm'),hLab=$('h-lab'),cap=$('cap');
+  var cur=0,gongT=null,iniLoad=true;
+  var NM=[['Sala','The gym','A sala'],['Disciplinele','The disciplines','As disciplinas'],['Sala și echipa','Gym and team','A sala e a equipa'],['Antrenament de probă','Trial session','Treino experimental']];
+  function nmRunda(i){return t(NM[i][0],NM[i][1],NM[i][2])}
+  function rundaTxt(){hLab.textContent=t('Runda','Round','Ronda');hNm.textContent='· '+nmRunda(cur);hN.textContent=(cur+1)+'/'+runde.length}
+  function pad(n){return n<10?'0'+n:''+n}
+  function tick(){
+    cap.classList.toggle('scrolled',scrollY>8);
+    var vh=innerHeight,y=scrollY+vh*.42,H=document.documentElement.scrollHeight,idx=0;
+    runde.forEach(function(r,i){if(r.getBoundingClientRect().top+scrollY<=y)idx=i});
+    var r=runde[idx],top=r.getBoundingClientRect().top+scrollY,h=r.offsetHeight;
+    var off=idx===0?vh*.42:0;
+    var p=Math.min(1,Math.max(0,(y-top-off)/(h-off)));
+    var fim=scrollY+vh>=H-4;
+    if(fim){idx=runde.length-1;p=1;r=runde[idx]}
+    if(idx!==cur){
+      cur=idx;rundaTxt();
+      if(!reduz&&!iniLoad){hud.classList.remove('gong');void hud.offsetWidth;hud.classList.add('gong');clearTimeout(gongT);gongT=setTimeout(function(){hud.classList.remove('gong')},950)}
+    }
+    var s=Math.round(180*(1-p));
+    hT.textContent=pad(Math.floor(s/60))+':'+pad(s%60);
+    hT.classList.toggle('sfarsit',s<=10);
+    hB.style.transform='scaleX('+p.toFixed(3)+')';
+  }
+  var rq=false;addEventListener('scroll',function(){if(!rq){rq=true;requestAnimationFrame(function(){rq=false;tick()})}},{passive:true});
+  addEventListener('resize',tick);
+
+  /* ---------- revelare ---------- */
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
+  document.querySelectorAll('.rv,.trei').forEach(function(x){if(io)io.observe(x);else x.classList.add('vis')});
+
+  /* ---------- ziua de azi în orar ---------- */
+  (function(){var d=new Date().getDay();var e=document.querySelector('#orar [data-d="'+d+'"]');if(e)e.classList.add('azi')})();
+
+  /* ---------- harta la cerere ---------- */
+  $('arata-harta').addEventListener('click',function(){
+    var h=$('harta'),f=document.createElement('iframe');
+    f.src='https://www.google.com/maps?q=47.1392482,27.5743327&z=17&output=embed';
+    f.title=t('Hartă: Fitness Fight, Strada Sf. Vasile 22, Iași','Map: Fitness Fight, Strada Sf. Vasile 22, Iași','Mapa: Fitness Fight, Strada Sf. Vasile 22, Iași');
+    f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';h.innerHTML='';h.appendChild(f);
+  });
+
+  seteaza(L());tick();setTimeout(function(){iniLoad=false},600);
+})();
+</script>
+</body>
+</html>

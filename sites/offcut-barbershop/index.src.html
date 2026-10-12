@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OFFCUT Barbershop Iași · Frizerie pe Bulevardul Dacia 6A</title>
+<meta name="description" content="OFFCUT Barbershop, frizerie în Iași, Bulevardul Dacia 6A. 5,0 pe Google din 95 de recenzii. Programează-te online sau sună: 0735 514 992.">
+<meta name="theme-color" content="#0F1011">
+<meta property="og:title" content="OFFCUT Barbershop Iași · Frizerie">
+<meta property="og:description" content="5,0 pe Google din 95 de recenzii. Sună: 0735 514 992.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/g-07.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230F1011'/%3E%3Cpath d='M4 16h24' stroke='%23B8F23C' stroke-width='2.4' stroke-dasharray='4 3'/%3E%3Cpath d='M8 6h16v10H8z' fill='%23ECE8DB'/%3E%3Cpath d='M10 20h16v6H10z' fill='%23B8F23C' transform='rotate(3 18 23)'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --asf:#0F1011;--asf2:#1A1C1E;--asf3:#26292C;--pap:#ECE8DB;--pap2:#DAD5C4;--lima:#B8F23C;--lar:#FF6A1F;--lar-d:#B8420A;--tx:#15110E;--mudo:#A9AAA3;
+  --f-d:'Chivo','Helvetica Neue',Arial,sans-serif;--f-m:'Chivo Mono',ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);--lat:1200px;
+}
+/*__COMUM_CSS__*/
+body{background:var(--asf);color:var(--pap);font:400 1.0625rem/1.6 var(--f-d)}
+:focus-visible{outline:3px solid var(--lima);outline-offset:3px}
+.pap :focus-visible{outline-color:var(--lar-d)}
+.lat{max-width:var(--lat);margin-inline:auto;padding-inline:20px}
+h1,h2,h3{margin:0;font-weight:900;line-height:.98;letter-spacing:-.02em;text-transform:uppercase}
+p{margin:0}
+.mono{font-family:var(--f-m)}
+
+/* etiqueta de secção: lote + código de barras + régua */
+.et{display:flex;align-items:center;gap:14px;font:500 .74rem/1 var(--f-m);letter-spacing:.16em;text-transform:uppercase;color:var(--lima)}
+.et .bc{flex:0 0 96px;height:22px;background:repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 4px,currentColor 4px 5px,transparent 5px 9px,currentColor 9px 12px,transparent 12px 14px,currentColor 14px 15px,transparent 15px 18px)}
+.regua{height:14px;margin-top:14px;opacity:.55;color:var(--pap);background:
+  repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 15px) 0 0/100% 14px no-repeat,
+  repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 3.78px) 0 0/100% 6px no-repeat}
+.js .regua{clip-path:inset(0 100% 0 0);transition:clip-path 1.4s var(--ease) .1s}
+.js .regua.vis{clip-path:inset(0)}
+.sec{padding-block:clamp(60px,9vw,112px)}
+.sec h2{font-size:clamp(2.4rem,7vw,5rem);margin:20px 0 16px}
+.sec .intro{max-width:50ch;color:#CFCBBE}
+
+/* barra */
+.prezentare{position:relative;z-index:70;background:var(--lima);color:var(--asf);font:500 .7rem/1.35 var(--f-m);letter-spacing:.06em;text-align:center;padding:7px 14px}
+.bara{position:sticky;top:0;z-index:50;background:rgba(15,16,17,.94);backdrop-filter:blur(8px);border-bottom:1px solid #2C2F32}
+.bara-in{display:flex;align-items:center;gap:18px;min-height:58px}
+.marca{font:900 1.15rem/1 var(--f-d);letter-spacing:.06em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.marca i{display:block;width:22px;height:22px;background:linear-gradient(135deg,var(--lima) 50%,var(--lar) 50%);clip-path:polygon(0 0,100% 0,100% 62%,62% 100%,0 100%)}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{padding:10px 12px;text-decoration:none;font:500 .76rem/1 var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:#CFCBBE}
+.nav a:hover{color:var(--lima)}
+.mm{font:500 .72rem/1 var(--f-m);letter-spacing:.1em;color:var(--mudo);min-width:74px;text-align:right}
+.limbi{display:flex;gap:2px}
+.limbi button{background:none;border:1px solid #3A3E41;cursor:pointer;min-width:38px;min-height:34px;font:500 .74rem/1 var(--f-m);color:var(--pap)}
+.limbi button[aria-pressed="true"]{background:var(--lima);color:var(--asf);border-color:var(--lima)}
+@media (max-width:900px){.nav,.mm{display:none}.limbi{margin-left:auto}}
+
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border:2px solid transparent;text-decoration:none;font:800 .95rem/1 var(--f-d);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s,box-shadow .2s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:active{transform:translateY(2px)}
+.btn-lima{background:var(--lima);color:var(--asf)}
+.btn-lima:hover{background:#D0FF5A}
+.btn-pap{background:var(--pap);color:var(--asf)}
+.btn-pap:hover{background:#fff}
+.btn-linha{background:transparent;color:var(--pap);border-color:#5A5E60;clip-path:none}
+.btn-linha:hover{border-color:var(--lima);color:var(--lima)}
+.btn-asf{background:var(--asf);color:var(--pap)}
+.btn-asf:hover{background:#000}
+.btn-wa{background:#25D366;color:#06210F}
+.btn-wa:hover{background:#3BE07B}
+.btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.bara .btn{min-height:40px;padding:0 16px;font-size:.8rem}
+@media (max-width:520px){.bara .btn{display:none}}
+
+/* herói */
+.hero{position:relative;min-height:calc(100svh - 90px);display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg svg,.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-bg img{object-position:50% 45%;transform:scale(1.08);transition:transform 2.4s var(--ease)}
+.hero.gata .hero-bg img{transform:scale(1)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,16,17,.55) 0%,rgba(15,16,17,.15) 35%,rgba(15,16,17,.88) 100%),linear-gradient(90deg,rgba(15,16,17,.75),transparent 70%)}
+#regua-h{display:block;width:100%;height:34px;color:var(--pap);opacity:.85}
+#regua-h path{stroke:currentColor;stroke-width:1}
+#regua-h text{fill:currentColor;font:500 9px var(--f-m)}
+.js #regua-h{clip-path:inset(0 100% 0 0)}
+.js .hero.gata #regua-h{clip-path:inset(0);transition:clip-path 1.6s var(--ease) .15s}
+.hero-in{flex:1;display:grid;grid-template-columns:1fr auto;align-items:end;gap:28px;padding-block:20px 44px}
+.lote{font:500 .76rem/1.4 var(--f-m);letter-spacing:.18em;text-transform:uppercase;color:var(--lima)}
+.cut{position:relative;display:inline-block;font:900 clamp(4.4rem,22vw,14rem)/.86 var(--f-d);letter-spacing:-.045em;text-transform:uppercase;margin-top:10px;padding-bottom:.04em}
+.cut .top,.cut .bot{display:block;white-space:nowrap}
+.cut .top{clip-path:inset(0 0 46% 0);color:var(--pap)}
+.cut .bot{position:absolute;inset:0;clip-path:inset(46% 0 0 0);color:var(--lima);transition:transform .7s cubic-bezier(.5,0,.2,1.4)}
+.hero.cortado .cut .bot{transform:translate(.045em,.07em) rotate(1.3deg)}
+.cut .linha{position:absolute;left:-2%;right:-2%;top:54%;border-top:3px dashed var(--lar);clip-path:inset(0 100% 0 0)}
+.hero.gata .cut .linha{animation:abre 1.5s linear .5s forwards}
+.cut .tes{position:absolute;top:54%;left:-3%;width:.42em;height:.42em;margin-top:-.21em;color:var(--pap);opacity:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.hero.gata .cut .tes{animation:tes 1.5s linear .5s forwards}
+@keyframes abre{to{clip-path:inset(0)}}
+@keyframes tes{0%{left:-3%;opacity:1}98%{opacity:1}100%{left:100%;opacity:0}}
+.sub-b{font:500 clamp(.9rem,2.4vw,1.35rem)/1.2 var(--f-m);letter-spacing:.5em;text-transform:uppercase;color:var(--pap);margin-top:14px}
+.js .hero .anim{opacity:0;transform:translateY(14px)}
+.js .hero.gata .anim{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(1.7s + var(--i,0)*.12s)}
+.etiq{width:min(100%,340px);background:var(--pap);color:var(--tx);padding:18px 18px 16px;position:relative;transform:rotate(-1.6deg);box-shadow:0 24px 40px -18px rgba(0,0,0,.8);clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%)}
+.etiq .k{font:500 .66rem/1 var(--f-m);letter-spacing:.2em;text-transform:uppercase;color:#59554A;display:flex;justify-content:space-between}
+.etiq b{display:block;font:900 1.45rem/1 var(--f-d);text-transform:uppercase;margin:10px 0 4px}
+.etiq p{font-size:.92rem;line-height:1.45}
+.etiq .bc2{height:26px;margin:12px 0;background:repeating-linear-gradient(90deg,var(--tx) 0 2px,transparent 2px 5px,var(--tx) 5px 6px,transparent 6px 8px,var(--tx) 8px 11px,transparent 11px 14px)}
+.etiq .acoes{display:grid;gap:8px}
+.etiq .btn-linha{color:var(--tx);border-color:var(--tx)}
+.etiq .btn-linha:hover{background:var(--tx);color:var(--pap)}
+.est{display:inline-flex;gap:2px;color:var(--lar-d);vertical-align:-2px}
+.est svg{width:14px;height:14px}
+@media (max-width:860px){.hero-in{grid-template-columns:1fr;padding-bottom:32px}.etiq{transform:none;width:100%}}
+
+/* pereți */
+.pap{background:var(--pap);color:var(--tx)}
+.pap .et{color:var(--lar-d)}
+.pap .regua{color:var(--tx)}
+.pap .intro{color:#4A463D}
+.folha{margin-top:36px;display:flex;flex-direction:column;gap:12px}
+.fila{display:flex;gap:12px;height:clamp(300px,34vw,440px)}
+.cel{position:relative;flex:var(--f,1) 1 0;min-width:0;overflow:hidden;background:var(--asf3);cursor:zoom-in}
+.cel button{all:unset;display:block;width:100%;height:100%;cursor:zoom-in}
+.cel svg,.cel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cel img{transition:transform .8s var(--ease),filter .4s}
+.cel:hover img{transform:scale(1.05)}
+.cel .no{position:absolute;left:0;top:0;z-index:2;background:var(--asf);color:var(--lima);font:500 .7rem/1 var(--f-m);letter-spacing:.14em;padding:7px 9px}
+.cel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;z-index:2;background:repeating-linear-gradient(90deg,var(--pap) 0 1px,transparent 1px 3.78px) 0 100%/100% 6px no-repeat,repeating-linear-gradient(90deg,var(--pap) 0 1px,transparent 1px 18.9px) 0 100%/100% 12px no-repeat;opacity:.85}
+.cel:focus-within{outline:3px solid var(--lar-d);outline-offset:2px}
+.leg{margin-top:14px;font:500 .78rem/1.5 var(--f-m);letter-spacing:.06em;color:#4A463D}
+@media (max-width:760px){
+  .folha{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fila{display:contents}
+  .cel{height:230px}.cel.larg{grid-column:1/-1;height:190px}
+}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(10,10,10,.95);display:none;align-items:center;justify-content:center;padding:20px}
+.lb.on{display:flex}
+.lb img{max-height:88vh;max-width:min(94vw,1000px);width:auto;height:auto}
+.lb button{position:absolute;top:14px;right:14px;min-width:48px;min-height:48px;border:2px solid var(--lima);background:var(--asf);color:var(--lima);font-size:1.6rem;cursor:pointer}
+
+/* marcação */
+.marc{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);margin-top:36px;align-items:start}
+.marc>*{min-width:0}
+.pas{margin-bottom:34px}
+.pas>.t{display:flex;align-items:baseline;gap:12px;font:800 1.05rem/1 var(--f-d);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.pas>.t b{font:500 .74rem/1 var(--f-m);color:var(--lima);letter-spacing:.14em}
+.opt{display:flex;flex-wrap:wrap;gap:10px}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt input:focus-visible+label{outline:3px solid var(--lima);outline-offset:3px}
+/* tags com furo */
+.tags{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tags label{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:132px;padding:40px 12px 12px;background:var(--pap2);color:var(--tx);cursor:pointer;clip-path:polygon(22% 0,78% 0,100% 18%,100% 100%,0 100%,0 18%);transform-origin:50% 0;transition:transform .35s var(--ease),background .2s;font:900 1.02rem/1.05 var(--f-d);text-transform:uppercase;overflow-wrap:anywhere}
+.tags label::before{content:"";position:absolute;left:50%;top:12px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--asf);box-shadow:inset 0 0 0 2px #8D897B}
+.tags label small{position:absolute;right:10px;top:34px;font:500 .66rem/1 var(--f-m);letter-spacing:.14em;color:#59554A}
+.tags label:hover{transform:rotate(-2.5deg)}
+.tags input:checked+label{background:var(--lima);transform:rotate(1.5deg) translateY(-4px)}
+.tags input:checked+label small{color:var(--asf)}
+.tags span{display:block}
+@media (max-width:640px){.tags{grid-template-columns:1fr 1fr}}
+.nota{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.9rem;color:#B9B6AA}
+.selo{display:inline-block;padding:4px 9px;border:1.5px solid var(--lar);color:var(--lar);font:500 .68rem/1 var(--f-m);letter-spacing:.16em;text-transform:uppercase;transform:rotate(-2deg)}
+.dias label,.horas label{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:60px;min-height:52px;padding:6px 10px;border:1.5px solid #4A4E50;font:500 .95rem/1.15 var(--f-m);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.dias small{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mudo)}
+.opt label:hover{border-color:var(--lima)}
+.dias input:checked+label,.horas input:checked+label{background:var(--lima);color:var(--asf);border-color:var(--lima)}
+.dias input:checked+label small{color:var(--asf)}
+.nome{width:100%;max-width:340px;min-height:50px;padding:0 14px;border:1.5px solid #4A4E50;background:var(--asf2);color:var(--pap);font:500 1rem var(--f-m)}
+.nome::placeholder{color:#8B8D88}
+.bil{position:sticky;top:80px;background:var(--pap);color:var(--tx);padding:20px 20px 0;clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,0 100%);box-shadow:0 24px 50px -20px rgba(0,0,0,.9)}
+.bil .k{font:500 .68rem/1 var(--f-m);letter-spacing:.2em;text-transform:uppercase;color:#59554A;display:flex;justify-content:space-between;gap:10px}
+.bil dl{margin:16px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font:500 .95rem/1.3 var(--f-m)}
+.bil dt{color:#59554A;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding-top:3px}
+.bil dd{margin:0;font-weight:700;text-transform:uppercase;min-height:1.3em}
+.bil .bars{display:block;width:100%;height:40px;margin:16px 0 12px;color:var(--tx)}
+.bil .perf{position:relative;margin:0 -20px;border-top:2px dashed #8D897B;padding:14px 20px;background:var(--pap2);display:flex;justify-content:space-between;align-items:center;font:900 1.1rem/1 var(--f-d);letter-spacing:.3em;transition:transform .8s cubic-bezier(.5,0,.2,1.3),opacity .8s}
+.bil.rupt .perf{transform:translate(24px,26px) rotate(5deg);opacity:.2}
+.trimite{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.falta{font:500 .82rem/1.4 var(--f-m);color:#CFCBBE;min-height:1.4em}
+@media (max-width:860px){.marc{grid-template-columns:1fr}.bil{position:relative;top:0}}
+
+/* vozes */
+.vozes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.voz{margin:0;background:var(--asf2);padding:24px 22px;border-top:4px solid var(--lima);position:relative}
+.voz:nth-child(2){border-color:var(--lar)}
+.voz:nth-child(3){border-color:var(--pap)}
+.voz blockquote{margin:0;font:700 1.2rem/1.35 var(--f-d)}
+.voz figcaption{margin-top:16px;font:500 .78rem/1.4 var(--f-m);letter-spacing:.08em;color:var(--mudo)}
+.tot{margin-top:22px;font:500 .85rem/1.4 var(--f-m);color:var(--mudo);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+@media (max-width:860px){.vozes{grid-template-columns:1fr}}
+
+/* contacto */
+.contacto{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,56px);margin-top:36px;align-items:start}
+.fach{position:relative;aspect-ratio:3/4;max-height:560px;overflow:hidden;background:var(--asf3)}
+.fach svg,.fach img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fach figcaption{position:absolute;left:0;bottom:0;background:var(--lima);color:var(--asf);font:500 .72rem/1 var(--f-m);letter-spacing:.14em;padding:9px 12px;text-transform:uppercase;z-index:2}
+.contacto dl{margin:0 0 24px}
+.contacto dt{font:500 .72rem/1 var(--f-m);letter-spacing:.2em;text-transform:uppercase;color:var(--lima);margin-top:20px}
+.contacto dd{margin:6px 0 0;font:700 1.25rem/1.4 var(--f-d)}
+.contacto dd a{text-decoration:none;border-bottom:2px solid var(--lima)}
+.harta{position:relative;min-height:300px;background:var(--asf2);border:1.5px dashed #5A5E60;margin-top:22px}
+.harta iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.harta>div{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px}
+@media (max-width:860px){.contacto{grid-template-columns:1fr}.fach{aspect-ratio:4/3}}
+
+.rodape{background:#08090A;color:#A9AAA3;padding:44px 0 110px;font-size:.92rem}
+.rodape b{font:900 1.2rem/1 var(--f-d);letter-spacing:.06em;color:var(--pap)}
+.rodape .g{display:grid;grid-template-columns:1.2fr 1fr;gap:26px}
+.legal{margin-top:26px;padding-top:18px;border-top:1px solid #2C2F32;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:.84rem}
+.legal a{display:inline-flex;align-items:center;min-height:32px}
+@media (max-width:640px){.rodape .g{grid-template-columns:1fr}}
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(15,16,17,.96);border-top:2px solid var(--lima);transform:translateY(110%);transition:transform .4s var(--ease)}
+.jos.vizivel{transform:none}
+.jos .btn{flex:1;min-height:48px;padding:0 10px}
+@media (max-width:760px){.jos{display:flex}}
+</style>
+</head>
+<body>
+<a class="salt" href="#continut">{{Sari la conținut|Skip to content|Saltar para o conteúdo}}</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 21l1.6-4.6A9 9 0 1 1 8 19.6z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2.3-1-1 .9a5 5 0 0 1-2-2l.9-1-1-2.3z"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-stea" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.2 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-tes" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="12" r="6"/><circle cx="10" cy="36" r="6"/><path d="M15 15l28 16M15 33L43 17"/></g></symbol>
+  </defs>
+</svg>
+
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru OFFCUT Barbershop|PACHECO STUDIOS PREVIEW · demo website for OFFCUT Barbershop|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para a OFFCUT Barbershop}}</div>
+
+<header class="bara">
+  <div class="lat bara-in">
+    <a class="marca" href="#sus" aria-label="{{OFFCUT Barbershop, acasă|OFFCUT Barbershop, home|OFFCUT Barbershop, início}}"><i aria-hidden="true"></i>OFFCUT</a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#pereti">{{Peretele|The wall|A parede}}</a>
+      <a href="#programare">{{Programare|Booking|Marcação}}</a>
+      <a href="#voci">{{Voci|Reviews|Opiniões}}</a>
+      <a href="#contact">{{Contact|Contact|Contactos}}</a>
+    </nav>
+    <span class="mm" id="mm" aria-hidden="true">0000 mm</span>
+    <div class="limbi" role="group" aria-label="{{Limba|Language|Língua}}">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false" class="doar-rev">PT</button>
+    </div>
+    <a class="btn btn-lima" href="tel:+40735514992"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  </div>
+</header>
+
+<main id="continut">
+<section class="hero" id="sus">
+  <div class="hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 160 107" preserveAspectRatio="xMidYMid slice"><rect width="160" height="107" fill="#1A1C1E"/><path d="M0 0h160L130 20H30z" fill="#26292C"/><path d="M20 107V50l15-12h20l15 12v57zM90 107V50l15-12h20l15 12v57z" fill="#FF6A1F" opacity=".5"/><path d="M0 100h160" stroke="#B8F23C" stroke-width=".6" stroke-dasharray="3 2"/></svg>
+    <img src="media/g-07.webp" width="1600" height="1067" alt="" fetchpriority="high" onerror="this.remove()">
+  </div>
+  <svg id="regua-h" aria-hidden="true"><path d=""/></svg>
+  <div class="lat hero-in" style="width:100%">
+    <div>
+      <p class="lote anim" style="--i:0">{{Lot 001 · Frizerie · Iași|Lot 001 · Barbershop · Iași|Lote 001 · Barbearia · Iași}}</p>
+      <h1 aria-label="OFFCUT Barbershop"><span class="cut" aria-hidden="true"><span class="top">OFFCUT</span><span class="bot">OFFCUT</span><i class="linha"></i><svg class="tes"><use href="#i-tes"/></svg></span></h1>
+      <p class="sub-b" aria-hidden="true">Barbershop</p>
+      <p class="anim" style="--i:1;margin-top:20px;max-width:34ch;font-size:1.15rem;color:#E4E0D3">{{Frizerie pe Bulevardul Dacia, cu pereții pictați de sus până jos. Tuns executat rapid, de frizeri pricepuți.|A barbershop on Bulevardul Dacia with walls painted top to bottom. Quick cuts by skilled barbers.|Barbearia no Bulevardul Dacia, com paredes pintadas de cima a baixo. Cortes rápidos, por barbeiros competentes.}}</p>
+    </div>
+    <aside class="etiq anim" style="--i:2" aria-label="{{Datele salonului|Shop details|Dados da barbearia}}">
+      <div class="k"><span>OFFCUT / 001</span><span>IAȘI</span></div>
+      <b>OFFCUT Barbershop</b>
+      <p><span class="est" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span> 5,0 · {{95 recenzii Google|95 Google reviews|95 avaliações Google}}</p>
+      <p>Bulevardul Dacia 6A</p>
+      <p>{{Luni 09:00–19:30 · restul zilelor: de confirmat|Mon 9:00–19:30 · other days: to be confirmed|Seg 09:00–19:30 · restantes dias: a confirmar}}</p>
+      <div class="bc2" aria-hidden="true"></div>
+      <div class="acoes">
+        <a class="btn btn-lima" href="tel:+40735514992"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună: 0735 514 992|Call: 0735 514 992|Ligar: 0735 514 992}}</a>
+        <a class="btn btn-linha" href="#programare">{{Programează-te|Book a cut|Marcar}}</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="sec pap" id="pereti" aria-labelledby="t-per">
+  <div class="lat">
+    <div class="et rv"><span>Lot 002</span><i class="bc" aria-hidden="true"></i><span>{{Peretele|The wall|A parede}}</span></div>
+    <div class="regua rv" aria-hidden="true"></div>
+    <h2 id="t-per" class="rv" style="--d:.05s">{{Pereții scriu: „Nu fi ofticat”|The walls say: “Don’t be grumpy”|As paredes dizem: «Não fiques chateado»}}</h2>
+    <p class="intro rv" style="--d:.1s">{{Fiecare colț din salon e pictat cu graffiti. Pe unul scrie „Eu dau graffiti, OFFCUT te face pretty”.|Every corner of the shop is painted with graffiti. One reads “Eu dau graffiti, OFFCUT te face pretty”.|Cada canto da barbearia está pintado com graffiti. Num lê-se «Eu dau graffiti, OFFCUT te face pretty».}}</p>
+    <div class="folha" id="gal">
+      <div class="fila">
+        <div class="cel larg rv" style="--f:2"><button type="button" aria-label="{{Mărește fotografia 3|Enlarge photo 3|Ampliar a fotografia 3}}"><svg viewBox="0 0 4 5" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="5" fill="#26292C"/></svg><img loading="lazy" src="media/g-03.webp" width="1600" height="2400" alt="Peretele cu logo-ul OFFCUT Barbershop pictat în graffiti verde, sub lumini hexagonale" data-alt="Peretele cu logo-ul OFFCUT Barbershop pictat în graffiti verde, sub lumini hexagonale|The wall with the OFFCUT Barbershop logo in green graffiti, under hexagonal lights|A parede com o logótipo OFFCUT Barbershop em graffiti verde, sob luzes hexagonais" onerror="this.remove()"></button><span class="no">#03</span></div>
+        <div class="cel larg rv" style="--f:3.4;--d:.06s"><button type="button" aria-label="{{Mărește fotografia 7|Enlarge photo 7|Ampliar a fotografia 7}}"><svg viewBox="0 0 3 2" preserveAspectRatio="none" aria-hidden="true"><rect width="3" height="2" fill="#26292C"/></svg><img loading="lazy" src="media/g-07.webp" width="1600" height="1067" alt="Salonul văzut din interior: scaune cu cearșafuri vărgate și pereți cu personaje pictate" data-alt="Salonul văzut din interior: scaune cu cearșafuri vărgate și pereți cu personaje pictate|The shop from inside: chairs with striped capes and walls with painted characters|A barbearia por dentro: cadeiras com capas às riscas e paredes com personagens pintadas" onerror="this.remove()"></button><span class="no">#07</span></div>
+        <div class="cel rv" style="--f:2;--d:.12s"><button type="button" aria-label="{{Mărește fotografia 5|Enlarge photo 5|Ampliar a fotografia 5}}"><svg viewBox="0 0 4 5" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="5" fill="#26292C"/></svg><img loading="lazy" src="media/g-05.webp" width="1600" height="2400" alt="Colț pictat în roșu cu textul „Nu fi ofticat, vino la OFFCUT”" data-alt="Colț pictat în roșu cu textul „Nu fi ofticat, vino la OFFCUT”|Red painted corner with the text “Nu fi ofticat, vino la OFFCUT”|Canto pintado de vermelho com o texto «Nu fi ofticat, vino la OFFCUT»" onerror="this.remove()"></button><span class="no">#05</span></div>
+      </div>
+      <div class="fila">
+        <div class="cel rv" style="--f:2"><button type="button" aria-label="{{Mărește fotografia 2|Enlarge photo 2|Ampliar a fotografia 2}}"><svg viewBox="0 0 4 5" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="5" fill="#26292C"/></svg><img loading="lazy" src="media/g-02.webp" width="1080" height="2336" alt="Un frizer tunde un băiat, pe un scaun cu cearșaf vărgat" data-alt="Un frizer tunde un băiat, pe un scaun cu cearșaf vărgat|A barber cutting a boy’s hair on a chair with a striped cape|Um barbeiro a cortar o cabelo a um rapaz, numa cadeira com capa às riscas" onerror="this.remove()"></button><span class="no">#02</span></div>
+        <div class="cel larg rv" style="--f:3.4;--d:.06s"><button type="button" aria-label="{{Mărește fotografia 8|Enlarge photo 8|Ampliar a fotografia 8}}"><svg viewBox="0 0 3 2" preserveAspectRatio="none" aria-hidden="true"><rect width="3" height="2" fill="#26292C"/></svg><img loading="lazy" src="media/g-08.webp" width="1600" height="1067" alt="Perete cu Mario pictat în graffiti, deasupra scaunelor de frizer" data-alt="Perete cu Mario pictat în graffiti, deasupra scaunelor de frizer|Wall with a graffiti Mario above the barber chairs|Parede com o Mario em graffiti, por cima das cadeiras de barbeiro" onerror="this.remove()"></button><span class="no">#08</span></div>
+        <div class="cel rv" style="--f:2;--d:.12s"><button type="button" aria-label="{{Mărește fotografia 6|Enlarge photo 6|Ampliar a fotografia 6}}"><svg viewBox="0 0 4 5" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="5" fill="#26292C"/></svg><img loading="lazy" src="media/g-06.webp" width="1600" height="2844" alt="Bart Simpson cu un spray, lângă textul „Eu dau graffiti, OFFCUT te face pretty”" data-alt="Bart Simpson cu un spray, lângă textul „Eu dau graffiti, OFFCUT te face pretty”|Bart Simpson with a spray can, next to the text “Eu dau graffiti, OFFCUT te face pretty”|Bart Simpson com um spray, ao lado do texto «Eu dau graffiti, OFFCUT te face pretty»" onerror="this.remove()"></button><span class="no">#06</span></div>
+        <div class="cel rv" style="--f:1.7;--d:.18s"><button type="button" aria-label="{{Mărește fotografia 4|Enlarge photo 4|Ampliar a fotografia 4}}"><svg viewBox="0 0 4 5" preserveAspectRatio="none" aria-hidden="true"><rect width="4" height="5" fill="#26292C"/></svg><img loading="lazy" src="media/g-04.webp" width="1600" height="3465" alt="Frizer la lucru în salon, lângă o chitară agățată pe perete" data-alt="Frizer la lucru în salon, lângă o chitară agățată pe perete|Barber at work in the shop, beside a guitar hanging on the wall|Barbeiro a trabalhar, junto a uma guitarra pendurada na parede" onerror="this.remove()"></button><span class="no">#04</span></div>
+      </div>
+    </div>
+    <p class="leg rv">{{Fotografii reale din salon. Apasă pe o imagine ca s-o vezi mare.|Real photos of the shop. Tap an image to enlarge it.|Fotografias reais da barbearia. Toque numa imagem para a ver maior.}}</p>
+  </div>
+</section>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="{{Fotografie mărită|Enlarged photo|Fotografia ampliada}}"><button type="button" id="lb-x" aria-label="{{Închide|Close|Fechar}}">×</button><img id="lb-i" alt=""></div>
+
+<section class="sec" id="programare" aria-labelledby="t-prog">
+  <div class="lat">
+    <div class="et rv"><span>Lot 003</span><i class="bc" aria-hidden="true"></i><span>{{Programare|Booking|Marcação}}</span></div>
+    <div class="regua rv" aria-hidden="true"></div>
+    <h2 id="t-prog" class="rv" style="--d:.05s">{{Ia-ți un tag. Alege ziua și ora.|Take a tag. Pick the day and time.|Pegue num tag. Escolha o dia e a hora.}}</h2>
+    <p class="intro rv" style="--d:.1s">{{Cererea pleacă pe WhatsApp sau SMS direct la frizerie, care confirmă ora.|Your request goes by WhatsApp or SMS straight to the shop, which confirms the time.|O pedido segue por WhatsApp ou SMS diretamente para a barbearia, que confirma a hora.}}</p>
+    <div class="marc">
+      <form id="f" novalidate onsubmit="return false">
+        <div class="pas rv"><div class="t"><b>01</b>{{Serviciul|The service|O serviço}}</div><div class="opt tags" id="o-serv" role="radiogroup" aria-label="{{Serviciul|The service|O serviço}}"></div>
+          <p class="nota"><span class="selo">{{de confirmat|to be confirmed|a confirmar}}</span>{{Lista de servicii, durata și tarifele se confirmă la frizerie.|The service list, duration and rates are confirmed at the shop.|A lista de serviços, a duração e os preços confirmam-se na barbearia.}}</p></div>
+        <div class="pas rv"><div class="t"><b>02</b>{{Ziua|The day|O dia}}</div><div class="opt dias" id="o-zi" role="radiogroup" aria-label="{{Ziua|The day|O dia}}"></div></div>
+        <div class="pas rv"><div class="t"><b>03</b>{{Ora|The time|A hora}}</div><div class="opt horas" id="o-ora" role="radiogroup" aria-label="{{Ora|The time|A hora}}"></div></div>
+        <div class="pas rv"><div class="t"><b>04</b>{{Numele tău (opțional)|Your name (optional)|O seu nome (opcional)}}</div><input class="nome" id="nume" type="text" autocomplete="given-name" placeholder="Prenume" data-ph="Prenume|First name|Primeiro nome" aria-label="{{Numele tău|Your name|O seu nome}}"></div>
+      </form>
+      <div>
+        <div class="bil" id="bil" aria-live="polite">
+          <div class="k"><span>OFFCUT BARBERSHOP</span><span id="b-no"># ----</span></div>
+          <dl><dt>{{Serviciu|Service|Serviço}}</dt><dd id="b-sv">—</dd><dt>{{Ziua|Day|Dia}}</dt><dd id="b-zi">—</dd><dt>{{Ora|Time|Hora}}</dt><dd id="b-or">—</dd></dl>
+          <svg class="bars" id="bars" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="perf"><span>OFFCUT</span><svg aria-hidden="true" style="width:22px;height:22px"><use href="#i-tes"/></svg></div>
+        </div>
+        <div class="trimite">
+          <p class="falta" id="falta" role="status"></p>
+          <a class="btn btn-wa" id="b-wa" href="#programare" target="_blank" rel="noopener" aria-disabled="true"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</a>
+          <a class="btn btn-lima" id="b-sms" href="#programare" aria-disabled="true"><svg aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</a>
+          <a class="btn btn-linha" href="tel:+40735514992"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sau sună: 0735 514 992|Or call: 0735 514 992|Ou ligue: 0735 514 992}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="voci" aria-labelledby="t-voci" style="background:var(--asf2);padding-top:clamp(56px,8vw,96px)">
+  <div class="lat">
+    <div class="et rv"><span>Lot 004</span><i class="bc" aria-hidden="true"></i><span>{{Voci|Reviews|Opiniões}}</span></div>
+    <div class="regua rv" aria-hidden="true"></div>
+    <h2 id="t-voci" class="rv" style="--d:.05s">{{Clienții despre noi|Customers on us|Clientes sobre nós}}</h2>
+    <div class="vozes">
+      <figure class="voz rv"><blockquote>{{Locația este foarte îngrijită, poziționată la bulevard, iar frizerii sunt foarte pricepuți.|The place is very well kept, right on the boulevard, and the barbers are very skilled.|O local é muito cuidado, situado na avenida, e os barbeiros são muito competentes.}}</blockquote><figcaption>Gabriel Pană · Local Guide · 5/5</figcaption></figure>
+      <figure class="voz rv" style="--d:.08s"><blockquote>{{Atmosfera din salon e super primitoare.|The atmosphere in the shop is super welcoming.|O ambiente na barbearia é super acolhedor.}}</blockquote><figcaption>Anghel Ionut · 5/5</figcaption></figure>
+      <figure class="voz rv" style="--d:.16s"><blockquote>{{Recomand! Servicii de calitate executate rapid.|Recommended! Quality service, done quickly.|Recomendo! Serviços de qualidade executados rapidamente.}}</blockquote><figcaption>Marinela Ursachi · Local Guide · 5/5</figcaption></figure>
+    </div>
+    <p class="tot rv"><span class="est" style="color:var(--lima)" aria-hidden="true"><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg><svg><use href="#i-stea"/></svg></span>{{Nota 5,0 din 95 de recenzii pe Google Maps.|Rated 5.0 from 95 reviews on Google Maps.|Nota 5,0 em 95 avaliações no Google Maps.}}</p>
+  </div>
+</section>
+
+<section class="sec" id="contact" aria-labelledby="t-contact">
+  <div class="lat">
+    <div class="et rv"><span>Lot 005</span><i class="bc" aria-hidden="true"></i><span>{{Contact|Contact|Contactos}}</span></div>
+    <div class="regua rv" aria-hidden="true"></div>
+    <h2 id="t-contact" class="rv" style="--d:.05s">{{Unde ne găsești|Where to find us|Onde nos encontrar}}</h2>
+    <div class="contacto">
+      <figure class="fach rv" style="margin:0"><svg viewBox="0 0 3 4" preserveAspectRatio="none" aria-hidden="true"><rect width="3" height="4" fill="#26292C"/></svg><img loading="lazy" src="media/g-01.webp" width="1600" height="2133" alt="Intrarea în OFFCUT Barbershop: firma neagră deasupra geamurilor și treptele de acces" data-alt="Intrarea în OFFCUT Barbershop: firma neagră deasupra geamurilor și treptele de acces|The OFFCUT Barbershop entrance: black sign above the windows and the access steps|A entrada da OFFCUT Barbershop: letreiro preto sobre as janelas e os degraus de acesso" onerror="this.remove()"><figcaption>{{Intrarea|The entrance|A entrada}}</figcaption></figure>
+      <div class="rv" style="--d:.08s">
+        <dl>
+          <dt>{{Adresa|Address|Morada}}</dt><dd>Bulevardul Dacia 6A<br>700424 Iași</dd>
+          <dt>{{Telefon|Phone|Telefone}}</dt><dd><a href="tel:+40735514992">0735 514 992</a></dd>
+          <dt>{{Program|Hours|Horário}}</dt><dd>{{Luni 09:00–19:30<br>Restul zilelor: de confirmat|Monday 9:00–19:30<br>Other days: to be confirmed|Segunda 09:00–19:30<br>Restantes dias: a confirmar}}</dd>
+        </dl>
+        <a class="btn btn-lima" href="tel:+40735514992"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună acum|Call now|Ligar agora}}</a>
+        <div class="harta" id="harta"><div><button type="button" class="btn btn-linha" id="arata-harta" data-src="https://www.google.com/maps?q=47.1669447,27.5552473&z=17&output=embed" data-titulo="Hartă: OFFCUT Barbershop, Bulevardul Dacia 6A, Iași"><svg aria-hidden="true"><use href="#i-pin"/></svg>{{Arată harta|Show the map|Mostrar o mapa}}</button></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="lat">
+    <div class="g">
+      <div><b>OFFCUT BARBERSHOP</b><p style="margin-top:10px">{{Frizerie pe Bulevardul Dacia, Iași.|Barbershop on Bulevardul Dacia, Iași.|Barbearia no Bulevardul Dacia, Iași.}}</p></div>
+      <div><p>Bulevardul Dacia 6A, 700424 Iași<br><a href="tel:+40735514992">0735 514 992</a></p></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 OFFCUT Barbershop · {{denumire firmă și CUI: de confirmat|company name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+      <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+    </div>
+  </div>
+</footer>
+
+<div class="jos" id="jos">
+  <a class="btn btn-lima" href="tel:+40735514992"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <a class="btn btn-linha" href="#programare">{{Programare|Booking|Marcação}}</a>
+</div>
+
+<noscript><p style="padding:16px;background:#fff;color:#000">OFFCUT Barbershop Iași · Bulevardul Dacia 6A, 700424 Iași · Tel. 0735 514 992 · Luni 09:00–19:30, restul programului: de confirmat · 5,0 pe Google (95 recenzii) · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HairSalon","name":"OFFCUT Barbershop","description":"Frizerie în Iași, Bulevardul Dacia 6A.","telephone":"+40735514992","address":{"@type":"PostalAddress","streetAddress":"Bulevardul Dacia 6A","postalCode":"700424","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1669447,"longitude":27.5552473},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Monday","opens":"09:00","closes":"19:30"}],"image":"media/g-07.webp","hasMap":"https://www.google.com/maps/search/?api=1&query=47.1669447%2C27.5552473"}
+</script>
+<script>
+(function(){
+/*__COMUM_JS__*/
+  var TEL='+40735514992';
+  var SERV=[
+    {ro:'Tuns',en:'Haircut',pt:'Corte'},
+    {ro:'Barbă',en:'Beard',pt:'Barba'},
+    {ro:'Tuns + barbă',en:'Cut + beard',pt:'Corte + barba'},
+    {ro:'Tuns copil',en:'Kids’ cut',pt:'Corte de criança'}
+  ];
+  var ORE=['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00'];
+  var sel={s:-1,z:-1,o:-1},ZI=zile(7);
+  var oS=$('o-serv'),oZ=$('o-zi'),oO=$('o-ora');
+  function radio(grup,nume,i,html,fn,chk){
+    var id=nume+i,w=document.createElement('span');
+    w.innerHTML='<input type="radio" name="'+nume+'" id="'+id+'" value="'+i+'"'+(chk?' checked':'')+'><label for="'+id+'">'+html+'</label>';
+    w.firstChild.addEventListener('change',function(){fn(i)});
+    grup.appendChild(w);
+  }
+  function diaTxt(i){var d=ZI[i];return (i===0?t('Azi','Today','Hoje'):i===1?t('Mâine','Tomorrow','Amanhã'):DIAS[L()][d.getDay()])}
+  function randOpcoes(){
+    oS.innerHTML='';oZ.innerHTML='';
+    SERV.forEach(function(s,i){radio(oS,'s',i,'<small>0'+(i+1)+'</small><span>'+t(s.ro,s.en,s.pt)+'</span>',function(k){sel.s=k;rez()},sel.s===i)});
+    ZI.forEach(function(d,i){radio(oZ,'z',i,'<small>'+diaTxt(i)+'</small>'+pad(d.getDate())+'.'+pad(d.getMonth()+1),function(k){sel.z=k;rez()},sel.z===i)});
+  }
+  ORE.forEach(function(h,i){radio(oO,'o',i,h,function(k){sel.o=k;rez()})});
+  var bil=$('bil'),bwa=$('b-wa'),bsms=$('b-sms');
+  function mesaj(){
+    var n=$('nume').value.trim();
+    return 'Bună ziua! Aș dori o programare la OFFCUT Barbershop: '+SERV[sel.s].ro.toLowerCase()+', '+dataRo(ZI[sel.z],sel.z)+', la ora '+ORE[sel.o]+'.'+(n?' Mă numesc '+n+'.':'')+' Vă rog să-mi confirmați disponibilitatea. Mulțumesc!';
+  }
+  function hash(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+  function barras(seed){
+    var x=0,r=hash(seed||'offcut'),o='';
+    while(x<198){r=Math.imul(r,1664525)+1013904223>>>0;var w=1+(r>>>28)%4,g=1+(r>>>24)%3;o+='<rect x="'+x+'" y="0" width="'+w+'" height="40" fill="currentColor"/>';x+=w+g}
+    $('bars').innerHTML=o;
+  }
+  function rez(){
+    var gata=sel.s>-1&&sel.z>-1&&sel.o>-1;
+    $('b-sv').textContent=sel.s>-1?t(SERV[sel.s].ro,SERV[sel.s].en,SERV[sel.s].pt):'—';
+    $('b-zi').textContent=sel.z>-1?diaTxt(sel.z)+' '+pad(ZI[sel.z].getDate())+'.'+pad(ZI[sel.z].getMonth()+1):'—';
+    $('b-or').textContent=sel.o>-1?ORE[sel.o]:'—';
+    var seed=[sel.s,sel.z,sel.o].join('-');
+    $('b-no').textContent=gata?'# '+String(hash(seed)%9000+1000):'# ----';
+    barras(seed);
+    var falta=[];if(sel.s<0)falta.push(t('serviciul','the service','o serviço'));if(sel.z<0)falta.push(t('ziua','the day','o dia'));if(sel.o<0)falta.push(t('ora','the time','a hora'));
+    $('falta').textContent=gata?t('Gata. Frizeria îți confirmă ora.','Ready. The shop will confirm the time.','Pronto. A barbearia confirma a hora.'):t('Mai alege: ','Still to pick: ','Falta escolher: ')+falta.join(', ');
+    [bwa,bsms].forEach(function(b){b.setAttribute('aria-disabled',gata?'false':'true')});
+    if(gata){var l=link(TEL,mesaj());bwa.href=l.wa;bsms.href=l.sms}else{bwa.href='#programare';bsms.href='#programare'}
+    bil.classList.remove('rupt');
+  }
+  $('nume').addEventListener('input',function(){if(sel.s>-1&&sel.z>-1&&sel.o>-1){var l=link(TEL,mesaj());bwa.href=l.wa;bsms.href=l.sms}});
+  [bwa,bsms].forEach(function(b){b.addEventListener('click',function(e){if(b.getAttribute('aria-disabled')==='true'){e.preventDefault();return}bil.classList.add('rupt')})});
+  aoLimba(function(){randOpcoes();rez();document.title=t('OFFCUT Barbershop Iași · Frizerie pe Bulevardul Dacia 6A','OFFCUT Barbershop Iași · Barbershop on Bulevardul Dacia 6A','OFFCUT Barbershop Iași · Barbearia no Bulevardul Dacia 6A')});
+  randOpcoes();
+
+  /* galeria */
+  var lb=$('lb'),lbi=$('lb-i'),ult=null;
+  $$('#gal .cel button').forEach(function(b){b.addEventListener('click',function(){var im=b.querySelector('img');if(!im)return;lbi.src=im.src;lbi.alt=im.alt;ult=b;lb.classList.add('on');$('lb-x').focus()})});
+  function fecha(){lb.classList.remove('on');if(ult)ult.focus()}
+  $('lb-x').addEventListener('click',fecha);lb.addEventListener('click',function(e){if(e.target===lb)fecha()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('on'))fecha()});
+
+  /* régua do herói */
+  var rh=$('regua-h');
+  function regua(){
+    var w=rh.parentNode.clientWidth,d='',tx='',px=96/25.4;
+    rh.setAttribute('viewBox','0 0 '+w+' 34');
+    for(var mm=0;mm*px<w;mm++){var x=(mm*px).toFixed(1),h=mm%10===0?18:mm%5===0?12:6;d+='M'+x+' 0v'+h;if(mm%10===0&&mm>0)tx+='<text x="'+(+x+3)+'" y="28">'+mm+'</text>'}
+    rh.innerHTML='<path d="'+d+'"/>'+tx;
+  }
+  regua();var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(regua,150)});
+
+  var mm=$('mm'),jos=$('jos');
+  function scroll(){mm.textContent=String(Math.round(scrollY*25.4/96)).padStart(4,'0')+' mm';jos.classList.toggle('vizivel',scrollY>innerHeight*.5)}
+  addEventListener('scroll',scroll,{passive:true});scroll();
+
+  var heroi=document.querySelector('.hero');
+  function arranca(){heroi.classList.add('gata');if(reduz)heroi.classList.add('cortado');else setTimeout(function(){heroi.classList.add('cortado')},2100)}
+  if(reduz)arranca();else if(document.fonts&&document.fonts.ready){var go=false;var f=function(){if(!go){go=true;arranca()}};document.fonts.ready.then(f);setTimeout(f,600)}else arranca();
+  seteaza(L());
+})();
+</script>
+</body>
+</html>
