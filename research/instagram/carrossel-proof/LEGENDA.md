@@ -21,45 +21,24 @@ Saíram o sintoma («slow replies») e o percurso depois («Same doors. One clea
 
 Nota: os números 100× / 21× (5 vs. 30 minutos) que circulam na internet são de outro estudo (InsideSales, 2007) e muitas vezes são atribuídos à HBR por engano. Não entraram.
 
-## Legenda (copiar a partir daqui)
+## Legenda EN (copiar a partir daqui)
 
-Versão de 12/10 22h37. Público (Tomás): donos de negócios que já faturam mais de 10 mil €/mês, até 500 mil
-€/mês, ainda sem IA, talvez a pensar implementar e à procura de alguém em quem confiar. Por isso o gancho
-reconhece que o negócio já funciona, não fala de «mais uma ferramenta» (pressupõe que já têm) e a legenda
-mostra como trabalhamos (triagem primeiro, desenho antes de construir, regras aprovadas, exceções a pessoas,
-contas e dados deles, medido do ponto de partida). O caso continua «real case», sem «nós fizemos».
+Versão curta de 12/10 23h04 (Tomás: só o fruto, o motivo para aderir, abrir os olhos e avançar). Público: donos
+que faturam 10 mil a 500 mil €/mês, ainda sem IA, à procura de alguém em quem confiar. Caso só «real case».
 
 The business that chose AI before the market forced it to.
 
 It didn't start with a tool. It started with one next action after every enquiry.
 
-Your business already works. Now you're thinking about AI, and you're not sure who to trust with it. Then start by seeing how it works inside a real business, with the numbers.
+The result: 50 to 500 quotes answered a day. +10% monthly revenue after the system went live.
 
-This carousel walks through one real case, step by step: where requests came in, who owned the next action, the rule written before any automation, what the AI handled, and what stayed with the team.
+Your business already works. But every request with no owner is money leaking out, at 10k a month or at 500k. The market will force this change anyway. Moving first is the only part you control.
 
-The numbers, with the source on each slide:
-→ 50 to 500 quotes answered a day
-→ +10% monthly revenue after the follow-up system went live
-→ 87% of customers still want a way to reach a human, so the system keeps one
+We start with a triage, not a tool. AI inside your rules, a person for every exception, your data stays yours.
 
-The leak is the same at 10k a month or 500k a month: a request with no owner. Only the cost of it changes.
-
-How we work, so you know what to expect:
-→ We start with a triage of how requests move through your business today. No tool, no commitment.
-→ You see the system drawn before anything is built.
-→ The AI works only inside rules you approve. Every exception goes to a person on your team.
-→ Your accounts and your data stay yours.
-→ Results are measured from your starting point. Real numbers or none at all.
-
-DM "AUDIT" and tell us what your business does. We'll tell you where the first leak usually hides.
+DM "AUDIT" and tell us what your business does.
 
 #AISystems #AIConsulting #BusinessSystems #CustomerService #BusinessGrowth
-
-### Capa
-
-Desde 12/10 22h47 (frase do Tomás): «The business that chose AI / before the market forced it to.» + «It didn't start
-with a tool. It started with one next action after every enquiry.» Sem «revolution»: lê-se como hype para um
-público cauteloso; se o Tomás quiser, entra.
 
 ## Legenda RO (copiar a partir daqui)
 
@@ -67,24 +46,12 @@ Afacerea care a ales AI înainte să o oblige piața.
 
 Nu a început cu un tool. A început cu un pas următor după fiecare cerere.
 
-Afacerea ta funcționează deja. Acum te gândești la AI și nu știi în cine să ai încredere. Atunci începe prin a vedea cum funcționează într-o afacere reală, cu cifre.
+Rezultatul: de la 50 la 500 de oferte răspunse pe zi. +10% venit lunar după ce sistemul a intrat în funcțiune.
 
-Acest carusel parcurge un caz real, pas cu pas: pe unde intrau cererile, cine era responsabil de pasul următor, regula scrisă înainte de orice automatizare, ce prelua AI-ul și ce rămânea la echipă.
+Afacerea ta funcționează deja. Dar fiecare cerere fără responsabil e bani care se scurg, la 10 mii pe lună sau la 500 de mii. Piața va forța oricum schimbarea. Singurul lucru pe care îl controlezi e dacă te miști primul.
 
-Cifrele, cu sursa pe fiecare slide:
-→ de la 50 la 500 de oferte răspunse pe zi
-→ +10% venit lunar după ce sistemul de follow-up a intrat în funcțiune
-→ 87% dintre clienți vor în continuare o cale către un om, așa că sistemul o păstrează
+Începem cu o triere, nu cu un tool. AI în interiorul regulilor tale, un om pentru fiecare excepție, datele rămân ale tale.
 
-Ruptura e aceeași la 10 mii pe lună sau la 500 de mii pe lună: o cerere fără responsabil. Se schimbă doar cât te costă.
-
-Cum lucrăm, ca să știi la ce să te aștepți:
-→ Începem cu o triere a felului în care circulă cererile prin afacerea ta azi. Fără tool, fără angajament.
-→ Vezi sistemul desenat înainte să construim ceva.
-→ AI-ul lucrează doar în interiorul regulilor aprobate de tine. Orice excepție ajunge la un om din echipa ta.
-→ Conturile și datele rămân ale tale.
-→ Rezultatele se măsoară de la punctul tău de plecare. Cifre reale sau deloc.
-
-Trimite „AUDIT” în privat și spune-ne ce face afacerea ta. Îți spunem unde se ascunde, de obicei, prima ruptură.
+Trimite „AUDIT” în privat și spune-ne ce face afacerea ta.
 
 #AISystems #AIConsulting #AutomatizareAfaceri #AntreprenoriRomania #RelatiiCuClientii
