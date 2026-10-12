@@ -53,8 +53,8 @@ DM "AUDIT" and tell us what your business does. We'll tell you where the first l
 
 #AISystems #AIConsulting #BusinessSystems #CustomerService #BusinessGrowth
 
-### Capa (proposta, à espera do Tomás)
+### Capa
 
-O título atual «A business did not need another AI tool.» fala a quem já experimentou ferramentas.
-Para quem não tem IA e procura por onde começar, proposta quase igual ao plano:
-«This business did not start / with an AI tool.» + «It started with one next action after every enquiry.»
+Desde 12/10 22h43 (Tomás: «Muda»): «This business did not start / with an AI tool.» + «It started with one next
+action after every enquiry.» O título do plano («A business did not need another AI tool.») falava a quem já
+experimentou ferramentas; o nosso público ainda não tem nenhuma.
