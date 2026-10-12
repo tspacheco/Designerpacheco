@@ -278,8 +278,7 @@ ASSUNTO_RO = {
     "construcao": "{nome}: cine preia cererea de ofertă?",
     "servicos": "{nome}: cine preia cererea nouă?",
 }
-RODAPE_RO = ("Tomás Pacheco · Pacheco Studios · ro.pachecost.com · WhatsApp +40 723 098 556\n"
-             "Răspundeți «STOP» dacă nu doriți alte mesaje.")
+RODAPE_RO = "Tomás Pacheco · Pacheco Studios · ro.pachecost.com · WhatsApp +40 723 098 556"
 CADENCIA_RO = {
     "d3": "Bună ziua, revin cu o singură întrebare: are fiecare cerere nouă un responsabil clar până primește răspuns? Voi fi pregătit.",
     "d7": "Bună ziua, un răspuns scurt, da sau nu: faceți o triere cu noi? Voi fi pregătit.",
