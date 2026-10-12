@@ -180,6 +180,20 @@ html.rev .limbi .doar-rev{display:block}
 }
 
 /* ---------- fita ---------- */
+.oferta-luna{background:var(--verde-pal);padding:56px 0}
+.oferta-luna .lat{display:grid;gap:28px;align-items:center}
+@media (min-width:900px){.oferta-luna .lat{grid-template-columns:1.2fr .8fr;gap:48px}}
+.oferta-luna .cap-sec{margin-bottom:0}
+.oferta-lista{list-style:none;margin:18px 0 0;padding:0}
+.oferta-lista li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid rgba(35,128,31,.25);font-size:17px}
+.oferta-lista b{font:600 17px var(--f-mono);white-space:nowrap}
+.oferta-lista s{color:var(--grafit-3);opacity:.7;margin-right:6px;font-weight:400}
+.oferta-nota{font:400 14px var(--f-mono);color:var(--grafit-3);margin-top:14px}
+.cupon{background:var(--grafit);color:#fff;border-radius:22px;padding:30px 24px;display:grid;gap:8px;text-align:center;justify-items:center}
+.cupon .mare{font:700 clamp(44px,8vw,68px)/1 var(--f-disp);color:var(--verde-dsc)}
+.cupon .sub{font:600 18px var(--f-disp)}
+.cupon small{font:400 14px var(--f-mono);opacity:.8}
+.cupon .btn{margin-top:12px}
 .fita{background:var(--grafit);color:#fff;overflow:hidden;white-space:nowrap}
 .fita-in{display:inline-flex;animation:ruleaza 42s linear infinite;padding:14px 0}
 .fita span{font:500 15px var(--f-disp);padding:0 18px;display:inline-flex;align-items:center;gap:36px}
@@ -469,6 +483,28 @@ html.rev .limbi .doar-rev{display:block}
   </section>
 
   <div class="fita" aria-hidden="true"><div class="fita-in" id="fita-in"></div></div>
+
+  <section class="sectiune oferta-luna" id="oferta-luna" aria-labelledby="t-oferta">
+    <div class="lat">
+      <div class="cap-sec rv">
+        <span class="eticheta">{{Luna aceasta · până la 31 octombrie|This month · until 31 October|Este mês · até 31 de outubro}}</span>
+        <h2 id="t-oferta">{{Bateria cheii, verificată gratuit.|Your key battery, checked for free.|A pilha da chave, verificada de graça.}}</h2>
+        <p>{{Dacă telecomanda răspunde greu sau doar de aproape, treci pe la tejghea: verificăm bateria pe loc, fără niciun cost. Dacă trebuie schimbată, o facem în 5 minute.|If the remote responds slowly or only up close, stop by the counter: we check the battery on the spot, at no cost. If it needs changing, it takes 5 minutes.|Se o comando responde mal ou só de perto, passa pelo balcão: verificamos a pilha na hora, sem custo. Se for preciso trocar, leva 5 minutos.}}</p>
+        <ul class="oferta-lista">
+          <li><span>{{Verificare baterie|Battery check|Verificação da pilha}}</span><b>{{gratuit|free|grátis}}</b></li>
+          <li><span>{{Schimb baterie obișnuită (CR2032, CR2016)|Standard battery change (CR2032, CR2016)|Troca de pilha normal (CR2032, CR2016)}}</span><b>25 lei</b></li>
+          <li><span>{{Acumulator pentru chei BMW|Rechargeable battery for BMW keys|Acumulador para chaves BMW}}</span><b><s>150</s>120 lei</b></li>
+        </ul>
+        <p class="oferta-nota">{{Valabil la tejgheaua din Selgros până la 31.10.2026, în limita stocului.|Valid at the counter in Selgros until 31.10.2026, while stocks last.|Válido no balcão do Selgros até 31.10.2026, até esgotar o stock.}}</p>
+      </div>
+      <div class="cupon" role="group" aria-label="{{Oferta lunii|Offer of the month|Oferta do mês}}">
+        <span class="mare">120 lei</span>
+        <span class="sub">{{acumulator cheie BMW, în loc de 150|BMW key battery, instead of 150|acumulador de chave BMW, em vez de 150}}</span>
+        <small>{{până la 31 octombrie|until 31 October|até 31 de outubro}}</small>
+        <a class="btn btn-verde" href="https://wa.me/40747979810?text=Bun%C4%83%20ziua!%20Vreau%20s%C4%83%20verific%20bateria%20cheii.%20Ma%C8%99ina%3A%20" target="_blank" rel="noopener">{{Scrie-ne pe WhatsApp|Message us on WhatsApp|Escreve-nos no WhatsApp}}<svg aria-hidden="true"><use href="#i-sag"/></svg></a>
+      </div>
+    </div>
+  </section>
 
   <section class="sectiune" aria-labelledby="t-serv">
     <div class="lat">
