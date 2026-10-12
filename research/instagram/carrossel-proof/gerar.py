@@ -31,7 +31,7 @@ CSS_EXTRA = """
 .comp .col b{font-family:"Liberation Serif","Times New Roman",serif;font-size:30px;color:#F5EFE6;margin-bottom:8px;line-height:1}
 .comp .col div{width:100%;border-radius:4px 4px 0 0;background:rgba(245,239,230,.26)}
 .comp .col.o div{background:#FF6A3B}
-.comp h4{margin-top:16px;font-size:21px;line-height:1.2;color:#F5EFE6}
+.comp h4{margin-top:16px;min-height:50px;font-size:21px;line-height:1.2;color:#F5EFE6;display:flex;align-items:center;justify-content:center}
 .comp small{display:block;margin-top:8px;font-size:15px;line-height:1.3;color:#8F8983}
 /* gráfico da capa: crescimento linear vs. exponencial (ilustrativo) */
 .curva{margin-top:34px;width:900px;height:380px}
@@ -212,7 +212,7 @@ def comparacao_ia():
     """Slide 3 (Tomás, 12/10 22h12): sem IA vs. com IA no atendimento, com foco na faturação.
     Pequenos múltiplos (cada painel com a sua escala, barras a partir do zero, valor em texto)."""
     paineis = [("10×", "Quotes answered a day", "Real case · drinks for events, Brazil", (50, "50"), (500, "500")),
-               ("+10%", "Monthly revenue (index)", "Real case · imaging clinic, Brazil", (100, "100"), (110, "110")),
+               ("+10%", "Monthly revenue after implementation", "Real case · imaging clinic, Brazil", (100, "100"), (110, "110")),
                ("+15%", "Resolved per hour (index)", "Study of 5,172 support agents", (100, "100"), (115, "115"))]
     out = ['<div class="comp"><div class="leg"><span><i style="background:rgba(245,239,230,.30)"></i>Without AI</span>'
            '<span><i style="background:#FF6A3B"></i>With AI in customer service</span></div><div class="paineis">']
@@ -295,7 +295,7 @@ def caso_real():
     return ('<div class="prova dois">' + "".join(
         f'<div><small>{a}</small><p>{E(b)}</p></div>' for a, b in linhas_prova) + "</div>"
         '<div class="heroi"><div><b>R$40k</b><p>in 3.5 months, only from people who had not booked</p></div>'
-        '<div><b>+10%</b><p>monthly revenue from the automatic follow-up</p></div></div>'
+        '<div><b>+10%</b><p>monthly revenue after the follow-up system went live</p></div></div>'
         + fonte("Real case · imaging clinic, Brazil."))
 
 
