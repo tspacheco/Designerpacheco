@@ -347,7 +347,7 @@ def gerar(slug, cands):
 def escrever_envio(escolhidos, cands, ficheiro="ENVIAR.md", mortos=True):
     data = datetime.date.today().strftime("%d/%m/%Y")
     out = [f"# Agente 3 · Raio-X do primeiro contacto para enviar ({data})", "",
-           "Gatilho grátis da consultoria: mostra onde um cliente novo se perde entre o Google e a primeira mensagem e pede uma conversa de triagem "
+           "Gatilho grátis da consultoria: mostra onde um cliente novo se perde entre o Google e a primeira mensagem e pede uma conversa de triagem. "
            "Não é a auditoria paga e não vende site. Sem preço.", "",
            "Mandar pelo WhatsApp Business RO: mensagem + PDF romeno (link raw, descarrega no telemóvel). WhatsApp dos donos: «?» nos telemóveis "
            "(sem prova pública), «não» nos fixos. Se a mensagem não entregar, ligar ou visitar com a morada; nos fixos, ligar e pedir onde mandar o PDF.", ""]
