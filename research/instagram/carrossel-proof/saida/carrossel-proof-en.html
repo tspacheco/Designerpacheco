@@ -1,0 +1,153 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Proof · A real system breakdown</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:"Liberation Sans",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;text-align:center}
+.esc{background:radial-gradient(60% 45% at 50% 40%,rgba(255,106,59,.10),transparent 70%),radial-gradient(55% 40% at 0% 100%,rgba(255,106,59,.16),transparent 70%),linear-gradient(160deg,#101115 0%,#111216 55%,#1c1d22 100%);color:#F5EFE6}
+.esc::before{content:"";position:absolute;inset:0 0 50% 0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0 1px,transparent 1px 36px);-webkit-mask:linear-gradient(#000,transparent);pointer-events:none}
+.lar{background:radial-gradient(26% 17% at 50% 34%,rgba(110,36,14,.42),transparent 100%),linear-gradient(135deg,#FF956F 0%,#FF7F50 35%,#FF6C3D 65%,#EC5423 100%);color:#141214}
+.lar::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(120,40,10,.10) 0 1px,transparent 1px 72px),repeating-linear-gradient(0deg,rgba(120,40,10,.10) 0 1px,transparent 1px 72px);pointer-events:none}
+.top{position:absolute;top:66px;left:0;right:0;z-index:2}
+.eyebrow{font-weight:700;font-size:19px;letter-spacing:.2em}
+.esc .eyebrow{color:#F59A73}.lar .eyebrow{color:#5C2A17}
+.marca{margin-top:14px;font-weight:700;font-size:17px;letter-spacing:.14em}
+.esc .marca{color:#F3EEE8}.lar .marca{color:#141214}
+.regua{width:66px;height:3px;margin:34px auto 0}
+.esc .regua{background:#F26F43}.lar .regua{background:#1A1414}
+.miolo{position:absolute;left:0;right:0;top:170px;bottom:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;padding:0 60px}
+.miolo.topo{justify-content:flex-start;padding-top:44px}
+.kicker{font-weight:700;font-size:21px;letter-spacing:.16em;margin-bottom:26px}
+.esc .kicker{color:#F59A73}.lar .kicker{color:#5C2A17}
+h1{font-family:"Liberation Serif","Times New Roman",serif;font-weight:700;letter-spacing:-.06em;line-height:1}
+.esc h1{color:#F5EFE6}.esc h1 .ac{color:#FF6A3B}
+.lar h1{color:#141214}.lar h1 .ac{color:#FFF3E8}
+.sub{margin-top:30px;font-size:29px;line-height:1.36;max-width:700px}
+.esc .sub{color:#C9C4BE}.esc .sub b{color:#fff}
+.lar .sub{color:#4A2112}.lar .sub b{color:#141214}
+.pill{margin-top:40px;display:inline-block;border-radius:999px;padding:16px 26px;font-weight:700;font-size:19px;letter-spacing:.08em}
+.esc .pill{border:1.5px solid rgba(242,111,67,.75);color:#F8A884}
+.lar .pill{border:1.5px solid rgba(20,18,20,.7);color:#141214}
+.botao{margin-top:44px;background:#121316;color:#fff;font-weight:700;font-size:27px;letter-spacing:.02em;padding:22px 30px}
+.cartoes{margin-top:44px;display:grid;grid-template-columns:repeat(3,300px);gap:15px}
+.cartao{height:170px;padding:30px 14px 0;text-align:center}
+.cartao h3{font-family:"Liberation Serif","Times New Roman",serif;font-weight:700;font-size:34px;letter-spacing:-.045em;line-height:1}
+.cartao p{margin-top:12px;font-size:17px;line-height:1.3}
+.esc .cartao{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.16)}
+.esc .cartao h3{color:#F5EFE6}.esc .cartao p{color:#C9C4BE}
+.lar .cartao{border:1px solid rgba(60,20,8,.35)}
+.lar .cartao h3{color:#141214}.lar .cartao p{color:#4A2112}
+.c4{margin-top:40px;display:grid;grid-template-columns:repeat(2,351px);gap:18px}
+.c4 div{background:#101115;height:142px;padding-top:32px;box-shadow:0 9px 0 rgba(150,50,20,.45)}
+.c4 h3{font-family:"Liberation Serif","Times New Roman",serif;font-weight:700;font-size:46px;letter-spacing:-.05em;color:#FBF4EC;line-height:1}
+.c4 p{margin-top:14px;font-size:17px;color:#FFD3BE}
+.nota{margin-top:44px;font-weight:700;font-size:18px;letter-spacing:.16em;color:#4A2112}
+.pag{position:absolute;left:76px;bottom:66px;font-weight:700;font-size:17px;letter-spacing:.04em;z-index:2}
+.esc .pag{color:#C9C4BE}.esc .pag span{color:#F59A73}
+.lar .pag{color:#4A2112}.lar .pag span{color:#FFC2A6}
+.rod{position:absolute;right:76px;bottom:66px;max-width:360px;text-align:right;font-size:17px;line-height:1.3;z-index:2}
+.esc .rod{color:#BDB8B2}.lar .rod{color:#5A2410}
+/* diagramas */
+.diag{position:relative;width:960px;margin-top:36px;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)}
+.diag .n{position:absolute;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,.28);background:#121317;color:#F5EFE6;font-weight:700;font-size:20px;border-radius:999px}
+.diag .n.o{border-color:rgba(255,106,59,.75);color:#FFA27E}
+.diag .n.g{box-shadow:0 0 0 10px rgba(255,106,59,.10),0 0 26px rgba(255,106,59,.25)}
+.diag .box{position:absolute;border:1.5px solid rgba(255,255,255,.28);border-radius:18px;background:#121317}
+.diag .box b{display:block;margin-top:14px;color:#F59A73;font-size:19px;letter-spacing:.14em}
+.diag .mini{position:absolute;top:46px;height:48px;border:1px solid rgba(255,255,255,.22);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#F5EFE6}
+.diag .l{position:absolute;background:#F26F43}
+.diag .d{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#FF6A3B;box-shadow:0 0 0 6px rgba(255,106,59,.15)}
+.diag .lab{position:absolute;padding:0 12px;background:#121317;color:#F8A884;font-weight:700;font-size:15px;letter-spacing:.16em}
+.legenda{margin-top:30px;font-size:22px;color:#C9C4BE}.legenda b{color:#fff}
+.orbita{position:absolute;left:310px;top:1045px;width:460px;height:183px;border:1px solid rgba(242,111,67,.45);border-radius:50%;z-index:1}
+.orbita i{position:absolute;top:41px;width:100px;height:100px;border-radius:50%;border:1px solid rgba(255,255,255,.22)}
+.orbita em{position:absolute;left:216px;top:77px;width:28px;height:28px;border-radius:50%;background:#FF6A3B;box-shadow:0 0 0 16px rgba(255,106,59,.16)}
+
+.lar .pag span{color:#16110E}
+/* trilho da capa: o percurso de um pedido até ter dono */
+.trilho{position:absolute;left:250px;top:1068px;width:580px;height:40px;z-index:1}
+.trilho::before{content:"";position:absolute;left:0;right:0;top:19px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(242,111,67,.65))}
+.trilho i{position:absolute;top:9px;width:22px;height:22px;margin-left:-11px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:#121317}
+.trilho em{position:absolute;top:6px;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:#FF6A3B;box-shadow:0 0 0 14px rgba(255,106,59,.15)}
+/* nó incerto (percurso antigo) */
+.diag .n.x{border:1.5px dashed rgba(255,255,255,.30);background:transparent;color:#9C968F}
+.diag .l.x{background:repeating-linear-gradient(180deg,rgba(255,255,255,.35) 0 6px,transparent 6px 12px)}
+/* linhas numeradas (pergunta da auditoria, camada IA, camada humana) */
+.linhas{margin-top:40px;width:800px;text-align:left;border-top:1px solid rgba(255,255,255,.14)}
+.linhas div{display:flex;align-items:center;gap:22px;padding:19px 6px;border-bottom:1px solid rgba(255,255,255,.14)}
+.linhas span{flex:none;min-width:86px;text-align:center;border-radius:999px;padding:7px 0;font-weight:700;font-size:15px;letter-spacing:.14em}
+.linhas p{font-size:27px;line-height:1.25;color:#F5EFE6}
+.linhas.ia span{border:1.5px solid rgba(255,106,59,.75);color:#FFA27E}
+.linhas.hum span{background:#F5EFE6;color:#141214}
+.linhas.q span{border:1.5px solid rgba(255,255,255,.28);color:#C9C4BE}
+/* regra desenhada: cadeia de 5 passos sobre o laranja */
+.regra{margin-top:46px;display:flex;align-items:stretch;gap:0}
+.regra .p{width:168px;height:150px;background:#101115;padding:24px 10px 0;box-shadow:0 9px 0 rgba(150,50,20,.45);text-align:center}
+.regra .p small{display:block;font-weight:700;font-size:15px;letter-spacing:.16em;color:#F59A73}
+.regra .p b{display:block;margin-top:14px;font-family:"Liberation Serif","Times New Roman",serif;font-size:29px;letter-spacing:-.04em;line-height:1.02;color:#FBF4EC}
+.regra .p.u{background:#FBF4EC}.regra .p.u small{color:#B4441E}.regra .p.u b{color:#141214}
+.regra .s{width:30px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:#141214}
+/* resultado comprovável */
+.prova{margin-top:44px;width:820px;display:grid;gap:14px;text-align:left}
+.prova div{display:grid;grid-template-columns:190px 1fr;align-items:center;background:#101115;padding:24px 28px;box-shadow:0 9px 0 rgba(150,50,20,.45)}
+.prova small{font-weight:700;font-size:16px;letter-spacing:.16em;color:#F59A73}
+.prova p{font-size:25px;line-height:1.3;color:#FBF4EC}
+.prova .falta p{color:#FFB08F;border:1.5px dashed rgba(255,176,143,.6);padding:8px 14px}
+</style></head><body><section class="slide esc">
+<div class="top"><div class="eyebrow">PROOF · A REAL SYSTEM BREAKDOWN</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo"><h1 style="font-size:88px">A business did not need<br><span class="ac">another AI tool.</span></h1><p class="sub">It needed <b>one next action</b> after every enquiry.</p><div class="pill">SWIPE TO SEE THE SYSTEM BREAKDOWN →</div></div><div class="trilho"><i style="left:0px"></i><i style="left:145px"></i><i style="left:290px"></i><i style="left:435px"></i><em style="left:580px"></em></div>
+<div class="pag"><span>01</span> / 10</div>
+<div class="rod">Every system we build starts with the path, not the tool.</div>
+</section>
+<section class="slide lar">
+<div class="top"><div class="eyebrow">THE SYMPTOM</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo"><div class="kicker">WHAT THE TEAM FELT</div><h1 style="font-size:92px">The problem looked like<br>“slow replies”.</h1><p class="sub">The operational problem went <b>deeper.</b></p><div class="c4"><div><h3>Channels</h3><p>Requests entering everywhere</p></div><div><h3>Context</h3><p>Repeated or lost</p></div><div><h3>Owner</h3><p>Nobody clearly responsible</p></div><div><h3>Follow-up</h3><p>Left to the team’s memory</p></div></div></div>
+<div class="pag"><span>02</span> / 10</div>
+<div class="rod">Slow replies were the symptom, not the cause.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">THE PATH BEFORE</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo topo"><div class="kicker">01 / BEFORE</div><h1 style="font-size:84px">Four doors in.<br><span class="ac">No one at the desk.</span></h1><p class="sub">Google, Instagram, WhatsApp and email all landed in one place, and <b>nobody owned what came next.</b></p><div class="diag" style="height:400px;border:0"><div class="n" style="left:70px;top:6px;width:160px;height:60px">Google</div><div class="l" style="left:149px;top:66px;width:2px;height:30px"></div><div class="d" style="left:150px;top:96px"></div><div class="n" style="left:290px;top:6px;width:160px;height:60px">Instagram</div><div class="l" style="left:369px;top:66px;width:2px;height:30px"></div><div class="d" style="left:370px;top:96px"></div><div class="n" style="left:510px;top:6px;width:160px;height:60px">WhatsApp</div><div class="l" style="left:589px;top:66px;width:2px;height:30px"></div><div class="d" style="left:590px;top:96px"></div><div class="n" style="left:730px;top:6px;width:160px;height:60px">Email</div><div class="l" style="left:809px;top:66px;width:2px;height:30px"></div><div class="d" style="left:810px;top:96px"></div><div class="l" style="left:149px;top:95px;width:662px;height:2px"></div><div class="d" style="left:480px;top:96px"></div><div class="l" style="left:479px;top:96px;width:2px;height:30px"></div><div class="n" style="left:350px;top:126px;width:260px;height:62px">Shared inbox</div><div class="l" style="left:479px;top:188px;width:2px;height:30px"></div><div class="n" style="left:300px;top:218px;width:360px;height:62px">Manual interpretation</div><div class="l x" style="left:479px;top:280px;width:2px;height:40px"></div><div class="n x" style="left:290px;top:320px;width:380px;height:66px">Uncertain next step&nbsp;&nbsp;?</div></div><p class="legenda" style="margin-top:14px">The lead was not lost at entry. It was lost <b>between entry and ownership.</b></p></div>
+<div class="pag"><span>03</span> / 10</div>
+<div class="rod">This is where most enquiries actually go quiet.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">THE AUDIT QUESTION</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo topo"><div class="kicker">02 / QUESTION</div><h1 style="font-size:92px">Who owns the<br><span class="ac">next action?</span></h1><p class="sub">Not just “which tool?”. We asked:</p><div class="linhas q"><div><span>ASK</span><p>Who receives the request?</p></div><div><span>ASK</span><p>Who qualifies it?</p></div><div><span>ASK</span><p>Who confirms it?</p></div><div><span>ASK</span><p>When does it hand off to a person?</p></div><div><span>ASK</span><p>What happens if nobody replies?</p></div></div></div>
+<div class="pag"><span>04</span> / 10</div>
+<div class="rod">Ownership must be explicit, not assumed.</div>
+</section>
+<section class="slide lar">
+<div class="top"><div class="eyebrow">THE RULE WE DESIGNED</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo"><div class="kicker">03 / RULE</div><h1 style="font-size:92px">One rule before<br><span class="ac">any automation.</span></h1><p class="sub">Written for this business and its real path, <b>not a universal automation.</b></p><div class="regra"><div class="p"><small>01</small><b>Trigger</b></div><div class="s">→</div><div class="p"><small>02</small><b>Classify</b></div><div class="s">→</div><div class="p"><small>03</small><b>Assign owner</b></div><div class="s">→</div><div class="p"><small>04</small><b>Next action</b></div><div class="s">→</div><div class="p u"><small>05</small><b>Escalate</b></div></div></div>
+<div class="pag"><span>05</span> / 10</div>
+<div class="rod">The rule is written before anything is automated.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">WHAT AI DOES</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo topo"><div class="kicker">04 / AI LAYER</div><h1 style="font-size:92px">AI handles the<br><span class="ac">repeatable layer.</span></h1><p class="sub">Inside the approved rules, it can:</p><div class="linhas ia"><div><span>AI</span><p>Gather the context</p></div><div><span>AI</span><p>Classify the request</p></div><div><span>AI</span><p>Answer approved FAQs</p></div><div><span>AI</span><p>Spot missing information</p></div><div><span>AI</span><p>Prepare the next step</p></div></div></div>
+<div class="pag"><span>06</span> / 10</div>
+<div class="rod">AI does the repeatable work. People keep the judgement.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">WHAT STAYS HUMAN</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo topo"><div class="kicker">05 / HUMAN LAYER</div><h1 style="font-size:88px">The human still owns<br><span class="ac">the exception.</span></h1><p class="sub">The team takes over when there is:</p><div class="linhas hum"><div><span>TEAM</span><p>A request outside the rules</p></div><div><span>TEAM</span><p>A complaint or a risk</p></div><div><span>TEAM</span><p>A commercial decision</p></div><div><span>TEAM</span><p>An urgent situation</p></div><div><span>TEAM</span><p>Not enough context</p></div></div></div>
+<div class="pag"><span>07</span> / 10</div>
+<div class="rod">A good system knows when to stop.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">THE PATH AFTER</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo topo"><div class="kicker">06 / AFTER</div><h1 style="font-size:88px">Same doors.<br><span class="ac">One clear path.</span></h1><div class="diag" style="height:496px;border:0"><div class="n " style="left:370px;top:4px;width:220px;height:56px">Enquiry</div><div class="l" style="left:479px;top:60px;width:2px;height:26px"></div><div class="d" style="left:480px;top:73px"></div><div class="n " style="left:340px;top:86px;width:280px;height:56px">Qualification</div><div class="l" style="left:479px;top:142px;width:2px;height:26px"></div><div class="d" style="left:480px;top:155px"></div><div class="n o g" style="left:360px;top:168px;width:240px;height:56px">Owner</div><div class="l" style="left:479px;top:224px;width:2px;height:26px"></div><div class="d" style="left:480px;top:237px"></div><div class="n " style="left:300px;top:250px;width:360px;height:56px">Approved response</div><div class="l" style="left:479px;top:306px;width:2px;height:26px"></div><div class="d" style="left:480px;top:319px"></div><div class="n o" style="left:340px;top:332px;width:280px;height:56px">Next action</div><div class="l" style="left:479px;top:388px;width:2px;height:26px"></div><div class="d" style="left:480px;top:401px"></div><div class="n o" style="left:320px;top:414px;width:320px;height:56px">Human handoff</div></div><p class="legenda" style="margin-top:22px">Every request has <b>a state, an owner and a next action.</b></p></div>
+<div class="pag"><span>08</span> / 10</div>
+<div class="rod">Trigger → owner → rule → next action → human.</div>
+</section>
+<section class="slide lar">
+<div class="top"><div class="eyebrow">THE RESULT</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo"><div class="kicker">07 / EVIDENCE</div><h1 style="font-size:100px">What changed.</h1><p class="sub">Shown only with <b>verified evidence.</b> No estimates.</p><div class="prova"><div class=""><small>BEFORE</small><p>Requests answered from memory, with no clear owner.</p></div><div class=""><small>AFTER</small><p>Every request with a rule, a state and a human handoff.</p></div><div class="falta"><small>VERIFIED BY</small><p>[client · team · period]</p></div></div></div>
+<div class="pag"><span>09</span> / 10</div>
+<div class="rod">We publish verified results, or none at all.</div>
+</section>
+<section class="slide lar">
+<div class="top"><div class="eyebrow">PACHECO STUDIOS / AI SYSTEMS AUDITS</div><div class="marca">TALK WITH US</div><div class="regua"></div></div>
+<div class="miolo"><h1 style="font-size:84px">Your operation may not need<br><span class="ac">more software.</span></h1><p class="sub">It may need a clear owner, rule and next action.</p><div class="botao">DM “AUDIT” TO MAP THE FIRST BREAK</div></div>
+<div class="pag"><span>10</span> / 10</div>
+<div class="rod">Tell us which process is breaking.</div>
+</section></body></html>
