@@ -291,6 +291,71 @@ Morada: [Str. Alexandru Cazaban 17A](https://www.google.com/maps/place/Litere+Lu
 >
 > Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
 
+#### Ambra Sign
+Tel.: +40 232 219 069 · WhatsApp: não (fixo) · Google 4,8 (79 avaliações)  
+Morada: [Str. Mihail Sadoveanu 8](https://www.google.com/maps/place/Ambra+Sign/data=!4m7!3m6!1s0x40cafbf57c97b1fb:0xfb42d5653b8d87b2!8m2!3d47.1689302!4d27.4585408!16s%2Fg%2F1tgz8w88!19sChIJ-7GXfPX7ykARsoeNO2XVQvs?authuser=0&amp;hl=ro&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+Telefone fixo: [Ligar](tel:+40232219069) ou visita.
+
+> Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios: construim sisteme cu AI pentru afaceri locale din Iași.
+>
+> M-am uitat la Ambra Sign din exterior. O firmă luminoasă trece prin ofertă, măsurători, aviz și montaj. Întrebarea: între ofertă și montaj, cine e responsabil de fiecare pas și cum află clientul unde a rămas?
+>
+> Nu am acces la operațiunile dumneavoastră, deci e doar o ipoteză. Vă pot arăta pe o pagină fluxul pe care l-aș verifica. Dacă se confirmă, e prima din 3 soluții rapide pe care le implementăm gratuit partenerilor noștri; apoi vă arăt cât puteți câștiga recomandându-ne.
+>
+> Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
+
+#### CFC DESIGN
+Tel.: +40 744 982 415 · WhatsApp: ? · Google 5,0 (95 avaliações)  
+Morada: [Str. Gheorghe Săulescu 39](https://www.google.com/maps/place/CFC+DESIGN/data=!4m7!3m6!1s0x40cafb708cc1a02f:0x9b447980e0560e6e!8m2!3d47.1627168!4d27.5746897!16s%2Fg%2F1pp2xbf1t!19sChIJL6DBjHD7ykARbg5W4IB5RJs?authuser=0&amp;hl=ro&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+[Abrir no WhatsApp](https://wa.me/40744982415?text=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20CFC%20DESIGN%20din%20exterior.%20O%20firm%C4%83%20luminoas%C4%83%20trece%20prin%20ofert%C4%83%2C%20m%C4%83sur%C4%83tori%2C%20aviz%20%C8%99i%20montaj.%20%C3%8Entrebarea:%20%C3%AEntre%20ofert%C4%83%20%C8%99i%20montaj%2C%20cine%20e%20responsabil%20de%20fiecare%20pas%20%C8%99i%20cum%20afl%C4%83%20clientul%20unde%20a%20r%C4%83mas%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F) · [Enviar por SMS](sms:+40744982415?&body=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20CFC%20DESIGN%20din%20exterior.%20O%20firm%C4%83%20luminoas%C4%83%20trece%20prin%20ofert%C4%83%2C%20m%C4%83sur%C4%83tori%2C%20aviz%20%C8%99i%20montaj.%20%C3%8Entrebarea:%20%C3%AEntre%20ofert%C4%83%20%C8%99i%20montaj%2C%20cine%20e%20responsabil%20de%20fiecare%20pas%20%C8%99i%20cum%20afl%C4%83%20clientul%20unde%20a%20r%C4%83mas%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F)
+
+> Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios: construim sisteme cu AI pentru afaceri locale din Iași.
+>
+> M-am uitat la CFC DESIGN din exterior. O firmă luminoasă trece prin ofertă, măsurători, aviz și montaj. Întrebarea: între ofertă și montaj, cine e responsabil de fiecare pas și cum află clientul unde a rămas?
+>
+> Nu am acces la operațiunile dumneavoastră, deci e doar o ipoteză. Vă pot arăta pe o pagină fluxul pe care l-aș verifica. Dacă se confirmă, e prima din 3 soluții rapide pe care le implementăm gratuit partenerilor noștri; apoi vă arăt cât puteți câștiga recomandându-ne.
+>
+> Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
+
+#### Graph (bannere, colantari, firme luminoase)
+Tel.: +40 765 491 597 · WhatsApp: ? · Google 4,7 (110 avaliações)  
+Morada: [Str. Ion Șahighian 2](https://www.google.com/maps/place/Graph+-+Bannere+-+Colantari+-+Firme+luminoase/data=!4m7!3m6!1s0x40ae0186253f5693:0x54b1e275a2763bdd!8m2!3d44.435887!4d26.1797424!16s%2Fg%2F11shx6jccz!19sChIJk1Y_JYYBrkAR3Tt2onXisVQ?authuser=0&amp;hl=ro&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+[Abrir no WhatsApp](https://wa.me/40765491597?text=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Graph%20%28bannere%2C%20colantari%2C%20firme%20luminoase%29%20din%20exterior.%20O%20firm%C4%83%20luminoas%C4%83%20trece%20prin%20ofert%C4%83%2C%20m%C4%83sur%C4%83tori%2C%20aviz%20%C8%99i%20montaj.%20%C3%8Entrebarea:%20%C3%AEntre%20ofert%C4%83%20%C8%99i%20montaj%2C%20cine%20e%20responsabil%20de%20fiecare%20pas%20%C8%99i%20cum%20afl%C4%83%20clientul%20unde%20a%20r%C4%83mas%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F) · [Enviar por SMS](sms:+40765491597?&body=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Graph%20%28bannere%2C%20colantari%2C%20firme%20luminoase%29%20din%20exterior.%20O%20firm%C4%83%20luminoas%C4%83%20trece%20prin%20ofert%C4%83%2C%20m%C4%83sur%C4%83tori%2C%20aviz%20%C8%99i%20montaj.%20%C3%8Entrebarea:%20%C3%AEntre%20ofert%C4%83%20%C8%99i%20montaj%2C%20cine%20e%20responsabil%20de%20fiecare%20pas%20%C8%99i%20cum%20afl%C4%83%20clientul%20unde%20a%20r%C4%83mas%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F)
+
+> Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios: construim sisteme cu AI pentru afaceri locale din Iași.
+>
+> M-am uitat la Graph (bannere, colantari, firme luminoase) din exterior. O firmă luminoasă trece prin ofertă, măsurători, aviz și montaj. Întrebarea: între ofertă și montaj, cine e responsabil de fiecare pas și cum află clientul unde a rămas?
+>
+> Nu am acces la operațiunile dumneavoastră, deci e doar o ipoteză. Vă pot arăta pe o pagină fluxul pe care l-aș verifica. Dacă se confirmă, e prima din 3 soluții rapide pe care le implementăm gratuit partenerilor noștri; apoi vă arăt cât puteți câștiga recomandându-ne.
+>
+> Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
+
+#### Lorens
+Tel.: +40 728 737 373 · WhatsApp: ? · Google 5,0 (25 avaliações)  
+Morada: [Aleea Tudor Neculai 45A](https://www.google.com/maps/place/Lorens/data=!4m7!3m6!1s0x40cafbac5a7e8e6b:0xf15156a8d847ea70!8m2!3d47.1372549!4d27.5737802!16s%2Fg%2F1tfhy2y8!19sChIJa45-Wqz7ykARcOpH2KhWUfE?authuser=0&amp;hl=ro&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+[Abrir no WhatsApp](https://wa.me/40728737373?text=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Lorens%20din%20exterior.%20O%20firm%C4%83%20luminoas%C4%83%20trece%20prin%20ofert%C4%83%2C%20m%C4%83sur%C4%83tori%2C%20aviz%20%C8%99i%20montaj.%20%C3%8Entrebarea:%20%C3%AEntre%20ofert%C4%83%20%C8%99i%20montaj%2C%20cine%20e%20responsabil%20de%20fiecare%20pas%20%C8%99i%20cum%20afl%C4%83%20clientul%20unde%20a%20r%C4%83mas%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F) · [Enviar por SMS](sms:+40728737373?&body=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Lorens%20din%20exterior.%20O%20firm%C4%83%20luminoas%C4%83%20trece%20prin%20ofert%C4%83%2C%20m%C4%83sur%C4%83tori%2C%20aviz%20%C8%99i%20montaj.%20%C3%8Entrebarea:%20%C3%AEntre%20ofert%C4%83%20%C8%99i%20montaj%2C%20cine%20e%20responsabil%20de%20fiecare%20pas%20%C8%99i%20cum%20afl%C4%83%20clientul%20unde%20a%20r%C4%83mas%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F)
+
+> Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios: construim sisteme cu AI pentru afaceri locale din Iași.
+>
+> M-am uitat la Lorens din exterior. O firmă luminoasă trece prin ofertă, măsurători, aviz și montaj. Întrebarea: între ofertă și montaj, cine e responsabil de fiecare pas și cum află clientul unde a rămas?
+>
+> Nu am acces la operațiunile dumneavoastră, deci e doar o ipoteză. Vă pot arăta pe o pagină fluxul pe care l-aș verifica. Dacă se confirmă, e prima din 3 soluții rapide pe care le implementăm gratuit partenerilor noștri; apoi vă arăt cât puteți câștiga recomandându-ne.
+>
+> Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
+
+#### Straight To You
+Tel.: +40 746 061 124 · WhatsApp: ? · Google 5,0 (64 avaliações)  
+Morada: [Stradela Moara de Vânt 75](https://www.google.com/maps/place/Straight+To+You+-+Agen%C8%9Bie+de+marketing/data=!4m7!3m6!1s0x40cafd12fdc6bb23:0x9bf70f2cf9fca5b!8m2!3d47.1767406!4d27.5932172!16s%2Fg%2F11z7sn8bxk!19sChIJI7vG_RL9ykARW8qfz_Jwvwk?authuser=0&amp;hl=ro&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+[Abrir no WhatsApp](https://wa.me/40746061124?text=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Straight%20To%20You%20din%20exterior.%20O%20firm%C4%83%20luminoas%C4%83%20trece%20prin%20ofert%C4%83%2C%20m%C4%83sur%C4%83tori%2C%20aviz%20%C8%99i%20montaj.%20%C3%8Entrebarea:%20%C3%AEntre%20ofert%C4%83%20%C8%99i%20montaj%2C%20cine%20e%20responsabil%20de%20fiecare%20pas%20%C8%99i%20cum%20afl%C4%83%20clientul%20unde%20a%20r%C4%83mas%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F) · [Enviar por SMS](sms:+40746061124?&body=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Straight%20To%20You%20din%20exterior.%20O%20firm%C4%83%20luminoas%C4%83%20trece%20prin%20ofert%C4%83%2C%20m%C4%83sur%C4%83tori%2C%20aviz%20%C8%99i%20montaj.%20%C3%8Entrebarea:%20%C3%AEntre%20ofert%C4%83%20%C8%99i%20montaj%2C%20cine%20e%20responsabil%20de%20fiecare%20pas%20%C8%99i%20cum%20afl%C4%83%20clientul%20unde%20a%20r%C4%83mas%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F)
+
+> Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios: construim sisteme cu AI pentru afaceri locale din Iași.
+>
+> M-am uitat la Straight To You din exterior. O firmă luminoasă trece prin ofertă, măsurători, aviz și montaj. Întrebarea: între ofertă și montaj, cine e responsabil de fiecare pas și cum află clientul unde a rămas?
+>
+> Nu am acces la operațiunile dumneavoastră, deci e doar o ipoteză. Vă pot arăta pe o pagină fluxul pe care l-aș verifica. Dacă se confirmă, e prima din 3 soluții rapide pe care le implementăm gratuit partenerilor noștri; apoi vă arăt cât puteți câștiga recomandându-ne.
+>
+> Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
+
 ### tipografie
 
 #### FlyerPrint
@@ -353,6 +418,34 @@ Morada: [Str. Iordachi Lozonschi (Cloșca 28)](https://www.google.com/maps/place
 > Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios: construim sisteme cu AI pentru afaceri locale din Iași.
 >
 > M-am uitat la Tipografia Venus din exterior. Comenzile vin cu fișiere, dimensiuni și termene pe canale diferite. Întrebarea: când intră o comandă, cine confirmă că fișierul e corect înainte de tipar?
+>
+> Nu am acces la operațiunile dumneavoastră, deci e doar o ipoteză. Vă pot arăta pe o pagină fluxul pe care l-aș verifica. Dacă se confirmă, e prima din 3 soluții rapide pe care le implementăm gratuit partenerilor noștri; apoi vă arăt cât puteți câștiga recomandându-ne.
+>
+> Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
+
+#### Altfel de invitații
+Tel.: +40 720 018 574 · WhatsApp: ? · Google 4,9  
+Morada: [Șos. Nicolina](https://www.google.com/maps/place/Altfel+de+invita%C8%9Bii/data=!4m7!3m6!1s0x40cafb184caea427:0xc5f05afccce901d5!8m2!3d47.1342756!4d27.5741724!16s%2Fg%2F11h0lb629b!19sChIJJ6SuTBj7ykAR1QHpzPxa8MU?authuser=0&amp;hl=ro&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+Nota: Convites e papelaria de casamento (serviços de nuntă); ligação a eventos.  
+[Abrir no WhatsApp](https://wa.me/40720018574?text=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Altfel%20de%20invita%C8%9Bii%20din%20exterior.%20Comenzile%20vin%20cu%20fi%C8%99iere%2C%20dimensiuni%20%C8%99i%20termene%20pe%20canale%20diferite.%20%C3%8Entrebarea:%20c%C3%A2nd%20intr%C4%83%20o%20comand%C4%83%2C%20cine%20confirm%C4%83%20c%C4%83%20fi%C8%99ierul%20e%20corect%20%C3%AEnainte%20de%20tipar%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F) · [Enviar por SMS](sms:+40720018574?&body=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Altfel%20de%20invita%C8%9Bii%20din%20exterior.%20Comenzile%20vin%20cu%20fi%C8%99iere%2C%20dimensiuni%20%C8%99i%20termene%20pe%20canale%20diferite.%20%C3%8Entrebarea:%20c%C3%A2nd%20intr%C4%83%20o%20comand%C4%83%2C%20cine%20confirm%C4%83%20c%C4%83%20fi%C8%99ierul%20e%20corect%20%C3%AEnainte%20de%20tipar%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F)
+
+> Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios: construim sisteme cu AI pentru afaceri locale din Iași.
+>
+> M-am uitat la Altfel de invitații din exterior. Comenzile vin cu fișiere, dimensiuni și termene pe canale diferite. Întrebarea: când intră o comandă, cine confirmă că fișierul e corect înainte de tipar?
+>
+> Nu am acces la operațiunile dumneavoastră, deci e doar o ipoteză. Vă pot arăta pe o pagină fluxul pe care l-aș verifica. Dacă se confirmă, e prima din 3 soluții rapide pe care le implementăm gratuit partenerilor noștri; apoi vă arăt cât puteți câștiga recomandându-ne.
+>
+> Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
+
+#### Kolos Group
+Tel.: +40 232 261 555 · WhatsApp: não (fixo) · Google 5,0  
+Morada: [Calea Chișinăului 29](https://www.google.com/maps/place/Kolos+Group/data=!4m7!3m6!1s0x40cafb76d372c337:0x215d76886dfaca52!8m2!3d47.1489023!4d27.6178493!16s%2Fg%2F11b6gcdpj3!19sChIJN8Ny03b7ykARUsr6bYh2XSE?authuser=0&amp;hl=ro&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+Nota: Centro de impressão; nº de avaliações não lido.  
+Telefone fixo: [Ligar](tel:+40232261555) ou visita.
+
+> Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios: construim sisteme cu AI pentru afaceri locale din Iași.
+>
+> M-am uitat la Kolos Group din exterior. Comenzile vin cu fișiere, dimensiuni și termene pe canale diferite. Întrebarea: când intră o comandă, cine confirmă că fișierul e corect înainte de tipar?
 >
 > Nu am acces la operațiunile dumneavoastră, deci e doar o ipoteză. Vă pot arăta pe o pagină fluxul pe care l-aș verifica. Dacă se confirmă, e prima din 3 soluții rapide pe care le implementăm gratuit partenerilor noștri; apoi vă arăt cât puteți câștiga recomandându-ne.
 >
@@ -482,6 +575,20 @@ Morada: [Șos. Nicolina 104](https://www.google.com/maps/place/Just+Consulting+I
 >
 > Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
 
+#### Kiwi Finance Iasi
+Tel.: +40 748 185 601 · WhatsApp: ? · Google 4,9 (203 avaliações)  
+Morada: [Bd. Independenței 24](https://www.google.com/maps/place/Kiwi+Finance+Iasi/data=!4m7!3m6!1s0x40cafb639263c863:0x35161745ab04ba2e!8m2!3d47.1662047!4d27.5862524!16s%2Fg%2F11h1hyp4p!19sChIJY8hjkmP7ykARLroEq0UXFjU?authuser=0&amp;hl=ro&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+Nota: Consultoria de crédito, vê empresas em fase de financiamento.  
+[Abrir no WhatsApp](https://wa.me/40748185601?text=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Kiwi%20Finance%20Iasi%20din%20exterior.%20Un%20dosar%20de%20finan%C8%9Bare%20are%20multe%20acte%20%C8%99i%20termene.%20%C3%8Entrebarea:%20cine%20urm%C4%83re%C8%99te%20ce%20lipse%C8%99te%20din%20fiecare%20dosar%20%C8%99i%20cum%20afl%C4%83%20clientul%20f%C4%83r%C4%83%20s%C4%83%20sune%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F) · [Enviar por SMS](sms:+40748185601?&body=Bun%C4%83%20ziua%21%20Sunt%20Tom%C3%A1s%20Pacheco%2C%20de%20la%20Pacheco%20Studios:%20construim%20sisteme%20cu%20AI%20pentru%20afaceri%20locale%20din%20Ia%C8%99i.%0A%0AM-am%20uitat%20la%20Kiwi%20Finance%20Iasi%20din%20exterior.%20Un%20dosar%20de%20finan%C8%9Bare%20are%20multe%20acte%20%C8%99i%20termene.%20%C3%8Entrebarea:%20cine%20urm%C4%83re%C8%99te%20ce%20lipse%C8%99te%20din%20fiecare%20dosar%20%C8%99i%20cum%20afl%C4%83%20clientul%20f%C4%83r%C4%83%20s%C4%83%20sune%3F%0A%0ANu%20am%20acces%20la%20opera%C8%9Biunile%20dumneavoastr%C4%83%2C%20deci%20e%20doar%20o%20ipotez%C4%83.%20V%C4%83%20pot%20ar%C4%83ta%20pe%20o%20pagin%C4%83%20fluxul%20pe%20care%20l-a%C8%99%20verifica.%20Dac%C4%83%20se%20confirm%C4%83%2C%20e%20prima%20din%203%20solu%C8%9Bii%20rapide%20pe%20care%20le%20implement%C4%83m%20gratuit%20partenerilor%20no%C8%99tri%3B%20apoi%20v%C4%83%20ar%C4%83t%20c%C3%A2t%20pute%C8%9Bi%20c%C3%A2%C8%99tiga%20recomand%C3%A2ndu-ne.%0A%0AFace%C8%9Bi%20un%20triaj%20cu%20noi:%20stabilim%20o%20%C3%AEnt%C3%A2lnire%20s%C4%83pt%C4%83m%C3%A2na%20aceasta%3F)
+
+> Bună ziua! Sunt Tomás Pacheco, de la Pacheco Studios: construim sisteme cu AI pentru afaceri locale din Iași.
+>
+> M-am uitat la Kiwi Finance Iasi din exterior. Un dosar de finanțare are multe acte și termene. Întrebarea: cine urmărește ce lipsește din fiecare dosar și cum află clientul fără să sune?
+>
+> Nu am acces la operațiunile dumneavoastră, deci e doar o ipoteză. Vă pot arăta pe o pagină fluxul pe care l-aș verifica. Dacă se confirmă, e prima din 3 soluții rapide pe care le implementăm gratuit partenerilor noștri; apoi vă arăt cât puteți câștiga recomandându-ne.
+>
+> Faceți un triaj cu noi: stabilim o întâlnire săptămâna aceasta?
+
 ### horeca
 
 #### AGAPA Horeca Solutions
@@ -587,6 +694,34 @@ Morada: [R. Almeida Garrett 57A](https://www.google.com/maps/place/Ready4Biz+Con
 > Bom dia! Sou o Tomás Pacheco, da Pacheco Studios: construímos sistemas com IA para negócios locais.
 >
 > Olhei para a Ready4Biz de fora. Num escritório de contabilidade, os documentos dos clientes costumam chegar por e-mail, WhatsApp e em papel. A pergunta que eu validaria: quando chega um documento, quem fica dono dele até estar lançado?
+>
+> Não tenho acesso à vossa operação, por isso é só uma hipótese. Posso mostrar-lhe numa página o fluxo que eu validaria. Se se confirmar, é a primeira de 3 soluções rápidas que implementamos sem custo aos nossos parceiros; depois mostro-lhe quanto pode ganhar a apresentar-nos.
+>
+> Faça uma triagem connosco: marcamos uma reunião esta semana?
+
+#### Contolhão
+Tel.: +351 289 721 468 · WhatsApp: não (fixo) · Google 5,0 (5 avaliações)  
+Morada: [R. 18 de Junho 221](https://www.google.com/maps/place/Contolh%C3%A3o+-+Gabinete+de+Contabilidade,+Lda./data=!4m7!3m6!1s0xd0554ceb6ec661b:0xab6a5017fcb4d429!8m2!3d37.031339!4d-7.8444651!16s%2Fg%2F1hm2nkglv!19sChIJG2bsts5UBQ0RKdS0_BdQaqs?authuser=0&amp;hl=pt-BR&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+Nota:  Poucas avaliações.  
+Telefone fixo: [Ligar](tel:+351289721468) ou visita.
+
+> Bom dia! Sou o Tomás Pacheco, da Pacheco Studios: construímos sistemas com IA para negócios locais.
+>
+> Olhei para a Contolhão de fora. Num escritório de contabilidade, os documentos dos clientes costumam chegar por e-mail, WhatsApp e em papel. A pergunta que eu validaria: quando chega um documento, quem fica dono dele até estar lançado?
+>
+> Não tenho acesso à vossa operação, por isso é só uma hipótese. Posso mostrar-lhe numa página o fluxo que eu validaria. Se se confirmar, é a primeira de 3 soluções rápidas que implementamos sem custo aos nossos parceiros; depois mostro-lhe quanto pode ganhar a apresentar-nos.
+>
+> Faça uma triagem connosco: marcamos uma reunião esta semana?
+
+#### Modelo 2
+Tel.: +351 289 715 568 · WhatsApp: não (fixo) · Google 4,8 (5 avaliações)  
+Morada: [R. de Antero Nobre 28](https://www.google.com/maps/place/Modelo+2+-+Tratamento+E+Analise+Da+Contabilidade+E+Gest%C3%A3o+Lda/data=!4m7!3m6!1s0xd0554d39b3d7f8d:0xa970a4f7f98ae75b!8m2!3d37.0353897!4d-7.84238!16s%2Fg%2F1tdq7837!19sChIJjX89m9NUBQ0RW-eK-fekcKk?authuser=0&amp;hl=pt-BR&amp;g_ep=EgoyMDI2MTAwNy4wIJJjKgBIAVAD&amp;rclk=1)  
+Nota:  Poucas avaliações.  
+Telefone fixo: [Ligar](tel:+351289715568) ou visita.
+
+> Bom dia! Sou o Tomás Pacheco, da Pacheco Studios: construímos sistemas com IA para negócios locais.
+>
+> Olhei para a Modelo 2 de fora. Num escritório de contabilidade, os documentos dos clientes costumam chegar por e-mail, WhatsApp e em papel. A pergunta que eu validaria: quando chega um documento, quem fica dono dele até estar lançado?
 >
 > Não tenho acesso à vossa operação, por isso é só uma hipótese. Posso mostrar-lhe numa página o fluxo que eu validaria. Se se confirmar, é a primeira de 3 soluções rápidas que implementamos sem custo aos nossos parceiros; depois mostro-lhe quanto pode ganhar a apresentar-nos.
 >
