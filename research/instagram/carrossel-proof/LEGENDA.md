@@ -23,26 +23,30 @@ Nota: os números 100× / 21× (5 vs. 30 minutos) que circulam na internet são 
 
 ## Legenda (copiar a partir daqui)
 
-The problem did not start with a lack of tools.
+Versão de 12/10 22h28 (Tomás pediu a descrição alinhada com a forma como atuamos: fuga → sistema → prova, triagem primeiro, sem preços).
 
-It started with a request entering the business and nobody owning the next action.
+A business did not need another AI tool. It needed one next action after every enquiry.
 
-With AI in customer service, one business went from 50 to 500 quotes answered a day.
+Most businesses don't lose customers at the first message. They lose them after it: a request comes in, nobody owns the next step, and the follow-up lives in someone's memory.
 
-We map:
+That is the leak we look for.
 
+In this breakdown:
 → where the request enters
-→ what context is available
-→ who has to decide
-→ what can be handled by a system
-→ where a human needs to take over
+→ who owns the next action
+→ the rule written before any automation
+→ what AI handles, and what stays human
+→ what changed when every request got a next action
 
-The result is not another generic automation.
+The numbers (sources on each slide):
+→ 50 to 500 quotes answered a day with AI in customer service
+→ +10% monthly revenue after a follow-up system went live
+→ 60× more likely to qualify a lead when contact happens in the first hour
 
-It is a clearer operational path: trigger → owner → rule → next action → human.
+We find the leak. We design the system. We prove the impact.
 
-Sources are on each slide.
+We never start with a tool. We start with a triage of how requests move through your business today, and only go deeper if it makes sense for you.
 
-If your team is still rebuilding context, chasing follow-ups or deciding the same things twice, DM "AUDIT" and tell us where the first break happens.
+DM "AUDIT" and tell us where your first break happens.
 
-#AISystems #AIConsulting #BusinessSystems #Operations #BusinessAutomation
+#AISystems #AIConsulting #BusinessSystems #CustomerService #BusinessAutomation
