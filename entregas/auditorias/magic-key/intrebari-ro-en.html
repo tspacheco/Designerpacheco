@@ -1,0 +1,209 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>Magic Key — întrebări pentru audit</title><style>@font-face{font-family:"Archivo Black";src:url(file:///home/user/Designerpacheco/marca/fontes/archivo-black.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2190-21FF,U+2605}
+@font-face{font-family:"Archivo Black";src:url(file:///home/user/Designerpacheco/marca/fontes/archivo-black-latin-ext.woff2) format("woff2");unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+@font-face{font-family:"Inter";src:url(file:///home/user/Designerpacheco/marca/fontes/inter-var.woff2) format("woff2");font-weight:100 900;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2190-21FF}
+@font-face{font-family:"Inter";src:url(file:///home/user/Designerpacheco/marca/fontes/inter-var-latin-ext.woff2) format("woff2");font-weight:100 900;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+@font-face{font-family:"Space Mono";src:url(file:///home/user/Designerpacheco/marca/fontes/space-mono-400.woff2) format("woff2");font-weight:400;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Space Mono";src:url(file:///home/user/Designerpacheco/marca/fontes/space-mono-400-latin-ext.woff2) format("woff2");font-weight:400;unicode-range:U+0100-024F}
+@font-face{font-family:"Space Mono";src:url(file:///home/user/Designerpacheco/marca/fontes/space-mono-700.woff2) format("woff2");font-weight:700;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Space Mono";src:url(file:///home/user/Designerpacheco/marca/fontes/space-mono-700-latin-ext.woff2) format("woff2");font-weight:700;unicode-range:U+0100-024F}
+
+:root{
+  --carvao:#141210;--osso:#EFEAE3;--laranja:#E8622C;--laranja-txt:#A64923;--traco:#D35A29;
+  --sec:#4D4A47;--sec-escuro:#A5A19B;--papel:#FFFFFF;--linha:#D9D2C8;
+  --tempo:#F2E3B6;--tempo-txt:#614507;--risco:#F5D6CB;--risco-txt:#8A2E14;
+  --titulo:"Archivo Black",Impact,sans-serif;--mono:"Space Mono",ui-monospace,monospace;--texto:"Inter",system-ui,sans-serif;
+}
+@page{size:A4;margin:16mm 15mm 16mm}
+@page capa{margin:0}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--papel);color:var(--carvao);font:400 10pt/1.45 var(--texto)}
+h1,h2,h3,p{margin:0}
+.ponto{display:inline-block;width:.32em;height:.32em;border-radius:50%;background:var(--laranja);margin-left:.08em}
+
+/* capa */
+.capa{page:capa;break-after:page;height:297mm;background:var(--carvao);color:var(--osso);padding:20mm 18mm;display:grid;grid-template-rows:auto 1fr auto}
+.marca{font:400 11pt var(--titulo);letter-spacing:.06em}
+.capa-meio{align-self:center}
+.kicker{font:700 9.5pt var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--laranja);margin-bottom:9mm}
+.capa h1{font:400 58pt/.95 var(--titulo);text-transform:uppercase;letter-spacing:-.01em}
+.sub{margin-top:7mm;font:400 11pt var(--mono);color:var(--sec-escuro)}
+.capa-dados{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6mm 10mm;border-top:1px solid #3a3632;padding-top:7mm}
+.capa-dados dt{font:700 7.5pt var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--sec-escuro)}
+.capa-dados dd{margin:1.5mm 0 0;font-size:10.5pt}
+
+/* páginas */
+.pagina{break-before:page}
+.titulo{font:400 22pt/1.05 var(--titulo);text-transform:uppercase;margin-bottom:7mm}
+.titulo::after{content:"";display:inline-block;width:.28em;height:.28em;border-radius:50%;background:var(--laranja);margin-left:.1em}
+h3{font:700 8.5pt var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--laranja-txt);margin:5mm 0 2mm}
+h3:first-child{margin-top:0}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:9mm}
+.lead{color:var(--sec);margin-bottom:5mm;max-width:150mm}
+.pts{margin:0;padding:0;list-style:none;display:grid;gap:1.8mm}
+.pts li{padding-left:4.5mm;position:relative}
+.pts li::before{content:"";position:absolute;left:0;top:.55em;width:1.6mm;height:1.6mm;border-radius:50%;background:var(--laranja)}
+blockquote{margin:0;background:var(--osso);border-left:3px solid var(--traco);padding:4mm 5mm;display:grid;gap:3mm;font-size:10pt}
+.ro{color:var(--sec);font-style:italic}
+.motores{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm}
+.motores div{border:1.5px solid var(--carvao);border-radius:3mm;padding:3mm;display:grid;gap:1mm;background:#fff}
+.motores b{font:400 9.5pt var(--titulo);text-transform:uppercase}
+.motores span{font-size:8.5pt;color:var(--sec)}
+.leg{margin-top:3mm;font-size:8.5pt;color:var(--sec)}
+.tag{display:inline-block;font:700 7pt var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.5mm 1.8mm;border-radius:1mm}
+.tag.t{background:var(--tempo);color:var(--tempo-txt)}
+.tag.r{background:var(--risco);color:var(--risco-txt)}
+
+/* blocos de perguntas */
+.bloco{break-before:auto;margin-bottom:6mm}
+.intro + .bloco{break-before:page}
+.bloco-cab{display:flex;gap:4mm;align-items:center;background:var(--carvao);color:var(--osso);border-radius:3mm;padding:3mm 5mm;break-after:avoid}
+.bn{font:400 20pt/1 var(--titulo);color:var(--laranja)}
+.bloco h2{font:400 13pt/1.1 var(--titulo);text-transform:uppercase}
+.quem{font:400 8pt var(--mono);color:var(--sec-escuro);margin-top:.8mm}
+.bnota{margin:3mm 0 0;font-size:9pt;color:var(--sec);break-after:avoid}
+.qs{list-style:none;margin:2mm 0 0;padding:0}
+.q{display:grid;grid-template-columns:11mm 1fr;gap:2mm;padding:3.2mm 0 2mm;border-bottom:1px solid var(--linha);break-inside:avoid}
+.n{font:700 10pt var(--mono);color:var(--sec);padding-top:.3mm}
+.ess .n::after{content:" ★";color:var(--laranja-txt)}
+.pt{font-weight:600;font-size:10.5pt;line-height:1.35}
+.corpo .ro{font-size:9pt;margin-top:1mm}
+.dica{margin-top:1.4mm;font:400 8pt/1.4 var(--mono);color:var(--laranja-txt)}
+.linhas{display:grid;gap:5.5mm;margin-top:4mm}
+.linhas i{display:block;border-bottom:1px dotted #B9B0A4}
+
+/* números */
+table.num{width:100%;border-collapse:collapse;font-size:9.5pt}
+.num th{text-align:left;font:700 7.5pt var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--sec);border-bottom:2px solid var(--carvao);padding:2mm 2mm}
+.num td{border-bottom:1px solid var(--linha);padding:3.4mm 2mm;vertical-align:top}
+.num .un{font:400 8.5pt var(--mono);color:var(--sec);white-space:nowrap}
+.num .val{width:32mm;background:#fff;border-left:1px solid var(--linha);border-right:1px solid var(--linha)}
+.num .ja{font-size:8.5pt;color:var(--sec);width:42mm}
+.formula{margin-top:7mm;background:var(--carvao);color:var(--osso);border-radius:3mm;padding:5mm 6mm;display:grid;gap:2.5mm}
+.formula .k{font:700 8pt var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--laranja)}
+.formula .f{font:400 9.5pt/1.5 var(--mono)}
+.formula b{color:#fff}
+
+/* depois */
+.filtro,.entrega{margin:0;padding-left:5mm;display:grid;gap:1.6mm}
+.filtro li::marker,.entrega li::marker{font:700 9pt var(--mono);color:var(--laranja-txt)}
+.aviso{background:var(--risco);color:var(--risco-txt);border-radius:2mm;padding:2mm 3mm;font-size:8.5pt;margin-bottom:2.5mm}
+.matriz{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:30mm 30mm;gap:1.5mm;margin:1mm 0 8mm 6mm}
+.matriz div{border-radius:2.5mm;padding:3mm;display:grid;align-content:start;gap:1mm}
+.matriz b{font:400 9.5pt var(--titulo);text-transform:uppercase}
+.matriz span{font-size:8pt}
+.q1{background:var(--laranja);color:var(--carvao)}
+.q2{background:var(--carvao);color:var(--osso)}
+.q3{background:var(--osso);color:var(--carvao)}
+.q4{background:#fff;border:1px dashed var(--sec);color:var(--sec)}
+.eixo{position:absolute;font:700 7pt var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--sec)}
+.eixo.y{left:-6mm;top:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap}
+.eixo.x{right:0;bottom:-5mm}
+
+/* extras Magic Key */
+.parte{page:capa;break-before:page;break-after:page;height:297mm;background:var(--carvao);color:var(--osso);padding:20mm 18mm;display:grid;align-content:center;gap:6mm}
+.parte .k{font:700 9.5pt var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--laranja)}
+.parte h2{font:400 40pt/1 var(--titulo);text-transform:uppercase}
+.parte p{max-width:140mm;color:var(--sec-escuro);font-size:11pt}
+.honesto{border:1.5px solid var(--traco);border-radius:3mm;padding:4mm 5mm;background:var(--risco);color:var(--risco-txt);font-size:9pt;margin-bottom:5mm}
+.sp{width:100%;border-collapse:collapse;font-size:9.5pt;margin-top:3mm}
+.sp th{text-align:left;font:700 7.5pt var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--sec);border-bottom:2px solid var(--carvao);padding:2mm}
+.sp td{border-bottom:1px solid var(--linha);padding:3mm 2mm;vertical-align:top}
+.sp td:first-child{font:700 8pt var(--mono);text-transform:uppercase;color:var(--laranja-txt);width:24mm}
+.sp .em{height:15mm}
+.sp td:first-child{font:400 10pt var(--texto);text-transform:none;color:var(--carvao);width:70mm}.num td small{font-size:8.5pt}.bloco-cab{break-inside:avoid}</style></head><body>
+<section class="capa"><div class="marca">PACHECO STUDIOS<span class="ponto"></span></div>
+<div class="capa-meio"><p class="kicker">Audit · întrebări / audit questions</p><h1>Magic Key<br>chei auto</h1><p class="sub">Iași · Selgros, Șos. Nicolina 57A</p></div>
+<dl class="capa-dados"><div><dt>Pentru / For</dt><dd>Magic Key</dd></div><div><dt>Data / Date</dt><dd>octombrie 2026</dd></div>
+<div><dt>Întrebări / Questions</dt><dd>66</dd></div><div><dt>Limbă / Language</dt><dd>Română · English</dd></div></dl></section>
+<section class="pagina intro"><h2 class="titulo">Cum folosim aceste întrebări</h2>
+<div class="duas"><div><p lang="ro">Aceste întrebări ne ajută să înțelegem cum funcționează standul zi de zi: cum ajung cererile, unde se pierd și ce merită făcut mai întâi. Puteți răspunde direct pe foaie sau în conversație. Nu există răspunsuri greșite. Dacă nu știți o cifră exactă, o estimare este suficientă.</p>
+<p lang="ro" style="margin-top:4mm">Tot ce ne spuneți rămâne confidențial.</p></div>
+<div><p class="ro" lang="en">These questions help us understand how the stand works day to day: how requests come in, where they get lost and what is worth doing first. You can answer directly on the sheet or in conversation. There are no wrong answers. If you don't know an exact number, an estimate is enough.</p>
+<p class="ro" lang="en" style="margin-top:4mm">Everything you tell us stays confidential.</p></div></div></section>
+<section class="bloco"><header class="bloco-cab"><span class="bn">1</span><div><h2 lang="ro">Obiectivul</h2>
+<p class="quem" lang="en">The goal</p></div></header><ol class="qs"><li class="q"><span class="n">01</span><div class="corpo"><p class="pt" lang="ro">Care este problema care te costă cei mai mulți bani acum?</p>
+<p class="ro" lang="en">What is the problem that costs you the most money right now?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">02</span><div class="corpo"><p class="pt" lang="ro">Dacă am rezolva un singur lucru care să crească încasările, care ar fi?</p>
+<p class="ro" lang="en">If we could fix just one thing that moves your revenue, what would it be?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">03</span><div class="corpo"><p class="pt" lang="ro">Unde știi că pierzi bani, dar încă n-ai apucat să rezolvi?</p>
+<p class="ro" lang="en">Where do you know you are losing money but haven&#x27;t had time to fix it yet?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">04</span><div class="corpo"><p class="pt" lang="ro">Peste 12 luni, ce trebuie să fie adevărat ca să spui că a fost un an bun?</p>
+<p class="ro" lang="en">A year from now, what has to be true for you to call it a good year?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">05</span><div class="corpo"><p class="pt" lang="ro">Dacă ai avea cu 20 % mai mult timp liber, unde l-ai folosi ca să câștigi mai mult?</p>
+<p class="ro" lang="en">If you had 20% more free time, where would you put it to earn more?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">2</span><div><h2 lang="ro">Ziua de ieri</h2>
+<p class="quem" lang="en">Yesterday</p></div></header><ol class="qs"><li class="q"><span class="n">06</span><div class="corpo"><p class="pt" lang="ro">Povestește-mi ziua de ieri, de când ai ajuns. Ce ai făcut prima dată? Și apoi? Și după aceea?</p>
+<p class="ro" lang="en">Walk me through yesterday, from the moment you arrived. What did you do first? And then? And then?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">07</span><div class="corpo"><p class="pt" lang="ro">Ce parte din ziua ta este cea mai repetitivă?</p>
+<p class="ro" lang="en">Which part of your day is the most repetitive?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">08</span><div class="corpo"><p class="pt" lang="ro">Ce sarcină n-ai mai vrea s-o faci niciodată?</p>
+<p class="ro" lang="en">Which task would you never want to do again?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">09</span><div class="corpo"><p class="pt" lang="ro">Unde pierzi timp cu lucruri care nu cer experiența ta?</p>
+<p class="ro" lang="en">Where do you spend time on things that don&#x27;t need your expertise?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">10</span><div class="corpo"><p class="pt" lang="ro">Și după ce închizi, ce rămâne de făcut?</p>
+<p class="ro" lang="en">And after you close, what is left to do?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">3</span><div><h2 lang="ro">Clienți noi</h2>
+<p class="quem" lang="en">New customers</p></div></header><ol class="qs"><li class="q"><span class="n">11</span><div class="corpo"><p class="pt" lang="ro">De unde vin clienții noi? Cam în ce procent?</p>
+<p class="ro" lang="en">Where do your new customers come from? Roughly, in percentages.</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">12</span><div class="corpo"><p class="pt" lang="ro">Câte cereri noi ai pe săptămână? Unde vezi cifra asta?</p>
+<p class="ro" lang="en">How many new requests do you get per week? Where do you see that number?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">13</span><div class="corpo"><p class="pt" lang="ro">Când cineva întreabă de preț sau de disponibilitate, cine răspunde și în cât timp? Dar în afara programului?</p>
+<p class="ro" lang="en">When someone asks about price or availability, who answers and how long does it take? And outside opening hours?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">14</span><div class="corpo"><p class="pt" lang="ro">Câte cereri rămân fără răspuns? Ce se întâmplă cu acești oameni?</p>
+<p class="ro" lang="en">How many requests go unanswered? What happens to those people?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">4</span><div><h2 lang="ro">Lucrarea</h2>
+<p class="quem" lang="en">The work</p></div></header><ol class="qs"><li class="q"><span class="n">15</span><div class="corpo"><p class="pt" lang="ro">Cum intră o comandă și ce se întâmplă până când este livrată și plătită?</p>
+<p class="ro" lang="en">How does a job come in, and what happens until it is delivered and paid?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">16</span><div class="corpo"><p class="pt" lang="ro">Ce procese cer cea mai multă intervenție manuală?</p>
+<p class="ro" lang="en">Which processes need the most manual work?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">17</span><div class="corpo"><p class="pt" lang="ro">Unde apar cele mai multe greșeli? Și cât costă fiecare greșeală?</p>
+<p class="ro" lang="en">Where do most mistakes happen? And what does each mistake cost?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">18</span><div class="corpo"><p class="pt" lang="ro">Ce sisteme (hârtie, telefon, casă de marcat, WhatsApp) ar trebui să comunice între ele și nu o fac?</p>
+<p class="ro" lang="en">Which systems (paper, phone, cash register, WhatsApp) should talk to each other and don&#x27;t?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">5</span><div><h2 lang="ro">După lucrare</h2>
+<p class="quem" lang="en">After the job</p></div></header><ol class="qs"><li class="q"><span class="n">19</span><div class="corpo"><p class="pt" lang="ro">Ce faci ca un client să revină sau să te recomande?</p>
+<p class="ro" lang="en">What do you do to make a customer come back or recommend you?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">20</span><div class="corpo"><p class="pt" lang="ro">Când un client se plânge sau are o întrebare după lucrare, pe unde ajunge și cine se ocupă?</p>
+<p class="ro" lang="en">When a customer complains or has a question after the job, how does it reach you and who handles it?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">21</span><div class="corpo"><p class="pt" lang="ro">Ce întrebări îți pun clienții mereu, în fiecare săptămână?</p>
+<p class="ro" lang="en">What questions do customers ask you every single week?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">6</span><div><h2 lang="ro">Firma și echipa</h2>
+<p class="quem" lang="en">The company and the team</p></div></header><ol class="qs"><li class="q"><span class="n">22</span><div class="corpo"><p class="pt" lang="ro">Câte persoane lucrează la stand și cine face ce (primește clienți, taie, programează cipuri, casă)? Cine mai poate răspunde la telefon când ești ocupat?</p>
+<p class="ro" lang="en">How many people work at the stand and who does what (reception, cutting, chip programming, cash)? Who else can answer the phone when you are busy?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">23</span><div class="corpo"><p class="pt" lang="ro">Care este legătura dintre Magic Key și AG KeyLine (banner, pagina de Facebook, firma)? Ce nume trebuie să vadă clienții?</p>
+<p class="ro" lang="en">What is the relationship between Magic Key and AG KeyLine (banner, Facebook page, company)? Which name should customers see?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">24</span><div class="corpo"><p class="pt" lang="ro">Faci totul la stand sau și într-un atelier propriu și în deplasare?</p>
+<p class="ro" lang="en">Do you do everything at the stand, or also in your own workshop and on call-outs?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">25</span><div class="corpo"><p class="pt" lang="ro">Cum arată contractul tău cu Selgros? Program, sărbători și ce ai voie sau nu (afișe, QR, publicitate)?</p>
+<p class="ro" lang="en">What does your contract with Selgros look like? Hours, holidays, and what you may or may not do (posters, QR codes, advertising)?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">7</span><div><h2 lang="ro">Cererea de cheie auto</h2>
+<p class="quem" lang="en">The car key request</p></div></header><ol class="qs"><li class="q"><span class="n">26</span><div class="corpo"><p class="pt" lang="ro">Povestește-mi ultima cerere de cheie auto, de când a sunat telefonul până au plătit. Ce ai întrebat? Și apoi?</p>
+<p class="ro" lang="en">Tell me about your last car key request, from the moment the phone rang until they paid. What did you ask? And then?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">27</span><div class="corpo"><p class="pt" lang="ro">Ce informații ai nevoie de la client înainte să spui prețul sau da: marcă, model, an, tip de cheie, cheie originală pierdută sau doar una, VIN?</p>
+<p class="ro" lang="en">What information do you need from the customer before giving a price or saying yes: make, model, year, key type, original key lost or only one, VIN?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">28</span><div class="corpo"><p class="pt" lang="ro">Ce dovadă de proprietate sau documente ceri pentru o cheie de mașină și când?</p>
+<p class="ro" lang="en">What proof of ownership or documents do you ask for on a car key, and when?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">29</span><div class="corpo"><p class="pt" lang="ro">Când poți spune prețul imediat la telefon și când abia după ce vezi mașina sau cheia?</p>
+<p class="ro" lang="en">When can you quote the price straight away on the phone, and when only after seeing the car or the key?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">30</span><div class="corpo"><p class="pt" lang="ro">Ce mărci, modele sau ani refuzi sau trimiți în altă parte? Către cine?</p>
+<p class="ro" lang="en">Which makes, models or years do you refuse or send elsewhere? To whom?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">31</span><div class="corpo"><p class="pt" lang="ro">Cât durează o cheie cu cip, de la cerere la livrare? Trebuie să comanzi piese?</p>
+<p class="ro" lang="en">How long does a chip key take, from request to delivery? Do you have to order parts?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">32</span><div class="corpo"><p class="pt" lang="ro">Clienții trimit fotografii cu cheia sau cu mașina? Pe ce canal?</p>
+<p class="ro" lang="en">Do customers send photos of the key or the car? Through which channel?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">8</span><div><h2 lang="ro">Apeluri și mesaje pierdute</h2>
+<p class="quem" lang="en">Missed calls and messages</p></div></header><ol class="qs"><li class="q"><span class="n">33</span><div class="corpo"><p class="pt" lang="ro">Într-o zi obișnuită, câte apeluri primești și câte sunt pentru chei auto? Câte rămân fără răspuns?</p>
+<p class="ro" lang="en">On a normal day, how many calls do you get and how many are for car keys? How many go unanswered?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">34</span><div class="corpo"><p class="pt" lang="ro">Ce faci când cineva sună și ai mâinile ocupate cu o cheie? Dar sâmbătă după-amiază, duminica sau după ora 17?</p>
+<p class="ro" lang="en">What do you do when someone calls and your hands are busy with a key? And on Saturday afternoon, Sunday, or after 5 pm?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">35</span><div class="corpo"><p class="pt" lang="ro">Numărul de pe banner are WhatsApp? Clienții îți scriu acolo? Câte mesaje pe zi?</p>
+<p class="ro" lang="en">Does the number on the banner have WhatsApp? Do customers write to you there? How many messages a day?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">36</span><div class="corpo"><p class="pt" lang="ro">Care este întrebarea pe care o auzi cel mai des la telefon? Dar a doua?</p>
+<p class="ro" lang="en">What is the question you hear most on the phone? And the second one?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">37</span><div class="corpo"><p class="pt" lang="ro">Ce cazuri nu trebuie să primească niciodată răspuns de la un robot și ajung mereu la tine? (deplasare, mașină blocată, cheie pierdută la un vehicul scump, client nervos)</p>
+<p class="ro" lang="en">Which cases should never be answered by a machine and always come to you? (call-out, locked car, lost key of an expensive vehicle, an angry customer)</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">38</span><div class="corpo"><p class="pt" lang="ro">În ce limbă îți scriu? Română, engleză, alta?</p>
+<p class="ro" lang="en">Which language do customers write to you in? Romanian, English, other?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">39</span><div class="corpo"><p class="pt" lang="ro">Când cineva nu te găsește și sună la alt cheiar, știi? Ți-a spus vreun client asta?</p>
+<p class="ro" lang="en">When someone can&#x27;t reach you and calls another locksmith, do you know? Has a customer ever told you that?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">9</span><div><h2 lang="ro">Prețuri și ce aduce bani</h2>
+<p class="quem" lang="en">Prices and what makes money</p></div></header><ol class="qs"><li class="q"><span class="n">40</span><div class="corpo"><p class="pt" lang="ro">Parcurgem lista ta rând cu rând? (cele despre care nu sunt sigur: Abloy, acumulator, carcasă, cip auto, programare, diagnoză, tag-uri)</p>
+<p class="ro" lang="en">Let&#x27;s go through your price list line by line. (The ones I&#x27;m unsure about: Abloy, battery, key shell, car chip, programming, diagnostics, tags.)</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">41</span><div class="corpo"><p class="pt" lang="ro">Ce servicii îți aduc cea mai mare parte din bani? Și care sunt frecvente, dar valorează puțin?</p>
+<p class="ro" lang="en">Which services bring in most of your money? And which are frequent but worth little?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">42</span><div class="corpo"><p class="pt" lang="ro">Într-o lună obișnuită, cât facturezi, aproximativ?</p>
+<p class="ro" lang="en">In a normal month, roughly how much do you invoice?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">43</span><div class="corpo"><p class="pt" lang="ro">În ce zile și luni vinzi cel mai mult? Și când e mai slab?</p>
+<p class="ro" lang="en">On which days and in which months do you sell most? And when is it slowest?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">44</span><div class="corpo"><p class="pt" lang="ro">Cât te costă fiecare cheie auto cu cip, doar materialul? Care este marja aproximativă pe tip?</p>
+<p class="ro" lang="en">How much does each car chip key cost you in materials alone? What is the approximate margin per type?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">10</span><div><h2 lang="ro">Deplasări și urgențe</h2>
+<p class="quem" lang="en">Call-outs and emergencies</p></div></header><ol class="qs"><li class="q"><span class="n">45</span><div class="corpo"><p class="pt" lang="ro">Mergi la mașina clientului când nu mai există nicio cheie? În ce zonă și la ce preț?</p>
+<p class="ro" lang="en">Do you go to the customer&#x27;s car when there is no key at all? In which area and at what price?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">46</span><div class="corpo"><p class="pt" lang="ro">Câte deplasări faci pe săptămână? Cât timp te iau și cât aduc?</p>
+<p class="ro" lang="en">How many call-outs do you do per week? How much time do they take and how much do they earn?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">47</span><div class="corpo"><p class="pt" lang="ro">Cine acoperă standul când ești plecat? Standul se închide?</p>
+<p class="ro" lang="en">Who covers the stand when you are out? Does the stand close?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">48</span><div class="corpo"><p class="pt" lang="ro">Accepți urgențe noaptea sau în weekend? Cu ce taxă suplimentară?</p>
+<p class="ro" lang="en">Do you take emergencies at night or at weekends? With what surcharge?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">11</span><div><h2 lang="ro">Recenzii și recomandări</h2>
+<p class="quem" lang="en">Reviews and word of mouth</p></div></header><ol class="qs"><li class="q"><span class="n">49</span><div class="corpo"><p class="pt" lang="ro">Ai cerut vreodată recenzii clienților? Cum și cu ce rezultat?</p>
+<p class="ro" lang="en">Have you ever asked customers for reviews? How, and with what result?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">50</span><div class="corpo"><p class="pt" lang="ro">Câți clienți noi îți spun «am văzut pe Google» și câți «mi-a recomandat cineva»? Îi întrebi?</p>
+<p class="ro" lang="en">How many new customers tell you &#x27;I saw you on Google&#x27; and how many &#x27;someone recommended you&#x27;? Do you ask them?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">51</span><div class="corpo"><p class="pt" lang="ro">Răspunzi la recenzii? Cine are acces la fișa Google? Poți tu sau altcineva să editezi programul și categoria?</p>
+<p class="ro" lang="en">Do you reply to reviews? Who has access to the Google listing? Can you or anyone else edit the hours and the category?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">52</span><div class="corpo"><p class="pt" lang="ro">Accepți un afiș cu QR la tejghea și un mesaj trimis după fiecare lucrare?</p>
+<p class="ro" lang="en">Would you accept a QR poster at the counter and a message sent after each job?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">12</span><div><h2 lang="ro">Ateliere, flote și parteneri</h2>
+<p class="quem" lang="en">Garages, fleets and partners</p></div></header><ol class="qs"><li class="q"><span class="n">53</span><div class="corpo"><p class="pt" lang="ro">Lucrezi cu ateliere, showroom-uri auto, firme de taxi sau flote care îți trimit clienți? Câți pe lună?</p>
+<p class="ro" lang="en">Do you work with garages, car dealers, taxi companies or fleets that send you customers? How many per month?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">54</span><div class="corpo"><p class="pt" lang="ro">Și tu trimiți clienți la altcineva? Există schimb sau comision?</p>
+<p class="ro" lang="en">And do you send customers to anyone? Is there an exchange or a commission?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">55</span><div class="corpo"><p class="pt" lang="ro">Care sunt cei 2–3 cheiari din Iași care îți iau cea mai mare parte din muncă? În ce ești mai bun decât ei?</p>
+<p class="ro" lang="en">Who are the 2 or 3 locksmiths in Iași that take most work from you? Where are you better than them?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco"><header class="bloco-cab"><span class="bn">13</span><div><h2 lang="ro">Casă, stoc și furnizori</h2>
+<p class="quem" lang="en">Cash, stock and suppliers</p></div></header><ol class="qs"><li class="q"><span class="n">56</span><div class="corpo"><p class="pt" lang="ro">Cum înregistrezi ce vinzi și cum închizi ziua? Hârtie, caiet, casă, aplicație?</p>
+<p class="ro" lang="en">How do you record what you sell and close the day? Paper, notebook, cash register, app?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">57</span><div class="corpo"><p class="pt" lang="ro">Cum controlezi stocul de chei, carcase, cipuri și baterii? Ce se întâmplă când îți lipsește o piesă în mijlocul unei comenzi?</p>
+<p class="ro" lang="en">How do you track stock of keys, shells, chips and batteries? What happens when you run out of a part in the middle of a job?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">58</span><div class="corpo"><p class="pt" lang="ro">Cine face facturile și socotelile la sfârșit de lună? Cât timp durează?</p>
+<p class="ro" lang="en">Who does the invoices and the month-end accounts? How long does it take?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">59</span><div class="corpo"><p class="pt" lang="ro">Unde păstrezi contactele clienților? Mai vorbești cu cei care au făcut deja o cheie?</p>
+<p class="ro" lang="en">Where do you keep customer contacts? Do you ever speak again to someone who already had a key made?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section><section class="bloco" style="break-before:page"><header class="bloco-cab"><span class="bn">14</span><div><h2 lang="ro">Pentru final</h2>
+<p class="quem" lang="en">To finish</p></div></header><ol class="qs"><li class="q"><span class="n">60</span><div class="corpo"><p class="pt" lang="ro">Din tot ce am vorbit, ce te frământă cel mai mult?</p>
+<p class="ro" lang="en">Out of everything we talked about, what keeps you up at night?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">61</span><div class="corpo"><p class="pt" lang="ro">Cum reacționează echipa ta la instrumente noi?</p>
+<p class="ro" lang="en">How does your team react to new tools?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">62</span><div class="corpo"><p class="pt" lang="ro">Ce ai încercat deja și n-a mers?</p>
+<p class="ro" lang="en">What have you already tried that didn&#x27;t work?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">63</span><div class="corpo"><p class="pt" lang="ro">Care dintre aceste trei lucruri ți-ar face cea mai mare diferență în 3 luni: nicio cerere de cheie pierdută, mai multe recenzii sau mai puțin timp la telefon?</p>
+<p class="ro" lang="en">Which of these three would make the biggest difference in 3 months: no car key request lost, more reviews, or less time on the phone?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">64</span><div class="corpo"><p class="pt" lang="ro">Dacă totul ar merge bine peste 3 luni, ce ai vedea diferit la stand?</p>
+<p class="ro" lang="en">If everything went well in 3 months, what would you see differently at the stand?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">65</span><div class="corpo"><p class="pt" lang="ro">Cine decide și cine altcineva trebuie să vadă planul înainte să continui?</p>
+<p class="ro" lang="en">Who decides, and who else needs to see the plan before you go ahead?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li><li class="q"><span class="n">66</span><div class="corpo"><p class="pt" lang="ro">Pot să revin cu harta standului, calculele în lei pe lună și cele trei lucruri care merită făcute mai întâi?</p>
+<p class="ro" lang="en">May I come back with the map of the stand, the numbers in lei per month and the three things worth doing first?</p><div class="linhas" aria-hidden="true"><i></i><i></i></div></div></li></ol></section>
+<section class="pagina"><h2 class="titulo">Cum ajunge o cerere la voi</h2><p class="lead">How a request reaches you</p>
+<table class="sp"><tbody><tr><td><span lang='ro'>Ce declanșează cererea?</span><br><small class='ro' lang='en'>What triggers the request?</small></td><td class='em'></td></tr><tr><td><span lang='ro'>Cine se ocupă de ea?</span><br><small class='ro' lang='en'>Who handles it?</small></td><td class='em'></td></tr><tr><td><span lang='ro'>Ce reguli folosiți (program, prețuri, documente)?</span><br><small class='ro' lang='en'>What rules do you use (hours, prices, documents)?</small></td><td class='em'></td></tr><tr><td><span lang='ro'>Când trece la o persoană?</span><br><small class='ro' lang='en'>When does it go to a person?</small></td><td class='em'></td></tr></tbody></table>
+<h2 class="titulo" style="margin-top:10mm">Cifre</h2><p class="lead">Numbers · o estimare este suficientă / an estimate is enough</p>
+<table class="num"><tbody><tr><td><span lang='ro'>Apeluri pe zi (toate)</span><br><small class='ro' lang='en'>Calls per day (all)</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Apeluri pentru chei auto pe zi</span><br><small class='ro' lang='en'>Car key calls per day</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Apeluri fără răspuns pe săptămână</span><br><small class='ro' lang='en'>Unanswered calls per week</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Mesaje WhatsApp / SMS pe zi</span><br><small class='ro' lang='en'>WhatsApp / SMS messages per day</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Chei auto făcute pe săptămână</span><br><small class='ro' lang='en'>Car keys made per week</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Preț mediu al unei chei auto cu cip</span><br><small class='ro' lang='en'>Average price of a chip car key</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Marja aproximativă pe cheie auto</span><br><small class='ro' lang='en'>Approximate margin per car key</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Cereri pierdute pe săptămână</span><br><small class='ro' lang='en'>Lost requests per week</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Deplasări pe săptămână</span><br><small class='ro' lang='en'>Call-outs per week</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Preț mediu al unei deplasări</span><br><small class='ro' lang='en'>Average call-out price</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Ore pe săptămână la telefon</span><br><small class='ro' lang='en'>Hours per week on the phone</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Încasări lunare (estimare)</span><br><small class='ro' lang='en'>Monthly revenue (estimate)</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Zile lucrate pe lună</span><br><small class='ro' lang='en'>Working days per month</small></td><td class='val'></td></tr><tr><td><span lang='ro'>Recenzii Google noi pe lună</span><br><small class='ro' lang='en'>New Google reviews per month</small></td><td class='val'></td></tr></tbody></table></section>
+</body></html>
