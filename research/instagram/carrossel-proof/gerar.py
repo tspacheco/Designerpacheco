@@ -19,6 +19,14 @@ E, rich = base.E, base.rich
 
 CSS_EXTRA = """
 .lar .pag span{color:#16110E}
+/* gráfico da capa: crescimento linear vs. exponencial (ilustrativo) */
+.curva{margin-top:34px;width:900px;height:380px}
+.curva text{font-family:"Liberation Sans",Arial,sans-serif}
+.curva .t-forte{font-size:27px;font-weight:700;fill:#F5EFE6}
+.curva .t-fraco{font-size:23px;fill:#BDB8B2}
+.curva .t-gap{font-size:16px;font-weight:700;letter-spacing:.18em;fill:#F59A73}
+.curva .t-nota{font-size:17px;fill:#8F8983}
+.curva .t-eixo{font-size:15px;font-weight:700;letter-spacing:.18em;fill:#8F8983}
 /* trilho da capa: o percurso de um pedido até ter dono */
 .trilho{position:absolute;left:250px;top:1068px;width:580px;height:40px;z-index:1}
 .trilho::before{content:"";position:absolute;left:0;right:0;top:19px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(242,111,67,.65))}
@@ -204,6 +212,47 @@ def faixa_gartner():
             '<div class="medidor"><i style="width:87%"></i></div>' + fonte(F_GARTNER) + "</div>")
 
 
+def curva_capa():
+    """Capa: crescimento linear (mais pessoas, mais horas) vs. exponencial (sistema com IA).
+    Curva ilustrativa, sem números nos eixos (HONEST-DATA): os números reais estão nos slides seguintes."""
+    import math
+    x0, x1, yb, alt = 64, 824, 330, 300
+    k = 3.3
+    f = lambda u: (math.exp(k * u) - 1) / (math.exp(k) - 1)
+    lin = lambda u: 0.36 * u
+    px = lambda u: x0 + (x1 - x0) * u
+    py = lambda v: yb - alt * v
+    us = [i / 80 for i in range(81)]
+    exp_pts = " ".join(f"{px(u):.1f},{py(f(u)):.1f}" for u in us)
+    # ponto de cruzamento e área entre as curvas depois dele (a diferença)
+    uc = next(u for u in us if f(u) >= lin(u) and u > 0.05)
+    gap = [u for u in us if u >= uc]
+    area = " ".join(f"{px(u):.1f},{py(f(u)):.1f}" for u in gap) + " " + " ".join(
+        f"{px(u):.1f},{py(lin(u)):.1f}" for u in reversed(gap))
+    grelha = "".join(f'<line x1="{x0}" x2="{x1}" y1="{yb - alt * g:.0f}" y2="{yb - alt * g:.0f}" stroke="rgba(255,255,255,.06)" stroke-width="1"/>'
+                     for g in (0.25, 0.5, 0.75, 1))
+    ex, ey = px(1), py(1)
+    lx, ly = px(1), py(lin(1))
+    return f"""<div class="curva"><svg width="900" height="380" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6A3B" stop-opacity=".30"/><stop offset="1" stop-color="#FF6A3B" stop-opacity=".04"/></linearGradient></defs>
+{grelha}
+<polygon points="{area}" fill="url(#gg)"/>
+<line x1="{x0}" y1="{yb}" x2="{x1}" y2="{yb}" stroke="rgba(255,255,255,.32)" stroke-width="2"/>
+<line x1="{x0}" y1="{yb}" x2="{x0}" y2="{yb - alt - 10}" stroke="rgba(255,255,255,.32)" stroke-width="2"/>
+<line x1="{px(0):.1f}" y1="{py(0):.1f}" x2="{lx:.1f}" y2="{ly:.1f}" stroke="#BDB5AC" stroke-width="4" stroke-linecap="round"/>
+<polyline points="{exp_pts}" fill="none" stroke="#FF6A3B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M{ex + 24:.1f},{ey + 18:.1f} h10 V{ly - 14:.1f} h-10" fill="none" stroke="rgba(245,239,230,.6)" stroke-width="2"/>
+<text transform="translate({ex + 62:.1f},{(ey + ly) / 2:.1f}) rotate(-90)" text-anchor="middle" class="t-gap">THE GAP</text>
+<circle cx="{ex:.1f}" cy="{ey:.1f}" r="26" fill="rgba(255,106,59,.18)"/><circle cx="{ex:.1f}" cy="{ey:.1f}" r="11" fill="#FF6A3B"/>
+<circle cx="{lx:.1f}" cy="{ly:.1f}" r="8" fill="#BDB5AC"/>
+<text x="{ex - 40:.1f}" y="{ey + 6:.1f}" text-anchor="end" class="t-forte">Systems with AI</text>
+<text x="{lx:.1f}" y="{ly + 62:.1f}" text-anchor="end" class="t-fraco">More people, more hours</text>
+<text x="{x0 + 14}" y="{yb - alt + 6}" class="t-eixo">GROWTH</text>
+<text x="{x1}" y="{yb + 36}" text-anchor="end" class="t-eixo">TIME →</text>
+<text x="{x0}" y="{yb + 36}" class="t-nota">Illustrative curve. The real numbers are inside.</text>
+</svg></div>"""
+
+
 def caso_real():
     # Caso público do Brasil, o mesmo que está no site (cazuri.itens.omega; fonte interna em conteudo/casos.json)
     linhas_prova = [("BEFORE", "People asked the price, did not book, and nobody got back to them."),
@@ -212,14 +261,15 @@ def caso_real():
         f'<div><small>{a}</small><p>{E(b)}</p></div>' for a, b in linhas_prova) + "</div>"
         '<div class="heroi"><div><b>R$40k</b><p>in 3.5 months, only from people who had not booked</p></div>'
         '<div><b>+10%</b><p>monthly revenue from the automatic follow-up</p></div></div>'
-        + fonte("Public case, imaging clinic in Brazil. Results reported by the business."))
+        + fonte("Real case · imaging clinic, Brazil."))
 
 
 SLIDES = [
     {"tema": "esc", "eyebrow": "PROOF · A REAL SYSTEM BREAKDOWN", "marca": "PACHECO STUDIOS",
      "h1": "A business did not need<br>[[another AI tool.]]", "h1px": 88,
      "sub": "It needed **one next action** after every enquiry.",
-     "pill": "SWIPE TO SEE THE SYSTEM BREAKDOWN →", "trilho": True,
+     "html": curva_capa(),
+     "pill": "SWIPE TO SEE THE SYSTEM BREAKDOWN →",
      "rodape": "Every system we build starts with the path, not the tool."},
     {"tema": "lar", "eyebrow": "THE SYMPTOM", "marca": "PACHECO STUDIOS",
      "kicker": "WHAT THE TEAM FELT", "h1": "The problem looked like<br>“slow replies”.", "h1px": 92,
