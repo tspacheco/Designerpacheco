@@ -23,8 +23,8 @@ for bloco in re.split(r"\n(?=## \d+\. )", md)[1:]:
     aval = g(r"Google [\d,]+ · ([\d.]+) avalia")
     fixo = "fixo" in wa
     itens.append(dict(nome=nome, cat=cat, tel=tel, fixo=fixo, google=google, aval=aval, morada=g(r"Morada: (.*?) · site"),
-                      pdf=pdf, msg=msg, texto=msg + "\n\n" + pdf,
-                      wa=None if fixo else "https://wa.me/" + tel.lstrip("+") + "?text=" + quote(msg + "\n\n" + pdf)))
+                      pdf=pdf, ficheiro=pdf.rsplit("/", 1)[-1], msg=msg, texto=msg,
+                      wa=None if fixo else "https://wa.me/" + tel.lstrip("+") + "?text=" + quote(msg)))
 
 PAGINA = open(__file__.replace("envio_html.py", "envio_modelo.html"), encoding="utf-8").read()
 out = PAGINA.replace("/*DADOS*/[]", json.dumps(itens, ensure_ascii=False))

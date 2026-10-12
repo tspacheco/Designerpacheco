@@ -52,7 +52,7 @@ details p{font-size:14px;white-space:pre-wrap;background:var(--sec);border-radiu
 
 <header>
   <h1>Raio-X · Lote 2</h1>
-  <p class="sub">20 negócios de Iași. WhatsApp abre com a mensagem e o link do PDF já escritos.</p>
+  <p class="sub">20 negócios de Iași. A mensagem sai sem link: guarda o PDF e anexa-o na conversa.</p>
   <div class="barra"><div class="prog"><i id="prog"></i></div><span class="cont" id="cont">0/20</span></div>
   <div class="filtros" role="group" aria-label="Filtro">
     <button type="button" id="f-todos" aria-pressed="true">Todos</button>
@@ -60,7 +60,7 @@ details p{font-size:14px;white-space:pre-wrap;background:var(--sec);border-radiu
   </div>
 </header>
 <ul id="lista"></ul>
-<p class="aviso">«Enviado» fica guardado só neste telemóvel. O WhatsApp só abre conversa se o número tiver WhatsApp; se não abrir, usa Ligar. Os fixos não têm WhatsApp: liga e pede onde mandar o PDF.</p>
+<p class="aviso">«Enviado» fica guardado só neste telemóvel. Fluxo: 1 guardar o PDF, 2 abrir o WhatsApp (a mensagem vem escrita), 3 anexar o PDF e enviar. O WhatsApp só abre conversa se o número tiver WhatsApp; se não abrir, usa Ligar. Os fixos não têm WhatsApp: liga e pede onde mandar o PDF.</p>
 
 <script>
 const DADOS = /*DADOS*/[];
@@ -99,20 +99,21 @@ function desenhar() {
 
     const ac = el("div", "acoes");
     if (d.wa) {
-      const a = el("a", "prim", "Abrir WhatsApp com a mensagem");
+      const a = el("a", "prim", "2 · WhatsApp com a mensagem");
       a.href = d.wa; a.target = "_blank"; a.rel = "noopener";
       ac.append(a);
     }
     const par = el("div", "par");
-    const pdf = el("a", "", "Ver PDF"); pdf.href = d.pdf; pdf.target = "_blank"; pdf.rel = "noopener";
+    const pdf = el("a", "", "1 · Guardar PDF"); pdf.href = d.pdf; pdf.target = "_blank"; pdf.rel = "noopener";
     const lig = el("a", "", "Ligar"); lig.href = "tel:" + d.tel;
     par.append(pdf, lig);
     ac.append(par);
-    const cp = el("button", "", "Copiar mensagem e link"); cp.type = "button";
+    const cp = el("button", "", "Copiar mensagem"); cp.type = "button";
     cp.addEventListener("click", () => copiar(d.texto, cp));
     ac.append(cp);
     li.append(ac);
 
+    li.append(el("div", "meta", "Anexar: " + d.ficheiro));
     const det = el("details");
     det.append(el("summary", "", "Ver mensagem e morada"));
     det.append(el("p", "", d.msg + "\n\n" + (d.morada ? "Morada: " + d.morada : "")));
