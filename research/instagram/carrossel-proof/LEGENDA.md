@@ -23,14 +23,15 @@ Nota: os números 100× / 21× (5 vs. 30 minutos) que circulam na internet são 
 
 ## Legenda (copiar a partir daqui)
 
-Versão de 12/10 22h37. Público (Tomás): donos que ainda não têm IA, talvez queiram implementar e procuram alguém
-em quem confiar. Por isso o gancho não fala de «mais uma ferramenta» (pressupõe que já têm) e a legenda
+Versão de 12/10 22h37. Público (Tomás): donos de negócios que já faturam mais de 10 mil €/mês, até 500 mil
+€/mês, ainda sem IA, talvez a pensar implementar e à procura de alguém em quem confiar. Por isso o gancho
+reconhece que o negócio já funciona, não fala de «mais uma ferramenta» (pressupõe que já têm) e a legenda
 mostra como trabalhamos (triagem primeiro, desenho antes de construir, regras aprovadas, exceções a pessoas,
-contas e dados deles). O caso continua «real case», sem «nós fizemos».
+contas e dados deles, medido do ponto de partida). O caso continua «real case», sem «nós fizemos».
 
-Thinking about AI for your business, but not sure who to trust with it?
+Your business already works. Now you're thinking about AI, and you're not sure who to trust with it.
 
-Then don't start with a tool. Start by seeing how it works inside a real business.
+Then don't start with a tool. Start by seeing how it works inside a real business, with the numbers.
 
 This carousel walks through one real case, step by step: where requests came in, who owned the next action, the rule written before any automation, what the AI handled, and what stayed with the team.
 
@@ -39,19 +40,21 @@ The numbers, with the source on each slide:
 → +10% monthly revenue after the follow-up system went live
 → 87% of customers still want a way to reach a human, so the system keeps one
 
+The leak is the same at 10k a month or 500k a month: a request with no owner. Only the cost of it changes.
+
 How we work, so you know what to expect:
 → We start with a triage of how requests move through your business today. No tool, no commitment.
 → You see the system drawn before anything is built.
-→ The AI works only inside rules you approve. Every exception goes to a person.
+→ The AI works only inside rules you approve. Every exception goes to a person on your team.
 → Your accounts and your data stay yours.
 → Results are measured from your starting point. Real numbers or none at all.
 
 DM "AUDIT" and tell us what your business does. We'll tell you where the first leak usually hides.
 
-#AISystems #AIConsulting #BusinessSystems #CustomerService #SmallBusiness
+#AISystems #AIConsulting #BusinessSystems #CustomerService #BusinessGrowth
 
 ### Capa (proposta, à espera do Tomás)
 
 O título atual «A business did not need another AI tool.» fala a quem já experimentou ferramentas.
-Para quem não tem IA, proposta: «A business with no AI / fixed this first.» + «One next action after every
-enquiry, before any tool.»
+Para quem não tem IA e procura por onde começar, proposta quase igual ao plano:
+«This business did not start / with an AI tool.» + «It started with one next action after every enquiry.»
