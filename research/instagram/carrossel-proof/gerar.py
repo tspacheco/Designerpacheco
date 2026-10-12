@@ -1,4 +1,4 @@
-"""2.º carrossel fixado do Instagram: «Proof · A real system breakdown» (EN, 12 slides, 1080x1350).
+"""2.º carrossel fixado do Instagram: «Proof · A real system breakdown» (EN, 10 slides, 1080x1350).
 
 Plano do Tomás (PDF de 12/10/2026): Start Here → Proof → Method. Mesmo visual do 1.º
 (escuro, creme e laranja, títulos centrados, diagramas de sistema, um só CTA «DM AUDIT»).
@@ -306,22 +306,16 @@ SLIDES = [
      "html": curva_capa(),
      "pill": "SWIPE TO SEE THE SYSTEM BREAKDOWN →",
      "rodape": "Every system we build starts with the path, not the tool."},
-    {"tema": "lar", "eyebrow": "THE SYMPTOM", "marca": "PACHECO STUDIOS",
-     "kicker": "WHAT THE TEAM FELT", "h1": "The problem looked like<br>“slow replies”.", "h1px": 92,
-     "sub": "The operational problem went **deeper.**",
-     "cartoes_esc": [("Channels", "Requests entering everywhere"), ("Context", "Repeated or lost"),
-                     ("Owner", "Nobody clearly responsible"), ("Follow-up", "Left to the team’s memory")],
-     "rodape": "Slow replies were the symptom, not the cause."},
-    {"tema": "esc", "eyebrow": "THE DIFFERENCE", "marca": "PACHECO STUDIOS",
-     "kicker": "WITHOUT AI vs. WITH AI", "h1": "Customer service is where<br>[[revenue is won.]]", "h1px": 80,
-     "sub": "Same requests. A **different system** behind the reply.",
-     "html": comparacao_ia(),
-     "rodape": "The difference is the system behind the reply."},
     {"tema": "esc", "eyebrow": "THE PATH BEFORE", "marca": "PACHECO STUDIOS", "topo": True,
      "kicker": "01 / BEFORE", "h1": "Four doors in.<br>[[No one at the desk.]]", "h1px": 84,
      "sub": "Google, Instagram, WhatsApp and email all landed in one place, and **nobody owned what came next.**",
      "html": diag_antes(),
      "rodape": "This is where most enquiries actually go quiet."},
+    {"tema": "esc", "eyebrow": "THE DIFFERENCE", "marca": "PACHECO STUDIOS",
+     "kicker": "WITHOUT AI vs. WITH AI", "h1": "Customer service is where<br>[[revenue is won.]]", "h1px": 80,
+     "sub": "Same requests. A **different system** behind the reply.",
+     "html": comparacao_ia(),
+     "rodape": "The difference is the system behind the reply."},
     {"tema": "lar", "eyebrow": "THE COST OF WAITING", "marca": "PACHECO STUDIOS",
      "kicker": "THE DATA", "h1": "The first hour<br>[[decides the lead.]]", "h1px": 92,
      "html": dados_hora(),
@@ -350,12 +344,8 @@ SLIDES = [
                                              "A commercial decision", "An urgent situation", "Not enough context"])
              + faixa_gartner(),
      "rodape": "A good system knows when to stop."},
-    {"tema": "esc", "eyebrow": "THE PATH AFTER", "marca": "PACHECO STUDIOS", "topo": True,
-     "kicker": "06 / AFTER", "h1": "Same doors.<br>[[One clear path.]]", "h1px": 88,
-     "html": diag_depois(),
-     "rodape": "Trigger → owner → rule → next action → human."},
     {"tema": "lar", "eyebrow": "THE SAME BREAK, FIXED", "marca": "REAL CASE · BRAZIL",
-     "kicker": "07 / EVIDENCE", "h1": "One next action.<br>[[Real revenue back.]]", "h1px": 84,
+     "kicker": "06 / EVIDENCE", "h1": "One next action.<br>[[Real revenue back.]]", "h1px": 84,
      "html": caso_real(),
      "rodape": "Real numbers or none at all."},
     {"tema": "lar", "eyebrow": "PACHECO STUDIOS / AI SYSTEMS AUDITS", "marca": "TALK WITH US",
