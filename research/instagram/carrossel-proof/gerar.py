@@ -19,6 +19,20 @@ E, rich = base.E, base.rich
 
 CSS_EXTRA = """
 .lar .pag span{color:#16110E}
+/* slide 3: sem IA vs. com IA, três painéis com escala própria */
+.comp{margin-top:34px;width:920px}
+.comp .leg{display:flex;justify-content:center;gap:36px;font-size:21px;color:#C9C4BE;margin-bottom:22px}
+.comp .leg i{display:inline-block;width:18px;height:18px;border-radius:3px;margin-right:10px;vertical-align:-2px}
+.comp .paineis{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.comp .pn{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.035);padding:24px 16px 20px}
+.comp .delta{font-family:"Liberation Serif","Times New Roman",serif;font-weight:700;font-size:66px;letter-spacing:-.04em;line-height:1;color:#FF8A5F}
+.comp .area{height:244px;margin:14px 18px 0;display:flex;align-items:flex-end;justify-content:center;gap:22px;border-bottom:2px solid rgba(255,255,255,.38)}
+.comp .col{width:80px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.comp .col b{font-family:"Liberation Serif","Times New Roman",serif;font-size:30px;color:#F5EFE6;margin-bottom:8px;line-height:1}
+.comp .col div{width:100%;border-radius:4px 4px 0 0;background:rgba(245,239,230,.26)}
+.comp .col.o div{background:#FF6A3B}
+.comp h4{margin-top:16px;font-size:21px;line-height:1.2;color:#F5EFE6}
+.comp small{display:block;margin-top:8px;font-size:15px;line-height:1.3;color:#8F8983}
 /* gráfico da capa: crescimento linear vs. exponencial (ilustrativo) */
 .curva{margin-top:34px;width:900px;height:380px}
 .curva text{font-family:"Liberation Sans",Arial,sans-serif}
@@ -191,6 +205,27 @@ def dados_resposta():
             + fonte(F_HBR_AUDIT))
 
 
+F_NBER = "Brynjolfsson, Li & Raymond, “Generative AI at Work”, Quarterly Journal of Economics, 2025."
+
+
+def comparacao_ia():
+    """Slide 3 (Tomás, 12/10 22h12): sem IA vs. com IA no atendimento, com foco na faturação.
+    Pequenos múltiplos (cada painel com a sua escala, barras a partir do zero, valor em texto)."""
+    paineis = [("10×", "Quotes answered a day", "Real case · drinks for events, Brazil", (50, "50"), (500, "500")),
+               ("+10%", "Monthly revenue (index)", "Real case · imaging clinic, Brazil", (100, "100"), (110, "110")),
+               ("+15%", "Resolved per hour (index)", "Study of 5,172 support agents", (100, "100"), (115, "115"))]
+    out = ['<div class="comp"><div class="leg"><span><i style="background:rgba(245,239,230,.30)"></i>Without AI</span>'
+           '<span><i style="background:#FF6A3B"></i>With AI in customer service</span></div><div class="paineis">']
+    for delta, metrica, origem, (va, ta), (vb, tb) in paineis:
+        topo = max(va, vb)
+        cols = "".join(f'<div class="col{c}"><b>{E(t)}</b><div style="height:{190 * v / topo:.0f}px"></div></div>'
+                       for c, (v, t) in (("", (va, ta)), (" o", (vb, tb))))
+        out.append(f'<div class="pn"><div class="delta">{E(delta)}</div><div class="area">{cols}</div>'
+                   f'<h4>{E(metrica)}</h4><small>{E(origem)}</small></div>')
+    out.append("</div></div>")
+    return "".join(out) + fonte("Sources: real cases in Brazil (quotes and revenue). " + F_NBER)
+
+
 def dados_hora():
     return (barras("LIKELIHOOD OF QUALIFYING THE LEAD (AFTER 24 HOURS = 1×)",
                    [("Within 1 hour", 60, "60×", True), ("After 24 hours", 1, "1×", False)], 60)
@@ -277,10 +312,11 @@ SLIDES = [
      "cartoes_esc": [("Channels", "Requests entering everywhere"), ("Context", "Repeated or lost"),
                      ("Owner", "Nobody clearly responsible"), ("Follow-up", "Left to the team’s memory")],
      "rodape": "Slow replies were the symptom, not the cause."},
-    {"tema": "esc", "eyebrow": "THE DATA", "marca": "PACHECO STUDIOS",
-     "kicker": "HOW COMMON IS IT", "h1": "Most businesses reply late.<br>[[Or never.]]", "h1px": 80,
-     "html": dados_resposta(),
-     "rodape": "The symptom is common. The cause is rarely the tool."},
+    {"tema": "esc", "eyebrow": "THE DIFFERENCE", "marca": "PACHECO STUDIOS",
+     "kicker": "WITHOUT AI vs. WITH AI", "h1": "Customer service is where<br>[[revenue is won.]]", "h1px": 80,
+     "sub": "Same requests. A **different system** behind the reply.",
+     "html": comparacao_ia(),
+     "rodape": "The difference is the system behind the reply."},
     {"tema": "esc", "eyebrow": "THE PATH BEFORE", "marca": "PACHECO STUDIOS", "topo": True,
      "kicker": "01 / BEFORE", "h1": "Four doors in.<br>[[No one at the desk.]]", "h1px": 84,
      "sub": "Google, Instagram, WhatsApp and email all landed in one place, and **nobody owned what came next.**",
