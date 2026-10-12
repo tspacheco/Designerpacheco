@@ -1,8 +1,10 @@
-"""2.º carrossel fixado do Instagram: «Proof · A real system breakdown» (EN, 10 slides, 1080x1350).
+"""2.º carrossel fixado do Instagram: «Proof · A real system breakdown» (EN, 12 slides, 1080x1350).
 
 Plano do Tomás (PDF de 12/10/2026): Start Here → Proof → Method. Mesmo visual do 1.º
 (escuro, creme e laranja, títulos centrados, diagramas de sistema, um só CTA «DM AUDIT»).
-O slide 9 só leva prova real e autorizada: os campos entre parênteses retos ficam por preencher.
+Dados com fonte (pedido do Tomás, 12/10 18h44): HBR 2011 (2 slides de dados), Klarna 2024 e Gartner 2026
+em faixas, e o caso real público do Brasil que já está no site (clínica de imagem). Quando houver um caso
+da Pacheco Studios com números confirmados, substitui caso_real(); prova() fica para esse formato.
 Uso: python3 gerar.py  →  saida/carrossel-proof-en.html; depois
      node ../carrossel-audit/fotografar.js saida/carrossel-proof-en.html saida/en pacheco-proof
 """
@@ -46,6 +48,44 @@ CSS_EXTRA = """
 .prova small{font-weight:700;font-size:16px;letter-spacing:.16em;color:#F59A73}
 .prova p{font-size:25px;line-height:1.3;color:#FBF4EC}
 .prova .falta p{color:#FFB08F;border:1.5px dashed rgba(255,176,143,.6);padding:8px 14px}
+/* gráficos de barras horizontais: barras a partir do zero, valor em texto, fonte por baixo */
+.graf{margin-top:38px;width:840px;text-align:left}
+.graf .tit{font-weight:700;font-size:16px;letter-spacing:.16em;margin-bottom:10px}
+.graf .row{display:grid;grid-template-columns:230px 1fr 120px;align-items:center;gap:20px;padding:12px 0}
+.graf .row p{font-size:24px;line-height:1.2}
+.graf .tr{height:38px;display:flex;align-items:center}
+.graf .b{height:38px;border-radius:0 4px 4px 0}
+.graf .row b{font-family:"Liberation Serif","Times New Roman",serif;font-size:44px;letter-spacing:-.03em;text-align:right;line-height:1}
+.esc .graf .tit{color:#9C968F}.esc .graf .row p{color:#E9E2D8}.esc .graf .tr{border-left:2px solid rgba(255,255,255,.4)}
+.esc .graf .b{background:rgba(245,239,230,.24)}.esc .graf .b.o{background:#FF6A3B}.esc .graf .row b{color:#F5EFE6}
+.lar .graf .tit{color:#4A2112}.lar .graf .row p{color:#1A0F0A}.lar .graf .tr{border-left:2px solid rgba(20,10,5,.55)}
+.lar .graf .b{background:rgba(20,10,5,.20)}.lar .graf .b.o{background:#101115}.lar .graf .row b{color:#141214}
+.fonte{margin-top:18px;width:840px;font-size:18px;line-height:1.35;text-align:left}
+.esc .fonte{color:#8F8983}.lar .fonte{color:#4A2112}
+.nota-dado{margin-top:18px;width:840px;text-align:left;font-size:24px;line-height:1.3}
+.esc .nota-dado{color:#C9C4BE}.esc .nota-dado b{color:#fff}.lar .nota-dado{color:#4A2112}.lar .nota-dado b{color:#141214}
+/* faixa de dados por baixo das listas (slides da IA e do humano) */
+.faixa{margin-top:30px;width:840px;padding:22px 28px 20px;text-align:left;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03)}
+.faixa .graf,.faixa .fonte{width:auto;margin-top:0}
+.faixa .graf .row{grid-template-columns:110px 1fr 112px;gap:16px;padding:8px 0}
+.faixa .graf .tr,.faixa .graf .b{height:30px}
+.faixa .graf .row b{font-size:36px}
+.faixa .fonte{margin-top:12px;font-size:17px}
+.faixa .duo{display:grid;grid-template-columns:1fr 190px;gap:26px;align-items:center}
+.faixa .duo .lado{border-left:1px solid rgba(255,255,255,.14);padding-left:24px}
+.faixa .duo .lado b,.faixa .grande b{display:block;font-family:"Liberation Serif","Times New Roman",serif;font-size:74px;letter-spacing:-.04em;line-height:1;color:#FF8A5F}
+.faixa .duo .lado p{margin-top:6px;font-size:20px;line-height:1.25;color:#E9E2D8}
+.faixa .grande{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center}
+.faixa .grande p{font-size:24px;line-height:1.3;color:#E9E2D8}
+.medidor{margin-top:16px;height:16px;background:rgba(245,239,230,.14);border-radius:4px;overflow:hidden}
+.medidor i{display:block;height:100%;background:#FF6A3B;border-radius:0 4px 4px 0}
+.linhas.apertado{margin-top:30px}.linhas.apertado div{padding:13px 6px}.linhas.apertado p{font-size:25px}
+/* números grandes do caso real */
+.heroi{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px;width:820px}
+.heroi div{background:#101115;padding:24px 28px;text-align:left;box-shadow:0 9px 0 rgba(150,50,20,.45)}
+.heroi b{display:block;font-family:"Liberation Serif","Times New Roman",serif;font-size:80px;letter-spacing:-.04em;line-height:1;color:#FF8A5F}
+.heroi p{margin-top:10px;font-size:21px;line-height:1.3;color:#E9E2D8}
+.prova.dois{margin-top:36px}
 """
 
 
@@ -114,6 +154,67 @@ def prova():
         f'<div class="{c}"><small>{a}</small><p>{E(b)}</p></div>' for a, b, c in linhas_prova) + "</div>"
 
 
+def barras(tit, linhas_graf, escala, cls=""):
+    """Barras horizontais a partir do zero; linhas = (rótulo, valor numérico, texto do valor, destaque)."""
+    out = [f'<div class="graf {cls}"><div class="tit">{E(tit)}</div>']
+    for rot, v, txt, dest in linhas_graf:
+        largura = max(0.6, 100 * v / escala)
+        out.append(f'<div class="row"><p>{E(rot)}</p><div class="tr"><div class="b{" o" if dest else ""}" '
+                   f'style="width:{largura:.1f}%"></div></div><b>{E(txt)}</b></div>')
+    return "".join(out) + "</div>"
+
+
+def fonte(txt):
+    return f'<p class="fonte">{E(txt)}</p>'
+
+
+# Fontes (verificadas a 12/10/2026; lista completa em LEGENDA.md)
+F_HBR_AUDIT = "Source: Oldroyd, McElheran & Elkington, “The Short Life of Online Sales Leads”, Harvard Business Review, 2011. Test enquiry sent to 2,241 US companies."
+F_HBR_LEADS = "Source: Oldroyd, McElheran & Elkington, Harvard Business Review, 2011. Analysis of 1.25 million leads from 42 companies."
+F_KLARNA = "Source: Klarna press release, 27 Feb 2024. Figures reported by the company."
+F_GARTNER = "Source: Gartner survey of 3,566 customers, Feb–Mar 2026 (published 4 Aug 2026)."
+
+
+def dados_resposta():
+    return (barras("HOW FAST 2,241 COMPANIES ANSWERED A TEST ENQUIRY",
+                   [("Within 1 hour", 37, "37%", False), ("1 to 24 hours", 16, "16%", False),
+                    ("After 24 hours", 24, "24%", True), ("Never answered", 23, "23%", True)], 40)
+            + '<p class="nota-dado"><b>Almost half answered a day later, or never.</b> The enquiry was there. Nobody owned it.</p>'
+            + fonte(F_HBR_AUDIT))
+
+
+def dados_hora():
+    return (barras("LIKELIHOOD OF QUALIFYING THE LEAD (AFTER 24 HOURS = 1×)",
+                   [("Within 1 hour", 60, "60×", True), ("After 24 hours", 1, "1×", False)], 60)
+            + '<p class="nota-dado">And <b>nearly 7× more likely</b> than companies that called just one hour later.</p>'
+            + fonte(F_HBR_LEADS))
+
+
+def faixa_klarna():
+    graf = barras("KLARNA · FIRST MONTH · AVG. RESOLUTION TIME",
+                  [("Before", 11, "11 min", False), ("With AI", 2, "< 2 min", True)], 11)
+    return ('<div class="faixa"><div class="duo"><div>' + graf + '</div>'
+            '<div class="lado"><b>2/3</b><p>of service chats handled by the assistant</p></div></div>'
+            + fonte(F_KLARNA) + "</div>")
+
+
+def faixa_gartner():
+    return ('<div class="faixa"><div class="grande"><b>87%</b>'
+            '<p>of customers say a company using AI <strong style="color:#fff">must offer a way to reach a human.</strong></p></div>'
+            '<div class="medidor"><i style="width:87%"></i></div>' + fonte(F_GARTNER) + "</div>")
+
+
+def caso_real():
+    # Caso público do Brasil, o mesmo que está no site (cazuri.itens.omega; fonte interna em conteudo/casos.json)
+    linhas_prova = [("BEFORE", "People asked the price, did not book, and nobody got back to them."),
+                    ("AFTER", "Every request that did not book got an automatic WhatsApp follow-up.")]
+    return ('<div class="prova dois">' + "".join(
+        f'<div><small>{a}</small><p>{E(b)}</p></div>' for a, b in linhas_prova) + "</div>"
+        '<div class="heroi"><div><b>R$40k</b><p>in 3.5 months, only from people who had not booked</p></div>'
+        '<div><b>+10%</b><p>monthly revenue from the automatic follow-up</p></div></div>'
+        + fonte("Public case, imaging clinic in Brazil. Results reported by the business."))
+
+
 SLIDES = [
     {"tema": "esc", "eyebrow": "PROOF · A REAL SYSTEM BREAKDOWN", "marca": "PACHECO STUDIOS",
      "h1": "A business did not need<br>[[another AI tool.]]", "h1px": 88,
@@ -126,43 +227,51 @@ SLIDES = [
      "cartoes_esc": [("Channels", "Requests entering everywhere"), ("Context", "Repeated or lost"),
                      ("Owner", "Nobody clearly responsible"), ("Follow-up", "Left to the team’s memory")],
      "rodape": "Slow replies were the symptom, not the cause."},
+    {"tema": "esc", "eyebrow": "THE DATA", "marca": "PACHECO STUDIOS",
+     "kicker": "HOW COMMON IS IT", "h1": "Most businesses reply late.<br>[[Or never.]]", "h1px": 80,
+     "html": dados_resposta(),
+     "rodape": "The symptom is common. The cause is rarely the tool."},
     {"tema": "esc", "eyebrow": "THE PATH BEFORE", "marca": "PACHECO STUDIOS", "topo": True,
      "kicker": "01 / BEFORE", "h1": "Four doors in.<br>[[No one at the desk.]]", "h1px": 84,
      "sub": "Google, Instagram, WhatsApp and email all landed in one place, and **nobody owned what came next.**",
      "html": diag_antes(),
      "rodape": "This is where most enquiries actually go quiet."},
+    {"tema": "lar", "eyebrow": "THE COST OF WAITING", "marca": "PACHECO STUDIOS",
+     "kicker": "THE DATA", "h1": "The first hour<br>[[decides the lead.]]", "h1px": 92,
+     "html": dados_hora(),
+     "rodape": "Speed is not effort. It is ownership."},
     {"tema": "esc", "eyebrow": "THE AUDIT QUESTION", "marca": "PACHECO STUDIOS", "topo": True,
      "kicker": "02 / QUESTION", "h1": "Who owns the<br>[[next action?]]", "h1px": 92,
-     "sub": "Not just “which tool?”. We asked:",
+     "sub": "Not just “which tool?”. The audit asks:",
      "html": linhas("q", "ASK", ["Who receives the request?", "Who qualifies it?", "Who confirms it?",
                                  "When does it hand off to a person?", "What happens if nobody replies?"]),
      "rodape": "Ownership must be explicit, not assumed."},
-    {"tema": "lar", "eyebrow": "THE RULE WE DESIGNED", "marca": "PACHECO STUDIOS",
+    {"tema": "lar", "eyebrow": "THE RULE", "marca": "PACHECO STUDIOS",
      "kicker": "03 / RULE", "h1": "One rule before<br>[[any automation.]]", "h1px": 92,
-     "sub": "Written for this business and its real path, **not a universal automation.**",
+     "sub": "Written for the business’s real path, **not a universal automation.**",
      "html": regra(),
      "rodape": "The rule is written before anything is automated."},
     {"tema": "esc", "eyebrow": "WHAT AI DOES", "marca": "PACHECO STUDIOS", "topo": True,
      "kicker": "04 / AI LAYER", "h1": "AI handles the<br>[[repeatable layer.]]", "h1px": 92,
      "sub": "Inside the approved rules, it can:",
-     "html": linhas("ia", "AI", ["Gather the context", "Classify the request", "Answer approved FAQs",
-                                "Spot missing information", "Prepare the next step"]),
+     "html": linhas("ia apertado", "AI", ["Gather the context", "Classify the request", "Answer approved FAQs",
+                                         "Spot missing information", "Prepare the next step"]) + faixa_klarna(),
      "rodape": "AI does the repeatable work. People keep the judgement."},
     {"tema": "esc", "eyebrow": "WHAT STAYS HUMAN", "marca": "PACHECO STUDIOS", "topo": True,
      "kicker": "05 / HUMAN LAYER", "h1": "The human still owns<br>[[the exception.]]", "h1px": 88,
      "sub": "The team takes over when there is:",
-     "html": linhas("hum", "TEAM", ["A request outside the rules", "A complaint or a risk", "A commercial decision",
-                                    "An urgent situation", "Not enough context"]),
+     "html": linhas("hum apertado", "TEAM", ["A request outside the rules", "A complaint or a risk",
+                                             "A commercial decision", "An urgent situation", "Not enough context"])
+             + faixa_gartner(),
      "rodape": "A good system knows when to stop."},
     {"tema": "esc", "eyebrow": "THE PATH AFTER", "marca": "PACHECO STUDIOS", "topo": True,
      "kicker": "06 / AFTER", "h1": "Same doors.<br>[[One clear path.]]", "h1px": 88,
      "html": diag_depois(),
      "rodape": "Trigger → owner → rule → next action → human."},
-    {"tema": "lar", "eyebrow": "THE RESULT", "marca": "PACHECO STUDIOS",
-     "kicker": "07 / EVIDENCE", "h1": "What changed.", "h1px": 100,
-     "sub": "Shown only with **verified evidence.** No estimates.",
-     "html": prova(),
-     "rodape": "We publish verified results, or none at all."},
+    {"tema": "lar", "eyebrow": "THE SAME BREAK, FIXED", "marca": "REAL CASE · BRAZIL",
+     "kicker": "07 / EVIDENCE", "h1": "One next action.<br>[[Real revenue back.]]", "h1px": 84,
+     "html": caso_real(),
+     "rodape": "Real numbers or none at all."},
     {"tema": "lar", "eyebrow": "PACHECO STUDIOS / AI SYSTEMS AUDITS", "marca": "TALK WITH US",
      "h1": "Your operation may not need<br>[[more software.]]", "h1px": 84,
      "sub": "It may need a clear owner, rule and next action.",
