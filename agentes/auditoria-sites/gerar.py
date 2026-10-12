@@ -32,7 +32,7 @@ DEMO_POR_TIPO = [
 ]
 DEMO_PADRAO = ("fika", "Fika")
 # Fora do --top: lojas de cadeia (a decisão não é local, PLAYBOOK §11).
-EXCLUIR = {"magazin-aurora-iasi-calea-gala"}
+EXCLUIR = {"magazin-aurora-iasi-calea-gala", "tacos-king-ia-i", "doppio-zero-iasi"}
 
 # Think with Google (2017), «Find out how you stack up to new industry benchmarks for mobile page speed»:
 # quando o carregamento passa de 1 s para X s, a probabilidade de o visitante sair (bounce) aumenta Y %.
@@ -254,6 +254,8 @@ def whatsapp(c):
 
 def nome_curto(c):
     n = re.split(r"\s+[-|–]\s+|,|\(", c["nome"])[0].strip()
+    if len(n) > 30:
+        n = " ".join(n.split()[:3])
     return n if len(n) <= 40 else n[:38].rsplit(" ", 1)[0]
 
 

@@ -7,7 +7,7 @@ Desde 11/10/2026 a Pacheco Studios é uma consultora de sistemas com IA (playboo
 1. **Candidatos** — `candidatos.csv`: negócios com site próprio tirados das fichas Google que os lotes de demos leram pela ponte. Para mais: pesquisas no Maps pela ponte (`pagina`), ler o campo «Site» e acrescentar linhas.
 2. **Medir** — pela PONTE: `auditar <slug> <url>` em `.github/ponte.txt` (até ~25 por push; para mais, vários pushes seguidos). Lighthouse móvel + iPhone simulado → `auditorias/dados/<slug>.json` + `.jpg`.
 3. **Ranking** — `python3 agentes/auditoria-sites/gerar.py` → `auditorias/RANKING.md` (fraqueza 0–100).
-4. **Gerar** — `python3 agentes/auditoria-sites/raiox.py --top 10` (ou `raiox.py <slug> …`) → `raio-x/<slug>/radiografie-<slug>-ro.pdf` (dono) e `raio-x-<slug>-pt.pdf` (Tomás, + página de notas para a conversa de triagem) e `raio-x/ENVIAR.md` (mensagens RO e links raw). Precisa de playwright (`CHROMIUM=<caminho>` se a versão não bater).
+4. **Gerar** — `python3 agentes/auditoria-sites/raiox.py --top 10` (ou `raiox.py <slug> …`; para lotes seguintes `raiox.py --novos 20`, que salta os já feitos e escreve `raio-x/ENVIAR-lote-N.md`) → `raio-x/<slug>/radiografie-<slug>-ro.pdf` (dono) e `raio-x-<slug>-pt.pdf` (Tomás, + página de notas para a conversa de triagem) e `raio-x/ENVIAR.md` (mensagens RO e links raw). Precisa de playwright (`CHROMIUM=<caminho>` se a versão não bater).
 5. **Enviar** — o Tomás manda mensagem + PDF pelo WhatsApp Business RO. WhatsApp do dono: «?» nos telemóveis, «não» nos fixos (ligar).
 
 ## Regras de conteúdo

@@ -344,11 +344,11 @@ def gerar(slug, cands):
     print("ok", slug)
 
 
-def escrever_envio(escolhidos, cands):
+def escrever_envio(escolhidos, cands, ficheiro="ENVIAR.md", mortos=True):
     data = datetime.date.today().strftime("%d/%m/%Y")
     out = [f"# Agente 3 · Raio-X do primeiro contacto para enviar ({data})", "",
            "Gatilho grátis da consultoria: mostra onde um cliente novo se perde entre o Google e a primeira mensagem e pede uma conversa de triagem "
-           "(triagem curta). Não é a auditoria paga e não vende site. Sem preço.", "",
+           "Não é a auditoria paga e não vende site. Sem preço.", "",
            "Mandar pelo WhatsApp Business RO: mensagem + PDF romeno (link raw, descarrega no telemóvel). WhatsApp dos donos: «?» nos telemóveis "
            "(sem prova pública), «não» nos fixos. Se a mensagem não entregar, ligar ou visitar com a morada; nos fixos, ligar e pedir onde mandar o PDF.", ""]
     for i, s in enumerate(escolhidos, 1):
@@ -359,19 +359,33 @@ def escrever_envio(escolhidos, cands):
                 f"- Vitória rápida proposta: {VITORIAS[tipo_vitoria(ler(s), c)]['pt']['titulo']}",
                 f"- PDF RO (dono): {RAW}/{s}/radiografie-{s}-ro.pdf",
                 f"- PDF PT (Tomás): {RAW}/{s}/raio-x-{s}-pt.pdf", "", "```", mensagem_ro(c), "```", ""]
-    mortos = [(s, c) for s, c in cands.items() if (ler(s) or {}).get("erro_pagina") and not (ler(s) or {}).get("notas")]
-    if mortos:
+    lista_mortos = [(s, c) for s, c in cands.items() if (ler(s) or {}).get("erro_pagina") and not (ler(s) or {}).get("notas")] if mortos else []
+    if lista_mortos:
         out += ["## O link do Google dá erro (o cliente novo perde-se no primeiro passo)", "", "Sem PDF: a mensagem chega.", ""]
-        for s, c in mortos:
+        for s, c in lista_mortos:
             out += [f"### {nome_curto(c)} · {c.get('categoria', '')}", "",
                     f"- Telefone {c.get('telefone')} · WhatsApp: {whatsapp(c)} · Google {c.get('nota')} · morada {c.get('morada') or 'a confirmar'}",
                     f"- Erro medido: {(ler(s).get('erro_pagina') or '').splitlines()[0][:120]}", "", "```", mensagem_morto(c), "```", ""]
-    open(os.path.join(SAIDA, "ENVIAR.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
+    open(os.path.join(SAIDA, ficheiro), "w", encoding="utf-8").write("\n".join(out) + "\n")
 
 
 def main():
     cands = ler_candidatos()
     a = sys.argv[1:] or ["--top", "10"]
+    if a[0] == "--novos":
+        # Lotes seguintes: os que ainda não têm pasta em raio-x/, com site lento (< 90 de velocidade) para haver o que mostrar.
+        feitos = {d for d in os.listdir(SAIDA) if os.path.isdir(os.path.join(SAIDA, d))} if os.path.isdir(SAIDA) else set()
+        escolhidos = [s for fr, s, c, d, n in escrever_ranking(cands)
+                      if s not in EXCLUIR and s not in feitos and nota_num(c) >= 4.4 and d.get("notas")
+                      and aud(d, "largest-contentful-paint") is not None and (n.get("performance") or 0) < 90][:int(a[1])]
+        os.makedirs(SAIDA, exist_ok=True)
+        for s in escolhidos:
+            gerar(s, cands)
+        lote = 2
+        while os.path.exists(os.path.join(SAIDA, f"ENVIAR-lote-{lote}.md")):
+            lote += 1
+        escrever_envio(escolhidos, cands, f"ENVIAR-lote-{lote}.md", mortos=False)
+        return
     if a[0] == "--top":
         escolhidos = [s for fr, s, c, d, n in escrever_ranking(cands)
                       if s not in EXCLUIR and nota_num(c) >= 4.4 and d.get("notas") and aud(d, "largest-contentful-paint") is not None][:int(a[1])]
