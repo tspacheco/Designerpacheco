@@ -4,7 +4,7 @@
   python3 research/triagens-instagram/gerar.py   → <slug>.pdf e <slug>.png (o PNG vai na DM do Instagram)
 
 Pedido do Tomás (12/10): ajudar e recomendar. Só sinais públicos dos posts; não é diagnóstico: em cada etapa o caminho
-Pacheco Studios e, por baixo, a alternativa «se preferires». Sem preços nem números inventados. Fecho (Tomás, 12/10): criamos e apresentamos; se quiser ficar, só se cobra a manutenção.
+Pacheco Studios e, por baixo, a alternativa «se preferires». Sem preços nem números inventados. Fecho do Iulian + (Tomás, 12/10) criamos e apresentamos; se quiser ficar, só se cobra a manutenção.
 """
 import base64, os, subprocess
 
@@ -16,7 +16,7 @@ BASE = dict(lang="pt-PT", supra="Triagem · Micro System Print", data="Outubro 2
             aviso="Não é um diagnóstico do teu negócio: é o caminho que nós, Pacheco Studios, montaríamos, eficiente em cada passo. Cada um trabalha à sua maneira; escolhe o que te serve.",
             etapas_t="O caminho Pacheco Studios, passo a passo", ou="Ou, se preferires:", qw_t="As nossas 3 sugestões",
             perg_t="3 perguntas para ti", met_t="O que medimos",
-            prox="Próximo passo: nós vamos criar estas vertentes e apresentá-las a ti.<small>Caso queiras ficar com elas, apenas cobramos o valor de manutenção, para as ferramentas poderem estar ativas e online.</small>")
+            prox="Próximo passo: tu podes escolher 3 destas vertentes e implementamos sem qualquer custo.<small>O intuito é provar o nosso valor e, quando houver oportunidade de nos recomendares, fazer acontecer.</small><small>Nós vamos criar estas vertentes e apresentá-las a ti. Caso queiras ficar com elas, apenas cobramos o valor de manutenção, para as ferramentas poderem estar ativas e online.</small>")
 
 T = {
  "cristina-tomas-fisio": dict(BASE, titulo="Cristina Tomás",
