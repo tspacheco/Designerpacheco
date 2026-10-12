@@ -17,6 +17,7 @@ out = src.replace('/*__FONTES__*/', open('_fontes/fontes.css', encoding='utf-8')
 faltam = sorted({m for m in re.findall(r'media/([\w.-]+\.(?:webp|mp4|webm))', out) if not os.path.exists('media/' + m)})
 open('index.html', 'w', encoding='utf-8').write(out.replace('__LSKEY__', SLUG + '.lang'))
 pt = out.replace('<html lang="ro" data-lang="ro">', '<html lang="pt-PT" data-lang="pt" class="rev">', 1).replace('__LSKEY__', SLUG + '.lang.pt')
+pt = pt.replace('<link rel="canonical" href="https://magickeyiasi.com/">', '<link rel="canonical" href="https://magickeyiasi.com/">\n<meta name="robots" content="noindex">', 1)  # pt.html é só para o Tomás: não indexar
 assert 'data-lang="pt"' in pt
 open('pt.html', 'w', encoding='utf-8').write(pt)
 print('index.html %.0f KB' % (len(out.encode()) / 1024) + (' · faltam: ' + ', '.join(faltam) if faltam else ' · todas as fotos presentes'))
