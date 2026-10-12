@@ -23,30 +23,35 @@ Nota: os números 100× / 21× (5 vs. 30 minutos) que circulam na internet são 
 
 ## Legenda (copiar a partir daqui)
 
-Versão de 12/10 22h28 (Tomás pediu a descrição alinhada com a forma como atuamos: fuga → sistema → prova, triagem primeiro, sem preços).
+Versão de 12/10 22h37. Público (Tomás): donos que ainda não têm IA, talvez queiram implementar e procuram alguém
+em quem confiar. Por isso o gancho não fala de «mais uma ferramenta» (pressupõe que já têm) e a legenda
+mostra como trabalhamos (triagem primeiro, desenho antes de construir, regras aprovadas, exceções a pessoas,
+contas e dados deles). O caso continua «real case», sem «nós fizemos».
 
-A business did not need another AI tool. It needed one next action after every enquiry.
+Thinking about AI for your business, but not sure who to trust with it?
 
-Most businesses don't lose customers at the first message. They lose them after it: a request comes in, nobody owns the next step, and the follow-up lives in someone's memory.
+Then don't start with a tool. Start by seeing how it works inside a real business.
 
-That is the leak we look for.
+This carousel walks through one real case, step by step: where requests came in, who owned the next action, the rule written before any automation, what the AI handled, and what stayed with the team.
 
-In this breakdown:
-→ where the request enters
-→ who owns the next action
-→ the rule written before any automation
-→ what AI handles, and what stays human
-→ what changed when every request got a next action
+The numbers, with the source on each slide:
+→ 50 to 500 quotes answered a day
+→ +10% monthly revenue after the follow-up system went live
+→ 87% of customers still want a way to reach a human, so the system keeps one
 
-The numbers (sources on each slide):
-→ 50 to 500 quotes answered a day with AI in customer service
-→ +10% monthly revenue after a follow-up system went live
-→ 60× more likely to qualify a lead when contact happens in the first hour
+How we work, so you know what to expect:
+→ We start with a triage of how requests move through your business today. No tool, no commitment.
+→ You see the system drawn before anything is built.
+→ The AI works only inside rules you approve. Every exception goes to a person.
+→ Your accounts and your data stay yours.
+→ Results are measured from your starting point. Real numbers or none at all.
 
-We find the leak. We design the system. We prove the impact.
+DM "AUDIT" and tell us what your business does. We'll tell you where the first leak usually hides.
 
-We never start with a tool. We start with a triage of how requests move through your business today, and only go deeper if it makes sense for you.
+#AISystems #AIConsulting #BusinessSystems #CustomerService #SmallBusiness
 
-DM "AUDIT" and tell us where your first break happens.
+### Capa (proposta, à espera do Tomás)
 
-#AISystems #AIConsulting #BusinessSystems #CustomerService #BusinessAutomation
+O título atual «A business did not need another AI tool.» fala a quem já experimentou ferramentas.
+Para quem não tem IA, proposta: «A business with no AI / fixed this first.» + «One next action after every
+enquiry, before any tool.»
