@@ -15,7 +15,7 @@ import csv, glob, html, os, re, sys, unicodedata
 AQUI = os.path.dirname(os.path.abspath(__file__))
 R = os.path.dirname(os.path.dirname(AQUI))
 sys.path.insert(0, AQUI)
-from excluir import chave, todas  # noqa: E402
+from excluir import chave, digitos, ja_feito, telefones, todas  # noqa: E402
 from fichas import REDES, ficha  # noqa: E402
 
 CADEIAS = ("dr. max", "catena", "sensiblu", "help net", "mega image", "kaufland", "lidl", "profi", "penny", "carrefour",
@@ -87,6 +87,7 @@ def cartoes(f):
 
 def lista(data):
     excl, saida, contas = todas(), {}, dict(cartoes=0, site=0, nota=0, cadeia=0, visto=0)
+    tels = telefones()
     for f in sorted(glob.glob(f"{R}/ponte/cc-{data}-l-*.html")):
         for c in cartoes(f):
             contas["cartoes"] += 1
@@ -102,7 +103,7 @@ def lista(data):
             if any(x in c["nome"].lower() for x in CADEIAS) or any(x in c["cat"].lower() for x in FORA_CAT):
                 contas["cadeia"] += 1
                 continue
-            if k in excl:
+            if k in excl or ja_feito(c["nome"], c["tel"], excl, tels):
                 contas["visto"] += 1
                 continue
             c["forca"] = round(float(c["nota"].replace(",", ".")) * min(c["aval"] or 40, 400))  # sem contagem na lista: a ficha confirma
@@ -134,6 +135,7 @@ def dia(data):
     vpath = f"{AQUI}/vistos.tsv"
     vistos = {l.split("\t")[1] for l in open(vpath, encoding="utf-8").read().splitlines()[1:] if "\t" in l}
     novos, sem = [], []
+    excl_dia, tels_dia = todas(), telefones(d)
     for f in sorted(glob.glob(f"{R}/ponte/cc-{data}-x-*.html")):
         r = ficha(f)
         s = os.path.basename(f).split("-x-", 1)[1][:-5]
@@ -141,7 +143,7 @@ def dia(data):
         aval = int((r[4] or c.get("avaliacoes") or "0").replace(".", ""))  # a ficha nem sempre mostra a contagem
         nota = float((r[3] or "0").replace(",", "."))
         txt = open(f[:-5] + ".txt", encoding="utf-8").read() if os.path.exists(f[:-5] + ".txt") else ""
-        res = ("fechado temporariamente" if "Închisă temporar" in txt or "Închis temporar" in txt else
+        res = ("já tem demo" if ja_feito(r[1], r[6], excl_dia, tels_dia) else "fechado temporariamente" if "Închisă temporar" in txt or "Închis temporar" in txt else
                "site próprio" if r[5] else "sem contacto/fora" if not r[6] else
                "fora (nota/avaliações)" if nota < 4.3 or 0 < aval < 15 else "sem site")
         if s not in vistos:

@@ -59,6 +59,7 @@ Se uma corrida não fechar as 25, as que faltarem ficam «por fazer» no `.tsv` 
 
 - Responder ao Tomás noutra língua que não PT-PT (Língua das respostas: reler cada reply antes de enviar; 09/10 saíram três em inglês).
 
+- Repetir um negócio que já tem demo (12/10: Sofia Pets saiu duas vezes, a de 09/10 `sofia-pets` e a de hoje `sofia-pets-coafor`, porque o nome não batia). `cacar.py` já exclui por **telefone** e por nome com prefixo igual (`excluir.py`: `telefones()`, `ja_feito()`); na corrida, antes de construir, confirmar que nenhum slug novo se parece com uma pasta de `sites/` ou com `DEMOS`.
 - Construir sem ler o campo «Site» da ficha (Gist e Salon Monne, 07/10).
 - Inventar notas, preços, horários, citações ou provas de WhatsApp.
 - Usar emojis ou imagens ilustrativas/geradas nos sites: só fotos reais do negócio (09/10).
