@@ -1,8 +1,8 @@
-# Carrossel 2 · Proof: a real system breakdown (EN, 10 slides)
+# Carrossel 2 · Proof: a real system breakdown (EN e RO, 10 slides)
 
-Ficheiros: `saida/en/pacheco-proof-01.jpg` a `10.jpg` (1080x1350) e `saida/carrossel-proof-en.zip`.
+Ficheiros: EN em `saida/en/pacheco-proof-01.jpg` a `10.jpg` e `saida/carrossel-proof-en.zip`; RO (12/10 22h58) em `saida/ro/pacheco-proof-ro-01.jpg` a `10.jpg` e `saida/carrossel-proof-ro.zip`. As traduções estão em TXT_RO no gerar.py (por frase inglesa).
 Fonte: `gerar.py` (estilo do carrossel 1, em `../carrossel-audit/gerar.py`). Voltar a gerar:
-`python3 gerar.py && NODE_PATH=$(npm root -g) node ../carrossel-audit/fotografar.js saida/carrossel-proof-en.html saida/en pacheco-proof`
+`python3 gerar.py && NODE_PATH=$(npm root -g) node ../carrossel-audit/fotografar.js saida/carrossel-proof-en.html saida/en pacheco-proof && NODE_PATH=$(npm root -g) node ../carrossel-audit/fotografar.js saida/carrossel-proof-ro.html saida/ro pacheco-proof-ro`
 
 ## Ordem (10 slides desde 12/10 22h56)
 
@@ -60,3 +60,31 @@ DM "AUDIT" and tell us what your business does. We'll tell you where the first l
 Desde 12/10 22h47 (frase do Tomás): «The business that chose AI / before the market forced it to.» + «It didn't start
 with a tool. It started with one next action after every enquiry.» Sem «revolution»: lê-se como hype para um
 público cauteloso; se o Tomás quiser, entra.
+
+## Legenda RO (copiar a partir daqui)
+
+Afacerea care a ales AI înainte să o oblige piața.
+
+Nu a început cu un tool. A început cu un pas următor după fiecare cerere.
+
+Afacerea ta funcționează deja. Acum te gândești la AI și nu știi în cine să ai încredere. Atunci începe prin a vedea cum funcționează într-o afacere reală, cu cifre.
+
+Acest carusel parcurge un caz real, pas cu pas: pe unde intrau cererile, cine era responsabil de pasul următor, regula scrisă înainte de orice automatizare, ce prelua AI-ul și ce rămânea la echipă.
+
+Cifrele, cu sursa pe fiecare slide:
+→ de la 50 la 500 de oferte răspunse pe zi
+→ +10% venit lunar după ce sistemul de follow-up a intrat în funcțiune
+→ 87% dintre clienți vor în continuare o cale către un om, așa că sistemul o păstrează
+
+Ruptura e aceeași la 10 mii pe lună sau la 500 de mii pe lună: o cerere fără responsabil. Se schimbă doar cât te costă.
+
+Cum lucrăm, ca să știi la ce să te aștepți:
+→ Începem cu o triere a felului în care circulă cererile prin afacerea ta azi. Fără tool, fără angajament.
+→ Vezi sistemul desenat înainte să construim ceva.
+→ AI-ul lucrează doar în interiorul regulilor aprobate de tine. Orice excepție ajunge la un om din echipa ta.
+→ Conturile și datele rămân ale tale.
+→ Rezultatele se măsoară de la punctul tău de plecare. Cifre reale sau deloc.
+
+Trimite „AUDIT” în privat și spune-ne ce face afacerea ta. Îți spunem unde se ascunde, de obicei, prima ruptură.
+
+#AISystems #AIConsulting #AutomatizareAfaceri #AntreprenoriRomania #RelatiiCuClientii

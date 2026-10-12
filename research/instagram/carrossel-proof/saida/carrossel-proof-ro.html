@@ -1,0 +1,230 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>Dovadă · Un sistem real, pas cu pas</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:"Liberation Sans",Arial,sans-serif;display:flex;flex-direction:column;align-items:center;text-align:center}
+.esc{background:radial-gradient(60% 45% at 50% 40%,rgba(255,106,59,.10),transparent 70%),radial-gradient(55% 40% at 0% 100%,rgba(255,106,59,.16),transparent 70%),linear-gradient(160deg,#101115 0%,#111216 55%,#1c1d22 100%);color:#F5EFE6}
+.esc::before{content:"";position:absolute;inset:0 0 50% 0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0 1px,transparent 1px 36px);-webkit-mask:linear-gradient(#000,transparent);pointer-events:none}
+.lar{background:radial-gradient(26% 17% at 50% 34%,rgba(110,36,14,.42),transparent 100%),linear-gradient(135deg,#FF956F 0%,#FF7F50 35%,#FF6C3D 65%,#EC5423 100%);color:#141214}
+.lar::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(120,40,10,.10) 0 1px,transparent 1px 72px),repeating-linear-gradient(0deg,rgba(120,40,10,.10) 0 1px,transparent 1px 72px);pointer-events:none}
+.top{position:absolute;top:66px;left:0;right:0;z-index:2}
+.eyebrow{font-weight:700;font-size:19px;letter-spacing:.2em}
+.esc .eyebrow{color:#F59A73}.lar .eyebrow{color:#5C2A17}
+.marca{margin-top:14px;font-weight:700;font-size:17px;letter-spacing:.14em}
+.esc .marca{color:#F3EEE8}.lar .marca{color:#141214}
+.regua{width:66px;height:3px;margin:34px auto 0}
+.esc .regua{background:#F26F43}.lar .regua{background:#1A1414}
+.miolo{position:absolute;left:0;right:0;top:170px;bottom:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;padding:0 60px}
+.miolo.topo{justify-content:flex-start;padding-top:44px}
+.kicker{font-weight:700;font-size:21px;letter-spacing:.16em;margin-bottom:26px}
+.esc .kicker{color:#F59A73}.lar .kicker{color:#5C2A17}
+h1{font-family:"Liberation Serif","Times New Roman",serif;font-weight:700;letter-spacing:-.06em;line-height:1}
+.esc h1{color:#F5EFE6}.esc h1 .ac{color:#FF6A3B}
+.lar h1{color:#141214}.lar h1 .ac{color:#FFF3E8}
+.sub{margin-top:30px;font-size:29px;line-height:1.36;max-width:700px}
+.esc .sub{color:#C9C4BE}.esc .sub b{color:#fff}
+.lar .sub{color:#4A2112}.lar .sub b{color:#141214}
+.pill{margin-top:40px;display:inline-block;border-radius:999px;padding:16px 26px;font-weight:700;font-size:19px;letter-spacing:.08em}
+.esc .pill{border:1.5px solid rgba(242,111,67,.75);color:#F8A884}
+.lar .pill{border:1.5px solid rgba(20,18,20,.7);color:#141214}
+.botao{margin-top:44px;background:#121316;color:#fff;font-weight:700;font-size:27px;letter-spacing:.02em;padding:22px 30px}
+.cartoes{margin-top:44px;display:grid;grid-template-columns:repeat(3,300px);gap:15px}
+.cartao{height:170px;padding:30px 14px 0;text-align:center}
+.cartao h3{font-family:"Liberation Serif","Times New Roman",serif;font-weight:700;font-size:34px;letter-spacing:-.045em;line-height:1}
+.cartao p{margin-top:12px;font-size:17px;line-height:1.3}
+.esc .cartao{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.16)}
+.esc .cartao h3{color:#F5EFE6}.esc .cartao p{color:#C9C4BE}
+.lar .cartao{border:1px solid rgba(60,20,8,.35)}
+.lar .cartao h3{color:#141214}.lar .cartao p{color:#4A2112}
+.c4{margin-top:40px;display:grid;grid-template-columns:repeat(2,351px);gap:18px}
+.c4 div{background:#101115;height:142px;padding-top:32px;box-shadow:0 9px 0 rgba(150,50,20,.45)}
+.c4 h3{font-family:"Liberation Serif","Times New Roman",serif;font-weight:700;font-size:46px;letter-spacing:-.05em;color:#FBF4EC;line-height:1}
+.c4 p{margin-top:14px;font-size:17px;color:#FFD3BE}
+.nota{margin-top:44px;font-weight:700;font-size:18px;letter-spacing:.16em;color:#4A2112}
+.pag{position:absolute;left:76px;bottom:66px;font-weight:700;font-size:17px;letter-spacing:.04em;z-index:2}
+.esc .pag{color:#C9C4BE}.esc .pag span{color:#F59A73}
+.lar .pag{color:#4A2112}.lar .pag span{color:#FFC2A6}
+.rod{position:absolute;right:76px;bottom:66px;max-width:360px;text-align:right;font-size:17px;line-height:1.3;z-index:2}
+.esc .rod{color:#BDB8B2}.lar .rod{color:#5A2410}
+/* diagramas */
+.diag{position:relative;width:960px;margin-top:36px;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)}
+.diag .n{position:absolute;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,.28);background:#121317;color:#F5EFE6;font-weight:700;font-size:20px;border-radius:999px}
+.diag .n.o{border-color:rgba(255,106,59,.75);color:#FFA27E}
+.diag .n.g{box-shadow:0 0 0 10px rgba(255,106,59,.10),0 0 26px rgba(255,106,59,.25)}
+.diag .box{position:absolute;border:1.5px solid rgba(255,255,255,.28);border-radius:18px;background:#121317}
+.diag .box b{display:block;margin-top:14px;color:#F59A73;font-size:19px;letter-spacing:.14em}
+.diag .mini{position:absolute;top:46px;height:48px;border:1px solid rgba(255,255,255,.22);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#F5EFE6}
+.diag .l{position:absolute;background:#F26F43}
+.diag .d{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#FF6A3B;box-shadow:0 0 0 6px rgba(255,106,59,.15)}
+.diag .lab{position:absolute;padding:0 12px;background:#121317;color:#F8A884;font-weight:700;font-size:15px;letter-spacing:.16em}
+.legenda{margin-top:30px;font-size:22px;color:#C9C4BE}.legenda b{color:#fff}
+.orbita{position:absolute;left:310px;top:1045px;width:460px;height:183px;border:1px solid rgba(242,111,67,.45);border-radius:50%;z-index:1}
+.orbita i{position:absolute;top:41px;width:100px;height:100px;border-radius:50%;border:1px solid rgba(255,255,255,.22)}
+.orbita em{position:absolute;left:216px;top:77px;width:28px;height:28px;border-radius:50%;background:#FF6A3B;box-shadow:0 0 0 16px rgba(255,106,59,.16)}
+
+.lar .pag span{color:#16110E}
+/* slide 3: sem IA vs. com IA, três painéis com escala própria */
+.comp{margin-top:34px;width:920px}
+.comp .leg{display:flex;justify-content:center;gap:36px;font-size:21px;color:#C9C4BE;margin-bottom:22px}
+.comp .leg i{display:inline-block;width:18px;height:18px;border-radius:3px;margin-right:10px;vertical-align:-2px}
+.comp .paineis{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.comp .pn{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.035);padding:24px 16px 20px}
+.comp .delta{font-family:"Liberation Serif","Times New Roman",serif;font-weight:700;font-size:66px;letter-spacing:-.04em;line-height:1;color:#FF8A5F}
+.comp .area{height:244px;margin:14px 18px 0;display:flex;align-items:flex-end;justify-content:center;gap:22px;border-bottom:2px solid rgba(255,255,255,.38)}
+.comp .col{width:80px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.comp .col b{font-family:"Liberation Serif","Times New Roman",serif;font-size:30px;color:#F5EFE6;margin-bottom:8px;line-height:1}
+.comp .col div{width:100%;border-radius:4px 4px 0 0;background:rgba(245,239,230,.26)}
+.comp .col.o div{background:#FF6A3B}
+.comp h4{margin-top:16px;min-height:50px;font-size:21px;line-height:1.2;color:#F5EFE6;display:flex;align-items:center;justify-content:center}
+.comp small{display:block;margin-top:8px;font-size:15px;line-height:1.3;color:#8F8983}
+/* gráfico da capa: crescimento linear vs. exponencial (ilustrativo) */
+.curva{margin-top:34px;width:900px;height:380px}
+.curva text{font-family:"Liberation Sans",Arial,sans-serif}
+.curva .t-forte{font-size:27px;font-weight:700;fill:#F5EFE6}
+.curva .t-fraco{font-size:23px;fill:#BDB8B2}
+.curva .t-gap{font-size:16px;font-weight:700;letter-spacing:.18em;fill:#F59A73}
+.curva .t-nota{font-size:17px;fill:#8F8983}
+.curva .t-eixo{font-size:15px;font-weight:700;letter-spacing:.18em;fill:#8F8983}
+/* trilho da capa: o percurso de um pedido até ter dono */
+.trilho{position:absolute;left:250px;top:1068px;width:580px;height:40px;z-index:1}
+.trilho::before{content:"";position:absolute;left:0;right:0;top:19px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(242,111,67,.65))}
+.trilho i{position:absolute;top:9px;width:22px;height:22px;margin-left:-11px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:#121317}
+.trilho em{position:absolute;top:6px;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:#FF6A3B;box-shadow:0 0 0 14px rgba(255,106,59,.15)}
+/* nó incerto (percurso antigo) */
+.diag .n.x{border:1.5px dashed rgba(255,255,255,.30);background:transparent;color:#9C968F}
+.diag .l.x{background:repeating-linear-gradient(180deg,rgba(255,255,255,.35) 0 6px,transparent 6px 12px)}
+/* linhas numeradas (pergunta da auditoria, camada IA, camada humana) */
+.linhas{margin-top:40px;width:800px;text-align:left;border-top:1px solid rgba(255,255,255,.14)}
+.linhas div{display:flex;align-items:center;gap:22px;padding:19px 6px;border-bottom:1px solid rgba(255,255,255,.14)}
+.linhas span{flex:none;min-width:86px;text-align:center;border-radius:999px;padding:7px 0;font-weight:700;font-size:15px;letter-spacing:.14em}
+.linhas p{font-size:27px;line-height:1.25;color:#F5EFE6}
+.linhas.ia span{border:1.5px solid rgba(255,106,59,.75);color:#FFA27E}
+.linhas.hum span{background:#F5EFE6;color:#141214}
+.linhas.q span{border:1.5px solid rgba(255,255,255,.28);color:#C9C4BE}
+/* regra desenhada: cadeia de 5 passos sobre o laranja */
+.regra{margin-top:46px;display:flex;align-items:stretch;gap:0}
+.regra .p{width:168px;height:150px;background:#101115;padding:24px 10px 0;box-shadow:0 9px 0 rgba(150,50,20,.45);text-align:center}
+.regra .p small{display:block;font-weight:700;font-size:15px;letter-spacing:.16em;color:#F59A73}
+.regra .p b{display:block;margin-top:14px;font-family:"Liberation Serif","Times New Roman",serif;font-size:29px;letter-spacing:-.04em;line-height:1.02;color:#FBF4EC}
+.regra .p.u{background:#FBF4EC}.regra .p.u small{color:#B4441E}.regra .p.u b{color:#141214}
+.regra .s{width:30px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:#141214}
+/* resultado comprovável */
+.prova{margin-top:44px;width:820px;display:grid;gap:14px;text-align:left}
+.prova div{display:grid;grid-template-columns:190px 1fr;align-items:center;background:#101115;padding:24px 28px;box-shadow:0 9px 0 rgba(150,50,20,.45)}
+.prova small{font-weight:700;font-size:16px;letter-spacing:.16em;color:#F59A73}
+.prova p{font-size:25px;line-height:1.3;color:#FBF4EC}
+.prova .falta p{color:#FFB08F;border:1.5px dashed rgba(255,176,143,.6);padding:8px 14px}
+/* gráficos de barras horizontais: barras a partir do zero, valor em texto, fonte por baixo */
+.graf{margin-top:38px;width:840px;text-align:left}
+.graf .tit{font-weight:700;font-size:16px;letter-spacing:.16em;margin-bottom:10px}
+.graf .row{display:grid;grid-template-columns:230px 1fr 120px;align-items:center;gap:20px;padding:12px 0}
+.graf .row p{font-size:24px;line-height:1.2}
+.graf .tr{height:38px;display:flex;align-items:center}
+.graf .b{height:38px;border-radius:0 4px 4px 0}
+.graf .row b{font-family:"Liberation Serif","Times New Roman",serif;font-size:44px;letter-spacing:-.03em;text-align:right;line-height:1}
+.esc .graf .tit{color:#9C968F}.esc .graf .row p{color:#E9E2D8}.esc .graf .tr{border-left:2px solid rgba(255,255,255,.4)}
+.esc .graf .b{background:rgba(245,239,230,.24)}.esc .graf .b.o{background:#FF6A3B}.esc .graf .row b{color:#F5EFE6}
+.lar .graf .tit{color:#4A2112}.lar .graf .row p{color:#1A0F0A}.lar .graf .tr{border-left:2px solid rgba(20,10,5,.55)}
+.lar .graf .b{background:rgba(20,10,5,.20)}.lar .graf .b.o{background:#101115}.lar .graf .row b{color:#141214}
+.fonte{margin-top:18px;width:840px;font-size:18px;line-height:1.35;text-align:left}
+.esc .fonte{color:#8F8983}.lar .fonte{color:#4A2112}
+.nota-dado{margin-top:18px;width:840px;text-align:left;font-size:24px;line-height:1.3}
+.esc .nota-dado{color:#C9C4BE}.esc .nota-dado b{color:#fff}.lar .nota-dado{color:#4A2112}.lar .nota-dado b{color:#141214}
+/* faixa de dados por baixo das listas (slides da IA e do humano) */
+.faixa{margin-top:30px;width:840px;padding:22px 28px 20px;text-align:left;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03)}
+.faixa .graf,.faixa .fonte{width:auto;margin-top:0}
+.faixa .graf .row{grid-template-columns:110px 1fr 112px;gap:16px;padding:8px 0}
+.faixa .graf .tr,.faixa .graf .b{height:30px}
+.faixa .graf .row b{font-size:36px}
+.faixa .fonte{margin-top:12px;font-size:17px}
+.faixa .duo{display:grid;grid-template-columns:1fr 190px;gap:26px;align-items:center}
+.faixa .duo .lado{border-left:1px solid rgba(255,255,255,.14);padding-left:24px}
+.faixa .duo .lado b,.faixa .grande b{display:block;font-family:"Liberation Serif","Times New Roman",serif;font-size:74px;letter-spacing:-.04em;line-height:1;color:#FF8A5F}
+.faixa .duo .lado p{margin-top:6px;font-size:20px;line-height:1.25;color:#E9E2D8}
+.faixa .grande{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center}
+.faixa .grande p{font-size:24px;line-height:1.3;color:#E9E2D8}
+.medidor{margin-top:16px;height:16px;background:rgba(245,239,230,.14);border-radius:4px;overflow:hidden}
+.medidor i{display:block;height:100%;background:#FF6A3B;border-radius:0 4px 4px 0}
+.linhas.apertado{margin-top:30px}.linhas.apertado div{padding:13px 6px}.linhas.apertado p{font-size:25px}
+/* números grandes do caso real */
+.heroi{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px;width:820px}
+.heroi div{background:#101115;padding:24px 28px;text-align:left;box-shadow:0 9px 0 rgba(150,50,20,.45)}
+.heroi b{display:block;font-family:"Liberation Serif","Times New Roman",serif;font-size:80px;letter-spacing:-.04em;line-height:1;color:#FF8A5F}
+.heroi p{margin-top:10px;font-size:21px;line-height:1.3;color:#E9E2D8}
+.prova.dois{margin-top:36px}
+</style></head><body><section class="slide esc">
+<div class="top"><div class="eyebrow">DOVADĂ · UN SISTEM REAL, PAS CU PAS</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo"><h1 style="font-size:76px">Afacerea care a ales AI<br><span class="ac">înainte să o oblige piața.</span></h1><p class="sub">Nu a început cu un tool. A început cu <b>un pas următor</b> după fiecare cerere.</p><div class="curva"><svg width="900" height="380" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6A3B" stop-opacity=".30"/><stop offset="1" stop-color="#FF6A3B" stop-opacity=".04"/></linearGradient></defs>
+<line x1="64" x2="824" y1="255" y2="255" stroke="rgba(255,255,255,.06)" stroke-width="1"/><line x1="64" x2="824" y1="180" y2="180" stroke="rgba(255,255,255,.06)" stroke-width="1"/><line x1="64" x2="824" y1="105" y2="105" stroke="rgba(255,255,255,.06)" stroke-width="1"/><line x1="64" x2="824" y1="30" y2="30" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<polygon points="491.5,268.0 501.0,264.9 510.5,261.6 520.0,258.3 529.5,254.8 539.0,251.1 548.5,247.3 558.0,243.4 567.5,239.2 577.0,234.9 586.5,230.4 596.0,225.7 605.5,220.9 615.0,215.8 624.5,210.5 634.0,205.0 643.5,199.2 653.0,193.2 662.5,187.0 672.0,180.5 681.5,173.7 691.0,166.7 700.5,159.3 710.0,151.6 719.5,143.6 729.0,135.3 738.5,126.6 748.0,117.6 757.5,108.1 767.0,98.3 776.5,88.1 786.0,77.4 795.5,66.3 805.0,54.7 814.5,42.6 824.0,30.0 824.0,222.0 814.5,223.4 805.0,224.7 795.5,226.1 786.0,227.4 776.5,228.8 767.0,230.1 757.5,231.5 748.0,232.8 738.5,234.2 729.0,235.5 719.5,236.8 710.0,238.2 700.5,239.6 691.0,240.9 681.5,242.2 672.0,243.6 662.5,244.9 653.0,246.3 643.5,247.7 634.0,249.0 624.5,250.3 615.0,251.7 605.5,253.1 596.0,254.4 586.5,255.8 577.0,257.1 567.5,258.4 558.0,259.8 548.5,261.1 539.0,262.5 529.5,263.9 520.0,265.2 510.5,266.6 501.0,267.9 491.5,269.2" fill="url(#gg)"/>
+<line x1="64" y1="330" x2="824" y2="330" stroke="rgba(255,255,255,.32)" stroke-width="2"/>
+<line x1="64" y1="330" x2="64" y2="20" stroke="rgba(255,255,255,.32)" stroke-width="2"/>
+<line x1="64.0" y1="330.0" x2="824.0" y2="222.0" stroke="#BDB5AC" stroke-width="4" stroke-linecap="round"/>
+<polyline points="64.0,330.0 73.5,329.5 83.0,329.0 92.5,328.5 102.0,327.9 111.5,327.4 121.0,326.8 130.5,326.2 140.0,325.5 149.5,324.8 159.0,324.1 168.5,323.4 178.0,322.6 187.5,321.8 197.0,321.0 206.5,320.2 216.0,319.3 225.5,318.3 235.0,317.3 244.5,316.3 254.0,315.3 263.5,314.2 273.0,313.0 282.5,311.8 292.0,310.6 301.5,309.3 311.0,307.9 320.5,306.5 330.0,305.0 339.5,303.5 349.0,301.9 358.5,300.2 368.0,298.5 377.5,296.7 387.0,294.8 396.5,292.8 406.0,290.8 415.5,288.6 425.0,286.4 434.5,284.1 444.0,281.7 453.5,279.1 463.0,276.5 472.5,273.8 482.0,270.9 491.5,268.0 501.0,264.9 510.5,261.6 520.0,258.3 529.5,254.8 539.0,251.1 548.5,247.3 558.0,243.4 567.5,239.2 577.0,234.9 586.5,230.4 596.0,225.7 605.5,220.9 615.0,215.8 624.5,210.5 634.0,205.0 643.5,199.2 653.0,193.2 662.5,187.0 672.0,180.5 681.5,173.7 691.0,166.7 700.5,159.3 710.0,151.6 719.5,143.6 729.0,135.3 738.5,126.6 748.0,117.6 757.5,108.1 767.0,98.3 776.5,88.1 786.0,77.4 795.5,66.3 805.0,54.7 814.5,42.6 824.0,30.0" fill="none" stroke="#FF6A3B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M848.0,48.0 h10 V208.0 h-10" fill="none" stroke="rgba(245,239,230,.6)" stroke-width="2"/>
+<text transform="translate(886.0,126.0) rotate(-90)" text-anchor="middle" class="t-gap">DIFERENȚA</text>
+<circle cx="824.0" cy="30.0" r="26" fill="rgba(255,106,59,.18)"/><circle cx="824.0" cy="30.0" r="11" fill="#FF6A3B"/>
+<circle cx="824.0" cy="222.0" r="8" fill="#BDB5AC"/>
+<text x="784.0" y="36.0" text-anchor="end" class="t-forte">Sisteme cu AI</text>
+<text x="824.0" y="284.0" text-anchor="end" class="t-fraco">Mai mulți oameni, mai multe ore</text>
+<text x="78" y="36" class="t-eixo">CREȘTERE</text>
+<text x="824" y="366" text-anchor="end" class="t-eixo">TIMP →</text>
+<text x="64" y="366" class="t-nota">Curbă ilustrativă. Cifrele reale sunt în interior.</text>
+</svg></div><div class="pill">GLISEAZĂ CA SĂ VEZI SISTEMUL →</div></div>
+<div class="pag"><span>01</span> / 10</div>
+<div class="rod">Orice sistem construit de noi începe cu traseul, nu cu tool-ul.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">CE FACE AI-UL</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo topo"><div class="kicker">01 / STRATUL AI</div><h1 style="font-size:92px">AI-ul preia<br><span class="ac">partea repetitivă.</span></h1><p class="sub">În interiorul regulilor aprobate, poate:</p><div class="linhas ia apertado"><div><span>AI</span><p>Să adune contextul</p></div><div><span>AI</span><p>Să clasifice cererea</p></div><div><span>AI</span><p>Să răspundă la întrebările frecvente aprobate</p></div><div><span>AI</span><p>Să observe informațiile lipsă</p></div><div><span>AI</span><p>Să pregătească pasul următor</p></div></div><div class="faixa"><div class="duo"><div><div class="graf "><div class="tit">KLARNA · PRIMA LUNĂ · TIMP MEDIU DE REZOLVARE</div><div class="row"><p>Înainte</p><div class="tr"><div class="b" style="width:100.0%"></div></div><b>11 min</b></div><div class="row"><p>Cu AI</p><div class="tr"><div class="b o" style="width:18.2%"></div></div><b>&lt; 2 min</b></div></div></div><div class="lado"><b>2/3</b><p>din conversațiile de suport, preluate de asistent</p></div></div><p class="fonte">Sursă: comunicat de presă Klarna, 27 feb. 2024. Cifre raportate de companie.</p></div></div>
+<div class="pag"><span>02</span> / 10</div>
+<div class="rod">AI-ul face munca repetitivă. Oamenii păstrează judecata.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">CE RĂMÂNE LA OM</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo topo"><div class="kicker">02 / STRATUL UMAN</div><h1 style="font-size:88px">Omul rămâne responsabil<br><span class="ac">de excepție.</span></h1><p class="sub">Echipa preia când apare:</p><div class="linhas hum apertado"><div><span>ECHIPA</span><p>O cerere în afara regulilor</p></div><div><span>ECHIPA</span><p>O reclamație sau un risc</p></div><div><span>ECHIPA</span><p>O decizie comercială</p></div><div><span>ECHIPA</span><p>O situație urgentă</p></div><div><span>ECHIPA</span><p>Context insuficient</p></div></div><div class="faixa"><div class="grande"><b>87%</b><p>dintre clienți spun că o companie care folosește AI <strong style="color:#fff">trebuie să ofere o cale către un om.</strong></p></div><div class="medidor"><i style="width:87%"></i></div><p class="fonte">Sursă: sondaj Gartner, 3.566 clienți, feb.–mar. 2026 (publicat la 4 aug. 2026).</p></div></div>
+<div class="pag"><span>03</span> / 10</div>
+<div class="rod">Un sistem bun știe când să se oprească.</div>
+</section>
+<section class="slide lar">
+<div class="top"><div class="eyebrow">COSTUL AȘTEPTĂRII</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo"><div class="kicker">DATELE</div><h1 style="font-size:92px">Prima oră<br><span class="ac">decide lead-ul.</span></h1><div class="graf "><div class="tit">ȘANSA DE A CALIFICA LEAD-UL (DUPĂ 24 DE ORE = 1×)</div><div class="row"><p>În prima oră</p><div class="tr"><div class="b o" style="width:100.0%"></div></div><b>60×</b></div><div class="row"><p>După 24 de ore</p><div class="tr"><div class="b" style="width:1.7%"></div></div><b>1×</b></div></div><p class="nota-dado">Și <b>de aproape 7 ori mai probabil</b> decât companiile care au sunat doar o oră mai târziu.</p><p class="fonte">Sursă: Oldroyd, McElheran &amp; Elkington, Harvard Business Review, 2011. Analiză pe 1,25 milioane de lead-uri din 42 de companii.</p></div>
+<div class="pag"><span>04</span> / 10</div>
+<div class="rod">Viteza nu e efort. E responsabilitate.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">ÎNTREBAREA DIN AUDIT</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo topo"><div class="kicker">03 / ÎNTREBAREA</div><h1 style="font-size:92px">Cine e responsabil de<br><span class="ac">pasul următor?</span></h1><p class="sub">Nu doar „ce tool?”. Auditul întreabă:</p><div class="linhas q"><div><span>ÎNTREABĂ</span><p>Cine primește cererea?</p></div><div><span>ÎNTREABĂ</span><p>Cine o califică?</p></div><div><span>ÎNTREABĂ</span><p>Cine o confirmă?</p></div><div><span>ÎNTREABĂ</span><p>Când ajunge la un om?</p></div><div><span>ÎNTREABĂ</span><p>Ce se întâmplă dacă nu răspunde nimeni?</p></div></div></div>
+<div class="pag"><span>05</span> / 10</div>
+<div class="rod">Responsabilitatea trebuie să fie explicită, nu presupusă.</div>
+</section>
+<section class="slide lar">
+<div class="top"><div class="eyebrow">REGULA</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo"><div class="kicker">04 / REGULA</div><h1 style="font-size:92px">O regulă înainte de<br><span class="ac">orice automatizare.</span></h1><p class="sub">Scrisă pentru traseul real al afacerii, <b>nu o automatizare universală.</b></p><div class="regra"><div class="p"><small>01</small><b>Declanșator</b></div><div class="s">→</div><div class="p"><small>02</small><b>Clasifică</b></div><div class="s">→</div><div class="p"><small>03</small><b>Responsabil</b></div><div class="s">→</div><div class="p"><small>04</small><b>Pas următor</b></div><div class="s">→</div><div class="p u"><small>05</small><b>Escaladează</b></div></div></div>
+<div class="pag"><span>06</span> / 10</div>
+<div class="rod">Regula se scrie înainte ca ceva să fie automatizat.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">TRASEUL DINAINTE</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo topo"><div class="kicker">05 / ÎNAINTE</div><h1 style="font-size:84px">Patru uși de intrare.<br><span class="ac">Nimeni la recepție.</span></h1><p class="sub">Google, Instagram, WhatsApp și email ajungeau în același loc, și <b>nimeni nu era responsabil de ce urma.</b></p><div class="diag" style="height:400px;border:0"><div class="n" style="left:70px;top:6px;width:160px;height:60px">Google</div><div class="l" style="left:149px;top:66px;width:2px;height:30px"></div><div class="d" style="left:150px;top:96px"></div><div class="n" style="left:290px;top:6px;width:160px;height:60px">Instagram</div><div class="l" style="left:369px;top:66px;width:2px;height:30px"></div><div class="d" style="left:370px;top:96px"></div><div class="n" style="left:510px;top:6px;width:160px;height:60px">WhatsApp</div><div class="l" style="left:589px;top:66px;width:2px;height:30px"></div><div class="d" style="left:590px;top:96px"></div><div class="n" style="left:730px;top:6px;width:160px;height:60px">Email</div><div class="l" style="left:809px;top:66px;width:2px;height:30px"></div><div class="d" style="left:810px;top:96px"></div><div class="l" style="left:149px;top:95px;width:662px;height:2px"></div><div class="d" style="left:480px;top:96px"></div><div class="l" style="left:479px;top:96px;width:2px;height:30px"></div><div class="n" style="left:350px;top:126px;width:260px;height:62px">Inbox comun</div><div class="l" style="left:479px;top:188px;width:2px;height:30px"></div><div class="n" style="left:300px;top:218px;width:360px;height:62px">Interpretare manuală</div><div class="l x" style="left:479px;top:280px;width:2px;height:40px"></div><div class="n x" style="left:290px;top:320px;width:380px;height:66px">Pas următor incert&nbsp;&nbsp;?</div></div><p class="legenda" style="margin-top:14px">Lead-ul nu s-a pierdut la intrare. S-a pierdut <b>între intrare și responsabil.</b></p></div>
+<div class="pag"><span>07</span> / 10</div>
+<div class="rod">Aici amuțesc, de fapt, cele mai multe cereri.</div>
+</section>
+<section class="slide esc">
+<div class="top"><div class="eyebrow">DIFERENȚA</div><div class="marca">PACHECO STUDIOS</div><div class="regua"></div></div>
+<div class="miolo"><div class="kicker">FĂRĂ AI vs. CU AI</div><h1 style="font-size:80px">În relația cu clienții<br><span class="ac">se câștigă veniturile.</span></h1><p class="sub">Aceleași cereri. Un <b>alt sistem</b> în spatele răspunsului.</p><div class="comp"><div class="leg"><span><i style="background:rgba(245,239,230,.30)"></i>Fără AI</span><span><i style="background:#FF6A3B"></i>Cu AI în relația cu clienții</span></div><div class="paineis"><div class="pn"><div class="delta">10×</div><div class="area"><div class="col"><b>50</b><div style="height:19px"></div></div><div class="col o"><b>500</b><div style="height:190px"></div></div></div><h4>Oferte răspunse pe zi</h4><small>Caz real · băuturi pentru evenimente, Brazilia</small></div><div class="pn"><div class="delta">+10%</div><div class="area"><div class="col"><b>100</b><div style="height:173px"></div></div><div class="col o"><b>110</b><div style="height:190px"></div></div></div><h4>Venit lunar după implementare</h4><small>Caz real · clinică de imagistică, Brazilia</small></div><div class="pn"><div class="delta">+15%</div><div class="area"><div class="col"><b>100</b><div style="height:165px"></div></div><div class="col o"><b>115</b><div style="height:190px"></div></div></div><h4>Rezolvate pe oră (index)</h4><small>Studiu pe 5.172 de agenți de suport</small></div></div></div><p class="fonte">Surse: cazuri reale din Brazilia (oferte și venit). Brynjolfsson, Li &amp; Raymond, “Generative AI at Work”, Quarterly Journal of Economics, 2025.</p></div>
+<div class="pag"><span>08</span> / 10</div>
+<div class="rod">Diferența e sistemul din spatele răspunsului.</div>
+</section>
+<section class="slide lar">
+<div class="top"><div class="eyebrow">ACEEAȘI RUPTURĂ, REPARATĂ</div><div class="marca">CAZ REAL · BRAZILIA</div><div class="regua"></div></div>
+<div class="miolo"><div class="kicker">06 / DOVADA</div><h1 style="font-size:84px">Un pas următor.<br><span class="ac">Venit real recuperat.</span></h1><div class="prova dois"><div><small>ÎNAINTE</small><p>Oamenii cereau prețul, nu programau, și nimeni nu revenea la ei.</p></div><div><small>DUPĂ</small><p>Fiecare cerere fără programare primea un follow-up automat pe WhatsApp.</p></div></div><div class="heroi"><div><b>R$40k</b><p>în 3,5 luni, doar de la oameni care nu programaseră</p></div><div><b>+10%</b><p>venit lunar după ce sistemul de follow-up a intrat în funcțiune</p></div></div><p class="fonte">Caz real · clinică de imagistică, Brazilia.</p></div>
+<div class="pag"><span>09</span> / 10</div>
+<div class="rod">Cifre reale sau deloc.</div>
+</section>
+<section class="slide lar">
+<div class="top"><div class="eyebrow">PACHECO STUDIOS / AUDITURI DE SISTEME CU AI</div><div class="marca">VORBEȘTE CU NOI</div><div class="regua"></div></div>
+<div class="miolo"><h1 style="font-size:84px">Poate nu ai nevoie<br><span class="ac">de mai mult software.</span></h1><p class="sub">Poate ai nevoie de un responsabil clar, o regulă și un pas următor.</p><div class="botao">TRIMITE „AUDIT” ÎN PRIVAT</div></div>
+<div class="pag"><span>10</span> / 10</div>
+<div class="rod">Spune-ne ce proces se rupe.</div>
+</section></body></html>

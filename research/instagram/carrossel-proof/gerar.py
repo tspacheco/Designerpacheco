@@ -111,6 +111,100 @@ CSS_EXTRA = """
 """
 
 
+LANG = "en"
+
+# Romeno (Tomás, 12/10 22h58): tradução por frase inglesa; o que não está aqui fica igual nas duas línguas
+TXT_RO = {
+    "PROOF · A REAL SYSTEM BREAKDOWN": "DOVADĂ · UN SISTEM REAL, PAS CU PAS",
+    "The business that chose AI<br>[[before the market forced it to.]]": "Afacerea care a ales AI<br>[[înainte să o oblige piața.]]",
+    "It didn’t start with a tool. It started with **one next action** after every enquiry.":
+        "Nu a început cu un tool. A început cu **un pas următor** după fiecare cerere.",
+    "SWIPE TO SEE THE SYSTEM BREAKDOWN →": "GLISEAZĂ CA SĂ VEZI SISTEMUL →",
+    "Every system we build starts with the path, not the tool.": "Orice sistem construit de noi începe cu traseul, nu cu tool-ul.",
+    "THE GAP": "DIFERENȚA", "Systems with AI": "Sisteme cu AI", "More people, more hours": "Mai mulți oameni, mai multe ore",
+    "GROWTH": "CREȘTERE", "TIME →": "TIMP →",
+    "Illustrative curve. The real numbers are inside.": "Curbă ilustrativă. Cifrele reale sunt în interior.",
+    "WHAT AI DOES": "CE FACE AI-UL", "01 / AI LAYER": "01 / STRATUL AI",
+    "AI handles the<br>[[repeatable layer.]]": "AI-ul preia<br>[[partea repetitivă.]]",
+    "Inside the approved rules, it can:": "În interiorul regulilor aprobate, poate:",
+    "Gather the context": "Să adune contextul", "Classify the request": "Să clasifice cererea",
+    "Answer approved FAQs": "Să răspundă la întrebările frecvente aprobate", "Spot missing information": "Să observe informațiile lipsă",
+    "Prepare the next step": "Să pregătească pasul următor",
+    "KLARNA · FIRST MONTH · AVG. RESOLUTION TIME": "KLARNA · PRIMA LUNĂ · TIMP MEDIU DE REZOLVARE",
+    "Before": "Înainte", "With AI": "Cu AI",
+    "of service chats handled by the assistant": "din conversațiile de suport, preluate de asistent",
+    "Source: Klarna press release, 27 Feb 2024. Figures reported by the company.":
+        "Sursă: comunicat de presă Klarna, 27 feb. 2024. Cifre raportate de companie.",
+    "AI does the repeatable work. People keep the judgement.": "AI-ul face munca repetitivă. Oamenii păstrează judecata.",
+    "WHAT STAYS HUMAN": "CE RĂMÂNE LA OM", "02 / HUMAN LAYER": "02 / STRATUL UMAN",
+    "The human still owns<br>[[the exception.]]": "Omul rămâne responsabil<br>[[de excepție.]]",
+    "The team takes over when there is:": "Echipa preia când apare:", "TEAM": "ECHIPA",
+    "A request outside the rules": "O cerere în afara regulilor", "A complaint or a risk": "O reclamație sau un risc",
+    "A commercial decision": "O decizie comercială", "An urgent situation": "O situație urgentă", "Not enough context": "Context insuficient",
+    "of customers say a company using AI": "dintre clienți spun că o companie care folosește AI",
+    "must offer a way to reach a human.": "trebuie să ofere o cale către un om.",
+    "Source: Gartner survey of 3,566 customers, Feb–Mar 2026 (published 4 Aug 2026).":
+        "Sursă: sondaj Gartner, 3.566 clienți, feb.–mar. 2026 (publicat la 4 aug. 2026).",
+    "A good system knows when to stop.": "Un sistem bun știe când să se oprească.",
+    "THE COST OF WAITING": "COSTUL AȘTEPTĂRII", "THE DATA": "DATELE",
+    "The first hour<br>[[decides the lead.]]": "Prima oră<br>[[decide lead-ul.]]",
+    "LIKELIHOOD OF QUALIFYING THE LEAD (AFTER 24 HOURS = 1×)": "ȘANSA DE A CALIFICA LEAD-UL (DUPĂ 24 DE ORE = 1×)",
+    "Within 1 hour": "În prima oră", "After 24 hours": "După 24 de ore",
+    "nearly 7× more likely": "de aproape 7 ori mai probabil",
+    "than companies that called just one hour later.": "decât companiile care au sunat doar o oră mai târziu.",
+    "Source: Oldroyd, McElheran & Elkington, Harvard Business Review, 2011. Analysis of 1.25 million leads from 42 companies.":
+        "Sursă: Oldroyd, McElheran & Elkington, Harvard Business Review, 2011. Analiză pe 1,25 milioane de lead-uri din 42 de companii.",
+    "Speed is not effort. It is ownership.": "Viteza nu e efort. E responsabilitate.",
+    "THE AUDIT QUESTION": "ÎNTREBAREA DIN AUDIT", "03 / QUESTION": "03 / ÎNTREBAREA",
+    "Who owns the<br>[[next action?]]": "Cine e responsabil de<br>[[pasul următor?]]",
+    "Not just “which tool?”. The audit asks:": "Nu doar „ce tool?”. Auditul întreabă:", "ASK": "ÎNTREABĂ",
+    "Who receives the request?": "Cine primește cererea?", "Who qualifies it?": "Cine o califică?", "Who confirms it?": "Cine o confirmă?",
+    "When does it hand off to a person?": "Când ajunge la un om?", "What happens if nobody replies?": "Ce se întâmplă dacă nu răspunde nimeni?",
+    "Ownership must be explicit, not assumed.": "Responsabilitatea trebuie să fie explicită, nu presupusă.",
+    "THE RULE": "REGULA", "04 / RULE": "04 / REGULA",
+    "One rule before<br>[[any automation.]]": "O regulă înainte de<br>[[orice automatizare.]]",
+    "Written for the business’s real path, **not a universal automation.**": "Scrisă pentru traseul real al afacerii, **nu o automatizare universală.**",
+    "Trigger": "Declanșator", "Classify": "Clasifică", "Assign owner": "Responsabil", "Next action": "Pas următor", "Escalate": "Escaladează",
+    "The rule is written before anything is automated.": "Regula se scrie înainte ca ceva să fie automatizat.",
+    "THE PATH BEFORE": "TRASEUL DINAINTE", "05 / BEFORE": "05 / ÎNAINTE",
+    "Four doors in.<br>[[No one at the desk.]]": "Patru uși de intrare.<br>[[Nimeni la recepție.]]",
+    "Google, Instagram, WhatsApp and email all landed in one place, and **nobody owned what came next.**":
+        "Google, Instagram, WhatsApp și email ajungeau în același loc, și **nimeni nu era responsabil de ce urma.**",
+    "Shared inbox": "Inbox comun", "Manual interpretation": "Interpretare manuală", "Uncertain next step": "Pas următor incert",
+    "The lead was not lost at entry. It was lost": "Lead-ul nu s-a pierdut la intrare. S-a pierdut",
+    "between entry and ownership.": "între intrare și responsabil.",
+    "This is where most enquiries actually go quiet.": "Aici amuțesc, de fapt, cele mai multe cereri.",
+    "THE DIFFERENCE": "DIFERENȚA", "WITHOUT AI vs. WITH AI": "FĂRĂ AI vs. CU AI",
+    "Customer service is where<br>[[revenue is won.]]": "În relația cu clienții<br>[[se câștigă veniturile.]]",
+    "Same requests. A **different system** behind the reply.": "Aceleași cereri. Un **alt sistem** în spatele răspunsului.",
+    "Without AI": "Fără AI", "With AI in customer service": "Cu AI în relația cu clienții",
+    "Quotes answered a day": "Oferte răspunse pe zi", "Real case · drinks for events, Brazil": "Caz real · băuturi pentru evenimente, Brazilia",
+    "Monthly revenue after implementation": "Venit lunar după implementare", "Real case · imaging clinic, Brazil": "Caz real · clinică de imagistică, Brazilia",
+    "Resolved per hour (index)": "Rezolvate pe oră (index)", "Study of 5,172 support agents": "Studiu pe 5.172 de agenți de suport",
+    "Sources: real cases in Brazil (quotes and revenue).": "Surse: cazuri reale din Brazilia (oferte și venit).",
+    "The difference is the system behind the reply.": "Diferența e sistemul din spatele răspunsului.",
+    "THE SAME BREAK, FIXED": "ACEEAȘI RUPTURĂ, REPARATĂ", "REAL CASE · BRAZIL": "CAZ REAL · BRAZILIA", "06 / EVIDENCE": "06 / DOVADA",
+    "One next action.<br>[[Real revenue back.]]": "Un pas următor.<br>[[Venit real recuperat.]]",
+    "BEFORE": "ÎNAINTE", "AFTER": "DUPĂ",
+    "People asked the price, did not book, and nobody got back to them.": "Oamenii cereau prețul, nu programau, și nimeni nu revenea la ei.",
+    "Every request that did not book got an automatic WhatsApp follow-up.": "Fiecare cerere fără programare primea un follow-up automat pe WhatsApp.",
+    "in 3.5 months, only from people who had not booked": "în 3,5 luni, doar de la oameni care nu programaseră",
+    "monthly revenue after the follow-up system went live": "venit lunar după ce sistemul de follow-up a intrat în funcțiune",
+    "Real case · imaging clinic, Brazil.": "Caz real · clinică de imagistică, Brazilia.",
+    "Real numbers or none at all.": "Cifre reale sau deloc.",
+    "PACHECO STUDIOS / AI SYSTEMS AUDITS": "PACHECO STUDIOS / AUDITURI DE SISTEME CU AI", "TALK WITH US": "VORBEȘTE CU NOI",
+    "Your operation may not need<br>[[more software.]]": "Poate nu ai nevoie<br>[[de mai mult software.]]",
+    "It may need a clear owner, rule and next action.": "Poate ai nevoie de un responsabil clar, o regulă și un pas următor.",
+    "DM “AUDIT” TO MAP THE FIRST BREAK": "TRIMITE „AUDIT” ÎN PRIVAT",
+    "Tell us which process is breaking.": "Spune-ne ce proces se rupe.",
+    "Proof · A real system breakdown": "Dovadă · Un sistem real, pas cu pas",
+}
+
+
+def t(s):
+    return TXT_RO.get(s, s) if LANG == "ro" else s
+
+
 def diag_antes():
     """Percurso antigo: 4 canais → caixa partilhada → interpretação manual → passo seguinte incerto."""
     fontes = ["Google", "Instagram", "WhatsApp", "Email"]
@@ -123,13 +217,13 @@ def diag_antes():
     h.append('<div class="l" style="left:149px;top:95px;width:662px;height:2px"></div>')
     h.append('<div class="d" style="left:480px;top:96px"></div>')
     h.append('<div class="l" style="left:479px;top:96px;width:2px;height:30px"></div>')
-    h.append('<div class="n" style="left:350px;top:126px;width:260px;height:62px">Shared inbox</div>')
+    h.append(f'<div class="n" style="left:350px;top:126px;width:260px;height:62px">{t("Shared inbox")}</div>')
     h.append('<div class="l" style="left:479px;top:188px;width:2px;height:30px"></div>')
-    h.append('<div class="n" style="left:300px;top:218px;width:360px;height:62px">Manual interpretation</div>')
+    h.append(f'<div class="n" style="left:300px;top:218px;width:360px;height:62px">{t("Manual interpretation")}</div>')
     h.append('<div class="l x" style="left:479px;top:280px;width:2px;height:40px"></div>')
-    h.append('<div class="n x" style="left:290px;top:320px;width:380px;height:66px">Uncertain next step&nbsp;&nbsp;?</div>')
+    h.append(f'<div class="n x" style="left:290px;top:320px;width:380px;height:66px">{t("Uncertain next step")}&nbsp;&nbsp;?</div>')
     h.append("</div>")
-    h.append('<p class="legenda" style="margin-top:14px">The lead was not lost at entry. It was lost <b>between entry and ownership.</b></p>')
+    h.append(f'<p class="legenda" style="margin-top:14px">{t("The lead was not lost at entry. It was lost")} <b>{t("between entry and ownership.")}</b></p>')
     return "".join(h)
 
 
@@ -153,7 +247,7 @@ def diag_depois():
 
 def linhas(cls, tag, itens):
     return f'<div class="linhas {cls}">' + "".join(
-        f"<div><span>{E(tag)}</span><p>{E(t)}</p></div>" for t in itens) + "</div>"
+        f"<div><span>{E(t(tag))}</span><p>{E(t(x))}</p></div>" for x in itens) + "</div>"
 
 
 def regra():
@@ -161,7 +255,7 @@ def regra():
     out = []
     for k, (n, nome) in enumerate(passos):
         cls = "p u" if k == len(passos) - 1 else "p"
-        out.append(f'<div class="{cls}"><small>{n}</small><b>{E(nome)}</b></div>')
+        out.append(f'<div class="{cls}"><small>{n}</small><b>{E(t(nome))}</b></div>')
         if k < len(passos) - 1:
             out.append('<div class="s">→</div>')
     return '<div class="regra">' + "".join(out) + "</div>"
@@ -178,16 +272,16 @@ def prova():
 
 def barras(tit, linhas_graf, escala, cls=""):
     """Barras horizontais a partir do zero; linhas = (rótulo, valor numérico, texto do valor, destaque)."""
-    out = [f'<div class="graf {cls}"><div class="tit">{E(tit)}</div>']
+    out = [f'<div class="graf {cls}"><div class="tit">{E(t(tit))}</div>']
     for rot, v, txt, dest in linhas_graf:
         largura = max(0.6, 100 * v / escala)
-        out.append(f'<div class="row"><p>{E(rot)}</p><div class="tr"><div class="b{" o" if dest else ""}" '
+        out.append(f'<div class="row"><p>{E(t(rot))}</p><div class="tr"><div class="b{" o" if dest else ""}" '
                    f'style="width:{largura:.1f}%"></div></div><b>{E(txt)}</b></div>')
     return "".join(out) + "</div>"
 
 
 def fonte(txt):
-    return f'<p class="fonte">{E(txt)}</p>'
+    return f'<p class="fonte">{E(t(txt))}</p>'
 
 
 # Fontes (verificadas a 12/10/2026; lista completa em LEGENDA.md)
@@ -214,22 +308,22 @@ def comparacao_ia():
     paineis = [("10×", "Quotes answered a day", "Real case · drinks for events, Brazil", (50, "50"), (500, "500")),
                ("+10%", "Monthly revenue after implementation", "Real case · imaging clinic, Brazil", (100, "100"), (110, "110")),
                ("+15%", "Resolved per hour (index)", "Study of 5,172 support agents", (100, "100"), (115, "115"))]
-    out = ['<div class="comp"><div class="leg"><span><i style="background:rgba(245,239,230,.30)"></i>Without AI</span>'
-           '<span><i style="background:#FF6A3B"></i>With AI in customer service</span></div><div class="paineis">']
+    out = [f'<div class="comp"><div class="leg"><span><i style="background:rgba(245,239,230,.30)"></i>{t("Without AI")}</span>'
+           f'<span><i style="background:#FF6A3B"></i>{t("With AI in customer service")}</span></div><div class="paineis">']
     for delta, metrica, origem, (va, ta), (vb, tb) in paineis:
         topo = max(va, vb)
         cols = "".join(f'<div class="col{c}"><b>{E(t)}</b><div style="height:{190 * v / topo:.0f}px"></div></div>'
                        for c, (v, t) in (("", (va, ta)), (" o", (vb, tb))))
         out.append(f'<div class="pn"><div class="delta">{E(delta)}</div><div class="area">{cols}</div>'
-                   f'<h4>{E(metrica)}</h4><small>{E(origem)}</small></div>')
+                   f'<h4>{E(t(metrica))}</h4><small>{E(t(origem))}</small></div>')
     out.append("</div></div>")
-    return "".join(out) + fonte("Sources: real cases in Brazil (quotes and revenue). " + F_NBER)
+    return "".join(out) + fonte(t("Sources: real cases in Brazil (quotes and revenue).") + " " + F_NBER)
 
 
 def dados_hora():
     return (barras("LIKELIHOOD OF QUALIFYING THE LEAD (AFTER 24 HOURS = 1×)",
                    [("Within 1 hour", 60, "60×", True), ("After 24 hours", 1, "1×", False)], 60)
-            + '<p class="nota-dado">And <b>nearly 7× more likely</b> than companies that called just one hour later.</p>'
+            + f'<p class="nota-dado">{"Și" if LANG == "ro" else "And"} <b>{t("nearly 7× more likely")}</b> {t("than companies that called just one hour later.")}</p>'
             + fonte(F_HBR_LEADS))
 
 
@@ -237,13 +331,13 @@ def faixa_klarna():
     graf = barras("KLARNA · FIRST MONTH · AVG. RESOLUTION TIME",
                   [("Before", 11, "11 min", False), ("With AI", 2, "< 2 min", True)], 11)
     return ('<div class="faixa"><div class="duo"><div>' + graf + '</div>'
-            '<div class="lado"><b>2/3</b><p>of service chats handled by the assistant</p></div></div>'
+            f'<div class="lado"><b>2/3</b><p>{t("of service chats handled by the assistant")}</p></div></div>'
             + fonte(F_KLARNA) + "</div>")
 
 
 def faixa_gartner():
     return ('<div class="faixa"><div class="grande"><b>87%</b>'
-            '<p>of customers say a company using AI <strong style="color:#fff">must offer a way to reach a human.</strong></p></div>'
+            f'<p>{t("of customers say a company using AI")} <strong style="color:#fff">{t("must offer a way to reach a human.")}</strong></p></div>'
             '<div class="medidor"><i style="width:87%"></i></div>' + fonte(F_GARTNER) + "</div>")
 
 
@@ -277,14 +371,14 @@ def curva_capa():
 <line x1="{px(0):.1f}" y1="{py(0):.1f}" x2="{lx:.1f}" y2="{ly:.1f}" stroke="#BDB5AC" stroke-width="4" stroke-linecap="round"/>
 <polyline points="{exp_pts}" fill="none" stroke="#FF6A3B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M{ex + 24:.1f},{ey + 18:.1f} h10 V{ly - 14:.1f} h-10" fill="none" stroke="rgba(245,239,230,.6)" stroke-width="2"/>
-<text transform="translate({ex + 62:.1f},{(ey + ly) / 2:.1f}) rotate(-90)" text-anchor="middle" class="t-gap">THE GAP</text>
+<text transform="translate({ex + 62:.1f},{(ey + ly) / 2:.1f}) rotate(-90)" text-anchor="middle" class="t-gap">{t("THE GAP")}</text>
 <circle cx="{ex:.1f}" cy="{ey:.1f}" r="26" fill="rgba(255,106,59,.18)"/><circle cx="{ex:.1f}" cy="{ey:.1f}" r="11" fill="#FF6A3B"/>
 <circle cx="{lx:.1f}" cy="{ly:.1f}" r="8" fill="#BDB5AC"/>
-<text x="{ex - 40:.1f}" y="{ey + 6:.1f}" text-anchor="end" class="t-forte">Systems with AI</text>
-<text x="{lx:.1f}" y="{ly + 62:.1f}" text-anchor="end" class="t-fraco">More people, more hours</text>
-<text x="{x0 + 14}" y="{yb - alt + 6}" class="t-eixo">GROWTH</text>
-<text x="{x1}" y="{yb + 36}" text-anchor="end" class="t-eixo">TIME →</text>
-<text x="{x0}" y="{yb + 36}" class="t-nota">Illustrative curve. The real numbers are inside.</text>
+<text x="{ex - 40:.1f}" y="{ey + 6:.1f}" text-anchor="end" class="t-forte">{t("Systems with AI")}</text>
+<text x="{lx:.1f}" y="{ly + 62:.1f}" text-anchor="end" class="t-fraco">{t("More people, more hours")}</text>
+<text x="{x0 + 14}" y="{yb - alt + 6}" class="t-eixo">{t("GROWTH")}</text>
+<text x="{x1}" y="{yb + 36}" text-anchor="end" class="t-eixo">{t("TIME →")}</text>
+<text x="{x0}" y="{yb + 36}" class="t-nota">{t("Illustrative curve. The real numbers are inside.")}</text>
 </svg></div>"""
 
 
@@ -293,67 +387,68 @@ def caso_real():
     linhas_prova = [("BEFORE", "People asked the price, did not book, and nobody got back to them."),
                     ("AFTER", "Every request that did not book got an automatic WhatsApp follow-up.")]
     return ('<div class="prova dois">' + "".join(
-        f'<div><small>{a}</small><p>{E(b)}</p></div>' for a, b in linhas_prova) + "</div>"
-        '<div class="heroi"><div><b>R$40k</b><p>in 3.5 months, only from people who had not booked</p></div>'
-        '<div><b>+10%</b><p>monthly revenue after the follow-up system went live</p></div></div>'
+        f'<div><small>{t(a)}</small><p>{E(t(b))}</p></div>' for a, b in linhas_prova) + "</div>"
+        f'<div class="heroi"><div><b>R$40k</b><p>{t("in 3.5 months, only from people who had not booked")}</p></div>'
+        f'<div><b>+10%</b><p>{t("monthly revenue after the follow-up system went live")}</p></div></div>'
         + fonte("Real case · imaging clinic, Brazil."))
 
 
-SLIDES = [
-    {"tema": "esc", "eyebrow": "PROOF · A REAL SYSTEM BREAKDOWN", "marca": "PACHECO STUDIOS",
-     "h1": "The business that chose AI<br>[[before the market forced it to.]]", "h1px": 76,
-     "sub": "It didn’t start with a tool. It started with **one next action** after every enquiry.",
+def slides():
+  return [
+    {"tema": "esc", "eyebrow": t("PROOF · A REAL SYSTEM BREAKDOWN"), "marca": t("PACHECO STUDIOS"),
+     "h1": t("The business that chose AI<br>[[before the market forced it to.]]"), "h1px": 76,
+     "sub": t("It didn’t start with a tool. It started with **one next action** after every enquiry."),
      "html": curva_capa(),
-     "pill": "SWIPE TO SEE THE SYSTEM BREAKDOWN →",
-     "rodape": "Every system we build starts with the path, not the tool."},
-    {"tema": "esc", "eyebrow": "WHAT AI DOES", "marca": "PACHECO STUDIOS", "topo": True,
-     "kicker": "01 / AI LAYER", "h1": "AI handles the<br>[[repeatable layer.]]", "h1px": 92,
-     "sub": "Inside the approved rules, it can:",
+     "pill": t("SWIPE TO SEE THE SYSTEM BREAKDOWN →"),
+     "rodape": t("Every system we build starts with the path, not the tool.")},
+    {"tema": "esc", "eyebrow": t("WHAT AI DOES"), "marca": t("PACHECO STUDIOS"), "topo": True,
+     "kicker": t("01 / AI LAYER"), "h1": t("AI handles the<br>[[repeatable layer.]]"), "h1px": 92,
+     "sub": t("Inside the approved rules, it can:"),
      "html": linhas("ia apertado", "AI", ["Gather the context", "Classify the request", "Answer approved FAQs",
                                          "Spot missing information", "Prepare the next step"]) + faixa_klarna(),
-     "rodape": "AI does the repeatable work. People keep the judgement."},
-    {"tema": "esc", "eyebrow": "WHAT STAYS HUMAN", "marca": "PACHECO STUDIOS", "topo": True,
-     "kicker": "02 / HUMAN LAYER", "h1": "The human still owns<br>[[the exception.]]", "h1px": 88,
-     "sub": "The team takes over when there is:",
+     "rodape": t("AI does the repeatable work. People keep the judgement.")},
+    {"tema": "esc", "eyebrow": t("WHAT STAYS HUMAN"), "marca": t("PACHECO STUDIOS"), "topo": True,
+     "kicker": t("02 / HUMAN LAYER"), "h1": t("The human still owns<br>[[the exception.]]"), "h1px": 88,
+     "sub": t("The team takes over when there is:"),
      "html": linhas("hum apertado", "TEAM", ["A request outside the rules", "A complaint or a risk",
                                              "A commercial decision", "An urgent situation", "Not enough context"])
              + faixa_gartner(),
-     "rodape": "A good system knows when to stop."},
-    {"tema": "lar", "eyebrow": "THE COST OF WAITING", "marca": "PACHECO STUDIOS",
-     "kicker": "THE DATA", "h1": "The first hour<br>[[decides the lead.]]", "h1px": 92,
+     "rodape": t("A good system knows when to stop.")},
+    {"tema": "lar", "eyebrow": t("THE COST OF WAITING"), "marca": t("PACHECO STUDIOS"),
+     "kicker": t("THE DATA"), "h1": t("The first hour<br>[[decides the lead.]]"), "h1px": 92,
      "html": dados_hora(),
-     "rodape": "Speed is not effort. It is ownership."},
-    {"tema": "esc", "eyebrow": "THE AUDIT QUESTION", "marca": "PACHECO STUDIOS", "topo": True,
-     "kicker": "03 / QUESTION", "h1": "Who owns the<br>[[next action?]]", "h1px": 92,
-     "sub": "Not just “which tool?”. The audit asks:",
+     "rodape": t("Speed is not effort. It is ownership.")},
+    {"tema": "esc", "eyebrow": t("THE AUDIT QUESTION"), "marca": t("PACHECO STUDIOS"), "topo": True,
+     "kicker": t("03 / QUESTION"), "h1": t("Who owns the<br>[[next action?]]"), "h1px": 92,
+     "sub": t("Not just “which tool?”. The audit asks:"),
      "html": linhas("q", "ASK", ["Who receives the request?", "Who qualifies it?", "Who confirms it?",
                                  "When does it hand off to a person?", "What happens if nobody replies?"]),
-     "rodape": "Ownership must be explicit, not assumed."},
-    {"tema": "lar", "eyebrow": "THE RULE", "marca": "PACHECO STUDIOS",
-     "kicker": "04 / RULE", "h1": "One rule before<br>[[any automation.]]", "h1px": 92,
-     "sub": "Written for the business’s real path, **not a universal automation.**",
+     "rodape": t("Ownership must be explicit, not assumed.")},
+    {"tema": "lar", "eyebrow": t("THE RULE"), "marca": t("PACHECO STUDIOS"),
+     "kicker": t("04 / RULE"), "h1": t("One rule before<br>[[any automation.]]"), "h1px": 92,
+     "sub": t("Written for the business’s real path, **not a universal automation.**"),
      "html": regra(),
-     "rodape": "The rule is written before anything is automated."},
-    {"tema": "esc", "eyebrow": "THE PATH BEFORE", "marca": "PACHECO STUDIOS", "topo": True,
-     "kicker": "05 / BEFORE", "h1": "Four doors in.<br>[[No one at the desk.]]", "h1px": 84,
-     "sub": "Google, Instagram, WhatsApp and email all landed in one place, and **nobody owned what came next.**",
+     "rodape": t("The rule is written before anything is automated.")},
+    {"tema": "esc", "eyebrow": t("THE PATH BEFORE"), "marca": t("PACHECO STUDIOS"), "topo": True,
+     "kicker": t("05 / BEFORE"), "h1": t("Four doors in.<br>[[No one at the desk.]]"), "h1px": 84,
+     "sub": t("Google, Instagram, WhatsApp and email all landed in one place, and **nobody owned what came next.**"),
      "html": diag_antes(),
-     "rodape": "This is where most enquiries actually go quiet."},
-    {"tema": "esc", "eyebrow": "THE DIFFERENCE", "marca": "PACHECO STUDIOS",
-     "kicker": "WITHOUT AI vs. WITH AI", "h1": "Customer service is where<br>[[revenue is won.]]", "h1px": 80,
-     "sub": "Same requests. A **different system** behind the reply.",
+     "rodape": t("This is where most enquiries actually go quiet.")},
+    {"tema": "esc", "eyebrow": t("THE DIFFERENCE"), "marca": t("PACHECO STUDIOS"),
+     "kicker": t("WITHOUT AI vs. WITH AI"), "h1": t("Customer service is where<br>[[revenue is won.]]"), "h1px": 80,
+     "sub": t("Same requests. A **different system** behind the reply."),
      "html": comparacao_ia(),
-     "rodape": "The difference is the system behind the reply."},
-    {"tema": "lar", "eyebrow": "THE SAME BREAK, FIXED", "marca": "REAL CASE · BRAZIL",
-     "kicker": "06 / EVIDENCE", "h1": "One next action.<br>[[Real revenue back.]]", "h1px": 84,
+     "rodape": t("The difference is the system behind the reply.")},
+    {"tema": "lar", "eyebrow": t("THE SAME BREAK, FIXED"), "marca": t("REAL CASE · BRAZIL"),
+     "kicker": t("06 / EVIDENCE"), "h1": t("One next action.<br>[[Real revenue back.]]"), "h1px": 84,
      "html": caso_real(),
-     "rodape": "Real numbers or none at all."},
-    {"tema": "lar", "eyebrow": "PACHECO STUDIOS / AI SYSTEMS AUDITS", "marca": "TALK WITH US",
-     "h1": "Your operation may not need<br>[[more software.]]", "h1px": 84,
-     "sub": "It may need a clear owner, rule and next action.",
-     "botao": "DM “AUDIT” TO MAP THE FIRST BREAK",
-     "rodape": "Tell us which process is breaking."},
-]
+     "rodape": t("Real numbers or none at all.")},
+    {"tema": "lar", "eyebrow": t("PACHECO STUDIOS / AI SYSTEMS AUDITS"), "marca": t("TALK WITH US"),
+     "h1": t("Your operation may not need<br>[[more software.]]"), "h1px": 84,
+     "sub": t("It may need a clear owner, rule and next action."),
+     "botao": t("DM “AUDIT” TO MAP THE FIRST BREAK"),
+     "rodape": t("Tell us which process is breaking.")},
+  ]
 
 
 def slide(s, i, total):
@@ -384,13 +479,16 @@ def slide(s, i, total):
 
 
 def main():
-    os.makedirs(os.path.join(AQUI, "saida", "en"), exist_ok=True)
-    corpo = "\n".join(slide(s, i, len(SLIDES)) for i, s in enumerate(SLIDES, 1))
-    caminho = os.path.join(AQUI, "saida", "carrossel-proof-en.html")
-    with open(caminho, "w", encoding="utf-8") as f:
-        f.write(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Proof · A real system breakdown</title>'
-                f'<style>{base.CSS}{CSS_EXTRA}</style></head><body>{corpo}</body></html>')
-    print(caminho)
+    global LANG
+    for LANG in ("en", "ro"):
+        os.makedirs(os.path.join(AQUI, "saida", LANG), exist_ok=True)
+        lista = slides()
+        corpo = "\n".join(slide(s, i, len(lista)) for i, s in enumerate(lista, 1))
+        caminho = os.path.join(AQUI, "saida", f"carrossel-proof-{LANG}.html")
+        with open(caminho, "w", encoding="utf-8") as f:
+            f.write(f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>{t("Proof · A real system breakdown")}</title>'
+                    f'<style>{base.CSS}{CSS_EXTRA}</style></head><body>{corpo}</body></html>')
+        print(caminho)
 
 
 if __name__ == "__main__":
