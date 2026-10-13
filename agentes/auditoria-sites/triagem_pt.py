@@ -243,38 +243,50 @@ def pagina(slug, c):
 </section></body></html>"""
 
 
-# Mensagem no molde dos e-mails que estão a sair pelo n8n (research/prospecao/mensagens.py, mensagem_setor): um sinal
-# verificado, UMA pergunta sobre quem é dono da próxima ação, a triagem numa página (aqui já vai em anexo), o pedido de
-# uma reunião, o lema e o site. Sem preço, sem minutos, sem «site novo».
-GANCHO = {
- "pt-agnus-dei": ("Vi que o vosso site tem o WhatsApp com o mesmo número da ficha Google, mas a marcação passa toda por mensagem ou telefone.",
-                  "quando alguém pede uma consulta, sabem exatamente quem responde, confirma e lembra na véspera?"),
- "pt-mary-estetica": ("Vi que no vosso site pedem às clientes para agendar e tirar dúvidas pelo WhatsApp, e que têm 334 avaliações de 5 estrelas.",
-                      "quando chegam várias mensagens durante as sessões, sabem exatamente quem responde, marca e lembra?"),
- "pt-physioalba-tavira": ("Vi que já têm agenda online e WhatsApp, e 244 avaliações de 5 estrelas.",
-                          "quando um paciente sai da primeira sessão, sabem exatamente quem marca as seguintes e quem repara quando ele deixa de vir?"),
- "pt-vitalite": ("Vi que juntam estética, saúde e fitness no mesmo espaço, com o WhatsApp no site.",
-                 "quando entra um pedido, sabem exatamente quem responde, o encaminha para a área certa e lembra a consulta?"),
- "pt-barrigas-a-crescer-i-silvia-co": ("Vi que o «Agendar consulta» do seu site abre um formulário, e que também tem cursos para pais.",
-                                       "quando está em consulta, sabe exatamente quem responde a um pedido novo, confirma e lembra?"),
+# Mensagem no molde aprovado pelo Tomás a 13/10 para os e-mails (thread «Pesquisa de e-mails com n8n»,
+# /mnt/project-files/prospecao/exemplos-mensagem-nova-2026-10-13.md): personalização tirada do site do negócio (história,
+# método, princípio; nunca horários), quem somos + lema, posicionamento e prova, pedido de reunião com o dono.
+# Sem pergunta que obrigue a responder, sem preço, sem minutos. Aqui a triagem de 1 página vai em anexo.
+PERSONAL = {
+ "pt-agnus-dei": "Li no vosso site que a Agnus Dei trouxe a Olhão um novo conceito em atendimento médico-dentário: instalações construídas de raiz, todas as especialidades, laboratório e radiologia na própria clínica, e cada implante escolhido com análise em TAC.",
+ "pt-mary-estetica": "Li no vosso site que a Mary Estética tem mais de 10 anos de experiência no Algarve, faz uma avaliação dermo-cosmética antes de cada plano de tratamento e trabalha só com laser de díodo e radiofrequência aprovados pela CE.",
+ "pt-physioalba-tavira": "Li no vosso site que, na PhysioAlba, recuperar vai além de voltar a mover-se sem dor: é voltar a confiar no corpo. E que são uma clínica multidisciplinar dedicada à prevenção, reabilitação e otimização do movimento.",
+ "pt-vitalite": "Li no vosso site o conceito das três esferas da Vitalité: estética avançada, saúde e atividade física integradas no mesmo espaço, com médicos, esteticistas e personal trainers à volta de cada cliente.",
+ "pt-barrigas-a-crescer-i-silvia-co": "Li no seu site que conta com 32 anos de experiência em fisioterapia pediátrica e que a sua missão é acompanhar as famílias da gravidez ao pós-parto, aos bebés e às crianças, olhando para além da preocupação que as trouxe à consulta.",
 }
 SINGULAR = {"pt-barrigas-a-crescer-i-silvia-co"}
-CADENCIA = {
- "d3": "Boa tarde, volto só com uma pergunta: cada pedido novo tem alguém responsável até ficar marcado?",
- "d7": "Boa tarde, uma resposta curta, sim ou não: faz sentido uma reunião para validar a página que enviei?",
- "d12": "Boa tarde, fecho aqui para não insistir. Se um dia quiserem olhar para isto, é só escrever. Encontramos a fuga. Desenhamos o sistema. Provamos o impacto.",
-}
+ASSINA = "Tomás Pacheco · Pacheco Studios · pachecost.com"
+
+
+def formas(slug):
+    um = slug in SINGULAR
+    return dict(com="consigo" if um else "convosco", lhe="lhe" if um else "vos", diga="Diga-me" if um else "Digam-me",
+                quer="quiser" if um else "quiserem", da="dá-lhe" if um else "dá-vos")
 
 
 def mensagem(slug, c):
-    gancho, pergunta = GANCHO[slug]
-    um = slug in SINGULAR
-    return (f"Boa tarde! Sou o Tomás, da Pacheco Studios.\n\n{gancho}\n\nUma só pergunta: {pergunta}\n\n"
-            f"Para não ficar só na pergunta, desenhámos numa página o caminho de um cliente da {CURTO[slug]}, do primeiro contacto à "
-            f"próxima visita: a infraestrutura de atendimento que montaríamos em cada passo, com uma alternativa para cada preferência. "
-            f"Não é sobre o site. Vai em anexo.\n\n"
-            f"Se fizer sentido, marcamos uma reunião para validar {'consigo' if um else 'convosco'}.\n\n"
-            f"{LEMA}\nTomás Pacheco · Pacheco Studios · pachecost.com")
+    f, n = formas(slug), CURTO[slug]
+    return (f"Boa tarde,\n\n{PERSONAL[slug]}\n\n"
+            f"Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. "
+            f"Encontramos a fuga, desenhamos o sistema, provamos o impacto em números.\n\n"
+            f"Temos sede em Portugal e trabalhamos em Portugal e no Brasil. Escolhemos agora o Algarve, com clínicas e espaços de saúde "
+            f"e estética, onde cada pedido de marcação conta. Cada projeto começa por um ganho rápido e mensurável, antes de qualquer "
+            f"investimento maior.\n\n"
+            f"Preparámos numa página o caminho de um cliente da {n}, do primeiro contacto à próxima visita, e o que montaríamos em cada passo. "
+            f"Vai em anexo.\n\n"
+            f"Gostava de uma reunião {f['com']}, para {f['lhe']} mostrar o que vimos na {n} e o que podemos fazer de concreto. "
+            f"{f['diga']} que dia {f['lhe']} dá jeito.\n\n{ASSINA}")
+
+
+def seguimentos(slug):
+    f, n = formas(slug), CURTO[slug]
+    return {
+     "d3": f"Boa tarde, volto em poucas palavras. Na Pacheco Studios encontramos a fuga, desenhamos o sistema e provamos o impacto. "
+           f"Gostava de {f['lhe']} mostrar, numa reunião, o que vimos na {n}. {ASSINA}",
+     "d7": f"Boa tarde, uma só pergunta, sim ou não: {f['da']} jeito uma reunião comigo, esta semana ou na próxima, para {f['lhe']} mostrar "
+           f"o que vimos na {n}? {ASSINA}",
+     "d12": f"Boa tarde, fecho aqui o processo da {n} para não incomodar. Se um dia {f['quer']} ver o que vimos, é só escrever. {ASSINA}",
+    }
 
 
 def main():
@@ -283,7 +295,7 @@ def main():
     out = [f"# Agente 3 · Triagens Portugal para enviar ({data})", "",
            "Formato da triagem do Iulian (1 página): o caminho Pacheco Studios passo a passo, com «Ou, se preferirem» em cada etapa, "
            "3 sugestões, 3 perguntas e o que medimos. Só negócios com WhatsApp provado no site (Tomás, 13/10). Não sai grátis: a vertente "
-           "escolhida é a primeira execução, paga, com valor fechado na reunião. A mensagem leva o lema e pachecost.com; o PDF vai anexado, nunca link.", ""]
+           "escolhida é a primeira execução, paga, com valor fechado na reunião. Mensagem no molde aprovado para os e-mails a 13/10 (personalização do site, quem somos + lema, posicionamento, reunião com o dono); o PDF vai anexado, nunca link.", ""]
     for i, s in enumerate(ORDEM, 1):
         c = cands[s]
         pasta = os.path.join(SAIDA, s)
@@ -295,8 +307,7 @@ def main():
                 f"- Telefone {c['telefone']} · WhatsApp: sim (no site) · Google {c['nota']} · {c['avaliacoes']} avaliações",
                 f"- Morada: a confirmar ({CIDADE[s]}) · site {c['site']}",
                 f"- PDF (dono): {RAW}/{s}/triagem-{s}.pdf", "", "```", mensagem(s, c), "```", ""]
-        if i == len(ORDEM):
-            out += ["## Seguimentos (sem resposta; mesmo WhatsApp, sem novo PDF)", ""] + [f"- {k.upper()}: {v}" for k, v in CADENCIA.items()] + [""]
+        out += ["Seguimentos (sem resposta; mesmo WhatsApp, sem novo PDF):", ""] + [f"- {k.upper()}: {v}" for k, v in seguimentos(s).items()] + [""]
         print("ok", s)
     open(os.path.join(RAIZ, "raio-x", "ENVIAR-PT-lote-3.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
 
