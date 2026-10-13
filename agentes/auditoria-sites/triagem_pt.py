@@ -243,11 +243,38 @@ def pagina(slug, c):
 </section></body></html>"""
 
 
+# Mensagem no molde dos e-mails que estão a sair pelo n8n (research/prospecao/mensagens.py, mensagem_setor): um sinal
+# verificado, UMA pergunta sobre quem é dono da próxima ação, a triagem numa página (aqui já vai em anexo), o pedido de
+# uma reunião, o lema e o site. Sem preço, sem minutos, sem «site novo».
+GANCHO = {
+ "pt-agnus-dei": ("Vi que o vosso site tem o WhatsApp com o mesmo número da ficha Google, mas a marcação passa toda por mensagem ou telefone.",
+                  "quando alguém pede uma consulta, sabem exatamente quem responde, confirma e lembra na véspera?"),
+ "pt-mary-estetica": ("Vi que no vosso site pedem às clientes para agendar e tirar dúvidas pelo WhatsApp, e que têm 334 avaliações de 5 estrelas.",
+                      "quando chegam várias mensagens durante as sessões, sabem exatamente quem responde, marca e lembra?"),
+ "pt-physioalba-tavira": ("Vi que já têm agenda online e WhatsApp, e 244 avaliações de 5 estrelas.",
+                          "quando um paciente sai da primeira sessão, sabem exatamente quem marca as seguintes e quem repara quando ele deixa de vir?"),
+ "pt-vitalite": ("Vi que juntam estética, saúde e fitness no mesmo espaço, com o WhatsApp no site.",
+                 "quando entra um pedido, sabem exatamente quem responde, o encaminha para a área certa e lembra a consulta?"),
+ "pt-barrigas-a-crescer-i-silvia-co": ("Vi que o «Agendar consulta» do seu site abre um formulário, e que também tem cursos para pais.",
+                                       "quando está em consulta, sabe exatamente quem responde a um pedido novo, confirma e lembra?"),
+}
+SINGULAR = {"pt-barrigas-a-crescer-i-silvia-co"}
+CADENCIA = {
+ "d3": "Boa tarde, volto só com uma pergunta: cada pedido novo tem alguém responsável até ficar marcado?",
+ "d7": "Boa tarde, uma resposta curta, sim ou não: faz sentido uma reunião para validar a página que enviei?",
+ "d12": "Boa tarde, fecho aqui para não insistir. Se um dia quiserem olhar para isto, é só escrever. Encontramos a fuga. Desenhamos o sistema. Provamos o impacto.",
+}
+
+
 def mensagem(slug, c):
-    return (f"Boa tarde! Sou o Tomás, da Pacheco Studios (pachecost.com). O nosso lema é «{LEMA}» "
-            f"Desenhámos numa página o caminho de um cliente da {CURTO[slug]}, do primeiro contacto à próxima visita, "
-            f"com a infraestrutura de atendimento que montaríamos em cada passo e uma alternativa para cada preferência. Segue em anexo. "
-            f"Não é sobre o site: é sobre o que acontece entre a mensagem e a marcação. Faz sentido marcarmos uma reunião para validar isto convosco?")
+    gancho, pergunta = GANCHO[slug]
+    um = slug in SINGULAR
+    return (f"Boa tarde! Sou o Tomás, da Pacheco Studios.\n\n{gancho}\n\nUma só pergunta: {pergunta}\n\n"
+            f"Para não ficar só na pergunta, desenhámos numa página o caminho de um cliente da {CURTO[slug]}, do primeiro contacto à "
+            f"próxima visita: a infraestrutura de atendimento que montaríamos em cada passo, com uma alternativa para cada preferência. "
+            f"Não é sobre o site. Vai em anexo.\n\n"
+            f"Se fizer sentido, marcamos uma reunião para validar {'consigo' if um else 'convosco'}.\n\n"
+            f"{LEMA}\nTomás Pacheco · Pacheco Studios · pachecost.com")
 
 
 def main():
@@ -268,6 +295,8 @@ def main():
                 f"- Telefone {c['telefone']} · WhatsApp: sim (no site) · Google {c['nota']} · {c['avaliacoes']} avaliações",
                 f"- Morada: a confirmar ({CIDADE[s]}) · site {c['site']}",
                 f"- PDF (dono): {RAW}/{s}/triagem-{s}.pdf", "", "```", mensagem(s, c), "```", ""]
+        if i == len(ORDEM):
+            out += ["## Seguimentos (sem resposta; mesmo WhatsApp, sem novo PDF)", ""] + [f"- {k.upper()}: {v}" for k, v in CADENCIA.items()] + [""]
         print("ok", s)
     open(os.path.join(RAIZ, "raio-x", "ENVIAR-PT-lote-3.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
 
