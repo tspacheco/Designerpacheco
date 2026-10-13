@@ -100,7 +100,7 @@ def mx(dom):
 
 
 INICIO = time.time()
-LIMITE = 28 * 60  # depois disto não se testa mais nada, para o resultado sair antes do fim do tempo do workflow
+LIMITE = 25 * 60  # depois disto não se testa mais nada, para o resultado sair antes do fim do tempo do workflow
 
 
 def sonda(hosts, enderecos):
@@ -121,7 +121,7 @@ def _sonda(hosts, enderecos):
     falso = "".join(random.choice(string.ascii_lowercase) for _ in range(14)) + "@" + enderecos[0].split("@")[1]
     for host in hosts[:2]:
         try:
-            s = smtplib.SMTP(host, 25, timeout=10)
+            s = smtplib.SMTP(host, 25, timeout=8)
             s.ehlo(socket.getfqdn())
             s.mail("verificare@pachecost.com")
             codigos = {}
@@ -178,7 +178,21 @@ def verificar(emails):
     return out, notas
 
 
+LOCK = threading.Lock()
+
+
+def guarda(out):
+    with LOCK:
+        with open("/tmp/emails.jsonl", "a", encoding="utf-8") as f:
+            f.write(json.dumps(out, ensure_ascii=False) + "\n")
+    return out
+
+
 def um(item):
+    return guarda(_um(item))
+
+
+def _um(item):
     id_, url = item
     out = {"id": id_, "url": url, "emails": [], "telefones": [], "titulo": "", "descricao": "", "h1": "", "estado": "ok", "paginas": []}
     vistos, tels, texto = set(), set(), ""
@@ -253,28 +267,29 @@ def main():
     except Exception:
         SMTP_OK = False
     print("DNS a funcionar:", DNS_OK, "| porta 25 aberta:", SMTP_OK)
-    ex = cf.ThreadPoolExecutor(max_workers=12)
-    futs = [ex.submit(um, it) for it in itens]
-    cf.wait(futs, timeout=LIMITE + 4 * 60 - (time.time() - INICIO))
-    res = []
-    for it, f in zip(itens, futs):
-        if f.done() and not f.exception():
-            res.append(f.result())
-        else:
-            res.append({"id": it[0], "url": it[1], "emails": [], "estado": "sem tempo", "verificacao": {}, "smtp": {}})
-    json.dump(res, open("/tmp/emails.json", "w", encoding="utf-8"), ensure_ascii=False)
+    with cf.ThreadPoolExecutor(max_workers=12) as ex:
+        list(ex.map(um, itens))
+
+
+def cifrar():
+    """Junta o que ficou gravado (mesmo que a leitura tenha sido cortada a meio) e cifra."""
+    lote = "lote"
+    for linha in open(".github/emails.txt", encoding="utf-8"):
+        m = re.match(r"#\s*lote:\s*(\S+)", linha.strip())
+        if m:
+            lote = m.group(1)
+    res = [json.loads(l) for l in open("/tmp/emails.jsonl", encoding="utf-8")] if os.path.exists("/tmp/emails.jsonl") else []
+    with open("/tmp/emails.json", "w", encoding="utf-8") as f:
+        json.dump(res, f, ensure_ascii=False)
     os.makedirs("ponte", exist_ok=True)
     subprocess.run(["openssl", "smime", "-encrypt", "-aes256", "-binary", "-outform", "DER", "-in", "/tmp/emails.json",
                     "-out", "ponte/emails-%s.enc" % lote, ".github/ponte-cert.pem"], check=True)
-    ok = sum(1 for r in res if r["emails"])
     from collections import Counter
     c = Counter(v for r in res for v in r.get("verificacao", {}).values())
     portas = Counter(n.split(":")[0] for r in res for n in r.get("smtp", {}).values())
-    print("%d sites, %d com e-mail, %d com erro" % (len(res), ok, sum(1 for r in res if r["estado"] != "ok")))
+    print("%d sites gravados, %d com e-mail" % (len(res), sum(1 for r in res if r["emails"])))
     print("verificacao:", dict(c), "smtp:", dict(portas))
-    sys.stdout.flush()
-    os._exit(0)  # não esperar por ligações presas
 
 
 if __name__ == "__main__":
-    main()
+    cifrar() if sys.argv[1:] == ["cifrar"] else main()

@@ -17,7 +17,9 @@ jobs:
       - name: Ler sites e testar e-mails
         run: |
           pip install -q dnspython
-          python3 .github/scripts/emails.py
+          rm -f /tmp/emails.jsonl
+          timeout 30m python3 .github/scripts/emails.py || echo "leitura cortada ao fim de 30 min"
+          python3 .github/scripts/emails.py cifrar
       - name: Publicar no mesmo ramo
         run: |
           git config user.name "ponte"
