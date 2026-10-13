@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Under Maintenance - BeautyMed</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #2ab0c5; /* Cor de fallback baseada na sua imagem */
+        }
+
+        .background-container {
+            /* Define a sua imagem como fundo. */
+            background-image: url("bmlogo.png");
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+            /* Usar Flexbox para alinhar a caixa de texto na parte inferior */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 8vh; /* Espaço entre a caixa e o fundo da página */
+            box-sizing: border-box;
+        }
+
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.92); /* Fundo branco semitransparente para legibilidade */
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 90%;
+            width: 650px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            color: #1b7b99; /* Tom de azul em harmonia com a marca */
+            font-size: 26px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #4a4a4a;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: #E1306C; /* Cor oficial do Instagram */
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 2px solid #E1306C;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: #E1306C;
+            color: white;
+        }
+
+        .social-link i {
+            margin-right: 10px;
+            font-size: 22px;
+        }
+
+        /* Ajustes para ecrãs mais pequenos (telemóveis) */
+        @media (max-width: 600px) {
+            .content-box {
+                padding: 25px 20px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-container">
+        <div class="content-box">
+            <h1 id="main-heading">We apologize for the inconvenience.</h1>
+            <p id="sub-heading">We are working to improve your experience.<br>Please check back soon.</p>
+            
+            <p id="social-text" style="margin-bottom: 15px; font-weight: 600;">Find us on our social media:</p>
+            <a href="https://www.instagram.com/beautymed_pt/" target="_blank" rel="noopener noreferrer" class="social-link">
+                <i class="fab fa-instagram"></i> @beautymed_pt
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Dicionário com as traduções disponíveis
+        const translations = {
+            pt: {
+                title: "Em Manutenção - BeautyMed",
+                heading: "Pedimos desculpa pelo incómodo.",
+                subHeading: "Estamos a trabalhar para melhorar a sua experiência.<br>Por favor, volte a visitar-nos em breve.",
+                socialText: "Procure-nos nas nossas redes sociais:"
+            },
+            en: {
+                title: "Under Maintenance - BeautyMed",
+                heading: "We apologize for the inconvenience.",
+                subHeading: "We are working to improve your experience.<br>Please check back soon.",
+                socialText: "Find us on our social media:"
+            },
+            fr: {
+                title: "En Maintenance - BeautyMed",
+                heading: "Veuillez nous excuser pour la gêne occasionnée.",
+                subHeading: "Nous travaillons pour améliorer votre expérience.<br>Veuillez revenir bientôt.",
+                socialText: "Retrouvez-nous sur nos réseaux sociaux :"
+            }
+        };
+
+        // Detetar o idioma do browser (ex: 'pt-PT' ou 'en-US') e extrair apenas a primeira parte ('pt', 'en')
+        let userLang = navigator.language || navigator.userLanguage;
+        let langCode = userLang.substring(0, 2).toLowerCase();
+
+        // Se o idioma não for inglês nem francês, assumimos o português como padrão
+        if (langCode !== 'en' && langCode !== 'fr') {
+            langCode = 'pt';
+        }
+
+        // Aplicar os textos correspondentes ao idioma detetado
+        document.getElementById('page-title').innerText = translations[langCode].title;
+        document.getElementById('main-heading').innerText = translations[langCode].heading;
+        document.getElementById('sub-heading').innerHTML = translations[langCode].subHeading;
+        document.getElementById('social-text').innerText = translations[langCode].socialText;
+        
+        // Atualizar o atributo lang da tag html para fins de acessibilidade (SEO/Leitores de ecrã)
+        document.documentElement.lang = langCode;
+    </script>
+
+
+</body></html>
