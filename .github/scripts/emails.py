@@ -4,7 +4,7 @@ e-mails e telefones publicados, título, descrição, sinais de canais (WhatsApp
 Entrada: .github/emails.txt, uma linha por site: «<id> <url>». Linha «# lote: <nome>» dá o nome do ficheiro.
 Cada e-mail encontrado é testado: o domínio tem de ter servidor de correio (MX) e, se a porta 25 estiver
 aberta, pergunta-se ao servidor se a caixa existe (RCPT TO, sem enviar nada), com um endereço inventado
-para detetar servidores que aceitam tudo. Resultado em «verificacao»: valido | invalido | sem_mx | aceita_tudo | desconhecido.
+para detetar servidores que aceitam tudo. Resultado em «verificacao»: valido | invalido | sem_mx | aceita_tudo | mx_ok (porta 25 fechada) | desconhecido.
 Saída: ponte/emails-<lote>.enc, cifrado com .github/ponte-cert.pem (a chave privada nunca está no repositório),
 para não pôr e-mails de negócios legíveis num repositório público.
 """
@@ -70,6 +70,9 @@ def extrai(txt, vistos):
 
 
 MX_CACHE = {}
+import threading
+import time
+SEM = threading.Semaphore(3)  # poucos servidores de correio ao mesmo tempo: alojamentos partilhados cortam ligações em paralelo
 
 
 def mx(dom):
@@ -96,14 +99,23 @@ def mx(dom):
 
 
 def sonda(hosts, enderecos):
+    with SEM:
+        r, nota = _sonda(hosts, enderecos)
+        if nota != "ok":
+            time.sleep(6)
+            r, nota = _sonda(hosts, enderecos)
+        return r, nota
+
+
+def _sonda(hosts, enderecos):
     """Pergunta ao servidor de correio se cada caixa existe. Devolve {endereco: estado}."""
     res = {e: "desconhecido" for e in enderecos}
     ultimo = "sem host"
     falso = "".join(random.choice(string.ascii_lowercase) for _ in range(14)) + "@" + enderecos[0].split("@")[1]
     for host in hosts[:2]:
         try:
-            s = smtplib.SMTP(host, 25, timeout=15)
-            s.ehlo("mail.pachecost.com")
+            s = smtplib.SMTP(host, 25, timeout=10)
+            s.ehlo(socket.getfqdn())
             s.mail("verificare@pachecost.com")
             codigos = {}
             for e in enderecos + [falso]:
@@ -128,6 +140,7 @@ def sonda(hosts, enderecos):
 
 
 DNS_OK = True
+SMTP_OK = True
 
 
 def verificar(emails):
@@ -146,6 +159,11 @@ def verificar(emails):
             for e in lst:
                 out[e] = "desconhecido"
             notas[dom] = "dns falhou"
+            continue
+        if not SMTP_OK:
+            for e in lst:
+                out[e] = "mx_ok"
+            notas[dom] = "porta25: fechada"
             continue
         r, nota = sonda(hosts, lst)
         out.update(r)
@@ -220,8 +238,14 @@ def main():
         if len(p) == 2:
             itens.append((p[0], p[1].strip()))
     global DNS_OK
+    global SMTP_OK
     DNS_OK = bool(mx("gmail.com"))
-    print("DNS a funcionar:", DNS_OK)
+    try:
+        socket.create_connection((mx("gmail.com")[0], 25), timeout=8).close()
+        SMTP_OK = True
+    except Exception:
+        SMTP_OK = False
+    print("DNS a funcionar:", DNS_OK, "| porta 25 aberta:", SMTP_OK)
     with cf.ThreadPoolExecutor(max_workers=12) as ex:
         res = list(ex.map(um, itens))
     json.dump(res, open("/tmp/emails.json", "w", encoding="utf-8"), ensure_ascii=False)
