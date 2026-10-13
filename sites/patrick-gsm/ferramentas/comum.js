@@ -9,6 +9,7 @@ function seteazaLimba(l){
   try{localStorage.setItem('__LSKEY__',l)}catch(e){}
   $$('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
   $$('[data-aria]').forEach(function(e){var a=e.dataset.aria.split('|');e.setAttribute('aria-label',l==='en'?a[1]:l==='pt'?a[2]:a[0])});
+  $$('[data-alt]').forEach(function(e){var a=e.dataset.alt.split('|');e.setAttribute('alt',l==='en'?a[1]:l==='pt'?a[2]:a[0])});
   $$('[data-ph]').forEach(function(e){var a=e.dataset.ph.split('|');e.setAttribute('placeholder',l==='en'?a[1]:l==='pt'?a[2]:a[0])});
   var ti=document.querySelector('title[data-t]');if(ti){var a=ti.dataset.t.split('|');document.title=l==='en'?a[1]:l==='pt'?a[2]:a[0]}
   if(window.laLimba)window.laLimba(l);

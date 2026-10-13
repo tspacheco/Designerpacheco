@@ -2,6 +2,7 @@
 """Monta index.html (RO, botão EN) e pt.html (a mesma página a abrir em PT, para o Tomás) a partir de index.src.html:
 - /*__FONTES__*/          -> _fontes/fontes.css (fontes em base64, latin + latin-ext, com ă â î ș ț)
 - {{ro|en|pt}}            -> <span lang="ro">…</span><span lang="en">…</span><span lang="pt">…</span>
+- alt="{{ro|en|pt}}"   -> alt="ro" data-alt="ro|en|pt" (o JS troca ao mudar de língua)
 - aria-label="{{ro|en|pt}}" -> aria-label="ro" data-aria="ro|en|pt" (o JS troca ao mudar de língua)
 - /*__COMUM__*/          -> ferramentas/comum.js (língua, envio WhatsApp/SMS, revelar ao scroll)
 - __LSKEY__               -> chave do localStorage (diferente em cada ficheiro)
@@ -12,6 +13,7 @@ SLUG = os.path.basename(os.getcwd())
 T3 = r'\{\{([^{}|]*?)\|([^{}|]*?)\|([^{}|]*?)\}\}'
 src = open('index.src.html', encoding='utf-8').read().replace('/*__COMUM__*/', open('ferramentas/comum.js', encoding='utf-8').read())
 src = re.sub(r'data-nml="' + T3 + '"', lambda m: 'data-nml="%s" data-nml3="%s|%s|%s"' % (m[1], m[1], m[2], m[3]), src)
+src = re.sub(r'alt="' + T3 + '"', lambda m: 'alt="%s" data-alt="%s|%s|%s"' % (m[1], m[1], m[2], m[3]), src)
 src = re.sub(r'aria-label="' + T3 + '"', lambda m: 'aria-label="%s" data-aria="%s|%s|%s"' % (m[1], m[1], m[2], m[3]), src)
 src = re.sub(T3, lambda m: '<span lang="ro">%s</span><span lang="en">%s</span><span lang="pt">%s</span>' % (m[1], m[2], m[3]), src, flags=re.S)
 assert '{{' not in src, src[src.index('{{') - 80:src.index('{{') + 80]
