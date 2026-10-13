@@ -1,0 +1,143 @@
+<title>Raio-X Portugal 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: lista de cartões para o polegar, cabeçalho fixo com o progresso, um botão principal por cartão (WhatsApp). */
+:root{
+  --bg:#F4F0E9;--card:#FFFFFF;--fg:#1A1713;--mut:#6A6358;--linha:#DDD6C9;
+  --acento:#D9531C;--acento-fg:#FFFFFF;--ok:#2F7D5B;--ok-bg:#E3F0E9;--sec:#EAE4D8;
+  --display:"Archivo Black",system-ui,sans-serif;--corpo:"Archivo",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141210;--card:#1F1C18;--fg:#EFEAE3;--mut:#A39B8E;--linha:#34302A;
+  --acento:#F0733B;--acento-fg:#1A1713;--ok:#6CC49C;--ok-bg:#1D2E26;--sec:#2B2721;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141210;--card:#1F1C18;--fg:#EFEAE3;--mut:#A39B8E;--linha:#34302A;
+  --acento:#F0733B;--acento-fg:#1A1713;--ok:#6CC49C;--ok-bg:#1D2E26;--sec:#2B2721;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.4 var(--corpo);padding-inline:16px;padding-block:0 32px;max-width:640px;margin-inline:auto}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:14px 10px;z-index:2;border-bottom:1px solid var(--linha);margin-inline:-16px;padding-inline:16px}
+h1{font:400 20px/1.1 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.sub{color:var(--mut);font-size:13px;margin-top:4px}
+.barra{display:flex;align-items:center;gap:12px;margin-top:10px}
+.prog{flex:1;height:6px;background:var(--sec);border-radius:3px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--ok);transition:width .25s}
+.cont{font:700 13px var(--mono);font-variant-numeric:tabular-nums;min-width:4.5ch;text-align:right}
+.filtros{display:flex;gap:8px;margin-top:10px}
+.filtros button{flex:1;min-height:40px;border:1px solid var(--linha);background:var(--card);color:var(--fg);border-radius:8px;font:600 14px var(--corpo)}
+.filtros button[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:14px}
+li{background:var(--card);border:1px solid var(--linha);border-radius:10px;padding:14px;display:grid;gap:10px;min-width:0}
+li.feito{opacity:.62}
+.topo{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.nome{font:400 18px/1.15 var(--display);text-transform:uppercase;min-width:0;overflow-wrap:anywhere}
+.meta{color:var(--mut);font-size:13px;margin-top:3px}
+.n{font:700 12px var(--mono);color:var(--mut);padding-top:3px}
+.tel{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tel b{font:700 16px var(--mono);font-variant-numeric:tabular-nums;user-select:all}
+.tag{font:700 11px var(--corpo);letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:5px;background:var(--sec);color:var(--mut)}
+.acoes{display:grid;gap:8px}
+.acoes a,.acoes button{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:9px;font:700 15px var(--corpo);text-decoration:none;border:1px solid var(--linha);background:var(--sec);color:var(--fg);cursor:pointer}
+.acoes .prim{background:var(--acento);color:var(--acento-fg);border-color:var(--acento);min-height:52px;font-size:16px}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.marca{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:600;font-size:15px}
+.marca input{width:24px;height:24px;accent-color:var(--ok)}
+details summary{color:var(--mut);font-size:13px;cursor:pointer;min-height:32px;display:flex;align-items:center}
+details p{font-size:14px;white-space:pre-wrap;background:var(--sec);border-radius:8px;padding:10px;margin-top:6px;overflow-wrap:anywhere;user-select:all}
+.aviso{font-size:13px;color:var(--mut);margin-top:12px}
+:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header>
+  <h1>Raio-X Portugal 2</h1>
+  <p class="sub">5 clínicas, fisioterapia e estética do Algarve. Primeira execução paga, sem preço na mensagem: guarda o PDF e anexa-o na conversa. A mensagem sai sem link: guarda o PDF e anexa-o na conversa.</p>
+  <div class="barra"><div class="prog"><i id="prog"></i></div><span class="cont" id="cont">0/5</span></div>
+  <div class="filtros" role="group" aria-label="Filtro">
+    <button type="button" id="f-todos" aria-pressed="true">Todos</button>
+    <button type="button" id="f-falta" aria-pressed="false">Por enviar</button>
+  </div>
+</header>
+<ul id="lista"></ul>
+<p class="aviso">«Enviado» fica guardado só neste telemóvel. Fluxo: 1 guardar o PDF, 2 abrir o WhatsApp (a mensagem vem escrita), 3 anexar o PDF e enviar. O WhatsApp só abre conversa se o número tiver WhatsApp; se não abrir, usa Ligar. Os fixos não têm WhatsApp: liga e pede onde mandar o PDF.</p>
+
+<script>
+const DADOS = [{"nome": "FisioHealth", "cat": "Fisioterapia", "tel": "+351912557944", "fixo": false, "google": "4,9", "aval": "81", "morada": "a confirmar (Faro)", "pdf": "https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/pt-fisiohealth/raio-x-pt-fisiohealth.pdf", "ficheiro": "raio-x-pt-fisiohealth.pdf", "msg": "Boa tarde! Sou o Tomás, da Pacheco Studios. FisioHealth tem 4,9★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "texto": "Boa tarde! Sou o Tomás, da Pacheco Studios. FisioHealth tem 4,9★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "wa": "https://wa.me/351912557944?text=Boa%20tarde%21%20Sou%20o%20Tom%C3%A1s%2C%20da%20Pacheco%20Studios.%20FisioHealth%20tem%204%2C9%E2%98%85%20no%20Google%2C%20por%20isso%20seguimos%20no%20telem%C3%B3vel%20o%20caminho%20de%20um%20cliente%20novo%2C%20do%20Google%20at%C3%A9%20%C3%A0%20primeira%20mensagem%20para%20voc%C3%AAs%2C%20e%20marc%C3%A1mos%20onde%20ele%20se%20perde.%20Envio%20em%20PDF%20%283%20p%C3%A1ginas%29%2C%20com%20a%20primeira%20coisa%20que%20far%C3%ADamos%20para%20fechar%20essa%20fuga.%20O%20que%20n%C3%A3o%20se%20v%C3%AA%20de%20fora%20%C3%A9%20o%20que%20acontece%20depois%20de%20a%20mensagem%20chegar.%20Faz%20sentido%20marcarmos%20uma%20reuni%C3%A3o%20para%20validar%20isto%20convosco%3F"}, {"nome": "Eclat", "cat": "Medicina estética", "tel": "+351289803075", "fixo": true, "google": "4,8", "aval": "60", "morada": "a confirmar (Faro)", "pdf": "https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/pt-eclat/raio-x-pt-eclat.pdf", "ficheiro": "raio-x-pt-eclat.pdf", "msg": "Boa tarde! Sou o Tomás, da Pacheco Studios. Eclat tem 4,8★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "texto": "Boa tarde! Sou o Tomás, da Pacheco Studios. Eclat tem 4,8★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "wa": null}, {"nome": "NK Klinic", "cat": "Medicina estética", "tel": "+351282147498", "fixo": true, "google": "4,9", "aval": "22", "morada": "a confirmar (Portimão)", "pdf": "https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/pt-nk-klinic/raio-x-pt-nk-klinic.pdf", "ficheiro": "raio-x-pt-nk-klinic.pdf", "msg": "Boa tarde! Sou o Tomás, da Pacheco Studios. NK Klinic tem 4,9★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "texto": "Boa tarde! Sou o Tomás, da Pacheco Studios. NK Klinic tem 4,9★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "wa": null}, {"nome": "Agnus Dei", "cat": "Clínica dentária", "tel": "+351919060007", "fixo": false, "google": "4,8", "aval": "63", "morada": "a confirmar (Olhão)", "pdf": "https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/pt-agnus-dei/raio-x-pt-agnus-dei.pdf", "ficheiro": "raio-x-pt-agnus-dei.pdf", "msg": "Boa tarde! Sou o Tomás, da Pacheco Studios. Agnus Dei tem 4,8★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "texto": "Boa tarde! Sou o Tomás, da Pacheco Studios. Agnus Dei tem 4,8★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "wa": "https://wa.me/351919060007?text=Boa%20tarde%21%20Sou%20o%20Tom%C3%A1s%2C%20da%20Pacheco%20Studios.%20Agnus%20Dei%20tem%204%2C8%E2%98%85%20no%20Google%2C%20por%20isso%20seguimos%20no%20telem%C3%B3vel%20o%20caminho%20de%20um%20cliente%20novo%2C%20do%20Google%20at%C3%A9%20%C3%A0%20primeira%20mensagem%20para%20voc%C3%AAs%2C%20e%20marc%C3%A1mos%20onde%20ele%20se%20perde.%20Envio%20em%20PDF%20%283%20p%C3%A1ginas%29%2C%20com%20a%20primeira%20coisa%20que%20far%C3%ADamos%20para%20fechar%20essa%20fuga.%20O%20que%20n%C3%A3o%20se%20v%C3%AA%20de%20fora%20%C3%A9%20o%20que%20acontece%20depois%20de%20a%20mensagem%20chegar.%20Faz%20sentido%20marcarmos%20uma%20reuni%C3%A3o%20para%20validar%20isto%20convosco%3F"}, {"nome": "Barrigas a Crescer", "cat": "Fisioterapia", "tel": "+351919485391", "fixo": false, "google": "4,9", "aval": "24", "morada": "a confirmar (Faro)", "pdf": "https://github.com/tspacheco/Designerpacheco/raw/claude/auditoria-sites-fracos-fpyd0h/raio-x/pt-barrigas-a-crescer-i-silvia-co/raio-x-pt-barrigas-a-crescer-i-silvia-co.pdf", "ficheiro": "raio-x-pt-barrigas-a-crescer-i-silvia-co.pdf", "msg": "Boa tarde! Sou o Tomás, da Pacheco Studios. Barrigas a Crescer tem 4,9★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "texto": "Boa tarde! Sou o Tomás, da Pacheco Studios. Barrigas a Crescer tem 4,9★ no Google, por isso seguimos no telemóvel o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. Faz sentido marcarmos uma reunião para validar isto convosco?", "wa": "https://wa.me/351919485391?text=Boa%20tarde%21%20Sou%20o%20Tom%C3%A1s%2C%20da%20Pacheco%20Studios.%20Barrigas%20a%20Crescer%20tem%204%2C9%E2%98%85%20no%20Google%2C%20por%20isso%20seguimos%20no%20telem%C3%B3vel%20o%20caminho%20de%20um%20cliente%20novo%2C%20do%20Google%20at%C3%A9%20%C3%A0%20primeira%20mensagem%20para%20voc%C3%AAs%2C%20e%20marc%C3%A1mos%20onde%20ele%20se%20perde.%20Envio%20em%20PDF%20%283%20p%C3%A1ginas%29%2C%20com%20a%20primeira%20coisa%20que%20far%C3%ADamos%20para%20fechar%20essa%20fuga.%20O%20que%20n%C3%A3o%20se%20v%C3%AA%20de%20fora%20%C3%A9%20o%20que%20acontece%20depois%20de%20a%20mensagem%20chegar.%20Faz%20sentido%20marcarmos%20uma%20reuni%C3%A3o%20para%20validar%20isto%20convosco%3F"}];
+const CHAVE = "raiox-pt-lote2-enviados";
+let feitos = {};
+try { feitos = JSON.parse(localStorage.getItem(CHAVE) || "{}"); } catch (e) {}
+const guardar = () => { try { localStorage.setItem(CHAVE, JSON.stringify(feitos)); } catch (e) {} };
+let soFalta = false;
+const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.textContent = h; return e; };
+
+async function copiar(texto, botao) {
+  const antes = botao.textContent;
+  try { await navigator.clipboard.writeText(texto); botao.textContent = "Copiado"; }
+  catch (e) { botao.textContent = "Seleciona e copia"; }
+  setTimeout(() => botao.textContent = antes, 1600);
+}
+
+function desenhar() {
+  const lista = document.getElementById("lista");
+  lista.textContent = "";
+  DADOS.forEach((d, i) => {
+    const feito = !!feitos[d.pdf];
+    if (soFalta && feito) return;
+    const li = el("li", feito ? "feito" : "");
+    const topo = el("div", "topo");
+    const bloco = el("div");
+    bloco.append(el("div", "nome", d.nome));
+    bloco.append(el("div", "meta", `${d.cat} · ${d.google}★${d.aval ? " · " + d.aval + " avaliações" : ""}`));
+    topo.append(bloco, el("span", "n", String(i + 1).padStart(2, "0")));
+    li.append(topo);
+
+    const tel = el("div", "tel");
+    tel.append(el("b", "", d.tel.replace(/^\+40(\d{3})(\d{3})(\d{3})$/, "+40 $1 $2 $3").replace(/^\+351(\d{3})(\d{3})(\d{3})$/, "+351 $1 $2 $3")));
+    tel.append(el("span", "tag", d.fixo ? "Fixo: ligar" : "WhatsApp: ?"));
+    li.append(tel);
+
+    const ac = el("div", "acoes");
+    if (d.wa) {
+      const a = el("a", "prim", "2 · WhatsApp com a mensagem");
+      a.href = d.wa; a.target = "_blank"; a.rel = "noopener";
+      ac.append(a);
+    }
+    const par = el("div", "par");
+    const pdf = el("a", "", "1 · Guardar PDF"); pdf.href = d.pdf; pdf.target = "_blank"; pdf.rel = "noopener";
+    const lig = el("a", "", "Ligar"); lig.href = "tel:" + d.tel;
+    par.append(pdf, lig);
+    ac.append(par);
+    const cp = el("button", "", "Copiar mensagem"); cp.type = "button";
+    cp.addEventListener("click", () => copiar(d.texto, cp));
+    ac.append(cp);
+    li.append(ac);
+
+    li.append(el("div", "meta", "Anexar: " + d.ficheiro));
+    const det = el("details");
+    det.append(el("summary", "", "Ver mensagem e morada"));
+    det.append(el("p", "", d.msg + "\n\n" + (d.morada ? "Morada: " + d.morada : "")));
+    li.append(det);
+
+    const lab = el("label", "marca");
+    const cb = el("input"); cb.type = "checkbox"; cb.checked = feito; cb.id = "env-" + i;
+    cb.addEventListener("change", () => { if (cb.checked) feitos[d.pdf] = 1; else delete feitos[d.pdf]; guardar(); desenhar(); });
+    lab.append(cb, el("span", "", "Enviado"));
+    lab.htmlFor = cb.id;
+    li.append(lab);
+    lista.append(li);
+  });
+  const n = DADOS.filter(d => feitos[d.pdf]).length;
+  document.getElementById("cont").textContent = n + "/" + DADOS.length;
+  document.getElementById("prog").style.width = (100 * n / DADOS.length) + "%";
+}
+const filtro = falta => {
+  soFalta = falta;
+  document.getElementById("f-todos").setAttribute("aria-pressed", String(!falta));
+  document.getElementById("f-falta").setAttribute("aria-pressed", String(falta));
+  desenhar();
+};
+document.getElementById("f-todos").addEventListener("click", () => filtro(false));
+document.getElementById("f-falta").addEventListener("click", () => filtro(true));
+desenhar();
+</script>

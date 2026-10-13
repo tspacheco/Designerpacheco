@@ -85,6 +85,7 @@ T = {
         "n_cont_a": "O botão de ligar não está no primeiro ecrã{wa}.", "n_cont_a2": "Dá para ligar com um toque, mas não há WhatsApp.",
         "n_cont_v": "Liga ou escreve com um toque.", "sem_wa": " e não há WhatsApp",
         "n_marc": "Quer marcar", "n_marc_r": "Só por telefone, só no horário.", "n_marc_v": "Dá para marcar online.",
+        "n_marc_p": "Deixa um pedido no site; a hora só fica marcada quando alguém responder.",
         "n_resp": "Quem responde e em quanto tempo?", "n_resp_t": "Não se vê de fora. É isto que queremos perceber convosco.",
         "medimos": "O que medimos", "pasos": "Passos até uma chamada",
         "cats": {"performance": "Velocidade no telemóvel", "lcp": "Conteúdo principal", "peso": "Quanto o telemóvel descarrega"},
@@ -200,8 +201,22 @@ VITORIAS["reserva"] = {"pt": dict(titulo="Reservas que entram mesmo com a porta 
     metr="Reservas feitas fora do horário e faltas, contadas desde a primeira semana.")}
 
 
+# Pedido de marcação por formulário («entraremos em contacto»): o cliente fica à espera de uma resposta que não vê.
+VITORIAS["pedido"] = {"pt": dict(titulo="Nenhum pedido de marcação à espera",
+    trig="O cliente envia o pedido de marcação no vosso site.",
+    flux=["Recebe logo uma confirmação de que o pedido chegou, com o próximo passo.", "Vê as horas livres e escolhe uma, sem esperar por chamada.",
+          "A marcação entra na vossa agenda; os casos especiais ficam marcados para revisão.", "Na véspera recebe um lembrete; se não puder vir, liberta a hora."],
+    regra="Só se oferecem horas livres. Primeiras consultas e casos clínicos pedem a vossa confirmação.",
+    dono="Quem gere a agenda (receção ou vocês).",
+    hand="Dúvidas clínicas, urgências e pedidos fora do normal vão para uma pessoa.",
+    metr="Tempo entre o pedido e a marcação confirmada, e faltas, desde a primeira semana.")}
+
+# Escolha feita à mão depois de ler a página pela ponte (o detetor não distingue um calendário de um pedido por formulário).
+VITORIA_FORCADA = {"pt-fisiohealth": "pedido", "pt-barrigas-a-crescer-i-silvia-co": "pedido", "pt-eclat": "pedido", "pt-nk-klinic": "pedido"}
+
+
 def vitoria(d, c, lang):
-    t = tipo_vitoria(d, c)
+    t = VITORIA_FORCADA.get(c.get("slug", ""), tipo_vitoria(d, c))
     if t == "marcacao" and lang in ("pt", "ptpago") and re.search(r"restaur|taberna|tasca", c.get("categoria", "") + c["nome"], re.I):
         t = "reserva"
     return VITORIAS[t]["pt" if lang == "ptpago" else lang]
@@ -268,7 +283,9 @@ def estado(d, c, L):
         nos.append(("a", L["n_cont"], L["n_cont_a2"]))
     else:
         nos.append(("v", L["n_cont"], L["n_cont_v"]))
-    if "marcacao" in chk:
+    if VITORIA_FORCADA.get(c.get("slug")) == "pedido" and "n_marc_p" in L:
+        nos.append(("a", L["n_marc"], L["n_marc_p"]))
+    elif "marcacao" in chk:
         nos.append(("v" if chk["marcacao"] else "r", L["n_marc"], L["n_marc_v"] if chk["marcacao"] else L["n_marc_r"]))
     nos.append(("g", L["n_resp"], L["n_resp_t"]))
     return nos
