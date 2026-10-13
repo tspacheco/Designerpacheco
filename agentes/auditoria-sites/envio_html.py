@@ -29,6 +29,6 @@ for bloco in re.split(r"\n(?=## \d+\. )", md)[1:]:
 PAGINA = open(__file__.replace("envio_html.py", "envio_modelo.html"), encoding="utf-8").read()
 titulo, sub, chave = (sys.argv[3:] + ["Raio-X · Lote 2", "20 negócios de Iași.", "raiox-lote2-enviados"][len(sys.argv[3:]):])[:3]
 out = (PAGINA.replace("/*DADOS*/[]", json.dumps(itens, ensure_ascii=False)).replace("Raio-X · Lote 2", html.escape(titulo))
-       .replace("20 negócios de Iași.", html.escape(sub)).replace("raiox-lote2-enviados", chave).replace("0/20", f"0/{len(itens)}"))
+       .replace("20 negócios de Iași.", html.escape(sub)).replace("raiox-lote2-enviados", chave).replace("<title>Envio Raio-X</title>", f"<title>{html.escape(titulo)}</title>").replace("0/20", f"0/{len(itens)}"))
 open(sys.argv[2], "w", encoding="utf-8").write(out)
 print(len(itens), "negócios,", sum(1 for i in itens if i["fixo"]), "fixos")
