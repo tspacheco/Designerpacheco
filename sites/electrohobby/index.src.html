@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ElectroHobby Iași · electronică auto, Manta Roșie 14</title>
+<meta name="description" content="ElectroHobby Iași, Manta Roșie 14: atelier de reparații electronice. Chei și telecomenzi auto, radio cu mufă AUX, diagnoză. 4,8 pe Google. Tel. 0749 317 800.">
+<meta name="theme-color" content="#0E3A30">
+<meta property="og:title" content="ElectroHobby Iași · atelier de reparații electronice">
+<meta property="og:description" content="Spune aparatul și simptomul. Sună: 0749 317 800.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/g-04.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E3A30'/%3E%3Cpath d='M4 10h10l4 4h10M4 22h8l4-4h12' fill='none' stroke='%23E3B04B' stroke-width='2.4'/%3E%3Ccircle cx='28' cy='14' r='3' fill='%23F6C90E'/%3E%3Ccircle cx='28' cy='18' r='3' fill='%23FF4B3A'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --placa:#0E3A30; --placa-2:#0A2B24; --placa-3:#16503F; --traco:#E3B04B; --traco-2:#8F6F2A;
+  --silk:#EFEDE3; --silk-2:#B9C9C1; --galben:#F6C90E; --led:#FF4B3A;
+  --hartie:#ECEAE2; --hartie-2:#DEDBD0; --ink:#11201C; --ink-2:#3C4D47; --ink-3:#5E6F68; --linie:#BDBAAC;
+  --eroare:#B3261E;
+  --f-disp:"Anonymous Pro",ui-monospace,Menlo,Consolas,monospace; --f-text:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --lat:min(1140px,100% - 40px); --ease:cubic-bezier(.2,.8,.2,1); --jos:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:96px;scroll-behavior:smooth}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
+html:not(.rev) .doar-rev{display:none!important}
+body{margin:0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+p{margin:0 0 1em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.salt{position:absolute;left:12px;top:-70px;z-index:200;padding:10px 14px;border-radius:8px;background:#000;color:#fff}
+.salt:focus{top:12px}
+[tabindex="-1"]:focus{outline:none}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1!important;transform:none!important}
+}
+
+body{background:var(--hartie);color:var(--ink);font:400 1.05rem/1.62 var(--f-text);padding-bottom:calc(84px + var(--jos))}
+h1,h2,h3{font-family:var(--f-disp);font-weight:700;line-height:1;margin:0;letter-spacing:-.01em}
+:focus-visible{outline:3px solid var(--galben);outline-offset:3px;border-radius:2px}
+.paper :focus-visible,.fond :focus-visible{outline-color:var(--placa)}
+.lat{width:var(--lat);margin-inline:auto}
+.prezentare{background:var(--galben);color:var(--ink);font:700 .78rem/1.3 var(--f-disp);letter-spacing:.06em;text-align:center;padding:8px 14px}
+/* bara */
+.bara{position:sticky;top:0;z-index:50;background:var(--placa-2);color:var(--silk);border-bottom:1px solid var(--placa-3);transition:box-shadow .3s}
+.bara.scrolled{box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.bara-in{display:flex;align-items:center;gap:16px;min-height:66px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;min-width:0}
+.marca svg{width:38px;height:38px;flex:none}
+.marca b{font:700 1.3rem/1 var(--f-disp);letter-spacing:.02em;display:block;white-space:nowrap}
+.marca small{font:400 .72rem/1.2 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:var(--silk-2);display:block;margin-top:3px}
+.nav{display:none;gap:2px}
+.nav a{text-decoration:none;font:700 1rem/1 var(--f-disp);padding:12px 14px;letter-spacing:.02em;position:relative}
+.nav a::after{content:"";position:absolute;left:14px;right:14px;bottom:5px;height:2px;background:var(--galben);transform:scaleX(0);transform-origin:0 50%;transition:transform .3s var(--ease)}
+.nav a:hover::after{transform:scaleX(1)}
+.limbi{display:flex;border:1.5px solid var(--placa-3);border-radius:3px;flex:none}
+.limbi button{border:0;background:none;color:var(--silk);font:700 .78rem/1 var(--f-disp);min-width:40px;min-height:36px;letter-spacing:.06em}
+.limbi button[aria-pressed="true"]{background:var(--galben);color:var(--ink)}
+.burger{width:46px;height:46px;border:1.5px solid var(--placa-3);border-radius:3px;background:none;display:grid;place-items:center;flex:none}
+.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2.5px;background:var(--silk);position:relative;transition:transform .25s var(--ease),background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.meniu-deschis .burger span{background:transparent}
+.meniu-deschis .burger span::before{transform:translateY(7px) rotate(45deg)}
+.meniu-deschis .burger span::after{transform:translateY(-7px) rotate(-45deg)}
+.meniu{position:fixed;inset:0;z-index:60;background:var(--placa-2);color:var(--silk);padding:100px 26px 40px;display:flex;flex-direction:column;visibility:hidden;opacity:0;transition:opacity .25s,visibility 0s .25s}
+.meniu-deschis .meniu{visibility:visible;opacity:1;transition-delay:0s}
+.meniu a{font:700 2.1rem/1.1 var(--f-disp);text-decoration:none;padding:14px 0;border-bottom:1px dashed var(--placa-3)}
+.meniu a::before{content:"> ";color:var(--galben)}
+.meniu .inchide{position:absolute;top:16px;right:16px;border:1.5px solid var(--placa-3);background:none;color:var(--silk);border-radius:3px;min-height:46px;padding:0 16px;font:700 .85rem var(--f-disp);text-transform:uppercase}
+.meniu-tel{margin-top:auto;font:400 .95rem var(--f-disp)}
+.meniu-tel a{display:block;font:700 1.7rem var(--f-disp);border:0;padding:0}
+.meniu-tel a::before{display:none}
+.meniu-deschis .bara{z-index:70;background:transparent;border-color:transparent;box-shadow:none}
+.bara :focus-visible,.meniu :focus-visible,.rodape :focus-visible,.erou :focus-visible,.jos :focus-visible,.fisa :focus-visible{outline-color:var(--galben)}
+/* butoane */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:3px;border:2px solid var(--galben);font:700 1.08rem/1 var(--f-disp);letter-spacing:.03em;text-decoration:none;background:var(--galben);color:var(--ink);transition:transform .2s var(--ease),box-shadow .2s,background .2s;box-shadow:0 4px 0 #9A7F08}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 #9A7F08}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #9A7F08}
+.btn-contur{background:transparent;color:var(--silk);border-color:var(--silk-2);box-shadow:none}
+.btn-contur:hover{background:rgba(255,255,255,.08);box-shadow:none}
+.btn-inchis{background:var(--placa);border-color:var(--placa);color:var(--silk);box-shadow:0 4px 0 #04150F}
+.btn-inchis:hover{box-shadow:0 6px 0 #04150F}
+.btn-wa{background:var(--silk);border-color:var(--silk);color:var(--ink);box-shadow:0 4px 0 #8C8A7E}
+/* ---------- erou: placa ---------- */
+.erou{position:relative;background:var(--placa);color:var(--silk);overflow:hidden;padding:36px 0 96px;isolation:isolate}
+.erou::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 30%,rgba(255,255,255,.07),transparent 55%),repeating-linear-gradient(0deg,transparent 0 31px,rgba(255,255,255,.025) 31px 32px),repeating-linear-gradient(90deg,transparent 0 31px,rgba(255,255,255,.025) 31px 32px);z-index:-2}
+.pcb{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.pcb path{fill:none;stroke:var(--traco);stroke-width:5;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:.55;vector-effect:non-scaling-stroke;animation:traza 1.5s var(--d,0s) cubic-bezier(.5,.1,.3,1) forwards}
+@keyframes traza{to{stroke-dashoffset:0}}
+.pcb path.f{opacity:.26}
+.pcb .pad{fill:var(--placa);stroke:var(--traco);stroke-width:4;opacity:0;animation:apare .3s var(--d,0s) forwards}
+@keyframes apare{to{opacity:.8}}
+.pcb .led{fill:#2A1E18;stroke:#5C4A3A;stroke-width:2;animation:led .4s var(--d,0s) forwards,puls 2.8s calc(var(--d,0s) + .6s) ease-in-out infinite}
+.pcb .led.g{--c:#F6C90E}.pcb .led.r{--c:#FF4B3A}
+.pcb .halo{fill:var(--c);opacity:0;animation:halo .5s var(--d,0s) forwards}
+@keyframes led{to{fill:var(--c);stroke:var(--c)}}
+@keyframes halo{to{opacity:.28}}
+@keyframes puls{50%{opacity:.7}}
+.pcb text{font:400 13px var(--f-disp);fill:var(--silk);opacity:.28;letter-spacing:.08em}
+.erou-in{position:relative;display:grid;gap:34px;align-items:center}
+.eti{display:inline-flex;align-items:center;gap:10px;font:400 .84rem/1 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--traco);margin:0 0 16px}
+.eti i{width:10px;height:10px;border-radius:50%;background:var(--led);box-shadow:0 0 10px var(--led);animation:clip 1.6s steps(1) infinite}
+@keyframes clip{50%{opacity:.25}}
+.erou h1{font-size:clamp(2.2rem,10.2vw,5.4rem);line-height:.95;letter-spacing:-.03em;text-transform:uppercase}
+.erou h1 span{display:block}
+.erou h1 .l2{color:var(--galben)}
+.lead{font-size:1.14rem;max-width:34ch;margin:22px 0 26px;color:var(--silk-2)}
+.erou-cta{display:flex;flex-wrap:wrap;gap:12px}
+.nota{display:inline-flex;align-items:center;gap:12px;margin-top:28px;font:400 .95rem/1.3 var(--f-disp);color:var(--silk-2)}
+.nota b{font:700 2.3rem/1 var(--f-disp);color:var(--silk)}
+.stele{color:var(--galben);letter-spacing:2px}
+.poza-erou{position:relative;margin:0}
+.fereastra{position:relative;aspect-ratio:4/3;border:2px solid var(--traco);border-radius:4px;overflow:hidden;background:#07201A;box-shadow:0 0 0 8px rgba(227,176,75,.08),0 24px 50px rgba(0,0,0,.4)}
+.foto svg,.foto img{width:100%;height:100%;object-fit:cover}
+.foto img{position:absolute;inset:0}
+.fereastra img{animation:pornit 1.2s 1.2s steps(6,end) both}
+@keyframes pornit{0%{opacity:0;filter:brightness(2.4) contrast(1.4)}30%{opacity:.6}45%{opacity:.15}70%{opacity:.9;filter:brightness(1.4)}100%{opacity:1;filter:none}}
+.gaura{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--placa);border:3px solid var(--traco);z-index:2}
+.gaura:nth-of-type(1){top:10px;left:10px}.gaura:nth-of-type(2){top:10px;right:10px}.gaura:nth-of-type(3){bottom:10px;left:10px}.gaura:nth-of-type(4){bottom:10px;right:10px}
+.poza-erou figcaption{font:400 .8rem/1.4 var(--f-disp);letter-spacing:.04em;color:var(--silk-2);margin-top:14px;display:flex;gap:10px;align-items:flex-start}
+.poza-erou figcaption::before{content:"";flex:none;width:9px;height:9px;margin-top:5px;border-radius:50%;background:var(--galben);box-shadow:0 0 8px var(--galben)}
+.js .erou .eti,.js .erou h1 span,.js .erou .lead,.js .erou-cta,.js .nota{opacity:0;animation:intra .7s var(--ease) forwards}
+.js .erou .eti{animation-delay:.2s}.js .erou h1 .l1{animation:flicker 1s .4s steps(1) forwards}.js .erou h1 .l2{animation:flicker 1s .7s steps(1) forwards}
+.js .erou .lead{animation-delay:1s}.js .erou-cta{animation-delay:1.1s}.js .nota{animation-delay:1.25s}
+@keyframes intra{from{transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes flicker{0%{opacity:0}12%{opacity:1}22%{opacity:.2}34%{opacity:1}46%{opacity:.4}60%{opacity:1}100%{opacity:1}}
+.val{position:absolute;left:0;right:0;bottom:0;height:34px;background:var(--hartie);clip-path:polygon(0 100%,0 40%,4% 40%,5% 0,95% 0,96% 40%,100% 40%,100% 100%)}
+/* trasee separatoare */
+.traco-s{position:relative;height:20px;margin:0;color:var(--traco-2)}
+.traco-s svg{display:block;width:100%;height:20px;overflow:visible}
+.traco-s path{fill:none;stroke:currentColor;stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;vector-effect:non-scaling-stroke;transition:stroke-dashoffset 1.3s var(--ease)}
+.traco-s.in path{stroke-dashoffset:0}
+.traco-s i{position:absolute;right:max(20px,calc((100% - 1140px)/2));top:3px;width:14px;height:14px;border-radius:50%;background:#3A2E1E;border:2px solid #7A6A4A;transition:background .3s 1.1s,box-shadow .3s 1.1s,border-color .3s 1.1s}
+.traco-s.in i{background:var(--led);border-color:var(--led);box-shadow:0 0 12px var(--led)}
+.traco-s.y.in i{background:var(--galben);border-color:var(--galben);box-shadow:0 0 12px var(--galben)}
+html:not(.js) .traco-s path{stroke-dashoffset:0}
+/* secțiuni */
+.sectiune{padding:70px 0}
+.sectiune h2{font-size:clamp(1.9rem,6.4vw,3.2rem);margin:0 0 14px;max-width:22ch;letter-spacing:-.025em}
+.sectiune .sub{max-width:54ch;color:var(--ink-2);margin:0 0 34px}
+.silk{display:inline-flex;align-items:center;gap:8px;font:400 .82rem/1 var(--f-disp);letter-spacing:.12em;text-transform:uppercase;color:var(--placa-3);margin:0 0 14px;border:1.5px solid var(--placa-3);padding:6px 9px;border-radius:2px}
+.fond{background:var(--hartie-2)}
+.placa-s{background:var(--placa);color:var(--silk)}
+.placa-s .sub{color:var(--silk-2)}.placa-s .silk{color:var(--traco);border-color:var(--traco-2)}
+/* lucrări */
+.module{display:grid;gap:16px}
+.modul{margin:0;background:var(--silk);border:2px solid var(--placa);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s}
+.modul:hover{transform:translateY(-4px);box-shadow:0 10px 0 var(--traco)}
+.modul .foto{position:relative;aspect-ratio:4/3;background:var(--hartie-2);overflow:hidden}
+.modul .foto img{transition:transform .7s var(--ease)}
+.modul:hover .foto img{transform:scale(1.04)}
+.modul figcaption{padding:14px 16px 18px;border-top:2px solid var(--placa);position:relative}
+.modul figcaption b{font:700 1.2rem/1.1 var(--f-disp);display:block;letter-spacing:-.01em}
+.modul figcaption span{display:block;font-size:.93rem;color:var(--ink-2);margin-top:6px;line-height:1.45}
+.modul figcaption i{position:absolute;right:14px;top:-9px;width:16px;height:16px;border-radius:50%;background:#3A2E1E;border:2px solid var(--silk);transition:background .3s,box-shadow .3s}
+.modul:hover figcaption i{background:var(--led);box-shadow:0 0 12px var(--led)}
+/* recenzii */
+.scor{display:flex;align-items:flex-end;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+.scor b{font:700 4.6rem/.8 var(--f-disp);color:var(--galben)}
+.scor span{font:400 .95rem/1.4 var(--f-disp);color:var(--silk-2)}
+.recenzii{display:grid;gap:14px}
+.rec{margin:0;border:1.5px solid var(--traco-2);border-radius:4px;padding:22px;background:rgba(255,255,255,.04);position:relative}
+.rec::before{content:"";position:absolute;left:-1.5px;top:22px;width:6px;height:26px;background:var(--galben)}
+.rec p{margin:0 0 12px;font-size:1.05rem}
+.rec cite{font:400 .8rem/1.3 var(--f-disp);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--traco)}
+/* cerere */
+.cerere{display:grid;gap:26px;align-items:start}
+.formular{background:var(--silk);border:2px solid var(--placa);border-radius:4px;padding:24px 20px 26px;box-shadow:8px 8px 0 var(--traco)}
+fieldset{border:0;margin:0 0 24px;padding:0;min-width:0}
+legend{font:700 1.2rem/1.1 var(--f-disp);padding:0;margin-bottom:12px}
+legend small{font:400 .8rem/1 var(--f-disp);color:var(--ink-3);margin-left:8px;letter-spacing:.04em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.chip>span{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:0 14px;border-radius:3px;border:2px solid var(--linie);background:var(--hartie);font-weight:600;font-size:.94rem;transition:background .2s,border-color .2s,color .2s}
+.chip>span::before{content:"";flex:none;width:11px;height:11px;border-radius:50%;background:#3A2E1E;border:2px solid #7A6A4A;transition:background .3s,box-shadow .3s,border-color .3s}
+.chip input:hover+span{border-color:var(--placa)}
+.chip input:checked+span{background:var(--placa);border-color:var(--placa);color:var(--silk)}
+.chip input:checked+span::before{background:var(--galben);border-color:var(--galben);box-shadow:0 0 10px var(--galben)}
+.chip input:focus-visible+span{outline:3px solid var(--galben);outline-offset:3px;box-shadow:0 0 0 6px var(--placa)}
+.camp{display:block;margin-bottom:16px}
+.camp>span{display:block;font:700 .92rem/1.2 var(--f-disp);letter-spacing:.04em;text-transform:uppercase;margin-bottom:7px}
+.camp>span em{font-style:normal;color:var(--ink-3);font-weight:400;text-transform:none}
+.camp input,.camp textarea{width:100%;min-height:52px;border:2px solid var(--linie);border-radius:3px;background:#fff;padding:12px 14px;transition:border-color .2s,box-shadow .2s}
+.camp textarea{min-height:96px;resize:vertical}
+.camp input:focus,.camp textarea:focus{outline:none;border-color:var(--placa);box-shadow:0 0 0 4px var(--traco)}
+.camp.gresit input{border-color:var(--eroare)}
+.eroare{color:var(--eroare);font-weight:700;font-size:.9rem;margin:6px 0 0;min-height:1.2em}
+.lateral{display:grid;gap:18px}
+.placa-mea{background:var(--placa);border:2px solid var(--traco);border-radius:4px;padding:10px;box-shadow:0 0 0 6px rgba(14,58,48,.12)}
+.placa-mea svg{display:block;width:100%;height:auto}
+.placa-mea .t{fill:none;stroke:#2C6B58;stroke-width:4;stroke-linejoin:round;stroke-linecap:round;transition:stroke .35s}
+.placa-mea .t.on{stroke:var(--galben);filter:drop-shadow(0 0 4px rgba(246,201,14,.7))}
+.placa-mea .m rect{fill:#0A2B24;stroke:#2C6B58;stroke-width:3;transition:stroke .35s,fill .35s}
+.placa-mea .m.on rect{stroke:var(--galben);fill:#14473A}
+.placa-mea .m text{font:700 13px var(--f-disp);fill:#7FA99A;transition:fill .35s}
+.placa-mea .m.on text{fill:var(--silk)}
+.placa-mea .m circle{fill:#3A2E1E;stroke:#7A6A4A;stroke-width:2;transition:fill .3s,stroke .3s}
+.placa-mea .m.on circle{fill:var(--led);stroke:var(--led)}
+.placa-mea .ic text{font:700 22px var(--f-disp);fill:var(--traco)}
+.placa-mea .ic rect{fill:#0A2B24;stroke:var(--traco);stroke-width:3}
+.placa-mea .pin{fill:var(--traco)}
+.fisa{background:var(--ink);color:var(--silk);border:2px solid var(--placa);border-top:12px solid var(--galben);border-radius:4px;padding:24px 20px 22px}
+.fisa h3{font-size:1.5rem;margin:0 0 4px}
+.fisa .mic{font:400 .8rem/1.4 var(--f-disp);letter-spacing:.06em;color:var(--silk-2);margin:0 0 16px;text-transform:uppercase}
+.fisa dl{margin:0}
+.fisa .rand{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:10px 0;border-top:1px dashed #3D5650}
+.fisa dt{font:400 .78rem/1.7 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--traco)}
+.fisa dd{margin:0;font-weight:600;min-height:1.5em;overflow-wrap:anywhere}
+.fisa dd.gol{color:#7E908A}
+.fisa .rand.nou dd{animation:scrie .5s steps(8,end)}
+@keyframes scrie{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.trimite{display:grid;gap:10px;margin-top:20px}
+.trimite .btn{width:100%}
+.stare-t{font-size:.86rem;margin:10px 0 0;color:var(--silk-2);min-height:1.3em}
+/* contact */
+.contact{display:grid;gap:30px;align-items:start}
+.date{list-style:none;margin:0 0 22px;padding:0}
+.date li{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--linie);align-items:flex-start}
+.date svg{width:24px;height:24px;flex:none;stroke:var(--placa-3);fill:none;stroke-width:2.2;margin-top:2px}
+.date b{display:block;font:400 .8rem/1.4 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.date a.tel{font:700 2rem/1.1 var(--f-disp);text-decoration:none}
+.selo{display:inline-block;font:700 .66rem/1 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;background:var(--galben);color:var(--ink);border-radius:2px;padding:4px 7px;margin-left:8px;vertical-align:middle}
+.harta{position:relative;aspect-ratio:4/3;border:2px solid var(--placa);border-radius:4px;overflow:hidden;background:var(--placa);box-shadow:8px 8px 0 var(--traco)}
+.harta>svg,.harta iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.harta .btn{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);white-space:nowrap}
+.harta .btn:hover{transform:translateX(-50%) translateY(-2px)}
+.harta.activ>svg{display:none}
+.banner{margin:18px 0 0;border:2px solid var(--placa);border-radius:4px;overflow:hidden}
+.banner .foto{aspect-ratio:16/9;position:relative;background:#F6C90E}.banner .foto img{object-fit:contain}
+.banner figcaption{font:400 .78rem/1.4 var(--f-disp);padding:10px 14px;background:var(--silk);border-top:2px solid var(--placa);color:var(--ink-2)}
+/* rodapé */
+.rodape{background:var(--placa-2);color:var(--silk);padding:54px 0 40px}
+.rodape a{text-decoration-color:var(--traco);text-underline-offset:3px}
+.rodape h2{font-size:1.6rem;margin-bottom:10px}
+.rodape p{color:var(--silk-2)}
+.rodape-grid{display:grid;gap:26px;margin-bottom:34px}
+.legal{display:flex;flex-wrap:wrap;gap:8px 22px;border-top:1px solid var(--placa-3);padding-top:22px;font-size:.84rem;color:var(--silk-2)}
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:10px 14px calc(10px + var(--jos));background:var(--placa-2);border-top:2px solid var(--traco)}
+.jos .btn{flex:1;min-height:50px;padding:0 10px;box-shadow:none}
+.js .jos{transform:translateY(110%);transition:transform .4s var(--ease)}
+.js .jos.vis{transform:none}
+@media (min-width:640px){.module{grid-template-columns:1fr 1fr}.recenzii{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){
+  body{padding-bottom:0}
+  .nav{display:flex}.burger{display:none}.jos{display:none}
+  .erou{padding:60px 0 120px}
+  .erou-in{grid-template-columns:1.05fr .95fr;gap:56px}
+  .module{grid-template-columns:repeat(3,1fr)}
+  .recenzii{grid-template-columns:repeat(3,1fr)}
+  .cerere{grid-template-columns:1.1fr .9fr;gap:44px}
+  .lateral{position:sticky;top:90px}
+  .contact{grid-template-columns:1fr 1fr;gap:56px}
+  .rodape-grid{grid-template-columns:1.4fr 1fr 1fr}
+  .formular{padding:34px 34px 36px}
+}
+@media (max-width:899px){.pcb .c,.pcb text{display:none}.limbi{margin-left:auto}.marca{margin-right:0}.marca small{display:none}.marca b{font-size:1.1rem}.bara-in{gap:10px}}
+@media (prefers-reduced-motion:reduce){.pcb path{stroke-dashoffset:0}.pcb .pad,.pcb .halo{opacity:.6}.pcb .led{fill:var(--c);stroke:var(--c)}.traco-s path{stroke-dashoffset:0}.js .erou .eti,.js .erou h1 span{opacity:1}}
+</style>
+</head>
+<body>
+<a class="salt" href="#continut">{{Sari la conținut|Skip to content|Saltar para o conteúdo}}</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.7-.3z"/></symbol>
+  <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-1-2z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
+  <symbol id="i-ceas" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  <symbol id="i-sag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</defs></svg>
+
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru ElectroHobby Iași|PACHECO STUDIOS PREVIEW · demo website for ElectroHobby Iași|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para a ElectroHobby Iași}}</div>
+
+<header class="bara" id="bara">
+  <div class="lat bara-in">
+    <a class="marca" href="#sus" aria-label="{{ElectroHobby — acasă|ElectroHobby — home|ElectroHobby — início}}">
+      <svg viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="5" fill="#0E3A30" stroke="#E3B04B" stroke-width="1.5"/><path d="M5 13h10l4 4h14M5 27h8l4-4h16" fill="none" stroke="#E3B04B" stroke-width="2.4" stroke-linejoin="round"/><circle cx="33" cy="17" r="2.6" fill="#F6C90E"/><circle cx="33" cy="23" r="2.6" fill="#FF4B3A"/></svg>
+      <span><b>ElectroHobby</b><small>{{reparații electronice · Iași|electronics repair · Iași|reparação eletrónica · Iași}}</small></span>
+    </a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#lucrari">{{Lucrări|Work|Trabalhos}}</a>
+      <a href="#clienti">{{Clienți|Clients|Clientes}}</a>
+      <a href="#diagnostic">{{Diagnostic|Diagnosis|Diagnóstico}}</a>
+      <a href="#contact">{{Contact|Contact|Contactos}}</a>
+    </nav>
+    <div class="limbi" role="group" aria-label="{{Limba|Language|Língua}}">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false" class="doar-rev">PT</button>
+    </div>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="{{Deschide meniul|Open menu|Abrir o menu}}"><span></span></button>
+  </div>
+</header>
+<div class="meniu" id="meniu">
+  <button class="inchide" type="button">{{Închide|Close|Fechar}} ×</button>
+  <a href="#lucrari">{{Lucrări|Work|Trabalhos}}</a>
+  <a href="#clienti">{{Clienți|Clients|Clientes}}</a>
+  <a href="#diagnostic">{{Diagnostic|Diagnosis|Diagnóstico}}</a>
+  <a href="#contact">{{Contact|Contact|Contactos}}</a>
+  <p class="meniu-tel">{{Sună:|Call:|Ligue:}} <a href="tel:+40749317800">0749 317 800</a></p>
+</div>
+
+<main id="continut" tabindex="-1">
+<section class="erou" id="sus" aria-labelledby="h1">
+  <svg class="pcb" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g>
+      <path class="f" pathLength="1" style="--d:.2s" d="M0 120H210L260 170H520"/>
+      <path class="f" pathLength="1" style="--d:.5s" d="M0 270H140L190 320H430L470 360H620"/>
+      <path pathLength="1" style="--d:.8s" d="M0 590H300L350 540H700L740 580H1000"/>
+      <path pathLength="1" style="--d:.4s" d="M1200 80H980L930 130H800"/>
+      <path pathLength="1" style="--d:.9s" d="M1200 340H1100L1050 390H940"/>
+      <path pathLength="1" style="--d:1.2s" d="M1200 640H1060L1010 590H860"/>
+      <path pathLength="1" style="--d:1.1s" d="M320 700V650L360 610H600"/>
+      <path pathLength="1" style="--d:.7s" d="M700 0V50L740 90H900"/>
+      <circle class="pad" style="--d:1.6s" cx="0" cy="120" r="9"/><circle class="pad" style="--d:1.9s" cx="0" cy="270" r="9"/><circle class="pad" style="--d:2s" cx="0" cy="590" r="9"/><circle class="pad" style="--d:1.9s" cx="700" cy="0" r="9"/><circle class="pad" style="--d:1.6s" cx="600" cy="610" r="9"/>
+      <g class="c"><circle class="halo" style="--d:1.6s;--c:#F6C90E" cx="520" cy="170" r="20"/><circle class="led g" style="--d:1.6s;--c:#F6C90E" cx="520" cy="170" r="9"/></g>
+      <g class="c"><circle class="halo" style="--d:2s;--c:#FF4B3A" cx="620" cy="360" r="20"/><circle class="led r" style="--d:2s;--c:#FF4B3A" cx="620" cy="360" r="9"/></g>
+      <g><circle class="halo" style="--d:2.3s;--c:#F6C90E" cx="1000" cy="580" r="20"/><circle class="led g" style="--d:2.3s;--c:#F6C90E" cx="1000" cy="580" r="9"/></g>
+      <g><circle class="halo" style="--d:1.8s;--c:#FF4B3A" cx="800" cy="130" r="20"/><circle class="led r" style="--d:1.8s;--c:#FF4B3A" cx="800" cy="130" r="9"/></g>
+      <g><circle class="halo" style="--d:2.2s;--c:#F6C90E" cx="940" cy="390" r="20"/><circle class="led g" style="--d:2.2s;--c:#F6C90E" cx="940" cy="390" r="9"/></g>
+      <g><circle class="halo" style="--d:2.5s;--c:#FF4B3A" cx="860" cy="590" r="20"/><circle class="led r" style="--d:2.5s;--c:#FF4B3A" cx="860" cy="590" r="9"/></g>
+      <text x="480" y="205">LED1</text><text x="580" y="395">LED2</text><text x="960" y="620">LED3</text><text x="770" y="165">R7</text><text x="900" y="420">R12</text><text x="810" y="620">D4</text>
+    </g>
+  </svg>
+  <div class="lat erou-in">
+    <div>
+      <p class="eti"><i aria-hidden="true"></i>{{atelier de reparații electronice|electronics repair workshop|oficina de reparação eletrónica}}</p>
+      <h1 id="h1"><span class="l1">Electro</span><span class="l2">Hobby</span></h1>
+      <p class="lead">{{Chei și telecomenzi auto, radio cu mufă AUX, calculatoare și resetări. Spune-ne aparatul și ce face.|Car keys and remotes, radios with an AUX jack, computers and resets. Tell us the device and what it does.|Chaves e telecomandos auto, rádios com ficha AUX, computadores e reposições. Diga-nos o aparelho e o que faz.}}</p>
+      <div class="erou-cta">
+        <a class="btn" href="tel:+40749317800"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}} 0749 317 800</a>
+        <a class="btn btn-contur" href="#diagnostic">{{Cere diagnostic|Request a diagnosis|Pedir diagnóstico}}</a>
+      </div>
+      <p class="nota"><b>4,8</b><span><span class="stele" aria-hidden="true">★★★★★</span><br>{{32 de recenzii Google|32 Google reviews|32 avaliações Google}}</span></p>
+    </div>
+    <figure class="poza-erou">
+      <div class="fereastra foto">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#0A2B24"/><g fill="none" stroke="#E3B04B" stroke-width="3" opacity=".6"><path d="M0 220H120L150 190H300M0 90H90L120 120H260"/></g><rect x="150" y="110" width="100" height="80" rx="4" fill="#07201A" stroke="#E3B04B" stroke-width="3"/></svg>
+        <img src="media/g-04.webp" width="1600" height="1200" fetchpriority="high" alt="Bordul unui Opel cu luminile aprinse și, pe tabletă în față, un program de diagnoză cu mesajul Reset Completed Successfully" data-alt="Bordul unui Opel cu luminile aprinse și, pe tabletă în față, un program de diagnoză cu mesajul Reset Completed Successfully|An Opel dashboard with its lights on and, on the tablet in front, a diagnostic program showing Reset Completed Successfully|O consola de um Opel com as luzes acesas e, no tablet à frente, um programa de diagnóstico com a mensagem Reset Completed Successfully" onerror="this.remove()">
+        <span class="gaura" aria-hidden="true"></span><span class="gaura" aria-hidden="true"></span><span class="gaura" aria-hidden="true"></span><span class="gaura" aria-hidden="true"></span>
+      </div>
+      <figcaption>{{Diagnoză pe tabletă, în mașină.|Diagnosis on a tablet, in the car.|Diagnóstico no tablet, dentro do carro.}}</figcaption>
+    </figure>
+  </div>
+  <div class="val" aria-hidden="true"></div>
+</section>
+
+<section class="sectiune" id="lucrari" aria-labelledby="h-luc">
+  <div class="lat">
+    <p class="silk rv">{{lucrări din poze|jobs in the photos|trabalhos nas fotos}}</p>
+    <h2 id="h-luc" class="rv">{{Ce se vede pe banc și în mașină|What you see on the bench and in the car|O que se vê na bancada e no carro}}</h2>
+    <p class="sub rv">{{Fotografii din atelier și din mașinile clienților: chei, radio, calculator, bord.|Photos from the workshop and clients’ cars: keys, radio, computer, dashboard.|Fotografias da oficina e dos carros dos clientes: chaves, rádio, computador, painel.}}</p>
+    <div class="module">
+      <figure class="modul rv"><div class="foto"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#DEDBD0"/></svg><img src="media/g-03.webp" loading="lazy" width="1600" height="1606" alt="Două chei auto cu telecomandă pliabilă, pe un volan Audi" data-alt="Două chei auto cu telecomandă pliabilă, pe un volan Audi|Two folding remote car keys on an Audi steering wheel|Duas chaves de carro com telecomando articulado, sobre um volante Audi" onerror="this.remove()"></div><figcaption><i aria-hidden="true"></i><b>{{Chei și telecomenzi|Keys and remotes|Chaves e telecomandos}}</b><span>{{Chei pliabile cu telecomandă, cu sigla ElectroHobby.|Folding keys with remote, marked with the ElectroHobby logo.|Chaves articuladas com telecomando, com o logótipo ElectroHobby.}}</span></figcaption></figure>
+      <figure class="modul rv d1"><div class="foto"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#DEDBD0"/></svg><img src="media/g-02.webp" loading="lazy" width="1600" height="2133" alt="Două chei auto în mână, în fața unui volan Volkswagen" data-alt="Două chei auto în mână, în fața unui volan Volkswagen|Two car keys in a hand, in front of a Volkswagen steering wheel|Duas chaves de carro na mão, em frente a um volante Volkswagen" onerror="this.remove()" style="object-position:50% 70%"></div><figcaption><i aria-hidden="true"></i><b>{{Cheie nouă lângă cea veche|New key next to the old one|Chave nova ao lado da antiga}}</b><span>{{Două modele de cheie, ținute în mână în fața volanului.|Two key models, held in a hand in front of the wheel.|Dois modelos de chave, na mão, em frente ao volante.}}</span></figcaption></figure>
+      <figure class="modul rv d2"><div class="foto"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#DEDBD0"/></svg><img src="media/g-05.webp" loading="lazy" width="1600" height="2133" alt="Radio CD cu ecranul portocaliu care arată INPUT 1 AUX" data-alt="Radio CD cu ecranul portocaliu care arată INPUT 1 AUX|A CD radio with an orange display showing INPUT 1 AUX|Rádio com CD e ecrã laranja a mostrar INPUT 1 AUX" onerror="this.remove()" style="object-position:50% 25%"></div><figcaption><i aria-hidden="true"></i><b>{{Radio cu mufă AUX|Radio with AUX input|Rádio com entrada AUX}}</b><span>{{Ecranul arată intrarea AUX, adăugată la radioul din bord.|The display shows the AUX input, added to the dashboard radio.|O ecrã mostra a entrada AUX, adicionada ao rádio do tablier.}}</span></figcaption></figure>
+      <figure class="modul rv"><div class="foto"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#DEDBD0"/></svg><img src="media/g-06.webp" loading="lazy" width="1600" height="1200" alt="Radio CD într-un bord Fiat, cu butoane și ecran" data-alt="Radio CD într-un bord Fiat, cu butoane și ecran|A CD radio in a Fiat dashboard, with buttons and a display|Rádio com CD num tablier Fiat, com botões e ecrã" onerror="this.remove()"></div><figcaption><i aria-hidden="true"></i><b>{{Radio CD, în bord|CD radio, in the dash|Rádio CD, no tablier}}</b><span>{{Un radio CD montat în bord, cu butoanele la vedere.|A CD radio fitted in the dash, buttons in view.|Um rádio CD montado no tablier, com os botões à vista.}}</span></figcaption></figure>
+      <figure class="modul rv d1"><div class="foto"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#DEDBD0"/></svg><img src="media/g-01.webp" loading="lazy" width="1600" height="1200" alt="Bord de Volkswagen demontat, cu coloana de volan scoasă și comutatoarele în mână" data-alt="Bord de Volkswagen demontat, cu coloana de volan scoasă și comutatoarele în mână|A Volkswagen dashboard taken apart, steering column out and switches in hand|Tablier de Volkswagen desmontado, com a coluna de direção fora e os comutadores na mão" onerror="this.remove()"></div><figcaption><i aria-hidden="true"></i><b>{{Bord și volan, demontate|Dash and wheel, taken apart|Tablier e volante, desmontados}}</b><span>{{Coloana de volan scoasă, comutatoarele la verificat.|Steering column out, switches being checked.|Coluna de direção fora, comutadores em verificação.}}</span></figcaption></figure>
+      <figure class="modul rv d2"><div class="foto"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#DEDBD0"/></svg><img src="media/g-04.webp" loading="lazy" width="1600" height="1200" alt="Tabletă cu program de diagnoză în fața bordului unui Opel" data-alt="Tabletă cu program de diagnoză în fața bordului unui Opel|A tablet with a diagnostic program in front of an Opel dashboard|Tablet com programa de diagnóstico em frente ao tablier de um Opel" onerror="this.remove()" style="object-position:50% 100%"></div><figcaption><i aria-hidden="true"></i><b>{{Calculator: citire și resetare|Computer: read and reset|Computador: leitura e reposição}}</b><span>{{Programul de pe tabletă confirmă resetarea încheiată.|The tablet program confirms the reset has completed.|O programa do tablet confirma que a reposição terminou.}}</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<div class="traco-s rv" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path pathLength="1" d="M0 10H300L316 4H700L716 10H1000"/></svg><i></i></div>
+
+<section class="sectiune placa-s" id="clienti" aria-labelledby="h-cl">
+  <div class="lat">
+    <p class="silk rv">{{32 de recenzii Google|32 Google reviews|32 avaliações Google}}</p>
+    <h2 id="h-cl" class="rv">{{Ce spun cei care au trecut pe aici|What people who came by say|O que dizem os que por cá passaram}}</h2>
+    <div class="scor rv"><b>4,8</b><span><span class="stele" aria-hidden="true">★★★★★</span><br>{{din 5, la 32 de recenzii|out of 5, from 32 reviews|em 5, com 32 avaliações}}</span></div>
+    <div class="recenzii">
+      <blockquote class="rec rv"><p>„{{Totul lucrat foarte curat și foarte atent.|Everything done very cleanly and very carefully.|Tudo feito de forma muito limpa e muito atenta.}}”</p><cite>{{Recenzie Google · mufă AUX montată|Google review · AUX jack fitted|Avaliação Google · ficha AUX instalada}}</cite></blockquote>
+      <blockquote class="rec rv d1"><p>„{{Profesionalism și mult bun simț. Comunicarea a fost eficientă pe tot parcursul colaborării.|Professionalism and a lot of common sense. Communication was efficient throughout.|Profissionalismo e muito bom senso. A comunicação foi eficiente durante toda a colaboração.}}”</p><cite>{{Recenzie Google · AUX pe CD player|Google review · AUX on a CD player|Avaliação Google · AUX num leitor de CD}}</cite></blockquote>
+      <blockquote class="rec rv d2"><p>„{{Foarte, foarte atent la detalii omul.|The man pays great attention to detail.|O homem é muito, muito atento ao detalhe.}}”</p><cite>{{Recenzie Google|Google review|Avaliação Google}}</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="sectiune" id="diagnostic" aria-labelledby="h-dg">
+  <div class="lat">
+    <p class="silk rv">{{cerere de diagnostic|diagnosis request|pedido de diagnóstico}}</p>
+    <h2 id="h-dg" class="rv">{{Ce aparat ai și ce face?|What device do you have, and what does it do?|Que aparelho tem e o que faz?}}</h2>
+    <p class="sub rv">{{Alegi aparatul și simptomul, iar placa din dreapta se aprinde. Apoi trimiți mesajul gata scris pe WhatsApp sau SMS.|Pick the device and the symptom and the board on the right lights up. Then send the ready-written message by WhatsApp or SMS.|Escolhe o aparelho e o sintoma e a placa à direita acende. Depois envia a mensagem já escrita por WhatsApp ou SMS.}}</p>
+    <div class="cerere">
+      <form class="formular rv" id="form" novalidate>
+        <fieldset><legend>{{Aparatul|The device|O aparelho}}<small>{{alege oricâte|pick any|escolha quantos quiser}}</small></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="ap" value="cheie sau telecomandă auto" data-n="cheie"><span>{{Cheie / telecomandă auto|Car key / remote|Chave / telecomando auto}}</span></label>
+            <label class="chip"><input type="checkbox" name="ap" value="radio / CD (mufă AUX)" data-n="radio"><span>{{Radio / CD · mufă AUX|Radio / CD · AUX jack|Rádio / CD · ficha AUX}}</span></label>
+            <label class="chip"><input type="checkbox" name="ap" value="bord și instrumente" data-n="bord"><span>{{Bord / instrumente|Dashboard / gauges|Painel / instrumentos}}</span></label>
+            <label class="chip"><input type="checkbox" name="ap" value="calculator motor sau siguranțe" data-n="ecu"><span>{{Calculator motor / siguranțe|Engine computer / fuses|Centralina / fusíveis}}</span></label>
+            <label class="chip"><input type="checkbox" name="ap" value="alt aparat electronic" data-n="alt"><span>{{Alt aparat electronic|Other electronic device|Outro aparelho eletrónico}}</span></label>
+          </div>
+        </fieldset>
+        <fieldset><legend>{{Simptomul|The symptom|O sintoma}}<small>{{alege oricâte|pick any|escolha quantos quiser}}</small></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="sm" value="nu pornește sau se oprește în mers"><span>{{Nu pornește / se oprește|Won’t start / stalls|Não arranca / vai abaixo}}</span></label>
+            <label class="chip"><input type="checkbox" name="sm" value="nu răspunde telecomanda"><span>{{Telecomanda nu răspunde|Remote doesn’t respond|O telecomando não responde}}</span></label>
+            <label class="chip"><input type="checkbox" name="sm" value="fără sunet sau fără intrare AUX"><span>{{Fără sunet / fără AUX|No sound / no AUX|Sem som / sem AUX}}</span></label>
+            <label class="chip"><input type="checkbox" name="sm" value="lumini aprinse pe bord"><span>{{Lumini aprinse pe bord|Warning lights on|Luzes acesas no painel}}</span></label>
+            <label class="chip"><input type="checkbox" name="sm" value="contact intermitent"><span>{{Contact intermitent|Intermittent contact|Contacto intermitente}}</span></label>
+            <label class="chip"><input type="checkbox" name="sm" value="altceva (scriu în detalii)"><span>{{Altceva|Something else|Outro}}</span></label>
+          </div>
+        </fieldset>
+        <fieldset><legend>{{Mașina|The car|O carro}}</legend>
+          <label class="camp"><span>{{Marca, modelul, anul|Make, model, year|Marca, modelo, ano}} <em>({{opțional|optional|opcional}})</em></span><input id="masina" type="text" autocomplete="off"></label>
+        </fieldset>
+        <fieldset><legend>{{Despre tine|About you|Sobre si}}</legend>
+          <label class="camp" id="camp-nume"><span>{{Numele tău|Your name|O seu nome}}</span><input id="nume" type="text" autocomplete="name" aria-describedby="er-nume"><p class="eroare" id="er-nume" role="alert"></p></label>
+          <label class="camp"><span>{{Detalii|Details|Detalhes}} <em>({{opțional|optional|opcional}})</em></span><textarea id="detalii"></textarea></label>
+        </fieldset>
+        <p style="font-size:.9rem;color:var(--ink-3);margin:0">{{Fără prețuri aici: se stabilesc după diagnostic.|No prices here: they are agreed after the diagnosis.|Sem preços aqui: combinam-se depois do diagnóstico.}}</p>
+      </form>
+      <div class="lateral rv d1">
+        <div class="placa-mea" aria-hidden="true">
+          <svg viewBox="0 0 400 300">
+            <path class="t" data-t="cheie" d="M96 54V100L140 130H168"/>
+            <path class="t" data-t="radio" d="M304 54V100L260 130H232"/>
+            <path class="t" data-t="bord" d="M96 246V200L140 170H168"/>
+            <path class="t" data-t="ecu" d="M304 246V200L260 170H232"/>
+            <path class="t" data-t="alt" d="M200 96V110"/>
+            <g class="ic"><rect x="168" y="110" width="64" height="80" rx="3"/><text x="200" y="158" text-anchor="middle">EH</text>
+              <g class="pin"><rect x="160" y="120" width="8" height="4"/><rect x="160" y="132" width="8" height="4"/><rect x="160" y="164" width="8" height="4"/><rect x="160" y="176" width="8" height="4"/><rect x="232" y="120" width="8" height="4"/><rect x="232" y="132" width="8" height="4"/><rect x="232" y="164" width="8" height="4"/><rect x="232" y="176" width="8" height="4"/></g></g>
+            <g class="m" data-n="cheie"><rect x="46" y="20" width="100" height="34" rx="3"/><text x="96" y="42" text-anchor="middle">CHEIE</text><circle cx="58" cy="27" r="4"/></g>
+            <g class="m" data-n="radio"><rect x="254" y="20" width="100" height="34" rx="3"/><text x="304" y="42" text-anchor="middle">RADIO</text><circle cx="266" cy="27" r="4"/></g>
+            <g class="m" data-n="bord"><rect x="46" y="246" width="100" height="34" rx="3"/><text x="96" y="268" text-anchor="middle">BORD</text><circle cx="58" cy="253" r="4"/></g>
+            <g class="m" data-n="ecu"><rect x="254" y="246" width="100" height="34" rx="3"/><text x="304" y="268" text-anchor="middle">ECU</text><circle cx="266" cy="253" r="4"/></g>
+            <g class="m" data-n="alt"><rect x="150" y="62" width="100" height="34" rx="3"/><text x="200" y="84" text-anchor="middle">ALT</text><circle cx="162" cy="69" r="4"/></g>
+          </svg>
+        </div>
+        <aside class="fisa" aria-live="polite">
+          <h3>{{Fișă de diagnostic|Diagnosis sheet|Ficha de diagnóstico}}</h3>
+          <p class="mic">ElectroHobby Iași · 0749 317 800</p>
+          <dl id="fisa"></dl>
+          <div class="trimite">
+            <a class="btn btn-wa" id="b-wa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</a>
+            <a class="btn btn-contur" id="b-sms" href="#"><svg aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</a>
+            <a class="btn" href="tel:+40749317800"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sau sună|Or call|Ou ligue}} 0749 317 800</a>
+          </div>
+          <p class="stare-t" id="stare-t" role="status"></p>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="traco-s y rv" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path pathLength="1" d="M0 10H120L136 4H560L576 10H1000"/></svg><i></i></div>
+
+<section class="sectiune fond" id="contact" aria-labelledby="h-con">
+  <div class="lat contact">
+    <div>
+      <p class="silk rv">{{contact|contact|contactos}}</p>
+      <h2 id="h-con" class="rv">{{Manta Roșie 14, Iași|Manta Roșie 14, Iași|Manta Roșie 14, Iași}}</h2>
+      <ul class="date rv">
+        <li><svg aria-hidden="true"><use href="#i-pin"/></svg><span><b>{{Adresa|Address|Morada}}</b>{{Vis-a-vis de fostul Dedeman, în curtea Electromontaj, Manta Roșie 14, 700670 Iași|Opposite the former Dedeman, in the Electromontaj yard, Manta Roșie 14, 700670 Iași|Em frente ao antigo Dedeman, no pátio da Electromontaj, Manta Roșie 14, 700670 Iași}}</span></li>
+        <li><svg aria-hidden="true"><use href="#i-tel"/></svg><span><b>{{Telefon|Phone|Telefone}}</b><a class="tel" href="tel:+40749317800">0749 317 800</a></span></li>
+        <li><svg aria-hidden="true"><use href="#i-ceas"/></svg><span><b>{{Program|Hours|Horário}}<span class="selo">{{de confirmat|to be confirmed|a confirmar}}</span></b>{{Sună înainte de a veni.|Call before you come.|Ligue antes de vir.}}</span></li>
+      </ul>
+      <a class="btn btn-inchis rv" href="https://www.google.com/maps/search/?api=1&amp;query=47.1351443%2C27.5931779" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-sag"/></svg>{{Deschide în Google Maps|Open in Google Maps|Abrir no Google Maps}}</a>
+    </div>
+    <div class="rv d1">
+      <div class="harta" id="harta">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#0A2B24"/><g fill="none" stroke="#E3B04B" stroke-width="3" opacity=".7"><path d="M0 220H120L150 190H260L290 150H400M0 90H90L120 120H200"/></g><circle cx="260" cy="150" r="18" fill="#0E3A30" stroke="#F6C90E" stroke-width="3"/><circle cx="260" cy="150" r="7" fill="#FF4B3A"/></svg>
+        <button class="btn" type="button" id="arata-harta" data-src="https://maps.google.com/maps?q=47.1351443,27.5931779&amp;z=17&amp;output=embed" data-title="ElectroHobby, Manta Roșie 14, Iași"><svg aria-hidden="true"><use href="#i-pin"/></svg>{{Arată harta|Show the map|Mostrar o mapa}}</button>
+      </div>
+      <figure class="banner">
+        <div class="foto"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="225" fill="#F6C90E"/></svg><img src="media/g-07.webp" loading="lazy" width="1440" height="809" alt="Bannerul ElectroHobby, Electronică Auto, cu adresa Manta Roșie 14 Iași și numărul 0749317800" data-alt="Bannerul ElectroHobby, Electronică Auto, cu adresa Manta Roșie 14 Iași și numărul 0749317800|The ElectroHobby banner, Auto Electronics, with the address Manta Roșie 14 Iași and the number 0749317800|O banner da ElectroHobby, Eletrónica Auto, com a morada Manta Roșie 14 Iași e o número 0749317800" onerror="this.remove()"></div>
+        <figcaption>{{Bannerul lor: Electronică Auto.|Their banner: Auto Electronics.|O banner deles: Eletrónica Auto.}}</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="lat">
+    <div class="rodape-grid">
+      <div><h2>ElectroHobby Iași</h2><p>{{Atelier de reparații electronice, Manta Roșie 14, Iași.|Electronics repair workshop, Manta Roșie 14, Iași.|Oficina de reparação eletrónica, Manta Roșie 14, Iași.}}</p></div>
+      <div><p><b>{{Atelier|Workshop|Oficina}}</b><br>Manta Roșie 14, 700670 Iași<br><a href="tel:+40749317800">0749 317 800</a></p></div>
+      <div><p><b>{{Program|Hours|Horário}}</b><br>{{de confirmat|to be confirmed|a confirmar}}</p></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 ElectroHobby Iași · {{denumire firmă și CUI: de confirmat|company name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+      <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+    </div>
+  </div>
+</footer>
+
+<div class="jos" id="jos">
+  <a class="btn" href="tel:+40749317800"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <a class="btn btn-contur" href="#diagnostic">{{Diagnostic|Diagnosis|Diagnóstico}}</a>
+</div>
+
+<noscript><p style="padding:16px;background:#fff">ElectroHobby Iași · Manta Roșie 14, 700670 Iași (vis-a-vis de fostul Dedeman, în curtea Electromontaj) · Tel. 0749 317 800 · Program: de confirmat · 4,8 pe Google (32 de recenzii) · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"ElectroHobby Iași","description":"Atelier de reparații electronice: chei și telecomenzi auto, radio cu mufă AUX, diagnoză.","telephone":"+40749317800","address":{"@type":"PostalAddress","streetAddress":"Manta Roșie 14","postalCode":"700670","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1351443,"longitude":27.5931779},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"32"}}
+</script>
+<script>
+(function(){
+  var html=document.documentElement;
+  var reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(id){return document.getElementById(id)};
+  var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var L=function(){var l=html.dataset.lang;return l==='en'||l==='pt'?l:'ro'};
+  var t=function(ro,en,pt){var l=L();return l==='en'?en:l==='pt'?(pt||en):ro};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var onLang=[];
+  function setLang(l){
+    html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;
+    try{localStorage.setItem('__LSKEY__',l)}catch(e){}
+    $$('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
+    $$('[data-aria]').forEach(function(e){var a=e.dataset.aria.split('|');e.setAttribute('aria-label',l==='en'?a[1]:l==='pt'?a[2]:a[0])});
+    $$('[data-alt]').forEach(function(e){var a=e.dataset.alt.split('|');e.setAttribute('alt',l==='en'?a[1]:l==='pt'?a[2]:a[0])});
+    onLang.forEach(function(f){f()});
+  }
+  $$('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.setLang)})});
+  /* meniu */
+  var burger=document.querySelector('.burger'),meniu=$('meniu');
+  function meniuSet(o){document.body.classList.toggle('meniu-deschis',o);burger.setAttribute('aria-expanded',o?'true':'false');if(o){var a=meniu.querySelector('a');a&&a.focus()}}
+  burger.addEventListener('click',function(){meniuSet(!document.body.classList.contains('meniu-deschis'))});
+  $$('#meniu a,#meniu .inchide').forEach(function(a){a.addEventListener('click',function(){meniuSet(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('meniu-deschis')){meniuSet(false);burger.focus()}});
+  /* revelare */
+  var rvs=$$('.rv');
+  if('IntersectionObserver' in window&&!reduz){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(function(e){io.observe(e)});
+  }else rvs.forEach(function(e){e.classList.add('in')});
+  /* bara de sus la scroll */
+  var bara=$('bara');function sc(){bara.classList.toggle('scrolled',window.scrollY>12)}sc();addEventListener('scroll',sc,{passive:true});
+  /* harta la cerere */
+  var hb=$('arata-harta');
+  if(hb)hb.addEventListener('click',function(){var h=$('harta');var f=document.createElement('iframe');f.src=hb.dataset.src;f.title=hb.dataset.title;f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';h.appendChild(f);h.classList.add('activ');hb.remove()});
+  /* linkuri de mesaj */
+  function leaga(text,tel,w,s,ok){
+    var enc=encodeURIComponent(text);
+    w.href='https://wa.me/'+tel.replace(/\D/g,'')+'?text='+enc;
+    s.href='sms:'+tel+'?&body='+enc;
+  }
+  /* program: PROG={zi:[min,max]} */
+  function acum(){
+    try{var f=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Bucharest',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());var o={};f.forEach(function(p){o[p.type]=p.value});return{zi:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday],min:(+o.hour%24)*60+ +o.minute}}
+    catch(e){var d=new Date();return{zi:d.getDay(),min:d.getHours()*60+d.getMinutes()}}
+  }
+  var ZILE={ro:['Duminică','Luni','Marți','Miercuri','Joi','Vineri','Sâmbătă'],en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],pt:['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado']};
+  function hmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+
+  var TEL='+40749317800';
+  /* ---------- placa mea: aparatul ales aprinde componenta ---------- */
+  function placa(){
+    var on={};$$('input[name="ap"]:checked').forEach(function(i){on[i.dataset.n]=1});
+    $$('.placa-mea [data-n],.placa-mea [data-t]').forEach(function(e){var k=e.dataset.n||e.dataset.t;e.classList.toggle('on',!!on[k])});
+  }
+  /* ---------- fișa + trimitere ---------- */
+  var tAnt={},prim=true;
+  function vals(n){return $$('input[name="'+n+'"]:checked').map(function(r){return r.value})}
+  function valori(){return {a:vals('ap').join(', '),s:vals('sm').join(', '),m:$('masina').value.trim(),n:$('nume').value.trim(),d:$('detalii').value.trim()}}
+  function fisa(){
+    var v=valori(),R=[['a',['Aparat','Device','Aparelho']],['s',['Simptom','Symptom','Sintoma']],['m',['Mașina','Car','Carro']],['n',['Nume','Name','Nome']],['d',['Detalii','Details','Detalhes']]];
+    $('fisa').innerHTML=R.map(function(r){var x=v[r[0]],nou=x&&tAnt[r[0]]!==x&&!prim;return '<div class="rand'+(nou?' nou':'')+'"><dt>'+t(r[1][0],r[1][1],r[1][2])+'</dt><dd class="'+(x?'':'gol')+'">'+(x?esc(x.charAt(0).toUpperCase()+x.slice(1)):'—')+'</dd></div>'}).join('');
+    tAnt=v;prim=false;
+    var m='Bună ziua! Aș dori un diagnostic la ElectroHobby.\n';
+    if(v.a)m+='Aparat: '+v.a+'\n';if(v.s)m+='Simptom: '+v.s+'\n';if(v.m)m+='Mașina: '+v.m+'\n';if(v.d)m+='Detalii: '+v.d+'\n';
+    m+='Nume: '+(v.n||'…')+'\nCând pot veni? Mulțumesc!';
+    leaga(m,TEL,$('b-wa'),$('b-sms'));placa();
+  }
+  $('form').addEventListener('input',fisa);$('form').addEventListener('change',fisa);$('form').addEventListener('submit',function(e){e.preventDefault()});
+  function verifica(e){
+    if($('nume').value.trim().length<2){e.preventDefault();$('camp-nume').classList.add('gresit');$('er-nume').textContent=t('Scrie numele, ca să știm cum să te strigăm.','Add your name so we know who to ask for.','Escreva o nome, para sabermos quem chamar.');$('nume').focus();return false}
+    $('camp-nume').classList.remove('gresit');$('er-nume').textContent='';
+    $('stare-t').textContent=t('Se deschide aplicația. Apasă Trimite acolo.','Opening the app. Press Send there.','A abrir a aplicação. Carregue em Enviar lá.');return true;
+  }
+  $('b-wa').addEventListener('click',verifica);$('b-sms').addEventListener('click',verifica);
+  $('nume').addEventListener('input',function(){$('camp-nume').classList.remove('gresit');$('er-nume').textContent=''});
+  var jos=$('jos'),erou=document.querySelector('.erou');
+  function arataJos(){jos.classList.toggle('vis',window.scrollY>erou.offsetHeight*.6)}arataJos();addEventListener('scroll',arataJos,{passive:true});
+  onLang.push(fisa);
+  setLang(L());fisa();
+})();
+</script>
+</body>
+</html>
