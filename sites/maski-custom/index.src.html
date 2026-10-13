@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maski Custom · Reparații computere, Strada Canta 20, Iași</title>
+<meta name="description" content="Maski Custom, Bloc 535, Strada Canta 20, Iași: service pentru laptop, PC, console, telefoane și alte electronice. 5,0 pe Google. Tel. 0749 669 192.">
+<meta name="theme-color" content="#07080B">
+<meta property="og:title" content="Maski Custom · Reparații computere Iași">
+<meta property="og:description" content="Laptop, PC, console, telefoane. Sună: 0749 669 192.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/g-02.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2307080B'/%3E%3Crect x='9' y='9' width='14' height='14' rx='2' fill='%23FF4A3F'/%3E%3Cpath d='M16 3v6M16 23v6M3 16h6M23 16h6' stroke='%23FF4A3F' stroke-width='2'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --bg:#07080B;--panel:#0E1117;--panel-2:#151A23;--fg:#E8EBF2;--fg-2:#A2ABBD;
+  --acc:#FF4A3F;--acc-2:#FF7468;--blue:#5B9BFF;--line:#222836;--line-strong:#3A4459;--err:#FF9A90;
+  --btn-bg:#FF4A3F;--btn-fg:#14080A;--ban-bg:#FF4A3F;--ban-fg:#14080A;--jos-bg:#0A0C11;
+  --f-disp:"Major Mono Display",ui-monospace,Menlo,monospace;
+  --f-text:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);--r:6px;
+}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
+html:not(.rev) .doar-rev{display:none}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-text);line-height:1.6;font-size:1rem;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%}
+img{display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus,var(--acc));outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lat{width:min(1200px,100% - 40px);margin-inline:auto}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.js .rv:not(.vis){opacity:0;transform:translateY(22px)}
+.rv{transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+.prezentare{background:var(--ban-bg);color:var(--ban-fg);text-align:center;font:600 .72rem/1.3 var(--f-mono,var(--f-text));letter-spacing:.08em;padding:8px 14px;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border:2px solid transparent;border-radius:var(--r,10px);font-weight:700;text-decoration:none;cursor:pointer;touch-action:manipulation;transition:transform .2s var(--ease),background .2s,color .2s,border-color .2s,box-shadow .2s;background:var(--btn-bg);color:var(--btn-fg);line-height:1.1}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn-o{background:transparent;color:var(--fg);border-color:var(--line-strong,var(--fg))}
+.btn-wa{background:#25D366;color:#06210F}
+.btn-wa:hover{background:#3BE57B}
+.confirmat{display:inline-block;font:600 .72rem/1 var(--f-mono,var(--f-text));letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border:1px dashed currentColor;border-radius:4px;opacity:.85;vertical-align:middle}
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--jos-bg);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
+.jos.vizibil{transform:none}
+@media(min-width:900px){.jos{display:none}}
+.foaie-fond{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:90;opacity:0;pointer-events:none;transition:opacity .25s}
+.foaie-fond.deschis{opacity:1;pointer-events:auto}
+.foaie{position:fixed;left:0;right:0;bottom:0;z-index:100;background:var(--panel);color:var(--fg);border-top:2px solid var(--acc);padding:26px 20px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(105%);visibility:hidden;transition:transform .35s var(--ease),visibility 0s .35s;max-width:560px;margin:0 auto;border-radius:16px 16px 0 0}
+.foaie.deschis{transform:none;visibility:visible;transition-delay:0s}
+.foaie h2{margin:0 0 6px;font-family:var(--f-disp);font-size:1.4rem}
+.foaie p{margin:0 0 16px;color:var(--fg-2);font-size:.95rem}
+.foaie .trimite{display:grid;gap:10px}
+.inchide-f{position:absolute;right:10px;top:8px;width:44px;height:44px;border:0;background:none;font-size:1.8rem;cursor:pointer;color:var(--fg-2)}
+.legal{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:.82rem;color:var(--fg-2);padding:22px 0 8px;border-top:1px solid var(--line);margin-top:34px}
+.legal a{text-underline-offset:3px}
+.harta{min-height:300px;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:20px;border-radius:var(--r,10px);overflow:hidden}
+.harta iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:var(--harta-filter,none)}
+.err{display:none;color:var(--err);font-size:.88rem;margin-top:6px;font-weight:600}
+.err.on{display:block}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv:not(.vis){opacity:1;transform:none}}
+
+body{font-size:1.0625rem}
+h1,h2,h3{font-family:var(--f-disp);font-weight:400;text-transform:lowercase;margin:0;line-height:1.05;letter-spacing:-.01em}
+.btn{font-family:var(--f-mono);font-size:.9rem;letter-spacing:.02em;text-transform:uppercase}
+.btn-o{border-color:var(--line-strong)}
+.btn-o:hover{border-color:var(--acc);color:var(--acc-2)}
+.eb{font:500 .8rem/1 var(--f-mono);color:var(--acc-2);letter-spacing:.08em;text-transform:uppercase;display:flex;gap:8px;align-items:center}
+.eb::before{content:">";color:var(--blue)}
+.cur{display:inline-block;width:.6em;height:1.05em;background:var(--acc);vertical-align:-.15em;animation:blink 1s steps(1) infinite;margin-left:4px}
+@keyframes blink{50%{opacity:0}}
+
+/* BIOS POST overlay */
+.post{display:none}
+.js .post{display:grid;position:fixed;inset:0;z-index:300;background:#000;color:#C8CEDC;font:500 clamp(.74rem,2.4vw,1rem)/1.7 var(--f-mono);padding:6vh 6vw;align-content:start;transition:transform .7s var(--ease),opacity .4s .3s;cursor:pointer}
+.post.fin{transform:translateY(-102%);opacity:0;pointer-events:none}
+.post b{color:var(--acc)}
+.post .ln{opacity:0;white-space:pre-wrap}
+.post .ln.on{opacity:1}
+.post .ok{color:#7DDBA0}
+.post-bar{display:flex;gap:12px;align-items:center;margin-top:18px;max-width:560px}
+.post-bar i{flex:1;height:14px;border:1px solid #5A6478;position:relative;overflow:hidden}
+.post-bar i::after{content:"";position:absolute;inset:2px;background:repeating-linear-gradient(90deg,var(--acc) 0 8px,transparent 8px 11px);transform-origin:left;transform:scaleX(var(--p,0))}
+.post-skip{position:absolute;right:6vw;bottom:5vh;color:#7A8499;font-size:.78rem}
+@media(prefers-reduced-motion:reduce){.js .post{display:none}}
+
+/* header */
+.bara-sus{position:sticky;top:0;z-index:50;background:rgba(7,8,11,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:background .3s}
+.bara-sus.scrolled{background:rgba(7,8,11,.96)}
+.bara-in{display:flex;align-items:center;gap:20px;min-height:68px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:400 1.05rem/1 var(--f-disp);margin-right:auto}
+.marca svg{width:30px;height:30px}
+.marca small{display:block;font:500 .62rem/1.2 var(--f-mono);color:var(--fg-2);letter-spacing:.14em;margin-top:4px;text-transform:uppercase}
+.nav{display:none;gap:4px}
+.nav a{font:500 .8rem/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:12px 12px;color:var(--fg-2);border-radius:4px}
+.nav a:hover{color:var(--fg);background:var(--panel-2)}
+.limbi{display:flex;border:1px solid var(--line-strong);border-radius:4px;overflow:hidden}
+.limbi button{background:none;border:0;padding:0 11px;min-height:36px;font:600 .72rem var(--f-mono);color:var(--fg-2);cursor:pointer}
+.limbi button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.bara-tel{display:none;min-height:42px}
+.burger{width:44px;height:44px;background:none;border:1px solid var(--line-strong);border-radius:4px;cursor:pointer;display:grid;place-content:center;gap:5px}
+.burger span,.burger::before,.burger::after{content:"";display:block;width:20px;height:2px;background:var(--fg)}
+.load{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--acc);transform-origin:left;transform:scaleX(var(--sc,0))}
+.load-t{display:none;position:absolute;right:20px;bottom:-22px;font:500 .64rem var(--f-mono);color:var(--fg-2);letter-spacing:.1em;background:var(--bg);padding:2px 6px;border:1px solid var(--line);border-top:0}
+@media(min-width:1000px){.nav{display:flex}.bara-tel{display:inline-flex}.burger{display:none}.load-t{display:block}}
+.meniu{position:fixed;inset:0;z-index:150;background:var(--bg);padding:20px;transform:translateX(100%);transition:transform .4s var(--ease);visibility:hidden;display:flex;flex-direction:column}
+.meniu.deschis{transform:none;visibility:visible}
+.meniu .inchide{align-self:flex-end;background:none;border:1px solid var(--line-strong);color:var(--fg);min-height:44px;padding:0 16px;font:600 .8rem var(--f-mono);cursor:pointer;border-radius:4px}
+.meniu ol{list-style:none;margin:30px 0;padding:0}
+.meniu li a{display:flex;align-items:baseline;gap:14px;font:400 2rem/1 var(--f-disp);text-decoration:none;padding:16px 0;border-bottom:1px solid var(--line);text-transform:lowercase}
+.meniu li small{font:500 .7rem var(--f-mono);color:var(--acc-2);min-width:46px}
+.meniu-tel a{font:600 1.1rem var(--f-mono);color:var(--acc-2)}
+
+/* hero */
+.erou{position:relative;padding:clamp(32px,6vw,72px) 0 clamp(40px,6vw,80px);overflow:hidden;isolation:isolate}
+.erou::before{content:"";position:absolute;inset:0;z-index:-1;background:
+ radial-gradient(60% 50% at 78% 30%,rgba(255,74,63,.16),transparent 70%),
+ radial-gradient(40% 40% at 90% 80%,rgba(91,155,255,.12),transparent 70%)}
+.erou-grid{display:grid;gap:34px;align-items:center}
+@media(min-width:900px){.erou-grid{grid-template-columns:1.1fr .9fr;gap:60px}}
+.erou h1{font-size:clamp(2.5rem,8.2vw,5.4rem);margin:18px 0 20px}
+.erou h1 em{font-style:normal;color:var(--acc)}
+.erou p.lead{font-size:clamp(1.05rem,2.4vw,1.25rem);color:var(--fg-2);max-width:34em;margin:0 0 28px}
+.erou-cta{display:flex;flex-wrap:wrap;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0;padding:0;list-style:none}
+.chips li{display:flex;align-items:center;gap:8px;font:500 .8rem var(--f-mono);border:1px solid var(--line-strong);padding:9px 12px;border-radius:4px;color:var(--fg)}
+.chips .ic{width:16px;height:16px}.chips .st{color:#FFC94A}
+.js .erou:not(.go) .e-in{opacity:0;transform:translateY(20px)}
+.e-in{transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.erou.go .e-in:nth-child(1){transition-delay:.05s}.erou.go .e-in:nth-child(2){transition-delay:.18s}.erou.go .e-in:nth-child(3){transition-delay:.3s}.erou.go .e-in:nth-child(4){transition-delay:.42s}.erou.go .e-in:nth-child(5){transition-delay:.54s}
+.ecran{position:relative;border:1px solid var(--line-strong);background:var(--panel);border-radius:8px;overflow:hidden;box-shadow:0 0 0 1px #000,0 30px 80px -20px rgba(255,74,63,.28),0 0 60px -10px rgba(91,155,255,.18);transition:transform 1s var(--ease),opacity 1s}
+.js .erou:not(.go) .ecran{opacity:0;transform:scale(.94)}
+.ecran-cap{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line-strong);font:500 .66rem var(--f-mono);letter-spacing:.1em;color:var(--fg-2);text-transform:uppercase;background:var(--panel-2)}
+.ecran-cap i{width:9px;height:9px;border:1px solid var(--line-strong);border-radius:2px}
+.ecran-cap span{margin-left:auto}
+.ecran-poza{position:relative;aspect-ratio:4/4.6;background:#0B0D12;overflow:hidden}
+.ecran-poza svg.fund,.ecran-poza img{position:absolute;inset:0;width:100%;height:100%}
+.ecran-poza img{object-fit:cover;object-position:50% 22%}
+.ecran-poza::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none;mix-blend-mode:multiply}
+.scan{position:absolute;left:0;right:0;height:22%;top:-25%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.07),transparent);animation:scan 5s linear infinite 1.2s;pointer-events:none}
+@keyframes scan{to{top:105%}}
+.ecran-stat{display:flex;justify-content:space-between;gap:10px;padding:9px 12px;border-top:1px solid var(--line-strong);font:500 .66rem var(--f-mono);letter-spacing:.08em;color:var(--fg-2);text-transform:uppercase;background:var(--panel-2)}
+.ecran-stat b{color:#7DDBA0;font-weight:500}
+
+/* ticker */
+.banda{border-block:1px solid var(--line);background:var(--panel);overflow:hidden;white-space:nowrap}
+.banda-in{display:inline-flex;gap:0;animation:rul 38s linear infinite;padding:14px 0}
+.banda-in span{font:500 .82rem var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);padding:0 22px;display:inline-flex;align-items:center;gap:44px}
+.banda-in span::after{content:"";width:6px;height:6px;background:var(--acc);display:block}
+@keyframes rul{to{transform:translateX(-50%)}}
+
+/* secțiuni */
+.sec{padding:clamp(60px,9vw,110px) 0}
+.sec-cap{max-width:46rem;margin-bottom:38px}
+.sec-cap h2{font-size:clamp(2rem,5.6vw,3.6rem);margin:14px 0 14px}
+.sec-cap p{color:var(--fg-2);margin:0}
+
+/* servicii: meniu BIOS */
+.bios{display:grid;border:1px solid var(--line-strong);border-radius:8px;overflow:hidden;background:var(--panel)}
+@media(min-width:820px){.bios{grid-template-columns:280px 1fr}}
+.bios-m{display:flex;flex-direction:column;border-bottom:1px solid var(--line-strong);background:var(--panel-2)}
+@media(min-width:820px){.bios-m{border-bottom:0;border-right:1px solid var(--line-strong)}}
+.bios-m button{display:flex;align-items:center;gap:12px;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg-2);text-align:left;padding:0 18px;min-height:58px;font:500 .9rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.bios-m button:last-child{border-bottom:0}
+.bios-m button::before{content:"";width:8px;height:8px;border:1px solid var(--fg-2);transition:background .2s,border-color .2s}
+.bios-m button:hover{color:var(--fg)}
+.bios-m button[aria-selected="true"]{background:var(--acc);color:var(--btn-fg);font-weight:700}
+.bios-m button[aria-selected="true"]::before{background:var(--btn-fg);border-color:var(--btn-fg)}
+.bios-p{padding:clamp(22px,4vw,44px);min-height:290px;display:flex;flex-direction:column;gap:16px}
+.bios-p h3{font-size:clamp(1.8rem,4.4vw,2.8rem)}
+.bios-p p{margin:0;color:var(--fg-2);max-width:36em}
+.bios-p .sin{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:4px 0 6px}
+.bios-p .sin li{font:500 .78rem var(--f-mono);border:1px solid var(--line-strong);padding:7px 10px;border-radius:4px;color:var(--fg)}
+.bios-p .btn{align-self:flex-start;margin-top:auto}
+.bios-p.sch{animation:schimb .45s var(--ease)}
+@keyframes schimb{from{opacity:0;transform:translateX(14px)}}
+.hint{font:500 .72rem var(--f-mono);color:var(--fg-2);margin-top:12px;letter-spacing:.06em}
+
+/* păreri */
+.pareri{display:grid;gap:16px}
+@media(min-width:860px){.pareri{grid-template-columns:repeat(3,1fr)}}
+.parere{border:1px solid var(--line);background:var(--panel);padding:26px;border-radius:8px;display:flex;flex-direction:column;gap:14px;position:relative}
+.parere::before{content:"";position:absolute;left:0;top:0;width:34px;height:3px;background:var(--acc)}
+.parere .stele{display:flex;gap:3px;color:#FFC94A}.parere .stele .ic{width:16px;height:16px}
+.parere p{margin:0;font-size:1.02rem}
+.parere small{color:var(--fg-2);font:500 .72rem var(--f-mono);letter-spacing:.06em;margin-top:auto;text-transform:uppercase}
+.nota{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+.nota b{font:400 clamp(3rem,9vw,5.5rem)/1 var(--f-disp);color:var(--acc)}
+.nota span{color:var(--fg-2);font:500 .82rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.nota-s{font-size:.82rem;color:var(--fg-2);margin-top:18px}
+
+/* atelier */
+.gal{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media(min-width:900px){.gal{grid-template-columns:1.1fr .8fr .8fr 1fr;align-items:end}}
+.gal figure{margin:0;border:1px solid var(--line-strong);background:var(--panel);border-radius:6px;overflow:hidden;position:relative}
+.gal .im{position:relative;aspect-ratio:3/4.2;background:#0B0D12;overflow:hidden}
+.gal .im svg,.gal .im img{position:absolute;inset:0;width:100%;height:100%}
+.gal .im img{object-fit:cover;transition:transform .8s var(--ease)}
+.gal figure:hover img{transform:scale(1.04)}
+.gal .logo-f .im{aspect-ratio:1;} .gal .logo-f img{object-fit:contain}
+.gal figcaption{padding:10px 12px;font:500 .7rem/1.4 var(--f-mono);letter-spacing:.05em;color:var(--fg-2);border-top:1px solid var(--line-strong);text-transform:uppercase}
+
+/* cerere */
+.cerere-g{display:grid;gap:26px}
+@media(min-width:960px){.cerere-g{grid-template-columns:1.1fr .9fr;align-items:start}}
+.form{background:var(--panel);border:1px solid var(--line-strong);border-radius:8px;padding:clamp(20px,3.5vw,36px);display:grid;gap:26px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend,label.l{display:block;font:600 .78rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--acc-2);margin-bottom:10px;padding:0}
+.opt{display:flex;flex-wrap:wrap;gap:8px}
+.opt label{position:relative;cursor:pointer}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.opt label>span{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border:1px solid var(--line-strong);border-radius:4px;font-size:.95rem;transition:background .2s,border-color .2s,color .2s}
+.opt label>span::before{content:"";width:10px;height:10px;border:1px solid var(--fg-2);flex:none;transition:background .2s}
+.opt input[type=radio]+span::before{border-radius:50%}
+.opt input:checked+span{background:rgba(255,74,63,.14);border-color:var(--acc);color:#fff}
+.opt input:checked+span::before{background:var(--acc);border-color:var(--acc)}
+.opt input:focus-visible+span{outline:3px solid var(--blue);outline-offset:2px}
+.opt label:hover>span{border-color:var(--fg-2)}
+input[type=text],textarea{width:100%;background:var(--bg);border:1px solid var(--line-strong);border-radius:4px;padding:12px 14px;min-height:48px;font-size:1rem}
+input[type=text]:focus,textarea:focus{outline:3px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+textarea{min-height:96px;resize:vertical}
+::placeholder{color:#7C8598}
+.f-act{display:grid;gap:10px}
+@media(min-width:560px){.f-act{grid-template-columns:1fr 1fr}}
+.f-nota{font-size:.88rem;color:var(--fg-2);margin:0}
+.tichet{position:sticky;top:96px;background:#000;border:1px solid var(--line-strong);border-radius:8px;padding:20px;font:500 .84rem/1.75 var(--f-mono);color:#C8CEDC;min-height:300px}
+.tichet h3{font:600 .75rem var(--f-mono);letter-spacing:.14em;color:var(--acc-2);margin:0 0 12px;text-transform:uppercase}
+.tichet .r{display:flex;gap:8px;border-bottom:1px dotted #2B3345;padding:3px 0}
+.tichet .r b{color:#8794AD;font-weight:500;min-width:96px;flex:none;text-transform:uppercase;font-size:.72rem;padding-top:2px}
+.tichet .r span{color:#E8EBF2;word-break:break-word}
+.tichet .gol{color:#6C768B}
+.tichet .ft{margin-top:14px;color:#7DDBA0;font-size:.75rem}
+
+/* contact */
+.contact-g{display:grid;gap:26px}
+@media(min-width:900px){.contact-g{grid-template-columns:.9fr 1.1fr}}
+.dat{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:0}
+.dat li{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.dat .ic{color:var(--acc);margin-top:3px}
+.dat b{display:block;font:600 .72rem var(--f-mono);letter-spacing:.1em;color:var(--fg-2);text-transform:uppercase;margin-bottom:4px}
+.dat a{text-underline-offset:3px}
+.rodape{border-top:1px solid var(--line);padding:50px 0 100px;background:#050608}
+.rodape-grid{display:grid;gap:30px}
+@media(min-width:800px){.rodape-grid{grid-template-columns:1.3fr 1fr 1fr}}
+.rodape h2{font-size:1.3rem}.rodape h3{font:600 .72rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--acc-2);margin-bottom:12px}
+.rodape p,.rodape li{color:var(--fg-2);font-size:.95rem;margin:0 0 6px}
+.rodape ul{list-style:none;margin:0;padding:0}
+.rodape a{text-underline-offset:3px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 5.9 5.9l1.5-2.3L20 15.5V19a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.2 20.8l1.5-4.7A8.7 8.7 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.2 3 6.2 6.2 6.2l1.2-1.4-2-1-1 .7a4.5 4.5 0 0 1-2-2l.7-1-1-2z"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8 6.6 19.7l1.1-6.1L3.2 9.4l6.1-.8z" fill="currentColor"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  </defs>
+</svg>
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru Maski Custom|PACHECO STUDIOS PREVIEW · demo website for Maski Custom|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para a Maski Custom}}</div>
+
+<div class="post" id="post" aria-hidden="true">
+  <div class="ln" data-l="0"><b>MASKI CUSTOM</b> · TECH SERVICE · BIOS</div>
+  <div class="ln" data-l="1">Bloc 535 · Strada Canta 20 · Scara A · Iași</div>
+  <div class="ln" data-l="2">&nbsp;</div>
+  <div class="ln" data-l="3">LAPTOP ............ <span class="ok">OK</span></div>
+  <div class="ln" data-l="4">PC ................ <span class="ok">OK</span></div>
+  <div class="ln" data-l="5">CONSOLE ........... <span class="ok">OK</span></div>
+  <div class="ln" data-l="6">TELEFOANE ......... <span class="ok">OK</span></div>
+  <div class="ln" data-l="7">ALTE ELECTRONICE .. <span class="ok">OK</span></div>
+  <div class="post-bar ln" data-l="8"><span>BOOT</span><i id="post-i"></i><span id="post-p">0%</span></div>
+  <div class="post-skip">[ click / tastă = skip ]</div>
+</div>
+
+<header class="bara-sus" id="bara">
+  <div class="lat bara-in">
+    <a class="marca" href="#sus" aria-label="{{Maski Custom — acasă|Maski Custom — home|Maski Custom — início}}">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="6" fill="#0E1117" stroke="#3A4459"/><rect x="10" y="10" width="12" height="12" rx="2" fill="#FF4A3F"/><path d="M16 3v7M16 22v7M3 16h7M22 16h7M7 7l4 4M25 7l-4 4M7 25l4-4M25 25l-4-4" stroke="#FF4A3F" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>maski_custom<small>tech service · iași</small></span>
+    </a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#servicii">{{Servicii|Services|Serviços}}</a>
+      <a href="#pareri">{{Păreri|Reviews|Opiniões}}</a>
+      <a href="#atelier">{{Atelier|Workshop|Oficina}}</a>
+      <a href="#cerere">{{Cere reparație|Request repair|Pedir reparação}}</a>
+      <a href="#contact">{{Contact|Contact|Contactos}}</a>
+    </nav>
+    <div class="limbi" role="group" aria-label="{{Limba|Language|Língua}}">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false" class="doar-rev">PT</button>
+    </div>
+    <a class="btn bara-tel" href="tel:+40749669192"><svg class="ic" aria-hidden="true"><use href="#i-tel"/></svg>0749 669 192</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="{{Deschide meniul|Open menu|Abrir o menu}}"><span></span></button>
+  </div>
+  <div class="load" id="load"></div><div class="load-t" id="load-t" aria-hidden="true">LOAD 0%</div>
+</header>
+
+<div class="meniu" id="meniu" role="dialog" aria-modal="true" aria-label="{{Meniu|Menu|Menu}}">
+  <button class="inchide" type="button">{{Închide|Close|Fechar}} ×</button>
+  <ol>
+    <li><a href="#servicii"><small>01</small>{{Servicii|Services|Serviços}}</a></li>
+    <li><a href="#pareri"><small>5,0</small>{{Păreri|Reviews|Opiniões}}</a></li>
+    <li><a href="#atelier"><small>IMG</small>{{Atelier|Workshop|Oficina}}</a></li>
+    <li><a href="#cerere"><small>NEW</small>{{Cere reparație|Request repair|Pedir reparação}}</a></li>
+    <li><a href="#contact"><small>@</small>{{Contact|Contact|Contactos}}</a></li>
+  </ol>
+  <p class="meniu-tel">{{Sună la Maski:|Call Maski:|Ligue para a Maski:}} <a href="tel:+40749669192">0749 669 192</a></p>
+</div>
+
+<main id="sus">
+<section class="erou" id="erou">
+  <div class="lat erou-grid">
+    <div>
+      <p class="eb e-in">{{Centru de reparații computere · Iași|Computer repair centre · Iași|Centro de reparação de computadores · Iași}}</p>
+      <h1 class="e-in">{{Computerul tău, <em>repornit</em>.|Your computer, <em>restarted</em>.|O seu computador, <em>reiniciado</em>.}}</h1>
+      <p class="lead e-in">{{Laptop, PC, console, telefoane și alte electronice. Ne spui ce nu merge, îți explicăm problema pe înțelesul tău și cum o rezolvăm.|Laptop, PC, consoles, phones and other electronics. Tell us what is wrong and we explain the problem in plain words and how we fix it.|Portátil, PC, consolas, telemóveis e outros eletrónicos. Diga-nos o que falha e explicamos o problema em palavras simples e como o resolvemos.}}</p>
+      <div class="erou-cta e-in">
+        <a class="btn" href="tel:+40749669192"><svg class="ic" aria-hidden="true"><use href="#i-tel"/></svg>{{Sună · 0749 669 192|Call · 0749 669 192|Ligar · 0749 669 192}}</a>
+        <a class="btn btn-o" href="#cerere">{{Cere reparație|Request a repair|Pedir reparação}}<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="chips e-in">
+        <li><svg class="ic st" aria-hidden="true"><use href="#i-star"/></svg>{{5,0 pe Google · 18 recenzii|5.0 on Google · 18 reviews|5,0 no Google · 18 avaliações}}</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span id="chip-prog"></span></li>
+      </ul>
+    </div>
+    <div class="ecran">
+      <div class="ecran-cap"><i></i><i></i><i></i><span>maski custom · strada canta 20</span></div>
+      <div class="ecran-poza">
+        <svg class="fund" viewBox="0 0 400 460" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="400" height="460" fill="#0B0D12"/><g fill="none" stroke="#FF4A3F" stroke-opacity=".5" stroke-width="2"><rect x="150" y="170" width="100" height="100" rx="8"/><path d="M200 170V60h120M200 270v110H90M150 220H50V120M250 220h110v120"/></g></svg>
+        <img src="media/g-02.webp" width="1320" height="2048" data-alt="Intrarea Maski Custom seara, cu firma luminoasă „Service electronice · laptop · PC · console · telefoane · alte electronice”|Maski Custom entrance at night, with the lit sign “Electronics service · laptop · PC · console · phones · other electronics”|Entrada da Maski Custom à noite, com o letreiro luminoso «Serviço de eletrónica · portátil · PC · consola · telemóveis · outros eletrónicos»" alt="" fetchpriority="high" onerror="this.remove()">
+        <div class="scan"></div>
+      </div>
+      <div class="ecran-stat"><span>{{Bloc 535 · Scara A|Block 535 · Entrance A|Bloco 535 · Escada A}}</span><b>POST OK</b></div>
+    </div>
+  </div>
+</section>
+
+<div class="banda" aria-hidden="true"><div class="banda-in" id="banda-in"></div></div>
+
+<section class="sec" id="servicii">
+  <div class="lat">
+    <div class="sec-cap rv">
+      <p class="eb">{{Servicii|Services|Serviços}}</p>
+      <h2>{{ce reparăm|what we repair|o que reparamos}}</h2>
+      <p>{{Cele cinci categorii de pe firma de la intrare. Alege una și spune-ne simptomul.|The five categories on the sign at the entrance. Pick one and tell us the symptom.|As cinco categorias do letreiro da entrada. Escolha uma e diga-nos o sintoma.}}</p>
+    </div>
+    <div class="bios rv">
+      <div class="bios-m" role="tablist" aria-orientation="vertical" id="bios-m" aria-label="{{Categorii de dispozitive|Device categories|Categorias de dispositivos}}"></div>
+      <div class="bios-p" id="bios-p" role="tabpanel" tabindex="0"></div>
+    </div>
+    <p class="hint rv">{{Folosește săgețile ↑ ↓ pentru a schimba categoria.|Use the ↑ ↓ arrow keys to switch category.|Use as setas ↑ ↓ para mudar de categoria.}}</p>
+  </div>
+</section>
+
+<section class="sec" id="pareri" style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="lat">
+    <div class="sec-cap rv">
+      <p class="eb">{{Păreri|Reviews|Opiniões}}</p>
+      <h2>{{clienții despre noi|clients on us|clientes sobre nós}}</h2>
+    </div>
+    <div class="nota rv"><b>5,0</b><span>{{18 recenzii pe Google|18 reviews on Google|18 avaliações no Google}}</span></div>
+    <div class="pareri">
+      <article class="parere rv"><div class="stele" aria-label="5/5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></div>
+        <p>{{Laptopul a fost reparat repede și merge perfect. Problema mi-a fost explicată pe înțelesul meu, cu soluții clare.|The laptop was repaired quickly and works perfectly. The problem was explained in plain words, with clear solutions.|O portátil foi reparado depressa e funciona na perfeição. O problema foi explicado em palavras simples, com soluções claras.}}</p><small>{{Sensul general al recenziilor publice|General sense of public reviews|Sentido geral das avaliações públicas}}</small></article>
+      <article class="parere rv d1"><div class="stele" aria-label="5/5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></div>
+        <p>{{Mentenanța plăcii video a fost făcută rapid și profesionist, cu o comunicare foarte bună.|The graphics card maintenance was done quickly and professionally, with very good communication.|A manutenção da placa gráfica foi feita com rapidez e profissionalismo, com muito boa comunicação.}}</p><small>{{Sensul general al recenziilor publice|General sense of public reviews|Sentido geral das avaliações públicas}}</small></article>
+      <article class="parere rv d2"><div class="stele" aria-label="5/5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></div>
+        <p>{{Problema rezolvată repede, la un preț pe care clientul l-a găsit corect.|Problem solved quickly, at a price the customer found fair.|Problema resolvido depressa, a um preço que o cliente achou justo.}}</p><small>{{Sensul general al recenziilor publice|General sense of public reviews|Sentido geral das avaliações públicas}}</small></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="atelier">
+  <div class="lat">
+    <div class="sec-cap rv">
+      <p class="eb">{{Atelier|Workshop|Oficina}}</p>
+      <h2>{{unde ne găsești|where to find us|onde nos encontrar}}</h2>
+      <p>{{Intrare din Bloc 535, Scara A. Ușa are firma luminoasă și autocolantul cu emblema atelierului.|Entrance from Block 535, Entrance A. The door has the lit sign and the workshop emblem sticker.|Entrada do Bloco 535, Escada A. A porta tem o letreiro luminoso e o autocolante com o emblema da oficina.}}</p>
+    </div>
+    <div class="gal">
+      <figure class="rv"><div class="im"><svg viewBox="0 0 300 420" aria-hidden="true"><rect width="300" height="420" fill="#0B0D12"/><rect x="90" y="120" width="120" height="200" fill="none" stroke="#3A4459" stroke-width="2"/></svg><img src="media/g-03.webp" loading="lazy" width="1335" height="2048" data-alt="Intrarea Maski Custom ziua, cu firma „Service electronice”|Maski Custom entrance by day, with the “Electronics service” sign|Entrada da Maski Custom de dia, com o letreiro «Serviço de eletrónica»" alt="" onerror="this.remove()"></div><figcaption>{{Intrarea, ziua|The entrance, by day|A entrada, de dia}}</figcaption></figure>
+      <figure class="rv d1"><div class="im"><svg viewBox="0 0 300 420" aria-hidden="true"><rect width="300" height="420" fill="#0B0D12"/><rect x="90" y="120" width="120" height="200" fill="none" stroke="#3A4459" stroke-width="2"/></svg><img src="media/g-01.webp" loading="lazy" width="1024" height="1536" data-alt="Ușa de sticlă cu emblema atelierului, „Service și mentenanță · PC · laptop · electronice diverse” și numărul de telefon|Glass door with the workshop emblem, “Service and maintenance · PC · laptop · assorted electronics” and the phone number|Porta de vidro com o emblema da oficina, «Serviço e manutenção · PC · portátil · eletrónicos diversos» e o número de telefone" alt="" onerror="this.remove()"></div><figcaption>{{Service și mentenanță|Service and maintenance|Serviço e manutenção}}</figcaption></figure>
+      <figure class="rv d2"><div class="im"><svg viewBox="0 0 300 420" aria-hidden="true"><rect width="300" height="420" fill="#0B0D12"/><rect x="60" y="150" width="180" height="110" fill="none" stroke="#3A4459" stroke-width="2"/></svg><img src="media/g-04.webp" loading="lazy" width="954" height="2016" data-alt="Un laptop cu tastatură iluminată roșu, pe masa de lucru|A laptop with a red backlit keyboard on the workbench|Um portátil com teclado retroiluminado a vermelho na bancada" alt="" onerror="this.remove()"></div><figcaption>{{Pe masa de lucru|On the workbench|Na bancada}}</figcaption></figure>
+      <figure class="rv d3 logo-f"><div class="im"><svg viewBox="0 0 300 300" aria-hidden="true"><rect width="300" height="300" fill="#0B0D12"/><circle cx="150" cy="150" r="90" fill="none" stroke="#FF4A3F" stroke-opacity=".5" stroke-width="2"/></svg><img src="media/g-05.webp" loading="lazy" width="1024" height="1024" data-alt="Emblema Maski Custom Tech Service: un procesor roșu înconjurat de o roată dințată|Maski Custom Tech Service emblem: a red chip inside a gear|Emblema Maski Custom Tech Service: um processador vermelho dentro de uma roda dentada" alt="" onerror="this.remove()"></div><figcaption>{{Emblema atelierului|The workshop emblem|O emblema da oficina}}</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="cerere" style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="lat">
+    <div class="sec-cap rv">
+      <p class="eb">{{Cere reparație|Request a repair|Pedir reparação}}</p>
+      <h2>{{deschide un tichet|open a ticket|abra um pedido}}</h2>
+      <p>{{Spune-ne ce dispozitiv e și ce simptome are. Cererea pleacă pe WhatsApp sau SMS direct la atelier.|Tell us which device it is and what the symptoms are. The request goes by WhatsApp or SMS straight to the workshop.|Diga-nos qual é o dispositivo e que sintomas tem. O pedido segue por WhatsApp ou SMS diretamente para a oficina.}}</p>
+    </div>
+    <div class="cerere-g">
+      <form class="form rv" id="f" novalidate>
+        <fieldset id="fs-disp"><legend>{{1 · Ce dispozitiv?|1 · Which device?|1 · Que dispositivo?}}</legend>
+          <div class="opt" id="o-disp"></div><p class="err" id="e-disp">{{Alege un dispozitiv.|Pick a device.|Escolha um dispositivo.}}</p></fieldset>
+        <div><label class="l" for="model">{{Model (dacă îl știi)|Model (if you know it)|Modelo (se souber)}}</label><input type="text" id="model" autocomplete="off" data-ph="ex. Lenovo IdeaPad, PS5…|e.g. Lenovo IdeaPad, PS5…|ex. Lenovo IdeaPad, PS5…"></div>
+        <fieldset id="fs-sim"><legend>{{2 · Ce simptome are?|2 · What are the symptoms?|2 · Que sintomas tem?}}</legend>
+          <div class="opt" id="o-sim"></div><p class="err" id="e-sim">{{Bifează cel puțin un simptom sau scrie-l mai jos.|Tick at least one symptom or write it below.|Assinale pelo menos um sintoma ou escreva-o abaixo.}}</p></fieldset>
+        <div><label class="l" for="desc">{{Detalii (opțional)|Details (optional)|Detalhes (opcional)}}</label><textarea id="desc" data-ph="Ce se întâmplă, de când, ce ai încercat deja…|What happens, since when, what you already tried…|O que acontece, desde quando, o que já tentou…"></textarea></div>
+        <div><label class="l" for="nume">{{3 · Numele tău|3 · Your name|3 · O seu nome}}</label><input type="text" id="nume" autocomplete="name"><p class="err" id="e-nume">{{Scrie-ți numele.|Write your name.|Escreva o seu nome.}}</p></div>
+        <div class="f-act">
+          <button class="btn btn-wa" type="submit" data-canal="wa"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</button>
+          <button class="btn" type="submit" data-canal="sms"><svg class="ic" aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</button>
+        </div>
+        <p class="f-nota">{{Prețul și termenul se stabilesc la telefon, după ce vedem dispozitivul.|Price and timing are set on the phone, once we see the device.|O preço e o prazo combinam-se ao telefone, depois de vermos o dispositivo.}} <span class="confirmat">{{preț: de confirmat|price: to be confirmed|preço: a confirmar}}</span></p>
+      </form>
+      <aside class="tichet rv d1" id="tichet" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="lat contact-g">
+    <div class="rv">
+      <p class="eb">{{Contact|Contact|Contactos}}</p>
+      <h2 style="font-size:clamp(2rem,5.6vw,3.6rem);margin:14px 0 24px">{{vino pe Strada Canta|come to Strada Canta|venha à Strada Canta}}</h2>
+      <ul class="dat">
+        <li><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><div><b>{{Adresă|Address|Morada}}</b>Bloc 535, Strada Canta 20, Scara A<br>700528 Iași, România</div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-tel"/></svg><div><b>{{Telefon|Phone|Telefone}}</b><a href="tel:+40749669192">0749 669 192</a></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><div><b>{{Program|Hours|Horário}}</b><span id="prog"></span></div></li>
+      </ul>
+      <a class="btn" href="tel:+40749669192"><svg class="ic" aria-hidden="true"><use href="#i-tel"/></svg>{{Sună · 0749 669 192|Call · 0749 669 192|Ligar · 0749 669 192}}</a>
+    </div>
+    <div class="rv d1">
+      <div class="harta" id="harta"><div><p style="margin:0 0 16px;color:var(--fg-2)">{{Harta se încarcă doar la cerere.|The map loads only on request.|O mapa só carrega a pedido.}}</p><button class="btn btn-o" type="button" id="arata-harta"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>{{Arată harta|Show the map|Mostrar o mapa}}</button></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="lat">
+    <div class="rodape-grid">
+      <div><h2>maski_custom</h2><p>{{Centru de reparații computere în Iași: laptop, PC, console, telefoane și alte electronice.|Computer repair centre in Iași: laptop, PC, consoles, phones and other electronics.|Centro de reparação de computadores em Iași: portátil, PC, consolas, telemóveis e outros eletrónicos.}}</p></div>
+      <div><h3>Service</h3><ul><li>Bloc 535, Strada Canta 20, Scara A</li><li>700528 Iași, România</li><li><a href="tel:+40749669192">0749 669 192</a></li></ul></div>
+      <div><h3>{{Pagini|Pages|Páginas}}</h3><ul><li><a href="#servicii">{{Servicii|Services|Serviços}}</a></li><li><a href="#atelier">{{Atelier|Workshop|Oficina}}</a></li><li><a href="#cerere">{{Cere reparație|Request repair|Pedir reparação}}</a></li><li><a href="#contact">{{Contact|Contact|Contactos}}</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Maski Custom · {{denumire firmă și CUI: de confirmat|company name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+      <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+    </div>
+  </div>
+</footer>
+
+<div class="jos" id="jos">
+  <a class="btn" href="tel:+40749669192"><svg class="ic" aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <button class="btn btn-o" type="button" id="jos-msg" aria-haspopup="dialog" aria-expanded="false" aria-controls="foaie"><svg class="ic" aria-hidden="true"><use href="#i-sms"/></svg>{{Mesaj|Message|Mensagem}}</button>
+</div>
+<div class="foaie-fond" id="foaie-fond"></div>
+<div class="foaie" id="foaie" role="dialog" aria-modal="true" aria-labelledby="foaie-t">
+  <button class="inchide-f" type="button" id="foaie-x" aria-label="{{Închide|Close|Fechar}}">×</button>
+  <h2 id="foaie-t">{{Scrie-ne|Write to us|Escreva-nos}}</h2>
+  <p>{{Alege cum ne scrii. Pentru o cerere completă folosește formularul.|Choose how to write to us. For a full request use the form.|Escolha como nos escrever. Para um pedido completo use o formulário.}}</p>
+  <div class="trimite">
+    <a class="btn btn-wa" data-gen="wa" href="https://wa.me/40749669192" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</a>
+    <a class="btn" data-gen="sms" href="sms:+40749669192"><svg class="ic" aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</a>
+    <a class="btn btn-o" href="#cerere" id="foaie-pg">{{Completează formularul|Fill in the form|Preencher o formulário}}</a>
+  </div>
+</div>
+<noscript><p style="padding:16px;background:#fff;color:#000">Maski Custom · Bloc 535, Strada Canta 20, Scara A, 700528 Iași · Tel. 0749 669 192 · Marți 09:00–12:00 și 13:00–18:00, restul programului: de confirmat · 5,0 pe Google (18 recenzii) · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Maski Custom","description":"Centru de reparații computere în Iași: laptop, PC, console, telefoane și alte electronice.","telephone":"+40749669192","image":"media/g-02.webp","address":{"@type":"PostalAddress","streetAddress":"Bloc 535, Strada Canta 20, Scara A","postalCode":"700528","addressLocality":"Iași","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":47.1735199,"longitude":27.547216},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"18","bestRating":"5"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"09:00","closes":"12:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"13:00","closes":"18:00"}]}
+</script>
+<script>
+(function(){
+  var CFG={tel:'+40749669192',wa:'40749669192',lat:47.1735199,lng:27.547216,
+    gen:'Bună ziua! Am o întrebare pentru Maski Custom: ',
+    title:['Maski Custom · Reparații computere, Strada Canta 20, Iași','Maski Custom · Computer repair, Strada Canta 20, Iași','Maski Custom · Reparação de computadores, Strada Canta 20, Iași'],
+    mapTitle:'Hartă: Maski Custom, Strada Canta 20, Iași'};
+  var html=document.documentElement;
+  var reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(id){return document.getElementById(id)};
+  var L=function(){var l=html.dataset.lang;return l==='en'||l==='pt'?l:'ro'};
+  var t=function(a,b,c){var l=L();return l==='en'?b:l==='pt'?c:a};
+  var bi=function(a,b,c){return '<span lang="ro">'+a+'</span><span lang="en">'+b+'</span><span lang="pt">'+c+'</span>'};
+  var langHooks=[];
+  function atrib(){
+    document.querySelectorAll('[data-aria]').forEach(function(e){var p=e.dataset.aria.split('|');e.setAttribute('aria-label',t(p[0],p[1],p[2]))});
+    document.querySelectorAll('[data-ph]').forEach(function(e){var p=e.dataset.ph.split('|');e.setAttribute('placeholder',t(p[0],p[1],p[2]))});
+    document.querySelectorAll('[data-alt]').forEach(function(e){var p=e.dataset.alt.split('|');e.setAttribute('alt',t(p[0],p[1],p[2]))});
+    var g=encodeURIComponent(CFG.gen);
+    document.querySelectorAll('[data-gen="wa"]').forEach(function(a){a.href='https://wa.me/'+CFG.wa+'?text='+g});
+    document.querySelectorAll('[data-gen="sms"]').forEach(function(a){a.href='sms:'+CFG.tel+'?&body='+g});
+  }
+  function seteaza(l){
+    html.dataset.lang=l;html.lang=l==='pt'?'pt-PT':l;
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.setLang===l?'true':'false')});
+    try{localStorage.setItem('__LSKEY__',l)}catch(e){}
+    document.title=t(CFG.title[0],CFG.title[1],CFG.title[2]);
+    atrib();langHooks.forEach(function(f){f()});
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){seteaza(b.dataset.setLang)})});
+  function send(canal,msg){
+    if(canal==='wa')window.open('https://wa.me/'+CFG.wa+'?text='+encodeURIComponent(msg),'_blank','noopener');
+    else location.href='sms:'+CFG.tel+'?&body='+encodeURIComponent(msg);
+  }
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
+  document.querySelectorAll('.rv').forEach(function(x){if(io)io.observe(x);else x.classList.add('vis')});
+  var bara=$('bara'),jos=$('jos'),onScrollHooks=[];
+  function onScroll(){bara.classList.toggle('scrolled',scrollY>8);jos.classList.toggle('vizibil',scrollY>innerHeight*.35);onScrollHooks.forEach(function(f){f()})}
+  addEventListener('scroll',onScroll,{passive:true});
+  var burger=document.querySelector('.burger'),meniu=$('meniu'),inchide=meniu.querySelector('.inchide');
+  function deschide(d){meniu.classList.toggle('deschis',d);burger.setAttribute('aria-expanded',d?'true':'false');document.body.style.overflow=d?'hidden':'';(d?inchide:burger).focus()}
+  burger.addEventListener('click',function(){deschide(true)});
+  inchide.addEventListener('click',function(){deschide(false)});
+  meniu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){deschide(false)})});
+  var foaie=$('foaie'),fond=$('foaie-fond'),jm=$('jos-msg');
+  function foaieD(d){foaie.classList.toggle('deschis',d);fond.classList.toggle('deschis',d);jm.setAttribute('aria-expanded',d?'true':'false');if(d)foaie.querySelector('a').focus();else jm.focus()}
+  jm.addEventListener('click',function(){foaieD(true)});
+  $('foaie-x').addEventListener('click',function(){foaieD(false)});
+  fond.addEventListener('click',function(){foaieD(false)});
+  $('foaie-pg').addEventListener('click',function(){foaie.classList.remove('deschis');fond.classList.remove('deschis');jm.setAttribute('aria-expanded','false')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(meniu.classList.contains('deschis'))deschide(false);if(foaie.classList.contains('deschis'))foaieD(false)}});
+  var hb=$('arata-harta');
+  if(hb)hb.addEventListener('click',function(){
+    var h2=$('harta'),f=document.createElement('iframe');
+    f.src='https://www.google.com/maps?q='+CFG.lat+','+CFG.lng+'&z=17&output=embed';
+    f.title=CFG.mapTitle;f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';h2.innerHTML='';h2.appendChild(f);
+  });
+
+
+  /* program */
+  var PROG=bi('Marți 09:00–12:00 · 13:00–18:00. Restul zilelor: <span class="confirmat">de confirmat</span>','Tuesday 09:00–12:00 · 13:00–18:00. Other days: <span class="confirmat">to be confirmed</span>','Terça 09:00–12:00 · 13:00–18:00. Restantes dias: <span class="confirmat">a confirmar</span>');
+  $('prog').innerHTML=PROG;
+  $('chip-prog').innerHTML=bi('Marți 09–12 · 13–18','Tue 09–12 · 13–18','Ter 09–12 · 13–18');
+
+  /* ticker */
+  var palavras=['laptop','pc','console','telefoane','alte electronice','service & mentenanță'];
+  var bh='';for(var r=0;r<2;r++)palavras.concat(palavras).forEach(function(p){bh+='<span>'+p+'</span>'});
+  $('banda-in').innerHTML=bh;
+
+  /* scroll: LOAD */
+  onScrollHooks.push(function(){var m=document.documentElement.scrollHeight-innerHeight,p=m>0?Math.min(1,scrollY/m):0;$('load').style.setProperty('--sc',p.toFixed(3));$('load-t').textContent='LOAD '+Math.round(p*100)+'%'});
+
+  /* servicii */
+  var SERV=[
+    {k:'laptop',n:['Laptop','Laptop','Portátil'],x:['Reparații și mentenanță pentru laptopuri. Spune-ne simptomul: nu pornește, e lent, se încălzește, ecranul sau tastatura nu răspund.','Repairs and maintenance for laptops. Tell us the symptom: it will not start, it is slow, it overheats, the screen or keyboard does not respond.','Reparações e manutenção de portáteis. Diga-nos o sintoma: não liga, está lento, aquece, o ecrã ou o teclado não respondem.'],s:['nu pornește','lent','se încălzește','ecran','tastatură']},
+    {k:'pc',n:['PC','PC','PC'],x:['Calculatoare fixe și mentenanță, inclusiv la placa video. Descrie ce se întâmplă și când.','Desktop computers and maintenance, including the graphics card. Describe what happens and when.','Computadores fixos e manutenção, incluindo a placa gráfica. Descreva o que acontece e quando.'],s:['nu dă imagine','placă video','zgomot','se blochează']},
+    {k:'consola',n:['Console','Consoles','Consolas'],x:['Console de jocuri. Scrie modelul și ce nu merge; la telefon îți spunem dacă preluăm lucrarea.','Game consoles. Write the model and what is wrong; on the phone we tell you whether we take the job.','Consolas de jogos. Escreva o modelo e o que falha; ao telefone dizemos se aceitamos o trabalho.'],s:['nu pornește','nu dă imagine','se încălzește']},
+    {k:'telefon',n:['Telefoane','Phones','Telemóveis'],x:['Telefoane. Scrie marca, modelul și problema; confirmăm la telefon ce se poate face.','Phones. Write the make, model and problem; we confirm on the phone what can be done.','Telemóveis. Escreva a marca, o modelo e o problema; confirmamos ao telefone o que se pode fazer.'],s:['ecran','nu pornește','se blochează']},
+    {k:'altele',n:['Alte electronice','Other electronics','Outros eletrónicos'],x:['Electronice diverse, cum scrie și pe ușă. Spune-ne ce aparat e și ce face; răspundem dacă îl putem prelua.','Assorted electronics, as the door says. Tell us which device it is and what it does; we answer whether we can take it.','Eletrónicos diversos, como diz a porta. Diga-nos que aparelho é e o que faz; respondemos se o podemos aceitar.'],s:['nu pornește','alt simptom']}
+  ];
+  var cur=0,biosM=$('bios-m'),biosP=$('bios-p');
+  biosM.innerHTML=SERV.map(function(s,i){return '<button type="button" role="tab" id="tab-'+i+'" aria-selected="'+(i===0)+'" aria-controls="bios-p" tabindex="'+(i===0?0:-1)+'" data-i="'+i+'">'+bi(s.n[0],s.n[1],s.n[2])+'</button>'}).join('');
+  function arataServ(i,anim){
+    cur=i;
+    biosM.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-selected',j===i);b.tabIndex=j===i?0:-1});
+    var s=SERV[i];
+    biosP.setAttribute('aria-labelledby','tab-'+i);
+    biosP.innerHTML='<h3>'+bi(s.n[0],s.n[1],s.n[2])+'</h3><p>'+bi(s.x[0],s.x[1],s.x[2])+'</p><button type="button" class="btn" data-pre="'+s.k+'">'+bi('Cere reparație pentru '+s.n[0].toLowerCase(),'Request repair for '+s.n[1].toLowerCase(),'Pedir reparação para '+s.n[2].toLowerCase())+'</button>';
+    if(anim&&!reduz){biosP.classList.remove('sch');void biosP.offsetWidth;biosP.classList.add('sch')}
+  }
+  biosM.addEventListener('click',function(e){var b=e.target.closest('button');if(b)arataServ(+b.dataset.i,true)});
+  biosM.addEventListener('keydown',function(e){
+    var n=SERV.length,k=e.key,i=cur;
+    if(k==='ArrowDown'||k==='ArrowRight')i=(cur+1)%n;else if(k==='ArrowUp'||k==='ArrowLeft')i=(cur+n-1)%n;else if(k==='Home')i=0;else if(k==='End')i=n-1;else return;
+    e.preventDefault();arataServ(i,true);$('tab-'+i).focus();
+  });
+  biosP.addEventListener('click',function(e){var b=e.target.closest('[data-pre]');if(!b)return;var k=b.dataset.pre;var inp=document.querySelector('#o-disp input[value="'+k+'"]');if(inp){inp.checked=true;ticket()}
+    $('cerere').scrollIntoView({behavior:reduz?'auto':'smooth'});setTimeout(function(){var f=document.querySelector('#o-sim input');if(f)f.focus({preventScroll:true})},500)});
+  arataServ(0,false);
+
+  /* formular */
+  var DISP=[['laptop',['Laptop','Laptop','Portátil']],['pc',['PC','PC','PC']],['consola',['Consolă','Console','Consola']],['telefon',['Telefon','Phone','Telemóvel']],['altele',['Altele','Other','Outro']]];
+  var SIM=[['nu-porneste',['Nu pornește','Will not start','Não liga']],['fara-imagine',['Nu dă imagine','No picture','Sem imagem']],['lent',['Lent sau se blochează','Slow or freezing','Lento ou bloqueia']],['cald',['Se încălzește sau face zgomot','Overheats or makes noise','Aquece ou faz ruído']],['ecran',['Ecran sau tastatură','Screen or keyboard','Ecrã ou teclado']],['video',['Placă video','Graphics card','Placa gráfica']],['soft',['Sistem de operare / programe','Operating system / software','Sistema operativo / programas']],['altceva',['Altceva','Something else','Outra coisa']]];
+  $('o-disp').innerHTML=DISP.map(function(d){return '<label><input type="radio" name="disp" value="'+d[0]+'"><span>'+bi(d[1][0],d[1][1],d[1][2])+'</span></label>'}).join('');
+  $('o-sim').innerHTML=SIM.map(function(d){return '<label><input type="checkbox" name="sim" value="'+d[0]+'"><span>'+bi(d[1][0],d[1][1],d[1][2])+'</span></label>'}).join('');
+  function vals(){
+    var d=document.querySelector('#o-disp input:checked'),dv=d?DISP.filter(function(x){return x[0]===d.value})[0][1]:null;
+    var ss=[].slice.call(document.querySelectorAll('#o-sim input:checked')).map(function(i){return SIM.filter(function(x){return x[0]===i.value})[0][1]});
+    return {d:dv,m:$('model').value.trim(),s:ss,x:$('desc').value.trim(),n:$('nume').value.trim()};
+  }
+  function ticket(){
+    var v=vals(),g='<span class="gol">'+bi('— necompletat —','— empty —','— por preencher —')+'</span>';
+    function row(a,b,c){return '<div class="r"><b>'+a+'</b><span>'+c+'</span></div>'}
+    var h='<h3>'+bi('Tichet de reparație','Repair ticket','Pedido de reparação')+' · maski custom</h3>';
+    h+=row(bi('Dispozitiv','Device','Dispositivo'),0,v.d?bi(v.d[0],v.d[1],v.d[2])+(v.m?' · '+esc(v.m):''):g);
+    h+=row(bi('Simptome','Symptoms','Sintomas'),0,v.s.length?v.s.map(function(s){return bi(s[0],s[1],s[2])}).join(' · '):g);
+    if(v.x)h+=row(bi('Detalii','Details','Detalhes'),0,esc(v.x));
+    h+=row(bi('Client','Client','Cliente'),0,v.n?esc(v.n):g);
+    h+='<div class="ft">'+bi('> pregătit de trimis<span class="cur"></span>','> ready to send<span class="cur"></span>','> pronto a enviar<span class="cur"></span>')+'</div>';
+    $('tichet').innerHTML=h;
+  }
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  $('f').addEventListener('input',function(e){if(e.target.id==='nume')$('e-nume').classList.remove('on');ticket()});
+  $('f').addEventListener('change',function(e){if(e.target.name==='disp')$('e-disp').classList.remove('on');if(e.target.name==='sim')$('e-sim').classList.remove('on');ticket()});
+  function mesaj(v){
+    var r='Bună ziua! Aș vrea o reparație la Maski Custom.\nDispozitiv: '+v.d[0]+(v.m?' ('+v.m+')':'')+'\n';
+    if(v.s.length)r+='Simptome: '+v.s.map(function(s){return s[0].toLowerCase()}).join(', ')+'\n';
+    if(v.x)r+='Detalii: '+v.x+'\n';
+    return r+'Nume: '+v.n+'\nCând pot veni? Mulțumesc!';
+  }
+  $('f').addEventListener('submit',function(e){
+    e.preventDefault();var v=vals(),bad=null,canal=(e.submitter&&e.submitter.dataset.canal)||'wa';
+    if(!v.d){$('e-disp').classList.add('on');bad=bad||document.querySelector('#o-disp input')}
+    if(!v.s.length&&!v.x){$('e-sim').classList.add('on');bad=bad||document.querySelector('#o-sim input')}
+    if(!v.n){$('e-nume').classList.add('on');bad=bad||$('nume')}
+    if(bad){bad.focus();bad.scrollIntoView({behavior:reduz?'auto':'smooth',block:'center'});return}
+    send(canal,mesaj(v));
+  });
+  langHooks.push(function(){ticket()});
+
+  /* BIOS POST + intrare */
+  var erou=$('erou'),post=$('post'),lns=post.querySelectorAll('.ln'),feito=false;
+  function intra(){if(feito)return;feito=true;post.classList.add('fin');setTimeout(function(){erou.classList.add('go')},reduz?0:260)}
+  function pornePost(){
+    var i=0,pi=$('post-i'),pp=$('post-p');
+    function prox(){
+      if(feito)return;
+      if(i<8){lns[i].classList.add('on');i++;setTimeout(prox,i<3?260:190)}
+      else{lns[8].classList.add('on');var p=0,iv=setInterval(function(){if(feito){clearInterval(iv);return}p+=4;if(p>100)p=100;pi.style.setProperty('--p',p/100);pp.textContent=p+'%';if(p>=100){clearInterval(iv);setTimeout(intra,260)}},38)}
+    }
+    prox();
+    post.addEventListener('click',intra);addEventListener('keydown',function k(e){if(!feito){intra()}removeEventListener('keydown',k)});
+  }
+  seteaza(L());ticket();onScroll();
+  if(reduz||getComputedStyle(post).display==='none'){erou.classList.add('go');feito=true}
+  else pornePost();
+  setTimeout(function(){if(!feito)intra()},5200);
+})();
+</script>
+</body>
+</html>

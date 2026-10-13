@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="ro" data-lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title data-t="Atelierul de Espressoare Iași · Reparații espressoare|Atelierul de Espressoare Iași · Coffee machine repairs|Atelierul de Espressoare Iași · Reparação de máquinas de café">Atelierul de Espressoare Iași · Reparații espressoare</title>
+<meta name="description" content="Atelierul de Espressoare Iași: reparații de espressoare, 5,0 pe Google (56 de recenzii). Tel. 0755 708 838.">
+<meta name="theme-color" content="#15181B">
+<meta property="og:title" content="Atelierul de Espressoare Iași · Reparații espressoare">
+<meta property="og:description" content="Espressorul tău, desfăcut piesă cu piesă și pus la loc. Sună: 0755 708 838.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:image" content="media/g-01.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2315181B'/%3E%3Cpath d='M8 7h16v4H8zM10 14h12v5H10zM12 22h8v4h-8z' fill='none' stroke='%23F25A21' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('__LSKEY__');if(l==='en'||l==='ro'||l==='pt'){document.documentElement.dataset.lang=l;document.documentElement.lang=l==='pt'?'pt-PT':l}}catch(e){}</script>
+<style>
+/*__FONTES__*/
+:root{
+  --grafit:#15181B; --grafit-2:#1D2226; --grafit-3:#2A3138; --linie-d:#3A444D;
+  --hartie:#E6E7E3; --hartie-2:#D5D8D1; --alb:#F7F7F4; --linie:rgba(21,24,27,.14);
+  --text:#15181B; --text-2:#444C53; --text-d:#C9CFD3; --text-d2:#97A1A8;
+  --port:#F25A21; --port-2:#FF7A45; --port-t:#B8360A; --cupru:#C28B52; --ok:#5BD08B;
+  --f-disp:"Cabin Condensed",system-ui,sans-serif;
+  --f-text:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --lat:min(1200px,100% - 40px); --bara:60px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px;scroll-behavior:smooth}
+html[data-lang="ro"] [lang="en"],html[data-lang="ro"] [lang="pt"]{display:none!important}
+html[data-lang="en"] [lang="ro"],html[data-lang="en"] [lang="pt"]{display:none!important}
+html[data-lang="pt"] [lang="ro"],html[data-lang="pt"] [lang="en"]{display:none!important}
+body{margin:0;background:var(--hartie);color:var(--text);font:400 1.0625rem/1.6 var(--f-text);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:linear-gradient(var(--linie) 1px,transparent 1px),linear-gradient(90deg,var(--linie) 1px,transparent 1px);background-size:32px 32px;background-attachment:scroll}
+body::before{content:"";position:fixed;inset:0;background:var(--hartie);opacity:.86;pointer-events:none;z-index:-1}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--port-t);outline-offset:3px;border-radius:3px}
+.neg :focus-visible,.bara :focus-visible,.rodape :focus-visible,.jos :focus-visible{outline-color:var(--port-2)}
+.salt{position:absolute;left:12px;top:-60px;z-index:100;background:var(--grafit);color:#fff;padding:10px 14px;border-radius:6px}
+.salt:focus{top:12px}
+.lat{width:var(--lat);margin-inline:auto}
+h1,h2,h3{font-family:var(--f-disp);font-weight:700;line-height:.98;letter-spacing:.005em;margin:0;text-transform:uppercase}
+p{margin:0 0 1em}
+.mono{font-family:var(--f-mono)}
+.fig{font:500 .8rem/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--port-t);display:flex;gap:10px;align-items:center;margin:0 0 14px}
+.fig::after{content:"";height:1px;width:48px;background:currentColor;opacity:.6}
+.neg .fig{color:var(--port-2)}
+.titlu{font-size:clamp(2.3rem,1.5rem + 3.6vw,4.2rem);margin-bottom:18px;text-wrap:balance}
+.lead{font-size:clamp(1.08rem,1rem + .35vw,1.22rem);max-width:56ch;color:var(--text-2)}
+.neg .lead{color:var(--text-d)}
+.sectiune{padding:clamp(64px,8vw,116px) 0}
+.neg{background:var(--grafit);color:#fff;position:relative;z-index:0}
+.neg::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:32px 32px}
+
+/* butoane */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:4px;border:2px solid transparent;font:700 1.02rem/1 var(--f-text);text-decoration:none;cursor:pointer;touch-action:manipulation;transition:transform .18s var(--ease),background-color .18s,color .18s,border-color .18s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:active{transform:translateY(1px) scale(.985)}
+.btn-port{background:var(--port);color:#15181B;border-color:var(--port)}
+.btn-port:hover{background:var(--port-2);border-color:var(--port-2)}
+.btn-contur{border-color:currentColor;background:transparent}
+.neg .btn-contur:hover{background:#fff;color:var(--grafit);border-color:#fff}
+.btn-contur:hover{background:var(--grafit);color:#fff}
+.btn-wa{background:#1E8E4E;color:#fff;border-color:#1E8E4E}
+.btn-wa:hover{background:#17773F;border-color:#17773F}
+.btn-negru{background:var(--grafit);color:#fff}
+.btn-negru:hover{background:var(--grafit-3)}
+
+/* banner demo */
+.prezentare{background:var(--port);color:#15181B;text-align:center;font:600 .78rem/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 16px}
+
+/* bara */
+.bara{position:sticky;top:0;z-index:50;background:rgba(21,24,27,.94);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);color:#fff;border-bottom:1px solid var(--linie-d)}
+.bara-in{display:flex;align-items:center;gap:20px;height:var(--bara)}
+.marca{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto;min-height:44px}
+.marca svg{width:34px;height:34px;flex:none}
+.marca b{display:block;font:700 1.18rem/1 var(--f-disp);letter-spacing:.04em;text-transform:uppercase}
+.marca small{display:block;font:500 .66rem/1.2 var(--f-mono);letter-spacing:.14em;color:var(--text-d2);margin-top:3px}
+.nav{display:flex;gap:4px}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;text-decoration:none;font:500 .95rem/1 var(--f-text);color:var(--text-d);border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav a:hover,.nav a[aria-current="true"]{color:#fff;border-color:var(--port)}
+.limbi{display:flex;border:1px solid var(--linie-d);border-radius:4px;overflow:hidden}
+.limbi button{background:none;border:0;min-width:40px;min-height:40px;font:600 .78rem/1 var(--f-mono);color:var(--text-d2);cursor:pointer}
+.limbi button[aria-pressed="true"]{background:#fff;color:var(--grafit)}
+.doar-rev{display:none}
+html.rev .doar-rev{display:block}
+.bara-tel{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:4px;background:var(--port);color:#15181B;font:700 .95rem/1 var(--f-text);text-decoration:none}
+.bara-tel svg{width:18px;height:18px}
+@media (max-width:900px){.nav{display:none}}
+@media (max-width:520px){.bara-tel span{display:none}.bara-tel{padding:0 12px}.marca small{display:none}.bara-in{gap:10px}.marca{gap:9px}.marca b{font-size:1rem;line-height:1.02}.marca svg{width:30px;height:30px}.limbi button{min-width:36px}}
+
+/* erou */
+.erou{position:relative;overflow:hidden;min-height:calc(100svh - var(--bara) - 34px);display:flex;align-items:center;padding:clamp(40px,6vw,80px) 0}
+.erou-in{display:grid;grid-template-columns:1.22fr .78fr;gap:clamp(24px,4vw,64px);align-items:center;position:relative;z-index:2}
+.erou-bg{position:absolute;inset:0;z-index:0;opacity:.9}
+.erou-bg svg{width:100%;height:100%}
+.erou h1{font-size:clamp(2.7rem,1.2rem + 4.6vw,5rem);line-height:.92;letter-spacing:.005em;text-wrap:balance}
+.erou h1 .l{display:block;overflow:hidden;padding-bottom:.06em}
+.erou h1 .l>span{display:block}
+.erou h1 em{font-style:normal;color:var(--port-2)}
+.erou .lead{margin:22px 0 28px}
+.act{display:flex;flex-wrap:wrap;gap:12px}
+.fapte{display:flex;flex-wrap:wrap;gap:8px 22px;margin:30px 0 0;padding:20px 0 0;border-top:1px solid var(--linie-d);list-style:none;font:500 .84rem/1.3 var(--f-mono);color:var(--text-d)}
+.fapte li{display:flex;align-items:center;gap:8px}
+.fapte svg{width:14px;height:14px;color:var(--port-2)}
+.cadru{margin:0;position:relative;justify-self:end;height:min(70svh,640px);aspect-ratio:3/4;max-width:100%}
+.cadru .poza{position:absolute;inset:0;overflow:hidden;background:var(--grafit-2)}
+.cadru img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
+.cadru .poza svg{position:absolute;inset:0;width:100%;height:100%}
+.col{position:absolute;width:30px;height:30px;border:2px solid var(--port-2);z-index:3}
+.col.a{left:-12px;top:-12px;border-right:0;border-bottom:0}
+.col.b{right:-12px;top:-12px;border-left:0;border-bottom:0}
+.col.c{left:-12px;bottom:-12px;border-right:0;border-top:0}
+.col.d{right:-12px;bottom:-12px;border-left:0;border-top:0}
+.cadru figcaption{position:absolute;left:0;right:0;bottom:-34px;font:500 .72rem/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text-d2);display:flex;justify-content:space-between;gap:12px}
+@media (max-width:820px){
+  .erou{align-items:flex-end;min-height:calc(100svh - var(--bara) - 34px);padding:0}
+  .erou-in{grid-template-columns:1fr;padding:0 0 36px;position:static}
+  .erou .fig::after{display:none}
+  .cadru{position:absolute;inset:0;height:auto;aspect-ratio:auto;justify-self:auto;z-index:0}
+  .cadru::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(21,24,27,.35) 0%,rgba(21,24,27,.55) 35%,rgba(21,24,27,.94) 78%,#15181B 100%)}
+  .col,.cadru figcaption{display:none}
+  .erou-txt{position:relative;z-index:3;padding-top:26vh}
+  .erou h1{font-size:clamp(2.3rem,9.6vw,3.2rem)}
+  .fapte{margin-top:20px;padding-top:14px}
+  .erou .lead{margin:16px 0 22px}
+  .act .btn{flex:1 1 100%}
+}
+
+/* banda de mărci */
+.banda{background:var(--port);color:#15181B;overflow:hidden;border-block:1px solid #15181B}
+.banda-in{display:flex;gap:44px;white-space:nowrap;padding:14px 0;font:600 .9rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;width:max-content;animation:banda 38s linear infinite}
+.banda-in span{display:inline-flex;align-items:center;gap:44px}
+.banda-in span::after{content:"";width:8px;height:8px;border:2px solid #15181B;transform:rotate(45deg)}
+@keyframes banda{to{transform:translateX(-50%)}}
+
+/* vedere explodată */
+.explod{height:430vh;position:relative}
+.explod-pin{position:sticky;top:var(--bara);height:calc(100svh - var(--bara));display:flex;flex-direction:column;justify-content:center;padding:clamp(14px,2.4vh,32px) 0}
+.explod-cap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(8px,2vh,22px)}
+.explod-cap .titlu{font-size:clamp(1.9rem,1.1rem + 2.8vw,3.3rem);margin:0;max-width:20ch}
+.explod-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(20px,4vw,64px);align-items:center;min-height:0}
+.fig-mas{position:relative;height:min(64svh,640px);display:flex;justify-content:center}
+.fig-mas svg{height:100%;width:auto;max-width:100%;overflow:visible}
+.masina{--e:0}
+html:not(.js) .masina{--e:1}
+.p{transform:translate(calc(var(--dx,0px)*var(--e)),calc(var(--dy,0px)*var(--e)));transition:opacity .3s}
+.p path,.p rect,.p circle,.p polyline,.p ellipse,.p line{fill:var(--alb);stroke:var(--grafit);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:stroke .25s,fill .25s}
+.p .nf{fill:none}
+.p .fin{stroke-width:1.4;opacity:.7}
+.masina.ar .p{opacity:.3}
+.masina.ar .p.on{opacity:1}
+.p.on path,.p.on rect,.p.on circle,.p.on polyline,.p.on ellipse,.p.on line{stroke:var(--port-t)}
+.p.on .umple{fill:#FFD9C8}
+.badge{opacity:var(--e);transition:opacity .2s}
+.badge circle{fill:var(--grafit)!important;stroke:var(--grafit)!important}
+.badge text{font:600 13px var(--f-mono);fill:#fff;text-anchor:middle;dominant-baseline:central}
+.badge line{stroke:var(--grafit)!important;stroke-width:1.2!important}
+.p.on .badge circle{fill:var(--port-t)!important;stroke:var(--port-t)!important}
+.p.on .badge line{stroke:var(--port-t)!important}
+.fantoma{fill:none;stroke:var(--grafit);stroke-width:1.4;stroke-dasharray:6 7;opacity:.4}
+.explod-info{display:flex;flex-direction:column;gap:clamp(12px,2vh,24px);min-height:0}
+.piese{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}
+.piese button{display:flex;width:100%;align-items:center;gap:10px;min-height:44px;padding:4px 10px 4px 4px;background:none;border:0;border-bottom:1px solid var(--linie);text-align:left;cursor:pointer;font:500 .94rem/1.2 var(--f-text);color:var(--text-2);transition:color .15s,background-color .15s}
+.piese button i{font:600 .78rem/1 var(--f-mono);font-style:normal;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--grafit);color:#fff;flex:none;transition:background-color .2s}
+.piese button:hover{color:var(--text)}
+.piese button[aria-pressed="true"]{color:var(--text);font-weight:700;background:rgba(242,90,33,.12)}
+.piese button[aria-pressed="true"] i{background:var(--port-t)}
+.card-p{background:var(--grafit);color:#fff;border-radius:4px;padding:clamp(18px,2.4vw,28px);min-height:150px;display:grid;grid-template-columns:1fr;gap:14px;position:relative}
+.card-p.cu-foto{grid-template-columns:1fr 120px}
+.card-p h3{font-size:1.7rem;margin:0 0 8px;color:#fff}
+.card-p .nr{font:600 .76rem/1 var(--f-mono);letter-spacing:.1em;color:var(--port-2);margin-bottom:10px;display:block}
+.card-p p{margin:0;color:var(--text-d);font-size:1rem;line-height:1.5}
+.card-p .foto{position:relative;border-radius:3px;overflow:hidden;background:var(--grafit-3);aspect-ratio:3/4;align-self:start}
+.card-p .foto img{width:100%;height:100%;object-fit:cover}
+.card-p .foto small{position:absolute;left:0;right:0;bottom:0;padding:16px 6px 5px;background:linear-gradient(transparent,rgba(0,0,0,.8));font:500 .62rem/1.2 var(--f-mono);color:#fff;letter-spacing:.04em}
+.faze{display:flex;justify-content:space-between;gap:8px;font:500 .74rem/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-2)}
+.faze span{padding-top:10px;border-top:3px solid var(--linie);flex:1;transition:color .2s,border-color .2s}
+.faze span.on{color:var(--port-t);border-color:var(--port-t);font-weight:600}
+.nota{font:400 .78rem/1.4 var(--f-mono);color:var(--text-2);margin:0}
+.explod.static{height:auto}
+.explod.static .explod-pin{position:static;height:auto;padding:64px 0}
+@media (max-width:860px){
+  .explod{height:520vh}
+  .explod-pin{justify-content:flex-start;padding-top:12px}
+  .explod-cap{margin-bottom:0}
+  .explod-cap .fig{display:none}
+  .explod-cap .titlu{font-size:clamp(1.55rem,6.4vw,2rem)}
+  .explod-grid{grid-template-columns:minmax(0,1fr);gap:6px}
+  .fig-mas{height:36svh}
+  .piese{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .piese::-webkit-scrollbar{display:none}
+  .piese li{flex:none}
+  .piese button{width:44px;height:44px;padding:0;justify-content:center;border:1px solid var(--linie);border-radius:4px}
+  .piese button span{display:none}
+  .piese button i{width:30px;height:30px;font-size:.88rem}
+  .card-p{min-height:0;padding:14px}
+  .card-p h3{font-size:1.4rem}
+  .card-p p{font-size:.95rem}
+  .card-p.cu-foto{grid-template-columns:1fr 84px}
+  .card-p .foto small{display:none}
+  .faze{display:none}
+  .nota{display:none}
+  .explod.static .explod-pin{padding:40px 0}
+}
+
+/* aparate */
+.aparate{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.6vw,20px);margin-top:36px}
+.ap{position:relative;margin:0;overflow:hidden;border-radius:4px;background:var(--grafit-2);aspect-ratio:3/4}
+.ap:nth-child(-n+3){grid-column:span 4}
+.ap:nth-child(n+4){grid-column:span 6;aspect-ratio:5/4}
+.ap:nth-child(n+4) img{object-position:50% 38%}
+.ap img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.ap:hover img{transform:scale(1.04)}
+.ap svg.f{position:absolute;inset:0;width:100%;height:100%}
+.ap img{position:relative;z-index:1}
+.ap figcaption{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(transparent,rgba(21,24,27,.88));color:#fff;font:600 .8rem/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;display:flex;justify-content:space-between;gap:10px}
+.ap figcaption span{color:var(--port-2)}
+@media (max-width:760px){
+  .aparate{grid-template-columns:1fr 1fr}
+  .ap:nth-child(n){grid-column:span 1;aspect-ratio:3/4}
+  .ap:nth-child(1){grid-column:span 2;aspect-ratio:4/5}
+  .ap:nth-child(n+4){grid-column:span 2;aspect-ratio:4/3}}
+}
+
+/* recenzii */
+.rec-cap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px;margin-bottom:36px}
+.nota-mare{display:flex;align-items:center;gap:16px}
+.nota-mare b{font:700 4.6rem/.8 var(--f-disp);color:var(--port-2)}
+.stele{display:flex;gap:3px;color:var(--port-2)}
+.stele svg{width:20px;height:20px}
+.nota-mare small{display:block;font:500 .8rem/1.3 var(--f-mono);color:var(--text-d2);margin-top:6px}
+.recs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rec{background:var(--grafit-2);border:1px solid var(--linie-d);border-radius:4px;padding:26px;display:flex;flex-direction:column;gap:14px;position:relative}
+.rec::before{content:"";position:absolute;left:26px;top:-1px;width:44px;height:3px;background:var(--port)}
+.rec h3{font-size:1.5rem;color:#fff}
+.rec p{margin:0;color:var(--text-d);font-size:1rem}
+.rec small{margin-top:auto;font:500 .74rem/1.3 var(--f-mono);color:var(--text-d2);letter-spacing:.04em}
+@media (max-width:900px){.recs{grid-template-columns:1fr}}
+
+/* formular */
+.cerere{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,60px);align-items:start}
+fieldset{border:0;padding:0;margin:0 0 30px}
+legend{padding:0;margin-bottom:14px;font:700 1.45rem/1 var(--f-disp);text-transform:uppercase;letter-spacing:.02em;display:flex;align-items:center;gap:12px}
+legend i{font:600 .78rem/1 var(--f-mono);font-style:normal;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--grafit);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.chip>span{display:inline-flex;align-items:center;min-height:46px;padding:0 16px;border:1.5px solid var(--grafit);border-radius:4px;background:var(--alb);font:500 .98rem/1.1 var(--f-text);transition:background-color .15s,color .15s,transform .15s var(--ease)}
+.chip:hover>span{background:#fff;transform:translateY(-1px)}
+.chip input:checked+span{background:var(--grafit);color:#fff}
+.chip input:checked+span::before{content:"";width:8px;height:8px;margin-right:9px;background:var(--port);transform:rotate(45deg)}
+.chip input:focus-visible+span{outline:3px solid var(--port-t);outline-offset:3px}
+.camp{margin-bottom:16px}
+.camp label{display:block;font:600 .92rem/1.2 var(--f-text);margin-bottom:6px}
+.camp label small{font-weight:400;color:var(--text-2)}
+.camp input[type=text],.camp select,.camp textarea{width:100%;min-height:50px;padding:12px 14px;border:1.5px solid var(--grafit);border-radius:4px;background:var(--alb);font-size:1rem}
+.camp textarea{min-height:92px;resize:vertical}
+.camp input:focus,.camp select:focus,.camp textarea:focus{outline:3px solid var(--port-t);outline-offset:2px}
+.grup2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.grup2{grid-template-columns:1fr}}
+.eroare{display:none;margin:8px 0 0;font:600 .9rem/1.35 var(--f-text);color:#A3260A}
+.eroare.da{display:block}
+.eroare::before{content:"! ";font-family:var(--f-mono)}
+.trimite{display:flex;flex-wrap:wrap;gap:10px}
+.ajut{font-size:.9rem;color:var(--text-2);margin:12px 0 0}
+.fisa-wrap{position:sticky;top:84px}
+.fisa{position:relative;background:var(--alb);color:var(--text);border:1.5px solid var(--grafit);border-radius:4px;padding:22px 22px 18px;font-family:var(--f-mono);font-size:.84rem;line-height:1.5;}
+.fisa::before,.fisa::after{content:"";position:absolute;top:56px;width:20px;height:20px;border-radius:50%;background:var(--hartie);border:1.5px solid var(--grafit)}
+.fisa::before{left:-11px;clip-path:inset(0 0 0 50%)}
+.fisa::after{right:-11px;clip-path:inset(0 50% 0 0)}
+.fisa h3{font-size:1.35rem;display:flex;justify-content:space-between;align-items:baseline;padding-bottom:22px;margin-bottom:12px;border-bottom:2px dashed var(--grafit)}
+.fisa h3 small{font:500 .72rem/1 var(--f-mono);letter-spacing:.06em;color:var(--text-2)}
+.fisa dl{margin:0}
+.fisa dt{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);margin-top:8px}
+.fisa dd{margin:0;font-weight:500;min-height:1.5em;word-break:break-word}
+.fisa dd.gol{color:var(--text-2);font-weight:400}
+.fisa .stamp{margin-top:16px;padding-top:14px;border-top:2px dashed var(--grafit);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.fisa .stamp b{font:700 1.5rem/1 var(--f-disp);text-transform:uppercase;color:var(--port-t);border:2px solid var(--port-t);padding:6px 10px 3px;border-radius:3px;transform:rotate(-4deg);transition:opacity .3s,transform .4s var(--ease);opacity:.25}
+.fisa.gata .stamp b{opacity:1;transform:rotate(-4deg) scale(1)}
+.fisa-act{margin-top:12px}
+.fisa-act .btn{width:100%}
+.fisa-act p{font-size:.88rem;color:var(--text-2);margin:10px 0 0}
+@media (max-width:900px){.cerere{grid-template-columns:1fr}.fisa-wrap{position:static}}
+
+/* contact */
+.contact-g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px)}
+.tel-mare{display:inline-flex;align-items:center;gap:14px;font:700 clamp(2.2rem,1.2rem + 4.4vw,4.2rem)/1 var(--f-disp);text-decoration:none;color:#fff;letter-spacing:.02em;margin:6px 0 20px;min-height:56px}
+.tel-mare svg{width:.7em;height:.7em;color:var(--port-2)}
+.tel-mare:hover{color:var(--port-2)}
+.tab{width:100%;border-collapse:collapse;font:500 .95rem/1.4 var(--f-mono)}
+.tab td,.tab th{text-align:left;padding:11px 0;border-bottom:1px solid var(--linie-d);vertical-align:top;font-weight:500}
+.tab th{color:var(--text-d2);width:40%;font-weight:400}
+.dc{color:var(--port-2)}
+
+/* rodapé */
+.rodape{background:#0E1012;color:var(--text-d);padding:48px 0 calc(90px + env(safe-area-inset-bottom,0px));border-top:3px solid var(--port)}
+.rodape-g{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:32px}
+.rodape h2{font-size:1.5rem;color:#fff;margin-bottom:10px}
+.rodape p{font-size:.95rem;margin:0 0 .5em}
+.legal{display:flex;flex-wrap:wrap;gap:8px 26px;padding-top:22px;border-top:1px solid var(--linie-d);font-size:.86rem;color:var(--text-d2)}
+.legal a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:700px){.contact-g,.rodape-g{grid-template-columns:1fr}}
+
+/* bară de jos (mobil) */
+.jos{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:8px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(21,24,27,.96);border-top:1px solid var(--linie-d)}
+.jos .btn{flex:1;min-height:50px}
+@media (max-width:700px){.jos{display:flex}}
+
+/* mișcare */
+.js [data-rev]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s)}
+.js [data-rev].vz{opacity:1;transform:none}
+.js .erou .l>span{transform:translateY(105%)}
+.js .erou .anim{opacity:0;transform:translateY(16px)}
+.js .cadru .poza{clip-path:inset(100% 0 0 0)}
+.js .cadru .col{opacity:0;transform:scale(.4)}
+.js .cadru figcaption{opacity:0}
+.js .erou-bg{opacity:0}
+.js.gata .erou .l>span{transform:none;transition:transform .9s var(--ease);transition-delay:calc(.55s + var(--i)*.11s)}
+.js.gata .erou .anim{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(1.05s + var(--i)*.09s)}
+.js.gata .cadru .poza{clip-path:inset(0 0 0 0);transition:clip-path 1.15s var(--ease) .25s}
+.js.gata .cadru .col{opacity:1;transform:none;transition:opacity .4s,transform .55s var(--ease);transition-delay:calc(.2s + var(--i)*.07s)}
+.js.gata .cadru figcaption{opacity:1;transition:opacity .6s 1.4s}
+.js.gata .erou-bg{opacity:.9;transition:opacity 1.2s}
+.cadru img{transform:scale(1.12);transition:transform 1.8s var(--ease)}
+.gata .cadru img{transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js [data-rev],.js .erou .l>span,.js .erou .anim,.js .cadru .poza,.js .cadru .col,.js .cadru figcaption,.js .erou-bg{opacity:1!important;transform:none!important;clip-path:none!important}
+  .cadru img{transform:none}
+  .banda-in{width:auto;flex-wrap:wrap;white-space:normal;padding:14px 20px}
+}
+</style>
+</head>
+<body>
+<a class="salt" href="#continut">{{Sari la conținut|Skip to content|Saltar para o conteúdo}}</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.5-.3z"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-1-2z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-sag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-stea" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></symbol>
+    <symbol id="i-rombo" viewBox="0 0 14 14"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 1l6 6-6 6-6-6z"/></symbol>
+  </defs>
+</svg>
+
+<div class="prezentare" role="note">{{PREZENTARE PACHECO STUDIOS · site demonstrativ pentru Atelierul de Espressoare Iași|PACHECO STUDIOS PREVIEW · demo website for Atelierul de Espressoare Iași|APRESENTAÇÃO PACHECO STUDIOS · site de demonstração para o Atelierul de Espressoare Iași}}</div>
+
+<header class="bara" id="bara">
+  <div class="lat bara-in">
+    <a class="marca" href="#sus" aria-label="{{Atelierul de Espressoare Iași — acasă|Atelierul de Espressoare Iași — home|Atelierul de Espressoare Iași — início}}">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="6" fill="#F25A21"/><path d="M9 8h16v4H9zM11 15h12v5H11zM13 23h8v4h-8z" fill="none" stroke="#15181B" stroke-width="2.2" stroke-linejoin="round"/></svg>
+      <span><b>Atelierul de Espressoare</b><small>IAȘI</small></span>
+    </a>
+    <nav class="nav" aria-label="{{Navigare principală|Main navigation|Navegação principal}}">
+      <a href="#explodat">{{Vedere explodată|Exploded view|Vista explodida}}</a>
+      <a href="#aparate">{{Aparate|Machines|Máquinas}}</a>
+      <a href="#recenzii">{{Recenzii|Reviews|Opiniões}}</a>
+      <a href="#cere">{{Cere reparație|Request a repair|Pedir reparação}}</a>
+    </nav>
+    <div class="limbi" role="group" aria-label="{{Limba|Language|Língua}}">
+      <button type="button" data-set-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="pt" aria-pressed="false" class="doar-rev">PT</button>
+    </div>
+    <a class="bara-tel" href="tel:+40755708838" aria-label="{{Sună 0755 708 838|Call 0755 708 838|Ligar 0755 708 838}}"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>{{Sună|Call|Ligar}}</span></a>
+  </div>
+</header>
+
+<main id="continut">
+<span id="sus"></span>
+
+<!-- ================= EROU ================= -->
+<section class="erou neg" id="erou" aria-labelledby="t-erou">
+  <div class="erou-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#3A444D" stroke-width="1.2"><circle cx="980" cy="400" r="150"/><circle cx="980" cy="400" r="260" stroke-dasharray="4 10"/><circle cx="980" cy="400" r="380" stroke-dasharray="2 14"/><path d="M980 0v800M600 400h600" stroke-dasharray="10 8"/></g></svg>
+  </div>
+  <div class="lat erou-in">
+    <div class="erou-txt">
+      <p class="fig anim" style="--i:0">FIG. 1 · {{reparații espressoare · Iași|coffee machine repairs · Iași|reparação de máquinas de café · Iași}}</p>
+      <h1 id="t-erou">
+        <span class="l" style="--i:0"><span>{{Espressorul tău,|Your coffee machine,|A sua máquina de café,}}</span></span>
+        <span class="l" style="--i:1"><span>{{desfăcut piesă|taken apart piece|desmontada peça}}</span></span>
+        <span class="l" style="--i:2"><span>{{cu piesă. <em>Și pus la loc.</em>|by piece. <em>And put back.</em>|a peça. <em>E montada de novo.</em>}}</span></span>
+      </h1>
+      <p class="lead anim" style="--i:1">{{Din recenziile publice: vine la domiciliu, la ora stabilită, lucrează curat, iar cafeaua are din nou gustul de la început.|From the public reviews: he comes to your home at the agreed time, works cleanly, and the coffee tastes like new again.|Segundo as opiniões públicas: vai a casa, à hora combinada, trabalha com limpeza e o café volta a saber como no primeiro dia.}}</p>
+      <div class="act anim" style="--i:2">
+        <a class="btn btn-port" href="tel:+40755708838"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună · 0755 708 838|Call · 0755 708 838|Ligar · 0755 708 838}}</a>
+        <a class="btn btn-contur" href="#cere">{{Cere reparație|Request a repair|Pedir reparação}}<svg aria-hidden="true"><use href="#i-sag"/></svg></a>
+      </div>
+      <ul class="fapte anim" style="--i:3">
+        <li><svg aria-hidden="true"><use href="#i-stea"/></svg>{{5,0 pe Google · 56 de recenzii|5.0 on Google · 56 reviews|5,0 no Google · 56 opiniões}}</li>
+        <li><svg aria-hidden="true"><use href="#i-rombo"/></svg>{{Marți 08:00–23:00|Tuesday 08:00–23:00|Terça 08:00–23:00}}</li>
+      </ul>
+    </div>
+    <figure class="cadru">
+      <span class="col a" style="--i:0"></span><span class="col b" style="--i:1"></span><span class="col c" style="--i:2"></span><span class="col d" style="--i:3"></span>
+      <div class="poza">
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="400" fill="#1D2226"/><g fill="none" stroke="#3A444D" stroke-width="2"><rect x="80" y="90" width="140" height="40" rx="6"/><rect x="95" y="150" width="110" height="80" rx="4"/><rect x="105" y="250" width="90" height="60" rx="4"/></g></svg>
+        <img src="media/g-01.webp" alt="{{Un espressor automat desfăcut pe masă: se văd grupul de infuzie, tuburile și cablurile|A coffee machine taken apart on a table: brew unit, tubes and wiring in view|Uma máquina de café automática desmontada sobre a mesa: grupo de infusão, tubos e cabos à vista}}" width="1600" height="2133" fetchpriority="high" onerror="this.remove()">
+      </div>
+      <figcaption><span>{{Un aparat desfăcut|A machine, opened up|Uma máquina aberta}}</span><span>FIG. 1</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="banda" aria-hidden="true"><div class="banda-in" id="banda"></div></div>
+
+<!-- ================= VEDERE EXPLODATĂ ================= -->
+<section class="explod" id="explodat" aria-labelledby="t-exp">
+  <div class="explod-pin">
+    <div class="lat">
+      <div class="explod-cap">
+        <div>
+          <p class="fig">FIG. 2 · {{vedere explodată|exploded view|vista explodida}}</p>
+          <h2 class="titlu" id="t-exp">{{Ce e înăuntrul unui espressor automat|What is inside a bean-to-cup machine|O que há dentro de uma máquina automática}}</h2>
+        </div>
+      </div>
+      <div class="explod-grid">
+        <div class="fig-mas">
+          <svg class="masina" id="masina" viewBox="0 0 640 840" role="img" aria-label="{{Schemă generală a unui espressor automat, cu piesele depărtate una de alta|General diagram of a bean-to-cup machine with its parts pulled apart|Esquema geral de uma máquina automática com as peças afastadas}}">
+            <g transform="translate(0 20)">
+              <rect class="fantoma" x="176" y="104" width="288" height="608" rx="26"/>
+              <!-- 0 · rezervor boabe -->
+              <g class="p" data-i="0" style="--dy:-115px">
+                <path class="umple" d="M196 150L444 150L420 232L220 232Z"/>
+                <rect x="190" y="122" width="260" height="28" rx="6"/>
+                <rect x="298" y="108" width="44" height="14" rx="4"/>
+                <ellipse class="fin" cx="262" cy="190" rx="9" ry="5" transform="rotate(-24 262 190)"/><ellipse class="fin" cx="300" cy="206" rx="9" ry="5" transform="rotate(18 300 206)"/><ellipse class="fin" cx="338" cy="184" rx="9" ry="5" transform="rotate(-8 338 184)"/><ellipse class="fin" cx="372" cy="208" rx="9" ry="5" transform="rotate(30 372 208)"/><ellipse class="fin" cx="322" cy="168" rx="9" ry="5" transform="rotate(40 322 168)"/>
+                <g class="badge"><line x1="444" y1="186" x2="492" y2="186"/><circle cx="504" cy="186" r="13"/><text x="504" y="186">1</text></g>
+              </g>
+              <!-- 1 · râșniță -->
+              <g class="p" data-i="1" style="--dy:-69px">
+                <rect class="umple" x="220" y="232" width="200" height="90" rx="4"/>
+                <circle class="nf" cx="320" cy="277" r="32"/><circle class="nf fin" cx="320" cy="277" r="38" stroke-dasharray="5 5"/><circle cx="320" cy="277" r="11"/>
+                <rect x="420" y="252" width="58" height="50" rx="10"/><line x1="436" y1="262" x2="436" y2="292"/><line x1="450" y1="262" x2="450" y2="292"/><line x1="464" y1="262" x2="464" y2="292"/>
+                <g class="badge"><line x1="478" y1="277" x2="512" y2="277"/><circle cx="524" cy="277" r="13"/><text x="524" y="277">2</text></g>
+              </g>
+              <!-- 2 · grup infuzie -->
+              <g class="p" data-i="2" style="--dy:-23px">
+                <rect class="umple" x="238" y="322" width="164" height="140" rx="6"/>
+                <rect x="300" y="336" width="40" height="62" rx="3"/>
+                <polyline class="nf" points="320,402 304,410 336,420 304,430 336,440 320,450"/>
+                <rect x="402" y="364" width="34" height="14" rx="3"/><line x1="436" y1="371" x2="452" y2="354"/>
+                <g class="badge"><line x1="452" y1="392" x2="484" y2="392"/><circle cx="496" cy="392" r="13"/><text x="496" y="392">3</text></g>
+              </g>
+              <!-- 3 · boiler + pompă -->
+              <g class="p" data-i="3" style="--dy:23px">
+                <rect class="umple" x="214" y="482" width="156" height="56" rx="28"/>
+                <polyline class="nf" points="240,510 256,492 272,528 288,492 304,528 320,492 336,528 350,510"/>
+                <circle cx="418" cy="510" r="26"/><circle class="nf fin" cx="418" cy="510" r="11"/><line x1="370" y1="510" x2="392" y2="510"/>
+                <g class="badge"><line x1="444" y1="510" x2="474" y2="510"/><circle cx="486" cy="510" r="13"/><text x="486" y="510">4</text></g>
+              </g>
+              <!-- 4 · ieșire cafea + duză -->
+              <g class="p" data-i="4" style="--dy:69px">
+                <rect class="umple" x="250" y="556" width="140" height="34" rx="4"/>
+                <rect x="290" y="590" width="16" height="30" rx="3"/><rect x="334" y="590" width="16" height="30" rx="3"/>
+                <path class="nf" d="M402 566h14a10 10 0 0 1 10 10v44"/><rect x="418" y="620" width="16" height="14" rx="2"/>
+                <g class="badge"><line x1="434" y1="580" x2="468" y2="580"/><circle cx="480" cy="580" r="13"/><text x="480" y="580">5</text></g>
+              </g>
+              <!-- 5 · tavă -->
+              <g class="p" data-i="5" style="--dy:115px">
+                <rect class="umple" x="190" y="666" width="260" height="40" rx="6"/>
+                <line class="fin" x1="214" y1="676" x2="214" y2="696"/><line class="fin" x1="238" y1="676" x2="238" y2="696"/><line class="fin" x1="262" y1="676" x2="262" y2="696"/><line class="fin" x1="286" y1="676" x2="286" y2="696"/><line class="fin" x1="310" y1="676" x2="310" y2="696"/><line class="fin" x1="334" y1="676" x2="334" y2="696"/><line class="fin" x1="358" y1="676" x2="358" y2="696"/><line class="fin" x1="382" y1="676" x2="382" y2="696"/><line class="fin" x1="406" y1="676" x2="406" y2="696"/><line class="fin" x1="430" y1="676" x2="430" y2="696"/>
+                <g class="badge"><line x1="450" y1="686" x2="480" y2="686"/><circle cx="492" cy="686" r="13"/><text x="492" y="686">6</text></g>
+              </g>
+              <!-- 6 · rezervor apă -->
+              <g class="p" data-i="6" style="--dx:-62px">
+                <rect class="umple" x="64" y="214" width="104" height="300" rx="12"/>
+                <path class="nf" d="M64 340q13-10 26 0t26 0 26 0 26 0"/><path class="nf fin" d="M64 330q13-10 26 0t26 0 26 0 26 0"/>
+                <path class="nf" d="M92 214v-14h48v14"/>
+                <g class="badge"><line x1="116" y1="214" x2="116" y2="184"/><circle cx="116" cy="172" r="13"/><text x="116" y="172">7</text></g>
+              </g>
+              <!-- 7 · placă electronică -->
+              <g class="p" data-i="7" style="--dx:54px">
+                <rect class="umple" x="496" y="340" width="96" height="130" rx="6"/>
+                <rect x="512" y="358" width="30" height="30" rx="2"/><rect x="552" y="358" width="24" height="14" rx="2"/><rect x="512" y="406" width="48" height="12" rx="2"/>
+                <polyline class="nf fin" points="552,388 552,404 576,404 576,440 512,440"/>
+                <circle cx="574" cy="452" r="5"/>
+                <g class="badge"><line x1="544" y1="340" x2="544" y2="312"/><circle cx="544" cy="300" r="13"/><text x="544" y="300">8</text></g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="explod-info">
+          <ol class="piese" id="piese" aria-label="{{Piesele aparatului|The machine's parts|As peças da máquina}}"></ol>
+          <article class="card-p" id="card-p" aria-live="polite"></article>
+          <div class="faze" aria-hidden="true"><span id="fz0" class="on">{{Asamblat|Assembled|Montada}}</span><span id="fz1">{{Desfăcut|Taken apart|Desmontada}}</span><span id="fz2">{{Pus la loc|Put back|Montada de novo}}</span></div>
+          <p class="nota">{{Schemă generală; modelele diferă între ele. Nu reprezintă un aparat anume.|General diagram; models differ. It does not represent a specific machine.|Esquema geral; os modelos variam. Não representa uma máquina em particular.}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APARATE ================= -->
+<section class="sectiune" id="aparate" aria-labelledby="t-ap" style="padding-top:clamp(40px,5vw,72px)">
+  <div class="lat">
+    <p class="fig" data-rev>FIG. 3 · {{aparate|machines|máquinas}}</p>
+    <h2 class="titlu" id="t-ap" data-rev>{{Aparate din fotografiile lui|Machines from his photos|Máquinas das fotografias dele}}</h2>
+    <p class="lead" data-rev>{{Fiecare cu marca pe care o vezi pe corp.|Each with the brand you can read on the body.|Cada uma com a marca que se lê no corpo.}}</p>
+    <div class="aparate">
+      <figure class="ap" data-rev>
+        <svg class="f" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="400" fill="#D5D8D1"/><rect x="90" y="100" width="120" height="190" rx="10" fill="none" stroke="#15181B" stroke-width="2"/></svg>
+        <img src="media/g-03.webp" alt="{{Espressor Philips cu ecran tactil, pe o masă de bucătărie|Philips coffee machine with a touch screen on a kitchen counter|Máquina de café Philips com ecrã tátil numa bancada de cozinha}}" width="1600" height="2133" loading="lazy" onerror="this.remove()">
+        <figcaption>Philips <span>01</span></figcaption>
+      </figure>
+      <figure class="ap" data-rev style="--d:.08s">
+        <svg class="f" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="400" fill="#D5D8D1"/><rect x="90" y="100" width="120" height="190" rx="10" fill="none" stroke="#15181B" stroke-width="2"/></svg>
+        <img src="media/g-04.webp" alt="{{Espressor De’Longhi pe un blat de lemn, lângă un bonsai|De’Longhi coffee machine on a wooden shelf next to a bonsai|Máquina de café De’Longhi sobre uma prateleira de madeira, junto a um bonsai}}" width="1600" height="2133" loading="lazy" onerror="this.remove()">
+        <figcaption>De’Longhi <span>02</span></figcaption>
+      </figure>
+      <figure class="ap" data-rev style="--d:.16s">
+        <svg class="f" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="400" fill="#D5D8D1"/><rect x="90" y="100" width="120" height="190" rx="10" fill="none" stroke="#15181B" stroke-width="2"/></svg>
+        <img src="media/g-05.webp" alt="{{Espressor Philips roșu, în bucătărie|Red Philips coffee machine in a kitchen|Máquina de café Philips vermelha numa cozinha}}" width="1600" height="2531" loading="lazy" onerror="this.remove()">
+        <figcaption>Philips <span>03</span></figcaption>
+      </figure>
+      <figure class="ap" data-rev>
+        <svg class="f" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="400" fill="#D5D8D1"/><rect x="90" y="100" width="120" height="190" rx="10" fill="none" stroke="#15181B" stroke-width="2"/></svg>
+        <img src="media/g-06.webp" alt="{{Espressor Krups cu râșniță, pe un blat de bucătărie|Krups coffee machine with grinder on a kitchen counter|Máquina de café Krups com moinho numa bancada de cozinha}}" width="1600" height="2133" loading="lazy" onerror="this.remove()">
+        <figcaption>Krups <span>04</span></figcaption>
+      </figure>
+      <figure class="ap" data-rev style="--d:.08s">
+        <svg class="f" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="400" fill="#D5D8D1"/><rect x="90" y="100" width="120" height="190" rx="10" fill="none" stroke="#15181B" stroke-width="2"/></svg>
+        <img src="media/g-08.webp" alt="{{Aparat Nescafé Dolce Gusto, marca Krups, negru lucios|Nescafé Dolce Gusto machine by Krups, glossy black|Máquina Nescafé Dolce Gusto da Krups, preta brilhante}}" width="1600" height="2133" loading="lazy" onerror="this.remove()">
+        <figcaption>Dolce Gusto <span>05</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RECENZII ================= -->
+<section class="sectiune neg" id="recenzii" aria-labelledby="t-rec">
+  <div class="lat">
+    <div class="rec-cap">
+      <div>
+        <p class="fig" data-rev>FIG. 4 · {{ce spun clienții|what customers say|o que dizem os clientes}}</p>
+        <h2 class="titlu" id="t-rec" data-rev style="margin:0">{{Punctual. Curat.<br>Acasă la tine.|On time. Clean.<br>At your place.|Pontual. Limpo.<br>Em sua casa.}}</h2>
+      </div>
+      <div class="nota-mare" data-rev>
+        <b>5,0</b>
+        <div><div class="stele" role="img" aria-label="{{5 din 5 stele|5 out of 5 stars|5 em 5 estrelas}}"><svg aria-hidden="true"><use href="#i-stea"/></svg><svg aria-hidden="true"><use href="#i-stea"/></svg><svg aria-hidden="true"><use href="#i-stea"/></svg><svg aria-hidden="true"><use href="#i-stea"/></svg><svg aria-hidden="true"><use href="#i-stea"/></svg></div><small>{{56 de recenzii Google|56 Google reviews|56 opiniões no Google}}</small></div>
+      </div>
+    </div>
+    <div class="recs">
+      <article class="rec" data-rev>
+        <h3>{{Punctualitate|Punctuality|Pontualidade}}</h3>
+        <p>{{Un client spune că aparatul a fost reparat acasă, nu la service, și laudă punctualitatea și profesionalismul.|One customer says the machine was fixed at home, not at a workshop, and praises the punctuality and professionalism.|Um cliente diz que a máquina foi reparada em casa, e não numa oficina, e elogia a pontualidade e o profissionalismo.}}</p>
+        <small>{{Parafrazat din recenziile Google|Paraphrased from Google reviews|Parafraseado das opiniões do Google}}</small>
+      </article>
+      <article class="rec" data-rev style="--d:.1s">
+        <h3>{{Gustul de la început|Like-new taste|O sabor do início}}</h3>
+        <p>{{A venit la ora stabilită, în aceeași zi în care a fost contactat, politicos și curat. Cafeaua are din nou gustul de când aparatul era nou.|He came at the agreed time on the same day he was contacted, polite and tidy. The coffee tastes like it did when the machine was new.|Chegou à hora combinada, no mesmo dia do contacto, educado e limpo. O café voltou a ter o sabor de quando a máquina era nova.}}</p>
+        <small>{{Parafrazat din recenziile Google|Paraphrased from Google reviews|Parafraseado das opiniões do Google}}</small>
+      </article>
+      <article class="rec" data-rev style="--d:.2s">
+        <h3>{{După programul tău|Around your schedule|Ao seu horário}}</h3>
+        <p>{{Aparatul avea mai multe defecte și a fost reparat bine și repede. Un plus: vine la domiciliu și se adaptează programului clientului.|The machine had several faults and was fixed well and quickly. A plus: he visits at home and adapts to the customer’s schedule.|A máquina tinha várias avarias e foi bem e depressa reparada. Um ponto a favor: vai a casa e adapta-se ao horário do cliente.}}</p>
+        <small>{{Parafrazat din recenziile Google|Paraphrased from Google reviews|Parafraseado das opiniões do Google}}</small>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERERE ================= -->
+<section class="sectiune" id="cere" aria-labelledby="t-cere">
+  <div class="lat">
+    <p class="fig" data-rev>FIG. 5 · {{fișă de reparație|repair ticket|ficha de reparação}}</p>
+    <h2 class="titlu" id="t-cere" data-rev>{{Spune-i ce are aparatul.|Tell him what is wrong.|Diga-lhe o que tem a máquina.}}</h2>
+    <p class="lead" data-rev style="margin-bottom:40px">{{Completezi fișa, iar mesajul gata scris pleacă pe WhatsApp sau SMS. Ziua, ora și prețul le stabiliți la telefon.|Fill in the ticket and the ready-made message goes out by WhatsApp or SMS. Day, time and price are agreed on the phone.|Preencha a ficha e a mensagem já escrita segue por WhatsApp ou SMS. Dia, hora e preço combinam-se por telefone.}}</p>
+    <div class="cerere">
+      <form id="f-rep" novalidate>
+        <fieldset>
+          <legend><i>1</i>{{Aparatul|The machine|A máquina}}</legend>
+          <div class="chips" role="radiogroup" aria-label="{{Marca|Brand|Marca}}" id="marci"></div>
+          <p class="eroare" id="e-marca" role="alert">{{Alege marca aparatului, sau „Altă marcă”.|Pick the machine’s brand, or “Other brand”.|Escolha a marca da máquina, ou «Outra marca».}}</p>
+          <div class="camp" style="margin-top:16px"><label for="model">{{Model|Model|Modelo}} <small>{{opțional · de pe eticheta aparatului|optional · from the machine’s label|opcional · da etiqueta da máquina}}</small></label><input id="model" type="text" maxlength="50" autocomplete="off" placeholder="ex. Magnifica"></div>
+        </fieldset>
+        <fieldset>
+          <legend><i>2</i>{{Ce face|What it does|O que faz}}</legend>
+          <div class="chips" id="avarii"></div>
+          <p class="eroare" id="e-avarie" role="alert">{{Alege cel puțin o problemă sau scrie ce observi.|Pick at least one problem or write what you notice.|Escolha pelo menos um problema ou escreva o que nota.}}</p>
+          <div class="camp" style="margin-top:16px"><label for="desc">{{Alte detalii|More details|Mais detalhes}} <small>{{opțional|optional|opcional}}</small></label><textarea id="desc" maxlength="300" data-ph="ex. a început să curgă apă pe dedesubt|e.g. water started leaking underneath|ex. começou a pingar água por baixo" placeholder="ex. a început să curgă apă pe dedesubt"></textarea></div>
+        </fieldset>
+        <fieldset>
+          <legend><i>3</i>{{Unde și când|Where and when|Onde e quando}}</legend>
+          <div class="grup2">
+            <div class="camp"><label for="unde">{{Cartier sau zonă, în Iași|Neighbourhood or area, in Iași|Bairro ou zona, em Iași}}</label><input id="unde" type="text" maxlength="60" autocomplete="off" data-ph="ex. Păcurari|e.g. Păcurari|ex. Păcurari" placeholder="ex. Păcurari"></div>
+            <div class="camp"><label for="cand">{{Când ți se potrivește|When suits you|Quando lhe convém}}</label><select id="cand"></select></div>
+          </div>
+          <p class="eroare" id="e-unde" role="alert">{{Scrie cartierul sau zona, ca să știe dacă poate ajunge.|Enter your neighbourhood or area so he knows if he can get there.|Indique o bairro ou a zona, para ele saber se consegue chegar lá.}}</p>
+        </fieldset>
+        <fieldset>
+          <legend><i>4</i>{{Cine ești|Who you are|Quem é}}</legend>
+          <div class="camp"><label for="nume">{{Numele tău|Your name|O seu nome}}</label><input id="nume" type="text" maxlength="40" autocomplete="name"></div>
+          <p class="eroare" id="e-nume" role="alert">{{Scrie-ți numele, ca să știe pe cine sună.|Enter your name so he knows who to call back.|Escreva o nome, para ele saber a quem ligar.}}</p>
+        </fieldset>
+        <div class="trimite">
+          <button class="btn btn-wa" type="submit" data-canal="wa"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Trimite pe WhatsApp|Send on WhatsApp|Enviar por WhatsApp}}</button>
+          <button class="btn btn-negru" type="submit" data-canal="sms"><svg aria-hidden="true"><use href="#i-sms"/></svg>{{Trimite SMS|Send SMS|Enviar SMS}}</button>
+        </div>
+        <p class="ajut">{{Se deschide aplicația ta cu mesajul gata scris, către 0755 708 838. Nu pleacă nimic până nu apeși „trimite”.|Your app opens with the message ready, addressed to 0755 708 838. Nothing is sent until you press send.|A sua app abre com a mensagem pronta, para 0755 708 838. Nada é enviado até carregar em enviar.}}</p>
+      </form>
+      <div class="fisa-wrap">
+        <div class="fisa" id="fisa" aria-live="polite">
+          <h3>{{Fișă de reparație|Repair ticket|Ficha de reparação}} <small>ESPRESSO · IAȘI</small></h3>
+          <dl>
+            <dt>{{Aparat|Machine|Máquina}}</dt><dd id="v-ap" class="gol">—</dd>
+            <dt>{{Problemă|Problem|Problema}}</dt><dd id="v-pr" class="gol">—</dd>
+            <dt>{{Unde|Where|Onde}}</dt><dd id="v-un" class="gol">—</dd>
+            <dt>{{Când|When|Quando}}</dt><dd id="v-ca" class="gol">—</dd>
+            <dt>{{Client|Customer|Cliente}}</dt><dd id="v-nu" class="gol">—</dd>
+          </dl>
+          <div class="stamp"><span>{{Mesajul e în română.|The message is in Romanian.|A mensagem segue em romeno.}}</span><b>{{gata|ready|pronta}}</b></div>
+        </div>
+        <div class="fisa-act">
+          <a class="btn btn-port" href="tel:+40755708838"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Preferi să suni? 0755 708 838|Prefer to call? 0755 708 838|Prefere ligar? 0755 708 838}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="sectiune neg" id="contact" aria-labelledby="t-con">
+  <div class="lat contact-g">
+    <div>
+      <p class="fig" data-rev>FIG. 6 · {{contact|contact|contacto}}</p>
+      <h2 class="titlu" id="t-con" data-rev>{{Sună și spune ce face aparatul.|Call and say what the machine does.|Ligue e diga o que faz a máquina.}}</h2>
+      <a class="tel-mare" href="tel:+40755708838" data-rev><svg aria-hidden="true"><use href="#i-tel"/></svg>0755 708 838</a>
+      <p class="lead" data-rev>{{Din recenzii reiese că vine la domiciliu. În ce zone ajunge: de confirmat.|The reviews say he visits at home. Which areas he covers: to be confirmed.|Pelas opiniões, vai a casa do cliente. Que zonas cobre: a confirmar.}}</p>
+    </div>
+    <div data-rev style="--d:.1s">
+      <table class="tab">
+        <tr><th scope="row">{{Marți|Tuesday|Terça}}</th><td>08:00–23:00</td></tr>
+        <tr><th scope="row">{{Restul zilelor|Other days|Restantes dias}}</th><td class="dc">{{de confirmat|to be confirmed|a confirmar}}</td></tr>
+        <tr><th scope="row">{{Adresă|Address|Morada}}</th><td class="dc">{{de confirmat|to be confirmed|a confirmar}}</td></tr>
+        <tr><th scope="row">{{Oraș|City|Cidade}}</th><td>Iași</td></tr>
+        <tr><th scope="row">{{Google|Google|Google}}</th><td>5,0 ★ · 56 {{recenzii|reviews|opiniões}}</td></tr>
+        <tr><th scope="row">{{Preț|Price|Preço}}</th><td class="dc">{{se stabilește la telefon|agreed on the phone|combina-se por telefone}}</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="lat">
+    <div class="rodape-g">
+      <div>
+        <h2>Atelierul de Espressoare</h2>
+        <p>{{Reparații de espressoare în Iași. Tel. 0755 708 838.|Coffee machine repairs in Iași. Tel. 0755 708 838.|Reparação de máquinas de café em Iași. Tel. 0755 708 838.}}</p>
+      </div>
+      <div>
+        <p><a href="tel:+40755708838">0755 708 838</a></p>
+        <p>{{Marți 08:00–23:00 · restul: de confirmat|Tuesday 08:00–23:00 · other days: to be confirmed|Terça 08:00–23:00 · restantes: a confirmar}}</p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Atelierul de Espressoare Iași · {{denumire firmă și CUI: de confirmat|company name and tax ID: to be confirmed|denominação e NIF: a confirmar}}</span>
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{{ANPC · Soluționarea alternativă a litigiilor|ANPC · Alternative dispute resolution|ANPC · Resolução alternativa de litígios}}</a>
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{{Soluționarea online a litigiilor (ODR)|Online dispute resolution (ODR)|Resolução de litígios em linha (ODR)}}</a>
+      <span>{{Site realizat de Pacheco Studios|Website by Pacheco Studios|Site feito pela Pacheco Studios}}</span>
+    </div>
+  </div>
+</footer>
+
+<div class="jos">
+  <a class="btn btn-port" href="tel:+40755708838"><svg aria-hidden="true"><use href="#i-tel"/></svg>{{Sună|Call|Ligar}}</a>
+  <a class="btn btn-contur" href="#cere" style="color:#fff">{{Cere reparație|Request repair|Pedir reparação}}</a>
+</div>
+
+<noscript><p style="padding:16px;background:#fff;color:#15181B">Atelierul de Espressoare Iași · Reparații de espressoare · Tel. 0755 708 838 · Marți 08:00–23:00, restul programului: de confirmat · 5,0 pe Google (56 de recenzii) · ANPC SAL: https://anpc.ro/ce-este-sal/</p></noscript>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Atelierul de Espressoare Iași","description":"Reparații de espressoare în Iași.","telephone":"+40755708838","address":{"@type":"PostalAddress","addressLocality":"Iași","addressCountry":"RO"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"56"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"08:00","closes":"23:00"}]}
+</script>
+<script>
+(function(){
+/*__COMUM__*/
+  var TEL='+40755708838',WA='40755708838';
+
+  /* ---------- banda de mărci ---------- */
+  var mk=['Philips','De’Longhi','Krups','Nescafé Dolce Gusto'],bh='';
+  for(var r=0;r<6;r++)mk.forEach(function(m){bh+='<span>'+m+'</span>'});
+  $('banda').innerHTML=bh;
+
+  /* ---------- piesele ---------- */
+  var PIESE=[
+    {n:['Rezervorul de boabe','The bean hopper','O depósito de grão'],d:['Aici stau boabele până ajung la râșniță. Capacul le ține la adăpost de aer.','This is where the beans wait before the grinder. The lid keeps the air out.','Aqui esperam os grãos antes do moinho. A tampa protege-os do ar.']},
+    {n:['Râșnița și motorul','The grinder and motor','O moinho e o motor'],d:['Macină boabele chiar înainte de cafea: un motor mic și două discuri dințate.','Grinds the beans just before the coffee: a small motor and two toothed discs.','Mói os grãos mesmo antes do café: um motor pequeno e dois discos dentados.'],f:['g-07.webp','Motor cu reductor scos dintr-un aparat','Motor and gearbox taken out of a machine','Motor com redutor retirado de uma máquina']},
+    {n:['Grupul de infuzie','The brew unit','O grupo de infusão'],d:['Presează cafeaua măcinată și lasă apa fierbinte să treacă prin ea. La multe modele se scoate pentru curățat.','Presses the ground coffee and lets hot water through. On many models it can be taken out for cleaning.','Prensa o café moído e deixa passar a água quente. Em muitos modelos retira-se para limpeza.'],f:['g-02.webp','Grup de infuzie scos dintr-un aparat','Brew unit taken out of a machine','Grupo de infusão retirado de uma máquina']},
+    {n:['Boilerul și pompa','The boiler and pump','A caldeira e a bomba'],d:['Pompa împinge apa, boilerul o încălzește. Calcarul se strânge de obicei pe aici.','The pump pushes the water, the boiler heats it. Limescale usually builds up around here.','A bomba empurra a água, a caldeira aquece-a. O calcário costuma acumular-se por aqui.']},
+    {n:['Ieșirea cafelei și duza de lapte','The coffee spout and milk nozzle','A saída do café e o bico de leite'],d:['Pe aici ajunge cafeaua în ceașcă. La multe modele, tot aici se face și spuma de lapte.','This is where the coffee reaches the cup. On many models the milk froth comes from here too.','Por aqui o café chega à chávena. Em muitos modelos, é também aqui que se faz a espuma de leite.']},
+    {n:['Tava de picurare','The drip tray','A gaveta de pingos'],d:['Strânge ce se scurge. Se golește și se spală.','Collects the drips. Empty it and wash it.','Recolhe o que pinga. Esvazia-se e lava-se.']},
+    {n:['Rezervorul de apă','The water tank','O depósito de água'],d:['De aici pornește totul: apa pe care o simte cafeaua.','Where it all starts: the water your coffee tastes.','Daqui parte tudo: a água que o café vai sentir.']},
+    {n:['Placa electronică','The control board','A placa eletrónica'],d:['Creierul aparatului: citește butoanele și senzorii și comandă pompa și motoarele.','The machine’s brain: reads the buttons and sensors and drives the pump and motors.','O cérebro da máquina: lê os botões e os sensores e comanda a bomba e os motores.']}
+  ];
+  var sec=$('explodat'),svg=$('masina'),lista=$('piese'),card=$('card-p'),pg=$$('.p',svg),ativ=-1,static_=reduz||!('requestAnimationFrame' in window);
+  var tl=function(a){return t(a[0],a[1],a[2])};
+  lista.innerHTML=PIESE.map(function(p,i){return '<li><button type="button" data-i="'+i+'" aria-pressed="false"><i>'+(i+1)+'</i><span><span lang="ro">'+p.n[0]+'</span><span lang="en">'+p.n[1]+'</span><span lang="pt">'+p.n[2]+'</span></span></button></li>'}).join('');
+  function cardul(i){
+    if(i<0){card.className='card-p';card.innerHTML='<div><span class="nr">FIG. 2</span><h3>'+tl(['Derulează','Keep scrolling','Continue a descer'])+'</h3><p>'+tl(['Aparatul se desface piesă cu piesă. Alege o piesă din listă sau lasă pagina să le arate pe rând.','The machine comes apart piece by piece. Pick a part from the list or let the page walk through them.','A máquina desmonta-se peça a peça. Escolha uma peça da lista ou deixe a página mostrá-las uma a uma.'])+'</p></div>';return}
+    var p=PIESE[i],f=p.f;
+    card.className='card-p'+(f?' cu-foto':'');
+    card.innerHTML='<div><span class="nr">'+String(i+1).padStart(2,'0')+' / 08</span><h3>'+esc(tl(p.n))+'</h3><p>'+esc(tl(p.d))+'</p></div>'+(f?'<div class="foto"><img src="media/'+f[0]+'" alt="'+esc(tl([f[1],f[2],f[3]]))+'" loading="lazy" onerror="this.parentNode.remove()"><small>'+esc(tl([f[1],f[2],f[3]]))+'</small></div>':'');
+  }
+  function seteaza(i){
+    if(i===ativ)return;ativ=i;
+    pg.forEach(function(g,k){g.classList.toggle('on',k===i)});
+    svg.classList.toggle('ar',i>=0);
+    $$('button',lista).forEach(function(b,k){b.setAttribute('aria-pressed',k===i?'true':'false')});
+    cardul(i);
+  }
+  var cl=function(x){return Math.max(0,Math.min(1,x))};
+  var ee=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+  function faze(e,tt){var k=tt<.1?0:(tt>.84?2:1);for(var q=0;q<3;q++)$('fz'+q).classList.toggle('on',q===k)}
+  var ras=0;
+  function upd(){
+    ras=0;
+    var r=sec.getBoundingClientRect(),tot=r.height-innerHeight+60,tt=tot>0?cl(-r.top/tot):0;
+    var e=ee(Math.min(cl((tt-.05)/.2),cl((.9-tt)/.1)));
+    svg.style.setProperty('--e',e.toFixed(3));
+    var i=-1;if(tt>.28&&tt<.84&&e>.85)i=Math.min(7,Math.floor((tt-.28)/.56*8));
+    seteaza(i);faze(e,tt);
+  }
+  lista.addEventListener('click',function(ev){
+    var b=ev.target.closest('button');if(!b)return;var i=+b.dataset.i;
+    if(static_){seteaza(i===ativ?-1:i);return}
+    var r=sec.getBoundingClientRect(),tot=r.height-innerHeight+60,top=r.top+scrollY;
+    var tt=.28+(i+.5)/8*.56;
+    scrollTo({top:top+tt*tot,behavior:'smooth'});
+  });
+  if(static_){sec.classList.add('static');svg.style.setProperty('--e','1');cardul(-1)}
+  else{
+    addEventListener('scroll',function(){if(!ras){ras=1;requestAnimationFrame(upd)}},{passive:true});
+    addEventListener('resize',upd);upd();
+  }
+
+  /* ---------- formular ---------- */
+  var MARCI=['Philips','De’Longhi','Krups','Nescafé Dolce Gusto',['Altă marcă','Other brand','Outra marca']];
+  var AVARII=[['Nu pornește','Won’t switch on','Não liga'],['Nu iese cafea','No coffee comes out','Não sai café'],['Curge apă','Leaks water','Pinga água'],['Zgomot sau macină greu','Noisy or grinds badly','Ruído ou mói mal'],['Spuma de lapte nu merge','Milk froth not working','A espuma de leite não funciona'],['Cafea slabă sau cu gust ciudat','Weak or odd-tasting coffee','Café fraco ou com sabor estranho'],['Afișează o eroare','Shows an error','Mostra um erro'],['Altceva','Something else','Outra coisa']];
+  var CAND=[['Cât mai curând','As soon as possible','O mais depressa possível'],['În zilele următoare','In the next few days','Nos próximos dias'],['Stabilim la telefon','We’ll agree by phone','Combinamos por telefone']];
+  function chip(tip,nume,ro,en,pt,i){return '<label class="chip"><input type="'+tip+'" name="'+nume+'" value="'+esc(ro)+'" data-i="'+i+'"><span><span lang="ro">'+ro+'</span><span lang="en">'+en+'</span><span lang="pt">'+pt+'</span></span></label>'}
+  $('marci').innerHTML=MARCI.map(function(m,i){return typeof m==='string'?chip('radio','marca',m,m,m,i):chip('radio','marca',m[0],m[1],m[2],i)}).join('');
+  $('avarii').innerHTML=AVARII.map(function(a,i){return chip('checkbox','avarie',a[0],a[1],a[2],i)}).join('');
+  $('cand').innerHTML=CAND.map(function(c){return '<option value="'+esc(c[0])+'" data-t="'+esc(c.join('|'))+'">'+esc(c[0])+'</option>'}).join('');
+  var f=$('f-rep'),fisa=$('fisa');
+  function val(){
+    var m=f.querySelector('input[name=marca]:checked'),av=$$('input[name=avarie]:checked',f).map(function(x){return x.value}),
+      mod=$('model').value.trim(),desc=$('desc').value.trim(),unde=$('unde').value.trim(),nume=$('nume').value.trim();
+    return {marca:m?m.value:'',model:mod,av:av,desc:desc,unde:unde,cand:$('cand').value,nume:nume};
+  }
+  function set(id,v){var e=$(id);e.textContent=v||'—';e.classList.toggle('gol',!v)}
+  function preview(){
+    var v=val();
+    set('v-ap',[v.marca,v.model].filter(Boolean).join(' · '));
+    set('v-pr',v.av.concat(v.desc?[v.desc]:[]).join(', '));
+    set('v-un',v.unde);set('v-ca',v.cand);set('v-nu',v.nume);
+    fisa.classList.toggle('gata',!!(v.marca&&(v.av.length||v.desc)&&v.unde&&v.nume));
+  }
+  f.addEventListener('input',preview);f.addEventListener('change',preview);preview();
+  function compune(v){
+    return 'Bună ziua! Aș vrea o reparație pentru espressor.\nAparat: '+v.marca+(v.model?' '+v.model:'')+'\nProblemă: '+v.av.join(', ')+(v.desc?(v.av.length?'. ':'')+v.desc:'')+'\nZonă (Iași): '+v.unde+'\nCând: '+v.cand+'\nNume: '+v.nume;
+  }
+  function erori(v){
+    var bad=[];
+    var chk=function(id,ko){$(id).classList.toggle('da',ko);if(ko)bad.push(id)};
+    chk('e-marca',!v.marca);chk('e-avarie',!(v.av.length||v.desc));chk('e-unde',!v.unde);chk('e-nume',!v.nume);
+    return bad;
+  }
+  var canal='wa';
+  $$('[data-canal]',f).forEach(function(b){b.addEventListener('click',function(){canal=b.dataset.canal})});
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();var v=val(),bad=erori(v);
+    if(bad.length){var el=$(bad[0]);var alvo=el.previousElementSibling&&el.previousElementSibling.querySelector?el.previousElementSibling:el;el.scrollIntoView({block:'center',behavior:reduz?'auto':'smooth'});var foc=(bad[0]==='e-marca')?f.querySelector('input[name=marca]'):(bad[0]==='e-avarie')?f.querySelector('input[name=avarie]'):(bad[0]==='e-unde')?$('unde'):$('nume');foc.focus({preventScroll:true});return}
+    trimite(canal,compune(v),TEL,WA);
+  });
+  f.addEventListener('input',function(){$$('.eroare.da',f).forEach(function(e){e.classList.remove('da')})});
+
+  window.laLimba=function(l){cardul(ativ);$$('#cand option').forEach(function(o){var a=o.dataset.t.split('|');o.textContent=l==='en'?a[1]:l==='pt'?a[2]:a[0]})};
+  seteazaLimba(L());
+  revela();
+  /* ---------- pornire ---------- */
+  function porneste(){html.classList.add('gata')}
+  if(reduz){porneste()}
+  else if(document.fonts&&document.fonts.ready){var go=false;document.fonts.ready.then(function(){if(!go){go=true;requestAnimationFrame(porneste)}});setTimeout(function(){if(!go){go=true;porneste()}},800)}
+  else porneste();
+})();
+</script>
+</body>
+</html>
