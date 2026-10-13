@@ -7,6 +7,7 @@ novo se perde entre o Google e a primeira mensagem ao negócio, propõe UMA vit�
 
   python3 raiox.py --top 10      os 10 primeiros do ranking (nota Google ≥ 4,4, sem cadeias)
   python3 raiox.py <slug> …      só esses
+  python3 raiox.py --pt 5        Portugal: primeira execução paga (sem «grátis»), PDF em PT + PDF com notas, ENVIAR-PT-lote-N.md
 
 Saída: raio-x/<slug>/radiografie-<slug>-ro.pdf (dono) e raio-x-<slug>-pt.pdf (Tomás, + notas) e raio-x/ENVIAR.md.
 """
@@ -470,7 +471,8 @@ def main():
     if a[0] == "--pt":
         # Portugal: os mais fracos dos candidatos pt-* medidos (sem nota mínima de velocidade: escolhe-se pela fraqueza).
         escolhidos = [s for fr, s, c, d, n in escrever_ranking(cands)
-                      if s.startswith("pt-") and s not in EXCLUIR and d.get("notas") and aud(d, "largest-contentful-paint") is not None][:int(a[1])]
+                      if s.startswith("pt-") and s not in EXCLUIR and d.get("notas") and aud(d, "largest-contentful-paint") is not None][:int(a[1])] \
+            if a[1].isdigit() else a[1:]  # --pt 5 ou --pt <slug> <slug> …
         os.makedirs(SAIDA, exist_ok=True)
         for s in escolhidos:
             gerar(s, cands)

@@ -10,6 +10,10 @@ Desde 11/10/2026 a Pacheco Studios é uma consultora de sistemas com IA (playboo
 4. **Gerar** — `python3 agentes/auditoria-sites/raiox.py --top 10` (ou `raiox.py <slug> …`; para lotes seguintes `raiox.py --novos 20`, que salta os já feitos e escreve `raio-x/ENVIAR-lote-N.md`) → `raio-x/<slug>/radiografie-<slug>-ro.pdf` (dono) e `raio-x-<slug>-pt.pdf` (Tomás, + página de notas para a conversa de triagem) e `raio-x/ENVIAR.md` (mensagens RO e links raw). Precisa de playwright (`CHROMIUM=<caminho>` se a versão não bater).
 5. **Enviar** — o Tomás manda mensagem + PDF pelo WhatsApp Business RO. WhatsApp do dono: «?» nos telemóveis, «não» nos fixos (ligar).
 
+## Portugal (13/10)
+
+`python3 raiox.py --pt 5` ou `--pt <slug> …`: PDF em PT sem «grátis», página 3 = «A primeira execução» (paga, valor fechado na reunião) + «Como avançamos» (validar → primeira execução → acompanhamento). Correções verificadas à mão ficam em `corrigido_a_mao` no JSON de `auditorias/dados/`.
+
 ## Regras de conteúdo
 
 - Só números medidos no dia. A única estatística de fora é a da Google (Think with Google, 2017), com a fonte na página.

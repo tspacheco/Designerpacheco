@@ -364,6 +364,8 @@ Decisão do Tomás: a Pacheco Studios deixa de se apresentar como agência que v
 
 Gatilho grátis da consultoria de IA (decisão do Tomás de 11/10: não há venda de sites; o site é no máximo um gatilho com 1 vitória rápida para chegar a uma reunião). Tudo em `agentes/auditoria-sites/` (ver `LEIA-ME.md`), ramo `claude/auditoria-sites-fracos-fpyd0h`.
 
+**Portugal (Tomás, 13/10):** em PT o Raio-X **não sai grátis**: a vitória rápida da página 3 é a **primeira execução, paga**, e o gancho para o acompanhamento / Auditoria de Sistemas com IA. Sem preço no PDF nem na mensagem (fecha-se na reunião). `raiox.py --pt 5` (candidatos `pt-*`) → `raio-x/pt-<slug>/raio-x-<slug>.pdf` (dono) e `-notas.pdf` (Tomás), `raio-x/ENVIAR-PT-lote-N.md`; WhatsApp +351 967 117 357. Antes de propor, confirmar pela ponte (`pagina`) se o site já tem reservas: o detetor só via plataformas conhecidas (corrigido a 13/10) e o botão «partilhar» do WhatsApp não é contacto.
+
 - **Não é a auditoria** (produto pago) nem vende site. Chama-se «Raio-X do primeiro contacto» (RO «Radiografia primului contact»).
 - **Medir:** a PONTE tem `auditar <slug> <url>` (Lighthouse móvel + iPhone simulado: botão de chamada, WhatsApp, marcação, JSON-LD, ano do ©).
 - **PDF de 3 páginas:** o caminho do cliente novo (Google Maps → página → contacto → marcação → quem responde, este a cinzento porque não se vê de fora), o que medimos, UMA vitória rápida como System Print (trigger, fluxo, regra, dono, passagem a pessoa, métrica), 3 perguntas e o pedido de uma conversa de triagem (sem indicar minutos). Sem preço.
