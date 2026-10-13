@@ -131,3 +131,7 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-13 | reparatii-masini-de | K2D | Tambor que gira com a roupa e o painel de programas que indica a avaria |
 | 2026-10-13 | marho-instal-instalatii | Sarabun | Mapa de obra: planta de casa em que cada divisão se liga a uma instalação |
 | 2026-10-13 | rohaus-tur-schuco | Catamaran | Perfil de janela em corte: câmaras que se montam e vidro que desliza |
+| 2026-10-13 | frizeria-de-catei | Reem Kufi | Cartão de vacinas de cão com carimbos |
+| 2026-10-13 | auto-max | Overpass | Painel de diagnóstico OBD |
+| 2026-10-13 | mobile-motors-ltd | Bungee Inline | Pneu que gasta a banda, piso em mm |
+| 2026-10-13 | itp-rapid | IBM Plex Sans Condensed | Selo ITP e linha de inspeção com semáforo |
