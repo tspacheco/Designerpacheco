@@ -1,5 +1,7 @@
 # Agente 3 · Raio-X Portugal para enviar (13/10/2026)
 
+> **SUBSTITUÍDO (Tomás, 13/10): só negócios com WhatsApp e formato de triagem (lote 3).** Agnus Dei e Barrigas passaram para o lote 3.
+
 Não sai grátis (Tomás, 13/10): a vitória rápida da página 3 é a primeira execução, paga, e o gancho para o acompanhamento / Auditoria de Sistemas com IA. Sem preço no PDF nem na mensagem: o valor fecha-se na reunião.
 
 Barrigas a Crescer: o número é o WhatsApp publicado no site dela (919 485 391), não o da ficha (918 000 333). Agnus Dei: o WhatsApp do site é o mesmo número da ficha.

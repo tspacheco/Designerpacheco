@@ -22,7 +22,8 @@ for bloco in re.split(r"\n(?=## \d+\. )", md)[1:]:
     google = g(r"Google ([\d,]+)")
     aval = g(r"Google [\d,]+ · ([\d.]+) avalia")
     fixo = "fixo" in wa
-    itens.append(dict(nome=nome, cat=cat, tel=tel, fixo=fixo, google=google, aval=aval, morada=g(r"Morada: (.*?) · site"),
+    wasim = wa.startswith("sim")
+    itens.append(dict(nome=nome, cat=cat, tel=tel, fixo=fixo, wasim=wasim, google=google, aval=aval, morada=g(r"Morada: (.*?) · site"),
                       pdf=pdf, ficheiro=pdf.rsplit("/", 1)[-1], msg=msg, texto=msg,
                       wa=None if fixo else "https://wa.me/" + tel.lstrip("+") + "?text=" + quote(msg)))
 

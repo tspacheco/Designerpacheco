@@ -94,7 +94,7 @@ function desenhar() {
 
     const tel = el("div", "tel");
     tel.append(el("b", "", d.tel.replace(/^\+40(\d{3})(\d{3})(\d{3})$/, "+40 $1 $2 $3").replace(/^\+351(\d{3})(\d{3})(\d{3})$/, "+351 $1 $2 $3")));
-    tel.append(el("span", "tag", d.fixo ? "Fixo: ligar" : "WhatsApp: ?"));
+    tel.append(el("span", "tag", d.fixo ? "Fixo: ligar" : (d.wasim ? "WhatsApp: sim" : "WhatsApp: ?")));
     li.append(tel);
 
     const ac = el("div", "acoes");
