@@ -73,7 +73,7 @@ def extrai(txt, vistos):
 MX_CACHE = {}
 import threading
 import time
-SEM = threading.Semaphore(3)  # poucos servidores de correio ao mesmo tempo: alojamentos partilhados cortam ligações em paralelo
+SEM = threading.Semaphore(6)  # poucos servidores de correio ao mesmo tempo: alojamentos partilhados cortam ligações em paralelo
 
 
 def mx(dom):
@@ -108,9 +108,6 @@ def sonda(hosts, enderecos):
         return {e: "desconhecido" for e in enderecos}, "porta25: sem tempo"
     with SEM:
         r, nota = _sonda(hosts, enderecos)
-        if nota != "ok" and time.time() - INICIO < LIMITE:
-            time.sleep(6)
-            r, nota = _sonda(hosts, enderecos)
         return r, nota
 
 
