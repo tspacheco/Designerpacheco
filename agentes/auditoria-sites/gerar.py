@@ -247,9 +247,9 @@ def logo_mini():
 
 
 def whatsapp(c):
-    """Regra do PLAYBOOK: «sim» só com prova pública. Fixo (+40 2…/3…) não tem WhatsApp."""
+    """Regra do PLAYBOOK: «sim» só com prova pública. Fixo (+40 2…/3…, +351 2…) não tem WhatsApp."""
     t = re.sub(r"\D", "", c.get("telefone", ""))
-    return "não (fixo: ligar)" if t.startswith(("402", "403")) else "?"
+    return "não (fixo: ligar)" if t.startswith(("402", "403", "3512")) else "?"
 
 
 def nome_curto(c):

@@ -1,4 +1,4 @@
-<title>Envio Raio-X Iași</title>
+<title>Envio Raio-X</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -93,7 +93,7 @@ function desenhar() {
     li.append(topo);
 
     const tel = el("div", "tel");
-    tel.append(el("b", "", d.tel.replace(/^\+40(\d{3})(\d{3})(\d{3})$/, "+40 $1 $2 $3")));
+    tel.append(el("b", "", d.tel.replace(/^\+40(\d{3})(\d{3})(\d{3})$/, "+40 $1 $2 $3").replace(/^\+351(\d{3})(\d{3})(\d{3})$/, "+351 $1 $2 $3")));
     tel.append(el("span", "tag", d.fixo ? "Fixo: ligar" : "WhatsApp: ?"));
     li.append(tel);
 

@@ -10,7 +10,7 @@ novo se perde entre o Google e a primeira mensagem ao negócio, propõe UMA vit�
 
 Saída: raio-x/<slug>/radiografie-<slug>-ro.pdf (dono) e raio-x-<slug>-pt.pdf (Tomás, + notas) e raio-x/ENVIAR.md.
 """
-import datetime, html, os, sys
+import datetime, html, os, re, sys
 from urllib.parse import urlparse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -112,6 +112,24 @@ T = {
     },
 }
 
+# Portugal (Tomás, 13/10/2026): o Raio-X não sai grátis. A vitória rápida é a PRIMEIRA EXECUÇÃO, paga, e serve de gancho
+# para o acompanhamento / Auditoria de Sistemas com IA. Sem preço no PDF nem na mensagem (fecha-se na reunião).
+T["ptpago"] = dict(T["pt"], **{
+    "etiq": "Diagnóstico · o que se vê de fora",
+    "qw": "A primeira execução",
+    "qw_sub": "Uma só coisa, pequena e mensurável, que fecha a primeira quebra. É o trabalho que propomos fazer primeiro: montamos, medimos e mostramos o resultado.",
+    "naovemos": "O que queremos validar convosco",
+    "perg": ["O que acontece a uma mensagem que chega às 21h?", "Quem responde aos pedidos novos e, normalmente, em quanto tempo?"],
+    "escada_t": "Como avançamos",
+    "escada": [("1", "Validar", "Uma reunião para confirmar convosco o que não se vê de fora."),
+               ("2", "Primeira execução", "Montamos esta vitória rápida e medimos desde a primeira semana. É um trabalho pago; o valor fica fechado na reunião, antes de começar."),
+               ("3", "Acompanhamento", "Se o resultado aparecer, seguimos para a Auditoria de Sistemas com IA e as fugas seguintes.")],
+    "cta_t": "Uma reunião para validar",
+    "cta": "Mostram-nos como trabalham hoje. Confirmamos se esta é a primeira execução certa e por onde começamos.",
+})
+WHATSAPP_PT = "+351 967 117 357"
+WA_LINK_PT = "https://wa.me/351967117357"
+
 # Uma vitória rápida por tipo de quebra, escrita como System Print (PLAYBOOK de consultoria, secção 5).
 VITORIAS = {
     "contacto": {
@@ -170,6 +188,24 @@ VITORIAS = {
     },
 }
 
+# Restaurantes: a marcação é uma reserva de mesa.
+VITORIAS["reserva"] = {"pt": dict(titulo="Reservas que entram mesmo com a porta fechada",
+    trig="O cliente quer reservar mesa à noite, ao fim de semana ou com a cozinha cheia.",
+    flux=["Carrega em «Reservar» na página ou no Google.", "Escolhe dia, hora e número de pessoas entre as mesas livres.",
+          "Recebe a confirmação e um lembrete no próprio dia.", "Ao abrir, a reserva já está na lista da sala."],
+    regra="Só se aceitam horas com mesa livre. Grupos grandes e pedidos especiais pedem a vossa confirmação.",
+    dono="Quem gere a sala (vocês ou o chefe de sala).",
+    hand="Grupos, alergias e cancelamentos de última hora vão para uma pessoa.",
+    metr="Reservas feitas fora do horário e faltas, contadas desde a primeira semana.")}
+
+
+def vitoria(d, c, lang):
+    t = tipo_vitoria(d, c)
+    if t == "marcacao" and lang in ("pt", "ptpago") and re.search(r"restaur|taberna|tasca", c.get("categoria", "") + c["nome"], re.I):
+        t = "reserva"
+    return VITORIAS[t]["pt" if lang == "ptpago" else lang]
+
+
 CSS_RX = """
 .lead{font:500 12.5pt/1.4 var(--corpo);margin-top:3mm;max-width:50ch}
 .p1{display:grid;grid-template-columns:58mm 1fr;gap:8mm;margin-top:7mm;flex:1;align-items:start}
@@ -201,6 +237,11 @@ CSS_RX = """
 .perg{display:grid;gap:2.2mm;margin-bottom:6mm;counter-reset:q}
 .perg p{background:var(--osso);border-radius:5px;padding:3mm 4mm 3mm 11mm;position:relative;font:600 10pt/1.35 var(--corpo)}
 .perg p:before{counter-increment:q;content:counter(q);position:absolute;left:4mm;top:2.6mm;font:400 12pt/1 var(--display);color:var(--laranja)}
+.escada{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin-bottom:6mm}
+.escada div{border-top:2.4px solid var(--laranja);padding-top:2.4mm}
+.escada b{display:block;font:400 10pt/1.15 var(--display);text-transform:uppercase;margin-bottom:1.2mm}
+.escada b em{font-style:normal;color:var(--laranja);margin-right:1.5mm}
+.escada span{display:block;font-size:8.6pt;line-height:1.35;color:#3C3832}
 .marca-l{font:400 8.5pt/1.2 var(--display);text-transform:uppercase;letter-spacing:.02em;color:var(--laranja);margin-top:3mm}
 """
 
@@ -240,7 +281,8 @@ def passos(d):
 def tipo_vitoria(d, c):
     chk = dict(verificacoes(d, c))
     if not chk.get("tel1"):
-        return "contacto"  # nem ligar é fácil: é a primeira quebra
+        # nem ligar é fácil: é a primeira quebra; mas se já há WhatsApp, não se propõe o que já têm
+        return "marcacao" if chk.get("whatsapp") and chk.get("marcacao") is False else "contacto"
     if chk.get("marcacao") is False:
         return "marcacao"
     return "contacto" if not chk.get("whatsapp") else "entrada"
@@ -259,6 +301,13 @@ def mensagem_ro(c):
     return (f"Bună ziua! Sunt Tomás, de la Pacheco Studios (Iași). {nome_curto(c)} are {c.get('nota')}★ pe Google, așa că am urmărit pe telefon "
             f"drumul unui client nou, de la Google până la primul mesaj către voi, și am notat unde se rupe. Vi-l trimit gratuit, în PDF (3 pagini). "
             f"Ce nu se vede din afară e ce se întâmplă după ce mesajul ajunge la voi. Dacă vreți, stăm de vorbă despre asta. Mulțumesc!")
+
+
+def mensagem_pt(c):
+    return (f"Boa tarde! Sou o Tomás, da Pacheco Studios. {nome_curto(c)} tem {c.get('nota')}★ no Google, por isso seguimos no telemóvel "
+            f"o caminho de um cliente novo, do Google até à primeira mensagem para vocês, e marcámos onde ele se perde. Envio em PDF (3 páginas), "
+            f"com a primeira coisa que faríamos para fechar essa fuga. O que não se vê de fora é o que acontece depois de a mensagem chegar. "
+            f"Faz sentido marcarmos uma reunião para validar isto convosco?")
 
 
 def mensagem_morto(c):
@@ -304,12 +353,15 @@ def pagina(slug, c, lang, notas=False):
     p2 = (f'<section class="folha">{topo}<h2>{L["medimos"]}</h2><div class="numeros">{numeros}</div>'
           f'<table class="chk">{tabela}</table>{google}{rod(L["honesta"], 2)}</section>')
 
-    v = VITORIAS[tipo_vitoria(d, c)][lang]
+    v = vitoria(d, c, lang)
     perg = "".join(f"<p>{html.escape(q)}</p>" for q in L["perg"])
+    escada = ('<h2>' + L["escada_t"] + '</h2><div class="escada">' + "".join(
+        f'<div><b><em>{n}</em>{html.escape(t)}</b><span>{html.escape(x)}</span></div>' for n, t, x in L["escada"]) + '</div>') if "escada" in L else ""
+    wa_l, wa_n = (WA_LINK_PT, WHATSAPP_PT) if lang == "ptpago" else (WA_LINK, WHATSAPP_RO)
     p3 = (f'<section class="folha">{topo}<h2>{L["qw"]}</h2><p style="margin:-2mm 0 5mm;color:var(--cinza);max-width:60ch">{L["qw_sub"]}</p>'
-          f'{system_print(v, L)}<h2>{L["naovemos"]}</h2><div class="perg">{perg}</div>'
+          f'{system_print(v, L)}{escada}<h2>{L["naovemos"]}</h2><div class="perg">{perg}</div>'
           f'<div class="cta"><div><h3>{L["cta_t"]}</h3><p>{L["cta"]}</p><p class="marca-l">{L["marca"]}</p></div>'
-          f'<a href="{WA_LINK}">{L["cta_wa"]}<small>{WHATSAPP_RO}</small></a></div>{rod(L["assin"], 3)}</section>')
+          f'<a href="{wa_l}">{L["cta_wa"]}<small>{wa_n}</small></a></div>{rod(L["assin"], 3)}</section>')
 
     p4 = ""
     if notas:
@@ -317,14 +369,23 @@ def pagina(slug, c, lang, notas=False):
               f'<p><b>{html.escape(c["nome"])}</b> · {html.escape(c.get("categoria", ""))} · {html.escape(c.get("morada", "") or "morada a confirmar")}</p>'
               f'<p>Telefone {html.escape(c.get("telefone", ""))} · WhatsApp: {whatsapp(c)} · Google {c.get("nota")}'
               f'{" · " + c["avaliacoes"] + " avaliações" if c.get("avaliacoes") else ""} · fraqueza do site {fraqueza(d, c)}/100</p>'
-              f'<h3>Mensagem (RO), com o PDF romeno</h3><pre>{html.escape(mensagem_ro(c))}</pre>'
-              f'<h3>PDF para o dono</h3><pre>{RAW}/{slug}/radiografie-{slug}-ro.pdf</pre>'
+              + (f'<h3>Mensagem (PT), com o PDF anexado</h3><pre>{html.escape(mensagem_pt(c))}</pre>'
+                 f'<h3>PDF para o dono</h3><pre>raio-x-{slug}.pdf</pre>'
+                 f'<h3>A reunião de validação</h3><pre>Isto não sai grátis: a vitória rápida da página 3 é a primeira execução, paga, e o gancho para o acompanhamento.\n'
+                 f'1. Seguir o caminho do PDF no telemóvel do dono e parar no ponto cinzento: o que acontece depois de a mensagem chegar?\n'
+                 f'2. Validar que a primeira execução proposta resolve uma fuga viva; se não, trocar por outra (contacto, marcação/reserva, entrada).\n'
+                 f'3. Fechar o valor da primeira execução na reunião, nunca por mensagem (referência interna: 2.000 € = 3 quick wins).\n'
+                 f'4. Medir desde a primeira semana; com o resultado na mão, propor o acompanhamento / Auditoria de Sistemas com IA.\n'
+                 f'5. Não indicar minutos. Não falar de site novo.</pre></div>'
+                 if lang == "ptpago" else
+                 f'<h3>Mensagem (RO), com o PDF romeno</h3><pre>{html.escape(mensagem_ro(c))}</pre>'
+                 f'<h3>PDF para o dono</h3><pre>{RAW}/{slug}/radiografie-{slug}-ro.pdf</pre>'
               f'<h3>A conversa de triagem (playbook §4)</h3><pre>O objetivo é decidir se há um problema vivo que justifique a Auditoria de Sistemas com IA.\n'
               f'1. Seguir o caminho do PDF no telemóvel do dono e parar no ponto cinzento: o que acontece depois de a mensagem chegar?\n'
               f'2. Perguntas de qualificação: resultado a melhorar em 90 dias; onde entra o pedido; onde abranda ou desaparece; quem é dono da próxima ação; '
               f'o que já se mede; quem aprova.\n3. Se houver fuga viva: propor a auditoria. Se não houver: dizê-lo com franqueza.\n'
-              f'4. Nada de preço por mensagem. Não indicar minutos. Não falar de site novo: a vitória rápida é o gatilho, não o produto.</pre></div>'
-              f'<div class="rodape" style="margin-top:auto"><span>Interno · não enviar</span><span>4/4</span></div></section>')
+              f'4. Nada de preço por mensagem. Não indicar minutos. Não falar de site novo: a vitória rápida é o gatilho, não o produto.</pre></div>')
+              + '<div class="rodape" style="margin-top:auto"><span>Interno · não enviar</span><span>4/4</span></div></section>')
 
     titulo = f'{L["nome"]} · {nome_curto(c)}'
     return (f'<!doctype html><html lang="{L["lang"]}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -337,11 +398,31 @@ def pagina(slug, c, lang, notas=False):
 def gerar(slug, cands):
     pasta = os.path.join(SAIDA, slug)
     os.makedirs(pasta, exist_ok=True)
-    for lang, nome, notas in (("ro", f"radiografie-{slug}-ro", False), ("pt", f"raio-x-{slug}-pt", True)):
+    versoes = ((("ptpago", f"raio-x-{slug}", False), ("ptpago", f"raio-x-{slug}-notas", True)) if slug.startswith("pt-")
+              else (("ro", f"radiografie-{slug}-ro", False), ("pt", f"raio-x-{slug}-pt", True)))
+    for lang, nome, notas in versoes:
         h = os.path.join(pasta, nome + ".html")
         open(h, "w", encoding="utf-8").write(pagina(slug, cands[slug], lang, notas))
         pdf(h, os.path.join(pasta, nome + ".pdf"))
     print("ok", slug)
+
+
+def escrever_envio_pt(escolhidos, cands, ficheiro):
+    data = datetime.date.today().strftime("%d/%m/%Y")
+    out = [f"# Agente 3 · Raio-X Portugal para enviar ({data})", "",
+           "Não sai grátis (Tomás, 13/10): a vitória rápida da página 3 é a primeira execução, paga, e o gancho para o acompanhamento / "
+           "Auditoria de Sistemas com IA. Sem preço no PDF nem na mensagem: o valor fecha-se na reunião.", "",
+           "Mandar pelo WhatsApp PT (+351 967 117 357): mensagem + PDF anexado, nunca link. WhatsApp dos donos: «?» nos telemóveis "
+           "(sem prova pública), «não» nos fixos (ligar e pedir onde mandar o PDF).", ""]
+    for i, s in enumerate(escolhidos, 1):
+        c = cands[s]
+        out += [f"## {i}. {nome_curto(c)} · {c.get('categoria', '')}", "",
+                f"- Telefone {c.get('telefone')} · WhatsApp: {whatsapp(c)} · Google {c.get('nota')}{' · ' + c['avaliacoes'] + ' avaliações' if c.get('avaliacoes') else ''}",
+                f"- Morada: {c.get('morada') or 'a confirmar'} · site {c['site']}",
+                f"- Primeira execução proposta: {vitoria(ler(s), c, 'pt')['titulo']}",
+                f"- PDF (dono): {RAW}/{s}/raio-x-{s}.pdf",
+                f"- PDF com notas (Tomás): {RAW}/{s}/raio-x-{s}-notas.pdf", "", "```", mensagem_pt(c), "```", ""]
+    open(os.path.join(SAIDA, ficheiro), "w", encoding="utf-8").write("\n".join(out) + "\n")
 
 
 def escrever_envio(escolhidos, cands, ficheiro="ENVIAR.md", mortos=True):
@@ -376,7 +457,7 @@ def main():
         # Lotes seguintes: os que ainda não têm pasta em raio-x/, com site lento (< 90 de velocidade) para haver o que mostrar.
         feitos = {d for d in os.listdir(SAIDA) if os.path.isdir(os.path.join(SAIDA, d))} if os.path.isdir(SAIDA) else set()
         escolhidos = [s for fr, s, c, d, n in escrever_ranking(cands)
-                      if s not in EXCLUIR and s not in feitos and nota_num(c) >= 4.4 and d.get("notas")
+                      if s not in EXCLUIR and not s.startswith("pt-") and s not in feitos and nota_num(c) >= 4.4 and d.get("notas")
                       and aud(d, "largest-contentful-paint") is not None and (n.get("performance") or 0) < 90][:int(a[1])]
         os.makedirs(SAIDA, exist_ok=True)
         for s in escolhidos:
@@ -386,9 +467,21 @@ def main():
             lote += 1
         escrever_envio(escolhidos, cands, f"ENVIAR-lote-{lote}.md", mortos=False)
         return
+    if a[0] == "--pt":
+        # Portugal: os mais fracos dos candidatos pt-* medidos (sem nota mínima de velocidade: escolhe-se pela fraqueza).
+        escolhidos = [s for fr, s, c, d, n in escrever_ranking(cands)
+                      if s.startswith("pt-") and s not in EXCLUIR and d.get("notas") and aud(d, "largest-contentful-paint") is not None][:int(a[1])]
+        os.makedirs(SAIDA, exist_ok=True)
+        for s in escolhidos:
+            gerar(s, cands)
+        lote = 1
+        while os.path.exists(os.path.join(SAIDA, f"ENVIAR-PT-lote-{lote}.md")):
+            lote += 1
+        escrever_envio_pt(escolhidos, cands, f"ENVIAR-PT-lote-{lote}.md")
+        return
     if a[0] == "--top":
         escolhidos = [s for fr, s, c, d, n in escrever_ranking(cands)
-                      if s not in EXCLUIR and nota_num(c) >= 4.4 and d.get("notas") and aud(d, "largest-contentful-paint") is not None][:int(a[1])]
+                      if s not in EXCLUIR and not s.startswith("pt-") and nota_num(c) >= 4.4 and d.get("notas") and aud(d, "largest-contentful-paint") is not None][:int(a[1])]
     else:
         escolhidos = a
     os.makedirs(SAIDA, exist_ok=True)
