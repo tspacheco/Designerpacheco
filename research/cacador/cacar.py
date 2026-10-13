@@ -143,7 +143,7 @@ def dia(data):
         aval = int((r[4] or c.get("avaliacoes") or "0").replace(".", ""))  # a ficha nem sempre mostra a contagem
         nota = float((r[3] or "0").replace(",", "."))
         txt = open(f[:-5] + ".txt", encoding="utf-8").read() if os.path.exists(f[:-5] + ".txt") else ""
-        res = ("já tem demo" if ja_feito(r[1], r[6], excl_dia, tels_dia) else "fechado temporariamente" if "Închisă temporar" in txt or "Închis temporar" in txt else
+        res = ("fora de Iași" if r[7] and not re.search(r"\b70\d{4}\b", r[7]) else "já tem demo" if ja_feito(r[1], r[6], excl_dia, tels_dia) else "fechado temporariamente" if "Închisă temporar" in txt or "Închis temporar" in txt else
                "site próprio" if r[5] else "sem contacto/fora" if not r[6] else
                "fora (nota/avaliações)" if nota < 4.3 or 0 < aval < 15 else "sem site")
         if s not in vistos:

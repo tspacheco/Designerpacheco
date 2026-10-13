@@ -135,3 +135,4 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-13 | auto-max | Overpass | Painel de diagnóstico OBD |
 | 2026-10-13 | mobile-motors-ltd | Bungee Inline | Pneu que gasta a banda, piso em mm |
 | 2026-10-13 | itp-rapid | IBM Plex Sans Condensed | Selo ITP e linha de inspeção com semáforo |
+| 2026-10-13 | rtm-service-reparatii | K2D | Ordem de reparação com etiqueta de chave |
