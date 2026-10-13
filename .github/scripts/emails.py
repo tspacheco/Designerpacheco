@@ -15,6 +15,7 @@ import re
 import ssl
 import subprocess
 import sys
+import os
 import random
 import smtplib
 import socket
@@ -252,10 +253,16 @@ def main():
     except Exception:
         SMTP_OK = False
     print("DNS a funcionar:", DNS_OK, "| porta 25 aberta:", SMTP_OK)
-    with cf.ThreadPoolExecutor(max_workers=12) as ex:
-        res = list(ex.map(um, itens))
+    ex = cf.ThreadPoolExecutor(max_workers=12)
+    futs = [ex.submit(um, it) for it in itens]
+    cf.wait(futs, timeout=LIMITE + 4 * 60 - (time.time() - INICIO))
+    res = []
+    for it, f in zip(itens, futs):
+        if f.done() and not f.exception():
+            res.append(f.result())
+        else:
+            res.append({"id": it[0], "url": it[1], "emails": [], "estado": "sem tempo", "verificacao": {}, "smtp": {}})
     json.dump(res, open("/tmp/emails.json", "w", encoding="utf-8"), ensure_ascii=False)
-    import os
     os.makedirs("ponte", exist_ok=True)
     subprocess.run(["openssl", "smime", "-encrypt", "-aes256", "-binary", "-outform", "DER", "-in", "/tmp/emails.json",
                     "-out", "ponte/emails-%s.enc" % lote, ".github/ponte-cert.pem"], check=True)
@@ -265,6 +272,8 @@ def main():
     portas = Counter(n.split(":")[0] for r in res for n in r.get("smtp", {}).values())
     print("%d sites, %d com e-mail, %d com erro" % (len(res), ok, sum(1 for r in res if r["estado"] != "ok")))
     print("verificacao:", dict(c), "smtp:", dict(portas))
+    sys.stdout.flush()
+    os._exit(0)  # não esperar por ligações presas
 
 
 if __name__ == "__main__":
