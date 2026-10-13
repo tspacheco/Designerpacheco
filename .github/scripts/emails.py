@@ -29,6 +29,8 @@ CTX_LAX = ssl._create_unverified_context()
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
 LIXO = re.compile(r"\.(png|jpe?g|webp|svg|gif|css|js)$|sentry|example|wixpress|@2x|domeniu|exemplu|yourdomain|email@|name@|nume@|user@|your@", re.I)
 CF = re.compile(r'data-cfemail="([0-9a-f]+)"|email-protection#([0-9a-f]+)', re.I)
+SOBRE = re.compile(r'href=["\']([^"\']*(?:despre|about|poveste|echipa|cine-suntem|istoric|filosofie|misiune)[^"\']*)["\']', re.I)
+SO_TEXTO = False
 CONTACT = re.compile(r'href=["\']([^"\']*(?:contact|kontakt|despre|about|rezerv|programar)[^"\']*)["\']', re.I)
 
 
@@ -205,6 +207,11 @@ def _um(item):
         if urlparse(u).netloc.replace("www.", "") == urlparse(base).netloc.replace("www.", "") and u not in cand and "#" not in u:
             cand.append(u)
     cand = cand[:2] or [urljoin(base, "/contact")]
+    for m in SOBRE.finditer(h):
+        u = urljoin(base, H.unescape(m.group(1)))
+        if urlparse(u).netloc.replace("www.", "") == urlparse(base).netloc.replace("www.", "") and u not in cand and "#" not in u and u != base:
+            cand.insert(0, u)
+            break
     for u in cand:
         f2, h2 = baixa(u)
         if f2:
@@ -217,10 +224,13 @@ def _um(item):
         for m in re.finditer(r"(?<!\d)(?:\+?40|0)[\s.-]?7\d{2}[\s.-]?\d{3}[\s.-]?\d{3}(?!\d)", h_):
             tels.add(re.sub(r"[^\d+]", "", m.group(0)))
         texto += " " + h_
+        vis = re.sub(r"(?is)<(script|style|noscript|svg|nav|footer|header)[^>]*>.*?</\\1>", " ", h_)
+        vis = re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", " ", vis))).strip()
+        out.setdefault("texto_paginas", []).append([u, vis[:2200]])
     dom = urlparse(base).netloc.replace("www.", "").lower()
     out["emails"] = sorted((e for e in vistos if not LIXO.search(e) and EMAIL.fullmatch(e)), key=lambda e: (not e.endswith(dom), e))[:8]
     try:
-        out["verificacao"], out["smtp"] = verificar(out["emails"]) if out["emails"] else ({}, {})
+        out["verificacao"], out["smtp"] = verificar(out["emails"]) if out["emails"] and not SO_TEXTO else ({}, {})
     except Exception as ex:
         out["verificacao"], out["smtp"] = {e: "desconhecido" for e in out["emails"]}, {"erro": str(ex)[:60]}
     out["telefones"] = sorted(tels)[:4]
@@ -255,6 +265,8 @@ def main():
         p = linha.split(None, 1)
         if len(p) == 2:
             itens.append((p[0], p[1].strip()))
+    global SO_TEXTO
+    SO_TEXTO = lote.startswith("t")
     global DNS_OK
     global SMTP_OK
     DNS_OK = bool(mx("gmail.com"))
