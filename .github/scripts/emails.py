@@ -182,8 +182,11 @@ def um(item):
             tels.add(re.sub(r"[^\d+]", "", m.group(0)))
         texto += " " + h_
     dom = urlparse(base).netloc.replace("www.", "").lower()
-    out["emails"] = sorted((e for e in vistos if not LIXO.search(e)), key=lambda e: (not e.endswith(dom), e))[:8]
-    out["verificacao"], out["smtp"] = verificar(out["emails"]) if out["emails"] else ({}, {})
+    out["emails"] = sorted((e for e in vistos if not LIXO.search(e) and EMAIL.fullmatch(e)), key=lambda e: (not e.endswith(dom), e))[:8]
+    try:
+        out["verificacao"], out["smtp"] = verificar(out["emails"]) if out["emails"] else ({}, {})
+    except Exception as ex:
+        out["verificacao"], out["smtp"] = {e: "desconhecido" for e in out["emails"]}, {"erro": str(ex)[:60]}
     out["telefones"] = sorted(tels)[:4]
     t = re.search(r"<title[^>]*>(.*?)</title>", h, re.S | re.I)
     d = re.search(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']*)', h, re.I) or re.search(r'<meta[^>]+content=["\']([^"\']*)["\'][^>]+name=["\']description', h, re.I)
