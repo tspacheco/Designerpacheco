@@ -98,10 +98,16 @@ def mx(dom):
     return hosts
 
 
+INICIO = time.time()
+LIMITE = 28 * 60  # depois disto não se testa mais nada, para o resultado sair antes do fim do tempo do workflow
+
+
 def sonda(hosts, enderecos):
+    if time.time() - INICIO > LIMITE:
+        return {e: "desconhecido" for e in enderecos}, "porta25: sem tempo"
     with SEM:
         r, nota = _sonda(hosts, enderecos)
-        if nota != "ok":
+        if nota != "ok" and time.time() - INICIO < LIMITE:
             time.sleep(6)
             r, nota = _sonda(hosts, enderecos)
         return r, nota
