@@ -2,6 +2,9 @@
 e-mails e telefones publicados, título, descrição, sinais de canais (WhatsApp, formulário, marcação, chat).
 
 Entrada: .github/emails.txt, uma linha por site: «<id> <url>». Linha «# lote: <nome>» dá o nome do ficheiro.
+Cada e-mail encontrado é testado: o domínio tem de ter servidor de correio (MX) e, se a porta 25 estiver
+aberta, pergunta-se ao servidor se a caixa existe (RCPT TO, sem enviar nada), com um endereço inventado
+para detetar servidores que aceitam tudo. Resultado em «verificacao»: valido | invalido | sem_mx | aceita_tudo | desconhecido.
 Saída: ponte/emails-<lote>.enc, cifrado com .github/ponte-cert.pem (a chave privada nunca está no repositório),
 para não pôr e-mails de negócios legíveis num repositório público.
 """
@@ -12,6 +15,10 @@ import re
 import ssl
 import subprocess
 import sys
+import random
+import smtplib
+import socket
+import string
 import urllib.request
 from urllib.parse import urljoin, urlparse
 
@@ -62,6 +69,90 @@ def extrai(txt, vistos):
         vistos.add(m.lower().strip("."))
 
 
+MX_CACHE = {}
+
+
+def mx(dom):
+    if dom in MX_CACHE:
+        return MX_CACHE[dom]
+    hosts = []
+    try:
+        import dns.resolver
+        r = dns.resolver.resolve(dom, "MX", lifetime=10)
+        hosts = [str(x.exchange).rstrip(".") for x in sorted(r, key=lambda x: x.preference)]
+    except Exception as ex:
+        if "NXDOMAIN" in type(ex).__name__.upper() or "NoAnswer" in type(ex).__name__:
+            hosts = []
+        else:
+            hosts = None
+    if hosts == []:  # sem MX: pela norma, o servidor do próprio domínio (registo A) recebe o correio
+        try:
+            socket.gethostbyname(dom)
+            hosts = [dom]
+        except Exception:
+            pass
+    MX_CACHE[dom] = hosts
+    return hosts
+
+
+def sonda(hosts, enderecos):
+    """Pergunta ao servidor de correio se cada caixa existe. Devolve {endereco: estado}."""
+    res = {e: "desconhecido" for e in enderecos}
+    ultimo = "sem host"
+    falso = "".join(random.choice(string.ascii_lowercase) for _ in range(14)) + "@" + enderecos[0].split("@")[1]
+    for host in hosts[:2]:
+        try:
+            s = smtplib.SMTP(host, 25, timeout=15)
+            s.ehlo("mail.pachecost.com")
+            s.mail("verificare@pachecost.com")
+            codigos = {}
+            for e in enderecos + [falso]:
+                c, _ = s.rcpt(e)
+                codigos[e] = c
+            try:
+                s.quit()
+            except Exception:
+                pass
+            tudo = codigos[falso] in (250, 251)
+            for e in enderecos:
+                c = codigos[e]
+                if c in (250, 251):
+                    res[e] = "aceita_tudo" if tudo else "valido"
+                elif c in (550, 551, 553, 554):
+                    res[e] = "invalido"
+            return res, "ok"
+        except (socket.timeout, OSError, smtplib.SMTPException) as ex:
+            ultimo = str(ex)[:60]
+            continue
+    return res, "porta25: " + ultimo
+
+
+DNS_OK = True
+
+
+def verificar(emails):
+    por_dom, out, notas = {}, {}, {}
+    if not DNS_OK:
+        return {e: "desconhecido" for e in emails}, {"dns": "falhou"}
+    for e in emails:
+        por_dom.setdefault(e.split("@")[1], []).append(e)
+    for dom, lst in por_dom.items():
+        hosts = mx(dom)
+        if hosts == []:
+            for e in lst:
+                out[e] = "sem_mx"
+            continue
+        if hosts is None:
+            for e in lst:
+                out[e] = "desconhecido"
+            notas[dom] = "dns falhou"
+            continue
+        r, nota = sonda(hosts, lst)
+        out.update(r)
+        notas[dom] = nota
+    return out, notas
+
+
 def um(item):
     id_, url = item
     out = {"id": id_, "url": url, "emails": [], "telefones": [], "titulo": "", "descricao": "", "h1": "", "estado": "ok", "paginas": []}
@@ -92,6 +183,7 @@ def um(item):
         texto += " " + h_
     dom = urlparse(base).netloc.replace("www.", "").lower()
     out["emails"] = sorted((e for e in vistos if not LIXO.search(e)), key=lambda e: (not e.endswith(dom), e))[:8]
+    out["verificacao"], out["smtp"] = verificar(out["emails"]) if out["emails"] else ({}, {})
     out["telefones"] = sorted(tels)[:4]
     t = re.search(r"<title[^>]*>(.*?)</title>", h, re.S | re.I)
     d = re.search(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']*)', h, re.I) or re.search(r'<meta[^>]+content=["\']([^"\']*)["\'][^>]+name=["\']description', h, re.I)
@@ -124,6 +216,9 @@ def main():
         p = linha.split(None, 1)
         if len(p) == 2:
             itens.append((p[0], p[1].strip()))
+    global DNS_OK
+    DNS_OK = bool(mx("gmail.com"))
+    print("DNS a funcionar:", DNS_OK)
     with cf.ThreadPoolExecutor(max_workers=12) as ex:
         res = list(ex.map(um, itens))
     json.dump(res, open("/tmp/emails.json", "w", encoding="utf-8"), ensure_ascii=False)
@@ -132,7 +227,11 @@ def main():
     subprocess.run(["openssl", "smime", "-encrypt", "-aes256", "-binary", "-outform", "DER", "-in", "/tmp/emails.json",
                     "-out", "ponte/emails-%s.enc" % lote, ".github/ponte-cert.pem"], check=True)
     ok = sum(1 for r in res if r["emails"])
+    from collections import Counter
+    c = Counter(v for r in res for v in r.get("verificacao", {}).values())
+    portas = Counter(n.split(":")[0] for r in res for n in r.get("smtp", {}).values())
     print("%d sites, %d com e-mail, %d com erro" % (len(res), ok, sum(1 for r in res if r["estado"] != "ok")))
+    print("verificacao:", dict(c), "smtp:", dict(portas))
 
 
 if __name__ == "__main__":
