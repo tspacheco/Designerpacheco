@@ -106,3 +106,28 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-12 | salon-any-mary | Merienda | Caderno de cliente com notas manuscritas e coração/laço que se desenha |
 | 2026-10-12 | fitness-fight | Big Shoulders Text | Cronómetro de ringue e luvas: rondas que contam ao scroll |
 | 2026-10-12 | basarabi-beauty-style | Ruda | Mapa do bairro (Basarabi) em linhas que se desenham até ao salão |
+| 2026-10-13 | impact-shop-egros | Jura | Ecrã de telemóvel que se «repara»: a fissura desaparece com o scroll e o sistema arranca |
+| 2026-10-13 | hotel-caini-si | Paytone One | Chaves de quarto numeradas penduradas numa placa; cada boxa é um cartão que se abre |
+| 2026-10-13 | cornel-electrician-autorizat | Syne Mono | Esquema de quadro elétrico: disjuntores que ligam um a um e o circuito acende ao scroll |
+| 2026-10-13 | espresso-service-center | Slabo 27px | Chávena e vapor: crema que sobe em camadas, manómetro de pressão que reage ao scroll |
+| 2026-10-13 | mat-grup-centrale | Encode Sans Condensed | Planta técnica azul (blueprint) que se desenha linha a linha sobre a foto |
+| 2026-10-13 | acp-mobila-design | IBM Plex Serif | Fita métrica e linha de corte de painel: cada secção é uma peça cortada à medida |
+| 2026-10-13 | atelierul-de-espressoare | Cabin Condensed | Máquina desmontada em vista explodida: peças que se afastam e voltam a encaixar |
+| 2026-10-13 | patrick-gsm | Wix Madefor Display | Bateria que carrega ao scroll e ferramentas de precisão em linha |
+| 2026-10-13 | aremi-pets-salon | Livvic | Tesoura e pente que desenham o contorno do animal; o pelo alisa-se ao passar |
+| 2026-10-13 | frizerie-canina-puppy | Kodchasan | Bolhas de espuma que sobem e rebentam, patinhas que marcam o caminho |
+| 2026-10-13 | sc-mesteruinstalator-alex | Barlow Semi Condensed | Tubos de cobre que ligam as secções como numa instalação, com a água a correr |
+| 2026-10-13 | vel-power | Overpass | Fio que percorre a página e faz faísca nas ligações, tomada que acende |
+| 2026-10-13 | electrohobby | Anonymous Pro | Placa de circuito: trilhas que se desenham e componentes que se acendem |
+| 2026-10-13 | plase-insecte-reglaje | Niramit | Rede de malha que se tece sobre a janela; o inseto não passa (linha de rede que desliza) |
+| 2026-10-13 | instalatii-sanitare | Heebo | Torneira e gota: nível de água que sobe ao scroll até transbordar de secção em secção |
+| 2026-10-13 | billy-coiffeur | Bungee Inline | Etiqueta de coleira e letreiro inline néon com o nome do animal |
+| 2026-10-13 | delta-logic | IBM Plex Sans Condensed | Terminal de comandos que escreve o diagnóstico e fecha o ticket |
+| 2026-10-13 | artis-it-univers | Anek Latin | Prateleira de loja de informática: componentes que se montam num PC |
+| 2026-10-13 | sanivoltpro | Prompt | Duas redes lado a lado: água azul e eletricidade âmbar que se cruzam e ligam |
+| 2026-10-13 | sanitherm-cambu-system | Mitr | Termómetro e radiador: a temperatura sobe ao scroll e as secções aquecem |
+| 2026-10-13 | instalator-centrale-termice | Krub | Mostrador de caldeira com ponteiro de pressão e chama pilot que acende |
+| 2026-10-13 | maski-custom | Major Mono Display | Ecrã de arranque BIOS que carrega e liberta o sistema, barra de progresso |
+| 2026-10-13 | reparatii-masini-de | K2D | Tambor que gira com a roupa e o painel de programas que indica a avaria |
+| 2026-10-13 | marho-instal-instalatii | Sarabun | Mapa de obra: planta de casa em que cada divisão se liga a uma instalação |
+| 2026-10-13 | rohaus-tur-schuco | Catamaran | Perfil de janela em corte: câmaras que se montam e vidro que desliza |
