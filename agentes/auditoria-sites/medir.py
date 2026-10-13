@@ -27,9 +27,13 @@ CHECAR = r"""() => {
     h1: q('h1').length, imagens: q('img').length, imagens_sem_alt: q('img:not([alt])').length,
     tel: hrefs.filter(h => /^tel:/i.test(h)).length,
     tel_no_1o_ecra: primeiro.some(h => h.startsWith('tel:')),
-    whatsapp: hrefs.filter(h => /wa\.me|whatsapp\.com|whatsapp:/i.test(h)).length,
+    // só conta WhatsApp com número (o botão «partilhar» web.whatsapp.com/send?text= não é contacto)
+    whatsapp: hrefs.filter(h => /wa\.me\/\d|whatsapp\.com\/send\?phone=\d|whatsapp:\/\/send\?phone=/i.test(h)).length,
     email: hrefs.filter(h => /^mailto:/i.test(h)).length,
-    marcacao: hrefs.filter(h => /mero\.ro|booksy|fresha|calendly|planific|dikidi|setmore|treatwell|simplybook|rezerv|programar|booking/i.test(h)).length,
+    // links de plataformas + botões de reserva próprios (openBook(), calendários) e texto dos botões
+    marcacao: hrefs.filter(h => /mero\.ro|booksy|fresha|calendly|planific|dikidi|setmore|treatwell|simplybook|rezerv|programar|booking|thefork|openBook|reserv|marca/i.test(h)).length
+      + [...document.querySelectorAll('a,button')].filter(b => /book a table|book now|reservar|reserva|marcação|marcar|programează|rezervă/i.test(b.textContent || '')).length
+      + document.querySelectorAll('[class*="evo-calendar"],[class*="calendar"]').length,
     mapa: q('iframe[src*="google.com/maps"], iframe[src*="maps.google"], a[href*="maps.app.goo.gl"], a[href*="google.com/maps"], a[href*="goo.gl/maps"]').length,
     facebook: hrefs.filter(h => /facebook\.com/i.test(h)).length, instagram: hrefs.filter(h => /instagram\.com/i.test(h)).length,
     jsonld: ld, formularios: q('form').length,
