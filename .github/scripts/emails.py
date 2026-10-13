@@ -224,7 +224,7 @@ def _um(item):
         for m in re.finditer(r"(?<!\d)(?:\+?40|0)[\s.-]?7\d{2}[\s.-]?\d{3}[\s.-]?\d{3}(?!\d)", h_):
             tels.add(re.sub(r"[^\d+]", "", m.group(0)))
         texto += " " + h_
-        vis = re.sub(r"(?is)<(script|style|noscript|svg|nav|footer|header)[^>]*>.*?</\\1>", " ", h_)
+        vis = re.sub(r"(?is)<(script|style|noscript|svg|nav|footer|header)[^>]*>.*?</\1>", " ", h_)
         vis = re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", " ", vis))).strip()
         out.setdefault("texto_paginas", []).append([u, vis[:2200]])
     dom = urlparse(base).netloc.replace("www.", "").lower()
