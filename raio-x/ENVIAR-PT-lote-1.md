@@ -1,5 +1,7 @@
 # Agente 3 · Raio-X Portugal para enviar (13/10/2026)
 
+> **NÃO ENVIAR (Tomás, 13/10): restaurantes postos de parte.** Substituído pelo lote PT 2 (clínicas, fisioterapia, estética).
+
 Não sai grátis (Tomás, 13/10): a vitória rápida da página 3 é a primeira execução, paga, e o gancho para o acompanhamento / Auditoria de Sistemas com IA. Sem preço no PDF nem na mensagem: o valor fecha-se na reunião.
 
 Mandar pelo WhatsApp PT (+351 967 117 357): mensagem + PDF anexado, nunca link. WhatsApp dos donos: «?» nos telemóveis (sem prova pública), «não» nos fixos (ligar e pedir onde mandar o PDF).

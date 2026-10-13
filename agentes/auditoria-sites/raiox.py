@@ -22,7 +22,7 @@ SAIDA = os.path.join(RAIZ, "raio-x")
 RAW = f"https://github.com/tspacheco/Designerpacheco/raw/{RAMO}/raio-x"
 WHATSAPP_RO = "+40 723 098 556"
 WA_LINK = "https://wa.me/40723098556"
-MARCAVEL = r"salon|barber|frizer|beauty|nail|unghii|lash|gene|estetic|clinic|masaj|tatu|tattoo|vet|service|restaurant|bistro|pizz|kinetic|fit|cabinet|medic"
+MARCAVEL = r"fisio|osteo|clínic|dent|estétic|quiro|terap|laser|salon|barber|frizer|beauty|nail|unghii|lash|gene|estetic|clinic|masaj|tatu|tattoo|vet|service|restaurant|bistro|pizz|kinetic|fit|cabinet|medic"
 
 T = {
     "ro": {

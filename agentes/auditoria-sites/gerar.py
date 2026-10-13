@@ -71,7 +71,7 @@ def verificacoes(d, c):
         return []
     url = d.get("url_final_tel") or d.get("url_final") or d.get("url", "")
     tipos = " ".join(map(str, p.get("jsonld") or [])).lower()
-    marc = re.search(r"salon|barber|frizer|beauty|nail|unghii|lash|gene|estetic|clinic|masaj|tatu|tattoo|vet|service|restaurant|bistro|pizz|kinetic|fit",
+    marc = re.search(r"fisio|osteo|clínic|dent|estétic|quiro|terap|laser|salon|barber|frizer|beauty|nail|unghii|lash|gene|estetic|clinic|masaj|tatu|tattoo|vet|service|restaurant|bistro|pizz|kinetic|fit",
                      f"{c.get('categoria', '')} {c.get('nome', '')}".lower())
     out = [
         ("https", url.startswith("https://")),
