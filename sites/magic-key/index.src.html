@@ -882,7 +882,7 @@ html.rev .limbi .doar-rev{display:block}
   function fita(){var s=cuv.map(function(c){return '<span>'+t(c[0],c[1],c[2])+'</span>'}).join('');$('fita-in').innerHTML=s+s+s}
 
   /* ---------- cerere ---------- */
-  var SIT=[{id:'plus',auto:1,n:['Vreau o cheie auto în plus','I want a spare car key','Quero uma chave de carro extra']},{id:'pierdut',auto:1,n:['Am pierdut toate cheile mașinii','I’ve lost all the car keys','Perdi todas as chaves do carro']},{id:'telec',auto:1,n:['Telecomanda nu mai merge','The remote stopped working','O comando deixou de funcionar']},{id:'rupt',auto:1,n:['Cheia e ruptă sau tocită','The key is broken or worn','A chave está partida ou gasta']},{id:'poarta',auto:0,n:['Telecomandă poartă / garaj / barieră','Gate / garage / barrier remote','Comando de portão / garagem / barreira']},{id:'cartela',auto:0,n:['Cartelă de acces sau interfon','Access or intercom fob','Cartão de acesso ou intercomunicador']},{id:'casa',auto:0,n:['Copie cheie de casă','House key copy','Cópia de chave de casa']}];
+  var SIT=[{id:'plus',auto:1,n:['Vreau o cheie auto în plus','I want a spare car key','Quero uma chave de carro extra']},{id:'pierdut',auto:1,n:['Am pierdut toate cheile mașinii','I’ve lost all the car keys','Perdi todas as chaves do carro']},{id:'telec',auto:1,n:['Telecomanda nu mai merge','The remote stopped working','O comando deixou de funcionar']},{id:'rupt',auto:1,n:['Cheia e ruptă sau tocită','The key is broken or worn','A chave está partida ou gasta']},{id:'baterie',auto:1,n:['Bateria cheii / telecomanda răspunde greu','Key battery / remote responds poorly','Pilha da chave / comando responde mal']},{id:'poarta',auto:0,n:['Telecomandă poartă / garaj / barieră','Gate / garage / barrier remote','Comando de portão / garagem / barreira']},{id:'cartela',auto:0,n:['Cartelă de acces sau interfon','Access or intercom fob','Cartão de acesso ou intercomunicador']},{id:'casa',auto:0,n:['Copie cheie de casă','House key copy','Cópia de chave de casa']}];
   var MARCI=['Dacia','Volkswagen','Renault','Opel','Ford','Toyota','Skoda','Mercedes','BMW','Audi',['Altă marcă','Other make','Outra marca']];
   var CHEI=[['Am o cheie care merge','I have one working key','Tenho uma chave que funciona'],['Am o cheie, dar nu merge','I have a key, but it doesn’t work','Tenho uma chave, mas não funciona'],['Nu mai am nicio cheie','I have no keys left','Já não tenho nenhuma chave']];
   var UNDE=[['O aduc la Selgros','I’ll bring it to Selgros','Levo-o ao Selgros'],['Nu pornește, e în altă parte','It won’t start, it’s elsewhere','Não pega, está noutro sítio']];
@@ -929,7 +929,7 @@ html.rev .limbi .doar-rev{display:block}
     if(!st.sit){$('e-sit').classList.add('on');var b=$('c-sit').querySelector('input');b.focus({preventScroll:true});b.closest('fieldset').scrollIntoView({behavior:reduz?'auto':'smooth',block:'center'});return}
     trimite(mesaj(),canal);
   });
-  var MAP={auto:'plus',telecomenzi:'telec',reparatii:'rupt',briceag:'plus',porti:'poarta',cartele:'cartela',duplicare:'casa'};
+  var MAP={auto:'plus',telecomenzi:'telec',reparatii:'rupt',baterie:'baterie',briceag:'plus',porti:'poarta',cartele:'cartela',duplicare:'casa'};
   function preselect(q){var m=/s=([a-z]+)/.exec(q||'');if(!m||!MAP[m[1]])return;st.sit=MAP[m[1]];construieste();bon()}
 
   /* ---------- foaie ---------- */
