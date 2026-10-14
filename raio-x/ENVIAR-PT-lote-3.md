@@ -1,4 +1,4 @@
-# Agente 3 · Triagens Portugal para enviar (13/10/2026)
+# Agente 3 · Triagens Portugal para enviar (14/10/2026)
 
 Formato da triagem do Iulian (1 página): o caminho Pacheco Studios passo a passo, com «Ou, se preferirem» em cada etapa, 3 sugestões, 3 perguntas e o que medimos. Só negócios com WhatsApp provado no site (Tomás, 13/10). Não sai grátis: a vertente escolhida é a primeira execução, paga, com valor fechado na reunião. Mensagem no molde aprovado para os e-mails a 13/10 (personalização do site, quem somos + lema, posicionamento, reunião com o dono); o PDF vai anexado, nunca link.
 
@@ -13,7 +13,7 @@ Boa tarde,
 
 Li no vosso site que a Agnus Dei trouxe a Olhão um novo conceito em atendimento médico-dentário: instalações construídas de raiz, todas as especialidades, laboratório e radiologia na própria clínica, e cada implante escolhido com análise em TAC.
 
-Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. Encontramos a fuga, desenhamos o sistema, provamos o impacto em números.
+Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. O que entregamos: descobrimos onde o negócio perde clientes e tempo, desenhamos o sistema que fecha essa fuga e provamos o impacto em números.
 
 Temos sede em Portugal e trabalhamos em Portugal e no Brasil. Escolhemos agora o Algarve, com clínicas e espaços de saúde e estética, onde cada pedido de marcação conta. Cada projeto começa por um ganho rápido e mensurável, antes de qualquer investimento maior.
 
@@ -26,7 +26,7 @@ Tomás Pacheco · Pacheco Studios · pachecost.com
 
 Seguimentos (sem resposta; mesmo WhatsApp, sem novo PDF):
 
-- D3: Boa tarde, volto em poucas palavras. Na Pacheco Studios encontramos a fuga, desenhamos o sistema e provamos o impacto. Gostava de vos mostrar, numa reunião, o que vimos na Agnus Dei. Tomás Pacheco · Pacheco Studios · pachecost.com
+- D3: Boa tarde, volto em poucas palavras. O que entregamos é descobrir onde se perdem clientes e tempo, desenhar o sistema que o resolve e provar o impacto em números. Gostava de vos mostrar, numa reunião, o que vimos na Agnus Dei. Tomás Pacheco · Pacheco Studios · pachecost.com
 - D7: Boa tarde, uma só pergunta, sim ou não: dá-vos jeito uma reunião comigo, esta semana ou na próxima, para vos mostrar o que vimos na Agnus Dei? Tomás Pacheco · Pacheco Studios · pachecost.com
 - D12: Boa tarde, fecho aqui o processo da Agnus Dei para não incomodar. Se um dia quiserem ver o que vimos, é só escrever. Tomás Pacheco · Pacheco Studios · pachecost.com
 
@@ -41,7 +41,7 @@ Boa tarde,
 
 Li no vosso site que a Mary Estética tem mais de 10 anos de experiência no Algarve, faz uma avaliação dermo-cosmética antes de cada plano de tratamento e trabalha só com laser de díodo e radiofrequência aprovados pela CE.
 
-Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. Encontramos a fuga, desenhamos o sistema, provamos o impacto em números.
+Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. O que entregamos: descobrimos onde o negócio perde clientes e tempo, desenhamos o sistema que fecha essa fuga e provamos o impacto em números.
 
 Temos sede em Portugal e trabalhamos em Portugal e no Brasil. Escolhemos agora o Algarve, com clínicas e espaços de saúde e estética, onde cada pedido de marcação conta. Cada projeto começa por um ganho rápido e mensurável, antes de qualquer investimento maior.
 
@@ -54,7 +54,7 @@ Tomás Pacheco · Pacheco Studios · pachecost.com
 
 Seguimentos (sem resposta; mesmo WhatsApp, sem novo PDF):
 
-- D3: Boa tarde, volto em poucas palavras. Na Pacheco Studios encontramos a fuga, desenhamos o sistema e provamos o impacto. Gostava de vos mostrar, numa reunião, o que vimos na Mary Estética. Tomás Pacheco · Pacheco Studios · pachecost.com
+- D3: Boa tarde, volto em poucas palavras. O que entregamos é descobrir onde se perdem clientes e tempo, desenhar o sistema que o resolve e provar o impacto em números. Gostava de vos mostrar, numa reunião, o que vimos na Mary Estética. Tomás Pacheco · Pacheco Studios · pachecost.com
 - D7: Boa tarde, uma só pergunta, sim ou não: dá-vos jeito uma reunião comigo, esta semana ou na próxima, para vos mostrar o que vimos na Mary Estética? Tomás Pacheco · Pacheco Studios · pachecost.com
 - D12: Boa tarde, fecho aqui o processo da Mary Estética para não incomodar. Se um dia quiserem ver o que vimos, é só escrever. Tomás Pacheco · Pacheco Studios · pachecost.com
 
@@ -69,7 +69,7 @@ Boa tarde,
 
 Li no vosso site que, na PhysioAlba, recuperar vai além de voltar a mover-se sem dor: é voltar a confiar no corpo. E que são uma clínica multidisciplinar dedicada à prevenção, reabilitação e otimização do movimento.
 
-Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. Encontramos a fuga, desenhamos o sistema, provamos o impacto em números.
+Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. O que entregamos: descobrimos onde o negócio perde clientes e tempo, desenhamos o sistema que fecha essa fuga e provamos o impacto em números.
 
 Temos sede em Portugal e trabalhamos em Portugal e no Brasil. Escolhemos agora o Algarve, com clínicas e espaços de saúde e estética, onde cada pedido de marcação conta. Cada projeto começa por um ganho rápido e mensurável, antes de qualquer investimento maior.
 
@@ -82,7 +82,7 @@ Tomás Pacheco · Pacheco Studios · pachecost.com
 
 Seguimentos (sem resposta; mesmo WhatsApp, sem novo PDF):
 
-- D3: Boa tarde, volto em poucas palavras. Na Pacheco Studios encontramos a fuga, desenhamos o sistema e provamos o impacto. Gostava de vos mostrar, numa reunião, o que vimos na PhysioAlba. Tomás Pacheco · Pacheco Studios · pachecost.com
+- D3: Boa tarde, volto em poucas palavras. O que entregamos é descobrir onde se perdem clientes e tempo, desenhar o sistema que o resolve e provar o impacto em números. Gostava de vos mostrar, numa reunião, o que vimos na PhysioAlba. Tomás Pacheco · Pacheco Studios · pachecost.com
 - D7: Boa tarde, uma só pergunta, sim ou não: dá-vos jeito uma reunião comigo, esta semana ou na próxima, para vos mostrar o que vimos na PhysioAlba? Tomás Pacheco · Pacheco Studios · pachecost.com
 - D12: Boa tarde, fecho aqui o processo da PhysioAlba para não incomodar. Se um dia quiserem ver o que vimos, é só escrever. Tomás Pacheco · Pacheco Studios · pachecost.com
 
@@ -97,7 +97,7 @@ Boa tarde,
 
 Li no vosso site o conceito das três esferas da Vitalité: estética avançada, saúde e atividade física integradas no mesmo espaço, com médicos, esteticistas e personal trainers à volta de cada cliente.
 
-Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. Encontramos a fuga, desenhamos o sistema, provamos o impacto em números.
+Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. O que entregamos: descobrimos onde o negócio perde clientes e tempo, desenhamos o sistema que fecha essa fuga e provamos o impacto em números.
 
 Temos sede em Portugal e trabalhamos em Portugal e no Brasil. Escolhemos agora o Algarve, com clínicas e espaços de saúde e estética, onde cada pedido de marcação conta. Cada projeto começa por um ganho rápido e mensurável, antes de qualquer investimento maior.
 
@@ -110,7 +110,7 @@ Tomás Pacheco · Pacheco Studios · pachecost.com
 
 Seguimentos (sem resposta; mesmo WhatsApp, sem novo PDF):
 
-- D3: Boa tarde, volto em poucas palavras. Na Pacheco Studios encontramos a fuga, desenhamos o sistema e provamos o impacto. Gostava de vos mostrar, numa reunião, o que vimos na Vitalité. Tomás Pacheco · Pacheco Studios · pachecost.com
+- D3: Boa tarde, volto em poucas palavras. O que entregamos é descobrir onde se perdem clientes e tempo, desenhar o sistema que o resolve e provar o impacto em números. Gostava de vos mostrar, numa reunião, o que vimos na Vitalité. Tomás Pacheco · Pacheco Studios · pachecost.com
 - D7: Boa tarde, uma só pergunta, sim ou não: dá-vos jeito uma reunião comigo, esta semana ou na próxima, para vos mostrar o que vimos na Vitalité? Tomás Pacheco · Pacheco Studios · pachecost.com
 - D12: Boa tarde, fecho aqui o processo da Vitalité para não incomodar. Se um dia quiserem ver o que vimos, é só escrever. Tomás Pacheco · Pacheco Studios · pachecost.com
 
@@ -125,7 +125,7 @@ Boa tarde,
 
 Li no seu site que conta com 32 anos de experiência em fisioterapia pediátrica e que a sua missão é acompanhar as famílias da gravidez ao pós-parto, aos bebés e às crianças, olhando para além da preocupação que as trouxe à consulta.
 
-Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. Encontramos a fuga, desenhamos o sistema, provamos o impacto em números.
+Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. O que entregamos: descobrimos onde o negócio perde clientes e tempo, desenhamos o sistema que fecha essa fuga e provamos o impacto em números.
 
 Temos sede em Portugal e trabalhamos em Portugal e no Brasil. Escolhemos agora o Algarve, com clínicas e espaços de saúde e estética, onde cada pedido de marcação conta. Cada projeto começa por um ganho rápido e mensurável, antes de qualquer investimento maior.
 
@@ -138,7 +138,7 @@ Tomás Pacheco · Pacheco Studios · pachecost.com
 
 Seguimentos (sem resposta; mesmo WhatsApp, sem novo PDF):
 
-- D3: Boa tarde, volto em poucas palavras. Na Pacheco Studios encontramos a fuga, desenhamos o sistema e provamos o impacto. Gostava de lhe mostrar, numa reunião, o que vimos na Barrigas a Crescer. Tomás Pacheco · Pacheco Studios · pachecost.com
+- D3: Boa tarde, volto em poucas palavras. O que entregamos é descobrir onde se perdem clientes e tempo, desenhar o sistema que o resolve e provar o impacto em números. Gostava de lhe mostrar, numa reunião, o que vimos na Barrigas a Crescer. Tomás Pacheco · Pacheco Studios · pachecost.com
 - D7: Boa tarde, uma só pergunta, sim ou não: dá-lhe jeito uma reunião comigo, esta semana ou na próxima, para lhe mostrar o que vimos na Barrigas a Crescer? Tomás Pacheco · Pacheco Studios · pachecost.com
 - D12: Boa tarde, fecho aqui o processo da Barrigas a Crescer para não incomodar. Se um dia quiser ver o que vimos, é só escrever. Tomás Pacheco · Pacheco Studios · pachecost.com
 

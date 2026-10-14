@@ -3,7 +3,7 @@
 
 Pedido do Tomás (13/10/2026): só negócios com WhatsApp provado (fixo = há quem atenda; a mensagem vai por WhatsApp),
 fisioterapia, clínicas e estética (nada de restaurantes); não é sobre o site mas sobre a infraestrutura de atendimento.
-A mensagem leva o lema e pachecost.com. Não sai grátis: a vertente escolhida é a primeira execução, paga, com valor
+A mensagem leva pachecost.com e o que entregamos (fuga, sistema, impacto) como resultado, nunca como «lema» (Tomás, 14/10). Não sai grátis: a vertente escolhida é a primeira execução, paga, com valor
 fechado na reunião, e abre o acompanhamento / Auditoria de Sistemas com IA. Sem preços nem números inventados.
 
   python3 triagem_pt.py     → raio-x/triagens-pt/<slug>/triagem-<slug>.pdf e raio-x/ENVIAR-PT-lote-3.md
@@ -91,7 +91,7 @@ FONTES = "\n".join([fonte("Archivo Black", "archivo-black-ro.woff2", 400), fonte
 OU = "Ou, se preferirem:"
 PROX = ("Próximo passo: escolham uma destas vertentes como primeira execução. Montamo-la e medimos desde a primeira semana; "
         "é um trabalho pago, com o valor fechado na reunião. Se o resultado aparecer, seguimos juntos para as próximas."
-        f'<span class="lema">{LEMA}</span>')
+        f'<span class="lema">O que entregamos: a fuga encontrada, o sistema desenhado, o impacto provado em números.</span>')
 
 # Sinais: só o que se vê de fora e foi verificado pela ponte (página lida e medida a 13/10/2026).
 NEG = {
@@ -268,7 +268,7 @@ def mensagem(slug, c):
     f, n = formas(slug), CURTO[slug]
     return (f"Boa tarde,\n\n{PERSONAL[slug]}\n\n"
             f"Sou o Tomás Pacheco, da Pacheco Studios. Fazemos auditoria de sistemas com IA para negócios locais. "
-            f"Encontramos a fuga, desenhamos o sistema, provamos o impacto em números.\n\n"
+            f"O que entregamos: descobrimos onde o negócio perde clientes e tempo, desenhamos o sistema que fecha essa fuga e provamos o impacto em números.\n\n"
             f"Temos sede em Portugal e trabalhamos em Portugal e no Brasil. Escolhemos agora o Algarve, com clínicas e espaços de saúde "
             f"e estética, onde cada pedido de marcação conta. Cada projeto começa por um ganho rápido e mensurável, antes de qualquer "
             f"investimento maior.\n\n"
@@ -281,7 +281,7 @@ def mensagem(slug, c):
 def seguimentos(slug):
     f, n = formas(slug), CURTO[slug]
     return {
-     "d3": f"Boa tarde, volto em poucas palavras. Na Pacheco Studios encontramos a fuga, desenhamos o sistema e provamos o impacto. "
+     "d3": f"Boa tarde, volto em poucas palavras. O que entregamos é descobrir onde se perdem clientes e tempo, desenhar o sistema que o resolve e provar o impacto em números. "
            f"Gostava de {f['lhe']} mostrar, numa reunião, o que vimos na {n}. {ASSINA}",
      "d7": f"Boa tarde, uma só pergunta, sim ou não: {f['da']} jeito uma reunião comigo, esta semana ou na próxima, para {f['lhe']} mostrar "
            f"o que vimos na {n}? {ASSINA}",
