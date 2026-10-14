@@ -289,14 +289,15 @@ def seguimentos(slug):
     }
 
 
-def main():
+def main(ordem=None, ficheiro="ENVIAR-PT-lote-3.md"):
+    ordem = ordem or ORDEM
     cands = ler_candidatos()
     data = datetime.date.today().strftime("%d/%m/%Y")
     out = [f"# Agente 3 · Triagens Portugal para enviar ({data})", "",
            "Formato da triagem do Iulian (1 página): o caminho Pacheco Studios passo a passo, com «Ou, se preferirem» em cada etapa, "
            "3 sugestões, 3 perguntas e o que medimos. Só negócios com WhatsApp provado no site (Tomás, 13/10). Não sai grátis: a vertente "
-           "escolhida é a primeira execução, paga, com valor fechado na reunião. Mensagem no molde aprovado para os e-mails a 13/10 (personalização do site, quem somos + lema, posicionamento, reunião com o dono); o PDF vai anexado, nunca link.", ""]
-    for i, s in enumerate(ORDEM, 1):
+           "escolhida é a primeira execução, paga, com valor fechado na reunião. Mensagem no molde aprovado para os e-mails a 13/10 (personalização do site, quem somos + o que entregamos, posicionamento, reunião com o dono); o PDF vai anexado, nunca link.", ""]
+    for i, s in enumerate(ordem, 1):
         c = cands[s]
         pasta = os.path.join(SAIDA, s)
         os.makedirs(pasta, exist_ok=True)
@@ -309,7 +310,7 @@ def main():
                 f"- PDF (dono): {RAW}/{s}/triagem-{s}.pdf", "", "```", mensagem(s, c), "```", ""]
         out += ["Seguimentos (sem resposta; mesmo WhatsApp, sem novo PDF):", ""] + [f"- {k.upper()}: {v}" for k, v in seguimentos(s).items()] + [""]
         print("ok", s)
-    open(os.path.join(RAIZ, "raio-x", "ENVIAR-PT-lote-3.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
+    open(os.path.join(RAIZ, "raio-x", ficheiro), "w", encoding="utf-8").write("\n".join(out) + "\n")
 
 
 if __name__ == "__main__":
