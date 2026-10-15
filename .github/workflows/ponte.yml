@@ -14,7 +14,7 @@
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
 #   rastrear   <url>                            cada salto de um redirecionamento (código, Location, servidor) → relatório
-#   goatcounter <desde AAAA-MM-DD> [ate]        visitas e eventos de pachecost.goatcounter.com → ponte/goatcounter.txt
+#   goatcounter <desde AAAA-MM-DD> [ate]        visitas, eventos e países das 12 páginas mais vistas → ponte/goatcounter.txt
 #                                               (precisa do segredo GOATCOUNTER_TOKEN; o token nunca vai para ficheiros)
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
@@ -123,16 +123,27 @@ jobs:
                           rq = urllib.request.Request("https://pachecost.goatcounter.com/api/v0/" + cam,
                                                       headers={"Authorization": "Bearer " + tok, "Content-Type": "application/json", "User-Agent": UA})
                           return _j.loads(urllib.request.urlopen(rq, timeout=60).read())
-                      linhas, excl = [], []
+                      linhas, excl, PAGS = [], [], []
                       for _ in range(10):
                           r_ = gc_api(f"stats/hits?{q}&limit=100" + (f"&exclude_paths={','.join(excl)}" if excl else ""))
                           for h in r_.get("hits", []):
                               excl.append(str(h["path_id"]))
                               linhas.append((h.get("count", 0), "evento" if h.get("event") else "página", h["path"], h.get("title", "")))
+                              if not h.get("event"):
+                                  PAGS.append((h["path_id"], h.get("count", 0), h["path"]))
                           if not r_.get("more"):
                               break
                       linhas.sort(key=lambda x: (x[2]))
-                      open("ponte/goatcounter.txt", "w", encoding="utf-8").write(f"GoatCounter {q}\n\n" + "\n".join(f"{c:6d}  {t:6s}  {pth}  ({ti})" for c, t, pth, ti in linhas) + "\n")
+                      # países por página: para as 12 páginas (não eventos) com mais visitas, de que países vêm
+                      paises = []
+                      for pid, cnt, pth in sorted(PAGS, key=lambda x: -x[1])[:12]:
+                          try:
+                              lc = gc_api(f"stats/locations?{q}&include_paths={pid}&limit=8")
+                              paises.append(f"{cnt:6d}  {pth}:  " + ", ".join(f"{x.get('name') or x.get('id')} {x.get('count', 0)}" for x in lc.get("stats", [])))
+                          except Exception as ex_:
+                              paises.append(f"        {pth}: erro {ex_}")
+                      open("ponte/goatcounter.txt", "w", encoding="utf-8").write(f"GoatCounter {q}\n\n" + "\n".join(f"{c:6d}  {t:6s}  {pth}  ({ti})" for c, t, pth, ti in linhas)
+                          + "\n\nPaíses por página (top 12)\n" + "\n".join(paises) + "\n")
                       rel.append(f"ok  goatcounter {q}: {len(linhas)} caminhos → ponte/goatcounter.txt")
                   else:
                       rel.append(f"ERRO linha {n}: operação desconhecida «{op}»")
