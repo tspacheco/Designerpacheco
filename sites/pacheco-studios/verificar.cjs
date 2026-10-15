@@ -216,6 +216,11 @@ const fs = require('fs');
       const l = await p.$eval('html', h => h.lang);
       if (r.status() !== 404 || l !== lang) mal(`404 de ${url}: ${r.status()} em ${l}`); else bem(`404 em ${lang}: ${url.replace('https://', '')}`);
     }
+    // varrimentos de robôs: 404 leve (n.txt), nos dois domínios
+    for (const url of [PT + '/phpinfo.php', PT + '/wp-admin/install.php', PT + '/.env', RO + '/.git/config', RO + '/meta.json']) {
+      const r = responder(url);
+      if (r.status !== 404 || r.body.length > 100) mal(`robôs: ${url} deu ${r.status} com ${r.body.length} bytes`); else bem(`robôs: ${url.replace('https://', '')} → 404 leve (${r.body.length} bytes)`);
+    }
     // privacidade
     for (const [url, lang] of [[PT + '/privacidade.html', 'pt-PT'], [PT + '/privacy.html', 'en'], [RO + '/confidentialitate.html', 'ro'],
                                [PT + '/cookies.html', 'pt-PT'], [PT + '/en/cookies.html', 'en'], [RO + '/cookie-uri.html', 'ro']]) {

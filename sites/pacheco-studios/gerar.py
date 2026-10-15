@@ -1132,6 +1132,15 @@ def cabeca_simples(lang, titulo, estilo, extra=""):
 </head>"""
 
 
+# Caminhos que os robôs varrem à procura de falhas (vistos no Netlify a 15/10/2026). O site é estático e não tem
+# nenhum destes ficheiros: respondem 404 com /n.txt em vez da página 404 completa.
+ROBOS = ["/phpinfo.php", "/info.php", "/php.php", "/test.php", "/i.php", "/index.php", "/config.php", "/xmlrpc.php",
+         "/wp-login.php", "/wp-config.php", "/wp-admin/*", "/wp-content/*", "/wp-includes/*", "/wordpress/*",
+         "/wp/*", "/.git/*", "/.env", "/.env.local", "/.env.production", "/.env.backup", "/.aws/*", "/.vscode/*",
+         "/api/.env", "/backend/.env", "/app/.env", "/meta.json", "/vendor/*", "/cgi-bin/*", "/phpmyadmin/*",
+         "/server-status", "/.DS_Store"]
+
+
 def pagina_404(c, estilo, lang):
     t = c["p404"]
     casa = LINGUAS[lang]["caminho"]
@@ -1365,12 +1374,16 @@ def main():
            f"https://{dominio}/en      https://{principal}/en/    301!",
            f"https://{dominio}/en/*    https://{principal}/en/:splat    301!",
            f"/pt        https://{principal}/    301!", f"/pt/*      https://{principal}/    301!",
-           "# 4) endereços curtos (marca/dados.json → enderecos_curtos)"]
+           "# 3b) varrimentos de robôs (phpinfo, WordPress, .env, .git): 404 com um ficheiro de 4 bytes, para não",
+           "#     gastarem largura de banda a descarregar a página 404 completa (≈150 KB com as fontes)."]
+    red += [f"{c}    /n.txt    404!" for c in ROBOS]
+    red += ["# 4) endereços curtos (marca/dados.json → enderecos_curtos)"]
     for slug, dest in sorted(curtos.items()):
         red.append(f"/{re.sub(r'[^a-z0-9-]', '', slug.lower())}    {dest}    302")
     red += ["# 5) página 404 na língua de cada endereço (a portuguesa é a 404.html da raiz)",
             f"https://{dominio}/*    /ro/404.html    404", "/en/*    /en/404.html    404"]
     open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8").write("\n".join(red) + "\n")
+    open(os.path.join(DIST, "n.txt"), "w", encoding="utf-8").write("404\n")
     # Cabeçalhos em _headers (e não no netlify.toml): o Netlify lê _headers e _redirects também quando o zip é
     # arrastado à mão; o netlify.toml só é garantido em builds. Um sítio só, para não se duplicarem.
     open(os.path.join(DIST, "_headers"), "w", encoding="utf-8").write(
