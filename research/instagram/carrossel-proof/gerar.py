@@ -451,6 +451,9 @@ def slides():
   ]
 
 
+SEM_AUDIT = bool(os.environ.get("SEM_AUDIT"))  # versão sem o bloco «DM AUDIT» no último slide
+
+
 def slide(s, i, total):
     tema = s["tema"]
     partes = []
@@ -466,7 +469,7 @@ def slide(s, i, total):
             f'<div><h3>{E(a)}</h3><p>{E(b)}</p></div>' for a, b in s["cartoes_esc"]) + "</div>")
     if s.get("pill"):
         partes.append(f'<div class="pill">{E(s["pill"])}</div>')
-    if s.get("botao"):
+    if s.get("botao") and not SEM_AUDIT:
         partes.append(f'<div class="botao">{E(s["botao"])}</div>')
     trilho = ('<div class="trilho">' + "".join(f'<i style="left:{x}px"></i>' for x in (0, 145, 290, 435))
               + '<em style="left:580px"></em></div>') if s.get("trilho") else ""
@@ -481,10 +484,12 @@ def slide(s, i, total):
 def main():
     global LANG
     for LANG in ("en", "ro"):
+        if SEM_AUDIT and LANG != "ro":
+            continue
         os.makedirs(os.path.join(AQUI, "saida", LANG), exist_ok=True)
         lista = slides()
         corpo = "\n".join(slide(s, i, len(lista)) for i, s in enumerate(lista, 1))
-        caminho = os.path.join(AQUI, "saida", f"carrossel-proof-{LANG}.html")
+        caminho = os.path.join(AQUI, "saida", f"carrossel-proof-{LANG}{'-sem-audit' if SEM_AUDIT else ''}.html")
         with open(caminho, "w", encoding="utf-8") as f:
             f.write(f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>{t("Proof · A real system breakdown")}</title>'
                     f'<style>{base.CSS}{CSS_EXTRA}</style></head><body>{corpo}</body></html>')
