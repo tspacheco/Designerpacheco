@@ -107,7 +107,7 @@ img,svg{display:block;max-width:100%}
 .vitrine{padding:clamp(2.6rem,6vw,4.6rem) var(--pad) clamp(1.4rem,3vw,2.2rem)}
 .vitrine .dentro{max-width:1220px;margin:0 auto}
 .vitrine .cabeca{margin-bottom:1.6rem}
-.montras{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(.8rem,1.6vw,1.2rem)}
+.montras{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(.8rem,1.6vw,1.2rem)}
 .montra{position:relative;display:block;aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:var(--papel);
   border:1px solid var(--linha);box-shadow:0 1px 0 rgba(43,29,33,.03);
   transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s}
@@ -946,14 +946,15 @@ function desenhaProduto(id){
       '<p class="preco-grande">' + (p.promo && p.precoAntigo ? '<s style="color:var(--secundario);font-weight:400;font-size:19px">' + euro(p.precoAntigo) + '</s><b class="saldo">' + euro(p.preco) + '</b><span class="poupa">' + desconto(p) + ' · poupas ' + euro(p.precoAntigo - p.preco) + '</span>' : euro(p.preco)) + '</p>' +
       '<p class="desc">' + esc(p.desc || '') + '</p>' +
       '<div class="bloco"><p class="rotulo">Cor <span id="cor-nome">' + esc(p.cores[0].nome) + '</span></p><div class="cores" id="cores">' + cores + '</div></div>' +
-      '<div class="bloco"><p class="rotulo">Tamanho</p><div class="tamanhos" id="tamanhos">' + tams + '</div></div>' +
+      (p.cat === 'beleza' ? (p.tam ? '<div class="bloco"><p class="rotulo">Formato</p><div class="tamanhos"><span class="tam-nota">' + esc(p.tam) + '</span></div></div>' : '') :
+        '<div class="bloco"><p class="rotulo">Tamanho</p><div class="tamanhos" id="tamanhos">' + tams + '</div></div>') +
       '<p class="stock" id="stock"></p>' +
       '<div class="comprar"><button type="button" class="btn" id="juntar"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Juntar ao saco</button>' +
       '<button type="button" class="btn linha" id="fav-grande">' + (eFav(p.id) ? 'Nos favoritos' : 'Guardar nos favoritos') + '</button></div>' +
-      '<p class="duvida">Dúvidas no tamanho ou na cor? <a href="' + WA + '?text=' + msg + '" target="_blank" rel="noopener">Fala com a Toda Chic no WhatsApp</a> antes de comprares.</p>' +
+      '<p class="duvida">Dúvidas' + (p.cat === 'beleza' ? '' : ' no tamanho ou na cor') + '? <a href="' + WA + '?text=' + msg + '" target="_blank" rel="noopener">Fala com a Toda Chic no WhatsApp</a> antes de comprares.</p>' +
       '<div class="dobras">' +
-        '<details><summary>Guia de tamanhos</summary><div><p>' + esc(p.tam || 'Tamanho a confirmar com a loja.') + '</p>' +
-          (p.stockNota ? '<p>' + esc(p.stockNota) + '.</p>' : '') + GUIA + '<p><a href="#/pagina/guia-tamanhos" style="color:var(--rosae);text-decoration:underline;text-underline-offset:3px">Ver o guia completo e como medir</a></p></div></details>' +
+        (p.cat === 'beleza' ? '' : '<details><summary>Guia de tamanhos</summary><div><p>' + esc(p.tam || 'Tamanho a confirmar com a loja.') + '</p>' +
+          (p.stockNota ? '<p>' + esc(p.stockNota) + '.</p>' : '') + GUIA + '<p><a href="#/pagina/guia-tamanhos" style="color:var(--rosae);text-decoration:underline;text-underline-offset:3px">Ver o guia completo e como medir</a></p></div></details>') +
         '<details><summary>Envio e pagamento</summary><div><p>Pagamento antecipado por MB WAY. Entrega em 2 a 3 dias úteis, em todo o país.</p><p>Portes: a confirmar antes do lançamento da loja.</p></div></details>' +
         '<details><summary>Trocas e devoluções</summary><div><p>Não aceitamos trocas nem devoluções. Se tiveres dúvidas no tamanho ou na cor, fala connosco antes de comprares.</p></div></details>' +
       '</div>' +
@@ -972,7 +973,7 @@ function desenhaProduto(id){
     document.querySelectorAll('.miniaturas button').forEach(function(m){ m.setAttribute('aria-pressed', urlFoto(m.getAttribute('data-f')) === f ? 'true' : 'false'); });
     atualizaStock(p);
   });
-  document.getElementById('tamanhos').addEventListener('click', function(e){
+  var elTams = document.getElementById('tamanhos'); if (elTams) elTams.addEventListener('click', function(e){
     var b = e.target.closest('.tam'); if (!b) return;
     escolha.tam = +b.getAttribute('data-j');
     b.parentElement.querySelectorAll('.tam').forEach(function(o){ o.setAttribute('aria-pressed', 'false'); });
