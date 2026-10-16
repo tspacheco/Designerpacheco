@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nais · Shaorma în Copou, Iași · Shaorma arăbească doar 37 lei</title>
+<meta name="description" content="Nais, shaorma și bunătăți în Copou, Iași. Shaorma arăbească doar 37 lei, shaorma de pui 30 lei, combouri până la −10 lei. Șoseaua Ștefan cel Mare și Sfânt 20.">
+<meta name="theme-color" content="#138C45">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Figtree:wght@400;500;600;700&family=Roboto+Slab:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Restaurant",
+ "name":"Nais",
+ "alternateName":"Nais Food",
+ "servesCuisine":["Shaorma","Kebab","Fast food"],
+ "url":"https://naisfood.ro/",
+ "telephone":"+40758620609",
+ "priceRange":"9–174 lei",
+ "address":{"@type":"PostalAddress","streetAddress":"Șoseaua Ștefan cel Mare și Sfânt 20","addressLocality":"Iași","addressRegion":"Iași","addressCountry":"RO"},
+ "openingHoursSpecification":[
+  {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"19:00"},
+  {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"14:00"}
+ ],
+ "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"47","bestRating":"5"},
+ "sameAs":["https://www.facebook.com/naisfood","https://www.instagram.com/naisfood"]
+}
+</script>
+<style>
+:root{
+  --beton:#E4E3DF;      /* tencuiala fațadei, deschisă */
+  --beton-2:#CFCECA;
+  --beton-ink:#8F918D;
+  --neon:#2BD45F;       /* literele «nais» */
+  --verde:#138C45;      /* panoul «shaorma și bunătăți» */
+  --verde-ink:#0B5E2E;
+  --rosu:#E2433A;       /* afișul de pe geam */
+  --rosu-ink:#B92C25;
+  --somon:#F2786B;      /* frigăruia de pe firmă */
+  --carbune:#1E2321;
+  --carbune-2:#2B3230;
+  --alb:#FFFFFF;
+  --ink:#1E2321;
+  --ink-2:#4A524F;
+  --r:18px;
+  --pad:clamp(18px,4vw,48px);
+  --wrap:1180px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --f-disp:"Baloo 2",system-ui,sans-serif;
+  --f-body:"Figtree",system-ui,sans-serif;
+  --f-slab:"Roboto Slab",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f-body);color:var(--ink);background:var(--beton);line-height:1.55;font-size:17px;overflow-x:hidden}
+/* tencuială: zgomot fin ca pe fațadă */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .36  0 0 0 0 .35  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--neon);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--carbune);color:#fff;padding:10px 14px;border-radius:8px;z-index:200}
+.skip:focus{left:8px}
+
+/* ---------- intrarea: logo-ul de pe fațadă ---------- */
+.intro{position:fixed;inset:0;z-index:300;background:var(--carbune);display:grid;place-items:center;transition:opacity .55s var(--ease),visibility .55s}
+.intro video{width:100%;height:100%;object-fit:contain}
+.intro .intro-fallback{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-disp);font-weight:800;font-size:clamp(80px,20vw,220px);color:var(--neon);letter-spacing:-.04em;opacity:0}
+.intro.novideo .intro-fallback{opacity:1}
+.intro .bar{position:absolute;left:0;bottom:0;height:5px;background:var(--neon);width:0;animation:load 2.6s linear forwards}
+@keyframes load{to{width:100%}}
+.intro .skipintro{position:absolute;right:16px;bottom:22px;background:rgba(0,0,0,.45);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:8px 16px;font-size:14px}
+.intro.gone{opacity:0;visibility:hidden}
+html.intro-on body{overflow:hidden}
+
+/* ---------- banner + nav ---------- */
+.demo{background:var(--carbune);color:#fff;text-align:center;font-size:12.5px;letter-spacing:.08em;padding:7px 12px;font-weight:600}
+.demo b{color:var(--neon)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(228,227,223,.96);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.nav.scrolled{border-color:var(--beton-2);box-shadow:0 6px 24px rgba(30,35,33,.08)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:68px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:34px;width:auto}
+.logo .txt{font-family:var(--f-disp);font-weight:800;font-size:34px;color:var(--verde);line-height:1;letter-spacing:-.03em}
+.nav ul{display:flex;gap:4px;list-style:none;margin-left:auto}
+.nav ul a{text-decoration:none;font-weight:600;font-size:15px;padding:10px 12px;border-radius:10px}
+.nav ul a:hover{background:rgba(19,140,69,.1);color:var(--verde-ink)}
+.open-pill{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;padding:6px 12px;border-radius:99px;background:#fff;border:1px solid var(--beton-2);white-space:nowrap}
+.open-pill i{width:9px;height:9px;border-radius:50%;background:var(--beton-ink)}
+.open-pill.on i{background:var(--neon);box-shadow:0 0 0 4px rgba(43,212,95,.22)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:14px;font-weight:700;text-decoration:none;border:0;transition:transform .18s var(--ease),background .2s,box-shadow .2s;touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.btn-verde{background:var(--verde);color:#fff;box-shadow:0 4px 0 var(--verde-ink)}
+.btn-verde:hover{background:#17a04f}
+.btn-rosu{background:var(--rosu);color:#fff;box-shadow:0 4px 0 var(--rosu-ink)}
+.btn-rosu:hover{background:#ec4f46}
+.btn-alb{background:#fff;color:var(--ink);border:1.5px solid var(--beton-2)}
+.btn-alb:hover{border-color:var(--verde)}
+.btn svg{width:20px;height:20px}
+.burger{display:none;margin-left:auto;background:none;border:0;width:48px;height:48px;border-radius:12px}
+.burger span{display:block;width:24px;height:2.5px;background:var(--ink);margin:5px auto;border-radius:2px;transition:transform .25s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* ---------- herói ---------- */
+.hero{position:relative;overflow-x:clip;padding:clamp(28px,5vw,64px) 0 clamp(40px,6vw,90px)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,60px);align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-slab);font-weight:700;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--verde);padding:7px 14px;border-radius:6px}
+h1{font-family:var(--f-disp);font-weight:800;line-height:.92;letter-spacing:-.025em;font-size:clamp(46px,7.4vw,104px);margin:18px 0 18px;color:var(--carbune)}
+h1 .doar{display:block;font-size:.5em;letter-spacing:0;color:var(--ink-2);font-weight:700;margin-top:.15em}
+h1 .pret{color:var(--rosu);white-space:nowrap;font-size:1.6em;line-height:.9;letter-spacing:-.04em}
+h1 .pret small{font-size:.42em;letter-spacing:.02em;margin-left:.08em}
+.hero p.lead{font-size:clamp(17px,1.6vw,20px);max-width:34em;color:var(--ink-2)}
+.hero p.lead b{color:var(--ink)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 22px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14.5px;font-weight:600;color:var(--ink-2)}
+.facts span{display:inline-flex;align-items:center;gap:7px}
+.facts svg{width:18px;height:18px;color:var(--verde)}
+.stars{color:#E8A317;letter-spacing:1px}
+
+/* fereastra cu afișul: fotografie reală + autocolantul */
+.vit-wrap{position:relative;max-width:560px;width:100%;justify-self:center}
+.vitrina{position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:var(--beton-ink);box-shadow:0 30px 60px -25px rgba(30,35,33,.45)}
+.vitrina>img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.vitrina .tag{position:absolute;left:14px;bottom:14px;background:rgba(30,35,33,.78);color:#fff;font-size:12.5px;padding:6px 10px;border-radius:8px}
+
+/* ---------- SEMNĂTURA: autocolantul «Doar 37 lei» ---------- */
+.sticker{--s:1;position:absolute;right:-6%;top:6%;width:calc(230px*var(--s));transform:rotate(6deg);filter:drop-shadow(0 18px 22px rgba(0,0,0,.35));transition:transform .4s var(--ease)}
+.st-body{position:relative;background:var(--rosu);border:5px solid #fff;border-radius:999px 999px 34px 34px;padding:22px 16px 20px;text-align:center;color:#fff;overflow:hidden}
+.st-photo{width:112%;margin:0 -6% 6px;border-radius:14px;overflow:hidden;border:4px solid #fff;transform:rotate(-7deg);box-shadow:0 6px 0 rgba(0,0,0,.18)}
+.st-photo img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:50% 34%}
+.burst{position:relative;width:82%;margin:-4px auto 8px;aspect-ratio:1;display:grid;place-items:center;color:#fff}
+.burst svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 18s linear infinite}
+.burst .in{position:relative;line-height:.82;font-family:var(--f-slab);text-shadow:0 2px 0 rgba(0,0,0,.18)}
+.burst .in em{display:block;font-style:normal;font-weight:700;font-size:16px}
+.burst .in strong{display:block;font-family:var(--f-disp);font-weight:800;font-size:68px;letter-spacing:-.04em}
+.burst .in strong sup{font-size:.26em;vertical-align:top;margin-left:2px;letter-spacing:0}
+.burst .in span{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-top:6px}
+.st-copy{font-family:var(--f-slab);font-weight:800;text-transform:uppercase;font-size:13.5px;line-height:1.2}
+.st-url{font-family:var(--f-slab);font-weight:800;font-size:12px;margin-top:8px;opacity:.95}
+.st-body::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 48%,transparent 60%);transform:translateX(-120%);animation:shine 4.5s 3.4s var(--ease) infinite}
+@keyframes shine{0%{transform:translateX(-120%)}35%,100%{transform:translateX(120%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* autocolantul fix: nu scapă nimănui */
+.dock{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:12px;text-decoration:none;background:var(--rosu);color:#fff;border:4px solid #fff;border-radius:999px;padding:8px 20px 8px 8px;box-shadow:0 14px 30px -8px rgba(185,44,37,.65);transform:translateY(140%) rotate(-3deg);transition:transform .5s var(--ease)}
+.dock.show{transform:translateY(0) rotate(-3deg)}
+.dock:hover{transform:translateY(-3px) rotate(0)}
+.dock .mini{width:62px;height:62px;position:relative;display:grid;place-items:center;flex:none}
+.dock .mini svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 14s linear infinite}
+.dock .mini b{position:relative;font-family:var(--f-disp);font-weight:800;font-size:26px;line-height:1}
+.dock .t{line-height:1.15}
+.dock .t small{display:block;font-size:12px;font-weight:600;opacity:.92}
+.dock .t strong{font-family:var(--f-slab);font-size:15.5px;font-weight:800}
+
+/* ---------- bandă ---------- */
+.marquee{background:var(--verde);color:#fff;overflow:hidden;border-block:3px solid var(--verde-ink)}
+.marquee .track{display:flex;gap:42px;width:max-content;padding:14px 0;animation:mq 34s linear infinite;font-family:var(--f-slab);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:15px;white-space:nowrap}
+.marquee .track span::after{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--neon);margin-left:42px;vertical-align:middle}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- secțiuni ---------- */
+section{padding:clamp(56px,8vw,110px) 0}
+.sh{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 30px;margin-bottom:clamp(26px,4vw,44px)}
+.sh .k{font-family:var(--f-slab);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--verde-ink)}
+h2{font-family:var(--f-disp);font-weight:800;font-size:clamp(36px,5vw,64px);line-height:.98;letter-spacing:-.02em;margin-top:8px}
+.sh p{max-width:30em;color:var(--ink-2)}
+
+/* oferte */
+.offers{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.of{position:relative;background:#fff;border-radius:var(--r);padding:24px;border:1.5px solid var(--beton-2);display:flex;flex-direction:column;gap:10px;min-height:210px}
+.of .lbl{font-family:var(--f-slab);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.of h3{font-family:var(--f-disp);font-weight:800;font-size:28px;line-height:1;letter-spacing:-.01em}
+.of p{font-size:15.5px;color:var(--ink-2)}
+.of .big{font-family:var(--f-disp);font-weight:800;font-size:58px;line-height:.85;letter-spacing:-.04em;margin-top:auto}
+.of .big small{font-size:.36em;letter-spacing:0}
+.of.a{grid-column:span 3;background:var(--rosu);border-color:var(--rosu);color:#fff}
+.of.a .lbl,.of.a p{color:rgba(255,255,255,.9)}
+.of.a .row{display:flex;gap:18px;align-items:flex-end;margin-top:auto}
+.of.a .ph{flex:1;max-width:230px;border-radius:14px;overflow:hidden;border:4px solid #fff;transform:rotate(-3deg)}
+.of.a .ph img{aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;width:100%}
+.of.b{grid-column:span 3;background:var(--carbune);border-color:var(--carbune);color:#fff}
+.of.b .lbl,.of.b p{color:rgba(255,255,255,.78)}
+.of.b .big{color:var(--neon)}
+.of.c,.of.d,.of.e{grid-column:span 2}
+.of.c .big{color:var(--verde)}
+.of .go{margin-top:6px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.of .go:hover{text-decoration:underline}
+
+/* cardul cu ștampile (demonstrativ, interactiv) */
+.card-nais{grid-column:span 6;display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;background:var(--verde);color:#fff;border-radius:var(--r);padding:clamp(22px,3vw,36px)}
+.card-nais h3{font-family:var(--f-disp);font-weight:800;font-size:clamp(28px,3.2vw,40px);line-height:1}
+.card-nais p{color:rgba(255,255,255,.88);margin-top:10px}
+.card-nais .small{font-size:13.5px;opacity:.85;margin-top:12px}
+.stamps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;background:#fff;border-radius:16px;padding:18px;color:var(--ink)}
+.stamp{aspect-ratio:1;border-radius:50%;border:2.5px dashed var(--beton-2);display:grid;place-items:center;font-family:var(--f-slab);font-weight:800;font-size:15px;color:var(--beton-ink);background:#fff;transition:transform .25s var(--ease),background .25s,border-color .25s,color .25s}
+.stamp:hover{border-color:var(--verde)}
+.stamp.on{background:var(--neon);border:2.5px solid var(--verde);color:var(--verde-ink);transform:rotate(-8deg)}
+.stamp.free{border-style:solid;border-color:var(--rosu);color:var(--rosu);font-size:12px;text-align:center;line-height:1.05}
+.stamp.free.on{background:var(--rosu);color:#fff;border-color:var(--rosu-ink);transform:rotate(0) scale(1.06)}
+.card-nais .stamps-note{margin:0;grid-column:1/-1;font-size:14px;color:var(--ink-2);min-height:1.5em;font-weight:600}
+
+/* câți sunteți */
+.party{background:#fff;border-radius:var(--r);border:1.5px solid var(--beton-2);padding:clamp(22px,3vw,36px);display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;margin-top:16px}
+.party h3{font-family:var(--f-disp);font-weight:800;font-size:clamp(26px,3vw,36px);line-height:1}
+.seg{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.seg button{flex:1;min-width:48px;min-height:48px;border-radius:12px;border:1.5px solid var(--beton-2);background:var(--beton);font-weight:700;font-size:17px}
+.seg button[aria-pressed="true"]{background:var(--carbune);color:#fff;border-color:var(--carbune)}
+.party-out{background:var(--beton);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:6px}
+.party-out .nm{font-family:var(--f-disp);font-weight:800;font-size:28px;line-height:1.05}
+.party-out .ds{color:var(--ink-2);font-size:15.5px}
+.party-out .px{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-top:8px;font-family:var(--f-slab)}
+.party-out .px b{white-space:nowrap;font-size:40px;font-weight:800;color:var(--verde-ink)}
+.party-out .px s{white-space:nowrap;color:var(--ink-2);font-size:17px}
+.party-out .px em{font-style:normal;background:var(--rosu);color:#fff;font-weight:700;font-size:14px;padding:3px 9px;border-radius:6px}
+
+/* ---------- meniul: tabla de deasupra tejghelei ---------- */
+.menu{background:var(--carbune);color:#fff}
+.menu .k{color:var(--neon)}
+.menu .sh p{color:rgba(255,255,255,.72)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:26px;scrollbar-width:thin}
+.tabs button{flex:none;min-height:46px;padding:10px 18px;border-radius:99px;border:1.5px solid rgba(255,255,255,.22);background:transparent;color:#fff;font-weight:700;font-size:15px}
+.tabs button[aria-selected="true"]{background:var(--neon);border-color:var(--neon);color:var(--carbune)}
+.board{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 18px;padding:18px 0;border-bottom:1px dashed rgba(255,255,255,.18)}
+.item h3{font-family:var(--f-disp);font-weight:700;font-size:23px;line-height:1.1;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.item .badge{font-family:var(--f-slab);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:5px;background:var(--rosu);color:#fff}
+.item .badge.g{background:var(--neon);color:var(--carbune)}
+.item p{grid-column:1/2;font-size:14.5px;color:rgba(255,255,255,.7);line-height:1.45}
+.item .pr{grid-row:1/3;grid-column:2;text-align:right;font-family:var(--f-slab);font-variant-numeric:tabular-nums}
+.item .pr b{display:block;font-size:30px;font-weight:800;color:var(--neon);line-height:1}
+.item .pr b small{font-size:.48em;margin-left:3px}
+.item .pr s{display:block;font-size:13.5px;color:rgba(255,255,255,.55);margin-top:4px}
+.item .pr i{display:block;font-style:normal;font-size:12px;color:rgba(255,255,255,.55);margin-top:4px}
+.item.hl{background:linear-gradient(90deg,rgba(226,67,58,.18),transparent 80%);border-radius:10px;padding-left:14px;margin-left:-14px}
+.menu-foot{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;color:rgba(255,255,255,.7);font-size:14.5px}
+
+/* ---------- locul ---------- */
+.place{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:14px}
+.place figure{position:relative;border-radius:var(--r);overflow:hidden;background:var(--beton-ink)}
+.place figure img{width:100%;height:100%;object-fit:cover}
+.place .p1{grid-row:1/3}
+.place .p1 img{aspect-ratio:4/5}
+.place .p2 img,.place .p3 img{aspect-ratio:1}
+.place figcaption{position:absolute;left:12px;bottom:12px;background:rgba(30,35,33,.78);color:#fff;font-size:13px;font-weight:600;padding:6px 10px;border-radius:8px}
+.place .txt{grid-column:2/4;background:#fff;border-radius:var(--r);border:1.5px solid var(--beton-2);padding:clamp(20px,3vw,30px)}
+.place .txt h3{font-family:var(--f-disp);font-weight:800;font-size:28px;line-height:1.05}
+.place .txt ul{list-style:none;margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}
+.place .txt li{display:flex;gap:10px;font-size:15.5px;color:var(--ink-2)}
+.place .txt li svg{flex:none;width:20px;height:20px;color:var(--verde);margin-top:2px}
+
+/* recenzii */
+.rev{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start}
+.score{background:var(--carbune);color:#fff;border-radius:var(--r);padding:30px}
+.score b{display:block;font-family:var(--f-disp);font-weight:800;font-size:96px;line-height:.85;color:var(--neon);letter-spacing:-.04em}
+.score .stars{font-size:22px;margin:10px 0 6px;display:block}
+.quotes{display:grid;gap:12px}
+.quotes blockquote{background:#fff;border-left:6px solid var(--verde);border-radius:12px;padding:18px 20px;font-size:17px}
+.quotes blockquote span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:6px;font-weight:600}
+
+/* program + hartă */
+.visit{display:grid;grid-template-columns:1fr 1.1fr;gap:16px}
+.vcard{background:#fff;border-radius:var(--r);border:1.5px solid var(--beton-2);padding:clamp(22px,3vw,34px)}
+.vcard h3{font-family:var(--f-disp);font-weight:800;font-size:30px;line-height:1.05;margin-bottom:14px}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin:6px 0 18px}
+.hours td{padding:9px 0;border-bottom:1px solid var(--beton)}
+.hours td:last-child{text-align:right;font-weight:700}
+.hours tr.today td{color:var(--verde-ink)}
+.hours tr.today td:first-child::after{content:" · azi";font-weight:700}
+.vrow{display:flex;gap:12px;margin:10px 0;color:var(--ink-2)}
+.vrow svg{flex:none;width:22px;height:22px;color:var(--verde);margin-top:1px}
+.vrow a{font-weight:700;color:var(--ink)}
+.map{border-radius:var(--r);overflow:hidden;min-height:380px;background:var(--beton-2);position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* footer */
+footer{background:var(--carbune);color:rgba(255,255,255,.78);padding:44px 0 calc(110px + env(safe-area-inset-bottom));font-size:14.5px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+footer h4{font-family:var(--f-slab);color:#fff;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+footer a{color:#fff}
+footer .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.14);padding-top:18px;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:13px}
+footer .anpc{display:flex;gap:10px;flex-wrap:wrap}
+footer .anpc a{border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:6px 10px;text-decoration:none;font-size:12.5px}
+
+/* revelare */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+
+/* coregrafia herói, după intrare */
+.hero .seq{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.ready .hero .seq{opacity:1;transform:none}
+.ready .hero .seq:nth-child(2){transition-delay:.08s}
+.ready .hero .seq:nth-child(3){transition-delay:.16s}
+.ready .hero .seq:nth-child(4){transition-delay:.24s}
+.ready .hero .seq:nth-child(5){transition-delay:.32s}
+.hero .vitrina{opacity:0;transform:scale(.96);transition:opacity .9s .1s var(--ease),transform .9s .1s var(--ease)}
+.ready .hero .vitrina{opacity:1;transform:none}
+.hero .sticker{opacity:0;transform:rotate(28deg) scale(1.45) translateY(-40px);transition:opacity .35s .55s,transform .7s .55s cubic-bezier(.3,1.6,.5,1)}
+.ready .hero .sticker{opacity:1;transform:rotate(6deg)}
+.ready .hero .sticker:hover{transform:rotate(2deg) scale(1.03);transition-delay:0s}
+
+/* ---------- responsiv ---------- */
+@media (max-width:1020px){
+  .hero .wrap{grid-template-columns:1fr}
+  .sticker{right:-2%}
+  .offers{grid-template-columns:1fr 1fr}
+  .of.a,.of.b,.card-nais{grid-column:1/-1}
+  .of.c,.of.d,.of.e{grid-column:span 1}
+  .of.e{grid-column:1/-1}
+  .board{grid-template-columns:1fr}
+  .place{grid-template-columns:1fr 1fr}
+  .place .p1{grid-row:auto;grid-column:1/-1}
+  .place .p1 img{aspect-ratio:16/10}
+  .place .txt{grid-column:1/-1}
+  .rev,.visit,.party,.card-nais{grid-template-columns:1fr}
+  footer .wrap{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .nav ul,.nav .btn-verde,.nav .open-pill{display:none}
+  .burger{display:block}
+  .nav.open ul{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--beton);padding:10px var(--pad) 20px;border-bottom:1px solid var(--beton-2);box-shadow:0 20px 30px rgba(0,0,0,.08)}
+  .nav.open ul a{display:block;padding:14px 8px;font-size:18px}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .sticker{--s:.74;right:-10px;top:-14px}
+  .offers{grid-template-columns:1fr}
+  .of.c,.of.d,.of.e{grid-column:1/-1}
+  .of.a .row{flex-direction:column;align-items:flex-start}
+  .place .txt ul{grid-template-columns:1fr}
+  .dock{left:12px;right:12px;justify-content:flex-start;padding-right:16px}
+  .dock .go{margin-left:auto;font-weight:800;font-size:14px;background:#fff;color:var(--rosu);padding:8px 12px;border-radius:99px}
+  footer .wrap{grid-template-columns:1fr}
+  .stamps{gap:8px;padding:14px}
+}
+@media (min-width:621px){.dock .go{display:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv,.hero .seq,.hero .vitrina,.hero .sticker{opacity:1!important;transform:none!important}
+  .hero .sticker{transform:rotate(6deg)!important}
+  .marquee .track{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#continut">Sari la conținut</a>
+
+<!-- intrarea: logo-ul de pe fațada din Copou, 2–3 secunde -->
+<div class="intro" id="intro" aria-hidden="true">
+  <video id="introVideo" muted playsinline preload="auto"></video>
+  <div class="intro-fallback">nais</div>
+  <div class="bar"></div>
+  <button class="skipintro" type="button" id="skipIntro">Sari peste</button>
+</div>
+
+<div class="demo">PREZENTARE <b>PACHECO STUDIOS</b> · PROPUNERE PENTRU NAIS</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Nais, pagina principală">
+      <img src="media/logo-nais.svg" alt="Nais" width="67" height="34" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'txt',textContent:'nais'}))">
+    </a>
+    <ul id="menuNav">
+      <li><a href="#oferte">Oferte</a></li>
+      <li><a href="#meniu">Meniu</a></li>
+      <li><a href="#locul">Locul</a></li>
+      <li><a href="#program">Program</a></li>
+    </ul>
+    <span class="open-pill" id="openPill"><i></i><span>Program</span></span>
+    <a class="btn btn-verde" href="https://naisfood.ro/meniu">Comandă acum</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menuNav" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="continut">
+<!-- ========== HERÓI ========== -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow seq">Oferta de pe geamul din Copou</span>
+      <h1 class="seq">Shaorma arăbească. <span class="doar">Doar <span class="pret">37<small>LEI</small></span></span></h1>
+      <p class="lead seq">Pită coaptă, carne de pui, cartofi prăjiți, pătrunjel, roșii, sos de usturoi, <b>sos nais</b> și sos dulce. Exact cutia de pe afișul de la intrare, făcută pe loc.</p>
+      <div class="ctas seq">
+        <a class="btn btn-rosu" href="https://naisfood.ro/meniu">Comandă la 37 lei
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-alb" href="tel:+40758620609">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          0758 620 609</a>
+      </div>
+      <div class="facts seq">
+        <span><span class="stars" aria-hidden="true">★★★★★</span> 4,9 din 47 recenzii Google</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg> Copou, Ștefan cel Mare 20</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg> Livrare în Copou</span>
+      </div>
+    </div>
+
+    <div class="vit-wrap">
+    <div class="vitrina">
+      <img src="media/fachada.webp" alt="Fațada Nais din Copou: firma verde «nais, shaorma și bunătăți», ușa și afișul cu oferta de 37 lei pe geam" width="1080" height="1620" fetchpriority="high" onerror="this.remove()">
+      <span class="tag">Fațada, Șoseaua Ștefan cel Mare 20</span>
+    </div>
+      <a class="sticker" href="https://naisfood.ro/meniu" aria-label="Shaorma arăbească, doar 37 lei. Comandă și ridică sau ia la pachet.">
+        <div class="st-body">
+          <div class="st-photo"><img src="media/afis-37.webp" alt="" width="860" height="1560" onerror="this.parentElement.remove()"></div>
+          <div class="burst">
+            <svg viewBox="0 0 100 100" aria-hidden="true"><polygon fill="#2BD45F" stroke="#fff" stroke-width="3" points="50,2 59,22 80,12 76,35 98,40 80,55 92,74 69,74 66,97 50,82 34,97 31,74 8,74 20,55 2,40 24,35 20,12 41,22"/></svg>
+            <div class="in"><em>Doar</em><strong>37<sup>LEI</sup></strong><span>Shaorma arăbească</span></div>
+          </div>
+          <div class="st-copy">Comandă și ridică<br>sau ia la pachet</div>
+          <div class="st-url">NAISFOOD.RO</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Carne preparată zilnic</span><span>Sosuri făcute în casă</span><span>Legume tăiate în fiecare dimineață</span><span>La lipie, la farfurie, la pită</span><span>Livrare în Copou</span><span>Shaorma și bunătăți</span>
+    <span>Carne preparată zilnic</span><span>Sosuri făcute în casă</span><span>Legume tăiate în fiecare dimineață</span><span>La lipie, la farfurie, la pită</span><span>Livrare în Copou</span><span>Shaorma și bunătăți</span>
+  </div>
+</div>
+
+<!-- ========== OFERTE ========== -->
+<section id="oferte">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><span class="k">Oferte Nais</span><h2>Mai mult pe tavă,<br>mai puțin la casă.</h2></div>
+      <p>Toate ofertele de mai jos sunt cele de azi din meniul Nais. Le pui în coș pe naisfood.ro sau le ceri direct la tejghea.</p>
+    </div>
+
+    <div class="offers">
+      <article class="of a rv">
+        <span class="lbl">Oferta de pe geam</span>
+        <h3>Shaorma arăbească</h3>
+        <p>Pită coaptă cu pui, cartofi și trei sosuri, în cutie. Pentru la pachet sau pe loc.</p>
+        <div class="row">
+          <div class="big">37<small> lei</small></div>
+          <div class="ph"><img src="media/afis-37.webp" alt="Afișul Nais de pe geam: shaorma arăbească, doar 37 lei" loading="lazy" width="860" height="1560" onerror="this.parentElement.remove()"></div>
+        </div>
+        <a class="go" href="https://naisfood.ro/meniu">Comand-o acum →</a>
+      </article>
+
+      <article class="of b rv d1">
+        <span class="lbl">Cea mai vândută</span>
+        <h3>Shaorma de pui la lipie</h3>
+        <p>Sos nais, sos de usturoi, pui rotisat, sos de rodie, cartofi, varză, ceapă sumac, castraveți murați, roșii.</p>
+        <div class="big">30<small> lei</small></div>
+        <a class="go" href="https://naisfood.ro/meniu">Comandă →</a>
+      </article>
+
+      <article class="of c rv">
+        <span class="lbl">Combouri</span>
+        <h3>Până la −10 lei</h3>
+        <p>Shaorma, cartofi pai și suc. Mai ieftin decât luate separat, de la 38 lei.</p>
+        <div class="big">−10<small> lei</small></div>
+      </article>
+      <article class="of d rv d1">
+        <span class="lbl">Momente Nais</span>
+        <h3>Spune-ne o zi bună</h3>
+        <p>Trimiți un moment din viața ta. Dacă îl publicăm, primești reducere la o shaorma, valabilă 30 de zile.</p>
+        <div class="big">20<small> %</small></div>
+      </article>
+      <article class="of e rv d2">
+        <span class="lbl">Adu un prieten</span>
+        <h3>Câte 10 puncte</h3>
+        <p>Îi trimiți linkul tău. După prima lui comandă online de minimum 25 lei, primiți amândoi câte 10 puncte.</p>
+        <div class="big">+10<small> pct</small></div>
+      </article>
+
+      <div class="card-nais rv">
+        <div>
+          <span class="k" style="color:var(--neon);font-family:var(--f-slab);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase">Cardul Nais</span>
+          <h3>A opta shaorma e din partea casei.</h3>
+          <p>O ștampilă la fiecare comandă de minimum 25 lei. La a opta primești o shaorma la lipie gratis, iar la fiecare comandă îți rămân 5% înapoi în puncte.</p>
+          <p class="small">Atinge cercurile ca să vezi cum se umple cardul.</p>
+        </div>
+        <div class="stamps" id="stamps" role="group" aria-label="Card de fidelitate demonstrativ, 8 ștampile">
+          <button class="stamp" type="button" aria-pressed="false">1</button>
+          <button class="stamp" type="button" aria-pressed="false">2</button>
+          <button class="stamp" type="button" aria-pressed="false">3</button>
+          <button class="stamp" type="button" aria-pressed="false">4</button>
+          <button class="stamp" type="button" aria-pressed="false">5</button>
+          <button class="stamp" type="button" aria-pressed="false">6</button>
+          <button class="stamp" type="button" aria-pressed="false">7</button>
+          <button class="stamp free" type="button" aria-pressed="false">8<br>GRATIS</button>
+          <p class="stamps-note" id="stampsNote" aria-live="polite">0 din 8. Prima ștampilă vine cu prima comandă.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="party rv" id="cati">
+      <div>
+        <span class="k" style="font-family:var(--f-slab);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--verde-ink)">Câți sunteți?</span>
+        <h3>Îți spunem ce combo iese cel mai bine.</h3>
+        <div class="seg" role="group" aria-label="Numărul de persoane">
+          <button type="button" data-n="1" aria-pressed="true">1</button>
+          <button type="button" data-n="2" aria-pressed="false">2</button>
+          <button type="button" data-n="3" aria-pressed="false">3</button>
+          <button type="button" data-n="4" aria-pressed="false">4</button>
+          <button type="button" data-n="6" aria-pressed="false">6</button>
+        </div>
+      </div>
+      <div class="party-out" id="partyOut" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MENIU ========== -->
+<section class="menu" id="meniu">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><span class="k">Meniu cu prețuri</span><h2>Ce scrie pe tabla<br>de deasupra tejghelei.</h2></div>
+      <p>Prețuri în lei, din meniul Nais. La fiecare comandă online îți rămân 5% înapoi în puncte.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Categorii din meniu" id="tabs"></div>
+    <div class="board" id="board" role="tabpanel" aria-live="polite"></div>
+    <div class="menu-foot">
+      <span>Informații despre alergeni: întreabă la tejghea. Prețurile pot fi actualizate de Nais.</span>
+      <a class="btn btn-verde" href="https://naisfood.ro/meniu">Pune în coș pe naisfood.ro</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LOCUL ========== -->
+<section id="locul">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><span class="k">Locul</span><h2>Intri, comanzi,<br>te așezi.</h2></div>
+      <p>Tejghea cu perete verde, ecranul cu meniul deasupra și mese pentru o pauză scurtă între cursuri sau la prânz.</p>
+    </div>
+    <div class="place">
+      <figure class="p1 rv"><img src="media/interior-bar.webp" alt="Tejgheaua Nais: vitrine, rotisorul, frigiderul cu băuturi și ecranul cu meniul" loading="lazy" width="1080" height="1080" onerror="this.remove()"><figcaption>Tejgheaua și ecranul cu meniul</figcaption></figure>
+      <figure class="p2 rv d1"><img src="media/interior-verde.webp" alt="Peretele verde al tejghelei Nais și podeaua din terrazzo" loading="lazy" width="1080" height="1080" onerror="this.remove()"><figcaption>Peretele verde</figcaption></figure>
+      <figure class="p3 rv d2"><img src="media/interior-mese.webp" alt="Masă rotundă cu scaune în sala Nais" loading="lazy" width="1080" height="1080" onerror="this.remove()"><figcaption>Mese pe loc</figcaption></figure>
+      <div class="txt rv">
+        <h3>De ce vin oamenii înapoi</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Carne de pui și vită gătită zilnic, după rețeta casei.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Legume tăiate în fiecare dimineață.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Sosurile, inclusiv sosul nais, sunt făcute în casă.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Plată la livrare sau cu cardul.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RECENZII ========== -->
+<section id="recenzii" style="padding-top:0">
+  <div class="wrap rev">
+    <div class="score rv">
+      <b>4,9</b>
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <span>47 de recenzii pe Google</span>
+    </div>
+    <div class="quotes">
+      <blockquote class="rv">Una dintre cele mai bune shaorme mâncate în ultima vreme: carne fragedă, bine condimentată, ingrediente echilibrate.<span>Ideea generală din recenziile publice</span></blockquote>
+      <blockquote class="rv d1">Gust foarte bun, prețuri accesibile și un local frumos.<span>Ideea generală din recenziile publice</span></blockquote>
+      <blockquote class="rv d2">Personal de nota 10, mulți o numesc cea mai bună shaorma din Iași.<span>Ideea generală din recenziile publice</span></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROGRAM ========== -->
+<section id="program" style="padding-top:0">
+  <div class="wrap visit">
+    <div class="vcard rv">
+      <h3>Hai la Nais în Copou</h3>
+      <table class="hours" id="hours" aria-label="Programul Nais">
+        <tr data-d="1"><td>Luni</td><td>08:00–19:00</td></tr>
+        <tr data-d="2"><td>Marți</td><td>08:00–19:00</td></tr>
+        <tr data-d="3"><td>Miercuri</td><td>08:00–19:00</td></tr>
+        <tr data-d="4"><td>Joi</td><td>08:00–19:00</td></tr>
+        <tr data-d="5"><td>Vineri</td><td>08:00–19:00</td></tr>
+        <tr data-d="6"><td>Sâmbătă</td><td>09:00–14:00</td></tr>
+        <tr data-d="0"><td>Duminică</td><td>Închis</td></tr>
+      </table>
+      <div class="vrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><span>Livrare luni–vineri, 09:00–17:00, acasă, la birou sau la cămin, în Copou și pe o rază de 5 km.</span></div>
+      <div class="vrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Șoseaua Ștefan cel Mare și Sfânt 20, Copou, Iași</span></div>
+      <div class="vrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+40758620609">0758 620 609</a></div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px">
+        <a class="btn btn-verde" href="https://naisfood.ro/meniu">Comandă online</a>
+        <a class="btn btn-alb" href="https://www.google.com/maps/search/?api=1&amp;query=Nais+Șoseaua+Ștefan+cel+Mare+și+Sfânt+20+Iași">Deschide în hărți</a>
+      </div>
+    </div>
+    <div class="map rv d1">
+      <iframe title="Harta: Nais, Șoseaua Ștefan cel Mare și Sfânt 20, Iași" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%C8%98oseaua+%C8%98tefan+cel+Mare+%C8%99i+Sf%C3%A2nt+20,+Ia%C8%99i&amp;output=embed"></iframe>
+    </div>
+  </div>
+</section>
+</main>
+
+<a class="dock" id="dock" href="https://naisfood.ro/meniu" aria-label="Shaorma arăbească, doar 37 lei. Comandă acum.">
+  <span class="mini"><svg viewBox="0 0 100 100" aria-hidden="true"><polygon fill="#2BD45F" stroke="#fff" stroke-width="4" points="50,2 59,22 80,12 76,35 98,40 80,55 92,74 69,74 66,97 50,82 34,97 31,74 8,74 20,55 2,40 24,35 20,12 41,22"/></svg><b>37</b></span>
+  <span class="t"><small>Doar 37 lei</small><strong>Shaorma arăbească</strong></span>
+  <span class="go">Comandă</span>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Nais · shaorma și bunătăți</h4>
+      <p>Shaorma la lipie, la farfurie și la pită, făcută zilnic în Copou, Iași.</p>
+      <p style="margin-top:10px"><a href="https://www.facebook.com/naisfood">Facebook</a> · <a href="https://www.instagram.com/naisfood">Instagram</a></p>
+    </div>
+    <div>
+      <h4>Program</h4>
+      <p>Luni–vineri 08:00–19:00<br>Sâmbătă 09:00–14:00<br>Duminică închis</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Șoseaua Ștefan cel Mare și Sfânt 20, Iași<br><a href="tel:+40758620609">0758 620 609</a><br><a href="https://naisfood.ro/">naisfood.ro</a></p>
+    </div>
+    <div class="legal">
+      <span>© 2026 Nais · FOOD BASKET MAG SRL · CUI 46249086 · J2022001955224</span>
+      <span class="anpc"><a href="https://anpc.ro/ce-este-sal/">ANPC · SAL</a><a href="https://ec.europa.eu/consumers/odr">SOL · Soluționarea online a litigiilor</a></span>
+      <span>Propunere realizată de Pacheco Studios · <a href="https://ro.pachecost.com">ro.pachecost.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<noscript><style>.intro{display:none}.rv,.hero .seq,.hero .vitrina,.hero .sticker{opacity:1!important;transform:none!important}</style></noscript>
+
+<script>
+(function(){
+  var root=document.documentElement, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- intrare: 2–3 s cu logo-ul de pe fațadă, apoi pagina ---- */
+  var intro=document.getElementById('intro'), v=document.getElementById('introVideo'), done=false;
+  function finish(){ if(done)return; done=true; intro.classList.add('gone'); root.classList.remove('intro-on'); document.body.classList.add('ready'); setTimeout(function(){intro.remove()},700); }
+  root.classList.add('intro-on');
+  if(reduce){ intro.classList.add('novideo'); setTimeout(finish,900); }
+  else{
+    var base=(innerWidth/innerHeight<1)?'media/intro-4x5':'media/intro-16x9';
+    v.src=base+(v.canPlayType('video/mp4; codecs="avc1.640028"')?'.mp4':'.webm'); v.addEventListener('ended',finish); v.addEventListener('error',function(){intro.classList.add('novideo')});
+    var p=v.play(); if(p&&p.catch)p.catch(function(){intro.classList.add('novideo')});
+    setTimeout(finish,3000);
+  }
+  document.getElementById('skipIntro').addEventListener('click',finish);
+
+  /* ---- nav ---- */
+  var nav=document.getElementById('nav'), burger=document.getElementById('burger');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>10)},{passive:true});
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  document.querySelectorAll('#menuNav a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')})});
+
+  /* ---- deschis acum (ora din Iași) ---- */
+  var H={1:[8,19],2:[8,19],3:[8,19],4:[8,19],5:[8,19],6:[9,14],0:null};
+  try{
+    var parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Bucharest',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    var wd={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[parts.find(function(x){return x.type==='weekday'}).value];
+    var h=+parts.find(function(x){return x.type==='hour'}).value, m=+parts.find(function(x){return x.type==='minute'}).value, t=h+m/60;
+    var row=document.querySelector('#hours tr[data-d="'+wd+'"]'); if(row)row.classList.add('today');
+    var pill=document.getElementById('openPill'), sp=pill.querySelector('span'), today=H[wd];
+    if(today&&t>=today[0]&&t<today[1]){pill.classList.add('on');sp.textContent='Deschis acum · până la '+today[1]+':00'}
+    else{var nd=wd,k=0;do{nd=(nd+1)%7;k++}while(!H[nd]&&k<7);var nm=['duminică','luni','marți','miercuri','joi','vineri','sâmbătă'];
+      sp.textContent=(today&&t<today[0])?'Deschidem azi la '+String(today[0]).padStart(2,'0')+':00':'Închis · deschidem '+nm[nd]+' la '+String(H[nd][0]).padStart(2,'0')+':00'}
+  }catch(e){}
+
+  /* ---- autocolantul fix după herói ---- */
+  var dock=document.getElementById('dock'), hero=document.querySelector('.hero');
+  new IntersectionObserver(function(e){dock.classList.toggle('show',!e[0].isIntersecting)},{threshold:0.05}).observe(hero);
+
+  /* ---- revelare ---- */
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  /* ---- cardul cu ștampile ---- */
+  var st=[].slice.call(document.querySelectorAll('#stamps .stamp')), note=document.getElementById('stampsNote');
+  st.forEach(function(b,i){b.addEventListener('click',function(){
+    var n=(st[i].classList.contains('on')&&!(st[i+1]&&st[i+1].classList.contains('on')))?i:i+1;
+    st.forEach(function(s,j){var on=j<n;s.classList.toggle('on',on);s.setAttribute('aria-pressed',on)});
+    note.textContent=n===8?'Card plin: a opta shaorma la lipie e gratis.':n+' din 8. Încă '+(8-n)+(8-n===1?' comandă':' comenzi')+' și a opta e gratis.';
+  })});
+
+  /* ---- câți sunteți ---- */
+  var P={
+    1:{nm:'Combo Pui',ds:'Shaorma de pui la lipie, cartofi pai și Cola sau Fanta.',p:45,s:50},
+    2:{nm:'Combo Duo',ds:'Shaorma de pui și shaorma mix la lipie, o porție de cartofi pai, o Cola și o Fanta.',p:84,s:92},
+    3:{nm:'Combo Duo + Combo Pui',ds:'Duo pentru doi și încă un Combo Pui pentru al treilea.',p:129,s:142},
+    4:{nm:'Combo Gașcă',ds:'2 shaorma de pui și 2 mix la lipie, 2 porții de cartofi pai, 2 Cola și 2 Fanta.',p:174,s:184},
+    6:{nm:'Combo Gașcă + Combo Duo',ds:'Gașca pentru patru și un Duo pentru încă doi.',p:258,s:276}
+  };
+  var out=document.getElementById('partyOut');
+  function show(n){var x=P[n];out.innerHTML='<span class="nm">'+x.nm+'</span><span class="ds">'+x.ds+'</span><span class="px"><b>'+x.p+' lei</b><s>separat '+x.s+' lei</s><em>economisești '+(x.s-x.p)+' lei</em></span><a class="btn btn-verde" style="align-self:flex-start;margin-top:10px" href="https://naisfood.ro/meniu">Comandă combo-ul</a>';}
+  document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.seg button').forEach(function(o){o.setAttribute('aria-pressed',o===b)});show(b.dataset.n)})});
+  show(1);
+
+  /* ---- meniul ---- */
+  var M=[
+   {c:'La lipie',i:[
+     ['Shaorma Pui','Sos nais, sos de usturoi, pui rotisat, sos de rodie, cartofi prăjiți, varză, ceapă sumac, castraveți murați, roșii',30,'Cea mai vândută'],
+     ['Shaorma Vită','Sos de usturoi, vită rotisată, cartofi prăjiți, varză, ceapă sumac, castraveți murați, roșii',32],
+     ['Shaorma Mix','Pui rotisat și vită, sos de usturoi, cartofi prăjiți, ceapă sumac roșie, varză, castraveți murați, roșii',32],
+     ['Shaorma Cheese','Sos nais, sos de usturoi, pui rotisat, sos cheddar, mozzarella, cheddar, cartofi prăjiți, ceapă roșie, castraveți murați, roșii',32],
+     ['Shaorma Vegetariană','Humus, ulei de măsline, salată iceberg, falafel, roșii, ceapă, sos de rodii, pătrunjel',32]]},
+   {c:'La farfurie',i:[
+     ['Shaorma Arăbească','Pită coaptă, pui, pătrunjel, roșii, ceapă, salată iceberg, cartofi prăjiți, sos de usturoi, sos nais, sos dulce',37,'Oferta de pe geam'],
+     ['Shaorma Pui (farfurie)','Sos nais, sos de usturoi, pui rotisat, cartofi prăjiți, varză, ceapă, castraveți murați, roșii',35],
+     ['Shaorma Mix (farfurie)','Lipie, sos nais, sos de usturoi, pui rotisat, vită, cartofi prăjiți, varză, ceapă, castraveți murați, roșii',35],
+     ['Meniu Crispy','Crispy de pui, cartofi prăjiți, sos de usturoi, ketchup, maioneză, salată',35],
+     ['Shaorma Cheese (farfurie)','Sos nais, sos de usturoi, pui rotisat, sos cheddar, mozzarella, cheddar, cartofi prăjiți, ceapă roșie, castraveți murați, roșii',37],
+     ['Shaorma Vegetariană (farfurie)','Pită, humus, ulei de măsline, salată, mix de semințe, iceberg, falafel, roșii, ceapă, sos de rodii, pătrunjel',32]]},
+   {c:'Combouri',i:[
+     ['Combo Pită','Pită Pui Nais, cartofi pai și limonadă Nais sau un suc',38,'−5 lei',43],
+     ['Combo Farfurie','Shaorma de pui la farfurie și un suc la alegere',42,'−3 lei',45],
+     ['Combo Pui','Shaorma de pui la lipie, cartofi pai și Cola sau Fanta',45,'−5 lei',50],
+     ['Combo Mix','Shaorma mix la lipie, cartofi pai și Cola sau Fanta',47,'−5 lei',52],
+     ['Combo Duo','Pentru doi: shaorma de pui și mix, o porție de cartofi pai, o Cola și o Fanta',84,'−8 lei',92],
+     ['Combo Gașcă','Pentru patru: 2 shaorma de pui și 2 mix, 2 porții de cartofi pai, 2 Cola și 2 Fanta',174,'−10 lei',184]]},
+   {c:'La pită',i:[
+     ['Pită Pui Nais','Sos nais, sos de usturoi, pui rotisat, sos de rodie, varză, ceapă sumac, castraveți murați, roșii',26],
+     ['Pită Vită Nais','Sos nais, sos de usturoi, vită rotisată, sos de rodie, varză, ceapă sumac, castraveți murați, roșii',28],
+     ['Pită Vegetariană','Iceberg, falafel, sos nais, ceapă sumac, roșii, humus, pătrunjel',25]]},
+   {c:'Din mers',i:[
+     ['Sandwich Pui','Pită, șuncă de pui, roșii, maioneză, ketchup, cartofi prăjiți',17],
+     ['Sandwich Pastrami','Pită, mușchi file, roșii, maioneză, ketchup, cartofi prăjiți',17],
+     ['Sandwich Salam','Pită, salam franțuzesc, roșii, maioneză, ketchup, cartofi prăjiți',15],
+     ['Pizza la felie','Diverse sortimente',9],
+     ['Cartofi pai','Cartofi pai crocanți',10]]},
+   {c:'Băuturi și sosuri',i:[
+     ['Cafea Nais','',5],['Ice Tea Nais','',7],['Limonadă Nais','Limonadă proaspătă de casă',7],['Apă plată sau minerală','',7],['Coca-Cola','',10],['Fanta','',10],
+     ['Sos extra','Usturoi, maioneză, maioneză picantă, ketchup, cocktail',5]]}
+  ];
+  var tabs=document.getElementById('tabs'), board=document.getElementById('board');
+  function fmt(n){return n.toFixed(2).replace('.',',').replace(',00','')}
+  function render(k){
+    board.innerHTML=M[k].i.map(function(x){
+      var hl=x[3]==='Oferta de pe geam', badge=x[3]?'<span class="badge'+(x[3]==='Cea mai vândută'?' g':'')+'">'+x[3]+'</span>':'';
+      var back=(x[2]*0.05).toFixed(2).replace('.',',');
+      return '<div class="item'+(hl?' hl':'')+'"><h3>'+x[0]+' '+badge+'</h3>'+(x[1]?'<p>'+x[1]+'</p>':'<p></p>')+
+        '<div class="pr"><b>'+x[2]+'<small>lei</small></b>'+(x[4]?'<s>separat '+x[4]+' lei</s>':'')+'<i>'+back+' lei înapoi</i></div></div>';
+    }).join('');
+    [].forEach.call(tabs.children,function(b,j){b.setAttribute('aria-selected',j===k);b.tabIndex=j===k?0:-1});
+  }
+  M.forEach(function(g,k){var b=document.createElement('button');b.type='button';b.role='tab';b.textContent=g.c;b.addEventListener('click',function(){render(k)});
+    b.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=(k+(e.key==='ArrowRight'?1:-1)+M.length)%M.length;render(n);tabs.children[n].focus()}});tabs.appendChild(b)});
+  render(0);
+})();
+</script>
+</body>
+</html>
