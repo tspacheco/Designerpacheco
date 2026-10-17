@@ -31,7 +31,7 @@
     "addressCountry": "PT"
   },
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"], "opens": "12:00", "closes": "15:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"], "opens": "12:00", "closes": "15:00" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Friday","Saturday","Sunday"], "opens": "19:00", "closes": "22:30" }
   ]
 }
@@ -172,6 +172,7 @@ p{margin:0 0 1em}
 .estado i{width:10px;height:10px;border-radius:50%;background:var(--cinza);flex:none}
 .estado.aberto i{background:var(--aberto);box-shadow:0 0 0 0 rgba(46,125,79,.5);animation:pulso 2.4s infinite}
 .estado.fechado i{background:var(--fechado)}
+.estado.reserva i{background:var(--aberto)}
 @keyframes pulso{0%{box-shadow:0 0 0 0 rgba(46,125,79,.45)}70%{box-shadow:0 0 0 9px rgba(46,125,79,0)}100%{box-shadow:0 0 0 0 rgba(46,125,79,0)}}
 .nav .btn{min-height:44px;padding:0 18px;font-size:.95rem}
 .burger{display:none;margin-left:auto;width:48px;height:48px;border:0;background:transparent;border-radius:12px;cursor:pointer;position:relative}
@@ -245,7 +246,8 @@ p{margin:0 0 1em}
 .dia-msg{font-size:1.05rem;font-weight:700;color:var(--tinta);display:flex;align-items:center;gap:10px}
 .dia-msg i{width:11px;height:11px;border-radius:50%;background:var(--cinza);flex:none}
 .dia[data-estado="aberto"] .dia-msg i{background:var(--aberto);animation:pulso 2.4s infinite}
-.dia[data-estado="fechado"] .dia-msg i,.dia[data-estado="folga"] .dia-msg i{background:var(--fechado)}
+.dia[data-dot="verde"] .dia-msg i{background:var(--aberto)}
+.dia[data-dot="vermelho"] .dia-msg i{background:var(--fechado)}
 .fita{position:relative;height:58px;border-radius:12px;background:repeating-linear-gradient(135deg,var(--cal-2) 0 8px,#F5F3EE 8px 16px);overflow:visible}
 .fita .seg{position:absolute;top:0;bottom:0;border-radius:10px;background:var(--anil);transform-origin:left;display:flex;align-items:center;justify-content:center;color:#fff;font:700 .9rem/1 var(--corpo);gap:8px;overflow:hidden}
 .fita .seg::before{content:"";position:absolute;inset:auto 0 0 0;height:5px;background:var(--barra)}
@@ -442,9 +444,9 @@ p{margin:0 0 1em}
 /* barra fixa no telemóvel */
 .barra-movel{display:none}
 @media (max-width:760px){
-  .barra-movel{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(248,247,243,.97);border-top:1px solid var(--linha);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+  .barra-movel{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(248,247,243,.97);border-top:1px solid var(--linha);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
   .barra-movel .btn{min-height:48px;padding:0 12px;font-size:.95rem}
-  .barra-movel .estado{justify-content:center;font-size:.85rem}
+  .barra-movel .estado{justify-content:center;font-size:.85rem;white-space:normal;text-align:left;line-height:1.15}
   body{padding-bottom:72px}
 }
 
@@ -599,11 +601,30 @@ main{padding-top:72px}
   .heroi-bg img{transform:none;transition:none}
 }
 .pd-faixa{padding:clamp(34px,5vw,56px) 0}
-.pd-f{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--linha);border-left:8px solid var(--barra);border-radius:16px;padding:clamp(18px,3vw,28px) clamp(20px,3vw,34px)}
-.pd-f .eti{margin-bottom:8px}
+.pd-f{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,48px);align-items:center;background:#fff;border:1px solid var(--linha);border-left:8px solid var(--barra);border-radius:18px;padding:clamp(16px,2.4vw,26px) clamp(18px,3vw,34px) clamp(16px,2.4vw,26px) clamp(16px,2.4vw,26px);box-shadow:0 24px 40px -34px rgba(28,31,38,.5)}
+.pd-foto{aspect-ratio:16/10}
+.pd-foto img{object-position:72% 50%}
+.pd-f .eti{margin-bottom:10px}
+.pd-p{color:var(--cinza);font-size:1.08rem;margin:12px 0 22px;max-width:40ch}
+@media (max-width:760px){.pd-f{grid-template-columns:1fr}}
 .pd-t{font:700 clamp(1.4rem,3vw,2rem)/1.15 var(--display);color:var(--anil);margin:0}
 .fam .duo-txt p{color:#C9D3E3}
 .pd-sec{padding-top:0}
+.dia-g{align-items:center}
+.fam{padding:0;overflow:hidden}
+.fam-g{display:grid;grid-template-columns:1.55fr 1fr;min-height:clamp(480px,66vh,720px)}
+.fam-foto{position:relative;margin:0;overflow:hidden}
+.fam-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.08);transition:transform 2.4s var(--ease)}
+.fam-foto.vis img{transform:scale(1)}
+.fam-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,50,94,0) 62%,var(--anil-esc) 100%),linear-gradient(0deg,rgba(14,28,52,.35),rgba(14,28,52,0) 40%)}
+.fam-txt{align-self:center;padding:clamp(40px,6vw,84px) max(24px,calc((100vw - 1180px)/2)) clamp(40px,6vw,84px) clamp(8px,2vw,28px)}
+.fam-txt p:not(.eti){color:#C9D3E3;font-size:1.1rem}
+.fam-txt .sec-t{margin-bottom:22px}
+@media (max-width:980px){.fam-g{grid-template-columns:1fr;min-height:0}.fam-foto{aspect-ratio:1156/900}.fam-foto::after{background:linear-gradient(180deg,rgba(20,50,94,0) 60%,var(--anil-esc) 100%)}.fam-txt{padding:8px 24px 52px}}
+.magda{margin:18px 0 24px;padding:12px 16px;border-left:5px solid var(--barra);background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;font-size:1.05rem;color:#fff}
+.magda b{color:#F3C766}
+.magda-claro{background:var(--cal);color:var(--tinta);margin-top:20px}
+.magda-claro b{color:var(--anil)}
 </style>
 </head>
 <body>
@@ -678,17 +699,17 @@ main{padding-top:72px}
       <div class="dia rv" data-dia aria-labelledby="dia-t">
         <div class="dia-top">
           <h2 class="dia-t" id="dia-t">O dia na casa</h2>
-          <p class="dia-msg" role="status" aria-live="polite"><i></i><span data-dia-msg>Almoço das 12:00 às 15:30 · jantar das 19:00 às 22:30</span></p>
+          <p class="dia-msg" role="status" aria-live="polite"><i></i><span data-dia-msg>Almoço das 12:00 às 15:00 · jantar das 19:00 às 22:30</span></p>
         </div>
         <div class="fita" aria-hidden="true">
-          <div class="seg" style="left:29.41%;width:20.59%">Almoço <small>12–15:30</small></div>
+          <div class="seg" style="left:29.41%;width:17.65%">Almoço <small>12–15</small></div>
           <div class="seg" style="left:70.59%;width:20.59%">Jantar <small>19–22:30</small></div>
           <div class="agora" data-agora hidden><span>agora</span></div>
         </div>
-        <div class="horas" aria-hidden="true"><span style="left:0">07:00</span><span style="left:29.41%">12:00</span><span style="left:50%">15:30</span><span style="left:70.59%">19:00</span><span style="left:91.18%">22:30</span><span style="left:100%">24:00</span></div>
+        <div class="horas" aria-hidden="true"><span style="left:0">07:00</span><span style="left:29.41%">12:00</span><span style="left:47.06%">15:00</span><span style="left:70.59%">19:00</span><span style="left:91.18%">22:30</span><span style="left:100%">24:00</span></div>
         <div class="fases">
           <div><b>Manhã</b>A cozinha começa: sopa, panelas, o prato do dia.</div>
-          <div><b>Almoço</b>Das 12:00 às 15:30.</div>
+          <div><b>Almoço</b>Das 12:00 às 15:00.</div>
           <div><b>Tarde</b>Mesa posta outra vez.</div>
           <div><b>Jantar</b>Das 19:00 às 22:30.</div>
           <div><b>Noite</b>Quem fica, dorme cá.</div>
@@ -708,18 +729,23 @@ main{padding-top:72px}
   <section class="sec pd-faixa">
     <div class="lat">
       <div class="pd-f rv">
-        <div><p class="eti">Pratos do dia</p><p class="pd-t">Todos os dias, outros pratos.</p></div>
-        <a class="btn btn-anil" href="tel:+351289793606"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Perguntar os de hoje</a>
+        <div class="pd-foto foto-barra"><img src="media/ementa-do-dia.webp" alt="A ementa do dia do Restaurante J.J, escrita à mão, com os pratos e os preços" loading="lazy" width="1600" height="900" onerror="this.remove()"></div>
+        <div class="pd-txt">
+          <p class="eti">Pratos do dia</p>
+          <p class="pd-t">Todos os dias, outros pratos.</p>
+          <p class="pd-p">A ementa escreve-se à mão e muda todos os dias. Pergunte quais são os de hoje.</p>
+          <a class="btn btn-anil" href="tel:+351289793606"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Perguntar os de hoje</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="sec escuro fam">
-    <div class="lat duo">
-      <div class="duo-foto rv">
-        <div class="foto-barra" style="aspect-ratio:1156/996"><img src="media/familia.webp" alt="Três pessoas da equipa do J.J ao balcão, a sorrir, com dois jarros de sangria à frente" loading="lazy" width="1156" height="996" onerror="this.remove()"></div>
-      </div>
-      <div class="duo-txt rv d1">
+  <section class="escuro fam">
+    <div class="fam-g">
+      <figure class="fam-foto rv">
+        <img src="media/familia.webp" alt="Três pessoas da equipa do J.J ao balcão, a sorrir, com dois jarros de sangria à frente" loading="lazy" width="2312" height="1992" onerror="this.remove()">
+      </figure>
+      <div class="fam-txt rv d1">
         <p class="eti">A casa</p>
         <h2 class="sec-t">Aqui trabalha-se em Família.</h2>
         <p>O J.J é uma casa de família desde 1985. Quem o recebe à porta, quem serve à mesa e quem trata da cozinha trabalha lado a lado, todos os dias. Venha almoçar, jantar ou ficar.</p>
@@ -778,7 +804,6 @@ main{padding-top:72px}
         <p class="eti">Todos os dias, outros pratos</p>
         <h2 class="sec-t">Pratos do dia</h2>
         <p class="pg-lead" style="margin-bottom:26px">A ementa do dia escreve-se à mão e muda todos os dias: uma panela, carnes na grelha e o peixe que chegou. Este foi um desses dias.</p>
-        <div class="foto-barra" style="aspect-ratio:16/10"><img src="media/ementa-do-dia.webp" alt="A ementa do dia do Restaurante J.J, escrita à mão, com os pratos e os preços" loading="lazy" width="1600" height="900" onerror="this.remove()" style="object-position:78% 50%"></div>
       </div>
       <div class="quadro rv d1" aria-labelledby="quadro-t">
         <div class="quadro-cab"><h3 id="quadro-t">Pratos do dia</h3></div>
@@ -813,6 +838,7 @@ main{padding-top:72px}
         <p class="eti">Residencial</p>
         <h2 class="sec-t">Jante cá. Durma cá.</h2>
         <p>Além do restaurante, a casa tem quartos: simples, muito limpos e confortáveis. Quartos, rooms, chambres, Zimmer: recebemos em português, espanhol, inglês, alemão e francês.</p>
+        <p class="magda"><b>Fale com a Magda</b> que ela tratará da sua reserva.</p>
         <a class="lig" href="#/quartos">Ver os quartos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -840,7 +866,7 @@ main{padding-top:72px}
     <div class="lat contacto-faixa">
       <div class="ct-b rv"><small>Reservas</small><a class="ct-tel" href="tel:+351289793606">289 793 606</a><p style="margin-top:12px;color:var(--cinza)">Chamada para a rede fixa nacional.<br>Telemóvel: <a href="tel:+351918940674">918 940 674</a> (rede móvel nacional).</p></div>
       <div class="ct-b rv d1"><small>Onde</small><p>Estrada Nacional 125, Murteira<br>8700-122 Moncarapacho, Olhão</p><a class="lig" href="#/contacto">Mapa e direções <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="ct-b rv d2"><small>Quando</small><p>Almoço 12:00–15:30<br>Jantar 19:00–22:30<br>Fecha à quinta-feira</p></div>
+      <div class="ct-b rv d2"><small>Quando</small><p>Almoço 12:00–15:00<br>Jantar 19:00–22:30<br>Fecha à quinta-feira</p></div>
     </div>
   </section>
 </div>
@@ -854,7 +880,7 @@ main{padding-top:72px}
     <p class="pg-lead">O J.J abriu em 1985 na Murteira, à beira da EN125, e fez 40 anos em 2025. É restaurante e é residencial: quem passa na estrada para pelo almoço, quem dorme na casa janta na casa.</p>
   </section>
   <section class="lat cz-heroi">
-    <div class="foto-barra rv" style="aspect-ratio:1156/996"><img src="media/familia.webp" alt="Três pessoas da equipa do J.J ao balcão, a sorrir, com dois jarros de sangria à frente" loading="lazy" width="1156" height="996" onerror="this.remove()"></div>
+    <div class="foto-barra rv" style="aspect-ratio:1156/996"><img src="media/familia.webp" alt="Três pessoas da equipa do J.J ao balcão, a sorrir, com dois jarros de sangria à frente" loading="lazy" width="2312" height="1992" onerror="this.remove()"></div>
     <div class="rv d1">
       <p class="citacao">Quem cá vem uma vez reconhece a cozinha à segunda.</p>
       <p style="color:var(--cinza);margin-top:16px">Não é cozinha de tendências. É cozinha regional algarvia: panelas ao lume, peixe na grelha, e um prato do dia diferente todos os dias.</p>
@@ -984,10 +1010,10 @@ main{padding-top:72px}
   </section>
   <section class="lat" style="padding-bottom:20px">
     <div class="ev-gal">
-      <figure class="rv"><img src="media/evento-1.webp" alt="A sala do J.J com a mesa comprida posta e colunas de balões azuis e brancos" loading="lazy" onerror="this.remove()"><figcaption>Batizado na casa</figcaption></figure>
-      <figure class="rv d1"><img src="media/evento-2.webp" alt="Pormenor da mesa posta com pratos, copos e talheres, e o bolo ao fundo" loading="lazy" onerror="this.remove()"><figcaption>A mesa posta</figcaption></figure>
-      <figure class="rv d2"><img src="media/evento-3.webp" alt="A sala vista do outro lado, com azulejos e o armário dos troféus" loading="lazy" onerror="this.remove()"><figcaption>A sala, de lado a lado</figcaption></figure>
-      <figure class="rv d3"><img src="media/evento-4.webp" alt="A mesa comprida a toda a extensão da sala, com o arco ao fundo" loading="lazy" onerror="this.remove()"><figcaption>Mesa para toda a família</figcaption></figure>
+      <figure class="rv"><img src="media/evento-1.webp" alt="A sala do J.J com a mesa comprida posta e colunas de balões azuis e brancos" loading="lazy" onerror="this.remove()"></figure>
+      <figure class="rv d1"><img src="media/evento-2.webp" alt="Pormenor da mesa posta com pratos, copos e talheres, e o bolo ao fundo" loading="lazy" onerror="this.remove()"></figure>
+      <figure class="rv d2"><img src="media/evento-3.webp" alt="A sala vista do outro lado, com azulejos e o armário dos troféus" loading="lazy" onerror="this.remove()"></figure>
+      <figure class="rv d3"><img src="media/evento-4.webp" alt="A mesa comprida a toda a extensão da sala, com o arco ao fundo" loading="lazy" onerror="this.remove()"></figure>
     </div>
   </section>
   <section class="sec">
@@ -1028,7 +1054,8 @@ main{padding-top:72px}
         <dt>Línguas</dt><dd>PT · ES · EN · DE · FR</dd>
         <dt>Restaurante</dt><dd>Na casa, almoço e jantar</dd>
       </dl>
-      <a class="btn btn-anil" style="width:100%;margin-top:22px" href="tel:+351289793606"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Perguntar disponibilidade</a>
+      <p class="magda magda-claro"><b>Fale com a Magda</b> que ela tratará da sua reserva.</p>
+      <a class="btn btn-anil" style="width:100%;margin-top:18px" href="tel:+351289793606"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Perguntar disponibilidade</a>
     </div>
   </section>
   <section class="lat" style="padding-bottom:90px">
@@ -1114,13 +1141,13 @@ main{padding-top:72px}
       <h3 style="font-size:1.4rem;margin-bottom:10px">Horário</h3>
       <table class="horario" data-horario>
         <tbody>
-          <tr data-d="1"><th scope="row">Segunda</th><td>12:00–15:30 · 19:00–22:30</td></tr>
-          <tr data-d="2"><th scope="row">Terça</th><td>12:00–15:30 · 19:00–22:30</td></tr>
-          <tr data-d="3"><th scope="row">Quarta</th><td>12:00–15:30 · 19:00–22:30</td></tr>
+          <tr data-d="1"><th scope="row">Segunda</th><td>12:00–15:00 · 19:00–22:30</td></tr>
+          <tr data-d="2"><th scope="row">Terça</th><td>12:00–15:00 · 19:00–22:30</td></tr>
+          <tr data-d="3"><th scope="row">Quarta</th><td>12:00–15:00 · 19:00–22:30</td></tr>
           <tr data-d="4" class="folga"><th scope="row">Quinta</th><td>Fechado</td></tr>
-          <tr data-d="5"><th scope="row">Sexta</th><td>12:00–15:30 · 19:00–22:30</td></tr>
-          <tr data-d="6"><th scope="row">Sábado</th><td>12:00–15:30 · 19:00–22:30</td></tr>
-          <tr data-d="0"><th scope="row">Domingo</th><td>12:00–15:30 · 19:00–22:30</td></tr>
+          <tr data-d="5"><th scope="row">Sexta</th><td>12:00–15:00 · 19:00–22:30</td></tr>
+          <tr data-d="6"><th scope="row">Sábado</th><td>12:00–15:00 · 19:00–22:30</td></tr>
+          <tr data-d="0"><th scope="row">Domingo</th><td>12:00–15:00 · 19:00–22:30</td></tr>
         </tbody>
       </table>
       <div class="ct-b" style="margin-top:34px"><small>Morada</small><p>Estrada Nacional 125, Murteira<br>8700-122 Moncarapacho, Olhão</p><p style="color:var(--cinza)">Na EN125, entre a Fuseta e Tavira. Estacionamento gratuito. GPS: 37.06956, −7.74714.</p></div>
@@ -1180,7 +1207,7 @@ main{padding-top:72px}
       </div>
       <div>
         <h3>Horário</h3>
-        <p>Almoço 12:00–15:30<br>Jantar 19:00–22:30<br>Fecha à quinta-feira</p>
+        <p>Almoço 12:00–15:00<br>Jantar 19:00–22:30<br>Fecha à quinta-feira</p>
       </div>
     </div>
     <div class="rp-base">
@@ -1195,7 +1222,7 @@ main{padding-top:72px}
   <a class="btn btn-anil" href="tel:+351289793606"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Ligar</a>
 </div>
 
-<noscript><div style="padding:24px;font-family:sans-serif;background:#fff"><p><strong>Restaurante Residencial J.J</strong> · Estrada Nacional 125, Murteira, 8700-122 Moncarapacho · Tel. 289 793 606 · Almoço 12:00–15:30, jantar 19:00–22:30, fecha à quinta-feira · <a href="https://www.livroreclamacoes.pt/inicio">Livro de Reclamações</a></p></div></noscript>
+<noscript><div style="padding:24px;font-family:sans-serif;background:#fff"><p><strong>Restaurante Residencial J.J</strong> · Estrada Nacional 125, Murteira, 8700-122 Moncarapacho · Tel. 289 793 606 · Almoço 12:00–15:00, jantar 19:00–22:30, fecha à quinta-feira · <a href="https://www.livroreclamacoes.pt/inicio">Livro de Reclamações</a></p></div></noscript>
 
 <script>
 (function(){
@@ -1204,7 +1231,7 @@ main{padding-top:72px}
   var WHATSAPP = '';
   var TEL = '+351289793606';
   /* Horário: [abre, fecha] em minutos. Quinta (4) = folga. */
-  var SERVICOS = [[12*60, 15*60+30], [19*60, 22*60+30]];
+  var SERVICOS = [[12*60, 15*60], [19*60, 22*60+30]];
   var FOLGA = 4;
   var DIAS = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
 
@@ -1305,7 +1332,7 @@ main{padding-top:72px}
     } else if (a.m < SERVICOS[0][0]){
       cls = 'fechado'; msg = 'A cozinha já está a trabalhar. Almoços a partir das 12:00.';
     } else if (a.m < SERVICOS[0][1]){
-      cls = 'aberto'; ab = true; msg = 'Aberto agora. Servimos almoços até às 15:30.';
+      cls = 'aberto'; ab = true; msg = 'Aberto agora. Servimos almoços até às 15:00.';
     } else if (a.m < SERVICOS[1][0]){
       cls = 'fechado'; msg = 'Entre o almoço e o jantar. O jantar começa às 19:00.';
     } else if (a.m < SERVICOS[1][1]){
@@ -1313,13 +1340,15 @@ main{padding-top:72px}
     } else {
       cls = 'fechado'; msg = amanha === FOLGA ? 'A cozinha já fechou. Amanhã é dia de descanso: voltamos sexta ao meio-dia.' : 'A cozinha já fechou. Amanhã servimos a partir das 12:00.';
     }
+    var noite = a.m < 8*60; /* da meia-noite às 8h: bola vermelha; o resto do dia, verde */
     document.querySelectorAll('[data-estado-txt]').forEach(function(el){
-      el.className = 'estado ' + (ab ? 'aberto' : 'fechado');
-      el.querySelector('span').textContent = ab ? 'Aberto agora' : (a.d === FOLGA ? 'Descanso hoje' : 'Fechado agora');
+      el.className = 'estado ' + (noite ? 'fechado' : (ab ? 'aberto' : 'reserva'));
+      el.querySelector('span').textContent = ab ? 'Estamos abertos' : 'Reserve a sua mesa';
     });
     var dia = document.querySelector('[data-dia]');
     if (dia){
       dia.dataset.estado = cls;
+      dia.dataset.dot = noite ? 'vermelho' : 'verde';
       dia.querySelector('[data-dia-msg]').textContent = msg;
       var ag = dia.querySelector('[data-agora]');
       var pos = (a.m - 7*60) / (17*60);
