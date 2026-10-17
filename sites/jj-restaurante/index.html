@@ -610,6 +610,13 @@ main{padding-top:72px}
 .pd-t{font:700 clamp(1.4rem,3vw,2rem)/1.15 var(--display);color:var(--anil);margin:0}
 .fam .duo-txt p{color:#C9D3E3}
 .pd-sec{padding-top:0}
+.galeria.gp{grid-auto-flow:dense}
+.aval{max-width:640px}
+@media (max-width:980px){
+  .galeria.gp{grid-template-columns:1fr 1fr!important;grid-auto-rows:170px!important}
+  .galeria.gp figure{grid-column:span 1!important;grid-row:span 1!important}
+  .galeria.gp .g-l,.galeria.gp figure:last-child{grid-column:span 2!important}
+}
 .dia-g{align-items:center}
 .fam{padding:0;overflow:hidden}
 .fam-g{display:grid;grid-template-columns:1.55fr 1fr;min-height:clamp(480px,66vh,720px)}
@@ -640,8 +647,6 @@ main{padding-top:72px}
       <li><a href="#/ementa">Ementa</a></li>
       <li><a href="#/eventos">Eventos</a></li>
       <li><a href="#/quartos">Quartos</a></li>
-      <li><a href="#/galeria">Galeria</a></li>
-      <li><a href="#/avaliacoes">Avaliações</a></li>
       <li><a href="#/contacto">Contacto</a></li>
     </ul>
     <span class="estado" data-estado-txt><i></i><span>Horário</span></span>
@@ -655,8 +660,6 @@ main{padding-top:72px}
   <a href="#/ementa">Ementa</a>
   <a href="#/eventos">Eventos</a>
   <a href="#/quartos">Quartos</a>
-  <a href="#/galeria">Galeria</a>
-  <a href="#/avaliacoes">Avaliações</a>
   <a href="#/contacto">Reservas e contacto</a>
   <a class="btn btn-anil" href="tel:+351289793606">Ligar 289 793 606</a>
 </nav>
@@ -858,7 +861,6 @@ main{padding-top:72px}
         <a class="btn btn-anil" href="https://www.google.com/maps/place/Residencial+JJ.+Restaurante/@37.0693623,-7.7471121,17z/data=!4m6!3m5!1s0xd10004be9a18833:0xc32fc5288f8b50eb!8m2!3d37.0693623!4d-7.7471121!16s%2Fg%2F11ggn52prq?hl=pt-PT" target="_blank" rel="noopener">Ver no Google</a>
         <a class="btn btn-linha" href="https://search.google.com/local/writereview?placeid=ChIJM4ih6UsAEA0R61CLjyjFL8M" target="_blank" rel="noopener">Deixar a sua avaliação</a>
       </div>
-      <p style="margin-top:22px" class="rv"><a class="lig" href="#/avaliacoes">Ler mais sobre as avaliações <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
     </div>
   </section>
 
@@ -872,7 +874,7 @@ main{padding-top:72px}
 </div>
 
 <!-- ============ A CASA ============ -->
-<div class="pag" data-pag="casa" data-titulo="A casa · Restaurante Residencial J.J">
+<div class="pag" data-pag="casa" data-titulo="A casa e galeria · Restaurante Residencial J.J">
   <div class="lat migalhas"><a href="#/">Início</a> / A casa</div>
   <section class="lat pg-cab">
     <p class="eti">A casa</p>
@@ -888,35 +890,46 @@ main{padding-top:72px}
   </section>
 
   <section class="sec">
-    <div class="lat duo">
-      <div class="duo-txt rv">
-        <p class="eti">O que sai da cozinha</p>
-        <h2 class="sec-t">Pratos de panela e de grelha.</h2>
-        <ul class="lista-mao">
-          <li>Ensopado de cabrito</li>
-          <li>Bochechas de porco estufadas</li>
-          <li>Lombo de porco com cogumelos</li>
-          <li>Secretos de porco preto grelhados</li>
-          <li>Arroz de marisco</li>
-          <li>Cataplanas</li>
-          <li>Espetadas de gambas e de carne</li>
-          <li>Peixe na grelha</li>
-        </ul>
+    <div class="lat">
+      <p class="eti rv">A casa</p>
+      <h2 class="sec-t rv d1">Sala, esplanada e jardim.</h2>
+      <p class="pg-lead rv d2" style="margin-bottom:34px">Sala com azulejo e ar condicionado, esplanada à sombra das árvores para os dias bons. Estacionamento gratuito à porta, Wi-Fi grátis, entrada acessível e comida para levar.</p>
+      <div class="galeria gp">
+        <figure class="g-l rv"><img src="media/fachada.webp" alt="A casa do J.J vista da EN125" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="g-a rv d1"><img src="media/sala.webp" alt="A sala com azulejo, arcos e a vitrine ao fundo" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="rv d2"><img src="media/esplanada.webp" alt="A esplanada à sombra das árvores" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="rv"><img src="media/casa-esplanada-coberta.webp" alt="A esplanada coberta, com mesas postas e uma espetada à mesa" loading="lazy" onerror="this.remove()" style="object-position:50% 25%"></figure>
+        <figure class="rv d1"><img src="media/casa-sala-2.webp" alt="A sala vista da entrada, com mesas postas e copos" loading="lazy" onerror="this.remove()" style="object-position:50% 35%"></figure>
+        <figure class="rv d3"><img src="media/letreiro.webp" alt="O letreiro iluminado do J.J à noite, na EN125" loading="lazy" onerror="this.remove()" style="object-position:50% 45%"></figure>
       </div>
-      <div class="duo-foto rv d1">
-        <div class="foto-barra" style="background:linear-gradient(160deg,#E9D9B5,#C9A869)"><img src="media/espetada-carne.webp" alt="Espetadas de carne penduradas, prontas a servir" loading="lazy" width="900" height="1600" onerror="this.remove()"></div>
-      </div>
+      <p style="margin-top:26px" class="rv"><a class="lig" href="#/contacto">Reservar mesa <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
     </div>
   </section>
 
-  <section class="sec">
-    <div class="lat duo inv">
-      <div class="duo-foto rv"><div class="foto-barra" style="aspect-ratio:3/4"><img src="media/sala.webp" alt="A sala do J.J: azulejo, arcos, mesas postas e a vitrine ao fundo" loading="lazy" width="1200" height="1600" onerror="this.remove()"></div></div>
-      <div class="duo-txt rv d1">
-        <p class="eti">A casa</p>
-        <h2 class="sec-t">Sala, esplanada e jardim.</h2>
-        <p>Sala com azulejo e ar condicionado, esplanada à sombra das árvores para os dias bons. Estacionamento gratuito à porta, Wi-Fi grátis, entrada acessível e comida para levar.</p>
-        <a class="lig" href="#/contacto">Reservar mesa <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <section class="sec" style="padding-top:0">
+    <div class="lat">
+      <p class="eti rv">À mesa</p>
+      <h2 class="sec-t rv d1">Pratos de panela e de grelha.</h2>
+      <ul class="lista-mao rv">
+        <li>Ensopado de cabrito</li>
+        <li>Bochechas de porco estufadas</li>
+        <li>Lombo de porco com cogumelos</li>
+        <li>Secretos de porco preto grelhados</li>
+        <li>Arroz de marisco</li>
+        <li>Cataplanas</li>
+        <li>Espetadas de gambas e de carne</li>
+        <li>Peixe na grelha</li>
+      </ul>
+      <div class="galeria gp" style="margin-top:34px">
+        <figure class="g-l rv"><img src="media/peixe-grelhado.webp" alt="Peixe grelhado inteiro com batata, cenoura e ervilhas" loading="lazy" onerror="this.remove()"><figcaption>Peixe na grelha</figcaption></figure>
+        <figure class="g-a rv d1"><img src="media/espetada-gambas.webp" alt="Espetada de gambas pendurada" loading="lazy" onerror="this.remove()" style="object-position:50% 35%"><figcaption>Espetada de gambas</figcaption></figure>
+        <figure class="rv d2"><img src="media/ameijoas.webp" alt="Amêijoas com limão" loading="lazy" onerror="this.remove()"><figcaption>Amêijoas</figcaption></figure>
+        <figure class="rv"><img src="media/carne.webp" alt="Picanha grelhada com ananás, arroz e batata frita" loading="lazy" onerror="this.remove()" style="object-position:38% 50%"><figcaption>Picanha com ananás</figcaption></figure>
+        <figure class="rv d1"><img src="media/atum.webp" alt="Bife de atum grelhado com legumes" loading="lazy" onerror="this.remove()"><figcaption>Atum grelhado</figcaption></figure>
+        <figure class="rv d3"><img src="media/salmao.webp" alt="Salmão grelhado com legumes" loading="lazy" onerror="this.remove()"><figcaption>Salmão grelhado</figcaption></figure>
+        <figure class="g-l rv"><img src="media/prato-tacho.webp" alt="Tacho de barro com carne guisada e batata frita" loading="lazy" onerror="this.remove()"><figcaption>Do tacho de barro</figcaption></figure>
+        <figure class="rv d1"><img src="media/sardinhas.webp" alt="Sardinhas assadas com salada e limão" loading="lazy" onerror="this.remove()"><figcaption>Sardinhas assadas</figcaption></figure>
+        <figure class="rv d2"><img src="media/prato-lulas.webp" alt="Lulas grelhadas com batata frita" loading="lazy" onerror="this.remove()"><figcaption>Lulas grelhadas</figcaption></figure>
       </div>
     </div>
   </section>
@@ -1068,66 +1081,11 @@ main{padding-top:72px}
   </section>
 </div>
 
-<!-- ============ GALERIA ============ -->
-<div class="pag" data-pag="galeria" data-titulo="Galeria · Restaurante Residencial J.J">
-  <div class="lat migalhas"><a href="#/">Início</a> / Galeria</div>
-  <section class="lat pg-cab">
-    <p class="eti">Galeria</p>
-    <h2 class="pg-t" tabindex="-1">A casa, a sala e a mesa.</h2>
-  </section>
-  <section class="lat" style="padding-bottom:90px">
-    <div class="galeria">
-      <figure class="g-l rv"><img src="media/fachada.webp" alt="A casa do J.J vista da EN125" loading="lazy" onerror="this.remove()"><figcaption>A casa, na EN125</figcaption></figure>
-      <figure class="g-a rv d1"><img src="media/sala.webp" alt="A sala com azulejo e arcos" loading="lazy" onerror="this.remove()"><figcaption>A sala</figcaption></figure>
-      <figure class="rv"><img src="media/vitrine.webp" alt="A vitrine do peixe" loading="lazy" onerror="this.remove()"><figcaption>A vitrine do peixe</figcaption></figure>
-      <figure class="rv d1"><img src="media/dourada.webp" alt="Dourada grelhada" loading="lazy" onerror="this.remove()"><figcaption>Dourada na grelha</figcaption></figure>
-      <figure class="g-a rv d2"><img src="media/espetada-gambas.webp" alt="Espetada de gambas" loading="lazy" onerror="this.remove()" style="object-position:50% 30%"><figcaption>Espetada de gambas</figcaption></figure>
-      <figure class="rv"><img src="media/ameijoas.webp" alt="Amêijoas" loading="lazy" onerror="this.remove()"><figcaption>Amêijoas</figcaption></figure>
-      <figure class="rv d1"><img src="media/atum.webp" alt="Bife de atum grelhado" loading="lazy" onerror="this.remove()"><figcaption>Atum grelhado</figcaption></figure>
-      <figure class="g-l rv"><img src="media/esplanada.webp" alt="A esplanada à sombra das árvores" loading="lazy" onerror="this.remove()"><figcaption>A esplanada</figcaption></figure>
-      <figure class="g-a rv d1"><img src="media/sardinhas.webp" alt="Sardinhas assadas com salada e limão" loading="lazy" onerror="this.remove()"><figcaption>Sardinhas assadas</figcaption></figure>
-      <figure class="g-a rv d2"><img src="media/espetada-carne.webp" alt="Espetadas de carne" loading="lazy" onerror="this.remove()"><figcaption>Espetadas de carne</figcaption></figure>
-      <figure class="rv"><img src="media/salmao.webp" alt="Salmão grelhado" loading="lazy" onerror="this.remove()"><figcaption>Salmão grelhado</figcaption></figure>
-      <figure class="rv d1"><img src="media/jarro.webp" alt="O jarro de barro com o nome do restaurante" loading="lazy" onerror="this.remove()"><figcaption>O jarro da casa</figcaption></figure>
-      <figure class="g-l rv"><img src="media/letreiro.webp" alt="O letreiro iluminado à noite" loading="lazy" onerror="this.remove()" style="object-position:50% 45%"><figcaption>À noite, na estrada</figcaption></figure>
-    </div>
-  </section>
-</div>
-
-<!-- ============ AVALIAÇÕES ============ -->
-<div class="pag" data-pag="avaliacoes" data-titulo="Avaliações · Restaurante Residencial J.J">
-  <div class="lat migalhas"><a href="#/">Início</a> / Avaliações</div>
-  <section class="lat pg-cab">
-    <p class="eti">Avaliações</p>
-    <h2 class="pg-t" tabindex="-1">Gente da terra e gente de fora.</h2>
-    <p class="pg-lead">Portugueses, franceses, alemães, belgas: quem passa pela EN125 e quem volta todas as semanas.</p>
-  </section>
-  <section class="lat" style="padding-bottom:40px">
-    <div class="nota rv">
-      <p class="nota-d"><b>Mais de 400 avaliações no Google</b>O que mais se repete:</p>
-    </div>
-    <div class="temas">
-      <div class="tema rv"><h3>Comida caseira</h3><p>A palavra que mais aparece. Pratos típicos portugueses, como em casa.</p></div>
-      <div class="tema rv d1"><h3>Preço justo</h3><p>Boa relação entre o que se paga e o que vem para a mesa.</p></div>
-      <div class="tema rv d2"><h3>Peixe fresco</h3><p>Muita escolha, e o peixe do dia na ementa.</p></div>
-      <div class="tema rv"><h3>Serviço simpático</h3><p>Rápido, atento, e há quem fale francês com os clientes franceses.</p></div>
-      <div class="tema rv d1"><h3>Pratos típicos</h3><p>Cozinha portuguesa e algarvia, com o peixe do dia escolhido na vitrine.</p></div>
-      <div class="tema rv d2"><h3>Frequentado por locais</h3><p>Longe das armadilhas para turistas, dizem os visitantes.</p></div>
-    </div>
-  </section>
-  <section class="lat" style="padding-bottom:90px">
-    <div class="acoes rv">
-      <a class="btn btn-anil" href="https://www.google.com/maps/place/Residencial+JJ.+Restaurante/@37.0693623,-7.7471121,17z/data=!4m6!3m5!1s0xd10004be9a18833:0xc32fc5288f8b50eb!8m2!3d37.0693623!4d-7.7471121!16s%2Fg%2F11ggn52prq?hl=pt-PT" target="_blank" rel="noopener">Ver no Google</a>
-      <a class="btn btn-linha" href="https://search.google.com/local/writereview?placeid=ChIJM4ih6UsAEA0R61CLjyjFL8M" target="_blank" rel="noopener">Deixar a sua avaliação</a>
-    </div>
-  </section>
-</div>
-
 <!-- ============ CONTACTO ============ -->
 <div class="pag" data-pag="contacto" data-titulo="Reservas e contacto · Restaurante Residencial J.J">
   <div class="lat migalhas"><a href="#/">Início</a> / Reservas e contacto</div>
   <section class="lat pg-cab">
-    <p class="eti">Reservas e contacto</p>
+    <p class="eti">Reservas, contacto e avaliações</p>
     <h2 class="pg-t" tabindex="-1">Ligue, que a mesa fica guardada.</h2>
     <p class="pg-lead">Reservas por telefone para almoço, jantar e quartos. Arroz de marisco, cataplanas e grupos: diga com antecedência para a cozinha se preparar.</p>
   </section>
@@ -1189,7 +1147,16 @@ main{padding-top:72px}
       </form>
     </div>
   </section>
-  <section class="lat" style="padding-bottom:90px"></section>
+  <section class="lat" style="padding-bottom:90px">
+    <div class="aval rv">
+      <p class="eti">Avaliações</p>
+      <h2 class="sec-t">Esteve cá? Diga-nos como foi.</h2>
+      <div class="acoes" style="margin-top:22px">
+        <a class="btn btn-anil" href="https://www.google.com/maps/place/Residencial+JJ.+Restaurante/@37.0693623,-7.7471121,17z/data=!4m6!3m5!1s0xd10004be9a18833:0xc32fc5288f8b50eb!8m2!3d37.0693623!4d-7.7471121!16s%2Fg%2F11ggn52prq?hl=pt-PT" target="_blank" rel="noopener">Ver no Google</a>
+        <a class="btn btn-linha" href="https://search.google.com/local/writereview?placeid=ChIJM4ih6UsAEA0R61CLjyjFL8M" target="_blank" rel="noopener">Deixar a sua avaliação</a>
+      </div>
+    </div>
+  </section>
 </div>
 
 </main>
@@ -1244,6 +1211,7 @@ main{padding-top:72px}
   var primeira = true;
   function mostra(){
     var h = (location.hash || '').replace(/^#\/?/, '');
+    if (h === 'galeria') h = 'casa'; else if (h === 'avaliacoes') h = 'contacto';
     if (h.indexOf('em-') === 0) return; /* âncoras dentro da ementa */
     var alvo = pags.filter(function(p){ return p.dataset.pag === h; })[0] || pags[0];
     pags.forEach(function(p){ p.classList.toggle('ativa', p === alvo); });
