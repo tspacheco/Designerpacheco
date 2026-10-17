@@ -140,8 +140,6 @@ p{margin:0 0 1em}
 .salta:focus{top:12px}
 
 /* banner da apresentação */
-.pv-banner{background:var(--tinta);color:#F8F7F3;font:700 .72rem/1.3 var(--corpo);letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 14px}
-.pv-banner span{color:var(--barra)}
 
 /* selo a confirmar */
 .ac{display:inline-flex;align-items:center;gap:5px;font:700 .68rem/1 var(--corpo);letter-spacing:.06em;text-transform:uppercase;color:var(--barra-txt);background:#FBEFD3;border:1px dashed #D9A845;border-radius:99px;padding:4px 9px;vertical-align:middle;white-space:nowrap}
@@ -168,7 +166,7 @@ p{margin:0 0 1em}
 .marca-jj{font:700 1.7rem/1 var(--display);color:var(--anil);padding:6px 10px 4px;border:3px solid var(--barra);border-radius:10px;letter-spacing:-.02em}
 .marca-t{font:700 .7rem/1.25 var(--corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--cinza)}
 .nav-links{display:flex;gap:4px;margin-left:auto;list-style:none;padding:0;margin-block:0}
-.nav-links a{display:block;padding:10px 12px;border-radius:99px;text-decoration:none;font-weight:700;font-size:.95rem;color:var(--tinta);transition:background-color .2s,color .2s}
+.nav-links a{white-space:nowrap;display:block;padding:10px 12px;border-radius:99px;text-decoration:none;font-weight:700;font-size:.95rem;color:var(--tinta);transition:background-color .2s,color .2s}
 .nav-links a:hover{background:var(--cal-2)}
 .nav-links a[aria-current="page"]{color:var(--anil);background:var(--anil-claro)}
 .estado{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.85rem;color:var(--cinza);white-space:nowrap}
@@ -526,12 +524,87 @@ p{margin:0 0 1em}
   .js .heroi h1 em{--sx:1}
   .vapor{display:none}
 }
+
+/* ===== V3: herói imersivo, 40 anos, eventos ===== */
+.nav{position:fixed;left:0;right:0;top:0}
+main{padding-top:72px}
+.na-home main{padding-top:0}
+.na-home .nav:not(.scrolled):not(.menu-on){background:transparent}
+.na-home .nav:not(.scrolled):not(.menu-on) .marca-t,.na-home .nav:not(.scrolled):not(.menu-on) .nav-links a,.na-home .nav:not(.scrolled):not(.menu-on) .estado{color:#fff}
+.na-home .nav:not(.scrolled):not(.menu-on) .marca-jj{color:#fff}
+.na-home .nav:not(.scrolled):not(.menu-on) .nav-links a:hover{background:rgba(255,255,255,.16)}
+.na-home .nav:not(.scrolled):not(.menu-on) .nav-links a[aria-current="page"]{background:rgba(255,255,255,.2);color:#fff}
+.na-home .nav:not(.scrolled):not(.menu-on) .burger span{background:#fff}
+.nav.menu-on{background:var(--cal)}
+.heroi{padding:0;min-height:100vh;min-height:100svh;display:grid;align-content:end;overflow:hidden;background:var(--anil-esc);color:#fff;isolation:isolate;position:relative}
+.heroi-bg{position:absolute;inset:0;z-index:-2}
+.heroi-bg .fundo,.heroi-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.heroi-bg img{object-position:30% 55%;transform:scale(1.1);transition:transform 10s var(--ease)}
+.ini .heroi-bg img{transform:scale(1)}
+.heroi-vinheta{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,22,42,.5) 0,rgba(10,22,42,0) 62%),linear-gradient(180deg,rgba(14,28,52,.62) 0,rgba(14,28,52,0) 24%,rgba(14,28,52,.18) 42%,rgba(10,22,42,.9) 100%)}
+.heroi-corpo{padding-top:120px;padding-bottom:clamp(36px,8vh,88px)}
+.heroi-txt{max-width:700px}
+.heroi h1{font-size:clamp(2.5rem,6.4vw,5.6rem);line-height:.96;color:#fff}
+.heroi h1 .nome{color:#D6DEEB}
+.heroi h1 em{color:#F3C766}
+.heroi .km{color:#fff}
+.heroi .km b{background:#fff;color:var(--anil-esc)}
+.heroi .desde{color:#F3C766}
+.heroi-sub{color:#E3E9F2;max-width:48ch}
+.heroi-sub strong{color:#fff}
+.heroi .btn-linha{border-color:#fff;color:#fff}
+.heroi .btn-linha:hover{background:#fff;color:var(--anil-esc)}
+.dia-sec{padding:clamp(40px,6vw,72px) 0 0}
+.dia-sec .dia{margin-top:0}
+.quarenta{position:absolute;right:clamp(18px,5vw,72px);bottom:clamp(40px,10vh,110px);width:clamp(150px,15vw,208px);aspect-ratio:1;border-radius:50%;display:grid;place-content:center;text-align:center;background:rgba(14,28,52,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;transform:rotate(-6deg)}
+.quarenta svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform:rotate(-90deg)}
+.quarenta circle{fill:none;stroke:var(--barra);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.quarenta b{font:700 clamp(3.4rem,6vw,5.2rem)/.9 var(--display);font-variant-numeric:tabular-nums}
+.quarenta span{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--mao);color:#F3C766;margin-top:4px}
+.js .quarenta{opacity:0;transform:rotate(-6deg) scale(.55)}
+.js .quarenta span{opacity:0;transform:translateY(8px)}
+.q-on.quarenta{opacity:1;transform:rotate(-6deg) scale(1);transition:opacity .5s var(--ease),transform .9s cubic-bezier(.34,1.56,.64,1)}
+.q-on.quarenta circle{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s var(--ease) .1s}
+.q-on.quarenta span{opacity:1;transform:none;transition:opacity .6s var(--ease) 1.2s,transform .6s var(--ease) 1.2s}
+.js .heroi .heroi-eti{opacity:0;transform:translateY(14px)}
+.ini .heroi .heroi-eti{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.duo.so-txt{grid-template-columns:1fr}
+.duo.so-txt .duo-txt{max-width:720px}
+.cz-heroi.so-txt{grid-template-columns:1fr}
+.ev-par{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,22px);align-items:start}
+.ev-par figure{margin:0;border-radius:14px;overflow:hidden;aspect-ratio:3/4;background:linear-gradient(160deg,#E9D9B5,#C9A869);box-shadow:0 24px 40px -30px rgba(28,31,38,.5)}
+.ev-par figure:nth-child(2){margin-top:44px}
+.ev-par img,.ev-gal img{width:100%;height:100%;object-fit:cover;display:block}
+.ev-nota{font-size:1.1rem;color:var(--tinta)!important;border-left:5px solid var(--barra);padding-left:16px;margin-top:22px}
+.ev-gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ev-gal figure{margin:0;position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:linear-gradient(160deg,#E9D9B5,#C9A869)}
+.ev-gal figcaption{position:absolute;left:10px;bottom:10px;background:rgba(248,247,243,.94);padding:6px 10px;border-radius:8px;font-size:.82rem;font-weight:700}
+.ev-passos{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ev-passos li{background:#fff;border:1px solid var(--linha);border-top:6px solid var(--barra);border-radius:16px;padding:22px}
+.ev-passos .mao{font-size:2.4rem;display:block;margin-bottom:6px}
+.ev-passos b{font-size:1.15rem;display:block;margin-bottom:6px}
+.ev-passos p{margin:0;color:var(--cinza)}
+@media (max-width:980px){
+  .ev-gal{grid-template-columns:1fr 1fr}
+  .ev-passos{grid-template-columns:1fr}
+  .quarenta{right:16px;bottom:auto;top:92px;width:112px}
+  .quarenta b{font-size:2.9rem}
+  .quarenta span{font-size:1.05rem}
+  .heroi h1{font-size:clamp(2.3rem,10.5vw,3.4rem)}
+  .heroi-bg img{object-position:24% 50%}
+  .heroi-corpo{padding-bottom:104px}
+}
+@media (max-width:760px){.ev-par figure:nth-child(2){margin-top:26px}}
+@media (prefers-reduced-motion:reduce){
+  .js .quarenta,.js .quarenta span,.js .heroi .heroi-eti{opacity:1;transform:rotate(-6deg)}
+  .js .quarenta span,.js .heroi .heroi-eti{transform:none}
+  .quarenta circle{stroke-dashoffset:0}
+  .heroi-bg img{transform:none;transition:none}
+}
 </style>
 </head>
 <body>
 <a class="salta" href="#conteudo">Saltar para o conteúdo</a>
-<div class="pv-banner" role="note">Apresentação Pacheco Studios <span>·</span> proposta de site para o Restaurante Residencial J.J</div>
-
 <header class="nav" id="nav">
   <div class="lat nav-in">
     <a class="marca" href="#/" aria-label="Restaurante Residencial J.J, início">
@@ -539,8 +612,9 @@ p{margin:0 0 1em}
       <span class="marca-t">Restaurante<br>Residencial</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#/cozinheira">A Fatinha e a casa</a></li>
+      <li><a href="#/cozinheira">A Fatinha</a></li>
       <li><a href="#/ementa">Ementa</a></li>
+      <li><a href="#/eventos">Eventos</a></li>
       <li><a href="#/quartos">Quartos</a></li>
       <li><a href="#/galeria">Galeria</a></li>
       <li><a href="#/avaliacoes">Avaliações</a></li>
@@ -555,6 +629,7 @@ p{margin:0 0 1em}
   <a href="#/">Início</a>
   <a href="#/cozinheira">A Fatinha e a casa</a>
   <a href="#/ementa">Ementa</a>
+  <a href="#/eventos">Eventos</a>
   <a href="#/quartos">Quartos</a>
   <a href="#/galeria">Galeria</a>
   <a href="#/avaliacoes">Avaliações</a>
@@ -566,33 +641,37 @@ p{margin:0 0 1em}
 
 <!-- ============ INÍCIO ============ -->
 <div class="pag" data-pag="" data-titulo="Restaurante Residencial J.J · Cozinha regional algarvia na EN125, Moncarapacho">
-  <section class="heroi">
-    <div class="lat">
-      <div class="heroi-g">
-        <div class="heroi-txt">
-          <div class="heroi-eti"><span class="km"><b>EN125</b> Murteira · Moncarapacho</span><span class="desde">desde 1985</span></div>
-          <h1>
-            <span class="nome">Restaurante Residencial J.J</span>
-            <span class="l"><span>A cozinha</span></span>
-            <span class="l"><span>é da <em>Fatinha.</em></span></span>
-            <span class="l"><span>A mesa é sua.</span></span>
-          </h1>
-          <p class="heroi-sub">Há 40 anos à beira da EN125, entre a Fuseta e Tavira. <strong>Na sala, o dono e o filho. Na cozinha, a Fatinha</strong>, com cozinha regional algarvia, peixe na grelha e pratos do dia diferentes todos os dias.</p>
-          <div class="acoes">
-            <a class="btn btn-anil" href="tel:+351289793606"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Reservar mesa · 289 793 606</a>
-            <a class="btn btn-linha" href="#/ementa">Pratos do dia</a>
-          </div>
-        </div>
-        <div class="heroi-foto">
-          <div class="foto-barra anim">
-            <svg class="fundo" viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="340" fill="#9CC3E6"/><rect y="200" width="400" height="140" fill="#B9B4A8"/><rect x="20" y="70" width="300" height="140" fill="#F8F7F3"/><rect x="20" y="150" width="300" height="14" fill="#E0A426"/><path d="M60 70a40 40 0 0 1 80 0M160 70a40 40 0 0 1 80 0" fill="none" stroke="#E0A426" stroke-width="10"/></svg>
-            <img src="media/fachada.webp" alt="A casa do J.J na EN125: edifício branco com barras amarelas, esplanada com toalhas aos quadrados e o letreiro à beira da estrada" width="1600" height="900" fetchpriority="high" onerror="this.remove()">
-            <svg class="moldura" aria-hidden="true"><rect rx="10" pathLength="1"/></svg>
-          </div>
-          <div class="legenda-mao"><span class="mao">40 anos de casa</span></div>
+  <section class="heroi" aria-labelledby="h1-jj">
+    <div class="heroi-bg" aria-hidden="true">
+      <svg class="fundo" viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice"><rect width="400" height="340" fill="#14325E"/><rect y="200" width="400" height="140" fill="#1E4A8A"/><rect x="20" y="70" width="300" height="140" fill="#F8F7F3"/><rect x="20" y="150" width="300" height="14" fill="#E0A426"/></svg>
+      <img src="media/fachada.webp" alt="" width="1600" height="900" fetchpriority="high" onerror="this.remove()">
+    </div>
+    <div class="heroi-vinheta" aria-hidden="true"></div>
+    <div class="lat heroi-corpo">
+      <div class="heroi-txt">
+        <div class="heroi-eti"><span class="km"><b>EN125</b> Murteira · Moncarapacho</span><span class="desde">desde 1985</span></div>
+        <h1 id="h1-jj">
+          <span class="nome">Restaurante Residencial J.J</span>
+          <span class="l"><span>A cozinha</span></span>
+          <span class="l"><span>é da <em>Fatinha.</em></span></span>
+          <span class="l"><span>A mesa é sua.</span></span>
+        </h1>
+        <p class="heroi-sub">Na sala, o dono e o filho. Na cozinha, a Fatinha. Cozinha regional algarvia, peixe na grelha e <strong>pratos do dia diferentes todos os dias</strong>, à beira da EN125, entre a Fuseta e Tavira.</p>
+        <div class="acoes">
+          <a class="btn btn-anil" href="tel:+351289793606"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Reservar mesa · 289 793 606</a>
+          <a class="btn btn-linha" href="#/ementa">Pratos do dia</a>
         </div>
       </div>
+    </div>
+    <div class="quarenta" data-quarenta role="img" aria-label="40 anos de casa">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" pathLength="1"/></svg>
+      <b data-q-num aria-hidden="true">40</b>
+      <span aria-hidden="true">anos de casa</span>
+    </div>
+  </section>
 
+  <section class="dia-sec">
+    <div class="lat">
       <div class="dia rv" data-dia aria-labelledby="dia-t">
         <div class="dia-top">
           <h2 class="dia-t" id="dia-t">O dia na casa</h2>
@@ -654,10 +733,7 @@ p{margin:0 0 1em}
   </section>
 
   <section class="sec escuro">
-    <div class="lat duo">
-      <div class="duo-foto rv">
-        <div class="foto-barra fatinha"><span class="fatinha-nome" aria-hidden="true">Fatinha</span><img src="media/fatinha.webp" alt="A Fatinha na cozinha do J.J" loading="lazy" onerror="this.remove()"></div>
-      </div>
+    <div class="lat duo so-txt">
       <div class="duo-txt rv d1">
         <p class="eti">A cozinheira</p>
         <h2 class="sec-t">A Fatinha está na cozinha. O resto da família está na sala.</h2>
@@ -667,6 +743,25 @@ p{margin:0 0 1em}
           <div class="papel"><small>Na cozinha</small><b>A Fatinha</b></div>
         </div>
         <a class="lig" href="#/cozinheira">Conhecer a Fatinha e a casa <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ev-home">
+    <div class="lat duo">
+      <div class="duo-txt rv">
+        <p class="eti">Eventos</p>
+        <h2 class="sec-t">A festa faz-se na nossa sala.</h2>
+        <p>Já recebemos batizados na casa: a mesa comprida posta, os balões azuis e brancos, a família toda junta e a Fatinha a tratar do resto. Aniversários, almoços de família ou de grupo: venha falar connosco.</p>
+        <p class="ev-nota"><b>Para marcar, ligue.</b> Explique o que pretende fazer e o dono diz-lhe se é possível e como.</p>
+        <div class="acoes" style="margin-top:26px">
+          <a class="btn btn-anil" href="tel:+351289793606"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Ligar · 289 793 606</a>
+          <a class="btn btn-linha" href="#/eventos">Ver o batizado</a>
+        </div>
+      </div>
+      <div class="ev-par rv d1">
+        <figure><img src="media/evento-1.webp" alt="A sala do J.J preparada para um batizado, com a mesa comprida posta e colunas de balões azuis e brancos" loading="lazy" onerror="this.remove()"></figure>
+        <figure><img src="media/evento-3.webp" alt="Mesa posta ao longo da sala com azulejos, armário de vidro e troféus ao fundo" loading="lazy" onerror="this.remove()"></figure>
       </div>
     </div>
   </section>
@@ -744,8 +839,7 @@ p{margin:0 0 1em}
     <h2 class="pg-t" tabindex="-1">Na sala, o dono e o filho. Na cozinha, a Fatinha.</h2>
     <p class="pg-lead">O J.J abriu em 1985 na Murteira, à beira da EN125, e fez 40 anos em 2025. É restaurante e é residencial: quem passa na estrada para pelo almoço, quem dorme na casa janta na casa.</p>
   </section>
-  <section class="lat cz-heroi">
-    <div class="foto-barra fatinha rv" style="aspect-ratio:4/3"><span class="fatinha-nome" aria-hidden="true">Fatinha</span><img src="media/fatinha.webp" alt="A Fatinha na cozinha do J.J" loading="lazy" onerror="this.remove()"></div>
+  <section class="lat cz-heroi so-txt">
     <div class="rv d1">
       <p class="citacao">Quem cá vem uma vez reconhece a cozinha à segunda.</p>
       <p style="color:var(--cinza);margin-top:16px">Não é cozinha de tendências. É cozinha regional algarvia: panelas ao lume, peixe na grelha, e um prato do dia diferente todos os dias.</p>
@@ -874,6 +968,39 @@ p{margin:0 0 1em}
         </ul>
       </div>
       <p class="aviso"><b>Alergias ou intolerâncias?</b> Diga a quem o atende antes de pedir. A cozinha explica o que leva cada prato. IVA incluído.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ============ EVENTOS ============ -->
+<div class="pag" data-pag="eventos" data-titulo="Eventos · Restaurante Residencial J.J">
+  <div class="lat migalhas"><a href="#/">Início</a> / Eventos</div>
+  <section class="lat pg-cab">
+    <p class="eti">Eventos</p>
+    <h2 class="pg-t" tabindex="-1">Um batizado, uma mesa comprida, a casa cheia.</h2>
+    <p class="pg-lead">A sala do J.J já acolheu batizados, e cabe lá muita família. Cada evento é combinado ao telefone, conforme o que pretende fazer.</p>
+  </section>
+  <section class="lat" style="padding-bottom:20px">
+    <div class="ev-gal">
+      <figure class="rv"><img src="media/evento-1.webp" alt="A sala do J.J com a mesa comprida posta e colunas de balões azuis e brancos" loading="lazy" onerror="this.remove()"><figcaption>Batizado na casa</figcaption></figure>
+      <figure class="rv d1"><img src="media/evento-2.webp" alt="Pormenor da mesa posta com pratos, copos e talheres, e o bolo ao fundo" loading="lazy" onerror="this.remove()"><figcaption>A mesa posta</figcaption></figure>
+      <figure class="rv d2"><img src="media/evento-3.webp" alt="A sala vista do outro lado, com azulejos e o armário dos troféus" loading="lazy" onerror="this.remove()"><figcaption>A sala, de lado a lado</figcaption></figure>
+      <figure class="rv d3"><img src="media/evento-4.webp" alt="A mesa comprida a toda a extensão da sala, com o arco ao fundo" loading="lazy" onerror="this.remove()"><figcaption>Mesa para toda a família</figcaption></figure>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="lat">
+      <p class="eti">Como se marca</p>
+      <h2 class="sec-t">Ligue e conte-nos o que tem em mente.</h2>
+      <ol class="ev-passos">
+        <li class="rv"><span class="mao">1</span><b>Ligue</b><p>Para o 289 793 606, ou para o 918 940 674 (rede móvel nacional).</p></li>
+        <li class="rv d1"><span class="mao">2</span><b>Explique o que pretende</b><p>O tipo de celebração, a data e quantas pessoas são.</p></li>
+        <li class="rv d2"><span class="mao">3</span><b>O dono responde</b><p>Diz-lhe se é possível e como se faz.</p></li>
+      </ol>
+      <div class="acoes" style="margin-top:34px">
+        <a class="btn btn-anil" href="tel:+351289793606"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Ligar · 289 793 606</a>
+        <a class="btn btn-linha" href="#/contacto">Horário e morada</a>
+      </div>
     </div>
   </section>
 </div>
@@ -1057,7 +1184,7 @@ p{margin:0 0 1em}
     </div>
     <div class="rp-base">
       <a class="livro" href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener">Livro de Reclamações</a>
-      <span>© <span data-ano>2026</span> Restaurante Residencial J.J · Site por Pacheco Studios</span>
+      <span>© <span data-ano>2026</span> Restaurante Residencial J.J</span>
     </div>
   </div>
 </footer>
@@ -1092,6 +1219,8 @@ p{margin:0 0 1em}
     if (h.indexOf('em-') === 0) return; /* âncoras dentro da ementa */
     var alvo = pags.filter(function(p){ return p.dataset.pag === h; })[0] || pags[0];
     pags.forEach(function(p){ p.classList.toggle('ativa', p === alvo); });
+    doc.classList.toggle('na-home', alvo.dataset.pag === '');
+    rolou();
     document.title = alvo.dataset.titulo;
     var chave = '#/' + alvo.dataset.pag;
     document.querySelectorAll('.nav-links a, .menu-movel a').forEach(function(a){
@@ -1115,12 +1244,13 @@ p{margin:0 0 1em}
   function rolou(){ nav.classList.toggle('scrolled', window.scrollY > 8); }
   window.addEventListener('scroll', rolou, {passive:true}); rolou();
   var burger = document.querySelector('.burger'), menu = document.getElementById('menu-movel');
-  function fechaMenu(){ burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Abrir menu'); menu.classList.remove('aberto'); document.body.style.overflow=''; }
+  function fechaMenu(){ burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Abrir menu'); menu.classList.remove('aberto'); nav.classList.remove('menu-on'); document.body.style.overflow=''; }
   burger.addEventListener('click', function(){
     var abre = burger.getAttribute('aria-expanded') !== 'true';
     burger.setAttribute('aria-expanded', String(abre));
     burger.setAttribute('aria-label', abre ? 'Fechar menu' : 'Abrir menu');
     menu.classList.toggle('aberto', abre);
+    nav.classList.toggle('menu-on', abre);
     document.body.style.overflow = abre ? 'hidden' : '';
     if (abre) menu.querySelector('a').focus();
   });
@@ -1139,6 +1269,21 @@ p{margin:0 0 1em}
   function arranca(){
     if (arrancou) return; arrancou = true;
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ doc.classList.add('ini'); }); });
+    var q = document.querySelector('[data-quarenta]'), num = q && q.querySelector('[data-q-num]');
+    if (!q) return;
+    if (reduz){ q.classList.add('q-on'); return; }
+    if (num) num.textContent = '0';
+    setTimeout(function(){
+      q.classList.add('q-on');
+      var t0 = null, dur = 1500;
+      function passo(t){
+        if (t0 === null) t0 = t;
+        var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        if (num) num.textContent = Math.round(40 * e);
+        if (k < 1) requestAnimationFrame(passo);
+      }
+      requestAnimationFrame(passo);
+    }, 2000);
   }
 
   /* ---------- hora de Lisboa e estado ---------- */
