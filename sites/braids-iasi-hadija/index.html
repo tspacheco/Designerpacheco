@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Corinthia:wght@700&family=Mulish:wght@400;600;800&display=swap&subset=latin-ext" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"HairSalon","name":"Braids Iași Hadija","description":"Împletituri în Iași: cornrows cu extensii, modele pentru bărbați și împletituri pentru copii","areaServed":"Iași, România","image":"media/foto-1.webp","sameAs":["https://www.instagram.com/braids_iasi_hadija"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HairSalon","name":"Braids Iași Hadija","description":"Împletituri în Iași: cornrows cu extensii, modele pentru bărbați și împletituri pentru copii","areaServed":"Iași, România","image":"media/avatar.webp","sameAs":["https://www.instagram.com/braids_iasi_hadija"]}</script>
 <style>
 /* Concept: salon de mostre pe roz pudrat; fotografiile stau în arcade, iar o împletitură din trei fire (roz, auriu, vișiniu) se țese pe marginea paginii la derulare. */
 :root{
@@ -45,9 +45,10 @@ nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;paddi
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -12px var(--berry)}
 /* Herói imersivo: três fotografii pe toată lățimea, sigiliul «preț de student» */
 .hero{position:relative;z-index:2;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));min-height:min(92svh,900px);display:flex;align-items:flex-end;overflow:hidden;background:var(--berry);color:var(--paper)}
-.reel{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
-.reel img{width:100%;height:100%;object-fit:cover;display:block;animation:drift 18s ease-in-out infinite alternate}
-.reel img:nth-child(2){animation-delay:-6s}.reel img:nth-child(3){animation-delay:-12s}
+.reel{position:absolute;inset:-60px}
+.reel img{width:100%;height:100%;object-fit:cover;display:block;filter:blur(38px) saturate(1.3);animation:drift 18s ease-in-out infinite alternate}
+.logo{position:absolute;z-index:1;margin:0;right:clamp(1.5rem,9vw,9rem);top:50%;translate:0 -58%;width:clamp(130px,17vw,200px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 8px rgba(255,250,251,.9),0 0 0 9.5px var(--rose),0 30px 60px -20px #000;animation:pop 1s .3s cubic-bezier(.3,1.5,.5,1) both}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}
 @keyframes drift{from{transform:scale(1.04) translateY(-1.5%)}to{transform:scale(1.12) translateY(1.5%)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(94,31,58,.25) 0%,rgba(94,31,58,.35) 40%,rgba(58,15,34,.94) 100%)}
 .hero-text{position:relative;z-index:1;width:100%;max-width:68rem;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px)) clamp(2.5rem,7vw,5rem) calc(max(16px,env(safe-area-inset-left,0px)) + clamp(30px,6vw,84px))}
@@ -83,12 +84,9 @@ h2{font:400 clamp(2.1rem,5.4vw,3.6rem)/1.02 var(--display);margin:0 0 2rem;text-
 h2 em{font:700 1.25em/.8 var(--script);color:var(--rose);font-style:normal}
 /* Pentru cine */
 .who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.8rem,2.4vw,1.6rem)}
-.who figure{margin:0;display:grid;gap:.9rem}
-.who .ph{aspect-ratio:4/5;border-radius:999px 999px 14px 14px;overflow:hidden;background:var(--petal)}
-.who img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
-.who figure:hover img{transform:scale(1.05)}
-.who figcaption b{display:block;font:400 1.6rem/1.1 var(--display)}
-.who figcaption span{color:var(--soft);font-size:.95rem}
+.who .card{background:var(--paper);border-radius:999px 999px 18px 18px;padding:2.6rem 1.4rem 1.6rem;text-align:center;border:1.5px solid var(--petal)}
+.who .card b{display:block;font:400 1.7rem/1.1 var(--display);margin-bottom:.4rem}
+.who .card span{color:var(--soft);font-size:.95rem}
 /* Galerie */
 .band{background:var(--paper);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .gal{columns:3 15rem;column-gap:.9rem}
@@ -114,13 +112,12 @@ dd{margin:0;min-width:0;overflow-wrap:anywhere}
 footer{border-top:1px solid var(--petal);padding-block:2rem 3rem;color:var(--soft);font-size:.85rem}
 footer p{margin:.3rem 0}
 @media (max-width:760px){
-  .reel{grid-template-columns:1fr}
-  .reel img:not(:first-child){display:none}
+  .logo{position:relative;right:auto;top:auto;translate:none;margin:0 0 1.6rem;width:120px}
+  .hero{flex-direction:column;justify-content:flex-end;align-items:stretch}
+  .hero .logo{margin-left:calc(max(16px,env(safe-area-inset-left,0px)) + clamp(30px,6vw,84px))}
   .hero{min-height:88svh}
   .price{grid-template-columns:1fr}
-  .who{grid-template-columns:1fr 1fr}
-  .who figure:last-child{grid-column:1/-1}
-  .who figure:last-child .ph{aspect-ratio:16/10;border-radius:14px}
+  .who{grid-template-columns:1fr}
   .steps,.contact{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -137,11 +134,8 @@ footer p{margin:.3rem 0}
 
 </div>
 <header class="hero" id="top">
-  <div class="reel" aria-hidden="true">
-    <img src="media/foto-4.webp" alt="" fetchpriority="high">
-    <img src="media/foto-1.webp" alt="">
-    <img src="media/foto-3.webp" alt="">
-  </div>
+  <div class="reel" aria-hidden="true"><img src="media/avatar.webp" alt=""></div>
+  <figure class="logo"><img src="media/avatar.webp" alt="Logo Braids Iași Hadija: împletituri lungi, văzute din spate" width="100" height="100"></figure>
   <div class="seal" aria-hidden="true">
     <svg viewBox="0 0 100 100"><defs><path id="ring" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#ring" textLength="236" lengthAdjust="spacing">preț de student · Iași · preț de student · Iași ·</textPath></text></svg>
     <b>pentru<br>studenți</b>
@@ -175,9 +169,9 @@ footer p{margin:.3rem 0}
   <p class="kicker">Pentru cine împletește</p>
   <h2 id="h-who">Pentru ea, pentru el <em>și pentru cei mici</em></h2>
   <div class="who">
-    <figure><div class="ph"><img src="media/foto-3.webp" alt="Două împletituri ombré, alb și gri, pe păr blond" loading="lazy"></div><figcaption><b>Pentru ea</b><span>Împletituri lungi, cu extensii în culoarea ta.</span></figcaption></figure>
-    <figure><div class="ph"><img src="media/foto-2.webp" alt="Cornrows pentru bărbați, cu model în formă de inimă" loading="lazy"></div><figcaption><b>Pentru el</b><span>Cornrows cu modele desenate pe scalp.</span></figcaption></figure>
-    <figure><div class="ph"><img src="media/foto-6.webp" alt="Fetiță cu două cozi împletite la rădăcină" loading="lazy"></div><figcaption><b>Pentru cei mici</b><span>Împletituri simple, prinse frumos.</span></figcaption></figure>
+    <div class="card"><b>Pentru ea</b><span>Împletituri lungi, cu extensii în culoarea ta.</span></div>
+    <div class="card"><b>Pentru el</b><span>Cornrows cu modele desenate pe scalp.</span></div>
+    <div class="card"><b>Pentru cei mici</b><span>Împletituri simple, prinse frumos.</span></div>
   </div>
 </section>
 
