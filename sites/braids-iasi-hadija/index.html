@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Braids Iași Hadija</title>
+<meta name="description" content="Împletituri (braids) în Iași, făcute de Hadija. Alege modelul și scrie-i pe Instagram pentru programare.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800&family=Manrope:wght@400;500;700&display=swap&subset=latin-ext" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HairSalon","name":"Braids Iași Hadija","description":"Împletituri (braids) în Iași","areaServed":"Iași, România","sameAs":["https://www.instagram.com/braids_iasi_hadija"]}</script>
+<style>
+/* Concept: o împletitură din trei fire se desenează pe marginea paginii pe măsură ce derulezi; textul stă lângă ea ca o etichetă de mostră. */
+:root{
+  --ink:#1d0e25;      /* fundal: prună foarte închisă */
+  --plum:#33183f;     /* panouri */
+  --line:#5a3a69;     /* linii fine */
+  --gold:#e3b45c;     /* accent unic: fir auriu */
+  --mist:#f1e6f4;     /* text */
+  --dim:#c3aecb;      /* text secundar */
+  --display:"Epilogue","Arial Narrow",Arial,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--mist);font:400 1.0625rem/1.65 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:62rem;margin:0 auto;padding-left:clamp(34px,7vw,92px)}
+.banner{background:var(--gold);color:var(--ink);font:700 .72rem/1.3 var(--body);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.55rem 1rem;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)))}
+#braid{position:fixed;left:max(4px,env(safe-area-inset-left,0px));top:0;height:100%;width:clamp(26px,5vw,56px);z-index:1;pointer-events:none}
+#braid path{fill:none;stroke-width:5;stroke-linecap:round}
+nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1.1rem}
+.mark{font:800 1rem var(--display);letter-spacing:.02em;text-decoration:none}
+.nav-cta{font:700 .85rem var(--body);text-decoration:none;border:1.5px solid var(--gold);color:var(--gold);padding:.55rem 1rem;border-radius:2px;transition:background .2s,color .2s}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+.hero{padding-block:clamp(2.5rem,8vw,6rem) clamp(3rem,8vw,5.5rem)}
+.eyebrow{font:700 .78rem var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 1.2rem}
+h1{font:800 clamp(2.7rem,9.5vw,6.4rem)/.95 var(--display);letter-spacing:-.02em;margin:0 0 1.6rem;text-wrap:balance}
+h1 em{font-style:normal;color:var(--gold)}
+.lead{max-width:34rem;color:var(--dim);margin:0 0 2rem}
+.btn{display:inline-block;background:var(--gold);color:var(--ink);font:800 1rem var(--display);padding:1rem 1.6rem;border-radius:2px;text-decoration:none;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.hero>*{animation:in .8s cubic-bezier(.2,.7,.2,1) both}
+.hero>:nth-child(2){animation-delay:.1s}.hero>:nth-child(3){animation-delay:.2s}.hero>:nth-child(4){animation-delay:.3s}
+@keyframes in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+section{padding-block:clamp(2.5rem,7vw,4.5rem);border-top:1px solid var(--line)}
+h2{font:800 clamp(1.8rem,5vw,3rem)/1.05 var(--display);letter-spacing:-.01em;margin:0 0 1.5rem;text-wrap:balance}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,15rem),1fr));gap:.75rem}
+.grid figure{margin:0;aspect-ratio:4/5;background:var(--plum);overflow:hidden}
+.grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.grid figure:hover img{transform:scale(1.04)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:1.4rem;max-width:36rem}
+.steps li{padding-left:1.1rem;border-left:3px solid var(--gold)}
+.steps b{display:block;font:800 1.15rem var(--display)}
+.steps span{color:var(--dim)}
+dl{display:grid;grid-template-columns:minmax(7rem,10rem) 1fr;gap:.9rem 1.5rem;margin:0 0 2rem;max-width:36rem}
+dt{font:700 .78rem var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding-top:.25rem}
+dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.tbc{color:var(--dim);font-style:italic}
+footer{border-top:1px solid var(--line);padding-block:2rem 3rem;color:var(--dim);font-size:.85rem}
+footer a{color:var(--mist)}
+footer p{margin:.3rem 0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="banner">Prezentare Pacheco Studios · propunere pentru Hadija</div>
+<svg id="braid" aria-hidden="true" preserveAspectRatio="none"><path id="s1" stroke="#e3b45c"/><path id="s2" stroke="#f1e6f4"/><path id="s3" stroke="#8d5fa0"/></svg>
+<div class="wrap">
+<nav>
+  <a class="mark" href="#top">Braids Iași Hadija</a>
+  <a class="nav-cta" href="https://www.instagram.com/braids_iasi_hadija" target="_blank" rel="noopener">Instagram</a>
+</nav>
+<header class="hero" id="top">
+  <p class="eyebrow">Iași · împletituri / braids</p>
+  <h1>Împletituri făcute <em>cu răbdare</em>, în Iași.</h1>
+  <p class="lead">Hadija împletește părul fir cu fir. Alege un model din galerie sau trimite-i o poză cu ce îți dorești, direct pe Instagram.</p>
+  <a class="btn" href="https://www.instagram.com/braids_iasi_hadija" target="_blank" rel="noopener">Scrie-i Hadijei pe Instagram</a>
+</header>
+
+<section id="galerie" aria-labelledby="g">
+  <h2 id="g">Lucrări</h2>
+  <div class="grid" id="grid">
+    <figure><img src="media/foto-1.jpg" alt="Împletituri realizate de Hadija" loading="lazy" onerror="this.parentElement.remove()"></figure>
+    <figure><img src="media/foto-2.jpg" alt="Împletituri realizate de Hadija" loading="lazy" onerror="this.parentElement.remove()"></figure>
+    <figure><img src="media/foto-3.jpg" alt="Împletituri realizate de Hadija" loading="lazy" onerror="this.parentElement.remove()"></figure>
+    <figure><img src="media/foto-4.jpg" alt="Împletituri realizate de Hadija" loading="lazy" onerror="this.parentElement.remove()"></figure>
+    <figure><img src="media/foto-5.jpg" alt="Împletituri realizate de Hadija" loading="lazy" onerror="this.parentElement.remove()"></figure>
+    <figure><img src="media/foto-6.jpg" alt="Împletituri realizate de Hadija" loading="lazy" onerror="this.parentElement.remove()"></figure>
+  </div>
+  <p class="tbc" id="gnote">Fotografiile din portofoliu se adaugă în curând.</p>
+</section>
+
+<section aria-labelledby="c1">
+  <h2 id="c1">Cum faci programarea</h2>
+  <ol class="steps">
+    <li><b>Alegi modelul</b><span>Din galerie sau cu o poză trimisă de tine.</span></li>
+    <li><b>Hadija confirmă</b><span>Stilul, durata și prețul final, pe mesaj.</span></li>
+    <li><b>Vii la programare</b><span>Alegi ziua și ora împreună cu ea.</span></li>
+  </ol>
+</section>
+
+<section id="contact" aria-labelledby="c2">
+  <h2 id="c2">Contact</h2>
+  <dl>
+    <dt>Instagram</dt><dd><a href="https://www.instagram.com/braids_iasi_hadija" target="_blank" rel="noopener">@braids_iasi_hadija</a></dd>
+    <dt>Telefon</dt><dd class="tbc">a confirma</dd>
+    <dt>Adresă</dt><dd class="tbc">Iași, adresa exactă a confirma</dd>
+    <dt>Program</dt><dd class="tbc">a confirma</dd>
+    <dt>Prețuri</dt><dd class="tbc">a confirma, în funcție de model</dd>
+  </dl>
+  <a class="btn" href="https://www.instagram.com/braids_iasi_hadija" target="_blank" rel="noopener">Trimite un mesaj</a>
+</section>
+
+<footer>
+  <p>© Braids Iași Hadija</p>
+  <p><a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC – Soluționarea alternativă a litigiilor</a></p>
+  <p>Prezentare realizată de <a href="https://ro.pachecost.com" target="_blank" rel="noopener">Pacheco Studios</a></p>
+</footer>
+</div>
+<script>
+(function(){
+  var grid=document.getElementById('grid'),note=document.getElementById('gnote');
+  function chk(){var n=grid.querySelectorAll('figure').length;note.hidden=n>0}
+  window.addEventListener('load',function(){setTimeout(chk,600)});
+  var svg=document.getElementById('braid'),P=[document.getElementById('s1'),document.getElementById('s2'),document.getElementById('s3')];
+  var H=0,W=40,L=[];
+  function build(){
+    H=document.documentElement.scrollHeight;W=svg.clientWidth||40;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    var amp=W/2-4,per=170;
+    P.forEach(function(p,k){
+      var d='',ph=k*2*Math.PI/3;
+      for(var y=0;y<=H;y+=8){var x=W/2+amp*Math.sin(y/per*2*Math.PI+ph);d+=(y?'L':'M')+x.toFixed(1)+' '+y}
+      p.setAttribute('d',d);L[k]=p.getTotalLength();
+      p.style.strokeDasharray=L[k];
+    });
+    draw();
+  }
+  function draw(){
+    var vh=window.innerHeight,s=window.scrollY,frac=Math.min(1,(s+vh)/Math.max(H,1));
+    P.forEach(function(p,k){p.style.strokeDashoffset=L[k]*(1-frac)});
+  }
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  build();
+  window.addEventListener('scroll',function(){if(!reduce)draw()},{passive:true});
+  window.addEventListener('resize',build);
+  window.addEventListener('load',build);
+  if(reduce)P.forEach(function(p,k){p.style.strokeDashoffset=0});
+})();
+</script>
+</body>
+</html>
