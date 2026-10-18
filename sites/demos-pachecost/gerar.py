@@ -224,6 +224,28 @@ DEMOS = [  # (endereço curto, pasta em sites/)
     ("mobile-motors-ltd", "mobile-motors-ltd"),
     ("itp-rapid", "itp-rapid"),
     ("rtm-service-reparatii", "rtm-service-reparatii"),
+    # caçador 2026-10-18
+    ("osteopath-aurel-tudorache", "osteopath-aurel-tudorache"),
+    ("noia-copou", "noia-copou"),
+    ("cabinet-ginecologie-yasmin", "cabinet-ginecologie-yasmin"),
+    ("akadent-cabinet-stomatologic", "akadent-cabinet-stomatologic"),
+    ("dental-ava", "dental-ava"),
+    ("sophi-med", "sophi-med"),
+    ("vogue-stomadent", "vogue-stomadent"),
+    ("cadentis", "cadentis"),
+    ("clinica-stomatologica-diamond", "clinica-stomatologica-diamond"),
+    ("dream-smile", "dream-smile"),
+    ("clinica-dentika", "clinica-dentika"),
+    ("concept-kineto", "concept-kineto"),
+    ("adent", "adent"),
+    ("kinetoterapeut-alexandra-georgiana", "kinetoterapeut-alexandra-georgiana"),
+    ("onedent", "onedent"),
+    ("aident-cabinet-stomatologic", "aident-cabinet-stomatologic"),
+    ("sabina-dent-cabinet", "sabina-dent-cabinet"),
+    ("dentama-by-dr", "dentama-by-dr"),
+    ("dr-tepelus-calen", "dr-tepelus-calen"),
+    ("oq-med-cabinet", "oq-med-cabinet"),
+    ("cabinet-medicina-de", "cabinet-medicina-de"),
 ]
 NOINDEX = '<meta name="robots" content="noindex, nofollow">'
 # Páginas soltas (não são demos de site): copiadas tal como estão, sem faixa, sem contador e fora das
