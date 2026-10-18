@@ -27,7 +27,7 @@
   var cv = hero.querySelector("canvas.hojas");
   if (!cv) return;
   var ctx = cv.getContext("2d"), W, H, dpr, hojas = [], T0 = performance.now();
-  var TINTAS = ["#E2007A", "#0094D4", "#FFD21F"];
+  var TINTAS = ["#E5141C", "#1F5BFF", "#FFD400"];
   var N = 34, CICLO = 10.5;
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
@@ -57,7 +57,7 @@
         r0: rnd(-4, 4), rf: rnd(-0.03, 0.03), giros: rnd(1, 3),
         d: 0.05 * i + rnd(0, 0.4), dur: rnd(2.6, 3.4),
         sx: rnd(-1, 1) * W * 0.8, sy: rnd(-H * 0.9, -H * 0.4),
-        tinta: Math.random() < 0.22 ? TINTAS[i % 3] : null, lineas: 6 + (i % 5)
+        tinta: Math.random() < 0.22 ? TINTAS[i % 3] : null, luz: TINTAS[i % 3], lineas: 6 + (i % 5)
       });
     }
   }
@@ -65,17 +65,19 @@
   function dibujarHoja(o, x, y, rot, esc, alpha) {
     ctx.save(); ctx.globalAlpha = alpha; ctx.translate(x, y); ctx.rotate(rot); ctx.scale(1, esc);
     var w = o.w, h = o.h;
-    ctx.shadowColor = "rgba(20,22,25,.16)"; ctx.shadowBlur = 14; ctx.shadowOffsetY = 6;
-    ctx.fillStyle = "#fff"; ctx.fillRect(-w / 2, -h / 2, w, h);
+    // luz de color en el canto: cada hoja refleja una de las tres luces de la máquina
+    ctx.shadowColor = o.luz; ctx.shadowBlur = 26; ctx.shadowOffsetY = 0;
+    ctx.fillStyle = "#F5F4EF"; ctx.fillRect(-w / 2, -h / 2, w, h);
     ctx.shadowColor = "transparent";
-    ctx.strokeStyle = "rgba(20,22,25,.08)"; ctx.lineWidth = 1; ctx.strokeRect(-w / 2, -h / 2, w, h);
-    ctx.fillStyle = "rgba(20,22,25,.12)";
+    var g = ctx.createLinearGradient(-w / 2, -h / 2, w / 2, h / 2);
+    g.addColorStop(0, "rgba(255,255,255,.0)"); g.addColorStop(1, "rgba(0,0,0,.18)");
+    ctx.fillStyle = g; ctx.fillRect(-w / 2, -h / 2, w, h);
+    ctx.fillStyle = "rgba(10,10,12,.16)";
     for (var l = 0; l < o.lineas; l++) ctx.fillRect(-w * 0.36, -h * 0.38 + l * h * 0.075, w * (l % 3 === 2 ? 0.45 : 0.72), Math.max(1, h * 0.012));
     if (o.tinta) {
       ctx.fillStyle = o.tinta; ctx.globalAlpha = alpha * 0.9;
       ctx.beginPath(); ctx.arc(w * 0.12, h * 0.2, w * 0.17, 0, 7); ctx.fill();
       ctx.beginPath(); ctx.arc(w * 0.3, h * 0.07, w * 0.06, 0, 7); ctx.fill();
-      ctx.beginPath(); ctx.arc(-w * 0.05, h * 0.33, w * 0.04, 0, 7); ctx.fill();
     }
     ctx.restore();
   }

@@ -29,5 +29,5 @@ def preparar(src, nome, escala, poster_s=None):
 
 if __name__ == "__main__":
     h, v = sys.argv[1], sys.argv[2]
-    preparar(h, "hero-h", "scale=1600:-2", 5.2)
+    preparar(h, "hero-h", "scale=1600:-2")
     preparar(v, "hero-v", "scale=720:-2")

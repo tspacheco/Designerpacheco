@@ -46,10 +46,9 @@ def ico(nombre, cls=""):
     return f'<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{p}</svg>'
 
 
-LOGO_SVG = ('<svg viewBox="0 0 48 48" aria-hidden="true"><g style="mix-blend-mode:multiply">'
-            '<circle cx="19" cy="20" r="11" fill="#0094D4"/><circle cx="29" cy="20" r="11" fill="#E2007A" opacity=".92"/>'
-            '<circle cx="24" cy="29" r="11" fill="#FFD21F" opacity=".95"/></g>'
-            '<path d="M14 14h20v4h-8v17h-4V18h-8z" fill="#141619"/></svg>')
+LOGO_SVG = ('<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#0A0A0C"/>'
+            '<path d="M10 16c10-5 20-4 28 2-8-1-16 1-24 6z" fill="#1F5BFF"/><path d="M8 24c10-5 20-4 28 2-8-1-16 1-24 6z" fill="#E5141C"/>'
+            '<path d="M9 32c10-5 20-4 28 2-8-1-16 1-24 6z" fill="#FFD400"/></svg>')
 
 
 # ---------- Enlaces ----------
@@ -72,7 +71,7 @@ def cabecera(actual, prof):
     return f'''<a class="sr" href="#contenido">Saltar al contenido</a>
 <div class="promo"><div class="wrap"><span>Pide antes de las 13:00 y recógelo hoy</span><span class="promo-sep" aria-hidden="true">·</span><span>Envío gratis a la península desde {eur(P["envio"]["gratis_desde"])}</span></div></div>
 <header class="cab"><div class="wrap">
-  <a class="logo" href="{url('', prof)}" aria-label="TopCopias, inicio">{LOGO_SVG}<span><b>TopCopias</b><small>Copistería · Zaragoza</small></span></a>
+  <a class="logo" href="{url('', prof)}" aria-label="TopCopias, inicio"><img src="{"../" * prof}assets/img/logo.webp" width="46" height="46" alt=""><span><b>TopCopias</b><small>Copistería · Zaragoza</small></span></a>
   <button class="menu-btn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
   <nav class="nav" id="nav" aria-label="Principal">
     <a href="{url('imprimir', prof)}"{' aria-current="page"' if actual == 'imprimir' else ''}>Imprimir online</a>{items}
@@ -85,7 +84,7 @@ def pie(prof):
     tiendas = "".join(f'<li>{e(t["direccion"])}<br>{e(t["cp"])}<br><a href="tel:{t["tel"]}">{t["tel_texto"]}</a></li>' for t in N["tiendas"])
     return f'''<footer class="pie"><div class="wrap">
   <div>
-    <a class="logo" href="{url('', prof)}">{LOGO_SVG}<span><b>TopCopias</b><small>Copistería · Zaragoza</small></span></a>
+    <a class="logo" href="{url('', prof)}"><img src="{"../" * prof}assets/img/logo.webp" width="46" height="46" alt="" loading="lazy"><span><b>TopCopias</b><small>Copistería · Zaragoza</small></span></a>
     <p style="margin-top:14px;max-width:34ch">Imprimimos tus apuntes, trabajos y documentos desde hace {N["anios"]} años. Sube el PDF, mira el precio y recógelo listo.</p>
     <div class="tintas-pie"><i></i><i></i><i></i><i></i></div>
   </div>
@@ -109,7 +108,7 @@ def pie(prof):
 
 
 FUENTES = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-           '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@500;600;700&family=Public+Sans:wght@400;600;700&display=swap">')
+           '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@500;600;700&family=Public+Sans:wght@400;600;700&display=swap">')
 
 
 def pagina(ruta, actual, titulo, desc, cuerpo, con_pedido=False, extra_head=""):
@@ -122,7 +121,7 @@ def pagina(ruta, actual, titulo, desc, cuerpo, con_pedido=False, extra_head=""):
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{canon}">
 <meta property="og:title" content="{e(titulo)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="website"><meta property="og:locale" content="es_ES">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#0A0A0C">
 <link rel="icon" href="{a}favicon.svg" type="image/svg+xml">
 {FUENTES}
 <link rel="stylesheet" href="{a}site.css">{extra_head}'''
@@ -398,12 +397,14 @@ def construir():
     hero = f'''
 <section class="hero-inm" aria-labelledby="t-hero">
   {fondo}
+  <div class="hero-piso" aria-hidden="true"></div>
   <div class="hero-velo" aria-hidden="true"></div>
   <div class="wrap hero-inm-in">
     <div class="hero-txt">
       <a class="chip-google" href="{N["google"]["url"]}" target="_blank" rel="noopener">{ico('estrella')}<b>{N["google"]["nota"]}</b> · {N["google"]["resenas"]} reseñas en Google</a>
-      <h1 class="titular" id="t-hero"><span class="reg">Sube tu PDF.</span><br><span class="reg">Recógelo <em>listo</em>.</span></h1>
-      <p class="lead">La copistería de Zaragoza que imprime mientras tú vienes. Ves el precio al momento, te avisamos por WhatsApp y lo recoges sin esperar.</p>
+      <h1 class="titular" id="t-hero"><span class="reg">¿Lo necesitas</span><span class="reg">para <s>mañana</s>?</span></h1>
+      <p class="hoy" aria-label="Lo tienes hoy">Hoy.<small>Zaragoza</small></p>
+      <p class="lead">Sube el PDF, mira el precio al momento y recógelo listo en Fernando el Católico o en Apaolaza. Pagas al recoger.</p>
       <label class="subida-pill" id="subida-hero">
         <input type="file" accept="application/pdf,.pdf,image/*" multiple aria-label="Elegir PDF para calcular el precio">
         <span class="pill-ico">{ico('subir')}</span>
@@ -418,7 +419,7 @@ def construir():
     </div>
   </div>
 </section>
-<div class="cinta" aria-hidden="true"><div class="cinta-in">{"".join(f"<span>{s}</span><i></i>" for s in ["Apuntes", "TFG encuadernado", "Color láser", "Doble cara", "Espiral", "Flyers", "Tarjetas de visita", "A3", "Envíos a la península"] * 2)}</div></div>'''
+<div class="cinta" aria-hidden="true"><div class="cinta-in">{"".join(f"<span>{s}</span><i></i>" for s in ["Apuntes desde 0,019 €", "TFG en espiral", "Color láser", "Doble cara", "Tapas de colores", "Flyers", "Tarjetas de visita", "A3 y A5", "Envíos a la península", "Pide antes de las 13:00"] * 2)}</div></div>'''
     servicios_home = f'''<section class="seccion" style="padding-top:0" aria-labelledby="t-serv"><div class="wrap">
   <div class="seccion-cab"><p class="eyebrow">Qué imprimimos</p><h2 id="t-serv">Del apunte de mañana al TFG encuadernado</h2></div>
   {servicios_grid(0)}</div></section>'''
