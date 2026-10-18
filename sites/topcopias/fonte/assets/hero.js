@@ -10,7 +10,7 @@
   /* ---------- Vídeo ---------- */
   var video = hero.querySelector("video");
   if (video) {
-    var vertical = function () { return window.innerWidth / window.innerHeight < 0.9; };
+    var vertical = function () { return window.matchMedia("(max-width: 880px)").matches; };
     var elegir = function () {
       var src = vertical() ? video.dataset.vertical : video.dataset.horizontal;
       var pos = vertical() ? video.dataset.posterVertical : video.dataset.posterHorizontal;

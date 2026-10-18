@@ -16,17 +16,18 @@ def run(*a):
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *a], check=True)
 
 
-def preparar(src, nome, escala):
+def preparar(src, nome, escala, poster_s=None):
     os.makedirs(OUT, exist_ok=True)
     mp4 = os.path.join(OUT, nome + ".mp4")
-    run("-i", src, "-an", "-vf", escala + ",format=yuv420p", "-c:v", "libx264", "-preset", "slow", "-crf", "26",
+    run("-i", src, "-an", "-vf", escala + ",format=yuv420p", "-c:v", "libx264", "-preset", "slow", "-crf", "22",
         "-profile:v", "high", "-movflags", "+faststart", mp4)
-    # o poster é o último fotograma (as folhas já empilhadas), para quem não reproduz vídeo
-    run("-sseof", "-0.3", "-i", mp4, "-frames:v", "1", "-q:v", "4", os.path.join(OUT, nome + ".jpg"))
+    # o poster é o último fotograma (ou o segundo indicado) (as folhas já empilhadas), para quem não reproduz vídeo
+    pos = ["-ss", str(poster_s)] if poster_s is not None else ["-sseof", "-0.3"]
+    run(*pos, "-i", mp4, "-frames:v", "1", "-q:v", "4", os.path.join(OUT, nome + ".jpg"))
     print(nome, round(os.path.getsize(mp4) / 1048576, 1), "MB")
 
 
 if __name__ == "__main__":
     h, v = sys.argv[1], sys.argv[2]
-    preparar(h, "hero-h", "scale=1600:-2")
+    preparar(h, "hero-h", "scale=1600:-2", 5.2)
     preparar(v, "hero-v", "scale=720:-2")

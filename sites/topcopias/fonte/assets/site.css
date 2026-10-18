@@ -391,3 +391,12 @@ body.con-barra .wa-flot { display: none; }
 .cinta-in i:nth-of-type(3n+2) { background: var(--cian); }
 .cinta-in i:nth-of-type(3n) { background: var(--tinta); }
 @keyframes cinta { to { transform: translateX(-50%); } }
+
+/* Hero com vídeo */
+.hero-inm:has(video) { background: #C9BCB1; }
+.hero-inm:has(video) .hero-velo { background: linear-gradient(90deg, rgba(247,247,244,.97) 0%, rgba(247,247,244,.9) 42%, rgba(247,247,244,.35) 62%, rgba(247,247,244,0) 74%); }
+@media (max-width: 880px) {
+  .hero-inm:has(video) { padding-bottom: 40svh; background: #E5DDD5; }
+  .hero-inm video.hero-fondo { top: auto; bottom: 0; height: auto; aspect-ratio: 9 / 16; object-fit: cover; }
+  .hero-inm:has(video) .hero-velo { background: linear-gradient(180deg, rgba(247,247,244,.96) 0%, rgba(247,247,244,.92) calc(100% - 40svh - 40px), rgba(247,247,244,0) calc(100% - 40svh + 70px)); }
+}
