@@ -70,7 +70,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 /* nav */
 .nav{position:sticky;top:0;z-index:100;background:transparent;transition:background .3s var(--ease),box-shadow .3s var(--ease)}
 .nav.scrolled{background:var(--velvet);box-shadow:0 8px 30px rgba(10,6,25,.35)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.nav .wrap{display:flex;align-items:center;justify-content:flex-start;gap:16px;height:68px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
 .brand svg{width:26px;height:26px;flex:none}
 .brand b{font-family:var(--ff-d);font-weight:600;font-size:22px;letter-spacing:.01em;font-variation-settings:"opsz" 60}
@@ -78,6 +78,11 @@ button,input,select,textarea{font:inherit;color:inherit}
 .nav ul{list-style:none;display:flex;gap:26px;margin:0;padding:0}
 .nav ul a{color:#fff;text-decoration:none;font-size:15px;font-weight:500;opacity:.86;padding:8px 0;border-bottom:2px solid transparent;transition:opacity .2s,border-color .2s}
 .nav ul a:hover{opacity:1;border-color:var(--gold)}
+.lang{display:flex;align-items:center;gap:2px;margin-left:8px;font-size:13px;font-weight:600;letter-spacing:.12em;color:rgba(201,189,242,.55)}
+.lang button{border:0;background:none;color:var(--lilac);opacity:.7;cursor:pointer;padding:10px 6px;min-height:44px;min-width:36px;letter-spacing:inherit;font-weight:inherit;border-radius:8px}
+.lang button:hover{opacity:1}
+.lang button[aria-pressed="true"]{opacity:1;color:#fff;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:5px;text-decoration-thickness:2px}
+.nav nav{margin-left:auto;margin-right:12px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;border:0;font-weight:600;font-size:16px;text-decoration:none;cursor:pointer;transition:transform .2s var(--ease),background .2s,box-shadow .2s,color .2s;touch-action:manipulation}
 .btn:active{transform:scale(.97)}
 .btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 6px 22px rgba(226,176,74,.28)}
@@ -278,6 +283,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 @media (max-width:980px){
   .nav ul,.nav .nav-cta{display:none}
   .burger{display:block}
+  .lang{margin-left:auto}
   .nav.open{background:var(--velvet)}
   .nav.open ul{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:var(--velvet);padding:8px 20px 22px;box-shadow:0 20px 30px rgba(5,2,20,.4)}
   .nav.open ul a{display:block;padding:14px 0;font-size:18px;border-bottom:1px solid var(--line-d)}
@@ -363,6 +369,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
         <li><a href="#rezerva">Rezervă</a></li>
       </ul>
     </nav>
+    <div class="lang" role="group" aria-label="Limba / Language"><button type="button" data-lang="ro" aria-pressed="true" lang="ro">RO</button><span aria-hidden="true">/</span><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button></div>
     <a class="btn btn-gold nav-cta" href="#rezerva">Verifică data</a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
   </div>
@@ -651,15 +658,16 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
   burger.addEventListener('click', function(){
     var open = burger.getAttribute('aria-expanded') === 'true';
     burger.setAttribute('aria-expanded', String(!open));
-    burger.setAttribute('aria-label', open ? 'Deschide meniul' : 'Închide meniul');
+    burger.setAttribute('aria-label', open ? (LANG === 'en' ? 'Open menu' : 'Deschide meniul') : (LANG === 'en' ? 'Close menu' : 'Închide meniul'));
     nav.classList.toggle('open', !open);
   });
   document.querySelectorAll('#menu a').forEach(function(a){ a.addEventListener('click', function(){
-    burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Deschide meniul'); nav.classList.remove('open');
+    burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label', LANG === 'en' ? 'Open menu' : 'Deschide meniul'); nav.classList.remove('open');
   });});
 
   // conteúdo por tipo de evento
-  var EV = {
+  var EVS = {};
+  EVS.ro = {
     copii:{n:'Petrecere pentru copii', img:'media/iepure.webp', alt:'O fetiță descoperă un iepure alb', p:'Știu cât contează ziua lui. Copiii nu stau doar pe scaun: îi chem lângă mine, țin bagheta și descoperă singuri trucul. Tu vezi cum li se luminează fața.', cta:'Cer data pentru o petrecere'},
     nunta:{n:'Nuntă', img:'media/public.webp', alt:'Truc de aproape pentru o invitată', p:'Ai pregătit luni de zile ziua asta. Eu aduc un moment care adună toată sala, de la cei mici la bunici, iar invitații tăi participă, nu doar privesc.', cta:'Cer data pentru nuntă'},
     botez:{n:'Botez', img:'media/gradina.webp', alt:'Iulian în mijlocul unei familii', p:'La un botez stau la aceeași masă și copiii, și bunicii. Fac magie pe care o înțelege toată familia: cei mici râd, iar cei mari se întreabă cum am făcut.', cta:'Cer data pentru botez'},
@@ -667,6 +675,16 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
     scena:{n:'Spectacol de scenă', img:'media/scena.webp', alt:'Iulian pe scenă', p:'Am urcat pe scena mare a Ateneului din Iași cu „Povestea unui magician”. Pot aduce un spectacol întreg și pe scena ta.', cta:'Cer data pentru un spectacol'},
     alt:{n:'Alt eveniment'}
   };
+  EVS.en = {
+    copii:{n:'Kids\u2019 party', img:'media/iepure.webp', alt:'A little girl discovers a white rabbit', p:'I know how much their big day matters. Kids don\u2019t just sit and watch: I call them up next to me, they hold the wand and discover the trick themselves. You get to see their faces light up.', cta:'Ask about a date for a party'},
+    nunta:{n:'Wedding', img:'media/public.webp', alt:'A close-up trick for a guest', p:'You\u2019ve spent months preparing for this day. I bring a moment that brings the whole room together, from the little ones to the grandparents, and your guests take part instead of just watching.', cta:'Ask about a date for the wedding'},
+    botez:{n:'Christening', img:'media/gradina.webp', alt:'Iulian in the middle of a family', p:'At a christening, kids and grandparents sit at the same table. I do magic the whole family understands: the little ones laugh, and the grown-ups wonder how I did it.', cta:'Ask about a date for the christening'},
+    corporate:{n:'Corporate event', img:'media/papion.webp', alt:'Iulian, in a bow tie, in front of an audience', p:'I know you want your team to leave with something extra. I bring an interactive show, with humour and a motivational message, where your colleagues become part of the act.', cta:'Ask about a date for your company'},
+    scena:{n:'Stage show', img:'media/scena.webp', alt:'Iulian on stage', p:'I took \u201cThe Story of a Magician\u201d to the main stage of the Athenaeum in Iași. I can bring a full show to your stage too.', cta:'Ask about a date for a show'},
+    alt:{n:'Another event'}
+  };
+  var LANG = 'ro', EV = EVS.ro;
+
   var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
   var reveal = document.getElementById('reveal');
   function fan(){
@@ -723,27 +741,34 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
   var t = new Date(); data.min = t.toISOString().slice(0,10);
   var luni = ['ianuarie','februarie','martie','aprilie','mai','iunie','iulie','august','septembrie','octombrie','noiembrie','decembrie'];
   var zile = ['duminică','luni','marți','miercuri','joi','vineri','sâmbătă'];
-  function fmt(v){ if(!v) return ''; var p=v.split('-'); var d=new Date(+p[0],+p[1]-1,+p[2]); return zile[d.getDay()]+', '+(+p[2])+' '+luni[+p[1]-1]+' '+p[0]; }
+  function fmt(v){ if(!v) return ''; var p=v.split('-'); var d=new Date(+p[0],+p[1]-1,+p[2]);
+    if(LANG === 'en') return d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    return zile[d.getDay()]+', '+(+p[2])+' '+luni[+p[1]-1]+' '+p[0]; }
+  var M = {
+    ro:{hi:'Bună ziua, Iulian! Vă scriu pentru un spectacol de magie.', ev:'Eveniment: ', d:'Data: ', h:', ora ', l:'Locul: ', g:'Invitați: aproximativ ', a:'Vârsta copiilor: ', o:'Mențiuni: ', q:'Sunteți liber la această dată?', empty:'Completează data și locul. Mesajul se scrie singur, aici.', subj:'Spectacol de magie: '},
+    en:{hi:'Hello Iulian! I\u2019m writing about a magic show.', ev:'Event: ', d:'Date: ', h:', at ', l:'Place: ', g:'Guests: about ', a:'Children\u2019s ages: ', o:'Notes: ', q:'Are you available on this date?', empty:'Fill in the date and the place. Your message writes itself, right here.', subj:'Magic show: '}
+  };
   function ev(){ var r = form.querySelector('input[name="ev"]:checked'); return r ? r.value : 'copii'; }
   function text(){
     var e = EV[ev()], L = [];
-    L.push('Bună ziua, Iulian! Vă scriu pentru un spectacol de magie.');
+    var m = M[LANG];
+    L.push(m.hi);
     L.push('');
-    L.push('Eveniment: '+e.n);
-    if(data.value) L.push('Data: '+fmt(data.value)+($('ora').value ? ', ora '+$('ora').value : ''));
-    if($('loc').value.trim()) L.push('Locul: '+$('loc').value.trim());
-    if($('inv').value) L.push('Invitați: aproximativ '+$('inv').value);
-    if(!$('f-varsta').classList.contains('hide') && $('varsta').value.trim()) L.push('Vârsta copiilor: '+$('varsta').value.trim());
-    if($('obs').value.trim()) L.push('Mențiuni: '+$('obs').value.trim());
+    L.push(m.ev+e.n);
+    if(data.value) L.push(m.d+fmt(data.value)+($('ora').value ? m.h+$('ora').value : ''));
+    if($('loc').value.trim()) L.push(m.l+$('loc').value.trim());
+    if($('inv').value) L.push(m.g+$('inv').value);
+    if(!$('f-varsta').classList.contains('hide') && $('varsta').value.trim()) L.push(m.a+$('varsta').value.trim());
+    if($('obs').value.trim()) L.push(m.o+$('obs').value.trim());
     L.push('');
-    L.push('Sunteți liber la această dată?');
+    L.push(m.q);
     if($('nume').value.trim() || $('tel').value.trim()) L.push(($('nume').value.trim()||'')+($('tel').value.trim() ? ' · '+$('tel').value.trim() : ''));
     return L.join('\n');
   }
   function build(){
     $('b-ev').textContent = EV[ev()].n;
     var pre = $('b-txt');
-    if(!data.value && !$('loc').value.trim()){ pre.innerHTML = '<span class="empty">Completează data și locul. Mesajul se scrie singur, aici.</span>'; }
+    if(!data.value && !$('loc').value.trim()){ pre.innerHTML = '<span class="empty">'+M[LANG].empty+'</span>'; }
     else pre.textContent = text();
   }
   form.addEventListener('input', build);
@@ -770,13 +795,143 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
     if(!check()) return;
     var msg = text();
     if(via === 'wa') window.open('https://wa.me/40758276660?text='+encodeURIComponent(msg), '_blank', 'noopener');
-    else location.href = 'mailto:magicianuliulian@gmail.com?subject='+encodeURIComponent('Spectacol de magie: '+EV[ev()].n+(data.value ? ', '+fmt(data.value) : ''))+'&body='+encodeURIComponent(msg);
+    else location.href = 'mailto:magicianuliulian@gmail.com?subject='+encodeURIComponent(M[LANG].subj+EV[ev()].n+(data.value ? ', '+fmt(data.value) : ''))+'&body='+encodeURIComponent(msg);
   });
   document.querySelectorAll('a[href="#rezerva"]').forEach(function(a){ a.addEventListener('click', function(){
     var on = document.querySelector('.card[aria-pressed="true"]'); if(on) pick(on.dataset.ev, false);
   });});
   pick('copii', false);
   cards[0].setAttribute('aria-pressed','true');
+  // EN discreto: o RO é lido do próprio HTML; aqui só a tradução
+  var T = [
+    ['title','h','Magician Iulian Paraschiv · Magician in Iași for kids, weddings, christenings and companies'],
+    ['meta[name="description"]','content','Magician Iulian Paraschiv, from Iași: interactive magic shows with humour and heart for kids’ parties, weddings, christenings and corporate events. Send the date of your event and get a reply.'],
+    ['.skip','h','Skip to content'],
+    ['.brand','aria-label','Magician Iulian, top of the page'],
+    ['nav[aria-label]','aria-label','Main'],
+    ['#menu a[href="#alege"]','h','Events'],
+    ['#menu a[href="#spectacol"]','h','The show'],
+    ['#menu a[href="#povestea"]','h','My story'],
+    ['#menu a[href="#galerie"]','h','Gallery'],
+    ['#menu a[href="#rezerva"]','h','Book'],
+    ['.nav-cta','h','Check the date'],
+    ['.hero .eyebrow','h','Magic shows · Iași'],
+    ['.hero h1 .l1','h','Magician'],
+    ['.lede','h','I’m Iulian and I do close-up magic, full of laughter and emotion: at your child’s party, at your wedding, at a christening or at your company event. You enjoy your guests, and I take care of the show.'],
+    ['.cta-row .btn-gold','h','Check the date of your event'],
+    ['.cta-row .btn-ghost','h','See the show'],
+    ['.credits','aria-label','In short'],
+    ['.credits li:nth-child(1)','h','Doing magic since I was 5'],
+    ['.credits li:nth-child(2)','h','Over 250 shows'],
+    ['.credits li:nth-child(3)','h','I performed at the Athenaeum in Iași'],
+    ['.credits li:nth-child(4)','h','I was on iUmor'],
+    ['.hero-photo img','alt','Iulian Paraschiv on stage, holding up a playing card to the audience'],
+    ['.ticket','h','<b>“I want you to smile for real.”</b>That’s what I wish for at every show.'],
+    ['.deck-head h2','h','Pick a card.'],
+    ['.deck-head p','h','Every event is different, so I shape the show for yours. Tap your card.'],
+    ['#deck','aria-label','Event types'],
+    ['.card[data-ev="copii"] .t','h','Kids’ party'],
+    ['.card[data-ev="nunta"] .t','h','Wedding'],
+    ['.card[data-ev="botez"] .t','h','Christening'],
+    ['.card[data-ev="corporate"] .t','h','Corporate event'],
+    ['.card[data-ev="scena"] .t','h','Stage show'],
+    ['#rv-k','h','Your card'],
+    ['.marquee-track','h','<span>Kids’ parties</span><span>Weddings</span><span>Christenings</span><span>Corporate events</span><span>Stage shows</span><span>Iași</span><span>Kids’ parties</span><span>Weddings</span><span>Christenings</span><span>Corporate events</span><span>Stage shows</span><span>Iași</span>'],
+    ['#spectacol .eyebrow','h','The show'],
+    ['#spectacol h2','h','Here the audience <em>makes</em> the magic.'],
+    ['#spectacol .sec-head p','h','My show is interactive, full of comedy, emotion and motivation. I work one step away from people, with them, not just in front of them.'],
+    ['.act:nth-child(1) img','alt','A little girl lifts a lid and finds a white rabbit in the magician’s hands'],
+    ['.act:nth-child(1) figcaption','h','<b>She lifts the lid.</b>The rabbit is already there. I let the magic happen in their hands.'],
+    ['.act:nth-child(2) img','alt','Iulian performs a close-up trick for a guest holding a microphone'],
+    ['.act:nth-child(2) figcaption','h','<b>For adults, up close.</b>I bring the trick right up to you, even with the mic in your hand.'],
+    ['.act:nth-child(3) img','alt','Iulian next to a little girl taking part in a trick at a party'],
+    ['.act:nth-child(3) figcaption','h','<b>Today’s assistant.</b>Kids take turns next to me and do the trick with me.'],
+    ['.words div:nth-child(1)','h','<b>Interactive</b><span>I bring you into the act, you and your guests, from the little ones to the grandparents.</span>'],
+    ['.words div:nth-child(2)','h','<b>Comedy</b><span>We laugh together, at any age.</span>'],
+    ['.words div:nth-child(3)','h','<b>Emotion</b><span>I want the memory to stay, not just the trick.</span>'],
+    ['.words div:nth-child(4)','h','<b>Motivation</b><span>For teams, I use magic to tell a message that sticks.</span>'],
+    ['#povestea .eyebrow','h','My story'],
+    ['#povestea h2','h','A trick at 5. A big stage in Iași.'],
+    ['#povestea .sec-head p','h','I’m Iulian Denis Paraschiv. Ever since I discovered magic, I’ve been looking for new ideas so every show fits the event.'],
+    ['.tl li:nth-child(1)','h','<span class="when">At 5</span><h3>My first trick</h3><p>I started early and never put magic down. Since then I keep working on new acts.</p>'],
+    ['.tl li:nth-child(2)','h','<span class="when">Television</span><h3>iUmor, Antena 1</h3><p>I brought my magic in front of the iUmor jury. I also talked about my craft on BZI.</p>'],
+    ['.tl li:nth-child(3)','h','<span class="when">Parties, weddings, companies</span><h3>Over 250 shows</h3><p>I’ve done magic in Romania and abroad, at parties, weddings and company events.</p>'],
+    ['.tl li:nth-child(4)','h','<time datetime="2021-08-07">7 August 2021</time><h3>“The Story of a Magician”</h3><p>I made my biggest dream come true: my own show, in the Main Hall of the National Athenaeum in Iași.</p>'],
+    ['.tl li:nth-child(5)','h','<span class="when">Today</span><h3>Magic for your event</h3><p>I come to your event with the same care as at my first show: I prepare it for your people.</p>'],
+    ['.quote img','alt','Iulian Paraschiv smiling, in a bow tie and burgundy jacket'],
+    ['.quote blockquote','h','Yes, a dream, maybe the biggest dream: to do magic at the Athenaeum, or on any big stage in Iași!'],
+    ['.quote figcaption','h','I wrote this before my show at the Athenaeum.'],
+    ['#galerie .eyebrow','h','Gallery'],
+    ['#galerie h2','h','From the room, not the studio.'],
+    ['#galerie .sec-head p','h','These are the people I’ve done magic for: parties, birthdays, gardens full of guests. Every photo is from one of my shows.'],
+    ['.g1 img','alt','Iulian at a Halloween party, surrounded by kids in costumes'],
+    ['.g1 figcaption','h','Halloween party'],
+    ['.g2 img','alt','Iulian kneeling in the middle of a family at a garden party'],
+    ['.g2 figcaption','h','Family party'],
+    ['.g3 img','alt','Iulian lifts a box covered with a red scarf in front of the kids at a 7th birthday'],
+    ['.g3 figcaption','h','7th birthday'],
+    ['.g4 img','alt','A group of kids in party hats with Iulian'],
+    ['.g4 figcaption','h','Kids’ party'],
+    ['.g5 img','alt','Iulian in a top hat and white gloves, in a park'],
+    ['.g5 figcaption','h','The early years'],
+    ['#rezerva .eyebrow','h','Book'],
+    ['#rezerva h2','h','Tell me the date. <em>I’ll</em> prepare the rest.'],
+    ['#rezerva .sec-head p','h','I know you have a lot to organise. Fill this in once and send me everything I need to know: the date, the place, the guests. That way I can reply straight away with an offer, without asking you anything else.'],
+    ['legend','h','What’s your event?'],
+    ['label[for="ev-copii"]','h','<svg aria-hidden="true"><use href="#s-spade"/></svg>Kids’ party'],
+    ['label[for="ev-nunta"]','h','<svg class="red" aria-hidden="true"><use href="#s-heart"/></svg>Wedding'],
+    ['label[for="ev-botez"]','h','<svg class="red" aria-hidden="true"><use href="#s-diamond"/></svg>Christening'],
+    ['label[for="ev-corporate"]','h','<svg aria-hidden="true"><use href="#s-club"/></svg>Corporate'],
+    ['label[for="ev-scena"]','h','<svg aria-hidden="true" style="color:#B8892A"><use href="#s-star"/></svg>Stage show'],
+    ['label[for="ev-alt"]','h','Another event'],
+    ['label[for="data"]','h','Date of the event'],
+    ['#m-data','h','Pick the date so I can check if I’m free.'],
+    ['label[for="ora"]','h','Approximate time <span class="hint">(optional)</span>'],
+    ['label[for="loc"]','h','Town and venue'],
+    ['#loc','placeholder','E.g.: Iași, restaurant or at home'],
+    ['#m-loc','h','Write the town so I know where I’m going.'],
+    ['label[for="inv"]','h','How many guests?'],
+    ['#inv','placeholder','Roughly'],
+    ['label[for="varsta"]','h','Children’s ages'],
+    ['#varsta','placeholder','E.g.: 5–8 years; the birthday child turns 7'],
+    ['label[for="nume"]','h','Your name'],
+    ['label[for="tel"]','h','Your phone <span class="hint">(optional)</span>'],
+    ['label[for="obs"]','h','Anything else important? <span class="hint">(optional)</span>'],
+    ['#obs','placeholder','E.g.: it’s a surprise for the birthday child'],
+    ['button[data-via="wa"]','h','<svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>Send on WhatsApp'],
+    ['button[data-via="mail"]','h','<svg width="20" height="20" aria-hidden="true"><use href="#i-mail"/></svg>Send by e-mail'],
+    ['.note','h','Your message opens ready-written in WhatsApp or e-mail. Nothing is sent until you press “Send”, and I reply to you personally.'],
+    ['.preview','aria-label','Your message'],
+    ['.bilet .k','h','Your message'],
+    ['.direct a[href^="tel"] small','h','Call me'],
+    ['.foot > div:first-child h4','h','Magician Iulian Paraschiv'],
+    ['.foot > div:first-child p','h','I do magic for kids, weddings, christenings and companies, from Iași. Glad to meet you.'],
+    ['.foot > div:nth-child(3) h4','h','Follow'],
+    ['.legal a[href*="anpc"]','h','ANPC · Alternative dispute resolution'],
+    ['.legal a[href*="odr"]','h','ODR · Online dispute resolution']
+  ];
+  T.forEach(function(r){
+    var el = document.querySelector(r[0]); if(!el){ return; }
+    r.push(r[1] === 'h' ? el.innerHTML : el.getAttribute(r[1]));
+  });
+  function setLang(l){
+    LANG = l === 'en' ? 'en' : 'ro'; EV = EVS[LANG];
+    document.documentElement.lang = LANG;
+    T.forEach(function(r){
+      var el = document.querySelector(r[0]); if(!el) return;
+      var v = LANG === 'en' ? r[2] : r[3];
+      if(r[1] === 'h') el.innerHTML = v; else el.setAttribute(r[1], v);
+    });
+    burger.setAttribute('aria-label', LANG === 'en' ? 'Open menu' : 'Deschide meniul');
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === LANG)); });
+    var on = document.querySelector('.card[aria-pressed="true"]');
+    pick(on ? on.dataset.ev : ev(), false);
+    try{ localStorage.setItem('iulian-lang', LANG); }catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+  var start = 'ro';
+  try{ start = (new URLSearchParams(location.search).get('lang')) || localStorage.getItem('iulian-lang') || 'ro'; }catch(e){}
+  if(start === 'en') setLang('en');
   $('an').textContent = new Date().getFullYear();
 })();
 </script>
