@@ -202,6 +202,7 @@ ul.limpia { list-style: none; margin: 0; padding: 0; }
 .chip input:checked + label { border-color: var(--tinta); background: var(--tinta); color: var(--hoja); }
 .chip input:checked + label small { color: #C9CDD2; }
 .chip input:focus-visible + label { outline: 3px solid var(--cian); outline-offset: 2px; }
+.chip input:disabled + label { opacity: .38; cursor: not-allowed; text-decoration: line-through; text-decoration-thickness: 1px; }
 .chip label .sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
 .nota-op { font-size: .82rem; color: var(--gris); }
 .nota-op.alerta { color: var(--aviso); }
@@ -400,3 +401,9 @@ body.con-barra .wa-flot { display: none; }
   .hero-inm video.hero-fondo { top: auto; bottom: 0; height: auto; aspect-ratio: 9 / 16; object-fit: cover; }
   .hero-inm:has(video) .hero-velo { background: linear-gradient(180deg, rgba(247,247,244,.96) 0%, rgba(247,247,244,.92) calc(100% - 40svh - 40px), rgba(247,247,244,0) calc(100% - 40svh + 70px)); }
 }
+/* Tabla de precios por cara: doble cara grande, una cara debajo */
+table.precios.precios--caras, table.precios { min-width: 0; }
+table.precios td.n { white-space: nowrap; }
+table.precios td small { display: block; font: 400 .74rem/1.3 var(--f-mono); color: var(--gris); margin-top: 3px; }
+table.precios td b { font-weight: 650; }
+@media (max-width: 520px) { table.precios th, table.precios td { padding: 11px 12px; } }

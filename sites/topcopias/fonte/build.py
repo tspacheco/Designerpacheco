@@ -12,6 +12,9 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 MODO = "preview" if len(sys.argv) > 1 and sys.argv[1] == "preview" else "web"
 SAIDA = os.path.join(AQUI, "..", "preview" if MODO == "preview" else "site")
 P = json.load(open(os.path.join(AQUI, "data", "precios.json"), encoding="utf-8"))
+BASE = P["precios"]["A4-80"]          # papel de referencia para los «desde»
+BN0, COL0 = BASE["bn"][1], BASE["color"][1]   # A4 80 g a doble cara
+ESP0 = min(t[0][1] for t in (v.get("espiral") for v in P["precios"].values()) if t)
 N = json.load(open(os.path.join(AQUI, "data", "negocio.json"), encoding="utf-8"))
 DOMINIO = "https://topcopias.com"
 T1, T2 = N["tiendas"]
@@ -148,10 +151,9 @@ def pagina(ruta, actual, titulo, desc, cuerpo, con_pedido=False, extra_head=""):
 def ticket_ejemplo_estatico():
     # mismo cálculo que pedido.js: 148 págs, 12 en color, doble cara, espiral
     bn, col = 136, 12
-    pbn = [p for n, p in P["tramos"]["bn"] if bn >= n][-1]
-    pcol = [p for n, p in P["tramos"]["color"] if col >= n][-1]
+    pbn, pcol = BASE["bn"][1], BASE["color"][1]
     hojas = 74
-    esp = [p for n, p in P["acabados"]["espiral"]["tramos_hojas"] if hojas <= n][0]
+    esp = [p for n, p in BASE["espiral"] if hojas <= n][0]
     filas = [(f"B/N · {bn} caras × {eur(pbn, 3)}", bn * pbn), (f"Color · {col} caras × {eur(pcol, 3)}", col * pcol), ("Encuadernado en espiral · 1 ud.", esp)]
     tot = sum(x for _, x in filas)
     h = '<h4><span>Apuntes-Derecho-Civil.pdf</span><span>148 págs</span></h4>'
@@ -168,13 +170,15 @@ def chip(nombre, valor, etiqueta, peque="", marcado=False, sw=""):
 
 
 def herramienta(titulo_nivel="h2"):
-    papel = "".join(chip("op_papel", k, v["etiqueta"].split(" · ")[0], v["etiqueta"].split(" · ")[1] + (f' · +{eur(v["por_hoja"])}/hoja' if v["por_hoja"] else " · incluido"), k == "80") for k, v in P["papel"].items())
+    papel = "".join(chip("op_papel", k, v["etiqueta"].split(" · ")[0], v["etiqueta"].split(" · ")[1], k == "80") for k, v in P["papel"].items())
     acab = []
     for k, v in P["acabados"].items():
-        if k == "espiral":
-            pr = "desde " + eur(v["tramos_hojas"][0][1])
+        if k == "ninguno":
+            pr = "gratis"
+        elif k == "espiral":
+            pr = "desde " + eur(min(t[0][1] for t in (x.get("espiral") for x in P["precios"].values()) if t))
         else:
-            pr = eur(v["precio"]) if v["precio"] else "gratis"
+            pr = "desde " + eur(min(x[k] for x in P["precios"].values() if x.get(k)), 3 if BASE.get(k, 1) < 0.1 else 2) + " " + v["unidad"]
         acab.append(chip("op_acabado", k, v["etiqueta"], f'{v["detalle"]} · {pr}', k == "ninguno"))
     tiendas_opts = "".join(chip("tienda", t["id"], t["nombre"], t["direccion"], i == 0) for i, t in enumerate(N["tiendas"]))
     archivos_ocultos = "".join(f'<input type="file" name="archivo{i}" hidden>' for i in range(1, 6))
@@ -218,11 +222,11 @@ def herramienta(titulo_nivel="h2"):
           {chip("op_pps", "2", "2 páginas", "Ideal para apuntes y diapositivas")}
         </div></fieldset>
         <fieldset class="grupo"><legend>Tamaño</legend><div class="chips">
-          {chip("op_formato", "A4", "A4", "21 × 29,7 cm", True)}
-          {chip("op_formato", "A3", "A3", "29,7 × 42 cm · precio doble")}
+          {"".join(chip("op_formato", k, v["etiqueta"], v["detalle"], k == "A4") for k, v in P["formato"].items())}
         </div></fieldset>
-        <fieldset class="grupo"><legend>Papel</legend><div class="chips">{papel}</div></fieldset>
-        <fieldset class="grupo"><legend>Acabado (por copia)</legend><div class="chips">{"".join(acab)}</div>
+        <fieldset class="grupo"><legend>Papel</legend><div class="chips">{papel}</div>
+          <p class="nota-op" id="aviso-papel" hidden></p></fieldset>
+        <fieldset class="grupo"><legend>Acabado</legend><div class="chips">{"".join(acab)}</div>
           <p class="nota-op alerta" id="aviso-acabado" hidden></p></fieldset>
       </div>
 
@@ -264,7 +268,7 @@ def herramienta(titulo_nivel="h2"):
 
     <aside class="resumen" aria-label="Resumen del precio">
       <div class="ticket corte" id="resumen-ticket"></div>
-      <p class="aviso-precio">Precios con IVA incluido. Si tu archivo necesita algo especial (márgenes, páginas en blanco, formatos raros) te lo decimos antes de imprimir.</p>
+      <p class="aviso-precio">Precios de la tarifa de TopCopias. Si tu archivo necesita algo especial (márgenes, páginas en blanco, formatos raros) te lo decimos antes de imprimir.</p>
     </aside>
   </div>
 </div></section>
@@ -284,12 +288,11 @@ def pasos():
 
 
 def servicios_grid(prof):
-    bn0 = P["tramos"]["bn"][-1][1]; col0 = P["tramos"]["color"][-1][1]
-    esp0 = P["acabados"]["espiral"]["tramos_hojas"][0][1]; ter = P["acabados"]["termico"]["precio"]
+    bn0, col0, esp0 = BN0, COL0, ESP0
     items = [
         ("apuntes", "Apuntes y temarios", "Blanco y negro a doble cara, con 2 páginas por cara si quieres ahorrar papel. Para todo el cuatrimestre.", f"desde <b>{eur(bn0, 3)}</b> la cara"),
-        ("color", "Impresión en color", "Impresoras láser de alta calidad para trabajos, presentaciones y portadas que tienen que verse bien.", f"desde <b>{eur(col0, 2)}</b> la cara"),
-        ("espiral", "Encuadernación", "Espiral con tapa transparente para el día a día, o térmica con acabado de libro para el TFG.", f"espiral desde <b>{eur(esp0)}</b> · térmica <b>{eur(ter)}</b>"),
+        ("color", "Impresión en color", "Impresoras láser de alta calidad para trabajos, presentaciones y portadas que tienen que verse bien.", f"desde <b>{eur(col0, 3)}</b> la cara"),
+        ("espiral", "Encuadernación", "Espiral con tapa transparente y trasera, tapas de color, grapado, taladrado y plastificado.", f"espiral desde <b>{eur(esp0)}</b>"),
         ("flyer", "Flyers y folletos", "Panfletos, folletos y carteles para tu negocio, tu asociación o tu evento.", "precio según cantidad"),
         ("tarjeta", "Tarjetas de visita", "Tarjetas con la máxima calidad de impresión, listas para repartir.", "precio según diseño y cantidad"),
         ("envio", "Envío a toda la península", f"¿No estás en Zaragoza? Te lo mandamos a casa. {P['envio']['texto']}, gratis desde {eur(P['envio']['gratis_desde'])}.", "24 a 48 horas"),
@@ -335,7 +338,7 @@ FAQ = [
     ("¿Cuánto tarda mi pedido?", "Los pedidos que entran antes de las 13:00 se preparan el mismo día, salvo tiradas muy grandes. Te avisamos por WhatsApp en cuanto esté listo para recoger."),
     ("¿Tengo que pagar online?", "No. Envías el pedido sin pagar y pagas en la tienda cuando recoges tus copias."),
     ("¿Cómo sabéis qué páginas van en color?", "Al subir el PDF, la web mira cada página en tu propio dispositivo y cuenta las que tienen color. Con la opción «Automático» solo pagas color en esas páginas. Si prefieres todo en blanco y negro, elígelo y el precio baja al momento."),
-    ("¿El precio que veo es el final?", "Sí, con IVA incluido, para las opciones que eliges. Si tu archivo necesita algún ajuste especial te lo decimos antes de imprimir, nunca después."),
+    ("¿El precio que veo es el final?", "Sí, para las opciones que eliges. Si tu archivo necesita algún ajuste especial te lo decimos antes de imprimir, nunca después."),
     ("¿Qué archivos puedo subir?", "PDF e imágenes (JPG, PNG). Si tienes un Word o un PowerPoint, guárdalo como PDF antes de subirlo: así se imprime exactamente como lo ves."),
     ("Mi archivo es muy grande, ¿qué hago?", f"El formulario admite hasta 8 MB por pedido. Si pesa más, envía el pedido igualmente y mándanos los archivos por WhatsApp al {N['whatsapp_texto']} o a {N['email_pedidos']} con tu código."),
     ("¿Qué pasa con mis archivos después?", "Solo los usamos para imprimir tu pedido y los borramos cuando lo recoges. No los compartimos con nadie."),
@@ -373,7 +376,7 @@ def construir():
     with open(os.path.join(SAIDA, "assets", "favicon.svg"), "w") as f:
         f.write(LOGO_SVG.replace('<svg viewBox', '<svg xmlns="http://www.w3.org/2000/svg" viewBox'))
 
-    bn0 = P["tramos"]["bn"][-1][1]
+    bn0 = BN0
     ld = {
         "@context": "https://schema.org", "@type": "LocalBusiness", "name": "Copistería TopCopias", "url": DOMINIO,
         "telephone": T1["tel"], "email": N["email_pedidos"], "priceRange": "€",
@@ -391,7 +394,7 @@ def construir():
                  'data-poster-horizontal="assets/media/hero-h.jpg" data-poster-vertical="assets/media/hero-v.jpg"></video>')
     else:
         fondo = '<canvas class="hero-fondo hojas" aria-hidden="true"></canvas>'
-    col0 = P["tramos"]["color"][-1][1]
+    col0 = COL0
     hero = f'''
 <section class="hero-inm" aria-labelledby="t-hero">
   {fondo}
@@ -409,7 +412,7 @@ def construir():
       </label>
       <ul class="precios-hero limpia">
         <li><span>B/N desde</span><b class="mono">{eur(bn0, 3)}</b></li>
-        <li><span>Color desde</span><b class="mono">{eur(col0, 2)}</b></li>
+        <li><span>Color desde</span><b class="mono">{eur(col0, 3)}</b></li>
         <li><span>Listo hoy si pides antes de las</span><b class="mono">13:00</b></li>
       </ul>
     </div>
@@ -427,36 +430,43 @@ def construir():
            herramienta("h1").replace('class="seccion herramienta"', 'class="seccion herramienta" style="padding-top:clamp(28px,5vw,56px)"') + pasos() + faq_bloque() , con_pedido=True)
 
     # Servicios
-    pagina("servicios", "servicios", "Servicios · TopCopias Zaragoza", "Apuntes, impresión en color, encuadernación en espiral y térmica, flyers, tarjetas de visita y envíos a la península.",
+    pagina("servicios", "servicios", "Servicios · TopCopias Zaragoza", "Apuntes, impresión en color, encuadernación en espiral, plastificado, flyers, tarjetas de visita y envíos a la península.",
            cab_pag("Servicios", "Todo lo que sale de nuestras máquinas", "Imprimimos para estudiantes, opositores, profesores y negocios del barrio. Lo que se pide online se recoge listo en tienda.")
            + f'<section class="seccion"><div class="wrap">{servicios_grid(1)}</div></section>' + banda() + cierre(1))
 
     # Precios
-    def tabla(clave, nombre):
-        filas = P["tramos"][clave]
+    def e3(x):
+        return eur(x, 3) if abs(x * 100 - round(x * 100)) > 1e-9 else eur(x)
+    def tabla(fmt):
         trs = ""
-        for i, (desde, pr) in enumerate(filas):
-            hasta = filas[i + 1][0] - 1 if i + 1 < len(filas) else None
-            rango = f"{desde} – {hasta}" if hasta else f"{desde} o más"
-            trs += f'<tr><td>{rango} caras</td><td class="n">{eur(pr, 3)}</td><td class="n">{eur(pr * 2, 3)}</td></tr>'
-        return f'<div class="tabla-wrap"><table class="precios"><caption class="sr">{nombre}</caption><thead><tr><th>{nombre} · caras en el pedido</th><th class="n">A4 / cara</th><th class="n">A3 / cara</th></tr></thead><tbody>{trs}</tbody></table></div>'
-    esp = P["acabados"]["espiral"]["tramos_hojas"]
-    prev = 0; esp_tr = ""
-    for h, pr in esp:
-        esp_tr += f'<tr><td>Espiral · {prev + 1} – {h} hojas</td><td class="n">{eur(pr)}</td></tr>'; prev = h
-    otros = "".join(f'<tr><td>{v["etiqueta"]}{" · hasta " + str(v["max_hojas"]) + " hojas" if v.get("max_hojas") else ""}</td><td class="n">{eur(v["precio"])}</td></tr>' for k, v in P["acabados"].items() if k not in ("ninguno", "espiral"))
-    papel_tr = "".join(f'<tr><td>{v["etiqueta"]}</td><td class="n">{"incluido" if not v["por_hoja"] else "+" + eur(v["por_hoja"]) + " / hoja"}</td></tr>' for v in P["papel"].values())
+        for k, v in P["papel"].items():
+            c = P["precios"].get(f"{fmt}-{k}")
+            if not c:
+                continue
+            et = v["etiqueta"].split(" · ")
+            celda = lambda x: f'<td class="n">{e3(x[1])}<small>una cara {e3(x[0])}</small></td>'
+            trs += f'<tr><td><b>{et[0]}</b><small>{et[1]}</small></td>{celda(c["bn"])}{celda(c["color"])}</tr>'
+        return (f'<div class="tabla-wrap"><table class="precios precios--caras"><caption class="sr">{fmt}</caption><thead><tr><th>{fmt} · {P["formato"][fmt]["detalle"]}</th>'
+                f'<th class="n">B/N</th><th class="n">Color</th></tr></thead><tbody>{trs}</tbody></table></div>')
+    acab_tr = ""
+    for fmt in P["formato"]:
+        c = P["precios"][f"{fmt}-80"]
+        prev = 0
+        for h, pr in c["espiral"]:
+            rango = f"hasta {h} hojas" if prev == 0 else f"{prev + 1} – {h} hojas"
+            acab_tr += f'<tr><td>Espiral {fmt} · {rango}</td><td class="n">{eur(pr)}</td></tr>'; prev = h
+    acab_tr += f'<tr><td>Tapas de color en la espiral</td><td class="n">+{eur(P["tapas_color"])}</td></tr>'
+    acab_tr += f'<tr><td>Grapado A4 y A5 · {BASE["grapado_hojas"][0]} a {BASE["grapado_hojas"][1]} hojas, por copia</td><td class="n">{eur(BASE["grapado"], 3)}</td></tr>'
+    acab_tr += f'<tr><td>Taladrado A4 y A5, por copia</td><td class="n">{eur(BASE["taladro"])}</td></tr>'
+    acab_tr += "".join(f'<tr><td>Plastificado {fmt}, por hoja</td><td class="n">{eur(P["precios"][f"{fmt}-80"]["plastificado"])}</td></tr>' for fmt in P["formato"])
     aviso = '' if P.get("confirmado") else '<p class="aviso" data-pendiente>Tabla de referencia pendiente de confirmar por TopCopias antes de publicar.</p>'
-    precios_html = cab_pag("Precios", "Precios claros, por cara impresa", f"Cuantas más caras lleva tu pedido, menos pagas por cada una. Todos los precios con IVA incluido.") + f'''
+    precios_html = cab_pag("Precios", "Precios claros, por cara impresa", "Pagas cada cara que imprimimos, según el tamaño, el papel y si es a una o a doble cara. La calculadora suma todo al momento.") + f'''
 <section class="seccion"><div class="wrap precios-grid">
   {aviso}
-  <div class="seccion-cab" style="margin:0"><h2>Blanco y negro</h2><p>El tramo se calcula con el total de caras del pedido: todas las copias de todos tus archivos.</p></div>
-  {tabla("bn", "Blanco y negro")}
-  <div class="seccion-cab" style="margin:0"><h2>Color</h2><p>Con la opción «Automático» solo pagas color en las páginas que lo llevan.</p></div>
-  {tabla("color", "Color")}
-  <div class="seccion-cab" style="margin:0"><h2>Papel y acabados</h2></div>
-  <div class="tabla-wrap"><table class="precios"><thead><tr><th>Papel</th><th class="n">Precio</th></tr></thead><tbody>{papel_tr}</tbody></table></div>
-  <div class="tabla-wrap"><table class="precios"><thead><tr><th>Acabado, por copia</th><th class="n">Precio</th></tr></thead><tbody>{esp_tr}{otros}</tbody></table></div>
+  <div class="seccion-cab" style="margin:0"><h2>Impresión por cara</h2><p>Precio grande: a doble cara. Debajo, a una cara. Con la opción «Automático» solo pagas color en las páginas que lo llevan.</p></div>
+  {"".join(tabla(f) for f in P["formato"])}
+  <div class="seccion-cab" style="margin:0"><h2>Acabados</h2></div>
+  <div class="tabla-wrap"><table class="precios"><thead><tr><th>Acabado</th><th class="n">Precio</th></tr></thead><tbody>{acab_tr}</tbody></table></div>
   <div class="tabla-wrap"><table class="precios"><thead><tr><th>Entrega</th><th class="n">Precio</th></tr></thead><tbody>
     <tr><td>Recoger en tienda</td><td class="n">gratis</td></tr>
     <tr><td>Envío a la península ({P["envio"]["texto"]})</td><td class="n">{eur(P["envio"]["precio"])}</td></tr>
@@ -476,7 +486,7 @@ def construir():
     ident = f'<p><b>{N["razon_social"]}</b> · CIF {N["cif"]} · {N["domicilio_fiscal"]} · {N["email_pedidos"]}</p>'
     legal("aviso-legal", "Aviso legal", ident + '''
 <h2>Objeto</h2><p>Esta web informa de los servicios de copistería e impresión de TopCopias y permite enviar pedidos de impresión para recoger en tienda o recibir en casa.</p>
-<h2>Pedidos</h2><p>El precio mostrado al subir un archivo es el precio del pedido con las opciones elegidas, IVA incluido. Si un archivo necesita ajustes, te contactamos antes de imprimir. El pago se hace al recoger en tienda.</p>
+<h2>Pedidos</h2><p>El precio mostrado al subir un archivo es el precio del pedido con las opciones elegidas. Si un archivo necesita ajustes, te contactamos antes de imprimir. El pago se hace al recoger en tienda.</p>
 <h2>Propiedad intelectual</h2><p>Quien sube un archivo declara tener derecho a reproducirlo. TopCopias no imprime material que infrinja derechos de terceros.</p>''')
     legal("privacidad", "Política de privacidad", ident + '''
 <h2>Qué datos tratamos</h2><p>Nombre, móvil, email, dirección (solo si pides envío) y los archivos que subes para imprimir.</p>

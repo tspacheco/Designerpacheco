@@ -20,13 +20,15 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
   /* ---------- Cálculo ---------- */
-  function tramo(lista, n) { var p = lista[0][1]; for (var i = 0; i < lista.length; i++) if (n >= lista[i][0]) p = lista[i][1]; return p; }
-  function precioEspiral(hojas) { var t = P.acabados.espiral.tramos_hojas; for (var i = 0; i < t.length; i++) if (hojas <= t[i][0]) return t[i][1]; return null; }
+  function combo(op) { return P.precios[op.formato + "-" + op.papel]; }
+  function precioEspiral(t, hojas) { for (var i = 0; i < t.length; i++) if (hojas <= t[i][0]) return t[i][1]; return null; }
 
   // docs: [{pages, colorPages, copies}] · op: {color, caras, pps, formato, papel, acabado, entrega}
+  // Tarifa de TopCopias: precio por cara impresa según tamaño + papel, distinto a una o a doble cara.
   function calcular(docs, op) {
     var bnCaras = 0, colCaras = 0, hojasTot = 0, acabadoTot = 0, avisos = [], copiasTot = 0;
-    var ac = P.acabados[op.acabado];
+    var c = combo(op) || P.precios["A4-80"], ac = P.acabados[op.acabado], lado = op.caras === "doble" ? 1 : 0;
+    var conAcabado = op.acabado !== "ninguno" && c[op.acabado];
     docs.forEach(function (d) {
       if (!d.pages) return;
       var colP = op.color === "bn" ? 0 : op.color === "color" ? d.pages : (d.colorPages || 0);
@@ -35,23 +37,24 @@
       var bnC = caras - colC;
       var hojas = op.caras === "doble" ? Math.ceil(caras / 2) : caras;
       bnCaras += bnC * d.copies; colCaras += colC * d.copies; hojasTot += hojas * d.copies; copiasTot += d.copies;
+      if (!conAcabado) return;
       if (op.acabado === "espiral") {
-        var pe = precioEspiral(hojas);
-        if (pe === null) { avisos.push("«" + d.name + "» tiene " + hojas + " hojas: para espiral de más de 400 hojas te damos precio en tienda."); pe = P.acabados.espiral.tramos_hojas.slice(-1)[0][1]; }
+        var pe = precioEspiral(c.espiral, hojas);
+        if (pe === null) { var mx = c.espiral[c.espiral.length - 1]; avisos.push("«" + d.name + "» tiene " + hojas + " hojas y la espiral admite hasta " + mx[0] + " en este papel: te damos precio en tienda."); pe = mx[1]; }
         acabadoTot += pe * d.copies;
-      } else if (ac && ac.precio) {
-        if (ac.max_hojas && hojas > ac.max_hojas) avisos.push("«" + d.name + "» tiene " + hojas + " hojas y el " + ac.etiqueta.toLowerCase() + " admite hasta " + ac.max_hojas + ". Te recomendamos espiral.");
-        acabadoTot += ac.precio * d.copies;
+      } else if (op.acabado === "plastificado") {
+        acabadoTot += c.plastificado * hojas * d.copies;
+      } else {
+        if (op.acabado === "grapado" && c.grapado_hojas && (hojas < c.grapado_hojas[0] || hojas > c.grapado_hojas[1]))
+          avisos.push("«" + d.name + "» tiene " + hojas + " hojas y el grapado es de " + c.grapado_hojas[0] + " a " + c.grapado_hojas[1] + ". Te recomendamos espiral.");
+        acabadoTot += c[op.acabado] * d.copies;
       }
     });
-    var mult = P.formato[op.formato].multiplicador;
-    var pBn = tramo(P.tramos.bn, bnCaras) * mult, pCol = tramo(P.tramos.color, colCaras) * mult;
-    var papel = P.papel[op.papel].por_hoja * mult * hojasTot;
+    var pBn = c.bn[lado], pCol = c.color[lado];
     var lineas = [];
     if (bnCaras) lineas.push(["B/N · " + bnCaras + " caras × " + eur3(pBn), bnCaras * pBn]);
     if (colCaras) lineas.push(["Color · " + colCaras + " caras × " + eur3(pCol), colCaras * pCol]);
-    if (papel) lineas.push(["Papel " + op.papel + " g · " + hojasTot + " hojas", papel]);
-    if (acabadoTot) lineas.push([ac.etiqueta + " · " + copiasTot + " ud.", acabadoTot]);
+    if (acabadoTot) lineas.push([ac.etiqueta + " · " + (op.acabado === "plastificado" ? hojasTot + " hojas" : copiasTot + " ud."), acabadoTot]);
     var sub = lineas.reduce(function (s, l) { return s + l[1]; }, 0);
     if (op.entrega === "envio" && sub > 0) {
       var gratis = sub >= P.envio.gratis_desde;
@@ -59,6 +62,23 @@
       if (!gratis) sub += P.envio.precio;
     }
     return { lineas: lineas, total: Math.round(sub * 100) / 100, hojas: hojasTot, bn: bnCaras, col: colCaras, avisos: avisos };
+  }
+
+  // Desactiva los papeles y acabados que TopCopias no ofrece en el tamaño elegido.
+  function ajustarDisponibles() {
+    var fmt = (raiz.querySelector('[name="op_formato"]:checked') || {}).value || "A4", nota = [];
+    $$('[name="op_papel"]', raiz).forEach(function (i) {
+      var no = !P.precios[fmt + "-" + i.value]; i.disabled = no;
+      if (no && i.checked) { raiz.querySelector('[name="op_papel"][value="80"]').checked = true; nota.push(i.value + " g no está disponible en " + fmt + "."); }
+    });
+    var pap = raiz.querySelector('[name="op_papel"]:checked').value, c = P.precios[fmt + "-" + pap];
+    $$('[name="op_acabado"]', raiz).forEach(function (i) {
+      if (i.value === "ninguno") return;
+      var no = !c[i.value]; i.disabled = no;
+      if (no && i.checked) { raiz.querySelector('[name="op_acabado"][value="ninguno"]').checked = true; nota.push(P.acabados[i.value].etiqueta + " no está disponible en " + fmt + " " + pap + " g."); }
+    });
+    var av = $("#aviso-papel", raiz);
+    if (av) { av.textContent = nota.join(" "); av.hidden = !nota.length; }
   }
   window.TC_calcular = calcular;
 
@@ -186,6 +206,7 @@
 
   function recalcular() {
     if (!raiz) return;
+    ajustarDisponibles();
     var op = leerOpciones(), r = calcular(docs, op), box = $("#resumen-ticket", raiz);
     var listos = docs.filter(function (d) { return d.pages > 0; });
     var analizando = docs.some(function (d) { return d.analizando; });
@@ -203,7 +224,7 @@
     var barra = $("#barra-total");
     if (barra) {
       $(".mono", barra).textContent = eur(r.total);
-      $("small", barra).textContent = listos.length ? r.hojas + " hojas · IVA incl." : "";
+      $("small", barra).textContent = listos.length ? r.hojas + " hojas" : "";
       var ver = listos.length > 0 && !(window.__formVisible);
       barra.classList.toggle("visible", ver); document.body.classList.toggle("con-barra", ver);
     }
@@ -270,7 +291,7 @@
     });
     t.push("Opciones: " + op.formato + ", " + (op.caras === "doble" ? "doble cara" : "una cara") + ", " + op.pps + " pág/cara, papel " + op.papel + " g, " + P.acabados[op.acabado].etiqueta + ", color: " + op.color);
     r.lineas.forEach(function (l) { t.push(l[0] + ": " + eur(l[1])); });
-    t.push("TOTAL: " + eur(r.total) + " (IVA incl., precios de referencia)");
+    t.push("TOTAL: " + eur(r.total) + " (tarifa TopCopias)");
     return t.join("\n");
   }
 
