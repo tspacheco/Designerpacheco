@@ -129,7 +129,9 @@ def lista(data):
 def fichas(data, n=25):
     cand = list(csv.DictReader(open(f"{AQUI}/candidatos-{data}.tsv", encoding="utf-8"), delimiter="\t"))
     abertas = {os.path.basename(f).split("-x-", 1)[1][:-5] for f in glob.glob(f"{R}/ponte/cc-*-x-*.html")}
-    out = [f"fichamaps cc-{data}-x-{c['slug']} {c['ficha']}" for c in cand if c["slug"] not in abertas][:min(n, 25)]
+    cat = os.environ.get("CAT_RE")  # só categorias que batam com esta expressão
+    out = [f"fichamaps cc-{data}-x-{c['slug']} {c['ficha']}" for c in cand if c["slug"] not in abertas
+           and (not cat or re.search(cat, c["categoria"], re.I))][:min(n, 25)]
     ponte(out, f"fichas {data}")
 
 
