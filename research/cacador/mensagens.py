@@ -25,11 +25,21 @@ MSG = ("{saudacao}\n\n"
 
 # Corrida B (texto do Tomás, 10/10, igual a sites/demos-pachecost/DESCRICAO-CORRIDA-B.md do ramo das demos). Sem preço.
 # [nume] = coluna «dono» do TSV quando se sabe; senão a saudação fica sem nome. [Compania] = nome do negócio.
-MSG_B = ("Bună ziua{dono}! Sunt Tomás, de la Pacheco Studios.\n\n"
+def tip(cat):
+    c = (cat or "").lower()
+    if any(k in c for k in ("stomatolog", "clinic", "medic", "fizioterap", "cabinet", "kineto", "masaj", "terap")):
+        return "clinici"
+    if any(k in c for k in ("salon", "coafor", "cosmetic", "estetic", "frizer", "manichi", "epilare", "tatuaj")):
+        return "saloane"
+    return "afaceri"
+
+
+MSG_B = ("Bună ziua! Caut 3 {tip} ambițioase. Ar fi {nome} una dintre ele?\n\n"
+         "La Pacheco Studios folosim IA ca să reducem la jumătate timpul pierdut cu follow-up, programări și CRM "
+         "și să scalăm facturarea.\n\n"
          "Am pregătit o scurtă demonstrație pentru {nome}: {demo}\n\n"
-         "Construim sisteme cu inteligență artificială care răspund instant clienților și organizează totul, "
-         "ca să câștigați ore de lucru. Aș vrea să vă prezint personal, într-o întâlnire, triajul afacerii dumneavoastră.\n\n"
-         "Sunt în Iași. Mai multe detalii: ro.pachecost.com\n\n"
+         "Aș vrea să vă prezint personal, într-o întâlnire, triajul afacerii dumneavoastră. Sunt în Iași.\n"
+         "Mai multe detalii: ro.pachecost.com\n\n"
          "Voi fi pregătit.")
 
 
@@ -55,7 +65,7 @@ def main(caminho):
           "se o WhatsApp disser que o número não está registado, usa **Enviar por SMS** (mesmo texto) ou passa lá "
           "com a demo aberta. Depois diz-me quais falharam.\n")
     print("**Envio:** no mínimo **1 minuto** entre mensagens (a 09/10 o WhatsApp bloqueou um dia por envios de 10 em 10 s). "
-          "A saudação já vem variada de mensagem para mensagem; não envies duas iguais seguidas.\n")
+          "Cada mensagem leva o nome e a demo do negócio; mesmo assim, não as envies coladas.\n")
     print("**Atenção:** as demos só ficam no ar depois de mandares publicar (diz «publica» no thread do caçador). "
           "Envia as mensagens depois disso.\n")
     ordem = 0
@@ -70,7 +80,7 @@ def main(caminho):
                 demo = f"https://pachecost.com/demo/{l['slug']}/"
                 if True:  # desde 11/10 as duas corridas usam MSG_B («Audit Hook by Demo»: a demo é o trabalho inicial, a triagem é a isca)
                     dono = (l.get("dono") or "").strip()
-                    texto = MSG_B.format(dono=f" {dono}" if dono else "", nome=l["nome"], demo=demo)
+                    texto = MSG_B.format(tip=tip(l.get("categoria")), nome=l["nome"], demo=demo)
                 else:
                     texto = MSG.format(saudacao=SAUDACOES[ordem % len(SAUDACOES)].format(nome=l["nome"]), demo=demo)
                 ordem += 1
