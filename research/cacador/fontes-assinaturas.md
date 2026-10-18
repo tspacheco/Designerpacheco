@@ -136,3 +136,24 @@ Somam-se ao PLAYBOOK §5 e §6 e aos briefs dos lotes 1 a 4 (`research/iasi-*bri
 | 2026-10-13 | mobile-motors-ltd | Bungee Inline | Pneu que gasta a banda, piso em mm |
 | 2026-10-13 | itp-rapid | IBM Plex Sans Condensed | Selo ITP e linha de inspeção com semáforo |
 | 2026-10-13 | rtm-service-reparatii | K2D | Ordem de reparação com etiqueta de chave |
+| 2026-10-18 | osteopath-aurel-tudorache | Radley | Coluna vertebral em linha fina: as vértebras acendem uma a uma ao scroll, cada secção é uma vértebra |
+| 2026-10-18 | noia-copou | Playfair Display | Espelho de camarim com lâmpadas redondas que acendem em sequência; cada serviço é uma lâmpada |
+| 2026-10-18 | cabinet-ginecologie-yasmin | Alegreya | Folha de calendário discreta cujos dias se marcam ao scroll; tom sereno e privado |
+| 2026-10-18 | akadent-cabinet-stomatologic | Jost | Guia de tons de cor (tipo amostras Pantone) que desliza; cada secção é uma amostra |
+| 2026-10-18 | dental-ava | Quicksand | Traço contínuo que desenha um sorriso e ganha forma ao scroll, em linha única |
+| 2026-10-18 | sophi-med | Sen | Odontograma esquemático: o paciente toca no dente e o motivo preenche-se |
+| 2026-10-18 | vogue-stomadent | Libre Caslon Text | Capa e sumário de revista: manchete, números de página e legendas de foto, tudo editorial |
+| 2026-10-18 | cadentis | Signika | Foco de luz de consultório: um círculo de luz que segue o rato/dedo e revela o conteúdo |
+| 2026-10-18 | clinica-stomatologica-diamond | Fahkwang | Facetas de diamante: cortes geométricos que se abrem e revelam cada secção |
+| 2026-10-18 | dream-smile | Questrial | Céu de nuvens suaves e lua com uma curva de sorriso; a página «acorda» do azul-noite ao dia |
+| 2026-10-18 | clinica-dentika | Oxygen | Panorâmica de raio-X: uma faixa de luz azul varre a página e revela cada secção |
+| 2026-10-18 | concept-kineto | Roboto Flex | Goniómetro: o arco de amplitude de movimento muda com o scroll, graus em mono |
+| 2026-10-18 | adent | Martel Sans | Três placas numeradas em acrílico («veniți», «consultație», «plan») que se encaixam ao scroll |
+| 2026-10-18 | kinetoterapeut-alexandra-georgiana | Average | Sequência de movimento em frames de linha (silhueta) que se repete como um exercício |
+| 2026-10-18 | onedent | Maven Pro | Um «1» gigante que se preenche; dentes alinhados em fila numerada 1..N |
+| 2026-10-18 | aident-cabinet-stomatologic | Lunasima | Régua de alinhamento: elementos alinham-se a uma linha-guia ao scroll |
+| 2026-10-18 | sabina-dent-cabinet | Judson | Cartão de consultório com monograma «SD» e carimbo de data; sensação de gabinete de autor |
+| 2026-10-18 | dentama-by-dr | Ysabeau | Espelho dental redondo com reflexo: o conteúdo aparece no reflexo ao scroll |
+| 2026-10-18 | dr-tepelus-calen | Source Serif 4 | Bloco de receituário/ordem de serviço do doutor com carimbo e assinatura que se desenha |
+| 2026-10-18 | oq-med-cabinet | Noto Sans Display | Tabela de optótipos (Snellen): letras desfocadas que ficam nítidas ao scroll |
+| 2026-10-18 | cabinet-medicina-de | Faustina | Pasta de fichas com separadores (abas) que se folheiam; calma e organizada |
