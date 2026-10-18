@@ -148,6 +148,8 @@ def dia(data):
                "fora (nota/avaliações)" if nota < 4.3 or 0 < aval < 15 else "sem site")
         if s not in vistos:
             novos.append([d, s, r[1] or c.get("nome", ""), r[2] or c.get("categoria", ""), r[3], r[4], r[5], res, c.get("ficha", "")])
+        if res == "sem site" and os.environ.get("SO_WHATSAPP") and r[10] != "sim":
+            res = "sem WhatsApp público"
         if res == "sem site":
             sem.append(dict(slug=s, nome=r[1], tel=r[6], whatsapp=r[10], morada=r[7], zona=c.get("zona", ""),
                             ficha=f"ponte/cc-{data}-x-{s}", categoria=r[2], nota=r[3], avaliacoes=r[4], horario=r[8],

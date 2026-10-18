@@ -52,7 +52,23 @@ def telefones(hoje=""):
     for f in fs:
         for m in re.findall(r"(?:\+?40[ .-]?|\b0)(\d{3})[ .-]?(\d{3})[ .-]?(\d{3})\b", open(f, encoding="utf-8", errors="ignore").read()):
             t.add("".join(m))
+    t |= contactados()[0]
     return t
+
+
+def contactados():
+    """(telefones, chaves de nome) de quem já recebeu e-mail, WhatsApp ou triagem: ficheiro fora do repositório
+    (/tmp/claude-0/contactados.txt, gerado a partir de /mnt/project-files/prospecao*/*.xlsx)."""
+    f = os.environ.get("CONTACTADOS", "/tmp/claude-0/contactados.txt")
+    tels, nomes = set(), set()
+    if os.path.exists(f):
+        mod = tels
+        for l in open(f, encoding="utf-8").read().splitlines():
+            if l.startswith("#NOMES"):
+                mod = nomes
+            elif l.strip():
+                mod.add(l.strip() if mod is tels else chave(l))
+    return tels, nomes
 
 
 def ja_feito(nome, tel, chaves, tels):
@@ -60,6 +76,8 @@ def ja_feito(nome, tel, chaves, tels):
     if tel and digitos(tel) in tels:
         return True
     k = chave(nome)
+    if k in contactados()[1]:
+        return True
     return any(len(x) >= 10 and (k.startswith(x) or x.startswith(k)) for x in chaves if x != k)
 
 
