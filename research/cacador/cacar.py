@@ -40,7 +40,11 @@ def ponte(linhas, titulo):
 
 
 def pesquisas(data, n=12):
-    fila = [l.strip() for l in open(f"{AQUI}/pesquisas.txt", encoding="utf-8") if l.strip() and not l.startswith("#")]
+    ls = open(f"{AQUI}/pesquisas.txt", encoding="utf-8").read().splitlines()
+    de = os.environ.get("PESQ_DE")  # só as linhas depois do comentário que contém este texto
+    if de:
+        ls = ls[next(i for i, l in enumerate(ls) if l.startswith("#") and de in l) + 1:]
+    fila = [l.strip() for l in ls if l.strip() and not l.startswith("#")]
     feitas = {os.path.basename(f).split("-l-", 1)[1][:-5] for f in glob.glob(f"{R}/ponte/cc-*-l-*.html")}
     out = []
     for l in fila:
