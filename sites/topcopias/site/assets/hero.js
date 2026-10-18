@@ -7,6 +7,16 @@
   if (!hero) return;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* El precio grande se inclina hacia el ratón, como un objeto en 3D */
+  var hoy = hero.querySelector(".hoy");
+  if (hoy && !reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    hero.addEventListener("pointermove", function (e) {
+      var r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      hoy.style.setProperty("--ry", (x * 22).toFixed(1) + "deg"); hoy.style.setProperty("--rx", (-y * 16).toFixed(1) + "deg");
+    });
+    hero.addEventListener("pointerleave", function () { hoy.style.setProperty("--ry", "0deg"); hoy.style.setProperty("--rx", "0deg"); });
+  }
+
   /* ---------- Vídeo ---------- */
   var video = hero.querySelector("video");
   if (video) {

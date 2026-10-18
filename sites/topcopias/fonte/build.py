@@ -333,6 +333,26 @@ def tiendas_bloque(prof, h="h2"):
 </div></section>'''
 
 
+def resenas_bloque():
+    q = "".join(f'<blockquote class="resena"><span class="estrellas" aria-label="5 estrellas">★★★★★</span><p>«{e(r["texto"])}»</p><footer>{e(r["autor"])} · Google</footer></blockquote>' for r in N["resenas"])
+    return f'''<section class="seccion" aria-labelledby="t-resenas"><div class="wrap">
+  <div class="seccion-cab"><p class="eyebrow">Reseñas en Google</p><h2 id="t-resenas">{N["google"]["nota"]} estrellas, {N["google"]["resenas"]} opiniones</h2>
+    <p>Lo que más se repite: el trato, el precio y la rapidez.</p></div>
+  <div class="resenas">{q}</div>
+  <p style="margin-top:22px"><a class="btn btn--borde" href="{N["google"]["url"]}" target="_blank" rel="noopener">{ico('estrella')}Ver todas en Google</a></p>
+</div></section>'''
+
+
+def instagram_bloque(prof):
+    a = "../" * prof + "assets/img/ig/"
+    fotos = "".join(f'<a href="{p["url"]}" target="_blank" rel="noopener"><img src="{a}{p["img"]}" width="640" height="640" alt="{e(p["alt"])}" loading="lazy"></a>' for p in N["ig_posts"])
+    return f'''<section class="seccion ig" aria-labelledby="t-ig"><div class="wrap">
+  <div class="ig-cab"><div class="seccion-cab" style="margin:0"><p class="eyebrow">Instagram</p><h2 id="t-ig">@{N["instagram_usuario"]}</h2></div>
+    <a class="btn btn--borde" href="{N["instagram"]}" target="_blank" rel="noopener">Ver perfil</a></div>
+  <div class="muro">{fotos}</div>
+</div></section>'''
+
+
 FAQ = [
     ("¿Cuánto tarda mi pedido?", "Los pedidos que entran antes de las 13:00 se preparan el mismo día, salvo tiradas muy grandes. Te avisamos por WhatsApp en cuanto esté listo para recoger."),
     ("¿Tengo que pagar online?", "No. Envías el pedido sin pagar y pagas en la tienda cuando recoges tus copias."),
@@ -401,10 +421,11 @@ def construir():
   <div class="hero-velo" aria-hidden="true"></div>
   <div class="wrap hero-inm-in">
     <div class="hero-txt">
-      <a class="chip-google" href="{N["google"]["url"]}" target="_blank" rel="noopener">{ico('estrella')}<b>{N["google"]["nota"]}</b> · {N["google"]["resenas"]} reseñas en Google</a>
-      <h1 class="titular" id="t-hero"><span class="reg">¿Lo necesitas</span><span class="reg">para <s>mañana</s>?</span></h1>
-      <p class="hoy" aria-label="Lo tienes hoy">Hoy.<small>Zaragoza</small></p>
-      <p class="lead">Sube el PDF, mira el precio al momento y recógelo listo en Fernando el Católico o en Apaolaza. Pagas al recoger.</p>
+      <div class="reel" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <a class="handle" href="{N["instagram"]}" target="_blank" rel="noopener"><img src="assets/img/logo.webp" width="34" height="34" alt="">{N["instagram_usuario"]}<span>· Zaragoza · 2 tiendas</span></a>
+      <h1 class="titular" id="t-hero"><span class="reg">¿Sigues pagando</span><span class="reg"><s>0,10 €</s> por copia?</span></h1>
+      <p class="hoy" aria-label="En TopCopias, {eur(bn0, 3)} la cara">{eur(bn0, 3).replace(" €", "")}<span class="eur">€</span><small>la cara<br>en TopCopias</small></p>
+      <p class="lead">Sube el PDF, mira el precio exacto al momento y <b>recógelo hoy</b> en Fernando el Católico o en Apaolaza. Pagas al recoger.</p>
       <label class="subida-pill" id="subida-hero">
         <input type="file" accept="application/pdf,.pdf,image/*" multiple aria-label="Elegir PDF para calcular el precio">
         <span class="pill-ico">{ico('subir')}</span>
@@ -412,7 +433,7 @@ def construir():
         <span class="pill-btn">Subir</span>
       </label>
       <ul class="precios-hero limpia">
-        <li><span>B/N desde</span><b class="mono">{eur(bn0, 3)}</b></li>
+        <li><span>Google</span><b class="mono">{N["google"]["nota"]} ★ · {N["google"]["resenas"]}</b></li>
         <li><span>Color desde</span><b class="mono">{eur(col0, 3)}</b></li>
         <li><span>Listo hoy si pides antes de las</span><b class="mono">13:00</b></li>
       </ul>
@@ -424,7 +445,7 @@ def construir():
   <div class="seccion-cab"><p class="eyebrow">Qué imprimimos</p><h2 id="t-serv">Del apunte de mañana al TFG encuadernado</h2></div>
   {servicios_grid(0)}</div></section>'''
     pagina("", "", "TopCopias · Copistería en Zaragoza", f"Sube tu PDF, mira el precio al momento y recógelo listo en P.º Fernando el Católico, 30. Copias B/N desde {eur(bn0, 3)}, color, encuadernación y envío a la península.",
-           hero + pasos() + herramienta() + servicios_home + banda() + tiendas_bloque(0) + faq_bloque() + cierre(0, True), con_pedido=True, extra_head=ld_tag)
+           hero + pasos() + herramienta() + servicios_home + banda() + resenas_bloque() + tiendas_bloque(0) + instagram_bloque(0) + faq_bloque() + cierre(0, True), con_pedido=True, extra_head=ld_tag)
 
     # Imprimir online
     pagina("imprimir", "imprimir", "Imprimir online · TopCopias Zaragoza", "Sube tu PDF, calcula el precio con B/N o color, doble cara y encuadernación, y recógelo listo en tienda. Pagas al recoger.",
