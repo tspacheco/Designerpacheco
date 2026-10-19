@@ -120,7 +120,8 @@ jobs:
                           r = pg.goto(url, wait_until=(modo[0] if modo else "networkidle"), timeout=60000)
                           pg.wait_for_timeout(9000 if modo else 1500)
                           open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
-                          open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
+                          import re as _re
+                          open(f"ponte/{nome}.html", "w", encoding="utf-8").write(_re.sub(r"AIza[0-9A-Za-z_\\-]{35}", "CHAVE-REMOVIDA", pg.content()))
                           pg.screenshot(path=f"ponte/{nome}.jpg", full_page=True, type="jpeg", quality=70)
                           rel.append(f"ok  pagina {nome} {r.status if r else '?'} {url}")
                           pg.close()
