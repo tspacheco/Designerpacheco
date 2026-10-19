@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dr. Teo Dental Clinic · Stomatologie biofuncțională în Iași</title>
+<meta name="description" content="Dr. Teo Dental Clinic, Iași: stomatologie biofuncțională, terapia MAGO și probleme ATM. Consultație inițială complexă și multidisciplinară. Luni–Vineri 10:00–18:00.">
+<meta name="theme-color" content="#33362A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap&subset=latin-ext" rel="stylesheet">
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Dentist",
+ "name":"Dr. Teo Dental Clinic",
+ "url":"https://drteodent.ro",
+ "telephone":"+40770566135",
+ "email":"office@drteodent.ro",
+ "address":{"@type":"PostalAddress","streetAddress":"Bl. A19, Complexul Exclusive Residence, Șoseaua Ștefan cel Mare și Sfânt 4","addressLocality":"Iași","postalCode":"700497","addressCountry":"RO"},
+ "geo":{"@type":"GeoCoordinates","latitude":47.1870227,"longitude":27.5650061},
+ "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"18:00"}],
+ "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"123","bestRating":"5"}
+}
+</script>
+<style>
+:root{
+  --salvie:#6B6E5A;       /* verdele măsliniu din identitatea clinicii */
+  --salvie-d:#33362A;     /* măsliniu adânc: secțiuni închise */
+  --salvie-dd:#24261D;
+  --portelan:#EEF0EA;     /* alb porțelan, rece-verzui */
+  --hartie:#F8F8F4;
+  --nuc:#B98451;          /* lemnul din recepție */
+  --nuc-t:#875A2C;        /* lemn pentru text pe fond deschis (AA) */
+  --nuc-l:#D9AE7E;        /* lemn pe fond închis */
+  --ink:#1D1E19;
+  --ink-2:#4A4C42;
+  --ink-3:#6E7064;
+  --line:#D8DBD0;
+  --line-d:rgba(238,240,234,.16);
+  --ok:#5E7B4C;
+  --f-d:'Castoro',Georgia,serif;
+  --f-b:'Figtree',system-ui,-apple-system,Segoe UI,sans-serif;
+  --f-m:'JetBrains Mono',ui-monospace,monospace;
+  --r:14px;
+  --shadow:0 1px 2px rgba(29,30,25,.06),0 18px 40px -18px rgba(29,30,25,.28);
+  --wrap:1180px;
+  --banner:0px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--hartie);color:var(--ink);font:400 17px/1.6 var(--f-b);overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--nuc);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mono{font-family:var(--f-m);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{font-family:var(--f-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--nuc-t);display:flex;align-items:center;gap:10px;margin:0 0 18px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:14px 0 0 -2px currentColor;margin-right:12px}
+.dark .eyebrow{color:var(--nuc-l)}
+h2{font:400 clamp(34px,5.4vw,60px)/1.04 var(--f-d);letter-spacing:-.01em;margin:0 0 20px}
+h2 em,.h1 em{font-style:italic;color:var(--nuc-t)}
+.dark h2 em{color:var(--nuc-l)}
+h3{font:400 24px/1.2 var(--f-d);margin:0 0 8px}
+.lede{font-size:19px;color:var(--ink-2);max-width:60ch;margin:0}
+.dark{background:var(--salvie-d);color:var(--portelan)}
+.dark .lede{color:rgba(238,240,234,.78)}
+section{position:relative}
+.sec{padding:96px 0}
+@media (max-width:700px){.sec{padding:72px 0}body{font-size:16px}}
+
+/* NOU */
+.nou{display:inline-flex;align-items:center;gap:6px;font:500 10.5px/1 var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--salvie-d);background:var(--nuc-l);border-radius:99px;padding:5px 9px 5px 8px;vertical-align:middle}
+.nou::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--salvie-d)}
+h2 .nou{font-size:11px;margin-left:10px;transform:translateY(-.5em)}
+
+/* BANNER */
+.banner{position:relative;z-index:60;background:var(--salvie-dd);color:var(--nuc-l);font:500 11px/1.3 var(--f-m);letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 44px}
+.banner button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--portelan);width:32px;height:32px;cursor:pointer;font-size:18px;line-height:1}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;transition:background .35s,box-shadow .35s}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav{background:transparent;margin-bottom:-68px}
+.nav.scrolled{background:var(--salvie-d);box-shadow:0 8px 30px -14px rgba(0,0,0,.5)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--portelan)}
+.brand-logo{width:76px;height:44px;position:relative;background:none}
+.brand-logo img{width:100%;height:100%;object-fit:contain}
+.brand-fallback{font:400 20px/1 var(--f-d);color:var(--portelan)}
+.brand-logo img + .brand-fallback{display:none}
+.links{display:flex;gap:4px;align-items:center;list-style:none;margin:0;padding:0}
+.links a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--portelan);font-size:14.5px;font-weight:500;padding:9px 12px;border-radius:99px;transition:background .2s}
+.links a:hover{background:rgba(238,240,234,.12)}
+.links .nou{font-size:9px;padding:4px 7px}
+.links .cta-nav{background:var(--portelan);color:var(--salvie-d);margin-left:6px}
+.links .cta-nav:hover{background:#fff}
+.burger{display:none;width:46px;height:46px;border:0;background:rgba(36,38,29,.55);border-radius:50%;cursor:pointer;position:relative}
+.burger span{position:absolute;left:14px;right:14px;height:2px;background:var(--portelan);transition:transform .3s,opacity .3s}
+.burger span:nth-child(1){top:17px}.burger span:nth-child(2){top:22px}.burger span:nth-child(3){top:27px}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+@media (max-width:980px){
+  .burger{display:block}
+  .links{position:fixed;inset:0;top:0;background:var(--salvie-d);flex-direction:column;align-items:stretch;justify-content:center;gap:2px;padding:90px 28px 40px;transform:translateY(-100%);transition:transform .45s cubic-bezier(.7,0,.2,1);visibility:hidden}
+  .links.open{transform:none;visibility:visible}
+  .links a{font:400 28px/1.2 var(--f-d);padding:12px 4px;border-radius:0;border-bottom:1px solid var(--line-d);justify-content:space-between}
+  .links .nou{font-size:10px}
+  .links .cta-nav{margin:18px 0 0;justify-content:center;border-radius:99px;font:600 17px var(--f-b);padding:16px}
+  .burger{z-index:2}
+}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:
+  radial-gradient(120% 80% at 70% 20%,#8A8C78 0%,#4B4E3E 45%,#24261D 100%)}
+.hero-media{position:absolute;inset:0}
+.hero-media video,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-media .v-m{display:none}
+@media (max-width:699px){.hero-media .v-d{display:none}.hero-media .v-m{display:block}}
+.hero-shade{position:absolute;inset:0;background:
+  radial-gradient(28% 40% at 82% 78%,rgba(26,28,20,.7),rgba(26,28,20,0) 75%),
+  linear-gradient(90deg,rgba(26,28,20,.86) 0%,rgba(26,28,20,.55) 42%,rgba(26,28,20,.05) 75%),
+  linear-gradient(0deg,rgba(26,28,20,.75) 0%,rgba(26,28,20,0) 45%)}
+@media (max-width:699px){.hero-shade{background:radial-gradient(60% 30% at 90% 14%,rgba(24,26,19,.55),rgba(24,26,19,0) 70%),linear-gradient(0deg,rgba(24,26,19,.97) 0%,rgba(24,26,19,.9) 38%,rgba(24,26,19,.35) 64%,rgba(24,26,19,.45) 100%)}}
+.hero-in{position:relative;z-index:2;width:100%;padding-top:120px;padding-bottom:max(56px,env(safe-area-inset-bottom))}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:end}
+.h1{font:400 clamp(44px,6.6vw,88px)/.98 var(--f-d);letter-spacing:-.015em;margin:0 0 22px;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.h1 em{color:var(--nuc-l)}
+.hero-kicker{font-family:var(--f-m);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--nuc-l);margin:0 0 18px}
+.hero-sub{font-size:18px;line-height:1.55;color:rgba(255,255,255,.88);max-width:46ch;margin:0 0 28px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:99px;font-weight:600;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:active{transform:scale(.98)}
+.btn-p{background:var(--portelan);color:var(--salvie-d);box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.btn-p:hover{background:#fff}
+.btn-g{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+.btn-g:hover{background:rgba(255,255,255,.16)}
+.btn-d{background:var(--salvie-d);color:var(--portelan)}
+.btn-d:hover{background:var(--salvie-dd)}
+.btn-wa{background:#1F7A4D;color:#fff}
+.btn-wa:hover{background:#18653F}
+.btn svg{width:20px;height:20px;flex:none}
+.hero-proof{display:flex;align-items:center;gap:14px;margin-top:26px;font-size:14px;color:rgba(255,255,255,.82)}
+.stars{color:var(--nuc-l);letter-spacing:2px;font-size:15px}
+.hero-proof b{font:400 26px/1 var(--f-d);color:#fff}
+@media (max-width:699px){
+  .hero{align-items:flex-end}
+  .hero-grid{grid-template-columns:1fr}
+  .h1{font-size:clamp(42px,12vw,54px)}
+  .hero-sub{font-size:16.5px;margin-bottom:22px}
+  .hero-ctas{flex-direction:column}
+  .hero-ctas .btn{width:100%}
+  .hero-proof{margin-top:18px}
+  .hero-in{position:static}
+  .hero-text{position:relative;z-index:2}
+  .hero-diag{position:absolute;top:92px;right:16px;width:96px;z-index:2}
+  .hero-diag .lbl{display:none}
+}
+
+/* SEMNĂTURA: constelația dintelui */
+.const{width:100%;height:auto;overflow:visible}
+.const .e{fill:none;stroke:var(--portelan);stroke-width:1.1;stroke-linecap:round;opacity:.75;stroke-dasharray:1;stroke-dashoffset:1}
+.const .e.o{stroke-width:1.5;opacity:.95}
+.const .n{fill:var(--portelan);transform-box:fill-box;transform-origin:center;transform:scale(0)}
+.const .n.k{fill:var(--nuc-l)}
+.const .ring{fill:none;stroke:var(--nuc-l);stroke-width:1;transform-box:fill-box;transform-origin:center;opacity:0}
+.const .lbl{font:500 8px var(--f-m);letter-spacing:.12em;fill:rgba(238,240,234,.82);text-transform:uppercase;opacity:0}
+.const .tick{stroke:rgba(238,240,234,.45);stroke-width:.8;opacity:0}
+.go .const .e{animation:draw 1.2s cubic-bezier(.6,0,.2,1) forwards}
+.go .const .n{animation:pop .5s cubic-bezier(.3,1.6,.5,1) forwards}
+.go .const .lbl,.go .const .tick{animation:fade .8s 2.3s forwards}
+.go .const .ring{animation:ring 2.8s 2.4s ease-out infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{transform:scale(1)}}
+@keyframes fade{to{opacity:1}}
+@keyframes ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(3.2)}}
+.hero-diag{max-width:380px;justify-self:end;margin-bottom:6px}
+.hero-text>*{opacity:0;transform:translateY(18px)}
+.go .hero-text>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.go .hero-text>*:nth-child(1){animation-delay:.15s}.go .hero-text>*:nth-child(2){animation-delay:.3s}.go .hero-text>*:nth-child(3){animation-delay:.5s}.go .hero-text>*:nth-child(4){animation-delay:.7s}.go .hero-text>*:nth-child(5){animation-delay:.85s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* MARQUEE */
+.marq{background:var(--salvie-dd);color:var(--portelan);overflow:hidden;border-top:1px solid var(--line-d)}
+.marq-t{display:flex;gap:0;width:max-content;animation:mq 38s linear infinite}
+.marq span{font:400 italic 22px/1 var(--f-d);padding:18px 26px;white-space:nowrap;display:flex;align-items:center;gap:26px}
+.marq span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--nuc-l)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+
+/* FILOSOFIE */
+.filo{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.filo-img{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:
+  repeating-linear-gradient(90deg,#B98451 0 14px,#A87443 14px 18px),linear-gradient(#C99560,#9F6C3C)}
+.filo-img img{width:100%;height:100%;object-fit:cover}
+.filo-img figcaption{position:absolute;left:14px;bottom:14px;background:rgba(29,30,25,.72);color:var(--portelan);font:500 11px var(--f-m);letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:6px}
+.filo p{color:var(--ink-2);margin:0 0 16px;max-width:58ch}
+.quote{font:400 italic 26px/1.3 var(--f-d);color:var(--ink);border-left:2px solid var(--nuc);padding:4px 0 4px 20px;margin:28px 0}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:30px;border-top:1px solid var(--line)}
+.trio div{padding:18px 14px 0 0}
+.trio b{display:block;font:400 22px var(--f-d)}
+.trio span{font-size:14px;color:var(--ink-3)}
+@media (max-width:860px){.filo{grid-template-columns:1fr;gap:36px}.filo-img{aspect-ratio:4/3}}
+
+/* ECHILIBRU */
+.ech-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px}
+.ech{margin:0}
+.ech .ph{aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;background:linear-gradient(160deg,#3A3C32,#1F201A);position:relative}
+.ech .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.ech:hover .ph img{transform:scale(1.04)}
+.ech figcaption{font-size:14.5px;color:var(--ink-2);margin-top:10px;display:flex;gap:8px;align-items:baseline}
+.ech figcaption i{font:500 11px var(--f-m);color:var(--nuc-t);font-style:normal}
+.src{font-size:13px;color:var(--ink-3);margin-top:14px}
+@media (max-width:860px){.ech-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-20px;padding-right:20px;padding-bottom:6px}.ech{flex:0 0 58%;scroll-snap-align:start}}
+
+/* TRATAMENTE / TARIFE */
+.tar{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+.tar-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-d)}
+.tar-list li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 0;border-bottom:1px solid var(--line-d)}
+.tar-list li span{color:rgba(238,240,234,.86)}
+.tar-list li small{display:block;font-size:13px;color:rgba(238,240,234,.6)}
+.tar-list li b{font:400 21px var(--f-d);white-space:nowrap;color:var(--portelan)}
+.tar-list li.k b{color:var(--nuc-l)}
+.mago{margin-top:28px;border:1px solid var(--line-d);border-radius:var(--r);padding:22px;background:rgba(0,0,0,.12)}
+.mago p{margin:0;color:rgba(238,240,234,.8);font-size:15.5px}
+.dark .src{color:rgba(238,240,234,.6)}
+.dark .src a{color:var(--nuc-l)}
+@media (max-width:860px){.tar{grid-template-columns:1fr;gap:30px}}
+
+/* ===== NOU 1: PRIMUL PAS ===== */
+.pas{background:var(--portelan)}
+.pas-head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:40px}
+.track{width:200px}
+.track .tl{stroke:var(--line);stroke-width:2;fill:none}
+.track .tp{stroke:var(--nuc);stroke-width:2;fill:none;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .6s cubic-bezier(.6,0,.2,1)}
+.track circle{fill:var(--hartie);stroke:var(--line);stroke-width:2;transition:fill .3s,stroke .3s}
+.track circle.on{fill:var(--salvie-d);stroke:var(--salvie-d)}
+.track text{font:500 8px var(--f-m);fill:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
+.book{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:start}
+.card{background:var(--hartie);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow)}
+.step{border:0;margin:0 0 28px;padding:0}
+.step:last-child{margin-bottom:0}
+.step legend{font:400 22px var(--f-d);padding:0;margin-bottom:14px;display:flex;gap:12px;align-items:baseline}
+.step legend i{font:500 11px var(--f-m);color:var(--nuc-t);font-style:normal;letter-spacing:.1em}
+.motive{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt label{display:flex;flex-direction:column;gap:3px;min-height:100%;padding:16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.opt label b{font-weight:600;font-size:16px;display:flex;align-items:center;gap:10px}
+.opt label small{color:var(--ink-3);font-size:13.5px;line-height:1.4}
+.opt label .dot{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ink-3);flex:none;transition:all .2s}
+.opt input:checked + label{border-color:var(--salvie-d);background:#F1F3EC}
+.opt input:checked + label .dot{background:var(--nuc);border-color:var(--nuc);box-shadow:0 0 0 4px rgba(185,132,81,.22)}
+.opt input:focus-visible + label{outline:3px solid var(--nuc);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip label{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1.5px solid var(--line);border-radius:99px;background:#fff;cursor:pointer;font-size:15px;font-weight:500;transition:all .2s}
+.chip input:checked + label{background:var(--salvie-d);border-color:var(--salvie-d);color:var(--portelan)}
+.chip input:focus-visible + label{outline:3px solid var(--nuc);outline-offset:2px}
+.sub-q{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sub-q > span{font-size:14.5px;color:var(--ink-2);margin-right:4px}
+.field{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.field label{font-size:14px;color:var(--ink-2);font-weight:500}
+.field input,.field select{min-height:48px;border:1.5px solid var(--line);border-radius:12px;padding:0 14px;background:#fff}
+.field input:focus,.field select:focus{border-color:var(--salvie);outline:none;box-shadow:0 0 0 3px rgba(107,110,90,.2)}
+.result{position:sticky;top:92px;background:var(--salvie-d);color:var(--portelan);border-radius:20px;padding:26px;overflow:hidden}
+.result .mono{color:var(--nuc-l)}
+.result h3{font-size:27px;margin:10px 0 6px;color:#fff}
+.result .price{font:400 38px/1 var(--f-d);color:var(--nuc-l);margin:12px 0 4px}
+.result p{font-size:15px;color:rgba(238,240,234,.82);margin:8px 0}
+.result .empty{color:rgba(238,240,234,.7);font-size:15.5px}
+.msg{background:rgba(0,0,0,.2);border-radius:14px;padding:14px;font-size:14px;line-height:1.5;white-space:pre-wrap;color:rgba(238,240,234,.92);margin:16px 0;border:1px solid var(--line-d);max-height:220px;overflow:auto}
+.result .btn{width:100%}
+.fine{font-size:12.5px;color:rgba(238,240,234,.6);margin-top:12px!important}
+.result-bg{position:absolute;right:-30px;top:-30px;width:150px;opacity:.12;pointer-events:none}
+@media (max-width:900px){.book{grid-template-columns:1fr}.result{position:relative;top:0}.pas-head{grid-template-columns:1fr}.track{width:100%;max-width:320px}}
+@media (max-width:520px){.motive{grid-template-columns:1fr}.card{padding:20px}}
+
+/* ===== NOU 2: PRIMA VIZITĂ ===== */
+.viz{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px}
+.tline{list-style:none;margin:0;padding:0;position:relative}
+.tline::before{content:"";position:absolute;left:11px;top:12px;bottom:12px;width:1.5px;background:var(--line)}
+.tline li{position:relative;padding:0 0 30px 46px}
+.tline li:last-child{padding-bottom:0}
+.tline li::before{content:"";position:absolute;left:4px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--hartie);border:2px solid var(--salvie-d)}
+.tline li.k::before{background:var(--nuc);border-color:var(--nuc)}
+.tline .when{font:500 11px var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--nuc-t)}
+.tline h3{margin:4px 0 6px}
+.tline p{margin:0;color:var(--ink-2);font-size:15.5px}
+.tbc{display:inline-block;font:500 10.5px var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--nuc-t);border:1px dashed var(--nuc);border-radius:6px;padding:2px 6px;margin-left:4px;white-space:nowrap}
+.dark .tbc{color:var(--nuc-l);border-color:var(--nuc-l)}
+.viz-side{display:flex;flex-direction:column;gap:22px}
+.sala{border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;background:linear-gradient(135deg,#E9E6DF,#CFCAC0);position:relative}
+.sala img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.sala figcaption{position:absolute;left:12px;bottom:12px;background:rgba(29,30,25,.72);color:var(--portelan);font:500 11px var(--f-m);letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border-radius:6px}
+.bring{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.bring ul{list-style:none;margin:10px 0 0;padding:0}
+.bring li{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:15.5px}
+.bring li:first-child{border-top:0}
+.bring li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--salvie)}
+.faq{margin-top:56px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font:400 21px/1.3 var(--f-d)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:300 28px/1 var(--f-b);color:var(--nuc-t);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 20px;color:var(--ink-2);max-width:70ch}
+@media (max-width:860px){.viz{grid-template-columns:1fr;gap:40px}}
+
+/* ===== NOU 3: DUPĂ TRATAMENT ===== */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:36px 0 20px}
+.tab{min-height:46px;padding:0 20px;border-radius:99px;border:1.5px solid var(--line-d);background:transparent;color:var(--portelan);cursor:pointer;font-weight:500;font-size:15px;transition:all .2s}
+.tab[aria-selected="true"]{background:var(--portelan);color:var(--salvie-d);border-color:var(--portelan)}
+.panel{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.panel[hidden]{display:none}
+.pc{border:1px solid var(--line-d);border-radius:var(--r);padding:22px;background:rgba(0,0,0,.12)}
+.pc .mono{color:var(--nuc-l)}
+.pc h3{color:#fff;margin:10px 0 8px;font-size:22px}
+.pc p{margin:0;font-size:15px;color:rgba(238,240,234,.8)}
+.disc{display:flex;gap:14px;align-items:flex-start;margin-top:18px;padding:16px 18px;border-radius:12px;background:rgba(217,174,126,.12);border:1px solid rgba(217,174,126,.35);font-size:14.5px;color:rgba(238,240,234,.9)}
+.disc b{color:var(--nuc-l)}
+.after-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+.remind{background:var(--hartie);color:var(--ink);border-radius:20px;padding:28px}
+.remind h3{font-size:28px}
+.remind p{color:var(--ink-2);font-size:15.5px;margin:0 0 6px}
+.remind .msg{background:var(--portelan);color:var(--ink);border-color:var(--line)}
+.remind .fine{color:var(--ink-3)}
+.rev{border-radius:20px;padding:28px;border:1px solid var(--line-d);display:flex;flex-direction:column}
+.rev-score{display:flex;align-items:flex-end;gap:16px;margin-bottom:6px}
+.rev-score b{font:400 84px/.85 var(--f-d);color:#fff}
+.rev-score .stars{font-size:20px}
+.rev-score small{display:block;color:rgba(238,240,234,.72);font-size:14px;margin-top:4px}
+.themes{list-style:none;padding:0;margin:20px 0 0}
+.themes li{padding:14px 0;border-top:1px solid var(--line-d)}
+.themes li q{font:400 italic 20px/1.35 var(--f-d);color:#fff;quotes:none}
+.themes li span{display:block;font-size:13.5px;color:rgba(238,240,234,.65);margin-top:4px}
+.rev .btn{margin-top:auto;align-self:flex-start}
+@media (max-width:860px){.panel{grid-template-columns:1fr}.after-grid{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.cinfo{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.cinfo div{padding:20px 16px 20px 0;border-bottom:1px solid var(--line)}
+.cinfo .mono{color:var(--nuc-t);display:block;margin-bottom:6px}
+.cinfo a{text-decoration:none;border-bottom:1px solid var(--line)}
+.cinfo a:hover{border-color:var(--nuc)}
+.map-card{border-radius:20px;overflow:hidden;background:var(--salvie-d);color:var(--portelan);padding:28px;position:relative;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end}
+.map-card svg.grid{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.map-card > *{position:relative}
+@media (max-width:860px){.contact{grid-template-columns:1fr}.cinfo{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--salvie-dd);color:rgba(238,240,234,.78);padding:56px 0 calc(28px + env(safe-area-inset-bottom));font-size:14.5px}
+.f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px}
+footer h4{font:500 11px var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:var(--nuc-l);margin:0 0 12px}
+footer p{margin:0 0 6px}
+footer a{color:var(--portelan)}
+.f-bottom{margin-top:40px;padding-top:20px;border-top:1px solid var(--line-d);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px}
+@media (max-width:860px){.f-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.f-grid{grid-template-columns:1fr}}
+
+/* bara de jos pe mobil */
+.dock{display:none}
+@media (max-width:699px){
+  .dock{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;gap:8px;transform:translateY(140%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  .dock.show{transform:none}
+  .dock a{flex:1;min-height:52px;border-radius:99px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;text-decoration:none;box-shadow:0 12px 30px -10px rgba(0,0,0,.45)}
+  .dock .a1{background:var(--salvie-d);color:var(--portelan)}
+  .dock .a2{background:#1F7A4D;color:#fff;flex:0 0 52px}
+  footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv,.hero-text>*{opacity:1!important;transform:none!important}
+  .const .e{stroke-dashoffset:0!important}.const .n{transform:none!important}.const .lbl,.const .tick{opacity:1!important}
+  .marq-t{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="banner" id="banner" role="note">Prezentare Pacheco Studios · demo pentru Dr. Teo Dental Clinic
+  <button type="button" aria-label="Închide bannerul" onclick="this.parentElement.remove()">×</button>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Dr. Teo Dental Clinic, începutul paginii">
+      <span class="brand-logo"><img src="media/logo.webp" alt="Dr. Teo Dental Clinic" width="200" height="114" onerror="this.remove()"><span class="brand-fallback">Dr. Teo</span></span>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
+    <ul class="links" id="menu">
+      <li><a href="#filosofie">Filosofie</a></li>
+      <li><a href="#primul-pas">Primul pas <span class="nou">Nou</span></a></li>
+      <li><a href="#prima-vizita">Prima vizită <span class="nou">Nou</span></a></li>
+      <li><a href="#dupa-tratament">După tratament <span class="nou">Nou</span></a></li>
+      <li><a href="#tarife">Tarife</a></li>
+      <li><a class="cta-nav" href="#primul-pas">Programează-te</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero" id="hero" aria-label="Prezentare">
+  <div class="hero-media" aria-hidden="true">
+    <img class="v-d" src="media/hero.jpg" alt="" onerror="this.remove()">
+    <img class="v-m" src="media/hero-mobil.jpg" alt="" onerror="this.remove()">
+    <video class="v-d" src="media/hero.mp4" poster="media/hero.jpg" playsinline muted autoplay loop preload="metadata" onerror="this.style.display='none'"></video>
+    <video class="v-m" src="media/hero-mobil.mp4" poster="media/hero-mobil.jpg" playsinline muted autoplay loop preload="metadata" onerror="this.style.display='none'"></video>
+  </div>
+  <div class="hero-shade"></div>
+  <div class="wrap hero-in">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="hero-kicker">Stomatologie biofuncțională · Iași</p>
+        <h1 class="h1">Subliniem excelența, <em>păstrăm naturalețea.</em></h1>
+        <p class="hero-sub">Estetică, funcție și stabilitate. Întâi diagnosticul complet al sistemului masticator, apoi un plan făcut pentru gura dumneavoastră.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-p" href="#primul-pas">Alege primul pas
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-g" href="tel:+40770566135">Sună: 0770 566 135</a>
+        </div>
+        <div class="hero-proof"><b>4,9</b><span><span class="stars" aria-hidden="true">★★★★★</span><br>123 recenzii pe Google</span></div>
+      </div>
+      <div class="hero-diag" aria-hidden="true">
+        <svg class="const" id="const" viewBox="-30 0 260 250"></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="marq-t">
+  <span>Diagnostic</span><span>Funcție</span><span>Echilibru articular</span><span>Terapia MAGO</span><span>Microscop și digă</span><span>Precizie</span><span>Stabilitate</span><span>Longevitate</span>
+  <span>Diagnostic</span><span>Funcție</span><span>Echilibru articular</span><span>Terapia MAGO</span><span>Microscop și digă</span><span>Precizie</span><span>Stabilitate</span><span>Longevitate</span>
+</div></div>
+
+<!-- FILOSOFIE -->
+<section class="sec" id="filosofie">
+  <div class="wrap filo">
+    <figure class="filo-img rv" style="margin:0">
+      <img src="media/clinica.webp" alt="Recepția Dr. Teo Dental Clinic, perete de lemn cu sigla clinicii" loading="lazy" width="1920" height="1080" onerror="this.remove()">
+      <figcaption>Complexul Exclusive Residence · Bl. A19</figcaption>
+    </figure>
+    <div>
+      <p class="eyebrow rv">Notre philosophie</p>
+      <h2 class="rv d1">Gura nu e o sumă de dinți. <em>E un sistem în echilibru.</em></h2>
+      <p class="rv d1">Fiecare pacient este unic. De la planificare la execuție, totul e ghidat de principii biofuncționale, pentru rezultate pe termen lung.</p>
+      <p class="rv d2">Clinica se inspiră din filosofia Dr. Salvador Congost, unul dintre pionierii stomatologiei funcționale în Europa: sistemul masticator privit ca un organ sensibil, diagnosticat și tratat în echilibru cu întregul corp.</p>
+      <p class="quote rv d2">„Ne dedicăm identificării și tratării cauzelor reale ale afecțiunilor dentare.”</p>
+      <div class="trio rv d3">
+        <div><b>Precizie</b><span>în diagnostic</span></div>
+        <div><b>Stabilitate</b><span>a funcției</span></div>
+        <div><b>Longevitate</b><span>a rezultatului</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECHILIBRU & ARMONIE (cartoanele goale de pe site, completate) -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow rv">Echilibru &amp; armonie</p>
+    <h2 class="rv d1" style="max-width:16ch">Zâmbete care arată <em>ca ale lor.</em></h2>
+    <div class="ech-row">
+      <figure class="ech rv"><div class="ph"><img src="media/zambet-1.webp" alt="Portret zâmbind, fotografiat în studioul clinicii" loading="lazy" onerror="this.remove()"></div><figcaption><i>01</i>Armonia dentară</figcaption></figure>
+      <figure class="ech rv d1"><div class="ph"><img src="media/zambet-2.webp" alt="Portret zâmbind, fotografiat în studioul clinicii" loading="lazy" onerror="this.remove()"></div><figcaption><i>02</i>Echilibru natural</figcaption></figure>
+      <figure class="ech rv d2"><div class="ph"><img src="media/zambet-3.webp" alt="Portret zâmbind, fotografiat în studioul clinicii" loading="lazy" onerror="this.remove()"></div><figcaption><i>03</i>Estetică funcțională</figcaption></figure>
+      <figure class="ech rv d3"><div class="ph"><img src="media/zambet-4.webp" alt="Portret zâmbind, fotografiat în studioul clinicii" loading="lazy" onerror="this.remove()"></div><figcaption><i>04</i>Precizie în detalii</figcaption></figure>
+      <figure class="ech rv d3"><div class="ph"><img src="media/zambet-5.webp" alt="Portret zâmbind, fotografiat în studioul clinicii" loading="lazy" onerror="this.remove()"></div><figcaption><i>05</i>Soluții inovatoare</figcaption></figure>
+    </div>
+    <p class="src">Fotografii din galeria site-ului drteodent.ro. Povestea fiecărui caz: de confirmat cu clinica înainte de publicare.</p>
+  </div>
+</section>
+
+<!-- TARIFE -->
+<section class="sec dark" id="tarife">
+  <div class="wrap tar">
+    <div>
+      <p class="eyebrow rv">Tarife orientative</p>
+      <h2 class="rv d1">Ce se plătește, <em>spus de la început.</em></h2>
+      <p class="lede rv d2">Tratamentele de canal includ microscop, digă, anestezie, refacerea de bont și pivot din fibră de cuarț, fără costuri adiționale. Plata se poate face și în rate, prin TBI Bank.</p>
+      <div class="mago rv d3">
+        <p class="mono" style="color:var(--nuc-l);margin-bottom:8px">Terapia MAGO &amp; probleme ATM</p>
+        <p>Clinica lucrează în special cu pacienți care au disfuncții ale articulației temporo-mandibulare. Dacă terapia MAGO vi se potrivește, medicul vă spune după consultația inițială.</p>
+      </div>
+    </div>
+    <div class="rv d1">
+      <ul class="tar-list">
+        <li class="k"><span>Consultație inițială, complexă și multidisciplinară</span><b>400 RON</b></li>
+        <li><span>Control periodic</span><b>200 RON</b></li>
+        <li><span>Plan de tratament</span><b>200 RON</b></li>
+        <li><span>Radiografie retroalveolară</span><b>60 RON</b></li>
+        <li><span>Tratament endodontic – un canal<small>două canale 1300 · trei sau mai multe 1500 RON</small></span><b>1000 RON</b></li>
+        <li><span>Albire profesională Opalescence™<small>2 sau 4 aplicări</small></span><b>1500/2000 RON</b></li>
+        <li><span>Implant dentar Neodent by Straumann<small>MegaGen AnyRidge: 600 EURO</small></span><b>500 EURO</b></li>
+        <li><span>Terapia MAGO</span><b>6000 RON</b></li>
+        <li><span>Detartraj</span><b>250 RON</b></li>
+      </ul>
+      <p class="src">Sursa: drteodent.ro/tarife. Tarifele au caracter orientativ și pot varia în funcție de complexitatea fiecărui caz. <a href="https://drteodent.ro/tarife" target="_blank" rel="noopener">Toate tarifele</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOU 1: PRIMUL PAS ===== -->
+<section class="sec pas" id="primul-pas">
+  <div class="wrap">
+    <div class="pas-head">
+      <div>
+        <p class="eyebrow rv">Programare ghidată</p>
+        <h2 class="rv d1">Primul pas <span class="nou">Nou</span><br><em>în trei atingeri.</em></h2>
+        <p class="lede rv d2">Spuneți-ne de ce veniți și când vă e comod. Vă arătăm ce consultație vi se potrivește și vă pregătim mesajul pentru clinică. Nu se trimite nimic până nu apăsați dumneavoastră.</p>
+      </div>
+      <svg class="track rv d2" id="track" viewBox="0 0 200 70" aria-hidden="true">
+        <path class="tl" d="M14 44 L72 20 L130 44 L186 20"/>
+        <path class="tp" id="trackP" pathLength="1" d="M14 44 L72 20 L130 44 L186 20"/>
+        <circle cx="14" cy="44" r="7"/><circle cx="72" cy="20" r="7"/><circle cx="130" cy="44" r="7"/><circle cx="186" cy="20" r="7"/>
+        <text x="14" y="66" text-anchor="middle">Motiv</text><text x="72" y="8" text-anchor="middle">Când</text><text x="130" y="66" text-anchor="middle">Medic</text><text x="186" y="8" text-anchor="middle">Mesaj</text>
+      </svg>
+    </div>
+
+    <div class="book">
+      <form class="card" id="bookForm" onsubmit="return false">
+        <fieldset class="step">
+          <legend><i>1 / 3</i>De ce veniți?</legend>
+          <div class="motive">
+            <div class="opt"><input type="radio" name="motiv" id="m1" value="durere"><label for="m1"><b><span class="dot"></span>Durere sau urgență</b><small>Mă doare acum, s-a rupt ceva, am o umflătură.</small></label></div>
+            <div class="opt"><input type="radio" name="motiv" id="m2" value="estetica"><label for="m2"><b><span class="dot"></span>Estetică</b><small>Albire, fațete, coroane, forma zâmbetului.</small></label></div>
+            <div class="opt"><input type="radio" name="motiv" id="m3" value="atm"><label for="m3"><b><span class="dot"></span>ATM sau bruxism</b><small>Maxilarul pocnește, strâng din dinți, dureri la mestecat.</small></label></div>
+            <div class="opt"><input type="radio" name="motiv" id="m4" value="control"><label for="m4"><b><span class="dot"></span>Control</b><small>Verificare de rutină sau control după un tratament.</small></label></div>
+          </div>
+          <div class="sub-q" role="radiogroup" aria-label="Ați mai fost la clinică?">
+            <span>Ați mai fost la Dr. Teo?</span>
+            <div class="chip"><input type="radio" name="nou" id="n1" value="nou" checked><label for="n1">Prima dată</label></div>
+            <div class="chip"><input type="radio" name="nou" id="n2" value="vechi"><label for="n2">Sunt deja pacient</label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend><i>2 / 3</i>Când vă e comod?</legend>
+          <div class="chips" role="radiogroup" aria-label="Ziua preferată">
+            <div class="chip"><input type="radio" name="zi" id="z0" value="oricare zi" checked><label for="z0">Oricând</label></div>
+            <div class="chip"><input type="radio" name="zi" id="z1" value="luni"><label for="z1">Luni</label></div>
+            <div class="chip"><input type="radio" name="zi" id="z2" value="marți"><label for="z2">Marți</label></div>
+            <div class="chip"><input type="radio" name="zi" id="z3" value="miercuri"><label for="z3">Miercuri</label></div>
+            <div class="chip"><input type="radio" name="zi" id="z4" value="joi"><label for="z4">Joi</label></div>
+            <div class="chip"><input type="radio" name="zi" id="z5" value="vineri"><label for="z5">Vineri</label></div>
+          </div>
+          <div class="chips" style="margin-top:10px" role="radiogroup" aria-label="Intervalul preferat">
+            <div class="chip"><input type="radio" name="ora" id="o1" value="10:00–12:00"><label for="o1">10–12</label></div>
+            <div class="chip"><input type="radio" name="ora" id="o2" value="12:00–14:00"><label for="o2">12–14</label></div>
+            <div class="chip"><input type="radio" name="ora" id="o3" value="14:00–16:00"><label for="o3">14–16</label></div>
+            <div class="chip"><input type="radio" name="ora" id="o4" value="16:00–18:00"><label for="o4">16–18</label></div>
+          </div>
+          <p class="src" style="margin-top:10px">Clinica e deschisă luni–vineri, 10:00–18:00. Sâmbăta și duminica e închis.</p>
+        </fieldset>
+        <fieldset class="step">
+          <legend><i>3 / 3</i>La cine și cum vă cheamă?</legend>
+          <div class="chips" role="radiogroup" aria-label="Medicul preferat">
+            <div class="chip"><input type="radio" name="medic" id="d0" value="oricare medic" checked><label for="d0">Nu contează</label></div>
+            <div class="chip"><input type="radio" name="medic" id="d1" value="Dr. Teodor Politanschi"><label for="d1">Dr. Teodor Politanschi</label></div>
+            <div class="chip"><input type="radio" name="medic" id="d2" value="Dr. Miruna Politanschi"><label for="d2">Dr. Miruna Politanschi</label></div>
+          </div>
+          <div class="field"><label for="nume">Numele dumneavoastră (opțional)</label><input id="nume" name="nume" autocomplete="name" placeholder="ex.: Ana Popescu"></div>
+        </fieldset>
+      </form>
+
+      <aside class="result" id="result" aria-live="polite">
+        <svg class="result-bg" viewBox="-30 0 260 250" aria-hidden="true" id="constSmall"></svg>
+        <p class="mono">Ce vi se potrivește</p>
+        <div id="resBody"><p class="empty">Alegeți motivul vizitei și vă arătăm aici consultația potrivită, cu tariful de pe site.</p></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOU 2: PRIMA VIZITĂ ===== -->
+<section class="sec" id="prima-vizita">
+  <div class="wrap">
+    <p class="eyebrow rv">Consultația inițială complexă</p>
+    <h2 class="rv d1" style="max-width:18ch">Prima vizită, <em>pas cu pas</em> <span class="nou">Nou</span></h2>
+    <p class="lede rv d2">Consultația inițială e complexă și multidisciplinară: 400 RON. Ca să știți dinainte la ce să vă așteptați, iată drumul obișnuit. Unde un detaliu încă trebuie confirmat de clinică, scrie.</p>
+
+    <div class="viz">
+      <ol class="tline">
+        <li class="rv"><span class="when">Înainte</span><h3>Confirmarea programării</h3><p>Primiți ora confirmată de clinică. Dacă aveți radiografii sau tratamente făcute în altă parte, spuneți de la început.</p></li>
+        <li class="rv d1"><span class="when">La sosire</span><h3>Discuția și istoricul</h3><p>Ce vă deranjează, de când, ce tratamente ați avut și ce medicamente luați. Fișa pacientului: <span class="tbc">de confirmat</span></p></li>
+        <li class="rv d1 k"><span class="when">În cabinet</span><h3>Diagnosticul complet</h3><p>Nu doar dintele care doare: dinți, gingii, mușcătură și articulația temporo-mandibulară, privite ca un singur sistem. Dacă e nevoie, radiografie retroalveolară (60 RON). Investigații suplimentare: <span class="tbc">de confirmat</span></p></li>
+        <li class="rv d2"><span class="when">Apoi</span><h3>Planul de tratament</h3><p>Medicul vă explică ce a găsit și ce propune, în ordinea potrivită. Pe site, planul de tratament apare separat la 200 RON; dacă e inclus în consultație: <span class="tbc">de confirmat</span></p></li>
+        <li class="rv d3"><span class="when">La final</span><h3>Decizia e a dumneavoastră</h3><p>Primiți costurile pe etape și programați următorul pas când sunteți pregătit. Plata se poate face și în rate, prin TBI Bank.</p></li>
+      </ol>
+
+      <div class="viz-side">
+        <figure class="sala rv" style="margin:0">
+          <img src="media/sala.webp" alt="Sala de așteptare a clinicii, cu scaune și perete verde cu sigla Dr. Teo" loading="lazy" onerror="this.remove()">
+          <figcaption>Sala de așteptare</figcaption>
+        </figure>
+        <div class="bring rv d1">
+          <h3>Ce să aduceți</h3>
+          <p class="src" style="margin:0">Listă orientativă <span class="tbc">de confirmat</span></p>
+          <ul>
+            <li>Act de identitate</li>
+            <li>Radiografii sau tomografii făcute anterior, dacă le aveți (fișier sau imprimate)</li>
+            <li>Lista medicamentelor pe care le luați și eventuale scrisori medicale</li>
+            <li>Gutiera sau aparatul pe care îl purtați, dacă aveți</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <details class="rv"><summary>Cât costă prima vizită?</summary><p>Consultația inițială, complexă și multidisciplinară, costă 400 RON (tarif orientativ de pe drteodent.ro/tarife).</p></details>
+      <details class="rv"><summary>Cât durează consultația?</summary><p>Durata exactă <span class="tbc">de confirmat</span> cu clinica. Pentru că diagnosticul privește tot sistemul masticator, prevedeți timp suficient.</p></details>
+      <details class="rv"><summary>Cine mă consultă?</summary><p>Pe site se pot face programări la Dr. Teodor Politanschi și la Dr. Miruna Politanschi. Puteți alege medicul în pasul 3 din „Primul pas”.</p></details>
+      <details class="rv"><summary>Pot plăti în rate?</summary><p>Da. Site-ul clinicii oferă plata în rate prin TBI Bank și plata cu cardul prin Netopia. Condițiile: <span class="tbc">de confirmat</span></p></details>
+      <details class="rv"><summary>Unde parchez?</summary><p>Clinica e în Complexul Exclusive Residence, Bl. A19, Șoseaua Ștefan cel Mare și Sfânt 4. Locuri de parcare: <span class="tbc">de confirmat</span></p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOU 3: DUPĂ TRATAMENT ===== -->
+<section class="sec dark" id="dupa-tratament">
+  <div class="wrap">
+    <p class="eyebrow rv">Grijă după cabinet</p>
+    <h2 class="rv d1" style="max-width:18ch">După tratament <span class="nou">Nou</span><br><em>știți ce urmează.</em></h2>
+    <p class="lede rv d2">Un ghid general, ca să nu căutați pe internet. Detaliile pentru cazul dumneavoastră le primiți de la medic.</p>
+
+    <div class="tabs" role="tablist" aria-label="Tipul tratamentului">
+      <button class="tab" role="tab" id="t-canal" aria-controls="p-canal" aria-selected="true">Tratament de canal</button>
+      <button class="tab" role="tab" id="t-impl" aria-controls="p-impl" aria-selected="false" tabindex="-1">Implant</button>
+      <button class="tab" role="tab" id="t-alb" aria-controls="p-alb" aria-selected="false" tabindex="-1">Albire</button>
+    </div>
+
+    <div class="panel" id="p-canal" role="tabpanel" aria-labelledby="t-canal">
+      <div class="pc"><span class="mono">Primele zile</span><h3>Urmați indicațiile primite</h3><p>Medicul vă spune ce puteți mânca, cum să vă spălați pe dinți și dacă aveți nevoie de ceva anume. Urmați-le pe acelea, nu sfaturi generale.</p></div>
+      <div class="pc"><span class="mono">Până la final</span><h3>Dintele se reface</h3><p>Tratamentul de canal se încheie cu refacerea dintelui. La Dr. Teo, refacerea de bont și pivotul din fibră de cuarț sunt incluse în preț. Când se face, vă spune medicul.</p></div>
+      <div class="pc"><span class="mono">Oricând</span><h3>Întrebați fără grijă</h3><p>Dacă ceva nu e cum v-a explicat medicul, sunați la clinică: +40 770 566 135, luni–vineri 10–18.</p></div>
+    </div>
+    <div class="panel" id="p-impl" role="tabpanel" aria-labelledby="t-impl" hidden>
+      <div class="pc"><span class="mono">Primele zile</span><h3>Indicațiile scrise contează</h3><p>După intervenție primiți indicații pentru alimentație, igienă și medicamente. Urmați indicațiile medicului întocmai.</p></div>
+      <div class="pc"><span class="mono">Etapele</span><h3>Implantul se face în timp</h3><p>Între implant și coroana finală sunt etape, iar fiecare control face parte din tratament. Calendarul vi-l stabilește medicul.</p></div>
+      <div class="pc"><span class="mono">Pe termen lung</span><h3>Controlul periodic</h3><p>Lucrarea pe implant are nevoie de verificări. Înscrieți-vă mai jos și vă amintim noi când e momentul.</p></div>
+    </div>
+    <div class="panel" id="p-alb" role="tabpanel" aria-labelledby="t-alb" hidden>
+      <div class="pc"><span class="mono">Primele zile</span><h3>Ce să evitați, vă spune medicul</h3><p>Medicul vă explică ce alimente și băuturi să evitați și cât timp. Urmați indicațiile primite la cabinet.</p></div>
+      <div class="pc"><span class="mono">Între ședințe</span><h3>2 sau 4 aplicări</h3><p>Albirea profesională cu Opalescence™ se face în 2 sau 4 aplicări. Câte vă trebuie și la ce interval, stabilește medicul.</p></div>
+      <div class="pc"><span class="mono">După</span><h3>Dacă apare sensibilitate</h3><p>Spuneți medicului: el vă spune ce e normal și ce nu. Telefon: +40 770 566 135.</p></div>
+    </div>
+
+    <div class="disc rv"><b aria-hidden="true">i</b><span>Informații generale, nu sfaturi medicale. <b>Urmați indicațiile medicului</b> care v-a tratat: doar el vă cunoaște cazul.</span></div>
+
+    <div class="after-grid">
+      <form class="remind rv" id="remForm" onsubmit="return false">
+        <p class="mono" style="color:var(--nuc-t)">Reamintire de control</p>
+        <h3>Vă amintim noi.</h3>
+        <p>Spuneți-ne ce tratament ați făcut și când v-a recomandat medicul controlul. Clinica vă scrie pe WhatsApp în luna respectivă.</p>
+        <div class="field"><label for="rTrat">Tratamentul făcut</label>
+          <select id="rTrat"><option>tratament de canal</option><option>implant</option><option>albire</option><option>terapia MAGO</option><option>alt tratament</option></select></div>
+        <div class="field"><label for="rCand">Controlul recomandat de medic</label>
+          <select id="rCand"><option value="1">peste o lună</option><option value="3">peste 3 luni</option><option value="6" selected>peste 6 luni</option><option value="12">peste un an</option><option value="0">nu știu încă</option></select></div>
+        <div class="field"><label for="rNume">Numele (opțional)</label><input id="rNume" autocomplete="name" placeholder="ex.: Ana Popescu"></div>
+        <div class="msg" id="rMsg"></div>
+        <a class="btn btn-wa" id="rBtn" href="#" target="_blank" rel="noopener" style="width:100%">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+          Înscrie-mă pe WhatsApp</a>
+        <p class="fine">Mesajul se deschide în WhatsApp și pleacă doar când apăsați „Trimite”. În varianta finală, reamintirea se trimite automat.</p>
+      </form>
+
+      <div class="rev rv d1">
+        <p class="mono" style="color:var(--nuc-l)">Recenzii Google</p>
+        <div class="rev-score"><b>4,9</b><div><span class="stars" aria-label="4,9 din 5 stele">★★★★★</span><small>din 123 de recenzii</small></div></div>
+        <ul class="themes">
+          <li><q>Medicul explică fiecare pas al tratamentului.</q><span>Ce revine des în recenzii</span></li>
+          <li><q>Calm și răbdare, chiar și pentru pacienții anxioși.</q><span>Ce revine des în recenzii</span></li>
+          <li><q>Pacienți care spun că revin fără teamă la stomatolog.</q><span>Ce revine des în recenzii</span></li>
+        </ul>
+        <p class="src">Sensul general al recenziilor publice de pe Google, parafrazat, 19 oct. 2026.</p>
+        <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&amp;query=Dr.+Teo+Dental+Clinic+Ia%C8%99i" target="_blank" rel="noopener" style="margin-top:14px">Citește recenziile pe Google</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="wrap contact">
+    <div>
+      <p class="eyebrow rv">Conexiune</p>
+      <h2 class="rv d1">Pe Ștefan cel Mare, <em>în centrul Iașului.</em></h2>
+      <div class="cinfo rv d2">
+        <div><span class="mono">Adresa</span>Complexul Exclusive Residence, Bl. A19<br>Șos. Ștefan cel Mare și Sfânt 4, 700497 Iași</div>
+        <div><span class="mono">Program</span>Luni–Vineri: 10:00–18:00<br>Sâmbătă și duminică: închis</div>
+        <div><span class="mono">Telefon</span><a href="tel:+40770566135">+40 770 566 135</a></div>
+        <div><span class="mono">E-mail</span><a href="mailto:office@drteodent.ro">office@drteodent.ro</a></div>
+      </div>
+    </div>
+    <div class="map-card rv d1">
+      <svg class="grid" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g stroke="rgba(238,240,234,.16)" stroke-width="1" fill="none">
+          <path d="M-20 210 C80 190 160 150 230 120 S360 60 430 40"/><path d="M-20 250 C100 230 180 200 260 170 S380 120 430 110" stroke-width="6" stroke="rgba(238,240,234,.12)"/>
+          <path d="M60 -10 L120 320"/><path d="M180 -10 L210 320"/><path d="M300 -10 L280 320"/><path d="M-10 90 L410 70"/>
+        </g>
+        <circle cx="236" cy="150" r="9" fill="#D9AE7E"/><circle cx="236" cy="150" r="20" fill="none" stroke="#D9AE7E" stroke-opacity=".5"/>
+      </svg>
+      <p class="mono" style="color:var(--nuc-l)">Șos. Ștefan cel Mare și Sfânt 4</p>
+      <h3 style="color:#fff;font-size:28px">Dr. Teo Dental Clinic</h3>
+      <a class="btn btn-p" href="https://www.google.com/maps/search/?api=1&amp;query=Dr.+Teo+Dental+Clinic+Ia%C8%99i" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:10px">Deschide în Google Maps</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div><h4>Dr. Teo Dental Clinic</h4><p>Stomatologie biofuncțională: estetică, funcție și stabilitate.</p><p><a href="https://drteodent.ro" target="_blank" rel="noopener">drteodent.ro</a></p></div>
+      <div><h4>Contact</h4><p><a href="tel:+40770566135">+40 770 566 135</a></p><p><a href="mailto:office@drteodent.ro">office@drteodent.ro</a></p><p>Bl. A19, Complexul Exclusive Residence, Șos. Ștefan cel Mare și Sfânt 4, 700497 Iași</p></div>
+      <div><h4>Program</h4><p>Luni–Vineri: 10:00–18:00</p><p>Sâmbătă: închis</p><p>Duminică: închis</p></div>
+      <div><h4>Consumatori</h4><p><a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC · Soluționarea alternativă a litigiilor</a></p><p><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">Soluționarea online a litigiilor (UE)</a></p></div>
+    </div>
+    <div class="f-bottom"><span>© 2026 Dr. Teo Dental Clinic</span><span>Demo realizat de Pacheco Studios</span></div>
+  </div>
+</footer>
+
+<nav class="dock" id="dock" aria-label="Acțiuni rapide">
+  <a class="a1" href="#primul-pas">Programează-te</a>
+  <a class="a2" href="https://wa.me/40770566135" target="_blank" rel="noopener" aria-label="Scrie pe WhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg></a>
+</nav>
+
+<script>
+(function(){
+  /* --- semnătura: dintele din noduri, ca sigla clinicii --- */
+  var N={a:[40,42],b:[74,22],c:[100,46],d:[126,22],e:[160,42],f:[172,88],g:[152,128],h:[142,178],i:[126,226],j:[110,170],k:[100,134],l:[90,170],m:[74,226],n:[58,178],o:[48,128],p:[28,88],x:[100,88],y:[70,76],z:[130,76],w:[100,112]};
+  var O=['ab','bc','cd','de','ef','fg','gh','hi','ij','jk','kl','lm','mn','no','op','pa'];
+  var I=['by','yx','xz','zd','yp','zf','cx','xw','wo','wg','wk','yo','zg'];
+  var keys={c:'ocluzie',p:'ATM',g:'funcție',m:'rădăcină'};
+  function build(svg,full){
+    if(!svg) return; var ns='http://www.w3.org/2000/svg',html='',t=0;
+    if(full){ for(var q=0;q<9;q++){ html+='<line class="tick" x1="-24" x2="-18" y1="'+(10+q*28)+'" y2="'+(10+q*28)+'"/>'; } }
+    O.concat(I).forEach(function(s,ix){var A=N[s[0]],B=N[s[1]],out=ix<O.length;
+      html+='<path class="e'+(out?' o':'')+'" pathLength="1" d="M'+A[0]+' '+A[1]+'L'+B[0]+' '+B[1]+'" style="animation-delay:'+(0.5+ix*0.05).toFixed(2)+'s"/>';});
+    Object.keys(N).forEach(function(k,ix){var P=N[k],key=keys[k];
+      html+='<circle class="n'+(key?' k':'')+'" cx="'+P[0]+'" cy="'+P[1]+'" r="'+(key?4.2:3)+'" style="animation-delay:'+(0.1+ix*0.04).toFixed(2)+'s"/>';
+      if(full&&key){html+='<circle class="ring" cx="'+P[0]+'" cy="'+P[1]+'" r="4.2"/>';
+        var left=P[0]<100; html+='<text class="lbl" x="'+(P[0]+(left?-10:10))+'" y="'+(P[1]+3)+'" text-anchor="'+(left?'end':'start')+'">'+key+'</text>';}
+    });
+    svg.innerHTML=html;
+  }
+  build(document.getElementById('const'),true);
+  build(document.getElementById('constSmall'),false);
+  requestAnimationFrame(function(){document.getElementById('hero').classList.add('go');document.getElementById('result').classList.add('go');});
+
+  /* --- nav, burger, dock --- */
+  var nav=document.getElementById('nav'),dock=document.getElementById('dock');
+  var inForm=false;
+  function onS(){var y=window.scrollY;nav.classList.toggle('scrolled',y>40);dock.classList.toggle('show',y>window.innerHeight*.8&&!inForm);}
+  var vis={};var fio=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.id]=e.isIntersecting;});inForm=!!(vis.bookForm||vis.result||vis.remForm);onS();},{threshold:0});
+  ['bookForm','result','remForm'].forEach(function(id){fio.observe(document.getElementById(id));});
+  window.addEventListener('scroll',onS,{passive:true});onS();
+  var bur=document.getElementById('burger'),menu=document.getElementById('menu');
+  function setMenu(o){bur.setAttribute('aria-expanded',o);bur.setAttribute('aria-label',o?'Închide meniul':'Deschide meniul');menu.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';}
+  bur.addEventListener('click',function(){setMenu(bur.getAttribute('aria-expanded')!=='true');});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false);});
+
+  /* --- reveal --- */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+  /* --- NOU 1: primul pas --- */
+  var WA='https://wa.me/40770566135?text=';
+  var form=document.getElementById('bookForm'),res=document.getElementById('resBody');
+  var trackP=document.getElementById('trackP'),dots=document.querySelectorAll('#track circle');
+  function val(n){var e=form.querySelector('input[name="'+n+'"]:checked');return e?e.value:'';}
+  var MOT={durere:'durere / urgență',estetica:'estetică',atm:'ATM / bruxism',control:'control'};
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function upd(){
+    var m=val('motiv'),nou=val('nou')==='nou',zi=val('zi'),ora=val('ora'),med=val('medic'),nume=document.getElementById('nume').value.trim();
+    var done=[!!m,!!(m&&ora),!!(m&&ora),!!(m&&ora)];
+    var p=m?(ora?1:.34):0; if(m&&ora) p=1;
+    trackP.style.strokeDashoffset=1-p;
+    dots.forEach(function(d,i){d.classList.toggle('on',done[i]);});
+    if(!m){return;}
+    var t,price,txt,urgent=false;
+    if(m==='durere'){urgent=true;t='Sunați direct la clinică';price='';txt='Pentru durere sau urgență, cel mai repede e telefonul: clinica vă spune cât de curând vă poate primi. Tariful unei consultații de urgență: <span class="tbc">de confirmat</span>';}
+    else if(m==='control'&&!nou){t='Control periodic';price='200 RON';txt='Pentru pacienții clinicii. Dacă controlul e după un tratament, spuneți-ne care, ca medicul să aibă fișa pregătită.';}
+    else{t='Consultație inițială, complexă și multidisciplinară';price='400 RON';
+      txt=m==='estetica'?'Înainte de orice lucrare estetică, medicul evaluează funcția și stabilitatea. Așa lucrează clinica: întâi diagnosticul, apoi zâmbetul.':
+          m==='atm'?'Clinica lucrează în special cu disfuncții ale articulației temporo-mandibulare. Dacă terapia MAGO vi se potrivește, medicul vă spune după diagnostic.':
+          'Fiind prima vizită, începeți cu consultația inițială: medicul vă cunoaște tot sistemul masticator, nu doar un dinte.';}
+    var when=(zi==='oricare zi'?'orice zi lucrătoare':zi)+(ora?', '+ora:'');
+    var msg='Bună ziua! '+(nume?'Sunt '+nume+'. ':'')+'Aș dori o programare la Dr. Teo Dental Clinic.\n'+
+      'Motiv: '+MOT[m]+'\n'+(nou?'Sunt pacient nou.':'Am mai fost la clinică.')+'\n'+
+      'Preferință: '+when+(ora?'':' (interval de stabilit)')+'\n'+
+      'Medic: '+med+'\n'+(price?'Am văzut pe site: '+t+' ('+price+').\n':'')+'Aștept confirmarea dumneavoastră. Mulțumesc!';
+    var h='<h3>'+t+'</h3>'+(price?'<div class="price">'+price+'</div>':'')+'<p>'+txt+'</p>';
+    if(urgent){h+='<a class="btn btn-p" href="tel:+40770566135" style="margin-top:14px">Sună acum: 0770 566 135</a><p class="fine">Luni–vineri 10:00–18:00. Sau trimiteți mesajul de mai jos:</p>';}
+    h+='<div class="msg">'+esc(msg)+'</div><a class="btn '+(urgent?'btn-g':'btn-wa')+'" href="'+WA+encodeURIComponent(msg)+'" target="_blank" rel="noopener">'+
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>Trimite pe WhatsApp</a>'+
+      '<p class="fine">Se deschide WhatsApp cu mesajul scris. Ora exactă o confirmă clinica.</p>';
+    res.innerHTML=h;
+  }
+  form.addEventListener('change',upd);document.getElementById('nume').addEventListener('input',upd);
+
+  /* --- NOU 3: tabs --- */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function sel(t,focus){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});if(focus)t.focus();}
+  tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(t);});
+    t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();sel(tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length],true);}});});
+
+  /* --- NOU 3: reamintire --- */
+  var LUNI=['ianuarie','februarie','martie','aprilie','mai','iunie','iulie','august','septembrie','octombrie','noiembrie','decembrie'];
+  function rem(){
+    var tr=document.getElementById('rTrat').value,c=+document.getElementById('rCand').value,n=document.getElementById('rNume').value.trim();
+    var when;if(c){var d=new Date();d.setMonth(d.getMonth()+c);when='în '+LUNI[d.getMonth()]+' '+d.getFullYear();}else{when='când stabilește medicul';}
+    var msg='Bună ziua! '+(n?'Sunt '+n+'. ':'')+'Am făcut '+tr+' la Dr. Teo Dental Clinic. Vă rog să-mi trimiteți pe WhatsApp o reamintire pentru control '+when+'. Mulțumesc!';
+    document.getElementById('rMsg').textContent=msg;
+    document.getElementById('rBtn').href=WA+encodeURIComponent(msg);
+  }
+  ['rTrat','rCand','rNume'].forEach(function(id){document.getElementById(id).addEventListener('input',rem);document.getElementById(id).addEventListener('change',rem);});rem();
+})();
+</script>
+</body>
+</html>
