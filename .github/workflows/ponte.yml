@@ -141,4 +141,10 @@ jobs:
           if git diff --cached --quiet; then echo "Nada de novo"; exit 0; fi
           git commit -q -m "Ponte: pedidos de .github/ponte.txt"
           git pull -q --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          if ! git push origin "HEAD:${GITHUB_REF_NAME}"; then
+            # push recusado (ex.: proteção de segredos num .html gravado): volta a tentar só com .txt/.jpg/relatório
+            git reset -q --soft HEAD~1
+            git reset -q -- 'ponte/*.html'
+            git commit -q -m "Ponte: pedidos de .github/ponte.txt (sem .html)"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
