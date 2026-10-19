@@ -421,7 +421,7 @@ button{background:none;border:0;padding:0;cursor:pointer}
 
 /* Cesto de take-away (barra) */
 .basket{position:fixed;left:50%;bottom:calc(var(--s-4) + env(safe-area-inset-bottom));transform:translate(-50%,120%);z-index:55;width:min(96vw,720px);background:var(--c-noite);color:#FBF6EC;border-radius:var(--r-l);box-shadow:0 20px 50px -20px rgba(0,0,0,.6);transition:transform .4s var(--ease);display:grid;gap:0;overflow:hidden}
-.basket.is-on{transform:translate(-50%,0)}
+.basket{visibility:hidden}.basket.is-on{transform:translate(-50%,0);visibility:visible}
 .basket-bar{display:grid;grid-template-columns:1fr auto;gap:var(--s-4);align-items:center;padding:14px var(--s-5)}
 .basket-bar b{font-family:var(--font-display);font-size:1.2rem}
 .basket-bar small{display:block;color:rgba(251,246,236,.65);font-size:.82rem}
