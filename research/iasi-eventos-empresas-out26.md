@@ -1,3 +1,17 @@
+# Atualização de 19/10/2026 — o que vem agora (já passou: ATIPIC 16 out, Digital&Sustenabil)
+
+| Data | Evento | Onde | Mapa |
+|---|---|---|---|
+| ter 20 – sex 23 out | AI4IMPACT Week (DIZ, grátis, lugares limitados; inscrição https://digital-innovation.zone/ai4impact-week-ro/) | Lançamento do DIZ AI Helpdesk, 10:00, Aula Magna «Carmen Sylva», Universidade Cuza, Bd. Carol I nr. 11 (dia a confirmar). Grupo de trabalho de IA responsável, qua 21 out, Casa Universitarilor (morada a confirmar) | https://www.google.com/maps/search/?api=1&query=Universitatea+Alexandru+Ioan+Cuza+Iasi+Bulevardul+Carol+I+11 · https://www.google.com/maps/search/?api=1&query=Casa+Universitarilor+Iasi |
+| qui 22 out, 08:30 | US–Romania Forum, dia 1 | Palatul Culturii, Sala Voievozilor, Piața Ștefan cel Mare și Sfânt 1 | https://www.google.com/maps/search/?api=1&query=Palatul+Culturii+Iasi |
+| sex 23 out, 09:30 | US–Romania Forum, dia 2 (B2B) | Palas Iași, Sala Mozart (Palas Congress Hall, Str. Palas 7A) | https://www.google.com/maps/search/?api=1&query=Palas+Congress+Hall+Iasi |
+| seg 26 out, 10:00 | SHE BUILDS NEB, workshop de ideias (DIZ; para empreendedoras) | Digital Innovation Zone, Iași (morada a confirmar) | https://www.google.com/maps/search/?api=1&query=Digital+Innovation+Zone+Iasi |
+| ter 27 – qua 28 out | Codecamp, masterclasses (IT) | Hotel Ramada Iași City Center | https://www.google.com/maps/search/?api=1&query=Hotel+Ramada+Iasi+City+Center |
+| qui 29 out | Codecamp, dia da conferência (IT) | AGORA Centru de Evenimente, Șos. Nicolina 115 (segundo diretório; confirmar) | https://www.google.com/maps/search/?api=1&query=Agora+Centru+de+Evenimente+Iasi |
+| qui 29 out, 09:30 | Conferência SHE BUILDS NEB (empreendedoras) | Universitatea Tehnică «Gheorghe Asachi», Bd. Mangeron 67 (sala a confirmar) | https://www.google.com/maps/search/?api=1&query=Universitatea+Tehnica+Gheorghe+Asachi+Iasi+Mangeron+67 |
+
+Fontes: onevent.ro (datas), ziarulevenimentul.ro e startupcafe.ro (locais), páginas dos organizadores lidas pela ponte.
+
 # Eventos para empresas em Iași (pesquisa de 08/10/2026)
 
 # Plano 9–23 out 2026 (atualizado a 08/10, páginas lidas pela ponte)
