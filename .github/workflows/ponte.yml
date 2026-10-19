@@ -12,6 +12,7 @@
 #                                               <pasta>/v/NN.webp (recorte 9:16 a 72 % da largura, 720×1280) + info.txt
 #   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
+#   paginarapida <nome> <url>               igual a pagina, mas não espera pela rede parada (Google Maps): 9 s
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
@@ -99,6 +100,8 @@ jobs:
                       rel.append(f"ok  fotogramas {dest} " + " · ".join(info.split("\n")))
                   elif op == "pagina":
                       paginas.append((p[1], p[2]))
+                  elif op == "paginarapida":
+                      paginas.append((p[1], p[2], "domcontentloaded"))
                   elif op == "testar":
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
@@ -111,11 +114,11 @@ jobs:
               from playwright.sync_api import sync_playwright
               with sync_playwright() as pw:
                   b = pw.chromium.launch()
-                  for nome, url in paginas:
+                  for nome, url, *modo in paginas:
                       try:
-                          pg = b.new_page(viewport={"width": 1280, "height": 900}, user_agent=UA)
-                          r = pg.goto(url, wait_until="networkidle", timeout=60000)
-                          pg.wait_for_timeout(1500)
+                          pg = b.new_page(viewport={"width": 1280, "height": 900}, user_agent=UA, locale="ro-RO")
+                          r = pg.goto(url, wait_until=(modo[0] if modo else "networkidle"), timeout=60000)
+                          pg.wait_for_timeout(9000 if modo else 1500)
                           open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
                           open(f"ponte/{nome}.html", "w", encoding="utf-8").write(pg.content())
                           pg.screenshot(path=f"ponte/{nome}.jpg", full_page=True, type="jpeg", quality=70)
