@@ -122,6 +122,12 @@ jobs:
                           open(f"ponte/{nome}.txt", "w", encoding="utf-8").write(f"{url}\n\n" + pg.inner_text("body"))
                           import re as _re
                           open(f"ponte/{nome}.html", "w", encoding="utf-8").write(_re.sub(r"AIza[0-9A-Za-z_\\-]{35}", "CHAVE-REMOVIDA", pg.content()))
+                          imgs = pg.evaluate("""() => { const u = new Set();
+                            document.querySelectorAll('img').forEach(i => { if (i.currentSrc || i.src) u.add((i.currentSrc || i.src) + ' | ' + i.naturalWidth + 'x' + i.naturalHeight + ' | ' + (i.alt || '')); });
+                            document.querySelectorAll('*').forEach(e => { const b = getComputedStyle(e).backgroundImage; const m = b && b.match(/url\\(["']?([^"')]+)/); if (m) u.add(m[1] + ' | bg'); });
+                            document.querySelectorAll('video source, video').forEach(v => { if (v.src) u.add(v.src + ' | video'); });
+                            return [...u]; }""")
+                          open(f"ponte/{nome}-imgs.txt", "w", encoding="utf-8").write("\n".join(imgs) + "\n")
                           pg.screenshot(path=f"ponte/{nome}.jpg", full_page=True, type="jpeg", quality=70)
                           rel.append(f"ok  pagina {nome} {r.status if r else '?'} {url}")
                           pg.close()
