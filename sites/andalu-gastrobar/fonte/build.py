@@ -39,7 +39,7 @@ T = {
   other_version='English version →', open_menu='Deschide meniul', close_menu='Închide meniul',
   footer_welcome='Gastrobar spaniol în Copou, Iași. Masa e pusă; rămâneți cât vreți.',
   f_visit='Vizitează', f_talk='Vorbește cu noi', f_pages='Pagini', f_how='Cum ajungi', privacy='Confidențialitate', terms='Termeni și condiții',
-  sal='ANPC · SAL', sol='SOL · Soluționarea online a litigiilor', company='Denumire societate · CUI · Reg. Com. · a confirmar',
+  sal='ANPC · SAL', sol='SOL · Soluționarea online a litigiilor', company='SC LALOCA13 SRL · CUI RO40171204 · J22/2131/2018 · Strada Codrescu 6, Iași',
   copy='Andalu Gastrobar · Copou, Iași', quick='Acțiuni rapide', lang_label='Limbă / Language', main_nav='Principal',
   days=['Duminică', 'Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă'], closed='Închis',
   home='Acasă', photo_tbc='foto reală · urmează', price_tbc='preț în meniu',
@@ -55,7 +55,7 @@ T = {
   other_version='Versiunea în română →', open_menu='Open menu', close_menu='Close menu',
   footer_welcome='Spanish gastrobar in Copou, Iași. The table is set; stay as long as you like.',
   f_visit='Visit', f_talk='Talk to us', f_pages='Pages', f_how='How to get here', privacy='Privacy', terms='Terms & conditions',
-  sal='ANPC · SAL', sol='ODR · Online dispute resolution', company='Company name · VAT no. · Trade register · to be confirmed',
+  sal='ANPC · SAL', sol='ODR · Online dispute resolution', company='SC LALOCA13 SRL · VAT RO40171204 · Trade register J22/2131/2018 · Strada Codrescu 6, Iași',
   copy='Andalu Gastrobar · Copou, Iași', quick='Quick actions', lang_label='Limbă / Language', main_nav='Main',
   days=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], closed='Closed',
   home='Home', photo_tbc='real photo · coming', price_tbc='price on the menu',
@@ -79,7 +79,7 @@ _pid = [0]
 def media(ctx, ratio, file, alt, caption=True, w=800, h=1000, extra='', eager=False):
     _pid[0] += 1
     a, b = PALETTE[_pid[0] % len(PALETTE)]
-    cap = f'<figcaption>{ctx.t["photo_tbc"]}</figcaption>' if caption else ''
+    cap = ''   # fotos reais desde 2026-10-19; a legenda 'urmează' saiu
     load = '' if eager else ' loading="lazy"'
     return (f'<figure class="media media--{ratio} {extra}">{ph(ratio, a, b, "g" + str(_pid[0]))}'
             f'<img src="{ctx.u("media/foto/" + file)}" alt="{alt}" width="{w}" height="{h}"{load} decoding="async" onerror="this.classList.add(\'is-missing\')">{cap}</figure>')
@@ -151,7 +151,7 @@ def header(ctx, over_hero):
     book_href = '#rezervari' if ctx.slug == '' else ctx.p(t['nav'][1][0])
     return f'''<header class="header{' is-over-hero' if over_hero else ''}" id="header">
   <div class="container">
-    <a class="brand" href="{ctx.p('')}" aria-label="{t['site']}, {t['home']}"><svg><use href="#i-estrella"/></svg><span>Andalu</span><small>{t['tag']}</small></a>
+    <a class="brand" href="{ctx.p('')}" aria-label="{t['site']}, {t['home']}"><img class="logo logo--ink" src="{ctx.u('media/foto/logo-tinta.png')}" alt="Andalú GastroBar" width="1077" height="783" decoding="async"><img class="logo logo--alb" src="{ctx.u('media/foto/logo-alb.png')}" alt="" aria-hidden="true" width="1077" height="783" decoding="async"><small>{t['tag']}</small></a>
     <nav class="nav" aria-label="{t['main_nav']}">{nav}</nav>
     <div class="header-actions">
       <nav class="lang" aria-label="{t['lang_label']}">
@@ -186,14 +186,14 @@ def footer(ctx):
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      <div><a class="brand" href="{ctx.p('')}"><svg><use href="#i-estrella"/></svg><span>Andalu</span></a><p class="welcome">{t['footer_welcome']}</p></div>
+      <div><a class="brand brand--lg" href="{ctx.p('')}" aria-label="{t['site']}, {t['home']}"><img class="logo logo--ink" src="{ctx.u('media/foto/logo-tinta.png')}" alt="Andalú GastroBar" width="1077" height="783" decoding="async"><img class="logo logo--alb" src="{ctx.u('media/foto/logo-alb.png')}" alt="" aria-hidden="true" width="1077" height="783" decoding="async"></a><p class="welcome">{t['footer_welcome']}</p></div>
       <div><h4>{t['f_visit']}</h4><ul><li>Strada Teodor Codrescu 6<br>Iași 700481</li><li class="num">{t['hours_line']}</li><li><a class="link" href="{ctx.p(t['nav'][5][0])}">{t['f_how']}</a></li></ul></div>
       <div><h4>{t['f_talk']}</h4><ul><li><a href="tel:{TEL1}" class="num">0752 803 443</a></li><li><a href="{wa_link(t['wa_text'])}" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:{EMAIL}">{EMAIL}</a></li><li><a href="https://www.instagram.com/andalugastrobar" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/andalugastrobar" target="_blank" rel="noopener">Facebook</a></li></ul></div>
       <div><h4>{t['f_pages']}</h4><ul>{pages}<li><a href="{ctx.p(priv)}">{t['privacy']}</a></li><li><a href="{ctx.p(term)}">{t['terms']}</a></li></ul></div>
     </div>
     <div class="footer-legal">
       <div class="anpc"><a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">{t['sal']}</a><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">{t['sol']}</a><a href="https://anpc.ro/" target="_blank" rel="noopener">ANPC</a></div>
-      <p><span class="tbc">{t['company']}</span></p>
+      <p>{t['company']}</p>
       <div class="footer-bar"><span>© <span class="js-year num">2026</span> {t['copy']}</span>
         <nav class="lang" aria-label="{t['lang_label']}">
           <a href="{ctx.p(ctx.slug) if ctx.lang == 'ro' else ctx.twin()}" hreflang="ro" lang="ro"{' aria-current="true"' if ctx.lang == 'ro' else ''}><span>RO</span></a>
@@ -237,7 +237,8 @@ def restaurant_ld(ctx):
                 {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "20:00"}],
             "acceptsReservations": "True", "hasMenu": ctx.abs('ro', 'meniu'),
             "sameAs": ["https://www.instagram.com/andalugastrobar", "https://www.facebook.com/andalugastrobar"],
-            "founder": [{"@type": "Person", "name": "Ioana Luca"}, {"@type": "Person", "name": "Daniel Luca"}], "foundingDate": "2019"}
+            "founder": [{"@type": "Person", "name": "Ioana Luca"}, {"@type": "Person", "name": "Daniel Luca"}], "foundingDate": "2019", "legalName": "SC LALOCA13 SRL", "vatID": "RO40171204",
+            "logo": DOMAIN + "/media/foto/logo-tinta.png", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1734"}}
 
 
 # ----------------------------------------------------------------------------- INÍCIO
@@ -247,20 +248,20 @@ HOME = {
   label='Gastrobar spaniol · Copou, Iași · din 2019', h1=('Tapas, paella', 'și o <em>sobremesa</em>', 'lungă, în Copou.'),
   sub='Ioana și Daniel s-au întors din Madrid cu bucătăria pe care au iubit-o acolo: orez din Valencia, jamón, ulei de măsline și vin din Spania. Pe Strada Teodor Codrescu 6, lângă Grădina Botanică.',
   see_menu='Vezi meniul', today='Astăzi la Andalu', reviews='de recenzii pe Google', today_k='Astăzi', where_k='Unde', where='Teodor Codrescu 6, Copou', where_s='la 5 minute de Grădina Botanică', mon='Luni închis',
-  proof=[('4,8 din 5', '<span class="num">1 734</span> de recenzii', 'Google'), ('4,8 din 5', '#8 din 255 de restaurante din Iași', 'Tripadvisor'), ('4,7 din 5', '<span class="num">108</span> recenzii', 'Bookingham')],
+  proof=[('4,8 din 5', '<span class="num">1 734</span> de recenzii', 'Google'), ('4,8 din 5', '#8 din 255 de restaurante din Iași', 'Tripadvisor'), ('98 %', 'recomandă · <span class="num">234</span> de recenzii', 'Facebook')],
   proof4=('Terasă · 150 m²', 'Până la 100 de persoane, interior și terasă', 'Copou, Iași'),
-  lm_label='La masă', lm_h2='Se începe cu tapas. Se termină <em>târziu</em>.', lm_lead='Farfurii de împărțit, o paella pentru doi, o carafă de Sangria Alegria și o crema catalana la final. Ca într-un restaurant de familie din Spania: Ioana și Daniel sunt în sală.',
-  plates=[('tapas', 'tapas-platou-de-impartit.jpg', 'Platou de tapas de împărțit: patatas bravas, croquetas și jamón', '01 · Tapas', 'Patatas bravas, croquetas de rabo de toro, bocadillo de calamares.', 'Farfurii mici, de pus în mijlocul mesei. Sandvișul cu calamari și aioli e cel din Madrid.'),
-          ('paella', 'paella-marinera-pentru-doi.jpg', 'Paella marinera pentru doi, în tigaie, cu creveți și midii', '02 · Paella', 'Paella pentru doi, cu orez din Valencia.', 'Marinera, cu fructe de mare, sau cu pui, iepure și chorizo. Se face la comandă; merită așteptarea.'),
-          ('bauturi', 'sangria-alegria-carafa.jpg', 'Carafă de Sangria Alegria cu fructe și gheață', '03 · Bar', 'Sangria Alegria, vinuri spaniole, cocktailuri.', 'O carafă pentru masă, un vin din Spania la pahar sau un cocktail pe terasă.'),
-          ('desert', 'crema-catalana.jpg', 'Crema catalana cu crusta de zahăr ars', '04 · Final', 'Crema catalana și încă o cafea.', 'Partea de masă care nu se grăbește. Sobremesa, cum îi spun spaniolii.')],
-  m_label='Din meniu', m_h2='Tot meniul, pe telefon, cu alergeni și <em>filtre</em>.', m_lead='Fără PDF. Meniul complet, cu prețuri, alergeni marcați la fiecare preparat și filtru pentru vegetarian.',
+  lm_label='La masă', lm_h2='Se începe cu tapas. Se termină <em>târziu</em>.', lm_lead='Farfurii de împărțit, o paella pentru doi, o carafă de sangria cu cava și o crema catalana la final. Ca într-un restaurant de familie din Spania: Ioana și Daniel sunt în sală.',
+  plates=[('tapas', 'tapas-platou-de-impartit.jpg', 'Scoici Saint-Jacques pe grătar, cu unt și salsa verde', '01 · Tapas', 'Gambas al ajillo, pulpo a la gallega, jamón ibérico tăiat la cuțit.', 'Farfurii mici, de pus în mijlocul mesei. Pâinea e pentru sosul de la creveți.'),
+          ('paella', 'paella-marinera-pentru-doi.jpg', 'Paella cu fructe de mare și creveți roșii sălbatici, în tigaie', '02 · Paella', 'Paella pentru doi, cu orez din Valencia.', 'Cu fructe de mare, neagră cu creveți și calamari, sau cu pui, iepure și chorizo. Se face la comandă; merită așteptarea.'),
+          ('sangria', 'sangria-alba-pahar.jpg', 'White sangria la pahar, cu zmeură și lămâie, pe terasă', '03 · Bar', 'Sangria cu cava, vinuri spaniole, gin tonic Flor de Sevilla.', 'O carafă pentru masă, un Rioja sau un Albariño la sticlă, un cocktail pe terasă.'),
+          ('desert', 'cafea-cappuccino.jpg', 'Cappuccino cu o inimă în spumă', '04 · Final', 'Crema catalana, tartă San Sebastián și încă o cafea.', 'Partea de masă care nu se grăbește. Sobremesa, cum îi spun spaniolii.')],
+  m_label='Din meniu', m_h2='Tot meniul, pe telefon, cu alergeni și <em>filtre</em>.', m_lead='Fără PDF. Meniul complet, cu prețuri și gramaje, alergeni marcați la fiecare preparat și filtru pentru vegetarian.',
   m_open='Deschide meniul complet', m_photo_alt='Masă plină cu tapas, văzută de sus', m_filters='Exemplu de filtre din meniu',
   chips=['Vegetarian', 'Fără gluten', 'Fără lactoză', 'Crustacee', 'Moluște'],
   s_label='Povestea noastră', s_h2='Peste zece ani la Madrid. Apoi, <em>acasă</em>, în Copou.',
   s_p1='Suntem Ioana și Daniel, un cuplu din Iași. Am trăit mai bine de zece ani la Madrid, unde Daniel a lucrat în restaurante și Ioana într-o companie din domeniul sănătății. Ideea a apărut în 2016, într-o vizită acasă. Ne-am întors la sfârșitul lui 2018 și am deschis Andalu în 2019.',
   s_p2='Numele a venit din întâmplare, de la un magazin de ceramică, în timpul lucrărilor. Andaluzia a rămas în el. Ce n-a venit din întâmplare: ingredientele din Spania, bucătarul care a gătit în Spania și Andorra, și faptul că ne găsiți în sală, la mese, ca în restaurantele de familie de acolo.',
-  s_alt='Ioana și Daniel Luca la o masă din restaurant', facts=[('10+', 'ani la Madrid'), ('2019', 'deschiderea, în Copou'), ('16', 'oameni în echipă'), ('220 m²', 'interior + terasă 150 m²')], s_more='Citește povestea întreagă →',
+  s_alt='Sala Andalu: scaune de catifea verde, galbenă și roz, desene pe pereți', facts=[('10+', 'ani la Madrid'), ('2019', 'deschiderea, în Copou'), ('16', 'oameni în echipă'), ('220 m²', 'interior + terasă 150 m²')], s_more='Citește povestea întreagă →',
   o_label='Din Spania, la masă', o_h2='Ce vine de <em>acolo</em>.', o_lead='Cele mai multe ingrediente le aducem din Spania. Nu pentru etichetă, ci pentru că o paella fără orez din Valencia e alt fel de mâncare.',
   ledger=[('i-rice', 'Orez pentru paella', 'bob rotund, absoarbe fondul fără să se înmoaie', 'Valencia'), ('i-jamon', 'Jamón și mezeluri', 'tăiate la comandă', 'Spania'), ('i-cheese', 'Brânzeturi', 'pe platouri, lângă vin', 'Spania'),
           ('i-oil', 'Ulei de măsline', 'pe masă, cu pâine, de la început', 'Spania'), ('i-wine', 'Vin', 'la pahar și la sticlă, în Sangria Alegria', 'Spania'), ('i-chef', 'Bucătarul', 'român, format în bucătării din Spania și Andorra', 'Spania · Andorra')],
@@ -273,7 +274,7 @@ HOME = {
   ways=[('Telefon', 'Marți–duminică, în orele de program.'), ('Pe platformele pe care le folosești deja', 'Rezervările făcute pe Poloniq și Bookingham ajung la aceeași echipă, în același caiet.'), ('Take away și livrare', 'Paella și tapas la pachet, de ridicat de la noi sau prin aplicațiile de livrare.')],
   ways_tbc='detalii de confirmat',
   v_label='Ce spun oaspeții', v_h2='<span class="num">1 734</span> de recenzii pe Google. Media: <em>4,8</em>.', v_lead='Revin cele mai des: sangria, paella, atmosfera spaniolă și faptul că Ioana și Daniel sunt la mese.',
-  v_ph=['Citat real din Google, cu acordul autorului. Urmează.', 'Citat real din Tripadvisor despre paella sau sangria. Urmează.', 'Citat real despre terasă sau despre gazde. Urmează.'], v_who=['nume · luna · Google', 'nume · luna · Tripadvisor', 'nume · luna · Google'],
+  v_ph=['Cea mai bună mâncare din Iași. Dacă ar fi să aleg un singur loc unde să mănânc în Iași, aici ar fi, la Andalu. Favoritele mele: caracatița a la gallega, creveții cu sos de cognac, chipirones fritos.', 'Servirea a fost excelentă, terasa este răcoroasă și perfectă pentru zilele de vară, iar mâncarea a fost foarte bună. Paella cu fructe de mare pentru două persoane și patatas alioli. Le recomand cu drag!', 'Startere delicioase, porții destul de mari, gustul specific. Tot personalul foarte amabil, zâmbitor, glumeț, iar gazdele la fel de carismatice.'], v_who=['Laura A. · Local Guide · Google, 2026', 'Alexandru P. · Google, 2026', 'Alexandra F. · Local Guide · Google, 2026'],
   v_all='Vezi toate recenziile pe Google →', ig='@andalugastrobar pe Instagram →',
   c_label='Cum ajungi', c_h2='În Copou, la cinci minute de <em>Grădina Botanică</em>.', c_addr='Adresă', c_hours='Program', c_tel='Telefon', c_mail='Email',
   c_hours_v='Marți–sâmbătă 12:00–22:00<br>Duminică 12:00–20:00<br>Luni închis', amen=['Terasă', 'Parcare', 'Wi-Fi', 'Card și NFC', 'Acces cu scaun rulant', 'Scaune pentru copii', 'Opțiuni vegetariene'],
@@ -283,20 +284,20 @@ HOME = {
   label='Spanish gastrobar · Copou, Iași · since 2019', h1=('Tapas, paella', 'and a long', '<em>sobremesa</em> in Copou.'),
   sub='Ioana and Daniel came back from Madrid with the kitchen they loved there: Valencian rice, jamón, olive oil and Spanish wine. Strada Teodor Codrescu 6, next to the Botanical Garden.',
   see_menu='See the menu', today='Today at Andalu', reviews='Google reviews', today_k='Today', where_k='Where', where='Teodor Codrescu 6, Copou', where_s='5 minutes from the Botanical Garden', mon='Closed on Mondays',
-  proof=[('4.8 / 5', '<span class="num">1,734</span> reviews', 'Google'), ('4.8 / 5', '#8 of 255 restaurants in Iași', 'Tripadvisor'), ('4.7 / 5', '<span class="num">108</span> reviews', 'Bookingham')],
+  proof=[('4.8 / 5', '<span class="num">1,734</span> reviews', 'Google'), ('4.8 / 5', '#8 of 255 restaurants in Iași', 'Tripadvisor'), ('98 %', 'recommend · <span class="num">234</span> reviews', 'Facebook')],
   proof4=('Terrace · 150 m²', 'Up to 100 guests, indoors and on the terrace', 'Copou, Iași'),
-  lm_label='At the table', lm_h2='It starts with tapas. It ends <em>late</em>.', lm_lead='Plates to share, a paella for two, a jug of Sangria Alegria and a crema catalana to finish. Like a family-run place in Spain: Ioana and Daniel are on the floor.',
-  plates=[('tapas', 'tapas-platou-de-impartit.jpg', 'Sharing platter of tapas: patatas bravas, croquetas and jamón', '01 · Tapas', 'Patatas bravas, oxtail croquetas, bocadillo de calamares.', 'Small plates for the middle of the table. The calamari sandwich with aioli is the Madrid one.'),
-          ('paella', 'paella-marinera-pentru-doi.jpg', 'Seafood paella for two in the pan, with prawns and mussels', '02 · Paella', 'Paella for two, with rice from Valencia.', 'Seafood, or chicken, rabbit and chorizo. Cooked to order; worth the wait.'),
-          ('drinks', 'sangria-alegria-carafa.jpg', 'Jug of Sangria Alegria with fruit and ice', '03 · Bar', 'Sangria Alegria, Spanish wines, cocktails.', 'A jug for the table, a Spanish wine by the glass or a cocktail on the terrace.'),
-          ('dessert', 'crema-catalana.jpg', 'Crema catalana with a burnt-sugar crust', '04 · To finish', 'Crema catalana and one more coffee.', 'The part of the meal nobody hurries. Sobremesa, as the Spanish call it.')],
+  lm_label='At the table', lm_h2='It starts with tapas. It ends <em>late</em>.', lm_lead='Plates to share, a paella for two, a jug of cava sangria and a crema catalana to finish. Like a family-run place in Spain: Ioana and Daniel are on the floor.',
+  plates=[('tapas', 'tapas-platou-de-impartit.jpg', 'Grilled scallops with butter and salsa verde', '01 · Tapas', 'Gambas al ajillo, pulpo a la gallega, hand-carved jamón ibérico.', 'Small plates for the middle of the table. The bread is for the prawn sauce.'),
+          ('paella', 'paella-marinera-pentru-doi.jpg', 'Seafood paella with wild red prawns, in the pan', '02 · Paella', 'Paella for two, with rice from Valencia.', 'Seafood, black with prawns and squid, or chicken, rabbit and chorizo. Cooked to order; worth the wait.'),
+          ('sangria', 'sangria-alba-pahar.jpg', 'White sangria by the glass, with raspberries and lemon, on the terrace', '03 · Bar', 'Cava sangria, Spanish wines, Flor de Sevilla gin and tonic.', 'A jug for the table, a Rioja or an Albariño by the bottle, a cocktail on the terrace.'),
+          ('desert', 'cafea-cappuccino.jpg', 'Cappuccino with a heart in the foam', '04 · To finish', 'Crema catalana, San Sebastián cheesecake and one more coffee.', 'The part of the meal nobody hurries. Sobremesa, as the Spanish call it.')],
   m_label='From the menu', m_h2='The whole menu on your phone, with allergens and <em>filters</em>.', m_lead='No PDF. The full menu with prices, allergens marked on every dish and a vegetarian filter.',
   m_open='Open the full menu', m_photo_alt='A table full of tapas, seen from above', m_filters='Example of menu filters',
   chips=['Vegetarian', 'Gluten-free', 'Lactose-free', 'Crustaceans', 'Molluscs'],
   s_label='Our story', s_h2='More than ten years in Madrid. Then <em>home</em>, to Copou.',
   s_p1='We are Ioana and Daniel, a couple from Iași. We lived in Madrid for more than ten years, where Daniel worked in restaurants and Ioana for a healthcare company. The idea came in 2016, on a visit home. We moved back at the end of 2018 and opened Andalu in 2019.',
   s_p2='The name came by chance, from a ceramics shop, during the renovation. Andalusia stayed in it. What did not come by chance: the ingredients from Spain, a chef who cooked in Spain and Andorra, and the fact that you will find us on the floor, at the tables, like the family-run places over there.',
-  s_alt='Ioana and Daniel Luca at a table in the restaurant', facts=[('10+', 'years in Madrid'), ('2019', 'opened, in Copou'), ('16', 'people on the team'), ('220 m²', 'indoors + 150 m² terrace')], s_more='Read the whole story →',
+  s_alt='The Andalu dining room: green, yellow and pink velvet chairs, drawings on the walls', facts=[('10+', 'years in Madrid'), ('2019', 'opened, in Copou'), ('16', 'people on the team'), ('220 m²', 'indoors + 150 m² terrace')], s_more='Read the whole story →',
   o_label='From Spain, to the table', o_h2='What comes from <em>there</em>.', o_lead='Most of our ingredients come from Spain. Not for the label, but because a paella without Valencian rice is a different dish.',
   ledger=[('i-rice', 'Paella rice', 'round grain, soaks up the stock without going soft', 'Valencia'), ('i-jamon', 'Jamón and charcuterie', 'sliced to order', 'Spain'), ('i-cheese', 'Cheeses', 'on boards, next to the wine', 'Spain'),
           ('i-oil', 'Olive oil', 'on the table with bread, from the start', 'Spain'), ('i-wine', 'Wine', 'by the glass and bottle, in Sangria Alegria', 'Spain'), ('i-chef', 'The chef', 'Romanian, trained in kitchens in Spain and Andorra', 'Spain · Andorra')],
@@ -309,7 +310,7 @@ HOME = {
   ways=[('Phone', 'Tuesday to Sunday, during opening hours.'), ('On the platforms you already use', 'Bookings made on Poloniq and Bookingham reach the same team, in the same book.'), ('Take away and delivery', 'Paella and tapas to go, picked up from us or through the delivery apps.')],
   ways_tbc='details to be confirmed',
   v_label='What guests say', v_h2='<span class="num">1,734</span> Google reviews. Average: <em>4.8</em>.', v_lead='What comes up most: the sangria, the paella, the Spanish atmosphere and the fact that Ioana and Daniel are at the tables.',
-  v_ph=['Real quote from Google, with the author\'s consent. Coming.', 'Real Tripadvisor quote about the paella or the sangria. Coming.', 'Real quote about the terrace or the hosts. Coming.'], v_who=['name · month · Google', 'name · month · Tripadvisor', 'name · month · Google'],
+  v_ph=['The best food in Iași. If I had to pick a single place to eat in Iași, it would be here, at Andalu. My favourites: the octopus a la gallega, the prawns in cognac sauce, the chipirones fritos.', 'The service was excellent, the terrace is cool and perfect for summer days, and the food was very good. Seafood paella for two and patatas alioli. Warmly recommended!', 'Delicious starters, generous portions, the authentic taste. All the staff very kind, smiling, funny, and the hosts just as charismatic.'], v_who=['Laura A. · Local Guide · Google, 2026 · translated from Romanian', 'Alexandru P. · Google, 2026 · translated from Romanian', 'Alexandra F. · Local Guide · Google, 2026 · translated from Romanian'],
   v_all='See all reviews on Google →', ig='@andalugastrobar on Instagram →',
   c_label='How to get here', c_h2='In Copou, five minutes from the <em>Botanical Garden</em>.', c_addr='Address', c_hours='Hours', c_tel='Phone', c_mail='Email',
   c_hours_v='Tuesday–Saturday 12:00–22:00<br>Sunday 12:00–20:00<br>Monday closed', amen=['Terrace', 'Parking', 'Wi-Fi', 'Card and NFC', 'Wheelchair access', 'High chairs', 'Vegetarian options'],
@@ -326,6 +327,7 @@ def home(ctx):
     <div class="hero-ph"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
       <svg class="azulejo" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 800"><defs><pattern id="az" width="120" height="120" patternUnits="userSpaceOnUse"><path d="M60 8l13 39 39 13-39 13-13 39-13-39-39-13 39-13z" fill="none" stroke="#fff" stroke-width="1"/><circle cx="60" cy="60" r="6" fill="none" stroke="#fff" stroke-width="1"/><path d="M0 0h120v120" fill="none" stroke="#fff" stroke-width=".6" stroke-opacity=".5"/></pattern></defs><rect width="1200" height="800" fill="url(#az)"/></svg>
     </div>
+    <picture class="hero-poster"><source media="(orientation: portrait)" srcset="{ctx.u('media/foto/hero-poster-9x16.jpg')}"><img src="{ctx.u('media/foto/hero-poster-16x9.jpg')}" alt="" width="1920" height="1080" fetchpriority="high" decoding="async"></picture>
     <video id="heroVideo" muted loop playsinline preload="none"
       data-src-landscape="{ctx.u('media/video/hero-16x9.mp4')}" data-webm-landscape="{ctx.u('media/video/hero-16x9.webm')}" data-poster-landscape="{ctx.u('media/foto/hero-poster-16x9.jpg')}"
       data-src-portrait="{ctx.u('media/video/hero-9x16.mp4')}" data-webm-portrait="{ctx.u('media/video/hero-9x16.webm')}" data-poster-portrait="{ctx.u('media/foto/hero-poster-9x16.jpg')}"></video>
@@ -361,7 +363,7 @@ def home(ctx):
     sec = MENU['sections']
     def col(section, n=5):
         s = next(x for x in sec if x['id'] == section)
-        items = ''.join(f'<li><span><span class="name">{d["name"][ctx.lang]}</span><span class="desc">{d["desc"][ctx.lang]}</span></span><span class="tbc">{t["price_tbc"]}</span></li>' for d in s['dishes'][:n])
+        items = ''.join(f'<li><span><span class="name">{d["name"][ctx.lang]}</span><span class="desc">{d["desc"][ctx.lang]}</span></span><span class="price num">{d["price"]}</span></li>' for d in s['dishes'][:n])
         return f'<h3>{s["title"][ctx.lang]}</h3><ul class="menu-list" role="list">{items}</ul>'
     chips = h['chips']
     out += f'''<section class="section" id="meniu"><div class="container">
@@ -377,7 +379,7 @@ def home(ctx):
 '''
     facts = ''.join(f'<div><b class="num">{a}</b><span>{b}</span></div>' for a, b in h['facts'])
     out += f'''<section class="section section--alt" id="povestea"><div class="container"><div class="story">
-  {media(ctx, '4x5', 'ioana-si-daniel-la-masa.jpg', h['s_alt'], extra='reveal')}
+  {media(ctx, '4x5', 'sala-scaune-catifea.jpg', h['s_alt'], extra='reveal')}
   <div class="story-text reveal" data-delay="1"><p class="label">{star()}{h['s_label']}</p><h2>{h['s_h2']}</h2><p>{h['s_p1']}</p><p>{h['s_p2']}</p>
     <div class="story-facts">{facts}</div><p><a class="link" href="{story}">{h['s_more']}</a></p></div>
 </div></div></section>
@@ -400,7 +402,7 @@ def home(ctx):
 '''
     out += booking_block(ctx, h, ev)
     # reviews + instagram
-    revs = ''.join(f'<article class="review reveal"{f" data-delay=\"{i}\"" if i else ""}><span class="stars" aria-hidden="true">★★★★★</span><q class="is-placeholder">{q}</q><span class="who"><span class="tbc">{w}</span></span></article>' for i, (q, w) in enumerate(zip(h['v_ph'], h['v_who'])))
+    revs = ''.join(f'<article class="review reveal"{f" data-delay=\"{i}\"" if i else ""}><span class="stars" aria-hidden="true">★★★★★</span><q>{q}</q><span class="who">{w}</span></article>' for i, (q, w) in enumerate(zip(h['v_ph'], h['v_who'])))
     igs = ''
     cols = ['#C99A3B', '#1F4E8C', '#A84A28', '#5B6B3A', '#143563', '#8E3C1F']
     for i, c in enumerate(cols):
@@ -469,12 +471,12 @@ def contact_block(ctx, h):
 # ----------------------------------------------------------------------------- MENIU
 MENU_T = {
 'ro': dict(title='Meniu · Andalu Gastrobar, Iași', desc='Meniul complet al Andalu Gastrobar din Copou, Iași: tapas, paella cu orez din Valencia, carne și pește la grătar, deserturi spaniole, sangria și vinuri. Alergeni marcați, filtru vegetarian.',
-  label='Meniu', h1='Tapas de împărțit, paella pentru doi, <em>sangria</em> pentru masă.', lead='Meniul complet, pe telefon. Alergenii sunt marcați la fiecare preparat; apasă un filtru ca să vezi doar ce poți mânca. Prețurile sunt cele din meniul de la masă.',
-  filters='Filtre', legend_t='Alergeni', note='Alergenii și prețurile de pe această pagină se confirmă cu bucătăria înainte de publicare. Spuneți-ne la masă orice alergie sau intoleranță: adaptăm ce se poate.',
+  label='Meniu', h1='Tapas de împărțit, paella pentru doi, <em>sangria</em> pentru masă.', lead='Meniul complet, pe telefon, cu prețuri și gramaje. Alergenii sunt marcați la fiecare preparat; apasă un filtru ca să vezi doar ce poți mânca.',
+  filters='Filtre', legend_t='Alergeni', note='Prețuri în lei, din meniul digital al restaurantului (octombrie 2026); meniul de la masă are prioritate. Alergenii sunt marcați după descrierea fiecărui preparat, nu sunt lista legală completă: spuneți-ne la masă orice alergie sau intoleranță, adaptăm ce se poate.',
   fav='favorit', tbc='preț în meniu', vegf='Doar vegetarian', excl='Fără'),
 'en': dict(title='Menu · Andalu Gastrobar, Iași', desc='The full menu of Andalu Gastrobar in Copou, Iași: tapas, paella with Valencian rice, grilled meat and fish, Spanish desserts, sangria and wines. Allergens marked, vegetarian filter.',
-  label='Menu', h1='Tapas to share, paella for two, <em>sangria</em> for the table.', lead='The full menu on your phone. Allergens are marked on every dish; tap a filter to see only what you can eat. Prices are the ones on the printed menu.',
-  filters='Filters', legend_t='Allergens', note='Allergens and prices on this page are confirmed with the kitchen before publishing. Tell us about any allergy or intolerance at the table: we adapt what we can.',
+  label='Menu', h1='Tapas to share, paella for two, <em>sangria</em> for the table.', lead='The full menu on your phone, with prices and portion sizes. Allergens are marked on every dish; tap a filter to see only what you can eat.',
+  filters='Filters', legend_t='Allergens', note='Prices in lei, from the restaurant\'s digital menu (October 2026); the menu at the table prevails. Allergens follow each dish\'s description and are not the full legal list: tell us about any allergy or intolerance at the table, we adapt what we can.',
   fav='favourite', tbc='price on the menu', vegf='Vegetarian only', excl='Without'),
 }
 ALLERGENS = {'glu': ('G', {'ro': 'Gluten', 'en': 'Gluten'}), 'lac': ('L', {'ro': 'Lactoză', 'en': 'Dairy'}), 'cru': ('C', {'ro': 'Crustacee', 'en': 'Crustaceans'}),
@@ -500,7 +502,8 @@ def menu_page(ctx):
             tg = ''.join(f'<i class="veg" title="Vegetarian">V</i>' if x == 'veg' else f'<i title="{ALLERGENS[x][1][ctx.lang]}">{ALLERGENS[x][0]}</i>' for x in tags)
             fav = f'<span class="fav">{m["fav"]}</span>' if d.get('fav') else ''
             price = f'<span class="price">{d["price"]}</span>' if d.get('price') else f'<span class="price tbc">{m["tbc"]}</span>'
-            dishes += f'<div class="dish" data-tags="{" ".join(tags)}"><div><span class="name">{d["name"][ctx.lang]}{fav}</span><span class="desc">{d["desc"][ctx.lang]}</span>{f"<div class=\"tags\">{tg}</div>" if tg else ""}</div>{price}</div>'
+            wt = f'<span class="wt num">{d["w"]}</span>' if d.get('w') else ''
+            dishes += f'<div class="dish" data-tags="{" ".join(tags)}"><div><span class="name">{d["name"][ctx.lang]}{wt}{fav}</span><span class="desc">{d["desc"][ctx.lang]}</span>{f"<div class=\"tags\">{tg}</div>" if tg else ""}</div>{price}</div>'
         out += f'<section class="menu-section" id="{s["id"]}"><div class="menu-section-head reveal"><p class="label">{star()}{s["kicker"][ctx.lang]}</p><h2>{s["title"][ctx.lang]}</h2><p>{s["lead"][ctx.lang]}</p></div><div class="dishes">{dishes}</div></section>'
     out += f'<p class="menu-note">{m["note"]}</p></div>\n'
     return out + footer(ctx)
@@ -628,7 +631,7 @@ def story_page(ctx):
     t, s = ctx.t, ST_T[ctx.lang]
     out = head(ctx, s['title'], s['desc'], restaurant_ld(ctx)) + header(ctx, False)
     out += page_hero(ctx, s['label'], s['h1'], s['lead'], crumb=s['label'])
-    out += f'<section class="section"><div class="container"><div class="split split--rev">{media(ctx, "4x5", "ioana-si-daniel-la-masa.jpg", HOME[ctx.lang]["s_alt"], extra="reveal")}<div class="ways reveal" data-delay="1" style="gap:0">'
+    out += f'<section class="section"><div class="container"><div class="split split--rev">{media(ctx, "4x5", "sala-scaune-catifea.jpg", HOME[ctx.lang]["s_alt"], extra="reveal")}<div class="ways reveal" data-delay="1" style="gap:0">'
     for i, (y, h3, p) in enumerate(s['chapters']):
         out += f'<div class="way"><span class="n num">{y}</span><div><b>{h3}</b><p style="font-size:var(--fs-body)">{p}</p></div></div>'
     out += '</div></div></div></section>\n'
@@ -646,15 +649,15 @@ def story_page(ctx):
 
 # ----------------------------------------------------------------------------- GALERIE
 GA_T = {
-'ro': dict(title='Galerie · Andalu Gastrobar, Iași', desc='Fotografii de la Andalu Gastrobar, Copou, Iași: paella, tapas, sangria, sala și terasa.', label='Galerie', h1='Sala, terasa, <em>farfuriile</em>.', lead='Fotografiile reale ale restaurantului intră aici pe măsură ce le adunăm din Instagram și de la oaspeți, cu acordul lor. Până atunci, locurile lor sunt marcate.',
-  tabs=[('all', 'Toate'), ('food', 'Farfurii'), ('room', 'Sala'), ('terrace', 'Terasa'), ('people', 'Oameni')], close='Închide'),
-'en': dict(title='Gallery · Andalu Gastrobar, Iași', desc='Photos from Andalu Gastrobar, Copou, Iași: paella, tapas, sangria, the dining room and the terrace.', label='Gallery', h1='The room, the terrace, <em>the plates</em>.', lead='The restaurant\'s real photos go here as we gather them from Instagram and from guests, with their consent. Until then, their places are marked.',
-  tabs=[('all', 'All'), ('food', 'Plates'), ('room', 'The room'), ('terrace', 'Terrace'), ('people', 'People')], close='Close'),
+'ro': dict(title='Galerie · Andalu Gastrobar, Iași', desc='Fotografii de la Andalu Gastrobar, Copou, Iași: paella, tapas, sangria, sala și terasa.', label='Galerie', h1='Sala, terasa, <em>farfuriile</em>.', lead='Sala cu scaune de catifea, terasa cu iederă și farfuriile. Fotografii de pe Instagram și Facebook-ul restaurantului.',
+  tabs=[('all', 'Toate'), ('food', 'Farfurii'), ('room', 'Sala'), ('terrace', 'Terasa')], close='Închide'),
+'en': dict(title='Gallery · Andalu Gastrobar, Iași', desc='Photos from Andalu Gastrobar, Copou, Iași: paella, tapas, sangria, the dining room and the terrace.', label='Gallery', h1='The room, the terrace, <em>the plates</em>.', lead='The velvet-chair dining room, the ivy terrace and the plates. Photos from the restaurant\'s Instagram and Facebook.',
+  tabs=[('all', 'All'), ('food', 'Plates'), ('room', 'The room'), ('terrace', 'Terrace')], close='Close'),
 }
-GALLERY = [('food', 'paella-marinera-pentru-doi.jpg', 'Paella marinera', 'is-wide', '3x2', 1200, 800), ('food', 'tapas-platou-de-impartit.jpg', 'Tapas', '', '1x1', 800, 800), ('room', 'sala-andalu.jpg', 'Sala / The room', 'is-tall', '4x5', 800, 1000),
-           ('food', 'sangria-alegria-carafa.jpg', 'Sangria Alegria', '', '1x1', 800, 800), ('terrace', 'terasa-vara.jpg', 'Terasa / Terrace', 'is-wide', '3x2', 1200, 800), ('people', 'ioana-si-daniel-la-masa.jpg', 'Ioana & Daniel', '', '1x1', 800, 800),
-           ('food', 'secreto-iberico.jpg', 'Secreto ibérico', '', '1x1', 800, 800), ('food', 'crema-catalana.jpg', 'Crema catalana', '', '1x1', 800, 800), ('room', 'bar-andalu.jpg', 'Bar', 'is-wide', '3x2', 1200, 800),
-           ('food', 'caracatita-la-gratar.jpg', 'Caracatiță la grătar / Grilled octopus', '', '1x1', 800, 800), ('terrace', 'terasa-seara.jpg', 'Terasa seara / Terrace at night', 'is-tall', '4x5', 800, 1000), ('people', 'echipa-andalu.jpg', 'Echipa / The team', '', '1x1', 800, 800)]
+GALLERY = [('food', 'paella-fructe-de-mare.jpg', 'Paella cu fructe de mare / Seafood paella', 'is-wide', '3x2', 1600, 1067), ('food', 'vieiras-1x1.jpg', 'Scoici Saint-Jacques / Scallops', '', '1x1', 1000, 1000), ('room', 'sala-intrare.jpg', 'Intrarea și desenele de pe perete / The entrance and the wall drawings', 'is-tall', '4x5', 1200, 1500),
+           ('food', 'sangria-alba-1x1.jpg', 'White sangria', '', '1x1', 600, 600), ('terrace', 'terasa-vara.jpg', 'Terasa, vara / The terrace in summer', 'is-wide', '3x2', 1600, 1067), ('room', 'sala-scaune-1x1.jpg', 'Scaunele de catifea / The velvet chairs', '', '1x1', 1000, 1000),
+           ('food', 'secreto-iberico.jpg', 'Secreto ibérico', '', '1x1', 600, 600), ('food', 'crochete.jpg', 'Crochete / Croquettes', '', '1x1', 1000, 1000), ('room', 'bar-andalu.jpg', 'Jamónul, la bar / The jamón at the bar', 'is-wide', '3x2', 1440, 960),
+           ('food', 'caracatita-la-gratar.jpg', 'Caracatiță pe jar / Charcoal-grilled octopus', '', '1x1', 1200, 1200), ('terrace', 'terasa-acoperita.jpg', 'Terasa acoperită / The covered terrace', 'is-tall', '4x5', 1200, 1500), ('room', 'sala-lunga.jpg', 'Masa lungă din sală / The long table', 'is-wide', '3x2', 1440, 960)]
 
 
 def gallery_page(ctx):
@@ -725,7 +728,7 @@ def contact_page(ctx):
 LEGAL = {
 'ro': {
  'confidentialitate': ('Politica de confidențialitate · Andalu Gastrobar', 'Cum folosește Andalu Gastrobar datele personale trimise prin site: rezervări pe WhatsApp, cereri de ofertă, hartă.', 'Confidențialitate', 'Datele voastre, <em>pe scurt</em>.', 'Site-ul acesta nu are cookie-uri de urmărire și nu trimite nimic fără o acțiune a voastră. Ce colectăm, de ce și cât timp.',
-  '''<h2>Cine suntem</h2><p>Andalu Gastrobar, Strada Teodor Codrescu 6, Iași 700481. <span class="tbc">Denumirea societății, CUI și datele de înregistrare: de completat.</span> Contact pentru date personale: <a href="mailto:andalu.gastrobar@gmail.com">andalu.gastrobar@gmail.com</a>.</p>
+  '''<h2>Cine suntem</h2><p>Andalu Gastrobar, Strada Teodor Codrescu 6, Iași 700481. Societatea: SC LALOCA13 SRL, CUI RO40171204, J22/2131/2018, cu sediul la aceeași adresă. Contact pentru date personale: <a href="mailto:andalu.gastrobar@gmail.com">andalu.gastrobar@gmail.com</a>.</p>
 <h2>Ce date colectăm și de ce</h2>
 <h3>Rezervarea pe WhatsApp</h3><p>Formularul de rezervare nu trimite nimic către noi direct: compune un mesaj în telefonul vostru și deschide WhatsApp. Datele (nume, dată, oră, număr de persoane) ajung la noi doar dacă apăsați „trimite” în WhatsApp. Le folosim ca să vă ținem masa și le păstrăm în istoricul conversației, pe care îl putem șterge la cerere.</p>
 <h3>Cererea de ofertă pentru evenimente</h3><p>Formularul trimite numele, telefonul, tipul evenimentului, numărul de persoane, data și mesajul vostru pe emailul restaurantului, printr-un serviciu de formulare al găzduirii (Netlify). Temei: pașii premergători unui contract, la cererea voastră (art. 6 alin. 1 lit. b GDPR). Păstrăm cererea cât durează discuția și, dacă nu se încheie un contract, maximum 12 luni.</p>
@@ -736,7 +739,7 @@ LEGAL = {
 <h2>Drepturile voastre</h2><p>Puteți cere accesul la date, rectificarea, ștergerea, restricționarea sau portabilitatea lor și vă puteți opune prelucrării, scriind la adresa de mai sus. Aveți dreptul de a depune o plângere la <a href="https://www.dataprotection.ro/" target="_blank" rel="noopener">ANSPDCP</a>.</p>
 <p><em>Ultima actualizare: octombrie 2026. Textul este un model și se verifică cu un consultant juridic înainte de publicare.</em></p>'''),
  'termeni': ('Termeni și condiții · Andalu Gastrobar', 'Termenii de utilizare a site-ului Andalu Gastrobar: rezervări, evenimente, proprietate intelectuală, ANPC.', 'Termeni și condiții', 'Regulile <em>casei</em>, în scris.', 'Cum funcționează rezervările și cererile de ofertă făcute prin site, și ce vă putem promite.',
-  '''<h2>Site-ul</h2><p>Site-ul andalugastrobar.ro este operat de Andalu Gastrobar, Strada Teodor Codrescu 6, Iași. <span class="tbc">Denumirea societății, CUI, Reg. Com.: de completat.</span> Informațiile de pe site (meniu, prețuri, program) sunt orientative și se pot schimba; meniul de la masă are prioritate.</p>
+  '''<h2>Site-ul</h2><p>Site-ul andalugastrobar.ro este operat de Andalu Gastrobar, Strada Teodor Codrescu 6, Iași. Societatea: SC LALOCA13 SRL, CUI RO40171204, J22/2131/2018. Informațiile de pe site (meniu, prețuri, program) sunt orientative și se pot schimba; meniul de la masă are prioritate.</p>
 <h2>Rezervări</h2><ul><li>O rezervare trimisă pe WhatsApp, telefon sau platforme este valabilă după confirmarea noastră.</li><li>Ținem masa 15 minute după ora rezervată; după aceea o putem oferi altor oaspeți.</li><li>Pentru grupuri de peste 12 persoane putem cere un avans și un meniu stabilit în prealabil.</li><li>Vă rugăm să anulați pe același canal dacă nu mai veniți.</li></ul>
 <h2>Evenimente și catering</h2><p>Cererea de ofertă nu obligă la nimic. Un eveniment se confirmă printr-o ofertă acceptată în scris, un avans și numărul final de persoane comunicat cu <span class="tbc">X zile</span> înainte. <span class="tbc">Condițiile de avans și de anulare se completează de restaurant.</span></p>
 <h2>Alergeni</h2><p>Alergenii marcați în meniu sunt informativi. Spuneți-ne la masă orice alergie; nu putem garanta absența totală a urmelor.</p>
@@ -747,7 +750,7 @@ LEGAL = {
 },
 'en': {
  'privacy': ('Privacy policy · Andalu Gastrobar', 'How Andalu Gastrobar uses personal data sent through the site: WhatsApp bookings, quote requests, map.', 'Privacy', 'Your data, <em>in short</em>.', 'This site has no tracking cookies and sends nothing without an action from you. What we collect, why and for how long.',
-  '''<h2>Who we are</h2><p>Andalu Gastrobar, Strada Teodor Codrescu 6, Iași 700481, Romania. <span class="tbc">Company name, VAT number and registration details: to be completed.</span> Contact for personal data: <a href="mailto:andalu.gastrobar@gmail.com">andalu.gastrobar@gmail.com</a>.</p>
+  '''<h2>Who we are</h2><p>Andalu Gastrobar, Strada Teodor Codrescu 6, Iași 700481, Romania. Company: SC LALOCA13 SRL, VAT RO40171204, trade register J22/2131/2018, registered at the same address. Contact for personal data: <a href="mailto:andalu.gastrobar@gmail.com">andalu.gastrobar@gmail.com</a>.</p>
 <h2>What we collect and why</h2>
 <h3>Booking on WhatsApp</h3><p>The booking form sends nothing to us directly: it composes a message on your phone and opens WhatsApp. The details (name, date, time, number of guests) reach us only if you press "send" in WhatsApp. We use them to hold your table and keep them in the chat history, which we can delete on request.</p>
 <h3>Event quote request</h3><p>The form sends your name, phone, event type, number of guests, date and message to the restaurant's email through our host's form service (Netlify). Basis: steps prior to a contract, at your request (art. 6(1)(b) GDPR). We keep the request for the length of the discussion and, if no contract follows, for at most 12 months.</p>
@@ -758,7 +761,7 @@ LEGAL = {
 <h2>Your rights</h2><p>You can request access to your data, its rectification, erasure, restriction or portability, and object to processing, by writing to the address above. You have the right to lodge a complaint with the Romanian authority, <a href="https://www.dataprotection.ro/" target="_blank" rel="noopener">ANSPDCP</a>.</p>
 <p><em>Last updated: October 2026. This text is a template and is checked with a legal adviser before publishing.</em></p>'''),
  'terms': ('Terms & conditions · Andalu Gastrobar', 'Terms of use of the Andalu Gastrobar site: bookings, events, intellectual property, ANPC.', 'Terms & conditions', 'The <em>house</em> rules, in writing.', 'How bookings and quote requests made through the site work, and what we can promise.',
-  '''<h2>The site</h2><p>andalugastrobar.ro is operated by Andalu Gastrobar, Strada Teodor Codrescu 6, Iași, Romania. <span class="tbc">Company name, VAT no., trade register: to be completed.</span> Information on the site (menu, prices, hours) is indicative and may change; the printed menu at the table prevails.</p>
+  '''<h2>The site</h2><p>andalugastrobar.ro is operated by Andalu Gastrobar, Strada Teodor Codrescu 6, Iași, Romania. Company: SC LALOCA13 SRL, VAT RO40171204, trade register J22/2131/2018. Information on the site (menu, prices, hours) is indicative and may change; the printed menu at the table prevails.</p>
 <h2>Bookings</h2><ul><li>A booking sent on WhatsApp, by phone or on a platform is valid after our confirmation.</li><li>We hold the table for 15 minutes after the booked time; after that we may offer it to other guests.</li><li>For groups over 12 we may ask for a deposit and a pre-agreed menu.</li><li>Please cancel on the same channel if you are no longer coming.</li></ul>
 <h2>Events and catering</h2><p>A quote request commits you to nothing. An event is confirmed by a written acceptance of the quote, a deposit and the final headcount sent <span class="tbc">X days</span> before. <span class="tbc">Deposit and cancellation terms to be completed by the restaurant.</span></p>
 <h2>Allergens</h2><p>Allergens marked on the menu are for information. Tell us about any allergy at the table; we cannot guarantee the total absence of traces.</p>
