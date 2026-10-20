@@ -351,11 +351,9 @@ def home(ctx):
     <div>
       <p class="label">{flags()}{h['label']}</p>
       <h1><span class="line"><span>{h['h1'][0]}</span></span><span class="line"><span>{h['h1'][1]}</span></span></h1>
-      <p class="hero-sub">{h['sub']}</p>
       <div class="hero-ctas"><a class="btn btn--cta" href="{deliv}"><svg><use href="#i-scooter"/></svg>{t['order']}<svg class="arrow"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="{menu}">{h['see_menu']}</a></div>
     </div>
     <aside class="today" aria-label="{h['today']}">
-      <div class="rating"><b class="num">{rating}</b><div><span class="stars" aria-hidden="true">★★★★★</span><small>{h['rating_n']} {h['rating_s']}</small></div></div>
       <dl>
         <dt><svg><use href="#i-clock"/></svg>{h['today_k']}</dt><dd><span class="status js-status"><i aria-hidden="true"></i><span class="js-status-text">{t['hours_line']}</span></span><small>{h['every']}</small></dd>
         <dt><svg><use href="#i-pin"/></svg>{h['where_k']}</dt><dd>{h['where']}<small>{h['where_s']}</small></dd>
