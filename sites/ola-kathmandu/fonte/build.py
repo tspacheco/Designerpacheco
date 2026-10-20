@@ -265,8 +265,8 @@ HOME = {
   ledger=[('i-steam', 'Momo', 'massa fina, recheio de frango ou legumes, vapor', 'Kathmandu'), ('i-fire', 'Tandoor', 'forno de barro a alta temperatura: naan e frango', 'Punjab · Nepal'), ('i-leaf', 'Timmur', 'pimenta nepalesa de Sichuan, no bhatmas sadeko e no aloo', 'Himalaias'),
           ('i-sun', 'Garam masala da casa', 'mais de 15 especiarias torradas e moídas', 'Cozinha'), ('i-bag', 'Chatpate e pani puri', 'petiscos de rua, picantes, doces e ácidos', 'Rua'), ('i-users', 'Dal bhat', 'o prato de todos os dias no Nepal', 'Casa')],
   r_label='Reservas', r_h2='Reservas em 30 segundos. Nós <em>confirmamos</em>.', r_lead='Envia no WhatsApp a data, a hora e o número de pessoas. Confirmamos na mesma conversa ou ligamos de volta.',
-  f_title='Reservar no WhatsApp', f_date='Data', f_time='Hora', f_people='Pessoas', f_name='Nome', f_name_ph='Nome e apelido', f_send='Enviar a reserva no WhatsApp',
-  f_note='Abre o WhatsApp com a mensagem escrita. Mais de 10 pessoas ou um grupo? <a class="link" href="{ev}">Pede o Set Menu</a>. Nada é enviado sem ti; os dados ficam no teu telemóvel.',
+  f_title='Reserva por WhatsApp ou telemóvel', f_tel='Telemóvel', f_date='Data', f_time='Hora', f_people='Pessoas', f_name='Nome', f_name_ph='Nome e apelido', f_send='Enviar a reserva no WhatsApp',
+  f_note='Diz-nos a data, a hora e quantas pessoas. Mais de 10 pessoas ou um grupo? <a class="link" href="{ev}">Pede o Set Menu</a>.',
   ways=[('Telefone', 'Todos os dias, das 10:00 às 23:00.'), ('Grupos e festas', 'Set Menu de 45 € para 3–4 pessoas, com bebida. Para grupos maiores, combinamos a travessa e a mesa.'), ('Take-away', 'Pede na carta e vem buscar; o pedido sai escrito no WhatsApp.')],
   v_label='O que dizem', v_h2='<em>5,0</em> no Tripadvisor. Três opiniões, três vezes cinco estrelas.', v_lead='Ainda são poucas, e são todas de 2026. O que repetem: primeira vez a comer nepalês, doses generosas, «uma surpresa agradável perdida em Grândola».',
   reviews=[('Primeira experiência com comida nepalesa, tudo o que escolhemos estava delicioso e muito bem servido (doses generosas).', 'mpneto2016 · agosto 2026 · Tripadvisor'),
@@ -306,8 +306,8 @@ HOME = {
   ledger=[('i-steam', 'Momo', 'thin dough, chicken or vegetable filling, steam', 'Kathmandu'), ('i-fire', 'Tandoor', 'high-heat clay oven: naan and chicken', 'Punjab · Nepal'), ('i-leaf', 'Timmur', 'Nepali Sichuan pepper, in the bhatmas sadeko and the aloo', 'Himalayas'),
           ('i-sun', 'House garam masala', 'more than 15 spices, toasted and ground', 'Kitchen'), ('i-bag', 'Chatpate and pani puri', 'street snacks: hot, sweet and sour', 'Street'), ('i-users', 'Dal bhat', "Nepal's everyday plate", 'Home')],
   r_label='Reservations', r_h2='Book in 30 seconds. We <em>confirm</em>.', r_lead='Send the date, time and number of guests on WhatsApp. We confirm in the same chat or call you back.',
-  f_title='Book on WhatsApp', f_date='Date', f_time='Time', f_people='Guests', f_name='Name', f_name_ph='First and last name', f_send='Send the booking on WhatsApp',
-  f_note='WhatsApp opens with the message already written. More than 10 people, or a group? <a class="link" href="{ev}">Ask for the Set Menu</a>. Nothing is sent without you; the details stay on your phone.',
+  f_title='Book on WhatsApp or by phone', f_tel='Phone', f_date='Date', f_time='Time', f_people='Guests', f_name='Name', f_name_ph='First and last name', f_send='Send the booking on WhatsApp',
+  f_note='Tell us the date, time and number of guests. More than 10 people, or a group? <a class="link" href="{ev}">Ask for the Set Menu</a>.',
   ways=[('Phone', 'Every day, 10:00 to 23:00.'), ('Groups and parties', '€45 Set Menu for 3–4 people, drink included. For bigger groups we arrange the platter and the table.'), ('Take-away', 'Order from the menu and collect; the order goes out written on WhatsApp.')],
   v_label='What people say', v_h2='<em>5.0</em> on Tripadvisor. Three reviews, three times five stars.', v_lead='Still few, and all from 2026. What they repeat: first time eating Nepali, generous portions, "a pleasant surprise lost in Grândola".',
   reviews=[('First experience with Nepali food, everything we chose was delicious and very well served (generous portions).', 'mpneto2016 · August 2026 · Tripadvisor'),
@@ -327,8 +327,6 @@ def apps_block(ctx, h, dark=True):
     for (k, name, url), (_, d) in zip(APPS, h['d_apps']):
         letter = {'glovo': 'G', 'uber': 'U', 'bolt': 'B'}[k]
         out += f'<a class="app" href="{url}" target="_blank" rel="noopener"><span class="logo {k}" aria-hidden="true">{letter}</span><span><b>{name}</b><span class="d">{d}</span></span><span class="go"><svg><use href="#i-arrow"/></svg></span></a>'
-    out += f'<a class="app" href="{wa_link(t["wa_order"])}" target="_blank" rel="noopener"><span class="logo wa" aria-hidden="true"><svg><use href="#i-wa"/></svg></span><span><b>{h["d_wa"][0]}</b><span class="d">{h["d_wa"][1]}</span></span><span class="go"><svg><use href="#i-arrow"/></svg></span></a>'
-    out += f'<a class="app" href="tel:{TEL}"><span class="logo tel" aria-hidden="true"><svg><use href="#i-phone"/></svg></span><span><b>{h["d_tel"][0]}</b><span class="d num">{h["d_tel"][1]}</span></span><span class="go"><svg><use href="#i-arrow"/></svg></span></a>'
     out += f'<p style="font-size:.82rem;opacity:.7"><span class="tbc">{h["d_tbc"]}</span></p></div>'
     return out
 
@@ -435,7 +433,6 @@ def home(ctx):
 
 def booking_block(ctx, h, ev, section_id='reservas'):
     t = ctx.t
-    times = ''.join(f'<option value="{x}:00"{" selected" if x == 20 else ""}>{x}:00</option>' for x in range(12, 23))
     rows = [f'<a class="btn btn--ghost" href="tel:{TEL}"><svg><use href="#i-phone"/></svg>{TELF}</a>',
             f'<a class="btn btn--ghost" href="{wa_link(t["wa_group"])}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>',
             f'<a class="btn btn--ghost" href="{ctx.p(t["nav"][0][0])}">{t["menu"]}</a>']
@@ -443,17 +440,14 @@ def booking_block(ctx, h, ev, section_id='reservas'):
     return f'''<section class="section" id="{section_id}"><div class="container">
   <div class="section-head reveal"><p class="label">{flags()}{h['r_label']}</p><h2>{h['r_h2']}</h2><p class="lead">{h['r_lead']}</p></div>
   <div class="book">
-    <form class="book-form reveal" id="bookForm" novalidate>
+    <div class="book-form reveal">
       <h3>{h['f_title']}</h3>
-      <div class="fields">
-        <div class="field"><label for="bDate">{h['f_date']}</label><input id="bDate" name="data" type="date" required></div>
-        <div class="field"><label for="bTime">{h['f_time']}</label><select id="bTime" name="hora" required>{times}</select></div>
-        <div class="field"><label for="bPeople">{h['f_people']}</label><input id="bPeople" name="pessoas" type="number" min="1" max="10" value="2" inputmode="numeric" required></div>
-        <div class="field"><label for="bName">{h['f_name']}</label><input id="bName" name="nome" type="text" autocomplete="name" placeholder="{h['f_name_ph']}" required></div>
+      <div class="opts">
+        <a class="app" href="{wa_link(t['wa_text'])}" target="_blank" rel="noopener"><span class="logo wa" aria-hidden="true"><svg><use href="#i-wa"/></svg></span><span><b>WhatsApp</b><span class="d num">{TELF}</span></span><span class="go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></a>
+        <a class="app" href="tel:{TEL}"><span class="logo tel" aria-hidden="true"><svg><use href="#i-phone"/></svg></span><span><b>{h['f_tel']}</b><span class="d num">{TELF}</span></span><span class="go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></a>
       </div>
-      <button class="btn btn--cta" type="submit"><svg><use href="#i-wa"/></svg>{h['f_send']}</button>
       <p class="note">{h['f_note'].replace('{ev}', ev + '#grupos')}</p>
-    </form>
+    </div>
     <div class="ways reveal" data-delay="1">{ways}</div>
   </div>
 </div></section>
