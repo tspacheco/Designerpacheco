@@ -29,6 +29,7 @@
   --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body);overflow-x:hidden}
 img{max-width:100%;display:block}
@@ -46,6 +47,7 @@ p{margin:0 0 1em;max-width:62ch}
 .btn:hover{transform:translateY(-2px)}
 .btn-sol{background:var(--sol);color:var(--ink)}.btn-sol:hover{background:#FF8E45}
 .btn-ink{background:var(--ink);color:var(--branco)}.btn-ink:hover{background:#000}
+.btn-paper{background:var(--paper);color:var(--ink)}.btn-paper:hover{background:#fff}
 .btn-line{border:2px solid currentColor}
 .btn svg{width:1.1em;height:1.1em}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -88,7 +90,7 @@ p{margin:0 0 1em;max-width:62ch}
 .hero{position:relative;color:#fff;background:var(--ink);min-height:min(86vh,820px);display:grid;align-items:end;overflow:hidden;isolation:isolate}
 .hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .hero-scene{position:absolute;inset:0;z-index:-3}
-.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,18,18,.88) 0%,rgba(18,18,18,.45) 45%,rgba(18,18,18,.05) 100%)}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,18,18,.86) 0%,rgba(18,18,18,.35) 50%,rgba(18,18,18,0) 100%)}
 .hero .wrap{width:100%;padding-top:7rem;padding-bottom:3.5rem;display:grid;gap:1.4rem}
 .hero h1{font-size:var(--fs-display);max-width:12ch}
 .reg{position:relative;display:inline-block}
@@ -116,6 +118,18 @@ p{margin:0 0 1em;max-width:62ch}
   .marks{inset:.8rem}
 }
 
+/* cabeçalho de página */
+.phero{position:relative;color:#fff;background:var(--ink);overflow:hidden;isolation:isolate;display:grid;align-items:end;min-height:min(52vh,460px)}
+.phero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.phero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,var(--ph-shade,rgba(18,18,18,.9)) 0%,rgba(18,18,18,.2) 70%)}
+.phero .wrap{width:100%;padding-top:5rem;padding-bottom:2.6rem;display:grid;gap:.8rem}
+.phero h1{font-size:clamp(3rem,2rem + 5vw,6rem);max-width:14ch}
+.phero .lead{color:rgba(255,255,255,.85)}
+.phero-sol{background:var(--sol);--ph-shade:rgba(120,50,10,.75)}
+.phero-ria{background:var(--ria);--ph-shade:rgba(8,40,46,.9)}
+.phero-areia{background:var(--areia);color:var(--ink);--ph-shade:rgba(232,223,207,.0)}
+.phero-areia::after{background:none}.phero-areia .lead{color:var(--ink-2)}.phero-areia .label{color:var(--ria)}
+.phero .label{color:var(--sol)}.phero-sol .label{color:var(--ink)}
 /* marquee */
 .marquee{background:var(--sol);color:var(--ink);overflow:hidden;padding:.75rem 0;font:700 .8rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
 .marquee div{display:flex;gap:3rem;width:max-content;animation:mq 38s linear infinite}
@@ -264,15 +278,15 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
 
 <nav class="nav" id="nav">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Tshirts do Sul, início">{{LOGO}}</a>
+    <a class="logo" href="index.html" aria-label="Tshirts do Sul, início">{{LOGO}}</a>
     <button class="icon-btn burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <ul class="menu" id="menu">
-      <li><a href="#loja" data-pt="Loja" data-en="Shop">Loja</a></li>
-      <li><a href="#algarve" data-pt="Coleção Algarve" data-en="Algarve Collection">Coleção Algarve</a></li>
-      <li><a href="#por-medida" data-pt="Por medida" data-en="Custom printing">Por medida</a></li>
-      <li><a href="#estudio" data-pt="O estúdio" data-en="The studio">O estúdio</a></li>
-      <li><a href="#envios" data-pt="Envios" data-en="Shipping">Envios</a></li>
-      <li><a href="#contacto" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+      <li><a href="loja.html" data-pt="Loja" data-en="Shop">Loja</a></li>
+      <li><a href="index.html#algarve" data-pt="Coleção Algarve" data-en="Algarve Collection">Coleção Algarve</a></li>
+      <li><a href="por-medida.html" data-pt="Por medida" data-en="Custom printing">Por medida</a></li>
+      <li><a href="estudio.html" data-pt="O estúdio" data-en="The studio">O estúdio</a></li>
+      <li><a href="envios.html" data-pt="Envios" data-en="Shipping">Envios</a></li>
+      <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
     </ul>
     <div class="tools">
       <div class="lang" role="group" aria-label="Idioma"><button id="lang-pt" aria-pressed="true">PT</button><button id="lang-en" aria-pressed="false">EN</button></div>
@@ -281,11 +295,12 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
   </div>
 </nav>
 
+<!-- @hero -->
 <header class="hero" id="top">
   <svg class="hero-scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1b1b"/><stop offset="1" stop-color="#0a0a0a"/></linearGradient></defs><rect width="1600" height="900" fill="url(#hg)"/><path d="M500 640a300 300 0 0 1 600 0z" fill="#F4792B" opacity=".85"/><rect x="440" y="650" width="720" height="10" fill="#fff" opacity=".9"/><rect x="520" y="680" width="560" height="8" fill="#fff" opacity=".5"/></svg>
   <picture>
-    <source media="(max-width:680px)" srcset="media/hero-9x16.webp">
-    <img src="media/hero-16x9.webp" alt="Mãos a puxar a rácula sobre uma tela de serigrafia, no estúdio em Faro" width="1344" height="752" fetchpriority="high" onerror="this.parentElement.remove()">
+    <source media="(max-width:680px)" srcset="media/hero2-9x16.webp">
+    <img src="media/hero2-16x9.webp" alt="T-shirt preta com sol estampado, pendurada na parede laranja do estúdio em Faro" width="1344" height="752" fetchpriority="high" onerror="this.parentElement.remove()">
   </picture>
   <div class="hero-shade"></div>
   <div class="marks" aria-hidden="true">
@@ -299,15 +314,19 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
     <h1><span class="reg"><i class="c1" aria-hidden="true" data-pt="Estampado em Faro. Há mais de 30 anos." data-en="Printed in Faro. For over 30 years.">Estampado em Faro. Há mais de 30 anos.</i><i class="c2" aria-hidden="true" data-pt="Estampado em Faro. Há mais de 30 anos." data-en="Printed in Faro. For over 30 years.">Estampado em Faro. Há mais de 30 anos.</i><span data-pt="Estampado em Faro. Há mais de 30 anos." data-en="Printed in Faro. For over 30 years.">Estampado em Faro. Há mais de 30 anos.</span></span></h1>
     <p class="lead" data-pt="T-shirts, sweats e bonés desenhados aqui e impressos nas nossas prensas: serigrafia, DTG e DTF em algodão de 190 g/m². Para ti, para a tua equipa ou para o teu evento." data-en="T-shirts, sweats and caps designed here and printed on our own presses: screen print, DTG and DTF on 190 gsm cotton. For you, your team or your event.">T-shirts, sweats e bonés desenhados aqui e impressos nas nossas prensas: serigrafia, DTG e DTF em algodão de 190 g/m². Para ti, para a tua equipa ou para o teu evento.</p>
     <div class="hero-cta">
-      <a class="btn btn-sol" href="#loja" data-pt="Ver a loja" data-en="Shop the range">Ver a loja</a>
-      <a class="btn btn-line" href="#por-medida" style="color:#fff" data-pt="Pedir orçamento por medida" data-en="Get a custom print quote">Pedir orçamento por medida</a>
+      <a class="btn btn-paper" href="loja.html" data-pt="Ver a loja" data-en="Shop the range">Ver a loja</a>
+      <a class="btn btn-line" href="por-medida.html" style="color:#fff" data-pt="Pedir orçamento por medida" data-en="Get a custom print quote">Pedir orçamento por medida</a>
     </div>
   </div>
 </header>
+<!-- @end -->
 
+<!-- @marquee -->
 <div class="marquee" aria-hidden="true"><div id="mq"></div></div>
+<!-- @end -->
 
-<section>
+<!-- @trust -->
+<section id="trust">
   <div class="wrap">
     <div class="trust rv">
       <div><b>190 g/m²</b><span data-pt="Algodão pesado, sustentável" data-en="Heavyweight, sustainably sourced cotton">Algodão pesado, sustentável</span><small data-pt="Em todas as t-shirts" data-en="On every t-shirt">Em todas as t-shirts</small></div>
@@ -317,7 +336,9 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
     </div>
   </div>
 </section>
+<!-- @end -->
 
+<!-- @loja -->
 <section id="loja" class="alt">
   <div class="wrap">
     <div class="head rv">
@@ -331,7 +352,9 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
     <div class="more"><button class="btn btn-ink" id="more" data-pt="Ver todas as peças" data-en="See all pieces">Ver todas as peças</button></div>
   </div>
 </section>
+<!-- @end -->
 
+<!-- @algarve -->
 <section id="algarve">
   <div class="wrap">
     <div class="band rv">
@@ -345,7 +368,9 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
     </div>
   </div>
 </section>
+<!-- @end -->
 
+<!-- @por-medida -->
 <section id="por-medida" class="alt">
   <div class="wrap">
     <div class="head rv">
@@ -404,7 +429,9 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
     </div>
   </div>
 </section>
+<!-- @end -->
 
+<!-- @estudio -->
 <section id="estudio" class="dark">
   <div class="wrap">
     <div class="band rev rv">
@@ -422,7 +449,9 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
     </div>
   </div>
 </section>
+<!-- @end -->
 
+<!-- @envios -->
 <section id="envios">
   <div class="wrap">
     <div class="head rv"><span class="label" data-pt="Envios e devoluções" data-en="Shipping and returns">Envios e devoluções</span><h2 data-pt="Sem surpresas no fim" data-en="No surprises at checkout">Sem surpresas no fim</h2></div>
@@ -433,7 +462,9 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
     </div>
   </div>
 </section>
+<!-- @end -->
 
+<!-- @contacto -->
 <section id="contacto" class="alt">
   <div class="wrap">
     <div class="contact rv">
@@ -453,13 +484,15 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
     </div>
   </div>
 </section>
+<!-- @end -->
 
+<!-- @footer -->
 <footer>
   <div class="wrap">
     <div class="foot">
       <div class="badge">{{BADGE}}</div>
-      <div><h4 data-pt="Loja" data-en="Shop">Loja</h4><ul><li><a href="#loja">T-shirts</a></li><li><a href="#loja">Sweats</a></li><li><a href="#loja" data-pt="Bonés" data-en="Headwear">Bonés</a></li><li><a href="#loja">Halloween</a></li><li><a href="#algarve" data-pt="Coleção Algarve" data-en="Algarve Collection">Coleção Algarve</a></li></ul></div>
-      <div><h4 data-pt="Estúdio" data-en="Studio">Estúdio</h4><ul><li><a href="#por-medida" data-pt="Impressão por medida" data-en="Custom printing">Impressão por medida</a></li><li><a href="#estudio" data-pt="Serigrafia, DTG e DTF" data-en="Screen print, DTG and DTF">Serigrafia, DTG e DTF</a></li><li><a href="#envios" data-pt="Envios e devoluções" data-en="Shipping and returns">Envios e devoluções</a></li><li><a href="#contacto" data-pt="Contacto" data-en="Contact">Contacto</a></li></ul></div>
+      <div><h4 data-pt="Loja" data-en="Shop">Loja</h4><ul><li><a href="loja.html">T-shirts</a></li><li><a href="loja.html">Sweats</a></li><li><a href="loja.html" data-pt="Bonés" data-en="Headwear">Bonés</a></li><li><a href="loja.html">Halloween</a></li><li><a href="index.html#algarve" data-pt="Coleção Algarve" data-en="Algarve Collection">Coleção Algarve</a></li></ul></div>
+      <div><h4 data-pt="Estúdio" data-en="Studio">Estúdio</h4><ul><li><a href="por-medida.html" data-pt="Impressão por medida" data-en="Custom printing">Impressão por medida</a></li><li><a href="estudio.html" data-pt="Serigrafia, DTG e DTF" data-en="Screen print, DTG and DTF">Serigrafia, DTG e DTF</a></li><li><a href="envios.html" data-pt="Envios e devoluções" data-en="Shipping and returns">Envios e devoluções</a></li><li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li></ul></div>
       <div><h4 data-pt="Legal" data-en="Legal">Legal</h4><ul><li><a href="#" data-pt="Termos e condições" data-en="Terms and conditions">Termos e condições</a></li><li><a href="#" data-pt="Privacidade" data-en="Privacy">Privacidade</a></li><li><a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener" data-pt="Livro de Reclamações" data-en="Complaints book (Portugal)">Livro de Reclamações</a></li><li><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" data-pt="Resolução de litígios online (UE)" data-en="Online dispute resolution (EU)">Resolução de litígios online (UE)</a></li></ul></div>
     </div>
     <div class="legal"><span>© 2026 Tshirts do Sul · Faro, Portugal</span><span>NIF: <span data-pt="a confirmar" data-en="to be confirmed">a confirmar</span></span><span data-pt="Loja final em Shopify: cartão, MB WAY, PayPal e Apple Pay" data-en="Final store on Shopify: card, MB WAY, PayPal and Apple Pay">Loja final em Shopify: cartão, MB WAY, PayPal e Apple Pay</span></div>
@@ -560,21 +593,24 @@ window.__mock=id=>mock(P.find(x=>x.id===id));
 /* loja */
 let filter='all', shown=12;
 const grid=document.getElementById('grid'), chips=document.getElementById('chips');
-function renderChips(){chips.innerHTML=CATS.map(c=>`<button class="chip" type="button" aria-pressed="${filter===c[0]}" data-f="${c[0]}">${t(c[1],c[2])}</button>`).join('')}
+let shownBase=grid&&grid.dataset.limit?+grid.dataset.limit:12;
+function renderChips(){if(!chips)return;chips.innerHTML=CATS.map(c=>`<button class="chip" type="button" aria-pressed="${filter===c[0]}" data-f="${c[0]}">${t(c[1],c[2])}</button>`).join('')}
 function list(){return P.filter(p=>filter==='all'||p.c===filter||p.col.includes(filter))}
 function renderGrid(){
+  if(!grid)return; shown=Math.max(shown,shownBase);
   const L=list(); const show=L.slice(0,shown);
   grid.innerHTML=show.map(p=>`<button class="card" type="button" data-id="${p.id}" aria-label="${esc(p.n)}, ${money(p.p)}">
     <div class="ph">${pic(p)}${p.col.includes('algarve')?`<span class="tag sol">Algarve</span>`:(p.c==='hw'?`<span class="tag">Halloween</span>`:'')}</div>
     <div class="nm">${esc(p.n)}</div>
     <div class="meta"><span>${t({tee:'T-shirt · 190 g/m²',sweat:'Sweat',cap:'Boné trucker',hw:p.kids?'T-shirt criança':'T-shirt'}[p.c],{tee:'T-shirt · 190 gsm',sweat:'Sweatshirt',cap:'Trucker cap',hw:p.kids?'Kids tee':'T-shirt'}[p.c])}</span><span class="pr">${money(p.p)}</span></div>
   </button>`).join('');
-  const more=document.getElementById('more'); more.hidden=L.length<=shown;
+  const more=document.getElementById('more'); if(more)more.hidden=L.length<=shown;
 }
-chips.addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;filter=b.dataset.f;shown=12;renderChips();renderGrid()});
-document.getElementById('more').addEventListener('click',()=>{shown+=12;renderGrid()});
-document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;shown=12;renderChips();renderGrid();document.getElementById('loja').scrollIntoView({behavior:'smooth'})}));
-grid.addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openProduct(c.dataset.id)});
+if(chips)chips.addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;filter=b.dataset.f;shown=12;renderChips();renderGrid()});
+const moreBtn=document.getElementById('more'); if(moreBtn)moreBtn.addEventListener('click',()=>{shown+=12;renderGrid()});
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const g=document.getElementById('loja');if(!g){location.href='loja.html#'+b.dataset.filter;return}filter=b.dataset.filter;shown=12;renderChips();renderGrid();g.scrollIntoView({behavior:'smooth'})}));
+if(grid&&location.hash&&CATS.some(c=>c[0]===location.hash.slice(1)))filter=location.hash.slice(1);
+if(grid)grid.addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openProduct(c.dataset.id)});
 
 /* ficha de produto */
 const modal=document.getElementById('modal'), mbox=document.getElementById('mbox');
@@ -625,9 +661,11 @@ function toast(m){const x=document.getElementById('toast');x.textContent=m;x.cla
 /* orçamentador */
 const Q={item:'tee',colors:'1'};
 const names={tee:['t-shirts','t-shirts'],sweat:['sweats','sweatshirts'],hoodie:['hoodies','hoodies'],cap:['bonés','caps']};
-['q-item','q-colors'].forEach(id=>document.getElementById(id).addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(!b)return;document.querySelectorAll('#'+id+' button').forEach(x=>x.setAttribute('aria-pressed',x===b));Q[id==='q-item'?'item':'colors']=b.dataset.v;quote()}));
-['q-qty','q-when','q-art','q-name'].forEach(id=>document.getElementById(id).addEventListener('input',quote));
+const hasQ=!!document.getElementById('qform');
+if(hasQ)['q-item','q-colors'].forEach(id=>document.getElementById(id).addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(!b)return;document.querySelectorAll('#'+id+' button').forEach(x=>x.setAttribute('aria-pressed',x===b));Q[id==='q-item'?'item':'colors']=b.dataset.v;quote()}));
+if(hasQ)['q-qty','q-when','q-art','q-name'].forEach(id=>document.getElementById(id).addEventListener('input',quote));
 function quote(){
+  if(!hasQ)return;
   const qty=+document.getElementById('q-qty').value, when=document.getElementById('q-when').value, art=document.getElementById('q-art').value, name=document.getElementById('q-name').value.trim();
   document.getElementById('q-qty-out').textContent=qty;
   let tech,why;
@@ -649,7 +687,7 @@ function setLang(l){
   document.documentElement.lang=l==='en'?'en':'pt-PT';
   document.querySelectorAll('[data-pt]').forEach(el=>{const v=el.dataset[l];if(v==null)return;if(!el.children.length){el.textContent=v;return}const tn=[...el.childNodes].find(n=>n.nodeType===3&&n.nodeValue.trim());if(tn)tn.nodeValue=v;else el.insertBefore(document.createTextNode(v),el.firstChild)});
   document.getElementById('lang-pt').setAttribute('aria-pressed',l==='pt');document.getElementById('lang-en').setAttribute('aria-pressed',l==='en');
-  document.getElementById('mq').innerHTML=(l==='en'?['Screen print','DTG','DTF','190 gsm cotton','Printed in Faro','Dispatch in 5 working days','Custom printing from 5 pieces','Ships to Europe and the UK']:['Serigrafia','DTG','DTF','Algodão 190 g/m²','Impresso em Faro','Expedição em 5 dias úteis','Por medida a partir de 5 peças','Enviamos para a Europa e Reino Unido']).concat(l==='en'?['Screen print','DTG','DTF','190 gsm cotton','Printed in Faro','Dispatch in 5 working days','Custom printing from 5 pieces','Ships to Europe and the UK']:['Serigrafia','DTG','DTF','Algodão 190 g/m²','Impresso em Faro','Expedição em 5 dias úteis','Por medida a partir de 5 peças','Enviamos para a Europa e Reino Unido']).map(s=>`<span>${s}</span>`).join('');
+  const mq=document.getElementById('mq'); if(mq)mq.innerHTML=(l==='en'?['Screen print','DTG','DTF','190 gsm cotton','Printed in Faro','Dispatch in 5 working days','Custom printing from 5 pieces','Ships to Europe and the UK']:['Serigrafia','DTG','DTF','Algodão 190 g/m²','Impresso em Faro','Expedição em 5 dias úteis','Por medida a partir de 5 peças','Enviamos para a Europa e Reino Unido']).concat(l==='en'?['Screen print','DTG','DTF','190 gsm cotton','Printed in Faro','Dispatch in 5 working days','Custom printing from 5 pieces','Ships to Europe and the UK']:['Serigrafia','DTG','DTF','Algodão 190 g/m²','Impresso em Faro','Expedição em 5 dias úteis','Por medida a partir de 5 peças','Enviamos para a Europa e Reino Unido']).map(s=>`<span>${s}</span>`).join('');
   renderChips();renderGrid();renderBag();quote();
 }
 document.getElementById('lang-pt').addEventListener('click',()=>setLang('pt'));
