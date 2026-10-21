@@ -21,5 +21,6 @@ assert 'data:image/webp' in prev, 'media não embutida'
 # o Artifact acrescenta o seu próprio esqueleto: retirar doctype/html/head/body
 prev = re.sub(r'<!DOCTYPE html>\s*<html[^>]*>\s*<head>\s*', '', prev)
 prev = prev.replace('</head>\n<body>', '').replace('</body>\n</html>', '')
+prev = re.sub(r'<iframe title="Mapa[^>]*></iframe>', '<a class="btn btn-ink" href="https://maps.google.com/?q=Avenida+Calouste+Gulbenkian+12A,+8000-072+Faro" target="_blank" rel="noopener" style="align-self:start">Abrir no Google Maps</a>', prev)
 (HERE / 'preview.html').write_text(prev, 'utf-8')
 print('index.html', len(html) // 1024, 'KB · preview.html', len(prev) // 1024, 'KB')
