@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tshirts do Sul · Estampado em Faro</title>
+<meta name="description" content="T-shirts, sweats e bonés desenhados e estampados em Faro. Serigrafia, DTG e DTF em prensas próprias há mais de 30 anos. Loja online e impressão por medida para equipas, eventos e marcas.">
+<meta name="theme-color" content="#121212">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Figtree:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23121212'/%3E%3Cpath d='M16 40a16 16 0 0 1 32 0z' fill='%23F4792B'/%3E%3Crect x='12' y='42' width='40' height='4' fill='%23fff'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ClothingStore","name":"Tshirts do Sul","description":"Estúdio de design e impressão de t-shirts em Faro. Serigrafia, DTG e DTF.","url":"https://www.tshirtsdosul.com","telephone":"+351961579403","email":"tshirtsdosul@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Avenida Calouste Gulbenkian 12A","addressLocality":"Faro","postalCode":"8000-072","addressCountry":"PT"},"sameAs":["https://instagram.com/tshirtsdosul2","https://www.facebook.com/profile.php?id=61592722146341"]}
+</script>
+<style>
+/* ——— Tshirts do Sul · "Registo de cores": o site imprime-se em três passagens de tinta (sol, ria, preto) que entram em registo. ——— */
+:root{
+  --ink:#121212; --ink-2:#3a3a3a; --ink-3:#7a7a76;
+  --paper:#FBFAF7; --paper-2:#F1EEE6; --line:#DDD8CD;
+  --sol:#F4792B; --sol-2:#D9631C; --ria:#14616D; --ria-2:#0E4851; --areia:#E8DFCF; --branco:#fff;
+  --display:"League Gothic","Arial Narrow",Impact,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,Menlo,monospace;
+  --fs-display:clamp(3.4rem,2rem + 8vw,8.5rem);
+  --fs-h2:clamp(2.4rem,1.6rem + 3.4vw,4.6rem);
+  --fs-h3:clamp(1.5rem,1.2rem + 1vw,2rem);
+  --gutter:max(16px,env(safe-area-inset-left,0px));
+  --wrap:1280px; --r:4px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--sol);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:.92;margin:0;text-wrap:balance}
+h2{font-size:var(--fs-h2)}
+h3{font-size:var(--fs-h3)}
+p{margin:0 0 1em;max-width:62ch}
+.label{font:700 .72rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ria)}
+.lead{font-size:clamp(1.1rem,1rem + .5vw,1.35rem);color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:.95em 1.5em;border-radius:999px;font-weight:600;text-decoration:none;line-height:1;transition:transform .25s var(--ease),background .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-sol{background:var(--sol);color:var(--ink)}.btn-sol:hover{background:#FF8E45}
+.btn-ink{background:var(--ink);color:var(--branco)}.btn-ink:hover{background:#000}
+.btn-line{border:2px solid currentColor}
+.btn svg{width:1.1em;height:1.1em}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.is-in{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+
+/* banner demo */
+.demo{background:var(--ria);color:#fff;font:700 .7rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:.6em var(--gutter)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.nav.scrolled{border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:1.2rem;height:84px}
+.logo{display:block;color:var(--ink);height:58px;width:auto}
+@media (max-width:900px){.logo{height:50px}.nav .wrap{height:76px}.menu{top:76px}}
+.logo svg{height:100%;width:auto}
+.menu{display:flex;gap:1.6rem;margin-left:auto;list-style:none;padding:0;margin-top:0;margin-bottom:0}
+.menu a{text-decoration:none;font-weight:600;font-size:.95rem;position:relative;padding:.3em 0}
+.menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:3px;background:var(--sol);transition:right .3s var(--ease)}
+.menu a:hover::after{right:0}
+.tools{display:flex;align-items:center;gap:.6rem}
+.lang{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;font:700 .72rem/1 var(--mono)}
+.lang button{padding:.6em .8em}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.icon-btn{position:relative;width:44px;height:44px;display:grid;place-items:center;border-radius:50%}
+.icon-btn:hover{background:var(--paper-2)}
+.icon-btn svg{width:24px;height:24px}
+.count{position:absolute;top:2px;right:2px;min-width:18px;height:18px;border-radius:9px;background:var(--sol);color:var(--ink);font:700 .68rem/18px var(--mono);text-align:center;padding:0 4px}
+.count[hidden]{display:none}
+.burger{display:none}
+@media (max-width:900px){
+  .menu{display:none;position:absolute;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:.5rem var(--gutter) 1rem}
+  .menu.open{display:flex}
+  .menu a{display:block;padding:.9em 0;font-size:1.15rem;border-bottom:1px solid var(--line)}
+  .burger{display:grid}
+  .lang{display:none}
+}
+
+/* hero */
+.hero{position:relative;color:#fff;background:var(--ink);min-height:min(86vh,820px);display:grid;align-items:end;overflow:hidden;isolation:isolate}
+.hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero-scene{position:absolute;inset:0;z-index:-3}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,18,18,.88) 0%,rgba(18,18,18,.45) 45%,rgba(18,18,18,.05) 100%)}
+.hero .wrap{width:100%;padding-top:7rem;padding-bottom:3.5rem;display:grid;gap:1.4rem}
+.hero h1{font-size:var(--fs-display);max-width:12ch}
+.reg{position:relative;display:inline-block}
+.reg i{position:absolute;inset:0;font-style:normal;pointer-events:none;mix-blend-mode:screen}
+.reg .c1{color:var(--sol)}.reg .c2{color:var(--ria)}
+.reg span{position:relative;color:#fff}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero .lead{color:rgba(255,255,255,.86);max-width:48ch}
+.marks{position:absolute;inset:1.2rem;pointer-events:none;z-index:1}
+.marks svg{position:absolute;width:28px;height:28px;opacity:.9}
+.marks .tl{top:0;left:0}.marks .tr{top:0;right:0}.marks .bl{bottom:0;left:0}.marks .br{bottom:0;right:0}
+@media (prefers-reduced-motion:no-preference){
+  .reg .c1{animation:reg1 1.4s var(--ease) .2s both}
+  .reg .c2{animation:reg2 1.4s var(--ease) .35s both}
+  .reg span{animation:fade .8s var(--ease) .9s both}
+  @keyframes reg1{from{transform:translate(-14px,10px)}to{transform:none}}
+  @keyframes reg2{from{transform:translate(12px,-8px)}to{transform:none}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .hero picture{animation:fade 1.2s ease .1s both}
+}
+@media (max-width:680px){
+  .hero{min-height:88vh}
+  .hero-shade{background:linear-gradient(to top,rgba(18,18,18,.95) 0%,rgba(18,18,18,.55) 55%,rgba(18,18,18,.1) 100%)}
+  .hero .wrap{padding-bottom:2.2rem}
+  .marks{inset:.8rem}
+}
+
+/* marquee */
+.marquee{background:var(--sol);color:var(--ink);overflow:hidden;padding:.75rem 0;font:700 .8rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.marquee div{display:flex;gap:3rem;width:max-content;animation:mq 38s linear infinite}
+.marquee span::after{content:"✦";margin-left:3rem;color:var(--ink)}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee div{animation:none;flex-wrap:wrap;width:auto;gap:1rem}}
+
+/* sections */
+section{padding-block:clamp(64px,9vw,120px)}
+.head{display:grid;gap:.8rem;margin-bottom:2.4rem}
+.head .row{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem}
+.alt{background:var(--paper-2)}
+.dark{background:var(--ink);color:#fff}
+.dark .label{color:var(--sol)}
+.dark .lead{color:rgba(255,255,255,.8)}
+.dark p{color:rgba(255,255,255,.82)}
+
+/* trust */
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.trust div{background:var(--paper);padding:1.2rem 1.2rem;display:grid;gap:.3rem}
+.trust b{font:400 1.7rem/1 var(--display);text-transform:uppercase}
+.trust small{color:var(--ink-3);font-size:.85rem}
+
+/* products */
+.chips{display:flex;gap:.5rem;flex-wrap:wrap}
+.chip{padding:.55em 1em;border:1.5px solid var(--ink);border-radius:999px;font-weight:600;font-size:.88rem;transition:background .2s,color .2s}
+.chip[aria-pressed="true"],.chip:hover{background:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:clamp(12px,2vw,28px) clamp(12px,1.5vw,20px)}
+@media (max-width:560px){.grid{grid-template-columns:1fr 1fr;gap:12px}}
+.card{display:grid;gap:.5rem;min-width:0;cursor:pointer;background:none;text-align:left;padding:0}
+.card .ph{aspect-ratio:4/5;background:var(--paper-2);border-radius:var(--r);overflow:hidden;position:relative;max-width:100%}
+.card .ph img,.card .ph svg{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.card:hover .ph img,.card:hover .ph svg{transform:scale(1.04)}
+.card .tag{position:absolute;top:.6rem;left:.6rem;background:var(--ink);color:#fff;font:700 .62rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:.45em .6em;border-radius:3px}
+.card .tag.sol{background:var(--sol);color:var(--ink)}
+.card .nm{font-weight:600;line-height:1.25}
+.card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;font-size:.9rem;color:var(--ink-3)}
+.card .pr{font:400 1.35rem/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+.card .sw{display:flex;gap:4px}.card .sw i{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.2)}
+.more{display:flex;justify-content:center;margin-top:2rem}
+
+/* feature bands */
+.band{display:grid;grid-template-columns:7fr 5fr;gap:clamp(20px,4vw,64px);align-items:center}
+.band.rev{grid-template-columns:5fr 7fr}
+.band .ph{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:var(--paper-2);max-width:100%}
+.band .ph img{width:100%;height:100%;object-fit:cover}
+.band .txt{display:grid;gap:1.2rem;min-width:0}
+@media (max-width:860px){.band,.band.rev{grid-template-columns:1fr}.band .ph{aspect-ratio:4/3}}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;counter-reset:s}
+.step{display:grid;gap:.6rem;padding:1.5rem;border:1px solid rgba(255,255,255,.18);border-radius:var(--r);min-width:0}
+.step b{font:400 1.6rem/1 var(--display);text-transform:uppercase}
+.step .n{font:700 .72rem/1 var(--mono);color:var(--sol);letter-spacing:.14em}
+.step p{font-size:.95rem;margin:0}
+
+/* quote tool */
+.quote{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:start}
+@media (max-width:860px){.quote{grid-template-columns:1fr}}
+.form{display:grid;gap:1.1rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(16px,3vw,32px)}
+.form label{display:grid;gap:.4rem;font-weight:600;font-size:.92rem}
+.form select,.form input,.form textarea{font:inherit;padding:.75em .9em;border:1.5px solid var(--line);border-radius:var(--r);background:var(--paper);color:var(--ink);width:100%}
+.form select:focus,.form input:focus,.form textarea:focus{border-color:var(--ink);outline:none}
+.seg{display:flex;gap:.4rem;flex-wrap:wrap}
+.seg button{padding:.6em 1em;border:1.5px solid var(--line);border-radius:999px;font-size:.9rem;font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.range{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem}
+.range output{font:400 2rem/1 var(--display);min-width:3ch;text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{accent-color:var(--sol)}
+.result{position:sticky;top:90px;display:grid;gap:1rem;background:var(--ink);color:#fff;padding:clamp(16px,3vw,32px);border-radius:var(--r)}
+.result h3{color:var(--sol)}
+.result dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.2rem;margin:0;font-size:.95rem}
+.result dt{color:rgba(255,255,255,.6);font:700 .7rem/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.result dd{margin:0}
+.result .note{font-size:.85rem;color:rgba(255,255,255,.65)}
+
+/* shipping table */
+.ship{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.ship div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;display:grid;gap:.5rem;min-width:0}
+.ship b{font:400 1.6rem/1 var(--display);text-transform:uppercase}
+.flags{display:flex;flex-wrap:wrap;gap:.35rem}
+.flags span{font:700 .68rem/1 var(--mono);border:1px solid var(--line);border-radius:3px;padding:.4em .5em;letter-spacing:.06em}
+
+/* contact */
+.contact{display:grid;grid-template-columns:5fr 7fr;gap:clamp(20px,4vw,56px)}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+.contact iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:var(--r);filter:grayscale(.3)}
+.contact address{font-style:normal;display:grid;gap:.9rem}
+.contact address a{text-decoration:none;font-weight:600}
+.contact .big{font:400 2.2rem/1 var(--display);text-transform:uppercase}
+
+/* footer */
+footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area-inset-bottom,0px));border-top:6px solid var(--sol)}
+.foot{display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:2.5rem;align-items:start}
+@media (max-width:860px){.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot{grid-template-columns:1fr}}
+.badge{width:130px;color:#fff}
+.foot h4{font:700 .72rem/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--sol);margin:0 0 .8rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;font-size:.95rem}
+.foot a{text-decoration:none;color:rgba(255,255,255,.85)}.foot a:hover{color:#fff;text-decoration:underline}
+.legal{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.14);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:.8rem;color:rgba(255,255,255,.6)}
+
+/* floating whatsapp */
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;background:#25D366;color:#062b15;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.4);text-decoration:none}
+.wa svg{width:30px;height:30px}
+
+/* drawer + modal */
+.drawer{position:fixed;inset:0;z-index:60;display:none}
+.drawer.open{display:block}
+.drawer .bg{position:absolute;inset:0;background:rgba(18,18,18,.5)}
+.drawer .panel{position:absolute;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--paper);display:grid;grid-template-rows:auto 1fr auto;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem var(--gutter);border-bottom:1px solid var(--line)}
+.drawer header h3{font-size:2rem}
+.lines{overflow:auto;padding:1rem var(--gutter);display:grid;gap:1rem;align-content:start}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:.8rem;align-items:center;font-size:.92rem}
+.line .ph{width:64px;aspect-ratio:4/5;border-radius:3px;overflow:hidden;background:var(--paper-2)}
+.line .ph img,.line .ph svg{width:100%;height:100%;object-fit:cover}
+.line .q{display:flex;align-items:center;gap:.4rem}
+.line .q button{width:26px;height:26px;border:1px solid var(--line);border-radius:50%}
+.drawer footer{background:var(--paper);color:var(--ink);border-top:1px solid var(--line);padding:1.2rem var(--gutter);display:grid;gap:.8rem}
+.tot{display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem}
+.empty{color:var(--ink-3);text-align:center;padding:3rem 1rem}
+.modal{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal.open{display:flex}
+.modal .bg{position:absolute;inset:0;background:rgba(18,18,18,.6)}
+.modal .box{position:relative;background:var(--paper);border-radius:var(--r);width:min(960px,100%);max-height:calc(100vh - 2rem);overflow:auto;display:grid;grid-template-columns:1fr 1fr}
+@media (max-width:760px){.modal .box{grid-template-columns:1fr}}
+.modal .ph{aspect-ratio:4/5;background:var(--paper-2);max-width:100%}
+.modal .ph img,.modal .ph svg{width:100%;height:100%;object-fit:cover}
+.modal .info{padding:clamp(16px,3vw,32px);display:grid;gap:1rem;align-content:start}
+.modal .info h3{font-size:2.6rem}
+.modal .pr{font:400 2rem/1 var(--display)}
+.modal .x{position:absolute;top:.6rem;right:.6rem;width:40px;height:40px;border-radius:50%;background:var(--paper);display:grid;place-items:center;z-index:1}
+.sizes{display:flex;flex-wrap:wrap;gap:.4rem}
+.sizes button{min-width:44px;height:40px;padding:0 .8em;border:1.5px solid var(--line);border-radius:var(--r);font-weight:600}
+.sizes button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.specs{font-size:.9rem;color:var(--ink-2);display:grid;gap:.3rem;margin:0;padding-left:1.1em}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:.8em 1.2em;border-radius:999px;font-weight:600;opacity:0;transition:.3s;z-index:80;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%)}
+[data-en]{}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="demo" data-pt="APRESENTAÇÃO PACHECO STUDIOS · Proposta de nova identidade e site para a Tshirts do Sul · Fotografias de demonstração; as fotos reais dos produtos entram na versão final" data-en="PACHECO STUDIOS PRESENTATION · New identity and website proposal for Tshirts do Sul · Demo photography; real product photos go in the final version">APRESENTAÇÃO PACHECO STUDIOS · Proposta de nova identidade e site para a Tshirts do Sul · Fotografias de demonstração; as fotos reais dos produtos entram na versão final</div>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Tshirts do Sul, início">{{LOGO}}</a>
+    <button class="icon-btn burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <ul class="menu" id="menu">
+      <li><a href="#loja" data-pt="Loja" data-en="Shop">Loja</a></li>
+      <li><a href="#algarve" data-pt="Coleção Algarve" data-en="Algarve Collection">Coleção Algarve</a></li>
+      <li><a href="#por-medida" data-pt="Por medida" data-en="Custom printing">Por medida</a></li>
+      <li><a href="#estudio" data-pt="O estúdio" data-en="The studio">O estúdio</a></li>
+      <li><a href="#envios" data-pt="Envios" data-en="Shipping">Envios</a></li>
+      <li><a href="#contacto" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+    </ul>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Idioma"><button id="lang-pt" aria-pressed="true">PT</button><button id="lang-en" aria-pressed="false">EN</button></div>
+      <button class="icon-btn" id="open-bag" aria-label="Saco de compras"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 13H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="count" id="count" hidden>0</span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="hero-scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1b1b"/><stop offset="1" stop-color="#0a0a0a"/></linearGradient></defs><rect width="1600" height="900" fill="url(#hg)"/><path d="M500 640a300 300 0 0 1 600 0z" fill="#F4792B" opacity=".85"/><rect x="440" y="650" width="720" height="10" fill="#fff" opacity=".9"/><rect x="520" y="680" width="560" height="8" fill="#fff" opacity=".5"/></svg>
+  <picture>
+    <source media="(max-width:680px)" srcset="media/hero-9x16.webp">
+    <img src="media/hero-16x9.webp" alt="Mãos a puxar a rácula sobre uma tela de serigrafia, no estúdio em Faro" width="1344" height="752" fetchpriority="high" onerror="this.parentElement.remove()">
+  </picture>
+  <div class="hero-shade"></div>
+  <div class="marks" aria-hidden="true">
+    <svg class="tl" viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="14" cy="14" r="9"/><path d="M14 0v28M0 14h28"/></svg>
+    <svg class="tr" viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="14" cy="14" r="9"/><path d="M14 0v28M0 14h28"/></svg>
+    <svg class="bl" viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="14" cy="14" r="9"/><path d="M14 0v28M0 14h28"/></svg>
+    <svg class="br" viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="14" cy="14" r="9"/><path d="M14 0v28M0 14h28"/></svg>
+  </div>
+  <div class="wrap">
+    <span class="label" style="color:var(--sol)" data-pt="Design & estúdio de impressão · Faro" data-en="Design & print studio · Faro">Design & estúdio de impressão · Faro</span>
+    <h1><span class="reg"><i class="c1" aria-hidden="true" data-pt="Estampado em Faro. Há mais de 30 anos." data-en="Printed in Faro. For over 30 years.">Estampado em Faro. Há mais de 30 anos.</i><i class="c2" aria-hidden="true" data-pt="Estampado em Faro. Há mais de 30 anos." data-en="Printed in Faro. For over 30 years.">Estampado em Faro. Há mais de 30 anos.</i><span data-pt="Estampado em Faro. Há mais de 30 anos." data-en="Printed in Faro. For over 30 years.">Estampado em Faro. Há mais de 30 anos.</span></span></h1>
+    <p class="lead" data-pt="T-shirts, sweats e bonés desenhados aqui e impressos nas nossas prensas: serigrafia, DTG e DTF em algodão de 190 g/m². Para ti, para a tua equipa ou para o teu evento." data-en="T-shirts, sweats and caps designed here and printed on our own presses: screen print, DTG and DTF on 190 gsm cotton. For you, your team or your event.">T-shirts, sweats e bonés desenhados aqui e impressos nas nossas prensas: serigrafia, DTG e DTF em algodão de 190 g/m². Para ti, para a tua equipa ou para o teu evento.</p>
+    <div class="hero-cta">
+      <a class="btn btn-sol" href="#loja" data-pt="Ver a loja" data-en="Shop the range">Ver a loja</a>
+      <a class="btn btn-line" href="#por-medida" style="color:#fff" data-pt="Pedir orçamento por medida" data-en="Get a custom print quote">Pedir orçamento por medida</a>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div id="mq"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="trust rv">
+      <div><b>190 g/m²</b><span data-pt="Algodão pesado, sustentável" data-en="Heavyweight, sustainably sourced cotton">Algodão pesado, sustentável</span><small data-pt="Em todas as t-shirts" data-en="On every t-shirt">Em todas as t-shirts</small></div>
+      <div><b data-pt="3 técnicas" data-en="3 methods">3 técnicas</b><span data-pt="Serigrafia · DTG · DTF" data-en="Screen print · DTG · DTF">Serigrafia · DTG · DTF</span><small data-pt="Prensas próprias, em Faro" data-en="Our own presses, in Faro">Prensas próprias, em Faro</small></div>
+      <div><b data-pt="5 dias úteis" data-en="5 working days">5 dias úteis</b><span data-pt="Expedição de cada encomenda" data-en="Dispatch on every order">Expedição de cada encomenda</span><small data-pt="Portugal, Europa e Reino Unido" data-en="Portugal, Europe and the UK">Portugal, Europa e Reino Unido</small></div>
+      <div><b data-pt="14 dias" data-en="14 days">14 dias</b><span data-pt="Para trocar ou devolver" data-en="To exchange or return">Para trocar ou devolver</span><small data-pt="Exceto peças personalizadas" data-en="Except custom-printed items">Exceto peças personalizadas</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="loja" class="alt">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="label" data-pt="Loja" data-en="Shop">Loja</span>
+      <div class="row">
+        <h2 data-pt="Peças que vais querer vestir" data-en="Pieces you'll want to be seen in">Peças que vais querer vestir</h2>
+        <div class="chips" id="chips" role="group" aria-label="Filtrar"></div>
+      </div>
+    </div>
+    <div class="grid rv d1" id="grid"></div>
+    <div class="more"><button class="btn btn-ink" id="more" data-pt="Ver todas as peças" data-en="See all pieces">Ver todas as peças</button></div>
+  </div>
+</section>
+
+<section id="algarve">
+  <div class="wrap">
+    <div class="band rv">
+      <div class="ph"><img src="media/faro-sunset-sweat.webp" alt="Sweat creme Faro Sunset vestida na marina de Faro ao pôr-do-sol" loading="lazy" width="896" height="1120" onerror="this.parentElement.style.background='var(--areia)';this.remove()"></div>
+      <div class="txt">
+        <span class="label" data-pt="Coleção Algarve" data-en="Algarve Collection">Coleção Algarve</span>
+        <h2 data-pt="A lembrança de Faro que não fica na gaveta" data-en="The Faro souvenir that doesn't end up in a drawer">A lembrança de Faro que não fica na gaveta</h2>
+        <p class="lead" data-pt="Algarve Marisco, Faro Sunset, Free Space Ria Formosa, 2 Wheelers Faro Club. Desenhadas por quem vive aqui, impressas a 2 km do aeroporto." data-en="Algarve Marisco, Faro Sunset, Free Space Ria Formosa, 2 Wheelers Faro Club. Designed by people who live here, printed 2 km from the airport.">Algarve Marisco, Faro Sunset, Free Space Ria Formosa, 2 Wheelers Faro Club. Desenhadas por quem vive aqui, impressas a 2 km do aeroporto.</p>
+        <div><button class="btn btn-sol" data-filter="algarve" data-pt="Ver a coleção" data-en="See the collection">Ver a coleção</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="por-medida" class="alt">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="label" data-pt="Impressão por medida" data-en="Custom printing">Impressão por medida</span>
+      <h2 data-pt="Equipas, eventos, bares, clubes e marcas" data-en="Teams, events, bars, clubs and brands">Equipas, eventos, bares, clubes e marcas</h2>
+      <p class="lead" data-pt="Traz o teu design (ou pede-nos um) e diz-nos quantas peças. Em três perguntas dizemos-te a técnica certa e preparamos a proposta." data-en="Bring your design (or ask us for one) and tell us how many pieces. Three questions in, we'll tell you the right method and prepare your quote.">Traz o teu design (ou pede-nos um) e diz-nos quantas peças. Em três perguntas dizemos-te a técnica certa e preparamos a proposta.</p>
+    </div>
+    <div class="quote rv d1">
+      <form class="form" id="qform">
+        <label data-pt="Que peça?" data-en="Which garment?">Que peça?
+          <div class="seg" id="q-item">
+            <button type="button" aria-pressed="true" data-v="tee" data-pt="T-shirt" data-en="T-shirt">T-shirt</button>
+            <button type="button" aria-pressed="false" data-v="sweat" data-pt="Sweat" data-en="Sweatshirt">Sweat</button>
+            <button type="button" aria-pressed="false" data-v="hoodie" data-pt="Hoodie" data-en="Hoodie">Hoodie</button>
+            <button type="button" aria-pressed="false" data-v="cap" data-pt="Boné" data-en="Cap">Boné</button>
+          </div>
+        </label>
+        <label data-pt="Quantas peças?" data-en="How many pieces?">Quantas peças?
+          <div class="range"><input type="range" id="q-qty" min="5" max="500" step="5" value="30"><output id="q-qty-out">30</output></div>
+        </label>
+        <label data-pt="Quantas cores tem o design?" data-en="How many colours in the design?">Quantas cores tem o design?
+          <div class="seg" id="q-colors">
+            <button type="button" aria-pressed="true" data-v="1">1</button>
+            <button type="button" aria-pressed="false" data-v="2">2–3</button>
+            <button type="button" aria-pressed="false" data-v="full" data-pt="Cor total / foto" data-en="Full colour / photo">Cor total / foto</button>
+          </div>
+        </label>
+        <label data-pt="Para quando?" data-en="When do you need it?">Para quando?
+          <select id="q-when">
+            <option value="normal" data-pt="Sem pressa (prazo normal)" data-en="No rush (standard lead time)">Sem pressa (prazo normal)</option>
+            <option value="2w" data-pt="Nas próximas 2 semanas" data-en="Within 2 weeks">Nas próximas 2 semanas</option>
+            <option value="urgent" data-pt="Urgente (menos de 1 semana)" data-en="Urgent (under 1 week)">Urgente (menos de 1 semana)</option>
+          </select>
+        </label>
+        <label data-pt="Tens o logótipo ou design?" data-en="Do you have the logo or artwork?">Tens o logótipo ou design?
+          <select id="q-art">
+            <option value="yes" data-pt="Sim, em boa qualidade (PDF, AI, PNG grande)" data-en="Yes, good quality (PDF, AI, large PNG)">Sim, em boa qualidade (PDF, AI, PNG grande)</option>
+            <option value="low" data-pt="Sim, mas só uma imagem pequena" data-en="Yes, but only a small image">Sim, mas só uma imagem pequena</option>
+            <option value="no" data-pt="Não, preciso de ajuda com o design" data-en="No, I need help with the design">Não, preciso de ajuda com o design</option>
+          </select>
+        </label>
+        <label data-pt="Nome e negócio" data-en="Name and business">Nome e negócio<input type="text" id="q-name" placeholder="Ex.: Ana · Bar da Marina" autocomplete="name"></label>
+      </form>
+      <div class="result" id="qres">
+        <span class="label" data-pt="A nossa recomendação" data-en="Our recommendation">A nossa recomendação</span>
+        <h3 id="r-tech">Serigrafia</h3>
+        <p id="r-why" style="margin:0"></p>
+        <dl>
+          <dt data-pt="Peças" data-en="Pieces">Peças</dt><dd id="r-qty">30 t-shirts</dd>
+          <dt data-pt="Prazo" data-en="Lead time">Prazo</dt><dd id="r-when"></dd>
+          <dt data-pt="Preço" data-en="Price">Preço</dt><dd id="r-price" data-pt="Proposta fechada por mensagem, no mesmo dia útil" data-en="Firm quote by message, same working day">Proposta fechada por mensagem, no mesmo dia útil</dd>
+        </dl>
+        <a class="btn btn-sol" id="r-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span data-pt="Enviar pedido por WhatsApp" data-en="Send request on WhatsApp">Enviar pedido por WhatsApp</span></a>
+        <span class="note" data-pt="Sem compromisso. Respondemos com preço por peça, prova digital e data de entrega." data-en="No commitment. We reply with a per-piece price, a digital proof and a delivery date.">Sem compromisso. Respondemos com preço por peça, prova digital e data de entrega.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="estudio" class="dark">
+  <div class="wrap">
+    <div class="band rev rv">
+      <div class="txt">
+        <span class="label" data-pt="O estúdio" data-en="The studio">O estúdio</span>
+        <h2 data-pt="Começámos pelo gosto de imprimir bem" data-en="We started with a love of printing well">Começámos pelo gosto de imprimir bem</h2>
+        <p class="lead" data-pt="Mais de 30 anos a estampar. Três técnicas, prensas próprias e um estúdio na Avenida Calouste Gulbenkian, em Faro, onde cada peça é impressa e verificada antes de sair." data-en="Over 30 years of printing. Three methods, our own presses and a studio on Avenida Calouste Gulbenkian in Faro, where every piece is printed and checked before it leaves.">Mais de 30 anos a estampar. Três técnicas, prensas próprias e um estúdio na Avenida Calouste Gulbenkian, em Faro, onde cada peça é impressa e verificada antes de sair.</p>
+        <div class="steps">
+          <div class="step"><span class="n">01</span><b data-pt="Serigrafia" data-en="Screen print">Serigrafia</b><p data-pt="Tinta puxada à mão através de uma tela. Cores sólidas, duradouras, ideal a partir de 20 peças." data-en="Ink pulled by hand through a screen. Solid, long-lasting colour, ideal from 20 pieces.">Tinta puxada à mão através de uma tela. Cores sólidas, duradouras, ideal a partir de 20 peças.</p></div>
+          <div class="step"><span class="n">02</span><b>DTG</b><p data-pt="Impressão direta no tecido. Fotografia e cor total, sem mínimos. A escolha para peças únicas." data-en="Direct-to-garment printing. Photos and full colour, no minimums. The choice for one-offs.">Impressão direta no tecido. Fotografia e cor total, sem mínimos. A escolha para peças únicas.</p></div>
+          <div class="step"><span class="n">03</span><b>DTF</b><p data-pt="Transferência por película. Detalhe fino em qualquer cor de tecido, incluindo poliéster e bonés." data-en="Film transfer. Fine detail on any fabric colour, including polyester and caps.">Transferência por película. Detalhe fino em qualquer cor de tecido, incluindo poliéster e bonés.</p></div>
+        </div>
+      </div>
+      <div class="ph"><img src="media/tinta-detalhe.webp" alt="Tinta branca sobre a tela de serigrafia" loading="lazy" width="1024" height="1024" onerror="this.parentElement.style.background='#222';this.remove()"></div>
+    </div>
+  </div>
+</section>
+
+<section id="envios">
+  <div class="wrap">
+    <div class="head rv"><span class="label" data-pt="Envios e devoluções" data-en="Shipping and returns">Envios e devoluções</span><h2 data-pt="Sem surpresas no fim" data-en="No surprises at checkout">Sem surpresas no fim</h2></div>
+    <div class="ship rv d1">
+      <div><b data-pt="Expedição" data-en="Dispatch">Expedição</b><p data-pt="Cada encomenda sai do estúdio em 5 dias úteis. Recebes o código de seguimento por email." data-en="Every order leaves the studio within 5 working days. Tracking code by email.">Cada encomenda sai do estúdio em 5 dias úteis. Recebes o código de seguimento por email.</p></div>
+      <div><b data-pt="Portes" data-en="Shipping cost">Portes</b><p data-pt="Calculados no checkout por país. Portes grátis em Portugal a partir de um valor a definir." data-en="Calculated at checkout by country. Free shipping in Portugal above a threshold to be set.">Calculados no checkout por país. Portes grátis em Portugal a partir de um valor a definir.</p><div class="flags"><span>PT</span><span>ES</span><span>FR</span><span>DE</span><span>IT</span><span>BE</span><span>NL</span><span>IE</span><span>AT</span><span>DK</span><span>FI</span><span>NO</span><span>LU</span><span>HU</span><span>UK</span></div></div>
+      <div><b data-pt="Devoluções" data-en="Returns">Devoluções</b><p data-pt="14 dias depois de receberes para pedir troca ou devolução, com a peça por usar e com etiquetas. Peças personalizadas não têm devolução." data-en="14 days after delivery to request an exchange or return, unworn and with tags. Custom-printed items can't be returned.">14 dias depois de receberes para pedir troca ou devolução, com a peça por usar e com etiquetas. Peças personalizadas não têm devolução.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="alt">
+  <div class="wrap">
+    <div class="contact rv">
+      <div>
+        <span class="label" data-pt="Contacto" data-en="Contact">Contacto</span>
+        <h2 style="margin-bottom:1.4rem" data-pt="Passa pelo estúdio" data-en="Drop by the studio">Passa pelo estúdio</h2>
+        <address>
+          <span class="big">Av. Calouste Gulbenkian 12A<br>8000-072 Faro</span>
+          <a href="https://wa.me/351961579403" target="_blank" rel="noopener">WhatsApp · +351 961 579 403</a>
+          <a href="tel:+351961579403">+351 961 579 403</a>
+          <a href="mailto:tshirtsdosul@gmail.com">tshirtsdosul@gmail.com</a>
+          <span><span data-pt="Horário:" data-en="Opening hours:">Horário:</span> <span data-pt="a confirmar" data-en="to be confirmed">a confirmar</span></span>
+          <span><a href="https://instagram.com/tshirtsdosul2" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61592722146341" target="_blank" rel="noopener">Facebook</a></span>
+        </address>
+      </div>
+      <iframe title="Mapa: Tshirts do Sul, Faro" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Avenida+Calouste+Gulbenkian+12A,+8000-072+Faro&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="badge">{{BADGE}}</div>
+      <div><h4 data-pt="Loja" data-en="Shop">Loja</h4><ul><li><a href="#loja">T-shirts</a></li><li><a href="#loja">Sweats</a></li><li><a href="#loja" data-pt="Bonés" data-en="Headwear">Bonés</a></li><li><a href="#loja">Halloween</a></li><li><a href="#algarve" data-pt="Coleção Algarve" data-en="Algarve Collection">Coleção Algarve</a></li></ul></div>
+      <div><h4 data-pt="Estúdio" data-en="Studio">Estúdio</h4><ul><li><a href="#por-medida" data-pt="Impressão por medida" data-en="Custom printing">Impressão por medida</a></li><li><a href="#estudio" data-pt="Serigrafia, DTG e DTF" data-en="Screen print, DTG and DTF">Serigrafia, DTG e DTF</a></li><li><a href="#envios" data-pt="Envios e devoluções" data-en="Shipping and returns">Envios e devoluções</a></li><li><a href="#contacto" data-pt="Contacto" data-en="Contact">Contacto</a></li></ul></div>
+      <div><h4 data-pt="Legal" data-en="Legal">Legal</h4><ul><li><a href="#" data-pt="Termos e condições" data-en="Terms and conditions">Termos e condições</a></li><li><a href="#" data-pt="Privacidade" data-en="Privacy">Privacidade</a></li><li><a href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener" data-pt="Livro de Reclamações" data-en="Complaints book (Portugal)">Livro de Reclamações</a></li><li><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" data-pt="Resolução de litígios online (UE)" data-en="Online dispute resolution (EU)">Resolução de litígios online (UE)</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Tshirts do Sul · Faro, Portugal</span><span>NIF: <span data-pt="a confirmar" data-en="to be confirmed">a confirmar</span></span><span data-pt="Loja final em Shopify: cartão, MB WAY, PayPal e Apple Pay" data-en="Final store on Shopify: card, MB WAY, PayPal and Apple Pay">Loja final em Shopify: cartão, MB WAY, PayPal e Apple Pay</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/351961579403?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Tshirts%20do%20Sul%20e%20queria%20saber%20mais." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="bg" data-close></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="bag-title">
+    <header><h3 id="bag-title" data-pt="O teu saco" data-en="Your bag">O teu saco</h3><button class="icon-btn" data-close aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
+    <div class="lines" id="lines"></div>
+    <footer>
+      <div class="tot"><span>Total</span><span id="total">0,00 €</span></div>
+      <a class="btn btn-sol" id="checkout" href="#" target="_blank" rel="noopener" data-pt="Finalizar por WhatsApp" data-en="Check out on WhatsApp">Finalizar por WhatsApp</a>
+      <small style="color:var(--ink-3)" data-pt="Demonstração: na loja final o pagamento é feito no checkout (cartão, MB WAY, PayPal)." data-en="Demo: in the final store payment happens at checkout (card, MB WAY, PayPal).">Demonstração: na loja final o pagamento é feito no checkout (cartão, MB WAY, PayPal).</small>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="bg" data-close></div>
+  <div class="box" role="dialog" aria-modal="true" id="mbox"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+const LANG_KEY='tds-lang', BAG_KEY='tds-bag';
+let lang='pt';
+try{lang=localStorage.getItem(LANG_KEY)||'pt'}catch(e){}
+
+/* ——— catálogo: nomes e preços do tshirtsdosul.com (21/10/2026). Fotos: demo (media/) ou maquete SVG. ——— */
+const P=[
+ {id:'algarve-marisco-tee',n:'Algarve Marisco',c:'tee',col:['algarve'],p:15,img:'media/algarve-marisco-tee.webp',g:'black',d:{pt:'A nossa t-shirt mais algarvia: camarão, limão e letras grossas. 190 g/m², corte unissexo.',en:'Our most Algarve tee: prawn, lemon and heavy lettering. 190 gsm, unisex fit.'}},
+ {id:'faro-sunset-sweat',n:'Faro Sunset',c:'sweat',col:['algarve'],p:35,img:'media/faro-sunset-sweat.webp',g:'cream',d:{pt:'Sweat de gola redonda, interior felpado, com o pôr-do-sol da Ria em três cores.',en:'Crewneck sweat, brushed inside, with the Ria sunset in three colours.'}},
+ {id:'free-space-ria',n:'Free Space Ria Formosa',c:'sweat',col:['algarve'],p:35,g:'navy',ink:'#F4792B',d:{pt:'Sweat pesada com a frase que resume a Ria. Cinzento esgotado em 2XL.',en:'Heavyweight sweat with the line that sums up the Ria. Grey sold out in 2XL.'}},
+ {id:'2-wheelers',n:'2 Wheelers Faro Club',c:'tee',col:['algarve'],p:15,g:'cream',ink:'#121212',d:{pt:'Para quem anda de bicicleta ou mota pela cidade. Impressa em serigrafia.',en:'For those who ride bikes or motorbikes around town. Screen printed.'}},
+ {id:'algarve-marisco-sweat',n:'Algarve Marisco',c:'sweat',col:['algarve'],p:35,g:'black',ink:'#F4792B',d:{pt:'A versão quente do nosso clássico de marisco.',en:'The warm version of our seafood classic.'}},
+ {id:'full-english',n:'Full English',c:'tee',col:[],p:15,g:'cream',ink:'#C8321F',d:{pt:'Ovos, feijão, salsicha. Humor britânico impresso em Faro.',en:'Eggs, beans, sausage. British humour printed in Faro.'}},
+ {id:'lets-go-pub',n:"Let's Go to the Pub",c:'tee',col:[],p:15,g:'black',ink:'#fff',d:{pt:'A frase que resolve qualquer sexta-feira.',en:'The sentence that fixes any Friday.'}},
+ {id:'higher-state',n:'Higher State of Consciousness',c:'tee',col:[],p:15,g:'black',ink:'#14616D',d:{pt:'Para os anos 90 nunca terem acabado.',en:'Because the 90s never ended.'}},
+ {id:'higher-state-sweat',n:'Higher State Sweat',c:'sweat',col:[],p:35,g:'navy',ink:'#fff',d:{pt:'A mesma energia, em sweat de 2 a 3 cores.',en:'Same energy, as a 2–3 colour sweat.'}},
+ {id:'freedom',n:'FREEDOM',c:'tee',col:[],p:15,g:'cream',ink:'#121212',d:{pt:'Uma palavra, letras grandes, algodão pesado.',en:'One word, big letters, heavyweight cotton.'}},
+ {id:'freedom-sweat',n:'FREEDOM Sweatshirt',c:'sweat',col:[],p:35,g:'black',ink:'#fff',d:{pt:'A versão de inverno.',en:'The winter version.'}},
+ {id:'twcsg',n:'The Whole Church Should Get Drunk',c:'tee',col:[],p:15,g:'black',ink:'#F4792B',d:{pt:'Uma das nossas frases mais pedidas. Também existe em sweat.',en:'One of our most requested lines. Also available as a sweat.'}},
+ {id:'twcsg-sweat',n:'TWCSG Drunk Sweat',c:'sweat',col:[],p:35,g:'cream',ink:'#121212',d:{pt:'A frase inteira, em sweat.',en:'The full line, on a sweat.'}},
+ {id:'90s-tennis',n:'90s Tennis Rocked',c:'tee',col:[],p:15,g:'cream',ink:'#14616D',d:{pt:'Raquetes de madeira e meias altas.',en:'Wooden racquets and high socks.'}},
+ {id:'banger',n:'BANGER!',c:'tee',col:[],p:15,g:'black',ink:'#F4792B',d:{pt:'Para o DJ da família.',en:'For the family DJ.'}},
+ {id:'monroe',n:'Monroe Dreamer Collage',c:'tee',col:[],p:15,g:'black',ink:'#fff',d:{pt:'Colagem impressa em DTG, cor total.',en:'DTG-printed collage, full colour.'}},
+ {id:'peasants',n:'Peasants Revolt 1381',c:'tee',col:[],p:15,g:'navy',ink:'#fff',d:{pt:'História inglesa em algodão português.',en:'English history on Portuguese cotton.'}},
+ {id:'glitter-ball',n:'Glitter Ball',c:'tee',col:[],p:15,g:'black',ink:'#F4792B',d:{pt:'Disco nunca morreu.',en:'Disco never died.'}},
+ {id:'trust-me',n:'Trust Me',c:'tee',col:[],p:15,g:'cream',ink:'#121212',d:{pt:'Duas palavras e um sorriso.',en:'Two words and a smile.'}},
+ {id:'panda-noodle',n:'Panda Noodle Bar',c:'sweat',col:[],p:35,g:'cream',ink:'#121212',d:{pt:'Sweat com o panda mais faminto de Faro.',en:'Sweat with the hungriest panda in Faro.'}},
+ {id:'hot-chocolate',n:'Hot Chocolate',c:'sweat',col:[],p:35,g:'navy',ink:'#E8DFCF',d:{pt:'Para as noites de inverno no Algarve (sim, existem).',en:'For Algarve winter nights (yes, they exist).'}},
+ {id:'yeah-sweat',n:'Yeah Yeah Yeah Sweat',c:'sweat',col:[],p:35,g:'black',ink:'#F4792B',d:{pt:'Três vezes sim.',en:'Three times yes.'}},
+ {id:'pizza-cap',n:'Pizza Trucker Cap',c:'cap',col:[],p:25,img:'media/trucker-caps.webp',g:'black',d:{pt:'Boné trucker com rede, pala curva e patch bordado. Tamanho único ajustável.',en:'Mesh-back trucker cap, curved peak, embroidered patch. One size, adjustable.'}},
+ {id:'spice-cap',n:'Spice Trucker Cap',c:'cap',col:[],p:25,g:'cream',ink:'#C8321F',d:{pt:'Boné trucker creme com malagueta bordada.',en:'Cream trucker cap with an embroidered chili.'}},
+ {id:'helmet-cap',n:'HELMET',c:'cap',col:[],p:25,g:'black',ink:'#fff',d:{pt:'Da série NoName Headwear.',en:'From the NoName Headwear series.'}},
+ {id:'ufo-cap',n:'UFO RETRO',c:'cap',col:[],p:25,g:'navy',ink:'#F4792B',d:{pt:'Da série NoName Headwear.',en:'From the NoName Headwear series.'}},
+ {id:'skull-cap',n:'SKULL',c:'cap',col:[],p:25,g:'black',ink:'#fff',d:{pt:'Da série NoName Headwear.',en:'From the NoName Headwear series.'}},
+ {id:'flamingo-cap',n:'Flamingo',c:'cap',col:['algarve'],p:25,g:'cream',ink:'#F4792B',d:{pt:'O flamingo da Ria, bordado.',en:'The Ria flamingo, embroidered.'}},
+ {id:'star-cap',n:'STAR',c:'cap',col:[],p:25,g:'navy',ink:'#fff',d:{pt:'Da série NoName Headwear.',en:'From the NoName Headwear series.'}},
+ {id:'crow-cap',n:'CROW',c:'cap',col:[],p:25,g:'black',ink:'#14616D',d:{pt:'Da série NoName Headwear.',en:'From the NoName Headwear series.'}},
+ {id:'hw-kids',n:'Halloween Kids',c:'hw',col:['kids'],p:10,img:'media/halloween-kids.webp',g:'black',d:{pt:'Little Monster, Trick or Treat, Cooler than Candy, Born to Scare, Little Vampire, Little Werewolf, Little Witch, Boo Team. 10 € cada, tamanhos de criança.',en:'Little Monster, Trick or Treat, Cooler than Candy, Born to Scare, Little Vampire, Little Werewolf, Little Witch, Boo Team. €10 each, kids sizes.'},kids:true},
+ {id:'talky-tina',n:'Talky Tina',c:'hw',col:[],p:10,g:'black',ink:'#F4792B',d:{pt:'Twilight Zone, 1963. T-shirt de adulto.',en:'Twilight Zone, 1963. Adult tee.'}},
+ {id:'vampire-lipstick',n:'Vampire Lip Stick',c:'hw',col:[],p:15,g:'black',ink:'#C8321F',d:{pt:'Halloween para adultos.',en:'Halloween for grown-ups.'}},
+ {id:'witching-hour',n:'Witching Hour',c:'hw',col:[],p:15,g:'black',ink:'#fff',d:{pt:'Halloween para adultos.',en:'Halloween for grown-ups.'}},
+ {id:'bite-me',n:'Bite Me',c:'hw',col:[],p:10,g:'black',ink:'#C8321F',d:{pt:'Também em Spider, Mummy, Freddy e Scream, a 10 €.',en:'Also as Spider, Mummy, Freddy and Scream, at €10.'}},
+ {id:'i-love-tees',n:'I LOVE TEES',c:'tee',col:['women'],p:15,img:'media/i-love-tees.webp',g:'black',d:{pt:'Mini Fit: t-shirt de senhora justa, com coração pequeno ao peito.',en:'Mini Fit: fitted women\'s tee with a small heart on the chest.'}}
+];
+const CATS=[['all','Tudo','All'],['tee','T-shirts','T-shirts'],['sweat','Sweats','Sweats'],['cap','Bonés','Headwear'],['hw','Halloween','Halloween'],['algarve','Algarve','Algarve'],['kids','Kids','Kids']];
+const GARM={black:'#1a1a1a',cream:'#EFE6D3',navy:'#1E2A44'};
+const SIZES={tee:['XS','S','M','L','XL','XXL'],sweat:['S','M','L','XL','XXL'],cap:['Único'],hw:['XS','S','M','L','XL','XXL']};
+const SIZES_KIDS=['3-4','5-6','7-8','9-11','12-13'];
+const t=(pt,en)=>lang==='en'?en:pt;
+const money=v=>lang==='en'?('€'+v.toFixed(2)):(v.toFixed(2).replace('.',',')+' €');
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* maquete SVG: peça + nome do design em League Gothic, com retícula */
+function mock(p){
+  const g=GARM[p.g]||GARM.black, ink=p.ink||'#fff', nm=esc(p.n.toUpperCase());
+  const words=nm.split(' '); let lines=[]; let cur='';
+  words.forEach(w=>{ if((cur+' '+w).trim().length>11&&cur){lines.push(cur);cur=w}else cur=(cur+' '+w).trim() }); if(cur)lines.push(cur);
+  lines=lines.slice(0,3);
+  const fs=lines.some(l=>l.length>9)?38:48, y0=258-(lines.length-1)*fs*.5;
+  const txt=lines.map((l,i)=>`<text x="200" y="${y0+i*fs}" text-anchor="middle" font-family="League Gothic,Impact,sans-serif" font-size="${fs}" fill="${ink}">${l}</text>`).join('');
+  let shape='';
+  if(p.c==='cap') shape=`<path d="M90 300c0-70 50-120 110-120s110 50 110 120v20H90z" fill="${g}"/><path d="M70 318c40-14 230-14 290 4-10 18-60 26-150 26S80 338 70 318z" fill="${g}" stroke="rgba(0,0,0,.25)"/><path d="M200 180v140" stroke="rgba(255,255,255,.12)"/><rect x="150" y="235" width="100" height="56" rx="8" fill="${ink==='#fff'?'#fff':ink}" opacity=".95"/><text x="200" y="272" text-anchor="middle" font-family="League Gothic,Impact,sans-serif" font-size="30" fill="${ink==='#fff'?g:'#fff'}">${esc(p.n.split(' ')[0].toUpperCase())}</text>`;
+  else if(p.c==='sweat') shape=`<path d="M120 110l60-28h40l60 28 60 40-30 60-30-14v200H120V196l-30 14-30-60z" fill="${g}"/><path d="M90 150l-30 60 30 14M310 150l30 60-30 14" fill="none" stroke="rgba(0,0,0,.2)" stroke-width="3"/><rect x="120" y="380" width="160" height="16" fill="rgba(0,0,0,.15)"/><path d="M180 82q20 14 40 0" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="4"/>${txt}`;
+  else shape=`<path d="M130 110l55-26q15 14 30 0l55 26 60 40-32 56-28-14v204H130V192l-28 14-32-56z" fill="${g}"/><path d="M185 84q15 12 30 0" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="4"/>${txt}`;
+  return `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${nm}"><defs><pattern id="ht-${p.id}" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.1" fill="#000" opacity=".08"/></pattern></defs><rect width="400" height="500" fill="${p.g==='cream'?'#DCD3C2':'#E9E4DA'}"/><rect width="400" height="500" fill="url(#ht-${p.id})"/>${shape}</svg>`;
+}
+const pic=p=>p.img?`<img src="${p.img}" alt="${esc(p.n)}" loading="lazy" width="896" height="1120" onerror="this.outerHTML=window.__mock('${p.id}')">`:mock(p);
+window.__mock=id=>mock(P.find(x=>x.id===id));
+
+/* loja */
+let filter='all', shown=12;
+const grid=document.getElementById('grid'), chips=document.getElementById('chips');
+function renderChips(){chips.innerHTML=CATS.map(c=>`<button class="chip" type="button" aria-pressed="${filter===c[0]}" data-f="${c[0]}">${t(c[1],c[2])}</button>`).join('')}
+function list(){return P.filter(p=>filter==='all'||p.c===filter||p.col.includes(filter))}
+function renderGrid(){
+  const L=list(); const show=L.slice(0,shown);
+  grid.innerHTML=show.map(p=>`<button class="card" type="button" data-id="${p.id}" aria-label="${esc(p.n)}, ${money(p.p)}">
+    <div class="ph">${pic(p)}${p.col.includes('algarve')?`<span class="tag sol">Algarve</span>`:(p.c==='hw'?`<span class="tag">Halloween</span>`:'')}</div>
+    <div class="nm">${esc(p.n)}</div>
+    <div class="meta"><span>${t({tee:'T-shirt · 190 g/m²',sweat:'Sweat',cap:'Boné trucker',hw:p.kids?'T-shirt criança':'T-shirt'}[p.c],{tee:'T-shirt · 190 gsm',sweat:'Sweatshirt',cap:'Trucker cap',hw:p.kids?'Kids tee':'T-shirt'}[p.c])}</span><span class="pr">${money(p.p)}</span></div>
+  </button>`).join('');
+  const more=document.getElementById('more'); more.hidden=L.length<=shown;
+}
+chips.addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;filter=b.dataset.f;shown=12;renderChips();renderGrid()});
+document.getElementById('more').addEventListener('click',()=>{shown+=12;renderGrid()});
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;shown=12;renderChips();renderGrid();document.getElementById('loja').scrollIntoView({behavior:'smooth'})}));
+grid.addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openProduct(c.dataset.id)});
+
+/* ficha de produto */
+const modal=document.getElementById('modal'), mbox=document.getElementById('mbox');
+let sel=null;
+function openProduct(id){
+  const p=P.find(x=>x.id===id); const sizes=p.kids?SIZES_KIDS:SIZES[p.c]; sel={id,size:sizes[Math.min(2,sizes.length-1)]};
+  mbox.innerHTML=`<button class="x" data-close aria-label="Fechar"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="ph">${pic(p)}</div>
+  <div class="info">
+    <span class="label">${t({tee:'T-shirt',sweat:'Sweat',cap:'Boné',hw:'Halloween'}[p.c],{tee:'T-shirt',sweat:'Sweatshirt',cap:'Cap',hw:'Halloween'}[p.c])}${p.col.includes('algarve')?' · '+t('Coleção Algarve','Algarve Collection'):''}</span>
+    <h3>${esc(p.n)}</h3>
+    <div class="pr">${money(p.p)}</div>
+    <p style="margin:0">${esc(p.d[lang])}</p>
+    <div><div class="label" style="margin-bottom:.5rem">${t('Tamanho','Size')}</div><div class="sizes" id="sizes">${sizes.map(s=>`<button type="button" aria-pressed="${s===sel.size}" data-s="${s}">${s}</button>`).join('')}</div></div>
+    <button class="btn btn-ink" id="add">${t('Adicionar ao saco','Add to bag')} · ${money(p.p)}</button>
+    <ul class="specs">
+      ${p.c==='cap'?`<li>${t('Rede atrás, fecho ajustável','Mesh back, adjustable snap')}</li>`:`<li>${t('100% algodão 190 g/m², pré-encolhido','100% cotton 190 gsm, pre-shrunk')}</li><li>${t('Corte unissexo; guia de tamanhos XS–XXL em cm','Unisex fit; size guide XS–XXL in cm')}</li>`}
+      <li>${t('Impresso em Faro · expedição em 5 dias úteis','Printed in Faro · dispatched in 5 working days')}</li>
+      <li>${t('14 dias para trocar ou devolver','14 days to exchange or return')}</li>
+    </ul>
+  </div>`;
+  modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  mbox.querySelector('#sizes').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;sel.size=b.dataset.s;mbox.querySelectorAll('#sizes button').forEach(x=>x.setAttribute('aria-pressed',x===b))});
+  mbox.querySelector('#add').addEventListener('click',()=>{addToBag(p.id,sel.size);closeAll();toast(t('Adicionado ao saco','Added to bag'))});
+}
+function closeAll(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+document.addEventListener('click',e=>{if(e.target.closest('[data-close]'))closeAll()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+
+/* saco */
+const drawer=document.getElementById('drawer');
+let bag=[]; try{bag=JSON.parse(localStorage.getItem(BAG_KEY)||'[]')}catch(e){}
+function save(){try{localStorage.setItem(BAG_KEY,JSON.stringify(bag))}catch(e){}renderBag()}
+function addToBag(id,size){const l=bag.find(x=>x.id===id&&x.size===size);if(l)l.q++;else bag.push({id,size,q:1});save()}
+function renderBag(){
+  const n=bag.reduce((a,b)=>a+b.q,0); const c=document.getElementById('count'); c.textContent=n; c.hidden=n===0;
+  const lines=document.getElementById('lines'); let tot=0;
+  if(!bag.length){lines.innerHTML=`<div class="empty">${t('O saco está vazio.','Your bag is empty.')}</div>`}
+  else lines.innerHTML=bag.map((l,i)=>{const p=P.find(x=>x.id===l.id);tot+=p.p*l.q;return `<div class="line"><div class="ph">${pic(p)}</div><div><b>${esc(p.n)}</b><br><span style="color:var(--ink-3)">${t('Tam.','Size')} ${l.size} · ${money(p.p)}</span></div><div class="q"><button type="button" data-q="-1" data-i="${i}" aria-label="−">−</button><span>${l.q}</span><button type="button" data-q="1" data-i="${i}" aria-label="+">+</button></div></div>`}).join('');
+  document.getElementById('total').textContent=money(tot);
+  const msg=t('Olá! Quero encomendar:\n','Hi! I would like to order:\n')+bag.map(l=>{const p=P.find(x=>x.id===l.id);return `• ${l.q}× ${p.n} (${l.size}) – ${money(p.p*l.q)}`}).join('\n')+`\nTotal: ${money(tot)}`;
+  document.getElementById('checkout').href='https://wa.me/351961579403?text='+encodeURIComponent(msg);
+}
+document.getElementById('lines').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b)return;const l=bag[+b.dataset.i];l.q+=+b.dataset.q;if(l.q<=0)bag.splice(+b.dataset.i,1);save()});
+document.getElementById('open-bag').addEventListener('click',()=>{renderBag();drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'});
+function toast(m){const x=document.getElementById('toast');x.textContent=m;x.classList.add('show');clearTimeout(x._t);x._t=setTimeout(()=>x.classList.remove('show'),1800)}
+
+/* orçamentador */
+const Q={item:'tee',colors:'1'};
+const names={tee:['t-shirts','t-shirts'],sweat:['sweats','sweatshirts'],hoodie:['hoodies','hoodies'],cap:['bonés','caps']};
+['q-item','q-colors'].forEach(id=>document.getElementById(id).addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(!b)return;document.querySelectorAll('#'+id+' button').forEach(x=>x.setAttribute('aria-pressed',x===b));Q[id==='q-item'?'item':'colors']=b.dataset.v;quote()}));
+['q-qty','q-when','q-art','q-name'].forEach(id=>document.getElementById(id).addEventListener('input',quote));
+function quote(){
+  const qty=+document.getElementById('q-qty').value, when=document.getElementById('q-when').value, art=document.getElementById('q-art').value, name=document.getElementById('q-name').value.trim();
+  document.getElementById('q-qty-out').textContent=qty;
+  let tech,why;
+  if(Q.item==='cap'){tech='DTF';why=t('Bonés levam transferência DTF ou bordado: detalhe fino sobre a frente estruturada do boné.','Caps take a DTF transfer or embroidery: fine detail on the structured front panel.')}
+  else if(Q.colors==='full'){tech=qty>=100?'DTF':'DTG';why=qty>=100?t('Cor total em tiragem grande: a película DTF mantém a cor igual em todas as peças e aguenta bem lavagens.','Full colour at volume: DTF film keeps colour consistent across the run and washes well.'):t('Fotografia ou cor total em poucas peças: impressão direta DTG, sem telas nem mínimos.','Photo or full colour on a small run: direct-to-garment, no screens and no minimums.')}
+  else if(qty>=20){tech=t('Serigrafia','Screen print');why=t('A partir de 20 peças com 1 a 3 cores, a serigrafia dá a cor mais sólida e o melhor preço por peça.','From 20 pieces with 1 to 3 colours, screen printing gives the most solid colour and the best per-piece price.')}
+  else {tech='DTF';why=t('Abaixo de 20 peças não compensa abrir telas: a transferência DTF dá o mesmo acabamento sem custo de preparação.','Under 20 pieces it isn\'t worth making screens: DTF transfer gives the same finish without setup cost.')}
+  document.getElementById('r-tech').textContent=tech; document.getElementById('r-why').textContent=why;
+  document.getElementById('r-qty').textContent=qty+' '+t(names[Q.item][0],names[Q.item][1]);
+  document.getElementById('r-when').textContent={normal:t('Prazo normal: confirmamos a data na proposta','Standard: date confirmed in the quote'),'2w':t('2 semanas: possível, confirmamos na proposta','2 weeks: possible, confirmed in the quote'),urgent:t('Urgente: fala connosco hoje pelo WhatsApp','Urgent: message us today on WhatsApp')}[when];
+  const msg=t(`Olá! Pedido de orçamento por medida:\n• ${qty} ${names[Q.item][0]}\n• Cores: ${Q.colors==='full'?'cor total':Q.colors==='1'?'1':'2–3'}\n• Prazo: ${ {normal:'normal','2w':'2 semanas',urgent:'urgente'}[when]}\n• Design: ${ {yes:'tenho em boa qualidade',low:'tenho só imagem pequena',no:'preciso de ajuda'}[art]}\n• Nome: ${name||'—'}`,
+    `Hi! Custom print quote request:\n• ${qty} ${names[Q.item][1]}\n• Colours: ${Q.colors==='full'?'full colour':Q.colors==='1'?'1':'2–3'}\n• Timing: ${ {normal:'standard','2w':'2 weeks',urgent:'urgent'}[when]}\n• Artwork: ${ {yes:'good quality',low:'small image only',no:'need help'}[art]}\n• Name: ${name||'—'}`);
+  document.getElementById('r-wa').href='https://wa.me/351961579403?text='+encodeURIComponent(msg);
+}
+
+/* idioma */
+function setLang(l){
+  lang=l; try{localStorage.setItem(LANG_KEY,l)}catch(e){}
+  document.documentElement.lang=l==='en'?'en':'pt-PT';
+  document.querySelectorAll('[data-pt]').forEach(el=>{const v=el.dataset[l];if(v==null)return;if(!el.children.length){el.textContent=v;return}const tn=[...el.childNodes].find(n=>n.nodeType===3&&n.nodeValue.trim());if(tn)tn.nodeValue=v;else el.insertBefore(document.createTextNode(v),el.firstChild)});
+  document.getElementById('lang-pt').setAttribute('aria-pressed',l==='pt');document.getElementById('lang-en').setAttribute('aria-pressed',l==='en');
+  document.getElementById('mq').innerHTML=(l==='en'?['Screen print','DTG','DTF','190 gsm cotton','Printed in Faro','Dispatch in 5 working days','Custom printing from 5 pieces','Ships to Europe and the UK']:['Serigrafia','DTG','DTF','Algodão 190 g/m²','Impresso em Faro','Expedição em 5 dias úteis','Por medida a partir de 5 peças','Enviamos para a Europa e Reino Unido']).concat(l==='en'?['Screen print','DTG','DTF','190 gsm cotton','Printed in Faro','Dispatch in 5 working days','Custom printing from 5 pieces','Ships to Europe and the UK']:['Serigrafia','DTG','DTF','Algodão 190 g/m²','Impresso em Faro','Expedição em 5 dias úteis','Por medida a partir de 5 peças','Enviamos para a Europa e Reino Unido']).map(s=>`<span>${s}</span>`).join('');
+  renderChips();renderGrid();renderBag();quote();
+}
+document.getElementById('lang-pt').addEventListener('click',()=>setLang('pt'));
+document.getElementById('lang-en').addEventListener('click',()=>setLang('en'));
+
+/* nav */
+const nav=document.getElementById('nav'); addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+const burger=document.getElementById('burger'), menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+menu.addEventListener('click',e=>{if(e.target.tagName==='A'){menu.classList.remove('open');burger.setAttribute('aria-expanded','false')}});
+
+/* revelação */
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('is-in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+setLang(lang);
+})();
+</script>
+</body>
+</html>
