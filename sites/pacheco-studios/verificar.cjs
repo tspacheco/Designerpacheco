@@ -56,7 +56,8 @@ const fs = require('fs');
       const f = ficheiro(alvo.split('?')[0]);
       if (f) return { status: r.estado, headers: { 'content-type': tipos[path.extname(f)] || 'application/octet-stream' }, body: fs.readFileSync(f) };
     }
-    const f = ficheiro(u.pathname);
+    // URLs bonitos do Netlify: /cartaz serve cartaz.html
+    const f = ficheiro(u.pathname) || (!path.extname(u.pathname) && !u.pathname.endsWith('/') ? ficheiro(u.pathname + '.html') : null);
     if (f) return { status: 200, headers: { 'content-type': tipos[path.extname(f)] || 'application/octet-stream' }, body: fs.readFileSync(f) };
     return { status: 404, headers: { 'content-type': 'text/html; charset=utf-8' }, body: fs.readFileSync(path.join(dist, '404.html')) };
   }
@@ -215,6 +216,11 @@ const fs = require('fs');
       const l = await p.$eval('html', h => h.lang);
       if (r.status() !== 404 || l !== lang) mal(`404 de ${url}: ${r.status()} em ${l}`); else bem(`404 em ${lang}: ${url.replace('https://', '')}`);
     }
+    // varrimentos de robôs: 404 leve (n.txt), nos dois domínios
+    for (const url of [PT + '/phpinfo.php', PT + '/wp-admin/install.php', PT + '/.env', RO + '/.git/config', RO + '/meta.json']) {
+      const r = responder(url);
+      if (r.status !== 404 || r.body.length > 100) mal(`robôs: ${url} deu ${r.status} com ${r.body.length} bytes`); else bem(`robôs: ${url.replace('https://', '')} → 404 leve (${r.body.length} bytes)`);
+    }
     // privacidade
     for (const [url, lang] of [[PT + '/privacidade.html', 'pt-PT'], [PT + '/privacy.html', 'en'], [RO + '/confidentialitate.html', 'ro'],
                                [PT + '/cookies.html', 'pt-PT'], [PT + '/en/cookies.html', 'en'], [RO + '/cookie-uri.html', 'ro']]) {
@@ -229,7 +235,7 @@ const fs = require('fs');
 
   // ——— 2. acessibilidade: 3 línguas × 4 vistas × 3 larguras ———
   for (const [k, v] of Object.entries(LINGUAS)) {
-    for (const vista of ['consultanta', 'cazuri', 'automatizari', 'proiecte']) {
+    for (const vista of ['consultanta', 'cazuri', 'automatizari', 'auditoria']) {
       const linhas = [];
       for (const [nome, vp] of [['360', { width: 360, height: 780 }], ['390', { width: 390, height: 844 }], ['1280', { width: 1280, height: 800 }]]) {
         const ctx = await contexto({ viewport: vp, deviceScaleFactor: 2, reducedMotion: 'reduce' });
@@ -261,7 +267,7 @@ const fs = require('fs');
     await p.goto(v.url);
     const vis = id => p.$eval('#' + id, el => getComputedStyle(el).display !== 'none');
     const falhasAntes = falhas;
-    if (!(await vis('consultanta')) || await vis('cazuri') || await vis('automatizari') || await vis('proiecte')) mal(`${k}: estado inicial devia mostrar só #consultanta`);
+    if (!(await vis('consultanta')) || await vis('cazuri') || await vis('automatizari') || await vis('auditoria')) mal(`${k}: estado inicial devia mostrar só #consultanta`);
     if (await p.$eval('.tabs a[href="#consultanta"]', a => a.getAttribute('aria-current')) !== 'page') mal(`${k}: a Consultoria não está marcada no início`);
     // consultoria: um só botão de diagnóstico no herói, que vai ao WhatsApp, e três números que levam a casos que existem
     const heroi = await p.$$eval('.heroi a.botao[href^="https://wa.me/"]', as => as.length);
@@ -284,7 +290,7 @@ const fs = require('fs');
     if (comNome.length) mal(`${k}: o site mostra o nome de empresas dos casos: ${comNome.join(', ')}`);
     if (await p.$('.caso.vazio')) mal(`${k}: ainda há a caixa «o próximo caso»`);
     await p.click('.tabs a[href="#automatizari"]');
-    if (!(await vis('automatizari')) || await vis('proiecte')) mal(`${k}: separador das automatizações não trocou a vista`);
+    if (!(await vis('automatizari')) || await vis('auditoria')) mal(`${k}: separador das automatizações não trocou a vista`);
     if (await p.$eval('.tabs a[href="#automatizari"]', a => a.getAttribute('aria-current')) !== 'page') mal(`${k}: aria-current não passou`);
     const n = await p.$$eval('details.auto', ds => ds.length);
     if (n !== 8) mal(`${k}: esperava 8 automatizações, encontrei ${n}`);
@@ -295,8 +301,25 @@ const fs = require('fs');
     if (!(await p.evaluate(() => { const d = document.querySelector(location.hash); return d && d.tagName === 'DETAILS' && d.open; }))) mal(`${k}: ligação entre automatizações não abriu a apontada`);
     // «O que mais fazemos» vive no fim das Soluções
     if (!(await p.$('#automatizari #servicii .svc'))) mal(`${k}: «O que mais fazemos» não está no fim das Soluções`);
-    await p.click('.tabs a[href="#proiecte"]');
-    if (!(await vis('proiecte')) || await vis('consultanta')) mal(`${k}: separador dos sites falhou`);
+    // System Print em cada solução: gatilho, dono, regra, passa a uma pessoa, métrica
+    const prints = await p.$$eval('details.auto', ds => ds.map(d => d.querySelectorAll('.print dd').length));
+    if (prints.some(x => x !== 5)) mal(`${k}: System Print incompleto ${JSON.stringify(prints)}`);
+    // Auditoria: separador próprio, 4 peças, 7 passos, 5 entregas, e o botão abre a candidatura
+    await p.click('.tabs a[href="#auditoria"]');
+    if (!(await vis('auditoria')) || await vis('cazuri')) mal(`${k}: separador da auditoria falhou`);
+    const aud = await p.evaluate(() => ({ escala: document.querySelectorAll('.aud-escala .esc').length, etapas: document.querySelectorAll('.aud-etapas li').length, pecas: document.querySelectorAll('.aud-pecas li').length, passos: document.querySelectorAll('.aud-passos li').length,
+      ent: document.querySelectorAll('.aud-entregas li').length, cta: document.querySelectorAll('#auditoria [data-diagnostico]').length,
+      preco: /€|RON|lei\b|\$/.test(document.getElementById('auditoria').innerText) }));
+    if (aud.escala !== 2 || aud.etapas !== 2 || aud.pecas !== 4 || aud.passos !== 7 || aud.ent !== 5 || aud.cta !== 1 || aud.preco) mal(`${k}: auditoria mal montada ${JSON.stringify(aud)}`);
+    await p.click('#auditoria [data-diagnostico]');
+    if (!(await p.$eval('#diagnostico', d => d.open))) mal(`${k}: «Conhece-nos» da Auditoria não abriu a triagem`);
+    await p.keyboard.press('Escape');
+    // a auditoria não se pede num botão (Tomás, 11/10): todos os botões dizem «Conhece-nos» e abrem a triagem
+    if (/Pedir auditoria|Request an audit|Cere auditul/.test(await p.evaluate(() => document.body.innerText))) mal(`${k}: ainda há um botão para pedir a auditoria`);
+    // os sites vivem dentro de Casos
+    if (await p.$('.tabs a[href="#proiecte"]')) mal(`${k}: ainda há separador dos sites`);
+    await p.click('.tabs a[href="#cazuri"]');
+    if (!(await vis('proiecte')) || !(await p.$('#cazuri #proiecte'))) mal(`${k}: os sites não estão dentro de Casos`);
     // sites em destaque, sites dentro de cada tipo de negócio e exemplos: cada ligação interna tem de existir
     const hrefs = await p.$$eval('.grelha .q, .grelha-mais .q, .exemplos a, .link-ex', as => as.map(a => a.getAttribute('href')));
     const semSep = await p.$$eval('.grelha .q[href^=http], .grelha-mais .q[href^=http], .exemplos a[href^=http]', as => as.filter(a => a.target !== '_blank').length);
@@ -313,13 +336,13 @@ const fs = require('fs');
     const mais = await p.$$eval('.grelha-mais .q', as => as.map(a => a.getAttribute('href')));
     if (mais.length !== ativos.length - 3 || await p.$('.grelha-mais .teu')) mal(`${k}: «Mais sites» com ${mais.length} sites (esperava ${ativos.length - 3})`);
     // «Combina com» leva à automação e abre-a
-    await p.click('.tabs a[href="#proiecte"]');
+    await p.click('.tabs a[href="#cazuri"]');
     await p.click('#s-restauracao summary');
     await p.click('#s-restauracao .chips a');
     await p.waitForTimeout(250);
     if (!(await p.evaluate(() => { const d = document.querySelector(location.hash); return d && d.tagName === 'DETAILS' && d.open && !!d.closest('#automatizari'); })))
       mal(`${k}: «Combina com» não abriu a automação`);
-    await p.click('.tabs a[href="#proiecte"]');
+    await p.click('.tabs a[href="#cazuri"]');
     if (semSep) mal(`${k}: ${semSep} ligações externas sem target=_blank`);
     for (const h of hrefs) {
       if (h.startsWith('#') || /^https?:/.test(h)) continue;
@@ -352,13 +375,23 @@ const fs = require('fs');
     await p.evaluate(() => { window.__gc = []; window.goatcounter = { count: o => window.__gc.push(o.path) }; });
     await p.click('.heroi [data-diagnostico]');
     const g = JSON.parse(fs.readFileSync(path.join(__dirname, 'conteudo', k + '.json'), 'utf8')).diagnostico;
-    await p.click('#diag-comecar');
+    // quem faz o diagnóstico: a foto do Tomás carregada, com nome e papel na língua da página
+    const cara = await p.evaluate(() => { const i = document.querySelector('.diag-quem img');
+      return { foto: !!i && i.complete && i.naturalWidth > 100, alt: i && i.alt, nome: (document.querySelector('.diag-quem b') || {}).textContent,
+        papel: (document.querySelector('.diag-quem small') || {}).textContent }; });
+    if (!cara.foto || cara.nome !== g.quem_nome || cara.papel !== g.quem_papel || ![g.quem_alt, 'Pacheco Studios'].includes(cara.alt)) mal(`${k}: diagnóstico sem a cara do Tomás: ${JSON.stringify(cara)}`);
+    // 1.º ecrã: a foto, o porquê e logo o campo do nome (sem «Começar»)
+    const ecra1 = await p.evaluate(() => ({ nome: !!document.getElementById('diag-in'), comecar: !!document.getElementById('diag-comecar'),
+      foto: !!document.querySelector('.diag-quem img'), foco: document.activeElement && document.activeElement.id }));
+    if (!ecra1.nome || ecra1.comecar || !ecra1.foto || ecra1.foco === 'diag-in') mal(`${k}: 1.º ecrã do diagnóstico ${JSON.stringify(ecra1)}`);
     const respostas = [];
     for (const q of g.perguntas) {
-      if (q.tipo === 'texto' || q.tipo === 'tel') {
+      if (q.tipo === 'texto' || q.tipo === 'tel' || q.tipo === 'email') {
         await p.waitForSelector('#diag-in', { timeout: 8000 });
-        const t = q.tipo === 'tel' ? '+351 900 000 000' : `Teste ${q.id}`;
+        const t = q.tipo === 'tel' ? '+351 900 000 000' : q.tipo === 'email' ? 'teste@exemplo.pt' : `Teste ${q.id}`;
         await p.fill('#diag-in', t); await p.press('#diag-in', 'Enter'); respostas.push(t);
+        // depois de cada resposta, o Tomás «está a escrever…» antes da mensagem seguinte
+        if (q.id === 'nome' && !(await p.evaluate(() => !!document.querySelector('.diag-pensa')))) mal(`${k}: falta o «a escrever…» depois do nome`);
       } else if (q.outro) {
         // «Outro»: abre um campo; o que se escreve é a resposta
         await p.waitForSelector('.diag-op', { timeout: 8000 });
@@ -374,27 +407,60 @@ const fs = require('fs');
       await p.waitForTimeout(350);
     }
     await p.waitForSelector('#diag-enviar', { timeout: 10000 });
+    // os ganchos: cada pergunta vem com uma frase que reage à resposta anterior (o nome do negócio, a dor escolhida…)
+    const conversa = await p.evaluate(() => document.getElementById('diag-palco').textContent);
+    const ganchos = g.perguntas.filter(q => q.gancho).map(q => {
+      const antes = g.perguntas.find(x => x.id === q.gancho_de), v = respostas[g.perguntas.indexOf(antes)];
+      const i = antes.opcoes ? antes.opcoes.indexOf(v) : -1;
+      return (q.gancho[String(i)] || q.gancho['*']).replace(/\{(\w+)\}/g, (m, id) => id === 'nome' ? 'Teste' : respostas[g.perguntas.findIndex(x => x.id === id)]);
+    });
+    const semGancho = ganchos.filter(t => !conversa.includes(t));
+    if (semGancho.length) mal(`${k}: ganchos em falta na conversa: ${semGancho.join(' | ')}`);
+    else bem(`${k}: conversa com «a escrever…» e ${ganchos.length} ganchos que reagem às respostas`);
     const fim = await p.evaluate(() => ({ href: decodeURIComponent(document.getElementById('diag-enviar').href),
       n: document.getElementById('diag-n').textContent, aberto: document.getElementById('diagnostico').open }));
     const falta = respostas.filter(t => !fim.href.includes(t));
+    // o número que recebe o diagnóstico: o romeno no ro.pachecost.com, o português no resto (marca/dados.json)
+    const numDiag = k === 'ro' ? 'https://wa.me/40723098556?' : 'https://wa.me/351967117357?';
+    if (!fim.href.startsWith(numDiag)) mal(`${k}: o diagnóstico vai para ${fim.href.split('?')[0]} e devia ir para ${numDiag.slice(0, -1)}`);
+    else bem(`${k}: o diagnóstico é enviado para ${numDiag.slice(14, -1)}`);
+    // os contactos do fim da página: o número romeno no RO, o português no resto
+    const cont = await p.evaluate(() => { const s = document.getElementById('contact');
+      return { txt: s.textContent, tel: (s.querySelector('a[href^="tel:"]') || {}).href, wa: (s.querySelector('.contactos a[href^="https://wa.me"]') || {}).href }; });
+    const [numTxt, numTel] = k === 'ro' ? ['+40 723 098 556', 'tel:+40723098556'] : ['+351 967 117 357', 'tel:+351967117357'];
+    if (!cont.txt.includes(numTxt) || cont.tel !== numTel || !cont.wa.startsWith(numDiag)) mal(`${k}: contactos do fim da página ${JSON.stringify({ tel: cont.tel, wa: cont.wa && cont.wa.split('?')[0] })}`);
+    else bem(`${k}: contactos do fim da página com ${numTxt}`);
+    // o email do fim da página: o do Robert no RO (pedido do Tomás, 11/10), o principal no resto
+    const mail = await p.evaluate(() => (document.querySelector('#contact a[href^="mailto:"]') || {}).href);
+    const mailOk = 'mailto:robert@teampachecostudios.com'; // o do Robert nas 3 línguas (pedido do Tomás, 11/10)
+    if (mail !== mailOk) mal(`${k}: email dos contactos ${mail}, devia ser ${mailOk}`);
+    else bem(`${k}: email dos contactos ${mailOk.slice(7)}`);
+    // no ro.pachecost.com só o número romeno, em todos os botões e no JSON-LD (pedido do Tomás, 09/10)
+    const outro = await p.evaluate(n => { const h = document.documentElement.outerHTML;
+      return (h.match(new RegExp(n.join('|'), 'g')) || []).length; }, k === 'ro' ? ['351967117357', '967 117 357'] : ['40723098556', '723 098 556']);
+    if (outro) mal(`${k}: ${outro} vezes o número ${k === 'ro' ? 'português' : 'romeno'} na página`);
+    else bem(`${k}: só aparece o número ${k === 'ro' ? 'romeno' : 'português'} na página`);
     await p.evaluate(() => { const a = document.getElementById('diag-enviar'); a.addEventListener('click', e => e.preventDefault()); a.click(); });
-    const ev = await p.evaluate(() => window.__gc);
-    const esperado = ['diagnostico/aberto', 'diagnostico/comecou', ...g.perguntas.map((q, i) => `diagnostico/pergunta-${String(i + 1).padStart(2, '0')}-${q.id}`), 'diagnostico/fim', 'diagnostico/enviado'];
+    const avatar = await p.evaluate(() => !!document.querySelector('.diag-bot img'));
+    if (!avatar) mal(`${k}: o fim do diagnóstico devia ter a foto do Tomás`);
+    const ev = await p.evaluate(() => window.__gc.filter(x => x.startsWith("diagnostico/")));
+    const pq = g.perguntas.map((q, i) => `diagnostico/pergunta-${String(i + 1).padStart(2, '0')}-${q.id}`);
+    const esperado = ['diagnostico/aberto', pq[0], 'diagnostico/comecou', ...pq.slice(1), 'diagnostico/fim', 'diagnostico/enviado'];
     if (JSON.stringify(ev) !== JSON.stringify(esperado)) mal(`${k}, eventos do diagnóstico: ${ev.join(' ')}`);
-    else bem(`${k}: eventos do diagnóstico no GoatCounter, por ordem: aberto, começou, as ${g.perguntas.length} perguntas, fim, enviado`);
+    else bem(`${k}: 1.º ecrã com foto e nome; eventos no GoatCounter por ordem: aberto, pergunta 1, começou, as outras perguntas, fim, enviado`);
     await p.keyboard.press('Escape');
     const fechou = await p.evaluate(() => !document.getElementById('diagnostico').open);
     const fat = g.perguntas.find(q => q.id === 'faturacao');
     const moeda = fat && fat.opcoes.slice(0, -1).every(o => o.includes(k === 'ro' ? 'lei' : '€'));
     if (falta.length || +fim.n !== g.perguntas.length || !fim.aberto || !fechou || !moeda) mal(`${k}, diagnóstico: ${JSON.stringify({ falta, fim, fechou, moeda })}`);
-    else bem(`${k}: diagnóstico com a ficha, ${g.perguntas.length} respostas (tipo «${g.perguntas.find(q => q.outro).outro}» escrito à mão, faturação em ${k === 'ro' ? 'lei' : '€'}), todas na mensagem para o WhatsApp; Esc fecha`);
+    else bem(`${k}: diagnóstico com a ficha, ${g.perguntas.length} respostas (e-mail na 3.ª, faturação em ${k === 'ro' ? 'lei' : '€'}), todas na mensagem para o WhatsApp; Esc fecha`);
   }
 
   // anúncio de sites: entra nos Sites; sem utm, entra na Consultoria
   await p.goto(LINGUAS.ro.url + '?utm_source=meta&utm_content=web-bolta');
   await p.waitForTimeout(200);
   const doAnuncio = await p.evaluate(() => ({ h: location.hash, s: getComputedStyle(document.getElementById('proiecte')).display !== 'none' }));
-  if (doAnuncio.h !== '#proiecte' || !doAnuncio.s) mal(`anúncio de sites: ${JSON.stringify(doAnuncio)}`); else bem('anúncio de sites (utm_content=web-…): abre nos Sites');
+  if (doAnuncio.h !== '#proiecte' || !doAnuncio.s) mal(`anúncio de sites: ${JSON.stringify(doAnuncio)}`); else bem('anúncio de sites (utm_content=web-…): abre nos sites, dentro de Casos');
 
   // barra fixa
   await p.goto(LINGUAS.pt.url);
@@ -556,7 +622,30 @@ const fs = require('fs');
 
   // ——— 5b. herói: o vídeo em fotogramas (16:9 em ecrãs deitados, recorte 9:16 ao alto) avança com o scroll ———
   console.log('\nHERÓI');
-  for (const [w, h, conj] of [[1280, 800, 'd'], [390, 844, 'v']]) {
+  // a ordem a seguir ao herói é a mesma nas três línguas: veredito (3D), depois a caixa da consultoria
+  for (const [k, f] of [['pt', 'index.html'], ['en', 'en/index.html'], ['ro', 'ro/index.html']]) {
+    const h = fs.readFileSync(path.join(dist, f), 'utf8');
+    const ordem = ['class="heroi-bg"', 'class="veredito seccao"', 'class="envolver seccao consultoria"', 'class="envolver seccao ia-bloco"'].map(x => h.indexOf(x));
+    if (ordem.some(x => x < 0) || ordem.some((x, i) => i && x <= ordem[i - 1])) mal(`${k}: ordem das secções a seguir ao herói ${JSON.stringify(ordem)}`);
+    else bem(`${k}: a seguir ao herói vem o veredito e depois a consultoria`);
+  }
+  const comVideo = fs.readFileSync(path.join(dist, 'index.html'), 'utf8').includes('id="heroi-quadros"');
+  if (!comVideo) {
+    // desligado no gerar.py (HEROI_VIDEO = False): imagem parada, o scroll desce normalmente
+    for (const [w, h] of [[1280, 800], [390, 844]]) {
+      const c = await contexto({ viewport: { width: w, height: h } });
+      const q = await c.newPage();
+      await q.goto(LINGUAS.pt.url);
+      await q.waitForTimeout(800);
+      const r = await q.evaluate(() => ({ rolo: document.querySelector('.heroi-bg').classList.contains('rolo'), cv: !!document.querySelector('.heroi-cv'),
+        pedidos: performance.getEntriesByType('resource').filter(x => x.name.includes('/heroi-hd/')).length,
+        img: !!document.querySelector('.heroi-img') }));
+      if (r.rolo || r.cv || r.pedidos || !r.img) mal(`herói ${w}px: vídeo desligado mas ${JSON.stringify(r)}`);
+      else bem(`herói ${w}px: vídeo desligado; imagem parada e o scroll desce normalmente`);
+      await c.close();
+    }
+  }
+  for (const [w, h, conj] of (comVideo ? [[1280, 800, 'd'], [390, 844, 'v']] : [])) {
     const c = await contexto({ viewport: { width: w, height: h } });
     const q = await c.newPage();
     await q.goto(LINGUAS.pt.url);
@@ -574,6 +663,21 @@ const fs = require('fs');
 
   // ——— 6. intro: 1.ª vez na sessão, com as três fotografias; salta com um toque ou Esc; nunca com movimento reduzido ———
   console.log('\nINTRO');
+  const comIntro = fs.readFileSync(path.join(dist, 'index.html'), 'utf8').includes('id="intro"');
+  if (!comIntro) {
+    // desligada no gerar.py (INTRO_LIGADA = False): na 1.ª visita não aparece e a página abre ativa
+    for (const [k, v] of Object.entries(LINGUAS)) {
+      const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+      const q = await c.newPage();
+      await q.goto(v.url);
+      const r = await q.evaluate(() => ({ vai: document.documentElement.classList.contains('intro-vai'), existe: !!document.getElementById('intro'),
+        inerte: document.querySelector('main').hasAttribute('inert'), rola: getComputedStyle(document.documentElement).overflow !== 'hidden' }));
+      if (r.vai || r.existe || r.inerte || !r.rola) mal(`${k}: intro desligada mas ${JSON.stringify(r)}`);
+      else bem(`${k}: intro desligada; a 1.ª visita abre direta no site`);
+      await c.close();
+    }
+  }
+  if (comIntro) {
   for (const n of [1, 2, 3]) {
     const r = responder(PT + '/media/intro-' + n + '.webp');
     if (r.status !== 200 || r.headers['content-type'] !== 'image/webp') mal(`/media/intro-${n}.webp: ${r.status}`);
@@ -639,13 +743,94 @@ const fs = require('fs');
     else bem('intro: com movimento reduzido não aparece e a página abre direta');
     await c.close();
   }
+  }
+  // ligação direta dos anúncios, na 1.ª visita: sem intro, diagnóstico aberto e utilizável; fechar limpa o #diagnostico
+  // os links que estão nos anúncios da Meta (campanhas de outubro) e o #diagnostico do cartão
+  const anuncio = (camp, cont) => `?utm_source=meta&utm_medium=paid&utm_campaign=${camp}&utm_content=${cont}`;
+  for (const [lg, sufixo] of [['pt', '#diagnostico'], ['pt', anuncio('ps-pt-out26', 'diag-video-b')], ['en', anuncio('ps-en-out26', 'diag-video-b')],
+                              ['ro', anuncio('ps-ro-out26', 'diag-video-b')], ['ro', '#diagnostico']]) {
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    await c.addInitScript(() => { window.__gc = []; const stub = { count: o => window.__gc.push(o.path) };
+      Object.defineProperty(window, 'goatcounter', { get: () => stub, set: () => {}, configurable: true }); });
+    const q = await c.newPage();
+    await q.goto(LINGUAS[lg].url.replace(/\/$/, '') + '/' + sufixo);
+    await q.waitForTimeout(300);
+    const r = await q.evaluate(() => ({ vai: document.documentElement.classList.contains('intro-vai'), lang: document.documentElement.lang,
+      aberto: document.getElementById('diagnostico').open, comecar: !!document.getElementById('diag-in'),
+      foto: !!document.querySelector('.diag-quem img'), gc: window.__gc.slice() }));
+    let ok = !r.vai && r.aberto && r.comecar && r.foto && r.lang === LINGUAS[lg].lang && r.gc.includes('diagnostico/aberto');
+    if (ok) { await q.fill('#diag-in', 'Teste Link'); await q.press('#diag-in', 'Enter'); await q.waitForTimeout(200);
+      ok = await q.evaluate(() => window.__gc.includes('diagnostico/comecou') && window.__gc.includes('diagnostico/pergunta-02-negocio')); }
+    if (ok) { await q.keyboard.press('Escape'); await q.waitForTimeout(100);
+      ok = await q.evaluate(() => !document.getElementById('diagnostico').open && location.hash === ''); }
+    if (!ok) mal(`ligação direta ao diagnóstico (${lg} ${sufixo}): ${JSON.stringify(r)}`);
+    else bem(`${lg}: ${sufixo} abre o diagnóstico com a foto, o nome logo no 1.º ecrã; conta «aberto» e «começou» no GoatCounter; fechar limpa o endereço`);
+    await c.close();
+  }
+
+  // rececionista de IA nas Soluções (pedido do Tomás, 11/10): o mini telemóvel responde e os botões trocam o negócio
+  for (const lg of ['pt', 'en', 'ro']) {
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    const q = await c.newPage();
+    await q.goto(LINGUAS[lg].url.replace(/\/$/, '') + '/#rececionista');
+    await q.waitForTimeout(400);
+    const fr = q.frameLocator('.rec-tel iframe');
+    let ok = await q.locator('.rec-tel iframe').isVisible();
+    let det = '';
+    try {
+      await fr.locator('#caixa').waitFor({ timeout: 5000 });
+      const antes = await fr.locator('#conversa > *').count();
+      await fr.locator('#caixa').fill(lg === 'ro' ? 'Cât costă tuns + barbă?' : lg === 'en' ? 'How much is haircut + beard?' : 'Quanto custa corte e barba?');
+      await fr.locator('#enviar').click();
+      await q.waitForTimeout(3500);
+      const depois = await fr.locator('#conversa > *').count();
+      const vis = await fr.locator('.dono').isVisible();
+      if (depois < antes + 2 || vis) { ok = false; det = `conversa ${antes}→${depois}, painel do dono visível: ${vis}`; }
+      await q.click('.rec-neg button[data-negocio="oficina"]');
+      await q.waitForTimeout(800);
+      const src = await q.getAttribute('.rec-tel iframe', 'src');
+      const nome = await fr.locator('#biz-nome').textContent();
+      if (!src.endsWith('negocio=oficina') || !/Demo|Service|Oficina|Garage/.test(nome)) { ok = false; det += ` troca de negócio: ${src} ${nome}`; }
+      const lang = await fr.locator('html').getAttribute('lang');
+      if (lang !== { pt: 'pt-PT', en: 'en', ro: 'ro' }[lg]) { ok = false; det += ` língua do telemóvel ${lang}`; }
+    } catch (err) { ok = false; det += ' ' + err.message.split('\n')[0]; }
+    if (!ok) mal(`${lg}: rececionista nas Soluções: ${det}`);
+    else bem(`${lg}: rececionista nas Soluções responde no mini telemóvel, na língua certa, e troca de negócio`);
+    await c.close();
+  }
+
+  // cada separador conta como página no GoatCounter (pedido do Tomás, 09/10): inicio, solucoes, casos, sites
+  for (const lg of ['pt', 'en', 'ro']) {
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    await c.addInitScript(() => { window.__gc = []; const stub = { count: o => window.__gc.push(o.path) };
+      Object.defineProperty(window, 'goatcounter', { get: () => stub, set: () => {}, configurable: true }); });
+    const q = await c.newPage();
+    await q.goto(LINGUAS[lg].url);
+    await q.waitForTimeout(300);
+    for (const v of ['automatizari', 'cazuri', 'auditoria', 'consultanta']) { await q.click(`.tabs a[data-vista="${v}"]`); await q.waitForTimeout(50); }
+    const r = await q.evaluate(() => ({ base: location.host + location.pathname, gc: window.__gc.filter(x => !x.includes('/') || x.startsWith(location.host)) }));
+    const esperado = ['inicio', 'solucoes', 'casos', 'auditoria', 'inicio'].map(n => r.base + n);
+    if (JSON.stringify(r.gc) !== JSON.stringify(esperado)) mal(`${lg}: separadores no GoatCounter ${JSON.stringify(r.gc)}`);
+    else bem(`${lg}: cada separador conta como página no GoatCounter (${r.base}inicio, solucoes, casos, auditoria)`);
+    await c.close();
+  }
+
+  { // os anúncios de web design (utm_content=web-…) continuam a abrir o site, sem o diagnóstico
+    const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
+    const q = await c.newPage();
+    await q.goto(RO + '/?utm_source=meta&utm_medium=paid-video&utm_campaign=ps-prospecao-out26-ro&utm_content=web-bolta');
+    await q.waitForTimeout(300);
+    const aberto = await q.evaluate(() => document.getElementById('diagnostico').open);
+    if (aberto) mal('anúncio web-bolta abriu o diagnóstico'); else bem('ro: o anúncio web-bolta abre o site, sem o diagnóstico');
+    await c.close();
+  }
 
   // ——— 7. sem JavaScript: os separadores e os esquemas continuam a funcionar (:target) ———
   // movimento reduzido: sem o scroll suave, o Playwright não toca a meio do deslizar
   const ctx2 = await contexto({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false, reducedMotion: 'reduce' }, 'nao', true);
   const p2 = await ctx2.newPage();
   await p2.goto(LINGUAS.pt.url + '#cazuri');
-  const semJs = await p2.evaluate(() => [getComputedStyle(document.getElementById('cazuri')).display, getComputedStyle(document.getElementById('consultanta')).display, !document.getElementById('rgpd'), getComputedStyle(document.getElementById('intro')).display]);
+  const semJs = await p2.evaluate(() => [getComputedStyle(document.getElementById('cazuri')).display, getComputedStyle(document.getElementById('consultanta')).display, !document.getElementById('rgpd'), document.getElementById('intro') ? getComputedStyle(document.getElementById('intro')).display : 'none']);
   if (semJs[0] === 'none' || semJs[1] !== 'none' || !semJs[2] || semJs[3] !== 'none') mal('sem JavaScript: vistas, faixa de cookies ou intro erradas'); else bem('sem JavaScript: separadores funcionam (:target), a faixa de cookies e a intro não aparecem');
   // o esquema: abre-se a automação (<details> nativo), «Ver o esquema» mostra o cartão e o X volta à automação
   await p2.goto(LINGUAS.pt.url + '#automatizari');
@@ -665,6 +850,39 @@ const fs = require('fs');
     mal(`sem JavaScript, esquema: ${JSON.stringify(nj)} → ${JSON.stringify(nj2)}`);
   else bem('sem JavaScript: «Ver o esquema» mostra o cartão (:target) e o X volta à automação');
   await ctx2.close();
+
+  // ——— cartaz grátis de avaliações (pachecost.com/cartaz, ro.pachecost.com/afis, pachecost.com/en/poster) ———
+  console.log('\nCARTAZ GRÁTIS');
+  {
+    const ctx = await contexto();
+    for (const [lg, sufixo] of [['pt', '/cartaz'], ['en', '/en/poster'], ['ro', '/afis']]) {
+      const p = await ctx.newPage();
+      await p.goto(LINGUAS[lg].url, { waitUntil: 'domcontentloaded' });
+      const href = await p.evaluate(() => { const a = [...document.querySelectorAll('.rodape a')].find(x => /\/(cartaz|afis|poster)$/.test(x.getAttribute('href'))); return a && a.getAttribute('href'); });
+      const r = href === sufixo ? responder(new URL(sufixo, LINGUAS[lg].url).href) : { status: 0 };
+      let ok = r.status === 200 && /<title>[^<]*(avalia|review|recenz)/i.test(r.body.toString());
+      if (ok) { await p.click(`.rodape a[href="${sufixo}"]`); await p.waitForLoadState('domcontentloaded');
+        ok = await p.evaluate(l => document.documentElement.lang.startsWith(l === 'pt' ? 'pt' : l), lg); }
+      if (!ok) mal(`${lg}: cartaz grátis no rodapé (${href} → ${r.status})`);
+      else bem(`${lg}: o rodapé leva ao cartaz grátis em ${new URL(sufixo, LINGUAS[lg].url).href}`);
+      await p.close();
+    }
+    await ctx.close();
+  }
+
+  // logótipo nos links partilhados (email, WhatsApp, Google): ficheiros reais em cada domínio, não só o data URI (Tomás, 11/10)
+  console.log('\nLOGÓTIPO NOS LINKS');
+  for (const lg of ['pt', 'en', 'ro']) {
+    const base = LINGUAS[lg].url;
+    const html = responder(base).body.toString();
+    const og = (html.match(/<meta property="og:image" content="([^"]+)"/) || [])[1];
+    const caminhos = ['/favicon.ico', '/favicon.svg', '/apple-touch-icon.png', '/icon-512.png', og && new URL(og).pathname];
+    const maus = caminhos.filter(c => { if (!c) return true; const r = responder(new URL(c, base).href);
+      return r.status !== 200 || r.body.length < 100 || /^\s*</.test(r.body.slice(0, 20).toString()) && !c.endsWith('.svg'); });
+    const links = /rel="apple-touch-icon" href="\/apple-touch-icon.png"/.test(html) && /rel="icon" href="\/favicon.ico"/.test(html);
+    if (maus.length || !links || !og || !og.startsWith(base.replace(/\/(en\/)?$/, ''))) mal(`${lg}: logótipo nos links: ${maus.join(' ')} ${links ? '' : 'faltam <link> dos ícones'} og:image ${og}`);
+    else bem(`${lg}: ${base} serve favicon.ico, ícones PNG e a imagem de pré-visualização`);
+  }
 
   await browser.close();
   console.log(falhas ? `\n${falhas} problema(s).` : '\n✓ Sem problemas.');

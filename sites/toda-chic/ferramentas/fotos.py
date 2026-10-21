@@ -141,6 +141,12 @@ AJUSTES = {60: 0.66, 70: 0.64,
            39: .78, 40: .80, 41: .74, 42: .74, 44: .76, 45: .75, 59: .78, 81: .72, 85: .72,
            91: .84, 93: .85, 95: .80, 72: .82}
 
+# fotos de cartaz ou com rótulos que a limpeza automática não apanha: recorte manual (x0, y0, x1, y1 em fração);
+# o 5.º valor True põe a imagem inteira sobre um fundo desfocado do próprio cartaz até 4:5
+RECORTES = {98: (0.0, 0.38, 0.78, 0.86, True), 99: (0.03, 0.305, 0.97, 0.88, True),
+            100: (0.0, 0.23, 1.0, 0.755, True), 102: (0.0, 0.27, 1.0, 0.80, True),
+            103: (0.0, 0.25, 1.0, 0.825, True), 107: (0.15, 0.10, 0.98, 0.88, False)}
+
 FOCO_POR_CAT = {'calcas': 'centro', 'vestidos': 'centro', 'conjuntos': 'centro', 'saias': 'centro',
                 'acessorios': 'centro'}
 
@@ -167,6 +173,20 @@ def main():
                 nome = 'f%03d.jpg' % ref
                 if nome in feitas: continue
                 im = Image.open(caminho(ref)).convert('RGB')
+                if ref in RECORTES:
+                    x0, y0, x1, y1, fundo = RECORTES[ref]; w, h = im.size
+                    im = im.crop((int(x0 * w), int(y0 * h), int(x1 * w), int(y1 * h)))
+                    if fundo:
+                        W2 = im.width; H2 = int(W2 * 1.25)
+                        bg = recorta_4_5(im, 'centro').resize((W2, H2))
+                        bg = Image.fromarray(cv2.GaussianBlur(np.array(bg), (0, 0), 28))
+                        bg.paste(im, (0, (H2 - im.height) // 2)); im = bg
+                    else:
+                        im = recorta_4_5(im, 'centro')
+                    nome = 'f%03d.jpg' % ref
+                    grava(im, 'media/produtos/' + nome); feitas[nome] = 0
+                    relatorio.append((nome, im.size, 0, 'recorte'))
+                    continue
                 if ref in AJUSTES: im = im.crop((0, 0, im.width, int(im.height * AJUSTES[ref])))
                 corte = fim_da_faixa(im)
                 im, cob = limpa(im)

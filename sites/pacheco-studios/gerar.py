@@ -27,6 +27,7 @@ import re
 import shutil
 import subprocess
 import sys
+import urllib.parse
 import zipfile
 from html.parser import HTMLParser
 from urllib.parse import quote
@@ -227,7 +228,7 @@ def cartao_setor(s, i, itens, rot, lang, autos, digitos):
     exemplos = (f'<div><h4 class="rotulo">{e(lab["exemplos"])}</h4><ul class="exemplos">'
                 + "".join(mini_quadrado(x, rot, lang, lab) for x in exs) + "</ul></div>") if exs else ""
     chips = " ".join(f'<a class="chip" href="#a-{e(k)}">{e(autos[k]["scurt"])}</a>' for k in s["combina"])
-    wa = f"https://wa.me/351{digitos}?text={quote(lab['cta_msg'] + s['titlu'])}"
+    wa = f"https://wa.me/{digitos}?text={quote(lab['cta_msg'] + s['titlu'])}"
     return f"""<details class="setor rv" name="setor" id="s-{e(s["id"])}" style="--i:{i}">
   <summary>
     <span class="setor-tipos">{e(s["tipos"])}</span>
@@ -242,7 +243,7 @@ def cartao_setor(s, i, itens, rot, lang, autos, digitos):
     </dl></div>
     {exemplos}
     <div><h4 class="rotulo">{e(lab["combina"])}</h4><div class="chips">{chips}</div></div>
-    <div class="demo"><p>{e(lab["cta_t"])}</p><a class="botao secundario" href="{e(wa)}">{I["chat"]}{e(lab["cta"])}</a></div>
+    <div class="demo"><p>{e(lab["cta_t"])}</p><a class="botao secundario" href="{e(wa)}" data-diagnostico>{I["chat"]}{e(lab["cta"])}</a></div>
   </div>
 </details>"""
 
@@ -271,7 +272,7 @@ def vista_proiecte(c, portfolio, lang, digitos):
     cu = p["cuidado"]
     compromissos = "\n".join(f'<li class="rv" style="--i:{i}"><h3>{e(x["t"])}</h3><p>{e(x["d"])}</p></li>'
                              for i, x in enumerate(cu["itens"]))
-    return f"""<section id="proiecte" class="vista" aria-labelledby="t-proiecte">
+    return f"""<section id="proiecte" class="sub-proiecte" aria-labelledby="t-proiecte">
   <div class="envolver seccao">
     <p class="eyebrow">{e(p["eyebrow"])}</p>
     <h2 id="t-proiecte" class="afirmacao">{e(p["titlu"])}</h2>
@@ -366,7 +367,122 @@ def botao_esquema(x, lab):
             f'<span class="txt"><b>{e(lab["esquema_cta"])}</b><small>{e(lab["esquema_nota"])}</small></span>{I["seta"]}</a>')
 
 
-def vista_automatizari(c, digitos, icones, casos, servicii):
+def rececionista(a, digitos, lang):
+    """Entrada das Soluções: a rececionista de IA num mini telemóvel (iframe da cópia em ferramentas/rececionista.html,
+    modo guião, sem IA paga); os botões trocam o negócio de exemplo. Pedido do Tomás, 11/10."""
+    r = a["rececionista"]
+    pontos = "".join(f"<li>{e(x)}</li>" for x in r["pontos"])
+    negs = "".join(f'<button type="button" data-negocio="{k}" aria-pressed="{"true" if i == 0 else "false"}">{e(v)}</button>'
+                   for i, (k, v) in enumerate(r["negocios"].items()))
+    src = f"/rececionista.html?embed=1&amp;lang={lang}&amp;negocio="
+    return f"""<section class="rec" id="rececionista" aria-labelledby="t-rec">
+      <div class="rec-txt">
+        <p class="eyebrow">{e(r["eyebrow"])}</p>
+        <h2 id="t-rec" class="afirmacao">{e(r["titlu"])}</h2>
+        <p class="lead">{e(r["text"])}</p>
+        <ul class="rec-pontos">{pontos}</ul>
+        <p class="rotulo" id="rec-escolhe">{e(r["escolhe"])}</p>
+        <div class="rec-neg" role="group" aria-labelledby="rec-escolhe">{negs}</div>
+        <p class="rec-nota">{e(r["nota"])}</p>
+        <div class="rec-acoes">
+          <a class="botao primario" href="https://wa.me/{digitos}" data-diagnostico>{I["chat"]}{e(r["cta"])}</a>
+          <a class="rec-abrir" href="/rececionista.html?lang={lang}" target="_blank" rel="noopener">{e(r["abrir"])}</a>
+        </div>
+      </div>
+      <div class="rec-tel">
+        <iframe src="{src}{next(iter(r["negocios"]))}" data-base="{src}" title="{e(r["iframe"])}" loading="lazy" width="376" height="672"></iframe>
+      </div>
+    </section>"""
+
+
+def system_print(x, lab):
+    """O System Print da solução (playbook de 11/10): gatilho, dono, regra, passa a uma pessoa e métrica, à vista."""
+    pl, pr = lab["print"], x["print"]
+    linhas = [("gatilho", x["fluxo"][0]["t"]), ("dono", pr["dono"]), ("regra", x["reguli"][0]),
+              ("handoff", pr["handoff"]), ("metrica", pr["metrica"])]
+    dl = "".join(f'<div><dt>{e(pl[k])}</dt><dd>{e(v)}</dd></div>' for k, v in linhas)
+    return f'<div class="print"><h4 class="rotulo">{e(pl["t"])}</h4><dl>{dl}</dl></div>'
+
+
+def escala_auditoria(x):
+    """Dois tamanhos de empresa (Tomás, 11/10): 5–50 pessoas querem ganhos rápidos; 100–500 querem direção e mudança na
+    empresa toda. Sem preços."""
+    cartoes = []
+    for i, k in enumerate(x["itens"]):
+        lis = "".join(f"<li>{e(p)}</li>" for p in k["precisa"])
+        cartoes.append(f"""<li class="esc rv" style="--i:{i}">
+        <p class="esc-tam">{e(k["tam"])}</p>
+        <h4>{e(k["nome"])}</h4>
+        <q>{e(k["voz"])}</q>
+        <h5 class="rotulo">{e(k["precisa_t"])}</h5><ul>{lis}</ul>
+        <h5 class="rotulo">{e(k["forma_t"])}</h5><p>{e(k["forma"])}</p>
+        <p class="esc-ex">{e(k["ex"])}</p>
+      </li>""")
+    return f"""<div class="aud-escala">
+      <h3 class="afirmacao">{e(x["t"])}</h3>
+      <p class="lead">{e(x["i"])}</p>
+      <ul>
+      {"".join(cartoes)}
+      </ul>
+    </div>"""
+
+
+def vista_auditoria(c, wa, ig):
+    """Auditoria de Sistemas com IA. Não se pede num botão (Tomás, 11/10): primeiro a triagem («Conhece-nos»), depois a
+    auditoria, só se ambos virmos que vale a pena. O princípio (4 peças), o método em 7 passos, o que se recebe,
+    para quem é e não é, e o pedido (abre a candidatura). Sem preços no site."""
+    a = c["auditoria"]
+    if len(a["passos"]) != 7 or len(a["pecas"]) != 4:
+        raise SystemExit("conteudo: a auditoria leva 7 passos e 4 peças")
+    pecas = "\n".join(f'<li class="rv" style="--i:{i}"><b>{e(t)}</b><span>{e(d)}</span></li>' for i, (t, d) in enumerate(a["pecas"]))
+    passos = "\n".join(f'<li class="rv" style="--i:{i % 4}"><span class="pn">{i + 1:02d}</span><h3>{e(t)}</h3><p>{e(d)}</p></li>'
+                       for i, (t, d) in enumerate(a["passos"]))
+    etapas = "\n".join(f'<li class="rv" style="--i:{i}"><span class="quando">{e(q)}</span><h4>{e(t)}</h4><p>{e(d)}</p></li>'
+                       for i, (t, q, d) in enumerate(a["etapas"]))
+    entregas = "\n".join(f'<li>{e(x)}</li>' for x in a["entregas"])
+    para = "".join(f'<li>{e(x)}</li>' for x in a["para"])
+    nao = "".join(f'<li>{e(x)}</li>' for x in a["nao"])
+    return f"""<section id="auditoria" class="vista" aria-labelledby="t-auditoria">
+  <div class="envolver seccao">
+    <p class="eyebrow">{e(a["eyebrow"])}</p>
+    <h2 id="t-auditoria" class="afirmacao">{e(a["titlu"])}</h2>
+    <p class="lead">{e(a["intro"])}</p>
+    <div class="aud-etapas">
+      <h3 class="rotulo">{e(a["etapas_t"])}</h3>
+      <ol>
+{etapas}
+      </ol>
+    </div>
+    {escala_auditoria(a["escala"])}
+    <div class="aud-principio">
+      <h3 class="afirmacao">{e(a["principio_t"])}</h3>
+      <p>{e(a["principio"])}</p>
+      <ul class="aud-pecas">
+{pecas}
+      </ul>
+    </div>
+    <h3 class="rotulo aud-sub">{e(a["metodo_t"])}</h3>
+    <ol class="aud-passos">
+{passos}
+    </ol>
+    <div class="aud-dois">
+      <div><h3 class="rotulo aud-sub">{e(a["entrega_t"])}</h3><ol class="aud-entregas">
+{entregas}
+      </ol></div>
+      <div class="aud-para"><h3 class="rotulo">{e(a["para_t"])}</h3><ul class="sim">{para}</ul>
+      <h3 class="rotulo">{e(a["nao_t"])}</h3><ul class="nao">{nao}</ul>
+      <a class="botao contorno" href="https://ig.me/m/{e(ig.lstrip("@"))}" target="_blank" rel="noopener">{I["instagram"]}{e(a["nao_cta"])}</a></div>
+    </div>
+    <div class="aud-cta">
+      <p class="afirmacao">{e(a["cta_t"])}</p>
+      <a class="botao primario grande" href="{e(wa)}" data-diagnostico data-auditoria>{e(c["consultanta"]["conhece"])}{I["seta"]}</a>
+      <p class="nota">{e(a["nota"])}</p>
+    </div>
+  </div>
+</section>"""
+
+
+def vista_automatizari(c, digitos, icones, casos, servicii, lang="pt"):
     a = c["automatizari"]
     lab = a["labels"]
     por_id = {x["id"]: x for x in a["itens"]}
@@ -380,7 +496,7 @@ def vista_automatizari(c, digitos, icones, casos, servicii):
         chat = "".join(f'<div class="msg {e(m["cine"])}"><small>{e(lab["client"] if m["cine"] == "client" else lab["asistent"] if m["cine"] == "asistent" else lab["tu_msg"])}</small>{e(m["t"])}</div>'
                        for m in x["exemplu"])
         chips = " ".join(f'<a class="chip" href="#a-{e(k)}">{e(por_id[k]["scurt"])}</a>' for k in x["leaga"] if k in por_id)
-        wa_demo = f"https://wa.me/351{digitos}?text={quote(lab['demo_msg'] + x['titlu'])}"
+        wa_demo = f"https://wa.me/{digitos}?text={quote(lab['demo_msg'] + x['titlu'])}"
 
         cards.append(f"""<details class="auto rv" name="auto" id="a-{e(x["id"])}" style="--i:{i}">
   <summary>
@@ -390,6 +506,7 @@ def vista_automatizari(c, digitos, icones, casos, servicii):
   </summary>
   <div class="corpo">
     {botao_esquema(x, lab)}
+    {system_print(x, lab)}
     <div class="obtii"><h4 class="rotulo">{e(lab["obtii"])}</h4>{e(x["obtii"])}</div>
     <div><h4 class="rotulo">{e(lab["reguli"])}</h4><ul class="reguli">
 {reguli}
@@ -410,6 +527,7 @@ def vista_automatizari(c, digitos, icones, casos, servicii):
         drumuri.append(f'<li class="drum"><span class="drum-t">{e(d["t"])}</span><span class="drum-c">{cadeia}</span></li>')
     return f"""<section id="automatizari" class="vista" aria-labelledby="t-automatizari">
   <div class="envolver seccao">
+    {rececionista(a, digitos, lang)}
     <div class="autos-grelha">
       <div class="cab">
         <p class="eyebrow">{e(a["eyebrow"])}</p>
@@ -482,7 +600,7 @@ def imagem_heroi():
     # d = 16:9 a 1920 px (ecrãs deitados), v = recorte 9:16 a 720×1280 (telemóvel ao alto).
     seq = {k: sorted(f for f in os.listdir(os.path.join(AQUI, "media", "heroi-hd", k)) if f.endswith(".webp"))
            for k in ("d", "v") if os.path.isdir(os.path.join(AQUI, "media", "heroi-hd", k))}
-    if not seq.get("d"):
+    if not HEROI_VIDEO or not seq.get("d"):
         return img
     dados = {k: [f"media/heroi-hd/{k}/{f}" for f in v] for k, v in seq.items()}
     return (img + '<canvas class="heroi-cv" aria-hidden="true"></canvas>'
@@ -491,7 +609,7 @@ def imagem_heroi():
 
 def vista_consultanta(c, casos, lang, wa):
     """A porta de entrada: o herói sobre a imagem (a frase da marca; «Conhece-nos» abre o diagnóstico), o que faz uma
-    consultoria de IA (3 passos), o veredito de um caso real sobre o mosaico 3D, o que é a IA, três números de casos
+    o veredito de um caso real sobre o mosaico 3D, o que faz uma consultoria de IA (3 passos), o que é a IA, três números de casos
     e os compromissos."""
     k = c["consultanta"]
     tx = textos_casos(c, casos, lang)
@@ -500,7 +618,7 @@ def vista_consultanta(c, casos, lang, wa):
     vd = k["veredito"]
     if vd["caso"] not in {x["id"] for x in tx}:
         raise SystemExit(f"conteudo/{lang}.json: o veredito aponta para o caso «{vd['caso']}», que não existe")
-    trad = f'<small class="trad">{e(vd["traducao"])}</small>' if vd["traducao"] else ""
+    # sem a linha do autor (Tomás, 11/10): só a frase, de onde é o caso e o botão
     ia = k["ia"]
     frases = "".join(f'<li class="rv" style="--i:{i}">{e(f)}</li>' for i, f in enumerate(c["automatizari"]["labels"]["ai"]))
     cs = k["casos"]
@@ -524,11 +642,26 @@ def vista_consultanta(c, casos, lang, wa):
       <p class="lead heroi-lead">{e(k["lead"])}</p>
       <div class="heroi-acoes">
         <a class="botao primario grande" href="{e(wa)}" data-diagnostico>{e(k["conhece"])}{I["seta"]}</a>
-        <a class="botao contorno grande" href="#automatizari">{e(k["ver_solucoes"])}</a>
+        <a class="botao contorno grande" href="#auditoria">{e(k["ver_solucoes"])}</a>
       </div>
       <p class="heroi-adere">{e(k["adere"])}</p>
     </div>
    </div>
+  </div>
+  <div class="veredito seccao">
+    {mosaico(["", "", "", ""], "Pacheco Studios", "fundo-3d")}
+    <div class="envolver">
+      <p class="eyebrow">{e(vd["eyebrow"])}</p>
+      <h2 class="so-leitor">{e(vd["leitor"])}</h2>
+      <figure class="cartao-v rv">
+        <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
+        <blockquote><p>{e(vd["quote"])}</p></blockquote>
+        <figcaption>
+          <span class="v-origem">{e(vd["origem"])}</span>
+          <a class="botao escuro" href="#caso-{e(vd["caso"])}">{e(vd["ver"])}{I["seta"]}</a>
+        </figcaption>
+      </figure>
+    </div>
   </div>
   <div class="claro">
     <div class="envolver seccao consultoria">
@@ -541,21 +674,6 @@ def vista_consultanta(c, casos, lang, wa):
 {passos}
         </ol>
       </div>
-    </div>
-  </div>
-  <div class="veredito seccao">
-    {mosaico(["", "", "", ""], "Pacheco Studios", "fundo-3d")}
-    <div class="envolver">
-      <p class="eyebrow">{e(vd["eyebrow"])}</p>
-      <h2 class="so-leitor">{e(vd["leitor"])}</h2>
-      <figure class="cartao-v rv">
-        <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
-        <blockquote><p>{e(vd["quote"])}</p></blockquote>
-        <figcaption>
-          <span class="v-quem"><span class="v-marca" aria-hidden="true"></span><span><b>{e(vd["quem"])}</b><small>{e(vd["fonte"])}</small>{trad}</span></span>
-          <a class="botao escuro" href="#caso-{e(vd["caso"])}">{e(vd["ver"])}{I["seta"]}</a>
-        </figcaption>
-      </figure>
     </div>
   </div>
   <div class="envolver seccao ia-bloco">
@@ -590,6 +708,11 @@ LOGO = ('<svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="
         '<circle cx="50" cy="50" r="40" fill="none" stroke="#C8612A" stroke-width="1.6" stroke-dasharray="5 3"/>'
         '<path fill="#EDE8D8" d="M33 74v-3l5-1.2V30.2L33 29v-3h21c11 0 18 5.6 18 14.4S65 55 54 55h-6v14.8l6 1.2v3zm15-24h4.5c6 0 9.5-3.6 9.5-9.6S58.5 31 52.5 31H48z"/></svg>')
 
+# o ícone do separador: o mesmo símbolo do cabeçalho (anéis e P), que se lê a 16 px; o logótipo inteiro não se leria
+FAVICON_SVG = LOGO.replace('<svg class="logo" viewBox="0 0 100 100" aria-hidden="true">', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">')
+FAVICON = "data:image/svg+xml," + urllib.parse.quote(FAVICON_SVG.replace('"', "'"), safe="=:/'")
+
+
 def logo_completo(sufixo, cls=""):
     """O logótipo inteiro da Pacheco Studios (logo.svg: anéis, «PACHECO STUDIOS» em arco, P, «DIGITAL»), para os sítios
     onde vai a marca. O arco tem um id por sítio, porque pode haver vários na mesma página."""
@@ -612,8 +735,18 @@ def marca(sufixo, tag="p", href=None, cls=""):
     return f'<{tag} class="marca"{h}>{logo_completo(sufixo, cls)}<span class="so-leitor">Pacheco Studios</span></{tag}>'
 
 
+DIAG_AVATAR = "logo"  # "logo" (teste de 09/10) ou "foto" (a cara do Tomás, media/tomas.webp)
 
-def diagnostico(c, url_priv):
+
+def wa_diagnostico(d, lang):
+    """wa.me do número que recebe o diagnóstico nesta língua (marca/dados.json → whatsapp_diagnostico); vazio = o principal."""
+    n = re.sub(r"\D", "", d.get("whatsapp_diagnostico", {}).get(lang, ""))
+    if n and not 10 <= len(n) <= 15:
+        raise SystemExit(f"marca/dados.json: whatsapp_diagnostico.{lang} não parece um número internacional")
+    return f"https://wa.me/{n}" if n else ""
+
+
+def diagnostico(c, url_priv, wa_diag=""):
     """O diagnóstico com a cara da Pacheco Studios: uma pergunta por ecrã, em grande, e ao lado a ficha do negócio que
     se vai preenchendo. Nada é guardado: no fim, a ficha vai para o WhatsApp do Tomás numa mensagem que o visitante envia."""
     g = c["diagnostico"]
@@ -622,7 +755,20 @@ def diagnostico(c, url_priv):
     linhas = "".join(f'<div data-id="{e(q["id"])}"><dt>{e(q["wa"])}</dt><dd>—</dd></div>' for q in g["perguntas"])
     dados = json.dumps({k: g[k] for k in ("abertura", "perguntas", "continuar", "obrigatorio", "escolhe", "fim", "enviar",
                                           "recomecar", "wa_intro", "comecar", "anterior", "seguinte", "pergunta", "meta",
-                                          "intro_t")}, ensure_ascii=False).replace("</", "<\\/")
+                                          "intro_t", "quem_nome", "quem_papel", "quem_alt", "pensa", "mudar", "enviar_msg", "email_invalido")}, ensure_ascii=False)
+    # a foto do Tomás (media/tomas.webp, 360 px) vai embutida: quem faz o diagnóstico tem cara desde o primeiro ecrã
+    # Teste do Tomás (09/10): o logótipo no lugar da cara, para ver se mais gente passa da 1.ª pergunta. A foto volta
+    # com DIAG_AVATAR = "foto".
+    foto = os.path.join(AQUI, "media", "tomas.webp")
+    if DIAG_AVATAR == "logo":
+        d_ = json.loads(dados); d_["foto"] = FAVICON.replace("viewBox=", "width='200'%20height='200'%20viewBox=", 1); d_["quem_alt"] = "Pacheco Studios"
+        dados = json.dumps(d_, ensure_ascii=False)
+    elif os.path.exists(foto):
+        d_ = json.loads(dados); d_["foto"] = "data:image/webp;base64," + base64.b64encode(open(foto, "rb").read()).decode()
+        dados = json.dumps(d_, ensure_ascii=False)
+    if wa_diag:  # o número do diagnóstico nesta língua, quando não é o telefone principal (ro: o número romeno)
+        d_ = json.loads(dados); d_["wa"] = wa_diag; dados = json.dumps(d_, ensure_ascii=False)
+    dados = dados.replace("</", "<\\/")
     return f"""<dialog class="diag" id="diagnostico" aria-labelledby="diag-t">
   <div class="diag-topo">
     <p class="diag-marca">{LOGO}<span>{e(g["titulo"])}</span></p>
@@ -644,7 +790,7 @@ def diagnostico(c, url_priv):
 </dialog>"""
 
 
-def vista_cazuri(c, casos, lang, digitos):
+def vista_cazuri(c, casos, lang, digitos, proiecte=""):
     """Casos: só o depoimento e os resultados (sem nome nem tipo de negócio, decisão de 03/10). As fontes ficam em
     conteudo/casos.json, fora do site."""
     z = c["cazuri"]
@@ -679,6 +825,7 @@ def vista_cazuri(c, casos, lang, digitos):
       </ol>
     </div>
   </div>
+{proiecte}
 </section>"""
 
 
@@ -706,13 +853,19 @@ def vista_servicii(c, portfolio, lang):
 </div>"""
 
 
-def contacto(c, d, wa, tel_legivel, digitos, com_site):
+def email_de(d, lang):
+    """O email mostrado nesta língua (marca/dados.json → email_lingua; ro: o do Robert, pedido do Tomás 11/10); sem entrada, o principal."""
+    return d.get("email_lingua", {}).get(lang) or d["email"]
+
+
+def contacto(c, d, wa, tel_legivel, digitos, com_site, lang="pt"):
     k = c["contact"]
     lab = k["labels"]
     ig = d["instagram"].lstrip("@")
     site = d["site_principal"]
-    linhas = [(lab["whatsapp"], tel_legivel, wa, "chat"), (lab["telefon"], tel_legivel, f"tel:+351{digitos}", "telefone"),
-              (lab["email"], d["email"], f"mailto:{d['email']}", "email"),
+    wa_c, tel_c, tel_href = wa, tel_legivel, f"tel:+{digitos}"
+    linhas = [(lab["whatsapp"], tel_c, wa_c, "chat"), (lab["telefon"], tel_c, tel_href, "telefone"),
+              (lab["email"], email_de(d, lang), f"mailto:{email_de(d, lang)}", "email"),
               (lab["instagram"], f"@{ig}", f"https://www.instagram.com/{ig}/", "instagram")]
     if com_site:  # na página romena, o site principal; em pachecost.com seria uma ligação para a própria página
         linhas.append((lab["site"], site, f"https://{site}/", "site"))
@@ -730,6 +883,12 @@ def contacto(c, d, wa, tel_legivel, digitos, com_site):
     </ul>
   </div>
 </section>"""
+
+
+# A intro do carro está desligada por agora (pedido do Tomás, 05/10). Para a voltar a ligar: True e gerar de novo.
+INTRO_LIGADA = False
+# O vídeo do herói com o scroll também está desligado (pedido do Tomás, 05/10): fica a imagem parada. True para o ligar.
+HEROI_VIDEO = False
 
 
 def intro(c):
@@ -785,11 +944,16 @@ def intro(c):
 </div>'''
 
 
+FERRAMENTAS = [("rececionista.html", "rececionista.html"), ("cartaz.html", "cartaz.html"), ("afis.html", "ro/afis.html"), ("poster.html", "en/poster.html")]
+CARTAZ = {"pt": "/cartaz", "en": "/en/poster", "ro": "/afis"}  # o endereço do cartaz grátis a partir de cada língua
+
+
 def rodape(c, lang):
     r = c["rodape"]
     return f"""<footer class="rodape">
   <div class="envolver">
     <p>{e(r["linha"])}</p>
+    <p><a href="{CARTAZ[lang]}">{e(r["cartaz"])}</a></p>
     <p><a href="https://www.livroreclamacoes.pt/inicio/" rel="noopener">{e(r["legal"])}</a></p>
     <p>{aceite(r, lang)}</p>
   </div>
@@ -935,6 +1099,24 @@ const { chromium } = require('playwright');
     os.remove(tmp)
 
 
+def icones_png():
+    """O símbolo do logótipo em ficheiros reais na raiz (favicon.ico, favicon.svg, PNG 48/192/512, apple-touch-icon).
+    Os clientes de email, o Google e o WhatsApp vão buscar /favicon.ico ou estes PNG ao próprio domínio e não leem
+    o ícone em data URI: era por isso que o logótipo não aparecia nos links do ro.pachecost.com (Tomás, 11/10)."""
+    open(os.path.join(DIST, "favicon.svg"), "w", encoding="utf-8").write(FAVICON_SVG)
+    tamanhos = {"favicon-48.png": 48, "apple-touch-icon.png": 180, "icon-192.png": 192, "icon-512.png": 512}
+    for nome, px in tamanhos.items():
+        subprocess.run(["node", "-e", """
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const n = +process.argv[3];
+  const p = await b.newPage({ viewport: { width: n, height: n } });
+  await p.setContent('<html><body style="margin:0;background:transparent">' + process.argv[1].replace('<svg ', '<svg width="' + n + '" height="' + n + '" style="display:block" ') + '</body></html>');
+  await p.screenshot({ path: process.argv[2], omitBackground: true }); await b.close(); })();
+""", FAVICON_SVG, os.path.join(DIST, nome), str(px)], check=True, env=NODE_ENV)
+    from PIL import Image
+    Image.open(os.path.join(DIST, "icon-512.png")).save(os.path.join(DIST, "favicon.ico"), sizes=[(16, 16), (32, 32), (48, 48)])
+
+
 def cabeca_simples(lang, titulo, estilo, extra=""):
     return f"""<!DOCTYPE html>
 <html lang="{LINGUAS[lang]["hreflang"]}">
@@ -943,8 +1125,20 @@ def cabeca_simples(lang, titulo, estilo, extra=""):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{e(titulo)} — Pacheco Studios</title>
 <meta name="theme-color" content="#141210">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {extra}{estilo}
 </head>"""
+
+
+# Caminhos que os robôs varrem à procura de falhas (vistos no Netlify a 15/10/2026). O site é estático e não tem
+# nenhum destes ficheiros: respondem 404 com /n.txt em vez da página 404 completa.
+ROBOS = ["/phpinfo.php", "/info.php", "/php.php", "/test.php", "/i.php", "/index.php", "/config.php", "/xmlrpc.php",
+         "/wp-login.php", "/wp-config.php", "/wp-admin/*", "/wp-content/*", "/wp-includes/*", "/wordpress/*",
+         "/wp/*", "/.git/*", "/.env", "/.env.local", "/.env.production", "/.env.backup", "/.aws/*", "/.vscode/*",
+         "/api/.env", "/backend/.env", "/app/.env", "/meta.json", "/vendor/*", "/cgi-bin/*", "/phpmyadmin/*",
+         "/server-status", "/.DS_Store"]
 
 
 def pagina_404(c, estilo, lang):
@@ -1119,13 +1313,16 @@ def main():
         falta = glifos_em_falta(textos_de(c))
         print(f"  {lang}: {'todas as letras existem nas fontes' if not falta else '✗ letras sem glifo: ' + ''.join(falta)}")
         ok &= not falta
-        wa = f"https://wa.me/351{digitos}?text={quote(c['contact']['mensagem_wa'])}"
+        # o número desta língua, com indicativo: no ro.pachecost.com só aparece o romeno (pedido do Tomás, 09/10)
+        local = d.get("whatsapp_diagnostico", {}).get(lang)
+        num, tel_l = (re.sub(r"\D", "", local), local) if local else ("351" + digitos, tel_legivel)
+        wa = f"https://wa.me/{num}?text={quote(c['contact']['mensagem_wa'])}"
         og_img = f"https://{cfg['host']}/media/og-{lang}.png"
         jsonld = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Pacheco Studios", "url": cfg["url"],
-                  "image": og_img, "description": c["meta"]["description"], "telephone": tel_legivel, "email": d["email"],
+                  "image": og_img, "description": c["meta"]["description"], "telephone": tel_l, "email": email_de(d, lang),
                   "areaServed": [{"@type": "Country", "name": n} for n in cfg["areas"]],
                   "sameAs": [f"https://www.instagram.com/{d['instagram'].lstrip('@')}/"],
-                  "founder": {"@type": "Person", "name": d["nome"]}}
+                  "founder": {"@type": "Person", "name": d["nome"]}, "logo": f"https://{cfg['host']}/icon-512.png"}
         valores = {
             "LINGUA": cfg["hreflang"], "TITLE": e(c["meta"]["title"]), "DESCRIPTION": e(c["meta"]["description"]),
             "OG_TITLE": e(c["meta"]["og_title"]), "OG_LOCALE": cfg["og_locale"], "OG_IMAGE": og_img,
@@ -1134,11 +1331,12 @@ def main():
             "GOATCOUNTER": e(medicao.get("goatcounter", "")), "PIXEL": pixel_de(medicao, lang),
             "SALTAR": e(cfg["saltar"]), "NAV_LABEL": e(cfg["nav"]), "LINGUAS": seletor(c, lang),
             "TAB_CONSULTANTA": e(c["topo"]["tabs"]["consultanta"]), "TAB_CAZURI": e(c["topo"]["tabs"]["cazuri"]),
-            "TAB_PROIECTE": e(c["topo"]["tabs"]["proiecte"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
-            "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa), "VISTA_CAZURI": vista_cazuri(c, casos, lang, digitos),
-            "VISTA_AUTOMATIZARI": vista_automatizari(c, digitos, icones, casos, vista_servicii(c, portfolio, lang)),
-            "VISTA_PROIECTE": vista_proiecte(c, portfolio, lang, digitos),
-            "CONTACT": contacto(c, d, wa, tel_legivel, digitos, cfg["com_site"]), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"]), "LOGO": LOGO, "RODAPE": rodape(c, lang), "INTRO": intro(c),
+            "TAB_AUDITORIA": e(c["topo"]["tabs"]["auditoria"]), "TAB_AUTOMATIZARI": e(c["topo"]["tabs"]["automatizari"]),
+            "VISTA_CONSULTANTA": vista_consultanta(c, casos, lang, wa),
+            "VISTA_CAZURI": vista_cazuri(c, casos, lang, num, vista_proiecte(c, portfolio, lang, num)),
+            "VISTA_AUTOMATIZARI": vista_automatizari(c, num, icones, casos, vista_servicii(c, portfolio, lang), lang),
+            "VISTA_AUDITORIA": vista_auditoria(c, wa, d["instagram"]),
+            "CONTACT": contacto(c, d, wa, tel_l, num, cfg["com_site"], lang), "DIAGNOSTICO": diagnostico(c, cfg["privacidade"], wa_diagnostico(d, lang)), "LOGO": LOGO, "FAVICON": FAVICON, "RODAPE": rodape(c, lang), "INTRO": intro(c) if INTRO_LIGADA else "", "INTRO_LIGADA": "true" if INTRO_LIGADA else "false",
             "MARCA_TOPO": marca("topo", "h1"), "WA_URL": e(wa), "ICONE_CHAT": I["chat"], "CTA": e(c["contact"]["cta"]),
         }
         pagina = montar(src, valores)
@@ -1152,7 +1350,7 @@ def main():
     for lang, c in linguas.items():
         cfg = LINGUAS[lang]
         extras[f"{cfg['pasta'] + '/' if cfg['pasta'] else ''}404.html"] = pagina_404(c, estilo, lang)
-        extras[cfg["privacidade"].lstrip("/")] = pagina_privacidade(c, estilo, lang, d["email"])
+        extras[cfg["privacidade"].lstrip("/")] = pagina_privacidade(c, estilo, lang, email_de(d, lang))
         extras[cfg["cookies"].lstrip("/")] = pagina_cookies(c, estilo, lang, bool(pixel_de(medicao, lang)))
     for nome, h in extras.items():
         open(os.path.join(DIST, nome), "w", encoding="utf-8").write(h)
@@ -1167,17 +1365,25 @@ def main():
            f"# 2) {dominio} abre a versão romena, guardada em /ro/. O resto dos ficheiros é partilhado.",
            f"https://{dominio}/              /ro/index.html    200!",
            f"https://{dominio}/index.html    /ro/index.html    200!",
+           f"https://{dominio}/afis     /ro/afis.html    200!",
+           f"https://{dominio}/afis/    /ro/afis.html    200!",
+           "/en/poster     /en/poster.html    200!",
+           "/en/poster/    /en/poster.html    200!",
            "# 3) cada língua no seu endereço",
            f"/ro        https://{dominio}/    301!", f"/ro/*      https://{dominio}/    301!",
            f"https://{dominio}/en      https://{principal}/en/    301!",
            f"https://{dominio}/en/*    https://{principal}/en/:splat    301!",
            f"/pt        https://{principal}/    301!", f"/pt/*      https://{principal}/    301!",
-           "# 4) endereços curtos (marca/dados.json → enderecos_curtos)"]
+           "# 3b) varrimentos de robôs (phpinfo, WordPress, .env, .git): 404 com um ficheiro de 4 bytes, para não",
+           "#     gastarem largura de banda a descarregar a página 404 completa (≈150 KB com as fontes)."]
+    red += [f"{c}    /n.txt    404!" for c in ROBOS]
+    red += ["# 4) endereços curtos (marca/dados.json → enderecos_curtos)"]
     for slug, dest in sorted(curtos.items()):
         red.append(f"/{re.sub(r'[^a-z0-9-]', '', slug.lower())}    {dest}    302")
     red += ["# 5) página 404 na língua de cada endereço (a portuguesa é a 404.html da raiz)",
             f"https://{dominio}/*    /ro/404.html    404", "/en/*    /en/404.html    404"]
     open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8").write("\n".join(red) + "\n")
+    open(os.path.join(DIST, "n.txt"), "w", encoding="utf-8").write("404\n")
     # Cabeçalhos em _headers (e não no netlify.toml): o Netlify lê _headers e _redirects também quando o zip é
     # arrastado à mão; o netlify.toml só é garantido em builds. Um sítio só, para não se duplicarem.
     open(os.path.join(DIST, "_headers"), "w", encoding="utf-8").write(
@@ -1195,10 +1401,16 @@ def main():
         + f"\nSitemap: https://{principal}/sitemap.xml\n")
     urls = [(f"https://{principal}/", "1.0"), (f"https://{principal}/en/", "0.8"),
             (f"https://{principal}/privacidade.html", "0.2"), (f"https://{principal}/privacy.html", "0.2"),
-            (f"https://{principal}/cookies.html", "0.2"), (f"https://{principal}/en/cookies.html", "0.2")]
+            (f"https://{principal}/cookies.html", "0.2"), (f"https://{principal}/en/cookies.html", "0.2"),
+            (f"https://{principal}/cartaz", "0.6"), (f"https://{principal}/en/poster", "0.5"), (f"https://{dominio}/afis", "0.5")]
     open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{u}</loc><priority>{pr}</priority></url>\n" for u, pr in urls) + "</urlset>\n")
+    # a ferramenta grátis (cartaz de avaliações Google, feita no ramo claude/ferramenta-gratis-ak2zu8): páginas
+    # autónomas, copiadas tal como vêm para pachecost.com/cartaz, ro.pachecost.com/afis e pachecost.com/en/poster
+    for origem, destino in FERRAMENTAS:
+        os.makedirs(os.path.dirname(os.path.join(DIST, destino)), exist_ok=True)
+        shutil.copy(os.path.join(AQUI, "ferramentas", origem), os.path.join(DIST, destino))
     # ficheiros do site anterior que podem estar ligados de fora (partilhas, pesquisas)
     for f in ("favicon.svg", "logo.svg"):
         antigo = os.path.join(SITES, "pachecost-com", f)
@@ -1208,6 +1420,7 @@ def main():
     n = copiar_sites(portfolio, linguas)
     for lang, c in linguas.items():
         og_png(fontes, c["og"], os.path.join(DIST, "media", f"og-{lang}.png"))
+    icones_png()
     # os três carros da intro (fotografias recortadas, frente à direita, WebP com transparência)
     for i in (1, 2, 3):
         carro = os.path.join(AQUI, "media", f"intro-{i}.webp")
@@ -1215,7 +1428,7 @@ def main():
             raise SystemExit(f"falta media/intro-{i}.webp (os três carros da intro: ver LEIA-ME.md)")
         shutil.copy(carro, os.path.join(DIST, "media", f"intro-{i}.webp"))
     hd = os.path.join(AQUI, "media", "heroi-hd")
-    if os.path.isdir(hd):
+    if HEROI_VIDEO and os.path.isdir(hd):
         shutil.copytree(hd, os.path.join(DIST, "media", "heroi-hd"), dirs_exist_ok=True,
                         ignore=shutil.ignore_patterns("*.txt"))
 

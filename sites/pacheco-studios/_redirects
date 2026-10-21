@@ -5,6 +5,10 @@
 # 2) ro.pachecost.com abre a versão romena, guardada em /ro/. O resto dos ficheiros é partilhado.
 https://ro.pachecost.com/              /ro/index.html    200!
 https://ro.pachecost.com/index.html    /ro/index.html    200!
+https://ro.pachecost.com/afis     /ro/afis.html    200!
+https://ro.pachecost.com/afis/    /ro/afis.html    200!
+/en/poster     /en/poster.html    200!
+/en/poster/    /en/poster.html    200!
 # 3) cada língua no seu endereço
 /ro        https://ro.pachecost.com/    301!
 /ro/*      https://ro.pachecost.com/    301!
@@ -12,6 +16,39 @@ https://ro.pachecost.com/en      https://pachecost.com/en/    301!
 https://ro.pachecost.com/en/*    https://pachecost.com/en/:splat    301!
 /pt        https://pachecost.com/    301!
 /pt/*      https://pachecost.com/    301!
+# 3b) varrimentos de robôs (phpinfo, WordPress, .env, .git): 404 com um ficheiro de 4 bytes, para não
+#     gastarem largura de banda a descarregar a página 404 completa (≈150 KB com as fontes).
+/phpinfo.php    /n.txt    404!
+/info.php    /n.txt    404!
+/php.php    /n.txt    404!
+/test.php    /n.txt    404!
+/i.php    /n.txt    404!
+/index.php    /n.txt    404!
+/config.php    /n.txt    404!
+/xmlrpc.php    /n.txt    404!
+/wp-login.php    /n.txt    404!
+/wp-config.php    /n.txt    404!
+/wp-admin/*    /n.txt    404!
+/wp-content/*    /n.txt    404!
+/wp-includes/*    /n.txt    404!
+/wordpress/*    /n.txt    404!
+/wp/*    /n.txt    404!
+/.git/*    /n.txt    404!
+/.env    /n.txt    404!
+/.env.local    /n.txt    404!
+/.env.production    /n.txt    404!
+/.env.backup    /n.txt    404!
+/.aws/*    /n.txt    404!
+/.vscode/*    /n.txt    404!
+/api/.env    /n.txt    404!
+/backend/.env    /n.txt    404!
+/app/.env    /n.txt    404!
+/meta.json    /n.txt    404!
+/vendor/*    /n.txt    404!
+/cgi-bin/*    /n.txt    404!
+/phpmyadmin/*    /n.txt    404!
+/server-status    /n.txt    404!
+/.DS_Store    /n.txt    404!
 # 4) endereços curtos (marca/dados.json → enderecos_curtos)
 # 5) página 404 na língua de cada endereço (a portuguesa é a 404.html da raiz)
 https://ro.pachecost.com/*    /ro/404.html    404
