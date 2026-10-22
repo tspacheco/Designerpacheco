@@ -1,3 +1,10 @@
+# Atualização de 22/10/2026 (calendário onevent.ro lido pela ponte)
+
+Hoje (22 out): US–Romania Forum dia 1 (a decorrer, Palatul Culturii); BIZZ. CLUB Iași #461 (08:30, Grand Hotel Traian, Salonul Alb, já passou; Piața Unirii 1, https://www.google.com/maps/search/?api=1&query=Grand+Hotel+Traian+Iasi); CONSOFT CONNECT 2026, 17:00, Hotel Unirea (https://www.google.com/maps/search/?api=1&query=Hotel+Unirea+Iasi; só a listagem onevent, organizador e inscrição por confirmar).
+Amanhã (23 out): Forum dia 2, Palas Sala Mozart, 09:30; AI4IMPACT Week último dia.
+Seguintes: seg 26 out SHE BUILDS NEB (DIZ); seg 26, 16:00, Codecamp_Talk com James Coplien, Faculdade de Automática e Calculadores; 27–29 Codecamp (IT).
+Novembro e dezembro: nada de negócios confirmado em Iași. Fora de Iași: Zilele Biz, Bucareste, 4–6 nov. A conferir de vez em quando: onevent.ro/iasi/networking, IMM Club (última edição de Iași foi 11 jun), Business Days Iași (a de 2026 foi a 25 mar).
+
 # Atualização de 19/10/2026 — o que vem agora (já passou: ATIPIC 16 out, Digital&Sustenabil)
 
 | Data | Evento | Onde | Mapa |
