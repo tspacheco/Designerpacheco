@@ -11,8 +11,8 @@ RO = dict(
     marca="PACHECO STUDIOS · PILOT DE 30 DE ZILE PENTRU OBIECTIV IMOBILIARE · OCTOMBRIE 2026",
     capa_k="Obiectiv Imobiliare · Piatra-Neamț · Pilot de 30 de zile",
     capa_t="O organizare mai eficientă. În 30 de zile.",
-    capa_s="Ați spus clar ce căutați: «o organizare mai eficientă». Acesta este pilotul: diagnosticul complet, problema principală identificată și pusă în lucru, și o față nouă a brandului, în 30 de zile, cu rezultate pe care le vedeți. Pilotul rezolvă cel mult 30–50 % din problema principală; restul ține de implementarea finală.",
-    capa_pasi=["Problema", "30 de zile", "Ce primiți", "Rezultate", "Website", "După", "Investiție"],
+    capa_s="Ați spus clar ce căutați: «o organizare mai eficientă». Acesta este pilotul: diagnosticul complet și problema principală identificată și pusă în lucru, în 30 de zile, cu rezultate pe care le vedeți. Pilotul rezolvă cel mult 30–50 % din problema principală; restul ține de implementarea finală.",
+    capa_pasi=["Problema", "30 de zile", "Ce primiți", "Rezultate", "După", "Investiție"],
     # 2 problema
     pro_k="Problema", pro_t="Ce înseamnă «organizare eficientă» la Obiectiv.",
     pro_azi="Astăzi (ipoteza noastră, de confirmat în diagnostic)", pro_maine="La 30 de zile",
@@ -27,18 +27,18 @@ RO = dict(
     pro_conc="Nu schimbăm oamenii, nici felul în care vând. Schimbăm locul în care trăiește informația și regula după care circulă.",
     # 3 calendar
     cal_k="Pilotul de 30 de zile", cal_t="Patru săptămâni, fiecare cu un livrabil.",
-    cal=[("Săptămâna 1", "Diagnostic", "Interviuri cu voi și cu cei 4 agenți, observăm fluxurile reale, numărăm cererile și timpii. Harta tuturor blocajelor, cu priorități. Pornim site-ul nou."),
+    cal=[("Săptămâna 1", "Diagnostic", "Interviuri cu voi și cu cei 4 agenți, observăm fluxurile reale, numărăm cererile și timpii. Harta tuturor blocajelor, cu priorități."),
          ("Săptămâna 2", "Sistemul de organizare", "Construim tabloul comun: cerere, vizionare, ofertă, dosar, cu responsabil și status. Pornesc cele 3 quick wins (răspuns în 5 minute, feedback către proprietar, dosar urmărit)."),
-         ("Săptămâna 3", "Echipa lucrează în el", "Agenții folosesc sistemul pe cazuri reale; ajustăm regulile cu ei, nu pentru ei. Site-ul nou intră online."),
+         ("Săptămâna 3", "Echipa lucrează în el", "Agenții folosesc sistemul pe cazuri reale; ajustăm regulile cu ei, nu pentru ei. Predarea între agenți și urmărirea după vizionare intră în rutină."),
          ("Săptămâna 4", "Măsurare și decizie", "Prezentăm rezultatele față de săptămâna 1, diagnosticul final și planul de implementare cu preț. Voi decideți dacă mergem mai departe.")],
-    cal_gantt=[("Diagnostic", 0, 1), ("Website nou", 0, 3), ("Tablou și quick wins", 1, 3), ("Echipa în sistem", 2, 4), ("Măsurare și plan", 3, 4)],
-    cal_conc="La final de săptămână, de fiecare dată, un lucru vizibil: harta, tabloul, site-ul, rezultatele.",
+    cal_gantt=[("Diagnostic", 0, 1), ("Tablou și quick wins", 1, 3), ("Echipa în sistem", 2, 4), ("Măsurare și plan", 3, 4)],
+    cal_conc="La final de săptămână, de fiecare dată, un lucru vizibil: harta, tabloul, rutina echipei, rezultatele.",
     # 4 livrabile
     liv_k="Ce primiți", liv_t="Trei lucruri care rămân ale voastre, orice ați decide după.",
     liv=[("01", "Diagnosticul complet", "Toate blocajele firmei, de la primul mesaj la semnare, cu prioritățile și impactul estimat al fiecăruia. Documentul pe baza căruia se decide orice implementare."),
          ("02", "Problema principală, pusă în lucru", "Organizarea: identificată precis și începută să fie rezolvată, cu tabloul comun în funcțiune, folosit de echipă, reguli scrise și responsabili. Plus cele 3 quick wins pornite. Restul ține de implementarea finală."),
-         ("03", "O față nouă pentru brand", "Website nou, construit pe ce aveți deja (anunțurile, aplicația, Alesia rămân), care spune clar de ce un proprietar din Neamț vinde cu Obiectiv.")],
-    liv_plus="La care se adaugă planul de implementare cu preț, pentru pasul următor.",
+         ("03", "Rezultatele măsurate și planul", "Raportul de la 30 de zile față de săptămâna 1, pe cifrele voastre, și planul de implementare cu preț, ca să decideți cu date, nu cu promisiuni.")],
+    liv_plus="Toate trei rămân ale voastre, indiferent de decizia de după pilot.",
     # 5 rezultate
     rez_k="Rezultate vizuale așteptate", rez_t="Ce vedeți în fiecare dimineață, din săptămâna 2.",
     rez_col=["Cereri noi", "În discuție", "Vizionare programată", "Ofertă", "Dosar", "Semnat"],
@@ -59,22 +59,23 @@ RO = dict(
     dup_obj_k="Obiectivul implementării", dup_obj="Cel puțin dublarea numărului de case vândute în același interval de timp de astăzi. Este obiectivul pe care îl urmărim și îl măsurăm, nu o garanție.",
     dup_cum=[("Prețul implementării", "Se stabilește pe baza diagnosticului: știm exact ce blocaje atacăm și ce valoare au."),
              ("Abonamentul lunar", "Începe după prima lună de implementare, în care însoțim soluția și punerea ei în funcțiune. Valoarea se stabilește odată cu planul."),
-             ("Dacă nu continuați", "Păstrați diagnosticul cu toate blocajele și prioritățile, site-ul nou și partea de organizare pusă deja în funcțiune.")],
+             ("Dacă nu continuați", "Păstrați diagnosticul cu toate blocajele și prioritățile și partea de organizare pusă deja în funcțiune.")],
     dup_conc="Decizia o luați cu rezultatele pe masă, nu cu promisiuni.",
     # 8 investiție
     inv_k="Investiție", inv_t="1.000 € pentru pilotul de 30 de zile.",
-    inv_incl=["Diagnosticul complet, cu toate blocajele și prioritățile", "Problema principală identificată și pusă în lucru: organizarea, cu tabloul comun și 3 quick wins", "Website nou, o față nouă pentru brand", "Planul de implementare cu preț, pentru pasul următor"],
+    inv_incl=["Diagnosticul complet, cu toate blocajele și prioritățile", "Problema principală identificată și pusă în lucru: organizarea, cu tabloul comun și 3 quick wins", "Planul de implementare cu preț, pentru pasul următor"],
     inv_pas_k="Pasul următor", inv_pas="Confirmați și stabilim ziua 1: o întâlnire cu voi și cu cei 4 agenți, la birou sau online.",
     inv_livram_k="Ce livrăm", inv_livram="Găsim scurgerea. Proiectăm sistemul. Dovedim impactul.",
     inv_contact=["Tomás Pacheco · Pacheco Studios", "WhatsApp +40 723 098 556", "ro.pachecost.com"],
+    inv_obj_k="Obiectivul pilotului", inv_obj="Să înțelegeți dacă Pacheco Studios este partenerul cu care sunteți pregătiți să lucrați împreună și să generați rezultate care să vă pună printre primii din piață.",
 )
 
 PT = dict(
     marca="PACHECO STUDIOS · PILOTO DE 30 DIAS PARA A OBIECTIV IMOBILIARE · OUTUBRO 2026",
     capa_k="Obiectiv Imobiliare · Piatra-Neamț · Piloto de 30 dias",
     capa_t="Uma organização mais eficiente. Em 30 dias.",
-    capa_s="Disseram claramente o que procuram: «uma organização mais eficiente». Este é o piloto: o diagnóstico completo, o problema principal identificado e posto em marcha, e uma cara nova para a marca, em 30 dias, com resultados que se veem. O piloto resolve no máximo 30–50 % do problema principal; o resto é implementação final.",
-    capa_pasi=["Problema", "30 dias", "O que recebem", "Resultados", "Website", "Depois", "Investimento"],
+    capa_s="Disseram claramente o que procuram: «uma organização mais eficiente». Este é o piloto: o diagnóstico completo e o problema principal identificado e posto em marcha, em 30 dias, com resultados que se veem. O piloto resolve no máximo 30–50 % do problema principal; o resto é implementação final.",
+    capa_pasi=["Problema", "30 dias", "O que recebem", "Resultados", "Depois", "Investimento"],
     pro_k="O problema", pro_t="O que significa «organização eficiente» na Obiectiv.",
     pro_azi="Hoje (a nossa hipótese, a confirmar no diagnóstico)", pro_maine="Aos 30 dias",
     pro_a=["4 agentes, 538 anúncios, 6 canais de entrada, 9 serviços: cada fio vive no telemóvel de alguém",
@@ -87,17 +88,17 @@ PT = dict(
            "De manhã, em 5 minutos, vê-se o que está bloqueado e quem precisa de ajuda"],
     pro_conc="Não mudamos as pessoas nem a forma como vendem. Mudamos o sítio onde a informação vive e a regra pela qual circula.",
     cal_k="O piloto de 30 dias", cal_t="Quatro semanas, cada uma com um entregável.",
-    cal=[("Semana 1", "Diagnóstico", "Entrevistas convosco e com os 4 agentes, observamos os fluxos reais, contamos pedidos e tempos. Mapa de todos os bloqueios, com prioridades. Arrancamos o site novo."),
+    cal=[("Semana 1", "Diagnóstico", "Entrevistas convosco e com os 4 agentes, observamos os fluxos reais, contamos pedidos e tempos. Mapa de todos os bloqueios, com prioridades."),
          ("Semana 2", "O sistema de organização", "Construímos o quadro comum: pedido, visita, proposta, processo, com dono e estado. Arrancam os 3 quick wins (resposta em 5 minutos, feedback ao proprietário, processo seguido)."),
-         ("Semana 3", "A equipa trabalha nele", "Os agentes usam o sistema em casos reais; afinamos as regras com eles, não por eles. O site novo entra no ar."),
+         ("Semana 3", "A equipa trabalha nele", "Os agentes usam o sistema em casos reais; afinamos as regras com eles, não por eles. A passagem entre agentes e o seguimento após visita entram na rotina."),
          ("Semana 4", "Medição e decisão", "Apresentamos os resultados face à semana 1, o diagnóstico final e o plano de implementação com preço. Vocês decidem se avançamos.")],
-    cal_gantt=[("Diagnóstico", 0, 1), ("Website novo", 0, 3), ("Quadro e quick wins", 1, 3), ("Equipa no sistema", 2, 4), ("Medição e plano", 3, 4)],
-    cal_conc="Ao fim de cada semana, sempre uma coisa visível: o mapa, o quadro, o site, os resultados.",
+    cal_gantt=[("Diagnóstico", 0, 1), ("Quadro e quick wins", 1, 3), ("Equipa no sistema", 2, 4), ("Medição e plano", 3, 4)],
+    cal_conc="Ao fim de cada semana, sempre uma coisa visível: o mapa, o quadro, a rotina da equipa, os resultados.",
     liv_k="O que recebem", liv_t="Três coisas que ficam vossas, decidam o que decidirem depois.",
     liv=[("01", "O diagnóstico completo", "Todos os bloqueios da empresa, da primeira mensagem à assinatura, com as prioridades e o impacto estimado de cada um. O documento com que se decide qualquer implementação."),
          ("02", "O problema principal, posto em marcha", "A organização: identificada com precisão e começada a resolver, com o quadro comum a funcionar, usado pela equipa, regras escritas e donos. Mais os 3 quick wins a correr. O resto é implementação final."),
-         ("03", "Uma cara nova para a marca", "Website novo, construído sobre o que já têm (anúncios, app e Alesia ficam), que diz claramente porque é que um proprietário de Neamț vende com a Obiectiv.")],
-    liv_plus="A que se junta o plano de implementação com preço, para o passo seguinte.",
+         ("03", "Os resultados medidos e o plano", "O relatório aos 30 dias face à semana 1, com os vossos números, e o plano de implementação com preço, para decidirem com dados, não com promessas.")],
+    liv_plus="As três ficam vossas, seja qual for a decisão depois do piloto.",
     rez_k="Resultados visuais esperados", rez_t="O que veem todas as manhãs, a partir da semana 2.",
     rez_col=["Pedidos novos", "Em conversa", "Visita marcada", "Proposta", "Processo", "Assinado"],
     rez_cards=[["Ap. T2 · Dărmănești", "Casa · Bistrița", "Terreno · Roman"], ["Ap. T3 · Precista", "Loja · Centro"], ["Ap. T2 · Orion", "Casa · Gârcina", "Estúdio · Mărăței"], ["Casa · Dumbrava Roșie"], ["Ap. T3 · Centro", "Ap. T2 · Dărmănești"], ["Ap. T4 · Precista"]],
@@ -115,13 +116,14 @@ PT = dict(
     dup_obj_k="Objetivo da implementação", dup_obj="No mínimo duplicar o número de casas vendidas no mesmo intervalo de tempo de hoje. É o objetivo que perseguimos e medimos, não uma garantia.",
     dup_cum=[("Preço da implementação", "Define-se com base no diagnóstico: sabemos exatamente que bloqueios atacamos e quanto valem."),
              ("Mensalidade", "Começa depois do primeiro mês de implementação, em que acompanhamos a solução e a sua entrada em funcionamento. O valor define-se com o plano."),
-             ("Se não continuarem", "Ficam com o diagnóstico com todos os bloqueios e prioridades, o site novo e a parte da organização já posta a funcionar.")],
+             ("Se não continuarem", "Ficam com o diagnóstico com todos os bloqueios e prioridades e a parte da organização já posta a funcionar.")],
     dup_conc="A decisão toma-se com os resultados em cima da mesa, não com promessas.",
     inv_k="Investimento", inv_t="1.000 € pelo piloto de 30 dias.",
-    inv_incl=["Diagnóstico completo, com todos os bloqueios e prioridades", "Problema principal identificado e posto em marcha: a organização, com o quadro comum e 3 quick wins", "Website novo, uma cara nova para a marca", "Plano de implementação com preço, para o passo seguinte"],
+    inv_incl=["Diagnóstico completo, com todos os bloqueios e prioridades", "Problema principal identificado e posto em marcha: a organização, com o quadro comum e 3 quick wins", "Plano de implementação com preço, para o passo seguinte"],
     inv_pas_k="Próximo passo", inv_pas="Confirmam e marcamos o dia 1: uma reunião convosco e com os 4 agentes, no escritório ou online.",
     inv_livram_k="O que entregamos", inv_livram="Encontramos a fuga. Desenhamos o sistema. Provamos o impacto.",
     inv_contact=["Tomás Pacheco · Pacheco Studios", "WhatsApp +40 723 098 556", "ro.pachecost.com"],
+    inv_obj_k="Objetivo do piloto", inv_obj="Perceberem se é com a Pacheco Studios que estão preparados para trabalhar em conjunto e gerar resultados que vos ponham entre os primeiros do mercado.",
 )
 
 T = {"ro": RO, "pt": PT}
@@ -276,7 +278,7 @@ def dupa(t):
 <p style="font-size:10.5pt;line-height:1.4;color:var(--t2);margin-top:2mm;max-width:200mm">{esc(t["dup_pil"])}</p></div>
 <div class="dup" style="margin-top:7mm">{cum}</div>
 <div class="conc">{esc(t["dup_conc"])}</div>
-{rod(t, 7)}</section>'''
+{rod(t, 6)}</section>'''
 
 
 def investitie(t):
@@ -290,14 +292,15 @@ def investitie(t):
 <div style="flex:1"><ul class="incl">{incl}</ul>
 <div class="k" style="margin:7mm 0 3mm">{esc(t["inv_pas_k"])}</div><div class="ctb">{esc(t["inv_pas"])}</div><div class="ct">{ct}</div></div>
 </div>
-{rod(t, 8)}</section>'''
+<div class="conc" style="margin-top:0;margin-bottom:6mm;font-size:13pt"><div class="k" style="margin-bottom:2mm">{esc(t["inv_obj_k"])}</div>{esc(t["inv_obj"])}</div>
+{rod(t, 7)}</section>'''
 
 
 if __name__ == "__main__":
     for lang, t in T.items():
         html = (f'<!doctype html><html lang="{ {"ro": "ro", "pt": "pt-PT"}[lang] }"><head><meta charset="utf-8"><title>{esc(t["capa_t"])}</title>'
                 f'<style>{FONTES}{CSS2}</style></head><body>'
-                + capa(t) + problema(t) + calendar(t) + livrabile(t) + rezultate(t) + website(t) + dupa(t) + investitie(t) + '</body></html>')
+                + capa(t) + problema(t) + calendar(t) + livrabile(t) + rezultate(t) + dupa(t) + investitie(t) + '</body></html>')
         nome = {"ro": "obiectiv-plan-30-zile-ro", "pt": "obiectiv-plan-30-dias-pt"}[lang]
         h = os.path.join(AQUI, nome + ".html")
         open(h, "w").write(html)
