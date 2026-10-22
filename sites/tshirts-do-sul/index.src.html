@@ -90,6 +90,8 @@ p{margin:0 0 1em;max-width:62ch}
 .hero{position:relative;color:#fff;background:var(--ink);min-height:min(86vh,820px);display:grid;align-items:end;overflow:hidden;isolation:isolate}
 .hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .hero-scene{position:absolute;inset:0;z-index:-3}
+.hero .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+@media (prefers-reduced-motion:reduce){.hero .hero-video{display:none}}
 .hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,18,18,.86) 0%,rgba(18,18,18,.35) 50%,rgba(18,18,18,0) 100%)}
 .hero .wrap{width:100%;padding-top:7rem;padding-bottom:3.5rem;display:grid;gap:1.4rem}
 .hero h1{font-size:var(--fs-display);max-width:12ch}
@@ -299,9 +301,10 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
 <header class="hero" id="top">
   <svg class="hero-scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1b1b"/><stop offset="1" stop-color="#0a0a0a"/></linearGradient></defs><rect width="1600" height="900" fill="url(#hg)"/><path d="M500 640a300 300 0 0 1 600 0z" fill="#F4792B" opacity=".85"/><rect x="440" y="650" width="720" height="10" fill="#fff" opacity=".9"/><rect x="520" y="680" width="560" height="8" fill="#fff" opacity=".5"/></svg>
   <picture>
-    <source media="(max-width:680px)" srcset="media/hero2-9x16.webp">
-    <img src="media/hero2-16x9.webp" alt="T-shirt preta com sol estampado, pendurada na parede laranja do estúdio em Faro" width="1344" height="752" fetchpriority="high" onerror="this.parentElement.remove()">
+    <source media="(max-width:680px)" srcset="media/hero-9x16.webp">
+    <img src="media/hero-16x9.webp" alt="Mãos a passar a rasqueta no caixilho de serigrafia, com t-shirts estampadas e o porto de Faro ao fundo" width="1344" height="752" fetchpriority="high" onerror="this.parentElement.remove()">
   </picture>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="media/hero-16x9.webp" aria-hidden="true" tabindex="-1" onerror="this.remove()"><source src="media/hero-video.mp4" type="video/mp4"></video>
   <div class="hero-shade"></div>
   <div class="marks" aria-hidden="true">
     <svg class="tl" viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="14" cy="14" r="9"/><path d="M14 0v28M0 14h28"/></svg>

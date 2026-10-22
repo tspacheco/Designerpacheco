@@ -71,7 +71,7 @@ PAGES['contacto'] = page('contacto', 'Contacto · Tshirts do Sul', 'Tshirts do S
 prev = HERE / 'preview'
 if prev.exists(): shutil.rmtree(prev)
 prev.mkdir(); (prev / 'media').mkdir()
-for f in (HERE / 'media').glob('*.webp'): shutil.copy(f, prev / 'media' / f.name)
+for f in [*(HERE / 'media').glob('*.webp'), *(HERE / 'media').glob('hero-video.mp4')]: shutil.copy(f, prev / 'media' / f.name)
 MAP = re.compile(r'<iframe title="Mapa[^>]*></iframe>')
 MAPLINK = '<a class="btn btn-ink" href="https://maps.google.com/?q=Avenida+Calouste+Gulbenkian+12A,+8000-072+Faro" target="_blank" rel="noopener" style="align-self:start">Abrir no Google Maps</a>'
 for name, html in PAGES.items():
