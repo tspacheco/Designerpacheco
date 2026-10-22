@@ -62,12 +62,14 @@ RO = dict(
          ["Ofertă acceptată", "Coordonatorul de dosar",
           "Fiecare act are status, termen și persoană; clientul vede oricând unde este", "Semnare fără surprize, apoi cerere de recenzie și recomandare"])],
     # 7
-    sca_k="Scalare · primele 90 de zile", sca_t="Totul în primele 90 de zile, în ordinea acțiunilor.",
-    sca_trepte=[("Acțiunea 1", "Trei quick wins", "Răspuns, feedback, dosar. Pornesc în prima săptămână și se măsoară din a doua."),
-                ("Acțiunea 2", "Proprietari", "Evaluare online gratuită și raport de piață pe cartier, din blogul vostru: lead-uri de vânzători, nu doar cumpărători."),
-                ("Acțiunea 3", "Potrivire și recurență", "Bază cumpărători–proprietăți care propune vizionări singură. Administrare proprietăți pentru investitori, venit lunar."),
-                ("Acțiunea 4", "Județ și diaspora", "Roman și Târgu Neamț cu același sistem. Credite pentru venituri din străinătate, un subiect pe care îl aveți deja.")],
-    sca_conc="Ordinea o dă acțiunea, nu calendarul: fiecare pas pornește imediat ce cel dinainte măsoară. La 90 de zile: cea mai rapidă agenție din Neamț la răspuns și singura în care proprietarul știe mereu ce se întâmplă.",
+    sca_k="Scalare", sca_t="Trei în prima săptămână. Apoi tot ce curge.",
+    sca_a_k="Săptămâna 1", sca_a_n="3", sca_a_t="quick wins construite și pornite",
+    sca_a=["Niciun lead fără răspuns în 5 minute, 7 zile din 7", "Proprietarul află după fiecare vizionare", "Dosarul celor 9 servicii, urmărit pas cu pas"],
+    sca_b_k="După", sca_b_n="10–20", sca_b_t="scurgeri identificate și rezolvate, una după alta, pe măsură ce auditul le găsește. Candidate deja vizibile:",
+    sca_b=["Apel pierdut fără mesaj de revenire", "Lead-uri din portaluri intrate pe e-mail", "Predarea de la Alesia către agent", "Cumpărătorul care a spus «mă mai gândesc»",
+           "Evaluare online pentru proprietari", "Raport de piață pe cartier, din blog", "Potrivire automată cumpărător–proprietate", "Exclusivități care expiră fără discuție",
+           "Chirii: reînnoiri și întârzieri", "Administrare proprietăți pentru investitori", "Recenzii cerute după fiecare semnare", "Roman, Târgu Neamț și diaspora cu același sistem"],
+    sca_conc="Nu o barieră de luni: construim repede, măsurăm, trecem la următoarea. Ordinea o dă acțiunea, nu calendarul.",
     # 8
     cum_k="Cum lucrăm", cum_t="Primul pas este auditul.",
     cum_pasi=["Audit", "Hartă", "Decizie", "Design", "Pilot", "Control"],
@@ -124,12 +126,14 @@ PT = dict(
         ("03", "O processo dos 9 serviços seguido passo a passo",
          ["Proposta aceite", "O coordenador do processo",
           "Cada documento tem estado, prazo e pessoa; o cliente vê a qualquer momento onde está", "Assinatura sem surpresas, depois pedido de avaliação e recomendação"])],
-    sca_k="Escalar · primeiros 90 dias", sca_t="Tudo nos primeiros 90 dias, pela ordem das ações.",
-    sca_trepte=[("Ação 1", "Três quick wins", "Resposta, feedback, processo. Arrancam na primeira semana e medem-se a partir da segunda."),
-                ("Ação 2", "Proprietários", "Avaliação online gratuita e relatório de mercado por bairro, a partir do blog: leads de vendedores, não só de compradores."),
-                ("Ação 3", "Cruzamento e recorrência", "Base compradores–imóveis que propõe visitas sozinha. Gestão de imóveis para investidores, receita mensal."),
-                ("Ação 4", "Distrito e diáspora", "Roman e Târgu Neamț com o mesmo sistema. Crédito para rendimentos no estrangeiro, tema que já têm.")],
-    sca_conc="A ordem é dada pela ação, não pelo calendário: cada passo arranca assim que o anterior mede. Aos 90 dias: a agência mais rápida de Neamț a responder e a única em que o proprietário sabe sempre o que se passa.",
+    sca_k="Escalar", sca_t="Três na primeira semana. Depois tudo o que vaza.",
+    sca_a_k="Semana 1", sca_a_n="3", sca_a_t="quick wins construídos e a correr",
+    sca_a=["Nenhum lead sem resposta em 5 minutos, 7 dias por semana", "O proprietário sabe o que aconteceu depois de cada visita", "O processo dos 9 serviços seguido passo a passo"],
+    sca_b_k="Depois", sca_b_n="10–20", sca_b_t="fugas identificadas e resolvidas, uma a seguir à outra, à medida que a auditoria as encontra. Candidatas já visíveis:",
+    sca_b=["Chamada perdida sem mensagem de retorno", "Leads dos portais a cair no e-mail", "Passagem da Alesia para o agente", "O comprador que disse «vou pensar»",
+           "Avaliação online para proprietários", "Relatório de mercado por bairro, a partir do blog", "Cruzamento automático comprador–imóvel", "Exclusivos que expiram sem conversa",
+           "Arrendamentos: renovações e atrasos", "Gestão de imóveis para investidores", "Avaliações pedidas depois de cada assinatura", "Roman, Târgu Neamț e diáspora com o mesmo sistema"],
+    sca_conc="Nenhuma barreira de meses: construímos depressa, medimos, passamos à seguinte. A ordem é dada pela ação, não pelo calendário.",
     cum_k="Como trabalhamos", cum_t="O primeiro passo é a auditoria.",
     cum_pasi=["Auditoria", "Mapa", "Decisão", "Design", "Piloto", "Controlo"],
     cum_txt=["Observamos os fluxos reais com a equipa: de onde vêm os pedidos, quem responde, quanto demora, o que se perde. Sem suposições.",
@@ -192,6 +196,15 @@ svg text{font-family:Inter,sans-serif}
 .treapta .q{font-family:"Space Mono",monospace;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;color:var(--lt)}
 .treapta h3{font-family:"Archivo Black",sans-serif;font-weight:400;font-size:14pt;margin:1.5mm 0 2.5mm}
 .treapta p{font-size:10pt;color:var(--t2);line-height:1.38}
+.fase{padding:6mm 7mm;display:flex;flex-direction:column}
+.fase.a{background:var(--c);color:var(--o);width:92mm;flex:none;border-left:3mm solid var(--l)}
+.fase.b{flex:1;border:1px solid var(--b);background:#fff}
+.fase .big{font-family:"Archivo Black",sans-serif;font-size:54pt;line-height:1;margin-top:3mm}
+.fase .sub{font-size:11pt;line-height:1.35;margin-top:2mm}
+.lista.esc{margin-top:5mm}.lista.esc li{border-color:#3a3632;font-size:10.5pt;color:var(--o)}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin-top:5mm}
+.chip{border:1px solid var(--b);padding:2.5mm 3mm;font-size:8.8pt;line-height:1.3;display:flex;gap:2.5mm;align-items:flex-start}
+.chip span{font-family:"Space Mono",monospace;font-size:7.5pt;color:var(--lt);padding-top:.4mm}
 .cum p{font-size:11.5pt;line-height:1.45;color:var(--o);max-width:150mm;margin-bottom:4mm}
 .cum .lv{font-family:"Archivo Black",sans-serif;font-size:19pt;line-height:1.15;color:var(--o);max-width:150mm}
 .ctb{background:var(--l);color:var(--c);padding:5mm 6mm;font-size:11pt;line-height:1.35}
@@ -336,12 +349,15 @@ def quick(t):
 
 
 def scalar(t):
-    tr = t["sca_trepte"]; alts = [34, 52, 70, 88]
-    trep = ''.join(f'<div class="treapta" style="min-height:{a}mm"><div class="q">{esc(q)}</div><h3>{esc(h)}</h3><p>{esc(p)}</p></div>' for (q, h, p), a in zip(tr, alts))
+    a = ''.join(f'<li>{esc(x)}</li>' for x in t["sca_a"])
+    b = ''.join(f'<div class="chip"><span>{i+1:02d}</span>{esc(x)}</div>' for i, x in enumerate(t["sca_b"]))
     return f'''<section class="p">
 <div class="k"><i></i>{esc(t["sca_k"])}</div><h2>{esc(t["sca_t"])}</h2>
-<div class="corpo" style="align-items:flex-end"><div class="trepte">{trep}</div></div>
-<div class="conc">{esc(t["sca_conc"])}</div>
+<div class="corpo" style="gap:10mm;align-items:stretch">
+<div class="fase a"><div class="k" style="color:var(--l)">{esc(t["sca_a_k"])}</div><div class="big">{esc(t["sca_a_n"])}</div><div class="sub">{esc(t["sca_a_t"])}</div><ul class="lista esc">{a}</ul></div>
+<div class="fase b"><div class="k">{esc(t["sca_b_k"])}</div><div class="big" style="color:var(--l)">{esc(t["sca_b_n"])}</div><div class="sub" style="color:var(--t2)">{esc(t["sca_b_t"])}</div><div class="chips">{b}</div></div>
+</div>
+<div class="conc" style="margin-top:6mm">{esc(t["sca_conc"])}</div>
 {rod(t, 7)}</section>'''
 
 
