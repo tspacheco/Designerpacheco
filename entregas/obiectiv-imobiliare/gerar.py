@@ -374,13 +374,14 @@ def cum(t):
 {rod(t, 8)}</section>'''
 
 
-for lang, t in T.items():
-    html = (f'<!doctype html><html lang="{ {"ro": "ro", "pt": "pt-PT"}[lang] }"><head><meta charset="utf-8"><title>{esc(t["capa_t"])}</title>'
-            f'<style>{FONTES}{CSS}</style></head><body>'
-            + capa(t) + vazut(t) + piata(t) + drum(t) + viteza(t) + quick(t) + scalar(t) + cum(t) + '</body></html>')
-    h = os.path.join(AQUI, f"obiectiv-imobiliare-{lang}.html")
-    open(h, "w").write(html)
-    pdf = os.path.join(AQUI, f"obiectiv-imobiliare-{lang}.pdf")
-    subprocess.run([CHROME, "--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer",
-                    f"--print-to-pdf={pdf}", "file://" + h], check=True, capture_output=True)
-    print(lang, os.path.getsize(pdf) // 1024, "KB")
+if __name__ == "__main__":
+    for lang, t in T.items():
+        html = (f'<!doctype html><html lang="{ {"ro": "ro", "pt": "pt-PT"}[lang] }"><head><meta charset="utf-8"><title>{esc(t["capa_t"])}</title>'
+                f'<style>{FONTES}{CSS}</style></head><body>'
+                + capa(t) + vazut(t) + piata(t) + drum(t) + viteza(t) + quick(t) + scalar(t) + cum(t) + '</body></html>')
+        h = os.path.join(AQUI, f"obiectiv-imobiliare-{lang}.html")
+        open(h, "w").write(html)
+        pdf = os.path.join(AQUI, f"obiectiv-imobiliare-{lang}.pdf")
+        subprocess.run([CHROME, "--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer", "--virtual-time-budget=8000",
+                        f"--print-to-pdf={pdf}", "file://" + h], check=True, capture_output=True)
+        print(lang, os.path.getsize(pdf) // 1024, "KB")
