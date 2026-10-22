@@ -27,9 +27,11 @@ Q = [
      "We do not have a real estate client yet. You would be the first, and that is exactly why the pilot is small, "
      "30 days and 1,000 €: you see results on your own numbers before any larger decision. " + ref_txt),
     ("What is the monthly subscription after implementation?",
-     f"It covers monitoring, adjustments and support of what we build. {mensal_txt}, fixed in writing in the "
-     "implementation plan at the end of the pilot, depending on how many flows and channels are in the system. "
-     "It starts only after the first month of implementation, during which we accompany the solution."),
+     "It covers monitoring, adjustments and support of what we build, and it is 15 % of the implementation value: "
+     "<b>for a 10,000 € implementation, 1,500 € per month; for 20,000 €, 3,000 € per month.</b> "
+     "The implementation value depends on how much of the business we improve and automate, and we agree it with you "
+     "in person, on the basis of the diagnosis. The monthly starts only after the first month of implementation, "
+     "during which we accompany the solution."),
     ("What exactly will you build? A new platform, or will it connect to what we already use?",
      "No new platform. We connect what you already use: ImmoFlux CRM, your website, the app and Alesia. "
      "The shared board and the rules (who answers, when, what happens next) live as close to ImmoFlux as its "
@@ -92,4 +94,4 @@ open(h, "w").write(html)
 pdf = os.path.join(AQUI, "obiectiv-answers-en.pdf")
 subprocess.run([CHROME, "--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer", "--virtual-time-budget=8000",
                 f"--print-to-pdf={pdf}", "file://" + h], check=True, capture_output=True)
-print(os.path.getsize(pdf) // 1024, "KB", "· mensal:", MENSAL or "POR PREENCHER")
+print(os.path.getsize(pdf) // 1024, "KB")
