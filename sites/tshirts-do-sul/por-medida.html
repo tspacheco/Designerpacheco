@@ -30,7 +30,7 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body);overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -54,8 +54,6 @@ p{margin:0 0 1em;max-width:62ch}
 .rv.is-in{opacity:1;transform:none}
 .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
 
-/* banner demo */
-.demo{background:var(--ria);color:#fff;font:700 .7rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:.6em var(--gutter)}
 
 /* nav */
 .nav{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
@@ -107,6 +105,9 @@ p{margin:0 0 1em;max-width:62ch}
 @media (prefers-reduced-motion:no-preference){
   .hero-shade,.marks{animation:fade 1s ease 1.5s both}
   .hero .wrap{animation:rise 1s var(--ease) 1.5s both}
+  body:has(.hero) .nav{position:fixed;left:0;right:0;animation:navin 1s var(--ease) 1.5s both}
+  body:has(.hero) .hero{min-height:100vh;min-height:100svh}
+  @keyframes navin{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   @keyframes reg1{from{transform:translate(-14px,10px)}to{transform:none}}
   @keyframes reg2{from{transform:translate(12px,-8px)}to{transform:none}}
@@ -276,7 +277,6 @@ footer{background:var(--ink);color:#fff;padding:3rem 0 calc(2rem + env(safe-area
 </style>
 </head>
 <body>
-<div class="demo" data-pt="APRESENTAÇÃO PACHECO STUDIOS · Proposta de nova identidade e site para a Tshirts do Sul · Fotografias de demonstração; as fotos reais dos produtos entram na versão final" data-en="PACHECO STUDIOS PRESENTATION · New identity and website proposal for Tshirts do Sul · Demo photography; real product photos go in the final version">APRESENTAÇÃO PACHECO STUDIOS · Proposta de nova identidade e site para a Tshirts do Sul · Fotografias de demonstração; as fotos reais dos produtos entram na versão final</div>
 
 <nav class="nav" id="nav">
   <div class="wrap">
