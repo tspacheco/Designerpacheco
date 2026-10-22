@@ -102,9 +102,16 @@ p{margin:0 0 1em;max-width:62ch}
 .marks svg{position:absolute;width:28px;height:28px;opacity:.9}
 .marks .tl{top:0;left:0}.marks .tr{top:0;right:0}.marks .bl{bottom:0;left:0}.marks .br{bottom:0;right:0}
 @media (prefers-reduced-motion:no-preference){
-  .reg .c1{animation:reg1 1.4s var(--ease) .2s both}
-  .reg .c2{animation:reg2 1.4s var(--ease) .35s both}
-  .reg span{animation:fade .8s var(--ease) .9s both}
+  .reg .c1{animation:reg1 1.4s var(--ease) 2.5s both}
+  .reg .c2{animation:reg2 1.4s var(--ease) 2.65s both}
+  .reg span{animation:fade .8s var(--ease) 3.2s both}
+  .hero-shade{animation:fade 1.1s ease 2s both}
+  .marks{animation:fade 1.1s ease 2s both}
+  .hero .wrap>.label,.hero .wrap>.lead,.hero .wrap>.hero-cta{animation:rise .9s var(--ease) both}
+  .hero .wrap>.label{animation-delay:2.3s}
+  .hero .wrap>.lead{animation-delay:3.4s}
+  .hero .wrap>.hero-cta{animation-delay:3.6s}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
   @keyframes reg1{from{transform:translate(-14px,10px)}to{transform:none}}
   @keyframes reg2{from{transform:translate(12px,-8px)}to{transform:none}}
   @keyframes fade{from{opacity:0}to{opacity:1}}
