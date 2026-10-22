@@ -1,0 +1,1378 @@
+<!DOCTYPE html><html lang="ro"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+            <link rel="icon" href="https://www.obiectivimobiliare.ro/storage/aplicatie/icon.jpg">
+        <link rel="apple-touch-icon" href="https://www.obiectivimobiliare.ro/storage/aplicatie/icon.jpg">
+        <title>Blog — Obiectiv Imobiliare</title>
+    <meta name="description" content="Articole despre piața imobiliară din Piatra-Neamț și județul Neamț: prețuri, credite și sfaturi pentru cumpărare, vânzare și închiriere.">
+
+    
+    <meta property="og:site_name" content="Obiectiv Imobiliare">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:url" content="https://www.obiectivimobiliare.ro/blog">
+    <meta property="og:title" content="Blog — Obiectiv Imobiliare">
+    <meta property="og:description" content="Articole despre piața imobiliară din Piatra-Neamț și județul Neamț: prețuri, credite și sfaturi pentru cumpărare, vânzare și închiriere.">
+    <meta name="twitter:card" content="summary_large_image">
+    
+        
+    <link rel="canonical" href="https://www.obiectivimobiliare.ro/blog">
+
+    
+    
+            
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Caveat:wght@600;700&amp;display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Caveat:wght@600;700&amp;display=swap" media="all" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap"></noscript>
+    <style>
+    .bl-hero { background: var(--color-primary, #0E2A5E); padding: 40px 0 34px; }
+    .bl-hero__wrap { max-width: var(--site-max, 1400px); margin: 0 auto; padding: 0 24px; }
+    .bl-hero h1 { margin: 0 0 8px; font-size: 26px; font-weight: 800; color: #fff; }
+    .bl-hero p { margin: 0; font-size: 14.5px; color: rgba(255,255,255,.78); }
+    @media (max-width: 480px) { .bl-hero h1 { font-size: 21px; } }
+
+    .bl-wrap { max-width: var(--site-max, 1400px); margin: 0 auto; padding: 28px 24px 56px; }
+
+    .bl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; }
+    @media (max-width: 480px) { .bl-grid { grid-template-columns: 1fr; gap: 16px; } }
+
+    /* ⚠️ Stilul cartelei a plecat in partials/blog-card.blade.php pe 28.09.2026, cand aceeasi
+       cartela a inceput sa fie folosita si pe prima pagina. Aici raman doar grila si restul
+       paginii. */
+
+    .bl-empty { text-align: center; padding: 60px 20px; color: #64748b; }
+    .bl-empty p { margin: 0; font-size: 14.5px; }
+
+    .bl-pagination { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 32px; flex-wrap: wrap; }
+    .bl-page { display: inline-flex; align-items: center; justify-content: center; min-width: 36px; height: 36px; padding: 0 8px; border-radius: 9px; border: 1.5px solid #e2e8f0; background: #fff; color: #1e293b; font-size: 13px; font-weight: 600; text-decoration: none; }
+    .bl-page:hover { border-color: var(--color-primary, #0E2A5E); }
+    .bl-page--active { background: var(--color-primary, #0E2A5E); border-color: var(--color-primary, #0E2A5E); color: #fff; }
+    .bl-page--disabled { opacity: .4; pointer-events: none; }
+</style>
+        <style>
+            .bl-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(15,35,80,.06); text-decoration: none; color: inherit; display: block; transition: transform .18s ease, box-shadow .18s ease; }
+            .bl-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(15,35,80,.12); }
+            /* 21.09.2026: acelasi fix ca .pc-media (properties/category.blade.php) - dunga gri de la
+               rotunjire subpixel intre aspect-ratio si height:100% pe imagine. */
+            .bl-media { position: relative; aspect-ratio: 16/9; background: #e2e8f0; overflow: hidden; }
+            .bl-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+            .bl-body { padding: 16px 18px 18px; }
+            .bl-date { font-size: 12px; color: #94a3b8; margin-bottom: 6px; }
+            .bl-card h2 { margin: 0 0 8px; font-size: 16px; font-weight: 800; line-height: 1.35; color: #1e293b; }
+            .bl-excerpt { font-size: 13.5px; color: #5B6B82; line-height: 1.6; margin: 0; }
+        </style>
+        <style>
+        :root {
+            --color-primary: #041E42;
+            --color-accent: #F5C518;
+            --color-info: #1E6FD9;
+            --color-bg: #F6F9FC;
+
+            /* 26.09.2026: latimea continutului, intr-un SINGUR loc. Era scrisa de mana
+               (1280px) in 11 locuri din 5 fisiere - antet, meniu, hero, grile, blog - si
+               era de ajuns sa scapi unul ca antetul sa nu se mai alinieze cu continutul.
+               Crescuta la 1400px fiindca ajunsesera prea inguste cartelele de anunt: la
+               1280 interiorul lor era 266px, iar randul de actiuni cere ~283px, deci cele
+               patru butoane fie se turteau, fie rupeau randul. */
+            --site-max: 1400px;
+
+            /* 23.09.2026: etichetele „De vânzare" / „De închiriat" au culori PROPRII, cerute
+               editabile de user (Admin → Aspect site → Etichete anunț). Pana azi mosteneau
+               paleta (accent + principal), deci nu se puteau diferentia intre ele. Implicitul
+               de vanzare e exact ce era inainte; inchirierea porneste albastru cu text alb. */
+            /* Butoanele de pe cartela: se alege doar fundalul, restul se deduce. */
+            --btn-view-bg: #1E6FD9;
+            --btn-view-fg: #FFFFFF;
+            --btn-view-bd: #1E6FD9;
+            --btn-call-bg: #FFFFFF;
+            --btn-call-fg: #0E2A5E;
+            --btn-call-bd: #dfe6f0;
+            --btn-mail-bg: #FFFFFF;
+            --btn-mail-fg: #0E2A5E;
+            --btn-mail-bd: #dfe6f0;
+            --btn-wa-bg: #25D366;
+            --btn-wa-fg: #0E2A5E;
+            --btn-wa-bd: #25D366;
+            --badge-sale-bg: #F5C518;
+            --badge-sale-text: #041E42;
+            --badge-rent-bg: #1E6FD9;
+            --badge-rent-text: #FFFFFF;
+
+            /* 26.09.2026 (cerere user): pretul din antetul anuntului sta intr-o pastila, cu
+               culori PROPRII, editabile din Admin -> Aspect site. Implicit un bleu foarte
+               deschis cu text bleumarin - se citeste ca eticheta de pret fara sa concureze cu
+               auriul etichetei de tranzactie. */
+            --price-bg: #041E42;
+            --price-text: #FFFFFF;
+        }
+        * { box-sizing: border-box; }
+        /* Cerere user 16.09.2026: pagina de anunt aparea "taiata" lateral pe mobil (raportat de doua
+           ori, cu capturi reale din Chrome pe Android — nu doar un webview in-app). Prima incercare
+           (`overflow-x:hidden` pe html+body) NU a fost de-ajuns: pagina de anunt are sectiuni cu
+           `position:sticky` (bara de tab-uri, cardul agentului) — `overflow-x:hidden` pe un ancestor
+           schimba implicit `overflow-y` in `auto` (regula reala CSS: nu poti avea o axa `hidden` si
+           cealalta `visible`), ceea ce pe unele Chrome/Android transforma `body` intr-un container de
+           scroll propriu, iar elementele sticky se pot lega gresit de el in loc de viewport-ul real —
+           bug de randare cunoscut, nu doar teorie. Fix: `overflow-x: clip` (nu `hidden`) — taie la fel
+           orice depasire orizontala, dar NU declanseaza schimbarea implicita a lui overflow-y si NU
+           creeaza un container de scroll nou, deci elementele sticky raman corect legate de viewport.
+           Suport larg (Chrome 90+, Safari 16+, Firefox 81+) — sigur pentru 2026. NU elimina zoom-ul
+           userului (initial-scale ramane 1, user-scalable ramane implicit permis). */
+        html { overflow-x: clip; }
+        body { margin: 0; overflow-x: clip; max-width: 100vw; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--color-bg); color: #1c2b3a; -webkit-font-smoothing: antialiased; }
+        a { color: inherit; }
+        img { max-width: 100%; }
+        h1, h2, h3, h4 { font-weight: 800; }
+
+        /* ===== Liniuta aurie de sub titluri (28.09.2026) =====
+           Ceruta de user pagina cu pagina; de la a patra folosire sta intr-un SINGUR loc, ca
+           utilitar. O pagina care o vrea adauga clasa pe titlu — nicio regula noua in pagina.
+           `::after`, nu un element in markup: liniuta e decor, nu continut, deci n-are ce cauta
+           in HTML sau in cititoarele de ecran. */
+        .has-rule::after { content: ''; display: block; width: 44px; height: 3px; border-radius: 2px; background: var(--color-accent, #F5C518); margin: 11px 0 0; }
+        /* Titlurile mari de antet primesc o liniuta pe masura (54px, ca `.ct-hero__rule`). */
+        .has-rule--lg::after { width: 54px; }
+        /* ⚠️ Sub un titlu CENTRAT, fara `margin: auto` liniuta ramane lipita de marginea din
+           stanga a blocului, nu sub mijlocul textului. */
+        .has-rule--center::after { margin-left: auto; margin-right: auto; }
+
+        /* ===== Top contact bar ===== */
+        .site-topbar { background: #fff; border-bottom: 1px solid #eef1f5; }
+        .site-topbar__inner { max-width: var(--site-max, 1400px); margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+        .site-topbar__logo { display: flex; align-items: center; text-decoration: none; }
+        .site-topbar__logo img { height: 68px; width: auto; display: block; }
+        .site-topbar__info { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+        .site-topbar__item { display: flex; align-items: flex-start; gap: 10px; text-decoration: none; color: inherit; }
+        .site-topbar__icon { flex: none; width: 38px; height: 38px; border-radius: 50%; background: rgba(30,111,217,.1); color: var(--color-info); display: flex; align-items: center; justify-content: center; }
+        .site-topbar__text { display: flex; flex-direction: column; }
+        .site-topbar__text strong { display: block; font-size: 14.5px; font-weight: 700; color: var(--color-primary); line-height: 1.35; font-style: normal; }
+        .site-topbar__text small { display: block; font-size: 12.5px; color: #64748b; line-height: 1.35; }
+        .site-topbar__text a { text-decoration: none; color: inherit; }
+        .site-topbar__text a:hover { text-decoration: underline; }
+        /* 24.09.2026: agentia are trei programe diferite, iar diferenta conteaza pentru client —
+           biroul se inchide la 17, dar pe WhatsApp se raspunde pana la 20, inclusiv in weekend.
+           Grila pe doua coloane: eticheta ingusta, valoarea in rest. `align-items: baseline` ca
+           eticheta sa stea pe linia textului, nu deasupra lui. */
+        .site-hours { gap: 2px; }
+        .site-hours__row { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 8px; }
+        .site-hours__k { font-size: 11.5px; font-weight: 700; color: var(--color-primary); white-space: nowrap; }
+        .site-hours__v { font-size: 12.5px; color: #64748b; line-height: 1.45; }
+
+        /* ===== Main nav ===== */
+        .site-nav { background: var(--color-primary); position: relative; }
+        .site-nav__inner { max-width: var(--site-max, 1400px); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .site-nav__toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: none; border: none; color: #fff; cursor: pointer; padding: 0; margin: 8px 0; }
+        .site-nav__collapsible { display: flex; align-items: center; justify-content: space-between; flex: 1; gap: 16px; flex-wrap: wrap; }
+        .site-nav__menu { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+        .site-nav__menu > li { position: relative; }
+        /* 22.09.2026 (cerere user: meniul "putin mai gros" si mai profesionist): 18px vertical in
+           loc de 15px - bara e vizibil mai solida, fara sa mute nimic altceva. */
+        .site-nav__menu a, .site-nav__menu summary { display: flex; align-items: center; gap: 4px; padding: 18px 13px; color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 600; white-space: nowrap; }
+        .site-nav__menu a:hover, .site-nav__menu summary:hover { background: rgba(255,255,255,.08); }
+
+        /* 22.09.2026: zona de cont are acum iconite si arata ca niste butoane discrete, nu ca
+           text simplu subliniat la hover (cerere user: "sa fie mai profi... ceva cu icon de
+           contul meu"). Fara `opacity` pe stare normala - textul alb pe bleumarin trebuie sa
+           ramana la contrast plin. */
+        .site-nav__auth { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+        .site-nav__auth a, .site-nav__auth button {
+            display: inline-flex; align-items: center; gap: 7px;
+            color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 600;
+            white-space: nowrap; font-family: inherit; line-height: 1.2;
+            background: none; border: 1px solid transparent; border-radius: 9px;
+            padding: 8px 12px; cursor: pointer;
+            transition: background-color .18s ease, border-color .18s ease;
+        }
+        .site-nav__auth a svg, .site-nav__auth button svg { width: 16px; height: 16px; flex: 0 0 auto; }
+        .site-nav__auth a:hover, .site-nav__auth button:hover { background: rgba(255,255,255,.1); text-decoration: none; }
+        /* "Contul meu" - intrarea principala in cont, conturata discret ca sa se distinga. */
+        .site-nav__auth .site-nav__account { border-color: rgba(255,255,255,.3); }
+        .site-nav__auth .site-nav__account:hover { border-color: rgba(255,255,255,.55); }
+        /* "Inregistrare", pentru vizitatorii nelogati - singurul buton plin din bara. */
+        .site-nav__auth .site-nav__cta { background: var(--color-accent); color: var(--color-primary); font-weight: 700; }
+        .site-nav__auth .site-nav__cta:hover { background: var(--color-accent); filter: brightness(1.06); }
+        /* Iesirea din cont e doar iconita pe desktop: cu cele trei etichete scrise integral, bara
+           depasea containerul de 1280px si trecea pe doua randuri (masurat: 1321px necesari fata de
+           1232px disponibili). Textul ramane pentru cititoarele de ecran (.site-nav__sr) si revine
+           vizibil pe mobil, unde randurile sunt pe toata latimea si e loc destul. */
+        .site-nav__auth .site-nav__logout { padding: 8px 10px; }
+        .site-nav__sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        /* Numarul de favorite langa inima (17.09.2026) — badge auriu, ca la un "cos" cu numar,
+           dar cu inima ceruta de user, nu un icon de cos. */
+        .site-nav__fav-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9999px; background: var(--color-accent); color: var(--color-primary); font-size: 11px; font-weight: 800; line-height: 1; }
+
+        /* ===== Cautare in bara (28.09.2026, cerere user) =====
+           Filtrul `q` exista de mult pe paginile de lista, dar nu se putea ajunge la el de
+           nicaieri altundeva (anunt, blog, contact). Lupa deschide acelasi filtru, deci nu e cod
+           nou pe server - doar un drum in plus catre ce merge deja.
+           Butonul cu lupa sta in `.site-nav__auth`, deci isi ia stilul de la iconitele vecine;
+           aici ramane doar panoul. */
+        .site-nav__search { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 61; padding: 12px 24px; background: var(--color-primary); box-shadow: 0 10px 24px rgba(14,42,94,.2); }
+        .site-nav__search.is-open { display: block; }
+        /* Continutul se aliniaza cu restul paginii, desi panoul e pe toata latimea. */
+        .site-nav__search-inner { max-width: var(--site-max, 1400px); margin: 0 auto; display: flex; align-items: center; gap: 8px; }
+        .site-nav__search input { flex: 1 1 auto; min-width: 0; height: 44px; padding: 0 14px; border: 1px solid rgba(255,255,255,.3); border-radius: 10px; background: rgba(255,255,255,.12); color: #fff; font: inherit; font-size: 15px; }
+        .site-nav__search input::placeholder { color: rgba(255,255,255,.65); }
+        .site-nav__search input:focus { outline: none; border-color: var(--color-accent); background: rgba(255,255,255,.18); }
+        .site-nav__search button { flex: 0 0 auto; height: 44px; padding: 0 18px; border: none; border-radius: 10px; background: var(--color-accent); color: var(--color-primary); font: inherit; font-weight: 700; cursor: pointer; }
+        .site-nav__search button:hover { filter: brightness(1.06); }
+
+        /* ===== Meniu dropdown (Vânzări) ===== */
+        .site-nav__menu details { position: relative; }
+        .site-nav__menu summary { list-style: none; cursor: pointer; }
+        .site-nav__menu summary::-webkit-details-marker { display: none; }
+        /* Sageata se roteste lin, nu brusc - acelasi spirit "interactiv, dar discret" cerut la tot dropdown-ul. */
+        .site-nav__menu summary svg { transition: transform .2s ease; }
+        .site-nav__menu details[open] > summary svg { transform: rotate(180deg); }
+        .site-nav__dropdown { list-style: none; margin: 0; padding: 0; }
+        .site-nav__dropdown a { font-weight: 500; font-size: 13.5px; white-space: nowrap; }
+        @media (min-width: 861px) {
+            .site-nav__dropdown { position: absolute; top: 100%; left: 0; min-width: 230px; background: var(--color-primary); box-shadow: 0 12px 26px rgba(14,42,94,.22); border-radius: 0 0 10px 10px; padding: 6px 0; z-index: 70; }
+            /* 21.09.2026, cerere user: meniul sa se deschida pe hover (mouse), nu doar la click, si
+               cu o mica animatie - "mai interactiv, mai jucaus, dar profesional". Suprascriem AICI,
+               doar pe desktop, ascunderea nativa a <details> (care il scoate complet din DOM cand nu
+               e [open]) - ramane mereu randat, dar invizibil/turtit pana se deschide, ca sa poata fi
+               animat lin (fade + o mica alunecare in jos + un strop de "bounce" pe revenire), in loc
+               sa apara/dispara brusc. Pe mobil (media query de mai jos, sub 860px) NU atingem nimic -
+               ramane comportamentul nativ, simplu, la click (hover n-are sens pe touch oricum). */
+            .site-nav__dropdown-wrap:not([open]) > .site-nav__dropdown { display: block; }
+            .site-nav__dropdown {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-8px) scale(.97);
+                transform-origin: top left;
+                transition: opacity .18s ease, transform .28s cubic-bezier(.34,1.56,.64,1), visibility .18s;
+            }
+            .site-nav__dropdown-wrap[open] > .site-nav__dropdown {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0) scale(1);
+            }
+            .site-nav__dropdown a { transition: background-color .15s ease, padding-left .15s ease; }
+            .site-nav__dropdown a:hover { background: rgba(255,255,255,.1); padding-left: 22px; }
+        }
+        @media (max-width: 860px) {
+            .site-nav__dropdown a { padding-left: 32px; }
+        }
+
+        /* ===== Footer ===== */
+        /* Redesign 17.09.2026 + follow-up-uri, dupa poza de referinta a userului + un specificatii
+           text detaliat (culori exacte, comportament de hover).
+           Follow-up: incercat sa leg fundalul de var(--color-primary) + color-mix() pt o a doua
+           oprire de gradient derivata automat — REVERTIT imediat, userul a observat ca nuanta
+           reala s-a schimbat („ai schimbat culoarea la footer, lasa aceeasi"). Motivul tehnic:
+           color-mix(...75% navy, 25% alb) da un albastru-gri mai deschis, nu varianta bogata
+           #06295A aleasa initial — cele doua NU sunt acelasi ton. Revenit la valorile FIXE, exacte,
+           care au fost aprobate. --color-primary (Aspect) ramane #041E42 — coincide oricum cu prima
+           oprire a gradientului, deci antetul si footer-ul tot pornesc din aceeasi nuanta de baza. */
+        .site-footer {
+            --footer-bg-1: #041E42;
+            --footer-bg-2: #06295A;
+            --footer-text: #BCC9DD;
+            --footer-line: rgba(255,255,255,.15);
+            background: linear-gradient(135deg, var(--footer-bg-1) 0%, var(--footer-bg-2) 100%);
+            border-top: 3px solid var(--color-accent);
+            margin-top: 48px;
+            color: var(--footer-text);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Model discret de ferestre/cladire in fundal, in dreapta — cerut explicit de user ("un fel
+           de casa in fundal"), ca in poza de referinta. SVG inline, opacitate mica, sub continut
+           (z-index), fara sa afecteze click-urile (pointer-events:none). */
+        .site-footer__bg-pattern { position: absolute; top: 0; right: 0; bottom: 0; width: 46%; max-width: 620px; pointer-events: none; z-index: 0; }
+        .site-footer__inner, .site-footer__bottom-inner { position: relative; z-index: 1; }
+        .site-footer__inner { max-width: var(--site-max, 1400px); margin: 0 auto; padding: 52px 24px 36px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+        .site-footer__brand-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .site-footer__brand-logo { background: #fff; border-radius: 10px; padding: 6px 10px; display: inline-flex; line-height: 0; }
+        .site-footer__brand-logo img { height: 40px; width: auto; display: block; } /*  e OBLIGATORIU de cand eticheta poarta atribute de dimensiune: fara el, atributul se aplica drept stil si intinde logo-ul. */
+        .site-footer__desc { font-size: 13.5px; line-height: 1.7; color: var(--footer-text); opacity: .85; margin: 0 0 14px; max-width: 320px; }
+        /* Linie aurie mica decorativa intre descriere si textul "ACASA INCEPE..." — ceruta explicit
+           in specificatie, prezenta si in poza de referinta (lipsea pana acum). */
+        .site-footer__rule { width: 34px; height: 2px; border-radius: 2px; background: var(--color-accent); margin: 0 0 14px; }
+        .site-footer__kicker { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #8695b0; margin: 0 0 14px; }
+        .site-footer h4 { margin: 0 0 10px; font-size: 15px; font-weight: 700; color: #fff; }
+        .site-footer h4::after { content: ''; display: block; width: 30px; height: 3px; border-radius: 2px; background: var(--color-accent); margin-top: 8px; }
+        /* Linii de separare intre coloane, ca in poza de referinta — doar pe desktop, unde grid-ul
+           chiar are 4 coloane pe un rand; pe mobil (stivuite vertical) n-ar avea sens. */
+        @media (min-width: 861px) {
+            .site-footer__inner > :not(:first-child) { border-left: 1px solid var(--footer-line); padding-left: 32px; }
+        }
+        /* ---------- Coloane pliabile in subsol (29.09.2026, cerere user) ----------
+           Doua dintre cele patru coloane sunt liste lungi de linkuri; pe telefon, stivuite, impingeau
+           datele de contact mult sub linia de vizibilitate. Contact ramane mereu deschis — acolo
+           sunt telefonul, adresa si programul.
+           ⚠️ `open` sta in MARKUP: fara JavaScript subsolul arata exact ca pana acum, tot deschis.
+           Scriptul de la finalul paginii doar il inchide sub 860px. */
+        .site-footer__acc > summary { list-style: none; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; cursor: pointer; }
+        .site-footer__acc > summary::-webkit-details-marker { display: none; }
+        .site-footer__acc > summary h4 { flex: 1 1 auto; }
+        .site-footer__acc-chev { display: none; flex: none; width: 20px; height: 20px; margin-top: 2px; opacity: .7; transition: transform .2s ease; }
+        .site-footer__acc[open] .site-footer__acc-chev { transform: rotate(180deg); }
+        /* Pe desktop coloana e mereu deschisa, deci titlul nu trebuie nici sa para apasabil, nici
+           sa poata fi apasat din greseala. */
+        @media (min-width: 861px) {
+            .site-footer__acc > summary { cursor: default; pointer-events: none; }
+        }
+        @media (max-width: 860px) {
+            .site-footer__acc-chev { display: block; }
+            /* Inchisa, coloana n-are nevoie de spatiul de sub titlu — altfel randurile pliate s-ar
+               departa intre ele fara motiv. */
+            .site-footer__acc:not([open]) > summary h4 { margin-bottom: 0; }
+        }
+        .site-footer__links, .site-footer__services { display: flex; flex-direction: column; }
+        .site-footer__links a, .site-footer__services a, .site-footer__contact a, .site-footer__contact span { display: flex; align-items: center; justify-content: space-between; gap: 8px; text-decoration: none; color: var(--footer-text); font-size: 14.5px; line-height: 1.8; }
+        .site-footer__links a, .site-footer__services a { padding: 5px 0; }
+        /* Hover cerut explicit: textul devine ALB (nu auriu), doar SAGEATA devine aurie, plus un
+           mic deplasament al textului spre dreapta — de-aici span-ul separat pe text, ca sageata
+           sa nu se mute odata cu el. */
+        .site-footer__links a:hover, .site-footer__services a:hover { color: #fff; }
+        .site-footer__links a span, .site-footer__services a span { transition: transform .15s ease; }
+        .site-footer__links a:hover span, .site-footer__services a:hover span { transform: translateX(3px); }
+        .site-footer__links a svg, .site-footer__services a svg { flex: none; opacity: .55; width: 13px; height: 13px; color: var(--footer-text); transition: color .15s ease, opacity .15s ease; }
+        .site-footer__links a:hover svg, .site-footer__services a:hover svg { color: var(--color-accent); opacity: 1; }
+        .site-footer__contact a:hover { color: var(--color-accent); }
+        .site-footer__contact-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+        /* Iconitele de contact: alb/albastru deschis (cerut explicit) — nu auriu, ca sa nu concureze
+           vizual cu linia aurie de sub titlu. */
+        .site-footer__contact-row svg { flex: none; margin-top: 2px; color: var(--footer-text); }
+        /* Iconite sociale: glife PLINE (fill, nu stroke) — citesc mult mai bine la marime mica decat
+           varianta initiala cu linie subtire. Hover cerut explicit: border+iconita devin aurii, plus
+           o mica ridicare (translateY), FARA sa umple cercul cu culoare. */
+        .site-footer__social { display: flex; gap: 10px; margin-top: 2px; }
+        .site-footer__social a { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: border-color .15s ease, color .15s ease, transform .15s ease; }
+        .site-footer__social a svg { width: 17px; height: 17px; }
+        .site-footer__social a:hover { border-color: var(--color-accent); color: var(--color-accent); transform: translateY(-3px); }
+        /* Date firma/inregistrare (18.09.2026, cerere user - preluate de pe site-ul oficial WordPress,
+           plasate sub coloana 1 unde era spatiu liber). Text mic, discret, ca sa nu concureze cu
+           restul coloanei.
+           ⛔ O nota de aici spunea ca linia cu cel care a facut site-ul "nu se aplica" fiindca
+           site-ul n-ar fi facut de ei. Era o PRESUPUNERE GRESITA, nu o decizie: userul ESTE firma
+           aceea, deci creditul a fost mereu corect. Linia sta in randul de jos (.site-footer__by). */
+        .site-footer__legal { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--footer-line); }
+        .site-footer__legal p { margin: 0 0 4px; font-size: 11px; line-height: 1.6; color: #7c8aa3; letter-spacing: .01em; }
+        .site-footer__legal p:last-child { margin-bottom: 0; }
+        .site-footer__apps { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--footer-line); }
+        .site-footer__apps p { margin: 0 0 3px; font-size: 13px; font-weight: 700; color: #fff; }
+        .site-footer__apps small { display: block; margin-bottom: 10px; color: #8695b0; font-size: 12px; }
+        .site-footer__apps-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        /* Follow-up 17.09 ("cea de Apple sa fie cat cea de Google Play"): prima incercare (cutie
+           fixa 168x50 + object-fit:contain) NU a rezolvat — cele doua PNG-uri incarcate de user
+           aveau acelasi canvas (2172x724), dar insigna Apple avea mult spatiu transparent „mort"
+           in jurul ei (mai ales sus), deci in aceeasi cutie parea vizibil mai mica. Reparat la
+           SURSA: imaginile au fost trimise automat (server-side, GD) la marginile continutului lor
+           real (Play: 1912x511 ~ Apple: 1506x463) — acum se afiseaza dupa acelasi principiu ca
+           insignele oficiale Google/Apple: inaltime FIXA, latime naturala (fara cutie/contain, care
+           ar fi ascuns diferenta reala dintre cele doua desene in loc s-o elimine). */
+        .site-footer__apps-row img { height: 50px; width: auto; display: block; border-radius: 8px; }
+        /* Insigna implicita (desenata, nu incarcata) — apare cat timp userul n-a incarcat o imagine
+           proprie din Admin > Aspect > Imagini; daca incarca una, ia locul automat (vezi conditia
+           PHP de mai jos: imaginea incarcata are prioritate, insigna desenata e doar fallback).
+           Marime crescuta 17.09 (follow-up: "apar cam mici") — de la 38px la 50px, acelasi target
+           ca insignele incarcate de mai sus, ca fallback-ul si imaginea reala sa arate identic. */
+        .site-footer__badge { height: 50px; width: 168px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 9px; background: #000; color: #fff; border-radius: 8px; padding: 0 14px; text-decoration: none; }
+        .site-footer__badge svg { flex: none; width: 19px; height: 19px; }
+        .site-footer__badge span { display: block; font-size: 10.5px; line-height: 1.15; opacity: .8; }
+        .site-footer__badge b { display: block; font-size: 16px; font-weight: 700; line-height: 1.2; font-family: system-ui, sans-serif; }
+        .site-footer__bottom { border-top: 1px solid var(--footer-line); background: rgba(0,0,0,.14); position: relative; z-index: 1; }
+        .site-footer__bottom-inner { max-width: var(--site-max, 1400px); margin: 0 auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12.5px; color: #93a1ba; }
+        .site-footer__bottom-inner strong { color: var(--color-accent); font-weight: 700; }
+        /* Creditul celui care a facut site-ul: al doilea rand al blocului din stanga, discret.
+           ⚠️ Linkul are culoare EXPLICITA — un `a` nestilizat ar fi iesit albastru implicit pe
+           fundal bleumarin, adica practic ilizibil. */
+        /* ⚠️ Blocul din dreapta se aliniaza la DREAPTA: cele doua randuri au lungimi diferite,
+           deci pornite amandoua din stanga, al doilea s-ar opri inainte de marginea paginii si ar
+           arata zdrentuit tocmai la capat. */
+        .site-footer__tagline { text-align: right; }
+        .site-footer__by { display: block; margin-top: 5px; font-size: 12.5px; opacity: .72; }
+        .site-footer__by a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .site-footer__by a:hover { color: var(--color-accent); }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 860px) {
+            .site-topbar__inner { padding: 14px 16px; }
+            .site-topbar__logo img { height: 58px; }
+            .site-topbar__info { gap: 18px; }
+
+            .site-nav__inner { padding: 0 16px; }
+            .site-nav__toggle { display: flex; }
+            .site-nav__collapsible { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-primary); flex-direction: column; align-items: stretch; box-shadow: 0 10px 24px rgba(14,42,94,.2); z-index: 60; max-height: calc(100vh - 60px); overflow-y: auto; }
+            .site-nav__collapsible.is-open { display: flex; }
+            .site-nav__menu { flex-direction: column; width: 100%; }
+            .site-nav__menu a, .site-nav__menu summary { width: 100%; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,.1); }
+            /* 28.09.2026 (cerere user): autentificarea si favoritele se vad DIRECT in bara pe
+               telefon, nu doar dupa ce deschizi meniul - altfel bara arata goala. Blocul a iesit
+               din meniul pliant si a devenit frate cu hamburgerul; pe telefon meniul e
+               `position:absolute`, deci iese din rand si ramane [hamburger] ... [actiuni]. */
+            .site-nav__auth { flex-direction: row; align-items: center; width: auto; gap: 6px; padding: 0; }
+            .site-nav__auth a, .site-nav__auth form { width: auto; }
+            /* Pe bara iconitele sunt singure, deci sunt tinta de atins cu degetul: 20px plus
+               11px spatiu interior dau ~42px, peste minimul de 40px recomandat. Pe desktop
+               raman 16px, fiindca acolo stau langa text. */
+            .site-nav__auth a svg, .site-nav__auth button svg { width: 20px; height: 20px; }
+            .site-nav__fav-badge { min-width: 19px; height: 19px; font-size: 11.5px; }
+            /* Pe mobil raman randuri pe toata latimea (nu butoane): fara colturi rotunjite si
+               fara conturul de pe desktop, doar linia despartitoare dintre randuri. */
+            .site-nav__auth a, .site-nav__auth button { width: auto; padding: 11px; border: none; border-radius: 10px; text-align: center; }
+            /* Doar iconitele: etichetele n-ar incapea langa hamburger. Bulina cu numarul de
+               favorite ramane - de-aia `:not()`. */
+            .site-nav__auth a > span:not(.site-nav__fav-badge) { display: none; }
+            .site-nav__auth .site-nav__account, .site-nav__auth .site-nav__account:hover { border-color: transparent; }
+            /* Exceptie: „Inregistrare" n-are iconita si e actiunea pe care o vrem vizibila. */
+            .site-nav__auth .site-nav__cta { padding: 8px 12px; background: var(--color-accent); color: var(--color-primary); font-weight: 700; }
+            .site-nav__auth .site-nav__logout { padding: 11px; }
+            /* Panoul de cautare se lipeste de marginile ecranului, ca restul continutului. */
+            .site-nav__search { padding: 10px 16px; }
+
+            .site-footer__inner { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+            .site-footer__desc { max-width: none; }
+        }
+
+        @media (max-width: 480px) {
+            /* 23.09.2026, cerere user („pe versiunea mobila arata urat... datele de contact sa
+               fie sus si dupa sa fie logo afisat"): pe telefon ordinea se INVERSEAZA — intai
+               banda de contact, apoi logo-ul. `order` pe copii, nu markup dublat: acelasi HTML
+               serveste si desktopul, si telefonul. Padding-ul coboara din .site-topbar__inner in
+               copii, ca banda de contact sa-si poata pune fundalul pe toata latimea. */
+            .site-topbar__inner { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
+            .site-topbar__info { order: -1; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 7px 18px; width: 100%; padding: 9px 16px 10px; background: #f8fafc; border-bottom: 1px solid #eef1f5; }
+            /* 28.09.2026 (cerere user): programul ca TABEL de trei randuri, nu sase.
+               Eticheta statea deasupra valorii, deci cele trei programe ocupau sase randuri, iar
+               iconita de ceas — centrata pe verticala langa un bloc atat de inalt — parea
+               desprinsa de text. Acum eticheta si orele sunt pe acelasi rand, iar ceasul dispare:
+               latimea lui (28px + 8px) e exact ce lipsea ca orele sa incapa langa eticheta. */
+            .site-topbar__item--hours { display: block; width: 100%; padding-top: 8px; border-top: 1px solid #e9eef5; }
+            .site-topbar__item--hours .site-topbar__icon { display: none; }
+            .site-hours { gap: 0; }
+            .site-hours__row { grid-template-columns: auto 1fr; align-items: baseline; gap: 10px; padding: 5px 0; border-top: 1px solid #eef2f7; }
+            .site-hours__row:first-child { border-top: 0; padding-top: 0; }
+            .site-hours__row:last-child { padding-bottom: 0; }
+            /* Culorile se inverseaza fata de desktop: ora e informatia, eticheta doar o califica.
+               Trei etichete albastre trageau ochiul inaintea numarului de telefon. */
+            .site-hours__k { font-size: 11.5px; font-weight: 600; color: #64748b; }
+            .site-hours__v { font-size: 12px; font-weight: 600; color: #334155; text-align: right; }
+            /* Logo-ul pe centru (cerere user): blocul e pe toata latimea de cand banda de contact
+               a urcat deasupra lui, deci alinierea la stanga il lasa intr-un colt. */
+            .site-topbar__logo { padding: 11px 16px 12px; justify-content: center; }
+            .site-topbar__logo img { height: 52px; }
+            .site-topbar__item { gap: 8px; align-items: center; }
+            .site-topbar__icon { width: 28px; height: 28px; }
+            .site-topbar__icon svg { width: 14px; height: 14px; }
+            .site-topbar__text strong { font-size: 13px; }
+            .site-topbar__text small { font-size: 11.5px; }
+
+            .site-footer__inner { grid-template-columns: 1fr; padding: 36px 20px 24px; gap: 28px; }
+            .site-footer__bottom-inner { flex-direction: column; text-align: center; gap: 6px; padding: 16px 20px; }
+            /* Stivuit si centrat pe telefon, deci alinierea la dreapta se anuleaza — altfel ar bate
+               peste centrare si ar iesi un bloc lipit de marginea dreapta sub unul centrat. */
+            .site-footer__tagline { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <div class="site-topbar">
+            <div class="site-topbar__inner">
+                <a href="https://www.obiectivimobiliare.ro" class="site-topbar__logo">
+                    <img src="https://www.obiectivimobiliare.ro/images/logo.png" alt="Obiectiv Imobiliare" width="500" height="118" decoding="async">
+                </a>
+                <div class="site-topbar__info">
+                    <div class="site-topbar__item">
+                        <span class="site-topbar__icon">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </span>
+                        <span class="site-topbar__text">
+                            <a href="tel:0757030616"><strong>0757 030 616</strong></a>
+                            <a href="mailto:contact@obiectivimobiliare.ro"><small>contact@obiectivimobiliare.ro</small></a>
+                        </span>
+                    </div>
+                    <div class="site-topbar__item site-topbar__item--hours">
+                        <span class="site-topbar__icon">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </span>
+                        <span class="site-topbar__text site-hours">
+                                                            <span class="site-hours__row">
+                                    <span class="site-hours__k">Birou agenție</span>
+                                    <span class="site-hours__v">Luni – Vineri, 09:00 – 17:00</span>
+                                </span>
+                                                            <span class="site-hours__row">
+                                    <span class="site-hours__k">Vizionări</span>
+                                    <span class="site-hours__v">Luni – Vineri, 09:00 – 19:00 · Sâmbătă, cu programare</span>
+                                </span>
+                                                            <span class="site-hours__row">
+                                    <span class="site-hours__k">WhatsApp și email</span>
+                                    <span class="site-hours__v">Luni – Duminică, 09:00 – 20:00</span>
+                                </span>
+                                                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="site-nav">
+            <div class="site-nav__inner">
+                <button type="button" class="site-nav__toggle" id="siteNavToggle" aria-label="Deschide meniul" aria-expanded="false" aria-controls="siteNavCollapsible">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <div class="site-nav__collapsible" id="siteNavCollapsible">
+                    <ul class="site-nav__menu">
+                        <li><a href="https://www.obiectivimobiliare.ro">Acasă</a></li>
+                        <li><a href="https://www.obiectivimobiliare.ro/aplicatia-mobila">Descarcă aplicația</a></li>
+                        <li><a href="https://www.obiectivimobiliare.ro/credite">Credite</a></li>
+                        <li>
+                            <details class="site-nav__dropdown-wrap">
+                                <summary>Vânzări <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></summary>
+                                <ul class="site-nav__dropdown">
+                                    
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/garsoniere">Garsoniere</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/apartamente-2-camere">Apartamente 2 camere</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/apartamente-3-camere">Apartamente 3 camere</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/apartamente-4-camere">Apartamente 4+ camere</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/case-vile">Case / Vile</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/terenuri">Terenuri</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/spatii-comerciale">Spații comerciale</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/birouri">Birouri</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/spatii-industriale">Spații industriale</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/vanzare/hoteluri-pensiuni">Hoteluri și pensiuni</a></li>
+                                                                    </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="site-nav__dropdown-wrap">
+                                <summary>Închirieri <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></summary>
+                                <ul class="site-nav__dropdown">
+                                    
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/inchiriere/garsoniere">Garsoniere</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/inchiriere/apartamente-2-camere">Apartamente 2 camere</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/inchiriere/apartamente-3-camere">Apartamente 3 camere</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/inchiriere/terenuri">Terenuri</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/inchiriere/spatii-comerciale">Spații comerciale</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/inchiriere/birouri">Birouri</a></li>
+                                                                            <li><a href="https://www.obiectivimobiliare.ro/inchiriere/spatii-industriale">Spații industriale și hale</a></li>
+                                                                    </ul>
+                            </details>
+                        </li>
+                        <li><a href="https://www.obiectivimobiliare.ro/despre-noi">Despre noi</a></li>
+                        <li><a href="https://www.obiectivimobiliare.ro/evaluare-imobiliara">Evaluări imobiliare</a></li>
+                        <li><a href="https://www.obiectivimobiliare.ro/blog">Blog</a></li>
+                        <li><a href="https://www.obiectivimobiliare.ro/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="site-nav__auth site-nav__auth--bara">
+                    
+                    <button type="button" class="site-nav__search-toggle" id="siteNavSearchToggle" aria-label="Caută anunțuri" aria-expanded="false" aria-controls="siteNavSearch">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 16.9 16.9"></path></svg>
+                    </button>
+                                            <a href="https://www.obiectivimobiliare.ro/cont/login" aria-label="Autentificare">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 20c0-4 3.4-6.5 7.5-6.5s7.5 2.5 7.5 6.5"></path></svg>
+                            <span>Autentificare</span>
+                        </a>
+                        <a href="https://www.obiectivimobiliare.ro/cont/inregistrare" class="site-nav__cta">Înregistrare</a>
+                                    </div>
+            </div>
+
+            <form class="site-nav__search" id="siteNavSearch" method="GET" action="https://www.obiectivimobiliare.ro" role="search">
+                <div class="site-nav__search-inner">
+                    <label class="site-nav__sr" for="siteNavSearchInput">Caută anunțuri</label>
+                    <input type="search" id="siteNavSearchInput" name="q" value="" placeholder="Caută după titlu sau adresă..." autocomplete="off">
+                    <button type="submit">Caută</button>
+                </div>
+            </form>
+        </nav>
+    </header>
+
+        <section class="bl-hero">
+        <div class="bl-hero__wrap">
+            <h1>Blog</h1>
+            <p>Noutăți, sfaturi și informații din piața imobiliară</p>
+        </div>
+    </section>
+
+    <div class="bl-wrap">
+                    <div class="bl-grid">
+                                    <a class="bl-card" href="https://www.obiectivimobiliare.ro/blog/sa-lucrezi-sau-nu-cu-o-agentie-imobiliara">
+    <div class="bl-media">
+                    <img src="https://www.obiectivimobiliare.ro/storage/blog/cL7SL9ShRlVlKculcxHRW6tOilSSbyi7-w.webp" alt="Să lucrezi sau nu cu o agenție imobiliară?" loading="lazy">
+            </div>
+    <div class="bl-body">
+        
+        <div class="bl-date">11.07.2026</div>
+        <h2>Să lucrezi sau nu cu o agenție imobiliară?</h2>
+        <p class="bl-excerpt">Colaborarea cu o agenție imobiliară este una dintre cele mai importante decizii atunci când vrei să cumperi, să vinzi sa...</p>
+    </div>
+</a>
+                                    <a class="bl-card" href="https://www.obiectivimobiliare.ro/blog/tranzactii-imobiliare-in-mai-2026-cum-a-evoluat-piata-din-romania-si-judetul-neamt">
+    <div class="bl-media">
+                    <img src="https://www.obiectivimobiliare.ro/storage/blog/YOtNI9KrEeMNpK4QtNjIZ6drFDOcggAm-w.webp" alt="Tranzacții imobiliare în mai 2026: cum a evoluat piața din România și județul Neamț" loading="lazy">
+            </div>
+    <div class="bl-body">
+        
+        <div class="bl-date">01.07.2026</div>
+        <h2>Tranzacții imobiliare în mai 2026: cum a evoluat piața din R...</h2>
+        <p class="bl-excerpt">Piața imobiliară din România a înregistrat în luna mai 2026 o ușoară scădere față de aceeași perioadă a anului trecut, c...</p>
+    </div>
+</a>
+                                    <a class="bl-card" href="https://www.obiectivimobiliare.ro/blog/programul-noua-casa-2026-ghid">
+    <div class="bl-media">
+                    <img src="https://www.obiectivimobiliare.ro/storage/blog/HsNyhywTMpdOw6I90XZi8SArAICEKHo0-w.webp" alt="Programul Noua Casă 2026 - Ghid" loading="lazy">
+            </div>
+    <div class="bl-body">
+        
+        <div class="bl-date">08.06.2026</div>
+        <h2>Programul Noua Casă 2026 - Ghid</h2>
+        <p class="bl-excerpt">Programul Noua Casă 2026 reprezintă una dintre cele mai accesibile soluții pentru persoanele care doresc să cumpere o lo...</p>
+    </div>
+</a>
+                                    <a class="bl-card" href="https://www.obiectivimobiliare.ro/blog/credite-venituri-strainatate">
+    <div class="bl-media">
+                    <img src="https://www.obiectivimobiliare.ro/storage/blog/bE81tvkAE2Xok3HhmKtQHzVTCfblx7Uq-w.webp" alt="Credite pentru persoane cu venituri din străinătate – soluții rapide prin Obiectiv Imobiliare" loading="lazy">
+            </div>
+    <div class="bl-body">
+        
+        <div class="bl-date">21.04.2026</div>
+        <h2>Credite pentru persoane cu venituri din străinătate – soluți...</h2>
+        <p class="bl-excerpt">În ultimii ani, tot mai mulți români care lucrează în străinătate își doresc să investească în România, fie prin achiziț...</p>
+    </div>
+</a>
+                                    <a class="bl-card" href="https://www.obiectivimobiliare.ro/blog/credite-rapide-persoane-fizice-si-firme-obiectiv-imobiliare">
+    <div class="bl-media">
+                    <img src="https://www.obiectivimobiliare.ro/storage/blog/INipF2vIywBhkbJNO2JO9ng9Fze04UuK-w.webp" alt="Credite rapide persoane fizice și firme | Obiectiv Imobiliare" loading="lazy">
+            </div>
+    <div class="bl-body">
+        
+        <div class="bl-date">14.04.2026</div>
+        <h2>Credite rapide persoane fizice și firme | Obiectiv Imobiliar...</h2>
+        <p class="bl-excerpt">Într-o piață imobiliară dinamică, accesul la finanțare este esențial atât pentru achiziția unei locuințe, cât și pentru...</p>
+    </div>
+</a>
+                                    <a class="bl-card" href="https://www.obiectivimobiliare.ro/blog/piata-imobiliara-2026-de-ce-cresc-preturile-locuintelor">
+    <div class="bl-media">
+                    <img src="https://www.obiectivimobiliare.ro/storage/blog/8tEhzHWxU9fZBe62SN0Jl0ynnEzrEXzP-w.webp" alt="Piața imobiliară 2026: de ce cresc prețurile locuințelor" loading="lazy">
+            </div>
+    <div class="bl-body">
+        
+        <div class="bl-date">07.03.2026</div>
+        <h2>Piața imobiliară 2026: de ce cresc prețurile locuințelor</h2>
+        <p class="bl-excerpt">Piața imobiliară din România traversează o perioadă interesantă și complexă la începutul acestui an. În contextul unei e...</p>
+    </div>
+</a>
+                                    <a class="bl-card" href="https://www.obiectivimobiliare.ro/blog/obiectiv-imobiliare-a-doua-agentie-imobiliara-din-romania-cu-aplicatie-mobila-dedicata">
+    <div class="bl-media">
+                    <img src="https://www.obiectivimobiliare.ro/storage/blog/kMDTt5W8Ibg3xOz7Qbhzr46gGHqmu9bP-w.webp" alt="Obiectiv Imobiliare – a doua agenție imobiliară din România cu aplicație mobilă dedicată" loading="lazy">
+            </div>
+    <div class="bl-body">
+        
+        <div class="bl-date">06.01.2026</div>
+        <h2>Obiectiv Imobiliare – a doua agenție imobiliară din România...</h2>
+        <p class="bl-excerpt">Piața imobiliară din România intră într-o nouă etapă de digitalizare, iar Obiectiv Imobiliare se poziționează din nou în...</p>
+    </div>
+</a>
+                                    <a class="bl-card" href="https://www.obiectivimobiliare.ro/blog/vine-criza-imobiliara">
+    <div class="bl-media">
+                    <img src="https://www.obiectivimobiliare.ro/storage/blog/cp9zlhckiIb964aSVWSkVr40mdsNraZn-w.webp" alt="Vine criza imobiliara?" loading="lazy">
+            </div>
+    <div class="bl-body">
+        
+        <div class="bl-date">20.08.2025</div>
+        <h2>Vine criza imobiliara?</h2>
+        <p class="bl-excerpt">Ce s-a întâmplat în 2008
+
+
+
+În 2008, piața imobiliară s-a prăbușit rapid. Prețurile locuințelor au scăzut abrupt, iar...</p>
+    </div>
+</a>
+                                    <a class="bl-card" href="https://www.obiectivimobiliare.ro/blog/case-cu-teren-de-vanzare-in-neamt">
+    <div class="bl-media">
+                    <img src="https://www.obiectivimobiliare.ro/storage/blog/xKEX68DNuz2aTXPSrYMq6WqG4uRMA1NP-w.webp" alt="Case cu Teren de Vânzare în Neamț" loading="lazy">
+            </div>
+    <div class="bl-body">
+        
+        <div class="bl-date">23.01.2024</div>
+        <h2>Case cu Teren de Vânzare în Neamț</h2>
+        <p class="bl-excerpt">Regiunea Neamț este cunoscută pentru peisajele sale pitorești, comunități primitoare și accesul facil la facilități mode...</p>
+    </div>
+</a>
+                            </div>
+
+                            <nav class="bl-pagination">
+                    <a href="" class="bl-page bl-page--disabled">‹</a>
+                                            <a href="https://www.obiectivimobiliare.ro/blog?page=1" class="bl-page bl-page--active">1</a>
+                                            <a href="https://www.obiectivimobiliare.ro/blog?page=2" class="bl-page ">2</a>
+                                        <a href="https://www.obiectivimobiliare.ro/blog?page=2" class="bl-page ">›</a>
+                </nav>
+                        </div>
+
+    
+    <footer class="site-footer">
+        
+        <svg class="site-footer__bg-pattern" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+            <g fill="#fff" opacity=".05">
+                <path d="M170 400 L170 300 L215 265 L260 300 L260 400 Z"></path>
+                <rect x="270" y="220" width="70" height="180"></rect>
+                <path d="M270 220 L305 190 L340 220 Z"></path>
+                <rect x="350" y="270" width="55" height="130"></rect>
+                <path d="M350 270 L377 245 L404 270 Z"></path>
+            </g>
+            <g fill="none" stroke="#fff" stroke-width="1.6" opacity=".08">
+                <rect x="284" y="248" width="12" height="12"></rect>
+                <rect x="312" y="248" width="12" height="12"></rect>
+                <rect x="284" y="278" width="12" height="12"></rect>
+                <rect x="312" y="278" width="12" height="12"></rect>
+                <rect x="362" y="296" width="11" height="11"></rect>
+                <rect x="384" y="296" width="11" height="11"></rect>
+                <rect x="362" y="322" width="11" height="11"></rect>
+                <rect x="384" y="322" width="11" height="11"></rect>
+            </g>
+        </svg>
+
+        <div class="site-footer__inner">
+            <div>
+                <div class="site-footer__brand-row">
+                    <a href="https://www.obiectivimobiliare.ro" class="site-footer__brand-logo">
+                        <img src="https://www.obiectivimobiliare.ro/images/logo.png" alt="Obiectiv Imobiliare" width="500" height="118" loading="lazy" decoding="async">
+                    </a>
+                </div>
+                <p class="site-footer__desc">Partenerul tău de încredere în imobiliare. Oferim soluții reale pentru oameni reali, pentru un viitor mai bun.</p>
+                <div class="site-footer__rule"></div>
+                <p class="site-footer__kicker">Acasă începe cu o decizie bună.</p>
+                <div class="site-footer__social">
+                    
+                                                                                                <a href="https://facebook.com/obiectivimobiliare.ro" target="_blank" rel="noopener" aria-label="Facebook">
+                                                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.25-1.5 1.5-1.5H16.5V4.3c-.27-.04-1.2-.11-2.28-.11-2.26 0-3.8 1.38-3.8 3.9V10.5H8v3h2.42V21h3.08z"></path></svg>
+                                                                    </a>
+                                                                                                                        <a href="https://instagram.com/obiectivimobiliare" target="_blank" rel="noopener" aria-label="Instagram">
+                                                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2.72 0-3.06.01-4.12.06-1.06.05-1.79.22-2.43.47a4.92 4.92 0 0 0-1.78 1.16A4.92 4.92 0 0 0 2.5 5.47c-.25.64-.42 1.37-.47 2.43C2 8.96 2 9.3 2 12s.01 3.06.06 4.12c.05 1.06.22 1.79.47 2.43a4.92 4.92 0 0 0 1.16 1.78 4.92 4.92 0 0 0 1.78 1.16c.64.25 1.37.42 2.43.47C8.94 22 9.28 22 12 22s3.06-.01 4.12-.06c1.06-.05 1.79-.22 2.43-.47a4.92 4.92 0 0 0 1.78-1.16 4.92 4.92 0 0 0 1.16-1.78c.25-.64.42-1.37.47-2.43C22 15.06 22 14.72 22 12s-.01-3.06-.06-4.12c-.05-1.06-.22-1.79-.47-2.43a4.92 4.92 0 0 0-1.16-1.78A4.92 4.92 0 0 0 18.53 2.5c-.64-.25-1.37-.42-2.43-.47C15.06 2 14.72 2 12 2zm0 1.8c2.67 0 2.99.01 4.04.06.98.04 1.5.21 1.86.35.47.18.8.4 1.15.75.35.35.57.68.75 1.15.14.36.31.88.35 1.86.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.98-.21 1.5-.35 1.86-.18.47-.4.8-.75 1.15-.35.35-.68.57-1.15.75-.36.14-.88.31-1.86.35-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.98-.04-1.5-.21-1.86-.35a3.1 3.1 0 0 1-1.15-.75 3.1 3.1 0 0 1-.75-1.15c-.14-.36-.31-.88-.35-1.86C3.81 14.99 3.8 14.67 3.8 12s.01-2.99.06-4.04c.04-.98.21-1.5.35-1.86.18-.47.4-.8.75-1.15.35-.35.68-.57 1.15-.75.36-.14.88-.31 1.86-.35C9.01 3.81 9.33 3.8 12 3.8zm0 3.05a5.15 5.15 0 1 0 0 10.3 5.15 5.15 0 0 0 0-10.3zm0 8.5a3.35 3.35 0 1 1 0-6.7 3.35 3.35 0 0 1 0 6.7zm6.56-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"></path></svg>
+                                                                    </a>
+                                                                                                                        <a href="https://tiktok.com/@obiectivimobiliare" target="_blank" rel="noopener" aria-label="TikTok">
+                                                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .77-5.06V9.69a5.67 5.67 0 0 0-.77-.05A5.68 5.68 0 1 0 15.54 15.3V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.3 4.3 0 0 1-3.24-1.48z"></path></svg>
+                                                                    </a>
+                                                                                                                        <a href="https://youtube.com/@obiectivimobiliare1752" target="_blank" rel="noopener" aria-label="YouTube">
+                                                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.2a2.76 2.76 0 0 0-1.94-1.96C17.88 4.75 12 4.75 12 4.75s-5.88 0-7.64.49A2.76 2.76 0 0 0 2.42 7.2 28.8 28.8 0 0 0 1.93 12a28.8 28.8 0 0 0 .49 4.8 2.76 2.76 0 0 0 1.94 1.96c1.76.49 7.64.49 7.64.49s5.88 0 7.64-.49a2.76 2.76 0 0 0 1.94-1.96 28.8 28.8 0 0 0 .49-4.8 28.8 28.8 0 0 0-.49-4.8zM9.9 15.02V8.98L15.27 12l-5.37 3.02z"></path></svg>
+                                                                    </a>
+                                                                                                                                </div>
+
+                <div class="site-footer__legal">
+                    <p>SC Obiectiv Imobiliare SRL ®</p>
+                    <p>CUI RO33072496 · Reg. Com. J2014000249275</p>
+                    <p>EUID ROONRC.J2014000249275</p>
+                </div>
+            </div>
+
+            <details class="site-footer__acc" open="">
+                <summary tabindex="-1">
+                    <h4>Linkuri utile</h4>
+                    <svg class="site-footer__acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </summary>
+                <div class="site-footer__links">
+                    <a href="https://www.obiectivimobiliare.ro/despre-noi"><span>Despre noi</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro"><span>Proprietăți noi</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro/despre-noi#echipa"><span>Agenți</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro/blog"><span>Blog</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    
+                                            <a href="https://www.obiectivimobiliare.ro/termeni-si-conditii"><span>Termeni și condiții</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                                            <a href="https://www.obiectivimobiliare.ro/politica-de-confidentialitate"><span>Politica de confidențialitate</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                                            <a href="https://www.obiectivimobiliare.ro/politica-de-cookies"><span>Politica de cookies</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                                        
+                    <a href="https://www.obiectivimobiliare.ro/blog?cookies=1"><span>Preferințe cookie-uri</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro/contact"><span>Contact</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                </div>
+            </details>
+
+            <details class="site-footer__acc" open="">
+                <summary tabindex="-1">
+                    <h4>Servicii / Proprietăți</h4>
+                    <svg class="site-footer__acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </summary>
+                <div class="site-footer__services">
+                    <a href="https://www.obiectivimobiliare.ro?transaction=sale"><span>Vânzare proprietăți</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro?transaction=rent"><span>Închiriere proprietăți</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro/vanzare/apartamente"><span>Proprietăți rezidențiale</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro/vanzare/spatii-comerciale"><span>Proprietăți comerciale</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro/vanzare/terenuri"><span>Terenuri</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro/evaluare-imobiliara"><span>Evaluare imobiliară</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro/despre-noi#servicii"><span>Consultanță imobiliară</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                    <a href="https://www.obiectivimobiliare.ro/despre-noi#servicii"><span>Management proprietăți</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg></a>
+                </div>
+            </details>
+
+            <div class="site-footer__contact">
+                <h4>Contact</h4>
+                <div class="site-footer__contact-row">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <a href="tel:0757030616">0757 030 616</a>
+                </div>
+                <div class="site-footer__contact-row">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline></svg>
+                    <a href="mailto:contact@obiectivimobiliare.ro">contact@obiectivimobiliare.ro</a>
+                </div>
+                <div class="site-footer__contact-row">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span>Piața Mihail Kogălniceanu 2, Complex Pietricica, Et. 1, Piatra-Neamț</span>
+                </div>
+
+                
+                <div class="site-footer__apps">
+                    <p>Descarcă aplicația noastră</p>
+                    <small>Caută proprietăți oriunde, oricând.</small>
+                    <div class="site-footer__apps-row">
+                                                                                    <a href="https://play.google.com/store/apps/details?id=com.obiectivimobiliare.app" target="_blank" rel="noopener"><img src="https://www.obiectivimobiliare.ro/storage/branding/UXNJ15csaROstBDINRdQtejT.png" alt="Disponibil pe Google Play" width="336" height="90" loading="lazy" decoding="async"></a>
+                                                                                                                                        <a href="https://apps.apple.com/ro/app/obiectiv-imobiliare/id6754935818" target="_blank" rel="noopener"><img src="https://www.obiectivimobiliare.ro/storage/branding/KJPxJPyjGxqgIs0h8COAl9LQ.png" alt="Descarcă din App Store" width="336" height="103" loading="lazy" decoding="async"></a>
+                                                                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="site-footer__bottom">
+            <div class="site-footer__bottom-inner">
+                <span>© Obiectiv Imobiliare ® — Marcă înregistrată — Toate drepturile rezervate.</span>
+                <span class="site-footer__tagline">
+                    Mai mult decât proprietăți. <strong>Oameni. Planuri. Viitor.</strong>
+                    <em class="site-footer__by">Website realizat de <a href="https://www.digitalmediadesign.ro">Digital Media Design</a></em>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script>
+        (function () {
+            var acc = document.querySelectorAll('.site-footer__acc');
+            if (!acc.length || !window.matchMedia) return;
+
+            var mq = window.matchMedia('(max-width: 860px)');
+
+            function aplica() {
+                for (var i = 0; i < acc.length; i++) {
+                    var rezumat = acc[i].querySelector('summary');
+                    if (mq.matches) {
+                        acc[i].removeAttribute('open');
+                        if (rezumat) rezumat.removeAttribute('tabindex');
+                    } else {
+                        acc[i].setAttribute('open', '');
+                        if (rezumat) rezumat.setAttribute('tabindex', '-1');
+                    }
+                }
+            }
+
+            aplica();
+            if (mq.addEventListener) mq.addEventListener('change', aplica);
+            else if (mq.addListener) mq.addListener(aplica);
+        })();
+    </script>
+
+    <script>
+        (function () {
+            var toggle = document.getElementById('siteNavToggle');
+            var menu = document.getElementById('siteNavCollapsible');
+            if (!toggle || !menu) return;
+            var cauta = document.getElementById('siteNavSearch');
+            var cautaBtn = document.getElementById('siteNavSearchToggle');
+            toggle.addEventListener('click', function () {
+                var open = menu.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                // Meniul si cautarea ocupa acelasi loc, sub bara: nu pot fi deschise amandoua.
+                if (open && cauta) {
+                    cauta.classList.remove('is-open');
+                    if (cautaBtn) { cautaBtn.setAttribute('aria-expanded', 'false'); }
+                }
+            });
+            if (cauta && cautaBtn) {
+                cautaBtn.addEventListener('click', function () {
+                    var open = cauta.classList.toggle('is-open');
+                    cautaBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    if (!open) { return; }
+                    menu.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    // Fara focus, pe telefon campul apare dar trebuie apasat inca o data.
+                    var camp = document.getElementById('siteNavSearchInput');
+                    if (camp) { camp.focus(); }
+                });
+            }
+            menu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    menu.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Dropdown-urile <details> (ex. "Vânzări") se inchid la click in afara lor.
+            var dropdowns = document.querySelectorAll('.site-nav__dropdown-wrap');
+            document.addEventListener('click', function (e) {
+                dropdowns.forEach(function (d) {
+                    if (d.open && !d.contains(e.target)) {
+                        d.removeAttribute('open');
+                    }
+                });
+            });
+
+            // 21.09.2026, cerere user: pe desktop (mouse), meniul sa se deschida la HOVER, nu doar
+            // la click - "cand dau cu mouse, nu se deschide". Verificat o singura data la incarcare
+            // (nu la fiecare resize - suficient in practica, nimeni nu schimba desktop<->mobil in
+            // timp ce navigheaza). Pe touch (fara hover), ramane strict click-ul nativ <details> -
+            // hover n-are sens acolo, ar bloca accidental primul tap ca "hover fals".
+            var supportsHover = window.matchMedia
+                && window.matchMedia('(hover: hover) and (min-width: 861px)').matches;
+            if (supportsHover) {
+                dropdowns.forEach(function (d) {
+                    var closeTimer = null;
+                    d.addEventListener('mouseenter', function () {
+                        clearTimeout(closeTimer);
+                        d.setAttribute('open', '');
+                    });
+                    d.addEventListener('mouseleave', function () {
+                        // mica intarziere: daca mouse-ul trece rapid de pe "Vânzări" pe lista de
+                        // dedesubt, nu vrem sa se inchida chiar inainte sa ajunga acolo.
+                        closeTimer = setTimeout(function () {
+                            d.removeAttribute('open');
+                        }, 150);
+                    });
+                });
+            }
+        })();
+    </script>
+
+    
+    <div id="alesia-chat-root"><div class="alesia-fab" role="button" tabindex="0" aria-label="Deschide conversația cu Alesia"><div class="alesia-fab-text">Alesia<small>Agent virtual</small></div><div class="alesia-fab-inner"><div class="alesia-fab-status"></div></div></div><div class="alesia-win "><div class="a-header"><div class="a-header-profile"><div class="a-avatar"><div class="a-status-dot" style="position: absolute; bottom: 2px; right: 2px; border: 2px solid var(--BLUE);"></div></div><div><p class="a-name">Alesia</p><div class="a-status-text"><div class="a-status-dot"></div>Agent AI · Disponibilă acum</div></div></div><div style="display: flex; gap: 8px;"><button class="a-header-btn" title="Conversație nouă"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg></button><button class="a-header-btn" title="Închide"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div></div><div class="a-subheader"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span class="a-subheader-text">Obiectiv Imobiliare · județul Neamț</span></div><div class="a-chat-body"><div></div></div><div class="a-input-area"><div class="a-input-row"><textarea class="a-input-field" placeholder="Scrieți un mesaj..." rows="1"></textarea><button class="a-send-btn" aria-label="Trimite mesajul" disabled=""><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button></div><div class="a-footer">Powered by Alesia AI · obiectivimobiliare.ro</div></div></div></div>
+
+<!-- ⭐ Fontul NU se mai cere aici: layout-ul aduce aceeasi familie, cu aceleasi
+     grosimi, pentru toata pagina. Doua foi de stil externe in loc de una,
+     amandoua blocand afisarea. Pe WordPress avea sens — acolo tema putea sa
+     n-aiba fontul.
+     ⚠️ Comentariu HTML, nu Blade: suntem inauntrul blocului literal, unde Blade nu
+     interpreteaza nimic si un comentariu de-al lui ar aparea ca text pe pagina. -->
+
+<style>
+  :root {
+    --ALESIA-IMG: url('/storage/chat/alesia.png');
+    --BLUE: #0A84FF; --BLUE-DARK: #0066CC; --BLUE-LIGHT: #E8F2FF; --BLUE-MID: #4DA6FF;
+    --GOLD: #D68B1A; --BG: #F0F4F8; --CARD: #FFFFFF; --TEXT-PRIMARY: #0D1B2A;
+    --TEXT-SECONDARY: #6B7A8D; --TEXT-LIGHT: #A8B4C0; --BORDER: #E2E8F0;
+    --GREEN: #34C759; --RED: #FF453A;
+  }
+  html, body {
+	overflow-x: hidden;
+	max-width: 100vw;
+  }
+
+  #alesia-chat-root { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+
+	
+  /* FAB - ON THE RIGHT SIDE, name tag to the LEFT of circle */
+  .alesia-fab {
+  	position: fixed; bottom: 25px; right: 25px; z-index: 9999; cursor: pointer;
+  	transition: transform 0.2s ease; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .alesia-fab:hover { transform: scale(1.02); }
+
+  /* Name tag - on the LEFT side of the circle */
+.alesia-fab-text {
+	background: var(--TEXT-PRIMARY); color: white;
+	font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+	order: -1;
+	text-align: center;
+	line-height: 1.3;
+}
+.alesia-fab-text small {
+	display: block;
+	font-size: 10px;
+	font-weight: 500;
+	opacity: 0.9;
+	margin-top: 2px;
+}
+
+  .alesia-fab-subtext {
+	background: var(--BLUE);
+	color: white;
+	font-size: 10px;
+	font-weight: 600;
+	padding: 4px 10px;
+	border-radius: 12px;
+	white-space: nowrap;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+	margin-top: 2px;
+  }
+
+  .alesia-fab-inner {
+    width: 64px; height: 64px; border-radius: 50%; 
+    background: var(--ALESIA-IMG) center/cover no-repeat, var(--BLUE);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 22px rgba(10, 132, 255, 0.45); position: relative; flex-shrink: 0;
+    border: 3px solid white;
+    overflow: hidden;
+  }
+  .alesia-fab-status {
+    position: absolute; bottom: 3px; right: 3px; width: 14px; height: 14px;
+    background: var(--GREEN); border-radius: 50%; border: 2.5px solid white;
+    z-index: 10;
+  }
+  .alesia-fab-badge {
+    position: absolute; top: -3px; right: -3px; min-width: 20px; height: 20px;
+    background: var(--RED); border-radius: 50%; border: 2px solid white;
+    display: flex; align-items: center; justify-content: center; padding: 0 4px;
+    z-index: 10;
+  }
+  .alesia-fab-badge span { color: white; font-size: 10px; font-weight: 700; }
+
+  /* Chat Window */
+  .alesia-win {
+    position: fixed; bottom: 105px; right: 25px; width: 400px; height: 650px;
+    max-height: 85vh; background: var(--BG); border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.18); display: flex; flex-direction: column;
+    overflow: hidden; z-index: 10000; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    opacity: 0; transform: translateY(30px) scale(0.9); pointer-events: none;
+  }
+  .alesia-win.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+
+  /* MOBILE */
+  @media (max-width: 480px) {
+  .alesia-fab { 
+    bottom: 80px; 
+    right: 10px; /* mai puțin spațiu la margine */
+    max-width: calc(100vw - 20px); /* nu depășește ecranul */
+  }
+    .alesia-fab-text { font-size: 11px; padding: 6px 10px; }
+	.alesia-fab-text small { font-size: 9px; }
+	.alesia-fab-subtext { font-size: 9px; padding: 3px 8px; }
+    .alesia-fab-inner { width: 56px; height: 56px; }
+	  .a-prop-card {
+  max-width: 100%;
+}
+.a-prop-img-wrap, .a-prop-img, .a-prop-img-ph {
+  max-width: 100%;
+}
+
+    .alesia-win { 
+  bottom: 0; 
+  right: 0; 
+  left: 0;      /* adăugat */
+  width: 100vw; /* 100vw în loc de 100% */
+  max-width: 100vw; /* adăugat */
+  height: 100%; 
+  max-height: 100%; 
+  border-radius: 0;
+  transform: translateY(100%) scale(1); 
+}
+    .alesia-win.open { transform: translateY(0) scale(1); }
+  }
+
+  /* Header with Alesia Image */
+  .a-header { 
+    background: var(--BLUE); padding: 14px 18px; color: white;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 4px 12px rgba(10,132,255,0.3);
+  }
+  .a-header-profile { display: flex; align-items: center; gap: 14px; }
+  .a-avatar {
+    width: 50px; height: 50px; border-radius: 50%; 
+    background: var(--ALESIA-IMG) center/cover no-repeat, var(--BLUE-DARK);
+    border: 2.5px solid rgba(255,255,255,0.4); position: relative; flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+  .a-name { font-weight: 800; font-size: 17px; margin: 0; }
+  .a-status-text { font-size: 12px; opacity: 0.9; display: flex; align-items: center; gap: 5px; }
+  .a-status-dot { width: 8px; height: 8px; background: var(--GREEN); border-radius: 50%; }
+  .a-status-dot.expired { background: var(--TEXT-LIGHT); }
+  .a-header-btn {
+    width: 38px; height: 38px; border-radius: 12px; background: rgba(255,255,255,0.15);
+    border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s; flex-shrink: 0;
+  }
+  .a-header-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
+  .a-header-btn:active { transform: scale(0.95); }
+
+  .a-subheader {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 8px 16px; background: var(--CARD); border-bottom: 1px solid var(--BORDER);
+    flex-shrink: 0;
+  }
+  .a-subheader-text { font-size: 11px; color: var(--TEXT-LIGHT); font-weight: 500; }
+
+  .a-chat-body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; -webkit-overflow-scrolling: touch; }
+  .a-msg { max-width: 90%; display: flex; flex-direction: column; }
+  @media (max-width: 480px) { .a-msg { max-width: 95%; } }
+  .a-msg.bot { align-self: flex-start; }
+  .a-msg.user { align-self: flex-end; }
+
+  .a-bubble { 
+    padding: 14px 18px; border-radius: 20px; font-size: 14.5px; line-height: 1.55;
+    white-space: pre-wrap; word-wrap: break-word;
+  }
+  .bot .a-bubble { background: white; color: var(--TEXT-PRIMARY); border-bottom-left-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .bot .a-bubble.error { background: #FFF5F5; border: 1px solid #FFD5D5; }
+  .user .a-bubble { background: var(--BLUE); color: white; border-bottom-right-radius: 6px; }
+  .a-time { font-size: 11px; color: var(--TEXT-LIGHT); margin-top: 5px; padding: 0 4px; }
+
+  /* Property Cards */
+  .a-prop-list { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
+  .a-prop-card {
+    background: var(--BG); border-radius: 16px; border: 1px solid var(--BORDER);
+    overflow: hidden; display: flex; cursor: pointer; text-decoration: none; color: inherit;
+    transition: all 0.25s ease; position: relative;
+  }
+  .a-prop-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+  .a-prop-card:active { transform: scale(0.98); }
+  .a-prop-link-overlay {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10;
+  }
+  .a-prop-img-wrap { width: 120px; flex-shrink: 0; background: var(--BORDER); position: relative; }
+  @media (max-width: 480px) { .a-prop-img-wrap { width: 110px; } }
+  .a-prop-img { width: 120px; height: 120px; object-fit: cover; display: block; }
+  @media (max-width: 480px) { .a-prop-img { width: 110px; height: 110px; } }
+  .a-prop-img-ph { width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; color: var(--TEXT-LIGHT); }
+  @media (max-width: 480px) { .a-prop-img-ph { width: 110px; height: 110px; } }
+  .a-prop-badge { position: absolute; top: 8px; left: 8px; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 800; color: white; z-index: 5; }
+  .a-prop-info { padding: 14px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; position: relative; z-index: 5; }
+  .a-prop-title { font-size: 14px; font-weight: 700; color: var(--TEXT-PRIMARY); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .a-prop-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; font-size: 12px; color: var(--TEXT-SECONDARY); }
+  .a-prop-price { font-size: 16px; font-weight: 800; }
+  .a-prop-btn { font-size: 12px; font-weight: 700; border-radius: 10px; padding: 6px 12px; display: inline-flex; align-items: center; gap: 4px; }
+  .a-more { font-size: 13px; color: var(--BLUE); font-weight: 600; text-align: center; padding: 10px 0; }
+
+  .a-chips { display: flex; gap: 10px; overflow-x: auto; padding: 10px 0; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .a-chips::-webkit-scrollbar { display: none; }
+  .a-chip {
+    white-space: nowrap; background: white; border: 1.5px solid rgba(10, 132, 255, 0.25);
+    color: var(--BLUE); padding: 10px 16px; border-radius: 24px; font-size: 13px;
+    font-weight: 600; cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+  }
+  .a-chip:hover { background: var(--BLUE-LIGHT); border-color: var(--BLUE); transform: translateY(-1px); }
+  .a-chip:active { transform: scale(0.95); }
+
+  /* Typing with Alesia avatar */
+  .a-typing { display: flex; align-items: flex-end; gap: 10px; margin: 6px 0; }
+  .a-typing-av { 
+    width: 36px; height: 36px; border-radius: 50%; 
+    background: var(--ALESIA-IMG) center/cover no-repeat, var(--BLUE);
+    display: flex; align-items: center; justify-content: center; 
+    font-size: 14px; font-weight: 800; color: white; 
+    margin-bottom: 18px; flex-shrink: 0; border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  .a-typing-bubble { display: flex; gap: 6px; background: white; border-radius: 20px; border-bottom-left-radius: 6px; padding: 16px 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); align-items: center; }
+  .a-typing-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--BLUE-MID); }
+  .a-typing-dot:nth-child(1) { animation: bounce 1.2s 0s infinite ease-in-out; }
+  .a-typing-dot:nth-child(2) { animation: bounce 1.2s 0.15s infinite ease-in-out; }
+  .a-typing-dot:nth-child(3) { animation: bounce 1.2s 0.3s infinite ease-in-out; }
+  @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-7px); } }
+
+  .a-input-area { background: white; border-top: 1px solid var(--BORDER); padding: 14px 16px 22px; }
+  .a-input-area.focused { border-top-color: rgba(10,132,255,0.6); }
+  .a-input-row {
+    display: flex; background: var(--BG); border: 1.5px solid var(--BORDER);
+    border-radius: 28px; padding: 8px 10px 8px 18px; align-items: center; gap: 10px;
+    transition: all 0.2s;
+  }
+  .a-input-row:focus-within { border-color: rgba(10,132,255,0.45); box-shadow: 0 0 0 3px rgba(10,132,255,0.08); }
+  .a-input-field {
+    flex: 1; border: none; background: transparent; outline: none;
+    font-size: 15.5px; padding: 10px 0; font-family: inherit; resize: none; max-height: 110px; min-height: 24px; line-height: 1.5;
+  }
+  .a-input-field::placeholder { color: var(--TEXT-LIGHT); }
+  .a-send-btn {
+    width: 44px; height: 44px; border-radius: 50%; background: var(--BLUE);
+    border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(10,132,255,0.4); transition: all 0.15s; flex-shrink: 0;
+  }
+  .a-send-btn:hover:not(:disabled) { opacity: 0.9; transform: scale(1.05); }
+  .a-send-btn:active:not(:disabled) { transform: scale(0.95); }
+  .a-send-btn:disabled { background: var(--TEXT-LIGHT); box-shadow: none; cursor: default; }
+
+  .a-gdpr { 
+    background: white; border-top: 1px solid var(--BORDER);
+    padding: 18px 18px 24px; box-shadow: 0 -6px 24px rgba(0,0,0,0.1);
+  }
+  .a-gdpr-title { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .a-gdpr-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--BLUE-LIGHT); display: flex; align-items: center; justify-content: center; }
+  .a-gdpr h4 { font-size: 15px; font-weight: 800; color: var(--TEXT-PRIMARY); margin: 0; }
+  .a-gdpr p { font-size: 14px; color: var(--TEXT-SECONDARY); line-height: 1.6; margin: 0 0 16px 0; }
+  .a-gdpr-btns { display: flex; gap: 12px; }
+  .a-btn { flex: 1; padding: 14px; border-radius: 14px; font-weight: 700; border: none; cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.15s; }
+  .a-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+  .a-btn:active { transform: translateY(0); }
+  .a-btn-yes { background: var(--BLUE); color: white; box-shadow: 0 6px 18px rgba(10,132,255,0.35); }
+  .a-btn-no { background: var(--BG); color: var(--TEXT-SECONDARY); border: 1.5px solid var(--BORDER); }
+
+  .a-expired { display: flex; align-items: center; gap: 12px; background: white; border-top: 1px solid var(--BORDER); padding: 16px 18px; }
+  .a-expired-text { flex: 1; font-size: 14px; color: var(--TEXT-SECONDARY); font-weight: 500; }
+  .a-reload-btn { display: flex; align-items: center; gap: 6px; background: var(--BLUE); color: white; border: none; border-radius: 12px; padding: 12px 18px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+  .a-reload-btn:hover { opacity: 0.9; }
+  .a-reload-btn:active { transform: scale(0.95); }
+
+  .a-footer { text-align: center; font-size: 12px; color: var(--TEXT-LIGHT); margin-top: 10px; font-weight: 500; }
+
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  .a-link { color: #1a73e8; text-decoration: underline; word-break: break-word; }
+</style>
+
+
+
+
+
+    <script defer="" src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin=""></script>
+    <script defer="" src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin=""></script>
+    <script defer="" src="https://www.obiectivimobiliare.ro/js/alesia-chat.js?v=1791971529"></script>
+
+    
+            <style>
+    .oi-ck {
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        width: min(400px, calc(100vw - 40px));
+        box-sizing: border-box;
+        /* ⚠️ Sub bulina chatului (9999), peste tot ce e in pagina (maximul din layout e 70).
+           Asa un chat deschis acopera bara, in loc sa se bata cu ea. */
+        z-index: 9998;
+        padding: 16px 18px;
+        border-radius: 14px;
+        background: #fff;
+        border: 1px solid rgb(4 30 66 / 0.1);
+        box-shadow: 0 10px 30px rgb(4 30 66 / 0.14), 0 2px 6px rgb(4 30 66 / 0.08);
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--color-primary, #041E42);
+        /* Intrarea: nu se vede saltul, fiindca elementul e fixed — zero deplasare de continut. */
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .oi-ck--in { opacity: 1; transform: none; }
+
+    /* ⚠️ Cine a cerut sa nu se miste nimic pe ecran nu primeste animatia, dar primeste bara. */
+    @media (prefers-reduced-motion: reduce) {
+        .oi-ck { transition: none; opacity: 1; transform: none; }
+    }
+
+    .oi-ck__t { margin: 0 0 12px; }
+
+    .oi-ck__t a {
+        color: var(--color-primary, #041E42);
+        text-decoration: underline;
+        text-decoration-color: var(--color-accent, #F5C518);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+    }
+
+    .oi-ck__b { display: flex; gap: 8px; }
+
+    /* ⛔ Cele doua butoane au ACEEASI marime si aceeasi greutate de text, deliberat: un refuz mai
+       greu de apasat decat o acceptare nu e doar un tipar neloial, e si neconform. */
+    .oi-ck__b button {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 9px 12px;
+        border-radius: 9px;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1.5px solid var(--color-primary, #041E42);
+        white-space: nowrap;
+    }
+
+    .oi-ck__b .oi-ck-da {
+        background: var(--color-primary, #041E42);
+        color: #fff;
+    }
+
+    .oi-ck__b .oi-ck-nu {
+        background: transparent;
+        color: var(--color-primary, #041E42);
+    }
+
+    .oi-ck__b button:hover { opacity: .88; }
+
+    .oi-ck__b button:focus-visible {
+        outline: 2px solid var(--color-accent, #F5C518);
+        outline-offset: 2px;
+    }
+
+    /* Pe telefon bara urca DEASUPRA bulinei de chat (aceea e la bottom:25px, 64px inalta) —
+       altfel i-ar acoperi colţul si ar arata neglijent. */
+    @media (max-width: 560px) {
+        .oi-ck {
+            left: 12px;
+            right: 12px;
+            width: auto;
+            bottom: 100px;
+            padding: 14px 15px;
+        }
+    }
+</style>
+
+<div class="oi-ck oi-ck--in" id="oi-ck" role="region" aria-label="Preferințe cookie-uri">
+    <p class="oi-ck__t">
+                    Folosim cookie-uri necesare funcționării site-ului. Cu acordul tău adăugăm și măsurarea
+            anonimă a traficului.
+                            <a href="https://www.obiectivimobiliare.ro/politica-de-cookies">Detalii</a>
+            </p>
+
+    <div class="oi-ck__b">
+        <button type="button" class="oi-ck-nu" data-ck="necesare">Doar necesare</button>
+        <button type="button" class="oi-ck-da" data-ck="toate">Accept</button>
+    </div>
+</div>
+
+<script>
+(function () {
+    var bara = document.getElementById('oi-ck');
+    if (!bara) { return; }
+
+    // ⭐ Pornirea masurarii se defineste DOAR cand exista un identificator si omul inca n-a
+    // acceptat. Asa, la apasarea pe „Accept", se numara si pagina curenta — adica exact pagina de
+    // intrare si sursa, cele mai valoroase. Fara asta, prima vizita s-ar pierde mereu.
+            window.__oiMasoara = function () {
+            if (window.__oiMasuratPornit) { return; }
+            window.__oiMasuratPornit = true;
+
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-K6NZC6RN9Z';
+            document.head.appendChild(s);
+
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () { window.dataLayer.push(arguments); };
+            window.gtag('js', new Date());
+            window.gtag('config', "G-K6NZC6RN9Z");
+        };
+    
+    function alege(valoare) {
+        // ⚠️ Fara `httponly` — e scris din browser, deci trebuie sa fie vizibil pentru el. Si e
+        // scutit de criptarea Laravel (vezi bootstrap/app.php), altfel serverul l-ar citi ca gol.
+        document.cookie = 'oi_cookies=' + valoare
+            + ';path=/;max-age=15724800;secure;samesite=lax';
+
+        bara.classList.remove('oi-ck--in');
+        window.setTimeout(function () { if (bara.parentNode) { bara.parentNode.removeChild(bara); } }, 240);
+
+        if (valoare === 'toate' && typeof window.__oiMasoara === 'function') {
+            window.__oiMasoara();
+        }
+    }
+
+    var butoane = bara.querySelectorAll('[data-ck]');
+    for (var i = 0; i < butoane.length; i++) {
+        butoane[i].addEventListener('click', function () { alege(this.getAttribute('data-ck')); });
+    }
+
+    // Intrarea, dupa prima randare: nu se vede niciun salt, si nu se amana afisarea paginii.
+    window.requestAnimationFrame(function () { bara.classList.add('oi-ck--in'); });
+})();
+</script>
+    
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;699ab4473c3b4eb3991e18cc8b5c565c&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+</body></html>
