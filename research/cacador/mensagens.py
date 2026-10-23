@@ -10,7 +10,7 @@ Colunas do TSV (com cabeçalho): corrida slug nome descricao tel whatsapp morada
   estado    publicada / por fazer / tirada (motivo)
 Só as linhas «publicada» levam mensagem; as outras aparecem numa tabela no fim.
 """
-import csv, sys, urllib.parse
+import csv, os, sys, urllib.parse
 
 # Mensagem nova do Tomás (08/10, a partir da Star Service Auto do lote 4); texto igual ao de sites/demos-pachecost/LOTE4-IASI.md
 # Só a saudação roda (09/10: o WhatsApp bloqueou o Tomás por spam com textos iguais de 10 em 10 s); o resto é fixo.
@@ -34,12 +34,12 @@ def tip(cat):
     return "afaceri"
 
 
-MSG_B = ("Bună ziua! Caut 3 {tip} ambițioase. Ar fi {nome} una dintre ele?\n\n"
-         "La Pacheco Studios folosim IA ca să reducem la jumătate timpul pierdut cu follow-up, programări și CRM "
-         "și să scalăm facturarea.\n\n"
-         "Am pregătit o scurtă demonstrație pentru {nome}: {demo}\n\n"
-         "Aș vrea să vă prezint personal, într-o întâlnire, triajul afacerii dumneavoastră. Sunt în Iași.\n"
-         "Mai multe detalii: ro.pachecost.com\n\n"
+# 23/10 (Tomás): curta (30–50 palavras), Pacheco Studios como consultora de IA, a demo é o gatilho de uma potencial parceria.
+MSG_B = ("Bună ziua! Sunt Thomas, de la Pacheco Studios, consultanță în sisteme cu IA.\n\n"
+         "Am pregătit o demonstrație pentru {nome}: {demo}\n\n"
+         "Dacă vă place, ne vedem în Iași și discutăm un potențial parteneriat: cum reducem la jumătate "
+         "timpul pierdut cu programări și follow-up.\n\n"
+         "Mai multe: ro.pachecost.com\n"
          "Voi fi pregătit.")
 
 
@@ -60,14 +60,22 @@ def main(caminho):
     linhas = list(csv.DictReader(open(caminho, encoding="utf-8"), delimiter="\t"))
     data = caminho.rsplit("/", 1)[-1].split(".")[0]
     pub = [l for l in linhas if l["estado"].strip() == "publicada"]
+    desde = os.environ.get("DESDE")  # slug a partir do qual se imprime (os anteriores já foram enviados)
+    if desde:
+        ordem_pub = [l["slug"] for c in ("A", "B") for z in dict.fromkeys(l["zona"] for l in pub if l["corrida"] == c)
+                     for l in pub if l["corrida"] == c and l["zona"] == z]
+        pub = [l for l in pub if ordem_pub.index(l["slug"]) >= ordem_pub.index(desde)]
     print(f"# Caçador de Iași — {data}\n")
     print(f"{len(pub)} demos prontas. Nenhum número com «WhatsApp: ?» está confirmado: toca em **Abrir no WhatsApp**; "
           "se o WhatsApp disser que o número não está registado, usa **Enviar por SMS** (mesmo texto) ou passa lá "
           "com a demo aberta. Depois diz-me quais falharam.\n")
     print("**Envio:** no mínimo **1 minuto** entre mensagens (a 09/10 o WhatsApp bloqueou um dia por envios de 10 em 10 s). "
           "Cada mensagem leva o nome e a demo do negócio; mesmo assim, não as envies coladas.\n")
-    print("**Atenção:** as demos só ficam no ar depois de mandares publicar (diz «publica» no thread do caçador). "
-          "Envia as mensagens depois disso.\n")
+    if os.environ.get("NO_AR"):
+        print("**As demos já estão no ar** (testadas, 200 em todas).\n")
+    else:
+        print("**Atenção:** as demos só ficam no ar depois de mandares publicar (diz «publica» no thread do caçador). "
+              "Envia as mensagens depois disso.\n")
     ordem = 0
     for corrida in ("A", "B"):
         grupo = [l for l in pub if l["corrida"] == corrida]
