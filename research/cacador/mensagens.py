@@ -72,7 +72,7 @@ def main(caminho):
     print("**Envio:** no mínimo **1 minuto** entre mensagens (a 09/10 o WhatsApp bloqueou um dia por envios de 10 em 10 s). "
           "Cada mensagem leva o nome e a demo do negócio; mesmo assim, não as envies coladas.\n")
     if os.environ.get("NO_AR"):
-        print("**As demos já estão no ar** (testadas, 200 em todas).\n")
+        print("**As demos já estão no ar.**\n")
     else:
         print("**Atenção:** as demos só ficam no ar depois de mandares publicar (diz «publica» no thread do caçador). "
               "Envia as mensagens depois disso.\n")
