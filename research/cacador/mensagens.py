@@ -37,7 +37,7 @@ def tip(cat):
 # 23/10 (Tomás): curta (30–50 palavras), Pacheco Studios como consultora de IA, a demo é o gatilho de uma potencial parceria.
 MSG_B = ("Bună ziua! Sunt Thomas, de la Pacheco Studios, consultanță în sisteme cu IA.\n\n"
          "Am pregătit o demonstrație pentru {nome}: {demo}\n\n"
-         "Dacă vă place, ne vedem în Iași și discutăm un potențial parteneriat: cum reducem la jumătate "
+         "Dacă vă place, ne vedem în Iași și discutăm un potențial parteneriat: cum recuperăm "
          "timpul pierdut cu programări și follow-up.\n\n"
          "Mai multe: ro.pachecost.com\n"
          "Voi fi pregătit.")
