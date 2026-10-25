@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Receptionist Console</title>
+<meta name="description" content="Console where a real estate agency sets the facts and rules its AI receptionist cites in every reply. Demo data, fictional agency.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f0ea;--card:#fff;--ink:#0f1c26;--mut:#66707c;--line:#e3ddd2;--brass:#a8792e;--brasssoft:#f5ead6;--ok:#1d7a52;--oksoft:#e0f2e9;--top:#0f1c26;--topink:#f3efe6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b131a;--card:#121e28;--ink:#eef0f2;--mut:#93a0ad;--line:#22313d;--brass:#d6a75a;--brasssoft:#2a2216;--ok:#5fd29a;--oksoft:#12301f;--top:#060c11}}
+:root[data-theme=dark]{--bg:#0b131a;--card:#121e28;--ink:#eef0f2;--mut:#93a0ad;--line:#22313d;--brass:#d6a75a;--brasssoft:#2a2216;--ok:#5fd29a;--oksoft:#12301f;--top:#060c11}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,sans-serif;display:flex;flex-direction:column;max-width:560px;margin:0 auto;overflow:hidden}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+.mono{font-family:'JetBrains Mono',monospace}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.top{background:var(--top);color:var(--topink);padding:16px 18px 14px}
+.brand{display:flex;align-items:center;gap:11px}
+.mark{width:38px;height:38px;border-radius:10px;border:1px solid #a8792e;display:grid;place-items:center;font:italic 19px 'Instrument Serif';color:#d6a75a}
+.brand h1{font:400 23px/1 'Instrument Serif'}
+.brand small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9aa6b2;margin-top:3px}
+.live{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#7fe0ad;border:1px solid #2c5a45;padding:5px 10px;border-radius:99px}
+.live i{width:7px;height:7px;border-radius:50%;background:#7fe0ad;animation:p 1.6s infinite}
+@keyframes p{50%{opacity:.25}}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:14px;background:#24323f;border-radius:12px;overflow:hidden}
+.kpis div{background:#142330;padding:10px 12px}
+.kpis b{display:block;font:400 26px/1 'Instrument Serif';color:#fff}
+.kpis span{font-size:10.5px;color:#9aa6b2;letter-spacing:.03em}
+nav{display:flex;gap:4px;padding:12px 18px 8px;border-bottom:1px solid var(--line)}
+nav button{flex:1;border:0;background:transparent;color:var(--mut);padding:8px 4px 10px;font:600 13px Inter;cursor:pointer;position:relative}
+nav button::after{content:"";position:absolute;left:20%;right:20%;bottom:-9px;height:2px;background:var(--brass);transform:scaleX(0);transition:.25s}
+nav button[aria-selected=true]{color:var(--ink)}nav button[aria-selected=true]::after{transform:none}
+main{flex:1;overflow:auto;padding:14px 18px 18px;position:relative}
+section{display:none;animation:in .35s both}section.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.hint{font-size:12px;color:var(--mut);margin-bottom:12px;padding-right:90px}
+.thread{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.av{width:34px;height:34px;border-radius:50%;background:var(--brasssoft);color:var(--brass);display:grid;place-items:center;font-weight:700;font-size:13px}
+.thread b{font-size:14px}.thread small{display:block;color:var(--mut);font-size:11.5px}
+.chan{margin-left:auto;font-size:11px;color:var(--mut);border:1px solid var(--line);padding:3px 8px;border-radius:6px}
+.chat{display:flex;flex-direction:column;gap:9px}
+.m{max-width:88%;padding:10px 13px;border-radius:16px;font-size:14px;animation:in .3s both}
+.m.c{align-self:flex-end;background:var(--ink);color:var(--bg);border-bottom-right-radius:5px}
+.m.a{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:5px;box-shadow:0 1px 2px rgba(15,28,38,.05)}
+.m.h{align-self:flex-start;background:var(--brasssoft);border:1px solid var(--brass);border-bottom-left-radius:5px}
+.m .lab{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brass);margin-bottom:4px}
+.src{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.src button{font:500 10.5px 'JetBrains Mono';border:1px solid var(--line);color:var(--ink);background:var(--bg);border-radius:6px;padding:3px 7px;cursor:pointer}
+.src button::before{content:"↳ ";color:var(--brass)}
+.typing{align-self:flex-start;display:flex;gap:4px;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--mut);animation:b 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{transform:translateY(-4px);opacity:.4}}
+.listing{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:10px;align-items:center}
+.listing svg{flex:none;width:84px;height:84px;border-radius:10px}
+.listing h3{font:400 19px/1.1 'Instrument Serif'}
+.listing p{font-size:12px;color:var(--mut);margin:2px 0 7px}
+.row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mut)}
+.row input{width:120px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 9px;font:500 14px 'JetBrains Mono'}
+.status{font-size:10.5px;font-weight:600;color:var(--ok);background:var(--oksoft);padding:2px 7px;border-radius:99px;margin-left:auto}
+.facts{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 12px}
+.fact{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.fact:last-child{border:0}
+.fact span{color:var(--mut)}.fact b{font-weight:600;text-align:right}
+.hl{box-shadow:0 0 0 3px var(--brass)!important;transition:box-shadow .3s}
+.saved{position:absolute;right:18px;top:12px;background:var(--ok);color:#fff;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:99px;opacity:0;transition:.3s;transform:translateY(-6px)}
+.saved.on{opacity:1;transform:none}
+.rule{display:flex;gap:12px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:var(--card);transition:.3s}
+.rule b{font:500 11px 'JetBrains Mono';color:var(--brass);display:block;margin-bottom:3px}
+.rule div{flex:1;font-size:14px}
+.sw{flex:none;width:40px;height:23px;border-radius:99px;background:var(--line);position:relative;border:0;cursor:pointer;margin-top:2px}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:50%;background:#fff;transition:.2s}
+.sw[aria-checked=true]{background:var(--ok)}.sw[aria-checked=true]::after{left:20px}
+form{display:flex;gap:8px;padding:10px 18px 14px;border-top:1px solid var(--line);background:var(--bg)}
+form input{flex:1;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:11px 15px;font:14px Inter}
+form button{border:0;background:var(--ink);color:var(--bg);border-radius:99px;padding:0 18px;font:600 13.5px Inter;cursor:pointer}
+.demo{font-size:10.5px;color:var(--mut);text-align:center;padding:0 18px 10px}
+#sub{position:fixed;left:50%;bottom:118px;transform:translateX(-50%);width:calc(100% - 44px);max-width:500px;text-align:center;z-index:8;pointer-events:none;opacity:0;transition:opacity .25s}
+#sub.on{opacity:1}
+#sub span{display:inline;background:rgba(10,18,25,.9);color:#fff;font:600 19px/1.5 Inter;padding:4px 10px;-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:6px}
+#end{position:fixed;inset:0;z-index:9;background:#0f1c26;color:#f3efe6;display:none;flex-direction:column;justify-content:center;padding:40px 34px;max-width:560px;margin:0 auto}
+#end.on{display:flex;animation:in .5s both}
+#end small{font:500 12px 'JetBrains Mono';color:#d6a75a;letter-spacing:.1em}
+#end h2{font:400 58px/1.02 'Instrument Serif';margin:14px 0 22px}
+#end h2 em{color:#d6a75a}
+#end .cta{align-self:flex-start;border:1px solid #d6a75a;color:#d6a75a;font:600 15px Inter;letter-spacing:.12em;padding:12px 18px;border-radius:99px}
+#end p{margin-top:26px;color:#9aa6b2;font-size:13px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="brand">
+    <div class="mark" aria-hidden="true">H&amp;V</div>
+    <div><h1>Harbor &amp; Vale</h1><small>AI receptionist console</small></div>
+    <div class="live"><i></i>Answering</div>
+  </div>
+  <div class="kpis">
+    <div><b id="k1">0</b><span>conversations today</span></div>
+    <div><b id="k2">0</b><span>answered by AI</span></div>
+    <div><b id="k3">0</b><span>handed to an agent</span></div>
+  </div>
+</div>
+<nav role="tablist" aria-label="Sections">
+  <button role="tab" aria-selected="true" data-t="inbox">Inbox</button>
+  <button role="tab" aria-selected="false" data-t="know">Knowledge</button>
+  <button role="tab" aria-selected="false" data-t="rules">Rules</button>
+</nav>
+<main>
+  <div class="saved" id="saved">Saved · live now</div>
+  <section id="inbox" class="on">
+    <div class="thread"><div class="av">NB</div><div><b>New buyer</b><small>enquiry about a listing</small></div><span class="chan">WhatsApp</span></div>
+    <div class="chat" id="chat" aria-live="polite"></div>
+  </section>
+  <section id="know">
+    <p class="hint">What the receptionist knows. Change a value and the next reply uses it.</p>
+    <div id="listings"></div>
+    <div class="facts" id="facts"></div>
+  </section>
+  <section id="rules">
+    <p class="hint">What she may and may not do. Every reply cites the rule it followed.</p>
+    <div id="rulebox"></div>
+  </section>
+</main>
+<form id="f" autocomplete="off">
+  <input id="q" placeholder="Write as a buyer, e.g. price of Riverside?" aria-label="Buyer message">
+  <button>Send</button>
+</form>
+<p class="demo">Fictional agency · demo data · Pacheco Studios</p>
+<div id="sub" aria-hidden="true"><span></span></div>
+<div id="end" aria-hidden="true"><small>PACHECO STUDIOS · AI SYSTEMS</small><h2>Your facts.<br>Your rules.<br><em>Her replies.</em></h2><span class="cta">DM AUDIT</span><p>We find the leak. We design the system. We prove the impact.</p></div>
+<script>
+const $=s=>document.querySelector(s),sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const art=(h,c)=>`<svg viewBox="0 0 84 84" aria-hidden="true"><rect width="84" height="84" fill="${c}"/><circle cx="64" cy="20" r="8" fill="#f3e2bf" opacity=".8"/><path d="M0 84V${h}h18v-12h20v22h14V${h-18}h16v18h16V84z" fill="#0f1c26" opacity=".85"/><g fill="#d6a75a" opacity=".9"><rect x="23" y="${h-4}" width="3" height="3"/><rect x="30" y="${h-4}" width="3" height="3"/><rect x="56" y="${h-12}" width="3" height="3"/><rect x="56" y="${h-4}" width="3" height="3"/></g></svg>`;
+const L=[
+ {id:'l1',name:'12 Riverside Avenue',spec:'2 bed · 2 bath · 84 m² · balcony',price:'€425,000',slots:'Tue & Thu, 5–7 pm',c:'#3b5a6e',h:46},
+ {id:'l2',name:'The Old Mill Loft',spec:'1 bed · 1 bath · 61 m² · parking',price:'€298,000',slots:'Sat, 10 am–1 pm',c:'#6e5a3b',h:52}
+];
+const F=[
+ {id:'f1',k:'Office hours',v:'Mon–Sat, 9 am–7 pm'},
+ {id:'f2',k:'Viewings',v:'Booked by the AI, confirmed by an agent'},
+ {id:'f3',k:'Documents',v:'Floor plan sent on request'}
+];
+const R=[
+ {id:'R1',t:'Quote only prices, specs and viewing slots from Knowledge.',on:true},
+ {id:'R2',t:'Offers, negotiation and complaints go to a human agent.',on:true},
+ {id:'R3',t:'If asked, say you are the agency’s AI receptionist.',on:true},
+ {id:'R4',t:'Never promise that an offer will be accepted.',on:true}
+];
+let st={c:0,a:0,h:0};
+function draw(){
+ $('#listings').innerHTML=L.map(l=>`<div class="listing" id="c-${l.id}">${art(l.h,l.c)}<div style="flex:1"><div style="display:flex;align-items:center"><h3>${l.name}</h3></div><p>${l.spec}</p><div class="row"><label for="${l.id}">Price</label><input id="${l.id}" value="${l.price}"><span class="status">Available</span></div></div></div>`).join('');
+ $('#facts').innerHTML=F.map(f=>`<div class="fact" id="${f.id}"><span>${f.k}</span><b>${f.v}</b></div>`).join('');
+ $('#rulebox').innerHTML=R.map(r=>`<div class="rule" id="r-${r.id}"><div><b>${r.id}</b>${r.t}</div><button class="sw" role="switch" aria-checked="${r.on}" aria-label="Toggle ${r.id}" data-id="${r.id}"></button></div>`).join('');
+ L.forEach(l=>$('#'+l.id).addEventListener('change',e=>{l.price=e.target.value;saved()}));
+ document.querySelectorAll('.sw').forEach(b=>b.addEventListener('click',()=>{const r=R.find(x=>x.id===b.dataset.id);r.on=!r.on;b.setAttribute('aria-checked',r.on);saved()}));
+}
+function saved(){const s=$('#saved');s.classList.add('on');setTimeout(()=>s.classList.remove('on'),900)}
+function tab(t){document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===t));document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===t));$('#f').style.display=t==='inbox'?'flex':'none'}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.t)));
+function kpi(){$('#k1').textContent=st.c;$('#k2').textContent=st.a;$('#k3').textContent=st.h}
+const chip=i=>{const l=L.find(x=>x.id===i);return `<button data-go="${i}">${l?l.name+' · price':i+' · rule'}</button>`};
+function add(cls,html){const d=document.createElement('div');d.className='m '+cls;d.innerHTML=html;$('#chat').appendChild(d);d.scrollIntoView({block:'end',behavior:'smooth'});return d}
+function brain(t){
+ t=t.toLowerCase();const on=id=>R.find(r=>r.id===id).on;
+ const l=/mill|loft/.test(t)?L[1]:L[0];
+ if(/offer|accept|negotiat|\d{3}k|lower|discount/.test(t)&&on('R2'))return{h:1,src:['R2','R4'],txt:'Offers are handled by our agents, so I can’t say if it would be accepted. I’ve passed yours to the listing agent with your details.'};
+ if(/robot|human|real person|\bai\b|bot/.test(t)&&on('R3'))return{src:['R3'],txt:'I’m the agency’s AI receptionist. Want me to put you through to an agent?'};
+ if(/chang|now|updat/.test(t)&&/price|cost/.test(t)&&on('R1'))return{src:[l.id,'R1'],txt:`Yes, ${l.name} is now listed at <b>${l.price}</b>. Viewings: ${l.slots}. Shall I book you in?`};
+ if(/price|cost|how much|available|riverside|mill|loft|view/.test(t)&&on('R1'))return{src:[l.id,'R1'],txt:`Yes, ${l.name} is available: ${l.spec}, at <b>${l.price}</b>. Viewings: ${l.slots}. Shall I book one?`};
+ if(/hour|open|office/.test(t)&&on('R1'))return{src:['R1'],txt:`Our office is open ${F[0].v}.`};
+ return{h:1,src:['R1','R2'],txt:'That isn’t in my approved information, so I won’t guess. I’ve passed it to an agent.'};
+}
+async function ask(text,wait=900){
+ st.c++;add('c',text.replace(/</g,'&lt;'));kpi();
+ const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';$('#chat').appendChild(ty);ty.scrollIntoView({block:'end'});
+ await sleep(wait);ty.remove();
+ const r=brain(text);r.h?st.h++:st.a++;kpi();
+ add(r.h?'h':'a',`<div class="lab">${r.h?'Handed to an agent':'AI receptionist'}</div>${r.txt}<div class="src">${r.src.map(chip).join('')}</div>`);
+}
+$('#f').addEventListener('submit',e=>{e.preventDefault();const v=$('#q').value.trim();if(v){$('#q').value='';ask(v,600)}});
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(!g)return;const id=g.dataset.go,isL=id.startsWith('l');tab(isL?'know':'rules');const el=isL?$('#c-'+id):$('#r-'+id);el.classList.add('hl');setTimeout(()=>el.classList.remove('hl'),2000)});
+draw();
+// ?demo=1 plays the scripted sequence used for the reel
+const T=new URLSearchParams(location.search);
+async function sub(t,ms){const s=$('#sub');s.firstChild.textContent=t;s.classList.add('on');if(ms){await sleep(ms);s.classList.remove('on')}}
+async function typeIn(el,txt,ms){el.value='';for(const ch of txt){el.value+=ch;await sleep(ms)}}
+async function demo(){
+ const k=+(T.get('k')||1),w=ms=>sleep(ms*k);
+ await w(300);
+ ask('Hi! Is the 2-bed on Riverside still available? Price?',900*k);
+ await w(1200);sub('Replies in seconds, from your facts and rules');
+ await w(2600);
+ const b=document.querySelector('.m.a .src button');b.classList.add('hl');await w(700);b.classList.remove('hl');
+ tab('know');$('#c-l1').classList.add('hl');await w(500);
+ sub('Change a price. The next reply uses it.');
+ const i=$('#l1');await typeIn(i,'€410,000',70*k);i.dispatchEvent(new Event('change'));
+ await w(900);$('#c-l1').classList.remove('hl');tab('inbox');
+ await ask('Has the price changed?',800*k);
+ await w(1500);
+ sub('Anything else goes to your agent.');
+ await ask('Would they accept €380k?',700*k);
+ await w(1300);tab('rules');$('#r-R2').classList.add('hl');await w(1500);
+ $('#sub').classList.remove('on');$('#end').classList.add('on');
+ await w(2600);document.title='end';
+}
+if(T.get('demo')==='1')demo();
+</script>
+</body>
+</html>
