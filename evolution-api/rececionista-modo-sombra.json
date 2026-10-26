@@ -1,0 +1,183 @@
+{
+  "name": "Rececionista Pacheco (modo sombra)",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Webhook Evolution",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "evolution-pacheco",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "webhookId": "a7b03541-c1fc-4702-b5b3-ea82dba14558"
+    },
+    {
+      "id": "2",
+      "name": "Prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "system",
+              "type": "string",
+              "value": "Ești recepționista Pacheco Studios pe WhatsApp. Pacheco Studios (Iași) face consultanță AI și automatizări pentru afaceri mici: găsim unde se pierde timpul sau banii, desenăm sistemul și arătăm impactul.\n\nCum răspunzi:\n- Răspunde în limba clientului (română implicit; portugheză sau engleză dacă scrie așa).\n- Mesaje scurte, calde, ca un om: 1-3 propoziții. Fără liste, fără emoji în exces, fără link-uri, fără prețuri.\n- Întâi dai, apoi ceri: confirmi ce a spus și pui O singură întrebare.\n- Scopul: afli ce afacere are și care e cea mai mare pierdere de timp, apoi propui un apel de 15 minute.\n- Nu inventa clienți, cifre, testimoniale sau orare. Dacă nu știi, spui că verifici cu colegul.\n- Dacă cere preț, ofertă, o oră concretă de întâlnire, se plânge, sau e ceva ce nu știi: scrie un răspuns scurt de confirmare și adaugă la final exact [PESSOA].\n- Răspunzi doar cu textul mesajului pentru client."
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      }
+    },
+    {
+      "id": "3",
+      "name": "Extrair e memória",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "jsCode": "// Lê o evento da Evolution, guarda o histórico por contacto e só segue para mensagens novas de clientes\nconst body = $input.first().json.body || {};\nif ((body.event || '').toLowerCase() !== 'messages.upsert') return [];\nconst d = body.data || {};\nconst key = d.key || {};\nconst jid = key.remoteJid || '';\nif (!jid || jid.endsWith('@g.us') || jid === 'status@broadcast' || jid.endsWith('@newsletter')) return [];\nconst m = d.message || {};\nconst texto = m.conversation || (m.extendedTextMessage && m.extendedTextMessage.text) || (m.imageMessage && m.imageMessage.caption) || '';\nif (!texto) return [];\nconst alvo = key.remoteJidAlt || key.senderPn || jid;\nconst numero = alvo.split('@')[0].split(':')[0];\nconst MEU_NUMERO = '351967117357'; // número do Tomás que recebe os rascunhos\nif (numero === MEU_NUMERO) return [];\n\nconst mem = $getWorkflowStaticData('global');\nmem.h = mem.h || {};\nconst h = mem.h[numero] || [];\nh.push({ role: key.fromMe ? 'assistant' : 'user', content: texto });\nmem.h[numero] = h.slice(-12);\nif (key.fromMe) return []; // resposta nossa: só guarda no histórico\n\n// A API do Claude pede alternância user/assistant e começar por user\nconst msgs = [];\nfor (const x of mem.h[numero]) {\n  if (msgs.length && msgs[msgs.length - 1].role === x.role) msgs[msgs.length - 1].content += '\\n' + x.content;\n  else msgs.push({ ...x });\n}\nwhile (msgs.length && msgs[0].role !== 'user') msgs.shift();\n\nreturn [{ json: {\n  numero, nome: d.pushName || '', texto,\n  payload: { model: 'claude-haiku-5-5', max_tokens: 400, system: $('Prompt').first().json.system, messages: msgs }\n}}];"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Claude",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.payload) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "5",
+      "name": "Formatar rascunho",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nconst c = $('Extrair e memória').first().json;\nconst resposta = ((r.content || []).find(x => x.type === 'text') || {}).text || '(sem resposta)';\nconst pessoa = resposta.includes('[PESSOA]');\nconst limpo = resposta.replace('[PESSOA]', '').trim();\nconst texto = (pessoa ? '🙋 PRECISA DE TI\\n' : '📝 RASCUNHO\\n') +\n  `De: ${c.nome} (+${c.numero})\\n` +\n  `Mensagem: ${c.texto}\\n\\n` +\n  `Resposta proposta:\\n${limpo}\\n\\n` +\n  `Responder: https://wa.me/${c.numero}`;\nreturn [{ json: { texto } }];"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Enviar rascunho ao Tomás",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://evolution-api:8080/message/sendText/pacheco-teste",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ number: '351967117357', text: $json.texto }) }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Evolution": {
+      "main": [
+        [
+          {
+            "node": "Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prompt": {
+      "main": [
+        [
+          {
+            "node": "Extrair e memória",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrair e memória": {
+      "main": [
+        [
+          {
+            "node": "Claude",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude": {
+      "main": [
+        [
+          {
+            "node": "Formatar rascunho",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatar rascunho": {
+      "main": [
+        [
+          {
+            "node": "Enviar rascunho ao Tomás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
