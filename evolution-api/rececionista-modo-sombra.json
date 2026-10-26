@@ -1,5 +1,5 @@
 {
-  "name": "Rececionista Pacheco (modo sombra) v2",
+  "name": "Rececionista Pacheco (modo sombra) v3",
   "nodes": [
     {
       "id": "1",
@@ -53,7 +53,7 @@
         0
       ],
       "parameters": {
-        "jsCode": "// Lê o evento da Evolution, guarda histórico por contacto e aprende com as respostas reais do Tomás\nconst body = $input.first().json.body || {};\nif ((body.event || '').toLowerCase() !== 'messages.upsert') return [];\nconst d = body.data || {};\nconst key = d.key || {};\nconst jid = key.remoteJid || '';\nif (!jid || jid.endsWith('@g.us') || jid === 'status@broadcast' || jid.endsWith('@newsletter')) return [];\nconst m = d.message || {};\nconst texto = m.conversation || (m.extendedTextMessage && m.extendedTextMessage.text) || (m.imageMessage && m.imageMessage.caption) || '';\nif (!texto) return [];\nconst alvo = key.remoteJidAlt || key.senderPn || jid;\nconst numero = alvo.split('@')[0].split(':')[0];\nconst MEU_NUMERO = '351967117357'; // número do Tomás que recebe os rascunhos\nif (numero === MEU_NUMERO) return [];\n\nconst mem = $getWorkflowStaticData('global');\nmem.h = mem.h || {};\nmem.pend = mem.pend || {};\nmem.ex = mem.ex || [];\nconst h = mem.h[numero] || [];\nh.push({ role: key.fromMe ? 'assistant' : 'user', content: texto });\nmem.h[numero] = h.slice(-12);\n\nif (key.fromMe) {\n  // Resposta real do Tomás: fica como exemplo de treino ao lado do rascunho do bot\n  const p = mem.pend[numero];\n  if (p) {\n    mem.ex.push({ cliente: p.cliente, rascunho: p.rascunho, real: texto });\n    mem.ex = mem.ex.slice(-30);\n    delete mem.pend[numero];\n  }\n  return [];\n}\n\nconst NL = String.fromCharCode(10);\nconst msgs = [];\nfor (const x of mem.h[numero]) {\n  if (msgs.length && msgs[msgs.length - 1].role === x.role) msgs[msgs.length - 1].content += NL + x.content;\n  else msgs.push({ ...x });\n}\nwhile (msgs.length && msgs[0].role !== 'user') msgs.shift();\n\n// Os últimos exemplos reais do Tomás entram no prompt: o bot imita o tom e as decisões dele\nlet system = $('Prompt').first().json.system;\nconst ult = mem.ex.slice(-8);\nif (ult.length) {\n  system += NL + NL + 'Exemple reale (cum a răspuns Tomás; imită tonul și deciziile lui, nu ciorna):' + NL +\n    ult.map((e, i) => `${i + 1}. Client: ${e.cliente}${NL}   Ciorna ta: ${e.rascunho}${NL}   Tomás a trimis: ${e.real}`).join(NL);\n}\n\nreturn [{ json: {\n  numero, nome: d.pushName || '', texto,\n  payload: { model: 'claude-haiku-5-5', max_tokens: 1000, thinking: { type: 'disabled' }, system, messages: msgs }\n}}];"
+        "jsCode": "// Lê o evento da Evolution, guarda histórico por contacto e aprende com as respostas reais do Tomás\nconst body = $input.first().json.body || {};\nif ((body.event || '').toLowerCase() !== 'messages.upsert') return [];\nconst d = body.data || {};\nconst key = d.key || {};\nconst jid = key.remoteJid || '';\nif (!jid || jid.endsWith('@g.us') || jid === 'status@broadcast' || jid.endsWith('@newsletter')) return [];\nconst m = d.message || {};\nconst texto = m.conversation || (m.extendedTextMessage && m.extendedTextMessage.text) || (m.imageMessage && m.imageMessage.caption) || '';\nif (!texto) return [];\nconst alvo = key.remoteJidAlt || key.senderPn || jid;\nconst numero = alvo.split('@')[0].split(':')[0];\nconst MEU_NUMERO = '351967117357'; // número do Tomás que recebe os rascunhos\n\nconst mem = $getWorkflowStaticData('global');\nmem.h = mem.h || {};\nmem.pend = mem.pend || {};\nmem.ex = mem.ex || [];\n\nif (numero === MEU_NUMERO) {\n  if (key.fromMe) return []; // rascunhos e confirmações enviados pelo próprio fluxo\n  // Comando do Tomás: responder a um rascunho com OK (envia), X (ignora) ou outro texto (envia esse texto)\n  const ctx = (m.extendedTextMessage && m.extendedTextMessage.contextInfo) || {};\n  const q = ctx.quotedMessage || {};\n  const citado = q.conversation || (q.extendedTextMessage && q.extendedTextMessage.text) || '';\n  const achado = citado.match(/\\(\\+(\\d+)\\)/);\n  const destino = achado ? achado[1] : mem.ultimo;\n  if (!destino || !mem.pend[destino] || mem.pend[destino].enviado) return [];\n  const cmd = texto.trim().toLowerCase();\n  if (cmd === 'x') { delete mem.pend[destino]; return []; }\n  const envio = cmd === 'ok' ? mem.pend[destino].rascunho : texto.trim();\n  mem.pend[destino].enviado = true; // evita enviar duas vezes\n  return [{ json: { acao: 'enviar', numero: destino, texto: envio } }];\n}\nconst h = mem.h[numero] || [];\nh.push({ role: key.fromMe ? 'assistant' : 'user', content: texto });\nmem.h[numero] = h.slice(-12);\n\nif (key.fromMe) {\n  // Resposta real do Tomás: fica como exemplo de treino ao lado do rascunho do bot\n  const p = mem.pend[numero];\n  if (p) {\n    mem.ex.push({ cliente: p.cliente, rascunho: p.rascunho, real: texto });\n    mem.ex = mem.ex.slice(-30);\n    delete mem.pend[numero];\n  }\n  return [];\n}\n\nconst NL = String.fromCharCode(10);\nconst msgs = [];\nfor (const x of mem.h[numero]) {\n  if (msgs.length && msgs[msgs.length - 1].role === x.role) msgs[msgs.length - 1].content += NL + x.content;\n  else msgs.push({ ...x });\n}\nwhile (msgs.length && msgs[0].role !== 'user') msgs.shift();\n\n// Os últimos exemplos reais do Tomás entram no prompt: o bot imita o tom e as decisões dele\nlet system = $('Prompt').first().json.system;\nconst ult = mem.ex.slice(-8);\nif (ult.length) {\n  system += NL + NL + 'Exemple reale (cum a răspuns Tomás; imită tonul și deciziile lui, nu ciorna):' + NL +\n    ult.map((e, i) => `${i + 1}. Client: ${e.cliente}${NL}   Ciorna ta: ${e.rascunho}${NL}   Tomás a trimis: ${e.real}`).join(NL);\n}\n\nreturn [{ json: {\n  acao: 'rascunho', numero, nome: d.pushName || '', texto,\n  payload: { model: 'claude-haiku-5-5', max_tokens: 1000, thinking: { type: 'disabled' }, system, messages: msgs }\n}}];"
       }
     },
     {
@@ -62,8 +62,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        660,
-        0
+        880,
+        -120
       ],
       "parameters": {
         "method": "POST",
@@ -91,11 +91,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        880,
-        0
+        1100,
+        -120
       ],
       "parameters": {
-        "jsCode": "const r = $input.first().json;\nconst c = $('Extrair e memória').first().json;\nconst NL = String.fromCharCode(10);\nconst bloco = (r.content || []).find(x => x.type === 'text');\n// Se o Claude não devolver texto, mostra o motivo no rascunho\nconst bruto = bloco ? bloco.text : '⚠️ Claude sem texto: ' + JSON.stringify(r).slice(0, 400);\nconst [parteCliente, partePT = ''] = bruto.split('###PT###');\nconst pessoa = bruto.includes('[PESSOA]');\nconst resposta = parteCliente.replace('[PESSOA]', '').trim();\nconst tCliente = (partePT.match(/Cliente:\\s*(.*)/) || [])[1] || '';\nconst tResposta = (partePT.match(/Resposta:\\s*(.*)/) || [])[1] || '';\n\n// Guarda o rascunho para o comparar com o que o Tomás enviar de facto\nconst mem = $getWorkflowStaticData('global');\nmem.pend = mem.pend || {};\nif (bloco) mem.pend[c.numero] = { cliente: c.texto, rascunho: resposta };\n\nconst linhas = [\n  pessoa ? '🙋 PRECISA DE TI' : '📝 RASCUNHO',\n  `De: ${c.nome} (+${c.numero})`,\n  '',\n  `Mensagem: ${c.texto}`,\n  tCliente ? `🇵🇹 ${tCliente}` : null,\n  '',\n  'Resposta proposta:',\n  resposta,\n  tResposta ? `🇵🇹 ${tResposta}` : null,\n  '',\n  `Responder: https://wa.me/${c.numero}`,\n].filter(l => l !== null);\nreturn [{ json: { texto: linhas.join(NL) } }];"
+        "jsCode": "const r = $input.first().json;\nconst c = $('Extrair e memória').first().json;\nconst NL = String.fromCharCode(10);\nconst bloco = (r.content || []).find(x => x.type === 'text');\n// Se o Claude não devolver texto, mostra o motivo no rascunho\nconst bruto = bloco ? bloco.text : '⚠️ Claude sem texto: ' + JSON.stringify(r).slice(0, 400);\nconst [parteCliente, partePT = ''] = bruto.split('###PT###');\nconst pessoa = bruto.includes('[PESSOA]');\nconst resposta = parteCliente.replace('[PESSOA]', '').trim();\nconst tCliente = (partePT.match(/Cliente:\\s*(.*)/) || [])[1] || '';\nconst tResposta = (partePT.match(/Resposta:\\s*(.*)/) || [])[1] || '';\n\n// Guarda o rascunho para o comparar com o que o Tomás enviar de facto\nconst mem = $getWorkflowStaticData('global');\nmem.pend = mem.pend || {};\nif (bloco) { mem.pend[c.numero] = { cliente: c.texto, rascunho: resposta }; mem.ultimo = c.numero; }\n\nconst linhas = [\n  pessoa ? '🙋 PRECISA DE TI' : '📝 RASCUNHO',\n  `De: ${c.nome} (+${c.numero})`,\n  '',\n  `Mensagem: ${c.texto}`,\n  tCliente ? `🇵🇹 ${tCliente}` : null,\n  '',\n  'Resposta proposta:',\n  resposta,\n  tResposta ? `🇵🇹 ${tResposta}` : null,\n  '',\n  'Responde a esta mensagem com OK (envia), X (ignora) ou o teu texto.',\n  `Abrir conversa: https://wa.me/${c.numero}`,\n].filter(l => l !== null);\nreturn [{ json: { texto: linhas.join(NL) } }];"
       }
     },
     {
@@ -104,8 +104,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1100,
-        0
+        1320,
+        -120
       ],
       "parameters": {
         "method": "POST",
@@ -115,6 +115,79 @@
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({ number: '351967117357', text: $json.texto }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "7",
+      "name": "Rascunho ou envio?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "66f9ea88-29b2-4526-8dc4-73146e9a8606",
+              "leftValue": "={{ $json.acao }}",
+              "rightValue": "rascunho",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "8",
+      "name": "Enviar ao cliente",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://evolution-api:8080/message/sendText/Pacheco%20teste",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ number: $json.numero, text: $json.texto, delay: 2500 }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "9",
+      "name": "Confirmar ao Tomás",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://evolution-api:8080/message/sendText/Pacheco%20teste",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ number: '351967117357', text: '✅ Enviado para +' + $('Extrair e memória').first().json.numero }) }}",
         "options": {}
       }
     }
@@ -146,7 +219,25 @@
       "main": [
         [
           {
+            "node": "Rascunho ou envio?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rascunho ou envio?": {
+      "main": [
+        [
+          {
             "node": "Claude",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enviar ao cliente",
             "type": "main",
             "index": 0
           }
@@ -169,6 +260,17 @@
         [
           {
             "node": "Enviar rascunho ao Tomás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar ao cliente": {
+      "main": [
+        [
+          {
+            "node": "Confirmar ao Tomás",
             "type": "main",
             "index": 0
           }
