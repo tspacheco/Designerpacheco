@@ -1,0 +1,462 @@
+{
+  "name": "Rececionista Pacheco (modo sombra) v4 — 723 + Meta",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Webhook Evolution",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "evolution-pacheco",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "webhookId": "a7b03541-c1fc-4702-b5b3-ea82dba14558"
+    },
+    {
+      "id": "2",
+      "name": "Prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "system",
+              "type": "string",
+              "value": "Ești recepționista Pacheco Studios pe WhatsApp. Pacheco Studios (Iași) face consultanță AI și automatizări pentru afaceri mici: găsim unde se pierde timpul sau banii, desenăm sistemul și arătăm impactul.\n\nCum răspunzi:\n- Răspunde în limba clientului (română implicit; portugheză sau engleză dacă scrie așa).\n- Mesaje scurte, calde, ca un om: 1-3 propoziții. Fără liste, fără emoji în exces, fără link-uri, fără prețuri.\n- Întâi dai, apoi ceri: confirmi ce a spus și pui O singură întrebare.\n- Scopul: afli ce afacere are și care e cea mai mare pierdere de timp, apoi propui o întâlnire fără niciun angajament.\n- Nu inventa clienți, cifre, testimoniale sau orare. Dacă nu știi, spui că verifici cu colegul.\n- Dacă cere preț, ofertă, o oră concretă de întâlnire, se plânge, sau e ceva ce nu știi: scrie un răspuns scurt de confirmare și adaugă la final exact [PESSOA].\n- Nu promite rezultate și nu dai garanții.\n- Dacă te întreabă dacă vorbește cu un om, spui sincer că ești asistentul automat al Pacheco Studios și că Tomás preia conversația.\n- Mesajul pentru client conține doar textul pentru client.\n\nFormat obligatoriu: scrie mesajul pentru client, apoi pe o linie nouă exact ###PT### și dedesubt două rânduri:\nCliente: <traducerea în portugheză a ultimului mesaj al clientului>\nResposta: <traducerea în portugheză a mesajului tău>"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      }
+    },
+    {
+      "id": "3",
+      "name": "Extrair e memória",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "jsCode": "// Lê o evento da Evolution, guarda histórico por contacto e aprende com as respostas reais do Tomás\nconst body = $input.first().json.body || {};\nif ((body.event || '').toLowerCase() !== 'messages.upsert') return [];\nconst canal = body.canal || 'evolution'; // 'evolution' (723) ou 'meta' (número novo, API oficial)\nconst d = body.data || {};\nconst key = d.key || {};\nconst jid = key.remoteJid || '';\nif (!jid || jid.endsWith('@g.us') || jid === 'status@broadcast' || jid.endsWith('@newsletter')) return [];\nconst m = d.message || {};\nconst texto = m.conversation || (m.extendedTextMessage && m.extendedTextMessage.text) || (m.imageMessage && m.imageMessage.caption) || '';\nif (!texto) return [];\nconst alvo = key.remoteJidAlt || key.senderPn || jid;\nconst numero = alvo.split('@')[0].split(':')[0];\nconst MEU_NUMERO = '351967117357'; // número do Tomás que recebe os rascunhos\n\nconst mem = $getWorkflowStaticData('global');\nmem.h = mem.h || {};\nmem.pend = mem.pend || {};\nmem.ex = mem.ex || [];\n\nif (numero === MEU_NUMERO) {\n  if (key.fromMe) return []; // rascunhos e confirmações enviados pelo próprio fluxo\n  // Comando do Tomás: responder a um rascunho com OK (envia), X (ignora) ou outro texto (envia esse texto)\n  const ctx = (m.extendedTextMessage && m.extendedTextMessage.contextInfo) || {};\n  const q = ctx.quotedMessage || {};\n  const citado = q.conversation || (q.extendedTextMessage && q.extendedTextMessage.text) || '';\n  const achado = citado.match(/\\(\\+(\\d+)\\)/);\n  const destino = achado ? achado[1] : mem.ultimo;\n  if (!destino || !mem.pend[destino] || mem.pend[destino].enviado) return [];\n  const cmd = texto.trim().toLowerCase();\n  if (cmd === 'x') { delete mem.pend[destino]; return []; }\n  const p = mem.pend[destino];\n  const envio = cmd === 'ok' ? p.rascunho : texto.trim();\n  p.enviado = true; // evita enviar duas vezes\n  if (p.canal === 'meta') {\n    // A API oficial não devolve eco das mensagens enviadas: o exemplo de treino fica já aqui\n    mem.ex.push({ cliente: p.cliente, rascunho: p.rascunho, real: envio });\n    mem.ex = mem.ex.slice(-30);\n    delete mem.pend[destino];\n    const hm = mem.h[destino] || [];\n    hm.push({ role: 'assistant', content: envio });\n    mem.h[destino] = hm.slice(-12);\n  }\n  return [{ json: { acao: 'enviar', canal: p.canal || 'evolution', numero: destino, texto: envio } }];\n}\nconst h = mem.h[numero] || [];\nh.push({ role: key.fromMe ? 'assistant' : 'user', content: texto });\nmem.h[numero] = h.slice(-12);\n\nif (key.fromMe) {\n  // Resposta real do Tomás: fica como exemplo de treino ao lado do rascunho do bot\n  const p = mem.pend[numero];\n  if (p) {\n    mem.ex.push({ cliente: p.cliente, rascunho: p.rascunho, real: texto });\n    mem.ex = mem.ex.slice(-30);\n    delete mem.pend[numero];\n  }\n  return [];\n}\n\nconst NL = String.fromCharCode(10);\nconst msgs = [];\nfor (const x of mem.h[numero]) {\n  if (msgs.length && msgs[msgs.length - 1].role === x.role) msgs[msgs.length - 1].content += NL + x.content;\n  else msgs.push({ ...x });\n}\nwhile (msgs.length && msgs[0].role !== 'user') msgs.shift();\n\n// Os últimos exemplos reais do Tomás entram no prompt: o bot imita o tom e as decisões dele\nlet system = $('Prompt').first().json.system;\nconst ult = mem.ex.slice(-8);\nif (ult.length) {\n  system += NL + NL + 'Exemple reale (cum a răspuns Tomás; imită tonul și deciziile lui, nu ciorna):' + NL +\n    ult.map((e, i) => `${i + 1}. Client: ${e.cliente}${NL}   Ciorna ta: ${e.rascunho}${NL}   Tomás a trimis: ${e.real}`).join(NL);\n}\n\nreturn [{ json: {\n  acao: 'rascunho', canal, numero, nome: d.pushName || '', texto,\n  payload: { model: 'claude-haiku-5-5', max_tokens: 1000, thinking: { type: 'disabled' }, system, messages: msgs }\n}}];"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Claude",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        -120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.payload) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "5",
+      "name": "Formatar rascunho",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        -120
+      ],
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nconst c = $('Extrair e memória').first().json;\nconst NL = String.fromCharCode(10);\nconst bloco = (r.content || []).find(x => x.type === 'text');\n// Se o Claude não devolver texto, mostra o motivo no rascunho\nconst bruto = bloco ? bloco.text : '⚠️ Claude sem texto: ' + JSON.stringify(r).slice(0, 400);\nconst [parteCliente, partePT = ''] = bruto.split('###PT###');\nconst pessoa = bruto.includes('[PESSOA]');\nconst resposta = parteCliente.replace('[PESSOA]', '').trim();\nconst tCliente = (partePT.match(/Cliente:\\s*(.*)/) || [])[1] || '';\nconst tResposta = (partePT.match(/Resposta:\\s*(.*)/) || [])[1] || '';\n\n// Guarda o rascunho para o comparar com o que o Tomás enviar de facto\nconst mem = $getWorkflowStaticData('global');\nmem.pend = mem.pend || {};\nif (bloco) { mem.pend[c.numero] = { cliente: c.texto, rascunho: resposta, canal: c.canal }; mem.ultimo = c.numero; }\n\nconst linhas = [\n  pessoa ? '🙋 PRECISA DE TI' : '📝 RASCUNHO',\n  `De: ${c.nome} (+${c.numero})` + (c.canal === 'meta' ? ' · 📱 Meta' : ''),\n  '',\n  `Mensagem: ${c.texto}`,\n  tCliente ? `🇵🇹 ${tCliente}` : null,\n  '',\n  'Resposta proposta:',\n  resposta,\n  tResposta ? `🇵🇹 ${tResposta}` : null,\n  '',\n  'Responde a esta mensagem com OK (envia), X (ignora) ou o teu texto.',\n  c.canal === 'meta' ? null : `Abrir conversa: https://wa.me/${c.numero}`,\n].filter(l => l !== null);\nreturn [{ json: { texto: linhas.join(NL) } }];"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Enviar rascunho ao Tomás",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        -120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://evolution-api:8080/message/sendText/Pacheco%20teste",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ number: '351967117357', text: $json.texto }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "7",
+      "name": "Rascunho ou envio?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "66f9ea88-29b2-4526-8dc4-73146e9a8606",
+              "leftValue": "={{ $json.acao }}",
+              "rightValue": "rascunho",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "8",
+      "name": "Enviar ao cliente (723)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        200
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://evolution-api:8080/message/sendText/Pacheco%20teste",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ number: $json.numero, text: $json.texto, delay: 2500 }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "9",
+      "name": "Confirmar ao Tomás",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://evolution-api:8080/message/sendText/Pacheco%20teste",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ number: '351967117357', text: '✅ Enviado para +' + $('Extrair e memória').first().json.numero }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "10",
+      "name": "Webhook Meta (verificação)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -300
+      ],
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "meta-whatsapp",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "7cec04c8-634f-4a63-87d8-5e7f7e700d9a"
+    },
+    {
+      "id": "11",
+      "name": "Responder à Meta",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -300
+      ],
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.query['hub.verify_token'] === 'pacheco-meta-2026' ? $json.query['hub.challenge'] : 'token errado' }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "12",
+      "name": "Webhook Meta",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        -160
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "meta-whatsapp",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "webhookId": "25262b84-892f-4b09-a1f7-0c5c66915b7d"
+    },
+    {
+      "id": "13",
+      "name": "Normalizar Meta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -160
+      ],
+      "parameters": {
+        "jsCode": "// Converte o evento da API oficial da Meta para o mesmo formato da Evolution\nconst out = [];\nfor (const it of $input.all()) {\n  const b = it.json.body || {};\n  for (const e of b.entry || []) for (const ch of e.changes || []) {\n    const v = ch.value || {};\n    const nomes = {};\n    for (const c of v.contacts || []) nomes[c.wa_id] = (c.profile && c.profile.name) || '';\n    for (const msg of v.messages || []) {\n      const t = (msg.text && msg.text.body) || (msg.button && msg.button.text) ||\n        (msg.interactive && ((msg.interactive.button_reply && msg.interactive.button_reply.title) || (msg.interactive.list_reply && msg.interactive.list_reply.title))) || '';\n      if (!t) continue;\n      out.push({ json: { body: { event: 'messages.upsert', canal: 'meta', data: {\n        key: { remoteJid: msg.from + '@s.whatsapp.net', fromMe: false },\n        pushName: nomes[msg.from] || '', message: { conversation: t } } } } });\n    }\n  }\n}\nreturn out;"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Canal?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        120
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e89032ad-9a66-4730-a3e1-1d0cbbcd99e4",
+              "leftValue": "={{ $json.canal }}",
+              "rightValue": "meta",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "15",
+      "name": "Enviar ao cliente (Meta)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        40
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v23.0/COLOCAR_PHONE_NUMBER_ID/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ messaging_product: 'whatsapp', to: $json.numero, type: 'text', text: { body: $json.texto } }) }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Evolution": {
+      "main": [
+        [
+          {
+            "node": "Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Meta (verificação)": {
+      "main": [
+        [
+          {
+            "node": "Responder à Meta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Meta": {
+      "main": [
+        [
+          {
+            "node": "Normalizar Meta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar Meta": {
+      "main": [
+        [
+          {
+            "node": "Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prompt": {
+      "main": [
+        [
+          {
+            "node": "Extrair e memória",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrair e memória": {
+      "main": [
+        [
+          {
+            "node": "Rascunho ou envio?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rascunho ou envio?": {
+      "main": [
+        [
+          {
+            "node": "Claude",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Canal?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Canal?": {
+      "main": [
+        [
+          {
+            "node": "Enviar ao cliente (Meta)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enviar ao cliente (723)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude": {
+      "main": [
+        [
+          {
+            "node": "Formatar rascunho",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatar rascunho": {
+      "main": [
+        [
+          {
+            "node": "Enviar rascunho ao Tomás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar ao cliente (723)": {
+      "main": [
+        [
+          {
+            "node": "Confirmar ao Tomás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar ao cliente (Meta)": {
+      "main": [
+        [
+          {
+            "node": "Confirmar ao Tomás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
