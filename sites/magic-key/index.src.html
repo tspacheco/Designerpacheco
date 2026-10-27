@@ -388,6 +388,8 @@ html.rev .limbi .doar-rev{display:block}
 .prod-jos .pret{font:400 13.5px var(--f-mono);color:var(--verde-txt)}
 .prod-jos .btn{width:100%;min-height:44px;padding:0 12px;font-size:14.5px;gap:8px}
 @media (min-width:500px){.prod-txt h3{font-size:17px}}
+.mag-mai{display:flex;justify-content:center;margin-top:20px}.mag-mai[hidden]{display:none}
+.prod-txt h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .mag-gol{display:none;text-align:center;padding:40px 20px;border:1.5px dashed var(--linie);border-radius:var(--r);color:var(--text-2)}
 .mag-gol.vis{display:block}
 .mag-gol .btn{margin-top:14px}
@@ -727,6 +729,7 @@ html.rev .limbi .doar-rev{display:block}
       <ul class="prod-grila" id="prod-grila">
 __MAGAZIN__
       </ul>
+      <div class="mag-mai" id="mag-mai-w"><button type="button" class="btn btn-contur" id="mag-mai">{{Arată mai multe|Show more|Mostrar mais}}</button></div>
       <div class="mag-gol" id="mag-gol">
         <p>{{Nu am găsit asta în listă. Poate o avem totuși: scrie-ne modelul.|Not in the list. We may still have it: send us the model.|Não está na lista. Talvez ainda o tenhamos: envie-nos o modelo.}}</p>
         <a class="btn btn-wa btn-sm" id="mag-gol-wa" href="https://wa.me/40747979810" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Întreabă pe WhatsApp|Ask on WhatsApp|Perguntar no WhatsApp}}</a>
@@ -1043,16 +1046,20 @@ __MAGAZIN__
     var q=$('mag-q'), grila=$('prod-grila'); if(!q||!grila)return;
     var prod=[].slice.call(grila.querySelectorAll('.prod')), cat='toate', nr=$('mag-numar'), gol=$('mag-gol'), golWa=$('mag-gol-wa');
     var fara=function(x){return (x||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')};
-    function filtreaza(){
+    var PAS=24, lim=PAS, mai=$('mag-mai'), maiW=$('mag-mai-w');
+    function filtreaza(reset){
+      if(reset!==false)lim=PAS;
       var cuv=fara(q.value).split(/\s+/).filter(Boolean), n=0;
-      prod.forEach(function(p){var ok=(cat==='toate'||p.dataset.cat===cat)&&cuv.every(function(c){return p.dataset.cauta.indexOf(c)>-1});p.hidden=!ok;if(ok){n++;p.classList.add('vis')}});
+      prod.forEach(function(p){var ok=(cat==='toate'||p.dataset.cat===cat)&&cuv.every(function(c){return p.dataset.cauta.indexOf(c)>-1});if(ok)n++;p.hidden=!ok||n>lim;if(ok&&n<=lim)p.classList.add('vis')});
       nr.textContent=n+' '+(n===1?t('produs','product','produto'):t('produse','products','produtos'));
+      maiW.hidden=n<=lim;
       gol.classList.toggle('vis',n===0);
-      golWa.href='https://wa.me/'+WA+'?text='+encodeURIComponent('Bună ziua! Căutam '+(q.value.trim()||'o telecomandă')+'. O aveți la standul din Selgros?');
+      golWa.href='https://wa.me/'+WA+'?text='+encodeURIComponent('Bună ziua! Caut '+(q.value.trim()||'o telecomandă')+'. O aveți la standul din Selgros?');
     }
+    mai.addEventListener('click',function(){lim+=PAS;filtreaza(false)});
     $('mag-cat').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cat=b.dataset.cat;this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});filtreaza()});
-    q.addEventListener('input',filtreaza);
-    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',filtreaza)});
+    q.addEventListener('input',function(){filtreaza()});
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){filtreaza(false)})});
     filtreaza();
   })();
 
