@@ -69,7 +69,7 @@ for f in sorted(x for x in os.listdir('.') if x.startswith('keyshop-parte')):
             m = re.search(r'\b(Nice|BFT|Came|FAAC|Sommer|Beninca|DoorHan|LiftMaster|Errebi|Xhorse|Electra|Canas|Securemme)\b', nume, re.I)
             marca = m.group(1) if m else ''
         prod.append({'ref': ref, 'cat': c, 'marca': marca, 'nume': curata(nume), 'spec': tri(spec(nume)) if spec(nume) else '',
-                     'img': 'media/magazin/%s.jpg' % ref.lower(), 'sursa': img, 'orig': nume})
+                     'img': 'media/magazin/%s.webp' % ref.lower(), 'sursa': img, 'orig': nume})
 ordem = {c[0]: i for i, c in enumerate(CAT)}
 prod.sort(key=lambda p: ordem[p['cat']])
 json.dump({'categorii': [dict(id=a, ro=b, en=c, pt=d) for a, b, c, d in CAT],
