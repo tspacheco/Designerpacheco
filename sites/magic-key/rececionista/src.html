@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Asistent WhatsApp Magic Key</title>
+<meta name="description" content="Demonstrație Pacheco Studios: asistentul virtual Magic Key pe WhatsApp răspunde, ia comanda pentru cheie și face programarea la stand.">
+<style>
+{{FONTES}}
+/* Layout: introducere sus; dois ecrãs lado a lado (cliente / dono); em telemóvel, separadores */
+:root{
+  --grafit:#1C1F22;--grafit-2:#272B30;--alb:#FAFBF8;--hartie:#EFF2EC;--linie:#DADFD5;
+  --verde:#3BAA35;--verde-txt:#23801F;--verde-dsc:#86DC78;--verde-pal:#E3F3DF;--ambra:#FFB020;--rosu:#C2402F;
+  --text:#121416;--text-2:#4F5650;
+  --chat-fundo:#EDE6DC;--bolha-in:#FFFFFF;--bolha-out:#D9F7CF;--meta:#6B746B;
+  --f-disp:'Tomorrow',Arial,sans-serif;--f-txt:'Red Hat Text',system-ui,-apple-system,sans-serif;--f-mono:'Xanh Mono',ui-monospace,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--hartie);color:var(--text);font:500 15px/1.45 var(--f-txt);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--verde-txt);outline-offset:2px}
+.banda{background:var(--grafit);color:#D9DED8;text-align:center;font:600 11px/1 var(--f-txt);letter-spacing:.14em;text-transform:uppercase;padding:9px 16px calc(9px);padding-top:calc(9px + env(safe-area-inset-top,0px))}
+.banda b{color:var(--verde-dsc);font-weight:600}
+.pagina{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:22px 40px;display:grid;gap:22px}
+/* introdução */
+.intro{display:grid;grid-template-columns:1.2fr 1fr;gap:18px 40px;align-items:end}
+.intro h1{font:600 clamp(28px,4.4vw,46px)/1.04 var(--f-disp);letter-spacing:-.03em;margin:0;text-wrap:balance}
+.intro h1 em{font-style:normal;color:var(--verde-txt)}
+.intro p{margin:10px 0 0;color:var(--text-2);max-width:56ch;font-size:16px}
+.comenzi{display:flex;flex-wrap:wrap;gap:10px}
+.btn{border:0;border-radius:10px;padding:12px 16px;font-weight:700;font-size:15px;background:#fff;box-shadow:inset 0 0 0 1px var(--linie)}
+.btn.prim{background:var(--grafit);color:#fff;box-shadow:none}
+.btn.prim:hover{background:var(--grafit-2)}
+.btn[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--verde)}
+.etape{grid-column:1/-1;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;counter-reset:e}
+.etape li{counter-increment:e;display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1px var(--linie);font-size:13.5px;color:var(--text-2);transition:background .3s,color .3s,box-shadow .3s}
+.etape li::before{content:counter(e);flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:600 12px/1 var(--f-disp);background:var(--hartie);color:var(--text-2);transition:inherit}
+.etape li b{display:block;color:var(--text);font-weight:700}
+.etape li.on{background:var(--verde-pal);box-shadow:inset 0 0 0 1px #BFE3B7;color:#1E3D1C}
+.etape li.on::before{background:var(--verde);color:#fff}
+/* separadores (só telemóvel) */
+.tabs{display:none;gap:6px;background:#fff;border-radius:12px;padding:5px;box-shadow:inset 0 0 0 1px var(--linie);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.tabs button{flex:1;border:0;background:none;border-radius:8px;padding:10px 8px;font-weight:700;font-size:14px;color:var(--text-2);position:relative}
+.tabs button[aria-selected="true"]{background:var(--grafit);color:#fff}
+.tabs .bul{position:absolute;top:6px;right:10px;min-width:18px;height:18px;border-radius:9px;background:var(--ambra);color:#1A1406;font:800 11px/18px var(--f-txt);padding:0 5px}
+/* palco */
+.palco{display:grid;grid-template-columns:400px 1fr;gap:28px;align-items:start}
+/* telemóvel */
+.tel{width:100%;max-width:400px;justify-self:center;background:#0E1012;border-radius:44px;padding:12px;box-shadow:0 30px 60px -30px rgba(18,20,22,.55),inset 0 0 0 1.5px #3A3F45}
+.ecra{border-radius:34px;overflow:hidden;background:var(--chat-fundo);display:flex;flex-direction:column;height:min(760px,calc(100svh - 120px));min-height:560px;position:relative}
+.estado{display:flex;justify-content:space-between;align-items:center;padding:12px 24px 6px;background:var(--grafit);color:#fff;font:700 13px/1 var(--f-txt)}
+.estado .ico{display:flex;gap:5px;align-items:center}
+.estado .ico i{display:block;background:#fff;border-radius:1px}
+.cab{display:flex;align-items:center;gap:10px;padding:8px 12px 10px;background:var(--grafit);color:#fff}
+.cab .av{width:38px;height:38px;border-radius:50%;background:var(--verde) center/cover;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.15)}
+.cab .nm{font-weight:700;font-size:15.5px;line-height:1.2;display:flex;align-items:center;gap:5px}
+.cab .nm svg{width:15px;height:15px;flex:none}
+.cab .sb{font-size:12px;color:#B7C0B6}
+.conv{flex:1;overflow-y:auto;padding:12px 10px 8px;display:flex;flex-direction:column;gap:5px;scroll-behavior:smooth;
+  background-image:radial-gradient(rgba(28,31,34,.05) 1px,transparent 1.2px);background-size:14px 14px}
+.dia{align-self:center;background:#FFFFFFCC;border-radius:8px;padding:5px 10px;font-size:12px;color:var(--meta);margin:4px 0 6px;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.sis{align-self:center;max-width:90%;text-align:center;background:#FFF5D6;color:#5C4300;border-radius:8px;padding:6px 10px;font-size:12.5px;margin:4px 0}
+.b{max-width:82%;padding:7px 9px 5px;border-radius:10px;font-size:14.5px;line-height:1.38;box-shadow:0 1px 0 rgba(0,0,0,.08);position:relative;word-wrap:break-word}
+.b.in{align-self:flex-start;background:var(--bolha-in);border-top-left-radius:3px}
+.b.out{align-self:flex-end;background:var(--bolha-out);border-top-right-radius:3px}
+.b.echipa{box-shadow:inset 3px 0 0 var(--ambra),0 1px 0 rgba(0,0,0,.08)}
+.b .cine{display:block;font-size:12px;font-weight:700;color:#9A6400;margin-bottom:2px}
+.b .ora{float:right;margin:6px 0 -2px 10px;font-size:11px;color:var(--meta);display:inline-flex;gap:3px;align-items:center}
+.b .ora svg{color:#3B9BD8}
+.b.foto{padding:4px 4px 5px;width:62%}
+.b.foto img{display:block;width:100%;border-radius:7px;aspect-ratio:3/4;object-fit:cover}
+.b.foto p{margin:5px 5px 0}
+.gol{display:inline-block;min-width:54px;border-bottom:2px dashed var(--ambra);color:#9A6400;font-weight:700;text-align:center}
+.card{align-self:flex-start;max-width:86%;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.08);font-size:14px}
+.card .top{background:var(--verde);color:#fff;padding:8px 11px;font-weight:700;display:flex;gap:7px;align-items:center}
+.card .top svg{width:16px;height:16px}
+.card dl{margin:0;padding:8px 11px;display:grid;grid-template-columns:auto 1fr;gap:4px 10px}
+.card dt{color:var(--meta);font-size:12.5px}
+.card dd{margin:0;font-weight:600}
+.card a{display:block;text-align:center;padding:9px;border-top:1px solid #EEE;color:#127F9E;font-weight:700;text-decoration:none}
+.tipar{align-self:flex-start;background:#fff;border-radius:10px;padding:10px 12px;display:flex;gap:4px;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.tipar i{width:7px;height:7px;border-radius:50%;background:#A0A8A0;animation:p 1s infinite}
+.tipar i:nth-child(2){animation-delay:.15s}.tipar i:nth-child(3){animation-delay:.3s}
+@keyframes p{0%,60%,100%{opacity:.35;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.alegeri{display:flex;flex-wrap:wrap;gap:6px;padding:6px 10px 2px;justify-content:flex-end}
+.alegeri button{border:0;background:#fff;color:#127F9E;font-weight:700;font-size:13.5px;padding:8px 12px;border-radius:18px;box-shadow:0 1px 0 rgba(0,0,0,.1);transition:transform .15s,background .15s}
+.alegeri button:hover{background:#F3FBF1}
+.alegeri button.ales{background:#127F9E;color:#fff;transform:scale(.97)}
+.scrie{display:flex;gap:7px;padding:7px 8px calc(9px);align-items:center}
+.scrie input{flex:1;min-width:0;border:0;border-radius:22px;padding:11px 15px;font:inherit;font-size:15px;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.scrie button{width:44px;height:44px;border-radius:50%;border:0;background:var(--verde);display:grid;place-items:center;flex:none}
+.scrie button svg{width:20px;height:20px;fill:#fff}
+.toast{position:absolute;left:10px;right:10px;top:8px;background:rgba(28,31,34,.96);color:#fff;border-radius:16px;padding:10px 12px;display:flex;gap:10px;align-items:center;font-size:13px;line-height:1.3;transform:translateY(-130%);transition:transform .35s cubic-bezier(.2,.9,.3,1.2);z-index:3;border:0;text-align:left}
+.toast.on{transform:none}
+.toast .av{width:30px;height:30px;border-radius:8px;background:var(--verde);flex:none;display:grid;place-items:center;font:600 13px/1 var(--f-disp)}
+.toast b{display:block;font-size:13px}
+/* painel do dono */
+.dono{display:grid;gap:14px}
+.dono-cab{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.dono-cab h2{font:600 22px/1.15 var(--f-disp);letter-spacing:-.02em;margin:0}
+.dono-cab p{margin:4px 0 0;color:var(--text-2);font-size:14px;max-width:52ch}
+.grila{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bloc{background:#fff;border-radius:14px;box-shadow:inset 0 0 0 1px var(--linie);padding:14px 16px;min-width:0}
+.bloc h3{margin:0 0 10px;font:600 15px/1.2 var(--f-disp);display:flex;justify-content:space-between;align-items:center}
+.bloc h3 .n{font:700 12px/1 var(--f-txt);background:var(--hartie);border-radius:99px;padding:4px 8px;color:var(--text-2)}
+.bloc h3 .n.cald{background:var(--ambra);color:#1A1406}
+.gol-st{margin:0;color:var(--text-2);font-size:13.5px}
+.item{border-radius:10px;padding:10px 12px;background:var(--hartie);font-size:13.5px;line-height:1.4;animation:intra .45s ease}
+.item+.item{margin-top:8px}
+.item .t{display:flex;justify-content:space-between;gap:8px;font-weight:700}
+.item .t span{font:400 13px/1.2 var(--f-mono);color:var(--text-2)}
+.item ul{margin:5px 0 0;padding-left:16px;color:var(--text-2)}
+.item.alerta{background:#FFF5D6;box-shadow:inset 3px 0 0 var(--ambra)}
+.item form{display:flex;gap:6px;margin-top:8px}
+.item input{flex:1;min-width:0;border:1px solid var(--linie);border-radius:8px;padding:8px 10px;font:inherit;font-size:14px}
+.item form button{border:0;border-radius:8px;background:var(--grafit);color:#fff;font-weight:700;padding:8px 12px;font-size:13.5px}
+.agenda{display:grid;gap:6px}
+.slot{display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:center;font-size:13.5px;padding:8px 10px;border-radius:9px;background:var(--hartie)}
+.slot b{font:600 15px/1 var(--f-disp)}
+.slot.nou{background:var(--verde-pal);box-shadow:inset 0 0 0 1px #BFE3B7;animation:intra .45s ease}
+.slot small{display:block;color:var(--text-2)}
+.reg{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13px;color:var(--text-2);max-height:220px;overflow:auto}
+.reg li{display:grid;grid-template-columns:44px 1fr;gap:8px}
+.reg li span{font:400 13px/1.35 var(--f-mono)}
+.reg li.v{color:var(--text)}
+.cifre{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cifra{background:var(--grafit);color:#D9DED8;border-radius:12px;padding:12px 14px}
+.cifra b{display:block;font:600 26px/1 var(--f-disp);color:#fff;font-variant-numeric:tabular-nums}
+.cifra span{font-size:12.5px}
+.nota{margin:0;font-size:12.5px;color:var(--text-2)}
+.nota .gol{min-width:30px}
+.subsol{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:var(--text-2);font-size:13px;border-top:1px solid var(--linie);padding-top:14px}
+.subsol a{color:var(--text);font-weight:700;text-decoration:none}
+@keyframes intra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.intra{animation:intra .3s ease}
+@media (max-width:900px){
+  .intro{grid-template-columns:1fr}
+  .etape{grid-template-columns:1fr 1fr}
+  .tabs{display:flex}
+  .etape{display:none}
+  .intro p{font-size:15px}
+  .pagina{gap:16px;padding-block:16px 32px}
+  .palco{grid-template-columns:1fr}
+  .palco[data-vede="cliente"] .dono{display:none}
+  .palco[data-vede="dono"] .tel{display:none}
+  .grila{grid-template-columns:1fr}
+  .tel{padding:0;background:none;box-shadow:none;border-radius:0;max-width:none}
+  .ecra{border-radius:18px;height:calc(100svh - 150px);min-height:480px;box-shadow:inset 0 0 0 1px var(--linie)}
+  .estado{display:none}
+  .cab{padding-top:12px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="banda">Demonstrație <b>Pacheco Studios</b> · conversație simulată</div>
+<div class="pagina">
+  <header class="intro">
+    <div>
+      <h1>Clientul scrie pe WhatsApp. <em>Asistentul Magic Key răspunde imediat.</em></h1>
+      <p>Răspunde la întrebări, ia comanda pentru cheie și face programarea la stand, chiar și când lucrați la o cheie sau standul e închis. Dumneavoastră primiți doar comanda, programarea și ce trebuie să decideți personal.</p>
+    </div>
+    <div class="comenzi">
+      <button class="btn prim" id="b-auto" type="button">Pornește demonstrația</button>
+      <button class="btn" id="b-eu" type="button">Încerc eu</button>
+      <button class="btn" id="b-reset" type="button">De la capăt</button>
+    </div>
+    <ol class="etape" id="etape">
+      <li data-e="1"><span><b>Întrebarea</b>clientul scrie oricând</span></li>
+      <li data-e="2"><span><b>Comanda</b>marcă, an, ce s-a pierdut</span></li>
+      <li data-e="3"><span><b>Programarea</b>zi și oră la stand</span></li>
+      <li data-e="4"><span><b>La dumneavoastră</b>comanda, agenda, alertele</span></li>
+    </ol>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Ce vedeți">
+    <button role="tab" id="t-cliente" aria-selected="true" type="button">Clientul vede</button>
+    <button role="tab" id="t-dono" aria-selected="false" type="button">Dumneavoastră vedeți<span class="bul" id="bul" hidden>0</span></button>
+  </div>
+
+  <div class="palco" id="palco" data-vede="cliente">
+    <div class="tel">
+      <div class="ecra">
+        <div class="estado"><span id="ceas">09:41</span><span class="ico"><i style="width:3px;height:6px"></i><i style="width:3px;height:9px"></i><i style="width:3px;height:12px"></i><i style="width:20px;height:10px;border-radius:3px;margin-left:4px"></i></span></div>
+        <div class="cab">
+          <div class="av" style="background-image:url({{IMG:stand-magic-key}})"></div>
+          <div><div class="nm">Magic Key, chei auto <svg viewBox="0 0 24 24" aria-label="cont business"><circle cx="12" cy="12" r="11" fill="#3BAA35"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sb" id="sub">Cont business · răspunde de obicei imediat</div></div>
+        </div>
+        <button class="toast" id="toast" type="button" aria-live="polite"><span class="av">MK</span><span><b id="toast-t"></b><span id="toast-d"></span></span></button>
+        <div class="conv" id="conv" role="log" aria-live="polite"></div>
+        <div class="alegeri" id="alegeri"></div>
+        <form class="scrie" id="scrie" autocomplete="off">
+          <label for="msg" style="position:absolute;left:-9999px">Mesaj</label>
+          <input id="msg" placeholder="Scrieți un mesaj">
+          <button type="submit" aria-label="Trimite"><svg viewBox="0 0 24 24"><path d="M3 20.5 21.5 12 3 3.5l.01 6.6L16 12 3.01 13.9z"/></svg></button>
+        </form>
+      </div>
+    </div>
+
+    <section class="dono" aria-labelledby="dono-h">
+      <div class="dono-cab">
+        <div><h2 id="dono-h">Telefonul dumneavoastră</h2><p>Tot ce ajunge la Magic Key din conversație: fără să răspundeți la telefon pentru fiecare întrebare.</p></div>
+      </div>
+      <div class="cifre">
+        <div class="cifra"><b id="c-msg">0</b><span>mesaje primite</span></div>
+        <div class="cifra"><b id="c-auto">0</b><span>rezolvate de asistent</span></div>
+        <div class="cifra"><b id="c-om">0</b><span>pentru dumneavoastră</span></div>
+      </div>
+      <div class="grila">
+        <div class="bloc"><h3>Comenzi noi <span class="n" id="n-com">0</span></h3><p class="gol-st" id="g-com">Apare aici când un client rezervă o cheie.</p><div id="comenzi"></div></div>
+        <div class="bloc"><h3>Agenda la stand <span class="n" id="n-ag">0</span></h3><div class="agenda" id="agenda"></div></div>
+        <div class="bloc"><h3>De răspuns personal <span class="n" id="n-al">0</span></h3><p class="gol-st" id="g-al">Ce asistentul nu poate decide singur (deplasări, cazuri speciale) vine aici, cu tot contextul.</p><div id="alerte"></div></div>
+        <div class="bloc"><h3>Ce a făcut asistentul</h3><ul class="reg" id="reg"></ul></div>
+      </div>
+      <p class="nota">Prețurile apar ca <span class="gol">&nbsp;</span> lei: le stabiliți dumneavoastră. Programul și adresa sunt cele de pe profilul Google Magic Key.</p>
+    </section>
+  </div>
+
+  <footer class="subsol"><span>Demonstrație realizată de <a href="https://ro.pachecost.com">Pacheco Studios</a> pentru Magic Key, Iași.</span><span>Tomás · +40 723 098 556</span></footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var FOTO={toyota:"{{IMG:cheie-toyota}}",vw:"{{IMG:cheie-vw-touran}}",renault:"{{IMG:card-renault-megane}}",opel:"{{IMG:cheie-opel}}",mercedes:"{{IMG:cheie-mercedes-vito}}"};
+var MARCI={toyota:"Toyota",vw:"Volkswagen",renault:"Renault",opel:"Opel",mercedes:"Mercedes",alta:"altă marcă"};
+var MAPS="https://www.google.com/maps/search/?api=1&query=Magic+Key+chei+auto+Selgros+Nicolina+Iasi";
+var ADRESA="incinta Selgros, Șos. Nicolina 57A, Iași";
+var PROGRAM={0:null,1:[9,17],2:[9,17],3:[9,17],4:[9,17],5:[9,17],6:[9,14]};
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var $=function(id){return document.getElementById(id)};
+var conv=$("conv"),alegeri=$("alegeri");
+var S,gen=0,auto=false;
+var nrCom=1027;
+
+function acum(){try{return new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Bucharest"}))}catch(e){return new Date()}}
+function pad(n){return (n<10?"0":"")+n}
+function hm(d){return pad(d.getHours())+":"+pad(d.getMinutes())}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function wait(ms){var g=gen;return new Promise(function(r,j){setTimeout(function(){g===gen?r():j("reset")},reduce?Math.min(ms,120):ms)})}
+function jos(){conv.scrollTop=conv.scrollHeight}
+var BIFA='<svg viewBox="0 0 18 12" width="16" height="11" aria-hidden="true"><path d="M1 6.5l3 3L10 3M7 9.5l1 0L15 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+function add(el){el.classList.add("intra");conv.appendChild(el);jos();return el}
+function bula(html,lado,cls){var d=document.createElement("div");d.className="b "+lado+(cls?" "+cls:"");d.innerHTML=html+'<span class="ora">'+hm(acum())+(lado==="out"?BIFA:"")+"</span>";return add(d)}
+function sis(t){var d=document.createElement("div");d.className="sis";d.textContent=t;return add(d)}
+async function bot(html,extra){
+  var t=document.createElement("div");t.className="tipar";t.innerHTML="<i></i><i></i><i></i>";add(t);
+  $("sub").textContent="scrie…";
+  await wait(Math.min(1700,500+html.replace(/<[^>]+>/g,"").length*14));
+  t.remove();$("sub").textContent="Cont business · răspunde de obicei imediat";
+  return bula(html,"in",extra);
+}
+async function foto(src,text){
+  var t=document.createElement("div");t.className="tipar";t.innerHTML="<i></i><i></i><i></i>";add(t);await wait(900);t.remove();
+  var d=document.createElement("div");d.className="b in foto";d.innerHTML='<img alt="Cheie făcută la Magic Key" src="'+src+'"><p>'+text+'<span class="ora">'+hm(acum())+"</span></p>";add(d);
+  d.querySelector("img").addEventListener("load",jos);
+}
+function client(t){S.msg++;cifre();return bula(esc(t),"out")}
+function etapa(n){if(n&&n<=(S.etapa||0))return;S.etapa=n;document.querySelectorAll("#etape li").forEach(function(li){li.classList.toggle("on",Number(li.dataset.e)<=n)})}
+function cifre(){$("c-msg").textContent=S.msg;$("c-auto").textContent=S.auto;$("c-om").textContent=S.om}
+function log(t,v){var li=document.createElement("li");if(v)li.className="v";li.innerHTML="<span>"+hm(acum())+"</span>"+esc(t);$("reg").prepend(li)}
+function bulina(){var n=S.noi;var b=$("bul");b.hidden=!n||$("palco").dataset.vede==="dono";b.textContent=n}
+function toast(t,d){$("toast-t").textContent=t;$("toast-d").textContent=d;var el=$("toast");el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){el.classList.remove("on")},3600);S.noi++;bulina()}
+
+/* alegeri: cliente toca; em modo automático escolhe sozinho */
+function alege(opts,autoIdx){
+  var g=gen;
+  return new Promise(function(res,rej){
+    alegeri.innerHTML="";
+    opts.forEach(function(o,i){var b=document.createElement("button");b.type="button";b.textContent=o;b.addEventListener("click",function(){if(g!==gen)return;b.classList.add("ales");S.asteapta=null;setTimeout(function(){alegeri.innerHTML="";res(o)},160)});alegeri.appendChild(b)});
+    S.asteapta=function(txt){alegeri.innerHTML="";res(txt)};
+    jos();
+    if(auto&&autoIdx!=null){wait(1300).then(function(){var b=alegeri.children[autoIdx];if(b&&g===gen)b.click()}).catch(function(){})}
+    var chk=setInterval(function(){if(g!==gen){clearInterval(chk);rej("reset")}},300);
+  }).then(function(o){client(o);return o});
+}
+
+/* dias e horas reais do programa */
+function zile(n){var r=[],d=acum();d.setHours(0,0,0,0);var hoje=acum();
+  for(var i=0;r.length<n&&i<10;i++){var x=new Date(d);x.setDate(d.getDate()+i);var p=PROGRAM[x.getDay()];if(!p)continue;
+    if(i===0&&hoje.getHours()>=p[1]-1)continue;r.push(x)}return r}
+function numeZi(x){var hoje=acum();hoje.setHours(0,0,0,0);var dif=Math.round((x-hoje)/864e5);
+  var z=x.toLocaleDateString("ro-RO",{weekday:"long",day:"numeric",month:"short"}).replace(".","");
+  return dif===0?"Azi, "+z:dif===1?"Mâine, "+z:z.charAt(0).toUpperCase()+z.slice(1)}
+function ore(x){var p=PROGRAM[x.getDay()],l=[],hoje=acum(),eAzi=x.toDateString()===hoje.toDateString();
+  for(var h=p[0];h<p[1];h++)[0,30].forEach(function(m){if(eAzi&&(h*60+m)<=hoje.getHours()*60+hoje.getMinutes()+60)return;l.push(pad(h)+":"+pad(m))});
+  var s=x.getDate();return l.filter(function(_,i){return (i+s)%3!==1}).filter(function(_,i,a){return i%Math.max(1,Math.floor(a.length/3))===0}).slice(0,3)}
+
+/* fluxos */
+async function start(){
+  gen++;S={msg:0,auto:0,om:0,noi:0,meniuN:0,marca:null,an:null,sit:null,com:null};
+  conv.innerHTML="";alegeri.innerHTML="";$("comenzi").innerHTML="";$("alerte").innerHTML="";$("reg").innerHTML="";
+  $("g-com").hidden=false;$("g-al").hidden=false;$("n-com").textContent="0";$("n-al").textContent="0";$("n-al").classList.remove("cald");
+  agendaInit();cifre();etapa(0);bulina();
+  var d=document.createElement("div");d.className="dia";d.textContent="Astăzi";conv.appendChild(d);
+  sis("Mesajele sunt simulate. Atingeți butoanele sau scrieți un mesaj.");
+  try{await meniu(true)}catch(e){}
+}
+async function meniu(prim){
+  if(prim)etapa(1);
+  var o=await alege(prim?["Am pierdut cheia mașinii","Vreau o copie de cheie auto","Am o întrebare","Vreau o programare"]:["Am o întrebare","Vreau o copie de cheie auto","Vreau o programare","Gata, mulțumesc"],prim?0:(S.meniuN++===0?0:3));
+  await ruta(o);
+}
+async function ruta(o){
+  var n=o.toLowerCase();
+  if(/pierd|pierdut|nu mai am/.test(n))return comanda("pierdut",true);
+  if(/copie|dublur|duplicat|pret|preț|cost/.test(n))return comanda("copie",true);
+  if(/program|vin la|ora |oră/.test(n))return programare(null);
+  if(/mulțum|multum|gata|mersi/.test(n)){await bot("Cu plăcere! Vă așteptăm la stand. O zi bună!");S.auto++;cifre();log("Conversație încheiată");auto=false;$("b-auto").setAttribute("aria-pressed","false");return}
+  if(/întreb|intreb/.test(n))return intrebari();
+  return raspunsLiber(o);
+}
+async function salut(){
+  if(S.salutat)return;S.salutat=true;
+  await bot("Bună ziua! Sunt asistentul virtual Magic Key. Vă ajut cu prețuri, comenzi de chei și programări la stand. Dacă e nevoie, vă pun în legătură cu colegul de la stand.");
+}
+async function intrebari(){
+  etapa(1);await salut();
+  await bot("Desigur, întrebați-mă orice.");
+  var o=await alege(["Unde sunteți?","Care e programul?","Faceți și chei de casă?","Veniți la mașină?"],3);
+  await faq(o);
+}
+async function faq(o){
+  var n=o.toLowerCase();S.auto++;
+  if(/unde|adres|loc/.test(n)){await bot("Suntem în "+ADRESA+".");cardHarta();log("A trimis adresa și harta");}
+  else if(/program|orar|deschis|închis|inchis/.test(n)){var z=zile(1)[0];await bot("Programul nostru: luni–vineri 09:00–17:00, sâmbătă 09:00–14:00, duminică închis. Următoarea zi deschisă: "+numeZi(z).toLowerCase()+".");log("A răspuns la program");}
+  else if(/cas|yal|ușă|usa|butuc/.test(n)){await bot("Da, facem și copii de chei pentru casă. Aduceți cheia la stand, în programul de lucru. Pentru un profil mai rar, verificăm pe loc dacă îl avem.");log("A răspuns: chei de casă");}
+  else if(/mașin|masin|depla|veniti|veniți/.test(n)){S.auto--;await handoff("Deplasare la mașina clientului","Clientul întreabă dacă veniți la mașină. Nu a spus încă unde e mașina.");}
+  cifre();
+  await bot("Vă mai pot ajuta cu ceva?");
+  await meniu(false);
+}
+function cardHarta(){var d=document.createElement("div");d.className="card";d.innerHTML='<div class="top"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Magic Key · Selgros</div><dl><dt>Adresă</dt><dd>Șos. Nicolina 57A, Iași</dd><dt>Program</dt><dd>L–V 09–17, S 09–14</dd></dl><a href="'+MAPS+'" target="_blank" rel="noopener">Deschide în Google Maps</a>';add(d)}
+
+async function comanda(sit,dinMeniu){
+  etapa(2);S.sit=sit;await salut();
+  if(sit==="pierdut")await bot("Îmi pare rău, se întâmplă des. Vă ajut să faceți o cheie nouă. Pentru ce mașină e?");
+  else await bot("Sigur. Pentru ce mașină e cheia?");
+  var m=await alege(["Toyota","Volkswagen","Renault","Opel","Mercedes","Altă marcă"],0);
+  S.marca=Object.keys(MARCI).find(function(k){return MARCI[k].toLowerCase()===m.toLowerCase()})||"alta";
+  await bot("Ce an de fabricație are mașina?");
+  S.an=await alege(["Înainte de 2010","2010–2017","2018 sau mai nou","Nu știu sigur"],1);
+  log("Cerere cheie: "+MARCI[S.marca]+", "+S.an.toLowerCase(),true);
+  if(sit==="pierdut"){
+    await bot("Când nu mai e nicio cheie, cea nouă se programează direct pe mașină. Vă rog să aveți la dumneavoastră talonul mașinii și buletinul.");
+    await bot("Puteți aduce mașina la stand?");
+    var v=await alege(["Da, pot veni cu mașina","Nu pornește, veniți voi?"],0);
+    if(/nu porn/i.test(v)){await handoff("Deplasare: "+MARCI[S.marca]+", "+S.an.toLowerCase(),"Toate cheile pierdute, mașina nu pornește. Clientul cere deplasare.");await bot("Între timp, dacă reușiți să aduceți mașina, vă pot rezerva o oră la stand.");}
+  }else{
+    await bot("Pentru o copie cu cip, veniți cu mașina și cu cheia pe care o aveți.");
+  }
+  if(FOTO[S.marca])await foto(FOTO[S.marca],"O cheie "+MARCI[S.marca]+" făcută recent la noi.");
+  await bot("Cheie nouă "+MARCI[S.marca]+(S.marca==="alta"?"":"")+" cu cip și telecomandă: <span class=\"gol\">&nbsp;&nbsp;&nbsp;</span> lei, programarea inclusă. Plata se face la stand.");
+  await bot("Vă rezerv cheia și o oră la stand?");
+  var r=await alege(["Da, rezervă","Mă mai gândesc"],0);
+  S.auto++;cifre();
+  if(/rezerv/i.test(r)){
+    S.com="MK-"+(nrCom++);
+    adaugaComanda();
+    await bot("Am rezervat cheia. Numărul comenzii: <b>"+S.com+"</b>.");
+    return programare(S.com);
+  }
+  await bot("Sigur. Vreți să vă scriu mâine, ca să nu uitați?");
+  var f=await alege(["Da, scrieți-mi mâine","Nu, mulțumesc"],0);
+  if(/da/i.test(f)){log("Revenire programată: mâine, 10:00",true);await bot("Perfect, vă scriu mâine dimineață.");}
+  else await bot("În regulă. Sunteți oricând binevenit.");
+  await meniu(false);
+}
+function adaugaComanda(){
+  $("g-com").hidden=true;var d=document.createElement("div");d.className="item";
+  d.innerHTML='<div class="t">'+esc(S.com)+' · cheie '+esc(MARCI[S.marca])+'<span>'+hm(acum())+'</span></div><ul><li>An: '+esc(S.an.toLowerCase())+'</li><li>'+(S.sit==="pierdut"?"toate cheile pierdute, programare pe mașină":"copie, are o cheie")+'</li><li>Plata la stand</li></ul>';
+  $("comenzi").prepend(d);$("n-com").textContent=$("comenzi").children.length;
+  log("Comandă "+S.com+" creată",true);toast("Comandă nouă "+S.com,"Cheie "+MARCI[S.marca]+", "+S.an.toLowerCase());
+}
+async function programare(com){
+  etapa(3);await salut();
+  var lz=zile(3);
+  await bot("Când vă convine să veniți la stand?");
+  var zs=lz.map(numeZi);var zz=await alege(zs,lz.length>1?1:0);var x=lz[zs.indexOf(zz)]||lz[0];
+  var lo=ore(x);
+  await bot(numeZi(x)+" avem liber la "+lo.join(", ").replace(/, ([^,]*)$/," sau $1")+".");
+  var o=await alege(lo,1);
+  await bot("Pe ce nume fac programarea?");
+  var nm=await alege(["Andrei Popescu"],0);
+  S.auto++;cifre();
+  var d=document.createElement("div");d.className="card";
+  d.innerHTML='<div class="top"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Programare confirmată</div><dl><dt>Când</dt><dd>'+esc(numeZi(x))+', ora '+esc(o)+'</dd><dt>Nume</dt><dd>'+esc(nm)+'</dd>'+(com?'<dt>Comanda</dt><dd>'+esc(com)+' · cheie '+esc(MARCI[S.marca])+'</dd>':'')+'<dt>Unde</dt><dd>Stand Magic Key, incinta Selgros, Șos. Nicolina 57A</dd></dl><a href="'+MAPS+'" target="_blank" rel="noopener">Deschide în Google Maps</a>';
+  await wait(700);add(d);
+  adaugaAgenda(x,o,nm,com);
+  await bot("Gata! Vă trimit un memento cu 2 ore înainte. Dacă se schimbă ceva, scrieți-mi aici și mutăm programarea.");
+  etapa(4);
+  sis("De la primul mesaj la programare, fără niciun apel telefonic.");
+  await bot("Vă mai pot ajuta cu ceva?");
+  await meniu(false);
+}
+var AG=[];
+function agendaInit(){var z=zile(3);AG=[];if(z[1])AG.push({x:z[1],o:"09:30",t:"Copie cheie VW",ex:true});if(z[2])AG.push({x:z[2],o:"12:30",t:"Telecomandă Renault",ex:true});desAgenda()}
+function adaugaAgenda(x,o,nm,com){AG.push({x:x,o:o,t:(com?com+" · cheie "+MARCI[S.marca]:"Vizită la stand")+" · "+nm,nou:true});desAgenda();
+  log("Programare: "+numeZi(x).toLowerCase()+", "+o,true);toast("Programare nouă",numeZi(x)+", ora "+o+" · "+nm)}
+function desAgenda(){AG.sort(function(a,b){return a.x-b.x||a.o.localeCompare(b.o)});
+  $("agenda").innerHTML=AG.map(function(a){return '<div class="slot'+(a.nou?" nou":"")+'"><b>'+a.o+'</b><span>'+esc(a.t)+'<small>'+esc(numeZi(a.x))+(a.ex?" · exemplu":"")+'</small></span></div>'}).join("");
+  $("n-ag").textContent=AG.length}
+async function handoff(titlu,detaliu){
+  S.om++;cifre();
+  await bot("Pentru asta vă răspunde colegul de la stand, personal. I-am trimis acum toate detaliile și vă scrie aici, în această conversație.");
+  $("g-al").hidden=true;var id="r"+Date.now();var d=document.createElement("div");d.className="item alerta";
+  d.innerHTML='<div class="t">'+esc(titlu)+'<span>'+hm(acum())+'</span></div><ul><li>'+esc(detaliu)+'</li><li>Clientul a primit răspuns că îi scrieți personal.</li></ul><form><label for="'+id+'" style="position:absolute;left:-9999px">Răspuns</label><input id="'+id+'" value="Da, venim. Trimiteți-mi locația, vă rog."><button type="submit">Trimite</button></form>';
+  d.querySelector("form").addEventListener("submit",function(e){e.preventDefault();var v=d.querySelector("input").value.trim();if(!v)return;
+    bula('<span class="cine">Magic Key · echipa</span>'+esc(v),"in","echipa");d.querySelector("form").remove();d.classList.remove("alerta");
+    log("Ați răspuns personal: «"+v.slice(0,40)+"»",true);if(window.innerWidth<=900)arata("cliente");});
+  if(auto){var fm=d.querySelector("form");wait(2600).then(function(){if(fm.isConnected)fm.requestSubmit()}).catch(function(){})}
+  $("alerte").prepend(d);var n=$("n-al");n.textContent=$("alerte").querySelectorAll(".alerta").length;n.classList.add("cald");
+  log("Trimis la dumneavoastră: "+titlu,true);toast("De răspuns personal",titlu);
+}
+async function raspunsLiber(t){
+  var n=t.toLowerCase();
+  if(/unde|adres|program|orar|deschis|casa|casă|yal|mașin|masin|depla/.test(n)){await salut();return faq(t)}
+  await salut();
+  return handoffSiMeniu(t);
+}
+async function handoffSiMeniu(t){await handoff("Întrebare nouă","«"+t.slice(0,90)+"»");await bot("Vă mai pot ajuta cu ceva?");await meniu(false)}
+
+/* escrever livremente */
+$("scrie").addEventListener("submit",function(e){e.preventDefault();var i=$("msg"),v=i.value.trim();if(!v)return;i.value="";
+  auto=false;$("b-auto").setAttribute("aria-pressed","false");
+  if(S.asteapta){var f=S.asteapta;S.asteapta=null;
+    var opts=[].map.call(alegeri.children,function(b){return b.textContent});
+    var m=opts.find(function(o){return o.toLowerCase()===v.toLowerCase()});
+    var n=v.toLowerCase();
+    if(!m&&/pierd|copie|dublur|program|întreb|intreb|unde|adres|orar|deschis|casa|casă|yal|mulțum|multum|gata/.test(n)&&opts.indexOf("Andrei Popescu")<0){
+      /* muda de assunto: reinicia o fluxo nessa direção */
+      gen++;alegeri.innerHTML="";client(v);var g=gen;ruta(v).catch(function(){});return}
+    f(m||v);return}
+  client(v);ruta(v).catch(function(){});
+});
+
+/* controlos */
+function sus(){if(window.innerWidth<=900)document.querySelector(".tabs").scrollIntoView({behavior:reduce?"auto":"smooth"})}
+function arata(qual){$("palco").dataset.vede=qual;$("t-cliente").setAttribute("aria-selected",qual==="cliente");$("t-dono").setAttribute("aria-selected",qual==="dono");if(qual==="dono"){S.noi=0}bulina();if(qual==="cliente")jos()}
+$("t-cliente").addEventListener("click",function(){arata("cliente")});
+$("t-dono").addEventListener("click",function(){arata("dono")});
+$("toast").addEventListener("click",function(){if(window.innerWidth<=900)arata("dono")});
+$("b-auto").addEventListener("click",function(){auto=true;this.setAttribute("aria-pressed","true");arata("cliente");start();sus()});
+$("b-eu").addEventListener("click",function(){auto=false;$("b-auto").setAttribute("aria-pressed","false");arata("cliente");start();sus();setTimeout(function(){$("msg").focus({preventScroll:true})},50)});
+$("b-reset").addEventListener("click",function(){auto=false;$("b-auto").setAttribute("aria-pressed","false");start()});
+function relogio(){$("ceas").textContent=hm(acum())}relogio();setInterval(relogio,15000);
+start();
+})();
+</script>
+</body>
+</html>
