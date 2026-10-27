@@ -9,6 +9,8 @@ CAT = [  # ordem da página
     ('garaj', 'Porți, garaje, bariere', 'Gates, garages, barriers', 'Portões, garagens, barreiras'),
     ('auto', 'Telecomenzi auto', 'Car remotes', 'Comandos auto'),
     ('carcase', 'Carcase și lame', 'Key shells and blades', 'Carcaças e lâminas'),
+    ('plane', 'Chei plane', 'Flat keys', 'Chaves planas'),
+    ('amprenta', 'Chei amprentă', 'Dimple keys', 'Chaves de pontos'),
     ('baterii', 'Baterii', 'Batteries', 'Pilhas'),
     ('taguri', 'Tag-uri și cartele', 'Fobs and cards', 'Tags e cartões'),
     ('huse', 'Huse pentru chei', 'Key covers', 'Capas de chave'),
@@ -73,6 +75,15 @@ for f in sorted(x for x in os.listdir('.') if x.startswith('keyshop-parte')):
             marca = m.group(1) if m else ''
         prod.append({'ref': ref, 'cat': c, 'marca': marca, 'nume': curata(nume), 'spec': tri(spec(nume)) if spec(nume) else '',
                      'img': 'media/magazin/%s.webp' % ref.lower(), 'sursa': img, 'orig': nume})
+# 27/10 (Tomás): categorias de chaves copiadas ao balcão; preços da lista oficial do stand (09/10)
+for ref, cat, nume, pret, spec in [
+    ('MK-P01', 'plane', 'Copie cheie plană', '20 lei', ['Cheie de casă, birou, cutie poștală', 'House, office, mailbox key', 'Chave de casa, escritório, caixa de correio']),
+    ('MK-P02', 'plane', 'Copie cheie plană cu 2 tăieri', '20 lei', ['Tăiată pe ambele părți', 'Cut on both edges', 'Cortada dos dois lados']),
+    ('MK-P03', 'plane', 'Copie cheie plană tip TL', '15 lei', '' ),
+    ('MK-A01', 'amprenta', 'Copie cheie cu amprentă', '30 lei', ['Cheie cu puncte (găuri) pe lamă', 'Key with dimples on the blade', 'Chave com pontos (furos) na lâmina']),
+]:
+    prod.append({'ref': ref, 'cat': cat, 'marca': 'Magic Key', 'nume': nume, 'spec': spec, 'pret': pret, 'copie': True,
+                 'img': 'media/magazin/%s.webp' % ref.lower(), 'sursa': '', 'orig': nume + ' (serviciu la tejghea)'})
 ordem = {c[0]: i for i, c in enumerate(CAT)}
 prod.sort(key=lambda p: ordem[p['cat']])
 json.dump({'categorii': [dict(id=a, ro=b, en=c, pt=d) for a, b, c, d in CAT],

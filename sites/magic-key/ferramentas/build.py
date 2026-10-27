@@ -27,7 +27,10 @@ def magazin(src):
     for i, p in enumerate(d['produse']):
         c = nume_cat[p['cat']]
         sp = tri(p.get('spec', ''))
-        msg = 'Bună ziua! Aveți %s (%s)? Aș vrea să trec să o iau de la standul din Selgros Nicolina.' % (p['nume'], p['marca'])
+        if p.get('copie'):
+            msg = 'Bună ziua! Vreau: %s (Ref. %s). Când pot trece cu cheia la standul din Selgros Nicolina?' % (p['nume'], p['ref'])
+        else:
+            msg = 'Bună ziua! Aveți %s (%s, Ref. %s)? Aș vrea să trec să îl ridic de la standul din Selgros Nicolina.' % (p['nume'], p['marca'], p['ref'])
         wa = 'https://wa.me/40747979810?text=' + urllib.parse.quote(msg)
         cauta = ' '.join([p['nume'], p['marca'], c['ro'], c['en']] + sp + p.get('cuvinte', [])).lower()
         cauta = ''.join(ch for ch in __import__('unicodedata').normalize('NFD', cauta) if __import__('unicodedata').category(ch) != 'Mn')
@@ -37,11 +40,12 @@ def magazin(src):
             '<figure class="prod-foto"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#EFF2EC"/><text x="50" y="54" text-anchor="middle" font-family="monospace" font-size="9" fill="#9AA39A">%s</text></svg>%s'
             '<span class="prod-tag">{{%s|%s|%s}}</span></figure>'
             '<div class="prod-txt"><small>%s</small><h3>%s</h3>%s</div>'
-            '<div class="prod-jos"><span class="pret">{{Preț la cerere|Price on request|Preço a pedido}}</span>'
+            '<div class="prod-jos"><span class="pret">%s</span>'
             '<a class="btn btn-wa" href="%s" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Rezervă<span class="lung"> pe WhatsApp</span>|Reserve<span class="lung"> on WhatsApp</span>|Reservar<span class="lung"> no WhatsApp</span>}}</a></div></li>' % (
                 ' d%d' % (i % 3) if i % 3 else '', p['cat'], esc(cauta), esc(p['marca']), img,
                 c['ro'], c['en'], c['pt'], esc(p['marca']), esc(p['nume']),
-                ('<p>{{%s|%s|%s}}</p>' % tuple(esc(x) for x in sp)) if sp[0] else '', esc(wa)))
+                ('<p>{{%s|%s|%s}}</p>' % tuple(esc(x) for x in sp)) if sp[0] else '',
+                (p['pret'] + ' · {{copie pe loc|copied on the spot|cópia na hora}}') if p.get('pret') else '{{Preț la cerere|Price on request|Preço a pedido}}', esc(wa)))
     return src.replace('__MAGCAT__', btn).replace('__MAGAZIN__', '\n'.join(li)).replace('__NPROD__', str(len(d['produse'])))
 src = magazin(src)
 src = re.sub(r'aria-label="' + T3 + '"', lambda m: 'aria-label="%s" data-aria="%s|%s|%s"' % (m[1], m[1], m[2], m[3]), src)
