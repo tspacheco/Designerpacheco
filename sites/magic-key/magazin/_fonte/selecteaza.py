@@ -51,6 +51,8 @@ def tri(s):
     j = ' · '.join(s)
     return [j.replace('{b}', 'butoane').replace('{f}', 'cod fix'), j.replace('{b}', 'buttons').replace('{f}', 'fixed code'),
             j.replace('{b}', 'botões').replace('{f}', 'código fixo')]
+# 27/10 (Tomás): só as categorias seguras (vendem-se ao balcão ou copiam-se na hora); comandos auto, carcaças e lâminas ficam de fora até o George validar
+SIGURE = {'garaj', 'baterii', 'taguri', 'huse', 'accesorii'}
 vazut, prod = set(), []
 for f in sorted(x for x in os.listdir('.') if x.startswith('keyshop-parte')):
     cat = None
@@ -63,6 +65,7 @@ for f in sorted(x for x in os.listdir('.') if x.startswith('keyshop-parte')):
         c = cat
         if cat in ('auto', 'carcase'):
             c = 'auto' if nume.startswith('Telecomanda') else 'huse' if nume.startswith('Husa') else 'carcase'
+        if c not in SIGURE or (c == 'garaj' and 'Xhorse' in nume): continue
         vazut.add(img)
         ref = 'MK-' + os.path.splitext(os.path.basename(img))[0][-5:].upper()
         if not marca:
