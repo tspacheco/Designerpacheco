@@ -38,7 +38,7 @@ def magazin(src):
             '<span class="prod-tag">{{%s|%s|%s}}</span></figure>'
             '<div class="prod-txt"><small>%s</small><h3>%s</h3>%s</div>'
             '<div class="prod-jos"><span class="pret">{{Preț la cerere|Price on request|Preço a pedido}}</span>'
-            '<a class="btn btn-wa" href="%s" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Rezervă pe WhatsApp|Reserve on WhatsApp|Reservar no WhatsApp}}</a></div></li>' % (
+            '<a class="btn btn-wa" href="%s" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>{{Rezervă<span class="lung"> pe WhatsApp</span>|Reserve<span class="lung"> on WhatsApp</span>|Reservar<span class="lung"> no WhatsApp</span>}}</a></div></li>' % (
                 ' d%d' % (i % 3) if i % 3 else '', p['cat'], esc(cauta), esc(p['marca']), img,
                 c['ro'], c['en'], c['pt'], esc(p['marca']), esc(p['nume']),
                 ('<p>{{%s|%s|%s}}</p>' % tuple(esc(x) for x in sp)) if sp[0] else '', esc(wa)))
