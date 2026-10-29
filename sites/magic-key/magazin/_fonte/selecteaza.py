@@ -84,6 +84,8 @@ for ref, cat, nume, pret, spec in [
 ]:
     prod.append({'ref': ref, 'cat': cat, 'marca': 'Magic Key', 'nume': nume, 'spec': spec, 'pret': pret, 'copie': True,
                  'img': 'media/magazin/%s.webp' % ref.lower(), 'sursa': '', 'orig': nume + ' (serviciu la tejghea)'})
+# 29/10 (Tomás): só entram os produtos com foto limpa (sem marca de água) em media/magazin/; fontes em fontes-fotos.csv
+prod = [p for p in prod if os.path.exists(os.path.join('..', '..', p['img']))]
 ordem = {c[0]: i for i, c in enumerate(CAT)}
 prod.sort(key=lambda p: ordem[p['cat']])
 json.dump({'categorii': [dict(id=a, ro=b, en=c, pt=d) for a, b, c, d in CAT],
