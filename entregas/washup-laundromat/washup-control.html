@@ -1,0 +1,712 @@
+<title>WashUp Control</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: phone-first owner app. Sticky top bar, one column of panels, bottom tab bar; on desktop a centred 1100px column with two-column panels. Utility colours (water / gas / power) are semantic and used everywhere the same. */
+:root{
+  --bg:#EEF3F4; --surface:#FFFFFF; --surface-2:#F6F9FA; --ink:#0D2730; --muted:#587078; --line:#D3DFE2;
+  --accent:#0A6B84; --accent-ink:#FFFFFF; --accent-soft:#DCEEF2;
+  --water:#2477C9; --gas:#D9701A; --power:#A88300;
+  --good:#23845A; --warn:#B86E00; --bad:#BE3B28;
+  --drum:#14181A; --drum-ink:#F2F2F2; --drum-red:#D23A2A;
+  --wa:#DCF8C6; --wa-in:#FFFFFF; --wa-bg:#E9E2D8;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1619; --surface:#122228; --surface-2:#0F1D22; --ink:#E4EEF0; --muted:#93A9AF; --line:#24383F;
+  --accent:#4FB6CF; --accent-ink:#06191E; --accent-soft:#163640;
+  --water:#5EA6EE; --gas:#F09A4E; --power:#E2C24A;
+  --good:#4CC28B; --warn:#E6A23C; --bad:#F06D58;
+  --drum:#05080A; --drum-ink:#F2F2F2; --drum-red:#F05A48;
+  --wa:#1F4D3A; --wa-in:#1A2C33; --wa-bg:#0E1A1E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1619; --surface:#122228; --surface-2:#0F1D22; --ink:#E4EEF0; --muted:#93A9AF; --line:#24383F;
+  --accent:#4FB6CF; --accent-ink:#06191E; --accent-soft:#163640;
+  --water:#5EA6EE; --gas:#F09A4E; --power:#E2C24A;
+  --good:#4CC28B; --warn:#E6A23C; --bad:#F06D58;
+  --drum:#05080A; --drum-ink:#F2F2F2; --drum-red:#F05A48;
+  --wa:#1F4D3A; --wa-in:#1A2C33; --wa-bg:#0E1A1E; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{color:var(--ink);font:15px/1.45 var(--f-body);padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:1.15rem}
+.num,.tab-num{font-variant-numeric:tabular-nums}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-block:10px}
+.logo{display:flex;align-items:center;gap:10px;min-width:0}
+.logo svg{flex:none}
+.logo b{font-family:var(--f-display);font-size:1.15rem;display:block;line-height:1.1}
+.logo small{color:var(--muted);font-size:.78rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lang{margin-left:auto;display:flex;border:1px solid var(--line);border-radius:999px;padding:2px;flex:none}
+.lang button{border:0;background:none;padding:4px 10px;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.demo{background:var(--accent-soft);color:var(--ink);font-size:.8rem}
+.demo .wrap{padding-block:7px;display:flex;gap:8px;align-items:baseline}
+.demo b{color:var(--accent);text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;flex:none}
+
+main .wrap{display:grid;gap:14px;padding-block:16px}
+.view[hidden]{display:none}
+.view{display:grid;gap:14px}
+.head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.head h1{font-size:1.6rem}
+.head p{margin:2px 0 0;color:var(--muted)}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:none;padding:6px 12px;font-size:.85rem;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;min-width:0}
+.panel > header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.panel > header p{margin:0;color:var(--muted);font-size:.82rem}
+.grid2{display:grid;gap:14px}
+@media (min-width:860px){.grid2{grid-template-columns:1fr 1fr}.grid2 .span2{grid-column:1/-1}}
+
+/* KPI row */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:860px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;min-width:0}
+.kpi span{display:block;font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.kpi strong{display:block;font-family:var(--f-display);font-size:1.55rem;line-height:1.15;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi em{font-style:normal;font-size:.8rem;color:var(--muted)}
+.up{color:var(--good)!important}.down{color:var(--bad)!important}
+
+/* meters */
+.meters{display:grid;gap:10px}
+@media (min-width:860px){.meters{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.meter{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--surface-2);min-width:0;display:grid;gap:8px}
+.meter .mh{display:flex;align-items:center;gap:8px;font-weight:700}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.meter .mh small{margin-left:auto;font-weight:500;color:var(--muted);font-size:.78rem}
+.odo{display:flex;gap:2px;font-family:var(--f-mono);font-weight:700;font-size:1.25rem;overflow-x:auto}
+.odo i{font-style:normal;background:var(--drum);color:var(--drum-ink);border-radius:3px;padding:2px 0;width:1.25em;text-align:center;box-shadow:inset 0 -6px 8px rgba(255,255,255,.08),inset 0 6px 8px rgba(0,0,0,.5)}
+.odo i.r{background:var(--drum-red)}
+.odo i.sep{background:none;box-shadow:none;color:var(--muted);width:.5em}
+.odo u{text-decoration:none;align-self:end;margin-left:6px;font-size:.8rem;color:var(--muted);font-family:var(--f-body);font-weight:600}
+.meter .mf{display:flex;justify-content:space-between;font-size:.85rem;gap:8px;flex-wrap:wrap}
+.meter .mf b{font-variant-numeric:tabular-nums}
+
+/* alerts */
+.alerts{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.alert{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2)}
+.alert .sev{grid-row:span 2;align-self:start;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 7px;border-radius:999px;color:var(--surface)}
+.sev.bad{background:var(--bad)}.sev.warn{background:var(--warn)}.sev.good{background:var(--good)}
+.alert b{font-weight:600}
+.alert p{margin:0;color:var(--muted);font-size:.85rem}
+
+/* charts */
+.chart{width:100%;height:auto;display:block}
+.chart text{fill:var(--muted);font:11px var(--f-body)}
+.chart .grid line{stroke:var(--line)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:8px}
+.legend span{display:flex;align-items:center;gap:6px}
+
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+.tbl{overflow-x:auto}
+th,td{padding:8px 6px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+tfoot td{font-weight:700;border-bottom:0}
+.wrapcells td,.wrapcells th{white-space:normal}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.pill.good{color:var(--good)}.pill.warn{color:var(--warn)}.pill.bad{color:var(--bad)}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%;background:var(--accent)}
+
+/* cost per cycle */
+.cpc{display:grid;gap:12px}
+@media (min-width:600px){.cpc{grid-template-columns:1fr 1fr}}
+.cpc-card{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--surface-2);display:grid;gap:8px}
+.cpc-card h3{font-size:1rem}
+.stack{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--line)}
+.stack i{display:block;height:100%}
+.cpc-card dl{display:grid;grid-template-columns:1fr auto;gap:4px 10px;margin:0;font-size:.88rem}
+.cpc-card dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.cpc-card dt{color:var(--muted)}
+.cpc-card .big{font-family:var(--f-display);font-size:1.3rem}
+
+/* heatmap */
+.heat{display:grid;grid-template-columns:34px repeat(12,minmax(0,1fr));gap:3px;font-size:.7rem;color:var(--muted)}
+.heat div{aspect-ratio:1;border-radius:4px;max-width:100%}
+.heat .lbl{aspect-ratio:auto;display:flex;align-items:center;justify-content:center}
+.heat .lbl.d{justify-content:flex-start}
+
+/* simulator */
+.sim{display:grid;gap:14px}
+@media (min-width:700px){.sim{grid-template-columns:1fr 1fr}}
+.sim label{display:grid;gap:6px;font-weight:600;font-size:.9rem}
+.sim input[type=range]{width:100%;accent-color:var(--accent)}
+.sim output{font-family:var(--f-display);font-size:1.2rem}
+.sim .res{display:grid;gap:8px;align-content:start}
+.sim .res div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:6px;gap:10px}
+.sim .res b{font-variant-numeric:tabular-nums}
+.note{font-size:.78rem;color:var(--muted);margin:10px 0 0}
+
+/* savings */
+.save{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.save li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.save li span{min-width:0}
+.save li b{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--good)}
+
+/* whatsapp */
+.wa{background:var(--wa-bg);border-radius:var(--r);border:1px solid var(--line);overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;min-height:520px}
+.wa-top{background:var(--accent);color:var(--accent-ink);padding:10px 14px;display:flex;gap:10px;align-items:center}
+.wa-top b{display:block}.wa-top small{opacity:.85;font-size:.78rem}
+.wa-log{padding:14px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;max-height:560px}
+.msg{max-width:min(86%,420px);padding:8px 10px;border-radius:10px;font-size:.9rem;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.msg.me{align-self:flex-end;background:var(--wa);border-top-right-radius:2px}
+.msg.bot{align-self:flex-start;background:var(--wa-in);border-top-left-radius:2px}
+.msg time{display:block;text-align:right;font-size:.68rem;color:var(--muted);margin-top:2px}
+.msg .photo{border-radius:8px;overflow:hidden;margin-bottom:6px;background:var(--drum)}
+.msg .photo svg{display:block;width:100%;height:auto}
+.msg .draft{border-left:3px solid var(--accent);padding-left:8px;margin:6px 0;font-family:var(--f-mono);font-size:.82rem;white-space:pre-wrap}
+.msg .acts{display:flex;gap:6px;margin-top:6px}
+.msg .acts button{flex:1;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px;font-weight:700}
+.msg .acts button.ok{border-color:var(--good);color:var(--good)}
+.msg .acts button.x{border-color:var(--bad);color:var(--bad)}
+.msg .acts button:disabled{opacity:.45;cursor:default}
+.wa-bar{display:flex;gap:6px;padding:10px;background:var(--surface);border-top:1px solid var(--line);flex-wrap:wrap}
+.wa-bar button{flex:1 1 140px;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:8px 10px;font-size:.82rem;font-weight:600}
+.wa-bar button:hover{border-color:var(--accent)}
+.how{margin:0;padding-left:18px;display:grid;gap:6px;color:var(--ink)}
+.how li::marker{color:var(--accent);font-weight:700}
+.src{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.src li{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.src li .pill{grid-row:span 2;align-self:start}
+.src li p{margin:0;color:var(--muted);font-size:.84rem}
+
+/* tab bar */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabs .wrap{display:grid;grid-template-columns:repeat(5,1fr);padding-block:4px}
+.tabs button{border:0;background:none;display:grid;justify-items:center;gap:2px;padding:6px 2px;font-size:.7rem;font-weight:600;color:var(--muted);border-radius:10px}
+.tabs button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabs button[aria-current="page"]{color:var(--accent);background:var(--accent-soft)}
+footer.foot{color:var(--muted);font-size:.78rem;text-align:center;padding-block:6px 18px}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:8px 14px;border-radius:999px;font-size:.85rem;z-index:40;opacity:0;transition:opacity .25s;pointer-events:none;max-width:calc(100% - 32px)}
+.toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="8" fill="var(--accent)"/><circle cx="17" cy="19" r="9" fill="none" stroke="var(--accent-ink)" stroke-width="2.4"/><path d="M10.5 20.5c2.2-2.4 4.3 1.6 6.5-.6s4.3 1.8 6.5-.6" fill="none" stroke="var(--accent-ink)" stroke-width="2"/><circle cx="9" cy="6.5" r="1.4" fill="var(--accent-ink)"/><circle cx="13.5" cy="6.5" r="1.4" fill="var(--accent-ink)"/></svg>
+      <div><b>WashUp Control</b><small>WashUp Laundromat · Bd. Carol I 26-28, Iași</small></div>
+    </div>
+    <div class="lang" role="group" aria-label="Limba / Língua">
+      <button type="button" data-lang="ro" aria-pressed="true">RO</button>
+      <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+    </div>
+  </div>
+</header>
+<div class="demo"><div class="wrap"><b data-t="demoTag"></b><span data-t="demoText"></span></div></div>
+
+<main><div class="wrap">
+
+  <!-- AZI -->
+  <section class="view" id="v-azi">
+    <div class="head"><div><h1 data-t="todayTitle"></h1><p id="todayDate"></p></div></div>
+    <div class="kpis" id="kpiToday"></div>
+    <div class="panel"><header><h2 data-t="metersTitle"></h2><p data-t="metersSub"></p></header><div class="meters" id="meters"></div></div>
+    <div class="grid2">
+      <div class="panel"><header><h2 data-t="alertsTitle"></h2><p data-t="alertsSub"></p></header><ul class="alerts" id="alerts"></ul></div>
+      <div class="panel"><header><h2 data-t="saveTitle"></h2><p data-t="saveSub"></p></header><ul class="save" id="savings"></ul><p class="note" data-t="saveNote"></p></div>
+    </div>
+  </section>
+
+  <!-- UTILITATI -->
+  <section class="view" id="v-util" hidden>
+    <div class="head"><div><h1 data-t="utilTitle"></h1><p data-t="utilSub"></p></div>
+      <div class="seg" role="group" id="segUtil"><button type="button" data-n="7" aria-pressed="false">7 <span data-t="days"></span></button><button type="button" data-n="30" aria-pressed="true">30 <span data-t="days"></span></button></div></div>
+    <div class="kpis" id="kpiUtil"></div>
+    <div class="panel"><header><h2 data-t="dailyCost"></h2><p data-t="dailyCostSub"></p></header><svg class="chart" id="chCost" viewBox="0 0 640 230" role="img"></svg><div class="legend" id="lgUtil"></div></div>
+    <div class="panel"><header><h2 data-t="cpcTitle"></h2><p data-t="cpcSub"></p></header><div class="cpc" id="cpc"></div></div>
+    <div class="grid2">
+      <div class="panel"><header><h2 data-t="tariffTitle"></h2><p data-t="tariffSub"></p></header><div class="tbl"><table id="tariffs" class="wrapcells"></table></div></div>
+      <div class="panel"><header><h2 data-t="invTitle"></h2><p data-t="invSub"></p></header><div class="tbl"><table id="invoice"></table></div><p class="note" data-t="invNote"></p></div>
+    </div>
+  </section>
+
+  <!-- MASINI -->
+  <section class="view" id="v-mas" hidden>
+    <div class="head"><div><h1 data-t="machTitle"></h1><p data-t="machSub"></p></div></div>
+    <div class="panel"><header><h2 data-t="washers"></h2><p data-t="last30"></p></header><div class="tbl"><table id="tWash"></table></div></div>
+    <div class="panel"><header><h2 data-t="dryers"></h2><p data-t="last30"></p></header><div class="tbl"><table id="tDry"></table></div></div>
+  </section>
+
+  <!-- STATISTICI -->
+  <section class="view" id="v-stat" hidden>
+    <div class="head"><div><h1 data-t="statTitle"></h1><p data-t="statSub"></p></div></div>
+    <div class="kpis" id="kpiStat"></div>
+    <div class="grid2">
+      <div class="panel"><header><h2 data-t="heatTitle"></h2><p data-t="heatSub"></p></header><div class="heat" id="heat"></div></div>
+      <div class="panel"><header><h2 data-t="marginTitle"></h2><p data-t="marginSub"></p></header><svg class="chart" id="chMargin" viewBox="0 0 640 230" role="img"></svg><div class="legend" id="lgMargin"></div></div>
+      <div class="panel span2"><header><h2 data-t="simTitle"></h2><p data-t="simSub"></p></header>
+        <div class="sim">
+          <div style="display:grid;gap:14px">
+            <label for="pWash"><span data-t="simWash"></span><output id="oWash"></output><input type="range" id="pWash" min="15" max="40" step="1" value="25"></label>
+            <label for="pDry"><span data-t="simDry"></span><output id="oDry"></output><input type="range" id="pDry" min="10" max="35" step="1" value="20"></label>
+          </div>
+          <div class="res" id="simRes"></div>
+        </div>
+        <p class="note" data-t="simNote"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITIRI / WHATSAPP -->
+  <section class="view" id="v-wa" hidden>
+    <div class="head"><div><h1 data-t="waTitle"></h1><p data-t="waSub"></p></div></div>
+    <div class="grid2">
+      <div class="wa">
+        <div class="wa-top"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="15" fill="var(--accent-ink)"/><circle cx="15" cy="16" r="7" fill="none" stroke="var(--accent)" stroke-width="2"/></svg><div><b>WashUp Control</b><small data-t="waOnline"></small></div></div>
+        <div class="wa-log" id="waLog" aria-live="polite"></div>
+        <div class="wa-bar">
+          <button type="button" id="sendWater" data-t="btnWater"></button>
+          <button type="button" id="sendGas" data-t="btnGas"></button>
+          <button type="button" id="sendPower" data-t="btnPower"></button>
+          <button type="button" id="sendInvoice" data-t="btnInvoice"></button>
+          <button type="button" id="sendZ" data-t="btnZ"></button>
+        </div>
+      </div>
+      <div style="display:grid;gap:14px;align-content:start">
+        <div class="panel"><header><h2 data-t="howTitle"></h2></header><ol class="how" id="how"></ol></div>
+        <div class="panel"><header><h2 data-t="srcTitle"></h2><p data-t="srcSub"></p></header><ul class="src" id="sources"></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot" data-t="footer"></footer>
+</div></main>
+
+<nav class="tabs" aria-label="Meniu"><div class="wrap">
+  <button type="button" data-v="azi" aria-current="page"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span data-t="tabToday"></span></button>
+  <button type="button" data-v="util"><svg viewBox="0 0 24 24"><path d="M12 3s-6 6.5-6 11a6 6 0 0 0 12 0c0-4.5-6-11-6-11z"/><path d="M13 10l-3 5h4l-3 5"/></svg><span data-t="tabUtil"></span></button>
+  <button type="button" data-v="mas"><svg viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M7 6h3"/></svg><span data-t="tabMach"></span></button>
+  <button type="button" data-v="stat"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span data-t="tabStat"></span></button>
+  <button type="button" data-v="wa"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 10h6M9 13.5h4"/></svg><span data-t="tabWa"></span></button>
+</div></nav>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- i18n ---------- */
+const T = {
+ demoTag:{ro:"Demonstrație",pt:"Demonstração"},
+ demoText:{ro:"Date fictive. Consumurile și prețurile sunt estimări pe baza datelor de piață și a referințelor din sector, până conectăm contoarele WashUp.",pt:"Dados fictícios. Consumos e preços são estimativas com base em dados de mercado e referências do setor, até ligarmos os contadores da WashUp."},
+ todayTitle:{ro:"Azi la WashUp",pt:"Hoje na WashUp"},
+ metersTitle:{ro:"Contoarele",pt:"Os contadores"},
+ metersSub:{ro:"Ultima citire confirmată cu OK pe WhatsApp",pt:"Última leitura confirmada com OK no WhatsApp"},
+ alertsTitle:{ro:"De verificat",pt:"Para verificar"},
+ alertsSub:{ro:"Găsite automat în consum",pt:"Encontrados automaticamente no consumo"},
+ saveTitle:{ro:"Unde poți economisi",pt:"Onde pode poupar"},
+ saveSub:{ro:"Din alertele de mai sus, pe lună",pt:"Dos alertas acima, por mês"},
+ saveNote:{ro:"Total potențial: 8–15% din costul utilităților (E). Se confirmă după 30 de zile de citiri reale.",pt:"Potencial total: 8–15% do custo das utilidades (E). Confirma-se após 30 dias de leituras reais."},
+ utilTitle:{ro:"Apă, gaz, curent",pt:"Água, gás, luz"},
+ utilSub:{ro:"Cât costă fiecare zi și fiecare ciclu",pt:"Quanto custa cada dia e cada ciclo"},
+ days:{ro:"zile",pt:"dias"},
+ dailyCost:{ro:"Cost pe zi",pt:"Custo por dia"},
+ dailyCostSub:{ro:"lei, din citirile zilnice × tariful din factură",pt:"lei, das leituras diárias × tarifa da fatura"},
+ cpcTitle:{ro:"Cât te costă un ciclu",pt:"Quanto lhe custa um ciclo"},
+ cpcSub:{ro:"Media perioadei, inclusiv consumul de bază (lumini, standby)",pt:"Média do período, incluindo o consumo base (luzes, standby)"},
+ tariffTitle:{ro:"Tarife din facturi",pt:"Tarifas das faturas"},
+ tariffSub:{ro:"Citite din poza facturii, confirmate cu OK",pt:"Lidas da foto da fatura, confirmadas com OK"},
+ invTitle:{ro:"Factura vs. citirile tale",pt:"Fatura vs. as suas leituras"},
+ invSub:{ro:"Octombrie 2026",pt:"Outubro 2026"},
+ invNote:{ro:"O diferență mare înseamnă estimare la furnizor sau citire greșită: merită un telefon.",pt:"Uma diferença grande significa estimativa do fornecedor ou leitura errada: vale um telefonema."},
+ machTitle:{ro:"Mașinile",pt:"As máquinas"},
+ machSub:{ro:"Venit, cost și marjă pentru fiecare mașină",pt:"Receita, custo e margem de cada máquina"},
+ washers:{ro:"Mașini de spălat",pt:"Máquinas de lavar"},
+ dryers:{ro:"Uscătoare",pt:"Secadores"},
+ last30:{ro:"Ultimele 30 de zile",pt:"Últimos 30 dias"},
+ statTitle:{ro:"Statistici",pt:"Estatísticas"},
+ statSub:{ro:"Când vin clienții și cât rămâne după utilități",pt:"Quando vêm os clientes e quanto fica depois das utilidades"},
+ heatTitle:{ro:"Ore de vârf",pt:"Horas de pico"},
+ heatSub:{ro:"Cicluri pornite pe oră, media pe zi a săptămânii",pt:"Ciclos iniciados por hora, média por dia da semana"},
+ marginTitle:{ro:"Venit și marjă pe zi",pt:"Receita e margem por dia"},
+ marginSub:{ro:"lei; marjă = venit − apă, gaz, curent",pt:"lei; margem = receita − água, gás, luz"},
+ simTitle:{ro:"Simulator de preț",pt:"Simulador de preço"},
+ simSub:{ro:"Ce se întâmplă cu marja dacă schimbi prețul",pt:"O que acontece à margem se mudar o preço"},
+ simWash:{ro:"Preț spălare 10 kg (lei)",pt:"Preço lavagem 10 kg (lei)"},
+ simDry:{ro:"Preț uscare (lei)",pt:"Preço secagem (lei)"},
+ simNote:{ro:"Presupune același număr de cicluri ca în ultimele 30 de zile. Mașinile de 18 kg urmează aceeași schimbare procentuală.",pt:"Assume o mesmo número de ciclos dos últimos 30 dias. As máquinas de 18 kg seguem a mesma variação percentual."},
+ waTitle:{ro:"Citiri pe WhatsApp",pt:"Leituras no WhatsApp"},
+ waSub:{ro:"Trimiți o poză, primești o ciornă, apeși OK. Nimic nu se salvează fără tine.",pt:"Envia uma foto, recebe um rascunho, carrega OK. Nada fica gravado sem si."},
+ waOnline:{ro:"asistent · mod umbră",pt:"assistente · modo sombra"},
+ btnWater:{ro:"📷 Contor apă",pt:"📷 Contador água"},
+ btnGas:{ro:"📷 Contor gaz",pt:"📷 Contador gás"},
+ btnPower:{ro:"📷 Contor curent",pt:"📷 Contador luz"},
+ btnInvoice:{ro:"📄 Factură gaz",pt:"📄 Fatura gás"},
+ btnZ:{ro:"🧾 Raport Z",pt:"🧾 Relatório Z"},
+ howTitle:{ro:"Cum funcționează",pt:"Como funciona"},
+ srcTitle:{ro:"De unde vin datele",pt:"De onde vêm os dados"},
+ srcSub:{ro:"Începem gratis, apoi automatizăm",pt:"Começamos sem custo, depois automatizamos"},
+ tabToday:{ro:"Azi",pt:"Hoje"}, tabUtil:{ro:"Utilități",pt:"Utilidades"}, tabMach:{ro:"Mașini",pt:"Máquinas"}, tabStat:{ro:"Statistici",pt:"Estatísticas"}, tabWa:{ro:"Citiri",pt:"Leituras"},
+ footer:{ro:"Prototip construit de Pacheco Studios pentru WashUp Laundromat · date demonstrative",pt:"Protótipo construído pela Pacheco Studios para a WashUp Laundromat · dados de demonstração"}
+};
+let lang = "ro";
+try{ const s = localStorage.getItem("washup-lang"); if(s==="pt"||s==="ro") lang = s; }catch(e){}
+const L = (ro,pt) => lang==="ro" ? ro : pt;
+
+/* ---------- model (E: estimates from sector references) ---------- */
+const PRICE = {water:30.0, power:1.30, gasKwh:0.32, gasM3kwh:10.55}; // lei/m3 apa+canal, lei/kWh, lei/kWh gaz, kWh per m3
+PRICE.gasM3 = +(PRICE.gasKwh*PRICE.gasM3kwh).toFixed(2);
+const W = [ // washers
+ {id:"M1",kg:10,price:25,w:1.25,water:0.070,kwh:1.6},
+ {id:"M2",kg:10,price:25,w:1.15,water:0.070,kwh:1.6},
+ {id:"M3",kg:10,price:25,w:1.05,water:0.070,kwh:1.6},
+ {id:"M4",kg:10,price:25,w:0.95,water:0.092,kwh:1.65}, // valve issue: +31% water
+ {id:"M5",kg:18,price:40,w:0.55,water:0.120,kwh:2.7},
+ {id:"M6",kg:18,price:40,w:0.45,water:0.120,kwh:2.7,downFrom:28} // no cycles last 2 days
+];
+const D = [
+ {id:"U1",price:20,w:1.2,gas:0.90,kwh:0.30},
+ {id:"U2",price:20,w:1.1,gas:0.90,kwh:0.30},
+ {id:"U3",price:20,w:1.0,gas:0.90,kwh:0.30,hotFrom:24,hotX:1.38}, // lint filter: +38% gas last days
+ {id:"U4",price:20,w:0.7,gas:0.90,kwh:0.30}
+];
+const HOURS = [8,9,10,11,12,13,14,15,16,17,18,19]; // opens 08:00 (E, to confirm) closes 20:00 (P)
+const NDAYS = 30, END = new Date(2026,9,31); // Oct 2 .. Oct 31 2026
+const BASE = {kwh:9}; // lights, terminal, standby per day
+let seed = 20261031; const rnd = () => (seed = (seed*1664525+1013904223)%4294967296)/4294967296;
+const curve = (dow,h) => { // relative demand
+  const we = dow===0||dow===6;
+  if(we) return [0.5,0.9,1.4,1.6,1.5,1.3,1.1,1.0,0.9,0.9,0.8,0.5][h-8];
+  return [0.35,0.4,0.5,0.6,0.7,0.7,0.65,0.8,1.0,1.4,1.5,1.0][h-8];
+};
+const days = [];
+for(let i=0;i<NDAYS;i++){
+  const d = new Date(END); d.setDate(END.getDate()-(NDAYS-1-i));
+  const dow = d.getDay(), we = dow===0||dow===6;
+  const target = (we?33:24)*(0.88+rnd()*0.24);
+  const day = {date:d,dow,i,wash:{},dry:{},hours:{},water:0,gas:0,kwh:BASE.kwh,rev:0,leak:0};
+  W.forEach(m=>day.wash[m.id]=0); D.forEach(m=>day.dry[m.id]=0);
+  const wsum = W.reduce((a,m)=>a+m.w,0), dsum = D.reduce((a,m)=>a+m.w,0);
+  HOURS.forEach(h=>{
+    const exp = target*curve(dow,h)/ (we?11.4:9.55);
+    let n = Math.round(exp + (rnd()-0.5)*1.4); if(n<0) n=0;
+    let started = 0;
+    for(let k=0;k<n;k++){
+      let r = rnd()*wsum, m = W[0];
+      for(const x of W){ r-=x.w; if(r<=0){m=x;break;} }
+      if(m.downFrom!==undefined && i>=m.downFrom) m = W[0];
+      day.wash[m.id]++; started++;
+      day.water += m.water; day.kwh += m.kwh; day.rev += m.price;
+      if(rnd()<0.74){
+        let r2 = rnd()*dsum, u = D[0];
+        for(const x of D){ r2-=x.w; if(r2<=0){u=x;break;} }
+        day.dry[u.id]++; started++;
+        const g = u.gas*(u.hotFrom!==undefined && i>=u.hotFrom ? u.hotX : 1);
+        day.gas += g; day.kwh += u.kwh; day.rev += u.price;
+      }
+    }
+    day.hours[h] = started;
+  });
+  if(i===26 || i===29){ day.leak = 0.42; day.water += 0.42; } // night water with shop closed
+  day.cost = {water:day.water*PRICE.water, gas:day.gas*PRICE.gasM3, power:day.kwh*PRICE.power};
+  day.costT = day.cost.water+day.cost.gas+day.cost.power;
+  day.washN = Object.values(day.wash).reduce((a,b)=>a+b,0);
+  day.dryN = Object.values(day.dry).reduce((a,b)=>a+b,0);
+  days.push(day);
+}
+// cumulative meter readings
+const START = {water:1243.18, gas:8812.4, power:45210};
+let acc = {...START};
+days.forEach(d=>{ acc.water+=d.water; acc.gas+=d.gas; acc.power+=d.kwh; d.read = {...acc}; });
+const readings = {water:days[NDAYS-1].read.water, gas:days[NDAYS-1].read.gas, power:days[NDAYS-1].read.power};
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const nf = (v,dec=0) => v.toLocaleString(lang==="ro"?"ro-RO":"pt-PT",{minimumFractionDigits:dec,maximumFractionDigits:dec});
+const lei = (v,dec=0) => nf(v,dec)+" lei";
+const pct = v => nf(v*100,0)+"%";
+const sum = (arr,f) => arr.reduce((a,x)=>a+f(x),0);
+const DOW = () => lang==="ro" ? ["Du","Lu","Ma","Mi","Jo","Vi","Sâ"] : ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
+const fmtDate = d => d.toLocaleDateString(lang==="ro"?"ro-RO":"pt-PT",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+const short = d => d.getDate()+"."+String(d.getMonth()+1).padStart(2,"0");
+const C = {water:"var(--water)",gas:"var(--gas)",power:"var(--power)"};
+const UN = {water:"m³",gas:"m³",power:"kWh"};
+const UL = () => ({water:L("Apă","Água"),gas:L("Gaz","Gás"),power:L("Curent","Luz")});
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove("on"),2200); }
+
+function odo(value, intDigits, decDigits){
+  const s = value.toFixed(decDigits).split(".");
+  const ip = s[0].padStart(intDigits,"0"), dp = s[1]||"";
+  let h = ""; for(const c of ip) h += `<i>${c}</i>`;
+  if(decDigits){ h += `<i class="sep">,</i>`; for(const c of dp) h += `<i class="r">${c}</i>`; }
+  return h;
+}
+
+/* ---------- views ---------- */
+function renderToday(){
+  const d = days[NDAYS-1], y = days[NDAYS-8];
+  $("#todayDate").textContent = fmtDate(d.date)+" · "+L("închis la 20:00","fechou às 20:00");
+  const marg = d.rev - d.costT, my = y.rev - y.costT;
+  const delta = (a,b) => { const v=(a-b)/b; return `<em class="${v>=0?"up":"down"}">${v>=0?"▲":"▼"} ${pct(Math.abs(v))} ${L("vs. sâmbăta trecută","vs. sábado passado")}</em>`; };
+  $("#kpiToday").innerHTML = [
+    [L("Venit","Receita"), lei(d.rev), delta(d.rev,y.rev)],
+    [L("Cicluri","Ciclos"), nf(d.washN+d.dryN), `<em>${nf(d.washN)} ${L("spălări","lavagens")} · ${nf(d.dryN)} ${L("uscări","secagens")}</em>`],
+    [L("Apă, gaz, curent","Água, gás, luz"), lei(d.costT), `<em>${pct(d.costT/d.rev)} ${L("din venit","da receita")}</em>`],
+    [L("Marjă după utilități","Margem após utilidades"), lei(marg), delta(marg,my)]
+  ].map(k=>`<div class="kpi"><span>${k[0]}</span><strong>${k[1]}</strong>${k[2]}</div>`).join("");
+  const today = {water:d.water,gas:d.gas,power:d.kwh};
+  const avg7 = k => sum(days.slice(-8,-1),x=>k==="power"?x.kwh:x[k])/7;
+  $("#meters").innerHTML = ["water","gas","power"].map(k=>{
+    const dig = k==="power"? odo(readings.power,6,0) : odo(readings[k], k==="water"?5:5, k==="water"?2:1);
+    const v = (today[k]-avg7(k))/avg7(k);
+    return `<div class="meter"><div class="mh"><span class="dot" style="background:${C[k]}"></span>${UL()[k]}<small>20:04 · OK ✓</small></div>
+      <div class="odo" aria-label="${UL()[k]} ${readings[k].toFixed(2)} ${UN[k]}">${dig}<u>${UN[k]}</u></div>
+      <div class="mf"><span>${L("Azi","Hoje")}: <b>${nf(today[k],k==="power"?0:2)} ${UN[k]}</b></span><span class="${v>0.1?"down":""}">${v>=0?"+":"−"}${pct(Math.abs(v))} ${L("vs. media 7 zile","vs. média 7 dias")}</span></div></div>`;
+  }).join("");
+  // alerts
+  const u3 = D[2], hot = u3.gas*(u3.hotX-1);
+  const al = [
+    ["bad", L("Apă consumată noaptea, cu spălătoria închisă","Água gasta de noite, com a lavandaria fechada"), L(`0,42 m³ între 20:00 și 08:00, în 2 din ultimele 5 nopți. Posibilă scurgere la un robinet sau la o mașină.`,`0,42 m³ entre as 20:00 e as 08:00, em 2 das últimas 5 noites. Possível fuga numa torneira ou máquina.`)],
+    ["warn", L("Uscătorul U3 consumă cu 38% mai mult gaz pe ciclu","O secador U3 gasta mais 38% de gás por ciclo"), L(`De pe 25 oct: ${nf(u3.gas*u3.hotX,2)} m³ față de ${nf(u3.gas,2)} m³. De obicei filtrul de scame e plin sau senzorul de umiditate e murdar.`,`Desde 25 out: ${nf(u3.gas*u3.hotX,2)} m³ contra ${nf(u3.gas,2)} m³. Normalmente é o filtro de cotão cheio ou o sensor de humidade sujo.`)],
+    ["warn", L("Mașina M4 folosește cu 31% mai multă apă","A máquina M4 usa mais 31% de água"), L("92 L pe ciclu față de 70 L la M1–M3. Verifică electrovalva de admisie.","92 L por ciclo contra 70 L nas M1–M3. Verificar a eletroválvula de entrada.")],
+    ["bad", L("Mașina M6 n-a avut niciun ciclu de 2 zile","A máquina M6 não teve nenhum ciclo há 2 dias"), L("Ultimul ciclu: 29 oct, 18:40. Poate e defectă sau blocată la plată.","Último ciclo: 29 out, 18:40. Pode estar avariada ou bloqueada no pagamento.")]
+  ];
+  $("#alerts").innerHTML = al.map(a=>`<li class="alert"><span class="sev ${a[0]}">${a[0]==="bad"?L("Urgent","Urgente"):L("Atenție","Atenção")}</span><b>${a[1]}</b><p>${a[2]}</p></li>`).join("");
+  // savings (monthly lei)
+  const dryU3 = sum(days.slice(-7),x=>x.dry.U3)/7*30;
+  const s1 = 0.42*30*PRICE.water/2.5;           // leak on ~12 nights/month
+  const s2 = dryU3*hot*PRICE.gasM3;
+  const washM4 = sum(days,x=>x.wash.M4);
+  const s3 = washM4*(0.092-0.070)*PRICE.water;
+  const s4 = BASE.kwh*30*PRICE.power*0.35;       // lights/standby off-hours
+  const m6 = sum(days.slice(-12,-2),x=>x.wash.M6)/10*30*40;
+  $("#savings").innerHTML = [
+    [L("Repari scurgerea de noapte","Reparar a fuga noturna"), s1],
+    [L("Cureți filtrul la U3","Limpar o filtro do U3"), s2],
+    [L("Verifici electrovalva M4","Verificar a eletroválvula da M4"), s3],
+    [L("Lumini și standby după 20:00","Luzes e standby depois das 20:00"), s4]
+  ].map(s=>`<li><span>${s[0]}</span><b>${lei(s[1])}</b></li>`).join("") +
+  `<li><span>${L("Venit recuperat dacă M6 merge din nou","Receita recuperada se a M6 voltar a funcionar")}</span><b>${lei(m6)}</b></li>`;
+}
+
+let utilN = 30;
+function renderUtil(){
+  const ds = days.slice(-utilN);
+  const tot = {water:sum(ds,d=>d.cost.water),gas:sum(ds,d=>d.cost.gas),power:sum(ds,d=>d.cost.power)};
+  const T0 = tot.water+tot.gas+tot.power, rev = sum(ds,d=>d.rev);
+  const per = utilN===30 ? 1 : 30/utilN;
+  $("#kpiUtil").innerHTML = [
+    [L("Total utilități","Total utilidades"), lei(T0), `<em>${pct(T0/rev)} ${L("din venit","da receita")}</em>`],
+    [UL().water, lei(tot.water), `<em>${nf(sum(ds,d=>d.water),1)} m³</em>`],
+    [UL().gas, lei(tot.gas), `<em>${nf(sum(ds,d=>d.gas),1)} m³</em>`],
+    [UL().power, lei(tot.power), `<em>${nf(sum(ds,d=>d.kwh),0)} kWh</em>`]
+  ].map(k=>`<div class="kpi"><span>${k[0]}</span><strong>${k[1]}</strong>${k[2]}</div>`).join("");
+  // stacked bars
+  const svg = $("#chCost"), Wd=640, H=230, pl=40, pr=8, pt=10, pb=26;
+  const max = Math.ceil(Math.max(...ds.map(d=>d.costT))/50)*50;
+  const bw = (Wd-pl-pr)/ds.length;
+  let g = `<g class="grid">`;
+  for(let v=0; v<=max; v+=max/4){ const y = pt+(H-pt-pb)*(1-v/max); g += `<line x1="${pl}" x2="${Wd-pr}" y1="${y}" y2="${y}"/><text x="${pl-6}" y="${y+4}" text-anchor="end">${nf(v)}</text>`; }
+  g += `</g>`;
+  ds.forEach((d,i)=>{
+    let y0 = H-pb; const x = pl+i*bw+bw*0.15, w = bw*0.7;
+    ["power","water","gas"].forEach(k=>{ const h=(H-pt-pb)*d.cost[k]/max; y0-=h; g+=`<rect x="${x.toFixed(1)}" y="${y0.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" fill="${C[k]}"><title>${short(d.date)} · ${UL()[k]} ${lei(d.cost[k])}</title></rect>`; });
+    const every = utilN===30?5:1;
+    if(i%every===0 || i===ds.length-1) g+=`<text x="${(x+w/2).toFixed(1)}" y="${H-8}" text-anchor="middle">${short(d.date)}</text>`;
+  });
+  svg.innerHTML = g; svg.setAttribute("aria-label", L("Cost zilnic pe utilitate","Custo diário por utilidade"));
+  $("#lgUtil").innerHTML = ["gas","water","power"].map(k=>`<span><i class="dot" style="background:${C[k]}"></i>${UL()[k]}</span>`).join("");
+  // cost per cycle
+  const nW = sum(ds,d=>d.washN), nD = sum(ds,d=>d.dryN);
+  const baseKwh = BASE.kwh*ds.length;
+  const share = nW/(nW+nD);
+  const wWater = sum(ds,d=>d.water-d.leak), wPow = sum(ds,d=>d.kwh) - sum(ds,d=>d.dryN)*0.30 - baseKwh;
+  const cW = {water: (wWater*PRICE.water)/nW, power:(wPow*PRICE.power + baseKwh*PRICE.power*share)/nW, gas:0};
+  const cD = {water:0, power:(nD*0.30*PRICE.power + baseKwh*PRICE.power*(1-share))/nD, gas: sum(ds,d=>d.gas)*PRICE.gasM3/nD};
+  const card = (title,c,price) => { const t=c.water+c.power+c.gas;
+    return `<div class="cpc-card"><h3>${title}</h3><div class="big num">${lei(t,2)} <small style="font-size:.8rem;color:var(--muted)">/ ${L("ciclu","ciclo")}</small></div>
+    <div class="stack">${["water","gas","power"].map(k=>c[k]?`<i style="width:${(c[k]/t*100).toFixed(1)}%;background:${C[k]}"></i>`:"").join("")}</div>
+    <dl>${["water","gas","power"].filter(k=>c[k]).map(k=>`<dt>${UL()[k]}</dt><dd>${lei(c[k],2)}</dd>`).join("")}
+    <dt>${L("Preț","Preço")}</dt><dd>${lei(price)}</dd><dt>${L("Rămâne","Fica")}</dt><dd class="up">${lei(price-t,2)} · ${pct((price-t)/price)}</dd></dl></div>`; };
+  $("#cpc").innerHTML = card(L("Spălare 10 kg","Lavagem 10 kg"),cW,25) + card(L("Uscare 30 min","Secagem 30 min"),cD,20);
+  // tariffs
+  $("#tariffs").innerHTML = `<thead><tr><th>${L("Utilitate","Utilidade")}</th><th>${L("Tarif","Tarifa")}</th><th>${L("Sursă","Fonte")}</th></tr></thead><tbody>
+   <tr><td>${UL().water} + ${L("canalizare","canalização")}</td><td>${nf(PRICE.water,2)} lei/m³</td><td><span class="pill warn">E</span></td></tr>
+   <tr><td>${L("din care apă potabilă ApaVital","dos quais água potável ApaVital")}</td><td>23,50 lei/m³</td><td><span class="pill good">P</span></td></tr>
+   <tr><td>${UL().gas}</td><td>${nf(PRICE.gasKwh,2)} lei/kWh · ${nf(PRICE.gasM3,2)} lei/m³</td><td><span class="pill warn">E</span></td></tr>
+   <tr><td>${UL().power}</td><td>${nf(PRICE.power,2)} lei/kWh</td><td><span class="pill warn">E</span></td></tr></tbody>`;
+  // invoice vs readings (October)
+  const oct = days.filter(d=>d.date.getMonth()===9);
+  const rows = [["water",sum(oct,d=>d.water),1.06],["gas",sum(oct,d=>d.gas),1.00],["power",sum(oct,d=>d.kwh),1.12]];
+  $("#invoice").innerHTML = `<thead><tr><th></th><th>${L("Citiri","Leituras")}</th><th>${L("Factură","Fatura")}</th><th>${L("Dif.","Dif.")}</th></tr></thead><tbody>`+
+    rows.map(r=>{ const inv=r[1]*r[2], df=r[2]-1; const cls = df>0.08?"bad":df>0.03?"warn":"good";
+      return `<tr><td>${UL()[r[0]]}</td><td>${nf(r[1],r[0]==="power"?0:1)} ${UN[r[0]]}</td><td>${nf(inv,r[0]==="power"?0:1)} ${UN[r[0]]}</td><td><span class="pill ${cls}">${df>0?"+":""}${pct(df)}</span></td></tr>`; }).join("")+`</tbody>`;
+}
+
+function machineRows(list, kind){
+  const tot = {n:0,rev:0,cost:0};
+  const body = list.map(m=>{
+    const n = sum(days,d=>kind==="w"?d.wash[m.id]:d.dry[m.id]);
+    const rev = n*m.price;
+    let cost;
+    if(kind==="w") cost = n*(m.water*PRICE.water + m.kwh*PRICE.power);
+    else cost = sum(days,d=>d.dry[m.id]*((m.gas*(m.hotFrom!==undefined&&d.i>=m.hotFrom?m.hotX:1))*PRICE.gasM3 + m.kwh*PRICE.power));
+    tot.n+=n; tot.rev+=rev; tot.cost+=cost;
+    const util = n*(kind==="w"?50:35)/(NDAYS*12*60); // minutes busy / open minutes
+    let st = ["good",L("OK","OK")];
+    if(m.downFrom!==undefined) st=["bad",L("Oprită","Parada")];
+    else if(m.hotFrom!==undefined) st=["warn",L("+38% gaz","+38% gás")];
+    else if(m.id==="M4") st=["warn",L("+31% apă","+31% água")];
+    return `<tr><td><b>${m.id}</b> <small style="color:var(--muted)">${kind==="w"?m.kg+" kg":L("gaz","gás")}</small></td><td>${nf(n)}</td><td>${lei(rev)}</td><td>${lei(cost/n,2)}</td><td>${lei(rev-cost)}</td><td><div class="bar"><i style="width:${Math.min(100,util*100).toFixed(0)}%"></i></div><small>${pct(util)}</small></td><td><span class="pill ${st[0]}">${st[1]}</span></td></tr>`;
+  }).join("");
+  const head = `<thead><tr><th>${L("Mașina","Máquina")}</th><th>${L("Cicluri","Ciclos")}</th><th>${L("Venit","Receita")}</th><th>${L("Cost/ciclu","Custo/ciclo")}</th><th>${L("Marjă","Margem")}</th><th>${L("Ocupare","Ocupação")}</th><th>${L("Stare","Estado")}</th></tr></thead>`;
+  const foot = `<tfoot><tr><td>Total</td><td>${nf(tot.n)}</td><td>${lei(tot.rev)}</td><td>${lei(tot.cost/tot.n,2)}</td><td>${lei(tot.rev-tot.cost)}</td><td></td><td></td></tr></tfoot>`;
+  return head+"<tbody>"+body+"</tbody>"+foot;
+}
+function renderMach(){ $("#tWash").innerHTML = machineRows(W,"w"); $("#tDry").innerHTML = machineRows(D,"d"); }
+
+function renderStat(){
+  const rev = sum(days,d=>d.rev), cost = sum(days,d=>d.costT), n = sum(days,d=>d.washN+d.dryN);
+  const byDow = [0,1,2,3,4,5,6].map(k=>{ const ds=days.filter(d=>d.dow===k); return sum(ds,d=>d.rev)/ds.length; });
+  const best = byDow.indexOf(Math.max(...byDow));
+  const hourTot = HOURS.map(h=>sum(days,d=>d.hours[h]));
+  const peak = HOURS[hourTot.indexOf(Math.max(...hourTot))];
+  const dowLong = lang==="ro"?["duminica","luni","marți","miercuri","joi","vineri","sâmbăta"]:["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
+  $("#kpiStat").innerHTML = [
+    [L("Venit 30 zile","Receita 30 dias"), lei(rev), `<em>${lei(rev/NDAYS)} / ${L("zi","dia")}</em>`],
+    [L("Marjă după utilități","Margem após utilidades"), pct((rev-cost)/rev), `<em>${lei(rev-cost)}</em>`],
+    [L("Venit pe ciclu","Receita por ciclo"), lei(rev/n,2), `<em>${nf(n)} ${L("cicluri","ciclos")}</em>`],
+    [L("Cea mai bună zi","Melhor dia"), dowLong[best], `<em>${L("vârf la","pico às")} ${peak}:00</em>`]
+  ].map(k=>`<div class="kpi"><span>${k[0]}</span><strong>${k[1]}</strong>${k[2]}</div>`).join("");
+  // heatmap: Mon..Sun
+  const order=[1,2,3,4,5,6,0], dn = DOW();
+  const vals = order.map(k=>{ const ds=days.filter(d=>d.dow===k); return HOURS.map(h=>sum(ds,d=>d.hours[h])/ds.length); });
+  const mx = Math.max(...vals.flat());
+  let h = `<div class="lbl"></div>`+HOURS.map(x=>`<div class="lbl">${x}</div>`).join("");
+  order.forEach((k,ri)=>{ h += `<div class="lbl d">${dn[k]}</div>` + vals[ri].map((v,ci)=>`<div title="${dn[k]} ${HOURS[ci]}:00 · ${nf(v,1)}" style="background:color-mix(in srgb,var(--accent) ${Math.round(8+92*v/mx)}%,var(--surface-2))"></div>`).join(""); });
+  $("#heat").innerHTML = h;
+  // revenue & margin lines
+  const svg=$("#chMargin"), Wd=640,H=230,pl=44,pr=10,pt=10,pb=26;
+  const max = Math.ceil(Math.max(...days.map(d=>d.rev))/250)*250;
+  const X = i => pl+(Wd-pl-pr)*i/(NDAYS-1), Y = v => pt+(H-pt-pb)*(1-v/max);
+  let g=`<g class="grid">`; for(let v=0;v<=max;v+=max/4){ g+=`<line x1="${pl}" x2="${Wd-pr}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${pl-6}" y="${Y(v)+4}" text-anchor="end">${nf(v)}</text>`; } g+=`</g>`;
+  const line = f => days.map((d,i)=>`${i?"L":"M"}${X(i).toFixed(1)} ${Y(f(d)).toFixed(1)}`).join(" ");
+  g += `<path d="${line(d=>d.rev)} L${X(NDAYS-1)} ${Y(0)} L${X(0)} ${Y(0)} Z" fill="var(--accent)" opacity=".10"/>`;
+  g += `<path d="${line(d=>d.rev)}" fill="none" stroke="var(--accent)" stroke-width="2"/>`;
+  g += `<path d="${line(d=>d.rev-d.costT)}" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="5 3"/>`;
+  const last = days[NDAYS-1];
+  g += `<circle cx="${X(NDAYS-1)}" cy="${Y(last.rev)}" r="4" fill="var(--accent)"/><circle cx="${X(NDAYS-1)}" cy="${Y(last.rev-last.costT)}" r="4" fill="var(--good)"/>`;
+  days.forEach((d,i)=>{ if(i%5===0||i===NDAYS-1) g+=`<text x="${X(i)}" y="${H-8}" text-anchor="middle">${short(d.date)}</text>`; });
+  svg.innerHTML = g;
+  $("#lgMargin").innerHTML = `<span><i class="dot" style="background:var(--accent)"></i>${L("Venit","Receita")}</span><span><i class="dot" style="background:var(--good)"></i>${L("Marjă după utilități","Margem após utilidades")}</span>`;
+  renderSim();
+}
+function renderSim(){
+  const pw = +$("#pWash").value, pd = +$("#pDry").value;
+  $("#oWash").textContent = lei(pw); $("#oDry").textContent = lei(pd);
+  const rev0 = sum(days,d=>d.rev), cost = sum(days,d=>d.costT);
+  const n10 = sum(days,d=>d.wash.M1+d.wash.M2+d.wash.M3+d.wash.M4), n18 = sum(days,d=>d.wash.M5+d.wash.M6), nD = sum(days,d=>d.dryN);
+  const rev1 = n10*pw + n18*40*(pw/25) + nD*pd;
+  const m0 = rev0-cost, m1 = rev1-cost;
+  $("#simRes").innerHTML = `
+   <div><span>${L("Venit 30 zile","Receita 30 dias")}</span><b>${lei(rev1)}</b></div>
+   <div><span>${L("Utilități (neschimbate)","Utilidades (iguais)")}</span><b>${lei(cost)}</b></div>
+   <div><span>${L("Marjă după utilități","Margem após utilidades")}</span><b>${lei(m1)} · ${pct(m1/rev1)}</b></div>
+   <div><span>${L("Diferență față de azi","Diferença face a hoje")}</span><b class="${m1>=m0?"up":"down"}">${m1>=m0?"+":"−"}${lei(Math.abs(m1-m0))} / ${L("lună","mês")}</b></div>`;
+}
+
+/* ---------- WhatsApp flow ---------- */
+const log = () => $("#waLog");
+let clock = 20*60+2;
+const tm = () => { clock+=1; return `${Math.floor(clock/60)}:${String(clock%60).padStart(2,"0")}`; };
+function meterPhoto(kind, value){
+  const digs = kind==="power" ? value.toFixed(0).padStart(6,"0") : value.toFixed(kind==="water"?2:1).replace(".","");
+  const nInt = kind==="power"?6:(kind==="water"?value.toFixed(2).split(".")[0].length:value.toFixed(1).split(".")[0].length);
+  const cw = 26, x0 = (300 - digs.length*cw)/2;
+  let cells = ""; [...digs].forEach((c,i)=>{ const red = i>=nInt; cells += `<rect x="${x0+i*cw}" y="62" width="${cw-3}" height="38" rx="3" fill="${red?"#C8352A":"#111"}"/><text x="${x0+i*cw+(cw-3)/2}" y="89" text-anchor="middle" font-family="monospace" font-weight="700" font-size="22" fill="#F4F4F4">${c}</text>`; });
+  const ring = kind==="water"?"#2E6FB0":kind==="gas"?"#C9A227":"#8C969A";
+  const label = kind==="water"?"m³ · DN20":kind==="gas"?"m³ · G4":"kWh · 3×230/400V";
+  return `<svg viewBox="0 0 300 160" role="img" aria-label="foto"><defs><radialGradient id="g${kind}${clock}" cx="40%" cy="30%"><stop offset="0" stop-color="#5a5f62"/><stop offset="1" stop-color="#1d2124"/></radialGradient></defs>
+  <rect width="300" height="160" fill="url(#g${kind}${clock})"/><rect x="${x0-14}" y="40" width="${digs.length*cw+25}" height="82" rx="12" fill="#E9ECEC" stroke="${ring}" stroke-width="6"/>${cells}
+  <text x="150" y="116" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#333">${label}</text><text x="10" y="152" font-family="sans-serif" font-size="9" fill="#bbb">20:0${clock%10} · WashUp</text></svg>`;
+}
+function bubble(cls, html){ const b=document.createElement("div"); b.className="msg "+cls; b.innerHTML = html+`<time>${tm()}</time>`; log().appendChild(b); log().scrollTop = log().scrollHeight; return b; }
+function draft(text, onOk){
+  const b = bubble("bot", `${L("Am citit:","Li:")}<div class="draft">${text}</div>${L("Salvez?","Gravo?")}<div class="acts"><button type="button" class="ok">OK</button><button type="button" class="x">X</button></div>`);
+  const [ok,x] = b.querySelectorAll("button");
+  ok.addEventListener("click",()=>{ ok.disabled=x.disabled=true; onOk(); bubble("bot", L("✓ Salvat. Panoul s-a actualizat.","✓ Gravado. O painel foi atualizado.")); toast(L("Citire salvată","Leitura gravada")); renderAll(); });
+  x.addEventListener("click",()=>{ ok.disabled=x.disabled=true; bubble("bot", L("Nu am salvat nimic. Scrie-mi cifra corectă sau trimite altă poză.","Não gravei nada. Escreva-me o número certo ou envie outra foto.")); });
+}
+function sendMeter(kind){
+  const inc = kind==="water"? 0.11+Math.random()*0.05 : kind==="gas"? 0.6+Math.random()*0.5 : 2+Math.random()*2;
+  const v = readings[kind] + inc;
+  bubble("me", `<div class="photo">${meterPhoto(kind,v)}</div>${L("Contor","Contador")} ${UL()[kind].toLowerCase()}`);
+  setTimeout(()=>{
+    const dec = kind==="power"?0:(kind==="water"?2:1);
+    draft(`${UL()[kind]}: ${nf(v,dec)} ${UN[kind]}\n+${nf(inc,dec===0?1:2)} ${UN[kind]} ${L("de la ultima citire","desde a última leitura")}\n≈ ${lei(inc*(kind==="water"?PRICE.water:kind==="gas"?PRICE.gasM3:PRICE.power),2)}`, ()=>{ readings[kind]=v; });
+  }, 650);
+}
+function sendInvoice(){
+  bubble("me", `<div class="photo"><svg viewBox="0 0 300 160" role="img" aria-label="factura"><rect width="300" height="160" fill="#d9d4cc"/><rect x="70" y="10" width="160" height="150" fill="#fff"/><rect x="82" y="22" width="60" height="8" fill="#C9A227"/><g fill="#9aa"><rect x="82" y="40" width="120" height="4"/><rect x="82" y="50" width="100" height="4"/><rect x="82" y="60" width="110" height="4"/></g><rect x="82" y="78" width="136" height="30" fill="#f1f1f1"/><text x="88" y="97" font-family="monospace" font-size="10" fill="#222">812,4 m³ · 2.746,34 lei</text><g fill="#bbb"><rect x="82" y="118" width="130" height="4"/><rect x="82" y="128" width="90" height="4"/></g></svg></div>${L("Factura de gaz octombrie","Fatura do gás de outubro")}`);
+  setTimeout(()=>draft(`${L("Furnizor","Fornecedor")}: ${L("gaz (exemplu)","gás (exemplo)")}\n${L("Perioada","Período")}: 01–31.10.2026\n${L("Consum","Consumo")}: 812,4 m³ (8.571 kWh)\nTotal: 2.746,34 lei\n${L("Tarif real","Tarifa real")}: 0,32 lei/kWh`, ()=>{}), 700);
+}
+function sendZ(){
+  const d = days[NDAYS-1];
+  bubble("me", `<div class="photo"><svg viewBox="0 0 300 160" role="img" aria-label="raport Z"><rect width="300" height="160" fill="#3a3f42"/><rect x="105" y="6" width="90" height="154" fill="#fafafa"/><g font-family="monospace" font-size="8" fill="#222"><text x="112" y="22">RAPORT Z</text><text x="112" y="36">31.10.2026</text><text x="112" y="56">TOTAL</text><text x="112" y="68">${nf(d.rev,2)}</text><text x="112" y="88">NR. BONURI</text><text x="112" y="100">${d.washN+d.dryN}</text></g></svg></div>${L("Raport Z de azi","Relatório Z de hoje")}`);
+  setTimeout(()=>draft(`${L("Venit azi","Receita hoje")}: ${lei(d.rev,2)}\n${L("Bonuri","Talões")}: ${d.washN+d.dryN}\n${L("Marjă după utilități","Margem após utilidades")}: ${lei(d.rev-d.costT)}`, ()=>{}), 650);
+}
+function seedChat(){
+  bubble("bot", L("Bună seara! E 20:00. Trimite-mi pozele cu cele 3 contoare și raportul Z, iar eu pregătesc cifrele.","Boa noite! São 20:00. Envie-me as fotos dos 3 contadores e o relatório Z, e eu preparo os números."));
+}
+
+function renderWaSide(){
+  $("#how").innerHTML = [
+    L("La 20:00, când închizi, primești un mesaj de reamintire pe WhatsApp.","Às 20:00, ao fechar, recebe um lembrete no WhatsApp."),
+    L("Faci poză la contoarele de apă, gaz și curent și la raportul Z.","Fotografa os contadores de água, gás e luz e o relatório Z."),
+    L("Asistentul citește cifrele și îți trimite o ciornă.","O assistente lê os números e envia-lhe um rascunho."),
+    L("OK salvează. X nu salvează nimic și poți corecta.","OK grava. X não grava nada e pode corrigir."),
+    L("Panoul calculează costul pe ciclu, marja și alertele.","O painel calcula o custo por ciclo, a margem e os alertas.")
+  ].map(x=>`<li>${x}</li>`).join("");
+  const src = [
+    ["good",L("Săptămâna 1 · 0 €","Semana 1 · 0 €"),L("Poze cu contoarele, facturile și raportul Z pe WhatsApp","Fotos dos contadores, faturas e relatório Z no WhatsApp")],
+    ["good",L("Săptămâna 2 · 0 €","Semana 2 · 0 €"),L("Contorul de cicluri al fiecărei mașini sau exportul din sistemul de plată","Contador de ciclos de cada máquina ou export do sistema de pagamento")],
+    ["warn",L("Luna 2 · aparatură","Mês 2 · equipamento"),L("Contor inteligent de curent în tablou și senzor de impulsuri pe apă și gaz: date la fiecare minut","Contador inteligente de luz no quadro e sensor de impulsos na água e gás: dados ao minuto")],
+    ["warn",L("Mai târziu","Mais tarde"),L("Datele direct din mașini, dacă modelul are conectare","Dados diretos das máquinas, se o modelo tiver ligação")]
+  ];
+  $("#sources").innerHTML = src.map(s=>`<li><span class="pill ${s[0]}">${s[1]}</span><b>${s[2]}</b></li>`).join("");
+}
+
+/* ---------- wiring ---------- */
+function applyI18n(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach(el=>{ const k=el.dataset.t; if(T[k]) el.textContent = T[k][lang]; });
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
+}
+function renderAll(){ renderToday(); renderUtil(); renderMach(); renderStat(); renderWaSide(); }
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{
+  lang=b.dataset.lang; try{localStorage.setItem("washup-lang",lang);}catch(e){}
+  applyI18n(); renderAll(); log().innerHTML=""; seedChat();
+}));
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.removeAttribute("aria-current"));
+  b.setAttribute("aria-current","page");
+  document.querySelectorAll(".view").forEach(v=>v.hidden = v.id!=="v-"+b.dataset.v);
+  window.scrollTo({top:0});
+}));
+document.querySelectorAll("#segUtil button").forEach(b=>b.addEventListener("click",()=>{
+  utilN = +b.dataset.n; document.querySelectorAll("#segUtil button").forEach(x=>x.setAttribute("aria-pressed",x===b)); renderUtil();
+}));
+$("#pWash").addEventListener("input",renderSim); $("#pDry").addEventListener("input",renderSim);
+$("#sendWater").addEventListener("click",()=>sendMeter("water"));
+$("#sendGas").addEventListener("click",()=>sendMeter("gas"));
+$("#sendPower").addEventListener("click",()=>sendMeter("power"));
+$("#sendInvoice").addEventListener("click",sendInvoice);
+$("#sendZ").addEventListener("click",sendZ);
+applyI18n(); renderAll(); seedChat();
+})();
+</script>
