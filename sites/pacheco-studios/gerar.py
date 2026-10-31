@@ -369,11 +369,10 @@ def botao_esquema(x, lab):
 
 def rececionista(a, digitos, lang):
     """Entrada das Soluções: a rececionista de IA num mini telemóvel (iframe da cópia em ferramentas/rececionista.html,
-    modo guião, sem IA paga); os botões trocam o negócio de exemplo. Pedido do Tomás, 11/10."""
+    modo guião, sem IA paga). Desde 31/10 (pedido do Tomás): sem botões de setores, mostra só a nossa rececionista
+    numa clínica dentária de demonstração (foco nas clínicas dentárias)."""
     r = a["rececionista"]
     pontos = "".join(f"<li>{e(x)}</li>" for x in r["pontos"])
-    negs = "".join(f'<button type="button" data-negocio="{k}" aria-pressed="{"true" if i == 0 else "false"}">{e(v)}</button>'
-                   for i, (k, v) in enumerate(r["negocios"].items()))
     src = f"/rececionista.html?embed=1&amp;lang={lang}&amp;negocio="
     return f"""<section class="rec" id="rececionista" aria-labelledby="t-rec">
       <div class="rec-txt">
@@ -381,8 +380,6 @@ def rececionista(a, digitos, lang):
         <h2 id="t-rec" class="afirmacao">{e(r["titlu"])}</h2>
         <p class="lead">{e(r["text"])}</p>
         <ul class="rec-pontos">{pontos}</ul>
-        <p class="rotulo" id="rec-escolhe">{e(r["escolhe"])}</p>
-        <div class="rec-neg" role="group" aria-labelledby="rec-escolhe">{negs}</div>
         <p class="rec-nota">{e(r["nota"])}</p>
         <div class="rec-acoes">
           <a class="botao primario" href="https://wa.me/{digitos}" data-diagnostico>{I["chat"]}{e(r["cta"])}</a>
@@ -390,7 +387,7 @@ def rececionista(a, digitos, lang):
         </div>
       </div>
       <div class="rec-tel">
-        <iframe src="{src}{next(iter(r["negocios"]))}" data-base="{src}" title="{e(r["iframe"])}" loading="lazy" width="376" height="672"></iframe>
+        <iframe src="{src}{r.get("negocio", "clinica")}" title="{e(r["iframe"])}" loading="lazy" width="376" height="672"></iframe>
       </div>
     </section>"""
 

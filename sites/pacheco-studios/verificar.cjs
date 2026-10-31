@@ -768,7 +768,7 @@ const fs = require('fs');
     await c.close();
   }
 
-  // rececionista de IA nas Soluções (pedido do Tomás, 11/10): o mini telemóvel responde e os botões trocam o negócio
+  // rececionista de IA nas Soluções (pedido do Tomás, 11/10): o mini telemóvel responde; desde 31/10 só a clínica dentária, sem botões de setores
   for (const lg of ['pt', 'en', 'ro']) {
     const c = await contexto({ viewport: { width: 390, height: 844 } }, 'nao', true);
     const q = await c.newPage();
@@ -780,22 +780,21 @@ const fs = require('fs');
     try {
       await fr.locator('#caixa').waitFor({ timeout: 5000 });
       const antes = await fr.locator('#conversa > *').count();
-      await fr.locator('#caixa').fill(lg === 'ro' ? 'Cât costă tuns + barbă?' : lg === 'en' ? 'How much is haircut + beard?' : 'Quanto custa corte e barba?');
+      await fr.locator('#caixa').fill(lg === 'ro' ? 'Cât costă un detartraj?' : lg === 'en' ? 'How much is a scale and polish?' : 'Quanto custa uma destartarização?');
       await fr.locator('#enviar').click();
       await q.waitForTimeout(3500);
       const depois = await fr.locator('#conversa > *').count();
       const vis = await fr.locator('.dono').isVisible();
       if (depois < antes + 2 || vis) { ok = false; det = `conversa ${antes}→${depois}, painel do dono visível: ${vis}`; }
-      await q.click('.rec-neg button[data-negocio="oficina"]');
-      await q.waitForTimeout(800);
       const src = await q.getAttribute('.rec-tel iframe', 'src');
       const nome = await fr.locator('#biz-nome').textContent();
-      if (!src.endsWith('negocio=oficina') || !/Demo|Service|Oficina|Garage/.test(nome)) { ok = false; det += ` troca de negócio: ${src} ${nome}`; }
+      const botoes = await q.locator('.rec-neg button').count();
+      if (!src.endsWith('negocio=clinica') || !/Dent/.test(nome) || botoes) { ok = false; det += ` clínica: ${src} ${nome}, botões de setores: ${botoes}`; }
       const lang = await fr.locator('html').getAttribute('lang');
       if (lang !== { pt: 'pt-PT', en: 'en', ro: 'ro' }[lg]) { ok = false; det += ` língua do telemóvel ${lang}`; }
     } catch (err) { ok = false; det += ' ' + err.message.split('\n')[0]; }
     if (!ok) mal(`${lg}: rececionista nas Soluções: ${det}`);
-    else bem(`${lg}: rececionista nas Soluções responde no mini telemóvel, na língua certa, e troca de negócio`);
+    else bem(`${lg}: rececionista nas Soluções responde no mini telemóvel, na língua certa, na clínica dentária e sem botões de setores`);
     await c.close();
   }
 

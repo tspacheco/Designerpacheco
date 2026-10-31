@@ -254,6 +254,30 @@ details.regras li::marker{color:var(--laranja)}
 "use strict";
 /* ================= DADOS DOS NEGÓCIOS (fictícios, para demonstração) ================= */
 const NEGOCIOS = {
+  clinica: {
+    cor:"#0F5C63", claro:"#D9ECEE", inicial:"D", art:"da",
+    nome:{ro:"Clinica Dentară Demo",pt:"Clínica Dentária Demo",en:"Demo Dental Clinic"},
+    tipo:{ro:"clinică dentară",pt:"clínica dentária",en:"dental clinic"},
+    morada:"Str. Exemplu 8, Iași",
+    horario:{0:null,1:["09:00","19:00"],2:["09:00","19:00"],3:["09:00","19:00"],4:["09:00","19:00"],5:["09:00","19:00"],6:["09:00","14:00"]},
+    passo:30, pessoas:false,
+    servicos:[
+      {id:"consulta",nome:{ro:"Consultație",pt:"Consulta",en:"Check-up"},preco:150,min:30,chaves:["consult","check","control","verificar","exame","exam","durere","dor","doare","pain","toothache"]},
+      {id:"destartarizare",nome:{ro:"Detartraj + periaj profesional",pt:"Destartarização + polimento",en:"Scale and polish"},preco:300,min:60,chaves:["detartraj","periaj","igienizare","limpeza","destartar","polimento","cleaning","scale","polish","hygien"]},
+      {id:"obturacao",nome:{ro:"Plombă (obturație)",pt:"Obturação (restauração)",en:"Filling"},preco:350,min:60,chaves:["plomba","obtura","carie","caries","restaur","filling","cavity"]},
+      {id:"branqueamento",nome:{ro:"Albire dentară",pt:"Branqueamento dentário",en:"Teeth whitening"},preco:1200,min:90,chaves:["albire","albi","branque","whiten","white"]}
+    ],
+    faq:[
+      {tema:"pagamento",chaves:["card","cartao","numerar","cash","plata","platesc","pagar","pago","pay","payment","rate","prestac","instal"],r:{ro:"Acceptăm card și numerar. La tratamentele mai mari se poate plăti și în rate.",pt:"Aceitamos cartão e numerário. Nos tratamentos maiores dá para pagar em prestações.",en:"We take card and cash. Larger treatments can also be paid in instalments."}},
+      {tema:"urgencia",chaves:["urgent","urgen","emergen","umflat","inchado","swollen","sangr","sanger","bleed"],r:{ro:"Pentru urgențe încercăm să vă primim chiar azi. Am anunțat medicul și vă scriem aici imediat.",pt:"Em urgências tentamos recebê-lo ainda hoje. Já avisei o médico e respondemos-lhe aqui de seguida.",en:"For emergencies we try to see you today. I've told the dentist and we'll reply here right away."}},
+      {tema:"cancelar",chaves:["anul","cancel","desmarc","mudar","schimb","reprogram","reschedul"],r:{ro:"Puteți anula sau muta programarea aici, prin mesaj, cu cel puțin 24 de ore înainte.",pt:"Pode cancelar ou mudar a consulta aqui por mensagem, até 24 horas antes.",en:"You can cancel or move your appointment here by message, up to 24 hours before."}}
+    ],
+    atalhos:{
+      ro:["Aveți loc mâine la 10?","Cât costă un detartraj?","Mă doare o măsea, e urgent","Faceți implanturi?","STOP"],
+      pt:["Tem vaga amanhã às 10h?","Quanto custa uma destartarização?","Dói-me um dente, é urgente","Fazem implantes?","STOP"],
+      en:["Any slot tomorrow at 10?","How much is a scale and polish?","My tooth hurts, it's urgent","Do you do implants?","STOP"]
+    }
+  },
   barbearia: {
     cor:"#2C3E5C", claro:"#DCE4EF", inicial:"F", art:"da",
     nome:{ro:"Frizeria Demo",pt:"Barbearia Demo",en:"Demo Barbershop"},
@@ -332,7 +356,7 @@ const UI = {
   pt:{
     lead:"Escreve como se fosses um cliente. Ela <strong>responde, marca e chama o dono</strong> quando não sabe. Ao lado vês o que o dono recebe.",
     negocio:"Negócio de exemplo", lingua:"Língua da rececionista",
-    neg:{barbearia:"Barbearia",restaurante:"Restaurante",oficina:"Oficina"},
+    neg:{clinica:"Clínica dentária",barbearia:"Barbearia",restaurante:"Restaurante",oficina:"Oficina"},
     modoIA:"IA ao vivo", modoIAsub:"Claude responde com as regras do dono. Toca para ver o modo guião.",
     modoG:"Modo guião (sem IA)", modoGsub:"Respostas por regras, sem custo.",
     modoGsubIA:"Toca para voltar à IA ao vivo.",
@@ -356,7 +380,7 @@ const UI = {
   ro:{
     lead:"Scrie ca un client. Ea <strong>răspunde, face programarea și cheamă patronul</strong> când nu știe. Alături vezi ce primește patronul.",
     negocio:"Afacere de exemplu", lingua:"Limba recepționerei",
-    neg:{barbearia:"Frizerie",restaurante:"Restaurant",oficina:"Service auto"},
+    neg:{clinica:"Clinică dentară",barbearia:"Frizerie",restaurante:"Restaurant",oficina:"Service auto"},
     modoIA:"AI live", modoIAsub:"Claude răspunde cu regulile patronului. Atinge pentru modul scenariu.",
     modoG:"Mod scenariu (fără AI)", modoGsub:"Răspunsuri după reguli, fără cost.",
     modoGsubIA:"Atinge pentru a reveni la AI live.",
@@ -380,7 +404,7 @@ const UI = {
   en:{
     lead:"Write as if you were a customer. She <strong>answers, books and calls the owner</strong> when she doesn't know. Next to it you see what the owner gets.",
     negocio:"Example business", lingua:"Receptionist language",
-    neg:{barbearia:"Barbershop",restaurante:"Restaurant",oficina:"Garage"},
+    neg:{clinica:"Dental clinic",barbearia:"Barbershop",restaurante:"Restaurant",oficina:"Garage"},
     modoIA:"Live AI", modoIAsub:"Claude answers with the owner's rules. Tap for script mode.",
     modoG:"Script mode (no AI)", modoGsub:"Rule-based answers, no cost.",
     modoGsubIA:"Tap to go back to live AI.",
@@ -406,7 +430,7 @@ const LOCALE = {ro:"ro-RO",pt:"pt-PT",en:"en-GB"};
 
 /* ================= ESTADO ================= */
 const S = {
-  biz:"barbearia", lang:"pt",
+  biz:"clinica", lang:"pt",
   turnos:[],            // conversa para a IA: {role, content}
   marcacoes:[],         // {biz,nome,servico,data,hora,pessoas,nota}
   alertas:[],           // {id,resumo,feito}
