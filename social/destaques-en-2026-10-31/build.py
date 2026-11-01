@@ -63,27 +63,39 @@ s1 = page("THE STUDIO", "01", """
 
 # ---------- 02 SERVICES ----------
 services = [
-    ("Dental Clinic Systems", "Zero unanswered patients, day and night.", True),
+    ("Dental Clinic Systems", "", True),
     ("AI &amp; Automation", "Agents and workflows that work for you, 24/7.", False),
-    ("Websites", "Fast, beautiful and built to convert.", False),
+    ("Strategy &amp; Diagnosis", "A clear plan of what to do next.", False),
     ("Software &amp; Apps", "Tools made for the way your business runs.", False),
     ("Marketing &amp; Growth", "The right clients, not just visits.", False),
-    ("Strategy &amp; Diagnosis", "A clear plan of what to do next.", False),
+    ("Websites", "Fast, beautiful and built to convert.", False),
 ]
+dental = [
+    ("Missed Calls", "Every missed call gets a reply in seconds."),
+    ("Follow-ups", "Reminders and recalls that bring patients back."),
+    ("CRM Unification", "All patient data in one place."),
+    ("Lead Outbound", "New patients found and contacted for you."),
+]
+dental_html = '<div class="sub">' + "".join(f'<div class="si"><span class="sd"></span><div><b>{t}</b><span>{d}</span></div></div>' for t, d in dental) + '</div>'
 rows = "".join(
-    f"""<div class="row{' feat' if f else ''}"><span class="n">{i:02d}</span><div><div class="t">{t}{' <span class="badge">Focus</span>' if f else ''}</div><div class="d">{d}</div></div></div>"""
+    f"""<div class="row{' feat' if f else ''}"><span class="n">{i:02d}</span><div><div class="t">{t}{' <span class="badge">Focus</span>' if f else ''}</div>{dental_html if f else f'<div class="d">{d}</div>'}</div></div>"""
     for i, (t, d, f) in enumerate(services, 1))
 s2_css = """
-.list{margin-top:64px;border-top:2px solid var(--line)}
-.row{display:flex;gap:44px;padding:32px 0;border-bottom:2px solid var(--line)}
+.list{margin-top:44px;border-top:2px solid var(--line)}
+.row{display:flex;gap:44px;padding:22px 0;border-bottom:2px solid var(--line)}
 .row .n{font-family:"Space Mono";font-size:32px;color:var(--o);padding-top:8px;min-width:60px}
 .row .t{font-size:50px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:22px}
-.row .d{margin-top:12px;font-size:34px;color:rgba(239,234,227,.62)}
-.row.feat{background:linear-gradient(90deg,rgba(232,98,44,.14),transparent 85%);margin:0 -30px;padding:32px 30px;border-left:6px solid var(--o)}
+.row .d{margin-top:8px;font-size:32px;color:rgba(239,234,227,.62)}
+.row.feat{background:linear-gradient(90deg,rgba(232,98,44,.14),transparent 85%);margin:0 -30px;padding:30px 30px;border-left:6px solid var(--o)}
+.sub{margin-top:20px;display:flex;flex-direction:column;gap:14px}
+.si{display:flex;gap:18px;align-items:baseline}
+.sd{flex:none;width:12px;height:12px;border-radius:50%;background:var(--o);transform:translateY(-4px)}
+.si b{display:block;font-size:36px;font-weight:600}
+.si span:not(.sd){display:block;font-size:28px;color:rgba(239,234,227,.62);margin-top:2px}
 .badge{font-family:"Space Mono";font-weight:700;font-size:22px;letter-spacing:.16em;text-transform:uppercase;background:var(--o);color:#141210;border-radius:999px;padding:8px 18px}
 """
 s2 = page("SERVICES", "02", f"""
-<h1>Systems that work <span class="o">while you don't.</span></h1>
+<h1 style="font-size:80px;margin-top:64px">Built to work<br><span class="o">while you don't.</span></h1>
 <div class="list">{rows}</div>""", foot_right="PACHECOST.COM", extra_css=s2_css)
 
 # ---------- 03 PARTNERS ----------
