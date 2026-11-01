@@ -129,8 +129,8 @@ h1{font-size:94px;margin-top:72px}
 .step .d{margin-top:8px;font-size:32px;color:rgba(239,234,227,.62);line-height:1.4}
 .card{margin-top:10px;border:2px solid var(--line);border-radius:28px;padding:40px 44px;background:rgba(239,234,227,.03)}
 .card .k{font-family:"Space Mono";font-size:25px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
-.card .v{margin-top:16px;font-family:"Archivo Black";font-size:50px;line-height:1.05;text-transform:uppercase}
-.card .m{margin-top:14px;font-size:30px;color:rgba(239,234,227,.7);line-height:1.4}
+.card .v{margin-top:16px;font-family:"Archivo Black";font-size:52px;line-height:1.1;text-transform:uppercase}
+.card .m{margin-top:22px;font-size:30px;color:rgba(239,234,227,.7);line-height:1.4}
 .note{margin-top:14px;font-family:"Space Mono";font-size:20px;letter-spacing:.06em;color:rgba(239,234,227,.4)}
 .cta{margin-top:36px}
 """
@@ -143,10 +143,8 @@ s4 = page("DENTAL CLINICS", "04", """
   <div class="step"><span class="c">03</span><div><div class="t">The appointment is booked</div><div class="d">Your team only confirms. Nobody is lost.</div></div></div>
 </div>
 <div class="card">
-  <div class="k">Just 3 lost patients a month</div>
-  <div class="v">3 × 1,500 € = <span class="o">4,500 €/month</span></div>
+  <div class="v">Every month, your clinic <span class="o">loses patients</span> to missed calls.</div>
   <div class="m">Already have a receptionist? We cover after hours, weekends and busy lines.</div>
-  <div class="note">Estimate based on market data and sector references.</div>
 </div>
 <div class="cta"><span class="btn">Talk with us →</span></div>""", extra_css=s4_css)
 
@@ -156,18 +154,20 @@ h1{font-size:112px;margin-top:110px}
 .avail{margin-top:40px;font-family:"Space Mono";font-size:28px;letter-spacing:.14em;color:rgba(239,234,227,.7);text-transform:uppercase;display:flex;gap:18px;align-items:center}
 .contacts{margin-top:70px;border-top:2px solid var(--line)}
 .ct{display:flex;align-items:baseline;padding:40px 0;border-bottom:2px solid var(--line)}
-.ct .k{width:250px;font-family:"Space Mono";font-size:26px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
-.ct .v{font-size:50px;font-weight:500}
+.ct .k{flex:none;width:230px;font-family:"Space Mono";font-size:26px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
+.ct .v{font-size:46px;font-weight:500;white-space:nowrap}
+.cc{margin-left:20px;font-family:"Space Mono";font-size:24px;letter-spacing:.14em;color:var(--o);vertical-align:middle}
 .cta{margin-top:72px}
 .langs{margin-top:44px;font-family:"Space Mono";font-size:26px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
 """
-def talk(phone):
+def talk():
     return page("TALK", "05", f"""
 <h1>Let's <span class="o">talk.</span></h1>
 <div class="avail"><span class="dot"></span>Open for new projects · Same-day reply</div>
 <div class="contacts">
-  <div class="ct"><span class="k">WhatsApp</span><span class="v">{phone}</span></div>
-  <div class="ct"><span class="k">Email</span><span class="v">tomas@pachecost.com</span></div>
+  <div class="ct"><span class="k">WhatsApp</span><span class="v">+351 967 117 357<span class="cc">PT</span></span></div>
+  <div class="ct"><span class="k">WhatsApp</span><span class="v">+40 723 098 556<span class="cc">RO</span></span></div>
+  <div class="ct"><span class="k">Email</span><span class="v" style="font-size:40px">robert@teampachecostudios.com</span></div>
   <div class="ct"><span class="k">Site</span><span class="v">pachecost.com</span></div>
 </div>
 <div class="cta"><span class="btn">Talk with us →</span></div>
@@ -176,8 +176,7 @@ def talk(phone):
 files = {
     "01-the-studio": s1, "02-services": s2, "03-partners": s3,
     "04-dental-clinics": s4,
-    "05-talk-RO": talk("+40 723 098 556"),
-    "05-talk-PT": talk("+351 967 117 357"),
+    "05-talk": talk(),
 }
 for name, html in files.items():
     (HERE / f"{name}.html").write_text(html, encoding="utf-8")
