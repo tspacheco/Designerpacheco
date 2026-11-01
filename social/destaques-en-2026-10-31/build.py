@@ -99,35 +99,25 @@ s2 = page("SERVICES", "02", f"""
 <div class="list">{rows}</div>""", foot_right="PACHECOST.COM", extra_css=s2_css)
 
 # ---------- 03 PARTNERS ----------
-# Só clientes/projetos reais (memória do projeto + destaque anterior). Nada inventado.
-sectors = [
-    ("Restaurants &amp; Hospitality", ["Andalu Gastrobar", "Olá Kathmandu", "Hanam Korean BBQ", "Simona's O Bom Paladar", "Borda d'Água", "Gelataria Muxagata"]),
-    ("Retail &amp; E-commerce", ["La Costa", "CarnePura", "Tshirts do Sul", "TopCopias"]),
-    ("Health &amp; Care", ["PhysioAlba", "Barbearia do Cão"]),
-    ("Local Services", ["Magic Key", "Espresso Service Center"]),
-    ("Construction &amp; Industry", ["ProBuilders", "Grupo Naval"]),
-]
-total = sum(len(n) for _, n in sectors)
-blocks = "".join(
-    f"""<div class="sec"><div class="sl"><span>{i:02d}</span>{s}</div><div class="pills">{''.join(f'<span class="pill">{n}</span>' for n in names)}</div></div>"""
-    for i, (s, names) in enumerate(sectors, 1))
+sectors = ["Restaurants &amp; Hospitality", "Retail &amp; E-commerce", "Health &amp; Care", "Local Services", "Construction &amp; Industry"]
+total = 16
+blocks = "".join(f'<div class="sec"><span class="sn">{i:02d}</span><span class="st">{s}</span></div>' for i, s in enumerate(sectors, 1))
 s3_css = """
-h1{font-size:96px;margin-top:72px}
-.stats{margin-top:36px;font-family:"Space Mono";font-size:28px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase}
-.secs{margin-top:48px;display:flex;flex-direction:column;gap:30px}
-.sl{font-family:"Space Mono";font-weight:700;font-size:25px;letter-spacing:.2em;text-transform:uppercase;color:var(--o);display:flex;gap:20px;margin-bottom:16px}
-.sl span{color:var(--dim);font-weight:400}
-.pills{display:flex;flex-wrap:wrap;gap:14px}
-.pill{font-family:"Archivo Black";font-size:27px;letter-spacing:.02em;text-transform:uppercase;border:2px solid rgba(239,234,227,.5);border-radius:16px;padding:15px 24px}
-.you{margin-top:40px;display:flex;justify-content:space-between;align-items:center;background:var(--o);color:#141210;border-radius:24px;padding:34px 44px}
-.you b{font-family:"Archivo Black";font-size:44px;text-transform:uppercase}
-.you span{font-family:"Space Mono";font-weight:700;font-size:28px;letter-spacing:.16em;text-transform:uppercase}
+h1{font-size:94px;margin-top:84px}
+.quote{margin-top:56px;font-size:44px;line-height:1.4;color:rgba(239,234,227,.86);max-width:860px;border-left:6px solid var(--o);padding-left:36px}
+.secs{margin-top:60px;border-top:2px solid var(--line)}
+.sec{display:flex;align-items:baseline;gap:36px;padding:28px 0;border-bottom:2px solid var(--line)}
+.sn{font-family:"Space Mono";font-size:30px;color:var(--o);min-width:60px}
+.st{font-family:"Archivo Black";font-size:40px;text-transform:uppercase}
+.you{margin-top:56px;background:var(--o);color:#141210;border-radius:28px;padding:44px 48px}
+.you b{display:block;font-family:"Archivo Black";font-size:50px;line-height:1.1;text-transform:uppercase}
+.you span{display:block;margin-top:20px;font-family:"Space Mono";font-weight:700;font-size:30px;letter-spacing:.16em;text-transform:uppercase}
 """
 s3 = page("PARTNERS", "03", f"""
 <h1><span class="o">15+</span> partners.<br><span class="o">5</span> sectors.</h1>
-<div class="stats">Real businesses we've built for · Portugal · Romania · Spain</div>
+<p class="quote">Our partners are the businesses we work with side by side, staying with them to make a real difference.</p>
 <div class="secs">{blocks}</div>
-<div class="you"><b>Your business?</b><span>Talk with us →</span></div>""", extra_css=s3_css)
+<div class="you"><b>Become our client or our partner.</b><span>Talk with us →</span></div>""", extra_css=s3_css)
 
 # ---------- 04 DENTAL ----------
 s4_css = """
