@@ -179,6 +179,19 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .compromissos p{margin-top:.35rem;color:var(--osso-2);max-width:38ch}
 
 /* como trabalhamos: sequência real → lista ordenada */
+.ag-sel{margin-bottom:4rem}
+.ag-tabs{margin-top:1.75rem;display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.5rem;scrollbar-width:thin}
+.ag-tabs button{flex:0 0 auto;text-align:left;padding:.7rem 1rem;border:1px solid rgba(239,234,227,.18);border-radius:.75rem;background:transparent;color:inherit;font:600 .95rem/1.25 var(--texto);cursor:pointer}
+.ag-tabs button small{display:block;font:700 .75rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:.2rem}
+.ag-tabs button[aria-selected=true]{background:var(--laranja);border-color:var(--laranja);color:#14110E}
+.ag-painel[hidden]{display:none}
+.ag-painel{margin-top:1.5rem;display:grid;gap:2rem;align-items:start}
+.ag-painel h3{font:800 clamp(1.5rem,4vw,2.25rem)/1.05 var(--display);text-transform:uppercase;margin-top:.4rem}
+.ag-gm{margin-top:1.25rem;display:grid;gap:1rem}
+.ag-gm dt{font:700 .75rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--laranja)}
+.ag-gm dd{margin:.3rem 0 0}
+.ag-media{width:100%;border-radius:1rem;border:1px solid rgba(239,234,227,.15);background:#0B0A08}
+@media (min-width:60rem){.ag-painel{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}.ag-gm{grid-template-columns:1fr 1fr}}
 .seguranca{background:linear-gradient(180deg,#0B0A08,#1A1714);color:var(--osso,#EFEAE3)}
 .seg-e{color:#fff;letter-spacing:.28em}
 .seg-lista{margin-top:2.25rem;display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));list-style:none;padding:0;text-align:center}
@@ -867,6 +880,126 @@ dialog.diag.fim .diag-ficha{display:block}
 <main id="conteudo">
 <section id="automatizari" class="vista" aria-labelledby="t-automatizari">
   <div class="envolver seccao">
+    <div class="ag-sel" id="agentes">
+  <p class="eyebrow">Agenții</p>
+  <h2 class="afirmacao">Alege un agent și vezi-l la lucru.</h2>
+  <div class="ag-tabs" role="tablist" aria-label="Agenți"><button role="tab" id="tab-ag-rececionista-voz" aria-controls="ag-rececionista-voz" aria-selected="true"><small>Recepție</small>Recepționer vocal</button><button role="tab" id="tab-ag-chat-whatsapp" aria-controls="ag-chat-whatsapp" aria-selected="false" tabindex="-1"><small>Recepție</small>Chat și WhatsApp</button><button role="tab" id="tab-ag-chamadas-perdidas" aria-controls="ag-chamadas-perdidas" aria-selected="false" tabindex="-1"><small>Recepție</small>Răspuns la apeluri pierdute</button><button role="tab" id="tab-ag-follow-up-orcamentos" aria-controls="ag-follow-up-orcamentos" aria-selected="false" tabindex="-1"><small>Conversie</small>Follow-up la oferte</button><button role="tab" id="tab-ag-agente-email" aria-controls="ag-agente-email" aria-selected="false" tabindex="-1"><small>Conversie</small>Agent de email</button><button role="tab" id="tab-ag-confirmacoes-lembretes" aria-controls="ag-confirmacoes-lembretes" aria-selected="false" tabindex="-1"><small>Agendă și retenție</small>Confirmări și remindere</button><button role="tab" id="tab-ag-reativacao-pacientes" aria-controls="ag-reativacao-pacientes" aria-selected="false" tabindex="-1"><small>Agendă și retenție</small>Reactivarea clienților</button><button role="tab" id="tab-ag-avaliacoes-google" aria-controls="ag-avaliacoes-google" aria-selected="false" tabindex="-1"><small>Reputație</small>Recenzii Google</button><button role="tab" id="tab-ag-relatorio-ia" aria-controls="ag-relatorio-ia" aria-selected="false" tabindex="-1"><small>Reputație</small>Raport de vizibilitate AI (AEO)</button><button role="tab" id="tab-ag-auditoria-site" aria-controls="ag-auditoria-site" aria-selected="false" tabindex="-1"><small>Reputație</small>Analiza site-ului</button><button role="tab" id="tab-ag-painel-clinica" aria-controls="ag-painel-clinica" aria-selected="false" tabindex="-1"><small>Management</small>Panoul afacerii</button><button role="tab" id="tab-ag-assistente-dono" aria-controls="ag-assistente-dono" aria-selected="false" tabindex="-1"><small>Management</small>Asistentul proprietarului</button></div>
+  <div role="tabpanel" id="ag-rececionista-voz" aria-labelledby="tab-ag-rececionista-voz" class="ag-painel">
+  <div class="ag-texto">
+    <p class="eyebrow">Recepție</p>
+    <h3>Recepționer vocal</h3>
+    <p class="lead">Răspunde la apeluri și la întrebări și face programări, la orice oră.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Apel primit în afara programului sau cu linia ocupată</dd></div><div><dt>Ce măsurăm</dt><dd>% de apeluri preluate și programări făcute prin voce</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-chat-whatsapp" aria-labelledby="tab-ag-chat-whatsapp" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Recepție</p>
+    <h3>Chat și WhatsApp</h3>
+    <p class="lead">Răspunde pe site, pe Instagram și pe WhatsApp cu prețurile și regulile tale.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Mesaj nou pe site, Instagram sau WhatsApp</dd></div><div><dt>Ce măsurăm</dt><dd>Timpul până la primul răspuns și % de conversații care devin programări</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-chamadas-perdidas" aria-labelledby="tab-ag-chamadas-perdidas" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Recepție</p>
+    <h3>Răspuns la apeluri pierdute</h3>
+    <p class="lead">Cine a sunat și nu i s-a răspuns primește un mesaj în câteva minute.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Apel nepreluat</dd></div><div><dt>Ce măsurăm</dt><dd>% de apeluri pierdute recuperate</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-follow-up-orcamentos" aria-labelledby="tab-ag-follow-up-orcamentos" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Conversie</p>
+    <h3>Follow-up la oferte</h3>
+    <p class="lead">Revine la cei care au cerut o ofertă și au spus „mă mai gândesc”.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Ofertă fără răspuns de 2–3 zile</dd></div><div><dt>Ce măsurăm</dt><dd>% de oferte acceptate</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-agente-email" aria-labelledby="tab-ag-agente-email" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Conversie</p>
+    <h3>Agent de email</h3>
+    <p class="lead">Sortează cererile clienților și pregătește răspunsul.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Email nou în inbox</dd></div><div><dt>Ce măsurăm</dt><dd>% de emailuri sortate și timpul de răspuns</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-confirmacoes-lembretes" aria-labelledby="tab-ag-confirmacoes-lembretes" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Agendă și retenție</p>
+    <h3>Confirmări și remindere</h3>
+    <p class="lead">Confirmă programările și reduce neprezentările.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Programare cu 48 h și 24 h înainte</dd></div><div><dt>Ce măsurăm</dt><dd>Rata de neprezentare</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-reativacao-pacientes" aria-labelledby="tab-ag-reativacao-pacientes" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Agendă și retenție</p>
+    <h3>Reactivarea clienților</h3>
+    <p class="lead">Îi aduce înapoi pe clienții care nu au mai venit de luni de zile.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Client fără vizită de 6 luni sau mai mult</dd></div><div><dt>Ce măsurăm</dt><dd>Clienți reactivați pe lună</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-avaliacoes-google" aria-labelledby="tab-ag-avaliacoes-google" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Reputație</p>
+    <h3>Recenzii Google</h3>
+    <p class="lead">Cere o recenzie după fiecare serviciu și pregătește răspunsurile.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Serviciu finalizat</dd></div><div><dt>Ce măsurăm</dt><dd>Recenzii noi și nota medie</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-relatorio-ia" aria-labelledby="tab-ag-relatorio-ia" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Reputație</p>
+    <h3>Raport de vizibilitate AI (AEO)</h3>
+    <p class="lead">Arată dacă afacerea ta apare în răspunsurile ChatGPT și Google.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>În fiecare lună</dd></div><div><dt>Ce măsurăm</dt><dd>Prezența în răspunsurile AI</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-auditoria-site" aria-labelledby="tab-ag-auditoria-site" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Reputație</p>
+    <h3>Analiza site-ului</h3>
+    <p class="lead">Găsește ce îi alungă pe vizitatori și ce să repari mai întâi.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>La cerere și în fiecare lună</dd></div><div><dt>Ce măsurăm</dt><dd>% de vizitatori care cer contact</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-painel-clinica" aria-labelledby="tab-ag-painel-clinica" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Management</p>
+    <h3>Panoul afacerii</h3>
+    <p class="lead">Cereri, programări și vânzări pe un singur ecran.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Actualizare zilnică</dd></div><div><dt>Ce măsurăm</dt><dd>Cereri, programări și vânzări pe un singur ecran</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-assistente-dono" aria-labelledby="tab-ag-assistente-dono" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Management</p>
+    <h3>Asistentul proprietarului</h3>
+    <p class="lead">Răspunde la întrebări despre afacere pe WhatsApp-ul proprietarului.</p>
+    <dl class="ag-gm"><div><dt>Când pornește</dt><dd>Întrebarea proprietarului pe WhatsApp</dd></div><div><dt>Ce măsurăm</dt><dd>Întrebări răspunse fără să deschizi alte aplicații</dd></div></dl>
+  </div>
+  
+</div>
+</div>
+<script>
+(function(){var t=document.querySelectorAll('.ag-tabs [role=tab]');t.forEach(function(b,i){
+function go(n){t.forEach(function(x){var on=x===n;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
+document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});n.focus();}
+b.addEventListener('click',function(){go(b)});
+b.addEventListener('keydown',function(ev){var k=ev.key==='ArrowRight'?1:ev.key==='ArrowLeft'?-1:0;if(k){ev.preventDefault();go(t[(i+k+t.length)%t.length]);}});});})();
+</script>
     <section class="rec" id="rececionista" aria-labelledby="t-rec">
       <div class="rec-txt">
         <p class="eyebrow">Încearcă acum</p>

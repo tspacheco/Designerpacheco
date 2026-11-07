@@ -479,6 +479,50 @@ def vista_auditoria(c, wa, ig):
 </section>"""
 
 
+def agentes_seletor(c):
+    """A página Agentes (pedido do Tomás, 7/11): uma seleção por agente; cada uma mostra a imagem e o vídeo da demo
+    (media/agentes/<id>.webp e .mp4, quando existirem), o gatilho e a métrica."""
+    L = c["automatizari"]["agentes_sel"]
+    itens = c["cazuri"]["agentes"]["itens"]
+    tabs, paineis = [], []
+    for i, x in enumerate(itens):
+        sel = "true" if i == 0 else "false"
+        tabs.append(f'<button role="tab" id="tab-ag-{e(x["id"])}" aria-controls="ag-{e(x["id"])}" aria-selected="{sel}"'
+                    f'{"" if i == 0 else " tabindex=\"-1\""}><small>{e(x["eq"])}</small>{e(x["t"])}</button>')
+
+        poster = os.path.exists(os.path.join(AQUI, "media", "agentes", x["id"] + ".webp"))
+        video = os.path.exists(os.path.join(AQUI, "media", "agentes", x["id"] + ".mp4"))
+        media = ""
+        if video:
+            media = (f'<video class="ag-media" controls muted playsinline preload="none"'
+                     f'{f" poster=\"media/agentes/{x["id"]}.webp\"" if poster else ""}>'
+                     f'<source src="media/agentes/{e(x["id"])}.mp4" type="video/mp4"></video>')
+        elif poster:
+            media = f'<img class="ag-media" src="media/agentes/{e(x["id"])}.webp" alt="{e(x["t"])}" loading="lazy">'
+        paineis.append(f"""<div role="tabpanel" id="ag-{e(x["id"])}" aria-labelledby="tab-ag-{e(x["id"])}" class="ag-painel"{"" if i == 0 else " hidden"}>
+  <div class="ag-texto">
+    <p class="eyebrow">{e(x["eq"])}</p>
+    <h3>{e(x["t"])}</h3>
+    <p class="lead">{e(x["d"])}</p>
+    <dl class="ag-gm"><div><dt>{e(L["gatilho"])}</dt><dd>{e(x["g"])}</dd></div><div><dt>{e(L["metrica"])}</dt><dd>{e(x["m"])}</dd></div></dl>
+  </div>
+  {media}
+</div>""")
+    return f"""<div class="ag-sel" id="agentes">
+  <p class="eyebrow">{e(L["eyebrow"])}</p>
+  <h2 class="afirmacao">{e(L["titlu"])}</h2>
+  <div class="ag-tabs" role="tablist" aria-label="{e(L["rotulo"])}">{"".join(tabs)}</div>
+  {chr(10).join(paineis)}
+</div>
+<script>
+(function(){{var t=document.querySelectorAll('.ag-tabs [role=tab]');t.forEach(function(b,i){{
+function go(n){{t.forEach(function(x){{var on=x===n;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
+document.getElementById(x.getAttribute('aria-controls')).hidden=!on;}});n.focus();}}
+b.addEventListener('click',function(){{go(b)}});
+b.addEventListener('keydown',function(ev){{var k=ev.key==='ArrowRight'?1:ev.key==='ArrowLeft'?-1:0;if(k){{ev.preventDefault();go(t[(i+k+t.length)%t.length]);}}}});}});}})();
+</script>"""
+
+
 def vista_automatizari(c, digitos, icones, casos, servicii, lang="pt"):
     a = c["automatizari"]
     lab = a["labels"]
@@ -524,6 +568,7 @@ def vista_automatizari(c, digitos, icones, casos, servicii, lang="pt"):
         drumuri.append(f'<li class="drum"><span class="drum-t">{e(d["t"])}</span><span class="drum-c">{cadeia}</span></li>')
     return f"""<section id="automatizari" class="vista" aria-labelledby="t-automatizari">
   <div class="envolver seccao">
+    {agentes_seletor(c)}
     {rececionista(a, digitos, lang)}
     <div class="autos-grelha">
       <div class="cab">

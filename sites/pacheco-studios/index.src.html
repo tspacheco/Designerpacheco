@@ -173,6 +173,19 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .compromissos p{margin-top:.35rem;color:var(--osso-2);max-width:38ch}
 
 /* como trabalhamos: sequência real → lista ordenada */
+.ag-sel{margin-bottom:4rem}
+.ag-tabs{margin-top:1.75rem;display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.5rem;scrollbar-width:thin}
+.ag-tabs button{flex:0 0 auto;text-align:left;padding:.7rem 1rem;border:1px solid rgba(239,234,227,.18);border-radius:.75rem;background:transparent;color:inherit;font:600 .95rem/1.25 var(--texto);cursor:pointer}
+.ag-tabs button small{display:block;font:700 .75rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:.2rem}
+.ag-tabs button[aria-selected=true]{background:var(--laranja);border-color:var(--laranja);color:#14110E}
+.ag-painel[hidden]{display:none}
+.ag-painel{margin-top:1.5rem;display:grid;gap:2rem;align-items:start}
+.ag-painel h3{font:800 clamp(1.5rem,4vw,2.25rem)/1.05 var(--display);text-transform:uppercase;margin-top:.4rem}
+.ag-gm{margin-top:1.25rem;display:grid;gap:1rem}
+.ag-gm dt{font:700 .75rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--laranja)}
+.ag-gm dd{margin:.3rem 0 0}
+.ag-media{width:100%;border-radius:1rem;border:1px solid rgba(239,234,227,.15);background:#0B0A08}
+@media (min-width:60rem){.ag-painel{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}.ag-gm{grid-template-columns:1fr 1fr}}
 .seguranca{background:linear-gradient(180deg,#0B0A08,#1A1714);color:var(--osso,#EFEAE3)}
 .seg-e{color:#fff;letter-spacing:.28em}
 .seg-lista{margin-top:2.25rem;display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));list-style:none;padding:0;text-align:center}

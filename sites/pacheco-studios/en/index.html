@@ -179,6 +179,19 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .compromissos p{margin-top:.35rem;color:var(--osso-2);max-width:38ch}
 
 /* como trabalhamos: sequência real → lista ordenada */
+.ag-sel{margin-bottom:4rem}
+.ag-tabs{margin-top:1.75rem;display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.5rem;scrollbar-width:thin}
+.ag-tabs button{flex:0 0 auto;text-align:left;padding:.7rem 1rem;border:1px solid rgba(239,234,227,.18);border-radius:.75rem;background:transparent;color:inherit;font:600 .95rem/1.25 var(--texto);cursor:pointer}
+.ag-tabs button small{display:block;font:700 .75rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:.2rem}
+.ag-tabs button[aria-selected=true]{background:var(--laranja);border-color:var(--laranja);color:#14110E}
+.ag-painel[hidden]{display:none}
+.ag-painel{margin-top:1.5rem;display:grid;gap:2rem;align-items:start}
+.ag-painel h3{font:800 clamp(1.5rem,4vw,2.25rem)/1.05 var(--display);text-transform:uppercase;margin-top:.4rem}
+.ag-gm{margin-top:1.25rem;display:grid;gap:1rem}
+.ag-gm dt{font:700 .75rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--laranja)}
+.ag-gm dd{margin:.3rem 0 0}
+.ag-media{width:100%;border-radius:1rem;border:1px solid rgba(239,234,227,.15);background:#0B0A08}
+@media (min-width:60rem){.ag-painel{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}.ag-gm{grid-template-columns:1fr 1fr}}
 .seguranca{background:linear-gradient(180deg,#0B0A08,#1A1714);color:var(--osso,#EFEAE3)}
 .seg-e{color:#fff;letter-spacing:.28em}
 .seg-lista{margin-top:2.25rem;display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));list-style:none;padding:0;text-align:center}
@@ -867,6 +880,126 @@ dialog.diag.fim .diag-ficha{display:block}
 <main id="conteudo">
 <section id="automatizari" class="vista" aria-labelledby="t-automatizari">
   <div class="envolver seccao">
+    <div class="ag-sel" id="agentes">
+  <p class="eyebrow">The agents</p>
+  <h2 class="afirmacao">Pick an agent and watch it work.</h2>
+  <div class="ag-tabs" role="tablist" aria-label="Agents"><button role="tab" id="tab-ag-rececionista-voz" aria-controls="ag-rececionista-voz" aria-selected="true"><small>Front desk</small>Voice receptionist</button><button role="tab" id="tab-ag-chat-whatsapp" aria-controls="ag-chat-whatsapp" aria-selected="false" tabindex="-1"><small>Front desk</small>Chat and WhatsApp</button><button role="tab" id="tab-ag-chamadas-perdidas" aria-controls="ag-chamadas-perdidas" aria-selected="false" tabindex="-1"><small>Front desk</small>Missed-call text-back</button><button role="tab" id="tab-ag-follow-up-orcamentos" aria-controls="ag-follow-up-orcamentos" aria-selected="false" tabindex="-1"><small>Conversion</small>Quote follow-up</button><button role="tab" id="tab-ag-agente-email" aria-controls="ag-agente-email" aria-selected="false" tabindex="-1"><small>Conversion</small>Email agent</button><button role="tab" id="tab-ag-confirmacoes-lembretes" aria-controls="ag-confirmacoes-lembretes" aria-selected="false" tabindex="-1"><small>Schedule and retention</small>Confirmations and reminders</button><button role="tab" id="tab-ag-reativacao-pacientes" aria-controls="ag-reativacao-pacientes" aria-selected="false" tabindex="-1"><small>Schedule and retention</small>Customer reactivation</button><button role="tab" id="tab-ag-avaliacoes-google" aria-controls="ag-avaliacoes-google" aria-selected="false" tabindex="-1"><small>Reputation</small>Google reviews</button><button role="tab" id="tab-ag-relatorio-ia" aria-controls="ag-relatorio-ia" aria-selected="false" tabindex="-1"><small>Reputation</small>AI visibility report (AEO)</button><button role="tab" id="tab-ag-auditoria-site" aria-controls="ag-auditoria-site" aria-selected="false" tabindex="-1"><small>Reputation</small>Website check</button><button role="tab" id="tab-ag-painel-clinica" aria-controls="ag-painel-clinica" aria-selected="false" tabindex="-1"><small>Management</small>Business dashboard</button><button role="tab" id="tab-ag-assistente-dono" aria-controls="ag-assistente-dono" aria-selected="false" tabindex="-1"><small>Management</small>Owner&#x27;s assistant</button></div>
+  <div role="tabpanel" id="ag-rececionista-voz" aria-labelledby="tab-ag-rececionista-voz" class="ag-painel">
+  <div class="ag-texto">
+    <p class="eyebrow">Front desk</p>
+    <h3>Voice receptionist</h3>
+    <p class="lead">Answers calls, handles questions and books into your calendar, at any hour.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>Incoming call after hours or while the line is busy</dd></div><div><dt>What we measure</dt><dd>% of calls answered and bookings made by voice</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-chat-whatsapp" aria-labelledby="tab-ag-chat-whatsapp" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Front desk</p>
+    <h3>Chat and WhatsApp</h3>
+    <p class="lead">Replies on your website, Instagram and WhatsApp with your prices and rules.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>New message on your website, Instagram or WhatsApp</dd></div><div><dt>What we measure</dt><dd>Time to first reply and % of chats that become bookings</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-chamadas-perdidas" aria-labelledby="tab-ag-chamadas-perdidas" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Front desk</p>
+    <h3>Missed-call text-back</h3>
+    <p class="lead">Anyone whose call wasn&#x27;t answered gets a message within minutes.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>Unanswered call</dd></div><div><dt>What we measure</dt><dd>% of missed calls recovered</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-follow-up-orcamentos" aria-labelledby="tab-ag-follow-up-orcamentos" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Conversion</p>
+    <h3>Quote follow-up</h3>
+    <p class="lead">Gets back to people who asked for a quote and said &quot;I&#x27;ll think about it&quot;.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>Quote unanswered for 2–3 days</dd></div><div><dt>What we measure</dt><dd>% of quotes accepted</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-agente-email" aria-labelledby="tab-ag-agente-email" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Conversion</p>
+    <h3>Email agent</h3>
+    <p class="lead">Sorts customer requests and drafts the reply.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>New email in the inbox</dd></div><div><dt>What we measure</dt><dd>% of emails sorted and reply time</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-confirmacoes-lembretes" aria-labelledby="tab-ag-confirmacoes-lembretes" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Schedule and retention</p>
+    <h3>Confirmations and reminders</h3>
+    <p class="lead">Confirms bookings and cuts no-shows.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>Booking 48 h and 24 h ahead</dd></div><div><dt>What we measure</dt><dd>No-show rate</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-reativacao-pacientes" aria-labelledby="tab-ag-reativacao-pacientes" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Schedule and retention</p>
+    <h3>Customer reactivation</h3>
+    <p class="lead">Brings back customers who haven&#x27;t returned in months.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>Customer with no visit in 6 months or more</dd></div><div><dt>What we measure</dt><dd>Customers reactivated per month</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-avaliacoes-google" aria-labelledby="tab-ag-avaliacoes-google" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Reputation</p>
+    <h3>Google reviews</h3>
+    <p class="lead">Asks for a review after every service and drafts the replies.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>Service completed</dd></div><div><dt>What we measure</dt><dd>New reviews and average rating</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-relatorio-ia" aria-labelledby="tab-ag-relatorio-ia" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Reputation</p>
+    <h3>AI visibility report (AEO)</h3>
+    <p class="lead">Shows whether your business appears in ChatGPT and Google answers.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>Every month</dd></div><div><dt>What we measure</dt><dd>Presence in AI answers</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-auditoria-site" aria-labelledby="tab-ag-auditoria-site" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Reputation</p>
+    <h3>Website check</h3>
+    <p class="lead">Finds what drives visitors away and what to fix first.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>On request and every month</dd></div><div><dt>What we measure</dt><dd>% of visitors who get in touch</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-painel-clinica" aria-labelledby="tab-ag-painel-clinica" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Management</p>
+    <h3>Business dashboard</h3>
+    <p class="lead">Enquiries, bookings and sales on one screen.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>Daily update</dd></div><div><dt>What we measure</dt><dd>Enquiries, bookings and sales on one screen</dd></div></dl>
+  </div>
+  
+</div>
+<div role="tabpanel" id="ag-assistente-dono" aria-labelledby="tab-ag-assistente-dono" class="ag-painel" hidden>
+  <div class="ag-texto">
+    <p class="eyebrow">Management</p>
+    <h3>Owner&#x27;s assistant</h3>
+    <p class="lead">Answers questions about the business on the owner&#x27;s WhatsApp.</p>
+    <dl class="ag-gm"><div><dt>When it starts</dt><dd>Owner&#x27;s question on WhatsApp</dd></div><div><dt>What we measure</dt><dd>Questions answered without opening other apps</dd></div></dl>
+  </div>
+  
+</div>
+</div>
+<script>
+(function(){var t=document.querySelectorAll('.ag-tabs [role=tab]');t.forEach(function(b,i){
+function go(n){t.forEach(function(x){var on=x===n;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
+document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});n.focus();}
+b.addEventListener('click',function(){go(b)});
+b.addEventListener('keydown',function(ev){var k=ev.key==='ArrowRight'?1:ev.key==='ArrowLeft'?-1:0;if(k){ev.preventDefault();go(t[(i+k+t.length)%t.length]);}});});})();
+</script>
     <section class="rec" id="rececionista" aria-labelledby="t-rec">
       <div class="rec-txt">
         <p class="eyebrow">Try it now</p>
