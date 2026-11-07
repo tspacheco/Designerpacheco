@@ -179,6 +179,18 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .compromissos p{margin-top:.35rem;color:var(--osso-2);max-width:38ch}
 
 /* como trabalhamos: sequência real → lista ordenada */
+.seguranca{background:linear-gradient(180deg,#0B0A08,#1A1714);color:var(--osso,#EFEAE3)}
+.seg-e{color:#fff;letter-spacing:.28em}
+.seg-lista{margin-top:2.25rem;display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));list-style:none;padding:0;text-align:center}
+.seg-lista svg{width:3.25rem;height:3.25rem;margin:0 auto .9rem;display:block;fill:none;stroke:#BDB6AC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.seg-lista h3{font:600 1.0625rem/1.3 var(--texto);color:#fff}
+.seg-lista p{margin:.35rem auto 0;color:#A39C92;max-width:26ch}
+.agentes{margin-top:2rem;display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));list-style:none;padding:0;counter-reset:ag}
+.agente{counter-increment:ag;border-top:2px solid var(--carvao);padding-top:.9rem}
+.agente::before{content:counter(ag,decimal-leading-zero);display:block;font:400 1.75rem/1 var(--display);color:var(--laranja-tinta);margin-bottom:.5rem}
+.agente-eq{display:block;font:700 .75rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:.35rem}
+.agente h3{font:600 1.0625rem/1.3 var(--texto)}
+.agente p{margin-top:.3rem;color:var(--tinta-2);max-width:34ch}
 .passos{margin-top:2rem;display:grid;gap:1.75rem;counter-reset:passo}
 .passo{counter-increment:passo;border-top:2px solid var(--carvao);padding-top:1rem}
 .passo::before{content:counter(passo);display:block;font:400 2.5rem/1 var(--display);color:var(--laranja-tinta);margin-bottom:.6rem}
@@ -815,7 +827,7 @@ dialog.diag.fim .diag-ficha{display:block}
     linear-gradient(0deg,var(--carvao) 0%,transparent 25%)}
   .heroi{min-height:min(46rem,calc(100vh - 8rem));display:flex;flex-direction:column;justify-content:center}
   .heroi-img{object-position:center}
-  .c-passos{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+  .c-passos{grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem}
   .c-passos li{grid-template-columns:1fr;align-items:start;align-content:start}
   .c-passos li::before{grid-row:auto;margin-bottom:.7rem}
   .cuidado-c .compromissos{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1282,9 +1294,9 @@ dialog.diag.fim .diag-ficha{display:block}
 <section id="cazuri" class="vista" aria-labelledby="t-cazuri">
   <div class="envolver seccao">
     <p class="eyebrow">Cazuri reale</p>
-    <h2 id="t-cazuri" class="afirmacao">Rezultate reale. Următorul poate fi al tău.</h2>
-    <p class="lead">Aceste rezultate s-au întâmplat deja în afaceri ca a ta. Treaba noastră e să le transformăm în rezultatele afacerii tale: aceeași metodă, desenată pentru tine și măsurată de la punctul tău de plecare.</p>
-    <p class="aviso">Fiecare afacere pornește din alt loc: de aceea măsurăm punctul tău de plecare înainte să începem.</p>
+    <h2 id="t-cazuri" class="afirmacao">Rezultate obținute în 5 sectoare diferite.</h2>
+    <p class="lead">Pacheco Studios este pregătită să transforme aceste rezultate în metricile tale și să schimbe în bine viața celor care lucrează în compania voastră.</p>
+    
     <ul class="casos">
 <li class="caso rv" id="caso-alphaview" style="--i:0">
   <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
@@ -1315,12 +1327,22 @@ dialog.diag.fim .diag-ficha{display:block}
   </div>
   <div class="claro">
     <div class="envolver seccao">
-      <p class="eyebrow">De la cazul lor la al tău</p>
-      <h2 class="afirmacao">Cum devine al tău un caz ca acesta.</h2>
-      <ol class="passos">
-<li class="passo rv" style="--i:0"><h3>Alegem cazul cel mai apropiat de tine.</h3><p>În discuția de diagnostic, pornind de la obiectivul tău și de la ce ai deja.</p></li>
-<li class="passo rv" style="--i:1"><h3>Desenăm versiunea ta.</h3><p>Cu WhatsApp-ul tău, agenda ta și clienții tăi. Vezi desenul înainte să construim.</p></li>
-<li class="passo rv" style="--i:2"><h3>Măsurăm în afacerea ta.</h3><p>Pilot de 30 de zile, cu punctul de plecare notat. Cazul tău devine următorul de pe pagina asta.</p></li>
+      <p class="eyebrow">Agenții</p>
+      <h2 class="afirmacao">12 agenți pe care îi construim pentru afacerea ta.</h2>
+      <p class="lead">Fiecare agent are o sarcină, un declanșator și o metrică. Nimic nu pleacă fără OK-ul tău.</p>
+      <ol class="agentes">
+<li class="agente rv" style="--i:0"><span class="agente-eq">Recepție</span><h3>Recepționer vocal</h3><p>Răspunde la apeluri și la întrebări și face programări, la orice oră.</p></li>
+<li class="agente rv" style="--i:1"><span class="agente-eq">Recepție</span><h3>Chat și WhatsApp</h3><p>Răspunde pe site, pe Instagram și pe WhatsApp cu prețurile și regulile tale.</p></li>
+<li class="agente rv" style="--i:2"><span class="agente-eq">Recepție</span><h3>Răspuns la apeluri pierdute</h3><p>Cine a sunat și nu i s-a răspuns primește un mesaj în câteva minute.</p></li>
+<li class="agente rv" style="--i:3"><span class="agente-eq">Conversie</span><h3>Follow-up la oferte</h3><p>Revine la cei care au cerut o ofertă și au spus „mă mai gândesc”.</p></li>
+<li class="agente rv" style="--i:0"><span class="agente-eq">Conversie</span><h3>Agent de email</h3><p>Sortează cererile clienților și pregătește răspunsul.</p></li>
+<li class="agente rv" style="--i:1"><span class="agente-eq">Agendă și retenție</span><h3>Confirmări și remindere</h3><p>Confirmă programările și reduce neprezentările.</p></li>
+<li class="agente rv" style="--i:2"><span class="agente-eq">Agendă și retenție</span><h3>Reactivarea clienților</h3><p>Îi aduce înapoi pe clienții care nu au mai venit de luni de zile.</p></li>
+<li class="agente rv" style="--i:3"><span class="agente-eq">Reputație</span><h3>Recenzii Google</h3><p>Cere o recenzie după fiecare serviciu și pregătește răspunsurile.</p></li>
+<li class="agente rv" style="--i:0"><span class="agente-eq">Reputație</span><h3>Raport de vizibilitate AI (AEO)</h3><p>Arată dacă afacerea ta apare în răspunsurile ChatGPT și Google.</p></li>
+<li class="agente rv" style="--i:1"><span class="agente-eq">Reputație</span><h3>Analiza site-ului</h3><p>Găsește ce îi alungă pe vizitatori și ce să repari mai întâi.</p></li>
+<li class="agente rv" style="--i:2"><span class="agente-eq">Management</span><h3>Panoul afacerii</h3><p>Cereri, programări și vânzări pe un singur ecran.</p></li>
+<li class="agente rv" style="--i:3"><span class="agente-eq">Management</span><h3>Asistentul proprietarului</h3><p>Răspunde la întrebări despre afacere pe WhatsApp-ul proprietarului.</p></li>
       </ol>
     </div>
   </div>
@@ -1560,16 +1582,26 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="claro">
     <div class="envolver seccao consultoria">
       <p class="eyebrow">Consultanță</p>
-      <h2 class="afirmacao">Ce face o consultanță AI.</h2>
+      <h2 class="afirmacao">Cum lucrăm.</h2>
       <p class="lead">Pornim de la obiectivul tău, nu de la o unealtă.</p>
       <div class="caixa-c">
-        <h3>O consultanță AI</h3>
+        <h3>Procesul nostru</h3>
         <ol class="c-passos">
-<li class="rv" style="--i:0"><h4>Vine cu întrebări și măsoară punctul de plecare.</h4><p>În discuția de diagnostic: obiectivul, cum vin clienții, unde se pierd și ce îți mănâncă timpul.</p></li>
-<li class="rv" style="--i:1"><h4>Desenează soluția pentru obiectivul tău, în fața ta.</h4><p>Pas cu pas, cu regulile și cine decide ce. Corectezi desenul înainte să-l construim.</p></li>
-<li class="rv" style="--i:2"><h4>Rămâne să măsoare și să ajusteze, lună de lună.</h4><p>Pilot de 30 de zile cu punctul de plecare notat, apoi rapoarte și ajustări.</p></li>
+<li class="rv" style="--i:0"><h4>Rezolvăm întâi cea mai mare durere.</h4><p>Începem cu întârzierea structurală care lasă cei mai mulți bani pe masă.</p></li>
+<li class="rv" style="--i:1"><h4>Personalizăm o soluție pentru tine.</h4><p>Adaptată echipei tale, structurii tale și programelor pe care le folosești deja.</p></li>
         </ol>
       </div>
+    </div>
+  </div>
+  <div class="seguranca">
+    <div class="envolver seccao">
+      <p class="eyebrow seg-e">Securitate și date</p>
+      <ul class="seg-lista">
+<li class="rv" style="--i:0"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 8 10v12c0 10 7 18 16 22 9-4 16-12 16-22V10z"/><path d="m17 24 5 5 9-10"/></svg><h3>Acord GDPR (art. 28)</h3><p>Fiecare proiect are acordul de prelucrare a datelor în scris.</p></li>
+<li class="rv" style="--i:1"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M6 24h36M24 6c6 6 6 30 0 36M24 6c-6 6-6 30 0 36"/></svg><h3>Date găzduite în UE</h3><p>Serverele sunt în Uniunea Europeană.</p></li>
+<li class="rv" style="--i:2"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="4"/><path d="m16 23 5 5 11-11"/></svg><h3>Nimic nu pleacă fără OK-ul tău</h3><p>Fiecare mesaj vine ca ciornă: OK îl trimite, X îl ignoră.</p></li>
+<li class="rv" style="--i:3"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="20" width="24" height="20" rx="3"/><path d="M17 20v-5a7 7 0 0 1 14 0v5"/><circle cx="24" cy="30" r="2.5"/></svg><h3>Rulează pe conturile tale</h3><p>WhatsApp-ul, agenda și Google rămân ale tale.</p></li>
+      </ul>
     </div>
   </div>
   <div class="envolver seccao ia-bloco">

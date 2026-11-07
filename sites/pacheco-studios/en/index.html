@@ -179,6 +179,18 @@ h1.afirmacao,h2.afirmacao,h3.afirmacao{font:400 clamp(1.75rem,6.6vw,3.25rem)/1 v
 .compromissos p{margin-top:.35rem;color:var(--osso-2);max-width:38ch}
 
 /* como trabalhamos: sequência real → lista ordenada */
+.seguranca{background:linear-gradient(180deg,#0B0A08,#1A1714);color:var(--osso,#EFEAE3)}
+.seg-e{color:#fff;letter-spacing:.28em}
+.seg-lista{margin-top:2.25rem;display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));list-style:none;padding:0;text-align:center}
+.seg-lista svg{width:3.25rem;height:3.25rem;margin:0 auto .9rem;display:block;fill:none;stroke:#BDB6AC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.seg-lista h3{font:600 1.0625rem/1.3 var(--texto);color:#fff}
+.seg-lista p{margin:.35rem auto 0;color:#A39C92;max-width:26ch}
+.agentes{margin-top:2rem;display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));list-style:none;padding:0;counter-reset:ag}
+.agente{counter-increment:ag;border-top:2px solid var(--carvao);padding-top:.9rem}
+.agente::before{content:counter(ag,decimal-leading-zero);display:block;font:400 1.75rem/1 var(--display);color:var(--laranja-tinta);margin-bottom:.5rem}
+.agente-eq{display:block;font:700 .75rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:.35rem}
+.agente h3{font:600 1.0625rem/1.3 var(--texto)}
+.agente p{margin-top:.3rem;color:var(--tinta-2);max-width:34ch}
 .passos{margin-top:2rem;display:grid;gap:1.75rem;counter-reset:passo}
 .passo{counter-increment:passo;border-top:2px solid var(--carvao);padding-top:1rem}
 .passo::before{content:counter(passo);display:block;font:400 2.5rem/1 var(--display);color:var(--laranja-tinta);margin-bottom:.6rem}
@@ -815,7 +827,7 @@ dialog.diag.fim .diag-ficha{display:block}
     linear-gradient(0deg,var(--carvao) 0%,transparent 25%)}
   .heroi{min-height:min(46rem,calc(100vh - 8rem));display:flex;flex-direction:column;justify-content:center}
   .heroi-img{object-position:center}
-  .c-passos{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+  .c-passos{grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem}
   .c-passos li{grid-template-columns:1fr;align-items:start;align-content:start}
   .c-passos li::before{grid-row:auto;margin-bottom:.7rem}
   .cuidado-c .compromissos{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1282,9 +1294,9 @@ dialog.diag.fim .diag-ficha{display:block}
 <section id="cazuri" class="vista" aria-labelledby="t-cazuri">
   <div class="envolver seccao">
     <p class="eyebrow">Real cases</p>
-    <h2 id="t-cazuri" class="afirmacao">Real results. The next one could be yours.</h2>
-    <p class="lead">These results have already happened in businesses like yours. Our job is to turn them into results for your business: the same method, designed for you and measured from your starting point.</p>
-    <p class="aviso">Every business starts from a different place: that&#x27;s why we measure your starting point before we begin.</p>
+    <h2 id="t-cazuri" class="afirmacao">Results achieved in 5 different sectors.</h2>
+    <p class="lead">Pacheco Studios is ready to turn these results into your own metrics and change the lives of the people who work in your company for the better.</p>
+    
     <ul class="casos">
 <li class="caso rv" id="caso-alphaview" style="--i:0">
   <svg class="aspas" viewBox="0 0 48 40" aria-hidden="true"><path d="M0 40V24C0 10 6 2 19 0l2 6C13 8 10 13 10 20h9v20zm27 0V24C27 10 33 2 46 0l2 6c-8 2-11 7-11 14h9v20z"/></svg>
@@ -1315,12 +1327,22 @@ dialog.diag.fim .diag-ficha{display:block}
   </div>
   <div class="claro">
     <div class="envolver seccao">
-      <p class="eyebrow">From their case to yours</p>
-      <h2 class="afirmacao">How a case like this becomes yours.</h2>
-      <ol class="passos">
-<li class="passo rv" style="--i:0"><h3>We pick the case closest to you.</h3><p>In the diagnosis conversation, starting from your goal and what you already have.</p></li>
-<li class="passo rv" style="--i:1"><h3>We draw your version.</h3><p>With your WhatsApp, your calendar and your customers. You see the drawing before we build.</p></li>
-<li class="passo rv" style="--i:2"><h3>We measure it in your business.</h3><p>A 30-day pilot with the starting point recorded. Your case becomes the next one on this page.</p></li>
+      <p class="eyebrow">The agents</p>
+      <h2 class="afirmacao">12 agents we build for your business.</h2>
+      <p class="lead">Each agent has one task, one trigger and one metric. Nothing goes out without your OK.</p>
+      <ol class="agentes">
+<li class="agente rv" style="--i:0"><span class="agente-eq">Front desk</span><h3>Voice receptionist</h3><p>Answers calls, handles questions and books into your calendar, at any hour.</p></li>
+<li class="agente rv" style="--i:1"><span class="agente-eq">Front desk</span><h3>Chat and WhatsApp</h3><p>Replies on your website, Instagram and WhatsApp with your prices and rules.</p></li>
+<li class="agente rv" style="--i:2"><span class="agente-eq">Front desk</span><h3>Missed-call text-back</h3><p>Anyone whose call wasn&#x27;t answered gets a message within minutes.</p></li>
+<li class="agente rv" style="--i:3"><span class="agente-eq">Conversion</span><h3>Quote follow-up</h3><p>Gets back to people who asked for a quote and said &quot;I&#x27;ll think about it&quot;.</p></li>
+<li class="agente rv" style="--i:0"><span class="agente-eq">Conversion</span><h3>Email agent</h3><p>Sorts customer requests and drafts the reply.</p></li>
+<li class="agente rv" style="--i:1"><span class="agente-eq">Schedule and retention</span><h3>Confirmations and reminders</h3><p>Confirms bookings and cuts no-shows.</p></li>
+<li class="agente rv" style="--i:2"><span class="agente-eq">Schedule and retention</span><h3>Customer reactivation</h3><p>Brings back customers who haven&#x27;t returned in months.</p></li>
+<li class="agente rv" style="--i:3"><span class="agente-eq">Reputation</span><h3>Google reviews</h3><p>Asks for a review after every service and drafts the replies.</p></li>
+<li class="agente rv" style="--i:0"><span class="agente-eq">Reputation</span><h3>AI visibility report (AEO)</h3><p>Shows whether your business appears in ChatGPT and Google answers.</p></li>
+<li class="agente rv" style="--i:1"><span class="agente-eq">Reputation</span><h3>Website check</h3><p>Finds what drives visitors away and what to fix first.</p></li>
+<li class="agente rv" style="--i:2"><span class="agente-eq">Management</span><h3>Business dashboard</h3><p>Enquiries, bookings and sales on one screen.</p></li>
+<li class="agente rv" style="--i:3"><span class="agente-eq">Management</span><h3>Owner&#x27;s assistant</h3><p>Answers questions about the business on the owner&#x27;s WhatsApp.</p></li>
       </ol>
     </div>
   </div>
@@ -1560,16 +1582,26 @@ dialog.diag.fim .diag-ficha{display:block}
   <div class="claro">
     <div class="envolver seccao consultoria">
       <p class="eyebrow">Consulting</p>
-      <h2 class="afirmacao">What an AI consultancy does.</h2>
+      <h2 class="afirmacao">How we work.</h2>
       <p class="lead">We start from your goal, not from a tool.</p>
       <div class="caixa-c">
-        <h3>An AI consultancy</h3>
+        <h3>Our process</h3>
         <ol class="c-passos">
-<li class="rv" style="--i:0"><h4>Arrives with questions and measures the starting point.</h4><p>In the diagnosis conversation: the goal, how customers arrive, where they get lost and what eats your time.</p></li>
-<li class="rv" style="--i:1"><h4>Designs the solution for your goal, in front of you.</h4><p>Step by step, with the rules and who decides what. You correct the drawing before we build.</p></li>
-<li class="rv" style="--i:2"><h4>Stays to measure and adjust, every month.</h4><p>A 30-day pilot with the starting point recorded, then reports and adjustments.</p></li>
+<li class="rv" style="--i:0"><h4>We solve the biggest pain first.</h4><p>We start with the structural delay that&#x27;s leaving the most money on the table.</p></li>
+<li class="rv" style="--i:1"><h4>We customise a solution for you.</h4><p>Adapted to your team, your structure and the software you already use.</p></li>
         </ol>
       </div>
+    </div>
+  </div>
+  <div class="seguranca">
+    <div class="envolver seccao">
+      <p class="eyebrow seg-e">Security and data</p>
+      <ul class="seg-lista">
+<li class="rv" style="--i:0"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 8 10v12c0 10 7 18 16 22 9-4 16-12 16-22V10z"/><path d="m17 24 5 5 9-10"/></svg><h3>GDPR agreement (Art. 28)</h3><p>Every project has a written data processing agreement.</p></li>
+<li class="rv" style="--i:1"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M6 24h36M24 6c6 6 6 30 0 36M24 6c-6 6-6 30 0 36"/></svg><h3>Data hosted in the EU</h3><p>Our servers are in the European Union.</p></li>
+<li class="rv" style="--i:2"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="4"/><path d="m16 23 5 5 11-11"/></svg><h3>Nothing goes out without your OK</h3><p>Every message arrives as a draft: OK sends it, X ignores it.</p></li>
+<li class="rv" style="--i:3"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="20" width="24" height="20" rx="3"/><path d="M17 20v-5a7 7 0 0 1 14 0v5"/><circle cx="24" cy="30" r="2.5"/></svg><h3>Runs on your accounts</h3><p>Your WhatsApp, calendar and Google stay yours.</p></li>
+      </ul>
     </div>
   </div>
   <div class="envolver seccao ia-bloco">

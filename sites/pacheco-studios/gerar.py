@@ -604,6 +604,14 @@ def imagem_heroi():
             f'<script type="application/json" id="heroi-quadros">{json.dumps(dados)}</script>')
 
 
+SEG_ICONES = {
+    "rgpd": '<path d="M24 4 8 10v12c0 10 7 18 16 22 9-4 16-12 16-22V10z"/><path d="m17 24 5 5 9-10"/>',
+    "ue": '<circle cx="24" cy="24" r="18"/><path d="M6 24h36M24 6c6 6 6 30 0 36M24 6c-6 6-6 30 0 36"/>',
+    "ok": '<rect x="6" y="10" width="36" height="26" rx="4"/><path d="m16 23 5 5 11-11"/>',
+    "contas": '<rect x="12" y="20" width="24" height="20" rx="3"/><path d="M17 20v-5a7 7 0 0 1 14 0v5"/><circle cx="24" cy="30" r="2.5"/>',
+}
+
+
 def vista_consultanta(c, casos, lang, wa):
     """A porta de entrada: o herói sobre a imagem (a frase da marca; «Conhece-nos» abre o diagnóstico), o que faz uma
     o veredito de um caso real sobre o mosaico 3D, o que faz uma consultoria de IA (3 passos), o que é a IA, três números de casos
@@ -624,6 +632,10 @@ def vista_consultanta(c, casos, lang, wa):
         f'<li class="rv" style="--i:{i}"><a href="#caso-{e(x["id"])}"><b>{e(x["numeros"][x["destaque_n"]]["v"])}</b>'
         f'<span>{e(x["numeros"][x["destaque_n"]]["l"])}</span><small>{e(cs["ver"])}{I["seta"]}</small></a></li>'
         for i, x in enumerate(dest))
+    sg = k["seguranca"]
+    seguranca = "\n".join(
+        f'<li class="rv" style="--i:{i}"><svg viewBox="0 0 48 48" aria-hidden="true">{SEG_ICONES[x["i"]]}</svg>'
+        f'<h3>{e(x["t"])}</h3><p>{e(x["d"])}</p></li>' for i, x in enumerate(sg["itens"]))
     cu = k["cuidado"]
     compromissos = "\n".join(f'<li class="rv" style="--i:{i}"><h3>{e(x["t"])}</h3><p>{e(x["d"])}</p></li>'
                              for i, x in enumerate(cu["itens"]))
@@ -671,6 +683,14 @@ def vista_consultanta(c, casos, lang, wa):
 {passos}
         </ol>
       </div>
+    </div>
+  </div>
+  <div class="seguranca">
+    <div class="envolver seccao">
+      <p class="eyebrow seg-e">{e(sg["eyebrow"])}</p>
+      <ul class="seg-lista">
+{seguranca}
+      </ul>
     </div>
   </div>
   <div class="envolver seccao ia-bloco">
@@ -801,14 +821,14 @@ def vista_cazuri(c, casos, lang, digitos, proiecte=""):
   <blockquote class="caso-depo"><p>{e(x["depo"])}</p></blockquote>
   <ul class="caso-num">{nums}</ul>
 </li>""")
-    p = z["ponte"]
-    passos = "\n".join(f'<li class="passo rv" style="--i:{i}"><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p></li>' for i, s in enumerate(p["pasi"]))
+    p = z["agentes"]
+    passos = "\n".join(f'<li class="agente rv" style="--i:{i % 4}"><span class="agente-eq">{e(s["eq"])}</span><h3>{e(s["t"])}</h3><p>{e(s["d"])}</p></li>' for i, s in enumerate(p["itens"]))
     return f"""<section id="cazuri" class="vista" aria-labelledby="t-cazuri">
   <div class="envolver seccao">
     <p class="eyebrow">{e(z["eyebrow"])}</p>
     <h2 id="t-cazuri" class="afirmacao">{e(z["titlu"])}</h2>
     <p class="lead">{e(z["intro"])}</p>
-    <p class="aviso">{e(z["aviso"])}</p>
+    {f'<p class="aviso">{e(z["aviso"])}</p>' if z.get("aviso") else ""}
     <ul class="casos">
 {chr(10).join(itens)}
     </ul>
@@ -817,7 +837,8 @@ def vista_cazuri(c, casos, lang, digitos, proiecte=""):
     <div class="envolver seccao">
       <p class="eyebrow">{e(p["eyebrow"])}</p>
       <h2 class="afirmacao">{e(p["titlu"])}</h2>
-      <ol class="passos">
+      <p class="lead">{e(p["intro"])}</p>
+      <ol class="agentes">
 {passos}
       </ol>
     </div>
