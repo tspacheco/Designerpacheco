@@ -495,10 +495,10 @@ def agentes_seletor(c):
         media = ""
         if video:
             media = (f'<video class="ag-media" controls muted playsinline preload="none"'
-                     f'{f" poster=\"media/agentes/{x["id"]}.webp\"" if poster else ""}>'
-                     f'<source src="media/agentes/{e(x["id"])}.mp4" type="video/mp4"></video>')
+                     f'{f" poster=\"/media/agentes/{x["id"]}.webp\"" if poster else ""}>'
+                     f'<source src="/media/agentes/{e(x["id"])}.mp4" type="video/mp4"></video>')
         elif poster:
-            media = f'<img class="ag-media" src="media/agentes/{e(x["id"])}.webp" alt="{e(x["t"])}" loading="lazy">'
+            media = f'<img class="ag-media" src="/media/agentes/{e(x["id"])}.webp" alt="{e(x["t"])}" loading="lazy">'
         paineis.append(f"""<div role="tabpanel" id="ag-{e(x["id"])}" aria-labelledby="tab-ag-{e(x["id"])}" class="ag-painel"{"" if i == 0 else " hidden"}>
   <div class="ag-texto">
     <p class="eyebrow">{e(x["eq"])}</p>
@@ -1490,6 +1490,8 @@ def main():
         if not os.path.exists(carro):
             raise SystemExit(f"falta media/intro-{i}.webp (os três carros da intro: ver LEIA-ME.md)")
         shutil.copy(carro, os.path.join(DIST, "media", f"intro-{i}.webp"))
+    if os.path.isdir(os.path.join(AQUI, "media", "agentes")):
+        shutil.copytree(os.path.join(AQUI, "media", "agentes"), os.path.join(DIST, "media", "agentes"), dirs_exist_ok=True)
     hd = os.path.join(AQUI, "media", "heroi-hd")
     if HEROI_VIDEO and os.path.isdir(hd):
         shutil.copytree(hd, os.path.join(DIST, "media", "heroi-hd"), dirs_exist_ok=True,
