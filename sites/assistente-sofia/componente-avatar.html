@@ -1,0 +1,35 @@
+<!-- Avatar da Assistente Pacheco Studios: anel em gradiente + bolinha online -->
+<style>
+  .pa-avatar{
+    --size:64px;            /* tamanho total */
+    --ring:3px;             /* espessura do anel */
+    --gap:3px;              /* espaço escuro entre anel e foto */
+    --bg:#0E141C;           /* cor do fundo do site (hero D) */
+    position:relative;display:inline-block;width:var(--size);height:var(--size);
+    border-radius:50%;padding:var(--ring);
+    background:conic-gradient(from 200deg,#E8622C,#D9A441,#1F6F78,#E8622C);
+    box-shadow:0 0 18px rgba(232,98,44,.35);
+    flex:none;
+  }
+  .pa-avatar img{
+    display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;
+    border:var(--gap) solid var(--bg);box-sizing:border-box;background:var(--bg);
+  }
+  .pa-avatar .pa-online{
+    position:absolute;right:2%;bottom:2%;
+    width:calc(var(--size) * .24);height:calc(var(--size) * .24);
+    border-radius:50%;background:#3DDC84;border:calc(var(--size) * .045) solid var(--bg);
+    box-sizing:border-box;
+  }
+  .pa-avatar .pa-online::after{
+    content:"";position:absolute;inset:-2px;border-radius:50%;
+    border:2px solid #3DDC84;animation:pa-pulse 2s ease-out infinite;
+  }
+  @keyframes pa-pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(2);opacity:0}}
+  @media (prefers-reduced-motion:reduce){.pa-avatar .pa-online::after{animation:none;display:none}}
+</style>
+
+<span class="pa-avatar" style="--size:64px">
+  <img src="/img/assistente.webp" alt="Assistente Pacheco Studios">
+  <span class="pa-online" aria-label="Online"></span>
+</span>

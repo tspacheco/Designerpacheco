@@ -1,0 +1,100 @@
+<!-- ===== Assistente do site (avatar C) ===== -->
+<style>
+.pa-avatar{--size:56px;--ring:3px;--gap:3px;--bg:#0E0D0B;position:relative;display:inline-block;width:var(--size);height:var(--size);border-radius:50%;padding:var(--ring);background:conic-gradient(from 200deg,#E8622C,#D9A441,#1F6F78,#E8622C);box-shadow:0 0 18px rgba(232,98,44,.35);flex:none}
+.pa-avatar img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;border:var(--gap) solid var(--bg);box-sizing:border-box;background:var(--bg)}
+.pa-online{position:absolute;right:2%;bottom:2%;width:calc(var(--size)*.24);height:calc(var(--size)*.24);border-radius:50%;background:#3DDC84;border:calc(var(--size)*.045) solid var(--bg);box-sizing:border-box}
+.pa-online::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid #3DDC84;animation:pa-pulse 2s ease-out infinite}
+@keyframes pa-pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(2);opacity:0}}
+@media (prefers-reduced-motion:reduce){.pa-online::after{display:none}}
+#paL{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:10px;background:#141210;color:#F7F3EC;border:1px solid rgba(201,162,86,.35);padding:7px 18px 7px 7px;border-radius:999px;box-shadow:0 12px 34px rgba(0,0,0,.45);cursor:pointer;font:700 15px/1 "Inter Tight",system-ui,sans-serif}
+#paL .pa-avatar{--bg:#141210}
+#paL:focus-visible{outline:2px solid #E8622C;outline-offset:3px}
+#paP{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:51;width:min(380px,calc(100vw - 32px));height:min(600px,calc(100dvh - 32px));display:flex;flex-direction:column;background:#141210;color:#F2EDE2;border:1px solid rgba(201,162,86,.3);border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.5);overflow:hidden;font:400 15px/1.5 Inter,system-ui,sans-serif}
+#paP[hidden]{display:none!important}
+.paH{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;background:radial-gradient(90% 140% at 0% 0%,rgba(20,80,90,.55),transparent 70%),#0E0D0B;border-bottom:1px solid rgba(239,234,227,.08)}
+.paH .pa-avatar{--bg:#0E0D0B}
+.paH b{display:block;font:800 16px/1.2 "Inter Tight",system-ui,sans-serif;letter-spacing:-.01em}
+.paH small{color:#3DDC84;font-size:12.5px;font-weight:600}
+.paX{margin-left:auto;background:rgba(239,234,227,.08);border:0;color:#F2EDE2;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;line-height:1}
+.paM{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.paB{max-width:86%;padding:10px 13px;border-radius:16px;white-space:pre-wrap;overflow-wrap:anywhere}
+.paB.bot{align-self:flex-start;background:#22201C;border-bottom-left-radius:5px}
+.paB.me{align-self:flex-end;background:#E8622C;color:#141210;border-bottom-right-radius:5px;font-weight:500}
+.paB a{color:#F4C6A8;font-weight:600}
+.paB.wait{color:#A5A19B;font-style:italic}
+.paQ{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 10px}
+.paQ button{background:transparent;border:1px solid rgba(201,162,86,.45);color:#E6D3A6;border-radius:999px;padding:7px 11px;font:600 12.5px/1.2 Inter,system-ui,sans-serif;cursor:pointer}
+.paF{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(239,234,227,.08);background:#0E0D0B}
+.paF input{flex:1;min-width:0;background:#1D1A17;border:1px solid rgba(239,234,227,.12);color:#F2EDE2;border-radius:999px;padding:11px 15px;font:400 15px/1.2 Inter,system-ui,sans-serif}
+.paF input:focus{outline:2px solid #E8622C;outline-offset:0;border-color:transparent}
+.paF button{background:#E8622C;color:#141210;border:0;border-radius:999px;padding:0 16px;font:700 14px/1 "Inter Tight",system-ui,sans-serif;cursor:pointer}
+.paF button:disabled{opacity:.5;cursor:default}
+.paN{font-size:11px;color:#7d776f;text-align:center;padding:0 12px 10px;background:#0E0D0B}
+</style>
+<button id="paL" type="button" aria-controls="paP" aria-expanded="false"><span class="pa-avatar" style="--size:46px;--ring:2px;--gap:2px"><img src="__IMG__" alt=""><span class="pa-online"></span></span><span id="paLt">Talk with us</span></button>
+<div id="paP" role="dialog" aria-label="Sofia" hidden>
+  <div class="paH"><span class="pa-avatar" style="--size:48px;--ring:2px;--gap:2px"><img src="__IMG__" alt="Sofia"><span class="pa-online" aria-label="Online"></span></span><div><b>Sofia · Pacheco Studios</b><small id="paSt">● Online</small></div><button class="paX" id="paX" type="button" aria-label="Fechar">×</button></div>
+  <div class="paM" id="paM" aria-live="polite"></div>
+  <div class="paQ" id="paQ"></div>
+  <form class="paF" id="paF"><input id="paI" autocomplete="off" maxlength="600"><button id="paS" type="submit">→</button></form>
+  <div class="paN" id="paN"></div>
+</div>
+<script>
+(()=>{
+const CAL="https://calendly.com/tspacheco26/30min";
+const TX={
+ en:{l:"Talk with us",st:"● Online now",ph:"Write your message…",send:"Send",hi:"Hi! I'm Sofia, the assistant at Pacheco Studios. I can explain how our AI team answers calls, books patients and brings them back. What would you like to know?",q:["How does it work?","What do the agents do?","Is my patients' data safe?","Book a meeting"],wait:"Sofia is typing…",off:"I can't answer here right now. You can book a meeting with no commitment: "+CAL,err:"Something went wrong. Try again in a moment, or book a meeting: "+CAL,note:"AI assistant · Nothing is sent without your OK"},
+ pt:{l:"Fala connosco",st:"● Online agora",ph:"Escreve a tua mensagem…",send:"Enviar",hi:"Olá! Sou a Sofia, a assistente da Pacheco Studios. Posso explicar como a nossa equipa de IA atende chamadas, marca consultas e traz os pacientes de volta. O que gostavas de saber?",q:["Como funciona?","O que fazem os agentes?","Os dados dos pacientes estão seguros?","Marcar reunião"],wait:"A Sofia está a escrever…",off:"Agora não consigo responder aqui. Podes marcar uma reunião sem compromisso: "+CAL,err:"Algo correu mal. Tenta daqui a pouco, ou marca uma reunião: "+CAL,note:"Assistente de IA · Nada sai sem o seu OK"},
+ ro:{l:"Vorbește cu noi",st:"● Online acum",ph:"Scrie mesajul tău…",send:"Trimite",hi:"Bună! Sunt Sofia, asistenta Pacheco Studios. Vă pot explica cum echipa noastră de AI răspunde la apeluri, programează pacienții și îi aduce înapoi. Ce ați dori să aflați?",q:["Cum funcționează?","Ce fac agenții?","Datele pacienților sunt în siguranță?","Programează o întâlnire"],wait:"Sofia scrie…",off:"Momentan nu pot răspunde aici. Puteți programa o întâlnire fără niciun angajament: "+CAL,err:"Ceva nu a mers. Încercați din nou sau programați o întâlnire: "+CAL,note:"Asistent AI · Nimic nu pleacă fără OK-ul dvs."}
+};
+const RULES=`You are Sofia, the website chat assistant of Pacheco Studios, an AI solutions company. Stay in this role for the whole conversation.
+
+ABOUT PACHECO STUDIOS
+- We build AI agents for businesses. Current focus: dental clinics. We have worked across 5 sectors (healthcare, restaurants, construction, locksmiths, pet grooming) and chose dental clinics.
+- We work worldwide; Portugal, Romania and Brazil are where we have done the most projects.
+- Method: 1) We find the problem (study and audit: where the clinic loses patients today). 2) We teach the agents with the clinic's own prices, hours, treatments and rules, nothing invented. 3) The agents run in shadow mode: every reply arrives as a draft, OK sends it, X ignores it. 4) We prove the impact with a monthly dashboard (requests, bookings, attendance, new patients).
+- 12 agents in 5 teams: Front desk (24/7 voice receptionist, website chat and WhatsApp agent, missed-call text-back in seconds); Conversion (quote follow-up over 14 days, email agent); Diary and retention (confirmations and reminders with waiting list, reactivation of patients absent 11+ months); Reputation and visibility (Google reviews funnel, AI search visibility report, website audit); Owner management (clinic dashboard, owner assistant on WhatsApp or Telegram).
+- Works alongside the software the clinic already uses (diary, patient files, Google Calendar, WhatsApp Business). Nothing to replace.
+- Rule: nothing is sent without the clinic's OK. GDPR, a data processing agreement (GDPR art. 28) and data hosted in the EU.
+- Usually live in about a week.
+- Contacts: meeting booking ${CAL} · email robert@teampachecostudios.com · phone/WhatsApp +351 967 117 357 (Portugal) or +40 723 098 556 (Romania).
+
+HOW TO ANSWER
+- Reply in the visitor's language (Portuguese from Portugal, Romanian, English, or whatever they write in).
+- Short and warm: 1 to 4 sentences, plain text, no Markdown, no lists unless asked, at most one question per reply.
+- Never invent prices, client names, case studies, statistics or promises. If asked about price, say it depends on the clinic and the agents chosen, and offer a meeting.
+- When the visitor shows interest or asks to talk to a person, invite them to a meeting with no commitment and give the booking link ${CAL}. Never mention a meeting length in minutes.
+- Never say the word "leak". If something is outside what you know, say so and offer the meeting or the email.
+- You only chat here; you cannot book or send anything yourself.`;
+const lang=()=>{try{return (typeof L!=="undefined"&&TX[L])?L:"en"}catch(e){return "en"}};
+const $=id=>document.getElementById(id);
+const P=$("paP"),Lb=$("paL"),M=$("paM"),Q=$("paQ"),I=$("paI"),S=$("paS");
+let turns=[],busy=false,sample=null,ready=false,greeted=false,ctl=null;
+const ENDPOINT="https://n8n.2.29.109.191.sslip.io/webhook/site-chat";
+if(typeof claude!=="undefined"&&claude.use){claude.use("sample").then(s=>{sample=s;ready=true}).catch(()=>{ready=true})}else{ready=true}
+function link(el,text){el.textContent="";const re=/(https?:\/\/[^\s)]+[^\s).,;!?])/g;let i=0,m;while((m=re.exec(text))){el.append(text.slice(i,m.index));const a=document.createElement("a");a.href=m[1];a.target="_blank";a.rel="noopener";a.textContent=m[1].replace(/^https?:\/\//,"");el.append(a);i=m.index+m[0].length}el.append(text.slice(i))}
+function bub(cls,text){const d=document.createElement("div");d.className="paB "+cls;link(d,text);M.append(d);M.scrollTop=M.scrollHeight;return d}
+function ui(){const t=TX[lang()];$("paLt").textContent=t.l;$("paSt").textContent=t.st;I.placeholder=t.ph;S.setAttribute("aria-label",t.send);$("paN").textContent=t.note;Q.innerHTML="";if(!turns.length)t.q.forEach((q,k)=>{const b=document.createElement("button");b.type="button";b.textContent=q;b.onclick=()=>k===3?(bub("me",q),bub("bot",(lang()==="pt"?"Claro! Escolhe o dia que te der jeito: ":lang()==="ro"?"Sigur! Alegeți ziua potrivită: ":"Of course! Pick a day that suits you: ")+CAL)):send(q);Q.append(b)})}
+function open(){P.hidden=false;Lb.hidden=true;Lb.setAttribute("aria-expanded","true");ui();if(!greeted){greeted=true;bub("bot",TX[lang()].hi)}I.focus()}
+function close(){P.hidden=true;Lb.hidden=false;Lb.setAttribute("aria-expanded","false");Lb.focus()}
+Lb.onclick=open;$("paX").onclick=close;document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!P.hidden)close()});
+document.querySelectorAll("[data-l]").forEach(b=>b.addEventListener("click",()=>setTimeout(ui,0)));
+async function send(text){text=text.trim();if(!text||busy)return;busy=true;S.disabled=true;Q.innerHTML="";bub("me",text);I.value="";
+ const t=TX[lang()];const out=bub("bot wait",t.wait);
+ if(!sample){turns.push({role:"user",content:text});if(turns.length>12)turns=turns.slice(-12);while(turns.length&&turns[0].role!=="user")turns.shift();
+  try{const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({lang:lang(),messages:turns})});
+   const j=await r.json();const reply=(j&&typeof j.reply==="string"&&j.reply.trim())?j.reply:t.err;out.classList.remove("wait");link(out,reply);turns.push({role:"assistant",content:reply});
+  }catch(e){turns.pop();out.classList.remove("wait");link(out,t.err)}
+  busy=false;S.disabled=false;M.scrollTop=M.scrollHeight;return}
+ turns.push({role:"user",content:text});if(turns.length>16)turns=turns.slice(-16);while(turns.length&&turns[0].role!=="user")turns.shift();
+ ctl=new AbortController();
+ try{const r=await sample([{role:"user",content:RULES},{role:"assistant",content:t.hi},...turns],{cache:false,modelTier:"quick",signal:ctl.signal,onText:({text})=>{out.classList.remove("wait");link(out,text);M.scrollTop=M.scrollHeight}});
+  out.classList.remove("wait");link(out,r.text);turns.push({role:"assistant",content:r.text});
+ }catch(e){out.classList.remove("wait");turns.pop();
+  if(e&&e.code==="refused"){link(out,t.err)}else if(e&&e.text){link(out,e.text)}else{link(out,(e&&(e.code==="not_granted"||e.code==="sampling_disabled"||e.code==="capability_disabled"))?t.off:t.err)}
+  if(e&&(e.code==="not_granted"||e.code==="sampling_disabled"))sample=null}
+ busy=false;S.disabled=false;M.scrollTop=M.scrollHeight}
+$("paF").addEventListener("submit",e=>{e.preventDefault();send(I.value)});
+ui();
+})();
+</script>
