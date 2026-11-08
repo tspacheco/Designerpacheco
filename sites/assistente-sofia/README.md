@@ -5,7 +5,7 @@ Chat flutuante «Fala connosco» com o avatar C (anel laranja/dourado/azul-petr�
 - `widget.html`: estilo + botão + painel + script. Colar antes de `</body>` no site. Trocar `__IMG__` pelo caminho da foto (ex.: `/img/assistente.webp`).
 - `teste-sofia.html`: página de teste (abrir no browser).
 - `n8n/assistente-site-sofia.json`: fluxo para o n8n do Hetzner (`https://n8n.2.29.109.191.sslip.io`). Webhook `POST /webhook/site-chat` → Claude Haiku 5.5 → `{reply}`.
-- As regras da Sofia (o que diz e não diz) estão no nó «Preparar conversa» do n8n.
+- O que a Sofia sabe está em `sofia-conhecimento.md` (cópia no nó «Preparar conversa» do n8n). Editar o .md e pedir para atualizar o fluxo.
 
 ## Ativar
 1. n8n → Workflows → Import from File → `assistente-site-sofia.json`.
