@@ -13,6 +13,7 @@
 #   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
+#   post       <url> '<corpo>'                  POST com o corpo (text/plain) → código HTTP e resposta no relatório
 #
 # Linhas vazias e começadas por # são ignoradas. Vídeos do Higgsfield: ampliar a 4K antes (upscale_video) se for para
 # fotogramas de herói.
@@ -103,6 +104,10 @@ jobs:
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
                       rel.append(f"ok  testar {p[1]} -> {r.stdout.strip() or 'ERRO'} {r.stderr.strip()}".strip())
+                  elif op == "post":
+                      r = subprocess.run(["curl", "-sS", "--max-time", "60", "-A", UA, "-H", "Content-Type: text/plain",
+                                          "--data-binary", p[2], "-w", "\nHTTP %{http_code}", p[1]], capture_output=True, text=True)
+                      rel.append(f"ok  post {p[1]} ->\n{r.stdout.strip()[:3000]} {r.stderr.strip()}".strip())
                   else:
                       rel.append(f"ERRO linha {n}: operação desconhecida «{op}»")
               except Exception as ex:
