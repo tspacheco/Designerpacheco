@@ -1,7 +1,15 @@
-ok  testar https://n8n.2.29.109.191.sslip.io/healthz -> 200 https://n8n.2.29.109.191.sslip.io/healthz 15
 ok  post https://n8n.2.29.109.191.sslip.io/webhook/site-chat ->
-{"reply":"Olá! Trabalhamos em quatro passos. Primeiro fazemos um estudo à clínica para perceber onde perde doentes hoje. Depois ensinamos os nossos agentes com os preços, horários, tratamentos e regras da própria clínica. Os agentes funcionam em modo sombra: cada resposta chega como rascunho, e só é enviada quando a clínica disser OK. Por fim, acompanhamos o impacto num painel mensal. Queres saber mais sobre algum destes passos?"}
+HTTP/2 200 
+access-control-allow-methods: OPTIONS, POST
+access-control-allow-origin: *
+alt-svc: h3=":443"; ma=2592000
+content-security-policy: sandbox allow-downloads allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-top-navigation-by-user-activation allow-top-navigation-to-custom-protocols
+content-type: application/json; charset=utf-8
+date: Sun, 08 Nov 2026 20:28:07 GMT
+etag: W/"126-nV4BD1UPjxtRvI3/jIX9g4g00cU"
+vary: Accept-Encoding
+via: 1.1 Caddy
+content-length: 294
+
+{"reply":"Prețul depinde de clinică și de agenții aleși, deoarece fiecare proiect se adaptează la nevoile și volumul de pacienți. Dacă doriți o estimare reală pentru clinica dumneavoastră, puteți programa o discuție fără obligații aici: https://calendly.com/tspacheco26/30min"}
 HTTP 200
-ok  post https://n8n.2.29.109.191.sslip.io/webhook-test/site-chat ->
-{"code":404,"message":"The requested webhook \"site-chat\" is not registered.","hint":"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
-HTTP 404
