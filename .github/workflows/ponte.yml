@@ -105,7 +105,7 @@ jobs:
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
                       rel.append(f"ok  testar {p[1]} -> {r.stdout.strip() or 'ERRO'} {r.stderr.strip()}".strip())
                   elif op == "post":
-                      r = subprocess.run(["curl", "-sS", "--max-time", "60", "-A", UA, "-H", "Content-Type: text/plain",
+                      r = subprocess.run(["curl", "-sS", "-i", "--max-time", "60", "-A", UA, "-H", "Origin: https://pachecost.com", "-H", "Content-Type: text/plain",
                                           "--data-binary", p[2], "-w", "\nHTTP %{http_code}", p[1]], capture_output=True, text=True)
                       rel.append(f"ok  post {p[1]} ->\n{r.stdout.strip()[:3000]} {r.stderr.strip()}".strip())
                   else:
