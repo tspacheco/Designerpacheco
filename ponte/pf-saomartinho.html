@@ -1,0 +1,1992 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurante São Martinho — Guia, Algarve</title>
+<meta name="description" content="Marisco vivo do aquário à mesa. Restaurante São Martinho em Guia, Algarve. 4,5★ no Google.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&amp;display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #050D18;
+  --bg2: #0A1628;
+  --navy: #0D2240;
+  --cyan: #00C6DA;
+  --cyan-dim: rgba(0,198,218,0.12);
+  --cyan-border: rgba(0,198,218,0.25);
+  --red: #E03535;
+  --cream: #F0EBE0;
+  --stone: rgba(240,235,224,0.45);
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.09);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── BUBBLES ── */
+#bubbles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.bubble {
+  position: absolute;
+  bottom: -60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(0,198,218,0.18), rgba(0,198,218,0.04));
+  border: 1px solid rgba(0,198,218,0.12);
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-110vh) translateX(30px); opacity: 0; }
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 110;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  height: 68px;
+  background: rgba(5,13,24,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.nav-brand:hover { opacity: 0.82; }
+.nav-brand span { color: var(--cyan); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--stone);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-cta {
+  background: var(--red) !important;
+  color: var(--cream) !important;
+  padding: 9px 22px;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85 !important; }
+
+/* ── BOTÃO GALERIA (mobile) ── */
+.nav-gal-mobile { display: none; }
+@keyframes galGlow { 0%,100% { box-shadow: 0 0 12px rgba(0,198,218,0.18); } 50% { box-shadow: 0 0 22px rgba(0,198,218,0.5); } }
+@keyframes galBub { 0% { transform: translateY(0) scale(1); opacity: 0; } 25% { opacity: 0.9; } 100% { transform: translateY(-28px) scale(0.4); opacity: 0; } }
+
+/* ── SELETOR DE IDIOMA ── */
+.lang-switch { display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--glass-border); border-radius: 999px; padding: 3px; background: rgba(255,255,255,0.04); }
+.lang-switch button { background: none; border: none; color: var(--stone); font-family: inherit; font-weight: 700; font-size: 11px; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 999px; cursor: pointer; transition: background 0.2s, color 0.2s; -webkit-tap-highlight-color: transparent; }
+.lang-switch button.active { background: var(--cyan-dim); color: var(--cyan); }
+.lang-switch button:not(.active):hover { color: var(--cream); }
+.lang-mobile { display: none; }
+
+/* ── SOM / MÚSICA AMBIENTE ── */
+.snd-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 34px; padding: 0; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.04); border-radius: 999px; color: var(--stone); cursor: pointer; transition: color .2s, border-color .2s, background .2s; -webkit-tap-highlight-color: transparent; }
+.snd-btn:hover { color: var(--cream); border-color: var(--cyan-border); }
+.snd-btn.anim { color: var(--cyan); border-color: var(--cyan-border); animation: sndGlow 2.4s ease-in-out infinite; }
+.snd-btn.playing { background: var(--cyan-dim); }
+.snd-mobile { display: none; }
+.snd-eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+.snd-eq i { width: 2.5px; height: 4px; background: currentColor; border-radius: 1px; }
+.snd-btn.anim .snd-eq i, .snd-opt.active .snd-eq i { animation: eqbar .9s ease-in-out infinite; }
+.snd-btn.playing .snd-eq i { animation-duration: .62s; }
+.snd-eq i:nth-child(2) { animation-delay: .18s; }
+.snd-eq i:nth-child(3) { animation-delay: .36s; }
+@keyframes eqbar { 0%,100% { height: 4px; } 50% { height: 14px; } }
+@keyframes sndGlow { 0%,100% { box-shadow: 0 0 0 rgba(0,198,218,0); } 50% { box-shadow: 0 0 13px rgba(0,198,218,.42); } }
+
+/* botão de idioma único (mostra só o idioma alternativo) */
+.lang-btn { min-width: 34px; text-align: center; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); color: var(--stone); font-family: inherit; font-weight: 700; font-size: 11px; letter-spacing: 0.08em; padding: 8px 11px; border-radius: 999px; cursor: pointer; transition: color .2s, border-color .2s, background .2s; -webkit-tap-highlight-color: transparent; }
+.lang-btn:hover { color: var(--cream); border-color: var(--cyan-border); }
+.lang-desktop { display: inline-block; }
+
+/* insight "Desfrute da nossa música" */
+.music-hint { position: fixed; top: 64px; right: 16px; z-index: 119; display: flex; align-items: center; gap: 9px; background: var(--bg2); border: 1px solid var(--cyan-border); color: var(--cream); font-size: 13px; font-weight: 500; padding: 10px 10px 10px 14px; border-radius: 11px; box-shadow: 0 16px 44px rgba(0,0,0,.5); opacity: 0; transform: translateY(-10px); transition: opacity .4s, transform .4s; pointer-events: none; }
+.music-hint.show { opacity: 1; transform: none; pointer-events: auto; }
+.music-hint::before { content: ''; position: absolute; top: -6px; right: 84px; width: 11px; height: 11px; background: var(--bg2); border-left: 1px solid var(--cyan-border); border-top: 1px solid var(--cyan-border); transform: rotate(45deg); }
+.music-hint .mh-note { color: var(--cyan); font-size: 15px; line-height: 1; }
+.music-hint .mh-x { background: none; border: none; color: var(--stone); font-size: 17px; line-height: 1; cursor: pointer; padding: 0 2px; transition: color .2s; }
+.music-hint .mh-x:hover { color: var(--cream); }
+@media (max-width: 560px) { .music-hint::before { right: 60px; } }
+.snd-panel { position: fixed; top: 62px; right: 16px; z-index: 120; width: 252px; background: var(--bg2); border: 1px solid var(--cyan-border); border-radius: 12px; padding: 10px; box-shadow: 0 24px 60px rgba(0,0,0,.55); opacity: 0; transform: translateY(-8px) scale(.98); transition: opacity .2s, transform .2s; }
+.snd-panel.open { opacity: 1; transform: none; }
+.snd-panel[hidden] { display: none; }
+.snd-title { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--cyan); padding: 6px 8px 10px; }
+.snd-opt { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; background: none; border: 1px solid transparent; border-radius: 8px; color: var(--cream); font-family: inherit; font-size: 13.5px; padding: 11px 10px; cursor: pointer; transition: background .15s, border-color .15s; }
+.snd-opt:hover { background: var(--glass); }
+.snd-opt.active { background: var(--cyan-dim); border-color: var(--cyan-border); color: var(--cyan); }
+.snd-opt .snd-ic { font-size: 17px; line-height: 1; }
+.snd-opt .snd-name { flex: 1; line-height: 1.3; }
+.snd-opt .snd-eq { color: var(--cyan); opacity: 0; }
+.snd-opt.active .snd-eq { opacity: 1; }
+.snd-off { width: 100%; margin-top: 6px; background: none; border: none; border-top: 1px solid var(--glass-border); color: var(--stone); font-family: inherit; font-size: 12px; letter-spacing: .04em; padding: 11px 8px 6px; cursor: pointer; transition: color .2s; text-align: center; }
+.snd-off:hover { color: var(--red); }
+@media (prefers-reduced-motion: reduce) { .snd-eq i, .snd-btn.anim { animation: none !important; } }
+
+/* ── HAMBÚRGUER (mobile) ── */
+.nav-toggle {
+  display: none;
+  width: 44px; height: 44px;
+  background: transparent;
+  border: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+.nav-toggle.aberto span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.aberto span:nth-child(2) { opacity: 0; }
+.nav-toggle.aberto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MENU MOBILE (full-screen) ── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  background: rgba(5,13,24,0.97);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.mobile-menu.aberto { opacity: 1; pointer-events: all; }
+.mobile-menu::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 15%, rgba(0,198,218,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 85%, rgba(13,34,64,0.6) 0%, transparent 50%);
+  pointer-events: none;
+}
+.mm-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  padding: 24px;
+  transform: translateY(18px);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mobile-menu.aberto .mm-inner { transform: translateY(0); }
+.mm-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 14px;
+}
+.mm-link {
+  font-family: 'Playfair Display', serif;
+  font-size: 33px;
+  font-weight: 700;
+  color: var(--cream);
+  text-decoration: none;
+  padding: 9px 0;
+  letter-spacing: -0.015em;
+  transition: color 0.2s;
+}
+.mm-link em { font-style: italic; font-weight: 400; color: var(--cyan); }
+.mm-link:active { color: var(--cyan); }
+.mm-rating {
+  margin: 24px 0 4px;
+  font-size: 13px;
+  color: var(--stone);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.mm-rating strong { color: var(--cream); font-weight: 600; }
+.mm-cta {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--red);
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 17px 40px;
+  border-radius: 2px;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.mm-cta:active { opacity: 0.88; transform: translateY(1px); }
+.mm-addr {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--stone);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px 60px 80px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(5,13,24,0.74) 0%, rgba(5,13,24,0.52) 36%, rgba(5,13,24,0.95) 100%);
+  pointer-events: none;
+}
+.hero-label, .hero h1, .hero-sub, .hero-row { position: relative; z-index: 2; }
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(0,198,218,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 80%, rgba(13,34,64,0.6) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-label::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--cyan);
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(56px, 8vw, 110px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cyan);
+  display: block;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 300;
+  color: var(--stone);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 52px;
+  margin-top: 20px;
+}
+.hero-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--red);
+  color: var(--cream);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 36px;
+  border-radius: 2px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-hero:hover { opacity: 0.88; transform: translateY(-2px); }
+.btn-ghost {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--stone);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid rgba(240,235,224,0.2);
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--cream); }
+.hero-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--stone);
+  margin-left: auto;
+}
+.hero-rating strong { color: var(--cream); font-weight: 600; }
+.stars { color: #F0A500; letter-spacing: 1px; }
+
+/* ── GLASS STRIP ── */
+.strip {
+  position: relative;
+  z-index: 2;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 20px 60px;
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.strip-item {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(240,235,224,0.90);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.strip-sep { width: 1px; height: 14px; background: var(--glass-border); }
+
+/* ── SECTIONS ── */
+section { position: relative; z-index: 2; padding: 100px 60px; }
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--cyan); }
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+}
+h2 em { font-style: italic; font-weight: 400; color: var(--cyan); }
+.body { font-size: 17px; font-weight: 300; line-height: 1.78; color: var(--stone); }
+
+/* ── AQUARIO ── */
+.aquario {
+  background: var(--bg2);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+.aquario-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 64px;
+}
+.aquario-visual {
+  border: 1px solid var(--cyan-border);
+  border-radius: 4px;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+}
+.aquario-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%);
+  z-index: 1;
+  pointer-events: none;
+}
+.aquario-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s ease;
+}
+.aquario-visual:hover .aquario-foto {
+  transform: scale(1.04);
+}
+.aquario-visual-text {
+  position: absolute;
+  bottom: 20px;
+  left: 22px;
+  right: 22px;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(255,255,255,0.88);
+  letter-spacing: 0.08em;
+  z-index: 2;
+}
+.aquario-highlight {
+  display: inline-block;
+  margin-top: 28px;
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan-border);
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 9px 20px;
+  border-radius: 2px;
+}
+
+/* ── ESPECIALIDADES ── */
+.especialidades { background: var(--bg); }
+.esp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 60px;
+}
+.esp-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.esp-card:hover, .esp-card:focus-visible {
+  border-color: var(--cyan-border);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,198,218,0.15);
+  outline: none;
+}
+.esp-thumb {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--bg2) 60%, var(--bg) 100%);
+}
+.esp-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.esp-card:hover .esp-thumb img { transform: scale(1.06); }
+.esp-thumb::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(0,198,218,0.10), transparent 60%);
+  opacity: 1;
+}
+.esp-thumb::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(5,13,24,0.88) 0%, transparent 48%);
+}
+.esp-icon {
+  position: absolute;
+  bottom: 12px; left: 16px;
+  font-size: 30px; line-height: 1;
+  z-index: 2;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+  transition: font-size 0.3s, left 0.3s, bottom 0.3s, transform 0.3s;
+}
+/* Estado sem imagem: ícone grande e centrado sobre o gradiente */
+.esp-thumb.no-img .esp-icon {
+  font-size: 56px;
+  left: 50%; bottom: 50%;
+  transform: translate(-50%, 50%);
+}
+.esp-body {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.esp-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.esp-desc { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--stone); flex: 1; }
+.esp-ver {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 22px;
+  padding: 0 22px;
+  min-height: 46px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan-border);
+  border-radius: 2px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.esp-ver::after { content: '→'; transition: transform 0.2s; }
+.esp-card:hover .esp-ver { background: rgba(0,198,218,0.18); border-color: var(--cyan); }
+.esp-card:hover .esp-ver::after { transform: translateX(3px); }
+
+/* ── CARTA COMPLETA ── */
+.menu-completo { background: var(--bg2); border-top: 1px solid var(--glass-border); }
+.menu-acc { max-width: 780px; margin: 56px auto 0; }
+.menu-cat {
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  background: var(--glass);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.menu-cat > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(19px, 4.5vw, 23px);
+  font-weight: 700;
+  color: var(--cream);
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-cat > summary::-webkit-details-marker { display: none; }
+.menu-cat > summary .cat-emoji { font-size: 24px; line-height: 1; }
+.menu-cat > summary .cat-chev {
+  margin-left: auto;
+  width: 22px; height: 22px;
+  flex-shrink: 0;
+  color: var(--cyan);
+  transition: transform 0.3s ease;
+}
+.menu-cat[open] > summary .cat-chev { transform: rotate(180deg); }
+.menu-cat[open] > summary { border-bottom: 1px solid var(--glass-border); }
+.menu-cat-body { padding: 8px 24px 22px; }
+.menu-dish {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.menu-dish:last-child { border-bottom: none; }
+.menu-dish .nome-wrap { flex-shrink: 1; }
+.menu-dish .nome { font-size: 15.5px; color: var(--cream); font-weight: 400; line-height: 1.35; }
+.menu-dish .desc-pequena { display: block; font-size: 12px; color: var(--stone); margin-top: 3px; line-height: 1.4; }
+.menu-dish .leader { flex: 1; border-bottom: 1px dotted rgba(240,235,224,0.28); position: relative; top: -5px; min-width: 16px; }
+.menu-dish .preco { font-size: 15px; font-weight: 600; color: var(--cyan); white-space: nowrap; letter-spacing: -0.01em; }
+.menu-note { text-align: center; font-size: 12.5px; color: var(--stone); margin-top: 26px; line-height: 1.6; }
+.menu-extra-cta { display: flex; justify-content: center; margin-top: 36px; }
+.menu-lang-toggle { display: flex; justify-content: center; gap: 6px; margin: 0 0 30px; }
+.mlt-btn { background: var(--glass); border: 1px solid var(--glass-border); color: var(--stone); font-family: inherit; font-weight: 600; font-size: 12px; letter-spacing: 0.12em; padding: 8px 20px; border-radius: 999px; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+.mlt-btn:hover { border-color: var(--cyan-border); color: var(--cream); }
+.mlt-btn.active { background: var(--cyan-dim); border-color: var(--cyan-border); color: var(--cyan); }
+
+/* Botão "ver carta" no fim das especialidades */
+.esp-cta-wrap { display: flex; justify-content: center; margin-top: 48px; }
+
+/* ── MENU MODAL ── */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(5,13,24,0.88);
+  backdrop-filter: blur(24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.menu-overlay.aberto {
+  opacity: 1;
+  pointer-events: all;
+}
+.menu-modal {
+  background: var(--bg2);
+  border: 1px solid var(--cyan-border);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 920px;
+  max-height: 88vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  position: relative;
+  transform: translateY(32px) scale(0.96);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,198,218,0.1);
+}
+.menu-overlay.aberto .menu-modal {
+  transform: translateY(0) scale(1);
+}
+.menu-fechar {
+  position: absolute;
+  top: 14px; right: 14px;
+  z-index: 10;
+  background: rgba(5,13,24,0.7);
+  border: 1px solid var(--glass-border);
+  color: var(--cream);
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.menu-fechar:hover { background: rgba(224,53,53,0.3); border-color: var(--red); }
+
+/* Galeria */
+.menu-galeria {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px 0 0 8px;
+  height: 520px;
+  background: var(--bg);
+}
+.menu-galeria-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.menu-galeria-track img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.menu-galeria-track img.foto-fail {
+  background: linear-gradient(135deg, var(--navy), var(--bg));
+  font-size: 0;
+}
+.menu-galeria.sem-fotos .gal-arrow,
+.menu-galeria.sem-fotos .gal-contador,
+.menu-galeria.sem-fotos .gal-dots { display: none; }
+.gal-placeholder {
+  min-width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  background: linear-gradient(135deg, var(--navy), var(--bg));
+}
+.gal-ph-emoji { font-size: 72px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5)); }
+.gal-ph-txt { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+.gal-arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  background: rgba(5,13,24,0.65);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--cream);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  z-index: 5;
+  line-height: 1;
+}
+.gal-arrow:hover { background: rgba(0,198,218,0.25); border-color: var(--cyan-border); }
+.gal-prev { left: 14px; }
+.gal-next { right: 14px; }
+.gal-dots {
+  position: absolute;
+  bottom: 16px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 7px; z-index: 5;
+}
+.gal-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.gal-dot.ativo { background: var(--cyan); transform: scale(1.4); }
+.gal-contador {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: rgba(5,13,24,0.65);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: var(--stone);
+  letter-spacing: 0.06em;
+  z-index: 5;
+}
+
+/* Painel info */
+.menu-info {
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  border-left: 1px solid var(--glass-border);
+  overflow-y: auto;
+}
+.menu-topo { display: flex; align-items: flex-start; gap: 14px; }
+.menu-emoji { font-size: 52px; line-height: 1; flex-shrink: 0; }
+.menu-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.menu-preco-wrap { display: flex; align-items: baseline; gap: 6px; }
+.menu-preco {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: -0.02em;
+}
+.menu-preco.is-tag { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.menu-preco-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--stone);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.menu-sep {
+  height: 1px;
+  background: var(--glass-border);
+  margin: 0;
+}
+.menu-descricao {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--stone);
+  font-weight: 300;
+}
+.menu-preps-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+.menu-prep-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--stone);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  line-height: 1.4;
+}
+.menu-prep-item::before { content: '—'; color: var(--cyan); font-weight: 700; flex-shrink: 0; }
+.menu-cta {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--red);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 15px 24px;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.menu-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+@media (max-width: 768px) {
+  .menu-modal { grid-template-columns: 1fr; max-height: 94vh; overflow-y: auto; }
+  .menu-galeria { height: 240px; border-radius: 8px 8px 0 0; }
+  .menu-info { padding: 28px 22px; border-left: none; border-top: 1px solid var(--glass-border); }
+  .menu-emoji { font-size: 38px; }
+  .menu-titulo { font-size: 22px; }
+  .menu-preco { font-size: 20px; }
+}
+
+/* ── REVIEWS ── */
+.reviews { background: var(--bg2); border-top: 1px solid var(--glass-border); }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+.review-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 40px 32px;
+  backdrop-filter: blur(8px);
+}
+.r-stars { color: #F0A500; font-size: 13px; letter-spacing: 2px; margin-bottom: 16px; }
+.r-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+.r-author { font-size: 12px; color: var(--stone); letter-spacing: 0.08em; text-transform: uppercase; }
+.reviews-badge {
+  margin-top: 44px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--stone);
+}
+.reviews-badge strong { color: var(--cyan); }
+
+/* ── VISITA ── */
+.visita { background: var(--bg); }
+.visita-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 60px;
+  align-items: start;
+}
+.info-row {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+.info-row:first-child { border-top: 1px solid var(--glass-border); }
+.info-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+.info-value { font-size: 16px; font-weight: 400; color: var(--cream); line-height: 1.5; }
+.info-value a { color: inherit; text-decoration: none; }
+.info-value a:hover { color: var(--cyan); }
+.info-note { font-size: 13px; color: var(--stone); margin-top: 4px; }
+.cash-tag {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan-border);
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 2px;
+}
+.map-card {
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+}
+.map-card iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: invert(0.88) hue-rotate(175deg) saturate(0.6) brightness(0.85);
+}
+.map-card-link {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg2);
+  border: 1px solid var(--cyan-border);
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 2px;
+  text-decoration: none;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s;
+}
+.map-card-link:hover { background: var(--cyan-dim); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 2;
+  background: var(--bg2);
+  border-top: 1px solid var(--glass-border);
+  padding: 56px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 24px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  white-space: nowrap;
+  min-width: 180px;
+  justify-content: center;
+}
+.footer-btn-gallery {
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan-border);
+  color: var(--cyan);
+}
+.footer-btn-gallery:hover { background: rgba(0,198,218,0.18); transform: translateY(-1px); }
+.footer-btn-fb {
+  background: rgba(24,119,242,0.12);
+  border: 1px solid rgba(24,119,242,0.3);
+  color: #5b9cf6;
+}
+.footer-btn-fb:hover { background: rgba(24,119,242,0.2); transform: translateY(-1px); }
+.footer-fb-note {
+  font-size: 11px;
+  color: var(--stone);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--cream);
+}
+.footer-brand span { color: var(--cyan); }
+.footer-sub { font-size: 13px; color: var(--stone); margin-top: 6px; }
+.footer-right { text-align: right; }
+.footer-tel {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.2s;
+}
+.footer-tel:hover { color: var(--cyan); }
+.footer-addr { font-size: 13px; color: var(--stone); line-height: 1.6; }
+
+/* ── PARCERIA / CRÉDITO ── */
+.footer-credit { flex-basis: 100%; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--stone); }
+.footer-credit .fc-label { text-transform: uppercase; letter-spacing: 0.2em; font-size: 10px; font-weight: 600; }
+.fc-link { display: inline-flex; align-items: center; gap: 7px; color: var(--cream); text-decoration: none; font-weight: 600; letter-spacing: 0.02em; padding: 5px 12px; border: 1px solid var(--cyan-border); border-radius: 999px; background: var(--cyan-dim); transition: color .2s, border-color .2s, background .2s, transform .15s, box-shadow .2s; }
+.fc-link svg { width: 14px; height: 14px; }
+.fc-link:hover { color: var(--cyan); border-color: var(--cyan); background: rgba(0,198,218,0.16); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,198,218,0.18); }
+
+/* ── GALERIA CTA ── */
+.galeria-cta {
+  background: linear-gradient(160deg, var(--bg2) 0%, var(--navy) 100%);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  text-align: center;
+}
+.galeria-cta h2 { margin-bottom: 16px; }
+.galeria-cta .body { max-width: 480px; margin: 0 auto 44px; }
+.btn-galeria {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--cyan-border);
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  border-radius: 2px;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.btn-galeria:hover {
+  background: rgba(0,198,218,0.18);
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 22px; gap: 6px; }
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-brand { flex-shrink: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lang-mobile, .snd-mobile, .nav-gal-mobile, .nav-toggle { flex-shrink: 0; }
+  .lang-mobile { display: inline-flex; margin-left: auto; }
+  .snd-mobile { display: inline-flex; }
+  .nav-gal-mobile {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-left: 8px; margin-right: 0;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, rgba(0,198,218,0.22), rgba(0,198,218,0.06));
+    border: 1px solid var(--cyan-border); color: var(--cyan);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; padding: 9px 13px; border-radius: 999px;
+    animation: galGlow 2.6s ease-in-out infinite;
+  }
+  .nav-gal-mobile svg { width: 15px; height: 15px; }
+  .nav-gal-mobile .bub {
+    position: absolute; bottom: -6px; width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(255,255,255,0.55); pointer-events: none;
+    animation: galBub 3s ease-in infinite;
+  }
+  .nav-gal-mobile .bub:nth-child(1) { left: 22%; }
+  .nav-gal-mobile .bub:nth-child(2) { left: 50%; width: 5px; height: 5px; animation-delay: 1s; }
+  .nav-gal-mobile .bub:nth-child(3) { left: 74%; width: 4px; height: 4px; animation-delay: 1.9s; }
+  section { padding: 72px 24px; }
+  .strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+    background: var(--bg2);
+  }
+  .strip-sep { display: none; }
+  .strip-item {
+    font-size: 12px;
+    color: rgba(240,235,224,0.92);
+    padding: 18px 14px;
+    border: 1px solid var(--glass-border);
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    letter-spacing: 0.13em;
+  }
+  .hero { padding: 120px 24px 64px; }
+  .hero-rating { display: none; }
+  .aquario-grid { grid-template-columns: 1fr; gap: 40px; }
+  .esp-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .visita-grid { grid-template-columns: 1fr; gap: 40px; }
+  .map-card { aspect-ratio: 16/9; }
+  footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+  .footer-right { text-align: left; }
+  .footer-links { align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  nav { padding: 0 16px; }
+  .nav-gal-mobile { padding: 8px 11px; margin-left: 8px; gap: 0; }
+  .nav-gal-mobile .gal-txt { display: none; }
+}
+@media (max-width: 400px) {
+  nav { padding: 0 13px; }
+  .lang-switch button { padding: 4px 8px; font-size: 10px; }
+  .nav-brand { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div id="bubbles"><div class="bubble" style="width: 35.4372px; height: 35.4372px; left: 69.0915%; animation-duration: 11.8659s; animation-delay: 7.05515s;"></div><div class="bubble" style="width: 17.8184px; height: 17.8184px; left: 65.4546%; animation-duration: 12.811s; animation-delay: 2.72353s;"></div><div class="bubble" style="width: 17.2156px; height: 17.2156px; left: 6.99285%; animation-duration: 9.49094s; animation-delay: 9.89653s;"></div><div class="bubble" style="width: 29.487px; height: 29.487px; left: 66.0215%; animation-duration: 11.377s; animation-delay: 8.09111s;"></div><div class="bubble" style="width: 34.1113px; height: 34.1113px; left: 80.5245%; animation-duration: 15.4121s; animation-delay: 4.74092s;"></div><div class="bubble" style="width: 17.8006px; height: 17.8006px; left: 41.3469%; animation-duration: 17.3856s; animation-delay: 6.6486s;"></div><div class="bubble" style="width: 44.7177px; height: 44.7177px; left: 94.1896%; animation-duration: 16.6392s; animation-delay: 2.8422s;"></div><div class="bubble" style="width: 9.01985px; height: 9.01985px; left: 20.5681%; animation-duration: 8.17081s; animation-delay: 9.32485s;"></div><div class="bubble" style="width: 40.5821px; height: 40.5821px; left: 46.8366%; animation-duration: 15.87s; animation-delay: 7.60707s;"></div><div class="bubble" style="width: 19.0594px; height: 19.0594px; left: 68.0271%; animation-duration: 12.2684s; animation-delay: 7.39669s;"></div><div class="bubble" style="width: 45.9429px; height: 45.9429px; left: 54.0299%; animation-duration: 10.6159s; animation-delay: 6.09998s;"></div><div class="bubble" style="width: 23.6914px; height: 23.6914px; left: 38.1211%; animation-duration: 11.9019s; animation-delay: 3.29416s;"></div><div class="bubble" style="width: 15.7957px; height: 15.7957px; left: 95.7367%; animation-duration: 18.2072s; animation-delay: 1.09546s;"></div><div class="bubble" style="width: 24.3634px; height: 24.3634px; left: 87.5046%; animation-duration: 16.9795s; animation-delay: 6.00889s;"></div><div class="bubble" style="width: 41.2753px; height: 41.2753px; left: 97.0618%; animation-duration: 19.1315s; animation-delay: 8.75143s;"></div><div class="bubble" style="width: 38.0488px; height: 38.0488px; left: 66.1134%; animation-duration: 17.0828s; animation-delay: 6.13541s;"></div><div class="bubble" style="width: 14.6676px; height: 14.6676px; left: 19.4474%; animation-duration: 17.1503s; animation-delay: 9.10318s;"></div><div class="bubble" style="width: 12.9642px; height: 12.9642px; left: 27.5002%; animation-duration: 17.6367s; animation-delay: 9.13874s;"></div><div class="bubble" style="width: 43.3014px; height: 43.3014px; left: 51.6153%; animation-duration: 15.6769s; animation-delay: 0.19132s;"></div><div class="bubble" style="width: 10.6919px; height: 10.6919px; left: 26.1498%; animation-duration: 17.7614s; animation-delay: 7.49997s;"></div><div class="bubble" style="width: 28.1575px; height: 28.1575px; left: 60.6191%; animation-duration: 18.2639s; animation-delay: 8.87237s;"></div><div class="bubble" style="width: 47.9082px; height: 47.9082px; left: 0.260061%; animation-duration: 9.44259s; animation-delay: 6.18604s;"></div><div class="bubble" style="width: 44.8244px; height: 44.8244px; left: 71.7556%; animation-duration: 12.4805s; animation-delay: 5.07209s;"></div><div class="bubble" style="width: 23.5004px; height: 23.5004px; left: 62.0725%; animation-duration: 14.3475s; animation-delay: 7.21237s;"></div><div class="bubble" style="width: 42.094px; height: 42.094px; left: 67.2925%; animation-duration: 19.3831s; animation-delay: 4.40756s;"></div><div class="bubble" style="width: 11.0628px; height: 11.0628px; left: 33.5367%; animation-duration: 9.66978s; animation-delay: 4.6016s;"></div><div class="bubble" style="width: 18.2546px; height: 18.2546px; left: 42.5362%; animation-duration: 19.2617s; animation-delay: 3.95049s;"></div><div class="bubble" style="width: 40.7015px; height: 40.7015px; left: 69.8922%; animation-duration: 8.19184s; animation-delay: 9.11857s;"></div></div>
+
+<nav>
+  <a href="#topo" class="nav-brand" aria-label="Voltar ao topo">São<span> Martinho</span></a>
+  <div class="nav-links">
+    <a href="#aquario" data-i18n="nav_aquario">The Tank</a>
+    <a href="#especialidades" data-i18n="nav_especialidades">Specialties</a>
+    <a href="#menu" data-i18n="nav_carta">Menu</a>
+    <a data-i18n="nav_galeria" href="/galeria">Gallery</a>
+    <a href="#visita" data-i18n="nav_visita">Visit</a>
+    <button type="button" class="lang-btn lang-desktop" onclick="toggleLang()" aria-label="Mudar idioma / Change language">PT</button>
+    <button type="button" class="snd-btn anim" data-i18n-attr="aria-label:snd_aria" aria-label="Site background music" aria-haspopup="true" onclick="toggleSoundPanel()">
+      <span class="snd-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+    <a href="tel:289561546" class="nav-cta" data-i18n="nav_reservar">Book</a>
+  </div>
+  <button type="button" class="lang-btn lang-mobile" onclick="toggleLang()" aria-label="Mudar idioma / Change language">PT</button>
+  <button type="button" class="snd-btn snd-mobile anim" data-i18n-attr="aria-label:snd_aria" aria-label="Site background music" aria-haspopup="true" onclick="toggleSoundPanel()">
+    <span class="snd-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+  <a aria-label="See the photo and video gallery" class="nav-gal-mobile" data-i18n-attr="aria-label:nav_gal_aria" href="/galeria">
+    <span class="bub"></span><span class="bub"></span><span class="bub"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.8"></circle><path d="m21 15-5-5L5 21"></path></svg>
+    <span class="gal-txt" data-i18n="nav_galeria">Gallery</span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAINEL DE SOM -->
+<div id="soundPanel" class="snd-panel" role="menu" aria-label="Música ambiente" hidden="">
+  <div class="snd-title" data-i18n="snd_title">Background music</div>
+  <button type="button" class="snd-opt" data-track="flamenco" role="menuitemradio" aria-checked="false">
+    <span class="snd-ic" aria-hidden="true">🎸</span>
+    <span class="snd-name" data-i18n="snd_flamenco">Spanish guitar · Flamenco</span>
+    <span class="snd-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+  <button type="button" class="snd-opt" data-track="fado" role="menuitemradio" aria-checked="false">
+    <span class="snd-ic" aria-hidden="true">🎶</span>
+    <span class="snd-name" data-i18n="snd_fado">Fado · Portuguese guitar</span>
+    <span class="snd-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+  <button type="button" class="snd-off" data-i18n="snd_off" onclick="stopSound()">Turn off sound</button>
+</div>
+
+<!-- INSIGHT MÚSICA -->
+<div id="musicHint" class="music-hint show">
+  <span class="mh-note" aria-hidden="true">🎵</span>
+  <span data-i18n="snd_hint">Enjoy our music</span>
+  <button type="button" class="mh-x" aria-label="Fechar" onclick="dismissMusicHint()">×</button>
+</div>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mm-inner">
+    <div class="mm-label" data-i18n="tagline">Traditional Portuguese Restaurant · Guia · Algarve</div>
+    <a href="#aquario" class="mm-link" data-i18n="nav_aquario">The Tank</a>
+    <a href="#especialidades" class="mm-link" data-i18n="nav_especialidades">Specialties</a>
+    <a href="#menu" class="mm-link"><em data-i18n="nav_carta">Menu</em></a>
+    <a class="mm-link" data-i18n="nav_galeria" href="/galeria">Gallery</a>
+    <a href="#visita" class="mm-link" data-i18n="nav_visita">Visit</a>
+    <div class="mm-rating">
+      <span class="stars">★★★★★</span>
+      <span data-i18n-html="rating"><strong>4.5</strong> · 700+ Google reviews</span>
+    </div>
+    <a href="tel:289561546" class="mm-cta" data-i18n="mm_cta">Book · 289 561 546</a>
+    <div class="mm-addr" data-i18n-html="mm_addr">Sitio Tavagueira · 8200-425 Guia<br>Tuesday to Sunday, from 12:00</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="topo">
+  <video class="hero-bg" autoplay="" muted="" loop="" playsinline="" preload="auto" poster="media/video-cataplana.jpg" aria-hidden="true">
+    <source src="media/video-cataplana.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-label" data-i18n="tagline">Traditional Portuguese Restaurant · Guia · Algarve</div>
+  <h1>São<br><em>Martinho</em></h1>
+  <p class="hero-sub" data-i18n="hero_sub">From the tank to your table — live seafood, intense flavour. An experience that begins before you sit down.</p>
+  <div class="hero-row">
+    <a href="tel:289561546" class="btn-hero" data-i18n="hero_call">Call now</a>
+    <a href="#especialidades" class="btn-ghost" data-i18n="hero_see">See specialties</a>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span data-i18n-html="rating"><strong>4.5</strong> · 700+ Google reviews</span>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="strip-item">🦞 <span data-i18n="strip_marisco">Live seafood</span></span>
+  <div class="strip-sep"></div>
+  <span class="strip-item">🐠 <span data-i18n="strip_aquario">Our own tank</span></span>
+  <div class="strip-sep"></div>
+  <span class="strip-item">🌿 <span data-i18n="strip_esplanada">Terrace</span></span>
+  <div class="strip-sep"></div>
+  <span class="strip-item">👶 <span data-i18n="strip_infantil">Kids' menu</span></span>
+  <div class="strip-sep"></div>
+  <span class="strip-item">🥡 <span data-i18n="strip_takeaway">Take-away</span></span>
+</div>
+
+<!-- AQUARIO -->
+<section class="aquario" id="aquario">
+  <div class="label" data-i18n="aq_label">What sets us apart</div>
+  <h2 data-i18n-html="aq_h2">Live seafood,<br><em>every day.</em></h2>
+  <div class="aquario-grid">
+    <div>
+      <p class="body" style="margin-bottom: 28px;" data-i18n="aq_p1">We have our own tank where the day's seafood is kept alive until it reaches your plate. There is no fresher seafood than the kind that was alive minutes ago.</p>
+      <p class="body" data-i18n="aq_p2">From lobster to spider crab, from prawns to spiny lobster — everything is chosen and prepared on the spot. That is what makes the difference.</p>
+      <div class="aquario-highlight">🦞 <span data-i18n="aq_highlight">Our own tank with the day's seafood</span></div>
+    </div>
+    <div class="aquario-visual">
+      <video class="aquario-foto" autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="media/video-aquario.jpg" aria-label="Aquário com marisco vivo no Restaurante São Martinho">
+        <source src="media/video-aquario.mp4" type="video/mp4">
+        <img src="media/aquario-1.jpg" alt="Aquário com marisco vivo no Restaurante São Martinho" class="aquario-foto" loading="lazy">
+      </video>
+      <div class="aquario-visual-text" data-i18n="aq_visual">From the sea to your table, today.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section class="especialidades" id="especialidades">
+  <div class="label" data-i18n="esp_label">What we serve</div>
+  <h2 data-i18n-html="esp_h2">House<br><em>specialties.</em></h2>
+  <div class="esp-grid">
+    <div class="esp-card" data-key="lavagante" role="button" tabindex="0" data-i18n-attr="aria-label:esp_lavagante_aria" aria-label="Lobster — see photos and preparations" onclick="abrirMenu('lavagante')">
+      <div class="esp-thumb"><img alt="Lavagante grelhado" loading="lazy" src="media/lavagante-1.jpg"><span class="esp-icon">🦞</span></div>
+      <div class="esp-body">
+        <div class="esp-name" data-i18n="esp_lavagante_n">Lobster</div>
+        <div class="esp-desc" data-i18n="esp_lavagante_d">The star of the tank. Served grilled or thermidor — always alive until it is cooked.</div>
+        <span class="esp-ver" data-i18n="esp_ver">See photos &amp; preparations</span>
+      </div>
+    </div>
+    <div class="esp-card" data-key="sapateira" role="button" tabindex="0" data-i18n-attr="aria-label:esp_sapateira_aria" aria-label="Brown and spider crab — see photos and preparations" onclick="abrirMenu('sapateira')">
+      <div class="esp-thumb"><img alt="Sapateira recheada" loading="lazy" src="media/sapateira-1.jpg"><span class="esp-icon">🦀</span></div>
+      <div class="esp-body">
+        <div class="esp-name" data-i18n="esp_sapateira_n">Brown &amp; Spider Crab</div>
+        <div class="esp-desc" data-i18n="esp_sapateira_d">Stuffed or natural. An Algarve classic that never disappoints at our table.</div>
+        <span class="esp-ver" data-i18n="esp_ver">See photos &amp; preparations</span>
+      </div>
+    </div>
+    <div class="esp-card" data-key="gambas" role="button" tabindex="0" data-i18n-attr="aria-label:esp_gambas_aria" aria-label="Prawns and shrimp — see photos and preparations" onclick="abrirMenu('gambas')">
+      <div class="esp-thumb"><img alt="Gambas grelhadas" loading="lazy" src="media/gambas-1.jpg"><span class="esp-icon">🍤</span></div>
+      <div class="esp-body">
+        <div class="esp-name" data-i18n="esp_gambas_n">Prawns &amp; Shrimp</div>
+        <div class="esp-desc" data-i18n="esp_gambas_d">Grilled, al ajillo or "à guilho". Generous portions, as the south demands.</div>
+        <span class="esp-ver" data-i18n="esp_ver">See photos &amp; preparations</span>
+      </div>
+    </div>
+    <div class="esp-card" data-key="cataplana" role="button" tabindex="0" data-i18n-attr="aria-label:esp_cataplana_aria" aria-label="Cataplanas — see photos and preparations" onclick="abrirMenu('cataplana')">
+      <div class="esp-thumb"><img alt="Cataplana de marisco" loading="lazy" src="media/cataplana-1.jpg"><span class="esp-icon">🥘</span></div>
+      <div class="esp-body">
+        <div class="esp-name" data-i18n="esp_cataplana_n">Cataplanas</div>
+        <div class="esp-desc" data-i18n="esp_cataplana_d">Seafood, codfish or Algarve-style. Made to order — please request 1 day in advance.</div>
+        <span class="esp-ver" data-i18n="esp_ver">See photos &amp; preparations</span>
+      </div>
+    </div>
+    <div class="esp-card" data-key="peixe" role="button" tabindex="0" data-i18n-attr="aria-label:esp_peixe_aria" aria-label="Fish of the Day — see photos and preparations" onclick="abrirMenu('peixe')">
+      <div class="esp-thumb"><img alt="Peixe fresco grelhado" loading="lazy" src="media/peixe-1.jpg"><span class="esp-icon">🐟</span></div>
+      <div class="esp-body">
+        <div class="esp-name" data-i18n="esp_peixe_n">Fish of the Day</div>
+        <div class="esp-desc" data-i18n="esp_peixe_d">Chosen each morning at the market. Grilled just right, served with olive oil and garlic.</div>
+        <span class="esp-ver" data-i18n="esp_ver">See photos &amp; preparations</span>
+      </div>
+    </div>
+    <div class="esp-card" data-key="carne" role="button" tabindex="0" data-i18n-attr="aria-label:esp_carne_aria" aria-label="Meat Dishes — see photos and preparations" onclick="abrirMenu('carne')">
+      <div class="esp-thumb"><img alt="Espetada e pratos de carne" loading="lazy" src="media/carne-1.jpg"><span class="esp-icon">🥩</span></div>
+      <div class="esp-body">
+        <div class="esp-name" data-i18n="esp_carne_n">Meat Dishes</div>
+        <div class="esp-desc" data-i18n="esp_carne_d">For those who prefer land over sea. Classic Portuguese dishes with the quality of always.</div>
+        <span class="esp-ver" data-i18n="esp_ver">See photos &amp; preparations</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="esp-cta-wrap">
+    <a href="#menu" class="btn-galeria" data-i18n="esp_cta">See full menu →</a>
+  </div>
+</section>
+
+<!-- CARTA COMPLETA -->
+<section class="menu-completo" id="menu">
+  <div class="label" style="justify-content:center;" data-i18n="menu_label">The menu</div>
+  <h2 style="text-align:center;" data-i18n-html="menu_h2">Our<br><em>full menu.</em></h2>
+
+  <div class="menu-lang-toggle" role="group" aria-label="Idioma / Language">
+    <button class="mlt-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <button class="mlt-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+
+  <div class="menu-acc" id="menuAcc"><details class="menu-cat" open=""><summary><span class="cat-emoji">🥖</span> Couvert<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Bread</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Butter</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Sardine pâté</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Olives</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Fresh pâté</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Cheese</span></span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">🍤</span> Starters<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Garlic bread</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Soup of the day</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Tomato cream soup</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Fried shrimp with garlic</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Clams "Bulhão Pato"</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Mussels "Bulhão Pato"</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Mussels in tomato sauce</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Calamari</span></span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">🥗</span> Salads<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Small salad</span><span class="desc-pequena">1 person</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Tomato or lettuce salad</span><span class="desc-pequena">2 people</span></span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">🍟</span> Side Dishes<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Assorted sauces</span><span class="desc-pequena">mushroom, pepper, etc.</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">French fries</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Boiled potato</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Rice</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Boiled sweet potato</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Steamed fresh vegetables</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Fried egg</span></span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">🍢</span> Skewers of the Day<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Shrimp skewer</span><span class="desc-pequena">Made to order</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Chicken &amp; shrimp skewer</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Veal &amp; shrimp skewer</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Pork tenderloin &amp; shrimp skewer</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Cuttlefish &amp; shrimp skewer</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Monkfish &amp; shrimp skewer</span></span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">🐟</span> Fish<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Grilled codfish</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Grilled codfish — large fillet</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Codfish "à Brás"</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Sardines</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Algarve-style baby squid</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Tuna steak with onions</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Grilled tuna steak</span></span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">🥩</span> Meats<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Char-grilled pork tenderloin with piri-piri</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Pork tenderloin</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Pork "à alentejana" with clams</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Grilled pork pluma</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Lamb chops</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Guia-style chicken with fries</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Guia-style chicken, no fries</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Spaghetti bolognese</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">"São Martinho" steak</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Portuguese-style steak</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Pepper steak</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Steak with mushrooms</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Chicken steak with mushrooms</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Bitoque (steak, egg &amp; fries)</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Black pork strips</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Black pork "segredos"</span></span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">🦞</span> Tank · Live Seafood &amp; Fresh Fish<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Live seafood from the tank</span><span class="desc-pequena">Lobster, spiny lobster, brown crab, spider crab, prawns, shrimp — chosen at the display and weighed in front of you</span></span><span class="leader"></span><span class="preco">per kg</span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Fresh fish of the day</span><span class="desc-pequena">From our display, chosen at the counter</span></span><span class="leader"></span><span class="preco">per kg</span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">🥘</span> Cataplanas &amp; Seafood Rice<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Seafood cataplana</span><span class="desc-pequena">2 people · order 1 day before</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Codfish cataplana</span><span class="desc-pequena">2 people · order 1 day before</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Algarve cataplana w/ pork &amp; seafood</span><span class="desc-pequena">2 people · order 1 day before</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Seafood rice</span><span class="desc-pequena">2 people · order 1 day before</span></span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">🧂</span> Extras<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Mayonnaise</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Ketchup</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Mustard</span></span></div></div></details><details class="menu-cat"><summary><span class="cat-emoji">👶</span> Children's Menu<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><div class="menu-cat-body"><div class="menu-dish"><span class="nome-wrap"><span class="nome">Plated burger with egg and fries</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Fish fingers with rice or potato</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Chicken nuggets</span></span></div><div class="menu-dish"><span class="nome-wrap"><span class="nome">Calamari</span></span></div></div></details></div>
+
+    <p class="menu-note" id="menuNote">No prices on this menu — on purpose. The best of the sea is tasted first: live seafood and fresh fish are chosen at the display and weighed in front of you, at the daily price. You'll discover the prices at the table — and you'll like what you find. Book a table and come taste.</p>
+
+    <div class="menu-extra-cta">
+      <a href="tel:289561546" class="btn-hero" data-i18n="menu_cta">Book a table →</a>
+    </div>
+  
+</section>
+
+<!-- GALERIA CTA -->
+<section class="galeria-cta">
+  <div class="label" style="justify-content:center;" data-i18n="gal_label">Gallery</div>
+  <h2 data-i18n-html="gal_h2">See our<br><em>space and dishes.</em></h2>
+  <p class="body" data-i18n="gal_body">Real photos of the restaurant, the seafood and the dishes that leave our kitchen every day.</p>
+  <a class="btn-galeria" data-i18n="gal_btn" href="/galeria">See our Gallery →</a>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="label" data-i18n="rev_label">Reviews</div>
+  <h2 data-i18n-html="rev_h2">What our<br><em>guests say.</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="r-stars">★★★★★</div>
+      <div class="r-text">"The food is exceptional. I could not fault it. Portion size was perfect. The staff were really helpful and happy to discuss menu."</div>
+      <div class="r-author">Stephen Salmon · Google</div>
+    </div>
+    <div class="review-card">
+      <div class="r-stars">★★★★★</div>
+      <div class="r-text">"Lugar incrível! A comida é simplesmente deliciosa, preparada por ótimos cozinheiros. Dá pra sentir o cuidado e o sabor em cada prato."</div>
+      <div class="r-author">Soraia Almeida · Google</div>
+    </div>
+    <div class="review-card">
+      <div class="r-stars">★★★★★</div>
+      <div class="r-text">"Ambiente muito relaxante. A equipa é prestável e o peixe e marisco estão sempre no ponto. Voltamos sempre que estamos no Algarve."</div>
+      <div class="r-author">Cliente Google</div>
+    </div>
+  </div>
+  <p class="reviews-badge" data-i18n-html="rev_badge">Rated <strong>4.5 stars</strong> by <strong>700+ people</strong> on Google</p>
+</section>
+
+<!-- VISITA -->
+<section class="visita" id="visita">
+  <div class="label" data-i18n="vis_label">How to find us</div>
+  <h2 data-i18n-html="vis_h2">We're in<br><em>Guia, Algarve.</em></h2>
+  <div class="visita-grid">
+    <div>
+      <div class="info-row">
+        <div class="info-label" data-i18n="vis_morada">Address</div>
+        <div class="info-value">Sitio Tavagueira</div>
+        <div class="info-note">8200-425 Guia, Faro · Algarve</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label" data-i18n="vis_reservas">Reservations</div>
+        <div class="info-value"><a href="tel:289561546">289 561 546</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label" data-i18n="vis_horario">Opening hours</div>
+        <div class="info-value" data-i18n="vis_dias">Tuesday to Sunday</div>
+        <div class="info-note" data-i18n="vis_horas">Open from 12:00 · Closed on Mondays</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label" data-i18n="vis_servicos">Services</div>
+        <div class="info-value" data-i18n="vis_servicos_v">Terrace · Kids' menu · Take-away</div>
+      </div>
+    </div>
+    <div class="map-card">
+      <iframe src="https://maps.google.com/maps?q=Restaurante%20S%C3%A3o%20Martinho%20Tavagueira%20Guia%20Algarve&amp;output=embed&amp;hl=pt&amp;z=16" title="Localização Restaurante São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Restaurante%20S%C3%A3o%20Martinho%20Tavagueira%20Guia%20Algarve" target="_blank" rel="noopener" class="map-card-link" data-i18n="vis_maps">Open in Maps →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">São <span>Martinho</span></div>
+    <div class="footer-sub" data-i18n="tagline">Traditional Portuguese Restaurant · Guia · Algarve</div>
+  </div>
+  <div class="footer-links">
+    <a class="footer-btn footer-btn-gallery" href="/galeria">
+      📷 <span data-i18n="footer_gal">View Gallery</span>
+    </a>
+    <a href="https://www.facebook.com/restaurantesaomartinho" target="_blank" rel="noopener" class="footer-btn footer-btn-fb">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+      Facebook
+    </a>
+    <div class="footer-fb-note" data-i18n="footer_fb">Daily menu posted on Facebook</div>
+  </div>
+  <div class="footer-right">
+    <a href="tel:289561546" class="footer-tel">289 561 546</a>
+    <div class="footer-addr">Sitio Tavagueira · 8200-425 Guia</div>
+  </div>
+  <div class="footer-credit">
+    <span class="fc-label" data-i18n="footer_partner">Partnership</span>
+    <a href="https://www.instagram.com/pachecostudiospt/" target="_blank" rel="noopener" class="fc-link" aria-label="Pacheco Studios no Instagram — abre noutro separador">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.8.25 2.23.42.56.21.96.47 1.38.89.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.43-.36-1.06-.42-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.06-1.17.25-1.8.42-2.23.21-.56.47-.96.89-1.38.42-.42.82-.68 1.38-.89.43-.17 1.06-.36 2.23-.42C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.8-.32 1.7-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.9.19 1.38.32 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.8.28 1.7.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.8-.28-1.7-.32-1.24-.06-1.59-.07-4.74-.07zm0 2.76a5.46 5.46 0 1 1 0 10.92 5.46 5.46 0 0 1 0-10.92zm0 1.62a3.84 3.84 0 1 0 0 7.68 3.84 3.84 0 0 0 0-7.68zm5.65-2.9a1.28 1.28 0 1 1 0 2.56 1.28 1.28 0 0 1 0-2.56z"></path></svg>
+      Pacheco Studios
+    </a>
+  </div>
+</footer>
+
+<!-- MENU MODAL -->
+<div id="menuOverlay" class="menu-overlay" onclick="fecharMenu(event)">
+  <div class="menu-modal" onclick="event.stopPropagation()">
+    <button class="menu-fechar" onclick="fecharMenu(null)">✕</button>
+
+    <div class="menu-galeria">
+      <div class="menu-galeria-track" id="galeriaTrack"></div>
+      <div class="gal-contador" id="galContador">1 / 3</div>
+      <button class="gal-arrow gal-prev" onclick="galeriaNav(-1)">‹</button>
+      <button class="gal-arrow gal-next" onclick="galeriaNav(1)">›</button>
+      <div class="gal-dots" id="galDots"></div>
+    </div>
+
+    <div class="menu-info">
+      <div class="menu-topo">
+        <span class="menu-emoji" id="modalIcon"></span>
+        <div>
+          <h3 class="menu-titulo" id="modalNome"></h3>
+          <div class="menu-preco-wrap">
+            <div class="menu-preco" id="modalPreco"></div>
+            <div class="menu-preco-label" id="modalPrecoLabel"></div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-sep"></div>
+      <p class="menu-descricao" id="modalDesc"></p>
+      <div>
+        <div class="menu-preps-label" data-i18n="modal_preps">Available preparations</div>
+        <div id="modalPreps"></div>
+      </div>
+      <a href="tel:289561546" class="menu-cta" data-i18n="modal_cta">Book a Table →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── Bolhas ── */
+const container = document.getElementById('bubbles');
+for (let i = 0; i < 28; i++) {
+  const b = document.createElement('div');
+  b.className = 'bubble';
+  const size = Math.random() * 40 + 8;
+  b.style.cssText = `
+    width: ${size}px; height: ${size}px;
+    left: ${Math.random() * 100}%;
+    animation-duration: ${Math.random() * 12 + 8}s;
+    animation-delay: ${Math.random() * 10}s;
+  `;
+  container.appendChild(b);
+}
+
+/* ── Menu mobile (hambúrguer) ── */
+const navToggle = document.getElementById('navToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+function alternarMenuMobile(fechar) {
+  const abrir = fechar ? false : !mobileMenu.classList.contains('aberto');
+  mobileMenu.classList.toggle('aberto', abrir);
+  navToggle.classList.toggle('aberto', abrir);
+  navToggle.setAttribute('aria-expanded', String(abrir));
+  navToggle.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu');
+  mobileMenu.setAttribute('aria-hidden', String(!abrir));
+  document.body.style.overflow = abrir ? 'hidden' : '';
+}
+navToggle.addEventListener('click', () => alternarMenuMobile());
+mobileMenu.querySelectorAll('.mm-link, .mm-cta').forEach(a =>
+  a.addEventListener('click', () => alternarMenuMobile(true))
+);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('aberto')) alternarMenuMobile(true);
+});
+
+/* ── Menu Modal ── */
+const MENU = {
+  lavagante: {
+    icon: '🦞',
+    nome: {pt:'Lavagante', en:'Lobster'},
+    tag: {pt:'ao kg · preço do dia', en:'per kg · daily price'},
+    desc: {pt:'A estrela do aquário — sempre vivo até ao momento da preparação, garantia de frescura absoluta. Servido inteiro, é o prato mais icónico do São Martinho.',
+           en:'The star of the tank — alive until the moment it is cooked, for absolute freshness. Served whole, it is the most iconic dish at São Martinho.'},
+    preps: {pt:['Grelhado com manteiga e alho', 'À termidor (molho cremoso)', 'Na cataplana com marisco', 'Com arroz de marisco da casa'],
+            en:['Grilled with butter and garlic', 'Thermidor (creamy sauce)', 'In a cataplana with seafood', 'With the house seafood rice']},
+    fotos: ['media/lavagante-1.jpg','media/lavagante-2.jpg','media/lavagante-3.jpg']
+  },
+  sapateira: {
+    icon: '🦀',
+    nome: {pt:'Sapateira & Santola', en:'Brown & Spider Crab'},
+    tag: {pt:'ao kg · preço do dia', en:'per kg · daily price'},
+    desc: {pt:'Recheada com a receita da casa ou ao natural com limão. Um clássico algarvio que nunca desaponta — a recheada com os nossos temperos é especial.',
+           en:'Stuffed with our house recipe or served natural with lemon. An Algarve classic that never disappoints — our stuffed version is something special.'},
+    preps: {pt:['Recheada com receita da casa', 'Ao natural com limão', 'Sapateira inteira partilhada', 'Santola na frigideira'],
+            en:['Stuffed with the house recipe', 'Natural with lemon', 'Whole crab to share', 'Spider crab in the pan']},
+    fotos: ['media/sapateira-1.jpg','media/sapateira-2.jpg','media/sapateira-3.jpg']
+  },
+  gambas: {
+    icon: '🍤',
+    nome: {pt:'Gambas & Camarão', en:'Prawns & Shrimp'},
+    tag: {pt:'ao kg · preço do dia', en:'per kg · daily price'},
+    desc: {pt:'Porções generosas como manda a tradição do sul. Al ajillo ou à guilho, o molho é para molhar o pão. Camarão fresco e gambas grandes — há diferença.',
+           en:'Generous portions, as the south demands. Al ajillo or "à guilho", with a sauce made for dipping bread. Fresh shrimp and large prawns — you can taste the difference.'},
+    preps: {pt:['Al ajillo (azeite, alho, malagueta)', 'À guilho com coentros', 'Grelhadas na brasa', 'Na frigideira com manteiga'],
+            en:['Al ajillo (olive oil, garlic, chilli)', '"À guilho" with coriander', 'Char-grilled', 'Pan-fried with butter']},
+    fotos: ['media/gambas-1.jpg','media/gambas-2.jpg','media/gambas-3.jpg']
+  },
+  cataplana: {
+    icon: '🥘',
+    nome: {pt:'Cataplanas', en:'Cataplanas'},
+    tag: {pt:'Por encomenda · 2 pessoas', en:'By order · 2 people'},
+    desc: {pt:'O ex-líbris da casa, servido na cataplana de cobre. De marisco, de bacalhau ou algarvia com lombinho de porco e marisco. Confecionada a pedido — encomende com 1 dia de antecedência.',
+           en:'Our signature dish, served in the copper cataplana. Seafood, codfish, or Algarve-style with pork tenderloin and seafood. Made to order — please request 1 day in advance.'},
+    preps: {pt:['Cataplana de marisco', 'Cataplana de bacalhau', 'Cataplana algarvia c/ lombinho de porco e marisco', 'Arroz de marisco da casa'],
+            en:['Seafood cataplana', 'Codfish cataplana', 'Algarve cataplana w/ pork tenderloin & seafood', 'House seafood rice']},
+    fotos: ['media/cataplana-1.jpg','media/cataplana-2.jpg','media/cataplana-3.jpg']
+  },
+  peixe: {
+    icon: '🐟',
+    nome: {pt:'Peixe do Dia', en:'Fish of the Day'},
+    tag: {pt:'ao kg · preço do dia', en:'per kg · daily price'},
+    desc: {pt:'Escolhido de manhã na lota — o que o Atlântico der nesse dia é o que serve. Dourada, robalo, cherne, pargo. Grelhado e regado com azeite, alho e coentros.',
+           en:'Chosen each morning at the fish market — whatever the Atlantic brings that day. Sea bream, sea bass, grouper, snapper. Grilled and finished with olive oil, garlic and coriander.'},
+    preps: {pt:['Grelhado na brasa', 'No forno com batatas e tomate', 'À padeiro', 'Sal grosso (peixe inteiro)'],
+            en:['Char-grilled', 'Baked with potatoes and tomato', '"À padeiro" (baker style)', 'In rock salt (whole fish)']},
+    fotos: ['media/peixe-1.jpg','media/peixe-2.jpg','media/peixe-3.jpg']
+  },
+  carne: {
+    icon: '🥩',
+    nome: {pt:'Pratos de Carne', en:'Meat Dishes'},
+    tag: null,
+    desc: {pt:'Para quem prefere terra ao mar. Pratos portugueses de qualidade com os acompanhamentos de sempre — arroz, batatas fritas e salada. Sem complicações.',
+           en:'For those who prefer land over sea. Quality Portuguese dishes with the classic sides — rice, fries and salad. Honest and simple.'},
+    preps: {pt:['Bife à São Martinho', 'Costeletas de borrego na brasa', 'Frango à Guia no churrasco', 'Secretos de porco preto'],
+            en:['"São Martinho" steak', 'Char-grilled lamb chops', 'Guia-style grilled chicken', 'Black pork "secretos"']},
+    fotos: ['media/carne-1.jpg','media/carne-2.jpg','media/carne-3.jpg']
+  },
+};
+
+/* Preencher miniaturas dos cartões a partir do MENU (fonte única de fotos) */
+document.querySelectorAll('.esp-card[data-key]').forEach(card => {
+  const k = card.dataset.key;
+  const img = card.querySelector('.esp-thumb img');
+  if (img && MENU[k] && MENU[k].fotos && MENU[k].fotos[0]) {
+    const thumb = img.parentElement;
+    img.onerror = () => { img.remove(); thumb.classList.add('no-img'); };
+    img.src = MENU[k].fotos[0];
+  } else if (img) {
+    img.parentElement.classList.add('no-img');
+    img.remove();
+  }
+  // Acessibilidade: abrir com Enter / Espaço
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirMenu(k); }
+  });
+});
+
+let galIdx = 0;
+let galTotal = 0;
+let modalKeyAberto = null;
+
+function abrirMenu(key) {
+  const d = MENU[key];
+  if (!d) return;
+  const lang = currentLang;
+
+  // Preencher info
+  document.getElementById('modalIcon').textContent = d.icon;
+  document.getElementById('modalNome').textContent = d.nome[lang];
+  const precoEl = document.getElementById('modalPreco');
+  const precoWrap = document.querySelector('.menu-preco-wrap');
+  if (d.tag) { precoEl.textContent = d.tag[lang]; precoEl.classList.add('is-tag'); precoWrap.style.display = ''; }
+  else { precoEl.textContent = ''; precoWrap.style.display = 'none'; }
+  document.getElementById('modalPrecoLabel').textContent = '';
+  document.getElementById('modalDesc').textContent = d.desc[lang];
+  modalKeyAberto = key;
+
+  // Preparações
+  const prepsEl = document.getElementById('modalPreps');
+  prepsEl.innerHTML = d.preps[lang].map(p => `<div class="menu-prep-item">${p}</div>`).join('');
+
+  // Galeria
+  const track = document.getElementById('galeriaTrack');
+  const temFotos = d.fotos && d.fotos.length > 0;
+  document.querySelector('.menu-galeria').classList.toggle('sem-fotos', !temFotos);
+  if (temFotos) {
+    track.innerHTML = d.fotos.map(src =>
+      `<img src="${src}" alt="${d.nome[lang]}" loading="lazy" onerror="this.classList.add('foto-fail')">`
+    ).join('');
+    document.getElementById('galDots').innerHTML = d.fotos.map((_, i) =>
+      `<div class="gal-dot${i === 0 ? ' ativo' : ''}" onclick="irParaFoto(${i})"></div>`
+    ).join('');
+  } else {
+    track.innerHTML = `<div class="gal-placeholder"><span class="gal-ph-emoji">${d.icon}</span><span class="gal-ph-txt">Fotografia em breve</span></div>`;
+    document.getElementById('galDots').innerHTML = '';
+  }
+
+  galIdx = 0;
+  galTotal = temFotos ? d.fotos.length : 0;
+  atualizarGaleria();
+
+  // Abrir overlay
+  const overlay = document.getElementById('menuOverlay');
+  overlay.classList.add('aberto');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharMenu(e) {
+  if (e && e.target !== document.getElementById('menuOverlay')) return;
+  document.getElementById('menuOverlay').classList.remove('aberto');
+  document.body.style.overflow = '';
+}
+
+function galeriaNav(dir) {
+  galIdx = (galIdx + dir + galTotal) % galTotal;
+  atualizarGaleria();
+}
+
+function irParaFoto(i) {
+  galIdx = i;
+  atualizarGaleria();
+}
+
+function atualizarGaleria() {
+  document.getElementById('galeriaTrack').style.transform = `translateX(-${galIdx * 100}%)`;
+  document.getElementById('galContador').textContent = galTotal ? `${galIdx + 1} / ${galTotal}` : '';
+  document.querySelectorAll('.gal-dot').forEach((d, i) =>
+    d.classList.toggle('ativo', i === galIdx)
+  );
+}
+
+// Fechar com ESC, navegar com setas
+document.addEventListener('keydown', e => {
+  const overlay = document.getElementById('menuOverlay');
+  if (!overlay.classList.contains('aberto')) return;
+  if (e.key === 'Escape') fecharMenu(null);
+  if (e.key === 'ArrowLeft') galeriaNav(-1);
+  if (e.key === 'ArrowRight') galeriaNav(1);
+});
+
+// Swipe tátil na galeria do modal (mobile)
+const galeriaEl = document.querySelector('.menu-galeria');
+let touchX = null;
+galeriaEl.addEventListener('touchstart', e => { touchX = e.changedTouches[0].clientX; }, { passive: true });
+galeriaEl.addEventListener('touchend', e => {
+  if (touchX === null || galTotal < 2) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 40) galeriaNav(dx < 0 ? 1 : -1);
+  touchX = null;
+}, { passive: true });
+
+/* ── Carta (PT/EN) — sem preços, exceto itens ao quilo ── */
+const MENU_DATA = [
+  {emoji:'🥖', open:true, t:{pt:'Couvert', en:'Couvert'}, items:[
+    {n:{pt:'Pão', en:'Bread'}},
+    {n:{pt:'Manteiga', en:'Butter'}},
+    {n:{pt:'Paté de sardinha', en:'Sardine pâté'}},
+    {n:{pt:'Azeitonas', en:'Olives'}},
+    {n:{pt:'Paté fresco', en:'Fresh pâté'}},
+    {n:{pt:'Queijo', en:'Cheese'}},
+  ]},
+  {emoji:'🍤', t:{pt:'Entradas', en:'Starters'}, items:[
+    {n:{pt:'Pão de alho', en:'Garlic bread'}},
+    {n:{pt:'Sopa do dia', en:'Soup of the day'}},
+    {n:{pt:'Creme de tomate', en:'Tomato cream soup'}},
+    {n:{pt:'Camarão frito com alho', en:'Fried shrimp with garlic'}},
+    {n:{pt:'Amêijoas à Bulhão Pato', en:'Clams "Bulhão Pato"'}},
+    {n:{pt:'Mexilhão à Bulhão Pato', en:'Mussels "Bulhão Pato"'}},
+    {n:{pt:'Mexilhão à tomatada', en:'Mussels in tomato sauce'}},
+    {n:{pt:'Calamares', en:'Calamari'}},
+  ]},
+  {emoji:'🥗', t:{pt:'Saladas', en:'Salads'}, items:[
+    {n:{pt:'Salada pequena', en:'Small salad'}, d:{pt:'1 pessoa', en:'1 person'}},
+    {n:{pt:'Salada de tomate ou alface', en:'Tomato or lettuce salad'}, d:{pt:'2 pessoas', en:'2 people'}},
+  ]},
+  {emoji:'🍟', t:{pt:'Acompanhamentos', en:'Side Dishes'}, items:[
+    {n:{pt:'Molhos diversos', en:'Assorted sauces'}, d:{pt:'cogumelos, pimenta, etc.', en:'mushroom, pepper, etc.'}},
+    {n:{pt:'Batata frita', en:'French fries'}},
+    {n:{pt:'Batata cozida', en:'Boiled potato'}},
+    {n:{pt:'Arroz', en:'Rice'}},
+    {n:{pt:'Batata-doce cozida', en:'Boiled sweet potato'}},
+    {n:{pt:'Legumes frescos cozidos', en:'Steamed fresh vegetables'}},
+    {n:{pt:'Ovo estrelado', en:'Fried egg'}},
+  ]},
+  {emoji:'🍢', t:{pt:'Espetadas do Dia', en:'Skewers of the Day'}, items:[
+    {n:{pt:'Espetada de camarão', en:'Shrimp skewer'}, d:{pt:'Feitas no momento', en:'Made to order'}},
+    {n:{pt:'Espetada de frango com camarão', en:'Chicken & shrimp skewer'}},
+    {n:{pt:'Espetada de vitela com camarão', en:'Veal & shrimp skewer'}},
+    {n:{pt:'Espetada de lombinho de porco com camarão', en:'Pork tenderloin & shrimp skewer'}},
+    {n:{pt:'Espetada de choco com camarão', en:'Cuttlefish & shrimp skewer'}},
+    {n:{pt:'Espetada de tamboril com camarão', en:'Monkfish & shrimp skewer'}},
+  ]},
+  {emoji:'🐟', t:{pt:'Peixe', en:'Fish'}, items:[
+    {n:{pt:'Bacalhau grelhado', en:'Grilled codfish'}},
+    {n:{pt:'Bacalhau grelhado — posta grande', en:'Grilled codfish — large fillet'}},
+    {n:{pt:'Bacalhau à Brás', en:'Codfish "à Brás"'}},
+    {n:{pt:'Sardinhas', en:'Sardines'}},
+    {n:{pt:'Lulinhas à algarvia', en:'Algarve-style baby squid'}},
+    {n:{pt:'Bife de atum de cebolada', en:'Tuna steak with onions'}},
+    {n:{pt:'Bife de atum grelhado', en:'Grilled tuna steak'}},
+  ]},
+  {emoji:'🥩', t:{pt:'Carnes', en:'Meats'}, items:[
+    {n:{pt:'Lombinhos de porco na brasa com piri-piri', en:'Char-grilled pork tenderloin with piri-piri'}},
+    {n:{pt:'Lombinhos de porco', en:'Pork tenderloin'}},
+    {n:{pt:'Carne de porco à alentejana', en:'Pork "à alentejana" with clams'}},
+    {n:{pt:'Pluma grelhada', en:'Grilled pork pluma'}},
+    {n:{pt:'Costeletas de borrego', en:'Lamb chops'}},
+    {n:{pt:'Frango à Guia com batata frita', en:'Guia-style chicken with fries'}},
+    {n:{pt:'Frango à Guia sem batata frita', en:'Guia-style chicken, no fries'}},
+    {n:{pt:'Esparguete à bolonhesa', en:'Spaghetti bolognese'}},
+    {n:{pt:'Bife à São Martinho', en:'"São Martinho" steak'}},
+    {n:{pt:'Bife à portuguesa', en:'Portuguese-style steak'}},
+    {n:{pt:'Bife à pimenta', en:'Pepper steak'}},
+    {n:{pt:'Bife com cogumelos', en:'Steak with mushrooms'}},
+    {n:{pt:'Bife de frango com cogumelos', en:'Chicken steak with mushrooms'}},
+    {n:{pt:'Bitoque', en:'Bitoque (steak, egg & fries)'}},
+    {n:{pt:'Lagartinhos de porco preto', en:'Black pork strips'}},
+    {n:{pt:'Segredos de porco preto', en:'Black pork "segredos"'}},
+  ]},
+  {emoji:'🦞', t:{pt:'Aquário · Marisco Vivo & Peixe Fresco', en:'Tank · Live Seafood & Fresh Fish'}, items:[
+    {n:{pt:'Marisco vivo do aquário', en:'Live seafood from the tank'}, d:{pt:'Lavagante, lagosta, sapateira, santola, gambas, camarão — escolhido na vitrine e pesado à sua frente', en:'Lobster, spiny lobster, brown crab, spider crab, prawns, shrimp — chosen at the display and weighed in front of you'}, p:{pt:'ao kg', en:'per kg'}},
+    {n:{pt:'Peixe fresco do dia', en:'Fresh fish of the day'}, d:{pt:'Da nossa vitrine, escolhido ao balcão', en:'From our display, chosen at the counter'}, p:{pt:'ao kg', en:'per kg'}},
+  ]},
+  {emoji:'🥘', t:{pt:'Cataplanas & Arroz de Marisco', en:'Cataplanas & Seafood Rice'}, items:[
+    {n:{pt:'Cataplana de marisco', en:'Seafood cataplana'}, d:{pt:'2 pessoas · encomendar 1 dia antes', en:'2 people · order 1 day before'}},
+    {n:{pt:'Cataplana de bacalhau', en:'Codfish cataplana'}, d:{pt:'2 pessoas · encomendar 1 dia antes', en:'2 people · order 1 day before'}},
+    {n:{pt:'Cataplana algarvia c/ lombinho de porco e marisco', en:'Algarve cataplana w/ pork & seafood'}, d:{pt:'2 pessoas · encomendar 1 dia antes', en:'2 people · order 1 day before'}},
+    {n:{pt:'Arroz de marisco', en:'Seafood rice'}, d:{pt:'2 pessoas · encomendar 1 dia antes', en:'2 people · order 1 day before'}},
+  ]},
+  {emoji:'🧂', t:{pt:'Extras', en:'Extras'}, items:[
+    {n:{pt:'Maionese', en:'Mayonnaise'}},
+    {n:{pt:'Ketchup', en:'Ketchup'}},
+    {n:{pt:'Mostarda', en:'Mustard'}},
+  ]},
+  {emoji:'👶', t:{pt:'Menu Criança', en:"Children's Menu"}, items:[
+    {n:{pt:'Hambúrguer no prato com ovo e batata', en:'Plated burger with egg and fries'}},
+    {n:{pt:'Douradinhos com arroz ou batata', en:'Fish fingers with rice or potato'}},
+    {n:{pt:'Nuggets de frango', en:'Chicken nuggets'}},
+    {n:{pt:'Calamares', en:'Calamari'}},
+  ]},
+];
+const MENU_NOTE = {
+  pt: 'Sem preços nesta carta — de propósito. O melhor do mar prova-se primeiro: o marisco vivo e o peixe fresco são escolhidos na vitrine e pesados à sua frente, ao preço do dia. Os valores, descobre-os à mesa — e vai gostar do que encontra. Reserve e venha provar.',
+  en: 'No prices on this menu — on purpose. The best of the sea is tasted first: live seafood and fresh fish are chosen at the display and weighed in front of you, at the daily price. You\'ll discover the prices at the table — and you\'ll like what you find. Book a table and come taste.'
+};
+const CHEV = '<svg class="cat-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+function renderMenu(lang){
+  const acc=document.getElementById('menuAcc'); if(!acc) return;
+  acc.innerHTML = MENU_DATA.map((cat)=>{
+    const items = cat.items.map(it=>{
+      const desc = it.d ? '<span class="desc-pequena">'+it.d[lang]+'</span>' : '';
+      let priceHtml = '';
+      if (it.p){ const pr=(typeof it.p==='object')?it.p[lang]:it.p; priceHtml='<span class="leader"></span><span class="preco">'+pr+'</span>'; }
+      return '<div class="menu-dish"><span class="nome-wrap"><span class="nome">'+it.n[lang]+'</span>'+desc+'</span>'+priceHtml+'</div>';
+    }).join('');
+    return '<details class="menu-cat"'+(cat.open?' open':'')+'><summary><span class="cat-emoji">'+cat.emoji+'</span> '+cat.t[lang]+CHEV+'</summary><div class="menu-cat-body">'+items+'</div></details>';
+  }).join('');
+  const note=document.getElementById('menuNote'); if(note) note.textContent = MENU_NOTE[lang];
+}
+
+/* ── i18n da página inteira (PT/EN) ── */
+const I18N = {
+  pt: {
+    tagline:'Restaurante Tradicional Português · Guia · Algarve',
+    rating:'<strong>4,5</strong> · 700+ opiniões Google',
+    nav_aquario:'Aquário', nav_especialidades:'Especialidades', nav_carta:'Carta', nav_galeria:'Galeria', nav_visita:'Visita', nav_reservar:'Reservar',
+    nav_gal_aria:'Ver a galeria de fotos e vídeos',
+    mm_cta:'Reservar · 289 561 546',
+    mm_addr:'Sitio Tavagueira · 8200-425 Guia<br>Terça a domingo, a partir das 12h00',
+    hero_sub:'Do aquário à mesa — marisco vivo, sabor intenso. Uma experiência que começa antes de sentar.',
+    hero_call:'Ligar agora', hero_see:'Ver especialidades',
+    strip_marisco:'Marisco vivo', strip_aquario:'Aquário próprio', strip_esplanada:'Esplanada', strip_infantil:'Menu infantil', strip_takeaway:'Take-away',
+    aq_label:'O nosso diferencial',
+    aq_h2:'Marisco vivo,<br><em>todos os dias.</em>',
+    aq_p1:'Temos o nosso próprio aquário onde o marisco do dia é guardado vivo até chegar ao seu prato. Não há marisco mais fresco do que aquele que ainda estava vivo há minutos.',
+    aq_p2:'Do lavagante à santola, da gamba à lagosta — tudo escolhido e preparado no momento. Isso é o que faz a diferença.',
+    aq_highlight:'Aquário próprio com marisco do dia',
+    aq_visual:'Do mar à sua mesa, hoje.',
+    esp_label:'O que servimos',
+    esp_h2:'Especialidades<br><em>da casa.</em>',
+    esp_ver:'Ver fotos e preparações', esp_cta:'Ver carta completa →',
+    esp_lavagante_n:'Lavagante', esp_lavagante_d:'A estrela do aquário. Servido grelhado ou à termidor — sempre vivo até ser preparado.', esp_lavagante_aria:'Lavagante — ver fotos e preparações',
+    esp_sapateira_n:'Sapateira & Santola', esp_sapateira_d:'Recheadas ou ao natural. Um clássico algarvio que nunca decepciona na nossa mesa.', esp_sapateira_aria:'Sapateira e Santola — ver fotos e preparações',
+    esp_gambas_n:'Gambas & Camarão', esp_gambas_d:'Grelhados, al ajillo ou à guilho. Porções generosas como manda a tradição do sul.', esp_gambas_aria:'Gambas e Camarão — ver fotos e preparações',
+    esp_cataplana_n:'Cataplanas', esp_cataplana_d:'De marisco, de bacalhau ou algarvia. Confecionadas a pedido — encomende com 1 dia de antecedência.', esp_cataplana_aria:'Cataplanas — ver fotos e preparações',
+    esp_peixe_n:'Peixe do Dia', esp_peixe_d:'Escolhido de manhã no mercado. Grelhado no ponto certo, servido com azeite e alho.', esp_peixe_aria:'Peixe do Dia — ver fotos e preparações',
+    esp_carne_n:'Pratos de Carne', esp_carne_d:'Para quem prefere terra ao mar. Pratos típicos portugueses com a qualidade de sempre.', esp_carne_aria:'Pratos de Carne — ver fotos e preparações',
+    menu_label:'A carta', menu_h2:'A nossa<br><em>carta completa.</em>', menu_cta:'Reservar mesa →',
+    gal_label:'Galeria', gal_h2:'Veja o nosso<br><em>espaço e pratos.</em>', gal_body:'Fotos reais do restaurante, do marisco e dos pratos que saem da nossa cozinha todos os dias.', gal_btn:'Veja a nossa Galeria →',
+    rev_label:'Opiniões', rev_h2:'O que dizem<br><em>os nossos clientes.</em>', rev_badge:'Avaliado com <strong>4,5 estrelas</strong> por <strong>700+ pessoas</strong> no Google',
+    vis_label:'Como chegar', vis_h2:'Estamos em<br><em>Guia, Algarve.</em>',
+    vis_morada:'Morada', vis_reservas:'Reservas', vis_horario:'Horário', vis_dias:'Terça a Domingo', vis_horas:'Aberto a partir das 12h00 · Encerrado à segunda-feira', vis_servicos:'Serviços', vis_servicos_v:'Esplanada · Menu infantil · Take-away', vis_maps:'Abrir no Maps →',
+    footer_gal:'Ver Galeria', footer_fb:'Menu do dia publicado no Facebook', footer_partner:'Parceria',
+    modal_preps:'Preparações disponíveis', modal_cta:'Reservar Mesa →',
+    snd_aria:'Música ambiente do site', snd_title:'Música ambiente', snd_fado:'Fado · Guitarra portuguesa', snd_flamenco:'Guitarra espanhola · Flamenco', snd_off:'Desligar som', snd_hint:'Desfrute da nossa música',
+  },
+  en: {
+    tagline:'Traditional Portuguese Restaurant · Guia · Algarve',
+    rating:'<strong>4.5</strong> · 700+ Google reviews',
+    nav_aquario:'The Tank', nav_especialidades:'Specialties', nav_carta:'Menu', nav_galeria:'Gallery', nav_visita:'Visit', nav_reservar:'Book',
+    nav_gal_aria:'See the photo and video gallery',
+    mm_cta:'Book · 289 561 546',
+    mm_addr:'Sitio Tavagueira · 8200-425 Guia<br>Tuesday to Sunday, from 12:00',
+    hero_sub:'From the tank to your table — live seafood, intense flavour. An experience that begins before you sit down.',
+    hero_call:'Call now', hero_see:'See specialties',
+    strip_marisco:'Live seafood', strip_aquario:'Our own tank', strip_esplanada:'Terrace', strip_infantil:"Kids' menu", strip_takeaway:'Take-away',
+    aq_label:'What sets us apart',
+    aq_h2:'Live seafood,<br><em>every day.</em>',
+    aq_p1:'We have our own tank where the day\'s seafood is kept alive until it reaches your plate. There is no fresher seafood than the kind that was alive minutes ago.',
+    aq_p2:'From lobster to spider crab, from prawns to spiny lobster — everything is chosen and prepared on the spot. That is what makes the difference.',
+    aq_highlight:'Our own tank with the day\'s seafood',
+    aq_visual:'From the sea to your table, today.',
+    esp_label:'What we serve',
+    esp_h2:'House<br><em>specialties.</em>',
+    esp_ver:'See photos & preparations', esp_cta:'See full menu →',
+    esp_lavagante_n:'Lobster', esp_lavagante_d:'The star of the tank. Served grilled or thermidor — always alive until it is cooked.', esp_lavagante_aria:'Lobster — see photos and preparations',
+    esp_sapateira_n:'Brown & Spider Crab', esp_sapateira_d:'Stuffed or natural. An Algarve classic that never disappoints at our table.', esp_sapateira_aria:'Brown and spider crab — see photos and preparations',
+    esp_gambas_n:'Prawns & Shrimp', esp_gambas_d:'Grilled, al ajillo or "à guilho". Generous portions, as the south demands.', esp_gambas_aria:'Prawns and shrimp — see photos and preparations',
+    esp_cataplana_n:'Cataplanas', esp_cataplana_d:'Seafood, codfish or Algarve-style. Made to order — please request 1 day in advance.', esp_cataplana_aria:'Cataplanas — see photos and preparations',
+    esp_peixe_n:'Fish of the Day', esp_peixe_d:'Chosen each morning at the market. Grilled just right, served with olive oil and garlic.', esp_peixe_aria:'Fish of the Day — see photos and preparations',
+    esp_carne_n:'Meat Dishes', esp_carne_d:'For those who prefer land over sea. Classic Portuguese dishes with the quality of always.', esp_carne_aria:'Meat Dishes — see photos and preparations',
+    menu_label:'The menu', menu_h2:'Our<br><em>full menu.</em>', menu_cta:'Book a table →',
+    gal_label:'Gallery', gal_h2:'See our<br><em>space and dishes.</em>', gal_body:'Real photos of the restaurant, the seafood and the dishes that leave our kitchen every day.', gal_btn:'See our Gallery →',
+    rev_label:'Reviews', rev_h2:'What our<br><em>guests say.</em>', rev_badge:'Rated <strong>4.5 stars</strong> by <strong>700+ people</strong> on Google',
+    vis_label:'How to find us', vis_h2:'We\'re in<br><em>Guia, Algarve.</em>',
+    vis_morada:'Address', vis_reservas:'Reservations', vis_horario:'Opening hours', vis_dias:'Tuesday to Sunday', vis_horas:'Open from 12:00 · Closed on Mondays', vis_servicos:'Services', vis_servicos_v:"Terrace · Kids' menu · Take-away", vis_maps:'Open in Maps →',
+    footer_gal:'View Gallery', footer_fb:'Daily menu posted on Facebook', footer_partner:'Partnership',
+    modal_preps:'Available preparations', modal_cta:'Book a Table →',
+    snd_aria:'Site background music', snd_title:'Background music', snd_fado:'Fado · Portuguese guitar', snd_flamenco:'Spanish guitar · Flamenco', snd_off:'Turn off sound', snd_hint:'Enjoy our music',
+  }
+};
+let currentLang = 'pt';
+function applyLang(lang){
+  const dict = I18N[lang] || I18N.pt;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ const v=dict[el.getAttribute('data-i18n')]; if(v!=null) el.textContent=v; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{ const v=dict[el.getAttribute('data-i18n-html')]; if(v!=null) el.innerHTML=v; });
+  document.querySelectorAll('[data-i18n-attr]').forEach(el=>{
+    el.getAttribute('data-i18n-attr').split(';').forEach(pair=>{
+      const idx=pair.indexOf(':'); if(idx<0) return;
+      const attr=pair.slice(0,idx).trim(), key=pair.slice(idx+1).trim();
+      const v=dict[key]; if(v!=null) el.setAttribute(attr, v);
+    });
+  });
+}
+function setLang(lang){
+  if(lang!=='pt' && lang!=='en') lang='pt';
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  applyLang(lang);
+  renderMenu(lang);
+  document.querySelectorAll('.lang-btn').forEach(b=>{ b.textContent = lang==='pt' ? 'EN' : 'PT'; });
+  document.querySelectorAll('.mlt-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  if(modalKeyAberto && document.getElementById('menuOverlay').classList.contains('aberto')) abrirMenu(modalKeyAberto);
+  try{ localStorage.setItem('sm_lang', lang); }catch(e){}
+}
+function toggleLang(){ setLang(currentLang==='pt' ? 'en' : 'pt'); }
+(function initLang(){
+  let saved=null; try{ saved=localStorage.getItem('sm_lang'); }catch(e){}
+  const auto=(navigator.language||'pt').toLowerCase().startsWith('en')?'en':'pt';
+  setLang(saved||auto);
+})();
+
+/* ── Música ambiente (2 faixas · animar desde o load · tocar · parado só ao desligar) ── */
+const AUDIO_TRACKS = { fado:'media/musica-fado.mp3', flamenco:'media/musica-flamenco.mp3' };
+let bgAudio=null, curTrack=null, sndState='hint', soundPlaying=false;   /* sndState: 'hint' | 'on' | 'off' */
+function ensureAudio(){ if(!bgAudio){ bgAudio=new Audio(); bgAudio.loop=true; bgAudio.preload='none'; bgAudio.volume=0.38; } return bgAudio; }
+function updateSoundUI(){
+  const anim = sndState!=='off';
+  document.querySelectorAll('.snd-btn').forEach(b=>{ b.classList.toggle('anim', anim); b.classList.toggle('playing', soundPlaying); });
+  document.querySelectorAll('.snd-opt').forEach(o=>{ const on=soundPlaying && o.dataset.track===curTrack; o.classList.toggle('active', on); o.setAttribute('aria-checked', String(on)); });
+}
+function persistAudio(){ try{ localStorage.setItem('sm_audio', JSON.stringify({t:curTrack, s:sndState})); }catch(e){} }
+function playTrack(id){
+  if(!AUDIO_TRACKS[id]) return;
+  dismissMusicHint();
+  const a=ensureAudio();
+  if(curTrack!==id){ a.src=AUDIO_TRACKS[id]; curTrack=id; }
+  sndState='on';
+  a.play().then(()=>{ soundPlaying=true; updateSoundUI(); persistAudio(); }).catch(()=>{ soundPlaying=false; updateSoundUI(); persistAudio(); });
+}
+function stopSound(){ if(bgAudio) bgAudio.pause(); soundPlaying=false; sndState='off'; updateSoundUI(); persistAudio(); }
+function toggleSoundPanel(force){
+  const p=document.getElementById('soundPanel'); if(!p) return;
+  const open = (force!=null) ? force : p.hasAttribute('hidden');
+  if(open){ dismissMusicHint(); p.removeAttribute('hidden'); requestAnimationFrame(()=>p.classList.add('open')); }
+  else { p.classList.remove('open'); setTimeout(()=>p.setAttribute('hidden',''), 200); }
+}
+function dismissMusicHint(){ const h=document.getElementById('musicHint'); try{ sessionStorage.setItem('sm_hintSeen','1'); }catch(e){} if(!h||h.hasAttribute('hidden')) return; h.classList.remove('show'); setTimeout(()=>h.setAttribute('hidden',''),400); }
+function maybeShowMusicHint(){
+  const h=document.getElementById('musicHint'); if(!h) return;
+  let seen=false; try{ seen=sessionStorage.getItem('sm_hintSeen')==='1'; }catch(e){}
+  if(seen || sndState==='off' || soundPlaying) return;
+  setTimeout(()=>{ if(soundPlaying || sndState==='off') return; h.removeAttribute('hidden'); requestAnimationFrame(()=>h.classList.add('show')); setTimeout(dismissMusicHint, 8500); }, 1300);
+}
+document.querySelectorAll('.snd-opt').forEach(o=>o.addEventListener('click', ()=>playTrack(o.dataset.track)));
+document.addEventListener('click', e=>{
+  const p=document.getElementById('soundPanel');
+  if(!p || p.hasAttribute('hidden')) return;
+  if(!p.contains(e.target) && !e.target.closest('.snd-btn')) toggleSoundPanel(false);
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') toggleSoundPanel(false); });
+(function initAudio(){
+  let s=null; try{ s=JSON.parse(localStorage.getItem('sm_audio')||'null'); }catch(e){}
+  if(s){ curTrack=(s.t && AUDIO_TRACKS[s.t]) ? s.t : null; sndState = s.s || (s.on ? 'on' : 'hint'); }
+  if(sndState==='on' && curTrack){
+    const a=ensureAudio(); a.src=AUDIO_TRACKS[curTrack];
+    a.play().then(()=>{ soundPlaying=true; updateSoundUI(); }).catch(()=>{ soundPlaying=false; updateSoundUI(); });
+  } else { updateSoundUI(); }
+  maybeShowMusicHint();
+})();
+
+</script>
+
+
+<script async="" id="netlify-rum-container" src="/.netlify/scripts/rum" data-netlify-rum-site-id="1274c74f-bd31-425e-8cf1-f7fedd118509" data-netlify-deploy-branch="" data-netlify-deploy-context="production" data-netlify-cwv-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaXRlX2lkIjoiMTI3NGM3NGYtYmQzMS00MjVlLThjZjEtZjdmZWRkMTE4NTA5IiwiYWNjb3VudF9pZCI6IjZhMGRmZWM0N2MwZjE2NjVmZGJiYTUwMCIsImRlcGxveV9pZCI6IjZhNWEyMDExMGIzNTBlNTM3YTE3ZWMwYSIsImlzcyI6Im5ldGxpZnkifQ.prOrzLNdkiTZGeOUuVtmi8COEj4MzOSV29lp60ExLYY"></script>
+</body></html>

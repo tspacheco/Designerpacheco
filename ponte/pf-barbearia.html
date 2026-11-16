@@ -1,0 +1,926 @@
+<!DOCTYPE html><html lang="pt-PT" style=""><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbearia do Cão — Banhos &amp; Tosquias em Loulé</title>
+  <meta name="description" content="Banhos, tosquias por raça, stripping e corte de unhas em Loulé. Carinho, atenção e profissionalismo — avaliação 4.9 no Google. Marque já o banho do seu cão.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Barbearia do Cão — Banhos &amp; Tosquias em Loulé">
+  <meta property="og:description" content="Tratamos o seu cão como se fosse nosso. Banhos, tosquias por raça e mimos, no centro de Loulé.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="barbearia-assets/galeria/fachada.jpg">
+  <meta property="og:locale" content="pt_PT">
+
+  <link rel="icon" type="image/png" href="barbearia-assets/logo-icon.png">
+
+  <!-- Fonts: Varela Round (títulos) + Nunito Sans (corpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700;800&amp;family=Varela+Round&amp;display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:   { DEFAULT: '#78350F', dark: '#451A03', mid: '#92400E' },
+            gold:    { DEFAULT: '#FBBF24', dark: '#D9930B' },
+            cream:   '#FEF3C7',
+            paper:   '#FFFBEB',
+          },
+          fontFamily: {
+            display: ['"Varela Round"', 'system-ui', 'sans-serif'],
+            sans:    ['"Nunito Sans"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            soft:  '0 4px 20px -4px rgba(69,26,3,0.12), 0 2px 6px -2px rgba(69,26,3,0.08)',
+            lift:  '0 18px 40px -12px rgba(69,26,3,0.22)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- JSON-LD: dados estruturados LocalBusiness / PetStore -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PetStore",
+    "name": "Barbearia do Cão",
+    "image": "barbearia-assets/galeria/fachada.jpg",
+    "description": "Banhos, tosquias por raça, stripping e corte de unhas em Loulé.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "R. Afonso de Albuquerque, 32",
+      "addressLocality": "Loulé",
+      "postalCode": "8100-532",
+      "addressCountry": "PT"
+    },
+    "telephone": "+351289422066",
+    "priceRange": "€€",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "13:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "15:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "13:00" }
+    ],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "ratingCount": "30" }
+  }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+    }
+    body { background: #FFFBEB; color: #451A03; }
+    .paw-bg { background-image: radial-gradient(circle at 1px 1px, rgba(120,53,15,.07) 1px, transparent 0); background-size: 22px 22px; }
+    /* Slider antes/depois */
+    .ba-wrap { position: relative; overflow: hidden; border-radius: 1.25rem; user-select: none; }
+    .ba-after { position: absolute; inset: 0; overflow: hidden; width: 50%; }
+    .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ba-after .ba-img { width: 200%; max-width: none; }
+    .ba-handle { position: absolute; top: 0; bottom: 0; width: 3px; background: #FBBF24; left: 50%; transform: translateX(-50%); }
+    .ba-knob { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 46px; height: 46px; border-radius: 9999px; background: #FBBF24; box-shadow: 0 4px 12px rgba(69,26,3,.35); display: grid; place-items: center; color: #451A03; }
+    .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    /* Slider antes/depois interativo (clip-path) */
+    .ba2-base { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ba2-top { position: absolute; inset: 0; clip-path: inset(0 50% 0 0); }
+    .ba2-top img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ba2-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: #FBBF24; transform: translateX(-50%); pointer-events: none; z-index: 5; }
+    .ba2-knob { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 46px; height: 46px; border-radius: 9999px; background: #FBBF24; box-shadow: 0 4px 12px rgba(69,26,3,.35); display: grid; place-items: center; color: #451A03; }
+    .ba2-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    .img-fallback { background: linear-gradient(135deg,#92400E,#78350F); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Filtros da galeria */
+    .filtro-btn { background: #FEF3C7; color: #78350F; }
+    .filtro-btn:hover { background: #FDE7A8; }
+    .filtro-btn[aria-selected="true"] { background: #78350F; color: #FEF3C7; }
+
+    /* Itens da galeria */
+    .g-item { position: relative; overflow: hidden; border-radius: 1rem; }
+    .g-item img, .g-item video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .g-item .g-cap { position: absolute; inset-inline: 0; bottom: 0; padding: 2rem .9rem .7rem; font-size: .8rem; font-weight: 600; color: #FEF3C7;
+      background: linear-gradient(to top, rgba(69,26,3,.85), transparent); }
+    .g-item .g-play { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+    .g-item .g-play span { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 9999px;
+      background: rgba(251,191,36,.92); color: #451A03; box-shadow: 0 6px 18px rgba(69,26,3,.35); }
+    .g-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; text-align: center;
+      border: 2px dashed rgba(120,53,15,.3); background: rgba(254,243,199,.4); color: rgba(69,26,3,.55); padding: 1rem; }
+
+    /* Lightbox */
+    #lightbox { position: fixed; inset: 0; z-index: 80; display: none; place-items: center; padding: 1.5rem;
+      background: rgba(28,12,2,.88); backdrop-filter: blur(4px); }
+    #lightbox.open { display: grid; }
+    #lightbox .lb-content { max-width: min(92vw, 1000px); max-height: 88vh; }
+    #lightbox img, #lightbox video { max-width: 100%; max-height: 82vh; border-radius: 1rem; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    #lightbox .lb-close { position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; border-radius: 9999px;
+      background: rgba(254,243,199,.15); color: #FEF3C7; display: grid; place-items: center; cursor: pointer; transition: background .2s; }
+    #lightbox .lb-close:hover { background: rgba(254,243,199,.3); }
+    #lightbox .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 9999px;
+      background: rgba(254,243,199,.12); color: #FEF3C7; display: grid; place-items: center; cursor: pointer; transition: background .2s; }
+    #lightbox .lb-nav:hover { background: rgba(254,243,199,.28); }
+    #lightbox .lb-prev { left: 1rem; } #lightbox .lb-next { right: 1rem; }
+    #lightbox .lb-cap { margin-top: .75rem; text-align: center; color: rgba(254,243,199,.85); font-size: .9rem; font-weight: 600; }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:"Nunito Sans", system-ui, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.inset-x-0{left:0px;right:0px}.-bottom-5{bottom:-1.25rem}.-left-5{left:-1.25rem}.-right-3{right:-0.75rem}.-right-6{right:-1.5rem}.-top-6{top:-1.5rem}.bottom-0{bottom:0px}.left-3{left:0.75rem}.right-3{right:0.75rem}.top-0{top:0px}.top-3{top:0.75rem}.z-10{z-index:10}.z-50{z-index:50}.col-span-2{grid-column:span 2 / span 2}.row-span-2{grid-row:span 2 / span 2}.mx-auto{margin-left:auto;margin-right:auto}.ml-2{margin-left:0.5rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-7{margin-top:1.75rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.aspect-\[4\/3\]{aspect-ratio:4/3}.aspect-\[461\/816\]{aspect-ratio:461/816}.aspect-square{aspect-ratio:1 / 1}.h-10{height:2.5rem}.h-11{height:2.75rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-24{height:6rem}.h-28{height:7rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-auto{height:auto}.h-full{height:100%}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-24{width:6rem}.w-28{width:7rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-7{width:1.75rem}.w-auto{width:auto}.w-fit{width:-moz-fit-content;width:fit-content}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.max-w-xl{max-width:36rem}.shrink-0{flex-shrink:0}.cursor-ew-resize{cursor:ew-resize}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.grid-flow-dense{grid-auto-flow:dense}.auto-rows-\[200px\]{grid-auto-rows:200px}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.place-items-center{place-items:center}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-0\.5{gap:0.125rem}.gap-1{gap:0.25rem}.gap-10{gap:2.5rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-7{gap:1.75rem}.gap-8{gap:2rem}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-\[1\.4rem\]{border-radius:1.4rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-brand\/10{border-color:rgb(120 53 15 / 0.1)}.border-brand\/15{border-color:rgb(120 53 15 / 0.15)}.border-brand\/20{border-color:rgb(120 53 15 / 0.2)}.border-cream\/10{border-color:rgb(254 243 199 / 0.1)}.border-cream\/25{border-color:rgb(254 243 199 / 0.25)}.bg-brand{--tw-bg-opacity:1;background-color:rgb(120 53 15 / var(--tw-bg-opacity, 1))}.bg-brand-dark{--tw-bg-opacity:1;background-color:rgb(69 26 3 / var(--tw-bg-opacity, 1))}.bg-brand-dark\/85{background-color:rgb(69 26 3 / 0.85)}.bg-brand-mid\/40{background-color:rgb(146 64 14 / 0.4)}.bg-brand\/10{background-color:rgb(120 53 15 / 0.1)}.bg-cream{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.bg-cream\/10{background-color:rgb(254 243 199 / 0.1)}.bg-cream\/40{background-color:rgb(254 243 199 / 0.4)}.bg-cream\/50{background-color:rgb(254 243 199 / 0.5)}.bg-cream\/60{background-color:rgb(254 243 199 / 0.6)}.bg-gold{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.bg-gold\/30{background-color:rgb(251 191 36 / 0.3)}.bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.bg-paper{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-paper\/90{background-color:rgb(255 251 235 / 0.9)}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.bg-gradient-to-t{background-image:linear-gradient(to top, var(--tw-gradient-stops))}.from-brand-dark\/85{--tw-gradient-from:rgb(69 26 3 / 0.85) var(--tw-gradient-from-position);--tw-gradient-to:rgb(69 26 3 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-brand-dark\/40{--tw-gradient-to:rgb(69 26 3 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), rgb(69 26 3 / 0.4) var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-6{padding:1.5rem}.p-7{padding:1.75rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-16{padding-bottom:4rem}.pb-3{padding-bottom:0.75rem}.pt-10{padding-top:2.5rem}.pt-28{padding-top:7rem}.pt-6{padding-top:1.5rem}.text-left{text-align:left}.text-center{text-align:center}.font-sans{font-family:"Nunito Sans", system-ui, sans-serif}.font-display{font-family:"Varela Round", system-ui, sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-\[1\.1\]{line-height:1.1}.leading-relaxed{line-height:1.625}.tracking-wide{letter-spacing:0.025em}.tracking-widest{letter-spacing:0.1em}.text-brand{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.text-brand-dark{--tw-text-opacity:1;color:rgb(69 26 3 / var(--tw-text-opacity, 1))}.text-brand-dark\/55{color:rgb(69 26 3 / 0.55)}.text-brand-dark\/60{color:rgb(69 26 3 / 0.6)}.text-brand-dark\/65{color:rgb(69 26 3 / 0.65)}.text-brand-dark\/70{color:rgb(69 26 3 / 0.7)}.text-brand-dark\/75{color:rgb(69 26 3 / 0.75)}.text-brand-dark\/80{color:rgb(69 26 3 / 0.8)}.text-brand-mid{--tw-text-opacity:1;color:rgb(146 64 14 / var(--tw-text-opacity, 1))}.text-cream{--tw-text-opacity:1;color:rgb(254 243 199 / var(--tw-text-opacity, 1))}.text-cream\/55{color:rgb(254 243 199 / 0.55)}.text-cream\/65{color:rgb(254 243 199 / 0.65)}.text-cream\/75{color:rgb(254 243 199 / 0.75)}.text-cream\/80{color:rgb(254 243 199 / 0.8)}.text-gold{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-gold-dark{--tw-text-opacity:1;color:rgb(217 147 11 / var(--tw-text-opacity, 1))}.text-gold\/40{color:rgb(251 191 36 / 0.4)}.text-green-800{--tw-text-opacity:1;color:rgb(22 101 52 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-40{opacity:0.4}.shadow-lift{--tw-shadow:0 18px 40px -12px rgba(69,26,3,0.22);--tw-shadow-colored:0 18px 40px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-soft{--tw-shadow:0 4px 20px -4px rgba(69,26,3,0.12), 0 2px 6px -2px rgba(69,26,3,0.08);--tw-shadow-colored:0 4px 20px -4px var(--tw-shadow-color), 0 2px 6px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-brand\/10{--tw-ring-color:rgb(120 53 15 / 0.1)}.ring-brand\/5{--tw-ring-color:rgb(120 53 15 / 0.05)}.ring-cream\/10{--tw-ring-color:rgb(254 243 199 / 0.1)}.blur-2xl{--tw-blur:blur(40px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:border-brand\/30:hover{border-color:rgb(120 53 15 / 0.3)}.hover\:border-gold:hover{--tw-border-opacity:1;border-color:rgb(251 191 36 / var(--tw-border-opacity, 1))}.hover\:bg-brand:hover{--tw-bg-opacity:1;background-color:rgb(120 53 15 / var(--tw-bg-opacity, 1))}.hover\:bg-brand-mid:hover{--tw-bg-opacity:1;background-color:rgb(146 64 14 / var(--tw-bg-opacity, 1))}.hover\:bg-cream:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.hover\:bg-gold:hover{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.hover\:bg-gold-dark:hover{--tw-bg-opacity:1;background-color:rgb(217 147 11 / var(--tw-bg-opacity, 1))}.hover\:text-brand:hover{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.hover\:text-brand-dark:hover{--tw-text-opacity:1;color:rgb(69 26 3 / var(--tw-text-opacity, 1))}.hover\:text-cream:hover{--tw-text-opacity:1;color:rgb(254 243 199 / var(--tw-text-opacity, 1))}.hover\:text-gold:hover{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.hover\:text-gold-dark:hover{--tw-text-opacity:1;color:rgb(217 147 11 / var(--tw-text-opacity, 1))}.hover\:shadow-lift:hover{--tw-shadow:0 18px 40px -12px rgba(69,26,3,0.22);--tw-shadow-colored:0 18px 40px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:not-sr-only:focus{position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal}.focus\:absolute:focus{position:absolute}.focus\:z-\[60\]:focus{z-index:60}.focus\:m-3:focus{margin:0.75rem}.focus\:rounded-lg:focus{border-radius:0.5rem}.focus\:border-gold:focus{--tw-border-opacity:1;border-color:rgb(251 191 36 / var(--tw-border-opacity, 1))}.focus\:bg-brand:focus{--tw-bg-opacity:1;background-color:rgb(120 53 15 / var(--tw-bg-opacity, 1))}.focus\:px-4:focus{padding-left:1rem;padding-right:1rem}.focus\:py-2:focus{padding-top:0.5rem;padding-bottom:0.5rem}.focus\:text-cream:focus{--tw-text-opacity:1;color:rgb(254 243 199 / var(--tw-text-opacity, 1))}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-gold\/40:focus{--tw-ring-color:rgb(251 191 36 / 0.4)}.group:hover .group-hover\:bg-gold{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:text-brand-dark{--tw-text-opacity:1;color:rgb(69 26 3 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:-right-5{right:-1.25rem}.sm\:inline{display:inline}.sm\:hidden{display:none}.sm\:h-12{height:3rem}.sm\:auto-rows-\[230px\]{grid-auto-rows:230px}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}}@media (min-width: 768px){.md\:order-1{order:1}.md\:order-2{order:2}.md\:col-span-2{grid-column:span 2 / span 2}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:p-10{padding:2.5rem}.md\:px-6{padding-left:1.5rem;padding-right:1.5rem}.md\:py-24{padding-top:6rem;padding-bottom:6rem}.md\:py-28{padding-top:7rem;padding-bottom:7rem}.md\:pb-24{padding-bottom:6rem}.md\:pt-36{padding-top:9rem}}@media (min-width: 1024px){.lg\:col-span-4{grid-column:span 4 / span 4}.lg\:flex{display:flex}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:text-6xl{font-size:3.75rem;line-height:1}}</style></head>
+
+<body class="font-sans antialiased">
+
+  <!-- Animação de entrada (≈2 s): logótipo sobre a fachada, o fundo escuro levanta-se e o site abre. Uma vez por sessão. -->
+  <noscript><style>#intro{display:none!important}</style></noscript>
+  <div id="intro" aria-hidden="true" class="go" style="opacity: 0;">
+    <style>
+      #intro{position:fixed;inset:0;z-index:100;background:#451A03;overflow:hidden;transition:opacity .45s ease}
+      #intro:not(.go) *{animation-play-state:paused!important}
+      #intro .i-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:56% 50%;
+        transform-origin:56% 66%;animation:bdcZoom 3.4s cubic-bezier(.5,.05,.8,.5) both}
+      #intro .i-vinheta{position:absolute;inset:0;background:radial-gradient(ellipse at 56% 62%,rgba(69,26,3,0) 0%,rgba(69,26,3,.55) 100%)}
+      #intro .i-vela{position:absolute;inset:0;background:#451A03;animation:bdcVela 3.4s linear both}
+      #intro .i-fim{position:absolute;inset:0;background:#1C0A02;opacity:0;animation:bdcFim 3.4s linear both}
+      #intro .i-logo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+        padding:0 max(16px,env(safe-area-inset-left,0px));text-align:center;animation:bdcLogo 3.4s ease both}
+      #intro .i-logo img{width:min(72vw,360px);height:auto}
+      #intro .i-logo p{font:700 13px/1.4 'Nunito Sans',system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#FDE7A8;margin:0}
+      #intro .i-saltar{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));
+        background:rgba(254,243,199,.92);color:#451A03;border:0;border-radius:999px;padding:10px 18px;font:700 14px 'Nunito Sans',system-ui,sans-serif;cursor:pointer}
+      @keyframes bdcZoom{from{transform:scale(1.04)}to{transform:scale(2.9)}}
+      @keyframes bdcVela{0%,28%{opacity:.8}52%{opacity:.05}100%{opacity:0}}
+      @keyframes bdcLogo{0%{opacity:0;transform:translateY(16px) scale(.96)}16%{opacity:1;transform:none}34%{opacity:1;transform:none}50%{opacity:0;transform:scale(1.05)}100%{opacity:0}}
+      @keyframes bdcFim{0%,72%{opacity:0}100%{opacity:1}}
+    </style>
+    <img class="i-foto" src="barbearia-assets/galeria/fachada.jpg" alt="" fetchpriority="high">
+    <div class="i-vinheta"></div>
+    <div class="i-vela"></div>
+    <div class="i-logo"><img src="barbearia-assets/logo-clara.png" alt=""><p>Banhos · Tosquias · Loulé</p></div>
+    <div class="i-fim"></div>
+    <button class="i-saltar" id="introSkip" type="button">Saltar →</button>
+  </div>
+  <script>
+    (function () {
+      var el = document.getElementById('intro'), img = el.querySelector('.i-foto');
+      var seen = false;
+      try { seen = sessionStorage.getItem('bdc_intro') === '1'; } catch (e) {}
+      var reduz = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (seen || reduz) { el.remove(); return; }
+      document.documentElement.style.overflow = 'hidden';
+      var feito = false;
+      function fim() {
+        if (feito) return; feito = true;
+        try { sessionStorage.setItem('bdc_intro', '1'); } catch (e) {}
+        el.style.opacity = '0'; document.documentElement.style.overflow = '';
+        setTimeout(function () { el.remove(); }, 550);
+      }
+      function arranca() {
+        if (el.classList.contains('go')) return;
+        el.classList.add('go'); setTimeout(fim, 1900);
+      }
+      if (img.complete) arranca();
+      else { img.addEventListener('load', arranca); img.addEventListener('error', arranca); setTimeout(arranca, 1500); }
+      document.getElementById('introSkip').addEventListener('click', fim);
+      setTimeout(fim, 7000);
+    })();
+  </script>
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:m-3 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-cream">Saltar para o conteúdo</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto mt-3 flex max-w-6xl items-center justify-between gap-4 rounded-2xl border border-brand/10 bg-paper/90 px-4 py-3 shadow-soft backdrop-blur md:px-6">
+      <a href="#hero" class="flex items-center">
+        <img src="barbearia-assets/logo.png" alt="Barbearia do Cão — Groomer Tiago Machado · Pet Shop" class="h-11 w-auto sm:h-12" width="900" height="526">
+      </a>
+
+      <nav class="hidden items-center gap-7 text-sm font-semibold text-brand-dark/80 lg:flex" aria-label="Principal">
+        <a href="#trabalho" class="transition-colors hover:text-brand">O nosso trabalho</a>
+        <a href="#servicos" class="transition-colors hover:text-brand">Serviços</a>
+        <a href="#sobre" class="transition-colors hover:text-brand">Sobre</a>
+        <a href="#contactos" class="transition-colors hover:text-brand">Contactos</a>
+        <a href="#carnepura" class="transition-colors hover:text-brand">Loja CarnePura</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+      <!-- Loja CarnePura (botão do cabeçalho) -->
+      <a href="https://carnepura.com/" class="inline-flex items-center gap-2 rounded-xl border border-brand/20 bg-brand-dark px-3 py-2.5 text-sm font-bold text-cream shadow-soft transition-all hover:bg-brand hover:shadow-lift cursor-pointer" aria-label="Loja CarnePura: carne crua para cães">
+        <svg class="h-4 w-4 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6ZM3 6h18M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span class="hidden sm:inline">Loja CarnePura</span>
+        <span class="sm:hidden">Carne</span>
+      </a>
+      <a href="tel:+351289422066" class="inline-flex items-center gap-2 rounded-xl bg-gold px-4 py-2.5 text-sm font-bold text-brand-dark shadow-soft transition-all hover:bg-gold-dark hover:shadow-lift cursor-pointer">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92Z"></path></svg>
+        <span class="hidden sm:inline">Marcar tosquia</span>
+        <span class="sm:hidden">Ligar</span>
+      </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" class="paw-bg relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 md:grid-cols-2 md:px-6">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-cream px-3 py-1.5 text-sm font-bold text-brand-mid ring-1 ring-brand/10">
+          <svg class="h-4 w-4 text-gold-dark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27Z"></path></svg>
+          4.9 / 5 no Google · Loulé
+        </span>
+
+        <h1 class="mt-5 font-display text-4xl leading-[1.1] text-brand-dark sm:text-5xl lg:text-6xl">
+          O seu cão sai daqui<br><span class="text-brand">feliz, limpo e bonito.</span>
+        </h1>
+
+        <p class="mt-5 max-w-md text-lg leading-relaxed text-brand-dark/75">
+          Banhos, tosquias por raça e mimos no centro de Loulé. Tratamos cada cão
+          com o carinho, a calma e a paciência que ele merece — e nota-se no resultado.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="#contactos" class="inline-flex items-center gap-2 rounded-xl bg-gold px-6 py-3.5 font-bold text-brand-dark shadow-soft transition-all hover:bg-gold-dark hover:shadow-lift cursor-pointer">
+            Marcar banho / tosquia
+          </a>
+          <a href="#antes-depois" class="inline-flex items-center gap-2 rounded-xl border-2 border-brand/15 bg-paper px-6 py-3.5 font-bold text-brand-dark transition-colors hover:border-brand/30 hover:bg-cream cursor-pointer">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m10 8 6 4-6 4V8Z" fill="currentColor"></path></svg>
+            Ver antes &amp; depois
+          </a>
+        </div>
+
+        <dl class="mt-10 flex gap-8">
+          <div>
+            <dt class="text-2xl font-extrabold text-brand">+20</dt>
+            <dd class="text-sm font-medium text-brand-dark/60">anos a tosquiar</dd>
+          </div>
+          <div>
+            <dt class="text-2xl font-extrabold text-brand">Todas</dt>
+            <dd class="text-sm font-medium text-brand-dark/60">as raças e tamanhos</dd>
+          </div>
+          <div>
+            <dt class="text-2xl font-extrabold text-brand">Loja</dt>
+            <dd class="text-sm font-medium text-brand-dark/60">de produtos &amp; higiene</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-gold/30 blur-2xl" aria-hidden="true"></div>
+        <div class="absolute -left-5 -bottom-5 h-24 w-24 rounded-full bg-brand/10 blur-2xl" aria-hidden="true"></div>
+        <figure class="relative overflow-hidden rounded-[1.4rem] shadow-lift ring-1 ring-brand/10">
+          <img src="barbearia-assets/barbearia-cao-antes-depois.png" width="922" height="816" alt="Antes e depois de uma tosquia completa de Spitz na Barbearia do Cão" class="block h-auto w-full">
+          <span class="absolute left-3 top-3 rounded-lg bg-brand-dark/85 px-2.5 py-1 text-xs font-bold tracking-wide text-cream backdrop-blur-sm">ANTES</span>
+          <span class="absolute right-3 top-3 rounded-lg bg-gold px-2.5 py-1 text-xs font-bold tracking-wide text-brand-dark">DEPOIS</span>
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-dark/85 via-brand-dark/40 to-transparent px-4 pb-3 pt-10 text-sm font-semibold text-cream">
+            Tosquia completa de Spitz
+          </figcaption>
+        </figure>
+        <p class="mt-3 text-center text-sm font-medium text-brand-dark/55">A diferença de umas mãos com experiência</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BARRA DE CONFIANÇA ============ -->
+  <section class="border-y border-brand/10 bg-cream/60">
+    <div class="mx-auto grid max-w-6xl gap-6 px-4 py-8 text-center sm:grid-cols-3 md:px-6">
+      <div class="flex items-center justify-center gap-3">
+        <svg class="h-7 w-7 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27Z"></path></svg>
+        <p class="text-left text-sm font-semibold text-brand-dark">4.9 estrelas no Google<br><span class="font-normal text-brand-dark/60">clientes que voltam todas as semanas</span></p>
+      </div>
+      <div class="flex items-center justify-center gap-3">
+        <svg class="h-7 w-7 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"></path></svg>
+        <p class="text-left text-sm font-semibold text-brand-dark">Carinho a sério<br><span class="font-normal text-brand-dark/60">paciência com cães nervosos e idosos</span></p>
+      </div>
+      <div class="flex items-center justify-center gap-3">
+        <svg class="h-7 w-7 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+        <p class="text-left text-sm font-semibold text-brand-dark">No centro de Loulé<br><span class="font-normal text-brand-dark/60">fácil de chegar, com estacionamento perto</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANTES & DEPOIS (SLIDER INTERATIVO) ============ -->
+  <section id="antes-depois" class="bg-cream/40 py-20 md:py-28">
+    <div class="mx-auto max-w-5xl px-4 md:px-6">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <span class="font-display text-sm uppercase tracking-widest text-gold-dark">Antes &amp; depois</span>
+        <h2 class="mt-2 font-display text-3xl text-brand-dark sm:text-4xl">Veja a transformação, ao vivo</h2>
+        <p class="mt-4 text-brand-dark/70">Arraste o cursor sobre a imagem para comparar o antes e o depois de uma tosquia completa — uma forma interativa de mostrar o resultado.</p>
+      </div>
+
+      <div class="reveal mt-10 flex justify-center">
+        <figure class="w-full max-w-sm">
+          <div class="ba2-wrap relative aspect-[461/816] cursor-ew-resize select-none overflow-hidden rounded-[1.4rem] shadow-lift ring-1 ring-brand/10">
+            <img src="barbearia-assets/depois.png" alt="Cão depois da tosquia completa" class="ba2-base">
+            <div id="baTop" class="ba2-top" style="clip-path: inset(0px 50% 0px 0px);"><img src="barbearia-assets/antes.png" alt="Cão antes da tosquia"></div>
+            <span class="absolute left-3 top-3 z-10 rounded-lg bg-brand-dark/85 px-2.5 py-1 text-xs font-bold tracking-wide text-cream backdrop-blur-sm">ANTES</span>
+            <span class="absolute right-3 top-3 z-10 rounded-lg bg-gold px-2.5 py-1 text-xs font-bold tracking-wide text-brand-dark">DEPOIS</span>
+            <div id="baLine" class="ba2-line" style="left: 50%;">
+              <span class="ba2-knob"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 6-4 6 4 6M15 6l4 6-4 6"></path></svg></span>
+            </div>
+            <input id="baRange" type="range" min="0" max="100" value="50" class="ba2-range" aria-label="Arraste para comparar o antes e o depois">
+          </div>
+          <figcaption class="mt-3 text-center text-sm font-medium text-brand-dark/55">Tosquia completa de Spitz · arraste para comparar</figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ TRABALHO / GALERIA ============ -->
+  <section id="trabalho" class="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="font-display text-sm uppercase tracking-widest text-gold-dark">O nosso trabalho</span>
+      <h2 class="mt-2 font-display text-3xl text-brand-dark sm:text-4xl">A diferença está nas mãos certas</h2>
+      <p class="mt-4 text-brand-dark/70">Cada banho e cada tosquia são feitos à medida do animal e do seu feitio — cães, gatos e companhia. Veja o nosso trabalho.</p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="reveal mt-10 flex flex-wrap items-center justify-center gap-2" role="tablist" aria-label="Filtrar galeria">
+      <button class="filtro-btn rounded-full px-5 py-2 text-sm font-bold transition-colors cursor-pointer" data-filtro="todos" aria-selected="true">Tudo</button>
+      <button class="filtro-btn rounded-full px-5 py-2 text-sm font-bold transition-colors cursor-pointer" data-filtro="foto" aria-selected="false">Fotos</button>
+      <button class="filtro-btn rounded-full px-5 py-2 text-sm font-bold transition-colors cursor-pointer" data-filtro="video" aria-selected="false">Vídeos</button>
+    </div>
+
+    <!-- Grelha (renderizada por JS a partir da lista 'galeria' no fim do ficheiro) -->
+    <div id="galeriaGrid" class="reveal mt-8 grid grid-flow-dense auto-rows-[200px] grid-cols-2 gap-4 sm:auto-rows-[230px] lg:grid-cols-4"><figure class="g-item shadow-soft ring-1 ring-brand/10 col-span-2 row-span-2 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/trabalho-5.jpg" alt="Banho e tosquia — American Bully" loading="lazy"><figcaption class="g-cap">Banho e tosquia — American Bully</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 row-span-2 cursor-pointer group img-fallback" data-cat="video"><img src="barbearia-assets/galeria/visita-loja-capa.jpg" alt="Visite a loja — pet shop, rações e a nossa árvore de clientes" loading="lazy"><div class="g-play"><span><svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></div><figcaption class="g-cap">Visite a loja — pet shop, rações e a nossa árvore de clientes</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 row-span-2 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/spa-banheira.jpg" alt="A zona de banho — banheira própria, argilas e flor de sal" loading="lazy"><figcaption class="g-cap">A zona de banho — banheira própria, argilas e flor de sal</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/trabalho-3.jpg" alt="Yorkshire Terrier depois da tosquia" loading="lazy"><figcaption class="g-cap">Yorkshire Terrier depois da tosquia</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/trabalho-4.jpg" alt="Também cuidamos de gatos" loading="lazy"><figcaption class="g-cap">Também cuidamos de gatos</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 row-span-2 cursor-pointer group img-fallback" data-cat="video"><img src="barbearia-assets/galeria/arvore-clientes-capa.jpg" alt="A árvore dos clientes, ao vivo — cada foto é um amigo" loading="lazy"><div class="g-play"><span><svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></div><figcaption class="g-cap">A árvore dos clientes, ao vivo — cada foto é um amigo</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/trabalho-2.jpg" alt="Tosquia de Schnauzer" loading="lazy"><figcaption class="g-cap">Tosquia de Schnauzer</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/loja-prateleiras.jpg" alt="A loja — rações, acessórios e produtos escolhidos a dedo" loading="lazy"><figcaption class="g-cap">A loja — rações, acessórios e produtos escolhidos a dedo</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 row-span-2 cursor-pointer group img-fallback" data-cat="video"><img src="barbearia-assets/galeria/sala-tosquia-capa.jpg" alt="A sala de tosquia, por dentro" loading="lazy"><div class="g-play"><span><svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></div><figcaption class="g-cap">A sala de tosquia, por dentro</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/fachada.jpg" alt="A nossa casa, no centro de Loulé" loading="lazy"><figcaption class="g-cap">A nossa casa, no centro de Loulé</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/trabalho-1.jpg" alt="Sempre com calma e confiança" loading="lazy"><figcaption class="g-cap">Sempre com calma e confiança</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 row-span-2 cursor-pointer group img-fallback" data-cat="video"><img src="barbearia-assets/galeria/terrario-capa.jpg" alt="Na loja também moram amigos de escamas" loading="lazy"><div class="g-play"><span><svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></div><figcaption class="g-cap">Na loja também moram amigos de escamas</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/champos-profissionais.jpg" alt="Champôs profissionais para cada tipo de pelo" loading="lazy"><figcaption class="g-cap">Champôs profissionais para cada tipo de pelo</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/sala-murais.jpg" alt="Os murais pintados à mão da sala de tosquia" loading="lazy"><figcaption class="g-cap">Os murais pintados à mão da sala de tosquia</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 col-span-2 lg:col-span-4 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/sala-panorama.jpg" alt="A sala de tosquia de ponta a ponta — murais pintados à mão" loading="lazy"><figcaption class="g-cap">A sala de tosquia de ponta a ponta — murais pintados à mão</figcaption></figure><figure class="g-item shadow-soft ring-1 ring-brand/10 col-span-2 lg:col-span-4 cursor-pointer group" data-cat="foto"><img src="barbearia-assets/galeria/trabalho-6.jpg" alt="Antes e depois — Spitz" loading="lazy"><figcaption class="g-cap">Antes e depois — Spitz</figcaption></figure></div>
+
+    <!-- Mensagem mostrada quando o filtro "Vídeos" está ativo -->
+    <div id="videosEmBreve" class="mt-8 hidden">
+      <div class="mx-auto flex max-w-xl flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-brand/20 bg-cream/40 px-6 py-12 text-center">
+        <span class="grid h-14 w-14 place-items-center rounded-2xl bg-gold text-brand-dark">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 8-6 4 6 4V8Z"></path><rect x="2" y="6" width="14" height="12" rx="2"></rect></svg>
+        </span>
+        <h3 class="font-display text-2xl text-brand-dark">Vídeos em breve</h3>
+        <p class="text-sm text-brand-dark/65">Estamos a preparar vídeos das tosquias e dos banhos para mostrar aqui. Volte em breve!</p>
+      </div>
+    </div>
+
+    <div class="reveal mt-10 flex justify-center">
+      <a href="#contactos" class="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3.5 font-bold text-cream shadow-soft transition-all hover:bg-brand-mid hover:shadow-lift cursor-pointer">
+        Quer este resultado para o seu animal?
+        <svg class="h-5 w-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ SERVIÇOS ============ -->
+  <section id="servicos" class="bg-cream/50 py-20 md:py-28">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <span class="font-display text-sm uppercase tracking-widest text-gold-dark">Serviços</span>
+        <h2 class="mt-2 font-display text-3xl text-brand-dark sm:text-4xl">Tudo o que o seu cão precisa, num só sítio</h2>
+        <p class="mt-4 text-brand-dark/70">Do banho rápido à tosquia completa, com produtos próprios à venda na loja.</p>
+      </div>
+
+      <div class="reveal mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Serviço -->
+        <article class="group rounded-2xl bg-paper p-6 shadow-soft ring-1 ring-brand/5 transition-all hover:shadow-lift">
+          <div class="grid h-12 w-12 place-items-center rounded-xl bg-cream text-brand transition-colors group-hover:bg-gold group-hover:text-brand-dark">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10V6a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v0M5 10h14l-1 9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2l-1-9Z"></path><path d="M9 14h.01M15 14h.01"></path></svg>
+          </div>
+          <h3 class="mt-4 font-display text-xl text-brand-dark">Banho de higiene</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-dark/70">Champô adequado ao pelo, secagem e escovagem. O seu cão sai cheiroso e com o pelo a brilhar.</p>
+        </article>
+
+        <article class="group rounded-2xl bg-paper p-6 shadow-soft ring-1 ring-brand/5 transition-all hover:shadow-lift">
+          <div class="grid h-12 w-12 place-items-center rounded-xl bg-cream text-brand transition-colors group-hover:bg-gold group-hover:text-brand-dark">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"></path></svg>
+          </div>
+          <h3 class="mt-4 font-display text-xl text-brand-dark">Tosquia por raça</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-dark/70">Corte fiel ao padrão da raça ou ao estilo que prefere. Feito com calma e mão firme.</p>
+        </article>
+
+        <article class="group rounded-2xl bg-paper p-6 shadow-soft ring-1 ring-brand/5 transition-all hover:shadow-lift">
+          <div class="grid h-12 w-12 place-items-center rounded-xl bg-cream text-brand transition-colors group-hover:bg-gold group-hover:text-brand-dark">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 8l3 3M19 8l-3 3M4 14c0 4 3.5 8 8 8s8-4 8-8a8 8 0 0 0-16 0Z"></path></svg>
+          </div>
+          <h3 class="mt-4 font-display text-xl text-brand-dark">Stripping</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-dark/70">Técnica manual para raças de pelo duro, que preserva a textura e a cor natural do pelo.</p>
+        </article>
+
+        <article class="group rounded-2xl bg-paper p-6 shadow-soft ring-1 ring-brand/5 transition-all hover:shadow-lift">
+          <div class="grid h-12 w-12 place-items-center rounded-xl bg-cream text-brand transition-colors group-hover:bg-gold group-hover:text-brand-dark">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4 7 11l-3 6 6-3 7-7M14 4l3 3M14 4l3-2 2 2-2 3"></path></svg>
+          </div>
+          <h3 class="mt-4 font-display text-xl text-brand-dark">Corte de unhas</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-dark/70">Unhas no comprimento certo, sem stress. Importante para o conforto e a saúde das patas.</p>
+        </article>
+
+        <article class="group rounded-2xl bg-paper p-6 shadow-soft ring-1 ring-brand/5 transition-all hover:shadow-lift">
+          <div class="grid h-12 w-12 place-items-center rounded-xl bg-cream text-brand transition-colors group-hover:bg-gold group-hover:text-brand-dark">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6ZM3 6h18M16 10a4 4 0 0 1-8 0"></path></svg>
+          </div>
+          <h3 class="mt-4 font-display text-xl text-brand-dark">Loja &amp; produtos</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-dark/70">Champôs, escovas, snacks e artigos de higiene escolhidos por quem percebe de cães.</p>
+        </article>
+
+        <article class="flex flex-col justify-center rounded-2xl border-2 border-dashed border-brand/20 bg-cream/40 p-6">
+          <h3 class="font-display text-xl text-brand-dark">Não sabe o que precisa?</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-dark/70">Ligue-nos e dizemos-lhe o serviço ideal para a raça e o pelo do seu cão.</p>
+          <a href="tel:+351289422066" class="mt-4 inline-flex w-fit items-center gap-2 font-bold text-brand transition-colors hover:text-gold-dark cursor-pointer">
+            289 422 066
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+        </article>
+      </div>
+      <p class="reveal mt-8 text-center text-sm text-brand-dark/55">Preços sob consulta, consoante o porte e o estado do pelo — ligue-nos e dizemos-lhe na hora.</p>
+    </div>
+  </section>
+
+  <!-- ============ LOJA CARNEPURA ============ -->
+  <section id="carnepura" class="relative overflow-hidden bg-brand-dark text-cream">
+    <div class="paw-bg absolute inset-0 opacity-40" aria-hidden="true"></div>
+    <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:px-6 md:py-24">
+      <div>
+        <span class="font-display text-sm uppercase tracking-widest text-gold">Nova loja · CarnePura</span>
+        <h2 class="mt-2 font-display text-3xl text-cream sm:text-4xl">Carne crua para cães, escolhida pelo Tiago.</h2>
+        <p class="mt-4 max-w-lg text-cream/75">Quatro referências de 1 kg com osso e miudezas moídos, desde 3,95 €. Encomenda por WhatsApp, levantamento grátis aqui na Barbearia ou entrega em todo o Algarve.</p>
+        <ul class="mt-5 space-y-1.5 text-sm text-cream/80">
+          <li>✓ Licença DGAV n.º V‑8103, rótulo por extenso</li>
+          <li>✓ A partir de 6 iguais, até −10%</li>
+          <li>✓ Paga-se no levantamento ou na entrega</li>
+        </ul>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="https://carnepura.com/" class="inline-flex items-center gap-2 rounded-xl bg-gold px-5 py-3 font-bold text-brand-dark shadow-soft transition-all hover:bg-gold-dark hover:shadow-lift cursor-pointer">
+            Ver a loja CarnePura
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+          <a href="https://carnepura.com/como-dar.html" class="inline-flex items-center rounded-xl border border-cream/25 px-5 py-3 font-bold text-cream transition-colors hover:border-gold hover:text-gold cursor-pointer">Quanto custa para o meu cão?</a>
+        </div>
+      </div>
+      <a href="https://carnepura.com/" class="grid grid-cols-2 gap-3" aria-label="Ver as quatro carnes na loja CarnePura">
+        <img src="barbearia-assets/carnepura/frangoperu.jpg" alt="Frango + Peru, 1 kg" class="aspect-square w-full rounded-2xl object-cover shadow-lift" loading="lazy">
+        <img src="barbearia-assets/carnepura/carnepeixe.jpg" alt="Carne + Peixe, 1 kg" class="aspect-square w-full rounded-2xl object-cover shadow-lift" loading="lazy">
+        <img src="barbearia-assets/carnepura/barf.jpg" alt="Mistura BARF, 1 kg" class="aspect-square w-full rounded-2xl object-cover shadow-lift" loading="lazy">
+        <img src="barbearia-assets/carnepura/vaca.jpg" alt="Raw Vaca, 1 kg" class="aspect-square w-full rounded-2xl object-cover shadow-lift" loading="lazy">
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE / PORQUÊ NÓS ============ -->
+  <section id="sobre" class="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
+    <div class="grid items-center gap-12 md:grid-cols-2">
+      <div class="reveal relative">
+        <div class="overflow-hidden rounded-3xl img-fallback shadow-lift ring-1 ring-brand/10 aspect-[4/3]">
+          <img class="h-full w-full object-cover" alt="A sala de tosquia da Barbearia do Cão, com murais pintados à mão" src="barbearia-assets/galeria/sala-tosquia.jpg">
+        </div>
+        <div class="absolute -bottom-5 -right-3 rounded-2xl bg-gold px-5 py-4 shadow-lift sm:-right-5">
+          <p class="font-display text-2xl text-brand-dark">4.9 ★</p>
+          <p class="text-xs font-semibold text-brand-dark/70">avaliação Google</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <span class="font-display text-sm uppercase tracking-widest text-gold-dark">Sobre nós</span>
+        <h2 class="mt-2 font-display text-3xl text-brand-dark sm:text-4xl">Não é só um banho. É confiança.</h2>
+        <p class="mt-4 leading-relaxed text-brand-dark/75">
+          Na Barbearia do Cão, cada animal é tratado com o tempo e a paciência que merece.
+          Os nossos clientes voltam todas as semanas porque sabem que o seu cão fica em boas mãos —
+          mesmo os mais nervosos, idosos ou que não gostam de banhos.
+        </p>
+        <ul class="mt-6 space-y-4">
+          <li class="flex gap-3">
+            <svg class="mt-0.5 h-6 w-6 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            <p class="text-brand-dark/80"><span class="font-bold text-brand-dark">Sem pressas.</span> Cada cão tem o seu ritmo e nós respeitamo-lo.</p>
+          </li>
+          <li class="flex gap-3">
+            <svg class="mt-0.5 h-6 w-6 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            <p class="text-brand-dark/80"><span class="font-bold text-brand-dark">Experiência a sério.</span> Mais de 20 anos a tratar de cães e gatos de todas as raças.</p>
+          </li>
+        </ul>
+        <a href="#contactos" class="mt-8 inline-flex items-center gap-2 rounded-xl bg-gold px-6 py-3.5 font-bold text-brand-dark shadow-soft transition-all hover:bg-gold-dark hover:shadow-lift cursor-pointer">
+          Conhecer / marcar visita
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A ÁRVORE DOS CLIENTES ============ -->
+  <section id="arvore" class="paw-bg border-y border-brand/10 bg-cream/40 py-20 md:py-28">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 md:grid-cols-2 md:px-6">
+      <div class="reveal md:order-2">
+        <figure class="relative mx-auto max-w-sm overflow-hidden rounded-3xl shadow-lift ring-1 ring-brand/10">
+          <img src="barbearia-assets/galeria/arvore-clientes.jpg" width="1200" height="1600" loading="lazy" alt="A árvore dos clientes — mural de uma árvore pintada à mão com centenas de fotos de cães tosquiados na Barbearia do Cão" class="block h-auto w-full">
+        </figure>
+      </div>
+      <div class="reveal md:order-1">
+        <span class="font-display text-sm uppercase tracking-widest text-gold-dark">A parede mais especial da loja</span>
+        <h2 class="mt-2 font-display text-3xl text-brand-dark sm:text-4xl">A árvore dos clientes</h2>
+        <p class="mt-4 leading-relaxed text-brand-dark/75">
+          Na parede da loja cresce uma árvore pintada à mão — e cada folha é a fotografia
+          de um cliente de quatro patas. São centenas de banhos, tosquias e amizades,
+          coladas uma a uma ao longo dos anos.
+        </p>
+        <p class="mt-3 leading-relaxed text-brand-dark/75">
+          Quando o seu cão vier à primeira visita, também ganha um lugar na árvore.
+        </p>
+        <a href="#contactos" class="mt-8 inline-flex items-center gap-2 rounded-xl bg-gold px-6 py-3.5 font-bold text-brand-dark shadow-soft transition-all hover:bg-gold-dark hover:shadow-lift cursor-pointer">
+          Marcar a primeira visita
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMO FUNCIONA ============ -->
+  <section class="bg-brand text-cream">
+    <div class="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-24">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <span class="font-display text-sm uppercase tracking-widest text-gold">Como funciona</span>
+        <h2 class="mt-2 font-display text-3xl sm:text-4xl">Marcar é simples</h2>
+      </div>
+      <ol class="reveal mt-12 grid gap-8 md:grid-cols-3">
+        <li class="relative rounded-2xl bg-brand-mid/40 p-7 ring-1 ring-cream/10">
+          <span class="font-display text-5xl text-gold/40">1</span>
+          <h3 class="mt-2 font-display text-xl">Ligue ou passe na loja</h3>
+          <p class="mt-2 text-sm leading-relaxed text-cream/75">Diga-nos a raça, o tamanho e o que pretende. Sugerimos o melhor serviço e marcamos hora.</p>
+        </li>
+        <li class="relative rounded-2xl bg-brand-mid/40 p-7 ring-1 ring-cream/10">
+          <span class="font-display text-5xl text-gold/40">2</span>
+          <h3 class="mt-2 font-display text-xl">Deixe o seu cão connosco</h3>
+          <p class="mt-2 text-sm leading-relaxed text-cream/75">Tratamos de tudo com calma e cuidado. Avisamos quando estiver pronto a buscar.</p>
+        </li>
+        <li class="relative rounded-2xl bg-brand-mid/40 p-7 ring-1 ring-cream/10">
+          <span class="font-display text-5xl text-gold/40">3</span>
+          <h3 class="mt-2 font-display text-xl">Leve-o feliz e bonito</h3>
+          <p class="mt-2 text-sm leading-relaxed text-cream/75">Limpo, cheiroso e bem arranjado. E já pode marcar a próxima visita.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ TESTEMUNHOS ============ -->
+  <section class="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="font-display text-sm uppercase tracking-widest text-gold-dark">Quem confia em nós</span>
+      <h2 class="mt-2 font-display text-3xl text-brand-dark sm:text-4xl">O que dizem os donos</h2>
+      <div class="mt-3 flex items-center justify-center gap-1 text-gold-dark" aria-label="4.9 de 5 estrelas">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27Z"></path></svg>
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27Z"></path></svg>
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27Z"></path></svg>
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27Z"></path></svg>
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27Z"></path></svg>
+        <span class="ml-2 text-sm font-semibold text-brand-dark/70">4.9 / 5 no Google</span>
+      </div>
+    </div>
+
+    <div class="reveal mt-12 grid gap-6 md:grid-cols-3">
+      <figure class="rounded-2xl bg-paper p-6 shadow-soft ring-1 ring-brand/5">
+        <div class="flex gap-0.5 text-gold-dark">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+        </div>
+        <blockquote class="mt-3 text-brand-dark/80">"Carinho, atenção e profissionalismo. A minha cadela Kira é tratada lindamente todas as semanas. Recomendo de olhos fechados."</blockquote>
+        <figcaption class="mt-4 flex items-center gap-3">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-brand font-display text-cream">M</span>
+          <span><span class="block font-bold text-brand-dark">Mari Bandeira</span><span class="block text-xs text-brand-dark/55">Cliente no Google</span></span>
+        </figcaption>
+      </figure>
+
+      <figure class="rounded-2xl bg-paper p-6 shadow-soft ring-1 ring-brand/5">
+        <div class="flex gap-0.5 text-gold-dark">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+        </div>
+        <blockquote class="mt-3 text-brand-dark/80">"Profissional como poucos. O meu cão saiu impecável e nota-se que gostam mesmo de animais. Serviço excelente."</blockquote>
+        <figcaption class="mt-4 flex items-center gap-3">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-brand font-display text-cream">V</span>
+          <span><span class="block font-bold text-brand-dark">Vlad R.</span><span class="block text-xs text-brand-dark/55">Cliente no Google</span></span>
+        </figcaption>
+      </figure>
+
+      <figure class="rounded-2xl bg-paper p-6 shadow-soft ring-1 ring-brand/5">
+        <div class="flex gap-0.5 text-gold-dark">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21Z"></path></svg>
+        </div>
+        <blockquote class="mt-3 text-brand-dark/80">"Para além do atendimento ao cliente ser muito bom, com muita simpatia e profissionalismo da parte do groomer, este faz um trabalho excepcional, super bem feito. Os cães ficam muito bem entregues, com cortes precisos, tendo direito a um penteado com laços e gravatas, e tratamentos dermatológicos. Já fui lá muitas vezes e o meu cão fica sempre muito giro, cheiroso e limpinho! Recomendo a todos os donos de pets caninos!"</blockquote>
+        <figcaption class="mt-4 flex items-center gap-3">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-brand font-display text-cream">N</span>
+          <span><span class="block font-bold text-brand-dark">Nicole Madeira</span><span class="block text-xs text-brand-dark/55">Cliente no Google</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTOS / CTA FINAL ============ -->
+  <section id="contactos" class="bg-cream/60 py-20 md:py-28">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <div class="reveal grid gap-10 rounded-3xl bg-paper p-6 shadow-lift ring-1 ring-brand/10 md:grid-cols-2 md:p-10">
+        <!-- Info + Mapa -->
+        <div>
+          <span class="font-display text-sm uppercase tracking-widest text-gold-dark">Contactos</span>
+          <h2 class="mt-2 font-display text-3xl text-brand-dark sm:text-4xl">Marque o banho do seu cão</h2>
+          <p class="mt-3 text-brand-dark/70">Estamos no centro de Loulé. Ligue, passe por cá ou deixe os seus dados que entramos em contacto.</p>
+
+          <ul class="mt-6 space-y-4 text-brand-dark">
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span class="font-medium">R. Afonso de Albuquerque, 32<br>8100-532 Loulé</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="h-5 w-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92Z"></path></svg>
+              <a href="tel:+351289422066" class="font-bold text-brand transition-colors hover:text-gold-dark cursor-pointer">289 422 066</a>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+              <span class="font-medium">Seg–Sex: 10h–13h &amp; 15h–19h<br>Sábado: 10h–13h · Dom: fechado</span>
+            </li>
+          </ul>
+
+          <div class="mt-6 overflow-hidden rounded-2xl ring-1 ring-brand/10">
+            <iframe title="Mapa — Barbearia do Cão, Loulé" src="https://maps.google.com/maps?q=37.1360229,-8.0136878&amp;z=16&amp;output=embed" width="100%" height="220" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <!-- Formulário (Netlify Forms) -->
+        <div class="rounded-2xl bg-cream/50 p-6 ring-1 ring-brand/10">
+          <h3 class="font-display text-xl text-brand-dark">Pedir marcação</h3>
+          <p class="mt-1 text-sm text-brand-dark/60">Resposta no próprio dia em horário de loja.</p>
+          <form id="formMarcacao" name="marcacao" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-5 space-y-4">
+            <input type="hidden" name="form-name" value="marcacao">
+            <p class="hidden" aria-hidden="true"><label>Não preencher: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <div>
+              <label for="nome" class="block text-sm font-semibold text-brand-dark">Nome</label>
+              <input id="nome" name="nome" type="text" required="" class="mt-1 w-full rounded-xl border border-brand/15 bg-paper px-4 py-3 text-brand-dark outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/40" placeholder="O seu nome">
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="tel" class="block text-sm font-semibold text-brand-dark">Telefone</label>
+                <input id="tel" name="tel" type="tel" required="" class="mt-1 w-full rounded-xl border border-brand/15 bg-paper px-4 py-3 text-brand-dark outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/40" placeholder="9XX XXX XXX">
+              </div>
+              <div>
+                <label for="cao" class="block text-sm font-semibold text-brand-dark">Raça / porte</label>
+                <input id="cao" name="cao" type="text" class="mt-1 w-full rounded-xl border border-brand/15 bg-paper px-4 py-3 text-brand-dark outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/40" placeholder="Ex.: Caniche pequeno">
+              </div>
+            </div>
+            <div>
+              <label for="msg" class="block text-sm font-semibold text-brand-dark">O que precisa?</label>
+              <textarea id="msg" name="msg" rows="3" class="mt-1 w-full rounded-xl border border-brand/15 bg-paper px-4 py-3 text-brand-dark outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/40" placeholder="Banho, tosquia, unhas…"></textarea>
+            </div>
+            <label class="flex items-start gap-2 text-xs text-brand-dark/65">
+              <input type="checkbox" name="rgpd" required="" class="mt-0.5 cursor-pointer">
+              Li e aceito a <a class="font-semibold text-brand underline" href="/privacidade">Política de Privacidade</a> e o tratamento dos meus dados para resposta a este pedido.
+            </label>
+            <button type="submit" class="w-full rounded-xl bg-gold px-6 py-3.5 font-bold text-brand-dark shadow-soft transition-all hover:bg-gold-dark hover:shadow-lift cursor-pointer">
+              Enviar pedido de marcação
+            </button>
+            <p id="formOk" class="hidden rounded-xl bg-green-100 px-4 py-3 text-sm font-semibold text-green-800">Obrigado! Recebemos o seu pedido e entramos em contacto em breve.</p>
+            <p id="formErro" class="hidden rounded-xl bg-red-100 px-4 py-3 text-sm font-semibold text-red-800">Não foi possível enviar o pedido. Tente novamente ou ligue-nos: <a href="tel:+351289422066" class="underline">289 422 066</a>.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="bg-brand-dark text-cream/80">
+    <div class="mx-auto max-w-6xl px-4 py-14 md:px-6">
+      <div class="grid gap-10 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <img src="barbearia-assets/logo-clara.png" alt="Barbearia do Cão — Groomer Tiago Machado · Pet Shop" class="h-16 w-auto" width="700" height="409" loading="lazy">
+          <p class="mt-4 max-w-sm text-sm leading-relaxed text-cream/65">Banhos, tosquias e mimos para o seu cão, no centro de Loulé. Carinho e profissionalismo desde sempre.</p>
+          <div class="mt-5 flex gap-3">
+            <a href="https://www.facebook.com/people/Barbearia-do-c%C3%A3o/100063505390717/" aria-label="Facebook" class="grid h-10 w-10 place-items-center rounded-xl bg-cream/10 transition-colors hover:bg-gold hover:text-brand-dark cursor-pointer">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"></path></svg>
+            </a>
+            <a href="tel:+351289422066" aria-label="Telefone" class="grid h-10 w-10 place-items-center rounded-xl bg-cream/10 transition-colors hover:bg-gold hover:text-brand-dark cursor-pointer">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92Z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-display text-cream">Navegação</h4>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a href="#trabalho" class="transition-colors hover:text-gold">O nosso trabalho</a></li>
+            <li><a href="#servicos" class="transition-colors hover:text-gold">Serviços</a></li>
+            <li><a href="#sobre" class="transition-colors hover:text-gold">Sobre</a></li>
+            <li><a href="#contactos" class="transition-colors hover:text-gold">Contactos</a></li>
+            <li><a href="https://carnepura.com/" class="font-semibold text-gold transition-colors hover:text-cream">Loja CarnePura →</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display text-cream">Legal</h4>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a class="transition-colors hover:text-gold" href="/privacidade">Política de Privacidade</a></li>
+            <li><a class="transition-colors hover:text-gold" href="/privacidade#cookies">Política de Cookies</a></li>
+            <li><a href="https://www.livroreclamacoes.pt/inicio" class="transition-colors hover:text-gold">Livro de Reclamações</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 flex flex-col items-center justify-between gap-3 border-t border-cream/10 pt-6 text-xs text-cream/55 sm:flex-row">
+        <p>© <span id="ano">2026</span> Barbearia do Cão. Todos os direitos reservados.</p>
+        <p>Site por <a href="https://pachecost.com" target="_blank" rel="noopener" class="font-semibold transition-colors hover:text-gold">Pacheco Studios</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox da galeria -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador da galeria">
+    <button class="lb-close" aria-label="Fechar"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+    <button class="lb-nav lb-prev" aria-label="Anterior"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg></button>
+    <button class="lb-nav lb-next" aria-label="Seguinte"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></button>
+    <div class="lb-content">
+      <div id="lbStage"></div>
+      <p class="lb-cap" id="lbCap"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    /* Formulário de marcação — envio real via Netlify Forms */
+    const formMarc = document.getElementById('formMarcacao');
+    formMarc.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const btn = formMarc.querySelector('button[type="submit"]');
+      const ok = document.getElementById('formOk');
+      const erro = document.getElementById('formErro');
+      btn.disabled = true; btn.textContent = 'A enviar…';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(formMarc)).toString(),
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error('resposta ' + r.status);
+          ok.classList.remove('hidden'); erro.classList.add('hidden');
+          formMarc.reset();
+        })
+        .catch(function () {
+          erro.classList.remove('hidden'); ok.classList.add('hidden');
+        })
+        .finally(function () {
+          btn.disabled = false; btn.textContent = 'Enviar pedido de marcação';
+        });
+    });
+
+    /* =========================================================================
+       GALERIA — Edite apenas esta lista para adicionar/remover fotos e vídeos.
+       Coloque os ficheiros em  barbearia-assets/galeria/  (fotos)  e
+       barbearia-assets/videos/  (vídeos), e aponte o "src" para eles.
+       tipo: 'foto' | 'video' | 'placeholder-foto' | 'placeholder-video'
+       ========================================================================= */
+    const galeria = [
+      { tipo: 'foto', src: 'barbearia-assets/galeria/trabalho-5.jpg',
+        legenda: 'Banho e tosquia — American Bully', grande: true },
+      { tipo: 'video', src: 'barbearia-assets/videos/visita-loja.mp4',
+        poster: 'barbearia-assets/galeria/visita-loja-capa.jpg',
+        legenda: 'Visite a loja — pet shop, rações e a nossa árvore de clientes', alto: true },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/spa-banheira.jpg',
+        legenda: 'A zona de banho — banheira própria, argilas e flor de sal', alto: true },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/trabalho-3.jpg',
+        legenda: 'Yorkshire Terrier depois da tosquia' },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/trabalho-4.jpg',
+        legenda: 'Também cuidamos de gatos' },
+      { tipo: 'video', src: 'barbearia-assets/videos/arvore-clientes.mp4',
+        poster: 'barbearia-assets/galeria/arvore-clientes-capa.jpg',
+        legenda: 'A árvore dos clientes, ao vivo — cada foto é um amigo', alto: true },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/trabalho-2.jpg',
+        legenda: 'Tosquia de Schnauzer' },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/loja-prateleiras.jpg',
+        legenda: 'A loja — rações, acessórios e produtos escolhidos a dedo' },
+      { tipo: 'video', src: 'barbearia-assets/videos/sala-tosquia.mp4',
+        poster: 'barbearia-assets/galeria/sala-tosquia-capa.jpg',
+        legenda: 'A sala de tosquia, por dentro', alto: true },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/fachada.jpg',
+        legenda: 'A nossa casa, no centro de Loulé' },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/trabalho-1.jpg',
+        legenda: 'Sempre com calma e confiança' },
+      { tipo: 'video', src: 'barbearia-assets/videos/terrario.mp4',
+        poster: 'barbearia-assets/galeria/terrario-capa.jpg',
+        legenda: 'Na loja também moram amigos de escamas', alto: true },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/champos-profissionais.jpg',
+        legenda: 'Champôs profissionais para cada tipo de pelo' },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/sala-murais.jpg',
+        legenda: 'Os murais pintados à mão da sala de tosquia' },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/sala-panorama.jpg',
+        legenda: 'A sala de tosquia de ponta a ponta — murais pintados à mão', largo: true },
+      { tipo: 'foto', src: 'barbearia-assets/galeria/trabalho-6.jpg',
+        legenda: 'Antes e depois — Spitz', largo: true },
+    ];
+
+    const grid  = document.getElementById('galeriaGrid');
+    const media = [];   // só itens abríveis (foto/vídeo reais), para o lightbox
+
+    galeria.forEach(function (item) {
+      const cat = item.tipo.indexOf('video') > -1 ? 'video' : 'foto';
+      const el = document.createElement(item.tipo.indexOf('placeholder') === 0 ? 'div' : 'figure');
+      el.className = 'g-item shadow-soft ring-1 ring-brand/10';
+      el.dataset.cat = cat;
+      if (item.grande) el.classList.add('col-span-2', 'row-span-2');
+      else if (item.largo) el.classList.add('col-span-2', 'lg:col-span-4');
+      else if (item.alto) el.classList.add('row-span-2');
+
+      if (item.tipo === 'foto') {
+        const i = media.length;
+        el.classList.add('cursor-pointer', 'group');
+        el.innerHTML = '<img src="' + item.src + '" alt="' + (item.alt || item.legenda) + '" loading="lazy">' +
+                       '<figcaption class="g-cap">' + item.legenda + '</figcaption>';
+        el.addEventListener('click', function () { abrir(i); });
+        media.push(item);
+      } else if (item.tipo === 'video') {
+        const i = media.length;
+        el.classList.add('cursor-pointer', 'group', 'img-fallback');
+        el.innerHTML = (item.poster ? '<img src="' + item.poster + '" alt="' + item.legenda + '" loading="lazy">' : '') +
+                       '<div class="g-play"><span><svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>' +
+                       '<figcaption class="g-cap">' + item.legenda + '</figcaption>';
+        el.addEventListener('click', function () { abrir(i); });
+        media.push(item);
+      } else {
+        const isVid = cat === 'video';
+        el.classList.add('g-ph');
+        el.innerHTML = (isVid
+            ? '<svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>'
+            : '<svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>') +
+          '<span class="text-xs font-bold">' + item.legenda + '</span>' +
+          '<span class="text-[11px]">' + (isVid ? 'colocar vídeo aqui' : 'colocar foto aqui') + '</span>';
+      }
+      grid.appendChild(el);
+    });
+
+    // Filtros
+    const botoes = document.querySelectorAll('.filtro-btn');
+    const emBreve = document.getElementById('videosEmBreve');
+    const temVideos = media.some(function (m) { return m.tipo === 'video'; });
+    function filtrar(f) {
+      botoes.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.filtro === f)); });
+      // Sem vídeos carregados: o filtro "Vídeos" mostra o aviso "Em breve".
+      if (f === 'video' && !temVideos) {
+        grid.style.display = 'none';
+        emBreve.classList.remove('hidden');
+        return;
+      }
+      grid.style.display = '';
+      emBreve.classList.add('hidden');
+      grid.querySelectorAll('.g-item').forEach(function (el) {
+        el.style.display = (f === 'todos' || el.dataset.cat === f) ? '' : 'none';
+      });
+    }
+    botoes.forEach(function (b) { b.addEventListener('click', function () { filtrar(b.dataset.filtro); }); });
+    filtrar('todos');
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const stage = document.getElementById('lbStage');
+    const lbCap = document.getElementById('lbCap');
+    let atual = 0;
+    function render() {
+      const it = media[atual];
+      if (!it) return;
+      stage.innerHTML = it.tipo === 'video'
+        ? '<video src="' + it.src + '" controls autoplay playsinline ' + (it.poster ? 'poster="' + it.poster + '"' : '') + '></video>'
+        : '<img src="' + it.src + '" alt="' + (it.alt || it.legenda) + '">';
+      lbCap.textContent = it.legenda || '';
+    }
+    function abrir(i) { atual = i; render(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function fechar() { lb.classList.remove('open'); stage.innerHTML = ''; document.body.style.overflow = ''; }
+    function mover(d) { atual = (atual + d + media.length) % media.length; render(); }
+    lb.querySelector('.lb-close').addEventListener('click', fechar);
+    lb.querySelector('.lb-prev').addEventListener('click', function () { mover(-1); });
+    lb.querySelector('.lb-next').addEventListener('click', function () { mover(1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) fechar(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') fechar();
+      if (e.key === 'ArrowLeft') mover(-1);
+      if (e.key === 'ArrowRight') mover(1);
+    });
+
+    // Reveal on scroll
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // Slider antes/depois (clip-path)
+    (function () {
+      var range = document.getElementById('baRange');
+      var top = document.getElementById('baTop');
+      var line = document.getElementById('baLine');
+      if (!range || !top || !line) return;
+      function set(v) {
+        top.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+        line.style.left = v + '%';
+      }
+      range.addEventListener('input', function () { set(this.value); });
+      set(range.value);
+    })();
+  </script>
+
+
+</body></html>
