@@ -12,6 +12,8 @@
 #                                               <pasta>/v/NN.webp (recorte 9:16 a 72 % da largura, 720×1280) + info.txt
 #   pagina     <nome> <url>                     abre no Chromium (com JavaScript) e grava ponte/<nome>.txt (texto
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
+#   captura    <nome> <url> [locale]           vista de abertura (sem página inteira): ponte/<nome>-d.jpg (1440×900)
+#                                               e ponte/<nome>-m.jpg (telemóvel 390×844 @2x); fecha avisos de cookies
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
 #   rastrear   <url>                            cada salto de um redirecionamento (código, Location, servidor) → relatório
 #   goatcounter <desde AAAA-MM-DD> [ate]        visitas, eventos e países das 12 páginas mais vistas → ponte/goatcounter.txt
@@ -39,7 +41,7 @@ jobs:
         run: |
           grep -qE '^\s*fotogramas\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
           python3 -m pip install --quiet pillow
-          if grep -qE '^\s*pagina\s' .github/ponte.txt; then
+          if grep -qE '^\s*(pagina|captura)\s' .github/ponte.txt; then
             python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
           fi
       - name: Pedidos
@@ -63,6 +65,7 @@ jobs:
               if d:
                   os.makedirs(d, exist_ok=True)
           paginas = []
+          capturas = []
           for n, linha in enumerate(open(".github/ponte.txt", encoding="utf-8"), 1):
               linha = linha.strip()
               if not linha or linha.startswith("#"):
@@ -104,6 +107,8 @@ jobs:
                       rel.append(f"ok  fotogramas {dest} " + " · ".join(info.split("\n")))
                   elif op == "pagina":
                       paginas.append((p[1], p[2]))
+                  elif op == "captura":
+                      capturas.append((p[1], p[2], p[3] if len(p) > 3 else "pt-PT"))
                   elif op == "testar":
                       r = subprocess.run(["curl", "-sS", "-o", "/dev/null", "-L", "--max-time", "25", "-A", UA,
                                           "-w", "%{http_code} %{url_effective} %{size_download}", p[1]], capture_output=True, text=True)
@@ -165,6 +170,34 @@ jobs:
                           pg.close()
                       except Exception as ex:
                           rel.append(f"ERRO pagina {nome} {url}: {ex}")
+                  b.close()
+          if capturas:
+              import re as _re
+              from playwright.sync_api import sync_playwright
+              COOK = _re.compile(r"^\s*(refuz|recusar|rejeitar|aceitar( tudo| todos)?|accept( all| toate)?|ok|entendi|continuar|concordo|de acord)\s*$", _re.I)
+              with sync_playwright() as pw:
+                  b = pw.chromium.launch()
+                  for nome, url, loc in capturas:
+                      for suf, vp, dsf, mob in (("d", {"width": 1440, "height": 900}, 1, False), ("m", {"width": 390, "height": 844}, 2, True)):
+                          try:
+                              cx = b.new_context(viewport=vp, device_scale_factor=dsf, is_mobile=mob, has_touch=mob, locale=loc,
+                                                 user_agent=("Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1" if mob else UA))
+                              pg = cx.new_page()
+                              r = pg.goto(url, wait_until="networkidle", timeout=60000)
+                              pg.wait_for_timeout(2500)
+                              for el in pg.locator("button, a[role=button], [class*=cookie] a, [id*=cookie] a").all()[:200]:
+                                  try:
+                                      if el.is_visible() and COOK.match(el.inner_text(timeout=500) or ""):
+                                          el.click(timeout=1500); pg.wait_for_timeout(900); break
+                                  except Exception:
+                                      pass
+                              pg.evaluate("window.scrollTo(0,0)")
+                              pg.wait_for_timeout(1200)
+                              pg.screenshot(path=f"ponte/{nome}-{suf}.jpg", type="jpeg", quality=84)
+                              rel.append(f"ok  captura {nome}-{suf} {r.status if r else '?'} {url}")
+                              cx.close()
+                          except Exception as ex:
+                              rel.append(f"ERRO captura {nome}-{suf} {url}: {ex}")
                   b.close()
           open("ponte/relatorio.txt", "w", encoding="utf-8").write("\n".join(rel) + "\n")
           print("\n".join(rel))
