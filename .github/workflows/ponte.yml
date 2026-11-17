@@ -14,6 +14,11 @@
 #                                               visível), .html (DOM final) e .jpg (página inteira, 1280 px)
 #   captura    <nome> <url> [locale]           vista de abertura (sem página inteira): ponte/<nome>-d.jpg (1440×900)
 #                                               e ponte/<nome>-m.jpg (telemóvel 390×844 @2x); fecha avisos de cookies
+#   gravar     <nome> <url> [locale=en-US] [seg=8] [espera=3] [clique=<css>] [ls=<chave>=<valor>]
+#                                               grava a vista de abertura em vídeo no Google Chrome (toca H.264), em
+#                                               computador (1440×900) e telemóvel (390×844): ponte/<nome>-d.mp4/-d.jpg e
+#                                               -m.mp4/-m.jpg + -d.txt (texto visível). seg=0 = só as imagens. clique =
+#                                               botão a carregar antes (ex.: mudar a língua); ls = valor no localStorage
 #   testar     <url>                            só testa o link (código HTTP, endereço final, bytes) → relatório
 #   rastrear   <url>                            cada salto de um redirecionamento (código, Location, servidor) → relatório
 #   goatcounter <desde AAAA-MM-DD> [ate]        visitas, eventos e países das 12 páginas mais vistas → ponte/goatcounter.txt
@@ -39,9 +44,9 @@ jobs:
       - name: Ferramentas (só as que os pedidos usam)
         if: steps.ha.outputs.n != '0'
         run: |
-          grep -qE '^\s*fotogramas\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
+          grep -qE '^\s*(fotogramas|gravar)\s' .github/ponte.txt && sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null || true
           python3 -m pip install --quiet pillow
-          if grep -qE '^\s*(pagina|captura)\s' .github/ponte.txt; then
+          if grep -qE '^\s*(pagina|captura|gravar)\s' .github/ponte.txt; then
             python3 -m pip install --quiet playwright && python3 -m playwright install --with-deps chromium >/dev/null
           fi
       - name: Pedidos
@@ -66,6 +71,7 @@ jobs:
                   os.makedirs(d, exist_ok=True)
           paginas = []
           capturas = []
+          gravacoes = []
           for n, linha in enumerate(open(".github/ponte.txt", encoding="utf-8"), 1):
               linha = linha.strip()
               if not linha or linha.startswith("#"):
@@ -107,6 +113,9 @@ jobs:
                       rel.append(f"ok  fotogramas {dest} " + " · ".join(info.split("\n")))
                   elif op == "pagina":
                       paginas.append((p[1], p[2]))
+                  elif op == "gravar":
+                      kw = dict(x.split("=", 1) for x in p[3:] if "=" in x)
+                      gravacoes.append((p[1], p[2], kw))
                   elif op == "captura":
                       capturas.append((p[1], p[2], p[3] if len(p) > 3 else "pt-PT"))
                   elif op == "testar":
@@ -198,6 +207,81 @@ jobs:
                               cx.close()
                           except Exception as ex:
                               rel.append(f"ERRO captura {nome}-{suf} {url}: {ex}")
+                  b.close()
+          if gravacoes:
+              import re as _re, time as _t, base64 as _b64, shutil as _sh
+              from playwright.sync_api import sync_playwright
+              COOK2 = _re.compile(r"^\s*(refuz|recusar|rejeitar|aceitar( tudo| todos)?|accept( all| toate)?|ok|entendi|continuar|concordo|de acord|got it|reject( all)?|decline)\s*$", _re.I)
+              IOS = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1"
+              with sync_playwright() as pw:
+                  try:
+                      b = pw.chromium.launch(channel="chrome", args=["--autoplay-policy=no-user-gesture-required"])
+                      motor = "chrome"
+                  except Exception:
+                      b = pw.chromium.launch(args=["--autoplay-policy=no-user-gesture-required"]); motor = "chromium"
+                  for nome, url, kw in gravacoes:
+                      loc = kw.get("locale", "pt-PT"); seg = float(kw.get("seg", "8")); espera = float(kw.get("espera", "3"))
+                      for suf, vp, dsf, mob, out_w in (("d", {"width": 1440, "height": 900}, 1, False, 1120), ("m", {"width": 390, "height": 844}, 2, True, 420)):
+                          try:
+                              cx = b.new_context(viewport=vp, device_scale_factor=dsf, is_mobile=mob, has_touch=mob, locale=loc, user_agent=(IOS if mob else UA))
+                              if "ls" in kw:
+                                  k_, v_ = kw["ls"].split("=", 1)
+                                  cx.add_init_script(f"try{{localStorage.setItem({k_!r},{v_!r})}}catch(e){{}}")
+                              pg = cx.new_page()
+                              r = pg.goto(url, wait_until="networkidle", timeout=90000)
+                              pg.wait_for_timeout(2000)
+                              for el in pg.locator("button, a[role=button], [class*=cookie] a, [id*=cookie] a").all()[:200]:
+                                  try:
+                                      if el.is_visible() and COOK2.match(el.inner_text(timeout=500) or ""):
+                                          el.click(timeout=1500); pg.wait_for_timeout(700); break
+                                  except Exception:
+                                      pass
+                              if kw.get("clique"):
+                                  for el in pg.locator(kw["clique"]).all():
+                                      try:
+                                          if el.is_visible():
+                                              el.click(timeout=3000); break
+                                      except Exception:
+                                          pass
+                                  pg.wait_for_timeout(1500)
+                              pg.evaluate("window.scrollTo(0,0)")
+                              pg.evaluate("document.querySelectorAll('video').forEach(v=>{try{v.muted=true;v.play()}catch(e){}})")
+                              pg.wait_for_timeout(int(espera * 1000))
+                              pg.screenshot(path=f"ponte/{nome}-{suf}.jpg", type="jpeg", quality=88)
+                              if suf == "d":
+                                  open(f"ponte/{nome}-d.txt", "w", encoding="utf-8").write(f"{url} ({motor}, {loc})\n\n" + pg.inner_text("body")[:6000])
+                              if seg > 0:
+                                  d_ = f"/tmp/fr-{nome}-{suf}"; _sh.rmtree(d_, ignore_errors=True); os.makedirs(d_)
+                                  fr = []
+                                  cdp = cx.new_cdp_session(pg)
+                                  def _f(ev, cdp=cdp, fr=fr, d_=d_):
+                                      i_ = len(fr); open(f"{d_}/{i_:05d}.jpg", "wb").write(_b64.b64decode(ev["data"]))
+                                      fr.append(ev["metadata"].get("timestamp", _t.time()))
+                                      try:
+                                          cdp.send("Page.screencastFrameAck", {"sessionId": ev["sessionId"]})
+                                      except Exception:
+                                          pass
+                                  cdp.on("Page.screencastFrame", _f)
+                                  cdp.send("Page.startScreencast", {"format": "jpeg", "quality": 90, "maxWidth": vp["width"] * dsf, "maxHeight": vp["height"] * dsf, "everyNthFrame": 1})
+                                  pg.wait_for_timeout(int(seg * 1000) + 400)
+                                  cdp.send("Page.stopScreencast")
+                                  if len(fr) < 3:
+                                      raise ValueError(f"só {len(fr)} fotogramas")
+                                  fr.append(fr[-1] + 1 / 24)
+                                  with open(f"{d_}/lista.txt", "w") as lf:
+                                      for i_ in range(len(fr) - 1):
+                                          lf.write(f"file '{d_}/{i_:05d}.jpg'\nduration {max(fr[i_ + 1] - fr[i_], 0.001):.4f}\n")
+                                      lf.write(f"file '{d_}/{len(fr) - 2:05d}.jpg'\n")
+                                  subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{d_}/lista.txt",
+                                                  "-t", str(seg), "-vf", f"fps=24,scale={out_w}:-2:flags=lanczos,format=yuv420p",
+                                                  "-c:v", "libx264", "-preset", "slow", "-crf", "25", "-profile:v", "high", "-movflags", "+faststart", "-an",
+                                                  f"ponte/{nome}-{suf}.mp4"], check=True)
+                                  rel.append(f"ok  gravar {nome}-{suf} {r.status if r else '?'} {motor} {len(fr) - 1} fotogramas em {fr[-2] - fr[0]:.1f}s, {os.path.getsize(f'ponte/{nome}-{suf}.mp4') // 1024} KB")
+                              else:
+                                  rel.append(f"ok  gravar {nome}-{suf} {r.status if r else '?'} {motor} (só imagem)")
+                              cx.close()
+                          except Exception as ex:
+                              rel.append(f"ERRO gravar {nome}-{suf} {url}: {ex}")
                   b.close()
           open("ponte/relatorio.txt", "w", encoding="utf-8").write("\n".join(rel) + "\n")
           print("\n".join(rel))
