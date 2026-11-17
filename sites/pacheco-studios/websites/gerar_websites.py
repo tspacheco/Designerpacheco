@@ -32,7 +32,7 @@ SITES = [
     dict(id="tavira", nome="Ginásio Clube de Tavira", url="https://ginasioclubetavira.com/", dom="ginasioclubetavira.com", setor="mesa",
          tipo=("Restaurante do clube", "Club restaurant"), local="Tavira, Portugal", linguas="PT · EN",
          nota=("Ementa, história da casa e reservas.", "Menu, house history and bookings.")),
-    dict(id="kathmandu", nome="Olá Kathmandu", url="https://olakathmandu.com/", dom="olakathmandu.com", setor="mesa",
+    dict(id="kathmandu", nome="Olá Kathmandu", url="https://olakathmandu.com/", url_en="https://olakathmandu.com/en/", dom="olakathmandu.com", setor="mesa",
          tipo=("Restaurante nepalês e indiano", "Nepalese and Indian restaurant"), local="Grândola, Portugal", linguas="PT · EN",
          nota=("Carta, pedidos para casa e reservas por WhatsApp.", "Menu, delivery orders and WhatsApp bookings.")),
     dict(id="barbearia", nome="Barbearia do Cão", url="https://barbeariadocao.com/", dom="barbeariadocao.com", setor="loja",
@@ -44,7 +44,7 @@ SITES = [
     dict(id="naval", nome="Grupo Naval", url="https://gruponaval.online/", dom="gruponaval.online", setor="mesa",
          tipo=("Restaurante", "Restaurant"), local="Olhão, Portugal", linguas="PT",
          nota=("O dia da casa, galeria e reservas por telefone.", "The day at the house, gallery and phone bookings.")),
-    dict(id="nais", nome="NAIS Food", url="https://naisfood.ro/", dom="naisfood.ro", setor="mesa",
+    dict(id="nais", nome="NAIS Food", url="https://naisfood.ro/", url_en="https://naisfood.ro/en", dom="naisfood.ro", setor="mesa",
          tipo=("Shaorma e entregas", "Shawarma and delivery"), local="Iași, Roménia|Iași, Romania", linguas="RO · EN",
          nota=("Menu e encomenda online com entrega.", "Menu and online ordering with delivery.")),
     dict(id="jasmim2", nome="Jasmim 2 · A Marisqueira", url="https://jasmim2marisqueira.pt/", dom="jasmim2marisqueira.pt", setor="mesa",
@@ -198,9 +198,9 @@ h1,h2,h3,p{margin:0}
 .jan-b{display:flex;align-items:center;gap:.5rem;padding:.5rem .7rem;border-bottom:1px solid var(--linha)}
 .jan-b u{display:flex;gap:4px}.jan-b u::before,.jan-b u::after,.jan-b u b{content:"";width:7px;height:7px;border-radius:50%;background:rgba(239,234,227,.18)}
 .jan-b em{flex:1;min-width:0;font:700 .62rem/1 var(--mono);font-style:normal;letter-spacing:.04em;color:var(--ink-3);background:rgba(239,234,227,.06);border-radius:6px;padding:.4rem .6rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.jan img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.jan img,.jan video{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;background:var(--surface-2)}
 .tel{position:absolute;right:0;bottom:0;width:21%;border-radius:clamp(10px,1.6vw,18px);overflow:hidden;border:3px solid #050505;outline:1px solid rgba(239,234,227,.22);background:#050505;box-shadow:0 22px 40px -14px rgba(0,0,0,.9);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.tel img{width:100%;aspect-ratio:420/909;object-fit:cover;object-position:top}
+.tel img,.tel video{display:block;width:100%;height:auto;aspect-ratio:420/909;object-fit:cover;object-position:top;background:#050505}
 .tr-m:hover .jan{transform:translateY(-4px)}
 .tr-m:hover .tel{transform:translateY(-8px)}
 .tr-t{display:grid;gap:.45rem}
@@ -276,32 +276,66 @@ JS = r"""
     bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
     cs.forEach(function(c){c.hidden=!(f==='todos'||c.getAttribute('data-s')===f)});
   })});
+  /* heros em vídeo: só carregam e tocam quando o cartão está à vista; com «reduzir movimento» fica a imagem */
+  var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vs=document.querySelectorAll('video[data-src]');
+  if(rm||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){
+    var v=en.target;
+    if(en.isIntersecting){if(!v.getAttribute('src'))v.setAttribute('src',v.getAttribute('data-src'));var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    else if(!v.paused){v.pause();}
+  })},{rootMargin:'160px 0px'});
+  vs.forEach(function(v){io.observe(v)});
 })();
 """
 
 def e(s):
     return html.escape(s, quote=True)
 
+def tem(nome):
+    return os.path.exists(os.path.join(AQUI, "media", nome))
+
+def midia(s, l):
+    """Ficheiros de um site para a língua l. Na página EN usa a versão inglesa do site (<id>-en-*) quando existe,
+    e o vídeo do hero (<id>-en-d.mp4 / -m.mp4) quando o site abre com vídeo. A página PT fica com as imagens PT."""
+    b = s["id"] + "-en" if l == "en" and tem(s["id"] + "-en-d.webp") else s["id"]
+    return b, (l == "en" and tem(b + "-d.mp4") and tem(b + "-m.mp4"))
+
 def pagina(l, m):
     """l = 'pt' | 'en'; m = prefixo dos ficheiros de media (ex.: '/websites/media/')."""
     t = T[l]; k = 0 if l == "pt" else 1
+    def url(s):
+        return s.get("url_en", s["url"]) if l == "en" else s["url"]
+    def janela(s):
+        b, v = midia(s, l); a = e(t["cap_d"].format(n=s["nome"]))
+        if v:
+            return (f'<video muted loop playsinline preload="none" poster="{m}{b}-d.webp" data-src="{m}{b}-d.mp4" '
+                    f'width="1120" height="700" aria-label="{a}"></video>')
+        return f'<img src="{m}{b}-d.webp" width="1120" height="700" alt="{a}" loading="lazy" decoding="async">'
+    def telemovel(s):
+        b, v = midia(s, l); a = e(t["cap_m"].format(n=s["nome"]))
+        if v:
+            return (f'<video muted loop playsinline preload="none" poster="{m}{b}-m.webp" data-src="{m}{b}-m.mp4" '
+                    f'width="420" height="909" aria-label="{a}"></video>')
+        return f'<img src="{m}{b}-m.webp" width="420" height="909" alt="{a}" loading="lazy" decoding="async">'
+
     def local(s):
         p = s["local"].split("|"); return p[k] if len(p) > 1 else p[0]
     faixa = "".join(
-        f'<a class="fx" href="{s["url"]}" target="_blank" rel="noopener" tabindex="{"0" if rep == 0 else "-1"}"{" aria-hidden=\"true\"" if rep else ""}>'
-        f'<img src="{m}{s["id"]}-d.webp" width="1120" height="700" alt="{e(t["cap_d"].format(n=s["nome"])) if rep == 0 else ""}" loading="{"eager" if rep == 0 and i < 4 else "lazy"}" decoding="async"><i>{s["dom"]}</i></a>'
+        f'<a class="fx" href="{url(s)}" target="_blank" rel="noopener" tabindex="{"0" if rep == 0 else "-1"}"{" aria-hidden=\"true\"" if rep else ""}>'
+        f'<img src="{m}{midia(s, l)[0]}-d.webp" width="1120" height="700" alt="{e(t["cap_d"].format(n=s["nome"])) if rep == 0 else ""}" loading="{"eager" if rep == 0 and i < 4 else "lazy"}" decoding="async"><i>{s["dom"]}</i></a>'
         for rep in (0, 1) for i, s in enumerate(SITES))
     cartoes = "".join(f'''
 <article class="tr" data-s="{s["setor"]}">
-  <a class="tr-m" href="{s["url"]}" target="_blank" rel="noopener" aria-label="{e(t["abrir"])}: {e(s["nome"])}">
+  <a class="tr-m" href="{url(s)}" target="_blank" rel="noopener" aria-label="{e(t["abrir"])}: {e(s["nome"])}">
     <div class="jan"><div class="jan-b"><u><b></b></u><em>{s["dom"]}</em></div>
-      <img src="{m}{s["id"]}-d.webp" width="1120" height="700" alt="{e(t["cap_d"].format(n=s["nome"]))}" loading="lazy" decoding="async"></div>
-    <div class="tel"><img src="{m}{s["id"]}-m.webp" width="420" height="909" alt="{e(t["cap_m"].format(n=s["nome"]))}" loading="lazy" decoding="async"></div>
+      {janela(s)}</div>
+    <div class="tel">{telemovel(s)}</div>
   </a>
   <div class="tr-t">
     <div class="tr-c"><h3>{e(s["nome"])}</h3><span class="lin">{s["linguas"]}</span></div>
     <p class="tr-s"><b>{e(s["tipo"][k])} · {e(local(s))}.</b> {e(s["nota"][k])}</p>
-    <div class="tr-p"><span class="dom">{s["dom"]} · {e(t["noar"])}</span><a class="abrir" href="{s["url"]}" target="_blank" rel="noopener">{e(t["abrir"])}<span class="sr"> {e(s["nome"])}</span>{SETA}</a></div>
+    <div class="tr-p"><span class="dom">{s["dom"]} · {e(t["noar"])}</span><a class="abrir" href="{url(s)}" target="_blank" rel="noopener">{e(t["abrir"])}<span class="sr"> {e(s["nome"])}</span>{SETA}</a></div>
   </div>
 </article>''' for s in SITES)
     n_mesa = sum(1 for s in SITES if s["setor"] == "mesa"); n_loja = len(SITES) - n_mesa
